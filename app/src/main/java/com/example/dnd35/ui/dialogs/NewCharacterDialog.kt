@@ -3,10 +3,10 @@ package com.example.dnd35.ui.dialogs
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -75,14 +75,21 @@ fun NewCharacterDialog(
                         value = selectedClass,
                         onValueChange = {},
                         readOnly = true,
-                        trailingIcon = { Icon(Icons.Default.ArrowDropDown, null) },
+                        trailingIcon = {
+                            Icon(
+                                Icons.Default.ArrowDropDown,
+                                contentDescription = "Selecionar classe",
+                                modifier = Modifier.clickable { classExpanded = true }
+                            )
+                        },
                         modifier = Modifier
                             .fillMaxWidth()
                             .clickable { classExpanded = true }
                     )
                     DropdownMenu(
                         expanded = classExpanded,
-                        onDismissRequest = { classExpanded = false }
+                        onDismissRequest = { classExpanded = false },
+                        modifier = Modifier.heightIn(max = 320.dp)
                     ) {
                         for (c in Dnd35Rules.CLASSES) {
                             DropdownMenuItem(
@@ -117,14 +124,21 @@ fun NewCharacterDialog(
                         value = selectedRace,
                         onValueChange = {},
                         readOnly = true,
-                        trailingIcon = { Icon(Icons.Default.ArrowDropDown, null) },
+                        trailingIcon = {
+                            Icon(
+                                Icons.Default.ArrowDropDown,
+                                contentDescription = "Selecionar raça",
+                                modifier = Modifier.clickable { raceExpanded = true }
+                            )
+                        },
                         modifier = Modifier
                             .fillMaxWidth()
                             .clickable { raceExpanded = true }
                     )
                     DropdownMenu(
                         expanded = raceExpanded,
-                        onDismissRequest = { raceExpanded = false }
+                        onDismissRequest = { raceExpanded = false },
+                        modifier = Modifier.heightIn(max = 320.dp)
                     ) {
                         for (r in Dnd35Rules.RACES) {
                             DropdownMenuItem(
