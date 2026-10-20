@@ -1,0 +1,631 @@
+package com.example.dnd35.model
+
+data class ClassDetailInfo(
+    val entry: CharacterClassEntry,
+    val classInfo: Dnd35Rules.ClassInfo,
+    val babContribution: Int,
+    val baseFort: Int,
+    val baseRef: Int,
+    val baseWill: Int,
+    val hitDie: Int,
+    val isCaster: Boolean,
+    val isFavored: Boolean
+)
+
+data class MulticlassPenaltyInfo(
+    val hasPenalty: Boolean,
+    val penaltyPercent: Int,
+    val favoredClass: String,
+    val explanation: String
+)
+
+data class CasterClassInfo(
+    val className: String,
+    val casterLevel: Int,
+    val keyAbility: String,
+    val keyAbilityMod: Int,
+    val dcByLevel: Map<Int, Int>
+)
+
+data class CalculatedCharacterStats(
+    val character: CharacterEntity,
+    val raceInfo: Dnd35Rules.RaceInfo,
+    val classInfo: Dnd35Rules.ClassInfo,
+    val classEntries: List<CharacterClassEntry>,
+    val multiclassDetails: List<ClassDetailInfo>,
+    val multiclassPenalty: MulticlassPenaltyInfo,
+    val isMulticlass: Boolean,
+    val classesDisplay: String,
+    val totalCharacterLevel: Int,
+    val skills: List<CharacterSkill>,
+    val inventory: List<CharacterInventoryItem>,
+    val feats: List<CharacterFeat>,
+    val spells: List<CharacterSpell>,
+    val spellSlots: List<SpellSlotInfo>,
+
+    // Atributos Finais (Base + Raça + Equipamentos/Mágicos)
+    val totalStr: Int,
+    val strMod: Int,
+    val totalDex: Int,
+    val dexMod: Int,
+    val totalCon: Int,
+    val conMod: Int,
+    val totalInt: Int,
+    val intMod: Int,
+    val totalWis: Int,
+    val wisMod: Int,
+    val totalCha: Int,
+    val chaMod: Int,
+
+    // BBA & Ataques
+    val bab: Int,
+    val babDisplay: String,
+    val grappleBonus: Int,
+
+    // Resistências
+    val baseFort: Int,
+    val totalFort: Int,
+    val baseRef: Int,
+    val totalRef: Int,
+    val baseWill: Int,
+    val totalWill: Int,
+
+    // Iniciativa & Velocidade
+    val initiativeTotal: Int,
+    val speedMetersEffective: Float,
+
+    // CA
+    val armorBonusTotal: Int,
+    val shieldBonusTotal: Int,
+    val naturalArmorTotal: Int,
+    val deflectionBonusTotal: Int,
+    val maxDexFromArmor: Int?,
+    val effectiveDexForAc: Int,
+    val armorCheckPenalty: Int,
+    val totalAc: Int,
+    val touchAc: Int,
+    val flatFootedAc: Int,
+
+    // Habilidades Especiais Ativas da Classe
+    val activeClassFeatures: List<Dnd35Rules.ClassFeature>,
+    val sneakAttackDice: String?, // Ex: "+2d6" para Ladino
+    val monkUnarmedDamage: String?, // Ex: "1d8" para Monge
+    val rageUsesPerDay: Int?, // Para Bárbaro
+    val turningUsesPerDay: Int?, // Para Clérigo/Paladino: 3 + mod Car
+
+    // Conjurador & CD de Magias
+    val isSpellcaster: Boolean,
+    val castingAbilityName: String?,
+    val castingAbilityMod: Int,
+    val spellSaveDcByLevel: Map<Int, Int>, // Círculo -> 10 + círculo + mod atributo
+    val casterClasses: List<CasterClassInfo>,
+
+    // Carga & Inventário
+    val totalWeightLb: Float,
+    val carryingCapacity: Dnd35Rules.CarryingCapacity,
+    val encumbrance: Dnd35Rules.EncumbranceLevel,
+
+    // Perícias Calculadas
+    val computedSkills: List<ComputedSkill>
+)
+
+data class ComputedSkill(
+    val skill: CharacterSkill,
+    val keyAbilityMod: Int,
+    val ranks: Float,
+    val miscBonus: Int,
+    val armorPenaltyApplied: Int,
+    val totalBonus: Int,
+    val isClassSkill: Boolean
+)
+
+object CharacterCalculator {
+
+    fun compute(character: CharacterEntity): CalculatedCharacterStats {
+        val race = Dnd35Rules.RACES.find { it.name.equals(character.race, ignoreCase = true) }
+            ?: Dnd35Rules.RACES.first()
+
+        // 1. Desserializar classes da multiclasse
+        val classEntries = CharacterJsonAdapters.deserializeClassEntries(
+            character.multiclassJson,
+            fallbackClass = character.characterClass.split("/").firstOrNull()?.trim()?.split(" ")?.firstOrNull()?.trim() ?: character.characterClass,
+            fallbackLevel = character.level
+        )
+
+        val totalCharacterLevel = classEntries.sumOf { it.level }.coerceAtLeast(1)
+        val isMulticlass = classEntries.size > 1
+        val classesDisplay = classEntries.joinToString(" / ") { "${it.className} ${it.level}" }
+
+        // Classe primária (para compatibilidade com regras gerais)
+        val primaryClassInfo = Dnd35Rules.CLASSES.find { it.name.equals(classEntries.first().className, ignoreCase = true) }
+            ?: Dnd35Rules.CLASSES.first()
+
+        // Determinar classe favorecida (para Humanos e Meio-Elfos é a classe de nível mais alto)
+        val effectiveFavoredClassName = if (race.favoredClass.equals("Qualquer", ignoreCase = true) ||
+            race.name.equals("Humano", ignoreCase = true) ||
+            race.name.equals("Meio-Elfo", ignoreCase = true)
+        ) {
+            classEntries.maxByOrNull { it.level }?.className ?: race.favoredClass
+        } else {
+            race.favoredClass
+        }
+
+        // 2. Construir detalhes acumulados por classe
+        val multiclassDetails = classEntries.map { entry ->
+            val info = Dnd35Rules.CLASSES.find { it.name.equals(entry.className, ignoreCase = true) }
+                ?: Dnd35Rules.CLASSES.first()
+            val babPart = Dnd35Rules.calculateBaseAttackBonus(info.babType, entry.level)
+            val fortPart = Dnd35Rules.calculateBaseSave(info.fortType, entry.level)
+            val refPart = Dnd35Rules.calculateBaseSave(info.refType, entry.level)
+            val willPart = Dnd35Rules.calculateBaseSave(info.willType, entry.level)
+            val isFavored = entry.className.equals(effectiveFavoredClassName, ignoreCase = true)
+
+            ClassDetailInfo(
+                entry = entry,
+                classInfo = info,
+                babContribution = babPart,
+                baseFort = fortPart,
+                baseRef = refPart,
+                baseWill = willPart,
+                hitDie = info.hitDie,
+                isCaster = info.spellCastingAbility != null,
+                isFavored = isFavored
+            )
+        }
+
+        // 3. Calcular penalidade de XP de Multiclasse segundo D&D 3.5
+        val multiclassPenalty = calculateMulticlassPenalty(classEntries, race, effectiveFavoredClassName)
+
+        val skills = CharacterJsonAdapters.deserializeSkills(character.skillsJson).ifEmpty {
+            defaultSkillsForClasses(multiclassDetails.map { it.classInfo })
+        }
+        val inventory = CharacterJsonAdapters.deserializeInventory(character.inventoryJson)
+        val feats = CharacterJsonAdapters.deserializeFeats(character.featsJson)
+        val spells = CharacterJsonAdapters.deserializeSpells(character.spellsJson)
+        val spellSlots = CharacterJsonAdapters.deserializeSpellSlots(character.spellSlotsJson)
+
+        // 4. Processar bônus concedidos por itens equipados nos espaços de corpo (EquipmentSlots)
+        var itemStrBonus = character.modStrBonus
+        var itemDexBonus = character.modDexBonus
+        var itemConBonus = character.modConBonus
+        var itemIntBonus = character.modIntBonus
+        var itemWisBonus = character.modWisBonus
+        var itemChaBonus = character.modChaBonus
+
+        var itemArmorBonus = character.armorBonus
+        var itemShieldBonus = character.shieldBonus
+        var itemNaturalArmor = character.naturalArmor
+        var itemDeflectionBonus = character.deflectionBonus
+        var itemMiscSaveBonus = 0
+        var itemMiscAcBonus = character.miscAcBonus
+
+        var armorMaxDex: Int? = null
+        var totalArmorCheckPenalty = 0
+
+        for (item in inventory) {
+            val isEquipped = item.equipped
+            if (!isEquipped) continue
+
+            val slot = item.equippedSlot
+            val props = "${item.damageOrAc} ${item.notes}"
+
+            // Armadura no Corpo
+            if (slot == Dnd35Rules.EquipmentSlots.ARMOR_BODY || item.category.equals("Armaduras", ignoreCase = true)) {
+                val ac = parseBonusNumber(item.damageOrAc)
+                if (ac > 0) itemArmorBonus = maxOf(itemArmorBonus, ac)
+                val mDex = parseMaxDex(item.notes)
+                if (mDex != null) {
+                    armorMaxDex = if (armorMaxDex == null) mDex else minOf(armorMaxDex, mDex)
+                }
+                totalArmorCheckPenalty += parsePenalty(item.notes)
+            }
+
+            // Escudo na Mão Secundária
+            if (slot == Dnd35Rules.EquipmentSlots.OFF_HAND && item.category.equals("Escudos", ignoreCase = true)) {
+                val ac = parseBonusNumber(item.damageOrAc)
+                if (ac > 0) itemShieldBonus = maxOf(itemShieldBonus, ac)
+                totalArmorCheckPenalty += parsePenalty(item.notes)
+            }
+
+            // Itens de Cabeça, Pescoço, Ombros, Mãos, etc.
+            parseSpecificBonus(props, "FOR").takeIf { it > 0 }?.let { itemStrBonus = maxOf(itemStrBonus, it) }
+            parseSpecificBonus(props, "DES").takeIf { it > 0 }?.let { itemDexBonus = maxOf(itemDexBonus, it) }
+            parseSpecificBonus(props, "CON").takeIf { it > 0 }?.let { itemConBonus = maxOf(itemConBonus, it) }
+            parseSpecificBonus(props, "INT").takeIf { it > 0 }?.let { itemIntBonus = maxOf(itemIntBonus, it) }
+            parseSpecificBonus(props, "SAB").takeIf { it > 0 }?.let { itemWisBonus = maxOf(itemWisBonus, it) }
+            parseSpecificBonus(props, "CAR").takeIf { it > 0 }?.let { itemChaBonus = maxOf(itemChaBonus, it) }
+
+            if (props.contains("Deflexão", ignoreCase = true) || slot in listOf(Dnd35Rules.EquipmentSlots.RING_1, Dnd35Rules.EquipmentSlots.RING_2)) {
+                val defl = parseBonusNumber(item.damageOrAc)
+                if (defl > 0) itemDeflectionBonus = maxOf(itemDeflectionBonus, defl)
+            }
+            if (props.contains("Natural", ignoreCase = true) || (slot == Dnd35Rules.EquipmentSlots.NECK && props.contains("Armadura Natural"))) {
+                val nat = parseBonusNumber(item.damageOrAc)
+                if (nat > 0) itemNaturalArmor = maxOf(itemNaturalArmor, nat)
+            }
+            if (props.contains("Resistências", ignoreCase = true) || (slot == Dnd35Rules.EquipmentSlots.SHOULDERS && props.contains("+1"))) {
+                itemMiscSaveBonus = maxOf(itemMiscSaveBonus, parseBonusNumber(item.damageOrAc))
+            }
+        }
+
+        // 5. Atributos Finais
+        val totalStr = character.baseStr + race.strMod + itemStrBonus
+        val strMod = Dnd35Rules.calculateModifier(totalStr)
+
+        val totalDex = character.baseDex + race.dexMod + itemDexBonus
+        val dexMod = Dnd35Rules.calculateModifier(totalDex)
+
+        val totalCon = character.baseCon + race.conMod + itemConBonus
+        val conMod = Dnd35Rules.calculateModifier(totalCon)
+
+        val totalInt = character.baseInt + race.intMod + itemIntBonus
+        val intMod = Dnd35Rules.calculateModifier(totalInt)
+
+        val totalWis = character.baseWis + race.wisMod + itemWisBonus
+        val wisMod = Dnd35Rules.calculateModifier(totalWis)
+
+        val totalCha = character.baseCha + race.chaMod + itemChaBonus
+        val chaMod = Dnd35Rules.calculateModifier(totalCha)
+
+        // 6. BBA Cumulativo de todas as classes & Agarrar
+        val bab = multiclassDetails.sumOf { it.babContribution }
+        val babDisplay = formatBabProgression(bab)
+        val sizeGrappleMod = Dnd35Rules.getGrappleSizeModifier(character.size)
+        val grappleBonus = bab + strMod + sizeGrappleMod
+
+        // 7. Testes de Resistência Cumulativos das Classes
+        val baseFort = multiclassDetails.sumOf { it.baseFort }
+        val baseRef = multiclassDetails.sumOf { it.baseRef }
+        val baseWill = multiclassDetails.sumOf { it.baseWill }
+
+        // Regra de Paladino: Graça Divina (Divine Grace) no 2º nível soma mod Carisma a todos os testes
+        val paladinLevel = classEntries.find { it.className.equals("Paladino", ignoreCase = true) }?.level ?: 0
+        val paladinDivineGrace = if (paladinLevel >= 2) {
+            maxOf(0, chaMod)
+        } else 0
+
+        // Bônus racial de Halfling (+1 em todas as resistências)
+        val halflingSaveBonus = if (race.name.contains("Halfling", ignoreCase = true)) 1 else 0
+
+        val featFort = if (feats.any { it.name.contains("Fortitude Maior", ignoreCase = true) }) 2 else 0
+        val featRef = if (feats.any { it.name.contains("Reflexos Rápidos", ignoreCase = true) }) 2 else 0
+        val featWill = if (feats.any { it.name.contains("Vontade de Ferro", ignoreCase = true) }) 2 else 0
+
+        val totalFort = baseFort + conMod + character.miscFortitude + itemMiscSaveBonus + paladinDivineGrace + halflingSaveBonus + featFort
+        val totalRef = baseRef + dexMod + character.miscReflex + itemMiscSaveBonus + paladinDivineGrace + halflingSaveBonus + featRef
+        val totalWill = baseWill + wisMod + character.miscWill + itemMiscSaveBonus + paladinDivineGrace + halflingSaveBonus + featWill
+
+        // 8. Peso e Gestão de Carga
+        val coinWeight = (character.goldGp + character.silverSp + character.copperCp + character.platinumPp) / 50.0f
+        var itemsWeight = 0.0f
+        for (item in inventory) {
+            itemsWeight += (item.weightLb * item.quantity)
+        }
+        val totalWeightLb = itemsWeight + coinWeight
+        val carryingCapacity = Dnd35Rules.getCarryingCapacity(totalStr, character.size)
+        val encumbrance = Dnd35Rules.calculateEncumbrance(totalWeightLb, totalStr, character.size)
+
+        // Limite de DES imposto pela armadura e pela carga
+        val combinedMaxDex = when {
+            armorMaxDex != null && encumbrance.maxDexBonus != null -> minOf(armorMaxDex, encumbrance.maxDexBonus)
+            armorMaxDex != null -> armorMaxDex
+            encumbrance.maxDexBonus != null -> encumbrance.maxDexBonus
+            else -> null
+        }
+
+        val effectiveDexForAc = if (combinedMaxDex != null) minOf(dexMod, combinedMaxDex) else dexMod
+
+        // Bônus de CA sem armadura do Monge (usa nível de Monge da multiclasse)
+        val monkLevel = classEntries.find { it.className.equals("Monge", ignoreCase = true) }?.level ?: 0
+        val isWearingArmor = itemArmorBonus > 0 || itemShieldBonus > 0
+        val monkAcBonus = if (monkLevel > 0 && !isWearingArmor) {
+            maxOf(0, wisMod) + (monkLevel / 5)
+        } else 0
+
+        val combinedArmorCheckPenalty = totalArmorCheckPenalty + encumbrance.armorCheckPenalty
+
+        val acSizeMod = Dnd35Rules.getArmorClassSizeModifier(character.size)
+
+        val totalAc = 10 + itemArmorBonus + itemShieldBonus + effectiveDexForAc +
+                itemNaturalArmor + itemDeflectionBonus + itemMiscAcBonus + monkAcBonus + acSizeMod
+
+        val touchAc = 10 + effectiveDexForAc + itemDeflectionBonus + itemMiscAcBonus + monkAcBonus + acSizeMod
+
+        val flatFootedAc = 10 + itemArmorBonus + itemShieldBonus + minOf(0, effectiveDexForAc) +
+                itemNaturalArmor + itemDeflectionBonus + itemMiscAcBonus + monkAcBonus + acSizeMod
+
+        // 9. Iniciativa & Velocidade
+        val featInit = if (feats.any { it.name.contains("Iniciativa Aprimorada", ignoreCase = true) }) 4 else 0
+        val initiativeTotal = dexMod + character.miscInitiative + featInit
+
+        var baseSpeed = character.baseSpeedMeters.takeIf { it > 0 } ?: race.baseSpeedMeters
+        // Bônus de movimento do Bárbaro (+3m sem armadura pesada)
+        val barbarianLevel = classEntries.find { it.className.equals("Bárbaro", ignoreCase = true) }?.level ?: 0
+        if (barbarianLevel >= 1 && itemArmorBonus < 6) {
+            baseSpeed += 3.0f
+        }
+        // Bônus de movimento do Monge (+3m a cada 3 níveis de monge)
+        if (monkLevel > 0 && !isWearingArmor) {
+            val monkSpeedBonus = (monkLevel / 3) * 3.0f
+            baseSpeed += monkSpeedBonus
+        }
+
+        val speedMetersEffective = baseSpeed * encumbrance.speedFactor
+
+        // 10. Habilidades Especiais Cumulativas de todas as Classes
+        val activeClassFeatures = mutableListOf<Dnd35Rules.ClassFeature>()
+        for (detail in multiclassDetails) {
+            activeClassFeatures.addAll(detail.classInfo.features.filter { it.level <= detail.entry.level })
+        }
+
+        // Ataque Furtivo (usa nível de Ladino)
+        val rogueLevel = classEntries.find { it.className.equals("Ladino", ignoreCase = true) }?.level ?: 0
+        val sneakAttackDice = if (rogueLevel > 0) {
+            val diceCount = (rogueLevel + 1) / 2
+            "+${diceCount}d6"
+        } else null
+
+        // Dano Desarmado de Monge
+        val monkUnarmedDamage = if (monkLevel > 0) {
+            when {
+                monkLevel >= 20 -> "2d10"
+                monkLevel >= 16 -> "2d8"
+                monkLevel >= 12 -> "2d6"
+                monkLevel >= 8 -> "1d10"
+                monkLevel >= 4 -> "1d8"
+                else -> "1d6"
+            }
+        } else null
+
+        // Fúria de Bárbaro
+        val rageUsesPerDay = if (barbarianLevel > 0) {
+            when {
+                barbarianLevel >= 20 -> 99 // Sem limite
+                barbarianLevel >= 16 -> 5
+                barbarianLevel >= 12 -> 4
+                barbarianLevel >= 8 -> 3
+                barbarianLevel >= 4 -> 2
+                else -> 1
+            }
+        } else null
+
+        // Expulsar Mortos-Vivos (Clérigo nv 1+ ou Paladino nv 4+)
+        val clericLevel = classEntries.find { it.className.equals("Clérigo", ignoreCase = true) }?.level ?: 0
+        val hasTurning = clericLevel >= 1 || paladinLevel >= 4
+        val turningUsesPerDay = if (hasTurning) {
+            maxOf(0, 3 + chaMod)
+        } else null
+
+        // 11. Classes Conjuradoras da Multiclasse & CDs de Magia
+        val casterClasses = multiclassDetails.filter { it.classInfo.spellCastingAbility != null }.map { detail ->
+            val ability = detail.classInfo.spellCastingAbility!!
+            val mod = when (ability) {
+                "INT" -> intMod
+                "SAB" -> wisMod
+                "CAR" -> chaMod
+                else -> 0
+            }
+            val dcMap = (0..9).associateWith { lvl -> 10 + lvl + mod }
+            CasterClassInfo(
+                className = detail.entry.className,
+                casterLevel = detail.entry.level,
+                keyAbility = ability,
+                keyAbilityMod = mod,
+                dcByLevel = dcMap
+            )
+        }
+
+        val isSpellcaster = casterClasses.isNotEmpty()
+        val primaryCaster = casterClasses.firstOrNull()
+        val castingAbilityName = primaryCaster?.keyAbility ?: primaryClassInfo.spellCastingAbility
+        val castingAbilityMod = primaryCaster?.keyAbilityMod ?: when (castingAbilityName) {
+            "INT" -> intMod
+            "SAB" -> wisMod
+            "CAR" -> chaMod
+            else -> 0
+        }
+
+        val spellSaveDcByLevel = primaryCaster?.dcByLevel ?: (0..9).associateWith { lvl ->
+            10 + lvl + castingAbilityMod
+        }
+
+        // 12. Perícias Calculadas (Regra 3.5: Perícia de classe se pertencer a QUALQUER uma das classes)
+        val computedSkills = skills.map { skill ->
+            val keyMod = when (skill.keyAbility.uppercase()) {
+                "FOR" -> strMod
+                "DES" -> dexMod
+                "CON" -> conMod
+                "INT" -> intMod
+                "SAB" -> wisMod
+                "CAR" -> chaMod
+                else -> 0
+            }
+
+            val isClassSkill = skill.isClassSkill || multiclassDetails.any { detail ->
+                detail.classInfo.classSkills.any { it.equals(skill.name, ignoreCase = true) }
+            }
+
+            val def = Dnd35Rules.SKILL_DEFINITIONS.find { it.name.equals(skill.name, ignoreCase = true) }
+            val hasArmorPenalty = def?.armorCheckPenaltyApplies ?: false
+            val appliedPenalty = if (hasArmorPenalty) {
+                if (skill.name.equals("Natação", ignoreCase = true)) {
+                    combinedArmorCheckPenalty * 2
+                } else {
+                    combinedArmorCheckPenalty
+                }
+            } else 0
+
+            val total = (skill.ranks.toInt()) + keyMod + skill.miscBonus + appliedPenalty
+            ComputedSkill(
+                skill = skill,
+                keyAbilityMod = keyMod,
+                ranks = skill.ranks,
+                miscBonus = skill.miscBonus,
+                armorPenaltyApplied = appliedPenalty,
+                totalBonus = total,
+                isClassSkill = isClassSkill
+            )
+        }
+
+        return CalculatedCharacterStats(
+            character = character,
+            raceInfo = race,
+            classInfo = primaryClassInfo,
+            classEntries = classEntries,
+            multiclassDetails = multiclassDetails,
+            multiclassPenalty = multiclassPenalty,
+            isMulticlass = isMulticlass,
+            classesDisplay = classesDisplay,
+            totalCharacterLevel = totalCharacterLevel,
+            skills = skills,
+            inventory = inventory,
+            feats = feats,
+            spells = spells,
+            spellSlots = spellSlots,
+            totalStr = totalStr,
+            strMod = strMod,
+            totalDex = totalDex,
+            dexMod = dexMod,
+            totalCon = totalCon,
+            conMod = conMod,
+            totalInt = totalInt,
+            intMod = intMod,
+            totalWis = totalWis,
+            wisMod = wisMod,
+            totalCha = totalCha,
+            chaMod = chaMod,
+            bab = bab,
+            babDisplay = babDisplay,
+            grappleBonus = grappleBonus,
+            baseFort = baseFort,
+            totalFort = totalFort,
+            baseRef = baseRef,
+            totalRef = totalRef,
+            baseWill = baseWill,
+            totalWill = totalWill,
+            initiativeTotal = initiativeTotal,
+            speedMetersEffective = speedMetersEffective,
+            armorBonusTotal = itemArmorBonus,
+            shieldBonusTotal = itemShieldBonus,
+            naturalArmorTotal = itemNaturalArmor,
+            deflectionBonusTotal = itemDeflectionBonus,
+            maxDexFromArmor = combinedMaxDex,
+            effectiveDexForAc = effectiveDexForAc,
+            armorCheckPenalty = combinedArmorCheckPenalty,
+            totalAc = totalAc,
+            touchAc = touchAc,
+            flatFootedAc = flatFootedAc,
+            activeClassFeatures = activeClassFeatures,
+            sneakAttackDice = sneakAttackDice,
+            monkUnarmedDamage = monkUnarmedDamage,
+            rageUsesPerDay = rageUsesPerDay,
+            turningUsesPerDay = turningUsesPerDay,
+            isSpellcaster = isSpellcaster,
+            castingAbilityName = castingAbilityName,
+            castingAbilityMod = castingAbilityMod,
+            spellSaveDcByLevel = spellSaveDcByLevel,
+            casterClasses = casterClasses,
+            totalWeightLb = totalWeightLb,
+            carryingCapacity = carryingCapacity,
+            encumbrance = encumbrance,
+            computedSkills = computedSkills
+        )
+    }
+
+    private fun calculateMulticlassPenalty(
+        classes: List<CharacterClassEntry>,
+        race: Dnd35Rules.RaceInfo,
+        favoredClassName: String
+    ): MulticlassPenaltyInfo {
+        if (classes.size <= 1) {
+            return MulticlassPenaltyInfo(
+                hasPenalty = false,
+                penaltyPercent = 0,
+                favoredClass = favoredClassName,
+                explanation = "Classe única. Nenhuma penalidade de XP aplicada."
+            )
+        }
+
+        // Filtra a classe favorecida (não conta para a disparidade de XP de acordo com o Livro do Jogador)
+        val nonFavored = classes.filterNot { it.className.equals(favoredClassName, ignoreCase = true) }
+
+        if (nonFavored.size <= 1) {
+            return MulticlassPenaltyInfo(
+                hasPenalty = false,
+                penaltyPercent = 0,
+                favoredClass = favoredClassName,
+                explanation = "Sem penalidade de XP. Apenas 1 classe não favorecida ou todas em harmonia."
+            )
+        }
+
+        val maxNonFavoredLevel = nonFavored.maxOf { it.level }
+        val offending = nonFavored.filter { (maxNonFavoredLevel - it.level) >= 2 }
+
+        return if (offending.isNotEmpty()) {
+            val penalty = offending.size * 20
+            MulticlassPenaltyInfo(
+                hasPenalty = true,
+                penaltyPercent = penalty,
+                favoredClass = favoredClassName,
+                explanation = "-${penalty}% XP: Diferença de 2 ou mais níveis entre classes não favorecidas (${offending.joinToString { "${it.className} (${it.level})" }}). Favorecida: $favoredClassName."
+            )
+        } else {
+            MulticlassPenaltyInfo(
+                hasPenalty = false,
+                penaltyPercent = 0,
+                favoredClass = favoredClassName,
+                explanation = "Sem penalidade de XP: Classes não favorecidas equilibradas (diferença menor que 2 níveis). Favorecida: $favoredClassName."
+            )
+        }
+    }
+
+    fun defaultSkillsForClasses(classes: List<Dnd35Rules.ClassInfo>): List<CharacterSkill> {
+        return Dnd35Rules.SKILL_DEFINITIONS.map { def ->
+            val isClass = classes.any { c -> c.classSkills.any { it.equals(def.name, ignoreCase = true) } }
+            CharacterSkill(
+                name = def.name,
+                keyAbility = def.keyAbility,
+                ranks = 0.0f,
+                miscBonus = 0,
+                isClassSkill = isClass
+            )
+        }
+    }
+
+    fun defaultSkillsForClass(classInfo: Dnd35Rules.ClassInfo): List<CharacterSkill> {
+        return defaultSkillsForClasses(listOf(classInfo))
+    }
+
+    private fun formatBabProgression(bab: Int): String {
+        if (bab <= 0) return "+0"
+        val attacks = mutableListOf<String>()
+        var current = bab
+        while (current > 0) {
+            attacks.add("+$current")
+            current -= 5
+        }
+        return attacks.joinToString("/")
+    }
+
+    private fun parseBonusNumber(text: String): Int {
+        val match = Regex("""\+?(\d+)""").find(text)
+        return match?.groupValues?.getOrNull(1)?.toIntOrNull() ?: 0
+    }
+
+    private fun parseSpecificBonus(text: String, ability: String): Int {
+        // Aceita bônus em qualquer posição da descrição (ex.: "+6 FOR; item mágico").
+        // Retorna zero quando o atributo não aparece, sem inventar um bônus padrão.
+        val match = Regex("""\+(\d+)\s*$ability\b""", RegexOption.IGNORE_CASE).find(text)
+        return match?.groupValues?.getOrNull(1)?.toIntOrNull() ?: 0
+    }
+
+    private fun parseMaxDex(text: String): Int? {
+        val match = Regex("""Des\s*Max\s*\+?(\d+)""", RegexOption.IGNORE_CASE).find(text)
+        return match?.groupValues?.getOrNull(1)?.toIntOrNull()
+    }
+
+    private fun parsePenalty(text: String): Int {
+        val match = Regex("""Pen\s*(-?\d+)""", RegexOption.IGNORE_CASE).find(text)
+        return match?.groupValues?.getOrNull(1)?.toIntOrNull() ?: 0
+    }
+}

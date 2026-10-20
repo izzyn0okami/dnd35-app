@@ -1,0 +1,122 @@
+package com.example
+
+import com.example.dnd35.model.CharacterCalculator
+import com.example.dnd35.model.CharacterEntity
+import com.example.dnd35.model.CharacterInventoryItem
+import com.example.dnd35.model.CharacterJsonAdapters
+import com.example.dnd35.model.Dnd35Rules
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
+import org.junit.Test
+
+class ExampleUnitTest {
+
+  @Test
+  fun testAbilityModifiers() {
+    assertEquals(0, Dnd35Rules.calculateModifier(10))
+    assertEquals(0, Dnd35Rules.calculateModifier(11))
+    assertEquals(1, Dnd35Rules.calculateModifier(12))
+    assertEquals(2, Dnd35Rules.calculateModifier(14))
+    assertEquals(3, Dnd35Rules.calculateModifier(16))
+    assertEquals(4, Dnd35Rules.calculateModifier(18))
+    assertEquals(-1, Dnd35Rules.calculateModifier(8))
+    assertEquals(-2, Dnd35Rules.calculateModifier(6))
+  }
+
+  @Test
+  fun testCarryingCapacityOfficialTable() {
+    val capStr10 = Dnd35Rules.getCarryingCapacity(10)
+    assertEquals(33, capStr10.lightMaxLb)
+    assertEquals(66, capStr10.mediumMaxLb)
+    assertEquals(100, capStr10.heavyMaxLb)
+
+    val capStr16 = Dnd35Rules.getCarryingCapacity(16)
+    assertEquals(76, capStr16.lightMaxLb)
+    assertEquals(153, capStr16.mediumMaxLb)
+    assertEquals(230, capStr16.heavyMaxLb)
+
+    // Efeitos da carga
+    val lightLoad = Dnd35Rules.calculateEncumbrance(50f, 16, "Médio")
+    assertEquals(Dnd35Rules.EncumbranceLevel.LIGHT, lightLoad)
+
+    val mediumLoad = Dnd35Rules.calculateEncumbrance(100f, 16, "Médio")
+    assertEquals(Dnd35Rules.EncumbranceLevel.MEDIUM, mediumLoad)
+    assertEquals(-3, mediumLoad.armorCheckPenalty)
+
+    val heavyLoad = Dnd35Rules.calculateEncumbrance(200f, 16, "Médio")
+    assertEquals(Dnd35Rules.EncumbranceLevel.HEAVY, heavyLoad)
+    assertEquals(-6, heavyLoad.armorCheckPenalty)
+  }
+
+  @Test
+  fun testCharacterCalculator() {
+    val char = CharacterEntity(
+      name = "Guerreiro Teste",
+      characterClass = "Guerreiro",
+      race = "Humano",
+      level = 1,
+      baseStr = 16,
+      baseDex = 14,
+      baseCon = 14,
+      baseInt = 10,
+      baseWis = 10,
+      baseCha = 10
+    )
+    val stats = CharacterCalculator.compute(char)
+    assertEquals(3, stats.strMod)
+    assertEquals(2, stats.dexMod)
+    assertEquals(1, stats.bab)
+    assertEquals(4, stats.grappleBonus) // 1 BAB + 3 Str
+    assertEquals(12, stats.totalAc) // 10 + 2 Dex
+    assertTrue(stats.computedSkills.isNotEmpty())
+  }
+  @Test
+  fun equippedItemAppliesAbilityBonusEvenWhenDescriptionContinues() {
+    val item = CharacterInventoryItem(
+      name = "Cinto da Força",
+      category = "Itens Mágicos",
+      equipped = true,
+      equippedSlot = Dnd35Rules.EquipmentSlots.WAIST,
+      damageOrAc = "—",
+      notes = "+6 FOR; item mágico de teste"
+    )
+    val character = CharacterEntity(
+      baseStr = 14,
+      inventoryJson = CharacterJsonAdapters.serializeInventory(listOf(item))
+    )
+
+    val stats = CharacterCalculator.compute(character)
+    assertEquals("Bônus +6 FOR deve ser reconhecido em qualquer posição da descrição", 20, stats.totalStr)
+  }
+
+  @Test
+  fun unequippedItemDoesNotApplyAbilityBonusEvenIfSlotIsSet() {
+    val item = CharacterInventoryItem(
+      name = "Cinto da Força",
+      category = "Itens Mágicos",
+      equipped = false,
+      equippedSlot = Dnd35Rules.EquipmentSlots.WAIST,
+      notes = "+6 FOR"
+    )
+    val character = CharacterEntity(
+      baseStr = 14,
+      inventoryJson = CharacterJsonAdapters.serializeInventory(listOf(item))
+    )
+
+    val stats = CharacterCalculator.compute(character)
+    assertEquals("Item não equipado não deve alterar Força", 14, stats.totalStr)
+  }
+
+  @Test
+  fun testSizeModifiersAndCarryingCapacity() {
+    assertEquals(1, Dnd35Rules.getArmorClassSizeModifier("Pequeno"))
+    assertEquals(-2, Dnd35Rules.getArmorClassSizeModifier("Enorme"))
+    assertEquals(-16, Dnd35Rules.getGrappleSizeModifier("Minúsculo"))
+    assertEquals(12, Dnd35Rules.getGrappleSizeModifier("Imenso"))
+    assertEquals(4, Dnd35Rules.getCarryingCapacity(10, "Minúsculo").lightMaxLb)
+    assertEquals(8, Dnd35Rules.getCarryingCapacity(10, "Diminuto").lightMaxLb)
+    assertEquals(16, Dnd35Rules.getCarryingCapacity(10, "Miúdo").lightMaxLb)
+    assertEquals(24, Dnd35Rules.getCarryingCapacity(10, "Pequeno").lightMaxLb)
+  }
+
+}

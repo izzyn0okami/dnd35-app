@@ -1,0 +1,6 @@
+{
+  "name": "Ficha D&D 3.5",
+  "description": "Criador de fichas D&D 3.5 com cálculos automáticos de bônus, perícias, talentos, magias, inventário e carga do Livro do Jogador, barra de vida, fotos e exportação em PDF.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
