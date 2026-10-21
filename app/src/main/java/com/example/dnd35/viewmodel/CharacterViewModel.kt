@@ -25,6 +25,9 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import kotlin.math.roundToInt
 
+internal fun normalizeEditedSkillRanks(ranks: Float, maxRanks: Float): Float =
+    ((ranks.coerceAtLeast(0f) * 2f).roundToInt() / 2f).coerceAtMost(maxRanks)
+
 class CharacterViewModel(application: Application) : AndroidViewModel(application) {
 
     private val repository: CharacterRepository
@@ -295,11 +298,9 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
         } else isClassSkill
         val maxClassRanks = classEntries.sumOf { it.level }.coerceAtLeast(1) + 3f
         val maxRanks = if (actualClassSkill) maxClassRanks else maxClassRanks / 2f
-        val normalizedRanks = if (actualClassSkill) {
-            ranks.coerceAtLeast(0f).roundToInt().toFloat()
-        } else {
-            (ranks.coerceAtLeast(0f) * 2f).roundToInt() / 2f
-        }.coerceAtMost(maxRanks)
+        // Graduações de 0,5 podem existir antes de a perícia passar a ser de classe
+        // por multiclasse; a edição não deve arredondá-las para cima.
+        val normalizedRanks = normalizeEditedSkillRanks(ranks, maxRanks)
         val index = currentSkills.indexOfFirst { it.name.equals(skillName, ignoreCase = true) }
         if (index >= 0) {
             val old = currentSkills[index]
