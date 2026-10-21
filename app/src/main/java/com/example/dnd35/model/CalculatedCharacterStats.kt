@@ -1,5 +1,7 @@
 package com.example.dnd35.model
 
+import kotlin.math.roundToInt
+
 data class ClassDetailInfo(
     val entry: CharacterClassEntry,
     val classInfo: Dnd35Rules.ClassInfo,
@@ -116,7 +118,10 @@ data class ComputedSkill(
     val miscBonus: Int,
     val armorPenaltyApplied: Int,
     val totalBonus: Int,
-    val isClassSkill: Boolean
+    val isClassSkill: Boolean,
+    val maxRanks: Float,
+    val trainedOnly: Boolean,
+    val canRoll: Boolean
 )
 
 object CharacterCalculator {
@@ -447,11 +452,19 @@ object CharacterCalculator {
                 else -> 0
             }
 
-            val isClassSkill = skill.isClassSkill || multiclassDetails.any { detail ->
-                detail.classInfo.classSkills.any { it.equals(skill.name, ignoreCase = true) }
-            }
-
             val def = Dnd35Rules.SKILL_DEFINITIONS.find { it.name.equals(skill.name, ignoreCase = true) }
+            // Perícias conhecidas seguem a lista oficial de perícias de classe de qualquer classe
+            // do personagem. O sinalizador salvo só serve para perícias personalizadas.
+            val isClassSkill = if (def != null) {
+                multiclassDetails.any { detail ->
+                    detail.classInfo.classSkills.any { it.equals(skill.name, ignoreCase = true) }
+                }
+            } else skill.isClassSkill
+            val maxClassRanks = totalCharacterLevel + 3f
+            val maxRanks = if (isClassSkill) maxClassRanks else maxClassRanks / 2f
+            // Preserva meias graduações válidas e corrige valores antigos/introduzidos manualmente
+            // para incrementos de 0,5, sempre respeitando o limite da regra.
+            val ranks = ((skill.ranks.coerceAtLeast(0f) * 2f).roundToInt() / 2f).coerceAtMost(maxRanks)
             val hasArmorPenalty = def?.armorCheckPenaltyApplies ?: false
             val appliedPenalty = if (hasArmorPenalty) {
                 if (skill.name.equals("Natação", ignoreCase = true)) {
@@ -461,15 +474,18 @@ object CharacterCalculator {
                 }
             } else 0
 
-            val total = (skill.ranks.toInt()) + keyMod + skill.miscBonus + appliedPenalty
+            val total = ranks.toInt() + keyMod + skill.miscBonus + appliedPenalty
             ComputedSkill(
-                skill = skill,
+                skill = skill.copy(ranks = ranks, isClassSkill = isClassSkill),
                 keyAbilityMod = keyMod,
-                ranks = skill.ranks,
+                ranks = ranks,
                 miscBonus = skill.miscBonus,
                 armorPenaltyApplied = appliedPenalty,
                 totalBonus = total,
-                isClassSkill = isClassSkill
+                isClassSkill = isClassSkill,
+                maxRanks = maxRanks,
+                trainedOnly = def?.trainedOnly ?: false,
+                canRoll = !(def?.trainedOnly ?: false) || ranks >= 1f
             )
         }
 
