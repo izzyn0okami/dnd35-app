@@ -5,6 +5,8 @@ import com.example.dnd35.model.CharacterEntity
 import com.example.dnd35.model.CharacterInventoryItem
 import com.example.dnd35.model.CharacterJsonAdapters
 import com.example.dnd35.model.CharacterSkill
+import com.example.dnd35.model.SkillPointAllocation
+import com.example.dnd35.model.SkillPointLevelRecord
 import com.example.dnd35.model.Dnd35Rules
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
@@ -536,6 +538,55 @@ class ExampleUnitTest {
   fun missingLanguageDataRemainsEmptyForLegacyCharacters() {
     assertEquals(emptyList<String>(), CharacterJsonAdapters.deserializeLanguages(""))
     assertEquals(emptyList<String>(), CharacterJsonAdapters.deserializeLanguages(null))
+  }
+
+
+  @Test
+  fun skillPointHistorySerializationRoundTripsByLevelAndSkill() {
+    val history = listOf(
+      SkillPointLevelRecord(
+        characterLevel = 2,
+        className = "Bardo",
+        availablePoints = 7f,
+        allocations = listOf(
+          SkillPointAllocation("Atuação", 2f),
+          SkillPointAllocation("Ouvir", 1f)
+        )
+      ),
+      SkillPointLevelRecord(characterLevel = 1, className = "Bardo", availablePoints = 28f)
+    )
+
+    val decoded = CharacterJsonAdapters.deserializeSkillPointHistory(
+      CharacterJsonAdapters.serializeSkillPointHistory(history)
+    )
+
+    assertEquals(1, decoded.first().characterLevel)
+    assertEquals("Bardo", decoded.first().className)
+    assertEquals(7f, decoded.last().availablePoints)
+    assertEquals(listOf("Atuação", "Ouvir"), decoded.last().allocations.map { it.skillName })
+    assertEquals(listOf(2f, 1f), decoded.last().allocations.map { it.pointsSpent })
+  }
+
+  @Test
+  fun missingSkillPointHistoryRemainsEmptyForLegacyCharacters() {
+    assertEquals(emptyList<SkillPointLevelRecord>(), CharacterJsonAdapters.deserializeSkillPointHistory(null))
+    assertEquals(emptyList<SkillPointLevelRecord>(), CharacterJsonAdapters.deserializeSkillPointHistory(""))
+    assertEquals(emptyList<SkillPointLevelRecord>(), CharacterJsonAdapters.deserializeSkillPointHistory("not-json"))
+  }
+
+  @Test
+  fun skillPointHistoryRejectsInvalidRecordsAndAllocations() {
+    val json = """[
+      {"characterLevel":0,"className":"Bardo","availablePoints":5},
+      {"characterLevel":1,"className":"Bardo","availablePoints":6,"allocations":[
+        {"skillName":"Atuação","pointsSpent":2},
+        {"skillName":"","pointsSpent":3},
+        {"skillName":"Ouvir","pointsSpent":-1}
+      ]}
+    ]"""
+    val decoded = CharacterJsonAdapters.deserializeSkillPointHistory(json)
+    assertEquals(1, decoded.size)
+    assertEquals(listOf(SkillPointAllocation("Atuação", 2f)), decoded.single().allocations)
   }
 
 }
