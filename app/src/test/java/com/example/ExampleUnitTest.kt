@@ -208,7 +208,7 @@ class ExampleUnitTest {
 
   @Test
   fun stoutHalflingDescriptionMatchesStrongheartTraits() {
-    val race = Dnd35Rules.races.associateBy { it.name }.getValue("Halfling Robusto")
+    val race = Dnd35Rules.RACES.associateBy { it.name }.getValue("Halfling Robusto")
     assertEquals(0, race.conMod)
     assertTrue(race.traits.contains("talento adicional no 1º nível"))
     assertTrue(race.traits.contains("não recebe o +1 racial geral nos testes de resistência"))
