@@ -135,7 +135,7 @@ object CharacterPdfExporter {
             val col2X = 220f
             canvas1.drawText("Tendência: ${character.alignment}", col2X, infoTop + 14f, bodyPaint)
             canvas1.drawText("Divindade: ${character.deity}", col2X, infoTop + 28f, bodyPaint)
-            canvas1.drawText("Deslocamento: ${stats.speedMetersEffective} m (${(stats.speedMetersEffective / 1.5f).toInt()} sq)", col2X, infoTop + 42f, bodyPaint)
+            canvas1.drawText("Deslocamento: ${stats.speedMetersEffective} m (${(stats.speedMetersEffective / 1.5f).toInt()} quadrados)", col2X, infoTop + 42f, bodyPaint)
 
             // Bloco de Atributos (Coluna Esquerda)
             val attrLeft = 30f
@@ -188,7 +188,7 @@ object CharacterPdfExporter {
             canvas1.drawText("CLASSE DE ARMADURA (CA)", combatLeft + 10f, acY + 14f, headerPaint)
 
             canvas1.drawText("CA Total: ${stats.totalAc}", combatLeft + 12f, acY + 36f, boldBodyPaint)
-            canvas1.drawText("Toque: ${stats.touchAc}    |    Surpreendido: ${stats.flatFootedAc}", combatLeft + 110f, acY + 36f, bodyPaint)
+            canvas1.drawText("Toque: ${stats.touchAc}    |    Desprevenido: ${stats.flatFootedAc}", combatLeft + 110f, acY + 36f, bodyPaint)
             canvas1.drawText("Armadura: +${stats.armorBonusTotal}  |  Escudo: +${stats.shieldBonusTotal}  |  Des Ef.: +${stats.effectiveDexForAc}  |  Pen. Armadura: ${stats.armorCheckPenalty}", combatLeft + 12f, acY + 52f, bodyPaint)
 
             // Testes de Resistência & BBA
