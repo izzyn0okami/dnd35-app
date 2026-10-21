@@ -179,6 +179,32 @@ class ExampleUnitTest {
   }
 
   @Test
+  fun skillRanksRespectClassAndCrossClassCapsAndHalfRanks() {
+    val skills = listOf(
+      CharacterSkill(name = "Escalar", keyAbility = "FOR", ranks = 20f),
+      CharacterSkill(name = "Acrobacia", keyAbility = "DES", ranks = 1.25f),
+      CharacterSkill(name = "Conhecimento (Arcano)", keyAbility = "INT", ranks = 0f)
+    )
+    val stats = CharacterCalculator.compute(
+      CharacterEntity(
+        characterClass = "Guerreiro",
+        level = 1,
+        skillsJson = CharacterJsonAdapters.serializeSkills(skills)
+      )
+    )
+    val climb = stats.computedSkills.first { it.skill.name == "Escalar" }
+    val acrobatics = stats.computedSkills.first { it.skill.name == "Acrobacia" }
+    val knowledge = stats.computedSkills.first { it.skill.name == "Conhecimento (Arcano)" }
+
+    assertEquals(4f, climb.maxRanks)
+    assertEquals(4f, climb.ranks)
+    assertEquals(2f, acrobatics.maxRanks)
+    assertEquals(1.5f, acrobatics.ranks)
+    assertTrue(knowledge.trainedOnly)
+    assertTrue(!knowledge.canRoll)
+  }
+
+  @Test
   fun testSizeModifiersAndCarryingCapacity() {
     assertEquals(1, Dnd35Rules.getArmorClassSizeModifier("Pequeno"))
     assertEquals(-2, Dnd35Rules.getArmorClassSizeModifier("Enorme"))
