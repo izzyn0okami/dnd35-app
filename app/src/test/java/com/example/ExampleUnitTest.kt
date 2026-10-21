@@ -277,7 +277,9 @@ class ExampleUnitTest {
 
   @Test
   fun skillCatalogIncludesPortugueseAcrobaticsSkill() {
-    assertTrue(Dnd35Rules.SKILL_DEFINITIONS.any { it.name.equals("Acrobacia", ignoreCase = true) })
+    val acrobatics = Dnd35Rules.SKILL_DEFINITIONS.first { it.name == "Acrobacia" }
+    assertTrue(!acrobatics.trainedOnly)
+    assertTrue(acrobatics.armorCheckPenaltyApplies)
     assertTrue(Dnd35Rules.SKILL_DEFINITIONS.any { it.name == "Equilíbrio" })
     assertTrue(Dnd35Rules.SKILL_DEFINITIONS.any { it.name == "Arte da Fuga" })
   }
