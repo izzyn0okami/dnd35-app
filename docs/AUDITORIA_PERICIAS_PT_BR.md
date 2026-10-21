@@ -94,3 +94,11 @@ Esta é uma correção inicial, não uma certificação completa do sistema de p
 - Natação continua sujeita à penalidade de armadura dobrada, coberta por teste de cálculo existente.
 - A lista de Falar Idioma permanece fora do catálogo comum de perícias com graduações; sua implementação precisa respeitar a regra especial de idiomas conhecidos, sem inventar testes ou pontos de perícia.
 
+
+
+## Implementação separada de Falar Idioma
+
+- Idiomas conhecidos agora são armazenados em campo próprio (`languagesJson`), separado do JSON de perícias; não recebem graduações, bônus ou rolagens.
+- A aba Perícias apresenta uma seção para adicionar e remover idiomas, com deduplicação sem diferenciar maiúsculas/minúsculas.
+- A base Room passa da versão 2 para a 3 com migração aditiva que cria a coluna com valor padrão vazio. A migração preserva as fichas existentes e não usa migração destrutiva.
+- Testes cobrem normalização, remoção de entradas vazias, duplicatas e compatibilidade com fichas sem dados de idiomas.
