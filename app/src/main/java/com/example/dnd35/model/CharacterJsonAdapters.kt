@@ -53,14 +53,14 @@ object CharacterJsonAdapters {
         if (json.isNullOrBlank()) return emptyList()
         return try {
             val array = JSONArray(json)
-            (0 until array.length()).mapNotNull { index ->
-                val obj = array.optJSONObject(index) ?: return@mapNotNull null
+            (0 until array.length()).mapNotNull recordLoop@{ index ->
+                val obj = array.optJSONObject(index) ?: return@recordLoop null
                 val level = obj.optInt("characterLevel", 0)
                 val className = obj.optString("className", "").trim()
-                if (level < 1 || className.isEmpty()) return@mapNotNull null
+                if (level < 1 || className.isEmpty()) return@recordLoop null
                 val allocationsJson = obj.optJSONArray("allocations") ?: JSONArray()
-                val allocations = (0 until allocationsJson.length()).mapNotNull { allocationIndex ->
-                    val allocation = allocationsJson.optJSONObject(allocationIndex) ?: return@mapNotNull null
+                val allocations = (0 until allocationsJson.length()).mapNotNull allocationLoop@{ allocationIndex ->
+                    val allocation = allocationsJson.optJSONObject(allocationIndex) ?: return@allocationLoop null
                     val skillName = allocation.optString("skillName", "").trim()
                     val points = allocation.optDouble("pointsSpent", 0.0).toFloat()
                     if (skillName.isEmpty() || !points.isFinite() || points < 0f) null
