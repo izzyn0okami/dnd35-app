@@ -142,10 +142,9 @@ object Dnd35Rules {
             subrace = "Robusto",
             strMod = -2,
             dexMod = 2,
-            conMod = 2,
             size = "Pequeno",
             baseSpeedMeters = 6.0f,
-            traits = "Herança anã: afinidade com pedras, +1 em todas as resistências, +2 contra medo, +2 Ouvir.",
+            traits = "Variante Coração-Forte de Forgotten Realms: tamanho Pequeno (+1 na CA e nos ataques, +4 Esconder-se), +2 em Escalar, Saltar e Furtividade, +2 de moral contra medo, +1 nas jogadas de ataque com armas de arremesso e fundas; ganha um talento adicional no 1º nível e não recebe o +1 racial geral nos testes de resistência dos halflings Pés-Leves.",
             favoredClass = "Ladino"
         ),
         RaceInfo(
