@@ -9,9 +9,9 @@ Esta etapa inicia a auditoria técnica das perícias usadas pela ficha. A fonte 
 - Incluída a perícia **Abrir Fechaduras** (*Open Lock*) no catálogo: usa Destreza, exige treinamento e não sofre penalidade de armadura. Incluída também na lista de perícias de classe do **Ladino**, sem adicioná-la à lista do Guerreiro. Um teste de regressão cobre esses atributos.
 
 - Confirmado que **Acrobacia** é uma perícia válida em D&D 3.5 na edição brasileira: ela corresponde à perícia *Tumble* do SRD em inglês. Não deve ser removida do catálogo nem das listas de classe. A lista e o teste existente que a reconhece estão corretos.
-- Corrigida a lista de perícias de classe do **Bárbaro** para incluir **Ofício**, presente na lista da classe no Livro do Jogador. Foi adicionado teste de regressão para impedir que a perícia volte a faltar.
-- Corrigidas também as listas de perícias de classe do **Clérigo** e do **Druida** para incluir **Ofício**, conforme as listas de classe do Livro do Jogador/SRD 3.5. Foram adicionados testes de regressão para ambas.
-- Corrigidas as listas de perícias de classe do **Guerreiro**, **Monge**, **Paladino**, **Ranger** e **Ladino** para incluir **Ofício**. Foi adicionado um teste de regressão para confirmar a presença da perícia nas cinco classes.
+- Corrigida a lista de perícias de classe do **Bárbaro** para incluir **Ofícios**, presente na lista da classe no Livro do Jogador. Foi adicionado teste de regressão para impedir que a perícia volte a faltar.
+- Corrigidas também as listas de perícias de classe do **Clérigo** e do **Druida** para incluir **Ofícios**, conforme as listas de classe do Livro do Jogador/SRD 3.5. Foram adicionados testes de regressão para ambas.
+- Corrigidas as listas de perícias de classe do **Guerreiro**, **Monge**, **Paladino**, **Ranger** e **Ladino** para incluir **Ofícios**. Foi adicionado um teste de regressão para confirmar a presença da perícia nas cinco classes.
 
 - O catálogo e as listas de perícias de classe passam a usar os nomes completos **Conhecimento (Arquitetura e Engenharia)** e **Conhecimento (Nobreza e Realeza)**, em vez das formas abreviadas.
 - Foram adicionados testes de regressão para impedir que essas duas formas abreviadas retornem ao catálogo.
@@ -24,10 +24,10 @@ Esta etapa inicia a auditoria técnica das perícias usadas pela ficha. A fonte 
 1. **Perícias de classe das 11 classes básicas:** comparar cada lista com a seção “Perícias de Classe” de cada classe e com a tabela geral de perícias. Não completar listas por inferência.
 2. **Penalidade de armadura:** verificar quais perícias sofrem a penalidade e confirmar a regra de penalidade dobrada em Natação. O modelo atual guarda um indicador booleano por perícia; uma regra de multiplicador pode exigir mudança explícita no modelo e nos pontos de cálculo.
 3. **Somente treinado:** conferir Acrobacia, Adestrar Animais, Conhecimento, Decifrar Escrita, Identificar Magia, Operar Mecanismo, Prestidigitação, Profissão e Usar Instrumento Mágico contra a tabela da edição. A interface e os cálculos devem respeitar o treinamento mínimo sem apagar graduações de fichas antigas.
-4. **Nomes e contagem:** conferir os nomes das especializações de Conhecimento, a distinção entre a perícia Ofícios e suas especializações e a contagem do catálogo. Conhecimento possui especializações próprias, portanto a quantidade de entradas não deve ser comparada diretamente à contagem de perícias sem explicar esse critério.
+4. **Nomes e contagem:** conferir os nomes das especializações de Conhecimento, a distinção entre a perícia Ofícioss e suas especializações e a contagem do catálogo. Conhecimento possui especializações próprias, portanto a quantidade de entradas não deve ser comparada diretamente à contagem de perícias sem explicar esse critério.
 5. **Compatibilidade:** antes de renomear outros valores armazenados, implementar testes ou migração para fichas existentes; nomes persistidos não devem ser alterados silenciosamente.
 
-- Corrigida a lista de perícias de classe do **Bardo**: incluídas todas as especializações de Conhecimento, além de Decifrar Escrita, Natação, Ofício e Profissão; removida Observar, que não consta na lista básica da classe. A lista foi comparada com a referência SRD 3.5; Falar Idioma não foi incluída porque não existe como entrada de perícia no catálogo atual do aplicativo e exige decisão de modelagem própria.
+- Corrigida a lista de perícias de classe do **Bardo**: incluídas todas as especializações de Conhecimento, além de Decifrar Escrita, Natação, Ofícios e Profissão; removida Observar, que não consta na lista básica da classe. A lista foi comparada com a referência SRD 3.5; Falar Idioma não foi incluída porque não existe como entrada de perícia no catálogo atual do aplicativo e exige decisão de modelagem própria.
 
 ## Fonte consultada nesta revisão
 
@@ -48,3 +48,8 @@ Esta é uma correção inicial, não uma certificação completa do sistema de p
 - Foi adicionado teste de regressão para o limite de graduação de personagem multiclasse. Esse teste valida o cálculo do modelo; a alteração visual é restrita à fonte do número exibido.
 - A interface ainda mostra pontos de perícia investidos, mas não valida um orçamento de pontos por nível. Essa validação exige modelar os pontos recebidos em cada nível/classe e modificadores aplicáveis, sem inferir retroativamente custos a partir da ficha atual.
 - **Falar Idioma** continua fora do catálogo de perícias testáveis: uma implementação correta deve ser uma seção de idiomas com escolhas conhecidas, e não uma perícia com graduações ou botão de rolagem. Como isso adiciona dados persistidos, deverá ser feito em mudança separada com migração Room e testes de preservação das fichas existentes.
+## Padronização de nomes e compatibilidade
+
+- Padronizados os nomes genéricos da perícia para **Saltar** e **Ofícios**, em vez de **Salto** e **Ofício**, no catálogo e nas listas de perícias de classe.
+- Fichas antigas podem continuar contendo os nomes anteriores no JSON salvo. O cálculo agora reconhece esses dois nomes legados, mantém graduações e bônus e apresenta o rótulo canônico na lista calculada. Os dados persistidos não são regravados por uma migração automática.
+- Foi adicionado teste de regressão que carrega uma ficha com os dois nomes antigos, confirma que as graduações permanecem e verifica o reconhecimento como perícias de classe do Bárbaro.
