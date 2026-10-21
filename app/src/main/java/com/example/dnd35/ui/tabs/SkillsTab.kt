@@ -224,22 +224,10 @@ fun SkillsTab(
             var allocationsInput by remember(character.id) { mutableStateOf("") }
             val history = CharacterJsonAdapters.deserializeSkillPointHistory(character.skillPointHistoryJson)
             val parsedAllocations = remember(allocationsInput) {
-                val lines = allocationsInput.lines().map { it.trim() }.filter { it.isNotEmpty() }
-                val parsed = lines.mapNotNull { line ->
-                    val parts = line.split("=", limit = 2)
-                    if (parts.size != 2) null
-                    else {
-                        val name = parts[0].trim()
-                        val points = parts[1].trim().replace(',', '.').toFloatOrNull()
-                        if (name.isEmpty() || points == null || !points.isFinite() || points < 0f) null
-                        else com.example.dnd35.model.SkillPointAllocation(name, points)
-                    }
-                }
-                if (parsed.size == lines.size) parsed else emptyList()
+                com.example.dnd35.model.parseSkillPointAllocations(allocationsInput)
             }
-            val linesCount = allocationsInput.lines().count { it.isNotBlank() }
             val level = levelInput.toIntOrNull()
-            val available = availableInput.trim().replace(',', '.').toFloatOrNull()
+            val available = com.example.dnd35.model.parseWholeSkillPointBudget(availableInput)
             val estimatedBudget = estimateSkillPointsForLevel(
                 className = classInput.trim(),
                 characterLevel = level ?: 0,
@@ -247,9 +235,9 @@ fun SkillsTab(
                 raceName = character.race
             )
             val duplicateLevel = level != null && history.any { it.characterLevel == level }
-            val allocationsValid = linesCount == parsedAllocations.size
+            val allocationsValid = parsedAllocations != null
             val canSave = level != null && level >= 1 && classInput.isNotBlank() &&
-                available != null && available.isFinite() && available >= 0f &&
+                available != null &&
                 allocationsValid && !duplicateLevel
 
             Card(
@@ -284,8 +272,8 @@ fun SkillsTab(
                     OutlinedTextField(
                         value = availableInput,
                         onValueChange = { availableInput = it },
-                        label = { Text("Pontos disponíveis") },
-                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
+                        label = { Text("Pontos disponíveis (inteiro)") },
+                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                         modifier = Modifier.fillMaxWidth(),
                         singleLine = true
                     )
@@ -304,8 +292,8 @@ fun SkillsTab(
                         value = allocationsInput,
                         onValueChange = { allocationsInput = it },
                         label = { Text("Gastos por perícia") },
-                        placeholder = { Text("Atuação=2\nOuvir=1\nEscalar=0,5") },
-                        supportingText = { Text("Uma linha por perícia: nome= pontos gastos. Use vírgula ou ponto nos decimais.") },
+                        placeholder = { Text("Atuação=2\nOuvir=1\nEscalar=1") },
+                        supportingText = { Text("Uma linha por perícia: nome=pontos inteiros gastos. Não repita nomes; meia graduação entreclasse custa 1 ponto.") },
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
                         modifier = Modifier.fillMaxWidth(),
                         minLines = 2,
@@ -315,7 +303,7 @@ fun SkillsTab(
                         Text("Já existe um registro para esse nível. Remova-o antes de cadastrá-lo novamente.", color = DndCrimson, style = MaterialTheme.typography.bodySmall)
                     }
                     if (!allocationsValid) {
-                        Text("Confira os gastos: cada linha deve seguir o formato nome=valor.", color = DndCrimson, style = MaterialTheme.typography.bodySmall)
+                        Text("Confira os gastos: use nome=pontos inteiros não negativos, sem repetir perícias.", color = DndCrimson, style = MaterialTheme.typography.bodySmall)
                     }
                     Spacer(modifier = Modifier.height(8.dp))
                     Button(
@@ -323,8 +311,8 @@ fun SkillsTab(
                             val record = com.example.dnd35.model.SkillPointLevelRecord(
                                 characterLevel = level!!,
                                 className = classInput.trim(),
-                                availablePoints = available!!,
-                                allocations = parsedAllocations
+                                availablePoints = available!!.toFloat(),
+                                allocations = parsedAllocations!!
                             )
                             viewModel.updateSkillPointHistory(history + record)
                             levelInput = ""

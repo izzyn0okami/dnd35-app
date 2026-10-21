@@ -9,6 +9,8 @@ import com.example.dnd35.viewmodel.isValidEditedSkillRanks
 import com.example.dnd35.viewmodel.normalizeEditedSkillRanks
 import com.example.dnd35.model.SkillPointAllocation
 import com.example.dnd35.model.SkillPointLevelRecord
+import com.example.dnd35.model.parseSkillPointAllocations
+import com.example.dnd35.model.parseWholeSkillPointBudget
 import com.example.dnd35.model.Dnd35Rules
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
@@ -20,6 +22,28 @@ import org.robolectric.annotation.Config
 @RunWith(RobolectricTestRunner::class)
 @Config(sdk = [35])
 class ExampleUnitTest {
+
+  @Test
+  fun skillPointAllocationsRequireWholeNonNegativePointsAndUniqueNames() {
+    assertEquals(
+      listOf(SkillPointAllocation("Atuação", 2f), SkillPointAllocation("Ouvir", 1f)),
+      parseSkillPointAllocations("Atuação=2\nOuvir=1")
+    )
+    assertEquals(emptyList<SkillPointAllocation>(), parseSkillPointAllocations(""))
+    assertEquals(null, parseSkillPointAllocations("Escalar=0,5"))
+    assertEquals(null, parseSkillPointAllocations("Ouvir=-1"))
+    assertEquals(null, parseSkillPointAllocations("Ouvir=1\nouvir=2"))
+    assertEquals(null, parseSkillPointAllocations("linha sem valor"))
+  }
+
+  @Test
+  fun skillPointBudgetInputRequiresWholeNonNegativePoints() {
+    assertEquals(8, parseWholeSkillPointBudget("8"))
+    assertEquals(0, parseWholeSkillPointBudget("0"))
+    assertEquals(null, parseWholeSkillPointBudget("2,5"))
+    assertEquals(null, parseWholeSkillPointBudget("-1"))
+    assertEquals(null, parseWholeSkillPointBudget(""))
+  }
 
   @Test
   fun testAbilityModifiers() {
