@@ -180,8 +180,8 @@ class ExampleUnitTest {
   }
 
   @Test
-  fun skillCatalogDoesNotTreatAcrobaticsAsAStandaloneThirdEditionSkill() {
-    assertTrue(Dnd35Rules.SKILL_DEFINITIONS.none { it.name.equals("Acrobacia", ignoreCase = true) })
+  fun skillCatalogIncludesPortugueseAcrobaticsSkill() {
+    assertTrue(Dnd35Rules.SKILL_DEFINITIONS.any { it.name.equals("Acrobacia", ignoreCase = true) })
     assertTrue(Dnd35Rules.SKILL_DEFINITIONS.any { it.name == "Equilíbrio" })
     assertTrue(Dnd35Rules.SKILL_DEFINITIONS.any { it.name == "Arte da Fuga" })
   }
@@ -201,13 +201,13 @@ class ExampleUnitTest {
       )
     )
     val climb = stats.computedSkills.first { it.skill.name == "Escalar" }
-    val escapeArtist = stats.computedSkills.first { it.skill.name == "Arte da Fuga" }
+    val acrobatics = stats.computedSkills.first { it.skill.name == "Acrobacia" }
     val knowledge = stats.computedSkills.first { it.skill.name == "Conhecimento (Arcano)" }
 
     assertEquals(4f, climb.maxRanks)
     assertEquals(4f, climb.ranks)
-    assertEquals(2f, escapeArtist.maxRanks)
-    assertEquals(1.5f, escapeArtist.ranks)
+    assertEquals(2f, acrobatics.maxRanks)
+    assertEquals(1.5f, acrobatics.ranks)
     assertTrue(knowledge.trainedOnly)
     assertTrue(!knowledge.canRoll)
   }
