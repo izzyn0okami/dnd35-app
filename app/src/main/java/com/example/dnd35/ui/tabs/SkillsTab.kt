@@ -65,6 +65,7 @@ fun SkillsTab(
     var filterType by remember { mutableIntStateOf(0) } // 0: Todas, 1: De Classe, 2: Com Graduação
     var editingSkill by remember { mutableStateOf<ComputedSkill?>(null) }
     var diceRollTarget by remember { mutableStateOf<Pair<String, Int>?>(null) }
+    var craftSpecialtyInput by remember { mutableStateOf("") }
 
     val maxClassRank = stats.totalCharacterLevel + 3
     val maxCrossRank = maxClassRank / 2.0f
@@ -139,6 +140,50 @@ fun SkillsTab(
                                 }
                             }
                         }
+                    }
+                }
+            }
+            Spacer(modifier = Modifier.height(12.dp))
+        }
+
+        // Ofícios é uma categoria: cada especialidade tem suas próprias graduações.
+        item {
+            Card(
+                modifier = Modifier.fillMaxWidth().testTag("craft_specialties_section"),
+                shape = RoundedCornerShape(12.dp)
+            ) {
+                Column(modifier = Modifier.padding(12.dp)) {
+                    Text("Especialidades de Ofícios", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
+                    Text(
+                        "Cada especialidade é uma perícia independente (por exemplo, Ofícios (Armas) e Ofícios (Armaduras)).",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        OutlinedTextField(
+                            value = craftSpecialtyInput,
+                            onValueChange = { craftSpecialtyInput = it },
+                            label = { Text("Nova especialidade (ex.: Armas)") },
+                            singleLine = true,
+                            modifier = Modifier.weight(1f)
+                        )
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Button(
+                            onClick = {
+                                val entered = craftSpecialtyInput.trim()
+                                val name = if (entered.startsWith("Ofícios (", ignoreCase = true) && entered.endsWith(")")) {
+                                    com.example.dnd35.model.Dnd35Rules.canonicalSkillName(entered)
+                                } else {
+                                    com.example.dnd35.model.Dnd35Rules.canonicalSkillName("Ofícios ($entered)")
+                                }
+                                if (entered.isNotBlank() && stats.computedSkills.none { it.skill.name.equals(name, ignoreCase = true) }) {
+                                    viewModel.updateSkill(name, 0f, 0, false)
+                                }
+                                craftSpecialtyInput = ""
+                            },
+                            enabled = craftSpecialtyInput.isNotBlank()
+                        ) { Text("Adicionar") }
                     }
                 }
             }
