@@ -60,3 +60,10 @@ Esta é uma correção inicial, não uma certificação completa do sistema de p
 - A normalização de graduações agora preserva valores em incrementos de 0,5 mesmo quando uma perícia passa a ser considerada de classe após a aquisição de outra classe. Isso evita arredondar 1,5 para 2 ou descartar a meia graduação em fichas existentes.
 - A regra do SRD 3.5 esclarece que meias graduações não aumentam o modificador do teste até completarem uma graduação inteira. Foi adicionado teste de regressão para personagem Guerreiro/Bardo com 1,5 graduação em Acrobacia.
 - A validação do orçamento de pontos continua fora do escopo: o modelo atual não registra em qual nível cada graduação foi comprada, então não é possível reconstruir com segurança o custo histórico de cada perícia.
+
+
+## Correção das perícias de classe do Monge
+
+- A lista do Monge não incluía **Atuação** nem **Profissão**, embora ambas constem da lista de perícias de classe da classe no D&D 3.5.
+- As duas perícias foram adicionadas à lista e foi criado um teste de regressão que compara o conjunto completo de perícias de classe do Monge com a lista esperada.
+- A alteração não modifica graduações já registradas nem o formato dos dados salvos.
