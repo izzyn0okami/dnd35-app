@@ -65,7 +65,7 @@ fun SkillsTab(
     var editingSkill by remember { mutableStateOf<ComputedSkill?>(null) }
     var diceRollTarget by remember { mutableStateOf<Pair<String, Int>?>(null) }
 
-    val maxClassRank = character.level + 3
+    val maxClassRank = stats.totalCharacterLevel + 3
     val maxCrossRank = maxClassRank / 2.0f
     val totalSkillPointsSpent = stats.computedSkills.sumOf {
         it.ranks.toDouble() * if (it.isClassSkill) 1.0 else 2.0
