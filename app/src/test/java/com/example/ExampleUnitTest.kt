@@ -825,6 +825,7 @@ class ExampleUnitTest {
   @Test
   fun racialTraitDescriptionsMatchCalculatedSkillBonuses() {
     val races = Dnd35Rules.RACES.associateBy { it.name }
+    assertTrue(races.getValue("Elfo").traits.contains("incluindo versões compostas"))
 
     assertTrue(races.getValue("Meio-Elfo").traits.contains("+2 em Obter Informação e Diplomacia"))
     assertTrue(races.getValue("Gnomo").traits.contains("+4 Esconder-se"))
@@ -836,5 +837,6 @@ class ExampleUnitTest {
     assertTrue(drowTraits.contains("+2 em Ouvir, Procurar e Observar"))
     assertTrue(drowTraits.contains("portas secretas automaticamente a 1,5m"))
     assertTrue(drowTraits.contains("espada longa, rapieira, arco longo e arco curto"))
+    assertTrue(drowTraits.contains("incluindo versões compostas"))
   }
 }
