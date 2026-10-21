@@ -102,3 +102,11 @@ Esta é uma correção inicial, não uma certificação completa do sistema de p
 - A aba Perícias apresenta uma seção para adicionar e remover idiomas, com deduplicação sem diferenciar maiúsculas/minúsculas.
 - A base Room passa da versão 2 para a 3 com migração aditiva que cria a coluna com valor padrão vazio. A migração preserva as fichas existentes e não usa migração destrutiva.
 - Testes cobrem normalização, remoção de entradas vazias, duplicatas e compatibilidade com fichas sem dados de idiomas.
+
+
+## Preparação do histórico de orçamento de pontos de perícia
+
+- A ficha passa a aceitar um histórico opcional por nível de personagem e classe, registrando o orçamento disponível e os gastos atribuídos a cada perícia.
+- O histórico é independente das graduações atuais. Não é gerado automaticamente a partir delas, pois o modelo anterior não registra quando cada graduação foi adquirida, qual era o modificador de Inteligência naquele nível ou se a perícia era de classe no momento da compra.
+- A migração Room 3→4 apenas acrescenta a coluna `skillPointHistoryJson` com valor vazio. Nenhuma ficha existente é reescrita ou tem graduações alteradas.
+- Esta etapa estabelece armazenamento e compatibilidade; a interface para editar o histórico e os avisos de orçamento serão adicionados em uma etapa posterior, antes de qualquer validação efetiva.
