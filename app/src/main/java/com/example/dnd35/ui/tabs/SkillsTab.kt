@@ -108,7 +108,7 @@ fun SkillsTab(
                             color = MaterialTheme.colorScheme.onPrimaryContainer
                         )
                         Text(
-                            "Graduações totais investidas: ${String.format("%.1f", totalRanksSpent)} pts",
+                            "Graduações totais investidas: ${String.format("%.1f", totalSkillPointsSpent)} pts",
                             style = MaterialTheme.typography.labelSmall,
                             color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.8f)
                         )
