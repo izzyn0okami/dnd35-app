@@ -393,8 +393,9 @@ object CharacterCalculator {
                 it.category.equals("Armaduras", ignoreCase = true))
         }
         // Movimento rápido do Bárbaro exige ausência de armadura média/pesada e carga leve.
-        if (barbarianLevel >= 1 && equippedArmor.none { isMediumOrHeavyArmor(it.name) } &&
-            encumbrance == Dnd35Rules.EncumbranceLevel.LIGHT) {
+        if (barbarianLevel >= 1 && equippedArmor.none { isHeavyArmor(it.name) } &&
+            encumbrance != Dnd35Rules.EncumbranceLevel.HEAVY &&
+            encumbrance != Dnd35Rules.EncumbranceLevel.OVERLOADED) {
             baseSpeed += 3.0f
         }
         // Movimento rápido do Monge exige ausência de armadura/escudo e carga leve.
@@ -404,7 +405,19 @@ object CharacterCalculator {
             baseSpeed += monkSpeedBonus
         }
 
-        val speedMetersEffective = baseSpeed * encumbrance.speedFactor
+        // Armadura e carga não acumulam reduções de deslocamento: aplica-se apenas a pior.
+        // Anões mantêm deslocamento terrestre de 6m mesmo com armadura/carga média ou pesada.
+        val isDwarf = race.name.equals("Anão", ignoreCase = true) ||
+            race.name.equals("Anão da Montanha", ignoreCase = true)
+        val hasMediumOrHeavyArmor = equippedArmor.any { isMediumOrHeavyArmor(it.name) }
+        val hasMediumOrHeavyLoad = encumbrance != Dnd35Rules.EncumbranceLevel.LIGHT
+        val speedMetersEffective = if (
+            isDwarf || (!hasMediumOrHeavyArmor && !hasMediumOrHeavyLoad)
+        ) {
+            baseSpeed
+        } else {
+            reduceSpeedForArmorOrLoad(baseSpeed)
+        }
 
         // 10. Habilidades Especiais Cumulativas de todas as Classes
         val activeClassFeatures = mutableListOf<Dnd35Rules.ClassFeature>()
@@ -673,17 +686,45 @@ object CharacterCalculator {
 
     private fun isMediumOrHeavyArmor(name: String): Boolean {
         val normalized = name.trim().lowercase()
-        val lightArmor = listOf(
-            "armadura acolchoada", "armadura de couro", "couro batido",
-            "camisa de cota de malha"
-        )
-        if (lightArmor.any { normalized.contains(it) }) return false
         val mediumOrHeavyArmor = listOf(
-            "gibão de peles", "brunea", "cota de malha", "peitoral de aço",
-            "cota de talas", "cota de bandas", "armadura de meia-placa",
-            "armadura completa", "full plate"
+            "gibão de peles", "gibao de peles", "brunea", "cota de malha",
+            "peitoral de aço", "peitoral de aco", "cota de talas", "cota de bandas",
+            "armadura de meia-placa", "armadura de meia placa", "armadura completa",
+            "armadura de escamas", "armadura de placas e malha", "splint mail",
+            "banded mail", "half plate", "full plate"
         )
-        return mediumOrHeavyArmor.any { normalized.contains(it) } || normalized.isNotBlank()
+        return mediumOrHeavyArmor.any { normalized.contains(it) }
+    }
+
+    private fun isHeavyArmor(name: String): Boolean {
+        val normalized = name.trim().lowercase()
+        val heavyArmor = listOf(
+            "cota de talas", "cota de bandas", "armadura de meia-placa",
+            "armadura de meia placa", "armadura completa", "armadura de placas e malha",
+            "splint mail", "banded mail", "half plate", "full plate"
+        )
+        return heavyArmor.any { normalized.contains(it) }
+    }
+
+    private fun reduceSpeedForArmorOrLoad(speedMeters: Float): Float {
+        val speedFeet = (speedMeters / 0.3f).toInt()
+        val reducedFeet = when (speedFeet) {
+            20 -> 15
+            30 -> 20
+            40 -> 30
+            50 -> 35
+            60 -> 40
+            70 -> 50
+            80 -> 55
+            90 -> 60
+            100 -> 70
+            else -> if (speedFeet < 20) {
+                (speedFeet - 5).coerceAtLeast(5)
+            } else {
+                ((speedFeet * 2 / 3) / 5) * 5
+            }
+        }
+        return reducedFeet * 0.3f
     }
 
     private fun formatBabProgression(bab: Int): String {
