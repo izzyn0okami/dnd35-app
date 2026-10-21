@@ -135,7 +135,7 @@ class ExampleUnitTest {
       assertEquals(2, skill.racialBonus)
       assertEquals(
         skill.ranks.toInt() + skill.keyAbilityMod + skill.racialBonus +
-          skill.miscBonus + skill.armorPenaltyApplied,
+          skill.sizeBonus + skill.miscBonus + skill.armorPenaltyApplied,
         skill.totalBonus
       )
     }
@@ -187,6 +187,32 @@ class ExampleUnitTest {
     ).computedSkills.single()
     assertEquals(2, gnome.racialBonus)
     assertEquals(2, gnome.totalBonus)
+  }
+
+  @Test
+  fun hideSkillUsesSizeModifierWithoutAffectingOtherSkills() {
+    val smallCharacter = CharacterCalculator.compute(
+      CharacterEntity(
+        race = "Halfling",
+        baseStr = 10,
+        baseDex = 10,
+        baseWis = 10,
+        baseInt = 10,
+        baseCha = 10,
+        skillsJson = CharacterJsonAdapters.serializeSkills(
+          listOf(
+            CharacterSkill(name = "Esconder-se", keyAbility = "DES"),
+            CharacterSkill(name = "Furtividade", keyAbility = "DES")
+          )
+        )
+      )
+    )
+    val hide = smallCharacter.computedSkills.first { it.skill.name == "Esconder-se" }
+    val stealth = smallCharacter.computedSkills.first { it.skill.name == "Furtividade" }
+    assertEquals(4, hide.sizeBonus)
+    assertEquals(7, hide.totalBonus) // +4 tamanho, +2 racial e +1 de Destreza racial
+    assertEquals(0, stealth.sizeBonus)
+    assertEquals(3, stealth.totalBonus) // +2 racial e +1 de Destreza racial, sem bônus de tamanho
   }
 
   @Test

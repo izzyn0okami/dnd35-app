@@ -116,6 +116,7 @@ data class ComputedSkill(
     val keyAbilityMod: Int,
     val ranks: Float,
     val racialBonus: Int,
+    val sizeBonus: Int,
     val miscBonus: Int,
     val armorPenaltyApplied: Int,
     val totalBonus: Int,
@@ -126,6 +127,22 @@ data class ComputedSkill(
 )
 
 object CharacterCalculator {
+
+    private fun sizeSkillBonus(sizeName: String, skillName: String): Int {
+        if (!skillName.equals("Esconder-se", ignoreCase = true)) return 0
+        return when (sizeName.trim().lowercase()) {
+            "minúsculo" -> 16
+            "diminuto" -> 12
+            "miúdo" -> 8
+            "pequeno" -> 4
+            "médio" -> 0
+            "grande" -> -4
+            "enorme" -> -8
+            "imenso" -> -12
+            "colossal" -> -16
+            else -> 0
+        }
+    }
 
     private fun racialSkillBonus(raceName: String, skillName: String): Int {
         val race = raceName.trim()
@@ -492,6 +509,7 @@ object CharacterCalculator {
                 (skill.ranks.coerceAtLeast(0f) * 2f).roundToInt() / 2f
             val ranks = normalizedRanks.coerceAtMost(maxRanks)
             val racialBonus = racialSkillBonus(race.name, canonicalSkillName)
+            val sizeBonus = sizeSkillBonus(race.size, canonicalSkillName)
             val hasArmorPenalty = def?.armorCheckPenaltyApplies ?: false
             val appliedPenalty = if (hasArmorPenalty) {
                 if (skill.name.equals("Natação", ignoreCase = true)) {
@@ -501,12 +519,13 @@ object CharacterCalculator {
                 }
             } else 0
 
-            val total = ranks.toInt() + keyMod + racialBonus + skill.miscBonus + appliedPenalty
+            val total = ranks.toInt() + keyMod + racialBonus + sizeBonus + skill.miscBonus + appliedPenalty
             ComputedSkill(
                 skill = skill.copy(name = def?.name ?: skill.name, ranks = ranks, isClassSkill = isClassSkill),
                 keyAbilityMod = keyMod,
                 ranks = ranks,
                 racialBonus = racialBonus,
+                sizeBonus = sizeBonus,
                 miscBonus = skill.miscBonus,
                 armorPenaltyApplied = appliedPenalty,
                 totalBonus = total,

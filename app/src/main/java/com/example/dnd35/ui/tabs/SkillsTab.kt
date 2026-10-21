@@ -615,6 +615,8 @@ fun SkillItemRow(
                     )
                 }
                 val formula = "Grad: ${computed.ranks} + Mod: ${computed.keyAbilityMod}" +
+                        (if (computed.racialBonus != 0) " + Rac: ${computed.racialBonus}" else "") +
+                        (if (computed.sizeBonus != 0) " + Tam: ${computed.sizeBonus}" else "") +
                         (if (computed.miscBonus != 0) " + Div: ${computed.miscBonus}" else "") +
                         (if (computed.armorPenaltyApplied != 0) " Pen: ${computed.armorPenaltyApplied}" else "")
                 Text(
