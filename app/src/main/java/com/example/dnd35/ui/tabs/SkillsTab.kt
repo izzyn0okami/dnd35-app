@@ -47,6 +47,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.example.dnd35.model.CalculatedCharacterStats
 import com.example.dnd35.model.CharacterEntity
+import com.example.dnd35.model.CharacterJsonAdapters
 import com.example.dnd35.model.ComputedSkill
 import com.example.dnd35.ui.dialogs.DiceRollDialog
 import com.example.dnd35.viewmodel.CharacterViewModel
@@ -88,6 +89,62 @@ fun SkillsTab(
             .padding(horizontal = 14.dp, vertical = 8.dp)
             .testTag("skills_tab")
     ) {
+        item {
+            var languageInput by remember(character.id) { mutableStateOf("") }
+            val languages = CharacterJsonAdapters.deserializeLanguages(character.languagesJson)
+            Card(
+                modifier = Modifier.fillMaxWidth().testTag("languages_section"),
+                shape = RoundedCornerShape(12.dp)
+            ) {
+                Column(modifier = Modifier.padding(12.dp)) {
+                    Text("Idiomas conhecidos", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
+                    Text(
+                        "Falar Idioma é uma habilidade especial: idiomas não recebem graduações nem testes de perícia.",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        OutlinedTextField(
+                            value = languageInput,
+                            onValueChange = { languageInput = it },
+                            label = { Text("Adicionar idioma") },
+                            singleLine = true,
+                            modifier = Modifier.weight(1f)
+                        )
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Button(
+                            onClick = {
+                                val cleaned = languageInput.trim()
+                                if (cleaned.isNotEmpty() && languages.none { it.equals(cleaned, ignoreCase = true) }) {
+                                    viewModel.updateLanguages(languages + cleaned)
+                                }
+                                languageInput = ""
+                            },
+                            enabled = languageInput.isNotBlank()
+                        ) { Text("Adicionar") }
+                    }
+                    if (languages.isEmpty()) {
+                        Text("Nenhum idioma cadastrado.", style = MaterialTheme.typography.bodySmall)
+                    } else {
+                        languages.forEach { language ->
+                            Row(
+                                modifier = Modifier.fillMaxWidth(),
+                                verticalAlignment = Alignment.CenterVertically,
+                                horizontalArrangement = Arrangement.SpaceBetween
+                            ) {
+                                Text(language, modifier = Modifier.weight(1f))
+                                IconButton(onClick = { viewModel.updateLanguages(languages.filterNot { it == language }) }) {
+                                    Icon(Icons.Default.Remove, contentDescription = "Remover idioma $language")
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            Spacer(modifier = Modifier.height(12.dp))
+        }
+
         // Banner de Graduação Máxima e Gastos
         item {
             Card(

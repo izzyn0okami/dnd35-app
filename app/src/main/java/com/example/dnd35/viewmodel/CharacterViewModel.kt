@@ -459,6 +459,11 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
         persistCharacter(curr.copy(photoUri = uri))
     }
 
+    fun updateLanguages(languages: List<String>) {
+        val curr = _activeCharacter.value ?: return
+        persistCharacter(curr.copy(languagesJson = CharacterJsonAdapters.serializeLanguages(languages)))
+    }
+
     fun updateNotes(notes: String) {
         val curr = _activeCharacter.value ?: return
         persistCharacter(curr.copy(notes = notes))
