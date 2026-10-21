@@ -114,7 +114,7 @@ object Dnd35Rules {
             conMod = -2,
             intMod = 2,
             chaMod = 2,
-            traits = "Visão no escuro 36m, resistência a magia (11 + nível), +2 em Ouvir, Procurar e Observar, magias inatas (Globos de Luz, Escuridão, Fogo das Fadas), cegueira sob luz forte.",
+            traits = "Imunidade a sono mágico, +2 contra encantamentos, visão na penumbra e no escuro 36m, +2 em Ouvir, Procurar e Observar; nota portas secretas automaticamente a 1,5m; proficiência com espada longa, rapieira, arco longo e arco curto; resistência à magia (11 + nível), magias inatas (Globos de Luz, Escuridão, Fogo das Fadas) e cegueira sob luz forte.",
             favoredClass = "Mago"
         ),
         RaceInfo(
