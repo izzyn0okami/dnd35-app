@@ -27,6 +27,55 @@ object CharacterJsonAdapters {
         }
     }
 
+
+    fun serializeSkillPointHistory(records: List<SkillPointLevelRecord>): String {
+        val array = JSONArray()
+        records.sortedWith(compareBy<SkillPointLevelRecord> { it.characterLevel }.thenBy { it.className.lowercase() })
+            .forEach { record ->
+                val obj = JSONObject()
+                obj.put("characterLevel", record.characterLevel)
+                obj.put("className", record.className.trim())
+                obj.put("availablePoints", record.availablePoints.toDouble())
+                val allocations = JSONArray()
+                record.allocations.forEach { allocation ->
+                    val entry = JSONObject()
+                    entry.put("skillName", allocation.skillName.trim())
+                    entry.put("pointsSpent", allocation.pointsSpent.toDouble())
+                    allocations.put(entry)
+                }
+                obj.put("allocations", allocations)
+                array.put(obj)
+            }
+        return array.toString()
+    }
+
+    fun deserializeSkillPointHistory(json: String?): List<SkillPointLevelRecord> {
+        if (json.isNullOrBlank()) return emptyList()
+        return try {
+            val array = JSONArray(json)
+            (0 until array.length()).mapNotNull recordLoop@{ index ->
+                val obj = array.optJSONObject(index) ?: return@recordLoop null
+                val level = obj.optInt("characterLevel", 0)
+                val className = obj.optString("className", "").trim()
+                if (level < 1 || className.isEmpty()) return@recordLoop null
+                val allocationsJson = obj.optJSONArray("allocations") ?: JSONArray()
+                val allocations = (0 until allocationsJson.length()).mapNotNull allocationLoop@{ allocationIndex ->
+                    val allocation = allocationsJson.optJSONObject(allocationIndex) ?: return@allocationLoop null
+                    val skillName = allocation.optString("skillName", "").trim()
+                    val points = allocation.optDouble("pointsSpent", 0.0).toFloat()
+                    if (skillName.isEmpty() || !points.isFinite() || points < 0f) null
+                    else SkillPointAllocation(skillName, points)
+                }
+                val available = obj.optDouble("availablePoints", Double.NaN).toFloat()
+                if (!available.isFinite() || available < 0f) null
+                else SkillPointLevelRecord(level, className, available, allocations)
+            }
+        } catch (e: Exception) {
+            Log.w("CharacterJsonAdapters", "JSON de histórico de pontos de perícia inválido", e)
+            emptyList()
+        }
+    }
+
     fun serializeSkills(skills: List<CharacterSkill>): String {
         val array = JSONArray()
         for (s in skills) {

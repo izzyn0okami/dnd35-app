@@ -47,6 +47,8 @@ data class CharacterEntity(
     val platinumPp: Float = 0.0f,
     val skillsJson: String = "",
     val languagesJson: String = "",
+    // Histórico opcional; não inferir gastos antigos a partir das graduações atuais.
+    val skillPointHistoryJson: String = "",
     val inventoryJson: String = "",
     val featsJson: String = "",
     val spellsJson: String = "",
@@ -54,6 +56,15 @@ data class CharacterEntity(
     val multiclassJson: String = "",
     val notes: String = "",
     val updatedAt: Long = System.currentTimeMillis()
+)
+
+data class SkillPointAllocation(val skillName: String, val pointsSpent: Float)
+
+data class SkillPointLevelRecord(
+    val characterLevel: Int,
+    val className: String,
+    val availablePoints: Float,
+    val allocations: List<SkillPointAllocation> = emptyList()
 )
 
 data class CharacterClassEntry(
