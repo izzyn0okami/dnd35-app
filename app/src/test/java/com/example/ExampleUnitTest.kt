@@ -123,6 +123,11 @@ class ExampleUnitTest {
     val halfling = CharacterCalculator.compute(
       CharacterEntity(
         race = "Halfling",
+        baseStr = 10,
+        baseDex = 10,
+        baseWis = 10,
+        baseInt = 10,
+        baseCha = 10,
         skillsJson = CharacterJsonAdapters.serializeSkills(halflingSkills)
       )
     )
@@ -134,6 +139,11 @@ class ExampleUnitTest {
     val elf = CharacterCalculator.compute(
       CharacterEntity(
         race = "Elfo",
+        baseStr = 10,
+        baseDex = 10,
+        baseWis = 10,
+        baseInt = 10,
+        baseCha = 10,
         skillsJson = CharacterJsonAdapters.serializeSkills(
           listOf(CharacterSkill(name = "Ouvir", keyAbility = "SAB"))
         )
@@ -145,6 +155,11 @@ class ExampleUnitTest {
     val halfElf = CharacterCalculator.compute(
       CharacterEntity(
         race = "Meio-Elfo",
+        baseStr = 10,
+        baseDex = 10,
+        baseWis = 10,
+        baseInt = 10,
+        baseCha = 10,
         skillsJson = CharacterJsonAdapters.serializeSkills(
           listOf(CharacterSkill(name = "Diplomacia", keyAbility = "CAR"))
         )
@@ -156,6 +171,11 @@ class ExampleUnitTest {
     val gnome = CharacterCalculator.compute(
       CharacterEntity(
         race = "Gnomo",
+        baseStr = 10,
+        baseDex = 10,
+        baseWis = 10,
+        baseInt = 10,
+        baseCha = 10,
         skillsJson = CharacterJsonAdapters.serializeSkills(
           listOf(CharacterSkill(name = "Ofícios (Alquimia)", keyAbility = "INT"))
         )
