@@ -411,12 +411,11 @@ object CharacterCalculator {
             race.name.equals("Anão da Montanha", ignoreCase = true)
         val hasMediumOrHeavyArmor = equippedArmor.any { isMediumOrHeavyArmor(it.name) }
         val hasMediumOrHeavyLoad = encumbrance != Dnd35Rules.EncumbranceLevel.LIGHT
-        val speedMetersEffective = if (
-            isDwarf || (!hasMediumOrHeavyArmor && !hasMediumOrHeavyLoad)
-        ) {
-            baseSpeed
-        } else {
-            reduceSpeedForArmorOrLoad(baseSpeed)
+        val speedMetersEffective = when {
+            encumbrance == Dnd35Rules.EncumbranceLevel.OVERLOADED -> 1.5f
+            isDwarf -> baseSpeed
+            !hasMediumOrHeavyArmor && !hasMediumOrHeavyLoad -> baseSpeed
+            else -> reduceSpeedForArmorOrLoad(baseSpeed)
         }
 
         // 10. Habilidades Especiais Cumulativas de todas as Classes
