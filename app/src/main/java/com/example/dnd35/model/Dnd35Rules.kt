@@ -582,6 +582,16 @@ object Dnd35Rules {
         }
     }
 
+    /**
+     * Converte nomes legados salvos em fichas para o rótulo canônico atual.
+     * Não altera os dados persistidos automaticamente; o cálculo mantém graduações e bônus.
+     */
+    fun canonicalSkillName(name: String): String = when (name.trim().lowercase()) {
+        "salto" -> "Saltar"
+        "ofício" -> "Ofícios"
+        else -> name.trim()
+    }
+
     // Perícias canônicas de D&D 3.5, usando os nomes da tradução portuguesa.
     data class SkillDefinition(
         val name: String,
