@@ -113,6 +113,72 @@ class ExampleUnitTest {
   }
 
   @Test
+  fun barbarianDoesNotGetFastMovementInMediumArmor() {
+    val armor = CharacterInventoryItem(
+      name = "Gibão de Peles",
+      category = "Armaduras",
+      equipped = true,
+      equippedSlot = Dnd35Rules.EquipmentSlots.ARMOR_BODY,
+      weightLb = 25f,
+      damageOrAc = "+3 CA",
+      notes = "Des Max +4, Pen -3"
+    )
+    val stats = CharacterCalculator.compute(
+      CharacterEntity(
+        characterClass = "Bárbaro",
+        level = 1,
+        baseStr = 16,
+        inventoryJson = CharacterJsonAdapters.serializeInventory(listOf(armor))
+      )
+    )
+    assertEquals(9.0f, stats.speedMetersEffective, 0.01f)
+  }
+
+  @Test
+  fun barbarianGetsFastMovementWithLightArmorAndLightLoad() {
+    val armor = CharacterInventoryItem(
+      name = "Armadura de Couro",
+      category = "Armaduras",
+      equipped = true,
+      equippedSlot = Dnd35Rules.EquipmentSlots.ARMOR_BODY,
+      weightLb = 15f,
+      damageOrAc = "+2 CA",
+      notes = "Des Max +6, Pen 0"
+    )
+    val stats = CharacterCalculator.compute(
+      CharacterEntity(
+        characterClass = "Bárbaro",
+        level = 1,
+        baseStr = 16,
+        inventoryJson = CharacterJsonAdapters.serializeInventory(listOf(armor))
+      )
+    )
+    assertEquals(12.0f, stats.speedMetersEffective, 0.01f)
+  }
+
+  @Test
+  fun monkFastMovementIsSuppressedByMediumLoad() {
+    val stats = CharacterCalculator.compute(
+      CharacterEntity(
+        characterClass = "Monge",
+        level = 6,
+        baseStr = 10,
+        goldGp = 0f,
+        inventoryJson = CharacterJsonAdapters.serializeInventory(
+          listOf(CharacterInventoryItem(
+            name = "Carga de teste",
+            category = "Itens de Aventura",
+            weightLb = 40f,
+            equipped = false
+          ))
+        )
+      )
+    )
+    assertEquals(0.67f, stats.encumbrance.speedFactor, 0.001f)
+    assertEquals(6.03f, stats.speedMetersEffective, 0.02f)
+  }
+
+  @Test
   fun testSizeModifiersAndCarryingCapacity() {
     assertEquals(1, Dnd35Rules.getArmorClassSizeModifier("Pequeno"))
     assertEquals(-2, Dnd35Rules.getArmorClassSizeModifier("Enorme"))
