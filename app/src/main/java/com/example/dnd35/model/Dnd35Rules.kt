@@ -198,7 +198,7 @@ object Dnd35Rules {
             refType = SaveProgression.POOR,
             willType = SaveProgression.POOR,
             skillPointsPerLevel = 4,
-            classSkills = listOf("Adestrar Animais", "Cavalgar", "Escalar", "Intimidação", "Natação", "Ouvir", "Salto", "Sobrevivência"),
+            classSkills = listOf("Adestrar Animais", "Cavalgar", "Escalar", "Intimidação", "Natação", "Ofício", "Ouvir", "Salto", "Sobrevivência"),
             features = listOf(
                 ClassFeature(1, "Fúria 1/dia", "+4 FOR, +4 CON, +2 testes de Vontade, -2 CA por 3 + mod Con rodadas."),
                 ClassFeature(1, "Movimento Rápido", "+3 metros no deslocamento terrestre (sem armadura pesada)."),
