@@ -124,7 +124,7 @@ object Dnd35Rules {
             conMod = 2,
             size = "Pequeno",
             baseSpeedMeters = 6.0f,
-            traits = "+1 CA e ataque por tamanho pequeno (+4 Esconder-se), visão na penumbra, +2 testes de Ilusão, +1 na CD de magias de Ilusão, +1 ataque vs kobolds/goblins, +4 esquiva vs gigantes, +2 Ouvir e Ofícios (Alquimia), magias inatas (Falar com Animais, Globos de Luz, Som Fantasma).",
+            traits = "Tamanho Pequeno (+1 na CA e nas jogadas de ataque, +4 Esconder-se), visão na penumbra, +2 nos testes de resistência contra ilusões, +1 na CD das ilusões conjuradas, +1 nas jogadas de ataque contra kobolds e goblinoides, +4 de bônus de esquiva na CA contra gigantes, +2 em Ouvir e Ofícios (Alquimia), familiaridade com o martelo-gancho gnômico como arma marcial, habilidades similares a magia (Globos de Luz, Som Fantasma, Prestidigitação e Falar com Animais para mamíferos escavadores).",
             favoredClass = "Bardo"
         ),
         RaceInfo(
