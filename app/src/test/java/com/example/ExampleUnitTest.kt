@@ -180,6 +180,13 @@ class ExampleUnitTest {
   }
 
   @Test
+  fun skillCatalogIncludesPortugueseAcrobaticsSkill() {
+    assertTrue(Dnd35Rules.SKILL_DEFINITIONS.any { it.name.equals("Acrobacia", ignoreCase = true) })
+    assertTrue(Dnd35Rules.SKILL_DEFINITIONS.any { it.name == "Equilíbrio" })
+    assertTrue(Dnd35Rules.SKILL_DEFINITIONS.any { it.name == "Arte da Fuga" })
+  }
+
+  @Test
   fun skillRanksRespectClassAndCrossClassCapsAndHalfRanks() {
     val skills = listOf(
       CharacterSkill(name = "Escalar", keyAbility = "FOR", ranks = 20f),

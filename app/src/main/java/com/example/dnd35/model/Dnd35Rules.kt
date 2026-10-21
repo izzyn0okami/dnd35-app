@@ -582,7 +582,7 @@ object Dnd35Rules {
         }
     }
 
-    // 36 Perícias Canônicas de D&D 3.5
+    // Perícias canônicas de D&D 3.5, usando os nomes da tradução portuguesa.
     data class SkillDefinition(
         val name: String,
         val keyAbility: String,
