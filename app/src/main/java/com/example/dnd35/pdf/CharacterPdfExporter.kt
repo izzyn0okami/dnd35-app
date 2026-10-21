@@ -218,7 +218,7 @@ object CharacterPdfExporter {
             canvas1.drawRect(RectF(30f, weaponY, pageWidth - 30f, weaponY + 20f), goldBannerPaint)
             canvas1.drawText("ATAQUES & ARMAS EQUIPADAS", 40f, weaponY + 14f, headerPaint)
 
-            val equippedWeapons = stats.inventory.filter { it.category.startsWith("Arma", ignoreCase = true) }
+            val equippedWeapons = stats.inventory.filter { it.equipped && it.category.startsWith("Arma", ignoreCase = true) }
             var wRowY = weaponY + 36f
             if (equippedWeapons.isEmpty()) {
                 canvas1.drawText("Ataque Desarmado  •  Bônus: +${stats.bab + stats.strMod}  •  Dano: 1d3+${stats.strMod} Concussão", 42f, wRowY, bodyPaint)
