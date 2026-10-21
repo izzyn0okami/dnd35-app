@@ -190,7 +190,7 @@ class ExampleUnitTest {
   fun skillRanksRespectClassAndCrossClassCapsAndHalfRanks() {
     val skills = listOf(
       CharacterSkill(name = "Escalar", keyAbility = "FOR", ranks = 20f),
-      CharacterSkill(name = "Arte da Fuga", keyAbility = "DES", ranks = 1.25f),
+      CharacterSkill(name = "Acrobacia", keyAbility = "DES", ranks = 1.25f),
       CharacterSkill(name = "Conhecimento (Arcano)", keyAbility = "INT", ranks = 0f)
     )
     val stats = CharacterCalculator.compute(
