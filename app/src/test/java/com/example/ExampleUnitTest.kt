@@ -864,6 +864,17 @@ class ExampleUnitTest {
     assertEquals(-2, mountain.chaMod)
   }
   @Test
+  fun halfOrcRacialDescriptionMatchesCoreTraits() {
+    val halfOrc = Dnd35Rules.RACES.first { it.name == "Meio-Orc" }
+    assertTrue(halfOrc.traits.contains("Visão no escuro 18m"))
+    assertTrue(halfOrc.traits.contains("sangue orc"))
+    assertTrue(!halfOrc.traits.contains("força física devastadora"))
+    assertEquals(2, halfOrc.strMod)
+    assertEquals(-2, halfOrc.intMod)
+    assertEquals(-2, halfOrc.chaMod)
+  }
+
+  @Test
   fun gnomeRacialDescriptionIncludesCoreTraits() {
     val traits = Dnd35Rules.RACES.first { it.name == "Gnomo" }.traits
     assertTrue(traits.contains("visão na penumbra"))
