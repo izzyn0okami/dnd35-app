@@ -114,7 +114,7 @@ fun SpellsTab(
                             Icon(Icons.Default.AutoStories, contentDescription = null, tint = DndArcaneBlue, modifier = Modifier.size(26.dp))
                             Spacer(modifier = Modifier.width(8.dp))
                             Column {
-                                Text("Grimório de Magias (D&D 3.5)", fontWeight = FontWeight.Bold, style = MaterialTheme.typography.titleMedium)
+                                Text("Grimório de magias (D&D 3.5)", fontWeight = FontWeight.Bold, style = MaterialTheme.typography.titleMedium)
                                 val abilityLabel = stats.castingAbilityName?.let {
                                     "Atributo Chave: $it (+${stats.castingAbilityMod})"
                                 } ?: "Sem atributo conjurador base"
@@ -130,7 +130,7 @@ fun SpellsTab(
                         ) {
                             Icon(Icons.Default.Bedtime, contentDescription = null, modifier = Modifier.size(16.dp), tint = MaterialTheme.colorScheme.onPrimaryContainer)
                             Spacer(modifier = Modifier.width(4.dp))
-                            Text("Restaurar Slots", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onPrimaryContainer)
+                            Text("Recuperar espaços de magia", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onPrimaryContainer)
                         }
                     }
 

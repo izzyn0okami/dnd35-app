@@ -88,12 +88,12 @@ fun AddEditItemDialog(
                         Tab(
                             selected = selectedTab == 0,
                             onClick = { selectedTab = 0 },
-                            text = { Text("Catálogo PHB") }
+                            text = { Text("Catálogo do Livro do Jogador") }
                         )
                         Tab(
                             selected = selectedTab == 1,
                             onClick = { selectedTab = 1 },
-                            text = { Text("Item Custom") }
+                            text = { Text("Item personalizado") }
                         )
                     }
                     Spacer(modifier = Modifier.height(12.dp))
@@ -227,7 +227,7 @@ fun AddEditItemDialog(
 
                         Spacer(modifier = Modifier.height(8.dp))
 
-                        Text("Espaço Corporal (Body Slot):", style = MaterialTheme.typography.labelSmall)
+                        Text("Espaço de equipamento:", style = MaterialTheme.typography.labelSmall)
                         Box(modifier = Modifier.fillMaxWidth()) {
                             OutlinedTextField(
                                 value = equippedSlot,
