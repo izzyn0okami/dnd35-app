@@ -114,7 +114,7 @@ object Dnd35Rules {
             conMod = -2,
             intMod = 2,
             chaMod = 2,
-            traits = "Imunidade a sono mágico, +2 contra encantamentos, visão na penumbra e no escuro 36m, +2 em Ouvir, Procurar e Observar; nota portas secretas automaticamente a 1,5m; proficiência com espada longa, rapieira, arco longo e arco curto, incluindo versões compostas; resistência à magia (11 + nível), magias inatas (Globos de Luz, Escuridão, Fogo das Fadas) e cegueira sob luz forte.",
+            traits = "Imunidade a sono mágico, visão no escuro 36m, +2 nos testes de resistência contra magias e habilidades similares a magia, +2 em Ouvir, Procurar e Observar; nota portas secretas automaticamente a 1,5m; proficiência com besta de mão, rapieira e espada curta; resistência à magia (11 + nível de personagem), habilidades similares a magia 1/dia (Globos de Luz, Escuridão e Fogo das Fadas) e cegueira à luz intensa.",
             favoredClass = "Mago"
         ),
         RaceInfo(
