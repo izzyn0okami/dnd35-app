@@ -81,3 +81,10 @@ Esta é uma correção inicial, não uma certificação completa do sistema de p
 - O teste de regressão da lista completa do Bardo agora exige **Saltar**.
 - Aproveitando a revisão documental, removida a referência incorreta a Acrobacia como perícia somente treinada: em D&D 3.5, Acrobacia pode ser usada sem treinamento, embora sofra penalidade de armadura.
 - Corrigido o erro tipográfico “Ofícioss” na documentação.
+
+## Cobertura de regressão das listas de perícias de classe
+
+- Adicionado teste de conjunto completo para Bárbaro, Clérigo, Druida, Guerreiro, Paladino, Ranger, Ladino e Mago.
+- Bardo, Monge e Feiticeiro já possuem testes de conjunto completo próprios.
+- A cobertura compara os nomes modelados no aplicativo e ajuda a detectar omissões ou inclusões acidentais. Ela não substitui a revisão de terminologia da tradução brasileira nem resolve a modelagem especial de Falar Idioma.
+
