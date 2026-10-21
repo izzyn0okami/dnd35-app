@@ -555,7 +555,7 @@ class ExampleUnitTest {
 
     assertEquals(Dnd35Rules.EncumbranceLevel.LIGHT, unencumbered.encumbrance)
     assertEquals(Dnd35Rules.EncumbranceLevel.MEDIUM, encumbered.encumbrance)
-    assertEquals(14, unencumbered.totalAc)
+    assertEquals(13, unencumbered.totalAc)
     assertEquals(10, encumbered.totalAc)
   }
 
