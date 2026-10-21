@@ -43,9 +43,12 @@ fun parseSkillPointAllocations(input: String): List<SkillPointAllocation>? {
     for (line in lines) {
         val parts = line.split("=", limit = 2)
         if (parts.size != 2) return null
-        val name = parts[0].trim()
+        val suppliedName = parts[0].trim()
+        val name = Dnd35Rules.canonicalSkillName(suppliedName)
         val points = parts[1].trim().toIntOrNull()
         if (name.isEmpty() || points == null || points < 0) return null
+        // Nomes antigos conhecidos (por exemplo, "Salto" e "Ofício") não
+        // podem contornar a validação de duplicatas no mesmo nível.
         if (!names.add(name.lowercase())) return null
         parsed += SkillPointAllocation(name, points.toFloat())
     }
