@@ -537,5 +537,43 @@ class ExampleUnitTest {
     assertEquals(emptyList<String>(), CharacterJsonAdapters.deserializeLanguages(""))
     assertEquals(emptyList<String>(), CharacterJsonAdapters.deserializeLanguages(null))
   }
+  @Test
+  fun craftSpecialtiesAreIndependentNormalSkills() {
+    val definitions = listOf(
+      Dnd35Rules.skillDefinitionFor("Ofícios (Armas)"),
+      Dnd35Rules.skillDefinitionFor("Ofícios (Armaduras)")
+    )
+    assertTrue(definitions.all { it != null })
+    assertEquals("INT", definitions[0]?.keyAbility)
+    assertEquals(false, definitions[0]?.trainedOnly)
+    assertEquals("Ofícios (Armas)", Dnd35Rules.canonicalSkillName("Ofício (Armas)"))
+    assertEquals("Ofícios", Dnd35Rules.classSkillLookupName("Ofícios (Armas)"))
+
+    val savedSkills = listOf(
+      CharacterSkill(name = "Ofícios (Armas)", keyAbility = "INT", ranks = 2f, miscBonus = 1),
+      CharacterSkill(name = "Ofícios (Armaduras)", keyAbility = "INT", ranks = 1f, miscBonus = 0),
+      CharacterSkill(name = "Ofícios", keyAbility = "INT", ranks = 3f, miscBonus = 0)
+    )
+    val stats = CharacterCalculator.compute(
+      CharacterEntity(
+        characterClass = "Guerreiro",
+        level = 1,
+        baseInt = 14,
+        skillsJson = CharacterJsonAdapters.serializeSkills(savedSkills)
+      )
+    )
+    val weapons = stats.computedSkills.first { it.skill.name == "Ofícios (Armas)" }
+    val armor = stats.computedSkills.first { it.skill.name == "Ofícios (Armaduras)" }
+    val general = stats.computedSkills.first { it.skill.name == "Ofícios" }
+
+    assertEquals(2f, weapons.ranks)
+    assertEquals(1f, armor.ranks)
+    assertEquals(3f, general.ranks)
+    assertEquals(1, weapons.miscBonus)
+    assertTrue(weapons.isClassSkill)
+    assertTrue(armor.isClassSkill)
+    assertTrue(general.isClassSkill)
+    assertEquals(5, weapons.totalBonus)
+  }
 
 }
