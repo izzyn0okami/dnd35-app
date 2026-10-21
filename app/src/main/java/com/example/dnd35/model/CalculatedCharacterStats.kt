@@ -157,7 +157,9 @@ object CharacterCalculator {
             ) -> 2
             (race.contains("Elfo", ignoreCase = true) || race.contains("Drow", ignoreCase = true)) &&
                 skill in setOf("Ouvir", "Procurar", "Observar") -> 2
-            race.contains("Halfling", ignoreCase = true) &&
+            race.equals("Halfling Robusto", ignoreCase = true) &&
+                skill == "Ouvir" -> 2
+            race.equals("Halfling", ignoreCase = true) &&
                 skill in setOf("Escalar", "Saltar", "Ouvir", "Furtividade") -> 2
             race.equals("Gnomo", ignoreCase = true) && (
                 skill.equals("Ouvir", ignoreCase = true) ||
