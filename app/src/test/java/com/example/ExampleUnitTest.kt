@@ -195,6 +195,18 @@ class ExampleUnitTest {
   }
 
   @Test
+  fun clericClassSkillsIncludeCraftProfessionSkill() {
+    val cleric = Dnd35Rules.CLASSES.first { it.name == "Clérigo" }
+    assertTrue(cleric.classSkills.contains("Ofício"))
+  }
+
+  @Test
+  fun druidClassSkillsIncludeCraftProfessionSkill() {
+    val druid = Dnd35Rules.CLASSES.first { it.name == "Druida" }
+    assertTrue(druid.classSkills.contains("Ofício"))
+  }
+
+  @Test
   fun skillCatalogIncludesPortugueseAcrobaticsSkill() {
     assertTrue(Dnd35Rules.SKILL_DEFINITIONS.any { it.name.equals("Acrobacia", ignoreCase = true) })
     assertTrue(Dnd35Rules.SKILL_DEFINITIONS.any { it.name == "Equilíbrio" })
