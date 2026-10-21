@@ -219,6 +219,23 @@ class ExampleUnitTest {
   }
 
   @Test
+  fun bardClassSkillsMatchCoreSkillList() {
+    val bard = Dnd35Rules.CLASSES.first { it.name == "Bardo" }
+    val expected = listOf(
+      "Acrobacia", "Arte da Fuga", "Atuação", "Avaliação", "Blefar",
+      "Concentração", "Conhecimento (Arcano)", "Conhecimento (Arquitetura e Engenharia)",
+      "Conhecimento (Geografia)", "Conhecimento (História)", "Conhecimento (Local)",
+      "Conhecimento (Masmorras)", "Conhecimento (Natureza)", "Conhecimento (Nobreza e Realeza)",
+      "Conhecimento (Planos)", "Conhecimento (Religião)", "Decifrar Escrita", "Diplomacia",
+      "Disfarces", "Equilíbrio", "Escalar", "Esconder-se", "Furtividade",
+      "Identificar Magia", "Natação", "Obter Informação", "Ofício", "Ouvir",
+      "Prestidigitação", "Profissão", "Sentir Motivação", "Usar Instrumento Mágico"
+    )
+    assertEquals(expected.toSet(), bard.classSkills.toSet())
+    assertTrue(bard.classSkills.none { it == "Observar" })
+  }
+
+  @Test
   fun barbarianClassSkillsIncludeCraftProfessionSkill() {
     val barbarian = Dnd35Rules.CLASSES.first { it.name == "Bárbaro" }
     assertTrue(barbarian.classSkills.contains("Ofício"))
