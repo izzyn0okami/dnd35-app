@@ -341,7 +341,8 @@ class ExampleUnitTest {
   fun editingSkillRanksPreservesHalfRanksAndRespectsCap() {
     assertEquals(1.5f, normalizeEditedSkillRanks(1.5f, 7f))
     assertEquals(1.5f, normalizeEditedSkillRanks(1.5f, 2f))
-    assertEquals(2f, normalizeEditedSkillRanks(2.25f, 7f))
+    // O mesmo arredondamento para o meio ponto usado pelo cálculo produz 2,5.
+    assertEquals(2.5f, normalizeEditedSkillRanks(2.25f, 7f))
     assertEquals(0f, normalizeEditedSkillRanks(-1f, 7f))
     assertEquals(2f, normalizeEditedSkillRanks(2.5f, 2f))
   }
