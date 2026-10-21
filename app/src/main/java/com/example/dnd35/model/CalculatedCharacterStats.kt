@@ -131,16 +131,14 @@ object CharacterCalculator {
     private fun sizeSkillBonus(sizeName: String, skillName: String): Int {
         if (!skillName.equals("Esconder-se", ignoreCase = true)) return 0
         return when (sizeName.trim().lowercase()) {
-            "minúsculo" -> 8
-            "miúdo" -> 12
+            "minúsculo" -> 16
             "diminuto" -> 12
-            "miúdo" -> 12
-            "minúsculo" -> 8
+            "miúdo" -> 8
             "pequeno" -> 4
             "médio" -> 0
             "grande" -> -4
             "enorme" -> -8
-            " imenso" -> -12
+            "imenso" -> -12
             "colossal" -> -16
             else -> 0
         }
