@@ -280,8 +280,8 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
     fun updateSkill(skillName: String, ranks: Float, miscBonus: Int, isClassSkill: Boolean) {
         val curr = _activeCharacter.value ?: return
         val currentSkills = CharacterJsonAdapters.deserializeSkills(curr.skillsJson).toMutableList()
-        val definition = com.example.dnd35.model.Dnd35Rules.SKILL_DEFINITIONS
-            .find { it.name.equals(skillName, ignoreCase = true) }
+        val canonicalName = com.example.dnd35.model.Dnd35Rules.canonicalSkillName(skillName)
+        val definition = com.example.dnd35.model.Dnd35Rules.skillDefinitionFor(canonicalName)
         val classEntries = CharacterJsonAdapters.deserializeClassEntries(
             curr.multiclassJson, curr.characterClass, curr.level
         )
@@ -289,7 +289,9 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
             classEntries.any { entry ->
                 com.example.dnd35.model.Dnd35Rules.CLASSES
                     .find { it.name.equals(entry.className, ignoreCase = true) }
-                    ?.classSkills?.any { it.equals(skillName, ignoreCase = true) } == true
+                    ?.classSkills?.any {
+                        it.equals(com.example.dnd35.model.Dnd35Rules.classSkillLookupName(canonicalName), ignoreCase = true)
+                    } == true
             }
         } else isClassSkill
         val maxClassRanks = classEntries.sumOf { it.level }.coerceAtLeast(1) + 3f
@@ -299,10 +301,15 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
         } else {
             (ranks.coerceAtLeast(0f) * 2f).roundToInt() / 2f
         }.coerceAtMost(maxRanks)
-        val index = currentSkills.indexOfFirst { it.name.equals(skillName, ignoreCase = true) }
+        val index = currentSkills.indexOfFirst {
+            com.example.dnd35.model.Dnd35Rules.canonicalSkillName(it.name)
+                .equals(canonicalName, ignoreCase = true)
+        }
         if (index >= 0) {
             val old = currentSkills[index]
             currentSkills[index] = old.copy(
+                name = canonicalName,
+                keyAbility = definition?.keyAbility ?: old.keyAbility,
                 ranks = normalizedRanks,
                 miscBonus = miscBonus,
                 isClassSkill = actualClassSkill
@@ -310,7 +317,7 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
         } else {
             val key = definition?.keyAbility ?: "FOR"
             currentSkills.add(CharacterSkill(
-                name = skillName, keyAbility = key, ranks = normalizedRanks,
+                name = canonicalName, keyAbility = key, ranks = normalizedRanks,
                 miscBonus = miscBonus, isClassSkill = actualClassSkill
             ))
         }
