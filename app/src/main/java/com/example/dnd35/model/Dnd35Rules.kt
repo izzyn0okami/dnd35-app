@@ -76,7 +76,7 @@ object Dnd35Rules {
             conMod = 2,
             chaMod = -2,
             baseSpeedMeters = 6.0f,
-            traits = "Visão no escuro 18m, afinidade com pedras (+2 Procurar em alvenaria), estabilidade (+4 resistir a encontrão/derrubar), +2 contra veneno e magia, +1 ataque vs orcs/goblins, +4 esquiva vs gigantes, proficiência com machados de guerra anões.",
+            traits = "Visão no escuro 18m, +2 em testes de resistência contra veneno, magias e habilidades similares a magia; afinidade com pedras (+2 em Procurar para construções incomuns de pedra), estabilidade (+4 contra encontrão e derrubar enquanto apoiado no chão), +1 nas jogadas de ataque contra orcs e goblinoides, +4 de esquiva na CA contra gigantes, familiaridade com armas anãs (machado de guerra anão e urgrosh anão tratados como armas marciais).",
             favoredClass = "Guerreiro"
         ),
         RaceInfo(
@@ -86,7 +86,7 @@ object Dnd35Rules {
             conMod = 2,
             chaMod = -2,
             baseSpeedMeters = 6.0f,
-            traits = "Como o anão padrão, mais força física das profundezas montanhosas e armaduras.",
+            traits = "Mesmos traços raciais do Anão da Colina: visão no escuro 18m, resistência a veneno e magia, afinidade com pedras, estabilidade, bônus contra orcs/goblinoides e gigantes e familiaridade com armas anãs.",
             favoredClass = "Guerreiro"
         ),
         RaceInfo(
