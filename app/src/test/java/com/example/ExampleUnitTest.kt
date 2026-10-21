@@ -254,6 +254,15 @@ class ExampleUnitTest {
   }
 
   @Test
+  fun remainingCoreClassesIncludeCraftSkill() {
+    val classesExpectedToHaveCraft = listOf("Guerreiro", "Monge", "Paladino", "Ranger", "Ladino")
+    classesExpectedToHaveCraft.forEach { className ->
+      val characterClass = Dnd35Rules.CLASSES.first { it.name == className }
+      assertTrue("$className deve ter Ofício como perícia de classe", characterClass.classSkills.contains("Ofício"))
+    }
+  }
+
+  @Test
   fun skillCatalogIncludesPortugueseAcrobaticsSkill() {
     assertTrue(Dnd35Rules.SKILL_DEFINITIONS.any { it.name.equals("Acrobacia", ignoreCase = true) })
     assertTrue(Dnd35Rules.SKILL_DEFINITIONS.any { it.name == "Equilíbrio" })

@@ -290,7 +290,7 @@ object Dnd35Rules {
             refType = SaveProgression.POOR,
             willType = SaveProgression.POOR,
             skillPointsPerLevel = 2,
-            classSkills = listOf("Adestrar Animais", "Cavalgar", "Escalar", "Intimidação", "Natação", "Salto"),
+            classSkills = listOf("Adestrar Animais", "Cavalgar", "Escalar", "Intimidação", "Natação", "Ofício", "Salto"),
             features = listOf(
                 ClassFeature(1, "Talento Adicional de Combate (1º Nv)", "Ganha um talento de combate adicional à sua escolha."),
                 ClassFeature(2, "Talento Adicional de Combate (2º Nv)", "Ganha o segundo talento de combate bônus."),
@@ -314,7 +314,7 @@ object Dnd35Rules {
             refType = SaveProgression.GOOD,
             willType = SaveProgression.GOOD,
             skillPointsPerLevel = 4,
-            classSkills = listOf("Acrobacia", "Arte da Fuga", "Concentração", "Conhecimento (Arcano)", "Conhecimento (Religião)", "Diplomacia", "Equilíbrio", "Escalar", "Esconder-se", "Furtividade", "Natação", "Observar", "Ouvir", "Salto", "Sentir Motivação"),
+            classSkills = listOf("Acrobacia", "Arte da Fuga", "Concentração", "Conhecimento (Arcano)", "Conhecimento (Religião)", "Diplomacia", "Equilíbrio", "Escalar", "Esconder-se", "Furtividade", "Natação", "Observar", "Ofício", "Ouvir", "Salto", "Sentir Motivação"),
             features = listOf(
                 ClassFeature(1, "Bônus de CA sem Armadura", "Adiciona o mod de Sabedoria na CA quando sem armadura ou escudo (+1 a cada 5 níveis)."),
                 ClassFeature(1, "Rajada de Golpes", "Ataque extra desarmado por rodada com -2 em todos os golpes."),
@@ -341,7 +341,7 @@ object Dnd35Rules {
             willType = SaveProgression.POOR,
             skillPointsPerLevel = 2,
             spellCastingAbility = "SAB",
-            classSkills = listOf("Adestrar Animais", "Cavalgar", "Concentração", "Conhecimento (Nobreza e Realeza)", "Conhecimento (Religião)", "Cura", "Diplomacia", "Profissão", "Sentir Motivação"),
+            classSkills = listOf("Adestrar Animais", "Cavalgar", "Concentração", "Conhecimento (Nobreza e Realeza)", "Conhecimento (Religião)", "Cura", "Diplomacia", "Ofício", "Profissão", "Sentir Motivação"),
             features = listOf(
                 ClassFeature(1, "Aura do Bem & Detectar o Mal", "Detecta emanações malignas à vontade."),
                 ClassFeature(1, "Destruir o Mal 1/dia", "Soma mod de Carisma no ataque e +Nível no dano contra criaturas malignas."),
@@ -364,7 +364,7 @@ object Dnd35Rules {
             willType = SaveProgression.POOR,
             skillPointsPerLevel = 6,
             spellCastingAbility = "SAB",
-            classSkills = listOf("Adestrar Animais", "Cavalgar", "Concentração", "Conhecimento (Geografia)", "Conhecimento (Masmorras)", "Conhecimento (Natureza)", "Cura", "Escalar", "Esconder-se", "Furtividade", "Natação", "Observar", "Ouvir", "Procurar", "Profissão", "Salto", "Sobrevivência", "Usar Cordas"),
+            classSkills = listOf("Adestrar Animais", "Cavalgar", "Concentração", "Conhecimento (Geografia)", "Conhecimento (Masmorras)", "Conhecimento (Natureza)", "Cura", "Escalar", "Esconder-se", "Furtividade", "Natação", "Observar", "Ofício", "Ouvir", "Procurar", "Profissão", "Salto", "Sobrevivência", "Usar Cordas"),
             features = listOf(
                 ClassFeature(1, "1º Inimigo Predileto", "+2 em testes e dano contra tipo de criatura escolhida (Humanoides, Dragões, etc.)."),
                 ClassFeature(1, "Rastrear & Empatia Selvagem", "Ganha o talento Rastrear e empatia com animais."),
@@ -387,7 +387,7 @@ object Dnd35Rules {
             refType = SaveProgression.GOOD,
             willType = SaveProgression.POOR,
             skillPointsPerLevel = 8,
-            classSkills = listOf("Acrobacia", "Arte da Fuga", "Atuação", "Avaliação", "Blefar", "Decifrar Escrita", "Diplomacia", "Disfarces", "Equilíbrio", "Escalar", "Esconder-se", "Falsificação", "Furtividade", "Intimidação", "Natação", "Observar", "Obter Informação", "Operar Mecanismo", "Ouvir", "Prestidigitação", "Procurar", "Salto", "Sentir Motivação", "Usar Cordas", "Usar Instrumento Mágico"),
+            classSkills = listOf("Acrobacia", "Arte da Fuga", "Atuação", "Avaliação", "Blefar", "Decifrar Escrita", "Diplomacia", "Disfarces", "Equilíbrio", "Escalar", "Esconder-se", "Falsificação", "Furtividade", "Intimidação", "Natação", "Observar", "Obter Informação", "Ofício", "Operar Mecanismo", "Ouvir", "Prestidigitação", "Procurar", "Salto", "Sentir Motivação", "Usar Cordas", "Usar Instrumento Mágico"),
             features = listOf(
                 ClassFeature(1, "Ataque Furtivo +1d6", "Dano extra contra oponentes flanqueados ou sem bônus de Destreza (+1d6 a cada 2 níveis)."),
                 ClassFeature(1, "Encontrar Armadilhas", "Capaz de usar Procurar e Operar Mecanismo para desarmar armadilhas mágicas (CD > 20)."),
