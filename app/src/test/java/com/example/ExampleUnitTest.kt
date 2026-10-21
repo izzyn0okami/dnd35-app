@@ -229,7 +229,7 @@ class ExampleUnitTest {
       "Conhecimento (Planos)", "Conhecimento (Religião)", "Decifrar Escrita", "Diplomacia",
       "Disfarces", "Equilíbrio", "Escalar", "Esconder-se", "Furtividade",
       "Identificar Magia", "Natação", "Obter Informação", "Ofícios", "Ouvir",
-      "Prestidigitação", "Profissão", "Sentir Motivação", "Usar Instrumento Mágico"
+      "Prestidigitação", "Profissão", "Saltar", "Sentir Motivação", "Usar Instrumento Mágico"
     )
     assertEquals(expected.toSet(), bard.classSkills.toSet())
     assertTrue(bard.classSkills.none { it == "Observar" })
