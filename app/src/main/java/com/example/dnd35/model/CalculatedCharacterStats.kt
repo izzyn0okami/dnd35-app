@@ -464,7 +464,12 @@ object CharacterCalculator {
             val maxRanks = if (isClassSkill) maxClassRanks else maxClassRanks / 2f
             // Preserva meias graduações válidas e corrige valores antigos/introduzidos manualmente
             // para incrementos de 0,5, sempre respeitando o limite da regra.
-            val ranks = ((skill.ranks.coerceAtLeast(0f) * 2f).roundToInt() / 2f).coerceAtMost(maxRanks)
+            val normalizedRanks = if (isClassSkill) {
+                skill.ranks.coerceAtLeast(0f).roundToInt().toFloat()
+            } else {
+                (skill.ranks.coerceAtLeast(0f) * 2f).roundToInt() / 2f
+            }
+            val ranks = normalizedRanks.coerceAtMost(maxRanks)
             val hasArmorPenalty = def?.armorCheckPenaltyApplies ?: false
             val appliedPenalty = if (hasArmorPenalty) {
                 if (skill.name.equals("Natação", ignoreCase = true)) {
