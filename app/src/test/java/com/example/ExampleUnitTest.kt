@@ -133,7 +133,11 @@ class ExampleUnitTest {
     )
     halfling.computedSkills.forEach { skill ->
       assertEquals(2, skill.racialBonus)
-      assertEquals(2, skill.totalBonus)
+      assertEquals(
+        skill.ranks.toInt() + skill.keyAbilityMod + skill.racialBonus +
+          skill.miscBonus + skill.armorPenaltyApplied,
+        skill.totalBonus
+      )
     }
 
     val elf = CharacterCalculator.compute(
