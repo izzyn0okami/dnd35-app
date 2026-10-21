@@ -93,7 +93,7 @@ fun AddEditSpellDialog(
                         Tab(
                             selected = selectedTab == 0,
                             onClick = { selectedTab = 0 },
-                            text = { Text("Catálogo PHB 3.5") }
+                            text = { Text("Catálogo do Livro do Jogador (3.5)") }
                         )
                         Tab(
                             selected = selectedTab == 1,
