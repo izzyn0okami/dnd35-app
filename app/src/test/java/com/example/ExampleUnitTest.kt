@@ -183,7 +183,7 @@ class ExampleUnitTest {
   fun skillRanksRespectClassAndCrossClassCapsAndHalfRanks() {
     val skills = listOf(
       CharacterSkill(name = "Escalar", keyAbility = "FOR", ranks = 20f),
-      CharacterSkill(name = "Acrobacia", keyAbility = "DES", ranks = 1.25f),
+      CharacterSkill(name = "Arte da Fuga", keyAbility = "DES", ranks = 1.25f),
       CharacterSkill(name = "Conhecimento (Arcano)", keyAbility = "INT", ranks = 0f)
     )
     val stats = CharacterCalculator.compute(
@@ -194,13 +194,13 @@ class ExampleUnitTest {
       )
     )
     val climb = stats.computedSkills.first { it.skill.name == "Escalar" }
-    val acrobatics = stats.computedSkills.first { it.skill.name == "Acrobacia" }
+    val escapeArtist = stats.computedSkills.first { it.skill.name == "Arte da Fuga" }
     val knowledge = stats.computedSkills.first { it.skill.name == "Conhecimento (Arcano)" }
 
     assertEquals(4f, climb.maxRanks)
     assertEquals(4f, climb.ranks)
-    assertEquals(2f, acrobatics.maxRanks)
-    assertEquals(1.5f, acrobatics.ranks)
+    assertEquals(2f, escapeArtist.maxRanks)
+    assertEquals(1.5f, escapeArtist.ranks)
     assertTrue(knowledge.trainedOnly)
     assertTrue(!knowledge.canRoll)
   }
