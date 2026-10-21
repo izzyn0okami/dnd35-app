@@ -366,7 +366,10 @@ object CharacterCalculator {
         // Bônus de CA sem armadura do Monge (usa nível de Monge da multiclasse)
         val monkLevel = classEntries.find { it.className.equals("Monge", ignoreCase = true) }?.level ?: 0
         val isWearingArmor = itemArmorBonus > 0 || itemShieldBonus > 0
-        val monkAcBonus = if (monkLevel > 0 && !isWearingArmor) {
+        val monkAcBonus = if (
+            monkLevel > 0 && !isWearingArmor &&
+            encumbrance == Dnd35Rules.EncumbranceLevel.LIGHT
+        ) {
             maxOf(0, wisMod) + (monkLevel / 5)
         } else 0
 
