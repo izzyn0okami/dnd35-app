@@ -4,6 +4,7 @@ import com.example.dnd35.model.CharacterCalculator
 import com.example.dnd35.model.CharacterEntity
 import com.example.dnd35.model.CharacterInventoryItem
 import com.example.dnd35.model.CharacterJsonAdapters
+import com.example.dnd35.model.CharacterSkill
 import com.example.dnd35.model.Dnd35Rules
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
