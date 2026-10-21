@@ -46,6 +46,7 @@ data class CharacterEntity(
     val copperCp: Float = 0.0f,
     val platinumPp: Float = 0.0f,
     val skillsJson: String = "",
+    val languagesJson: String = "",
     val inventoryJson: String = "",
     val featsJson: String = "",
     val spellsJson: String = "",
