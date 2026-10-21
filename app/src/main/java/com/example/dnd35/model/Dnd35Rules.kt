@@ -144,7 +144,7 @@ object Dnd35Rules {
             dexMod = 2,
             size = "Pequeno",
             baseSpeedMeters = 6.0f,
-            traits = "Variante Coração-Forte de Forgotten Realms: tamanho Pequeno (+1 na CA e nos ataques, +4 Esconder-se), +2 em Escalar, Saltar e Furtividade, +2 de moral contra medo, +1 nas jogadas de ataque com armas de arremesso e fundas; ganha um talento adicional no 1º nível e não recebe o +1 racial geral nos testes de resistência dos halflings Pés-Leves.",
+            traits = "Variante Coração-Forte de Forgotten Realms: tamanho Pequeno (+1 na CA e nos ataques, +4 Esconder-se), +2 em Escalar, Saltar, Ouvir e Furtividade, +2 de moral contra medo, +1 nas jogadas de ataque com armas de arremesso e fundas; ganha um talento adicional no 1º nível e não recebe o +1 racial geral nos testes de resistência dos halflings Pés-Leves.",
             favoredClass = "Ladino"
         ),
         RaceInfo(
