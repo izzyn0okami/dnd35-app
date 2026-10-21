@@ -327,7 +327,7 @@ object Dnd35Rules {
                 ClassFeature(9, "Evasão Aprimorada", "Sofre apenas metade do dano mesmo se falhar no teste de Reflexos."),
                 ClassFeature(11, "Rajada Maior", "Sem penalidade nas jogadas de ataque da Rajada de Golpes."),
                 ClassFeature(13, "Alma de Diamante", "Ganha Resistência a Magia igual a 10 + Nível de Monge."),
-                ClassFeature(15, "Corpo Trêmulo", "Imunidade a venenos."),
+                ClassFeature(11, "Corpo de Diamante", "Imunidade a todos os tipos de veneno."),
                 ClassFeature(15, "Palma Trêmula", "Ataque mortal que causa vibrações fatais no coração do inimigo.")
             ),
             description = "Guerreiro asceta das artes marciais com três testes de resistência bons e golpes desarmados mortais."
@@ -338,7 +338,7 @@ object Dnd35Rules {
             babType = BabProgression.FULL,
             fortType = SaveProgression.GOOD,
             refType = SaveProgression.POOR,
-            willType = SaveProgression.GOOD,
+            willType = SaveProgression.POOR,
             skillPointsPerLevel = 2,
             spellCastingAbility = "SAB",
             classSkills = listOf("Adestrar Animais", "Cavalgar", "Concentração", "Conhecimento (Nobreza)", "Conhecimento (Religião)", "Cura", "Diplomacia", "Profissão", "Sentir Motivação"),
