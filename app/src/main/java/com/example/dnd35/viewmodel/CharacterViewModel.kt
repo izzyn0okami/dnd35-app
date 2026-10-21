@@ -294,8 +294,11 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
         } else isClassSkill
         val maxClassRanks = classEntries.sumOf { it.level }.coerceAtLeast(1) + 3f
         val maxRanks = if (actualClassSkill) maxClassRanks else maxClassRanks / 2f
-        val normalizedRanks = ((ranks.coerceAtLeast(0f) * 2f).roundToInt() / 2f)
-            .coerceAtMost(maxRanks)
+        val normalizedRanks = if (actualClassSkill) {
+            ranks.coerceAtLeast(0f).roundToInt().toFloat()
+        } else {
+            (ranks.coerceAtLeast(0f) * 2f).roundToInt() / 2f
+        }.coerceAtMost(maxRanks)
         val index = currentSkills.indexOfFirst { it.name.equals(skillName, ignoreCase = true) }
         if (index >= 0) {
             val old = currentSkills[index]
