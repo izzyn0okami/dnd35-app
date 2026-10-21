@@ -32,7 +32,7 @@ Padronizar a interface, os catálogos, as descrições e a ficha PDF do aplicati
 | Skill | Perícia | Usar “graduações de perícia” ao se referir a ranks. |
 | Rank (skill) | Graduação | Evitar “ponto de habilidade” para esse conceito. |
 | Armor Class | Classe de Armadura (CA) | Manter CA depois de apresentar o nome completo. |
-| Flat-footed | Desprevenido | Não traduzir como “surpreso”; são conceitos de jogo distintos. |
+| Flat-footed | Surpreso | Forma usada na tradução brasileira da Devir para o Livro do Jogador 3.5. Como o termo também pode ser confundido com a condição de surpresa, o contexto e a regra associada devem deixar claro que se trata da CA sem o bônus de Destreza e da impossibilidade de ataques de oportunidade. |
 | Saving throw | Teste de resistência | Tipos: Fortitude, Reflexos e Vontade. |
 | Base attack bonus | Bônus Base de Ataque (BBA) | Expandir na primeira ocorrência. |
 | Difficulty Class | Classe de Dificuldade (CD) | Expandir na primeira ocorrência. |
@@ -56,8 +56,8 @@ As formas abaixo não devem ser trocadas automaticamente até serem comparadas c
 
 ## Alterações iniciais desta etapa
 
-- “SURPRESA” foi alterado para “DESPREVENIDO” no rótulo da CA correspondente.
-- “Surpreendido” foi alterado para “Desprevenido” no PDF, no mesmo contexto.
+- O rótulo da CA correspondente foi padronizado para “SURPRESO”, seguindo a terminologia identificada na tradução brasileira da Devir.
+- O rótulo correspondente no PDF foi padronizado para “Surpreso”, seguindo a terminologia identificada na tradução brasileira da Devir.
 - A abreviação inglesa “sq” foi substituída por “quadrados” no PDF.
 - “Restaurar Slots” foi substituído por “Recuperar espaços de magia”.
 - “Catálogo PHB” foi substituído por “Catálogo do Livro do Jogador”.
