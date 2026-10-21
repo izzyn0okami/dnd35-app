@@ -124,7 +124,7 @@ object Dnd35Rules {
             conMod = 2,
             size = "Pequeno",
             baseSpeedMeters = 6.0f,
-            traits = "+1 CA e ataque por tamanho pequeno (+4 Furtividade), visão na penumbra, +2 testes de Ilusão, +1 na CD de magias de Ilusão, +1 ataque vs kobolds/goblins, +4 esquiva vs gigantes, +2 Ouvir e Ofício (Alquimia), magias inatas (Falar com Animais, Globos de Luz, Som Fantasma).",
+            traits = "+1 CA e ataque por tamanho pequeno (+4 Furtividade), visão na penumbra, +2 testes de Ilusão, +1 na CD de magias de Ilusão, +1 ataque vs kobolds/goblins, +4 esquiva vs gigantes, +2 Ouvir e Ofícios (Alquimia), magias inatas (Falar com Animais, Globos de Luz, Som Fantasma).",
             favoredClass = "Bardo"
         ),
         RaceInfo(
@@ -198,7 +198,7 @@ object Dnd35Rules {
             refType = SaveProgression.POOR,
             willType = SaveProgression.POOR,
             skillPointsPerLevel = 4,
-            classSkills = listOf("Adestrar Animais", "Cavalgar", "Escalar", "Intimidação", "Natação", "Ofício", "Ouvir", "Salto", "Sobrevivência"),
+            classSkills = listOf("Adestrar Animais", "Cavalgar", "Escalar", "Intimidação", "Natação", "Ofícios", "Ouvir", "Saltar", "Sobrevivência"),
             features = listOf(
                 ClassFeature(1, "Fúria 1/dia", "+4 FOR, +4 CON, +2 testes de Vontade, -2 CA por 3 + mod Con rodadas."),
                 ClassFeature(1, "Movimento Rápido", "+3 metros no deslocamento terrestre (sem armadura pesada)."),
@@ -224,7 +224,7 @@ object Dnd35Rules {
             willType = SaveProgression.GOOD,
             skillPointsPerLevel = 6,
             spellCastingAbility = "CAR",
-            classSkills = listOf("Acrobacia", "Arte da Fuga", "Atuação", "Avaliação", "Blefar", "Concentração", "Conhecimento (Arcano)", "Conhecimento (Arquitetura e Engenharia)", "Conhecimento (Geografia)", "Conhecimento (História)", "Conhecimento (Local)", "Conhecimento (Masmorras)", "Conhecimento (Natureza)", "Conhecimento (Nobreza e Realeza)", "Conhecimento (Planos)", "Conhecimento (Religião)", "Decifrar Escrita", "Diplomacia", "Disfarces", "Equilíbrio", "Escalar", "Esconder-se", "Furtividade", "Identificar Magia", "Natação", "Obter Informação", "Ofício", "Ouvir", "Prestidigitação", "Profissão", "Sentir Motivação", "Usar Instrumento Mágico"),
+            classSkills = listOf("Acrobacia", "Arte da Fuga", "Atuação", "Avaliação", "Blefar", "Concentração", "Conhecimento (Arcano)", "Conhecimento (Arquitetura e Engenharia)", "Conhecimento (Geografia)", "Conhecimento (História)", "Conhecimento (Local)", "Conhecimento (Masmorras)", "Conhecimento (Natureza)", "Conhecimento (Nobreza e Realeza)", "Conhecimento (Planos)", "Conhecimento (Religião)", "Decifrar Escrita", "Diplomacia", "Disfarces", "Equilíbrio", "Escalar", "Esconder-se", "Furtividade", "Identificar Magia", "Natação", "Obter Informação", "Ofícios", "Ouvir", "Prestidigitação", "Profissão", "Sentir Motivação", "Usar Instrumento Mágico"),
             features = listOf(
                 ClassFeature(1, "Música de Bardo (1/dia/nv)", "Usos diários de música mágica: Contra-mágica, Fascinar e Inspirar Coragem (+1)."),
                 ClassFeature(1, "Conhecimento de Bardo", "Teste especial (1d20 + Nível + mod Int) para lembrar fatos lendários."),
@@ -246,7 +246,7 @@ object Dnd35Rules {
             willType = SaveProgression.GOOD,
             skillPointsPerLevel = 2,
             spellCastingAbility = "SAB",
-            classSkills = listOf("Concentração", "Conhecimento (Arcano)", "Conhecimento (História)", "Conhecimento (Planos)", "Conhecimento (Religião)", "Cura", "Diplomacia", "Identificar Magia", "Ofício", "Profissão"),
+            classSkills = listOf("Concentração", "Conhecimento (Arcano)", "Conhecimento (História)", "Conhecimento (Planos)", "Conhecimento (Religião)", "Cura", "Diplomacia", "Identificar Magia", "Ofícios", "Profissão"),
             features = listOf(
                 ClassFeature(1, "Aura & Divindade", "Aura sagrada ou profana associada à sua divindade."),
                 ClassFeature(1, "Expulsar/Fascinar Mortos-Vivos", "Canaliza energia divina (3 + mod Car vezes ao dia) para afugentar ou destruir mortos-vivos."),
@@ -264,7 +264,7 @@ object Dnd35Rules {
             willType = SaveProgression.GOOD,
             skillPointsPerLevel = 4,
             spellCastingAbility = "SAB",
-            classSkills = listOf("Adestrar Animais", "Cavalgar", "Concentração", "Conhecimento (Natureza)", "Cura", "Diplomacia", "Identificar Magia", "Natação", "Observar", "Ofício", "Ouvir", "Profissão", "Sobrevivência"),
+            classSkills = listOf("Adestrar Animais", "Cavalgar", "Concentração", "Conhecimento (Natureza)", "Cura", "Diplomacia", "Identificar Magia", "Natação", "Observar", "Ofícios", "Ouvir", "Profissão", "Sobrevivência"),
             features = listOf(
                 ClassFeature(1, "Companheiro Animal", "Aliado animal leal (Lobo, Urso, Águia, etc.) com bônus de dados de vida e truques."),
                 ClassFeature(1, "Senso da Natureza", "+2 em Conhecimento (Natureza) e Sobrevivência."),
@@ -290,7 +290,7 @@ object Dnd35Rules {
             refType = SaveProgression.POOR,
             willType = SaveProgression.POOR,
             skillPointsPerLevel = 2,
-            classSkills = listOf("Adestrar Animais", "Cavalgar", "Escalar", "Intimidação", "Natação", "Ofício", "Salto"),
+            classSkills = listOf("Adestrar Animais", "Cavalgar", "Escalar", "Intimidação", "Natação", "Ofícios", "Saltar"),
             features = listOf(
                 ClassFeature(1, "Talento Adicional de Combate (1º Nv)", "Ganha um talento de combate adicional à sua escolha."),
                 ClassFeature(2, "Talento Adicional de Combate (2º Nv)", "Ganha o segundo talento de combate bônus."),
@@ -314,7 +314,7 @@ object Dnd35Rules {
             refType = SaveProgression.GOOD,
             willType = SaveProgression.GOOD,
             skillPointsPerLevel = 4,
-            classSkills = listOf("Acrobacia", "Arte da Fuga", "Concentração", "Conhecimento (Arcano)", "Conhecimento (Religião)", "Diplomacia", "Equilíbrio", "Escalar", "Esconder-se", "Furtividade", "Natação", "Observar", "Ofício", "Ouvir", "Salto", "Sentir Motivação"),
+            classSkills = listOf("Acrobacia", "Arte da Fuga", "Concentração", "Conhecimento (Arcano)", "Conhecimento (Religião)", "Diplomacia", "Equilíbrio", "Escalar", "Esconder-se", "Furtividade", "Natação", "Observar", "Ofícios", "Ouvir", "Saltar", "Sentir Motivação"),
             features = listOf(
                 ClassFeature(1, "Bônus de CA sem Armadura", "Adiciona o mod de Sabedoria na CA quando sem armadura ou escudo (+1 a cada 5 níveis)."),
                 ClassFeature(1, "Rajada de Golpes", "Ataque extra desarmado por rodada com -2 em todos os golpes."),
@@ -341,7 +341,7 @@ object Dnd35Rules {
             willType = SaveProgression.POOR,
             skillPointsPerLevel = 2,
             spellCastingAbility = "SAB",
-            classSkills = listOf("Adestrar Animais", "Cavalgar", "Concentração", "Conhecimento (Nobreza e Realeza)", "Conhecimento (Religião)", "Cura", "Diplomacia", "Ofício", "Profissão", "Sentir Motivação"),
+            classSkills = listOf("Adestrar Animais", "Cavalgar", "Concentração", "Conhecimento (Nobreza e Realeza)", "Conhecimento (Religião)", "Cura", "Diplomacia", "Ofícios", "Profissão", "Sentir Motivação"),
             features = listOf(
                 ClassFeature(1, "Aura do Bem & Detectar o Mal", "Detecta emanações malignas à vontade."),
                 ClassFeature(1, "Destruir o Mal 1/dia", "Soma mod de Carisma no ataque e +Nível no dano contra criaturas malignas."),
@@ -364,7 +364,7 @@ object Dnd35Rules {
             willType = SaveProgression.POOR,
             skillPointsPerLevel = 6,
             spellCastingAbility = "SAB",
-            classSkills = listOf("Adestrar Animais", "Cavalgar", "Concentração", "Conhecimento (Geografia)", "Conhecimento (Masmorras)", "Conhecimento (Natureza)", "Cura", "Escalar", "Esconder-se", "Furtividade", "Natação", "Observar", "Ofício", "Ouvir", "Procurar", "Profissão", "Salto", "Sobrevivência", "Usar Cordas"),
+            classSkills = listOf("Adestrar Animais", "Cavalgar", "Concentração", "Conhecimento (Geografia)", "Conhecimento (Masmorras)", "Conhecimento (Natureza)", "Cura", "Escalar", "Esconder-se", "Furtividade", "Natação", "Observar", "Ofícios", "Ouvir", "Procurar", "Profissão", "Saltar", "Sobrevivência", "Usar Cordas"),
             features = listOf(
                 ClassFeature(1, "1º Inimigo Predileto", "+2 em testes e dano contra tipo de criatura escolhida (Humanoides, Dragões, etc.)."),
                 ClassFeature(1, "Rastrear & Empatia Selvagem", "Ganha o talento Rastrear e empatia com animais."),
@@ -387,7 +387,7 @@ object Dnd35Rules {
             refType = SaveProgression.GOOD,
             willType = SaveProgression.POOR,
             skillPointsPerLevel = 8,
-            classSkills = listOf("Abrir Fechaduras", "Acrobacia", "Arte da Fuga", "Atuação", "Avaliação", "Blefar", "Decifrar Escrita", "Diplomacia", "Disfarces", "Equilíbrio", "Escalar", "Esconder-se", "Falsificação", "Furtividade", "Intimidação", "Natação", "Observar", "Obter Informação", "Ofício", "Operar Mecanismo", "Ouvir", "Prestidigitação", "Procurar", "Salto", "Sentir Motivação", "Usar Cordas", "Usar Instrumento Mágico"),
+            classSkills = listOf("Abrir Fechaduras", "Acrobacia", "Arte da Fuga", "Atuação", "Avaliação", "Blefar", "Decifrar Escrita", "Diplomacia", "Disfarces", "Equilíbrio", "Escalar", "Esconder-se", "Falsificação", "Furtividade", "Intimidação", "Natação", "Observar", "Obter Informação", "Ofícios", "Operar Mecanismo", "Ouvir", "Prestidigitação", "Procurar", "Saltar", "Sentir Motivação", "Usar Cordas", "Usar Instrumento Mágico"),
             features = listOf(
                 ClassFeature(1, "Ataque Furtivo +1d6", "Dano extra contra oponentes flanqueados ou sem bônus de Destreza (+1d6 a cada 2 níveis)."),
                 ClassFeature(1, "Encontrar Armadilhas", "Capaz de usar Procurar e Operar Mecanismo para desarmar armadilhas mágicas (CD > 20)."),
@@ -412,7 +412,7 @@ object Dnd35Rules {
             willType = SaveProgression.GOOD,
             skillPointsPerLevel = 2,
             spellCastingAbility = "CAR",
-            classSkills = listOf("Blefar", "Concentração", "Conhecimento (Arcano)", "Identificar Magia", "Ofício", "Profissão"),
+            classSkills = listOf("Blefar", "Concentração", "Conhecimento (Arcano)", "Identificar Magia", "Ofícios", "Profissão"),
             features = listOf(
                 ClassFeature(1, "Conjuração Espontânea", "Conjura feitiços arcanos instantaneamente sem necessidade de preparar em grimório."),
                 ClassFeature(1, "Invocar Familiar", "Vínculo místico com animal companheiro (Corvo, Gato, Cobra, Sapo, etc.).")
@@ -428,7 +428,7 @@ object Dnd35Rules {
             willType = SaveProgression.GOOD,
             skillPointsPerLevel = 2,
             spellCastingAbility = "INT",
-            classSkills = listOf("Concentração", "Conhecimento (Arcano)", "Conhecimento (Arquitetura e Engenharia)", "Conhecimento (Geografia)", "Conhecimento (História)", "Conhecimento (Local)", "Conhecimento (Masmorras)", "Conhecimento (Natureza)", "Conhecimento (Nobreza e Realeza)", "Conhecimento (Planos)", "Conhecimento (Religião)", "Decifrar Escrita", "Identificar Magia", "Ofício", "Profissão"),
+            classSkills = listOf("Concentração", "Conhecimento (Arcano)", "Conhecimento (Arquitetura e Engenharia)", "Conhecimento (Geografia)", "Conhecimento (História)", "Conhecimento (Local)", "Conhecimento (Masmorras)", "Conhecimento (Natureza)", "Conhecimento (Nobreza e Realeza)", "Conhecimento (Planos)", "Conhecimento (Religião)", "Decifrar Escrita", "Identificar Magia", "Ofícios", "Profissão"),
             features = listOf(
                 ClassFeature(1, "Preparação com Grimório", "Estuda e prepara magias diárias a partir do seu livro de feitiços."),
                 ClassFeature(1, "Escrever Pergaminho", "Talento de criação de itens gratuito no 1º nível."),
@@ -582,6 +582,16 @@ object Dnd35Rules {
         }
     }
 
+    /**
+     * Converte nomes legados salvos em fichas para o rótulo canônico atual.
+     * Não altera os dados persistidos automaticamente; o cálculo mantém graduações e bônus.
+     */
+    fun canonicalSkillName(name: String): String = when (name.trim().lowercase()) {
+        "salto" -> "Saltar"
+        "ofício" -> "Ofícios"
+        else -> name.trim()
+    }
+
     // Perícias canônicas de D&D 3.5, usando os nomes da tradução portuguesa.
     data class SkillDefinition(
         val name: String,
@@ -624,13 +634,13 @@ object Dnd35Rules {
         SkillDefinition("Natação", "FOR", armorCheckPenaltyApplies = true),
         SkillDefinition("Observar", "SAB", armorCheckPenaltyApplies = false),
         SkillDefinition("Obter Informação", "CAR", armorCheckPenaltyApplies = false),
-        SkillDefinition("Ofício", "INT", armorCheckPenaltyApplies = false),
+        SkillDefinition("Ofícios", "INT", armorCheckPenaltyApplies = false),
         SkillDefinition("Operar Mecanismo", "INT", armorCheckPenaltyApplies = false, trainedOnly = true),
         SkillDefinition("Ouvir", "SAB", armorCheckPenaltyApplies = false),
         SkillDefinition("Prestidigitação", "DES", armorCheckPenaltyApplies = true, trainedOnly = true),
         SkillDefinition("Procurar", "INT", armorCheckPenaltyApplies = false),
         SkillDefinition("Profissão", "SAB", armorCheckPenaltyApplies = false, trainedOnly = true),
-        SkillDefinition("Salto", "FOR", armorCheckPenaltyApplies = true),
+        SkillDefinition("Saltar", "FOR", armorCheckPenaltyApplies = true),
         SkillDefinition("Sentir Motivação", "SAB", armorCheckPenaltyApplies = false),
         SkillDefinition("Sobrevivência", "SAB", armorCheckPenaltyApplies = false),
         SkillDefinition("Usar Cordas", "DES", armorCheckPenaltyApplies = false),

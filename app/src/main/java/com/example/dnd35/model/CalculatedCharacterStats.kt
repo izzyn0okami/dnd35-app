@@ -452,12 +452,13 @@ object CharacterCalculator {
                 else -> 0
             }
 
-            val def = Dnd35Rules.SKILL_DEFINITIONS.find { it.name.equals(skill.name, ignoreCase = true) }
+            val canonicalSkillName = Dnd35Rules.canonicalSkillName(skill.name)
+            val def = Dnd35Rules.SKILL_DEFINITIONS.find { it.name.equals(canonicalSkillName, ignoreCase = true) }
             // Perícias conhecidas seguem a lista oficial de perícias de classe de qualquer classe
             // do personagem. O sinalizador salvo só serve para perícias personalizadas.
             val isClassSkill = if (def != null) {
                 multiclassDetails.any { detail ->
-                    detail.classInfo.classSkills.any { it.equals(skill.name, ignoreCase = true) }
+                    detail.classInfo.classSkills.any { it.equals(canonicalSkillName, ignoreCase = true) }
                 }
             } else skill.isClassSkill
             val maxClassRanks = totalCharacterLevel + 3f
@@ -481,7 +482,7 @@ object CharacterCalculator {
 
             val total = ranks.toInt() + keyMod + skill.miscBonus + appliedPenalty
             ComputedSkill(
-                skill = skill.copy(ranks = ranks, isClassSkill = isClassSkill),
+                skill = skill.copy(name = def?.name ?: skill.name, ranks = ranks, isClassSkill = isClassSkill),
                 keyAbilityMod = keyMod,
                 ranks = ranks,
                 miscBonus = skill.miscBonus,
@@ -608,7 +609,8 @@ object CharacterCalculator {
 
     fun defaultSkillsForClasses(classes: List<Dnd35Rules.ClassInfo>): List<CharacterSkill> {
         return Dnd35Rules.SKILL_DEFINITIONS.map { def ->
-            val isClass = classes.any { c -> c.classSkills.any { it.equals(def.name, ignoreCase = true) } }
+            val canonicalName = Dnd35Rules.canonicalSkillName(def.name)
+            val isClass = classes.any { c -> c.classSkills.any { it.equals(canonicalName, ignoreCase = true) } }
             CharacterSkill(
                 name = def.name,
                 keyAbility = def.keyAbility,

@@ -228,7 +228,7 @@ class ExampleUnitTest {
       "Conhecimento (Masmorras)", "Conhecimento (Natureza)", "Conhecimento (Nobreza e Realeza)",
       "Conhecimento (Planos)", "Conhecimento (Religião)", "Decifrar Escrita", "Diplomacia",
       "Disfarces", "Equilíbrio", "Escalar", "Esconder-se", "Furtividade",
-      "Identificar Magia", "Natação", "Obter Informação", "Ofício", "Ouvir",
+      "Identificar Magia", "Natação", "Obter Informação", "Ofícios", "Ouvir",
       "Prestidigitação", "Profissão", "Sentir Motivação", "Usar Instrumento Mágico"
     )
     assertEquals(expected.toSet(), bard.classSkills.toSet())
@@ -238,19 +238,19 @@ class ExampleUnitTest {
   @Test
   fun barbarianClassSkillsIncludeCraftProfessionSkill() {
     val barbarian = Dnd35Rules.CLASSES.first { it.name == "Bárbaro" }
-    assertTrue(barbarian.classSkills.contains("Ofício"))
+    assertTrue(barbarian.classSkills.contains("Ofícios"))
   }
 
   @Test
   fun clericClassSkillsIncludeCraftProfessionSkill() {
     val cleric = Dnd35Rules.CLASSES.first { it.name == "Clérigo" }
-    assertTrue(cleric.classSkills.contains("Ofício"))
+    assertTrue(cleric.classSkills.contains("Ofícios"))
   }
 
   @Test
   fun druidClassSkillsIncludeCraftProfessionSkill() {
     val druid = Dnd35Rules.CLASSES.first { it.name == "Druida" }
-    assertTrue(druid.classSkills.contains("Ofício"))
+    assertTrue(druid.classSkills.contains("Ofícios"))
   }
 
   @Test
@@ -258,7 +258,7 @@ class ExampleUnitTest {
     val classesExpectedToHaveCraft = listOf("Guerreiro", "Monge", "Paladino", "Ranger", "Ladino")
     classesExpectedToHaveCraft.forEach { className ->
       val characterClass = Dnd35Rules.CLASSES.first { it.name == className }
-      assertTrue("$className deve ter Ofício como perícia de classe", characterClass.classSkills.contains("Ofício"))
+      assertTrue("$className deve ter Ofícios como perícia de classe", characterClass.classSkills.contains("Ofícios"))
     }
   }
 
@@ -280,6 +280,30 @@ class ExampleUnitTest {
     assertTrue(Dnd35Rules.SKILL_DEFINITIONS.any { it.name.equals("Acrobacia", ignoreCase = true) })
     assertTrue(Dnd35Rules.SKILL_DEFINITIONS.any { it.name == "Equilíbrio" })
     assertTrue(Dnd35Rules.SKILL_DEFINITIONS.any { it.name == "Arte da Fuga" })
+  }
+
+  @Test
+  fun legacySkillNamesKeepRanksAndUseCanonicalLabels() {
+    val legacySkills = listOf(
+      CharacterSkill(name = "Salto", keyAbility = "FOR", ranks = 1f),
+      CharacterSkill(name = "Ofício", keyAbility = "INT", ranks = 1f)
+    )
+    val stats = CharacterCalculator.compute(
+      CharacterEntity(
+        characterClass = "Bárbaro",
+        level = 1,
+        skillsJson = CharacterJsonAdapters.serializeSkills(legacySkills)
+      )
+    )
+    val jump = stats.computedSkills.first { it.skill.name == "Saltar" }
+    val craft = stats.computedSkills.first { it.skill.name == "Ofícios" }
+
+    assertEquals(1f, jump.ranks)
+    assertEquals(1f, craft.ranks)
+    assertTrue(jump.isClassSkill)
+    assertTrue(craft.isClassSkill)
+    assertEquals("Saltar", Dnd35Rules.canonicalSkillName("Salto"))
+    assertEquals("Ofícios", Dnd35Rules.canonicalSkillName("Ofício"))
   }
 
   @Test
