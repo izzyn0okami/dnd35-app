@@ -65,6 +65,8 @@ fun SkillsTab(
     var filterType by remember { mutableIntStateOf(0) } // 0: Todas, 1: De Classe, 2: Com Graduação
     var editingSkill by remember { mutableStateOf<ComputedSkill?>(null) }
     var diceRollTarget by remember { mutableStateOf<Pair<String, Int>?>(null) }
+    var craftSpecialtyInput by remember { mutableStateOf("") }
+    var craftSpecialtyMessage by remember { mutableStateOf<String?>(null) }
 
     val maxClassRank = stats.totalCharacterLevel + 3
     val maxCrossRank = maxClassRank / 2.0f
@@ -139,6 +141,73 @@ fun SkillsTab(
                                 }
                             }
                         }
+                    }
+                }
+            }
+            Spacer(modifier = Modifier.height(12.dp))
+        }
+
+        // Ofícios é uma categoria: cada especialidade possui graduações independentes.
+        item {
+            Card(
+                modifier = Modifier.fillMaxWidth().testTag("craft_specialties_section"),
+                shape = RoundedCornerShape(12.dp)
+            ) {
+                Column(modifier = Modifier.padding(12.dp)) {
+                    Text("Especialidades de Ofícios", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
+                    Text(
+                        "Cada especialidade é uma perícia independente. Digite o nome da especialidade para adicioná-la à ficha.",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        OutlinedTextField(
+                            value = craftSpecialtyInput,
+                            onValueChange = {
+                                craftSpecialtyInput = it
+                                craftSpecialtyMessage = null
+                            },
+                            label = { Text("Nova especialidade (ex.: Armas)") },
+                            singleLine = true,
+                            modifier = Modifier.weight(1f)
+                        )
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Button(
+                            onClick = {
+                                val entered = craftSpecialtyInput.trim()
+                                val name = if (entered.startsWith("Ofícios (", ignoreCase = true) && entered.endsWith(")")) {
+                                    com.example.dnd35.model.Dnd35Rules.canonicalSkillName(entered)
+                                } else {
+                                    com.example.dnd35.model.Dnd35Rules.canonicalSkillName("Ofícios ($entered)")
+                                }
+                                when {
+                                    entered.isBlank() -> {
+                                        craftSpecialtyMessage = "Digite o nome da especialidade."
+                                    }
+                                    name.substringAfter("(", "").removeSuffix(")").isBlank() -> {
+                                        craftSpecialtyMessage = "O nome da especialidade não pode ficar vazio."
+                                    }
+                                    stats.computedSkills.any { it.skill.name.equals(name, ignoreCase = true) } -> {
+                                        craftSpecialtyMessage = "$name já existe nesta ficha."
+                                    }
+                                    else -> {
+                                        viewModel.updateSkill(name, 0f, 0, false)
+                                        craftSpecialtyMessage = "$name adicionado à ficha."
+                                        craftSpecialtyInput = ""
+                                    }
+                                }
+                            },
+                            enabled = craftSpecialtyInput.isNotBlank()
+                        ) { Text("Salvar ofício") }
+                    }
+                    craftSpecialtyMessage?.let { message ->
+                        Spacer(modifier = Modifier.height(4.dp))
+                        Text(
+                            text = message,
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
                     }
                 }
             }
