@@ -135,7 +135,7 @@ class ExampleUnitTest {
       assertEquals(2, skill.racialBonus)
       assertEquals(
         skill.ranks.toInt() + skill.keyAbilityMod + skill.racialBonus +
-          skill.miscBonus + skill.armorPenaltyApplied,
+          skill.sizeBonus + skill.miscBonus + skill.armorPenaltyApplied,
         skill.totalBonus
       )
     }
@@ -210,9 +210,9 @@ class ExampleUnitTest {
     val hide = smallCharacter.computedSkills.first { it.skill.name == "Esconder-se" }
     val stealth = smallCharacter.computedSkills.first { it.skill.name == "Furtividade" }
     assertEquals(4, hide.sizeBonus)
-    assertEquals(6, hide.totalBonus) // +4 tamanho, +2 bônus racial de halfling
+    assertEquals(7, hide.totalBonus) // +4 tamanho, +2 racial e +1 de Destreza racial
     assertEquals(0, stealth.sizeBonus)
-    assertEquals(2, stealth.totalBonus) // bônus racial, sem bônus de tamanho
+    assertEquals(3, stealth.totalBonus) // +2 racial e +1 de Destreza racial, sem bônus de tamanho
   }
 
   @Test
