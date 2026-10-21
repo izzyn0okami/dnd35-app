@@ -23,8 +23,8 @@ Esta etapa inicia a auditoria técnica das perícias usadas pela ficha. A fonte 
 
 1. **Perícias de classe das 11 classes básicas:** comparar cada lista com a seção “Perícias de Classe” de cada classe e com a tabela geral de perícias. Não completar listas por inferência.
 2. **Penalidade de armadura:** verificar quais perícias sofrem a penalidade e confirmar a regra de penalidade dobrada em Natação. O modelo atual guarda um indicador booleano por perícia; uma regra de multiplicador pode exigir mudança explícita no modelo e nos pontos de cálculo.
-3. **Somente treinado:** conferir Acrobacia, Adestrar Animais, Conhecimento, Decifrar Escrita, Identificar Magia, Operar Mecanismo, Prestidigitação, Profissão e Usar Instrumento Mágico contra a tabela da edição. A interface e os cálculos devem respeitar o treinamento mínimo sem apagar graduações de fichas antigas.
-4. **Nomes e contagem:** conferir os nomes das especializações de Conhecimento, a distinção entre a perícia Ofícioss e suas especializações e a contagem do catálogo. Conhecimento possui especializações próprias, portanto a quantidade de entradas não deve ser comparada diretamente à contagem de perícias sem explicar esse critério.
+3. **Somente treinado:** conferir Adestrar Animais, Conhecimento, Decifrar Escrita, Identificar Magia, Operar Mecanismo, Prestidigitação, Profissão e Usar Instrumento Mágico contra a tabela da edição. A interface e os cálculos devem respeitar o treinamento mínimo sem apagar graduações de fichas antigas.
+4. **Nomes e contagem:** conferir os nomes das especializações de Conhecimento, a distinção entre a perícia Ofícios e suas especializações e a contagem do catálogo. Conhecimento possui especializações próprias, portanto a quantidade de entradas não deve ser comparada diretamente à contagem de perícias sem explicar esse critério.
 5. **Compatibilidade:** antes de renomear outros valores armazenados, implementar testes ou migração para fichas existentes; nomes persistidos não devem ser alterados silenciosamente.
 
 - Corrigida a lista de perícias de classe do **Bardo**: incluídas todas as especializações de Conhecimento, além de Decifrar Escrita, Natação, Ofícios e Profissão; removida Observar, que não consta na lista básica da classe. A lista foi comparada com a referência SRD 3.5; Falar Idioma não foi incluída porque não existe como entrada de perícia no catálogo atual do aplicativo e exige decisão de modelagem própria.
@@ -73,3 +73,11 @@ Esta é uma correção inicial, não uma certificação completa do sistema de p
 - A lista do Feiticeiro continha **Blefar**, que não consta entre as perícias de classe do Feiticeiro no D&D 3.5. A lista foi ajustada para manter Concentração, Conhecimento (Arcano), Identificar Magia, Ofícios e Profissão.
 - Foi adicionado teste de regressão para comparar o conjunto completo de perícias de classe do Feiticeiro com a lista esperada.
 - A alteração não modifica graduações existentes nem os dados salvos das fichas.
+
+
+## Correção das perícias de classe do Bardo — Saltar
+
+- A lista de perícias de classe do Bardo estava sem **Saltar** (*Jump*), que consta da lista básica da classe no D&D 3.5. A perícia foi incluída sem alterar graduações já registradas.
+- O teste de regressão da lista completa do Bardo agora exige **Saltar**.
+- Aproveitando a revisão documental, removida a referência incorreta a Acrobacia como perícia somente treinada: em D&D 3.5, Acrobacia pode ser usada sem treinamento, embora sofra penalidade de armadura.
+- Corrigido o erro tipográfico “Ofícioss” na documentação.
