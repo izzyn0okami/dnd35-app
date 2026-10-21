@@ -6,6 +6,8 @@ Esta etapa inicia a auditoria técnica das perícias usadas pela ficha. A fonte 
 
 ## Correções aplicadas
 
+- Incluída a perícia **Abrir Fechaduras** (*Open Lock*) no catálogo: usa Destreza, exige treinamento e não sofre penalidade de armadura. Incluída também na lista de perícias de classe do **Ladino**, sem adicioná-la à lista do Guerreiro. Um teste de regressão cobre esses atributos.
+
 - Confirmado que **Acrobacia** é uma perícia válida em D&D 3.5 na edição brasileira: ela corresponde à perícia *Tumble* do SRD em inglês. Não deve ser removida do catálogo nem das listas de classe. A lista e o teste existente que a reconhece estão corretos.
 - Corrigida a lista de perícias de classe do **Bárbaro** para incluir **Ofício**, presente na lista da classe no Livro do Jogador. Foi adicionado teste de regressão para impedir que a perícia volte a faltar.
 - Corrigidas também as listas de perícias de classe do **Clérigo** e do **Druida** para incluir **Ofício**, conforme as listas de classe do Livro do Jogador/SRD 3.5. Foram adicionados testes de regressão para ambas.
