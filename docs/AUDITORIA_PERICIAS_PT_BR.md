@@ -109,3 +109,4 @@ Esta é uma correção inicial, não uma certificação completa do sistema de p
 - Cada especialidade possui suas próprias graduações e bônus, usa Inteligência, participa do limite de graduações por nível e realiza testes normalmente. O estado genérico legado **Ofícios** continua preservado.
 - A especialidade herda a condição de perícia de classe da perícia-base **Ofícios** quando qualquer classe do personagem tem Ofícios em sua lista.
 - A interface permite cadastrar uma especialidade pelo nome curto (ex.: Armas) ou pelo nome completo (ex.: Ofícios (Armas)). O armazenamento existente de perícias é reutilizado; não há migração destrutiva dos dados salvos.
+- A interface oferece sugestões comuns (Armas, Armaduras, Alquimia, Carpintaria, Ferraria, Joalheria, Arco e flechas e Construção), mas elas são apenas atalhos: o jogador pode informar qualquer outra especialidade apropriada à campanha. Não existe limite fixo de especialidades.
