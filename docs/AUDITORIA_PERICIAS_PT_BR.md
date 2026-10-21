@@ -38,3 +38,11 @@ Referências de apoio:
 ## Limite desta entrega
 
 Esta é uma correção inicial, não uma certificação completa do sistema de perícias. As listas de classe, regras de treinamento e penalidades permanecem explicitamente pendentes até serem conferidas e cobertas por testes. Nenhuma alteração de cálculo de regra foi feita nesta etapa.
+
+
+## Ajuste de consistência da graduação máxima na interface
+
+- A faixa informativa de graduação máxima da aba de perícias agora usa o nível total calculado pelo modelo (`stats.totalCharacterLevel`), a mesma fonte usada para calcular os limites efetivos. Isso evita divergência visual caso o campo legado `character.level` esteja dessincronizado dos níveis de classe salvos.
+- Foi adicionado teste de regressão para o limite de graduação de personagem multiclasse. Esse teste valida o cálculo do modelo; a alteração visual é restrita à fonte do número exibido.
+- A interface ainda mostra pontos de perícia investidos, mas não valida um orçamento de pontos por nível. Essa validação exige modelar os pontos recebidos em cada nível/classe e modificadores aplicáveis, sem inferir retroativamente custos a partir da ficha atual.
+- **Falar Idioma** continua fora do catálogo de perícias testáveis: uma implementação correta deve ser uma seção de idiomas com escolhas conhecidas, e não uma perícia com graduações ou botão de rolagem. Como isso adiciona dados persistidos, deverá ser feito em mudança separada com migração Room e testes de preservação das fichas existentes.
