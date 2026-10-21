@@ -843,4 +843,24 @@ class ExampleUnitTest {
     assertTrue(drowTraits.contains("espada longa, rapieira, arco longo e arco curto"))
     assertTrue(drowTraits.contains("incluindo versões compostas"))
   }
+  @Test
+  fun dwarfRacialDescriptionsIncludeCoreTraitsForBothSubraces() {
+    val races = Dnd35Rules.RACES.associateBy { it.name }
+    val hillTraits = races.getValue("Anão").traits
+    val mountain = races.getValue("Anão da Montanha")
+    val mountainTraits = mountain.traits
+
+    assertTrue(hillTraits.contains("Visão no escuro 18m"))
+    assertTrue(hillTraits.contains("+2 em testes de resistência contra veneno"))
+    assertTrue(hillTraits.contains("magias e habilidades similares a magia"))
+    assertTrue(hillTraits.contains("+2 em Procurar para construções incomuns de pedra"))
+    assertTrue(hillTraits.contains("+4 contra encontrão e derrubar"))
+    assertTrue(hillTraits.contains("+1 nas jogadas de ataque contra orcs e goblinoides"))
+    assertTrue(hillTraits.contains("+4 de esquiva na CA contra gigantes"))
+    assertTrue(hillTraits.contains("machado de guerra anão e urgrosh anão"))
+    assertTrue(mountainTraits.contains("Mesmos traços raciais do Anão da Colina"))
+    assertEquals(2, mountain.strMod)
+    assertEquals(2, mountain.conMod)
+    assertEquals(-2, mountain.chaMod)
+  }
 }
