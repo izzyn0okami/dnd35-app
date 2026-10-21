@@ -112,6 +112,60 @@ class ExampleUnitTest {
   }
 
   @Test
+  fun racialSkillBonusesAreIncludedExactlyOnceInComputedSkills() {
+    val halflingSkills = listOf(
+      CharacterSkill(name = "Escalar", keyAbility = "FOR"),
+      CharacterSkill(name = "Saltar", keyAbility = "FOR"),
+      CharacterSkill(name = "Ouvir", keyAbility = "SAB"),
+      CharacterSkill(name = "Esconder-se", keyAbility = "DES"),
+      CharacterSkill(name = "Furtividade", keyAbility = "DES")
+    )
+    val halfling = CharacterCalculator.compute(
+      CharacterEntity(
+        race = "Halfling",
+        skillsJson = CharacterJsonAdapters.serializeSkills(halflingSkills)
+      )
+    )
+    halfling.computedSkills.forEach { skill ->
+      assertEquals(2, skill.racialBonus)
+      assertEquals(2, skill.totalBonus)
+    }
+
+    val elf = CharacterCalculator.compute(
+      CharacterEntity(
+        race = "Elfo",
+        skillsJson = CharacterJsonAdapters.serializeSkills(
+          listOf(CharacterSkill(name = "Ouvir", keyAbility = "SAB"))
+        )
+      )
+    ).computedSkills.single()
+    assertEquals(2, elf.racialBonus)
+    assertEquals(2, elf.totalBonus)
+
+    val halfElf = CharacterCalculator.compute(
+      CharacterEntity(
+        race = "Meio-Elfo",
+        skillsJson = CharacterJsonAdapters.serializeSkills(
+          listOf(CharacterSkill(name = "Diplomacia", keyAbility = "CAR"))
+        )
+      )
+    ).computedSkills.single()
+    assertEquals(1, halfElf.racialBonus)
+    assertEquals(1, halfElf.totalBonus)
+
+    val gnome = CharacterCalculator.compute(
+      CharacterEntity(
+        race = "Gnomo",
+        skillsJson = CharacterJsonAdapters.serializeSkills(
+          listOf(CharacterSkill(name = "Ofícios (Alquimia)", keyAbility = "INT"))
+        )
+      )
+    ).computedSkills.single()
+    assertEquals(2, gnome.racialBonus)
+    assertEquals(2, gnome.totalBonus)
+  }
+
+  @Test
   fun testCharacterCalculator() {
     val char = CharacterEntity(
       name = "Guerreiro Teste",
