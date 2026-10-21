@@ -87,4 +87,10 @@ Esta é uma correção inicial, não uma certificação completa do sistema de p
 - Adicionado teste de conjunto completo para Bárbaro, Clérigo, Druida, Guerreiro, Paladino, Ranger, Ladino e Mago.
 - Bardo, Monge e Feiticeiro já possuem testes de conjunto completo próprios.
 - A cobertura compara os nomes modelados no aplicativo e ajuda a detectar omissões ou inclusões acidentais. Ela não substitui a revisão de terminologia da tradução brasileira nem resolve a modelagem especial de Falar Idioma.
+## Testes de requisitos de treinamento e penalidade de armadura
+
+- Adicionados testes de conjunto para as perícias que exigem treinamento e para as perícias às quais se aplica a penalidade de armadura.
+- Acrobacia deve aceitar uso sem treinamento, mas continua sujeita à penalidade de armadura.
+- Natação continua sujeita à penalidade de armadura dobrada, coberta por teste de cálculo existente.
+- A lista de Falar Idioma permanece fora do catálogo comum de perícias com graduações; sua implementação precisa respeitar a regra especial de idiomas conhecidos, sem inventar testes ou pontos de perícia.
 

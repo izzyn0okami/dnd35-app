@@ -496,4 +496,30 @@ class ExampleUnitTest {
     }
   }
 
+  @Test
+  fun skillTrainingRequirementsMatchCoreRules() {
+    val definitions = Dnd35Rules.SKILL_DEFINITIONS.associateBy { it.name }
+    val trainedOnly = setOf(
+      "Abrir Fechaduras", "Adestrar Animais",
+      "Conhecimento (Arcano)", "Conhecimento (Arquitetura e Engenharia)",
+      "Conhecimento (Geografia)", "Conhecimento (História)", "Conhecimento (Local)",
+      "Conhecimento (Masmorras)", "Conhecimento (Natureza)",
+      "Conhecimento (Nobreza e Realeza)", "Conhecimento (Planos)",
+      "Conhecimento (Religião)", "Decifrar Escrita", "Identificar Magia",
+      "Operar Mecanismo", "Prestidigitação", "Profissão", "Usar Instrumento Mágico"
+    )
+    assertEquals(trainedOnly, definitions.values.filter { it.trainedOnly }.map { it.name }.toSet())
+    assertTrue(definitions["Acrobacia"]?.trainedOnly == false)
+  }
+
+  @Test
+  fun armorCheckPenaltyAppliesToCorePhysicalSkills() {
+    val definitions = Dnd35Rules.SKILL_DEFINITIONS.associateBy { it.name }
+    val expected = setOf(
+      "Acrobacia", "Arte da Fuga", "Equilíbrio", "Escalar", "Esconder-se",
+      "Furtividade", "Natação", "Prestidigitação", "Saltar"
+    )
+    assertEquals(expected, definitions.values.filter { it.armorCheckPenaltyApplies }.map { it.name }.toSet())
+  }
+
 }
