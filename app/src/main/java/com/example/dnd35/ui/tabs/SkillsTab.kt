@@ -49,6 +49,7 @@ import com.example.dnd35.model.CalculatedCharacterStats
 import com.example.dnd35.model.CharacterEntity
 import com.example.dnd35.model.CharacterJsonAdapters
 import com.example.dnd35.model.ComputedSkill
+import com.example.dnd35.model.estimateSkillPointsForLevel
 import com.example.dnd35.ui.dialogs.DiceRollDialog
 import com.example.dnd35.viewmodel.CharacterViewModel
 import com.example.dnd35.viewmodel.isValidEditedSkillRanks
@@ -239,6 +240,12 @@ fun SkillsTab(
             val linesCount = allocationsInput.lines().count { it.isNotBlank() }
             val level = levelInput.toIntOrNull()
             val available = availableInput.trim().replace(',', '.').toFloatOrNull()
+            val estimatedBudget = estimateSkillPointsForLevel(
+                className = classInput.trim(),
+                characterLevel = level ?: 0,
+                intelligenceModifier = stats.intMod,
+                raceName = character.race
+            )
             val duplicateLevel = level != null && history.any { it.characterLevel == level }
             val allocationsValid = linesCount == parsedAllocations.size
             val canSave = level != null && level >= 1 && classInput.isNotBlank() &&
@@ -252,7 +259,7 @@ fun SkillsTab(
                 Column(modifier = Modifier.padding(12.dp)) {
                     Text("Orçamento de pontos de perícia", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
                     Text(
-                        "Registre cada nível separadamente. Para fichas antigas, preencha apenas os gastos que conseguir confirmar; o aplicativo não deduzirá o histórico pelas graduações atuais.",
+                        "Registre cada nível separadamente. A estimativa usa a INT atual e serve como referência; se o modificador mudou, informe o orçamento histórico confirmado. O aplicativo não deduz gastos pelas graduações atuais.",
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
@@ -282,6 +289,17 @@ fun SkillsTab(
                         modifier = Modifier.fillMaxWidth(),
                         singleLine = true
                     )
+                    if (estimatedBudget != null) {
+                        Text(
+                            "Estimativa pelas regras: $estimatedBudget ponto(s), usando a INT atual (${if (stats.intMod >= 0) "+" else ""}${stats.intMod}) e a raça cadastrada. Se a INT mudou, informe o orçamento histórico confirmado.",
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                        OutlinedButton(
+                            onClick = { availableInput = estimatedBudget.toString() },
+                            modifier = Modifier.fillMaxWidth()
+                        ) { Text("Usar estimativa") }
+                    }
                     OutlinedTextField(
                         value = allocationsInput,
                         onValueChange = { allocationsInput = it },

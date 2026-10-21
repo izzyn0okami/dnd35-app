@@ -59,6 +59,21 @@ class ExampleUnitTest {
   }
 
   @Test
+  fun skillPointBudgetEstimateUsesClassIntelligenceAndLevelOneMultiplier() {
+    assertEquals(24, com.example.dnd35.model.estimateSkillPointsForLevel("Bardo", 1, 0, "Elfo"))
+    assertEquals(28, com.example.dnd35.model.estimateSkillPointsForLevel("Bardo", 1, 0, "Humano"))
+    assertEquals(9, com.example.dnd35.model.estimateSkillPointsForLevel("Bardo", 2, 2, "Humano"))
+  }
+
+  @Test
+  fun skillPointBudgetEstimateAppliesMinimumAndRejectsUnknownInputs() {
+    assertEquals(8, com.example.dnd35.model.estimateSkillPointsForLevel("Guerreiro", 1, -5, "Humano"))
+    assertEquals(1, com.example.dnd35.model.estimateSkillPointsForLevel("Guerreiro", 2, -5, "Elfo"))
+    assertEquals(null, com.example.dnd35.model.estimateSkillPointsForLevel("Classe inexistente", 1, 0, "Humano"))
+    assertEquals(null, com.example.dnd35.model.estimateSkillPointsForLevel("Bardo", 0, 0, "Humano"))
+  }
+
+  @Test
   fun testCharacterCalculator() {
     val char = CharacterEntity(
       name = "Guerreiro Teste",
