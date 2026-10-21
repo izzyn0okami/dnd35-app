@@ -214,7 +214,7 @@ class ExampleUnitTest {
     assertTrue(race.traits.contains("não recebe o +1 racial geral nos testes de resistência"))
     assertTrue(race.traits.contains("+2 em Escalar, Saltar e Furtividade"))
     assertTrue(!race.traits.contains("afinidade com pedras"))
-    assertTrue(!race.traits.contains("+2 Ouvir"))
+    assertTrue(race.traits.contains("+2 em Escalar, Saltar, Ouvir e Furtividade"))
   }
 
   @Test
