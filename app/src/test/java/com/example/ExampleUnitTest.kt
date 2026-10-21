@@ -296,6 +296,24 @@ class ExampleUnitTest {
   }
 
   @Test
+  fun multiclassRankCapUsesTotalCharacterLevel() {
+    val stats = CharacterCalculator.compute(
+      CharacterEntity(
+        characterClass = "Guerreiro/Ladino",
+        level = 4,
+        multiclassJson = CharacterJsonAdapters.serializeClassEntries(
+          listOf(
+            com.example.dnd35.model.CharacterClassEntry("Guerreiro", 2),
+            com.example.dnd35.model.CharacterClassEntry("Ladino", 2)
+          )
+        )
+      )
+    )
+    assertEquals(4, stats.totalCharacterLevel)
+    assertEquals(7f, stats.computedSkills.first { it.skill.name == "Escalar" }.maxRanks)
+  }
+
+  @Test
   fun testSizeModifiersAndCarryingCapacity() {
     assertEquals(1, Dnd35Rules.getArmorClassSizeModifier("Pequeno"))
     assertEquals(-2, Dnd35Rules.getArmorClassSizeModifier("Enorme"))
