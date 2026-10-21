@@ -873,7 +873,7 @@ class ExampleUnitTest {
     assertTrue(hillTraits.contains("+4 de esquiva na CA contra gigantes"))
     assertTrue(hillTraits.contains("machado de guerra anão e urgrosh anão"))
     assertTrue(mountainTraits.contains("Mesmos traços raciais do Anão da Colina"))
-    assertEquals(2, mountain.strMod)
+    assertEquals(0, mountain.strMod)
     assertEquals(2, mountain.conMod)
     assertEquals(-2, mountain.chaMod)
   }
