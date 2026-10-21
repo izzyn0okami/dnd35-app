@@ -431,6 +431,25 @@ class ExampleUnitTest {
   }
 
   @Test
+  fun overloadedCharacterCanOnlyMoveOnePointFiveMeters() {
+    val stats = CharacterCalculator.compute(
+      CharacterEntity(
+        baseStr = 10,
+        inventoryJson = CharacterJsonAdapters.serializeInventory(
+          listOf(CharacterInventoryItem(
+            name = "Carga excessiva",
+            category = "Itens de Aventura",
+            weightLb = 120f,
+            equipped = false
+          ))
+        )
+      )
+    )
+    assertEquals(Dnd35Rules.EncumbranceLevel.OVERLOADED, stats.encumbrance)
+    assertEquals(1.5f, stats.speedMetersEffective, 0.01f)
+  }
+
+  @Test
   fun barbarianFastMovementWorksWithMediumLoad() {
     val stats = CharacterCalculator.compute(
       CharacterEntity(
