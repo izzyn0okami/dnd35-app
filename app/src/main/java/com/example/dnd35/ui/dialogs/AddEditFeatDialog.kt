@@ -70,7 +70,7 @@ fun AddEditFeatDialog(
                         Tab(
                             selected = selectedTab == 0,
                             onClick = { selectedTab = 0 },
-                            text = { Text("Catálogo PHB") }
+                            text = { Text("Catálogo do Livro do Jogador") }
                         )
                         Tab(
                             selected = selectedTab == 1,
