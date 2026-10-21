@@ -586,10 +586,33 @@ object Dnd35Rules {
      * Converte nomes legados salvos em fichas para o rótulo canônico atual.
      * Não altera os dados persistidos automaticamente; o cálculo mantém graduações e bônus.
      */
-    fun canonicalSkillName(name: String): String = when (name.trim().lowercase()) {
-        "salto" -> "Saltar"
-        "ofício" -> "Ofícios"
-        else -> name.trim()
+    fun canonicalSkillName(name: String): String {
+        val trimmed = name.trim()
+        val specialty = Regex("""^Ofíci(?:o|os)\s*\((.+)\)$""", RegexOption.IGNORE_CASE)
+            .matchEntire(trimmed)?.groupValues?.get(1)?.trim()
+        if (!specialty.isNullOrBlank()) return "Ofícios ($specialty)"
+        return when (trimmed.lowercase()) {
+            "salto" -> "Saltar"
+            "ofício" -> "Ofícios"
+            else -> trimmed
+        }
+    }
+
+    /** Resolve especialidades de Ofícios como perícias normais, cada uma com graduações próprias. */
+    fun skillDefinitionFor(name: String): SkillDefinition? {
+        val canonical = canonicalSkillName(name)
+        return SKILL_DEFINITIONS.find { it.name.equals(canonical, ignoreCase = true) }
+            ?: if (Regex("""^Ofícios\s*\(.+\)$""", RegexOption.IGNORE_CASE).matches(canonical)) {
+                SKILL_DEFINITIONS.first { it.name == "Ofícios" }.copy(name = canonical)
+            } else null
+    }
+
+    /** Especialidades usam a lista de classe da perícia-base Ofícios. */
+    fun classSkillLookupName(name: String): String {
+        val canonical = canonicalSkillName(name)
+        return if (Regex("""^Ofícios\s*\(.+\)$""", RegexOption.IGNORE_CASE).matches(canonical)) {
+            "Ofícios"
+        } else canonical
     }
 
     // Perícias canônicas de D&D 3.5, usando os nomes da tradução portuguesa.
