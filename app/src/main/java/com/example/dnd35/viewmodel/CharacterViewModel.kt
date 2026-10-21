@@ -23,10 +23,19 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
-import kotlin.math.roundToInt
 
-internal fun normalizeEditedSkillRanks(ranks: Float, maxRanks: Float): Float =
-    ((ranks.coerceAtLeast(0f) * 2f).roundToInt() / 2f).coerceAtMost(maxRanks)
+internal fun isValidEditedSkillRanks(ranks: Float): Boolean {
+    if (!ranks.isFinite() || ranks < 0f) return false
+    val doubled = ranks * 2f
+    return kotlin.math.abs(doubled - doubled.toInt()) < 0.0001f
+}
+
+internal fun normalizeEditedSkillRanks(ranks: Float, maxRanks: Float): Float {
+    val safeMax = if (maxRanks.isFinite()) maxRanks.coerceAtLeast(0f) else 0f
+    val safeRanks = if (ranks.isFinite()) ranks.coerceAtLeast(0f) else 0f
+    // Defesa para chamadas internas: nunca concede graduação arredondando para cima.
+    return ((safeRanks * 2f).toInt().coerceAtLeast(0) / 2f).coerceAtMost(safeMax)
+}
 
 class CharacterViewModel(application: Application) : AndroidViewModel(application) {
 
