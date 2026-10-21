@@ -327,7 +327,7 @@ object Dnd35Rules {
                 ClassFeature(9, "Evasão Aprimorada", "Sofre apenas metade do dano mesmo se falhar no teste de Reflexos."),
                 ClassFeature(11, "Rajada Maior", "Sem penalidade nas jogadas de ataque da Rajada de Golpes."),
                 ClassFeature(13, "Alma de Diamante", "Ganha Resistência a Magia igual a 10 + Nível de Monge."),
-                ClassFeature(11, "Corpo de Diamante", "Imunidade a todos os tipos de veneno.")
+                ClassFeature(11, "Corpo de Diamante", "Imunidade a todos os tipos de veneno."),
                 ClassFeature(15, "Palma Trêmula", "Ataque mortal que causa vibrações fatais no coração do inimigo.")
             ),
             description = "Guerreiro asceta das artes marciais com três testes de resistência bons e golpes desarmados mortais."
