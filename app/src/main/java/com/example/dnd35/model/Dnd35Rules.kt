@@ -224,7 +224,7 @@ object Dnd35Rules {
             willType = SaveProgression.GOOD,
             skillPointsPerLevel = 6,
             spellCastingAbility = "CAR",
-            classSkills = listOf("Acrobacia", "Arte da Fuga", "Atuação", "Avaliação", "Blefar", "Concentração", "Conhecimento (Arcano)", "Conhecimento (História)", "Conhecimento (Nobreza)", "Diplomacia", "Disfarces", "Equilíbrio", "Escalar", "Esconder-se", "Furtividade", "Identificar Magia", "Observar", "Obter Informação", "Ouvir", "Prestidigitação", "Sentir Motivação", "Usar Instrumento Mágico"),
+            classSkills = listOf("Arte da Fuga", "Atuação", "Avaliação", "Blefar", "Concentração", "Conhecimento (Arcano)", "Conhecimento (História)", "Conhecimento (Nobreza)", "Diplomacia", "Disfarces", "Equilíbrio", "Escalar", "Esconder-se", "Furtividade", "Identificar Magia", "Observar", "Obter Informação", "Ouvir", "Prestidigitação", "Sentir Motivação", "Usar Instrumento Mágico"),
             features = listOf(
                 ClassFeature(1, "Música de Bardo (1/dia/nv)", "Usos diários de música mágica: Contra-mágica, Fascinar e Inspirar Coragem (+1)."),
                 ClassFeature(1, "Conhecimento de Bardo", "Teste especial (1d20 + Nível + mod Int) para lembrar fatos lendários."),
@@ -314,7 +314,7 @@ object Dnd35Rules {
             refType = SaveProgression.GOOD,
             willType = SaveProgression.GOOD,
             skillPointsPerLevel = 4,
-            classSkills = listOf("Acrobacia", "Arte da Fuga", "Concentração", "Conhecimento (Arcano)", "Conhecimento (Religião)", "Diplomacia", "Equilíbrio", "Escalar", "Esconder-se", "Furtividade", "Natação", "Observar", "Ouvir", "Salto", "Sentir Motivação"),
+            classSkills = listOf("Arte da Fuga", "Concentração", "Conhecimento (Arcano)", "Conhecimento (Religião)", "Diplomacia", "Equilíbrio", "Escalar", "Esconder-se", "Furtividade", "Natação", "Observar", "Ouvir", "Salto", "Sentir Motivação"),
             features = listOf(
                 ClassFeature(1, "Bônus de CA sem Armadura", "Adiciona o mod de Sabedoria na CA quando sem armadura ou escudo (+1 a cada 5 níveis)."),
                 ClassFeature(1, "Rajada de Golpes", "Ataque extra desarmado por rodada com -2 em todos os golpes."),
@@ -387,7 +387,7 @@ object Dnd35Rules {
             refType = SaveProgression.GOOD,
             willType = SaveProgression.POOR,
             skillPointsPerLevel = 8,
-            classSkills = listOf("Acrobacia", "Arte da Fuga", "Atuação", "Avaliação", "Blefar", "Decifrar Escrita", "Diplomacia", "Disfarces", "Equilíbrio", "Escalar", "Esconder-se", "Falsificação", "Furtividade", "Intimidação", "Natação", "Observar", "Obter Informação", "Operar Mecanismo", "Ouvir", "Prestidigitação", "Procurar", "Salto", "Sentir Motivação", "Usar Cordas", "Usar Instrumento Mágico"),
+            classSkills = listOf("Arte da Fuga", "Atuação", "Avaliação", "Blefar", "Decifrar Escrita", "Diplomacia", "Disfarces", "Equilíbrio", "Escalar", "Esconder-se", "Falsificação", "Furtividade", "Intimidação", "Natação", "Observar", "Obter Informação", "Operar Mecanismo", "Ouvir", "Prestidigitação", "Procurar", "Salto", "Sentir Motivação", "Usar Cordas", "Usar Instrumento Mágico"),
             features = listOf(
                 ClassFeature(1, "Ataque Furtivo +1d6", "Dano extra contra oponentes flanqueados ou sem bônus de Destreza (+1d6 a cada 2 níveis)."),
                 ClassFeature(1, "Encontrar Armadilhas", "Capaz de usar Procurar e Operar Mecanismo para desarmar armadilhas mágicas (CD > 20)."),
@@ -582,7 +582,7 @@ object Dnd35Rules {
         }
     }
 
-    // 36 Perícias Canônicas de D&D 3.5
+    // Perícias e especializações do catálogo de D&D 3.5. Acrobacia não é uma perícia independente nesta edição.
     data class SkillDefinition(
         val name: String,
         val keyAbility: String,
@@ -591,7 +591,6 @@ object Dnd35Rules {
     )
 
     val SKILL_DEFINITIONS = listOf(
-        SkillDefinition("Acrobacia", "DES", armorCheckPenaltyApplies = true, trainedOnly = true),
         SkillDefinition("Adestrar Animais", "CAR", armorCheckPenaltyApplies = false, trainedOnly = true),
         SkillDefinition("Arte da Fuga", "DES", armorCheckPenaltyApplies = true),
         SkillDefinition("Atuação", "CAR", armorCheckPenaltyApplies = false),
