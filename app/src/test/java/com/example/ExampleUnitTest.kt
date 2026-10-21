@@ -180,6 +180,15 @@ class ExampleUnitTest {
   }
 
   @Test
+  fun knowledgeSkillNamesUseFullPortugueseLabels() {
+    val names = Dnd35Rules.SKILL_DEFINITIONS.map { it.name }
+    assertTrue(names.contains("Conhecimento (Arquitetura e Engenharia)"))
+    assertTrue(names.contains("Conhecimento (Nobreza e Realeza)"))
+    assertTrue(names.none { it == "Conhecimento (Arquitetura)" })
+    assertTrue(names.none { it == "Conhecimento (Nobreza)" })
+  }
+
+  @Test
   fun skillCatalogIncludesPortugueseAcrobaticsSkill() {
     assertTrue(Dnd35Rules.SKILL_DEFINITIONS.any { it.name.equals("Acrobacia", ignoreCase = true) })
     assertTrue(Dnd35Rules.SKILL_DEFINITIONS.any { it.name == "Equilíbrio" })
