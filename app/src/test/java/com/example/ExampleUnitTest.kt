@@ -84,8 +84,8 @@ class ExampleUnitTest {
 
   @Test
   fun skillPointAllocationsCanonicalizeLegacyAliasesAndRejectDuplicateSkills() {
-    assertNull(com.example.dnd35.model.parseSkillPointAllocations("Ofício=2\nOfícios=1"))
-    assertNull(com.example.dnd35.model.parseSkillPointAllocations("Salto=1\nSaltar=2"))
+    assertTrue(com.example.dnd35.model.parseSkillPointAllocations("Ofício=2\nOfícios=1") == null)
+    assertTrue(com.example.dnd35.model.parseSkillPointAllocations("Salto=1\nSaltar=2") == null)
 
     assertEquals(
       listOf(
