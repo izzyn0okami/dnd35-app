@@ -523,6 +523,43 @@ class ExampleUnitTest {
   }
 
   @Test
+  fun monkLosesWisdomArmorClassBonusWithMediumLoad() {
+    val unencumbered = CharacterCalculator.compute(
+      CharacterEntity(
+        characterClass = "Monge",
+        level = 5,
+        baseStr = 10,
+        baseDex = 10,
+        baseWis = 14,
+        goldGp = 0f
+      )
+    )
+    val encumbered = CharacterCalculator.compute(
+      CharacterEntity(
+        characterClass = "Monge",
+        level = 5,
+        baseStr = 10,
+        baseDex = 10,
+        baseWis = 14,
+        goldGp = 0f,
+        inventoryJson = CharacterJsonAdapters.serializeInventory(
+          listOf(CharacterInventoryItem(
+            name = "Carga de teste",
+            category = "Itens de Aventura",
+            weightLb = 40f,
+            equipped = false
+          ))
+        )
+      )
+    )
+
+    assertEquals(Dnd35Rules.EncumbranceLevel.LIGHT, unencumbered.encumbrance)
+    assertEquals(Dnd35Rules.EncumbranceLevel.MEDIUM, encumbered.encumbrance)
+    assertEquals(13, unencumbered.totalAc)
+    assertEquals(10, encumbered.totalAc)
+  }
+
+  @Test
   fun monkFastMovementIsSuppressedByMediumLoad() {
     val stats = CharacterCalculator.compute(
       CharacterEntity(
