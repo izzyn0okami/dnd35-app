@@ -51,6 +51,7 @@ import com.example.dnd35.model.CharacterJsonAdapters
 import com.example.dnd35.model.ComputedSkill
 import com.example.dnd35.ui.dialogs.DiceRollDialog
 import com.example.dnd35.viewmodel.CharacterViewModel
+import com.example.dnd35.viewmodel.isValidEditedSkillRanks
 import com.example.ui.theme.DndCrimson
 import com.example.ui.theme.DndGold
 import com.example.ui.theme.DndHpGreen
@@ -392,6 +393,7 @@ fun SkillsTab(
     editingSkill?.let { comp ->
         var rankInput by remember { mutableStateOf("${comp.ranks}") }
         var miscInput by remember { mutableStateOf("${comp.miscBonus}") }
+        var rankInputError by remember { mutableStateOf(false) }
 
         AlertDialog(
             onDismissRequest = { editingSkill = null },
@@ -415,11 +417,18 @@ fun SkillsTab(
 
                     OutlinedTextField(
                         value = rankInput,
-                        onValueChange = { rankInput = it },
+                        onValueChange = {
+                            rankInput = it
+                            rankInputError = false
+                        },
                         label = { Text("Pontos de Graduação") },
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
                         modifier = Modifier.fillMaxWidth(),
-                        singleLine = true
+                        singleLine = true,
+                        isError = rankInputError,
+                        supportingText = if (rankInputError) {
+                            { Text("Use apenas incrementos de 0,5 (ex.: 1; 1,5; 2).") }
+                        } else null
                     )
 
                     Spacer(modifier = Modifier.height(8.dp))
@@ -444,10 +453,14 @@ fun SkillsTab(
             },
             confirmButton = {
                 Button(onClick = {
-                    val r = rankInput.toFloatOrNull()?.coerceAtLeast(0f) ?: comp.ranks
-                    val m = miscInput.toIntOrNull() ?: comp.miscBonus
-                    viewModel.updateSkill(comp.skill.name, minOf(comp.maxRanks, r), m, comp.isClassSkill)
-                    editingSkill = null
+                    val r = rankInput.trim().replace(',', '.').toFloatOrNull()
+                    if (r == null || !isValidEditedSkillRanks(r)) {
+                        rankInputError = true
+                    } else {
+                        val m = miscInput.toIntOrNull() ?: comp.miscBonus
+                        viewModel.updateSkill(comp.skill.name, minOf(comp.maxRanks, r), m, comp.isClassSkill)
+                        editingSkill = null
+                    }
                 }) {
                     Text("Salvar")
                 }
