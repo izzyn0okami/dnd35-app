@@ -410,6 +410,18 @@ class ExampleUnitTest {
   }
 
   @Test
+  fun monkClassSkillsMatchCoreSkillList() {
+    val monk = Dnd35Rules.CLASSES.first { it.name == "Monge" }
+    val expected = setOf(
+      "Acrobacia", "Arte da Fuga", "Atuação", "Concentração",
+      "Conhecimento (Arcano)", "Conhecimento (Religião)", "Diplomacia",
+      "Equilíbrio", "Escalar", "Esconder-se", "Furtividade", "Natação",
+      "Observar", "Ofícios", "Ouvir", "Profissão", "Saltar", "Sentir Motivação"
+    )
+    assertEquals(expected, monk.classSkills.toSet())
+  }
+
+  @Test
   fun monkDiamondBodyIsGrantedAtLevelEleven() {
     val monk = Dnd35Rules.CLASSES.first { it.name == "Monge" }
     assertTrue(monk.features.any { it.level == 11 && it.name == "Corpo de Diamante" })

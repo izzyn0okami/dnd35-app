@@ -314,7 +314,7 @@ object Dnd35Rules {
             refType = SaveProgression.GOOD,
             willType = SaveProgression.GOOD,
             skillPointsPerLevel = 4,
-            classSkills = listOf("Acrobacia", "Arte da Fuga", "Concentração", "Conhecimento (Arcano)", "Conhecimento (Religião)", "Diplomacia", "Equilíbrio", "Escalar", "Esconder-se", "Furtividade", "Natação", "Observar", "Ofícios", "Ouvir", "Saltar", "Sentir Motivação"),
+            classSkills = listOf("Acrobacia", "Arte da Fuga", "Atuação", "Concentração", "Conhecimento (Arcano)", "Conhecimento (Religião)", "Diplomacia", "Equilíbrio", "Escalar", "Esconder-se", "Furtividade", "Natação", "Observar", "Ofícios", "Ouvir", "Profissão", "Saltar", "Sentir Motivação"),
             features = listOf(
                 ClassFeature(1, "Bônus de CA sem Armadura", "Adiciona o mod de Sabedoria na CA quando sem armadura ou escudo (+1 a cada 5 níveis)."),
                 ClassFeature(1, "Rajada de Golpes", "Ataque extra desarmado por rodada com -2 em todos os golpes."),
