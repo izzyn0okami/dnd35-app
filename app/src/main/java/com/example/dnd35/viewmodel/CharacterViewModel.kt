@@ -285,6 +285,16 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
         val classEntries = CharacterJsonAdapters.deserializeClassEntries(
             curr.multiclassJson, curr.characterClass, curr.level
         )
+        // Ao registrar a primeira perícia numa ficha antiga/vazia, inicializa o catálogo completo
+        // antes de salvar, evitando que a nova especialidade faça as demais perícias desaparecerem.
+        if (currentSkills.isEmpty()) {
+            val classInfos = classEntries.mapNotNull { entry ->
+                com.example.dnd35.model.Dnd35Rules.CLASSES.find {
+                    it.name.equals(entry.className, ignoreCase = true)
+                }
+            }
+            currentSkills.addAll(com.example.dnd35.model.CharacterCalculator.defaultSkillsForClasses(classInfos))
+        }
         val actualClassSkill = if (definition != null) {
             classEntries.any { entry ->
                 com.example.dnd35.model.Dnd35Rules.CLASSES
