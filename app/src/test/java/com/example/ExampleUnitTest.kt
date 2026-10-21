@@ -207,6 +207,33 @@ class ExampleUnitTest {
   }
 
   @Test
+  fun stoutHalflingReceivesOnlyItsListenRacialSkillBonus() {
+    val character = CharacterCalculator.compute(
+      CharacterEntity(
+        race = "Halfling Robusto",
+        baseStr = 10,
+        baseDex = 10,
+        baseWis = 10,
+        baseInt = 10,
+        baseCha = 10,
+        skillsJson = CharacterJsonAdapters.serializeSkills(
+          listOf(
+            CharacterSkill(name = "Escalar", keyAbility = "FOR"),
+            CharacterSkill(name = "Saltar", keyAbility = "FOR"),
+            CharacterSkill(name = "Ouvir", keyAbility = "SAB"),
+            CharacterSkill(name = "Furtividade", keyAbility = "DES")
+          )
+        )
+      )
+    )
+    val bonuses = character.computedSkills.associate { it.skill.name to it.racialBonus }
+    assertEquals(0, bonuses.getValue("Escalar"))
+    assertEquals(0, bonuses.getValue("Saltar"))
+    assertEquals(2, bonuses.getValue("Ouvir"))
+    assertEquals(0, bonuses.getValue("Furtividade"))
+  }
+
+  @Test
   fun hideSkillUsesSizeModifierWithoutAffectingOtherSkills() {
     val smallCharacter = CharacterCalculator.compute(
       CharacterEntity(
