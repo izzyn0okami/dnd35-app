@@ -7,6 +7,26 @@ import org.json.JSONObject
 
 object CharacterJsonAdapters {
 
+    fun serializeLanguages(languages: List<String>): String {
+        val array = JSONArray()
+        languages.map { it.trim() }.filter { it.isNotEmpty() }.distinctBy { it.lowercase() }
+            .forEach { array.put(it) }
+        return array.toString()
+    }
+
+    fun deserializeLanguages(json: String?): List<String> {
+        if (json.isNullOrBlank()) return emptyList()
+        return try {
+            val array = JSONArray(json)
+            (0 until array.length()).mapNotNull { index ->
+                array.optString(index).trim().takeIf { it.isNotEmpty() }
+            }.distinctBy { it.lowercase() }
+        } catch (e: Exception) {
+            Log.w("CharacterJsonAdapters", "JSON de idiomas inválido", e)
+            emptyList()
+        }
+    }
+
     fun serializeSkills(skills: List<CharacterSkill>): String {
         val array = JSONArray()
         for (s in skills) {
