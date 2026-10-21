@@ -602,7 +602,7 @@ object Dnd35Rules {
 
     val SKILL_DEFINITIONS = listOf(
         SkillDefinition("Abrir Fechaduras", "DES", armorCheckPenaltyApplies = false, trainedOnly = true),
-        SkillDefinition("Acrobacia", "DES", armorCheckPenaltyApplies = true, trainedOnly = true),
+        SkillDefinition("Acrobacia", "DES", armorCheckPenaltyApplies = true),
         SkillDefinition("Adestrar Animais", "CAR", armorCheckPenaltyApplies = false, trainedOnly = true),
         SkillDefinition("Arte da Fuga", "DES", armorCheckPenaltyApplies = true),
         SkillDefinition("Atuação", "CAR", armorCheckPenaltyApplies = false),
