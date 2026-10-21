@@ -5,6 +5,7 @@ import com.example.dnd35.model.CharacterEntity
 import com.example.dnd35.model.CharacterInventoryItem
 import com.example.dnd35.model.CharacterJsonAdapters
 import com.example.dnd35.model.CharacterSkill
+import com.example.dnd35.viewmodel.normalizeEditedSkillRanks
 import com.example.dnd35.model.SkillPointAllocation
 import com.example.dnd35.model.SkillPointLevelRecord
 import com.example.dnd35.model.Dnd35Rules
@@ -334,6 +335,15 @@ class ExampleUnitTest {
     assertEquals(1.5f, acrobatics.ranks)
     assertTrue(knowledge.trainedOnly)
     assertTrue(!knowledge.canRoll)
+  }
+
+  @Test
+  fun editingSkillRanksPreservesHalfRanksAndRespectsCap() {
+    assertEquals(1.5f, normalizeEditedSkillRanks(1.5f, 7f))
+    assertEquals(1.5f, normalizeEditedSkillRanks(1.5f, 2f))
+    assertEquals(2f, normalizeEditedSkillRanks(2.25f, 7f))
+    assertEquals(0f, normalizeEditedSkillRanks(-1f, 7f))
+    assertEquals(2f, normalizeEditedSkillRanks(2.5f, 2f))
   }
 
   @Test
