@@ -369,6 +369,89 @@ class ExampleUnitTest {
   }
 
   @Test
+  fun mediumArmorReducesNormalMovementSpeed() {
+    val armor = CharacterInventoryItem(
+      name = "Gibão de Peles",
+      category = "Armaduras",
+      equipped = true,
+      equippedSlot = Dnd35Rules.EquipmentSlots.ARMOR_BODY,
+      weightLb = 25f,
+      damageOrAc = "+3 CA",
+      notes = "Des Max +4, Pen -3"
+    )
+    val stats = CharacterCalculator.compute(
+      CharacterEntity(
+        characterClass = "Guerreiro",
+        level = 1,
+        baseStr = 16,
+        inventoryJson = CharacterJsonAdapters.serializeInventory(listOf(armor))
+      )
+    )
+    assertEquals(6.0f, stats.speedMetersEffective, 0.01f)
+  }
+
+  @Test
+  fun dwarfMovementIsNotReducedByMediumLoad() {
+    val stats = CharacterCalculator.compute(
+      CharacterEntity(
+        race = "Anão",
+        baseStr = 10,
+        inventoryJson = CharacterJsonAdapters.serializeInventory(
+          listOf(CharacterInventoryItem(
+            name = "Carga de teste",
+            category = "Itens de Aventura",
+            weightLb = 40f,
+            equipped = false
+          ))
+        )
+      )
+    )
+    assertEquals(Dnd35Rules.EncumbranceLevel.MEDIUM, stats.encumbrance)
+    assertEquals(6.0f, stats.speedMetersEffective, 0.01f)
+  }
+
+  @Test
+  fun mediumLoadReducesSmallCreatureMovementToFourPointFiveMeters() {
+    val stats = CharacterCalculator.compute(
+      CharacterEntity(
+        race = "Halfling",
+        baseStr = 10,
+        inventoryJson = CharacterJsonAdapters.serializeInventory(
+          listOf(CharacterInventoryItem(
+            name = "Carga de teste",
+            category = "Itens de Aventura",
+            weightLb = 40f,
+            equipped = false
+          ))
+        )
+      )
+    )
+    assertEquals(Dnd35Rules.EncumbranceLevel.MEDIUM, stats.encumbrance)
+    assertEquals(4.5f, stats.speedMetersEffective, 0.01f)
+  }
+
+  @Test
+  fun barbarianFastMovementWorksWithMediumLoad() {
+    val stats = CharacterCalculator.compute(
+      CharacterEntity(
+        characterClass = "Bárbaro",
+        level = 1,
+        baseStr = 16,
+        inventoryJson = CharacterJsonAdapters.serializeInventory(
+          listOf(CharacterInventoryItem(
+            name = "Carga de teste",
+            category = "Itens de Aventura",
+            weightLb = 100f,
+            equipped = false
+          ))
+        )
+      )
+    )
+    assertEquals(Dnd35Rules.EncumbranceLevel.MEDIUM, stats.encumbrance)
+    assertEquals(9.0f, stats.speedMetersEffective, 0.01f)
+  }
+
+  @Test
   fun barbarianGetsFastMovementWithLightArmorAndLightLoad() {
     val armor = CharacterInventoryItem(
       name = "Armadura de Couro",
@@ -439,7 +522,7 @@ class ExampleUnitTest {
       )
     )
     assertEquals(0.67f, stats.encumbrance.speedFactor, 0.001f)
-    assertEquals(6.03f, stats.speedMetersEffective, 0.02f)
+    assertEquals(6.0f, stats.speedMetersEffective, 0.01f)
   }
 
   @Test
