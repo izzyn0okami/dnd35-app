@@ -104,7 +104,7 @@ object Dnd35Rules {
             dexMod = 2,
             conMod = -2,
             intMod = -2,
-            traits = "Físico atlético das florestas ancestrais, imunidade a sono, visão na penumbra, proficiência com arcos.",
+            traits = "Físico atlético das florestas ancestrais, imunidade a sono mágico, +2 contra encantamentos, visão na penumbra, +2 em Ouvir, Procurar e Observar; nota portas secretas automaticamente a 1,5m; proficiência com espada longa, rapieira, arco longo, arco curto e versões compostas.",
             favoredClass = "Ranger"
         ),
         RaceInfo(
