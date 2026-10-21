@@ -119,4 +119,29 @@ class ExampleUnitTest {
     assertEquals(24, Dnd35Rules.getCarryingCapacity(10, "Pequeno").lightMaxLb)
   }
 
+  @Test
+  fun paladinHasPoorWillSaveProgression() {
+    val paladin = Dnd35Rules.CLASSES.first { it.name == "Paladino" }
+    assertEquals(Dnd35Rules.SaveProgression.POOR, paladin.willType)
+    val stats = CharacterCalculator.compute(
+      CharacterEntity(characterClass = "Paladino", level = 1)
+    )
+    assertEquals(0, stats.baseWill)
+  }
+
+  @Test
+  fun barbarianHasSixRageUsesAtLevelTwenty() {
+    val stats = CharacterCalculator.compute(
+      CharacterEntity(characterClass = "Bárbaro", level = 20)
+    )
+    assertEquals(6, stats.rageUsesPerDay)
+  }
+
+  @Test
+  fun monkDiamondBodyIsGrantedAtLevelEleven() {
+    val monk = Dnd35Rules.CLASSES.first { it.name == "Monge" }
+    assertTrue(monk.features.any { it.level == 11 && it.name == "Corpo de Diamante" })
+    assertTrue(monk.features.none { it.name == "Corpo Trêmulo" })
+  }
+
 }
