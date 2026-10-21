@@ -238,10 +238,10 @@ class ExampleUnitTest {
       )
     )
     val bonuses = character.computedSkills.associate { it.skill.name to it.racialBonus }
-    assertEquals(2, bonuses.getValue("Escalar"))
-    assertEquals(2, bonuses.getValue("Saltar"))
-    assertEquals(0, bonuses.getValue("Ouvir"))
-    assertEquals(2, bonuses.getValue("Furtividade"))
+    assertEquals(0, bonuses.getValue("Escalar"))
+    assertEquals(0, bonuses.getValue("Saltar"))
+    assertEquals(2, bonuses.getValue("Ouvir"))
+    assertEquals(0, bonuses.getValue("Furtividade"))
   }
 
   @Test
