@@ -115,6 +115,7 @@ data class ComputedSkill(
     val skill: CharacterSkill,
     val keyAbilityMod: Int,
     val ranks: Float,
+    val racialBonus: Int,
     val miscBonus: Int,
     val armorPenaltyApplied: Int,
     val totalBonus: Int,
@@ -125,6 +126,26 @@ data class ComputedSkill(
 )
 
 object CharacterCalculator {
+
+    private fun racialSkillBonus(raceName: String, skillName: String): Int {
+        val race = raceName.trim()
+        val skill = Dnd35Rules.canonicalSkillName(skillName).trim()
+
+        return when {
+            race.equals("Meio-Elfo", ignoreCase = true) && skill in setOf(
+                "Ouvir", "Procurar", "Observar", "Diplomacia", "Obter Informação"
+            ) -> 1
+            (race.contains("Elfo", ignoreCase = true) || race.contains("Drow", ignoreCase = true)) &&
+                skill in setOf("Ouvir", "Procurar", "Observar") -> 2
+            race.contains("Halfling", ignoreCase = true) &&
+                skill in setOf("Escalar", "Saltar", "Ouvir", "Esconder-se", "Furtividade") -> 2
+            race.equals("Gnomo", ignoreCase = true) && (
+                skill.equals("Ouvir", ignoreCase = true) ||
+                    skill.equals("Ofícios (Alquimia)", ignoreCase = true)
+            ) -> 2
+            else -> 0
+        }
+    }
 
     fun compute(character: CharacterEntity): CalculatedCharacterStats {
         val race = Dnd35Rules.RACES.find { it.name.equals(character.race, ignoreCase = true) }
@@ -470,6 +491,7 @@ object CharacterCalculator {
             val normalizedRanks =
                 (skill.ranks.coerceAtLeast(0f) * 2f).roundToInt() / 2f
             val ranks = normalizedRanks.coerceAtMost(maxRanks)
+            val racialBonus = racialSkillBonus(race.name, canonicalSkillName)
             val hasArmorPenalty = def?.armorCheckPenaltyApplies ?: false
             val appliedPenalty = if (hasArmorPenalty) {
                 if (skill.name.equals("Natação", ignoreCase = true)) {
@@ -479,11 +501,12 @@ object CharacterCalculator {
                 }
             } else 0
 
-            val total = ranks.toInt() + keyMod + skill.miscBonus + appliedPenalty
+            val total = ranks.toInt() + keyMod + racialBonus + skill.miscBonus + appliedPenalty
             ComputedSkill(
                 skill = skill.copy(name = def?.name ?: skill.name, ranks = ranks, isClassSkill = isClassSkill),
                 keyAbilityMod = keyMod,
                 ranks = ranks,
+                racialBonus = racialBonus,
                 miscBonus = skill.miscBonus,
                 armorPenaltyApplied = appliedPenalty,
                 totalBonus = total,
