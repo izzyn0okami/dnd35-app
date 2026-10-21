@@ -83,6 +83,20 @@ class ExampleUnitTest {
   }
 
   @Test
+  fun skillPointAllocationsCanonicalizeLegacyAliasesAndRejectDuplicateSkills() {
+    assertNull(com.example.dnd35.model.parseSkillPointAllocations("Ofício=2\nOfícios=1"))
+    assertNull(com.example.dnd35.model.parseSkillPointAllocations("Salto=1\nSaltar=2"))
+
+    assertEquals(
+      listOf(
+        com.example.dnd35.model.SkillPointAllocation("Ofícios", 2f),
+        com.example.dnd35.model.SkillPointAllocation("Saltar", 1f)
+      ),
+      com.example.dnd35.model.parseSkillPointAllocations("Ofício=2\nSalto=1")
+    )
+  }
+
+  @Test
   fun skillPointBudgetEstimateUsesClassIntelligenceAndLevelOneMultiplier() {
     assertEquals(24, com.example.dnd35.model.estimateSkillPointsForLevel("Bardo", 1, 0, "Elfo"))
     assertEquals(28, com.example.dnd35.model.estimateSkillPointsForLevel("Bardo", 1, 0, "Humano"))
