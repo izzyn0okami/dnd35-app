@@ -272,8 +272,8 @@ fun SkillsTab(
                     OutlinedTextField(
                         value = availableInput,
                         onValueChange = { availableInput = it },
-                        label = { Text("Pontos disponíveis") },
-                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
+                        label = { Text("Pontos disponíveis (inteiro)") },
+                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                         modifier = Modifier.fillMaxWidth(),
                         singleLine = true
                     )
