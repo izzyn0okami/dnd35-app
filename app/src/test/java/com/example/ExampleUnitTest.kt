@@ -522,4 +522,20 @@ class ExampleUnitTest {
     assertEquals(expected, definitions.values.filter { it.armorCheckPenaltyApplies }.map { it.name }.toSet())
   }
 
+
+  @Test
+  fun languageListSerializationTrimsDeduplicatesAndRoundTrips() {
+    val encoded = CharacterJsonAdapters.serializeLanguages(
+      listOf(" Comum ", "Élfico", "comum", "", "Anão")
+    )
+
+    assertEquals(listOf("Comum", "Élfico", "Anão"), CharacterJsonAdapters.deserializeLanguages(encoded))
+  }
+
+  @Test
+  fun missingLanguageDataRemainsEmptyForLegacyCharacters() {
+    assertEquals(emptyList<String>(), CharacterJsonAdapters.deserializeLanguages(""))
+    assertEquals(emptyList<String>(), CharacterJsonAdapters.deserializeLanguages(null))
+  }
+
 }
