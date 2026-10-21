@@ -263,6 +263,19 @@ class ExampleUnitTest {
   }
 
   @Test
+  fun openLockSkillUsesDexterityRequiresTrainingAndIsRogueClassSkill() {
+    val definition = Dnd35Rules.SKILL_DEFINITIONS.first { it.name == "Abrir Fechaduras" }
+    assertEquals("DES", definition.keyAbility)
+    assertTrue(definition.trainedOnly)
+    assertTrue(!definition.armorCheckPenaltyApplies)
+
+    val rogue = Dnd35Rules.CLASSES.first { it.name == "Ladino" }
+    val fighter = Dnd35Rules.CLASSES.first { it.name == "Guerreiro" }
+    assertTrue(rogue.classSkills.contains("Abrir Fechaduras"))
+    assertTrue(!fighter.classSkills.contains("Abrir Fechaduras"))
+  }
+
+  @Test
   fun skillCatalogIncludesPortugueseAcrobaticsSkill() {
     assertTrue(Dnd35Rules.SKILL_DEFINITIONS.any { it.name.equals("Acrobacia", ignoreCase = true) })
     assertTrue(Dnd35Rules.SKILL_DEFINITIONS.any { it.name == "Equilíbrio" })

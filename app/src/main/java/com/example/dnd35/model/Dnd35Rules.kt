@@ -387,7 +387,7 @@ object Dnd35Rules {
             refType = SaveProgression.GOOD,
             willType = SaveProgression.POOR,
             skillPointsPerLevel = 8,
-            classSkills = listOf("Acrobacia", "Arte da Fuga", "Atuação", "Avaliação", "Blefar", "Decifrar Escrita", "Diplomacia", "Disfarces", "Equilíbrio", "Escalar", "Esconder-se", "Falsificação", "Furtividade", "Intimidação", "Natação", "Observar", "Obter Informação", "Ofício", "Operar Mecanismo", "Ouvir", "Prestidigitação", "Procurar", "Salto", "Sentir Motivação", "Usar Cordas", "Usar Instrumento Mágico"),
+            classSkills = listOf("Abrir Fechaduras", "Acrobacia", "Arte da Fuga", "Atuação", "Avaliação", "Blefar", "Decifrar Escrita", "Diplomacia", "Disfarces", "Equilíbrio", "Escalar", "Esconder-se", "Falsificação", "Furtividade", "Intimidação", "Natação", "Observar", "Obter Informação", "Ofício", "Operar Mecanismo", "Ouvir", "Prestidigitação", "Procurar", "Salto", "Sentir Motivação", "Usar Cordas", "Usar Instrumento Mágico"),
             features = listOf(
                 ClassFeature(1, "Ataque Furtivo +1d6", "Dano extra contra oponentes flanqueados ou sem bônus de Destreza (+1d6 a cada 2 níveis)."),
                 ClassFeature(1, "Encontrar Armadilhas", "Capaz de usar Procurar e Operar Mecanismo para desarmar armadilhas mágicas (CD > 20)."),
@@ -591,6 +591,7 @@ object Dnd35Rules {
     )
 
     val SKILL_DEFINITIONS = listOf(
+        SkillDefinition("Abrir Fechaduras", "DES", armorCheckPenaltyApplies = false, trainedOnly = true),
         SkillDefinition("Acrobacia", "DES", armorCheckPenaltyApplies = true, trainedOnly = true),
         SkillDefinition("Adestrar Animais", "CAR", armorCheckPenaltyApplies = false, trainedOnly = true),
         SkillDefinition("Arte da Fuga", "DES", armorCheckPenaltyApplies = true),
