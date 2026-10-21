@@ -420,7 +420,7 @@ class ExampleUnitTest {
           listOf(CharacterInventoryItem(
             name = "Carga de teste",
             category = "Itens de Aventura",
-            weightLb = 40f,
+            weightLb = 30f,
             equipped = false
           ))
         )
