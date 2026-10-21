@@ -24,6 +24,8 @@ Esta etapa inicia a auditoria técnica das perícias usadas pela ficha. A fonte 
 4. **Nomes e contagem:** conferir os nomes das especializações de Conhecimento, a distinção entre a perícia Ofícios e suas especializações e a contagem do catálogo. Conhecimento possui especializações próprias, portanto a quantidade de entradas não deve ser comparada diretamente à contagem de perícias sem explicar esse critério.
 5. **Compatibilidade:** antes de renomear outros valores armazenados, implementar testes ou migração para fichas existentes; nomes persistidos não devem ser alterados silenciosamente.
 
+- Corrigida a lista de perícias de classe do **Bardo**: incluídas todas as especializações de Conhecimento, além de Decifrar Escrita, Natação, Ofício e Profissão; removida Observar, que não consta na lista básica da classe. A lista foi comparada com a referência SRD 3.5; Falar Idioma não foi incluída porque não existe como entrada de perícia no catálogo atual do aplicativo e exige decisão de modelagem própria.
+
 ## Fonte consultada nesta revisão
 
 A tabela de perícias do *Livro do Jogador* 3.5 em português mostra os nomes completos “Conhecimento (arquitetura e engenharia)” e “Conhecimento (nobreza e realeza)”, além de marcar perícias de classe, uso sem treinamento e penalidade de armadura. A reprodução online consultada é uma referência secundária e não substitui a conferência direta com o exemplar da Devir.
