@@ -112,6 +112,84 @@ class ExampleUnitTest {
   }
 
   @Test
+  fun racialSkillBonusesAreIncludedExactlyOnceInComputedSkills() {
+    val halflingSkills = listOf(
+      CharacterSkill(name = "Escalar", keyAbility = "FOR"),
+      CharacterSkill(name = "Saltar", keyAbility = "FOR"),
+      CharacterSkill(name = "Ouvir", keyAbility = "SAB"),
+      CharacterSkill(name = "Esconder-se", keyAbility = "DES"),
+      CharacterSkill(name = "Furtividade", keyAbility = "DES")
+    )
+    val halfling = CharacterCalculator.compute(
+      CharacterEntity(
+        race = "Halfling",
+        baseStr = 10,
+        baseDex = 10,
+        baseWis = 10,
+        baseInt = 10,
+        baseCha = 10,
+        skillsJson = CharacterJsonAdapters.serializeSkills(halflingSkills)
+      )
+    )
+    halfling.computedSkills.forEach { skill ->
+      assertEquals(2, skill.racialBonus)
+      assertEquals(
+        skill.ranks.toInt() + skill.keyAbilityMod + skill.racialBonus +
+          skill.miscBonus + skill.armorPenaltyApplied,
+        skill.totalBonus
+      )
+    }
+
+    val elf = CharacterCalculator.compute(
+      CharacterEntity(
+        race = "Elfo",
+        baseStr = 10,
+        baseDex = 10,
+        baseWis = 10,
+        baseInt = 10,
+        baseCha = 10,
+        skillsJson = CharacterJsonAdapters.serializeSkills(
+          listOf(CharacterSkill(name = "Ouvir", keyAbility = "SAB"))
+        )
+      )
+    ).computedSkills.single()
+    assertEquals(2, elf.racialBonus)
+    assertEquals(2, elf.totalBonus)
+
+    val halfElf = CharacterCalculator.compute(
+      CharacterEntity(
+        race = "Meio-Elfo",
+        baseStr = 10,
+        baseDex = 10,
+        baseWis = 10,
+        baseInt = 10,
+        baseCha = 10,
+        skillsJson = CharacterJsonAdapters.serializeSkills(
+          listOf(CharacterSkill(name = "Diplomacia", keyAbility = "CAR"))
+        )
+      )
+    ).computedSkills.single()
+    assertEquals(1, halfElf.racialBonus)
+    assertEquals(1, halfElf.totalBonus)
+
+    val gnome = CharacterCalculator.compute(
+      CharacterEntity(
+        race = "Gnomo",
+        baseStr = 10,
+        baseDex = 10,
+        baseWis = 10,
+        baseInt = 10,
+        baseCha = 10,
+        skillsJson = CharacterJsonAdapters.serializeSkills(
+          listOf(CharacterSkill(name = "Ofícios (Alquimia)", keyAbility = "INT"))
+        )
+      )
+    ).computedSkills.single()
+    assertEquals(2, gnome.racialBonus)
+    assertEquals(2, gnome.totalBonus)
+  }
+
+  @Test
   fun testCharacterCalculator() {
     val char = CharacterEntity(
       name = "Guerreiro Teste",
