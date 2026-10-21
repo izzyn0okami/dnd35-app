@@ -829,6 +829,12 @@ class ExampleUnitTest {
     assertTrue(races.getValue("Meio-Elfo").traits.contains("+2 em Obter Informação e Diplomacia"))
     assertTrue(races.getValue("Gnomo").traits.contains("+4 Esconder-se"))
     assertTrue(races.getValue("Halfling").traits.contains("+4 Esconder-se"))
-    assertTrue(races.getValue("Drow (Elfo Negro)").traits.contains("+2 em Ouvir, Procurar e Observar"))
+    val drowTraits = races.getValue("Drow (Elfo Negro)").traits
+    assertTrue(drowTraits.contains("Imunidade a sono mágico"))
+    assertTrue(drowTraits.contains("+2 contra encantamentos"))
+    assertTrue(drowTraits.contains("visão na penumbra"))
+    assertTrue(drowTraits.contains("+2 em Ouvir, Procurar e Observar"))
+    assertTrue(drowTraits.contains("portas secretas automaticamente a 1,5m"))
+    assertTrue(drowTraits.contains("espada longa, rapieira, arco longo e arco curto"))
   }
 }
