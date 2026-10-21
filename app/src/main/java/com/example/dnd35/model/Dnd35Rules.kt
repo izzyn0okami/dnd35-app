@@ -246,7 +246,7 @@ object Dnd35Rules {
             willType = SaveProgression.GOOD,
             skillPointsPerLevel = 2,
             spellCastingAbility = "SAB",
-            classSkills = listOf("Concentração", "Conhecimento (Arcano)", "Conhecimento (História)", "Conhecimento (Planos)", "Conhecimento (Religião)", "Cura", "Diplomacia", "Identificar Magia", "Profissão"),
+            classSkills = listOf("Concentração", "Conhecimento (Arcano)", "Conhecimento (História)", "Conhecimento (Planos)", "Conhecimento (Religião)", "Cura", "Diplomacia", "Identificar Magia", "Ofício", "Profissão"),
             features = listOf(
                 ClassFeature(1, "Aura & Divindade", "Aura sagrada ou profana associada à sua divindade."),
                 ClassFeature(1, "Expulsar/Fascinar Mortos-Vivos", "Canaliza energia divina (3 + mod Car vezes ao dia) para afugentar ou destruir mortos-vivos."),
@@ -264,7 +264,7 @@ object Dnd35Rules {
             willType = SaveProgression.GOOD,
             skillPointsPerLevel = 4,
             spellCastingAbility = "SAB",
-            classSkills = listOf("Adestrar Animais", "Cavalgar", "Concentração", "Conhecimento (Natureza)", "Cura", "Diplomacia", "Identificar Magia", "Natação", "Observar", "Ouvir", "Profissão", "Sobrevivência"),
+            classSkills = listOf("Adestrar Animais", "Cavalgar", "Concentração", "Conhecimento (Natureza)", "Cura", "Diplomacia", "Identificar Magia", "Natação", "Observar", "Ofício", "Ouvir", "Profissão", "Sobrevivência"),
             features = listOf(
                 ClassFeature(1, "Companheiro Animal", "Aliado animal leal (Lobo, Urso, Águia, etc.) com bônus de dados de vida e truques."),
                 ClassFeature(1, "Senso da Natureza", "+2 em Conhecimento (Natureza) e Sobrevivência."),
