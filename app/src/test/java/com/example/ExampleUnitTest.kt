@@ -813,6 +813,16 @@ class ExampleUnitTest {
 
 
   @Test
+  fun woodElfDescriptionIncludesInheritedElfTraits() {
+    val traits = Dnd35Rules.RACES.first { it.name == "Elfo da Floresta" }.traits
+    assertTrue(traits.contains("imunidade a sono mágico"))
+    assertTrue(traits.contains("+2 contra encantamentos"))
+    assertTrue(traits.contains("+2 em Ouvir, Procurar e Observar"))
+    assertTrue(traits.contains("portas secretas automaticamente a 1,5m"))
+    assertTrue(traits.contains("espada longa, rapieira"))
+  }
+
+  @Test
   fun racialTraitDescriptionsMatchCalculatedSkillBonuses() {
     val races = Dnd35Rules.RACES.associateBy { it.name }
 
