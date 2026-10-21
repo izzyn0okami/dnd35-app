@@ -412,6 +412,16 @@ class ExampleUnitTest {
   }
 
   @Test
+  fun sorcererClassSkillsMatchCoreSkillList() {
+    val sorcerer = Dnd35Rules.CLASSES.first { it.name == "Feiticeiro" }
+    val expected = setOf(
+      "Concentração", "Conhecimento (Arcano)", "Identificar Magia", "Ofícios", "Profissão"
+    )
+    assertEquals(expected, sorcerer.classSkills.toSet())
+    assertTrue(sorcerer.classSkills.none { it == "Blefar" })
+  }
+
+  @Test
   fun monkClassSkillsMatchCoreSkillList() {
     val monk = Dnd35Rules.CLASSES.first { it.name == "Monge" }
     val expected = setOf(

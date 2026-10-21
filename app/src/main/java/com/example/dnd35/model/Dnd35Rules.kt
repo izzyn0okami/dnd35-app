@@ -412,7 +412,7 @@ object Dnd35Rules {
             willType = SaveProgression.GOOD,
             skillPointsPerLevel = 2,
             spellCastingAbility = "CAR",
-            classSkills = listOf("Blefar", "Concentração", "Conhecimento (Arcano)", "Identificar Magia", "Ofícios", "Profissão"),
+            classSkills = listOf("Concentração", "Conhecimento (Arcano)", "Identificar Magia", "Ofícios", "Profissão"),
             features = listOf(
                 ClassFeature(1, "Conjuração Espontânea", "Conjura feitiços arcanos instantaneamente sem necessidade de preparar em grimório."),
                 ClassFeature(1, "Invocar Familiar", "Vínculo místico com animal companheiro (Corvo, Gato, Cobra, Sapo, etc.).")
