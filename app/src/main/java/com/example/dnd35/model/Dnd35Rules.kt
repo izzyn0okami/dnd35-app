@@ -114,7 +114,7 @@ object Dnd35Rules {
             conMod = -2,
             intMod = 2,
             chaMod = 2,
-            traits = "Visão no escuro 36m, resistência a magia (11 + nível), magias inatas (Globos de Luz, Escuridão, Fogo das Fadas), cegueira sob luz forte.",
+            traits = "Visão no escuro 36m, resistência a magia (11 + nível), +2 em Ouvir, Procurar e Observar, magias inatas (Globos de Luz, Escuridão, Fogo das Fadas), cegueira sob luz forte.",
             favoredClass = "Mago"
         ),
         RaceInfo(
@@ -124,7 +124,7 @@ object Dnd35Rules {
             conMod = 2,
             size = "Pequeno",
             baseSpeedMeters = 6.0f,
-            traits = "+1 CA e ataque por tamanho pequeno (+4 Furtividade), visão na penumbra, +2 testes de Ilusão, +1 na CD de magias de Ilusão, +1 ataque vs kobolds/goblins, +4 esquiva vs gigantes, +2 Ouvir e Ofícios (Alquimia), magias inatas (Falar com Animais, Globos de Luz, Som Fantasma).",
+            traits = "+1 CA e ataque por tamanho pequeno (+4 Esconder-se), visão na penumbra, +2 testes de Ilusão, +1 na CD de magias de Ilusão, +1 ataque vs kobolds/goblins, +4 esquiva vs gigantes, +2 Ouvir e Ofícios (Alquimia), magias inatas (Falar com Animais, Globos de Luz, Som Fantasma).",
             favoredClass = "Bardo"
         ),
         RaceInfo(
@@ -134,7 +134,7 @@ object Dnd35Rules {
             dexMod = 2,
             size = "Pequeno",
             baseSpeedMeters = 6.0f,
-            traits = "+1 CA e ataque por tamanho pequeno (+4 Furtividade), +1 em todos os testes de resistência, +2 de moral contra medo, +1 nas jogadas de ataque com armas de arremesso e fundas, +2 em Escalar, Saltar, Ouvir e Furtividade.",
+            traits = "+1 CA e ataque por tamanho pequeno (+4 Esconder-se), +1 em todos os testes de resistência, +2 de moral contra medo, +1 nas jogadas de ataque com armas de arremesso e fundas, +2 em Escalar, Saltar, Ouvir e Furtividade.",
             favoredClass = "Ladino"
         ),
         RaceInfo(
@@ -150,7 +150,7 @@ object Dnd35Rules {
         ),
         RaceInfo(
             name = "Meio-Elfo",
-            traits = "Imunidade a sono mágico, +2 contra encantamentos, visão na penumbra, +1 em Obter Informação e Diplomacia, +1 em Ouvir, Procurar e Observar, sangue élfico.",
+            traits = "Imunidade a sono mágico, +2 contra encantamentos, visão na penumbra, +2 em Obter Informação e Diplomacia, +1 em Ouvir, Procurar e Observar, sangue élfico.",
             favoredClass = "Qualquer"
         ),
         RaceInfo(

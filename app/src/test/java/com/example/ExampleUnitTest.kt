@@ -784,4 +784,14 @@ class ExampleUnitTest {
     assertEquals(listOf(SkillPointAllocation("Atuação", 2f)), decoded.single().allocations)
   }
 
+
+  @Test
+  fun racialTraitDescriptionsMatchCalculatedSkillBonuses() {
+    val races = Dnd35Rules.RACES.associateBy { it.name }
+
+    assertTrue(races.getValue("Meio-Elfo").traits.contains("+2 em Obter Informação e Diplomacia"))
+    assertTrue(races.getValue("Gnomo").traits.contains("+4 Esconder-se"))
+    assertTrue(races.getValue("Halfling").traits.contains("+4 Esconder-se"))
+    assertTrue(races.getValue("Drow (Elfo Negro)").traits.contains("+2 em Ouvir, Procurar e Observar"))
+  }
 }
