@@ -440,4 +440,60 @@ class ExampleUnitTest {
     assertTrue(monk.features.none { it.name == "Corpo Trêmulo" })
   }
 
+  @Test
+  fun remainingCoreClassSkillsMatchExpectedLists() {
+    val expectedByClass = mapOf(
+      "Bárbaro" to setOf(
+        "Adestrar Animais", "Cavalgar", "Escalar", "Intimidação", "Natação",
+        "Ofícios", "Ouvir", "Saltar", "Sobrevivência"
+      ),
+      "Clérigo" to setOf(
+        "Concentração", "Conhecimento (Arcano)", "Conhecimento (História)",
+        "Conhecimento (Planos)", "Conhecimento (Religião)", "Cura", "Diplomacia",
+        "Identificar Magia", "Ofícios", "Profissão"
+      ),
+      "Druida" to setOf(
+        "Adestrar Animais", "Cavalgar", "Concentração", "Conhecimento (Natureza)",
+        "Cura", "Diplomacia", "Identificar Magia", "Natação", "Observar", "Ofícios",
+        "Ouvir", "Profissão", "Sobrevivência"
+      ),
+      "Guerreiro" to setOf(
+        "Adestrar Animais", "Cavalgar", "Escalar", "Intimidação", "Natação",
+        "Ofícios", "Saltar"
+      ),
+      "Paladino" to setOf(
+        "Adestrar Animais", "Cavalgar", "Concentração",
+        "Conhecimento (Nobreza e Realeza)", "Conhecimento (Religião)", "Cura",
+        "Diplomacia", "Ofícios", "Profissão", "Sentir Motivação"
+      ),
+      "Ranger" to setOf(
+        "Adestrar Animais", "Cavalgar", "Concentração", "Conhecimento (Geografia)",
+        "Conhecimento (Masmorras)", "Conhecimento (Natureza)", "Cura", "Escalar",
+        "Esconder-se", "Furtividade", "Natação", "Observar", "Ofícios", "Ouvir",
+        "Procurar", "Profissão", "Saltar", "Sobrevivência", "Usar Cordas"
+      ),
+      "Ladino" to setOf(
+        "Abrir Fechaduras", "Acrobacia", "Arte da Fuga", "Atuação", "Avaliação",
+        "Blefar", "Decifrar Escrita", "Diplomacia", "Disfarces", "Equilíbrio",
+        "Escalar", "Esconder-se", "Falsificação", "Furtividade", "Intimidação",
+        "Natação", "Observar", "Obter Informação", "Ofícios", "Operar Mecanismo",
+        "Ouvir", "Prestidigitação", "Procurar", "Saltar", "Sentir Motivação",
+        "Usar Cordas", "Usar Instrumento Mágico"
+      ),
+      "Mago" to setOf(
+        "Concentração", "Conhecimento (Arcano)",
+        "Conhecimento (Arquitetura e Engenharia)", "Conhecimento (Geografia)",
+        "Conhecimento (História)", "Conhecimento (Local)", "Conhecimento (Masmorras)",
+        "Conhecimento (Natureza)", "Conhecimento (Nobreza e Realeza)",
+        "Conhecimento (Planos)", "Conhecimento (Religião)", "Decifrar Escrita",
+        "Identificar Magia", "Ofícios", "Profissão"
+      )
+    )
+
+    expectedByClass.forEach { (className, expected) ->
+      val actual = Dnd35Rules.CLASSES.first { it.name == className }.classSkills.toSet()
+      assertEquals("Lista de perícias de classe incorreta: $className", expected, actual)
+    }
+  }
+
 }
