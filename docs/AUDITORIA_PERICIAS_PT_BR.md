@@ -67,3 +67,9 @@ Esta é uma correção inicial, não uma certificação completa do sistema de p
 - A lista do Monge não incluía **Atuação** nem **Profissão**, embora ambas constem da lista de perícias de classe da classe no D&D 3.5.
 - As duas perícias foram adicionadas à lista e foi criado um teste de regressão que compara o conjunto completo de perícias de classe do Monge com a lista esperada.
 - A alteração não modifica graduações já registradas nem o formato dos dados salvos.
+
+## Correção das perícias de classe do Feiticeiro
+
+- A lista do Feiticeiro continha **Blefar**, que não consta entre as perícias de classe do Feiticeiro no D&D 3.5. A lista foi ajustada para manter Concentração, Conhecimento (Arcano), Identificar Magia, Ofícios e Profissão.
+- Foi adicionado teste de regressão para comparar o conjunto completo de perícias de classe do Feiticeiro com a lista esperada.
+- A alteração não modifica graduações existentes nem os dados salvos das fichas.
