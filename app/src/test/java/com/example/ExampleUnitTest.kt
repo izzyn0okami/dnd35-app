@@ -5,6 +5,7 @@ import com.example.dnd35.model.CharacterEntity
 import com.example.dnd35.model.CharacterInventoryItem
 import com.example.dnd35.model.CharacterJsonAdapters
 import com.example.dnd35.model.CharacterSkill
+import com.example.dnd35.viewmodel.isValidEditedSkillRanks
 import com.example.dnd35.viewmodel.normalizeEditedSkillRanks
 import com.example.dnd35.model.SkillPointAllocation
 import com.example.dnd35.model.SkillPointLevelRecord
@@ -341,8 +342,17 @@ class ExampleUnitTest {
   fun editingSkillRanksPreservesHalfRanksAndRespectsCap() {
     assertEquals(1.5f, normalizeEditedSkillRanks(1.5f, 7f))
     assertEquals(1.5f, normalizeEditedSkillRanks(1.5f, 2f))
-    // roundToInt arredonda 4,5 para 5; dividido por 2, o resultado é 2,5.
-    assertEquals(2.5f, normalizeEditedSkillRanks(2.25f, 7f))
+    assertEquals(2f, normalizeEditedSkillRanks(2.24f, 7f))
+    assertEquals(2f, normalizeEditedSkillRanks(2.25f, 7f))
+    assertEquals(2f, normalizeEditedSkillRanks(2.26f, 7f))
+    assertTrue(isValidEditedSkillRanks(0f))
+    assertTrue(isValidEditedSkillRanks(1.5f))
+    assertTrue(!isValidEditedSkillRanks(2.24f))
+    assertTrue(!isValidEditedSkillRanks(2.25f))
+    assertTrue(!isValidEditedSkillRanks(2.26f))
+    assertTrue(!isValidEditedSkillRanks(-0.5f))
+    assertTrue(!isValidEditedSkillRanks(Float.NaN))
+    assertTrue(!isValidEditedSkillRanks(Float.POSITIVE_INFINITY))
     assertEquals(0f, normalizeEditedSkillRanks(-1f, 7f))
     assertEquals(2f, normalizeEditedSkillRanks(2.5f, 2f))
   }
