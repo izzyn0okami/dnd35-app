@@ -66,6 +66,7 @@ fun SkillsTab(
     var editingSkill by remember { mutableStateOf<ComputedSkill?>(null) }
     var diceRollTarget by remember { mutableStateOf<Pair<String, Int>?>(null) }
     var craftSpecialtyInput by remember { mutableStateOf("") }
+    var craftSpecialtyMessage by remember { mutableStateOf<String?>(null) }
 
     val maxClassRank = stats.totalCharacterLevel + 3
     val maxCrossRank = maxClassRank / 2.0f
@@ -177,13 +178,33 @@ fun SkillsTab(
                                 } else {
                                     com.example.dnd35.model.Dnd35Rules.canonicalSkillName("Ofícios ($entered)")
                                 }
-                                if (entered.isNotBlank() && stats.computedSkills.none { it.skill.name.equals(name, ignoreCase = true) }) {
-                                    viewModel.updateSkill(name, 0f, 0, false)
+                                when {
+                                    entered.isBlank() -> {
+                                        craftSpecialtyMessage = "Digite o nome da especialidade."
+                                    }
+                                    name.substringAfter("(", "").removeSuffix(")").isBlank() -> {
+                                        craftSpecialtyMessage = "O nome da especialidade não pode ficar vazio."
+                                    }
+                                    stats.computedSkills.any { it.skill.name.equals(name, ignoreCase = true) } -> {
+                                        craftSpecialtyMessage = "$name já existe nesta ficha."
+                                    }
+                                    else -> {
+                                        viewModel.updateSkill(name, 0f, 0, false)
+                                        craftSpecialtyMessage = "$name adicionado à ficha."
+                                        craftSpecialtyInput = ""
+                                    }
                                 }
-                                craftSpecialtyInput = ""
                             },
                             enabled = craftSpecialtyInput.isNotBlank()
-                        ) { Text("Adicionar") }
+                        ) { Text("Salvar ofício") }
+                    }
+                    craftSpecialtyMessage?.let { message ->
+                        Spacer(modifier = Modifier.height(4.dp))
+                        Text(
+                            text = message,
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
                     }
                 }
             }
