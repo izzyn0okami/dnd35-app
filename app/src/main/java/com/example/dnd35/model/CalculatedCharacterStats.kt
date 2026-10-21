@@ -158,7 +158,7 @@ object CharacterCalculator {
             (race.contains("Elfo", ignoreCase = true) || race.contains("Drow", ignoreCase = true)) &&
                 skill in setOf("Ouvir", "Procurar", "Observar") -> 2
             race.equals("Halfling Robusto", ignoreCase = true) &&
-                skill == "Ouvir" -> 2
+                skill in setOf("Escalar", "Saltar", "Ouvir", "Furtividade") -> 2
             race.equals("Halfling", ignoreCase = true) &&
                 skill in setOf("Escalar", "Saltar", "Ouvir", "Furtividade") -> 2
             race.equals("Gnomo", ignoreCase = true) && (
@@ -332,8 +332,8 @@ object CharacterCalculator {
             maxOf(0, chaMod)
         } else 0
 
-        // Bônus racial de Halfling (+1 em todas as resistências)
-        val halflingSaveBonus = if (race.name.contains("Halfling", ignoreCase = true)) 1 else 0
+        // Halfling Robusto (Coração-Forte) não recebe o +1 racial geral nas resistências.
+        val halflingSaveBonus = if (race.name.equals("Halfling", ignoreCase = true)) 1 else 0
 
         val featFort = if (feats.any { it.name.contains("Fortitude Maior", ignoreCase = true) }) 2 else 0
         val featRef = if (feats.any { it.name.contains("Reflexos Rápidos", ignoreCase = true) }) 2 else 0
