@@ -23,7 +23,19 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
-import kotlin.math.roundToInt
+
+internal fun isValidEditedSkillRanks(ranks: Float): Boolean {
+    if (!ranks.isFinite() || ranks < 0f) return false
+    val doubled = ranks * 2f
+    return kotlin.math.abs(doubled - doubled.toInt()) < 0.0001f
+}
+
+internal fun normalizeEditedSkillRanks(ranks: Float, maxRanks: Float): Float {
+    val safeMax = if (maxRanks.isFinite()) maxRanks.coerceAtLeast(0f) else 0f
+    val safeRanks = if (ranks.isFinite()) ranks.coerceAtLeast(0f) else 0f
+    // Defesa para chamadas internas: nunca concede graduação arredondando para cima.
+    return ((safeRanks * 2f).toInt().coerceAtLeast(0) / 2f).coerceAtMost(safeMax)
+}
 
 class CharacterViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -295,11 +307,9 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
         } else isClassSkill
         val maxClassRanks = classEntries.sumOf { it.level }.coerceAtLeast(1) + 3f
         val maxRanks = if (actualClassSkill) maxClassRanks else maxClassRanks / 2f
-        val normalizedRanks = if (actualClassSkill) {
-            ranks.coerceAtLeast(0f).roundToInt().toFloat()
-        } else {
-            (ranks.coerceAtLeast(0f) * 2f).roundToInt() / 2f
-        }.coerceAtMost(maxRanks)
+        // Graduações de 0,5 podem existir antes de a perícia passar a ser de classe
+        // por multiclasse; a edição não deve arredondá-las para cima.
+        val normalizedRanks = normalizeEditedSkillRanks(ranks, maxRanks)
         val index = currentSkills.indexOfFirst { it.name.equals(skillName, ignoreCase = true) }
         if (index >= 0) {
             val old = currentSkills[index]
