@@ -863,4 +863,17 @@ class ExampleUnitTest {
     assertEquals(2, mountain.conMod)
     assertEquals(-2, mountain.chaMod)
   }
+  @Test
+  fun gnomeRacialDescriptionIncludesCoreTraits() {
+    val traits = Dnd35Rules.RACES.first { it.name == "Gnomo" }.traits
+    assertTrue(traits.contains("visão na penumbra"))
+    assertTrue(traits.contains("+2 nos testes de resistência contra ilusões"))
+    assertTrue(traits.contains("+1 na CD das ilusões conjuradas"))
+    assertTrue(traits.contains("kobolds e goblinoides"))
+    assertTrue(traits.contains("+4 de bônus de esquiva na CA contra gigantes"))
+    assertTrue(traits.contains("+2 em Ouvir e Ofícios (Alquimia)"))
+    assertTrue(traits.contains("martelo-gancho gnômico como arma marcial"))
+    assertTrue(traits.contains("Prestidigitação"))
+    assertTrue(traits.contains("mamíferos escavadores"))
+  }
 }
