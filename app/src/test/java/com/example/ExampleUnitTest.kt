@@ -166,12 +166,28 @@ class ExampleUnitTest {
         baseInt = 10,
         baseCha = 10,
         skillsJson = CharacterJsonAdapters.serializeSkills(
-          listOf(CharacterSkill(name = "Diplomacia", keyAbility = "CAR"))
+          listOf(
+            CharacterSkill(name = "Ouvir", keyAbility = "SAB"),
+            CharacterSkill(name = "Procurar", keyAbility = "INT"),
+            CharacterSkill(name = "Observar", keyAbility = "SAB"),
+            CharacterSkill(name = "Diplomacia", keyAbility = "CAR"),
+            CharacterSkill(name = "Obter Informação", keyAbility = "CAR")
+          )
         )
       )
-    ).computedSkills.single()
-    assertEquals(1, halfElf.racialBonus)
-    assertEquals(1, halfElf.totalBonus)
+    ).computedSkills.associateBy { it.skill.name }
+    val expectedHalfElfBonuses = mapOf(
+      "Ouvir" to 1,
+      "Procurar" to 1,
+      "Observar" to 1,
+      "Diplomacia" to 2,
+      "Obter Informação" to 2
+    )
+    expectedHalfElfBonuses.forEach { (skillName, expectedBonus) ->
+      val skill = halfElf.getValue(skillName)
+      assertEquals(expectedBonus, skill.racialBonus)
+      assertEquals(expectedBonus, skill.totalBonus)
+    }
 
     val gnome = CharacterCalculator.compute(
       CharacterEntity(
