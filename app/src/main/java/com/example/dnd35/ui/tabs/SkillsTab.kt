@@ -26,7 +26,6 @@ import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.Checkbox
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -68,7 +67,9 @@ fun SkillsTab(
 
     val maxClassRank = character.level + 3
     val maxCrossRank = maxClassRank / 2.0f
-    val totalRanksSpent = stats.computedSkills.sumOf { it.ranks.toDouble() }
+    val totalSkillPointsSpent = stats.computedSkills.sumOf {
+        it.ranks.toDouble() * if (it.isClassSkill) 1.0 else 2.0
+    }
 
     val filteredSkills = stats.computedSkills.filter {
         val matchesQuery = it.skill.name.contains(searchQuery, ignoreCase = true) ||
@@ -107,7 +108,7 @@ fun SkillsTab(
                             color = MaterialTheme.colorScheme.onPrimaryContainer
                         )
                         Text(
-                            "Graduações totais investidas: ${String.format("%.1f", totalRanksSpent)} pts",
+                            "Graduações totais investidas: ${String.format("%.1f", totalSkillPointsSpent)} pts",
                             style = MaterialTheme.typography.labelSmall,
                             color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.8f)
                         )
@@ -172,7 +173,7 @@ fun SkillsTab(
                 computed = item,
                 onAddRank = {
                     val step = if (item.isClassSkill) 1.0f else 0.5f
-                    viewModel.updateSkill(item.skill.name, item.ranks + step, item.miscBonus, item.isClassSkill)
+                    viewModel.updateSkill(item.skill.name, minOf(item.maxRanks, item.ranks + step), item.miscBonus, item.isClassSkill)
                 },
                 onSubRank = {
                     val step = if (item.isClassSkill) 1.0f else 0.5f
@@ -180,7 +181,7 @@ fun SkillsTab(
                 },
                 onEdit = { editingSkill = item },
                 onRoll = {
-                    diceRollTarget = Pair(item.skill.name, item.totalBonus)
+                    if (item.canRoll) diceRollTarget = Pair(item.skill.name, item.totalBonus)
                 }
             )
             Spacer(modifier = Modifier.height(6.dp))
@@ -195,7 +196,6 @@ fun SkillsTab(
     editingSkill?.let { comp ->
         var rankInput by remember { mutableStateOf("${comp.ranks}") }
         var miscInput by remember { mutableStateOf("${comp.miscBonus}") }
-        var isClass by remember { mutableStateOf(comp.isClassSkill) }
 
         AlertDialog(
             onDismissRequest = { editingSkill = null },
@@ -239,17 +239,18 @@ fun SkillsTab(
 
                     Spacer(modifier = Modifier.height(8.dp))
 
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        Checkbox(checked = isClass, onCheckedChange = { isClass = it })
-                        Text("Perícia de Classe para ${character.characterClass}", style = MaterialTheme.typography.bodyMedium)
-                    }
+                    Text(
+                        if (comp.isClassSkill) "Perícia de classe (limite: ${comp.maxRanks} graduações)"
+                        else "Perícia entre classes (limite: ${comp.maxRanks} graduações)",
+                        style = MaterialTheme.typography.bodySmall
+                    )
                 }
             },
             confirmButton = {
                 Button(onClick = {
                     val r = rankInput.toFloatOrNull()?.coerceAtLeast(0f) ?: comp.ranks
                     val m = miscInput.toIntOrNull() ?: comp.miscBonus
-                    viewModel.updateSkill(comp.skill.name, r, m, isClass)
+                    viewModel.updateSkill(comp.skill.name, minOf(comp.maxRanks, r), m, comp.isClassSkill)
                     editingSkill = null
                 }) {
                     Text("Salvar")
@@ -352,8 +353,13 @@ fun SkillItemRow(
             )
 
             // Botão de Rolar Dado d20
-            IconButton(onClick = onRoll, modifier = Modifier.size(32.dp)) {
-                Icon(Icons.Default.Casino, contentDescription = "Rolar", tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(20.dp))
+            IconButton(onClick = onRoll, enabled = computed.canRoll, modifier = Modifier.size(32.dp)) {
+                Icon(
+                    Icons.Default.Casino,
+                    contentDescription = if (computed.canRoll) "Rolar" else "Exige treinamento",
+                    tint = MaterialTheme.colorScheme.primary,
+                    modifier = Modifier.size(20.dp)
+                )
             }
 
             // Botões de Graduação (+ e -)
@@ -367,6 +373,7 @@ fun SkillItemRow(
 
             IconButton(
                 onClick = onAddRank,
+                enabled = computed.ranks < computed.maxRanks,
                 modifier = Modifier.size(30.dp)
             ) {
                 Icon(Icons.Default.Add, contentDescription = "Aumentar Graduação", tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(16.dp))
