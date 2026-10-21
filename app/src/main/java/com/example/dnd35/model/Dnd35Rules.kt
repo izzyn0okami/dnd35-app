@@ -158,7 +158,7 @@ object Dnd35Rules {
             strMod = 2,
             intMod = -2,
             chaMod = -2,
-            traits = "Visão no escuro 18m, sangue orc, força física devastadora para combate corpo a corpo.",
+            traits = "Visão no escuro 18m, sangue orc (considerado orc para efeitos relacionados à raça).",
             favoredClass = "Bárbaro"
         )
     )
