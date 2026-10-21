@@ -311,8 +311,8 @@ fun SkillsTab(
                             val record = com.example.dnd35.model.SkillPointLevelRecord(
                                 characterLevel = level!!,
                                 className = classInput.trim(),
-                                availablePoints = available!!,
-                                allocations = parsedAllocations
+                                availablePoints = available!!.toFloat(),
+                                allocations = parsedAllocations!!
                             )
                             viewModel.updateSkillPointHistory(history + record)
                             levelInput = ""
