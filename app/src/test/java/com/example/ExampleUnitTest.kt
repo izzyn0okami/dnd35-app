@@ -836,12 +836,16 @@ class ExampleUnitTest {
     assertTrue(races.getValue("Halfling").traits.contains("+4 Esconder-se"))
     val drowTraits = races.getValue("Drow (Elfo Negro)").traits
     assertTrue(drowTraits.contains("Imunidade a sono mágico"))
-    assertTrue(drowTraits.contains("+2 contra encantamentos"))
-    assertTrue(drowTraits.contains("visão na penumbra"))
+    assertTrue(drowTraits.contains("visão no escuro 36m"))
+    assertTrue(drowTraits.contains("+2 nos testes de resistência contra magias e habilidades similares a magia"))
     assertTrue(drowTraits.contains("+2 em Ouvir, Procurar e Observar"))
     assertTrue(drowTraits.contains("portas secretas automaticamente a 1,5m"))
-    assertTrue(drowTraits.contains("espada longa, rapieira, arco longo e arco curto"))
-    assertTrue(drowTraits.contains("incluindo versões compostas"))
+    assertTrue(drowTraits.contains("besta de mão, rapieira e espada curta"))
+    assertTrue(drowTraits.contains("resistência à magia (11 + nível de personagem)"))
+    assertTrue(drowTraits.contains("habilidades similares a magia 1/dia"))
+    assertTrue(drowTraits.contains("cegueira à luz intensa"))
+    assertTrue(!drowTraits.contains("visão na penumbra"))
+    assertTrue(!drowTraits.contains("arco longo"))
   }
   @Test
   fun dwarfRacialDescriptionsIncludeCoreTraitsForBothSubraces() {
