@@ -386,7 +386,11 @@ object CharacterCalculator {
         val featInit = if (feats.any { it.name.contains("Iniciativa Aprimorada", ignoreCase = true) }) 4 else 0
         val initiativeTotal = dexMod + character.miscInitiative + featInit
 
-        var baseSpeed = character.baseSpeedMeters.takeIf { it > 0 } ?: race.baseSpeedMeters
+        // O valor legado padrão de 9m não pode substituir o deslocamento racial (ex.: anão/halfling).
+        var baseSpeed = if (
+            character.baseSpeedMeters <= 0f ||
+            (character.baseSpeedMeters == 9.0f && race.baseSpeedMeters != 9.0f)
+        ) race.baseSpeedMeters else character.baseSpeedMeters
         val barbarianLevel = classEntries.find { it.className.equals("Bárbaro", ignoreCase = true) }?.level ?: 0
         val equippedArmor = inventory.filter {
             it.equipped && (it.equippedSlot == Dnd35Rules.EquipmentSlots.ARMOR_BODY ||
@@ -706,7 +710,7 @@ object CharacterCalculator {
     }
 
     private fun reduceSpeedForArmorOrLoad(speedMeters: Float): Float {
-        val speedFeet = (speedMeters / 0.3f).toInt()
+        val speedFeet = (speedMeters / 0.3f).roundToInt()
         val reducedFeet = when (speedFeet) {
             20 -> 15
             30 -> 20
