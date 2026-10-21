@@ -339,13 +339,19 @@ object CharacterCalculator {
         val initiativeTotal = dexMod + character.miscInitiative + featInit
 
         var baseSpeed = character.baseSpeedMeters.takeIf { it > 0 } ?: race.baseSpeedMeters
-        // Bônus de movimento do Bárbaro (+3m sem armadura pesada)
         val barbarianLevel = classEntries.find { it.className.equals("Bárbaro", ignoreCase = true) }?.level ?: 0
-        if (barbarianLevel >= 1 && itemArmorBonus < 6) {
+        val equippedArmor = inventory.filter {
+            it.equipped && (it.equippedSlot == Dnd35Rules.EquipmentSlots.ARMOR_BODY ||
+                it.category.equals("Armaduras", ignoreCase = true))
+        }
+        // Movimento rápido do Bárbaro exige ausência de armadura média/pesada e carga leve.
+        if (barbarianLevel >= 1 && equippedArmor.none { isMediumOrHeavyArmor(it.name) } &&
+            encumbrance == Dnd35Rules.EncumbranceLevel.LIGHT) {
             baseSpeed += 3.0f
         }
-        // Bônus de movimento do Monge (+3m a cada 3 níveis de monge)
-        if (monkLevel > 0 && !isWearingArmor) {
+        // Movimento rápido do Monge exige ausência de armadura/escudo e carga leve.
+        if (monkLevel > 0 && !isWearingArmor &&
+            encumbrance == Dnd35Rules.EncumbranceLevel.LIGHT) {
             val monkSpeedBonus = (monkLevel / 3) * 3.0f
             baseSpeed += monkSpeedBonus
         }
@@ -594,6 +600,21 @@ object CharacterCalculator {
 
     fun defaultSkillsForClass(classInfo: Dnd35Rules.ClassInfo): List<CharacterSkill> {
         return defaultSkillsForClasses(listOf(classInfo))
+    }
+
+    private fun isMediumOrHeavyArmor(name: String): Boolean {
+        val normalized = name.trim().lowercase()
+        val lightArmor = listOf(
+            "armadura acolchoada", "armadura de couro", "couro batido",
+            "camisa de cota de malha"
+        )
+        if (lightArmor.any { normalized.contains(it) }) return false
+        val mediumOrHeavyArmor = listOf(
+            "gibão de peles", "brunea", "cota de malha", "peitoral de aço",
+            "cota de talas", "cota de bandas", "armadura de meia-placa",
+            "armadura completa", "full plate"
+        )
+        return mediumOrHeavyArmor.any { normalized.contains(it) } || normalized.isNotBlank()
     }
 
     private fun formatBabProgression(bab: Int): String {
