@@ -333,6 +333,32 @@ class ExampleUnitTest {
   }
 
   @Test
+  fun multiclassPreservesHalfRanksWhenSkillBecomesClassSkill() {
+    val skills = listOf(
+      CharacterSkill(name = "Acrobacia", keyAbility = "DES", ranks = 1.5f)
+    )
+    val stats = CharacterCalculator.compute(
+      CharacterEntity(
+        characterClass = "Guerreiro/Bardo",
+        level = 2,
+        multiclassJson = CharacterJsonAdapters.serializeClassEntries(
+          listOf(
+            com.example.dnd35.model.CharacterClassEntry("Guerreiro", 1),
+            com.example.dnd35.model.CharacterClassEntry("Bardo", 1)
+          )
+        ),
+        skillsJson = CharacterJsonAdapters.serializeSkills(skills)
+      )
+    )
+    val acrobatics = stats.computedSkills.first { it.skill.name == "Acrobacia" }
+
+    assertTrue(acrobatics.isClassSkill)
+    assertEquals(1.5f, acrobatics.ranks)
+    // As meias graduações são preservadas, mas só a parte inteira melhora o teste.
+    assertEquals(1, acrobatics.totalBonus)
+  }
+
+  @Test
   fun multiclassRankCapUsesTotalCharacterLevel() {
     val stats = CharacterCalculator.compute(
       CharacterEntity(
