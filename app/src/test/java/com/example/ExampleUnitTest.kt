@@ -189,6 +189,12 @@ class ExampleUnitTest {
   }
 
   @Test
+  fun barbarianClassSkillsIncludeCraftProfessionSkill() {
+    val barbarian = Dnd35Rules.CLASSES.first { it.name == "Bárbaro" }
+    assertTrue(barbarian.classSkills.contains("Ofício"))
+  }
+
+  @Test
   fun skillCatalogIncludesPortugueseAcrobaticsSkill() {
     assertTrue(Dnd35Rules.SKILL_DEFINITIONS.any { it.name.equals("Acrobacia", ignoreCase = true) })
     assertTrue(Dnd35Rules.SKILL_DEFINITIONS.any { it.name == "Equilíbrio" })
