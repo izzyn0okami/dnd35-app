@@ -102,3 +102,10 @@ Esta é uma correção inicial, não uma certificação completa do sistema de p
 - A aba Perícias apresenta uma seção para adicionar e remover idiomas, com deduplicação sem diferenciar maiúsculas/minúsculas.
 - A base Room passa da versão 2 para a 3 com migração aditiva que cria a coluna com valor padrão vazio. A migração preserva as fichas existentes e não usa migração destrutiva.
 - Testes cobrem normalização, remoção de entradas vazias, duplicatas e compatibilidade com fichas sem dados de idiomas.
+
+## Especialidades independentes de Ofícios
+
+- **Ofícios** funciona como categoria de perícia: cada especialidade cadastrada é uma perícia normal e independente, por exemplo **Ofícios (Armas)** e **Ofícios (Armaduras)**.
+- Cada especialidade possui suas próprias graduações e bônus, usa Inteligência, participa do limite de graduações por nível e realiza testes normalmente. O estado genérico legado **Ofícios** continua preservado.
+- A especialidade herda a condição de perícia de classe da perícia-base **Ofícios** quando qualquer classe do personagem tem Ofícios em sua lista.
+- A interface permite cadastrar uma especialidade pelo nome curto (ex.: Armas) ou pelo nome completo (ex.: Ofícios (Armas)). O armazenamento existente de perícias é reutilizado; não há migração destrutiva dos dados salvos.
