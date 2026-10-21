@@ -380,7 +380,7 @@ object CharacterCalculator {
         // Fúria de Bárbaro
         val rageUsesPerDay = if (barbarianLevel > 0) {
             when {
-                barbarianLevel >= 20 -> 99 // Sem limite
+                barbarianLevel >= 20 -> 6
                 barbarianLevel >= 16 -> 5
                 barbarianLevel >= 12 -> 4
                 barbarianLevel >= 8 -> 3
