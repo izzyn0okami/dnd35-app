@@ -355,7 +355,10 @@ class ExampleUnitTest {
     assertTrue(acrobatics.isClassSkill)
     assertEquals(1.5f, acrobatics.ranks)
     // As meias graduações são preservadas, mas só a parte inteira melhora o teste.
-    assertEquals(1, acrobatics.totalBonus)
+    assertEquals(
+      1 + acrobatics.keyAbilityMod + acrobatics.miscBonus + acrobatics.armorPenaltyApplied,
+      acrobatics.totalBonus
+    )
   }
 
   @Test
