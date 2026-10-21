@@ -13,6 +13,9 @@ Esta etapa inicia a auditoria técnica das perícias usadas pela ficha. A fonte 
 - O catálogo e as listas de perícias de classe passam a usar os nomes completos **Conhecimento (Arquitetura e Engenharia)** e **Conhecimento (Nobreza e Realeza)**, em vez das formas abreviadas.
 - Foram adicionados testes de regressão para impedir que essas duas formas abreviadas retornem ao catálogo.
 
+
+- Confirmado no código que **Natação** recebe o dobro da penalidade total de armadura/carga aplicada às perícias afetadas. Adicionado teste de regressão comparando Natação (−6) com Escalar (−3) sob penalidade base de −3; a regra existente não foi alterada.
+
 ## Achados que ainda exigem auditoria antes de serem alterados
 
 1. **Perícias de classe das 11 classes básicas:** comparar cada lista com a seção “Perícias de Classe” de cada classe e com a tabela geral de perícias. Não completar listas por inferência.
