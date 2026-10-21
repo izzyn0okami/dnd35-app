@@ -207,7 +207,18 @@ class ExampleUnitTest {
   }
 
   @Test
-  fun stoutHalflingReceivesOnlyItsListenRacialSkillBonus() {
+  fun stoutHalflingDescriptionMatchesStrongheartTraits() {
+    val race = Dnd35Rules.races.associateBy { it.name }.getValue("Halfling Robusto")
+    assertEquals(0, race.conMod)
+    assertTrue(race.traits.contains("talento adicional no 1º nível"))
+    assertTrue(race.traits.contains("não recebe o +1 racial geral nos testes de resistência"))
+    assertTrue(race.traits.contains("+2 em Escalar, Saltar e Furtividade"))
+    assertTrue(!race.traits.contains("afinidade com pedras"))
+    assertTrue(!race.traits.contains("+2 Ouvir"))
+  }
+
+  @Test
+  fun stoutHalflingReceivesCoreHalflingSkillBonuses() {
     val character = CharacterCalculator.compute(
       CharacterEntity(
         race = "Halfling Robusto",
@@ -227,10 +238,10 @@ class ExampleUnitTest {
       )
     )
     val bonuses = character.computedSkills.associate { it.skill.name to it.racialBonus }
-    assertEquals(0, bonuses.getValue("Escalar"))
-    assertEquals(0, bonuses.getValue("Saltar"))
-    assertEquals(2, bonuses.getValue("Ouvir"))
-    assertEquals(0, bonuses.getValue("Furtividade"))
+    assertEquals(2, bonuses.getValue("Escalar"))
+    assertEquals(2, bonuses.getValue("Saltar"))
+    assertEquals(0, bonuses.getValue("Ouvir"))
+    assertEquals(2, bonuses.getValue("Furtividade"))
   }
 
   @Test
