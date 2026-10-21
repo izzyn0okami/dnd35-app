@@ -190,6 +190,32 @@ class ExampleUnitTest {
   }
 
   @Test
+  fun hideSkillUsesSizeModifierWithoutAffectingOtherSkills() {
+    val smallCharacter = CharacterCalculator.compute(
+      CharacterEntity(
+        race = "Halfling",
+        baseStr = 10,
+        baseDex = 10,
+        baseWis = 10,
+        baseInt = 10,
+        baseCha = 10,
+        skillsJson = CharacterJsonAdapters.serializeSkills(
+          listOf(
+            CharacterSkill(name = "Esconder-se", keyAbility = "DES"),
+            CharacterSkill(name = "Furtividade", keyAbility = "DES")
+          )
+        )
+      )
+    )
+    val hide = smallCharacter.computedSkills.first { it.skill.name == "Esconder-se" }
+    val stealth = smallCharacter.computedSkills.first { it.skill.name == "Furtividade" }
+    assertEquals(4, hide.sizeBonus)
+    assertEquals(6, hide.totalBonus) // +4 tamanho, +2 bônus racial de halfling
+    assertEquals(0, stealth.sizeBonus)
+    assertEquals(2, stealth.totalBonus) // bônus racial, sem bônus de tamanho
+  }
+
+  @Test
   fun testCharacterCalculator() {
     val char = CharacterEntity(
       name = "Guerreiro Teste",
