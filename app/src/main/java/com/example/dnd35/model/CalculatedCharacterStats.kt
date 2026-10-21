@@ -453,12 +453,14 @@ object CharacterCalculator {
             }
 
             val canonicalSkillName = Dnd35Rules.canonicalSkillName(skill.name)
-            val def = Dnd35Rules.SKILL_DEFINITIONS.find { it.name.equals(canonicalSkillName, ignoreCase = true) }
+            val def = Dnd35Rules.skillDefinitionFor(canonicalSkillName)
             // Perícias conhecidas seguem a lista oficial de perícias de classe de qualquer classe
             // do personagem. O sinalizador salvo só serve para perícias personalizadas.
             val isClassSkill = if (def != null) {
                 multiclassDetails.any { detail ->
-                    detail.classInfo.classSkills.any { it.equals(canonicalSkillName, ignoreCase = true) }
+                    detail.classInfo.classSkills.any {
+                        it.equals(Dnd35Rules.classSkillLookupName(canonicalSkillName), ignoreCase = true)
+                    }
                 }
             } else skill.isClassSkill
             val maxClassRanks = totalCharacterLevel + 3f
