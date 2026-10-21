@@ -160,6 +160,31 @@ fun SkillsTab(
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
+                    Text(
+                        "Sugestões (opcionais; você também pode digitar qualquer outra especialidade):",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                    val commonCraftSpecialties = listOf(
+                        "Armas", "Armaduras", "Alquimia", "Carpintaria",
+                        "Ferraria", "Joalheria", "Arco e flechas", "Construção"
+                    )
+                    Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
+                        commonCraftSpecialties.chunked(4).forEach { rowSpecialties ->
+                            Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+                                rowSpecialties.forEach { specialty ->
+                                    FilterChip(
+                                        selected = craftSpecialtyInput.trim().equals(specialty, ignoreCase = true),
+                                        onClick = {
+                                            craftSpecialtyInput = specialty
+                                            craftSpecialtyMessage = null
+                                        },
+                                        label = { Text(specialty) }
+                                    )
+                                }
+                            }
+                        }
+                    }
                     Spacer(modifier = Modifier.height(8.dp))
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         OutlinedTextField(
