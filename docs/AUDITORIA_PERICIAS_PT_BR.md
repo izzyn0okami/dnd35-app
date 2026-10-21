@@ -6,6 +6,9 @@ Esta etapa inicia a auditoria técnica das perícias usadas pela ficha. A fonte 
 
 ## Correções aplicadas
 
+- Confirmado que **Acrobacia** é uma perícia válida em D&D 3.5 na edição brasileira: ela corresponde à perícia *Tumble* do SRD em inglês. Não deve ser removida do catálogo nem das listas de classe. A lista e o teste existente que a reconhece estão corretos.
+- Corrigida a lista de perícias de classe do **Bárbaro** para incluir **Ofício**, presente na lista da classe no Livro do Jogador. Foi adicionado teste de regressão para impedir que a perícia volte a faltar.
+
 - O catálogo e as listas de perícias de classe passam a usar os nomes completos **Conhecimento (Arquitetura e Engenharia)** e **Conhecimento (Nobreza e Realeza)**, em vez das formas abreviadas.
 - Foram adicionados testes de regressão para impedir que essas duas formas abreviadas retornem ao catálogo.
 
