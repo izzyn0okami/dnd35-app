@@ -22,6 +22,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
+import kotlin.math.roundToInt
 
 class CharacterViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -293,7 +294,7 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
         } else isClassSkill
         val maxClassRanks = classEntries.sumOf { it.level }.coerceAtLeast(1) + 3f
         val maxRanks = if (actualClassSkill) maxClassRanks else maxClassRanks / 2f
-        val normalizedRanks = ((ranks.coerceAtLeast(0f) * 2f).toInt().let { it / 2f })
+        val normalizedRanks = ((ranks.coerceAtLeast(0f) * 2f).roundToInt() / 2f)
             .coerceAtMost(maxRanks)
         val index = currentSkills.indexOfFirst { it.name.equals(skillName, ignoreCase = true) }
         if (index >= 0) {
