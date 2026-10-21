@@ -82,6 +82,7 @@ object Dnd35Rules {
         RaceInfo(
             name = "Anão da Montanha",
             subrace = "Montanha",
+            strMod = 2,
             conMod = 2,
             chaMod = -2,
             baseSpeedMeters = 6.0f,
