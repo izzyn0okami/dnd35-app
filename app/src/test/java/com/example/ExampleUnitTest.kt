@@ -828,7 +828,7 @@ class ExampleUnitTest {
     assertTrue(races.getValue("Elfo").traits.contains("incluindo versões compostas"))
 
     assertTrue(races.getValue("Meio-Elfo").traits.contains("+2 em Obter Informação e Diplomacia"))
-    assertTrue(races.getValue("Meio-Elfo").traits.contains("visão na penumbra"))
+    assertTrue(races.getValue("Meio-Elfo").traits.contains("Visão na penumbra"))
     assertTrue(races.getValue("Meio-Elfo").traits.contains("+1 em Ouvir, Procurar e Observar"))
     assertTrue(!races.getValue("Meio-Elfo").traits.contains("Imunidade a sono mágico"))
     assertTrue(!races.getValue("Meio-Elfo").traits.contains("+2 contra encantamentos"))
