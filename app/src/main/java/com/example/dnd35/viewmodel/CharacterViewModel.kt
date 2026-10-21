@@ -12,6 +12,7 @@ import com.example.dnd35.model.CharacterFeat
 import com.example.dnd35.model.CharacterInventoryItem
 import com.example.dnd35.model.CharacterJsonAdapters
 import com.example.dnd35.model.CharacterSkill
+import com.example.dnd35.model.SkillPointLevelRecord
 import com.example.dnd35.model.CharacterSpell
 import com.example.dnd35.model.SpellSlotInfo
 import kotlinx.coroutines.Dispatchers
@@ -462,6 +463,24 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
     fun updateLanguages(languages: List<String>) {
         val curr = _activeCharacter.value ?: return
         persistCharacter(curr.copy(languagesJson = CharacterJsonAdapters.serializeLanguages(languages)))
+    }
+
+    fun updateSkillPointHistory(records: List<SkillPointLevelRecord>) {
+        val curr = _activeCharacter.value ?: return
+        val normalized = records
+            .filter { it.characterLevel >= 1 && it.className.isNotBlank() && it.availablePoints.isFinite() && it.availablePoints >= 0f }
+            .distinctBy { it.characterLevel }
+            .map { record ->
+                record.copy(
+                    className = record.className.trim(),
+                    allocations = record.allocations.filter {
+                        it.skillName.isNotBlank() && it.pointsSpent.isFinite() && it.pointsSpent >= 0f
+                    }.map { it.copy(skillName = it.skillName.trim()) }
+                )
+            }
+        persistCharacter(
+            curr.copy(skillPointHistoryJson = CharacterJsonAdapters.serializeSkillPointHistory(normalized))
+        )
     }
 
     fun updateNotes(notes: String) {

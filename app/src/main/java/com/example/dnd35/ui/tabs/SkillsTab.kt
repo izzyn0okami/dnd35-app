@@ -145,6 +145,145 @@ fun SkillsTab(
             Spacer(modifier = Modifier.height(12.dp))
         }
 
+        // Histórico explícito de orçamento de pontos de perícia
+        item {
+            var levelInput by remember(character.id) { mutableStateOf("") }
+            var classInput by remember(character.id) { mutableStateOf("") }
+            var availableInput by remember(character.id) { mutableStateOf("") }
+            var allocationsInput by remember(character.id) { mutableStateOf("") }
+            val history = CharacterJsonAdapters.deserializeSkillPointHistory(character.skillPointHistoryJson)
+            val parsedAllocations = remember(allocationsInput) {
+                val lines = allocationsInput.lines().map { it.trim() }.filter { it.isNotEmpty() }
+                val parsed = lines.mapNotNull { line ->
+                    val parts = line.split("=", limit = 2)
+                    if (parts.size != 2) null
+                    else {
+                        val name = parts[0].trim()
+                        val points = parts[1].trim().replace(',', '.').toFloatOrNull()
+                        if (name.isEmpty() || points == null || !points.isFinite() || points < 0f) null
+                        else com.example.dnd35.model.SkillPointAllocation(name, points)
+                    }
+                }
+                if (parsed.size == lines.size) parsed else emptyList()
+            }
+            val linesCount = allocationsInput.lines().count { it.isNotBlank() }
+            val level = levelInput.toIntOrNull()
+            val available = availableInput.trim().replace(',', '.').toFloatOrNull()
+            val duplicateLevel = level != null && history.any { it.characterLevel == level }
+            val allocationsValid = linesCount == parsedAllocations.size
+            val canSave = level != null && level >= 1 && classInput.isNotBlank() &&
+                available != null && available.isFinite() && available >= 0f &&
+                allocationsValid && !duplicateLevel
+
+            Card(
+                modifier = Modifier.fillMaxWidth().testTag("skill_point_history_section"),
+                shape = RoundedCornerShape(12.dp)
+            ) {
+                Column(modifier = Modifier.padding(12.dp)) {
+                    Text("Orçamento de pontos de perícia", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
+                    Text(
+                        "Registre cada nível separadamente. Para fichas antigas, preencha apenas os gastos que conseguir confirmar; o aplicativo não deduzirá o histórico pelas graduações atuais.",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                        OutlinedTextField(
+                            value = levelInput,
+                            onValueChange = { levelInput = it.filter(Char::isDigit).take(2) },
+                            label = { Text("Nível") },
+                            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                            modifier = Modifier.weight(0.7f),
+                            singleLine = true
+                        )
+                        OutlinedTextField(
+                            value = classInput,
+                            onValueChange = { classInput = it },
+                            label = { Text("Classe do nível") },
+                            modifier = Modifier.weight(1.5f),
+                            singleLine = true
+                        )
+                    }
+                    OutlinedTextField(
+                        value = availableInput,
+                        onValueChange = { availableInput = it },
+                        label = { Text("Pontos disponíveis") },
+                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
+                        modifier = Modifier.fillMaxWidth(),
+                        singleLine = true
+                    )
+                    OutlinedTextField(
+                        value = allocationsInput,
+                        onValueChange = { allocationsInput = it },
+                        label = { Text("Gastos por perícia") },
+                        placeholder = { Text("Atuação=2\nOuvir=1\nEscalar=0,5") },
+                        supportingText = { Text("Uma linha por perícia: nome= pontos gastos. Use vírgula ou ponto nos decimais.") },
+                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
+                        modifier = Modifier.fillMaxWidth(),
+                        minLines = 2,
+                        maxLines = 5
+                    )
+                    if (duplicateLevel) {
+                        Text("Já existe um registro para esse nível. Remova-o antes de cadastrá-lo novamente.", color = DndCrimson, style = MaterialTheme.typography.bodySmall)
+                    }
+                    if (!allocationsValid) {
+                        Text("Confira os gastos: cada linha deve seguir o formato nome=valor.", color = DndCrimson, style = MaterialTheme.typography.bodySmall)
+                    }
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Button(
+                        onClick = {
+                            val record = com.example.dnd35.model.SkillPointLevelRecord(
+                                characterLevel = level!!,
+                                className = classInput.trim(),
+                                availablePoints = available!!,
+                                allocations = parsedAllocations
+                            )
+                            viewModel.updateSkillPointHistory(history + record)
+                            levelInput = ""
+                            classInput = ""
+                            availableInput = ""
+                            allocationsInput = ""
+                        },
+                        enabled = canSave,
+                        modifier = Modifier.fillMaxWidth()
+                    ) { Text("Registrar nível") }
+
+                    if (history.isNotEmpty()) {
+                        Spacer(modifier = Modifier.height(8.dp))
+                        Text("Histórico registrado", style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.Bold)
+                        history.sortedBy { it.characterLevel }.forEach { record ->
+                            val spent = record.allocations.sumOf { it.pointsSpent.toDouble() }.toFloat()
+                            val difference = record.availablePoints - spent
+                            Row(
+                                modifier = Modifier.fillMaxWidth(),
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                Column(modifier = Modifier.weight(1f)) {
+                                    Text("Nível ${record.characterLevel} — ${record.className}", fontWeight = FontWeight.SemiBold)
+                                    val status = when {
+                                        difference < -0.001f -> "Excede o orçamento em ${String.format("%.1f", -difference)} ponto(s)"
+                                        difference > 0.001f -> "Restam ${String.format("%.1f", difference)} ponto(s) sem alocação"
+                                        else -> "Gastos correspondem ao orçamento"
+                                    }
+                                    Text(
+                                        "${String.format("%.1f", spent)} / ${String.format("%.1f", record.availablePoints)} pontos — $status",
+                                        style = MaterialTheme.typography.bodySmall,
+                                        color = if (difference < -0.001f) DndCrimson else MaterialTheme.colorScheme.onSurfaceVariant
+                                    )
+                                }
+                                IconButton(onClick = {
+                                    viewModel.updateSkillPointHistory(history.filterNot { it.characterLevel == record.characterLevel })
+                                }) {
+                                    Icon(Icons.Default.Remove, contentDescription = "Remover histórico do nível ${record.characterLevel}")
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            Spacer(modifier = Modifier.height(12.dp))
+        }
+
         // Banner de Graduação Máxima e Gastos
         item {
             Card(
