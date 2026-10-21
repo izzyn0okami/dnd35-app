@@ -237,10 +237,28 @@ class ExampleUnitTest {
       )
     )
     val bonuses = character.computedSkills.associate { it.skill.name to it.racialBonus }
-    assertEquals(0, bonuses.getValue("Escalar"))
-    assertEquals(0, bonuses.getValue("Saltar"))
+    assertEquals(2, bonuses.getValue("Escalar"))
+    assertEquals(2, bonuses.getValue("Saltar"))
     assertEquals(2, bonuses.getValue("Ouvir"))
-    assertEquals(0, bonuses.getValue("Furtividade"))
+    assertEquals(2, bonuses.getValue("Furtividade"))
+  }
+
+  @Test
+  fun stoutHalflingDoesNotReceiveGeneralHalflingSavingThrowBonus() {
+    val character = CharacterCalculator.compute(
+      CharacterEntity(
+        race = "Halfling Robusto",
+        baseStr = 10,
+        baseDex = 10,
+        baseCon = 10,
+        baseWis = 10,
+        baseInt = 10,
+        baseCha = 10
+      )
+    )
+    assertEquals(character.baseFort + character.conMod, character.totalFort)
+    assertEquals(character.baseRef + character.dexMod, character.totalRef)
+    assertEquals(character.baseWill + character.wisMod, character.totalWill)
   }
 
   @Test
