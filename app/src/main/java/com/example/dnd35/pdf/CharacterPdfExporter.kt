@@ -188,7 +188,7 @@ object CharacterPdfExporter {
             canvas1.drawText("CLASSE DE ARMADURA (CA)", combatLeft + 10f, acY + 14f, headerPaint)
 
             canvas1.drawText("CA Total: ${stats.totalAc}", combatLeft + 12f, acY + 36f, boldBodyPaint)
-            canvas1.drawText("Toque: ${stats.touchAc}    |    Desprevenido: ${stats.flatFootedAc}", combatLeft + 110f, acY + 36f, bodyPaint)
+            canvas1.drawText("Toque: ${stats.touchAc}    |    Surpreso: ${stats.flatFootedAc}", combatLeft + 110f, acY + 36f, bodyPaint)
             canvas1.drawText("Armadura: +${stats.armorBonusTotal}  |  Escudo: +${stats.shieldBonusTotal}  |  Des Ef.: +${stats.effectiveDexForAc}  |  Pen. Armadura: ${stats.armorCheckPenalty}", combatLeft + 12f, acY + 52f, bodyPaint)
 
             // Testes de Resistência & BBA
