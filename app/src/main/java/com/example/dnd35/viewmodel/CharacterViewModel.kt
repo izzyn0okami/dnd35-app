@@ -279,13 +279,36 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
     fun updateSkill(skillName: String, ranks: Float, miscBonus: Int, isClassSkill: Boolean) {
         val curr = _activeCharacter.value ?: return
         val currentSkills = CharacterJsonAdapters.deserializeSkills(curr.skillsJson).toMutableList()
+        val definition = com.example.dnd35.model.Dnd35Rules.SKILL_DEFINITIONS
+            .find { it.name.equals(skillName, ignoreCase = true) }
+        val classEntries = CharacterJsonAdapters.deserializeClassEntries(
+            curr.multiclassJson, curr.characterClass, curr.level
+        )
+        val actualClassSkill = if (definition != null) {
+            classEntries.any { entry ->
+                com.example.dnd35.model.Dnd35Rules.CLASSES
+                    .find { it.name.equals(entry.className, ignoreCase = true) }
+                    ?.classSkills?.any { it.equals(skillName, ignoreCase = true) } == true
+            }
+        } else isClassSkill
+        val maxClassRanks = classEntries.sumOf { it.level }.coerceAtLeast(1) + 3f
+        val maxRanks = if (actualClassSkill) maxClassRanks else maxClassRanks / 2f
+        val normalizedRanks = ((ranks.coerceAtLeast(0f) * 2f).toInt().let { it / 2f })
+            .coerceAtMost(maxRanks)
         val index = currentSkills.indexOfFirst { it.name.equals(skillName, ignoreCase = true) }
         if (index >= 0) {
             val old = currentSkills[index]
-            currentSkills[index] = old.copy(ranks = ranks.coerceAtLeast(0f), miscBonus = miscBonus, isClassSkill = isClassSkill)
+            currentSkills[index] = old.copy(
+                ranks = normalizedRanks,
+                miscBonus = miscBonus,
+                isClassSkill = actualClassSkill
+            )
         } else {
-            val key = com.example.dnd35.model.Dnd35Rules.SKILL_DEFINITIONS.find { it.name.equals(skillName, ignoreCase = true) }?.keyAbility ?: "FOR"
-            currentSkills.add(CharacterSkill(name = skillName, keyAbility = key, ranks = ranks.coerceAtLeast(0f), miscBonus = miscBonus, isClassSkill = isClassSkill))
+            val key = definition?.keyAbility ?: "FOR"
+            currentSkills.add(CharacterSkill(
+                name = skillName, keyAbility = key, ranks = normalizedRanks,
+                miscBonus = miscBonus, isClassSkill = actualClassSkill
+            ))
         }
         persistCharacter(curr.copy(skillsJson = CharacterJsonAdapters.serializeSkills(currentSkills)))
     }
