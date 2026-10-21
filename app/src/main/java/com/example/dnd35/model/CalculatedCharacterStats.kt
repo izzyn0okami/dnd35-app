@@ -463,13 +463,12 @@ object CharacterCalculator {
             } else skill.isClassSkill
             val maxClassRanks = totalCharacterLevel + 3f
             val maxRanks = if (isClassSkill) maxClassRanks else maxClassRanks / 2f
-            // Preserva meias graduações válidas e corrige valores antigos/introduzidos manualmente
-            // para incrementos de 0,5, sempre respeitando o limite da regra.
-            val normalizedRanks = if (isClassSkill) {
-                skill.ranks.coerceAtLeast(0f).roundToInt().toFloat()
-            } else {
+            // Mantém incrementos de 0,5 mesmo quando a perícia se torna de classe
+            // por multiclasse: graduações parciais adquiridas anteriormente não podem
+            // ser arredondadas para cima ou descartadas. Meias graduações não aumentam
+            // o teste até que completem uma graduação inteira (ver totalBonus abaixo).
+            val normalizedRanks =
                 (skill.ranks.coerceAtLeast(0f) * 2f).roundToInt() / 2f
-            }
             val ranks = normalizedRanks.coerceAtMost(maxRanks)
             val hasArmorPenalty = def?.armorCheckPenaltyApplies ?: false
             val appliedPenalty = if (hasArmorPenalty) {

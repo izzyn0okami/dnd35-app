@@ -53,3 +53,10 @@ Esta é uma correção inicial, não uma certificação completa do sistema de p
 - Padronizados os nomes genéricos da perícia para **Saltar** e **Ofícios**, em vez de **Salto** e **Ofício**, no catálogo e nas listas de perícias de classe.
 - Fichas antigas podem continuar contendo os nomes anteriores no JSON salvo. O cálculo agora reconhece esses dois nomes legados, mantém graduações e bônus e apresenta o rótulo canônico na lista calculada. Os dados persistidos não são regravados por uma migração automática.
 - Foi adicionado teste de regressão que carrega uma ficha com os dois nomes antigos, confirma que as graduações permanecem e verifica o reconhecimento como perícias de classe do Bárbaro.
+
+
+## Preservação de meias graduações em multiclasse
+
+- A normalização de graduações agora preserva valores em incrementos de 0,5 mesmo quando uma perícia passa a ser considerada de classe após a aquisição de outra classe. Isso evita arredondar 1,5 para 2 ou descartar a meia graduação em fichas existentes.
+- A regra do SRD 3.5 esclarece que meias graduações não aumentam o modificador do teste até completarem uma graduação inteira. Foi adicionado teste de regressão para personagem Guerreiro/Bardo com 1,5 graduação em Acrobacia.
+- A validação do orçamento de pontos continua fora do escopo: o modelo atual não registra em qual nível cada graduação foi comprada, então não é possível reconstruir com segurança o custo histórico de cada perícia.
