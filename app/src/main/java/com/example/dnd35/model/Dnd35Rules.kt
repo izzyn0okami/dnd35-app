@@ -382,7 +382,7 @@ object Dnd35Rules {
                 ClassFeature(18, "Queda Suave 27 m", "Reduz o dano de queda quando há uma parede ao alcance."),
                 ClassFeature(19, "Corpo Vazio", "Pode tornar-se etéreo por 1 rodada por nível de monge ao dia."),
                 ClassFeature(20, "Queda Suave Qualquer Distância", "Pode reduzir o dano de queda de qualquer distância quando há uma parede ao alcance."),
-                ClassFeature(20, "Auto-Perfeição", "Torna-se uma criatura do tipo extra-planar para efeitos de magias e efeitos.")
+                ClassFeature(20, "Auto-Perfeição", "É tratado como extra-planar para magias e efeitos e recebe Redução de Dano 10/mágica.")
             ),
             description = "Guerreiro asceta das artes marciais com três testes de resistência bons e golpes desarmados mortais."
         ),
