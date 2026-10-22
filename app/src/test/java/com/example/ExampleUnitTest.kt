@@ -12,6 +12,7 @@ import com.example.dnd35.model.SkillPointLevelRecord
 import com.example.dnd35.model.parseSkillPointAllocations
 import com.example.dnd35.model.parseWholeSkillPointBudget
 import com.example.dnd35.model.Dnd35Rules
+import com.example.dnd35.model.SaveProgression
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
@@ -1057,5 +1058,13 @@ class ExampleUnitTest {
     assertTrue(traits.contains("martelo-gancho gnômico como arma marcial"))
     assertTrue(traits.contains("Prestidigitação"))
     assertTrue(traits.contains("mamíferos escavadores"))
+  }
+
+  @Test
+  fun paladinHasGoodWillSaveProgression() {
+    val paladin = Dnd35Rules.CLASSES.first { it.name == "Paladino" }
+    assertEquals(SaveProgression.GOOD, paladin.willType)
+    assertEquals(2, Dnd35Rules.calculateBaseSave(paladin.willType, 1))
+    assertEquals(3, Dnd35Rules.calculateBaseSave(paladin.willType, 2))
   }
 }
