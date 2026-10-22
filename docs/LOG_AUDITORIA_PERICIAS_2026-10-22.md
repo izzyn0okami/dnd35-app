@@ -99,8 +99,8 @@ Continuar a auditoria sem editar código: rastrear a origem e a composição das
 ### Comparação inicial das listas de perícias de classe com SRD D&D 3.5
 
 - Fonte de referência consultada: SRD 3.5 em d20srd.org para Bardo e Monge.
-- **Discrepância confirmada no Monge:** a lista `classSkills` em `Dnd35Rules.kt` inclui Conhecimento (Religião), mas não inclui Conhecimento (Arcano). A lista oficial do Monge inclui ambos.
-- **Discrepância confirmada no Ladino:** a lista `classSkills` não inclui Profissão, embora a lista oficial do Ladino inclua essa perícia. A correção deve ser específica e acompanhada de testes de regressão para ambas as omissões; nenhuma foi aplicada nesta etapa.
+- **Correção necessária no Monge: não confirmada na `main` atual.** A inspeção posterior mostrou que `classSkills` já inclui Conhecimento (Arcano) e Conhecimento (Religião), e o teste `monkClassSkillsMatchCoreSkillList` já verifica ambos. O apontamento anterior sobre omissão no Monge estava desatualizado/incorreto e não deve gerar uma alteração de código.
+- **Discrepância confirmada no Ladino:** a lista `classSkills` omitia Profissão, embora a lista oficial do Ladino inclua essa perícia. A correção foi preparada separadamente na PR #85, com atualização do teste `remainingCoreClassSkillsMatchExpectedLists`.
 - **Bardo:** a lista da aplicação representa individualmente as especialidades de Conhecimento, coerente com a regra oficial “Knowledge (all skills, taken individually)”. Não tratar automaticamente essa representação como defeito. Continuar verificando correspondência e nomes traduzidos antes de alterar.
 - As demais listas de classe ainda precisam ser comparadas sistematicamente. A inspeção parcial não permite declarar a auditoria das onze classes concluída.
 - Histórico consultado: PRs #5, #6, #7, #12, #24, #74, #75, #76, #77, #81, #82 e #83. As decisões anteriores sobre Acrobacia, Druida e graduações fracionárias permanecem preservadas.
@@ -108,4 +108,4 @@ Continuar a auditoria sem editar código: rastrear a origem e a composição das
 ### Estado e próximo passo
 
 - Nenhum arquivo de código ou teste foi alterado; nenhum teste local foi executado nesta etapa.
-- Próximo passo: corrigir a omissão de Conhecimento (Arcano) para Monge com teste de regressão, após confirmar a forma de teste existente; depois completar a comparação das outras classes e dos sinalizadores `trainedOnly`/penalidade de armadura contra o SRD.
+- Próximo passo: revisar a CI da PR #85 para a correção de Profissão do Ladino; depois completar a comparação das demais classes e dos sinalizadores `trainedOnly`/penalidade de armadura contra o SRD.
