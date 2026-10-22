@@ -930,10 +930,10 @@ class ExampleUnitTest {
   fun sorcererClassSkillsMatchCoreSkillList() {
     val sorcerer = Dnd35Rules.CLASSES.first { it.name == "Feiticeiro" }
     val expected = setOf(
-      "Concentração", "Conhecimento (Arcano)", "Identificar Magia", "Ofícios", "Profissão"
+      "Blefar", "Concentração", "Conhecimento (Arcano)", "Identificar Magia", "Ofícios", "Profissão"
     )
     assertEquals(expected, sorcerer.classSkills.toSet())
-    assertTrue(sorcerer.classSkills.none { it == "Blefar" })
+    assertTrue(sorcerer.classSkills.contains("Blefar"))
   }
 
   @Test
