@@ -123,6 +123,14 @@ class ClassProgressionTest {
     }
 
     @Test
+    fun rogueEvasionDocumentsItsArmorRestriction() {
+        val rogue = Dnd35Rules.CLASSES.single { it.name == "Ladino" }
+        val evasion = rogue.features.single { it.level == 2 && it.name == "Evasão" }
+        assertTrue(evasion.description.contains("sem armadura"))
+        assertTrue(evasion.description.contains("armadura leve"))
+    }
+
+    @Test
     fun rangerEvasionDocumentsItsArmorRestriction() {
         val ranger = Dnd35Rules.CLASSES.single { it.name == "Ranger" }
         val evasion = ranger.features.single { it.level == 9 && it.name == "Evasão" }
