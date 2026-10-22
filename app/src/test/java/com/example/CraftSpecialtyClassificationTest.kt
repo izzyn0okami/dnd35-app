@@ -11,6 +11,7 @@ class CraftSpecialtyClassificationTest {
     @Test
     fun craftSpecialtyMatchesGenericCraftClassSkill() {
         assertTrue(Dnd35Rules.isCraftSpecialty("Ofícios (Armadilhas)"))
+        assertTrue(Dnd35Rules.isCraftSpecialty("ofícios (armadilhas)"))
         assertTrue(Dnd35Rules.classSkillMatches("Ofícios (Armadilhas)", "Ofícios"))
         assertFalse(Dnd35Rules.classSkillMatches("Ofícios (Armadilhas)", "Furtividade"))
     }
