@@ -247,3 +247,13 @@ A implementação atual usa `combinedArmorCheckPenalty = minOf(totalArmorCheckPe
 - A interface passa a identificar todas as classes como favorecidas quando a raça usa "Qualquer", e a explicação informa que não há penalidade de XP por multiclasse.
 - Testes de regressão adicionados para raça com qualquer classe favorecida, raça com classe favorecida específica e caso com apenas uma classe não favorecida.
 - Status: proposta na branch `fix/any-favored-class-xp-penalty`; aguardar CI e revisão antes do merge. Não houve teste manual no aparelho.
+
+
+## Revisão pelo Livro do Jogador — penalidade de XP para Humano e Meio-Elfo
+
+- Correção da análise anterior: a classe favorecida "Qualquer" não significa imunidade total à penalidade de XP.
+- O Livro do Jogador 3.5, capítulo 2 ("Classe Favorecida") e capítulo 3, p. 60 ("Experiência para Personagens Multiclasse"), estabelece que, para Humanos e Meio-elfos, a classe de nível mais alto não conta no cálculo. As classes restantes ainda são comparadas entre si; cada classe que estiver dois ou mais níveis abaixo da mais alta entre elas gera penalidade de 20%.
+- Exemplo de regressão: Guerreiro 8 / Mago 5 / Ladino 2, para Humano ou Meio-Elfo: Guerreiro é excluído; Ladino fica três níveis abaixo de Mago, resultando em penalidade de 20%.
+- A PR #99 foi revisada antes do merge e permanece aberta; a implementação inicial que removia toda penalidade foi substituída pela regra correta. Testes cobrem o exemplo com penalidade, classes restantes equilibradas, raça com classe favorecida específica e caso com apenas uma classe não favorecida.
+- Fontes de conferência: edição brasileira do Livro do Jogador 3.5, capítulo 2 e capítulo 3, p. 60. Referência auxiliar em inglês: Player's Handbook 3.5, p. 60.
+- Status: aguardar CI da PR #99 após a correção; não houve teste manual no aparelho.
