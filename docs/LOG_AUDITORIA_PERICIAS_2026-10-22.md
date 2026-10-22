@@ -333,3 +333,13 @@ Continuar a auditoria de regras sem repetir os assuntos resolvidos. Próximo foc
 - PR #103 foi integrada por squash no commit `799d7fb711335289626da770eeaddfe1b4c474f8`; a CI de compilação Android no commit `e2a59f880eea2bfbabdb41f9ddfb8f83e2d2fbc5` concluiu com sucesso. A PR #104 também foi integrada por squash no commit `140554c89c1d54a8446d1ce908f4b5441e6dd21d`; a CI de compilação Android no commit `03f899a53d97496213949792b851110d676c6422` concluiu com sucesso. A #104 completou a condição de armadura da Evasão do Ranger.
 - Na passada cruzada das descrições, foi confirmada a mesma omissão na Evasão do Ladino (2º nível): a descrição dizia apenas que um sucesso em Reflexos evita o dano, sem registrar que a habilidade só funciona sem armadura ou com armadura leve. A regra da classe base exige essa condição. Corrigida a descrição e adicionado teste de regressão; não altera cálculos de dano nem outras mecânicas.
 - Esta correção segue para CI antes de merge. A auditoria cruzada das onze classes continua aberta; a revisão é estática e não substitui a comparação integral de todas as habilidades com o Livro do Jogador brasileiro.
+
+
+## Aquisição de idiomas — implementação proposta em 2026-10-22
+
+- Regra mantida: “Falar Idioma” não recebe graduações como perícia comum; idiomas adquiridos por raça, Inteligência, habilidade de classe, talento ou outra fonte não devem ser confundidos com idiomas comprados.
+- Novo modelo registra idioma, fonte, nível de personagem e pontos gastos. Uma aquisição marcada como comprada exige nível válido e exatamente 1 ponto; fontes gratuitas não podem registrar gasto de pontos.
+- Banco atualizado da versão 4 para 5 por migração aditiva de `languageAcquisitionsJson`, com valor padrão vazio. Fichas antigas preservam `languagesJson`; não são convertidas automaticamente em compras nem se inferem gastos retroativos.
+- Interface de perícias permite escolher a fonte e, para compra, informar o nível. A compra só é aceita se houver registro de orçamento para esse nível e um ponto ainda disponível; o gasto é lançado como `Falar Idioma (nome)` no histórico de pontos de perícia.
+- Testes adicionados para validação de custo/fonte, serialização, deduplicação e compatibilidade com histórico antigo vazio.
+- Status: branch `feat/language-acquisition-history`; ainda precisa de revisão do diff e CI antes de merge. Não houve teste local nem teste manual no aparelho.
