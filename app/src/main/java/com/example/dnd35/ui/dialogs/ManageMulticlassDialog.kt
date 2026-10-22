@@ -46,6 +46,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.dnd35.model.CharacterClassEntry
 import com.example.dnd35.model.Dnd35Rules
+import com.example.dnd35.model.calculateMulticlassXpPenalty
 import com.example.ui.theme.DndCrimson
 import com.example.ui.theme.DndGold
 import com.example.ui.theme.DndHpGreen
@@ -65,12 +66,10 @@ fun ManageMulticlassDialog(
 
     val race = Dnd35Rules.RACES.find { it.name.equals(raceName, ignoreCase = true) } ?: Dnd35Rules.RACES.first()
 
-    // Determinar classe favorecida
-    val effectiveFavored = if (race.favoredClass.equals("Qualquer", ignoreCase = true) ||
-        race.name.equals("Humano", ignoreCase = true) ||
-        race.name.equals("Meio-Elfo", ignoreCase = true)
-    ) {
-        classesList.maxByOrNull { it.level }?.className ?: race.favoredClass
+    // Humanos e meio-elfos consideram qualquer classe como favorecida.
+    val anyClassFavored = race.favoredClass.equals("Qualquer", ignoreCase = true)
+    val effectiveFavored = if (anyClassFavored) {
+        classesList.maxByOrNull { it.level }?.className ?: "Qualquer classe"
     } else {
         race.favoredClass
     }
@@ -92,11 +91,15 @@ fun ManageMulticlassDialog(
     }
 
     // Verificação de penalidade de XP do Livro do Jogador
-    val nonFavored = classesList.filterNot { it.className.equals(effectiveFavored, ignoreCase = true) }
-    val maxNonFavored = if (nonFavored.isNotEmpty()) nonFavored.maxOf { it.level } else 0
-    val offendingClasses = nonFavored.filter { (maxNonFavored - it.level) >= 2 }
-    val hasXpPenalty = offendingClasses.isNotEmpty() && nonFavored.size > 1
-    val xpPenaltyPercent = if (hasXpPenalty) offendingClasses.size * 20 else 0
+    val xpPenalty = calculateMulticlassXpPenalty(
+        classes = classesList,
+        favoredClass = race.favoredClass,
+        anyClassFavored = anyClassFavored
+    )
+    val offendingClasses = xpPenalty.offendingClasses
+    val xpPenaltyPercent = xpPenalty.percentage
+    val hasXpPenalty = xpPenaltyPercent > 0
+    val exemptClassName = xpPenalty.exemptClassName ?: effectiveFavored
 
     val availableClassesToAdd = Dnd35Rules.CLASSES.filter { c ->
         classesList.none { it.className.equals(c.name, ignoreCase = true) }
@@ -163,7 +166,7 @@ fun ManageMulticlassDialog(
                                             Spacer(modifier = Modifier.width(6.dp))
                                             Row(verticalAlignment = Alignment.CenterVertically) {
                                                 Icon(Icons.Default.Star, contentDescription = null, tint = DndGold, modifier = Modifier.size(14.dp))
-                                                Text("Favorecida", style = MaterialTheme.typography.labelSmall, color = DndGold, fontWeight = FontWeight.Bold)
+                                                Text(if (anyClassFavored) "Isenta de XP" else "Favorecida", style = MaterialTheme.typography.labelSmall, color = DndGold, fontWeight = FontWeight.Bold)
                                             }
                                         }
                                     }
@@ -326,7 +329,11 @@ fun ManageMulticlassDialog(
                             val explanation = if (hasXpPenalty) {
                                 "Classes não favorecidas diferem em 2 ou mais níveis (${offendingClasses.joinToString { it.className }}). Favorecida: $effectiveFavored."
                             } else {
-                                "Suas classes estão equilibradas ou protegidas pela classe favorecida ($effectiveFavored)."
+                                if (anyClassFavored) {
+                                    "A classe de nível mais alto ($exemptClassName) é desconsiderada no cálculo; as demais classes ainda podem gerar penalidade."
+                                } else {
+                                    "Suas classes estão equilibradas ou protegidas pela classe favorecida ($effectiveFavored)."
+                                }
                             }
                             Text(explanation, style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurface)
                         }
