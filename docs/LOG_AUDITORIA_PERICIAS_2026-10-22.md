@@ -210,3 +210,13 @@ A implementação atual usa `combinedArmorCheckPenalty = minOf(totalArmorCheckPe
 - A inspeção de `EditGeneralInfoDialog.kt` confirmou que tamanho é um campo editável separado, sem vínculo automático com o seletor de raça. A criação inicial, por outro lado, usa o tamanho padrão definido em `RaceInfo`.
 - Como o app permite edição manual de tamanho e o tamanho pode ser alterado por efeitos de jogo, a independência dos campos não é, por si só, defeito. Não fazer sincronização automática ao trocar raça sem requisito explícito.
 - A hipótese de defeito foi encerrada sem alteração de código. A auditoria prossegue para outras validações de histórico e cálculo de perícias.
+
+
+## Continuação da auditoria — histórico de gastos e graduações
+
+- Verificada a execução pós-merge da PR #95: workflow Android Build [39763499111](https://github.com/izzyn0okami/dnd35-app/actions/runs/39763499111) concluiu com sucesso, incluindo testes unitários, compilação do APK de depuração e upload do artefato.
+- Inspeção estática de `SkillsTab.kt`, `CharacterViewModel.kt` e `CalculatedCharacterStats.kt`: o histórico de pontos registra orçamento e gastos por nível/classe; a ficha calcula as graduações atuais e seus limites com base no nível total e na classificação atual da perícia.
+- A classificação atual não deve ser usada para reescrever retroativamente os gastos por nível: multiclasse pode mudar se uma perícia é de classe para o personagem sem alterar os gastos legítimos feitos em níveis anteriores.
+- O histórico permite registrar divergência entre orçamento e gastos e exibe o excedente ou saldo. Não foi encontrada evidência suficiente para bloquear esse registro; mantê-lo como instrumento de auditoria, não como validação automática de legalidade.
+- Nesta inspeção não foi confirmada uma divergência nova que justifique alteração de código. Nenhum arquivo de código foi modificado e não houve execução local de Gradle nem teste manual no aparelho.
+- Próximo passo: revisar testes e o fluxo de atualização de classe/nível para confirmar que o limite de graduações e os botões de edição são recalculados sem alterar o histórico salvo; só abrir PR de código se surgir caso reproduzível.
