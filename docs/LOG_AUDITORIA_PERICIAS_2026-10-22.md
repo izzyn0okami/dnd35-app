@@ -174,7 +174,7 @@ A implementação atual usa `combinedArmorCheckPenalty = minOf(totalArmorCheckPe
 
 - Fonte consultada: Monster Manual 3.5, entrada Drow (referência de consulta: https://dndtools.one/drow-6 e https://www.dndtools.org/races/monster-manual-v35--5/drow--6/).
 - Divergência confirmada: embora a raça Drow (Elfo Negro) esteja no catálogo do app, `LanguageRules` não tinha uma entrada para ela; portanto, a ficha não podia obter as línguas automáticas e as opções raciais específicas por essa função.
-- Correção proposta na branch `fix/drow-language-rules`: idiomas automáticos Comum, Élfico e Subterrâneo (representação usada no app para Undercommon); opções adicionais Abissal, Aquático, Dracônico, Linguagem de Sinais Drow, Gnomo, Goblin e Kuo-toa. Também foi incluído o alias `Drow` além do nome de catálogo `Drow (Elfo Negro)`.
-- O catálogo comum foi ampliado com Linguagem de Sinais Drow e Kuo-toa, que são opções adicionais da raça no Monster Manual 3.5.
+- Correção proposta na branch `fix/drow-language-rules`: idiomas automáticos Comum, Élfico e Subterrâneo (representação usada no app para Undercommon); opções adicionais Abissal, Aquático, Dracônico, Linguagem de Sinais Drow, Gnomo, Goblin e Kuo-toan. Também foi incluído o alias `Drow` além do nome de catálogo `Drow (Elfo Negro)`.
+- O catálogo comum foi ampliado com Linguagem de Sinais Drow e Kuo-toan, que são opções adicionais da raça no Monster Manual 3.5.
 - Teste de regressão verifica o conjunto de idiomas e ambos os nomes aceitos.
 - Aguardando CI desta PR; nenhuma compilação local nem teste manual no aparelho foi executado.
