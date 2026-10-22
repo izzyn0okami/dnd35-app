@@ -71,7 +71,7 @@ class ClassProgressionTest {
             .description.contains("sem precisar cumprir os pré-requisitos"))
         assertEquals(1, monk.features.count { it.level == 7 && it.name == "Integridade Corporal" })
         assertEquals(1, monk.features.count { it.level == 10 && it.name == "Ataque Chi (Ordem)" })
-        assertEquals(1, monk.features.count { it.level == 13 && it.name == "Ataque Chi (+2)" })
+        assertTrue(monk.features.none { it.name == "Ataque Chi (+2)" })
         assertEquals(1, monk.features.count { it.level == 12 && it.name == "Passo Etéreo" })
         assertTrue(monk.features.single { it.level == 12 && it.name == "Passo Etéreo" }
             .description.contains("metade do nível de monge"))
