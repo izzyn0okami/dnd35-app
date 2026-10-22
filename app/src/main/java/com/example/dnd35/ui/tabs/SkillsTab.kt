@@ -53,6 +53,7 @@ import com.example.dnd35.model.CharacterJsonAdapters
 import com.example.dnd35.model.LanguageRules
 import com.example.dnd35.model.LanguageAcquisition
 import com.example.dnd35.model.LanguageAcquisitionSource
+import com.example.dnd35.model.SkillPointAllocation
 import com.example.dnd35.model.ComputedSkill
 import com.example.dnd35.model.estimateSkillPointsForLevel
 import com.example.dnd35.ui.dialogs.DiceRollDialog
@@ -132,6 +133,30 @@ fun SkillsTab(
                     characterLevel = if (languageSource == LanguageAcquisitionSource.PURCHASED) level else null,
                     pointsSpent = if (languageSource == LanguageAcquisitionSource.PURCHASED) 1 else 0
                 )
+                if (languageSource == LanguageAcquisitionSource.PURCHASED) {
+                    val levelRecord = skillPointHistory.firstOrNull { it.characterLevel == level }
+                    if (levelRecord == null) {
+                        languageAcquisitionError = "Registre primeiro o orçamento de perícias desse nível para contabilizar o ponto."
+                        return
+                    }
+                    val languageAllocationName = "Falar Idioma ($cleaned)"
+                    if (levelRecord.allocations.any { it.skillName.equals(languageAllocationName, ignoreCase = true) }) {
+                        languageAcquisitionError = "Esse gasto já consta no histórico de perícias."
+                        return
+                    }
+                    val alreadySpent = levelRecord.allocations.sumOf { it.pointsSpent.toDouble() }
+                    if (alreadySpent + 1.0 > levelRecord.availablePoints.toDouble()) {
+                        languageAcquisitionError = "Não há ponto disponível nesse nível no histórico registrado."
+                        return
+                    }
+                    viewModel.updateSkillPointHistory(
+                        skillPointHistory.map { record ->
+                            if (record.characterLevel == level) record.copy(
+                                allocations = record.allocations + SkillPointAllocation(languageAllocationName, 1f)
+                            ) else record
+                        }
+                    )
+                }
                 viewModel.updateLanguages(languages + cleaned)
                 viewModel.updateLanguageAcquisitions(acquisitions + acquisition)
                 languageInput = ""
