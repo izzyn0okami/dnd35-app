@@ -8,6 +8,7 @@ import com.example.dnd35.data.CharacterRepository
 import com.example.dnd35.model.CalculatedCharacterStats
 import com.example.dnd35.model.CharacterCalculator
 import com.example.dnd35.model.CharacterEntity
+import com.example.dnd35.model.LanguageAcquisition
 import com.example.dnd35.model.CharacterFeat
 import com.example.dnd35.model.CharacterInventoryItem
 import com.example.dnd35.model.CharacterJsonAdapters
@@ -480,6 +481,17 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
     fun updateLanguages(languages: List<String>) {
         val curr = _activeCharacter.value ?: return
         persistCharacter(curr.copy(languagesJson = CharacterJsonAdapters.serializeLanguages(languages)))
+    }
+
+    fun updateLanguageAcquisitions(records: List<LanguageAcquisition>) {
+        val curr = _activeCharacter.value ?: return
+        val normalized = records
+            .filter { it.isValid() }
+            .distinctBy { it.language.trim().lowercase() }
+            .map { it.copy(language = it.language.trim()) }
+        persistCharacter(
+            curr.copy(languageAcquisitionsJson = CharacterJsonAdapters.serializeLanguageAcquisitions(normalized))
+        )
     }
 
     fun updateSkillPointHistory(records: List<SkillPointLevelRecord>) {
