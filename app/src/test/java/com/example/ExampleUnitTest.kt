@@ -1092,7 +1092,7 @@ class ExampleUnitTest {
       4 to "Queda Lenta 6 m",
       5 to "Pureza Corporal",
       6 to "Queda Lenta 9 m",
-      7 to "Plenitude Corporal",
+      7 to "Integridade Corporal",
       8 to "Queda Lenta 12 m",
       9 to "Evasão Aprimorada",
       10 to "Queda Lenta 15 m",
