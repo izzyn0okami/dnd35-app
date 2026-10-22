@@ -830,6 +830,20 @@ class ExampleUnitTest {
   }
 
   @Test
+  fun fighterBonusFeatsAreListedAtCorrectLevelsWithoutGrantingSpecificFeats() {
+    val features = Dnd35Rules.CLASSES.first { it.name == "Guerreiro" }.features
+    val expectedLevels = listOf(1, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20)
+
+    expectedLevels.forEach { level ->
+      assertTrue("Talento bônus de Guerreiro ausente no nível $level",
+        features.any { it.level == level && it.name == "Talento Bônus de Guerreiro ($levelº nível)" })
+    }
+
+    assertTrue(features.none { it.name.contains("Especialização em Arma") && it.name.contains("&") })
+    assertTrue(features.none { it.name.contains("Foco Aprimorado") })
+  }
+
+  @Test
   fun bardicMusicProgressionFollowsDnd35Milestones() {
     val features = Dnd35Rules.CLASSES.first { it.name == "Bardo" }.features
     val expected = mapOf(
