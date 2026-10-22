@@ -37,6 +37,10 @@ internal fun normalizeEditedSkillRanks(ranks: Float, maxRanks: Float): Float {
     return ((safeRanks * 2f).toInt().coerceAtLeast(0) / 2f).coerceAtMost(safeMax)
 }
 
+/** Passo de edição preserva meios pontos antigos mesmo quando a perícia passa a ser de classe. */
+internal fun skillRankAdjustmentStep(ranks: Float, isClassSkill: Boolean): Float =
+    if (!isClassSkill || ranks % 1f != 0f) 0.5f else 1.0f
+
 class CharacterViewModel(application: Application) : AndroidViewModel(application) {
 
     private val repository: CharacterRepository
