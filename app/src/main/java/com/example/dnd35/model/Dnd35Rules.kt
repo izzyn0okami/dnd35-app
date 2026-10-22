@@ -336,7 +336,7 @@ object Dnd35Rules {
             babType = BabProgression.FULL,
             fortType = SaveProgression.GOOD,
             refType = SaveProgression.POOR,
-            willType = SaveProgression.POOR,
+            willType = SaveProgression.GOOD,
             skillPointsPerLevel = 2,
             spellCastingAbility = "SAB",
             classSkills = listOf("Adestrar Animais", "Cavalgar", "Concentração", "Conhecimento (Nobreza e Realeza)", "Conhecimento (Religião)", "Cura", "Diplomacia", "Ofícios", "Profissão", "Sentir Motivação"),
