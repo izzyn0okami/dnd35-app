@@ -257,3 +257,20 @@ A implementação atual usa `combinedArmorCheckPenalty = minOf(totalArmorCheckPe
 - A PR #99 foi revisada antes do merge e permanece aberta; a implementação inicial que removia toda penalidade foi substituída pela regra correta. Testes cobrem o exemplo com penalidade, classes restantes equilibradas, raça com classe favorecida específica e caso com apenas uma classe não favorecida.
 - Fontes de conferência: edição brasileira do Livro do Jogador 3.5, capítulo 2 e capítulo 3, p. 60. Referência auxiliar em inglês: Player's Handbook 3.5, p. 60.
 - Status: aguardar CI da PR #99 após a correção; não houve teste manual no aparelho.
+
+
+## Estado consolidado após PR #99 — 2026-10-22
+
+Esta seção prevalece sobre os status de andamento anteriores, que foram preservados como histórico.
+
+- PR #98: integrada; a CI da PR passou e a CI pós-merge também foi verificada como concluída com sucesso.
+- PR #99: integrada por squash no commit `68d3be941d1b87f205821797eb24bbcfb963b9ab`. A CI da PR passou e a CI pós-merge concluiu com sucesso no run [39863991497](https://github.com/izzyn0okami/dnd35-app/actions/runs/39863991497).
+- Regra corrigida conforme o *Livro do Jogador* 3.5: para Humanos e Meio-elfos, uma única classe — a de nível mais alto — é desconsiderada no cálculo de penalidade de XP; as classes restantes ainda podem gerar penalidade de 20% cada quando estiverem pelo menos dois níveis abaixo da mais alta entre elas.
+- A regra também está aplicada ao cálculo geral de estatísticas em `CalculatedCharacterStats.kt`: a classe favorecida efetiva para Humanos/Meio-elfos é a classe de nível mais alto, e a função de penalidade compara as demais classes. Não foi encontrada divergência entre esse cálculo e a regra corrigida da interface.
+- A inspeção do fluxo de progressão confirmou que `updateClasses` recalcula o nível total e persiste as entradas de classe, sem alterar `skillPointHistoryJson`. `updateSkill` recalcula a graduação máxima usando os níveis atuais, normaliza graduações em incrementos de 0,5 sem arredondar para cima e mantém o histórico de gastos separado.
+- Não foi confirmada nesta passagem uma regressão nova que justifique PR de código. A verificação foi estática, baseada no código remoto; não foi executado Gradle local nem teste manual no aparelho.
+- Não há PRs abertas no repositório no momento desta atualização.
+
+## Próxima etapa
+
+Continuar a auditoria de regras sem repetir os assuntos resolvidos. Próximo foco: revisar as progressões de BBA e testes de resistência das classes básicas, inclusive níveis de transição, comparando as funções de cálculo e os testes existentes com as tabelas oficiais do *Livro do Jogador* 3.5. Só abrir correção quando uma divergência concreta estiver demonstrada e incluir teste de regressão.
