@@ -1193,6 +1193,8 @@ class ExampleUnitTest {
     val monk = Dnd35Rules.CLASSES.first { it.name == "Monge" }
     assertTrue(monk.features.any { it.level == 11 && it.name == "Corpo de Diamante" })
     assertTrue(monk.features.none { it.name == "Corpo Trêmulo" })
+    assertTrue(monk.features.single { it.level == 20 && it.name == "Auto-Perfeição" }
+      .description.contains("Redução de Dano 10/mágica"))
   }
 
   @Test
