@@ -109,3 +109,11 @@ Continuar a auditoria sem editar código: rastrear a origem e a composição das
 
 - Nenhum arquivo de código ou teste foi alterado; nenhum teste local foi executado nesta etapa.
 - Próximo passo: revisar a CI da PR #85 para a correção de Profissão do Ladino; depois completar a comparação das demais classes e dos sinalizadores `trainedOnly`/penalidade de armadura contra o SRD.
+
+
+## Continuação após merge da PR #85
+
+- PR #85 integrada por squash no commit `2fe2c96e776324b84c02bc302b93c3f9ae99e60b`; CI passou (testes unitários, compilação Android e upload do APK de depuração).
+- Nova discrepância confirmada na lista de perícias do Ladino: faltava Conhecimento (Local), listado nas regras oficiais do SRD junto de Profissão. Fonte: https://www.d20srd.org/srd/classes/rogue.htm.
+- Correção preparada na PR #86: incluir Conhecimento (Local) em `classSkills` do Ladino e atualizar o teste de regressão da lista completa. Ainda aguarda CI e não está integrada.
+- A auditoria geral continua aberta para verificação sistemática das listas de classe e dos sinalizadores `trainedOnly` e penalidade de armadura. As expectativas atuais dos testes cobrem os conjuntos esperados, mas precisam ser confrontadas com o SRD; não presumir que o teste isoladamente prova conformidade.
