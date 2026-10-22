@@ -51,6 +51,8 @@ import com.example.dnd35.model.CalculatedCharacterStats
 import com.example.dnd35.model.CharacterEntity
 import com.example.dnd35.model.CharacterJsonAdapters
 import com.example.dnd35.model.LanguageRules
+import com.example.dnd35.model.LanguageAcquisition
+import com.example.dnd35.model.LanguageAcquisitionSource
 import com.example.dnd35.model.ComputedSkill
 import com.example.dnd35.model.estimateSkillPointsForLevel
 import com.example.dnd35.ui.dialogs.DiceRollDialog
@@ -110,7 +112,32 @@ fun SkillsTab(
         item {
             var languageInput by remember(character.id) { mutableStateOf("") }
             var languageMenuExpanded by remember(character.id) { mutableStateOf(false) }
+            var languageSourceMenuExpanded by remember(character.id) { mutableStateOf(false) }
+            var languageSource by remember(character.id) { mutableStateOf(LanguageAcquisitionSource.OTHER) }
+            var languageLevelInput by remember(character.id) { mutableStateOf("") }
+            var languageAcquisitionError by remember(character.id) { mutableStateOf<String?>(null) }
             val languages = CharacterJsonAdapters.deserializeLanguages(character.languagesJson)
+            val acquisitions = CharacterJsonAdapters.deserializeLanguageAcquisitions(character.languageAcquisitionsJson)
+            fun addLanguage(language: String) {
+                val cleaned = language.trim()
+                if (cleaned.isEmpty() || languages.any { it.equals(cleaned, ignoreCase = true) }) return
+                val level = languageLevelInput.toIntOrNull()
+                if (languageSource == LanguageAcquisitionSource.PURCHASED && (level == null || level < 1)) {
+                    languageAcquisitionError = "Informe o nível em que o ponto foi gasto."
+                    return
+                }
+                val acquisition = LanguageAcquisition(
+                    language = cleaned,
+                    source = languageSource,
+                    characterLevel = if (languageSource == LanguageAcquisitionSource.PURCHASED) level else null,
+                    pointsSpent = if (languageSource == LanguageAcquisitionSource.PURCHASED) 1 else 0
+                )
+                viewModel.updateLanguages(languages + cleaned)
+                viewModel.updateLanguageAcquisitions(acquisitions + acquisition)
+                languageInput = ""
+                languageLevelInput = ""
+                languageAcquisitionError = null
+            }
             val racialLanguageRules = LanguageRules.forRace(character.race)
             val selectableLanguages = (
                 (racialLanguageRules?.automatic.orEmpty() +
@@ -153,13 +180,46 @@ fun SkillsTab(
                                     DropdownMenuItem(
                                         text = { Text(option) },
                                         onClick = {
-                                            viewModel.updateLanguages(languages + option)
+                                            addLanguage(option)
                                             languageMenuExpanded = false
                                         }
                                     )
                                 }
                             }
                         }
+                    }
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        OutlinedButton(onClick = { languageSourceMenuExpanded = true }) {
+                            Text(when (languageSource) {
+                                LanguageAcquisitionSource.RACIAL -> "Fonte: raça"
+                                LanguageAcquisitionSource.INTELLIGENCE -> "Fonte: Inteligência"
+                                LanguageAcquisitionSource.CLASS_FEATURE -> "Fonte: classe"
+                                LanguageAcquisitionSource.FEAT -> "Fonte: talento"
+                                LanguageAcquisitionSource.PURCHASED -> "Fonte: comprado (1 ponto)"
+                                LanguageAcquisitionSource.OTHER -> "Fonte: outra"
+                            })
+                        }
+                        DropdownMenu(
+                            expanded = languageSourceMenuExpanded,
+                            onDismissRequest = { languageSourceMenuExpanded = false }
+                        ) {
+                            LanguageAcquisitionSource.values().forEach { source ->
+                                DropdownMenuItem(
+                                    text = { Text(source.name.lowercase().replace('_', ' ')) },
+                                    onClick = { languageSource = source; languageSourceMenuExpanded = false }
+                                )
+                            }
+                        }
+                    }
+                    if (languageSource == LanguageAcquisitionSource.PURCHASED) {
+                        OutlinedTextField(
+                            value = languageLevelInput,
+                            onValueChange = { languageLevelInput = it.filter(Char::isDigit).take(2) },
+                            label = { Text("Nível do personagem em que gastou o ponto") },
+                            singleLine = true,
+                            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                            modifier = Modifier.fillMaxWidth()
+                        )
                     }
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         OutlinedTextField(
@@ -170,16 +230,12 @@ fun SkillsTab(
                             modifier = Modifier.weight(1f)
                         )
                         Spacer(modifier = Modifier.width(8.dp))
-                        Button(
-                            onClick = {
-                                val cleaned = languageInput.trim()
-                                if (cleaned.isNotEmpty() && languages.none { it.equals(cleaned, ignoreCase = true) }) {
-                                    viewModel.updateLanguages(languages + cleaned)
-                                }
-                                languageInput = ""
-                            },
-                            enabled = languageInput.isNotBlank()
-                        ) { Text("Adicionar") }
+                        Button(onClick = { addLanguage(languageInput) }, enabled = languageInput.isNotBlank()) {
+                            Text("Adicionar")
+                        }
+                    }
+                    languageAcquisitionError?.let {
+                        Text(it, color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodySmall)
                     }
                     if (languages.isEmpty()) {
                         Text("Nenhum idioma cadastrado.", style = MaterialTheme.typography.bodySmall)
@@ -191,7 +247,30 @@ fun SkillsTab(
                                 horizontalArrangement = Arrangement.SpaceBetween
                             ) {
                                 Text(language, modifier = Modifier.weight(1f))
-                                IconButton(onClick = { viewModel.updateLanguages(languages.filterNot { it == language }) }) {
+                                val acquisition = acquisitions.firstOrNull { it.language.equals(language, ignoreCase = true) }
+                                Column(modifier = Modifier.weight(1f)) {
+                                    Text(language)
+                                    if (acquisition != null) {
+                                        Text(
+                                            when (acquisition.source) {
+                                                LanguageAcquisitionSource.PURCHASED -> "Comprado: 1 ponto no nível ${acquisition.characterLevel}"
+                                                LanguageAcquisitionSource.RACIAL -> "Origem: raça"
+                                                LanguageAcquisitionSource.INTELLIGENCE -> "Origem: Inteligência"
+                                                LanguageAcquisitionSource.CLASS_FEATURE -> "Origem: habilidade de classe"
+                                                LanguageAcquisitionSource.FEAT -> "Origem: talento"
+                                                LanguageAcquisitionSource.OTHER -> "Origem: outra"
+                                            },
+                                            style = MaterialTheme.typography.bodySmall,
+                                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                                        )
+                                    } else {
+                                        Text("Origem não registrada (ficha antiga)", style = MaterialTheme.typography.bodySmall)
+                                    }
+                                }
+                                IconButton(onClick = {
+                                    viewModel.updateLanguages(languages.filterNot { it == language })
+                                    viewModel.updateLanguageAcquisitions(acquisitions.filterNot { it.language.equals(language, ignoreCase = true) })
+                                }) {
                                     Icon(Icons.Default.Remove, contentDescription = "Remover idioma $language")
                                 }
                             }
