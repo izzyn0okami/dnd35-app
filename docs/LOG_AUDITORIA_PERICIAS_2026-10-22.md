@@ -167,4 +167,14 @@ A implementação atual usa `combinedArmorCheckPenalty = minOf(totalArmorCheckPe
 - Divergências encontradas na auditoria do catálogo `LanguageRules`: as listas para Elfo, Alto Elfo e Elfo da Floresta omitiam Dracônico e Gnoll; a variante Halfling Robusto não tinha entrada para suas regras de idioma.
 - Correção proposta na branch `fix/elf-bonus-languages`: as três variantes élficas agora incluem Dracônico, Gnoll, Gnomo, Goblin, Orc e Silvestre como opções de idiomas adicionais; Halfling Robusto recebe as mesmas regras de idiomas do Halfling.
 - Foram acrescentados testes de regressão para verificar o conjunto completo de opções élficas e a equivalência linguística entre Halfling e Halfling Robusto.
-- Ainda falta validação da CI e revisão final da PR; não houve compilação local nem teste manual no aparelho.
+- PR #90 integrada por squash em 2026-10-22, commit `cd6d4327e24ca9079d8e66993e997ab69e56b48a`; a CI do commit final da PR concluiu com sucesso. Não houve teste manual no aparelho.
+
+
+## Auditoria de idiomas raciais — Drow
+
+- Fonte consultada: Monster Manual 3.5, entrada Drow (p. 103; referências: https://dndtools.one/drow-6 e https://www.dndtools.org/races/monster-manual-v35--5/drow--6/).
+- Divergência confirmada: embora a raça Drow (Elfo Negro) esteja no catálogo do app, `LanguageRules` não tinha uma entrada para ela; portanto, a ficha não podia obter as línguas automáticas e as opções raciais específicas por essa função.
+- Correção proposta na branch `fix/drow-language-rules`: idiomas automáticos Comum, Élfico e Subterrâneo (representação usada no app para Undercommon); opções adicionais Abissal, Aquático, Dracônico, Linguagem de Sinais Drow, Gnomo e Goblin. Também foi incluído o alias `Drow` além do nome de catálogo `Drow (Elfo Negro)`.
+- O catálogo de idiomas foi ampliado com Linguagem de Sinais Drow. Kuo-toan não faz parte da lista de idiomas adicionais da entrada Drow no Monster Manual 3.5 e foi removido desta correção; ele não deve ser acrescentado como se fosse uma opção do livro básico.
+- Teste de regressão verifica o conjunto de idiomas e ambos os nomes aceitos.
+- Revisão complementar corrigiu a lista para corresponder ao Monster Manual 3.5: Kuo-toan não é uma das opções adicionais da entrada Drow nessa fonte. A CI deve ser verificada novamente no último commit; nenhuma compilação local nem teste manual no aparelho foi executado.

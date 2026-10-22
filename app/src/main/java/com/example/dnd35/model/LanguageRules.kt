@@ -18,7 +18,7 @@ object LanguageRules {
     val coreLanguages = listOf(
         "Abissal", "Anão", "Aquático", "Auran", "Celestial", "Comum",
         "Dracônico", "Élfico", "Gigante", "Gnoll", "Gnomo", "Goblin",
-        "Halfling", "Ignan", "Infernal", "Orc", "Silvestre", "Terran",
+        "Halfling", "Ignan", "Infernal", "Linguagem de Sinais Drow", "Orc", "Silvestre", "Terran",
         "Subterrâneo"
     )
 
@@ -30,6 +30,8 @@ object LanguageRules {
         "elfo" to RaceLanguages(listOf("Comum", "Élfico"), listOf("Dracônico", "Gnoll", "Gnomo", "Goblin", "Orc", "Silvestre")),
         "alto elfo" to RaceLanguages(listOf("Comum", "Élfico"), listOf("Dracônico", "Gnoll", "Gnomo", "Goblin", "Orc", "Silvestre")),
         "elfo da floresta" to RaceLanguages(listOf("Comum", "Élfico"), listOf("Dracônico", "Gnoll", "Gnomo", "Goblin", "Orc", "Silvestre")),
+        "drow" to RaceLanguages(listOf("Comum", "Élfico", "Subterrâneo"), listOf("Abissal", "Aquático", "Dracônico", "Linguagem de Sinais Drow", "Gnomo", "Goblin")),
+        "drow (elfo negro)" to RaceLanguages(listOf("Comum", "Élfico", "Subterrâneo"), listOf("Abissal", "Aquático", "Dracônico", "Linguagem de Sinais Drow", "Gnomo", "Goblin")),
         "gnomo" to RaceLanguages(listOf("Comum", "Gnomo"), listOf("Dracônico", "Élfico", "Gigante", "Goblin", "Anão", "Orc")),
         "gnomo da rocha" to RaceLanguages(listOf("Comum", "Gnomo"), listOf("Dracônico", "Élfico", "Gigante", "Goblin", "Anão", "Orc")),
         "halfling" to RaceLanguages(listOf("Comum", "Halfling"), listOf("Élfico", "Anão", "Gnomo", "Goblin", "Orc")),
