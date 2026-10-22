@@ -539,7 +539,7 @@ object CharacterCalculator {
             val def = Dnd35Rules.SKILL_DEFINITIONS.find { it.name.equals(canonicalSkillName, ignoreCase = true) }
             // Para perícias do catálogo, o atributo-chave oficial prevalece sobre dados legados/editáveis.
             // Perícias personalizadas continuam usando o atributo escolhido na ficha.
-            val keyAbility = def?.keyAbility ?: skill.keyAbility
+            val keyAbility = Dnd35Rules.canonicalSkillKeyAbility(skill.name, skill.keyAbility)
             val keyMod = when (keyAbility.uppercase()) {
                 "FOR" -> strMod
                 "DES" -> dexMod
@@ -551,9 +551,11 @@ object CharacterCalculator {
             }
             // Perícias conhecidas seguem a lista oficial de perícias de classe de qualquer classe
             // do personagem. O sinalizador salvo só serve para perícias personalizadas.
-            val isClassSkill = if (def != null) {
+            val isClassSkill = if (def != null || Dnd35Rules.isCraftSpecialty(canonicalSkillName)) {
                 multiclassDetails.any { detail ->
-                    detail.classInfo.classSkills.any { it.equals(canonicalSkillName, ignoreCase = true) }
+                    detail.classInfo.classSkills.any {
+                        Dnd35Rules.classSkillMatches(canonicalSkillName, it)
+                    }
                 }
             } else skill.isClassSkill
             val maxClassRanks = totalCharacterLevel + 3f
