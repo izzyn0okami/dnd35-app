@@ -28,6 +28,48 @@ object CharacterJsonAdapters {
     }
 
 
+    fun serializeLanguageAcquisitions(records: List<LanguageAcquisition>): String {
+        val array = JSONArray()
+        records.filter { it.isValid() }
+            .distinctBy { it.language.trim().lowercase() }
+            .forEach { record ->
+                val obj = JSONObject()
+                obj.put("language", record.language.trim())
+                obj.put("source", record.source.name)
+                if (record.characterLevel != null) obj.put("characterLevel", record.characterLevel)
+                obj.put("pointsSpent", record.pointsSpent)
+                array.put(obj)
+            }
+        return array.toString()
+    }
+
+    fun deserializeLanguageAcquisitions(json: String?): List<LanguageAcquisition> {
+        if (json.isNullOrBlank()) return emptyList()
+        return try {
+            val array = JSONArray(json)
+            (0 until array.length()).mapNotNull { index ->
+                val obj = array.optJSONObject(index) ?: return@mapNotNull null
+                val language = obj.optString("language", "").trim()
+                val source = runCatching {
+                    LanguageAcquisitionSource.valueOf(obj.optString("source", "OTHER"))
+                }.getOrDefault(LanguageAcquisitionSource.OTHER)
+                val level = if (obj.has("characterLevel") && !obj.isNull("characterLevel")) {
+                    obj.optInt("characterLevel", 0)
+                } else null
+                val record = LanguageAcquisition(
+                    language = language,
+                    source = source,
+                    characterLevel = level,
+                    pointsSpent = obj.optInt("pointsSpent", 0)
+                )
+                record.takeIf { it.isValid() }
+            }.distinctBy { it.language.lowercase() }
+        } catch (e: Exception) {
+            Log.w("CharacterJsonAdapters", "JSON de aquisição de idiomas inválido", e)
+            emptyList()
+        }
+    }
+
     fun serializeSkillPointHistory(records: List<SkillPointLevelRecord>): String {
         val array = JSONArray()
         records.sortedWith(compareBy<SkillPointLevelRecord> { it.characterLevel }.thenBy { it.className.lowercase() })
