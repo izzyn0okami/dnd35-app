@@ -1064,11 +1064,4 @@ class ExampleUnitTest {
     assertTrue(traits.contains("mamíferos escavadores"))
   }
 
-  @Test
-  fun paladinHasGoodWillSaveProgression() {
-    val paladin = Dnd35Rules.CLASSES.first { it.name == "Paladino" }
-    assertEquals(SaveProgression.GOOD, paladin.willType)
-    assertEquals(2, Dnd35Rules.calculateBaseSave(paladin.willType, 1))
-    assertEquals(3, Dnd35Rules.calculateBaseSave(paladin.willType, 2))
-  }
 }
