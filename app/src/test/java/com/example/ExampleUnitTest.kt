@@ -830,6 +830,32 @@ class ExampleUnitTest {
   }
 
   @Test
+  fun paladinCoreClassFeaturesFollowDnd35Progression() {
+    val features = Dnd35Rules.CLASSES.first { it.name == "Paladino" }.features
+    val expected = mapOf(
+      1 to listOf("Aura do Bem", "Detectar o Mal", "Destruir o Mal 1/dia"),
+      2 to listOf("Graça Divina", "Imposição de Mãos"),
+      3 to listOf("Aura de Coragem", "Saúde Divina"),
+      4 to listOf("Expulsar Mortos-Vivos", "Conjuração Divina"),
+      5 to listOf("Destruir o Mal 2/dia", "Montaria Especial"),
+      6 to listOf("Remover Doença 1/semana"),
+      9 to listOf("Remover Doença 2/semana"),
+      10 to listOf("Destruir o Mal 3/dia"),
+      12 to listOf("Remover Doença 3/semana"),
+      15 to listOf("Destruir o Mal 4/dia", "Remover Doença 4/semana"),
+      18 to listOf("Remover Doença 5/semana"),
+      20 to listOf("Destruir o Mal 5/dia")
+    )
+
+    expected.forEach { (level, names) ->
+      names.forEach { name ->
+        assertTrue("Habilidade de Paladino ausente no nível $level: $name",
+          features.any { it.level == level && it.name == name })
+      }
+    }
+  }
+
+  @Test
   fun monkCoreClassFeaturesAppearAtCorrectLevels() {
     val features = Dnd35Rules.CLASSES.first { it.name == "Monge" }.features
     val expected = mapOf(
