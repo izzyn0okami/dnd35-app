@@ -1373,5 +1373,30 @@ class ExampleUnitTest {
       CharacterEntity(characterClass = "Mago", level = 7)
     )
     assertEquals(7, wizard.casterClasses.single().casterLevel)
+    assertEquals((0..9).toSet(), wizard.casterClasses.single().dcByLevel.keys)
+  }
+
+  @Test
+  fun paladinAndRangerSpellDcMapsOnlyIncludeSpellLevelsAvailableByClassLevel() {
+    val expectedLevelsByClassLevel = mapOf(
+      4 to setOf(1),
+      8 to setOf(1, 2),
+      11 to setOf(1, 2, 3),
+      14 to setOf(1, 2, 3, 4),
+      20 to setOf(1, 2, 3, 4)
+    )
+
+    listOf("Paladino", "Ranger").forEach { className ->
+      expectedLevelsByClassLevel.forEach { (classLevel, expectedLevels) ->
+        val stats = CharacterCalculator.compute(
+          CharacterEntity(characterClass = className, level = classLevel)
+        )
+        assertEquals(
+          "$className nível $classLevel",
+          expectedLevels,
+          stats.casterClasses.single().dcByLevel.keys
+        )
+      }
+    }
   }
 }
