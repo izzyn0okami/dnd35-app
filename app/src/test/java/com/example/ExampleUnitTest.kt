@@ -830,6 +830,22 @@ class ExampleUnitTest {
   }
 
   @Test
+  fun wizardAndSorcererFeaturesMatchCoreClassRules() {
+    val sorcerer = Dnd35Rules.CLASSES.first { it.name == "Feiticeiro" }
+    val wizard = Dnd35Rules.CLASSES.first { it.name == "Mago" }
+
+    assertEquals("CAR", sorcerer.spellCastingAbility)
+    assertTrue(sorcerer.features.first { it.name == "Conjuração Espontânea" }.description.contains("repertório limitado"))
+    assertTrue(sorcerer.features.first { it.name == "Invocar Familiar" }.description.contains("não é a habilidade Companheiro Animal"))
+
+    assertEquals("INT", wizard.spellCastingAbility)
+    assertTrue(wizard.features.first { it.name == "Escrever Pergaminho" }.description.contains("talento bônus"))
+    assertTrue(wizard.features.first { it.name == "Especialização em Escola (Opcional)" }.description.contains("Adivinhação"))
+    assertEquals(listOf(5, 10, 15, 20), wizard.features.filter { it.name.startsWith("Talento Bônus de Mago") }.map { it.level })
+    assertTrue(wizard.features.filter { it.name.startsWith("Talento Bônus de Mago") }.all { it.description.contains("Maestria em Magia") })
+  }
+
+  @Test
   fun clericFeaturesDescribeDomainsAndNeutralAlignmentChoices() {
     val features = Dnd35Rules.CLASSES.first { it.name == "Clérigo" }.features
     val turning = features.first { it.name == "Expulsar ou Fascinar Mortos-Vivos" }
