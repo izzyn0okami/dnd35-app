@@ -178,3 +178,13 @@ A implementação atual usa `combinedArmorCheckPenalty = minOf(totalArmorCheckPe
 - O catálogo de idiomas foi ampliado com Linguagem de Sinais Drow. Kuo-toan não faz parte da lista de idiomas adicionais da entrada Drow no Monster Manual 3.5 e foi removido desta correção; ele não deve ser acrescentado como se fosse uma opção do livro básico.
 - Teste de regressão verifica o conjunto de idiomas e ambos os nomes aceitos.
 - Revisão complementar corrigiu a lista para corresponder ao Monster Manual 3.5: Kuo-toan não é uma das opções adicionais da entrada Drow nessa fonte. A CI deve ser verificada novamente no último commit; nenhuma compilação local nem teste manual no aparelho foi executado.
+
+
+## Estado final — auditoria de idiomas do Drow
+
+- PR #91 integrada por squash em 2026-10-22; commit na `main`: `4bbbfa6ad0edd9c9ad539112446eae5a26bd7d60`.
+- A CI do commit final da PR concluiu com sucesso antes do merge; a execução pós-merge na `main` também concluiu com sucesso.
+- A implementação inclui idiomas automáticos Comum, Élfico e Subterrâneo, além das opções adicionais Abissal, Aquático, Dracônico, Linguagem de Sinais Drow, Gnomo e Goblin.
+- Kuo-toan foi excluído porque não integra as opções de idioma da entrada Drow no Monster Manual 3.5. Não reabrir sem nova evidência ou uma decisão explícita de cenário específico.
+- O teste de regressão cobre a lista e os aliases `Drow` e `Drow (Elfo Negro)`.
+- Não houve teste manual no aparelho. A auditoria estática das opções raciais listadas em `LanguageRules` não encontrou outra discrepância confirmada nesta passagem; a continuação deve avançar para a próxima área pendente sem recriar PRs de idiomas já corrigidos.
