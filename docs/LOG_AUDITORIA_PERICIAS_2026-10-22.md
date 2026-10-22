@@ -15,7 +15,7 @@
 - Consultados arquivos da branch padrão, incluindo `README.md`, `RELATORIO_CORRECOES.md`, `Dnd35Rules.kt` e `CalculatedCharacterStats.kt`.
 - Criada a branch documental `docs/log-auditoria-pericias-2026-10-22` para registrar esta sessão.
 - Este log é a única alteração documental proposta nesta branch.
-- Nenhum merge foi realizado.
+- No momento inicial registrado nesta seção, nenhum merge havia sido realizado; consulte a seção final para o estado posterior.
 
 ## Inspeções realizadas
 
@@ -28,7 +28,7 @@ A inspeção estática do trecho de cálculo de perícias encontrou:
 - O bônus usa `ranks.toInt()`, coerente com a decisão registrada de que meia graduação não aumenta, por si só, o modificador do teste.
 - A penalidade é aplicada conforme `armorCheckPenaltyApplies` na definição da perícia.
 - Natação recebe o dobro de `combinedArmorCheckPenalty`.
-- `combinedArmorCheckPenalty` é calculada como `totalArmorCheckPenalty + encumbrance.armorCheckPenalty`.
+- Na inspeção inicial, a composição ainda não estava confirmada. A implementação corrigida posteriormente usa `minOf(totalArmorCheckPenalty, encumbrance.armorCheckPenalty)`.
 - A elegibilidade para rolagem considera `trainedOnly` e a existência de pelo menos 1 graduação.
 
 ### `Dnd35Rules.kt`
@@ -111,9 +111,33 @@ Continuar a auditoria sem editar código: rastrear a origem e a composição das
 - Próximo passo: revisar a CI da PR #85 para a correção de Profissão do Ladino; depois completar a comparação das demais classes e dos sinalizadores `trainedOnly`/penalidade de armadura contra o SRD.
 
 
-## Continuação após merge da PR #85
+## Continuação após merge da PR #85 (registro histórico, atualizado)
 
-- PR #85 integrada por squash no commit `2fe2c96e776324b84c02bc302b93c3f9ae99e60b`; CI passou (testes unitários, compilação Android e upload do APK de depuração).
+- PR #85 integrada por squash no commit `2fe2c96e776324b84c02bc302b93c3f9ae99e60b`; sua CI passou (testes unitários, compilação Android e upload do APK de depuração).
 - Nova discrepância confirmada na lista de perícias do Ladino: faltava Conhecimento (Local), listado nas regras oficiais do SRD junto de Profissão. Fonte: https://www.d20srd.org/srd/classes/rogue.htm.
-- Correção preparada na PR #86: incluir Conhecimento (Local) em `classSkills` do Ladino e atualizar o teste de regressão da lista completa. Ainda aguarda CI e não está integrada.
-- A auditoria geral continua aberta para verificação sistemática das listas de classe e dos sinalizadores `trainedOnly` e penalidade de armadura. As expectativas atuais dos testes cobrem os conjuntos esperados, mas precisam ser confrontadas com o SRD; não presumir que o teste isoladamente prova conformidade.
+- A correção foi integrada pela PR #86; ver estado atual ao final deste documento.
+- A auditoria geral continua aberta para verificação sistemática das listas de classe e dos sinalizadores `trainedOnly` e penalidade de armadura. As expectativas dos testes precisam ser confrontadas com o SRD; não presumir que o teste isoladamente prova conformidade.
+
+
+## Estado consolidado — atualização de 2026-10-22
+
+Esta seção prevalece sobre qualquer status anterior conflitante no histórico acima. As seções anteriores são mantidas para preservar a trilha de auditoria.
+
+### PRs e CI
+
+- PR #85: integrada por squash no commit `2fe2c96e776324b84c02bc302b93c3f9ae99e60b`. A CI anterior ao merge passou.
+- PR #86: integrada por squash no commit `546e6f0a36fdbb65a4bb1fc7ec039ed26a2ad360`. A mudança inclui Conhecimento (Local) na lista de perícias de classe do Ladino e atualiza o teste correspondente.
+- O resultado pós-merge da PR #86 não foi confirmado por esta consulta: a busca por execuções associadas ao commit não retornou execuções. Não declarar a CI pós-merge aprovada sem verificar uma execução correspondente.
+- A PR #85 e a PR #86 não devem ser recriadas para repetir essas correções.
+
+### Cálculo vigente da penalidade de armadura e carga
+
+A implementação atual usa `combinedArmorCheckPenalty = minOf(totalArmorCheckPenalty, encumbrance.armorCheckPenalty)`, evitando somar a penalidade de carga à penalidade de armadura/escudo. Armadura e escudo equipados continuam compondo `totalArmorCheckPenalty`; Natação aplica o dobro da penalidade combinada. A regressão `encumbrancePenaltyDoesNotStackWithArmorPenalty` verifica Escalar com -3 e Natação com -6 no cenário coberto.
+
+### Estado da auditoria
+
+- Mantêm-se as decisões aprovadas sobre Acrobacia, Arte da Fuga, Druida, graduações fracionárias e penalidades.
+- Profissão e Conhecimento (Local) do Ladino foram corrigidas; não reabrir sem nova evidência.
+- A auditoria completa das listas de perícias de classe das onze classes ainda está pendente, assim como a comparação sistemática de `trainedOnly` e `armorCheckPenaltyApplies` para todas as perícias com o SRD.
+- A próxima etapa é concluir essa comparação antes de qualquer nova alteração de código. Correções só devem ser propostas com discrepância demonstrada e teste de regressão quando aplicável.
+- Esta atualização é documental. Nenhum teste Gradle foi executado por meio desta operação.
