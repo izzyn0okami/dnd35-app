@@ -466,7 +466,7 @@ object Dnd35Rules {
             willType = SaveProgression.GOOD,
             skillPointsPerLevel = 2,
             spellCastingAbility = "CAR",
-            classSkills = listOf("Concentração", "Conhecimento (Arcano)", "Identificar Magia", "Ofícios", "Profissão"),
+            classSkills = listOf("Blefar", "Concentração", "Conhecimento (Arcano)", "Identificar Magia", "Ofícios", "Profissão"),
             features = listOf(
                 ClassFeature(1, "Conjuração Espontânea", "Conjura magias arcanas sem prepará-las antecipadamente; conhece um repertório limitado de magias e tem um limite diário de usos por nível."),
                 ClassFeature(1, "Invocar Familiar", "Obtém um familiar mágico que compartilha benefícios especiais com o feiticeiro; não é a habilidade Companheiro Animal do druida ou ranger.")
