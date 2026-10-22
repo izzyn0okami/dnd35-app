@@ -60,3 +60,30 @@ fun parseWholeSkillPointBudget(input: String): Int? {
     val value = input.trim().toIntOrNull() ?: return null
     return value.takeIf { it >= 0 }
 }
+
+
+/**
+ * Calcula o total de gastos registrados somente para os níveis atuais do personagem.
+ * Registros acima do nível atual são preservados, mas não entram no total nem
+ * impedem que o histórico dos níveis atuais seja considerado completo.
+ */
+data class SkillPointHistoryTotal(
+    val isComplete: Boolean,
+    val pointsSpent: Float
+)
+
+fun calculateSkillPointHistoryTotal(
+    history: List<SkillPointLevelRecord>,
+    totalCharacterLevel: Int
+): SkillPointHistoryTotal {
+    if (totalCharacterLevel <= 0) {
+        return SkillPointHistoryTotal(isComplete = false, pointsSpent = 0f)
+    }
+    val currentLevelHistory = history.filter { it.characterLevel in 1..totalCharacterLevel }
+    val recordedLevels = currentLevelHistory.map { it.characterLevel }.toSet()
+    val complete = (1..totalCharacterLevel).all { it in recordedLevels }
+    val spent = currentLevelHistory.sumOf { record ->
+        record.allocations.sumOf { it.pointsSpent.toDouble() }
+    }.toFloat()
+    return SkillPointHistoryTotal(isComplete = complete, pointsSpent = spent)
+}
