@@ -21,7 +21,7 @@ class LanguageRulesTest {
             automatic = listOf("Comum", "Élfico", "Subterrâneo"),
             bonusOptions = listOf(
                 "Abissal", "Aquático", "Dracônico", "Linguagem de Sinais Drow",
-                "Gnomo", "Goblin", "Kuo-toa"
+                "Gnomo", "Goblin", "Kuo-toan"
             )
         )
         assertEquals(expected, LanguageRules.forRace("Drow"))
