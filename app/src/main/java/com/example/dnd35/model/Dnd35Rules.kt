@@ -366,7 +366,6 @@ object Dnd35Rules {
                 ClassFeature(8, "Queda Suave 12 m", "Reduz o dano de queda quando há uma parede ao alcance."),
                 ClassFeature(9, "Evasão Aprimorada", "Em um teste de Reflexos falho, sofre metade do dano; em um teste bem-sucedido, não sofre dano."),
                 ClassFeature(10, "Queda Suave 15 m", "Reduz o dano de queda quando há uma parede ao alcance."),
-                ClassFeature(7, "Salto das Nuvens", "Recebe a habilidade Salto das Nuvens; aplicar a regra específica da classe para saltos."),
                 ClassFeature(10, "Ataque Chi (Ordem)", "Os ataques desarmados passam a contar como ordeiros para superar redução de dano."),
                 ClassFeature(11, "Corpo de Diamante", "Imunidade a todos os venenos."),
                 ClassFeature(11, "Rajada Maior", "Recebe um segundo ataque adicional na rajada de golpes, também com o bônus base de ataque máximo."),
