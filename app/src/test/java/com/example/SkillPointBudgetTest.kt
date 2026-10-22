@@ -50,6 +50,14 @@ class SkillPointBudgetTest {
             parseSkillPointAllocations("Saltar = 2\nEscalar = 1")
         )
         assertNull(parseSkillPointAllocations("Saltar = 2\nSaltar = 1"))
+        assertEquals(
+            listOf(SkillPointAllocation("Perícia personalizada", 2f)),
+            parseSkillPointAllocations("Perícia personalizada = 2")
+        )
+        assertEquals(
+            listOf(SkillPointAllocation("Ofícios (Armadilhas)", 3f)),
+            parseSkillPointAllocations("Ofícios (Armadilhas) = 3")
+        )
         assertNull(parseSkillPointAllocations("Escalar = -1"))
         assertNull(parseSkillPointAllocations("Escalar = 1.5"))
     }
