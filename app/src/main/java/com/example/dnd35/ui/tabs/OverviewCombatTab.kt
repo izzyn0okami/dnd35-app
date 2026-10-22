@@ -41,6 +41,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
@@ -68,6 +69,7 @@ fun OverviewCombatTab(
     character: CharacterEntity
 ) {
     var showPhotoModal by remember { mutableStateOf(false) }
+    var portraitZoom by remember { mutableStateOf(1f) }
     var showGeneralInfoModal by remember { mutableStateOf(false) }
     var showArmorModal by remember { mutableStateOf(false) }
     var showMulticlassModal by remember { mutableStateOf(false) }
@@ -87,14 +89,15 @@ fun OverviewCombatTab(
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(250.dp)
-                    .clip(RoundedCornerShape(16.dp))
+                    .height(290.dp)
+                    .clip(RoundedCornerShape(8.dp))
                     .testTag("character_hero_header")
             ) {
                 CharacterAvatar(
                     photoUri = character.photoUri,
                     modifier = Modifier
                         .fillMaxSize()
+                        .graphicsLayer(scaleX = portraitZoom, scaleY = portraitZoom)
                         .clickable { showPhotoModal = true }
                 )
 
@@ -124,7 +127,7 @@ fun OverviewCombatTab(
                         .fillMaxWidth(0.76f)
                         .clickable { showGeneralInfoModal = true }
                         .testTag("character_hero_info"),
-                    shape = RoundedCornerShape(14.dp),
+                    shape = RoundedCornerShape(8.dp),
                     colors = CardDefaults.cardColors(
                         containerColor = MaterialTheme.colorScheme.surface.copy(alpha = 0.94f)
                     ),
