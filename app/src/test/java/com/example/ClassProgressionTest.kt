@@ -73,6 +73,24 @@ class ClassProgressionTest {
     }
 
     @Test
+    fun rogueTrapSenseIncreasesEveryThreeLevels() {
+        val rogue = Dnd35Rules.CLASSES.single { it.name == "Ladino" }
+        val trapSense = rogue.features.filter { it.name.startsWith("Sentir Armadilhas") }
+            .associate { it.level to it.name }
+        assertEquals(
+            mapOf(
+                3 to "Sentir Armadilhas +1",
+                6 to "Sentir Armadilhas +2",
+                9 to "Sentir Armadilhas +3",
+                12 to "Sentir Armadilhas +4",
+                15 to "Sentir Armadilhas +5",
+                18 to "Sentir Armadilhas +6"
+            ),
+            trapSense
+        )
+    }
+
+    @Test
     fun bardGainsMassSuggestionAtLevelEighteen() {
         val bard = Dnd35Rules.CLASSES.single { it.name == "Bardo" }
         assertEquals(1, bard.features.count { it.level == 18 && it.name == "Sugestão em Massa" })
