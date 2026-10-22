@@ -99,7 +99,8 @@ Continuar a auditoria sem editar código: rastrear a origem e a composição das
 ### Comparação inicial das listas de perícias de classe com SRD D&D 3.5
 
 - Fonte de referência consultada: SRD 3.5 em d20srd.org para Bardo e Monge.
-- **Discrepância confirmada no Monge:** a lista `classSkills` em `Dnd35Rules.kt` inclui Conhecimento (Religião), mas não inclui Conhecimento (Arcano). A lista oficial do Monge inclui ambos. A correção deve ser específica e acompanhada de teste de regressão; ainda não foi aplicada.
+- **Discrepância confirmada no Monge:** a lista `classSkills` em `Dnd35Rules.kt` inclui Conhecimento (Religião), mas não inclui Conhecimento (Arcano). A lista oficial do Monge inclui ambos.
+- **Discrepância confirmada no Ladino:** a lista `classSkills` não inclui Profissão, embora a lista oficial do Ladino inclua essa perícia. A correção deve ser específica e acompanhada de testes de regressão para ambas as omissões; nenhuma foi aplicada nesta etapa.
 - **Bardo:** a lista da aplicação representa individualmente as especialidades de Conhecimento, coerente com a regra oficial “Knowledge (all skills, taken individually)”. Não tratar automaticamente essa representação como defeito. Continuar verificando correspondência e nomes traduzidos antes de alterar.
 - As demais listas de classe ainda precisam ser comparadas sistematicamente. A inspeção parcial não permite declarar a auditoria das onze classes concluída.
 - Histórico consultado: PRs #5, #6, #7, #12, #24, #74, #75, #76, #77, #81, #82 e #83. As decisões anteriores sobre Acrobacia, Druida e graduações fracionárias permanecem preservadas.
