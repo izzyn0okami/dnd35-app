@@ -128,6 +128,24 @@ data class ComputedSkill(
 
 object CharacterCalculator {
 
+    private fun monkUnarmedDamageForSize(level: Int, sizeName: String): String {
+        val tier = when {
+            level >= 20 -> 5
+            level >= 16 -> 4
+            level >= 12 -> 3
+            level >= 8 -> 2
+            level >= 4 -> 1
+            else -> 0
+        }
+        val size = sizeName.trim().lowercase()
+        val damageBySize = when (size) {
+            "pequeno" -> listOf("1d4", "1d6", "1d8", "1d10", "2d6", "2d8")
+            "grande" -> listOf("1d8", "2d6", "2d8", "3d6", "3d8", "4d8")
+            else -> listOf("1d6", "1d8", "1d10", "2d6", "2d8", "2d10")
+        }
+        return damageBySize[tier]
+    }
+
     private fun sizeSkillBonus(sizeName: String, skillName: String): Int {
         if (!skillName.equals("Esconder-se", ignoreCase = true)) return 0
         return when (sizeName.trim().lowercase()) {
@@ -438,16 +456,9 @@ object CharacterCalculator {
             "+${diceCount}d6"
         } else null
 
-        // Dano Desarmado de Monge
+        // Dano desarmado do Monge: progressão por nível e ajuste de tamanho.
         val monkUnarmedDamage = if (monkLevel > 0) {
-            when {
-                monkLevel >= 20 -> "2d10"
-                monkLevel >= 16 -> "2d8"
-                monkLevel >= 12 -> "2d6"
-                monkLevel >= 8 -> "1d10"
-                monkLevel >= 4 -> "1d8"
-                else -> "1d6"
-            }
+            monkUnarmedDamageForSize(monkLevel, character.size)
         } else null
 
         // Fúria de Bárbaro
