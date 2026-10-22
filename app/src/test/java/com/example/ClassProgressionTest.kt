@@ -79,6 +79,32 @@ class ClassProgressionTest {
     }
 
     @Test
+    fun bardFeatureNamesAndTargetProgressionsMatchTheBrazilianHandbook() {
+        val bard = Dnd35Rules.CLASSES.single { it.name == "Bardo" }
+        val fascinateTargets = bard.features.filter { it.name.startsWith("Fascinar (") }
+            .associate { it.level to it.name }
+        assertEquals(
+            mapOf(
+                1 to "Fascinar (1 criatura)",
+                4 to "Fascinar (2 criaturas)",
+                7 to "Fascinar (3 criaturas)",
+                10 to "Fascinar (4 criaturas)",
+                13 to "Fascinar (5 criaturas)",
+                16 to "Fascinar (6 criaturas)",
+                19 to "Fascinar (7 criaturas)"
+            ),
+            fascinateTargets
+        )
+        assertTrue(bard.features.any { it.level == 1 && it.name == "Música de Proteção" })
+        assertTrue(bard.features.none { it.name == "Contramúsica" })
+        assertTrue(bard.features.any { it.level == 12 && it.name == "Melodia da Libertação" })
+        assertTrue(bard.features.single { it.level == 9 && it.name == "Inspirar Grandeza" }
+            .description.contains("até quatro no 18º nível"))
+        assertTrue(bard.features.single { it.level == 15 && it.name == "Inspirar Heroísmo" }
+            .description.contains("alvo adicional no 18º nível"))
+    }
+
+    @Test
     fun representativeClassProgressionsMatchThePlayerHandbook() {
         val classes = Dnd35Rules.CLASSES.associateBy { it.name }
 
