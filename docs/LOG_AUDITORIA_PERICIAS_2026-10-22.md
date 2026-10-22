@@ -147,6 +147,16 @@ A implementação atual usa `combinedArmorCheckPenalty = minOf(totalArmorCheckPe
 
 - Evidência nova: a referência oficial SRD 3.5 lista **Bluff (Blefar)** entre as perícias de classe do Sorcerer/Feiticeiro, junto de Concentração, Ofícios, Conhecimento (Arcano), Profissão e Identificar Magia (Spellcraft). Fonte: https://www.d20srd.org/srd/classes/sorcererWizard.htm.
 - Revisão de histórico: a PR #21 removeu Blefar com a justificativa incorreta de que não fazia parte da lista padrão. A conclusão anterior e o teste que a perpetuava estavam errados; esta correção revoga somente essa decisão, com base na fonte oficial.
-- Alteração proposta nesta branch: adicionar Blefar a `Dnd35Rules.CLASSES` para o Feiticeiro e atualizar `sorcererClassSkillsMatchCoreSkillList` para exigir sua presença.
+- Alteração integrada pela PR #88 em 2026-10-22: Blefar foi adicionada a `Dnd35Rules.CLASSES` para o Feiticeiro e `sorcererClassSkillsMatchCoreSkillList` exige sua presença.
+- A CI do workflow Android build concluiu com sucesso para o commit da PR. Não houve teste manual no aparelho.
 - Não foram alteradas outras classes, perícias, graduações ou fichas salvas.
-- Validação pendente: CI da PR e revisão do diff; nenhum teste local/Gradle foi executado por esta operação.
+
+## Verificação de requisitos de treinamento e penalidade de armadura
+
+- Comparação do catálogo `SKILL_DEFINITIONS` com o SRD 3.5: os sinalizadores `trainedOnly` e `armorCheckPenaltyApplies` estão consistentes com as listas de referência consultadas.
+- Requisitos de treinamento marcados no catálogo: Abrir Fechaduras, Adestrar Animais, todas as especialidades de Conhecimento, Decifrar Escrita, Identificar Magia, Operar Mecanismo, Prestidigitação, Profissão e Usar Instrumento Mágico.
+- Exceção deliberada preservada: Acrobacia não está marcada como treinamento obrigatório por decisão anterior explicitamente aprovada para este app; não foi alterada apesar de a perícia Tumble do SRD ser treinada apenas.
+- Penalidade de armadura cobre Acrobacia, Arte da Fuga, Equilíbrio, Escalar, Esconder-se, Furtividade, Natação, Prestidigitação e Saltar. Natação recebe penalidade dobrada. Os testes existentes verificam esse conjunto e o tratamento de carga/armadura.
+- A lógica de `canRoll` impede testes de perícias marcadas `trainedOnly` quando o personagem tem menos de 1 graduação. Graduações fracionárias são preservadas, mas não contam como uma graduação inteira para o bônus do teste.
+- Resultado desta etapa: nenhuma nova divergência comprovada; não abrir PR de código apenas por preferência de implementação. A lista de perícias de classe das classes básicas tem testes de regressão e não apresentou discrepância nova nesta revisão.
+- Limitação: esta foi uma auditoria estática do catálogo, dos cálculos e dos testes existentes; não foi executada uma sessão Gradle local nem um teste manual no aparelho.
