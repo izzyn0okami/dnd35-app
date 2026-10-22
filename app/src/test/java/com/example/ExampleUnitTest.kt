@@ -264,6 +264,36 @@ class ExampleUnitTest {
   }
 
   @Test
+  fun cataloguedSkillsUseOfficialKeyAbilityAndCustomSkillsKeepChosenAbility() {
+    val character = CharacterCalculator.compute(
+      CharacterEntity(
+        race = "Humano",
+        baseStr = 12,
+        baseDex = 16,
+        baseCon = 10,
+        baseWis = 10,
+        baseInt = 10,
+        baseCha = 10,
+        skillsJson = CharacterJsonAdapters.serializeSkills(
+          listOf(
+            CharacterSkill(name = "Escalar", keyAbility = "DES"),
+            CharacterSkill(name = "Perícia Personalizada", keyAbility = "DES")
+          )
+        )
+      )
+    )
+
+    val climb = character.computedSkills.single { it.skill.name == "Escalar" }
+    val custom = character.computedSkills.single { it.skill.name == "Perícia Personalizada" }
+    assertEquals("FOR", climb.skill.keyAbility)
+    assertEquals(1, climb.keyAbilityMod)
+    assertEquals(1, climb.totalBonus)
+    assertEquals("DES", custom.skill.keyAbility)
+    assertEquals(3, custom.keyAbilityMod)
+    assertEquals(3, custom.totalBonus)
+  }
+
+  @Test
   fun hideSkillUsesSizeModifierWithoutAffectingOtherSkills() {
     val smallCharacter = CharacterCalculator.compute(
       CharacterEntity(
