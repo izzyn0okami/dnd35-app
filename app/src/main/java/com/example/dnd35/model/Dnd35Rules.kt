@@ -307,17 +307,17 @@ object Dnd35Rules {
             skillPointsPerLevel = 2,
             classSkills = listOf("Adestrar Animais", "Cavalgar", "Escalar", "Intimidação", "Natação", "Ofícios", "Saltar"),
             features = listOf(
-                ClassFeature(1, "Talento Adicional de Combate (1º Nv)", "Ganha um talento de combate adicional à sua escolha."),
-                ClassFeature(2, "Talento Adicional de Combate (2º Nv)", "Ganha o segundo talento de combate bônus."),
-                ClassFeature(4, "Talento Adicional (4º Nv) & Especialização em Arma", "Acesso ao talento Especialização em Arma (+2 dano)."),
-                ClassFeature(6, "Talento Adicional de Combate (6º Nv)", "Talento bônus de combate."),
-                ClassFeature(8, "Talento Adicional (8º Nv) & Foco Aprimorado", "Acesso ao Foco em Arma Aprimorado."),
-                ClassFeature(10, "Talento Adicional de Combate (10º Nv)", "Talento bônus de combate."),
-                ClassFeature(12, "Talento Adicional (12º Nv) & Especialização Maior", "Acesso à Especialização em Arma Maior (+4 dano)."),
-                ClassFeature(14, "Talento Adicional de Combate (14º Nv)", "Talento bônus de combate."),
-                ClassFeature(16, "Talento Adicional de Combate (16º Nv)", "Talento bônus de combate."),
-                ClassFeature(18, "Talento Adicional de Combate (18º Nv)", "Talento bônus de combate."),
-                ClassFeature(20, "Talento Adicional de Combate (20º Nv)", "Talento bônus de combate máximo.")
+                ClassFeature(1, "Talento Bônus de Guerreiro (1º nível)", "Recebe um talento bônus escolhido da lista de talentos de guerreiro, atendendo a todos os pré-requisitos."),
+                ClassFeature(2, "Talento Bônus de Guerreiro (2º nível)", "Recebe um talento bônus da lista de talentos de guerreiro."),
+                ClassFeature(4, "Talento Bônus de Guerreiro (4º nível)", "Recebe um talento bônus da lista de talentos de guerreiro; Especialização em Arma não é automática e exige seus pré-requisitos."),
+                ClassFeature(6, "Talento Bônus de Guerreiro (6º nível)", "Recebe um talento bônus da lista de talentos de guerreiro."),
+                ClassFeature(8, "Talento Bônus de Guerreiro (8º nível)", "Recebe um talento bônus da lista de talentos de guerreiro; Foco em Arma Aprimorado não é concedido automaticamente."),
+                ClassFeature(10, "Talento Bônus de Guerreiro (10º nível)", "Recebe um talento bônus da lista de talentos de guerreiro."),
+                ClassFeature(12, "Talento Bônus de Guerreiro (12º nível)", "Recebe um talento bônus da lista de talentos de guerreiro; Especialização em Arma Maior não é automática e exige seus pré-requisitos."),
+                ClassFeature(14, "Talento Bônus de Guerreiro (14º nível)", "Recebe um talento bônus da lista de talentos de guerreiro."),
+                ClassFeature(16, "Talento Bônus de Guerreiro (16º nível)", "Recebe um talento bônus da lista de talentos de guerreiro."),
+                ClassFeature(18, "Talento Bônus de Guerreiro (18º nível)", "Recebe um talento bônus da lista de talentos de guerreiro."),
+                ClassFeature(20, "Talento Bônus de Guerreiro (20º nível)", "Recebe um talento bônus da lista de talentos de guerreiro.")
             ),
             description = "O mestre supremo de todas as armas e armaduras com o maior arsenal de talentos do jogo."
         ),
