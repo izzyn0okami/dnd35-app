@@ -53,8 +53,13 @@ class ClassProgressionTest {
     @Test
     fun monkBonusFeatsAndGreaterFlurryAreRepresentedAtCorrectLevels() {
         val monk = Dnd35Rules.CLASSES.single { it.name == "Monge" }
-        assertEquals(1, monk.features.count { it.level == 1 && it.name == "Talento Bônus de Monge (1º nível)" })
         assertEquals(1, monk.features.count { it.level == 2 && it.name == "Talento Bônus de Monge (2º nível)" })
+        assertEquals(1, monk.features.count { it.level == 3 && it.name == "Movimento Rápido +3m" })
+        assertEquals(1, monk.features.count { it.level == 6 && it.name == "Movimento Rápido +6m" })
+        assertEquals(1, monk.features.count { it.level == 9 && it.name == "Movimento Rápido +9m" })
+        assertEquals(1, monk.features.count { it.level == 12 && it.name == "Movimento Rápido +12m" })
+        assertEquals(1, monk.features.count { it.level == 15 && it.name == "Movimento Rápido +15m" })
+        assertEquals(1, monk.features.count { it.level == 18 && it.name == "Movimento Rápido +18m" })
         assertEquals(1, monk.features.count { it.level == 6 && it.name == "Talento Bônus de Monge (6º nível)" })
         assertEquals(1, monk.features.count { it.level == 10 && it.name == "Golpe Ki (Leal)" })
         assertEquals(1, monk.features.count { it.level == 12 && it.name == "Passo Abundante" })
