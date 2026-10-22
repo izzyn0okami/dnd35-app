@@ -533,7 +533,12 @@ object CharacterCalculator {
 
         // 12. Perícias Calculadas (Regra 3.5: Perícia de classe se pertencer a QUALQUER uma das classes)
         val computedSkills = skills.map { skill ->
-            val keyMod = when (skill.keyAbility.uppercase()) {
+            val canonicalSkillName = Dnd35Rules.canonicalSkillName(skill.name)
+            val def = Dnd35Rules.SKILL_DEFINITIONS.find { it.name.equals(canonicalSkillName, ignoreCase = true) }
+            // Para perícias do catálogo, o atributo-chave oficial prevalece sobre dados legados/editáveis.
+            // Perícias personalizadas continuam usando o atributo escolhido na ficha.
+            val keyAbility = def?.keyAbility ?: skill.keyAbility
+            val keyMod = when (keyAbility.uppercase()) {
                 "FOR" -> strMod
                 "DES" -> dexMod
                 "CON" -> conMod
@@ -542,9 +547,6 @@ object CharacterCalculator {
                 "CAR" -> chaMod
                 else -> 0
             }
-
-            val canonicalSkillName = Dnd35Rules.canonicalSkillName(skill.name)
-            val def = Dnd35Rules.SKILL_DEFINITIONS.find { it.name.equals(canonicalSkillName, ignoreCase = true) }
             // Perícias conhecidas seguem a lista oficial de perícias de classe de qualquer classe
             // do personagem. O sinalizador salvo só serve para perícias personalizadas.
             val isClassSkill = if (def != null) {
@@ -574,7 +576,7 @@ object CharacterCalculator {
 
             val total = ranks.toInt() + keyMod + racialBonus + sizeBonus + skill.miscBonus + appliedPenalty
             ComputedSkill(
-                skill = skill.copy(name = def?.name ?: skill.name, ranks = ranks, isClassSkill = isClassSkill),
+                skill = skill.copy(name = def?.name ?: skill.name, keyAbility = keyAbility, ranks = ranks, isClassSkill = isClassSkill),
                 keyAbilityMod = keyMod,
                 ranks = ranks,
                 racialBonus = racialBonus,
