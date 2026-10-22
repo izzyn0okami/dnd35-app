@@ -1145,8 +1145,8 @@ class ExampleUnitTest {
       ),
       "Druida" to setOf(
         "Adestrar Animais", "Cavalgar", "Concentração", "Conhecimento (Natureza)",
-        "Cura", "Diplomacia", "Identificar Magia", "Natação", "Observar", "Ofícios",
-        "Ouvir", "Profissão", "Sobrevivência"
+        "Cura", "Diplomacia", "Identificar Magia", "Natação", "Ofícios",
+        "Profissão", "Sobrevivência"
       ),
       "Guerreiro" to setOf(
         "Adestrar Animais", "Cavalgar", "Escalar", "Intimidação", "Natação",
