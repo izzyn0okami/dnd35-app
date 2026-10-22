@@ -73,11 +73,13 @@ fun SkillsTab(
     val maxClassRank = stats.totalCharacterLevel + 3
     val maxCrossRank = maxClassRank / 2.0f
     val skillPointHistory = CharacterJsonAdapters.deserializeSkillPointHistory(character.skillPointHistoryJson)
-    val recordedLevels = skillPointHistory.map { it.characterLevel }.toSet()
-    val hasCompleteSkillPointHistory = stats.totalCharacterLevel > 0 &&
-        (1..stats.totalCharacterLevel).all { it in recordedLevels }
+    val skillPointHistoryTotal = com.example.dnd35.model.calculateSkillPointHistoryTotal(
+        skillPointHistory,
+        stats.totalCharacterLevel
+    )
+    val hasCompleteSkillPointHistory = skillPointHistoryTotal.isComplete
     val totalSkillPointsSpent = if (hasCompleteSkillPointHistory) {
-        skillPointHistory.sumOf { record -> record.allocations.sumOf { it.pointsSpent.toDouble() } }
+        skillPointHistoryTotal.pointsSpent.toDouble()
     } else {
         stats.computedSkills.sumOf {
             it.ranks.toDouble() * if (it.isClassSkill) 1.0 else 2.0
