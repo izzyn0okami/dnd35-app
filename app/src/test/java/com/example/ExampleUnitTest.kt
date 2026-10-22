@@ -124,6 +124,7 @@ class ExampleUnitTest {
     val halfling = CharacterCalculator.compute(
       CharacterEntity(
         race = "Halfling",
+        size = "Pequeno",
         baseStr = 10,
         baseDex = 10,
         baseWis = 10,
