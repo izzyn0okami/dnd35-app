@@ -2,6 +2,7 @@ package com.example
 
 import com.example.dnd35.model.Dnd35Rules
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
 import org.junit.Test
 
 /**
@@ -37,6 +38,120 @@ class ClassProgressionTest {
             assertEquals("Resistência ruim no nível $level", poor[level - 1],
                 Dnd35Rules.calculateBaseSave(Dnd35Rules.SaveProgression.POOR, level))
         }
+    }
+
+    @Test
+    fun barbarianTrapSenseIncreasesEveryThreeLevels() {
+        val barbarian = Dnd35Rules.CLASSES.single { it.name == "Bárbaro" }
+        val trapSense = barbarian.features.filter { it.name.startsWith("Sentir Armadilhas") }
+            .associate { it.level to it.name }
+
+        assertEquals(mapOf(3 to "Sentir Armadilhas +1", 6 to "Sentir Armadilhas +2",
+            9 to "Sentir Armadilhas +3", 12 to "Sentir Armadilhas +4",
+            15 to "Sentir Armadilhas +5", 18 to "Sentir Armadilhas +6"), trapSense)
+    }
+
+    @Test
+    fun monkBonusFeatsAndGreaterFlurryAreRepresentedAtCorrectLevels() {
+        val monk = Dnd35Rules.CLASSES.single { it.name == "Monge" }
+        assertEquals(1, monk.features.count { it.level == 1 && it.name == "Talento Bônus de Monge (1º nível)" })
+        assertEquals(1, monk.features.count { it.level == 2 && it.name == "Talento Bônus de Monge (2º nível)" })
+        assertEquals(1, monk.features.count { it.level == 3 && it.name == "Movimento Rápido +3m" })
+        assertEquals(1, monk.features.count { it.level == 6 && it.name == "Movimento Rápido +6m" })
+        assertEquals(1, monk.features.count { it.level == 9 && it.name == "Movimento Rápido +9m" })
+        assertEquals(1, monk.features.count { it.level == 12 && it.name == "Movimento Rápido +12m" })
+        assertEquals(1, monk.features.count { it.level == 15 && it.name == "Movimento Rápido +15m" })
+        assertEquals(1, monk.features.count { it.level == 18 && it.name == "Movimento Rápido +18m" })
+        assertEquals(1, monk.features.count { it.level == 6 && it.name == "Talento Bônus de Monge (6º nível)" })
+        assertTrue(monk.features.single { it.level == 2 && it.name == "Talento Bônus de Monge (2º nível)" }
+            .description.contains("Reflexos em Combate ou Desviar Objetos"))
+        assertTrue(monk.features.single { it.level == 6 && it.name == "Talento Bônus de Monge (6º nível)" }
+            .description.contains("Desarme Aprimorado ou Imobilização Aprimorada"))
+        assertTrue(monk.features.single { it.level == 2 && it.name == "Talento Bônus de Monge (2º nível)" }
+            .description.contains("sem precisar cumprir os pré-requisitos"))
+        assertEquals(1, monk.features.count { it.level == 7 && it.name == "Integridade Corporal" })
+        assertEquals(1, monk.features.count { it.level == 10 && it.name == "Ataque Chi (Ordem)" })
+        assertTrue(monk.features.none { it.name == "Ataque Chi (+2)" })
+        assertEquals(1, monk.features.count { it.level == 12 && it.name == "Passo Etéreo" })
+        assertTrue(monk.features.single { it.level == 12 && it.name == "Passo Etéreo" }
+            .description.contains("metade do nível de monge"))
+        assertEquals(1, monk.features.count { it.level == 16 && it.name == "Ataque Chi (Adamante)" })
+        assertEquals("Recebe um segundo ataque adicional na rajada de golpes, também com o bônus base de ataque máximo.",
+            monk.features.single { it.level == 11 && it.name == "Rajada Maior" }.description)
+        assertTrue(monk.features.single { it.level == 3 && it.name == "Movimento Rápido +3m" }
+            .description.contains("carga média ou pesada"))
+        assertTrue(monk.features.single { it.level == 1 && it.name == "Bônus de CA sem Armadura" }
+            .description.contains("apenas carga leve"))
+        assertTrue(monk.features.single { it.level == 2 && it.name == "Evasão" }
+            .description.contains("armadura leve"))
+    }
+
+    @Test
+    fun paladinRemoveDiseaseProgressesEveryThreeLevelsStartingAtThree() {
+        val paladin = Dnd35Rules.CLASSES.single { it.name == "Paladino" }
+        val removeDisease = paladin.features.filter { it.name.startsWith("Remover Doença") }
+            .associate { it.level to it.name }
+        assertEquals(
+            mapOf(
+                3 to "Remover Doença 1/semana",
+                6 to "Remover Doença 2/semana",
+                9 to "Remover Doença 3/semana",
+                12 to "Remover Doença 4/semana",
+                15 to "Remover Doença 5/semana",
+                18 to "Remover Doença 6/semana"
+            ),
+            removeDisease
+        )
+    }
+
+    @Test
+    fun rogueTrapSenseIncreasesEveryThreeLevels() {
+        val rogue = Dnd35Rules.CLASSES.single { it.name == "Ladino" }
+        val trapSense = rogue.features.filter { it.name.startsWith("Sentir Armadilhas") }
+            .associate { it.level to it.name }
+        assertEquals(
+            mapOf(
+                3 to "Sentir Armadilhas +1",
+                6 to "Sentir Armadilhas +2",
+                9 to "Sentir Armadilhas +3",
+                12 to "Sentir Armadilhas +4",
+                15 to "Sentir Armadilhas +5",
+                18 to "Sentir Armadilhas +6"
+            ),
+            trapSense
+        )
+    }
+
+    @Test
+    fun bardGainsMassSuggestionAtLevelEighteen() {
+        val bard = Dnd35Rules.CLASSES.single { it.name == "Bardo" }
+        assertEquals(1, bard.features.count { it.level == 18 && it.name == "Sugestão em Massa" })
+    }
+
+    @Test
+    fun bardFeatureNamesAndTargetProgressionsMatchTheBrazilianHandbook() {
+        val bard = Dnd35Rules.CLASSES.single { it.name == "Bardo" }
+        val fascinateTargets = bard.features.filter { it.name.startsWith("Fascinar (") }
+            .associate { it.level to it.name }
+        assertEquals(
+            mapOf(
+                1 to "Fascinar (1 criatura)",
+                4 to "Fascinar (2 criaturas)",
+                7 to "Fascinar (3 criaturas)",
+                10 to "Fascinar (4 criaturas)",
+                13 to "Fascinar (5 criaturas)",
+                16 to "Fascinar (6 criaturas)",
+                19 to "Fascinar (7 criaturas)"
+            ),
+            fascinateTargets
+        )
+        assertTrue(bard.features.any { it.level == 1 && it.name == "Música de Proteção" })
+        assertTrue(bard.features.none { it.name == "Contramúsica" })
+        assertTrue(bard.features.any { it.level == 12 && it.name == "Melodia da Libertação" })
+        assertTrue(bard.features.single { it.level == 9 && it.name == "Inspirar Grandeza" }
+            .description.contains("até quatro no 18º nível"))
+        assertTrue(bard.features.single { it.level == 15 && it.name == "Inspirar Heroísmo" }
+            .description.contains("alvo adicional no 18º nível"))
     }
 
     @Test

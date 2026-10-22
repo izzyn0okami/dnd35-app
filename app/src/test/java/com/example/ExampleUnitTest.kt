@@ -430,7 +430,7 @@ class ExampleUnitTest {
   }
 
   @Test
-  fun barbarianDoesNotGetFastMovementInMediumArmor() {
+  fun barbarianMediumArmorDisablesFastMovement() {
     val armor = CharacterInventoryItem(
       name = "Gibão de Peles",
       category = "Armaduras",
@@ -448,7 +448,7 @@ class ExampleUnitTest {
         inventoryJson = CharacterJsonAdapters.serializeInventory(listOf(armor))
       )
     )
-    assertEquals(9.0f, stats.speedMetersEffective, 0.01f)
+    assertEquals(6.0f, stats.speedMetersEffective, 0.01f)
   }
 
   @Test
@@ -533,7 +533,7 @@ class ExampleUnitTest {
   }
 
   @Test
-  fun barbarianFastMovementWorksWithMediumLoad() {
+  fun barbarianMediumLoadDisablesFastMovement() {
     val stats = CharacterCalculator.compute(
       CharacterEntity(
         characterClass = "Bárbaro",
@@ -550,7 +550,7 @@ class ExampleUnitTest {
       )
     )
     assertEquals(Dnd35Rules.EncumbranceLevel.MEDIUM, stats.encumbrance)
-    assertEquals(9.0f, stats.speedMetersEffective, 0.01f)
+    assertEquals(6.0f, stats.speedMetersEffective, 0.01f)
   }
 
   @Test
@@ -1037,12 +1037,12 @@ class ExampleUnitTest {
   fun bardicMusicProgressionFollowsDnd35Milestones() {
     val features = Dnd35Rules.CLASSES.first { it.name == "Bardo" }.features
     val expected = mapOf(
-      1 to listOf("Música de Bardo", "Conhecimento de Bardo", "Contramúsica", "Fascinar", "Inspirar Coragem +1"),
+      1 to listOf("Música de Bardo", "Conhecimento de Bardo", "Música de Proteção", "Fascinar (1 criatura)", "Inspirar Coragem +1"),
       3 to listOf("Inspirar Competência"),
       6 to listOf("Sugestão"),
       8 to listOf("Inspirar Coragem +2"),
       9 to listOf("Inspirar Grandeza"),
-      12 to listOf("Canção da Liberdade"),
+      12 to listOf("Melodia da Libertação"),
       14 to listOf("Inspirar Coragem +3"),
       15 to listOf("Inspirar Heroísmo"),
       20 to listOf("Inspirar Coragem +4")
@@ -1062,15 +1062,15 @@ class ExampleUnitTest {
     val expected = mapOf(
       1 to listOf("Aura do Bem", "Detectar o Mal", "Destruir o Mal 1/dia"),
       2 to listOf("Graça Divina", "Imposição de Mãos"),
-      3 to listOf("Aura de Coragem", "Saúde Divina"),
+      3 to listOf("Aura de Coragem", "Saúde Divina", "Remover Doença 1/semana"),
       4 to listOf("Expulsar Mortos-Vivos", "Conjuração Divina"),
       5 to listOf("Destruir o Mal 2/dia", "Montaria Especial"),
-      6 to listOf("Remover Doença 1/semana"),
-      9 to listOf("Remover Doença 2/semana"),
+      6 to listOf("Remover Doença 2/semana"),
+      9 to listOf("Remover Doença 3/semana"),
       10 to listOf("Destruir o Mal 3/dia"),
-      12 to listOf("Remover Doença 3/semana"),
-      15 to listOf("Destruir o Mal 4/dia", "Remover Doença 4/semana"),
-      18 to listOf("Remover Doença 5/semana"),
+      12 to listOf("Remover Doença 4/semana"),
+      15 to listOf("Destruir o Mal 4/dia", "Remover Doença 5/semana"),
+      18 to listOf("Remover Doença 6/semana"),
       20 to listOf("Destruir o Mal 5/dia")
     )
 
@@ -1089,31 +1089,32 @@ class ExampleUnitTest {
       1 to "Bônus de CA sem Armadura",
       2 to "Evasão",
       3 to "Mente Tranquila",
-      4 to "Queda Lenta 6 m",
+      4 to "Queda Suave 6 m",
       5 to "Pureza Corporal",
-      6 to "Queda Lenta 9 m",
-      7 to "Plenitude Corporal",
-      8 to "Queda Lenta 12 m",
+      6 to "Queda Suave 9 m",
+      7 to "Integridade Corporal",
+      8 to "Queda Suave 12 m",
       9 to "Evasão Aprimorada",
-      10 to "Queda Lenta 15 m",
+      10 to "Queda Suave 15 m",
       11 to "Corpo de Diamante",
-      12 to "Queda Lenta 18 m",
+      12 to "Queda Suave 18 m",
       13 to "Alma de Diamante",
-      14 to "Queda Lenta 21 m",
-      15 to "Palma Trêmula",
-      16 to "Queda Lenta 24 m",
+      14 to "Queda Suave 21 m",
+      15 to "Mão Vibrante",
+      16 to "Queda Suave 24 m",
       17 to "Corpo Atemporal",
-      18 to "Queda Lenta 27 m",
+      18 to "Queda Suave 27 m",
       19 to "Corpo Vazio",
-      20 to "Autoperfeição"
+      20 to "Auto-Perfeição"
     )
 
     expected.forEach { (level, name) ->
       assertTrue("Habilidade de Monge ausente no nível $level: $name",
         features.any { it.level == level && it.name == name })
     }
-    assertTrue(features.any { it.level == 17 && it.name == "Língua do Sol e da Lua" })
-    assertTrue(features.any { it.level == 20 && it.name == "Queda Lenta Qualquer Distância" })
+    assertTrue(features.none { it.name == "Ataque Chi (+2)" })
+    assertTrue(features.any { it.level == 17 && it.name == "Idiomas do Sol e da Lua" })
+    assertTrue(features.any { it.level == 20 && it.name == "Queda Suave Qualquer Distância" })
   }
 
   @Test
@@ -1193,6 +1194,8 @@ class ExampleUnitTest {
     val monk = Dnd35Rules.CLASSES.first { it.name == "Monge" }
     assertTrue(monk.features.any { it.level == 11 && it.name == "Corpo de Diamante" })
     assertTrue(monk.features.none { it.name == "Corpo Trêmulo" })
+    assertTrue(monk.features.single { it.level == 20 && it.name == "Auto-Perfeição" }
+      .description.contains("Redução de Dano 10/mágica"))
   }
 
   @Test
