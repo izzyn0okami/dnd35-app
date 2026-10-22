@@ -220,3 +220,12 @@ A implementação atual usa `combinedArmorCheckPenalty = minOf(totalArmorCheckPe
 - O histórico permite registrar divergência entre orçamento e gastos e exibe o excedente ou saldo. Não foi encontrada evidência suficiente para bloquear esse registro; mantê-lo como instrumento de auditoria, não como validação automática de legalidade.
 - Nesta inspeção não foi confirmada uma divergência nova que justifique alteração de código. Nenhum arquivo de código foi modificado e não houve execução local de Gradle nem teste manual no aparelho.
 - Próximo passo: revisar testes e o fluxo de atualização de classe/nível para confirmar que o limite de graduações e os botões de edição são recalculados sem alterar o histórico salvo; só abrir PR de código se surgir caso reproduzível.
+
+
+## Correção de auditoria — especialidades de Ofícios
+
+- Divergência confirmada na inspeção de 2026-10-22: nomes personalizados como `Ofícios (Armadilhas)` não coincidiam literalmente com a entrada genérica `Ofícios` nas listas de perícias de classe. Além disso, especialidades novas sem definição individual herdavam por padrão o atributo FOR, embora Ofícios use Inteligência.
+- A correção proposta na branch `fix/craft-specialty-class-skill` centraliza a correspondência de especialidades com a perícia-base e determina INT para especialidades de Ofícios, tanto para novas entradas quanto para dados já salvos.
+- A PR #26 anterior foi consultada; esta correção é limitada à classificação de classe e atributo-chave, sem reabrir a implementação mais ampla de especialidades independentes.
+- Testes de regressão serão adicionados para correspondência com Ofícios, rejeição quando a classe não oferece Ofícios e atributo-chave INT.
+- Status: alteração preparada em branch; aguardar revisão e CI antes de integrar. Não houve teste manual no aparelho.
