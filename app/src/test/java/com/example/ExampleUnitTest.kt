@@ -836,7 +836,7 @@ class ExampleUnitTest {
 
     expectedLevels.forEach { level ->
       assertTrue("Talento bônus de Guerreiro ausente no nível $level",
-        features.any { it.level == level && it.name == "Talento Bônus de Guerreiro ($levelº nível)" })
+        features.any { it.level == level && it.name == "Talento Bônus de Guerreiro (${level}º nível)" })
     }
 
     assertTrue(features.none { it.name.contains("Especialização em Arma") && it.name.contains("&") })
