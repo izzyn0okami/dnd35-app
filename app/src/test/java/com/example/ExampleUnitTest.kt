@@ -997,8 +997,8 @@ class ExampleUnitTest {
     assertTrue(races.getValue("Meio-Elfo").traits.contains("+2 em Obter Informação e Diplomacia"))
     assertTrue(races.getValue("Meio-Elfo").traits.contains("Visão na penumbra"))
     assertTrue(races.getValue("Meio-Elfo").traits.contains("+1 em Ouvir, Procurar e Observar"))
-    assertTrue(!races.getValue("Meio-Elfo").traits.contains("Imunidade a sono mágico"))
-    assertTrue(!races.getValue("Meio-Elfo").traits.contains("+2 contra encantamentos"))
+    assertTrue(races.getValue("Meio-Elfo").traits.contains("Imunidade a sono mágico"))
+    assertTrue(races.getValue("Meio-Elfo").traits.contains("+2 nos testes de resistência contra encantamentos"))
     assertTrue(races.getValue("Gnomo").traits.contains("+4 Esconder-se"))
     assertTrue(races.getValue("Halfling").traits.contains("+4 Esconder-se"))
     val drowTraits = races.getValue("Drow (Elfo Negro)").traits
