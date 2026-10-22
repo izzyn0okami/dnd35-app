@@ -1064,4 +1064,23 @@ class ExampleUnitTest {
     assertTrue(traits.contains("mamíferos escavadores"))
   }
 
+
+  @Test
+  fun monkUnarmedDamageRespectsCreatureSize() {
+    fun damage(level: Int, size: String) = CharacterCalculator.compute(
+      CharacterEntity(
+        characterClass = "Monge",
+        level = level,
+        size = size,
+        goldGp = 0f
+      )
+    ).monkUnarmedDamage
+
+    assertEquals("1d4", damage(1, "Pequeno"))
+    assertEquals("1d6", damage(1, "Médio"))
+    assertEquals("1d8", damage(1, "Grande"))
+    assertEquals("2d8", damage(20, "Pequeno"))
+    assertEquals("2d10", damage(20, "Médio"))
+    assertEquals("4d8", damage(20, "Grande"))
+  }
 }
