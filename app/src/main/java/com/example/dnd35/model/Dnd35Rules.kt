@@ -651,7 +651,7 @@ object Dnd35Rules {
         val normalized = canonicalSkillName(name)
         return normalized.startsWith("Ofícios (", ignoreCase = true) &&
             normalized.endsWith(")") &&
-            normalized.substringAfter("Ofícios (", "").removeSuffix(")").isNotBlank()
+            normalized.substringAfter("(", "").removeSuffix(")").isNotBlank()
     }
 
     fun classSkillMatches(skillName: String, listedClassSkill: String): Boolean {
