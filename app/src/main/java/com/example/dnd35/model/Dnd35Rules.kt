@@ -229,14 +229,19 @@ object Dnd35Rules {
             spellCastingAbility = "CAR",
             classSkills = listOf("Acrobacia", "Arte da Fuga", "Atuação", "Avaliação", "Blefar", "Concentração", "Conhecimento (Arcano)", "Conhecimento (Arquitetura e Engenharia)", "Conhecimento (Geografia)", "Conhecimento (História)", "Conhecimento (Local)", "Conhecimento (Masmorras)", "Conhecimento (Natureza)", "Conhecimento (Nobreza e Realeza)", "Conhecimento (Planos)", "Conhecimento (Religião)", "Decifrar Escrita", "Diplomacia", "Disfarces", "Equilíbrio", "Escalar", "Esconder-se", "Furtividade", "Identificar Magia", "Natação", "Obter Informação", "Ofícios", "Ouvir", "Prestidigitação", "Profissão", "Saltar", "Sentir Motivação", "Usar Instrumento Mágico"),
             features = listOf(
-                ClassFeature(1, "Música de Bardo (1/dia/nv)", "Usos diários de música mágica: Contra-mágica, Fascinar e Inspirar Coragem (+1)."),
-                ClassFeature(1, "Conhecimento de Bardo", "Teste especial (1d20 + Nível + mod Int) para lembrar fatos lendários."),
-                ClassFeature(3, "Inspirar Competência", "Concede +2 de competência em testes de perícia para um aliado."),
-                ClassFeature(6, "Sugestão", "Comando mágico telepático através de canções."),
-                ClassFeature(8, "Inspirar Coragem +2", "Bônus de ataque e dano aumentam para +2."),
-                ClassFeature(9, "Inspirar Grandeza", "Concede 2 Dados de Vida extras temporários, +2 de ataque e +1 na Fortitude."),
-                ClassFeature(12, "Canção da Liberdade", "Dissipa paralisia, aprisionamento e efeitos mentais."),
-                ClassFeature(15, "Inspirar Heroísmo", "Concede +4 de moral na CA e +4 em testes de resistência.")
+                ClassFeature(1, "Música de Bardo", "Pode usar habilidades de música de bardo um número de vezes por dia igual ao nível de bardo; exige graduações em Atuação conforme a habilidade."),
+                ClassFeature(1, "Conhecimento de Bardo", "Pode tentar recordar informações lendárias com um teste especial de conhecimento."),
+                ClassFeature(1, "Contramúsica", "Usa música ou poesia para neutralizar efeitos mágicos dependentes de som."),
+                ClassFeature(1, "Fascinar", "Pode fascinar uma ou mais criaturas que a escutem e falhem no teste de resistência."),
+                ClassFeature(1, "Inspirar Coragem +1", "Aliados que escutam recebem +1 nos testes contra medo e encantamento e nas jogadas de ataque e dano."),
+                ClassFeature(3, "Inspirar Competência", "Concede +2 de bônus de competência nos testes de perícia de um aliado."),
+                ClassFeature(6, "Sugestão", "Pode sugerir uma ação a uma criatura já fascinada, conforme as regras da habilidade."),
+                ClassFeature(8, "Inspirar Coragem +2", "O bônus de Inspirar Coragem aumenta para +2."),
+                ClassFeature(9, "Inspirar Grandeza", "Concede dados de vida temporários e bônus de combate a um aliado, conforme as regras da habilidade."),
+                ClassFeature(12, "Canção da Liberdade", "Pode produzir um efeito semelhante a quebrar encantamento por meio de música."),
+                ClassFeature(14, "Inspirar Coragem +3", "O bônus de Inspirar Coragem aumenta para +3."),
+                ClassFeature(15, "Inspirar Heroísmo", "Concede +4 de bônus de moral na CA e +4 nos testes de resistência a um aliado."),
+                ClassFeature(20, "Inspirar Coragem +4", "O bônus de Inspirar Coragem aumenta para +4.")
             ),
             description = "Mestre das canções místicas, magia arcana espontânea e grande versatilidade."
         ),
