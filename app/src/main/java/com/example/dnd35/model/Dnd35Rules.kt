@@ -406,10 +406,18 @@ object Dnd35Rules {
                 ClassFeature(3, "Ataque Furtivo +2d6", "Dano furtivo sobe para +2d6."),
                 ClassFeature(4, "Esquiva Sobrenatural", "Retém Destreza mesmo surpreendido."),
                 ClassFeature(5, "Ataque Furtivo +3d6", "Dano furtivo sobe para +3d6."),
-                ClassFeature(8, "Esquiva Sobrenatural Aprimorada", "Imune a flanqueamento comum."),
-                ClassFeature(10, "Habilidade Especial (10º Nv)", "Escolhe Oportunismo, Mente Escorregadia, Esquiva Acrobática ou Talento."),
-                ClassFeature(11, "Ataque Furtivo +6d6", "Dano furtivo avança."),
-                ClassFeature(19, "Ataque Furtivo +10d6", "Dano furtivo máximo lendário.")
+                ClassFeature(7, "Ataque Furtivo +4d6", "Dano furtivo sobe para +4d6."),
+                ClassFeature(8, "Esquiva Sobrenatural Aprimorada", "Não pode ser flanqueado, exceto por ladino pelo menos 4 níveis acima."),
+                ClassFeature(9, "Ataque Furtivo +5d6", "Dano furtivo sobe para +5d6."),
+                ClassFeature(10, "Habilidade Especial (10º Nv)", "Escolhe uma habilidade especial de ladino."),
+                ClassFeature(11, "Ataque Furtivo +6d6", "Dano furtivo sobe para +6d6."),
+                ClassFeature(13, "Ataque Furtivo +7d6", "Dano furtivo sobe para +7d6."),
+                ClassFeature(13, "Habilidade Especial (13º Nv)", "Escolhe uma habilidade especial de ladino."),
+                ClassFeature(15, "Ataque Furtivo +8d6", "Dano furtivo sobe para +8d6."),
+                ClassFeature(16, "Habilidade Especial (16º Nv)", "Escolhe uma habilidade especial de ladino."),
+                ClassFeature(17, "Ataque Furtivo +9d6", "Dano furtivo sobe para +9d6."),
+                ClassFeature(19, "Ataque Furtivo +10d6", "Dano furtivo máximo de +10d6."),
+                ClassFeature(19, "Habilidade Especial (19º Nv)", "Escolhe uma habilidade especial de ladino.")
             ),
             description = "Especialista mortal em infiltração, arrombamento de mecanismos e ataques furtivos devastadores."
         ),
