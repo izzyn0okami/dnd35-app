@@ -230,7 +230,14 @@ fun SkillsTab(
                         ) {
                             LanguageAcquisitionSource.values().forEach { source ->
                                 DropdownMenuItem(
-                                    text = { Text(source.name.lowercase().replace('_', ' ')) },
+                                    text = { Text(when (source) {
+                                        LanguageAcquisitionSource.RACIAL -> "Raça"
+                                        LanguageAcquisitionSource.INTELLIGENCE -> "Inteligência"
+                                        LanguageAcquisitionSource.CLASS_FEATURE -> "Habilidade de classe"
+                                        LanguageAcquisitionSource.FEAT -> "Talento"
+                                        LanguageAcquisitionSource.PURCHASED -> "Comprado (1 ponto)"
+                                        LanguageAcquisitionSource.OTHER -> "Outra fonte"
+                                    }) },
                                     onClick = { languageSource = source; languageSourceMenuExpanded = false }
                                 )
                             }
@@ -271,7 +278,6 @@ fun SkillsTab(
                                 verticalAlignment = Alignment.CenterVertically,
                                 horizontalArrangement = Arrangement.SpaceBetween
                             ) {
-                                Text(language, modifier = Modifier.weight(1f))
                                 val acquisition = acquisitions.firstOrNull { it.language.equals(language, ignoreCase = true) }
                                 Column(modifier = Modifier.weight(1f)) {
                                     Text(language)
