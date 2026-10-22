@@ -374,7 +374,6 @@ object Dnd35Rules {
                 ClassFeature(13, "Alma de Diamante", "Recebe resistência à magia igual a 10 + nível de monge."),
                 ClassFeature(14, "Queda Suave 21 m", "Reduz o dano de queda quando há uma parede ao alcance."),
                 ClassFeature(15, "Mão Vibrante", "Uma vez por semana, pode tentar um ataque especial potencialmente mortal."),
-                ClassFeature(13, "Ataque Chi (+2)", "Os ataques desarmados recebem bônus de +2 para superar redução de dano."),
                 ClassFeature(16, "Ataque Chi (Adamante)", "Os ataques desarmados passam a contar como adamantinos para superar redução de dano."),
                 ClassFeature(16, "Queda Suave 24 m", "Reduz o dano de queda quando há uma parede ao alcance."),
                 ClassFeature(17, "Corpo Atemporal", "Não sofre penalidades nos atributos físicos por envelhecimento e não pode ser envelhecido magicamente."),
