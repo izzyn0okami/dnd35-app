@@ -27,12 +27,13 @@ object LanguageRules {
         "anão" to RaceLanguages(listOf("Anão"), listOf("Gigante", "Gnomo", "Goblin", "Orc", "Terran", "Subterrâneo")),
         "anão da colina" to RaceLanguages(listOf("Anão"), listOf("Gigante", "Gnomo", "Goblin", "Orc", "Terran", "Subterrâneo")),
         "anão da montanha" to RaceLanguages(listOf("Anão"), listOf("Gigante", "Gnomo", "Goblin", "Orc", "Terran", "Subterrâneo")),
-        "elfo" to RaceLanguages(listOf("Comum", "Élfico"), listOf("Gnomo", "Silvestre", "Goblin", "Orc")),
-        "alto elfo" to RaceLanguages(listOf("Comum", "Élfico"), listOf("Gnomo", "Silvestre", "Goblin", "Orc")),
-        "elfo da floresta" to RaceLanguages(listOf("Comum", "Élfico"), listOf("Gnomo", "Silvestre", "Goblin", "Orc")),
+        "elfo" to RaceLanguages(listOf("Comum", "Élfico"), listOf("Dracônico", "Gnoll", "Gnomo", "Goblin", "Orc", "Silvestre")),
+        "alto elfo" to RaceLanguages(listOf("Comum", "Élfico"), listOf("Dracônico", "Gnoll", "Gnomo", "Goblin", "Orc", "Silvestre")),
+        "elfo da floresta" to RaceLanguages(listOf("Comum", "Élfico"), listOf("Dracônico", "Gnoll", "Gnomo", "Goblin", "Orc", "Silvestre")),
         "gnomo" to RaceLanguages(listOf("Comum", "Gnomo"), listOf("Dracônico", "Élfico", "Gigante", "Goblin", "Anão", "Orc")),
         "gnomo da rocha" to RaceLanguages(listOf("Comum", "Gnomo"), listOf("Dracônico", "Élfico", "Gigante", "Goblin", "Anão", "Orc")),
         "halfling" to RaceLanguages(listOf("Comum", "Halfling"), listOf("Élfico", "Anão", "Gnomo", "Goblin", "Orc")),
+        "halfling robusto" to RaceLanguages(listOf("Comum", "Halfling"), listOf("Élfico", "Anão", "Gnomo", "Goblin", "Orc")),
         "meio-elfo" to RaceLanguages(listOf("Comum", "Élfico"), null),
         "meio-orc" to RaceLanguages(listOf("Comum", "Orc"), null)
     )

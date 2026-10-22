@@ -16,10 +16,26 @@ class LanguageRulesTest {
     }
 
     @Test
+    fun elfBonusLanguageChoicesMatchCoreRulesForElfVariants() {
+        val expected = setOf("Dracônico", "Gnoll", "Gnomo", "Goblin", "Orc", "Silvestre")
+        listOf("Elfo", "Alto Elfo", "Elfo da Floresta").forEach { race ->
+            assertEquals(expected, LanguageRules.forRace(race)?.bonusOptions?.toSet())
+        }
+    }
+
+    @Test
     fun racialBonusChoicesAreNotConfusedWithAutomaticLanguages() {
         val elf = LanguageRules.forRace("Elfo")!!
         assertTrue("Silvestre" in elf.bonusOptions.orEmpty())
         assertTrue("Silvestre" !in elf.automatic)
+    }
+
+    @Test
+    fun strongheartHalflingUsesCoreHalflingLanguageRules() {
+        assertEquals(
+            LanguageRules.forRace("Halfling"),
+            LanguageRules.forRace("Halfling Robusto")
+        )
     }
 
     @Test
