@@ -369,7 +369,7 @@ object Dnd35Rules {
                 ClassFeature(10, "Ataque Chi (Ordem)", "Os ataques desarmados passam a contar como ordeiros para superar redução de dano."),
                 ClassFeature(11, "Corpo de Diamante", "Imunidade a todos os venenos."),
                 ClassFeature(11, "Rajada Maior", "Recebe um segundo ataque adicional na rajada de golpes, também com o bônus base de ataque máximo."),
-                ClassFeature(12, "Passo Etéreo", "Pode usar uma vez por dia um efeito semelhante à magia Porta Dimensional, conforme as regras da habilidade."),
+                ClassFeature(12, "Passo Etéreo", "Uma vez por dia, desloca-se magicamente entre dois espaços com efeito semelhante à magia Porta Dimensional; nível de conjurador igual à metade do nível de monge, arredondado para baixo."),
                 ClassFeature(12, "Queda Suave 18 m", "Reduz o dano de queda quando há uma parede ao alcance."),
                 ClassFeature(13, "Alma de Diamante", "Recebe resistência à magia igual a 10 + nível de monge."),
                 ClassFeature(14, "Queda Suave 21 m", "Reduz o dano de queda quando há uma parede ao alcance."),
