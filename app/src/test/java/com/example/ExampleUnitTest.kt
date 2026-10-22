@@ -830,6 +830,40 @@ class ExampleUnitTest {
   }
 
   @Test
+  fun monkCoreClassFeaturesAppearAtCorrectLevels() {
+    val features = Dnd35Rules.CLASSES.first { it.name == "Monge" }.features
+    val expected = mapOf(
+      1 to "Bônus de CA sem Armadura",
+      2 to "Evasão",
+      3 to "Mente Tranquila",
+      4 to "Queda Lenta 6 m",
+      5 to "Pureza Corporal",
+      6 to "Queda Lenta 9 m",
+      7 to "Plenitude Corporal",
+      8 to "Queda Lenta 12 m",
+      9 to "Evasão Aprimorada",
+      10 to "Queda Lenta 15 m",
+      11 to "Corpo de Diamante",
+      12 to "Queda Lenta 18 m",
+      13 to "Alma de Diamante",
+      14 to "Queda Lenta 21 m",
+      15 to "Palma Trêmula",
+      16 to "Queda Lenta 24 m",
+      17 to "Corpo Atemporal",
+      18 to "Queda Lenta 27 m",
+      19 to "Corpo Vazio",
+      20 to "Autoperfeição"
+    )
+
+    expected.forEach { (level, name) ->
+      assertTrue("Habilidade de Monge ausente no nível $level: $name",
+        features.any { it.level == level && it.name == name })
+    }
+    assertTrue(features.any { it.level == 17 && it.name == "Língua do Sol e da Lua" })
+    assertTrue(features.any { it.level == 20 && it.name == "Queda Lenta Qualquer Distância" })
+  }
+
+  @Test
   fun rogueSneakAttackProgressionIncreasesEveryOddLevel() {
     val features = Dnd35Rules.CLASSES.first { it.name == "Ladino" }.features
     val expected = (1..19 step 2).associateWith { level ->
