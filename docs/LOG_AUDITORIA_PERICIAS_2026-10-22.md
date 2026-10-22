@@ -274,3 +274,12 @@ Esta seção prevalece sobre os status de andamento anteriores, que foram preser
 ## Próxima etapa
 
 Continuar a auditoria de regras sem repetir os assuntos resolvidos. Próximo foco: revisar as progressões de BBA e testes de resistência das classes básicas, inclusive níveis de transição, comparando as funções de cálculo e os testes existentes com as tabelas oficiais do *Livro do Jogador* 3.5. Só abrir correção quando uma divergência concreta estiver demonstrada e incluir teste de regressão.
+
+
+## Auditoria de características de classe — correções de progressão identificadas em 2026-10-22
+
+- A revisão das listas `ClassInfo.features` identificou duas omissões confirmadas nas progressões do Livro do Jogador 3.5: os aumentos de Sentir Armadilhas do Bárbaro nos níveis 6, 9, 12, 15 e 18; e Sugestão em Massa do Bardo no nível 18.
+- As progressões de referência consultadas indicam Sentir Armadilhas +1 no 3º nível e aumento de +1 a cada três níveis depois disso; Sugestão em Massa consta no 18º nível do Bardo. Referências auxiliares consultadas: Player’s Handbook 3.5, tabela do Bárbaro e tabela do Bardo (https://xbladerunner.com/wp-content/uploads/sites/13/2025/12/DD-3rd-Edition-3.5.pdf; https://anyflip.com/efpcn/inzd/basic). A conferência direta de todas as onze tabelas na edição brasileira ainda está pendente; não declarar a auditoria completa.
+- Correção proposta na branch `fix/class-feature-progression-audit`: adicionadas as cinco entradas de Sentir Armadilhas e a entrada de Sugestão em Massa. Testes de regressão verificam os níveis e os nomes esperados.
+- Status: aguardar CI e revisão da PR antes de integrar. A mudança foi feita por API do GitHub; nenhum Gradle local nem teste manual no aparelho foi executado por esta operação.
+- Próximo passo: continuar a comparação classe por classe das características listadas com as tabelas do Livro do Jogador brasileiro, registrando apenas divergências concretas e evitando repetir correções já integradas.
