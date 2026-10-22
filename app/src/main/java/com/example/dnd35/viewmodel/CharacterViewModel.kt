@@ -316,6 +316,7 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
         if (index >= 0) {
             val old = currentSkills[index]
             currentSkills[index] = old.copy(
+                keyAbility = com.example.dnd35.model.Dnd35Rules.canonicalSkillKeyAbility(skillName, old.keyAbility),
                 ranks = normalizedRanks,
                 miscBonus = miscBonus,
                 isClassSkill = actualClassSkill
