@@ -160,3 +160,11 @@ A implementação atual usa `combinedArmorCheckPenalty = minOf(totalArmorCheckPe
 - A lógica de `canRoll` impede testes de perícias marcadas `trainedOnly` quando o personagem tem menos de 1 graduação. Graduações fracionárias são preservadas, mas não contam como uma graduação inteira para o bônus do teste.
 - Resultado desta etapa: nenhuma nova divergência comprovada; não abrir PR de código apenas por preferência de implementação. A lista de perícias de classe das classes básicas tem testes de regressão e não apresentou discrepância nova nesta revisão.
 - Limitação: esta foi uma auditoria estática do catálogo, dos cálculos e dos testes existentes; não foi executada uma sessão Gradle local nem um teste manual no aparelho.
+
+
+## Correção de idiomas adicionais élficos
+
+- Divergência encontrada na auditoria do catálogo `LanguageRules`: as listas para Elfo, Alto Elfo e Elfo da Floresta omitiam Dracônico e Gnoll.
+- Correção proposta na branch `fix/elf-bonus-languages`: as três variantes agora incluem Dracônico, Gnoll, Gnomo, Goblin, Orc e Silvestre como opções de idiomas adicionais.
+- Foi acrescentado teste de regressão que verifica o conjunto completo para as três variantes.
+- Ainda falta validação da CI e revisão final da PR; não houve compilação local nem teste manual no aparelho.
