@@ -837,14 +837,15 @@ class ExampleUnitTest {
       "Forma Selvagem 2/dia" to 6,
       "Forma Selvagem 3/dia" to 7,
       "Forma Selvagem (Grande)" to 8,
-      "Forma Selvagem 4/dia" to 9,
-      "Forma Selvagem (Miúdo)" to 10,
+      "Imunidade a Venenos" to 9,
+      "Forma Selvagem 4/dia" to 10,
+      "Forma Selvagem (Miúdo)" to 11,
       "Forma Selvagem (Planta)" to 12,
-      "Forma Selvagem 5/dia" to 13,
       "Mil Faces" to 13,
+      "Forma Selvagem 5/dia" to 14,
       "Corpo Atemporal e Forma Selvagem (Enorme)" to 15,
       "Forma Selvagem Elemental 1/dia" to 16,
-      "Forma Selvagem Elemental 2/dia" to 18,
+      "Forma Selvagem 6/dia e Elemental 2/dia" to 18,
       "Forma Selvagem Elemental 3/dia e Elemental Enorme" to 20
     )
 
@@ -1050,13 +1051,15 @@ class ExampleUnitTest {
       6 to "Forma Selvagem 2/dia",
       7 to "Forma Selvagem 3/dia",
       8 to "Forma Selvagem (Grande)",
-      9 to "Forma Selvagem 4/dia",
-      10 to "Forma Selvagem (Miúdo)",
+      9 to "Imunidade a Venenos",
+      10 to "Forma Selvagem 4/dia",
+      11 to "Forma Selvagem (Miúdo)",
       12 to "Forma Selvagem (Planta)",
-      13 to "Forma Selvagem 5/dia",
+      13 to "Mil Faces",
+      14 to "Forma Selvagem 5/dia",
       15 to "Corpo Atemporal e Forma Selvagem (Enorme)",
       16 to "Forma Selvagem Elemental 1/dia",
-      18 to "Forma Selvagem Elemental 2/dia",
+      18 to "Forma Selvagem 6/dia e Elemental 2/dia",
       20 to "Forma Selvagem Elemental 3/dia e Elemental Enorme"
     )
 
