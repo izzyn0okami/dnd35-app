@@ -38,6 +38,33 @@ class ExampleUnitTest {
   }
 
   @Test
+  fun skillPointHistoryTotalIgnoresRecordsAboveCurrentCharacterLevel() {
+    val history = listOf(
+      SkillPointLevelRecord(1, "Bardo", 28f, listOf(SkillPointAllocation("Atuação", 4f))),
+      SkillPointLevelRecord(2, "Ladino", 9f, listOf(SkillPointAllocation("Furtividade", 3f))),
+      SkillPointLevelRecord(3, "Mago", 6f, listOf(SkillPointAllocation("Conhecimento", 6f)))
+    )
+
+    val total = com.example.dnd35.model.calculateSkillPointHistoryTotal(history, 2)
+
+    assertTrue(total.isComplete)
+    assertEquals(7f, total.pointsSpent, 0.001f)
+  }
+
+  @Test
+  fun skillPointHistoryIsNotCompleteWhenCurrentLevelIsMissing() {
+    val history = listOf(
+      SkillPointLevelRecord(1, "Bardo", 28f, listOf(SkillPointAllocation("Atuação", 4f))),
+      SkillPointLevelRecord(3, "Mago", 6f, listOf(SkillPointAllocation("Conhecimento", 6f)))
+    )
+
+    val total = com.example.dnd35.model.calculateSkillPointHistoryTotal(history, 2)
+
+    assertTrue(!total.isComplete)
+    assertEquals(4f, total.pointsSpent, 0.001f)
+  }
+
+  @Test
   fun skillPointBudgetInputRequiresWholeNonNegativePoints() {
     assertEquals(8, parseWholeSkillPointBudget("8"))
     assertEquals(0, parseWholeSkillPointBudget("0"))
