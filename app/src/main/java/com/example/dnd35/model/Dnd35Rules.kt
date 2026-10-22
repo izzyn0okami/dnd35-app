@@ -202,6 +202,11 @@ object Dnd35Rules {
                 ClassFeature(1, "Movimento Rápido", "+3 metros no deslocamento terrestre (sem armadura pesada)."),
                 ClassFeature(2, "Esquiva Sobrenatural", "Retém bônus de Destreza na CA mesmo surpreendido ou contra atacantes invisíveis."),
                 ClassFeature(3, "Sentir Armadilhas +1", "+1 nos testes de Reflexos e CA contra armadilhas."),
+                ClassFeature(6, "Sentir Armadilhas +2", "+2 nos testes de Reflexos e CA contra armadilhas."),
+                ClassFeature(9, "Sentir Armadilhas +3", "+3 nos testes de Reflexos e CA contra armadilhas."),
+                ClassFeature(12, "Sentir Armadilhas +4", "+4 nos testes de Reflexos e CA contra armadilhas."),
+                ClassFeature(15, "Sentir Armadilhas +5", "+5 nos testes de Reflexos e CA contra armadilhas."),
+                ClassFeature(18, "Sentir Armadilhas +6", "+6 nos testes de Reflexos e CA contra armadilhas."),
                 ClassFeature(4, "Fúria 2/dia", "Pode entrar em fúria 2 vezes ao dia."),
                 ClassFeature(5, "Esquiva Sobrenatural Aprimorada", "Não pode ser flanqueado exceto por ladino 4 níveis acima."),
                 ClassFeature(7, "Redução de Dano 1/-", "Reduz em 1 o dano de cada ataque sofrido."),
@@ -241,6 +246,7 @@ object Dnd35Rules {
                 ClassFeature(12, "Canção da Liberdade", "Pode produzir um efeito semelhante a quebrar encantamento por meio de música."),
                 ClassFeature(14, "Inspirar Coragem +3", "O bônus de Inspirar Coragem aumenta para +3."),
                 ClassFeature(15, "Inspirar Heroísmo", "Concede +4 de bônus de moral na CA e +4 nos testes de resistência a um aliado."),
+                ClassFeature(18, "Sugestão em Massa", "Permite sugerir simultaneamente uma ação a qualquer número de criaturas já fascinadas, conforme as regras da habilidade."),
                 ClassFeature(20, "Inspirar Coragem +4", "O bônus de Inspirar Coragem aumenta para +4.")
             ),
             description = "Mestre das canções místicas, magia arcana espontânea e grande versatilidade."
