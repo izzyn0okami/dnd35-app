@@ -47,8 +47,10 @@ data class CharacterEntity(
     val platinumPp: Float = 0.0f,
     val skillsJson: String = "",
     val languagesJson: String = "",
-    // Histórico opcional; não inferir gastos antigos a partir das graduações atuais.
+    // Não inferir gastos antigos a partir das graduações atuais.
     val skillPointHistoryJson: String = "",
+    // Vazio em fichas antigas: não presumir que idiomas já cadastrados foram comprados.
+    val languageAcquisitionsJson: String = "",
     val inventoryJson: String = "",
     val featsJson: String = "",
     val spellsJson: String = "",
@@ -59,7 +61,6 @@ data class CharacterEntity(
 )
 
 data class SkillPointAllocation(val skillName: String, val pointsSpent: Float)
-
 data class SkillPointLevelRecord(
     val characterLevel: Int,
     val className: String,
@@ -67,33 +68,42 @@ data class SkillPointLevelRecord(
     val allocations: List<SkillPointAllocation> = emptyList()
 )
 
-data class CharacterClassEntry(
-    val className: String,
-    val level: Int = 1
-)
+enum class LanguageAcquisitionSource { RACIAL, INTELLIGENCE, CLASS_FEATURE, FEAT, PURCHASED, OTHER }
 
+data class LanguageAcquisition(
+    val language: String,
+    val source: LanguageAcquisitionSource,
+    val characterLevel: Int? = null,
+    val pointsSpent: Int = 0
+) {
+    fun isValid(): Boolean = language.isNotBlank() &&
+        when (source) {
+            LanguageAcquisitionSource.PURCHASED -> characterLevel != null && characterLevel >= 1 && pointsSpent == 1
+            else -> pointsSpent == 0 && (characterLevel == null || characterLevel >= 1)
+        }
+}
+
+data class CharacterClassEntry(val className: String, val level: Int = 1)
 data class CharacterSkill(
     val name: String,
-    val keyAbility: String, // FOR, DES, CON, INT, SAB, CAR
+    val keyAbility: String,
     val ranks: Float = 0.0f,
     val miscBonus: Int = 0,
     val isClassSkill: Boolean = false,
     val notes: String = ""
 )
-
 data class CharacterInventoryItem(
     val id: String = UUID.randomUUID().toString(),
     val name: String,
-    val category: String, // Armas, Armaduras, Escudos, Itens de Aventura, Itens Mágicos, Consumíveis, Outros
+    val category: String,
     val quantity: Int = 1,
     val weightLb: Float = 1.0f,
     val costGp: Float = 0.0f,
     val damageOrAc: String = "",
     val equipped: Boolean = false,
-    val equippedSlot: String = Dnd35Rules.EquipmentSlots.NONE, // Espaço corporal atribuído
+    val equippedSlot: String = Dnd35Rules.EquipmentSlots.NONE,
     val notes: String = ""
 )
-
 data class CharacterFeat(
     val id: String = UUID.randomUUID().toString(),
     val name: String,
@@ -101,7 +111,6 @@ data class CharacterFeat(
     val summary: String = "",
     val description: String = ""
 )
-
 data class CharacterSpell(
     val id: String = UUID.randomUUID().toString(),
     val name: String,
@@ -117,9 +126,4 @@ data class CharacterSpell(
     val preparedCount: Int = 1,
     val description: String = ""
 )
-
-data class SpellSlotInfo(
-    val level: Int,
-    val totalSlots: Int = 0,
-    val usedSlots: Int = 0
-)
+data class SpellSlotInfo(val level: Int, val totalSlots: Int = 0, val usedSlots: Int = 0)
