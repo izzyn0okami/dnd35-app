@@ -1089,31 +1089,31 @@ class ExampleUnitTest {
       1 to "Bônus de CA sem Armadura",
       2 to "Evasão",
       3 to "Mente Tranquila",
-      4 to "Queda Lenta 6 m",
+      4 to "Queda Suave 6 m",
       5 to "Pureza Corporal",
-      6 to "Queda Lenta 9 m",
+      6 to "Queda Suave 9 m",
       7 to "Integridade Corporal",
-      8 to "Queda Lenta 12 m",
+      8 to "Queda Suave 12 m",
       9 to "Evasão Aprimorada",
-      10 to "Queda Lenta 15 m",
+      10 to "Queda Suave 15 m",
       11 to "Corpo de Diamante",
-      12 to "Queda Lenta 18 m",
+      12 to "Queda Suave 18 m",
       13 to "Alma de Diamante",
-      14 to "Queda Lenta 21 m",
-      15 to "Palma Trêmula",
-      16 to "Queda Lenta 24 m",
+      14 to "Queda Suave 21 m",
+      15 to "Mão Vibrante",
+      16 to "Queda Suave 24 m",
       17 to "Corpo Atemporal",
-      18 to "Queda Lenta 27 m",
+      18 to "Queda Suave 27 m",
       19 to "Corpo Vazio",
-      20 to "Autoperfeição"
+      20 to "Auto-Perfeição"
     )
 
     expected.forEach { (level, name) ->
       assertTrue("Habilidade de Monge ausente no nível $level: $name",
         features.any { it.level == level && it.name == name })
     }
-    assertTrue(features.any { it.level == 17 && it.name == "Língua do Sol e da Lua" })
-    assertTrue(features.any { it.level == 20 && it.name == "Queda Lenta Qualquer Distância" })
+    assertTrue(features.any { it.level == 17 && it.name == "Idiomas do Sol e da Lua" })
+    assertTrue(features.any { it.level == 20 && it.name == "Queda Suave Qualquer Distância" })
   }
 
   @Test
