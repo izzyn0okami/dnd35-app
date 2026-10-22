@@ -1323,4 +1323,55 @@ class ExampleUnitTest {
     assertEquals("2d10", damage(20, "Médio"))
     assertEquals("4d8", damage(20, "Grande"))
   }
+
+  @Test
+  fun paladinSpellcastingStartsAtLevelFourWithCasterLevelOne() {
+    val levelThree = CharacterCalculator.compute(
+      CharacterEntity(characterClass = "Paladino", level = 3)
+    )
+    assertTrue(!levelThree.isSpellcaster)
+    assertTrue(levelThree.casterClasses.isEmpty())
+    assertEquals(null, levelThree.castingAbilityName)
+    assertTrue(levelThree.spellSaveDcByLevel.isEmpty())
+
+    val levelFour = CharacterCalculator.compute(
+      CharacterEntity(characterClass = "Paladino", level = 4)
+    )
+    assertTrue(levelFour.isSpellcaster)
+    assertEquals(1, levelFour.casterClasses.single().casterLevel)
+    assertEquals("SAB", levelFour.casterClasses.single().keyAbility)
+
+    val levelTwenty = CharacterCalculator.compute(
+      CharacterEntity(characterClass = "Paladino", level = 20)
+    )
+    assertEquals(17, levelTwenty.casterClasses.single().casterLevel)
+  }
+
+  @Test
+  fun rangerSpellcastingStartsAtLevelFourWithCasterLevelOne() {
+    val levelThree = CharacterCalculator.compute(
+      CharacterEntity(characterClass = "Ranger", level = 3)
+    )
+    assertTrue(!levelThree.isSpellcaster)
+    assertTrue(levelThree.casterClasses.isEmpty())
+
+    val levelFour = CharacterCalculator.compute(
+      CharacterEntity(characterClass = "Ranger", level = 4)
+    )
+    assertTrue(levelFour.isSpellcaster)
+    assertEquals(1, levelFour.casterClasses.single().casterLevel)
+
+    val levelTwenty = CharacterCalculator.compute(
+      CharacterEntity(characterClass = "Ranger", level = 20)
+    )
+    assertEquals(17, levelTwenty.casterClasses.single().casterLevel)
+  }
+
+  @Test
+  fun fullSpellcastingClassesKeepTheirFullClassLevelAsCasterLevel() {
+    val wizard = CharacterCalculator.compute(
+      CharacterEntity(characterClass = "Mago", level = 7)
+    )
+    assertEquals(7, wizard.casterClasses.single().casterLevel)
+  }
 }
