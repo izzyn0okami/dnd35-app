@@ -72,8 +72,16 @@ fun SkillsTab(
 
     val maxClassRank = stats.totalCharacterLevel + 3
     val maxCrossRank = maxClassRank / 2.0f
-    val totalSkillPointsSpent = stats.computedSkills.sumOf {
-        it.ranks.toDouble() * if (it.isClassSkill) 1.0 else 2.0
+    val skillPointHistory = CharacterJsonAdapters.deserializeSkillPointHistory(character.skillPointHistoryJson)
+    val recordedLevels = skillPointHistory.map { it.characterLevel }.toSet()
+    val hasCompleteSkillPointHistory = stats.totalCharacterLevel > 0 &&
+        (1..stats.totalCharacterLevel).all { it in recordedLevels }
+    val totalSkillPointsSpent = if (hasCompleteSkillPointHistory) {
+        skillPointHistory.sumOf { record -> record.allocations.sumOf { it.pointsSpent.toDouble() } }
+    } else {
+        stats.computedSkills.sumOf {
+            it.ranks.toDouble() * if (it.isClassSkill) 1.0 else 2.0
+        }
     }
 
     val filteredSkills = stats.computedSkills.filter {
@@ -380,7 +388,7 @@ fun SkillsTab(
                             color = MaterialTheme.colorScheme.onPrimaryContainer
                         )
                         Text(
-                            "Graduações totais investidas: ${String.format("%.1f", totalSkillPointsSpent)} pts",
+                            "${if (hasCompleteSkillPointHistory) "Pontos gastos (histórico completo)" else "Pontos gastos (estimativa atual)"}: ${String.format("%.1f", totalSkillPointsSpent)} pts",
                             style = MaterialTheme.typography.labelSmall,
                             color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.8f)
                         )
