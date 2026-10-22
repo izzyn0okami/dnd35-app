@@ -298,11 +298,13 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
         val classEntries = CharacterJsonAdapters.deserializeClassEntries(
             curr.multiclassJson, curr.characterClass, curr.level
         )
-        val actualClassSkill = if (definition != null) {
+        val actualClassSkill = if (definition != null || com.example.dnd35.model.Dnd35Rules.isCraftSpecialty(skillName)) {
             classEntries.any { entry ->
                 com.example.dnd35.model.Dnd35Rules.CLASSES
                     .find { it.name.equals(entry.className, ignoreCase = true) }
-                    ?.classSkills?.any { it.equals(skillName, ignoreCase = true) } == true
+                    ?.classSkills?.any {
+                        com.example.dnd35.model.Dnd35Rules.classSkillMatches(skillName, it)
+                    } == true
             }
         } else isClassSkill
         val maxClassRanks = classEntries.sumOf { it.level }.coerceAtLeast(1) + 3f
@@ -319,7 +321,7 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
                 isClassSkill = actualClassSkill
             )
         } else {
-            val key = definition?.keyAbility ?: "FOR"
+            val key = com.example.dnd35.model.Dnd35Rules.canonicalSkillKeyAbility(skillName, "FOR")
             currentSkills.add(CharacterSkill(
                 name = skillName, keyAbility = key, ranks = normalizedRanks,
                 miscBonus = miscBonus, isClassSkill = actualClassSkill
