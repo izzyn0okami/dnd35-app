@@ -33,6 +33,7 @@ object LanguageRules {
         "gnomo" to RaceLanguages(listOf("Comum", "Gnomo"), listOf("Dracônico", "Élfico", "Gigante", "Goblin", "Anão", "Orc")),
         "gnomo da rocha" to RaceLanguages(listOf("Comum", "Gnomo"), listOf("Dracônico", "Élfico", "Gigante", "Goblin", "Anão", "Orc")),
         "halfling" to RaceLanguages(listOf("Comum", "Halfling"), listOf("Élfico", "Anão", "Gnomo", "Goblin", "Orc")),
+        "halfling robusto" to RaceLanguages(listOf("Comum", "Halfling"), listOf("Élfico", "Anão", "Gnomo", "Goblin", "Orc")),
         "meio-elfo" to RaceLanguages(listOf("Comum", "Élfico"), null),
         "meio-orc" to RaceLanguages(listOf("Comum", "Orc"), null)
     )
