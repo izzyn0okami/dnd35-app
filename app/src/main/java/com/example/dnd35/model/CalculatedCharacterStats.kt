@@ -419,10 +419,9 @@ object CharacterCalculator {
             it.equipped && (it.equippedSlot == Dnd35Rules.EquipmentSlots.ARMOR_BODY ||
                 it.category.equals("Armaduras", ignoreCase = true))
         }
-        // Movimento rápido do Bárbaro exige ausência de armadura média/pesada e carga leve.
-        if (barbarianLevel >= 1 && equippedArmor.none { isHeavyArmor(it.name) } &&
-            encumbrance != Dnd35Rules.EncumbranceLevel.HEAVY &&
-            encumbrance != Dnd35Rules.EncumbranceLevel.OVERLOADED) {
+        // Movimento rápido do Bárbaro só funciona sem armadura média/pesada e com carga leve.
+        if (barbarianLevel >= 1 && equippedArmor.none { isMediumOrHeavyArmor(it.name) } &&
+            encumbrance == Dnd35Rules.EncumbranceLevel.LIGHT) {
             baseSpeed += 3.0f
         }
         // Movimento rápido do Monge exige ausência de armadura/escudo e carga leve.
