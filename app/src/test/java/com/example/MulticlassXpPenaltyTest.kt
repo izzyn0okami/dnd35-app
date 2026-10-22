@@ -7,11 +7,26 @@ import org.junit.Test
 
 class MulticlassXpPenaltyTest {
     @Test
-    fun anyFavoredClassRaceNeverGetsMulticlassXpPenalty() {
+    fun anyFavoredClassExcludesHighestClassButCanPenalizeRemainingClasses() {
         val classes = listOf(
             CharacterClassEntry("Guerreiro", 8),
             CharacterClassEntry("Mago", 5),
             CharacterClassEntry("Ladino", 2)
+        )
+
+        val result = calculateMulticlassXpPenalty(classes, "Qualquer")
+
+        assertEquals(20, result.percentage)
+        assertEquals(listOf(CharacterClassEntry("Ladino", 2)), result.offendingClasses)
+        assertEquals("Guerreiro", result.exemptClassName)
+    }
+
+    @Test
+    fun anyFavoredClassHasNoPenaltyWhenRemainingClassesAreWithinOneLevel() {
+        val classes = listOf(
+            CharacterClassEntry("Guerreiro", 8),
+            CharacterClassEntry("Mago", 7),
+            CharacterClassEntry("Ladino", 6)
         )
 
         val result = calculateMulticlassXpPenalty(classes, "Qualquer")
