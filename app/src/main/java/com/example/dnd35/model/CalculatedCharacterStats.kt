@@ -481,37 +481,44 @@ object CharacterCalculator {
         } else null
 
         // 11. Classes Conjuradoras da Multiclasse & CDs de Magia
-        val casterClasses = multiclassDetails.filter { it.classInfo.spellCastingAbility != null }.map { detail ->
-            val ability = detail.classInfo.spellCastingAbility!!
-            val mod = when (ability) {
-                "INT" -> intMod
-                "SAB" -> wisMod
-                "CAR" -> chaMod
-                else -> 0
+        val casterClasses = multiclassDetails
+            .filter { detail ->
+                val classLevel = detail.entry.level
+                val hasReachedSpellcastingLevel = when (detail.entry.className.lowercase()) {
+                    "paladino", "ranger" -> classLevel >= 4
+                    else -> true
+                }
+                detail.classInfo.spellCastingAbility != null && hasReachedSpellcastingLevel
             }
-            val dcMap = (0..9).associateWith { lvl -> 10 + lvl + mod }
-            CasterClassInfo(
-                className = detail.entry.className,
-                casterLevel = detail.entry.level,
-                keyAbility = ability,
-                keyAbilityMod = mod,
-                dcByLevel = dcMap
-            )
-        }
+            .map { detail ->
+                val ability = detail.classInfo.spellCastingAbility!!
+                val mod = when (ability) {
+                    "INT" -> intMod
+                    "SAB" -> wisMod
+                    "CAR" -> chaMod
+                    else -> 0
+                }
+                val className = detail.entry.className
+                val casterLevel = when (className.lowercase()) {
+                    "paladino", "ranger" -> detail.entry.level - 3
+                    else -> detail.entry.level
+                }
+                val dcMap = (0..9).associateWith { lvl -> 10 + lvl + mod }
+                CasterClassInfo(
+                    className = className,
+                    casterLevel = casterLevel,
+                    keyAbility = ability,
+                    keyAbilityMod = mod,
+                    dcByLevel = dcMap
+                )
+            }
 
         val isSpellcaster = casterClasses.isNotEmpty()
         val primaryCaster = casterClasses.firstOrNull()
-        val castingAbilityName = primaryCaster?.keyAbility ?: primaryClassInfo.spellCastingAbility
-        val castingAbilityMod = primaryCaster?.keyAbilityMod ?: when (castingAbilityName) {
-            "INT" -> intMod
-            "SAB" -> wisMod
-            "CAR" -> chaMod
-            else -> 0
-        }
+        val castingAbilityName = primaryCaster?.keyAbility
+        val castingAbilityMod = primaryCaster?.keyAbilityMod ?: 0
 
-        val spellSaveDcByLevel = primaryCaster?.dcByLevel ?: (0..9).associateWith { lvl ->
-            10 + lvl + castingAbilityMod
-        }
+        val spellSaveDcByLevel = primaryCaster?.dcByLevel ?: emptyMap()
 
         // 12. Perícias Calculadas (Regra 3.5: Perícia de classe se pertencer a QUALQUER uma das classes)
         val computedSkills = skills.map { skill ->
