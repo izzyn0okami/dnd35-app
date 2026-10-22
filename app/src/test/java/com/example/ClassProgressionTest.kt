@@ -72,6 +72,8 @@ class ClassProgressionTest {
         assertEquals(1, monk.features.count { it.level == 10 && it.name == "Ataque Chi (Ordem)" })
         assertEquals(1, monk.features.count { it.level == 13 && it.name == "Ataque Chi (+2)" })
         assertEquals(1, monk.features.count { it.level == 12 && it.name == "Passo Etéreo" })
+        assertTrue(monk.features.single { it.level == 12 && it.name == "Passo Etéreo" }
+            .description.contains("metade do nível de monge"))
         assertEquals(1, monk.features.count { it.level == 16 && it.name == "Ataque Chi (Adamante)" })
         assertEquals("Recebe um segundo ataque adicional na rajada de golpes, também com o bônus base de ataque máximo.",
             monk.features.single { it.level == 11 && it.name == "Rajada Maior" }.description)
