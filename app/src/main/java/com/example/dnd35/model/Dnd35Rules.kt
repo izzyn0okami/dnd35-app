@@ -256,10 +256,10 @@ object Dnd35Rules {
             spellCastingAbility = "SAB",
             classSkills = listOf("Concentração", "Conhecimento (Arcano)", "Conhecimento (História)", "Conhecimento (Planos)", "Conhecimento (Religião)", "Cura", "Diplomacia", "Identificar Magia", "Ofícios", "Profissão"),
             features = listOf(
-                ClassFeature(1, "Aura & Divindade", "Aura sagrada ou profana associada à sua divindade."),
-                ClassFeature(1, "Expulsar/Fascinar Mortos-Vivos", "Canaliza energia divina (3 + mod Car vezes ao dia) para afugentar ou destruir mortos-vivos."),
-                ClassFeature(1, "Conversão Espontânea", "Pode converter qualquer magia preparada em Curar Ferimentos (se bondoso) ou Infligir (se maligno)."),
-                ClassFeature(1, "Domínios da Divindade", "Escolhe 2 domínios (ex: Guerra, Cura, Proteção, Sol, etc.) com magias e poderes concedidos exclusivos.")
+                ClassFeature(1, "Aura", "A força da aura depende do poder da divindade, conforme a regra de detectar o bem ou detectar o mal."),
+                ClassFeature(1, "Expulsar ou Fascinar Mortos-Vivos", "Usa essa habilidade 3 + modificador de Carisma vezes por dia; clérigos bons ou que veneram uma divindade boa expulsam, clérigos maus ou de divindade má fascinam, e clérigos neutros escolhem conforme as regras."),
+                ClassFeature(1, "Conversão Espontânea", "Clérigos bons convertem magias preparadas em magias de cura; clérigos maus, em magias de infligir. Clérigos neutros escolhem uma das opções ao criar o personagem, conforme as regras."),
+                ClassFeature(1, "Domínios da Divindade", "Escolhe dois domínios permitidos pela divindade ou filosofia; recebe os poderes concedidos de ambos e um espaço de magia por nível para preparar uma magia de domínio.")
             ),
             description = "Campeão divino dos deuses com magia sagrada de cura, domínios e destruição do mal."
         ),
