@@ -289,6 +289,29 @@ class ExampleUnitTest {
   }
 
   @Test
+  fun hideSkillSizeModifierUsesCurrentCharacterSizeRatherThanBaseRaceSize() {
+    val character = CharacterCalculator.compute(
+      CharacterEntity(
+        race = "Humano",
+        size = "Grande",
+        baseStr = 10,
+        baseDex = 10,
+        baseCon = 10,
+        baseWis = 10,
+        baseInt = 10,
+        baseCha = 10,
+        skillsJson = CharacterJsonAdapters.serializeSkills(
+          listOf(CharacterSkill(name = "Esconder-se", keyAbility = "DES"))
+        )
+      )
+    )
+
+    val hide = character.computedSkills.single { it.skill.name == "Esconder-se" }
+    assertEquals(-4, hide.sizeBonus)
+    assertEquals(-4, hide.totalBonus)
+  }
+
+  @Test
   fun testCharacterCalculator() {
     val char = CharacterEntity(
       name = "Guerreiro Teste",
