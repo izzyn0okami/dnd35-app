@@ -123,6 +123,14 @@ class ClassProgressionTest {
     }
 
     @Test
+    fun rangerEvasionDocumentsItsArmorRestriction() {
+        val ranger = Dnd35Rules.CLASSES.single { it.name == "Ranger" }
+        val evasion = ranger.features.single { it.level == 9 && it.name == "Evasão" }
+        assertTrue(evasion.description.contains("sem armadura"))
+        assertTrue(evasion.description.contains("armadura leve"))
+    }
+
+    @Test
     fun bardGainsMassSuggestionAtLevelEighteen() {
         val bard = Dnd35Rules.CLASSES.single { it.name == "Bardo" }
         assertEquals(1, bard.features.count { it.level == 18 && it.name == "Sugestão em Massa" })
