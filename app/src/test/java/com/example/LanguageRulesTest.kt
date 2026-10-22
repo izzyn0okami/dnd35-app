@@ -16,6 +16,19 @@ class LanguageRulesTest {
     }
 
     @Test
+    fun drowLanguagesMatchMonsterManualRulesAndRaceAlias() {
+        val expected = LanguageRules.RaceLanguages(
+            automatic = listOf("Comum", "Élfico", "Subterrâneo"),
+            bonusOptions = listOf(
+                "Abissal", "Aquático", "Dracônico", "Linguagem de Sinais Drow",
+                "Gnomo", "Goblin", "Kuo-toa"
+            )
+        )
+        assertEquals(expected, LanguageRules.forRace("Drow"))
+        assertEquals(expected, LanguageRules.forRace("Drow (Elfo Negro)"))
+    }
+
+    @Test
     fun elfBonusLanguageChoicesMatchCoreRulesForElfVariants() {
         val expected = setOf("Dracônico", "Gnoll", "Gnomo", "Goblin", "Orc", "Silvestre")
         listOf("Elfo", "Alto Elfo", "Elfo da Floresta").forEach { race ->
