@@ -830,6 +830,28 @@ class ExampleUnitTest {
   }
 
   @Test
+  fun rogueSneakAttackProgressionIncreasesEveryOddLevel() {
+    val features = Dnd35Rules.CLASSES.first { it.name == "Ladino" }.features
+    val expected = (1..19 step 2).associateWith { level ->
+      "Ataque Furtivo +${(level + 1) / 2}d6"
+    }
+
+    expected.forEach { (level, name) ->
+      assertTrue("Ataque furtivo ausente no nível $level: $name",
+        features.any { it.level == level && it.name == name })
+    }
+  }
+
+  @Test
+  fun rogueSpecialAbilitiesAreGrantedAtCorrectLevels() {
+    val features = Dnd35Rules.CLASSES.first { it.name == "Ladino" }.features
+    listOf(10, 13, 16, 19).forEach { level ->
+      assertTrue("Habilidade especial de ladino ausente no nível $level",
+        features.any { it.level == level && it.name == "Habilidade Especial (${level}º Nv)" })
+    }
+  }
+
+  @Test
   fun barbarianRageAndDamageReductionProgressionIncludesCoreMilestones() {
     val features = Dnd35Rules.CLASSES.first { it.name == "Bárbaro" }.features
     val expected = mapOf(
