@@ -830,6 +830,31 @@ class ExampleUnitTest {
   }
 
   @Test
+  fun druidWildShapeProgressionMatchesCoreClassLevels() {
+    val features = Dnd35Rules.CLASSES.first { it.name == "Druida" }.features
+    val expected = mapOf(
+      "Forma Selvagem 1/dia" to 5,
+      "Forma Selvagem 2/dia" to 6,
+      "Forma Selvagem 3/dia" to 7,
+      "Forma Selvagem (Grande)" to 8,
+      "Forma Selvagem 4/dia" to 9,
+      "Forma Selvagem (Enorme)" to 10,
+      "Forma Selvagem 5/dia e Miúdo" to 11,
+      "Forma Selvagem (Planta)" to 12,
+      "Forma Selvagem 6/dia" to 13,
+      "Corpo Atemporal" to 15,
+      "Forma Selvagem Elemental 1/dia" to 16,
+      "Forma Selvagem Elemental 2/dia" to 17,
+      "Forma Selvagem Elemental 3/dia" to 18,
+      "Forma Selvagem Elemental 4/dia e Elemental Enorme" to 20
+    )
+
+    expected.forEach { (name, level) ->
+      assertEquals("Nível incorreto para $name", level, features.first { it.name == name }.level)
+    }
+  }
+
+  @Test
   fun wizardAndSorcererFeaturesMatchCoreClassRules() {
     val sorcerer = Dnd35Rules.CLASSES.first { it.name == "Feiticeiro" }
     val wizard = Dnd35Rules.CLASSES.first { it.name == "Mago" }
