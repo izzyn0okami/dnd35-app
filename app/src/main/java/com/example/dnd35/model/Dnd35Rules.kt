@@ -285,15 +285,13 @@ object Dnd35Rules {
                 ClassFeature(7, "Forma Selvagem 3/dia", "Pode usar Forma Selvagem três vezes por dia."),
                 ClassFeature(8, "Forma Selvagem (Grande)", "Pode assumir formas animais Grandes."),
                 ClassFeature(9, "Forma Selvagem 4/dia", "Pode usar Forma Selvagem quatro vezes por dia."),
-                ClassFeature(10, "Forma Selvagem (Enorme)", "Pode assumir formas animais Enormes."),
-                ClassFeature(11, "Forma Selvagem 5/dia e Miúdo", "Pode usar Forma Selvagem cinco vezes por dia e assumir formas animais Miúdas."),
+                ClassFeature(10, "Forma Selvagem (Miúdo)", "Pode assumir formas animais Miúdas."),
                 ClassFeature(12, "Forma Selvagem (Planta)", "Pode assumir formas de criaturas do tipo planta."),
-                ClassFeature(13, "Forma Selvagem 6/dia", "Pode usar Forma Selvagem seis vezes por dia."),
-                ClassFeature(15, "Corpo Atemporal", "Não sofre penalidades nos atributos físicos por envelhecimento e não pode ser envelhecido magicamente."),
+                ClassFeature(13, "Forma Selvagem 5/dia", "Pode usar Forma Selvagem cinco vezes por dia."),
+                ClassFeature(15, "Corpo Atemporal e Forma Selvagem (Enorme)", "Não sofre penalidades nos atributos físicos por envelhecimento e pode assumir formas animais Enormes."),
                 ClassFeature(16, "Forma Selvagem Elemental 1/dia", "Pode assumir forma elemental uma vez por dia."),
-                ClassFeature(17, "Forma Selvagem Elemental 2/dia", "Pode assumir forma elemental duas vezes por dia."),
-                ClassFeature(18, "Forma Selvagem Elemental 3/dia", "Pode assumir forma elemental três vezes por dia."),
-                ClassFeature(20, "Forma Selvagem Elemental 4/dia e Elemental Enorme", "Pode assumir forma elemental quatro vezes por dia, incluindo elementais Enormes.")
+                ClassFeature(18, "Forma Selvagem Elemental 2/dia", "Pode assumir forma elemental duas vezes por dia."),
+                ClassFeature(20, "Forma Selvagem Elemental 3/dia e Elemental Enorme", "Pode assumir formas elementais três vezes por dia, incluindo elementais Enormes.")
             ),
             description = "Guardião da natureza viva com magia divina, companheiro animal e transformação selvagem."
         ),
