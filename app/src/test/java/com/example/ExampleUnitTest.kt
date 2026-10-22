@@ -830,6 +830,20 @@ class ExampleUnitTest {
   }
 
   @Test
+  fun clericFeaturesDescribeDomainsAndNeutralAlignmentChoices() {
+    val features = Dnd35Rules.CLASSES.first { it.name == "Clérigo" }.features
+    val turning = features.first { it.name == "Expulsar ou Fascinar Mortos-Vivos" }
+    val spontaneous = features.first { it.name == "Conversão Espontânea" }
+    val domains = features.first { it.name == "Domínios da Divindade" }
+
+    assertTrue(turning.description.contains("3 + modificador de Carisma"))
+    assertTrue(turning.description.contains("clérigos neutros"))
+    assertTrue(spontaneous.description.contains("Clérigos neutros"))
+    assertTrue(domains.description.contains("dois domínios"))
+    assertTrue(domains.description.contains("espaço de magia por nível"))
+  }
+
+  @Test
   fun rangerProgressionIncludesFavoredEnemyAndHighLevelFeatures() {
     val features = Dnd35Rules.CLASSES.first { it.name == "Ranger" }.features
     val expectedLevels = listOf(1, 5, 10, 15, 20)
