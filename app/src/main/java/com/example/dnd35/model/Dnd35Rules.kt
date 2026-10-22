@@ -291,7 +291,7 @@ object Dnd35Rules {
                 ClassFeature(13, "Forma Selvagem 6/dia", "Pode usar Forma Selvagem seis vezes por dia."),
                 ClassFeature(15, "Corpo Atemporal", "Não sofre penalidades nos atributos físicos por envelhecimento e não pode ser envelhecido magicamente."),
                 ClassFeature(16, "Forma Selvagem Elemental 1/dia", "Pode assumir forma elemental uma vez por dia."),
-                ClassFeature(17, "Forma Selvagem 7/dia e Elemental 2/dia", "Pode usar Forma Selvagem animal sete vezes e forma elemental duas vezes por dia."),
+                ClassFeature(17, "Forma Selvagem Elemental 2/dia", "Pode assumir forma elemental duas vezes por dia."),
                 ClassFeature(18, "Forma Selvagem Elemental 3/dia", "Pode assumir forma elemental três vezes por dia."),
                 ClassFeature(20, "Forma Selvagem Elemental 4/dia e Elemental Enorme", "Pode assumir forma elemental quatro vezes por dia, incluindo elementais Enormes.")
             ),
