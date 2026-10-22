@@ -830,6 +830,32 @@ class ExampleUnitTest {
   }
 
   @Test
+  fun druidWildShapeProgressionIncludesCoreMilestones() {
+    val features = Dnd35Rules.CLASSES.first { it.name == "Druida" }.features
+    val expected = mapOf(
+      5 to "Forma Selvagem 1/dia",
+      6 to "Forma Selvagem 2/dia",
+      7 to "Forma Selvagem 3/dia",
+      8 to "Forma Selvagem (Grande)",
+      9 to "Imunidade a Venenos",
+      10 to "Forma Selvagem 4/dia",
+      11 to "Forma Selvagem (Miúdo)",
+      12 to "Forma Selvagem (Planta)",
+      13 to "Mil Faces",
+      14 to "Forma Selvagem 5/dia",
+      15 to "Corpo Atemporal e Forma Selvagem (Enorme)",
+      16 to "Forma Selvagem Elemental 1/dia",
+      18 to "Forma Selvagem 6/dia e Elemental 2/dia",
+      20 to "Forma Selvagem Elemental 3/dia e Elemental Enorme"
+    )
+
+    expected.forEach { (level, name) ->
+      assertTrue("Habilidade de Druida ausente no nível $level: $name",
+        features.any { it.level == level && it.name == name })
+    }
+  }
+
+  @Test
   fun monkDiamondBodyIsGrantedAtLevelEleven() {
     val monk = Dnd35Rules.CLASSES.first { it.name == "Monge" }
     assertTrue(monk.features.any { it.level == 11 && it.name == "Corpo de Diamante" })
