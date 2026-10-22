@@ -272,7 +272,7 @@ object Dnd35Rules {
             willType = SaveProgression.GOOD,
             skillPointsPerLevel = 4,
             spellCastingAbility = "SAB",
-            classSkills = listOf("Adestrar Animais", "Cavalgar", "Concentração", "Conhecimento (Natureza)", "Cura", "Diplomacia", "Identificar Magia", "Natação", "Ofícios", "Profissão", "Sobrevivência"),
+            classSkills = listOf("Adestrar Animais", "Cavalgar", "Concentração", "Conhecimento (Natureza)", "Cura", "Diplomacia", "Identificar Magia", "Natação", "Observar", "Ofícios", "Ouvir", "Profissão", "Sobrevivência"),
             features = listOf(
                 ClassFeature(1, "Companheiro Animal", "Recebe um companheiro animal; as opções e os benefícios seguem as regras da habilidade."),
                 ClassFeature(1, "Senso da Natureza", "Recebe +2 em testes de Conhecimento (Natureza) e Sobrevivência."),
