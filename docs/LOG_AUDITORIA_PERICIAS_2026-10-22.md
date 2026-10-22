@@ -203,3 +203,10 @@ A implementação atual usa `combinedArmorCheckPenalty = minOf(totalArmorCheckPe
 - A criação inicial de personagem define `size` a partir de `RaceInfo.size` no repositório. Porém, `CharacterViewModel.updateGeneralInfo` recebe raça e tamanho como parâmetros independentes e grava ambos; ainda é necessário confirmar na interface se alterar a raça também atualiza o tamanho ou se o tamanho é uma escolha independente intencional.
 - **Não classificar isto como defeito confirmado ainda.** Próximo passo: rastrear o formulário de edição geral e seus testes; verificar o comportamento ao mudar entre raças Pequenas e Médias e avaliar se preservar tamanho manual é necessário para efeitos mágicos. Só propor correção se a regra de produto ficar clara e houver caso reproduzível.
 - Nenhum código foi alterado nesta etapa de inspeção. A CI pós-merge da PR #94 está aprovada; não houve teste manual no aparelho.
+
+
+### Resultado da verificação de raça e tamanho
+
+- A inspeção de `EditGeneralInfoDialog.kt` confirmou que tamanho é um campo editável separado, sem vínculo automático com o seletor de raça. A criação inicial, por outro lado, usa o tamanho padrão definido em `RaceInfo`.
+- Como o app permite edição manual de tamanho e o tamanho pode ser alterado por efeitos de jogo, a independência dos campos não é, por si só, defeito. Não fazer sincronização automática ao trocar raça sem requisito explícito.
+- A hipótese de defeito foi encerrada sem alteração de código. A auditoria prossegue para outras validações de histórico e cálculo de perícias.
