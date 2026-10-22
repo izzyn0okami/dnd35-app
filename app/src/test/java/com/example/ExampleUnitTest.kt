@@ -1112,6 +1112,7 @@ class ExampleUnitTest {
       assertTrue("Habilidade de Monge ausente no nível $level: $name",
         features.any { it.level == level && it.name == name })
     }
+    assertTrue(features.none { it.name == "Ataque Chi (+2)" })
     assertTrue(features.any { it.level == 17 && it.name == "Idiomas do Sol e da Lua" })
     assertTrue(features.any { it.level == 20 && it.name == "Queda Suave Qualquer Distância" })
   }
