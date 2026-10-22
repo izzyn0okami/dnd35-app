@@ -830,6 +830,30 @@ class ExampleUnitTest {
   }
 
   @Test
+  fun barbarianRageAndDamageReductionProgressionIncludesCoreMilestones() {
+    val features = Dnd35Rules.CLASSES.first { it.name == "Bárbaro" }.features
+    val expected = mapOf(
+      1 to "Fúria 1/dia",
+      4 to "Fúria 2/dia",
+      7 to "Redução de Dano 1/-",
+      8 to "Fúria 3/dia",
+      10 to "Redução de Dano 2/-",
+      11 to "Fúria Maior",
+      12 to "Fúria 4/dia",
+      13 to "Redução de Dano 3/-",
+      16 to "Fúria 5/dia e Redução de Dano 4/-",
+      17 to "Fúria Incansável",
+      19 to "Redução de Dano 5/-",
+      20 to "Fúria Poderosa e Fúria 6/dia"
+    )
+
+    expected.forEach { (level, name) ->
+      assertTrue("Habilidade de Bárbaro ausente no nível $level: $name",
+        features.any { it.level == level && it.name == name })
+    }
+  }
+
+  @Test
   fun druidWildShapeProgressionIncludesCoreMilestones() {
     val features = Dnd35Rules.CLASSES.first { it.name == "Druida" }.features
     val expected = mapOf(
