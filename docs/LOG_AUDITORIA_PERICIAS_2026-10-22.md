@@ -227,5 +227,5 @@ A implementação atual usa `combinedArmorCheckPenalty = minOf(totalArmorCheckPe
 - Divergência confirmada na inspeção de 2026-10-22: nomes personalizados como `Ofícios (Armadilhas)` não coincidiam literalmente com a entrada genérica `Ofícios` nas listas de perícias de classe. Além disso, especialidades novas sem definição individual herdavam por padrão o atributo FOR, embora Ofícios use Inteligência.
 - A correção proposta na branch `fix/craft-specialty-class-skill` centraliza a correspondência de especialidades com a perícia-base e determina INT para especialidades de Ofícios, tanto para novas entradas quanto para dados já salvos.
 - A PR #26 anterior foi consultada; esta correção é limitada à classificação de classe e atributo-chave, sem reabrir a implementação mais ampla de especialidades independentes.
-- Testes de regressão serão adicionados para correspondência com Ofícios, rejeição quando a classe não oferece Ofícios e atributo-chave INT.
+- Testes de regressão adicionados para correspondência com Ofícios, rejeição quando a entrada de classe não corresponde e atributo-chave INT, incluindo variação de maiúsculas/minúsculas.
 - Status: alteração preparada em branch; aguardar revisão e CI antes de integrar. Não houve teste manual no aparelho.
