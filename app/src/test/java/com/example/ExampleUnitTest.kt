@@ -830,6 +830,22 @@ class ExampleUnitTest {
   }
 
   @Test
+  fun rangerProgressionIncludesFavoredEnemyAndHighLevelFeatures() {
+    val features = Dnd35Rules.CLASSES.first { it.name == "Ranger" }.features
+    val expectedLevels = listOf(1, 5, 10, 15, 20)
+
+    expectedLevels.forEach { level ->
+      assertTrue("Inimigo Predileto ausente no nível $level",
+        features.any { it.level == level && it.name.contains("Inimigo Predileto") })
+    }
+
+    assertTrue(features.any { it.level == 4 && it.name == "Conjuração de Ranger" })
+    assertTrue(features.any { it.level == 17 && it.name == "Camuflagem" })
+    assertTrue(features.any { it.level == 18 && it.name == "Esconder-se à Plena Vista" })
+    assertTrue(features.none { it.level == 14 && it.name.contains("Inimigo Predileto") })
+  }
+
+  @Test
   fun fighterBonusFeatsAreListedAtCorrectLevelsWithoutGrantingSpecificFeats() {
     val features = Dnd35Rules.CLASSES.first { it.name == "Guerreiro" }.features
     val expectedLevels = listOf(1, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20)
