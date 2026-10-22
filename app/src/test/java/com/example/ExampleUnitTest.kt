@@ -1037,12 +1037,12 @@ class ExampleUnitTest {
   fun bardicMusicProgressionFollowsDnd35Milestones() {
     val features = Dnd35Rules.CLASSES.first { it.name == "Bardo" }.features
     val expected = mapOf(
-      1 to listOf("Música de Bardo", "Conhecimento de Bardo", "Contramúsica", "Fascinar", "Inspirar Coragem +1"),
+      1 to listOf("Música de Bardo", "Conhecimento de Bardo", "Música de Proteção", "Fascinar (1 criatura)", "Inspirar Coragem +1"),
       3 to listOf("Inspirar Competência"),
       6 to listOf("Sugestão"),
       8 to listOf("Inspirar Coragem +2"),
       9 to listOf("Inspirar Grandeza"),
-      12 to listOf("Canção da Liberdade"),
+      12 to listOf("Melodia da Libertação"),
       14 to listOf("Inspirar Coragem +3"),
       15 to listOf("Inspirar Heroísmo"),
       20 to listOf("Inspirar Coragem +4")
@@ -1062,15 +1062,15 @@ class ExampleUnitTest {
     val expected = mapOf(
       1 to listOf("Aura do Bem", "Detectar o Mal", "Destruir o Mal 1/dia"),
       2 to listOf("Graça Divina", "Imposição de Mãos"),
-      3 to listOf("Aura de Coragem", "Saúde Divina"),
+      3 to listOf("Aura de Coragem", "Saúde Divina", "Remover Doença 1/semana"),
       4 to listOf("Expulsar Mortos-Vivos", "Conjuração Divina"),
       5 to listOf("Destruir o Mal 2/dia", "Montaria Especial"),
-      6 to listOf("Remover Doença 1/semana"),
-      9 to listOf("Remover Doença 2/semana"),
+      6 to listOf("Remover Doença 2/semana"),
+      9 to listOf("Remover Doença 3/semana"),
       10 to listOf("Destruir o Mal 3/dia"),
-      12 to listOf("Remover Doença 3/semana"),
-      15 to listOf("Destruir o Mal 4/dia", "Remover Doença 4/semana"),
-      18 to listOf("Remover Doença 5/semana"),
+      12 to listOf("Remover Doença 4/semana"),
+      15 to listOf("Destruir o Mal 4/dia", "Remover Doença 5/semana"),
+      18 to listOf("Remover Doença 6/semana"),
       20 to listOf("Destruir o Mal 5/dia")
     )
 
