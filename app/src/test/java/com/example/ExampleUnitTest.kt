@@ -124,6 +124,7 @@ class ExampleUnitTest {
     val halfling = CharacterCalculator.compute(
       CharacterEntity(
         race = "Halfling",
+        size = "Pequeno",
         baseStr = 10,
         baseDex = 10,
         baseWis = 10,
@@ -267,6 +268,7 @@ class ExampleUnitTest {
     val smallCharacter = CharacterCalculator.compute(
       CharacterEntity(
         race = "Halfling",
+        size = "Pequeno",
         baseStr = 10,
         baseDex = 10,
         baseWis = 10,
@@ -286,6 +288,29 @@ class ExampleUnitTest {
     assertEquals(5, hide.totalBonus) // +4 tamanho e +1 de Destreza racial; sem bônus racial em Esconder-se
     assertEquals(0, stealth.sizeBonus)
     assertEquals(3, stealth.totalBonus) // +2 racial e +1 de Destreza racial, sem bônus de tamanho
+  }
+
+  @Test
+  fun hideSkillSizeModifierUsesCurrentCharacterSizeRatherThanBaseRaceSize() {
+    val character = CharacterCalculator.compute(
+      CharacterEntity(
+        race = "Humano",
+        size = "Grande",
+        baseStr = 10,
+        baseDex = 10,
+        baseCon = 10,
+        baseWis = 10,
+        baseInt = 10,
+        baseCha = 10,
+        skillsJson = CharacterJsonAdapters.serializeSkills(
+          listOf(CharacterSkill(name = "Esconder-se", keyAbility = "DES"))
+        )
+      )
+    )
+
+    val hide = character.computedSkills.single { it.skill.name == "Esconder-se" }
+    assertEquals(-4, hide.sizeBonus)
+    assertEquals(-4, hide.totalBonus)
   }
 
   @Test
