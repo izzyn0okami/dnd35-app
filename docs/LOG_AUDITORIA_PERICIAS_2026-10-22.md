@@ -164,7 +164,7 @@ A implementação atual usa `combinedArmorCheckPenalty = minOf(totalArmorCheckPe
 
 ## Correção de idiomas adicionais élficos
 
-- Divergência encontrada na auditoria do catálogo `LanguageRules`: as listas para Elfo, Alto Elfo e Elfo da Floresta omitiam Dracônico e Gnoll.
-- Correção proposta na branch `fix/elf-bonus-languages`: as três variantes agora incluem Dracônico, Gnoll, Gnomo, Goblin, Orc e Silvestre como opções de idiomas adicionais.
-- Foi acrescentado teste de regressão que verifica o conjunto completo para as três variantes.
+- Divergências encontradas na auditoria do catálogo `LanguageRules`: as listas para Elfo, Alto Elfo e Elfo da Floresta omitiam Dracônico e Gnoll; a variante Halfling Robusto não tinha entrada para suas regras de idioma.
+- Correção proposta na branch `fix/elf-bonus-languages`: as três variantes élficas agora incluem Dracônico, Gnoll, Gnomo, Goblin, Orc e Silvestre como opções de idiomas adicionais; Halfling Robusto recebe as mesmas regras de idiomas do Halfling.
+- Foram acrescentados testes de regressão para verificar o conjunto completo de opções élficas e a equivalência linguística entre Halfling e Halfling Robusto.
 - Ainda falta validação da CI e revisão final da PR; não houve compilação local nem teste manual no aparelho.
