@@ -188,3 +188,18 @@ A implementação atual usa `combinedArmorCheckPenalty = minOf(totalArmorCheckPe
 - Kuo-toan foi excluído porque não integra as opções de idioma da entrada Drow no Monster Manual 3.5. Não reabrir sem nova evidência ou uma decisão explícita de cenário específico.
 - O teste de regressão cobre a lista e os aliases `Drow` e `Drow (Elfo Negro)`.
 - Não houve teste manual no aparelho. A auditoria estática das opções raciais listadas em `LanguageRules` não encontrou outra discrepância confirmada nesta passagem; a continuação deve avançar para a próxima área pendente sem recriar PRs de idiomas já corrigidos.
+
+
+## Continuação — PR #94 e verificação pós-merge
+
+- PR #94 integrada por squash em 2026-10-22. Commit na `main`: `2b2fd52d5091eb542f37323e798fa80068b45491`.
+- A correção do parser de gastos mantém nomes personalizados e especialidades de Ofícios, preserva a canonização de aliases conhecidos e rejeita linhas inválidas, gastos negativos/fracionários e nomes duplicados após canonização.
+- O workflow Android Build pós-merge concluiu com sucesso no run [39762675175](https://github.com/izzyn0okami/dnd35-app/actions/runs/39762675175): testes unitários, compilação do APK de depuração e upload do artefato passaram.
+- Após o merge, a consulta não encontrou PRs abertas.
+
+## Próxima etapa de auditoria — sincronização de raça/tamanho e cálculo de perícias
+
+- Revisado o cálculo de perícias em `CalculatedCharacterStats.kt`: bônus raciais são calculados a partir da raça registrada; o modificador de tamanho para Esconder-se usa o campo `CharacterEntity.size`.
+- A criação inicial de personagem define `size` a partir de `RaceInfo.size` no repositório. Porém, `CharacterViewModel.updateGeneralInfo` recebe raça e tamanho como parâmetros independentes e grava ambos; ainda é necessário confirmar na interface se alterar a raça também atualiza o tamanho ou se o tamanho é uma escolha independente intencional.
+- **Não classificar isto como defeito confirmado ainda.** Próximo passo: rastrear o formulário de edição geral e seus testes; verificar o comportamento ao mudar entre raças Pequenas e Médias e avaliar se preservar tamanho manual é necessário para efeitos mágicos. Só propor correção se a regra de produto ficar clara e houver caso reproduzível.
+- Nenhum código foi alterado nesta etapa de inspeção. A CI pós-merge da PR #94 está aprovada; não houve teste manual no aparelho.
