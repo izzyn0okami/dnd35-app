@@ -341,6 +341,7 @@ object Dnd35Rules {
                 ClassFeature(1, "Bônus de CA sem Armadura", "Adiciona o modificador de Sabedoria à CA enquanto não usa armadura nem escudo; o bônus aumenta em +1 a cada 5 níveis."),
                 ClassFeature(1, "Rajada de Golpes", "Pode realizar ataques adicionais na rajada conforme a progressão de nível, usando as penalidades indicadas na tabela do Monge."),
                 ClassFeature(1, "Ataque Desarmado Aprimorado", "Recebe o talento Ataque Desarmado Aprimorado como talento bônus; seus ataques desarmados causam dano letal e podem atingir criaturas com armas naturais."),
+                ClassFeature(1, "Talento Bônus de Monge (1º nível)", "Escolhe Agarrar Aprimorado ou Ataque Atordoante como talento adicional, sem precisar cumprir os pré-requisitos."),
                 ClassFeature(2, "Talento Bônus de Monge (2º nível)", "Recebe um talento bônus da lista de talentos permitidos para monge, atendendo aos pré-requisitos.") ,
                 ClassFeature(2, "Evasão", "Não sofre dano em um teste de Reflexos bem-sucedido contra um efeito que normalmente causa metade do dano."),
                 ClassFeature(3, "Mente Tranquila", "+2 nos testes de resistência contra magias e efeitos da escola de encantamento."),
