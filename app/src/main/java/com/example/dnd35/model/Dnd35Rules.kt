@@ -204,12 +204,17 @@ object Dnd35Rules {
                 ClassFeature(3, "Sentir Armadilhas +1", "+1 nos testes de Reflexos e CA contra armadilhas."),
                 ClassFeature(4, "Fúria 2/dia", "Pode entrar em fúria 2 vezes ao dia."),
                 ClassFeature(5, "Esquiva Sobrenatural Aprimorada", "Não pode ser flanqueado exceto por ladino 4 níveis acima."),
-                ClassFeature(7, "Redução de Dano 1/-", "Ignora o primeiro ponto de dano físico de cada ataque."),
+                ClassFeature(7, "Redução de Dano 1/-", "Reduz em 1 o dano de cada ataque sofrido."),
                 ClassFeature(8, "Fúria 3/dia", "Pode entrar em fúria 3 vezes ao dia."),
+                ClassFeature(10, "Redução de Dano 2/-", "Reduz em 2 o dano de cada ataque sofrido."),
                 ClassFeature(11, "Fúria Maior", "Bônus de fúria sobem para +6 FOR, +6 CON, +3 Vontade."),
-                ClassFeature(14, "Vontade Indomável", "+4 em testes de Vontade contra encantamentos em fúria."),
-                ClassFeature(17, "Fúria Incansável", "Não fica fadigado após terminar a fúria."),
-                ClassFeature(20, "Fúria Poderosa", "Bônus sobem para +8 FOR, +8 CON, +4 Vontade.")
+                ClassFeature(12, "Fúria 4/dia", "Pode entrar em fúria 4 vezes ao dia."),
+                ClassFeature(13, "Redução de Dano 3/-", "Reduz em 3 o dano de cada ataque sofrido."),
+                ClassFeature(14, "Vontade Indomável", "+4 em testes de Vontade contra encantamentos enquanto em fúria."),
+                ClassFeature(16, "Fúria 5/dia e Redução de Dano 4/-", "Pode entrar em fúria 5 vezes ao dia e reduz em 4 o dano de cada ataque sofrido."),
+                ClassFeature(17, "Fúria Incansável", "Não fica fatigado após terminar a fúria."),
+                ClassFeature(19, "Redução de Dano 5/-", "Reduz em 5 o dano de cada ataque sofrido."),
+                ClassFeature(20, "Fúria Poderosa e Fúria 6/dia", "Bônus de fúria sobem para +8 FOR, +8 CON, +4 Vontade e pode entrar em fúria 6 vezes ao dia.")
             ),
             description = "Guerreiro feroz com fúria de batalha primata, dado de vida d12 e grande resistência."
         ),
