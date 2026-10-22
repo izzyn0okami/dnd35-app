@@ -391,7 +391,9 @@ object CharacterCalculator {
             maxOf(0, wisMod) + (monkLevel / 5)
         } else 0
 
-        val combinedArmorCheckPenalty = totalArmorCheckPenalty + encumbrance.armorCheckPenalty
+        // A penalidade de carga não se soma à penalidade da armadura: usa-se a pior das duas.
+        // A penalidade do escudo já está incluída em totalArmorCheckPenalty.
+        val combinedArmorCheckPenalty = minOf(totalArmorCheckPenalty, encumbrance.armorCheckPenalty)
 
         val acSizeMod = Dnd35Rules.getArmorClassSizeModifier(character.size)
 
