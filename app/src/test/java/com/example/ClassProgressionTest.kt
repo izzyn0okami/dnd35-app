@@ -40,6 +40,23 @@ class ClassProgressionTest {
     }
 
     @Test
+    fun barbarianTrapSenseIncreasesEveryThreeLevels() {
+        val barbarian = Dnd35Rules.CLASSES.single { it.name == "Bárbaro" }
+        val trapSense = barbarian.features.filter { it.name.startsWith("Sentir Armadilhas") }
+            .associate { it.level to it.name }
+
+        assertEquals(mapOf(3 to "Sentir Armadilhas +1", 6 to "Sentir Armadilhas +2",
+            9 to "Sentir Armadilhas +3", 12 to "Sentir Armadilhas +4",
+            15 to "Sentir Armadilhas +5", 18 to "Sentir Armadilhas +6"), trapSense)
+    }
+
+    @Test
+    fun bardGainsMassSuggestionAtLevelEighteen() {
+        val bard = Dnd35Rules.CLASSES.single { it.name == "Bardo" }
+        assertEquals(1, bard.features.count { it.level == 18 && it.name == "Sugestão em Massa" })
+    }
+
+    @Test
     fun representativeClassProgressionsMatchThePlayerHandbook() {
         val classes = Dnd35Rules.CLASSES.associateBy { it.name }
 
