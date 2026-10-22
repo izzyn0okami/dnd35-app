@@ -19,6 +19,7 @@ import com.example.dnd35.model.CharacterCalculator
 import com.example.dnd35.model.CharacterEntity
 import com.example.dnd35.model.Dnd35Rules
 import java.io.File
+import java.util.Locale
 import java.io.FileOutputStream
 
 object CharacterPdfExporter {
@@ -305,7 +306,7 @@ object CharacterPdfExporter {
                 val totalStr = if (sk.totalBonus >= 0) "+${sk.totalBonus}" else "${sk.totalBonus}"
                 val classMarker = if (sk.isClassSkill) "★" else " "
                 canvas2.drawText("$classMarker ${sk.skill.name.take(18)}", 36f, sk1Y, if (sk.ranks > 0) boldBodyPaint else bodyPaint)
-                canvas2.drawText("${sk.skill.keyAbility}  G:${sk.ranks.toInt()}  Tot: $totalStr", 195f, sk1Y, boldBodyPaint)
+                canvas2.drawText("${sk.skill.keyAbility}  G:${formatRanks(sk.ranks)}  Tot: $totalStr", 195f, sk1Y, boldBodyPaint)
                 sk1Y += 23f
             }
 
@@ -398,6 +399,15 @@ object CharacterPdfExporter {
         } catch (e: Exception) {
             e.printStackTrace()
             Toast.makeText(context, "Erro ao gerar PDF: ${e.localizedMessage}", Toast.LENGTH_LONG).show()
+        }
+    }
+
+    /** Exibe graduações fracionárias no PDF sem alterar o bônus dos testes. */
+    private fun formatRanks(ranks: Float): String {
+        return if (ranks % 1f == 0f) {
+            ranks.toInt().toString()
+        } else {
+            String.format(Locale.ROOT, "%.1f", ranks).replace('.', ',')
         }
     }
 
