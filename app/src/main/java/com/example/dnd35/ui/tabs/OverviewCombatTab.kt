@@ -33,6 +33,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
+import androidx.compose.material3.Slider
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -41,6 +42,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
@@ -68,6 +71,7 @@ fun OverviewCombatTab(
     character: CharacterEntity
 ) {
     var showPhotoModal by remember { mutableStateOf(false) }
+    var portraitZoom by remember { mutableStateOf(1f) }
     var showGeneralInfoModal by remember { mutableStateOf(false) }
     var showArmorModal by remember { mutableStateOf(false) }
     var showMulticlassModal by remember { mutableStateOf(false) }
@@ -82,44 +86,57 @@ fun OverviewCombatTab(
             .padding(horizontal = 14.dp, vertical = 8.dp)
             .testTag("overview_tab")
     ) {
-        // 1. Cabeçalho do Herói (Avatar + Dados Principais)
+        // 1. Cabeçalho do Herói: retrato amplo com painel de informações sobreposto.
         item {
-            Card(
+            Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .clickable { showGeneralInfoModal = true },
-                shape = RoundedCornerShape(16.dp),
-                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant),
-                elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+                    .height(290.dp)
+                    .clip(RectangleShape)
+                    .testTag("character_hero_header")
             ) {
-                Row(
-                    modifier = Modifier.padding(14.dp),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Box(
-                        modifier = Modifier
-                            .clickable { showPhotoModal = true }
-                            .padding(end = 14.dp)
-                    ) {
-                        CharacterAvatar(
-                            photoUri = character.photoUri,
-                            modifier = Modifier
-                                .size(74.dp)
-                                .border(2.5.dp, DndGold, CircleShape)
-                        )
-                        Box(
-                            modifier = Modifier
-                                .align(Alignment.BottomEnd)
-                                .size(24.dp)
-                                .clip(CircleShape)
-                                .background(DndGold),
-                            contentAlignment = Alignment.Center
-                        ) {
-                            Icon(Icons.Default.Edit, contentDescription = "Trocar Foto", tint = Color.Black, modifier = Modifier.size(14.dp))
-                        }
-                    }
+                CharacterAvatar(
+                    photoUri = character.photoUri,
+                    shape = RectangleShape,
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .graphicsLayer(scaleX = portraitZoom, scaleY = portraitZoom)
+                        .clickable { showPhotoModal = true }
+                )
 
-                    Column(modifier = Modifier.weight(1f)) {
+                // Pequeno controle de edição da foto, sem cobrir o rosto.
+                Box(
+                    modifier = Modifier
+                        .align(Alignment.TopEnd)
+                        .padding(10.dp)
+                        .size(34.dp)
+                        .clip(CircleShape)
+                        .background(Color.Black.copy(alpha = 0.58f))
+                        .clickable { showPhotoModal = true },
+                    contentAlignment = Alignment.Center
+                ) {
+                    Icon(
+                        Icons.Default.Edit,
+                        contentDescription = "Trocar Foto",
+                        tint = Color.White,
+                        modifier = Modifier.size(18.dp)
+                    )
+                }
+
+                Card(
+                    modifier = Modifier
+                        .align(Alignment.BottomEnd)
+                        .padding(10.dp)
+                        .fillMaxWidth(0.76f)
+                        .clickable { showGeneralInfoModal = true }
+                        .testTag("character_hero_info"),
+                    shape = RoundedCornerShape(8.dp),
+                    colors = CardDefaults.cardColors(
+                        containerColor = MaterialTheme.colorScheme.surface.copy(alpha = 0.94f)
+                    ),
+                    elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
+                ) {
+                    Column(modifier = Modifier.padding(horizontal = 14.dp, vertical = 12.dp)) {
                         Row(
                             verticalAlignment = Alignment.CenterVertically,
                             horizontalArrangement = Arrangement.SpaceBetween,
@@ -127,22 +144,30 @@ fun OverviewCombatTab(
                         ) {
                             Text(
                                 text = character.name,
-                                style = MaterialTheme.typography.titleLarge,
+                                style = MaterialTheme.typography.titleMedium,
                                 fontWeight = FontWeight.ExtraBold,
-                                color = MaterialTheme.colorScheme.onSurface
+                                color = MaterialTheme.colorScheme.onSurface,
+                                modifier = Modifier.weight(1f)
                             )
-                            Icon(Icons.Default.Edit, contentDescription = "Editar", tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(18.dp))
+                            Icon(
+                                Icons.Default.Edit,
+                                contentDescription = "Editar Informações",
+                                tint = MaterialTheme.colorScheme.primary,
+                                modifier = Modifier
+                                    .padding(start = 6.dp)
+                                    .size(17.dp)
+                            )
                         }
-                        Spacer(modifier = Modifier.height(2.dp))
+                        Spacer(modifier = Modifier.height(5.dp))
                         Text(
                             text = "${stats.classesDisplay} • Nível ${stats.totalCharacterLevel}",
                             style = MaterialTheme.typography.titleSmall,
                             fontWeight = FontWeight.Bold,
                             color = MaterialTheme.colorScheme.primary
                         )
-                        Spacer(modifier = Modifier.height(2.dp))
+                        Spacer(modifier = Modifier.height(3.dp))
                         Text(
-                            text = "${character.race} • ${character.alignment} • ${character.size}",
+                            text = "${character.race} • ${character.alignment}",
                             style = MaterialTheme.typography.bodySmall,
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
@@ -155,6 +180,32 @@ fun OverviewCombatTab(
                         }
                     }
                 }
+            }
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 4.dp, vertical = 2.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    "Enquadramento",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+                Slider(
+                    value = portraitZoom,
+                    onValueChange = { portraitZoom = it },
+                    valueRange = 1f..2f,
+                    modifier = Modifier
+                        .weight(1f)
+                        .padding(start = 10.dp)
+                        .testTag("portrait_zoom_slider")
+                )
+                Text(
+                    "${(portraitZoom * 100).toInt()}%",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = MaterialTheme.colorScheme.primary
+                )
             }
             Spacer(modifier = Modifier.height(12.dp))
         }

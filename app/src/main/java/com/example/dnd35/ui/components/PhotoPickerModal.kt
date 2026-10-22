@@ -34,6 +34,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -184,7 +185,8 @@ fun PresetAvatarCard(
 @Composable
 fun CharacterAvatar(
     photoUri: String?,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    shape: Shape = CircleShape
 ) {
     val context = LocalContext.current
 
@@ -198,7 +200,7 @@ fun CharacterAvatar(
             Image(
                 painter = painterResource(id = defaultRes),
                 contentDescription = "Avatar do Personagem",
-                modifier = modifier.clip(CircleShape),
+                modifier = modifier.clip(shape),
                 contentScale = ContentScale.Crop
             )
         } else {
@@ -218,7 +220,7 @@ fun CharacterAvatar(
             Image(
                 painter = painterResource(id = resId),
                 contentDescription = "Avatar",
-                modifier = modifier.clip(CircleShape),
+                modifier = modifier.clip(shape),
                 contentScale = ContentScale.Crop
             )
         } else {
@@ -231,7 +233,7 @@ fun CharacterAvatar(
                 .crossfade(true)
                 .build(),
             contentDescription = "Foto Personalizada",
-            modifier = modifier.clip(CircleShape),
+            modifier = modifier.clip(shape),
             contentScale = ContentScale.Crop
         )
     }
