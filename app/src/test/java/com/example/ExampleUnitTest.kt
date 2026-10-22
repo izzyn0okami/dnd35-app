@@ -830,6 +830,29 @@ class ExampleUnitTest {
   }
 
   @Test
+  fun bardicMusicProgressionFollowsDnd35Milestones() {
+    val features = Dnd35Rules.CLASSES.first { it.name == "Bardo" }.features
+    val expected = mapOf(
+      1 to listOf("Música de Bardo", "Conhecimento de Bardo", "Contramúsica", "Fascinar", "Inspirar Coragem +1"),
+      3 to listOf("Inspirar Competência"),
+      6 to listOf("Sugestão"),
+      8 to listOf("Inspirar Coragem +2"),
+      9 to listOf("Inspirar Grandeza"),
+      12 to listOf("Canção da Liberdade"),
+      14 to listOf("Inspirar Coragem +3"),
+      15 to listOf("Inspirar Heroísmo"),
+      20 to listOf("Inspirar Coragem +4")
+    )
+
+    expected.forEach { (level, names) ->
+      names.forEach { name ->
+        assertTrue("Habilidade de Bardo ausente no nível $level: $name",
+          features.any { it.level == level && it.name == name })
+      }
+    }
+  }
+
+  @Test
   fun paladinCoreClassFeaturesFollowDnd35Progression() {
     val features = Dnd35Rules.CLASSES.first { it.name == "Paladino" }.features
     val expected = mapOf(
