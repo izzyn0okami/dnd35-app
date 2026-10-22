@@ -12,7 +12,7 @@ import com.example.dnd35.model.SkillPointLevelRecord
 import com.example.dnd35.model.parseSkillPointAllocations
 import com.example.dnd35.model.parseWholeSkillPointBudget
 import com.example.dnd35.model.Dnd35Rules
-import com.example.dnd35.model.SaveProgression
+import com.example.dnd35.model.Dnd35Rules.SaveProgression
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
