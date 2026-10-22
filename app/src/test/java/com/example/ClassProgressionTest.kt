@@ -51,6 +51,15 @@ class ClassProgressionTest {
     }
 
     @Test
+    fun monkBonusFeatsAndGreaterFlurryAreRepresentedAtCorrectLevels() {
+        val monk = Dnd35Rules.CLASSES.single { it.name == "Monge" }
+        assertEquals(1, monk.features.count { it.level == 2 && it.name == "Talento Bônus de Monge (2º nível)" })
+        assertEquals(1, monk.features.count { it.level == 6 && it.name == "Talento Bônus de Monge (6º nível)" })
+        assertEquals("Recebe um segundo ataque adicional na rajada de golpes, também com o bônus base de ataque máximo.",
+            monk.features.single { it.level == 11 && it.name == "Rajada Maior" }.description)
+    }
+
+    @Test
     fun bardGainsMassSuggestionAtLevelEighteen() {
         val bard = Dnd35Rules.CLASSES.single { it.name == "Bardo" }
         assertEquals(1, bard.features.count { it.level == 18 && it.name == "Sugestão em Massa" })
