@@ -503,7 +503,18 @@ object CharacterCalculator {
                     "paladino", "ranger" -> detail.entry.level - 3
                     else -> detail.entry.level
                 }
-                val dcMap = (0..9).associateWith { lvl -> 10 + lvl + mod }
+                val dcMap = when (className.lowercase()) {
+                    "paladino", "ranger" -> {
+                        val maxSpellLevel = when {
+                            detail.entry.level >= 14 -> 4
+                            detail.entry.level >= 11 -> 3
+                            detail.entry.level >= 8 -> 2
+                            else -> 1
+                        }
+                        (1..maxSpellLevel).associateWith { lvl -> 10 + lvl + mod }
+                    }
+                    else -> (0..9).associateWith { lvl -> 10 + lvl + mod }
+                }
                 CasterClassInfo(
                     className = className,
                     casterLevel = casterLevel,
