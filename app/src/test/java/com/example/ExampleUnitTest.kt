@@ -841,6 +841,7 @@ class ExampleUnitTest {
       "Forma Selvagem (Miúdo)" to 10,
       "Forma Selvagem (Planta)" to 12,
       "Forma Selvagem 5/dia" to 13,
+      "Mil Faces" to 13,
       "Corpo Atemporal e Forma Selvagem (Enorme)" to 15,
       "Forma Selvagem Elemental 1/dia" to 16,
       "Forma Selvagem Elemental 2/dia" to 18,
