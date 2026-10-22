@@ -87,6 +87,24 @@ class ClassProgressionTest {
     }
 
     @Test
+    fun paladinRemoveDiseaseProgressesEveryThreeLevelsStartingAtThree() {
+        val paladin = Dnd35Rules.CLASSES.single { it.name == "Paladino" }
+        val removeDisease = paladin.features.filter { it.name.startsWith("Remover Doença") }
+            .associate { it.level to it.name }
+        assertEquals(
+            mapOf(
+                3 to "Remover Doença 1/semana",
+                6 to "Remover Doença 2/semana",
+                9 to "Remover Doença 3/semana",
+                12 to "Remover Doença 4/semana",
+                15 to "Remover Doença 5/semana",
+                18 to "Remover Doença 6/semana"
+            ),
+            removeDisease
+        )
+    }
+
+    @Test
     fun rogueTrapSenseIncreasesEveryThreeLevels() {
         val rogue = Dnd35Rules.CLASSES.single { it.name == "Ladino" }
         val trapSense = rogue.features.filter { it.name.startsWith("Sentir Armadilhas") }
