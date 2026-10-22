@@ -69,7 +69,7 @@ fun ManageMulticlassDialog(
     // Humanos e meio-elfos consideram qualquer classe como favorecida.
     val anyClassFavored = race.favoredClass.equals("Qualquer", ignoreCase = true)
     val effectiveFavored = if (anyClassFavored) {
-        "Qualquer classe"
+        classesList.maxByOrNull { it.level }?.className ?: "Qualquer classe"
     } else {
         race.favoredClass
     }
@@ -99,6 +99,7 @@ fun ManageMulticlassDialog(
     val offendingClasses = xpPenalty.offendingClasses
     val xpPenaltyPercent = xpPenalty.percentage
     val hasXpPenalty = xpPenaltyPercent > 0
+    val exemptClassName = xpPenalty.exemptClassName ?: effectiveFavored
 
     val availableClassesToAdd = Dnd35Rules.CLASSES.filter { c ->
         classesList.none { it.className.equals(c.name, ignoreCase = true) }
@@ -127,7 +128,7 @@ fun ManageMulticlassDialog(
                     items(classesList) { entry ->
                         val info = Dnd35Rules.CLASSES.find { it.name.equals(entry.className, ignoreCase = true) }
                             ?: Dnd35Rules.CLASSES.first()
-                        val isFavored = anyClassFavored || entry.className.equals(effectiveFavored, ignoreCase = true)
+                        val isFavored = entry.className.equals(effectiveFavored, ignoreCase = true)
 
                         val babPart = Dnd35Rules.calculateBaseAttackBonus(info.babType, entry.level)
                         val fortPart = Dnd35Rules.calculateBaseSave(info.fortType, entry.level)
@@ -165,7 +166,7 @@ fun ManageMulticlassDialog(
                                             Spacer(modifier = Modifier.width(6.dp))
                                             Row(verticalAlignment = Alignment.CenterVertically) {
                                                 Icon(Icons.Default.Star, contentDescription = null, tint = DndGold, modifier = Modifier.size(14.dp))
-                                                Text("Favorecida", style = MaterialTheme.typography.labelSmall, color = DndGold, fontWeight = FontWeight.Bold)
+                                                Text(if (anyClassFavored) "Isenta de XP" else "Favorecida", style = MaterialTheme.typography.labelSmall, color = DndGold, fontWeight = FontWeight.Bold)
                                             }
                                         }
                                     }
@@ -329,7 +330,7 @@ fun ManageMulticlassDialog(
                                 "Classes não favorecidas diferem em 2 ou mais níveis (${offendingClasses.joinToString { it.className }}). Favorecida: $effectiveFavored."
                             } else {
                                 if (anyClassFavored) {
-                                    "Sua raça considera qualquer classe como favorecida; não há penalidade de XP por multiclasse."
+                                    "A classe de nível mais alto ($exemptClassName) é desconsiderada no cálculo; as demais classes ainda podem gerar penalidade."
                                 } else {
                                     "Suas classes estão equilibradas ou protegidas pela classe favorecida ($effectiveFavored)."
                                 }
