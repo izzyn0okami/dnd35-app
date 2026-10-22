@@ -42,6 +42,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
@@ -90,11 +91,12 @@ fun OverviewCombatTab(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(290.dp)
-                    .clip(RoundedCornerShape(8.dp))
+                    .clip(RectangleShape)
                     .testTag("character_hero_header")
             ) {
                 CharacterAvatar(
                     photoUri = character.photoUri,
+                    shape = RectangleShape,
                     modifier = Modifier
                         .fillMaxSize()
                         .graphicsLayer(scaleX = portraitZoom, scaleY = portraitZoom)
