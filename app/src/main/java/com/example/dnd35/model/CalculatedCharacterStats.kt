@@ -567,7 +567,7 @@ object CharacterCalculator {
             val sizeBonus = sizeSkillBonus(character.size, canonicalSkillName)
             val hasArmorPenalty = def?.armorCheckPenaltyApplies ?: false
             val appliedPenalty = if (hasArmorPenalty) {
-                if (skill.name.equals("Natação", ignoreCase = true)) {
+                if (canonicalSkillName.equals("Natação", ignoreCase = true)) {
                     combinedArmorCheckPenalty * 2
                 } else {
                     combinedArmorCheckPenalty

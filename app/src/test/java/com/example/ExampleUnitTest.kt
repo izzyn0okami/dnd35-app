@@ -559,7 +559,7 @@ class ExampleUnitTest {
       notes = "Pen -3"
     )
     val skills = listOf(
-      CharacterSkill(name = "Natação", keyAbility = "FOR", ranks = 1f),
+      CharacterSkill(name = "  Natação  ", keyAbility = "FOR", ranks = 1f),
       CharacterSkill(name = "Escalar", keyAbility = "FOR", ranks = 1f)
     )
     val stats = CharacterCalculator.compute(
