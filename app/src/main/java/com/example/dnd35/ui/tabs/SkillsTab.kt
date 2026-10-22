@@ -56,6 +56,7 @@ import com.example.dnd35.model.estimateSkillPointsForLevel
 import com.example.dnd35.ui.dialogs.DiceRollDialog
 import com.example.dnd35.viewmodel.CharacterViewModel
 import com.example.dnd35.viewmodel.isValidEditedSkillRanks
+import com.example.dnd35.viewmodel.skillRankAdjustmentStep
 import com.example.ui.theme.DndCrimson
 import com.example.ui.theme.DndGold
 import com.example.ui.theme.DndHpGreen
@@ -496,11 +497,11 @@ fun SkillsTab(
             SkillItemRow(
                 computed = item,
                 onAddRank = {
-                    val step = if (item.isClassSkill) 1.0f else 0.5f
+                    val step = skillRankAdjustmentStep(item.ranks, item.isClassSkill)
                     viewModel.updateSkill(item.skill.name, minOf(item.maxRanks, item.ranks + step), item.miscBonus, item.isClassSkill)
                 },
                 onSubRank = {
-                    val step = if (item.isClassSkill) 1.0f else 0.5f
+                    val step = skillRankAdjustmentStep(item.ranks, item.isClassSkill)
                     viewModel.updateSkill(item.skill.name, (item.ranks - step).coerceAtLeast(0f), item.miscBonus, item.isClassSkill)
                 },
                 onEdit = { editingSkill = item },
