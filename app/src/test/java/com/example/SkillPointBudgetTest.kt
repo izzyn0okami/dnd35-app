@@ -50,6 +50,7 @@ class SkillPointBudgetTest {
             parseSkillPointAllocations("Saltar = 2\nEscalar = 1")
         )
         assertNull(parseSkillPointAllocations("Saltar = 2\nSaltar = 1"))
+        assertNull(parseSkillPointAllocations("Perícia inexistente = 2"))
         assertNull(parseSkillPointAllocations("Escalar = -1"))
         assertNull(parseSkillPointAllocations("Escalar = 1.5"))
     }
