@@ -468,8 +468,8 @@ object Dnd35Rules {
             spellCastingAbility = "CAR",
             classSkills = listOf("Concentração", "Conhecimento (Arcano)", "Identificar Magia", "Ofícios", "Profissão"),
             features = listOf(
-                ClassFeature(1, "Conjuração Espontânea", "Conjura feitiços arcanos instantaneamente sem necessidade de preparar em grimório."),
-                ClassFeature(1, "Invocar Familiar", "Vínculo místico com animal companheiro (Corvo, Gato, Cobra, Sapo, etc.).")
+                ClassFeature(1, "Conjuração Espontânea", "Conjura magias arcanas sem prepará-las antecipadamente; conhece um repertório limitado de magias e tem um limite diário de usos por nível."),
+                ClassFeature(1, "Invocar Familiar", "Obtém um familiar mágico que compartilha benefícios especiais com o feiticeiro; não é a habilidade Companheiro Animal do druida ou ranger.")
             ),
             description = "Conjurador nato com o poder de dragões ou seres arcanos fluindo diretamente no sangue."
         ),
@@ -485,15 +485,15 @@ object Dnd35Rules {
             classSkills = listOf("Concentração", "Conhecimento (Arcano)", "Conhecimento (Arquitetura e Engenharia)", "Conhecimento (Geografia)", "Conhecimento (História)", "Conhecimento (Local)", "Conhecimento (Masmorras)", "Conhecimento (Natureza)", "Conhecimento (Nobreza e Realeza)", "Conhecimento (Planos)", "Conhecimento (Religião)", "Decifrar Escrita", "Identificar Magia", "Ofícios", "Profissão"),
             features = listOf(
                 ClassFeature(1, "Preparação com Grimório", "Estuda e prepara magias diárias a partir do seu livro de feitiços."),
-                ClassFeature(1, "Escrever Pergaminho", "Talento de criação de itens gratuito no 1º nível."),
-                ClassFeature(1, "Invocar Familiar", "Companheiro animal mágico."),
-                ClassFeature(1, "Especialização em Escola (Opcional)", "Ganha 1 espaço extra por nível na escola escolhida (Abjuração, Evocação, etc.) elegendo 2 escolas proibidas."),
-                ClassFeature(5, "Talento Bônus de Mago (5º Nv)", "Talento metamágico ou de criação de item."),
-                ClassFeature(10, "Talento Bônus de Mago (10º Nv)", "Talento metamágico ou de criação."),
-                ClassFeature(15, "Talento Bônus de Mago (15º Nv)", "Talento metamágico ou de criação."),
-                ClassFeature(20, "Talento Bônus de Mago (20º Nv)", "Talento metamágico supremo.")
+                ClassFeature(1, "Escrever Pergaminho", "Recebe Escrever Pergaminho como talento bônus no 1º nível."),
+                ClassFeature(1, "Invocar Familiar", "Obtém um familiar mágico que concede benefícios especiais; não é um companheiro animal comum."),
+                ClassFeature(1, "Especialização em Escola (Opcional)", "Se especializar, recebe uma magia preparada adicional por nível de magia da escola escolhida e perde acesso às escolas proibidas; um especialista em Adivinhação escolhe apenas uma escola proibida."),
+                ClassFeature(5, "Talento Bônus de Mago (5º Nv)", "Recebe um talento bônus de metamagia, criação de item ou Maestria em Magia, se cumprir os pré-requisitos."),
+                ClassFeature(10, "Talento Bônus de Mago (10º Nv)", "Recebe um talento bônus de metamagia, criação de item ou Maestria em Magia, se cumprir os pré-requisitos."),
+                ClassFeature(15, "Talento Bônus de Mago (15º Nv)", "Recebe um talento bônus de metamagia, criação de item ou Maestria em Magia, se cumprir os pré-requisitos."),
+                ClassFeature(20, "Talento Bônus de Mago (20º Nv)", "Recebe um talento bônus de metamagia, criação de item ou Maestria em Magia, se cumprir os pré-requisitos.")
             ),
-            description = "Sábio estudioso das artes arcanas universais, capaz de dominar todo e qualquer feitiço existente."
+            description = "Estudioso das artes arcanas que prepara magias a partir de um grimório e pode ampliar seu repertório ao aprender novas magias."
         )
     )
 
