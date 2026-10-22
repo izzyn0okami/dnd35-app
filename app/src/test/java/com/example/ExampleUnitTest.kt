@@ -1232,7 +1232,7 @@ class ExampleUnitTest {
         "Blefar", "Decifrar Escrita", "Diplomacia", "Disfarces", "Equilíbrio",
         "Escalar", "Esconder-se", "Falsificação", "Furtividade", "Intimidação",
         "Natação", "Observar", "Obter Informação", "Ofícios", "Operar Mecanismo",
-        "Ouvir", "Prestidigitação", "Profissão", "Procurar", "Saltar", "Sentir Motivação",
+        "Ouvir", "Prestidigitação", "Profissão", "Conhecimento (Local)", "Procurar", "Saltar", "Sentir Motivação",
         "Usar Cordas", "Usar Instrumento Mágico"
       ),
       "Mago" to setOf(
