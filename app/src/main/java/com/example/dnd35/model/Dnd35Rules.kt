@@ -148,7 +148,7 @@ object Dnd35Rules {
         ),
         RaceInfo(
             name = "Meio-Elfo",
-            traits = "Visão na penumbra, +2 em Obter Informação e Diplomacia, +1 em Ouvir, Procurar e Observar, sangue élfico.",
+            traits = "Imunidade a sono mágico, +2 nos testes de resistência contra encantamentos, Visão na penumbra, +2 em Obter Informação e Diplomacia, +1 em Ouvir, Procurar e Observar, sangue élfico.",
             favoredClass = "Qualquer"
         ),
         RaceInfo(
