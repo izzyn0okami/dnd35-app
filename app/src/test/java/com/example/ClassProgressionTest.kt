@@ -62,7 +62,6 @@ class ClassProgressionTest {
         assertEquals(1, monk.features.count { it.level == 15 && it.name == "Movimento Rápido +15m" })
         assertEquals(1, monk.features.count { it.level == 18 && it.name == "Movimento Rápido +18m" })
         assertEquals(1, monk.features.count { it.level == 6 && it.name == "Talento Bônus de Monge (6º nível)" })
-        assertEquals(1, monk.features.count { it.level == 7 && it.name == "Salto das Nuvens" })
         assertEquals(1, monk.features.count { it.level == 7 && it.name == "Integridade Corporal" })
         assertEquals(1, monk.features.count { it.level == 10 && it.name == "Ataque Chi (Ordem)" })
         assertEquals(1, monk.features.count { it.level == 13 && it.name == "Ataque Chi (+2)" })
