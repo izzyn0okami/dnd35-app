@@ -646,6 +646,27 @@ object Dnd35Rules {
         else -> name.trim()
     }
 
+    /** Ofícios (especialidade) é uma perícia própria, mas herda a classificação e o atributo de Ofícios. */
+    fun isCraftSpecialty(name: String): Boolean {
+        val normalized = canonicalSkillName(name)
+        return normalized.startsWith("Ofícios (", ignoreCase = true) &&
+            normalized.endsWith(")") &&
+            normalized.substringAfter("Ofícios (", "").removeSuffix(")").isNotBlank()
+    }
+
+    fun classSkillMatches(skillName: String, listedClassSkill: String): Boolean {
+        val skill = canonicalSkillName(skillName)
+        val listed = canonicalSkillName(listedClassSkill)
+        return skill.equals(listed, ignoreCase = true) ||
+            (listed.equals("Ofícios", ignoreCase = true) && isCraftSpecialty(skill))
+    }
+
+    fun canonicalSkillKeyAbility(skillName: String, fallback: String): String {
+        val canonical = canonicalSkillName(skillName)
+        return SKILL_DEFINITIONS.firstOrNull { it.name.equals(canonical, ignoreCase = true) }?.keyAbility
+            ?: if (isCraftSpecialty(canonical)) "INT" else fallback
+    }
+
     // Perícias canônicas de D&D 3.5, usando os nomes da tradução portuguesa.
     data class SkillDefinition(
         val name: String,
