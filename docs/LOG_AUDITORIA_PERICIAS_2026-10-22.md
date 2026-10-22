@@ -141,3 +141,12 @@ A implementação atual usa `combinedArmorCheckPenalty = minOf(totalArmorCheckPe
 - A auditoria completa das listas de perícias de classe das onze classes ainda está pendente, assim como a comparação sistemática de `trainedOnly` e `armorCheckPenaltyApplies` para todas as perícias com o SRD.
 - A próxima etapa é concluir essa comparação antes de qualquer nova alteração de código. Correções só devem ser propostas com discrepância demonstrada e teste de regressão quando aplicável.
 - Esta atualização é documental. Nenhum teste Gradle foi executado por meio desta operação.
+
+
+## Correção de auditoria — perícias de classe do Feiticeiro
+
+- Evidência nova: a referência oficial SRD 3.5 lista **Bluff (Blefar)** entre as perícias de classe do Sorcerer/Feiticeiro, junto de Concentração, Ofícios, Conhecimento (Arcano), Profissão e Identificar Magia (Spellcraft). Fonte: https://www.d20srd.org/srd/classes/sorcererWizard.htm.
+- Revisão de histórico: a PR #21 removeu Blefar com a justificativa incorreta de que não fazia parte da lista padrão. A conclusão anterior e o teste que a perpetuava estavam errados; esta correção revoga somente essa decisão, com base na fonte oficial.
+- Alteração proposta nesta branch: adicionar Blefar a `Dnd35Rules.CLASSES` para o Feiticeiro e atualizar `sorcererClassSkillsMatchCoreSkillList` para exigir sua presença.
+- Não foram alteradas outras classes, perícias, graduações ou fichas salvas.
+- Validação pendente: CI da PR e revisão do diff; nenhum teste local/Gradle foi executado por esta operação.
