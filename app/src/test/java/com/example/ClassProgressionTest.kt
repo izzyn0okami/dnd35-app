@@ -75,6 +75,12 @@ class ClassProgressionTest {
         assertEquals(1, monk.features.count { it.level == 16 && it.name == "Ataque Chi (Adamante)" })
         assertEquals("Recebe um segundo ataque adicional na rajada de golpes, também com o bônus base de ataque máximo.",
             monk.features.single { it.level == 11 && it.name == "Rajada Maior" }.description)
+        assertTrue(monk.features.single { it.level == 3 && it.name == "Movimento Rápido +3m" }
+            .description.contains("carga média ou pesada"))
+        assertTrue(monk.features.single { it.level == 1 && it.name == "Bônus de CA sem Armadura" }
+            .description.contains("apenas carga leve"))
+        assertTrue(monk.features.single { it.level == 2 && it.name == "Evasão" }
+            .description.contains("armadura leve"))
     }
 
     @Test
