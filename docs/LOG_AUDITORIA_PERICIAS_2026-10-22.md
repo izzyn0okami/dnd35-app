@@ -85,3 +85,26 @@ Continuar a auditoria sem editar código: rastrear a origem e a composição das
 - PR #81: integrada.
 - PR #82: integrada; CI aprovada.
 - Próxima verificação: rastrear o campo de penalidade no formulário de armadura/escudo, o valor salvo e a rolagem de perícias; depois retomar a comparação de definições e listas com as regras oficiais.
+
+## Auditoria complementar — formulário de inventário e listas de perícias de classe
+
+### Fluxo da penalidade de armadura até a rolagem
+
+- Inspecionado `app/src/main/java/com/example/dnd35/ui/dialogs/AddEditItemDialog.kt`: o campo “Propriedades / Detalhes” tem placeholder `Des Max +3, Pen -2`; ao salvar, o texto é atribuído a `CharacterInventoryItem.notes`.
+- Inspecionado `CharacterModels.kt`: `CharacterInventoryItem` mantém `notes` como campo persistido do item.
+- Inspecionado `CalculatedCharacterStats.kt`: para armaduras e escudos equipados, o cálculo lê `item.notes` com o padrão `Pen\s*(-?\d+)`. Itens cujo texto não contenha esse padrão resultam em penalidade zero. O catálogo de armaduras e escudos verificado usa esse formato em `properties`, e a seleção do catálogo copia `preset.properties` para `notes`.
+- Inspecionado `SkillsTab.kt`: a ação de rolagem passa `item.totalBonus` ao `DiceRollDialog`.
+- Conclusão: o caminho principal está ligado corretamente; não foi confirmado defeito de persistência ou de propagação para a rolagem. Melhoria de usabilidade possível: explicar no rótulo/ajuda que o formato `Pen -N` é interpretado automaticamente. Nenhuma alteração de código foi feita nesta etapa.
+
+### Comparação inicial das listas de perícias de classe com SRD D&D 3.5
+
+- Fonte de referência consultada: SRD 3.5 em d20srd.org para Bardo e Monge.
+- **Discrepância confirmada no Monge:** a lista `classSkills` em `Dnd35Rules.kt` inclui Conhecimento (Religião), mas não inclui Conhecimento (Arcano). A lista oficial do Monge inclui ambos. A correção deve ser específica e acompanhada de teste de regressão; ainda não foi aplicada.
+- **Bardo:** a lista da aplicação representa individualmente as especialidades de Conhecimento, coerente com a regra oficial “Knowledge (all skills, taken individually)”. Não tratar automaticamente essa representação como defeito. Continuar verificando correspondência e nomes traduzidos antes de alterar.
+- As demais listas de classe ainda precisam ser comparadas sistematicamente. A inspeção parcial não permite declarar a auditoria das onze classes concluída.
+- Histórico consultado: PRs #5, #6, #7, #12, #24, #74, #75, #76, #77, #81, #82 e #83. As decisões anteriores sobre Acrobacia, Druida e graduações fracionárias permanecem preservadas.
+
+### Estado e próximo passo
+
+- Nenhum arquivo de código ou teste foi alterado; nenhum teste local foi executado nesta etapa.
+- Próximo passo: corrigir a omissão de Conhecimento (Arcano) para Monge com teste de regressão, após confirmar a forma de teste existente; depois completar a comparação das outras classes e dos sinalizadores `trainedOnly`/penalidade de armadura contra o SRD.
