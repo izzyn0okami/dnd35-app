@@ -606,6 +606,43 @@ class ExampleUnitTest {
   }
 
   @Test
+  fun encumbrancePenaltyDoesNotStackWithArmorPenalty() {
+    val armor = CharacterInventoryItem(
+      name = "Armadura de teste",
+      category = "Armaduras",
+      equipped = true,
+      equippedSlot = Dnd35Rules.EquipmentSlots.ARMOR_BODY,
+      weightLb = 0f,
+      damageOrAc = "+3 CA",
+      notes = "Pen -3"
+    )
+    val heavyGear = CharacterInventoryItem(
+      name = "Equipamento pesado",
+      category = "Itens de Aventura",
+      weightLb = 40f
+    )
+    val skills = listOf(
+      CharacterSkill(name = "Natação", keyAbility = "FOR", ranks = 1f),
+      CharacterSkill(name = "Escalar", keyAbility = "FOR", ranks = 1f)
+    )
+    val stats = CharacterCalculator.compute(
+      CharacterEntity(
+        characterClass = "Guerreiro",
+        level = 1,
+        baseStr = 10,
+        goldGp = 0f,
+        skillsJson = CharacterJsonAdapters.serializeSkills(skills),
+        inventoryJson = CharacterJsonAdapters.serializeInventory(listOf(armor, heavyGear))
+      )
+    )
+    assertEquals(Dnd35Rules.EncumbranceLevel.MEDIUM, stats.encumbrance)
+    val swim = stats.computedSkills.first { it.skill.name == "Natação" }
+    val climb = stats.computedSkills.first { it.skill.name == "Escalar" }
+    assertEquals(-6, swim.armorPenaltyApplied)
+    assertEquals(-3, climb.armorPenaltyApplied)
+  }
+
+  @Test
   fun monkLosesWisdomArmorClassBonusWithMediumLoad() {
     val unencumbered = CharacterCalculator.compute(
       CharacterEntity(
