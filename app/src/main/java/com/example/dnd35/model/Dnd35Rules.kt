@@ -288,6 +288,7 @@ object Dnd35Rules {
                 ClassFeature(10, "Forma Selvagem (Miúdo)", "Pode assumir formas animais Miúdas."),
                 ClassFeature(12, "Forma Selvagem (Planta)", "Pode assumir formas de criaturas do tipo planta."),
                 ClassFeature(13, "Forma Selvagem 5/dia", "Pode usar Forma Selvagem cinco vezes por dia."),
+                ClassFeature(13, "Mil Faces", "Pode usar Alterar-se à vontade para mudar a própria aparência."),
                 ClassFeature(15, "Corpo Atemporal e Forma Selvagem (Enorme)", "Não sofre penalidades nos atributos físicos por envelhecimento e pode assumir formas animais Enormes."),
                 ClassFeature(16, "Forma Selvagem Elemental 1/dia", "Pode assumir forma elemental uma vez por dia."),
                 ClassFeature(18, "Forma Selvagem Elemental 2/dia", "Pode assumir forma elemental duas vezes por dia."),
