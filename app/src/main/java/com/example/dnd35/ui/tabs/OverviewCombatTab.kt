@@ -178,6 +178,32 @@ fun OverviewCombatTab(
                     }
                 }
             }
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 4.dp, vertical = 2.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    "Enquadramento",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+                Slider(
+                    value = portraitZoom,
+                    onValueChange = { portraitZoom = it },
+                    valueRange = 1f..2f,
+                    modifier = Modifier
+                        .weight(1f)
+                        .padding(start = 10.dp)
+                        .testTag("portrait_zoom_slider")
+                )
+                Text(
+                    "${(portraitZoom * 100).toInt()}%",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = MaterialTheme.colorScheme.primary
+                )
+            }
             Spacer(modifier = Modifier.height(12.dp))
         }
 
