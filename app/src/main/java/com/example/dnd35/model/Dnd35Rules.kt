@@ -440,7 +440,7 @@ object Dnd35Rules {
                 ClassFeature(6, "Estilo de Combate Aprimorado", "Recebe o talento aprimorado do estilo escolhido, sem precisar cumprir seus pré-requisitos normais enquanto usar armadura leve ou nenhuma."),
                 ClassFeature(7, "Caminho da Floresta", "Move-se através de vegetação rasteira natural sem sofrer impedimentos ou dano, salvo exceções mágicas."),
                 ClassFeature(8, "Rastreador Veloz", "Pode rastrear à velocidade normal sem a penalidade de -5; rastrear correndo ainda impõe a penalidade aplicável."),
-                ClassFeature(9, "Evasão", "Contra efeitos que permitem Reflexos para metade do dano, não sofre dano em um sucesso."),
+                ClassFeature(9, "Evasão", "Funciona apenas sem armadura ou com armadura leve; contra efeitos que permitem um teste de Reflexos para reduzir o dano à metade, não sofre dano em um sucesso."),
                 ClassFeature(10, "Inimigo Predileto +2 adicional", "Escolhe outro inimigo predileto com bônus +2 ou aumenta em +2 o bônus contra um inimigo predileto existente."),
                 ClassFeature(11, "Mestrado no Estilo de Combate", "Recebe o talento superior do estilo escolhido, sem precisar cumprir seus pré-requisitos normais enquanto usar armadura leve ou nenhuma."),
                 ClassFeature(15, "Inimigo Predileto +2 adicional", "Escolhe outro inimigo predileto com bônus +2 ou aumenta em +2 o bônus contra um inimigo predileto existente."),
