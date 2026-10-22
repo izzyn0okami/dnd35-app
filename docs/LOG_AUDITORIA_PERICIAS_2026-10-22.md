@@ -326,3 +326,10 @@ Continuar a auditoria de regras sem repetir os assuntos resolvidos. Próximo foc
 - Revisão estática do **Mago**: Preparação com Grimório, Escrever Pergaminho, Invocar Familiar e escolha de especialização no 1º nível; talentos bônus nos níveis 5/10/15/20. A sequência corresponde à progressão básica 3.5 consultada; não foi identificada divergência de nível.
 - Estas quatro conferências foram estáticas e focadas nos marcos de nível, não em uma auditoria completa de todas as descrições, pré-requisitos, magias ou opções. A conferência terminológica integral com o Livro do Jogador brasileiro ainda está pendente.
 - Próximo foco: fazer uma passada cruzada nas onze classes para detectar duplicações, termos inconsistentes ou descrições que omitam condições relevantes; corrigir apenas divergências concretas e manter testes de regressão.
+
+
+## Continuação — PR #103 e auditoria cruzada de características
+
+- PR #103 foi integrada por squash no commit `799d7fb711335289626da770eeaddfe1b4c474f8`; a CI de compilação Android no commit `e2a59f880eea2bfbabdb41f9ddfb8f83e2d2fbc5` concluiu com sucesso. A PR #104 também foi integrada por squash no commit `140554c89c1d54a8446d1ce908f4b5441e6dd21d`; a CI de compilação Android no commit `03f899a53d97496213949792b851110d676c6422` concluiu com sucesso. A #104 completou a condição de armadura da Evasão do Ranger.
+- Na passada cruzada das descrições, foi confirmada a mesma omissão na Evasão do Ladino (2º nível): a descrição dizia apenas que um sucesso em Reflexos evita o dano, sem registrar que a habilidade só funciona sem armadura ou com armadura leve. A regra da classe base exige essa condição. Corrigida a descrição e adicionado teste de regressão; não altera cálculos de dano nem outras mecânicas.
+- Esta correção segue para CI antes de merge. A auditoria cruzada das onze classes continua aberta; a revisão é estática e não substitui a comparação integral de todas as habilidades com o Livro do Jogador brasileiro.
