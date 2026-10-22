@@ -229,3 +229,12 @@ A implementação atual usa `combinedArmorCheckPenalty = minOf(totalArmorCheckPe
 - A PR #26 anterior foi consultada; esta correção é limitada à classificação de classe e atributo-chave, sem reabrir a implementação mais ampla de especialidades independentes.
 - Testes de regressão adicionados para correspondência com Ofícios, rejeição quando a entrada de classe não corresponde e atributo-chave INT, incluindo variação de maiúsculas/minúsculas.
 - Status: alteração preparada em branch; aguardar revisão e CI antes de integrar. Não houve teste manual no aparelho.
+
+
+## Correção confirmada — controles de graduações fracionárias
+
+- Na auditoria do fluxo de progressão de classe, foi reproduzido um problema de interface: ao passar de perícia entre-classe para perícia de classe por multiclasse, os botões de graduação mudavam imediatamente para passos de 1,0. Personagens com 0,5 ou 1,5 graduação não conseguiam alcançar o valor adjacente válido usando esses botões.
+- A correção mantém passo de 0,5 enquanto o valor atual tiver fração; quando a graduação é inteira e a perícia é de classe, o passo volta a 1,0. Perícias entre-classe continuam usando 0,5.
+- A mudança afeta apenas a edição atual das graduações; não reescreve o histórico de pontos gastos por nível nem altera os limites calculados.
+- Foi incluída uma função auxiliar testável; os testes de regressão devem cobrir graduação fracionária em perícia de classe, graduação inteira em perícia de classe e perícia entre-classe.
+- Status: proposta na branch `fix/fractional-skill-rank-controls`; aguardar CI e revisão antes do merge. Não houve teste manual no aparelho.
