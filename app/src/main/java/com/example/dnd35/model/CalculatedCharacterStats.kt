@@ -562,7 +562,7 @@ object CharacterCalculator {
                 (skill.ranks.coerceAtLeast(0f) * 2f).roundToInt() / 2f
             val ranks = normalizedRanks.coerceAtMost(maxRanks)
             val racialBonus = racialSkillBonus(race.name, canonicalSkillName)
-            val sizeBonus = sizeSkillBonus(race.size, canonicalSkillName)
+            val sizeBonus = sizeSkillBonus(character.size, canonicalSkillName)
             val hasArmorPenalty = def?.armorCheckPenaltyApplies ?: false
             val appliedPenalty = if (hasArmorPenalty) {
                 if (skill.name.equals("Natação", ignoreCase = true)) {
