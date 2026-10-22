@@ -14,10 +14,12 @@ object LanguageRules {
         val bonusOptions: List<String>?
     )
 
-    private val commonBonusOptions = listOf(
-        "Anão", "Aquático", "Auran", "Celestial", "Dracônico", "Élfico",
-        "Gigante", "Gnomo", "Goblin", "Gnoll", "Halfling", "Ignan",
-        "Infernal", "Orc", "Silvestre", "Terran", "Abissal", "Subterrâneo"
+    /** Idiomas comuns selecionáveis; campanhas podem acrescentar outros. */
+    val coreLanguages = listOf(
+        "Abissal", "Anão", "Aquático", "Auran", "Celestial", "Comum",
+        "Dracônico", "Élfico", "Gigante", "Gnoll", "Gnomo", "Goblin",
+        "Halfling", "Ignan", "Infernal", "Orc", "Silvestre", "Terran",
+        "Subterrâneo"
     )
 
     private val races = mapOf(
