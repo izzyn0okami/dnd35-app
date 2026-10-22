@@ -31,6 +31,14 @@ class LanguageRulesTest {
     }
 
     @Test
+    fun strongheartHalflingUsesCoreHalflingLanguageRules() {
+        assertEquals(
+            LanguageRules.forRace("Halfling"),
+            LanguageRules.forRace("Halfling Robusto")
+        )
+    }
+
+    @Test
     fun humanAndHalfElfHaveOpenEndedBonusLanguageChoices() {
         assertNull(LanguageRules.optionsFor("Humano"))
         assertNull(LanguageRules.optionsFor("Meio-Elfo"))
