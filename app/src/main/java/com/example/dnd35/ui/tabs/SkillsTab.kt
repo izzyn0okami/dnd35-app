@@ -27,6 +27,8 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.FilterChip
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -48,6 +50,7 @@ import androidx.compose.ui.unit.dp
 import com.example.dnd35.model.CalculatedCharacterStats
 import com.example.dnd35.model.CharacterEntity
 import com.example.dnd35.model.CharacterJsonAdapters
+import com.example.dnd35.model.LanguageRules
 import com.example.dnd35.model.ComputedSkill
 import com.example.dnd35.model.estimateSkillPointsForLevel
 import com.example.dnd35.ui.dialogs.DiceRollDialog
@@ -105,7 +108,15 @@ fun SkillsTab(
     ) {
         item {
             var languageInput by remember(character.id) { mutableStateOf("") }
+            var languageMenuExpanded by remember(character.id) { mutableStateOf(false) }
             val languages = CharacterJsonAdapters.deserializeLanguages(character.languagesJson)
+            val racialLanguageRules = LanguageRules.forRace(character.race)
+            val selectableLanguages = (
+                (racialLanguageRules?.automatic.orEmpty() +
+                    racialLanguageRules?.bonusOptions.orEmpty() +
+                    LanguageRules.coreLanguages)
+                ).distinctBy { it.lowercase() }
+                .filterNot { option -> languages.any { it.equals(option, ignoreCase = true) } }
             Card(
                 modifier = Modifier.fillMaxWidth().testTag("languages_section"),
                 shape = RoundedCornerShape(12.dp)
@@ -118,6 +129,37 @@ fun SkillsTab(
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
                     Spacer(modifier = Modifier.height(8.dp))
+                    Text(
+                        text = if (racialLanguageRules == null) {
+                            "Escolha um idioma do catálogo ou digite um idioma permitido pela sua campanha."
+                        } else {
+                            "Idiomas automáticos da raça: ${racialLanguageRules.automatic.joinToString()}. " +
+                                "As opções raciais são sugestões; confirme as escolhas permitidas pelo cenário."
+                        },
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                    if (selectableLanguages.isNotEmpty()) {
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            OutlinedButton(onClick = { languageMenuExpanded = true }) {
+                                Text("Escolher idioma")
+                            }
+                            DropdownMenu(
+                                expanded = languageMenuExpanded,
+                                onDismissRequest = { languageMenuExpanded = false }
+                            ) {
+                                selectableLanguages.forEach { option ->
+                                    DropdownMenuItem(
+                                        text = { Text(option) },
+                                        onClick = {
+                                            viewModel.updateLanguages(languages + option)
+                                            languageMenuExpanded = false
+                                        }
+                                    )
+                                }
+                            }
+                        }
+                    }
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         OutlinedTextField(
                             value = languageInput,
