@@ -61,9 +61,12 @@ class ClassProgressionTest {
         assertEquals(1, monk.features.count { it.level == 15 && it.name == "Movimento Rápido +15m" })
         assertEquals(1, monk.features.count { it.level == 18 && it.name == "Movimento Rápido +18m" })
         assertEquals(1, monk.features.count { it.level == 6 && it.name == "Talento Bônus de Monge (6º nível)" })
-        assertEquals(1, monk.features.count { it.level == 10 && it.name == "Golpe Ki (Leal)" })
-        assertEquals(1, monk.features.count { it.level == 12 && it.name == "Passo Abundante" })
-        assertEquals(1, monk.features.count { it.level == 16 && it.name == "Golpe Ki (Adamantino)" })
+        assertEquals(1, monk.features.count { it.level == 7 && it.name == "Salto das Nuvens" })
+        assertEquals(1, monk.features.count { it.level == 7 && it.name == "Integridade Corporal" })
+        assertEquals(1, monk.features.count { it.level == 10 && it.name == "Ataque Chi (Ordem)" })
+        assertEquals(1, monk.features.count { it.level == 13 && it.name == "Ataque Chi (+2)" })
+        assertEquals(1, monk.features.count { it.level == 12 && it.name == "Passo Etéreo" })
+        assertEquals(1, monk.features.count { it.level == 16 && it.name == "Ataque Chi (Adamante)" })
         assertEquals("Recebe um segundo ataque adicional na rajada de golpes, também com o bônus base de ataque máximo.",
             monk.features.single { it.level == 11 && it.name == "Rajada Maior" }.description)
     }
