@@ -53,8 +53,12 @@ class ClassProgressionTest {
     @Test
     fun monkBonusFeatsAndGreaterFlurryAreRepresentedAtCorrectLevels() {
         val monk = Dnd35Rules.CLASSES.single { it.name == "Monge" }
+        assertEquals(1, monk.features.count { it.level == 1 && it.name == "Talento Bônus de Monge (1º nível)" })
         assertEquals(1, monk.features.count { it.level == 2 && it.name == "Talento Bônus de Monge (2º nível)" })
         assertEquals(1, monk.features.count { it.level == 6 && it.name == "Talento Bônus de Monge (6º nível)" })
+        assertEquals(1, monk.features.count { it.level == 10 && it.name == "Golpe Ki (Leal)" })
+        assertEquals(1, monk.features.count { it.level == 12 && it.name == "Passo Abundante" })
+        assertEquals(1, monk.features.count { it.level == 16 && it.name == "Golpe Ki (Adamantino)" })
         assertEquals("Recebe um segundo ataque adicional na rajada de golpes, também com o bônus base de ataque máximo.",
             monk.features.single { it.level == 11 && it.name == "Rajada Maior" }.description)
     }
