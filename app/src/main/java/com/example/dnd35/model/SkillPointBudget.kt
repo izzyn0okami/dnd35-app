@@ -47,7 +47,7 @@ fun parseSkillPointAllocations(input: String): List<SkillPointAllocation>? {
         val name = Dnd35Rules.canonicalSkillName(suppliedName)
         val points = parts[1].trim().toIntOrNull()
         if (name.isEmpty() || points == null || points < 0) return null
-        if (Dnd35Rules.SKILL_DEFINITIONS.none { it.name.equals(name, ignoreCase = true) }) return null
+        // Nomes personalizados são permitidos para campanhas e especialidades de Ofícios.
         // Nomes antigos conhecidos (por exemplo, "Salto" e "Ofício") não
         // podem contornar a validação de duplicatas no mesmo nível.
         if (!names.add(name.lowercase())) return null
