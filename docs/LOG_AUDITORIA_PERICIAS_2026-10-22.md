@@ -172,9 +172,9 @@ A implementação atual usa `combinedArmorCheckPenalty = minOf(totalArmorCheckPe
 
 ## Auditoria de idiomas raciais — Drow
 
-- Fonte consultada: Monster Manual 3.5, entrada Drow (referência de consulta: https://dndtools.one/drow-6 e https://www.dndtools.org/races/monster-manual-v35--5/drow--6/).
+- Fonte consultada: Monster Manual 3.5, entrada Drow (p. 103; referências: https://dndtools.one/drow-6 e https://www.dndtools.org/races/monster-manual-v35--5/drow--6/).
 - Divergência confirmada: embora a raça Drow (Elfo Negro) esteja no catálogo do app, `LanguageRules` não tinha uma entrada para ela; portanto, a ficha não podia obter as línguas automáticas e as opções raciais específicas por essa função.
-- Correção proposta na branch `fix/drow-language-rules`: idiomas automáticos Comum, Élfico e Subterrâneo (representação usada no app para Undercommon); opções adicionais Abissal, Aquático, Dracônico, Linguagem de Sinais Drow, Gnomo, Goblin e Kuo-toan. Também foi incluído o alias `Drow` além do nome de catálogo `Drow (Elfo Negro)`.
-- O catálogo comum foi ampliado com Linguagem de Sinais Drow e Kuo-toan, que são opções adicionais da raça no Monster Manual 3.5.
+- Correção proposta na branch `fix/drow-language-rules`: idiomas automáticos Comum, Élfico e Subterrâneo (representação usada no app para Undercommon); opções adicionais Abissal, Aquático, Dracônico, Linguagem de Sinais Drow, Gnomo e Goblin. Também foi incluído o alias `Drow` além do nome de catálogo `Drow (Elfo Negro)`.
+- O catálogo de idiomas foi ampliado com Linguagem de Sinais Drow. Kuo-toan não faz parte da lista de idiomas adicionais da entrada Drow no Monster Manual 3.5 e foi removido desta correção; ele não deve ser acrescentado como se fosse uma opção do livro básico.
 - Teste de regressão verifica o conjunto de idiomas e ambos os nomes aceitos.
-- Aguardando CI desta PR; nenhuma compilação local nem teste manual no aparelho foi executado.
+- Revisão complementar corrigiu a lista para corresponder ao Monster Manual 3.5: Kuo-toan não é uma das opções adicionais da entrada Drow nessa fonte. A CI deve ser verificada novamente no último commit; nenhuma compilação local nem teste manual no aparelho foi executado.
