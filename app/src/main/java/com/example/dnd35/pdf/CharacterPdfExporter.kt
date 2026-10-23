@@ -217,9 +217,8 @@ object CharacterPdfExporter {
             canvas1.drawRoundRect(RectF(30f, weaponY, pageWidth - 30f, weaponY + 120f), 4f, 4f, fillBoxPaint)
             canvas1.drawRoundRect(RectF(30f, weaponY, pageWidth - 30f, weaponY + 120f), 4f, 4f, borderPaint)
             canvas1.drawRect(RectF(30f, weaponY, pageWidth - 30f, weaponY + 20f), goldBannerPaint)
-            canvas1.drawText("ATAQUES & ARMAS (${equippedWeapons.size} cadastradas; máx. 4 exibidas)", 40f, weaponY + 14f, headerPaint)
-
             val equippedWeapons = stats.inventory.filter { it.equipped && it.category.startsWith("Arma", ignoreCase = true) }
+            canvas1.drawText("ATAQUES & ARMAS (${equippedWeapons.size} cadastradas; máx. 4 exibidas)", 40f, weaponY + 14f, headerPaint)
             var wRowY = weaponY + 36f
             if (equippedWeapons.isEmpty()) {
                 canvas1.drawText("Ataque Desarmado  •  Bônus: +${stats.bab + stats.strMod}  •  Dano: 1d3+${stats.strMod} Concussão", 42f, wRowY, bodyPaint)
