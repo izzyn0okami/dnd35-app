@@ -1759,7 +1759,7 @@ object Dnd35Rules {
             classes = listOf("Mago", "Feiticeiro"),
             castTime = "1 ação padrão",
             components = "V, S",
-            range = "3m",
+            range = "4,5m",
             duration = "Instantânea",
             savingThrow = "Reflexos metade",
             spellResistance = true,
