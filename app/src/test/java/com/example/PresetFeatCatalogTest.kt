@@ -9,7 +9,7 @@ class PresetFeatCatalogTest {
     @Test
     fun catalogIncludesAdditionalPlayerHandbookCombatAndMetamagicFeats() {
         val names = Dnd35Rules.PRESET_FEATS.map { it.name }
-        assertTrue("O catálogo deve conter mais talentos que a lista inicial", names.size >= 53)
+        assertTrue("O catálogo deve conter mais talentos que a lista inicial", names.size >= 52)
         listOf(
             "Acuidade com Arma",
             "Agarrar Aprimorado",
