@@ -307,4 +307,19 @@ class PresetSpellCatalogTest {
         assertFalse(magicAura.spellResistance)
     }
 
+
+    @Test
+    fun firstLevelArcaneSpellBatchTwelveHasExpectedClassesAndMechanics() {
+        val spells = Dnd35Rules.PRESET_SPELLS.associateBy { it.name }
+        val erase = spells.getValue("Apagar")
+        assertEquals(setOf("Bardo", "Mago", "Feiticeiro"), erase.classes.toSet())
+        assertEquals("Instantânea", erase.duration)
+        assertFalse(erase.spellResistance)
+
+        val chillTouch = spells.getValue("Toque Gélido")
+        assertEquals(setOf("Mago", "Feiticeiro"), chillTouch.classes.toSet())
+        assertEquals("Toque", chillTouch.range)
+        assertTrue(chillTouch.spellResistance)
+    }
+
 }
