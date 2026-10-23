@@ -42,6 +42,46 @@ internal fun normalizeEditedSkillRanks(ranks: Float, maxRanks: Float): Float {
 internal fun skillRankAdjustmentStep(ranks: Float, isClassSkill: Boolean): Float =
     if (!isClassSkill || ranks % 1f != 0f) 0.5f else 1.0f
 
+internal data class ConvertedCoinBalances(
+    val goldGp: Float,
+    val silverSp: Float,
+    val copperCp: Float,
+    val platinumPp: Float = 0f
+)
+
+/**
+ * Consolidates denominations without discarding fractional copper value.
+ * Returns null for invalid balances rather than silently changing them.
+ */
+internal fun convertCoinBalancesToGold(
+    goldGp: Float,
+    silverSp: Float,
+    copperCp: Float,
+    platinumPp: Float
+): ConvertedCoinBalances? {
+    val balances = listOf(goldGp, silverSp, copperCp, platinumPp)
+    if (balances.any { !it.isFinite() || it < 0f }) return null
+
+    // Work in copper-equivalent units using Double to reduce rounding artifacts.
+    val totalCopper = goldGp.toDouble() * 100.0 +
+        silverSp.toDouble() * 10.0 +
+        copperCp.toDouble() +
+        platinumPp.toDouble() * 1000.0
+    if (!totalCopper.isFinite()) return null
+
+    val gold = kotlin.math.floor(totalCopper / 100.0)
+    val afterGold = totalCopper - gold * 100.0
+    val silver = kotlin.math.floor(afterGold / 10.0)
+    val copper = afterGold - silver * 10.0
+
+    return ConvertedCoinBalances(
+        goldGp = gold.toFloat(),
+        silverSp = silver.toFloat(),
+        copperCp = copper.toFloat(),
+        platinumPp = 0f
+    )
+}
+
 class CharacterViewModel(application: Application) : AndroidViewModel(application) {
 
     private val repository: CharacterRepository
@@ -405,13 +445,20 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
 
     fun convertCoinsToGold() {
         val curr = _activeCharacter.value ?: return
-        // 10 PC = 1 PP, 10 PP = 1 PO, 10 PO = 1 PL
-        val totalEquivalentGp = curr.goldGp + (curr.silverSp / 10f) + (curr.copperCp / 100f) + (curr.platinumPp * 10f)
-        val wholeGp = totalEquivalentGp.toInt().toFloat()
-        val remainder = totalEquivalentGp - wholeGp
-        val sp = (remainder * 10f).toInt().toFloat()
-        val cp = ((remainder * 10f - sp) * 10f).toInt().toFloat()
-        persistCharacter(curr.copy(goldGp = wholeGp, silverSp = sp, copperCp = cp, platinumPp = 0f))
+        val converted = convertCoinBalancesToGold(
+            goldGp = curr.goldGp,
+            silverSp = curr.silverSp,
+            copperCp = curr.copperCp,
+            platinumPp = curr.platinumPp
+        ) ?: return
+        persistCharacter(
+            curr.copy(
+                goldGp = converted.goldGp,
+                silverSp = converted.silverSp,
+                copperCp = converted.copperCp,
+                platinumPp = converted.platinumPp
+            )
+        )
     }
 
     // Talentos
