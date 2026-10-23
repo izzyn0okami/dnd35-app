@@ -299,6 +299,19 @@ fun SkillsTab(
                                     }
                                 }
                                 IconButton(onClick = {
+                                    val removedAcquisition = acquisition
+                                    if (removedAcquisition?.source == LanguageAcquisitionSource.PURCHASED) {
+                                        val allocationName = "Falar Idioma (${removedAcquisition.language})"
+                                        viewModel.updateSkillPointHistory(
+                                            skillPointHistory.map { record ->
+                                                if (record.characterLevel == removedAcquisition.characterLevel) {
+                                                    record.copy(allocations = record.allocations.filterNot {
+                                                        it.skillName.equals(allocationName, ignoreCase = true)
+                                                    })
+                                                } else record
+                                            }
+                                        )
+                                    }
                                     viewModel.updateLanguages(languages.filterNot { it == language })
                                     viewModel.updateLanguageAcquisitions(acquisitions.filterNot { it.language.equals(language, ignoreCase = true) })
                                 }) {
