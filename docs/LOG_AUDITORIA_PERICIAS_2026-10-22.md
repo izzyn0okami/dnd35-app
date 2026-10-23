@@ -417,3 +417,13 @@ Continuar a auditoria de regras sem repetir os assuntos resolvidos. Próximo foc
 - O histórico é separado por nível, preserva registros acima do nível atual e não recalcula automaticamente os orçamentos históricos a partir da Inteligência atual. O aviso para registros acima do nível atual foi integrado pela PR #109 e sua CI passou.
 - Resultado: não foi encontrada nova discrepância concreta nas fórmulas nem nos valores das onze classes; nenhuma PR de código aberta nesta passagem. A revisão foi estática e baseada nos testes existentes; não houve Gradle local nem teste manual no aparelho.
 - Próximo foco: revisar as transições de classe de perícia na multiclasse e a consistência entre graduações registradas, limite efetivo e bônus exibido, sem reabrir a correção da PR #98 salvo evidência nova.
+
+
+## Revisão de transição entre perícia de classe e entreclasse — 2026-10-23
+
+- Revisados `CharacterCalculator.compute`, `CharacterViewModel.updateSkill`, `skillRankAdjustmentStep`, `normalizeEditedSkillRanks` e os testes `SkillRankAdjustmentTest` e `SkillPointBudgetTest`.
+- A classificação das perícias conhecidas é recalculada considerando todas as classes atuais do personagem. Se a perícia pertence a qualquer uma delas, o limite atual é nível total + 3; caso contrário, é metade desse limite. Isso corresponde à regra de perícia de classe na multiclasse.
+- A edição preserva incrementos de 0,5 ao mudar de entreclasse para classe, sem arredondar graduações antigas para cima; a normalização limita valores ao máximo vigente. Os testes existentes cobrem os passos de edição, mas não testam diretamente o cálculo completo de uma ficha em que a perícia muda de categoria.
+- O custo histórico merece distinção: pontos já gastos como entreclasse não se tornam retroativamente mais baratos quando a perícia passa a ser de classe. A aplicação mantém um histórico de gastos por nível; quando ele está incompleto, exibe apenas uma estimativa baseada nas graduações e na classificação atuais. Como essa estimativa já está identificada como estimativa e o histórico manual permite registrar os gastos originais, não foi confirmado um defeito que justifique PR nesta passagem.
+- Não foi encontrada discrepância concreta no cálculo do limite ou no passo de edição. Nenhuma PR de código aberta; revisão estática, sem execução local de testes ou teste manual no aparelho.
+- Próxima verificação: conferir as regras de perícias treinadas apenas e a disponibilidade de testes sem graduação, comparando os sinalizadores do catálogo com o Livro do Jogador e evitando revisitar decisões já documentadas.
