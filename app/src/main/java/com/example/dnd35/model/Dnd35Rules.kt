@@ -2799,12 +2799,12 @@ object Dnd35Rules {
             school = "Encantamento",
             classes = listOf("Bardo"),
             castTime = "1 ação padrão",
-            components = "V, S",
+            components = "V, G, DF",
             range = "Curto (7,5m + 1,5m/2 níveis)",
             duration = "1 rodada",
-            savingThrow = "Vontade anula",
-            spellResistance = true,
-            description = "Deixa uma criatura confusa por 1 rodada, fazendo-a agir de forma aleatória.",
+            savingThrow = "Nenhum",
+            spellResistance = false,
+            description = "Deixa uma única criatura viva confusa por 1 rodada. Consulte a magia Confusão para determinar o efeito exato da condição.",
             classLevels = mapOf("Bardo" to 1)
         ),
         PresetSpell(
