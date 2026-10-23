@@ -2078,7 +2078,7 @@ object Dnd35Rules {
             school = "Transmutação",
             classes = listOf("Clérigo", "Paladino"),
             castTime = "1 minuto",
-            components = "V, S, M (água profana no valor de 25 PO)",
+            components = "V, S, M (pó de prata no valor de 25 PO)",
             range = "Toque",
             duration = "Instantânea",
             savingThrow = "Vontade anula (objeto)",
