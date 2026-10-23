@@ -1066,3 +1066,14 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Adicionados testes de regressão para classes, níveis por classe, alcance e componentes. Entrada existente corrigida; nenhuma duplicata criada.
 - Fonte primária: arquivo fornecido “D&D 3.5 - Livro do Jogador”, capítulo 11, verbete “Dissimular Tendência” (página impressa 196).
 - O restante dos campos e das magias adicionadas no lote anterior continua sujeito a revisão individual; CI não substitui teste manual no Android.
+
+
+---
+
+## 2026-10-23 — Revisão mecânica de Área Escorregadia
+
+- Conferida a descrição de **Área Escorregadia** diretamente no verbete do Livro do Jogador brasileiro (capítulo 11, página impressa 173).
+- Corrigidos os componentes de **V, S, M** para **V, G, M**; duração para **1 rodada/nível (D)**; e teste de resistência para **Reflexos anula (veja texto)**. A descrição agora distingue a área de 3 m quadrados do uso sobre um objeto e registra os testes repetidos, a movimentação reduzida com Equilíbrio e a possibilidade de derrubar objeto em uso.
+- Mantidas as classes Bardo, Mago e Feiticeiro e a ausência de resistência à magia, coerentes com a entrada do livro. A entrada existente foi corrigida; nenhuma duplicata criada.
+- Adicionados testes de regressão para componentes, duração, resistência, teste de resistência e informação de área.
+- Nenhum teste manual em dispositivo Android foi realizado nesta etapa.

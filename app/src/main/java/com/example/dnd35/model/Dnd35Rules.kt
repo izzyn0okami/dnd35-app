@@ -1591,12 +1591,12 @@ object Dnd35Rules {
             school = "Conjuração",
             classes = listOf("Bardo", "Mago", "Feiticeiro"),
             castTime = "1 ação padrão",
-            components = "V, S, M",
+            components = "V, G, M",
             range = "Curto (7,5m + 1,5m/2 níveis)",
-            duration = "1 rodada/nível",
-            savingThrow = "Reflexos parcial",
+            duration = "1 rodada/nível (D)",
+            savingThrow = "Reflexos anula (veja texto)",
             spellResistance = false,
-            description = "Cobre o chão ou um objeto com uma camada escorregadia; criaturas podem cair ou ter dificuldade para se manter de pé."
+            description = "Recobre um quadrado de 3 m ou um objeto com substância escorregadia. Criaturas na área fazem teste de Reflexos para evitar cair e repetem o teste a cada rodada enquanto permanecerem nela; atravessar a área exige metade do deslocamento e teste de Equilíbrio (CD 10). Um objeto em uso pode ser derrubado se o portador falhar no teste de Reflexos."
         ),
         PresetSpell(
             name = "Detectar Portas Secretas",
