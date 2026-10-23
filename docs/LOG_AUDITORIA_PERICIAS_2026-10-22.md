@@ -626,3 +626,11 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - O teste cobre classificação, limite, normalização/limitação e bônus em conjunto. Ele é uma adição de cobertura; não afirma que os testes passaram até que a CI desta PR conclua.
 - Nenhuma regra nem cálculo de produção foi alterado. Não foi executado Gradle local nem teste manual no Android.
 - Próximo passo: aguardar CI desta PR. Se aprovada, integrar e seguir para a próxima pendência concreta da auditoria, consultando este log antes de qualquer nova alteração.
+
+## 2026-10-23 — Resultado da CI do teste integrado de multiclasse
+
+- PR #131 integrada por squash no commit `87d209d3eb4d35458462f24a4f2e4680ac3f791e`.
+- CI `Android build` concluída com sucesso no run https://github.com/izzyn0okami/dnd35-app/actions/runs/39892750480. A execução inclui a etapa de testes unitários e a compilação do APK de depuração.
+- O novo teste de regressão está agora em `main`; a integração não alterou o código de produção nem as regras.
+- A lacuna de cobertura integrada de classificação, limite e bônus foi atendida por esse teste. A auditoria de perícias não deve ser reaberta sem evidência nova; o teste manual em aparelho segue pendente.
+- Próximo foco da auditoria geral: retomar a revisão das progressões de BBA e testes de resistência das classes básicas e, em seguida, a conferência classe por classe das características escalonadas, priorizando o Livro do Jogador brasileiro 3.5. Não declarar a auditoria geral concluída enquanto essa conferência estiver incompleta.
