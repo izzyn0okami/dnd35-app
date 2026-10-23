@@ -889,3 +889,12 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - As listas de classe e a terminologia permanecem provisórias até confronto direto com a edição brasileira do Livro do Jogador 3.5; SRD em inglês é apenas referência mecânica.
 - Não considerar concluída a cobertura de magias de 1º círculo. Exigir CI verde no SHA final antes de integrar; teste manual Android continua pendente.
 - Referências mecânicas auxiliares: https://www.d20srd.org/srd/spells/protectionFromChaos.htm ; https://www.d20srd.org/srd/spells/protectionFromGood.htm ; https://www.d20srd.org/srd/spells/protectionFromLaw.htm.
+
+
+## 2026-10-23 — Magias de natureza de 1º círculo, lote 8
+
+- Adicionadas três entradas candidatas ao catálogo do Livro do Jogador: Acalmar Animais, Detectar Laços e Covas e Convocar Aliado da Natureza I.
+- Acrescentados testes para classes, alcance, duração, tempo de execução e resistência à magia.
+- Nomes localizados, redações resumidas e listas de classe permanecem provisórios até conferência direta com a edição brasileira do Livro do Jogador 3.5; a SRD é somente referência mecânica auxiliar.
+- Não considerar completa a lista de magias de 1º círculo. Exigir CI verde no SHA final antes do merge; não houve teste manual em dispositivo nesta etapa.
+- Referências mecânicas auxiliares: https://www.d20srd.org/srd/spells/calmAnimals.htm ; https://www.d20srd.org/srd/spells/detectSnaresAndPits.htm ; https://www.d20srd.org/srd/spells/summonNaturesAllyI.htm.
