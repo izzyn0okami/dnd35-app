@@ -398,3 +398,12 @@ Continuar a auditoria de regras sem repetir os assuntos resolvidos. Próximo foc
 - Alteração proposta na PR: exibir um aviso nos registros cujo nível excede `character.level`, informando que o registro foi preservado, mas não entra no total atual. Não apagar nem recalcular o histórico automaticamente.
 - A classe registrada por nível continua sendo uma informação histórica manual; a ficha não armazena a ordem exata em que cada classe foi adquirida, então não é seguro inferi-la automaticamente a partir apenas dos níveis atuais de cada classe.
 - A PR ainda depende de CI. Não houve teste local Gradle nem teste manual em aparelho.
+
+
+## Resultado da PR #109 — 2026-10-23
+
+- PR #109 integrada por squash no commit `2ef2c297cf8d874dc51ad68f31070128d47a380c`.
+- A CI do commit final `2d0671482a64b66fca561aa79ac5607f8d663c47` concluiu com sucesso no run [39877327072](https://github.com/izzyn0okami/dnd35-app/actions/runs/39877327072).
+- A interface sinaliza registros de orçamento de perícias cujo nível excede o nível atual do personagem. Os registros são preservados e explicitamente indicados como fora do total atual; nenhum gasto histórico é apagado ou recalculado.
+- Não houve teste Gradle local nem teste manual no aparelho.
+- Próximo passo: auditar a regra de pontos de perícia por nível e o limite de graduações em fichas multiclasse, consultando este log e o histórico de PRs para evitar repetir decisões já resolvidas.
