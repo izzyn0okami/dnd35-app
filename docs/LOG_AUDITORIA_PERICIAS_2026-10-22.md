@@ -605,5 +605,15 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 
 - **Correção da auditoria anterior:** a conclusão de que “Saltar” não seria perícia de classe do Ranger estava incorreta.
 - A lista de perícias de classe do Ranger no SRD de D&D 3.5 inclui Jump (Saltar). Referências consultadas: SRD 3.5, seção Ranger — https://www.35srd.com/players/classes/base-classes/ranger/ e https://www.darkshire.net/~jhkim/rpg/srd/srd_revised_html/ClassesII.html.
-- Mantida/restaurada “Saltar” na lista de perícias de classe do Ranger. A alteração corretiva da PR não deve remover essa perícia.
-- Esta entrada substitui a conclusão equivocada registrada na revisão anterior. CI precisa ser verificada após a atualização; teste manual no Android continua pendente.
+- Mantida “Saltar” na lista de perícias de classe do Ranger; o código em main já a contém.
+- PR #129 integrada por squash em 2026-10-23 no commit 31465d4d629d1b9e5e07c8f36baa356c335ff7d7. CI de push e pull request passou nos runs https://github.com/izzyn0okami/dnd35-app/actions/runs/39891991824 e https://github.com/izzyn0okami/dnd35-app/actions/runs/39891995755.
+- Teste manual no Android continua pendente.
+
+## 2026-10-23 — Revisão estática da transição de perícias de classe em multiclasse
+
+- Consultado este log antes da revisão; a verificação continua a etapa pendente de consistência entre classificação atual, limite de graduações e bônus exibido, sem reabrir a correção de Saltar nem a correção de passos fracionários da PR #98.
+- Em CharacterCalculator.compute, perícias catalogadas e especialidades de Ofícios determinam a classificação de classe pela lista de qualquer classe atual do personagem; o limite é nível total + 3 se for perícia de classe de ao menos uma classe, ou metade desse valor se for entreclasse.
+- Em CharacterViewModel.updateSkill, a classificação e o limite são recalculados usando as classes atuais. O normalizador preserva passos de 0,5 e limita o valor sem arredondar para cima. A interface usa o mesmo limite calculado e mantém passo de 0,5 quando há graduação fracionária.
+- O bônus exibido usa ranks.toInt(), de modo que uma meia graduação isolada não acrescenta +1 ao teste, conforme decisão já registrada.
+- Não foi confirmado defeito novo nesta inspeção estática. Os testes atuais cobrem a função de passo de edição e histórico de orçamento, mas não foi localizada nesta passada uma regressão integrada que monte uma ficha multiclasse e confirme em conjunto classificação, limite, graduação e bônus.
+- Próximo passo: avaliar como testar CharacterCalculator.compute em cenários multiclasse de forma isolada; só abrir alteração de código se o caso de teste revelar divergência. Nenhum teste local/Gradle nem teste manual no Android foi executado nesta inspeção.
