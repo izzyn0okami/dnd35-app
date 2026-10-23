@@ -852,3 +852,11 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Esta PR não deve ser integrada até a CI passar; não foi realizado teste manual em dispositivo.
 
 - Revisão estática do lote 3: corrigido o alcance de Mãos Flamejantes para 4,5 m e incluído teste; Enfeitiçar Animal e Emaranhar incluem também Ranger nas classes, com testes atualizados. A CI deve validar o estado final da PR.
+
+
+## 2026-10-23 — Ampliação de magias de 1º círculo, lote 4
+
+- Adicionadas oito entradas candidatas do Livro do Jogador: Favor Divino, Comando, Santuário, Escudo da Fé, Presas Mágicas, Passos Longos, Fogo das Fadas e Remover Medo.
+- Testes ampliados para presença, unicidade e disponibilidade por classe; novos testes cobrem classes e algumas propriedades mecânicas do lote.
+- A nomenclatura e os resumos mecânicos ainda exigem confronto final com a edição brasileira do Livro do Jogador; esta alteração não é apresentada como auditoria terminológica concluída.
+- A CI da PR deve passar antes do merge; não foi realizado teste local do Gradle nem teste manual em dispositivo.

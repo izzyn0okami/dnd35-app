@@ -56,7 +56,15 @@ class PresetSpellCatalogTest {
             "Passos sem Pegadas",
             "Falar com Animais",
             "Produzir Chama",
-            "Raio Colorido"
+            "Raio Colorido",
+            "Favor Divino",
+            "Comando",
+            "Santuário",
+            "Escudo da Fé",
+            "Presas Mágicas",
+            "Passos Longos",
+            "Fogo das Fadas",
+            "Remover Medo"
         ).forEach { name ->
             assertTrue("Magia ausente: $name", name in names)
         }
@@ -77,6 +85,22 @@ class PresetSpellCatalogTest {
         assertEquals(setOf("Clérigo", "Paladino", "Mago", "Feiticeiro"), spells.getValue("Proteção contra o Mal").classes.toSet())
         assertEquals(1, spells.getValue("Proteção contra o Mal").classLevels.getValue("Paladino"))
         assertTrue(spells.getValue("Proteção contra o Mal").spellResistance)
+    }
+
+    @Test
+    fun firstLevelSpellBatchFourHasExpectedClassesAndMechanics() {
+        val spells = Dnd35Rules.PRESET_SPELLS.associateBy { it.name }
+        assertEquals(setOf("Clérigo", "Paladino"), spells.getValue("Favor Divino").classes.toSet())
+        assertEquals(setOf("Clérigo"), spells.getValue("Comando").classes.toSet())
+        assertTrue(spells.getValue("Comando").spellResistance)
+        assertEquals(setOf("Clérigo"), spells.getValue("Santuário").classes.toSet())
+        assertEquals(setOf("Clérigo", "Paladino"), spells.getValue("Escudo da Fé").classes.toSet())
+        assertEquals(setOf("Druida", "Ranger"), spells.getValue("Presas Mágicas").classes.toSet())
+        assertEquals(setOf("Druida", "Ranger"), spells.getValue("Passos Longos").classes.toSet())
+        assertEquals(setOf("Druida"), spells.getValue("Fogo das Fadas").classes.toSet())
+        assertEquals(setOf("Bardo", "Clérigo"), spells.getValue("Remover Medo").classes.toSet())
+        assertEquals("Toque", spells.getValue("Santuário").range)
+        assertEquals("1 minuto/nível", spells.getValue("Escudo da Fé").duration)
     }
 
     @Test
