@@ -36,7 +36,7 @@ class PresetSpellCatalogTest {
             "Causar Medo",
             "Compreender Idiomas",
             "Enfeitiçar Pessoa",
-            "Graxa",
+            "Área Escorregadia",
             "Detectar Portas Secretas",
             "Retirada Acelerada",
             "Proteção contra o Mal",
@@ -355,6 +355,31 @@ class PresetSpellCatalogTest {
         assertEquals(1, spell.classLevels.getValue("Bardo"))
         assertEquals(1, spell.classLevels.getValue("Paladino"))
         assertEquals(2, spell.classLevels.getValue("Ranger"))
+    }
+
+
+    @Test
+    fun bardFirstLevelSpellAuditIncludesPreviouslyMissingPhbEntries() {
+        val spells = Dnd35Rules.PRESET_SPELLS.associateBy { it.name }
+        val expected = setOf(
+            "Área Escorregadia",
+            "Boca Encantada",
+            "Confusão Menor",
+            "Dissimular Tendência",
+            "Obscurecer Objeto",
+            "Recuo Acelerado",
+            "Riso Histérico de Tasha, O",
+            "Transformação Momentânea"
+        )
+        assertTrue(spells.keys.containsAll(expected))
+        assertEquals(1, spells.getValue("Área Escorregadia").classLevels.getValue("Bardo"))
+        assertEquals(1, spells.getValue("Boca Encantada").classLevels.getValue("Bardo"))
+        assertEquals(2, spells.getValue("Boca Encantada").classLevels.getValue("Mago"))
+        assertEquals(1, spells.getValue("Confusão Menor").classLevels.getValue("Bardo"))
+        assertEquals(3, spells.getValue("Obscurecer Objeto").classLevels.getValue("Clérigo"))
+        assertEquals(2, spells.getValue("Riso Histérico de Tasha, O").classLevels.getValue("Mago"))
+        assertEquals(1, spells.getValue("Transformação Momentânea").classLevels.getValue("Feiticeiro"))
+        assertEquals(1, spells.values.count { it.name == "Área Escorregadia" })
     }
 
 }

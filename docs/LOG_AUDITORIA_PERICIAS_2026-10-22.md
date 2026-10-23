@@ -1043,3 +1043,15 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Atualizados os testes de regressão que consultavam os nomes antigos.
 - Fonte primária: arquivo fornecido “D&D 3.5 - Livro do Jogador”, capítulo 11, listas de magias e índice de magias.
 - Esta alteração cobre nomes e consistência do catálogo; a auditoria completa das descrições e dos níveis por classe continua em andamento. Nenhum teste manual em dispositivo Android foi realizado nesta etapa.
+
+
+---
+
+## 2026-10-24 — Auditoria da lista de magias de 1º nível de Bardo
+
+- Conferida diretamente no *Livro do Jogador* brasileiro a lista de magias de 1º nível de Bardo (capítulo 11, páginas impressas 155–156).
+- Adicionadas entradas ausentes: **Boca Encantada**, **Confusão Menor**, **Dissimular Tendência**, **Obscurecer Objeto**, **Recuo Acelerado**, **Riso Histérico de Tasha, O** e **Transformação Momentânea**.
+- Renomeada a entrada existente **Graxa** para **Área Escorregadia**, nome usado na lista de magias do livro; a entrada foi ampliada para incluir Bardo.
+- Incluídos níveis por classe nas magias com níveis diferentes para Bardo, Clérigo, Mago e Feiticeiro; adicionados testes de regressão para presença, níveis e ausência de duplicata.
+- Fonte primária: arquivo fornecido “D&D 3.5 - Livro do Jogador”, listas de magias de Bardo e descrições das magias. A auditoria de componentes, descrições completas e listas das demais classes continua em andamento.
+- Nenhum teste manual em dispositivo Android foi realizado nesta etapa; CI será a validação automatizada.
