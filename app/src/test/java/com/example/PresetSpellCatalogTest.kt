@@ -312,7 +312,7 @@ class PresetSpellCatalogTest {
     fun firstLevelArcaneSpellBatchTwelveHasExpectedClassesAndMechanics() {
         val spells = Dnd35Rules.PRESET_SPELLS.associateBy { it.name }
         val erase = spells.getValue("Apagar")
-        assertEquals(setOf("Mago", "Feiticeiro"), erase.classes.toSet())
+        assertEquals(setOf("Bardo", "Mago", "Feiticeiro"), erase.classes.toSet())
         assertEquals("Instantânea", erase.duration)
         assertFalse(erase.spellResistance)
 
