@@ -205,4 +205,22 @@ class PresetSpellCatalogTest {
         assertTrue(spells.getValue("Raio Colorido").spellResistance)
     }
 
+
+    @Test
+    fun firstLevelAlignmentProtectionSpellsHaveExpectedClassesAndMechanics() {
+        val spells = Dnd35Rules.PRESET_SPELLS.associateBy { it.name }
+        listOf("Proteção contra o Caos", "Proteção contra o Bem").forEach { name ->
+            val spell = spells.getValue(name)
+            assertEquals(setOf("Clérigo", "Paladino", "Mago", "Feiticeiro"), spell.classes.toSet())
+            assertEquals("Toque", spell.range)
+            assertEquals("1 minuto/nível", spell.duration)
+            assertTrue(spell.spellResistance)
+        }
+        val lawProtection = spells.getValue("Proteção contra a Ordem")
+        assertEquals(setOf("Clérigo", "Mago", "Feiticeiro"), lawProtection.classes.toSet())
+        assertEquals("Toque", lawProtection.range)
+        assertEquals("1 minuto/nível", lawProtection.duration)
+        assertTrue(lawProtection.spellResistance)
+    }
+
 }
