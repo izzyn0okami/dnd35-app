@@ -671,3 +671,11 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Adicionado teste unitário para valores inteiros/decimais, vírgula decimal e entradas inválidas.
 - PR #136 integrada por squash em `main` (commit `2a019e86a2dab5ce56168f37a193bd7a199b7f9a`); CI aprovada antes do merge. Teste manual no aparelho continua pendente.
 - Esta correção de moedas será proposta em PR separada; não integrada ainda.
+
+## Ajuste detalhado e conversão de moedas — atualização (2026-10-23)
+
+- PR #137 integrada por squash após CI aprovada: https://github.com/izzyn0okami/dnd35-app/pull/137. O formulário valida todos os quatro saldos antes de salvar, rejeita valores vazios, inválidos, negativos e não finitos, e aceita vírgula decimal.
+- Auditoria do botão **Converter**: o comportamento esperado é consolidar o equivalente total em PO, PP e PC, zerando PL, conforme as relações 10 PC = 1 PP, 10 PP = 1 PO e 10 PO = 1 PL.
+- Corrigida a implementação para fazer a decomposição a partir do valor equivalente em PC usando `Double` e manter eventual fração de PC, em vez de truncar cada parte com `toInt()`. Entradas negativas ou não finitas são rejeitadas sem alterar o personagem.
+- Adicionado `CoinConversionTest.kt`, com testes de equivalência de valor, conversão de platina, frações e combinações inteiras em lote.
+- PR de conversão aberta em branch separada: `fix/preserve-coin-value-on-conversion`. CI e revisão ainda pendentes; teste manual no aparelho também pendente.
