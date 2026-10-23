@@ -203,20 +203,24 @@ fun AddEditItemDialog(
 
                         Text("Categoria:", style = MaterialTheme.typography.labelSmall)
                         Box(modifier = Modifier.fillMaxWidth()) {
-                            OutlinedTextField(
-                                value = category,
-                                onValueChange = {},
-                                readOnly = true,
-                                trailingIcon = { Icon(Icons.Default.ArrowDropDown, null) },
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .clickable { categoryExpanded = true }
-                            )
+                            OutlinedButton(
+                                onClick = { categoryExpanded = true },
+                                modifier = Modifier.fillMaxWidth()
+                            ) {
+                                Row(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    horizontalArrangement = Arrangement.SpaceBetween,
+                                    verticalAlignment = Alignment.CenterVertically
+                                ) {
+                                    Text(category)
+                                    Icon(Icons.Default.ArrowDropDown, contentDescription = "Selecionar categoria")
+                                }
+                            }
                             DropdownMenu(
                                 expanded = categoryExpanded,
                                 onDismissRequest = { categoryExpanded = false }
                             ) {
-                                for (cat in categories) {
+                                categories.forEach { cat ->
                                     DropdownMenuItem(
                                         text = { Text(cat) },
                                         onClick = {
@@ -232,20 +236,24 @@ fun AddEditItemDialog(
 
                         Text("Espaço de equipamento:", style = MaterialTheme.typography.labelSmall)
                         Box(modifier = Modifier.fillMaxWidth()) {
-                            OutlinedTextField(
-                                value = equippedSlot,
-                                onValueChange = {},
-                                readOnly = true,
-                                trailingIcon = { Icon(Icons.Default.ArrowDropDown, null) },
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .clickable { slotExpanded = true }
-                            )
+                            OutlinedButton(
+                                onClick = { slotExpanded = true },
+                                modifier = Modifier.fillMaxWidth()
+                            ) {
+                                Row(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    horizontalArrangement = Arrangement.SpaceBetween,
+                                    verticalAlignment = Alignment.CenterVertically
+                                ) {
+                                    Text(equippedSlot)
+                                    Icon(Icons.Default.ArrowDropDown, contentDescription = "Selecionar espaço de equipamento")
+                                }
+                            }
                             DropdownMenu(
                                 expanded = slotExpanded,
                                 onDismissRequest = { slotExpanded = false }
                             ) {
-                                for (slot in Dnd35Rules.EquipmentSlots.ALL_SLOTS) {
+                                Dnd35Rules.EquipmentSlots.ALL_SLOTS.forEach { slot ->
                                     DropdownMenuItem(
                                         text = { Text(slot) },
                                         onClick = {

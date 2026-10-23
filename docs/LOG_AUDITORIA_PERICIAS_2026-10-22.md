@@ -728,10 +728,17 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - PR #145 integrada por squash em 2026-10-23 no commit `243b49601be6859c1a2c39296a84212d24218923`; CI aprovada no run https://github.com/izzyn0okami/dnd35-app/actions/runs/39899738511. Validação manual no aplicativo permanece pendente.
 
 
-## 2026-10-23 — Esquiva Sobrenatural: condições de surpresa, oponente invisível e imobilização (PR #139 em revisão)
+## 2026-10-23 — Esquiva Sobrenatural: condições de surpresa, oponente invisível e imobilização (PR #139 integrada)
 
 - A descrição de Esquiva Sobrenatural do Ladino foi completada conforme o Livro do Jogador brasileiro 3.5: conserva o bônus de Destreza quando surpreendido e contra oponentes invisíveis, mas perde o bônus quando imobilizado.
 - A revisão cruzada encontrou a mesma omissão na descrição do Bárbaro; a PR #139 inclui também a condição de imobilização para essa classe.
 - Testes de regressão em `ClassProgressionTest.kt` cobrem as condições para Ladino (4º nível) e Bárbaro (2º nível). A alteração é descritiva e não muda o cálculo mecânico da CA.
 - Referência primária: Livro do Jogador brasileiro 3.5, https://anyflip.com/hgohy/pjla/basic; confirmação complementar: https://www.35srd.com/players/classes/base-classes/rogue/.
-- CI do commit anterior estava aprovada, mas a atualização do log cria novo commit e exige nova execução antes do merge. Teste manual no Android permanece pendente.
+- PR #139 integrada por squash no commit `3515139197bd8476e94430c5542c8a82c2ee1baf`; CI aprovada nos runs https://github.com/izzyn0okami/dnd35-app/actions/runs/39900886039 e https://github.com/izzyn0okami/dnd35-app/actions/runs/39900881138. Teste manual no Android permanece pendente.
+
+## 2026-10-23 — Seletores de categoria e espaço no item personalizado (PR #146 em revisão)
+
+- Revisado `AddEditItemDialog.kt` na aba Carga e itens > Adicionar item > Item personalizado.
+- Os estados e listas de categoria e espaço de equipamento já existiam, mas os seletores estavam implementados como `OutlinedTextField(readOnly = true)` com `clickable` aplicado ao próprio campo. Isso torna a interação pouco confiável e pode impedir a abertura dos menus em alguns contextos.
+- Na PR #146, ambos os campos foram substituídos por botões de seleção explícitos com seta e menus suspensos. Selecionar categoria atualiza `category`; selecionar espaço atualiza `equippedSlot` e sincroniza a opção “Equipado atualmente”.
+- A alteração não muda categorias disponíveis nem regras de equipamento. Após a sincronização com a nova `main`, a CI precisa ser executada novamente antes do merge. Teste manual no Android continua pendente.
