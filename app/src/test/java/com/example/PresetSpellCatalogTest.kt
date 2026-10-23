@@ -243,4 +243,24 @@ class PresetSpellCatalogTest {
         assertTrue(lawProtection.spellResistance)
     }
 
+
+    @Test
+    fun firstLevelArcaneSpellBatchNineHasExpectedClassesAndMechanics() {
+        val spells = Dnd35Rules.PRESET_SPELLS.associateBy { it.name }
+        assertEquals(setOf("Bardo", "Mago", "Feiticeiro"), spells.getValue("Animar Corda").classes.toSet())
+        assertEquals("Médio (30m + 3m/nível)", spells.getValue("Animar Corda").range)
+        assertFalse(spells.getValue("Animar Corda").spellResistance)
+        assertEquals(setOf("Mago", "Feiticeiro"), spells.getValue("Ataque Certeiro").classes.toSet())
+        assertEquals("Pessoal", spells.getValue("Ataque Certeiro").range)
+        assertFalse(spells.getValue("Ataque Certeiro").spellResistance)
+        assertEquals(setOf("Bardo", "Mago", "Feiticeiro"), spells.getValue("Hipnotismo").classes.toSet())
+        assertEquals("2d4 rodadas", spells.getValue("Hipnotismo").duration)
+        assertTrue(spells.getValue("Hipnotismo").spellResistance)
+        assertEquals(setOf("Bardo", "Mago", "Feiticeiro"), spells.getValue("Montaria").classes.toSet())
+        assertEquals("2 horas/nível", spells.getValue("Montaria").duration)
+        assertEquals(setOf("Bardo", "Mago", "Feiticeiro"), spells.getValue("Imagem Silenciosa").classes.toSet())
+        assertEquals("Concentração", spells.getValue("Imagem Silenciosa").duration)
+        assertFalse(spells.getValue("Imagem Silenciosa").spellResistance)
+    }
+
 }
