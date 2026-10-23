@@ -1451,6 +1451,13 @@ object Dnd35Rules {
             level = 1,
             school = "Conjuração",
             classes = listOf("Clérigo", "Druida", "Bardo", "Paladino", "Ranger"),
+            classLevels = mapOf(
+                "Clérigo" to 1,
+                "Druida" to 1,
+                "Bardo" to 1,
+                "Paladino" to 1,
+                "Ranger" to 2
+            ),
             castTime = "1 ação padrão",
             components = "V, S",
             range = "Toque",
