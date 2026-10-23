@@ -254,6 +254,7 @@ class PresetSpellCatalogTest {
         assertEquals("Pessoal", spells.getValue("Ataque Certeiro").range)
         assertFalse(spells.getValue("Ataque Certeiro").spellResistance)
         assertEquals(setOf("Bardo", "Mago", "Feiticeiro"), spells.getValue("Hipnotismo").classes.toSet())
+        assertEquals("1 rodada", spells.getValue("Hipnotismo").castTime)
         assertEquals("2d4 rodadas", spells.getValue("Hipnotismo").duration)
         assertTrue(spells.getValue("Hipnotismo").spellResistance)
         assertEquals(setOf("Bardo", "Mago", "Feiticeiro"), spells.getValue("Montaria").classes.toSet())
