@@ -343,3 +343,12 @@ Continuar a auditoria de regras sem repetir os assuntos resolvidos. Próximo foc
 - Interface de perícias permite escolher a fonte e, para compra, informar o nível. A compra só é aceita se houver registro de orçamento para esse nível e um ponto ainda disponível; o gasto é lançado como `Falar Idioma (nome)` no histórico de pontos de perícia.
 - Testes adicionados para validação de custo/fonte e compatibilidade com histórico antigo vazio. A cobertura direta da serialização foi retirada temporariamente porque depende do runtime Android e falhou no ambiente de testes JVM; precisa de estratégia de teste compatível antes de considerar esse ponto coberto.
 - Status: branch `feat/language-acquisition-history`; CI em nova execução após ajuste do teste. Não houve teste local nem teste manual no aparelho. Não fazer merge até CI verde.
+
+
+## Estado atualizado após PR #106 — 2026-10-23
+
+- PR #106 integrada por squash no commit `ba0f48c612ac7ea44502858431586b15ecbbd3d2`; a CI do commit final `c2b8320c6e7d0c5f53860369e6207d30546b920d` concluiu com sucesso no run [39875428504](https://github.com/izzyn0okami/dnd35-app/actions/runs/39875428504).
+- O registro de aquisição de idiomas distingue fontes gratuitas e compras, grava o custo de 1 ponto por idioma comprado no nível informado e remove a alocação correspondente quando o registro comprado é excluído.
+- Limitação preservada: testes JVM cobrem validação e compatibilidade com histórico antigo vazio, mas não cobrem diretamente a serialização Android `org.json`; essa cobertura exige uma estratégia de teste compatível. Não houve teste manual no aparelho.
+- Não há PRs abertas no repositório no momento da atualização.
+- Próximo foco da auditoria: passada cruzada das características das onze classes básicas para encontrar duplicações, terminologia inconsistente ou condições omitidas, comparando com prioridade ao Livro do Jogador 3.5 em português. Depois, retomar os pontos pendentes de progressão de perícias apenas quando houver discrepância concreta. Consultar este log antes de abrir qualquer PR para evitar duplicação.
