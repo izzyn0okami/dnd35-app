@@ -105,6 +105,7 @@ class PresetSpellCatalogTest {
     fun firstLevelSpellBatchTwoHasExpectedClassesAndMechanics() {
         val spells = Dnd35Rules.PRESET_SPELLS.associateBy { it.name }
         assertEquals(setOf("Bardo", "Mago", "Feiticeiro"), spells.getValue("Disfarçar-se").classes.toSet())
+        assertEquals("18m", spells.getValue("Identificação").range)
         assertEquals(setOf("Bardo", "Clérigo", "Mago", "Feiticeiro"), spells.getValue("Convocar Monstro I").classes.toSet())
         assertEquals(setOf("Mago", "Feiticeiro"), spells.getValue("Raio do Enfraquecimento").classes.toSet())
         assertTrue(spells.getValue("Raio do Enfraquecimento").spellResistance)
