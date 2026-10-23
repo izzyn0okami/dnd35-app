@@ -530,7 +530,7 @@ private fun SpellSlotCard(
                     color = DndArcaneBlue
                 )
                 IconButton(onClick = onConfigure, modifier = Modifier.size(48.dp)) {
-                    Icon(Icons.Default.Edit, contentDescription = "Configurar", modifier = Modifier.size(12.dp))
+                    Icon(Icons.Default.Edit, contentDescription = "Configurar espaços de magia do nível ${slot.level}", modifier = Modifier.size(12.dp))
                 }
             }
             Spacer(modifier = Modifier.height(4.dp))

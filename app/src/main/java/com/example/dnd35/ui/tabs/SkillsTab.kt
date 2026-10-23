@@ -850,7 +850,7 @@ fun SkillItemRow(
                 enabled = computed.ranks > 0,
                 modifier = Modifier.size(48.dp)
             ) {
-                Icon(Icons.Default.Remove, contentDescription = "Diminuir graduação", modifier = Modifier.size(16.dp))
+                Icon(Icons.Default.Remove, contentDescription = "Diminuir graduação de ${computed.skill.name}", modifier = Modifier.size(16.dp))
             }
 
             IconButton(
@@ -858,7 +858,7 @@ fun SkillItemRow(
                 enabled = computed.ranks < computed.maxRanks,
                 modifier = Modifier.size(48.dp)
             ) {
-                Icon(Icons.Default.Add, contentDescription = "Aumentar graduação", tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(16.dp))
+                Icon(Icons.Default.Add, contentDescription = "Aumentar graduação de ${computed.skill.name}", tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(16.dp))
             }
         }
     }
