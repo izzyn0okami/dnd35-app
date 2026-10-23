@@ -842,3 +842,11 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - A CI desta nova PR deve passar antes de qualquer merge; não houve teste manual em dispositivo nesta etapa.
 
 - Revisão estática posterior identificou e corrigiu o alcance de Identificação para 18 m; teste específico adicionado. A CI deve validar o commit atualizado.
+
+
+## 2026-10-23 — Ampliação de magias de 1º círculo, lote 3
+
+- Adicionadas oito entradas candidatas do Livro do Jogador: Mãos Flamejantes, Enfeitiçar Animal, Emaranhar, Bom Fruto, Passos sem Pegadas, Falar com Animais, Produzir Chama e Raio Colorido.
+- Testes ampliados para presença, unicidade e disponibilidade por classe; verificações específicas cobrem as listas de classe e a resistência à magia de algumas entradas.
+- As descrições são resumos mecânicos, não transcrições do livro. A nomenclatura e todos os detalhes ainda precisam de confronto final com a edição brasileira.
+- Esta PR não deve ser integrada até a CI passar; não foi realizado teste manual em dispositivo.
