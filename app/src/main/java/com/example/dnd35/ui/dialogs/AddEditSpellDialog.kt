@@ -60,6 +60,7 @@ fun AddEditSpellDialog(
     // Campos da magia
     var name by remember { mutableStateOf(spellToEdit?.name ?: "") }
     var levelText by remember { mutableStateOf("${spellToEdit?.level ?: 0}") }
+    val parsedLevel = levelText.toIntOrNull()
     var school by remember { mutableStateOf(spellToEdit?.school ?: "Evocação") }
     var castTime by remember { mutableStateOf(spellToEdit?.castTime ?: "1 ação padrão") }
     var components by remember { mutableStateOf(spellToEdit?.components ?: "V, S") }
@@ -369,7 +370,7 @@ fun AddEditSpellDialog(
             if (selectedTab == 1 || spellToEdit != null) {
                 Button(
                     onClick = {
-                        val lvl = levelText.toIntOrNull()?.coerceIn(0, 9) ?: 0
+                        val lvl = parsedLevel?.takeIf { it in 0..9 } ?: return@Button
                         val finalSpell = (spellToEdit ?: CharacterSpell(name = name)).copy(
                             name = if (name.isBlank()) "Nova Magia" else name.trim(),
                             level = lvl,
@@ -384,7 +385,8 @@ fun AddEditSpellDialog(
                         )
                         onConfirm(finalSpell)
                         onDismiss()
-                    }
+                    },
+                    enabled = name.isNotBlank() && parsedLevel != null && parsedLevel in 0..9
                 ) {
                     Text("Salvar")
                 }

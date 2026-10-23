@@ -50,6 +50,14 @@ fun EditArmorDialog(
     var miscRefText by remember { mutableStateOf("${character.miscReflex}") }
     var miscWillText by remember { mutableStateOf("${character.miscWill}") }
     var miscInitText by remember { mutableStateOf("${character.miscInitiative}") }
+    val parsedNatural = naturalText.toIntOrNull()
+    val parsedDeflection = deflectionText.toIntOrNull()
+    val parsedMiscAc = miscAcText.toIntOrNull()
+    val parsedFort = miscFortText.toIntOrNull()
+    val parsedRef = miscRefText.toIntOrNull()
+    val parsedWill = miscWillText.toIntOrNull()
+    val parsedInit = miscInitText.toIntOrNull()
+    val allBonusesValid = listOf(parsedNatural, parsedDeflection, parsedMiscAc, parsedFort, parsedRef, parsedWill, parsedInit).all { it != null }
 
     AlertDialog(
         onDismissRequest = onDismiss,
@@ -147,16 +155,17 @@ fun EditArmorDialog(
                     onSave(
                         character.armorBonus,
                         character.shieldBonus,
-                        naturalText.toIntOrNull() ?: 0,
-                        deflectionText.toIntOrNull() ?: 0,
-                        miscAcText.toIntOrNull() ?: 0,
-                        miscFortText.toIntOrNull() ?: 0,
-                        miscRefText.toIntOrNull() ?: 0,
-                        miscWillText.toIntOrNull() ?: 0,
-                        miscInitText.toIntOrNull() ?: 0
+                        parsedNatural ?: return@Button,
+                        parsedDeflection ?: return@Button,
+                        parsedMiscAc ?: return@Button,
+                        parsedFort ?: return@Button,
+                        parsedRef ?: return@Button,
+                        parsedWill ?: return@Button,
+                        parsedInit ?: return@Button
                     )
                     onDismiss()
-                }
+                },
+                enabled = allBonusesValid
             ) {
                 Text("Salvar")
             }

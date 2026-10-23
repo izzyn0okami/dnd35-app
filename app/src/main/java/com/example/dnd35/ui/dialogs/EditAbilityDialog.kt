@@ -40,8 +40,10 @@ fun EditAbilityDialog(
     var baseText by remember { mutableStateOf("$currentBase") }
     var magicText by remember { mutableStateOf("$currentMagicBonus") }
 
-    val baseVal = baseText.toIntOrNull() ?: currentBase
-    val magicVal = magicText.toIntOrNull() ?: currentMagicBonus
+    val parsedBaseVal = baseText.toIntOrNull()
+    val parsedMagicVal = magicText.toIntOrNull()
+    val baseVal = parsedBaseVal ?: currentBase
+    val magicVal = parsedMagicVal ?: currentMagicBonus
     val totalScore = baseVal + racialBonus + magicVal
     val modifier = Dnd35Rules.calculateModifier(totalScore)
     val modStr = if (modifier >= 0) "+$modifier" else "$modifier"
@@ -97,9 +99,9 @@ fun EditAbilityDialog(
         },
         confirmButton = {
             Button(onClick = {
-                onSave(baseVal, magicVal)
+                onSave(parsedBaseVal ?: return@Button, parsedMagicVal ?: return@Button)
                 onDismiss()
-            }) {
+            }, enabled = parsedBaseVal != null && parsedMagicVal != null) {
                 Text("Salvar")
             }
         },
