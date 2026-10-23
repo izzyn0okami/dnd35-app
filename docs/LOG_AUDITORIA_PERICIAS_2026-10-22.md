@@ -561,3 +561,12 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - O indicador é explicitamente identificado como estimativa; não altera o histórico manual por nível nem presume que a distribuição atual seja igual aos gastos históricos. O total geral existente continua distinguindo histórico completo de estimativa atual.
 - Não modifica graduações, limites, cálculos de bônus ou regras de rolagem.
 - Aguardar CI antes de merge. Teste visual em aparelho e em tela estreita ainda pendente.
+
+
+## 2026-10-23 — Saldo agregado do histórico de pontos de perícia
+
+- O resumo geral da aba de perícias passa a exibir o orçamento total registrado e o saldo restante quando existe um registro para cada nível atual do personagem.
+- Se o histórico não cobre todos os níveis atuais, a interface informa que o saldo não está disponível em vez de apresentar uma conta incompleta como se fosse saldo real.
+- Se os gastos registrados excederem o orçamento, o resumo informa o excesso e usa a cor de erro; saldo positivo e saldo zero são diferenciados.
+- O cálculo usa somente registros dos níveis atuais, mantendo o comportamento existente para registros de níveis futuros. Não altera nem gera automaticamente gastos históricos, graduações ou orçamentos.
+- Aguardar CI da PR. A validação manual em aparelho e em tela estreita permanece pendente.
