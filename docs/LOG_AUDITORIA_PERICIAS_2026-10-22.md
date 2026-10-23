@@ -1011,3 +1011,14 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - A SRD não confirma o nome oficial em português; conferir a redação e a lista brasileira do *Livro do Jogador* continua pendente.
 - Contagem do catálogo de nível 1 não deve ser interpretada como cobertura completa. Continuar a comparação por classe e revisar todas as magias com níveis divergentes.
 - **PR #167 integrada em 2026-10-24** no commit `34ae71115e5ffca3b1d1091489e9bfb0acb059cb`; CI Android #993 concluiu com sucesso no SHA `4110ce6b37c97211e3d69caf7535993d64351b7a`. Não houve teste manual em dispositivo Android.
+
+
+---
+
+## 2026-10-24 — Correções pontuais de descrição de magias
+
+- **Escudo Arcano:** corrigida a descrição que começava incorretamente com “Disco flutuante”, confundindo o efeito de Escudo Arcano com a magia Disco Flutuante. A descrição agora registra o disco invisível de força, o bônus de escudo de +4 na CA e a anulação de Mísseis Mágicos. A entrada existente foi corrigida; nenhuma magia duplicada foi criada.
+- **Queda Suave:** corrigida a taxa de queda da descrição, de 3m por rodada para aproximadamente 18m por rodada (60 pés), mantendo a informação de que o dano de queda é anulado enquanto o efeito durar. A resistência à magia e o teste de resistência existentes foram preservados; o campo booleano atual não expressa exceções específicas a objetos/alvos.
+- Adicionados testes de regressão para as duas descrições e para a preservação dos campos de resistência/teste de Queda Suave.
+- Referências mecânicas auxiliares: Escudo Arcano / Shield — https://dndtools.org/m/spells/players-handbook-v35--6/shield--2364/ ; Queda Suave / Feather Fall — https://www.dndtools.org/spells/players-handbook-v35--6/feather-fall--2813/ e https://www.d20srd.org/srd/spells/featherFall.htm.
+- Estas referências sustentam a mecânica, mas não substituem a conferência de nomes e redação no *Livro do Jogador* brasileiro. Não houve teste manual em dispositivo Android.
