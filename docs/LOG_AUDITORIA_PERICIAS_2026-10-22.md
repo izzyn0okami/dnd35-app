@@ -592,3 +592,11 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Revisão após a PR #126 encontrou um erro textual na mensagem de nível inválido: o escape `\$` fazia a interface mostrar literalmente `${stats.totalCharacterLevel}` em vez do nível atual do personagem.
 - A correção remove apenas o escape indevido para que o Kotlin interpole o nível atual na mensagem. Não altera validações, regras ou contabilização de pontos.
 - CI da PR e validação pós-merge ainda precisam ser verificadas; teste manual da mensagem no aparelho permanece pendente.
+
+
+## 2026-10-23 — Remoção individual de registros duplicados de perícias
+
+- A revisão da tela de histórico identificou que o botão de remover um registro filtrava pelo número do nível; quando havia registros duplicados, um único toque apagava todos os registros daquele nível.
+- A lista agora mantém o índice original e remove apenas o registro correspondente ao botão acionado, preservando os demais registros duplicados para correção deliberada pelo usuário.
+- Corrige comportamento destrutivo em históricos ambíguos; não altera cálculos nem remove dados automaticamente além do registro explicitamente selecionado.
+- Aguardar CI da PR e validação pós-merge; teste manual em aparelho continua pendente.
