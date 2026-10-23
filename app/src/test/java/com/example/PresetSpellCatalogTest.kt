@@ -65,14 +65,22 @@ class PresetSpellCatalogTest {
             "Passos Longos",
             "Fogo das Fadas",
             "Remover Medo",
-            "Bênção Maldita",
+            "Perdição",
             "Abençoar Água",
             "Desespero",
-            "Resistir aos Elementos",
+            "Suportar Elementos",
             "Pedra Mágica",
             "Porrete Mágico",
             "Detectar Animais ou Plantas",
-            "Ocultar-se de Animais"
+            "Ocultar-se de Animais",
+            "Amaldiçoar Água",
+            "Escudo Entrópico",
+            "Ocultar-se de Mortos-Vivos",
+            "Vigília da Morte",
+            "Detectar Bem",
+            "Detectar Mal",
+            "Detectar Caos",
+            "Detectar Ordem"
         ).forEach { name ->
             assertTrue("Magia ausente: $name", name in names)
         }
@@ -114,14 +122,27 @@ class PresetSpellCatalogTest {
     @Test
     fun firstLevelSpellBatchFiveHasExpectedClassesAndMechanics() {
         val spells = Dnd35Rules.PRESET_SPELLS.associateBy { it.name }
-        assertEquals(setOf("Clérigo"), spells.getValue("Bênção Maldita").classes.toSet())
+        assertEquals(setOf("Clérigo"), spells.getValue("Perdição").classes.toSet())
         assertEquals(setOf("Clérigo", "Paladino"), spells.getValue("Abençoar Água").classes.toSet())
         assertEquals("1 minuto", spells.getValue("Abençoar Água").castTime)
-        assertEquals(setOf("Bardo", "Clérigo", "Druida", "Paladino", "Ranger", "Mago", "Feiticeiro"), spells.getValue("Resistir aos Elementos").classes.toSet())
+        assertEquals(setOf("Bardo", "Clérigo", "Druida", "Paladino", "Ranger", "Mago", "Feiticeiro"), spells.getValue("Suportar Elementos").classes.toSet())
         assertEquals(setOf("Druida", "Ranger"), spells.getValue("Detectar Animais ou Plantas").classes.toSet())
         assertFalse(spells.getValue("Detectar Animais ou Plantas").spellResistance)
         assertEquals(setOf("Druida", "Ranger"), spells.getValue("Ocultar-se de Animais").classes.toSet())
-        assertEquals("24 horas", spells.getValue("Resistir aos Elementos").duration)
+        assertEquals("24 horas", spells.getValue("Suportar Elementos").duration)
+    }
+
+    @Test
+    fun firstLevelSpellBatchSixHasExpectedClassesAndMechanics() {
+        val spells = Dnd35Rules.PRESET_SPELLS.associateBy { it.name }
+        assertEquals(setOf("Clérigo", "Paladino"), spells.getValue("Amaldiçoar Água").classes.toSet())
+        assertEquals("1 minuto", spells.getValue("Amaldiçoar Água").castTime)
+        assertEquals(setOf("Clérigo", "Mago", "Feiticeiro"), spells.getValue("Escudo Entrópico").classes.toSet())
+        assertFalse(spells.getValue("Escudo Entrópico").spellResistance)
+        assertEquals(setOf("Clérigo"), spells.getValue("Ocultar-se de Mortos-Vivos").classes.toSet())
+        assertEquals(setOf("Clérigo"), spells.getValue("Vigília da Morte").classes.toSet())
+        assertEquals("18m", spells.getValue("Detectar Bem").range)
+        assertFalse(spells.getValue("Detectar Caos").spellResistance)
     }
 
     @Test
