@@ -850,3 +850,5 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Testes ampliados para presença, unicidade e disponibilidade por classe; verificações específicas cobrem as listas de classe e a resistência à magia de algumas entradas.
 - As descrições são resumos mecânicos, não transcrições do livro. A nomenclatura e todos os detalhes ainda precisam de confronto final com a edição brasileira.
 - Esta PR não deve ser integrada até a CI passar; não foi realizado teste manual em dispositivo.
+
+- Revisão estática do lote 3: corrigido o alcance de Mãos Flamejantes para 4,5 m e incluído teste; Enfeitiçar Animal e Emaranhar incluem também Ranger nas classes, com testes atualizados. A CI deve validar o estado final da PR.
