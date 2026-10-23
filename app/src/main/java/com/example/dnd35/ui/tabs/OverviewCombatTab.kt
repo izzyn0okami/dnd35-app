@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -33,7 +34,6 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
-import androidx.compose.material3.Slider
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -42,7 +42,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
@@ -71,7 +70,6 @@ fun OverviewCombatTab(
     character: CharacterEntity
 ) {
     var showPhotoModal by remember { mutableStateOf(false) }
-    var portraitZoom by remember { mutableStateOf(1f) }
     var showGeneralInfoModal by remember { mutableStateOf(false) }
     var showArmorModal by remember { mutableStateOf(false) }
     var showMulticlassModal by remember { mutableStateOf(false) }
@@ -86,12 +84,12 @@ fun OverviewCombatTab(
             .padding(horizontal = 14.dp, vertical = 8.dp)
             .testTag("overview_tab")
     ) {
-        // 1. Cabeçalho do Herói: retrato amplo com painel de informações sobreposto.
+        // 1. Cabeçalho do Herói: retrato quadrado com informações logo abaixo.
         item {
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(290.dp)
+                    .aspectRatio(1f)
                     .clip(RectangleShape)
                     .testTag("character_hero_header")
             ) {
@@ -100,11 +98,10 @@ fun OverviewCombatTab(
                     shape = RectangleShape,
                     modifier = Modifier
                         .fillMaxSize()
-                        .graphicsLayer(scaleX = portraitZoom, scaleY = portraitZoom)
                         .clickable { showPhotoModal = true }
                 )
 
-                // Pequeno controle de edição da foto, sem cobrir o rosto.
+                // Botão de edição com alvo de toque confortável.
                 Box(
                     modifier = Modifier
                         .align(Alignment.TopEnd)
@@ -122,90 +119,64 @@ fun OverviewCombatTab(
                         modifier = Modifier.size(18.dp)
                     )
                 }
+            }
 
-                Card(
-                    modifier = Modifier
-                        .align(Alignment.BottomEnd)
-                        .padding(10.dp)
-                        .fillMaxWidth(0.76f)
-                        .clickable { showGeneralInfoModal = true }
-                        .testTag("character_hero_info"),
-                    shape = RoundedCornerShape(8.dp),
-                    colors = CardDefaults.cardColors(
-                        containerColor = MaterialTheme.colorScheme.surface.copy(alpha = 0.94f)
-                    ),
-                    elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
-                ) {
-                    Column(modifier = Modifier.padding(horizontal = 14.dp, vertical = 12.dp)) {
-                        Row(
-                            verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.SpaceBetween,
-                            modifier = Modifier.fillMaxWidth()
-                        ) {
-                            Text(
-                                text = character.name,
-                                style = MaterialTheme.typography.titleMedium,
-                                fontWeight = FontWeight.ExtraBold,
-                                color = MaterialTheme.colorScheme.onSurface,
-                                modifier = Modifier.weight(1f)
-                            )
-                            Icon(
-                                Icons.Default.Edit,
-                                contentDescription = "Editar Informações",
-                                tint = MaterialTheme.colorScheme.primary,
-                                modifier = Modifier
-                                    .padding(start = 6.dp)
-                                    .size(17.dp)
-                            )
-                        }
-                        Spacer(modifier = Modifier.height(5.dp))
+            Spacer(modifier = Modifier.height(8.dp))
+
+            Card(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clickable { showGeneralInfoModal = true }
+                    .testTag("character_hero_info"),
+                shape = RoundedCornerShape(8.dp),
+                colors = CardDefaults.cardColors(
+                    containerColor = MaterialTheme.colorScheme.surfaceVariant
+                ),
+                elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+            ) {
+                Column(modifier = Modifier.padding(horizontal = 14.dp, vertical = 12.dp)) {
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
                         Text(
-                            text = "${stats.classesDisplay} • Nível ${stats.totalCharacterLevel}",
-                            style = MaterialTheme.typography.titleSmall,
-                            fontWeight = FontWeight.Bold,
-                            color = MaterialTheme.colorScheme.primary
+                            text = character.name,
+                            style = MaterialTheme.typography.titleMedium,
+                            fontWeight = FontWeight.ExtraBold,
+                            color = MaterialTheme.colorScheme.onSurface,
+                            modifier = Modifier.weight(1f)
                         )
-                        Spacer(modifier = Modifier.height(3.dp))
+                        Icon(
+                            Icons.Default.Edit,
+                            contentDescription = "Editar Informações",
+                            tint = MaterialTheme.colorScheme.primary,
+                            modifier = Modifier
+                                .padding(start = 6.dp)
+                                .size(20.dp)
+                        )
+                    }
+                    Spacer(modifier = Modifier.height(5.dp))
+                    Text(
+                        text = "${stats.classesDisplay} • Nível ${stats.totalCharacterLevel}",
+                        style = MaterialTheme.typography.titleSmall,
+                        fontWeight = FontWeight.Bold,
+                        color = MaterialTheme.colorScheme.primary
+                    )
+                    Spacer(modifier = Modifier.height(3.dp))
+                    Text(
+                        text = "${character.race} • ${character.alignment}",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                    if (character.deity.isNotBlank() && character.deity != "Nenhuma") {
                         Text(
-                            text = "${character.race} • ${character.alignment}",
+                            text = "Divindade: ${character.deity}",
                             style = MaterialTheme.typography.bodySmall,
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
-                        if (character.deity.isNotBlank() && character.deity != "Nenhuma") {
-                            Text(
-                                text = "Divindade: ${character.deity}",
-                                style = MaterialTheme.typography.bodySmall,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant
-                            )
-                        }
                     }
                 }
-            }
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 4.dp, vertical = 2.dp),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(
-                    "Enquadramento",
-                    style = MaterialTheme.typography.labelSmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
-                Slider(
-                    value = portraitZoom,
-                    onValueChange = { portraitZoom = it },
-                    valueRange = 1f..2f,
-                    modifier = Modifier
-                        .weight(1f)
-                        .padding(start = 10.dp)
-                        .testTag("portrait_zoom_slider")
-                )
-                Text(
-                    "${(portraitZoom * 100).toInt()}%",
-                    style = MaterialTheme.typography.labelSmall,
-                    color = MaterialTheme.colorScheme.primary
-                )
             }
             Spacer(modifier = Modifier.height(12.dp))
         }
