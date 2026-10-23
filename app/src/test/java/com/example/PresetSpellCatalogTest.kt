@@ -322,4 +322,11 @@ class PresetSpellCatalogTest {
         assertTrue(chillTouch.spellResistance)
     }
 
+    @Test
+    fun endureElementsDoesNotAllowSpellResistance() {
+        val spell = Dnd35Rules.PRESET_SPELLS.first { it.name == "Suportar Elementos" }
+        assertEquals("24 horas", spell.duration)
+        assertFalse(spell.spellResistance)
+    }
+
 }
