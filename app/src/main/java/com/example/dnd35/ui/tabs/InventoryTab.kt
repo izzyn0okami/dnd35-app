@@ -311,7 +311,7 @@ fun InventoryTab(
                                                 },
                                                 modifier = Modifier.size(48.dp)
                                             ) {
-                                                Icon(Icons.Default.Delete, contentDescription = "Desequipar", tint = DndCrimson, modifier = Modifier.size(16.dp))
+                                                Icon(Icons.Default.Delete, contentDescription = "Desequipar ${equippedInSlot.name}", tint = DndCrimson, modifier = Modifier.size(16.dp))
                                             }
                                         }
                                     } else {
