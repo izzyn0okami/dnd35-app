@@ -772,9 +772,9 @@ object Dnd35Rules {
         FeatDefinition("Ataque em Movimento", "DES 13, BBA +4, Esquiva, Mobilidade", "Move-se antes e depois de um ataque.", "Você pode se deslocar tanto antes quanto depois do seu ataque corpo a corpo."),
         FeatDefinition("Iniciativa Aprimorada", "Nenhum", "+4 no teste de Iniciativa.", "Você recebe +4 de bônus nos testes de iniciativa."),
         FeatDefinition("Foco em Arma", "BBA +1, Proficiência", "+1 nas jogadas de ataque com a arma escolhida.", "Você recebe +1 em todas as jogadas de ataque usando a arma selecionada."),
-        FeatDefinition("Especialização em Arma", "Guerreiro 4º nível, Foco em Arma", "+2 no dano com a arma escolhida.", "Você recebe +2 em todas as jogadas de dano com a arma selecionada."),
-        FeatDefinition("Foco em Arma Aprimorado", "Guerreiro 8º nível, Foco em Arma", "Mais +1 nas jogadas de ataque.", "Você recebe um bônus adicional de +1 nas jogadas de ataque com a arma selecionada."),
-        FeatDefinition("Tiro Certeiro", "Nenhum", "+1 em ataque e dano à distância até 9m.", "Você recebe +1 de bônus nas jogadas de ataque e dano com armas de ataque à distância contra alvos a até 9 metros."),
+        FeatDefinition("Especialização em Arma", "Guerreiro 4º nível, proficiência com a arma escolhida, Foco em Arma com a arma escolhida", "+2 no dano com a arma escolhida.", "Você recebe +2 nas jogadas de dano com a arma escolhida. Só pode selecionar este talento para uma arma com a qual tenha proficiência."),
+        FeatDefinition("Foco em Arma Aprimorado", "Guerreiro 8º nível, Foco em Arma com a arma escolhida", "+1 nas jogadas de ataque com a arma escolhida (bônus total de +2 com Foco em Arma).", "O bônus nas jogadas de ataque com a arma escolhida aumenta de +1 para +2."),
+        FeatDefinition("Tiro Certeiro", "Nenhum", "+1 nas jogadas de ataque e dano com armas de ataque à distância contra alvos a até 9m.", "Você recebe +1 nas jogadas de ataque e dano com armas de ataque à distância contra alvos a até 9 metros."),
         FeatDefinition("Tiro Preciso", "Tiro Certeiro", "Sem penalidade de -4 ao disparar em combate corpo a corpo.", "Você pode disparar contra um oponente em combate corpo a corpo sem sofrer a penalidade padrão de -4."),
         FeatDefinition("Disparo Rápido", "DES 13, Tiro Certeiro", "Um ataque à distância extra por rodada.", "Você ganha um ataque adicional por rodada com arma de ataque à distância, com -2 em todos os ataques."),
         FeatDefinition("Trespassar", "FOR 13, Ataque Poderoso", "Ataque corpo a corpo adicional após derrubar um inimigo.", "Se você causar dano suficiente para derrubar uma criatura, recebe imediatamente um ataque extra gratuito em outra criatura adjacente."),
@@ -789,9 +789,9 @@ object Dnd35Rules {
         FeatDefinition("Magia Sem Gestos", "Metamágico", "Conjura sem componentes gestuais (+1 círculo).", "Pode conjurar magia sem fazer gestos somáticos, sem chance de falha de armadura (+1 espaço de magia)."),
         FeatDefinition("Maximizar Magia", "Metamágico", "Efeitos variáveis de dano/cura causam efeito máximo (+3 círculos).", "Todas as variáveis numéricas da magia têm efeito máximo (+3 espaços de magia)."),
         FeatDefinition("Potencializar Magia", "Metamágico", "Aumenta os efeitos em 50% (+2 círculos).", "Todos os efeitos numéricos variáveis da magia são aumentados em metade (+2 espaços de magia)."),
-        FeatDefinition("Magia Acelerada", "Metamágico", "Conjura magia como ação livre (+4 círculos).", "Você pode conjurar a magia como ação livre 1 vez por rodada (+4 espaços de magia)."),
-        FeatDefinition("Escrever Pergaminho", "Conjurador 1º nível", "Cria pergaminhos mágicos com feitiços conhecidos.", "Você pode criar um pergaminho com qualquer magia que conheça."),
-        FeatDefinition("Criar Varinha", "Conjurador 5º nível", "Cria varinhas mágicas de feitiços até 4º círculo.", "Você pode criar varinhas que armazenam magias de até 4º círculo com 50 cargas.")
+        FeatDefinition("Magia Acelerada", "Metamágico", "Conjura uma magia como ação rápida (+4 níveis de magia).", "Uma magia acelerada com tempo de execução de 1 ação padrão passa a ser conjurada como ação rápida; preparar ou conjurar a magia ocupa um espaço de magia 4 níveis acima."),
+        FeatDefinition("Escrever Pergaminho", "Conjurador de 1º nível", "Cria pergaminhos de magias arcanas ou divinas que o personagem conheça e possa conjurar.", "Você pode criar um pergaminho de uma magia que conheça e possa conjurar. A criação exige os custos, o tempo e os requisitos normais de criação de itens mágicos."),
+        FeatDefinition("Criar Varinha", "Conjurador de 5º nível", "Cria varinhas que armazenam uma magia de 4º nível ou inferior que o criador conheça.", "Você pode criar uma varinha de uma magia de 4º nível ou inferior que conheça. A criação exige os custos e o tempo normais; a varinha contém 50 cargas.")
     )
 
     // ==========================================
