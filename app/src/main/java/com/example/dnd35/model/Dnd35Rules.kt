@@ -2811,15 +2811,15 @@ object Dnd35Rules {
             name = "Dissimular Tendência",
             level = 1,
             school = "Abjuração",
-            classes = listOf("Bardo", "Clérigo", "Mago", "Feiticeiro"),
+            classes = listOf("Bardo", "Clérigo", "Paladino"),
             castTime = "1 ação padrão",
-            components = "V, S",
-            range = "Toque",
+            components = "V, G",
+            range = "Curto (7,5m + 1,5m/2 níveis)",
             duration = "24 horas",
             savingThrow = "Vontade anula (objeto)",
             spellResistance = true,
-            description = "Esconde a tendência de uma criatura ou objeto contra efeitos de adivinhação.",
-            classLevels = mapOf("Bardo" to 1, "Clérigo" to 2, "Mago" to 2, "Feiticeiro" to 2)
+            description = "Esconde a tendência de uma criatura ou objeto contra todas as formas de adivinhação.",
+            classLevels = mapOf("Bardo" to 1, "Clérigo" to 2, "Paladino" to 2)
         ),
         PresetSpell(
             name = "Obscurecer Objeto",

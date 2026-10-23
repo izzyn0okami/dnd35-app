@@ -1055,3 +1055,14 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Incluídos níveis por classe nas magias com níveis diferentes para Bardo, Clérigo, Mago e Feiticeiro; adicionados testes de regressão para presença, níveis e ausência de duplicata.
 - Fonte primária: arquivo fornecido “D&D 3.5 - Livro do Jogador”, listas de magias de Bardo e descrições das magias. A auditoria de componentes, descrições completas e listas das demais classes continua em andamento.
 - Nenhum teste manual em dispositivo Android foi realizado nesta etapa; CI será a validação automatizada.
+
+
+---
+
+## 2026-10-23 — Correção de Dissimular Tendência com base no Livro do Jogador
+
+- A conferência direta da entrada no capítulo 11 identificou dados incorretos na entrada existente: a lista de classes havia incluído Mago e Feiticeiro e omitido Paladino; o alcance estava como Toque em vez de Curto; os componentes estavam abreviados incorretamente como V, S.
+- Corrigida a lista para **Bardo 1, Clérigo 2 e Paladino 2**, alcance para **Curto (7,5 m + 1,5 m/2 níveis)** e componentes para **V, G**. A descrição foi ajustada para refletir que a magia esconde a tendência de criatura ou objeto contra todas as formas de adivinhação.
+- Adicionados testes de regressão para classes, níveis por classe, alcance e componentes. Entrada existente corrigida; nenhuma duplicata criada.
+- Fonte primária: arquivo fornecido “D&D 3.5 - Livro do Jogador”, capítulo 11, verbete “Dissimular Tendência” (página impressa 196).
+- O restante dos campos e das magias adicionadas no lote anterior continua sujeito a revisão individual; CI não substitui teste manual no Android.
