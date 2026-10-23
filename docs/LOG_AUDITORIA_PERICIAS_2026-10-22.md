@@ -1066,3 +1066,13 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Adicionados testes de regressão para classes, níveis por classe, alcance e componentes. Entrada existente corrigida; nenhuma duplicata criada.
 - Fonte primária: arquivo fornecido “D&D 3.5 - Livro do Jogador”, capítulo 11, verbete “Dissimular Tendência” (página impressa 196).
 - O restante dos campos e das magias adicionadas no lote anterior continua sujeito a revisão individual; CI não substitui teste manual no Android.
+
+
+---
+
+## 2026-10-23 — Revisão mecânica de Confusão Menor
+
+- Conferido o verbete **Confusão Menor** no PDF brasileiro do Livro do Jogador, capítulo 11 (texto extraído do verbete na página impressa 185).
+- Corrigidos os componentes de **V, S** para **V, G, FD**; removido o teste de resistência que não consta no verbete; e corrigida a resistência à magia para **Não**. A descrição agora especifica uma única criatura viva e remete à magia Confusão para a condição exata.
+- Mantida a entrada única de Bardo 1, alcance curto e duração de 1 rodada. Adicionados testes de regressão e atualizado este log.
+- Nenhum teste manual em dispositivo Android foi realizado nesta etapa.
