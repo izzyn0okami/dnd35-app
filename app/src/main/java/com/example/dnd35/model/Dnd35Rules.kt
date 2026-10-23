@@ -1680,7 +1680,7 @@ object Dnd35Rules {
             description = "Cria uma força invisível e sem mente que executa tarefas simples, como buscar objetos, limpar ou servir; não pode atacar."
         ),
         PresetSpell(
-            name = "Convocar Monstro I",
+            name = "Invocar Criaturas I",
             level = 1,
             school = "Conjuração",
             classes = listOf("Bardo", "Clérigo", "Mago", "Feiticeiro"),
@@ -2603,7 +2603,7 @@ object Dnd35Rules {
 
 
         PresetSpell(
-            name = "Animar Corda",
+            name = "Animar Cordas",
             level = 1,
             school = "Transmutação",
             classes = listOf("Bardo", "Mago", "Feiticeiro"),
