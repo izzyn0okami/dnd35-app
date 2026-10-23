@@ -2218,6 +2218,47 @@ object Dnd35Rules {
             description = "Concede proteção defensiva contra criaturas leais, protege contra controle mental e impede contato corporal de criaturas convocadas ordeiras."
         ),
 
+        // Magias adicionais de 1º círculo — lote 8: utilidades da natureza
+        PresetSpell(
+            name = "Acalmar Animais",
+            level = 1,
+            school = "Encantamento",
+            classes = listOf("Druida", "Ranger"),
+            castTime = "1 ação padrão",
+            components = "V, S",
+            range = "Curto (7,5m + 1,5m/2 níveis)",
+            duration = "1 minuto/nível",
+            savingThrow = "Vontade anula",
+            spellResistance = true,
+            description = "Acalma animais, reduzindo sua hostilidade; criaturas ameaçadas ou atacadas podem resistir ao efeito."
+        ),
+        PresetSpell(
+            name = "Detectar Laços e Covas",
+            level = 1,
+            school = "Adivinhação",
+            classes = listOf("Druida", "Ranger"),
+            castTime = "1 ação padrão",
+            components = "V, S",
+            range = "18m",
+            duration = "Concentração, até 10 minutos/nível",
+            savingThrow = "Nenhum",
+            spellResistance = false,
+            description = "Revela armadilhas naturais, fossos e perigos semelhantes dentro do alcance, conforme a direção examinada."
+        ),
+        PresetSpell(
+            name = "Convocar Aliado da Natureza I",
+            level = 1,
+            school = "Conjuração",
+            classes = listOf("Druida", "Ranger"),
+            castTime = "1 rodada",
+            components = "V, S, DF",
+            range = "Curto (7,5m + 1,5m/2 níveis)",
+            duration = "1 rodada/nível",
+            savingThrow = "Nenhum",
+            spellResistance = false,
+            description = "Convoca uma criatura natural escolhida entre as opções permitidas para o primeiro nível da magia; ela serve ao conjurador durante a duração."
+        ),
+
         // CÍRCULO 2
         PresetSpell(
             name = "Invisibilidade",
