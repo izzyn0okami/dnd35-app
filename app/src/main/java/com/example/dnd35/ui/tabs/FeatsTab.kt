@@ -20,6 +20,7 @@ import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.MilitaryTech
 import androidx.compose.material3.Button
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -53,6 +54,7 @@ fun FeatsTab(
 ) {
     var showAddFeatModal by remember { mutableStateOf(false) }
     var featToEdit by remember { mutableStateOf<CharacterFeat?>(null) }
+    var pendingFeatDeleteId by remember { mutableStateOf<String?>(null) }
 
     LazyColumn(
         modifier = Modifier
@@ -162,10 +164,10 @@ fun FeatsTab(
                             )
 
                             Row {
-                                IconButton(onClick = { featToEdit = feat }, modifier = Modifier.size(32.dp)) {
+                                IconButton(onClick = { featToEdit = feat }, modifier = Modifier.size(48.dp)) {
                                     Icon(Icons.Default.Edit, contentDescription = "Editar", modifier = Modifier.size(18.dp), tint = MaterialTheme.colorScheme.primary)
                                 }
-                                IconButton(onClick = { viewModel.removeFeat(feat.id) }, modifier = Modifier.size(32.dp)) {
+                                IconButton(onClick = { pendingFeatDeleteId = feat.id }, modifier = Modifier.size(48.dp)) {
                                     Icon(Icons.Default.Delete, contentDescription = "Excluir", modifier = Modifier.size(18.dp), tint = DndCrimson)
                                 }
                             }
@@ -213,6 +215,16 @@ fun FeatsTab(
             featToEdit = null,
             onConfirm = { newFeat -> viewModel.addFeat(newFeat) },
             onDismiss = { showAddFeatModal = false }
+        )
+    }
+
+    pendingFeatDeleteId?.let { featId ->
+        AlertDialog(
+            onDismissRequest = { pendingFeatDeleteId = null },
+            title = { Text("Excluir talento?") },
+            text = { Text("Esta ação não pode ser desfeita.") },
+            confirmButton = { Button(onClick = { viewModel.removeFeat(featId); pendingFeatDeleteId = null }) { Text("Excluir") } },
+            dismissButton = { androidx.compose.material3.OutlinedButton(onClick = { pendingFeatDeleteId = null }) { Text("Cancelar") } }
         )
     }
 

@@ -182,7 +182,7 @@ fun ManageMulticlassDialog(
                                                 }
                                             },
                                             enabled = entry.level > 1,
-                                            modifier = Modifier.size(32.dp)
+                                            modifier = Modifier.size(48.dp)
                                         ) {
                                             Icon(Icons.Default.Remove, contentDescription = "Diminuir Nível", modifier = Modifier.size(16.dp))
                                         }
@@ -201,7 +201,7 @@ fun ManageMulticlassDialog(
                                                     if (it.className == entry.className) it.copy(level = it.level + 1) else it
                                                 }
                                             },
-                                            modifier = Modifier.size(32.dp)
+                                            modifier = Modifier.size(48.dp)
                                         ) {
                                             Icon(Icons.Default.Add, contentDescription = "Aumentar Nível", modifier = Modifier.size(16.dp))
                                         }
@@ -211,7 +211,7 @@ fun ManageMulticlassDialog(
                                                 onClick = {
                                                     classesList = classesList.filterNot { it.className == entry.className }
                                                 },
-                                                modifier = Modifier.size(32.dp)
+                                                modifier = Modifier.size(48.dp)
                                             ) {
                                                 Icon(Icons.Default.Delete, contentDescription = "Remover Classe", tint = DndCrimson, modifier = Modifier.size(18.dp))
                                             }

@@ -210,7 +210,8 @@ fun AddEditFeatDialog(
                         )
                         onConfirm(finalFeat)
                         onDismiss()
-                    }
+                    },
+                    enabled = name.isNotBlank()
                 ) {
                     Text("Salvar")
                 }

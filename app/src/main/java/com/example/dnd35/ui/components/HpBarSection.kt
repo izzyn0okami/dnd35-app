@@ -211,42 +211,47 @@ fun HpBarSection(
 
             Spacer(modifier = Modifier.height(12.dp))
 
-            // Botões rápidos de ajuste
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween
-            ) {
-                QuickHpButton(label = "-5", color = DndCrimson) { onAdjustHp(-5) }
-                QuickHpButton(label = "-1", color = DndCrimson) { onAdjustHp(-1) }
-                QuickHpButton(label = "+1", color = DndHpGreen) { onAdjustHp(1) }
-                QuickHpButton(label = "+5", color = DndHpGreen) { onAdjustHp(5) }
-
-                OutlinedButton(
-                    onClick = { showCustomHpDialog = "DANO" },
-                    modifier = Modifier.height(36.dp),
-                    shape = RoundedCornerShape(8.dp)
+            // Controles em duas linhas para reduzir cortes em telas estreitas
+            Column(modifier = Modifier.fillMaxWidth()) {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween
                 ) {
-                    Text("Dano", style = MaterialTheme.typography.labelSmall)
+                    QuickHpButton(label = "-5", color = DndCrimson) { onAdjustHp(-5) }
+                    QuickHpButton(label = "-1", color = DndCrimson) { onAdjustHp(-1) }
+                    QuickHpButton(label = "+1", color = DndHpGreen) { onAdjustHp(1) }
+                    QuickHpButton(label = "+5", color = DndHpGreen) { onAdjustHp(5) }
                 }
-
-                OutlinedButton(
-                    onClick = { showCustomHpDialog = "CURA" },
-                    modifier = Modifier.height(36.dp),
-                    shape = RoundedCornerShape(8.dp)
+                Spacer(modifier = Modifier.height(8.dp))
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
-                    Icon(Icons.Default.Healing, contentDescription = null, modifier = Modifier.size(14.dp), tint = DndHpGreen)
-                    Spacer(modifier = Modifier.width(2.dp))
-                    Text("Cura", style = MaterialTheme.typography.labelSmall)
-                }
-
-                OutlinedButton(
-                    onClick = { showCustomHpDialog = "TEMP" },
-                    modifier = Modifier.height(36.dp),
-                    shape = RoundedCornerShape(8.dp)
-                ) {
-                    Icon(Icons.Default.Shield, contentDescription = null, modifier = Modifier.size(14.dp), tint = DndTempPurple)
-                    Spacer(modifier = Modifier.width(2.dp))
-                    Text("Temp", style = MaterialTheme.typography.labelSmall)
+                    OutlinedButton(
+                        onClick = { showCustomHpDialog = "DANO" },
+                        modifier = Modifier.weight(1f).height(40.dp),
+                        shape = RoundedCornerShape(8.dp)
+                    ) {
+                        Text("Dano", style = MaterialTheme.typography.labelSmall)
+                    }
+                    OutlinedButton(
+                        onClick = { showCustomHpDialog = "CURA" },
+                        modifier = Modifier.weight(1f).height(40.dp),
+                        shape = RoundedCornerShape(8.dp)
+                    ) {
+                        Icon(Icons.Default.Healing, contentDescription = null, modifier = Modifier.size(14.dp), tint = DndHpGreen)
+                        Spacer(modifier = Modifier.width(2.dp))
+                        Text("Cura", style = MaterialTheme.typography.labelSmall)
+                    }
+                    OutlinedButton(
+                        onClick = { showCustomHpDialog = "TEMP" },
+                        modifier = Modifier.weight(1f).height(40.dp),
+                        shape = RoundedCornerShape(8.dp)
+                    ) {
+                        Icon(Icons.Default.Shield, contentDescription = null, modifier = Modifier.size(14.dp), tint = DndTempPurple)
+                        Spacer(modifier = Modifier.width(2.dp))
+                        Text("Temp", style = MaterialTheme.typography.labelSmall)
+                    }
                 }
             }
         }
@@ -255,6 +260,7 @@ fun HpBarSection(
     // Modal de Edição de PV Máx
     if (showEditMaxHpDialog) {
         var inputVal by remember { mutableStateOf("$maxHp") }
+        val parsedMaxHp = inputVal.toIntOrNull()
         AlertDialog(
             onDismissRequest = { showEditMaxHpDialog = false },
             title = { Text("Definir PV Máximo") },
@@ -269,9 +275,8 @@ fun HpBarSection(
             },
             confirmButton = {
                 Button(onClick = {
-                    inputVal.toIntOrNull()?.let { onSetMaxHp(it) }
-                    showEditMaxHpDialog = false
-                }) {
+                    parsedMaxHp?.takeIf { it >= 1 }?.let { onSetMaxHp(it); showEditMaxHpDialog = false }
+                }, enabled = parsedMaxHp != null && parsedMaxHp >= 1) {
                     Text("Salvar")
                 }
             },
@@ -286,6 +291,7 @@ fun HpBarSection(
     // Modal de Dano / Cura / PV Temporário Personalizado
     showCustomHpDialog?.let { actionType ->
         var inputVal by remember { mutableStateOf("") }
+        val parsedAmount = inputVal.toIntOrNull()
         AlertDialog(
             onDismissRequest = { showCustomHpDialog = null },
             title = { Text(when (actionType) {
@@ -300,13 +306,16 @@ fun HpBarSection(
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                     label = { Text("Quantidade") },
                     singleLine = true,
+                    isError = parsedAmount == null || parsedAmount < 0,
+                    supportingText = { if (parsedAmount == null || parsedAmount < 0) Text("Informe um número inteiro igual ou maior que zero.") },
                     placeholder = { Text("ex: 14") }
                 )
             },
             confirmButton = {
                 Button(
                     onClick = {
-                        val amount = inputVal.toIntOrNull() ?: 0
+                        val amount = parsedAmount ?: return@Button
+                        if (amount < 0) return@Button
                         when (actionType) {
                             "DANO" -> onAdjustHp(-amount)
                             "CURA" -> onAdjustHp(amount)
@@ -314,6 +323,7 @@ fun HpBarSection(
                         }
                         showCustomHpDialog = null
                     },
+                    enabled = parsedAmount != null && parsedAmount >= 0,
                     colors = ButtonDefaults.buttonColors(
                         containerColor = if (actionType == "DANO") DndCrimson else DndHpGreen
                     )

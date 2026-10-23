@@ -64,6 +64,9 @@ fun AddEditItemDialog(
     var damageOrAc by remember { mutableStateOf(itemToEdit?.damageOrAc ?: "") }
     var notes by remember { mutableStateOf(itemToEdit?.notes ?: "") }
     var equipped by remember { mutableStateOf(itemToEdit?.equipped ?: false) }
+    val parsedQuantity = quantityText.toIntOrNull()
+    val parsedWeight = weightText.toFloatOrNull()
+    val parsedCost = costText.toFloatOrNull()
     var equippedSlot by remember { mutableStateOf(itemToEdit?.equippedSlot ?: Dnd35Rules.EquipmentSlots.NONE) }
 
     // Busca no catálogo
@@ -332,9 +335,9 @@ fun AddEditItemDialog(
                         val finalItem = (itemToEdit ?: CharacterInventoryItem(name = name, category = category)).copy(
                             name = if (name.isBlank()) "Novo Item" else name.trim(),
                             category = category,
-                            quantity = quantityText.toIntOrNull()?.coerceAtLeast(1) ?: 1,
-                            weightLb = weightText.toFloatOrNull()?.coerceAtLeast(0f) ?: 0f,
-                            costGp = costText.toFloatOrNull()?.coerceAtLeast(0f) ?: 0f,
+                            quantity = parsedQuantity ?: return@Button,
+                            weightLb = parsedWeight ?: return@Button,
+                            costGp = parsedCost ?: return@Button,
                             damageOrAc = damageOrAc,
                             equipped = equipped,
                             equippedSlot = if (equipped && equippedSlot == Dnd35Rules.EquipmentSlots.NONE) Dnd35Rules.EquipmentSlots.MAIN_HAND else equippedSlot,
@@ -342,7 +345,8 @@ fun AddEditItemDialog(
                         )
                         onConfirm(finalItem)
                         onDismiss()
-                    }
+                    },
+                    enabled = name.isNotBlank() && parsedQuantity != null && parsedQuantity >= 1 && parsedWeight != null && parsedWeight >= 0f && parsedCost != null && parsedCost >= 0f
                 ) {
                     Text("Salvar")
                 }

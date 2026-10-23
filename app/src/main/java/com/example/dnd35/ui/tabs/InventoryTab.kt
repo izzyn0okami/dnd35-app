@@ -86,6 +86,7 @@ fun InventoryTab(
     var selectedCategoryIndex by remember { mutableIntStateOf(0) }
     var expandSlotsView by remember { mutableStateOf(true) }
     var itemForSlotAssign by remember { mutableStateOf<CharacterInventoryItem?>(null) }
+    var pendingItemDeleteId by remember { mutableStateOf<String?>(null) }
 
     val categories = listOf("Todas", "Armas", "Armaduras", "Escudos", "Itens Mágicos", "Itens de Aventura", "Consumíveis")
 
@@ -308,7 +309,7 @@ fun InventoryTab(
                                                 onClick = {
                                                     viewModel.assignItemSlot(equippedInSlot.id, Dnd35Rules.EquipmentSlots.NONE)
                                                 },
-                                                modifier = Modifier.size(24.dp)
+                                                modifier = Modifier.size(48.dp)
                                             ) {
                                                 Icon(Icons.Default.Delete, contentDescription = "Desequipar", tint = DndCrimson, modifier = Modifier.size(16.dp))
                                             }
@@ -348,7 +349,7 @@ fun InventoryTab(
                             Text("Bolsa de Moedas & Riqueza", fontWeight = FontWeight.Bold, style = MaterialTheme.typography.titleMedium)
                         }
 
-                        IconButton(onClick = { showCoinsModal = true }, modifier = Modifier.size(32.dp)) {
+                        IconButton(onClick = { showCoinsModal = true }, modifier = Modifier.size(48.dp)) {
                             Icon(Icons.Default.Edit, contentDescription = "Editar Moedas", tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(18.dp))
                         }
                     }
@@ -478,7 +479,7 @@ fun InventoryTab(
                     item = item,
                     onOpenSlotPicker = { itemForSlotAssign = item },
                     onEdit = { itemToEdit = item },
-                    onDelete = { viewModel.removeInventoryItem(item.id) }
+                    onDelete = { pendingItemDeleteId = item.id }
                 )
                 Spacer(modifier = Modifier.height(6.dp))
             }
@@ -508,6 +509,16 @@ fun InventoryTab(
                 itemToEdit = null
             },
             onDismiss = { itemToEdit = null }
+        )
+    }
+
+    pendingItemDeleteId?.let { itemId ->
+        AlertDialog(
+            onDismissRequest = { pendingItemDeleteId = null },
+            title = { Text("Excluir item?") },
+            text = { Text("Esta ação não pode ser desfeita.") },
+            confirmButton = { Button(onClick = { viewModel.removeInventoryItem(itemId); pendingItemDeleteId = null }) { Text("Excluir") } },
+            dismissButton = { OutlinedButton(onClick = { pendingItemDeleteId = null }) { Text("Cancelar") } }
         )
     }
 
@@ -578,7 +589,8 @@ fun InventoryTab(
             },
             confirmButton = {
                 Button(onClick = {
-                    val delta = goldInput.toFloatOrNull() ?: 0f
+                    val delta = goldInput.toFloatOrNull() ?: return@Button
+                    if (delta <= 0f) return@Button
                     if (isAdding) viewModel.quickCoinAction(delta)
                     else viewModel.quickCoinAction(-delta)
                     showQuickGoldDialog = null
@@ -766,15 +778,15 @@ fun InventoryItemRowRefined(
                 }
             }
 
-            IconButton(onClick = onOpenSlotPicker, modifier = Modifier.size(32.dp)) {
+            IconButton(onClick = onOpenSlotPicker, modifier = Modifier.size(48.dp)) {
                 Icon(Icons.Default.Shield, contentDescription = "Atribuir Espaço", modifier = Modifier.size(18.dp), tint = MaterialTheme.colorScheme.primary)
             }
 
-            IconButton(onClick = onEdit, modifier = Modifier.size(32.dp)) {
+            IconButton(onClick = onEdit, modifier = Modifier.size(48.dp)) {
                 Icon(Icons.Default.Edit, contentDescription = "Editar", modifier = Modifier.size(18.dp), tint = MaterialTheme.colorScheme.primary)
             }
 
-            IconButton(onClick = onDelete, modifier = Modifier.size(32.dp)) {
+            IconButton(onClick = onDelete, modifier = Modifier.size(48.dp)) {
                 Icon(Icons.Default.Delete, contentDescription = "Excluir", modifier = Modifier.size(18.dp), tint = DndCrimson)
             }
         }

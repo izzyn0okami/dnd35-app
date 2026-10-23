@@ -71,6 +71,7 @@ fun SpellsTab(
 ) {
     var showAddSpellModal by remember { mutableStateOf(false) }
     var spellToEdit by remember { mutableStateOf<CharacterSpell?>(null) }
+    var pendingSpellDeleteId by remember { mutableStateOf<String?>(null) }
     var configuringSlotsLevel by remember { mutableStateOf<SpellSlotInfo?>(null) }
 
     // Filtros de busca no grimório do personagem
@@ -370,10 +371,10 @@ fun SpellsTab(
                             }
 
                             Row(verticalAlignment = Alignment.CenterVertically) {
-                                IconButton(onClick = { spellToEdit = spell }, modifier = Modifier.size(30.dp)) {
+                                IconButton(onClick = { spellToEdit = spell }, modifier = Modifier.size(48.dp)) {
                                     Icon(Icons.Default.Edit, contentDescription = "Editar", modifier = Modifier.size(18.dp), tint = MaterialTheme.colorScheme.primary)
                                 }
-                                IconButton(onClick = { viewModel.removeSpell(spell.id) }, modifier = Modifier.size(30.dp)) {
+                                IconButton(onClick = { pendingSpellDeleteId = spell.id }, modifier = Modifier.size(48.dp)) {
                                     Icon(Icons.Default.Delete, contentDescription = "Excluir", modifier = Modifier.size(18.dp), tint = DndCrimson)
                                 }
                             }
@@ -442,6 +443,16 @@ fun SpellsTab(
     }
 
     // Modal para Editar Magia
+    pendingSpellDeleteId?.let { spellId ->
+        AlertDialog(
+            onDismissRequest = { pendingSpellDeleteId = null },
+            title = { Text("Excluir magia?") },
+            text = { Text("Esta ação não pode ser desfeita.") },
+            confirmButton = { Button(onClick = { viewModel.removeSpell(spellId); pendingSpellDeleteId = null }) { Text("Excluir") } },
+            dismissButton = { OutlinedButton(onClick = { pendingSpellDeleteId = null }) { Text("Cancelar") } }
+        )
+    }
+
     spellToEdit?.let { spell ->
         AddEditSpellDialog(
             spellToEdit = spell,
@@ -518,7 +529,7 @@ private fun SpellSlotCard(
                     fontWeight = FontWeight.Bold,
                     color = DndArcaneBlue
                 )
-                IconButton(onClick = onConfigure, modifier = Modifier.size(20.dp)) {
+                IconButton(onClick = onConfigure, modifier = Modifier.size(48.dp)) {
                     Icon(Icons.Default.Edit, contentDescription = "Configurar", modifier = Modifier.size(12.dp))
                 }
             }
@@ -542,14 +553,14 @@ private fun SpellSlotCard(
                 IconButton(
                     onClick = onUseSlot,
                     enabled = remaining > 0,
-                    modifier = Modifier.size(28.dp)
+                    modifier = Modifier.size(48.dp)
                 ) {
                     Icon(Icons.Default.Remove, contentDescription = "Gastar Espaço", modifier = Modifier.size(16.dp))
                 }
                 IconButton(
                     onClick = onRecoverSlot,
                     enabled = slot.usedSlots > 0,
-                    modifier = Modifier.size(28.dp)
+                    modifier = Modifier.size(48.dp)
                 ) {
                     Icon(Icons.Default.Add, contentDescription = "Recuperar Espaço", modifier = Modifier.size(16.dp))
                 }
