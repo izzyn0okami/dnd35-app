@@ -2626,7 +2626,7 @@ object Dnd35Rules {
             level = 1,
             school = "Encantamento",
             classes = listOf("Bardo", "Mago", "Feiticeiro"),
-            castTime = "1 ação padrão",
+            castTime = "1 rodada",
             components = "V, S",
             range = "Curto (7,5m + 1,5m/2 níveis)",
             duration = "2d4 rodadas",
