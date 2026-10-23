@@ -2595,6 +2595,73 @@ object Dnd35Rules {
         ),
 
 
+        PresetSpell(
+            name = "Animar Corda",
+            level = 1,
+            school = "Transmutação",
+            classes = listOf("Bardo", "Mago", "Feiticeiro"),
+            castTime = "1 ação padrão",
+            components = "V, S",
+            range = "Médio (30m + 3m/nível)",
+            duration = "1 rodada/nível",
+            savingThrow = "Nenhum",
+            spellResistance = false,
+            description = "Faz uma corda se mover conforme as instruções do conjurador, podendo enrolar, amarrar ou prender um alvo dentro dos limites da magia."
+        ),
+        PresetSpell(
+            name = "Ataque Certeiro",
+            level = 1,
+            school = "Adivinhação",
+            classes = listOf("Mago", "Feiticeiro"),
+            castTime = "1 ação padrão",
+            components = "V, F (pequena réplica de um arco)",
+            range = "Pessoal",
+            duration = "Ver descrição",
+            savingThrow = "Nenhum",
+            spellResistance = false,
+            description = "O conjurador recebe +20 de bônus de intuição na próxima jogada de ataque feita até o fim da rodada seguinte."
+        ),
+        PresetSpell(
+            name = "Hipnotismo",
+            level = 1,
+            school = "Encantamento",
+            classes = listOf("Bardo", "Mago", "Feiticeiro"),
+            castTime = "1 ação padrão",
+            components = "V, S",
+            range = "Curto (7,5m + 1,5m/2 níveis)",
+            duration = "2d4 rodadas",
+            savingThrow = "Vontade anula",
+            spellResistance = true,
+            description = "Fascina criaturas num total de 2d4 Dados de Vida, permitindo ao conjurador obter atenção e influenciar brevemente as criaturas afetadas."
+        ),
+        PresetSpell(
+            name = "Montaria",
+            level = 1,
+            school = "Conjuração",
+            classes = listOf("Bardo", "Mago", "Feiticeiro"),
+            castTime = "1 rodada",
+            components = "V, S, M (um pouco de pelo de cavalo)",
+            range = "Curto (7,5m + 1,5m/2 níveis)",
+            duration = "2 horas/nível",
+            savingThrow = "Nenhum",
+            spellResistance = false,
+            description = "Conjura uma montaria para servir ao conjurador. Ela aparece equipada para montaria e desaparece quando a duração termina ou sofre dano excessivo."
+        ),
+        PresetSpell(
+            name = "Imagem Silenciosa",
+            level = 1,
+            school = "Ilusão",
+            classes = listOf("Bardo", "Mago", "Feiticeiro"),
+            castTime = "1 ação padrão",
+            components = "V, S, F (um pouco de lã)",
+            range = "Longo (120m + 12m/nível)",
+            duration = "Concentração",
+            savingThrow = "Vontade descrê (se interagir)",
+            spellResistance = false,
+            description = "Cria uma imagem visual sem som. A ilusão não produz som, cheiro, textura nem temperatura e desaparece quando a concentração termina."
+        ),
+
+
 
     )
 }
