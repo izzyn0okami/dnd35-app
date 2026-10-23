@@ -684,6 +684,10 @@ object Dnd35Rules {
             normalized.substringAfter("(", "").removeSuffix(")").isNotBlank()
     }
 
+    /** Conhecimento admite teste sem graduação para informações comuns (CD 10 ou inferior). */
+    fun allowsUntrainedKnowledgeCheck(skillName: String): Boolean =
+        canonicalSkillName(skillName).startsWith("Conhecimento (", ignoreCase = true)
+
     fun classSkillMatches(skillName: String, listedClassSkill: String): Boolean {
         val skill = canonicalSkillName(skillName)
         val listed = canonicalSkillName(listedClassSkill)
