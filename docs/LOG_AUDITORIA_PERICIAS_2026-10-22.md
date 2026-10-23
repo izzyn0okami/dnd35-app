@@ -914,3 +914,12 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Corrigido o foco de Ataque Certeiro: pequena réplica de um alvo de arquearia, não de um arco.
 - Corrigido o tempo de execução de Hipnotismo para 1 rodada; teste automatizado acrescentado para esse campo.
 - As correções foram feitas após a primeira execução de CI; exigir nova CI verde no SHA final antes do merge.
+
+
+## 2026-10-23 — Magias arcanas de 1º círculo, lote 10
+
+- Adicionadas três entradas candidatas: Disco Flutuante, Reduzir Pessoa e Toque Chocante.
+- Incluídos testes para listas de classe e propriedades mecânicas selecionadas.
+- Os nomes e resumos são provisórios até conferência direta com o Livro do Jogador brasileiro; as referências SRD servem apenas como apoio mecânico.
+- Não integrar antes da CI passar no SHA final e da revisão do estado da PR. Teste manual em dispositivo Android não realizado.
+- Referências mecânicas auxiliares: https://www.d20srd.org/srd/spells/floatingDisk.htm ; https://www.d20srd.org/srd/spells/reducePerson.htm ; https://www.d20srd.org/srd/spells/shockingGrasp.htm.
