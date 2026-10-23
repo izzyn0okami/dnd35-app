@@ -183,7 +183,23 @@ fun SquarePhotoCropDialog(sourceUri: Uri, onCancel: () -> Unit, onConfirm: (Stri
     var pan by remember(sourceUri) { mutableStateOf(Offset.Zero) }
     var viewportSize by remember { mutableStateOf(androidx.compose.ui.unit.IntSize.Zero) }
     LaunchedEffect(sourceUri) {
-        bitmap = try { context.contentResolver.openInputStream(sourceUri)?.use { BitmapFactory.decodeStream(it) } } catch (_: Exception) { null }
+        bitmap = try {
+            val bounds = BitmapFactory.Options().apply { inJustDecodeBounds = true }
+            context.contentResolver.openInputStream(sourceUri)?.use {
+                BitmapFactory.decodeStream(it, null, bounds)
+            }
+            if (bounds.outWidth <= 0 || bounds.outHeight <= 0) {
+                null
+            } else {
+                val maxDimension = max(bounds.outWidth, bounds.outHeight)
+                var sampleSize = 1
+                while (maxDimension / sampleSize > 2048) sampleSize *= 2
+                val options = BitmapFactory.Options().apply { inSampleSize = sampleSize }
+                context.contentResolver.openInputStream(sourceUri)?.use {
+                    BitmapFactory.decodeStream(it, null, options)
+                }
+            }
+        } catch (_: Exception) { null }
         loadFailed = bitmap == null
     }
     AlertDialog(onDismissRequest = onCancel, title = { Text("Recortar foto") }, text = {
