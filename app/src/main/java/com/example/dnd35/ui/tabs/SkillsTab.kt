@@ -147,11 +147,20 @@ fun SkillsTab(
                     pointsSpent = if (languageSource == LanguageAcquisitionSource.PURCHASED) 1 else 0
                 )
                 if (languageSource == LanguageAcquisitionSource.PURCHASED) {
-                    val levelRecord = skillPointHistory.firstOrNull { it.characterLevel == level }
-                    if (levelRecord == null) {
+                    if (level == null || level !in 1..stats.totalCharacterLevel) {
+                        languageAcquisitionError = "Informe um nível de personagem válido, entre 1 e \${stats.totalCharacterLevel}."
+                        return
+                    }
+                    val recordsForLevel = skillPointHistory.filter { it.characterLevel == level }
+                    if (recordsForLevel.isEmpty()) {
                         languageAcquisitionError = "Registre primeiro o orçamento de perícias desse nível para contabilizar o ponto."
                         return
                     }
+                    if (recordsForLevel.size != 1) {
+                        languageAcquisitionError = "Há registros duplicados nesse nível. Corrija o histórico antes de contabilizar o idioma."
+                        return
+                    }
+                    val levelRecord = recordsForLevel.single()
                     val languageAllocationName = "Falar Idioma ($cleaned)"
                     if (levelRecord.allocations.any { it.skillName.equals(languageAllocationName, ignoreCase = true) }) {
                         languageAcquisitionError = "Esse gasto já consta no histórico de perícias."

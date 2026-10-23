@@ -578,3 +578,10 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Adicionado teste automatizado para cobrir a duplicação. Os registros existentes não são apagados nem corrigidos automaticamente.
 - Aguardar CI da PR antes do merge; teste manual em aparelho continua pendente.
 
+## 2026-10-23 — Proteção ao contabilizar idiomas comprados
+
+- A revisão das ações da aba encontrou que a inclusão de um idioma comprado escolhia o primeiro registro de pontos do nível e atualizava todos os registros que compartilhassem esse nível.
+- A ação agora exige um nível de personagem dentro do nível atual da ficha e exatamente um registro de orçamento para esse nível. Se houver duplicidade, orienta corrigir o histórico antes de contabilizar o gasto.
+- A mudança evita propagar um gasto para registros duplicados e evita usar níveis futuros ou inválidos. Não remove nem altera automaticamente registros existentes.
+- Aguardar CI da PR. Teste manual em aparelho físico continua pendente.
+
