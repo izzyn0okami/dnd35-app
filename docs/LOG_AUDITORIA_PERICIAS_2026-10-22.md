@@ -742,3 +742,12 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Os estados e listas de categoria e espaço de equipamento já existiam, mas os seletores estavam implementados como `OutlinedTextField(readOnly = true)` com `clickable` aplicado ao próprio campo. Isso torna a interação pouco confiável e pode impedir a abertura dos menus em alguns contextos.
 - Na PR #146, ambos os campos foram substituídos por botões de seleção explícitos com seta e menus suspensos. Selecionar categoria atualiza `category`; selecionar espaço atualiza `equippedSlot` e sincroniza a opção “Equipado atualmente”.
 - A alteração não muda categorias disponíveis nem regras de equipamento. Após a sincronização com a nova `main`, a CI precisa ser executada novamente antes do merge. Teste manual no Android continua pendente.
+
+
+## 2026-10-23 — Expansão do catálogo de equipamentos (PR em preparação)
+
+- Ampliado `Dnd35Rules.PRESET_ITEMS` de uma seleção curta para 163 entradas predefinidas, incluindo armas simples, marciais e exóticas adicionais, munições, escudos, equipamento de aventura e consumíveis.
+- Mantidas as categorias e os espaços de equipamento já utilizados pelo inventário; os itens predefinidos continuam sendo convertidos pelo fluxo existente de adicionar item.
+- Criado `PresetEquipmentCatalogTest` para verificar itens representativos, validade de categorias/espaços e ausência de nomes exatamente duplicados.
+- Escopo: catálogo-base ampliado para o Livro do Jogador/SRD 3.5. A lista não deve ser considerada uma transcrição integral de todos os itens mágicos do Livro do Mestre ou de suplementos; essa cobertura precisa de uma etapa própria e validação contra fontes oficiais em português.
+- CI e revisão de valores/terminologia ainda pendentes. Não integrar até a CI passar e a lista ser revisada.
