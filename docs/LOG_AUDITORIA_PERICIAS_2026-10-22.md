@@ -1077,3 +1077,13 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Mantidas as classes Bardo, Mago e Feiticeiro e a ausência de resistência à magia, coerentes com a entrada do livro. A entrada existente foi corrigida; nenhuma duplicata criada.
 - Adicionados testes de regressão para componentes, duração, resistência, teste de resistência e informação de área.
 - Nenhum teste manual em dispositivo Android foi realizado nesta etapa.
+
+
+---
+
+## 2026-10-23 — Revisão mecânica de Confusão Menor
+
+- Conferido o verbete **Confusão Menor** no PDF brasileiro do Livro do Jogador, capítulo 11 (texto extraído do verbete na página impressa 185).
+- Corrigidos os componentes de **V, S** para **V, G, FD**; removido o teste de resistência que não consta no verbete; e corrigida a resistência à magia para **Não**. A descrição agora especifica uma única criatura viva e remete à magia Confusão para a condição exata.
+- Mantida a entrada única de Bardo 1, alcance curto e duração de 1 rodada. Adicionados testes de regressão e atualizado este log.
+- Nenhum teste manual em dispositivo Android foi realizado nesta etapa.
