@@ -217,7 +217,7 @@ object CharacterPdfExporter {
             canvas1.drawRoundRect(RectF(30f, weaponY, pageWidth - 30f, weaponY + 120f), 4f, 4f, fillBoxPaint)
             canvas1.drawRoundRect(RectF(30f, weaponY, pageWidth - 30f, weaponY + 120f), 4f, 4f, borderPaint)
             canvas1.drawRect(RectF(30f, weaponY, pageWidth - 30f, weaponY + 20f), goldBannerPaint)
-            canvas1.drawText("ATAQUES & ARMAS EQUIPADAS", 40f, weaponY + 14f, headerPaint)
+            canvas1.drawText("ATAQUES & ARMAS (${equippedWeapons.size} cadastradas; máx. 4 exibidas)", 40f, weaponY + 14f, headerPaint)
 
             val equippedWeapons = stats.inventory.filter { it.equipped && it.category.startsWith("Arma", ignoreCase = true) }
             var wRowY = weaponY + 36f
@@ -256,7 +256,7 @@ object CharacterPdfExporter {
             canvas1.drawRoundRect(RectF(30f, featsY, pageWidth - 30f, pageHeight - 35f), 4f, 4f, fillBoxPaint)
             canvas1.drawRoundRect(RectF(30f, featsY, pageWidth - 30f, pageHeight - 35f), 4f, 4f, borderPaint)
             canvas1.drawRect(RectF(30f, featsY, pageWidth - 30f, featsY + 20f), goldBannerPaint)
-            canvas1.drawText("TALENTOS & HABILIDADES ESPECIAIS", 40f, featsY + 14f, headerPaint)
+            canvas1.drawText("TALENTOS & HABILIDADES (${stats.feats.size}; máx. 6 exibidos)", 40f, featsY + 14f, headerPaint)
 
             var featRowY = featsY + 36f
             for (f in stats.feats.take(6)) {
@@ -325,7 +325,7 @@ object CharacterPdfExporter {
             canvas2.drawRoundRect(RectF(30f, spellBoxTop, 30f + spellBoxWidth, pageHeight - 35f), 4f, 4f, fillBoxPaint)
             canvas2.drawRoundRect(RectF(30f, spellBoxTop, 30f + spellBoxWidth, pageHeight - 35f), 4f, 4f, borderPaint)
             canvas2.drawRect(RectF(30f, spellBoxTop, 30f + spellBoxWidth, spellBoxTop + 20f), goldBannerPaint)
-            canvas2.drawText("MAGIAS & ESPAÇOS CONJURADOS", 40f, spellBoxTop + 14f, headerPaint)
+            canvas2.drawText("MAGIAS (${stats.spells.size}; máx. 9 exibidas)", 40f, spellBoxTop + 14f, headerPaint)
 
             var spY = spellBoxTop + 36f
             val activeSlots = stats.spellSlots.filter { it.totalSlots > 0 }
@@ -348,7 +348,7 @@ object CharacterPdfExporter {
             canvas2.drawRoundRect(RectF(col2Left, spellBoxTop, col2Left + skillBoxWidth, pageHeight - 35f), 4f, 4f, fillBoxPaint)
             canvas2.drawRoundRect(RectF(col2Left, spellBoxTop, col2Left + skillBoxWidth, pageHeight - 35f), 4f, 4f, borderPaint)
             canvas2.drawRect(RectF(col2Left, spellBoxTop, col2Left + skillBoxWidth, spellBoxTop + 20f), goldBannerPaint)
-            canvas2.drawText("INVENTÁRIO & MOCHILA", col2Left + 10f, spellBoxTop + 14f, headerPaint)
+            canvas2.drawText("INVENTÁRIO (${stats.inventory.size}; máx. 10 exibidos)", col2Left + 10f, spellBoxTop + 14f, headerPaint)
 
             var invY = spellBoxTop + 36f
             for (item in stats.inventory.take(10)) {
