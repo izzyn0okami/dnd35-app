@@ -2743,5 +2743,33 @@ object Dnd35Rules {
             description = "Altera a aura mágica percebida de um objeto, podendo fazê-lo parecer mágico, não mágico ou associado a uma escola específica."
         ),
 
+
+        PresetSpell(
+            name = "Apagar",
+            level = 1,
+            school = "Transmutação",
+            classes = listOf("Bardo", "Mago", "Feiticeiro"),
+            castTime = "1 ação padrão",
+            components = "V, S",
+            range = "Curto (7,5m + 1,5m/2 níveis)",
+            duration = "Instantânea",
+            savingThrow = "Nenhum",
+            spellResistance = false,
+            description = "Remove escrita mágica ou mundana de um pergaminho ou superfície, conforme as condições e limitações da magia."
+        ),
+        PresetSpell(
+            name = "Toque Gélido",
+            level = 1,
+            school = "Necromancia",
+            classes = listOf("Mago", "Feiticeiro"),
+            castTime = "1 ação padrão",
+            components = "V, S",
+            range = "Toque",
+            duration = "Instantânea",
+            savingThrow = "Fortitude parcial",
+            spellResistance = true,
+            description = "Um toque canaliza energia necrótica, causando dano e podendo enfraquecer temporariamente o alvo; mortos-vivos são afetados de modo diferente."
+        ),
+
     )
 }
