@@ -210,4 +210,19 @@ class ClassProgressionTest {
         assertEquals(Dnd35Rules.SaveProgression.GOOD, classes.getValue("Monge").refType)
         assertEquals(Dnd35Rules.SaveProgression.GOOD, classes.getValue("Monge").willType)
     }
+    
+    @Test
+    fun uncannyDodgeDescriptionsIncludeInvisibleAttackerAndImmobilizationConditions() {
+        val rogueFeature = Dnd35Rules.CLASSES.single { it.name == "Ladino" }
+            .features.single { it.name == "Esquiva Sobrenatural" && it.level == 4 }
+        val barbarianFeature = Dnd35Rules.CLASSES.single { it.name == "Bárbaro" }
+            .features.single { it.name == "Esquiva Sobrenatural" && it.level == 2 }
+
+        listOf(rogueFeature, barbarianFeature).forEach { feature ->
+            assertTrue(feature.description.contains("surpreendido"))
+            assertTrue(feature.description.contains("oponente invisível"))
+            assertTrue(feature.description.contains("imobilizado"))
+        }
+    }
+
 }

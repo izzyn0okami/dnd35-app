@@ -720,9 +720,18 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - PR #144 integrada por squash no commit `f09ceb987f75db0f7189d2acb3b8d2e547b7697a`; CI aprovada no run https://github.com/izzyn0okami/dnd35-app/actions/runs/39899299861. Teste manual de exportação com listas acima dos limites continua pendente.
 
 
-## 2026-10-23 — PV temporários absorvem dano antes dos PV normais (PR em preparação)
+## 2026-10-23 — PV temporários absorvem dano antes dos PV normais (PR #145 integrada)
 
 - Inspeção de `CharacterViewModel.adjustHp()` confirmou que o dano era aplicado diretamente aos PV normais, sem reduzir os PV temporários; o limite superior também permitia PV normais até `maxHp + tempHp`.
 - Na branch `fix/temp-hp-absorbs-damage`, a lógica foi extraída para `calculateHpAdjustment()`: dano consome PV temporários primeiro e só então reduz PV normais; cura restaura apenas PV normais até o máximo e preserva PV temporários.
 - Foram adicionados testes unitários para dano parcialmente absorvido, dano que excede os PV temporários, cura com PV temporários existentes, teto de PV máximos e dano extremo.
-- Alteração ainda em PR/CI; não considerar integrada até aprovação e merge. Validação manual no aplicativo permanece pendente.
+- PR #145 integrada por squash em 2026-10-23 no commit `243b49601be6859c1a2c39296a84212d24218923`; CI aprovada no run https://github.com/izzyn0okami/dnd35-app/actions/runs/39899738511. Validação manual no aplicativo permanece pendente.
+
+
+## 2026-10-23 — Esquiva Sobrenatural: condições de surpresa, oponente invisível e imobilização (PR #139 em revisão)
+
+- A descrição de Esquiva Sobrenatural do Ladino foi completada conforme o Livro do Jogador brasileiro 3.5: conserva o bônus de Destreza quando surpreendido e contra oponentes invisíveis, mas perde o bônus quando imobilizado.
+- A revisão cruzada encontrou a mesma omissão na descrição do Bárbaro; a PR #139 inclui também a condição de imobilização para essa classe.
+- Testes de regressão em `ClassProgressionTest.kt` cobrem as condições para Ladino (4º nível) e Bárbaro (2º nível). A alteração é descritiva e não muda o cálculo mecânico da CA.
+- Referência primária: Livro do Jogador brasileiro 3.5, https://anyflip.com/hgohy/pjla/basic; confirmação complementar: https://www.35srd.com/players/classes/base-classes/rogue/.
+- CI do commit anterior estava aprovada, mas a atualização do log cria novo commit e exige nova execução antes do merge. Teste manual no Android permanece pendente.
