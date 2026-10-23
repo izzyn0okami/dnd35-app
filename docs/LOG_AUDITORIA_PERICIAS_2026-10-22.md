@@ -760,3 +760,13 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Esta é uma correção parcial de conteúdo já existente, não a conclusão do catálogo: a lista atual ainda contém apenas 27 talentos e 42 magias. O objetivo de referência é conferir os 110 talentos do PHB 3.5 e catalogar as magias do mesmo livro, evitando material de suplementos e entradas duplicadas.
 - Não afirmar que o catálogo está completo. Antes de integrar, ainda é necessário acrescentar cobertura de testes, expandir os dados com referência verificável para pré-requisitos/benefícios e metadados de magias, revisar terminologia em português e aguardar CI.
 - Validação local/Gradle e teste manual no Android não foram executados nesta etapa.
+
+
+## 2026-10-23 — Expansão parcial do catálogo de talentos do Livro do Jogador
+
+- Consultado o estado de PRs abertas antes de iniciar: nenhuma PR aberta foi encontrada.
+- Na branch `feat/expand-phb-feats-catalog`, o catálogo `PRESET_FEATS` passou de 27 para 41 entradas, adicionando 14 talentos do Livro do Jogador 3.5: Acuidade com Arma, Agarrar Aprimorado, Derrubar Aprimorado, Desarme Aprimorado, Reflexos de Combate, Combater com Duas Armas, Combater com Duas Armas Aprimorado, Combater com Duas Armas Maior, Saque Rápido, Magia em Combate, Foco em Magia, Foco em Magia Maior, Sucesso Decisivo Aprimorado e Tiro Longo.
+- Adicionado `PresetFeatCatalogTest.kt`, verificando presença dessas entradas e ausência de nomes duplicados.
+- Isto é uma expansão parcial, não a conclusão dos 110 talentos listados no catálogo de referência do PHB 3.5. Os pré-requisitos e textos mecânicos ainda precisam de revisão item a item contra o Livro do Jogador brasileiro; não declarar o catálogo completo nem usar material de suplementos.
+- O catálogo de magias também permanece incompleto. Não foram acrescentadas magias nesta etapa, pois o modelo exige dados mecânicos por magia e classe; não preencher esses campos por suposição. A próxima etapa deve estruturar e conferir a lista de magias do Livro do Jogador, separando entradas únicas de níveis por classe.
+- Nenhum teste Gradle foi executado localmente nesta operação. A CI da PR precisa passar antes do merge; teste manual no Android continua pendente.
