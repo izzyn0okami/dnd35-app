@@ -359,3 +359,10 @@ Continuar a auditoria de regras sem repetir os assuntos resolvidos. Próximo foc
 - A revisão cruzada identificou que a descrição no código permitia usar a habilidade em terreno natural enquanto observado, mas não documentava a condição de estar a até 3 metros de terreno natural.
 - A descrição foi ajustada para incluir a distância e esclarecer que cobertura/camuflagem não são necessárias. Foi acrescentado teste de regressão para a condição de 3 metros, observação e ausência de cobertura/camuflagem.
 - Branch: `fix/ranger-hide-in-plain-sight-range`. Aguardar CI antes de merge; nenhum teste local nem teste manual no aparelho foi executado.
+
+
+## Resultado da PR #107 — 2026-10-23
+
+- PR #107 integrada por squash no commit `730cd8e11f08e9b285e548729480e1cb939cf8f3`; CI aprovada no run [39876038619](https://github.com/izzyn0okami/dnd35-app/actions/runs/39876038619).
+- A descrição de Esconder-se à Plena Vista do Ranger agora registra a condição de estar a até 3 metros de terreno natural, além de poder agir sob observação e sem cobertura/camuflagem. Teste de regressão incluído.
+- Próxima passada: revisar características com progressão escalonada do Bárbaro e do Monge, procurando diferenças objetivas contra o Livro do Jogador 3.5; não reabrir habilidades já cobertas por testes sem evidência de erro.
