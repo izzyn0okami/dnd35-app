@@ -285,4 +285,26 @@ class PresetSpellCatalogTest {
         assertTrue(shockingGrasp.spellResistance)
     }
 
+
+    @Test
+    fun firstLevelArcaneSpellBatchElevenHasExpectedClassesAndMechanics() {
+        val spells = Dnd35Rules.PRESET_SPELLS.associateBy { it.name }
+        val holdPortal = spells.getValue("Trancar Portal")
+        assertEquals(setOf("Mago", "Feiticeiro"), holdPortal.classes.toSet())
+        assertEquals("Médio (30m + 3m/nível)", holdPortal.range)
+        assertEquals("1 minuto/nível", holdPortal.duration)
+        assertFalse(holdPortal.spellResistance)
+
+        val ventriloquism = spells.getValue("Ventriloquismo")
+        assertEquals(setOf("Bardo", "Mago", "Feiticeiro"), ventriloquism.classes.toSet())
+        assertEquals("1 minuto/nível", ventriloquism.duration)
+        assertFalse(ventriloquism.spellResistance)
+
+        val magicAura = spells.getValue("Aura Mágica de Nystul")
+        assertEquals(setOf("Bardo", "Mago", "Feiticeiro"), magicAura.classes.toSet())
+        assertEquals("Toque", magicAura.range)
+        assertEquals("1 dia/nível", magicAura.duration)
+        assertFalse(magicAura.spellResistance)
+    }
+
 }
