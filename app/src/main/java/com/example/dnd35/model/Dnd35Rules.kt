@@ -1259,7 +1259,7 @@ object Dnd35Rules {
             range = "Curto (7,5m + 1,5m/2 níveis)",
             duration = "Instantânea",
             savingThrow = "Nenhum",
-            spellResistance = true,
+            spellResistance = false,
             description = "Dispara um orbe de ácido que exige ataque de toque à distância e causa 1d3 pontos de dano por ácido."
         ),
         PresetSpell(
