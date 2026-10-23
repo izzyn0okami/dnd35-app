@@ -585,3 +585,10 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - A mudança evita propagar um gasto para registros duplicados e evita usar níveis futuros ou inválidos. Não remove nem altera automaticamente registros existentes.
 - Aguardar CI da PR. Teste manual em aparelho físico continua pendente.
 
+
+
+## 2026-10-23 — Corrige mensagem de validação de idioma comprado
+
+- Revisão após a PR #126 encontrou um erro textual na mensagem de nível inválido: o escape `\$` fazia a interface mostrar literalmente `${stats.totalCharacterLevel}` em vez do nível atual do personagem.
+- A correção remove apenas o escape indevido para que o Kotlin interpole o nível atual na mensagem. Não altera validações, regras ou contabilização de pontos.
+- CI da PR e validação pós-merge ainda precisam ser verificadas; teste manual da mensagem no aparelho permanece pendente.
