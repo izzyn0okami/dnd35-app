@@ -519,3 +519,12 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Os botões de edição e exclusão na lista de talentos agora incluem o nome do talento em suas descrições acessíveis (por exemplo, “Editar Ataque Poderoso” e “Excluir Ataque Poderoso”), ajudando a distinguir ações em listas com vários talentos.
 - Alteração limitada à acessibilidade da interface; não modifica regras, cálculos, dados nem comportamento de exclusão.
 - Aguardar CI da PR antes do merge. A revisão é estática; não houve teste manual com leitor de tela ou no aparelho.
+
+
+## 2026-10-23 — Rótulos acessíveis contextualizados em perícias, equipamento e espaços de magia
+
+- `SkillsTab.kt`: os botões de aumentar/diminuir graduação passam a anunciar a perícia específica.
+- `InventoryTab.kt`: a ação de desequipar anuncia o nome do item, útil quando há vários espaços/equipamentos.
+- `SpellsTab.kt`: o botão de configuração anuncia o nível de magia correspondente.
+- Alterações limitadas a conteúdo acessível; sem mudança em regras, cálculos, estado ou comportamento das ações.
+- Validação de compilação e testes fica a cargo da CI desta PR; teste manual com leitor de tela/dispositivo não realizado.
