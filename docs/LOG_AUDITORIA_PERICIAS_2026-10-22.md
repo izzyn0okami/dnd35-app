@@ -679,3 +679,11 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Corrigida a implementação para fazer a decomposição a partir do valor equivalente em PC usando `Double` e manter eventual fração de PC, em vez de truncar cada parte com `toInt()`. Entradas negativas ou não finitas são rejeitadas sem alterar o personagem.
 - Adicionado `CoinConversionTest.kt`, com testes de equivalência de valor, conversão de platina, frações e combinações inteiras em lote.
 - PR de conversão aberta em branch separada: `fix/preserve-coin-value-on-conversion`. CI e revisão ainda pendentes; teste manual no aparelho também pendente.
+
+
+## Retomada da auditoria de UI — retrato e cartão de personagem (2026-10-23)
+
+- Retomada a partir das decisões de interface já estabelecidas: retrato grande e quadrado; nome/classe/nível em painel abaixo da foto; remover o controle deslizante de zoom.
+- Em `OverviewCombatTab.kt`, o retrato usa proporção 1:1, o painel com nome, classes, nível, raça, tendência e divindade fica logo abaixo, e o slider de enquadramento foi removido. O botão de troca de foto permanece acessível no canto superior.
+- Não foi adicionada ainda a ferramenta de recorte quadrado no fluxo de seleção da foto; essa será uma correção separada, para não misturar o comportamento de seleção/recorte com a composição do cabeçalho.
+- PR de UI aberta em branch `ui/square-portrait-info-panel-below`; aguardar CI de testes unitários e compilação do APK antes de considerar merge. Teste visual manual em aparelho ainda pendente.
