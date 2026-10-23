@@ -600,3 +600,10 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - A lista agora mantém o índice original e remove apenas o registro correspondente ao botão acionado, preservando os demais registros duplicados para correção deliberada pelo usuário.
 - Corrige comportamento destrutivo em históricos ambíguos; não altera cálculos nem remove dados automaticamente além do registro explicitamente selecionado.
 - Aguardar CI da PR e validação pós-merge; teste manual em aparelho continua pendente.
+
+## 2026-10-22 — Revisão da perícia Saltar para o Ranger
+
+- **Correção da auditoria anterior:** a conclusão de que “Saltar” não seria perícia de classe do Ranger estava incorreta.
+- A lista de perícias de classe do Ranger no SRD de D&D 3.5 inclui Jump (Saltar). Referências consultadas: SRD 3.5, seção Ranger — https://www.35srd.com/players/classes/base-classes/ranger/ e https://www.darkshire.net/~jhkim/rpg/srd/srd_revised_html/ClassesII.html.
+- Mantida/restaurada “Saltar” na lista de perícias de classe do Ranger. A alteração corretiva da PR não deve remover essa perícia.
+- Esta entrada substitui a conclusão equivocada registrada na revisão anterior. CI precisa ser verificada após a atualização; teste manual no Android continua pendente.
