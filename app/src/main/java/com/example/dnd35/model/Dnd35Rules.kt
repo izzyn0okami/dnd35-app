@@ -2014,7 +2014,7 @@ object Dnd35Rules {
             range = "Toque",
             duration = "24 horas",
             savingThrow = "Vontade anula (inofensivo)",
-            spellResistance = true,
+            spellResistance = false,
             description = "Protege uma criatura contra temperaturas ambientais extremas, sem protegê-la de dano de fogo ou frio."
         ),
         PresetSpell(
