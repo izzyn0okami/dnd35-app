@@ -470,7 +470,7 @@ object Dnd35Rules {
                 ClassFeature(15, "Sentir Armadilhas +5", "+5 na CA e Reflexos contra armadilhas."),
                 ClassFeature(18, "Sentir Armadilhas +6", "+6 na CA e Reflexos contra armadilhas."),
                 ClassFeature(3, "Ataque Furtivo +2d6", "Dano furtivo sobe para +2d6."),
-                ClassFeature(4, "Esquiva Sobrenatural", "Retém Destreza mesmo surpreendido."),
+                ClassFeature(4, "Esquiva Sobrenatural", "Conserva o bônus de Destreza na CA mesmo quando surpreendido ou atacado por um oponente invisível; ainda perde esse bônus se estiver imobilizado."),
                 ClassFeature(5, "Ataque Furtivo +3d6", "Dano furtivo sobe para +3d6."),
                 ClassFeature(7, "Ataque Furtivo +4d6", "Dano furtivo sobe para +4d6."),
                 ClassFeature(8, "Esquiva Sobrenatural Aprimorada", "Não pode ser flanqueado, exceto por ladino pelo menos 4 níveis acima."),
