@@ -428,7 +428,7 @@ object Dnd35Rules {
             willType = SaveProgression.POOR,
             skillPointsPerLevel = 6,
             spellCastingAbility = "SAB",
-            classSkills = listOf("Adestrar Animais", "Cavalgar", "Concentração", "Conhecimento (Geografia)", "Conhecimento (Masmorras)", "Conhecimento (Natureza)", "Cura", "Escalar", "Esconder-se", "Furtividade", "Natação", "Observar", "Ofícios", "Ouvir", "Procurar", "Profissão", "Sobrevivência", "Usar Cordas"),
+            classSkills = listOf("Adestrar Animais", "Cavalgar", "Concentração", "Conhecimento (Geografia)", "Conhecimento (Masmorras)", "Conhecimento (Natureza)", "Cura", "Escalar", "Esconder-se", "Furtividade", "Natação", "Observar", "Ofícios", "Ouvir", "Procurar", "Profissão", "Saltar", "Sobrevivência", "Usar Cordas"),
             features = listOf(
                 ClassFeature(1, "Inimigo Predileto +2", "+2 em testes de Blefar, Ouvir, Sentir Motivação, Observar e Sobrevivência, além de dano contra um tipo de criatura escolhido."),
                 ClassFeature(1, "Rastrear e Empatia Selvagem", "Recebe o talento Rastrear e pode influenciar animais com um teste de nível de ranger + modificador de Carisma."),
