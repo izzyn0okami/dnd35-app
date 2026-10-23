@@ -1644,6 +1644,113 @@ object Dnd35Rules {
             description = "Detecta a presença e a intensidade de auras de mortos-vivos dentro do alcance."
         ),
 
+
+        // Magias adicionais de 1º círculo do Livro do Jogador — lote 2
+        PresetSpell(
+            name = "Disfarçar-se",
+            level = 1,
+            school = "Ilusão",
+            classes = listOf("Bardo", "Mago", "Feiticeiro"),
+            castTime = "1 ação padrão",
+            components = "V, S",
+            range = "Pessoal",
+            duration = "10 minutos/nível",
+            savingThrow = "Vontade desacredita",
+            spellResistance = false,
+            description = "Altera a aparência do conjurador, sem mudar a forma ou o modo de movimento; criaturas que interagem podem realizar um teste de Vontade para desacreditar."
+        ),
+        PresetSpell(
+            name = "Servo Invisível",
+            level = 1,
+            school = "Conjuração",
+            classes = listOf("Bardo", "Mago", "Feiticeiro"),
+            castTime = "1 ação padrão",
+            components = "V, S, M",
+            range = "Curto (7,5m + 1,5m/2 níveis)",
+            duration = "1 hora/nível",
+            savingThrow = "Nenhum",
+            spellResistance = false,
+            description = "Cria uma força invisível e sem mente que executa tarefas simples, como buscar objetos, limpar ou servir; não pode atacar."
+        ),
+        PresetSpell(
+            name = "Convocar Monstro I",
+            level = 1,
+            school = "Conjuração",
+            classes = listOf("Bardo", "Clérigo", "Mago", "Feiticeiro"),
+            castTime = "1 rodada",
+            components = "V, S, F/DF",
+            range = "Curto (7,5m + 1,5m/2 níveis)",
+            duration = "1 rodada/nível",
+            savingThrow = "Nenhum",
+            spellResistance = false,
+            description = "Convoca uma criatura extraplanar que aparece no local indicado e luta pelo conjurador; a criatura desaparece ao fim da duração."
+        ),
+        PresetSpell(
+            name = "Identificação",
+            level = 1,
+            school = "Adivinhação",
+            classes = listOf("Bardo", "Mago", "Feiticeiro"),
+            castTime = "1 hora",
+            components = "V, S, F (pérola de 100 PO e pena de coruja em vinho)",
+            range = "Toque",
+            duration = "Instantânea",
+            savingThrow = "Nenhum",
+            spellResistance = false,
+            description = "Determina as propriedades mágicas de um único item; exige foco e materiais especificados pela magia."
+        ),
+        PresetSpell(
+            name = "Raio do Enfraquecimento",
+            level = 1,
+            school = "Necromancia",
+            classes = listOf("Mago", "Feiticeiro"),
+            castTime = "1 ação padrão",
+            components = "V, S",
+            range = "Curto (7,5m + 1,5m/2 níveis)",
+            duration = "1 minuto/nível",
+            savingThrow = "Fortitude parcial",
+            spellResistance = true,
+            description = "Um ataque de toque à distância impõe penalidade de Força de 1d6 + 1 por dois níveis de conjurador (máx. +5); sucesso na resistência reduz a penalidade à metade."
+        ),
+        PresetSpell(
+            name = "Aumentar Pessoa",
+            level = 1,
+            school = "Transmutação",
+            classes = listOf("Mago", "Feiticeiro"),
+            castTime = "1 ação padrão",
+            components = "V, S, M",
+            range = "Curto (7,5m + 1,5m/2 níveis)",
+            duration = "1 minuto/nível",
+            savingThrow = "Fortitude anula",
+            spellResistance = true,
+            description = "Aumenta uma criatura humanoide voluntária em uma categoria de tamanho, alterando atributos físicos, alcance e modificadores de tamanho."
+        ),
+        PresetSpell(
+            name = "Arma Mágica",
+            level = 1,
+            school = "Transmutação",
+            classes = listOf("Clérigo", "Paladino", "Mago", "Feiticeiro"),
+            castTime = "1 ação padrão",
+            components = "V, S, DF",
+            range = "Toque",
+            duration = "1 minuto/nível",
+            savingThrow = "Vontade anula (inofensivo, objeto)",
+            spellResistance = true,
+            description = "Concede a uma arma tocada bônus de melhoria de +1 nas jogadas de ataque e dano."
+        ),
+        PresetSpell(
+            name = "Salto",
+            level = 1,
+            school = "Transmutação",
+            classes = listOf("Bardo", "Druida", "Ranger", "Mago", "Feiticeiro"),
+            castTime = "1 ação padrão",
+            components = "V, S, M",
+            range = "Toque",
+            duration = "1 minuto/nível",
+            savingThrow = "Vontade anula (inofensivo)",
+            spellResistance = true,
+            description = "Concede bônus de melhoria de +10 em testes de Saltar; o bônus aumenta com o nível de conjurador, até o limite definido pela magia."
+        ),
+
         // CÍRCULO 2
         PresetSpell(
             name = "Invisibilidade",
