@@ -717,4 +717,12 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Revisão estática de `CharacterPdfExporter.kt` confirmou limites fixos que descartam itens adicionais da representação visual sem indicar isso: até 4 armas equipadas, 6 talentos, 9 magias e 10 itens de inventário.
 - Correção proposta na branch `fix/pdf-exporter-visible-item-counts`: os títulos dessas seções passam a mostrar a quantidade total cadastrada e o limite exibido, deixando explícito quando o PDF mostra apenas uma parte dos dados.
 - A mudança não altera nem remove dados da ficha e não muda o layout/paginação do PDF; ela torna a limitação existente visível ao usuário. Uma solução futura de paginação completa pode ser considerada separadamente, pois exige redesenhar o fluxo de páginas e limites verticais.
-- CI ainda pendente; não considerar integrada até validação e merge. Teste manual de exportação com listas acima dos limites continua pendente.
+- PR #144 integrada por squash no commit `f09ceb987f75db0f7189d2acb3b8d2e547b7697a`; CI aprovada no run https://github.com/izzyn0okami/dnd35-app/actions/runs/39899299861. Teste manual de exportação com listas acima dos limites continua pendente.
+
+
+## 2026-10-23 — PV temporários absorvem dano antes dos PV normais (PR em preparação)
+
+- Inspeção de `CharacterViewModel.adjustHp()` confirmou que o dano era aplicado diretamente aos PV normais, sem reduzir os PV temporários; o limite superior também permitia PV normais até `maxHp + tempHp`.
+- Na branch `fix/temp-hp-absorbs-damage`, a lógica foi extraída para `calculateHpAdjustment()`: dano consome PV temporários primeiro e só então reduz PV normais; cura restaura apenas PV normais até o máximo e preserva PV temporários.
+- Foram adicionados testes unitários para dano parcialmente absorvido, dano que excede os PV temporários, cura com PV temporários existentes, teto de PV máximos e dano extremo.
+- Alteração ainda em PR/CI; não considerar integrada até aprovação e merge. Validação manual no aplicativo permanece pendente.
