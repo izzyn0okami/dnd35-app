@@ -55,6 +55,7 @@ fun EditGeneralInfoDialog(
     var selectedClass by remember { mutableStateOf(character.characterClass) }
     var selectedRace by remember { mutableStateOf(character.race) }
     var levelText by remember { mutableStateOf("${character.level}") }
+    val parsedLevel = levelText.toIntOrNull()
     var alignment by remember { mutableStateOf(character.alignment) }
     var deity by remember { mutableStateOf(character.deity) }
     var size by remember { mutableStateOf(character.size) }
@@ -202,10 +203,11 @@ fun EditGeneralInfoDialog(
         confirmButton = {
             Button(
                 onClick = {
-                    val lvl = levelText.toIntOrNull()?.coerceAtLeast(1) ?: 1
+                    val lvl = parsedLevel?.takeIf { it >= 1 } ?: return@Button
                     onSave(name, selectedClass, selectedRace, lvl, alignment, deity, size)
                     onDismiss()
-                }
+                },
+                enabled = parsedLevel != null && parsedLevel >= 1
             ) {
                 Text("Salvar")
             }

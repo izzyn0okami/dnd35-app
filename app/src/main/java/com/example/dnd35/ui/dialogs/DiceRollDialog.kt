@@ -49,6 +49,7 @@ fun DiceRollDialog(
     var d20Result by remember { mutableIntStateOf(Random.nextInt(1, 21)) }
     val totalAttack = d20Result + bonus
 
+    val isAttackRoll = actionTitle.contains("ataque", ignoreCase = true)
     val isNat20 = d20Result == 20
     val isNat1 = d20Result == 1
 
@@ -108,14 +109,14 @@ fun DiceRollDialog(
 
                 if (isNat20) {
                     Text(
-                        "★ 20 NATURAL! ACERTO CRÍTICO! ★",
+                        if (isAttackRoll) "★ 20 NATURAL! ACERTO CRÍTICO! ★" else "★ 20 NATURAL! ★",
                         style = MaterialTheme.typography.titleMedium,
                         fontWeight = FontWeight.Bold,
                         color = DndHpGreen
                     )
                 } else if (isNat1) {
                     Text(
-                        "⚠ 1 NATURAL! FALHA CRÍTICA! ⚠",
+                        if (isAttackRoll) "⚠ 1 NATURAL! FALHA CRÍTICA! ⚠" else "⚠ 1 NATURAL! ⚠",
                         style = MaterialTheme.typography.titleMedium,
                         fontWeight = FontWeight.Bold,
                         color = DndCrimson
@@ -133,11 +134,11 @@ fun DiceRollDialog(
                     Column(modifier = Modifier.padding(14.dp)) {
                         val sign = if (bonus >= 0) "+$bonus" else "$bonus"
                         Text(
-                            "Jogada de Ataque: $d20Result $sign = $totalAttack",
+                            "$actionTitle: $d20Result $sign = $totalAttack",
                             style = MaterialTheme.typography.titleMedium,
                             fontWeight = FontWeight.Bold
                         )
-                        if (damageNotation.isNotBlank()) {
+                        if (isAttackRoll && damageNotation.isNotBlank()) {
                             Spacer(modifier = Modifier.height(4.dp))
                             Text(
                                 "Dano da Arma: $damageNotation",

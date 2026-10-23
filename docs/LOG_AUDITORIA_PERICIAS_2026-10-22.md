@@ -452,3 +452,15 @@ Continuar a auditoria de regras sem repetir os assuntos resolvidos. Próximo foc
 - O histórico acima registra as decisões verificadas nesta etapa: orçamento e limite de graduações, multiclasse e transição entre perícia de classe/entreclasse, histórico de gastos por nível, sinalização de registros de níveis superiores ao nível atual, sinalizadores de perícias somente treinadas e exceção de Conhecimento para informações comuns (CD 10 ou inferior). Correções já integradas não devem ser recriadas sem evidência nova.
 - Encerramento desta etapa: não foi identificada pendência concreta que justifique outra PR de perícias com base nas verificações registradas. Isso encerra o escopo auditado aqui, não certifica exaustivamente todas as regras de todas as perícias nem substitui conferência integral com a edição brasileira do Livro do Jogador.
 - Limitações: revisão estática do código e dos testes existentes; não foi executado Gradle local nem teste manual no aparelho nesta etapa. A CI da PR #110 passou; não se presume CI para este commit documental.
+
+
+## 2026-10-22 — Auditoria de UI e usabilidade
+
+Correções propostas para integração após CI:
+- Exclusão de talentos, magias e itens exige confirmação explícita.
+- Alvos de toque de editar/excluir e controles de espaços de magia ampliados para 48 dp nos pontos revisados.
+- Rolagem de d20 usa o título da ação; 20/1 naturais fora de ataques deixam de ser chamados de acerto/falha crítica, e dano da arma só aparece em ataques.
+- Entradas de PV rejeitam valores inválidos/negativos e não fecham o diálogo sem alteração válida; nível inválido não é convertido silenciosamente em nível 1.
+- Ouro rápido rejeita entradas inválidas ou não positivas em vez de converter silenciosamente para zero ou inverter gasto/ganho.
+
+Limitações: a validação estática não substitui build/CI nem teste visual em telas estreitas. Nenhuma regra de D&D 3.5 foi alterada. A validação numérica restante dos diálogos de armadura/atributos/itens e a padronização visual global precisam de revisão adicional antes do merge.

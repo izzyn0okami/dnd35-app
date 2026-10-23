@@ -255,6 +255,7 @@ fun HpBarSection(
     // Modal de Edição de PV Máx
     if (showEditMaxHpDialog) {
         var inputVal by remember { mutableStateOf("$maxHp") }
+        val parsedMaxHp = inputVal.toIntOrNull()
         AlertDialog(
             onDismissRequest = { showEditMaxHpDialog = false },
             title = { Text("Definir PV Máximo") },
@@ -269,9 +270,8 @@ fun HpBarSection(
             },
             confirmButton = {
                 Button(onClick = {
-                    inputVal.toIntOrNull()?.let { onSetMaxHp(it) }
-                    showEditMaxHpDialog = false
-                }) {
+                    parsedMaxHp?.takeIf { it >= 1 }?.let { onSetMaxHp(it); showEditMaxHpDialog = false }
+                }, enabled = parsedMaxHp != null && parsedMaxHp >= 1) {
                     Text("Salvar")
                 }
             },
@@ -286,6 +286,7 @@ fun HpBarSection(
     // Modal de Dano / Cura / PV Temporário Personalizado
     showCustomHpDialog?.let { actionType ->
         var inputVal by remember { mutableStateOf("") }
+        val parsedAmount = inputVal.toIntOrNull()
         AlertDialog(
             onDismissRequest = { showCustomHpDialog = null },
             title = { Text(when (actionType) {
@@ -300,13 +301,16 @@ fun HpBarSection(
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                     label = { Text("Quantidade") },
                     singleLine = true,
+                    isError = parsedAmount == null || parsedAmount < 0,
+                    supportingText = { if (parsedAmount == null || parsedAmount < 0) Text("Informe um número inteiro igual ou maior que zero.") },
                     placeholder = { Text("ex: 14") }
                 )
             },
             confirmButton = {
                 Button(
                     onClick = {
-                        val amount = inputVal.toIntOrNull() ?: 0
+                        val amount = parsedAmount ?: return@Button
+                        if (amount < 0) return@Button
                         when (actionType) {
                             "DANO" -> onAdjustHp(-amount)
                             "CURA" -> onAdjustHp(amount)
@@ -314,6 +318,7 @@ fun HpBarSection(
                         }
                         showCustomHpDialog = null
                     },
+                    enabled = parsedAmount != null && parsedAmount >= 0,
                     colors = ButtonDefaults.buttonColors(
                         containerColor = if (actionType == "DANO") DndCrimson else DndHpGreen
                     )
