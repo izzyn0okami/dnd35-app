@@ -1525,6 +1525,125 @@ object Dnd35Rules {
             description = "Uma névoa espessa bloqueia toda a visão além de 1,5m e concede camuflagem total."
         ),
 
+        // Magias adicionais de 1º círculo do Livro do Jogador — lote 1
+        PresetSpell(
+            name = "Alarme",
+            level = 1,
+            school = "Abjuração",
+            classes = listOf("Bardo", "Ranger", "Mago", "Feiticeiro"),
+            castTime = "1 ação padrão",
+            components = "V, S, F/DF",
+            range = "Curto (7,5m + 1,5m/2 níveis)",
+            duration = "2 horas/nível (D)",
+            savingThrow = "Nenhum",
+            spellResistance = false,
+            description = "Protege uma área; criaturas que a atravessem sem a senha acionam um alarme mental ou audível."
+        ),
+        PresetSpell(
+            name = "Causar Medo",
+            level = 1,
+            school = "Necromancia",
+            classes = listOf("Bardo", "Clérigo", "Mago", "Feiticeiro"),
+            castTime = "1 ação padrão",
+            components = "V, S",
+            range = "Curto (7,5m + 1,5m/2 níveis)",
+            duration = "1d4 rodadas (veja descrição)",
+            savingThrow = "Vontade parcial",
+            spellResistance = true,
+            description = "Uma criatura com até 5 DV fica apavorada por 1d4 rodadas; em um sucesso na resistência, fica abalada por 1 rodada. Criaturas com mais de 5 DV são imunes."
+        ),
+        PresetSpell(
+            name = "Compreender Idiomas",
+            level = 1,
+            school = "Adivinhação",
+            classes = listOf("Bardo", "Clérigo", "Mago", "Feiticeiro"),
+            castTime = "1 ação padrão",
+            components = "V, S, M/DF",
+            range = "Pessoal",
+            duration = "10 minutos/nível",
+            savingThrow = "Nenhum",
+            spellResistance = false,
+            description = "Permite compreender o significado literal de idiomas falados ou escritos, mas não permite falar nem decifrar mensagens codificadas."
+        ),
+        PresetSpell(
+            name = "Enfeitiçar Pessoa",
+            level = 1,
+            school = "Encantamento",
+            classes = listOf("Bardo", "Mago", "Feiticeiro"),
+            castTime = "1 ação padrão",
+            components = "V, S",
+            range = "Curto (7,5m + 1,5m/2 níveis)",
+            duration = "1 hora/nível",
+            savingThrow = "Vontade anula",
+            spellResistance = true,
+            description = "Uma criatura humanoide considera o conjurador um amigo confiável; a magia não controla diretamente suas ações."
+        ),
+        PresetSpell(
+            name = "Graxa",
+            level = 1,
+            school = "Conjuração",
+            classes = listOf("Mago", "Feiticeiro"),
+            castTime = "1 ação padrão",
+            components = "V, S, M",
+            range = "Curto (7,5m + 1,5m/2 níveis)",
+            duration = "1 rodada/nível",
+            savingThrow = "Reflexos parcial",
+            spellResistance = false,
+            description = "Reveste uma superfície ou objeto com gordura escorregadia; criaturas podem cair ou ter dificuldade para se manter de pé."
+        ),
+        PresetSpell(
+            name = "Detectar Portas Secretas",
+            level = 1,
+            school = "Adivinhação",
+            classes = listOf("Bardo", "Mago", "Feiticeiro"),
+            castTime = "1 ação padrão",
+            components = "V, S",
+            range = "18m",
+            duration = "Concentração, até 1 minuto/nível",
+            savingThrow = "Nenhum",
+            spellResistance = false,
+            description = "Revela a presença de portas e compartimentos secretos dentro do alcance; a concentração ajuda a determinar sua localização."
+        ),
+        PresetSpell(
+            name = "Retirada Acelerada",
+            level = 1,
+            school = "Transmutação",
+            classes = listOf("Mago", "Feiticeiro"),
+            castTime = "1 ação padrão",
+            components = "V, S",
+            range = "Pessoal",
+            duration = "1 minuto/nível",
+            savingThrow = "Nenhum",
+            spellResistance = false,
+            description = "Aumenta o deslocamento básico do conjurador em 9m; não concede ataques adicionais nem aumenta outras formas de deslocamento."
+        ),
+        PresetSpell(
+            name = "Proteção contra o Mal",
+            level = 1,
+            school = "Abjuração",
+            classes = listOf("Clérigo", "Paladino", "Mago", "Feiticeiro"),
+            castTime = "1 ação padrão",
+            components = "V, S, DF",
+            range = "Toque",
+            duration = "1 minuto/nível",
+            savingThrow = "Vontade anula (inofensivo)",
+            spellResistance = false,
+            description = "Concede +2 na CA e nos testes de resistência contra criaturas malignas, protege contra controle mental e impede a aproximação corporal de criaturas convocadas malignas."
+        ),
+        PresetSpell(
+            name = "Detectar Mortos-Vivos",
+            level = 1,
+            school = "Adivinhação",
+            classes = listOf("Clérigo", "Mago", "Feiticeiro"),
+            castTime = "1 ação padrão",
+            components = "V, S, DF",
+            range = "18m",
+            duration = "Concentração, até 1 minuto/nível",
+            savingThrow = "Nenhum",
+            spellResistance = false,
+            description = "Detecta a presença e a intensidade de auras de mortos-vivos dentro do alcance."
+        ),
+
         // CÍRCULO 2
         PresetSpell(
             name = "Invisibilidade",
