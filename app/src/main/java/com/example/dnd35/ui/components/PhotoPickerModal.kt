@@ -1,6 +1,27 @@
 package com.example.dnd35.ui.components
 
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.net.Uri
+import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.gestures.detectTransformGestures
+import androidx.compose.foundation.layout.BoxWithConstraints
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.asImageBitmap
+import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableFloatStateOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.graphics.Color
+import java.io.File
+import java.io.FileOutputStream
+import kotlin.math.max
+import kotlin.math.roundToInt
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
@@ -50,6 +71,7 @@ fun PhotoPickerModal(
     onDismiss: () -> Unit
 ) {
     val context = LocalContext.current
+    var pendingCropUri by remember { mutableStateOf<Uri?>(null) }
 
     // Android zero-permission Photo Picker
     val photoPickerLauncher = rememberLauncherForActivityResult(
@@ -63,8 +85,7 @@ fun PhotoPickerModal(
                     android.content.Intent.FLAG_GRANT_READ_URI_PERMISSION
                 )
             } catch (_: Exception) {}
-            onPhotoSelected(uri.toString())
-            onDismiss()
+            pendingCropUri = uri
         }
     }
 
@@ -143,6 +164,79 @@ fun PhotoPickerModal(
             }
         }
     )
+
+    if (pendingCropUri != null) {
+        SquarePhotoCropDialog(sourceUri = pendingCropUri!!, onCancel = { pendingCropUri = null }, onConfirm = { croppedUri ->
+            onPhotoSelected(croppedUri)
+            pendingCropUri = null
+            onDismiss()
+        })
+    }
+}
+
+@Composable
+fun SquarePhotoCropDialog(sourceUri: Uri, onCancel: () -> Unit, onConfirm: (String) -> Unit) {
+    val context = LocalContext.current
+    var bitmap by remember(sourceUri) { mutableStateOf<Bitmap?>(null) }
+    var loadFailed by remember(sourceUri) { mutableStateOf(false) }
+    var zoom by remember(sourceUri) { mutableFloatStateOf(1f) }
+    var pan by remember(sourceUri) { mutableStateOf(Offset.Zero) }
+    var viewportSize by remember { mutableStateOf(androidx.compose.ui.unit.IntSize.Zero) }
+    LaunchedEffect(sourceUri) {
+        bitmap = try { context.contentResolver.openInputStream(sourceUri)?.use { BitmapFactory.decodeStream(it) } } catch (_: Exception) { null }
+        loadFailed = bitmap == null
+    }
+    AlertDialog(onDismissRequest = onCancel, title = { Text("Recortar foto") }, text = {
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            Text("Arraste para ajustar o enquadramento. Use pinça para aproximar ou afastar.", style = MaterialTheme.typography.bodySmall)
+            Spacer(Modifier.height(12.dp))
+            val source = bitmap
+            if (source != null) {
+                BoxWithConstraints(modifier = Modifier.fillMaxWidth().aspectRatio(1f)) {
+                    val density = androidx.compose.ui.platform.LocalDensity.current
+                    val widthPx = with(density) { maxWidth.toPx() }
+                    val heightPx = with(density) { maxHeight.toPx() }
+                    Canvas(modifier = Modifier.fillMaxSize().pointerInput(source, widthPx, heightPx) {
+                        detectTransformGestures { _, panChange, zoomChange, _ ->
+                            zoom = (zoom * zoomChange).coerceIn(1f, 5f)
+                            val fit = max(widthPx / source.width, heightPx / source.height)
+                            val limitX = max(0f, (source.width * fit * zoom - widthPx) / 2f)
+                            val limitY = max(0f, (source.height * fit * zoom - heightPx) / 2f)
+                            pan = Offset((pan.x + panChange.x).coerceIn(-limitX, limitX), (pan.y + panChange.y).coerceIn(-limitY, limitY))
+                        }
+                    }) {
+                        viewportSize = androidx.compose.ui.unit.IntSize(size.width.roundToInt(), size.height.roundToInt())
+                        val fit = max(size.width / source.width, size.height / source.height)
+                        val sw = (source.width * fit * zoom).roundToInt()
+                        val sh = (source.height * fit * zoom).roundToInt()
+                        val left = ((size.width - sw) / 2f + pan.x).roundToInt()
+                        val top = ((size.height - sh) / 2f + pan.y).roundToInt()
+                        drawImage(source.asImageBitmap(), dstOffset = androidx.compose.ui.unit.IntOffset(left, top), dstSize = androidx.compose.ui.unit.IntSize(sw, sh))
+                        drawRect(color = Color.White.copy(alpha = 0.9f), style = androidx.compose.ui.graphics.drawscope.Stroke(width = 2.dp.toPx()))
+                    }
+                }
+            } else if (loadFailed) Text("Não foi possível abrir essa imagem. Escolha outra foto.", color = MaterialTheme.colorScheme.error)
+            else Text("Carregando imagem…")
+        }
+    }, confirmButton = {
+        Button(enabled = bitmap != null && viewportSize.width > 0 && viewportSize.height > 0, onClick = {
+            val source = bitmap ?: return@Button
+            try {
+                val fit = max(viewportSize.width.toFloat() / source.width, viewportSize.height.toFloat() / source.height)
+                val scale = fit * zoom
+                val side = minOf(viewportSize.width, viewportSize.height) / scale
+                val left = (source.width / 2f - pan.x / scale - side / 2f).roundToInt().coerceIn(0, (source.width - side).roundToInt().coerceAtLeast(0))
+                val top = (source.height / 2f - pan.y / scale - side / 2f).roundToInt().coerceIn(0, (source.height - side).roundToInt().coerceAtLeast(0))
+                val cropSide = side.roundToInt().coerceAtLeast(1).coerceAtMost(minOf(source.width - left, source.height - top))
+                val cropped = Bitmap.createBitmap(source, left, top, cropSide, cropSide)
+                val directory = File(context.filesDir, "character-portraits").apply { mkdirs() }
+                val output = File(directory, "portrait-" + System.currentTimeMillis() + ".jpg")
+                FileOutputStream(output).use { cropped.compress(Bitmap.CompressFormat.JPEG, 92, it) }
+                if (cropped !== source) cropped.recycle()
+                onConfirm(Uri.fromFile(output).toString())
+            } catch (_: Exception) { loadFailed = true }
+        }) { Text("Usar foto") }
+    }, dismissButton = { OutlinedButton(onClick = onCancel) { Text("Cancelar") } })
 }
 
 @Composable
