@@ -122,14 +122,14 @@ class PresetSpellCatalogTest {
     @Test
     fun firstLevelSpellBatchFiveHasExpectedClassesAndMechanics() {
         val spells = Dnd35Rules.PRESET_SPELLS.associateBy { it.name }
-        assertEquals(setOf("Clérigo"), spells.getValue("Bênção Maldita").classes.toSet())
+        assertEquals(setOf("Clérigo"), spells.getValue("Perdição").classes.toSet())
         assertEquals(setOf("Clérigo", "Paladino"), spells.getValue("Abençoar Água").classes.toSet())
         assertEquals("1 minuto", spells.getValue("Abençoar Água").castTime)
-        assertEquals(setOf("Bardo", "Clérigo", "Druida", "Paladino", "Ranger", "Mago", "Feiticeiro"), spells.getValue("Resistir aos Elementos").classes.toSet())
+        assertEquals(setOf("Bardo", "Clérigo", "Druida", "Paladino", "Ranger", "Mago", "Feiticeiro"), spells.getValue("Suportar Elementos").classes.toSet())
         assertEquals(setOf("Druida", "Ranger"), spells.getValue("Detectar Animais ou Plantas").classes.toSet())
         assertFalse(spells.getValue("Detectar Animais ou Plantas").spellResistance)
         assertEquals(setOf("Druida", "Ranger"), spells.getValue("Ocultar-se de Animais").classes.toSet())
-        assertEquals("24 horas", spells.getValue("Resistir aos Elementos").duration)
+        assertEquals("24 horas", spells.getValue("Suportar Elementos").duration)
     }
 
     @Test
