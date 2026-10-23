@@ -1691,7 +1691,7 @@ object Dnd35Rules {
             school = "Adivinhação",
             classes = listOf("Bardo", "Mago", "Feiticeiro"),
             castTime = "1 hora",
-            components = "V, S, F (pérola de 100 PO e pena de coruja em vinho)",
+            components = "V, S, M/DF (pérola de 100 PO, vinho e pena de coruja)",
             range = "Toque",
             duration = "Instantânea",
             savingThrow = "Nenhum",
@@ -1748,7 +1748,7 @@ object Dnd35Rules {
             duration = "1 minuto/nível",
             savingThrow = "Vontade anula (inofensivo)",
             spellResistance = true,
-            description = "Concede bônus de melhoria de +10 em testes de Saltar; o bônus aumenta com o nível de conjurador, até o limite definido pela magia."
+            description = "Concede bônus de melhoria de +10 em testes de Saltar, aumentado em +1 por nível de conjurador até o máximo de +20."
         ),
 
         // CÍRCULO 2
