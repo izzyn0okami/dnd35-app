@@ -1966,7 +1966,7 @@ object Dnd35Rules {
 
         // Magias adicionais de 1º círculo do Livro do Jogador — lote 5
         PresetSpell(
-            name = "Bênção Maldita",
+            name = "Perdição",
             level = 1,
             school = "Encantamento",
             classes = listOf("Clérigo"),
@@ -2005,7 +2005,7 @@ object Dnd35Rules {
             description = "Uma criatura sofre –2 nas jogadas de ataque, dano, testes de resistência e testes de habilidade."
         ),
         PresetSpell(
-            name = "Resistir aos Elementos",
+            name = "Suportar Elementos",
             level = 1,
             school = "Abjuração",
             classes = listOf("Bardo", "Clérigo", "Druida", "Paladino", "Ranger", "Mago", "Feiticeiro"),
@@ -2068,6 +2068,113 @@ object Dnd35Rules {
             savingThrow = "Vontade anula (inofensivo)",
             spellResistance = true,
             description = "Impede animais comuns de perceberem o alvo pelos sentidos normais; não afeta criaturas do tipo besta mágica."
+        ),
+
+
+        // Magias adicionais de 1º círculo do Livro do Jogador — lote 6
+        PresetSpell(
+            name = "Amaldiçoar Água",
+            level = 1,
+            school = "Transmutação",
+            classes = listOf("Clérigo", "Paladino"),
+            castTime = "1 minuto",
+            components = "V, S, M (água profana no valor de 25 PO)",
+            range = "Toque",
+            duration = "Instantânea",
+            savingThrow = "Vontade anula (objeto)",
+            spellResistance = true,
+            description = "Transforma um frasco de água em água profana."
+        ),
+        PresetSpell(
+            name = "Escudo Entrópico",
+            level = 1,
+            school = "Abjuração",
+            classes = listOf("Clérigo", "Mago", "Feiticeiro"),
+            castTime = "1 ação padrão",
+            components = "V, S",
+            range = "Pessoal",
+            duration = "1 minuto/nível",
+            savingThrow = "Nenhum",
+            spellResistance = false,
+            description = "Desvia ataques à distância, impondo 20% de chance de falha contra ataques à distância que exigem jogada de ataque."
+        ),
+        PresetSpell(
+            name = "Ocultar-se de Mortos-Vivos",
+            level = 1,
+            school = "Abjuração",
+            classes = listOf("Clérigo"),
+            castTime = "1 ação padrão",
+            components = "V, S, DF",
+            range = "Toque",
+            duration = "10 minutos/nível",
+            savingThrow = "Vontade anula (inofensivo)",
+            spellResistance = true,
+            description = "Torna uma criatura por nível imperceptível aos mortos-vivos, salvo se o alvo agir de modo a revelar sua presença."
+        ),
+        PresetSpell(
+            name = "Vigília da Morte",
+            level = 1,
+            school = "Necromancia",
+            classes = listOf("Clérigo"),
+            castTime = "1 ação padrão",
+            components = "V, S",
+            range = "9m",
+            duration = "10 minutos/nível",
+            savingThrow = "Nenhum",
+            spellResistance = false,
+            description = "Permite perceber o estado vital de criaturas na área, distinguindo vivas, moribundas e mortas-vivas."
+        ),
+        PresetSpell(
+            name = "Detectar Bem",
+            level = 1,
+            school = "Adivinhação",
+            classes = listOf("Clérigo", "Paladino", "Mago", "Feiticeiro"),
+            castTime = "1 ação padrão",
+            components = "V, S",
+            range = "18m",
+            duration = "Concentração, até 10 minutos/nível",
+            savingThrow = "Nenhum",
+            spellResistance = false,
+            description = "Detecta a presença de auras de bem em criaturas, magias ou objetos dentro do alcance."
+        ),
+        PresetSpell(
+            name = "Detectar Mal",
+            level = 1,
+            school = "Adivinhação",
+            classes = listOf("Clérigo", "Paladino", "Mago", "Feiticeiro"),
+            castTime = "1 ação padrão",
+            components = "V, S",
+            range = "18m",
+            duration = "Concentração, até 10 minutos/nível",
+            savingThrow = "Nenhum",
+            spellResistance = false,
+            description = "Detecta a presença de auras de mal em criaturas, magias ou objetos dentro do alcance."
+        ),
+        PresetSpell(
+            name = "Detectar Caos",
+            level = 1,
+            school = "Adivinhação",
+            classes = listOf("Clérigo", "Mago", "Feiticeiro"),
+            castTime = "1 ação padrão",
+            components = "V, S",
+            range = "18m",
+            duration = "Concentração, até 10 minutos/nível",
+            savingThrow = "Nenhum",
+            spellResistance = false,
+            description = "Detecta a presença de auras de caos em criaturas, magias ou objetos dentro do alcance."
+        ),
+        PresetSpell(
+            name = "Detectar Ordem",
+            level = 1,
+            school = "Adivinhação",
+            classes = listOf("Clérigo", "Mago", "Feiticeiro"),
+            castTime = "1 ação padrão",
+            components = "V, S",
+            range = "18m",
+            duration = "Concentração, até 10 minutos/nível",
+            savingThrow = "Nenhum",
+            spellResistance = false,
+            description = "Detecta a presença de auras de ordem em criaturas, magias ou objetos dentro do alcance."
         ),
 
         // CÍRCULO 2
