@@ -40,7 +40,15 @@ class PresetSpellCatalogTest {
             "Detectar Portas Secretas",
             "Retirada Acelerada",
             "Proteção contra o Mal",
-            "Detectar Mortos-Vivos"
+            "Detectar Mortos-Vivos",
+            "Disfarçar-se",
+            "Servo Invisível",
+            "Convocar Monstro I",
+            "Identificação",
+            "Raio do Enfraquecimento",
+            "Aumentar Pessoa",
+            "Arma Mágica",
+            "Salto"
         ).forEach { name ->
             assertTrue("Magia ausente: $name", name in names)
         }
@@ -92,4 +100,18 @@ class PresetSpellCatalogTest {
         val purify = Dnd35Rules.PRESET_SPELLS.single { it.name == "Purificar Alimentos e Bebidas" }
         assertEquals("3m", purify.range)
     }
+
+    @Test
+    fun firstLevelSpellBatchTwoHasExpectedClassesAndMechanics() {
+        val spells = Dnd35Rules.PRESET_SPELLS.associateBy { it.name }
+        assertEquals(setOf("Bardo", "Mago", "Feiticeiro"), spells.getValue("Disfarçar-se").classes.toSet())
+        assertEquals(setOf("Bardo", "Clérigo", "Mago", "Feiticeiro"), spells.getValue("Convocar Monstro I").classes.toSet())
+        assertEquals(setOf("Mago", "Feiticeiro"), spells.getValue("Raio do Enfraquecimento").classes.toSet())
+        assertTrue(spells.getValue("Raio do Enfraquecimento").spellResistance)
+        assertEquals(setOf("Clérigo", "Paladino", "Mago", "Feiticeiro"), spells.getValue("Arma Mágica").classes.toSet())
+        assertEquals(setOf("Bardo", "Druida", "Ranger", "Mago", "Feiticeiro"), spells.getValue("Salto").classes.toSet())
+        assertEquals(1, spells.getValue("Arma Mágica").classLevels.getValue("Paladino"))
+        assertEquals(1, spells.getValue("Salto").classLevels.getValue("Ranger"))
+    }
+
 }
