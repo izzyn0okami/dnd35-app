@@ -1022,3 +1022,13 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Adicionados testes de regressão para as duas descrições e para a preservação dos campos de resistência/teste de Queda Suave.
 - Referências mecânicas auxiliares: Escudo Arcano / Shield — https://dndtools.org/m/spells/players-handbook-v35--6/shield--2364/ ; Queda Suave / Feather Fall — https://www.dndtools.org/spells/players-handbook-v35--6/feather-fall--2813/ e https://www.d20srd.org/srd/spells/featherFall.htm.
 - Estas referências sustentam a mecânica, mas não substituem a conferência de nomes e redação no *Livro do Jogador* brasileiro. Não houve teste manual em dispositivo Android.
+
+
+---
+
+## 2026-10-24 — Conferência da lista de magias de Bardo no Livro do Jogador
+
+- **Apagar:** corrigida a lista de classes para incluir Bardo. A lista “Magias de 1º nível de Bardo” do *Livro do Jogador* brasileiro inclui explicitamente Apagar; o catálogo da aplicação havia cadastrado apenas Mago e Feiticeiro.
+- Atualizado o teste de regressão existente para verificar as três classes. A entrada existente foi corrigida, sem duplicação.
+- Fonte primária consultada: arquivo fornecido “D&D 3.5 - Livro do Jogador”, capítulo 11, seção “Magias de 1º nível de Bardo” (página impressa 155/156 na extração do PDF).
+- Esta verificação é diretamente apoiada pelo livro em português; a auditoria da lista completa de magias de Bardo continua em andamento.
