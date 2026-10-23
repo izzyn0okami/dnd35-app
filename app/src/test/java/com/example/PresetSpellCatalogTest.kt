@@ -264,4 +264,25 @@ class PresetSpellCatalogTest {
         assertFalse(spells.getValue("Imagem Silenciosa").spellResistance)
     }
 
+
+
+    @Test
+    fun firstLevelArcaneSpellBatchTenHasExpectedClassesAndMechanics() {
+        val spells = Dnd35Rules.PRESET_SPELLS.associateBy { it.name }
+        val floatingDisk = spells.getValue("Disco Flutuante")
+        assertEquals(setOf("Mago", "Feiticeiro"), floatingDisk.classes.toSet())
+        assertEquals("1 hora/nível", floatingDisk.duration)
+        assertFalse(floatingDisk.spellResistance)
+
+        val reducePerson = spells.getValue("Reduzir Pessoa")
+        assertEquals(setOf("Bardo", "Mago", "Feiticeiro"), reducePerson.classes.toSet())
+        assertEquals("1 minuto/nível", reducePerson.duration)
+        assertTrue(reducePerson.spellResistance)
+
+        val shockingGrasp = spells.getValue("Toque Chocante")
+        assertEquals(setOf("Mago", "Feiticeiro"), shockingGrasp.classes.toSet())
+        assertEquals("Toque", shockingGrasp.range)
+        assertTrue(shockingGrasp.spellResistance)
+    }
+
 }
