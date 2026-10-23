@@ -14,6 +14,7 @@ import com.example.dnd35.model.parseSkillPointAllocations
 import com.example.dnd35.model.parseWholeSkillPointBudget
 import com.example.dnd35.model.Dnd35Rules
 import com.example.dnd35.model.Dnd35Rules.SaveProgression
+import com.example.dnd35.model.Dnd35Rules.BabProgression
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
@@ -1561,6 +1562,52 @@ class ExampleUnitTest {
     assertEquals(3.5f, atuacao.maxRanks)
     assertEquals(3.5f, atuacao.ranks)
     assertEquals(3, atuacao.totalBonus)
+  }
+
+  @Test
+  fun allElevenBaseClassesUseExpectedBaseAttackAndSavingThrowProgressions() {
+    data class ExpectedProgression(
+      val name: String,
+      val bab: BabProgression,
+      val fort: SaveProgression,
+      val reflex: SaveProgression,
+      val will: SaveProgression
+    )
+
+    val expected = listOf(
+      ExpectedProgression("Bárbaro", BabProgression.FULL, SaveProgression.GOOD, SaveProgression.POOR, SaveProgression.POOR),
+      ExpectedProgression("Bardo", BabProgression.THREE_QUARTERS, SaveProgression.POOR, SaveProgression.GOOD, SaveProgression.GOOD),
+      ExpectedProgression("Clérigo", BabProgression.THREE_QUARTERS, SaveProgression.GOOD, SaveProgression.POOR, SaveProgression.GOOD),
+      ExpectedProgression("Druida", BabProgression.THREE_QUARTERS, SaveProgression.GOOD, SaveProgression.POOR, SaveProgression.GOOD),
+      ExpectedProgression("Guerreiro", BabProgression.FULL, SaveProgression.GOOD, SaveProgression.POOR, SaveProgression.POOR),
+      ExpectedProgression("Monge", BabProgression.THREE_QUARTERS, SaveProgression.GOOD, SaveProgression.GOOD, SaveProgression.GOOD),
+      ExpectedProgression("Paladino", BabProgression.FULL, SaveProgression.GOOD, SaveProgression.POOR, SaveProgression.GOOD),
+      ExpectedProgression("Ranger", BabProgression.FULL, SaveProgression.GOOD, SaveProgression.GOOD, SaveProgression.POOR),
+      ExpectedProgression("Ladino", BabProgression.THREE_QUARTERS, SaveProgression.POOR, SaveProgression.GOOD, SaveProgression.POOR),
+      ExpectedProgression("Feiticeiro", BabProgression.HALF, SaveProgression.POOR, SaveProgression.POOR, SaveProgression.GOOD),
+      ExpectedProgression("Mago", BabProgression.HALF, SaveProgression.POOR, SaveProgression.POOR, SaveProgression.GOOD)
+    )
+
+    assertEquals(11, Dnd35Rules.CLASSES.size)
+    expected.forEach { row ->
+      val actual = Dnd35Rules.CLASSES.single { it.name == row.name }
+      assertEquals("${row.name}: BBA", row.bab, actual.babType)
+      assertEquals("${row.name}: Fortitude", row.fort, actual.fortType)
+      assertEquals("${row.name}: Reflexos", row.reflex, actual.refType)
+      assertEquals("${row.name}: Vontade", row.will, actual.willType)
+    }
+  }
+
+  @Test
+  fun baseAttackAndSavingThrowFormulasMatchDnd35Breakpoints() {
+    val levels = 1..20
+    levels.forEach { level ->
+      assertEquals(level, Dnd35Rules.calculateBaseAttackBonus(BabProgression.FULL, level))
+      assertEquals(level * 3 / 4, Dnd35Rules.calculateBaseAttackBonus(BabProgression.THREE_QUARTERS, level))
+      assertEquals(level / 2, Dnd35Rules.calculateBaseAttackBonus(BabProgression.HALF, level))
+      assertEquals(2 + level / 2, Dnd35Rules.calculateBaseSave(SaveProgression.GOOD, level))
+      assertEquals(level / 3, Dnd35Rules.calculateBaseSave(SaveProgression.POOR, level))
+    }
   }
 
 }
