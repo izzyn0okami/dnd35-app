@@ -907,3 +907,10 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Descrições resumidas, componentes e terminologia ainda exigem revisão direta na edição brasileira do Livro do Jogador 3.5. A lista não é considerada completa; alguns campos de duração/efeitos foram resumidos para caber no modelo atual.
 - Exigir CI verde para o SHA final desta PR antes do merge. Teste manual em dispositivo Android não realizado.
 - Referências mecânicas auxiliares: https://www.d20srd.org/srd/spells/animateRope.htm ; https://www.d20srd.org/srd/spells/trueStrike.htm ; https://www.d20srd.org/srd/spells/hypnotism.htm ; https://www.d20srd.org/srd/spells/mount.htm ; https://www.d20srd.org/srd/spells/silentImage.htm.
+
+
+### Revisão posterior do lote 9
+
+- Corrigido o foco de Ataque Certeiro: pequena réplica de um alvo de arquearia, não de um arco.
+- Corrigido o tempo de execução de Hipnotismo para 1 rodada; teste automatizado acrescentado para esse campo.
+- As correções foram feitas após a primeira execução de CI; exigir nova CI verde no SHA final antes do merge.
