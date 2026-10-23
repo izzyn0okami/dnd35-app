@@ -810,3 +810,14 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Não foi adicionada migração destrutiva nem exclusão automática de fichas existentes. Fichas já salvas em instalações atualizadas permanecem intactas; esta mudança atende ao comportamento de instalação limpa.
 - O callback do Room permanece, sem inserir dados de demonstração.
 - Aguardar CI da PR antes de integrar; teste manual em dispositivo não realizado nesta etapa.
+
+
+## 2026-10-23 — Ampliação de truques do Livro do Jogador, lote 2
+
+- Após a integração da PR #152 (remoção da ficha de exemplo em instalações limpas), não havia outras PRs abertas; iniciado um lote isolado do catálogo de magias.
+- Adicionados 12 truques do Livro do Jogador 3.5: Espirro Ácido, Marca Arcana, Raio de Gelo, Desestabilizar Mortos-Vivos, Toque de Fadiga, Lampejo, Conhecer Direção, Canção de Ninar, Invocar Instrumento, Curar Ferimentos Mínimos, Infligir Ferimentos Mínimos e Virtude.
+- Os níveis por classe são representados pela propriedade `classLevels` já introduzida no modelo; estes truques são de nível 0 para as classes listadas.
+- O teste de catálogo verifica presença das 12 entradas, nomes únicos, níveis válidos e classes/níveis consistentes, além de disponibilidade de algumas magias específicas.
+- A lista continua parcial: não cobre todos os truques nem os níveis superiores do Livro do Jogador. A nomenclatura de algumas traduções ainda precisa de confronto final com a edição brasileira; esta etapa não inclui suplementos.
+- Referência de conferência das listas de truques: Player's Handbook 3.5/SRD, incluindo listas de Bardo, Clérigo, Druida e Mago/Feiticeiro: https://srd.dndtools.org/srd/meta/books/3.5/PlayersHandbook.html e https://www.d20srd.org/srd/spellLists/sorcererWizardSpells.htm.
+- CI necessária antes do merge; não foi executado Gradle localmente nem teste manual no Android.

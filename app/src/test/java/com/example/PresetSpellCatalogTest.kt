@@ -2,6 +2,7 @@ package com.example
 
 import com.example.dnd35.model.Dnd35Rules
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
@@ -18,11 +19,34 @@ class PresetSpellCatalogTest {
             "Abrir/Fechar",
             "Prestidigitação",
             "Purificar Alimentos e Bebidas",
-            "Atordoar"
+            "Atordoar",
+            "Espirro Ácido",
+            "Marca Arcana",
+            "Raio de Gelo",
+            "Desestabilizar Mortos-Vivos",
+            "Toque de Fadiga",
+            "Lampejo",
+            "Conhecer Direção",
+            "Canção de Ninar",
+            "Invocar Instrumento",
+            "Curar Ferimentos Mínimos",
+            "Infligir Ferimentos Mínimos",
+            "Virtude"
         ).forEach { name ->
             assertTrue("Magia ausente: $name", name in names)
         }
         assertEquals("O catálogo não deve conter magias com nomes duplicados", names.size, names.toSet().size)
+    }
+
+    @Test
+    fun newCantripsHaveExpectedClassAvailability() {
+        val spells = Dnd35Rules.PRESET_SPELLS.associateBy { it.name }
+        assertEquals(setOf("Mago", "Feiticeiro"), spells.getValue("Espirro Ácido").classes.toSet())
+        assertFalse(spells.getValue("Espirro Ácido").spellResistance)
+        assertEquals(setOf("Bardo"), spells.getValue("Canção de Ninar").classes.toSet())
+        assertEquals(setOf("Clérigo", "Druida"), spells.getValue("Curar Ferimentos Mínimos").classes.toSet())
+        assertEquals(0, spells.getValue("Virtude").classLevels.getValue("Druida"))
+        assertEquals("Permanente", spells.getValue("Marca Arcana").duration)
     }
 
     @Test
