@@ -770,3 +770,13 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Isto é uma expansão parcial, não a conclusão dos 110 talentos listados no catálogo de referência do PHB 3.5. Os pré-requisitos e textos mecânicos ainda precisam de revisão item a item contra o Livro do Jogador brasileiro; não declarar o catálogo completo nem usar material de suplementos.
 - O catálogo de magias também permanece incompleto. Não foram acrescentadas magias nesta etapa, pois o modelo exige dados mecânicos por magia e classe; não preencher esses campos por suposição. A próxima etapa deve estruturar e conferir a lista de magias do Livro do Jogador, separando entradas únicas de níveis por classe.
 - Nenhum teste Gradle foi executado localmente nesta operação. A CI da PR precisa passar antes do merge; teste manual no Android continua pendente.
+
+
+## 2026-10-23 — Expansão parcial de talentos PHB, lote 2
+
+- PR #149 foi integrada após CI bem-sucedida (squash merge, commit `a278446867009136e7ddf0eb8b1ea72f2c12888d`).
+- Antes de abrir novo trabalho, a busca de PRs abertas não encontrou PRs pendentes.
+- Segundo lote adiciona 11 talentos à lista, levando-a de 41 para 52 entradas: Ataque Desarmado Aprimorado, Lutar às Cegas, Tiro Rápido, Tiro Múltiplo, Tiro Preciso Aprimorado, Tiro em Movimento, Ataque Giratório, Fintar Aprimorado, Combate Montado, Investida Montada e Atropelar.
+- Teste de catálogo atualizado para exigir pelo menos 52 entradas e verificar os nomes novos, além da unicidade.
+- A lista ainda é parcial e precisa de auditoria de todos os requisitos/benefícios com a edição brasileira do Livro do Jogador 3.5. Não usar suplementos. Catálogo de magias continua pendente; ainda não foi alterado neste lote.
+- Sem execução Gradle local ou teste manual Android; aguardar CI antes de merge.
