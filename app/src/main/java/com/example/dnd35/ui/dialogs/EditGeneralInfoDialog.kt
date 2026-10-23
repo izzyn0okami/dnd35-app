@@ -37,6 +37,9 @@ import com.example.dnd35.model.CharacterEntity
 import com.example.dnd35.model.CharacterJsonAdapters
 import com.example.dnd35.model.Dnd35Rules
 
+internal fun normalizeEditedCharacterName(name: String): String? =
+    name.trim().takeIf { it.isNotEmpty() }
+
 @Composable
 fun EditGeneralInfoDialog(
     character: CharacterEntity,
@@ -53,6 +56,9 @@ fun EditGeneralInfoDialog(
     onDismiss: () -> Unit
 ) {
     var name by remember { mutableStateOf(character.name) }
+    var nameTouched by remember { mutableStateOf(false) }
+    val normalizedName = normalizeEditedCharacterName(name)
+    val showNameError = nameTouched && normalizedName == null
     var selectedClass by remember { mutableStateOf(character.characterClass) }
     var selectedRace by remember { mutableStateOf(character.race) }
     var levelText by remember { mutableStateOf("${character.level}") }
@@ -78,10 +84,17 @@ fun EditGeneralInfoDialog(
             ) {
                 OutlinedTextField(
                     value = name,
-                    onValueChange = { name = it },
+                    onValueChange = {
+                        name = it
+                        nameTouched = true
+                    },
                     label = { Text("Nome") },
                     modifier = Modifier.fillMaxWidth(),
-                    singleLine = true
+                    singleLine = true,
+                    isError = showNameError,
+                    supportingText = if (showNameError) {
+                        { Text("Informe um nome para o personagem.") }
+                    } else null
                 )
 
                 Spacer(modifier = Modifier.height(10.dp))
@@ -218,11 +231,16 @@ fun EditGeneralInfoDialog(
         confirmButton = {
             Button(
                 onClick = {
+                    val validName = normalizeEditedCharacterName(name)
+                    if (validName == null) {
+                        nameTouched = true
+                        return@Button
+                    }
                     val lvl = parsedLevel?.takeIf { it >= 1 } ?: return@Button
-                    onSave(name, selectedClass, selectedRace, lvl, alignment, deity, size)
+                    onSave(validName, selectedClass, selectedRace, lvl, alignment, deity, size)
                     onDismiss()
                 },
-                enabled = parsedLevel != null && parsedLevel >= 1
+                enabled = parsedLevel != null && parsedLevel >= 1 && normalizedName != null
             ) {
                 Text("Salvar")
             }
