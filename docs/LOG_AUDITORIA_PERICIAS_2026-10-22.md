@@ -491,3 +491,10 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Padronizado o rótulo de nível de magia no cartão de espaços diários para “Nível”, evitando a abreviação inconsistente “Nv”.
 - Mudanças limitadas à usabilidade e apresentação; cálculos, regras e dados de personagem não foram alterados.
 - Aguardar CI e revisar a compilação antes do merge. A disposição em aparelhos estreitos ainda precisa de validação manual.
+
+
+## 2026-10-23 — Rótulos acessíveis dos itens do inventário
+
+- Os ícones de edição e exclusão de cada item agora incluem o nome do item em suas descrições acessíveis (por exemplo, “Editar espada longa” e “Excluir espada longa”), ajudando usuários de leitores de tela a distinguir ações em listas com vários itens.
+- Alteração limitada à acessibilidade da interface; não modifica regras, cálculos, dados nem comportamento de exclusão.
+- Aguardar CI da PR antes do merge. A revisão é estática; não houve teste manual com leitor de tela ou no aparelho.

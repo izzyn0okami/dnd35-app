@@ -783,11 +783,11 @@ fun InventoryItemRowRefined(
             }
 
             IconButton(onClick = onEdit, modifier = Modifier.size(48.dp)) {
-                Icon(Icons.Default.Edit, contentDescription = "Editar", modifier = Modifier.size(18.dp), tint = MaterialTheme.colorScheme.primary)
+                Icon(Icons.Default.Edit, contentDescription = "Editar ${item.name}", modifier = Modifier.size(18.dp), tint = MaterialTheme.colorScheme.primary)
             }
 
             IconButton(onClick = onDelete, modifier = Modifier.size(48.dp)) {
-                Icon(Icons.Default.Delete, contentDescription = "Excluir", modifier = Modifier.size(18.dp), tint = DndCrimson)
+                Icon(Icons.Default.Delete, contentDescription = "Excluir ${item.name}", modifier = Modifier.size(18.dp), tint = DndCrimson)
             }
         }
     }
