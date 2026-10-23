@@ -811,6 +811,12 @@ fun SkillItemRow(
                     style = MaterialTheme.typography.labelSmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
+                val skillPointCost = computed.ranks * if (computed.isClassSkill) 1f else 2f
+                Text(
+                    text = "Pontos investidos nesta perícia: ${String.format("%.1f", skillPointCost)} pts (estimativa pelas graduações atuais)",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
                 if (computed.trainedOnly && computed.ranks < 1f &&
                     com.example.dnd35.model.Dnd35Rules.allowsUntrainedKnowledgeCheck(computed.skill.name)
                 ) {
