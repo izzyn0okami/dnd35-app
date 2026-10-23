@@ -652,3 +652,12 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - O estado correto é: as progressões gerais de BBA/resistências e várias progressões de classe já foram examinadas; a auditoria integral de todas as descrições, condições e terminologia da edição brasileira continua aberta. Não reabrir as correções já integradas sem evidência nova.
 - Próximo passo: continuar a revisão cruzada ainda pendente das descrições de características de classe, usando o Livro do Jogador brasileiro como referência prioritária e registrando apenas discrepâncias novas e comprováveis. Não repetir a verificação de fórmulas gerais já coberta pela PR #101.
 - Validação manual Android continua pendente; a CI aprovada não substitui teste no aparelho.
+
+
+## Correção de interface — validação do nome ao editar dados gerais (2026-10-23)
+
+- Defeito confirmado: `EditGeneralInfoDialog.kt` aceitava salvar nome vazio ou composto apenas por espaços; `CharacterViewModel.updateGeneralInfo()` armazenava o valor recebido sem validação adicional.
+- Correção proposta na branch `fix/validate-character-name-edit`: normalizar o nome com `trim()`, impedir o salvamento quando ficar vazio e mostrar mensagem de validação no campo. O nome enviado ao ViewModel agora é o valor normalizado.
+- Adicionado teste unitário para rejeitar vazio/espaços, remover espaços nas extremidades e preservar espaços internos.
+- Escopo intencionalmente isolado: não altera o gerenciamento de multiclasse, a persistência geral nem os formulários de outros campos.
+- PR #136 aberta: https://github.com/izzyn0okami/dnd35-app/pull/136. A CI ainda precisa concluir testes unitários, compilação do APK de depuração e upload do artefato. Teste manual Android pendente; não integrar sem CI aprovada e autorização explícita.
