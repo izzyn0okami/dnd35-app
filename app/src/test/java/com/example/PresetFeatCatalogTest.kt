@@ -9,7 +9,7 @@ class PresetFeatCatalogTest {
     @Test
     fun catalogIncludesAdditionalPlayerHandbookCombatAndMetamagicFeats() {
         val names = Dnd35Rules.PRESET_FEATS.map { it.name }
-        assertTrue("O catálogo deve conter mais talentos que a lista inicial", names.size >= 41)
+        assertTrue("O catálogo deve conter mais talentos que a lista inicial", names.size >= 52)
         listOf(
             "Acuidade com Arma",
             "Agarrar Aprimorado",
@@ -24,7 +24,18 @@ class PresetFeatCatalogTest {
             "Foco em Magia",
             "Foco em Magia Maior",
             "Sucesso Decisivo Aprimorado",
-            "Tiro Longo"
+            "Tiro Longo",
+            "Ataque Desarmado Aprimorado",
+            "Lutar às Cegas",
+            "Tiro Rápido",
+            "Tiro Múltiplo",
+            "Tiro Preciso Aprimorado",
+            "Tiro em Movimento",
+            "Ataque Giratório",
+            "Fintar Aprimorado",
+            "Combate Montado",
+            "Investida Montada",
+            "Atropelar"
         ).forEach { name ->
             assertTrue("Talento ausente: $name", name in names)
         }
