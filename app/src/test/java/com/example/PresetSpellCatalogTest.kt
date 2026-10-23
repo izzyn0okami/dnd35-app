@@ -129,8 +129,8 @@ class PresetSpellCatalogTest {
         val spells = Dnd35Rules.PRESET_SPELLS.associateBy { it.name }
         assertEquals(setOf("Mago", "Feiticeiro"), spells.getValue("Mãos Flamejantes").classes.toSet())
         assertEquals("4,5m", spells.getValue("Mãos Flamejantes").range)
-        assertEquals(setOf("Druida"), spells.getValue("Enfeitiçar Animal").classes.toSet())
-        assertEquals(setOf("Druida"), spells.getValue("Emaranhar").classes.toSet())
+        assertEquals(setOf("Druida", "Ranger"), spells.getValue("Enfeitiçar Animal").classes.toSet())
+        assertEquals(setOf("Druida", "Ranger"), spells.getValue("Emaranhar").classes.toSet())
         assertFalse(spells.getValue("Emaranhar").spellResistance)
         assertEquals(setOf("Druida", "Ranger"), spells.getValue("Passos sem Pegadas").classes.toSet())
         assertEquals(setOf("Druida", "Ranger"), spells.getValue("Falar com Animais").classes.toSet())
