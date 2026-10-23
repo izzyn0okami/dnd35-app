@@ -1623,7 +1623,7 @@ object Dnd35Rules {
             school = "Abjuração",
             classes = listOf("Clérigo", "Paladino", "Mago", "Feiticeiro"),
             castTime = "1 ação padrão",
-            components = "V, S, DF",
+            components = "V, S, M/DF",
             range = "Toque",
             duration = "1 minuto/nível",
             savingThrow = "Vontade anula (inofensivo)",
