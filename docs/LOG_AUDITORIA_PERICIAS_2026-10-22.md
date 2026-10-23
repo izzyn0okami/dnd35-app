@@ -870,3 +870,13 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - A tradução dos nomes deve ser confrontada com a edição brasileira antes de considerar a terminologia fechada. As classes e mecânicas devem ser revistas também contra as listas do PHB/SRD; referências em inglês não substituem essa conferência.
 - Não considerar o catálogo completo. A CI do commit final deve passar antes de integrar; teste manual no Android continua pendente.
 - Referência mecânica auxiliar: https://www.d20srd.org/srd/spells/bane.htm ; https://www.d20srd.org/srd/spells/blessWater.htm ; https://www.d20srd.org/srd/spells/doom.htm ; https://www.d20srd.org/srd/spells/endureElements.htm ; https://www.d20srd.org/srd/spells/magicStone.htm ; https://www.d20srd.org/srd/spells/shillelagh.htm ; https://www.d20srd.org/srd/spells/detectAnimalsOrPlants.htm ; https://www.d20srd.org/srd/spells/hideFromAnimals.htm.
+
+
+## 2026-10-23 — Revisão de nomes e magias de 1º círculo, lote 6
+
+- Corrigidos dois nomes provisórios do lote 5: “Bênção Maldita” para “Perdição” e “Resistir aos Elementos” para “Suportar Elementos”. A terminologia ainda deve ser conferida diretamente na edição brasileira do Livro do Jogador.
+- Adicionadas oito magias candidatas: Amaldiçoar Água, Escudo Entrópico, Ocultar-se de Mortos-Vivos, Vigília da Morte, Detectar Bem, Detectar Mal, Detectar Caos e Detectar Ordem.
+- Testes ampliados para presença, unicidade, classes e propriedades mecânicas selecionadas.
+- A lista de classes por magia e alguns campos mecânicos precisam de revisão final com o Livro do Jogador; nomes traduzidos de fontes secundárias não são considerados prova definitiva.
+- Não realizar merge sem CI verde para o SHA mais recente.
+- Referências mecânicas auxiliares: https://www.d20srd.org/srd/spells/curseWater.htm ; https://www.d20srd.org/srd/spells/entropicShield.htm ; https://www.d20srd.org/srd/spells/hideFromUndead.htm ; https://www.d20srd.org/srd/spells/deathwatch.htm ; https://www.d20srd.org/srd/spells/detectGood.htm ; https://www.d20srd.org/srd/spells/detectEvil.htm ; https://www.d20srd.org/srd/spells/detectChaos.htm ; https://www.d20srd.org/srd/spells/detectLaw.htm.
