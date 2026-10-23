@@ -1,6 +1,7 @@
 package com.example
 
 import com.example.dnd35.model.CharacterCalculator
+import com.example.dnd35.model.CharacterClassEntry
 import com.example.dnd35.model.CharacterEntity
 import com.example.dnd35.model.CharacterInventoryItem
 import com.example.dnd35.model.CharacterJsonAdapters
@@ -1521,4 +1522,45 @@ class ExampleUnitTest {
       }
     }
   }
+  @Test
+  fun multiclassSkillCalculationUsesAnyClassAndCurrentTotalLevel() {
+    val character = CharacterCalculator.compute(
+      CharacterEntity(
+        characterClass = "Ranger",
+        level = 4,
+        baseStr = 10,
+        baseDex = 10,
+        baseCon = 10,
+        baseInt = 10,
+        baseWis = 10,
+        baseCha = 10,
+        multiclassJson = CharacterJsonAdapters.serializeClassEntries(
+          listOf(CharacterClassEntry("Ranger", 2), CharacterClassEntry("Guerreiro", 2))
+        ),
+        skillsJson = CharacterJsonAdapters.serializeSkills(
+          listOf(
+            // A ficha salva como entreclasse, mas Ranger tem Ouvir como perícia de classe.
+            CharacterSkill(name = "Ouvir", keyAbility = "SAB", ranks = 5.5f, isClassSkill = false),
+            // O sinalizador salvo não transforma Atuação em perícia de classe para essas classes.
+            CharacterSkill(name = "Atuação", keyAbility = "CAR", ranks = 4.5f, isClassSkill = true)
+          )
+        )
+      )
+    )
+
+    assertEquals(4, character.totalCharacterLevel)
+
+    val ouvir = character.computedSkills.single { it.skill.name == "Ouvir" }
+    assertEquals(true, ouvir.isClassSkill)
+    assertEquals(7f, ouvir.maxRanks)
+    assertEquals(5.5f, ouvir.ranks)
+    assertEquals(5, ouvir.totalBonus)
+
+    val atuacao = character.computedSkills.single { it.skill.name == "Atuação" }
+    assertEquals(false, atuacao.isClassSkill)
+    assertEquals(3.5f, atuacao.maxRanks)
+    assertEquals(3.5f, atuacao.ranks)
+    assertEquals(3, atuacao.totalBonus)
+  }
+
 }
