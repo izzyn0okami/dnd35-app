@@ -483,3 +483,11 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Atualizados os textos acessíveis dos controles de equipamento e de gasto/recuperação de espaços de magia.
 - Alterações limitadas à apresentação textual: nenhum cálculo, catálogo, regra ou decisão de auditoria foi modificado.
 - Validação pendente: CI da PR e inspeção de eventuais efeitos colaterais de substituições de rótulos.
+
+
+## 2026-10-23 — Alvos de toque e rótulo de nível de magia
+
+- Aumentados para 48 dp os alvos dos controles de rolagem e ajuste de graduações na lista de perícias, para facilitar o uso por toque.
+- Padronizado o rótulo de nível de magia no cartão de espaços diários para “Nível”, evitando a abreviação inconsistente “Nv”.
+- Mudanças limitadas à usabilidade e apresentação; cálculos, regras e dados de personagem não foram alterados.
+- Aguardar CI e revisar a compilação antes do merge. A disposição em aparelhos estreitos ainda precisa de validação manual.
