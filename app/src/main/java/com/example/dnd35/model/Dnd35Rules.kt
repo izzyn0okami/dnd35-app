@@ -1963,6 +1963,113 @@ object Dnd35Rules {
             description = "Concede +4 de bônus de moral contra efeitos de medo e pode suprimir um efeito de medo já existente durante sua duração."
         ),
 
+
+        // Magias adicionais de 1º círculo do Livro do Jogador — lote 5
+        PresetSpell(
+            name = "Bênção Maldita",
+            level = 1,
+            school = "Encantamento",
+            classes = listOf("Clérigo"),
+            castTime = "1 ação padrão",
+            components = "V, S, DF",
+            range = "Curto (15m + 1,5m/2 níveis)",
+            duration = "1 minuto/nível",
+            savingThrow = "Vontade anula",
+            spellResistance = true,
+            description = "Inimigos na área sofrem –1 nas jogadas de ataque e testes de resistência contra medo; neutraliza Bênção."
+        ),
+        PresetSpell(
+            name = "Abençoar Água",
+            level = 1,
+            school = "Transmutação",
+            classes = listOf("Clérigo", "Paladino"),
+            castTime = "1 minuto",
+            components = "V, S, M (pó de prata no valor de 25 PO)",
+            range = "Toque",
+            duration = "Instantânea",
+            savingThrow = "Vontade anula (objeto)",
+            spellResistance = true,
+            description = "Transforma um frasco de água em água benta."
+        ),
+        PresetSpell(
+            name = "Desespero",
+            level = 1,
+            school = "Necromancia",
+            classes = listOf("Clérigo"),
+            castTime = "1 ação padrão",
+            components = "V, S, DF",
+            range = "Curto (7,5m + 1,5m/2 níveis)",
+            duration = "1 minuto/nível",
+            savingThrow = "Vontade anula",
+            spellResistance = true,
+            description = "Uma criatura sofre –2 nas jogadas de ataque, dano, testes de resistência e testes de habilidade."
+        ),
+        PresetSpell(
+            name = "Resistir aos Elementos",
+            level = 1,
+            school = "Abjuração",
+            classes = listOf("Bardo", "Clérigo", "Druida", "Paladino", "Ranger", "Mago", "Feiticeiro"),
+            castTime = "1 ação padrão",
+            components = "V, S",
+            range = "Toque",
+            duration = "24 horas",
+            savingThrow = "Vontade anula (inofensivo)",
+            spellResistance = true,
+            description = "Protege uma criatura contra temperaturas ambientais extremas, sem protegê-la de dano de fogo ou frio."
+        ),
+        PresetSpell(
+            name = "Pedra Mágica",
+            level = 1,
+            school = "Transmutação",
+            classes = listOf("Druida"),
+            castTime = "1 ação padrão",
+            components = "V, S, DF",
+            range = "Toque",
+            duration = "30 minutos ou até descarregada",
+            savingThrow = "Nenhum",
+            spellResistance = true,
+            description = "Encanta até três pedras pequenas para serem arremessadas ou usadas como munição de funda, causando dano mágico adicional contra mortos-vivos."
+        ),
+        PresetSpell(
+            name = "Porrete Mágico",
+            level = 1,
+            school = "Transmutação",
+            classes = listOf("Druida"),
+            castTime = "1 ação padrão",
+            components = "V, S, DF",
+            range = "Toque",
+            duration = "1 minuto/nível",
+            savingThrow = "Nenhum",
+            spellResistance = true,
+            description = "Fortalece um bordão ou clava de madeira, concedendo bônus de melhoria +1 e aumentando seu dano como arma de tamanho maior."
+        ),
+        PresetSpell(
+            name = "Detectar Animais ou Plantas",
+            level = 1,
+            school = "Adivinhação",
+            classes = listOf("Druida", "Ranger"),
+            castTime = "1 ação padrão",
+            components = "V, S",
+            range = "18m/nível",
+            duration = "Concentração, até 10 minutos/nível",
+            savingThrow = "Nenhum",
+            spellResistance = false,
+            description = "Indica a direção e a distância aproximada de animais ou plantas de um tipo escolhido dentro do alcance."
+        ),
+        PresetSpell(
+            name = "Ocultar-se de Animais",
+            level = 1,
+            school = "Abjuração",
+            classes = listOf("Druida", "Ranger"),
+            castTime = "1 ação padrão",
+            components = "V, S, DF",
+            range = "Toque",
+            duration = "10 minutos/nível",
+            savingThrow = "Vontade anula (inofensivo)",
+            spellResistance = true,
+            description = "Impede animais comuns de perceberem o alvo pelos sentidos normais; não afeta criaturas do tipo besta mágica."
+        ),
+
         // CÍRCULO 2
         PresetSpell(
             name = "Invisibilidade",

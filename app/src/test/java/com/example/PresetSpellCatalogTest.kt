@@ -64,7 +64,15 @@ class PresetSpellCatalogTest {
             "Presas Mágicas",
             "Passos Longos",
             "Fogo das Fadas",
-            "Remover Medo"
+            "Remover Medo",
+            "Bênção Maldita",
+            "Abençoar Água",
+            "Desespero",
+            "Resistir aos Elementos",
+            "Pedra Mágica",
+            "Porrete Mágico",
+            "Detectar Animais ou Plantas",
+            "Ocultar-se de Animais"
         ).forEach { name ->
             assertTrue("Magia ausente: $name", name in names)
         }
@@ -101,6 +109,19 @@ class PresetSpellCatalogTest {
         assertEquals(setOf("Bardo", "Clérigo"), spells.getValue("Remover Medo").classes.toSet())
         assertEquals("Toque", spells.getValue("Santuário").range)
         assertEquals("1 minuto/nível", spells.getValue("Escudo da Fé").duration)
+    }
+
+    @Test
+    fun firstLevelSpellBatchFiveHasExpectedClassesAndMechanics() {
+        val spells = Dnd35Rules.PRESET_SPELLS.associateBy { it.name }
+        assertEquals(setOf("Clérigo"), spells.getValue("Bênção Maldita").classes.toSet())
+        assertEquals(setOf("Clérigo", "Paladino"), spells.getValue("Abençoar Água").classes.toSet())
+        assertEquals("1 minuto", spells.getValue("Abençoar Água").castTime)
+        assertEquals(setOf("Bardo", "Clérigo", "Druida", "Paladino", "Ranger", "Mago", "Feiticeiro"), spells.getValue("Resistir aos Elementos").classes.toSet())
+        assertEquals(setOf("Druida", "Ranger"), spells.getValue("Detectar Animais ou Plantas").classes.toSet())
+        assertFalse(spells.getValue("Detectar Animais ou Plantas").spellResistance)
+        assertEquals(setOf("Druida", "Ranger"), spells.getValue("Ocultar-se de Animais").classes.toSet())
+        assertEquals("24 horas", spells.getValue("Resistir aos Elementos").duration)
     }
 
     @Test
