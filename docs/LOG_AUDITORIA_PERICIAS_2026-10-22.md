@@ -617,3 +617,12 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - O bônus exibido usa ranks.toInt(), de modo que uma meia graduação isolada não acrescenta +1 ao teste, conforme decisão já registrada.
 - Não foi confirmado defeito novo nesta inspeção estática. Os testes atuais cobrem a função de passo de edição e histórico de orçamento, mas não foi localizada nesta passada uma regressão integrada que monte uma ficha multiclasse e confirme em conjunto classificação, limite, graduação e bônus.
 - Próximo passo: avaliar como testar CharacterCalculator.compute em cenários multiclasse de forma isolada; só abrir alteração de código se o caso de teste revelar divergência. Nenhum teste local/Gradle nem teste manual no Android foi executado nesta inspeção.
+
+## 2026-10-23 — Cobertura integrada do cálculo de perícias em multiclasse
+
+- PR #130 foi integrada por squash no commit `5393a6e2a7b3bc4070e89a3fd65678e95b03765e`; a CI passou, incluindo testes unitários, compilação do APK de depuração e envio do artefato.
+- Adicionado teste de regressão integrado para `CharacterCalculator.compute` com Ranger 2 / Guerreiro 2. O cenário verifica que Ouvir é perícia de classe por pertencer à lista do Ranger, apesar do sinalizador legado salvo como falso; o limite é 7 graduações, e 5,5 graduações contribuem +5 ao bônus.
+- O mesmo cenário verifica que Atuação não vira perícia de classe apenas porque o sinalizador legado está verdadeiro: seu limite entreclasse é 3,5, o valor é limitado de 4,5 para 3,5 e o bônus de graduação é +3.
+- O teste cobre classificação, limite, normalização/limitação e bônus em conjunto. Ele é uma adição de cobertura; não afirma que os testes passaram até que a CI desta PR conclua.
+- Nenhuma regra nem cálculo de produção foi alterado. Não foi executado Gradle local nem teste manual no Android.
+- Próximo passo: aguardar CI desta PR. Se aprovada, integrar e seguir para a próxima pendência concreta da auditoria, consultando este log antes de qualquer nova alteração.
