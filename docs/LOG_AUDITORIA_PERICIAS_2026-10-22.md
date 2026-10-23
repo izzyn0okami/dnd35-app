@@ -923,3 +923,12 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Os nomes e resumos são provisórios até conferência direta com o Livro do Jogador brasileiro; as referências SRD servem apenas como apoio mecânico.
 - Não integrar antes da CI passar no SHA final e da revisão do estado da PR. Teste manual em dispositivo Android não realizado.
 - Referências mecânicas auxiliares: https://www.d20srd.org/srd/spells/floatingDisk.htm ; https://www.d20srd.org/srd/spells/reducePerson.htm ; https://www.d20srd.org/srd/spells/shockingGrasp.htm.
+
+
+## 2026-10-23 — Magias arcanas de 1º círculo, lote 11
+
+- Adicionadas três entradas candidatas: Trancar Portal, Ventriloquismo e Aura Mágica de Nystul.
+- Incluídos testes para listas de classe, alcance, duração e resistência à magia.
+- Os nomes localizados e resumos são provisórios até conferência direta com a edição brasileira do Livro do Jogador 3.5; SRD em inglês é referência mecânica auxiliar, não autoridade para a tradução.
+- Não integrar antes de CI verde no SHA final e nova verificação do estado da PR. Teste manual em dispositivo Android não realizado.
+- Referências mecânicas auxiliares: https://www.d20srd.org/srd/spells/holdPortal.htm ; https://www.d20srd.org/srd/spells/ventriloquism.htm ; https://www.d20srd.org/srd/spells/nystulsMagicAura.htm.
