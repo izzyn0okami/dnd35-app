@@ -831,3 +831,14 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Este lote é parcial. A lista de magias de 1º círculo do Livro do Jogador ainda está incompleta, e a nomenclatura de cada magia deve ser confrontada com a edição brasileira antes de declarar a auditoria terminada.
 - Referência de conteúdo/listas de classe para confronto mecânico: https://srd.dndtools.org/srd/meta/books/3.5/PlayersHandbook.html e https://www.d20srd.org/srd/spellLists/sorcererWizardSpells.htm. As referências em inglês não substituem a verificação da tradução brasileira.
 - CI necessária antes do merge; não foi executado Gradle localmente nem teste manual no Android.
+
+
+## 2026-10-23 — Ampliação de magias de 1º círculo, lote 2
+
+- Após a integração da PR #154 com CI aprovada, iniciado o segundo lote de magias de 1º círculo, sem incluir suplementos.
+- Adicionadas oito entradas: Disfarçar-se, Servo Invisível, Convocar Monstro I, Identificação, Raio do Enfraquecimento, Aumentar Pessoa, Arma Mágica e Salto.
+- Testes ampliados para presença das entradas, unicidade de nomes e classes/níveis; testes específicos cobrem classes de Convocar Monstro I, Raio do Enfraquecimento, Arma Mágica e Salto.
+- A nomenclatura e a redação resumida ainda exigem confronto final com a edição brasileira do Livro do Jogador; as listas SRD em inglês servem apenas como verificação mecânica auxiliar.
+- A CI desta nova PR deve passar antes de qualquer merge; não houve teste manual em dispositivo nesta etapa.
+
+- Revisão estática posterior identificou e corrigiu o alcance de Identificação para 18 m; teste específico adicionado. A CI deve validar o commit atualizado.
