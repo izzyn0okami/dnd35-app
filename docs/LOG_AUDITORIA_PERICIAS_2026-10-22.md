@@ -1087,3 +1087,13 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Corrigidos os componentes de **V, S** para **V, G, FD**; removido o teste de resistência que não consta no verbete; e corrigida a resistência à magia para **Não**. A descrição agora especifica uma única criatura viva e remete à magia Confusão para a condição exata.
 - Mantida a entrada única de Bardo 1, alcance curto e duração de 1 rodada. Adicionados testes de regressão e atualizado este log.
 - Nenhum teste manual em dispositivo Android foi realizado nesta etapa.
+
+---
+
+## 2026-10-23 — Revisão de Obscurecer Objeto e convenção de componentes
+
+- Conferido o verbete **Obscurecer Objeto** no Livro do Jogador brasileiro, capítulo 11, página impressa 158.
+- Mantidos os componentes já registrados na ficha sem tratar **somático (S)** e **gestual (G)** como diferenças mecânicas: são termos equivalentes para o mesmo componente. Nesta auditoria, a terminologia do livro é a referência; a escolha de rótulo no aplicativo deve ser consistente, sem alterações em massa que não corrijam regra alguma.
+- A descrição foi detalhada para registrar o limite de **50 kg por nível** e os dois resultados contra adivinhação: falha automática quando o objeto protegido é o alvo e incapacidade de senti-lo quando a magia procura outro alvo próximo.
+- Mantidos classes e níveis (Bardo 1, Clérigo 3, Mago 2 e Feiticeiro 2), alcance Toque, duração 8 horas (D), teste de Vontade anula (objeto) e resistência à magia Sim (objeto), conforme o verbete.
+- Adicionados testes de regressão para esses campos e para os detalhes da descrição. Nenhum teste manual em dispositivo Android foi realizado nesta etapa.
