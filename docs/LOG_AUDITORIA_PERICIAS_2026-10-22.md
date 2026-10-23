@@ -1032,3 +1032,14 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Atualizado o teste de regressão existente para verificar as três classes. A entrada existente foi corrigida, sem duplicação.
 - Fonte primária consultada: arquivo fornecido “D&D 3.5 - Livro do Jogador”, capítulo 11, seção “Magias de 1º nível de Bardo” (página impressa 155/156 na extração do PDF).
 - Esta verificação é diretamente apoiada pelo livro em português; a auditoria da lista completa de magias de Bardo continua em andamento.
+
+
+---
+
+## 2026-10-24 — Nomes oficiais conferidos no Livro do Jogador brasileiro
+
+- **Animar Cordas:** corrigido o nome do catálogo, antes registrado no singular como “Animar Corda”. A lista “Magias de 1º nível de Bardo” do livro usa “Animar Cordas”.
+- **Invocar Criaturas I:** corrigido o nome do catálogo, antes registrado como “Convocar Monstro I”. A lista de magias do livro usa “Invocar Criaturas I”; foi renomeada a entrada existente, sem criar duplicata.
+- Atualizados os testes de regressão que consultavam os nomes antigos.
+- Fonte primária: arquivo fornecido “D&D 3.5 - Livro do Jogador”, capítulo 11, listas de magias e índice de magias.
+- Esta alteração cobre nomes e consistência do catálogo; a auditoria completa das descrições e dos níveis por classe continua em andamento. Nenhum teste manual em dispositivo Android foi realizado nesta etapa.
