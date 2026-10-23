@@ -821,3 +821,13 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - A lista continua parcial: não cobre todos os truques nem os níveis superiores do Livro do Jogador. A nomenclatura de algumas traduções ainda precisa de confronto final com a edição brasileira; esta etapa não inclui suplementos.
 - Referência de conferência das listas de truques: Player's Handbook 3.5/SRD, incluindo listas de Bardo, Clérigo, Druida e Mago/Feiticeiro: https://srd.dndtools.org/srd/meta/books/3.5/PlayersHandbook.html e https://www.d20srd.org/srd/spellLists/sorcererWizardSpells.htm.
 - CI necessária antes do merge; não foi executado Gradle localmente nem teste manual no Android.
+
+
+## 2026-10-23 — Ampliação de magias de 1º círculo, lote 1
+
+- Adicionadas nove magias de 1º círculo ao catálogo: Alarme, Causar Medo, Compreender Idiomas, Enfeitiçar Pessoa, Graxa, Detectar Portas Secretas, Retirada Acelerada, Proteção contra o Mal e Detectar Mortos-Vivos.
+- Registradas as classes que podem conjurá-las, além de alcance, duração, componentes, resistência à magia, testes de resistência e resumo mecânico.
+- Testes de regressão ampliados para presença das novas entradas, nomes únicos e coerência de classes/níveis; verificações específicas incluem Alarme, Causar Medo e o nível de Proteção contra o Mal para Paladino.
+- Este lote é parcial. A lista de magias de 1º círculo do Livro do Jogador ainda está incompleta, e a nomenclatura de cada magia deve ser confrontada com a edição brasileira antes de declarar a auditoria terminada.
+- Referência de conteúdo/listas de classe para confronto mecânico: https://srd.dndtools.org/srd/meta/books/3.5/PlayersHandbook.html e https://www.d20srd.org/srd/spellLists/sorcererWizardSpells.htm. As referências em inglês não substituem a verificação da tradução brasileira.
+- CI necessária antes do merge; não foi executado Gradle localmente nem teste manual no Android.
