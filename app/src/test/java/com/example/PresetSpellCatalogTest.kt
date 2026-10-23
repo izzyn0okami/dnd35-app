@@ -45,12 +45,13 @@ class PresetSpellCatalogTest {
         val spell = Dnd35Rules.PRESET_SPELLS.single { it.name == "Detectar Veneno" }
         assertEquals(0, spell.classLevels["Clérigo"])
         assertEquals(0, spell.classLevels["Druida"])
-        assertEquals(1, spell.classLevels["Paladino"])
         assertEquals(0, spell.classLevels["Mago"])
         assertEquals(0, spell.classLevels["Feiticeiro"])
         assertEquals(1, spell.classLevels["Paladino"])
         assertEquals(1, spell.classLevels["Ranger"])
-        assertEquals("3m", spell.range)
+        assertEquals("Curto (7,5m)", spell.range)
         assertTrue(spell.description.contains("Sabedoria CD 20"))
+        val purify = Dnd35Rules.PRESET_SPELLS.single { it.name == "Purificar Alimentos e Bebidas" }
+        assertEquals("3m", purify.range)
     }
 }
