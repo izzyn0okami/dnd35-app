@@ -192,7 +192,7 @@ fun SpellsTab(
                                 shape = RoundedCornerShape(8.dp)
                             ) {
                                 Column(modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp), horizontalAlignment = Alignment.CenterHorizontally) {
-                                    Text(if (lvl == 0) "Nv 0" else "Nv $lvl", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                                    Text(if (lvl == 0) "Nível 0" else "Nível $lvl", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                                     Text("CD $dc", style = MaterialTheme.typography.labelSmall, fontWeight = FontWeight.Bold, color = DndArcaneBlue)
                                 }
                             }
@@ -202,7 +202,7 @@ fun SpellsTab(
                     Spacer(modifier = Modifier.height(12.dp))
 
                     // Linha Horizontal de Espaços de Magia (Círculos 0 ao 9)
-                    Text("Espaços Diários de Magia (Toque para gastar/recuperar):", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    Text("Espaços de magia por dia (toque para gastar ou recuperar):", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                     Spacer(modifier = Modifier.height(6.dp))
 
                     LazyRow(
@@ -236,7 +236,7 @@ fun SpellsTab(
             Spacer(modifier = Modifier.height(8.dp))
 
             // Filtro por Círculo
-            Text("Filtrar por Círculo:", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            Text("Filtrar por nível da magia:", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
             LazyRow(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(4.dp)
@@ -252,7 +252,7 @@ fun SpellsTab(
                     FilterChip(
                         selected = selectedLevelFilter == lvl,
                         onClick = { selectedLevelFilter = if (selectedLevelFilter == lvl) null else lvl },
-                        label = { Text(if (lvl == 0) "Nv 0" else "Nv $lvl") }
+                        label = { Text(if (lvl == 0) "Nível 0" else "Nível $lvl") }
                     )
                 }
             }
@@ -524,7 +524,7 @@ private fun SpellSlotCard(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = if (slot.level == 0) "Nv 0" else "Nv ${slot.level}",
+                    text = if (slot.level == 0) "Nível 0" else "Nv ${slot.level}",
                     style = MaterialTheme.typography.labelSmall,
                     fontWeight = FontWeight.Bold,
                     color = DndArcaneBlue
@@ -555,14 +555,14 @@ private fun SpellSlotCard(
                     enabled = remaining > 0,
                     modifier = Modifier.size(48.dp)
                 ) {
-                    Icon(Icons.Default.Remove, contentDescription = "Gastar Espaço", modifier = Modifier.size(16.dp))
+                    Icon(Icons.Default.Remove, contentDescription = "Gastar espaço de magia", modifier = Modifier.size(16.dp))
                 }
                 IconButton(
                     onClick = onRecoverSlot,
                     enabled = slot.usedSlots > 0,
                     modifier = Modifier.size(48.dp)
                 ) {
-                    Icon(Icons.Default.Add, contentDescription = "Recuperar Espaço", modifier = Modifier.size(16.dp))
+                    Icon(Icons.Default.Add, contentDescription = "Recuperar espaço de magia", modifier = Modifier.size(16.dp))
                 }
             }
         }

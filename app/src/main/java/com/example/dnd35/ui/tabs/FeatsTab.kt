@@ -77,7 +77,7 @@ fun FeatsTab(
                     Spacer(modifier = Modifier.width(10.dp))
                     Column {
                         Text(
-                            "Talentos & Habilidades Especiais",
+                            "Talentos e habilidades especiais",
                             style = MaterialTheme.typography.titleMedium,
                             fontWeight = FontWeight.Bold
                         )

@@ -611,7 +611,7 @@ fun SkillsTab(
                 FilterChip(
                     selected = filterType == 1,
                     onClick = { filterType = 1 },
-                    label = { Text("★ De Classe") }
+                    label = { Text("★ De classe") }
                 )
                 FilterChip(
                     selected = filterType == 2,
@@ -655,7 +655,7 @@ fun SkillsTab(
 
         AlertDialog(
             onDismissRequest = { editingSkill = null },
-            title = { Text("Ajustar Perícia: ${comp.skill.name}", fontWeight = FontWeight.Bold) },
+            title = { Text("Ajustar perícia: ${comp.skill.name}", fontWeight = FontWeight.Bold) },
             text = {
                 Column(modifier = Modifier.fillMaxWidth()) {
                     Text(
@@ -679,7 +679,7 @@ fun SkillsTab(
                             rankInput = it
                             rankInputError = false
                         },
-                        label = { Text("Pontos de Graduação") },
+                        label = { Text("Graduações") },
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
                         modifier = Modifier.fillMaxWidth(),
                         singleLine = true,
@@ -694,7 +694,7 @@ fun SkillsTab(
                     OutlinedTextField(
                         value = miscInput,
                         onValueChange = { miscInput = it },
-                        label = { Text("Bônus Diversos / Talentos (ex: +3 Foco em Perícia)") },
+                        label = { Text("Bônus diversos e de talentos (ex.: +3 em Foco em Perícia)") },
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                         modifier = Modifier.fillMaxWidth(),
                         singleLine = true
@@ -846,7 +846,7 @@ fun SkillItemRow(
                 enabled = computed.ranks > 0,
                 modifier = Modifier.size(30.dp)
             ) {
-                Icon(Icons.Default.Remove, contentDescription = "Diminuir Graduação", modifier = Modifier.size(16.dp))
+                Icon(Icons.Default.Remove, contentDescription = "Diminuir graduação", modifier = Modifier.size(16.dp))
             }
 
             IconButton(
@@ -854,7 +854,7 @@ fun SkillItemRow(
                 enabled = computed.ranks < computed.maxRanks,
                 modifier = Modifier.size(30.dp)
             ) {
-                Icon(Icons.Default.Add, contentDescription = "Aumentar Graduação", tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(16.dp))
+                Icon(Icons.Default.Add, contentDescription = "Aumentar graduação", tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(16.dp))
             }
         }
     }
