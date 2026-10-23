@@ -600,3 +600,10 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - A lista agora mantém o índice original e remove apenas o registro correspondente ao botão acionado, preservando os demais registros duplicados para correção deliberada pelo usuário.
 - Corrige comportamento destrutivo em históricos ambíguos; não altera cálculos nem remove dados automaticamente além do registro explicitamente selecionado.
 - Aguardar CI da PR e validação pós-merge; teste manual em aparelho continua pendente.
+
+## 2026-10-22 — Correção da lista de perícias de classe do Ranger
+
+- A auditoria da lista de perícias por classe encontrou “Saltar” indevidamente incluída nas perícias de classe do Ranger.
+- A lista foi comparada com a relação padrão de perícias de classe do Ranger em D&D 3.5: Adestrar Animais, Cavalgar, Concentração, Conhecimento (Geografia), Conhecimento (Masmorras), Conhecimento (Natureza), Cura, Escalar, Esconder-se, Furtividade, Natação, Observar, Ofícios, Ouvir, Procurar, Profissão, Sobrevivência e Usar Cordas. “Saltar” não faz parte dessa lista.
+- Removida somente “Saltar” da lista do Ranger. A perícia continua disponível para a classe como perícia entre classes, respeitando os custos e limites já implementados.
+- Escopo limitado à classificação da perícia; não altera catálogo global, graduações existentes, progressão de pontos nem bônus. CI e testes automatizados devem ser verificados antes do merge; teste manual ainda pendente.
