@@ -473,3 +473,13 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Na edição de dados gerais, os campos Classe e Nível ficam desabilitados quando o personagem possui mais de uma classe; uma mensagem direciona para “Gerenciar multiclasse e níveis”. Isso evita apresentar campos que `updateGeneralInfo` não aplica a personagens multiclasse.
 - Padronizado o rótulo “Gerenciar multiclasse e níveis”.
 - Não altera cálculos, progressões ou regras de D&D 3.5.
+
+
+## 2026-10-23 — Padronização de rótulos da interface
+
+- Padronizados títulos e descrições nas telas de perícias, inventário, magias e talentos.
+- Trocados usos de “&” por “e” em títulos em português e reduzidas maiúsculas desnecessárias.
+- Padronizada a nomenclatura visual para “graduações”, “bônus diversos e de talentos”, “riqueza e moedas”, “espaços de magia por dia” e “nível da magia”.
+- Atualizados os textos acessíveis dos controles de equipamento e de gasto/recuperação de espaços de magia.
+- Alterações limitadas à apresentação textual: nenhum cálculo, catálogo, regra ou decisão de auditoria foi modificado.
+- Validação pendente: CI da PR e inspeção de eventuais efeitos colaterais de substituições de rótulos.
