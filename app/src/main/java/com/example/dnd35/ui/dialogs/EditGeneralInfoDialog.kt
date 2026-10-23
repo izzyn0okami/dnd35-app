@@ -56,7 +56,7 @@ fun EditGeneralInfoDialog(
     onDismiss: () -> Unit
 ) {
     var name by remember { mutableStateOf(character.name) }
-    var nameTouched by remember { mutableStateOf(false) }
+    var nameTouched by remember { mutableStateOf(character.name.isBlank()) }
     val normalizedName = normalizeEditedCharacterName(name)
     val showNameError = nameTouched && normalizedName == null
     var selectedClass by remember { mutableStateOf(character.characterClass) }
