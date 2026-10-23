@@ -652,3 +652,12 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - O estado correto é: as progressões gerais de BBA/resistências e várias progressões de classe já foram examinadas; a auditoria integral de todas as descrições, condições e terminologia da edição brasileira continua aberta. Não reabrir as correções já integradas sem evidência nova.
 - Próximo passo: continuar a revisão cruzada ainda pendente das descrições de características de classe, usando o Livro do Jogador brasileiro como referência prioritária e registrando apenas discrepâncias novas e comprováveis. Não repetir a verificação de fórmulas gerais já coberta pela PR #101.
 - Validação manual Android continua pendente; a CI aprovada não substitui teste no aparelho.
+
+
+## 2026-10-23 — Condição omitida na Esquiva Sobrenatural do Ladino
+
+- Na revisão cruzada das descrições, foi identificada uma omissão ainda não coberta pelas correções anteriores: a descrição de Esquiva Sobrenatural do Ladino (4º nível) dizia apenas que o bônus de Destreza era mantido quando surpreendido.
+- O Livro do Jogador brasileiro também prevê que o bônus é mantido contra ataques de um oponente invisível, mas ainda é perdido quando o personagem está imobilizado. A descrição do Bárbaro já registrava essas condições; a do Ladino estava incompleta.
+- Correção limitada ao texto da característica em `Dnd35Rules.kt`; não altera o cálculo de CA ou o comportamento mecânico do aplicativo. Adicionado teste de regressão que exige as três condições na descrição.
+- Referência primária consultada: Livro do Jogador brasileiro 3.5, seção Esquiva Sobrenatural do Ladino, https://anyflip.com/hgohy/pjla/basic. Confirmação complementar SRD 3.5: https://www.35srd.com/players/classes/base-classes/rogue/.
+- Aguardar CI da PR antes de integrar. Sem execução local do Gradle ou teste manual no Android.
