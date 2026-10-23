@@ -435,4 +435,12 @@ Continuar a auditoria de regras sem repetir os assuntos resolvidos. Próximo foc
 - Alteração proposta na PR: permitir a rolagem sem graduação para especialidades de Conhecimento e exibir na ficha a restrição de informações comuns (CD 10 ou inferior). As demais perícias “somente treinadas”, como Identificar Magia e Operar Mecanismo, continuam bloqueadas sem graduação.
 - Adicionado teste unitário para diferenciar Conhecimento das demais perícias treinadas. A mudança não altera limites de graduação, custos de pontos ou listas de perícias de classe.
 - Referência consultada: Livro do Jogador 3.5, seção de Conhecimento (p. 78 na edição em inglês), que explicita o teste sem treinamento para conhecimento comum. A terminologia final em português deve seguir a edição brasileira quando houver diferença de tradução.
-- Estado: código e teste enviados para CI em branch dedicada; não houve execução local de Gradle nem teste manual no aparelho. Não fazer merge antes de verificar a CI do commit final.
+- Resultado: PR #110 integrada por squash no commit `4c336d93c19279c40d8c6a45a2841b3f8299f5fb`. A CI do commit final `c01b94eb5514737f5c888f8591e37603ef2e7490` passou no workflow [39878676967](https://github.com/izzyn0okami/dnd35-app/actions/runs/39878676967). Não houve teste manual no aparelho.
+
+
+## Conferência das perícias somente treinadas — 2026-10-23
+
+- Conferidos os sinalizadores do catálogo de perícias contra as regras de uso sem treinamento do D&D 3.5: Abrir Fechaduras, Adestrar Animais, Conhecimento (especialidades), Decifrar Escrita, Identificar Magia, Operar Mecanismo, Prestidigitação, Profissão e Usar Instrumento Mágico permanecem marcadas como somente treinadas.
+- A marcação de Conhecimento não significa bloqueio absoluto: a exceção para informações comuns (CD 10 ou inferior) foi implementada na PR #110. As demais perícias da lista continuam sem rolagem quando não possuem graduação.
+- Não foi encontrada outra divergência concreta nos sinalizadores revisados que justifique uma nova PR. Esta é uma revisão estática do catálogo e do fluxo de rolagem, não uma certificação de todas as regras possíveis de cada perícia.
+- Situação da etapa: revisão de perícias treinadas e uso sem graduação concluída. A auditoria geral de perícias pode ser encerrada após a conferência final do log e das alterações integradas; não reabrir os tópicos registrados como resolvidos sem evidência nova.
