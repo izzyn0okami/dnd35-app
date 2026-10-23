@@ -1444,7 +1444,7 @@ object Dnd35Rules {
             duration = "1 min/nível",
             savingThrow = "Nenhum",
             spellResistance = false,
-            description = "Disco flutuante concede +4 de bônus de escudo na CA e bloqueia automaticamente Mísseis Mágicos."
+            description = "Cria um disco invisível de força diante do conjurador, concedendo +4 de bônus de escudo na CA e anulando Mísseis Mágicos."
         ),
         PresetSpell(
             name = "Curar Ferimentos Leves",
@@ -1516,7 +1516,7 @@ object Dnd35Rules {
             duration = "Até pousar ou 1 rodada/nível",
             savingThrow = "Vontade anula",
             spellResistance = true,
-            description = "Faz as criaturas caírem suavemente (3m por rodada), anulando completamente o dano de queda."
+            description = "Faz as criaturas caírem suavemente, a cerca de 18m por rodada (60 pés), anulando o dano de queda enquanto a magia durar."
         ),
         PresetSpell(
             name = "Névoa Obscurecente",

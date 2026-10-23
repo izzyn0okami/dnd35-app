@@ -323,6 +323,24 @@ class PresetSpellCatalogTest {
     }
 
     @Test
+    fun shieldDescriptionDoesNotConfuseItWithFloatingDisk() {
+        val spell = Dnd35Rules.PRESET_SPELLS.single { it.name == "Escudo Arcano" }
+        assertTrue(spell.description.contains("disco invisível de força"))
+        assertTrue(spell.description.contains("+4 de bônus de escudo na CA"))
+        assertTrue(spell.description.contains("anulando Mísseis Mágicos"))
+        assertFalse(spell.description.startsWith("Disco flutuante"))
+    }
+
+    @Test
+    fun featherFallDescriptionUsesCorrectApproximateFallRate() {
+        val spell = Dnd35Rules.PRESET_SPELLS.single { it.name == "Queda Suave" }
+        assertTrue(spell.description.contains("18m por rodada (60 pés)"))
+        assertTrue(spell.description.contains("anulando o dano de queda"))
+        assertEquals("Vontade anula", spell.savingThrow)
+        assertTrue(spell.spellResistance)
+    }
+
+    @Test
     fun endureElementsDoesNotAllowSpellResistance() {
         val spell = Dnd35Rules.PRESET_SPELLS.first { it.name == "Suportar Elementos" }
         assertEquals("24 horas", spell.duration)
