@@ -2239,7 +2239,7 @@ object Dnd35Rules {
             classes = listOf("Druida", "Ranger"),
             castTime = "1 ação padrão",
             components = "V, S",
-            range = "18m",
+            range = "18m/nível",
             duration = "Concentração, até 10 minutos/nível",
             savingThrow = "Nenhum",
             spellResistance = false,
