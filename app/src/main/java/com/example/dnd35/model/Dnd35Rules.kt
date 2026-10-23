@@ -1692,7 +1692,7 @@ object Dnd35Rules {
             classes = listOf("Bardo", "Mago", "Feiticeiro"),
             castTime = "1 hora",
             components = "V, S, M/DF (pérola de 100 PO, vinho e pena de coruja)",
-            range = "Toque",
+            range = "18m",
             duration = "Instantânea",
             savingThrow = "Nenhum",
             spellResistance = false,
