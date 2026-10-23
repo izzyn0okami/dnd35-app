@@ -2205,7 +2205,7 @@ object Dnd35Rules {
             description = "Concede proteção defensiva contra criaturas boas, protege contra controle mental e impede contato corporal de criaturas convocadas boas."
         ),
         PresetSpell(
-            name = "Proteção contra a Ordem",
+            name = "Proteção contra a Lei",
             level = 1,
             school = "Abjuração",
             classes = listOf("Clérigo", "Mago", "Feiticeiro"),
@@ -2215,7 +2215,7 @@ object Dnd35Rules {
             duration = "1 minuto/nível",
             savingThrow = "Vontade anula (inofensivo)",
             spellResistance = true,
-            description = "Concede proteção defensiva contra criaturas ordeiras, protege contra controle mental e impede contato corporal de criaturas convocadas ordeiras."
+            description = "Concede proteção defensiva contra criaturas leais, protege contra controle mental e impede contato corporal de criaturas convocadas ordeiras."
         ),
 
         // CÍRCULO 2
