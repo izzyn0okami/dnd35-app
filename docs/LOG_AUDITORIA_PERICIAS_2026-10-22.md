@@ -382,3 +382,11 @@ Continuar a auditoria de regras sem repetir os assuntos resolvidos. Próximo foc
 - A descrição de Encontrar Armadilhas do Ladino agora distingue Procurar para localizar armadilhas com CD acima de 20 de Operar Mecanismo para desarmar armadilhas mágicas. Teste de regressão incluído.
 - A alteração é descritiva e de teste; não altera a lógica de rolagem. Não houve teste Gradle local nem teste manual no aparelho.
 - Próximo foco: continuar a passada cruzada das características escalonadas do Ladino e do Ranger, e então revisar condições de progressão/uso das classes básicas, conferindo contra o Livro do Jogador brasileiro. Consultar este log antes de propor PR para evitar duplicações.
+
+
+## Auditoria de BBA e testes de resistência — 2026-10-23
+
+- Conferidas as fórmulas de `calculateBaseAttackBonus` e `calculateBaseSave`: BBA integral = nível; três quartos = piso(3 × nível / 4); metade = piso(nível / 2); resistência boa = 2 + piso(nível / 2); resistência ruim = piso(nível / 3). Os resultados conferem com as progressões 3.5 nos níveis de 1 a 20.
+- Conferidos os tipos de BBA, Fortitude, Reflexos e Vontade das onze classes básicas contra as progressões do Livro do Jogador 3.5. As atribuições de Bárbaro, Bardo, Clérigo, Druida, Guerreiro, Monge, Paladino, Ranger, Ladino, Feiticeiro e Mago estão consistentes; nenhuma divergência concreta encontrada nesta passagem.
+- Os testes existentes cobrem os resultados numéricos das três fórmulas ao longo dos níveis e verificam tipos representativos de classes. A conferência estática não equivale a teste local ou manual; nenhum Gradle local foi executado nesta etapa.
+- Conclusão: não abrir PR de código para BBA/resistências nesta passagem. Próximo foco: rastrear o orçamento de pontos de perícia por nível, incluindo nível 1, modificador de Inteligência, bônus racial humano e multiclasse, verificando a coerência com o histórico de gastos já registrado. Consultar este log antes de propor mudanças.
