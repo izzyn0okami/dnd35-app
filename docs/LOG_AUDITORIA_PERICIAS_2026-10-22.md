@@ -884,7 +884,7 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 
 ## 2026-10-23 — Magias de proteção contra tendências, lote 7
 
-- Acrescentadas três entradas candidatas de 1º círculo: Proteção contra o Caos, Proteção contra o Bem e Proteção contra a Ordem.
+- Acrescentadas três entradas candidatas de 1º círculo: Proteção contra o Caos, Proteção contra o Bem e Proteção contra a Lei.
 - Testes cobrem presença indireta por consulta ao catálogo, listas de classe, alcance, duração, resistência à magia e unicidade global dos nomes.
 - As listas de classe e a terminologia permanecem provisórias até confronto direto com a edição brasileira do Livro do Jogador 3.5; SRD em inglês é apenas referência mecânica.
 - Não considerar concluída a cobertura de magias de 1º círculo. Exigir CI verde no SHA final antes de integrar; teste manual Android continua pendente.
