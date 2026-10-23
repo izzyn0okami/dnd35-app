@@ -109,7 +109,7 @@ fun OverviewCombatTab(
                     modifier = Modifier
                         .align(Alignment.TopEnd)
                         .padding(10.dp)
-                        .size(34.dp)
+                        .size(48.dp)
                         .clip(CircleShape)
                         .background(Color.Black.copy(alpha = 0.58f))
                         .clickable { showPhotoModal = true },
@@ -256,7 +256,7 @@ fun OverviewCombatTab(
                         Button(
                             onClick = { showMulticlassModal = true },
                             colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary),
-                            modifier = Modifier.height(34.dp),
+                            modifier = Modifier.height(48.dp),
                             contentPadding = ButtonDefaults.TextButtonContentPadding
                         ) {
                             Icon(Icons.Default.Edit, contentDescription = null, modifier = Modifier.size(16.dp))
