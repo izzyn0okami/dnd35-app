@@ -34,6 +34,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.example.dnd35.model.CharacterEntity
+import com.example.dnd35.model.CharacterJsonAdapters
 import com.example.dnd35.model.Dnd35Rules
 
 @Composable
@@ -56,6 +57,9 @@ fun EditGeneralInfoDialog(
     var selectedRace by remember { mutableStateOf(character.race) }
     var levelText by remember { mutableStateOf("${character.level}") }
     val parsedLevel = levelText.toIntOrNull()
+    val isMulticlass = remember(character.multiclassJson, character.characterClass, character.level) {
+        CharacterJsonAdapters.deserializeClassEntries(character.multiclassJson, character.characterClass, character.level).size > 1
+    }
     var alignment by remember { mutableStateOf(character.alignment) }
     var deity by remember { mutableStateOf(character.deity) }
     var size by remember { mutableStateOf(character.size) }
@@ -88,6 +92,7 @@ fun EditGeneralInfoDialog(
                         onValueChange = { levelText = it },
                         label = { Text("Nível") },
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                        enabled = !isMulticlass,
                         modifier = Modifier.weight(1f),
                         singleLine = true
                     )
@@ -114,7 +119,8 @@ fun EditGeneralInfoDialog(
                         trailingIcon = { Icon(Icons.Default.ArrowDropDown, null) },
                         modifier = Modifier
                             .fillMaxWidth()
-                            .clickable { classExpanded = true }
+                            .clickable(enabled = !isMulticlass) { classExpanded = true },
+                        enabled = !isMulticlass
                     )
                     DropdownMenu(
                         expanded = classExpanded,
@@ -132,6 +138,15 @@ fun EditGeneralInfoDialog(
                     }
                 }
 
+                if (isMulticlass) {
+                    Spacer(modifier = Modifier.height(4.dp))
+                    Text(
+                        "Este personagem tem mais de uma classe. Para alterar classes ou níveis, use “Gerenciar multiclasse e níveis”.",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
+
                 if (onOpenMulticlass != null) {
                     Spacer(modifier = Modifier.height(4.dp))
                     OutlinedButton(
@@ -143,7 +158,7 @@ fun EditGeneralInfoDialog(
                     ) {
                         Icon(Icons.Default.Edit, contentDescription = null, modifier = Modifier.size(16.dp))
                         Spacer(modifier = Modifier.padding(horizontal = 3.dp))
-                        Text("Gerenciar Multiclasse & Níveis")
+                        Text("Gerenciar multiclasse e níveis")
                     }
                 }
 

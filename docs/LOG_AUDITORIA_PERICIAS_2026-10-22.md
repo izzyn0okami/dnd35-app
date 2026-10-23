@@ -466,3 +466,10 @@ Correções implementadas nesta PR; aguardar CI e teste manual antes do merge:
 - Controles de PV reorganizados em duas linhas para reduzir compressão/corte em telas estreitas.
 
 Limitações: a validação estática não substitui build/CI nem teste visual em telas estreitas. Nenhuma regra de D&D 3.5 foi alterada. A validação numérica restante dos diálogos de armadura/atributos/itens e a padronização visual global precisam de revisão adicional antes do merge.
+
+
+## 2026-10-23 — Orientação de edição para multiclasse
+
+- Na edição de dados gerais, os campos Classe e Nível ficam desabilitados quando o personagem possui mais de uma classe; uma mensagem direciona para “Gerenciar multiclasse e níveis”. Isso evita apresentar campos que `updateGeneralInfo` não aplica a personagens multiclasse.
+- Padronizado o rótulo “Gerenciar multiclasse e níveis”.
+- Não altera cálculos, progressões ou regras de D&D 3.5.
