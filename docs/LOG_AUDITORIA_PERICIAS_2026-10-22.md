@@ -444,3 +444,11 @@ Continuar a auditoria de regras sem repetir os assuntos resolvidos. Próximo foc
 - A marcação de Conhecimento não significa bloqueio absoluto: a exceção para informações comuns (CD 10 ou inferior) foi implementada na PR #110. As demais perícias da lista continuam sem rolagem quando não possuem graduação.
 - Não foi encontrada outra divergência concreta nos sinalizadores revisados que justifique uma nova PR. Esta é uma revisão estática do catálogo e do fluxo de rolagem, não uma certificação de todas as regras possíveis de cada perícia.
 - Situação da etapa: revisão de perícias treinadas e uso sem graduação concluída. A auditoria geral de perícias pode ser encerrada após a conferência final do log e das alterações integradas; não reabrir os tópicos registrados como resolvidos sem evidência nova.
+
+
+## Encerramento da etapa de auditoria de perícias — 2026-10-23
+
+- Conferência final do estado integrado em `main`: a exceção de Conhecimento sem treinamento está presente em `Dnd35Rules.kt`, aplicada no cálculo de rolagem em `CalculatedCharacterStats.kt`, comunicada na interface em `SkillsTab.kt` e coberta por teste unitário em `ExampleUnitTest.kt`.
+- O histórico acima registra as decisões verificadas nesta etapa: orçamento e limite de graduações, multiclasse e transição entre perícia de classe/entრეclasse, histórico de gastos por nível, sinalização de registros de níveis superiores ao nível atual, sinalizadores de perícias somente treinadas e exceção de Conhecimento para informações comuns (CD 10 ou inferior). Correções já integradas não devem ser recriadas sem evidência nova.
+- Encerramento desta etapa: não foi identificada pendência concreta que justifique outra PR de perícias com base nas verificações registradas. Isso encerra o escopo auditado aqui, não certifica exaustivamente todas as regras de todas as perícias nem substitui conferência integral com a edição brasileira do Livro do Jogador.
+- Limitações: revisão estática do código e dos testes existentes; não foi executado Gradle local nem teste manual no aparelho nesta etapa. A CI da PR #110 passou; não se presume CI para este commit documental.
