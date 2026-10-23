@@ -694,3 +694,11 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Implementação proposta em `PhotoPickerModal.kt`: após escolher uma imagem da galeria, abre uma etapa de recorte quadrado com gesto de arrastar e pinça para zoom; a foto só é aplicada após confirmação em **Usar foto**.
 - O recorte confirmado é salvo como JPEG no armazenamento privado persistente do app e o URI salvo no personagem aponta para essa cópia. Cancelar o recorte retorna ao seletor sem substituir a foto atual. Retratos predefinidos continuam usando seus identificadores `preset:` e não passam pelo recortador.
 - A imagem original não é alterada. A implementação ainda precisa passar por CI/compilação e revisão do cálculo de recorte; não considerar integrada até merge aprovado. Teste visual no aparelho permanece pendente.
+
+
+## Pós-merge do recortador e proteção contra retratos grandes — 2026-10-23
+
+- PR #141 integrada por squash no commit `1b0ba3510a40fed8b8eda66536f4af3ec329d518`; CI passou no run https://github.com/izzyn0okami/dnd35-app/actions/runs/39898087367.
+- O fluxo de recorte quadrado está em `PhotoPickerModal.kt`: arrastar/pinça, confirmação antes de substituir a foto e gravação privada do recorte. Teste visual em aparelho continua pendente.
+- Revisão pós-merge identificou risco de consumo excessivo de memória ao decodificar fotos originais em resolução total. Correção proposta separadamente na branch `fix/sample-large-portrait-before-crop`: primeiro ler dimensões e depois decodificar com `inSampleSize`, limitando a maior dimensão decodificada a aproximadamente 2048 px. Isso reduz risco de falta de memória; não altera a imagem original.
+- Não considerar essa proteção integrada até CI aprovada e merge. Manter o teste manual Android pendente.
