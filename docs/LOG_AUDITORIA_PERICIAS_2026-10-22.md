@@ -975,7 +975,11 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - **PR #165 — lote 12:** Apagar e Toque Gélido.
 - Esses lotes não devem ser recriados como novas adições. Suas classes e campos ainda podem receber correções pontuais se uma comparação confiável identificar erro real; nesse caso, citar o lote original e adicionar teste em vez de duplicar a magia.
 
-### Correção de catálogo em andamento
+### Correções de catálogo integradas
+
+- **PR #167 — Corrige nível de Curar Ferimentos Leves para Ranger:** integrada em 2026-10-24 no commit `34ae71115e5ffca3b1d1091489e9bfb0acb059cb`; CI Android #993 passou no SHA `4110ce6b37c97211e3d69caf7535993d64351b7a`. Adiciona `classLevels` (Clérigo 1, Druida 1, Bardo 1, Paladino 1, Ranger 2), corrige o indicador do catálogo para classe selecionada e inclui teste de regressão. Conferência direta com o Livro do Jogador brasileiro continua pendente.
+
+### Correção de catálogo integrada anteriormente
 
 - **PR #166 — Corrige resistência à magia de Suportar Elementos:** altera `spellResistance` para `false` e adiciona teste de regressão. A SRD indica que a magia não permite resistência à magia: https://www.d20srd.org/srd/spells/endureElements.htm.
 - **Integrada em 2026-10-23** no commit `1668ebe7141a7b53d5abd1bddfe79eab6a71746e`; CI Android #986 concluiu com sucesso no SHA da PR `0cbed7f70c74d4d2d74a9ef064568c4bfcd03297`. Não houve teste manual em dispositivo.
@@ -1006,4 +1010,4 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Referência mecânica auxiliar: lista de magias SRD 3.5, que registra Curar Ferimentos Leves como magia de 2º nível para Ranger: https://www.d20srd.org/indexes/spellLists.htm.
 - A SRD não confirma o nome oficial em português; conferir a redação e a lista brasileira do *Livro do Jogador* continua pendente.
 - Contagem do catálogo de nível 1 não deve ser interpretada como cobertura completa. Continuar a comparação por classe e revisar todas as magias com níveis divergentes.
-- Esta alteração está em PR própria; não considerar integrada até a CI concluir com sucesso no SHA final e o merge ser confirmado.
+- **PR #167 integrada em 2026-10-24** no commit `34ae71115e5ffca3b1d1091489e9bfb0acb059cb`; CI Android #993 concluiu com sucesso no SHA `4110ce6b37c97211e3d69caf7535993d64351b7a`. Não houve teste manual em dispositivo Android.
