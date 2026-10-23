@@ -210,4 +210,15 @@ class ClassProgressionTest {
         assertEquals(Dnd35Rules.SaveProgression.GOOD, classes.getValue("Monge").refType)
         assertEquals(Dnd35Rules.SaveProgression.GOOD, classes.getValue("Monge").willType)
     }
+
+    @Test
+    fun rogueUncannyDodgeDescriptionIncludesInvisibleAttackerAndImmobilizationConditions() {
+        val feature = Dnd35Rules.CLASSES.single { it.name == "Ladino" }
+            .features.single { it.name == "Esquiva Sobrenatural" && it.level == 4 }
+
+        assertTrue(feature.description.contains("surpreendido"))
+        assertTrue(feature.description.contains("oponente invisível"))
+        assertTrue(feature.description.contains("imobilizado"))
+    }
+
 }
