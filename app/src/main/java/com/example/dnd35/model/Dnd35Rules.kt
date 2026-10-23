@@ -1751,6 +1751,112 @@ object Dnd35Rules {
             description = "Concede bônus de melhoria de +10 em testes de Saltar, aumentado em +1 por nível de conjurador até o máximo de +20."
         ),
 
+        // Magias adicionais de 1º círculo do Livro do Jogador — lote 3
+        PresetSpell(
+            name = "Mãos Flamejantes",
+            level = 1,
+            school = "Evocação",
+            classes = listOf("Mago", "Feiticeiro"),
+            castTime = "1 ação padrão",
+            components = "V, S",
+            range = "3m",
+            duration = "Instantânea",
+            savingThrow = "Reflexos metade",
+            spellResistance = true,
+            description = "Uma explosão em cone causa 1d4 pontos de dano de fogo por nível de conjurador (máx. 5d4)."
+        ),
+        PresetSpell(
+            name = "Enfeitiçar Animal",
+            level = 1,
+            school = "Encantamento",
+            classes = listOf("Druida"),
+            castTime = "1 ação padrão",
+            components = "V, S",
+            range = "Curto (7,5m + 1,5m/2 níveis)",
+            duration = "1 hora/nível",
+            savingThrow = "Vontade anula",
+            spellResistance = true,
+            description = "Faz um animal considerar o conjurador um amigo; não concede controle direto sobre suas ações."
+        ),
+        PresetSpell(
+            name = "Emaranhar",
+            level = 1,
+            school = "Transmutação",
+            classes = listOf("Druida"),
+            castTime = "1 ação padrão",
+            components = "V, S, DF",
+            range = "Longo (120m + 12m/nível)",
+            duration = "1 minuto/nível",
+            savingThrow = "Reflexos parcial",
+            spellResistance = false,
+            description = "Plantas na área se agarram às criaturas, dificultando o movimento e podendo imobilizá-las."
+        ),
+        PresetSpell(
+            name = "Bom Fruto",
+            level = 1,
+            school = "Transmutação",
+            classes = listOf("Druida"),
+            castTime = "1 ação padrão",
+            components = "V, S, DF",
+            range = "Toque",
+            duration = "1 dia/nível",
+            savingThrow = "Nenhum",
+            spellResistance = false,
+            description = "Transforma até dois frutos por nível em alimento mágico; cada fruto cura 1 ponto de dano e sustenta uma criatura por um dia."
+        ),
+        PresetSpell(
+            name = "Passos sem Pegadas",
+            level = 1,
+            school = "Transmutação",
+            classes = listOf("Druida", "Ranger"),
+            castTime = "1 ação padrão",
+            components = "V, S, DF",
+            range = "Toque",
+            duration = "1 hora/nível",
+            savingThrow = "Vontade anula (inofensivo)",
+            spellResistance = true,
+            description = "Um alvo por nível não deixa rastros naturais e não pode ser rastreado por meios mundanos."
+        ),
+        PresetSpell(
+            name = "Falar com Animais",
+            level = 1,
+            school = "Adivinhação",
+            classes = listOf("Druida", "Ranger"),
+            castTime = "1 ação padrão",
+            components = "V, S",
+            range = "Pessoal",
+            duration = "1 minuto/nível",
+            savingThrow = "Nenhum",
+            spellResistance = false,
+            description = "Permite comunicação verbal com animais; não os torna mais amigáveis nem garante respostas cooperativas."
+        ),
+        PresetSpell(
+            name = "Produzir Chama",
+            level = 1,
+            school = "Transmutação",
+            classes = listOf("Druida"),
+            castTime = "1 ação padrão",
+            components = "V, S",
+            range = "Pessoal",
+            duration = "1 minuto/nível (D)",
+            savingThrow = "Nenhum",
+            spellResistance = true,
+            description = "Cria chamas na mão do conjurador que iluminam e podem ser arremessadas ou usadas para ataques de toque."
+        ),
+        PresetSpell(
+            name = "Raio Colorido",
+            level = 1,
+            school = "Ilusão",
+            classes = listOf("Mago", "Feiticeiro"),
+            castTime = "1 ação padrão",
+            components = "V, S, M",
+            range = "Curto (7,5m + 1,5m/2 níveis)",
+            duration = "Instantânea",
+            savingThrow = "Vontade anula",
+            spellResistance = true,
+            description = "Um feixe de cores pode atordoar, cegar ou deixar inconsciente criaturas, conforme seus Dados de Vida."
+        ),
+
         // CÍRCULO 2
         PresetSpell(
             name = "Invisibilidade",
