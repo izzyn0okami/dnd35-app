@@ -407,3 +407,13 @@ Continuar a auditoria de regras sem repetir os assuntos resolvidos. Próximo foc
 - A interface sinaliza registros de orçamento de perícias cujo nível excede o nível atual do personagem. Os registros são preservados e explicitamente indicados como fora do total atual; nenhum gasto histórico é apagado ou recalculado.
 - Não houve teste Gradle local nem teste manual no aparelho.
 - Próximo passo: auditar a regra de pontos de perícia por nível e o limite de graduações em fichas multiclasse, consultando este log e o histórico de PRs para evitar repetir decisões já resolvidas.
+
+
+## Conferência do orçamento e limite de graduações — 2026-10-23
+
+- Conferidos os pontos de perícia por nível das onze classes básicas no catálogo: Bárbaro 4; Bardo 6; Clérigo 2; Druida 4; Guerreiro 2; Monge 4; Paladino 2; Ranger 6; Ladino 8; Feiticeiro 2; Mago 2. Os valores conferem com a progressão padrão de D&D 3.5.
+- Conferida a estimativa: no 1º nível, aplica-se o mínimo de 1 ponto após somar pontos da classe e modificador de Inteligência, multiplica-se por 4 e acrescenta-se o bônus humano de 4; nos níveis seguintes, soma-se o bônus humano de 1 por nível. A fórmula está coberta por testes para valores positivos e modificadores negativos.
+- Conferido o limite de graduações: nível de personagem + 3 para perícia de classe de qualquer classe do personagem; metade desse valor para perícia entreclasse. A normalização preserva incrementos de 0,5, e a correção de multiclasse que impede saltos indevidos entre 0,5 e 1,5 já está integrada na PR #98; não recriar essa correção.
+- O histórico é separado por nível, preserva registros acima do nível atual e não recalcula automaticamente os orçamentos históricos a partir da Inteligência atual. O aviso para registros acima do nível atual foi integrado pela PR #109 e sua CI passou.
+- Resultado: não foi encontrada nova discrepância concreta nas fórmulas nem nos valores das onze classes; nenhuma PR de código aberta nesta passagem. A revisão foi estática e baseada nos testes existentes; não houve Gradle local nem teste manual no aparelho.
+- Próximo foco: revisar as transições de classe de perícia na multiclasse e a consistência entre graduações registradas, limite efetivo e bônus exibido, sem reabrir a correção da PR #98 salvo evidência nova.
