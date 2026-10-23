@@ -366,3 +366,10 @@ Continuar a auditoria de regras sem repetir os assuntos resolvidos. Próximo foc
 - PR #107 integrada por squash no commit `730cd8e11f08e9b285e548729480e1cb939cf8f3`; CI aprovada no run [39876038619](https://github.com/izzyn0okami/dnd35-app/actions/runs/39876038619).
 - A descrição de Esconder-se à Plena Vista do Ranger agora registra a condição de estar a até 3 metros de terreno natural, além de poder agir sob observação e sem cobertura/camuflagem. Teste de regressão incluído.
 - Próxima passada: revisar características com progressão escalonada do Bárbaro e do Monge, procurando diferenças objetivas contra o Livro do Jogador 3.5; não reabrir habilidades já cobertas por testes sem evidência de erro.
+
+
+## Correção proposta — Encontrar Armadilhas do Ladino (2026-10-23)
+
+- A descrição anterior confundia localizar armadilhas com CD acima de 20 e desarmar armadilhas mágicas. A regra separa as funções: Procurar permite localizar armadilhas de CD superior a 20; Operar Mecanismo permite desarmar armadilhas mágicas.
+- A descrição foi reescrita sem alterar a lógica das rolagens e foi acrescentado teste de regressão.
+- Branch: `fix/rogue-trapfinding-description`; aguardar CI antes de merge. Não houve teste Gradle local nem teste manual no aparelho.

@@ -105,6 +105,14 @@ class ClassProgressionTest {
     }
 
     @Test
+    fun rogueTrapfindingSeparatesFindingFromDisablingMagicTraps() {
+        val rogue = Dnd35Rules.CLASSES.single { it.name == "Ladino" }
+        val trapfinding = rogue.features.single { it.level == 1 && it.name == "Encontrar Armadilhas" }
+        assertTrue(trapfinding.description.contains("Procurar para localizar armadilhas com CD acima de 20"))
+        assertTrue(trapfinding.description.contains("Operar Mecanismo para desarmar armadilhas mágicas"))
+    }
+
+    @Test
     fun rogueTrapSenseIncreasesEveryThreeLevels() {
         val rogue = Dnd35Rules.CLASSES.single { it.name == "Ladino" }
         val trapSense = rogue.features.filter { it.name.startsWith("Sentir Armadilhas") }

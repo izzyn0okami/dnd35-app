@@ -461,7 +461,7 @@ object Dnd35Rules {
             classSkills = listOf("Abrir Fechaduras", "Acrobacia", "Arte da Fuga", "Atuação", "Avaliação", "Blefar", "Decifrar Escrita", "Diplomacia", "Disfarces", "Equilíbrio", "Escalar", "Esconder-se", "Falsificação", "Furtividade", "Intimidação", "Natação", "Observar", "Obter Informação", "Ofícios", "Operar Mecanismo", "Ouvir", "Prestidigitação", "Profissão", "Conhecimento (Local)", "Procurar", "Saltar", "Sentir Motivação", "Usar Cordas", "Usar Instrumento Mágico"),
             features = listOf(
                 ClassFeature(1, "Ataque Furtivo +1d6", "Dano extra contra oponentes flanqueados ou sem bônus de Destreza (+1d6 a cada 2 níveis)."),
-                ClassFeature(1, "Encontrar Armadilhas", "Capaz de usar Procurar e Operar Mecanismo para desarmar armadilhas mágicas (CD > 20)."),
+                ClassFeature(1, "Encontrar Armadilhas", "Pode usar Procurar para localizar armadilhas com CD acima de 20 e Operar Mecanismo para desarmar armadilhas mágicas."),
                 ClassFeature(2, "Evasão", "Funciona apenas sem armadura ou com armadura leve; contra efeitos que permitem um teste de Reflexos para reduzir o dano à metade, não sofre dano em um sucesso."),
                 ClassFeature(3, "Sentir Armadilhas +1", "+1 na CA e Reflexos contra armadilhas."),
                 ClassFeature(6, "Sentir Armadilhas +2", "+2 na CA e Reflexos contra armadilhas."),
