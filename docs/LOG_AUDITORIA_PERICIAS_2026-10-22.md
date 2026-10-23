@@ -687,3 +687,10 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Em `OverviewCombatTab.kt`, o retrato usa proporção 1:1, o painel com nome, classes, nível, raça, tendência e divindade fica logo abaixo, e o slider de enquadramento foi removido. O botão de troca de foto permanece acessível no canto superior.
 - Não foi adicionada ainda a ferramenta de recorte quadrado no fluxo de seleção da foto; essa será uma correção separada, para não misturar o comportamento de seleção/recorte com a composição do cabeçalho.
 - PR de UI aberta em branch `ui/square-portrait-info-panel-below`; aguardar CI de testes unitários e compilação do APK antes de considerar merge. Teste visual manual em aparelho ainda pendente.
+
+
+## Recorte quadrado de retrato — PR em andamento
+
+- Implementação proposta em `PhotoPickerModal.kt`: após escolher uma imagem da galeria, abre uma etapa de recorte quadrado com gesto de arrastar e pinça para zoom; a foto só é aplicada após confirmação em **Usar foto**.
+- O recorte confirmado é salvo como JPEG no armazenamento privado persistente do app e o URI salvo no personagem aponta para essa cópia. Cancelar o recorte retorna ao seletor sem substituir a foto atual. Retratos predefinidos continuam usando seus identificadores `preset:` e não passam pelo recortador.
+- A imagem original não é alterada. A implementação ainda precisa passar por CI/compilação e revisão do cálculo de recorte; não considerar integrada até merge aprovado. Teste visual no aparelho permanece pendente.
