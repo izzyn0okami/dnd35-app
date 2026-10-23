@@ -932,3 +932,12 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Os nomes localizados e resumos são provisórios até conferência direta com a edição brasileira do Livro do Jogador 3.5; SRD em inglês é referência mecânica auxiliar, não autoridade para a tradução.
 - Não integrar antes de CI verde no SHA final e nova verificação do estado da PR. Teste manual em dispositivo Android não realizado.
 - Referências mecânicas auxiliares: https://www.d20srd.org/srd/spells/holdPortal.htm ; https://www.d20srd.org/srd/spells/ventriloquism.htm ; https://www.d20srd.org/srd/spells/nystulsMagicAura.htm.
+
+
+## 2026-10-23 — Magias arcanas de 1º círculo, lote 12
+
+- Adicionadas duas entradas candidatas: Apagar e Toque Gélido.
+- Incluídos testes para listas de classe, duração/alcance e resistência à magia.
+- A tradução oficial brasileira de “Erase” e “Chill Touch”, bem como a redação resumida dos efeitos, precisa de conferência direta no Livro do Jogador 3.5; SRD em inglês é referência mecânica auxiliar.
+- Não integrar antes de CI verde no SHA final e nova verificação do estado da PR. Teste manual Android não realizado.
+- Referências mecânicas auxiliares: https://www.d20srd.org/srd/spells/erase.htm ; https://www.d20srd.org/srd/spells/chillTouch.htm.
