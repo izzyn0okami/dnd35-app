@@ -390,3 +390,11 @@ Continuar a auditoria de regras sem repetir os assuntos resolvidos. Próximo foc
 - Conferidos os tipos de BBA, Fortitude, Reflexos e Vontade das onze classes básicas contra as progressões do Livro do Jogador 3.5. As atribuições de Bárbaro, Bardo, Clérigo, Druida, Guerreiro, Monge, Paladino, Ranger, Ladino, Feiticeiro e Mago estão consistentes; nenhuma divergência concreta encontrada nesta passagem.
 - Os testes existentes cobrem os resultados numéricos das três fórmulas ao longo dos níveis e verificam tipos representativos de classes. A conferência estática não equivale a teste local ou manual; nenhum Gradle local foi executado nesta etapa.
 - Conclusão: não abrir PR de código para BBA/resistências nesta passagem. Próximo foco: rastrear o orçamento de pontos de perícia por nível, incluindo nível 1, modificador de Inteligência, bônus racial humano e multiclasse, verificando a coerência com o histórico de gastos já registrado. Consultar este log antes de propor mudanças.
+
+
+## Histórico de pontos de perícia após redução de nível — 2026-10-23
+
+- A auditoria do fluxo de edição confirmou que registros de níveis acima do nível atual são preservados intencionalmente e excluídos do total de gastos atuais. Porém, a lista ainda os exibia como registros comuns, sem indicar a exclusão do total, podendo confundir o usuário após reduzir o nível do personagem.
+- Alteração proposta na PR: exibir um aviso nos registros cujo nível excede `character.level`, informando que o registro foi preservado, mas não entra no total atual. Não apagar nem recalcular o histórico automaticamente.
+- A classe registrada por nível continua sendo uma informação histórica manual; a ficha não armazena a ordem exata em que cada classe foi adquirida, então não é seguro inferi-la automaticamente a partir apenas dos níveis atuais de cada classe.
+- A PR ainda depende de CI. Não houve teste local Gradle nem teste manual em aparelho.
