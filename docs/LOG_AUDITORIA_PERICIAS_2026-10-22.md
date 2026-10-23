@@ -352,3 +352,10 @@ Continuar a auditoria de regras sem repetir os assuntos resolvidos. Próximo foc
 - Limitação preservada: testes JVM cobrem validação e compatibilidade com histórico antigo vazio, mas não cobrem diretamente a serialização Android `org.json`; essa cobertura exige uma estratégia de teste compatível. Não houve teste manual no aparelho.
 - Não há PRs abertas no repositório no momento da atualização.
 - Próximo foco da auditoria: passada cruzada das características das onze classes básicas para encontrar duplicações, terminologia inconsistente ou condições omitidas, comparando com prioridade ao Livro do Jogador 3.5 em português. Depois, retomar os pontos pendentes de progressão de perícias apenas quando houver discrepância concreta. Consultar este log antes de abrir qualquer PR para evitar duplicação.
+
+
+## Correção proposta — Esconder-se à Plena Vista do Ranger
+
+- A revisão cruzada identificou que a descrição no código permitia usar a habilidade em terreno natural enquanto observado, mas não documentava a condição de estar a até 3 metros de terreno natural.
+- A descrição foi ajustada para incluir a distância e esclarecer que cobertura/camuflagem não são necessárias. Foi acrescentado teste de regressão para a condição de 3 metros, observação e ausência de cobertura/camuflagem.
+- Branch: `fix/ranger-hide-in-plain-sight-range`. Aguardar CI antes de merge; nenhum teste local nem teste manual no aparelho foi executado.
