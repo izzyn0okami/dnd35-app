@@ -43,7 +43,7 @@ class PresetSpellCatalogTest {
         assertEquals(setOf("Mago", "Feiticeiro"), spells.getValue("Espirro Ácido").classes.toSet())
         assertEquals(setOf("Bardo"), spells.getValue("Canção de Ninar").classes.toSet())
         assertEquals(setOf("Clérigo", "Druida"), spells.getValue("Curar Ferimentos Mínimos").classes.toSet())
-        assertEquals(1, spells.getValue("Virtude").classLevels.getValue("Druida") + 1)
+        assertEquals(0, spells.getValue("Virtude").classLevels.getValue("Druida"))
         assertEquals("Permanente", spells.getValue("Marca Arcana").duration)
     }
 
