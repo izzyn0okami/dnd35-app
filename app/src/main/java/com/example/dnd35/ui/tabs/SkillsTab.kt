@@ -85,6 +85,14 @@ fun SkillsTab(
         stats.totalCharacterLevel
     )
     val hasCompleteSkillPointHistory = skillPointHistoryTotal.isComplete
+    val currentLevelSkillPointHistory = skillPointHistory.filter {
+        it.characterLevel in 1..stats.totalCharacterLevel
+    }
+    val totalAvailableSkillPoints = if (hasCompleteSkillPointHistory) {
+        currentLevelSkillPointHistory.sumOf { it.availablePoints.toDouble() }
+    } else {
+        null
+    }
     val totalSkillPointsSpent = if (hasCompleteSkillPointHistory) {
         skillPointHistoryTotal.pointsSpent.toDouble()
     } else {
@@ -92,6 +100,7 @@ fun SkillsTab(
             it.ranks.toDouble() * if (it.isClassSkill) 1.0 else 2.0
         }
     }
+    val recordedSkillPointBalance = totalAvailableSkillPoints?.minus(skillPointHistoryTotal.pointsSpent.toDouble())
 
     val filteredSkills = stats.computedSkills.filter {
         val matchesQuery = it.skill.name.contains(searchQuery, ignoreCase = true) ||
@@ -571,6 +580,24 @@ fun SkillsTab(
                             style = MaterialTheme.typography.labelSmall,
                             color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.8f)
                         )
+                        if (hasCompleteSkillPointHistory && totalAvailableSkillPoints != null && recordedSkillPointBalance != null) {
+                            Text(
+                                "Orçamento registrado: ${String.format("%.1f", totalAvailableSkillPoints)} pts • " +
+                                    when {
+                                        recordedSkillPointBalance < -0.001 -> "excesso de ${String.format("%.1f", -recordedSkillPointBalance)} pts"
+                                        recordedSkillPointBalance > 0.001 -> "saldo: ${String.format("%.1f", recordedSkillPointBalance)} pts"
+                                        else -> "saldo: 0 pts"
+                                    },
+                                style = MaterialTheme.typography.labelSmall,
+                                color = if (recordedSkillPointBalance < -0.001) DndCrimson else MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.8f)
+                            )
+                        } else {
+                            Text(
+                                "Saldo disponível: indisponível — registre o orçamento e os gastos de todos os níveis atuais.",
+                                style = MaterialTheme.typography.labelSmall,
+                                color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.8f)
+                            )
+                        }
                     }
                     if (stats.armorCheckPenalty < 0) {
                         Card(
