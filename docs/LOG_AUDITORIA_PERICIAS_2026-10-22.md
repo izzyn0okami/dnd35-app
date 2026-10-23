@@ -801,3 +801,12 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Corrigidos esses pontos na própria branch da PR: classes/níveis de Detectar Veneno, descrição com teste de identificação, alcance de Purificar Alimentos e Bebidas e filtro de nível dependente da classe selecionada. Testes de regressão ampliados para esses metadados.
 - Referência técnica de conferência: SRD 3.5 / Player's Handbook, Detect Poison e Purify Food and Drink: https://www.d20srd.org/srd/spells/detectPoison.htm e https://www.d20srd.org/srd/spells/purifyFoodAndDrink.htm. A revisão de todos os metadados do catálogo continua pendente; não declarar o catálogo completo nem validado integralmente.
 - Aguardar nova execução da CI após as correções antes do merge.
+
+
+## 2026-10-23 — Remoção da ficha de exemplo em instalação limpa
+
+- Removido do callback de criação do banco o cadastro automático de “Sir Valerius”. Instalações novas passam a iniciar sem fichas de exemplo.
+- Mantido o estado vazio já existente em `DndMainScreen.kt`, com o botão **Criar personagem**, que abre o diálogo normal de criação.
+- Não foi adicionada migração destrutiva nem exclusão automática de fichas existentes. Fichas já salvas em instalações atualizadas permanecem intactas; esta mudança atende ao comportamento de instalação limpa.
+- O callback do Room permanece, sem inserir dados de demonstração.
+- Aguardar CI da PR antes de integrar; teste manual em dispositivo não realizado nesta etapa.
