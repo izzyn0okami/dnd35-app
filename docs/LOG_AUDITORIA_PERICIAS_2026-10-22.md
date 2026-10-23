@@ -950,3 +950,45 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - A conferência de cobertura das magias de 1º círculo continua em andamento; as descrições localizadas devem ser comparadas diretamente com o Livro do Jogador brasileiro. A SRD é referência mecânica auxiliar.
 - Referência mecânica auxiliar: https://www.d20srd.org/srd/spells/endureElements.htm.
 - Não integrar antes de CI verde no SHA final e revalidação da PR; teste manual Android não realizado.
+
+
+---
+
+## Índice de continuidade e prevenção de redundâncias — catálogo de magias do Livro do Jogador
+
+**Atualizado em 2026-10-23.** Esta seção é um índice rápido para consultas futuras; as entradas cronológicas acima continuam sendo a trilha detalhada. Antes de abrir uma PR sobre magias, ler este índice e procurar o nome/efeito no catálogo e no histórico de PRs.
+
+### Escopo e regras de trabalho vigentes
+
+- O objetivo atual é auditar e completar o catálogo de magias do **Livro do Jogador D&D 3.5**, começando pelas magias de 1º círculo; talentos serão retomados depois desta etapa, conforme combinado.
+- A edição brasileira do *Livro do Jogador* é a autoridade para nomes, terminologia e descrição localizada. A SRD em inglês pode auxiliar na mecânica, mas **não comprova a tradução oficial brasileira**.
+- As entradas adicionadas são candidatas enquanto não houver conferência direta da fonte brasileira. Não declarar a cobertura completa só porque existem testes ou porque a CI passou.
+- Antes de adicionar uma magia, pesquisar o catálogo atual por nome e possíveis variantes/duplicatas; conferir também listas de classe, nível, escola, componentes, tempo de execução, alcance, duração, resistência e teste de resistência.
+- Se uma magia já existir, corrigir o registro existente em vez de criar outra entrada. Não abrir PR repetindo lotes já integrados. Alterações de mecânica devem ter teste de regressão.
+- A CI verde confirma apenas as verificações automatizadas executadas naquele commit. Não equivale a teste manual no Android nem à validação editorial contra o livro.
+
+### Lotes recentes já integrados
+
+- **PR #162 — lote 9:** Animar Corda, Ataque Certeiro, Hipnotismo, Montaria e Imagem Silenciosa. Ajustes registrados: foco de Ataque Certeiro é uma pequena réplica de alvo de arquearia; tempo de execução de Hipnotismo é 1 rodada.
+- **PR #163 — lote 10:** Disco Flutuante, Reduzir Pessoa e Toque Chocante.
+- **PR #164 — lote 11:** Trancar Portal, Ventriloquismo e Aura Mágica de Nystul.
+- **PR #165 — lote 12:** Apagar e Toque Gélido.
+- Esses lotes não devem ser recriados como novas adições. Suas classes e campos ainda podem receber correções pontuais se uma comparação confiável identificar erro real; nesse caso, citar o lote original e adicionar teste em vez de duplicar a magia.
+
+### Correção de catálogo em andamento
+
+- **PR #166 — Corrige resistência à magia de Suportar Elementos:** altera `spellResistance` para `false` e adiciona teste de regressão. A SRD indica que a magia não permite resistência à magia: https://www.d20srd.org/srd/spells/endureElements.htm.
+- A PR #166 permanece pendente de CI verde no SHA final e revalidação do estado/mergeabilidade antes do merge. Não a considerar integrada até o log registrar o resultado real.
+
+### Contagem observada e limites
+
+- Na inspeção do código remoto após a PR #165, foram encontradas **77 entradas de nível 1** no catálogo, contando entradas por nome de `PresetSpell`. Essa contagem é uma fotografia daquele commit, não uma afirmação de cobertura integral do *Livro do Jogador*.
+- O número inclui somente registros reconhecidos pelo padrão de código usado na contagem; a cobertura oficial, os nomes localizados, as classes e todos os campos mecânicos ainda precisam de auditoria sistemática.
+- O catálogo contém entradas de níveis superiores e truques; esta fase não deve expandir escopo para suplementos além do *Livro do Jogador*.
+
+### Próxima sequência recomendada
+
+1. Acompanhar a CI da PR #166; se falhar, inspecionar a falha e corrigir antes de integrar.
+2. Após eventual merge, continuar a auditoria de 1º círculo por comparação sistemática com o *Livro do Jogador*, verificando primeiro ausências reais e depois os campos das entradas existentes.
+3. Consultar este índice e os registros por lote antes de cada nova PR; agrupar alterações pequenas e coerentes, com testes e atualização do log na mesma PR.
+4. Só depois de concluir e registrar a etapa de magias, retomar a auditoria de talentos conforme o escopo combinado.
