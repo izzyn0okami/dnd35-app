@@ -1022,14 +1022,16 @@ object Dnd35Rules {
         val name: String,
         val level: Int, // 0 a 9
         val school: String, // Abjuração, Adivinhação, Conjuração, Encantamento, Evocação, Ilusão, Necromancia, Transmutação, Universal
-        val classes: List<String>, // Mago, Feiticeiro, Clérigo, Druida, Bardo, Paladino, Ranger
+        val classes: List<String>, // classes que podem conjurar a magia
         val castTime: String,
         val components: String, // V, S, M, DF
         val range: String,
         val duration: String,
         val savingThrow: String,
         val spellResistance: Boolean,
-        val description: String
+        val description: String,
+        // Nível da magia por classe; quando omitido, usa "level" para todas.
+        val classLevels: Map<String, Int> = classes.associateWith { level }
     )
 
     val PRESET_SPELLS = listOf(
@@ -1137,6 +1139,113 @@ object Dnd35Rules {
             savingThrow = "Vontade anula",
             spellResistance = true,
             description = "Concede +1 de bônus de resistência em todos os testes de resistência."
+        ),
+
+        // Truques adicionais do Livro do Jogador (nível varia conforme a classe)
+        PresetSpell(
+            name = "Criar Água",
+            level = 0,
+            school = "Conjuração",
+            classes = listOf("Clérigo", "Druida"),
+            castTime = "1 ação padrão",
+            components = "V, S",
+            range = "Curto (7,5m)",
+            duration = "Instantânea",
+            savingThrow = "Nenhum",
+            spellResistance = false,
+            description = "Cria até 8 litros de água limpa por nível de conjurador."
+        ),
+        PresetSpell(
+            name = "Detectar Veneno",
+            level = 0,
+            school = "Adivinhação",
+            classes = listOf("Clérigo", "Druida", "Mago", "Feiticeiro", "Paladino", "Ranger"),
+            castTime = "1 ação padrão",
+            components = "V, S",
+            range = "Curto (7,5m)",
+            duration = "Instantânea",
+            savingThrow = "Nenhum",
+            spellResistance = false,
+            description = "Determina se uma criatura, objeto ou área contém veneno; identificar o tipo exige um teste de Sabedoria CD 20.",
+            classLevels = mapOf("Clérigo" to 0, "Druida" to 0, "Mago" to 0, "Feiticeiro" to 0, "Paladino" to 1, "Ranger" to 1)
+        ),
+        PresetSpell(
+            name = "Consertar",
+            level = 0,
+            school = "Transmutação",
+            classes = listOf("Mago", "Feiticeiro", "Clérigo", "Druida", "Bardo"),
+            castTime = "1 ação padrão",
+            components = "V, S",
+            range = "Curto (7,5m)",
+            duration = "Instantânea",
+            savingThrow = "Vontade anula (objeto)",
+            spellResistance = true,
+            description = "Repara pequenos danos em um objeto, restaurando 1d4 pontos de vida."
+        ),
+        PresetSpell(
+            name = "Mensagem",
+            level = 0,
+            school = "Transmutação",
+            classes = listOf("Mago", "Feiticeiro", "Bardo"),
+            castTime = "1 ação padrão",
+            components = "V, S, F",
+            range = "Médio (30m + 3m/nível)",
+            duration = "10 min/nível",
+            savingThrow = "Nenhum",
+            spellResistance = false,
+            description = "Permite sussurrar mensagens e receber respostas em voz baixa entre criaturas dentro do alcance."
+        ),
+        PresetSpell(
+            name = "Abrir/Fechar",
+            level = 0,
+            school = "Transmutação",
+            classes = listOf("Mago", "Feiticeiro", "Bardo"),
+            castTime = "1 ação padrão",
+            components = "V, S, F",
+            range = "Curto (7,5m)",
+            duration = "Instantânea",
+            savingThrow = "Vontade anula (objeto)",
+            spellResistance = true,
+            description = "Abre ou fecha um objeto que possa ser aberto ou fechado normalmente."
+        ),
+        PresetSpell(
+            name = "Prestidigitação",
+            level = 0,
+            school = "Universal",
+            classes = listOf("Mago", "Feiticeiro", "Bardo"),
+            castTime = "1 ação padrão",
+            components = "V, S",
+            range = "3m",
+            duration = "1 hora",
+            savingThrow = "Veja texto",
+            spellResistance = false,
+            description = "Realiza pequenos efeitos mágicos e truques inofensivos, sem produzir efeitos poderosos."
+        ),
+        PresetSpell(
+            name = "Purificar Alimentos e Bebidas",
+            level = 0,
+            school = "Transmutação",
+            classes = listOf("Clérigo", "Druida"),
+            castTime = "1 ação padrão",
+            components = "V, S",
+            range = "3m",
+            duration = "Instantânea",
+            savingThrow = "Vontade anula (objeto)",
+            spellResistance = true,
+            description = "Purifica alimentos e bebidas deteriorados, estragados, envenenados ou contaminados; não afeta criaturas nem poções mágicas."
+        ),
+        PresetSpell(
+            name = "Atordoar",
+            level = 0,
+            school = "Encantamento",
+            classes = listOf("Mago", "Feiticeiro", "Bardo"),
+            castTime = "1 ação padrão",
+            components = "V, S, M",
+            range = "Curto (7,5m)",
+            duration = "1 rodada",
+            savingThrow = "Vontade anula",
+            spellResistance = true,
+            description = "Uma criatura humanoide com 4 DV ou menos perde sua próxima ação se falhar na resistência."
         ),
 
         // CÍRCULO 1
