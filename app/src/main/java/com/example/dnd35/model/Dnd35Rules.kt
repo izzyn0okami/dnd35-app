@@ -1857,6 +1857,112 @@ object Dnd35Rules {
             description = "Um feixe de cores pode atordoar, cegar ou deixar inconsciente criaturas, conforme seus Dados de Vida."
         ),
 
+                // Magias adicionais de 1º círculo do Livro do Jogador — lote 4
+        PresetSpell(
+            name = "Favor Divino",
+            level = 1,
+            school = "Evocação",
+            classes = listOf("Clérigo", "Paladino"),
+            castTime = "1 ação padrão",
+            components = "V, S, DF",
+            range = "Pessoal",
+            duration = "1 minuto",
+            savingThrow = "Nenhum",
+            spellResistance = false,
+            description = "Concede bônus de sorte de +1 nas jogadas de ataque e dano com armas, aumentando em +1 a cada três níveis de conjurador, até +3."
+        ),
+        PresetSpell(
+            name = "Comando",
+            level = 1,
+            school = "Encantamento",
+            classes = listOf("Clérigo"),
+            castTime = "1 ação padrão",
+            components = "V",
+            range = "Curto (7,5m + 1,5m/2 níveis)",
+            duration = "1 rodada",
+            savingThrow = "Vontade anula",
+            spellResistance = true,
+            description = "Uma criatura viva obedece a uma ordem de uma palavra no seu próximo turno; comandos diretamente nocivos não são eficazes."
+        ),
+        PresetSpell(
+            name = "Santuário",
+            level = 1,
+            school = "Abjuração",
+            classes = listOf("Clérigo"),
+            castTime = "1 ação padrão",
+            components = "V, S, DF",
+            range = "Toque",
+            duration = "1 rodada/nível",
+            savingThrow = "Vontade anula",
+            spellResistance = true,
+            description = "Protege uma criatura: quem tentar atacá-la deve passar em um teste de Vontade ou perder a ação de ataque; a proteção termina se o alvo protegido atacar."
+        ),
+        PresetSpell(
+            name = "Escudo da Fé",
+            level = 1,
+            school = "Abjuração",
+            classes = listOf("Clérigo", "Paladino"),
+            castTime = "1 ação padrão",
+            components = "V, S, DF",
+            range = "Toque",
+            duration = "1 minuto/nível",
+            savingThrow = "Vontade anula (inofensivo)",
+            spellResistance = true,
+            description = "Concede bônus de deflexão +2 na CA, aumentando em +1 a cada seis níveis de conjurador, até +5."
+        ),
+        PresetSpell(
+            name = "Presas Mágicas",
+            level = 1,
+            school = "Transmutação",
+            classes = listOf("Druida", "Ranger"),
+            castTime = "1 ação padrão",
+            components = "V, S, DF",
+            range = "Toque",
+            duration = "1 minuto/nível",
+            savingThrow = "Vontade anula (inofensivo)",
+            spellResistance = true,
+            description = "Concede a uma arma natural da criatura tocada bônus de melhoria +1 nas jogadas de ataque e dano."
+        ),
+        PresetSpell(
+            name = "Passos Longos",
+            level = 1,
+            school = "Transmutação",
+            classes = listOf("Druida", "Ranger"),
+            castTime = "1 ação padrão",
+            components = "V, S, M",
+            range = "Pessoal",
+            duration = "1 hora/nível",
+            savingThrow = "Nenhum",
+            spellResistance = false,
+            description = "Aumenta o deslocamento terrestre básico do conjurador em 3m; esse bônus de melhoria não se acumula com outros bônus do mesmo tipo."
+        ),
+        PresetSpell(
+            name = "Fogo das Fadas",
+            level = 1,
+            school = "Evocação",
+            classes = listOf("Druida"),
+            castTime = "1 ação padrão",
+            components = "V, S",
+            range = "Longo (120m + 12m/nível)",
+            duration = "1 minuto/nível",
+            savingThrow = "Nenhum",
+            spellResistance = true,
+            description = "Contorna criaturas e objetos com luz colorida, tornando os alvos visíveis mesmo sob invisibilidade e anulando os benefícios de camuflagem por escuridão ou efeitos semelhantes."
+        ),
+        PresetSpell(
+            name = "Remover Medo",
+            level = 1,
+            school = "Abjuração",
+            classes = listOf("Bardo", "Clérigo"),
+            castTime = "1 ação padrão",
+            components = "V, S",
+            range = "Curto (7,5m + 1,5m/2 níveis)",
+            duration = "10 minutos",
+            savingThrow = "Vontade anula (inofensivo)",
+            spellResistance = true,
+            description = "Concede +4 de bônus de moral contra efeitos de medo e pode suprimir um efeito de medo já existente durante sua duração."
+        ),
+
         // CÍRCULO 2
         PresetSpell(
             name = "Invisibilidade",
@@ -2192,111 +2298,7 @@ object Dnd35Rules {
             description = "Ressuscita qualquer criatura morta há até 10 anos/nível em perfeita saúde física e mental, sem perda de nível."
         ),
 
-        // Magias adicionais de 1º círculo do Livro do Jogador — lote 4
-        PresetSpell(
-            name = "Favor Divino",
-            level = 1,
-            school = "Evocação",
-            classes = listOf("Clérigo", "Paladino"),
-            castTime = "1 ação padrão",
-            components = "V, S, DF",
-            range = "Pessoal",
-            duration = "1 minuto",
-            savingThrow = "Nenhum",
-            spellResistance = false,
-            description = "Concede bônus de sorte de +1 nas jogadas de ataque e dano com armas, aumentando em +1 a cada três níveis de conjurador, até +3."
-        ),
-        PresetSpell(
-            name = "Comando",
-            level = 1,
-            school = "Encantamento",
-            classes = listOf("Clérigo"),
-            castTime = "1 ação padrão",
-            components = "V",
-            range = "Curto (7,5m + 1,5m/2 níveis)",
-            duration = "1 rodada",
-            savingThrow = "Vontade anula",
-            spellResistance = true,
-            description = "Uma criatura viva obedece a uma ordem de uma palavra no seu próximo turno; comandos diretamente nocivos não são eficazes."
-        ),
-        PresetSpell(
-            name = "Santuário",
-            level = 1,
-            school = "Abjuração",
-            classes = listOf("Clérigo"),
-            castTime = "1 ação padrão",
-            components = "V, S, DF",
-            range = "Toque",
-            duration = "1 rodada/nível",
-            savingThrow = "Vontade anula",
-            spellResistance = true,
-            description = "Protege uma criatura: quem tentar atacá-la deve passar em um teste de Vontade ou perder a ação de ataque; a proteção termina se o alvo protegido atacar."
-        ),
-        PresetSpell(
-            name = "Escudo da Fé",
-            level = 1,
-            school = "Abjuração",
-            classes = listOf("Clérigo", "Paladino"),
-            castTime = "1 ação padrão",
-            components = "V, S, DF",
-            range = "Toque",
-            duration = "1 minuto/nível",
-            savingThrow = "Vontade anula (inofensivo)",
-            spellResistance = true,
-            description = "Concede bônus de deflexão +2 na CA, aumentando em +1 a cada seis níveis de conjurador, até +5."
-        ),
-        PresetSpell(
-            name = "Presas Mágicas",
-            level = 1,
-            school = "Transmutação",
-            classes = listOf("Druida", "Ranger"),
-            castTime = "1 ação padrão",
-            components = "V, S, DF",
-            range = "Toque",
-            duration = "1 minuto/nível",
-            savingThrow = "Vontade anula (inofensivo)",
-            spellResistance = true,
-            description = "Concede a uma arma natural da criatura tocada bônus de melhoria +1 nas jogadas de ataque e dano."
-        ),
-        PresetSpell(
-            name = "Passos Longos",
-            level = 1,
-            school = "Transmutação",
-            classes = listOf("Druida", "Ranger"),
-            castTime = "1 ação padrão",
-            components = "V, S, M",
-            range = "Pessoal",
-            duration = "1 hora/nível",
-            savingThrow = "Nenhum",
-            spellResistance = false,
-            description = "Aumenta o deslocamento terrestre básico do conjurador em 3m; esse bônus de melhoria não se acumula com outros bônus do mesmo tipo."
-        ),
-        PresetSpell(
-            name = "Fogo das Fadas",
-            level = 1,
-            school = "Evocação",
-            classes = listOf("Druida"),
-            castTime = "1 ação padrão",
-            components = "V, S",
-            range = "Longo (120m + 12m/nível)",
-            duration = "1 minuto/nível",
-            savingThrow = "Nenhum",
-            spellResistance = true,
-            description = "Contorna criaturas e objetos com luz colorida, tornando os alvos visíveis mesmo sob invisibilidade e anulando os benefícios de camuflagem por escuridão ou efeitos semelhantes."
-        ),
-        PresetSpell(
-            name = "Remover Medo",
-            level = 1,
-            school = "Abjuração",
-            classes = listOf("Bardo", "Clérigo"),
-            castTime = "1 ação padrão",
-            components = "V, S",
-            range = "Curto (7,5m + 1,5m/2 níveis)",
-            duration = "10 minutos",
-            savingThrow = "Vontade anula (inofensivo)",
-            spellResistance = true,
-            description = "Concede +4 de bônus de moral contra efeitos de medo e pode suprimir um efeito de medo já existente durante sua duração."
-        ),
+
 
     )
 }
