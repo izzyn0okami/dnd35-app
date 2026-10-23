@@ -121,7 +121,11 @@ fun SkillsTab(
             val acquisitions = CharacterJsonAdapters.deserializeLanguageAcquisitions(character.languageAcquisitionsJson)
             fun addLanguage(language: String) {
                 val cleaned = language.trim()
-                if (cleaned.isEmpty() || languages.any { it.equals(cleaned, ignoreCase = true) }) return
+                if (cleaned.isEmpty()) return
+                if (languages.any { it.equals(cleaned, ignoreCase = true) }) {
+                    languageAcquisitionError = "Esse idioma já está cadastrado."
+                    return
+                }
                 val level = languageLevelInput.toIntOrNull()
                 if (languageSource == LanguageAcquisitionSource.PURCHASED && (level == null || level < 1)) {
                     languageAcquisitionError = "Informe o nível em que o ponto foi gasto."
