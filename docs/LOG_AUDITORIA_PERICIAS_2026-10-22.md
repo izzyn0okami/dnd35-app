@@ -498,3 +498,10 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Os ícones de edição e exclusão de cada item agora incluem o nome do item em suas descrições acessíveis (por exemplo, “Editar espada longa” e “Excluir espada longa”), ajudando usuários de leitores de tela a distinguir ações em listas com vários itens.
 - Alteração limitada à acessibilidade da interface; não modifica regras, cálculos, dados nem comportamento de exclusão.
 - Aguardar CI da PR antes do merge. A revisão é estática; não houve teste manual com leitor de tela ou no aparelho.
+
+
+## 2026-10-23 — Feedback para idioma duplicado
+
+- Ao tentar cadastrar um idioma já existente, a seção de idiomas agora mostra a mensagem “Esse idioma já está cadastrado.” em vez de ignorar silenciosamente a ação.
+- A mudança melhora o feedback da interface e não altera o catálogo de idiomas, regras de aquisição, pontos de perícia ou cálculos.
+- Aguardar CI; teste manual em aparelho ainda não realizado.
