@@ -1627,7 +1627,7 @@ object Dnd35Rules {
             range = "Toque",
             duration = "1 minuto/nível",
             savingThrow = "Vontade anula (inofensivo)",
-            spellResistance = false,
+            spellResistance = true,
             description = "Concede +2 na CA e nos testes de resistência contra criaturas malignas, protege contra controle mental e impede a aproximação corporal de criaturas convocadas malignas."
         ),
         PresetSpell(
