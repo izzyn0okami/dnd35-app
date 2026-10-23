@@ -60,6 +60,7 @@ class PresetSpellCatalogTest {
         assertEquals(setOf("Bardo", "Clérigo", "Mago", "Feiticeiro"), spells.getValue("Causar Medo").classes.toSet())
         assertEquals(setOf("Clérigo", "Paladino", "Mago", "Feiticeiro"), spells.getValue("Proteção contra o Mal").classes.toSet())
         assertEquals(1, spells.getValue("Proteção contra o Mal").classLevels.getValue("Paladino"))
+        assertTrue(spells.getValue("Proteção contra o Mal").spellResistance)
     }
 
     @Test
