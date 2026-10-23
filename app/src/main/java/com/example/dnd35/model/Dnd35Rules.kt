@@ -2190,7 +2190,7 @@ object Dnd35Rules {
             savingThrow = "Nenhum",
             spellResistance = false,
             description = "Ressuscita qualquer criatura morta há até 10 anos/nível em perfeita saúde física e mental, sem perda de nível."
-        )
+        ),
 
         // Magias adicionais de 1º círculo do Livro do Jogador — lote 4
         PresetSpell(
