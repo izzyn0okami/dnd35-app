@@ -512,6 +512,13 @@ fun SkillsTab(
                             ) {
                                 Column(modifier = Modifier.weight(1f)) {
                                     Text("Nível ${record.characterLevel} — ${record.className}", fontWeight = FontWeight.SemiBold)
+                                    if (record.characterLevel > character.level) {
+                                        Text(
+                                            "Acima do nível atual (${character.level}); preservado, mas não entra no total de pontos gastos.",
+                                            style = MaterialTheme.typography.bodySmall,
+                                            color = MaterialTheme.colorScheme.tertiary
+                                        )
+                                    }
                                     val status = when {
                                         difference < -0.001f -> "Excede o orçamento em ${String.format("%.1f", -difference)} ponto(s)"
                                         difference > 0.001f -> "Restam ${String.format("%.1f", difference)} ponto(s) sem alocação"
