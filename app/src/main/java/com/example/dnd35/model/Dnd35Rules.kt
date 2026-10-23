@@ -1586,17 +1586,17 @@ object Dnd35Rules {
             description = "Uma criatura humanoide considera o conjurador um amigo confiável; a magia não controla diretamente suas ações."
         ),
         PresetSpell(
-            name = "Graxa",
+            name = "Área Escorregadia",
             level = 1,
             school = "Conjuração",
-            classes = listOf("Mago", "Feiticeiro"),
+            classes = listOf("Bardo", "Mago", "Feiticeiro"),
             castTime = "1 ação padrão",
             components = "V, S, M",
             range = "Curto (7,5m + 1,5m/2 níveis)",
             duration = "1 rodada/nível",
             savingThrow = "Reflexos parcial",
             spellResistance = false,
-            description = "Reveste uma superfície ou objeto com gordura escorregadia; criaturas podem cair ou ter dificuldade para se manter de pé."
+            description = "Cobre o chão ou um objeto com uma camada escorregadia; criaturas podem cair ou ter dificuldade para se manter de pé."
         ),
         PresetSpell(
             name = "Detectar Portas Secretas",
@@ -2776,6 +2776,106 @@ object Dnd35Rules {
             savingThrow = "Fortitude parcial",
             spellResistance = true,
             description = "Um toque canaliza energia necrótica, causando dano e podendo enfraquecer temporariamente o alvo; mortos-vivos são afetados de modo diferente."
+        ),
+
+
+        PresetSpell(
+            name = "Boca Encantada",
+            level = 1,
+            school = "Ilusão",
+            classes = listOf("Bardo", "Mago", "Feiticeiro"),
+            castTime = "1 ação padrão",
+            components = "V, S, M",
+            range = "9m",
+            duration = "Permanente até ser descarregada",
+            savingThrow = "Nenhum",
+            spellResistance = false,
+            description = "Cria uma boca mágica que transmite uma mensagem de até 25 palavras quando ocorrer uma condição visual ou audível definida na conjuração.",
+            classLevels = mapOf("Bardo" to 1, "Mago" to 2, "Feiticeiro" to 2)
+        ),
+        PresetSpell(
+            name = "Confusão Menor",
+            level = 1,
+            school = "Encantamento",
+            classes = listOf("Bardo"),
+            castTime = "1 ação padrão",
+            components = "V, S",
+            range = "Curto (7,5m + 1,5m/2 níveis)",
+            duration = "1 rodada",
+            savingThrow = "Vontade anula",
+            spellResistance = true,
+            description = "Deixa uma criatura confusa por 1 rodada, fazendo-a agir de forma aleatória.",
+            classLevels = mapOf("Bardo" to 1)
+        ),
+        PresetSpell(
+            name = "Dissimular Tendência",
+            level = 1,
+            school = "Abjuração",
+            classes = listOf("Bardo", "Clérigo", "Mago", "Feiticeiro"),
+            castTime = "1 ação padrão",
+            components = "V, S",
+            range = "Toque",
+            duration = "24 horas",
+            savingThrow = "Vontade anula (objeto)",
+            spellResistance = true,
+            description = "Esconde a tendência de uma criatura ou objeto contra efeitos de adivinhação.",
+            classLevels = mapOf("Bardo" to 1, "Clérigo" to 2, "Mago" to 2, "Feiticeiro" to 2)
+        ),
+        PresetSpell(
+            name = "Obscurecer Objeto",
+            level = 1,
+            school = "Abjuração",
+            classes = listOf("Bardo", "Clérigo", "Mago", "Feiticeiro"),
+            castTime = "1 ação padrão",
+            components = "V, S, M/FD",
+            range = "Toque",
+            duration = "8 horas (D)",
+            savingThrow = "Vontade anula (objeto)",
+            spellResistance = true,
+            description = "Protege um objeto contra efeitos de adivinhação que tentem localizá-lo.",
+            classLevels = mapOf("Bardo" to 1, "Clérigo" to 3, "Mago" to 2, "Feiticeiro" to 2)
+        ),
+        PresetSpell(
+            name = "Recuo Acelerado",
+            level = 1,
+            school = "Transmutação",
+            classes = listOf("Bardo", "Mago", "Feiticeiro"),
+            castTime = "1 ação padrão",
+            components = "V, S",
+            range = "Pessoal",
+            duration = "1 min/nível (D)",
+            savingThrow = "Nenhum",
+            spellResistance = false,
+            description = "Aumenta em 9m o deslocamento terrestre básico do conjurador; não altera outras formas de deslocamento.",
+            classLevels = mapOf("Bardo" to 1, "Mago" to 1, "Feiticeiro" to 1)
+        ),
+        PresetSpell(
+            name = "Riso Histérico de Tasha, O",
+            level = 1,
+            school = "Encantamento",
+            classes = listOf("Bardo", "Mago", "Feiticeiro"),
+            castTime = "1 ação padrão",
+            components = "V, S, M",
+            range = "Curto (7,5m + 1,5m/2 níveis)",
+            duration = "1 rodada/nível",
+            savingThrow = "Vontade anula",
+            spellResistance = true,
+            description = "Faz o alvo gargalhar sem controle, impedindo-o de realizar outras ações durante a duração da magia.",
+            classLevels = mapOf("Bardo" to 1, "Mago" to 2, "Feiticeiro" to 2)
+        ),
+        PresetSpell(
+            name = "Transformação Momentânea",
+            level = 1,
+            school = "Ilusão",
+            classes = listOf("Bardo", "Mago", "Feiticeiro"),
+            castTime = "1 ação padrão",
+            components = "V, S",
+            range = "Pessoal",
+            duration = "10 min/nível (D)",
+            savingThrow = "Nenhum",
+            spellResistance = false,
+            description = "Altera temporariamente a aparência do conjurador, incluindo vestimentas e equipamento visual, sem conceder as capacidades da forma imitada.",
+            classLevels = mapOf("Bardo" to 1, "Mago" to 1, "Feiticeiro" to 1)
         ),
 
     )
