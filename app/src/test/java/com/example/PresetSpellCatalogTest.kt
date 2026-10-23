@@ -216,7 +216,7 @@ class PresetSpellCatalogTest {
             assertEquals("1 minuto/nível", spell.duration)
             assertTrue(spell.spellResistance)
         }
-        val lawProtection = spells.getValue("Proteção contra a Ordem")
+        val lawProtection = spells.getValue("Proteção contra a Lei")
         assertEquals(setOf("Clérigo", "Mago", "Feiticeiro"), lawProtection.classes.toSet())
         assertEquals("Toque", lawProtection.range)
         assertEquals("1 minuto/nível", lawProtection.duration)
