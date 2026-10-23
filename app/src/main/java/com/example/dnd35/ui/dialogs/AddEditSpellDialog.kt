@@ -180,7 +180,7 @@ fun AddEditSpellDialog(
                     val filtered = Dnd35Rules.PRESET_SPELLS.filter { spell ->
                         val matchesQuery = spell.name.contains(catalogQuery, ignoreCase = true) ||
                                 spell.description.contains(catalogQuery, ignoreCase = true)
-                        val matchesLevel = selectedLevelFilter == null || spell.level == selectedLevelFilter
+                        val matchesLevel = selectedLevelFilter == null || (if (selectedClassFilter == "Todas") spell.level else spell.classLevels[selectedClassFilter] ?: spell.level) == selectedLevelFilter
                         val matchesClass = selectedClassFilter == "Todas" || spell.classLevels.keys.any { it.equals(selectedClassFilter, ignoreCase = true) }
                         val matchesSchool = selectedSchoolFilter == "Todas" || spell.school.equals(selectedSchoolFilter, ignoreCase = true)
                         matchesQuery && matchesLevel && matchesClass && matchesSchool
