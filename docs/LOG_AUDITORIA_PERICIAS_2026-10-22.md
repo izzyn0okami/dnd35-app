@@ -751,3 +751,12 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Criado `PresetEquipmentCatalogTest` para verificar itens representativos, validade de categorias/espaços e ausência de nomes exatamente duplicados.
 - Escopo: catálogo-base ampliado para o Livro do Jogador/SRD 3.5. A lista não deve ser considerada uma transcrição integral de todos os itens mágicos do Livro do Mestre ou de suplementos; essa cobertura precisa de uma etapa própria e validação contra fontes oficiais em português.
 - CI e revisão de valores/terminologia ainda pendentes. Não integrar até a CI passar e a lista ser revisada.
+
+
+## 2026-10-23 — Revisão inicial de talentos do Livro do Jogador
+
+- Consultado o registro antes de alterar o catálogo; não havia entrada anterior documentando uma revisão completa de talentos nem PR aberta para este trabalho.
+- Na branch `feat/catalogo-phb-magias-talentos`, corrigidas seis descrições de `PRESET_FEATS`: Especialização em Arma agora explicita proficiência com a arma escolhida; Foco em Arma Aprimorado esclarece que o bônus total passa a +2; Magia Acelerada descreve ação rápida e aumento de quatro níveis; Escrever Pergaminho restringe a magia àquela conhecida e que o criador possa conjurar e remete aos custos/tempo normais; Criar Varinha explicita a exigência de magia de 4º nível ou inferior conhecida e os custos/tempo normais; Tiro Certeiro foi ajustado para indicar corretamente o alcance de 9 m.
+- Esta é uma correção parcial de conteúdo já existente, não a conclusão do catálogo: a lista atual ainda contém apenas 27 talentos e 42 magias. O objetivo de referência é conferir os 110 talentos do PHB 3.5 e catalogar as magias do mesmo livro, evitando material de suplementos e entradas duplicadas.
+- Não afirmar que o catálogo está completo. Antes de integrar, ainda é necessário acrescentar cobertura de testes, expandir os dados com referência verificável para pré-requisitos/benefícios e metadados de magias, revisar terminologia em português e aguardar CI.
+- Validação local/Gradle e teste manual no Android não foram executados nesta etapa.
