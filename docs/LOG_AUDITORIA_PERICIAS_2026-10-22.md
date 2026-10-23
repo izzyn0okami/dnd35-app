@@ -704,9 +704,17 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Não considerar essa proteção integrada até CI aprovada e merge. Manter o teste manual Android pendente.
 
 
-## Estado inicial sem personagens — PR em andamento (2026-10-23)
+## Estado inicial sem personagens — PR #143 integrada (2026-10-23)
 
 - PR #142 integrada por squash no commit `56ac8a774da4dd556dcd5e69436ba0ca24e570fe`; CI `Android build` passou no run https://github.com/izzyn0okami/dnd35-app/actions/runs/39898410891. A proteção do recortador decodifica imagens com amostragem e dimensão máxima aproximada de 2048 px.
 - Próxima pendência de UI confirmada em `DndMainScreen.kt`: quando não há personagem ativo, a tela mostrava apenas um indicador de carregamento, mesmo quando a lista de fichas estava vazia. Isso não orientava o usuário a iniciar uma ficha.
-- Correção proposta na branch `fix/empty-character-first-launch-state`: quando não existe personagem ativo e a lista está vazia, exibir estado vazio com explicação e botão **Criar personagem**, que abre o diálogo já existente. Se há fichas mas ainda falta personagem/estatísticas ativas, manter o indicador de carregamento.
-- PR e CI ainda pendentes; não considerar integrado até validação e merge. O teste visual no aparelho permanece pendente.
+- Correção integrada na PR #143, squash no commit `afa30fcede4fbb250275b335f4598b94b1ffedb6`; CI `Android build` passou no run https://github.com/izzyn0okami/dnd35-app/actions/runs/39898957652. Quando não existe personagem ativo e a lista está vazia, a tela exibe estado vazio com explicação e botão **Criar personagem**, que abre o diálogo existente. Se há fichas mas ainda falta personagem/estatísticas ativas, mantém o indicador de carregamento.
+- O teste visual no aparelho permanece pendente.
+
+
+## 2026-10-23 — Contagens visíveis em seções limitadas do PDF (PR em preparação)
+
+- Revisão estática de `CharacterPdfExporter.kt` confirmou limites fixos que descartam itens adicionais da representação visual sem indicar isso: até 4 armas equipadas, 6 talentos, 9 magias e 10 itens de inventário.
+- Correção proposta na branch `fix/pdf-exporter-visible-item-counts`: os títulos dessas seções passam a mostrar a quantidade total cadastrada e o limite exibido, deixando explícito quando o PDF mostra apenas uma parte dos dados.
+- A mudança não altera nem remove dados da ficha e não muda o layout/paginação do PDF; ela torna a limitação existente visível ao usuário. Uma solução futura de paginação completa pode ser considerada separadamente, pois exige redesenhar o fluxo de páginas e limites verticais.
+- CI ainda pendente; não considerar integrada até validação e merge. Teste manual de exportação com listas acima dos limites continua pendente.
