@@ -525,7 +525,8 @@ fun SkillsTab(
                     if (history.isNotEmpty()) {
                         Spacer(modifier = Modifier.height(8.dp))
                         Text("Histórico registrado", style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.Bold)
-                        history.sortedBy { it.characterLevel }.forEach { record ->
+                        history.withIndex().sortedBy { it.value.characterLevel }.forEach { (recordIndex, indexedRecord) ->
+                            val record = indexedRecord
                             val spent = record.allocations.sumOf { it.pointsSpent.toDouble() }.toFloat()
                             val difference = record.availablePoints - spent
                             Row(
@@ -553,7 +554,7 @@ fun SkillsTab(
                                     )
                                 }
                                 IconButton(onClick = {
-                                    viewModel.updateSkillPointHistory(history.filterNot { it.characterLevel == record.characterLevel })
+                                    viewModel.updateSkillPointHistory(history.filterIndexed { index, _ -> index != recordIndex })
                                 }) {
                                     Icon(Icons.Default.Remove, contentDescription = "Remover histórico do nível ${record.characterLevel}")
                                 }
