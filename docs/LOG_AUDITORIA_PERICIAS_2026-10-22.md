@@ -634,3 +634,11 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - O novo teste de regressão está agora em `main`; a integração não alterou o código de produção nem as regras.
 - A lacuna de cobertura integrada de classificação, limite e bônus foi atendida por esse teste. A auditoria de perícias não deve ser reaberta sem evidência nova; o teste manual em aparelho segue pendente.
 - Próximo foco da auditoria geral: retomar a revisão das progressões de BBA e testes de resistência das classes básicas e, em seguida, a conferência classe por classe das características escalonadas, priorizando o Livro do Jogador brasileiro 3.5. Não declarar a auditoria geral concluída enquanto essa conferência estiver incompleta.
+
+## 2026-10-23 — Revisão de progressões de BBA e testes de resistência
+
+- Após integrar a PR #131, a CI confirmou o teste integrado de perícias multiclasse; a PR #132 também foi integrada para registrar esse resultado no log.
+- Inspeção estática de `Dnd35Rules.kt`: as onze classes básicas estão configuradas com os tipos esperados de BBA e testes de Fortitude, Reflexos e Vontade; as fórmulas de progressão usam `nível`, `3 × nível / 4`, `nível / 2`, `2 + nível / 2` e `nível / 3`, respectivamente, com divisão inteira.
+- Não foi identificada divergência concreta no código de produção nesta passagem. Para evitar regressões, a PR atual adiciona testes que conferem os tipos das onze classes e as fórmulas em todos os níveis de 1 a 20.
+- A conclusão depende da CI da PR atual. Esta verificação não substitui cotejo integral com a edição brasileira do Livro do Jogador; a auditoria geral de características e terminologia permanece aberta. Não houve teste manual no Android.
+- Próximo passo: após CI aprovada, integrar os testes e continuar a comparação das características escalonadas das classes básicas contra o Livro do Jogador brasileiro, sem reabrir itens resolvidos sem evidência nova.
