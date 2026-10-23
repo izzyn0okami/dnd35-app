@@ -528,3 +528,11 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - `SpellsTab.kt`: o botão de configuração anuncia o nível de magia correspondente.
 - Alterações limitadas a conteúdo acessível; sem mudança em regras, cálculos, estado ou comportamento das ações.
 - Validação de compilação e testes fica a cargo da CI desta PR; teste manual com leitor de tela/dispositivo não realizado.
+
+
+## 2026-10-23 — Ação de rolagem de ataque sem controles interativos aninhados
+
+- `OverviewCombatTab.kt` (`AttackRow`): removida a ação de clique duplicada do cartão, mantendo a rolagem no botão explícito com o bônus de ataque.
+- Evita que o cartão e o botão interno sejam expostos como duas ações sobrepostas para leitores de tela.
+- A rolagem continua usando a mesma função e os mesmos cálculos; nenhuma regra ou dado foi alterado.
+- A área de ação fica concentrada no botão visível; validar a usabilidade em aparelho físico posteriormente.
