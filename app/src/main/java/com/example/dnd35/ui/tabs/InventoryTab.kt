@@ -138,7 +138,7 @@ fun InventoryTab(
                             Icon(Icons.Default.FitnessCenter, contentDescription = null, tint = DndGold)
                             Spacer(modifier = Modifier.width(6.dp))
                             Text(
-                                "Gestão de Peso & Carga (D&D 3.5)",
+                                "Peso e carga (D&D 3.5)",
                                 fontWeight = FontWeight.Bold,
                                 style = MaterialTheme.typography.titleMedium
                             )
@@ -346,7 +346,7 @@ fun InventoryTab(
                         Row(verticalAlignment = Alignment.CenterVertically) {
                             Icon(Icons.Default.MonetizationOn, contentDescription = null, tint = DndGold)
                             Spacer(modifier = Modifier.width(6.dp))
-                            Text("Bolsa de Moedas & Riqueza", fontWeight = FontWeight.Bold, style = MaterialTheme.typography.titleMedium)
+                            Text("Riqueza e moedas", fontWeight = FontWeight.Bold, style = MaterialTheme.typography.titleMedium)
                         }
 
                         IconButton(onClick = { showCoinsModal = true }, modifier = Modifier.size(48.dp)) {
@@ -747,7 +747,7 @@ fun InventoryItemRowRefined(
                         fontWeight = FontWeight.SemiBold,
                         color = MaterialTheme.colorScheme.primary
                     )
-                    Icon(Icons.Default.ArrowDropDown, contentDescription = "Mudar Espaço", modifier = Modifier.size(16.dp), tint = MaterialTheme.colorScheme.primary)
+                    Icon(Icons.Default.ArrowDropDown, contentDescription = "Alterar espaço de equipamento", modifier = Modifier.size(16.dp), tint = MaterialTheme.colorScheme.primary)
                 }
 
                 Spacer(modifier = Modifier.height(2.dp))
@@ -779,7 +779,7 @@ fun InventoryItemRowRefined(
             }
 
             IconButton(onClick = onOpenSlotPicker, modifier = Modifier.size(48.dp)) {
-                Icon(Icons.Default.Shield, contentDescription = "Atribuir Espaço", modifier = Modifier.size(18.dp), tint = MaterialTheme.colorScheme.primary)
+                Icon(Icons.Default.Shield, contentDescription = "Atribuir espaço de equipamento", modifier = Modifier.size(18.dp), tint = MaterialTheme.colorScheme.primary)
             }
 
             IconButton(onClick = onEdit, modifier = Modifier.size(48.dp)) {
