@@ -2702,5 +2702,46 @@ object Dnd35Rules {
             description = "Um ataque de toque corpo a corpo descarrega eletricidade no alvo e causa dano elétrico."
         ),
 
+
+        PresetSpell(
+            name = "Trancar Portal",
+            level = 1,
+            school = "Abjuração",
+            classes = listOf("Mago", "Feiticeiro"),
+            castTime = "1 ação padrão",
+            components = "V",
+            range = "Médio (30m + 3m/nível)",
+            duration = "1 minuto/nível",
+            savingThrow = "Nenhum",
+            spellResistance = false,
+            description = "Tranca magicamente uma porta, portão, janela ou outro portal fechado; a magia não impede a passagem de criaturas capazes de contornar ou destruir o obstáculo."
+        ),
+        PresetSpell(
+            name = "Ventriloquismo",
+            level = 1,
+            school = "Ilusão",
+            classes = listOf("Bardo", "Mago", "Feiticeiro"),
+            castTime = "1 ação padrão",
+            components = "V, F (um pequeno cone)",
+            range = "Curto (7,5m + 1,5m/2 níveis)",
+            duration = "1 minuto/nível",
+            savingThrow = "Vontade descrê (se interagir)",
+            spellResistance = false,
+            description = "Faz a voz do conjurador parecer vir de outro lugar ou objeto dentro do alcance."
+        ),
+        PresetSpell(
+            name = "Aura Mágica de Nystul",
+            level = 1,
+            school = "Ilusão",
+            classes = listOf("Bardo", "Mago", "Feiticeiro"),
+            castTime = "1 ação padrão",
+            components = "V, S, F (um pequeno quadrado de seda)",
+            range = "Toque",
+            duration = "1 dia/nível",
+            savingThrow = "Nenhum",
+            spellResistance = false,
+            description = "Altera a aura mágica percebida de um objeto, podendo fazê-lo parecer mágico, não mágico ou associado a uma escola específica."
+        ),
+
     )
 }
