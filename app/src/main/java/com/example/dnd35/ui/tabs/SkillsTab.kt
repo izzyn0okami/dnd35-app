@@ -831,7 +831,7 @@ fun SkillItemRow(
             )
 
             // Botão de Rolar Dado d20
-            IconButton(onClick = onRoll, enabled = computed.canRoll, modifier = Modifier.size(32.dp)) {
+            IconButton(onClick = onRoll, enabled = computed.canRoll, modifier = Modifier.size(48.dp)) {
                 Icon(
                     Icons.Default.Casino,
                     contentDescription = if (computed.canRoll) "Rolar" else "Exige treinamento",
@@ -844,7 +844,7 @@ fun SkillItemRow(
             IconButton(
                 onClick = onSubRank,
                 enabled = computed.ranks > 0,
-                modifier = Modifier.size(30.dp)
+                modifier = Modifier.size(48.dp)
             ) {
                 Icon(Icons.Default.Remove, contentDescription = "Diminuir graduação", modifier = Modifier.size(16.dp))
             }
@@ -852,7 +852,7 @@ fun SkillItemRow(
             IconButton(
                 onClick = onAddRank,
                 enabled = computed.ranks < computed.maxRanks,
-                modifier = Modifier.size(30.dp)
+                modifier = Modifier.size(48.dp)
             ) {
                 Icon(Icons.Default.Add, contentDescription = "Aumentar graduação", tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(16.dp))
             }

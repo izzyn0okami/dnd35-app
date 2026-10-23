@@ -524,7 +524,7 @@ private fun SpellSlotCard(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = if (slot.level == 0) "Nível 0" else "Nv ${slot.level}",
+                    text = if (slot.level == 0) "Nível 0" else "Nível ${slot.level}",
                     style = MaterialTheme.typography.labelSmall,
                     fontWeight = FontWeight.Bold,
                     color = DndArcaneBlue
