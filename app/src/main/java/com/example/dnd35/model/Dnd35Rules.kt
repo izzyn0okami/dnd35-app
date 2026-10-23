@@ -2662,6 +2662,45 @@ object Dnd35Rules {
         ),
 
 
+        PresetSpell(
+            name = "Disco Flutuante",
+            level = 1,
+            school = "Conjuração",
+            classes = listOf("Mago", "Feiticeiro"),
+            castTime = "1 ação padrão",
+            components = "V, S, M (uma gota de mercúrio)",
+            range = "Curto (7,5m + 1,5m/2 níveis)",
+            duration = "1 hora/nível",
+            savingThrow = "Nenhum",
+            spellResistance = false,
+            description = "Cria um disco horizontal de força que acompanha o conjurador e sustenta carga, mantendo-se a uma distância curta dele."
+        ),
+        PresetSpell(
+            name = "Reduzir Pessoa",
+            level = 1,
+            school = "Transmutação",
+            classes = listOf("Bardo", "Mago", "Feiticeiro"),
+            castTime = "1 ação padrão",
+            components = "V, S, M (uma pitada de ferro em pó)",
+            range = "Curto (7,5m + 1,5m/2 níveis)",
+            duration = "1 minuto/nível",
+            savingThrow = "Fortitude anula",
+            spellResistance = true,
+            description = "Reduz uma criatura humanoide voluntária ou uma criatura que falhe no teste de resistência, diminuindo seu tamanho e sua força física."
+        ),
+        PresetSpell(
+            name = "Toque Chocante",
+            level = 1,
+            school = "Evocação",
+            classes = listOf("Mago", "Feiticeiro"),
+            castTime = "1 ação padrão",
+            components = "V, S",
+            range = "Toque",
+            duration = "Instantânea",
+            savingThrow = "Nenhum",
+            spellResistance = true,
+            description = "Um ataque de toque corpo a corpo descarrega eletricidade no alvo e causa dano elétrico."
+        ),
 
     )
 }
