@@ -660,4 +660,4 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Correção proposta na branch `fix/validate-character-name-edit`: normalizar o nome com `trim()`, impedir o salvamento quando ficar vazio e mostrar mensagem de validação no campo. O nome enviado ao ViewModel agora é o valor normalizado.
 - Adicionado teste unitário para rejeitar vazio/espaços, remover espaços nas extremidades e preservar espaços internos.
 - Escopo intencionalmente isolado: não altera o gerenciamento de multiclasse, a persistência geral nem os formulários de outros campos.
-- Status: PR ainda será aberta após conferir as alterações. CI e testes Gradle ainda não foram executados nesta operação; teste manual Android pendente.
+- PR #136 aberta: https://github.com/izzyn0okami/dnd35-app/pull/136. A CI ainda precisa concluir testes unitários, compilação do APK de depuração e upload do artefato. Teste manual Android pendente; não integrar sem CI aprovada e autorização explícita.
