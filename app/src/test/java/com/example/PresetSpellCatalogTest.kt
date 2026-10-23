@@ -155,7 +155,7 @@ class PresetSpellCatalogTest {
 
         val detectTraps = spells.getValue("Detectar Laços e Covas")
         assertEquals(setOf("Druida", "Ranger"), detectTraps.classes.toSet())
-        assertEquals("18m", detectTraps.range)
+        assertEquals("18m/nível", detectTraps.range)
         assertFalse(detectTraps.spellResistance)
 
         val summonNature = spells.getValue("Convocar Aliado da Natureza I")
