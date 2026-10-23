@@ -2614,7 +2614,7 @@ object Dnd35Rules {
             school = "Adivinhação",
             classes = listOf("Mago", "Feiticeiro"),
             castTime = "1 ação padrão",
-            components = "V, F (pequena réplica de um arco)",
+            components = "V, F (pequena réplica de um alvo de arquearia)",
             range = "Pessoal",
             duration = "Ver descrição",
             savingThrow = "Nenhum",
