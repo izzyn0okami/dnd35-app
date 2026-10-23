@@ -702,3 +702,11 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - O fluxo de recorte quadrado está em `PhotoPickerModal.kt`: arrastar/pinça, confirmação antes de substituir a foto e gravação privada do recorte. Teste visual em aparelho continua pendente.
 - Revisão pós-merge identificou risco de consumo excessivo de memória ao decodificar fotos originais em resolução total. Correção proposta separadamente na branch `fix/sample-large-portrait-before-crop`: primeiro ler dimensões e depois decodificar com `inSampleSize`, limitando a maior dimensão decodificada a aproximadamente 2048 px. Isso reduz risco de falta de memória; não altera a imagem original.
 - Não considerar essa proteção integrada até CI aprovada e merge. Manter o teste manual Android pendente.
+
+
+## Estado inicial sem personagens — PR em andamento (2026-10-23)
+
+- PR #142 integrada por squash no commit `56ac8a774da4dd556dcd5e69436ba0ca24e570fe`; CI `Android build` passou no run https://github.com/izzyn0okami/dnd35-app/actions/runs/39898410891. A proteção do recortador decodifica imagens com amostragem e dimensão máxima aproximada de 2048 px.
+- Próxima pendência de UI confirmada em `DndMainScreen.kt`: quando não há personagem ativo, a tela mostrava apenas um indicador de carregamento, mesmo quando a lista de fichas estava vazia. Isso não orientava o usuário a iniciar uma ficha.
+- Correção proposta na branch `fix/empty-character-first-launch-state`: quando não existe personagem ativo e a lista está vazia, exibir estado vazio com explicação e botão **Criar personagem**, que abre o diálogo já existente. Se há fichas mas ainda falta personagem/estatísticas ativas, manter o indicador de carregamento.
+- PR e CI ainda pendentes; não considerar integrado até validação e merge. O teste visual no aparelho permanece pendente.
