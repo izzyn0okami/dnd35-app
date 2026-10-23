@@ -427,3 +427,12 @@ Continuar a auditoria de regras sem repetir os assuntos resolvidos. Próximo foc
 - O custo histórico merece distinção: pontos já gastos como entreclasse não se tornam retroativamente mais baratos quando a perícia passa a ser de classe. A aplicação mantém um histórico de gastos por nível; quando ele está incompleto, exibe apenas uma estimativa baseada nas graduações e na classificação atuais. Como essa estimativa já está identificada como estimativa e o histórico manual permite registrar os gastos originais, não foi confirmado um defeito que justifique PR nesta passagem.
 - Não foi encontrada discrepância concreta no cálculo do limite ou no passo de edição. Nenhuma PR de código aberta; revisão estática, sem execução local de testes ou teste manual no aparelho.
 - Próxima verificação: conferir as regras de perícias treinadas apenas e a disponibilidade de testes sem graduação, comparando os sinalizadores do catálogo com o Livro do Jogador e evitando revisitar decisões já documentadas.
+
+
+## Exceção de Conhecimento sem treinamento — 2026-10-23
+
+- Defeito confirmado comparando o comportamento com o Livro do Jogador 3.5: a ficha bloqueava rolagens de Conhecimento com zero graduações por tratar o marcador “somente treinada” como proibição absoluta. A regra específica de Conhecimento permite teste de Inteligência sem treinamento para recordar apenas informações comuns (CD 10 ou inferior).
+- Alteração proposta na PR: permitir a rolagem sem graduação para especialidades de Conhecimento e exibir na ficha a restrição de informações comuns (CD 10 ou inferior). As demais perícias “somente treinadas”, como Identificar Magia e Operar Mecanismo, continuam bloqueadas sem graduação.
+- Adicionado teste unitário para diferenciar Conhecimento das demais perícias treinadas. A mudança não altera limites de graduação, custos de pontos ou listas de perícias de classe.
+- Referência consultada: Livro do Jogador 3.5, seção de Conhecimento (p. 78 na edição em inglês), que explicita o teste sem treinamento para conhecimento comum. A terminologia final em português deve seguir a edição brasileira quando houver diferença de tradução.
+- Estado: código e teste enviados para CI em branch dedicada; não houve execução local de Gradle nem teste manual no aparelho. Não fazer merge antes de verificar a CI do commit final.

@@ -823,7 +823,7 @@ class ExampleUnitTest {
     assertEquals(2f, acrobatics.maxRanks)
     assertEquals(1.5f, acrobatics.ranks)
     assertTrue(knowledge.trainedOnly)
-    assertTrue(!knowledge.canRoll)
+    assertTrue(knowledge.canRoll)
   }
 
   @Test

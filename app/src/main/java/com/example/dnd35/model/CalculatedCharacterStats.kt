@@ -590,7 +590,8 @@ object CharacterCalculator {
                 isClassSkill = isClassSkill,
                 maxRanks = maxRanks,
                 trainedOnly = def?.trainedOnly ?: false,
-                canRoll = !(def?.trainedOnly ?: false) || ranks >= 1f
+                canRoll = !(def?.trainedOnly ?: false) || ranks >= 1f ||
+                    Dnd35Rules.allowsUntrainedKnowledgeCheck(canonicalSkillName)
             )
         }
 

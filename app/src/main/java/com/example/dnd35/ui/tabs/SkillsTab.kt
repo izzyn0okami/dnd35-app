@@ -807,6 +807,15 @@ fun SkillItemRow(
                     style = MaterialTheme.typography.labelSmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
+                if (computed.trainedOnly && computed.ranks < 1f &&
+                    com.example.dnd35.model.Dnd35Rules.allowsUntrainedKnowledgeCheck(computed.skill.name)
+                ) {
+                    Text(
+                        "Sem graduação: apenas informações comuns (CD 10 ou inferior).",
+                        style = MaterialTheme.typography.labelSmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
             }
 
             // Bônus Total em destaque

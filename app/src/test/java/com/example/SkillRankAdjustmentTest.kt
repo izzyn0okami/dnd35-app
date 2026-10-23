@@ -1,10 +1,19 @@
 package com.example
 
+import com.example.dnd35.model.Dnd35Rules
 import com.example.dnd35.viewmodel.skillRankAdjustmentStep
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
 class SkillRankAdjustmentTest {
+    @Test
+    fun knowledgeAllowsUntrainedCommonKnowledgeButOtherTrainedOnlySkillsDoNot() {
+        assertEquals(true, Dnd35Rules.allowsUntrainedKnowledgeCheck("Conhecimento (Arcano)"))
+        assertEquals(true, Dnd35Rules.allowsUntrainedKnowledgeCheck("Conhecimento (Natureza)"))
+        assertEquals(false, Dnd35Rules.allowsUntrainedKnowledgeCheck("Identificar Magia"))
+        assertEquals(false, Dnd35Rules.allowsUntrainedKnowledgeCheck("Operar Mecanismo"))
+    }
+
     @Test
     fun classSkillWithFractionalRanksUsesHalfRankStep() {
         assertEquals(0.5f, skillRankAdjustmentStep(0.5f, true))
