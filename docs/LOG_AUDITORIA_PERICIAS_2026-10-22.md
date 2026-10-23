@@ -373,3 +373,12 @@ Continuar a auditoria de regras sem repetir os assuntos resolvidos. Próximo foc
 - A descrição anterior confundia localizar armadilhas com CD acima de 20 e desarmar armadilhas mágicas. A regra separa as funções: Procurar permite localizar armadilhas de CD superior a 20; Operar Mecanismo permite desarmar armadilhas mágicas.
 - A descrição foi reescrita sem alterar a lógica das rolagens e foi acrescentado teste de regressão.
 - Branch: `fix/rogue-trapfinding-description`; aguardar CI antes de merge. Não houve teste Gradle local nem teste manual no aparelho.
+
+
+## Resultado da PR #108 — 2026-10-23
+
+- PR #108 integrada por squash no commit `00c136de62fe34969b7d768a8a7e862822e54578`.
+- CI do commit final da PR aprovada no run [39876382183](https://github.com/izzyn0okami/dnd35-app/actions/runs/39876382183).
+- A descrição de Encontrar Armadilhas do Ladino agora distingue Procurar para localizar armadilhas com CD acima de 20 de Operar Mecanismo para desarmar armadilhas mágicas. Teste de regressão incluído.
+- A alteração é descritiva e de teste; não altera a lógica de rolagem. Não houve teste Gradle local nem teste manual no aparelho.
+- Próximo foco: continuar a passada cruzada das características escalonadas do Ladino e do Ranger, e então revisar condições de progressão/uso das classes básicas, conferindo contra o Livro do Jogador brasileiro. Consultar este log antes de propor PR para evitar duplicações.
