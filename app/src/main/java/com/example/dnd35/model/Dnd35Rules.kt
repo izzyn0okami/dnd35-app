@@ -445,7 +445,7 @@ object Dnd35Rules {
                 ClassFeature(11, "Mestrado no Estilo de Combate", "Recebe o talento superior do estilo escolhido, sem precisar cumprir seus pré-requisitos normais enquanto usar armadura leve ou nenhuma."),
                 ClassFeature(15, "Inimigo Predileto +2 adicional", "Escolhe outro inimigo predileto com bônus +2 ou aumenta em +2 o bônus contra um inimigo predileto existente."),
                 ClassFeature(17, "Camuflagem", "Pode usar a perícia Esconder-se em qualquer tipo de terreno natural, mesmo sem cobertura ou camuflagem."),
-                ClassFeature(18, "Esconder-se à Plena Vista", "Pode usar Esconder-se em terreno natural mesmo enquanto observado, desde que não esteja sendo observado diretamente por meios que impeçam a ocultação."),
+                ClassFeature(18, "Esconder-se à Plena Vista", "Pode usar Esconder-se em qualquer tipo de terreno natural, mesmo sem cobertura ou camuflagem e mesmo enquanto observado, desde que esteja a até 3 metros de algum tipo de terreno natural."),
                 ClassFeature(20, "Inimigo Predileto +2 adicional", "Escolhe outro inimigo predileto com bônus +2 ou aumenta em +2 o bônus contra um inimigo predileto existente.")
             ),
             description = "Mestre das terras ermas, com arquearia, rastreamento mortal e inimigos prediletos."
