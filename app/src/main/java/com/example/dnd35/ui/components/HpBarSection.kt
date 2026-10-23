@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -115,7 +116,7 @@ fun HpBarSection(
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     IconButton(
                         onClick = { showEditMaxHpDialog = true },
-                        modifier = Modifier.size(36.dp)
+                        modifier = Modifier.size(48.dp)
                     ) {
                         Icon(Icons.Default.Edit, contentDescription = "Editar PV Máx", tint = MaterialTheme.colorScheme.primary)
                     }
@@ -123,7 +124,7 @@ fun HpBarSection(
                         onClick = { showRestConfirmDialog = true },
                         colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primaryContainer),
                         contentPadding = ButtonDefaults.TextButtonContentPadding,
-                        modifier = Modifier.height(32.dp)
+                        modifier = Modifier.heightIn(min = 48.dp)
                     ) {
                         Icon(Icons.Default.Bedtime, contentDescription = null, modifier = Modifier.size(16.dp), tint = MaterialTheme.colorScheme.onPrimaryContainer)
                         Spacer(modifier = Modifier.width(4.dp))
