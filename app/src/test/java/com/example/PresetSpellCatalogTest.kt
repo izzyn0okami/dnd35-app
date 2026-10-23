@@ -48,7 +48,15 @@ class PresetSpellCatalogTest {
             "Raio do Enfraquecimento",
             "Aumentar Pessoa",
             "Arma Mágica",
-            "Salto"
+            "Salto",
+            "Mãos Flamejantes",
+            "Enfeitiçar Animal",
+            "Emaranhar",
+            "Bom Fruto",
+            "Passos sem Pegadas",
+            "Falar com Animais",
+            "Produzir Chama",
+            "Raio Colorido"
         ).forEach { name ->
             assertTrue("Magia ausente: $name", name in names)
         }
@@ -113,6 +121,21 @@ class PresetSpellCatalogTest {
         assertEquals(setOf("Bardo", "Druida", "Ranger", "Mago", "Feiticeiro"), spells.getValue("Salto").classes.toSet())
         assertEquals(1, spells.getValue("Arma Mágica").classLevels.getValue("Paladino"))
         assertEquals(1, spells.getValue("Salto").classLevels.getValue("Ranger"))
+    }
+
+
+    @Test
+    fun firstLevelSpellBatchThreeHasExpectedClassAvailabilityAndMechanics() {
+        val spells = Dnd35Rules.PRESET_SPELLS.associateBy { it.name }
+        assertEquals(setOf("Mago", "Feiticeiro"), spells.getValue("Mãos Flamejantes").classes.toSet())
+        assertEquals(setOf("Druida"), spells.getValue("Enfeitiçar Animal").classes.toSet())
+        assertEquals(setOf("Druida"), spells.getValue("Emaranhar").classes.toSet())
+        assertFalse(spells.getValue("Emaranhar").spellResistance)
+        assertEquals(setOf("Druida", "Ranger"), spells.getValue("Passos sem Pegadas").classes.toSet())
+        assertEquals(setOf("Druida", "Ranger"), spells.getValue("Falar com Animais").classes.toSet())
+        assertEquals(setOf("Druida"), spells.getValue("Produzir Chama").classes.toSet())
+        assertEquals(setOf("Mago", "Feiticeiro"), spells.getValue("Raio Colorido").classes.toSet())
+        assertTrue(spells.getValue("Raio Colorido").spellResistance)
     }
 
 }
