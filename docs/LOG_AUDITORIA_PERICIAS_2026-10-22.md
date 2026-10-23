@@ -544,3 +544,11 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Ampliada de 34 dp para 48 dp a altura do botão “Gerenciar” classes/multiclasse, para facilitar o acionamento por toque.
 - Alterações de apresentação e usabilidade; não alteram regras, cálculos ou dados do personagem.
 - Aguardando CI. A adequação visual e o comportamento em aparelhos físicos ainda precisam de teste manual.
+
+
+## 2026-10-23 — Alvos de toque nos controles de Pontos de Vida
+
+- Em `HpBarSection.kt`, o controle de edição dos PV máximos passa de 36 dp para 48 dp.
+- O botão “Descanso” passa a ter altura mínima de 48 dp, em vez de altura fixa de 32 dp.
+- Objetivo: facilitar o toque sem alterar ações, regras de descanso, PV ou quaisquer cálculos.
+- Aguardando CI; a disposição em telas estreitas e em aparelho físico ainda precisa de teste manual.
