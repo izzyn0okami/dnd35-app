@@ -552,3 +552,12 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - O botão “Descanso” passa a ter altura mínima de 48 dp, em vez de altura fixa de 32 dp.
 - Objetivo: facilitar o toque sem alterar ações, regras de descanso, PV ou quaisquer cálculos.
 - Aguardando CI; a disposição em telas estreitas e em aparelho físico ainda precisa de teste manual.
+
+
+## 2026-10-23 — Indicador de pontos investidos por perícia
+
+- Defeito de usabilidade confirmado: o total geral não mostrava quanto cada perícia representa em pontos, embora as graduações e a categoria classe/entreclasse estejam disponíveis.
+- Correção proposta na branch `fix/skill-points-spent-indicator`: cada linha de perícia exibe um indicador de pontos investidos estimados a partir das graduações atuais (custo de 1 ponto por graduação de classe e 2 por graduação entreclasse).
+- O indicador é explicitamente identificado como estimativa; não altera o histórico manual por nível nem presume que a distribuição atual seja igual aos gastos históricos. O total geral existente continua distinguindo histórico completo de estimativa atual.
+- Não modifica graduações, limites, cálculos de bônus ou regras de rolagem.
+- Aguardar CI antes de merge. Teste visual em aparelho e em tela estreita ainda pendente.
