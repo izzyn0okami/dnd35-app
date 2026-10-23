@@ -880,7 +880,7 @@ object Dnd35Rules {
         PresetItem("Poção de Invisibilidade", "Consumíveis", EquipmentSlots.NONE, 0.5f, 300.0f, "Invisibilidade", "Duração 3 minutos"),
         PresetItem("Pergaminho de Escudo Arcano", "Consumíveis", EquipmentSlots.NONE, 0.1f, 25.0f, "+4 CA Escudo", "Pergaminho de 1º círculo"),
         PresetItem("Pergaminho de Bola de Fogo", "Consumíveis", EquipmentSlots.NONE, 0.1f, 375.0f, "5d6 Fogo", "Pergaminho de 3º círculo"),
-        PresetItem("Varinha de Mísseis Mágicos (Nv 1)", "Consumíveis", EquipmentSlots.MAIN_HAND, 1.0f, 750.0f, "1d4+1", "50 cargas, disparo de dardo místico")
+        PresetItem("Varinha de Mísseis Mágicos (Nv 1)", "Consumíveis", EquipmentSlots.MAIN_HAND, 1.0f, 750.0f, "1d4+1", "50 cargas, disparo de dardo místico"),
 
         // ARMAS SIMPLES ADICIONAIS — catálogo-base do Livro do Jogador 3.5
         PresetItem("Manopla", "Armas", EquipmentSlots.MAIN_HAND, 1.0f, 2.0f, "1d3 (x2)", "Concussão; não ocupa a mão"),
