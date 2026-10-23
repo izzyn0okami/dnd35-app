@@ -7,6 +7,7 @@ import com.example.dnd35.model.CharacterInventoryItem
 import com.example.dnd35.model.CharacterJsonAdapters
 import com.example.dnd35.model.CharacterSkill
 import com.example.dnd35.viewmodel.isValidEditedSkillRanks
+import com.example.dnd35.viewmodel.calculateHpAdjustment
 import com.example.dnd35.viewmodel.normalizeEditedSkillRanks
 import com.example.dnd35.model.SkillPointAllocation
 import com.example.dnd35.model.SkillPointLevelRecord
@@ -1610,4 +1611,40 @@ class ExampleUnitTest {
     }
   }
 
+
+  @Test
+  fun damageConsumesTemporaryHpBeforeRegularHp() {
+    assertEquals(
+      com.example.dnd35.viewmodel.HpAdjustment(currentHp = 10, tempHp = 2),
+      calculateHpAdjustment(currentHp = 10, maxHp = 20, tempHp = 5, delta = -3)
+    )
+    assertEquals(
+      com.example.dnd35.viewmodel.HpAdjustment(currentHp = 8, tempHp = 0),
+      calculateHpAdjustment(currentHp = 10, maxHp = 20, tempHp = 2, delta = -4)
+    )
+  }
+
+  @Test
+  fun healingRestoresOnlyRegularHpAndNeverExceedsMaximum() {
+    assertEquals(
+      com.example.dnd35.viewmodel.HpAdjustment(currentHp = 15, tempHp = 4),
+      calculateHpAdjustment(currentHp = 10, maxHp = 20, tempHp = 4, delta = 5)
+    )
+    assertEquals(
+      com.example.dnd35.viewmodel.HpAdjustment(currentHp = 20, tempHp = 4),
+      calculateHpAdjustment(currentHp = 19, maxHp = 20, tempHp = 4, delta = 50)
+    )
+  }
+
+  @Test
+  fun damageCannotReduceRegularHpBelowZeroAndHandlesVeryLargeDamage() {
+    assertEquals(
+      com.example.dnd35.viewmodel.HpAdjustment(currentHp = 0, tempHp = 0),
+      calculateHpAdjustment(currentHp = 3, maxHp = 20, tempHp = 2, delta = -10)
+    )
+    assertEquals(
+      com.example.dnd35.viewmodel.HpAdjustment(currentHp = 0, tempHp = 0),
+      calculateHpAdjustment(currentHp = 3, maxHp = 20, tempHp = 2, delta = Int.MIN_VALUE)
+    )
+  }
 }

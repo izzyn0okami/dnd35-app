@@ -82,6 +82,29 @@ internal fun convertCoinBalancesToGold(
     )
 }
 
+internal data class HpAdjustment(val currentHp: Int, val tempHp: Int)
+
+/**
+ * Applies healing or damage to a character. Damage is absorbed by temporary HP
+ * first; healing restores only regular HP and never raises it above max HP.
+ */
+internal fun calculateHpAdjustment(currentHp: Int, maxHp: Int, tempHp: Int, delta: Int): HpAdjustment {
+    val safeMaxHp = maxHp.coerceAtLeast(0)
+    val safeCurrentHp = currentHp.coerceIn(0, safeMaxHp)
+    val safeTempHp = tempHp.coerceAtLeast(0)
+
+    if (delta >= 0) {
+        val healed = (safeCurrentHp.toLong() + delta.toLong()).coerceAtMost(safeMaxHp.toLong()).toInt()
+        return HpAdjustment(currentHp = healed, tempHp = safeTempHp)
+    }
+
+    val damage = -delta.toLong()
+    val absorbedByTemp = minOf(safeTempHp.toLong(), damage).toInt()
+    val remainingDamage = damage - absorbedByTemp
+    val newHp = (safeCurrentHp.toLong() - remainingDamage).coerceAtLeast(0L).toInt()
+    return HpAdjustment(currentHp = newHp, tempHp = safeTempHp - absorbedByTemp)
+}
+
 class CharacterViewModel(application: Application) : AndroidViewModel(application) {
 
     private val repository: CharacterRepository
@@ -257,8 +280,13 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
     // Gestão de Pontos de Vida
     fun adjustHp(delta: Int) {
         val curr = _activeCharacter.value ?: return
-        val newHp = (curr.currentHp + delta).coerceIn(0, curr.maxHp + curr.tempHp)
-        persistCharacter(curr.copy(currentHp = newHp))
+        val adjusted = calculateHpAdjustment(
+            currentHp = curr.currentHp,
+            maxHp = curr.maxHp,
+            tempHp = curr.tempHp,
+            delta = delta
+        )
+        persistCharacter(curr.copy(currentHp = adjusted.currentHp, tempHp = adjusted.tempHp))
     }
 
     fun setMaxHp(maxHp: Int) {
