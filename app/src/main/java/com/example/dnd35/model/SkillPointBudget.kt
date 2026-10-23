@@ -82,7 +82,14 @@ fun calculateSkillPointHistoryTotal(
     }
     val currentLevelHistory = history.filter { it.characterLevel in 1..totalCharacterLevel }
     val recordedLevels = currentLevelHistory.map { it.characterLevel }.toSet()
-    val complete = (1..totalCharacterLevel).all { it in recordedLevels }
+    val hasDuplicateLevels = currentLevelHistory
+        .groupingBy { it.characterLevel }
+        .eachCount()
+        .values
+        .any { it > 1 }
+    // Dois registros para o mesmo nível tornam o histórico ambíguo: não
+    // podemos somar ambos e apresentar o resultado como saldo confirmado.
+    val complete = !hasDuplicateLevels && (1..totalCharacterLevel).all { it in recordedLevels }
     val spent = currentLevelHistory.sumOf { record ->
         record.allocations.sumOf { it.pointsSpent.toDouble() }
     }.toFloat()
