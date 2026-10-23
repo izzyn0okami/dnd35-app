@@ -536,3 +536,11 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Evita que o cartão e o botão interno sejam expostos como duas ações sobrepostas para leitores de tela.
 - A rolagem continua usando a mesma função e os mesmos cálculos; nenhuma regra ou dado foi alterado.
 - A área de ação fica concentrada no botão visível; validar a usabilidade em aparelho físico posteriormente.
+
+
+## 2026-10-23 — Alvos de toque no cabeçalho da ficha
+
+- No cabeçalho de personagem (OverviewCombatTab.kt), ampliado de 34 dp para 48 dp o alvo do controle de edição da foto.
+- Ampliada de 34 dp para 48 dp a altura do botão “Gerenciar” classes/multiclasse, para facilitar o acionamento por toque.
+- Alterações de apresentação e usabilidade; não alteram regras, cálculos ou dados do personagem.
+- Aguardando CI. A adequação visual e o comportamento em aparelhos físicos ainda precisam de teste manual.
