@@ -2832,7 +2832,7 @@ object Dnd35Rules {
             duration = "8 horas (D)",
             savingThrow = "Vontade anula (objeto)",
             spellResistance = true,
-            description = "Protege um objeto contra efeitos de adivinhação que tentem localizá-lo.",
+            description = "Protege um objeto tocado de até 50 kg por nível contra localização por adivinhação. Se o próprio objeto for alvo, a tentativa falha automaticamente; se a adivinhação tiver outro alvo próximo, não consegue sentir o objeto protegido.",
             classLevels = mapOf("Bardo" to 1, "Clérigo" to 3, "Mago" to 2, "Feiticeiro" to 2)
         ),
         PresetSpell(
