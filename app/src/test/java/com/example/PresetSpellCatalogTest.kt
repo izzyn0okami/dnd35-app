@@ -31,7 +31,16 @@ class PresetSpellCatalogTest {
             "Invocar Instrumento",
             "Curar Ferimentos Mínimos",
             "Infligir Ferimentos Mínimos",
-            "Virtude"
+            "Virtude",
+            "Alarme",
+            "Causar Medo",
+            "Compreender Idiomas",
+            "Enfeitiçar Pessoa",
+            "Graxa",
+            "Detectar Portas Secretas",
+            "Retirada Acelerada",
+            "Proteção contra o Mal",
+            "Detectar Mortos-Vivos"
         ).forEach { name ->
             assertTrue("Magia ausente: $name", name in names)
         }
@@ -47,6 +56,11 @@ class PresetSpellCatalogTest {
         assertEquals(setOf("Clérigo", "Druida"), spells.getValue("Curar Ferimentos Mínimos").classes.toSet())
         assertEquals(0, spells.getValue("Virtude").classLevels.getValue("Druida"))
         assertEquals("Permanente", spells.getValue("Marca Arcana").duration)
+        assertEquals(setOf("Bardo", "Ranger", "Mago", "Feiticeiro"), spells.getValue("Alarme").classes.toSet())
+        assertEquals(setOf("Bardo", "Clérigo", "Mago", "Feiticeiro"), spells.getValue("Causar Medo").classes.toSet())
+        assertEquals(setOf("Clérigo", "Paladino", "Mago", "Feiticeiro"), spells.getValue("Proteção contra o Mal").classes.toSet())
+        assertEquals(1, spells.getValue("Proteção contra o Mal").classLevels.getValue("Paladino"))
+        assertTrue(spells.getValue("Proteção contra o Mal").spellResistance)
     }
 
     @Test
