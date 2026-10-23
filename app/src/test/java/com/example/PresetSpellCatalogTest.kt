@@ -43,7 +43,7 @@ class PresetSpellCatalogTest {
             "Detectar Mortos-Vivos",
             "Disfarçar-se",
             "Servo Invisível",
-            "Convocar Monstro I",
+            "Invocar Criaturas I",
             "Identificação",
             "Raio do Enfraquecimento",
             "Aumentar Pessoa",
@@ -200,7 +200,7 @@ class PresetSpellCatalogTest {
         val spells = Dnd35Rules.PRESET_SPELLS.associateBy { it.name }
         assertEquals(setOf("Bardo", "Mago", "Feiticeiro"), spells.getValue("Disfarçar-se").classes.toSet())
         assertEquals("18m", spells.getValue("Identificação").range)
-        assertEquals(setOf("Bardo", "Clérigo", "Mago", "Feiticeiro"), spells.getValue("Convocar Monstro I").classes.toSet())
+        assertEquals(setOf("Bardo", "Clérigo", "Mago", "Feiticeiro"), spells.getValue("Invocar Criaturas I").classes.toSet())
         assertEquals(setOf("Mago", "Feiticeiro"), spells.getValue("Raio do Enfraquecimento").classes.toSet())
         assertTrue(spells.getValue("Raio do Enfraquecimento").spellResistance)
         assertEquals(setOf("Clérigo", "Paladino", "Mago", "Feiticeiro"), spells.getValue("Arma Mágica").classes.toSet())
@@ -247,9 +247,9 @@ class PresetSpellCatalogTest {
     @Test
     fun firstLevelArcaneSpellBatchNineHasExpectedClassesAndMechanics() {
         val spells = Dnd35Rules.PRESET_SPELLS.associateBy { it.name }
-        assertEquals(setOf("Bardo", "Mago", "Feiticeiro"), spells.getValue("Animar Corda").classes.toSet())
-        assertEquals("Médio (30m + 3m/nível)", spells.getValue("Animar Corda").range)
-        assertFalse(spells.getValue("Animar Corda").spellResistance)
+        assertEquals(setOf("Bardo", "Mago", "Feiticeiro"), spells.getValue("Animar Cordas").classes.toSet())
+        assertEquals("Médio (30m + 3m/nível)", spells.getValue("Animar Cordas").range)
+        assertFalse(spells.getValue("Animar Cordas").spellResistance)
         assertEquals(setOf("Mago", "Feiticeiro"), spells.getValue("Ataque Certeiro").classes.toSet())
         assertEquals("Pessoal", spells.getValue("Ataque Certeiro").range)
         assertFalse(spells.getValue("Ataque Certeiro").spellResistance)
