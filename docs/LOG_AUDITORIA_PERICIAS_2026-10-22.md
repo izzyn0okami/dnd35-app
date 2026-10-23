@@ -860,3 +860,13 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Testes ampliados para presença, unicidade e disponibilidade por classe; novos testes cobrem classes e algumas propriedades mecânicas do lote.
 - A nomenclatura e os resumos mecânicos ainda exigem confronto final com a edição brasileira do Livro do Jogador; esta alteração não é apresentada como auditoria terminológica concluída.
 - A CI da PR deve passar antes do merge; não foi realizado teste local do Gradle nem teste manual em dispositivo.
+
+
+## 2026-10-23 — Ampliação de magias de 1º círculo, lote 5
+
+- Adicionadas oito entradas candidatas do Livro do Jogador: Bênção Maldita, Abençoar Água, Desespero, Resistir aos Elementos, Pedra Mágica, Porrete Mágico, Detectar Animais ou Plantas e Ocultar-se de Animais.
+- Ampliados os testes de presença, nomes únicos, classes e propriedades mecânicas selecionadas.
+- Escopo continua limitado ao Livro do Jogador 3.5; as descrições são resumos funcionais, não transcrições.
+- A tradução dos nomes deve ser confrontada com a edição brasileira antes de considerar a terminologia fechada. As classes e mecânicas devem ser revistas também contra as listas do PHB/SRD; referências em inglês não substituem essa conferência.
+- Não considerar o catálogo completo. A CI do commit final deve passar antes de integrar; teste manual no Android continua pendente.
+- Referência mecânica auxiliar: https://www.d20srd.org/srd/spells/bane.htm ; https://www.d20srd.org/srd/spells/blessWater.htm ; https://www.d20srd.org/srd/spells/doom.htm ; https://www.d20srd.org/srd/spells/endureElements.htm ; https://www.d20srd.org/srd/spells/magicStone.htm ; https://www.d20srd.org/srd/spells/shillelagh.htm ; https://www.d20srd.org/srd/spells/detectAnimalsOrPlants.htm ; https://www.d20srd.org/srd/spells/hideFromAnimals.htm.
