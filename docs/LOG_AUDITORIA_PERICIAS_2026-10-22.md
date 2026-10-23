@@ -456,11 +456,13 @@ Continuar a auditoria de regras sem repetir os assuntos resolvidos. Próximo foc
 
 ## 2026-10-22 — Auditoria de UI e usabilidade
 
-Correções propostas para integração após CI:
+Correções implementadas nesta PR; aguardar CI e teste manual antes do merge:
 - Exclusão de talentos, magias e itens exige confirmação explícita.
 - Alvos de toque de editar/excluir e controles de espaços de magia ampliados para 48 dp nos pontos revisados.
 - Rolagem de d20 usa o título da ação; 20/1 naturais fora de ataques deixam de ser chamados de acerto/falha crítica, e dano da arma só aparece em ataques.
 - Entradas de PV rejeitam valores inválidos/negativos e não fecham o diálogo sem alteração válida; nível inválido não é convertido silenciosamente em nível 1.
 - Ouro rápido rejeita entradas inválidas ou não positivas em vez de converter silenciosamente para zero ou inverter gasto/ganho.
+- Diálogos de item, magia, talento, armadura e atributos bloqueiam o salvamento quando os dados numéricos obrigatórios são inválidos ou o nome está vazio.
+- Controles de PV reorganizados em duas linhas para reduzir compressão/corte em telas estreitas.
 
 Limitações: a validação estática não substitui build/CI nem teste visual em telas estreitas. Nenhuma regra de D&D 3.5 foi alterada. A validação numérica restante dos diálogos de armadura/atributos/itens e a padronização visual global precisam de revisão adicional antes do merge.

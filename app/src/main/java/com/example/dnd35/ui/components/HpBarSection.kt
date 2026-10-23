@@ -211,42 +211,47 @@ fun HpBarSection(
 
             Spacer(modifier = Modifier.height(12.dp))
 
-            // Botões rápidos de ajuste
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween
-            ) {
-                QuickHpButton(label = "-5", color = DndCrimson) { onAdjustHp(-5) }
-                QuickHpButton(label = "-1", color = DndCrimson) { onAdjustHp(-1) }
-                QuickHpButton(label = "+1", color = DndHpGreen) { onAdjustHp(1) }
-                QuickHpButton(label = "+5", color = DndHpGreen) { onAdjustHp(5) }
-
-                OutlinedButton(
-                    onClick = { showCustomHpDialog = "DANO" },
-                    modifier = Modifier.height(36.dp),
-                    shape = RoundedCornerShape(8.dp)
+            // Controles em duas linhas para reduzir cortes em telas estreitas
+            Column(modifier = Modifier.fillMaxWidth()) {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween
                 ) {
-                    Text("Dano", style = MaterialTheme.typography.labelSmall)
+                    QuickHpButton(label = "-5", color = DndCrimson) { onAdjustHp(-5) }
+                    QuickHpButton(label = "-1", color = DndCrimson) { onAdjustHp(-1) }
+                    QuickHpButton(label = "+1", color = DndHpGreen) { onAdjustHp(1) }
+                    QuickHpButton(label = "+5", color = DndHpGreen) { onAdjustHp(5) }
                 }
-
-                OutlinedButton(
-                    onClick = { showCustomHpDialog = "CURA" },
-                    modifier = Modifier.height(36.dp),
-                    shape = RoundedCornerShape(8.dp)
+                Spacer(modifier = Modifier.height(8.dp))
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
-                    Icon(Icons.Default.Healing, contentDescription = null, modifier = Modifier.size(14.dp), tint = DndHpGreen)
-                    Spacer(modifier = Modifier.width(2.dp))
-                    Text("Cura", style = MaterialTheme.typography.labelSmall)
-                }
-
-                OutlinedButton(
-                    onClick = { showCustomHpDialog = "TEMP" },
-                    modifier = Modifier.height(36.dp),
-                    shape = RoundedCornerShape(8.dp)
-                ) {
-                    Icon(Icons.Default.Shield, contentDescription = null, modifier = Modifier.size(14.dp), tint = DndTempPurple)
-                    Spacer(modifier = Modifier.width(2.dp))
-                    Text("Temp", style = MaterialTheme.typography.labelSmall)
+                    OutlinedButton(
+                        onClick = { showCustomHpDialog = "DANO" },
+                        modifier = Modifier.weight(1f).height(40.dp),
+                        shape = RoundedCornerShape(8.dp)
+                    ) {
+                        Text("Dano", style = MaterialTheme.typography.labelSmall)
+                    }
+                    OutlinedButton(
+                        onClick = { showCustomHpDialog = "CURA" },
+                        modifier = Modifier.weight(1f).height(40.dp),
+                        shape = RoundedCornerShape(8.dp)
+                    ) {
+                        Icon(Icons.Default.Healing, contentDescription = null, modifier = Modifier.size(14.dp), tint = DndHpGreen)
+                        Spacer(modifier = Modifier.width(2.dp))
+                        Text("Cura", style = MaterialTheme.typography.labelSmall)
+                    }
+                    OutlinedButton(
+                        onClick = { showCustomHpDialog = "TEMP" },
+                        modifier = Modifier.weight(1f).height(40.dp),
+                        shape = RoundedCornerShape(8.dp)
+                    ) {
+                        Icon(Icons.Default.Shield, contentDescription = null, modifier = Modifier.size(14.dp), tint = DndTempPurple)
+                        Spacer(modifier = Modifier.width(2.dp))
+                        Text("Temp", style = MaterialTheme.typography.labelSmall)
+                    }
                 }
             }
         }
