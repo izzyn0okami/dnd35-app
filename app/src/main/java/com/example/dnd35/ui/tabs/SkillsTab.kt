@@ -148,7 +148,7 @@ fun SkillsTab(
                 )
                 if (languageSource == LanguageAcquisitionSource.PURCHASED) {
                     if (level == null || level !in 1..stats.totalCharacterLevel) {
-                        languageAcquisitionError = "Informe um nível de personagem válido, entre 1 e \${stats.totalCharacterLevel}."
+                        languageAcquisitionError = "Informe um nível de personagem válido, entre 1 e ${stats.totalCharacterLevel}."
                         return
                     }
                     val recordsForLevel = skillPointHistory.filter { it.characterLevel == level }
