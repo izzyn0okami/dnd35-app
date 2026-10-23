@@ -780,3 +780,15 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Teste de catálogo atualizado para exigir pelo menos 52 entradas e verificar os nomes novos, além da unicidade.
 - A lista ainda é parcial e precisa de auditoria de todos os requisitos/benefícios com a edição brasileira do Livro do Jogador 3.5. Não usar suplementos. Catálogo de magias continua pendente; ainda não foi alterado neste lote.
 - Sem execução Gradle local ou teste manual Android; aguardar CI antes de merge.
+
+
+## 2026-10-23 — Expansão inicial do catálogo de magias do Livro do Jogador
+
+- PR #150 integrada após CI aprovada: catálogo de talentos passou a 52 entradas; commit de merge `8241b5daaedead7633b5a3eefda165ccdea0a0dc`.
+- Antes de abrir este lote, a busca de PRs abertas não encontrou PR pendente.
+- Iniciada a ampliação do catálogo de magias com oito truques adicionais: Criar Água, Detectar Veneno, Consertar, Mensagem, Abrir/Fechar, Prestidigitação, Purificar Alimentos e Bebidas e Atordoar.
+- O modelo `PresetSpell` agora aceita `classLevels`, para registrar o nível específico de cada classe sem depender de um nível único. O filtro por classe e a seleção de magia usam o nível da classe selecionada; a interface também exibe os níveis por classe.
+- Para Detectar Veneno, foram registrados os níveis 0 para Clérigo/Druida e 1 para Paladino/Ranger. O nível geral permanece 0 como referência para o filtro “Todas”.
+- Adicionado `PresetSpellCatalogTest.kt` para verificar as novas entradas, nomes únicos, níveis válidos e correspondência entre classes e níveis.
+- Este é somente o primeiro lote: o catálogo ainda está longe de conter todas as magias do Livro do Jogador. Os metadados existentes também precisam de auditoria item a item contra a edição brasileira; não tratar os dados atuais como integralmente validados.
+- Sem teste Gradle local ou teste manual Android nesta etapa. Aguardar CI aprovada antes de integrar.
