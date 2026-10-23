@@ -95,4 +95,29 @@ class SkillPointBudgetTest {
         )
         assertNotNull(calculateSkillPointHistoryTotal(history, totalCharacterLevel = 2))
     }
+
+    @Test
+    fun duplicateCurrentLevelRecordsMakeHistoryIncomplete() {
+        val levelOne = SkillPointLevelRecord(
+            characterLevel = 1,
+            className = "Guerreiro",
+            availablePoints = 12f,
+            allocations = listOf(SkillPointAllocation("Escalar", 2f))
+        )
+        val history = listOf(
+            levelOne,
+            levelOne.copy(allocations = listOf(SkillPointAllocation("Saltar", 3f))),
+            SkillPointLevelRecord(
+                characterLevel = 2,
+                className = "Guerreiro",
+                availablePoints = 3f,
+                allocations = listOf(SkillPointAllocation("Ouvir", 1f))
+            )
+        )
+
+        val result = calculateSkillPointHistoryTotal(history, totalCharacterLevel = 2)
+
+        assertEquals(false, result.isComplete)
+    }
+
 }
