@@ -570,3 +570,11 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Se os gastos registrados excederem o orçamento, o resumo informa o excesso e usa a cor de erro; saldo positivo e saldo zero são diferenciados.
 - O cálculo usa somente registros dos níveis atuais, mantendo o comportamento existente para registros de níveis futuros. Não altera nem gera automaticamente gastos históricos, graduações ou orçamentos.
 - Aguardar CI da PR. A validação manual em aparelho e em tela estreita permanece pendente.
+
+## 2026-10-23 — Histórico de perícias com níveis duplicados
+
+- A revisão do saldo agregado identificou um caso em que o histórico poderia ser considerado completo mesmo com dois registros para o mesmo nível, desde que todos os níveis também estivessem representados.
+- Como esses registros podem duplicar o orçamento e os gastos, o histórico passa a ser marcado como incompleto se qualquer nível atual aparecer mais de uma vez. A interface então não apresenta saldo histórico confirmado.
+- Adicionado teste automatizado para cobrir a duplicação. Os registros existentes não são apagados nem corrigidos automaticamente.
+- Aguardar CI da PR antes do merge; teste manual em aparelho continua pendente.
+
