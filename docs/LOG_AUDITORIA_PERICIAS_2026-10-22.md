@@ -661,3 +661,13 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Adicionado teste unitário para rejeitar vazio/espaços, remover espaços nas extremidades e preservar espaços internos.
 - Escopo intencionalmente isolado: não altera o gerenciamento de multiclasse, a persistência geral nem os formulários de outros campos.
 - PR #136 aberta: https://github.com/izzyn0okami/dnd35-app/pull/136. A CI ainda precisa concluir testes unitários, compilação do APK de depuração e upload do artefato. Teste manual Android pendente; não integrar sem CI aprovada e autorização explícita.
+
+
+## Correção de formulário — ajuste detalhado de moedas (PR em andamento)
+
+- Corrigido o diálogo **Ajustar Moedas** para não substituir silenciosamente entradas inválidas pelos saldos anteriores.
+- O formulário agora valida os quatro valores antes de atualizar qualquer saldo; em caso de erro, mostra mensagem e permanece aberto, sem chamar a atualização.
+- Valores negativos, vazios, malformados, NaN e infinitos são rejeitados. A entrada aceita vírgula decimal para usuários em português.
+- Adicionado teste unitário para valores inteiros/decimais, vírgula decimal e entradas inválidas.
+- PR #136 integrada por squash em `main` (commit `2a019e86a2dab5ce56168f37a193bd7a199b7f9a`); CI aprovada antes do merge. Teste manual no aparelho continua pendente.
+- Esta correção de moedas será proposta em PR separada; não integrada ainda.

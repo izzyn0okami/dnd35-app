@@ -73,6 +73,12 @@ import com.example.ui.theme.DndGold
 import com.example.ui.theme.DndHpGreen
 import com.example.ui.theme.DndHpYellow
 
+internal fun parseNonNegativeCoinAmount(raw: String): Float? {
+    val normalized = raw.trim().replace(',', '.')
+    val amount = normalized.toFloatOrNull() ?: return null
+    return amount.takeIf { it.isFinite() && it >= 0f }
+}
+
 @Composable
 fun InventoryTab(
     viewModel: CharacterViewModel,
@@ -612,6 +618,7 @@ fun InventoryTab(
         var spText by remember { mutableStateOf("${character.silverSp.toInt()}") }
         var cpText by remember { mutableStateOf("${character.copperCp.toInt()}") }
         var ppText by remember { mutableStateOf("${character.platinumPp.toInt()}") }
+        var coinValidationError by remember { mutableStateOf<String?>(null) }
 
         AlertDialog(
             onDismissRequest = { showCoinsModal = false },
@@ -627,7 +634,7 @@ fun InventoryTab(
 
                     OutlinedTextField(
                         value = gpText,
-                        onValueChange = { gpText = it },
+                        onValueChange = { gpText = it; coinValidationError = null },
                         label = { Text("Peças de Ouro (PO)") },
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                         modifier = Modifier.fillMaxWidth(),
@@ -636,7 +643,7 @@ fun InventoryTab(
                     Spacer(modifier = Modifier.height(8.dp))
                     OutlinedTextField(
                         value = spText,
-                        onValueChange = { spText = it },
+                        onValueChange = { spText = it; coinValidationError = null },
                         label = { Text("Peças de Prata (PP)") },
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                         modifier = Modifier.fillMaxWidth(),
@@ -645,7 +652,7 @@ fun InventoryTab(
                     Spacer(modifier = Modifier.height(8.dp))
                     OutlinedTextField(
                         value = cpText,
-                        onValueChange = { cpText = it },
+                        onValueChange = { cpText = it; coinValidationError = null },
                         label = { Text("Peças de Cobre (PC)") },
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                         modifier = Modifier.fillMaxWidth(),
@@ -654,20 +661,28 @@ fun InventoryTab(
                     Spacer(modifier = Modifier.height(8.dp))
                     OutlinedTextField(
                         value = ppText,
-                        onValueChange = { ppText = it },
+                        onValueChange = { ppText = it; coinValidationError = null },
                         label = { Text("Peças de Platina (PL)") },
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                         modifier = Modifier.fillMaxWidth(),
                         singleLine = true
                     )
+                    coinValidationError?.let { message ->
+                        Spacer(modifier = Modifier.height(8.dp))
+                        Text(message, color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodySmall)
+                    }
                 }
             },
             confirmButton = {
                 Button(onClick = {
-                    val gp = gpText.toFloatOrNull()?.coerceAtLeast(0f) ?: character.goldGp
-                    val sp = spText.toFloatOrNull()?.coerceAtLeast(0f) ?: character.silverSp
-                    val cp = cpText.toFloatOrNull()?.coerceAtLeast(0f) ?: character.copperCp
-                    val pp = ppText.toFloatOrNull()?.coerceAtLeast(0f) ?: character.platinumPp
+                    val gp = parseNonNegativeCoinAmount(gpText)
+                    val sp = parseNonNegativeCoinAmount(spText)
+                    val cp = parseNonNegativeCoinAmount(cpText)
+                    val pp = parseNonNegativeCoinAmount(ppText)
+                    if (gp == null || sp == null || cp == null || pp == null) {
+                        coinValidationError = "Informe valores numéricos válidos e não negativos para todas as moedas."
+                        return@Button
+                    }
                     viewModel.updateCoins(gp, sp, cp, pp)
                     showCoinsModal = false
                 }) {
