@@ -941,3 +941,12 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - A tradução oficial brasileira de “Erase” e “Chill Touch”, bem como a redação resumida dos efeitos, precisa de conferência direta no Livro do Jogador 3.5; SRD em inglês é referência mecânica auxiliar.
 - Não integrar antes de CI verde no SHA final e nova verificação do estado da PR. Teste manual Android não realizado.
 - Referências mecânicas auxiliares: https://www.d20srd.org/srd/spells/erase.htm ; https://www.d20srd.org/srd/spells/chillTouch.htm.
+
+
+## 2026-10-23 — Revisão mecânica de magias de 1º círculo
+
+- Corrigido o campo de resistência à magia de **Suportar Elementos**: a magia não permite resistência à magia.
+- Acrescentado teste de regressão para evitar que o campo volte a indicar resistência.
+- A conferência de cobertura das magias de 1º círculo continua em andamento; as descrições localizadas devem ser comparadas diretamente com o Livro do Jogador brasileiro. A SRD é referência mecânica auxiliar.
+- Referência mecânica auxiliar: https://www.d20srd.org/srd/spells/endureElements.htm.
+- Não integrar antes de CI verde no SHA final e revalidação da PR; teste manual Android não realizado.
