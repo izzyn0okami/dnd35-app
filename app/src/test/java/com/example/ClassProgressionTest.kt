@@ -171,6 +171,15 @@ class ClassProgressionTest {
     }
 
     @Test
+    fun rangerHideInPlainSightDocumentsTheNaturalTerrainDistance() {
+        val ranger = Dnd35Rules.CLASSES.single { it.name == "Ranger" }
+        val ability = ranger.features.single { it.level == 18 && it.name == "Esconder-se à Plena Vista" }
+        assertTrue(ability.description.contains("mesmo enquanto observado"))
+        assertTrue(ability.description.contains("3 metros"))
+        assertTrue(ability.description.contains("sem cobertura ou camuflagem"))
+    }
+
+    @Test
     fun representativeClassProgressionsMatchThePlayerHandbook() {
         val classes = Dnd35Rules.CLASSES.associateBy { it.name }
 
