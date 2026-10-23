@@ -329,4 +329,14 @@ class PresetSpellCatalogTest {
         assertFalse(spell.spellResistance)
     }
 
+    @Test
+    fun cureLightWoundsUsesClassSpecificSpellLevel() {
+        val spell = Dnd35Rules.PRESET_SPELLS.first { it.name == "Curar Ferimentos Leves" }
+        assertEquals(1, spell.classLevels.getValue("Clérigo"))
+        assertEquals(1, spell.classLevels.getValue("Druida"))
+        assertEquals(1, spell.classLevels.getValue("Bardo"))
+        assertEquals(1, spell.classLevels.getValue("Paladino"))
+        assertEquals(2, spell.classLevels.getValue("Ranger"))
+    }
+
 }

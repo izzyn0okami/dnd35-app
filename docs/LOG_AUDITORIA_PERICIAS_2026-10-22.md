@@ -978,7 +978,7 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 ### Correção de catálogo em andamento
 
 - **PR #166 — Corrige resistência à magia de Suportar Elementos:** altera `spellResistance` para `false` e adiciona teste de regressão. A SRD indica que a magia não permite resistência à magia: https://www.d20srd.org/srd/spells/endureElements.htm.
-- A PR #166 permanece pendente de CI verde no SHA final e revalidação do estado/mergeabilidade antes do merge. Não a considerar integrada até o log registrar o resultado real.
+- **Integrada em 2026-10-23** no commit `1668ebe7141a7b53d5abd1bddfe79eab6a71746e`; CI Android #986 concluiu com sucesso no SHA da PR `0cbed7f70c74d4d2d74a9ef064568c4bfcd03297`. Não houve teste manual em dispositivo.
 
 ### Contagem observada e limites
 
@@ -988,7 +988,22 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 
 ### Próxima sequência recomendada
 
-1. Acompanhar a CI da PR #166; se falhar, inspecionar a falha e corrigir antes de integrar.
-2. Após eventual merge, continuar a auditoria de 1º círculo por comparação sistemática com o *Livro do Jogador*, verificando primeiro ausências reais e depois os campos das entradas existentes.
+1. PR #166 integrada com CI verde; a correção está na `main`.
+2. Continuar a auditoria de 1º círculo por comparação sistemática com o *Livro do Jogador*, verificando primeiro ausências reais e depois os campos das entradas existentes.
 3. Consultar este índice e os registros por lote antes de cada nova PR; agrupar alterações pequenas e coerentes, com testes e atualização do log na mesma PR.
 4. Só depois de concluir e registrar a etapa de magias, retomar a auditoria de talentos conforme o escopo combinado.
+
+
+---
+
+## 2026-10-23 — Níveis de magia específicos por classe
+
+- Durante a revisão do modelo de níveis por classe, foi identificado que **Curar Ferimentos Leves** estava cadastrado como nível 1 para todas as classes, embora seja nível 2 para Ranger na lista de classe da SRD 3.5.
+- O modelo `PresetSpell` já possui `classLevels`, e a tela de catálogo já usa esse mapa para filtrar e criar a magia com o nível correto quando uma classe específica está selecionada. Porém, a entrada de Curar Ferimentos Leves não fornecia o mapa explícito.
+- Corrigida a entrada para registrar Clérigo 1, Druida 1, Bardo 1, Paladino 1 e Ranger 2.
+- Corrigido o indicador de nível no cartão do catálogo para mostrar o nível da classe selecionada, em vez de sempre mostrar o campo genérico `preset.level`.
+- Adicionado teste de regressão `cureLightWoundsUsesClassSpecificSpellLevel`.
+- Referência mecânica auxiliar: lista de magias SRD 3.5, que registra Curar Ferimentos Leves como magia de 2º nível para Ranger: https://www.d20srd.org/indexes/spellLists.htm.
+- A SRD não confirma o nome oficial em português; conferir a redação e a lista brasileira do *Livro do Jogador* continua pendente.
+- Contagem do catálogo de nível 1 não deve ser interpretada como cobertura completa. Continuar a comparação por classe e revisar todas as magias com níveis divergentes.
+- Esta alteração está em PR própria; não considerar integrada até a CI concluir com sucesso no SHA final e o merge ser confirmado.

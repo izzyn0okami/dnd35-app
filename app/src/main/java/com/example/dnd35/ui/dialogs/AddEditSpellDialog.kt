@@ -192,6 +192,11 @@ fun AddEditSpellDialog(
                             .height(250.dp)
                     ) {
                         items(filtered) { preset ->
+                            val displayedLevel = if (selectedClassFilter == "Todas") {
+                                preset.level
+                            } else {
+                                preset.classLevels[selectedClassFilter] ?: preset.level
+                            }
                             Card(
                                 modifier = Modifier
                                     .fillMaxWidth()
@@ -230,7 +235,7 @@ fun AddEditSpellDialog(
                                                 shape = RoundedCornerShape(4.dp)
                                             ) {
                                                 Text(
-                                                    text = if (preset.level == 0) "Nv 0" else "Nv ${preset.level}",
+                                                    text = if (displayedLevel == 0) "Nv 0" else "Nv ${displayedLevel}",
                                                     color = Color.White,
                                                     style = MaterialTheme.typography.labelSmall,
                                                     fontWeight = FontWeight.Bold,
