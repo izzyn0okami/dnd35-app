@@ -642,3 +642,13 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Não foi identificada divergência concreta no código de produção nesta passagem. Para evitar regressões, a PR atual adiciona testes que conferem os tipos das onze classes e as fórmulas em todos os níveis de 1 a 20.
 - A conclusão depende da CI da PR atual. Esta verificação não substitui cotejo integral com a edição brasileira do Livro do Jogador; a auditoria geral de características e terminologia permanece aberta. Não houve teste manual no Android.
 - Próximo passo: após CI aprovada, integrar os testes e continuar a comparação das características escalonadas das classes básicas contra o Livro do Jogador brasileiro, sem reabrir itens resolvidos sem evidência nova.
+
+
+## 2026-10-23 — Correção de histórico: auditoria prévia de BBA, resistências e características de classe
+
+- Revisão retrospectiva após a PR #133: as progressões de BBA e resistências já tinham sido auditadas e cobertas parcialmente pela PR #101, que verifica as fórmulas em todos os níveis de 1 a 20 e confere as configurações de Guerreiro, Ladino, Mago e Monge. Portanto, não registrar essa etapa como uma auditoria inédita.
+- A PR #133 foi integrada por squash no commit `2d5fcaa4fccdb19e30e93b6678da7a660528c6f6`; a CI `Android build` passou no run https://github.com/izzyn0okami/dnd35-app/actions/runs/39893110675. Seu teste de configuração das onze classes amplia a cobertura da PR #101, enquanto o segundo teste repete a verificação das fórmulas gerais já existente. Não houve alteração de código de produção.
+- As características escalonadas também já foram auditadas em parte: PR #102 corrigiu progressões concretas e PR #103 documentou a revisão estática das onze classes, incluindo as conferências do Druida, Paladino, Ranger, Clérigo, Guerreiro, Feiticeiro e Mago, além da revisão cruzada de condições de Evasão que levou às PRs #104 e #105.
+- O estado correto é: as progressões gerais de BBA/resistências e várias progressões de classe já foram examinadas; a auditoria integral de todas as descrições, condições e terminologia da edição brasileira continua aberta. Não reabrir as correções já integradas sem evidência nova.
+- Próximo passo: continuar a revisão cruzada ainda pendente das descrições de características de classe, usando o Livro do Jogador brasileiro como referência prioritária e registrando apenas discrepâncias novas e comprováveis. Não repetir a verificação de fórmulas gerais já coberta pela PR #101.
+- Validação manual Android continua pendente; a CI aprovada não substitui teste no aparelho.
