@@ -2748,7 +2748,7 @@ object Dnd35Rules {
             name = "Apagar",
             level = 1,
             school = "Transmutação",
-            classes = listOf("Bardo", "Mago", "Feiticeiro"),
+            classes = listOf("Mago", "Feiticeiro"),
             castTime = "1 ação padrão",
             components = "V, S",
             range = "Curto (7,5m + 1,5m/2 níveis)",
