@@ -146,6 +146,26 @@ class PresetSpellCatalogTest {
     }
 
     @Test
+    fun firstLevelNatureSpellBatchEightHasExpectedClassesAndMechanics() {
+        val spells = Dnd35Rules.PRESET_SPELLS.associateBy { it.name }
+        val calmAnimals = spells.getValue("Acalmar Animais")
+        assertEquals(setOf("Druida", "Ranger"), calmAnimals.classes.toSet())
+        assertEquals("1 minuto/nível", calmAnimals.duration)
+        assertTrue(calmAnimals.spellResistance)
+
+        val detectTraps = spells.getValue("Detectar Laços e Covas")
+        assertEquals(setOf("Druida", "Ranger"), detectTraps.classes.toSet())
+        assertEquals("18m/nível", detectTraps.range)
+        assertFalse(detectTraps.spellResistance)
+
+        val summonNature = spells.getValue("Convocar Aliado da Natureza I")
+        assertEquals(setOf("Druida", "Ranger"), summonNature.classes.toSet())
+        assertEquals("1 rodada", summonNature.castTime)
+        assertEquals("1 rodada/nível", summonNature.duration)
+        assertFalse(summonNature.spellResistance)
+    }
+
+    @Test
     fun classSpellLevelsAreValidAndMatchListedClasses() {
         Dnd35Rules.PRESET_SPELLS.forEach { spell ->
             assertTrue("Nível geral inválido: ${spell.name}", spell.level in 0..9)
