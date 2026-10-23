@@ -2177,6 +2177,47 @@ object Dnd35Rules {
             description = "Detecta a presença de auras de ordem em criaturas, magias ou objetos dentro do alcance."
         ),
 
+        // Magias adicionais de 1º círculo — lote 7: proteções contra tendências
+        PresetSpell(
+            name = "Proteção contra o Caos",
+            level = 1,
+            school = "Abjuração",
+            classes = listOf("Clérigo", "Paladino", "Mago", "Feiticeiro"),
+            castTime = "1 ação padrão",
+            components = "V, S, M/DF",
+            range = "Toque",
+            duration = "1 minuto/nível",
+            savingThrow = "Vontade anula (inofensivo)",
+            spellResistance = true,
+            description = "Concede proteção defensiva contra criaturas caóticas, protege contra controle mental e impede contato corporal de criaturas convocadas caóticas."
+        ),
+        PresetSpell(
+            name = "Proteção contra o Bem",
+            level = 1,
+            school = "Abjuração",
+            classes = listOf("Clérigo", "Paladino", "Mago", "Feiticeiro"),
+            castTime = "1 ação padrão",
+            components = "V, S, M/DF",
+            range = "Toque",
+            duration = "1 minuto/nível",
+            savingThrow = "Vontade anula (inofensivo)",
+            spellResistance = true,
+            description = "Concede proteção defensiva contra criaturas boas, protege contra controle mental e impede contato corporal de criaturas convocadas boas."
+        ),
+        PresetSpell(
+            name = "Proteção contra a Ordem",
+            level = 1,
+            school = "Abjuração",
+            classes = listOf("Clérigo", "Mago", "Feiticeiro"),
+            castTime = "1 ação padrão",
+            components = "V, S, M/DF",
+            range = "Toque",
+            duration = "1 minuto/nível",
+            savingThrow = "Vontade anula (inofensivo)",
+            spellResistance = true,
+            description = "Concede proteção defensiva contra criaturas ordeiras, protege contra controle mental e impede contato corporal de criaturas convocadas ordeiras."
+        ),
+
         // CÍRCULO 2
         PresetSpell(
             name = "Invisibilidade",
