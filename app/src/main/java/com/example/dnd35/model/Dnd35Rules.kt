@@ -802,10 +802,10 @@ object Dnd35Rules {
         FeatDefinition("Combater com Duas Armas Maior", "DES 19, BBA +11, Combater com Duas Armas Aprimorado", "Concede um terceiro ataque com a arma da mão secundária.", "Você recebe um terceiro ataque com a arma da mão secundária com BBA -10."),
         FeatDefinition("Saque Rápido", "BBA +1", "Saca armas como ação livre.", "Você pode sacar uma arma como ação livre, em vez de ação de movimento. Pode sacar uma arma escondida como ação de movimento e arremessar armas na sua taxa normal de ataques."),
         FeatDefinition("Magia em Combate", "Nenhum", "Melhora a concentração ao conjurar na defensiva.", "Você recebe +4 nos testes de Concentração realizados para conjurar magias na defensiva ou enquanto estiver agarrado ou imobilizado."),
-        FeatDefinition("Foco em Magia", "Habilidade de conjurar magias", "Aumenta a CD das magias de uma escola.", "Escolha uma escola de magia. A CD dos testes de resistência contra suas magias dessa escola aumenta em +1."),
+        FeatDefinition("Foco em Magia", "Capacidade de conjurar magias de 1º nível ou superior", "Aumenta a CD das magias de uma escola.", "Escolha uma escola de magia. A CD dos testes de resistência contra suas magias dessa escola aumenta em +1."),
         FeatDefinition("Foco em Magia Maior", "Foco em Magia na mesma escola", "Aumenta adicionalmente a CD das magias de uma escola.", "Escolha uma escola para a qual já tenha Foco em Magia. A CD dos testes de resistência contra suas magias dessa escola aumenta em mais +1."),
         FeatDefinition("Sucesso Decisivo Aprimorado", "Proficiência com a arma escolhida, BBA +8", "Dobra a margem de ameaça da arma escolhida.", "Escolha uma arma para a qual tenha proficiência. A margem de ameaça dessa arma é dobrada. Este efeito não se acumula com outros efeitos que ampliem a margem de ameaça."),
-        FeatDefinition("Tiro em Combate", "DES 13", "Reduz a penalidade por disparar ou arremessar em combate corpo a corpo.", "Você pode disparar ou arremessar uma arma à distância contra um oponente envolvido em combate corpo a corpo sem sofrer a penalidade de -4 nas jogadas de ataque.")
+        FeatDefinition("Tiro Longo", "Tiro Certeiro", "Dobra o incremento de distância de armas de ataque à distância.", "Quando usa uma arma de ataque à distância, seu incremento de distância é dobrado. Para armas de arremesso, o incremento de distância é multiplicado por 2; para armas de projéteis, também é multiplicado por 2.")
     )
 
     // ==========================================
