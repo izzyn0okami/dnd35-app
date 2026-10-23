@@ -880,3 +880,12 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - A lista de classes por magia e alguns campos mecânicos precisam de revisão final com o Livro do Jogador; nomes traduzidos de fontes secundárias não são considerados prova definitiva.
 - Não realizar merge sem CI verde para o SHA mais recente.
 - Referências mecânicas auxiliares: https://www.d20srd.org/srd/spells/curseWater.htm ; https://www.d20srd.org/srd/spells/entropicShield.htm ; https://www.d20srd.org/srd/spells/hideFromUndead.htm ; https://www.d20srd.org/srd/spells/deathwatch.htm ; https://www.d20srd.org/srd/spells/detectGood.htm ; https://www.d20srd.org/srd/spells/detectEvil.htm ; https://www.d20srd.org/srd/spells/detectChaos.htm ; https://www.d20srd.org/srd/spells/detectLaw.htm.
+
+
+## 2026-10-23 — Magias de proteção contra tendências, lote 7
+
+- Acrescentadas três entradas candidatas de 1º círculo: Proteção contra o Caos, Proteção contra o Bem e Proteção contra a Lei.
+- Testes cobrem presença indireta por consulta ao catálogo, listas de classe, alcance, duração, resistência à magia e unicidade global dos nomes.
+- As listas de classe e a terminologia permanecem provisórias até confronto direto com a edição brasileira do Livro do Jogador 3.5; SRD em inglês é apenas referência mecânica.
+- Não considerar concluída a cobertura de magias de 1º círculo. Exigir CI verde no SHA final antes de integrar; teste manual Android continua pendente.
+- Referências mecânicas auxiliares: https://www.d20srd.org/srd/spells/protectionFromChaos.htm ; https://www.d20srd.org/srd/spells/protectionFromGood.htm ; https://www.d20srd.org/srd/spells/protectionFromLaw.htm.
