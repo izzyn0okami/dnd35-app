@@ -1267,3 +1267,12 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Os níveis por classe seguem as listas e os verbetes do *Livro do Jogador* brasileiro: Detectar Armadilhas e Invisibilidade Contra Animais são Druida 1/Ranger 1; Mensageiro Animal é Bardo 2/Druida 2/Ranger 1.
 - Adicionados testes de regressão para níveis por classe, componentes, alcance/duração, resistência à magia e teste de resistência.
 - Fonte primária: PDF do *Livro do Jogador* fornecido pelo usuário, verbetes dessas três magias. A auditoria de cobertura das listas de Ranger ainda não está concluída.
+
+---
+
+## 2026-10-23 — Cobertura adicional de magias de 2º nível de Ranger
+
+- Adicionadas seis magias ausentes do catálogo pré-definido, com níveis por classe conferidos nos verbetes do *Livro do Jogador*: **Falar com Plantas**, **Imobilizar Animal**, **Muralha de Vento**, **Pele de Árvore**, **Proteção Contra Elementos** e **Sabedoria da Coruja**.
+- Registrados testes de regressão para níveis por classe e campos principais de cada magia.
+- A lista de Ranger ainda tem itens pendentes de conferência/inclusão, incluindo **Invocar Aliado da Natureza II**. Este lote não significa que o catálogo esteja completo.
+- Fonte primária: PDF brasileiro do *Livro do Jogador* fornecido no projeto; níveis e detalhes foram extraídos dos verbetes correspondentes.
