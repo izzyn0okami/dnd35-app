@@ -1336,3 +1336,15 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Adicionados testes de regressão para níveis por classe, componentes, duração e efeitos descritos.
 - Fonte primária: PDF brasileiro *D&D 3.5 — Livro do Jogador* fornecido no projeto, lista de magias de 3º nível de Ranger (p. 165) e verbetes correspondentes.
 - A auditoria da lista de Ranger continua em andamento; os demais itens de 3º nível serão conferidos em lotes posteriores. Nenhum teste manual em dispositivo Android foi realizado nesta etapa.
+
+
+---
+
+## 2026-10-24 — Magias adicionais de 3º nível de Ranger: plantas, forma de árvore e invocação
+
+- Conferidos os verbetes no PDF brasileiro do *Livro do Jogador* fornecido no projeto e comparados os nomes com o catálogo da branch `main`; nenhuma das cinco entradas estava presente.
+- Adicionadas **Ampliar Plantas**, **Comandar Plantas**, **Enfraquecer Plantas**, **Forma de Árvore** e **Invocar Aliado da Natureza III**.
+- Os níveis por classe refletem os verbetes: Ampliar Plantas (Druida 3/Ranger 3); Comandar Plantas (Druida 4/Ranger 3); Enfraquecer Plantas (Druida 3/Ranger 3); Forma de Árvore (Druida 2/Ranger 3); Invocar Aliado da Natureza III (Druida 3/Ranger 3). O campo geral `level` registra o nível de Ranger para esta etapa da auditoria.
+- Foram acrescentados testes de regressão para níveis por classe, unicidade e parâmetros mecânicos relevantes, incluindo componentes, duração, resistência à magia e efeitos distintivos.
+- Fonte primária: PDF brasileiro *D&D 3.5 — Livro do Jogador* fornecido no projeto, capítulo 11, verbetes correspondentes (extração de texto nas regiões das páginas impressas 120, 174, 190 e 210, conforme cada verbete).
+- A lista de magias de 3º nível de Ranger permanece sob auditoria. Nenhum teste manual em dispositivo Android foi realizado nesta etapa.
