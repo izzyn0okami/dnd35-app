@@ -3994,7 +3994,7 @@ object Dnd35Rules {
             savingThrow = "Nenhum",
             spellResistance = true,
             description = "Cria um padrão de cores reluzentes em uma dispersão de 6 m de raio. Afeta um total de Dados de Vida de criaturas igual ao nível de conjurador, até o máximo de 20; as criaturas com menos DV são afetadas primeiro e, entre criaturas com DV iguais, as mais próximas da origem. DV insuficientes para afetar uma criatura são desperdiçados. Criaturas com 6 DV ou menos ficam inconscientes por 1d4 rodadas, depois atordoadas por 1d4 rodadas e então confusas por 1d4 rodadas; com 7 a 12 DV ficam atordoadas por 1d4 rodadas e depois confusas por 1d4 rodadas; com 13 DV ou mais ficam confusas por 1d4 rodadas. Criaturas que não conseguem enxergar não são afetadas. Componente material: pequeno prisma de cristal.",
-            classLevels = mapOf("Feiticeiro" to 8, "Mago" to 8)
+            classLevels = mapOf("Feiticeiro" to 7, "Mago" to 7)
         ),
         PresetSpell(
             name = "Símbolo da Insanidade",
@@ -4314,7 +4314,7 @@ object Dnd35Rules {
             savingThrow = "Fortitude anula",
             spellResistance = true,
             description = "Inscreve uma runa mágica que, quando ativada, pode matar criaturas vivas num raio de 18 m. A magia afeta primeiro as criaturas mais próximas e não afeta aquelas cujo total de pontos de vida ultrapasse o limite combinado de 150 PV. Depois de ativado, permanece ativo por 10 minutos por nível de conjurador ou até atingir o limite de pontos de vida afetados. As regras comuns de símbolo determinam gatilho, senha, vinculação, detecção e desarme; os componentes materiais custam 5.000 PO.",
-            classLevels = mapOf("Clérigo" to 8, "Feiticeiro" to 6, "Mago" to 6)
+            classLevels = mapOf("Clérigo" to 8, "Feiticeiro" to 7, "Mago" to 7)
         ),
         PresetSpell(
             name = "Aliado Extra-Planar Maior",
@@ -4400,7 +4400,7 @@ object Dnd35Rules {
             savingThrow = "Fortitude anula",
             spellResistance = true,
             description = "Após um ataque de toque corporal bem-sucedido, coloca a criatura em animação suspensa permanente: o tempo parece parar para ela, sua condição fica estável, ela não envelhece e não pode ser ferida. O efeito pode ser removido por dissipar magia bem-sucedida ou libertação. O componente material é um pó de diamante, esmeralda, rubi e safira no valor total mínimo de 5.000 PO.",
-            classLevels = mapOf("Feiticeiro" to 8, "Mago" to 8)
+            classLevels = mapOf("Feiticeiro" to 7, "Mago" to 7)
         ),
         PresetSpell(
             name = "Metamorfosear Objetos",
@@ -4429,7 +4429,7 @@ object Dnd35Rules {
             savingThrow = "Nenhum",
             spellResistance = false,
             description = "Cria uma duplicata de um ser vivo a partir de uma amostra de seu corpo. Se a criatura original morrer, sua alma será transferida para o clone. A criação exige um recipiente especial como foco, cujo custo depende dos Dados de Vida do original, além dos componentes materiais e das condições descritas no Livro do Jogador.",
-            classLevels = mapOf("Feiticeiro" to 8, "Mago" to 8)
+            classLevels = mapOf("Feiticeiro" to 7, "Mago" to 7)
         ),
         PresetSpell(
             name = "Evaporação",
