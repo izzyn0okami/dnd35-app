@@ -2973,7 +2973,7 @@ object Dnd35Rules {
             savingThrow = "Vontade anula (inofensiva)",
             spellResistance = true,
             description = "Protege uma criatura contra efeitos de ação mental e contra efeitos de adivinhação usados para obter informações sobre ela. A magia também impede detecção direta do alvo por adivinhações, conforme o verbete do Livro do Jogador.",
-            classLevels = mapOf("Feiticeiro" to 8, "Mago" to 8)
+            classLevels = mapOf("Feiticeiro" to 8, "Mago" to 8),
             domainLevels = mapOf("Proteção" to 8)
         ),        PresetSpell(
             name = "Proteção contra Magias",
@@ -2987,7 +2987,7 @@ object Dnd35Rules {
             savingThrow = "Vontade anula (inofensiva)",
             spellResistance = true,
             description = "Concede ao alvo +8 de bônus de resistência nos testes de resistência contra magias e habilidades similares à magia, mas não contra habilidades extraordinárias ou sobrenaturais. Afeta até uma criatura tocada por quatro níveis do conjurador. Componente material: diamante de pelo menos 500 PO, esmigalhado e espalhado sobre os alvos; foco: diamante de 1.000 PO por criatura, que deve ser carregado durante a duração.",
-            classLevels = mapOf("Feiticeiro" to 8, "Mago" to 8)
+            classLevels = mapOf("Feiticeiro" to 8, "Mago" to 8),
             domainLevels = mapOf("Magia" to 8)
         ),        PresetSpell(
             name = "Muralha Prismática",
