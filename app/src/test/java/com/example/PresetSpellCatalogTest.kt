@@ -1964,6 +1964,16 @@ class PresetSpellCatalogTest {
     }
 
     @Test
+    fun massModerateCureUsesSixthLevelForClericAndDruid() {
+        val spell = Dnd35Rules.PRESET_SPELLS.single { it.name == "Curar Ferimentos Moderados em Massa" }
+        assertEquals(6, spell.level)
+        assertEquals(6, spell.classLevels["Clérigo"])
+        assertEquals(6, spell.classLevels["Druida"])
+        assertEquals("Conjuração (Cura)", spell.school)
+        assertTrue(spell.description.contains("2d8"))
+    }
+
+    @Test
     fun spellTurningDescriptionUsesOneD4PlusSixSpellLevels() {
         val spell = Dnd35Rules.PRESET_SPELLS.single { it.name == "Reverter Magia" }
         assertEquals("Abjuração", spell.school)
