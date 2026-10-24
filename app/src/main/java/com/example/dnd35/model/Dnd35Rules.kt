@@ -1066,6 +1066,20 @@ object Dnd35Rules {
             classLevels = mapOf("Druida" to 9, "Feiticeiro" to 8, "Mago" to 8)
         ),
         PresetSpell(
+            name = "Enfeitiçar Monstro em Massa",
+            level = 8,
+            school = "Encantamento (Feitiço) [Ação Mental]",
+            classes = listOf("Bardo", "Feiticeiro", "Mago"),
+            castTime = "1 ação padrão",
+            components = "V",
+            range = "Curto (7,5 m + 1,5 m/2 níveis)",
+            duration = "1 dia/nível",
+            savingThrow = "Vontade anula",
+            spellResistance = true,
+            description = "Como Enfeitiçar Monstro, mas afeta uma ou mais criaturas a menos de 9 m entre si, desde que o total de Dados de Vida dos alvos não exceda o dobro do nível de conjurador; uma única criatura pode ser afetada independentemente de seus Dados de Vida. Se houver alvos demais, eles devem ser selecionados individualmente até atingir o limite de Dados de Vida.",
+            classLevels = mapOf("Bardo" to 6, "Feiticeiro" to 8, "Mago" to 8)
+        ),
+        PresetSpell(
             name = "Dança Irresistível de Otto",
             level = 8,
             school = "Encantamento (Compulsão) [de Ação Mental]",
