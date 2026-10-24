@@ -1066,6 +1066,20 @@ object Dnd35Rules {
             classLevels = mapOf("Druida" to 9, "Feiticeiro" to 8, "Mago" to 8)
         ),
         PresetSpell(
+            name = "Dança Irresistível de Otto",
+            level = 8,
+            school = "Encantamento (Compulsão) [de Ação Mental]",
+            classes = listOf("Bardo", "Feiticeiro", "Mago"),
+            castTime = "1 ação padrão",
+            components = "V",
+            range = "Toque",
+            duration = "1d4+1 rodadas",
+            savingThrow = "Nenhum",
+            spellResistance = true,
+            description = "A criatura viva tocada sente uma vontade irresistível de dançar, podendo apenas saltar e girar. Sofre –4 na CA e –10 nos testes de resistência de Reflexos, perde os bônus de CA concedidos por escudos e provoca ataques de oportunidade a cada turno. O efeito dura 1d4+1 rodadas.",
+            classLevels = mapOf("Bardo" to 6, "Feiticeiro" to 8, "Mago" to 8)
+        ),
+        PresetSpell(
             name = "Nuvem Incendiária",
             level = 8,
             school = "Conjuração (Criação) [Fogo]",
