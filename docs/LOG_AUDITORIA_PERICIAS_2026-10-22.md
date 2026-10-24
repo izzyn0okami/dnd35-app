@@ -1404,3 +1404,5 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Removida a entrada duplicada **Favor Divino**; preservada **Auxílio Divino**, nome usado pela fonte em português. A descrição de Auxílio Divino foi corrigida para o limite de bônus de sorte **+3**.
 - Adicionado teste de regressão que compara a lista completa de Paladino 1 com os níveis explícitos por classe, verifica unicidade e protege contra as associações indevidas acima.
 - **Validação pendente:** executar/confirmar CI de testes e compilação antes do merge. Não houve teste manual em dispositivo Android.
+
+- **Correção após CI falhar:** o teste revelou duas associações adicionais indevidas de Paladino em **Detectar Bem** e **Detectar Mal**. Removidas e incluídas as duas verificações no teste de regressão. A lista resumida do Livro do Jogador continua com 16 magias de 1º nível; CI precisa ser repetida antes do merge.
