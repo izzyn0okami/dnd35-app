@@ -1123,14 +1123,15 @@ object Dnd35Rules {
             name = "Ler Magias",
             level = 0,
             school = "Adivinhação",
-            classes = listOf("Mago", "Feiticeiro", "Clérigo", "Druida", "Bardo"),
+            classes = listOf("Mago", "Feiticeiro", "Clérigo", "Druida", "Bardo", "Paladino", "Ranger"),
             castTime = "1 ação padrão",
             components = "V, G, F",
             range = "Pessoal",
             duration = "10 min/nível",
             savingThrow = "Nenhum",
             spellResistance = false,
-            description = "Permite decifrar e ler inscrições mágicas em pergaminhos, livros e armas."
+            description = "Permite decifrar e ler inscrições mágicas em pergaminhos, livros e armas.",
+            classLevels = mapOf("Mago" to 0, "Feiticeiro" to 0, "Clérigo" to 0, "Druida" to 0, "Bardo" to 0, "Paladino" to 1, "Ranger" to 1)
         ),
         PresetSpell(
             name = "Orientação",
@@ -1188,14 +1189,15 @@ object Dnd35Rules {
             name = "Resistência",
             level = 0,
             school = "Abjuração",
-            classes = listOf("Mago", "Feiticeiro", "Clérigo", "Druida", "Bardo"),
+            classes = listOf("Mago", "Feiticeiro", "Clérigo", "Druida", "Bardo", "Paladino"),
             castTime = "1 ação padrão",
-            components = "V, G, FD",
+            components = "V, G, M/FD",
             range = "Toque",
             duration = "1 minuto",
             savingThrow = "Vontade anula",
             spellResistance = true,
-            description = "Concede +1 de bônus de resistência em todos os testes de resistência."
+            description = "Concede +1 de bônus de resistência em todos os testes de resistência.",
+            classLevels = mapOf("Mago" to 0, "Feiticeiro" to 0, "Clérigo" to 0, "Druida" to 0, "Bardo" to 0, "Paladino" to 1)
         ),
 
         // Truques adicionais do Livro do Jogador (nível varia conforme a classe)
@@ -1203,14 +1205,15 @@ object Dnd35Rules {
             name = "Criar Água",
             level = 0,
             school = "Conjuração",
-            classes = listOf("Clérigo", "Druida"),
+            classes = listOf("Clérigo", "Druida", "Paladino"),
             castTime = "1 ação padrão",
-            components = "V, G",
+            components = "V, G, FD",
             range = "Curto (7,5m)",
             duration = "Instantânea",
             savingThrow = "Nenhum",
             spellResistance = false,
-            description = "Cria até 8 litros de água limpa por nível de conjurador."
+            description = "Cria até 8 litros de água limpa por nível de conjurador.",
+            classLevels = mapOf("Clérigo" to 0, "Druida" to 0, "Paladino" to 1)
         ),
         PresetSpell(
             name = "Detectar Venenos",
@@ -1401,14 +1404,15 @@ object Dnd35Rules {
             name = "Virtude",
             level = 0,
             school = "Transmutação",
-            classes = listOf("Clérigo", "Druida"),
+            classes = listOf("Clérigo", "Druida", "Paladino"),
             castTime = "1 ação padrão",
-            components = "V, G",
+            components = "V, G, FD",
             range = "Toque",
             duration = "1 minuto",
-            savingThrow = "Vontade anula (inofensivo)",
+            savingThrow = "Fortitude anula (inofensivo)",
             spellResistance = true,
-            description = "O alvo recebe 1 ponto de vida temporário."
+            description = "O alvo recebe 1 ponto de vida temporário.",
+            classLevels = mapOf("Clérigo" to 0, "Druida" to 0, "Paladino" to 1)
         ),
 
         // CÍRCULO 1
@@ -1476,7 +1480,7 @@ object Dnd35Rules {
                 "Druida" to 1,
                 "Bardo" to 1,
                 "Paladino" to 1,
-                "Ranger" to 2
+                "Ranger" to 1
             ),
             castTime = "1 ação padrão",
             components = "V, G",
@@ -1498,6 +1502,20 @@ object Dnd35Rules {
             savingThrow = "Vontade metade",
             spellResistance = true,
             description = "Ataque de toque que causa 1d8 + 1 por nível (máx +5) de energia negativa."
+        ),
+        PresetSpell(
+            name = "Abençoar Arma",
+            level = 1,
+            school = "Transmutação",
+            classes = listOf("Paladino"),
+            castTime = "1 ação padrão",
+            components = "V, G",
+            range = "Toque",
+            duration = "1 minuto/nível",
+            savingThrow = "Nenhum",
+            spellResistance = false,
+            description = "A arma tocada passa a ser considerada boa para superar redução de dano; contra inimigos malignos, as ameaças de acerto crítico são automaticamente confirmadas, exceto quando a arma já possui um efeito mágico relacionado a acertos críticos.",
+            classLevels = mapOf("Paladino" to 1)
         ),
         PresetSpell(
             name = "Bênção",
@@ -1707,14 +1725,15 @@ object Dnd35Rules {
             name = "Detectar Mortos-Vivos",
             level = 1,
             school = "Adivinhação",
-            classes = listOf("Clérigo", "Mago", "Feiticeiro"),
+            classes = listOf("Clérigo", "Mago", "Feiticeiro", "Paladino"),
             castTime = "1 ação padrão",
-            components = "V, G, FD",
+            components = "V, G, M/FD",
             range = "18m",
             duration = "Concentração, até 1 minuto/nível",
             savingThrow = "Nenhum",
             spellResistance = false,
-            description = "Detecta a presença e a intensidade de auras de mortos-vivos dentro do alcance."
+            description = "Detecta a presença e a intensidade de auras de mortos-vivos dentro do alcance.",
+            classLevels = mapOf("Clérigo" to 1, "Mago" to 1, "Feiticeiro" to 1, "Paladino" to 1)
         ),
 
 
@@ -2402,14 +2421,15 @@ object Dnd35Rules {
             name = "Restauração Menor",
             level = 2,
             school = "Conjuração",
-            classes = listOf("Clérigo", "Druida", "Paladino"),
+            classes = listOf("Clérigo", "Druida", "Paladino", "Ranger"),
             castTime = "3 rodadas",
             components = "V, G",
             range = "Toque",
             duration = "Instantânea",
             savingThrow = "Vontade anula",
             spellResistance = true,
-            description = "Cura 1d4 pontos de dano temporário em um atributo ou remove fadiga."
+            description = "Cura 1d4 pontos de dano temporário em um atributo ou remove fadiga.",
+            classLevels = mapOf("Clérigo" to 2, "Druida" to 2, "Paladino" to 1, "Ranger" to 1)
         ),
 
         // CÍRCULO 3
