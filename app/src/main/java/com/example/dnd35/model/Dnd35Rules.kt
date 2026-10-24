@@ -4513,7 +4513,7 @@ object Dnd35Rules {
             duration = "Instantânea",
             savingThrow = "Vontade anula",
             spellResistance = true,
-            description = "Expulsa criaturas extra-planares da área para seus planos de origem. O conjurador pode afetar 2 Dados de Vida por nível de conjurador; criaturas adicionais podem ser afetadas conforme os componentes especiais e as condições descritas na magia.",
+            description = "Expulsa para seus planos natais uma ou mais criaturas extra-planares, desde que todas estejam a menos de 9 m umas das outras. O limite é de 2 Dados de Vida por nível de conjurador; componentes ou objetos que a criatura odeie, tema ou aos quais se oponha concedem bônus para superar a resistência à magia e aumentam a CD do teste de resistência.",
             classLevels = mapOf("Clérigo" to 6, "Feiticeiro" to 7, "Mago" to 7)
         ),
         PresetSpell(
