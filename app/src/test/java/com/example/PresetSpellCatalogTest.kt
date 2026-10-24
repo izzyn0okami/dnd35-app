@@ -1897,4 +1897,28 @@ class PresetSpellCatalogTest {
         assertEquals(7, greaterCreateUndead.classLevels["Feiticeiro"])
         assertEquals(7, greaterCreateUndead.classLevels["Mago"])
     }
+    @Test
+    fun missingSeventhLevelPlayerHandbookSpellsArePresentOnceWithCorrectClassLevels() {
+        val expected = mapOf(
+            "Banimento" to mapOf("Clérigo" to 6, "Feiticeiro" to 7, "Mago" to 7),
+            "Refugiar Itens" to mapOf("Feiticeiro" to 7, "Mago" to 7),
+            "Reverter Magia" to mapOf("Feiticeiro" to 7, "Mago" to 7),
+            "Vidência Maior" to mapOf("Bardo" to 6, "Clérigo" to 7, "Feiticeiro" to 7, "Mago" to 7),
+            "Visão Arcana Maior" to mapOf("Feiticeiro" to 7, "Mago" to 7),
+            "Visão" to mapOf("Feiticeiro" to 7, "Mago" to 7),
+            "Convocação Instantânea de Drawmij" to mapOf("Feiticeiro" to 7, "Mago" to 7),
+            "Evocação de Sombras Maior" to mapOf("Feiticeiro" to 7, "Mago" to 7),
+            "Curar Ferimentos Moderados em Massa" to mapOf("Clérigo" to 7, "Druida" to 7)
+        )
+        expected.forEach { (name, levels) ->
+            val matches = Dnd35Rules.PRESET_SPELLS.filter { it.name == name }
+            assertEquals("$name must appear exactly once", 1, matches.size)
+            assertEquals("$name class levels", levels, matches.single().classLevels)
+            assertTrue("$name description", matches.single().description.isNotBlank())
+        }
+        val reversal = Dnd35Rules.PRESET_SPELLS.single { it.name == "Reverter Magia" }
+        assertEquals(7, reversal.domainLevels["Magia"])
+        assertEquals(7, reversal.domainLevels["Sorte"])
+    }
+
 }
