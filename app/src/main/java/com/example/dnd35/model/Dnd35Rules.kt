@@ -2420,17 +2420,32 @@ object Dnd35Rules {
             description = "Concede +4 de bônus de melhoria na Força, aumentando bônus de ataque corpo a corpo, dano e capacidade de carga."
         ),
         PresetSpell(
-            name = "Graça Felina",
+            name = "Agilidade do Gato",
             level = 2,
             school = "Transmutação",
-            classes = listOf("Mago", "Feiticeiro", "Druida", "Bardo", "Ranger"),
+            classes = listOf("Bardo", "Druida", "Ranger", "Feiticeiro", "Mago"),
+            classLevels = mapOf("Bardo" to 2, "Druida" to 2, "Ranger" to 2, "Feiticeiro" to 2, "Mago" to 2),
             castTime = "1 ação padrão",
             components = "V, G, M",
             range = "Toque",
             duration = "1 min/nível",
-            savingThrow = "Vontade anula",
+            savingThrow = "Vontade anula (inofensiva)",
             spellResistance = true,
-            description = "Concede +4 de bônus de melhoria em Destreza, aumentando CA, Reflexos e testes de perícia."
+            description = "Concede +4 de bônus de aprimoramento na Destreza, aplicando os benefícios normais à CA, aos testes de resistência de Reflexos e aos demais usos do modificador de Destreza. Componente material: um pouco de pelo de gato."
+        ),
+        PresetSpell(
+            name = "Crescer Espinhos",
+            level = 2,
+            school = "Transmutação",
+            classes = listOf("Druida", "Ranger"),
+            classLevels = mapOf("Druida" to 3, "Ranger" to 2),
+            castTime = "1 ação padrão",
+            components = "V, G, FD",
+            range = "Médio (30 m + 3 m/nível)",
+            duration = "1 hora/nível (D)",
+            savingThrow = "Reflexos parcial",
+            spellResistance = true,
+            description = "A vegetação rasteira e as raízes na área tornam-se rígidas e pontiagudas. Criaturas a pé sofrem 1d4 pontos de dano perfurante por cada 1,5 m percorrido na área; quem sofrer dano pode ter o deslocamento reduzido à metade por 24 horas ou até receber uma magia curar. Não pode ser desarmada com Operar Mecanismo."
         ),
         PresetSpell(
             name = "Vigor do Urso",
