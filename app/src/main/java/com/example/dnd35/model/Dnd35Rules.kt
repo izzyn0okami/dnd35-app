@@ -1480,7 +1480,7 @@ object Dnd35Rules {
                 "Druida" to 1,
                 "Bardo" to 1,
                 "Paladino" to 1,
-                "Ranger" to 1
+                "Ranger" to 2
             ),
             castTime = "1 ação padrão",
             components = "V, G",
@@ -2097,15 +2097,15 @@ object Dnd35Rules {
             description = "Uma criatura sofre –2 nas jogadas de ataque, dano, testes de resistência e testes de habilidade."
         ),
         PresetSpell(
-            name = "Suportar Energia",
-            level = 1,
+            name = "Resistência à Elementos",
+            level = 2,
             school = "Abjuração",
             classes = listOf("Clérigo", "Druida", "Paladino", "Ranger", "Mago", "Feiticeiro"),
             castTime = "1 ação padrão",
-            components = "V, G, M/FD",
+            components = "V, G, FD",
             range = "Toque",
             duration = "10 minutos/nível",
-            savingThrow = "Vontade anula (inofensivo)",
+            savingThrow = "Fortitude anula (inofensiva)",
             spellResistance = true,
             description = "Concede resistência 10 contra um tipo de energia escolhido (ácido, frio, eletricidade, fogo ou sônico); o valor aumenta para 20 no 7º nível de conjurador e 30 no 11º.",
             classLevels = mapOf("Clérigo" to 2, "Druida" to 2, "Paladino" to 2, "Ranger" to 1, "Mago" to 2, "Feiticeiro" to 2)
