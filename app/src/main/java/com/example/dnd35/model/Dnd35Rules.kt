@@ -1184,7 +1184,7 @@ object Dnd35Rules {
             name = "Âncora Planar Maior",
             level = 8,
             school = "Conjuração (Convocação)",
-            classes = listOf("Feiticeiro", "Mago", "Enganação"),
+            classes = listOf("Feiticeiro", "Mago"),
             castTime = "10 minutos",
             components = "V, G, F",
             range = "Curto (7,5 m + 1,5 m/2 níveis)",
@@ -3955,7 +3955,7 @@ object Dnd35Rules {
             name = "Animação Ilusória",
             level = 8,
             school = "Ilusão (Sensação)",
-            classes = listOf("Feiticeiro", "Mago"),
+            classes = listOf("Feiticeiro", "Mago", "Enganação"),
             castTime = "10 minutos",
             components = "V, G",
             range = "Curto (7,5 m + 1,5 m/2 níveis)",
@@ -3963,7 +3963,7 @@ object Dnd35Rules {
             savingThrow = "Nenhum ou Vontade desacredita (se interagir); veja texto",
             spellResistance = false,
             description = "Cria uma proteção ilusória contra espionagem mágica e observação direta em uma área de um cubo de 9 m por nível. Ao conjurar, o conjurador define o que pode ou não ser observado e descreve a ilusão em termos gerais; as condições não podem ser alteradas depois. Tentativas mágicas de observar detectam automaticamente a imagem criada, sem teste para desacreditá-la; observação direta permite Vontade para desacreditar se houver motivo para duvidar. A magia produz visão e sons apropriados. Domínio: Enganação 7.",
-            classLevels = mapOf("Feiticeiro" to 8, "Mago" to 8)
+            classLevels = mapOf("Feiticeiro" to 8, "Mago" to 8, "Enganação" to 7)
         ),
     )
 }
