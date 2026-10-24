@@ -4467,11 +4467,11 @@ object Dnd35Rules {
             classes = listOf("Feiticeiro", "Mago"),
             castTime = "1 ação padrão",
             components = "V, G",
-            range = "Médio (30 m + 3 m/nível)",
+            range = "Cone de 18 m",
             duration = "Instantânea",
             savingThrow = "Nenhum",
             spellResistance = true,
-            description = "Uma onda de energia negativa se espalha a partir do conjurador, deixando exaustas as criaturas vivas na área. Não exige teste de resistência; a resistência à magia se aplica."
+            description = "Uma onda de energia negativa se espalha a partir do conjurador, deixando exaustas todas as criaturas vivas na área. Não permite teste de resistência; resistência à magia se aplica."
         ),
 
     )
