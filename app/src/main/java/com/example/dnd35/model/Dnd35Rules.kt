@@ -1052,6 +1052,21 @@ object Dnd35Rules {
             classLevels = mapOf("Feiticeiro" to 8, "Mago" to 8)
         ),
         PresetSpell(
+            name = "Nuvem Incendiária",
+            level = 8,
+            school = "Conjuração (Criação) [Fogo]",
+            classes = listOf("Feiticeiro", "Mago"),
+            castTime = "1 ação padrão",
+            components = "V, G",
+            range = "Médio (30 m + 3 m/nível)",
+            duration = "1 rodada/nível",
+            savingThrow = "Reflexos reduz à metade",
+            spellResistance = false,
+            description = "Cria uma nuvem de fumaça com brasas incandescentes, com 6 m de raio e 6 m de altura. A fumaça obscurece a visão como névoa; as brasas causam 4d6 pontos de dano de fogo por rodada do conjurador, e cada alvo pode realizar um teste de Reflexos por rodada para sofrer metade do dano. A fumaça se move 3 m por rodada; o conjurador pode concentrar-se para movê-la até 18 m por rodada. Partes que ultrapassam o alcance máximo dissipam-se inofensivamente. O vento dispersa a fumaça, e a magia não pode ser conjurada sob a água.",
+            classLevels = mapOf("Feiticeiro" to 8, "Mago" to 8),
+            domainLevels = mapOf("Fogo" to 8)
+        ),
+        PresetSpell(
             name = "Labirinto",
             level = 8,
             school = "Conjuração (Teletransporte)",
