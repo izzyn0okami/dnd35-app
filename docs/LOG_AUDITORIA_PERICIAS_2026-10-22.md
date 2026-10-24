@@ -1542,3 +1542,13 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - **Nomes identificados na lista da fonte:** Limpar a Mente; Muralha Prismática; Proteção Contra Magias; Tranca Dimensional; Discernir Localização; Instante de Presciência; Olhos Observadores Maior; Âncora Planar Maior; Aprisionar a Alma; Invocar Criaturas VIII; Labirinto; Nuvem Incendiária; Antipatia; Dança Irresistível de Otto; Enfeitiçar Monstro em Massa; Ordem; Palavra de Poder, Atordoar; Agilidade do Gato em Massa; Astúcia da Raposa em Massa; Carne para Pedra; Controlar Água; Desintegrar; Elucubração de Mordenkainen; Esplendor da Águia em Massa; Força do Touro em Massa; Mover Terra; Pedra em Carne; Sabedoria da Coruja em Massa; Transformação de Tenser; Vigor do Urso em Massa.
 - **Método:** usar esta lista como fila de trabalho; antes de incluir cada magia, consultar seu verbete completo para capturar nível por classe, escola, componentes, tempo, alcance, alvo/área, duração, resistência e descrição. Não preencher campos ausentes por inferência e não duplicar entradas sob nomes alternativos sem conferir a terminologia do PDF.
 - **Próximo passo:** implementar e testar um lote pequeno dessas magias a partir dos verbetes completos, mantendo o log como registro de cobertura; depois continuar por nível/classe até comparar todas as listas do Livro do Jogador.
+
+
+## 2026-10-24 — Inclusão de Limpar a Mente (8º nível)
+
+- **Fonte primária:** PDF brasileiro *D&D 3.5 — Livro do Jogador*, verbete completo “Limpar a Mente” (texto extraído por `pdftotext -layout`; o verbete registra Abjuração, Fet/Mag 8, componentes V/G, execução de 1 ação padrão, alcance curto, alvo de uma criatura, duração de 24 horas, Vontade anula (inofensiva) e resistência à magia sim (inofensiva)).
+- **Implementação:** adicionada uma entrada canônica de `Limpar a Mente` ao catálogo, com níveis explícitos de Feiticeiro 8 e Mago 8. O campo `classes` representa classes de personagem; “Proteção 8” no livro é nível de domínio, não uma classe de personagem, por isso não foi adicionado como classe.
+- **Descrição:** resume os efeitos descritos no verbete sem alterar regras além do texto da fonte.
+- **Regressão:** teste dedicado verifica nome único, nível, escola, classes/níveis, tempo, componentes, alcance, duração, resistência e termos-chave da descrição.
+- **Validação:** aguardando CI da PR; sem teste manual em dispositivo Android.
+- **Próximo passo:** depois de CI verde e integração, continuar a fila de magias de 8º nível consultando cada verbete completo antes de inserir os dados.
