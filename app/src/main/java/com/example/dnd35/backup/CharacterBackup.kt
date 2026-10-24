@@ -204,12 +204,15 @@ object CharacterBackup {
         val photoPreset = str(o, "photoPreset", "")
         val photoBase64 = str(o, "photoJpegBase64", "")
         val photoBytes = if (photoBase64.isNotEmpty()) {
-            try {
-                Base64.decode(photoBase64, Base64.DEFAULT).takeIf { it.isNotEmpty() }
+            val decoded = try {
+                Base64.decode(photoBase64, Base64.DEFAULT)
             } catch (_: IllegalArgumentException) {
-                warnings += "$label: retrato corrompido foi ignorado."
                 null
             }
+            if (decoded == null || decoded.isEmpty()) {
+                warnings += "$label: retrato corrompido foi ignorado."
+                null
+            } else decoded
         } else null
 
         val entity = CharacterEntity(
