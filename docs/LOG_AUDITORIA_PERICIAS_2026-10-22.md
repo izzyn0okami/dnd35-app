@@ -1348,3 +1348,15 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Foram acrescentados testes de regressão para níveis por classe, unicidade e parâmetros mecânicos relevantes, incluindo componentes, duração, resistência à magia e efeitos distintivos.
 - Fonte primária: PDF brasileiro *D&D 3.5 — Livro do Jogador* fornecido no projeto, capítulo 11, verbetes correspondentes (extração de texto nas regiões das páginas impressas 120, 174, 190 e 210, conforme cada verbete).
 - A lista de magias de 3º nível de Ranger permanece sob auditoria. Nenhum teste manual em dispositivo Android foi realizado nesta etapa.
+
+
+---
+
+## 2026-10-24 — Mais quatro magias de 3º nível de Ranger
+
+- Conferidos os verbetes do PDF brasileiro do *Livro do Jogador* e a lista resumida de Ranger; a busca no catálogo de `main` confirmou que as quatro entradas estavam ausentes.
+- Adicionadas **Presa Mágica Maior**, **Reduzir Animal**, **Remover Doenças** e **Repelir Insetos**, com níveis por classe transcritos dos verbetes: Drd 3/Rgr 3; Drd 2/Rgr 3; Clr 3/Drd 3/Rgr 3; Brd 4/Clr 4/Drd 4/Rgr 3, respectivamente.
+- Testes de regressão cobrem unicidade, níveis por classe e parâmetros distintivos.
+- Divergência registrada para **Visão no Escuro**: a lista resumida de magias de 3º nível de Ranger a inclui, mas o verbete completo diz explicitamente **Rgr 2** (e Fet/Mag 2). A entrada não foi adicionada como magia de 3º nível; não se alterou a regra com base apenas na lista resumida.
+- Fonte primária: PDF brasileiro *D&D 3.5 — Livro do Jogador* fornecido no projeto, verbetes nas páginas impressas 232, 237, 239 e 258; lista resumida de magias de Ranger na região da página impressa 145.
+- Nenhum teste manual em dispositivo Android foi realizado nesta etapa.

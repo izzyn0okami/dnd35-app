@@ -896,4 +896,37 @@ class PresetSpellCatalogTest {
         assertTrue(summon.description.contains("1d4+1"))
     }
 
+
+    @Test
+    fun rangerThirdLevelCatalogIncludesGreaterMagicFangReduceAnimalRemoveDiseaseAndRepelInsects() {
+        val spells = Dnd35Rules.PRESET_SPELLS
+        val expected = mapOf(
+            "Presa Mágica Maior" to mapOf("Druida" to 3, "Ranger" to 3),
+            "Reduzir Animal" to mapOf("Druida" to 2, "Ranger" to 3),
+            "Remover Doenças" to mapOf("Clérigo" to 3, "Druida" to 3, "Ranger" to 3),
+            "Repelir Insetos" to mapOf("Bardo" to 4, "Clérigo" to 4, "Druida" to 4, "Ranger" to 3)
+        )
+        expected.forEach { (name, levels) ->
+            val spell = spells.single { it.name == name }
+            assertEquals(3, spell.level)
+            assertEquals(levels, spell.classLevels)
+            assertEquals(1, spells.count { it.name == name })
+        }
+        val fang = spells.single { it.name == "Presa Mágica Maior" }
+        assertEquals("1 hora/nível", fang.duration)
+        assertTrue(fang.description.contains("quatro níveis"))
+        val reduce = spells.single { it.name == "Reduzir Animal" }
+        assertEquals("1 hora/nível (D)", reduce.duration)
+        assertEquals("Nenhum", reduce.savingThrow)
+        assertFalse(reduce.spellResistance)
+        val remove = spells.single { it.name == "Remover Doenças" }
+        assertEquals("Instantânea", remove.duration)
+        assertEquals("Fortitude anula (inofensiva)", remove.savingThrow)
+        assertTrue(remove.spellResistance)
+        val repel = spells.single { it.name == "Repelir Insetos" }
+        assertEquals("3 m", repel.range)
+        assertEquals("10 minutos/nível (D)", repel.duration)
+        assertTrue(repel.description.contains("um terço"))
+    }
+
 }
