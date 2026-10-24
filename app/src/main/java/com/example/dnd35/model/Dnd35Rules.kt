@@ -1066,6 +1066,21 @@ object Dnd35Rules {
             classLevels = mapOf("Druida" to 9, "Feiticeiro" to 8, "Mago" to 8)
         ),
         PresetSpell(
+            name = "Palavra de Poder, Atordoar",
+            level = 8,
+            school = "Encantamento (Compulsão) [de Ação Mental]",
+            classes = listOf("Feiticeiro", "Mago"),
+            castTime = "1 ação padrão",
+            components = "V",
+            range = "Curto (7,5 m + 1,5 m/2 níveis)",
+            duration = "4d4, 2d4 ou 1d4 rodadas (conforme os PV do alvo)",
+            savingThrow = "Nenhum",
+            spellResistance = true,
+            description = "O conjurador pronuncia uma palavra de poder que atordoa uma criatura escolhida com 150 pontos de vida ou menos, mesmo que ela não ouça a palavra. A duração depende dos pontos de vida atuais do alvo: 50 PV ou menos, 4d4 rodadas; 51–100 PV, 2d4 rodadas; 101–150 PV, 1d4 rodadas. Criaturas com 151 PV ou mais não são afetadas.",
+            classLevels = mapOf("Feiticeiro" to 8, "Mago" to 8),
+            domainLevels = mapOf("Guerra" to 8)
+        ),
+        PresetSpell(
             name = "Enfeitiçar Monstro em Massa",
             level = 8,
             school = "Encantamento (Feitiço) [Ação Mental]",
