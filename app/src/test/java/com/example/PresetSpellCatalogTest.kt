@@ -1008,6 +1008,8 @@ class PresetSpellCatalogTest {
         assertFalse("Proteção contra o Bem não pertence à lista de Paladino", spells.single { it.name == "Proteção contra o Bem" }.classes.contains("Paladino"))
         assertFalse("Escudo da Fé não pertence à lista de Paladino", spells.single { it.name == "Escudo da Fé" }.classes.contains("Paladino"))
         assertFalse("Amaldiçoar Água não pertence à lista de Paladino", spells.single { it.name == "Amaldiçoar Água" }.classes.contains("Paladino"))
+        assertFalse("Detectar Bem não pertence à lista de Paladino", spells.single { it.name == "Detectar Bem" }.classes.contains("Paladino"))
+        assertFalse("Detectar Mal não pertence à lista de Paladino", spells.single { it.name == "Detectar Mal" }.classes.contains("Paladino"))
     }
 
     @Test
