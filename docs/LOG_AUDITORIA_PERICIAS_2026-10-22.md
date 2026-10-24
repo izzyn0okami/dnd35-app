@@ -1590,3 +1590,12 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - **Regressão:** teste dedicado verifica nome único, nível, escola, classes/níveis, tempo, componentes, alcance, duração, teste de resistência, resistência à magia e os valores/custos essenciais da descrição.
 - **Validação:** CI pendente; sem teste manual em dispositivo Android.
 - **Próximo passo:** revisar a CI antes de integrar; continuar a lista de magias de 8º nível a partir dos verbetes completos do PDF.
+
+
+## Resultado final da PR #212 — 2026-10-24
+
+- **CI:** execução [40063164074](https://github.com/izzyn0okami/dnd35-app/actions/runs/40063164074) concluída com sucesso; testes unitários, compilação Android e publicação do APK passaram.
+- **Integração:** PR [#212](https://github.com/izzyn0okami/dnd35-app/pull/212) integrada por squash no commit `f6ab8726486943b68f8e3cad2d7f2374b80827fc`.
+- **Resultado:** `Proteção contra Magias` adicionada ao catálogo principal; total nominal agora 194 entradas únicas.
+- **Limitação:** sem teste manual em dispositivo Android; “Magia 8” no verbete foi interpretado corretamente como nível de domínio, não como classe de personagem.
+- **Próximo passo:** continuar a auditoria do catálogo de magias de 8º nível, conferindo o verbete completo do PDF antes de cada inclusão. Verificação inicial do catálogo: `Olhos Observadores Maior` não consta no catálogo e pode ser avaliada como próxima candidata.
