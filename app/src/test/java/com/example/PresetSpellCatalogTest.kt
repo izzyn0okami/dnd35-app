@@ -1403,4 +1403,28 @@ class PresetSpellCatalogTest {
         assertTrue(spell.description.contains("não pode ser conjurada sob a água"))
     }
 
+    @Test
+    fun esferaTelecineticaDeOtilukeMatchesPlayerHandbookEntry() {
+        val matches = Dnd35Rules.PRESET_SPELLS.filter { it.name == "Esfera Telecinética de Otiluke" }
+        assertEquals(1, matches.size)
+        val spell = matches.single()
+
+        assertEquals(8, spell.level)
+        assertEquals("Evocação [Energia]", spell.school)
+        assertEquals(setOf("Feiticeiro", "Mago"), spell.classes.toSet())
+        assertEquals(mapOf("Feiticeiro" to 8, "Mago" to 8), spell.classLevels)
+        assertEquals("1 ação padrão", spell.castTime)
+        assertEquals("V, G, M", spell.components)
+        assertEquals("Curto (7,5 m + 1,5 m/2 níveis)", spell.range)
+        assertEquals("1 minuto/nível (D)", spell.duration)
+        assertEquals("Reflexos anula (objeto)", spell.savingThrow)
+        assertTrue(spell.spellResistance)
+        assertTrue(spell.description.contains("30 cm de diâmetro por nível"))
+        assertTrue(spell.description.contains("1/16 do peso normal"))
+        assertTrue(spell.description.contains("até 2.500 kg"))
+        assertTrue(spell.description.contains("até 9 m por rodada"))
+        assertTrue(spell.description.contains("dois semicírculos encaixáveis"))
+    }
+
+
 }
