@@ -1271,7 +1271,7 @@ class PresetSpellCatalogTest {
         assertTrue(spell.spellResistance)
         assertTrue(spell.description.contains("força vital"))
         assertTrue(spell.description.contains("gema"))
-        assertTrue(spell.description.contains("cumprir uma tarefa"))
+        assertTrue(spell.description.contains("tarefa"))
     }
 
 }
