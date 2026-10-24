@@ -1595,4 +1595,28 @@ class PresetSpellCatalogTest {
         assertTrue(spell.description.contains("5.000 PO"))
     }
 
+    @Test
+    fun invocarCriaturasVIIIMatchesPlayerHandbookEntry() {
+        val matches = Dnd35Rules.PRESET_SPELLS.filter { it.name == "Invocar Criaturas VIII" }
+        assertEquals(1, matches.size)
+        val spell = matches.single()
+
+        assertEquals(8, spell.level)
+        assertEquals("Conjuração (Invocação) [veja texto de Invocar Criaturas I]", spell.school)
+        assertEquals(setOf("Clérigo", "Feiticeiro", "Mago"), spell.classes.toSet())
+        assertEquals(mapOf("Clérigo" to 8, "Feiticeiro" to 8, "Mago" to 8), spell.classLevels)
+        assertTrue(spell.domainLevels.isEmpty())
+        assertEquals("1 rodada", spell.castTime)
+        assertEquals("V, G, F/FD", spell.components)
+        assertEquals("Curto (7,5 m + 1,5 m/2 níveis)", spell.range)
+        assertEquals("1 rodada/nível (D)", spell.duration)
+        assertEquals("Nenhum", spell.savingThrow)
+        assertFalse(spell.spellResistance)
+        assertTrue(spell.description.contains("lista de 8º nível"))
+        assertTrue(spell.description.contains("1d3 criaturas"))
+        assertTrue(spell.description.contains("1d4+1 criaturas"))
+        assertTrue(spell.description.contains("menos de 9 m entre si"))
+        assertTrue(spell.description.contains("pequena bolsa e uma pequena vela"))
+    }
+
 }
