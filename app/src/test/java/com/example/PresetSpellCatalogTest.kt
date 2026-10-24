@@ -1450,5 +1450,28 @@ class PresetSpellCatalogTest {
         assertTrue(spell.description.contains("artefatos são imunes"))
     }
 
+    @Test
+    fun gritoMaiorMatchesPlayerHandbookEntry() {
+        val matches = Dnd35Rules.PRESET_SPELLS.filter { it.name == "Grito Maior" }
+        assertEquals(1, matches.size)
+        val spell = matches.single()
+
+        assertEquals(8, spell.level)
+        assertEquals("Evocação [Sônico]", spell.school)
+        assertEquals(setOf("Bardo", "Feiticeiro", "Mago"), spell.classes.toSet())
+        assertEquals(mapOf("Bardo" to 6, "Feiticeiro" to 8, "Mago" to 8), spell.classLevels)
+        assertEquals("1 ação padrão", spell.castTime)
+        assertEquals("V, G, F", spell.components)
+        assertEquals("18 m", spell.range)
+        assertEquals("Instantânea", spell.duration)
+        assertEquals("Fortitude parcial ou Reflexos anula (objeto); veja texto", spell.savingThrow)
+        assertTrue(spell.spellResistance)
+        assertTrue(spell.description.contains("cone de 18 m"))
+        assertTrue(spell.description.contains("10d6 pontos de dano sônico"))
+        assertTrue(spell.description.contains("4d6 rodadas"))
+        assertTrue(spell.description.contains("máximo 20d6"))
+        assertTrue(spell.description.contains("chifre de metal ou marfim"))
+    }
+
 
 }

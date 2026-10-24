@@ -1095,6 +1095,20 @@ object Dnd35Rules {
             domainLevels = mapOf("Sol" to 8)
         ),
         PresetSpell(
+            name = "Grito Maior",
+            level = 8,
+            school = "Evocação [Sônico]",
+            classes = listOf("Bardo", "Feiticeiro", "Mago"),
+            castTime = "1 ação padrão",
+            components = "V, G, F",
+            range = "18 m",
+            duration = "Instantânea",
+            savingThrow = "Fortitude parcial ou Reflexos anula (objeto); veja texto",
+            spellResistance = true,
+            description = "Emite um brado devastador em um cone de 18 m que causa 10d6 pontos de dano sônico e deixa as criaturas atordoadas por 1 rodada e surdas por 4d6 rodadas. Criaturas frágeis ou cristalinas, e criaturas cristalinas, sofrem 1d6 pontos de dano sônico por nível de conjurador (máximo 20d6). Uma criatura na área que obtenha sucesso em um teste de Fortitude evita o atordoamento, reduz o dano à metade e reduz a duração da surdez à metade. Uma criatura segurando um objeto frágil pode evitar o dano ao objeto com sucesso em um teste de Reflexos. Foco arcano: pequeno chifre de metal ou marfim.",
+            classLevels = mapOf("Bardo" to 6, "Feiticeiro" to 8, "Mago" to 8)
+        ),
+        PresetSpell(
             name = "Palavra de Poder, Atordoar",
             level = 8,
             school = "Encantamento (Compulsão) [de Ação Mental]",
