@@ -1099,4 +1099,25 @@ class PresetSpellCatalogTest {
         assertTrue(spell.description.contains("adivinhação"))
     }
 
+    @Test
+    fun muralhaPrismaticaMatchesPlayerHandbookEntry() {
+        val matches = Dnd35Rules.PRESET_SPELLS.filter { it.name == "Muralha Prismática" }
+        assertEquals(1, matches.size)
+        val spell = matches.single()
+
+        assertEquals(8, spell.level)
+        assertEquals("Abjuração", spell.school)
+        assertEquals(setOf("Feiticeiro", "Mago"), spell.classes.toSet())
+        assertEquals(mapOf("Feiticeiro" to 8, "Mago" to 8), spell.classLevels)
+        assertEquals("1 ação padrão", spell.castTime)
+        assertEquals("V, G", spell.components)
+        assertEquals("Curto (7,5 m + 1,5 m/2 níveis)", spell.range)
+        assertEquals("10 minutos/nível (D)", spell.duration)
+        assertEquals("Veja texto", spell.savingThrow)
+        assertTrue(spell.spellResistance)
+        assertTrue(spell.description.contains("sete cores"))
+        assertTrue(spell.description.contains("cegas por 2d4 rodadas"))
+        assertTrue(spell.description.contains("Dissipar magia"))
+    }
+
 }
