@@ -1857,4 +1857,30 @@ class PresetSpellCatalogTest {
         assertTrue(evaporation.description.contains("máximo 20d8"))
     }
 
+    @Test
+    fun seventhLevelArcaneSpellsKeepPerClassLevelsFromPlayerHandbook() {
+        val spells = Dnd35Rules.PRESET_SPELLS.associateBy { it.name }
+        listOf(
+            "Padrão Cintilante",
+            "Clone",
+            "Evaporação",
+            "Corpo de Ferro",
+            "Estase Temporal",
+            "Metamorfosear Objetos"
+        ).forEach { name ->
+            val spell = spells.getValue(name)
+            assertEquals(7, spell.classLevels["Feiticeiro"])
+            assertEquals(7, spell.classLevels["Mago"])
+        }
+
+        val symbol = spells.getValue("Símbolo da Morte")
+        assertEquals(8, symbol.classLevels["Clérigo"])
+        assertEquals(7, symbol.classLevels["Feiticeiro"])
+        assertEquals(7, symbol.classLevels["Mago"])
+
+        val greaterCreateUndead = spells.getValue("Criar Mortos-Vivos Maior")
+        assertEquals(8, greaterCreateUndead.classLevels["Clérigo"])
+        assertEquals(7, greaterCreateUndead.classLevels["Feiticeiro"])
+        assertEquals(7, greaterCreateUndead.classLevels["Mago"])
+    }
 }
