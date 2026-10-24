@@ -1066,6 +1066,20 @@ object Dnd35Rules {
             classLevels = mapOf("Druida" to 9, "Feiticeiro" to 8, "Mago" to 8)
         ),
         PresetSpell(
+            name = "Esfera Telecinética de Otiluke",
+            level = 8,
+            school = "Evocação [Energia]",
+            classes = listOf("Feiticeiro", "Mago"),
+            castTime = "1 ação padrão",
+            components = "V, G, M",
+            range = "Curto (7,5 m + 1,5 m/2 níveis)",
+            duration = "1 minuto/nível (D)",
+            savingThrow = "Reflexos anula (objeto)",
+            spellResistance = true,
+            description = "Cria uma esfera de energia com 30 cm de diâmetro por nível, centrada ao redor da criatura ou objeto escolhido. O conteúdo fica quase sem peso: pesa apenas 1/16 do peso normal. O conjurador pode erguer por telecinésia o conteúdo que normalmente pesaria até 2.500 kg e, após aprisionar o conteúdo, controlá-lo a alcance médio (30 m + 3 m/nível), movendo a esfera até 9 m por rodada com uma ação padrão de concentração. Sem concentração, a esfera fica parada ou cai a 18 m por rodada; ela pode ser movida mesmo se o conjurador estiver dentro dela. Componentes materiais: dois semicírculos encaixáveis, um de cristal transparente e outro de goma arábica, e um par de pequenos ímãs.",
+            classLevels = mapOf("Feiticeiro" to 8, "Mago" to 8)
+        ),
+        PresetSpell(
             name = "Palavra de Poder, Atordoar",
             level = 8,
             school = "Encantamento (Compulsão) [de Ação Mental]",
