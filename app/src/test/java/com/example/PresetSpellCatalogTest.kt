@@ -1619,4 +1619,66 @@ class PresetSpellCatalogTest {
         assertTrue(spell.description.contains("pequena bolsa e uma pequena vela"))
     }
 
+
+    @Test
+    fun ordemMatchesPlayerHandbookEntry() {
+        val matches = Dnd35Rules.PRESET_SPELLS.filter { it.name == "Ordem" }
+        assertEquals(1, matches.size)
+        val spell = matches.single()
+        assertEquals(8, spell.level)
+        assertEquals("Encantamento (Compulsão) [Ação Mental]", spell.school)
+        assertEquals(setOf("Feiticeiro", "Mago"), spell.classes.toSet())
+        assertEquals(mapOf("Feiticeiro" to 8, "Mago" to 8), spell.classLevels)
+        assertTrue(spell.domainLevels.isEmpty())
+        assertEquals("1 ação padrão", spell.castTime)
+        assertEquals("V, G, M", spell.components)
+        assertEquals("Ilimitado", spell.range)
+        assertEquals("Instantânea; veja texto", spell.duration)
+        assertEquals("Vontade parcial", spell.savingThrow)
+        assertTrue(spell.spellResistance)
+        assertTrue(spell.description.contains("enviar mensagem"))
+        assertTrue(spell.description.contains("fio de cobre"))
+    }
+
+    @Test
+    fun prisaoMatchesPlayerHandbookEntry() {
+        val matches = Dnd35Rules.PRESET_SPELLS.filter { it.name == "Prisão" }
+        assertEquals(1, matches.size)
+        val spell = matches.single()
+        assertEquals(8, spell.level)
+        assertEquals("Encantamento (Compulsão) [Ação Mental]", spell.school)
+        assertEquals(setOf("Feiticeiro", "Mago"), spell.classes.toSet())
+        assertEquals(mapOf("Feiticeiro" to 8, "Mago" to 8), spell.classLevels)
+        assertTrue(spell.domainLevels.isEmpty())
+        assertEquals("1 minuto", spell.castTime)
+        assertEquals("V, G, M", spell.components)
+        assertEquals("Curto (7,5 m + 1,5 m/2 níveis)", spell.range)
+        assertEquals("Variável; veja texto", spell.duration)
+        assertEquals("Vontade anula; veja texto", spell.savingThrow)
+        assertTrue(spell.spellResistance)
+        assertTrue(spell.description.contains("várias técnicas mágicas"))
+        assertTrue(spell.description.contains("espaço extradimensional"))
+    }
+
+    @Test
+    fun simpatiaMatchesPlayerHandbookEntry() {
+        val matches = Dnd35Rules.PRESET_SPELLS.filter { it.name == "Simpatia" }
+        assertEquals(1, matches.size)
+        val spell = matches.single()
+        assertEquals(8, spell.level)
+        assertEquals("Encantamento (Compulsão) [Ação Mental]", spell.school)
+        assertEquals(setOf("Druida", "Feiticeiro", "Mago"), spell.classes.toSet())
+        assertEquals(mapOf("Druida" to 9, "Feiticeiro" to 8, "Mago" to 8), spell.classLevels)
+        assertTrue(spell.domainLevels.isEmpty())
+        assertEquals("1 hora", spell.castTime)
+        assertEquals("V, G, M/FD", spell.components)
+        assertEquals("Curto (7,5 m + 1,5 m/2 níveis)", spell.range)
+        assertEquals("2 horas/nível (D)", spell.duration)
+        assertEquals("Vontade parcial", spell.savingThrow)
+        assertTrue(spell.spellResistance)
+        assertTrue(spell.description.contains("cubo de 3 m por nível"))
+        assertTrue(spell.description.contains("atraem um tipo específico de criatura"))
+    }
+
+
 }
