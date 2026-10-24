@@ -4355,9 +4355,8 @@ object Dnd35Rules {
             duration = "Instantânea",
             savingThrow = "Vontade metade",
             spellResistance = true,
-            description = "Como infligir ferimentos leves em massa, mas causa 4d8 pontos de dano +1 por nível do conjurador (máximo +40) a cada criatura viva afetada. Como outras magias infligir, cura mortos-vivos em vez de feri-los. Os alvos podem realizar testes de Vontade para reduzir o dano à metade.",
-            classLevels = mapOf("Clérigo" to 8),
-            domainLevels = mapOf("Destruição" to 8)
+            description = "Como infligir ferimentos leves em massa, mas causa 4d8 pontos de dano +1 por nível do conjurador (máximo +20) a cada criatura viva afetada. Como outras magias infligir, cura mortos-vivos em vez de feri-los. Os alvos podem realizar testes de Vontade para reduzir o dano à metade.",
+            classLevels = mapOf("Clérigo" to 8)
         ),
         PresetSpell(
             name = "Curar Ferimentos Graves em Massa",
@@ -4371,8 +4370,7 @@ object Dnd35Rules {
             savingThrow = "Vontade metade (inofensiva); veja texto",
             spellResistance = true,
             description = "Como curar ferimentos leves em massa, mas recupera 3d8 pontos de vida +1 por nível do conjurador (máximo +35) em cada criatura afetada. Como outras magias de cura, causa dano a mortos-vivos em vez de curá-los; cada morto-vivo pode realizar um teste de Vontade para reduzir o dano à metade.",
-            classLevels = mapOf("Clérigo" to 7, "Druida" to 8),
-            domainLevels = mapOf("Cura" to 7)
+            classLevels = mapOf("Clérigo" to 7, "Druida" to 8)
         ),
         PresetSpell(
             name = "Corpo de Ferro",
