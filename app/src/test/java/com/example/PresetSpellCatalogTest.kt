@@ -658,8 +658,9 @@ class PresetSpellCatalogTest {
         assertFalse(spells.values.any { it.name == "Suportar Energia" })
 
         val delayPoison = spells.getValue("Retardar Envenenamento")
-        assertEquals(setOf("Clérigo", "Druida", "Paladino", "Ranger"), delayPoison.classes.toSet())
-        assertEquals(mapOf("Clérigo" to 2, "Druida" to 2, "Paladino" to 2, "Ranger" to 1), delayPoison.classLevels)
+        assertEquals(setOf("Bardo", "Clérigo", "Druida", "Paladino", "Ranger"), delayPoison.classes.toSet())
+        assertEquals(mapOf("Bardo" to 2, "Clérigo" to 2, "Druida" to 2, "Paladino" to 2, "Ranger" to 1), delayPoison.classLevels)
+        assertEquals(2, delayPoison.classLevels.getValue("Bardo"))
         assertEquals("1 hora/nível", delayPoison.duration)
         assertTrue(delayPoison.spellResistance)
     }
