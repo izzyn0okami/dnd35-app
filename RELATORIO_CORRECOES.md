@@ -129,3 +129,9 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - Adicionadas nove entradas: Banimento, Refugiar Itens, Reverter Magia, Vidência Maior, Visão Arcana Maior, Visão, Convocação Instantânea de Drawmij, Evocação de Sombras Maior e Curar Ferimentos Moderados em Massa.
 - Preservadas as diferenças de nível por classe: Banimento é Clérigo 6 e Feiticeiro/Mago 7; Vidência Maior é Bardo 6 e Clérigo/Feiticeiro/Mago 7; as demais entradas seguem os níveis indicados no catálogo e no Livro do Jogador.
 - Teste novo verifica presença única, níveis por classe e domínios de Reverter Magia. Conferir a CI antes de merge; metadados resumidos permanecem sujeitos à revisão final contra as descrições completas do livro.
+
+
+### Revisão da descrição de Banimento — Livro do Jogador (2026-10-24)
+- A leitura da descrição na página impressa 177 (PDF digital 181) mostrou que Banimento seleciona uma ou mais criaturas extra-planares que estejam a menos de 9 m entre si; não é descrita como uma magia que expulsa criaturas de uma área.
+- Corrigido o resumo no catálogo para remover a referência incorreta a “área” e registrar o agrupamento dos alvos e a função dos componentes/objetos de foco contra criaturas específicas.
+- Adicionado teste de regressão para escola, níveis por classe, alcance, teste de resistência, resistência à magia e os detalhes centrais dos alvos.
