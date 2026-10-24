@@ -1884,12 +1884,15 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - **Próximo passo:** continuar as magias restantes de 8º nível do Livro do Jogador; conferir o verbete completo no PDF e o catálogo antes de cada inclusão.
 
 
-## 2026-10-24 — Inclusão proposta de Raio Polar (8º nível)
+## 2026-10-24 — Raio Polar integrado (8º nível)
 
+- **PR:** [#228](https://github.com/izzyn0okami/dnd35-app/pull/228), integrada por squash.
+- **Commit de merge:** `8ad60d83b22321dffa94e9a3ec7f8f63e5451286`.
 - **Fonte primária:** PDF brasileiro *D&D 3.5 — Livro do Jogador*, verbete “Raio Polar”, p. impressa 234.
 - **Dados conferidos:** Evocação [Frio]; Feiticeiro 8 e Mago 8; componentes V, G, F; execução de 1 ação padrão; alcance curto (7,5 m + 1,5 m/2 níveis); efeito de raio; duração instantânea; nenhum teste de resistência; resistência à magia sim.
 - **Efeito essencial:** raio azul-esbranquiçado de ar congelante e gelo; ataque de toque à distância; 1d6 pontos de dano por nível de conjurador, até 25d6. Foco: pequeno cone ou prisma branco de cerâmica.
 - **Regressão:** teste dedicado para unicidade, escola, classes e níveis, execução, componentes, alcance, duração, ausência de teste de resistência, resistência à magia, dano e foco.
-- **Validação:** proposta na branch `audit/spell-raio-polar`; CI pendente; sem teste manual em dispositivo Android.
-- **Contagem nominal antes desta proposta:** 209 entradas únicas; a inclusão elevará para 210 se integrada.
-- **Próximo passo:** aguardar CI; integrar somente se testes unitários, compilação Android e upload do APK passarem.
+- **CI:** [workflow Android Build #40101329212](https://github.com/izzyn0okami/dnd35-app/actions/runs/40101329212) passou integralmente: testes unitários, compilação Android e upload do APK de depuração.
+- **Contagem nominal:** 210 entradas após integração (209 antes da PR).
+- **Limitação:** não foi realizado teste manual em dispositivo Android.
+- **Próximo passo:** continuar a auditoria das magias restantes de 8º nível do Livro do Jogador; conferir verbete completo e catálogo antes de cada inclusão.
