@@ -1502,8 +1502,9 @@ class PresetSpellCatalogTest {
 
         assertEquals(8, spell.level)
         assertEquals("Ilusão (Sensação)", spell.school)
-        assertEquals(setOf("Feiticeiro", "Mago", "Enganação"), spell.classes.toSet())
-        assertEquals(mapOf("Feiticeiro" to 8, "Mago" to 8, "Enganação" to 7), spell.classLevels)
+        assertEquals(setOf("Feiticeiro", "Mago"), spell.classes.toSet())
+        assertEquals(mapOf("Feiticeiro" to 8, "Mago" to 8), spell.classLevels)
+        assertEquals(mapOf("Enganação" to 7), spell.domainLevels)
         assertEquals("10 minutos", spell.castTime)
         assertEquals("V, G", spell.components)
         assertEquals("Curto (7,5 m + 1,5 m/2 níveis)", spell.range)
