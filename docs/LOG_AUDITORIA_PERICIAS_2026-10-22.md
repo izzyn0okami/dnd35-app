@@ -1123,3 +1123,14 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Renomeada a entrada predefinida de **Orientação Divina** para **Orientação**, conforme a nomenclatura da referência. Atualizados os componentes e o texto do teste de resistência para acompanhar o verbete.
 - Criado teste de regressão para o nome, nível, classes e campos mecânicos.
 - Não foi encontrada referência a esse nome nos testes automatizados anteriores. A mudança afeta o nome mostrado ao selecionar a magia predefinida; fichas já salvas com o texto antigo não foram migradas. Nenhum teste manual em dispositivo Android foi realizado nesta etapa.
+
+
+---
+
+## 2026-10-24 — Nomes e classes dos truques de detecção/direção
+
+- Conferidas as listas de magias e os verbetes do Livro do Jogador brasileiro (capítulo 11): os nomes usados são **Intuir Direção** e **Detectar Venenos**.
+- Renomeada a entrada **Conhecer Direção** para **Intuir Direção** e **Detectar Veneno** para **Detectar Venenos**, sem criar entradas duplicadas.
+- Corrigida a lista de classes de Detectar Venenos: Clérigo 0, Druida 0, Mago 0, Feiticeiro 0 e Paladino 1. Ranger não consta no verbete/lista correspondente do livro.
+- Ajustados os componentes para a notação portuguesa do livro (**V, G**). Como já estabelecido na auditoria, a diferença de abreviação S/G não altera a mecânica.
+- Atualizados os testes de catálogo e de níveis por classe. Os nomes antigos deixam de ser usados nas opções predefinidas; fichas já salvas com esses nomes não são migradas automaticamente. Nenhum teste manual em dispositivo Android foi realizado nesta etapa.
