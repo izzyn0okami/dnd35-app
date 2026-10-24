@@ -2008,6 +2008,6 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 
 - **Escopo:** sete entradas novas verificadas no PDF brasileiro do *Livro do Jogador*: Aliado Extra-Planar Maior; Curar Ferimentos Críticos em Massa; Infligir Ferimentos Críticos em Massa; Curar Ferimentos Graves em Massa; Corpo de Ferro; Estase Temporal; Metamorfosear Objetos.
 - **Critério:** registrar níveis reais por classe e domínio em mapas separados, mesmo quando a magia está sendo auditada no conjunto de 8º nível.
-- **Regressão:** teste de lote para unicidade, níveis por classe/domínio e efeitos distintivos.
+- **Regressão:** teste de lote para unicidade, níveis por classe/domínio e efeitos distintivos. A revisão dos verbetes detalhados corrigiu o limite de dano de Infligir Ferimentos Críticos em Massa para +20 e retirou níveis de domínio não listados no livro das duas magias em massa afetadas.
 - **CI:** pendente; não integrar antes de testes unitários, compilação Android e upload do APK de depuração passarem.
 - **Limitação:** não foi realizado teste manual em dispositivo Android.
