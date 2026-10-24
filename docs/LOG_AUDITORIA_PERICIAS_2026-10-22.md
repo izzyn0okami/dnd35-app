@@ -1164,3 +1164,15 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Removidas as quatro novas duplicatas e aproveitadas as entradas preexistentes, adicionando nelas os níveis por classe ausentes.
 - Ajustados os testes para validar as entradas únicas e respeitar a notação dos componentes já registrada no catálogo.
 - A PR #183 permanece aberta até o CI ser executado novamente e passar.
+
+
+---
+
+## 2026-10-24 — Magias ausentes na lista de 1º nível de Clérigo
+
+- Conferida a lista **Magias de 1º nível de Clérigo** no capítulo 11 do PDF brasileiro fornecido (página impressa 157) e os verbetes das magias.
+- Adicionadas ao catálogo, após busca por nomes para evitar duplicatas: **Auxílio Divino**, **Invisibilidade Contra Mortos-Vivos**, **Pedra Encantada** e **Visão da Morte**.
+- Registrados os níveis por classe, componentes, alcance, duração, teste de resistência, resistência à magia e resumo dos efeitos conforme os verbetes do livro. **Auxílio Divino** também consta como Paladino 1; **Pedra Encantada** como Druida 1 além de Clérigo 1.
+- Acrescentados testes de regressão para presença única, níveis, classes e campos mecânicos importantes.
+- A extração de texto do PDF distorceu o nome de **Invisibilidade Contra Mortos-Vivos** na lista, mas o título e a entrada do verbete na página impressa 209 confirmam essa grafia; foi usado o nome do verbete, não a leitura OCR incorreta.
+- Esta PR cobre apenas quatro ausências confirmadas; ainda é necessário comparar integralmente as listas de 1º nível das demais classes e verificar os campos de cada entrada. CI e testes automatizados não substituem teste manual no Android.
