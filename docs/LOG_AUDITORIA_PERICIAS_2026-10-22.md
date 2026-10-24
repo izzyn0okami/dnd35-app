@@ -1097,3 +1097,11 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - A descrição foi detalhada para registrar o limite de **50 kg por nível** e os dois resultados contra adivinhação: falha automática quando o objeto protegido é o alvo e incapacidade de senti-lo quando a magia procura outro alvo próximo.
 - Mantidos classes e níveis (Bardo 1, Clérigo 3, Mago 2 e Feiticeiro 2), alcance Toque, duração 8 horas (D), teste de Vontade anula (objeto) e resistência à magia Sim (objeto), conforme o verbete.
 - Adicionados testes de regressão para esses campos e para os detalhes da descrição. Nenhum teste manual em dispositivo Android foi realizado nesta etapa.
+
+---
+
+## 2026-10-23 — Duplicata de Recuo Acelerado
+
+- Conferido o catálogo de magias de 1º nível com o índice e o verbete do Livro do Jogador brasileiro. O nome oficial encontrado no livro é **Recuo Acelerado** (Brd 1, Fet/Mag 1); não há uma entrada distinta chamada **Retirada Acelerada** no catálogo consultado.
+- Removida a entrada redundante **Retirada Acelerada**, que duplicava o efeito de Recuo Acelerado e não registrava Bardo como classe. Mantida a entrada canônica com Bardo, Mago e Feiticeiro e níveis estruturados.
+- Adicionado teste de regressão para impedir que a duplicata volte ao catálogo. Essa remoção altera apenas o catálogo predefinido; não foi realizada migração de fichas salvas que já contenham o texto antigo. Nenhum teste manual em dispositivo Android foi realizado nesta etapa.
