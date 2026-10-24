@@ -4009,5 +4009,19 @@ object Dnd35Rules {
             description = "Inscreve uma runa de poder numa superfície. Funciona como símbolo da morte, mas todas as criaturas na área de até 18 m ficam permanentemente insanas, como pela magia insanidade. Não há limite de pontos de vida para os alvos; depois de ativado, permanece ativo durante 10 minutos por nível de conjurador. O símbolo é visível e legível a até 18 m, deve ficar numa superfície plana e proeminente e permanece inativo até ser ativado. O conjurador define na conjuração as condições de ativação, como olhar para a runa, lê-la, tocá-la ou passar sobre ela; uma criatura a mais de 16 m não consegue ativá-la. As condições não podem ser alteradas depois. Uma senha pode impedir a ativação e tornar criaturas que a conheçam imunes enquanto estiverem a menos de 18 m. O conjurador é vinculado automaticamente ao próprio símbolo e não pode ativá-lo por acidente. A magia pode ser dissipada com dissipar magia lançado diretamente sobre a runa; apagar não a afeta, e destruir a superfície a ativa. Um ladino pode localizar e desarmar a armadilha com Procurar e Operar Mecanismo, CD 33. Componente material: mercúrio e fósforo, além de pó de opala negra e diamante no valor total de 5.000 PO.",
             classLevels = mapOf("Clérigo" to 8, "Feiticeiro" to 8, "Mago" to 8)
         ),
+        PresetSpell(
+            name = "Invocar Criaturas VIII",
+            level = 8,
+            school = "Conjuração (Invocação) [veja texto de Invocar Criaturas I]",
+            classes = listOf("Clérigo", "Feiticeiro", "Mago"),
+            castTime = "1 rodada",
+            components = "V, G, F/FD",
+            range = "Curto (7,5 m + 1,5 m/2 níveis)",
+            duration = "1 rodada/nível (D)",
+            savingThrow = "Nenhum",
+            spellResistance = false,
+            description = "Invoca uma criatura extra-planar (normalmente um planar, elemental ou besta mágica nativa de outro plano). A criatura aparece no local escolhido e age imediatamente no turno do conjurador, atacando seus oponentes com o melhor de suas habilidades. O conjurador pode ordenar outras tarefas se puder comunicar-se com ela. Invoca uma criatura da lista de 8º nível, 1d3 criaturas do mesmo tipo da lista de 7º nível ou 1d4+1 criaturas do mesmo tipo de qualquer nível inferior; todas devem ficar a menos de 9 m entre si. A criatura invocada não pode invocar ou conjurar outras criaturas nem usar teletransporte ou viagem planar, e não pode ser invocada em ambiente que não a suporte. O tipo de criatura escolhido pode determinar os descritores de tendência da magia, conforme as regras de Invocar Criaturas I. Foco arcano: uma pequena bolsa e uma pequena vela, que não precisa estar acesa.",
+            classLevels = mapOf("Clérigo" to 8, "Feiticeiro" to 8, "Mago" to 8)
+        ),
     )
 }
