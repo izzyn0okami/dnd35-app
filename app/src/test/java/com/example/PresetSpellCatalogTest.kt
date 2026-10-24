@@ -645,7 +645,7 @@ class PresetSpellCatalogTest {
         assertEquals("Fortitude anula (inofensiva)", resistElements.savingThrow)
         assertEquals("10 minutos/nível", resistElements.duration)
         assertTrue(resistElements.spellResistance)
-        assertFalse(spells.any { it.name == "Suportar Energia" })
+        assertFalse(spells.values.any { it.name == "Suportar Energia" })
 
         val delayPoison = spells.getValue("Retardar Envenenamento")
         assertEquals(setOf("Clérigo", "Druida", "Paladino", "Ranger"), delayPoison.classes.toSet())
