@@ -1325,3 +1325,14 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Acrescentado o mapa explícito de níveis por classe e teste de regressão para os parâmetros, efeito e unicidade da entrada.
 - Fonte primária: PDF brasileiro *D&D 3.5 — Livro do Jogador* fornecido no projeto, lista de magias de 2º nível de Ranger (p. 164) e verbete **Vigor do Urso** (texto extraído na região da p. 231).
 - A auditoria de magias de Ranger continua em andamento. Nenhum teste manual em dispositivo Android foi realizado nesta etapa.
+
+
+---
+
+## 2026-10-24 — Primeiras magias de 3º nível de Ranger
+
+- Conferida a lista de 3º nível de Ranger no *Livro do Jogador* brasileiro e identificadas entradas ausentes do catálogo. Este lote adiciona **Caminhar na Água**, **Curar Ferimentos Moderados** e **Neutralizar Venenos**.
+- Níveis por classe extraídos dos verbetes: Caminhar na Água (Clérigo 3/Ranger 3); Curar Ferimentos Moderados (Bardo 2/Clérigo 2/Druida 3/Paladino 3/Ranger 3); Neutralizar Venenos (Bardo 4/Clérigo 4/Druida 3/Paladino 4/Ranger 3).
+- Adicionados testes de regressão para níveis por classe, componentes, duração e efeitos descritos.
+- Fonte primária: PDF brasileiro *D&D 3.5 — Livro do Jogador* fornecido no projeto, lista de magias de 3º nível de Ranger (p. 165) e verbetes correspondentes.
+- A auditoria da lista de Ranger continua em andamento; os demais itens de 3º nível serão conferidos em lotes posteriores. Nenhum teste manual em dispositivo Android foi realizado nesta etapa.
