@@ -1288,3 +1288,5 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Acrescentados testes de regressão para ambas as entradas, níveis por classe, parâmetros herdados e efeito distintivo da versão II.
 - Fonte primária: PDF brasileiro *D&D 3.5 — Livro do Jogador* fornecido no projeto, verbetes “Invocar Aliado da Natureza I” e “Invocar Aliado da Natureza II” (capítulo 11; lista de 2º nível de Ranger na p. 164).
 - A auditoria da lista de magias de Ranger continua incompleta; este lote não declara o catálogo completo. Nenhum teste manual em dispositivo Android foi realizado nesta etapa.
+
+- Ajuste de validação em 2026-10-24: a primeira CI detectou uma expectativa antiga no teste `firstLevelNatureSpellBatchEightHasExpectedClassesAndMechanics`, que ainda esperava duração sem o marcador dissipável. O teste foi alinhado ao verbete do Livro do Jogador: `1 rodada/nível (D)`. A PR permanece sem merge até a nova CI concluir com sucesso.
