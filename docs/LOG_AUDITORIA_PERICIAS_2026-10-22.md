@@ -1406,3 +1406,39 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - **Validação pendente:** executar/confirmar CI de testes e compilação antes do merge. Não houve teste manual em dispositivo Android.
 
 - **Correção após CI falhar:** o teste revelou duas associações adicionais indevidas de Paladino em **Detectar Bem** e **Detectar Mal**. Removidas e incluídas as duas verificações no teste de regressão. A lista resumida do Livro do Jogador continua com 16 magias de 1º nível; CI precisa ser repetida antes do merge.
+
+
+## 2026-10-24 — Fechamento da auditoria de Paladino 1 e retomada de Ranger 1
+
+- **PR #204 integrada:** a lista de 1º nível de Paladino foi conferida contra o *Livro do Jogador* brasileiro; a execução final da CI (run 1101) terminou com sucesso, incluindo testes unitários, compilação do app e upload do APK. Merge realizado após o sucesso da CI.
+- A falha da primeira execução revelou associações indevidas de Paladino em **Detectar Bem** e **Detectar Mal**; ambas foram removidas, com teste de regressão. A correção final passou na CI.
+- **Próximo escopo:** conferir a lista resumida de 1º nível de Ranger (p. 164) sem duplicar entradas já existentes. As 14 magias listadas na fonte são: Acalmar Animais, Alarme, Constrição, Detectar Animais ou Plantas, Detectar Armadilhas, Detectar Venenos, Enfeitiçar Animal, Falar com Animais, Invisibilidade Contra Animais, Invocar Aliado da Natureza I, Ler Magias, Mensageiro Animal, Passos Longos e Passos sem Pegadas.
+- Acrescentado teste de regressão que compara a lista completa de Ranger 1 com os níveis por classe e verifica unicidade. A validação CI desta nova etapa está pendente.
+- Fonte primária: PDF brasileiro *D&D 3.5 — Livro do Jogador* fornecido no projeto, capítulo 11, lista resumida de magias de 1º nível de Ranger, página impressa 164.
+
+
+## 2026-10-24 — Correção da CI na auditoria de Ranger 1
+
+- **PR #205 / execução CI 1103:** o teste novo falhou porque a lista efetiva continha uma entrada adicional chamada **Detectar Laços e Covas**, além de **Detectar Armadilhas**.
+- Conferência da fonte primária: no PDF brasileiro *Livro do Jogador*, página impressa 164, a lista resumida de Ranger usa **Detectar Armadilhas**; o verbete completo também se intitula **Detectar Armadilhas** (página impressa 174) e descreve detecção de fossos simples, abismos e armadilhas naturais/primitivas.
+- **Correção aplicada na branch da PR:** removida a entrada redundante “Detectar Laços e Covas”, mantendo a entrada “Detectar Armadilhas” com os parâmetros do verbete completo. O teste que antes validava a duplicata foi atualizado para validar o nome canônico, alcance “18 m”, ausência de resistência à magia e unicidade.
+- **Validação ainda pendente:** a CI deve ser executada novamente; não fazer merge até testes e compilação passarem. Nenhum teste manual em dispositivo Android foi realizado.
+- **Próximo passo:** verificar novo resultado da CI da PR #205; se passar, integrar e continuar a auditoria de magias de Ranger sem repetir níveis já conferidos.
+
+
+## 2026-10-24 — Segunda correção da CI de Ranger 1
+
+- A execução **CI run 1104** falhou no teste de regressão rangerFirstLevelCatalogMatchesPlayerHandbook, na comparação do conjunto esperado com o conjunto encontrado.
+- Diagnóstico: o teste filtrava apenas entradas com classLevels["Ranger"] == 1, mas parte do catálogo legado registra nível no campo geral `level` e lista Ranger em `classes`, sem mapa explícito `classLevels`. O filtro, portanto, ignorava magias existentes; isso não prova que as magias estivessem ausentes do catálogo.
+- Ajuste feito na PR #205: o teste agora verifica entradas que incluem Ranger em `classes` e usa o nível específico `classLevels["Ranger"]` quando existe, recorrendo ao campo `level` apenas quando o mapa específico está ausente.
+- **Validação pendente:** aguardar nova CI; não fazer merge antes de todos os testes e compilação passarem. A correção anterior de nome canônico/duplicata permanece.
+
+
+## 2026-10-24 — Terceira análise da CI de Ranger 1
+
+- **CI run 1105:** falhou em `rangerFirstLevelCatalogMatchesPlayerHandbook`; 189 testes executados, 1 falha. A compilação principal foi interrompida após o teste unitário falhar.
+- A causa desta vez é a comparação excessivamente ampla: o teste comparava todos os registros do catálogo que mencionam Ranger e têm nível efetivo 1 com a lista resumida de 14 magias da página impressa 164. O catálogo contém outros registros legados de magias associados a Ranger sem nível específico explícito; a diferença, por si só, não demonstra que esses registros estejam incorretos.
+- **Correção na PR #205:** o teste agora verifica as 14 entradas canônicas da lista resumida individualmente, incluindo unicidade, associação à classe e nível efetivo 1 (nível específico quando informado; campo geral como fallback). Não usa a lista resumida como prova automática de que todas as outras associações de Ranger no catálogo são inválidas.
+- **Limite e pendência:** esta mudança corrige o escopo do teste, mas não valida todas as associações de classe/nível de Ranger no catálogo completo. Essas associações devem ser auditadas em etapa separada, consultando os verbetes/listas relevantes do PDF, sem remover magias por inferência.
+- **Fonte primária desta etapa:** PDF brasileiro *D&D 3.5 — Livro do Jogador*, capítulo 11, lista resumida “Magias de Ranger”, página impressa 164. Nenhum teste manual em dispositivo Android foi realizado.
+- **Estado:** aguardando nova CI da PR #205; não fazer merge antes de testes unitários, compilação e publicação do APK passarem.

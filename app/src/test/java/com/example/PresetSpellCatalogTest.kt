@@ -214,10 +214,12 @@ class PresetSpellCatalogTest {
         assertEquals("1 minuto/nível", calmAnimals.duration)
         assertTrue(calmAnimals.spellResistance)
 
-        val detectTraps = spells.getValue("Detectar Laços e Covas")
+        val detectTraps = spells.getValue("Detectar Armadilhas")
         assertEquals(setOf("Druida", "Ranger"), detectTraps.classes.toSet())
-        assertEquals("18m/nível", detectTraps.range)
+        assertEquals("18 m", detectTraps.range)
         assertFalse(detectTraps.spellResistance)
+        assertEquals(1, spells.values.count { it.name == "Detectar Armadilhas" })
+        assertFalse(spells.containsKey("Detectar Laços e Covas"))
 
         val summonNature = spells.getValue("Invocar Aliado da Natureza I")
         assertEquals(setOf("Druida", "Ranger"), summonNature.classes.toSet())
@@ -1046,5 +1048,28 @@ class PresetSpellCatalogTest {
         }
         assertEquals("O catálogo não deve conter nomes duplicados",
             spells.size, spells.map { it.name }.toSet().size)
+    }
+
+
+    @Test
+    fun rangerFirstLevelCatalogMatchesPlayerHandbook() {
+        val spells = Dnd35Rules.PRESET_SPELLS
+        val expected = setOf(
+            "Acalmar Animais", "Alarme", "Constrição", "Detectar Animais ou Plantas",
+            "Detectar Armadilhas", "Detectar Venenos", "Enfeitiçar Animal",
+            "Falar com Animais", "Invisibilidade Contra Animais",
+            "Invocar Aliado da Natureza I", "Ler Magias", "Mensageiro Animal",
+            "Passos Longos", "Passos sem Pegadas"
+        )
+        // A lista resumida da p. 164 é a referência para os 14 nomes auditados.
+        // O catálogo também contém entradas de magias descritas em outros trechos do livro;
+        // não se deve tratar todo item legado associado a Ranger como parte desta lista resumida.
+        expected.forEach { name ->
+            val matches = spells.filter { it.name == name }
+            assertEquals("Deve existir uma única entrada para $name", 1, matches.size)
+            val spell = matches.single()
+            assertTrue("$name deve incluir Ranger na lista de classes", "Ranger" in spell.classes)
+            assertEquals("Nível de Ranger incorreto para $name", 1, spell.classLevels["Ranger"] ?: spell.level)
+        }
     }
 }
