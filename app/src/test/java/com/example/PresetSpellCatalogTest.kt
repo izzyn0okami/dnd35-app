@@ -1542,5 +1542,32 @@ class PresetSpellCatalogTest {
     }
 
 
+    @Test
+    fun padraoCintilanteMatchesPlayerHandbookEntry() {
+        val matches = Dnd35Rules.PRESET_SPELLS.filter { it.name == "Padrão Cintilante" }
+        assertEquals(1, matches.size)
+        val spell = matches.single()
+
+        assertEquals(8, spell.level)
+        assertEquals("Ilusão (Padrão) [Ação Mental]", spell.school)
+        assertEquals(setOf("Feiticeiro", "Mago"), spell.classes.toSet())
+        assertEquals(mapOf("Feiticeiro" to 8, "Mago" to 8), spell.classLevels)
+        assertTrue(spell.domainLevels.isEmpty())
+        assertEquals("1 ação padrão", spell.castTime)
+        assertEquals("V, G, M", spell.components)
+        assertEquals("Curto (7,5 m + 1,5 m/2 níveis)", spell.range)
+        assertEquals("Concentração + 2 rodadas", spell.duration)
+        assertEquals("Nenhum", spell.savingThrow)
+        assertTrue(spell.spellResistance)
+        assertTrue(spell.description.contains("dispersão de 6 m de raio"))
+        assertTrue(spell.description.contains("máximo de 20"))
+        assertTrue(spell.description.contains("inconscientes por 1d4 rodadas"))
+        assertTrue(spell.description.contains("atordoadas por 1d4 rodadas"))
+        assertTrue(spell.description.contains("confusas por 1d4 rodadas"))
+        assertTrue(spell.description.contains("não conseguem enxergar"))
+        assertTrue(spell.description.contains("pequeno prisma de cristal"))
+    }
+
+
 
 }
