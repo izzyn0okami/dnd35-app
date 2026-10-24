@@ -1706,3 +1706,14 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - **Causa identificada:** o teste `ancoraPlanarMaiorMatchesPlayerHandbookEntry` foi inserido fora da classe de testes, causando erro de inicialização.
 - **Correção aplicada:** movido o teste para dentro da classe `PresetSpellCatalogTest` no commit `be7c8c3d358bc59ba532c1a55d42e3144b1502e7`.
 - **Estado atual:** nova CI [40065441281](https://github.com/izzyn0okami/dnd35-app/actions/runs/40065441281) em andamento. Não integrar até que testes, compilação e APK concluam com sucesso.
+
+
+## Resultado final da PR #217 — 2026-10-24
+
+- **CI:** execução [40065926745](https://github.com/izzyn0okami/dnd35-app/actions/runs/40065926745) concluída com sucesso. Testes unitários, compilação Android e upload do APK passaram.
+- **Integração:** PR [#217](https://github.com/izzyn0okami/dnd35-app/pull/217) integrada por squash no commit `7a0a2c22dbe4f85e4c5e93d401633be53cfa13b0`.
+- **Resultado:** `Âncora Planar Maior` adicionada ao catálogo, com Feiticeiro 8 e Mago 8, limite de 18 DV, tentativas independentes de resistência e persuasão individual.
+- **Contagem nominal:** 199 entradas únicas após integração (198 antes da PR).
+- **Cobertura:** teste de regressão aprovado pela CI.
+- **Limitação:** não foi realizado teste manual em dispositivo Android.
+- **Próximo passo:** continuar a auditoria do catálogo exclusivamente contra o PDF brasileiro do *Livro do Jogador*, conferindo o próximo verbete ausente e evitando repetir magias já registradas.
