@@ -1208,4 +1208,27 @@ class PresetSpellCatalogTest {
         assertTrue(spell.description.contains("precisa tê-lo tocado"))
     }
 
+
+    @Test
+    fun instanteDePrescienciaMatchesPlayerHandbookEntry() {
+        val matches = Dnd35Rules.PRESET_SPELLS.filter { it.name == "Instante de Presciência" }
+        assertEquals(1, matches.size)
+        val spell = matches.single()
+
+        assertEquals(8, spell.level)
+        assertEquals("Adivinhação", spell.school)
+        assertEquals(setOf("Feiticeiro", "Mago"), spell.classes.toSet())
+        assertEquals(mapOf("Feiticeiro" to 8, "Mago" to 8), spell.classLevels)
+        assertEquals(mapOf("Sorte" to 8), spell.domainLevels)
+        assertEquals("1 ação padrão", spell.castTime)
+        assertEquals("V, G", spell.components)
+        assertEquals("Pessoal", spell.range)
+        assertEquals("1 hora/nível ou até ser dissipada", spell.duration)
+        assertEquals("Nenhum", spell.savingThrow)
+        assertFalse(spell.spellResistance)
+        assertTrue(spell.description.contains("máximo +25"))
+        assertTrue(spell.description.contains("antes da jogada"))
+        assertTrue(spell.description.contains("Não é possível manter mais de um"))
+    }
+
 }
