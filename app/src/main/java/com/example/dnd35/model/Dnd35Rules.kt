@@ -4584,7 +4584,7 @@ object Dnd35Rules {
             duration = "Instantânea",
             savingThrow = "Nenhum",
             spellResistance = false,
-            description = "Funciona como lendas e histórias, mas permite obter mais rapidamente uma resposta sobre uma pessoa, local ou objeto, à custa de esforço e experiência. A dificuldade depende da proximidade do alvo e da qualidade das informações disponíveis; o custo é de 100 XP.",
+            description = "Funciona como lendas e histórias, mas permite obter uma resposta mais rapidamente, embora canse o conjurador. Faz uma pergunta sobre uma pessoa, lugar ou objeto. Se o alvo estiver por perto ou o conjurador estiver no local, realiza-se um teste de nível de conjurador (1d20 + nível de conjurador, máximo +25) contra CD 20. Com informações detalhadas, a CD é 25 e a resposta é incompleta; com apenas rumores, a CD é 30 e a resposta é vaga. Custo de XP: 100 XP.",
             classLevels = mapOf("Feiticeiro" to 7, "Mago" to 7)
         ),
         PresetSpell(
