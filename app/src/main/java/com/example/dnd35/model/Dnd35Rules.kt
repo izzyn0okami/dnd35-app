@@ -1213,18 +1213,18 @@ object Dnd35Rules {
             description = "Cria até 8 litros de água limpa por nível de conjurador."
         ),
         PresetSpell(
-            name = "Detectar Veneno",
+            name = "Detectar Venenos",
             level = 0,
             school = "Adivinhação",
-            classes = listOf("Clérigo", "Druida", "Mago", "Feiticeiro", "Paladino", "Ranger"),
+            classes = listOf("Clérigo", "Druida", "Mago", "Feiticeiro", "Paladino"),
             castTime = "1 ação padrão",
-            components = "V, S",
+            components = "V, G",
             range = "Curto (7,5m)",
             duration = "Instantânea",
             savingThrow = "Nenhum",
             spellResistance = false,
             description = "Determina se uma criatura, objeto ou área contém veneno; identificar o tipo exige um teste de Sabedoria CD 20.",
-            classLevels = mapOf("Clérigo" to 0, "Druida" to 0, "Mago" to 0, "Feiticeiro" to 0, "Paladino" to 1, "Ranger" to 1)
+            classLevels = mapOf("Clérigo" to 0, "Druida" to 0, "Mago" to 0, "Feiticeiro" to 0, "Paladino" to 1)
         ),
         PresetSpell(
             name = "Consertar",
@@ -1279,46 +1279,20 @@ object Dnd35Rules {
             description = "Realiza pequenos efeitos mágicos e truques inofensivos, sem produzir efeitos poderosos."
         ),
         PresetSpell(
-            name = "Purificar Alimentos e Bebidas",
+            name = "Purificar Alimentos",
             level = 0,
             school = "Transmutação",
             classes = listOf("Clérigo", "Druida"),
             castTime = "1 ação padrão",
-            components = "V, S",
+            components = "V, G",
             range = "3m",
             duration = "Instantânea",
             savingThrow = "Vontade anula (objeto)",
             spellResistance = true,
             description = "Purifica alimentos e bebidas deteriorados, estragados, envenenados ou contaminados; não afeta criaturas nem poções mágicas."
         ),
-        PresetSpell(
-            name = "Atordoar",
-            level = 0,
-            school = "Encantamento",
-            classes = listOf("Mago", "Feiticeiro", "Bardo"),
-            castTime = "1 ação padrão",
-            components = "V, S, M",
-            range = "Curto (7,5m)",
-            duration = "1 rodada",
-            savingThrow = "Vontade anula",
-            spellResistance = true,
-            description = "Uma criatura humanoide com 4 DV ou menos perde sua próxima ação se falhar na resistência."
-        ),
 
         // Truques adicionais do Livro do Jogador 3.5 — lote 2
-        PresetSpell(
-            name = "Espirro Ácido",
-            level = 0,
-            school = "Conjuração",
-            classes = listOf("Mago", "Feiticeiro"),
-            castTime = "1 ação padrão",
-            components = "V, S",
-            range = "Curto (7,5m + 1,5m/2 níveis)",
-            duration = "Instantânea",
-            savingThrow = "Nenhum",
-            spellResistance = false,
-            description = "Dispara um orbe de ácido que exige ataque de toque à distância e causa 1d3 pontos de dano por ácido."
-        ),
         PresetSpell(
             name = "Marca Arcana",
             level = 0,
@@ -1346,25 +1320,12 @@ object Dnd35Rules {
             description = "Um raio exige ataque de toque à distância e causa 1d3 pontos de dano por frio."
         ),
         PresetSpell(
-            name = "Desestabilizar Mortos-Vivos",
+            name = "Toque da Fadiga",
             level = 0,
             school = "Necromancia",
             classes = listOf("Mago", "Feiticeiro"),
             castTime = "1 ação padrão",
-            components = "V, S",
-            range = "Curto (7,5m + 1,5m/2 níveis)",
-            duration = "Instantânea",
-            savingThrow = "Nenhum",
-            spellResistance = true,
-            description = "Um raio de energia causa 1d6 pontos de dano a uma criatura morta-viva; exige ataque de toque à distância."
-        ),
-        PresetSpell(
-            name = "Toque de Fadiga",
-            level = 0,
-            school = "Necromancia",
-            classes = listOf("Mago", "Feiticeiro"),
-            castTime = "1 ação padrão",
-            components = "V, S",
+            components = "V, G, M",
             range = "Toque",
             duration = "1 rodada/nível",
             savingThrow = "Fortitude anula",
@@ -1372,25 +1333,12 @@ object Dnd35Rules {
             description = "Um ataque de toque deixa a criatura fatigada; uma criatura já fatigada não sofre efeito adicional."
         ),
         PresetSpell(
-            name = "Lampejo",
-            level = 0,
-            school = "Evocação",
-            classes = listOf("Bardo", "Druida", "Mago", "Feiticeiro"),
-            castTime = "1 ação padrão",
-            components = "V",
-            range = "Curto (7,5m + 1,5m/2 níveis)",
-            duration = "1 minuto",
-            savingThrow = "Fortitude anula",
-            spellResistance = true,
-            description = "Um clarão deixa uma criatura ofuscada, impondo –1 nas jogadas de ataque."
-        ),
-        PresetSpell(
-            name = "Conhecer Direção",
+            name = "Intuir Direção",
             level = 0,
             school = "Adivinhação",
             classes = listOf("Bardo", "Druida"),
             castTime = "1 ação padrão",
-            components = "V, S",
+            components = "V, G",
             range = "Pessoal",
             duration = "Instantânea",
             savingThrow = "Nenhum",
