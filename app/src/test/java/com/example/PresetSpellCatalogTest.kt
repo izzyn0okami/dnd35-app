@@ -1692,4 +1692,46 @@ class PresetSpellCatalogTest {
         assertTrue(spell.description.contains("1.500 PO"))
     }
 
+
+    @Test
+    fun clericAndDruidEighthLevelBatchMatchesPlayerHandbook() {
+        val expected = mapOf(
+            "Campo Antimagia" to Triple("Abjuração", mapOf("Clérigo" to 8, "Feiticeiro" to 6, "Mago" to 6), mapOf("Magia" to 6, "Proteção" to 6)),
+            "Criar Mortos-Vivos Maior" to Triple("Necromancia [Mal]", mapOf("Clérigo" to 8, "Feiticeiro" to 8, "Mago" to 8), mapOf("Morte" to 8)),
+            "Ciclone" to Triple("Evocação [Ar]", mapOf("Druida" to 8), mapOf("Ar" to 8)),
+            "Controlar Plantas" to Triple("Transmutação", mapOf("Druida" to 8), mapOf("Planta" to 8)),
+            "Forma Animal" to Triple("Transmutação", mapOf("Druida" to 8), mapOf("Animal" to 7)),
+            "Imunidade à Magia Maior" to Triple("Abjuração", mapOf("Clérigo" to 8), emptyMap()),
+            "Inverter a Gravidade" to Triple("Transmutação", mapOf("Druida" to 8, "Feiticeiro" to 7, "Mago" to 7), emptyMap()),
+            "Invocar Aliado da Natureza VIII" to Triple("Conjuração (Invocação) [veja texto de Invocar Aliado da Natureza I]", mapOf("Druida" to 8), mapOf("Animal" to 8)),
+            "Repelir Metal ou Pedra" to Triple("Abjuração [Terra]", mapOf("Druida" to 8), emptyMap())
+        )
+        expected.forEach { (name, values) ->
+            val matches = Dnd35Rules.PRESET_SPELLS.filter { it.name == name }
+            assertEquals(1, matches.size)
+            val spell = matches.single()
+            assertEquals(8, spell.level)
+            assertEquals(values.first, spell.school)
+            assertEquals(values.second.keys, spell.classLevels.keys)
+            assertEquals(values.second, spell.classLevels)
+            assertEquals(values.third, spell.domainLevels)
+            assertTrue(spell.description.isNotBlank())
+        }
+        val fieldChecks = mapOf(
+            "Campo Antimagia" to listOf("emanação de 3 m de raio", "não são dissipados"),
+            "Criar Mortos-Vivos Maior" to listOf("sombra", "aparição", "espectro", "devorador"),
+            "Ciclone" to listOf("18 m por rodada", "3 m de largura na base"),
+            "Controlar Plantas" to listOf("2 Dados de Vida por nível", "menos de 9 m entre si"),
+            "Forma Animal" to listOf("criatura voluntária", "mesma espécie"),
+            "Imunidade à Magia Maior" to listOf("8º nível ou inferior"),
+            "Inverter a Gravidade" to listOf("cubo de 3 m por 2 níveis", "caem quando ela termina"),
+            "Invocar Aliado da Natureza VIII" to listOf("lista de 8º nível", "1d3 criaturas", "1d4+1 criaturas"),
+            "Repelir Metal ou Pedra" to listOf("linha de 18 m", "12 m por rodada")
+        )
+        fieldChecks.forEach { (name, fragments) ->
+            val description = Dnd35Rules.PRESET_SPELLS.single { it.name == name }.description
+            fragments.forEach { assertTrue("$name missing: $it", description.contains(it)) }
+        }
+    }
+
 }
