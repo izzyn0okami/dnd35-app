@@ -624,7 +624,8 @@ class PresetSpellCatalogTest {
         assertEquals("Fortitude anula (inofensivo)", virtue.savingThrow)
 
         val cureLight = spells.getValue("Curar Ferimentos Leves")
-        assertEquals(1, cureLight.classLevels.getValue("Ranger"))
+        assertEquals(1, cureLight.classLevels.getValue("Paladino"))
+        assertEquals(2, cureLight.classLevels.getValue("Ranger"))
 
         val lesserRestoration = spells.getValue("Restauração Menor")
         assertEquals(setOf("Clérigo", "Druida", "Paladino", "Ranger"), lesserRestoration.classes.toSet())
@@ -636,11 +637,15 @@ class PresetSpellCatalogTest {
     fun rangerFirstLevelSpellListIncludesEnergyResistanceAndDelayPoison() {
         val spells = Dnd35Rules.PRESET_SPELLS.associateBy { it.name }
 
-        val resistEnergy = spells.getValue("Suportar Energia")
-        assertEquals(setOf("Clérigo", "Druida", "Paladino", "Ranger", "Mago", "Feiticeiro"), resistEnergy.classes.toSet())
-        assertEquals(mapOf("Clérigo" to 2, "Druida" to 2, "Paladino" to 2, "Ranger" to 1, "Mago" to 2, "Feiticeiro" to 2), resistEnergy.classLevels)
-        assertEquals("10 minutos/nível", resistEnergy.duration)
-        assertTrue(resistEnergy.spellResistance)
+        val resistElements = spells.getValue("Resistência à Elementos")
+        assertEquals(2, resistElements.level)
+        assertEquals(setOf("Clérigo", "Druida", "Paladino", "Ranger", "Mago", "Feiticeiro"), resistElements.classes.toSet())
+        assertEquals(mapOf("Clérigo" to 2, "Druida" to 2, "Paladino" to 2, "Ranger" to 1, "Mago" to 2, "Feiticeiro" to 2), resistElements.classLevels)
+        assertEquals("V, G, FD", resistElements.components)
+        assertEquals("Fortitude anula (inofensiva)", resistElements.savingThrow)
+        assertEquals("10 minutos/nível", resistElements.duration)
+        assertTrue(resistElements.spellResistance)
+        assertFalse(spells.any { it.name == "Suportar Energia" })
 
         val delayPoison = spells.getValue("Retardar Envenenamento")
         assertEquals(setOf("Clérigo", "Druida", "Paladino", "Ranger"), delayPoison.classes.toSet())
