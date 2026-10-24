@@ -4058,7 +4058,7 @@ object Dnd35Rules {
             school = "Encantamento (Compulsão) [Ação Mental]",
             classes = listOf("Druida", "Feiticeiro", "Mago"),
             castTime = "1 hora",
-            components = "V, G, M/FD",
+            components = "V, G, M",
             range = "Curto (7,5 m + 1,5 m/2 níveis)",
             duration = "2 horas/nível (D)",
             savingThrow = "Vontade parcial",
