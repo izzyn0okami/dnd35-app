@@ -1393,3 +1393,14 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Foi acrescentado teste de regressão para existência única, classe e nível de Paladino.
 - **Pendente até a CI:** não marcar esta etapa como integrada/concluída antes de verificar testes e compilação.
 - **Limite desta etapa:** associações de nível de entradas preexistentes, especialmente na lista de 1º nível e magias compartilhadas, ainda precisam de uma verificação separada.
+
+
+## 2026-10-24 — Auditoria das magias de 1º nível de Paladino
+
+- **Ponto de retomada:** depois da PR #203, a auditoria volta à lista de 1º nível de Paladino; a cobertura de níveis 2–4 foi tratada separadamente.
+- **Fonte primária:** PDF brasileiro *D&D 3.5 — Livro do Jogador*, capítulo 11, lista resumida “Magias de Paladino”, páginas impressas 163–164.
+- Corrigidos/adicionados os níveis por classe de **Abençoar Água**, **Arma Mágica**, **Bênção**, **Proteção contra o Caos**, **Proteção contra o Mal** e **Suportar Elementos**. A lista de 1º nível validada no teste contém 16 entradas: Abençoar Água, Abençoar Arma, Arma Mágica, Auxílio Divino, Bênção, Criar Água, Curar Ferimentos Leves, Detectar Mortos-Vivos, Detectar Venenos, Ler Magias, Proteção contra o Caos, Proteção contra o Mal, Resistência, Restauração Menor, Suportar Elementos e Virtude.
+- Corrigidas associações indevidas de Paladino em **Proteção contra o Bem**, **Escudo da Fé** e **Amaldiçoar Água**. Essas magias não aparecem na lista resumida de Paladino do Livro do Jogador.
+- Removida a entrada duplicada **Favor Divino**; preservada **Auxílio Divino**, nome usado pela fonte em português. A descrição de Auxílio Divino foi corrigida para o limite de bônus de sorte **+3**.
+- Adicionado teste de regressão que compara a lista completa de Paladino 1 com os níveis explícitos por classe, verifica unicidade e protege contra as associações indevidas acima.
+- **Validação pendente:** executar/confirmar CI de testes e compilação antes do merge. Não houve teste manual em dispositivo Android.
