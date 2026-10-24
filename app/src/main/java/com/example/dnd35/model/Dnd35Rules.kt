@@ -2745,6 +2745,20 @@ object Dnd35Rules {
             description = "O fluxo do tempo cessa para todo o universo, exceto para o conjurador, que pode agir livremente por 1d4+1 rodadas."
         ),
         PresetSpell(
+            name = "Limpar a Mente",
+            level = 8,
+            school = "Abjuração",
+            classes = listOf("Feiticeiro", "Mago"),
+            castTime = "1 ação padrão",
+            components = "V, G",
+            range = "Curto (7,5 m + 1,5 m/2 níveis)",
+            duration = "24 horas",
+            savingThrow = "Vontade anula (inofensiva)",
+            spellResistance = true,
+            description = "Protege uma criatura contra efeitos de ação mental e contra efeitos de adivinhação usados para obter informações sobre ela. A magia também impede detecção direta do alvo por adivinhações, conforme o verbete do Livro do Jogador.",
+            classLevels = mapOf("Feiticeiro" to 8, "Mago" to 8)
+        ),
+        PresetSpell(
             name = "Ressurreição Verdadeira",
             level = 9,
             school = "Conjuração",

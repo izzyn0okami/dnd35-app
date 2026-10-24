@@ -1079,4 +1079,24 @@ class PresetSpellCatalogTest {
             }
         }
     }
+    @Test
+    fun limparAMenteMatchesPlayerHandbookEntry() {
+        val matches = Dnd35Rules.PRESET_SPELLS.filter { it.name == "Limpar a Mente" }
+        assertEquals(1, matches.size)
+        val spell = matches.single()
+
+        assertEquals(8, spell.level)
+        assertEquals("Abjuração", spell.school)
+        assertEquals(setOf("Feiticeiro", "Mago"), spell.classes.toSet())
+        assertEquals(mapOf("Feiticeiro" to 8, "Mago" to 8), spell.classLevels)
+        assertEquals("1 ação padrão", spell.castTime)
+        assertEquals("V, G", spell.components)
+        assertEquals("Curto (7,5 m + 1,5 m/2 níveis)", spell.range)
+        assertEquals("24 horas", spell.duration)
+        assertEquals("Vontade anula (inofensiva)", spell.savingThrow)
+        assertTrue(spell.spellResistance)
+        assertTrue(spell.description.contains("ação mental"))
+        assertTrue(spell.description.contains("adivinhação"))
+    }
+
 }
