@@ -1426,5 +1426,29 @@ class PresetSpellCatalogTest {
         assertTrue(spell.description.contains("dois semicírculos encaixáveis"))
     }
 
+    @Test
+    fun explosaoSolarMatchesPlayerHandbookEntry() {
+        val matches = Dnd35Rules.PRESET_SPELLS.filter { it.name == "Explosão Solar" }
+        assertEquals(1, matches.size)
+        val spell = matches.single()
+
+        assertEquals(8, spell.level)
+        assertEquals("Evocação [Luz]", spell.school)
+        assertEquals(setOf("Druida", "Feiticeiro", "Mago"), spell.classes.toSet())
+        assertEquals(mapOf("Druida" to 8, "Feiticeiro" to 8, "Mago" to 8), spell.classLevels)
+        assertEquals(mapOf("Sol" to 8), spell.domainLevels)
+        assertEquals("1 ação padrão", spell.castTime)
+        assertEquals("V, G, M/FD", spell.components)
+        assertEquals("Longo (120 m + 12 m/nível)", spell.range)
+        assertEquals("Instantânea", spell.duration)
+        assertEquals("Reflexos parcial (veja texto)", spell.savingThrow)
+        assertTrue(spell.spellResistance)
+        assertTrue(spell.description.contains("24 m de raio"))
+        assertTrue(spell.description.contains("6d6 pontos de dano"))
+        assertTrue(spell.description.contains("o dobro do dano"))
+        assertTrue(spell.description.contains("máximo 25d6"))
+        assertTrue(spell.description.contains("artefatos são imunes"))
+    }
+
 
 }

@@ -1080,6 +1080,21 @@ object Dnd35Rules {
             classLevels = mapOf("Feiticeiro" to 8, "Mago" to 8)
         ),
         PresetSpell(
+            name = "Explosão Solar",
+            level = 8,
+            school = "Evocação [Luz]",
+            classes = listOf("Druida", "Feiticeiro", "Mago"),
+            castTime = "1 ação padrão",
+            components = "V, G, M/FD",
+            range = "Longo (120 m + 12 m/nível)",
+            duration = "Instantânea",
+            savingThrow = "Reflexos parcial (veja texto)",
+            spellResistance = true,
+            description = "Cria silenciosamente uma explosão de calor e luz com 24 m de raio no ponto escolhido. As criaturas na área ficam cegas e sofrem 6d6 pontos de dano; criaturas suscetíveis à luz solar sofrem o dobro do dano. Um teste de Reflexos bem-sucedido evita a cegueira e reduz o dano à metade. Mortos-vivos sofrem 1d6 pontos de dano por nível de conjurador (máximo 25d6), ou metade com sucesso no teste de Reflexos. Alternativamente, pode afetar um único item mágico que crie ou controle fogo: suas habilidades mágicas baseadas em fogo ficam suprimidas por 1d4 horas, a menos que o item obtenha sucesso em um teste de Vontade; artefatos são imunes.",
+            classLevels = mapOf("Druida" to 8, "Feiticeiro" to 8, "Mago" to 8),
+            domainLevels = mapOf("Sol" to 8)
+        ),
+        PresetSpell(
             name = "Palavra de Poder, Atordoar",
             level = 8,
             school = "Encantamento (Compulsão) [de Ação Mental]",

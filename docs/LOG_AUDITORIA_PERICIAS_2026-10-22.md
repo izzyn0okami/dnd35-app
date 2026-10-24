@@ -1854,3 +1854,14 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - **Contagem nominal:** 207 entradas únicas após integração (206 antes da PR).
 - **Limitação:** não foi realizado teste manual em dispositivo Android.
 - **Próximo passo:** continuar a auditoria das magias restantes de 8º nível do Livro do Jogador, conferindo cada verbete e o catálogo antes de qualquer inclusão.
+
+
+## 2026-10-24 — Inclusão proposta de Explosão Solar (8º nível)
+
+- **Fonte primária:** PDF brasileiro *D&D 3.5 — Livro do Jogador*, verbete “Explosão Solar”, p. impressa 203.
+- **Dados conferidos:** Evocação [Luz]; Druida 8, Feiticeiro 8, Mago 8 e domínio do Sol 8; componentes V, G, M/FD; execução de 1 ação padrão; alcance longo (120 m + 12 m/nível); área de explosão de 24 m de raio; duração instantânea; Reflexos parcial; resistência à magia conforme o modo de uso.
+- **Efeito essencial:** cegueira e 6d6 de dano na área; dano dobrado contra criaturas suscetíveis à luz solar; Reflexos bem-sucedido evita a cegueira e reduz o dano à metade; mortos-vivos sofrem 1d6 por nível até 25d6. A magia também pode suprimir habilidades mágicas baseadas em fogo de um item por 1d4 horas, com teste de Vontade e exceção para artefatos.
+- **Regressão:** teste dedicado para unicidade, escola, classes, níveis, domínio, execução, componentes, alcance, duração, resistência e efeitos distintivos.
+- **Validação:** proposta na branch `audit/spell-explosao-solar`; CI pendente; sem teste manual em dispositivo Android.
+- **Contagem nominal antes desta proposta:** 207 entradas únicas; a inclusão elevará para 208 se integrada.
+- **Próximo passo:** aguardar CI; integrar somente se testes unitários, compilação Android e upload do APK passarem.
