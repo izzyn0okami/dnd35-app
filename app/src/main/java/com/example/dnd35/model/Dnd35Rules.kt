@@ -4471,7 +4471,7 @@ object Dnd35Rules {
             duration = "Instantânea",
             savingThrow = "Nenhum; veja texto",
             spellResistance = true,
-            description = "Restaura a vida a uma criatura morta, desde que a alma esteja livre e deseje voltar. O alvo perde 1 nível (ou 1 Dado de Vida); se for de 1º nível, perde 2 pontos de Constituição. Cura venenos e doenças normais, mas não doenças mágicas ou maldições. Não pode reviver criaturas mortas por efeitos de morte ou transformadas em mortos-vivos, nem constructos, elementais, seres planares ou mortos-vivos, ou quem morreu de velhice. Componente material: diamantes no valor total de pelo menos 5.000 PO.",
+            description = "Restaura a vida a uma criatura morta, desde que a alma esteja livre e deseje voltar. O alvo perde 1 nível (ou 1 Dado de Vida); se for de 1º nível, perde 2 pontos de Constituição. Cura venenos e doenças normais, mas não doenças mágicas ou maldições. Não pode reviver criaturas mortas por efeitos de morte ou transformadas em mortos-vivos, nem constructos, elementais, seres planares ou mortos-vivos, ou quem morreu de velhice. Componente material: um pouco de água benta e diamantes custando um total de pelo menos 10.000 PO.",
             classLevels = mapOf("Clérigo" to 7)
         ),
         PresetSpell(
@@ -4500,8 +4500,7 @@ object Dnd35Rules {
             savingThrow = "Nenhum",
             spellResistance = false,
             description = "Como invocar aliado da natureza I, mas permite invocar uma criatura da lista de 7º nível, 1d3 criaturas do mesmo tipo da lista de 6º nível ou 1d4+1 criaturas do mesmo tipo de uma lista inferior. Todas surgem a menos de 9 m entre si e agem no turno do conjurador. A escolha de criaturas dos planos do Ar, Caos, Terra, Fogo, Mal, Bem, Ordem ou Água pode alterar os descritores da magia conforme as regras da magia-base.",
-            classLevels = mapOf("Druida" to 7),
-            domainLevels = mapOf("Animal" to 7)
+            classLevels = mapOf("Druida" to 7)
         ),
         PresetSpell(
             name = "Ondas da Exaustão",
