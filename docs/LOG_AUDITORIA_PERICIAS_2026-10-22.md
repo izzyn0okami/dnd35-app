@@ -1415,3 +1415,12 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - **Próximo escopo:** conferir a lista resumida de 1º nível de Ranger (p. 164) sem duplicar entradas já existentes. As 14 magias listadas na fonte são: Acalmar Animais, Alarme, Constrição, Detectar Animais ou Plantas, Detectar Armadilhas, Detectar Venenos, Enfeitiçar Animal, Falar com Animais, Invisibilidade Contra Animais, Invocar Aliado da Natureza I, Ler Magias, Mensageiro Animal, Passos Longos e Passos sem Pegadas.
 - Acrescentado teste de regressão que compara a lista completa de Ranger 1 com os níveis por classe e verifica unicidade. A validação CI desta nova etapa está pendente.
 - Fonte primária: PDF brasileiro *D&D 3.5 — Livro do Jogador* fornecido no projeto, capítulo 11, lista resumida de magias de 1º nível de Ranger, página impressa 164.
+
+
+## 2026-10-24 — Correção da CI na auditoria de Ranger 1
+
+- **PR #205 / execução CI 1103:** o teste novo falhou porque a lista efetiva continha uma entrada adicional chamada **Detectar Laços e Covas**, além de **Detectar Armadilhas**.
+- Conferência da fonte primária: no PDF brasileiro *Livro do Jogador*, página impressa 164, a lista resumida de Ranger usa **Detectar Armadilhas**; o verbete completo também se intitula **Detectar Armadilhas** (página impressa 174) e descreve detecção de fossos simples, abismos e armadilhas naturais/primitivas.
+- **Correção aplicada na branch da PR:** removida a entrada redundante “Detectar Laços e Covas”, mantendo a entrada “Detectar Armadilhas” com os parâmetros do verbete completo. O teste que antes validava a duplicata foi atualizado para validar o nome canônico, alcance “18 m”, ausência de resistência à magia e unicidade.
+- **Validação ainda pendente:** a CI deve ser executada novamente; não fazer merge até testes e compilação passarem. Nenhum teste manual em dispositivo Android foi realizado.
+- **Próximo passo:** verificar novo resultado da CI da PR #205; se passar, integrar e continuar a auditoria de magias de Ranger sem repetir níveis já conferidos.
