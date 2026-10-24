@@ -854,4 +854,46 @@ class PresetSpellCatalogTest {
         assertEquals(1, spells.count { it.name == "Neutralizar Venenos" })
     }
 
+
+    @Test
+    fun rangerThirdLevelCatalogIncludesPlantTreeAndNatureSummoningSpells() {
+        val spells = Dnd35Rules.PRESET_SPELLS
+        val expected = mapOf(
+            "Ampliar Plantas" to mapOf("Druida" to 3, "Ranger" to 3),
+            "Comandar Plantas" to mapOf("Druida" to 4, "Ranger" to 3),
+            "Enfraquecer Plantas" to mapOf("Druida" to 3, "Ranger" to 3),
+            "Forma de Árvore" to mapOf("Druida" to 2, "Ranger" to 3),
+            "Invocar Aliado da Natureza III" to mapOf("Druida" to 3, "Ranger" to 3)
+        )
+        expected.forEach { (name, levels) ->
+            val spell = spells.single { it.name == name }
+            assertEquals(3, spell.level)
+            assertEquals(levels, spell.classLevels)
+            assertEquals(1, spells.count { it.name == name })
+        }
+        val amplify = spells.single { it.name == "Ampliar Plantas" }
+        assertEquals("V, G, FD", amplify.components)
+        assertEquals("Instantânea", amplify.duration)
+        assertFalse(amplify.spellResistance)
+        assertTrue(amplify.description.contains("Enfraquecer Plantas"))
+        val command = spells.single { it.name == "Comandar Plantas" }
+        assertEquals("V", command.components)
+        assertEquals("1 dia/nível", command.duration)
+        assertEquals("Vontade anula", command.savingThrow)
+        assertTrue(command.spellResistance)
+        val weaken = spells.single { it.name == "Enfraquecer Plantas" }
+        assertEquals("Nenhum", weaken.savingThrow)
+        assertFalse(weaken.spellResistance)
+        assertTrue(weaken.description.contains("Ampliar Plantas"))
+        val tree = spells.single { it.name == "Forma de Árvore" }
+        assertEquals("Pessoal", tree.range)
+        assertEquals("1 hora/nível (D)", tree.duration)
+        assertTrue(tree.description.contains("+10 de armadura natural"))
+        val summon = spells.single { it.name == "Invocar Aliado da Natureza III" }
+        assertEquals("1 rodada", summon.castTime)
+        assertEquals("1 rodada/nível (D)", summon.duration)
+        assertEquals("V, G, FD", summon.components)
+        assertTrue(summon.description.contains("1d4+1"))
+    }
+
 }
