@@ -180,3 +180,10 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - Confirmado que **Criar Mortos-Vivos Maior** é Clr 8, Morte 8 e Fet/Mag 8; corrigidos `level` e os níveis de Feiticeiro/Mago para 8, preservando os níveis corretos de Clérigo e domínio Morte.
 - Confirmado que **Símbolo da Morte** é Clr 8 e Fet/Mag 6; corrigidos os níveis por classe nos testes para refletir o livro. O campo geral `level` (atualmente 7) foi deixado sem alteração nesta rodada porque sua semântica no modelo para magias com níveis diferentes por classe precisa ser definida antes de normalizar o valor, evitando assumir uma regra não documentada.
 - Referência primária: PDF do *Livro do Jogador* na biblioteca, entradas de Padrão Cintilante, Criar Mortos-Vivos Maior e Símbolo da Morte.
+
+
+### Retificação após leitura direta da entrada do PDF — 24/10/2026
+
+- A CI revelou expectativas antigas remanescentes nos testes para Padrão Cintilante e Criar Mortos-Vivos Maior; foram corrigidas para os níveis confirmados no livro.
+- A leitura direta da entrada **Símbolo da Morte** no PDF (página do arquivo 247) confirma `Nível: Clr 8, Fet/Mag 6`. Corrigidos os `classLevels` do catálogo e as expectativas dos testes para 6º nível arcano; o campo geral `level = 7` foi preservado por enquanto, pois representa uma única classificação geral e a semântica quando há níveis distintos por classe ainda precisa de decisão explícita.
+- Não integrar a PR até a CI mais recente passar. A falha anterior ocorreu em três testes por expectativas não atualizadas, não por erro de compilação.
