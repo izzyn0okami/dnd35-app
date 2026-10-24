@@ -3984,7 +3984,7 @@ object Dnd35Rules {
         ),
         PresetSpell(
             name = "Padrão Cintilante",
-            level = 8,
+            level = 7,
             school = "Ilusão (Padrão) [Ação Mental]",
             classes = listOf("Feiticeiro", "Mago"),
             castTime = "1 ação padrão",
@@ -4124,12 +4124,12 @@ object Dnd35Rules {
             savingThrow = "Nenhum",
             spellResistance = true,
             description = "Cria uma barreira invisível móvel, em uma emanação de 3 m de raio centrada no conjurador, que impede a passagem da maioria dos efeitos mágicos e suprime itens mágicos em seu interior. Efeitos suprimidos não são dissipados; o tempo dentro do campo continua contando para sua duração. Criaturas invocadas e mortos-vivos incorpóreos desaparecem ao entrar. A resistência à magia depende do efeito, conforme o texto da magia.",
-            classLevels = mapOf("Clérigo" to 8, "Feiticeiro" to 6, "Mago" to 6),
+            classLevels = mapOf("Clérigo" to 8, "Feiticeiro" to 7, "Mago" to 7),
             domainLevels = mapOf("Magia" to 6, "Proteção" to 6)
         ),
         PresetSpell(
             name = "Criar Mortos-Vivos Maior",
-            level = 8,
+            level = 7,
             school = "Necromancia [Mal]",
             classes = listOf("Clérigo", "Feiticeiro", "Mago"),
             castTime = "1 hora",
@@ -4139,7 +4139,7 @@ object Dnd35Rules {
             savingThrow = "Nenhum",
             spellResistance = false,
             description = "Funciona como criar mortos-vivos, mas permite criar mortos-vivos mais poderosos e inteligentes. O tipo criado depende do nível de conjurador: até 15º nível, sombra; 16º–17º, aparição; 18º–19º, espectro; 20º nível, devorador. Consulte o Livro dos Monstros para as estatísticas das criaturas.",
-            classLevels = mapOf("Clérigo" to 8, "Feiticeiro" to 8, "Mago" to 8),
+            classLevels = mapOf("Clérigo" to 8, "Feiticeiro" to 7, "Mago" to 7),
             domainLevels = mapOf("Morte" to 8)
         ),
         PresetSpell(
@@ -4304,7 +4304,7 @@ object Dnd35Rules {
         ),
         PresetSpell(
             name = "Símbolo da Morte",
-            level = 8,
+            level = 7,
             school = "Necromancia [Morte]",
             classes = listOf("Clérigo", "Feiticeiro", "Mago"),
             castTime = "10 minutos",
@@ -4375,7 +4375,7 @@ object Dnd35Rules {
         ),
         PresetSpell(
             name = "Corpo de Ferro",
-            level = 8,
+            level = 7,
             school = "Transmutação",
             classes = listOf("Feiticeiro", "Mago"),
             castTime = "1 ação padrão",
@@ -4385,12 +4385,12 @@ object Dnd35Rules {
             savingThrow = "Nenhum",
             spellResistance = false,
             description = "Transforma o corpo do conjurador em ferro vivo. Concede redução de dano 15/adamante, imunidade a cegueira, acertos críticos, dano de habilidade, surdez, doença, afogamento, eletricidade, veneno, atordoamento e efeitos que dependam de fisiologia ou respiração; reduz à metade o dano de ácido e fogo. Também concede +6 de bônus de aprimoramento em Força e impõe -6 de penalidade em Destreza (mínimo 1), além das demais limitações descritas no Livro do Jogador.",
-            classLevels = mapOf("Feiticeiro" to 8, "Mago" to 8),
+            classLevels = mapOf("Feiticeiro" to 7, "Mago" to 7),
             domainLevels = mapOf("Terra" to 8)
         ),
         PresetSpell(
             name = "Estase Temporal",
-            level = 8,
+            level = 7,
             school = "Transmutação",
             classes = listOf("Feiticeiro", "Mago"),
             castTime = "1 ação padrão",
@@ -4404,7 +4404,7 @@ object Dnd35Rules {
         ),
         PresetSpell(
             name = "Metamorfosear Objetos",
-            level = 8,
+            level = 7,
             school = "Transmutação",
             classes = listOf("Feiticeiro", "Mago"),
             castTime = "1 ação padrão",
@@ -4414,12 +4414,12 @@ object Dnd35Rules {
             savingThrow = "Fortitude anula (objeto); veja texto",
             spellResistance = true,
             description = "Como metamorfose, mas transforma uma criatura ou objeto mundano de até 3 m³ por nível em outro. A duração depende de quão radical é a transformação; o Livro do Jogador fornece modificadores para semelhança de reino, classe, tamanho, relação e inteligência, podendo resultar em duração permanente. Teste de resistência e resistência à magia se aplicam conforme a natureza do alvo.",
-            classLevels = mapOf("Feiticeiro" to 8, "Mago" to 8),
+            classLevels = mapOf("Feiticeiro" to 7, "Mago" to 7),
             domainLevels = mapOf("Enganação" to 8)
         ),
         PresetSpell(
             name = "Clone",
-            level = 8,
+            level = 7,
             school = "Necromancia",
             classes = listOf("Feiticeiro", "Mago"),
             castTime = "10 minutos",
@@ -4433,7 +4433,7 @@ object Dnd35Rules {
         ),
         PresetSpell(
             name = "Evaporação",
-            level = 8,
+            level = 7,
             school = "Necromancia",
             classes = listOf("Feiticeiro", "Mago"),
             castTime = "1 ação padrão",
@@ -4443,7 +4443,7 @@ object Dnd35Rules {
             savingThrow = "Fortitude reduz à metade",
             spellResistance = true,
             description = "Evapora os líquidos corporais de todas as criaturas vivas afetadas, causando 1d6 pontos de dano por nível do conjurador (máximo 20d6). Elementais da água e criaturas do tipo planta sofrem 1d8 pontos de dano por nível (máximo 20d8). Um teste de Fortitude bem-sucedido reduz o dano à metade.",
-            classLevels = mapOf("Feiticeiro" to 8, "Mago" to 8),
+            classLevels = mapOf("Feiticeiro" to 7, "Mago" to 7),
             domainLevels = mapOf("Água" to 8)
         ),
     )
