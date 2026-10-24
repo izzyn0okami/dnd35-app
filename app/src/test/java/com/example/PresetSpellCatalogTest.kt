@@ -1308,7 +1308,7 @@ class PresetSpellCatalogTest {
         assertEquals(setOf("Druida", "Feiticeiro", "Mago"), spell.classes.toSet())
         assertEquals(mapOf("Druida" to 9, "Feiticeiro" to 8, "Mago" to 8), spell.classLevels)
         assertEquals("1 hora", spell.castTime)
-        assertEquals("V, G, M/FD", spell.components)
+        assertEquals("V, G, M", spell.components)
         assertEquals("Curto (7,5 m + 1,5 m/2 níveis)", spell.range)
         assertEquals("2 horas/nível (D)", spell.duration)
         assertEquals("Vontade parcial", spell.savingThrow)
