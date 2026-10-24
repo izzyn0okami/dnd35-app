@@ -1517,5 +1517,30 @@ class PresetSpellCatalogTest {
     }
 
 
+    @Test
+    fun punhoCerradoDeBigbyMatchesPlayerHandbookEntry() {
+        val matches = Dnd35Rules.PRESET_SPELLS.filter { it.name == "Punho Cerrado de Bigby, O" }
+        assertEquals(1, matches.size)
+        val spell = matches.single()
+
+        assertEquals(8, spell.level)
+        assertEquals("Evocação [Energia]", spell.school)
+        assertEquals(setOf("Feiticeiro", "Mago"), spell.classes.toSet())
+        assertEquals(mapOf("Feiticeiro" to 8, "Mago" to 8), spell.classLevels)
+        assertEquals(mapOf("Força" to 8), spell.domainLevels)
+        assertEquals("1 ação padrão", spell.castTime)
+        assertEquals("V, G, F/FD", spell.components)
+        assertEquals("Médio (30 m + 3 m/nível)", spell.range)
+        assertEquals("1 rodada/nível (D)", spell.duration)
+        assertEquals("Fortitude anula (atordoamento); veja texto", spell.savingThrow)
+        assertTrue(spell.spellResistance)
+        assertTrue(spell.description.contains("até 18 m"))
+        assertTrue(spell.description.contains("1d8+11 pontos de dano"))
+        assertTrue(spell.description.contains("atordoada por 1 rodada"))
+        assertTrue(spell.description.contains("+15 no teste de Força"))
+        assertTrue(spell.description.contains("luva de couro"))
+    }
+
+
 
 }

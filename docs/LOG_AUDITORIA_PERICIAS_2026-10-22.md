@@ -1920,3 +1920,14 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - **CI:** [workflow Android Build #40104258031](https://github.com/izzyn0okami/dnd35-app/actions/runs/40104258031) passou integralmente: testes unitários, compilação Android e upload do APK de depuração.
 - **Limitação:** não foi realizado teste manual em dispositivo Android.
 - **Auditoria das magias:** retomada após a correção; continuar as magias restantes de 8º nível do Livro do Jogador, uma por vez, verificando o PDF e o catálogo antes de cada inclusão.
+
+## 2026-10-24 — Punho Cerrado de Bigby, O (8º nível; PR proposta)
+
+- **PR:** pendente de abertura; branch `audit/spell-punho-cerrado-bigby`.
+- **Fonte primária:** PDF brasileiro *D&D 3.5 — Livro do Jogador*, verbete “Punho Cerrado de Bigby, O”, p. impressa 234; os dados gerais de execução, alcance e duração foram herdados da referência expressa à Mão Interposta de Bigby no próprio verbete.
+- **Dados propostos:** Evocação [Energia]; Feiticeiro 8 e Mago 8; domínio Força 8; componentes V, G, F/FD; execução de 1 ação padrão; alcance médio (30 m + 3 m/nível); duração de 1 rodada/nível (D); resistência à magia sim.
+- **Efeito essencial:** mão Grande comandada como ação livre, deslocamento até 18 m e um ataque por rodada. O ataque usa nível de conjurador + modificador de atributo apropriado +11 pela Força 33 −1 pelo tamanho Grande; causa 1d8+11 e exige Fortitude contra a CD da magia para evitar ficar atordoado por 1 rodada. Também pode interpor-se e realizar encontrão com +15 no teste de Força. Foco arcano: luva de couro.
+- **Regressão proposta:** teste dedicado para unicidade, nível, escola, classes, níveis de classe/domínio, execução, componentes, alcance, duração, resistência à magia e efeitos distintivos.
+- **Estado:** não integrada. Aguardar CI completa (testes unitários, compilação Android e upload do APK) antes de merge. Sem teste manual em dispositivo Android.
+- **Contagem nominal:** 212 entradas após integração futura, se a PR passar (211 antes).
+- **Próximo passo:** verificar a CI; só então integrar e seguir para a próxima magia restante de 8º nível do Livro do Jogador.
