@@ -1061,7 +1061,7 @@ class PresetSpellCatalogTest {
             "Invocar Aliado da Natureza I", "Ler Magias", "Mensageiro Animal",
             "Passos Longos", "Passos sem Pegadas"
         )
-        val actual = spells.filter { it.classLevels["Ranger"] == 1 }.map { it.name }.toSet()
+        val actual = spells.filter { "Ranger" in it.classes && (it.classLevels["Ranger"] ?: it.level) == 1 }.map { it.name }.toSet()
         assertEquals(expected, actual)
         expected.forEach { name ->
             val matches = spells.filter { it.name == name }
