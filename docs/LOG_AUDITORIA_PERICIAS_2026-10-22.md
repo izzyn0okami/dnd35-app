@@ -1442,3 +1442,13 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - **Limite e pendência:** esta mudança corrige o escopo do teste, mas não valida todas as associações de classe/nível de Ranger no catálogo completo. Essas associações devem ser auditadas em etapa separada, consultando os verbetes/listas relevantes do PDF, sem remover magias por inferência.
 - **Fonte primária desta etapa:** PDF brasileiro *D&D 3.5 — Livro do Jogador*, capítulo 11, lista resumida “Magias de Ranger”, página impressa 164. Nenhum teste manual em dispositivo Android foi realizado.
 - **Estado:** aguardando nova CI da PR #205; não fazer merge antes de testes unitários, compilação e publicação do APK passarem.
+
+
+## 2026-10-24 — Resultado final da PR #205 (Ranger 1)
+
+- **PR #205 integrada por squash:** commit `7284d85334f534e08bb901f84a5238e2ef7ed3ac`.
+- **CI run 1108:** sucesso. O job executou testes unitários, compilou o app Android e publicou o APK de depuração como artefato.
+- O teste de regressão verifica as 14 magias da lista resumida de Ranger de 1º nível na página impressa 164, garantindo que cada nome exista uma única vez, inclua Ranger e tenha nível efetivo 1. O teste não tenta inferir a validade de todas as demais associações históricas do catálogo.
+- Foi removida a entrada redundante **Detectar Laços e Covas**, preservando **Detectar Armadilhas** como nome canônico.
+- **Limitação mantida:** as associações de classe e nível de todas as outras magias de Ranger ainda precisam de auditoria individual pelos verbetes/listas do PDF; esta PR não declara essa auditoria completa. Nenhum teste manual em dispositivo Android foi realizado.
+- **Próximo escopo:** continuar a auditoria das listas de magias de Ranger de 2º, 3º e 4º níveis, conferindo os registros existentes antes de alterar o catálogo, e registrar separadamente qualquer divergência confirmada.
