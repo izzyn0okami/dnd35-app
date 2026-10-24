@@ -1406,3 +1406,12 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - **Validação pendente:** executar/confirmar CI de testes e compilação antes do merge. Não houve teste manual em dispositivo Android.
 
 - **Correção após CI falhar:** o teste revelou duas associações adicionais indevidas de Paladino em **Detectar Bem** e **Detectar Mal**. Removidas e incluídas as duas verificações no teste de regressão. A lista resumida do Livro do Jogador continua com 16 magias de 1º nível; CI precisa ser repetida antes do merge.
+
+
+## 2026-10-24 — Fechamento da auditoria de Paladino 1 e retomada de Ranger 1
+
+- **PR #204 integrada:** a lista de 1º nível de Paladino foi conferida contra o *Livro do Jogador* brasileiro; a execução final da CI (run 1101) terminou com sucesso, incluindo testes unitários, compilação do app e upload do APK. Merge realizado após o sucesso da CI.
+- A falha da primeira execução revelou associações indevidas de Paladino em **Detectar Bem** e **Detectar Mal**; ambas foram removidas, com teste de regressão. A correção final passou na CI.
+- **Próximo escopo:** conferir a lista resumida de 1º nível de Ranger (p. 164) sem duplicar entradas já existentes. As 14 magias listadas na fonte são: Acalmar Animais, Alarme, Constrição, Detectar Animais ou Plantas, Detectar Armadilhas, Detectar Venenos, Enfeitiçar Animal, Falar com Animais, Invisibilidade Contra Animais, Invocar Aliado da Natureza I, Ler Magias, Mensageiro Animal, Passos Longos e Passos sem Pegadas.
+- Acrescentado teste de regressão que compara a lista completa de Ranger 1 com os níveis por classe e verifica unicidade. A validação CI desta nova etapa está pendente.
+- Fonte primária: PDF brasileiro *D&D 3.5 — Livro do Jogador* fornecido no projeto, capítulo 11, lista resumida de magias de 1º nível de Ranger, página impressa 164.
