@@ -1035,6 +1035,20 @@ object Dnd35Rules {
     )
 
     val PRESET_SPELLS = listOf(
+        PresetSpell(
+            name = "Olhos Observadores Maior",
+            level = 8,
+            school = "Adivinhação",
+            classes = listOf("Feiticeiro", "Mago"),
+            castTime = "1 minuto",
+            components = "V, G, M",
+            range = "1,5 km",
+            duration = "1 hora/nível (D)",
+            savingThrow = "Nenhum",
+            spellResistance = false,
+            description = "Cria 1d4 + nível do conjurador de olhos flutuantes que se movem, observam e retornam conforme instruções de até 25 palavras. Cada olho enxerga 36 m em todas as direções; os olhos são frágeis (1 PV), voam a 9 m com mobilidade perfeita e têm Esconder-se +16. Como olhos observadores, transmitem ao conjurador as imagens vistas ao retornar, duram até 1 hora/nível ou até retornarem e deixam de existir se ultrapassarem 1,5 km. A versão maior vê as coisas como realmente são, como se tivesse visão da verdade, até 36 m, atravessa escuridão com deslocamento normal e tem modificador máximo de Observar +25. Componente material: um punhado de esferas de cristal.",
+            classLevels = mapOf("Feiticeiro" to 8, "Mago" to 8)
+        ),
         // CÍRCULO 0 (TRUQUES)
         // Truques adicionais conferidos no Livro do Jogador brasileiro
         PresetSpell(
