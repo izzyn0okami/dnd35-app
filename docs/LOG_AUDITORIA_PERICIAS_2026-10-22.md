@@ -1813,13 +1813,15 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - **Próximo passo:** continuar a auditoria das magias restantes de 8º nível do Livro do Jogador; conferir verbete e catálogo antes de cada inclusão.
 
 
-## 2026-10-24 — Inclusão proposta de Enfeitiçar Monstro em Massa (8º nível)
+## 2026-10-24 — Enfeitiçar Monstro em Massa integrada (8º nível)
 
 - **Fonte primária:** PDF brasileiro *D&D 3.5 — Livro do Jogador*, verbete “Enfeitiçar Monstro em Massa” e lista de magias de 8º nível, p. impressa 168.
 - **Dados conferidos:** Encantamento (Feitiço) [Ação Mental]; Bardo 6, Feiticeiro/Mago 8; componente V; execução de 1 ação padrão; alcance curto, herdado de Enfeitiçar Monstro; duração 1 dia/nível; Vontade anula; resistência à magia sim.
 - **Efeito essencial:** afeta criaturas a menos de 9 m entre si, limitadas a um total de Dados de Vida de até o dobro do nível de conjurador, salvo uma única criatura que pode exceder esse limite.
-- **Implementação proposta:** entrada com nível-base 8 e níveis por classe explícitos; descrição registra o limite de Dados de Vida e a seleção individual se houver alvos demais.
+- **Implementação:** entrada com nível-base 8 e níveis por classe explícitos; descrição registra o limite de Dados de Vida e a seleção individual se houver alvos demais.
 - **Regressão:** teste dedicado para unicidade, escola, níveis por classe, componentes, alcance, duração, resistência e limite de alvos.
-- **Validação:** PR em preparação; CI ainda não executada; sem teste manual em dispositivo Android.
-- **Contagem nominal antes desta proposta:** 204 entradas únicas; a inclusão elevará para 205 se integrada.
-- **Próximo passo:** aguardar CI e integrar somente se testes, compilação Android e geração do APK passarem.
+- **Validação:** CI concluída com sucesso — [execução 40093355575](https://github.com/izzyn0okami/dnd35-app/actions/runs/40093355575); PR [#223](https://github.com/izzyn0okami/dnd35-app/pull/223) integrada por squash.
+- **Commit de merge:** `e7dcbabbcb00728477be52571211df9aad465460`.
+- **Contagem nominal:** 205 entradas únicas após integração (204 antes da PR).
+- **Limitação:** não foi realizado teste manual em dispositivo Android.
+- **Próximo passo:** continuar com as magias restantes de 8º nível do Livro do Jogador, conferindo o verbete e o catálogo antes de cada inclusão.
