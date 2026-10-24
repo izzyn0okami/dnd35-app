@@ -1105,3 +1105,12 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Conferido o catálogo de magias de 1º nível com o índice e o verbete do Livro do Jogador brasileiro. O nome oficial encontrado no livro é **Recuo Acelerado** (Brd 1, Fet/Mag 1); não há uma entrada distinta chamada **Retirada Acelerada** no catálogo consultado.
 - Removida a entrada redundante **Retirada Acelerada**, que duplicava o efeito de Recuo Acelerado e não registrava Bardo como classe. Mantida a entrada canônica com Bardo, Mago e Feiticeiro e níveis estruturados.
 - Adicionado teste de regressão para impedir que a duplicata volte ao catálogo. Essa remoção altera apenas o catálogo predefinido; não foi realizada migração de fichas salvas que já contenham o texto antigo. Nenhum teste manual em dispositivo Android foi realizado nesta etapa.
+
+---
+
+## 2026-10-23 — Expansão dos truques de feiticeiro e mago
+
+- Comparadas as listas de truques e os verbetes do Livro do Jogador brasileiro: adicionadas as entradas ausentes **Brilho** (Brd/Drd/Fet/Mag 0), **Pasmar** (Brd/Fet/Mag 0), **Raio de Ácido** (Fet/Mag 0) e **Romper Morto-Vivo** (Fet/Mag 0).
+- Registrados componentes, alcance, duração, testes de resistência, resistência à magia e efeitos conforme os verbetes do capítulo 11 (Brilho, p. 178; Pasmar, p. 226; Raio de Ácido e Romper Morto-Vivo, pp. 235–236).
+- Adicionados testes de regressão para unicidade, nível, classes e campos mecânicos essenciais.
+- Esta é uma expansão parcial do catálogo, não uma confirmação de completude do Livro do Jogador. Nenhum teste manual em dispositivo Android foi realizado nesta etapa.
