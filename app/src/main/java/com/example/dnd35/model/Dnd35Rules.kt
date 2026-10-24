@@ -4594,11 +4594,11 @@ object Dnd35Rules {
             classes = listOf("Feiticeiro", "Mago"),
             castTime = "1 ação padrão",
             components = "V, G, M",
-            range = "Ilimitado (veja texto)",
+            range = "Veja texto",
             duration = "Instantânea",
             savingThrow = "Nenhum",
             spellResistance = false,
-            description = "Transporta instantaneamente para a mão do conjurador um objeto mundano previamente marcado e nomeado, desde que respeitados os limites de peso e as condições de preparação da magia. A marca arcana deve ser conjurada no objeto antes da convocação.",
+            description = "Convoca para a mão do conjurador um objeto previamente marcado com a magia. Se o objeto estiver sob a posse de outra criatura, a magia falha, mas o conjurador descobre quem o carrega e sua localização aproximada. A inscrição na gema é invisível e só pode ser lida com ler magias. O objeto pode ser convocado de outro plano, desde que não esteja na posse de uma criatura. Componente material: uma safira de pelo menos 1.000 PO.",
             classLevels = mapOf("Feiticeiro" to 7, "Mago" to 7)
         ),
         PresetSpell(
