@@ -1424,3 +1424,11 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - **Correção aplicada na branch da PR:** removida a entrada redundante “Detectar Laços e Covas”, mantendo a entrada “Detectar Armadilhas” com os parâmetros do verbete completo. O teste que antes validava a duplicata foi atualizado para validar o nome canônico, alcance “18 m”, ausência de resistência à magia e unicidade.
 - **Validação ainda pendente:** a CI deve ser executada novamente; não fazer merge até testes e compilação passarem. Nenhum teste manual em dispositivo Android foi realizado.
 - **Próximo passo:** verificar novo resultado da CI da PR #205; se passar, integrar e continuar a auditoria de magias de Ranger sem repetir níveis já conferidos.
+
+
+## 2026-10-24 — Segunda correção da CI de Ranger 1
+
+- A execução **CI run 1104** falhou no teste de regressão rangerFirstLevelCatalogMatchesPlayerHandbook, na comparação do conjunto esperado com o conjunto encontrado.
+- Diagnóstico: o teste filtrava apenas entradas com classLevels["Ranger"] == 1, mas parte do catálogo legado registra nível no campo geral `level` e lista Ranger em `classes`, sem mapa explícito `classLevels`. O filtro, portanto, ignorava magias existentes; isso não prova que as magias estivessem ausentes do catálogo.
+- Ajuste feito na PR #205: o teste agora verifica entradas que incluem Ranger em `classes` e usa o nível específico `classLevels["Ranger"]` quando existe, recorrendo ao campo `level` apenas quando o mapa específico está ausente.
+- **Validação pendente:** aguardar nova CI; não fazer merge antes de todos os testes e compilação passarem. A correção anterior de nome canônico/duplicata permanece.
