@@ -1762,6 +1762,7 @@ class PresetSpellCatalogTest {
             assertEquals(name, values.second.keys, spell.classes.toSet())
             assertEquals(name, values.second, spell.classLevels)
             assertEquals(name, values.third, spell.domainLevels)
+            if (name == "Aliado Extra-Planar Maior") assertEquals("V, G, FD, XP", spell.components)
         }
         val fieldChecks = mapOf(
             "Aliado Extra-Planar Maior" to listOf("18 DV", "500 XP"),
