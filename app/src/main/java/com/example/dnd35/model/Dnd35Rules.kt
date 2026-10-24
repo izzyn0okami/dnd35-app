@@ -1219,7 +1219,7 @@ object Dnd35Rules {
             name = "Detectar Venenos",
             level = 0,
             school = "Adivinhação",
-            classes = listOf("Clérigo", "Druida", "Mago", "Feiticeiro", "Paladino"),
+            classes = listOf("Clérigo", "Druida", "Mago", "Feiticeiro", "Paladino", "Ranger"),
             castTime = "1 ação padrão",
             components = "V, G",
             range = "Curto (7,5m)",
@@ -1227,7 +1227,7 @@ object Dnd35Rules {
             savingThrow = "Nenhum",
             spellResistance = false,
             description = "Determina se uma criatura, objeto ou área contém veneno; identificar o tipo exige um teste de Sabedoria CD 20.",
-            classLevels = mapOf("Clérigo" to 0, "Druida" to 0, "Mago" to 0, "Feiticeiro" to 0, "Paladino" to 1)
+            classLevels = mapOf("Clérigo" to 0, "Druida" to 0, "Mago" to 0, "Feiticeiro" to 0, "Paladino" to 1, "Ranger" to 1)
         ),
         PresetSpell(
             name = "Consertar",
@@ -2095,6 +2095,34 @@ object Dnd35Rules {
             savingThrow = "Vontade anula",
             spellResistance = true,
             description = "Uma criatura sofre –2 nas jogadas de ataque, dano, testes de resistência e testes de habilidade."
+        ),
+        PresetSpell(
+            name = "Suportar Energia",
+            level = 1,
+            school = "Abjuração",
+            classes = listOf("Clérigo", "Druida", "Ranger", "Mago", "Feiticeiro"),
+            castTime = "1 ação padrão",
+            components = "V, G, M/FD",
+            range = "Toque",
+            duration = "10 minutos/nível",
+            savingThrow = "Vontade anula (inofensivo)",
+            spellResistance = true,
+            description = "Concede resistência 10 contra um tipo de energia escolhido (ácido, frio, eletricidade, fogo ou sônico); o valor aumenta para 20 no 7º nível de conjurador e 30 no 11º.",
+            classLevels = mapOf("Clérigo" to 2, "Druida" to 2, "Ranger" to 1, "Mago" to 2, "Feiticeiro" to 2)
+        ),
+        PresetSpell(
+            name = "Retardar Envenenamento",
+            level = 1,
+            school = "Conjuração",
+            classes = listOf("Clérigo", "Druida", "Paladino", "Ranger"),
+            castTime = "1 ação padrão",
+            components = "V, G, FD",
+            range = "Toque",
+            duration = "1 hora/nível",
+            savingThrow = "Fortitude anula (inofensivo)",
+            spellResistance = true,
+            description = "Torna o alvo temporariamente imune aos efeitos de venenos; qualquer veneno no organismo ou introduzido durante a duração só produz efeitos quando a magia termina, sem neutralizá-lo.",
+            classLevels = mapOf("Clérigo" to 2, "Druida" to 2, "Paladino" to 2, "Ranger" to 1)
         ),
         PresetSpell(
             name = "Suportar Elementos",
