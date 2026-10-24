@@ -712,4 +712,35 @@ class PresetSpellCatalogTest {
     }
 
 
+
+    @Test
+    fun rangerSecondLevelCatalogIncludesSummonNatureAllyII() {
+        val spells = Dnd35Rules.PRESET_SPELLS
+        val byName = spells.associateBy { it.name }
+
+        val summonI = byName.getValue("Invocar Aliado da Natureza I")
+        assertEquals(mapOf("Druida" to 1, "Ranger" to 1), summonI.classLevels)
+        assertEquals("Conjuração (Invocação)", summonI.school)
+        assertEquals("1 rodada", summonI.castTime)
+        assertEquals("V, G, FD", summonI.components)
+        assertEquals("Curto (7,5 m + 1,5 m/2 níveis)", summonI.range)
+        assertEquals("1 rodada/nível (D)", summonI.duration)
+        assertEquals("Nenhum", summonI.savingThrow)
+        assertFalse(summonI.spellResistance)
+
+        val summonII = byName.getValue("Invocar Aliado da Natureza II")
+        assertEquals(1, spells.count { it.name == "Invocar Aliado da Natureza II" })
+        assertEquals(2, summonII.level)
+        assertEquals(mapOf("Druida" to 2, "Ranger" to 2), summonII.classLevels)
+        assertEquals("Conjuração (Invocação)", summonII.school)
+        assertEquals("1 rodada", summonII.castTime)
+        assertEquals("V, G, FD", summonII.components)
+        assertEquals(summonI.range, summonII.range)
+        assertEquals(summonI.duration, summonII.duration)
+        assertEquals("Nenhum", summonII.savingThrow)
+        assertFalse(summonII.spellResistance)
+        assertTrue(summonII.description.contains("1d3"))
+        assertTrue(summonII.description.contains("mesmo tipo"))
+    }
+
 }
