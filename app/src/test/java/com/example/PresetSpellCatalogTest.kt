@@ -2020,8 +2020,6 @@ class PresetSpellCatalogTest {
         assertTrue(spell.description.contains("magias de toque"))
     }
 
-}
-
 
     @Test
     fun ironBodyAndTemporalStasisUseEighthLevelAsListedInPlayerHandbook() {
@@ -2035,3 +2033,5 @@ class PresetSpellCatalogTest {
         assertEquals(8, temporalStasis.level)
         assertEquals(mapOf("Feiticeiro" to 8, "Mago" to 8), temporalStasis.classLevels)
     }
+
+}
