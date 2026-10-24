@@ -4211,7 +4211,7 @@ object Dnd35Rules {
             duration = "1 rodada/nível (D)",
             savingThrow = "Nenhum; veja texto",
             spellResistance = false,
-            description = "Inverte a gravidade numa área de até um cubo de 3 m por 2 níveis, lançando para cima objetos e criaturas que não estejam presos; eles atingem o topo em 1 rodada. Se encontrarem uma superfície sólida, sofrem o efeito de uma queda normal. Sem obstáculo no topo, permanecem ali enquanto durar a magia e caem quando ela termina.",
+            description = "Inverte a gravidade numa área de até um cubo de 3 m por 2 níveis, lançando para cima objetos e criaturas que não estejam presos; eles atingem o topo em 1 rodada. Se encontrarem uma superfície sólida, sofrem o efeito de uma queda normal. Sem obstáculo no topo, permanecem ali enquanto durar a magia. Ao final da duração, os objetos e criaturas afetadas caem normalmente.",
             classLevels = mapOf("Druida" to 8, "Feiticeiro" to 7, "Mago" to 7)
         ),
         PresetSpell(
