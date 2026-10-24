@@ -1743,4 +1743,39 @@ class PresetSpellCatalogTest {
         }
     }
 
+
+    @Test
+    fun additionalEighthLevelSpellBatchMatchesPlayerHandbook() {
+        val expected = mapOf(
+            "Aliado Extra-Planar Maior" to Triple("Conjuração (Convocação) [veja texto para aliado extra-planar menor]", mapOf("Clérigo" to 8), emptyMap()),
+            "Curar Ferimentos Críticos em Massa" to Triple("Conjuração (Cura)", mapOf("Clérigo" to 8, "Druida" to 9), mapOf("Cura" to 8)),
+            "Infligir Ferimentos Críticos em Massa" to Triple("Necromancia", mapOf("Clérigo" to 8), mapOf("Destruição" to 8)),
+            "Curar Ferimentos Graves em Massa" to Triple("Conjuração (Cura)", mapOf("Clérigo" to 7, "Druida" to 8), mapOf("Cura" to 7)),
+            "Corpo de Ferro" to Triple("Transmutação", mapOf("Feiticeiro" to 8, "Mago" to 8), mapOf("Terra" to 8)),
+            "Estase Temporal" to Triple("Transmutação", mapOf("Feiticeiro" to 8, "Mago" to 8), emptyMap()),
+            "Metamorfosear Objetos" to Triple("Transmutação", mapOf("Feiticeiro" to 8, "Mago" to 8), mapOf("Enganação" to 8))
+        )
+        expected.forEach { (name, values) ->
+            val spell = Dnd35Rules.PRESET_SPELLS.single { it.name == name }
+            assertEquals(name, 8, spell.level)
+            assertEquals(name, values.first, spell.school)
+            assertEquals(name, values.second.keys, spell.classes.toSet())
+            assertEquals(name, values.second, spell.classLevels)
+            assertEquals(name, values.third, spell.domainLevels)
+        }
+        val fieldChecks = mapOf(
+            "Aliado Extra-Planar Maior" to listOf("18 DV", "500 XP"),
+            "Curar Ferimentos Críticos em Massa" to listOf("4d8", "máximo +40"),
+            "Infligir Ferimentos Críticos em Massa" to listOf("4d8", "máximo +40"),
+            "Curar Ferimentos Graves em Massa" to listOf("3d8", "máximo +35"),
+            "Corpo de Ferro" to listOf("15/adamante", "+6", "-6"),
+            "Estase Temporal" to listOf("animação suspensa", "5.000 PO"),
+            "Metamorfosear Objetos" to listOf("3 m³ por nível", "duração permanente")
+        )
+        fieldChecks.forEach { (name, fragments) ->
+            val description = Dnd35Rules.PRESET_SPELLS.single { it.name == name }.description
+            fragments.forEach { assertTrue("$name missing: $it", description.contains(it)) }
+        }
+    }
+
 }
