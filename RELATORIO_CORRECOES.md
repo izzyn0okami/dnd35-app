@@ -47,3 +47,14 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - Rever as condições de movimento rápido do bárbaro, limites de carga e restrições de armadura.
 - Validar graduações máximas de perícias e progressões de multiclasse.
 - Ampliar testes de referência para CA, BBA, resistências, magias, talentos e habilidades de classe.
+
+
+## Auditoria do catálogo de magias — 7º nível (2026-10-24)
+
+### Achado confirmado; correção ainda pendente
+- Fonte primária desta verificação: PDF brasileiro **D&D 3.5 — Livro do Jogador**, capítulo 11, listas de magias por classe (incluindo a lista de 7º nível de feiticeiro/mago na página impressa 167 e a lista de 7º nível de druida na página impressa 162).
+- Na versão de `Dnd35Rules.PRESET_SPELLS` examinada nesta auditoria, há 245 entradas; nenhuma tem `level = 7`. A distribuição observada salta do nível 6 para o 8, portanto o catálogo não representa integralmente as listas gerais de 7º nível.
+- Há entradas com nível por classe ou domínio igual a 7 (por exemplo, Dedo da Morte para mago/feiticeiro; Tempestade de Fogo para druida; e alguns níveis de domínio). Esses casos pontuais não substituem o catálogo completo do círculo.
+- Esta constatação é uma **lacuna pendente**, não uma declaração de que todos os níveis ou todos os metadados de magia já foram verificados.
+- Não alterar o significado do campo `level` nem reclassificar entradas isoladamente antes de concluir a conferência de cada magia por classe no PDF. Preservar `classLevels` e `domainLevels` quando a magia tiver níveis diferentes conforme a lista.
+- Próximo passo: transcrever/conferir as listas de 7º nível de todas as classes conjuradoras presentes no Livro do Jogador, comparar nomes canônicos, classe/nível e duplicatas, adicionar as entradas ausentes e testes de regressão. Só então solicitar revisão de CI e merge.
