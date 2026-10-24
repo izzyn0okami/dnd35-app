@@ -2937,7 +2937,7 @@ object Dnd35Rules {
         ),
         PresetSpell(
             name = "Dedo da Morte",
-            level = 7,
+            level = 8,
             school = "Necromancia",
             classes = listOf("Mago", "Feiticeiro", "Druida"),
             castTime = "1 ação padrão",
@@ -2947,8 +2947,8 @@ object Dnd35Rules {
             savingThrow = "Fortitude parcial",
             spellResistance = true,
             description = "Aponta para um ser vivo e tenta extirpar sua vida instantaneamente. Se falhar, morre na hora; se passar, sofre 3d6+nível."
-        ),
-        PresetSpell(
+            classLevels = mapOf("Mago" to 7, "Feiticeiro" to 7, "Druida" to 8)
+        ),        PresetSpell(
             name = "Parar o Tempo (Time Stop)",
             level = 9,
             school = "Transmutação",
