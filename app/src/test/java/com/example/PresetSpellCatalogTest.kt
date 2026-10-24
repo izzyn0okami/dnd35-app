@@ -1548,10 +1548,10 @@ class PresetSpellCatalogTest {
         assertEquals(1, matches.size)
         val spell = matches.single()
 
-        assertEquals(7, spell.level)
+        assertEquals(8, spell.level)
         assertEquals("Ilusão (Padrão) [Ação Mental]", spell.school)
         assertEquals(setOf("Feiticeiro", "Mago"), spell.classes.toSet())
-        assertEquals(mapOf("Feiticeiro" to 7, "Mago" to 7), spell.classLevels)
+        assertEquals(mapOf("Feiticeiro" to 8, "Mago" to 8), spell.classLevels)
         assertTrue(spell.domainLevels.isEmpty())
         assertEquals("1 ação padrão", spell.castTime)
         assertEquals("V, G, M", spell.components)
@@ -1697,7 +1697,7 @@ class PresetSpellCatalogTest {
     fun consolidatedEighthLevelSpellBatchMatchesPlayerHandbook() {
         val expected = mapOf(
             "Campo Antimagia" to Triple("Abjuração", mapOf("Clérigo" to 8, "Feiticeiro" to 6, "Mago" to 6), mapOf("Magia" to 6, "Proteção" to 6)),
-            "Criar Mortos-Vivos Maior" to Triple("Necromancia [Mal]", mapOf("Clérigo" to 8, "Feiticeiro" to 7, "Mago" to 7), mapOf("Morte" to 8)),
+            "Criar Mortos-Vivos Maior" to Triple("Necromancia [Mal]", mapOf("Clérigo" to 8, "Feiticeiro" to 8, "Mago" to 8), mapOf("Morte" to 8)),
             "Imunidade à Magia Maior" to Triple("Abjuração", mapOf("Clérigo" to 8), emptyMap()),
             "Ciclone" to Triple("Evocação [Ar]", mapOf("Druida" to 8), mapOf("Ar" to 8)),
             "Controlar Plantas" to Triple("Transmutação", mapOf("Druida" to 8), mapOf("Planta" to 8)),
@@ -1715,7 +1715,7 @@ class PresetSpellCatalogTest {
             val matches = Dnd35Rules.PRESET_SPELLS.filter { it.name == name }
             assertEquals("$name must appear exactly once", 1, matches.size)
             val spell = matches.single()
-            assertEquals(name, if (name == "Criar Mortos-Vivos Maior" || name == "Símbolo da Morte") 7 else 8, spell.level)
+            assertEquals(name, if (name == "Símbolo da Morte") 7 else 8, spell.level)
             assertEquals(name, values.first, spell.school)
             assertEquals(name, values.second, spell.classLevels)
             assertEquals(name, values.third, spell.domainLevels)
