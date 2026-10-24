@@ -1052,6 +1052,20 @@ object Dnd35Rules {
             classLevels = mapOf("Feiticeiro" to 8, "Mago" to 8)
         ),
         PresetSpell(
+            name = "Labirinto",
+            level = 8,
+            school = "Conjuração (Teletransporte)",
+            classes = listOf("Feiticeiro", "Mago"),
+            castTime = "1 ação padrão",
+            components = "V, G",
+            range = "Curto (7,5 m + 1,5 m/2 níveis)",
+            duration = "10 minutos",
+            savingThrow = "Nenhum",
+            spellResistance = true,
+            description = "Expulsa uma criatura para um labirinto extradimensional nos planos de energia. No próprio turno, a cada rodada, o alvo pode gastar uma ação de rodada completa e realizar um teste de Inteligência (CD 20) para escapar. Se não escapar, o labirinto desaparece após 10 minutos e o alvo é forçado a sair. Ao escapar ou ser expulso, reaparece no local de onde foi removido; se esse espaço estiver ocupado, surge no espaço vago mais próximo. Teletransporte e outras habilidades de deslocamento planar não permitem escapar, embora viagem planar permita sair para outro plano. Minotauros não são afetados.",
+            classLevels = mapOf("Feiticeiro" to 8, "Mago" to 8)
+        ),
+        PresetSpell(
             name = "Âncora Planar Maior",
             level = 8,
             school = "Conjuração (Convocação)",

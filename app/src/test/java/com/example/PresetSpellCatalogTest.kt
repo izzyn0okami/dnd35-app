@@ -1274,4 +1274,26 @@ class PresetSpellCatalogTest {
         assertTrue(spell.description.contains("tarefa"))
     }
 
+
+    @Test
+    fun labirintoMatchesPlayerHandbookEntry() {
+        val matches = Dnd35Rules.PRESET_SPELLS.filter { it.name == "Labirinto" }
+        assertEquals(1, matches.size)
+        val spell = matches.single()
+
+        assertEquals(8, spell.level)
+        assertEquals("Conjuração (Teletransporte)", spell.school)
+        assertEquals(setOf("Feiticeiro", "Mago"), spell.classes.toSet())
+        assertEquals(mapOf("Feiticeiro" to 8, "Mago" to 8), spell.classLevels)
+        assertEquals("1 ação padrão", spell.castTime)
+        assertEquals("V, G", spell.components)
+        assertEquals("Curto (7,5 m + 1,5 m/2 níveis)", spell.range)
+        assertEquals("10 minutos", spell.duration)
+        assertEquals("Nenhum", spell.savingThrow)
+        assertTrue(spell.spellResistance)
+        assertTrue(spell.description.contains("Inteligência (CD 20)"))
+        assertTrue(spell.description.contains("Minotauros não são afetados"))
+        assertTrue(spell.description.contains("viagem planar"))
+    }
+
 }

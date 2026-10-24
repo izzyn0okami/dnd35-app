@@ -1745,3 +1745,15 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - **Correção de CI registrada:** a primeira execução [40066198142](https://github.com/izzyn0okami/dnd35-app/actions/runs/40066198142) falhou em uma asserção textual; a verificação foi flexibilizada para validar o conceito sem exigir redação literal.
 - **Limitação:** não foi realizado teste manual em dispositivo Android.
 - **Próximo passo:** continuar a auditoria de magias de 8º nível do Livro do Jogador, verificar no catálogo as candidatas restantes e consultar o verbete completo antes de qualquer nova alteração.
+
+
+## 2026-10-24 — Inclusão proposta de Labirinto (8º nível)
+
+- **Fonte primária:** PDF brasileiro *D&D 3.5 — Livro do Jogador*, verbete “Labirinto”, p. impressa 212.
+- **Dados conferidos:** Conjuração (Teletransporte); Feiticeiro 8 e Mago 8; componentes V, G; execução de 1 ação padrão; alcance curto (7,5 m + 1,5 m/2 níveis); alvo de uma criatura; duração de 10 minutos; nenhum teste de resistência; resistência à magia sim.
+- **Efeito essencial:** expulsa o alvo para um labirinto extradimensional; a cada rodada, ele pode gastar uma ação de rodada completa e realizar teste de Inteligência CD 20 para escapar. Após 10 minutos, o labirinto desaparece e o alvo é forçado a sair. Teletransporte não permite escapar; viagem planar permite sair para outro plano; minotauros são imunes ao efeito.
+- **Implementação proposta:** entrada única para Feiticeiro 8 e Mago 8, com duração fixa de 10 minutos e as exceções explícitas do verbete.
+- **Regressão:** teste dedicado verifica unicidade, escola, nível, classes, parâmetros de conjuração, teste de Inteligência, exceção de minotauros e viagem planar.
+- **Validação:** PR em preparação; CI ainda não executada; sem teste manual em dispositivo Android.
+- **Contagem nominal antes desta proposta:** 200 entradas únicas; a inclusão elevará para 201 se integrada.
+- **Próximo passo:** aguardar CI; não integrar até que testes unitários, compilação Android e geração do APK passem.
