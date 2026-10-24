@@ -1856,8 +1856,6 @@ class PresetSpellCatalogTest {
             "Padrão Cintilante",
             "Clone",
             "Evaporação",
-            "Corpo de Ferro",
-            "Estase Temporal",
             "Metamorfosear Objetos",
             "Invocar Criaturas VII",
             "Ondas da Exaustão"
@@ -1865,6 +1863,12 @@ class PresetSpellCatalogTest {
             val spell = spells.getValue(name)
             assertEquals(7, spell.classLevels["Feiticeiro"])
             assertEquals(7, spell.classLevels["Mago"])
+        }
+        listOf("Corpo de Ferro", "Estase Temporal").forEach { name ->
+            val spell = spells.getValue(name)
+            assertEquals(8, spell.level)
+            assertEquals(8, spell.classLevels["Feiticeiro"])
+            assertEquals(8, spell.classLevels["Mago"])
         }
 
         val wavesOfExhaustion = spells.getValue("Ondas da Exaustão")
@@ -2017,3 +2021,17 @@ class PresetSpellCatalogTest {
     }
 
 }
+
+
+    @Test
+    fun ironBodyAndTemporalStasisUseEighthLevelAsListedInPlayerHandbook() {
+        val spells = Dnd35Rules.PRESET_SPELLS.associateBy { it.name }
+        val ironBody = spells.getValue("Corpo de Ferro")
+        assertEquals(8, ironBody.level)
+        assertEquals(mapOf("Feiticeiro" to 8, "Mago" to 8), ironBody.classLevels)
+        assertEquals(mapOf("Terra" to 8), ironBody.domainLevels)
+
+        val temporalStasis = spells.getValue("Estase Temporal")
+        assertEquals(8, temporalStasis.level)
+        assertEquals(mapOf("Feiticeiro" to 8, "Mago" to 8), temporalStasis.classLevels)
+    }
