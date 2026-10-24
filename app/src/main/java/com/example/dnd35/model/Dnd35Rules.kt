@@ -3198,5 +3198,76 @@ object Dnd35Rules {
             description = "Concede +4 de bônus de melhoria na Sabedoria.",
             classLevels = mapOf("Clérigo" to 2, "Druida" to 2, "Paladino" to 2, "Ranger" to 2, "Mago" to 2, "Feiticeiro" to 2)
         ),
+
+        PresetSpell(
+            name = "Ampliar Plantas",
+            level = 3,
+            school = "Transmutação",
+            classes = listOf("Druida", "Ranger"),
+            castTime = "1 ação padrão",
+            components = "V, G, FD",
+            range = "Veja texto",
+            duration = "Instantânea",
+            savingThrow = "Nenhum",
+            spellResistance = false,
+            description = "Tem duas versões: faz a vegetação normal tornar-se densa e difícil de atravessar em alcance longo (120 m + 12 m/nível), ou aumenta em um terço a produtividade das plantas no próximo ano. Serve como contramágica e dissipa Enfraquecer Plantas; não afeta criaturas do tipo planta.",
+            classLevels = mapOf("Druida" to 3, "Ranger" to 3)
+        ),
+        PresetSpell(
+            name = "Comandar Plantas",
+            level = 3,
+            school = "Transmutação",
+            classes = listOf("Druida", "Ranger"),
+            castTime = "1 ação padrão",
+            components = "V",
+            range = "Curto (7,5 m + 1,5 m/2 níveis)",
+            duration = "1 dia/nível",
+            savingThrow = "Vontade anula",
+            spellResistance = true,
+            description = "Concede controle limitado sobre criaturas do tipo planta: até 2 DV/nível, agrupadas a até 9 m entre si. Elas ficam amistosas e não atacam o conjurador; ordens incomuns exigem teste resistido de Carisma.",
+            classLevels = mapOf("Druida" to 4, "Ranger" to 3)
+        ),
+        PresetSpell(
+            name = "Enfraquecer Plantas",
+            level = 3,
+            school = "Transmutação",
+            classes = listOf("Druida", "Ranger"),
+            castTime = "1 ação padrão",
+            components = "V, G, FD",
+            range = "Veja texto",
+            duration = "Instantânea",
+            savingThrow = "Nenhum",
+            spellResistance = false,
+            description = "Pode reduzir a vegetação normal a cerca de um terço do tamanho em alcance longo (120 m + 12 m/nível), ou reduzir em um terço a produtividade das plantas no próximo ano. Serve como contramágica para Ampliar Plantas; não afeta criaturas do tipo planta.",
+            classLevels = mapOf("Druida" to 3, "Ranger" to 3)
+        ),
+        PresetSpell(
+            name = "Forma de Árvore",
+            level = 3,
+            school = "Transmutação",
+            classes = listOf("Druida", "Ranger"),
+            castTime = "1 ação padrão",
+            components = "V, G, FD",
+            range = "Pessoal",
+            duration = "1 hora/nível (D)",
+            savingThrow = "Nenhum",
+            spellResistance = false,
+            description = "O conjurador assume a aparência de uma árvore ou arbusto vivo Grande ou de um tronco morto Grande, recebe +10 de armadura natural, fica com Destreza efetiva 0 e deslocamento 0 m, e fica imune a sucessos decisivos. Pode encerrar o efeito como ação livre.",
+            classLevels = mapOf("Druida" to 2, "Ranger" to 3)
+        ),
+        PresetSpell(
+            name = "Invocar Aliado da Natureza III",
+            level = 3,
+            school = "Conjuração (Invocação)",
+            classes = listOf("Druida", "Ranger"),
+            castTime = "1 rodada",
+            components = "V, G, FD",
+            range = "Curto (7,5 m + 1,5 m/2 níveis)",
+            duration = "1 rodada/nível (D)",
+            savingThrow = "Nenhum",
+            spellResistance = false,
+            description = "Invoca uma criatura da lista de 3º nível, 1d3 criaturas do mesmo tipo da lista de 2º nível ou 1d4+1 criaturas do mesmo tipo da lista de 1º nível.",
+            classLevels = mapOf("Druida" to 3, "Ranger" to 3)
+        ),
     )
 }
