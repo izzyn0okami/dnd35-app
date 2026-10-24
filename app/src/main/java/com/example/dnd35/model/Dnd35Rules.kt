@@ -4375,7 +4375,7 @@ object Dnd35Rules {
         ),
         PresetSpell(
             name = "Corpo de Ferro",
-            level = 7,
+            level = 8,
             school = "Transmutação",
             classes = listOf("Feiticeiro", "Mago"),
             castTime = "1 ação padrão",
@@ -4385,12 +4385,12 @@ object Dnd35Rules {
             savingThrow = "Nenhum",
             spellResistance = false,
             description = "Transforma o corpo do conjurador em ferro vivo. Concede redução de dano 15/adamante, imunidade a cegueira, acertos críticos, dano de habilidade, surdez, doença, afogamento, eletricidade, veneno, atordoamento e efeitos que dependam de fisiologia ou respiração; reduz à metade o dano de ácido e fogo. Também concede +6 de bônus de aprimoramento em Força e impõe -6 de penalidade em Destreza (mínimo 1), além das demais limitações descritas no Livro do Jogador.",
-            classLevels = mapOf("Feiticeiro" to 7, "Mago" to 7),
+            classLevels = mapOf("Feiticeiro" to 8, "Mago" to 8),
             domainLevels = mapOf("Terra" to 8)
         ),
         PresetSpell(
             name = "Estase Temporal",
-            level = 7,
+            level = 8,
             school = "Transmutação",
             classes = listOf("Feiticeiro", "Mago"),
             castTime = "1 ação padrão",
@@ -4400,7 +4400,7 @@ object Dnd35Rules {
             savingThrow = "Fortitude anula",
             spellResistance = true,
             description = "Após um ataque de toque corporal bem-sucedido, coloca a criatura em animação suspensa permanente: o tempo parece parar para ela, sua condição fica estável, ela não envelhece e não pode ser ferida. O efeito pode ser removido por dissipar magia bem-sucedida ou libertação. O componente material é um pó de diamante, esmeralda, rubi e safira no valor total mínimo de 5.000 PO.",
-            classLevels = mapOf("Feiticeiro" to 7, "Mago" to 7)
+            classLevels = mapOf("Feiticeiro" to 8, "Mago" to 8)
         ),
         PresetSpell(
             name = "Metamorfosear Objetos",
