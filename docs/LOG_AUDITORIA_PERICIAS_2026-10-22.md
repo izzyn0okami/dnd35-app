@@ -1611,3 +1611,12 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - **Validação:** CI pendente; sem teste manual em dispositivo Android. Não integrar até CI verde.
 - **Contagem antes desta PR:** 194 entradas nominais únicas na main; esta inclusão elevará para 195 se integrada.
 - **Próximo passo:** aguardar CI; depois conferir o próximo verbete ausente da lista de 8º nível.
+
+
+## Resultado final da PR #213 — 2026-10-24
+
+- **CI:** execução [40063457821](https://github.com/izzyn0okami/dnd35-app/actions/runs/40063457821) concluída com sucesso; testes unitários, compilação Android e publicação do APK passaram.
+- **Integração:** PR [#213](https://github.com/izzyn0okami/dnd35-app/pull/213) integrada por squash no commit `38934166438e443f3190100f46fd04902b698fa5`.
+- **Resultado:** `Olhos Observadores Maior` adicionada ao catálogo; total nominal passa de 194 para 195 entradas únicas.
+- **Limitação:** sem teste manual em dispositivo Android; os parâmetros básicos foram derivados do verbete-base “Olhos Observadores” conforme a referência do verbete maior.
+- **Próxima fila da lista resumida de 8º nível:** Tranca Dimensional; Discernir Localização; Instante de Presciência; Âncora Planar Maior; Aprisionar a Alma; Invocar Criaturas VIII; Labirinto; Nuvem Incendiária; Antipatia; Dança Irresistível de Otto; Enfeitiçar Monstro em Massa; Ordem; Palavra de Poder, Atordoar; Agilidade do Gato em Massa; Astúcia da Raposa em Massa; Carne para Pedra; Controlar Água; Desintegrar; Elucubração de Mordenkainen; Esplendor da Águia em Massa; Força do Touro em Massa; Mover Terra; Pedra em Carne; Sabedoria da Coruja em Massa; Transformação de Tenser; Vigor do Urso em Massa. Conferir o verbete completo no PDF e verificar associações de classe antes de adicionar cada entrada.
