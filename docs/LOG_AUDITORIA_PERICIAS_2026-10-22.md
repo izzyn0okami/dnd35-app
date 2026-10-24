@@ -1933,13 +1933,15 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - **Limitação:** não foi realizado teste manual em dispositivo Android.
 - **Próximo passo:** continuar as magias restantes de 8º nível do Livro do Jogador, conferindo verbete e catálogo antes de cada inclusão.
 
-## 2026-10-24 — Padrão Cintilante (8º nível; PR proposta)
+## 2026-10-24 — Padrão Cintilante integrado (8º nível)
 
-- **PR:** pendente de abertura; branch `audit/spell-padrao-cintilante`.
+- **PR:** [#232](https://github.com/izzyn0okami/dnd35-app/pull/232), integrada por squash.
+- **Commit de merge:** `f7899fd918a99012f3f863c89d4f55240cab4f0f`.
 - **Fonte primária:** PDF brasileiro *D&D 3.5 — Livro do Jogador*, verbete “Padrão Cintilante”, p. impressa 225.
-- **Dados propostos:** Ilusão (Padrão) [Ação Mental]; Feiticeiro 8 e Mago 8; componentes V, G, M; execução de 1 ação padrão; alcance curto (7,5 m + 1,5 m/2 níveis); efeito em dispersão de luzes coloridas de 6 m de raio; duração concentração + 2 rodadas; nenhum teste de resistência; resistência à magia sim.
+- **Dados conferidos:** Ilusão (Padrão) [Ação Mental]; Feiticeiro 8 e Mago 8; componentes V, G, M; execução de 1 ação padrão; alcance curto (7,5 m + 1,5 m/2 níveis); efeito em dispersão de luzes coloridas de 6 m de raio; duração concentração + 2 rodadas; nenhum teste de resistência; resistência à magia sim.
 - **Efeito essencial:** afeta total de DV igual ao nível de conjurador, máximo 20, priorizando criaturas de menor DV e depois as mais próximas. Até 6 DV: inconsciência, atordoamento e confusão, cada qual por 1d4 rodadas em sequência; 7–12 DV: atordoamento e depois confusão por 1d4 rodadas; 13 DV ou mais: confusão por 1d4 rodadas. Criaturas incapazes de enxergar são imunes. Componente material: pequeno prisma de cristal.
-- **Regressão proposta:** teste dedicado para unicidade, nível, escola, classes e níveis, ausência de domínio, execução, componentes, alcance, duração, resistência à magia e faixas de DV/efeitos.
-- **Estado:** não integrada. Aguardar CI completa (testes unitários, compilação Android e upload do APK) antes de merge. Sem teste manual em dispositivo Android.
-- **Contagem nominal:** 213 entradas após integração futura, se a PR passar (212 antes).
-- **Próximo passo:** verificar a CI; só então integrar e seguir para a próxima magia restante de 8º nível do Livro do Jogador.
+- **Regressão:** teste dedicado para unicidade, nível, escola, classes e níveis, ausência de domínio, execução, componentes, alcance, duração, resistência à magia e faixas de DV/efeitos.
+- **CI:** [workflow Android Build #40105468891](https://github.com/izzyn0okami/dnd35-app/actions/runs/40105468891) passou integralmente no commit da PR: testes unitários, compilação Android e upload do APK de depuração.
+- **Contagem nominal:** 213 entradas após integração (212 antes).
+- **Limitação:** não foi realizado teste manual em dispositivo Android.
+- **Próximo passo:** continuar a auditoria das magias restantes de 8º nível do Livro do Jogador, conferindo o PDF e o catálogo antes de cada inclusão.
