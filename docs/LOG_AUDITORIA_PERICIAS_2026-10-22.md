@@ -1620,3 +1620,15 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - **Resultado:** `Olhos Observadores Maior` adicionada ao catálogo; total nominal passa de 194 para 195 entradas únicas.
 - **Limitação:** sem teste manual em dispositivo Android; os parâmetros básicos foram derivados do verbete-base “Olhos Observadores” conforme a referência do verbete maior.
 - **Próxima fila da lista resumida de 8º nível:** Tranca Dimensional; Discernir Localização; Instante de Presciência; Âncora Planar Maior; Aprisionar a Alma; Invocar Criaturas VIII; Labirinto; Nuvem Incendiária; Antipatia; Dança Irresistível de Otto; Enfeitiçar Monstro em Massa; Ordem; Palavra de Poder, Atordoar; Agilidade do Gato em Massa; Astúcia da Raposa em Massa; Carne para Pedra; Controlar Água; Desintegrar; Elucubração de Mordenkainen; Esplendor da Águia em Massa; Força do Touro em Massa; Mover Terra; Pedra em Carne; Sabedoria da Coruja em Massa; Transformação de Tenser; Vigor do Urso em Massa. Conferir o verbete completo no PDF e verificar associações de classe antes de adicionar cada entrada.
+
+
+## 2026-10-24 — Inclusão proposta de Tranca Dimensional (8º nível)
+
+- **Fonte primária:** PDF brasileiro *D&D 3.5 — Livro do Jogador*, verbete completo “Tranca Dimensional”, p. impressa 249.
+- **Dados conferidos:** Abjuração; Clr 8, Fet/Mag 8; V, G; execução de 1 ação padrão; alcance médio (30 m + 3 m/nível); emanação de 6 m de raio centrada no conjurador; duração de 1 dia/nível; nenhum teste de resistência; resistência à magia não.
+- **Efeito:** bloqueia formas de movimento dimensional, incluindo projeção astral, piscar, porta dimensional, passeio etéreo, forma etérea, portal, labirinto, viagem planar, andar nas sombras e teletransporte. O verbete ressalva que não impede o movimento de criaturas já astrais/etéreas, a percepção ou ataques extradimensionais, nem o desaparecimento normal de criaturas invocadas.
+- **Implementação proposta:** uma entrada para Clérigo 8, Feiticeiro 8 e Mago 8; não confundir “Tranca Dimensional” com “Tranca Arcana”.
+- **Regressão:** teste dedicado verifica unicidade, escola, nível, classes/níveis, parâmetros de conjuração e efeitos/limites essenciais.
+- **Validação:** CI pendente; sem teste manual em dispositivo Android. Não integrar até CI verde.
+- **Contagem antes desta PR:** 195 entradas nominais únicas na main; esta inclusão elevará para 196 se integrada.
+- **Próximo passo:** após CI verde e merge, continuar a fila de 8º nível com o próximo verbete ausente, conferindo também as listas de outras classes quando a magia tiver múltiplas associações.

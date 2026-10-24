@@ -1036,6 +1036,20 @@ object Dnd35Rules {
 
     val PRESET_SPELLS = listOf(
         PresetSpell(
+            name = "Tranca Dimensional",
+            level = 8,
+            school = "Abjuração",
+            classes = listOf("Clérigo", "Feiticeiro", "Mago"),
+            castTime = "1 ação padrão",
+            components = "V, G",
+            range = "Médio (30 m + 3 m/nível)",
+            duration = "1 dia/nível",
+            savingThrow = "Nenhum",
+            spellResistance = false,
+            description = "Cria uma barreira esmeralda que bloqueia movimento dimensional numa emanação de 6 m de raio centrada no conjurador. Bloqueia efeitos como projeção astral, piscar, porta dimensional, passeio etéreo, forma etérea, portal, labirinto, viagem planar, andar nas sombras e teletransporte, além de habilidades mágicas ou psíquicas similares. Não impede o movimento de criaturas que já estejam na forma astral ou etérea, nem a percepção ou ataques extradimensionais; também não impede que criaturas invocadas desapareçam ao terminar a invocação.",
+            classLevels = mapOf("Clérigo" to 8, "Feiticeiro" to 8, "Mago" to 8)
+        ),
+        PresetSpell(
             name = "Olhos Observadores Maior",
             level = 8,
             school = "Adivinhação",
