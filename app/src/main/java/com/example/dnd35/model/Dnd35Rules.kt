@@ -1538,6 +1538,63 @@ object Dnd35Rules {
         ),
 
         // Magias adicionais de 1º círculo do Livro do Jogador — lote 1
+        // Magias de 1º nível que faltavam nas listas do Livro do Jogador
+        PresetSpell(
+            name = "Apagar",
+            level = 1,
+            school = "Transmutação",
+            classes = listOf("Bardo", "Mago", "Feiticeiro"),
+            castTime = "1 ação padrão",
+            components = "V, G",
+            range = "Curto (7,5 m + 1,5 m/2 níveis)",
+            duration = "Instantânea",
+            savingThrow = "Veja texto",
+            spellResistance = false,
+            description = "Remove escrita comum de um pergaminho ou de até duas páginas. Escritas mágicas exigem toque e teste de conjurador contra CD 15; uma falha ao apagar certas runas ou símbolos pode ativá-los.",
+            classLevels = mapOf("Bardo" to 1, "Mago" to 1, "Feiticeiro" to 1)
+        ),
+        PresetSpell(
+            name = "Aura Mágica de Nystul",
+            level = 1,
+            school = "Ilusão (Sensação)",
+            classes = listOf("Bardo", "Mago", "Feiticeiro"),
+            castTime = "1 ação padrão",
+            components = "V, G, F",
+            range = "Toque",
+            duration = "1 dia/nível (D)",
+            savingThrow = "Nenhum; veja texto",
+            spellResistance = false,
+            description = "Mascara a aura mágica de um objeto para que pareça mundano, outro item mágico ou alvo de um efeito específico. Uma tentativa bem-sucedida de identificar o objeto pode revelar a aura falsa.",
+            classLevels = mapOf("Bardo" to 1, "Mago" to 1, "Feiticeiro" to 1)
+        ),
+        PresetSpell(
+            name = "Imagem Silenciosa",
+            level = 1,
+            school = "Ilusão (Ideia)",
+            classes = listOf("Bardo", "Mago", "Feiticeiro"),
+            castTime = "1 ação padrão",
+            components = "V, G, F",
+            range = "Longo (120 m + 12 m/nível)",
+            duration = "Concentração",
+            savingThrow = "Vontade desacredita (se interagir)",
+            spellResistance = false,
+            description = "Cria a ilusão visual de um objeto, criatura ou energia. Não produz sons, cheiros, texturas ou temperaturas; a imagem pode ser movida dentro dos limites do efeito.",
+            classLevels = mapOf("Bardo" to 1, "Mago" to 1, "Feiticeiro" to 1)
+        ),
+        PresetSpell(
+            name = "Ventriloquismo",
+            level = 1,
+            school = "Ilusão (Ideia)",
+            classes = listOf("Bardo", "Mago", "Feiticeiro"),
+            castTime = "1 ação padrão",
+            components = "V, F",
+            range = "Curto (7,5 m + 1,5 m/2 níveis)",
+            duration = "1 minuto/nível (D)",
+            savingThrow = "Vontade desacredita (se interagir)",
+            spellResistance = false,
+            description = "Faz a voz do conjurador ou outro som vocal parecer vir de outro lugar. Quem ouvir pode reconhecer a ilusão com um teste de Vontade.",
+            classLevels = mapOf("Bardo" to 1, "Mago" to 1, "Feiticeiro" to 1)
+        ),
         PresetSpell(
             name = "Alarme",
             level = 1,
