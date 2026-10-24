@@ -1767,3 +1767,15 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - **Contagem nominal:** 201 entradas únicas após integração (200 antes da PR).
 - **Limitação:** não foi realizado teste manual em dispositivo Android.
 - **Próximo passo:** prosseguir na auditoria das magias de 8º nível do Livro do Jogador; conferir o PDF e o catálogo antes de escolher a próxima inclusão.
+
+
+## 2026-10-24 — Inclusão proposta de Nuvem Incendiária (8º nível)
+
+- **Fonte primária:** PDF brasileiro *D&D 3.5 — Livro do Jogador*, lista de magias de 8º nível e verbete “Nuvem Incendiária”, p. impressa 167 e 245.
+- **Dados conferidos:** Conjuração (Criação) [Fogo]; Feiticeiro 8, Mago 8 e domínio Fogo 8; componentes V, G; execução de 1 ação padrão; alcance médio (30 m + 3 m/nível); efeito em nuvem de 6 m de raio e 6 m de altura; duração de 1 rodada/nível; Reflexos reduz à metade; resistência à magia não.
+- **Efeito essencial:** nuvem de fumaça com brasas que causa 4d6 de dano de fogo por rodada; cada alvo pode fazer teste de Reflexos a cada rodada para sofrer metade. A nuvem move-se 3 m por rodada, podendo ser movida até 18 m por rodada com concentração; o vento a dispersa e não pode ser conjurada sob a água.
+- **Implementação proposta:** entrada única para Feiticeiro/Mago 8 e nível de domínio Fogo 8; parâmetros e exceções do verbete resumidos na descrição.
+- **Regressão:** teste dedicado verifica unicidade, escola, classes, nível de domínio, componentes, alcance, duração, resistência à magia e mecânicas centrais.
+- **Validação:** PR em preparação; CI ainda não executada; sem teste manual em dispositivo Android.
+- **Contagem nominal antes desta proposta:** 201 entradas únicas; a inclusão elevará para 202 se integrada.
+- **Próximo passo:** aguardar CI; não integrar até que testes unitários, compilação Android e geração do APK passem.
