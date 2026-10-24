@@ -1961,7 +1961,7 @@ class PresetSpellCatalogTest {
         assertFalse(spell.spellResistance)
         assertTrue(spell.description.contains("1d4+6 níveis de magia"))
         assertFalse(spell.description.contains("sete a dez níveis"))
-        assertTrue(spell.description.contains("efeitos de área"))
+        assertTrue(spell.description.contains("Efeitos de área"))
         assertTrue(spell.description.contains("magias de toque"))
     }
 
