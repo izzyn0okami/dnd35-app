@@ -1612,19 +1612,6 @@ object Dnd35Rules {
             description = "Revela a presença de portas e compartimentos secretos dentro do alcance; a concentração ajuda a determinar sua localização."
         ),
         PresetSpell(
-            name = "Retirada Acelerada",
-            level = 1,
-            school = "Transmutação",
-            classes = listOf("Mago", "Feiticeiro"),
-            castTime = "1 ação padrão",
-            components = "V, S",
-            range = "Pessoal",
-            duration = "1 minuto/nível",
-            savingThrow = "Nenhum",
-            spellResistance = false,
-            description = "Aumenta o deslocamento básico do conjurador em 9m; não concede ataques adicionais nem aumenta outras formas de deslocamento."
-        ),
-        PresetSpell(
             name = "Proteção contra o Mal",
             level = 1,
             school = "Abjuração",
