@@ -1841,13 +1841,16 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - **Próximo passo:** continuar com as magias restantes de 8º nível do Livro do Jogador, conferindo o verbete e o catálogo antes de cada inclusão.
 
 
-## 2026-10-24 — Inclusão proposta de Esfera Telecinética de Otiluke (8º nível)
+## 2026-10-24 — Esfera Telecinética de Otiluke (8º nível) integrada
 
+- **PR:** [#225](https://github.com/izzyn0okami/dnd35-app/pull/225), integrada por squash.
+- **Commit de merge:** `4ab210e44de70bf58b9e6a199b85abffc71d6714`.
 - **Fonte primária:** PDF brasileiro *D&D 3.5 — Livro do Jogador*, verbete “Esfera Telecinética de Otiluke”, p. impressa 201.
 - **Dados conferidos:** Evocação [Energia]; Feiticeiro/Mago 8; componentes V, G, M; execução de 1 ação padrão; alcance curto; duração 1 minuto/nível (D); Reflexos anula (objeto); resistência à magia sim.
 - **Efeito essencial:** esfera de 30 cm de diâmetro por nível, reduz o peso interno a 1/16, permite controle telecinético de até 2.500 kg a alcance médio e deslocamento de até 9 m por rodada com concentração; sem concentração fica parada ou cai a 18 m por rodada.
 - **Componentes materiais:** dois semicírculos encaixáveis (cristal transparente e goma arábica) e um par de pequenos ímãs.
 - **Regressão:** teste dedicado para unicidade, escola, classes e níveis, execução, componentes, alcance, duração, resistência e efeitos distintivos.
-- **Validação:** proposta em PR; CI pendente; sem teste manual em dispositivo Android.
-- **Contagem nominal antes desta proposta:** 206 entradas únicas; a inclusão elevará para 207 se integrada.
-- **Próximo passo:** aguardar CI; integrar somente se testes unitários, compilação Android e upload do APK passarem.
+- **CI:** [workflow Android Build #40099900876](https://github.com/izzyn0okami/dnd35-app/actions/runs/40099900876) passou; testes unitários, compilação Android e upload do APK de depuração foram concluídos com sucesso.
+- **Contagem nominal:** 207 entradas únicas após integração (206 antes da PR).
+- **Limitação:** não foi realizado teste manual em dispositivo Android.
+- **Próximo passo:** continuar a auditoria das magias restantes de 8º nível do Livro do Jogador, conferindo cada verbete e o catálogo antes de qualquer inclusão.
