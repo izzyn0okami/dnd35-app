@@ -3326,5 +3326,20 @@ object Dnd35Rules {
             description = "Cria uma emanação de 3 m de raio centrada no conjurador que afasta insetos. Insetos com DV inferiores a um terço do nível do conjurador não atravessam a barreira; os demais podem atravessá-la se passarem em Vontade.",
             classLevels = mapOf("Bardo" to 4, "Clérigo" to 4, "Druida" to 4, "Ranger" to 3)
         ),
+
+        PresetSpell(
+            name = "Visão no Escuro",
+            level = 2,
+            school = "Transmutação",
+            classes = listOf("Ranger", "Feiticeiro", "Mago"),
+            castTime = "1 ação padrão",
+            components = "V, G, M",
+            range = "Toque",
+            duration = "1 hora/nível",
+            savingThrow = "Vontade anula (inofensiva)",
+            spellResistance = true,
+            description = "O alvo adquire a habilidade de enxergar a até 18 m, inclusive em completa escuridão. A visão é em preto e branco e não permite enxergar sob escuridão mágica. Componente material: um pedaço de cenoura seca ou uma ágata.",
+            classLevels = mapOf("Ranger" to 2, "Feiticeiro" to 2, "Mago" to 2)
+        ),
     )
 }
