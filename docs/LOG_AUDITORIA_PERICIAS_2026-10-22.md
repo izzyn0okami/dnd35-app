@@ -1776,6 +1776,9 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - **Efeito essencial:** nuvem de fumaça com brasas que causa 4d6 de dano de fogo por rodada; cada alvo pode fazer teste de Reflexos a cada rodada para sofrer metade. A nuvem move-se 3 m por rodada, podendo ser movida até 18 m por rodada com concentração; o vento a dispersa e não pode ser conjurada sob a água.
 - **Implementação proposta:** entrada única para Feiticeiro/Mago 8 e nível de domínio Fogo 8; parâmetros e exceções do verbete resumidos na descrição.
 - **Regressão:** teste dedicado verifica unicidade, escola, classes, nível de domínio, componentes, alcance, duração, resistência à magia e mecânicas centrais.
-- **Validação:** PR em preparação; CI ainda não executada; sem teste manual em dispositivo Android.
-- **Contagem nominal antes desta proposta:** 201 entradas únicas; a inclusão elevará para 202 se integrada.
-- **Próximo passo:** aguardar CI; não integrar até que testes unitários, compilação Android e geração do APK passem.
+- **Validação inicial:** CI [40067783538](https://github.com/izzyn0okami/dnd35-app/actions/runs/40067783538) concluída com sucesso; testes unitários, compilação Android e upload do APK passaram.
+- **Integração:** PR [#220](https://github.com/izzyn0okami/dnd35-app/pull/220) integrada por squash no commit `34bdc582f9d51a1b8c32a22d49882a80051ee702`.
+- **Resultado:** Nuvem Incendiária adicionada ao catálogo como magia de 8º nível para Feiticeiro/Mago e domínio Fogo.
+- **Contagem nominal:** 202 entradas únicas após integração (201 antes da PR).
+- **Limitação:** não foi realizado teste manual em dispositivo Android.
+- **Próximo passo:** continuar a auditoria de magias de 8º nível, consultando o verbete completo no PDF e evitando duplicidades no catálogo.
