@@ -1514,3 +1514,12 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - **Regressão:** ampliar o teste da lista resumida de Ranger para exigir o mapeamento explícito de ambas as classes nessas duas magias.
 - **Validação:** pendente de CI; não houve teste manual em dispositivo.
 - **Próximo passo:** aguardar testes unitários, compilação Android e APK; depois seguir para as próximas associações de magias ainda não auditadas.
+
+
+## Resultado final da PR #209 — 2026-10-24
+
+- **CI:** execução [40061738161](https://github.com/izzyn0okami/dnd35-app/actions/runs/40061738161) concluída com sucesso; testes unitários, compilação Android e publicação do APK passaram.
+- **Integração:** PR [#209](https://github.com/izzyn0okami/dnd35-app/pull/209) integrada por squash no commit `196a090ce84b30bb7fbe0472af2543377216b7c9`.
+- **Resultado:** `Passos Longos` e `Passos sem Pegadas` agora têm mapeamento explícito de Druida 1 e Ranger 1, conforme os verbetes completos do Livro do Jogador (p. impressa 227). Nenhum efeito de magia foi alterado.
+- **Limite:** não houve teste manual em dispositivo Android.
+- **Próximo passo:** continuar a auditoria individual das associações de classe/nível e cobertura do catálogo, sem repetir verificações já registradas.
