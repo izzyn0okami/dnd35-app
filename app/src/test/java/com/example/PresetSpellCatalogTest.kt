@@ -1898,6 +1898,21 @@ class PresetSpellCatalogTest {
         assertEquals(7, greaterCreateUndead.classLevels["Mago"])
     }
     @Test
+    fun banishmentDescriptionMatchesPlayerHandbookTargetsAndLimits() {
+        val banishment = Dnd35Rules.PRESET_SPELLS.single { it.name == "Banimento" }
+        assertEquals("Abjuração", banishment.school)
+        assertEquals(6, banishment.classLevels["Clérigo"])
+        assertEquals(7, banishment.classLevels["Feiticeiro"])
+        assertEquals(7, banishment.classLevels["Mago"])
+        assertEquals("Curto (7,5 m + 1,5 m/2 níveis)", banishment.range)
+        assertEquals("Vontade anula", banishment.savingThrow)
+        assertTrue(banishment.spellResistance)
+        assertTrue(banishment.description.contains("a menos de 9 m"))
+        assertTrue(banishment.description.contains("2 Dados de Vida por nível"))
+        assertFalse(banishment.description.contains("da área"))
+    }
+
+    @Test
     fun missingSeventhLevelPlayerHandbookSpellsArePresentOnceWithCorrectClassLevels() {
         val expected = mapOf(
             "Banimento" to mapOf("Clérigo" to 6, "Feiticeiro" to 7, "Mago" to 7),
