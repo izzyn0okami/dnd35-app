@@ -1052,6 +1052,20 @@ object Dnd35Rules {
             classLevels = mapOf("Feiticeiro" to 8, "Mago" to 8)
         ),
         PresetSpell(
+            name = "Antipatia",
+            level = 8,
+            school = "Encantamento (Compulsão) [Ação mental]",
+            classes = listOf("Druida", "Feiticeiro", "Mago"),
+            castTime = "1 hora",
+            components = "V, G, M/FD",
+            range = "Curto (7,5 m + 1,5 m/2 níveis)",
+            duration = "2 horas/nível (D)",
+            savingThrow = "Vontade parcial",
+            spellResistance = true,
+            description = "Faz um objeto ou local emanar vibrações que repelem um tipo específico de criatura ou criaturas inteligentes de uma tendência definida. Os afetados sentem compulsão para abandonar ou evitar a área ou o objeto e não retornar até o fim da magia. Um alvo que obtém sucesso no teste de resistência pode permanecer na área ou tocar o item, mas sente desconforto que reduz sua Destreza em 4 pontos. Antipatia funciona como contramágica e dissipa Simpatia. Componente material arcano: pedaço de alumínio mergulhado em vinagre.",
+            classLevels = mapOf("Druida" to 9, "Feiticeiro" to 8, "Mago" to 8)
+        ),
+        PresetSpell(
             name = "Nuvem Incendiária",
             level = 8,
             school = "Conjuração (Criação) [Fogo]",

@@ -1298,6 +1298,27 @@ class PresetSpellCatalogTest {
 
 
     @Test
+    fun antipatiaMatchesPlayerHandbookEntry() {
+        val matches = Dnd35Rules.PRESET_SPELLS.filter { it.name == "Antipatia" }
+        assertEquals(1, matches.size)
+        val spell = matches.single()
+
+        assertEquals(8, spell.level)
+        assertEquals("Encantamento (Compulsão) [Ação mental]", spell.school)
+        assertEquals(setOf("Druida", "Feiticeiro", "Mago"), spell.classes.toSet())
+        assertEquals(mapOf("Druida" to 9, "Feiticeiro" to 8, "Mago" to 8), spell.classLevels)
+        assertEquals("1 hora", spell.castTime)
+        assertEquals("V, G, M/FD", spell.components)
+        assertEquals("Curto (7,5 m + 1,5 m/2 níveis)", spell.range)
+        assertEquals("2 horas/nível (D)", spell.duration)
+        assertEquals("Vontade parcial", spell.savingThrow)
+        assertTrue(spell.spellResistance)
+        assertTrue(spell.description.contains("reduz sua Destreza em 4 pontos"))
+        assertTrue(spell.description.contains("dissipa Simpatia"))
+        assertTrue(spell.description.contains("alumínio mergulhado em vinagre"))
+    }
+
+    @Test
     fun nuvemIncendiariaMatchesPlayerHandbookEntry() {
         val matches = Dnd35Rules.PRESET_SPELLS.filter { it.name == "Nuvem Incendiária" }
         assertEquals(1, matches.size)

@@ -1782,3 +1782,15 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - **Contagem nominal:** 202 entradas únicas após integração (201 antes da PR).
 - **Limitação:** não foi realizado teste manual em dispositivo Android.
 - **Próximo passo:** continuar a auditoria de magias de 8º nível, consultando o verbete completo no PDF e evitando duplicidades no catálogo.
+
+
+## 2026-10-24 — Inclusão proposta de Antipatia (8º nível para Feiticeiro/Mago; 9º para Druida)
+
+- **Fonte primária:** PDF brasileiro *D&D 3.5 — Livro do Jogador*, verbete “Antipatia”, p. impressa 173; lista de magias de 8º nível.
+- **Dados conferidos:** Encantamento (Compulsão) [Ação mental]; Druida 9, Feiticeiro/Mago 8; componentes V, G, M/FD; execução de 1 hora; alcance curto (7,5 m + 1,5 m/2 níveis); duração de 2 horas/nível (D); Vontade parcial; resistência à magia sim.
+- **Efeito essencial:** objeto ou local repele um tipo específico de criatura ou criaturas inteligentes de uma tendência definida. Quem obtém sucesso no teste pode permanecer/tocar, mas sofre desconforto que reduz Destreza em 4; funciona como contramágica e dissipa Simpatia. O componente material arcano indicado é alumínio mergulhado em vinagre.
+- **Implementação proposta:** uma entrada no catálogo com nível-base 8 e níveis por classe explicitados (Druida 9; Feiticeiro/Mago 8), para preservar a diferença indicada no Livro do Jogador.
+- **Regressão:** teste dedicado para unicidade, escola, níveis por classe, execução, componentes, alcance, duração, resistência e efeitos distintivos.
+- **Validação:** PR em preparação; CI ainda não executada; sem teste manual em dispositivo Android.
+- **Contagem nominal antes desta proposta:** 202 entradas únicas; a inclusão elevará para 203 se integrada.
+- **Próximo passo:** executar CI e só integrar se testes unitários, compilação Android e geração do APK passarem.
