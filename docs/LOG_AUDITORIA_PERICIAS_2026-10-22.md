@@ -1986,3 +1986,14 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - **Contagem nominal:** 221 entradas de magia após integração (215 antes do lote).
 - **Limitação:** não foi realizado teste manual em dispositivo Android.
 - **Próximo passo:** continuar a auditoria dos feitiços de 8º nível ainda ausentes nas listas de Clérigo e Druida, agrupando as próximas inclusões em um único lote maior sempre que possível.
+
+
+## 2026-10-24 — Lote consolidado de magias de 8º nível (em revisão)
+
+- **Objetivo:** substituir PRs pequenas e desatualizadas por uma única revisão baseada na versão atual de `main`, agrupando 14 magias verificadas no PDF brasileiro do *Livro do Jogador*.
+- **Magias do lote:** Campo Antimagia; Criar Mortos-Vivos Maior; Imunidade à Magia Maior; Ciclone; Controlar Plantas; Forma Animal; Inverter a Gravidade; Invocar Aliado da Natureza VIII; Repelir Metal ou Pedra; Prisão; Palavra de Recordação; Tempestade de Fogo; Terremoto; Símbolo da Morte.
+- **Regras preservadas:** níveis por classe e domínio são registrados separadamente. Simpatia e Ordem já estão integradas no catálogo e não são duplicadas; Limpar a Mente e Proteção contra Magias também foram verificadas como já existentes.
+- **Regressão:** teste consolidado para unicidade, nível-base, escola, níveis de classe/domínio e trechos essenciais das descrições.
+- **CI:** pendente nesta revisão. Não realizar merge até passarem testes unitários, compilação Android e upload do APK de depuração.
+- **Limitação:** não foi realizado teste manual em dispositivo Android.
+- **Nota de fluxo:** PRs anteriores #236 e #237 foram iniciadas sobre uma base anterior; a revisão consolidada foi criada sobre `main` atual para evitar erro de compilação por desatualização e reduzir o número de PRs.
