@@ -2022,6 +2022,6 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 
 - **Lote final:** inclui Clone e Evaporação, ausentes do catálogo, e completa os níveis de domínio Proteção 8 para Limpar a Mente e Magia 8 para Proteção contra Magias.
 - **Auditoria cruzada:** teste de completude compara as listas de 8º nível de Clérigo, Druida e Feiticeiro/Mago do PDF, além dos 21 domínios que possuem magia de 8º nível nesta etapa.
-- **Critério:** validar presença única, nível por classe e domínio; não tratar Ondas da Exaustão como magia de 8º nível, pois o verbete detalhado a classifica como Feiticeiro/Mago 7.
+- **Critério:** validar presença única, nível por classe e domínio; não tratar Ondas da Exaustão como magia de 8º nível, pois o verbete detalhado a classifica como Feiticeiro/Mago 7. A conferência também corrigiu Dedo da Morte para Druida 8 e Feiticeiro/Mago 7, conforme o verbete detalhado.
 - **CI:** pendente; a primeira validação estática encontrou e corrigiu a vírgula separadora ao acrescentar os níveis de domínio. Não integrar antes de testes unitários, compilação Android e upload do APK de depuração passarem.
 - **Limitação:** não foi realizado teste manual em dispositivo Android.
