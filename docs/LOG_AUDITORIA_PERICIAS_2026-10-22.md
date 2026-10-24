@@ -1580,3 +1580,13 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - **Resultado:** `Muralha Prismática` adicionada ao catálogo principal; contagem nominal sobe de 192 para 193 entradas únicas, antes de novas inclusões.
 - **Limitação registrada:** o modelo atual representa resistência à magia como booleano, mas o verbete informa variação por cor. A descrição e o teste não substituem a tabela completa dos sete efeitos; considerar aprimorar o modelo de dados numa etapa separada para representar testes e resistência variáveis.
 - **Próximo passo:** seguir a lista de magias de 8º nível do Livro do Jogador, conferindo cada verbete completo antes de implementar.
+
+
+## 2026-10-24 — Inclusão de Proteção contra Magias (8º nível)
+
+- **Fonte primária:** PDF brasileiro *D&D 3.5 — Livro do Jogador*, verbete “Proteção contra Magias”, p. impressa 233. O verbete registra Abjuração; níveis Magia 8 e Fet/Mag 8; componentes V, G, M, F; execução de 1 ação padrão; alcance toque; alvos até uma criatura por quatro níveis do conjurador; duração de 10 minutos/nível; Vontade anula (inofensiva); resistência à magia sim (inofensiva).
+- **Implementação proposta:** adicionada uma entrada canônica para Feiticeiro 8 e Mago 8. “Magia 8” no livro é nível de domínio, não classe de personagem, portanto não entra no campo `classes`.
+- **Efeito e custos:** descrição registra bônus de resistência +8 contra magias e habilidades similares à magia, excluindo habilidades extraordinárias/sobrenaturais; componente material de diamante de pelo menos 500 PO e foco de diamante de 1.000 PO por criatura.
+- **Regressão:** teste dedicado verifica nome único, nível, escola, classes/níveis, tempo, componentes, alcance, duração, teste de resistência, resistência à magia e os valores/custos essenciais da descrição.
+- **Validação:** CI pendente; sem teste manual em dispositivo Android.
+- **Próximo passo:** revisar a CI antes de integrar; continuar a lista de magias de 8º nível a partir dos verbetes completos do PDF.

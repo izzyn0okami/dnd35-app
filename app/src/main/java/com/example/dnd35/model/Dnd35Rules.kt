@@ -2759,6 +2759,20 @@ object Dnd35Rules {
             classLevels = mapOf("Feiticeiro" to 8, "Mago" to 8)
         ),
         PresetSpell(
+            name = "Proteção contra Magias",
+            level = 8,
+            school = "Abjuração",
+            classes = listOf("Feiticeiro", "Mago"),
+            castTime = "1 ação padrão",
+            components = "V, G, M, F",
+            range = "Toque",
+            duration = "10 minutos/nível",
+            savingThrow = "Vontade anula (inofensiva)",
+            spellResistance = true,
+            description = "Concede ao alvo +8 de bônus de resistência nos testes de resistência contra magias e habilidades similares à magia, mas não contra habilidades extraordinárias ou sobrenaturais. Afeta até uma criatura tocada por quatro níveis do conjurador. Componente material: diamante de pelo menos 500 PO, esmigalhado e espalhado sobre os alvos; foco: diamante de 1.000 PO por criatura, que deve ser carregado durante a duração.",
+            classLevels = mapOf("Feiticeiro" to 8, "Mago" to 8)
+        ),
+        PresetSpell(
             name = "Muralha Prismática",
             level = 8,
             school = "Abjuração",
