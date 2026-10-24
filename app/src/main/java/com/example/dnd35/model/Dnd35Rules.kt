@@ -2434,6 +2434,20 @@ object Dnd35Rules {
             description = "Concede +4 de bônus de aprimoramento na Destreza, aplicando os benefícios normais à CA, aos testes de resistência de Reflexos e aos demais usos do modificador de Destreza. Componente material: um pouco de pelo de gato."
         ),
         PresetSpell(
+            name = "Armadilha",
+            level = 2,
+            school = "Transmutação",
+            classes = listOf("Ranger", "Druida"),
+            castTime = "3 rodadas",
+            components = "V, G, FD",
+            range = "Toque",
+            duration = "Até ser disparada ou destruída",
+            savingThrow = "Nenhum",
+            spellResistance = false,
+            description = "Encanta um círculo mundano de cipó, corda ou tira de couro com 60 cm de diâmetro + 60 cm/nível, que se incorpora aos arredores (CD 23 para localizar com a habilidade encontrar armadilhas). Ao ser acionado, o laço prende um ou mais membros. Se estiver amarrado a uma árvore forte e flexível, ela se curva e depois se endireita, causando 1d6 pontos de dano e erguendo a criatura; sem árvore, prende sem causar dano. Para escapar, exige Arte da Fuga CD 23 ou Força CD 23 como ação de rodada completa. A armadilha tem CA 7 e 5 PV; escapar quebra o laço e dissipa a magia.",
+            classLevels = mapOf("Ranger" to 2, "Druida" to 3)
+        ),
+        PresetSpell(
             name = "Crescer Espinhos",
             level = 2,
             school = "Transmutação",
