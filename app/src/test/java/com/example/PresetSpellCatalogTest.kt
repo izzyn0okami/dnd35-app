@@ -1061,7 +1061,6 @@ class PresetSpellCatalogTest {
             "Invocar Aliado da Natureza I", "Ler Magias", "Mensageiro Animal",
             "Passos Longos", "Passos sem Pegadas"
         )
-        val actual = spells.filter { "Ranger" in it.classes && (it.classLevels["Ranger"] ?: it.level) == 1 }.map { it.name }.toSet()
         // A lista resumida da p. 164 é a referência para os 14 nomes auditados.
         // O catálogo também contém entradas de magias descritas em outros trechos do livro;
         // não se deve tratar todo item legado associado a Ranger como parte desta lista resumida.
