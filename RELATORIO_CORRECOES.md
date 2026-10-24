@@ -146,3 +146,8 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 ### Correção do nível de Evocação de Sombras Maior — Livro do Jogador (2026-10-24)
 - A entrada do livro (PDF digital 207) lista Evocação de Sombras Maior como Fet/Mag 8, não 7. Corrigidos o nível da magia e os níveis por classe no catálogo.
 - A descrição agora registra que reproduz evocações de 7º nível ou inferior e que, se desacreditada como evocação de sombras maior, causa 60% do dano normal. Adicionado teste de regressão.
+
+
+### Correção do nível de Curar Ferimentos Moderados em Massa — Livro do Jogador (2026-10-24)
+- A lista de magias do Livro do Jogador (PDF digital 161–162) coloca Curar Ferimentos Moderados em Massa no 6º nível de Clérigo e Druida, não no 7º. Corrigidos o nível geral e os níveis por classe no catálogo.
+- Adicionado teste de regressão para os níveis e a descrição de cura.
