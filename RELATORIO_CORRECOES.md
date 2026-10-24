@@ -187,3 +187,9 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - A CI revelou expectativas antigas remanescentes nos testes para Padrão Cintilante e Criar Mortos-Vivos Maior; foram corrigidas para os níveis confirmados no livro.
 - A leitura direta da entrada **Símbolo da Morte** no PDF (página do arquivo 247) confirma `Nível: Clr 8, Fet/Mag 6`. Corrigidos os `classLevels` do catálogo e as expectativas dos testes para 6º nível arcano; o campo geral `level = 7` foi preservado por enquanto, pois representa uma única classificação geral e a semântica quando há níveis distintos por classe ainda precisa de decisão explícita.
 - Não integrar a PR até a CI mais recente passar. A falha anterior ocorreu em três testes por expectativas não atualizadas, não por erro de compilação.
+
+
+### Correção após falha da CI — Símbolo da Morte (24/10/2026)
+
+- A execução da CI confirmou que o catálogo ainda mantinha `Feiticeiro 7` e `Mago 7` em **Símbolo da Morte**, embora os testes e a retificação anterior já esperassem 6º nível. A implementação foi corrigida agora para `Clérigo 8, Feiticeiro 6, Mago 6`, conforme a entrada do PDF brasileiro do *Livro do Jogador*.
+- A falha registrada em `seventhLevelArcaneSpellsKeepPerClassLevelsFromPlayerHandbook` e `consolidatedEighthLevelSpellBatchMatchesPlayerHandbook` decorreu dessa divergência real no catálogo. Aguardar nova CI antes de integrar a PR.
