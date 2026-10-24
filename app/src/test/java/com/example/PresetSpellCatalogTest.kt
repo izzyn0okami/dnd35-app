@@ -1974,6 +1974,22 @@ class PresetSpellCatalogTest {
     }
 
     @Test
+    fun visionSpellDescriptionPreservesPlayerHandbookChecksAndXpCost() {
+        val spell = Dnd35Rules.PRESET_SPELLS.single { it.name == "Visão" }
+        assertEquals(7, spell.classLevels["Feiticeiro"])
+        assertEquals(7, spell.classLevels["Mago"])
+        assertEquals("Pessoal", spell.range)
+        assertEquals("Instantânea", spell.duration)
+        assertEquals("Nenhum", spell.savingThrow)
+        assertFalse(spell.spellResistance)
+        assertTrue(spell.description.contains("máximo +25"))
+        assertTrue(spell.description.contains("CD 20"))
+        assertTrue(spell.description.contains("CD é 25"))
+        assertTrue(spell.description.contains("CD é 30"))
+        assertTrue(spell.description.contains("100 XP"))
+    }
+
+    @Test
     fun spellTurningDescriptionUsesOneD4PlusSixSpellLevels() {
         val spell = Dnd35Rules.PRESET_SPELLS.single { it.name == "Reverter Magia" }
         assertEquals("Abjuração", spell.school)
