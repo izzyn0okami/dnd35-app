@@ -141,3 +141,8 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - Refugiar Itens: o texto anterior insinuava que o alvo era necessariamente uma criatura voluntária e deixava os detalhes mecânicos para o livro. Reescrito o resumo para registrar a proteção contra adivinhações, invisibilidade visual, animação suspensa e as limitações de detecção e resistência descritas na entrada do livro (PDF digital 241).
 - Reverter Magia: corrigida a quantidade refletida de “sete a dez níveis” para “1d4+6 níveis”, conforme o resumo do livro e a descrição completa (PDF digital 244).
 - Acrescentados testes de regressão para as duas descrições e seus metadados essenciais. A auditoria das demais magias do lote continua aberta.
+
+
+### Correção do nível de Evocação de Sombras Maior — Livro do Jogador (2026-10-24)
+- A entrada do livro (PDF digital 207) lista Evocação de Sombras Maior como Fet/Mag 8, não 7. Corrigidos o nível da magia e os níveis por classe no catálogo.
+- A descrição agora registra que reproduz evocações de 7º nível ou inferior e que, se desacreditada como evocação de sombras maior, causa 60% do dano normal. Adicionado teste de regressão.
