@@ -1134,3 +1134,13 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Corrigida a lista de classes de Detectar Venenos: Clérigo 0, Druida 0, Mago 0, Feiticeiro 0 e Paladino 1. Ranger não consta no verbete/lista correspondente do livro.
 - Ajustados os componentes para a notação portuguesa do livro (**V, G**). Como já estabelecido na auditoria, a diferença de abreviação S/G não altera a mecânica.
 - Atualizados os testes de catálogo e de níveis por classe. Os nomes antigos deixam de ser usados nas opções predefinidas; fichas já salvas com esses nomes não são migradas automaticamente. Nenhum teste manual em dispositivo Android foi realizado nesta etapa.
+
+
+---
+
+## 2026-10-24 — Deduplicação e nomes canônicos de truques
+
+- Comparados os nomes e efeitos com as listas e descrições do capítulo 11 do Livro do Jogador brasileiro.
+- Removidas quatro entradas não canônicas que duplicavam efeitos já presentes sob os nomes do livro: **Atordoar** (Pasmar), **Espirro Ácido** (Raio de Ácido), **Desestabilizar Mortos-Vivos** (Romper Morto-Vivo) e **Lampejo** (Brilho).
+- Corrigidos os nomes **Toque de Fadiga** para **Toque da Fadiga** e **Purificar Alimentos e Bebidas** para **Purificar Alimentos**. Ajustados os componentes desses verbetes para V, G, M e V, G, respectivamente.
+- Atualizados os testes para impedir o retorno dos aliases e verificar a presença única dos nomes canônicos. As mudanças afetam as opções predefinidas; fichas salvas com nomes antigos não são migradas automaticamente. Nenhum teste manual em dispositivo Android foi realizado nesta etapa.
