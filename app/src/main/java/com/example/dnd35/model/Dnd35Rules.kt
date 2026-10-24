@@ -4110,7 +4110,7 @@ object Dnd35Rules {
             spellResistance = true,
             description = "Encanta um local de até um cubo de 3 m por nível ou um objeto para atrair um tipo específico de criatura inteligente ou criaturas de uma tendência específica. O tipo ou a tendência deve ser definido de modo preciso; subtipos amplos como goblinoides não bastam. Criaturas que falham no teste sentem forte compulsão para permanecer na área ou tocar/possuir o objeto e tentam retornar se forem afastadas. Um sucesso libera a criatura, mas ela deve repetir o teste após 1d6 × 10 minutos. Simpatia serve de contramágica e dissipa antipatia. Componente material: pó de pérolas no valor de 1.500 PO e uma gota de mel.",
             classLevels = mapOf("Druida" to 9, "Feiticeiro" to 8, "Mago" to 8)
-        )
+        ),
         PresetSpell(
             name = "Campo Antimagia",
             level = 8,
