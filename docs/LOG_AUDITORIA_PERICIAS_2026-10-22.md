@@ -1552,3 +1552,12 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - **Regressão:** teste dedicado verifica nome único, nível, escola, classes/níveis, tempo, componentes, alcance, duração, resistência e termos-chave da descrição.
 - **Validação:** aguardando CI da PR; sem teste manual em dispositivo Android.
 - **Próximo passo:** depois de CI verde e integração, continuar a fila de magias de 8º nível consultando cada verbete completo antes de inserir os dados.
+
+
+## Resultado final da PR #210 — 2026-10-24
+
+- **CI:** execução [40062365411](https://github.com/izzyn0okami/dnd35-app/actions/runs/40062365411) concluída com sucesso; testes unitários, compilação Android e publicação do APK passaram.
+- **Integração:** PR [#210](https://github.com/izzyn0okami/dnd35-app/pull/210) integrada por squash no commit `7b507f19324d5b7d7b1c5485221a7d0a353c3de1`.
+- **Resultado:** catálogo principal passa a conter a magia `Limpar a Mente`; contagem estimada passa de 191 para 192 entradas únicas, antes de novas alterações.
+- **Limite:** não houve teste manual em dispositivo Android.
+- **Próximo passo:** continuar a fila das magias de 8º nível, começando por `Muralha Prismática`, com conferência do verbete completo no PDF antes da implementação.
