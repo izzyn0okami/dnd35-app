@@ -1258,3 +1258,12 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - **Curar Ferimentos Leves** permanece Paladino 1, mas é **Ranger 2** no livro; corrigido o mapa por classe e o teste de regressão.
 - A magia chamada na PR #190 de **Suportar Energia** é, no livro, **Resistência à Elementos**. Corrigidos o nome, o nível de referência geral (2), os componentes para **V, G, FD** e o teste de resistência para **Fortitude anula (inofensiva)**; seus níveis por classe são Clérigo 2, Druida 2, Paladino 2, Ranger 1, Mago 2 e Feiticeiro 2. “Suportar Elementos” é outra magia e não deve ser confundida com esta.
 - Esta correção substitui explicitamente os dados incorretos introduzidos na PR #190; a CI precisa passar antes de integrar. Fonte primária: PDF da Biblioteca do usuário, *D&D 3.5 — Livro do Jogador*, pp. 164 e verbete “Resistência à Elementos”.
+
+---
+
+## 2026-10-23 — Cobertura adicional de magias de 1º nível de Ranger
+
+- Incluídas no catálogo **Detectar Armadilhas**, **Invisibilidade Contra Animais** e **Mensageiro Animal**, ausentes na lista de magias pré-definidas.
+- Os níveis por classe seguem as listas e os verbetes do *Livro do Jogador* brasileiro: Detectar Armadilhas e Invisibilidade Contra Animais são Druida 1/Ranger 1; Mensageiro Animal é Bardo 2/Druida 2/Ranger 1.
+- Adicionados testes de regressão para níveis por classe, componentes, alcance/duração, resistência à magia e teste de resistência.
+- Fonte primária: PDF do *Livro do Jogador* fornecido pelo usuário, verbetes dessas três magias. A auditoria de cobertura das listas de Ranger ainda não está concluída.

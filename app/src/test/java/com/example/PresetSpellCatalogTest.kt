@@ -654,4 +654,29 @@ class PresetSpellCatalogTest {
         assertTrue(delayPoison.spellResistance)
     }
 
+
+    @Test
+    fun rangerFirstLevelCatalogIncludesTrapDetectionAnimalInvisibilityAndMessenger() {
+        val spells = Dnd35Rules.PRESET_SPELLS.associateBy { it.name }
+
+        val traps = spells.getValue("Detectar Armadilhas")
+        assertEquals(mapOf("Druida" to 1, "Ranger" to 1), traps.classLevels)
+        assertEquals("18 m", traps.range)
+        assertEquals("Nenhum", traps.savingThrow)
+        assertFalse(traps.spellResistance)
+
+        val invisibility = spells.getValue("Invisibilidade Contra Animais")
+        assertEquals(mapOf("Druida" to 1, "Ranger" to 1), invisibility.classLevels)
+        assertEquals("G, FD", invisibility.components)
+        assertEquals("Vontade anula (objeto)", invisibility.savingThrow)
+        assertTrue(invisibility.spellResistance)
+
+        val messenger = spells.getValue("Mensageiro Animal")
+        assertEquals(mapOf("Bardo" to 2, "Druida" to 2, "Ranger" to 1), messenger.classLevels)
+        assertEquals("V, G, M", messenger.components)
+        assertEquals("1 dia/nível", messenger.duration)
+        assertTrue(messenger.spellResistance)
+    }
+
+
 }
