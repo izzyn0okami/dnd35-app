@@ -1947,13 +1947,15 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - **Próximo passo:** continuar a auditoria das magias restantes de 8º nível do Livro do Jogador, conferindo o PDF e o catálogo antes de cada inclusão.
 
 
-## 2026-10-24 — Símbolo da Insanidade (8º nível; PR proposta)
+## 2026-10-24 — Símbolo da Insanidade integrado (8º nível)
 
-- **PR:** proposta na branch `audit/spell-simbolo-da-insanidade`; aguardando abertura e CI.
+- **PR:** [#233](https://github.com/izzyn0okami/dnd35-app/pull/233), integrada por squash.
+- **Commit de merge:** `0fb4f19d05ea3e8ca0275ef1eed5c194bb46525b`.
 - **Fonte primária:** PDF brasileiro *D&D 3.5 — Livro do Jogador*, verbete “Símbolo da Insanidade”, p. impressa 243; regras compartilhadas conferidas no verbete “Símbolo da Morte”.
-- **Dados propostos:** Encantamento (Compulsão) [Ação Mental]; Clérigo 8, Feiticeiro 8 e Mago 8; componentes V, G, M; execução de 10 minutos; alcance 0 m (veja texto); efeito de runa; Vontade anula; resistência à magia sim.
-- **Efeito essencial:** todas as criaturas na área de até 18 m ficam permanentemente insanas, como pela magia insanidade. Não há limite de pontos de vida; depois de ativado, permanece ativo por 10 minutos por nível de conjurador. O verbete remete às regras de ativação, senha, vínculo do conjurador e desarme de armadilhas de Símbolo da Morte. CD para localizar/desarmar: 25 + nível da magia = 33. Componente material: mercúrio, fósforo, pó de opala negra e diamante, totalizando 5.000 PO.
-- **Regressão proposta:** teste dedicado para unicidade, nível, escola, classes e níveis, ausência de domínio, execução, componentes, alcance, duração, resistência à magia, efeito de insanidade, área, duração ativa, distância de ativação, CD e custo material.
-- **Estado:** não integrada. Aguardar CI completa (testes unitários, compilação Android e upload do APK) antes de merge. Sem teste manual em dispositivo Android.
-- **Contagem nominal:** 214 entradas após integração futura, se a PR passar (213 antes).
-- **Próximo passo:** verificar a CI; só integrar depois de todos os passos obrigatórios passarem.
+- **Dados integrados:** Encantamento (Compulsão) [Ação Mental]; Clérigo 8, Feiticeiro 8 e Mago 8; componentes V, G, M; execução de 10 minutos; alcance 0 m (veja texto); Vontade anula; resistência à magia sim.
+- **Efeito essencial:** todas as criaturas na área de até 18 m ficam permanentemente insanas, como pela magia insanidade. Não há limite de pontos de vida; depois de ativado, permanece ativo por 10 minutos por nível de conjurador. O verbete remete às regras compartilhadas de ativação, senha, vínculo do conjurador e desarme de armadilhas de Símbolo da Morte. CD para localizar/desarmar: 25 + nível da magia = 33. Componente material: mercúrio, fósforo, pó de opala negra e diamante, totalizando 5.000 PO.
+- **Regressão:** teste dedicado para unicidade, nível, escola, classes e níveis, ausência de domínio, execução, componentes, alcance, duração, resistência à magia, efeito de insanidade, área, duração ativa, distância de ativação, CD e custo material.
+- **CI:** [workflow Android Build #40105820673](https://github.com/izzyn0okami/dnd35-app/actions/runs/40105820673) passou integralmente no commit da PR: testes unitários, compilação Android e upload do APK de depuração.
+- **Contagem nominal:** 214 entradas após integração (213 antes).
+- **Limitação:** não foi realizado teste manual em dispositivo Android.
+- **Próximo passo:** continuar a auditoria das magias restantes de 8º nível do Livro do Jogador, conferindo o PDF e o catálogo antes de cada inclusão.
