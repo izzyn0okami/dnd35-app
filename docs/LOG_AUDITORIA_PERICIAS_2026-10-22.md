@@ -1698,3 +1698,11 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - **Regressão:** teste dedicado verifica unicidade, escola, nível, classes, parâmetros e limite/condições de convocação.
 - **Validação:** PR aberta; CI pendente; sem teste manual em dispositivo Android. Não integrar até CI verde.
 - **Contagem antes desta PR:** 198 entradas nominais únicas na main; esta inclusão elevará para 199 se integrada.
+
+
+### Correção de CI — PR #217 — 2026-10-24
+
+- A primeira execução da CI, [40065009247](https://github.com/izzyn0okami/dnd35-app/actions/runs/40065009247), falhou em `PresetSpellCatalogTestKt > initializationError`; 197 testes foram executados e um falhou. A compilação e a geração do APK foram puladas em consequência da falha.
+- **Causa identificada:** o teste `ancoraPlanarMaiorMatchesPlayerHandbookEntry` foi inserido fora da classe de testes, causando erro de inicialização.
+- **Correção aplicada:** movido o teste para dentro da classe `PresetSpellCatalogTest` no commit `be7c8c3d358bc59ba532c1a55d42e3144b1502e7`.
+- **Estado atual:** nova CI [40065441281](https://github.com/izzyn0okami/dnd35-app/actions/runs/40065441281) em andamento. Não integrar até que testes, compilação e APK concluam com sucesso.
