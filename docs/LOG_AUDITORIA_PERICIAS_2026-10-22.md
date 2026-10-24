@@ -1632,3 +1632,22 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - **Validação:** CI pendente; sem teste manual em dispositivo Android. Não integrar até CI verde.
 - **Contagem antes desta PR:** 195 entradas nominais únicas na main; esta inclusão elevará para 196 se integrada.
 - **Próximo passo:** após CI verde e merge, continuar a fila de 8º nível com o próximo verbete ausente, conferindo também as listas de outras classes quando a magia tiver múltiplas associações.
+
+
+## Resultado final da PR #214 — 2026-10-24
+
+- **CI:** execução [40063693462](https://github.com/izzyn0okami/dnd35-app/actions/runs/40063693462) concluída com sucesso; testes unitários, compilação Android e geração do APK passaram.
+- **Integração:** PR [#214](https://github.com/izzyn0okami/dnd35-app/pull/214) integrada por squash no commit `1de592a9f93aad4c184a52da2739d6c27153b95a`.
+- **Resultado:** `Tranca Dimensional` adicionada ao catálogo; total nominal passa de 195 para 196 entradas únicas.
+- **Limitação:** sem teste manual em dispositivo Android.
+- **Próximo passo:** incluir `Discernir Localização`, conferindo as associações de Clérigo, domínio do Conhecimento, Feiticeiro e Mago no verbete completo do Livro do Jogador.
+
+## 2026-10-24 — Inclusão proposta de Discernir Localização (8º nível)
+
+- **Fonte primária:** PDF brasileiro *D&D 3.5 — Livro do Jogador*, verbete completo “Discernir Localização”, p. impressa 195.
+- **Dados conferidos:** Adivinhação; Clérigo 8, domínio do Conhecimento 8, Feiticeiro 8 e Mago 8; V, G, FD; execução de 10 minutos; alcance ilimitado; alvo de uma criatura; duração instantânea; nenhum teste de resistência; resistência à magia não.
+- **Efeito:** revela o nome da criatura ou a localização do objeto, incluindo local específico, comunidade, país/divisão política, continente e plano de existência. Supera os meios normais de proteção contra vidência/localização; efeitos inferiores a Limpar a Mente ou intervenção direta de uma divindade não bloqueiam a descoberta. Para localizar criatura, o conjurador precisa tê-la visto ou possuir item que lhe pertenceu; para localizar objeto, precisa tê-lo tocado ao menos uma vez.
+- **Implementação proposta:** uma entrada com níveis de classe e domínio separados; não tratar Conhecimento como classe.
+- **Regressão:** teste dedicado verifica unicidade, escola, nível, classes, domínio, componentes, execução, alcance, alvo, duração e requisitos de localização.
+- **Validação:** CI pendente; sem teste manual em dispositivo Android. Não integrar até CI verde.
+- **Contagem antes desta PR:** 196 entradas nominais únicas na main; esta inclusão elevará para 197 se integrada.
