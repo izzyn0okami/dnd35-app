@@ -1206,6 +1206,6 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 
 - Consultada a lista de magias de 1º nível de feiticeiro e mago e os verbetes correspondentes no Livro do Jogador brasileiro.
 - Adicionadas **Trancar Portal**, **Disco Flutuante de Tenser**, **Leque Cromático** e **Montaria Arcana**, com nível por classe, componentes, tempo de execução, alcance, duração, resistência à magia e efeito resumido.
-- Na revisão pós-CI, corrigido o nome para **Trancar Portal** e completadas as durações escalonadas de Leque Cromático (2d4/1d4 rodadas conforme DV); os testes de regressão foram ampliados para verificar esses efeitos.
+- Na revisão pós-CI, corrigido o nome para **Trancar Portal** e completadas as durações escalonadas de Leque Cromático (2d4/1d4 rodadas conforme DV). A checagem de duplicatas encontrou uma entrada antiga de Trancar Portal; a nova duplicata foi removida e a entrada canônica existente foi atualizada com os campos mecânicos revisados. Os testes de regressão foram ampliados.
 - Adicionados testes de regressão para unicidade, nível, classes, níveis por classe e campos mecânicos centrais.
 - A auditoria da lista arcana de 1º nível continua incompleta; esta alteração não declara o catálogo integral. Não foi realizado teste manual em dispositivo Android.
