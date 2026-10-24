@@ -1184,7 +1184,7 @@ object Dnd35Rules {
             name = "Âncora Planar Maior",
             level = 8,
             school = "Conjuração (Convocação)",
-            classes = listOf("Feiticeiro", "Mago"),
+            classes = listOf("Feiticeiro", "Mago", "Enganação"),
             castTime = "10 minutos",
             components = "V, G, F",
             range = "Curto (7,5 m + 1,5 m/2 níveis)",
