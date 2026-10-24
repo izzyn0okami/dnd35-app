@@ -11,6 +11,17 @@ class PresetSpellCatalogTest {
     fun catalogIncludesAdditionalPlayerHandbookCantrips() {
         val spells = Dnd35Rules.PRESET_SPELLS
         val names = spells.map { it.name }
+        listOf("Brilho", "Pasmar", "Raio de Ácido", "Romper Morto-Vivo").forEach { name ->
+            assertEquals("Deve existir uma única entrada para $name", 1, spells.count { it.name == name })
+            assertEquals(0, spells.first { it.name == name }.level)
+        }
+        assertEquals(setOf("Bardo", "Druida", "Mago", "Feiticeiro"), spells.first { it.name == "Brilho" }.classes.toSet())
+        assertEquals("V", spells.first { it.name == "Brilho" }.components)
+        assertEquals(setOf("Bardo", "Mago", "Feiticeiro"), spells.first { it.name == "Pasmar" }.classes.toSet())
+        assertEquals("V, G, M", spells.first { it.name == "Pasmar" }.components)
+        assertEquals("Nenhum", spells.first { it.name == "Raio de Ácido" }.savingThrow)
+        assertFalse(spells.first { it.name == "Raio de Ácido" }.spellResistance)
+        assertTrue(spells.first { it.name == "Romper Morto-Vivo" }.spellResistance)
         listOf(
             "Criar Água",
             "Detectar Veneno",
