@@ -1665,3 +1665,14 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - **Mudança de modelo:** `PresetSpell.domainLevels` separa os níveis de domínio dos níveis de classe, com teste específico para Conhecimento 8.
 - **Limitação:** sem teste manual em dispositivo Android.
 - **Próximo passo:** seguir com `Instante de Presciência`, conferindo verbete completo e classes no PDF brasileiro antes da inclusão.
+
+
+## 2026-10-24 — Inclusão proposta de Instante de Presciência (8º nível)
+
+- **Fonte primária:** PDF brasileiro *D&D 3.5 — Livro do Jogador*, verbete “Instante de Presciência”, p. impressa 208.
+- **Dados conferidos:** Adivinhação; Sorte 8, Feiticeiro 8 e Mago 8; V, G; execução de 1 ação padrão; alcance pessoal; alvo você; duração de 1 hora/nível ou até ser dissipada.
+- **Efeito:** concede bônus de intuição igual ao nível de conjurador (máximo +25) para uma única jogada de ataque, teste de habilidade, teste resistido de perícia ou teste de resistência; alternativamente, aplica-se à CA contra um ataque, mesmo se o conjurador estiver surpreendido. Ativação não exige ação, mas precisa ocorrer antes da jogada; após uso, a magia se dissipa. Não pode haver mais de um efeito ativo simultaneamente.
+- **Implementação proposta:** Feiticeiro 8/Mago 8 e domínio da Sorte 8, representado separadamente em `domainLevels`.
+- **Regressão:** teste dedicado verifica nome único, escola, nível, classes/domínio, parâmetros e regras de ativação/uso único.
+- **Validação:** CI pendente; sem teste manual em dispositivo Android. Não integrar até CI verde.
+- **Contagem antes desta PR:** 197 entradas nominais únicas na main; esta inclusão elevará para 198 se integrada.
