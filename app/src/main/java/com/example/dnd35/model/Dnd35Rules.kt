@@ -4124,7 +4124,7 @@ object Dnd35Rules {
             savingThrow = "Nenhum",
             spellResistance = true,
             description = "Cria uma barreira invisível móvel, em uma emanação de 3 m de raio centrada no conjurador, que impede a passagem da maioria dos efeitos mágicos e suprime itens mágicos em seu interior. Efeitos suprimidos não são dissipados; o tempo dentro do campo continua contando para sua duração. Criaturas invocadas e mortos-vivos incorpóreos desaparecem ao entrar. A resistência à magia depende do efeito, conforme o texto da magia.",
-            classLevels = mapOf("Clérigo" to 8, "Feiticeiro" to 7, "Mago" to 7),
+            classLevels = mapOf("Clérigo" to 8, "Feiticeiro" to 6, "Mago" to 6),
             domainLevels = mapOf("Magia" to 6, "Proteção" to 6)
         ),
         PresetSpell(
