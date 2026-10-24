@@ -1036,6 +1036,63 @@ object Dnd35Rules {
 
     val PRESET_SPELLS = listOf(
         // CÍRCULO 0 (TRUQUES)
+        // Truques adicionais conferidos no Livro do Jogador brasileiro
+        PresetSpell(
+            name = "Brilho",
+            level = 0,
+            school = "Evocação [Fogo]",
+            classes = listOf("Bardo", "Druida", "Mago", "Feiticeiro"),
+            castTime = "1 ação padrão",
+            components = "V",
+            range = "Curto (7,5 m + 1,5 m/2 níveis)",
+            duration = "Instantânea",
+            savingThrow = "Fortitude anula",
+            spellResistance = true,
+            description = "Cria uma explosão de luz; uma criatura cuja face seja diretamente iluminada fica ofuscada por 1 minuto se falhar no teste de Fortitude.",
+            classLevels = mapOf("Bardo" to 0, "Druida" to 0, "Mago" to 0, "Feiticeiro" to 0)
+        ),
+        PresetSpell(
+            name = "Pasmar",
+            level = 0,
+            school = "Encantamento (Compulsão) [Ação Mental]",
+            classes = listOf("Bardo", "Mago", "Feiticeiro"),
+            castTime = "1 ação padrão",
+            components = "V, G, M",
+            range = "Curto (7,5 m + 1,5 m/2 níveis)",
+            duration = "1 rodada",
+            savingThrow = "Vontade anula",
+            spellResistance = true,
+            description = "Um humanóide com 4 Dados de Vida ou menos perde sua próxima ação; criaturas com 5 DV ou mais não são afetadas.",
+            classLevels = mapOf("Bardo" to 0, "Mago" to 0, "Feiticeiro" to 0)
+        ),
+        PresetSpell(
+            name = "Raio de Ácido",
+            level = 0,
+            school = "Conjuração (Criação) [Ácido]",
+            classes = listOf("Mago", "Feiticeiro"),
+            castTime = "1 ação padrão",
+            components = "V, G",
+            range = "Curto (7,5 m + 1,5 m/2 níveis)",
+            duration = "Instantânea",
+            savingThrow = "Nenhum",
+            spellResistance = false,
+            description = "Dispara um projétil de ácido; exige ataque de toque à distância e causa 1d3 pontos de dano por ácido.",
+            classLevels = mapOf("Mago" to 0, "Feiticeiro" to 0)
+        ),
+        PresetSpell(
+            name = "Romper Morto-Vivo",
+            level = 0,
+            school = "Necromancia",
+            classes = listOf("Mago", "Feiticeiro"),
+            castTime = "1 ação padrão",
+            components = "V, G",
+            range = "Curto (7,5 m + 1,5 m/2 níveis)",
+            duration = "Instantânea",
+            savingThrow = "Nenhum",
+            spellResistance = true,
+            description = "Dispara um raio de energia positiva; exige ataque de toque à distância e causa 1d6 pontos de dano se atingir um morto-vivo.",
+            classLevels = mapOf("Mago" to 0, "Feiticeiro" to 0)
+        ),
         PresetSpell(
             name = "Detectar Magia",
             level = 0,
