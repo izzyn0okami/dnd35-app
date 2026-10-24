@@ -3995,5 +3995,19 @@ object Dnd35Rules {
             description = "Cria um padrão de cores reluzentes em uma dispersão de 6 m de raio. Afeta um total de Dados de Vida de criaturas igual ao nível de conjurador, até o máximo de 20; as criaturas com menos DV são afetadas primeiro e, entre criaturas com DV iguais, as mais próximas da origem. DV insuficientes para afetar uma criatura são desperdiçados. Criaturas com 6 DV ou menos ficam inconscientes por 1d4 rodadas, depois atordoadas por 1d4 rodadas e então confusas por 1d4 rodadas; com 7 a 12 DV ficam atordoadas por 1d4 rodadas e depois confusas por 1d4 rodadas; com 13 DV ou mais ficam confusas por 1d4 rodadas. Criaturas que não conseguem enxergar não são afetadas. Componente material: pequeno prisma de cristal.",
             classLevels = mapOf("Feiticeiro" to 8, "Mago" to 8)
         ),
+        PresetSpell(
+            name = "Símbolo da Insanidade",
+            level = 8,
+            school = "Encantamento (Compulsão) [Ação Mental]",
+            classes = listOf("Clérigo", "Feiticeiro", "Mago"),
+            castTime = "10 minutos",
+            components = "V, G, M",
+            range = "0 m (veja texto)",
+            duration = "10 minutos/nível ou até ser ativado; veja texto",
+            savingThrow = "Vontade anula",
+            spellResistance = true,
+            description = "Inscreve uma runa de poder numa superfície. Funciona como símbolo da morte, mas todas as criaturas na área de até 18 m ficam permanentemente insanas, como pela magia insanidade. Não há limite de pontos de vida para os alvos; depois de ativado, permanece ativo durante 10 minutos por nível de conjurador. O símbolo é visível e legível a até 18 m, deve ficar numa superfície plana e proeminente e permanece inativo até ser ativado. O conjurador define na conjuração as condições de ativação, como olhar para a runa, lê-la, tocá-la ou passar sobre ela; uma criatura a mais de 16 m não consegue ativá-la. As condições não podem ser alteradas depois. Uma senha pode impedir a ativação e tornar criaturas que a conheçam imunes enquanto estiverem a menos de 18 m. O conjurador é vinculado automaticamente ao próprio símbolo e não pode ativá-lo por acidente. A magia pode ser dissipada com dissipar magia lançado diretamente sobre a runa; apagar não a afeta, e destruir a superfície a ativa. Um ladino pode localizar e desarmar a armadilha com Procurar e Operar Mecanismo, CD 33. Componente material: mercúrio e fósforo, além de pó de opala negra e diamante no valor total de 5.000 PO.",
+            classLevels = mapOf("Clérigo" to 8, "Feiticeiro" to 8, "Mago" to 8)
+        ),
     )
 }
