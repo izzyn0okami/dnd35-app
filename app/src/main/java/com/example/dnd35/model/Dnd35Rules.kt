@@ -2946,9 +2946,10 @@ object Dnd35Rules {
             duration = "Instantânea",
             savingThrow = "Fortitude parcial",
             spellResistance = true,
-            description = "Aponta para um ser vivo e tenta extirpar sua vida instantaneamente. Se falhar, morre na hora; se passar, sofre 3d6+nível."
+            description = "Aponta para um ser vivo e tenta extirpar sua vida instantaneamente. Se falhar, morre na hora; se passar, sofre 3d6+nível.",
             classLevels = mapOf("Mago" to 7, "Feiticeiro" to 7, "Druida" to 8)
-        ),        PresetSpell(
+        ),
+        PresetSpell(
             name = "Parar o Tempo (Time Stop)",
             level = 9,
             school = "Transmutação",
