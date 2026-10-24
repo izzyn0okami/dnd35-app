@@ -1163,4 +1163,26 @@ class PresetSpellCatalogTest {
         assertTrue(spell.description.contains("esferas de cristal"))
     }
 
+
+    @Test
+    fun trancaDimensionalMatchesPlayerHandbookEntry() {
+        val matches = Dnd35Rules.PRESET_SPELLS.filter { it.name == "Tranca Dimensional" }
+        assertEquals(1, matches.size)
+        val spell = matches.single()
+
+        assertEquals(8, spell.level)
+        assertEquals("Abjuração", spell.school)
+        assertEquals(setOf("Clérigo", "Feiticeiro", "Mago"), spell.classes.toSet())
+        assertEquals(mapOf("Clérigo" to 8, "Feiticeiro" to 8, "Mago" to 8), spell.classLevels)
+        assertEquals("1 ação padrão", spell.castTime)
+        assertEquals("V, G", spell.components)
+        assertEquals("Médio (30 m + 3 m/nível)", spell.range)
+        assertEquals("1 dia/nível", spell.duration)
+        assertEquals("Nenhum", spell.savingThrow)
+        assertFalse(spell.spellResistance)
+        assertTrue(spell.description.contains("6 m de raio"))
+        assertTrue(spell.description.contains("teletransporte"))
+        assertTrue(spell.description.contains("forma astral ou etérea"))
+    }
+
 }
