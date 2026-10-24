@@ -637,8 +637,8 @@ class PresetSpellCatalogTest {
         val spells = Dnd35Rules.PRESET_SPELLS.associateBy { it.name }
 
         val resistEnergy = spells.getValue("Suportar Energia")
-        assertEquals(setOf("Clérigo", "Druida", "Ranger", "Mago", "Feiticeiro"), resistEnergy.classes.toSet())
-        assertEquals(mapOf("Clérigo" to 2, "Druida" to 2, "Ranger" to 1, "Mago" to 2, "Feiticeiro" to 2), resistEnergy.classLevels)
+        assertEquals(setOf("Clérigo", "Druida", "Paladino", "Ranger", "Mago", "Feiticeiro"), resistEnergy.classes.toSet())
+        assertEquals(mapOf("Clérigo" to 2, "Druida" to 2, "Paladino" to 2, "Ranger" to 1, "Mago" to 2, "Feiticeiro" to 2), resistEnergy.classLevels)
         assertEquals("10 minutos/nível", resistEnergy.duration)
         assertTrue(resistEnergy.spellResistance)
 
