@@ -1791,6 +1791,9 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - **Efeito essencial:** objeto ou local repele um tipo específico de criatura ou criaturas inteligentes de uma tendência definida. Quem obtém sucesso no teste pode permanecer/tocar, mas sofre desconforto que reduz Destreza em 4; funciona como contramágica e dissipa Simpatia. O componente material arcano indicado é alumínio mergulhado em vinagre.
 - **Implementação proposta:** uma entrada no catálogo com nível-base 8 e níveis por classe explicitados (Druida 9; Feiticeiro/Mago 8), para preservar a diferença indicada no Livro do Jogador.
 - **Regressão:** teste dedicado para unicidade, escola, níveis por classe, execução, componentes, alcance, duração, resistência e efeitos distintivos.
-- **Validação:** PR em preparação; CI ainda não executada; sem teste manual em dispositivo Android.
-- **Contagem nominal antes desta proposta:** 202 entradas únicas; a inclusão elevará para 203 se integrada.
-- **Próximo passo:** executar CI e só integrar se testes unitários, compilação Android e geração do APK passarem.
+- **Validação:** CI [40084864510](https://github.com/izzyn0okami/dnd35-app/actions/runs/40084864510) concluída com sucesso; testes unitários, compilação Android e upload do APK de depuração passaram.
+- **Integração:** PR [#221](https://github.com/izzyn0okami/dnd35-app/pull/221) integrada por squash no commit `ee8c2b8882cb5239364609ebc6dc7bf4f044311f`.
+- **Resultado:** Antipatia adicionada ao catálogo; níveis por classe preservam Druida 9 e Feiticeiro/Mago 8.
+- **Contagem nominal:** 203 entradas únicas após integração (202 antes da PR).
+- **Limitação:** não foi realizado teste manual em dispositivo Android.
+- **Próximo passo:** continuar com as magias restantes de 8º nível do Livro do Jogador; verificar cada verbete e o catálogo antes de nova inclusão.
