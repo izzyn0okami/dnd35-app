@@ -1538,6 +1538,7 @@ object Dnd35Rules {
         ),
 
         // Magias adicionais de 1º círculo do Livro do Jogador — lote 1
+        // Magias de 1º nível que faltavam nas listas do Livro do Jogador
         PresetSpell(
             name = "Alarme",
             level = 1,
@@ -2657,7 +2658,8 @@ object Dnd35Rules {
             duration = "Concentração",
             savingThrow = "Vontade descrê (se interagir)",
             spellResistance = false,
-            description = "Cria uma imagem visual sem som. A ilusão não produz som, cheiro, textura nem temperatura e desaparece quando a concentração termina."
+            description = "Cria uma imagem visual sem som. A ilusão não produz som, cheiro, textura nem temperatura e desaparece quando a concentração termina.",
+            classLevels = mapOf("Bardo" to 1, "Mago" to 1, "Feiticeiro" to 1)
         ),
 
 
@@ -2726,7 +2728,8 @@ object Dnd35Rules {
             duration = "1 minuto/nível",
             savingThrow = "Vontade descrê (se interagir)",
             spellResistance = false,
-            description = "Faz a voz do conjurador parecer vir de outro lugar ou objeto dentro do alcance."
+            description = "Faz a voz do conjurador parecer vir de outro lugar ou objeto dentro do alcance.",
+            classLevels = mapOf("Bardo" to 1, "Mago" to 1, "Feiticeiro" to 1)
         ),
         PresetSpell(
             name = "Aura Mágica de Nystul",
@@ -2739,7 +2742,8 @@ object Dnd35Rules {
             duration = "1 dia/nível",
             savingThrow = "Nenhum",
             spellResistance = false,
-            description = "Altera a aura mágica percebida de um objeto, podendo fazê-lo parecer mágico, não mágico ou associado a uma escola específica."
+            description = "Altera a aura mágica percebida de um objeto, podendo fazê-lo parecer mágico, não mágico ou associado a uma escola específica.",
+            classLevels = mapOf("Bardo" to 1, "Mago" to 1, "Feiticeiro" to 1)
         ),
 
 
@@ -2754,7 +2758,8 @@ object Dnd35Rules {
             duration = "Instantânea",
             savingThrow = "Nenhum",
             spellResistance = false,
-            description = "Remove escrita mágica ou mundana de um pergaminho ou superfície, conforme as condições e limitações da magia."
+            description = "Remove escrita mágica ou mundana de um pergaminho ou superfície, conforme as condições e limitações da magia.",
+            classLevels = mapOf("Bardo" to 1, "Mago" to 1, "Feiticeiro" to 1)
         ),
         PresetSpell(
             name = "Toque Gélido",

@@ -1144,3 +1144,23 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Removidas quatro entradas não canônicas que duplicavam efeitos já presentes sob os nomes do livro: **Atordoar** (Pasmar), **Espirro Ácido** (Raio de Ácido), **Desestabilizar Mortos-Vivos** (Romper Morto-Vivo) e **Lampejo** (Brilho).
 - Corrigidos os nomes **Toque de Fadiga** para **Toque da Fadiga** e **Purificar Alimentos e Bebidas** para **Purificar Alimentos**. Ajustados os componentes desses verbetes para V, G, M e V, G, respectivamente.
 - Atualizados os testes para impedir o retorno dos aliases e verificar a presença única dos nomes canônicos. As mudanças afetam as opções predefinidas; fichas salvas com nomes antigos não são migradas automaticamente. Nenhum teste manual em dispositivo Android foi realizado nesta etapa.
+
+
+---
+
+## 2026-10-24 — Magias de 1º nível ausentes nas listas de bardo
+
+- Confrontada a lista de magias de 1º nível de Bardo do capítulo 11 com o catálogo predefinido do aplicativo.
+- Adicionadas **Apagar**, **Aura Mágica de Nystul**, **Imagem Silenciosa** e **Ventriloquismo**, ausentes do catálogo, com níveis por classe, componentes, alcance, duração, resistência e resumo dos efeitos conforme os verbetes do livro.
+- Acrescentados testes de regressão para existência única, nível, classes e campos importantes.
+- A expansão é parcial: ainda é necessário confrontar as listas de 1º nível das demais classes e níveis superiores. Nenhum teste manual em dispositivo Android foi realizado nesta etapa.
+
+
+---
+
+## Complemento — correção da PR #183 após falhas do CI
+
+- O CI detectou que **Apagar**, **Aura Mágica de Nystul**, **Imagem Silenciosa** e **Ventriloquismo** já existiam no catálogo. A proposta inicial criou duplicatas, portanto não deve ser integrada como estava.
+- Removidas as quatro novas duplicatas e aproveitadas as entradas preexistentes, adicionando nelas os níveis por classe ausentes.
+- Ajustados os testes para validar as entradas únicas e respeitar a notação dos componentes já registrada no catálogo.
+- A PR #183 permanece aberta até o CI ser executado novamente e passar.

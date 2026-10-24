@@ -8,6 +8,24 @@ import org.junit.Test
 
 class PresetSpellCatalogTest {
     @Test
+    fun catalogIncludesMissingFirstLevelBardSpells() {
+        val spells = Dnd35Rules.PRESET_SPELLS
+        val expectedClasses = setOf("Bardo", "Mago", "Feiticeiro")
+        listOf("Apagar", "Aura Mágica de Nystul", "Imagem Silenciosa", "Ventriloquismo").forEach { name ->
+            val spell = spells.single { it.name == name }
+            assertEquals(1, spell.level)
+            assertEquals(expectedClasses, spell.classes.toSet())
+            assertEquals(1, spell.classLevels["Bardo"])
+            assertEquals(1, spell.classLevels["Mago"])
+            assertEquals(1, spell.classLevels["Feiticeiro"])
+        }
+        assertEquals("V, S", spells.single { it.name == "Apagar" }.components)
+        assertTrue(spells.single { it.name == "Imagem Silenciosa" }.components.startsWith("V, S, F"))
+        assertTrue(spells.single { it.name == "Ventriloquismo" }.components.startsWith("V, F"))
+        assertFalse(spells.single { it.name == "Ventriloquismo" }.spellResistance)
+    }
+
+    @Test
     fun cantripCatalogUsesCanonicalPlayerHandbookNames() {
         val spells = Dnd35Rules.PRESET_SPELLS
         listOf("Atordoar", "Espirro Ácido", "Desestabilizar Mortos-Vivos", "Lampejo",
