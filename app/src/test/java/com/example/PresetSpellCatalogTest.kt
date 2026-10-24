@@ -679,4 +679,37 @@ class PresetSpellCatalogTest {
     }
 
 
+
+    @Test
+    fun rangerSecondLevelCatalogIncludesSixVerifiedSpells() {
+        val spells = Dnd35Rules.PRESET_SPELLS.associateBy { it.name }
+
+        val speakWithPlants = spells.getValue("Falar com Plantas")
+        assertEquals(mapOf("Bardo" to 4, "Druida" to 3, "Ranger" to 2), speakWithPlants.classLevels)
+        assertEquals("Pessoal", speakWithPlants.range)
+
+        val holdAnimal = spells.getValue("Imobilizar Animal")
+        assertEquals(mapOf("Druida" to 2, "Ranger" to 2), holdAnimal.classLevels)
+        assertEquals("Vontade anula", holdAnimal.savingThrow)
+        assertTrue(holdAnimal.spellResistance)
+
+        val windWall = spells.getValue("Muralha de Vento")
+        assertEquals(mapOf("Clérigo" to 3, "Druida" to 3, "Ranger" to 2, "Mago" to 3, "Feiticeiro" to 3), windWall.classLevels)
+        assertEquals("V, G, M/FD", windWall.components)
+        assertEquals("Nenhum; veja texto", windWall.savingThrow)
+
+        val barkskin = spells.getValue("Pele de Árvore")
+        assertEquals(mapOf("Druida" to 2, "Ranger" to 2), barkskin.classLevels)
+        assertEquals("V, G, FD", barkskin.components)
+
+        val protection = spells.getValue("Proteção Contra Elementos")
+        assertEquals(mapOf("Clérigo" to 3, "Druida" to 3, "Ranger" to 2, "Mago" to 3, "Feiticeiro" to 3), protection.classLevels)
+        assertEquals("Fortitude anula (inofensiva)", protection.savingThrow)
+
+        val owlWisdom = spells.getValue("Sabedoria da Coruja")
+        assertEquals(mapOf("Clérigo" to 2, "Druida" to 2, "Paladino" to 2, "Ranger" to 2, "Mago" to 2, "Feiticeiro" to 2), owlWisdom.classLevels)
+        assertEquals("V, G, M/FD", owlWisdom.components)
+    }
+
+
 }
