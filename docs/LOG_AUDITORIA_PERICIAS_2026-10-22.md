@@ -1959,3 +1959,16 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - **Contagem nominal:** 214 entradas após integração (213 antes).
 - **Limitação:** não foi realizado teste manual em dispositivo Android.
 - **Próximo passo:** continuar a auditoria das magias restantes de 8º nível do Livro do Jogador, conferindo o PDF e o catálogo antes de cada inclusão.
+
+
+## 2026-10-24 — Conferência de Proteção contra Magias; Invocar Criaturas VIII (8º nível; PR proposta)
+
+- **Correção de auditoria:** uma busca inicial sensível a maiúsculas/minúsculas não encontrou “Proteção contra Magias”, mas a verificação exata confirmou que a magia já está no catálogo, com teste dedicado, desde a PR [#212](https://github.com/izzyn0okami/dnd35-app/pull/212), integrada no commit `f6ab8726486943b68f8e3cad2d7f2374b80827fc`. Não abrir PR duplicada para essa magia.
+- **PR proposta:** branch `audit/spell-invocar-criaturas-viii`; aguardar abertura e CI.
+- **Fonte primária:** PDF brasileiro *D&D 3.5 — Livro do Jogador*, verbete “Invocar Criaturas VIII”, p. impressa 211, usando as regras comuns de “Invocar Criaturas I”.
+- **Dados propostos:** Conjuração (Invocação) [veja texto de Invocar Criaturas I]; Clérigo 8, Feiticeiro 8 e Mago 8; componentes V, G, F/FD; execução de 1 rodada; alcance curto (7,5 m + 1,5 m/2 níveis); efeito de uma ou mais criaturas invocadas; duração 1 rodada/nível (D); nenhum teste de resistência; resistência à magia não.
+- **Efeito essencial:** invoca uma criatura da lista de 8º nível, 1d3 criaturas do mesmo tipo da lista de 7º nível ou 1d4+1 criaturas do mesmo tipo de nível inferior, todas a menos de 9 m entre si. A criatura age imediatamente no turno do conjurador. Não pode invocar/conjurar outras criaturas nem usar teletransporte ou viagem planar, e não pode ser invocada num ambiente que não a suporte. O tipo escolhido pode determinar descritores de tendência, conforme as regras gerais. Foco arcano: pequena bolsa e pequena vela, que não precisa estar acesa.
+- **Regressão proposta:** teste dedicado para unicidade, nível, escola, classes/níveis, ausência de domínio, execução, componentes, alcance, duração, resistência, escalas de invocação, distância entre criaturas e foco.
+- **Estado:** não integrada. Aguardar CI completa (testes unitários, compilação Android e upload do APK) antes de merge. Sem teste manual em dispositivo Android.
+- **Contagem nominal:** 215 entradas após integração futura, se a PR passar (214 antes).
+- **Próximo passo:** verificar a CI; só integrar depois de todos os passos obrigatórios passarem.
