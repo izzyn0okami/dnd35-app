@@ -1245,3 +1245,6 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Corrigido **Curar Ferimentos Leves**: Ranger 1, não Ranger 2.
 - Ajustados componentes de foco divino e o teste de resistência de **Virtude** conforme a referência; adicionados testes de regressão para níveis por classe e presença única.
 - Referências de conferência: *Livro do Jogador* brasileiro, capítulo de Magias/listas de Paladino e Ranger; listas e verbetes SRD D&D 3.5 usadas como verificação cruzada. A auditoria de cobertura de outras classes e níveis continua em andamento; nenhum teste manual em dispositivo Android foi realizado nesta etapa.
+
+
+- **Complemento da auditoria de Ranger:** incluídas **Suportar Energia** (Ranger 1; Clérigo/Druida/Mago/Feiticeiro 2) e **Retardar Envenenamento** (Ranger 1; Clérigo/Druida/Paladino 2), ambas ausentes do catálogo. **Detectar Venenos** também foi corrigida para incluir Ranger 1; o teste anterior que o excluía contrariava a lista de magias do Livro do Jogador.
