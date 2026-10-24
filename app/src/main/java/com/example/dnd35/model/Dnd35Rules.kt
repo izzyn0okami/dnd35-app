@@ -4603,7 +4603,7 @@ object Dnd35Rules {
         ),
         PresetSpell(
             name = "Evocação de Sombras Maior",
-            level = 7,
+            level = 8,
             school = "Ilusão (Sombra)",
             classes = listOf("Feiticeiro", "Mago"),
             castTime = "1 ação padrão",
@@ -4612,8 +4612,8 @@ object Dnd35Rules {
             duration = "Veja texto",
             savingThrow = "Vontade desacredita (se interagir)",
             spellResistance = false,
-            description = "Cria uma ilusão parcialmente real, formada de sombras, capaz de reproduzir efeitos de evocação de até 7º nível. Criaturas que reconheçam a natureza ilusória podem reduzir ou ignorar os efeitos conforme o teste de resistência e as regras da magia.",
-            classLevels = mapOf("Feiticeiro" to 7, "Mago" to 7)
+            description = "Cria uma versão quase real de uma magia de evocação de feiticeiro ou mago de 7º nível ou inferior. Se uma criatura reconhecer a ilusão como evocação de sombras maior, o dano causado por ela é reduzido a 60% do normal; efeitos sem dano seguem as regras da magia original e do teste para desacreditar.",
+            classLevels = mapOf("Feiticeiro" to 8, "Mago" to 8)
         ),
         PresetSpell(
             name = "Curar Ferimentos Moderados em Massa",
