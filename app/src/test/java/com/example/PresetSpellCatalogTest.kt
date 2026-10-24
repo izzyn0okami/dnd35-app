@@ -416,7 +416,7 @@ class PresetSpellCatalogTest {
         assertEquals(1, spell.classLevels.getValue("Druida"))
         assertEquals(1, spell.classLevels.getValue("Bardo"))
         assertEquals(1, spell.classLevels.getValue("Paladino"))
-        assertEquals(2, spell.classLevels.getValue("Ranger"))
+        assertEquals(1, spell.classLevels.getValue("Ranger"))
     }
 
 
