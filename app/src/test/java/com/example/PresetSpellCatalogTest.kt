@@ -975,7 +975,7 @@ class PresetSpellCatalogTest {
         assertEquals("Abjuração", spells.single { it.name == "Dificultar Detecção" }.school)
         assertEquals("Conjuração (Invocação)", spells.single { it.name == "Invocar Aliado da Natureza IV" }.school)
         assertEquals("Abjuração", spells.single { it.name == "Movimentação Livre" }.school)
-        assertEquals(1, expected.keys.sumOf { name -> spells.count { it.name == name } })
+        assertEquals(expected.size, expected.keys.sumOf { name -> spells.count { it.name == name } })
     }
 
 }
