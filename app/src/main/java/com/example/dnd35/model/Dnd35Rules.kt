@@ -2759,6 +2759,20 @@ object Dnd35Rules {
             classLevels = mapOf("Feiticeiro" to 8, "Mago" to 8)
         ),
         PresetSpell(
+            name = "Muralha Prismática",
+            level = 8,
+            school = "Abjuração",
+            classes = listOf("Feiticeiro", "Mago"),
+            castTime = "1 ação padrão",
+            components = "V, G",
+            range = "Curto (7,5 m + 1,5 m/2 níveis)",
+            duration = "10 minutos/nível (D)",
+            savingThrow = "Veja texto",
+            spellResistance = true,
+            description = "Cria uma parede vertical opaca de luz em sete cores, cada uma com efeitos defensivos e formas específicas de anulação. Criaturas com menos de 8 DV que olhem para a muralha a menos de 6 m ficam cegas por 2d4 rodadas. A muralha pode ser atravessada pelo conjurador sem dano; testes de resistência e resistência à magia variam conforme a cor. Dissipar magia comum ou maior não a dissipa; consulte o verbete do Livro do Jogador para os efeitos e contramedidas de cada cor.",
+            classLevels = mapOf("Feiticeiro" to 8, "Mago" to 8)
+        ),
+        PresetSpell(
             name = "Ressurreição Verdadeira",
             level = 9,
             school = "Conjuração",
