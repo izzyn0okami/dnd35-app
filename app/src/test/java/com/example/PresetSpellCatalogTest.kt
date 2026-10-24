@@ -743,4 +743,33 @@ class PresetSpellCatalogTest {
         assertTrue(summonII.description.contains("mesmo tipo"))
     }
 
+
+    @Test
+    fun rangerSecondLevelCatalogUsesCanonicalCatAgilityAndIncludesThornGrowth() {
+        val spells = Dnd35Rules.PRESET_SPELLS
+        val byName = spells.associateBy { it.name }
+
+        assertFalse(byName.containsKey("Graça Felina"))
+        val catAgility = byName.getValue("Agilidade do Gato")
+        assertEquals(1, spells.count { it.name == "Agilidade do Gato" })
+        assertEquals(2, catAgility.level)
+        assertEquals(mapOf("Bardo" to 2, "Druida" to 2, "Ranger" to 2, "Feiticeiro" to 2, "Mago" to 2), catAgility.classLevels)
+        assertEquals("V, G, M", catAgility.components)
+        assertEquals("Toque", catAgility.range)
+        assertEquals("1 min/nível", catAgility.duration)
+        assertEquals("Vontade anula (inofensiva)", catAgility.savingThrow)
+        assertTrue(catAgility.spellResistance)
+
+        val thornGrowth = byName.getValue("Crescer Espinhos")
+        assertEquals(2, thornGrowth.level)
+        assertEquals(mapOf("Druida" to 3, "Ranger" to 2), thornGrowth.classLevels)
+        assertEquals("V, G, FD", thornGrowth.components)
+        assertEquals("Médio (30 m + 3 m/nível)", thornGrowth.range)
+        assertEquals("1 hora/nível (D)", thornGrowth.duration)
+        assertEquals("Reflexos parcial", thornGrowth.savingThrow)
+        assertTrue(thornGrowth.spellResistance)
+        assertTrue(thornGrowth.description.contains("1d4"))
+        assertTrue(thornGrowth.description.contains("Operar Mecanismo"))
+    }
+
 }
