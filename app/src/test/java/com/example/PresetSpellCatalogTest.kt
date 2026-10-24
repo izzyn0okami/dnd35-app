@@ -353,8 +353,8 @@ class PresetSpellCatalogTest {
         val spells = Dnd35Rules.PRESET_SPELLS.associateBy { it.name }
         val holdPortal = spells.getValue("Trancar Portal")
         assertEquals(setOf("Mago", "Feiticeiro"), holdPortal.classes.toSet())
-        assertEquals("Médio (30m + 3m/nível)", holdPortal.range)
-        assertEquals("1 minuto/nível", holdPortal.duration)
+        assertEquals("Médio (30 m + 3 m/nível)", holdPortal.range)
+        assertEquals("1 minuto/nível (D)", holdPortal.duration)
         assertFalse(holdPortal.spellResistance)
 
         val ventriloquism = spells.getValue("Ventriloquismo")
@@ -543,6 +543,40 @@ class PresetSpellCatalogTest {
         assertTrue(names.contains("Constrição"))
         assertTrue(names.contains("Presa Mágica"))
         assertTrue(names.contains("Invocar Aliado da Natureza I"))
+    }
+
+
+
+    @Test
+    fun catalogIncludesAdditionalFirstLevelPlayerHandbookSpells() {
+        val spells = Dnd35Rules.PRESET_SPELLS
+        val byName = spells.associateBy { it.name }
+        val additions = listOf("Trancar Portal", "Disco Flutuante de Tenser", "Leque Cromático", "Montaria Arcana")
+        additions.forEach { name ->
+            assertEquals("Deve existir uma única entrada para $name", 1, spells.count { it.name == name })
+            assertEquals(1, byName.getValue(name).level)
+            assertEquals(setOf("Mago", "Feiticeiro"), byName.getValue(name).classes.toSet())
+            assertEquals(1, byName.getValue(name).classLevels.getValue("Mago"))
+            assertEquals(1, byName.getValue(name).classLevels.getValue("Feiticeiro"))
+        }
+        val closePortal = byName.getValue("Trancar Portal")
+        assertEquals("V", closePortal.components)
+        assertEquals("1 minuto/nível (D)", closePortal.duration)
+        assertFalse(closePortal.spellResistance)
+        val disk = byName.getValue("Disco Flutuante de Tenser")
+        assertEquals("V, G, M", disk.components)
+        assertEquals("1 hora/nível", disk.duration)
+        assertFalse(disk.spellResistance)
+        val colorSpray = byName.getValue("Leque Cromático")
+        assertEquals("4,5 m", colorSpray.range)
+        assertEquals("Vontade anula", colorSpray.savingThrow)
+        assertTrue(colorSpray.spellResistance)
+        assertTrue(colorSpray.description.contains("2d4 rodadas"))
+        assertTrue(colorSpray.description.contains("1d4 rodadas"))
+        val mount = byName.getValue("Montaria Arcana")
+        assertEquals("1 rodada", mount.castTime)
+        assertEquals("2 horas/nível (D)", mount.duration)
+        assertFalse(mount.spellResistance)
     }
 
 

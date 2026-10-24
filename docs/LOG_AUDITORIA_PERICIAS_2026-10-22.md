@@ -1198,3 +1198,16 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Removida a entrada duplicada **Pedra Mágica**, cujo efeito já está coberto por **Pedra Encantada**; mantida a entrada canônica com Druida e Clérigo.
 - Atualizados os testes para os nomes canônicos e acrescentada regressão contra os aliases/duplicata. Outras magias de Druida ainda exigem conferência dos campos mecânicos; este lote não declara concluída a auditoria da classe.
 - Fonte primária: PDF brasileiro “D&D 3.5 - Livro do Jogador” fornecido nesta conversa. Nenhum teste manual em dispositivo Android foi realizado nesta etapa.
+
+
+---
+
+## 2026-10-23 — Magias adicionais de 1º nível (feiticeiro/mago)
+
+- Consultada a lista de magias de 1º nível de feiticeiro e mago e os verbetes correspondentes no Livro do Jogador brasileiro.
+- Adicionadas **Trancar Portal**, **Disco Flutuante de Tenser**, **Leque Cromático** e **Montaria Arcana**, com nível por classe, componentes, tempo de execução, alcance, duração, resistência à magia e efeito resumido.
+- Na revisão pós-CI, corrigido o nome para **Trancar Portal** e completadas as durações escalonadas de Leque Cromático (2d4/1d4 rodadas conforme DV). A checagem de duplicatas encontrou uma entrada antiga de Trancar Portal; a nova duplicata foi removida e a entrada canônica existente foi atualizada com os campos mecânicos revisados. Os testes de regressão foram ampliados.
+- Adicionados testes de regressão para unicidade, nível, classes, níveis por classe e campos mecânicos centrais.
+- A auditoria da lista arcana de 1º nível continua incompleta; esta alteração não declara o catálogo integral. Não foi realizado teste manual em dispositivo Android.
+
+- CI posterior identificou uma expectativa de teste desatualizada para **Trancar Portal** (espaçamento do alcance e indicação de duração dissipável `(D)`), não uma falha de compilação do catálogo. As asserções foram alinhadas aos campos canônicos da magia; aguardar nova CI antes de integrar.

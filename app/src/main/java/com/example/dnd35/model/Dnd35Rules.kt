@@ -1412,6 +1412,49 @@ object Dnd35Rules {
         ),
 
         // CÍRCULO 1
+        // Magias adicionais de 1º nível conferidas no Livro do Jogador
+        PresetSpell(
+            name = "Disco Flutuante de Tenser",
+            level = 1,
+            school = "Evocação [Energia]",
+            classes = listOf("Mago", "Feiticeiro"),
+            castTime = "1 ação padrão",
+            components = "V, G, M",
+            range = "Curto (7,5 m + 1,5 m/2 níveis)",
+            duration = "1 hora/nível",
+            savingThrow = "Nenhum",
+            spellResistance = false,
+            description = "Cria um disco horizontal de energia com 90 cm de diâmetro, que flutua a 90 cm do solo e acompanha o conjurador. Carrega até 50 kg por nível de conjurador.",
+            classLevels = mapOf("Mago" to 1, "Feiticeiro" to 1)
+        ),
+        PresetSpell(
+            name = "Leque Cromático",
+            level = 1,
+            school = "Ilusão (Padrão) [Ação Mental]",
+            classes = listOf("Mago", "Feiticeiro"),
+            castTime = "1 ação padrão",
+            components = "V, G, M",
+            range = "4,5 m",
+            duration = "Instantânea (veja texto)",
+            savingThrow = "Vontade anula",
+            spellResistance = true,
+            description = "Um cone de cores brilhantes afeta criaturas conforme seus Dados de Vida: 2 DV ou menos ficam inconscientes, cegas e atordoadas por 2d4 rodadas, depois cegas e atordoadas por 1d4 rodadas e, por fim, atordoadas por 1 rodada; 3–4 DV ficam cegas e atordoadas por 1d4 rodadas e, depois, atordoadas por 1 rodada; 5 DV ou mais ficam atordoadas por 1 rodada. Criaturas que não enxergam são imunes.",
+            classLevels = mapOf("Mago" to 1, "Feiticeiro" to 1)
+        ),
+        PresetSpell(
+            name = "Montaria Arcana",
+            level = 1,
+            school = "Conjuração (Invocação)",
+            classes = listOf("Mago", "Feiticeiro"),
+            castTime = "1 rodada",
+            components = "V, G, M",
+            range = "Curto (7,5 m + 1,5 m/2 níveis)",
+            duration = "2 horas/nível (D)",
+            savingThrow = "Nenhum",
+            spellResistance = false,
+            description = "Invoca um cavalo leve ou pônei à escolha do conjurador, que aparece equipado com estribos, rédeas e sela e serve voluntariamente como montaria.",
+            classLevels = mapOf("Mago" to 1, "Feiticeiro" to 1)
+        ),
         PresetSpell(
             name = "Mísseis Mágicos",
             level = 1,
@@ -2756,11 +2799,12 @@ object Dnd35Rules {
             classes = listOf("Mago", "Feiticeiro"),
             castTime = "1 ação padrão",
             components = "V",
-            range = "Médio (30m + 3m/nível)",
-            duration = "1 minuto/nível",
+            range = "Médio (30 m + 3 m/nível)",
+            duration = "1 minuto/nível (D)",
             savingThrow = "Nenhum",
             spellResistance = false,
-            description = "Tranca magicamente uma porta, portão, janela ou outro portal fechado; a magia não impede a passagem de criaturas capazes de contornar ou destruir o obstáculo."
+            description = "Tranca magicamente uma porta, portão, janela ou persiana. O portal recebe +5 na CD para abrir ou quebrar; a magia Arrombar ou Dissipar Magia encerra o efeito.",
+            classLevels = mapOf("Mago" to 1, "Feiticeiro" to 1)
         ),
         PresetSpell(
             name = "Ventriloquismo",
