@@ -1233,3 +1233,15 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - A revisão do catálogo encontrou nomenclatura inconsistente nos componentes: `S` (abreviação inglesa de somático) misturada com `G` (gestual, em português), e `DF` misturado com `FD` (foco divino).
 - A alteração proposta padroniza os campos `components` do catálogo para `V, G, M, F, FD` conforme aplicável, sem mudar as regras mecânicas das magias. As expectativas correspondentes nos testes são ajustadas na mesma mudança.
 - Esta é uma correção terminológica transversal; a CI deve confirmar que nenhum teste depende das abreviações anteriores. A auditoria de cobertura das magias de 1º nível continua separada e incompleta.
+
+
+---
+
+## 2026-10-24 — Cobertura de magias de Paladino e Ranger
+
+- Comparadas as listas de magias de 1º nível de Paladino e Ranger com as entradas do catálogo.
+- Adicionada **Abençoar Arma** (Paladino 1), que estava ausente.
+- Corrigidos os níveis por classe: **Ler Magias** agora registra Paladino 1 e Ranger 1; **Criar Água**, **Resistência** e **Virtude** registram Paladino 1; **Detectar Mortos-Vivos** passa a incluir Paladino; **Restauração Menor** passa a incluir Ranger 1 além de Clérigo 2, Druida 2 e Paladino 1.
+- Corrigido **Curar Ferimentos Leves**: Ranger 1, não Ranger 2.
+- Ajustados componentes de foco divino e o teste de resistência de **Virtude** conforme a referência; adicionados testes de regressão para níveis por classe e presença única.
+- Referências de conferência: *Livro do Jogador* brasileiro, capítulo de Magias/listas de Paladino e Ranger; listas e verbetes SRD D&D 3.5 usadas como verificação cruzada. A auditoria de cobertura de outras classes e níveis continua em andamento; nenhum teste manual em dispositivo Android foi realizado nesta etapa.
