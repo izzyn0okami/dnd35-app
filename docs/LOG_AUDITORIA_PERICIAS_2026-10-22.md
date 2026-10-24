@@ -1757,3 +1757,13 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - **Validação:** PR em preparação; CI ainda não executada; sem teste manual em dispositivo Android.
 - **Contagem nominal antes desta proposta:** 200 entradas únicas; a inclusão elevará para 201 se integrada.
 - **Próximo passo:** aguardar CI; não integrar até que testes unitários, compilação Android e geração do APK passem.
+
+
+## Resultado final da PR #219 — 2026-10-24
+
+- **CI:** execução [40067329852](https://github.com/izzyn0okami/dnd35-app/actions/runs/40067329852) concluída com sucesso. Testes unitários, compilação Android e upload do APK de depuração passaram.
+- **Integração:** PR [#219](https://github.com/izzyn0okami/dnd35-app/pull/219) integrada por squash no commit `760a9ab9ba4742b4974cda5dfacd2024588e6d9a`.
+- **Resultado:** `Labirinto` adicionada ao catálogo como magia de 8º nível de Feiticeiro e Mago.
+- **Contagem nominal:** 201 entradas únicas após integração (200 antes da PR).
+- **Limitação:** não foi realizado teste manual em dispositivo Android.
+- **Próximo passo:** prosseguir na auditoria das magias de 8º nível do Livro do Jogador; conferir o PDF e o catálogo antes de escolher a próxima inclusão.
