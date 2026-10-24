@@ -1537,6 +1537,64 @@ object Dnd35Rules {
             description = "Uma névoa espessa bloqueia toda a visão além de 1,5m e concede camuflagem total."
         ),
 
+        // Magias de 1º nível de Clérigo conferidas no Livro do Jogador brasileiro
+        PresetSpell(
+            name = "Auxílio Divino",
+            level = 1,
+            school = "Evocação",
+            classes = listOf("Clérigo", "Paladino"),
+            castTime = "1 ação padrão",
+            components = "V, G, FD",
+            range = "Pessoal",
+            duration = "1 minuto",
+            savingThrow = "Nenhum",
+            spellResistance = false,
+            description = "Concede bônus de sorte nas jogadas de ataque e dano de +1 a cada três níveis de conjurador (mínimo +1, máximo +6); não se aplica ao dano causado por magias.",
+            classLevels = mapOf("Clérigo" to 1, "Paladino" to 1)
+        ),
+        PresetSpell(
+            name = "Invisibilidade Contra Mortos-Vivos",
+            level = 1,
+            school = "Abjuração",
+            classes = listOf("Clérigo"),
+            castTime = "1 ação padrão",
+            components = "V, G, FD",
+            range = "Toque",
+            duration = "10 minutos/nível (D)",
+            savingThrow = "Vontade anula (objeto; veja texto)",
+            spellResistance = true,
+            description = "Mortos-vivos não podem ver, escutar ou cheirar as criaturas protegidas nem detectá-las por sentidos extraordinários ou sobrenaturais. Mortos-vivos não inteligentes são automaticamente afetados; mortos-vivos inteligentes podem realizar teste de Vontade. Expulsar ou controlar mortos-vivos, tocar um morto-vivo ou atacar qualquer criatura encerra a magia para todos os alvos.",
+            classLevels = mapOf("Clérigo" to 1)
+        ),
+        PresetSpell(
+            name = "Pedra Encantada",
+            level = 1,
+            school = "Transmutação",
+            classes = listOf("Clérigo", "Druida"),
+            castTime = "1 ação padrão",
+            components = "V, G, FD",
+            range = "Toque",
+            duration = "30 minutos ou até ser dissipada",
+            savingThrow = "Vontade anula (inofensiva, objeto)",
+            spellResistance = true,
+            description = "Transmuta até três pedras pequenas, não maiores que balas de funda, para serem arremessadas ou lançadas. Concede +1 de bônus de encantamento nas jogadas de ataque e dano; cada acerto causa 1d6+1 pontos de dano, ou 2d6+2 contra mortos-vivos.",
+            classLevels = mapOf("Clérigo" to 1, "Druida" to 1)
+        ),
+        PresetSpell(
+            name = "Visão da Morte",
+            level = 1,
+            school = "Necromancia",
+            classes = listOf("Clérigo"),
+            castTime = "1 ação padrão",
+            components = "V, G",
+            range = "9 m",
+            duration = "10 minutos/nível",
+            savingThrow = "Nenhum",
+            spellResistance = false,
+            description = "Revela a condição das criaturas na área em cone: mortas, enfraquecidas (vivas e com 3 PV ou menos), lutando contra a morte (vivas e com 4 PV ou mais), mortas-vivas ou nenhuma dessas condições, como no caso de construtos. Anula efeitos que permitam fingir a própria morte.",
+            classLevels = mapOf("Clérigo" to 1)
+        ),
+
         // Magias adicionais de 1º círculo do Livro do Jogador — lote 1
         // Magias de 1º nível que faltavam nas listas do Livro do Jogador
         PresetSpell(
