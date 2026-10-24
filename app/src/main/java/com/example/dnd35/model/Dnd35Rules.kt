@@ -3981,5 +3981,19 @@ object Dnd35Rules {
             classLevels = mapOf("Feiticeiro" to 8, "Mago" to 8),
             domainLevels = mapOf("Força" to 8)
         ),
+        PresetSpell(
+            name = "Padrão Cintilante",
+            level = 8,
+            school = "Ilusão (Padrão) [Ação Mental]",
+            classes = listOf("Feiticeiro", "Mago"),
+            castTime = "1 ação padrão",
+            components = "V, G, M",
+            range = "Curto (7,5 m + 1,5 m/2 níveis)",
+            duration = "Concentração + 2 rodadas",
+            savingThrow = "Nenhum",
+            spellResistance = true,
+            description = "Cria um padrão de cores reluzentes em uma dispersão de 6 m de raio. Afeta um total de Dados de Vida de criaturas igual ao nível de conjurador, até o máximo de 20; as criaturas com menos DV são afetadas primeiro e, entre criaturas com DV iguais, as mais próximas da origem. DV insuficientes para afetar uma criatura são desperdiçados. Criaturas com 6 DV ou menos ficam inconscientes por 1d4 rodadas, depois atordoadas por 1d4 rodadas e então confusas por 1d4 rodadas; com 7 a 12 DV ficam atordoadas por 1d4 rodadas e depois confusas por 1d4 rodadas; com 13 DV ou mais ficam confusas por 1d4 rodadas. Criaturas que não conseguem enxergar não são afetadas. Componente material: pequeno prisma de cristal.",
+            classLevels = mapOf("Feiticeiro" to 8, "Mago" to 8)
+        ),
     )
 }
