@@ -248,8 +248,8 @@ class PresetSpellCatalogTest {
         assertEquals(0, spell.classLevels["Mago"])
         assertEquals(0, spell.classLevels["Feiticeiro"])
         assertEquals(1, spell.classLevels["Paladino"])
-        assertFalse(spell.classes.contains("Ranger"))
-        assertFalse(spell.classLevels.containsKey("Ranger"))
+        assertTrue(spell.classes.contains("Ranger"))
+        assertEquals(1, spell.classLevels["Ranger"])
         assertEquals("V, G", spell.components)
         assertEquals("Curto (7,5m)", spell.range)
         assertTrue(spell.description.contains("Sabedoria CD 20"))
@@ -629,6 +629,24 @@ class PresetSpellCatalogTest {
         val lesserRestoration = spells.getValue("Restauração Menor")
         assertEquals(setOf("Clérigo", "Druida", "Paladino", "Ranger"), lesserRestoration.classes.toSet())
         assertEquals(mapOf("Clérigo" to 2, "Druida" to 2, "Paladino" to 1, "Ranger" to 1), lesserRestoration.classLevels)
+    }
+
+
+    @Test
+    fun rangerFirstLevelSpellListIncludesEnergyResistanceAndDelayPoison() {
+        val spells = Dnd35Rules.PRESET_SPELLS.associateBy { it.name }
+
+        val resistEnergy = spells.getValue("Suportar Energia")
+        assertEquals(setOf("Clérigo", "Druida", "Ranger", "Mago", "Feiticeiro"), resistEnergy.classes.toSet())
+        assertEquals(mapOf("Clérigo" to 2, "Druida" to 2, "Ranger" to 1, "Mago" to 2, "Feiticeiro" to 2), resistEnergy.classLevels)
+        assertEquals("10 minutos/nível", resistEnergy.duration)
+        assertTrue(resistEnergy.spellResistance)
+
+        val delayPoison = spells.getValue("Retardar Envenenamento")
+        assertEquals(setOf("Clérigo", "Druida", "Paladino", "Ranger"), delayPoison.classes.toSet())
+        assertEquals(mapOf("Clérigo" to 2, "Druida" to 2, "Paladino" to 2, "Ranger" to 1), delayPoison.classLevels)
+        assertEquals("1 hora/nível", delayPoison.duration)
+        assertTrue(delayPoison.spellResistance)
     }
 
 }
