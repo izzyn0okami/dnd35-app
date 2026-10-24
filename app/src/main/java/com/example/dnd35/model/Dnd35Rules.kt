@@ -2465,14 +2465,15 @@ object Dnd35Rules {
             name = "Vigor do Urso",
             level = 2,
             school = "Transmutação",
-            classes = listOf("Mago", "Feiticeiro", "Clérigo", "Druida", "Ranger"),
+            classes = listOf("Clérigo", "Druida", "Ranger", "Feiticeiro", "Mago"),
             castTime = "1 ação padrão",
             components = "V, G, FD",
             range = "Toque",
-            duration = "1 min/nível",
-            savingThrow = "Vontade anula",
+            duration = "1 minuto/nível",
+            savingThrow = "Vontade anula (inofensiva)",
             spellResistance = true,
-            description = "Concede +4 de bônus de melhoria em Constituição (+2 PV por nível e +2 na Fortitude)."
+            description = "Concede +4 de bônus de melhoria na Constituição, aplicando os benefícios normais dessa habilidade a pontos de vida, testes de resistência de Fortitude e testes de Constituição.",
+            classLevels = mapOf("Clérigo" to 2, "Druida" to 2, "Ranger" to 2, "Feiticeiro" to 2, "Mago" to 2)
         ),
         PresetSpell(
             name = "Patas de Aranha",
