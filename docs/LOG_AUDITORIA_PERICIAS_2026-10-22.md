@@ -1571,3 +1571,12 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - **Regressão:** teste dedicado verifica nome único, nível, escola, classes/níveis, tempo, componentes, alcance, duração, indicação de teste de resistência, resistência à magia e termos-chave da descrição.
 - **Validação:** CI pendente; sem teste manual em dispositivo Android.
 - **Próximo passo:** revisar os resultados da CI antes de integrar; depois continuar a fila de magias de 8º nível do Livro do Jogador.
+
+
+## Resultado final da PR #211 — 2026-10-24
+
+- **CI:** execução [40062689508](https://github.com/izzyn0okami/dnd35-app/actions/runs/40062689508) concluída com sucesso; testes unitários, compilação Android e publicação do APK passaram.
+- **Integração:** PR [#211](https://github.com/izzyn0okami/dnd35-app/pull/211) integrada por squash no commit `a2503f8327658304ff64d945aaebed042d38e6a6`.
+- **Resultado:** `Muralha Prismática` adicionada ao catálogo principal; contagem nominal sobe de 192 para 193 entradas únicas, antes de novas inclusões.
+- **Limitação registrada:** o modelo atual representa resistência à magia como booleano, mas o verbete informa variação por cor. A descrição e o teste não substituem a tabela completa dos sete efeitos; considerar aprimorar o modelo de dados numa etapa separada para representar testes e resistência variáveis.
+- **Próximo passo:** seguir a lista de magias de 8º nível do Livro do Jogador, conferindo cada verbete completo antes de implementar.
