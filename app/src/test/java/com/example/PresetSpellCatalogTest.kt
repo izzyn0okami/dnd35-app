@@ -221,7 +221,7 @@ class PresetSpellCatalogTest {
         val summonNature = spells.getValue("Invocar Aliado da Natureza I")
         assertEquals(setOf("Druida", "Ranger"), summonNature.classes.toSet())
         assertEquals("1 rodada", summonNature.castTime)
-        assertEquals("1 rodada/nível", summonNature.duration)
+        assertEquals("1 rodada/nível (D)", summonNature.duration)
         assertFalse(summonNature.spellResistance)
     }
 
