@@ -1922,8 +1922,8 @@ class PresetSpellCatalogTest {
             "Visão Arcana Maior" to mapOf("Feiticeiro" to 7, "Mago" to 7),
             "Visão" to mapOf("Feiticeiro" to 7, "Mago" to 7),
             "Convocação Instantânea de Drawmij" to mapOf("Feiticeiro" to 7, "Mago" to 7),
-            "Evocação de Sombras Maior" to mapOf("Feiticeiro" to 7, "Mago" to 7),
-            "Curar Ferimentos Moderados em Massa" to mapOf("Clérigo" to 7, "Druida" to 7)
+            "Evocação de Sombras Maior" to mapOf("Feiticeiro" to 8, "Mago" to 8),
+            "Curar Ferimentos Moderados em Massa" to mapOf("Clérigo" to 6, "Druida" to 6)
         )
         expected.forEach { (name, levels) ->
             val matches = Dnd35Rules.PRESET_SPELLS.filter { it.name == name }
@@ -1934,6 +1934,56 @@ class PresetSpellCatalogTest {
         val reversal = Dnd35Rules.PRESET_SPELLS.single { it.name == "Reverter Magia" }
         assertEquals(7, reversal.domainLevels["Magia"])
         assertEquals(7, reversal.domainLevels["Sorte"])
+    }
+
+
+    @Test
+    fun refugeItemsDescriptionMatchesPlayerHandbookDetectionAndSuspensionRules() {
+        val spell = Dnd35Rules.PRESET_SPELLS.single { it.name == "Refugiar Itens" }
+        assertEquals("Abjuração", spell.school)
+        assertEquals(7, spell.classLevels["Feiticeiro"])
+        assertEquals(7, spell.classLevels["Mago"])
+        assertEquals("Toque", spell.range)
+        assertEquals("1 dia/nível (D)", spell.duration)
+        assertTrue(spell.spellResistance)
+        assertTrue(spell.description.contains("invisível a qualquer forma de visão"))
+        assertTrue(spell.description.contains("animação suspensa"))
+        assertTrue(spell.description.contains("adivinhação"))
+        assertFalse(spell.description.contains("criatura voluntária"))
+    }
+
+    @Test
+    fun greaterShadowEvocationIsEighthLevelAndUsesSixtyPercentReality() {
+        val spell = Dnd35Rules.PRESET_SPELLS.single { it.name == "Evocação de Sombras Maior" }
+        assertEquals(8, spell.level)
+        assertEquals(8, spell.classLevels["Feiticeiro"])
+        assertEquals(8, spell.classLevels["Mago"])
+        assertEquals("Ilusão (Sombra)", spell.school)
+        assertTrue(spell.description.contains("7º nível ou inferior"))
+        assertTrue(spell.description.contains("60% do normal"))
+    }
+
+    @Test
+    fun massModerateCureUsesSixthLevelForClericAndDruid() {
+        val spell = Dnd35Rules.PRESET_SPELLS.single { it.name == "Curar Ferimentos Moderados em Massa" }
+        assertEquals(6, spell.level)
+        assertEquals(6, spell.classLevels["Clérigo"])
+        assertEquals(6, spell.classLevels["Druida"])
+        assertEquals("Conjuração (Cura)", spell.school)
+        assertTrue(spell.description.contains("2d8"))
+    }
+
+    @Test
+    fun spellTurningDescriptionUsesOneD4PlusSixSpellLevels() {
+        val spell = Dnd35Rules.PRESET_SPELLS.single { it.name == "Reverter Magia" }
+        assertEquals("Abjuração", spell.school)
+        assertEquals("Pessoal", spell.range)
+        assertEquals("Nenhum", spell.savingThrow)
+        assertFalse(spell.spellResistance)
+        assertTrue(spell.description.contains("1d4+6 níveis de magia"))
+        assertFalse(spell.description.contains("sete a dez níveis"))
+        assertTrue(spell.description.contains("Efeitos de área"))
+        assertTrue(spell.description.contains("magias de toque"))
     }
 
 }
