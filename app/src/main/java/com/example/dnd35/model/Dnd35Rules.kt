@@ -1038,6 +1038,20 @@ object Dnd35Rules {
 
     val PRESET_SPELLS = listOf(
         PresetSpell(
+            name = "Âncora Planar Maior",
+            level = 8,
+            school = "Conjuração (Convocação)",
+            classes = listOf("Feiticeiro", "Mago"),
+            castTime = "10 minutos",
+            components = "V, G, F",
+            range = "Curto (7,5 m + 1,5 m/2 níveis)",
+            duration = "Instantânea",
+            savingThrow = "Vontade anula",
+            spellResistance = true,
+            description = "Como Âncora Planar Menor, mas pode convocar uma única criatura de até 18 Dados de Vida ou até três criaturas do mesmo tipo cujos Dados de Vida totalizem até 18. Cada criatura faz uma tentativa independente para escapar com um teste de resistência e deve ser individualmente persuadida a ajudar o conjurador. A magia exige o círculo de proteção e a armadilha apropriados descritos no verbete de Âncora Planar Menor.",
+            classLevels = mapOf("Feiticeiro" to 8, "Mago" to 8)
+        ),
+        PresetSpell(
             name = "Instante de Presciência",
             level = 8,
             school = "Adivinhação",
