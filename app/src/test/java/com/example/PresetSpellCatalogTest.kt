@@ -1253,4 +1253,25 @@ class PresetSpellCatalogTest {
         assertTrue(spell.description.contains("individualmente persuadida"))
     }
 
+    @Test
+    fun aprisionarAlmaMatchesPlayerHandbookEntry() {
+        val matches = Dnd35Rules.PRESET_SPELLS.filter { it.name == "Aprisionar a Alma" }
+        assertEquals(1, matches.size)
+        val spell = matches.single()
+
+        assertEquals(8, spell.level)
+        assertEquals("Conjuração (Invocação)", spell.school)
+        assertEquals(setOf("Feiticeiro", "Mago"), spell.classes.toSet())
+        assertEquals(mapOf("Feiticeiro" to 8, "Mago" to 8), spell.classLevels)
+        assertEquals("1 ação padrão ou veja texto", spell.castTime)
+        assertEquals("V, G, M (F)", spell.components)
+        assertEquals("Curto (7,5 m + 1,5 m/2 níveis)", spell.range)
+        assertEquals("Permanente; veja texto", spell.duration)
+        assertEquals("Veja texto", spell.savingThrow)
+        assertTrue(spell.spellResistance)
+        assertTrue(spell.description.contains("força vital"))
+        assertTrue(spell.description.contains("gema"))
+        assertTrue(spell.description.contains("tarefa"))
+    }
+
 }

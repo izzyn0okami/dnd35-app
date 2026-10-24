@@ -1717,3 +1717,20 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - **Cobertura:** teste de regressão aprovado pela CI.
 - **Limitação:** não foi realizado teste manual em dispositivo Android.
 - **Próximo passo:** continuar a auditoria do catálogo exclusivamente contra o PDF brasileiro do *Livro do Jogador*, conferindo o próximo verbete ausente e evitando repetir magias já registradas.
+
+## 2026-10-24 — Inclusão proposta de Aprisionar a Alma (8º nível)
+
+- **Fonte primária:** PDF brasileiro *D&D 3.5 — Livro do Jogador*, lista de magias de 8º nível e verbete “Aprisionar a Alma”, p. impressa 167 e 173.
+- **Dados conferidos no verbete:** Conjuração (Invocação); Feiticeiro 8 e Mago 8; V, G, M (F); execução de 1 ação padrão ou conforme a versão; alcance curto (7,5 m + 1,5 m/2 níveis); duração permanente, com detalhes por versão; teste de resistência e resistência à magia dependem da versão, e RM consta como “Sim; veja texto”.
+- **Efeito essencial:** aprisiona a força vital e o corpo material de uma criatura em uma gema indefinidamente ou até a gema ser quebrada. Para uma criatura poderosa de outro plano, pode ser exigida uma tarefa em troca da liberdade.
+- **Implementação proposta:** uma entrada para Feiticeiro/Mago 8, mantendo explícitas as diferenças de ativação e os parâmetros variáveis por versão; não converter esses campos em valores únicos que o livro não sustenta.
+- **Regressão:** teste dedicado verifica unicidade, escola, níveis, parâmetros e efeito central.
+- **Validação:** PR em preparação; CI ainda não executada; sem teste manual em dispositivo Android.
+- **Contagem nominal antes desta proposta:** 199 entradas únicas; a inclusão elevará para 200 se integrada.
+
+
+### Correção de teste — PR #218 — 2026-10-24
+
+- A CI [40066198142](https://github.com/izzyn0okami/dnd35-app/actions/runs/40066198142) executou 198 testes e falhou em uma asserção de texto do teste de Aprisionar a Alma; compilação e APK foram pulados.
+- **Correção aplicada:** simplificada a asserção para verificar o termo “tarefa”, sem depender de uma formulação exata na descrição resumida.
+- **Estado:** aguardar nova CI; não integrar até que testes, compilação e geração do APK passem.
