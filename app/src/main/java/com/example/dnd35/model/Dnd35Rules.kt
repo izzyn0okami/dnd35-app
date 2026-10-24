@@ -4617,7 +4617,7 @@ object Dnd35Rules {
         ),
         PresetSpell(
             name = "Curar Ferimentos Moderados em Massa",
-            level = 7,
+            level = 6,
             school = "Conjuração (Cura)",
             classes = listOf("Clérigo", "Druida"),
             castTime = "1 ação padrão",
@@ -4627,7 +4627,7 @@ object Dnd35Rules {
             savingThrow = "Vontade metade (inofensiva)",
             spellResistance = true,
             description = "Canaliza energia positiva para curar 2d8 pontos de vida +1 ponto por nível de conjurador (máximo +30) em diversas criaturas, com os alvos limitados pela distância entre si conforme a descrição da magia.",
-            classLevels = mapOf("Clérigo" to 7, "Druida" to 7)
+            classLevels = mapOf("Clérigo" to 6, "Druida" to 6)
         ),
         PresetSpell(
             name = "Ondas da Exaustão",
