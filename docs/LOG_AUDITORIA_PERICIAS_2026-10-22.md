@@ -1209,3 +1209,5 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Na revisão pós-CI, corrigido o nome para **Trancar Portal** e completadas as durações escalonadas de Leque Cromático (2d4/1d4 rodadas conforme DV). A checagem de duplicatas encontrou uma entrada antiga de Trancar Portal; a nova duplicata foi removida e a entrada canônica existente foi atualizada com os campos mecânicos revisados. Os testes de regressão foram ampliados.
 - Adicionados testes de regressão para unicidade, nível, classes, níveis por classe e campos mecânicos centrais.
 - A auditoria da lista arcana de 1º nível continua incompleta; esta alteração não declara o catálogo integral. Não foi realizado teste manual em dispositivo Android.
+
+- CI posterior identificou uma expectativa de teste desatualizada para **Trancar Portal** (espaçamento do alcance e indicação de duração dissipável `(D)`), não uma falha de compilação do catálogo. As asserções foram alinhadas aos campos canônicos da magia; aguardar nova CI antes de integrar.
