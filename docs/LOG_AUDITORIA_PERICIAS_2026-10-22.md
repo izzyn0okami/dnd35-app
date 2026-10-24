@@ -1676,3 +1676,13 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - **Regressão:** teste dedicado verifica nome único, escola, nível, classes/domínio, parâmetros e regras de ativação/uso único.
 - **Validação:** CI pendente; sem teste manual em dispositivo Android. Não integrar até CI verde.
 - **Contagem antes desta PR:** 197 entradas nominais únicas na main; esta inclusão elevará para 198 se integrada.
+
+
+## Resultado final da PR #216 — 2026-10-24
+
+- **CI:** execução [40064486791](https://github.com/izzyn0okami/dnd35-app/actions/runs/40064486791) concluída com sucesso.
+- **Integração:** PR [#216](https://github.com/izzyn0okami/dnd35-app/pull/216) integrada por squash no commit `ec9eacb7b8dbd31d67cc4eca600593b0c88ab8a2`.
+- **Resultado:** `Instante de Presciência` adicionada ao catálogo; total nominal passa de 197 para 198 entradas únicas.
+- **Cobertura:** teste de regressão específico incluído e aprovado pela CI.
+- **Limitação:** não foi realizado teste manual em dispositivo Android.
+- **Próximo passo:** auditar `Âncora Planar Maior` diretamente no PDF brasileiro, confirmar níveis de classe/domínio e todos os parâmetros antes de abrir uma PR.
