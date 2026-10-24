@@ -1073,6 +1073,10 @@ class PresetSpellCatalogTest {
             val spell = matches.single()
             assertTrue("$name deve incluir Ranger na lista de classes", "Ranger" in spell.classes)
             assertEquals("Nível de Ranger incorreto para $name", 1, spell.classLevels["Ranger"] ?: spell.level)
+            if (name == "Passos Longos" || name == "Passos sem Pegadas") {
+                assertEquals("Nível de Druida incorreto para $name", 1, spell.classLevels["Druida"])
+                assertEquals("Nível de Ranger deve estar explicitamente mapeado para $name", 1, spell.classLevels["Ranger"])
+            }
         }
     }
 }

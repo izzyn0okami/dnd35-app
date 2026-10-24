@@ -1504,3 +1504,13 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - **CI:** execução 40061454989 concluída com sucesso. Testes unitários, compilação Android e upload do APK passaram.
 - **Integração:** PR #208 integrada por squash; commit de merge `0b6ecbf2f2fb9160ec459c344d19c91e57c967ce`.
 - **Estado:** correção concluída. A entrada canônica `Invisibilidade Contra Animais` foi mantida e `Ocultar-se de Animais` removida como duplicata.
+
+
+## 2026-10-24 — Mapeamento explícito de níveis: Passos Longos e Passos sem Pegadas
+
+- **Fonte primária:** PDF brasileiro *D&D 3.5 — Livro do Jogador*, verbetes completos na página impressa 227. Ambos indicam **Druida 1, Ranger 1**.
+- **Discrepância:** o catálogo listava Druida e Ranger e usava nível geral 1, mas não registrava os níveis de cada classe em `classLevels`. Isso deixava esses dois verbetes sem o mapeamento explícito usado para outras magias auditadas.
+- **Alteração proposta:** acrescentar `classLevels = mapOf("Druida" to 1, "Ranger" to 1)` a ambos, sem mudar seus efeitos ou dados de conjuração.
+- **Regressão:** ampliar o teste da lista resumida de Ranger para exigir o mapeamento explícito de ambas as classes nessas duas magias.
+- **Validação:** pendente de CI; não houve teste manual em dispositivo.
+- **Próximo passo:** aguardar testes unitários, compilação Android e APK; depois seguir para as próximas associações de magias ainda não auditadas.
