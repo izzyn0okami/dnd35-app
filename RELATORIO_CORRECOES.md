@@ -172,3 +172,11 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - Atualizados os testes que anteriormente agrupavam essas magias entre as arcanas de 7º nível e adicionado teste de regressão explícito.
 - **Não alteradas nesta rodada:** Padrão Cintilante, Criar Mortos-Vivos Maior e Símbolo da Morte; suas informações de nível consultadas nesta passagem estão alinhadas com o livro. As descrições completas dessas magias continuam sujeitas à revisão individual.
 - Referência primária: PDF do *Livro do Jogador* disponível na biblioteca, entrada “Corpo de Ferro” (lista como Terra 8, Fet/Mag 8) e entrada “Estase Temporal” (lista como Fet/Mag 8).
+
+
+## Auditoria do catálogo de magias — correções adicionais de níveis (24/10/2026)
+
+- Confirmado no PDF brasileiro do *Livro do Jogador* que **Padrão Cintilante** é Fet/Mag 8; corrigidos `level` e `classLevels` de 7 para 8 e removida a magia do grupo de 7º nível nos testes.
+- Confirmado que **Criar Mortos-Vivos Maior** é Clr 8, Morte 8 e Fet/Mag 8; corrigidos `level` e os níveis de Feiticeiro/Mago para 8, preservando os níveis corretos de Clérigo e domínio Morte.
+- Confirmado que **Símbolo da Morte** é Clr 8 e Fet/Mag 6; corrigidos os níveis por classe nos testes para refletir o livro. O campo geral `level` (atualmente 7) foi deixado sem alteração nesta rodada porque sua semântica no modelo para magias com níveis diferentes por classe precisa ser definida antes de normalizar o valor, evitando assumir uma regra não documentada.
+- Referência primária: PDF do *Livro do Jogador* na biblioteca, entradas de Padrão Cintilante, Criar Mortos-Vivos Maior e Símbolo da Morte.
