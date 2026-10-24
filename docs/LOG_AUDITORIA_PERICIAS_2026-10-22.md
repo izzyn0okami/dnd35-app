@@ -2001,13 +2001,18 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - **Consolidação:** PRs #236 e #237 foram encerradas em favor da #238. Ordem e Simpatia já estavam integradas, e não foram duplicadas. Limpar a Mente e Proteção contra Magias também foram verificadas como existentes.
 - **Contagem nominal:** 235 entradas após a integração (221 antes).
 - **Limitação:** não foi realizado teste manual em dispositivo Android.
-- **Próxima etapa:** continuar o inventário das listas de 8º nível do Livro do Jogador e agrupar as próximas inclusões em lotes maiores. Itens ainda ausentes identificados nas listas de Clérigo/Druida incluem Aliado Extra-Planar Maior, Curar Ferimentos Críticos em Massa, Infligir Ferimentos Críticos em Massa e Curar Ferimentos Graves em Massa; conferir cada verbete e seus níveis no PDF antes de incluí-los.
+- **Fila identificada nesta etapa:** Aliado Extra-Planar Maior, Curar Ferimentos Críticos em Massa, Infligir Ferimentos Críticos em Massa e Curar Ferimentos Graves em Massa. Esses quatro itens foram posteriormente integrados no lote da PR #239, abaixo.
 
 
-## 2026-10-24 — Próximo lote de magias de 8º nível (em revisão)
+## 2026-10-24 — Segundo lote adicional de magias de 8º nível integrado
 
-- **Escopo:** sete entradas novas verificadas no PDF brasileiro do *Livro do Jogador*: Aliado Extra-Planar Maior; Curar Ferimentos Críticos em Massa; Infligir Ferimentos Críticos em Massa; Curar Ferimentos Graves em Massa; Corpo de Ferro; Estase Temporal; Metamorfosear Objetos.
-- **Critério:** registrar níveis reais por classe e domínio em mapas separados, mesmo quando a magia está sendo auditada no conjunto de 8º nível.
-- **Regressão:** teste de lote para unicidade, níveis por classe/domínio e efeitos distintivos. A revisão dos verbetes detalhados corrigiu o limite de dano de Infligir Ferimentos Críticos em Massa para +20, retirou níveis de domínio não listados no livro das duas magias em massa afetadas e incluiu foco divino e custo de XP nos componentes de Aliado Extra-Planar Maior.
-- **CI:** pendente; não integrar antes de testes unitários, compilação Android e upload do APK de depuração passarem.
+- **PR integrada:** [#239](https://github.com/izzyn0okami/dnd35-app/pull/239).
+- **Commit de merge:** `597a0ba0bb0f4d2d2e7504c0b04edc8f2de15efa`.
+- **Fonte primária:** PDF brasileiro *D&D 3.5 — Livro do Jogador* salvo no projeto.
+- **Magias adicionadas:** Aliado Extra-Planar Maior; Curar Ferimentos Críticos em Massa; Infligir Ferimentos Críticos em Massa; Curar Ferimentos Graves em Massa; Corpo de Ferro; Estase Temporal; Metamorfosear Objetos.
+- **Correções derivadas do texto detalhado:** Infligir Ferimentos Críticos em Massa causa 4d8 +1 por nível, máximo +20; Curar Ferimentos Graves em Massa e Infligir Ferimentos Críticos em Massa não receberam níveis de domínio não listados no verbete; Aliado Extra-Planar Maior registra foco divino e custo de XP nos componentes.
+- **Regressão:** `additionalEighthLevelSpellBatchMatchesPlayerHandbook` verifica unicidade, nível-base, escola, classes, níveis por classe/domínio e efeitos distintivos, incluindo componentes de Aliado Extra-Planar Maior.
+- **CI final:** [workflow #40119403089](https://github.com/izzyn0okami/dnd35-app/actions/runs/40119403089) passou integralmente: testes unitários, compilação Android e upload do APK de depuração.
+- **Contagem nominal:** 242 entradas após a integração (235 antes).
 - **Limitação:** não foi realizado teste manual em dispositivo Android.
+- **Próxima etapa:** verificar a cobertura integral das listas de magias de 8º nível do *Livro do Jogador* e, se estiver completa, registrar o fechamento dessa etapa antes de avançar para outro nível.
