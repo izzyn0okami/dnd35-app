@@ -10,36 +10,6 @@ class PresetSpellCatalogTest {
     @Test
     fun catalogIncludesAdditionalPlayerHandbookCantrips() {
         val spells = Dnd35Rules.PRESET_SPELLS
-
-    @Test
-    fun catalogIncludesAdditionalFirstLevelPlayerHandbookSpells() {
-        val spells = Dnd35Rules.PRESET_SPELLS
-        val byName = spells.associateBy { it.name }
-        val additions = listOf("Cerrar Portas", "Disco Flutuante de Tenser", "Leque Cromático", "Montaria Arcana")
-        additions.forEach { name ->
-            assertEquals("Deve existir uma única entrada para $name", 1, spells.count { it.name == name })
-            assertEquals(1, byName.getValue(name).level)
-            assertEquals(setOf("Mago", "Feiticeiro"), byName.getValue(name).classes.toSet())
-            assertEquals(1, byName.getValue(name).classLevels.getValue("Mago"))
-            assertEquals(1, byName.getValue(name).classLevels.getValue("Feiticeiro"))
-        }
-        val closePortal = byName.getValue("Cerrar Portas")
-        assertEquals("V", closePortal.components)
-        assertEquals("1 minuto/nível (D)", closePortal.duration)
-        assertFalse(closePortal.spellResistance)
-        val disk = byName.getValue("Disco Flutuante de Tenser")
-        assertEquals("V, G, M", disk.components)
-        assertEquals("1 hora/nível", disk.duration)
-        assertFalse(disk.spellResistance)
-        val colorSpray = byName.getValue("Leque Cromático")
-        assertEquals("4,5 m", colorSpray.range)
-        assertEquals("Vontade anula", colorSpray.savingThrow)
-        assertTrue(colorSpray.spellResistance)
-        val mount = byName.getValue("Montaria Arcana")
-        assertEquals("1 rodada", mount.castTime)
-        assertEquals("2 horas/nível (D)", mount.duration)
-        assertFalse(mount.spellResistance)
-    }
         val names = spells.map { it.name }
         listOf("Brilho", "Pasmar", "Raio de Ácido", "Romper Morto-Vivo").forEach { name ->
             assertEquals("Deve existir uma única entrada para $name", 1, spells.count { it.name == name })
@@ -455,6 +425,36 @@ class PresetSpellCatalogTest {
         assertEquals(2, spells.getValue("Riso Histérico de Tasha, O").classLevels.getValue("Mago"))
         assertEquals(1, spells.getValue("Transformação Momentânea").classLevels.getValue("Feiticeiro"))
         assertEquals(1, spells.values.count { it.name == "Área Escorregadia" })
+    }
+
+    @Test
+    fun catalogIncludesAdditionalFirstLevelPlayerHandbookSpells() {
+        val spells = Dnd35Rules.PRESET_SPELLS
+        val byName = spells.associateBy { it.name }
+        val additions = listOf("Cerrar Portas", "Disco Flutuante de Tenser", "Leque Cromático", "Montaria Arcana")
+        additions.forEach { name ->
+            assertEquals("Deve existir uma única entrada para $name", 1, spells.count { it.name == name })
+            assertEquals(1, byName.getValue(name).level)
+            assertEquals(setOf("Mago", "Feiticeiro"), byName.getValue(name).classes.toSet())
+            assertEquals(1, byName.getValue(name).classLevels.getValue("Mago"))
+            assertEquals(1, byName.getValue(name).classLevels.getValue("Feiticeiro"))
+        }
+        val closePortal = byName.getValue("Cerrar Portas")
+        assertEquals("V", closePortal.components)
+        assertEquals("1 minuto/nível (D)", closePortal.duration)
+        assertFalse(closePortal.spellResistance)
+        val disk = byName.getValue("Disco Flutuante de Tenser")
+        assertEquals("V, G, M", disk.components)
+        assertEquals("1 hora/nível", disk.duration)
+        assertFalse(disk.spellResistance)
+        val colorSpray = byName.getValue("Leque Cromático")
+        assertEquals("4,5 m", colorSpray.range)
+        assertEquals("Vontade anula", colorSpray.savingThrow)
+        assertTrue(colorSpray.spellResistance)
+        val mount = byName.getValue("Montaria Arcana")
+        assertEquals("1 rodada", mount.castTime)
+        assertEquals("2 horas/nível (D)", mount.duration)
+        assertFalse(mount.spellResistance)
     }
 
 }
