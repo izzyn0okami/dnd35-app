@@ -1296,4 +1296,28 @@ class PresetSpellCatalogTest {
         assertTrue(spell.description.contains("viagem planar"))
     }
 
+
+    @Test
+    fun nuvemIncendiariaMatchesPlayerHandbookEntry() {
+        val matches = Dnd35Rules.PRESET_SPELLS.filter { it.name == "Nuvem Incendiária" }
+        assertEquals(1, matches.size)
+        val spell = matches.single()
+
+        assertEquals(8, spell.level)
+        assertEquals("Conjuração (Criação) [Fogo]", spell.school)
+        assertEquals(setOf("Feiticeiro", "Mago"), spell.classes.toSet())
+        assertEquals(mapOf("Feiticeiro" to 8, "Mago" to 8), spell.classLevels)
+        assertEquals(mapOf("Fogo" to 8), spell.domainLevels)
+        assertEquals("1 ação padrão", spell.castTime)
+        assertEquals("V, G", spell.components)
+        assertEquals("Médio (30 m + 3 m/nível)", spell.range)
+        assertEquals("1 rodada/nível", spell.duration)
+        assertEquals("Reflexos reduz à metade", spell.savingThrow)
+        assertFalse(spell.spellResistance)
+        assertTrue(spell.description.contains("4d6 pontos de dano de fogo"))
+        assertTrue(spell.description.contains("6 m de raio e 6 m de altura"))
+        assertTrue(spell.description.contains("até 18 m por rodada"))
+        assertTrue(spell.description.contains("não pode ser conjurada sob a água"))
+    }
+
 }
