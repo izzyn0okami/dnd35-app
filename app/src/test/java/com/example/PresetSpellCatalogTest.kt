@@ -1866,7 +1866,9 @@ class PresetSpellCatalogTest {
             "Evaporação",
             "Corpo de Ferro",
             "Estase Temporal",
-            "Metamorfosear Objetos"
+            "Metamorfosear Objetos",
+            "Invocar Criaturas VII",
+            "Ondas da Exaustão"
         ).forEach { name ->
             val spell = spells.getValue(name)
             assertEquals(7, spell.classLevels["Feiticeiro"])
