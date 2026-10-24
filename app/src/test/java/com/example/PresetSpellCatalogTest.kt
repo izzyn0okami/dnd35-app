@@ -1141,4 +1141,26 @@ class PresetSpellCatalogTest {
         assertTrue(spell.description.contains("1.000 PO"))
     }
 
+
+    @Test
+    fun olhosObservadoresMaiorMatchesPlayerHandbookEntry() {
+        val matches = Dnd35Rules.PRESET_SPELLS.filter { it.name == "Olhos Observadores Maior" }
+        assertEquals(1, matches.size)
+        val spell = matches.single()
+
+        assertEquals(8, spell.level)
+        assertEquals("Adivinhação", spell.school)
+        assertEquals(setOf("Feiticeiro", "Mago"), spell.classes.toSet())
+        assertEquals(mapOf("Feiticeiro" to 8, "Mago" to 8), spell.classLevels)
+        assertEquals("1 minuto", spell.castTime)
+        assertEquals("V, G, M", spell.components)
+        assertEquals("1,5 km", spell.range)
+        assertEquals("1 hora/nível (D)", spell.duration)
+        assertEquals("Nenhum", spell.savingThrow)
+        assertFalse(spell.spellResistance)
+        assertTrue(spell.description.contains("visão da verdade"))
+        assertTrue(spell.description.contains("Observar +25"))
+        assertTrue(spell.description.contains("esferas de cristal"))
+    }
+
 }
