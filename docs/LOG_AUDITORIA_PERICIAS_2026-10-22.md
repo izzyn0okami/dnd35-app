@@ -1497,3 +1497,10 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - **Histórico consultado:** o log registra a adição inicial de “Ocultar-se de Animais” no lote 5 e, posteriormente, a inclusão de “Invisibilidade Contra Animais” na auditoria de Ranger 1. Esta correção reconcilia as duas etapas sem alterar outras magias ou decisões.
 - **Validação:** pendente de CI de testes unitários, compilação Android e geração do APK. Nenhum teste manual em dispositivo foi realizado.
 - **Próximo passo:** revisar o diff e aguardar CI verde antes de integrar; continuar depois com associações de magias de Ranger/Bardo ainda não auditadas.
+
+
+### Resultado final da PR #208 — 2026-10-24
+
+- **CI:** execução 40061454989 concluída com sucesso. Testes unitários, compilação Android e upload do APK passaram.
+- **Integração:** PR #208 integrada por squash; commit de merge `0b6ecbf2f2fb9160ec459c344d19c91e57c967ce`.
+- **Estado:** correção concluída. A entrada canônica `Invisibilidade Contra Animais` foi mantida e `Ocultar-se de Animais` removida como duplicata.
