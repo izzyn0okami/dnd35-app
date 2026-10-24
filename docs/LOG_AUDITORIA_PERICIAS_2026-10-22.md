@@ -2002,3 +2002,12 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - **Contagem nominal:** 235 entradas após a integração (221 antes).
 - **Limitação:** não foi realizado teste manual em dispositivo Android.
 - **Próxima etapa:** continuar o inventário das listas de 8º nível do Livro do Jogador e agrupar as próximas inclusões em lotes maiores. Itens ainda ausentes identificados nas listas de Clérigo/Druida incluem Aliado Extra-Planar Maior, Curar Ferimentos Críticos em Massa, Infligir Ferimentos Críticos em Massa e Curar Ferimentos Graves em Massa; conferir cada verbete e seus níveis no PDF antes de incluí-los.
+
+
+## 2026-10-24 — Próximo lote de magias de 8º nível (em revisão)
+
+- **Escopo:** sete entradas novas verificadas no PDF brasileiro do *Livro do Jogador*: Aliado Extra-Planar Maior; Curar Ferimentos Críticos em Massa; Infligir Ferimentos Críticos em Massa; Curar Ferimentos Graves em Massa; Corpo de Ferro; Estase Temporal; Metamorfosear Objetos.
+- **Critério:** registrar níveis reais por classe e domínio em mapas separados, mesmo quando a magia está sendo auditada no conjunto de 8º nível.
+- **Regressão:** teste de lote para unicidade, níveis por classe/domínio e efeitos distintivos. A revisão dos verbetes detalhados corrigiu o limite de dano de Infligir Ferimentos Críticos em Massa para +20, retirou níveis de domínio não listados no livro das duas magias em massa afetadas e incluiu foco divino e custo de XP nos componentes de Aliado Extra-Planar Maior.
+- **CI:** pendente; não integrar antes de testes unitários, compilação Android e upload do APK de depuração passarem.
+- **Limitação:** não foi realizado teste manual em dispositivo Android.
