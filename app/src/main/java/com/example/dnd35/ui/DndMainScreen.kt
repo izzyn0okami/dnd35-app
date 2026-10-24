@@ -1,5 +1,7 @@
 package com.example.dnd35.ui
 
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -23,6 +25,8 @@ import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material.icons.filled.AutoStories
 import androidx.compose.material.icons.filled.ContentCopy
 import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.FileDownload
+import androidx.compose.material.icons.filled.FileUpload
 import androidx.compose.material.icons.filled.FitnessCenter
 import androidx.compose.material.icons.filled.MilitaryTech
 import androidx.compose.material.icons.filled.MoreVert
@@ -49,6 +53,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -61,6 +66,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import android.widget.Toast
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.dnd35.pdf.CharacterPdfExporter
 import com.example.dnd35.ui.dialogs.NewCharacterDialog
@@ -86,6 +92,24 @@ fun DndMainScreen(viewModel: CharacterViewModel) {
     var showOverflowMenu by remember { mutableStateOf(false) }
     var showNewCharModal by remember { mutableStateOf(false) }
     var showDeleteConfirmModal by remember { mutableStateOf(false) }
+    var exportAllPending by remember { mutableStateOf(false) }
+
+    LaunchedEffect(viewModel) {
+        viewModel.backupMessages.collect { message ->
+            Toast.makeText(context, message, Toast.LENGTH_LONG).show()
+        }
+    }
+
+    val exportLauncher = rememberLauncherForActivityResult(
+        ActivityResultContracts.CreateDocument("application/json")
+    ) { uri ->
+        if (uri != null) viewModel.exportBackup(uri, exportAllPending)
+    }
+    val importLauncher = rememberLauncherForActivityResult(
+        ActivityResultContracts.OpenDocument()
+    ) { uri ->
+        if (uri != null) viewModel.importBackup(uri)
+    }
 
     Scaffold(
         contentWindowInsets = WindowInsets.safeDrawing,
@@ -196,6 +220,56 @@ fun DndMainScreen(viewModel: CharacterViewModel) {
                             onClick = {
                                 viewModel.duplicateCurrentCharacter()
                                 showOverflowMenu = false
+                            }
+                        )
+
+                        DropdownMenuItem(
+                            text = {
+                                Row(verticalAlignment = Alignment.CenterVertically) {
+                                    Icon(Icons.Default.FileUpload, contentDescription = null, modifier = Modifier.size(18.dp))
+                                    Spacer(modifier = Modifier.width(8.dp))
+                                    Text("Exportar Ficha (arquivo)")
+                                }
+                            },
+                            enabled = activeCharacter != null,
+                            onClick = {
+                                showOverflowMenu = false
+                                activeCharacter?.let { char ->
+                                    exportAllPending = false
+                                    exportLauncher.launch(backupFileName(char.name))
+                                }
+                            }
+                        )
+
+                        DropdownMenuItem(
+                            text = {
+                                Row(verticalAlignment = Alignment.CenterVertically) {
+                                    Icon(Icons.Default.FileUpload, contentDescription = null, modifier = Modifier.size(18.dp))
+                                    Spacer(modifier = Modifier.width(8.dp))
+                                    Text("Exportar Todas as Fichas")
+                                }
+                            },
+                            enabled = characters.isNotEmpty(),
+                            onClick = {
+                                showOverflowMenu = false
+                                exportAllPending = true
+                                exportLauncher.launch(backupFileName(null))
+                            }
+                        )
+
+                        DropdownMenuItem(
+                            text = {
+                                Row(verticalAlignment = Alignment.CenterVertically) {
+                                    Icon(Icons.Default.FileDownload, contentDescription = null, modifier = Modifier.size(18.dp))
+                                    Spacer(modifier = Modifier.width(8.dp))
+                                    Text("Importar Fichas (arquivo)")
+                                }
+                            },
+                            onClick = {
+                                showOverflowMenu = false
+                                importLauncher.launch(
+                                    arrayOf("application/json", "application/octet-stream", "text/plain")
+                                )
                             }
                         )
 
@@ -347,4 +421,17 @@ fun DndMainScreen(viewModel: CharacterViewModel) {
             }
         )
     }
+}
+
+/** Nome sugerido para o arquivo de backup: sem acentos e caracteres problemáticos. */
+internal fun backupFileName(characterName: String?): String {
+    val date = java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.ROOT).format(java.util.Date())
+    if (characterName.isNullOrBlank()) return "fichas-dnd35-$date.json"
+    val safe = java.text.Normalizer.normalize(characterName.trim(), java.text.Normalizer.Form.NFD)
+        .replace(Regex("\\p{M}+"), "")
+        .replace(Regex("[^A-Za-z0-9_-]+"), "_")
+        .trim('_')
+        .take(40)
+        .ifEmpty { "ficha" }
+    return "ficha-$safe-$date.json"
 }

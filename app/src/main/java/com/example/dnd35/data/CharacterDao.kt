@@ -17,8 +17,15 @@ interface CharacterDao {
     @Query("SELECT * FROM characters WHERE id = :id LIMIT 1")
     fun getCharacterById(id: Long): Flow<CharacterEntity?>
 
+    @Query("SELECT * FROM characters ORDER BY updatedAt DESC")
+    suspend fun getAllCharactersOnce(): List<CharacterEntity>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertCharacter(character: CharacterEntity): Long
+
+    // Room executa a inserção de uma lista em uma única transação.
+    @Insert(onConflict = OnConflictStrategy.ABORT)
+    suspend fun insertCharacters(characters: List<CharacterEntity>): List<Long>
 
     @Update
     suspend fun updateCharacter(character: CharacterEntity)
