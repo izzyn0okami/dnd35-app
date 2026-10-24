@@ -2515,7 +2515,7 @@ object Dnd35Rules {
             name = "Restauração Menor",
             level = 2,
             school = "Conjuração",
-            classes = listOf("Clérigo", "Druida", "Paladino", "Ranger"),
+            classes = listOf("Clérigo", "Druida", "Paladino"),
             castTime = "3 rodadas",
             components = "V, G",
             range = "Toque",
@@ -2523,7 +2523,7 @@ object Dnd35Rules {
             savingThrow = "Vontade anula",
             spellResistance = true,
             description = "Cura 1d4 pontos de dano temporário em um atributo ou remove fadiga.",
-            classLevels = mapOf("Clérigo" to 2, "Druida" to 2, "Paladino" to 1, "Ranger" to 1)
+            classLevels = mapOf("Clérigo" to 2, "Druida" to 2, "Paladino" to 1)
         ),
 
         // CÍRCULO 3
