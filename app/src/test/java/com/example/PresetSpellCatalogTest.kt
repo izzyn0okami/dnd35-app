@@ -353,8 +353,8 @@ class PresetSpellCatalogTest {
         val spells = Dnd35Rules.PRESET_SPELLS.associateBy { it.name }
         val holdPortal = spells.getValue("Trancar Portal")
         assertEquals(setOf("Mago", "Feiticeiro"), holdPortal.classes.toSet())
-        assertEquals("Médio (30m + 3m/nível)", holdPortal.range)
-        assertEquals("1 minuto/nível", holdPortal.duration)
+        assertEquals("Médio (30 m + 3 m/nível)", holdPortal.range)
+        assertEquals("1 minuto/nível (D)", holdPortal.duration)
         assertFalse(holdPortal.spellResistance)
 
         val ventriloquism = spells.getValue("Ventriloquismo")
