@@ -1213,18 +1213,18 @@ object Dnd35Rules {
             description = "Cria até 8 litros de água limpa por nível de conjurador."
         ),
         PresetSpell(
-            name = "Detectar Veneno",
+            name = "Detectar Venenos",
             level = 0,
             school = "Adivinhação",
-            classes = listOf("Clérigo", "Druida", "Mago", "Feiticeiro", "Paladino", "Ranger"),
+            classes = listOf("Clérigo", "Druida", "Mago", "Feiticeiro", "Paladino"),
             castTime = "1 ação padrão",
-            components = "V, S",
+            components = "V, G",
             range = "Curto (7,5m)",
             duration = "Instantânea",
             savingThrow = "Nenhum",
             spellResistance = false,
             description = "Determina se uma criatura, objeto ou área contém veneno; identificar o tipo exige um teste de Sabedoria CD 20.",
-            classLevels = mapOf("Clérigo" to 0, "Druida" to 0, "Mago" to 0, "Feiticeiro" to 0, "Paladino" to 1, "Ranger" to 1)
+            classLevels = mapOf("Clérigo" to 0, "Druida" to 0, "Mago" to 0, "Feiticeiro" to 0, "Paladino" to 1)
         ),
         PresetSpell(
             name = "Consertar",
@@ -1385,12 +1385,12 @@ object Dnd35Rules {
             description = "Um clarão deixa uma criatura ofuscada, impondo –1 nas jogadas de ataque."
         ),
         PresetSpell(
-            name = "Conhecer Direção",
+            name = "Intuir Direção",
             level = 0,
             school = "Adivinhação",
             classes = listOf("Bardo", "Druida"),
             castTime = "1 ação padrão",
-            components = "V, S",
+            components = "V, G",
             range = "Pessoal",
             duration = "Instantânea",
             savingThrow = "Nenhum",
