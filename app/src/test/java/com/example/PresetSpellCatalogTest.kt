@@ -1319,6 +1319,26 @@ class PresetSpellCatalogTest {
     }
 
     @Test
+    fun enfeiticarMonstroEmMassaMatchesPlayerHandbookEntry() {
+        val matches = Dnd35Rules.PRESET_SPELLS.filter { it.name == "Enfeitiçar Monstro em Massa" }
+        assertEquals(1, matches.size)
+        val spell = matches.single()
+
+        assertEquals(8, spell.level)
+        assertEquals("Encantamento (Feitiço) [Ação Mental]", spell.school)
+        assertEquals(setOf("Bardo", "Feiticeiro", "Mago"), spell.classes.toSet())
+        assertEquals(mapOf("Bardo" to 6, "Feiticeiro" to 8, "Mago" to 8), spell.classLevels)
+        assertEquals("1 ação padrão", spell.castTime)
+        assertEquals("V", spell.components)
+        assertEquals("Curto (7,5 m + 1,5 m/2 níveis)", spell.range)
+        assertEquals("1 dia/nível", spell.duration)
+        assertEquals("Vontade anula", spell.savingThrow)
+        assertTrue(spell.spellResistance)
+        assertTrue(spell.description.contains("menos de 9 m entre si"))
+        assertTrue(spell.description.contains("não exceda o dobro do nível de conjurador"))
+    }
+
+    @Test
     fun dancaIrresistivelDeOttoMatchesPlayerHandbookEntry() {
         val matches = Dnd35Rules.PRESET_SPELLS.filter { it.name == "Dança Irresistível de Otto" }
         assertEquals(1, matches.size)
