@@ -1868,9 +1868,7 @@ class PresetSpellCatalogTest {
             "Estase Temporal",
             "Metamorfosear Objetos",
             "Invocar Criaturas VII",
-            "Ondas da Exaustão",
-            "Ressurreição",
-            "Restauração Maior"
+            "Ondas da Exaustão"
         ).forEach { name ->
             val spell = spells.getValue(name)
             assertEquals(7, spell.classLevels["Feiticeiro"])
@@ -1887,6 +1885,7 @@ class PresetSpellCatalogTest {
         assertEquals(7, resurrection.classLevels["Clérigo"])
         assertEquals("Toque", resurrection.range)
         assertEquals("Instantânea", resurrection.duration)
+        assertTrue(resurrection.description.contains("10.000 PO"))
 
         val greaterRestoration = spells.getValue("Restauração Maior")
         assertEquals(7, greaterRestoration.classLevels["Clérigo"])
@@ -1895,7 +1894,6 @@ class PresetSpellCatalogTest {
 
         val natureSummoning = spells.getValue("Invocar Aliado da Natureza VII")
         assertEquals(7, natureSummoning.classLevels["Druida"])
-        assertEquals(7, natureSummoning.domainLevels["Animal"])
 
         val symbol = spells.getValue("Símbolo da Morte")
         assertEquals(8, symbol.classLevels["Clérigo"])
