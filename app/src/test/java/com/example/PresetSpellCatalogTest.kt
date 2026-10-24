@@ -8,6 +8,20 @@ import org.junit.Test
 
 class PresetSpellCatalogTest {
     @Test
+    fun guidanceUsesPlayerHandbookNameAndDetails() {
+        val spells = Dnd35Rules.PRESET_SPELLS
+        val guidance = spells.single { it.name == "Orientação" }
+        assertFalse(spells.any { it.name == "Orientação Divina" })
+        assertEquals(0, guidance.level)
+        assertEquals(setOf("Clérigo", "Druida"), guidance.classes.toSet())
+        assertEquals("V, G", guidance.components)
+        assertEquals("Toque", guidance.range)
+        assertEquals("1 min ou até descarregar", guidance.duration)
+        assertEquals("Vontade anula (inofensiva)", guidance.savingThrow)
+        assertTrue(guidance.spellResistance)
+    }
+
+    @Test
     fun catalogIncludesAdditionalPlayerHandbookCantrips() {
         val spells = Dnd35Rules.PRESET_SPELLS
         val names = spells.map { it.name }
