@@ -1988,12 +1988,17 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - **Próximo passo:** continuar a auditoria dos feitiços de 8º nível ainda ausentes nas listas de Clérigo e Druida, agrupando as próximas inclusões em um único lote maior sempre que possível.
 
 
-## 2026-10-24 — Lote consolidado de magias de 8º nível (em revisão)
+## 2026-10-24 — Lote consolidado de magias de 8º nível integrado
 
-- **Objetivo:** substituir PRs pequenas e desatualizadas por uma única revisão baseada na versão atual de `main`, agrupando 14 magias verificadas no PDF brasileiro do *Livro do Jogador*.
-- **Magias do lote:** Campo Antimagia; Criar Mortos-Vivos Maior; Imunidade à Magia Maior; Ciclone; Controlar Plantas; Forma Animal; Inverter a Gravidade; Invocar Aliado da Natureza VIII; Repelir Metal ou Pedra; Prisão; Palavra de Recordação; Tempestade de Fogo; Terremoto; Símbolo da Morte.
-- **Regras preservadas:** níveis por classe e domínio são registrados separadamente. Simpatia e Ordem já estão integradas no catálogo e não são duplicadas; Limpar a Mente e Proteção contra Magias também foram verificadas como já existentes.
-- **Regressão:** teste consolidado para unicidade, nível-base, escola, níveis de classe/domínio e trechos essenciais das descrições.
-- **CI:** primeira execução identificou erro de sintaxe na vírgula separadora após a última magia já existente; corrigido na branch consolidada. Aguardar nova execução completa antes do merge.
+- **PR integrada:** [#238](https://github.com/izzyn0okami/dnd35-app/pull/238).
+- **Commit de merge:** `7f5da71579d045b3033f4ca994da90159ae942dd`.
+- **Fonte primária:** PDF brasileiro *D&D 3.5 — Livro do Jogador* salvo no projeto; entradas de magia e listas de classe/domínio conferidas.
+- **Magias adicionadas:** Campo Antimagia; Criar Mortos-Vivos Maior; Imunidade à Magia Maior; Ciclone; Controlar Plantas; Forma Animal; Inverter a Gravidade; Invocar Aliado da Natureza VIII; Repelir Metal ou Pedra; Prisão; Palavra de Recordação; Tempestade de Fogo; Terremoto; Símbolo da Morte.
+- **Modelagem:** níveis por classe e domínio ficam separados. Para magias com níveis diferentes por classe, o nível-base permanece 8 para identificar a etapa auditada; os valores reais por classe ficam em `classLevels`. Domínios são armazenados em `domainLevels`.
+- **Regressão:** teste consolidado `consolidatedEighthLevelSpellBatchMatchesPlayerHandbook` verifica unicidade, nível-base, escola, níveis por classe/domínio e trechos essenciais de cada descrição.
+- **CI final:** [workflow #40118729831](https://github.com/izzyn0okami/dnd35-app/actions/runs/40118729831) passou integralmente: testes unitários, compilação Android e upload do APK de depuração.
+- **Correção durante a revisão:** a primeira execução apontou ausência de vírgula após a última entrada anterior do catálogo; a sintaxe foi corrigida e a CI final passou.
+- **Consolidação:** PRs #236 e #237 foram encerradas em favor da #238. Ordem e Simpatia já estavam integradas, e não foram duplicadas. Limpar a Mente e Proteção contra Magias também foram verificadas como existentes.
+- **Contagem nominal:** 235 entradas após a integração (221 antes).
 - **Limitação:** não foi realizado teste manual em dispositivo Android.
-- **Nota de fluxo:** PRs anteriores #236 e #237 foram iniciadas sobre uma base anterior; a revisão consolidada foi criada sobre `main` atual para evitar erro de compilação por desatualização e reduzir o número de PRs.
+- **Próxima etapa:** continuar o inventário das listas de 8º nível do Livro do Jogador e agrupar as próximas inclusões em lotes maiores. Itens ainda ausentes identificados nas listas de Clérigo/Druida incluem Aliado Extra-Planar Maior, Curar Ferimentos Críticos em Massa, Infligir Ferimentos Críticos em Massa e Curar Ferimentos Graves em Massa; conferir cada verbete e seus níveis no PDF antes de incluí-los.
