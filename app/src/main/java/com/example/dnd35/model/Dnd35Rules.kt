@@ -1528,7 +1528,8 @@ object Dnd35Rules {
             duration = "1 min/nível",
             savingThrow = "Nenhum",
             spellResistance = true,
-            description = "Enche os aliados com bravura divina, concedendo +1 nas jogadas de ataque e resistências contra medo."
+            description = "Enche os aliados com bravura divina, concedendo +1 nas jogadas de ataque e resistências contra medo.",
+            classLevels = mapOf("Clérigo" to 1, "Paladino" to 1)
         ),
         PresetSpell(
             name = "Sono",
@@ -1582,7 +1583,7 @@ object Dnd35Rules {
             duration = "1 minuto",
             savingThrow = "Nenhum",
             spellResistance = false,
-            description = "Concede bônus de sorte nas jogadas de ataque e dano de +1 a cada três níveis de conjurador (mínimo +1, máximo +6); não se aplica ao dano causado por magias.",
+            description = "Concede bônus de sorte nas jogadas de ataque e dano de +1 a cada três níveis de conjurador (mínimo +1, máximo +3); não se aplica ao dano causado por magias.",
             classLevels = mapOf("Clérigo" to 1, "Paladino" to 1)
         ),
         PresetSpell(
@@ -1719,7 +1720,8 @@ object Dnd35Rules {
             duration = "1 minuto/nível",
             savingThrow = "Vontade anula (inofensivo)",
             spellResistance = true,
-            description = "Concede +2 na CA e nos testes de resistência contra criaturas malignas, protege contra controle mental e impede a aproximação corporal de criaturas convocadas malignas."
+            description = "Concede +2 na CA e nos testes de resistência contra criaturas malignas, protege contra controle mental e impede a aproximação corporal de criaturas convocadas malignas.",
+            classLevels = mapOf("Clérigo" to 1, "Paladino" to 1, "Mago" to 1, "Feiticeiro" to 1)
         ),
         PresetSpell(
             name = "Detectar Mortos-Vivos",
@@ -1827,7 +1829,8 @@ object Dnd35Rules {
             duration = "1 minuto/nível",
             savingThrow = "Vontade anula (inofensivo, objeto)",
             spellResistance = true,
-            description = "Concede a uma arma tocada bônus de melhoria de +1 nas jogadas de ataque e dano."
+            description = "Concede a uma arma tocada bônus de melhoria de +1 nas jogadas de ataque e dano.",
+            classLevels = mapOf("Clérigo" to 1, "Paladino" to 1, "Mago" to 1, "Feiticeiro" to 1)
         ),
         PresetSpell(
             name = "Salto",
@@ -1950,19 +1953,7 @@ object Dnd35Rules {
         ),
 
                 // Magias adicionais de 1º círculo do Livro do Jogador — lote 4
-        PresetSpell(
-            name = "Favor Divino",
-            level = 1,
-            school = "Evocação",
-            classes = listOf("Clérigo", "Paladino"),
-            castTime = "1 ação padrão",
-            components = "V, G, FD",
-            range = "Pessoal",
-            duration = "1 minuto",
-            savingThrow = "Nenhum",
-            spellResistance = false,
-            description = "Concede bônus de sorte de +1 nas jogadas de ataque e dano com armas, aumentando em +1 a cada três níveis de conjurador, até +3."
-        ),
+
         PresetSpell(
             name = "Comando",
             level = 1,
@@ -1993,7 +1984,7 @@ object Dnd35Rules {
             name = "Escudo da Fé",
             level = 1,
             school = "Abjuração",
-            classes = listOf("Clérigo", "Paladino"),
+            classes = listOf("Clérigo"),
             castTime = "1 ação padrão",
             components = "V, G, FD",
             range = "Toque",
@@ -2081,7 +2072,8 @@ object Dnd35Rules {
             duration = "Instantânea",
             savingThrow = "Vontade anula (objeto)",
             spellResistance = true,
-            description = "Transforma um frasco de água em água benta."
+            description = "Transforma um frasco de água em água benta.",
+            classLevels = mapOf("Clérigo" to 1, "Paladino" to 1)
         ),
         PresetSpell(
             name = "Desespero",
@@ -2135,7 +2127,8 @@ object Dnd35Rules {
             duration = "24 horas",
             savingThrow = "Vontade anula (inofensivo)",
             spellResistance = false,
-            description = "Protege uma criatura contra temperaturas ambientais extremas, sem protegê-la de dano de fogo ou frio."
+            description = "Protege uma criatura contra temperaturas ambientais extremas, sem protegê-la de dano de fogo ou frio.",
+            classLevels = mapOf("Bardo" to 1, "Clérigo" to 1, "Druida" to 1, "Paladino" to 1, "Ranger" to 1, "Mago" to 1, "Feiticeiro" to 1)
         ),
         PresetSpell(
             name = "Porrete Mágico",
@@ -2183,7 +2176,7 @@ object Dnd35Rules {
             name = "Amaldiçoar Água",
             level = 1,
             school = "Transmutação",
-            classes = listOf("Clérigo", "Paladino"),
+            classes = listOf("Clérigo"),
             castTime = "1 minuto",
             components = "V, G, M (pó de prata no valor de 25 PO)",
             range = "Toque",
@@ -2296,13 +2289,14 @@ object Dnd35Rules {
             duration = "1 minuto/nível",
             savingThrow = "Vontade anula (inofensivo)",
             spellResistance = true,
-            description = "Concede proteção defensiva contra criaturas caóticas, protege contra controle mental e impede contato corporal de criaturas convocadas caóticas."
+            description = "Concede proteção defensiva contra criaturas caóticas, protege contra controle mental e impede contato corporal de criaturas convocadas caóticas.",
+            classLevels = mapOf("Clérigo" to 1, "Paladino" to 1, "Mago" to 1, "Feiticeiro" to 1)
         ),
         PresetSpell(
             name = "Proteção contra o Bem",
             level = 1,
             school = "Abjuração",
-            classes = listOf("Clérigo", "Paladino", "Mago", "Feiticeiro"),
+            classes = listOf("Clérigo", "Mago", "Feiticeiro"),
             castTime = "1 ação padrão",
             components = "V, G, M/FD",
             range = "Toque",
