@@ -1853,7 +1853,6 @@ class PresetSpellCatalogTest {
     fun seventhLevelArcaneSpellsKeepPerClassLevelsFromPlayerHandbook() {
         val spells = Dnd35Rules.PRESET_SPELLS.associateBy { it.name }
         listOf(
-            "Padrão Cintilante",
             "Clone",
             "Evaporação",
             "Metamorfosear Objetos",
@@ -1864,7 +1863,7 @@ class PresetSpellCatalogTest {
             assertEquals(7, spell.classLevels["Feiticeiro"])
             assertEquals(7, spell.classLevels["Mago"])
         }
-        listOf("Corpo de Ferro", "Estase Temporal").forEach { name ->
+        listOf("Padrão Cintilante", "Corpo de Ferro", "Estase Temporal").forEach { name ->
             val spell = spells.getValue(name)
             assertEquals(8, spell.level)
             assertEquals(8, spell.classLevels["Feiticeiro"])
@@ -1893,8 +1892,8 @@ class PresetSpellCatalogTest {
 
         val symbol = spells.getValue("Símbolo da Morte")
         assertEquals(8, symbol.classLevels["Clérigo"])
-        assertEquals(7, symbol.classLevels["Feiticeiro"])
-        assertEquals(7, symbol.classLevels["Mago"])
+        assertEquals(6, symbol.classLevels["Feiticeiro"])
+        assertEquals(6, symbol.classLevels["Mago"])
 
         val greaterCreateUndead = spells.getValue("Criar Mortos-Vivos Maior")
         assertEquals(8, greaterCreateUndead.classLevels["Clérigo"])
