@@ -637,8 +637,9 @@ class PresetSpellCatalogTest {
         assertEquals(2, cureLight.classLevels.getValue("Ranger"))
 
         val lesserRestoration = spells.getValue("Restauração Menor")
-        assertEquals(setOf("Clérigo", "Druida", "Paladino", "Ranger"), lesserRestoration.classes.toSet())
-        assertEquals(mapOf("Clérigo" to 2, "Druida" to 2, "Paladino" to 1, "Ranger" to 1), lesserRestoration.classLevels)
+        assertEquals(setOf("Clérigo", "Druida", "Paladino"), lesserRestoration.classes.toSet())
+        assertEquals(mapOf("Clérigo" to 2, "Druida" to 2, "Paladino" to 1), lesserRestoration.classLevels)
+        assertFalse("O verbete do Livro do Jogador não lista Restauração Menor para Ranger", "Ranger" in lesserRestoration.classes)
     }
 
 
