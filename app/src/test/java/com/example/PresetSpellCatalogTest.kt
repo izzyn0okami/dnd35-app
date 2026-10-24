@@ -8,6 +8,21 @@ import org.junit.Test
 
 class PresetSpellCatalogTest {
     @Test
+    fun cantripCatalogUsesCanonicalPlayerHandbookNames() {
+        val spells = Dnd35Rules.PRESET_SPELLS
+        listOf("Atordoar", "Espirro Ácido", "Desestabilizar Mortos-Vivos", "Lampejo",
+            "Toque de Fadiga", "Purificar Alimentos e Bebidas").forEach { alias ->
+            assertFalse("Nome alternativo não deve duplicar a magia: $alias", spells.any { it.name == alias })
+        }
+        listOf("Pasmar", "Raio de Ácido", "Romper Morto-Vivo", "Brilho",
+            "Toque da Fadiga", "Purificar Alimentos").forEach { canonical ->
+            assertEquals("Deve haver uma única entrada para $canonical", 1, spells.count { it.name == canonical })
+        }
+        assertEquals("V, G, M", spells.single { it.name == "Toque da Fadiga" }.components)
+        assertEquals("V, G", spells.single { it.name == "Purificar Alimentos" }.components)
+    }
+
+    @Test
     fun directionSpellUsesPlayerHandbookName() {
         val spells = Dnd35Rules.PRESET_SPELLS
         val spell = spells.single { it.name == "Intuir Direção" }
@@ -53,14 +68,8 @@ class PresetSpellCatalogTest {
             "Mensagem",
             "Abrir/Fechar",
             "Prestidigitação",
-            "Purificar Alimentos e Bebidas",
-            "Atordoar",
-            "Espirro Ácido",
             "Marca Arcana",
             "Raio de Gelo",
-            "Desestabilizar Mortos-Vivos",
-            "Toque de Fadiga",
-            "Lampejo",
             "Intuir Direção",
             "Canção de Ninar",
             "Invocar Instrumento",
@@ -124,7 +133,7 @@ class PresetSpellCatalogTest {
     @Test
     fun newCantripsHaveExpectedClassAvailability() {
         val spells = Dnd35Rules.PRESET_SPELLS.associateBy { it.name }
-        assertEquals(setOf("Mago", "Feiticeiro"), spells.getValue("Espirro Ácido").classes.toSet())
+        assertEquals(setOf("Mago", "Feiticeiro"), spells.getValue("Raio de Ácido").classes.toSet())
         assertFalse(spells.getValue("Espirro Ácido").spellResistance)
         assertEquals(setOf("Bardo"), spells.getValue("Canção de Ninar").classes.toSet())
         assertEquals(setOf("Clérigo", "Druida"), spells.getValue("Curar Ferimentos Mínimos").classes.toSet())
@@ -227,7 +236,7 @@ class PresetSpellCatalogTest {
         assertEquals("V, G", spell.components)
         assertEquals("Curto (7,5m)", spell.range)
         assertTrue(spell.description.contains("Sabedoria CD 20"))
-        val purify = Dnd35Rules.PRESET_SPELLS.single { it.name == "Purificar Alimentos e Bebidas" }
+        val purify = Dnd35Rules.PRESET_SPELLS.single { it.name == "Purificar Alimentos" }
         assertEquals("3m", purify.range)
     }
 
