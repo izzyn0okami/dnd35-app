@@ -118,7 +118,6 @@ class PresetSpellCatalogTest {
             "Falar com Animais",
             "Produzir Chama",
             "Raio Colorido",
-            "Favor Divino",
             "Comando",
             "Santuário",
             "Escudo da Fé",
@@ -166,11 +165,13 @@ class PresetSpellCatalogTest {
     @Test
     fun firstLevelSpellBatchFourHasExpectedClassesAndMechanics() {
         val spells = Dnd35Rules.PRESET_SPELLS.associateBy { it.name }
-        assertEquals(setOf("Clérigo", "Paladino"), spells.getValue("Favor Divino").classes.toSet())
+        assertEquals(setOf("Clérigo", "Paladino"), spells.getValue("Auxílio Divino").classes.toSet())
+        assertEquals(1, spells.getValue("Auxílio Divino").classLevels.getValue("Paladino"))
+        assertTrue(spells.getValue("Auxílio Divino").description.contains("máximo +3"))
         assertEquals(setOf("Clérigo"), spells.getValue("Comando").classes.toSet())
         assertTrue(spells.getValue("Comando").spellResistance)
         assertEquals(setOf("Clérigo"), spells.getValue("Santuário").classes.toSet())
-        assertEquals(setOf("Clérigo", "Paladino"), spells.getValue("Escudo da Fé").classes.toSet())
+        assertEquals(setOf("Clérigo"), spells.getValue("Escudo da Fé").classes.toSet())
         assertEquals(setOf("Druida", "Ranger"), spells.getValue("Presa Mágica").classes.toSet())
         assertEquals(setOf("Druida", "Ranger"), spells.getValue("Passos Longos").classes.toSet())
         assertEquals(setOf("Druida"), spells.getValue("Fogo das Fadas").classes.toSet())
@@ -195,7 +196,7 @@ class PresetSpellCatalogTest {
     @Test
     fun firstLevelSpellBatchSixHasExpectedClassesAndMechanics() {
         val spells = Dnd35Rules.PRESET_SPELLS.associateBy { it.name }
-        assertEquals(setOf("Clérigo", "Paladino"), spells.getValue("Amaldiçoar Água").classes.toSet())
+        assertEquals(setOf("Clérigo"), spells.getValue("Amaldiçoar Água").classes.toSet())
         assertEquals("1 minuto", spells.getValue("Amaldiçoar Água").castTime)
         assertEquals(setOf("Clérigo", "Mago", "Feiticeiro"), spells.getValue("Escudo Entrópico").classes.toSet())
         assertFalse(spells.getValue("Escudo Entrópico").spellResistance)
@@ -291,13 +292,19 @@ class PresetSpellCatalogTest {
     @Test
     fun firstLevelAlignmentProtectionSpellsHaveExpectedClassesAndMechanics() {
         val spells = Dnd35Rules.PRESET_SPELLS.associateBy { it.name }
-        listOf("Proteção contra o Caos", "Proteção contra o Bem").forEach { name ->
+        listOf("Proteção contra o Caos", "Proteção contra o Mal").forEach { name ->
             val spell = spells.getValue(name)
             assertEquals(setOf("Clérigo", "Paladino", "Mago", "Feiticeiro"), spell.classes.toSet())
+            assertEquals(1, spell.classLevels.getValue("Paladino"))
             assertEquals("Toque", spell.range)
             assertEquals("1 minuto/nível", spell.duration)
             assertTrue(spell.spellResistance)
         }
+        val goodProtection = spells.getValue("Proteção contra o Bem")
+        assertEquals(setOf("Clérigo", "Mago", "Feiticeiro"), goodProtection.classes.toSet())
+        assertEquals("Toque", goodProtection.range)
+        assertEquals("1 minuto/nível", goodProtection.duration)
+        assertTrue(goodProtection.spellResistance)
         val lawProtection = spells.getValue("Proteção contra a Lei")
         assertEquals(setOf("Clérigo", "Mago", "Feiticeiro"), lawProtection.classes.toSet())
         assertEquals("Toque", lawProtection.range)
@@ -978,6 +985,32 @@ class PresetSpellCatalogTest {
         assertEquals(expected.size, expected.keys.sumOf { name -> spells.count { it.name == name } })
     }
 
+
+    @Test
+    fun paladinFirstLevelSpellListMatchesPlayerHandbookAndClassLevels() {
+        val spells = Dnd35Rules.PRESET_SPELLS
+        val expected = setOf(
+            "Abençoar Água", "Abençoar Arma", "Arma Mágica", "Auxílio Divino",
+            "Bênção", "Criar Água", "Curar Ferimentos Leves", "Detectar Mortos-Vivos",
+            "Detectar Venenos", "Ler Magias", "Proteção contra o Caos",
+            "Proteção contra o Mal", "Resistência", "Restauração Menor",
+            "Suportar Elementos", "Virtude"
+        )
+        val actual = spells.filter { it.classLevels["Paladino"] == 1 }.map { it.name }.toSet()
+        assertEquals(expected, actual)
+        expected.forEach { name ->
+            val matches = spells.filter { it.name == name }
+            assertEquals("Deve existir uma única entrada para $name", 1, matches.size)
+            assertTrue("$name deve incluir Paladino na lista de classes", "Paladino" in matches.single().classes)
+            assertEquals(1, matches.single().classLevels["Paladino"])
+        }
+        assertFalse("Favor Divino é uma tradução duplicada de Auxílio Divino", spells.any { it.name == "Favor Divino" })
+        assertFalse("Proteção contra o Bem não pertence à lista de Paladino", spells.single { it.name == "Proteção contra o Bem" }.classes.contains("Paladino"))
+        assertFalse("Escudo da Fé não pertence à lista de Paladino", spells.single { it.name == "Escudo da Fé" }.classes.contains("Paladino"))
+        assertFalse("Amaldiçoar Água não pertence à lista de Paladino", spells.single { it.name == "Amaldiçoar Água" }.classes.contains("Paladino"))
+        assertFalse("Detectar Bem não pertence à lista de Paladino", spells.single { it.name == "Detectar Bem" }.classes.contains("Paladino"))
+        assertFalse("Detectar Mal não pertence à lista de Paladino", spells.single { it.name == "Detectar Mal" }.classes.contains("Paladino"))
+    }
 
     @Test
     fun paladinSpellListIncludesMissingPlayerHandbookSpellsFromLevelsTwoToFour() {
