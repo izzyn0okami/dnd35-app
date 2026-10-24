@@ -1432,3 +1432,13 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Diagnóstico: o teste filtrava apenas entradas com classLevels["Ranger"] == 1, mas parte do catálogo legado registra nível no campo geral `level` e lista Ranger em `classes`, sem mapa explícito `classLevels`. O filtro, portanto, ignorava magias existentes; isso não prova que as magias estivessem ausentes do catálogo.
 - Ajuste feito na PR #205: o teste agora verifica entradas que incluem Ranger em `classes` e usa o nível específico `classLevels["Ranger"]` quando existe, recorrendo ao campo `level` apenas quando o mapa específico está ausente.
 - **Validação pendente:** aguardar nova CI; não fazer merge antes de todos os testes e compilação passarem. A correção anterior de nome canônico/duplicata permanece.
+
+
+## 2026-10-24 — Terceira análise da CI de Ranger 1
+
+- **CI run 1105:** falhou em `rangerFirstLevelCatalogMatchesPlayerHandbook`; 189 testes executados, 1 falha. A compilação principal foi interrompida após o teste unitário falhar.
+- A causa desta vez é a comparação excessivamente ampla: o teste comparava todos os registros do catálogo que mencionam Ranger e têm nível efetivo 1 com a lista resumida de 14 magias da página impressa 164. O catálogo contém outros registros legados de magias associados a Ranger sem nível específico explícito; a diferença, por si só, não demonstra que esses registros estejam incorretos.
+- **Correção na PR #205:** o teste agora verifica as 14 entradas canônicas da lista resumida individualmente, incluindo unicidade, associação à classe e nível efetivo 1 (nível específico quando informado; campo geral como fallback). Não usa a lista resumida como prova automática de que todas as outras associações de Ranger no catálogo são inválidas.
+- **Limite e pendência:** esta mudança corrige o escopo do teste, mas não valida todas as associações de classe/nível de Ranger no catálogo completo. Essas associações devem ser auditadas em etapa separada, consultando os verbetes/listas relevantes do PDF, sem remover magias por inferência.
+- **Fonte primária desta etapa:** PDF brasileiro *D&D 3.5 — Livro do Jogador*, capítulo 11, lista resumida “Magias de Ranger”, página impressa 164. Nenhum teste manual em dispositivo Android foi realizado.
+- **Estado:** aguardando nova CI da PR #205; não fazer merge antes de testes unitários, compilação e publicação do APK passarem.
