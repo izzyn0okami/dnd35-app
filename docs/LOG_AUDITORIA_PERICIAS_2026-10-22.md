@@ -1994,6 +1994,6 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - **Magias do lote:** Campo Antimagia; Criar Mortos-Vivos Maior; Imunidade à Magia Maior; Ciclone; Controlar Plantas; Forma Animal; Inverter a Gravidade; Invocar Aliado da Natureza VIII; Repelir Metal ou Pedra; Prisão; Palavra de Recordação; Tempestade de Fogo; Terremoto; Símbolo da Morte.
 - **Regras preservadas:** níveis por classe e domínio são registrados separadamente. Simpatia e Ordem já estão integradas no catálogo e não são duplicadas; Limpar a Mente e Proteção contra Magias também foram verificadas como já existentes.
 - **Regressão:** teste consolidado para unicidade, nível-base, escola, níveis de classe/domínio e trechos essenciais das descrições.
-- **CI:** pendente nesta revisão. Não realizar merge até passarem testes unitários, compilação Android e upload do APK de depuração.
+- **CI:** primeira execução identificou erro de sintaxe na vírgula separadora após a última magia já existente; corrigido na branch consolidada. Aguardar nova execução completa antes do merge.
 - **Limitação:** não foi realizado teste manual em dispositivo Android.
 - **Nota de fluxo:** PRs anteriores #236 e #237 foram iniciadas sobre uma base anterior; a revisão consolidada foi criada sobre `main` atual para evitar erro de compilação por desatualização e reduzir o número de PRs.
