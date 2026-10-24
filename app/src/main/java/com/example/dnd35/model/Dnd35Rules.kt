@@ -4458,8 +4458,8 @@ object Dnd35Rules {
             savingThrow = "Nenhum",
             spellResistance = false,
             description = "Invoca uma criatura extra-planar (normalmente um planar, elemental ou besta mágica nativa de outro plano). A criatura aparece no local escolhido e age imediatamente no turno do conjurador, atacando seus oponentes com o melhor de suas habilidades. O conjurador pode ordenar outras tarefas se puder comunicar-se com ela. Invoca uma criatura da lista de 7º nível, 1d3 criaturas do mesmo tipo da lista de 6º nível ou 1d4+1 criaturas do mesmo tipo de qualquer nível inferior; todas devem ficar a menos de 9 m entre si. A criatura invocada não pode invocar ou conjurar outras criaturas nem usar teletransporte ou viagem planar, e não pode ser invocada em ambiente que não a suporte. O tipo de criatura escolhido pode determinar os descritores de tendência da magia, conforme as regras de Invocar Criaturas I. Foco arcano: uma pequena bolsa e uma pequena vela, que não precisa estar acesa.",
-            classLevels = mapOf("Clérigo" to 8, "Feiticeiro" to 8, "Mago" to 8)
-        ),,
+            classLevels = mapOf("Clérigo" to 7, "Feiticeiro" to 7, "Mago" to 7)
+        ),
         PresetSpell(
             name = "Ondas da Exaustão",
             level = 7,
