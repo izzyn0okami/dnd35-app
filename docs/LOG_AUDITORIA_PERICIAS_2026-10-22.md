@@ -1452,3 +1452,13 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Foi removida a entrada redundante **Detectar Laços e Covas**, preservando **Detectar Armadilhas** como nome canônico.
 - **Limitação mantida:** as associações de classe e nível de todas as outras magias de Ranger ainda precisam de auditoria individual pelos verbetes/listas do PDF; esta PR não declara essa auditoria completa. Nenhum teste manual em dispositivo Android foi realizado.
 - **Próximo escopo:** continuar a auditoria das listas de magias de Ranger de 2º, 3º e 4º níveis, conferindo os registros existentes antes de alterar o catálogo, e registrar separadamente qualquer divergência confirmada.
+
+
+## 2026-10-24 — Auditoria de associação de classe: Restauração Menor
+
+- **Fonte primária:** PDF brasileiro *D&D 3.5 — Livro do Jogador*, verbete “Restauração Menor”, página impressa 240. O campo **Nível** lista somente **Clr 2, Drd 2, Pal 1**; Ranger não aparece.
+- **Problema confirmado:** `Dnd35Rules.kt` incluía Ranger 1 em `classes` e `classLevels`, e o teste `paladinAndRangerSpellListsHaveCorrectClassSpecificLevels` perpetuava essa associação.
+- **Correção na branch `audit/remove-ranger-lesser-restoration`:** removida a associação de Ranger do catálogo; teste de regressão atualizado para exigir apenas Clérigo 2, Druida 2 e Paladino 1 e rejeitar Ranger.
+- **Escopo deliberadamente limitado:** não foram removidas outras magias de Ranger com base apenas na lista resumida de 1º nível. O PDF contém listas resumidas e listas de classe/verbete que precisam ser reconciliadas caso a caso, priorizando o verbete completo para a disponibilidade por classe e registrando conflitos explícitos.
+- **Validação:** aguardando CI desta alteração; não fazer merge até testes unitários, compilação e upload do APK passarem. Nenhum teste manual em dispositivo Android foi realizado.
+- **Próximo passo:** após CI verde, integrar a correção e continuar a auditoria das associações Ranger por nível com base nos verbetes completos, sem repetir as verificações já cobertas pelos testes existentes.
