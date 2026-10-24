@@ -1154,3 +1154,13 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Adicionadas **Apagar**, **Aura Mágica de Nystul**, **Imagem Silenciosa** e **Ventriloquismo**, ausentes do catálogo, com níveis por classe, componentes, alcance, duração, resistência e resumo dos efeitos conforme os verbetes do livro.
 - Acrescentados testes de regressão para existência única, nível, classes e campos importantes.
 - A expansão é parcial: ainda é necessário confrontar as listas de 1º nível das demais classes e níveis superiores. Nenhum teste manual em dispositivo Android foi realizado nesta etapa.
+
+
+---
+
+## Complemento — correção da PR #183 após falhas do CI
+
+- O CI detectou que **Apagar**, **Aura Mágica de Nystul**, **Imagem Silenciosa** e **Ventriloquismo** já existiam no catálogo. A proposta inicial criou duplicatas, portanto não deve ser integrada como estava.
+- Removidas as quatro novas duplicatas e aproveitadas as entradas preexistentes, adicionando nelas os níveis por classe ausentes.
+- Ajustados os testes para validar as entradas únicas e respeitar a notação dos componentes já registrada no catálogo.
+- A PR #183 permanece aberta até o CI ser executado novamente e passar.
