@@ -38,7 +38,6 @@ class PresetSpellCatalogTest {
             "Enfeitiçar Pessoa",
             "Área Escorregadia",
             "Detectar Portas Secretas",
-            "Retirada Acelerada",
             "Proteção contra o Mal",
             "Detectar Mortos-Vivos",
             "Disfarçar-se",
@@ -372,6 +371,8 @@ class PresetSpellCatalogTest {
             "Transformação Momentânea"
         )
         assertTrue(spells.keys.containsAll(expected))
+        assertFalse(spells.containsKey("Retirada Acelerada"))
+        assertTrue(spells.containsKey("Recuo Acelerado"))
         val slipperyArea = spells.getValue("Área Escorregadia")
         assertEquals(setOf("Bardo", "Mago", "Feiticeiro"), slipperyArea.classes.toSet())
         assertEquals("V, G, M", slipperyArea.components)
