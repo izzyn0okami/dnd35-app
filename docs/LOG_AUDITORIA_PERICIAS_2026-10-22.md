@@ -1651,3 +1651,7 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - **Regressão:** teste dedicado verifica unicidade, escola, nível, classes, domínio, componentes, execução, alcance, alvo, duração e requisitos de localização.
 - **Validação:** CI pendente; sem teste manual em dispositivo Android. Não integrar até CI verde.
 - **Contagem antes desta PR:** 196 entradas nominais únicas na main; esta inclusão elevará para 197 se integrada.
+
+
+- **Implementação complementar:** o modelo `PresetSpell` agora possui `domainLevels`, separado de `classLevels`, para representar corretamente o domínio do Conhecimento sem tratá-lo como classe de personagem.
+- **Teste complementar:** a regressão verifica `domainLevels = Conhecimento 8` separadamente dos níveis de Clérigo, Feiticeiro e Mago.
