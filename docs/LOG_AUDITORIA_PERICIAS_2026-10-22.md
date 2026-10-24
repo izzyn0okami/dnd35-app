@@ -2016,3 +2016,12 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - **Contagem nominal:** 242 entradas após a integração (235 antes).
 - **Limitação:** não foi realizado teste manual em dispositivo Android.
 - **Próxima etapa:** verificar a cobertura integral das listas de magias de 8º nível do *Livro do Jogador* e, se estiver completa, registrar o fechamento dessa etapa antes de avançar para outro nível.
+
+
+## 2026-10-24 — Verificação final das listas de 8º nível (em revisão)
+
+- **Lote final:** inclui Clone e Evaporação, ausentes do catálogo, e completa os níveis de domínio Proteção 8 para Limpar a Mente e Magia 8 para Proteção contra Magias.
+- **Auditoria cruzada:** teste de completude compara as listas de 8º nível de Clérigo, Druida e Feiticeiro/Mago do PDF, além dos 21 domínios que possuem magia de 8º nível nesta etapa.
+- **Critério:** validar presença única, nível por classe e domínio; não tratar Ondas da Exaustão como magia de 8º nível, pois o verbete detalhado a classifica como Feiticeiro/Mago 7.
+- **CI:** pendente; não integrar antes de testes unitários, compilação Android e upload do APK de depuração passarem.
+- **Limitação:** não foi realizado teste manual em dispositivo Android.
