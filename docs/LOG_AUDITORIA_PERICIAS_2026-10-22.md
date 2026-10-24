@@ -1114,3 +1114,12 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Registrados componentes, alcance, duração, testes de resistência, resistência à magia e efeitos conforme os verbetes do capítulo 11 (Brilho, p. 178; Pasmar, p. 226; Raio de Ácido e Romper Morto-Vivo, pp. 235–236).
 - Adicionados testes de regressão para unicidade, nível, classes e campos mecânicos essenciais.
 - Esta é uma expansão parcial do catálogo, não uma confirmação de completude do Livro do Jogador. Nenhum teste manual em dispositivo Android foi realizado nesta etapa.
+
+---
+
+## 2026-10-23 — Nome oficial de Orientação
+
+- Conferido o verbete **Orientação** no Livro do Jogador brasileiro, p. 225: Clérigo 0/Druida 0, componentes V, G, alcance Toque, duração 1 minuto ou até ser descarregada, Vontade anula (inofensiva) e resistência à magia Sim.
+- Renomeada a entrada predefinida de **Orientação Divina** para **Orientação**, conforme a nomenclatura da referência. Atualizados os componentes e o texto do teste de resistência para acompanhar o verbete.
+- Criado teste de regressão para o nome, nível, classes e campos mecânicos.
+- Não foi encontrada referência a esse nome nos testes automatizados anteriores. A mudança afeta o nome mostrado ao selecionar a magia predefinida; fichas já salvas com o texto antigo não foram migradas. Nenhum teste manual em dispositivo Android foi realizado nesta etapa.

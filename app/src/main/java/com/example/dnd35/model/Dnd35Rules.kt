@@ -1133,15 +1133,15 @@ object Dnd35Rules {
             description = "Permite decifrar e ler inscrições mágicas em pergaminhos, livros e armas."
         ),
         PresetSpell(
-            name = "Orientação Divina",
+            name = "Orientação",
             level = 0,
             school = "Adivinhação",
             classes = listOf("Clérigo", "Druida"),
             castTime = "1 ação padrão",
-            components = "V, S",
+            components = "V, G",
             range = "Toque",
             duration = "1 min ou até descarregar",
-            savingThrow = "Vontade anula",
+            savingThrow = "Vontade anula (inofensiva)",
             spellResistance = true,
             description = "Concede +1 de bônus de competência em uma única jogada de ataque, teste de resistência ou perícia."
         ),
