@@ -1845,6 +1845,16 @@ class PresetSpellCatalogTest {
             val spell = Dnd35Rules.PRESET_SPELLS.single { it.name == name }
             assertEquals("$name must be ${domain.first} ${domain.second}", domain.second, spell.domainLevels[domain.first])
         }
+        val clone = Dnd35Rules.PRESET_SPELLS.single { it.name == "Clone" }
+        assertEquals("Necromancia", clone.school)
+        assertEquals("V, G, M, F", clone.components)
+        assertTrue(clone.description.contains("duplicata de um ser vivo"))
+        assertTrue(clone.description.contains("alma será transferida"))
+        val evaporation = Dnd35Rules.PRESET_SPELLS.single { it.name == "Evaporação" }
+        assertEquals("Necromancia", evaporation.school)
+        assertEquals("Água" to 8, evaporation.domainLevels.entries.single { it.key == "Água" }.toPair())
+        assertTrue(evaporation.description.contains("máximo 20d6"))
+        assertTrue(evaporation.description.contains("máximo 20d8"))
     }
 
 }
