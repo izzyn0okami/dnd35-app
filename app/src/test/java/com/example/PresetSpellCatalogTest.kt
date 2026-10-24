@@ -1319,6 +1319,27 @@ class PresetSpellCatalogTest {
     }
 
     @Test
+    fun dancaIrresistivelDeOttoMatchesPlayerHandbookEntry() {
+        val matches = Dnd35Rules.PRESET_SPELLS.filter { it.name == "Dança Irresistível de Otto" }
+        assertEquals(1, matches.size)
+        val spell = matches.single()
+
+        assertEquals(8, spell.level)
+        assertEquals("Encantamento (Compulsão) [de Ação Mental]", spell.school)
+        assertEquals(setOf("Bardo", "Feiticeiro", "Mago"), spell.classes.toSet())
+        assertEquals(mapOf("Bardo" to 6, "Feiticeiro" to 8, "Mago" to 8), spell.classLevels)
+        assertEquals("1 ação padrão", spell.castTime)
+        assertEquals("V", spell.components)
+        assertEquals("Toque", spell.range)
+        assertEquals("1d4+1 rodadas", spell.duration)
+        assertEquals("Nenhum", spell.savingThrow)
+        assertTrue(spell.spellResistance)
+        assertTrue(spell.description.contains("–4 na CA"))
+        assertTrue(spell.description.contains("–10 nos testes de resistência de Reflexos"))
+        assertTrue(spell.description.contains("ataques de oportunidade a cada turno"))
+    }
+
+    @Test
     fun nuvemIncendiariaMatchesPlayerHandbookEntry() {
         val matches = Dnd35Rules.PRESET_SPELLS.filter { it.name == "Nuvem Incendiária" }
         assertEquals(1, matches.size)
