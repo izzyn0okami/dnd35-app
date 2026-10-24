@@ -1047,4 +1047,25 @@ class PresetSpellCatalogTest {
         assertEquals("O catálogo não deve conter nomes duplicados",
             spells.size, spells.map { it.name }.toSet().size)
     }
+
+
+    @Test
+    fun rangerFirstLevelCatalogMatchesPlayerHandbook() {
+        val spells = Dnd35Rules.PRESET_SPELLS
+        val expected = setOf(
+            "Acalmar Animais", "Alarme", "Constrição", "Detectar Animais ou Plantas",
+            "Detectar Armadilhas", "Detectar Venenos", "Enfeitiçar Animal",
+            "Falar com Animais", "Invisibilidade Contra Animais",
+            "Invocar Aliado da Natureza I", "Ler Magias", "Mensageiro Animal",
+            "Passos Longos", "Passos sem Pegadas"
+        )
+        val actual = spells.filter { it.classLevels["Ranger"] == 1 }.map { it.name }.toSet()
+        assertEquals(expected, actual)
+        expected.forEach { name ->
+            val matches = spells.filter { it.name == name }
+            assertEquals("Deve existir uma única entrada para $name", 1, matches.size)
+            assertTrue("$name deve incluir Ranger na lista de classes", "Ranger" in matches.single().classes)
+            assertEquals(1, matches.single().classLevels["Ranger"])
+        }
+    }
 }
