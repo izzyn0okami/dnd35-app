@@ -1185,4 +1185,27 @@ class PresetSpellCatalogTest {
         assertTrue(spell.description.contains("forma astral ou etérea"))
     }
 
+
+    @Test
+    fun discernirLocalizacaoMatchesPlayerHandbookEntry() {
+        val matches = Dnd35Rules.PRESET_SPELLS.filter { it.name == "Discernir Localização" }
+        assertEquals(1, matches.size)
+        val spell = matches.single()
+
+        assertEquals(8, spell.level)
+        assertEquals("Adivinhação", spell.school)
+        assertEquals(setOf("Clérigo", "Feiticeiro", "Mago"), spell.classes.toSet())
+        assertEquals(mapOf("Clérigo" to 8, "Feiticeiro" to 8, "Mago" to 8), spell.classLevels)
+        assertEquals(mapOf("Conhecimento" to 8), spell.domainLevels)
+        assertEquals("10 minutos", spell.castTime)
+        assertEquals("V, G, FD", spell.components)
+        assertEquals("Ilimitado", spell.range)
+        assertEquals("Instantânea", spell.duration)
+        assertEquals("Nenhum", spell.savingThrow)
+        assertFalse(spell.spellResistance)
+        assertTrue(spell.description.contains("Limpar a Mente"))
+        assertTrue(spell.description.contains("possuir um item que lhe pertenceu"))
+        assertTrue(spell.description.contains("precisa tê-lo tocado"))
+    }
+
 }
