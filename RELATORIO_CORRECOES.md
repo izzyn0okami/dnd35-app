@@ -157,3 +157,9 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - A descrição agora registra o teste de nível de conjurador (1d20 + nível, máximo +25), CD 20 para alvo/local próximo, CD 25 para informações detalhadas (resposta incompleta), CD 30 para rumores (resposta vaga) e o custo de 100 XP.
 - Adicionado teste de regressão para os níveis de Feiticeiro/Mago, metadados básicos e os limites mecânicos explicitados no livro.
 - Esta correção cobre apenas a magia Visão; a conferência final de Vidência Maior, Visão Arcana Maior e Convocação Instantânea de Drawmij permanece pendente.
+
+### Revisão de Convocação Instantânea de Drawmij — Livro do Jogador (2026-10-24)
+- A lista/descrição da magia no PDF brasileiro, página impressa 188, informa alcance “Veja texto”, falha se o objeto estiver sob posse de outra criatura, identificação do portador e localização aproximada, inscrição invisível legível com ler magias e componente material de safira de pelo menos 1.000 PO.
+- Corrigido o alcance genérico “Ilimitado (veja texto)” para “Veja texto” e completada a descrição com essas condições e o custo do componente.
+- Adicionado teste de regressão para níveis por classe, alcance, duração, resistência e detalhes da descrição.
+- A auditoria de Vidência Maior e Visão Arcana Maior permanece pendente de fechamento.
