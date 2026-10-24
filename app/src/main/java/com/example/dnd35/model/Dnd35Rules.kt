@@ -2355,15 +2355,28 @@ object Dnd35Rules {
         PresetSpell(
             name = "Invocar Aliado da Natureza I",
             level = 1,
-            school = "Conjuração",
+            school = "Conjuração (Invocação)",
             classes = listOf("Druida", "Ranger"),
             castTime = "1 rodada",
             components = "V, G, FD",
-            range = "Curto (7,5m + 1,5m/2 níveis)",
-            duration = "1 rodada/nível",
+            range = "Curto (7,5 m + 1,5 m/2 níveis)",
+            duration = "1 rodada/nível (D)",
             savingThrow = "Nenhum",
             spellResistance = false,
-            description = "Convoca uma criatura natural escolhida entre as opções permitidas para o primeiro nível da magia; ela serve ao conjurador durante a duração."
+            description = "Invoca uma criatura natural que aparece no local escolhido e age imediatamente no turno do conjurador; pode receber ordens se houver comunicação."
+        ),
+        PresetSpell(
+            name = "Invocar Aliado da Natureza II",
+            level = 2,
+            school = "Conjuração (Invocação)",
+            classes = listOf("Druida", "Ranger"),
+            castTime = "1 rodada",
+            components = "V, G, FD",
+            range = "Curto (7,5 m + 1,5 m/2 níveis)",
+            duration = "1 rodada/nível (D)",
+            savingThrow = "Nenhum",
+            spellResistance = false,
+            description = "Como Invocar Aliado da Natureza I, mas permite invocar uma criatura da lista de 2º nível ou 1d3 criaturas da lista de 1º nível, desde que todas sejam do mesmo tipo."
         ),
 
         // CÍRCULO 2
