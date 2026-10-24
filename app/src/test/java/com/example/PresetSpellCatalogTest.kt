@@ -1936,4 +1936,33 @@ class PresetSpellCatalogTest {
         assertEquals(7, reversal.domainLevels["Sorte"])
     }
 
+
+    @Test
+    fun refugeItemsDescriptionMatchesPlayerHandbookDetectionAndSuspensionRules() {
+        val spell = Dnd35Rules.PRESET_SPELLS.single { it.name == "Refugiar Itens" }
+        assertEquals("Abjuração", spell.school)
+        assertEquals(7, spell.classLevels["Feiticeiro"])
+        assertEquals(7, spell.classLevels["Mago"])
+        assertEquals("Toque", spell.range)
+        assertEquals("1 dia/nível (D)", spell.duration)
+        assertTrue(spell.spellResistance)
+        assertTrue(spell.description.contains("invisível a qualquer forma de visão"))
+        assertTrue(spell.description.contains("animação suspensa"))
+        assertTrue(spell.description.contains("adivinhação"))
+        assertFalse(spell.description.contains("criatura voluntária"))
+    }
+
+    @Test
+    fun spellTurningDescriptionUsesOneD4PlusSixSpellLevels() {
+        val spell = Dnd35Rules.PRESET_SPELLS.single { it.name == "Reverter Magia" }
+        assertEquals("Abjuração", spell.school)
+        assertEquals("Pessoal", spell.range)
+        assertEquals("Nenhum", spell.savingThrow)
+        assertFalse(spell.spellResistance)
+        assertTrue(spell.description.contains("1d4+6 níveis de magia"))
+        assertFalse(spell.description.contains("sete a dez níveis"))
+        assertTrue(spell.description.contains("efeitos de área"))
+        assertTrue(spell.description.contains("magias de toque"))
+    }
+
 }
