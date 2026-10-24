@@ -1211,3 +1211,13 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - A auditoria da lista arcana de 1º nível continua incompleta; esta alteração não declara o catálogo integral. Não foi realizado teste manual em dispositivo Android.
 
 - CI posterior identificou uma expectativa de teste desatualizada para **Trancar Portal** (espaçamento do alcance e indicação de duração dissipável `(D)`), não uma falha de compilação do catálogo. As asserções foram alinhadas aos campos canônicos da magia; aguardar nova CI antes de integrar.
+
+
+---
+
+## 2026-10-24 — Consolidação de magias arcanas duplicadas semanticamente
+
+- Após a integração da PR #187, a revisão semântica do catálogo identificou que **Disco Flutuante de Tenser** duplicava a entrada preexistente **Disco Flutuante**, e **Montaria Arcana** duplicava a magia já catalogada como **Montaria**. A verificação anterior cobria nomes repetidos literalmente, mas não equivalência de nomes/efeitos.
+- A correção proposta mantém uma única entrada por magia: padroniza a entrada de Disco Flutuante como **Disco Flutuante de Tenser**, remove a nova duplicata e enriquece a descrição mecânica da entrada canônica; remove **Montaria Arcana** e atualiza **Montaria** com alcance, duração dissipável, descrição e níveis por classe.
+- Os testes passam a verificar que os nomes redundantes não existem e que **Montaria** mantém a disponibilidade para Bardo, Mago e Feiticeiro. A CI desta correção ainda precisa ser aprovada antes do merge.
+- Lição de auditoria: além de unicidade textual, comparar nomes alternativos, classes, componentes e efeitos para evitar duplicação semântica. O catálogo de magias arcanas de 1º nível permanece em auditoria; não declarar a lista completa.
