@@ -1619,4 +1619,77 @@ class PresetSpellCatalogTest {
         assertTrue(spell.description.contains("pequena bolsa e uma pequena vela"))
     }
 
+
+    @Test
+    fun aurasAndAlignmentMantlesMatchPlayerHandbookEntries() {
+        val expected = mapOf(
+            "Aura Profana" to Triple("Abjuração [Mal]", mapOf("Clérigo" to 8), mapOf("Mal" to 8)),
+            "Aura Sagrada" to Triple("Abjuração [Bem]", mapOf("Clérigo" to 8), mapOf("Bem" to 8)),
+            "Escudo da Ordem" to Triple("Abjuração [Ordem]", mapOf("Clérigo" to 8), mapOf("Ordem" to 8)),
+            "Manto do Caos" to Triple("Abjuração [Caos]", mapOf("Clérigo" to 8), mapOf("Caos" to 8))
+        )
+        expected.forEach { (name, values) ->
+            val matches = Dnd35Rules.PRESET_SPELLS.filter { it.name == name }
+            assertEquals(1, matches.size)
+            val spell = matches.single()
+            assertEquals(8, spell.level)
+            assertEquals(values.first, spell.school)
+            assertEquals(setOf("Clérigo"), spell.classes.toSet())
+            assertEquals(values.second, spell.classLevels)
+            assertEquals(values.third, spell.domainLevels)
+            assertEquals("1 ação padrão", spell.castTime)
+            assertEquals("V, G, F", spell.components)
+            assertEquals("6 m", spell.range)
+            assertEquals("1 rodada/nível (D)", spell.duration)
+            assertEquals("Veja texto", spell.savingThrow)
+            assertTrue(spell.spellResistance)
+            assertTrue(spell.description.contains("6 m de raio"))
+        }
+        assertTrue(Dnd35Rules.PRESET_SPELLS.first { it.name == "Aura Profana" }.description.contains("dano temporário de Força"))
+        assertTrue(Dnd35Rules.PRESET_SPELLS.first { it.name == "Aura Sagrada" }.description.contains("dano temporário de Força"))
+        assertTrue(Dnd35Rules.PRESET_SPELLS.first { it.name == "Escudo da Ordem" }.description.contains("fica lenta por 1 rodada"))
+        assertTrue(Dnd35Rules.PRESET_SPELLS.first { it.name == "Manto do Caos" }.description.contains("fica confusa por 1 rodada"))
+    }
+
+    @Test
+    fun ordemMatchesPlayerHandbookEntry() {
+        val matches = Dnd35Rules.PRESET_SPELLS.filter { it.name == "Ordem" }
+        assertEquals(1, matches.size)
+        val spell = matches.single()
+        assertEquals(8, spell.level)
+        assertEquals("Encantamento (Compulsão) [Ação Mental]", spell.school)
+        assertEquals(setOf("Feiticeiro", "Mago"), spell.classes.toSet())
+        assertEquals(mapOf("Feiticeiro" to 8, "Mago" to 8), spell.classLevels)
+        assertTrue(spell.domainLevels.isEmpty())
+        assertEquals("10 minutos", spell.castTime)
+        assertEquals("V, G, M", spell.components)
+        assertEquals("Veja texto", spell.range)
+        assertEquals("1 rodada; veja texto", spell.duration)
+        assertEquals("Vontade parcial", spell.savingThrow)
+        assertTrue(spell.spellResistance)
+        assertTrue(spell.description.contains("mensagem de até 25 palavras"))
+        assertTrue(spell.description.contains("anula apenas a sugestão"))
+    }
+
+    @Test
+    fun simpatiaMatchesPlayerHandbookEntry() {
+        val matches = Dnd35Rules.PRESET_SPELLS.filter { it.name == "Simpatia" }
+        assertEquals(1, matches.size)
+        val spell = matches.single()
+        assertEquals(8, spell.level)
+        assertEquals("Encantamento (Compulsão) [Ação Mental]", spell.school)
+        assertEquals(setOf("Druida", "Feiticeiro", "Mago"), spell.classes.toSet())
+        assertEquals(mapOf("Druida" to 9, "Feiticeiro" to 8, "Mago" to 8), spell.classLevels)
+        assertTrue(spell.domainLevels.isEmpty())
+        assertEquals("1 hora", spell.castTime)
+        assertEquals("V, G, M", spell.components)
+        assertEquals("Curto (7,5 m + 1,5 m/2 níveis)", spell.range)
+        assertEquals("2 horas/nível (D)", spell.duration)
+        assertEquals("Vontade anula (veja texto)", spell.savingThrow)
+        assertTrue(spell.spellResistance)
+        assertTrue(spell.description.contains("cubo de 3 m por nível"))
+        assertTrue(spell.description.contains("1d6 × 10 minutos"))
+        assertTrue(spell.description.contains("1.500 PO"))
+    }
+
 }
