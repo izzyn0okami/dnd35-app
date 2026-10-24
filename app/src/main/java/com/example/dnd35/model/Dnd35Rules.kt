@@ -4314,7 +4314,7 @@ object Dnd35Rules {
             savingThrow = "Fortitude anula",
             spellResistance = true,
             description = "Inscreve uma runa mágica que, quando ativada, pode matar criaturas vivas num raio de 18 m. A magia afeta primeiro as criaturas mais próximas e não afeta aquelas cujo total de pontos de vida ultrapasse o limite combinado de 150 PV. Depois de ativado, permanece ativo por 10 minutos por nível de conjurador ou até atingir o limite de pontos de vida afetados. As regras comuns de símbolo determinam gatilho, senha, vinculação, detecção e desarme; os componentes materiais custam 5.000 PO.",
-            classLevels = mapOf("Clérigo" to 8, "Feiticeiro" to 7, "Mago" to 7)
+            classLevels = mapOf("Clérigo" to 8, "Feiticeiro" to 6, "Mago" to 6)
         ),
         PresetSpell(
             name = "Aliado Extra-Planar Maior",
