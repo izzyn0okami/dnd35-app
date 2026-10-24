@@ -1360,3 +1360,14 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Divergência registrada para **Visão no Escuro**: a lista resumida de magias de 3º nível de Ranger a inclui, mas o verbete completo diz explicitamente **Rgr 2** (e Fet/Mag 2). A entrada não foi adicionada como magia de 3º nível; não se alterou a regra com base apenas na lista resumida.
 - Fonte primária: PDF brasileiro *D&D 3.5 — Livro do Jogador* fornecido no projeto, verbetes nas páginas impressas 232, 237, 239 e 258; lista resumida de magias de Ranger na região da página impressa 145.
 - Nenhum teste manual em dispositivo Android foi realizado nesta etapa.
+
+
+---
+
+## 2026-10-24 — Visão no Escuro catalogada no nível indicado pelo verbete
+
+- Após integrar a auditoria das magias de 3º nível de Ranger, foi retomada a divergência de **Visão no Escuro**. A lista resumida a mostra junto das magias de 3º nível, mas o verbete completo do PDF brasileiro especifica `Nível: Rgr 2, Fet/Mag 2`.
+- Como a entrada estava ausente do catálogo, foi adicionada como magia de **2º nível** para Ranger, Feiticeiro e Mago; não foi criada uma entrada de 3º nível.
+- Parâmetros transcritos do verbete: Transmutação; V, G, M; toque; 1 hora/nível; Vontade anula (inofensiva); resistência à magia sim (inofensiva); alcance visual de 18 m e incapacidade de atravessar escuridão mágica.
+- Fonte primária: PDF brasileiro *D&D 3.5 — Livro do Jogador* fornecido no projeto, verbete “Visão no Escuro”, linhas extraídas na região da página impressa 258.
+- Teste de regressão acrescentado para níveis por classe, parâmetros e unicidade. Nenhum teste manual em dispositivo Android foi realizado.
