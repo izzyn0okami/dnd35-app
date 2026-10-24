@@ -1734,3 +1734,14 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - A CI [40066198142](https://github.com/izzyn0okami/dnd35-app/actions/runs/40066198142) executou 198 testes e falhou em uma asserção de texto do teste de Aprisionar a Alma; compilação e APK foram pulados.
 - **Correção aplicada:** simplificada a asserção para verificar o termo “tarefa”, sem depender de uma formulação exata na descrição resumida.
 - **Estado:** aguardar nova CI; não integrar até que testes, compilação e geração do APK passem.
+
+
+## Resultado final da PR #218 — 2026-10-24
+
+- **CI:** execução [40066823015](https://github.com/izzyn0okami/dnd35-app/actions/runs/40066823015) concluída com sucesso. Testes unitários, compilação Android e upload do APK de depuração passaram.
+- **Integração:** PR [#218](https://github.com/izzyn0okami/dnd35-app/pull/218) integrada por squash no commit `d127e3c41f7fb6a6af024a2f6483198895a6f99a`.
+- **Resultado:** `Aprisionar a Alma` adicionada ao catálogo como magia de 8º nível de Feiticeiro e Mago.
+- **Contagem nominal:** 200 entradas únicas após integração (199 antes da PR).
+- **Correção de CI registrada:** a primeira execução [40066198142](https://github.com/izzyn0okami/dnd35-app/actions/runs/40066198142) falhou em uma asserção textual; a verificação foi flexibilizada para validar o conceito sem exigir redação literal.
+- **Limitação:** não foi realizado teste manual em dispositivo Android.
+- **Próximo passo:** continuar a auditoria de magias de 8º nível do Livro do Jogador, verificar no catálogo as candidatas restantes e consultar o verbete completo antes de qualquer nova alteração.
