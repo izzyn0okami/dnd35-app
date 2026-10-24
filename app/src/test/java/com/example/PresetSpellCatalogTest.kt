@@ -1765,7 +1765,7 @@ class PresetSpellCatalogTest {
             if (name == "Aliado Extra-Planar Maior") assertEquals("V, G, FD, XP", spell.components)
         }
         val fieldChecks = mapOf(
-            "Aliado Extra-Planar Maior" to listOf("18 DV", "500 XP"),
+            "Aliado Extra-Planar Maior" to listOf("18 Dados de Vida", "500 XP"),
             "Curar Ferimentos Críticos em Massa" to listOf("4d8", "máximo +40"),
             "Infligir Ferimentos Críticos em Massa" to listOf("4d8", "máximo +20"),
             "Curar Ferimentos Graves em Massa" to listOf("3d8", "máximo +35"),
