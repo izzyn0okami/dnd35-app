@@ -163,3 +163,12 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - Corrigido o alcance genérico “Ilimitado (veja texto)” para “Veja texto” e completada a descrição com essas condições e o custo do componente.
 - Adicionado teste de regressão para níveis por classe, alcance, duração, resistência e detalhes da descrição.
 - A auditoria de Vidência Maior e Visão Arcana Maior permanece pendente de fechamento.
+
+
+## Auditoria do catálogo de magias — níveis incorretos de Corpo de Ferro e Estase Temporal (24/10/2026)
+
+- Conferido no PDF brasileiro do *Livro do Jogador*: **Corpo de Ferro** está listado como Terra 8 e Fet/Mag 8; **Estase Temporal** está listado como Fet/Mag 8.
+- Corrigido o nível geral e os níveis de classe de ambas as magias de 7º para 8º. O nível de domínio Terra 8 de Corpo de Ferro já estava correto e foi preservado.
+- Atualizados os testes que anteriormente agrupavam essas magias entre as arcanas de 7º nível e adicionado teste de regressão explícito.
+- **Não alteradas nesta rodada:** Padrão Cintilante, Criar Mortos-Vivos Maior e Símbolo da Morte; suas informações de nível consultadas nesta passagem estão alinhadas com o livro. As descrições completas dessas magias continuam sujeitas à revisão individual.
+- Referência primária: PDF do *Livro do Jogador* disponível na biblioteca, entrada “Corpo de Ferro” (lista como Terra 8, Fet/Mag 8) e entrada “Estase Temporal” (lista como Fet/Mag 8).
