@@ -1599,3 +1599,15 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - **Resultado:** `Proteção contra Magias` adicionada ao catálogo principal; total nominal agora 194 entradas únicas.
 - **Limitação:** sem teste manual em dispositivo Android; “Magia 8” no verbete foi interpretado corretamente como nível de domínio, não como classe de personagem.
 - **Próximo passo:** continuar a auditoria do catálogo de magias de 8º nível, conferindo o verbete completo do PDF antes de cada inclusão. Verificação inicial do catálogo: `Olhos Observadores Maior` não consta no catálogo e pode ser avaliada como próxima candidata.
+
+
+## 2026-10-24 — Inclusão proposta de Olhos Observadores Maior (8º nível)
+
+- **Fonte primária:** PDF brasileiro *D&D 3.5 — Livro do Jogador*, verbete “Olhos Observadores Maior”, p. impressa 225; usa explicitamente o verbete “Olhos Observadores” como base.
+- **Dados conferidos no verbete base:** Adivinhação; Fet/Mag 8; V, G, M; execução 1 minuto; alcance 1,5 km; efeito de 1d4 + nível do conjurador olhos flutuantes; duração 1 hora/nível (D); nenhum teste de resistência; resistência à magia não; componente material de esferas de cristal.
+- **Diferenças da versão maior:** olhos enxergam como se tivessem visão da verdade até 36 m, atravessam áreas de escuridão com deslocamento normal e usam modificador máximo de Observar +25, em vez de +15.
+- **Implementação proposta:** entrada única para Feiticeiro 8/Mago 8; descrição inclui capacidades herdadas do verbete base para não perder informação essencial.
+- **Regressão:** teste dedicado verifica nome único, escola, nível, classes/níveis, parâmetros de conjuração, ausência de resistência à magia e diferenças específicas da versão maior.
+- **Validação:** CI pendente; sem teste manual em dispositivo Android. Não integrar até CI verde.
+- **Contagem antes desta PR:** 194 entradas nominais únicas na main; esta inclusão elevará para 195 se integrada.
+- **Próximo passo:** aguardar CI; depois conferir o próximo verbete ausente da lista de 8º nível.
