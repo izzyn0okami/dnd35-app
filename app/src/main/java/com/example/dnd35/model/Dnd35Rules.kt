@@ -2985,5 +2985,48 @@ object Dnd35Rules {
             classLevels = mapOf("Bardo" to 1, "Mago" to 1, "Feiticeiro" to 1)
         ),
 
+
+        PresetSpell(
+            name = "Detectar Armadilhas",
+            level = 1,
+            school = "Adivinhação",
+            classes = listOf("Druida", "Ranger"),
+            castTime = "1 ação padrão",
+            components = "V, G",
+            range = "18 m",
+            duration = "Concentração, até 10 min/nível (D)",
+            savingThrow = "Nenhum",
+            spellResistance = false,
+            description = "Detecta fossos simples, abismos e armadilhas para animais ou mecânicas construídas com materiais naturais; não detecta armadilhas complexas.",
+            classLevels = mapOf("Druida" to 1, "Ranger" to 1)
+        ),
+        PresetSpell(
+            name = "Invisibilidade Contra Animais",
+            level = 1,
+            school = "Abjuração",
+            classes = listOf("Druida", "Ranger"),
+            castTime = "1 ação padrão",
+            components = "G, FD",
+            range = "Toque",
+            duration = "10 minutos/nível (D)",
+            savingThrow = "Vontade anula (objeto)",
+            spellResistance = true,
+            description = "Animais não podem ver, escutar, cheirar ou localizar a criatura protegida; a magia termina para todos os alvos se uma criatura protegida tocar um animal ou atacar qualquer criatura.",
+            classLevels = mapOf("Druida" to 1, "Ranger" to 1)
+        ),
+        PresetSpell(
+            name = "Mensageiro Animal",
+            level = 1,
+            school = "Encantamento (Compulsão) [Ação Mental]",
+            classes = listOf("Bardo", "Druida", "Ranger"),
+            castTime = "1 ação padrão",
+            components = "V, G, M",
+            range = "Curto (7,5 m + 1,5 m/2 níveis)",
+            duration = "1 dia/nível",
+            savingThrow = "Nenhum (veja texto)",
+            spellResistance = true,
+            description = "Atrai e obriga um animal Miúdo não domesticado nem treinado por outra pessoa a viajar até um local designado, podendo levar uma mensagem.",
+            classLevels = mapOf("Bardo" to 2, "Druida" to 2, "Ranger" to 1)
+        ),
     )
 }
