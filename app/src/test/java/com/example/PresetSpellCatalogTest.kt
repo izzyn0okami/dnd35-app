@@ -126,7 +126,7 @@ class PresetSpellCatalogTest {
             "Passos Longos",
             "Fogo das Fadas",
             "Remover Medo",
-            "Perdição",
+            "Maldição Menor",
             "Abençoar Água",
             "Desespero",
             "Suportar Elementos",
@@ -183,7 +183,7 @@ class PresetSpellCatalogTest {
     @Test
     fun firstLevelSpellBatchFiveHasExpectedClassesAndMechanics() {
         val spells = Dnd35Rules.PRESET_SPELLS.associateBy { it.name }
-        assertEquals(setOf("Clérigo"), spells.getValue("Perdição").classes.toSet())
+        assertEquals(setOf("Clérigo"), spells.getValue("Maldição Menor").classes.toSet())
         assertEquals(setOf("Clérigo", "Paladino"), spells.getValue("Abençoar Água").classes.toSet())
         assertEquals("1 minuto", spells.getValue("Abençoar Água").castTime)
         assertEquals(setOf("Bardo", "Clérigo", "Druida", "Paladino", "Ranger", "Mago", "Feiticeiro"), spells.getValue("Suportar Elementos").classes.toSet())
@@ -516,6 +516,22 @@ class PresetSpellCatalogTest {
         assertEquals("9 m", deathwatch.range)
         assertEquals("10 minutos/nível", deathwatch.duration)
         assertFalse(deathwatch.spellResistance)
+    }
+
+
+    @Test
+    fun minorDoomMatchesPortuguesePlayersHandbookEntry() {
+        val spell = Dnd35Rules.PRESET_SPELLS.single { it.name == "Maldição Menor" }
+        assertEquals(1, spell.level)
+        assertEquals(setOf("Clérigo"), spell.classes.toSet())
+        assertEquals("15 m", spell.range)
+        assertEquals("1 minuto/nível", spell.duration)
+        assertEquals("V, G, FD", spell.components)
+        assertEquals("Vontade anula", spell.savingThrow)
+        assertTrue(spell.spellResistance)
+        assertTrue(spell.description.contains("dissipa Bênção"))
+        assertEquals(1, Dnd35Rules.PRESET_SPELLS.count { it.name == "Maldição Menor" })
+        assertFalse(Dnd35Rules.PRESET_SPELLS.any { it.name == "Perdição" })
     }
 
 }
