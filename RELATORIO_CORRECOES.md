@@ -109,3 +109,10 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - Removido `Criar Mortos-Vivos Maior` da lista de magias arcanas de 8º nível: no Livro do Jogador, é Feiticeiro/Mago 7 e Clérigo 8.
 - Removidas do bloco de verificações de conteúdo do lote de 8º nível as entradas `Corpo de Ferro`, `Estase Temporal` e `Metamorfosear Objetos`, que são magias arcanas de 7º nível no PDF (página impressa 168; página digital 172).
 - A CI precisa ser executada novamente após esta correção. Não fazer merge antes de a suíte passar e de confirmar a condição de merge da PR.
+
+
+### Terceira correção das expectativas de 8º nível — CI #242 (2026-10-24)
+- A execução `40126213999` voltou a falhar em dois testes. A análise das linhas apontadas mostrou que o teste ainda incluía `Padrão Cintilante`, `Clone` e `Evaporação` na lista arcana de 8º nível, embora sejam Feiticeiro/Mago 7 no Livro do Jogador.
+- Corrigida a lista arcana de 8º nível, removendo essas três magias.
+- Corrigida também a expectativa do campo geral `level`: não se deve inferir automaticamente o nível geral pelo maior valor em `classLevels`, porque `Criar Mortos-Vivos Maior` e `Símbolo da Morte` têm nível geral 7 e nível de Clérigo 8.
+- A CI deve validar novamente estas correções. O merge continua bloqueado até testes passarem e a PR ficar sem conflitos.
