@@ -1469,7 +1469,8 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 
 - **Fonte primária:** PDF brasileiro *D&D 3.5 — Livro do Jogador*, verbete **Retardar Envenenamento** (página impressa 229; o campo Nível lista `Brd 2, Clr 2, Drd 2, Pal 2, Rgr 1`).
 - **Problema confirmado:** o catálogo e o teste de regressão omitiam **Bardo 2** da lista de classes e do mapa `classLevels`.
-- **Correção proposta na branch `audit/delay-poison-bard-level`:** incluir Bardo em `classes`, adicionar `"Bardo" to 2` em `classLevels` e reforçar o teste para verificar explicitamente o nível 2.
+- **Correção integrada:** incluído Bardo em `classes`, adicionado `"Bardo" to 2` em `classLevels` e reforçado o teste para verificar explicitamente o nível 2.
 - **Escopo:** nenhuma outra associação foi alterada nesta mudança. As magias vizinhas **Resistência à Elementos** e **Suportar Elementos** foram conferidas contra os respectivos verbetes e suas associações atuais correspondem à fonte; nenhuma alteração foi necessária para elas. A associação de **Restauração Menor** para Ranger já foi corrigida e integrada na PR #206, não será reaberta.
-- **Validação:** aguardando CI; não integrar até testes unitários, compilação Android e upload do APK passarem. Nenhum teste manual em dispositivo Android foi realizado.
-- **Próximo passo:** aguardar CI desta correção, integrar somente com resultado verde e continuar a conferência individual das associações de Ranger/Bardo sem duplicar itens já auditados.
+- **Validação:** CI run [40060616229](https://github.com/izzyn0okami/dnd35-app/actions/runs/40060616229) concluída com sucesso; testes unitários, compilação Android e upload do APK passaram. Nenhum teste manual em dispositivo Android foi realizado.
+- **Integração:** PR [#207](https://github.com/izzyn0okami/dnd35-app/pull/207) integrada por squash em 2026-10-24; commit `75de4054a583ce5ae9b6d03643b30426a41667c0`.
+- **Próximo passo:** continuar a conferência individual das associações de Ranger/Bardo com base nos verbetes completos, sem duplicar itens já auditados.
