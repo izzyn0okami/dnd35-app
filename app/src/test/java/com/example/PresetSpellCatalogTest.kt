@@ -1922,7 +1922,7 @@ class PresetSpellCatalogTest {
             "Visão Arcana Maior" to mapOf("Feiticeiro" to 7, "Mago" to 7),
             "Visão" to mapOf("Feiticeiro" to 7, "Mago" to 7),
             "Convocação Instantânea de Drawmij" to mapOf("Feiticeiro" to 7, "Mago" to 7),
-            "Evocação de Sombras Maior" to mapOf("Feiticeiro" to 7, "Mago" to 7),
+            "Evocação de Sombras Maior" to mapOf("Feiticeiro" to 8, "Mago" to 8),
             "Curar Ferimentos Moderados em Massa" to mapOf("Clérigo" to 7, "Druida" to 7)
         )
         expected.forEach { (name, levels) ->
@@ -1950,6 +1950,17 @@ class PresetSpellCatalogTest {
         assertTrue(spell.description.contains("animação suspensa"))
         assertTrue(spell.description.contains("adivinhação"))
         assertFalse(spell.description.contains("criatura voluntária"))
+    }
+
+    @Test
+    fun greaterShadowEvocationIsEighthLevelAndUsesSixtyPercentReality() {
+        val spell = Dnd35Rules.PRESET_SPELLS.single { it.name == "Evocação de Sombras Maior" }
+        assertEquals(8, spell.level)
+        assertEquals(8, spell.classLevels["Feiticeiro"])
+        assertEquals(8, spell.classLevels["Mago"])
+        assertEquals("Ilusão (Sombra)", spell.school)
+        assertTrue(spell.description.contains("7º nível ou inferior"))
+        assertTrue(spell.description.contains("60% do normal"))
     }
 
     @Test
