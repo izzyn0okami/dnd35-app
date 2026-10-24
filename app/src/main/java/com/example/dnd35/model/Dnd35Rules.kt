@@ -4321,7 +4321,7 @@ object Dnd35Rules {
             school = "Conjuração (Convocação) [veja texto para aliado extra-planar menor]",
             classes = listOf("Clérigo"),
             castTime = "10 minutos",
-            components = "V, G",
+            components = "V, G, FD, XP",
             range = "Curto (7,5 m + 1,5 m/2 níveis)",
             duration = "Instantânea",
             savingThrow = "Nenhum",
