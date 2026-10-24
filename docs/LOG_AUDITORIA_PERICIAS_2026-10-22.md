@@ -1276,3 +1276,15 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Registrados testes de regressão para níveis por classe e campos principais de cada magia.
 - A lista de Ranger ainda tem itens pendentes de conferência/inclusão, incluindo **Invocar Aliado da Natureza II**. Este lote não significa que o catálogo esteja completo.
 - Fonte primária: PDF brasileiro do *Livro do Jogador* fornecido no projeto; níveis e detalhes foram extraídos dos verbetes correspondentes.
+
+
+---
+
+## 2026-10-23 — Invocar Aliado da Natureza II (Druida/Ranger)
+
+- Conferido o verbete **Invocar Aliado da Natureza I** no capítulo 11 do *Livro do Jogador* brasileiro: Conjuração (Invocação), Druida 1/Ranger 1, execução de 1 rodada, componentes V, G, FD, alcance curto, duração de 1 rodada/nível (D), nenhum teste de resistência e nenhuma resistência à magia.
+- Corrigida a entrada existente de **Invocar Aliado da Natureza I** para refletir a duração dissipável **(D)**, a nomenclatura completa da escola e o espaçamento da medida do alcance.
+- Adicionada **Invocar Aliado da Natureza II**, ausente do catálogo, como Druida 2/Ranger 2. Conforme o verbete, mantém os parâmetros básicos da magia I e permite uma criatura da lista de 2º nível ou 1d3 da lista de 1º nível, desde que sejam do mesmo tipo.
+- Acrescentados testes de regressão para ambas as entradas, níveis por classe, parâmetros herdados e efeito distintivo da versão II.
+- Fonte primária: PDF brasileiro *D&D 3.5 — Livro do Jogador* fornecido no projeto, verbetes “Invocar Aliado da Natureza I” e “Invocar Aliado da Natureza II” (capítulo 11; lista de 2º nível de Ranger na p. 164).
+- A auditoria da lista de magias de Ranger continua incompleta; este lote não declara o catálogo completo. Nenhum teste manual em dispositivo Android foi realizado nesta etapa.
