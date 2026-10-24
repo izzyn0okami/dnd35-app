@@ -4584,7 +4584,7 @@ object Dnd35Rules {
             duration = "Instantânea",
             savingThrow = "Nenhum",
             spellResistance = false,
-            description = "Funciona como lendas e histórias, mas permite obter mais rapidamente uma resposta sobre uma pessoa, local ou objeto, à custa de esforço e experiência. A dificuldade depende da proximidade do alvo e da qualidade das informações disponíveis; o custo é de 100 XP.",
+            description = "Funciona como lendas e histórias, mas permite obter uma resposta mais rapidamente, embora canse o conjurador. Faz uma pergunta sobre uma pessoa, lugar ou objeto. Se o alvo estiver por perto ou o conjurador estiver no local, realiza-se um teste de nível de conjurador (1d20 + nível de conjurador, máximo +25) contra CD 20. Com informações detalhadas, a CD é 25 e a resposta é incompleta; com apenas rumores, a CD é 30 e a resposta é vaga. Custo de XP: 100 XP.",
             classLevels = mapOf("Feiticeiro" to 7, "Mago" to 7)
         ),
         PresetSpell(
@@ -4594,11 +4594,11 @@ object Dnd35Rules {
             classes = listOf("Feiticeiro", "Mago"),
             castTime = "1 ação padrão",
             components = "V, G, M",
-            range = "Ilimitado (veja texto)",
+            range = "Veja texto",
             duration = "Instantânea",
             savingThrow = "Nenhum",
             spellResistance = false,
-            description = "Transporta instantaneamente para a mão do conjurador um objeto mundano previamente marcado e nomeado, desde que respeitados os limites de peso e as condições de preparação da magia. A marca arcana deve ser conjurada no objeto antes da convocação.",
+            description = "Convoca para a mão do conjurador um objeto previamente marcado com a magia. Se o objeto estiver sob a posse de outra criatura, a magia falha, mas o conjurador descobre quem o carrega e sua localização aproximada. A inscrição na gema é invisível e só pode ser lida com ler magias. O objeto pode ser convocado de outro plano, desde que não esteja na posse de uma criatura. Componente material: uma safira de pelo menos 1.000 PO.",
             classLevels = mapOf("Feiticeiro" to 7, "Mago" to 7)
         ),
         PresetSpell(
