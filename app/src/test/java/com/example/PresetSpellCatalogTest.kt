@@ -1749,8 +1749,8 @@ class PresetSpellCatalogTest {
         val expected = mapOf(
             "Aliado Extra-Planar Maior" to Triple("Conjuração (Convocação) [veja texto para aliado extra-planar menor]", mapOf("Clérigo" to 8), emptyMap()),
             "Curar Ferimentos Críticos em Massa" to Triple("Conjuração (Cura)", mapOf("Clérigo" to 8, "Druida" to 9), mapOf("Cura" to 8)),
-            "Infligir Ferimentos Críticos em Massa" to Triple("Necromancia", mapOf("Clérigo" to 8), mapOf("Destruição" to 8)),
-            "Curar Ferimentos Graves em Massa" to Triple("Conjuração (Cura)", mapOf("Clérigo" to 7, "Druida" to 8), mapOf("Cura" to 7)),
+            "Infligir Ferimentos Críticos em Massa" to Triple("Necromancia", mapOf("Clérigo" to 8), emptyMap()),
+            "Curar Ferimentos Graves em Massa" to Triple("Conjuração (Cura)", mapOf("Clérigo" to 7, "Druida" to 8), emptyMap()),
             "Corpo de Ferro" to Triple("Transmutação", mapOf("Feiticeiro" to 8, "Mago" to 8), mapOf("Terra" to 8)),
             "Estase Temporal" to Triple("Transmutação", mapOf("Feiticeiro" to 8, "Mago" to 8), emptyMap()),
             "Metamorfosear Objetos" to Triple("Transmutação", mapOf("Feiticeiro" to 8, "Mago" to 8), mapOf("Enganação" to 8))
@@ -1766,7 +1766,7 @@ class PresetSpellCatalogTest {
         val fieldChecks = mapOf(
             "Aliado Extra-Planar Maior" to listOf("18 DV", "500 XP"),
             "Curar Ferimentos Críticos em Massa" to listOf("4d8", "máximo +40"),
-            "Infligir Ferimentos Críticos em Massa" to listOf("4d8", "máximo +40"),
+            "Infligir Ferimentos Críticos em Massa" to listOf("4d8", "máximo +20"),
             "Curar Ferimentos Graves em Massa" to listOf("3d8", "máximo +35"),
             "Corpo de Ferro" to listOf("15/adamante", "+6", "-6"),
             "Estase Temporal" to listOf("animação suspensa", "5.000 PO"),
