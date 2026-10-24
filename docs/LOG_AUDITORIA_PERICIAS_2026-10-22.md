@@ -1114,3 +1114,12 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Registrados componentes, alcance, duração, testes de resistência, resistência à magia e efeitos conforme os verbetes do capítulo 11 (Brilho, p. 178; Pasmar, p. 226; Raio de Ácido e Romper Morto-Vivo, pp. 235–236).
 - Adicionados testes de regressão para unicidade, nível, classes e campos mecânicos essenciais.
 - Esta é uma expansão parcial do catálogo, não uma confirmação de completude do Livro do Jogador. Nenhum teste manual em dispositivo Android foi realizado nesta etapa.
+
+---
+
+## 2026-10-23 — Magias adicionais de 1º nível (feiticeiro/mago)
+
+- Consultada a lista de magias de 1º nível de feiticeiro e mago e os verbetes correspondentes no Livro do Jogador brasileiro.
+- Adicionadas **Cerrar Portas**, **Disco Flutuante de Tenser**, **Leque Cromático** e **Montaria Arcana**, com nível por classe, componentes, tempo de execução, alcance, duração, resistência à magia e efeito resumido.
+- Adicionados testes de regressão para unicidade, nível, classes, níveis por classe e campos mecânicos centrais.
+- A auditoria da lista arcana de 1º nível continua incompleta; esta PR não declara o catálogo integral. Não foi realizado teste manual em dispositivo Android.
