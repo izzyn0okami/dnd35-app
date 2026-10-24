@@ -1523,3 +1523,13 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - **Resultado:** `Passos Longos` e `Passos sem Pegadas` agora têm mapeamento explícito de Druida 1 e Ranger 1, conforme os verbetes completos do Livro do Jogador (p. impressa 227). Nenhum efeito de magia foi alterado.
 - **Limite:** não houve teste manual em dispositivo Android.
 - **Próximo passo:** continuar a auditoria individual das associações de classe/nível e cobertura do catálogo, sem repetir verificações já registradas.
+
+
+## 2026-10-24 — Levantamento inicial de cobertura do catálogo de magias
+
+- **Fonte do estado do aplicativo:** inspeção estática de `Dnd35Rules.PRESET_SPELLS` em `app/src/main/java/com/example/dnd35/model/Dnd35Rules.kt`, após o merge da PR #209.
+- **Contagem atual:** 191 entradas de magia e 191 nomes únicos; nenhuma duplicata nominal detectada nesta contagem. Distribuição por nível geral: nível 0 = 28; nível 1 = 89; nível 2 = 22; nível 3 = 26; nível 4 = 18; nível 5 = 3; nível 6 = 2; nível 7 = 1; nível 8 = 0; nível 9 = 2.
+- **Metadados por classe:** 93 entradas possuem `classLevels` explícito e 98 dependem do campo geral `level` junto com `classes`. A ausência de mapa explícito não prova erro; é necessário verificar cada verbete antes de alterar.
+- **Limitação importante:** estes números descrevem apenas o catálogo atual da aplicação; ainda não representam uma contagem do total oficial do Livro do Jogador nem provam quais magias estão ausentes. A falta de magias de nível 8 e a baixa quantidade de magias nos níveis 5–7 são sinais para conferir contra as listas completas da fonte antes de concluir a implementação.
+- **Decisão de método:** criar uma matriz de cobertura a partir das listas e verbetes do PDF brasileiro, registrar cada magia como presente/ausente/pendente de conferência e só então abrir PRs de inclusão ou correção. Não inferir ausências apenas por contagem ou por listas resumidas de uma classe.
+- **Próximo passo:** extrair as listas oficiais de magias por classe e nível do PDF e compará-las ao catálogo, começando pelos níveis altos e pelas associações de classe ainda não auditadas. Manter o escopo restrito ao Livro do Jogador.
