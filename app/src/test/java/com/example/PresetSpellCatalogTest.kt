@@ -1120,4 +1120,25 @@ class PresetSpellCatalogTest {
         assertTrue(spell.description.contains("Dissipar magia"))
     }
 
+    @Test
+    fun protecaoContraMagiasMatchesPlayerHandbookEntry() {
+        val matches = Dnd35Rules.PRESET_SPELLS.filter { it.name == "Proteção contra Magias" }
+        assertEquals(1, matches.size)
+        val spell = matches.single()
+
+        assertEquals(8, spell.level)
+        assertEquals("Abjuração", spell.school)
+        assertEquals(setOf("Feiticeiro", "Mago"), spell.classes.toSet())
+        assertEquals(mapOf("Feiticeiro" to 8, "Mago" to 8), spell.classLevels)
+        assertEquals("1 ação padrão", spell.castTime)
+        assertEquals("V, G, M, F", spell.components)
+        assertEquals("Toque", spell.range)
+        assertEquals("10 minutos/nível", spell.duration)
+        assertEquals("Vontade anula (inofensiva)", spell.savingThrow)
+        assertTrue(spell.spellResistance)
+        assertTrue(spell.description.contains("+8 de bônus de resistência"))
+        assertTrue(spell.description.contains("500 PO"))
+        assertTrue(spell.description.contains("1.000 PO"))
+    }
+
 }
