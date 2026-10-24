@@ -1383,3 +1383,13 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Teste de regressão cobre unicidade, nível Ranger 4, níveis por classe e escolas de magia.
 - Fonte primária: PDF brasileiro *D&D 3.5 — Livro do Jogador* fornecido no projeto; lista resumida de Ranger 4 e verbetes completos correspondentes.
 - Nenhum teste manual em dispositivo Android foi realizado.
+
+
+## Auditoria do catálogo de magias — Paladino (2026-10-23)
+
+- **Fonte primária:** *D&D 3.5 — Livro do Jogador*, capítulo 11, lista resumida “Magias de Paladino”, páginas impressas 163–164.
+- **Escopo desta alteração:** acrescentar entradas ausentes nas listas resumidas de 2º, 3º e 4º níveis de Paladino: Esplendor da Águia, Proteger Outro, Remover Paralisia, Zona da Verdade, Arma Mágica Maior, Círculo Mágico Contra o Caos, Círculo Mágico Contra o Mal, Curar Montaria, Discernir Mentiras, Luz do Dia, Remover Cegueira/Surdez, Remover Maldição, Cancelar Encantamento, Dissipar o Caos, Dissipar o Mal, Espada Sagrada, Marca da Justiça, Proteção Contra a Morte, Restauração.
+- Cada nova entrada contém o nível de Paladino em `classLevels`; descrições são resumos de catálogo e não substituem o texto integral dos verbetes.
+- Foi acrescentado teste de regressão para existência única, classe e nível de Paladino.
+- **Pendente até a CI:** não marcar esta etapa como integrada/concluída antes de verificar testes e compilação.
+- **Limite desta etapa:** associações de nível de entradas preexistentes, especialmente na lista de 1º nível e magias compartilhadas, ainda precisam de uma verificação separada.
