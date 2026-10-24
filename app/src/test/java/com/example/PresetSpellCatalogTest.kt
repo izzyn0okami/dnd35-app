@@ -1494,6 +1494,27 @@ class PresetSpellCatalogTest {
         assertTrue(spell.description.contains("prisma branco de cerâmica"))
     }
 
+    @Test
+    fun animacaoIlusoriaMatchesPlayerHandbookEntry() {
+        val matches = Dnd35Rules.PRESET_SPELLS.filter { it.name == "Animação Ilusória" }
+        assertEquals(1, matches.size)
+        val spell = matches.single()
+
+        assertEquals(8, spell.level)
+        assertEquals("Ilusão (Sensação)", spell.school)
+        assertEquals(setOf("Feiticeiro", "Mago"), spell.classes.toSet())
+        assertEquals(mapOf("Feiticeiro" to 8, "Mago" to 8, "Enganação" to 7), spell.classLevels)
+        assertEquals("10 minutos", spell.castTime)
+        assertEquals("V, G", spell.components)
+        assertEquals("Curto (7,5 m + 1,5 m/2 níveis)", spell.range)
+        assertEquals("24 horas", spell.duration)
+        assertEquals("Nenhum ou Vontade desacredita (se interagir); veja texto", spell.savingThrow)
+        assertFalse(spell.spellResistance)
+        assertTrue(spell.description.contains("espionagem mágica e observação direta"))
+        assertTrue(spell.description.contains("cubo de 9 m por nível"))
+        assertTrue(spell.description.contains("as condições não podem ser alteradas"))
+    }
+
 
 
 }
