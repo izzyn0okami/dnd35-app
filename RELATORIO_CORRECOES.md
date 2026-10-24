@@ -151,3 +151,9 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 ### Correção do nível de Curar Ferimentos Moderados em Massa — Livro do Jogador (2026-10-24)
 - A lista de magias do Livro do Jogador (PDF digital 161–162) coloca Curar Ferimentos Moderados em Massa no 6º nível de Clérigo e Druida, não no 7º. Corrigidos o nível geral e os níveis por classe no catálogo.
 - Adicionado teste de regressão para os níveis e a descrição de cura.
+
+### Revisão da magia Visão — mecânica do Livro do Jogador (2026-10-24)
+- A conferência da descrição no PDF brasileiro, página impressa 251, identificou que o resumo anterior omitia as CDs e a rolagem para obter a visão.
+- A descrição agora registra o teste de nível de conjurador (1d20 + nível, máximo +25), CD 20 para alvo/local próximo, CD 25 para informações detalhadas (resposta incompleta), CD 30 para rumores (resposta vaga) e o custo de 100 XP.
+- Adicionado teste de regressão para os níveis de Feiticeiro/Mago, metadados básicos e os limites mecânicos explicitados no livro.
+- Esta correção cobre apenas a magia Visão; a conferência final de Vidência Maior, Visão Arcana Maior e Convocação Instantânea de Drawmij permanece pendente.
