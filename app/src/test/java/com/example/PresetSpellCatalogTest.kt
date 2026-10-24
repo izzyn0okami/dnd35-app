@@ -772,4 +772,25 @@ class PresetSpellCatalogTest {
         assertTrue(thornGrowth.description.contains("Operar Mecanismo"))
     }
 
+
+    @Test
+    fun rangerSecondLevelCatalogIncludesTrapSpellWithPlayerHandbookMechanics() {
+        val spells = Dnd35Rules.PRESET_SPELLS
+        val trap = spells.single { it.name == "Armadilha" }
+
+        assertEquals(2, trap.level)
+        assertEquals("Transmutação", trap.school)
+        assertEquals(mapOf("Ranger" to 2, "Druida" to 3), trap.classLevels)
+        assertEquals("3 rodadas", trap.castTime)
+        assertEquals("V, G, FD", trap.components)
+        assertEquals("Toque", trap.range)
+        assertEquals("Até ser disparada ou destruída", trap.duration)
+        assertEquals("Nenhum", trap.savingThrow)
+        assertFalse(trap.spellResistance)
+        assertTrue(trap.description.contains("CD 23"))
+        assertTrue(trap.description.contains("1d6 pontos de dano"))
+        assertTrue(trap.description.contains("CA 7 e 5 PV"))
+        assertEquals(1, spells.count { it.name == "Armadilha" })
+    }
+
 }
