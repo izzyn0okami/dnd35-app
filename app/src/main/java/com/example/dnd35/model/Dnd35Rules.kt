@@ -1414,7 +1414,7 @@ object Dnd35Rules {
         // CÍRCULO 1
         // Magias adicionais de 1º nível conferidas no Livro do Jogador
         PresetSpell(
-            name = "Cerrar Portas",
+            name = "Trancar Portal",
             level = 1,
             school = "Abjuração",
             classes = listOf("Mago", "Feiticeiro"),
@@ -1424,7 +1424,7 @@ object Dnd35Rules {
             duration = "1 minuto/nível (D)",
             savingThrow = "Nenhum",
             spellResistance = false,
-            description = "Tranca magicamente uma porta, portão, janela ou persiana. O portal recebe +5 na CD para arrombar ou quebrar; Arrombar ou Dissipar Magia encerra o efeito.",
+            description = "Tranca magicamente uma porta, portão, janela ou persiana. O portal recebe +5 na CD para abrir ou quebrar; a magia Arrombar ou Dissipar Magia encerra o efeito.",
             classLevels = mapOf("Mago" to 1, "Feiticeiro" to 1)
         ),
         PresetSpell(
@@ -1452,7 +1452,7 @@ object Dnd35Rules {
             duration = "Instantânea (veja texto)",
             savingThrow = "Vontade anula",
             spellResistance = true,
-            description = "Um cone de cores brilhantes afeta criaturas conforme seus Dados de Vida: 2 DV ou menos ficam inconscientes, cegas e atordoadas; 3–4 DV ficam cegas e atordoadas; 5 DV ou mais ficam atordoadas por 1 rodada. Criaturas que não enxergam são imunes.",
+            description = "Um cone de cores brilhantes afeta criaturas conforme seus Dados de Vida: 2 DV ou menos ficam inconscientes, cegas e atordoadas por 2d4 rodadas, depois cegas e atordoadas por 1d4 rodadas e, por fim, atordoadas por 1 rodada; 3–4 DV ficam cegas e atordoadas por 1d4 rodadas e, depois, atordoadas por 1 rodada; 5 DV ou mais ficam atordoadas por 1 rodada. Criaturas que não enxergam são imunes.",
             classLevels = mapOf("Mago" to 1, "Feiticeiro" to 1)
         ),
         PresetSpell(
