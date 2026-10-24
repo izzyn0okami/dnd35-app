@@ -19,8 +19,8 @@ class PresetSpellCatalogTest {
             assertEquals(1, spell.classLevels["Mago"])
             assertEquals(1, spell.classLevels["Feiticeiro"])
         }
-        assertEquals("V, S", spells.single { it.name == "Apagar" }.components)
-        assertTrue(spells.single { it.name == "Imagem Silenciosa" }.components.startsWith("V, S, F"))
+        assertEquals("V, G", spells.single { it.name == "Apagar" }.components)
+        assertTrue(spells.single { it.name == "Imagem Silenciosa" }.components.startsWith("V, G, F"))
         assertTrue(spells.single { it.name == "Ventriloquismo" }.components.startsWith("V, F"))
         assertFalse(spells.single { it.name == "Ventriloquismo" }.spellResistance)
     }
@@ -566,7 +566,7 @@ class PresetSpellCatalogTest {
         assertEquals(1, spells.count { it.name == "Disco Flutuante de Tenser" })
         assertEquals(0, spells.count { it.name == "Disco Flutuante" })
         val disk = byName.getValue("Disco Flutuante de Tenser")
-        assertEquals("V, S, M (uma gota de mercúrio)", disk.components)
+        assertEquals("V, G, M (uma gota de mercúrio)", disk.components)
         assertEquals("1 hora/nível", disk.duration)
         assertFalse(disk.spellResistance)
         val colorSpray = byName.getValue("Leque Cromático")
@@ -579,7 +579,7 @@ class PresetSpellCatalogTest {
         val mount = byName.getValue("Montaria")
         assertEquals(setOf("Bardo", "Mago", "Feiticeiro"), mount.classes.toSet())
         assertEquals("1 rodada", mount.castTime)
-        assertEquals("V, S, M (um pouco de pelo de cavalo)", mount.components)
+        assertEquals("V, G, M (um pouco de pelo de cavalo)", mount.components)
         assertEquals("2 horas/nível (D)", mount.duration)
         assertFalse(mount.spellResistance)
     }

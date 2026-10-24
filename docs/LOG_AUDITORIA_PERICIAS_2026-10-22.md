@@ -1224,3 +1224,12 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 
 
 - **Atualização de CI (PR #188):** a primeira execução falhou em dois testes de lotes anteriores que ainda esperavam os dados antigos: `Montaria` sem `(D)` na duração e `Disco Flutuante` como nome. Os testes foram atualizados para refletir a entrada canônica consolidada (`Montaria`, duração `2 horas/nível (D)`, e `Disco Flutuante de Tenser`). Isso é ajuste das expectativas de teste ao catálogo proposto; a CI precisa ser executada novamente antes de integrar.
+
+
+---
+
+## 2026-10-24 — Padronização das abreviações de componentes mágicos em português
+
+- A revisão do catálogo encontrou nomenclatura inconsistente nos componentes: `S` (abreviação inglesa de somático) misturada com `G` (gestual, em português), e `DF` misturado com `FD` (foco divino).
+- A alteração proposta padroniza os campos `components` do catálogo para `V, G, M, F, FD` conforme aplicável, sem mudar as regras mecânicas das magias. As expectativas correspondentes nos testes são ajustadas na mesma mudança.
+- Esta é uma correção terminológica transversal; a CI deve confirmar que nenhum teste depende das abreviações anteriores. A auditoria de cobertura das magias de 1º nível continua separada e incompleta.
