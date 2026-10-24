@@ -116,3 +116,9 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - Corrigida a lista arcana de 8º nível, removendo essas três magias.
 - Corrigida também a expectativa do campo geral `level`: não se deve inferir automaticamente o nível geral pelo maior valor em `classLevels`, porque `Criar Mortos-Vivos Maior` e `Símbolo da Morte` têm nível geral 7 e nível de Clérigo 8.
 - A CI deve validar novamente estas correções. O merge continua bloqueado até testes passarem e a PR ficar sem conflitos.
+
+
+### Correção adicional de nível por classe — Campo Antimagia (2026-10-24)
+- A execução da CI `40126462315` reduziu as falhas a uma: `consolidatedEighthLevelSpellBatchMatchesPlayerHandbook`, na verificação do lote de magias de 8º nível.
+- A conferência da entrada `Campo Antimagia` encontrou níveis arcanos registrados como Feiticeiro/Mago 7, embora o Livro do Jogador a liste como Feiticeiro/Mago 6; o nível de Clérigo permanece 8 e os níveis de domínio Magia/Proteção permanecem 6.
+- Corrigidos apenas os níveis por classe na entrada do catálogo. A PR #242 permanece aberta; aguardar nova CI verde antes de qualquer merge.
