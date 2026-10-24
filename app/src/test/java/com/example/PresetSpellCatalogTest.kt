@@ -814,4 +814,44 @@ class PresetSpellCatalogTest {
         assertEquals(1, spells.count { it.name == "Vigor do Urso" })
     }
 
+    @Test
+    fun rangerThirdLevelCatalogIncludesHealingWaterWalkingAndPoisonNeutralization() {
+        val spells = Dnd35Rules.PRESET_SPELLS
+
+        val waterWalking = spells.single { it.name == "Caminhar na Água" }
+        assertEquals(3, waterWalking.level)
+        assertEquals("Transmutação [Água]", waterWalking.school)
+        assertEquals(mapOf("Clérigo" to 3, "Ranger" to 3), waterWalking.classLevels)
+        assertEquals("V, G, FD", waterWalking.components)
+        assertEquals("Toque", waterWalking.range)
+        assertEquals("10 minutos/nível (D)", waterWalking.duration)
+        assertEquals("Vontade anula (inofensiva)", waterWalking.savingThrow)
+        assertTrue(waterWalking.spellResistance)
+
+        val healing = spells.single { it.name == "Curar Ferimentos Moderados" }
+        assertEquals(3, healing.level)
+        assertEquals("Conjuração (Cura)", healing.school)
+        assertEquals(
+            mapOf("Bardo" to 2, "Clérigo" to 2, "Druida" to 3, "Paladino" to 3, "Ranger" to 3),
+            healing.classLevels
+        )
+        assertEquals("Instantânea", healing.duration)
+        assertTrue(healing.description.contains("2d8"))
+        assertTrue(healing.description.contains("máximo de +10"))
+
+        val poison = spells.single { it.name == "Neutralizar Venenos" }
+        assertEquals(3, poison.level)
+        assertEquals("Conjuração (Cura)", poison.school)
+        assertEquals(
+            mapOf("Bardo" to 4, "Clérigo" to 4, "Druida" to 3, "Paladino" to 4, "Ranger" to 3),
+            poison.classLevels
+        )
+        assertEquals("V, G, M/FD", poison.components)
+        assertEquals("10 minutos/nível", poison.duration)
+        assertTrue(poison.description.contains("imunidade a venenos"))
+        assertEquals(1, spells.count { it.name == "Caminhar na Água" })
+        assertEquals(1, spells.count { it.name == "Curar Ferimentos Moderados" })
+        assertEquals(1, spells.count { it.name == "Neutralizar Venenos" })
+    }
+
 }

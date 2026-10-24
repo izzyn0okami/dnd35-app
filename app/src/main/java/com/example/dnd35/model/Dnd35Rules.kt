@@ -2462,6 +2462,48 @@ object Dnd35Rules {
             description = "A vegetação rasteira e as raízes na área tornam-se rígidas e pontiagudas. Criaturas a pé sofrem 1d4 pontos de dano perfurante por cada 1,5 m percorrido na área; quem sofrer dano pode ter o deslocamento reduzido à metade por 24 horas ou até receber uma magia curar. Não pode ser desarmada com Operar Mecanismo."
         ),
         PresetSpell(
+            name = "Caminhar na Água",
+            level = 3,
+            school = "Transmutação [Água]",
+            classes = listOf("Clérigo", "Ranger"),
+            castTime = "1 ação padrão",
+            components = "V, G, FD",
+            range = "Toque",
+            duration = "10 minutos/nível (D)",
+            savingThrow = "Vontade anula (inofensiva)",
+            spellResistance = true,
+            description = "Permite que as criaturas tocadas caminhem sobre líquidos como se fossem terra firme; atravessar lava ainda causa dano pelo calor.",
+            classLevels = mapOf("Clérigo" to 3, "Ranger" to 3)
+        ),
+        PresetSpell(
+            name = "Curar Ferimentos Moderados",
+            level = 3,
+            school = "Conjuração (Cura)",
+            classes = listOf("Bardo", "Clérigo", "Druida", "Paladino", "Ranger"),
+            castTime = "1 ação padrão",
+            components = "V, G",
+            range = "Toque",
+            duration = "Instantânea",
+            savingThrow = "Vontade anula (inofensiva)",
+            spellResistance = true,
+            description = "Cura 2d8 pontos de vida +1 por nível do conjurador, até o máximo de +10.",
+            classLevels = mapOf("Bardo" to 2, "Clérigo" to 2, "Druida" to 3, "Paladino" to 3, "Ranger" to 3)
+        ),
+        PresetSpell(
+            name = "Neutralizar Venenos",
+            level = 3,
+            school = "Conjuração (Cura)",
+            classes = listOf("Bardo", "Clérigo", "Druida", "Paladino", "Ranger"),
+            castTime = "1 ação padrão",
+            components = "V, G, M/FD",
+            range = "Toque",
+            duration = "10 minutos/nível",
+            savingThrow = "Vontade anula (benéfica, objeto)",
+            spellResistance = true,
+            description = "Desintoxica uma criatura tocada, encerra efeitos temporários do veneno e concede imunidade a venenos durante a duração; não reverte efeitos instantâneos já ocorridos.",
+            classLevels = mapOf("Bardo" to 4, "Clérigo" to 4, "Druida" to 3, "Paladino" to 4, "Ranger" to 3)
+        ),
+        PresetSpell(
             name = "Vigor do Urso",
             level = 2,
             school = "Transmutação",
