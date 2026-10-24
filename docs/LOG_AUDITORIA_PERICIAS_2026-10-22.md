@@ -1655,3 +1655,13 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 
 - **Implementação complementar:** o modelo `PresetSpell` agora possui `domainLevels`, separado de `classLevels`, para representar corretamente o domínio do Conhecimento sem tratá-lo como classe de personagem.
 - **Teste complementar:** a regressão verifica `domainLevels = Conhecimento 8` separadamente dos níveis de Clérigo, Feiticeiro e Mago.
+
+
+## Resultado final da PR #215 — 2026-10-24
+
+- **CI:** execução [40064063930](https://github.com/izzyn0okami/dnd35-app/actions/runs/40064063930) concluída com sucesso; testes unitários, compilação Android e geração do APK passaram.
+- **Integração:** PR [#215](https://github.com/izzyn0okami/dnd35-app/pull/215) integrada por squash no commit `7edcb6d4c8d3c9a67dbbe87b4b342c252679a44e`.
+- **Resultado:** `Discernir Localização` adicionada ao catálogo; total nominal passa de 196 para 197 entradas únicas.
+- **Mudança de modelo:** `PresetSpell.domainLevels` separa os níveis de domínio dos níveis de classe, com teste específico para Conhecimento 8.
+- **Limitação:** sem teste manual em dispositivo Android.
+- **Próximo passo:** seguir com `Instante de Presciência`, conferindo verbete completo e classes no PDF brasileiro antes da inclusão.
