@@ -1302,3 +1302,15 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Fonte primária: PDF brasileiro do *Livro do Jogador* fornecido no projeto, lista de magias de 2º nível de Ranger (p. 164) e verbete **Crescer Espinhos**. A lista de Ranger continua sob auditoria; este lote não declara a cobertura completa.
 - A entrada **Armadilha** aparece na lista resumida de Ranger, mas seu verbete completo não foi localizado nesta busca do PDF. Não foi inventada uma descrição; fica pendente de localização/conferência antes de qualquer alteração.
 - Nenhum teste manual em dispositivo Android foi realizado nesta etapa.
+
+
+---
+
+## 2026-10-24 — Magia Armadilha (Ranger 2)
+
+- Resolvida a pendência registrada no lote anterior: o verbete completo **Armadilha** foi localizado no PDF brasileiro do *Livro do Jogador* (Transmutação; Rgr 2, Drd 3).
+- Adicionada ao catálogo com tempo de execução de 3 rodadas, componentes V, G, FD, alcance toque, duração até ser disparada ou destruída, nenhum teste de resistência e resistência à magia não.
+- A descrição registra os dados essenciais do texto: CD 23 para localizar/escapar, possibilidade de causar 1d6 de dano se ligada a uma árvore, CA 7 e 5 PV.
+- Acrescentado teste de regressão para níveis por classe, parâmetros, mecânica e unicidade da entrada.
+- Fonte primária: PDF brasileiro *D&D 3.5 — Livro do Jogador* fornecido no projeto, verbete **Armadilha** (texto extraído na região da p. 120). A auditoria das magias de Ranger continua em andamento.
+- Nenhum teste manual em dispositivo Android foi realizado nesta etapa.
