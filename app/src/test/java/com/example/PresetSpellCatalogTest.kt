@@ -214,10 +214,12 @@ class PresetSpellCatalogTest {
         assertEquals("1 minuto/nível", calmAnimals.duration)
         assertTrue(calmAnimals.spellResistance)
 
-        val detectTraps = spells.getValue("Detectar Laços e Covas")
+        val detectTraps = spells.getValue("Detectar Armadilhas")
         assertEquals(setOf("Druida", "Ranger"), detectTraps.classes.toSet())
-        assertEquals("18m/nível", detectTraps.range)
+        assertEquals("18 m", detectTraps.range)
         assertFalse(detectTraps.spellResistance)
+        assertEquals(1, spells.values.count { it.name == "Detectar Armadilhas" })
+        assertFalse(spells.containsKey("Detectar Laços e Covas"))
 
         val summonNature = spells.getValue("Invocar Aliado da Natureza I")
         assertEquals(setOf("Druida", "Ranger"), summonNature.classes.toSet())
