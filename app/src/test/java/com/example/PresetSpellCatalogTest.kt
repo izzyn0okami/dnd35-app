@@ -1875,6 +1875,12 @@ class PresetSpellCatalogTest {
             assertEquals(7, spell.classLevels["Mago"])
         }
 
+        val wavesOfExhaustion = spells.getValue("Ondas da Exaustão")
+        assertEquals("Cone de 18 m", wavesOfExhaustion.range)
+        assertEquals("Instantânea", wavesOfExhaustion.duration)
+        assertEquals("Nenhum", wavesOfExhaustion.savingThrow)
+        assertTrue(wavesOfExhaustion.spellResistance)
+
         val symbol = spells.getValue("Símbolo da Morte")
         assertEquals(8, symbol.classLevels["Clérigo"])
         assertEquals(7, symbol.classLevels["Feiticeiro"])
