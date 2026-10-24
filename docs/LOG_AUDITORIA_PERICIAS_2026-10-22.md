@@ -1290,3 +1290,15 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - A auditoria da lista de magias de Ranger continua incompleta; este lote não declara o catálogo completo. Nenhum teste manual em dispositivo Android foi realizado nesta etapa.
 
 - Ajuste de validação em 2026-10-24: a primeira CI detectou uma expectativa antiga no teste `firstLevelNatureSpellBatchEightHasExpectedClassesAndMechanics`, que ainda esperava duração sem o marcador dissipável. O teste foi alinhado ao verbete do Livro do Jogador: `1 rodada/nível (D)`. A PR permanece sem merge até a nova CI concluir com sucesso.
+
+
+---
+
+## 2026-10-24 — Cobertura adicional de magias de 2º nível de Ranger
+
+- Corrigido o nome não canônico **Graça Felina** para **Agilidade do Gato**, conforme o verbete do *Livro do Jogador* brasileiro; preservada uma única entrada e conferidos os níveis Bardo 2, Druida 2, Ranger 2, Feiticeiro 2 e Mago 2.
+- Adicionada **Crescer Espinhos**, ausente do catálogo, com níveis Druida 3/Ranger 2 e os dados principais do verbete: componentes V, G, FD; alcance médio; duração de 1 hora/nível (D); Reflexos parcial; resistência à magia sim.
+- Incluídos testes de regressão para o nome canônico, ausência da denominação duplicada e dados por classe/campos mecânicos.
+- Fonte primária: PDF brasileiro do *Livro do Jogador* fornecido no projeto, lista de magias de 2º nível de Ranger (p. 164) e verbete **Crescer Espinhos**. A lista de Ranger continua sob auditoria; este lote não declara a cobertura completa.
+- A entrada **Armadilha** aparece na lista resumida de Ranger, mas seu verbete completo não foi localizado nesta busca do PDF. Não foi inventada uma descrição; fica pendente de localização/conferência antes de qualquer alteração.
+- Nenhum teste manual em dispositivo Android foi realizado nesta etapa.
