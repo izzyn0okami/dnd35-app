@@ -1319,6 +1319,27 @@ class PresetSpellCatalogTest {
     }
 
     @Test
+    fun palavraDePoderAtordoarMatchesPlayerHandbookEntry() {
+        val matches = Dnd35Rules.PRESET_SPELLS.filter { it.name == "Palavra de Poder, Atordoar" }
+        assertEquals(1, matches.size)
+        val spell = matches.single()
+
+        assertEquals(8, spell.level)
+        assertEquals("Encantamento (Compulsão) [de Ação Mental]", spell.school)
+        assertEquals(setOf("Feiticeiro", "Mago"), spell.classes.toSet())
+        assertEquals(mapOf("Feiticeiro" to 8, "Mago" to 8), spell.classLevels)
+        assertEquals(mapOf("Guerra" to 8), spell.domainLevels)
+        assertEquals("1 ação padrão", spell.castTime)
+        assertEquals("V", spell.components)
+        assertEquals("Curto (7,5 m + 1,5 m/2 níveis)", spell.range)
+        assertEquals("Nenhum", spell.savingThrow)
+        assertTrue(spell.spellResistance)
+        assertTrue(spell.description.contains("150 pontos de vida ou menos"))
+        assertTrue(spell.description.contains("50 PV ou menos, 4d4 rodadas"))
+        assertTrue(spell.description.contains("151 PV ou mais não são afetadas"))
+    }
+
+    @Test
     fun enfeiticarMonstroEmMassaMatchesPlayerHandbookEntry() {
         val matches = Dnd35Rules.PRESET_SPELLS.filter { it.name == "Enfeitiçar Monstro em Massa" }
         assertEquals(1, matches.size)

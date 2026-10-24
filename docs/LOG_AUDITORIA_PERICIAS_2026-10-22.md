@@ -1825,3 +1825,14 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - **Contagem nominal:** 205 entradas únicas após integração (204 antes da PR).
 - **Limitação:** não foi realizado teste manual em dispositivo Android.
 - **Próximo passo:** continuar com as magias restantes de 8º nível do Livro do Jogador, conferindo o verbete e o catálogo antes de cada inclusão.
+
+
+## 2026-10-24 — Inclusão proposta de Palavra de Poder, Atordoar (8º nível)
+
+- **Fonte primária:** PDF brasileiro *D&D 3.5 — Livro do Jogador*, verbete “Palavra de Poder, Atordoar”, p. impressa 191.
+- **Dados conferidos:** Encantamento (Compulsão) [de Ação Mental]; Feiticeiro/Mago 8 e domínio da Guerra 8; componente V; execução de 1 ação padrão; alcance curto; alvo de até 150 PV; nenhum teste de resistência; resistência à magia sim.
+- **Duração:** 4d4 rodadas para até 50 PV; 2d4 para 51–100 PV; 1d4 para 101–150 PV; alvos com 151 PV ou mais não são afetados.
+- **Regressão:** teste dedicado para unicidade, escola, níveis por classe e domínio, componentes, alcance, ausência de resistência, resistência à magia e faixas de PV.
+- **Validação:** PR em preparação; CI ainda não executada; sem teste manual em dispositivo Android.
+- **Contagem nominal antes desta proposta:** 205 entradas únicas; a inclusão elevará para 206 se integrada.
+- **Próximo passo:** aguardar CI e integrar somente se testes, compilação Android e geração do APK passarem.
