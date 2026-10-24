@@ -1038,6 +1038,21 @@ object Dnd35Rules {
 
     val PRESET_SPELLS = listOf(
         PresetSpell(
+            name = "Instante de Presciência",
+            level = 8,
+            school = "Adivinhação",
+            classes = listOf("Feiticeiro", "Mago"),
+            castTime = "1 ação padrão",
+            components = "V, G",
+            range = "Pessoal",
+            duration = "1 hora/nível ou até ser dissipada",
+            savingThrow = "Nenhum",
+            spellResistance = false,
+            description = "Você recebe um poderoso sexto sentido. Uma vez durante a duração, pode aplicar um bônus de intuição igual ao nível de conjurador (máximo +25) a uma única jogada de ataque, teste de habilidade, teste de perícia resistido ou teste de resistência; também pode aplicar o bônus à CA contra um único ataque, mesmo estando surpreendido. Ativar o efeito não é ação e pode ocorrer no turno de outra criatura, mas a decisão deve ser tomada antes da jogada. Depois de usado, a magia se dissipa. Não é possível manter mais de um Instante de Presciência ativo ao mesmo tempo.",
+            classLevels = mapOf("Feiticeiro" to 8, "Mago" to 8),
+            domainLevels = mapOf("Sorte" to 8)
+        ),
+        PresetSpell(
             name = "Discernir Localização",
             level = 8,
             school = "Adivinhação",
