@@ -51,7 +51,7 @@ Os scripts `gradlew` e `gradlew.bat` incluídos neste pacote são lançadores de
 
 Também é possível abrir a pasta no Android Studio e usar a sincronização Gradle. Se a compilação falhar por falta de SDK, instale no SDK Manager a plataforma e as ferramentas Android exigidas pelo `app/build.gradle.kts`.
 
-O projeto não inclui credenciais privadas, arquivo `google-services.json` nem keystore de publicação. O plugin Google Services está configurado para emitir aviso quando o JSON estiver ausente; serviços que dependam de configuração Firebase podem não funcionar sem configuração própria. A compilação de release assinada requer uma keystore válida e as variáveis de ambiente descritas em `.env.example`.
+O projeto não inclui credenciais privadas nem keystore de publicação. O app funciona totalmente offline e não usa Firebase nem outros serviços de rede. A compilação de release assinada requer uma keystore válida e as variáveis de ambiente `KEYSTORE_PATH`, `STORE_PASSWORD` e `KEY_PASSWORD` (alias `upload`).
 
 ## Correções
 
