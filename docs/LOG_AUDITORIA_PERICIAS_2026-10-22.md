@@ -1686,3 +1686,15 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - **Cobertura:** teste de regressão específico incluído e aprovado pela CI.
 - **Limitação:** não foi realizado teste manual em dispositivo Android.
 - **Próximo passo:** auditar `Âncora Planar Maior` diretamente no PDF brasileiro, confirmar níveis de classe/domínio e todos os parâmetros antes de abrir uma PR.
+
+
+## 2026-10-24 — Inclusão proposta de Âncora Planar Maior (8º nível)
+
+- **Fonte primária:** PDF brasileiro *D&D 3.5 — Livro do Jogador*, verbete “Âncora Planar Maior”, p. impressa 171–172.
+- **Conferência visual do PDF:** a lista de magias de 8º nível identifica Âncora Planar Maior como magia de Conjuração e resume o limite como até 18 DV. O texto do verbete na p. 171 confirma uma criatura de até 18 DV ou até três criaturas do mesmo tipo totalizando até 18 DV; cada uma tenta escapar independentemente e deve ser persuadida individualmente. Foi priorizada a leitura visual do PDF, pois a extração textual tinha OCR divergente (“12 DV”).
+- **Parâmetros herdados de Âncora Planar Menor conforme “essa magia é semelhante”:** V, G, F; execução de 10 minutos; alcance curto (7,5 m + 1,5 m/2 níveis); duração instantânea; Vontade anula; resistência à magia sim. Requer círculo de proteção e armadilha apropriados, conforme o texto-base.
+- **Níveis de classe:** Feiticeiro 8 e Mago 8; sem nível de domínio identificado no verbete/lista consultados.
+- **Implementação proposta:** entrada única no catálogo, com descrição explícita do limite de 18 DV e das tentativas/persuasões individuais.
+- **Regressão:** teste dedicado verifica unicidade, escola, nível, classes, parâmetros e limite/condições de convocação.
+- **Validação:** PR aberta; CI pendente; sem teste manual em dispositivo Android. Não integrar até CI verde.
+- **Contagem antes desta PR:** 198 entradas nominais únicas na main; esta inclusão elevará para 199 se integrada.
