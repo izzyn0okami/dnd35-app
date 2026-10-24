@@ -1038,6 +1038,20 @@ object Dnd35Rules {
 
     val PRESET_SPELLS = listOf(
         PresetSpell(
+            name = "Aprisionar a Alma",
+            level = 8,
+            school = "Conjuração (Invocação)",
+            classes = listOf("Feiticeiro", "Mago"),
+            castTime = "1 ação padrão ou veja texto",
+            components = "V, G, M (F)",
+            range = "Curto (7,5 m + 1,5 m/2 níveis)",
+            duration = "Permanente; veja texto",
+            savingThrow = "Veja texto",
+            spellResistance = true,
+            description = "Absorve a força vital e o corpo material de uma criatura para uma gema, onde fica aprisionada indefinidamente ou até a gema ser quebrada, liberando-a. Se for uma criatura poderosa de outro plano, o conjurador pode exigir que cumpra uma tarefa em troca da liberdade. A magia possui versões com formas distintas de ativação; os testes de resistência e a resistência à magia dependem da versão escolhida. Componentes materiais e foco variam conforme a versão.",
+            classLevels = mapOf("Feiticeiro" to 8, "Mago" to 8)
+        ),
+        PresetSpell(
             name = "Âncora Planar Maior",
             level = 8,
             school = "Conjuração (Convocação)",
