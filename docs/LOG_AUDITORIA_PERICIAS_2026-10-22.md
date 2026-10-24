@@ -1799,13 +1799,15 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - **Próximo passo:** continuar com as magias restantes de 8º nível do Livro do Jogador; verificar cada verbete e o catálogo antes de nova inclusão.
 
 
-## 2026-10-24 — Inclusão proposta de Dança Irresistível de Otto (8º nível para Feiticeiro/Mago; 6º para Bardo)
+## 2026-10-24 — Dança Irresistível de Otto integrada (8º nível para Feiticeiro/Mago; 6º para Bardo)
 
 - **Fonte primária:** PDF brasileiro *D&D 3.5 — Livro do Jogador*, verbete “Dança Irresistível de Otto”, p. impressa 191; lista de magias de 8º nível.
 - **Dados conferidos:** Encantamento (Compulsão) [de Ação Mental]; Bardo 6, Feiticeiro/Mago 8; componente V; execução de 1 ação padrão; alcance toque; alvo criatura viva tocada; duração 1d4+1 rodadas; nenhum teste de resistência; resistência à magia sim.
 - **Efeito essencial:** o alvo só consegue saltar e girar; sofre –4 na CA e –10 nos testes de Reflexos, perde bônus de CA de escudos e provoca ataques de oportunidade a cada turno.
-- **Implementação proposta:** entrada com nível-base 8 e níveis por classe explicitados para não perder o nível de Bardo 6.
+- **Implementação:** entrada com nível-base 8 e níveis por classe explicitados para preservar o nível de Bardo 6.
 - **Regressão:** teste dedicado para unicidade, escola, níveis por classe, componentes, alcance, duração, resistência e penalidades centrais.
-- **Validação:** PR em preparação; CI ainda não executada; sem teste manual em dispositivo Android.
-- **Contagem nominal antes desta proposta:** 203 entradas únicas; a inclusão elevará para 204 se integrada.
-- **Próximo passo:** aguardar CI e integrar apenas se testes unitários, compilação Android e geração do APK passarem.
+- **Validação:** CI concluída com sucesso — [execução 40085292589](https://github.com/izzyn0okami/dnd35-app/actions/runs/40085292589); PR [#222](https://github.com/izzyn0okami/dnd35-app/pull/222) integrada por squash.
+- **Commit de merge:** `9af6bec19d53bbd79cc8d2f2f77f8ab194ade6d1`.
+- **Contagem nominal:** 204 entradas únicas após integração (203 antes da PR).
+- **Limitação:** não foi realizado teste manual em dispositivo Android.
+- **Próximo passo:** continuar a auditoria das magias restantes de 8º nível do Livro do Jogador; conferir verbete e catálogo antes de cada inclusão.
