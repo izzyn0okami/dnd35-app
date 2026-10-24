@@ -950,4 +950,32 @@ class PresetSpellCatalogTest {
         assertEquals(1, spells.count { it.name == "Visão no Escuro" })
     }
 
+
+    @Test
+    fun rangerFourthLevelCatalogIncludesAllSevenPlayerHandbookSpells() {
+        val spells = Dnd35Rules.PRESET_SPELLS
+        val expected = mapOf(
+            "Ampliar Animais" to mapOf("Druida" to 5, "Ranger" to 4, "Feiticeiro" to 5, "Mago" to 5),
+            "Caminhar em Árvores" to mapOf("Druida" to 5, "Ranger" to 4),
+            "Comunhão Com a Natureza" to mapOf("Druida" to 5, "Ranger" to 4),
+            "Curar Ferimentos Graves" to mapOf("Bardo" to 3, "Clérigo" to 3, "Druida" to 4, "Paladino" to 4, "Ranger" to 4),
+            "Dificultar Detecção" to mapOf("Ranger" to 4, "Feiticeiro" to 3, "Mago" to 3),
+            "Invocar Aliado da Natureza IV" to mapOf("Druida" to 4, "Ranger" to 4),
+            "Movimentação Livre" to mapOf("Bardo" to 4, "Druida" to 4, "Ranger" to 4)
+        )
+        expected.forEach { (name, levels) ->
+            val spell = spells.single { it.name == name }
+            assertEquals(4, spell.level)
+            assertEquals(levels, spell.classLevels)
+        }
+        assertEquals("Transmutação", spells.single { it.name == "Ampliar Animais" }.school)
+        assertEquals("Conjuração (Teletransporte)", spells.single { it.name == "Caminhar em Árvores" }.school)
+        assertEquals("Adivinhação", spells.single { it.name == "Comunhão Com a Natureza" }.school)
+        assertEquals("Conjuração (Cura)", spells.single { it.name == "Curar Ferimentos Graves" }.school)
+        assertEquals("Abjuração", spells.single { it.name == "Dificultar Detecção" }.school)
+        assertEquals("Conjuração (Invocação)", spells.single { it.name == "Invocar Aliado da Natureza IV" }.school)
+        assertEquals("Abjuração", spells.single { it.name == "Movimentação Livre" }.school)
+        assertEquals(expected.size, expected.keys.sumOf { name -> spells.count { it.name == name } })
+    }
+
 }

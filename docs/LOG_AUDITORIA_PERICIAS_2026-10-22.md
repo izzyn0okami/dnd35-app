@@ -1371,3 +1371,15 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Parâmetros transcritos do verbete: Transmutação; V, G, M; toque; 1 hora/nível; Vontade anula (inofensiva); resistência à magia sim (inofensiva); alcance visual de 18 m e incapacidade de atravessar escuridão mágica.
 - Fonte primária: PDF brasileiro *D&D 3.5 — Livro do Jogador* fornecido no projeto, verbete “Visão no Escuro”, linhas extraídas na região da página impressa 258.
 - Teste de regressão acrescentado para níveis por classe, parâmetros e unicidade. Nenhum teste manual em dispositivo Android foi realizado.
+
+
+---
+
+## 2026-10-24 — Catálogo de magias de 4º nível de Ranger
+
+- Conferida a lista resumida de magias de 4º nível de Ranger no *Livro do Jogador* brasileiro e pesquisados os verbetes completos das sete entradas que estavam ausentes do catálogo.
+- Adicionadas: Ampliar Animais; Caminhar em Árvores; Comunhão Com a Natureza; Curar Ferimentos Graves; Dificultar Detecção; Invocar Aliado da Natureza IV; Movimentação Livre.
+- Os níveis por classe foram transcritos dos verbetes completos, inclusive quando a mesma magia possui nível diferente para outras classes. Para magias que também aparecem em listas de domínio, o catálogo considera apenas classes de personagem suportadas pelo app.
+- Teste de regressão cobre unicidade, nível Ranger 4, níveis por classe e escolas de magia.
+- Fonte primária: PDF brasileiro *D&D 3.5 — Livro do Jogador* fornecido no projeto; lista resumida de Ranger 4 e verbetes completos correspondentes.
+- Nenhum teste manual em dispositivo Android foi realizado.
