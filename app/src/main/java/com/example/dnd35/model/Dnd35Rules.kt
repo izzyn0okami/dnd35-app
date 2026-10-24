@@ -2937,7 +2937,7 @@ object Dnd35Rules {
         ),
         PresetSpell(
             name = "Dedo da Morte",
-            level = 7,
+            level = 8,
             school = "Necromancia",
             classes = listOf("Mago", "Feiticeiro", "Druida"),
             castTime = "1 ação padrão",
@@ -2946,7 +2946,8 @@ object Dnd35Rules {
             duration = "Instantânea",
             savingThrow = "Fortitude parcial",
             spellResistance = true,
-            description = "Aponta para um ser vivo e tenta extirpar sua vida instantaneamente. Se falhar, morre na hora; se passar, sofre 3d6+nível."
+            description = "Aponta para um ser vivo e tenta extirpar sua vida instantaneamente. Se falhar, morre na hora; se passar, sofre 3d6+nível.",
+            classLevels = mapOf("Mago" to 7, "Feiticeiro" to 7, "Druida" to 8)
         ),
         PresetSpell(
             name = "Parar o Tempo (Time Stop)",
@@ -2973,9 +2974,9 @@ object Dnd35Rules {
             savingThrow = "Vontade anula (inofensiva)",
             spellResistance = true,
             description = "Protege uma criatura contra efeitos de ação mental e contra efeitos de adivinhação usados para obter informações sobre ela. A magia também impede detecção direta do alvo por adivinhações, conforme o verbete do Livro do Jogador.",
-            classLevels = mapOf("Feiticeiro" to 8, "Mago" to 8)
-        ),
-        PresetSpell(
+            classLevels = mapOf("Feiticeiro" to 8, "Mago" to 8),
+            domainLevels = mapOf("Proteção" to 8)
+        ),        PresetSpell(
             name = "Proteção contra Magias",
             level = 8,
             school = "Abjuração",
@@ -2987,9 +2988,9 @@ object Dnd35Rules {
             savingThrow = "Vontade anula (inofensiva)",
             spellResistance = true,
             description = "Concede ao alvo +8 de bônus de resistência nos testes de resistência contra magias e habilidades similares à magia, mas não contra habilidades extraordinárias ou sobrenaturais. Afeta até uma criatura tocada por quatro níveis do conjurador. Componente material: diamante de pelo menos 500 PO, esmigalhado e espalhado sobre os alvos; foco: diamante de 1.000 PO por criatura, que deve ser carregado durante a duração.",
-            classLevels = mapOf("Feiticeiro" to 8, "Mago" to 8)
-        ),
-        PresetSpell(
+            classLevels = mapOf("Feiticeiro" to 8, "Mago" to 8),
+            domainLevels = mapOf("Magia" to 8)
+        ),        PresetSpell(
             name = "Muralha Prismática",
             level = 8,
             school = "Abjuração",
@@ -4415,6 +4416,35 @@ object Dnd35Rules {
             description = "Como metamorfose, mas transforma uma criatura ou objeto mundano de até 3 m³ por nível em outro. A duração depende de quão radical é a transformação; o Livro do Jogador fornece modificadores para semelhança de reino, classe, tamanho, relação e inteligência, podendo resultar em duração permanente. Teste de resistência e resistência à magia se aplicam conforme a natureza do alvo.",
             classLevels = mapOf("Feiticeiro" to 8, "Mago" to 8),
             domainLevels = mapOf("Enganação" to 8)
+        ),
+        PresetSpell(
+            name = "Clone",
+            level = 8,
+            school = "Necromancia",
+            classes = listOf("Feiticeiro", "Mago"),
+            castTime = "10 minutos",
+            components = "V, G, M, F",
+            range = "0 m",
+            duration = "Instantânea",
+            savingThrow = "Nenhum",
+            spellResistance = false,
+            description = "Cria uma duplicata de um ser vivo a partir de uma amostra de seu corpo. Se a criatura original morrer, sua alma será transferida para o clone. A criação exige um recipiente especial como foco, cujo custo depende dos Dados de Vida do original, além dos componentes materiais e das condições descritas no Livro do Jogador.",
+            classLevels = mapOf("Feiticeiro" to 8, "Mago" to 8)
+        ),
+        PresetSpell(
+            name = "Evaporação",
+            level = 8,
+            school = "Necromancia",
+            classes = listOf("Feiticeiro", "Mago"),
+            castTime = "1 ação padrão",
+            components = "V, G, M/FD",
+            range = "Longo (120 m + 12 m/nível)",
+            duration = "Instantânea",
+            savingThrow = "Fortitude reduz à metade",
+            spellResistance = true,
+            description = "Evapora os líquidos corporais de todas as criaturas vivas afetadas, causando 1d6 pontos de dano por nível do conjurador (máximo 20d6). Elementais da água e criaturas do tipo planta sofrem 1d8 pontos de dano por nível (máximo 20d8). Um teste de Fortitude bem-sucedido reduz o dano à metade.",
+            classLevels = mapOf("Feiticeiro" to 8, "Mago" to 8),
+            domainLevels = mapOf("Água" to 8)
         ),
     )
 }
