@@ -1474,3 +1474,16 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - **Validação:** CI run [40060616229](https://github.com/izzyn0okami/dnd35-app/actions/runs/40060616229) concluída com sucesso; testes unitários, compilação Android e upload do APK passaram. Nenhum teste manual em dispositivo Android foi realizado.
 - **Integração:** PR [#207](https://github.com/izzyn0okami/dnd35-app/pull/207) integrada por squash em 2026-10-24; commit `75de4054a583ce5ae9b6d03643b30426a41667c0`.
 - **Próximo passo:** continuar a conferência individual das associações de Ranger/Bardo com base nos verbetes completos, sem duplicar itens já auditados.
+
+
+## 2026-10-24 — Conferência sem alterações: magias de Ranger/Druida/Clérigo
+
+- **Fonte primária:** PDF brasileiro *D&D 3.5 — Livro do Jogador*, verbetes completos das magias e listas de classe.
+- **Caminhar na Água:** o verbete (página impressa 235) lista **Clérigo 3 e Ranger 3**; as associações atuais do catálogo correspondem ao texto. Não acrescentar Druida por inferência de outras edições.
+- **Armadilha:** a entrada do catálogo mantém **Ranger 2 e Druida 3**, compatíveis com os níveis indicados no Livro do Jogador.
+- **Crescer Espinhos:** a entrada do catálogo mantém **Druida 3 e Ranger 2**, compatíveis com a lista de magias de Druida e o nível de Ranger.
+- **Presa Mágica Maior:** a entrada do catálogo mantém **Druida 3 e Ranger 3**, compatíveis com o verbete/listas do livro.
+- **Falar com Plantas:** a entrada mantém **Bardo 4, Druida 3 e Ranger 2**, sem divergência confirmada nesta conferência.
+- **Decisão:** nenhum código ou teste foi alterado nesta rodada; os itens acima não justificam PR corretiva. A lista resumida de uma classe não deve ser usada para invalidar automaticamente associações que o verbete completo confirma.
+- **Validação:** conferência estática do catálogo e do PDF; não houve build porque não houve mudança de código nem teste manual em dispositivo.
+- **Próximo passo:** seguir para as próximas associações de magias de Ranger e Bardo ainda não cobertas, comparando cada entrada com o verbete completo antes de abrir PR.
