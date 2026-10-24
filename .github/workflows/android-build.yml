@@ -38,16 +38,7 @@ jobs:
           keytool -list -keystore debug.keystore -storepass android -alias androiddebugkey >/dev/null
 
       - name: Run unit tests
-        run: |
-          set +e
-          ./gradlew testDebugUnitTest --stacktrace 2>&1 | tee gradle-test.log
-          status=${PIPESTATUS[0]}
-          if [ "$status" -ne 0 ]; then
-            grep -h -A3 "<failure" app/build/test-results/testDebugUnitTest/*.xml | head -16 | while IFS= read -r line; do
-              echo "::error::${line:0:900}"
-            done
-          fi
-          exit $status
+        run: ./gradlew testDebugUnitTest
 
       - name: Compile Android app
         run: ./gradlew assembleDebug
