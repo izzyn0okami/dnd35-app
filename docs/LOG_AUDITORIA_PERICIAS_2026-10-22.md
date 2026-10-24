@@ -1896,3 +1896,14 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - **Contagem nominal:** 210 entradas após integração (209 antes da PR).
 - **Limitação:** não foi realizado teste manual em dispositivo Android.
 - **Próximo passo:** continuar a auditoria das magias restantes de 8º nível do Livro do Jogador; conferir verbete completo e catálogo antes de cada inclusão.
+
+
+## 2026-10-24 — Inclusão proposta de Animação Ilusória (8º nível)
+
+- **Fonte primária:** PDF brasileiro *D&D 3.5 — Livro do Jogador*, verbete “Animação Ilusória”.
+- **Dados conferidos:** Ilusão (Sensação); Feiticeiro 8 e Mago 8; domínio da Enganação 7; componentes V, G; execução de 10 minutos; alcance curto (7,5 m + 1,5 m/2 níveis); área de cubo de 9 m/nível; duração de 24 horas; nenhum teste ou Vontade para desacreditar se houver interação; resistência à magia não.
+- **Efeito essencial:** protege contra espionagem mágica e observação direta com uma ilusão descrita em termos gerais no momento da conjuração; condições não podem ser alteradas posteriormente. Tentativas mágicas de observar detectam automaticamente a imagem; observação direta pode permitir teste de Vontade se houver motivo para duvidar.
+- **Regressão:** teste dedicado para unicidade, escola, classes, níveis e domínio, execução, componentes, alcance, área, duração, resistência e efeito de observação.
+- **Validação:** proposta na branch `audit/spell-animacao-ilusoria`; CI pendente; sem teste manual em dispositivo Android.
+- **Contagem nominal antes desta proposta:** 210 entradas; a inclusão elevará para 211 se integrada.
+- **Próximo passo:** aguardar CI; integrar somente se testes unitários, compilação Android e upload do APK passarem.
