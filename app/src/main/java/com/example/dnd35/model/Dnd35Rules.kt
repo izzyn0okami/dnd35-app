@@ -1837,7 +1837,7 @@ object Dnd35Rules {
             description = "Faz um animal considerar o conjurador um amigo; não concede controle direto sobre suas ações."
         ),
         PresetSpell(
-            name = "Emaranhar",
+            name = "Constrição",
             level = 1,
             school = "Transmutação",
             classes = listOf("Druida", "Ranger"),
@@ -1969,7 +1969,7 @@ object Dnd35Rules {
             description = "Concede bônus de deflexão +2 na CA, aumentando em +1 a cada seis níveis de conjurador, até +5."
         ),
         PresetSpell(
-            name = "Presas Mágicas",
+            name = "Presa Mágica",
             level = 1,
             school = "Transmutação",
             classes = listOf("Druida", "Ranger"),
@@ -2074,19 +2074,6 @@ object Dnd35Rules {
             savingThrow = "Vontade anula (inofensivo)",
             spellResistance = false,
             description = "Protege uma criatura contra temperaturas ambientais extremas, sem protegê-la de dano de fogo ou frio."
-        ),
-        PresetSpell(
-            name = "Pedra Mágica",
-            level = 1,
-            school = "Transmutação",
-            classes = listOf("Druida"),
-            castTime = "1 ação padrão",
-            components = "V, S, DF",
-            range = "Toque",
-            duration = "30 minutos ou até descarregada",
-            savingThrow = "Nenhum",
-            spellResistance = true,
-            description = "Encanta até três pedras pequenas para serem arremessadas ou usadas como munição de funda, causando dano mágico adicional contra mortos-vivos."
         ),
         PresetSpell(
             name = "Porrete Mágico",
@@ -2304,7 +2291,7 @@ object Dnd35Rules {
             description = "Revela armadilhas naturais, fossos e perigos semelhantes dentro do alcance, conforme a direção examinada."
         ),
         PresetSpell(
-            name = "Convocar Aliado da Natureza I",
+            name = "Invocar Aliado da Natureza I",
             level = 1,
             school = "Conjuração",
             classes = listOf("Druida", "Ranger"),

@@ -1187,3 +1187,14 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - A mudança foi feita na entrada existente para evitar uma segunda cópia; teste atualizado e teste de regressão acrescentado.
 - A grafia Perdição não aparece como nome dessa magia na lista consultada; não manter a entrada com esse nome sem localizar outro verbete correspondente no livro.
 - A PR #184 adicionou Invisibilidade Contra Mortos-Vivos, nome confirmado pelo verbete do livro; a lista impressa usa uma forma distorcida pelo OCR, não uma magia distinta.
+
+
+---
+
+## 2026-10-24 — Nomes canônicos na lista de 1º nível de Druida
+
+- Conferidas as listas de 1º nível de Druida e Ranger no Livro do Jogador brasileiro (capítulo 11; páginas impressas 162–164) e comparadas com o catálogo existente.
+- Renomeadas as entradas existentes **Emaranhar** para **Constrição**, **Presas Mágicas** para **Presa Mágica** e **Convocar Aliado da Natureza I** para **Invocar Aliado da Natureza I**, conforme a nomenclatura das listas do livro. As entradas foram renomeadas, sem duplicação.
+- Removida a entrada duplicada **Pedra Mágica**, cujo efeito já está coberto por **Pedra Encantada**; mantida a entrada canônica com Druida e Clérigo.
+- Atualizados os testes para os nomes canônicos e acrescentada regressão contra os aliases/duplicata. Outras magias de Druida ainda exigem conferência dos campos mecânicos; este lote não declara concluída a auditoria da classe.
+- Fonte primária: PDF brasileiro “D&D 3.5 - Livro do Jogador” fornecido nesta conversa. Nenhum teste manual em dispositivo Android foi realizado nesta etapa.

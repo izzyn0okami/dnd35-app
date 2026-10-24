@@ -112,7 +112,7 @@ class PresetSpellCatalogTest {
             "Salto",
             "Mãos Flamejantes",
             "Enfeitiçar Animal",
-            "Emaranhar",
+            "Constrição",
             "Bom Fruto",
             "Passos sem Pegadas",
             "Falar com Animais",
@@ -122,7 +122,7 @@ class PresetSpellCatalogTest {
             "Comando",
             "Santuário",
             "Escudo da Fé",
-            "Presas Mágicas",
+            "Presa Mágica",
             "Passos Longos",
             "Fogo das Fadas",
             "Remover Medo",
@@ -130,7 +130,6 @@ class PresetSpellCatalogTest {
             "Abençoar Água",
             "Desespero",
             "Suportar Elementos",
-            "Pedra Mágica",
             "Porrete Mágico",
             "Detectar Animais ou Plantas",
             "Ocultar-se de Animais",
@@ -172,7 +171,7 @@ class PresetSpellCatalogTest {
         assertTrue(spells.getValue("Comando").spellResistance)
         assertEquals(setOf("Clérigo"), spells.getValue("Santuário").classes.toSet())
         assertEquals(setOf("Clérigo", "Paladino"), spells.getValue("Escudo da Fé").classes.toSet())
-        assertEquals(setOf("Druida", "Ranger"), spells.getValue("Presas Mágicas").classes.toSet())
+        assertEquals(setOf("Druida", "Ranger"), spells.getValue("Presa Mágica").classes.toSet())
         assertEquals(setOf("Druida", "Ranger"), spells.getValue("Passos Longos").classes.toSet())
         assertEquals(setOf("Druida"), spells.getValue("Fogo das Fadas").classes.toSet())
         assertEquals(setOf("Bardo", "Clérigo"), spells.getValue("Remover Medo").classes.toSet())
@@ -219,7 +218,7 @@ class PresetSpellCatalogTest {
         assertEquals("18m/nível", detectTraps.range)
         assertFalse(detectTraps.spellResistance)
 
-        val summonNature = spells.getValue("Convocar Aliado da Natureza I")
+        val summonNature = spells.getValue("Invocar Aliado da Natureza I")
         assertEquals(setOf("Druida", "Ranger"), summonNature.classes.toSet())
         assertEquals("1 rodada", summonNature.castTime)
         assertEquals("1 rodada/nível", summonNature.duration)
@@ -279,8 +278,8 @@ class PresetSpellCatalogTest {
         assertEquals(setOf("Mago", "Feiticeiro"), spells.getValue("Mãos Flamejantes").classes.toSet())
         assertEquals("4,5m", spells.getValue("Mãos Flamejantes").range)
         assertEquals(setOf("Druida", "Ranger"), spells.getValue("Enfeitiçar Animal").classes.toSet())
-        assertEquals(setOf("Druida", "Ranger"), spells.getValue("Emaranhar").classes.toSet())
-        assertFalse(spells.getValue("Emaranhar").spellResistance)
+        assertEquals(setOf("Druida", "Ranger"), spells.getValue("Constrição").classes.toSet())
+        assertFalse(spells.getValue("Constrição").spellResistance)
         assertEquals(setOf("Druida", "Ranger"), spells.getValue("Passos sem Pegadas").classes.toSet())
         assertEquals(setOf("Druida", "Ranger"), spells.getValue("Falar com Animais").classes.toSet())
         assertEquals(setOf("Druida"), spells.getValue("Produzir Chama").classes.toSet())
@@ -533,5 +532,18 @@ class PresetSpellCatalogTest {
         assertEquals(1, Dnd35Rules.PRESET_SPELLS.count { it.name == "Maldição Menor" })
         assertFalse(Dnd35Rules.PRESET_SPELLS.any { it.name == "Perdição" })
     }
+    @Test
+    fun druidFirstLevelSpellNamesMatchPortuguesePlayersHandbook() {
+        val names = Dnd35Rules.PRESET_SPELLS.map { it.name }
+        assertEquals(1, names.count { it == "Pedra Encantada" })
+        assertFalse(names.contains("Pedra Mágica"))
+        assertFalse(names.contains("Emaranhar"))
+        assertFalse(names.contains("Presas Mágicas"))
+        assertFalse(names.contains("Convocar Aliado da Natureza I"))
+        assertTrue(names.contains("Constrição"))
+        assertTrue(names.contains("Presa Mágica"))
+        assertTrue(names.contains("Invocar Aliado da Natureza I"))
+    }
+
 
 }
