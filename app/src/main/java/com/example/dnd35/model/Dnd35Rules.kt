@@ -1414,20 +1414,6 @@ object Dnd35Rules {
         // CÍRCULO 1
         // Magias adicionais de 1º nível conferidas no Livro do Jogador
         PresetSpell(
-            name = "Disco Flutuante de Tenser",
-            level = 1,
-            school = "Evocação [Energia]",
-            classes = listOf("Mago", "Feiticeiro"),
-            castTime = "1 ação padrão",
-            components = "V, G, M",
-            range = "Curto (7,5 m + 1,5 m/2 níveis)",
-            duration = "1 hora/nível",
-            savingThrow = "Nenhum",
-            spellResistance = false,
-            description = "Cria um disco horizontal de energia com 90 cm de diâmetro, que flutua a 90 cm do solo e acompanha o conjurador. Carrega até 50 kg por nível de conjurador.",
-            classLevels = mapOf("Mago" to 1, "Feiticeiro" to 1)
-        ),
-        PresetSpell(
             name = "Leque Cromático",
             level = 1,
             school = "Ilusão (Padrão) [Ação Mental]",
@@ -1439,20 +1425,6 @@ object Dnd35Rules {
             savingThrow = "Vontade anula",
             spellResistance = true,
             description = "Um cone de cores brilhantes afeta criaturas conforme seus Dados de Vida: 2 DV ou menos ficam inconscientes, cegas e atordoadas por 2d4 rodadas, depois cegas e atordoadas por 1d4 rodadas e, por fim, atordoadas por 1 rodada; 3–4 DV ficam cegas e atordoadas por 1d4 rodadas e, depois, atordoadas por 1 rodada; 5 DV ou mais ficam atordoadas por 1 rodada. Criaturas que não enxergam são imunes.",
-            classLevels = mapOf("Mago" to 1, "Feiticeiro" to 1)
-        ),
-        PresetSpell(
-            name = "Montaria Arcana",
-            level = 1,
-            school = "Conjuração (Invocação)",
-            classes = listOf("Mago", "Feiticeiro"),
-            castTime = "1 rodada",
-            components = "V, G, M",
-            range = "Curto (7,5 m + 1,5 m/2 níveis)",
-            duration = "2 horas/nível (D)",
-            savingThrow = "Nenhum",
-            spellResistance = false,
-            description = "Invoca um cavalo leve ou pônei à escolha do conjurador, que aparece equipado com estribos, rédeas e sela e serve voluntariamente como montaria.",
             classLevels = mapOf("Mago" to 1, "Feiticeiro" to 1)
         ),
         PresetSpell(
@@ -2725,15 +2697,16 @@ object Dnd35Rules {
         PresetSpell(
             name = "Montaria",
             level = 1,
-            school = "Conjuração",
+            school = "Conjuração (Invocação)",
             classes = listOf("Bardo", "Mago", "Feiticeiro"),
             castTime = "1 rodada",
             components = "V, S, M (um pouco de pelo de cavalo)",
-            range = "Curto (7,5m + 1,5m/2 níveis)",
-            duration = "2 horas/nível",
+            range = "Curto (7,5 m + 1,5 m/2 níveis)",
+            duration = "2 horas/nível (D)",
             savingThrow = "Nenhum",
             spellResistance = false,
-            description = "Conjura uma montaria para servir ao conjurador. Ela aparece equipada para montaria e desaparece quando a duração termina ou sofre dano excessivo."
+            description = "Invoca um cavalo leve ou pônei à escolha do conjurador. A montaria surge equipada com sela, rédeas e estribos, serve voluntariamente e desaparece ao fim da duração ou se sofrer dano excessivo.",
+            classLevels = mapOf("Bardo" to 1, "Mago" to 1, "Feiticeiro" to 1)
         ),
         PresetSpell(
             name = "Imagem Silenciosa",
@@ -2752,17 +2725,17 @@ object Dnd35Rules {
 
 
         PresetSpell(
-            name = "Disco Flutuante",
+            name = "Disco Flutuante de Tenser",
             level = 1,
-            school = "Conjuração",
+            school = "Evocação",
             classes = listOf("Mago", "Feiticeiro"),
             castTime = "1 ação padrão",
             components = "V, S, M (uma gota de mercúrio)",
-            range = "Curto (7,5m + 1,5m/2 níveis)",
+            range = "Curto (7,5 m + 1,5 m/2 níveis)",
             duration = "1 hora/nível",
             savingThrow = "Nenhum",
             spellResistance = false,
-            description = "Cria um disco horizontal de força que acompanha o conjurador e sustenta carga, mantendo-se a uma distância curta dele."
+            description = "Cria um disco horizontal de força com 90 cm de diâmetro, que flutua a 90 cm do solo e acompanha o conjurador. Sustenta até 50 kg por nível de conjurador."
         ),
         PresetSpell(
             name = "Reduzir Pessoa",
