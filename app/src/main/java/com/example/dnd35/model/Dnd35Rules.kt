@@ -1031,10 +1031,27 @@ object Dnd35Rules {
         val spellResistance: Boolean,
         val description: String,
         // Nível da magia por classe; quando omitido, usa "level" para todas.
-        val classLevels: Map<String, Int> = classes.associateWith { level }
+        val classLevels: Map<String, Int> = classes.associateWith { level },
+        // Níveis por domínio clerical; não são classes de personagem.
+        val domainLevels: Map<String, Int> = emptyMap()
     )
 
     val PRESET_SPELLS = listOf(
+        PresetSpell(
+            name = "Discernir Localização",
+            level = 8,
+            school = "Adivinhação",
+            classes = listOf("Clérigo", "Feiticeiro", "Mago"),
+            castTime = "10 minutos",
+            components = "V, G, FD",
+            range = "Ilimitado",
+            duration = "Instantânea",
+            savingThrow = "Nenhum",
+            spellResistance = false,
+            description = "Revela o nome da criatura ou a localização do objeto, incluindo lugar específico, comunidade, país ou divisão política, continente e plano de existência. Supera os meios normais de proteção contra vidência e localização; nada inferior a Limpar a Mente ou à intervenção direta de uma divindade impede a descoberta. Para localizar uma criatura, o conjurador precisa tê-la visto ou possuir um item que lhe pertenceu; para localizar um objeto, precisa tê-lo tocado ao menos uma vez.",
+            classLevels = mapOf("Clérigo" to 8, "Feiticeiro" to 8, "Mago" to 8),
+            domainLevels = mapOf("Conhecimento" to 8)
+        ),
         PresetSpell(
             name = "Tranca Dimensional",
             level = 8,
