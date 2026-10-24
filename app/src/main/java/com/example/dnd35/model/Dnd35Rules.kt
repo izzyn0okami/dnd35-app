@@ -2100,7 +2100,7 @@ object Dnd35Rules {
             name = "Suportar Energia",
             level = 1,
             school = "Abjuração",
-            classes = listOf("Clérigo", "Druida", "Ranger", "Mago", "Feiticeiro"),
+            classes = listOf("Clérigo", "Druida", "Paladino", "Ranger", "Mago", "Feiticeiro"),
             castTime = "1 ação padrão",
             components = "V, G, M/FD",
             range = "Toque",
@@ -2108,7 +2108,7 @@ object Dnd35Rules {
             savingThrow = "Vontade anula (inofensivo)",
             spellResistance = true,
             description = "Concede resistência 10 contra um tipo de energia escolhido (ácido, frio, eletricidade, fogo ou sônico); o valor aumenta para 20 no 7º nível de conjurador e 30 no 11º.",
-            classLevels = mapOf("Clérigo" to 2, "Druida" to 2, "Ranger" to 1, "Mago" to 2, "Feiticeiro" to 2)
+            classLevels = mapOf("Clérigo" to 2, "Druida" to 2, "Paladino" to 2, "Ranger" to 1, "Mago" to 2, "Feiticeiro" to 2)
         ),
         PresetSpell(
             name = "Retardar Envenenamento",
