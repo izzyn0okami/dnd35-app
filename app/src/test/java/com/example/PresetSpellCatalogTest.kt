@@ -1570,4 +1570,29 @@ class PresetSpellCatalogTest {
 
 
 
+    @Test
+    fun simboloDaInsanidadeMatchesPlayerHandbookEntry() {
+        val matches = Dnd35Rules.PRESET_SPELLS.filter { it.name == "Símbolo da Insanidade" }
+        assertEquals(1, matches.size)
+        val spell = matches.single()
+
+        assertEquals(8, spell.level)
+        assertEquals("Encantamento (Compulsão) [Ação Mental]", spell.school)
+        assertEquals(setOf("Clérigo", "Feiticeiro", "Mago"), spell.classes.toSet())
+        assertEquals(mapOf("Clérigo" to 8, "Feiticeiro" to 8, "Mago" to 8), spell.classLevels)
+        assertTrue(spell.domainLevels.isEmpty())
+        assertEquals("10 minutos", spell.castTime)
+        assertEquals("V, G, M", spell.components)
+        assertEquals("0 m (veja texto)", spell.range)
+        assertEquals("10 minutos/nível ou até ser ativado; veja texto", spell.duration)
+        assertEquals("Vontade anula", spell.savingThrow)
+        assertTrue(spell.spellResistance)
+        assertTrue(spell.description.contains("permanentemente insanas"))
+        assertTrue(spell.description.contains("área de até 18 m"))
+        assertTrue(spell.description.contains("10 minutos por nível de conjurador"))
+        assertTrue(spell.description.contains("a mais de 16 m não consegue ativá-la"))
+        assertTrue(spell.description.contains("CD 33"))
+        assertTrue(spell.description.contains("5.000 PO"))
+    }
+
 }
