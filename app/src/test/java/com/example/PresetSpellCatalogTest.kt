@@ -793,4 +793,25 @@ class PresetSpellCatalogTest {
         assertEquals(1, spells.count { it.name == "Armadilha" })
     }
 
+    @Test
+    fun rangerSecondLevelCatalogIncludesBearEnduranceFromPlayerHandbook() {
+        val spells = Dnd35Rules.PRESET_SPELLS
+        val bearEndurance = spells.single { it.name == "Vigor do Urso" }
+
+        assertEquals(2, bearEndurance.level)
+        assertEquals("Transmutação", bearEndurance.school)
+        assertEquals(
+            mapOf("Clérigo" to 2, "Druida" to 2, "Ranger" to 2, "Feiticeiro" to 2, "Mago" to 2),
+            bearEndurance.classLevels
+        )
+        assertEquals("1 ação padrão", bearEndurance.castTime)
+        assertEquals("V, G, FD", bearEndurance.components)
+        assertEquals("Toque", bearEndurance.range)
+        assertEquals("1 minuto/nível", bearEndurance.duration)
+        assertEquals("Vontade anula (inofensiva)", bearEndurance.savingThrow)
+        assertTrue(bearEndurance.spellResistance)
+        assertTrue(bearEndurance.description.contains("+4 de bônus de melhoria na Constituição"))
+        assertEquals(1, spells.count { it.name == "Vigor do Urso" })
+    }
+
 }

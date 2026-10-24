@@ -1314,3 +1314,14 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Acrescentado teste de regressão para níveis por classe, parâmetros, mecânica e unicidade da entrada.
 - Fonte primária: PDF brasileiro *D&D 3.5 — Livro do Jogador* fornecido no projeto, verbete **Armadilha** (texto extraído na região da p. 120). A auditoria das magias de Ranger continua em andamento.
 - Nenhum teste manual em dispositivo Android foi realizado nesta etapa.
+
+
+---
+
+## 2026-10-24 — Revisão de Vigor do Urso (Ranger 2)
+
+- A lista resumida de magias de 2º nível de Ranger inclui **Vigor do Urso**. A entrada já existia no catálogo, portanto não foi criada uma duplicata.
+- Corrigidos os dados para corresponder ao verbete completo do *Livro do Jogador* brasileiro: níveis Clérigo 2, Druida 2, Ranger 2 e Feiticeiro/Mago 2; duração de 1 minuto/nível; teste de Vontade anula (inofensiva); e descrição do bônus de melhoria de +4 na Constituição e seus benefícios normais.
+- Acrescentado o mapa explícito de níveis por classe e teste de regressão para os parâmetros, efeito e unicidade da entrada.
+- Fonte primária: PDF brasileiro *D&D 3.5 — Livro do Jogador* fornecido no projeto, lista de magias de 2º nível de Ranger (p. 164) e verbete **Vigor do Urso** (texto extraído na região da p. 231).
+- A auditoria de magias de Ranger continua em andamento. Nenhum teste manual em dispositivo Android foi realizado nesta etapa.
