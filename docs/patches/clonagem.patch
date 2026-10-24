@@ -1,0 +1,24 @@
+diff --git a/app/src/main/java/com/example/dnd35/model/Dnd35Rules.kt b/app/src/main/java/com/example/dnd35/model/Dnd35Rules.kt
+index 44a8724..090a277 100644
+--- a/app/src/main/java/com/example/dnd35/model/Dnd35Rules.kt
++++ b/app/src/main/java/com/example/dnd35/model/Dnd35Rules.kt
+@@ -4418,8 +4418,8 @@ object Dnd35Rules {
+             domainLevels = mapOf("Enganação" to 8)
+         ),
+         PresetSpell(
+-            name = "Clone",
+-            level = 7,
++            name = "Clonagem",
++            level = 8,
+             school = "Necromancia",
+             classes = listOf("Feiticeiro", "Mago"),
+             castTime = "10 minutos",
+@@ -4428,8 +4428,8 @@ object Dnd35Rules {
+             duration = "Instantânea",
+             savingThrow = "Nenhum",
+             spellResistance = false,
+-            description = "Cria uma duplicata de um ser vivo a partir de uma amostra de seu corpo. Se a criatura original morrer, sua alma será transferida para o clone. A criação exige um recipiente especial como foco, cujo custo depende dos Dados de Vida do original, além dos componentes materiais e das condições descritas no Livro do Jogador.",
+-            classLevels = mapOf("Feiticeiro" to 7, "Mago" to 7)
++            description = "Cria uma duplicata de um ser vivo. Se a criatura original morrer, a alma é transferida para o clone (desde que esteja livre e deseje voltar). Os restos do corpo original tornam-se matéria inerte e não podem mais retornar à vida. Se o original morreu de causas naturais (fim da vida natural), a magia fracassa. É necessário um pedaço de carne de pelo menos 5 cm³ da criatura viva original (não unhas, cabelo ou escamas); o pedaço não precisa estar fresco, mas não pode estar decomposto. A duplicata deve ser mantida em laboratório por 2d4 meses. Quando o clone é completado e o original está morto, a alma invade a réplica: fisicamente idêntica, com a mesma personalidade e memórias; trate como o personagem original ressuscitado, incluindo perda de 1 nível ou 2 pontos de Constituição (se for 1º nível). A magia duplica apenas corpo e mente, não o equipamento. Uma duplicata pode crescer enquanto o original ainda está vivo, mas resulta apenas em carne inerte que apodrece se não for preservada. Componente material: o pedaço de carne e suprimentos de laboratório (1.000 PO). Foco: equipamento especial de laboratório (500 PO).",
++            classLevels = mapOf("Feiticeiro" to 8, "Mago" to 8)
+         ),
