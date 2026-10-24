@@ -3269,5 +3269,62 @@ object Dnd35Rules {
             description = "Invoca uma criatura da lista de 3º nível, 1d3 criaturas do mesmo tipo da lista de 2º nível ou 1d4+1 criaturas do mesmo tipo da lista de 1º nível.",
             classLevels = mapOf("Druida" to 3, "Ranger" to 3)
         ),
+
+        PresetSpell(
+            name = "Presa Mágica Maior",
+            level = 3,
+            school = "Transmutação",
+            classes = listOf("Druida", "Ranger"),
+            castTime = "1 ação padrão",
+            components = "V, G, FD",
+            range = "Curto (7,5 m + 1,5 m/2 níveis)",
+            duration = "1 hora/nível",
+            savingThrow = "Vontade anula (inofensiva)",
+            spellResistance = true,
+            description = "Funciona como Presa Mágica, mas concede bônus de melhoria de +1 nas jogadas de ataque e dano a cada quatro níveis do conjurador, até +5; alternativamente, concede +1 de bônus de melhoria a todos os ataques naturais.",
+            classLevels = mapOf("Druida" to 3, "Ranger" to 3)
+        ),
+        PresetSpell(
+            name = "Reduzir Animal",
+            level = 3,
+            school = "Transmutação",
+            classes = listOf("Druida", "Ranger"),
+            castTime = "1 ação padrão",
+            components = "V, G",
+            range = "Toque",
+            duration = "1 hora/nível (D)",
+            savingThrow = "Nenhum",
+            spellResistance = false,
+            description = "Funciona como Reduzir Pessoa, mas afeta um único animal voluntário Pequeno, Médio, Grande ou Enorme; reduz o tamanho e o dano de suas armas naturais conforme as regras de tamanho.",
+            classLevels = mapOf("Druida" to 2, "Ranger" to 3)
+        ),
+        PresetSpell(
+            name = "Remover Doenças",
+            level = 3,
+            school = "Conjuração (Cura)",
+            classes = listOf("Clérigo", "Druida", "Ranger"),
+            castTime = "1 ação padrão",
+            components = "V, G",
+            range = "Toque",
+            duration = "Instantânea",
+            savingThrow = "Fortitude anula (inofensiva)",
+            spellResistance = true,
+            description = "Cura todas as doenças que afetam o alvo e mata parasitas. Doenças especiais podem exigir nível mínimo de conjurador; por ser instantânea, a magia não impede novas infecções.",
+            classLevels = mapOf("Clérigo" to 3, "Druida" to 3, "Ranger" to 3)
+        ),
+        PresetSpell(
+            name = "Repelir Insetos",
+            level = 3,
+            school = "Abjuração",
+            classes = listOf("Bardo", "Clérigo", "Druida", "Ranger"),
+            castTime = "1 ação padrão",
+            components = "V, G, FD",
+            range = "3 m",
+            duration = "10 minutos/nível (D)",
+            savingThrow = "Nenhum ou Vontade anula; veja texto",
+            spellResistance = true,
+            description = "Cria uma emanação de 3 m de raio centrada no conjurador que afasta insetos. Insetos com DV inferiores a um terço do nível do conjurador não atravessam a barreira; os demais podem atravessá-la se passarem em Vontade.",
+            classLevels = mapOf("Bardo" to 4, "Clérigo" to 4, "Druida" to 4, "Ranger" to 3)
+        ),
     )
 }
