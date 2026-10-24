@@ -3966,5 +3966,20 @@ object Dnd35Rules {
             classLevels = mapOf("Feiticeiro" to 8, "Mago" to 8),
             domainLevels = mapOf("Enganação" to 7)
         ),
+        PresetSpell(
+            name = "Punho Cerrado de Bigby, O",
+            level = 8,
+            school = "Evocação [Energia]",
+            classes = listOf("Feiticeiro", "Mago"),
+            castTime = "1 ação padrão",
+            components = "V, G, F/FD",
+            range = "Médio (30 m + 3 m/nível)",
+            duration = "1 rodada/nível (D)",
+            savingThrow = "Fortitude anula (atordoamento); veja texto",
+            spellResistance = true,
+            description = "Cria uma mão mágica Grande que o conjurador comanda como ação livre. A mão pode mover-se até 18 m e atacar na mesma rodada, uma vez por rodada. Seu bônus de ataque é o nível de conjurador + o modificador de Inteligência, Sabedoria ou Carisma do conjurador, +11 pela Força 33 da mão e -1 pelo tamanho Grande. O ataque causa 1d8+11 pontos de dano; a criatura atingida deve obter sucesso em um teste de Fortitude contra a CD da magia ou ficará atordoada por 1 rodada. Como é guiada pelo conjurador, a mão percebe e ataca criaturas invisíveis ou camufladas conforme a capacidade dele. Mudar o alvo é uma ação de movimento. Também pode interpor-se como a Mão Interposta de Bigby e realizar encontrão como a Mão Poderosa de Bigby, com +15 no teste de Força. Foco arcano: uma luva de couro.",
+            classLevels = mapOf("Feiticeiro" to 8, "Mago" to 8),
+            domainLevels = mapOf("Força" to 8)
+        ),
     )
 }
