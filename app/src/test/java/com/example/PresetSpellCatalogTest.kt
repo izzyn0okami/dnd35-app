@@ -480,4 +480,42 @@ class PresetSpellCatalogTest {
         assertEquals(1, spells.values.count { it.name == "Área Escorregadia" })
     }
 
+    @Test
+    fun catalogIncludesMissingFirstLevelClericSpellsFromPlayerHandbook() {
+        val spells = Dnd35Rules.PRESET_SPELLS
+        val expected = listOf(
+            "Auxílio Divino",
+            "Invisibilidade Contra Mortos-Vivos",
+            "Pedra Encantada",
+            "Visão da Morte"
+        )
+        expected.forEach { name ->
+            assertEquals(1, spells.single { it.name == name }.level)
+        }
+
+        val divineFavor = spells.single { it.name == "Auxílio Divino" }
+        assertEquals(setOf("Clérigo", "Paladino"), divineFavor.classes.toSet())
+        assertEquals(1, divineFavor.classLevels["Clérigo"])
+        assertEquals(1, divineFavor.classLevels["Paladino"])
+        assertEquals("Pessoal", divineFavor.range)
+        assertFalse(divineFavor.spellResistance)
+
+        val hideFromUndead = spells.single { it.name == "Invisibilidade Contra Mortos-Vivos" }
+        assertEquals(setOf("Clérigo"), hideFromUndead.classes.toSet())
+        assertEquals("Toque", hideFromUndead.range)
+        assertEquals("10 minutos/nível (D)", hideFromUndead.duration)
+        assertTrue(hideFromUndead.spellResistance)
+
+        val magicStone = spells.single { it.name == "Pedra Encantada" }
+        assertEquals(setOf("Clérigo", "Druida"), magicStone.classes.toSet())
+        assertEquals(1, magicStone.classLevels["Clérigo"])
+        assertEquals(1, magicStone.classLevels["Druida"])
+        assertTrue(magicStone.description.contains("2d6+2"))
+
+        val deathwatch = spells.single { it.name == "Visão da Morte" }
+        assertEquals("9 m", deathwatch.range)
+        assertEquals("10 minutos/nível", deathwatch.duration)
+        assertFalse(deathwatch.spellResistance)
+    }
+
 }
