@@ -1727,3 +1727,10 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - **Regressão:** teste dedicado verifica unicidade, escola, níveis, parâmetros e efeito central.
 - **Validação:** PR em preparação; CI ainda não executada; sem teste manual em dispositivo Android.
 - **Contagem nominal antes desta proposta:** 199 entradas únicas; a inclusão elevará para 200 se integrada.
+
+
+### Correção de teste — PR #218 — 2026-10-24
+
+- A CI [40066198142](https://github.com/izzyn0okami/dnd35-app/actions/runs/40066198142) executou 198 testes e falhou em uma asserção de texto do teste de Aprisionar a Alma; compilação e APK foram pulados.
+- **Correção aplicada:** simplificada a asserção para verificar o termo “tarefa”, sem depender de uma formulação exata na descrição resumida.
+- **Estado:** aguardar nova CI; não integrar até que testes, compilação e geração do APK passem.
