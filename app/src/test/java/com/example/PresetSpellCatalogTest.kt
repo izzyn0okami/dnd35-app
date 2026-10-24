@@ -978,4 +978,40 @@ class PresetSpellCatalogTest {
         assertEquals(expected.size, expected.keys.sumOf { name -> spells.count { it.name == name } })
     }
 
+
+    @Test
+    fun paladinSpellListIncludesMissingPlayerHandbookSpellsFromLevelsTwoToFour() {
+        val spells = Dnd35Rules.PRESET_SPELLS
+        val expected = mapOf(
+            "Esplendor da Águia" to 2,
+            "Proteger Outro" to 2,
+            "Remover Paralisia" to 2,
+            "Zona da Verdade" to 2,
+            "Arma Mágica Maior" to 3,
+            "Círculo Mágico Contra o Caos" to 3,
+            "Círculo Mágico Contra o Mal" to 3,
+            "Curar Montaria" to 3,
+            "Discernir Mentiras" to 3,
+            "Luz do Dia" to 3,
+            "Remover Cegueira/Surdez" to 3,
+            "Remover Maldição" to 3,
+            "Cancelar Encantamento" to 4,
+            "Dissipar o Caos" to 4,
+            "Dissipar o Mal" to 4,
+            "Espada Sagrada" to 4,
+            "Marca da Justiça" to 4,
+            "Proteção Contra a Morte" to 4,
+            "Restauração" to 4
+        )
+        expected.forEach { (name, paladinLevel) ->
+            val matches = spells.filter { it.name == name }
+            assertEquals("Deve existir uma única entrada para $name", 1, matches.size)
+            val spell = matches.single()
+            assertEquals("Nível geral esperado para $name", paladinLevel, spell.level)
+            assertEquals("Nível de Paladino esperado para $name", paladinLevel, spell.classLevels["Paladino"])
+            assertTrue("$name deve estar disponível para Paladino", "Paladino" in spell.classes)
+        }
+        assertEquals("O catálogo não deve conter nomes duplicados",
+            spells.size, spells.map { it.name }.toSet().size)
+    }
 }
