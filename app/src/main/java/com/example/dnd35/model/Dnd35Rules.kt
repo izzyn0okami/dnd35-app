@@ -4527,7 +4527,7 @@ object Dnd35Rules {
             duration = "1 dia/nível (D)",
             savingThrow = "Vontade anula (objeto)",
             spellResistance = true,
-            description = "Oculta uma criatura voluntária ou um objeto contra detecção visual e adivinhações, inclusive vidência. O alvo fica em estado de animação suspensa e não pode ser encontrado por meios comuns enquanto a magia durar; os detalhes e limitações seguem o texto da magia no Livro do Jogador.",
+            description = "Impede magias de adivinhação de localizar ou detectar o alvo e o torna invisível a qualquer forma de visão. Criaturas afetadas ficam em animação suspensa até a magia terminar ou ser dissipada; toque e certos equipamentos ainda podem revelar o alvo. Vontade impede que uma criatura ou objeto mágico seja afetado, mas não impede a detecção por adivinhação.",
             classLevels = mapOf("Feiticeiro" to 7, "Mago" to 7)
         ),
         PresetSpell(
@@ -4541,7 +4541,7 @@ object Dnd35Rules {
             duration = "Até ser gasta ou 10 minutos/nível",
             savingThrow = "Nenhum",
             spellResistance = false,
-            description = "Reflete contra o conjurador original as magias e efeitos similares que tenham o personagem como alvo; efeitos de área e magias de toque não são refletidos. A reversão pode afetar de sete a dez níveis de magia, determinados secretamente pelo Mestre.",
+            description = "Reflete contra o conjurador original magias e efeitos similares que tenham o personagem como alvo. Efeitos de área e magias de toque não são refletidos. A magia reflete 1d4+6 níveis de magia; a quantidade é determinada secretamente pelo Mestre.",
             classLevels = mapOf("Feiticeiro" to 7, "Mago" to 7),
             domainLevels = mapOf("Sorte" to 7, "Magia" to 7)
         ),
