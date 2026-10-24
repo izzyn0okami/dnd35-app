@@ -1472,6 +1472,28 @@ class PresetSpellCatalogTest {
         assertTrue(spell.description.contains("máximo 20d6"))
         assertTrue(spell.description.contains("chifre de metal ou marfim"))
     }
+    @Test
+    fun raioPolarMatchesPlayerHandbookEntry() {
+        val matches = Dnd35Rules.PRESET_SPELLS.filter { it.name == "Raio Polar" }
+        assertEquals(1, matches.size)
+        val spell = matches.single()
+
+        assertEquals(8, spell.level)
+        assertEquals("Evocação [Frio]", spell.school)
+        assertEquals(setOf("Feiticeiro", "Mago"), spell.classes.toSet())
+        assertEquals(mapOf("Feiticeiro" to 8, "Mago" to 8), spell.classLevels)
+        assertEquals("1 ação padrão", spell.castTime)
+        assertEquals("V, G, F", spell.components)
+        assertEquals("Curto (7,5 m + 1,5 m/2 níveis)", spell.range)
+        assertEquals("Instantânea", spell.duration)
+        assertEquals("Nenhum", spell.savingThrow)
+        assertTrue(spell.spellResistance)
+        assertTrue(spell.description.contains("ataque de toque à distância"))
+        assertTrue(spell.description.contains("1d6 pontos de dano por nível"))
+        assertTrue(spell.description.contains("máximo de 25d6"))
+        assertTrue(spell.description.contains("prisma branco de cerâmica"))
+    }
+
 
 
 }

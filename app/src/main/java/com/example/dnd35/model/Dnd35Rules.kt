@@ -3937,5 +3937,19 @@ object Dnd35Rules {
             description = "Remove níveis negativos e restaura valores de habilidade conforme os efeitos descritos na magia.",
             classLevels = mapOf("Clérigo" to 4, "Paladino" to 4)
         ),
+        PresetSpell(
+            name = "Raio Polar",
+            level = 8,
+            school = "Evocação [Frio]",
+            classes = listOf("Feiticeiro", "Mago"),
+            castTime = "1 ação padrão",
+            components = "V, G, F",
+            range = "Curto (7,5 m + 1,5 m/2 níveis)",
+            duration = "Instantânea",
+            savingThrow = "Nenhum",
+            spellResistance = true,
+            description = "Dispara um raio azul-esbranquiçado de ar congelante e gelo que exige um ataque de toque à distância. Se atingir, causa 1d6 pontos de dano por nível de conjurador, até o máximo de 25d6. Foco: pequeno cone ou prisma branco de cerâmica.",
+            classLevels = mapOf("Feiticeiro" to 8, "Mago" to 8)
+        ),
     )
 }
