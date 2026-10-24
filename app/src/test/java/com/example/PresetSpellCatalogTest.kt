@@ -1779,4 +1779,72 @@ class PresetSpellCatalogTest {
         }
     }
 
+
+    @Test
+    fun eighthLevelPlayerHandbookListsAreComplete() {
+        val clericEighth = listOf(
+            "Aliado Extra-Planar Maior", "Aura Profana", "Aura Sagrada", "Campo Antimagia",
+            "Criar Mortos-Vivos Maior", "Curar Ferimentos Críticos em Massa", "Discernir Localização",
+            "Escudo da Ordem", "Imunidade à Magia Maior", "Infligir Ferimentos Críticos em Massa",
+            "Invocar Criaturas VIII", "Manto do Caos", "Símbolo da Insanidade", "Símbolo da Morte",
+            "Tempestade de Fogo", "Terremoto", "Tranca Dimensional"
+        )
+        val druidEighth = listOf(
+            "Ciclone", "Controlar Plantas", "Curar Ferimentos Graves em Massa", "Dedo da Morte",
+            "Explosão Solar", "Forma Animal", "Inverter a Gravidade", "Invocar Aliado da Natureza VIII",
+            "Palavra de Recordação", "Repelir Metal ou Pedra", "Terremoto"
+        )
+        val arcaneEighth = listOf(
+            "Limpar a Mente", "Muralha Prismática", "Proteção contra Magias", "Tranca Dimensional",
+            "Discernir Localização", "Instante de Presciência", "Olhos Observadores Maior",
+            "Âncora Planar Maior", "Aprisionar a Alma", "Invocar Criaturas VIII", "Labirinto",
+            "Nuvem Incendiária", "Antipatia", "Dança Irresistível de Otto", "Enfeitiçar Monstro em Massa",
+            "Ordem", "Palavra de Poder, Atordoar", "Prisão", "Símbolo da Insanidade", "Simpatia",
+            "Esfera Telecinética de Otiluke", "Explosão Solar", "Grito Maior", "Punho Cerrado de Bigby, O",
+            "Raio Polar", "Padrão Cintilante", "Animação Ilusória", "Clone",
+            "Criar Mortos-Vivos Maior", "Evaporação", "Corpo de Ferro", "Estase Temporal",
+            "Metamorfosear Objetos"
+        )
+        clericEighth.forEach { name ->
+            val spell = Dnd35Rules.PRESET_SPELLS.single { it.name == name }
+            assertEquals("$name must be Clérigo 8", 8, spell.classLevels["Clérigo"])
+        }
+        druidEighth.forEach { name ->
+            val spell = Dnd35Rules.PRESET_SPELLS.single { it.name == name }
+            assertEquals("$name must be Druida 8", 8, spell.classLevels["Druida"])
+        }
+        arcaneEighth.forEach { name ->
+            val spell = Dnd35Rules.PRESET_SPELLS.single { it.name == name }
+            assertEquals("$name must be Feiticeiro 8", 8, spell.classLevels["Feiticeiro"])
+            assertEquals("$name must be Mago 8", 8, spell.classLevels["Mago"])
+        }
+        val domainEighth = listOf(
+            "Ciclone" to ("Ar" to 8),
+            "Invocar Aliado da Natureza VIII" to ("Animal" to 8),
+            "Manto do Caos" to ("Caos" to 8),
+            "Criar Mortos-Vivos Maior" to ("Morte" to 8),
+            "Terremoto" to ("Destruição" to 8),
+            "Corpo de Ferro" to ("Terra" to 8),
+            "Aura Profana" to ("Mal" to 8),
+            "Nuvem Incendiária" to ("Fogo" to 8),
+            "Aura Sagrada" to ("Bem" to 8),
+            "Curar Ferimentos Críticos em Massa" to ("Cura" to 8),
+            "Discernir Localização" to ("Conhecimento" to 8),
+            "Escudo da Ordem" to ("Ordem" to 8),
+            "Instante de Presciência" to ("Sorte" to 8),
+            "Proteção contra Magias" to ("Magia" to 8),
+            "Limpar a Mente" to ("Proteção" to 8),
+            "Controlar Plantas" to ("Planta" to 8),
+            "Punho Cerrado de Bigby, O" to ("Força" to 8),
+            "Explosão Solar" to ("Sol" to 8),
+            "Metamorfosear Objetos" to ("Enganação" to 8),
+            "Palavra de Poder, Atordoar" to ("Guerra" to 8),
+            "Evaporação" to ("Água" to 8)
+        )
+        domainEighth.forEach { (name, domain) ->
+            val spell = Dnd35Rules.PRESET_SPELLS.single { it.name == name }
+            assertEquals("$name must be ${domain.first} ${domain.second}", domain.second, spell.domainLevels[domain.first])
+        }
+    }
+
 }
