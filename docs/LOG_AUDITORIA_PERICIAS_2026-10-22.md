@@ -1561,3 +1561,13 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - **Resultado:** catálogo principal passa a conter a magia `Limpar a Mente`; contagem estimada passa de 191 para 192 entradas únicas, antes de novas alterações.
 - **Limite:** não houve teste manual em dispositivo Android.
 - **Próximo passo:** continuar a fila das magias de 8º nível, começando por `Muralha Prismática`, com conferência do verbete completo no PDF antes da implementação.
+
+
+## 2026-10-24 — Inclusão de Muralha Prismática (8º nível)
+
+- **Fonte primária:** PDF brasileiro *D&D 3.5 — Livro do Jogador*, verbete “Muralha Prismática”, p. impressa 222. O texto indica Abjuração, Fet/Mag 8, componentes V/G, execução de 1 ação padrão, alcance curto, efeito de parede de 1,2 m/nível de largura e 60 cm/nível de altura, duração de 10 minutos/nível (D), teste de resistência “veja texto” e resistência à magia “veja texto”.
+- **Implementação proposta:** adicionada entrada canônica de Muralha Prismática para Feiticeiro 8 e Mago 8. O campo booleano de resistência à magia não representa a variação por cor; a descrição registra que testes e resistência variam conforme a cor e aponta para o verbete completo.
+- **Descrição:** resume os efeitos gerais, cegueira de criaturas com menos de 8 DV que olhem para a muralha a menos de 6 m, interação com dissipação e a existência de sete cores. Não substitui as regras detalhadas da tabela por cor.
+- **Regressão:** teste dedicado verifica nome único, nível, escola, classes/níveis, tempo, componentes, alcance, duração, indicação de teste de resistência, resistência à magia e termos-chave da descrição.
+- **Validação:** CI pendente; sem teste manual em dispositivo Android.
+- **Próximo passo:** revisar os resultados da CI antes de integrar; depois continuar a fila de magias de 8º nível do Livro do Jogador.
