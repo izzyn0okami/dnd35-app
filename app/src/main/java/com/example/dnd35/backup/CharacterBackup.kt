@@ -204,11 +204,14 @@ object CharacterBackup {
         val photoPreset = str(o, "photoPreset", "")
         val photoBase64 = str(o, "photoJpegBase64", "")
         val photoBytes = if (photoBase64.isNotEmpty()) {
-            val decoded = try {
-                Base64.decode(photoBase64, Base64.DEFAULT)
-            } catch (_: IllegalArgumentException) {
-                null
-            }
+            // O decodificador pode aceitar texto inválido sem reclamar; por isso valida os caracteres antes.
+            val decoded = if (isBase64Text(photoBase64)) {
+                try {
+                    Base64.decode(photoBase64, Base64.DEFAULT)
+                } catch (_: IllegalArgumentException) {
+                    null
+                }
+            } else null
             if (decoded == null || decoded.isEmpty()) {
                 warnings += "$label: retrato corrompido foi ignorado."
                 null
@@ -269,6 +272,11 @@ object CharacterBackup {
                 ?: System.currentTimeMillis()
         )
         return ImportedCharacter(entity, photoBytes)
+    }
+
+    private fun isBase64Text(text: String): Boolean = text.all {
+        it in 'A'..'Z' || it in 'a'..'z' || it in '0'..'9' || it == '+' || it == '/' || it == '=' ||
+            it == '\n' || it == '\r' || it == ' '
     }
 
     // org.json devolve a string "null" para valores JSON null; aqui eles viram o padrão.
