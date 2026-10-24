@@ -1868,3 +1868,14 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - **Contagem nominal:** 208 entradas únicas após integração (207 antes da PR).
 - **Limitação:** não foi realizado teste manual em dispositivo Android.
 - **Próximo passo:** continuar as magias restantes de 8º nível do Livro do Jogador; conferir verbete e catálogo antes de cada inclusão.
+
+
+## 2026-10-24 — Inclusão proposta de Grito Maior (8º nível para Feiticeiro/Mago)
+
+- **Fonte primária:** PDF brasileiro *D&D 3.5 — Livro do Jogador*, verbete “Grito Maior”, p. impressa 206.
+- **Dados conferidos:** Evocação [Sônico]; Bardo 6, Feiticeiro 8 e Mago 8; componentes V, G, F; execução de 1 ação padrão; alcance 18 m; cone de 18 m; duração instantânea; Fortitude parcial ou Reflexos anula (objeto); resistência à magia sim.
+- **Efeito essencial:** 10d6 de dano sônico, atordoamento por 1 rodada e surdez por 4d6 rodadas; contra objetos frágeis/cristalinos ou criaturas cristalinas, 1d6 por nível de conjurador até 20d6. Sucesso em Fortitude evita o atordoamento, reduz dano à metade e reduz a surdez à metade; objeto frágil segurado pode evitar o dano com Reflexos. Foco: pequeno chifre de metal ou marfim.
+- **Regressão:** teste dedicado para unicidade, escola, classes e níveis, execução, componentes, alcance, duração, resistência e efeitos distintivos.
+- **Validação:** proposta na branch `audit/spell-grito-maior`; CI pendente; sem teste manual em dispositivo Android.
+- **Contagem nominal antes desta proposta:** 208 entradas únicas; a inclusão elevará para 209 se integrada.
+- **Próximo passo:** aguardar CI; integrar somente se testes unitários, compilação Android e upload do APK passarem.
