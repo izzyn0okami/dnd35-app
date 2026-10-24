@@ -1253,23 +1253,4 @@ class PresetSpellCatalogTest {
         assertTrue(spell.description.contains("individualmente persuadida"))
     }
 
-} {
-        val matches = Dnd35Rules.PRESET_SPELLS.filter { it.name == "Âncora Planar Maior" }
-        assertEquals(1, matches.size)
-        val spell = matches.single()
-
-        assertEquals(8, spell.level)
-        assertEquals("Conjuração (Convocação)", spell.school)
-        assertEquals(setOf("Feiticeiro", "Mago"), spell.classes.toSet())
-        assertEquals(mapOf("Feiticeiro" to 8, "Mago" to 8), spell.classLevels)
-        assertEquals("10 minutos", spell.castTime)
-        assertEquals("V, G, F", spell.components)
-        assertEquals("Curto (7,5 m + 1,5 m/2 níveis)", spell.range)
-        assertEquals("Instantânea", spell.duration)
-        assertEquals("Vontade anula", spell.savingThrow)
-        assertTrue(spell.spellResistance)
-        assertTrue(spell.description.contains("18 Dados de Vida"))
-        assertTrue(spell.description.contains("tentativa independente"))
-        assertTrue(spell.description.contains("individualmente persuadida"))
-    }
-
+}
