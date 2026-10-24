@@ -134,7 +134,7 @@ class PresetSpellCatalogTest {
     fun newCantripsHaveExpectedClassAvailability() {
         val spells = Dnd35Rules.PRESET_SPELLS.associateBy { it.name }
         assertEquals(setOf("Mago", "Feiticeiro"), spells.getValue("Raio de Ácido").classes.toSet())
-        assertFalse(spells.getValue("Espirro Ácido").spellResistance)
+        assertFalse(spells.getValue("Raio de Ácido").spellResistance)
         assertEquals(setOf("Bardo"), spells.getValue("Canção de Ninar").classes.toSet())
         assertEquals(setOf("Clérigo", "Druida"), spells.getValue("Curar Ferimentos Mínimos").classes.toSet())
         assertEquals(0, spells.getValue("Virtude").classLevels.getValue("Druida"))
