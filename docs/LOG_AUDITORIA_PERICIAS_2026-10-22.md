@@ -1487,3 +1487,13 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - **Decisão:** nenhum código ou teste foi alterado nesta rodada; os itens acima não justificam PR corretiva. A lista resumida de uma classe não deve ser usada para invalidar automaticamente associações que o verbete completo confirma.
 - **Validação:** conferência estática do catálogo e do PDF; não houve build porque não houve mudança de código nem teste manual em dispositivo.
 - **Próximo passo:** seguir para as próximas associações de magias de Ranger e Bardo ainda não cobertas, comparando cada entrada com o verbete completo antes de abrir PR.
+
+
+## 2026-10-24 — Correção de nome duplicado: Invisibilidade Contra Animais
+
+- **Fonte primária:** PDF brasileiro *D&D 3.5 — Livro do Jogador*, lista resumida de magias de Ranger (página impressa 164) e verbete completo **Invisibilidade Contra Animais** (página impressa 218).
+- **Discrepância confirmada:** o catálogo mantinha duas entradas para o mesmo efeito: **Ocultar-se de Animais** (lote antigo, sem mapa explícito de níveis) e **Invisibilidade Contra Animais** (entrada canônica com Druida 1/Ranger 1). A lista resumida e o verbete completo usam **Invisibilidade Contra Animais**; “Ocultar-se de Animais” não é o título desse verbete na edição fornecida.
+- **Correção proposta:** removida a entrada não canônica duplicada e preservada **Invisibilidade Contra Animais**, com suas associações Druida 1/Ranger 1. O teste de catálogo deixa de esperar o alias e passa a verificar que a entrada duplicada não existe, mantendo a validação da entrada canônica.
+- **Histórico consultado:** o log registra a adição inicial de “Ocultar-se de Animais” no lote 5 e, posteriormente, a inclusão de “Invisibilidade Contra Animais” na auditoria de Ranger 1. Esta correção reconcilia as duas etapas sem alterar outras magias ou decisões.
+- **Validação:** pendente de CI de testes unitários, compilação Android e geração do APK. Nenhum teste manual em dispositivo foi realizado.
+- **Próximo passo:** revisar o diff e aguardar CI verde antes de integrar; continuar depois com associações de magias de Ranger/Bardo ainda não auditadas.

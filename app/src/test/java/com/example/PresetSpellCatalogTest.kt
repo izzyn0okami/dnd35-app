@@ -131,7 +131,6 @@ class PresetSpellCatalogTest {
             "Suportar Elementos",
             "Porrete Mágico",
             "Detectar Animais ou Plantas",
-            "Ocultar-se de Animais",
             "Amaldiçoar Água",
             "Escudo Entrópico",
             "Ocultar-se de Mortos-Vivos",
@@ -189,7 +188,9 @@ class PresetSpellCatalogTest {
         assertEquals(setOf("Bardo", "Clérigo", "Druida", "Paladino", "Ranger", "Mago", "Feiticeiro"), spells.getValue("Suportar Elementos").classes.toSet())
         assertEquals(setOf("Druida", "Ranger"), spells.getValue("Detectar Animais ou Plantas").classes.toSet())
         assertFalse(spells.getValue("Detectar Animais ou Plantas").spellResistance)
-        assertEquals(setOf("Druida", "Ranger"), spells.getValue("Ocultar-se de Animais").classes.toSet())
+        assertEquals(setOf("Druida", "Ranger"), spells.getValue("Invisibilidade Contra Animais").classes.toSet())
+        assertFalse("Ocultar-se de Animais não é o nome do verbete no Livro do Jogador",
+            spells.containsKey("Ocultar-se de Animais"))
         assertEquals("24 horas", spells.getValue("Suportar Elementos").duration)
     }
 

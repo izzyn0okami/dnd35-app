@@ -2156,19 +2156,7 @@ object Dnd35Rules {
             spellResistance = false,
             description = "Indica a direção e a distância aproximada de animais ou plantas de um tipo escolhido dentro do alcance."
         ),
-        PresetSpell(
-            name = "Ocultar-se de Animais",
-            level = 1,
-            school = "Abjuração",
-            classes = listOf("Druida", "Ranger"),
-            castTime = "1 ação padrão",
-            components = "V, G, FD",
-            range = "Toque",
-            duration = "10 minutos/nível",
-            savingThrow = "Vontade anula (inofensivo)",
-            spellResistance = true,
-            description = "Impede animais comuns de perceberem o alvo pelos sentidos normais; não afeta criaturas do tipo besta mágica."
-        ),
+
 
 
         // Magias adicionais de 1º círculo do Livro do Jogador — lote 6
