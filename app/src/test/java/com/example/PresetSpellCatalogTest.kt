@@ -585,4 +585,50 @@ class PresetSpellCatalogTest {
     }
 
 
+
+    @Test
+    fun paladinAndRangerSpellListsHaveCorrectClassSpecificLevels() {
+        val spells = Dnd35Rules.PRESET_SPELLS.associateBy { it.name }
+
+        val blessWeapon = spells.getValue("Abençoar Arma")
+        assertEquals(1, blessWeapon.level)
+        assertEquals(setOf("Paladino"), blessWeapon.classes.toSet())
+        assertEquals(mapOf("Paladino" to 1), blessWeapon.classLevels)
+
+        val readMagic = spells.getValue("Ler Magias")
+        assertEquals(setOf("Bardo", "Clérigo", "Druida", "Paladino", "Ranger", "Mago", "Feiticeiro"), readMagic.classes.toSet())
+        assertEquals(0, readMagic.classLevels.getValue("Bardo"))
+        assertEquals(0, readMagic.classLevels.getValue("Clérigo"))
+        assertEquals(0, readMagic.classLevels.getValue("Druida"))
+        assertEquals(1, readMagic.classLevels.getValue("Paladino"))
+        assertEquals(1, readMagic.classLevels.getValue("Ranger"))
+        assertEquals(0, readMagic.classLevels.getValue("Mago"))
+        assertEquals(0, readMagic.classLevels.getValue("Feiticeiro"))
+
+        val createWater = spells.getValue("Criar Água")
+        assertEquals(mapOf("Clérigo" to 0, "Druida" to 0, "Paladino" to 1), createWater.classLevels)
+        assertEquals("V, G, FD", createWater.components)
+
+        val detectUndead = spells.getValue("Detectar Mortos-Vivos")
+        assertEquals(setOf("Clérigo", "Mago", "Feiticeiro", "Paladino"), detectUndead.classes.toSet())
+        assertEquals(mapOf("Clérigo" to 1, "Mago" to 1, "Feiticeiro" to 1, "Paladino" to 1), detectUndead.classLevels)
+
+        val resistance = spells.getValue("Resistência")
+        assertEquals(1, resistance.classLevels.getValue("Paladino"))
+        assertEquals(0, resistance.classLevels.getValue("Bardo"))
+        assertEquals("V, G, M/FD", resistance.components)
+
+        val virtue = spells.getValue("Virtude")
+        assertEquals(mapOf("Clérigo" to 0, "Druida" to 0, "Paladino" to 1), virtue.classLevels)
+        assertEquals("V, G, FD", virtue.components)
+        assertEquals("Fortitude anula (inofensivo)", virtue.savingThrow)
+
+        val cureLight = spells.getValue("Curar Ferimentos Leves")
+        assertEquals(1, cureLight.classLevels.getValue("Ranger"))
+
+        val lesserRestoration = spells.getValue("Restauração Menor")
+        assertEquals(setOf("Clérigo", "Druida", "Paladino", "Ranger"), lesserRestoration.classes.toSet())
+        assertEquals(mapOf("Clérigo" to 2, "Druida" to 2, "Paladino" to 1, "Ranger" to 1), lesserRestoration.classLevels)
+    }
+
 }
