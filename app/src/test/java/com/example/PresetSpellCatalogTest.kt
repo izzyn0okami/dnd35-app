@@ -320,7 +320,7 @@ class PresetSpellCatalogTest {
         assertEquals("2d4 rodadas", spells.getValue("Hipnotismo").duration)
         assertTrue(spells.getValue("Hipnotismo").spellResistance)
         assertEquals(setOf("Bardo", "Mago", "Feiticeiro"), spells.getValue("Montaria").classes.toSet())
-        assertEquals("2 horas/nível", spells.getValue("Montaria").duration)
+        assertEquals("2 horas/nível (D)", spells.getValue("Montaria").duration)
         assertEquals(setOf("Bardo", "Mago", "Feiticeiro"), spells.getValue("Imagem Silenciosa").classes.toSet())
         assertEquals("Concentração", spells.getValue("Imagem Silenciosa").duration)
         assertFalse(spells.getValue("Imagem Silenciosa").spellResistance)
@@ -331,7 +331,7 @@ class PresetSpellCatalogTest {
     @Test
     fun firstLevelArcaneSpellBatchTenHasExpectedClassesAndMechanics() {
         val spells = Dnd35Rules.PRESET_SPELLS.associateBy { it.name }
-        val floatingDisk = spells.getValue("Disco Flutuante")
+        val floatingDisk = spells.getValue("Disco Flutuante de Tenser")
         assertEquals(setOf("Mago", "Feiticeiro"), floatingDisk.classes.toSet())
         assertEquals("1 hora/nível", floatingDisk.duration)
         assertFalse(floatingDisk.spellResistance)
