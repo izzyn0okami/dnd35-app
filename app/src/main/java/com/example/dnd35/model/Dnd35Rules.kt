@@ -3984,7 +3984,7 @@ object Dnd35Rules {
         ),
         PresetSpell(
             name = "Padrão Cintilante",
-            level = 8,
+            level = 7,
             school = "Ilusão (Padrão) [Ação Mental]",
             classes = listOf("Feiticeiro", "Mago"),
             castTime = "1 ação padrão",
@@ -3994,7 +3994,7 @@ object Dnd35Rules {
             savingThrow = "Nenhum",
             spellResistance = true,
             description = "Cria um padrão de cores reluzentes em uma dispersão de 6 m de raio. Afeta um total de Dados de Vida de criaturas igual ao nível de conjurador, até o máximo de 20; as criaturas com menos DV são afetadas primeiro e, entre criaturas com DV iguais, as mais próximas da origem. DV insuficientes para afetar uma criatura são desperdiçados. Criaturas com 6 DV ou menos ficam inconscientes por 1d4 rodadas, depois atordoadas por 1d4 rodadas e então confusas por 1d4 rodadas; com 7 a 12 DV ficam atordoadas por 1d4 rodadas e depois confusas por 1d4 rodadas; com 13 DV ou mais ficam confusas por 1d4 rodadas. Criaturas que não conseguem enxergar não são afetadas. Componente material: pequeno prisma de cristal.",
-            classLevels = mapOf("Feiticeiro" to 8, "Mago" to 8)
+            classLevels = mapOf("Feiticeiro" to 7, "Mago" to 7)
         ),
         PresetSpell(
             name = "Símbolo da Insanidade",
@@ -4129,7 +4129,7 @@ object Dnd35Rules {
         ),
         PresetSpell(
             name = "Criar Mortos-Vivos Maior",
-            level = 8,
+            level = 7,
             school = "Necromancia [Mal]",
             classes = listOf("Clérigo", "Feiticeiro", "Mago"),
             castTime = "1 hora",
@@ -4139,7 +4139,7 @@ object Dnd35Rules {
             savingThrow = "Nenhum",
             spellResistance = false,
             description = "Funciona como criar mortos-vivos, mas permite criar mortos-vivos mais poderosos e inteligentes. O tipo criado depende do nível de conjurador: até 15º nível, sombra; 16º–17º, aparição; 18º–19º, espectro; 20º nível, devorador. Consulte o Livro dos Monstros para as estatísticas das criaturas.",
-            classLevels = mapOf("Clérigo" to 8, "Feiticeiro" to 8, "Mago" to 8),
+            classLevels = mapOf("Clérigo" to 8, "Feiticeiro" to 7, "Mago" to 7),
             domainLevels = mapOf("Morte" to 8)
         ),
         PresetSpell(
@@ -4304,7 +4304,7 @@ object Dnd35Rules {
         ),
         PresetSpell(
             name = "Símbolo da Morte",
-            level = 8,
+            level = 7,
             school = "Necromancia [Morte]",
             classes = listOf("Clérigo", "Feiticeiro", "Mago"),
             castTime = "10 minutos",
@@ -4314,7 +4314,7 @@ object Dnd35Rules {
             savingThrow = "Fortitude anula",
             spellResistance = true,
             description = "Inscreve uma runa mágica que, quando ativada, pode matar criaturas vivas num raio de 18 m. A magia afeta primeiro as criaturas mais próximas e não afeta aquelas cujo total de pontos de vida ultrapasse o limite combinado de 150 PV. Depois de ativado, permanece ativo por 10 minutos por nível de conjurador ou até atingir o limite de pontos de vida afetados. As regras comuns de símbolo determinam gatilho, senha, vinculação, detecção e desarme; os componentes materiais custam 5.000 PO.",
-            classLevels = mapOf("Clérigo" to 8, "Feiticeiro" to 6, "Mago" to 6)
+            classLevels = mapOf("Clérigo" to 8, "Feiticeiro" to 7, "Mago" to 7)
         ),
         PresetSpell(
             name = "Aliado Extra-Planar Maior",
@@ -4375,7 +4375,7 @@ object Dnd35Rules {
         ),
         PresetSpell(
             name = "Corpo de Ferro",
-            level = 8,
+            level = 7,
             school = "Transmutação",
             classes = listOf("Feiticeiro", "Mago"),
             castTime = "1 ação padrão",
@@ -4385,12 +4385,12 @@ object Dnd35Rules {
             savingThrow = "Nenhum",
             spellResistance = false,
             description = "Transforma o corpo do conjurador em ferro vivo. Concede redução de dano 15/adamante, imunidade a cegueira, acertos críticos, dano de habilidade, surdez, doença, afogamento, eletricidade, veneno, atordoamento e efeitos que dependam de fisiologia ou respiração; reduz à metade o dano de ácido e fogo. Também concede +6 de bônus de aprimoramento em Força e impõe -6 de penalidade em Destreza (mínimo 1), além das demais limitações descritas no Livro do Jogador.",
-            classLevels = mapOf("Feiticeiro" to 8, "Mago" to 8),
+            classLevels = mapOf("Feiticeiro" to 7, "Mago" to 7),
             domainLevels = mapOf("Terra" to 8)
         ),
         PresetSpell(
             name = "Estase Temporal",
-            level = 8,
+            level = 7,
             school = "Transmutação",
             classes = listOf("Feiticeiro", "Mago"),
             castTime = "1 ação padrão",
@@ -4400,11 +4400,11 @@ object Dnd35Rules {
             savingThrow = "Fortitude anula",
             spellResistance = true,
             description = "Após um ataque de toque corporal bem-sucedido, coloca a criatura em animação suspensa permanente: o tempo parece parar para ela, sua condição fica estável, ela não envelhece e não pode ser ferida. O efeito pode ser removido por dissipar magia bem-sucedida ou libertação. O componente material é um pó de diamante, esmeralda, rubi e safira no valor total mínimo de 5.000 PO.",
-            classLevels = mapOf("Feiticeiro" to 8, "Mago" to 8)
+            classLevels = mapOf("Feiticeiro" to 7, "Mago" to 7)
         ),
         PresetSpell(
             name = "Metamorfosear Objetos",
-            level = 8,
+            level = 7,
             school = "Transmutação",
             classes = listOf("Feiticeiro", "Mago"),
             castTime = "1 ação padrão",
@@ -4414,12 +4414,12 @@ object Dnd35Rules {
             savingThrow = "Fortitude anula (objeto); veja texto",
             spellResistance = true,
             description = "Como metamorfose, mas transforma uma criatura ou objeto mundano de até 3 m³ por nível em outro. A duração depende de quão radical é a transformação; o Livro do Jogador fornece modificadores para semelhança de reino, classe, tamanho, relação e inteligência, podendo resultar em duração permanente. Teste de resistência e resistência à magia se aplicam conforme a natureza do alvo.",
-            classLevels = mapOf("Feiticeiro" to 8, "Mago" to 8),
+            classLevels = mapOf("Feiticeiro" to 7, "Mago" to 7),
             domainLevels = mapOf("Enganação" to 8)
         ),
         PresetSpell(
             name = "Clone",
-            level = 8,
+            level = 7,
             school = "Necromancia",
             classes = listOf("Feiticeiro", "Mago"),
             castTime = "10 minutos",
@@ -4429,11 +4429,11 @@ object Dnd35Rules {
             savingThrow = "Nenhum",
             spellResistance = false,
             description = "Cria uma duplicata de um ser vivo a partir de uma amostra de seu corpo. Se a criatura original morrer, sua alma será transferida para o clone. A criação exige um recipiente especial como foco, cujo custo depende dos Dados de Vida do original, além dos componentes materiais e das condições descritas no Livro do Jogador.",
-            classLevels = mapOf("Feiticeiro" to 8, "Mago" to 8)
+            classLevels = mapOf("Feiticeiro" to 7, "Mago" to 7)
         ),
         PresetSpell(
             name = "Evaporação",
-            level = 8,
+            level = 7,
             school = "Necromancia",
             classes = listOf("Feiticeiro", "Mago"),
             castTime = "1 ação padrão",
@@ -4443,8 +4443,78 @@ object Dnd35Rules {
             savingThrow = "Fortitude reduz à metade",
             spellResistance = true,
             description = "Evapora os líquidos corporais de todas as criaturas vivas afetadas, causando 1d6 pontos de dano por nível do conjurador (máximo 20d6). Elementais da água e criaturas do tipo planta sofrem 1d8 pontos de dano por nível (máximo 20d8). Um teste de Fortitude bem-sucedido reduz o dano à metade.",
-            classLevels = mapOf("Feiticeiro" to 8, "Mago" to 8),
+            classLevels = mapOf("Feiticeiro" to 7, "Mago" to 7),
             domainLevels = mapOf("Água" to 8)
         ),
+        PresetSpell(
+            name = "Invocar Criaturas VII",
+            level = 7,
+            school = "Conjuração (Invocação) [veja texto de Invocar Criaturas I]",
+            classes = listOf("Clérigo", "Feiticeiro", "Mago"),
+            castTime = "1 rodada",
+            components = "V, G, F/FD",
+            range = "Curto (7,5 m + 1,5 m/2 níveis)",
+            duration = "1 rodada/nível (D)",
+            savingThrow = "Nenhum",
+            spellResistance = false,
+            description = "Invoca uma criatura extra-planar (normalmente um planar, elemental ou besta mágica nativa de outro plano). A criatura aparece no local escolhido e age imediatamente no turno do conjurador, atacando seus oponentes com o melhor de suas habilidades. O conjurador pode ordenar outras tarefas se puder comunicar-se com ela. Invoca uma criatura da lista de 7º nível, 1d3 criaturas do mesmo tipo da lista de 6º nível ou 1d4+1 criaturas do mesmo tipo de qualquer nível inferior; todas devem ficar a menos de 9 m entre si. A criatura invocada não pode invocar ou conjurar outras criaturas nem usar teletransporte ou viagem planar, e não pode ser invocada em ambiente que não a suporte. O tipo de criatura escolhido pode determinar os descritores de tendência da magia, conforme as regras de Invocar Criaturas I. Foco arcano: uma pequena bolsa e uma pequena vela, que não precisa estar acesa.",
+            classLevels = mapOf("Clérigo" to 7, "Feiticeiro" to 7, "Mago" to 7)
+        ),
+        PresetSpell(
+            name = "Ressurreição",
+            level = 7,
+            school = "Conjuração (Cura)",
+            classes = listOf("Clérigo"),
+            castTime = "10 minutos",
+            components = "V, G, M, FD",
+            range = "Toque",
+            duration = "Instantânea",
+            savingThrow = "Nenhum; veja texto",
+            spellResistance = true,
+            description = "Restaura a vida a uma criatura morta, desde que a alma esteja livre e deseje voltar. O alvo perde 1 nível (ou 1 Dado de Vida); se for de 1º nível, perde 2 pontos de Constituição. Cura venenos e doenças normais, mas não doenças mágicas ou maldições. Não pode reviver criaturas mortas por efeitos de morte ou transformadas em mortos-vivos, nem constructos, elementais, seres planares ou mortos-vivos, ou quem morreu de velhice. Componente material: um pouco de água benta e diamantes custando um total de pelo menos 10.000 PO.",
+            classLevels = mapOf("Clérigo" to 7)
+        ),
+        PresetSpell(
+            name = "Restauração Maior",
+            level = 7,
+            school = "Conjuração (Cura)",
+            classes = listOf("Clérigo"),
+            castTime = "10 minutos",
+            components = "V, G, XP",
+            range = "Toque",
+            duration = "Instantânea",
+            savingThrow = "Vontade anula (inofensiva)",
+            spellResistance = true,
+            description = "Como restauração menor, mas dissipa qualquer quantidade de níveis negativos e reverte a redução de níveis recente, restaura os valores de habilidade e elimina fadiga, exaustão, insanidade, confusão e efeitos mentais similares. Não recupera níveis ou perda de Constituição devido à morte. Custo de XP: 500 XP.",
+            classLevels = mapOf("Clérigo" to 7)
+        ),
+        PresetSpell(
+            name = "Invocar Aliado da Natureza VII",
+            level = 7,
+            school = "Conjuração (Invocação) [veja texto de Invocar Aliado da Natureza I]",
+            classes = listOf("Druida"),
+            castTime = "1 rodada",
+            components = "V, G, FD",
+            range = "Curto (7,5 m + 1,5 m/2 níveis)",
+            duration = "1 rodada/nível (D)",
+            savingThrow = "Nenhum",
+            spellResistance = false,
+            description = "Como invocar aliado da natureza I, mas permite invocar uma criatura da lista de 7º nível, 1d3 criaturas do mesmo tipo da lista de 6º nível ou 1d4+1 criaturas do mesmo tipo de uma lista inferior. Todas surgem a menos de 9 m entre si e agem no turno do conjurador. A escolha de criaturas dos planos do Ar, Caos, Terra, Fogo, Mal, Bem, Ordem ou Água pode alterar os descritores da magia conforme as regras da magia-base.",
+            classLevels = mapOf("Druida" to 7)
+        ),
+        PresetSpell(
+            name = "Ondas da Exaustão",
+            level = 7,
+            school = "Necromancia",
+            classes = listOf("Feiticeiro", "Mago"),
+            castTime = "1 ação padrão",
+            components = "V, G",
+            range = "Cone de 18 m",
+            duration = "Instantânea",
+            savingThrow = "Nenhum",
+            spellResistance = true,
+            description = "Uma onda de energia negativa se espalha a partir do conjurador, deixando exaustas todas as criaturas vivas na área. Não permite teste de resistência; resistência à magia se aplica."
+        ),
+
     )
 }

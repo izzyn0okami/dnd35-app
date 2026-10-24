@@ -1548,10 +1548,10 @@ class PresetSpellCatalogTest {
         assertEquals(1, matches.size)
         val spell = matches.single()
 
-        assertEquals(8, spell.level)
+        assertEquals(7, spell.level)
         assertEquals("Ilusão (Padrão) [Ação Mental]", spell.school)
         assertEquals(setOf("Feiticeiro", "Mago"), spell.classes.toSet())
-        assertEquals(mapOf("Feiticeiro" to 8, "Mago" to 8), spell.classLevels)
+        assertEquals(mapOf("Feiticeiro" to 7, "Mago" to 7), spell.classLevels)
         assertTrue(spell.domainLevels.isEmpty())
         assertEquals("1 ação padrão", spell.castTime)
         assertEquals("V, G, M", spell.components)
@@ -1697,7 +1697,7 @@ class PresetSpellCatalogTest {
     fun consolidatedEighthLevelSpellBatchMatchesPlayerHandbook() {
         val expected = mapOf(
             "Campo Antimagia" to Triple("Abjuração", mapOf("Clérigo" to 8, "Feiticeiro" to 6, "Mago" to 6), mapOf("Magia" to 6, "Proteção" to 6)),
-            "Criar Mortos-Vivos Maior" to Triple("Necromancia [Mal]", mapOf("Clérigo" to 8, "Feiticeiro" to 8, "Mago" to 8), mapOf("Morte" to 8)),
+            "Criar Mortos-Vivos Maior" to Triple("Necromancia [Mal]", mapOf("Clérigo" to 8, "Feiticeiro" to 7, "Mago" to 7), mapOf("Morte" to 8)),
             "Imunidade à Magia Maior" to Triple("Abjuração", mapOf("Clérigo" to 8), emptyMap()),
             "Ciclone" to Triple("Evocação [Ar]", mapOf("Druida" to 8), mapOf("Ar" to 8)),
             "Controlar Plantas" to Triple("Transmutação", mapOf("Druida" to 8), mapOf("Planta" to 8)),
@@ -1709,13 +1709,13 @@ class PresetSpellCatalogTest {
             "Palavra de Recordação" to Triple("Conjuração (Teletransporte)", mapOf("Clérigo" to 6, "Druida" to 8), emptyMap()),
             "Tempestade de Fogo" to Triple("Evocação [Fogo]", mapOf("Clérigo" to 8, "Druida" to 7), mapOf("Fogo" to 7)),
             "Terremoto" to Triple("Evocação [Terra]", mapOf("Clérigo" to 8, "Druida" to 8), mapOf("Destruição" to 8, "Terra" to 7)),
-            "Símbolo da Morte" to Triple("Necromancia [Morte]", mapOf("Clérigo" to 8, "Feiticeiro" to 6, "Mago" to 6), emptyMap())
+            "Símbolo da Morte" to Triple("Necromancia [Morte]", mapOf("Clérigo" to 8, "Feiticeiro" to 7, "Mago" to 7), emptyMap())
         )
         expected.forEach { (name, values) ->
             val matches = Dnd35Rules.PRESET_SPELLS.filter { it.name == name }
             assertEquals("$name must appear exactly once", 1, matches.size)
             val spell = matches.single()
-            assertEquals(name, 8, spell.level)
+            assertEquals(name, if (name == "Criar Mortos-Vivos Maior" || name == "Símbolo da Morte") 7 else 8, spell.level)
             assertEquals(name, values.first, spell.school)
             assertEquals(name, values.second, spell.classLevels)
             assertEquals(name, values.third, spell.domainLevels)
@@ -1751,9 +1751,6 @@ class PresetSpellCatalogTest {
             "Curar Ferimentos Críticos em Massa" to Triple("Conjuração (Cura)", mapOf("Clérigo" to 8, "Druida" to 9), mapOf("Cura" to 8)),
             "Infligir Ferimentos Críticos em Massa" to Triple("Necromancia", mapOf("Clérigo" to 8), emptyMap()),
             "Curar Ferimentos Graves em Massa" to Triple("Conjuração (Cura)", mapOf("Clérigo" to 7, "Druida" to 8), emptyMap()),
-            "Corpo de Ferro" to Triple("Transmutação", mapOf("Feiticeiro" to 8, "Mago" to 8), mapOf("Terra" to 8)),
-            "Estase Temporal" to Triple("Transmutação", mapOf("Feiticeiro" to 8, "Mago" to 8), emptyMap()),
-            "Metamorfosear Objetos" to Triple("Transmutação", mapOf("Feiticeiro" to 8, "Mago" to 8), mapOf("Enganação" to 8))
         )
         expected.forEach { (name, values) ->
             val spell = Dnd35Rules.PRESET_SPELLS.single { it.name == name }
@@ -1769,9 +1766,6 @@ class PresetSpellCatalogTest {
             "Curar Ferimentos Críticos em Massa" to listOf("4d8", "máximo +40"),
             "Infligir Ferimentos Críticos em Massa" to listOf("4d8", "máximo +20"),
             "Curar Ferimentos Graves em Massa" to listOf("3d8", "máximo +35"),
-            "Corpo de Ferro" to listOf("15/adamante", "+6", "-6"),
-            "Estase Temporal" to listOf("animação suspensa", "5.000 PO"),
-            "Metamorfosear Objetos" to listOf("3 m³ por nível", "duração permanente")
         )
         fieldChecks.forEach { (name, fragments) ->
             val description = Dnd35Rules.PRESET_SPELLS.single { it.name == name }.description
@@ -1801,9 +1795,7 @@ class PresetSpellCatalogTest {
             "Nuvem Incendiária", "Antipatia", "Dança Irresistível de Otto", "Enfeitiçar Monstro em Massa",
             "Ordem", "Palavra de Poder, Atordoar", "Prisão", "Símbolo da Insanidade", "Simpatia",
             "Esfera Telecinética de Otiluke", "Explosão Solar", "Grito Maior", "Punho Cerrado de Bigby, O",
-            "Raio Polar", "Padrão Cintilante", "Animação Ilusória", "Clone",
-            "Criar Mortos-Vivos Maior", "Evaporação", "Corpo de Ferro", "Estase Temporal",
-            "Metamorfosear Objetos"
+            "Raio Polar", "Animação Ilusória"
         )
         clericEighth.forEach { name ->
             val spell = Dnd35Rules.PRESET_SPELLS.single { it.name == name }
@@ -1857,4 +1849,52 @@ class PresetSpellCatalogTest {
         assertTrue(evaporation.description.contains("máximo 20d8"))
     }
 
+    @Test
+    fun seventhLevelArcaneSpellsKeepPerClassLevelsFromPlayerHandbook() {
+        val spells = Dnd35Rules.PRESET_SPELLS.associateBy { it.name }
+        listOf(
+            "Padrão Cintilante",
+            "Clone",
+            "Evaporação",
+            "Corpo de Ferro",
+            "Estase Temporal",
+            "Metamorfosear Objetos",
+            "Invocar Criaturas VII",
+            "Ondas da Exaustão"
+        ).forEach { name ->
+            val spell = spells.getValue(name)
+            assertEquals(7, spell.classLevels["Feiticeiro"])
+            assertEquals(7, spell.classLevels["Mago"])
+        }
+
+        val wavesOfExhaustion = spells.getValue("Ondas da Exaustão")
+        assertEquals("Cone de 18 m", wavesOfExhaustion.range)
+        assertEquals("Instantânea", wavesOfExhaustion.duration)
+        assertEquals("Nenhum", wavesOfExhaustion.savingThrow)
+        assertTrue(wavesOfExhaustion.spellResistance)
+
+        val resurrection = spells.getValue("Ressurreição")
+        assertEquals(7, resurrection.classLevels["Clérigo"])
+        assertEquals("Toque", resurrection.range)
+        assertEquals("Instantânea", resurrection.duration)
+        assertTrue(resurrection.description.contains("10.000 PO"))
+
+        val greaterRestoration = spells.getValue("Restauração Maior")
+        assertEquals(7, greaterRestoration.classLevels["Clérigo"])
+        assertEquals("10 minutos", greaterRestoration.castTime)
+        assertTrue(greaterRestoration.description.contains("500 XP"))
+
+        val natureSummoning = spells.getValue("Invocar Aliado da Natureza VII")
+        assertEquals(7, natureSummoning.classLevels["Druida"])
+
+        val symbol = spells.getValue("Símbolo da Morte")
+        assertEquals(8, symbol.classLevels["Clérigo"])
+        assertEquals(7, symbol.classLevels["Feiticeiro"])
+        assertEquals(7, symbol.classLevels["Mago"])
+
+        val greaterCreateUndead = spells.getValue("Criar Mortos-Vivos Maior")
+        assertEquals(8, greaterCreateUndead.classLevels["Clérigo"])
+        assertEquals(7, greaterCreateUndead.classLevels["Feiticeiro"])
+        assertEquals(7, greaterCreateUndead.classLevels["Mago"])
+    }
 }
