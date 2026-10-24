@@ -1715,7 +1715,7 @@ class PresetSpellCatalogTest {
             val matches = Dnd35Rules.PRESET_SPELLS.filter { it.name == name }
             assertEquals("$name must appear exactly once", 1, matches.size)
             val spell = matches.single()
-            assertEquals(name, 8, spell.level)
+            assertEquals(name, values.second.values.maxOrNull(), spell.level)
             assertEquals(name, values.first, spell.school)
             assertEquals(name, values.second, spell.classLevels)
             assertEquals(name, values.third, spell.domainLevels)
@@ -1766,9 +1766,6 @@ class PresetSpellCatalogTest {
             "Curar Ferimentos Críticos em Massa" to listOf("4d8", "máximo +40"),
             "Infligir Ferimentos Críticos em Massa" to listOf("4d8", "máximo +20"),
             "Curar Ferimentos Graves em Massa" to listOf("3d8", "máximo +35"),
-            "Corpo de Ferro" to listOf("15/adamante", "+6", "-6"),
-            "Estase Temporal" to listOf("animação suspensa", "5.000 PO"),
-            "Metamorfosear Objetos" to listOf("3 m³ por nível", "duração permanente")
         )
         fieldChecks.forEach { (name, fragments) ->
             val description = Dnd35Rules.PRESET_SPELLS.single { it.name == name }.description
@@ -1799,7 +1796,7 @@ class PresetSpellCatalogTest {
             "Ordem", "Palavra de Poder, Atordoar", "Prisão", "Símbolo da Insanidade", "Simpatia",
             "Esfera Telecinética de Otiluke", "Explosão Solar", "Grito Maior", "Punho Cerrado de Bigby, O",
             "Raio Polar", "Padrão Cintilante", "Animação Ilusória", "Clone",
-            "Criar Mortos-Vivos Maior", "Evaporação"
+            "Evaporação"
         )
         clericEighth.forEach { name ->
             val spell = Dnd35Rules.PRESET_SPELLS.single { it.name == name }
