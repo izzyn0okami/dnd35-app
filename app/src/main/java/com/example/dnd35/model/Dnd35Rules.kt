@@ -4023,5 +4023,48 @@ object Dnd35Rules {
             description = "Invoca uma criatura extra-planar (normalmente um planar, elemental ou besta mágica nativa de outro plano). A criatura aparece no local escolhido e age imediatamente no turno do conjurador, atacando seus oponentes com o melhor de suas habilidades. O conjurador pode ordenar outras tarefas se puder comunicar-se com ela. Invoca uma criatura da lista de 8º nível, 1d3 criaturas do mesmo tipo da lista de 7º nível ou 1d4+1 criaturas do mesmo tipo de qualquer nível inferior; todas devem ficar a menos de 9 m entre si. A criatura invocada não pode invocar ou conjurar outras criaturas nem usar teletransporte ou viagem planar, e não pode ser invocada em ambiente que não a suporte. O tipo de criatura escolhido pode determinar os descritores de tendência da magia, conforme as regras de Invocar Criaturas I. Foco arcano: uma pequena bolsa e uma pequena vela, que não precisa estar acesa.",
             classLevels = mapOf("Clérigo" to 8, "Feiticeiro" to 8, "Mago" to 8)
         ),
+
+        PresetSpell(
+            name = "Ordem",
+            level = 8,
+            school = "Encantamento (Compulsão) [Ação Mental]",
+            classes = listOf("Feiticeiro", "Mago"),
+            castTime = "1 ação padrão",
+            components = "V, G, M",
+            range = "Ilimitado",
+            duration = "Instantânea; veja texto",
+            savingThrow = "Vontade parcial",
+            spellResistance = true,
+            description = "Funciona como enviar mensagem, mas a mensagem também pode conter uma sugestão, que o alvo obedecerá da melhor forma possível. Um teste de Vontade bem-sucedido anula a sugestão, mas não impede o contato. A ordem é entendida mesmo por uma criatura com Inteligência 1; se for impossível de entender ou não fizer sentido nas circunstâncias, a mensagem é compreendida, mas a sugestão não tem efeito. Componente material: pequeno fio de cobre.",
+            classLevels = mapOf("Feiticeiro" to 8, "Mago" to 8)
+        ),
+        PresetSpell(
+            name = "Prisão",
+            level = 8,
+            school = "Encantamento (Compulsão) [Ação Mental]",
+            classes = listOf("Feiticeiro", "Mago"),
+            castTime = "1 minuto",
+            components = "V, G, M",
+            range = "Curto (7,5 m + 1,5 m/2 níveis)",
+            duration = "Variável; veja texto",
+            savingThrow = "Vontade anula; veja texto",
+            spellResistance = true,
+            description = "Aprisiona uma criatura por uma entre várias técnicas mágicas, como confiná-la em um espaço extradimensional, enterrá-la, reduzi-la e colocá-la em um recipiente, ou mantê-la em sono suspenso. A técnica escolhida determina as condições, a duração e os ajustes da CD; algumas formas são permanentes. O alvo pode realizar o teste de resistência indicado pela técnica. Componentes materiais e focos dependem da técnica escolhida.",
+            classLevels = mapOf("Feiticeiro" to 8, "Mago" to 8)
+        ),
+        PresetSpell(
+            name = "Simpatia",
+            level = 8,
+            school = "Encantamento (Compulsão) [Ação Mental]",
+            classes = listOf("Druida", "Feiticeiro", "Mago"),
+            castTime = "1 hora",
+            components = "V, G, M/FD",
+            range = "Curto (7,5 m + 1,5 m/2 níveis)",
+            duration = "2 horas/nível (D)",
+            savingThrow = "Vontade parcial",
+            spellResistance = true,
+            description = "Faz um objeto ou local (até um cubo de 3 m por nível) emitir vibrações mágicas que atraem um tipo específico de criatura ou criaturas inteligentes de uma tendência determinada. A criatura escolhida sente-se compelida a aproximar-se ou permanecer na área, conforme as condições da magia; a resistência bem-sucedida reduz ou anula o efeito conforme o caso.",
+            classLevels = mapOf("Druida" to 9, "Feiticeiro" to 8, "Mago" to 8)
+        ),
     )
 }
