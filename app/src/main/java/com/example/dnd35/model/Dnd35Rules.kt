@@ -1414,20 +1414,6 @@ object Dnd35Rules {
         // CÍRCULO 1
         // Magias adicionais de 1º nível conferidas no Livro do Jogador
         PresetSpell(
-            name = "Trancar Portal",
-            level = 1,
-            school = "Abjuração",
-            classes = listOf("Mago", "Feiticeiro"),
-            castTime = "1 ação padrão",
-            components = "V",
-            range = "Médio (30 m + 3 m/nível)",
-            duration = "1 minuto/nível (D)",
-            savingThrow = "Nenhum",
-            spellResistance = false,
-            description = "Tranca magicamente uma porta, portão, janela ou persiana. O portal recebe +5 na CD para abrir ou quebrar; a magia Arrombar ou Dissipar Magia encerra o efeito.",
-            classLevels = mapOf("Mago" to 1, "Feiticeiro" to 1)
-        ),
-        PresetSpell(
             name = "Disco Flutuante de Tenser",
             level = 1,
             school = "Evocação [Energia]",
@@ -2813,11 +2799,12 @@ object Dnd35Rules {
             classes = listOf("Mago", "Feiticeiro"),
             castTime = "1 ação padrão",
             components = "V",
-            range = "Médio (30m + 3m/nível)",
-            duration = "1 minuto/nível",
+            range = "Médio (30 m + 3 m/nível)",
+            duration = "1 minuto/nível (D)",
             savingThrow = "Nenhum",
             spellResistance = false,
-            description = "Tranca magicamente uma porta, portão, janela ou outro portal fechado; a magia não impede a passagem de criaturas capazes de contornar ou destruir o obstáculo."
+            description = "Tranca magicamente uma porta, portão, janela ou persiana. O portal recebe +5 na CD para abrir ou quebrar; a magia Arrombar ou Dissipar Magia encerra o efeito.",
+            classLevels = mapOf("Mago" to 1, "Feiticeiro" to 1)
         ),
         PresetSpell(
             name = "Ventriloquismo",
