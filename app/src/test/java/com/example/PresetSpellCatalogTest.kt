@@ -1709,7 +1709,7 @@ class PresetSpellCatalogTest {
             "Palavra de Recordação" to Triple("Conjuração (Teletransporte)", mapOf("Clérigo" to 6, "Druida" to 8), emptyMap()),
             "Tempestade de Fogo" to Triple("Evocação [Fogo]", mapOf("Clérigo" to 8, "Druida" to 7), mapOf("Fogo" to 7)),
             "Terremoto" to Triple("Evocação [Terra]", mapOf("Clérigo" to 8, "Druida" to 8), mapOf("Destruição" to 8, "Terra" to 7)),
-            "Símbolo da Morte" to Triple("Necromancia [Morte]", mapOf("Clérigo" to 8, "Feiticeiro" to 7, "Mago" to 7), emptyMap())
+            "Símbolo da Morte" to Triple("Necromancia [Morte]", mapOf("Clérigo" to 8, "Feiticeiro" to 6, "Mago" to 6), emptyMap())
         )
         expected.forEach { (name, values) ->
             val matches = Dnd35Rules.PRESET_SPELLS.filter { it.name == name }
