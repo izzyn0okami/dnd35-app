@@ -254,7 +254,7 @@ class CharacterBackupTest {
     fun corruptedPortraitIsIgnoredWithWarning() {
         val parsed = success(envelope("[{\"name\":\"Foto\",\"photoJpegBase64\":\"@@@não é base64@@@\"}]"))
         assertNull(parsed.characters[0].photoBytes)
-        assertTrue(parsed.warnings.any { it.contains("retrato") })
+        assertTrue("avisos=${parsed.warnings}", parsed.warnings.any { it.contains("retrato") })
     }
 
     @Test

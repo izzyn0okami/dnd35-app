@@ -43,7 +43,7 @@ jobs:
           ./gradlew testDebugUnitTest --stacktrace 2>&1 | tee gradle-test.log
           status=${PIPESTATUS[0]}
           if [ "$status" -ne 0 ]; then
-            grep -nE "^e: |Caused by:|What went wrong|FAILED|AssertionError|Unresolved|error:" gradle-test.log | head -14 | while IFS= read -r line; do
+            grep -nE -A3 "^e: |FAILED|AssertionError|Unresolved" gradle-test.log | head -24 | while IFS= read -r line; do
               echo "::error::${line:0:800}"
             done
           fi
