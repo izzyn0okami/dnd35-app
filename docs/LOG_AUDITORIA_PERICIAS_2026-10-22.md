@@ -1176,3 +1176,14 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - Acrescentados testes de regressão para presença única, níveis, classes e campos mecânicos importantes.
 - A extração de texto do PDF distorceu o nome de **Invisibilidade Contra Mortos-Vivos** na lista, mas o título e a entrada do verbete na página impressa 209 confirmam essa grafia; foi usado o nome do verbete, não a leitura OCR incorreta.
 - Esta PR cobre apenas quatro ausências confirmadas; ainda é necessário comparar integralmente as listas de 1º nível das demais classes e verificar os campos de cada entrada. CI e testes automatizados não substituem teste manual no Android.
+
+
+---
+
+## 2026-10-24 — Corrige nome e parâmetros de Maldição Menor
+
+- Conferidos a lista de magias de 1º nível de Clérigo (página impressa 157) e o verbete Maldição Menor (página impressa 215) no PDF brasileiro enviado.
+- A entrada anteriormente chamada Perdição correspondia ao efeito de Maldição Menor, mas usava nome e alcance incompatíveis com o verbete. Corrigidos nome, escola detalhada, componentes (V, G, FD), alcance fixo de 15 m e descrição do efeito, incluindo a contramágica contra Bênção.
+- A mudança foi feita na entrada existente para evitar uma segunda cópia; teste atualizado e teste de regressão acrescentado.
+- A grafia Perdição não aparece como nome dessa magia na lista consultada; não manter a entrada com esse nome sem localizar outro verbete correspondente no livro.
+- A PR #184 adicionou Invisibilidade Contra Mortos-Vivos, nome confirmado pelo verbete do livro; a lista impressa usa uma forma distorcida pelo OCR, não uma magia distinta.
