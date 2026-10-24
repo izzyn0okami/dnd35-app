@@ -2334,19 +2334,6 @@ object Dnd35Rules {
             description = "Acalma animais, reduzindo sua hostilidade; criaturas ameaçadas ou atacadas podem resistir ao efeito."
         ),
         PresetSpell(
-            name = "Detectar Laços e Covas",
-            level = 1,
-            school = "Adivinhação",
-            classes = listOf("Druida", "Ranger"),
-            castTime = "1 ação padrão",
-            components = "V, G",
-            range = "18m/nível",
-            duration = "Concentração, até 10 minutos/nível",
-            savingThrow = "Nenhum",
-            spellResistance = false,
-            description = "Revela armadilhas naturais, fossos e perigos semelhantes dentro do alcance, conforme a direção examinada."
-        ),
-        PresetSpell(
             name = "Invocar Aliado da Natureza I",
             level = 1,
             school = "Conjuração (Invocação)",
