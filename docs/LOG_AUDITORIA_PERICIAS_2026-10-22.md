@@ -1221,3 +1221,6 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - A correção proposta mantém uma única entrada por magia: padroniza a entrada de Disco Flutuante como **Disco Flutuante de Tenser**, remove a nova duplicata e enriquece a descrição mecânica da entrada canônica; remove **Montaria Arcana** e atualiza **Montaria** com alcance, duração dissipável, descrição e níveis por classe.
 - Os testes passam a verificar que os nomes redundantes não existem e que **Montaria** mantém a disponibilidade para Bardo, Mago e Feiticeiro. A CI desta correção ainda precisa ser aprovada antes do merge.
 - Lição de auditoria: além de unicidade textual, comparar nomes alternativos, classes, componentes e efeitos para evitar duplicação semântica. O catálogo de magias arcanas de 1º nível permanece em auditoria; não declarar a lista completa.
+
+
+- **Atualização de CI (PR #188):** a primeira execução falhou em dois testes de lotes anteriores que ainda esperavam os dados antigos: `Montaria` sem `(D)` na duração e `Disco Flutuante` como nome. Os testes foram atualizados para refletir a entrada canônica consolidada (`Montaria`, duração `2 horas/nível (D)`, e `Disco Flutuante de Tenser`). Isso é ajuste das expectativas de teste ao catálogo proposto; a CI precisa ser executada novamente antes de integrar.
