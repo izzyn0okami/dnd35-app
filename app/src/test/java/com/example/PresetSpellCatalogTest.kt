@@ -929,4 +929,25 @@ class PresetSpellCatalogTest {
         assertTrue(repel.description.contains("um terço"))
     }
 
+
+    @Test
+    fun darkvisionIsCatalogedAtSecondLevelForRangerAndArcaneCasters() {
+        val spells = Dnd35Rules.PRESET_SPELLS
+        val darkvision = spells.single { it.name == "Visão no Escuro" }
+        assertEquals(2, darkvision.level)
+        assertEquals(
+            mapOf("Ranger" to 2, "Feiticeiro" to 2, "Mago" to 2),
+            darkvision.classLevels
+        )
+        assertEquals("Transmutação", darkvision.school)
+        assertEquals("V, G, M", darkvision.components)
+        assertEquals("Toque", darkvision.range)
+        assertEquals("1 hora/nível", darkvision.duration)
+        assertEquals("Vontade anula (inofensiva)", darkvision.savingThrow)
+        assertTrue(darkvision.spellResistance)
+        assertTrue(darkvision.description.contains("18 m"))
+        assertTrue(darkvision.description.contains("escuridão mágica"))
+        assertEquals(1, spells.count { it.name == "Visão no Escuro" })
+    }
+
 }
