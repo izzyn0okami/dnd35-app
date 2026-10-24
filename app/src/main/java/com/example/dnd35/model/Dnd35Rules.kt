@@ -2024,17 +2024,17 @@ object Dnd35Rules {
 
         // Magias adicionais de 1º círculo do Livro do Jogador — lote 5
         PresetSpell(
-            name = "Perdição",
+            name = "Maldição Menor",
             level = 1,
-            school = "Encantamento",
+            school = "Encantamento (Compulsão) [Medo, Ação Mental]",
             classes = listOf("Clérigo"),
             castTime = "1 ação padrão",
-            components = "V, S, DF",
-            range = "Curto (15m + 1,5m/2 níveis)",
+            components = "V, G, FD",
+            range = "15 m",
             duration = "1 minuto/nível",
             savingThrow = "Vontade anula",
             spellResistance = true,
-            description = "Inimigos na área sofrem –1 nas jogadas de ataque e testes de resistência contra medo; neutraliza Bênção."
+            description = "Todos os inimigos a até 15 m sofrem –1 de penalidade nas jogadas de ataque e nos testes de resistência contra medo. A magia também serve como contramágica e dissipa Bênção."
         ),
         PresetSpell(
             name = "Abençoar Água",
