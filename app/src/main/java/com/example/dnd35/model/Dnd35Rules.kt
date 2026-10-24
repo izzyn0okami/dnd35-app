@@ -3984,7 +3984,7 @@ object Dnd35Rules {
         ),
         PresetSpell(
             name = "Padrão Cintilante",
-            level = 7,
+            level = 8,
             school = "Ilusão (Padrão) [Ação Mental]",
             classes = listOf("Feiticeiro", "Mago"),
             castTime = "1 ação padrão",
@@ -4129,7 +4129,7 @@ object Dnd35Rules {
         ),
         PresetSpell(
             name = "Criar Mortos-Vivos Maior",
-            level = 7,
+            level = 8,
             school = "Necromancia [Mal]",
             classes = listOf("Clérigo", "Feiticeiro", "Mago"),
             castTime = "1 hora",
@@ -4139,7 +4139,7 @@ object Dnd35Rules {
             savingThrow = "Nenhum",
             spellResistance = false,
             description = "Funciona como criar mortos-vivos, mas permite criar mortos-vivos mais poderosos e inteligentes. O tipo criado depende do nível de conjurador: até 15º nível, sombra; 16º–17º, aparição; 18º–19º, espectro; 20º nível, devorador. Consulte o Livro dos Monstros para as estatísticas das criaturas.",
-            classLevels = mapOf("Clérigo" to 8, "Feiticeiro" to 7, "Mago" to 7),
+            classLevels = mapOf("Clérigo" to 8, "Feiticeiro" to 8, "Mago" to 8),
             domainLevels = mapOf("Morte" to 8)
         ),
         PresetSpell(
