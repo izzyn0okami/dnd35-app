@@ -1909,3 +1909,12 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - **Contagem nominal:** 211 entradas após integração (210 antes).
 - **Limitação:** não foi realizado teste manual em dispositivo Android.
 - **Próximo passo:** continuar a auditoria das magias restantes de 8º nível do Livro do Jogador; conferir verbete completo e catálogo antes de cada inclusão.
+
+
+## 2026-10-24 — Correção proposta de representação do domínio Enganação
+
+- **PR corretiva:** [#230](https://github.com/izzyn0okami/dnd35-app/pull/230), aberta após a integração da PR #229.
+- **Motivo:** o modelo `PresetSpell` dispõe do campo `domainLevels`; Enganação é domínio, não classe de personagem. A magia Animação Ilusória deve listar somente Feiticeiro e Mago em `classes`/`classLevels`, e Enganação 7 em `domainLevels`.
+- **Alteração proposta:** corrigir o registro e o teste de regressão para refletir essa separação já usada em outras magias do catálogo.
+- **Validação:** aguardar CI completa; não integrar enquanto a CI não passar. Sem teste manual em dispositivo Android.
+- **Auditoria das magias:** suspensa temporariamente até concluir esta correção de consistência de dados.
