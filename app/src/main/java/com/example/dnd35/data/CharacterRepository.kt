@@ -74,6 +74,12 @@ class CharacterRepository(private val characterDao: CharacterDao) {
         return characterDao.insertCharacter(newChar)
     }
 
+    suspend fun getAllCharactersOnce(): List<CharacterEntity> = characterDao.getAllCharactersOnce()
+
+    /** Insere fichas importadas como registros novos (id = 0). Devolve os novos ids, na mesma ordem. */
+    suspend fun importCharacters(characters: List<CharacterEntity>): List<Long> =
+        characterDao.insertCharacters(characters.map { it.copy(id = 0) })
+
     suspend fun duplicateCharacter(character: CharacterEntity): Long {
         val clone = character.copy(
             id = 0,

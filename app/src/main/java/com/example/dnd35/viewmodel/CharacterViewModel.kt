@@ -1,8 +1,12 @@
 package com.example.dnd35.viewmodel
 
 import android.app.Application
+import android.net.Uri
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.dnd35.backup.BackupFileException
+import com.example.dnd35.backup.CharacterBackup
+import com.example.dnd35.backup.CharacterBackupIo
 import com.example.dnd35.data.AppDatabase
 import com.example.dnd35.data.CharacterRepository
 import com.example.dnd35.model.CalculatedCharacterStats
@@ -17,9 +21,12 @@ import com.example.dnd35.model.SkillPointLevelRecord
 import com.example.dnd35.model.CharacterSpell
 import com.example.dnd35.model.SpellSlotInfo
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
@@ -118,6 +125,10 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
 
     private val _computedStats = MutableStateFlow<CalculatedCharacterStats?>(null)
     val computedStats = _computedStats.asStateFlow()
+
+    private val _backupMessages = MutableSharedFlow<String>(extraBufferCapacity = 4)
+    /** Mensagens curtas para o usuário sobre exportação e importação de fichas. */
+    val backupMessages: SharedFlow<String> = _backupMessages.asSharedFlow()
 
     init {
         val dao = AppDatabase.getDatabase(application).characterDao()
@@ -585,6 +596,65 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
         persistCharacter(
             curr.copy(skillPointHistoryJson = CharacterJsonAdapters.serializeSkillPointHistory(normalized))
         )
+    }
+
+    /** Exporta a ficha ativa ou todas as fichas para o arquivo escolhido pelo usuário. */
+    fun exportBackup(target: Uri, allCharacters: Boolean) {
+        val app = getApplication<Application>()
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val list = if (allCharacters) {
+                    repository.getAllCharactersOnce()
+                } else {
+                    listOfNotNull(_activeCharacter.value)
+                }
+                if (list.isEmpty()) {
+                    _backupMessages.emit("Não há fichas para exportar.")
+                    return@launch
+                }
+                CharacterBackupIo.writeBackup(app, target, list)
+                _backupMessages.emit(
+                    if (list.size == 1) "Ficha exportada." else "${list.size} fichas exportadas."
+                )
+            } catch (e: Exception) {
+                _backupMessages.emit("Erro ao exportar: ${e.localizedMessage ?: "falha desconhecida"}")
+            }
+        }
+    }
+
+    /** Importa fichas de um arquivo de backup. Nunca sobrescreve fichas existentes. */
+    fun importBackup(source: Uri) {
+        val app = getApplication<Application>()
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val text = CharacterBackupIo.readBackupText(app, source)
+                when (val parsed = CharacterBackup.parse(text)) {
+                    is CharacterBackup.ParseResult.Failure -> _backupMessages.emit(parsed.message)
+                    is CharacterBackup.ParseResult.Success -> {
+                        val warnings = parsed.warnings.toMutableList()
+                        val entities = parsed.characters.mapIndexed { index, imported ->
+                            val bytes = imported.photoBytes
+                            val photo = bytes?.let { CharacterBackupIo.savePortrait(app, it, index) }
+                            if (bytes != null && photo == null) {
+                                warnings += "${imported.entity.name}: retrato não pôde ser importado."
+                            }
+                            if (photo != null) imported.entity.copy(photoUri = photo) else imported.entity
+                        }
+                        val ids = repository.importCharacters(entities)
+                        ids.lastOrNull()?.let { _selectedCharacterId.value = it }
+                        val base = if (entities.size == 1) "1 ficha importada." else "${entities.size} fichas importadas."
+                        val extra = if (warnings.isEmpty()) "" else
+                            " Avisos: " + warnings.take(2).joinToString(" ") +
+                                if (warnings.size > 2) " (+${warnings.size - 2})" else ""
+                        _backupMessages.emit(base + extra)
+                    }
+                }
+            } catch (e: BackupFileException) {
+                _backupMessages.emit(e.message ?: "Arquivo de backup inválido.")
+            } catch (e: Exception) {
+                _backupMessages.emit("Erro ao importar: ${e.localizedMessage ?: "falha desconhecida"}")
+            }
+        }
     }
 
     fun updateNotes(notes: String) {
