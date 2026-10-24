@@ -2106,7 +2106,7 @@ object Dnd35Rules {
             name = "Retardar Envenenamento",
             level = 1,
             school = "Conjuração",
-            classes = listOf("Clérigo", "Druida", "Paladino", "Ranger"),
+            classes = listOf("Bardo", "Clérigo", "Druida", "Paladino", "Ranger"),
             castTime = "1 ação padrão",
             components = "V, G, FD",
             range = "Toque",
@@ -2114,7 +2114,7 @@ object Dnd35Rules {
             savingThrow = "Fortitude anula (inofensivo)",
             spellResistance = true,
             description = "Torna o alvo temporariamente imune aos efeitos de venenos; qualquer veneno no organismo ou introduzido durante a duração só produz efeitos quando a magia termina, sem neutralizá-lo.",
-            classLevels = mapOf("Clérigo" to 2, "Druida" to 2, "Paladino" to 2, "Ranger" to 1)
+            classLevels = mapOf("Bardo" to 2, "Clérigo" to 2, "Druida" to 2, "Paladino" to 2, "Ranger" to 1)
         ),
         PresetSpell(
             name = "Suportar Elementos",
