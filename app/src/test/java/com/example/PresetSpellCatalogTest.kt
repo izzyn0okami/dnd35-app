@@ -8,6 +8,16 @@ import org.junit.Test
 
 class PresetSpellCatalogTest {
     @Test
+    fun directionSpellUsesPlayerHandbookName() {
+        val spells = Dnd35Rules.PRESET_SPELLS
+        val spell = spells.single { it.name == "Intuir Direção" }
+        assertFalse(spells.any { it.name == "Conhecer Direção" })
+        assertEquals(setOf("Bardo", "Druida"), spell.classes.toSet())
+        assertEquals("V, G", spell.components)
+        assertEquals("Pessoal", spell.range)
+    }
+
+    @Test
     fun guidanceUsesPlayerHandbookNameAndDetails() {
         val spells = Dnd35Rules.PRESET_SPELLS
         val guidance = spells.single { it.name == "Orientação" }
@@ -38,7 +48,7 @@ class PresetSpellCatalogTest {
         assertTrue(spells.first { it.name == "Romper Morto-Vivo" }.spellResistance)
         listOf(
             "Criar Água",
-            "Detectar Veneno",
+            "Detectar Venenos",
             "Consertar",
             "Mensagem",
             "Abrir/Fechar",
@@ -51,7 +61,7 @@ class PresetSpellCatalogTest {
             "Desestabilizar Mortos-Vivos",
             "Toque de Fadiga",
             "Lampejo",
-            "Conhecer Direção",
+            "Intuir Direção",
             "Canção de Ninar",
             "Invocar Instrumento",
             "Curar Ferimentos Mínimos",
@@ -205,14 +215,16 @@ class PresetSpellCatalogTest {
     }
 
     @Test
-    fun detectPoisonUsesDifferentLevelsForPaladinAndRanger() {
-        val spell = Dnd35Rules.PRESET_SPELLS.single { it.name == "Detectar Veneno" }
+    fun detectPoisonsUsesPlayerHandbookClassesAndLevels() {
+        val spell = Dnd35Rules.PRESET_SPELLS.single { it.name == "Detectar Venenos" }
         assertEquals(0, spell.classLevels["Clérigo"])
         assertEquals(0, spell.classLevels["Druida"])
         assertEquals(0, spell.classLevels["Mago"])
         assertEquals(0, spell.classLevels["Feiticeiro"])
         assertEquals(1, spell.classLevels["Paladino"])
-        assertEquals(1, spell.classLevels["Ranger"])
+        assertFalse(spell.classes.contains("Ranger"))
+        assertFalse(spell.classLevels.containsKey("Ranger"))
+        assertEquals("V, G", spell.components)
         assertEquals("Curto (7,5m)", spell.range)
         assertTrue(spell.description.contains("Sabedoria CD 20"))
         val purify = Dnd35Rules.PRESET_SPELLS.single { it.name == "Purificar Alimentos e Bebidas" }
