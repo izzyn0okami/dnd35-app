@@ -1,0 +1,1469 @@
+[
+  {
+    "name": "Adaga",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 1.0,
+    "costGp": 2.0,
+    "damageOrAc": "1d4 (19-20/x2)",
+    "properties": "Perfuração/Corte, arremessável 3m"
+  },
+  {
+    "name": "Espada Curta",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 2.0,
+    "costGp": 10.0,
+    "damageOrAc": "1d6 (19-20/x2)",
+    "properties": "Perfuração, leve"
+  },
+  {
+    "name": "Espada Longa",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 4.0,
+    "costGp": 15.0,
+    "damageOrAc": "1d8 (19-20/x2)",
+    "properties": "Corte, uma mão"
+  },
+  {
+    "name": "Espada Grande",
+    "category": "Armas",
+    "defaultSlot": "Duas Mãos",
+    "weightLb": 8.0,
+    "costGp": 50.0,
+    "damageOrAc": "2d6 (19-20/x2)",
+    "properties": "Corte, duas mãos"
+  },
+  {
+    "name": "Machado de Guerra",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 6.0,
+    "costGp": 20.0,
+    "damageOrAc": "1d10 (x3)",
+    "properties": "Corte, uma mão anã"
+  },
+  {
+    "name": "Machado Grande",
+    "category": "Armas",
+    "defaultSlot": "Duas Mãos",
+    "weightLb": 12.0,
+    "costGp": 30.0,
+    "damageOrAc": "1d12 (x3)",
+    "properties": "Corte, duas mãos"
+  },
+  {
+    "name": "Maça Pesada",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 8.0,
+    "costGp": 12.0,
+    "damageOrAc": "1d8 (x2)",
+    "properties": "Concussão, uma mão"
+  },
+  {
+    "name": "Lança Longa",
+    "category": "Armas",
+    "defaultSlot": "Duas Mãos",
+    "weightLb": 9.0,
+    "costGp": 5.0,
+    "damageOrAc": "1d8 (x3)",
+    "properties": "Perfuração, alcance 3m"
+  },
+  {
+    "name": "Arco Curto",
+    "category": "Armas",
+    "defaultSlot": "Duas Mãos",
+    "weightLb": 2.0,
+    "costGp": 30.0,
+    "damageOrAc": "1d6 (x3)",
+    "properties": "Perfuração, alcance 18m"
+  },
+  {
+    "name": "Arco Longo Composto",
+    "category": "Armas",
+    "defaultSlot": "Duas Mãos",
+    "weightLb": 3.0,
+    "costGp": 100.0,
+    "damageOrAc": "1d8 (x3)",
+    "properties": "Perfuração, alcance 33m"
+  },
+  {
+    "name": "Besta Leve",
+    "category": "Armas",
+    "defaultSlot": "Duas Mãos",
+    "weightLb": 4.0,
+    "costGp": 35.0,
+    "damageOrAc": "1d8 (19-20/x2)",
+    "properties": "Perfuração, alcance 24m"
+  },
+  {
+    "name": "Rapieira Élfica",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 2.0,
+    "costGp": 20.0,
+    "damageOrAc": "1d6 (18-20/x2)",
+    "properties": "Perfuração, acuidade com arma"
+  },
+  {
+    "name": "Armadura Acolchoada",
+    "category": "Armaduras",
+    "defaultSlot": "Corpo (Armadura / Vestimenta)",
+    "weightLb": 10.0,
+    "costGp": 5.0,
+    "damageOrAc": "+1 CA",
+    "properties": "Des Max +8, Pen 0, Falha 5%"
+  },
+  {
+    "name": "Armadura de Couro",
+    "category": "Armaduras",
+    "defaultSlot": "Corpo (Armadura / Vestimenta)",
+    "weightLb": 15.0,
+    "costGp": 10.0,
+    "damageOrAc": "+2 CA",
+    "properties": "Des Max +6, Pen 0, Falha 10%"
+  },
+  {
+    "name": "Couro Batido",
+    "category": "Armaduras",
+    "defaultSlot": "Corpo (Armadura / Vestimenta)",
+    "weightLb": 20.0,
+    "costGp": 25.0,
+    "damageOrAc": "+3 CA",
+    "properties": "Des Max +5, Pen -1, Falha 15%"
+  },
+  {
+    "name": "Gibão de Peles",
+    "category": "Armaduras",
+    "defaultSlot": "Corpo (Armadura / Vestimenta)",
+    "weightLb": 25.0,
+    "costGp": 15.0,
+    "damageOrAc": "+3 CA",
+    "properties": "Des Max +4, Pen -3, Falha 20%"
+  },
+  {
+    "name": "Camisa de Cota de Malha",
+    "category": "Armaduras",
+    "defaultSlot": "Corpo (Armadura / Vestimenta)",
+    "weightLb": 25.0,
+    "costGp": 100.0,
+    "damageOrAc": "+4 CA",
+    "properties": "Des Max +4, Pen -2, Falha 20%"
+  },
+  {
+    "name": "Brunea",
+    "category": "Armaduras",
+    "defaultSlot": "Corpo (Armadura / Vestimenta)",
+    "weightLb": 30.0,
+    "costGp": 50.0,
+    "damageOrAc": "+4 CA",
+    "properties": "Des Max +3, Pen -4, Falha 25%"
+  },
+  {
+    "name": "Cota de Malha",
+    "category": "Armaduras",
+    "defaultSlot": "Corpo (Armadura / Vestimenta)",
+    "weightLb": 40.0,
+    "costGp": 150.0,
+    "damageOrAc": "+5 CA",
+    "properties": "Des Max +2, Pen -5, Falha 30%"
+  },
+  {
+    "name": "Peitoral de Aço",
+    "category": "Armaduras",
+    "defaultSlot": "Corpo (Armadura / Vestimenta)",
+    "weightLb": 30.0,
+    "costGp": 200.0,
+    "damageOrAc": "+5 CA",
+    "properties": "Des Max +3, Pen -4, Falha 25%"
+  },
+  {
+    "name": "Cota de Talas",
+    "category": "Armaduras",
+    "defaultSlot": "Corpo (Armadura / Vestimenta)",
+    "weightLb": 45.0,
+    "costGp": 200.0,
+    "damageOrAc": "+6 CA",
+    "properties": "Des Max +0, Pen -7, Falha 40%"
+  },
+  {
+    "name": "Cota de Bandas",
+    "category": "Armaduras",
+    "defaultSlot": "Corpo (Armadura / Vestimenta)",
+    "weightLb": 35.0,
+    "costGp": 250.0,
+    "damageOrAc": "+6 CA",
+    "properties": "Des Max +1, Pen -6, Falha 35%"
+  },
+  {
+    "name": "Armadura de Meia-Placa",
+    "category": "Armaduras",
+    "defaultSlot": "Corpo (Armadura / Vestimenta)",
+    "weightLb": 50.0,
+    "costGp": 600.0,
+    "damageOrAc": "+7 CA",
+    "properties": "Des Max +0, Pen -7, Falha 40%"
+  },
+  {
+    "name": "Armadura Completa (Full Plate)",
+    "category": "Armaduras",
+    "defaultSlot": "Corpo (Armadura / Vestimenta)",
+    "weightLb": 50.0,
+    "costGp": 1500.0,
+    "damageOrAc": "+8 CA",
+    "properties": "Des Max +1, Pen -6, Falha 35%"
+  },
+  {
+    "name": "Broquel",
+    "category": "Escudos",
+    "defaultSlot": "Mão Secundária / Escudo",
+    "weightLb": 5.0,
+    "costGp": 15.0,
+    "damageOrAc": "+1 CA",
+    "properties": "Pen -1, Falha 5%"
+  },
+  {
+    "name": "Escudo Leve de Madeira",
+    "category": "Escudos",
+    "defaultSlot": "Mão Secundária / Escudo",
+    "weightLb": 5.0,
+    "costGp": 3.0,
+    "damageOrAc": "+1 CA",
+    "properties": "Pen -1, Falha 5%"
+  },
+  {
+    "name": "Escudo Pesado de Aço",
+    "category": "Escudos",
+    "defaultSlot": "Mão Secundária / Escudo",
+    "weightLb": 15.0,
+    "costGp": 20.0,
+    "damageOrAc": "+2 CA",
+    "properties": "Pen -2, Falha 15%"
+  },
+  {
+    "name": "Escudo de Corpo (Torre)",
+    "category": "Escudos",
+    "defaultSlot": "Mão Secundária / Escudo",
+    "weightLb": 45.0,
+    "costGp": 30.0,
+    "damageOrAc": "+4 CA",
+    "properties": "Des Max +2, Pen -10, Falha 50%"
+  },
+  {
+    "name": "Elmo de Ferro Batido",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Cabeça (Elmo / Tiara)",
+    "weightLb": 3.0,
+    "costGp": 10.0,
+    "damageOrAc": "-",
+    "properties": "Proteção de cabeça"
+  },
+  {
+    "name": "Diadema do Intelecto +2",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Cabeça (Elmo / Tiara)",
+    "weightLb": 0.5,
+    "costGp": 4000.0,
+    "damageOrAc": "+2 INT",
+    "properties": "Concede +2 de bônus de melhoria em Inteligência"
+  },
+  {
+    "name": "Óculos da Visão Noturna",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Olhos (Óculos / Lentes)",
+    "weightLb": 0.5,
+    "costGp": 12000.0,
+    "damageOrAc": "-",
+    "properties": "Concede visão no escuro 18m ao usuário"
+  },
+  {
+    "name": "Amuleto de Armadura Natural +1",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Pescoço (Amuleto / Colar)",
+    "weightLb": 0.5,
+    "costGp": 2000.0,
+    "damageOrAc": "+1 CA Natural",
+    "properties": "Concede +1 de armadura natural na CA"
+  },
+  {
+    "name": "Amuleto da Saúde +2",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Pescoço (Amuleto / Colar)",
+    "weightLb": 0.5,
+    "costGp": 4000.0,
+    "damageOrAc": "+2 CON",
+    "properties": "Concede +2 de melhoria na Constituição"
+  },
+  {
+    "name": "Capa de Resistência +1",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Ombros (Capa / Manto)",
+    "weightLb": 1.0,
+    "costGp": 1000.0,
+    "damageOrAc": "+1 Resistências",
+    "properties": "Concede +1 em todos os testes de resistência"
+  },
+  {
+    "name": "Capa do Carisma +2",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Ombros (Capa / Manto)",
+    "weightLb": 1.0,
+    "costGp": 4000.0,
+    "damageOrAc": "+2 CAR",
+    "properties": "Concede +2 de melhoria no Carisma"
+  },
+  {
+    "name": "Capa Élfica",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Ombros (Capa / Manto)",
+    "weightLb": 1.0,
+    "costGp": 2500.0,
+    "damageOrAc": "+5 Furtividade",
+    "properties": "+5 de competência em testes de Furtividade"
+  },
+  {
+    "name": "Braçadeiras da Armadura +2",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Braços (Braçadeiras)",
+    "weightLb": 1.0,
+    "costGp": 4000.0,
+    "damageOrAc": "+2 CA",
+    "properties": "Cria campo de força de +2 CA"
+  },
+  {
+    "name": "Luvas da Destreza +2",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mãos (Luvas / Manoplas)",
+    "weightLb": 1.0,
+    "costGp": 4000.0,
+    "damageOrAc": "+2 DES",
+    "properties": "Concede +2 de melhoria em Destreza"
+  },
+  {
+    "name": "Manoplas da Força do Ogro",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mãos (Luvas / Manoplas)",
+    "weightLb": 4.0,
+    "costGp": 4000.0,
+    "damageOrAc": "+2 FOR",
+    "properties": "Concede +2 de melhoria em Força"
+  },
+  {
+    "name": "Anel de Proteção +1",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Dedo (Anel 1)",
+    "weightLb": 0.1,
+    "costGp": 2000.0,
+    "damageOrAc": "+1 Deflexão",
+    "properties": "Concede +1 de bônus de deflexão na CA"
+  },
+  {
+    "name": "Anel de Sustento",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Dedo (Anel 2)",
+    "weightLb": 0.1,
+    "costGp": 2500.0,
+    "damageOrAc": "-",
+    "properties": "Dispensa alimentação e água, 2h sono diário"
+  },
+  {
+    "name": "Cinto da Força dos Gigantes +2",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Cintura (Cinto / Faixa)",
+    "weightLb": 1.0,
+    "costGp": 4000.0,
+    "damageOrAc": "+2 FOR",
+    "properties": "Concede +2 de melhoria em Força"
+  },
+  {
+    "name": "Botas Élficas",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Pés (Botas / Sapatos)",
+    "weightLb": 1.0,
+    "costGp": 2500.0,
+    "damageOrAc": "+5 Mover em Silêncio",
+    "properties": "+5 em Furtividade auditiva"
+  },
+  {
+    "name": "Botas Aladas",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Pés (Botas / Sapatos)",
+    "weightLb": 1.0,
+    "costGp": 16000.0,
+    "damageOrAc": "Voo",
+    "properties": "Permite voar até 3 vezes ao dia"
+  },
+  {
+    "name": "Mochila de Couro Reforçada",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 2.0,
+    "costGp": 2.0,
+    "damageOrAc": "-",
+    "properties": "Capacidade para até 30 kg de carga"
+  },
+  {
+    "name": "Corda de Cânhamo (15m)",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 10.0,
+    "costGp": 1.0,
+    "damageOrAc": "-",
+    "properties": "Corda resistente"
+  },
+  {
+    "name": "Corda de Seda (15m)",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 5.0,
+    "costGp": 10.0,
+    "damageOrAc": "-",
+    "properties": "Corda leve com +2 em Usar Cordas"
+  },
+  {
+    "name": "Ração de Viagem (7 dias)",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 7.0,
+    "costGp": 3.5,
+    "damageOrAc": "-",
+    "properties": "Alimentos desidratados"
+  },
+  {
+    "name": "Cantil de Água Fresca",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 4.0,
+    "costGp": 1.0,
+    "damageOrAc": "-",
+    "properties": "Cheio com água potável"
+  },
+  {
+    "name": "Tochas de Piche (x5)",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 5.0,
+    "costGp": 0.1,
+    "damageOrAc": "-",
+    "properties": "Ilumina 6m de raio por 1 hora"
+  },
+  {
+    "name": "Lanterna Furta-Fogo",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 3.0,
+    "costGp": 12.0,
+    "damageOrAc": "-",
+    "properties": "Foco de luz direcionado de 9m"
+  },
+  {
+    "name": "Pederneira e Isqueiro",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.1,
+    "costGp": 1.0,
+    "damageOrAc": "-",
+    "properties": "Para acender fogueiras"
+  },
+  {
+    "name": "Ferramentas de Ladrão Obra-Prima",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 2.0,
+    "costGp": 100.0,
+    "damageOrAc": "-",
+    "properties": "+2 em Operar Mecanismo e Arrombar"
+  },
+  {
+    "name": "Kit de Primeiros Socorros",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 1.0,
+    "costGp": 50.0,
+    "damageOrAc": "-",
+    "properties": "+2 em testes de Cura, 10 usos"
+  },
+  {
+    "name": "Símbolo Sagrado de Prata",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 1.0,
+    "costGp": 25.0,
+    "damageOrAc": "-",
+    "properties": "Foco divino para conjuração"
+  },
+  {
+    "name": "Grimório do Mago (100 págs)",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 3.0,
+    "costGp": 15.0,
+    "damageOrAc": "-",
+    "properties": "Páginas tratadas para escrita de magias"
+  },
+  {
+    "name": "Poção de Curar Ferimentos Leves",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 50.0,
+    "damageOrAc": "Cura 1d8+1",
+    "properties": "Cura instantânea para feridos"
+  },
+  {
+    "name": "Poção de Curar Ferimentos Moderados",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 300.0,
+    "damageOrAc": "Cura 2d8+3",
+    "properties": "Cura mágica potável"
+  },
+  {
+    "name": "Poção de Invisibilidade",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 300.0,
+    "damageOrAc": "Invisibilidade",
+    "properties": "Duração 3 minutos"
+  },
+  {
+    "name": "Pergaminho de Escudo Arcano",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.1,
+    "costGp": 25.0,
+    "damageOrAc": "+4 CA Escudo",
+    "properties": "Pergaminho de 1º círculo"
+  },
+  {
+    "name": "Pergaminho de Bola de Fogo",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.1,
+    "costGp": 375.0,
+    "damageOrAc": "5d6 Fogo",
+    "properties": "Pergaminho de 3º círculo"
+  },
+  {
+    "name": "Varinha de Mísseis Mágicos (Nv 1)",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 1.0,
+    "costGp": 750.0,
+    "damageOrAc": "1d4+1",
+    "properties": "50 cargas, disparo de dardo místico"
+  },
+  {
+    "name": "Manopla",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 1.0,
+    "costGp": 2.0,
+    "damageOrAc": "1d3 (x2)",
+    "properties": "Concussão; não ocupa a mão"
+  },
+  {
+    "name": "Ataque Desarmado",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.0,
+    "costGp": 0.0,
+    "damageOrAc": "1d3 (x2)",
+    "properties": "Concussão; dano não letal sem talento apropriado"
+  },
+  {
+    "name": "Adaga de Soco",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 1.0,
+    "costGp": 2.0,
+    "damageOrAc": "1d4 (x3)",
+    "properties": "Perfuração"
+  },
+  {
+    "name": "Manopla com Cravos",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 1.0,
+    "costGp": 5.0,
+    "damageOrAc": "1d4 (x2)",
+    "properties": "Perfuração"
+  },
+  {
+    "name": "Maça Leve",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 4.0,
+    "costGp": 5.0,
+    "damageOrAc": "1d6 (x2)",
+    "properties": "Concussão"
+  },
+  {
+    "name": "Foice",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 2.0,
+    "costGp": 6.0,
+    "damageOrAc": "1d6 (x2)",
+    "properties": "Corte"
+  },
+  {
+    "name": "Clava",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 3.0,
+    "costGp": 0.0,
+    "damageOrAc": "1d6 (x2)",
+    "properties": "Concussão"
+  },
+  {
+    "name": "Maça Estrela",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 6.0,
+    "costGp": 8.0,
+    "damageOrAc": "1d8 (x2)",
+    "properties": "Concussão e perfuração"
+  },
+  {
+    "name": "Lança Curta",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 3.0,
+    "costGp": 1.0,
+    "damageOrAc": "1d6 (x2)",
+    "properties": "Perfuração; incremento 6m"
+  },
+  {
+    "name": "Bordão",
+    "category": "Armas",
+    "defaultSlot": "Duas Mãos",
+    "weightLb": 4.0,
+    "costGp": 0.0,
+    "damageOrAc": "1d6/1d6 (x2)",
+    "properties": "Concussão; arma dupla"
+  },
+  {
+    "name": "Lança",
+    "category": "Armas",
+    "defaultSlot": "Duas Mãos",
+    "weightLb": 6.0,
+    "costGp": 2.0,
+    "damageOrAc": "1d8 (x3)",
+    "properties": "Perfuração; arremesso 6m"
+  },
+  {
+    "name": "Besta Pesada",
+    "category": "Armas",
+    "defaultSlot": "Duas Mãos",
+    "weightLb": 8.0,
+    "costGp": 50.0,
+    "damageOrAc": "1d10 (19-20/x2)",
+    "properties": "Perfuração; incremento 36m"
+  },
+  {
+    "name": "Dardo",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.5,
+    "costGp": 0.5,
+    "damageOrAc": "1d4 (x2)",
+    "properties": "Perfuração; arremesso 6m"
+  },
+  {
+    "name": "Dardo de Arremesso",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 2.0,
+    "costGp": 1.0,
+    "damageOrAc": "1d6 (x2)",
+    "properties": "Perfuração; arremesso 9m"
+  },
+  {
+    "name": "Funda",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.0,
+    "costGp": 0.0,
+    "damageOrAc": "1d4 (x2)",
+    "properties": "Concussão; incremento 15m"
+  },
+  {
+    "name": "Virotes de Besta (10)",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 1.0,
+    "costGp": 1.0,
+    "damageOrAc": "-",
+    "properties": "Munição para bestas"
+  },
+  {
+    "name": "Balas de Funda (10)",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 2.5,
+    "costGp": 0.1,
+    "damageOrAc": "-",
+    "properties": "Munição para funda"
+  },
+  {
+    "name": "Flechas (20)",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 1.5,
+    "costGp": 1.0,
+    "damageOrAc": "-",
+    "properties": "Munição para arcos"
+  },
+  {
+    "name": "Machadinha de Arremesso",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 2.0,
+    "costGp": 8.0,
+    "damageOrAc": "1d6 (x2)",
+    "properties": "Corte; arremesso 3m"
+  },
+  {
+    "name": "Martelo Leve",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 2.0,
+    "costGp": 1.0,
+    "damageOrAc": "1d4 (x2)",
+    "properties": "Concussão; arremesso 6m"
+  },
+  {
+    "name": "Machadinha",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 3.0,
+    "costGp": 6.0,
+    "damageOrAc": "1d6 (x3)",
+    "properties": "Corte"
+  },
+  {
+    "name": "Kukri",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 2.0,
+    "costGp": 8.0,
+    "damageOrAc": "1d4 (18-20/x2)",
+    "properties": "Corte"
+  },
+  {
+    "name": "Picareta Leve",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 3.0,
+    "costGp": 4.0,
+    "damageOrAc": "1d4 (x4)",
+    "properties": "Perfuração"
+  },
+  {
+    "name": "Porrete",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 2.0,
+    "costGp": 1.0,
+    "damageOrAc": "1d6 (x2)",
+    "properties": "Concussão; dano não letal"
+  },
+  {
+    "name": "Mangual",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 5.0,
+    "costGp": 8.0,
+    "damageOrAc": "1d8 (x2)",
+    "properties": "Concussão"
+  },
+  {
+    "name": "Picareta Pesada",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 6.0,
+    "costGp": 8.0,
+    "damageOrAc": "1d6 (x4)",
+    "properties": "Perfuração"
+  },
+  {
+    "name": "Cimitarra",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 4.0,
+    "costGp": 15.0,
+    "damageOrAc": "1d6 (18-20/x2)",
+    "properties": "Corte"
+  },
+  {
+    "name": "Tridente",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 4.0,
+    "costGp": 15.0,
+    "damageOrAc": "1d8 (x2)",
+    "properties": "Perfuração; arremesso 3m"
+  },
+  {
+    "name": "Martelo de Guerra",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 5.0,
+    "costGp": 12.0,
+    "damageOrAc": "1d8 (x3)",
+    "properties": "Concussão"
+  },
+  {
+    "name": "Falcata",
+    "category": "Armas",
+    "defaultSlot": "Duas Mãos",
+    "weightLb": 8.0,
+    "costGp": 75.0,
+    "damageOrAc": "2d4 (18-20/x2)",
+    "properties": "Corte"
+  },
+  {
+    "name": "Glaive",
+    "category": "Armas",
+    "defaultSlot": "Duas Mãos",
+    "weightLb": 10.0,
+    "costGp": 8.0,
+    "damageOrAc": "1d10 (x3)",
+    "properties": "Corte; alcance"
+  },
+  {
+    "name": "Clava Grande",
+    "category": "Armas",
+    "defaultSlot": "Duas Mãos",
+    "weightLb": 8.0,
+    "costGp": 5.0,
+    "damageOrAc": "1d10 (x2)",
+    "properties": "Concussão"
+  },
+  {
+    "name": "Mangual Pesado",
+    "category": "Armas",
+    "defaultSlot": "Duas Mãos",
+    "weightLb": 10.0,
+    "costGp": 15.0,
+    "damageOrAc": "1d10 (19-20/x2)",
+    "properties": "Concussão"
+  },
+  {
+    "name": "Guisarme",
+    "category": "Armas",
+    "defaultSlot": "Duas Mãos",
+    "weightLb": 12.0,
+    "costGp": 9.0,
+    "damageOrAc": "2d4 (x3)",
+    "properties": "Corte; alcance"
+  },
+  {
+    "name": "Alabarda",
+    "category": "Armas",
+    "defaultSlot": "Duas Mãos",
+    "weightLb": 12.0,
+    "costGp": 10.0,
+    "damageOrAc": "1d10 (x3)",
+    "properties": "Corte ou perfuração"
+  },
+  {
+    "name": "Lança de Cavalaria",
+    "category": "Armas",
+    "defaultSlot": "Duas Mãos",
+    "weightLb": 10.0,
+    "costGp": 10.0,
+    "damageOrAc": "1d8 (x3)",
+    "properties": "Perfuração; arma de investida montada"
+  },
+  {
+    "name": "Ranseur",
+    "category": "Armas",
+    "defaultSlot": "Duas Mãos",
+    "weightLb": 12.0,
+    "costGp": 10.0,
+    "damageOrAc": "2d4 (x3)",
+    "properties": "Perfuração; alcance"
+  },
+  {
+    "name": "Foice de Guerra",
+    "category": "Armas",
+    "defaultSlot": "Duas Mãos",
+    "weightLb": 10.0,
+    "costGp": 18.0,
+    "damageOrAc": "2d4 (x4)",
+    "properties": "Corte ou perfuração"
+  },
+  {
+    "name": "Arco Longo",
+    "category": "Armas",
+    "defaultSlot": "Duas Mãos",
+    "weightLb": 3.0,
+    "costGp": 75.0,
+    "damageOrAc": "1d8 (x3)",
+    "properties": "Perfuração; incremento 30m"
+  },
+  {
+    "name": "Arco Curto Composto",
+    "category": "Armas",
+    "defaultSlot": "Duas Mãos",
+    "weightLb": 2.0,
+    "costGp": 75.0,
+    "damageOrAc": "1d6 (x3)",
+    "properties": "Perfuração; incremento 21m"
+  },
+  {
+    "name": "Arco Longo Composto (Força +0)",
+    "category": "Armas",
+    "defaultSlot": "Duas Mãos",
+    "weightLb": 3.0,
+    "costGp": 100.0,
+    "damageOrAc": "1d8 (x3)",
+    "properties": "Perfuração; incremento 33m"
+  },
+  {
+    "name": "Kama",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 2.0,
+    "costGp": 2.0,
+    "damageOrAc": "1d6 (x2)",
+    "properties": "Corte"
+  },
+  {
+    "name": "Nunchaku",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 2.0,
+    "costGp": 2.0,
+    "damageOrAc": "1d6 (x2)",
+    "properties": "Concussão"
+  },
+  {
+    "name": "Sai",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 1.0,
+    "costGp": 1.0,
+    "damageOrAc": "1d4 (x2)",
+    "properties": "Concussão; arremesso 3m"
+  },
+  {
+    "name": "Siangham",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 1.0,
+    "costGp": 3.0,
+    "damageOrAc": "1d6 (x2)",
+    "properties": "Perfuração"
+  },
+  {
+    "name": "Espada Bastarda",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 6.0,
+    "costGp": 35.0,
+    "damageOrAc": "1d10 (19-20/x2)",
+    "properties": "Corte; pode ser usada com duas mãos"
+  },
+  {
+    "name": "Machado de Guerra Anão",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 8.0,
+    "costGp": 30.0,
+    "damageOrAc": "1d10 (x3)",
+    "properties": "Corte; exótica para não anões"
+  },
+  {
+    "name": "Corrente com Cravos",
+    "category": "Armas",
+    "defaultSlot": "Duas Mãos",
+    "weightLb": 10.0,
+    "costGp": 25.0,
+    "damageOrAc": "2d4 (x2)",
+    "properties": "Corte; alcance e manobras especiais"
+  },
+  {
+    "name": "Chicote",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 2.0,
+    "costGp": 1.0,
+    "damageOrAc": "1d3 (x2)",
+    "properties": "Corte; alcance e manobras especiais"
+  },
+  {
+    "name": "Rede",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 6.0,
+    "costGp": 20.0,
+    "damageOrAc": "-",
+    "properties": "Arma de distância; enredar; incremento 3m"
+  },
+  {
+    "name": "Shuriken (5)",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.5,
+    "costGp": 1.0,
+    "damageOrAc": "1d2 (x2)",
+    "properties": "Perfuração; arremesso 3m"
+  },
+  {
+    "name": "Lança-Lâminas",
+    "category": "Armas",
+    "defaultSlot": "Duas Mãos",
+    "weightLb": 10.0,
+    "costGp": 10.0,
+    "damageOrAc": "1d8 (x3)",
+    "properties": "Perfuração; alcance"
+  },
+  {
+    "name": "Espada de Duas Lâminas",
+    "category": "Armas",
+    "defaultSlot": "Duas Mãos",
+    "weightLb": 10.0,
+    "costGp": 100.0,
+    "damageOrAc": "1d8/1d8 (19-20/x2)",
+    "properties": "Corte; arma dupla exótica"
+  },
+  {
+    "name": "Machado Urgrosh Anão",
+    "category": "Armas",
+    "defaultSlot": "Duas Mãos",
+    "weightLb": 12.0,
+    "costGp": 50.0,
+    "damageOrAc": "1d8/1d6 (x3)",
+    "properties": "Corte e perfuração; arma dupla"
+  },
+  {
+    "name": "Martelo Gnômico com Gancho",
+    "category": "Armas",
+    "defaultSlot": "Duas Mãos",
+    "weightLb": 6.0,
+    "costGp": 20.0,
+    "damageOrAc": "1d8/1d6 (x3)",
+    "properties": "Concussão e perfuração; arma dupla"
+  },
+  {
+    "name": "Mangual Duplo",
+    "category": "Armas",
+    "defaultSlot": "Duas Mãos",
+    "weightLb": 10.0,
+    "costGp": 90.0,
+    "damageOrAc": "1d8/1d8 (x2)",
+    "properties": "Concussão; arma dupla"
+  },
+  {
+    "name": "Machado Orc Duplo",
+    "category": "Armas",
+    "defaultSlot": "Duas Mãos",
+    "weightLb": 15.0,
+    "costGp": 60.0,
+    "damageOrAc": "1d8/1d8 (x3)",
+    "properties": "Corte; arma dupla"
+  },
+  {
+    "name": "Espada Curva Élfica",
+    "category": "Armas",
+    "defaultSlot": "Duas Mãos",
+    "weightLb": 7.0,
+    "costGp": 80.0,
+    "damageOrAc": "1d10 (18-20/x2)",
+    "properties": "Corte; arma exótica"
+  },
+  {
+    "name": "Lança de Duas Pontas",
+    "category": "Armas",
+    "defaultSlot": "Duas Mãos",
+    "weightLb": 6.0,
+    "costGp": 15.0,
+    "damageOrAc": "1d6/1d6 (x2)",
+    "properties": "Perfuração; arma dupla"
+  },
+  {
+    "name": "Corrente com Cravos (arma dupla)",
+    "category": "Armas",
+    "defaultSlot": "Duas Mãos",
+    "weightLb": 10.0,
+    "costGp": 25.0,
+    "damageOrAc": "2d4/2d4 (x2)",
+    "properties": "Corte; arma dupla e alcance"
+  },
+  {
+    "name": "Picareta Pesada de Guerra",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 6.0,
+    "costGp": 8.0,
+    "damageOrAc": "1d6 (x4)",
+    "properties": "Perfuração"
+  },
+  {
+    "name": "Besta de Mão",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 2.0,
+    "costGp": 100.0,
+    "damageOrAc": "1d4 (19-20/x2)",
+    "properties": "Perfuração; incremento 9m"
+  },
+  {
+    "name": "Besta de Repetição Leve",
+    "category": "Armas",
+    "defaultSlot": "Duas Mãos",
+    "weightLb": 6.0,
+    "costGp": 250.0,
+    "damageOrAc": "1d8 (19-20/x2)",
+    "properties": "Perfuração; 5 virotes por carregamento"
+  },
+  {
+    "name": "Besta de Repetição Pesada",
+    "category": "Armas",
+    "defaultSlot": "Duas Mãos",
+    "weightLb": 12.0,
+    "costGp": 400.0,
+    "damageOrAc": "1d10 (19-20/x2)",
+    "properties": "Perfuração; 5 virotes por carregamento"
+  },
+  {
+    "name": "Escudo Leve de Aço",
+    "category": "Escudos",
+    "defaultSlot": "Mão Secundária / Escudo",
+    "weightLb": 6.0,
+    "costGp": 9.0,
+    "damageOrAc": "+1 CA",
+    "properties": "Pen -1, Falha arcana 5%"
+  },
+  {
+    "name": "Escudo Pesado de Madeira",
+    "category": "Escudos",
+    "defaultSlot": "Mão Secundária / Escudo",
+    "weightLb": 10.0,
+    "costGp": 7.0,
+    "damageOrAc": "+2 CA",
+    "properties": "Pen -2, Falha arcana 15%"
+  },
+  {
+    "name": "Algibeira",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 1.0,
+    "damageOrAc": "-",
+    "properties": "Pequena bolsa para moedas e objetos"
+  },
+  {
+    "name": "Aljava",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 1.0,
+    "costGp": 1.0,
+    "damageOrAc": "-",
+    "properties": "Transporta até 20 flechas"
+  },
+  {
+    "name": "Mochila",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 2.0,
+    "costGp": 2.0,
+    "damageOrAc": "-",
+    "properties": "Mochila comum"
+  },
+  {
+    "name": "Saco",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 0.1,
+    "damageOrAc": "-",
+    "properties": "Saco de tecido"
+  },
+  {
+    "name": "Saco de Dormir",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 5.0,
+    "costGp": 0.1,
+    "damageOrAc": "-",
+    "properties": "Equipamento para repouso"
+  },
+  {
+    "name": "Cobertor",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 3.0,
+    "costGp": 0.1,
+    "damageOrAc": "-",
+    "properties": "Cobertor de viagem"
+  },
+  {
+    "name": "Tenda para uma Pessoa",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 3.0,
+    "costGp": 10.0,
+    "damageOrAc": "-",
+    "properties": "Abrigo portátil"
+  },
+  {
+    "name": "Tenda para duas Pessoas",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 20.0,
+    "costGp": 12.0,
+    "damageOrAc": "-",
+    "properties": "Abrigo portátil"
+  },
+  {
+    "name": "Gancho de Escalada",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 4.0,
+    "costGp": 1.0,
+    "damageOrAc": "-",
+    "properties": "Usado com corda para escalada"
+  },
+  {
+    "name": "Martelo",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 2.0,
+    "costGp": 0.5,
+    "damageOrAc": "-",
+    "properties": "Ferramenta"
+  },
+  {
+    "name": "Pé de Cabra",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 5.0,
+    "costGp": 2.0,
+    "damageOrAc": "-",
+    "properties": "Alavanca; pode auxiliar a forçar portas"
+  },
+  {
+    "name": "Espelho de Aço",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 10.0,
+    "damageOrAc": "-",
+    "properties": "Pequeno espelho metálico"
+  },
+  {
+    "name": "Ampulheta",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 1.0,
+    "costGp": 25.0,
+    "damageOrAc": "-",
+    "properties": "Mede intervalos de tempo"
+  },
+  {
+    "name": "Balança de Mercador",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 1.0,
+    "costGp": 2.0,
+    "damageOrAc": "-",
+    "properties": "Pesar mercadorias"
+  },
+  {
+    "name": "Cadeado Simples",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 1.0,
+    "costGp": 20.0,
+    "damageOrAc": "-",
+    "properties": "Fechadura com chave"
+  },
+  {
+    "name": "Algemas",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 2.0,
+    "costGp": 15.0,
+    "damageOrAc": "-",
+    "properties": "Restringe os movimentos de uma criatura"
+  },
+  {
+    "name": "Giz (1 unidade)",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 0.1,
+    "damageOrAc": "-",
+    "properties": "Marcar superfícies"
+  },
+  {
+    "name": "Tinta (frasco)",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 8.0,
+    "damageOrAc": "-",
+    "properties": "Tinta para escrita"
+  },
+  {
+    "name": "Papel (folha)",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 0.4,
+    "damageOrAc": "-",
+    "properties": "Folha para escrita"
+  },
+  {
+    "name": "Pergaminho em Branco",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 0.5,
+    "damageOrAc": "-",
+    "properties": "Material para escrita"
+  },
+  {
+    "name": "Vela",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 0.1,
+    "damageOrAc": "-",
+    "properties": "Ilumina uma pequena área"
+  },
+  {
+    "name": "Óleo de Lamparina (frasco)",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 1.0,
+    "costGp": 0.1,
+    "damageOrAc": "-",
+    "properties": "Combustível para lamparinas"
+  },
+  {
+    "name": "Lamparina",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 1.0,
+    "costGp": 0.1,
+    "damageOrAc": "-",
+    "properties": "Iluminação"
+  },
+  {
+    "name": "Apito",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 0.8,
+    "damageOrAc": "-",
+    "properties": "Sinal sonoro"
+  },
+  {
+    "name": "Sino",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 1.0,
+    "damageOrAc": "-",
+    "properties": "Sinal sonoro"
+  },
+  {
+    "name": "Corrente (3m)",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 2.0,
+    "costGp": 30.0,
+    "damageOrAc": "-",
+    "properties": "Corrente de ferro"
+  },
+  {
+    "name": "Pá ou Enxada",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 8.0,
+    "costGp": 2.0,
+    "damageOrAc": "-",
+    "properties": "Ferramenta de escavação"
+  },
+  {
+    "name": "Picareta de Mineiro",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 10.0,
+    "costGp": 3.0,
+    "damageOrAc": "-",
+    "properties": "Ferramenta de mineração"
+  },
+  {
+    "name": "Serrote",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 2.0,
+    "costGp": 4.0,
+    "damageOrAc": "-",
+    "properties": "Ferramenta"
+  },
+  {
+    "name": "Frasco de Ácido",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 1.0,
+    "costGp": 10.0,
+    "damageOrAc": "1d6 ácido",
+    "properties": "Substância alquímica; arremessável"
+  },
+  {
+    "name": "Fogo Alquímico",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 1.0,
+    "costGp": 20.0,
+    "damageOrAc": "1d6 fogo",
+    "properties": "Substância alquímica; arremessável"
+  },
+  {
+    "name": "Bastão Solar",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 1.0,
+    "costGp": 2.0,
+    "damageOrAc": "-",
+    "properties": "Ilumina como uma lanterna por 6 horas"
+  },
+  {
+    "name": "Pedra Trovão",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 1.0,
+    "costGp": 30.0,
+    "damageOrAc": "-",
+    "properties": "Estouro sonoro; pode ensurdecer"
+  },
+  {
+    "name": "Bastão de Fumaça",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 20.0,
+    "damageOrAc": "-",
+    "properties": "Cria uma nuvem de fumaça"
+  },
+  {
+    "name": "Antitoxina",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 50.0,
+    "damageOrAc": "-",
+    "properties": "Bônus alquímico contra venenos"
+  }
+]
