@@ -1,0 +1,314 @@
+[
+  {
+    "name": "Ataque Poderoso",
+    "prerequisites": "FOR 13",
+    "summary": "Subtrai do ataque para adicionar ao dano.",
+    "benefit": "Em sua ação de ataque, você pode subtrair um número do seu bônus de ataque e adicioná-lo ao dano corpo a corpo (+2x com arma de duas mãos)."
+  },
+  {
+    "name": "Especialização em Combate",
+    "prerequisites": "INT 13",
+    "summary": "Converte bônus de ataque em Classe de Armadura.",
+    "benefit": "Você pode subtrair até -5 do seu ataque e somar o mesmo valor como bônus de esquiva à sua CA."
+  },
+  {
+    "name": "Esquiva",
+    "prerequisites": "DES 13",
+    "summary": "+1 de esquiva na CA contra um alvo.",
+    "benefit": "Durante seu turno, designe um oponente. Você recebe +1 de bônus de esquiva na CA contra ataques daquele oponente."
+  },
+  {
+    "name": "Mobilidade",
+    "prerequisites": "DES 13, Esquiva",
+    "summary": "+4 de CA contra ataques de oportunidade.",
+    "benefit": "Você recebe +4 de bônus de esquiva na CA contra ataques de oportunidade causados pelo movimento."
+  },
+  {
+    "name": "Ataque em Movimento",
+    "prerequisites": "DES 13, BBA +4, Esquiva, Mobilidade",
+    "summary": "Move-se antes e depois de um ataque.",
+    "benefit": "Você pode se deslocar tanto antes quanto depois do seu ataque corpo a corpo."
+  },
+  {
+    "name": "Iniciativa Aprimorada",
+    "prerequisites": "Nenhum",
+    "summary": "+4 no teste de Iniciativa.",
+    "benefit": "Você recebe +4 de bônus nos testes de iniciativa."
+  },
+  {
+    "name": "Foco em Arma",
+    "prerequisites": "BBA +1, Proficiência",
+    "summary": "+1 nas jogadas de ataque com a arma escolhida.",
+    "benefit": "Você recebe +1 em todas as jogadas de ataque usando a arma selecionada."
+  },
+  {
+    "name": "Especialização em Arma",
+    "prerequisites": "Guerreiro 4º nível, proficiência com a arma escolhida, Foco em Arma com a arma escolhida",
+    "summary": "+2 no dano com a arma escolhida.",
+    "benefit": "Você recebe +2 nas jogadas de dano com a arma escolhida. Só pode selecionar este talento para uma arma com a qual tenha proficiência."
+  },
+  {
+    "name": "Foco em Arma Aprimorado",
+    "prerequisites": "Guerreiro 8º nível, Foco em Arma com a arma escolhida",
+    "summary": "+1 nas jogadas de ataque com a arma escolhida (bônus total de +2 com Foco em Arma).",
+    "benefit": "O bônus nas jogadas de ataque com a arma escolhida aumenta de +1 para +2."
+  },
+  {
+    "name": "Tiro Certeiro",
+    "prerequisites": "Nenhum",
+    "summary": "+1 nas jogadas de ataque e dano com armas de ataque à distância contra alvos a até 9m.",
+    "benefit": "Você recebe +1 nas jogadas de ataque e dano com armas de ataque à distância contra alvos a até 9 metros."
+  },
+  {
+    "name": "Tiro Preciso",
+    "prerequisites": "Tiro Certeiro",
+    "summary": "Sem penalidade de -4 ao disparar em combate corpo a corpo.",
+    "benefit": "Você pode disparar contra um oponente em combate corpo a corpo sem sofrer a penalidade padrão de -4."
+  },
+  {
+    "name": "Disparo Rápido",
+    "prerequisites": "DES 13, Tiro Certeiro",
+    "summary": "Um ataque à distância extra por rodada.",
+    "benefit": "Você ganha um ataque adicional por rodada com arma de ataque à distância, com -2 em todos os ataques."
+  },
+  {
+    "name": "Trespassar",
+    "prerequisites": "FOR 13, Ataque Poderoso",
+    "summary": "Ataque corpo a corpo adicional após derrubar um inimigo.",
+    "benefit": "Se você causar dano suficiente para derrubar uma criatura, recebe imediatamente um ataque extra gratuito em outra criatura adjacente."
+  },
+  {
+    "name": "Trespassar Aprimorado",
+    "prerequisites": "FOR 13, BBA +4, Trespassar",
+    "summary": "Sem limite de ataques adicionais por rodada.",
+    "benefit": "Como Trespassar, mas você pode usar esta habilidade múltiplas vezes por rodada."
+  },
+  {
+    "name": "Vitalidade",
+    "prerequisites": "Nenhum",
+    "summary": "+3 Pontos de Vida.",
+    "benefit": "Você ganha +3 pontos de vida. Este talento pode ser escolhido várias vezes."
+  },
+  {
+    "name": "Vontade de Ferro",
+    "prerequisites": "Nenhum",
+    "summary": "+2 nos testes de Vontade.",
+    "benefit": "Você recebe +2 de bônus em todos os testes de resistência de Vontade."
+  },
+  {
+    "name": "Fortitude Maior",
+    "prerequisites": "Nenhum",
+    "summary": "+2 nos testes de Fortitude.",
+    "benefit": "Você recebe +2 de bônus em todos os testes de resistência de Fortitude."
+  },
+  {
+    "name": "Reflexos Rápidos",
+    "prerequisites": "Nenhum",
+    "summary": "+2 nos testes de Reflexos.",
+    "benefit": "Você recebe +2 de bônus em todos os testes de resistência de Reflexos."
+  },
+  {
+    "name": "Prontidão",
+    "prerequisites": "Nenhum",
+    "summary": "+2 nos testes de Observar e Ouvir.",
+    "benefit": "Você recebe +2 de bônus em testes de Observar e Ouvir."
+  },
+  {
+    "name": "Foco em Perícia",
+    "prerequisites": "Nenhum",
+    "summary": "+3 nos testes com a perícia escolhida.",
+    "benefit": "Você recebe +3 de bônus em todos os testes da perícia selecionada."
+  },
+  {
+    "name": "Magia Silenciosa",
+    "prerequisites": "Metamágico",
+    "summary": "Conjura sem componentes verbais (+1 círculo).",
+    "benefit": "Uma magia silenciosa pode ser conjurada sem emitir som (+1 espaço de magia)."
+  },
+  {
+    "name": "Magia Sem Gestos",
+    "prerequisites": "Metamágico",
+    "summary": "Conjura sem componentes gestuais (+1 círculo).",
+    "benefit": "Pode conjurar magia sem fazer gestos somáticos, sem chance de falha de armadura (+1 espaço de magia)."
+  },
+  {
+    "name": "Maximizar Magia",
+    "prerequisites": "Metamágico",
+    "summary": "Efeitos variáveis de dano/cura causam efeito máximo (+3 círculos).",
+    "benefit": "Todas as variáveis numéricas da magia têm efeito máximo (+3 espaços de magia)."
+  },
+  {
+    "name": "Potencializar Magia",
+    "prerequisites": "Metamágico",
+    "summary": "Aumenta os efeitos em 50% (+2 círculos).",
+    "benefit": "Todos os efeitos numéricos variáveis da magia são aumentados em metade (+2 espaços de magia)."
+  },
+  {
+    "name": "Magia Acelerada",
+    "prerequisites": "Metamágico",
+    "summary": "Conjura uma magia como ação rápida (+4 níveis de magia).",
+    "benefit": "Uma magia acelerada com tempo de execução de 1 ação padrão passa a ser conjurada como ação rápida; preparar ou conjurar a magia ocupa um espaço de magia 4 níveis acima."
+  },
+  {
+    "name": "Escrever Pergaminho",
+    "prerequisites": "Conjurador de 1º nível",
+    "summary": "Cria pergaminhos de magias arcanas ou divinas que o personagem conheça e possa conjurar.",
+    "benefit": "Você pode criar um pergaminho de uma magia que conheça e possa conjurar. A criação exige os custos, o tempo e os requisitos normais de criação de itens mágicos."
+  },
+  {
+    "name": "Criar Varinha",
+    "prerequisites": "Conjurador de 5º nível",
+    "summary": "Cria varinhas que armazenam uma magia de 4º nível ou inferior que o criador conheça.",
+    "benefit": "Você pode criar uma varinha de uma magia de 4º nível ou inferior que conheça. A criação exige os custos e o tempo normais; a varinha contém 50 cargas."
+  },
+  {
+    "name": "Acuidade com Arma",
+    "prerequisites": "BBA +1",
+    "summary": "Usa Destreza no lugar de Força nos ataques com certas armas.",
+    "benefit": "Escolha uma arma leve, rapieira, chicote ou corrente com cravos apropriada ao seu tamanho. Com ela, você pode usar seu modificador de Destreza no lugar do modificador de Força nas jogadas de ataque. Não se aplica ao dano."
+  },
+  {
+    "name": "Agarrar Aprimorado",
+    "prerequisites": "DES 13, Ataque Desarmado Aprimorado",
+    "summary": "Melhora agarrões e evita ataque de oportunidade ao iniciá-los.",
+    "benefit": "Você recebe +4 nos testes de agarrar e não provoca ataque de oportunidade ao iniciar um agarrão."
+  },
+  {
+    "name": "Derrubar Aprimorado",
+    "prerequisites": "INT 13, Especialização em Combate",
+    "summary": "Melhora tentativas de derrubar.",
+    "benefit": "Você recebe +4 nos testes de derrubar e não provoca ataque de oportunidade ao tentar derrubar um oponente."
+  },
+  {
+    "name": "Desarme Aprimorado",
+    "prerequisites": "INT 13, Especialização em Combate",
+    "summary": "Melhora tentativas de desarmar.",
+    "benefit": "Você recebe +4 nos testes de desarme e não provoca ataque de oportunidade ao tentar desarmar um oponente."
+  },
+  {
+    "name": "Reflexos de Combate",
+    "prerequisites": "Nenhum",
+    "summary": "Permite ataques de oportunidade adicionais.",
+    "benefit": "Você pode realizar um número adicional de ataques de oportunidade por rodada igual ao seu modificador de Destreza. Também pode realizar ataques de oportunidade mesmo quando estiver desprevenido."
+  },
+  {
+    "name": "Combater com Duas Armas",
+    "prerequisites": "DES 15",
+    "summary": "Reduz penalidades ao lutar com duas armas.",
+    "benefit": "As penalidades por lutar com duas armas são reduzidas em 2 para a mão principal e em 6 para a mão secundária."
+  },
+  {
+    "name": "Combater com Duas Armas Aprimorado",
+    "prerequisites": "DES 17, BBA +6, Combater com Duas Armas",
+    "summary": "Concede um segundo ataque com a arma da mão secundária.",
+    "benefit": "Além do ataque extra concedido por Combater com Duas Armas, você recebe um segundo ataque com a arma da mão secundária com BBA -5."
+  },
+  {
+    "name": "Combater com Duas Armas Maior",
+    "prerequisites": "DES 19, BBA +11, Combater com Duas Armas Aprimorado",
+    "summary": "Concede um terceiro ataque com a arma da mão secundária.",
+    "benefit": "Você recebe um terceiro ataque com a arma da mão secundária com BBA -10."
+  },
+  {
+    "name": "Saque Rápido",
+    "prerequisites": "BBA +1",
+    "summary": "Saca armas como ação livre.",
+    "benefit": "Você pode sacar uma arma como ação livre, em vez de ação de movimento. Pode sacar uma arma escondida como ação de movimento e arremessar armas na sua taxa normal de ataques."
+  },
+  {
+    "name": "Magia em Combate",
+    "prerequisites": "Nenhum",
+    "summary": "Melhora a concentração ao conjurar na defensiva.",
+    "benefit": "Você recebe +4 nos testes de Concentração realizados para conjurar magias na defensiva ou enquanto estiver agarrado ou imobilizado."
+  },
+  {
+    "name": "Foco em Magia",
+    "prerequisites": "Capacidade de conjurar magias de 1º nível ou superior",
+    "summary": "Aumenta a CD das magias de uma escola.",
+    "benefit": "Escolha uma escola de magia. A CD dos testes de resistência contra suas magias dessa escola aumenta em +1."
+  },
+  {
+    "name": "Foco em Magia Maior",
+    "prerequisites": "Foco em Magia na mesma escola",
+    "summary": "Aumenta adicionalmente a CD das magias de uma escola.",
+    "benefit": "Escolha uma escola para a qual já tenha Foco em Magia. A CD dos testes de resistência contra suas magias dessa escola aumenta em mais +1."
+  },
+  {
+    "name": "Sucesso Decisivo Aprimorado",
+    "prerequisites": "Proficiência com a arma escolhida, BBA +8",
+    "summary": "Dobra a margem de ameaça da arma escolhida.",
+    "benefit": "Escolha uma arma para a qual tenha proficiência. A margem de ameaça dessa arma é dobrada. Este efeito não se acumula com outros efeitos que ampliem a margem de ameaça."
+  },
+  {
+    "name": "Tiro Longo",
+    "prerequisites": "Tiro Certeiro",
+    "summary": "Dobra o incremento de distância de armas de ataque à distância.",
+    "benefit": "Quando usa uma arma de ataque à distância, seu incremento de distância é dobrado. Para armas de arremesso, o incremento de distância é multiplicado por 2; para armas de projéteis, também é multiplicado por 2."
+  },
+  {
+    "name": "Ataque Desarmado Aprimorado",
+    "prerequisites": "Nenhum",
+    "summary": "Melhora ataques desarmados e defesa contra agarrões.",
+    "benefit": "Você é considerado armado mesmo quando desarmado e não provoca ataques de oportunidade ao atacar desarmado. Além disso, recebe +4 nos testes para resistir a agarrões."
+  },
+  {
+    "name": "Lutar às Cegas",
+    "prerequisites": "Nenhum",
+    "summary": "Reduz desvantagens ao combater sem visão.",
+    "benefit": "Em combate corpo a corpo, sempre que errar devido à camuflagem, pode repetir uma vez a chance de falha. Criaturas invisíveis não recebem os benefícios normais de flanquear contra você, e você pode se mover à velocidade normal quando não consegue enxergar."
+  },
+  {
+    "name": "Tiro Rápido",
+    "prerequisites": "DES 13, Tiro Certeiro",
+    "summary": "Concede um ataque à distância adicional com penalidade.",
+    "benefit": "Ao realizar uma ação de ataque total com arma de ataque à distância, você pode fazer um ataque adicional. Todos os ataques dessa rodada sofrem -2."
+  },
+  {
+    "name": "Tiro Múltiplo",
+    "prerequisites": "DES 17, BBA +6, Tiro Certeiro, Tiro Rápido",
+    "summary": "Dispara várias flechas em um único ataque.",
+    "benefit": "Como ação padrão, você pode disparar duas flechas contra um único alvo dentro de 9m usando uma única jogada de ataque, com penalidade de -4. A cada 5 pontos de BBA acima de +6, pode disparar uma flecha adicional, até quatro."
+  },
+  {
+    "name": "Tiro Preciso Aprimorado",
+    "prerequisites": "DES 19, BBA +11, Tiro Certeiro, Tiro Preciso",
+    "summary": "Ignora cobertura inferior à total e camuflagem inferior à total.",
+    "benefit": "Seus ataques à distância ignoram os bônus de CA concedidos por cobertura e os benefícios de camuflagem, exceto cobertura total e camuflagem total."
+  },
+  {
+    "name": "Tiro em Movimento",
+    "prerequisites": "DES 13, BBA +4, Esquiva, Mobilidade, Tiro Certeiro",
+    "summary": "Permite mover-se antes e depois de um ataque à distância.",
+    "benefit": "Ao realizar uma ação de ataque com arma de ataque à distância, você pode se mover tanto antes quanto depois do ataque, desde que o movimento total não exceda seu deslocamento."
+  },
+  {
+    "name": "Ataque Giratório",
+    "prerequisites": "DES 13, INT 13, BBA +4, Esquiva, Mobilidade, Especialização em Combate",
+    "summary": "Ataca todos os oponentes adjacentes.",
+    "benefit": "Como ação de rodada completa, você pode realizar um ataque corpo a corpo com seu bônus de ataque mais alto contra cada oponente ao seu alcance."
+  },
+  {
+    "name": "Fintar Aprimorado",
+    "prerequisites": "INT 13, Especialização em Combate",
+    "summary": "Finta em combate como ação de movimento.",
+    "benefit": "Você pode realizar uma finta em combate como ação de movimento, em vez de ação padrão."
+  },
+  {
+    "name": "Combate Montado",
+    "prerequisites": "Cavalgar 1 graduação",
+    "summary": "Pode evitar um golpe contra sua montaria.",
+    "benefit": "Uma vez por rodada, quando sua montaria for atingida em combate, você pode tentar um teste de Cavalgar para negar o golpe. O resultado do teste deve superar a jogada de ataque do adversário."
+  },
+  {
+    "name": "Investida Montada",
+    "prerequisites": "Cavalgar 1 graduação, Combate Montado",
+    "summary": "Aumenta o dano de uma investida montada.",
+    "benefit": "Quando estiver montado e usar a ação de investida, você causa dano dobrado com uma arma corpo a corpo (ou triplicado com uma lança)."
+  },
+  {
+    "name": "Atropelar",
+    "prerequisites": "FOR 13, Combate Montado",
+    "summary": "Melhora tentativas de atropelar montado.",
+    "benefit": "Quando tenta atropelar um oponente enquanto montado, o alvo não pode escolher evitar você. Você recebe +4 nos testes de Cavalgar para atropelar."
+  }
+]
