@@ -96,6 +96,6 @@ class CatalogJsonLoadingTest {
         // conforme mais conteúdo do Livro do Jogador for adicionado.
         assertTrue("Talentos regrediram", Dnd35Rules.PRESET_FEATS.size >= 52)
         assertTrue("Itens regrediram", Dnd35Rules.PRESET_ITEMS.size >= 163)
-        assertTrue("Magias regrediram", Dnd35Rules.PRESET_SPELLS.size >= 258)
+        assertTrue("Magias regrediram", Dnd35Rules.PRESET_SPELLS.size >= 327)
     }
 }
