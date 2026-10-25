@@ -6,7 +6,8 @@ import org.junit.Assert.assertTrue
 import org.junit.Test
 
 /**
- * Valida o carregamento dos catálogos de app/src/main/resources/dnd35/*.json.
+ * Valida o carregamento dos catálogos JSON em app/src/main/resources/dnd35/
+ * (feats.json, items.json, spells.json).
  * Os testes de conteúdo específico (nomes, categorias) continuam em
  * PresetFeatCatalogTest, PresetEquipmentCatalogTest e PresetSpellCatalogTest;
  * aqui a preocupação é a mecânica de carregar o JSON corretamente.
