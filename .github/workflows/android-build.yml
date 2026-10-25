@@ -40,6 +40,22 @@ jobs:
       - name: Run unit tests
         run: ./gradlew testDebugUnitTest
 
+      - name: Diagnóstico temporário de falha de teste
+        if: failure()
+        run: |
+          echo "---- compiler errors ----"
+          grep -rn "^e: " app/build/tmp/kotlin-classes 2>/dev/null || true
+          find . -name "*.log" -newer app/build.gradle.kts 2>/dev/null -exec grep -l "e: " {} \; | while read -r f; do
+            echo "== $f =="; grep "^e: " "$f"
+          done
+          echo "---- JUnit XML failures ----"
+          find . -path "*/test-results/*.xml" -newer app/build.gradle.kts -print0 2>/dev/null | xargs -0 -I{} sh -c '
+            if grep -q "<failure" "{}"; then
+              echo "== {} =="
+              grep -A 20 "<failure" "{}"
+            fi
+          '
+
       - name: Compile Android app
         run: ./gradlew assembleDebug
 
