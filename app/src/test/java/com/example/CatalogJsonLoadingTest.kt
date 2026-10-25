@@ -4,6 +4,9 @@ import com.example.dnd35.model.Dnd35Rules
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
+import org.junit.runner.RunWith
+import org.robolectric.RobolectricTestRunner
+import org.robolectric.annotation.Config
 
 /**
  * Valida o carregamento dos catálogos JSON em app/src/main/resources/dnd35/
@@ -12,6 +15,8 @@ import org.junit.Test
  * PresetFeatCatalogTest, PresetEquipmentCatalogTest e PresetSpellCatalogTest;
  * aqui a preocupação é a mecânica de carregar o JSON corretamente.
  */
+@RunWith(RobolectricTestRunner::class)
+@Config(sdk = [34])
 class CatalogJsonLoadingTest {
 
     @Test
