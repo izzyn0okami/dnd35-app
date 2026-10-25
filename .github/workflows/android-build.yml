@@ -43,18 +43,18 @@ jobs:
       - name: Diagnóstico temporário de falha de teste
         if: failure()
         run: |
-          echo "---- compiler errors ----"
-          grep -rn "^e: " app/build/tmp/kotlin-classes 2>/dev/null || true
-          find . -name "*.log" -newer app/build.gradle.kts 2>/dev/null -exec grep -l "e: " {} \; | while read -r f; do
-            echo "== $f =="; grep "^e: " "$f"
-          done
-          echo "---- JUnit XML failures ----"
-          find . -path "*/test-results/*.xml" -newer app/build.gradle.kts -print0 2>/dev/null | xargs -0 -I{} sh -c '
-            if grep -q "<failure" "{}"; then
-              echo "== {} =="
-              grep -A 20 "<failure" "{}"
+          find . -path "*/test-results/*.xml" -print0 2>/dev/null | while IFS= read -r -d '' f; do
+            if grep -q "<failure" "$f"; then
+              python3 - "$f" << 'PYEOF'
+import re, sys
+text = open(sys.argv[1], encoding="utf-8").read()
+for m in re.finditer(r'<testcase name="([^"]+)" classname="([^"]+)"[^>]*>\s*<failure message="([^"]*)"', text):
+    name, classname, msg = m.groups()
+    msg = msg.replace("%", "%25").replace("\r", "%0D").replace("\n", "%0A")
+    print(f"::error::{classname}.{name}: {msg}")
+PYEOF
             fi
-          '
+          done
 
       - name: Compile Android app
         run: ./gradlew assembleDebug
