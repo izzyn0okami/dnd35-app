@@ -5878,7 +5878,9 @@
     "classLevels": {
       "Clérigo": 7
     },
-    "domainLevels": {},
+    "domainLevels": {
+      "Morte": 7
+    },
     "castTime": "1 ação padrão",
     "components": "V, G, FD",
     "range": "Toque",
@@ -5991,7 +5993,9 @@
       "Clérigo": 7,
       "Druida": 9
     },
-    "domainLevels": {},
+    "domainLevels": {
+      "Cura": 7
+    },
     "castTime": "3 rodadas",
     "components": "V, G, M",
     "range": "Toque",
@@ -6014,7 +6018,9 @@
       "Feiticeiro": 6,
       "Mago": 6
     },
-    "domainLevels": {},
+    "domainLevels": {
+      "Proteção": 7
+    },
     "castTime": "1 ação padrão",
     "components": "V, G, M/FD",
     "range": "Pessoal",
@@ -6699,7 +6705,9 @@
       "Feiticeiro": 7,
       "Mago": 7
     },
-    "domainLevels": {},
+    "domainLevels": {
+      "Guerra": 7
+    },
     "castTime": "1 ação padrão",
     "components": "V",
     "range": "Médio (30 m + 3 m/nível)",
@@ -6783,7 +6791,9 @@
       "Feiticeiro": 7,
       "Mago": 7
     },
-    "domainLevels": {},
+    "domainLevels": {
+      "Força": 7
+    },
     "castTime": "1 ação padrão",
     "components": "V, G",
     "range": "Médio (30 m + 3 m/nível)",
@@ -7301,6 +7311,77 @@
     },
     "domainLevels": {
       "Animais": 9
+    }
+  },
+  {
+    "name": "Desintegrar",
+    "level": 6,
+    "school": "Transmutação",
+    "classes": [
+      "Feiticeiro",
+      "Mago"
+    ],
+    "castTime": "1 ação padrão",
+    "components": "V, G, M/FD",
+    "range": "Médio (30 m + 3 m/nível)",
+    "duration": "Instantânea",
+    "savingThrow": "Fortitude parcial (objeto)",
+    "spellResistance": true,
+    "description": "Um raio atinge uma única criatura ou objeto. A criatura sofre 2d6 pontos de dano por nível do conjurador (máximo 40d6); um teste de Fortitude bem-sucedido reduz o dano a 5d6. Se o dano reduzir os pontos de vida da criatura a 0 ou menos, ela é desintegrada, deixando apenas pó. Contra objetos, a magia desintegra um cubo de 3 m de matéria mundana; afeta apenas o primeiro alvo atingido.",
+    "classLevels": {
+      "Feiticeiro": 6,
+      "Mago": 6
+    },
+    "domainLevels": {
+      "Destruição": 7
+    }
+  },
+  {
+    "name": "Lendas e Histórias",
+    "level": 6,
+    "school": "Adivinhação",
+    "classes": [
+      "Bardo",
+      "Feiticeiro",
+      "Mago"
+    ],
+    "castTime": "Veja texto",
+    "components": "V, G, M, F",
+    "range": "Pessoal",
+    "duration": "Veja texto",
+    "savingThrow": "Nenhum",
+    "spellResistance": false,
+    "description": "Revela lendas e informações sobre uma pessoa, local ou objeto importante. O tempo de execução depende do contato do conjurador com o alvo e da quantidade de informações disponíveis: pode variar de minutos a dias ou semanas, e resultados baseados apenas em rumores são vagos. Se o alvo não tiver importância lendária, a magia não revela informações. Requer incenso de pelo menos 250 PO e quatro tiras de marfim formando um retângulo, custando 50 PO cada.",
+    "classLevels": {
+      "Bardo": 4,
+      "Feiticeiro": 6,
+      "Mago": 6
+    },
+    "domainLevels": {
+      "Conhecimento": 7
+    }
+  },
+  {
+    "name": "Névoa Ácida",
+    "level": 6,
+    "school": "Conjuração (Criação) [Ácido]",
+    "classes": [
+      "Feiticeiro",
+      "Mago"
+    ],
+    "castTime": "1 ação padrão",
+    "components": "V, G, M/FD",
+    "range": "Médio (30 m + 3 m/nível)",
+    "duration": "1 rodada/nível",
+    "savingThrow": "Nenhum",
+    "spellResistance": false,
+    "description": "Cria uma nuvem de vapores corrosivos, semelhante à névoa sólida, que reduz o deslocamento das criaturas e causa 2d6 pontos de dano por ácido a cada rodada às criaturas e objetos envolvidos. A névoa é dispersada por ventos fortes e não funciona sob a água.",
+    "classLevels": {
+      "Feiticeiro": 6,
+      "Mago": 6
+    },
+    "domainLevels": {
+      "Água": 7
     }
   }
 ]
