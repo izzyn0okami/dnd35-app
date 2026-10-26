@@ -1956,7 +1956,7 @@ class PresetSpellCatalogTest {
             "Visão" to mapOf("Feiticeiro" to 7, "Mago" to 7),
             "Convocação Instantânea de Drawmij" to mapOf("Feiticeiro" to 7, "Mago" to 7),
             "Evocação de Sombras Maior" to mapOf("Feiticeiro" to 8, "Mago" to 8),
-            "Curar Ferimentos Moderados em Massa" to mapOf("Clérigo" to 6, "Druida" to 6)
+            "Curar Ferimentos Moderados em Massa" to mapOf("Clérigo" to 6, "Druida" to 7)
         )
         expected.forEach { (name, levels) ->
             val matches = Dnd35Rules.PRESET_SPELLS.filter { it.name == name }
@@ -2149,11 +2149,4 @@ class PresetSpellCatalogTest {
         assertTrue(disintegrate.spellResistance)
     }
 
-    @Test
-    fun massModerateCureUsesSeventhLevelForDruidAsListedInPlayerHandbook() {
-        val spell = Dnd35Rules.PRESET_SPELLS.single { it.name == "Curar Ferimentos Moderados em Massa" }
-        assertEquals(6, spell.classLevels["Clérigo"])
-        assertEquals(7, spell.classLevels["Druida"])
-        assertEquals("Conjuração (Cura)", spell.school)
-    }
 }
