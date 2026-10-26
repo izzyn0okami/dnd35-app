@@ -2125,13 +2125,14 @@ class PresetSpellCatalogTest {
             "Repulsão" to mapOf("Proteção" to 7),
             "Raio de Sol" to mapOf("Sol" to 7),
             "Terremoto" to mapOf("Terra" to 7),
-            "Passagem Invisível" to mapOf("Viagem" to 7),
             "Teletransporte Maior" to mapOf("Viagem" to 7),
-            "Viagem Planar" to mapOf("Viagem" to 7)
         )
         expectedDomains.forEach { (name, expected) ->
             assertEquals("$name domain levels", expected, spells.getValue(name).domainLevels.filterValues { it == 7 })
         }
+        assertEquals(8, spells.getValue("Passagem Invisível").domainLevels["Viagem"])
+        assertFalse("Viagem" in spells.getValue("Viagem Planar").domainLevels)
+        assertFalse("Planta" in spells.getValue("Cajado Vivo").domainLevels)
 
         val acidFog = spells.getValue("Névoa Ácida")
         assertEquals(mapOf("Feiticeiro" to 6, "Mago" to 6), acidFog.classLevels)
