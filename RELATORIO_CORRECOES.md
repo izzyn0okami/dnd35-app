@@ -260,3 +260,11 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 
 
 - **Revisão adicional das listas de domínio:** removida a atribuição indevida de *Cajado Vivo* ao domínio Planta; *Passagem Invisível* foi ajustada para Viagem 8 (não 7), conforme a ordem da lista do domínio; removida a atribuição de *Viagem Planar* ao domínio Viagem. Mantido *Teletransporte Maior* como Viagem 7.
+
+
+## Correção de domínio fora do Livro do Jogador — Força (2026-10-26)
+
+- **Fonte normativa:** Livro do Jogador brasileiro, capítulo 11, seção de domínios. A lista do livro inclui Água, Animais, Ar, Bem, Caos, Conhecimento, Cura, Destruição, Enganação, Fogo, Guerra, Magia, Mal, Morte, Ordem, Planta, Proteção, Sol, Sorte, Terra e Viagem; não há domínio Força.
+- **Erro corrigido:** a auditoria anterior havia atribuído indevidamente o domínio `Força` a *Mão Poderosa de Bigby* e *O Punho Cerrado de Bigby*. Removidas essas duas associações; níveis e dados por classe não foram alterados.
+- **Regressão:** testes agora garantem que todos os identificadores de domínio do catálogo pertençam à lista de domínios do Livro do Jogador e que *O Punho Cerrado de Bigby* não tenha uma associação de domínio inventada.
+- **Nota de auditoria:** esta correção retifica explicitamente a associação indevida introduzida durante a etapa anterior; a revisão de todos os níveis e domínios continua em andamento.
