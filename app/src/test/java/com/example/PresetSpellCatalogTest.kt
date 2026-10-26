@@ -30,6 +30,15 @@ class PresetSpellCatalogTest {
         assertFalse(spells.single { it.name == "Ventriloquismo" }.spellResistance)
     }
 
+
+    @Test
+    fun summonMonsterNineIsWizardSorcererSpellAndClericDomainSpell() {
+        val spell = Dnd35Rules.PRESET_SPELLS.single { it.name == "Invocar Criaturas IX" }
+        assertEquals(setOf("Feiticeiro", "Mago"), spell.classes.toSet())
+        assertEquals(mapOf("Feiticeiro" to 9, "Mago" to 9), spell.classLevels)
+        assertEquals(mapOf("Mal" to 9, "Ordem" to 9), spell.domainLevels)
+    }
+
     @Test
     fun cantripCatalogUsesCanonicalPlayerHandbookNames() {
         val spells = Dnd35Rules.PRESET_SPELLS
