@@ -201,3 +201,13 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - Metadados conferidos no livro: Transmutação; componentes V, G, F; execução de 1 ação padrão; alcance Pessoal; duração de 10 minutos/nível (D); teste de resistência Nenhum; resistência à magia Não.
 - Descrição resumida em paráfrase para preservar as regras centrais: formas não únicas de tamanho Minúsculo a Colossal, limite de DV, formas incorpóreas/gasosas, capacidades adquiridas e mudança de forma por ação livre; foco de anel de jade de pelo menos 1.500 PO.
 - Acrescentado teste de regressão para presença única, níveis de classe/domínio e metadados principais. A auditoria de completude do catálogo continua em andamento; esta inclusão não significa que o catálogo inteiro esteja completo.
+
+
+
+## Auditoria de classes e domínios — Invocar Criaturas IX
+
+- **Fonte normativa:** Livro do Jogador brasileiro, lista de magias de 9º nível de Clérigo (página impressa 159) e listas dos domínios Animais, Bem, Caos, Mal e Ordem (páginas impressas 159–161; PDF, páginas 163–165).
+- **Revisão da hipótese inicial:** a leitura da lista de Clérigo confirma que `Invocar Criaturas IX` também é magia-base de Clérigo 9. Portanto, não se deve removê-la das classes; a proposta inicial de exclusão foi corrigida antes de merge.
+- **Divergência confirmada:** o registro não continha os domínios que também oferecem a magia. Foram registrados Animais 9, Bem 9, Caos 9, Mal 9 e Ordem 9 em `domainLevels`, mantendo Clérigo, Feiticeiro e Mago no nível 9.
+- **Regressão:** teste verifica as três classes e os cinco domínios, sem duplicar a magia.
+- **Escopo:** correção limitada à cobertura dos domínios; a auditoria das listas por classe continua aberta.

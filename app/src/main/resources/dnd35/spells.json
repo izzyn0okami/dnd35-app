@@ -6188,7 +6188,13 @@
       "Feiticeiro": 9,
       "Mago": 9
     },
-    "domainLevels": {},
+    "domainLevels": {
+      "Animais": 9,
+      "Bem": 9,
+      "Caos": 9,
+      "Mal": 9,
+      "Ordem": 9
+    },
     "castTime": "1 rodada",
     "components": "V, G, M/FD",
     "range": "Curto (7,5 m + 1,5 m/2 níveis)",
