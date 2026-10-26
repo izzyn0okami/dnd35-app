@@ -257,3 +257,6 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - **Divergência confirmada:** o registro tinha Clérigo 6 e Druida 6, mas a lista de Druida do livro inclui *Curar Ferimentos Moderados em Massa* no 7º nível.
 - **Correção:** `classLevels.Druida` alterado de 6 para 7; Clérigo permanece no 6º nível e o nível geral legado do registro permanece 6, pois a estrutura separa nível geral de nível por classe.
 - **Regressão:** teste atualizado para Clérigo 6/Druida 7.
+
+
+- **Revisão adicional das listas de domínio:** removida a atribuição indevida de *Cajado Vivo* ao domínio Planta; *Passagem Invisível* foi ajustada para Viagem 8 (não 7), conforme a ordem da lista do domínio; removida a atribuição de *Viagem Planar* ao domínio Viagem. Mantido *Teletransporte Maior* como Viagem 7.
