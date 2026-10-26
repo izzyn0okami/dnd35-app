@@ -1727,7 +1727,7 @@ class PresetSpellCatalogTest {
             "Controlar Plantas" to Triple("Transmutação", mapOf("Druida" to 8), mapOf("Planta" to 8)),
             "Forma Animal" to Triple("Transmutação", mapOf("Druida" to 8), mapOf("Animal" to 7)),
             "Inverter a Gravidade" to Triple("Transmutação", mapOf("Druida" to 8, "Feiticeiro" to 7, "Mago" to 7), emptyMap()),
-            "Invocar Aliado da Natureza VIII" to Triple("Conjuração (Invocação) [veja texto de Invocar Aliado da Natureza I]", mapOf("Druida" to 8), mapOf("Animal" to 8)),
+            "Invocar Aliado da Natureza VIII" to Triple("Conjuração (Invocação) [veja texto de Invocar Aliado da Natureza I]", mapOf("Druida" to 8), mapOf("Animais" to 8)),
             "Repelir Metal ou Pedra" to Triple("Abjuração [Terra]", mapOf("Druida" to 8), emptyMap()),
             "Prisão" to Triple("Encantamento (Compulsão) [Ação Mental]", mapOf("Feiticeiro" to 8, "Mago" to 8), emptyMap()),
             "Palavra de Recordação" to Triple("Conjuração (Teletransporte)", mapOf("Clérigo" to 6, "Druida" to 8), emptyMap()),
@@ -1836,7 +1836,7 @@ class PresetSpellCatalogTest {
         }
         val domainEighth = listOf(
             "Ciclone" to ("Ar" to 8),
-            "Invocar Aliado da Natureza VIII" to ("Animal" to 8),
+            "Invocar Aliado da Natureza VIII" to ("Animais" to 8),
             "Manto do Caos" to ("Caos" to 8),
             "Criar Mortos-Vivos Maior" to ("Morte" to 8),
             "Terremoto" to ("Destruição" to 8),
