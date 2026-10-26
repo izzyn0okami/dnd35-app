@@ -3099,7 +3099,7 @@
     "description": "Cura 10 pontos de vida por nível de conjurador (máx 150) e remove cegueira, surdez, doenças, venenos e atordoamento.",
     "classLevels": {
       "Clérigo": 6,
-      "Druida": 6
+      "Druida": 7
     },
     "domainLevels": {}
   },

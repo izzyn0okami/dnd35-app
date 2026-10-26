@@ -183,3 +183,12 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - Níveis por classe confirmados no JSON para este lote: `Símbolo da Morte` e `Criar Mortos-Vivos Maior` estão registrados como Clérigo 8, Feiticeiro 8 e Mago 8; `Evocação de Sombras Maior` como Feiticeiro/Mago 8; `Conjuração de Sombras Maior` como Feiticeiro/Mago 7.
 - A lista do nível 7 ainda exige comparação sistemática, classe por classe, com as listas do capítulo de magias do PDF. A presença das entradas identificadas não deve ser tomada como prova de completude.
 - Próximo lote: comparar a lista de 7º nível do Livro do Jogador com o catálogo por classe, validar campos de alcance/área/duração/resistência e registrar somente divergências confirmadas. Evitar reabrir as entradas acima sem nova evidência.
+
+
+## Auditoria de níveis por classe — Cura Completa (2026-10-25)
+
+- **Fonte normativa:** Livro do Jogador brasileiro, capítulo 11, lista de magias de 7º nível de Druida (página impressa 162; PDF correspondente no arquivo da biblioteca). A entrada lista *Cura Completa* entre as magias de 7º nível de Druida.
+- **Divergência confirmada:** o catálogo já tinha uma única entrada `Cura Completa (Heal)` com Clérigo 6 e Druida 6. O nível geral `level: 6` permanece como valor legado/geral do registro; a correção é específica ao campo `classLevels`, que representa o nível individual por classe.
+- **Correção:** alterado `classLevels.Druida` de 6 para 7; mantido Clérigo 6. Nenhuma entrada duplicada foi criada.
+- **Regressão:** adicionado teste garantindo Clérigo 6, Druida 7, alcance de toque e duração instantânea.
+- **Escopo ainda aberto:** isso corrige uma divergência confirmada, mas não encerra a comparação integral das listas de 7º nível por classe.

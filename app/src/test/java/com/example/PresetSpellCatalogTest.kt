@@ -2030,4 +2030,13 @@ class PresetSpellCatalogTest {
         assertTrue(spell.description.contains("magias de toque"))
     }
 
+    @Test
+    fun healUsesSixthLevelForClericAndSeventhForDruid() {
+        val spell = Dnd35Rules.PRESET_SPELLS.single { it.name == "Cura Completa (Heal)" }
+        assertEquals(6, spell.classLevels["Clérigo"])
+        assertEquals(7, spell.classLevels["Druida"])
+        assertEquals("Toque", spell.range)
+        assertEquals("Instantânea", spell.duration)
+    }
+
 }
