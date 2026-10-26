@@ -1908,8 +1908,8 @@ class PresetSpellCatalogTest {
 
         val greaterCreateUndead = spells.getValue("Criar Mortos-Vivos Maior")
         assertEquals(8, greaterCreateUndead.classLevels["Clérigo"])
-        assertEquals(7, greaterCreateUndead.classLevels["Feiticeiro"])
-        assertEquals(7, greaterCreateUndead.classLevels["Mago"])
+        assertEquals(8, greaterCreateUndead.classLevels["Feiticeiro"])
+        assertEquals(8, greaterCreateUndead.classLevels["Mago"])
     }
     @Test
     fun banishmentDescriptionMatchesPlayerHandbookTargetsAndLimits() {
