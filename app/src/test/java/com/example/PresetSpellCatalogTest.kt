@@ -34,9 +34,9 @@ class PresetSpellCatalogTest {
     @Test
     fun summonMonsterNineIsWizardSorcererSpellAndClericDomainSpell() {
         val spell = Dnd35Rules.PRESET_SPELLS.single { it.name == "Invocar Criaturas IX" }
-        assertEquals(setOf("Feiticeiro", "Mago"), spell.classes.toSet())
-        assertEquals(mapOf("Feiticeiro" to 9, "Mago" to 9), spell.classLevels)
-        assertEquals(mapOf("Mal" to 9, "Ordem" to 9), spell.domainLevels)
+        assertEquals(setOf("Clérigo", "Feiticeiro", "Mago"), spell.classes.toSet())
+        assertEquals(mapOf("Clérigo" to 9, "Feiticeiro" to 9, "Mago" to 9), spell.classLevels)
+        assertEquals(mapOf("Animais" to 9, "Bem" to 9, "Caos" to 9, "Mal" to 9, "Ordem" to 9), spell.domainLevels)
     }
 
     @Test
