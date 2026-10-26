@@ -2089,4 +2089,15 @@ class PresetSpellCatalogTest {
         assertFalse("Ranger" in spell.classes)
         assertFalse("Ranger" in spell.classLevels)
     }
+
+    @Test
+    fun seventhLevelDomainSpellMappingsUseCanonicalPlayerHandbookNames() {
+        val spells = Dnd35Rules.PRESET_SPELLS.associateBy { it.name }
+        assertEquals(7, spells.getValue("Forma Animal").domainLevels["Animais"])
+        assertEquals(8, spells.getValue("Invocar Aliado da Natureza VIII").domainLevels["Animais"])
+        assertEquals(7, spells.getValue("Ditado").domainLevels["Ordem"])
+        assertFalse(Dnd35Rules.PRESET_SPELLS.any {
+            "Animal" in it.domainLevels || "Lei" in it.domainLevels
+        })
+    }
 }
