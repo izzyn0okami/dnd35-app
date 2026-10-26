@@ -2079,4 +2079,14 @@ class PresetSpellCatalogTest {
         assertTrue(spell.description.contains("1.500 PO"))
         assertEquals(1, spells.count { it.name == "Alterar Forma" })
     }
+
+    @Test
+    fun eagleSplendorIsNotARangerSpellInBrazilianPlayerHandbook() {
+        val spell = Dnd35Rules.PRESET_SPELLS.single { it.name == "Esplendor da Águia" }
+        assertEquals(2, spell.classLevels["Paladino"])
+        assertEquals(2, spell.classLevels["Feiticeiro"])
+        assertEquals(2, spell.classLevels["Mago"])
+        assertFalse("Ranger" in spell.classes)
+        assertFalse("Ranger" in spell.classLevels)
+    }
 }
