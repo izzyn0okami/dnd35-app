@@ -231,3 +231,12 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - **Correção proposta:** removida somente a atribuição Ranger 2 de `classes` e `classLevels`; preservados os níveis de outras classes já registrados.
 - **Regressão:** teste garante que Ranger não apareça entre as classes da magia e que os níveis de Paladino, Feiticeiro e Mago permaneçam em 2.
 - **Escopo:** correção pontual de classificação; não implica conclusão da auditoria integral de magias por classe.
+
+
+## Auditoria de identificadores de domínio — listas de 7º nível (2026-10-26)
+
+- **Fonte normativa:** Livro do Jogador brasileiro, capítulo 11, listas de magias de 7º nível e listas dos domínios (PDF, páginas 162–164 e 167–171; páginas impressas correspondentes no capítulo de magias/domínios).
+- **Divergências confirmadas:** o catálogo usava `Animal` para as magias do domínio dos Animais e `Lei` para o domínio chamado **Ordem** no livro. Isso criava chaves divergentes para o mesmo domínio e poderia afetar filtros/agrupamentos.
+- **Correção:** padronizadas as chaves de `domainLevels` para `Animais` e `Ordem`; os níveis e as atribuições de classe das magias foram preservados. Nenhuma magia foi duplicada.
+- **Regressão:** atualizados os testes de catálogo para exigir `Animais` no domínio de `Forma Animal` e `Invocar Aliado da Natureza VIII`, além de manter a lista de domínios de `Invocar Criaturas IX` em nomes canônicos.
+- **Resultado parcial da auditoria de 7º nível:** as listas de Clérigo e Druida consultadas estão representadas no catálogo; a conferência de Feiticeiro/Mago e das listas de domínios continua em andamento. Não considerar o catálogo integralmente auditado.
