@@ -45,14 +45,7 @@ jobs:
         run: |
           find . -path "*/test-results/*.xml" -print0 2>/dev/null | while IFS= read -r -d '' f; do
             if grep -q "<failure" "$f"; then
-              python3 - "$f" << 'PYEOF'
-import re, sys
-text = open(sys.argv[1], encoding="utf-8").read()
-for m in re.finditer(r'<testcase name="([^"]+)" classname="([^"]+)"[^>]*>\s*<failure message="([^"]*)"', text):
-    name, classname, msg = m.groups()
-    msg = msg.replace("%", "%25").replace("\r", "%0D").replace("\n", "%0A")
-    print(f"::error::{classname}.{name}: {msg}")
-PYEOF
+              python3 "$GITHUB_WORKSPACE/.github/scripts/print_test_failures.py" "$f"
             fi
           done
 
