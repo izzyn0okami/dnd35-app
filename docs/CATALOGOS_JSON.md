@@ -88,3 +88,26 @@ Livro do Jogador 3.5 (edição brasileira, Devir). Isso corrigiu:
   Alma, Desejo, Desejo Restrito, Chuva de Meteoros, entre outras).
 
 Catálogo após a auditoria: 52 talentos, 163 itens, 327 magias.
+
+### Auditoria de talentos e armas/armaduras (2026-10-26)
+
+A Tabela 5-1 (Talentos, páginas 76-77) e a Tabela 7-5/7-6 (Armas e Armaduras/Escudos,
+páginas 98-103) do Livro do Jogador foram conferidas contra `feats.json` e `items.json`:
+
+- 6 talentos do catálogo estavam com nomes diferentes dos usados pelo livro, duplicando
+  talentos que já existiam sob o nome correto (ex.: "Disparo Rápido" era a mesma magia que
+  "Tiro Rápido", já catalogada) ou usando uma tradução não-oficial (ex.: "Magia Acelerada"
+  → "Acelerar Magia", "Atropelar" → "Pisotear"). Renomeados/deduplicados.
+- 59 talentos da Tabela 5-1 que estavam ausentes foram adicionados (talentos gerais,
+  talentos de criação de item e talentos metamágicos).
+- Armaduras e escudos já cobriam a Tabela 7-6 por completo; nenhuma mudança necessária.
+- 2 armas da Tabela 7-5 que estavam ausentes (Sabre, Boleadeira) foram adicionadas.
+
+As categorias "Itens Mágicos" e "Consumíveis" de `items.json` são, de propósito, uma
+amostra curada (um item por tipo/slot) e não uma lista exaustiva — o capítulo de itens
+mágicos do Livro do Jogador tem centenas de entradas. A tabela "Itens e Serviços"
+(vestuário, comida, hospedagem, montarias, veículos, serviços) também não foi trazida
+para o catálogo por ser, em grande parte, economia de mesa e não inventário de
+personagem; ver conversa com o usuário sobre se isso deve ser expandido.
+
+Catálogo após esta auditoria: 110 talentos, 165 itens, 327 magias.

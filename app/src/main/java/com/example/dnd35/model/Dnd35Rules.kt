@@ -324,7 +324,7 @@ object Dnd35Rules {
                 ClassFeature(2, "Talento Bônus de Guerreiro (2º nível)", "Recebe um talento bônus da lista de talentos de guerreiro."),
                 ClassFeature(4, "Talento Bônus de Guerreiro (4º nível)", "Recebe um talento bônus da lista de talentos de guerreiro; Especialização em Arma não é automática e exige seus pré-requisitos."),
                 ClassFeature(6, "Talento Bônus de Guerreiro (6º nível)", "Recebe um talento bônus da lista de talentos de guerreiro."),
-                ClassFeature(8, "Talento Bônus de Guerreiro (8º nível)", "Recebe um talento bônus da lista de talentos de guerreiro; Foco em Arma Aprimorado não é concedido automaticamente."),
+                ClassFeature(8, "Talento Bônus de Guerreiro (8º nível)", "Recebe um talento bônus da lista de talentos de guerreiro; Foco em Arma Maior não é concedido automaticamente."),
                 ClassFeature(10, "Talento Bônus de Guerreiro (10º nível)", "Recebe um talento bônus da lista de talentos de guerreiro."),
                 ClassFeature(12, "Talento Bônus de Guerreiro (12º nível)", "Recebe um talento bônus da lista de talentos de guerreiro; Especialização em Arma Maior não é automática e exige seus pré-requisitos."),
                 ClassFeature(14, "Talento Bônus de Guerreiro (14º nível)", "Recebe um talento bônus da lista de talentos de guerreiro."),

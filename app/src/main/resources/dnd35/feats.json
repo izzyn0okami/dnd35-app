@@ -48,7 +48,7 @@
     "benefit": "Você recebe +2 nas jogadas de dano com a arma escolhida. Só pode selecionar este talento para uma arma com a qual tenha proficiência."
   },
   {
-    "name": "Foco em Arma Aprimorado",
+    "name": "Foco em Arma Maior",
     "prerequisites": "Guerreiro 8º nível, Foco em Arma com a arma escolhida",
     "summary": "+1 nas jogadas de ataque com a arma escolhida (bônus total de +2 com Foco em Arma).",
     "benefit": "O bônus nas jogadas de ataque com a arma escolhida aumenta de +1 para +2."
@@ -66,19 +66,13 @@
     "benefit": "Você pode disparar contra um oponente em combate corpo a corpo sem sofrer a penalidade padrão de -4."
   },
   {
-    "name": "Disparo Rápido",
-    "prerequisites": "DES 13, Tiro Certeiro",
-    "summary": "Um ataque à distância extra por rodada.",
-    "benefit": "Você ganha um ataque adicional por rodada com arma de ataque à distância, com -2 em todos os ataques."
-  },
-  {
     "name": "Trespassar",
     "prerequisites": "FOR 13, Ataque Poderoso",
     "summary": "Ataque corpo a corpo adicional após derrubar um inimigo.",
     "benefit": "Se você causar dano suficiente para derrubar uma criatura, recebe imediatamente um ataque extra gratuito em outra criatura adjacente."
   },
   {
-    "name": "Trespassar Aprimorado",
+    "name": "Trespassar Maior",
     "prerequisites": "FOR 13, BBA +4, Trespassar",
     "summary": "Sem limite de ataques adicionais por rodada.",
     "benefit": "Como Trespassar, mas você pode usar esta habilidade múltiplas vezes por rodada."
@@ -144,7 +138,7 @@
     "benefit": "Todos os efeitos numéricos variáveis da magia são aumentados em metade (+2 espaços de magia)."
   },
   {
-    "name": "Magia Acelerada",
+    "name": "Acelerar Magia",
     "prerequisites": "Metamágico",
     "summary": "Conjura uma magia como ação rápida (+4 níveis de magia).",
     "benefit": "Uma magia acelerada com tempo de execução de 1 ação padrão passa a ser conjurada como ação rápida; preparar ou conjurar a magia ocupa um espaço de magia 4 níveis acima."
@@ -186,7 +180,7 @@
     "benefit": "Você recebe +4 nos testes de desarme e não provoca ataque de oportunidade ao tentar desarmar um oponente."
   },
   {
-    "name": "Reflexos de Combate",
+    "name": "Reflexos em Combate",
     "prerequisites": "Nenhum",
     "summary": "Permite ataques de oportunidade adicionais.",
     "benefit": "Você pode realizar um número adicional de ataques de oportunidade por rodada igual ao seu modificador de Destreza. Também pode realizar ataques de oportunidade mesmo quando estiver desprevenido."
@@ -306,9 +300,363 @@
     "benefit": "Quando estiver montado e usar a ação de investida, você causa dano dobrado com uma arma corpo a corpo (ou triplicado com uma lança)."
   },
   {
-    "name": "Atropelar",
-    "prerequisites": "FOR 13, Combate Montado",
+    "name": "Pisotear",
+    "prerequisites": "Combate Montado",
     "summary": "Melhora tentativas de atropelar montado.",
     "benefit": "Quando tenta atropelar um oponente enquanto montado, o alvo não pode escolher evitar você. Você recebe +4 nos testes de Cavalgar para atropelar."
+  },
+  {
+    "name": "Acrobático",
+    "prerequisites": "Nenhum",
+    "summary": "+2 nos testes de Saltar e Acrobacia.",
+    "benefit": "Você recebe um bônus de +2 nos testes de Saltar e de Acrobacia."
+  },
+  {
+    "name": "Afinidade com Animais",
+    "prerequisites": "Nenhum",
+    "summary": "+2 nos testes de Adestrar Animais e Cavalgar.",
+    "benefit": "Você recebe um bônus de +2 nos testes de Adestrar Animais e de Cavalgar."
+  },
+  {
+    "name": "Ágil",
+    "prerequisites": "Nenhum",
+    "summary": "+2 nos testes de Equilíbrio e Arte da Fuga.",
+    "benefit": "Você recebe um bônus de +2 nos testes de Equilíbrio e de Arte da Fuga."
+  },
+  {
+    "name": "Aptidão Mágica",
+    "prerequisites": "Nenhum",
+    "summary": "+2 nos testes de Identificar Magia e Usar Instrumento Mágico.",
+    "benefit": "Você recebe um bônus de +2 nos testes de Identificar Magia e de Usar Instrumento Mágico."
+  },
+  {
+    "name": "Desviar Objetos",
+    "prerequisites": "DES 13, Ataque Desarmado Aprimorado",
+    "summary": "Desvia um ataque à distância por rodada.",
+    "benefit": "Uma vez por rodada, quando normalmente seria atingido por um ataque à distância, você pode tentar desviar o projétil. Precisa estar ciente do ataque e não estar desprevenido."
+  },
+  {
+    "name": "Apanhar Objetos",
+    "prerequisites": "DES 15, Desviar Objetos, Ataque Desarmado Aprimorado",
+    "summary": "Apanha uma arma arremessada ou projétil que desviou.",
+    "benefit": "Sempre que desviar com sucesso um ataque com uma arma arremessada usando o talento Desviar Objetos, você pode optar por apanhar o item em vez de simplesmente desviá-lo."
+  },
+  {
+    "name": "Ataque Atordoante",
+    "prerequisites": "DES 13, SAB 13, Ataque Desarmado Aprimorado, BBA +8",
+    "summary": "Atordoa a vítima com um ataque desarmado.",
+    "benefit": "Uma vez por rodada, você pode tentar atordoar um oponente com um ataque corpo a corpo desarmado bem-sucedido; o alvo deve ser de um tipo de criatura sujeito a ataques corporais críticos. O alvo pode fazer um teste de Fortitude ou ficar atordoado por 1 rodada."
+  },
+  {
+    "name": "Encontrão Aprimorado",
+    "prerequisites": "Ataque Poderoso",
+    "summary": "+4 nas tentativas de encontrão, sem provocar ataque de oportunidade.",
+    "benefit": "Você recebe um bônus de +4 nos testes de encontrão e não provoca um ataque de oportunidade ao tentar um encontrão."
+  },
+  {
+    "name": "Atropelar Aprimorado",
+    "prerequisites": "Ataque Poderoso",
+    "summary": "+4 nas tentativas de atropelar, sem provocar ataque de oportunidade.",
+    "benefit": "Você recebe um bônus de +4 nos testes de atropelar e não provoca um ataque de oportunidade ao tentar atropelar um oponente."
+  },
+  {
+    "name": "Separar Aprimorado",
+    "prerequisites": "Ataque Poderoso",
+    "summary": "+4 nas tentativas de separar, sem provocar ataque de oportunidade.",
+    "benefit": "Você recebe um bônus de +4 nos testes de separar e não provoca um ataque de oportunidade ao tentar separar armas."
+  },
+  {
+    "name": "Atlético",
+    "prerequisites": "Nenhum",
+    "summary": "+2 nos testes de Escalar e Natação.",
+    "benefit": "Você recebe um bônus de +2 nos testes de Escalar e de Natação."
+  },
+  {
+    "name": "Auto-Suficiente",
+    "prerequisites": "Nenhum",
+    "summary": "+2 nos testes de Cura e Sobrevivência.",
+    "benefit": "Você recebe um bônus de +2 nos testes de Cura e de Sobrevivência."
+  },
+  {
+    "name": "Arquearia Montada",
+    "prerequisites": "Combate Montado",
+    "summary": "Reduz à metade a penalidade de ataques à distância feitos montado.",
+    "benefit": "Você sofre apenas metade da penalidade normal nos ataques à distância feitos de cima de uma montaria em movimento."
+  },
+  {
+    "name": "Investida Implacável",
+    "prerequisites": "Combate Montado, Investida Montada",
+    "summary": "Investidas montadas causam dano dobrado.",
+    "benefit": "Quando estiver montado e usar a ação de investida, você causa dano dobrado com uma arma corpo a corpo (ou triplicado com uma lança)."
+  },
+  {
+    "name": "Bloqueio Ambidestro",
+    "prerequisites": "Combater com Duas Armas",
+    "summary": "A arma da mão inábil concede +1 de bônus de escudo na CA.",
+    "benefit": "Enquanto estiver empunhando uma arma leve ou de uma mão na mão inábil, você recebe um bônus de escudo de +1 na CA."
+  },
+  {
+    "name": "Contramágica Aprimorada",
+    "prerequisites": "Nenhum",
+    "summary": "Pode usar qualquer magia da mesma escola para fazer contramágica.",
+    "benefit": "Você pode usar qualquer magia da mesma escola que a magia-alvo para tentar a contramágica, em vez de precisar da magia exata."
+  },
+  {
+    "name": "Corrida",
+    "prerequisites": "Nenhum",
+    "summary": "Percorre 5 vezes o deslocamento padrão ao correr.",
+    "benefit": "Ao correr, você se move 5 vezes seu deslocamento normal (em vez de 4 vezes) e recebe um bônus de +4 nos testes de Saltar feitos após uma corrida."
+  },
+  {
+    "name": "Dedos Lépidos",
+    "prerequisites": "Nenhum",
+    "summary": "+2 nos testes de Operar Mecanismos e Abrir Fechaduras.",
+    "benefit": "Você recebe um bônus de +2 nos testes de Operar Mecanismos e de Abrir Fechaduras."
+  },
+  {
+    "name": "Diligente",
+    "prerequisites": "Nenhum",
+    "summary": "+2 nos testes de Avaliação e Decifrar Escrita.",
+    "benefit": "Você recebe um bônus de +2 nos testes de Avaliação e de Decifrar Escrita."
+  },
+  {
+    "name": "Dominar Magia",
+    "prerequisites": "1º nível de mago",
+    "summary": "Prepara magias escolhidas sem precisar de um grimório.",
+    "benefit": "Você pode preparar um número de magias de mago igual à metade do seu nível de conjurador (arredondado para baixo, mínimo 1) sem consultar um grimório, desde que já as tenha preparado dessa forma ao menos uma vez."
+  },
+  {
+    "name": "Imobilização Aprimorada",
+    "prerequisites": "Especialização em Combate",
+    "summary": "+4 nas tentativas de imobilização, sem provocar ataque de oportunidade.",
+    "benefit": "Você recebe um bônus de +4 nos testes de agarrar para imobilizar um oponente e não provoca um ataque de oportunidade ao iniciar um agarrão."
+  },
+  {
+    "name": "Expulsão Adicional",
+    "prerequisites": "Habilidade de expulsar ou fascinar criaturas",
+    "summary": "4 tentativas diárias adicionais de Expulsar/Fascinar.",
+    "benefit": "Você pode usar sua habilidade de expulsar ou fascinar criaturas mortas-vivas 4 vezes a mais por dia do que o normal."
+  },
+  {
+    "name": "Expulsão Aprimorada",
+    "prerequisites": "Habilidade de expulsar ou fascinar criaturas",
+    "summary": "+1 nível efetivo nos testes de expulsão.",
+    "benefit": "Ao expulsar ou comandar mortos-vivos, você é tratado como tendo 1 nível de clérigo a mais do que realmente possui."
+  },
+  {
+    "name": "Especialização em Arma Maior",
+    "prerequisites": "Usar a arma, Foco em Arma Maior, Foco em Arma, Especialização em Arma, 12º nível de guerreiro",
+    "summary": "+4 de bônus no dano com a arma escolhida (total com Especialização em Arma).",
+    "benefit": "O bônus no dano com a arma escolhida concedido por Especialização em Arma aumenta de +2 para +4."
+  },
+  {
+    "name": "Fraudulento",
+    "prerequisites": "Nenhum",
+    "summary": "+2 nos testes de Disfarces e Falsificação.",
+    "benefit": "Você recebe um bônus de +2 nos testes de Disfarces e de Falsificação."
+  },
+  {
+    "name": "Ignorar Componentes Materiais",
+    "prerequisites": "Nenhum",
+    "summary": "Conjura magias ignorando componentes materiais baratos.",
+    "benefit": "Você pode conjurar magias sem seus componentes materiais, desde que custem 1 PO ou menos; componentes mais caros ainda são necessários."
+  },
+  {
+    "name": "Investigador",
+    "prerequisites": "Nenhum",
+    "summary": "+2 nos testes de Obter Informação e Procurar.",
+    "benefit": "Você recebe um bônus de +2 nos testes de Obter Informação e de Procurar."
+  },
+  {
+    "name": "Liderança",
+    "prerequisites": "6º nível de personagem",
+    "summary": "Atrai um parceiro leal e vários seguidores.",
+    "benefit": "Você pode atrair um cofre leal e seguidores dedicados, capazes de ajudá-lo em suas aventuras. O número e o poder desses aliados dependem do seu placar de liderança."
+  },
+  {
+    "name": "Magia Natural",
+    "prerequisites": "SAB 13, habilidade de forma selvagem",
+    "summary": "Capaz de lançar magias enquanto estiver na forma selvagem.",
+    "benefit": "Você pode conjurar magias de druida normalmente mesmo enquanto estiver sob efeito da habilidade forma selvagem."
+  },
+  {
+    "name": "Magia Penetrante",
+    "prerequisites": "Nenhum",
+    "summary": "+2 nos testes de conjurador contra Resistência à Magia.",
+    "benefit": "Você recebe um bônus de +2 nos testes de nível de conjurador feitos para vencer a Resistência à Magia de uma criatura."
+  },
+  {
+    "name": "Magia Penetrante Maior",
+    "prerequisites": "Magia Penetrante",
+    "summary": "+4 nos testes de conjurador contra Resistência à Magia (total com Magia Penetrante).",
+    "benefit": "O bônus concedido por Magia Penetrante aumenta de +2 para +4."
+  },
+  {
+    "name": "Mãos Leves",
+    "prerequisites": "Nenhum",
+    "summary": "+2 nos testes de Prestidigitação e Usar Cordas.",
+    "benefit": "Você recebe um bônus de +2 nos testes de Prestidigitação e de Usar Cordas."
+  },
+  {
+    "name": "Negociador",
+    "prerequisites": "Nenhum",
+    "summary": "+2 nos testes de Diplomacia e Sentir Motivação.",
+    "benefit": "Você recebe um bônus de +2 nos testes de Diplomacia e de Sentir Motivação."
+  },
+  {
+    "name": "Persuasivo",
+    "prerequisites": "Nenhum",
+    "summary": "+2 nos testes de Blefar e Intimidar.",
+    "benefit": "Você recebe um bônus de +2 nos testes de Blefar e de Intimidar."
+  },
+  {
+    "name": "Potencializar Invocação",
+    "prerequisites": "Foco em Magia (conjuração)",
+    "summary": "Criaturas invocadas por você recebem +4 For e +4 Con.",
+    "benefit": "Qualquer criatura que você invocar com uma magia da escola de conjuração recebe um bônus de +4 em Força e +4 em Constituição enquanto durar a invocação."
+  },
+  {
+    "name": "Rapidez de Recarga",
+    "prerequisites": "Usar Arma Simples (besta)",
+    "summary": "Recarrega bestas mais rapidamente.",
+    "benefit": "Você pode recarregar uma besta de mão, leve ou pesada como se fosse uma ação livre (em vez de uma ação padrão ou de movimento). Uma besta de repetição pode ser disparada toda rodada sem recarregar manualmente."
+  },
+  {
+    "name": "Rastrear",
+    "prerequisites": "Nenhum",
+    "summary": "Utiliza Sobrevivência para rastrear.",
+    "benefit": "Você pode usar a perícia Sobrevivência para seguir as pegadas e demais sinais deixados por criaturas ou veículos em movimento."
+  },
+  {
+    "name": "Sorrateiro",
+    "prerequisites": "Nenhum",
+    "summary": "+2 nos testes de Esconder-se e Furtividade.",
+    "benefit": "Você recebe um bônus de +2 nos testes de Esconder-se e de Furtividade."
+  },
+  {
+    "name": "Tolerância",
+    "prerequisites": "Nenhum",
+    "summary": "+4 de bônus nos testes para resistir ao dano por contusão.",
+    "benefit": "Você recebe um bônus de +4 nos testes de resistência contra efeitos que causam dano não letal, e seu dano não letal máximo antes de cair inconsciente aumenta."
+  },
+  {
+    "name": "Duro de Matar",
+    "prerequisites": "Tolerância",
+    "summary": "Permanece consciente entre -1 e -9 pontos de vida.",
+    "benefit": "Quando seus pontos de vida ficam entre -1 e -9, você permanece consciente e pode agir normalmente (com as penalidades usuais de um personagem ferido), em vez de ficar inconsciente e morrendo."
+  },
+  {
+    "name": "Usar Arma Comum",
+    "prerequisites": "Nenhum",
+    "summary": "Sem penalidade nos ataques com uma arma comum específica.",
+    "benefit": "Escolha uma arma comum específica. Você não sofre a penalidade de -4 por usar uma arma na qual não é proficiente."
+  },
+  {
+    "name": "Usar Arma Exótica",
+    "prerequisites": "BBA +1",
+    "summary": "Sem penalidade nos ataques com uma arma exótica específica.",
+    "benefit": "Escolha uma arma exótica específica. Você não sofre a penalidade de -4 por usar uma arma exótica na qual não é proficiente."
+  },
+  {
+    "name": "Usar Armas Simples",
+    "prerequisites": "Nenhum",
+    "summary": "Sem penalidades nos ataques com armas simples.",
+    "benefit": "Você não sofre a penalidade de -4 por usar armas simples."
+  },
+  {
+    "name": "Usar Armadura (leve)",
+    "prerequisites": "Nenhum",
+    "summary": "Sem penalidade de armadura leve nas jogadas de ataque.",
+    "benefit": "Quando usa armadura leve, você não sofre a penalidade normal de -4 nas jogadas de ataque por não ser proficiente."
+  },
+  {
+    "name": "Usar Armadura (média)",
+    "prerequisites": "Usar Armadura (leve)",
+    "summary": "Sem penalidade de armadura média nas jogadas de ataque.",
+    "benefit": "Quando usa armadura leve ou média, você não sofre a penalidade normal de -4 nas jogadas de ataque por não ser proficiente."
+  },
+  {
+    "name": "Usar Armadura (pesada)",
+    "prerequisites": "Usar Armadura (média)",
+    "summary": "Sem penalidade de armadura pesada nas jogadas de ataque.",
+    "benefit": "Quando usa qualquer armadura, você não sofre a penalidade normal de -4 nas jogadas de ataque por não ser proficiente."
+  },
+  {
+    "name": "Usar Escudo",
+    "prerequisites": "Nenhum",
+    "summary": "Sem penalidade de escudo nas jogadas de ataque.",
+    "benefit": "Quando usa um escudo leve ou pesado (exceto escudo de corpo), você não sofre a penalidade normal de -4 nas jogadas de ataque por não ser proficiente."
+  },
+  {
+    "name": "Ataque com Escudo Aprimorado",
+    "prerequisites": "Usar Escudo",
+    "summary": "Conserva o bônus do escudo na CA ao atacar com ele.",
+    "benefit": "Quando ataca com um escudo, você mantém o bônus de CA do escudo, desde que ainda não tenha agido na rodada."
+  },
+  {
+    "name": "Usar Escudo de Corpo",
+    "prerequisites": "Usar Escudo",
+    "summary": "Sem penalidade de escudo de corpo nas jogadas de ataque.",
+    "benefit": "Quando usa um escudo de corpo, você não sofre a penalidade normal de -4 nas jogadas de ataque por não ser proficiente, mas ainda sofre a penalidade de armadura correspondente."
+  },
+  {
+    "name": "Criar Armaduras e Armas Mágicas",
+    "prerequisites": "5º nível de conjurador",
+    "summary": "Capaz de criar armas, armaduras e escudos mágicos.",
+    "benefit": "Você pode criar armas mágicas, armaduras e escudos mágicos, além de realizar reparos mágicos neles, gastando metade do custo normal de mercado em componentes."
+  },
+  {
+    "name": "Criar Bastão",
+    "prerequisites": "9º nível de conjurador",
+    "summary": "Capaz de criar bastões mágicos.",
+    "benefit": "Você pode criar um bastão mágico contendo até três magias diferentes, gastando metade do custo de mercado em tempo e recursos."
+  },
+  {
+    "name": "Criar Cajado",
+    "prerequisites": "12º nível de conjurador",
+    "summary": "Capaz de criar cajados mágicos.",
+    "benefit": "Você pode criar cajados mágicos, gastando metade do custo de mercado em tempo e recursos, desde que conheça todas as magias armazenadas no cajado."
+  },
+  {
+    "name": "Criar Item Maravilhoso",
+    "prerequisites": "3º nível de conjurador",
+    "summary": "Capaz de criar itens mágicos maravilhosos.",
+    "benefit": "Você pode criar qualquer item mágico maravilhoso cujos pré-requisitos atenda, gastando metade do custo de mercado em tempo e recursos."
+  },
+  {
+    "name": "Forjar Anel",
+    "prerequisites": "12º nível de conjurador",
+    "summary": "Capaz de criar anéis mágicos.",
+    "benefit": "Você pode criar anéis mágicos, gastando metade do custo de mercado em tempo e recursos, desde que atenda a todos os pré-requisitos do anel."
+  },
+  {
+    "name": "Preparar Poção",
+    "prerequisites": "3º nível de conjurador",
+    "summary": "Capaz de criar poções mágicas.",
+    "benefit": "Você pode criar uma poção de qualquer magia de nível 3 ou menor que conheça, desde que afete apenas o bebedor da poção."
+  },
+  {
+    "name": "Ampliar Magia",
+    "prerequisites": "Nenhum",
+    "summary": "Dobra a área da magia (+1 nível de magia).",
+    "benefit": "Você pode conjurar uma magia ampliada, que tem o dobro da área normal. Uma magia ampliada usa um espaço de magia 1 nível acima de seu nível real."
+  },
+  {
+    "name": "Aumentar Magia",
+    "prerequisites": "Nenhum",
+    "summary": "Dobra o alcance da magia (+1 nível de magia).",
+    "benefit": "Você pode conjurar uma magia aumentada, que tem o dobro do alcance normal. Uma magia aumentada usa um espaço de magia 1 nível acima de seu nível real."
+  },
+  {
+    "name": "Elevar Magia",
+    "prerequisites": "Nenhum",
+    "summary": "Conjura a magia como se fosse de um nível mais elevado (+1 nível de magia).",
+    "benefit": "Uma magia elevada é lançada como se fosse 1 nível de conjurador mais alto que o real para todos os efeitos dependentes do nível. Usa um espaço de magia 1 nível acima do normal."
+  },
+  {
+    "name": "Estender Magia",
+    "prerequisites": "Nenhum",
+    "summary": "Dobra a duração da magia (+1 nível de magia).",
+    "benefit": "Você pode conjurar uma magia estendida, que dura o dobro do normal. Uma magia estendida usa um espaço de magia 1 nível acima de seu nível real."
   }
 ]

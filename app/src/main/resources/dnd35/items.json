@@ -1465,5 +1465,23 @@
     "costGp": 50.0,
     "damageOrAc": "-",
     "properties": "Bônus alquímico contra venenos"
+  },
+  {
+    "name": "Sabre",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 1.0,
+    "costGp": 20.0,
+    "damageOrAc": "1d6 (18-20/x2)",
+    "properties": "Perfuração, uma mão"
+  },
+  {
+    "name": "Boleadeira",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 1.0,
+    "costGp": 5.0,
+    "damageOrAc": "1d4 (x2)",
+    "properties": "Concussão (não letal); arremesso 3m; derruba o alvo em acerto decisivo"
   }
 ]
