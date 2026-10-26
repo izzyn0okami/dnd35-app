@@ -39,6 +39,16 @@ class PresetSpellCatalogTest {
         assertEquals(mapOf("Animais" to 9, "Bem" to 9, "Caos" to 9, "Mal" to 9, "Ordem" to 9), spell.domainLevels)
     }
 
+
+    @Test
+    fun ninthLevelDomainSpellListsAreRepresentedInCatalog() {
+        val spells = Dnd35Rules.PRESET_SPELLS
+        assertEquals(mapOf("Proteção" to 9, "Sol" to 9), spells.single { it.name == "Esfera Prismática" }.domainLevels)
+        assertEquals(mapOf("Conhecimento" to 9), spells.single { it.name == "Sexto Sentido" }.domainLevels)
+        assertEquals(mapOf("Sorte" to 9), spells.single { it.name == "Milagre" }.domainLevels)
+        assertEquals(mapOf("Animais" to 9), spells.single { it.name == "Alterar Forma" }.domainLevels)
+    }
+
     @Test
     fun cantripCatalogUsesCanonicalPlayerHandbookNames() {
         val spells = Dnd35Rules.PRESET_SPELLS
