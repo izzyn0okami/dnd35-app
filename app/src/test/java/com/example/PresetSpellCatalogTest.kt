@@ -1551,7 +1551,7 @@ class PresetSpellCatalogTest {
         assertEquals("Evocação [Energia]", spell.school)
         assertEquals(setOf("Feiticeiro", "Mago"), spell.classes.toSet())
         assertEquals(mapOf("Feiticeiro" to 8, "Mago" to 8), spell.classLevels)
-        assertEquals(mapOf("Força" to 8), spell.domainLevels)
+        assertTrue(spell.domainLevels.isEmpty())
         assertEquals("1 ação padrão", spell.castTime)
         assertEquals("V, G, F/FD", spell.components)
         assertEquals("Médio (30 m + 3 m/nível)", spell.range)
@@ -1851,7 +1851,6 @@ class PresetSpellCatalogTest {
             "Proteção contra Magias" to ("Magia" to 8),
             "Limpar a Mente" to ("Proteção" to 8),
             "Controlar Plantas" to ("Planta" to 8),
-            "Punho Cerrado de Bigby, O" to ("Força" to 8),
             "Explosão Solar" to ("Sol" to 8),
             "Metamorfosear Objetos" to ("Enganação" to 8),
             "Palavra de Poder, Atordoar" to ("Guerra" to 8),
@@ -2115,7 +2114,6 @@ class PresetSpellCatalogTest {
             "Desintegrar" to mapOf("Destruição" to 7),
             "Animação Ilusória" to mapOf("Enganação" to 7),
             "Tempestade de Fogo" to mapOf("Fogo" to 7),
-            "Mão Poderosa de Bigby" to mapOf("Força" to 7),
             "Palavra de Poder, Cegar" to mapOf("Guerra" to 7),
             "Reverter Magia" to mapOf("Magia" to 7, "Sorte" to 7),
             "Blasfêmia" to mapOf("Mal" to 7),
@@ -2150,4 +2148,14 @@ class PresetSpellCatalogTest {
         assertTrue(disintegrate.spellResistance)
     }
 
+
+    @Test
+    fun spellCatalogUsesOnlyPlayerHandbookDomains() {
+        val allowed = setOf(
+            "Água", "Animais", "Ar", "Bem", "Caos", "Conhecimento", "Cura",
+            "Destruição", "Enganação", "Fogo", "Guerra", "Magia", "Mal",
+            "Morte", "Ordem", "Planta", "Proteção", "Sol", "Sorte", "Terra", "Viagem"
+        )
+        assertTrue(Dnd35Rules.PRESET_SPELLS.flatMap { it.domainLevels.keys }.all { it in allowed })
+    }
 }
