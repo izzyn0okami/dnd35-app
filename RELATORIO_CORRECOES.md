@@ -222,3 +222,12 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - **Alterar Forma:** padronizado o identificador de domínio para `Animais`, correspondente ao título “Domínio dos Animais” usado no livro; corrigido o valor anterior `Animal`.
 - **Regressão:** teste automatizado cobre os quatro registros e seus níveis de domínio.
 - **Escopo:** apenas metadados de domínio comprovados por listas do livro; a auditoria de completude permanece em andamento.
+
+
+## Auditoria de listas por classe — Esplendor da Águia (2026-10-26)
+
+- **Fonte normativa:** Livro do Jogador brasileiro, capítulo 11, lista de magias de 2º nível de Paladino e listas de magias de 1º nível de Feiticeiro/Mago (páginas impressas 164–165; PDF, páginas 168–169).
+- **Divergência confirmada:** o catálogo atribuía *Esplendor da Águia* a Ranger 2, mas a lista de magias de 2º nível de Ranger na página impressa 164 não contém essa magia. A lista de 2º nível de Paladino contém a magia; a lista arcana de 1º nível também a contém.
+- **Correção proposta:** removida somente a atribuição Ranger 2 de `classes` e `classLevels`; preservados os níveis de outras classes já registrados.
+- **Regressão:** teste garante que Ranger não apareça entre as classes da magia e que os níveis de Paladino, Feiticeiro e Mago permaneçam em 2.
+- **Escopo:** correção pontual de classificação; não implica conclusão da auditoria integral de magias por classe.
