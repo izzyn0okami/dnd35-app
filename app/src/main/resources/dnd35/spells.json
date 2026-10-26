@@ -6165,7 +6165,9 @@
     "classLevels": {
       "Clérigo": 9
     },
-    "domainLevels": {},
+    "domainLevels": {
+      "Sorte": 9
+    },
     "castTime": "1 ação padrão",
     "components": "V, G, FD, XP (veja texto)",
     "range": "Veja texto",
@@ -6523,7 +6525,9 @@
       "Feiticeiro": 9,
       "Mago": 9
     },
-    "domainLevels": {},
+    "domainLevels": {
+      "Conhecimento": 9
+    },
     "castTime": "1 ação padrão",
     "components": "V, G, M/FD",
     "range": "Pessoal",
@@ -7012,7 +7016,10 @@
       "Feiticeiro": 9,
       "Mago": 9
     },
-    "domainLevels": {},
+    "domainLevels": {
+      "Proteção": 9,
+      "Sol": 9
+    },
     "castTime": "1 ação padrão",
     "components": "V, G",
     "range": "Pessoal",
@@ -7295,7 +7302,7 @@
       "Mago": 9
     },
     "domainLevels": {
-      "Animal": 9
+      "Animais": 9
     }
   }
 ]
