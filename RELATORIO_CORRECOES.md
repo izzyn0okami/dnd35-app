@@ -173,3 +173,13 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - **Decisão do catálogo:** manter `level: 8` e `classLevels` Clérigo 8, Feiticeiro 8, Mago 8. Os dados e testes atuais já seguem essa decisão; não é necessária alteração funcional para esta divergência.
 - **Reconciliação do histórico:** as notas anteriores deste relatório que classificaram *Símbolo da Morte* como magia arcana de 7º nível foram baseadas em interpretação incorreta da página impressa 168: as entradas que aparecem antes do cabeçalho “Magias de 9º nível” pertencem ao bloco de 8º nível. Essas notas ficam supersedidas por esta conclusão; preservadas como histórico para rastreabilidade.
 - **Procedimento reforçado:** quando a descrição individual divergir de listas por classe ou de fontes externas, verificar a página impressa e o contexto visual, comparar com a fonte original/SRD e registrar explicitamente a divergência antes de alterar catálogo ou testes.
+
+## Auditoria do catálogo de magias — conferência incremental (2026-10-25)
+
+- Fonte de trabalho: `app/src/main/resources/dnd35/spells.json`; fonte normativa prioritária: PDF brasileiro do `D&D 3.5 — Livro do Jogador`.
+- Snapshot inspecionado: 327 registros; nenhum nome exatamente duplicado. Essa verificação estrutural não comprova que a lista inteira do livro esteja coberta.
+- Corrigido o campo `range` de **Mãos Flamejantes** de `4,5m` para `Cone de 4,5 m`, para deixar explícito que se trata de um cone e não de alcance de toque. A descrição já identificava corretamente o efeito como cone; nível 1, execução, duração e teste de resistência foram preservados.
+- Conferidas no catálogo as entradas anteriormente apontadas como ausentes: `Vidência Maior`, `Visão Arcana Maior`, `Conjuração de Sombras Maior`, `Evocação de Sombras Maior`, `Curar Ferimentos Moderados em Massa`, `Símbolo da Morte` e `Criar Mortos-Vivos Maior`. Elas já existem; não foram duplicadas.
+- Níveis por classe confirmados no JSON para este lote: `Símbolo da Morte` e `Criar Mortos-Vivos Maior` estão registrados como Clérigo 8, Feiticeiro 8 e Mago 8; `Evocação de Sombras Maior` como Feiticeiro/Mago 8; `Conjuração de Sombras Maior` como Feiticeiro/Mago 7.
+- A lista do nível 7 ainda exige comparação sistemática, classe por classe, com as listas do capítulo de magias do PDF. A presença das entradas identificadas não deve ser tomada como prova de completude.
+- Próximo lote: comparar a lista de 7º nível do Livro do Jogador com o catálogo por classe, validar campos de alcance/área/duração/resistência e registrar somente divergências confirmadas. Evitar reabrir as entradas acima sem nova evidência.
