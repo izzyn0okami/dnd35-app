@@ -240,3 +240,12 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - **Correção:** padronizadas as chaves de `domainLevels` para `Animais` e `Ordem`; os níveis e as atribuições de classe das magias foram preservados. Nenhuma magia foi duplicada.
 - **Regressão:** atualizados os testes de catálogo para exigir `Animais` no domínio de `Forma Animal` e `Invocar Aliado da Natureza VIII`, além de manter a lista de domínios de `Invocar Criaturas IX` em nomes canônicos.
 - **Resultado parcial da auditoria de 7º nível:** as listas de Clérigo e Druida consultadas estão representadas no catálogo; a conferência de Feiticeiro/Mago e das listas de domínios continua em andamento. Não considerar o catálogo integralmente auditado.
+
+
+## Auditoria de domínios de 7º nível — cobertura e magias ausentes (2026-10-26)
+
+- **Fonte normativa:** Livro do Jogador brasileiro, capítulo 11, listas de domínios (PDF, páginas 163–166) e verbetes de *Desintegrar* (p. 197), *Lendas e Histórias* (p. 217) e *Névoa Ácida* (p. 227).
+- **Divergências confirmadas:** além dos nomes não canônicos `Animal` e `Lei`, faltavam associações de 7º nível para os domínios Cura (*Regeneração*), Destruição (*Desintegrar*), Força (*Mão Poderosa de Bigby*), Guerra (*Palavra de Poder, Cegar*), Morte (*Destruição*) e Proteção (*Repulsão*). Também faltavam do catálogo as magias *Névoa Ácida*, *Lendas e Histórias* e *Desintegrar*, presentes no livro e necessárias para representar Água 7, Conhecimento 7 e Destruição 7.
+- **Correção:** adicionadas as três magias com níveis por classe e metadados principais transcritos/parafraseados do Livro do Jogador; registrados os domínios de 7º nível confirmados nas listas. Mantidos os níveis por classe e não foram criadas duplicatas.
+- **Regressão:** teste compara as atribuições de domínio de 7º nível e verifica níveis por classe, duração, componentes, alcance, teste de resistência e resistência à magia das três entradas adicionadas.
+- **Escopo:** cobertura de domínios de 7º nível atualizada; a auditoria completa de todas as listas de magias por classe e de todos os níveis/domínios continua em andamento.
