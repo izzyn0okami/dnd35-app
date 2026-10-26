@@ -192,3 +192,12 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - **Correção:** alterado `classLevels.Druida` de 6 para 7; mantido Clérigo 6. Nenhuma entrada duplicada foi criada.
 - **Regressão:** adicionado teste garantindo Clérigo 6, Druida 7, alcance de toque e duração instantânea.
 - **Escopo ainda aberto:** isso corrige uma divergência confirmada, mas não encerra a comparação integral das listas de 7º nível por classe.
+
+
+## Auditoria do catálogo de magias — Alterar Forma
+
+- Incluída a magia **Alterar Forma**, ausente no catálogo, conforme o verbete do Livro do Jogador brasileiro (página impressa 169; PDF, página 174).
+- Níveis registrados: Druida 9, Feiticeiro 9 e Mago 9; domínio Animal 9 em `domainLevels`, sem tratar domínio como classe.
+- Metadados conferidos no livro: Transmutação; componentes V, G, F; execução de 1 ação padrão; alcance Pessoal; duração de 10 minutos/nível (D); teste de resistência Nenhum; resistência à magia Não.
+- Descrição resumida em paráfrase para preservar as regras centrais: formas não únicas de tamanho Minúsculo a Colossal, limite de DV, formas incorpóreas/gasosas, capacidades adquiridas e mudança de forma por ação livre; foco de anel de jade de pelo menos 1.500 PO.
+- Acrescentado teste de regressão para presença única, níveis de classe/domínio e metadados principais. A auditoria de completude do catálogo continua em andamento; esta inclusão não significa que o catálogo inteiro esteja completo.
