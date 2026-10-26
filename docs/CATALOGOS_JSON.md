@@ -72,3 +72,19 @@ Ao adicionar magias, talentos ou itens do Livro do Jogador:
 
 Os números dos catálogos no momento desta migração (2026-10-24): 52 talentos, 163 itens,
 258 magias.
+
+### Auditoria de magias de nível 7–9 (2026-10-25)
+
+As listas de magias de Clérigo, Druida e Feiticeiro/Mago de nível 7 a 9 (as únicas classes
+que chegam a esses níveis de conjuração) foram conferidas página a página contra o PDF do
+Livro do Jogador 3.5 (edição brasileira, Devir). Isso corrigiu:
+
+- 9 magias de Feiticeiro/Mago com o `classLevels` errado (estavam no nível 7, mas são do
+  nível 8: Padrão Cintilante, Clone, Criar Mortos-Vivos Maior, Evaporação, Ondas da
+  Exaustão, Símbolo da Morte, Corpo de Ferro, Estase Temporal, Metamorfosear Objetos);
+- Vidência Maior sem a classe Druida (ela também está na lista de Druida, nível 7);
+- 69 magias de nível 7-9 ausentes do catálogo, agora incluídas (Blasfêmia, Palavra do
+  Caos, Palavra Sagrada, Ditado, Cura Completa em Massa, Drenar Energia, Portal, Prender a
+  Alma, Desejo, Desejo Restrito, Chuva de Meteoros, entre outras).
+
+Catálogo após a auditoria: 52 talentos, 163 itens, 327 magias.

@@ -4791,7 +4791,7 @@
   },
   {
     "name": "Padrão Cintilante",
-    "level": 7,
+    "level": 8,
     "school": "Ilusão (Padrão) [Ação Mental]",
     "classes": [
       "Feiticeiro",
@@ -4805,8 +4805,8 @@
     "spellResistance": true,
     "description": "Cria um padrão de cores reluzentes em uma dispersão de 6 m de raio. Afeta um total de Dados de Vida de criaturas igual ao nível de conjurador, até o máximo de 20; as criaturas com menos DV são afetadas primeiro e, entre criaturas com DV iguais, as mais próximas da origem. DV insuficientes para afetar uma criatura são desperdiçados. Criaturas com 6 DV ou menos ficam inconscientes por 1d4 rodadas, depois atordoadas por 1d4 rodadas e então confusas por 1d4 rodadas; com 7 a 12 DV ficam atordoadas por 1d4 rodadas e depois confusas por 1d4 rodadas; com 13 DV ou mais ficam confusas por 1d4 rodadas. Criaturas que não conseguem enxergar não são afetadas. Componente material: pequeno prisma de cristal.",
     "classLevels": {
-      "Feiticeiro": 7,
-      "Mago": 7
+      "Feiticeiro": 8,
+      "Mago": 8
     },
     "domainLevels": {}
   },
@@ -5012,7 +5012,7 @@
   },
   {
     "name": "Criar Mortos-Vivos Maior",
-    "level": 7,
+    "level": 8,
     "school": "Necromancia [Mal]",
     "classes": [
       "Clérigo",
@@ -5028,8 +5028,8 @@
     "description": "Funciona como criar mortos-vivos, mas permite criar mortos-vivos mais poderosos e inteligentes. O tipo criado depende do nível de conjurador: até 15º nível, sombra; 16º–17º, aparição; 18º–19º, espectro; 20º nível, devorador. Consulte o Livro dos Monstros para as estatísticas das criaturas.",
     "classLevels": {
       "Clérigo": 8,
-      "Feiticeiro": 7,
-      "Mago": 7
+      "Feiticeiro": 8,
+      "Mago": 8
     },
     "domainLevels": {
       "Morte": 8
@@ -5271,7 +5271,7 @@
   },
   {
     "name": "Símbolo da Morte",
-    "level": 7,
+    "level": 8,
     "school": "Necromancia [Morte]",
     "classes": [
       "Clérigo",
@@ -5287,8 +5287,8 @@
     "description": "Inscreve uma runa mágica que, quando ativada, pode matar criaturas vivas num raio de 18 m. A magia afeta primeiro as criaturas mais próximas e não afeta aquelas cujo total de pontos de vida ultrapasse o limite combinado de 150 PV. Depois de ativado, permanece ativo por 10 minutos por nível de conjurador ou até atingir o limite de pontos de vida afetados. As regras comuns de símbolo determinam gatilho, senha, vinculação, detecção e desarme; os componentes materiais custam 5.000 PO.",
     "classLevels": {
       "Clérigo": 8,
-      "Feiticeiro": 7,
-      "Mago": 7
+      "Feiticeiro": 8,
+      "Mago": 8
     },
     "domainLevels": {}
   },
@@ -5376,7 +5376,7 @@
   },
   {
     "name": "Corpo de Ferro",
-    "level": 7,
+    "level": 8,
     "school": "Transmutação",
     "classes": [
       "Feiticeiro",
@@ -5390,8 +5390,8 @@
     "spellResistance": false,
     "description": "Transforma o corpo do conjurador em ferro vivo. Concede redução de dano 15/adamante, imunidade a cegueira, acertos críticos, dano de habilidade, surdez, doença, afogamento, eletricidade, veneno, atordoamento e efeitos que dependam de fisiologia ou respiração; reduz à metade o dano de ácido e fogo. Também concede +6 de bônus de aprimoramento em Força e impõe -6 de penalidade em Destreza (mínimo 1), além das demais limitações descritas no Livro do Jogador.",
     "classLevels": {
-      "Feiticeiro": 7,
-      "Mago": 7
+      "Feiticeiro": 8,
+      "Mago": 8
     },
     "domainLevels": {
       "Terra": 8
@@ -5399,7 +5399,7 @@
   },
   {
     "name": "Estase Temporal",
-    "level": 7,
+    "level": 8,
     "school": "Transmutação",
     "classes": [
       "Feiticeiro",
@@ -5413,14 +5413,14 @@
     "spellResistance": true,
     "description": "Após um ataque de toque corporal bem-sucedido, coloca a criatura em animação suspensa permanente: o tempo parece parar para ela, sua condição fica estável, ela não envelhece e não pode ser ferida. O efeito pode ser removido por dissipar magia bem-sucedida ou libertação. O componente material é um pó de diamante, esmeralda, rubi e safira no valor total mínimo de 5.000 PO.",
     "classLevels": {
-      "Feiticeiro": 7,
-      "Mago": 7
+      "Feiticeiro": 8,
+      "Mago": 8
     },
     "domainLevels": {}
   },
   {
     "name": "Metamorfosear Objetos",
-    "level": 7,
+    "level": 8,
     "school": "Transmutação",
     "classes": [
       "Feiticeiro",
@@ -5434,8 +5434,8 @@
     "spellResistance": true,
     "description": "Como metamorfose, mas transforma uma criatura ou objeto mundano de até 3 m³ por nível em outro. A duração depende de quão radical é a transformação; o Livro do Jogador fornece modificadores para semelhança de reino, classe, tamanho, relação e inteligência, podendo resultar em duração permanente. Teste de resistência e resistência à magia se aplicam conforme a natureza do alvo.",
     "classLevels": {
-      "Feiticeiro": 7,
-      "Mago": 7
+      "Feiticeiro": 8,
+      "Mago": 8
     },
     "domainLevels": {
       "Enganação": 8
@@ -5443,7 +5443,7 @@
   },
   {
     "name": "Clone",
-    "level": 7,
+    "level": 8,
     "school": "Necromancia",
     "classes": [
       "Feiticeiro",
@@ -5457,14 +5457,14 @@
     "spellResistance": false,
     "description": "Cria uma duplicata de um ser vivo a partir de uma amostra de seu corpo. Se a criatura original morrer, sua alma será transferida para o clone. A criação exige um recipiente especial como foco, cujo custo depende dos Dados de Vida do original, além dos componentes materiais e das condições descritas no Livro do Jogador.",
     "classLevels": {
-      "Feiticeiro": 7,
-      "Mago": 7
+      "Feiticeiro": 8,
+      "Mago": 8
     },
     "domainLevels": {}
   },
   {
     "name": "Evaporação",
-    "level": 7,
+    "level": 8,
     "school": "Necromancia",
     "classes": [
       "Feiticeiro",
@@ -5478,8 +5478,8 @@
     "spellResistance": true,
     "description": "Evapora os líquidos corporais de todas as criaturas vivas afetadas, causando 1d6 pontos de dano por nível do conjurador (máximo 20d6). Elementais da água e criaturas do tipo planta sofrem 1d8 pontos de dano por nível (máximo 20d8). Um teste de Fortitude bem-sucedido reduz o dano à metade.",
     "classLevels": {
-      "Feiticeiro": 7,
-      "Mago": 7
+      "Feiticeiro": 8,
+      "Mago": 8
     },
     "domainLevels": {
       "Água": 8
@@ -5641,7 +5641,8 @@
       "Bardo",
       "Clérigo",
       "Feiticeiro",
-      "Mago"
+      "Mago",
+      "Druida"
     ],
     "castTime": "1 ação padrão",
     "components": "V, G",
@@ -5654,7 +5655,8 @@
       "Bardo": 6,
       "Clérigo": 7,
       "Feiticeiro": 7,
-      "Mago": 7
+      "Mago": 7,
+      "Druida": 7
     },
     "domainLevels": {}
   },
@@ -5765,7 +5767,7 @@
   },
   {
     "name": "Ondas da Exaustão",
-    "level": 7,
+    "level": 8,
     "school": "Necromancia",
     "classes": [
       "Feiticeiro",
@@ -5779,9 +5781,1490 @@
     "spellResistance": true,
     "description": "Uma onda de energia negativa se espalha a partir do conjurador, deixando exaustas todas as criaturas vivas na área. Não permite teste de resistência; resistência à magia se aplica.",
     "classLevels": {
+      "Feiticeiro": 8,
+      "Mago": 8
+    },
+    "domainLevels": {}
+  },
+  {
+    "name": "Blasfêmia",
+    "level": 7,
+    "school": "Encantamento (Compulsão) [Mal, Audível]",
+    "classes": [
+      "Clérigo"
+    ],
+    "classLevels": {
+      "Clérigo": 7
+    },
+    "domainLevels": {
+      "Mal": 7
+    },
+    "castTime": "1 ação padrão",
+    "components": "V",
+    "range": "18 m",
+    "duration": "Instantânea (veja texto)",
+    "savingThrow": "Nenhum ou Vontade parcial (veja texto)",
+    "spellResistance": true,
+    "description": "Afeta toda criatura não-maligna num raio de 12 m ao redor do conjurador: mortos-vivos e criaturas de DV igual ou menor sofrem efeitos devastadores (morte, paralisia, cegueira/surdez ou enfraquecimento), de acordo com a diferença de nível/DV em relação ao conjurador."
+  },
+  {
+    "name": "Palavra do Caos",
+    "level": 7,
+    "school": "Encantamento (Compulsão) [Caos, Audível]",
+    "classes": [
+      "Clérigo"
+    ],
+    "classLevels": {
+      "Clérigo": 7
+    },
+    "domainLevels": {
+      "Caos": 7
+    },
+    "castTime": "1 ação padrão",
+    "components": "V",
+    "range": "12 m",
+    "duration": "Instantânea",
+    "savingThrow": "Nenhum ou Vontade parcial (veja texto)",
+    "spellResistance": true,
+    "description": "Afeta toda criatura não-caótica a menos de 12 m do conjurador: mata, deixa confuso, atordoa ou ensurdece alvos neutros ou leais, de acordo com a diferença de nível/DV em relação ao conjurador."
+  },
+  {
+    "name": "Ditado",
+    "level": 7,
+    "school": "Evocação [Lei, Audível]",
+    "classes": [
+      "Clérigo"
+    ],
+    "classLevels": {
+      "Clérigo": 7
+    },
+    "domainLevels": {
+      "Lei": 7
+    },
+    "castTime": "1 ação padrão",
+    "components": "V",
+    "range": "12 m",
+    "duration": "Instantânea",
+    "savingThrow": "Nenhum ou Vontade parcial (veja texto)",
+    "spellResistance": true,
+    "description": "Afeta toda criatura não-leal a menos de 12 m do conjurador: mata, paralisa, deixa lento ou ensurdece alvos neutros ou caóticos, de acordo com a diferença de nível/DV em relação ao conjurador."
+  },
+  {
+    "name": "Palavra Sagrada",
+    "level": 7,
+    "school": "Encantamento (Compulsão) [Bem, Audível]",
+    "classes": [
+      "Clérigo"
+    ],
+    "classLevels": {
+      "Clérigo": 7
+    },
+    "domainLevels": {
+      "Bem": 7
+    },
+    "castTime": "1 ação padrão",
+    "components": "V",
+    "range": "12 m",
+    "duration": "Instantânea",
+    "savingThrow": "Nenhum",
+    "spellResistance": true,
+    "description": "Afeta toda criatura não-boa a menos de 12 m do conjurador: mata, paralisa, cega ou ensurdece alvos neutros ou maus, de acordo com a diferença de nível/DV em relação ao conjurador."
+  },
+  {
+    "name": "Destruição",
+    "level": 7,
+    "school": "Necromancia [Morte]",
+    "classes": [
+      "Clérigo"
+    ],
+    "classLevels": {
+      "Clérigo": 7
+    },
+    "domainLevels": {},
+    "castTime": "1 ação padrão",
+    "components": "V, G, FD",
+    "range": "Toque",
+    "duration": "Instantânea",
+    "savingThrow": "Fortitude parcial",
+    "spellResistance": true,
+    "description": "Um ataque de toque bem-sucedido mata o alvo instantaneamente e reduz seus restos a cinzas; um teste de Fortitude bem-sucedido evita a morte, mas ainda causa 10d6 pontos de dano."
+  },
+  {
+    "name": "Controlar o Clima",
+    "level": 7,
+    "school": "Transmutação",
+    "classes": [
+      "Clérigo",
+      "Druida",
+      "Feiticeiro",
+      "Mago"
+    ],
+    "classLevels": {
+      "Clérigo": 7,
+      "Druida": 7,
       "Feiticeiro": 7,
       "Mago": 7
     },
-    "domainLevels": {}
+    "domainLevels": {
+      "Ar": 7
+    },
+    "castTime": "10 minutos",
+    "components": "V, G, M/FD",
+    "range": "Veja texto",
+    "duration": "4d12 horas",
+    "savingThrow": "Nenhum",
+    "spellResistance": false,
+    "description": "Muda o clima na área local pelas próximas horas, podendo deixá-lo melhor ou pior conforme o desejo do conjurador."
+  },
+  {
+    "name": "Infligir Ferimentos Graves em Massa",
+    "level": 7,
+    "school": "Necromancia [Mal]",
+    "classes": [
+      "Clérigo"
+    ],
+    "classLevels": {
+      "Clérigo": 7
+    },
+    "domainLevels": {},
+    "castTime": "1 ação padrão",
+    "components": "V, G, FD",
+    "range": "Médio (30 m + 3 m/nível)",
+    "duration": "Instantânea",
+    "savingThrow": "Vontade metade",
+    "spellResistance": true,
+    "description": "Causa 3d8 pontos de dano +1/nível (máx. +15) a diversas criaturas vivas a até 9 m entre si, de forma similar a infligir ferimentos graves."
+  },
+  {
+    "name": "Passeio Etéreo",
+    "level": 7,
+    "school": "Transmutação",
+    "classes": [
+      "Clérigo",
+      "Feiticeiro",
+      "Mago"
+    ],
+    "classLevels": {
+      "Clérigo": 7,
+      "Feiticeiro": 7,
+      "Mago": 7
+    },
+    "domainLevels": {},
+    "castTime": "1 ação padrão",
+    "components": "V, G",
+    "range": "Pessoal",
+    "duration": "1 rodada/nível",
+    "savingThrow": "Nenhum",
+    "spellResistance": false,
+    "description": "Você fica etéreo, podendo se mover e observar o plano material sem ser afetado por ele, durante 1 rodada por nível."
+  },
+  {
+    "name": "Refúgio",
+    "level": 7,
+    "school": "Conjuração (Teletransporte)",
+    "classes": [
+      "Clérigo",
+      "Feiticeiro",
+      "Mago"
+    ],
+    "classLevels": {
+      "Clérigo": 7,
+      "Feiticeiro": 9,
+      "Mago": 9
+    },
+    "domainLevels": {},
+    "castTime": "10 minutos",
+    "components": "V, G, M",
+    "range": "Toque",
+    "duration": "Permanente até ser descartada",
+    "savingThrow": "Nenhum",
+    "spellResistance": false,
+    "description": "Altera um item de um aliado para que, quando descartado, o transporte instantaneamente até você."
+  },
+  {
+    "name": "Regeneração",
+    "level": 7,
+    "school": "Conjuração (Cura)",
+    "classes": [
+      "Clérigo",
+      "Druida"
+    ],
+    "classLevels": {
+      "Clérigo": 7,
+      "Druida": 9
+    },
+    "domainLevels": {},
+    "castTime": "3 rodadas",
+    "components": "V, G, M",
+    "range": "Toque",
+    "duration": "Instantânea",
+    "savingThrow": "Nenhum",
+    "spellResistance": false,
+    "description": "Membros decepados do alvo crescem novamente, cura 4d8 pontos de dano +1/nível (máx. +35) e remove fadiga, exaustão e a maioria das condições negativas, exceto negativas de nível."
+  },
+  {
+    "name": "Repulsão",
+    "level": 6,
+    "school": "Abjuração",
+    "classes": [
+      "Clérigo",
+      "Feiticeiro",
+      "Mago"
+    ],
+    "classLevels": {
+      "Clérigo": 7,
+      "Feiticeiro": 6,
+      "Mago": 6
+    },
+    "domainLevels": {},
+    "castTime": "1 ação padrão",
+    "components": "V, G, M/FD",
+    "range": "Pessoal",
+    "duration": "1 rodada/nível (D)",
+    "savingThrow": "Nenhum",
+    "spellResistance": false,
+    "description": "Criaturas não podem se aproximar do conjurador; qualquer uma que tente é repelida."
+  },
+  {
+    "name": "Símbolo da Fraqueza",
+    "level": 7,
+    "school": "Necromancia",
+    "classes": [
+      "Clérigo",
+      "Feiticeiro",
+      "Mago"
+    ],
+    "classLevels": {
+      "Clérigo": 7,
+      "Feiticeiro": 7,
+      "Mago": 7
+    },
+    "domainLevels": {},
+    "castTime": "Veja texto",
+    "components": "V, G, M",
+    "range": "0 m (veja texto)",
+    "duration": "Permanente até ser ativado, depois instantânea",
+    "savingThrow": "Fortitude anula",
+    "spellResistance": true,
+    "description": "Inscreve uma runa que, quando ativada, enfraquece as criaturas próximas, reduzindo sua Força."
+  },
+  {
+    "name": "Símbolo do Atordoamento",
+    "level": 7,
+    "school": "Encantamento (Compulsão) [Mental]",
+    "classes": [
+      "Clérigo",
+      "Feiticeiro",
+      "Mago"
+    ],
+    "classLevels": {
+      "Clérigo": 7,
+      "Feiticeiro": 7,
+      "Mago": 7
+    },
+    "domainLevels": {},
+    "castTime": "Veja texto",
+    "components": "V, G, M",
+    "range": "0 m (veja texto)",
+    "duration": "Permanente até ser ativado, depois instantânea",
+    "savingThrow": "Vontade anula",
+    "spellResistance": true,
+    "description": "Inscreve uma runa que, quando ativada, atordoa as criaturas próximas por 1d6 rodadas."
+  },
+  {
+    "name": "Cura Completa em Massa",
+    "level": 9,
+    "school": "Conjuração (Cura)",
+    "classes": [
+      "Clérigo"
+    ],
+    "classLevels": {
+      "Clérigo": 9
+    },
+    "domainLevels": {},
+    "castTime": "1 ação padrão",
+    "components": "V, G",
+    "range": "Curto (7,5 m + 1,5 m/2 níveis)",
+    "duration": "Instantânea",
+    "savingThrow": "Nenhum (inofensiva)",
+    "spellResistance": true,
+    "description": "Cura 10 pontos de vida por nível de diversas criaturas a até 9 m entre si, além de curar todas as doenças e problemas mentais que as afetem."
+  },
+  {
+    "name": "Drenar Energia",
+    "level": 9,
+    "school": "Necromancia",
+    "classes": [
+      "Clérigo",
+      "Feiticeiro",
+      "Mago"
+    ],
+    "classLevels": {
+      "Clérigo": 9,
+      "Feiticeiro": 9,
+      "Mago": 9
+    },
+    "domainLevels": {},
+    "castTime": "1 ação padrão",
+    "components": "V, G",
+    "range": "Toque",
+    "duration": "Instantânea",
+    "savingThrow": "Fortitude parcial",
+    "spellResistance": true,
+    "description": "Um ataque de toque bem-sucedido impõe 2d4 níveis negativos ao alvo."
+  },
+  {
+    "name": "Forma Etérea",
+    "level": 9,
+    "school": "Transmutação",
+    "classes": [
+      "Clérigo",
+      "Feiticeiro",
+      "Mago"
+    ],
+    "classLevels": {
+      "Clérigo": 9,
+      "Feiticeiro": 9,
+      "Mago": 9
+    },
+    "domainLevels": {},
+    "castTime": "1 ação padrão",
+    "components": "V, G",
+    "range": "Toque",
+    "duration": "1 min/nível (D)",
+    "savingThrow": "Nenhum",
+    "spellResistance": false,
+    "description": "Viaje para o Plano Etéreo junto com até uma criatura por nível, tocadas no momento da conjuração."
+  },
+  {
+    "name": "Implosão",
+    "level": 9,
+    "school": "Evocação",
+    "classes": [
+      "Clérigo"
+    ],
+    "classLevels": {
+      "Clérigo": 9
+    },
+    "domainLevels": {},
+    "castTime": "1 ação padrão",
+    "components": "V, G, FD",
+    "range": "Médio (30 m + 3 m/nível)",
+    "duration": "Até 4 rodadas (veja texto)",
+    "savingThrow": "Fortitude anula",
+    "spellResistance": true,
+    "description": "Mata 1 criatura por rodada enquanto durar a concentração, a menos que resista com um teste de Fortitude."
+  },
+  {
+    "name": "Milagre",
+    "level": 9,
+    "school": "Evocação [Veja texto]",
+    "classes": [
+      "Clérigo"
+    ],
+    "classLevels": {
+      "Clérigo": 9
+    },
+    "domainLevels": {},
+    "castTime": "1 ação padrão",
+    "components": "V, G, FD, XP (veja texto)",
+    "range": "Veja texto",
+    "duration": "Veja texto",
+    "savingThrow": "Nenhum (veja texto)",
+    "spellResistance": true,
+    "description": "Pede a intervenção direta de sua divindade, duplicando o efeito de outra magia divina de nível 8 ou menor, ou produzindo um efeito similar que a divindade esteja disposta a conceder."
+  },
+  {
+    "name": "Invocar Criaturas IX",
+    "level": 9,
+    "school": "Conjuração (Convocação)",
+    "classes": [
+      "Clérigo",
+      "Feiticeiro",
+      "Mago"
+    ],
+    "classLevels": {
+      "Clérigo": 9,
+      "Feiticeiro": 9,
+      "Mago": 9
+    },
+    "domainLevels": {},
+    "castTime": "1 rodada",
+    "components": "V, G, M/FD",
+    "range": "Curto (7,5 m + 1,5 m/2 níveis)",
+    "duration": "1 rodada/nível (D)",
+    "savingThrow": "Nenhum",
+    "spellResistance": false,
+    "description": "Invoca um ser extra-planar da lista de nível 9 para auxiliar o conjurador."
+  },
+  {
+    "name": "Portal",
+    "level": 9,
+    "school": "Conjuração (Convocação)",
+    "classes": [
+      "Clérigo",
+      "Feiticeiro",
+      "Mago"
+    ],
+    "classLevels": {
+      "Clérigo": 9,
+      "Feiticeiro": 9,
+      "Mago": 9
+    },
+    "domainLevels": {},
+    "castTime": "1 ação padrão",
+    "components": "V, G, XP",
+    "range": "Curto (7,5 m + 1,5 m/2 níveis)",
+    "duration": "Instantânea ou concentração (até 1 rodada/nível)",
+    "savingThrow": "Veja texto",
+    "spellResistance": false,
+    "description": "Conecta dois planos para viagens ou invocações, permitindo que criaturas passem livremente entre eles enquanto durar, ou invocando um ser específico através dele."
+  },
+  {
+    "name": "Prender a Alma",
+    "level": 9,
+    "school": "Necromancia [Mal]",
+    "classes": [
+      "Clérigo",
+      "Feiticeiro",
+      "Mago"
+    ],
+    "classLevels": {
+      "Clérigo": 9,
+      "Feiticeiro": 9,
+      "Mago": 9
+    },
+    "domainLevels": {},
+    "castTime": "1 ação padrão",
+    "components": "V, G, FD",
+    "range": "Curto (7,5 m + 1,5 m/2 níveis)",
+    "duration": "Permanente",
+    "savingThrow": "Nenhum",
+    "spellResistance": false,
+    "description": "Prende a alma de uma criatura recentemente falecida, impedindo que seja restaurada à vida por ressurreição ou magias similares."
+  },
+  {
+    "name": "Projeção Astral",
+    "level": 9,
+    "school": "Necromancia",
+    "classes": [
+      "Clérigo",
+      "Feiticeiro",
+      "Mago"
+    ],
+    "classLevels": {
+      "Clérigo": 9,
+      "Feiticeiro": 9,
+      "Mago": 9
+    },
+    "domainLevels": {},
+    "castTime": "30 minutos",
+    "components": "V, G, M",
+    "range": "Toque",
+    "duration": "Veja texto",
+    "savingThrow": "Nenhum",
+    "spellResistance": false,
+    "description": "Projeta você e seus companheiros para o Plano Astral, deixando seus corpos em transe no plano material."
+  },
+  {
+    "name": "Tempestade da Vingança",
+    "level": 9,
+    "school": "Conjuração (Criação) [Eletricidade]",
+    "classes": [
+      "Clérigo",
+      "Druida"
+    ],
+    "classLevels": {
+      "Clérigo": 9,
+      "Druida": 9
+    },
+    "domainLevels": {},
+    "castTime": "1 ação padrão",
+    "components": "V, G, FD",
+    "range": "Longo (120 m + 12 m/nível)",
+    "duration": "1 rodada/nível",
+    "savingThrow": "Veja texto",
+    "spellResistance": true,
+    "description": "Cria uma tempestade violenta de ácido, granizo, raios e vento numa área de 110 m de raio, causando dano contínuo a quem estiver nela."
+  },
+  {
+    "name": "Animar Plantas",
+    "level": 7,
+    "school": "Transmutação",
+    "classes": [
+      "Druida"
+    ],
+    "classLevels": {
+      "Druida": 7
+    },
+    "domainLevels": {
+      "Planta": 7
+    },
+    "castTime": "1 ação padrão",
+    "components": "V, G",
+    "range": "Longo (120 m + 12 m/nível)",
+    "duration": "Instantânea ou 1 rodada/nível (D)",
+    "savingThrow": "Nenhum",
+    "spellResistance": false,
+    "description": "Uma ou mais plantas comuns animam e passam a lutar ou agir sob o comando do conjurador, auxiliando-o no combate."
+  },
+  {
+    "name": "Cajado Vivo",
+    "level": 7,
+    "school": "Transmutação",
+    "classes": [
+      "Druida"
+    ],
+    "classLevels": {
+      "Druida": 7
+    },
+    "domainLevels": {
+      "Planta": 7
+    },
+    "castTime": "1 dia",
+    "components": "V, G, M",
+    "range": "Toque",
+    "duration": "Permanente",
+    "savingThrow": "Nenhum",
+    "spellResistance": false,
+    "description": "Transforma seu bordão num ente que serve de guardião, capaz de agir e lutar por conta própria quando necessário."
+  },
+  {
+    "name": "Caminhar no Vento",
+    "level": 6,
+    "school": "Transmutação",
+    "classes": [
+      "Clérigo",
+      "Druida"
+    ],
+    "classLevels": {
+      "Clérigo": 6,
+      "Druida": 7
+    },
+    "domainLevels": {
+      "Ar": 6,
+      "Viagem": 6
+    },
+    "castTime": "1 ação padrão",
+    "components": "V, G",
+    "range": "Toque",
+    "duration": "1 hora/nível (D)",
+    "savingThrow": "Nenhum (inofensiva)",
+    "spellResistance": false,
+    "description": "Você e seus aliados se transformam em vapores etéreos e viajam pelo ar a grande velocidade."
+  },
+  {
+    "name": "Destruição Rastejante",
+    "level": 7,
+    "school": "Conjuração (Convocação)",
+    "classes": [
+      "Druida"
+    ],
+    "classLevels": {
+      "Druida": 7
+    },
+    "domainLevels": {},
+    "castTime": "1 ação padrão",
+    "components": "V, G, M/FD",
+    "range": "Longo (120 m + 12 m/nível)",
+    "duration": "Concentração (até 5 rodadas) + 2 rodadas/nível",
+    "savingThrow": "Nenhum",
+    "spellResistance": false,
+    "description": "Convoca um enxame rastejante de centopeias, escorpiões ou aranhas que ataca sob o comando do conjurador."
+  },
+  {
+    "name": "Metal em Madeira",
+    "level": 7,
+    "school": "Transmutação",
+    "classes": [
+      "Druida"
+    ],
+    "classLevels": {
+      "Druida": 7
+    },
+    "domainLevels": {},
+    "castTime": "1 ação padrão",
+    "components": "V, G, FD",
+    "range": "12 m de raio",
+    "duration": "Instantânea",
+    "savingThrow": "Vontade anula (objeto)",
+    "spellResistance": true,
+    "description": "Transforma todo metal a até 12 m do conjurador em madeira comum, inutilizando armas e armaduras metálicas."
+  },
+  {
+    "name": "Raio de Sol",
+    "level": 7,
+    "school": "Evocação [Luz]",
+    "classes": [
+      "Druida"
+    ],
+    "classLevels": {
+      "Druida": 7
+    },
+    "domainLevels": {
+      "Sol": 7
+    },
+    "castTime": "1 ação padrão",
+    "components": "V, G",
+    "range": "18 m (linha)",
+    "duration": "Instantânea",
+    "savingThrow": "Reflexos parcial",
+    "spellResistance": true,
+    "description": "Um raio de luz pura cega criaturas na área e causa 4d6 pontos de dano a mortos-vivos e outras criaturas vulneráveis à luz solar."
+  },
+  {
+    "name": "Visão da Verdade",
+    "level": 5,
+    "school": "Adivinhação",
+    "classes": [
+      "Clérigo",
+      "Druida",
+      "Feiticeiro",
+      "Mago"
+    ],
+    "classLevels": {
+      "Clérigo": 5,
+      "Druida": 7,
+      "Feiticeiro": 6,
+      "Mago": 6
+    },
+    "domainLevels": {
+      "Sol": 5
+    },
+    "castTime": "1 ação padrão",
+    "components": "V, G, M, FD",
+    "range": "Pessoal",
+    "duration": "1 rodada/nível",
+    "savingThrow": "Nenhum",
+    "spellResistance": false,
+    "description": "Mostra todas as coisas em sua forma verdadeira, revelando ilusões, disfarces e formas alteradas."
+  },
+  {
+    "name": "Grupo de Elementais",
+    "level": 9,
+    "school": "Conjuração (Convocação)",
+    "classes": [
+      "Druida"
+    ],
+    "classLevels": {
+      "Druida": 9
+    },
+    "domainLevels": {
+      "Água": 9,
+      "Ar": 9,
+      "Terra": 9,
+      "Fogo": 9
+    },
+    "castTime": "1 rodada",
+    "components": "V, G",
+    "range": "Curto (7,5 m + 1,5 m/2 níveis)",
+    "duration": "1 rodada/nível (D)",
+    "savingThrow": "Nenhum",
+    "spellResistance": false,
+    "description": "Invoca vários elementais para auxiliar o conjurador; quando conjurada como magia de domínio, só podem ser invocados elementais do elemento correspondente."
+  },
+  {
+    "name": "Homens Vegetais",
+    "level": 9,
+    "school": "Conjuração (Convocação) [Planta]",
+    "classes": [
+      "Druida"
+    ],
+    "classLevels": {
+      "Druida": 9
+    },
+    "domainLevels": {
+      "Planta": 9
+    },
+    "castTime": "1 ação padrão",
+    "components": "V, G",
+    "range": "Curto (7,5 m + 1,5 m/2 níveis)",
+    "duration": "1 rodada/nível (D)",
+    "savingThrow": "Nenhum",
+    "spellResistance": false,
+    "description": "Invoca 1d4+2 homens-planta (shamblers) para auxiliarem o conjurador em combate."
+  },
+  {
+    "name": "Invocar Aliado da Natureza IX",
+    "level": 9,
+    "school": "Conjuração (Convocação)",
+    "classes": [
+      "Druida"
+    ],
+    "classLevels": {
+      "Druida": 9
+    },
+    "domainLevels": {},
+    "castTime": "1 rodada",
+    "components": "V, G",
+    "range": "Curto (7,5 m + 1,5 m/2 níveis)",
+    "duration": "1 rodada/nível (D)",
+    "savingThrow": "Nenhum",
+    "spellResistance": false,
+    "description": "Invoca uma criatura da lista de aliados da natureza de nível 9 para auxiliar o conjurador."
+  },
+  {
+    "name": "Sexto Sentido",
+    "level": 9,
+    "school": "Adivinhação",
+    "classes": [
+      "Druida",
+      "Feiticeiro",
+      "Mago"
+    ],
+    "classLevels": {
+      "Druida": 9,
+      "Feiticeiro": 9,
+      "Mago": 9
+    },
+    "domainLevels": {},
+    "castTime": "1 ação padrão",
+    "components": "V, G, M/FD",
+    "range": "Pessoal",
+    "duration": "1 min/nível",
+    "savingThrow": "Nenhum",
+    "spellResistance": false,
+    "description": "Lhe avisa sobre perigos iminentes, concedendo bônus de intuição às jogadas de ataque, à CA e aos testes de resistência."
+  },
+  {
+    "name": "Mansão Magnífica de Mordenkainen",
+    "level": 7,
+    "school": "Conjuração (Criação)",
+    "classes": [
+      "Feiticeiro",
+      "Mago"
+    ],
+    "classLevels": {
+      "Feiticeiro": 7,
+      "Mago": 7
+    },
+    "domainLevels": {},
+    "castTime": "10 minutos",
+    "components": "V, G, M",
+    "range": "Curto (7,5 m + 1,5 m/2 níveis)",
+    "duration": "2 horas/nível (D)",
+    "savingThrow": "Nenhum",
+    "spellResistance": false,
+    "description": "Cria uma entrada extra-dimensional para uma mansão luxuosa e mobiliada, com criados invisíveis para atender o conjurador e seus convidados."
+  },
+  {
+    "name": "Passagem Invisível",
+    "level": 7,
+    "school": "Transmutação",
+    "classes": [
+      "Feiticeiro",
+      "Mago"
+    ],
+    "classLevels": {
+      "Feiticeiro": 7,
+      "Mago": 7
+    },
+    "domainLevels": {
+      "Viagem": 7
+    },
+    "castTime": "1 ação padrão",
+    "components": "V, G",
+    "range": "Toque",
+    "duration": "1 hora/nível ou até ser usada (D)",
+    "savingThrow": "Nenhum",
+    "spellResistance": false,
+    "description": "Cria uma passagem invisível através de uma parede de madeira ou pedra, permitindo atravessá-la livremente até a magia terminar."
+  },
+  {
+    "name": "Teletransportar Objeto",
+    "level": 7,
+    "school": "Conjuração (Teletransporte)",
+    "classes": [
+      "Feiticeiro",
+      "Mago"
+    ],
+    "classLevels": {
+      "Feiticeiro": 7,
+      "Mago": 7
+    },
+    "domainLevels": {},
+    "castTime": "1 ação padrão",
+    "components": "V, G",
+    "range": "Toque",
+    "duration": "Instantânea",
+    "savingThrow": "Vontade anula (objeto)",
+    "spellResistance": true,
+    "description": "Funciona como teletransporte, mas afeta apenas um objeto tocado, enviando-o a um destino familiar ao conjurador."
+  },
+  {
+    "name": "Teletransporte Maior",
+    "level": 7,
+    "school": "Conjuração (Teletransporte)",
+    "classes": [
+      "Feiticeiro",
+      "Mago"
+    ],
+    "classLevels": {
+      "Feiticeiro": 7,
+      "Mago": 7
+    },
+    "domainLevels": {
+      "Viagem": 7
+    },
+    "castTime": "1 ação padrão",
+    "components": "V",
+    "range": "Pessoal",
+    "duration": "Instantânea",
+    "savingThrow": "Nenhum",
+    "spellResistance": false,
+    "description": "Funciona como teletransporte, mas sem limite de alcance e nunca erra o local de destino, mesmo que pouco familiar."
+  },
+  {
+    "name": "Viagem Planar",
+    "level": 7,
+    "school": "Conjuração (Teletransporte)",
+    "classes": [
+      "Feiticeiro",
+      "Mago"
+    ],
+    "classLevels": {
+      "Feiticeiro": 7,
+      "Mago": 7
+    },
+    "domainLevels": {
+      "Viagem": 7
+    },
+    "castTime": "1 ação padrão",
+    "components": "V, G",
+    "range": "Toque",
+    "duration": "Instantânea",
+    "savingThrow": "Nenhum",
+    "spellResistance": false,
+    "description": "Até oito alvos tocados viajam instantaneamente para outro plano de existência escolhido pelo conjurador."
+  },
+  {
+    "name": "Imobilizar Pessoa em Massa",
+    "level": 7,
+    "school": "Encantamento (Compulsão) [Mental]",
+    "classes": [
+      "Feiticeiro",
+      "Mago"
+    ],
+    "classLevels": {
+      "Feiticeiro": 7,
+      "Mago": 7
+    },
+    "domainLevels": {},
+    "castTime": "1 ação padrão",
+    "components": "V, G",
+    "range": "Longo (120 m + 12 m/nível)",
+    "duration": "1 rodada/nível (D)",
+    "savingThrow": "Vontade anula",
+    "spellResistance": true,
+    "description": "Funciona como imobilizar pessoa, mas afeta todos os humanoides a até 9 m entre si dentro do alcance."
+  },
+  {
+    "name": "Insanidade",
+    "level": 7,
+    "school": "Encantamento (Compulsão) [Mental]",
+    "classes": [
+      "Feiticeiro",
+      "Mago"
+    ],
+    "classLevels": {
+      "Feiticeiro": 7,
+      "Mago": 7
+    },
+    "domainLevels": {},
+    "castTime": "1 ação padrão",
+    "components": "V, G, M",
+    "range": "Médio (30 m + 3 m/nível)",
+    "duration": "Permanente",
+    "savingThrow": "Vontade anula",
+    "spellResistance": true,
+    "description": "O alvo sofre confusão contínua e permanente, agindo de forma aleatória e incontrolável até a magia ser removida."
+  },
+  {
+    "name": "Palavra de Poder, Cegar",
+    "level": 7,
+    "school": "Encantamento (Compulsão) [Mental]",
+    "classes": [
+      "Feiticeiro",
+      "Mago"
+    ],
+    "classLevels": {
+      "Feiticeiro": 7,
+      "Mago": 7
+    },
+    "domainLevels": {},
+    "castTime": "1 ação padrão",
+    "components": "V",
+    "range": "Médio (30 m + 3 m/nível)",
+    "duration": "Permanente ou instantânea (veja texto)",
+    "savingThrow": "Nenhum",
+    "spellResistance": true,
+    "description": "Cega instantaneamente uma criatura com até 200 pontos de vida; uma única palavra basta, sem direito a teste de resistência."
+  },
+  {
+    "name": "Bola de Fogo Controlável",
+    "level": 7,
+    "school": "Evocação [Fogo]",
+    "classes": [
+      "Feiticeiro",
+      "Mago"
+    ],
+    "classLevels": {
+      "Feiticeiro": 7,
+      "Mago": 7
+    },
+    "domainLevels": {},
+    "castTime": "1 ação padrão",
+    "components": "V, G, M",
+    "range": "Longo (120 m + 12 m/nível)",
+    "duration": "Veja texto",
+    "savingThrow": "Reflexos metade",
+    "spellResistance": true,
+    "description": "Causa 1d6 pontos de dano de fogo por nível a tudo dentro de uma esfera, mas o conjurador pode retardar a explosão por até 5 rodadas."
+  },
+  {
+    "name": "Cubo de Energia",
+    "level": 7,
+    "school": "Evocação [Veja texto]",
+    "classes": [
+      "Feiticeiro",
+      "Mago"
+    ],
+    "classLevels": {
+      "Feiticeiro": 7,
+      "Mago": 7
+    },
+    "domainLevels": {},
+    "castTime": "1 ação padrão",
+    "components": "V, G",
+    "range": "Médio (30 m + 3 m/nível)",
+    "duration": "Concentração (até 1 rodada/nível) + 1 rodada/nível",
+    "savingThrow": "Reflexos parcial",
+    "spellResistance": true,
+    "description": "Cria um cubo de energia de 3 m de lado que aprisiona e causa dano contínuo a tudo dentro dele."
+  },
+  {
+    "name": "Espada de Mordenkainen",
+    "level": 7,
+    "school": "Evocação [Força]",
+    "classes": [
+      "Feiticeiro",
+      "Mago"
+    ],
+    "classLevels": {
+      "Feiticeiro": 7,
+      "Mago": 7
+    },
+    "domainLevels": {},
+    "castTime": "1 ação padrão",
+    "components": "V, G, M, F",
+    "range": "Médio (30 m + 3 m/nível)",
+    "duration": "1 rodada/nível (D)",
+    "savingThrow": "Nenhum",
+    "spellResistance": false,
+    "description": "Cria uma lâmina mágica flutuante que ataca os oponentes escolhidos pelo conjurador a cada rodada."
+  },
+  {
+    "name": "Mão Poderosa de Bigby",
+    "level": 7,
+    "school": "Evocação [Força]",
+    "classes": [
+      "Feiticeiro",
+      "Mago"
+    ],
+    "classLevels": {
+      "Feiticeiro": 7,
+      "Mago": 7
+    },
+    "domainLevels": {},
+    "castTime": "1 ação padrão",
+    "components": "V, G",
+    "range": "Médio (30 m + 3 m/nível)",
+    "duration": "1 rodada/nível (D)",
+    "savingThrow": "Nenhum",
+    "spellResistance": false,
+    "description": "Uma mão espectral de força empurra ou afasta criaturas e objetos para longe do conjurador."
+  },
+  {
+    "name": "Rajada Prismática",
+    "level": 7,
+    "school": "Evocação [Veja texto]",
+    "classes": [
+      "Feiticeiro",
+      "Mago"
+    ],
+    "classLevels": {
+      "Feiticeiro": 7,
+      "Mago": 7
+    },
+    "domainLevels": {},
+    "castTime": "1 ação padrão",
+    "components": "V, G",
+    "range": "18 m (cone)",
+    "duration": "Instantânea",
+    "savingThrow": "Veja texto",
+    "spellResistance": true,
+    "description": "Raios coloridos atingem os alvos num cone, cada cor causando um efeito diferente (dano, cegueira, paralisia, transformação em pedra, etc.)."
+  },
+  {
+    "name": "Conjuração de Sombras Maior",
+    "level": 7,
+    "school": "Ilusão (Sombra)",
+    "classes": [
+      "Feiticeiro",
+      "Mago"
+    ],
+    "classLevels": {
+      "Feiticeiro": 7,
+      "Mago": 7
+    },
+    "domainLevels": {},
+    "castTime": "1 ação padrão",
+    "components": "V, G, M/F",
+    "range": "Veja texto",
+    "duration": "Veja texto",
+    "savingThrow": "Veja texto",
+    "spellResistance": true,
+    "description": "Funciona como conjuração de sombras, mas pode duplicar qualquer magia de conjuração de até 6º nível, sendo a magia 60% real."
+  },
+  {
+    "name": "Invisibilidade em Massa",
+    "level": 7,
+    "school": "Ilusão (Camuflagem)",
+    "classes": [
+      "Feiticeiro",
+      "Mago"
+    ],
+    "classLevels": {
+      "Feiticeiro": 7,
+      "Mago": 7
+    },
+    "domainLevels": {},
+    "castTime": "1 ação padrão",
+    "components": "V, G, M",
+    "range": "Médio (30 m + 3 m/nível)",
+    "duration": "1 min/nível (D)",
+    "savingThrow": "Nenhum (inofensiva) ou Vontade anula (inofensiva)",
+    "spellResistance": true,
+    "description": "Funciona como invisibilidade, mas afeta todas as criaturas escolhidas dentro do alcance."
+  },
+  {
+    "name": "Projetar Imagem",
+    "level": 7,
+    "school": "Ilusão (Figura)",
+    "classes": [
+      "Feiticeiro",
+      "Mago"
+    ],
+    "classLevels": {
+      "Feiticeiro": 7,
+      "Mago": 7
+    },
+    "domainLevels": {},
+    "castTime": "1 ação padrão",
+    "components": "V, G, M",
+    "range": "Longo (120 m + 12 m/nível)",
+    "duration": "1 min/nível (D)",
+    "savingThrow": "Nenhum ou Vontade descrê (se interagir)",
+    "spellResistance": false,
+    "description": "Cria uma cópia ilusória sua que pode se mover, falar, conjurar magias e agir à distância sob seu controle."
+  },
+  {
+    "name": "Simulacro",
+    "level": 7,
+    "school": "Ilusão (Criação) [Frio]",
+    "classes": [
+      "Feiticeiro",
+      "Mago"
+    ],
+    "classLevels": {
+      "Feiticeiro": 7,
+      "Mago": 7
+    },
+    "domainLevels": {},
+    "castTime": "12 horas",
+    "components": "V, G, M, XP",
+    "range": "Toque",
+    "duration": "Permanente",
+    "savingThrow": "Nenhum",
+    "spellResistance": false,
+    "description": "Cria uma duplicata parcialmente real de uma criatura, feita de gelo e neve, com metade dos níveis e pontos de vida do original e leal ao conjurador."
+  },
+  {
+    "name": "Controlar Mortos-Vivos",
+    "level": 7,
+    "school": "Necromancia",
+    "classes": [
+      "Feiticeiro",
+      "Mago"
+    ],
+    "classLevels": {
+      "Feiticeiro": 7,
+      "Mago": 7
+    },
+    "domainLevels": {},
+    "castTime": "1 ação padrão",
+    "components": "V, G, M",
+    "range": "Médio (30 m + 3 m/nível)",
+    "duration": "1 dia/nível",
+    "savingThrow": "Vontade anula",
+    "spellResistance": true,
+    "description": "Os mortos-vivos na área ficam sob o controle do conjurador e não o atacam enquanto durar a magia."
+  },
+  {
+    "name": "Estátua",
+    "level": 7,
+    "school": "Transmutação",
+    "classes": [
+      "Feiticeiro",
+      "Mago"
+    ],
+    "classLevels": {
+      "Feiticeiro": 7,
+      "Mago": 7
+    },
+    "domainLevels": {},
+    "castTime": "1 ação padrão",
+    "components": "V, G, M",
+    "range": "Toque",
+    "duration": "1 hora/nível (D)",
+    "savingThrow": "Nenhum (inofensiva)",
+    "spellResistance": false,
+    "description": "O alvo pode se tornar uma estátua de pedra à vontade, permanecendo totalmente consciente e podendo retomar a forma normal quando desejar."
+  },
+  {
+    "name": "Desejo Restrito",
+    "level": 7,
+    "school": "Universal",
+    "classes": [
+      "Feiticeiro",
+      "Mago"
+    ],
+    "classLevels": {
+      "Feiticeiro": 7,
+      "Mago": 7
+    },
+    "domainLevels": {},
+    "castTime": "1 ação padrão",
+    "components": "V, G, M",
+    "range": "Veja texto",
+    "duration": "Veja texto",
+    "savingThrow": "Nenhum (veja texto)",
+    "spellResistance": true,
+    "description": "Altera a realidade dentro de certos limites, duplicando qualquer magia de até 6º nível ou produzindo um efeito limitado semelhante a um desejo."
+  },
+  {
+    "name": "Aprisionamento",
+    "level": 9,
+    "school": "Abjuração",
+    "classes": [
+      "Feiticeiro",
+      "Mago"
+    ],
+    "classLevels": {
+      "Feiticeiro": 9,
+      "Mago": 9
+    },
+    "domainLevels": {},
+    "castTime": "1 ação padrão",
+    "components": "V, G, M",
+    "range": "Toque",
+    "duration": "Permanente",
+    "savingThrow": "Vontade anula",
+    "spellResistance": true,
+    "description": "Prende o alvo sob a terra num sono sem sonhos, de onde só pode ser liberto por uma magia libertação ou um desejo/milagre."
+  },
+  {
+    "name": "Disjunção de Mordenkainen",
+    "level": 9,
+    "school": "Abjuração",
+    "classes": [
+      "Feiticeiro",
+      "Mago"
+    ],
+    "classLevels": {
+      "Feiticeiro": 9,
+      "Mago": 9
+    },
+    "domainLevels": {},
+    "castTime": "1 ação padrão",
+    "components": "V",
+    "range": "Médio (30 m + 3 m/nível)",
+    "duration": "Instantânea",
+    "savingThrow": "Nenhum",
+    "spellResistance": false,
+    "description": "Dissipa toda a magia numa área, destrói itens mágicos (com chance de os mais poderosos resistirem) e desencanta itens mágicos."
+  },
+  {
+    "name": "Esfera Prismática",
+    "level": 9,
+    "school": "Abjuração [Veja texto]",
+    "classes": [
+      "Feiticeiro",
+      "Mago"
+    ],
+    "classLevels": {
+      "Feiticeiro": 9,
+      "Mago": 9
+    },
+    "domainLevels": {},
+    "castTime": "1 ação padrão",
+    "components": "V, G",
+    "range": "Pessoal",
+    "duration": "1 min/nível",
+    "savingThrow": "Veja texto",
+    "spellResistance": true,
+    "description": "Como muralha prismática, mas forma uma esfera opaca ao redor do conjurador que bloqueia ataques, visão e até magias de nível 8 ou menor."
+  },
+  {
+    "name": "Libertação",
+    "level": 9,
+    "school": "Abjuração",
+    "classes": [
+      "Feiticeiro",
+      "Mago"
+    ],
+    "classLevels": {
+      "Feiticeiro": 9,
+      "Mago": 9
+    },
+    "domainLevels": {},
+    "castTime": "1 ação padrão",
+    "components": "V, G, M",
+    "range": "Toque",
+    "duration": "Instantânea",
+    "savingThrow": "Nenhum",
+    "spellResistance": false,
+    "description": "Liberta uma criatura presa por uma magia aprisionamento ou efeito similar."
+  },
+  {
+    "name": "Círculo de Teletransporte",
+    "level": 9,
+    "school": "Conjuração (Teletransporte)",
+    "classes": [
+      "Feiticeiro",
+      "Mago"
+    ],
+    "classLevels": {
+      "Feiticeiro": 9,
+      "Mago": 9
+    },
+    "domainLevels": {},
+    "castTime": "10 minutos",
+    "components": "V, G, M",
+    "range": "0 m",
+    "duration": "Permanente",
+    "savingThrow": "Nenhum",
+    "spellResistance": false,
+    "description": "Teletransporta qualquer criatura que pise no círculo mágico desenhado até um local designado pelo conjurador."
+  },
+  {
+    "name": "Dominar Monstro",
+    "level": 9,
+    "school": "Encantamento (Compulsão) [Mental]",
+    "classes": [
+      "Feiticeiro",
+      "Mago"
+    ],
+    "classLevels": {
+      "Feiticeiro": 9,
+      "Mago": 9
+    },
+    "domainLevels": {},
+    "castTime": "1 ação padrão",
+    "components": "V",
+    "range": "Médio (30 m + 3 m/nível)",
+    "duration": "Veja texto (D)",
+    "savingThrow": "Vontade anula",
+    "spellResistance": true,
+    "description": "Funciona como dominar pessoa, mas pode afetar qualquer tipo de criatura, não apenas humanoides."
+  },
+  {
+    "name": "Imobilizar Monstro em Massa",
+    "level": 9,
+    "school": "Transmutação",
+    "classes": [
+      "Feiticeiro",
+      "Mago"
+    ],
+    "classLevels": {
+      "Feiticeiro": 9,
+      "Mago": 9
+    },
+    "domainLevels": {},
+    "castTime": "1 ação padrão",
+    "components": "V, G",
+    "range": "Longo (120 m + 12 m/nível)",
+    "duration": "1 min/nível (D)",
+    "savingThrow": "Vontade anula",
+    "spellResistance": true,
+    "description": "Funciona como imobilizar monstro, mas afeta todas as criaturas a até 9 m entre si dentro do alcance."
+  },
+  {
+    "name": "Palavra de Poder, Matar",
+    "level": 9,
+    "school": "Encantamento (Compulsão) [Mental]",
+    "classes": [
+      "Feiticeiro",
+      "Mago"
+    ],
+    "classLevels": {
+      "Feiticeiro": 9,
+      "Mago": 9
+    },
+    "domainLevels": {},
+    "castTime": "1 ação padrão",
+    "components": "V",
+    "range": "Médio (30 m + 3 m/nível)",
+    "duration": "Instantânea",
+    "savingThrow": "Nenhum",
+    "spellResistance": true,
+    "description": "Mata instantaneamente uma criatura com até 100 pontos de vida, ou causa 3d6+10 pontos de dano se tiver mais."
+  },
+  {
+    "name": "Chuva de Meteoros",
+    "level": 9,
+    "school": "Evocação [Fogo]",
+    "classes": [
+      "Feiticeiro",
+      "Mago"
+    ],
+    "classLevels": {
+      "Feiticeiro": 9,
+      "Mago": 9
+    },
+    "domainLevels": {},
+    "castTime": "1 ação padrão",
+    "components": "V, G",
+    "range": "Longo (120 m + 12 m/nível)",
+    "duration": "Instantânea",
+    "savingThrow": "Reflexos metade",
+    "spellResistance": true,
+    "description": "Quatro esferas flamejantes voam até os pontos escolhidos, cada uma explodindo e causando 6d6 pontos de dano de fogo."
+  },
+  {
+    "name": "Mão Esmagadora de Bigby",
+    "level": 9,
+    "school": "Evocação [Força]",
+    "classes": [
+      "Feiticeiro",
+      "Mago"
+    ],
+    "classLevels": {
+      "Feiticeiro": 9,
+      "Mago": 9
+    },
+    "domainLevels": {},
+    "castTime": "1 ação padrão",
+    "components": "V, G",
+    "range": "Médio (30 m + 3 m/nível)",
+    "duration": "1 rodada/nível (D)",
+    "savingThrow": "Fortitude parcial",
+    "spellResistance": true,
+    "description": "Uma mão espectral gigante agarra e esmaga o alvo, causando dano de esmagamento contínuo."
+  },
+  {
+    "name": "Encarnação Fantasmagórica",
+    "level": 9,
+    "school": "Ilusão (Figura) [Mental]",
+    "classes": [
+      "Feiticeiro",
+      "Mago"
+    ],
+    "classLevels": {
+      "Feiticeiro": 9,
+      "Mago": 9
+    },
+    "domainLevels": {},
+    "castTime": "1 ação padrão",
+    "components": "V, G, M",
+    "range": "Longo (120 m + 12 m/nível)",
+    "duration": "Instantânea",
+    "savingThrow": "Vontade anula",
+    "spellResistance": true,
+    "description": "Cada alvo enfrenta sua pior visão de pesadelo, podendo ser morto, enlouquecido ou atordoado pelo terror."
+  },
+  {
+    "name": "Sombras",
+    "level": 9,
+    "school": "Ilusão (Sombra)",
+    "classes": [
+      "Feiticeiro",
+      "Mago"
+    ],
+    "classLevels": {
+      "Feiticeiro": 9,
+      "Mago": 9
+    },
+    "domainLevels": {},
+    "castTime": "1 ação padrão",
+    "components": "V, G",
+    "range": "Veja texto",
+    "duration": "Veja texto",
+    "savingThrow": "Veja texto",
+    "spellResistance": true,
+    "description": "Como conjuração de sombras maior, mas pode duplicar qualquer magia de evocação de até 8º nível, sendo 80% real."
+  },
+  {
+    "name": "Grito da Banshee",
+    "level": 9,
+    "school": "Necromancia [Morte, Sônica]",
+    "classes": [
+      "Feiticeiro",
+      "Mago"
+    ],
+    "classLevels": {
+      "Feiticeiro": 9,
+      "Mago": 9
+    },
+    "domainLevels": {},
+    "castTime": "1 ação padrão",
+    "components": "V",
+    "range": "9 m",
+    "duration": "Instantânea",
+    "savingThrow": "Fortitude anula",
+    "spellResistance": true,
+    "description": "Um grito agudo mata uma criatura por nível de conjurador dentro do alcance, a menos que resistam com sucesso."
+  },
+  {
+    "name": "Parar o Tempo",
+    "level": 9,
+    "school": "Transmutação",
+    "classes": [
+      "Feiticeiro",
+      "Mago"
+    ],
+    "classLevels": {
+      "Feiticeiro": 9,
+      "Mago": 9
+    },
+    "domainLevels": {},
+    "castTime": "1 ação padrão",
+    "components": "V",
+    "range": "Pessoal",
+    "duration": "1d4+1 rodadas (veja texto)",
+    "savingThrow": "Nenhum",
+    "spellResistance": false,
+    "description": "Você age livremente durante 1d4+1 rodadas enquanto o tempo parece parar para todas as outras criaturas e objetos."
+  },
+  {
+    "name": "Desejo",
+    "level": 9,
+    "school": "Universal",
+    "classes": [
+      "Feiticeiro",
+      "Mago"
+    ],
+    "classLevels": {
+      "Feiticeiro": 9,
+      "Mago": 9
+    },
+    "domainLevels": {},
+    "castTime": "1 ação padrão",
+    "components": "V, G, XP",
+    "range": "Veja texto",
+    "duration": "Veja texto",
+    "savingThrow": "Nenhum (veja texto)",
+    "spellResistance": true,
+    "description": "Altera a realidade: pode duplicar quase qualquer magia de nível 8 ou menor, dobrar o efeito de outra magia já conjurada, ou criar um efeito totalmente original dentro dos limites impostos pelo mestre."
   }
 ]
