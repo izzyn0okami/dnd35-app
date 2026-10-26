@@ -4783,9 +4783,7 @@
       "Feiticeiro": 8,
       "Mago": 8
     },
-    "domainLevels": {
-      "Força": 8
-    }
+    "domainLevels": {}
   },
   {
     "name": "Padrão Cintilante",
@@ -6787,9 +6785,7 @@
       "Feiticeiro": 7,
       "Mago": 7
     },
-    "domainLevels": {
-      "Força": 7
-    },
+    "domainLevels": {},
     "castTime": "1 ação padrão",
     "components": "V, G",
     "range": "Médio (30 m + 3 m/nível)",
