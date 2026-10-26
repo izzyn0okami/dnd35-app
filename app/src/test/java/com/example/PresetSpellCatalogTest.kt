@@ -2100,4 +2100,52 @@ class PresetSpellCatalogTest {
             "Animal" in it.domainLevels || "Lei" in it.domainLevels
         })
     }
+
+    @Test
+    fun seventhLevelDomainSpellListsMatchBrazilianPlayerHandbook() {
+        val spells = Dnd35Rules.PRESET_SPELLS.associateBy { it.name }
+        val expectedDomains = mapOf(
+            "Névoa Ácida" to mapOf("Água" to 7),
+            "Forma Animal" to mapOf("Animais" to 7),
+            "Controlar o Clima" to mapOf("Ar" to 7),
+            "Palavra Sagrada" to mapOf("Bem" to 7),
+            "Palavra do Caos" to mapOf("Caos" to 7),
+            "Lendas e Histórias" to mapOf("Conhecimento" to 7),
+            "Regeneração" to mapOf("Cura" to 7),
+            "Desintegrar" to mapOf("Destruição" to 7),
+            "Animação Ilusória" to mapOf("Enganação" to 7),
+            "Tempestade de Fogo" to mapOf("Fogo" to 7),
+            "Mão Poderosa de Bigby" to mapOf("Força" to 7),
+            "Palavra de Poder, Cegar" to mapOf("Guerra" to 7),
+            "Reverter Magia" to mapOf("Magia" to 7, "Sorte" to 7),
+            "Blasfêmia" to mapOf("Mal" to 7),
+            "Destruição" to mapOf("Morte" to 7),
+            "Ditado" to mapOf("Ordem" to 7),
+            "Animar Plantas" to mapOf("Planta" to 7),
+            "Repulsão" to mapOf("Proteção" to 7),
+            "Raio de Sol" to mapOf("Sol" to 7),
+            "Terremoto" to mapOf("Terra" to 7),
+            "Passagem Invisível" to mapOf("Viagem" to 7),
+            "Teletransporte Maior" to mapOf("Viagem" to 7),
+            "Viagem Planar" to mapOf("Viagem" to 7)
+        )
+        expectedDomains.forEach { (name, expected) ->
+            assertEquals("$name domain levels", expected, spells.getValue(name).domainLevels.filterValues { it == 7 })
+        }
+
+        val acidFog = spells.getValue("Névoa Ácida")
+        assertEquals(mapOf("Feiticeiro" to 6, "Mago" to 6), acidFog.classLevels)
+        assertEquals("1 rodada/nível", acidFog.duration)
+        assertFalse(acidFog.spellResistance)
+
+        val legendLore = spells.getValue("Lendas e Histórias")
+        assertEquals(mapOf("Bardo" to 4, "Feiticeiro" to 6, "Mago" to 6), legendLore.classLevels)
+        assertEquals("V, G, M, F", legendLore.components)
+        assertEquals("Pessoal", legendLore.range)
+
+        val disintegrate = spells.getValue("Desintegrar")
+        assertEquals(mapOf("Feiticeiro" to 6, "Mago" to 6), disintegrate.classLevels)
+        assertEquals("Fortitude parcial (objeto)", disintegrate.savingThrow)
+        assertTrue(disintegrate.spellResistance)
+    }
 }
