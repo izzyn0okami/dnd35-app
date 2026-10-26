@@ -211,3 +211,14 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - **Divergência confirmada:** o registro não continha os domínios que também oferecem a magia. Foram registrados Animais 9, Bem 9, Caos 9, Mal 9 e Ordem 9 em `domainLevels`, mantendo Clérigo, Feiticeiro e Mago no nível 9.
 - **Regressão:** teste verifica as três classes e os cinco domínios, sem duplicar a magia.
 - **Escopo:** correção limitada à cobertura dos domínios; a auditoria das listas por classe continua aberta.
+
+
+## Auditoria de domínios — magias de 9º nível
+
+- **Fonte normativa:** Livro do Jogador brasileiro, listas de domínios nas páginas impressas 159–162 (PDF, páginas 163–166).
+- **Esfera Prismática:** registrada nos domínios Proteção 9 e Sol 9; ambos aparecem explicitamente nas listas.
+- **Sexto Sentido:** registrado no domínio Conhecimento 9.
+- **Milagre:** registrado no domínio Sorte 9.
+- **Alterar Forma:** padronizado o identificador de domínio para `Animais`, correspondente ao título “Domínio dos Animais” usado no livro; corrigido o valor anterior `Animal`.
+- **Regressão:** teste automatizado cobre os quatro registros e seus níveis de domínio.
+- **Escopo:** apenas metadados de domínio comprovados por listas do livro; a auditoria de completude permanece em andamento.
