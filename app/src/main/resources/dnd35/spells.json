@@ -6152,7 +6152,9 @@
     "classLevels": {
       "Clérigo": 9
     },
-    "domainLevels": {},
+    "domainLevels": {
+      "Destruição": 9
+    },
     "castTime": "1 ação padrão",
     "components": "V, G, FD",
     "range": "Médio (30 m + 3 m/nível)",
@@ -7132,7 +7134,9 @@
       "Feiticeiro": 9,
       "Mago": 9
     },
-    "domainLevels": {},
+    "domainLevels": {
+      "Guerra": 9
+    },
     "castTime": "1 ação padrão",
     "components": "V",
     "range": "Médio (30 m + 3 m/nível)",
@@ -7174,7 +7178,9 @@
       "Feiticeiro": 9,
       "Mago": 9
     },
-    "domainLevels": {},
+    "domainLevels": {
+      "Força": 9
+    },
     "castTime": "1 ação padrão",
     "components": "V, G",
     "range": "Médio (30 m + 3 m/nível)",
@@ -7237,7 +7243,9 @@
       "Feiticeiro": 9,
       "Mago": 9
     },
-    "domainLevels": {},
+    "domainLevels": {
+      "Morte": 9
+    },
     "castTime": "1 ação padrão",
     "components": "V",
     "range": "9 m",
