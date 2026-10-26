@@ -6330,9 +6330,7 @@
     "classLevels": {
       "Druida": 7
     },
-    "domainLevels": {
-      "Planta": 7
-    },
+    "domainLevels": {},
     "castTime": "1 dia",
     "components": "V, G, M",
     "range": "Toque",
@@ -6574,7 +6572,7 @@
       "Mago": 7
     },
     "domainLevels": {
-      "Viagem": 7
+      "Viagem": 8
     },
     "castTime": "1 ação padrão",
     "components": "V, G",
@@ -6640,9 +6638,7 @@
       "Feiticeiro": 7,
       "Mago": 7
     },
-    "domainLevels": {
-      "Viagem": 7
-    },
+    "domainLevels": {},
     "castTime": "1 ação padrão",
     "components": "V, G",
     "range": "Toque",
