@@ -7266,5 +7266,30 @@
     "savingThrow": "Nenhum (veja texto)",
     "spellResistance": true,
     "description": "Altera a realidade: pode duplicar quase qualquer magia de nível 8 ou menor, dobrar o efeito de outra magia já conjurada, ou criar um efeito totalmente original dentro dos limites impostos pelo mestre."
+  },
+  {
+    "name": "Alterar Forma",
+    "level": 9,
+    "school": "Transmutação",
+    "classes": [
+      "Druida",
+      "Feiticeiro",
+      "Mago"
+    ],
+    "castTime": "1 ação padrão",
+    "components": "V, G, F",
+    "range": "Pessoal",
+    "duration": "10 minutos/nível (D)",
+    "savingThrow": "Nenhum",
+    "spellResistance": false,
+    "description": "Permite assumir a forma de qualquer criatura não única, de tamanho Minúsculo a Colossal, com até o dobro do nível de conjurador em Dados de Vida (máximo 50 DV), inclusive formas incorpóreas ou gasosas. Concede as qualidades físicas e as habilidades extraordinárias e sobrenaturais da forma, com as restrições descritas no Livro do Jogador; o conjurador conserva a própria consciência e pode mudar para outra forma permitida uma vez por rodada como ação livre. Foco: anel de jade de valor mínimo de 1.500 PO, usado na cabeça durante a conjuração.",
+    "classLevels": {
+      "Druida": 9,
+      "Feiticeiro": 9,
+      "Mago": 9
+    },
+    "domainLevels": {
+      "Animal": 9
+    }
   }
 ]

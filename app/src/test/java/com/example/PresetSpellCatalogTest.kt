@@ -2039,4 +2039,25 @@ class PresetSpellCatalogTest {
         assertEquals("Instantânea", spell.duration)
     }
 
+
+    @Test
+    fun alterShapeMatchesBrazilianPlayerHandbookMetadata() {
+        val spells = Dnd35Rules.PRESET_SPELLS
+        val spell = spells.single { it.name == "Alterar Forma" }
+        assertEquals(9, spell.level)
+        assertEquals(setOf("Druida", "Feiticeiro", "Mago"), spell.classes.toSet())
+        assertEquals(9, spell.classLevels["Druida"])
+        assertEquals(9, spell.classLevels["Feiticeiro"])
+        assertEquals(9, spell.classLevels["Mago"])
+        assertEquals(9, spell.domainLevels["Animal"])
+        assertEquals("Transmutação", spell.school)
+        assertEquals("V, G, F", spell.components)
+        assertEquals("1 ação padrão", spell.castTime)
+        assertEquals("Pessoal", spell.range)
+        assertEquals("10 minutos/nível (D)", spell.duration)
+        assertEquals("Nenhum", spell.savingThrow)
+        assertFalse(spell.spellResistance)
+        assertTrue(spell.description.contains("1.500 PO"))
+        assertEquals(1, spells.count { it.name == "Alterar Forma" })
+    }
 }
