@@ -40,15 +40,6 @@ jobs:
       - name: Run unit tests
         run: ./gradlew testDebugUnitTest
 
-      - name: Diagnóstico temporário de falha de teste
-        if: failure()
-        run: |
-          find . -path "*/test-results/*.xml" -print0 2>/dev/null | while IFS= read -r -d '' f; do
-            if grep -q "<failure" "$f"; then
-              python3 "$GITHUB_WORKSPACE/.github/scripts/print_test_failures.py" "$f"
-            fi
-          done
-
       - name: Compile Android app
         run: ./gradlew assembleDebug
 
