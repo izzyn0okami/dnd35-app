@@ -2153,9 +2153,18 @@ class PresetSpellCatalogTest {
     fun spellCatalogUsesOnlyPlayerHandbookDomains() {
         val allowed = setOf(
             "Água", "Animais", "Ar", "Bem", "Caos", "Conhecimento", "Cura",
-            "Destruição", "Enganação", "Fogo", "Guerra", "Magia", "Mal",
+            "Destruição", "Enganação", "Fogo", "Força", "Guerra", "Magia", "Mal",
             "Morte", "Ordem", "Planta", "Proteção", "Sol", "Sorte", "Terra", "Viagem"
         )
         assertTrue(Dnd35Rules.PRESET_SPELLS.flatMap { it.domainLevels.keys }.all { it in allowed })
+    }
+
+    @Test
+    fun ninthLevelDomainMappingsMatchBrazilianPlayerHandbook() {
+        val spells = Dnd35Rules.PRESET_SPELLS.associateBy { it.name }
+        assertEquals(7, spells.getValue("Mão Poderosa de Bigby").domainLevels["Força"])
+        assertEquals(8, spells.getValue("Punho Cerrado de Bigby, O").domainLevels["Força"])
+        assertEquals(9, spells.getValue("Cura Completa em Massa").domainLevels["Cura"])
+        assertEquals(9, spells.getValue("Projeção Astral").domainLevels["Viagem"])
     }
 }
