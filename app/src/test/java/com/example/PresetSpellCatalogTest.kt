@@ -1725,9 +1725,9 @@ class PresetSpellCatalogTest {
             "Imunidade à Magia Maior" to Triple("Abjuração", mapOf("Clérigo" to 8), emptyMap()),
             "Ciclone" to Triple("Evocação [Ar]", mapOf("Druida" to 8), mapOf("Ar" to 8)),
             "Controlar Plantas" to Triple("Transmutação", mapOf("Druida" to 8), mapOf("Planta" to 8)),
-            "Forma Animal" to Triple("Transmutação", mapOf("Druida" to 8), mapOf("Animal" to 7)),
+            "Forma Animal" to Triple("Transmutação", mapOf("Druida" to 8), mapOf("Animais" to 7)),
             "Inverter a Gravidade" to Triple("Transmutação", mapOf("Druida" to 8, "Feiticeiro" to 7, "Mago" to 7), emptyMap()),
-            "Invocar Aliado da Natureza VIII" to Triple("Conjuração (Invocação) [veja texto de Invocar Aliado da Natureza I]", mapOf("Druida" to 8), mapOf("Animal" to 8)),
+            "Invocar Aliado da Natureza VIII" to Triple("Conjuração (Invocação) [veja texto de Invocar Aliado da Natureza I]", mapOf("Druida" to 8), mapOf("Animais" to 8)),
             "Repelir Metal ou Pedra" to Triple("Abjuração [Terra]", mapOf("Druida" to 8), emptyMap()),
             "Prisão" to Triple("Encantamento (Compulsão) [Ação Mental]", mapOf("Feiticeiro" to 8, "Mago" to 8), emptyMap()),
             "Palavra de Recordação" to Triple("Conjuração (Teletransporte)", mapOf("Clérigo" to 6, "Druida" to 8), emptyMap()),
@@ -1836,7 +1836,7 @@ class PresetSpellCatalogTest {
         }
         val domainEighth = listOf(
             "Ciclone" to ("Ar" to 8),
-            "Invocar Aliado da Natureza VIII" to ("Animal" to 8),
+            "Invocar Aliado da Natureza VIII" to ("Animais" to 8),
             "Manto do Caos" to ("Caos" to 8),
             "Criar Mortos-Vivos Maior" to ("Morte" to 8),
             "Terremoto" to ("Destruição" to 8),
@@ -1956,7 +1956,7 @@ class PresetSpellCatalogTest {
             "Visão" to mapOf("Feiticeiro" to 7, "Mago" to 7),
             "Convocação Instantânea de Drawmij" to mapOf("Feiticeiro" to 7, "Mago" to 7),
             "Evocação de Sombras Maior" to mapOf("Feiticeiro" to 8, "Mago" to 8),
-            "Curar Ferimentos Moderados em Massa" to mapOf("Clérigo" to 6, "Druida" to 6)
+            "Curar Ferimentos Moderados em Massa" to mapOf("Clérigo" to 6, "Druida" to 7)
         )
         expected.forEach { (name, levels) ->
             val matches = Dnd35Rules.PRESET_SPELLS.filter { it.name == name }
@@ -1997,11 +1997,11 @@ class PresetSpellCatalogTest {
     }
 
     @Test
-    fun massModerateCureUsesSixthLevelForClericAndDruid() {
+    fun massModerateCureUsesSixthLevelForClericAndSeventhForDruid() {
         val spell = Dnd35Rules.PRESET_SPELLS.single { it.name == "Curar Ferimentos Moderados em Massa" }
         assertEquals(6, spell.level)
         assertEquals(6, spell.classLevels["Clérigo"])
-        assertEquals(6, spell.classLevels["Druida"])
+        assertEquals(7, spell.classLevels["Druida"])
         assertEquals("Conjuração (Cura)", spell.school)
         assertTrue(spell.description.contains("2d8"))
     }
@@ -2089,4 +2089,65 @@ class PresetSpellCatalogTest {
         assertFalse("Ranger" in spell.classes)
         assertFalse("Ranger" in spell.classLevels)
     }
+
+    @Test
+    fun seventhLevelDomainSpellMappingsUseCanonicalPlayerHandbookNames() {
+        val spells = Dnd35Rules.PRESET_SPELLS.associateBy { it.name }
+        assertEquals(7, spells.getValue("Forma Animal").domainLevels["Animais"])
+        assertEquals(8, spells.getValue("Invocar Aliado da Natureza VIII").domainLevels["Animais"])
+        assertEquals(7, spells.getValue("Ditado").domainLevels["Ordem"])
+        assertFalse(Dnd35Rules.PRESET_SPELLS.any {
+            "Animal" in it.domainLevels || "Lei" in it.domainLevels
+        })
+    }
+
+    @Test
+    fun seventhLevelDomainSpellListsMatchBrazilianPlayerHandbook() {
+        val spells = Dnd35Rules.PRESET_SPELLS.associateBy { it.name }
+        val expectedDomains = mapOf(
+            "Névoa Ácida" to mapOf("Água" to 7),
+            "Forma Animal" to mapOf("Animais" to 7),
+            "Controlar o Clima" to mapOf("Ar" to 7),
+            "Palavra Sagrada" to mapOf("Bem" to 7),
+            "Palavra do Caos" to mapOf("Caos" to 7),
+            "Lendas e Histórias" to mapOf("Conhecimento" to 7),
+            "Regeneração" to mapOf("Cura" to 7),
+            "Desintegrar" to mapOf("Destruição" to 7),
+            "Animação Ilusória" to mapOf("Enganação" to 7),
+            "Tempestade de Fogo" to mapOf("Fogo" to 7),
+            "Mão Poderosa de Bigby" to mapOf("Força" to 7),
+            "Palavra de Poder, Cegar" to mapOf("Guerra" to 7),
+            "Reverter Magia" to mapOf("Magia" to 7, "Sorte" to 7),
+            "Blasfêmia" to mapOf("Mal" to 7),
+            "Destruição" to mapOf("Morte" to 7),
+            "Ditado" to mapOf("Ordem" to 7),
+            "Animar Plantas" to mapOf("Planta" to 7),
+            "Repulsão" to mapOf("Proteção" to 7),
+            "Raio de Sol" to mapOf("Sol" to 7),
+            "Terremoto" to mapOf("Terra" to 7),
+            "Teletransporte Maior" to mapOf("Viagem" to 7),
+        )
+        expectedDomains.forEach { (name, expected) ->
+            assertEquals("$name domain levels", expected, spells.getValue(name).domainLevels.filterValues { it == 7 })
+        }
+        assertEquals(8, spells.getValue("Passagem Invisível").domainLevels["Viagem"])
+        assertFalse("Viagem" in spells.getValue("Viagem Planar").domainLevels)
+        assertFalse("Planta" in spells.getValue("Cajado Vivo").domainLevels)
+
+        val acidFog = spells.getValue("Névoa Ácida")
+        assertEquals(mapOf("Feiticeiro" to 6, "Mago" to 6), acidFog.classLevels)
+        assertEquals("1 rodada/nível", acidFog.duration)
+        assertFalse(acidFog.spellResistance)
+
+        val legendLore = spells.getValue("Lendas e Histórias")
+        assertEquals(mapOf("Bardo" to 4, "Feiticeiro" to 6, "Mago" to 6), legendLore.classLevels)
+        assertEquals("V, G, M, F", legendLore.components)
+        assertEquals("Pessoal", legendLore.range)
+
+        val disintegrate = spells.getValue("Desintegrar")
+        assertEquals(mapOf("Feiticeiro" to 6, "Mago" to 6), disintegrate.classLevels)
+        assertEquals("Fortitude parcial (objeto)", disintegrate.savingThrow)
+        assertTrue(disintegrate.spellResistance)
+    }
+
 }
