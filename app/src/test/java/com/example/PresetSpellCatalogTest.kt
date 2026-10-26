@@ -2068,7 +2068,7 @@ class PresetSpellCatalogTest {
         assertEquals(9, spell.classLevels["Druida"])
         assertEquals(9, spell.classLevels["Feiticeiro"])
         assertEquals(9, spell.classLevels["Mago"])
-        assertEquals(9, spell.domainLevels["Animal"])
+        assertEquals(9, spell.domainLevels["Animais"])
         assertEquals("Transmutação", spell.school)
         assertEquals("V, G, F", spell.components)
         assertEquals("1 ação padrão", spell.castTime)
