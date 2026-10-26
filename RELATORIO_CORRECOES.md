@@ -249,3 +249,11 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - **Correção:** adicionadas as três magias com níveis por classe e metadados principais transcritos/parafraseados do Livro do Jogador; registrados os domínios de 7º nível confirmados nas listas. Mantidos os níveis por classe e não foram criadas duplicatas.
 - **Regressão:** teste compara as atribuições de domínio de 7º nível e verifica níveis por classe, duração, componentes, alcance, teste de resistência e resistência à magia das três entradas adicionadas.
 - **Escopo:** cobertura de domínios de 7º nível atualizada; a auditoria completa de todas as listas de magias por classe e de todos os níveis/domínios continua em andamento.
+
+
+## Correção de nível por classe — Curar Ferimentos Moderados em Massa (2026-10-26)
+
+- **Fonte normativa:** Livro do Jogador brasileiro, lista de magias de 7º nível de Druida (PDF, página 167; página impressa correspondente do capítulo 11).
+- **Divergência confirmada:** o registro tinha Clérigo 6 e Druida 6, mas a lista de Druida do livro inclui *Curar Ferimentos Moderados em Massa* no 7º nível.
+- **Correção:** `classLevels.Druida` alterado de 6 para 7; Clérigo permanece no 6º nível e o nível geral legado do registro permanece 6, pois a estrutura separa nível geral de nível por classe.
+- **Regressão:** teste atualizado para Clérigo 6/Druida 7.
