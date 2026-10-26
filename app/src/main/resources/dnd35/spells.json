@@ -6179,14 +6179,19 @@
     "level": 9,
     "school": "Conjuração (Convocação)",
     "classes": [
+      "Clérigo",
       "Feiticeiro",
       "Mago"
     ],
     "classLevels": {
+      "Clérigo": 9,
       "Feiticeiro": 9,
       "Mago": 9
     },
     "domainLevels": {
+      "Animais": 9,
+      "Bem": 9,
+      "Caos": 9,
       "Mal": 9,
       "Ordem": 9
     },
