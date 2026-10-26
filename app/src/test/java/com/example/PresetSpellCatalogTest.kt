@@ -1725,7 +1725,7 @@ class PresetSpellCatalogTest {
             "Imunidade à Magia Maior" to Triple("Abjuração", mapOf("Clérigo" to 8), emptyMap()),
             "Ciclone" to Triple("Evocação [Ar]", mapOf("Druida" to 8), mapOf("Ar" to 8)),
             "Controlar Plantas" to Triple("Transmutação", mapOf("Druida" to 8), mapOf("Planta" to 8)),
-            "Forma Animal" to Triple("Transmutação", mapOf("Druida" to 8), mapOf("Animal" to 7)),
+            "Forma Animal" to Triple("Transmutação", mapOf("Druida" to 8), mapOf("Animais" to 7)),
             "Inverter a Gravidade" to Triple("Transmutação", mapOf("Druida" to 8, "Feiticeiro" to 7, "Mago" to 7), emptyMap()),
             "Invocar Aliado da Natureza VIII" to Triple("Conjuração (Invocação) [veja texto de Invocar Aliado da Natureza I]", mapOf("Druida" to 8), mapOf("Animais" to 8)),
             "Repelir Metal ou Pedra" to Triple("Abjuração [Terra]", mapOf("Druida" to 8), emptyMap()),
