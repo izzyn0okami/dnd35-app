@@ -204,10 +204,10 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 
 
 
-## Auditoria de nível por classe — Invocar Criaturas IX
+## Auditoria de classes e domínios — Invocar Criaturas IX
 
-- **Fonte normativa:** Livro do Jogador brasileiro, listas de magias de 9º nível de Feiticeiro/Mago (página impressa 168) e domínios Mal e Ordem (página impressa 160–161; PDF, páginas 165–166).
-- **Divergência confirmada:** o catálogo classificava `Invocar Criaturas IX` como magia de classe de Clérigo 9. Na fonte consultada, ela aparece na lista de Feiticeiro/Mago e nas listas dos domínios Mal e Ordem; não aparece como magia-base de Clérigo.
-- **Correção proposta:** remover Clérigo de `classes` e `classLevels`, e registrar `domainLevels` como `Mal: 9` e `Ordem: 9`. Manter Feiticeiro 9 e Mago 9.
-- **Regressão:** teste para confirmar as classes e os dois domínios, sem duplicar a magia.
-- **Escopo:** correção pontual confirmada; a auditoria das listas por classe continua aberta.
+- **Fonte normativa:** Livro do Jogador brasileiro, lista de magias de 9º nível de Clérigo (página impressa 159) e listas dos domínios Animais, Bem, Caos, Mal e Ordem (páginas impressas 159–161; PDF, páginas 163–165).
+- **Revisão da hipótese inicial:** a leitura da lista de Clérigo confirma que `Invocar Criaturas IX` também é magia-base de Clérigo 9. Portanto, não se deve removê-la das classes; a proposta inicial de exclusão foi corrigida antes de merge.
+- **Divergência confirmada:** o registro não continha os domínios que também oferecem a magia. Foram registrados Animais 9, Bem 9, Caos 9, Mal 9 e Ordem 9 em `domainLevels`, mantendo Clérigo, Feiticeiro e Mago no nível 9.
+- **Regressão:** teste verifica as três classes e os cinco domínios, sem duplicar a magia.
+- **Escopo:** correção limitada à cobertura dos domínios; a auditoria das listas por classe continua aberta.
