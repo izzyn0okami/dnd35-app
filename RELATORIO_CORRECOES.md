@@ -163,3 +163,13 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - Corrigido o alcance genérico “Ilimitado (veja texto)” para “Veja texto” e completada a descrição com essas condições e o custo do componente.
 - Adicionado teste de regressão para níveis por classe, alcance, duração, resistência e detalhes da descrição.
 - A auditoria de Vidência Maior e Visão Arcana Maior permanece pendente de fechamento.
+
+### Reconciliação de fonte — Símbolo da Morte (2026-10-26)
+- **Pergunta auditada:** o nível arcano de *Símbolo da Morte* é 6º ou 8º? O PDF brasileiro não é consistente internamente; portanto, não se trata de falha de OCR nem de leitura do algarismo.
+- **Entrada individual no Livro do Jogador brasileiro:** página impressa 243 (página física 247 do PDF): o texto está legível e imprime literalmente `Nível: Clr 8, Fet/Mag 6`.
+- **Índice/lista de magias:** página impressa 168 (página física 172 do PDF) inclui *Símbolo da Morte* no bloco de magias de 8º nível de Feiticeiro e Mago, antes do cabeçalho “Magias de 9º nível de Feiticeiro e Mago”.
+- **Fontes externas consultadas:** D&D Tools identifica a magia como *Player’s Handbook v.3.5*, p. 289, e lista Cleric 8, Sorcerer 8 e Wizard 8; o SRD de D&D 3.5 também lista `Clr 8, Sor/Wiz 8`. Referências: https://dnd.arkalseif.info/spells/players-handbook-v35--6/symbol-of-death--2762/ e https://www.d20srd.org/srd/spells/symbolOfDeath.htm.
+- **Conclusão:** há uma contradição impressa no próprio PDF brasileiro. A leitura “Fet/Mag 6” está correta quanto ao que aparece na página, mas é provavelmente um erro editorial/tradutório naquela linha da descrição: a lista por nível no mesmo livro e as referências externas independentes concordam com 8º nível arcano. Não registrar como erro de OCR.
+- **Decisão do catálogo:** manter `level: 8` e `classLevels` Clérigo 8, Feiticeiro 8, Mago 8. Os dados e testes atuais já seguem essa decisão; não é necessária alteração funcional para esta divergência.
+- **Reconciliação do histórico:** as notas anteriores deste relatório que classificaram *Símbolo da Morte* como magia arcana de 7º nível foram baseadas em interpretação incorreta da página impressa 168: as entradas que aparecem antes do cabeçalho “Magias de 9º nível” pertencem ao bloco de 8º nível. Essas notas ficam supersedidas por esta conclusão; preservadas como histórico para rastreabilidade.
+- **Procedimento reforçado:** quando a descrição individual divergir de listas por classe ou de fontes externas, verificar a página impressa e o contexto visual, comparar com a fonte original/SRD e registrar explicitamente a divergência antes de alterar catálogo ou testes.
