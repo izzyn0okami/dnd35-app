@@ -1997,11 +1997,11 @@ class PresetSpellCatalogTest {
     }
 
     @Test
-    fun massModerateCureUsesSixthLevelForClericAndDruid() {
+    fun massModerateCureUsesSixthLevelForClericAndSeventhForDruid() {
         val spell = Dnd35Rules.PRESET_SPELLS.single { it.name == "Curar Ferimentos Moderados em Massa" }
         assertEquals(6, spell.level)
         assertEquals(6, spell.classLevels["Clérigo"])
-        assertEquals(6, spell.classLevels["Druida"])
+        assertEquals(7, spell.classLevels["Druida"])
         assertEquals("Conjuração (Cura)", spell.school)
         assertTrue(spell.description.contains("2d8"))
     }
@@ -2147,5 +2147,13 @@ class PresetSpellCatalogTest {
         assertEquals(mapOf("Feiticeiro" to 6, "Mago" to 6), disintegrate.classLevels)
         assertEquals("Fortitude parcial (objeto)", disintegrate.savingThrow)
         assertTrue(disintegrate.spellResistance)
+    }
+
+    @Test
+    fun massModerateCureUsesSeventhLevelForDruidAsListedInPlayerHandbook() {
+        val spell = Dnd35Rules.PRESET_SPELLS.single { it.name == "Curar Ferimentos Moderados em Massa" }
+        assertEquals(6, spell.classLevels["Clérigo"])
+        assertEquals(7, spell.classLevels["Druida"])
+        assertEquals("Conjuração (Cura)", spell.school)
     }
 }
