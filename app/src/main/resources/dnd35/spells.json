@@ -1699,7 +1699,7 @@
     ],
     "castTime": "1 ação padrão",
     "components": "V, G",
-    "range": "4,5m",
+    "range": "Cone de 4,5 m",
     "duration": "Instantânea",
     "savingThrow": "Reflexos metade",
     "spellResistance": true,
