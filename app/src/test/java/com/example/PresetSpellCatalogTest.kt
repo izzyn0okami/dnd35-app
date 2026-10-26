@@ -285,7 +285,7 @@ class PresetSpellCatalogTest {
     fun firstLevelSpellBatchThreeHasExpectedClassAvailabilityAndMechanics() {
         val spells = Dnd35Rules.PRESET_SPELLS.associateBy { it.name }
         assertEquals(setOf("Mago", "Feiticeiro"), spells.getValue("Mãos Flamejantes").classes.toSet())
-        assertEquals("4,5m", spells.getValue("Mãos Flamejantes").range)
+        assertEquals("Cone de 4,5 m", spells.getValue("Mãos Flamejantes").range)
         assertEquals(setOf("Druida", "Ranger"), spells.getValue("Enfeitiçar Animal").classes.toSet())
         assertEquals(setOf("Druida", "Ranger"), spells.getValue("Constrição").classes.toSet())
         assertFalse(spells.getValue("Constrição").spellResistance)
