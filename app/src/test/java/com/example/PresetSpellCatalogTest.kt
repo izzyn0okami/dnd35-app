@@ -2164,7 +2164,11 @@ class PresetSpellCatalogTest {
         val spells = Dnd35Rules.PRESET_SPELLS.associateBy { it.name }
         assertEquals(7, spells.getValue("Mão Poderosa de Bigby").domainLevels["Força"])
         assertEquals(8, spells.getValue("Punho Cerrado de Bigby, O").domainLevels["Força"])
+        assertEquals(9, spells.getValue("Mão Esmagadora de Bigby").domainLevels["Força"])
         assertEquals(9, spells.getValue("Cura Completa em Massa").domainLevels["Cura"])
         assertEquals(9, spells.getValue("Projeção Astral").domainLevels["Viagem"])
+        assertEquals(9, spells.getValue("Implosão").domainLevels["Destruição"])
+        assertEquals(9, spells.getValue("Palavra de Poder, Matar").domainLevels["Guerra"])
+        assertEquals(9, spells.getValue("Grito da Banshee").domainLevels["Morte"])
     }
 }
