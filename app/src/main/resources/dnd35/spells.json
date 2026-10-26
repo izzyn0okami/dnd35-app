@@ -4282,7 +4282,6 @@
       "Clérigo",
       "Druida",
       "Paladino",
-      "Ranger",
       "Mago",
       "Feiticeiro"
     ],
@@ -4298,7 +4297,6 @@
       "Clérigo": 2,
       "Druida": 2,
       "Paladino": 2,
-      "Ranger": 2,
       "Mago": 2,
       "Feiticeiro": 2
     },
