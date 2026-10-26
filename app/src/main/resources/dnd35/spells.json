@@ -5112,7 +5112,7 @@
       "Druida": 8
     },
     "domainLevels": {
-      "Animal": 7
+      "Animais": 7
     }
   },
   {
@@ -5156,7 +5156,7 @@
       "Druida": 8
     },
     "domainLevels": {
-      "Animal": 8
+      "Animais": 8
     }
   },
   {
@@ -5837,7 +5837,7 @@
       "Clérigo": 7
     },
     "domainLevels": {
-      "Lei": 7
+      "Ordem": 7
     },
     "castTime": "1 ação padrão",
     "components": "V",
