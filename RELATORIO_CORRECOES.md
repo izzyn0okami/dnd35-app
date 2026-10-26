@@ -272,7 +272,7 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 ## Auditoria de domínios de 9º nível (2026-10-26)
 
 - **Fonte normativa:** Livro do Jogador brasileiro, capítulo 11, listas de magias de 9º nível e listas dos domínios (PDF, páginas impressas 159–163).
-- **Divergências confirmadas:** faltavam no catálogo as associações *Cura Completa em Massa* → Cura 9 e *Projeção Astral* → Viagem 9. As listas dos domínios da Cura e da Viagem registram essas magias no 9º nível.
-- **Correção:** adicionadas as duas associações. Também foram restauradas as associações de Força 7/8 após a retificação acima.
-- **Regressão:** teste dedicado valida Força 7, Força 8, Cura 9 e Viagem 9; teste global limita os domínios aos nomes efetivamente presentes no Livro do Jogador, incluindo Força.
+- **Divergências confirmadas:** faltavam associações de 9º nível para *Cura Completa em Massa* → Cura 9, *Projeção Astral* → Viagem 9, *Implosão* → Destruição 9, *Palavra de Poder, Matar* → Guerra 9, *Grito da Banshee* → Morte 9 e *Mão Esmagadora de Bigby* → Força 9. As listas de domínios do livro registram essas magias nesses níveis.
+- **Correção:** adicionadas as seis associações. Também foram restauradas as associações de Força 7/8 de *Mão Poderosa de Bigby* e *O Punho Cerrado de Bigby* após a retificação acima.
+- **Regressão:** teste dedicado valida Força 7/8/9, Cura 9, Viagem 9, Destruição 9, Guerra 9 e Morte 9; teste global limita os domínios aos nomes efetivamente presentes no Livro do Jogador, incluindo Força.
 - **Escopo:** auditoria parcial das associações de 9º nível; não significa que todos os níveis, classes ou domínios estejam integralmente conferidos.
