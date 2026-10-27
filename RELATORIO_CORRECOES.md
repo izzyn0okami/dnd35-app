@@ -356,3 +356,11 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - Adicionada `domainSlots(...)`: retorna um espaço de domínio para círculos de 1º a 9º que o Clérigo já pode conjurar; retorna zero para truques e círculos ainda indisponíveis. Classes sem domínio ou entradas inválidas retornam `null`.
 - Testes de regressão cobrem níveis baixos e altos, disponibilidade de círculos e separação entre espaço-base e espaço de domínio.
 - Pendente nesta linha: transcrever e testar a tabela diária do Mago; depois implementar as progressões de Paladino e Ranger e integrar os cálculos à aba Magias. A validação CI ainda deve ser conferida antes de qualquer merge.
+
+
+## Progressão diária de magias do Mago (2026-10-26)
+
+- Fonte normativa: Livro do Jogador brasileiro, Tabela 3-13 (O Mago), página impressa 45.
+- Adicionada a tabela completa de espaços-base por dia para níveis de classe 1–20 e círculos 0–9 em `SpellcastingRules.baseDailySlots`. Espaços adicionais por Inteligência continuam separados.
+- Testes de regressão cobrem níveis iniciais, transições para círculos superiores, nível 20 e entrada inválida.
+- A tabela ainda não está integrada à interface de Magias. Permanecem pendentes a revisão/validação da tabela e os cálculos de Paladino e Ranger, além da integração da UI. Não fazer merge antes da CI e da conclusão do escopo acordado.
