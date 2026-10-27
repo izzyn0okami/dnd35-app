@@ -201,6 +201,42 @@ fun SpellsTab(
 
                     Spacer(modifier = Modifier.height(12.dp))
 
+                    if (stats.spellSlotProgressions.isNotEmpty()) {
+                        Card(
+                            modifier = Modifier.fillMaxWidth(),
+                            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+                            shape = RoundedCornerShape(10.dp)
+                        ) {
+                            Column(modifier = Modifier.padding(10.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+                                Text(
+                                    "Progressão-base por classe (Livro do Jogador)",
+                                    style = MaterialTheme.typography.titleSmall,
+                                    fontWeight = FontWeight.Bold
+                                )
+                                Text(
+                                    "Valores normativos informativos; não alteram os espaços configurados abaixo nem incluem bônus por atributo.",
+                                    style = MaterialTheme.typography.bodySmall,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                                )
+                                stats.spellSlotProgressions.forEach { progression ->
+                                    Text(
+                                        "${progression.className} nível ${progression.classLevel}",
+                                        style = MaterialTheme.typography.labelMedium,
+                                        fontWeight = FontWeight.SemiBold
+                                    )
+                                    Text(
+                                        progression.slotsByLevel.entries
+                                            .filter { it.value > 0 }
+                                            .joinToString("  ·  ") { (level, slots) -> "Círculo $level: $slots" }
+                                            .ifBlank { "Sem espaços-base diários neste nível de classe." },
+                                        style = MaterialTheme.typography.bodySmall
+                                    )
+                                }
+                            }
+                        }
+                        Spacer(modifier = Modifier.height(8.dp))
+                    }
+
                     // Linha Horizontal de Espaços de Magia (Círculos 0 ao 9)
                     Text("Espaços de magia por dia (toque para gastar ou recuperar):", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                     Spacer(modifier = Modifier.height(6.dp))
