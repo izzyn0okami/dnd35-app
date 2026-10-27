@@ -12,6 +12,22 @@ import org.junit.Test
 class ClassProgressionTest {
 
     @Test
+    fun baseAttackProgressionLabelsAreLocalizedAndReadable() {
+        assertEquals(
+            "Integral (BBA igual ao nível)",
+            Dnd35Rules.babProgressionLabel(Dnd35Rules.BabProgression.FULL)
+        )
+        assertEquals(
+            "Três quartos (BBA de 3/4 do nível)",
+            Dnd35Rules.babProgressionLabel(Dnd35Rules.BabProgression.THREE_QUARTERS)
+        )
+        assertEquals(
+            "Metade (BBA de 1/2 do nível)",
+            Dnd35Rules.babProgressionLabel(Dnd35Rules.BabProgression.HALF)
+        )
+    }
+
+    @Test
     fun baseAttackBonusMatchesAllThreeProgressionsFromLevelOneToTwenty() {
         val full = listOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20)
         val threeQuarters = listOf(0, 1, 2, 3, 3, 4, 5, 6, 6, 7, 8, 9, 9, 10, 11, 12, 12, 13, 14, 15)
