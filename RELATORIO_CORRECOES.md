@@ -364,3 +364,10 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - Adicionada a tabela completa de espaços-base por dia para níveis de classe 1–20 e círculos 0–9 em `SpellcastingRules.baseDailySlots`. Espaços adicionais por Inteligência continuam separados.
 - Testes de regressão cobrem níveis iniciais, transições para círculos superiores, nível 20 e entrada inválida.
 - A tabela ainda não está integrada à interface de Magias. Permanecem pendentes a revisão/validação da tabela e os cálculos de Paladino e Ranger, além da integração da UI. Não fazer merge antes da CI e da conclusão do escopo acordado.
+
+
+## Correção da progressão diária do Feiticeiro — nível 13 (2026-10-26)
+
+- A execução CI #1381 apontou falha no teste de espaços diários do Feiticeiro: a tabela tinha 19 linhas em vez de 20, deslocando os valores a partir do nível 13.
+- Inserida a linha do 13º nível, mantendo o acesso ao 7º círculo para o 14º nível e a progressão dos níveis seguintes alinhada à Tabela 3-9 do Livro do Jogador brasileiro.
+- A correção foi commitada; é necessário aguardar nova CI na cabeça atual para confirmar que o teste e a compilação passam.
