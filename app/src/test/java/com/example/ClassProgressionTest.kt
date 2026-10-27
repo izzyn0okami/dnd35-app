@@ -337,4 +337,19 @@ class ClassProgressionTest {
         assertEquals(null, SpellcastingRules.knownSpells("Feiticeiro", 0, 0))
     }
 
+    @Test
+    fun clericDailySpellSlotsAndDomainSlotsStaySeparate() {
+        assertEquals(3, SpellcastingRules.baseDailySlots("Clérigo", 1, 0))
+        assertEquals(1, SpellcastingRules.baseDailySlots("Clérigo", 1, 1))
+        assertEquals(1, SpellcastingRules.baseDailySlots("Clérigo", 3, 2))
+        assertEquals(1, SpellcastingRules.baseDailySlots("Clérigo", 13, 7))
+        assertEquals(4, SpellcastingRules.baseDailySlots("Clérigo", 20, 9))
+        assertEquals(0, SpellcastingRules.domainSlots("Clérigo", 1, 0))
+        assertEquals(1, SpellcastingRules.domainSlots("Clérigo", 1, 1))
+        assertEquals(0, SpellcastingRules.domainSlots("Clérigo", 1, 2))
+        assertEquals(1, SpellcastingRules.domainSlots("Clérigo", 20, 9))
+        assertEquals(null, SpellcastingRules.domainSlots("Druida", 20, 9))
+        assertEquals(null, SpellcastingRules.domainSlots("Clérigo", 21, 1))
+    }
+
 }
