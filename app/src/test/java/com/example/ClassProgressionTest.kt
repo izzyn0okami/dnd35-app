@@ -291,6 +291,29 @@ class ClassProgressionTest {
     }
 
     @Test
+    fun bardDailySpellSlotProgressionMatchesPlayerHandbookTable() {
+        assertEquals(2, SpellcastingRules.baseDailySlots("Bardo", 1, 0))
+        assertEquals(0, SpellcastingRules.baseDailySlots("Bardo", 1, 1))
+        assertEquals(1, SpellcastingRules.baseDailySlots("Bardo", 3, 1))
+        assertEquals(2, SpellcastingRules.baseDailySlots("Bardo", 6, 2))
+        assertEquals(1, SpellcastingRules.baseDailySlots("Bardo", 8, 3))
+        assertEquals(4, SpellcastingRules.baseDailySlots("Bardo", 20, 6))
+        assertEquals(null, SpellcastingRules.baseDailySlots("Bardo", 21, 0))
+    }
+
+    @Test
+    fun sorcererDailySpellSlotProgressionMatchesPlayerHandbookTable() {
+        assertEquals(5, SpellcastingRules.baseDailySlots("Feiticeiro", 1, 0))
+        assertEquals(3, SpellcastingRules.baseDailySlots("Feiticeiro", 1, 1))
+        assertEquals(3, SpellcastingRules.baseDailySlots("Feiticeiro", 4, 2))
+        assertEquals(3, SpellcastingRules.baseDailySlots("Feiticeiro", 6, 3))
+        assertEquals(3, SpellcastingRules.baseDailySlots("Feiticeiro", 14, 7))
+        assertEquals(4, SpellcastingRules.baseDailySlots("Feiticeiro", 20, 9))
+        assertEquals(null, SpellcastingRules.baseDailySlots("Mago", 20, 9))
+        assertEquals(null, SpellcastingRules.baseDailySlots("Feiticeiro", 0, 0))
+    }
+
+    @Test
     fun sorcererKnownSpellProgressionMatchesPlayerHandbookTable() {
         assertEquals(4, SpellcastingRules.knownSpells("Feiticeiro", 1, 0))
         assertEquals(2, SpellcastingRules.knownSpells("Feiticeiro", 1, 1))
