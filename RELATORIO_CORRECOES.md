@@ -268,3 +268,10 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - **Erro corrigido:** a auditoria anterior havia atribuído indevidamente o domínio `Força` a *Mão Poderosa de Bigby* e *O Punho Cerrado de Bigby*. Removidas essas duas associações; níveis e dados por classe não foram alterados.
 - **Regressão:** testes agora garantem que todos os identificadores de domínio do catálogo pertençam à lista de domínios do Livro do Jogador e que *O Punho Cerrado de Bigby* não tenha uma associação de domínio inventada.
 - **Nota de auditoria:** esta correção retifica explicitamente a associação indevida introduzida durante a etapa anterior; a revisão de todos os níveis e domínios continua em andamento.
+
+
+## Interface de criação de personagem — rótulos de BBA (2026-10-26)
+
+- Corrigida a exibição de identificadores internos do enum (`FULL`, `THREE_QUARTERS`, `HALF`) no cartão da classe. A interface agora mostra rótulos em português: progressão integral, de três quartos e de metade, explicando BBA como Bônus Base de Ataque.
+- Alteração somente de apresentação; cálculos e enums não foram modificados. Testes unitários cobrem os três rótulos.
+- Aguardar CI antes do merge.
