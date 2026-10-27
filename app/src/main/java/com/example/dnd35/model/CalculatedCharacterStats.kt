@@ -500,10 +500,7 @@ object CharacterCalculator {
                     else -> 0
                 }
                 val className = detail.entry.className
-                val casterLevel = when (className.lowercase()) {
-                    "paladino", "ranger" -> detail.entry.level - 3
-                    else -> detail.entry.level
-                }
+                val casterLevel = SpellcastingRules.casterLevel(className, detail.entry.level)
                 val dcMap = when (className.lowercase()) {
                     "paladino", "ranger" -> {
                         val maxSpellLevel = when {
