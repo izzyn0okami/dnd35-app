@@ -428,3 +428,9 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - A tabela registra os espaços-base por círculo do 1º ao 4º, mantendo zeros quando não há espaço-base. Espaços adicionais por Sabedoria continuam fora dessa projeção.
 - Os testes existentes de regressão do Paladino cobrem os marcos de desbloqueio dos círculos e o 20º nível; a CI após esta alteração ainda precisa confirmar a compilação e os testes.
 - A PR #265 continua em rascunho; não fazer merge até confirmar CI e revisar o escopo restante da auditoria de conjuração.
+
+### CI #1402 — erro de sintaxe corrigido (2026-10-27)
+
+- A CI #1402 falhou na compilação Kotlin em CalculatedCharacterStats.kt:1056 após a separação da tabela do Paladino.
+- Causa identificada nos logs: a quebra de linha entre os ramos ranger e paladino foi gravada como os caracteres literais \\n, causando erro de sintaxe e referência não resolvida.
+- Corrigida a quebra de linha no código-fonte. Aguardar nova execução de CI para confirmar compilação e testes; a falha anterior não deve ser tratada como validação da alteração.
