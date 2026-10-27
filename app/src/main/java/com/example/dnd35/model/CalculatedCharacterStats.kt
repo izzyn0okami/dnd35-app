@@ -903,6 +903,30 @@ object SpellcastingRules {
         intArrayOf(4, 4, 4, 4, 4, 4, 4)
     )
 
+    // Tabela 3-8 (Druida), Livro do Jogador brasileiro: espaços-base por dia.
+    private val druidDaily = arrayOf(
+        intArrayOf(3, 1, 0, 0, 0, 0, 0, 0, 0, 0),
+        intArrayOf(4, 2, 0, 0, 0, 0, 0, 0, 0, 0),
+        intArrayOf(4, 2, 1, 0, 0, 0, 0, 0, 0, 0),
+        intArrayOf(5, 3, 2, 0, 0, 0, 0, 0, 0, 0),
+        intArrayOf(5, 3, 2, 1, 0, 0, 0, 0, 0, 0),
+        intArrayOf(5, 3, 3, 2, 0, 0, 0, 0, 0, 0),
+        intArrayOf(6, 4, 3, 2, 1, 0, 0, 0, 0, 0),
+        intArrayOf(6, 4, 3, 3, 2, 0, 0, 0, 0, 0),
+        intArrayOf(6, 4, 4, 3, 2, 1, 0, 0, 0, 0),
+        intArrayOf(6, 4, 4, 3, 3, 2, 0, 0, 0, 0),
+        intArrayOf(6, 5, 4, 4, 3, 2, 1, 0, 0, 0),
+        intArrayOf(6, 5, 4, 4, 3, 3, 2, 0, 0, 0),
+        intArrayOf(6, 5, 5, 4, 4, 3, 2, 1, 0, 0),
+        intArrayOf(6, 5, 5, 4, 4, 3, 3, 2, 0, 0),
+        intArrayOf(6, 5, 5, 5, 4, 4, 3, 2, 1, 0),
+        intArrayOf(6, 5, 5, 5, 4, 4, 3, 3, 2, 0),
+        intArrayOf(6, 5, 5, 5, 5, 4, 4, 3, 2, 1),
+        intArrayOf(6, 5, 5, 5, 5, 4, 4, 3, 3, 2),
+        intArrayOf(6, 5, 5, 5, 5, 5, 4, 4, 3, 3),
+        intArrayOf(6, 5, 5, 5, 5, 5, 4, 4, 4, 4)
+    )
+
     private val sorcererDaily = arrayOf(
         intArrayOf(5, 3, 0, 0, 0, 0, 0, 0, 0, 0),
         intArrayOf(6, 4, 0, 0, 0, 0, 0, 0, 0, 0),
@@ -930,6 +954,7 @@ object SpellcastingRules {
         if (classLevel !in 1..20 || spellLevel !in 0..9) return null
         val table = when (className.trim().lowercase()) {
             "bardo" -> bardDaily
+            "druida" -> druidDaily
             "feiticeiro" -> sorcererDaily
             else -> return null
         }
