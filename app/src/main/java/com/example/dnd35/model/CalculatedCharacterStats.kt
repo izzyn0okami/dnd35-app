@@ -818,7 +818,7 @@ object SpellcastingRules {
     }
 
     fun meetsAbilityRequirement(abilityScore: Int, spellLevel: Int): Boolean =
-        spellLevel == 0 || (spellLevel in 1..9 && abilityScore >= 10 + spellLevel)
+        spellLevel in 0..9 && abilityScore >= 10 + spellLevel
 
     fun casterLevel(className: String, classLevel: Int): Int {
         val level = classLevel.coerceAtLeast(0)
