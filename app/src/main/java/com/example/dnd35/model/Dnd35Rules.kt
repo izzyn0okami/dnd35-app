@@ -165,6 +165,13 @@ object Dnd35Rules {
     // TODAS AS 11 CLASSES OFICIAIS DO D&D 3.5
     // ==========================================
     enum class BabProgression { FULL, THREE_QUARTERS, HALF }
+
+    /** Rótulo em português para exibição da progressão de BBA na interface. */
+    fun babProgressionLabel(progress: BabProgression): String = when (progress) {
+        BabProgression.FULL -> "Integral (BBA igual ao nível)"
+        BabProgression.THREE_QUARTERS -> "Três quartos (BBA de 3/4 do nível)"
+        BabProgression.HALF -> "Metade (BBA de 1/2 do nível)"
+    }
     enum class SaveProgression { GOOD, POOR }
 
     data class ClassFeature(
