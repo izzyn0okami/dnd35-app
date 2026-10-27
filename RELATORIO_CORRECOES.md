@@ -394,3 +394,11 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - Adicionados testes de regressão para os níveis 4–20, incluindo os níveis de transição e espaços de 2º, 3º e 4º círculos, além de nível inválido.
 - A tabela distingue espaços-base de magias adicionais por Sabedoria; os espaços marcados como 0 permanecem zero-base e não são convertidos em espaços completos.
 - A integração visual à aba Magias e a validação final pela CI permanecem pendentes.
+
+
+### CI #1394 — progressão diária de Paladino e Ranger (2026-10-27)
+
+- A execução Android build #1394, associada à cabeça d6a476bb578da955473ac97bd9b85773a509693d, terminou com sucesso: testes unitários, compilação do APK e publicação do artefato concluídos.
+- A PR #265 está atualmente marcada como integrável pelo GitHub, embora continue em rascunho; não foi feito merge nesta etapa.
+- Inspeção inicial da tela SpellsTab.kt: a interface já possui grimório, CD por círculo, filtro de magias e gestão manual de espaços. A integração das progressões normativas precisa respeitar o modelo existente de SpellSlotInfo e o fluxo de persistência, evitando substituir contagens personalizadas sem migração.
+- Próxima etapa: mapear onde SpellSlotInfo é criado e persistido e conectar as tabelas auditadas à interface com testes de regressão para classes conjuradoras e multiclasse.
