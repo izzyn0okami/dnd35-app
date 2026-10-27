@@ -183,6 +183,13 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - Testes de regressão cobrem método de conjuração, requisito mínimo (inclusive truques), espaços bônus e níveis de conjurador de Ranger, Paladino e Mago.
 - Escopo ainda incompleto: esta etapa cria o núcleo reutilizável, mas não inclui as tabelas completas de espaços diários nem as tabelas de magias conhecidas/preparadas por nível. A integração completa com a aba Magias continua pendente.
 
+### CI #1362 — correção da expectativa de nível de conjurador do Ranger (2026-10-27)
+- A suíte executou 275 testes e falhou apenas em `rangerSpellcastingStartsAtLevelFourWithCasterLevelOne`, que ainda esperava nível de conjurador 1 no 4º nível e 17 no 20º.
+- O Livro do Jogador brasileiro determina que o Ranger não tem nível de conjurador até o 3º nível e, a partir do 4º, usa metade do nível de Ranger. A expectativa correta é 2 no 4º nível e 10 no 20º.
+- Atualizado o teste legado em `ExampleUnitTest.kt` para refletir essa regra e renomeado o teste para não codificar a expectativa antiga.
+- A CI precisa ser executada novamente após a correção. A auditoria da progressão completa de magias e a integração visual continuam pendentes.
+
+
 ## Auditoria do catálogo de magias — conferência incremental (2026-10-25)
 
 - Fonte de trabalho: `app/src/main/resources/dnd35/spells.json`; fonte normativa prioritária: PDF brasileiro do `D&D 3.5 — Livro do Jogador`.
