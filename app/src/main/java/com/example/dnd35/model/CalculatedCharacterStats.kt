@@ -903,6 +903,29 @@ object SpellcastingRules {
         intArrayOf(4, 4, 4, 4, 4, 4, 4)
     )
 
+    // Tabela 3-13 (Mago), Livro do Jogador brasileiro.
+    private val wizardDaily = arrayOf(
+        intArrayOf(3, 1, 0, 0, 0, 0, 0, 0, 0, 0),
+        intArrayOf(4, 2, 0, 0, 0, 0, 0, 0, 0, 0),
+        intArrayOf(4, 2, 1, 0, 0, 0, 0, 0, 0, 0),
+        intArrayOf(4, 3, 2, 0, 0, 0, 0, 0, 0, 0),
+        intArrayOf(4, 3, 2, 1, 0, 0, 0, 0, 0, 0),
+        intArrayOf(4, 3, 3, 2, 0, 0, 0, 0, 0, 0),
+        intArrayOf(4, 4, 3, 2, 1, 0, 0, 0, 0, 0),
+        intArrayOf(4, 4, 3, 3, 2, 0, 0, 0, 0, 0),
+        intArrayOf(4, 4, 4, 3, 2, 1, 0, 0, 0, 0),
+        intArrayOf(4, 4, 4, 3, 3, 2, 0, 0, 0, 0),
+        intArrayOf(4, 4, 4, 4, 3, 2, 1, 0, 0, 0),
+        intArrayOf(4, 4, 4, 4, 3, 3, 2, 0, 0, 0),
+        intArrayOf(4, 4, 4, 4, 4, 3, 2, 1, 0, 0),
+        intArrayOf(4, 4, 4, 4, 4, 3, 3, 2, 0, 0),
+        intArrayOf(4, 4, 4, 4, 4, 4, 3, 2, 1, 0),
+        intArrayOf(4, 4, 4, 4, 4, 4, 3, 3, 2, 0),
+        intArrayOf(4, 4, 4, 4, 4, 4, 4, 3, 2, 1),
+        intArrayOf(4, 4, 4, 4, 4, 4, 4, 3, 3, 2),
+        intArrayOf(4, 4, 4, 4, 4, 4, 4, 4, 3, 3),
+        intArrayOf(4, 4, 4, 4, 4, 4, 4, 4, 4, 4)
+    )
     // Tabela 3-8 (Druida), Livro do Jogador brasileiro: espaços-base por dia.
     private val druidDaily = arrayOf(
         intArrayOf(3, 1, 0, 0, 0, 0, 0, 0, 0, 0),
@@ -956,6 +979,7 @@ object SpellcastingRules {
             "bardo" -> bardDaily
             "clérigo" -> druidDaily // Tabela 3-6: mesma progressão-base diária do Druida.
             "druida" -> druidDaily
+            "mago" -> wizardDaily
             "feiticeiro" -> sorcererDaily
             else -> return null
         }
