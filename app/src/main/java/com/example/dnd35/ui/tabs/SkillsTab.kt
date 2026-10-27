@@ -119,6 +119,124 @@ fun SkillsTab(
             .padding(horizontal = 14.dp, vertical = 8.dp)
             .testTag("skills_tab")
     ) {
+        // Banner de Graduação Máxima e Gastos
+        item {
+            Card(
+                modifier = Modifier.fillMaxWidth(),
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primaryContainer),
+                shape = RoundedCornerShape(12.dp)
+            ) {
+                Row(
+                    modifier = Modifier.padding(12.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Column {
+                        Text(
+                            "Graduação Máxima: $maxClassRank (Classe) / $maxCrossRank (Entre-classe)",
+                            style = MaterialTheme.typography.bodySmall,
+                            fontWeight = FontWeight.Bold,
+                            color = MaterialTheme.colorScheme.onPrimaryContainer
+                        )
+                        Text(
+                            "${if (hasCompleteSkillPointHistory) "Pontos gastos (histórico completo)" else "Pontos gastos (estimativa atual)"}: ${String.format("%.1f", totalSkillPointsSpent)} pts",
+                            style = MaterialTheme.typography.labelSmall,
+                            color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.8f)
+                        )
+                        if (hasCompleteSkillPointHistory && totalAvailableSkillPoints != null && recordedSkillPointBalance != null) {
+                            Text(
+                                "Orçamento registrado: ${String.format("%.1f", totalAvailableSkillPoints)} pts • " +
+                                    when {
+                                        recordedSkillPointBalance < -0.001 -> "excesso de ${String.format("%.1f", -recordedSkillPointBalance)} pts"
+                                        recordedSkillPointBalance > 0.001 -> "saldo: ${String.format("%.1f", recordedSkillPointBalance)} pts"
+                                        else -> "saldo: 0 pts"
+                                    },
+                                style = MaterialTheme.typography.labelSmall,
+                                color = if (recordedSkillPointBalance < -0.001) DndCrimson else MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.8f)
+                            )
+                        } else {
+                            Text(
+                                "Saldo disponível: indisponível — registre o orçamento e os gastos de todos os níveis atuais.",
+                                style = MaterialTheme.typography.labelSmall,
+                                color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.8f)
+                            )
+                        }
+                    }
+                    if (stats.armorCheckPenalty < 0) {
+                        Card(
+                            colors = CardDefaults.cardColors(containerColor = DndCrimson),
+                            shape = RoundedCornerShape(8.dp)
+                        ) {
+                            Text(
+                                "Pen: ${stats.armorCheckPenalty}",
+                                color = androidx.compose.ui.graphics.Color.White,
+                                style = MaterialTheme.typography.labelSmall,
+                                fontWeight = FontWeight.Bold,
+                                modifier = Modifier.padding(horizontal = 6.dp, vertical = 2.dp)
+                            )
+                        }
+                    }
+                }
+            }
+            Spacer(modifier = Modifier.height(10.dp))
+        }
+
+        // Barra de Busca
+        item {
+            OutlinedTextField(
+                value = searchQuery,
+                onValueChange = { searchQuery = it },
+                placeholder = { Text("Buscar perícia (ex: Observar, Furtividade)...") },
+                leadingIcon = { Icon(Icons.Default.Search, null) },
+                modifier = Modifier.fillMaxWidth(),
+                singleLine = true
+            )
+            Spacer(modifier = Modifier.height(8.dp))
+        }
+
+        // Filtros Chips
+        item {
+            Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                FilterChip(
+                    selected = filterType == 0,
+                    onClick = { filterType = 0 },
+                    label = { Text("Todas (${stats.computedSkills.size})") }
+                )
+                FilterChip(
+                    selected = filterType == 1,
+                    onClick = { filterType = 1 },
+                    label = { Text("★ De classe") }
+                )
+                FilterChip(
+                    selected = filterType == 2,
+                    onClick = { filterType = 2 },
+                    label = { Text("Treinadas (>0)") }
+                )
+            }
+            Spacer(modifier = Modifier.height(8.dp))
+        }
+
+        // Lista de Perícias
+        items(filteredSkills) { item ->
+            SkillItemRow(
+                computed = item,
+                onAddRank = {
+                    val step = skillRankAdjustmentStep(item.ranks, item.isClassSkill)
+                    viewModel.updateSkill(item.skill.name, minOf(item.maxRanks, item.ranks + step), item.miscBonus, item.isClassSkill)
+                },
+                onSubRank = {
+                    val step = skillRankAdjustmentStep(item.ranks, item.isClassSkill)
+                    viewModel.updateSkill(item.skill.name, (item.ranks - step).coerceAtLeast(0f), item.miscBonus, item.isClassSkill)
+                },
+                onEdit = { editingSkill = item },
+                onRoll = {
+                    if (item.canRoll) diceRollTarget = Pair(item.skill.name, item.totalBonus)
+                }
+            )
+            Spacer(modifier = Modifier.height(6.dp))
+        }
+
+        // Idiomas conhecidos
         item {
             var languageInput by remember(character.id) { mutableStateOf("") }
             var languageMenuExpanded by remember(character.id) { mutableStateOf(false) }
@@ -346,7 +464,6 @@ fun SkillsTab(
             }
             Spacer(modifier = Modifier.height(12.dp))
         }
-
         // Ofícios é uma categoria: cada especialidade possui graduações independentes.
         item {
             Card(
@@ -413,7 +530,6 @@ fun SkillsTab(
             }
             Spacer(modifier = Modifier.height(12.dp))
         }
-
         // Histórico explícito de orçamento de pontos de perícia
         item {
             var levelInput by remember(character.id) { mutableStateOf("") }
@@ -565,124 +681,6 @@ fun SkillsTab(
             }
             Spacer(modifier = Modifier.height(12.dp))
         }
-
-        // Banner de Graduação Máxima e Gastos
-        item {
-            Card(
-                modifier = Modifier.fillMaxWidth(),
-                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primaryContainer),
-                shape = RoundedCornerShape(12.dp)
-            ) {
-                Row(
-                    modifier = Modifier.padding(12.dp),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Column {
-                        Text(
-                            "Graduação Máxima: $maxClassRank (Classe) / $maxCrossRank (Entre-classe)",
-                            style = MaterialTheme.typography.bodySmall,
-                            fontWeight = FontWeight.Bold,
-                            color = MaterialTheme.colorScheme.onPrimaryContainer
-                        )
-                        Text(
-                            "${if (hasCompleteSkillPointHistory) "Pontos gastos (histórico completo)" else "Pontos gastos (estimativa atual)"}: ${String.format("%.1f", totalSkillPointsSpent)} pts",
-                            style = MaterialTheme.typography.labelSmall,
-                            color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.8f)
-                        )
-                        if (hasCompleteSkillPointHistory && totalAvailableSkillPoints != null && recordedSkillPointBalance != null) {
-                            Text(
-                                "Orçamento registrado: ${String.format("%.1f", totalAvailableSkillPoints)} pts • " +
-                                    when {
-                                        recordedSkillPointBalance < -0.001 -> "excesso de ${String.format("%.1f", -recordedSkillPointBalance)} pts"
-                                        recordedSkillPointBalance > 0.001 -> "saldo: ${String.format("%.1f", recordedSkillPointBalance)} pts"
-                                        else -> "saldo: 0 pts"
-                                    },
-                                style = MaterialTheme.typography.labelSmall,
-                                color = if (recordedSkillPointBalance < -0.001) DndCrimson else MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.8f)
-                            )
-                        } else {
-                            Text(
-                                "Saldo disponível: indisponível — registre o orçamento e os gastos de todos os níveis atuais.",
-                                style = MaterialTheme.typography.labelSmall,
-                                color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.8f)
-                            )
-                        }
-                    }
-                    if (stats.armorCheckPenalty < 0) {
-                        Card(
-                            colors = CardDefaults.cardColors(containerColor = DndCrimson),
-                            shape = RoundedCornerShape(8.dp)
-                        ) {
-                            Text(
-                                "Pen: ${stats.armorCheckPenalty}",
-                                color = androidx.compose.ui.graphics.Color.White,
-                                style = MaterialTheme.typography.labelSmall,
-                                fontWeight = FontWeight.Bold,
-                                modifier = Modifier.padding(horizontal = 6.dp, vertical = 2.dp)
-                            )
-                        }
-                    }
-                }
-            }
-            Spacer(modifier = Modifier.height(10.dp))
-        }
-
-        // Barra de Busca
-        item {
-            OutlinedTextField(
-                value = searchQuery,
-                onValueChange = { searchQuery = it },
-                placeholder = { Text("Buscar perícia (ex: Observar, Furtividade)...") },
-                leadingIcon = { Icon(Icons.Default.Search, null) },
-                modifier = Modifier.fillMaxWidth(),
-                singleLine = true
-            )
-            Spacer(modifier = Modifier.height(8.dp))
-        }
-
-        // Filtros Chips
-        item {
-            Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                FilterChip(
-                    selected = filterType == 0,
-                    onClick = { filterType = 0 },
-                    label = { Text("Todas (${stats.computedSkills.size})") }
-                )
-                FilterChip(
-                    selected = filterType == 1,
-                    onClick = { filterType = 1 },
-                    label = { Text("★ De classe") }
-                )
-                FilterChip(
-                    selected = filterType == 2,
-                    onClick = { filterType = 2 },
-                    label = { Text("Treinadas (>0)") }
-                )
-            }
-            Spacer(modifier = Modifier.height(8.dp))
-        }
-
-        // Lista de Perícias
-        items(filteredSkills) { item ->
-            SkillItemRow(
-                computed = item,
-                onAddRank = {
-                    val step = skillRankAdjustmentStep(item.ranks, item.isClassSkill)
-                    viewModel.updateSkill(item.skill.name, minOf(item.maxRanks, item.ranks + step), item.miscBonus, item.isClassSkill)
-                },
-                onSubRank = {
-                    val step = skillRankAdjustmentStep(item.ranks, item.isClassSkill)
-                    viewModel.updateSkill(item.skill.name, (item.ranks - step).coerceAtLeast(0f), item.miscBonus, item.isClassSkill)
-                },
-                onEdit = { editingSkill = item },
-                onRoll = {
-                    if (item.canRoll) diceRollTarget = Pair(item.skill.name, item.totalBonus)
-                }
-            )
-            Spacer(modifier = Modifier.height(6.dp))
-        }
-
         item {
             Spacer(modifier = Modifier.height(24.dp))
         }
