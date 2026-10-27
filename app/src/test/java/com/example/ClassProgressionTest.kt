@@ -302,6 +302,17 @@ class ClassProgressionTest {
     }
 
     @Test
+    fun druidDailySpellSlotProgressionMatchesPlayerHandbookTable() {
+        assertEquals(3, SpellcastingRules.baseDailySlots("Druida", 1, 0))
+        assertEquals(1, SpellcastingRules.baseDailySlots("Druida", 1, 1))
+        assertEquals(1, SpellcastingRules.baseDailySlots("Druida", 3, 2))
+        assertEquals(1, SpellcastingRules.baseDailySlots("Druida", 7, 4))
+        assertEquals(1, SpellcastingRules.baseDailySlots("Druida", 13, 7))
+        assertEquals(4, SpellcastingRules.baseDailySlots("Druida", 20, 9))
+        assertEquals(null, SpellcastingRules.baseDailySlots("Druida", 21, 0))
+    }
+
+    @Test
     fun sorcererDailySpellSlotProgressionMatchesPlayerHandbookTable() {
         assertEquals(5, SpellcastingRules.baseDailySlots("Feiticeiro", 1, 0))
         assertEquals(3, SpellcastingRules.baseDailySlots("Feiticeiro", 1, 1))
