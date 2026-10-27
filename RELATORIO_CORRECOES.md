@@ -330,3 +330,11 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - A CI executou 279 testes e encontrou uma falha no teste de espaços diários do Feiticeiro no 14º nível, círculo 7.
 - Conferência direta da Tabela 3-9 no PDF brasileiro (página impressa 33) confirmou a progressão dos círculos 7º a 9º: o 7º começa no 14º nível com 3 espaços; o 8º começa no 16º com 3; o 9º começa no 18º com 3. A linha do 20º nível tem 6 espaços para cada círculo de 0º a 9º.
 - Corrigida a transcrição dos níveis 14–20. A execução #1372 falhou somente no teste citado; é necessário aguardar nova CI após a correção.
+
+
+### Revisão adicional do teste diário do Feiticeiro — nível 20 (2026-10-27)
+
+- Na revisão após a CI #1374, foi encontrada uma segunda expectativa inconsistente no teste: o 20º nível, círculo 9, ainda esperava 4 espaços-base.
+- A Tabela 3-9 do PDF brasileiro do *Livro do Jogador* (página impressa 33) mostra 6 espaços-base por dia em cada círculo de 0º a 9º no 20º nível. A tabela de implementação já refletia esse valor; o defeito estava na expectativa do teste.
+- Corrigido o teste para esperar 6 espaços no 9º círculo. Esta alteração alinha a regressão com a fonte normativa; não comprova a CI até que uma nova execução termine.
+- A auditoria continua aberta: faltam tabelas por classe e integração da aba Magias. Não fazer merge da PR #265 enquanto a CI não estiver verde e o escopo acordado não estiver funcional.
