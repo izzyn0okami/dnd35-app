@@ -828,7 +828,7 @@ object SpellcastingRules {
             else -> level
         }
     }
-}
+
 
     // Tabelas 3-5 e 3-10 do Livro do Jogador brasileiro:
     // quantidade fixa de magias conhecidas, independente dos espaços adicionais por atributo.
@@ -877,6 +877,66 @@ object SpellcastingRules {
         intArrayOf(9, 5, 5, 4, 4, 4, 3, 3, 3, 2),
         intArrayOf(9, 5, 5, 4, 4, 4, 3, 3, 3, 3)
     )
+
+    // Tabelas 3-4 (Bardo) e 3-9 (Feiticeiro): espaços-base por dia.
+    // Os espaços adicionais por atributo são calculados separadamente.
+    private val bardDaily = arrayOf(
+        intArrayOf(2, 0, 0, 0, 0, 0, 0),
+        intArrayOf(3, 0, 0, 0, 0, 0, 0),
+        intArrayOf(3, 1, 0, 0, 0, 0, 0),
+        intArrayOf(3, 2, 0, 0, 0, 0, 0),
+        intArrayOf(3, 3, 1, 0, 0, 0, 0),
+        intArrayOf(3, 3, 2, 0, 0, 0, 0),
+        intArrayOf(3, 3, 2, 0, 0, 0, 0),
+        intArrayOf(3, 3, 3, 1, 0, 0, 0),
+        intArrayOf(3, 3, 3, 2, 0, 0, 0),
+        intArrayOf(3, 3, 3, 2, 0, 0, 0),
+        intArrayOf(3, 3, 3, 3, 1, 0, 0),
+        intArrayOf(3, 3, 3, 3, 2, 0, 0),
+        intArrayOf(3, 3, 3, 3, 2, 0, 0),
+        intArrayOf(4, 3, 3, 3, 3, 1, 0),
+        intArrayOf(4, 4, 3, 3, 3, 2, 0),
+        intArrayOf(4, 4, 4, 3, 3, 2, 0),
+        intArrayOf(4, 4, 4, 4, 3, 3, 1),
+        intArrayOf(4, 4, 4, 4, 4, 3, 2),
+        intArrayOf(4, 4, 4, 4, 4, 4, 3),
+        intArrayOf(4, 4, 4, 4, 4, 4, 4)
+    )
+
+    private val sorcererDaily = arrayOf(
+        intArrayOf(5, 3, 0, 0, 0, 0, 0, 0, 0, 0),
+        intArrayOf(6, 4, 0, 0, 0, 0, 0, 0, 0, 0),
+        intArrayOf(6, 5, 0, 0, 0, 0, 0, 0, 0, 0),
+        intArrayOf(6, 6, 3, 0, 0, 0, 0, 0, 0, 0),
+        intArrayOf(6, 6, 4, 0, 0, 0, 0, 0, 0, 0),
+        intArrayOf(6, 6, 5, 3, 0, 0, 0, 0, 0, 0),
+        intArrayOf(6, 6, 6, 4, 0, 0, 0, 0, 0, 0),
+        intArrayOf(6, 6, 6, 5, 3, 0, 0, 0, 0, 0),
+        intArrayOf(6, 6, 6, 6, 4, 0, 0, 0, 0, 0),
+        intArrayOf(6, 6, 6, 6, 5, 3, 0, 0, 0, 0),
+        intArrayOf(6, 6, 6, 6, 6, 4, 0, 0, 0, 0),
+        intArrayOf(6, 6, 6, 6, 6, 5, 0, 0, 0, 0),
+        intArrayOf(6, 6, 6, 6, 6, 6, 3, 0, 0, 0),
+        intArrayOf(6, 6, 6, 6, 6, 6, 4, 0, 0, 0),
+        intArrayOf(6, 6, 6, 6, 6, 6, 5, 3, 0, 0),
+        intArrayOf(6, 6, 6, 6, 6, 6, 6, 4, 0, 0),
+        intArrayOf(6, 6, 6, 6, 6, 6, 6, 5, 3, 0),
+        intArrayOf(6, 6, 6, 6, 6, 6, 6, 6, 4, 0),
+        intArrayOf(6, 6, 6, 6, 6, 6, 6, 6, 5, 3),
+        intArrayOf(6, 6, 6, 6, 6, 6, 6, 6, 6, 4)
+    )
+
+    /** Espaços-base por dia, sem bônus de atributo; null indica tabela ainda não implementada. */
+    fun baseDailySlots(className: String, classLevel: Int, spellLevel: Int): Int? {
+        if (classLevel !in 1..20 || spellLevel !in 0..9) return null
+        val table = when (className.trim().lowercase()) {
+            "bardo" -> bardDaily
+            "feiticeiro" -> sorcererDaily
+            else -> return null
+        }
+        val row = table[classLevel - 1]
+        return if (spellLevel < row.size) row[spellLevel] else 0
+    }
 
     /** Retorna a quantidade da tabela para o nível da classe e círculo indicados. */
     fun knownSpells(className: String, classLevel: Int, spellLevel: Int): Int? {
