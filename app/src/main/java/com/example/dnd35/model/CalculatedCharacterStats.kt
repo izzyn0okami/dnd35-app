@@ -992,6 +992,32 @@ object SpellcastingRules {
         intArrayOf(6, 6, 6, 6, 6, 6, 6, 6, 6, 6)
     )
 
+    // Tabela 3-16 (Paladino), Livro do Jogador brasileiro: espaços-base por dia.
+    // Colunas: círculo 0 (sem espaços), círculos 1 a 4. Valores 0 preservam
+    // a distinção entre ausência de espaços-base e espaços adicionais por Sabedoria.
+    private val paladinDaily = arrayOf(
+        intArrayOf(0, 0, 0, 0, 0),
+        intArrayOf(0, 0, 0, 0, 0),
+        intArrayOf(0, 0, 0, 0, 0),
+        intArrayOf(0, 0, 0, 0, 0),
+        intArrayOf(0, 0, 0, 0, 0),
+        intArrayOf(0, 1, 0, 0, 0),
+        intArrayOf(0, 1, 0, 0, 0),
+        intArrayOf(0, 1, 0, 0, 0),
+        intArrayOf(0, 1, 0, 0, 0),
+        intArrayOf(0, 1, 1, 0, 0),
+        intArrayOf(0, 1, 1, 0, 0),
+        intArrayOf(0, 1, 1, 1, 0),
+        intArrayOf(0, 1, 1, 1, 0),
+        intArrayOf(0, 2, 1, 1, 0),
+        intArrayOf(0, 2, 1, 1, 1),
+        intArrayOf(0, 2, 2, 1, 1),
+        intArrayOf(0, 2, 2, 2, 1),
+        intArrayOf(0, 3, 2, 2, 1),
+        intArrayOf(0, 3, 3, 3, 2),
+        intArrayOf(0, 3, 3, 3, 3)
+    )
+
     // Tabela 3-17 (Ranger), Livro do Jogador brasileiro: espaços-base por dia.
     // O Ranger começa a conjurar no 4º nível; os valores zero indicam nível/círculo
     // já listado na tabela, mas sem espaços-base disponíveis.
@@ -1027,7 +1053,7 @@ object SpellcastingRules {
             "druida" -> druidDaily
             "mago" -> wizardDaily
             "feiticeiro" -> sorcererDaily
-            "ranger", "paladino" -> rangerDaily
+            "ranger" -> rangerDaily\n            "paladino" -> paladinDaily
             else -> return null
         }
         val row = table[classLevel - 1]
