@@ -1053,7 +1053,8 @@ object SpellcastingRules {
             "druida" -> druidDaily
             "mago" -> wizardDaily
             "feiticeiro" -> sorcererDaily
-            "ranger" -> rangerDaily\n            "paladino" -> paladinDaily
+            "ranger" -> rangerDaily
+            "paladino" -> paladinDaily
             else -> return null
         }
         val row = table[classLevel - 1]
