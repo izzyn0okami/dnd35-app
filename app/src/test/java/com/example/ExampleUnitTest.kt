@@ -394,6 +394,37 @@ class ExampleUnitTest {
     assertEquals(4, stats.grappleBonus) // 1 BAB + 3 Str
     assertEquals(12, stats.totalAc) // 10 + 2 Dex
     assertTrue(stats.computedSkills.isNotEmpty())
+    // Nível 1, tamanho Médio (sem modificador de tamanho): BBA (1) + FOR (3) corpo a corpo,
+    // BBA (1) + DES (2) à distância, sem ataques extras ainda.
+    assertEquals("+4", stats.meleeAttackDisplay)
+    assertEquals("+3", stats.rangedAttackDisplay)
+  }
+
+  @Test
+  fun meleeAndRangedAttackDisplaysIncludeSizeModifierAndIterativeAttacks() {
+    // Guerreiro Halfling nível 6: BBA cheio 6, FOR 12 (mod +1), DES 16 (mod +3),
+    // tamanho Pequeno (+1 CA e ataque). Dois ataques iterativos (BBA 6 e BBA 1).
+    val char = CharacterEntity(
+      name = "Guerreiro Pequeno",
+      characterClass = "Guerreiro",
+      race = "Halfling",
+      size = "Pequeno", // CharacterEntity não deriva o tamanho da raça sozinho; a tela de criação é quem copia raceInfo.size ao montar a ficha.
+      level = 6,
+      baseStr = 14,
+      baseDex = 14,
+      baseCon = 10,
+      baseInt = 10,
+      baseWis = 10,
+      baseCha = 10
+    )
+    val stats = CharacterCalculator.compute(char)
+    assertEquals(6, stats.bab)
+    assertEquals(1, stats.strMod)
+    assertEquals(3, stats.dexMod)
+    // Corpo a corpo: BBA 6+1(tamanho)+1(FOR)=8, depois 1+2=3 → "+8/+3".
+    assertEquals("+8/+3", stats.meleeAttackDisplay)
+    // À distância: BBA 6+1(tamanho)+3(DES)=10, depois 1+4=5 → "+10/+5".
+    assertEquals("+10/+5", stats.rangedAttackDisplay)
   }
   @Test
   fun equippedItemAppliesAbilityBonusEvenWhenDescriptionContinues() {
