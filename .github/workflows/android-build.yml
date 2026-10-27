@@ -40,15 +40,6 @@ jobs:
       - name: Run unit tests
         run: ./gradlew testDebugUnitTest
 
-      - name: Print test failures (diagnostic, temporary)
-        if: failure()
-        run: |
-          for f in $(find app/build/test-results -name '*.xml' 2>/dev/null); do
-            if grep -q '<failure' "$f"; then
-              python3 "$GITHUB_WORKSPACE/.github/scripts/print_test_failures.py" "$f"
-            fi
-          done
-
       - name: Compile Android app
         run: ./gradlew assembleDebug
 
