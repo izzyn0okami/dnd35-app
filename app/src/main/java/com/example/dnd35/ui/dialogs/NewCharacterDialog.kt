@@ -318,7 +318,7 @@ private fun ClassStep(
         modifier = Modifier.fillMaxWidth()
     ) {
         Text(
-            "${currentClassInfo.description} Dado de Vida: d${currentClassInfo.hitDie}, BBA: ${currentClassInfo.babType.name}.",
+            "${currentClassInfo.description}\nDado de Vida: d${currentClassInfo.hitDie}.\nBBA (Bônus Base de Ataque): ${Dnd35Rules.babProgressionLabel(currentClassInfo.babType)}.",
             style = MaterialTheme.typography.bodySmall,
             modifier = Modifier.padding(8.dp)
         )
