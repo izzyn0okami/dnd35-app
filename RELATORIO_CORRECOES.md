@@ -347,3 +347,12 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - **Separação de regras:** a tabela representa espaços-base; bônus por Sabedoria permanecem calculados separadamente. O Druida não recebe o espaço adicional de domínio da tabela do Clérigo.
 - **Regressão:** testes para níveis 1, 3, 7, 13 e 20, incluindo acesso a círculos altos e entrada inválida acima do nível 20.
 - **Escopo:** somente a progressão diária do Druida foi adicionada nesta rodada. Progressões de Mago e Clérigo (incluindo espaço de domínio), Paladino e Ranger, além da integração da aba Magias, seguem pendentes. CI ainda precisa validar a alteração antes de qualquer merge.
+
+
+## Progressão diária de magias do Clérigo (2026-10-26)
+
+- Fonte normativa: Livro do Jogador brasileiro, Tabela 3-6 (Clérigo), conferida em conjunto com a progressão diária já transcrita da Tabela 3-8 (Druida).
+- `baseDailySlots("Clérigo", nível, círculo)` agora consulta a progressão-base diária correspondente, sem incorporar espaços adicionais por atributo nem o espaço de domínio.
+- Adicionada `domainSlots(...)`: retorna um espaço de domínio para círculos de 1º a 9º que o Clérigo já pode conjurar; retorna zero para truques e círculos ainda indisponíveis. Classes sem domínio ou entradas inválidas retornam `null`.
+- Testes de regressão cobrem níveis baixos e altos, disponibilidade de círculos e separação entre espaço-base e espaço de domínio.
+- Pendente nesta linha: transcrever e testar a tabela diária do Mago; depois implementar as progressões de Paladino e Ranger e integrar os cálculos à aba Magias. A validação CI ainda deve ser conferida antes de qualquer merge.
