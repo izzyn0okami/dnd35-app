@@ -1551,7 +1551,7 @@ class PresetSpellCatalogTest {
         assertEquals("Evocação [Energia]", spell.school)
         assertEquals(setOf("Feiticeiro", "Mago"), spell.classes.toSet())
         assertEquals(mapOf("Feiticeiro" to 8, "Mago" to 8), spell.classLevels)
-        assertTrue(spell.domainLevels.isEmpty())
+        assertEquals(mapOf("Força" to 8), spell.domainLevels)
         assertEquals("1 ação padrão", spell.castTime)
         assertEquals("V, G, F/FD", spell.components)
         assertEquals("Médio (30 m + 3 m/nível)", spell.range)
