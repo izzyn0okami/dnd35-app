@@ -305,3 +305,12 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - A PR #265 permanece em rascunho. Ainda faltam as tabelas completas de progressão por classe (magias diárias e conhecidas/preparadas), o cálculo de espaços totais com bônus de atributo e a integração correta na aba Magias.
 - Referência normativa: PDF brasileiro do *Livro do Jogador* salvo na biblioteca. As progressões devem ser transcritas das tabelas por classe, sem inferir valores ausentes por padrão ou reutilizar uma tabela de outra classe.
 - PR relacionada #261 continua aberta e com conflito indicado pelo GitHub; não fazer merge automático nem abrir PR duplicada para o mesmo escopo. Resolver o conflito após verificar a base atual e a CI correspondente.
+
+
+## Progressões de magias conhecidas — Bardo e Feiticeiro (2026-10-27)
+
+- Transcritas para `SpellcastingRules` as progressões de magias conhecidas das Tabelas 3-5 (Bardo) e 3-10 (Feiticeiro) do PDF brasileiro do *Livro do Jogador*.
+- A API `knownSpells(className, classLevel, spellLevel)` devolve a quantidade fixa da tabela por nível de classe e círculo; retorna `null` para classes sem tabela implementada ou nível de classe inválido, e zero quando a classe ainda não conhece magias daquele círculo.
+- A tabela de magias conhecidas permanece separada dos espaços diários e dos bônus de atributo. Carisma alto não altera o total de magias conhecidas do Bardo/Feiticeiro.
+- Testes acrescentados para níveis iniciais, transições de círculos, níveis máximos e entradas inválidas.
+- Escopo ainda parcial: não foram implementadas aqui as progressões de magias por dia, nem as tabelas de Mago, Clérigo, Druida, Paladino e Ranger; a aba Magias ainda não consome esta API.
