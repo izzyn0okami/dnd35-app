@@ -829,3 +829,64 @@ object SpellcastingRules {
         }
     }
 }
+
+    // Tabelas 3-5 e 3-10 do Livro do Jogador brasileiro:
+    // quantidade fixa de magias conhecidas, independente dos espaços adicionais por atributo.
+    private val bardKnown = arrayOf(
+        intArrayOf(4, 0, 0, 0, 0, 0, 0),
+        intArrayOf(5, 2, 0, 0, 0, 0, 0),
+        intArrayOf(6, 3, 0, 0, 0, 0, 0),
+        intArrayOf(6, 3, 2, 0, 0, 0, 0),
+        intArrayOf(6, 4, 3, 0, 0, 0, 0),
+        intArrayOf(6, 4, 3, 0, 0, 0, 0),
+        intArrayOf(6, 4, 4, 2, 0, 0, 0),
+        intArrayOf(6, 4, 4, 3, 0, 0, 0),
+        intArrayOf(6, 4, 4, 3, 0, 0, 0),
+        intArrayOf(6, 4, 4, 4, 2, 0, 0),
+        intArrayOf(6, 4, 4, 4, 3, 0, 0),
+        intArrayOf(6, 4, 4, 4, 3, 0, 0),
+        intArrayOf(6, 4, 4, 4, 4, 2, 0),
+        intArrayOf(6, 4, 4, 4, 4, 3, 0),
+        intArrayOf(6, 4, 4, 4, 4, 3, 0),
+        intArrayOf(6, 5, 4, 4, 4, 4, 2),
+        intArrayOf(6, 5, 5, 4, 4, 4, 3),
+        intArrayOf(6, 5, 5, 5, 4, 4, 3),
+        intArrayOf(6, 5, 5, 5, 5, 4, 4),
+        intArrayOf(6, 5, 5, 5, 5, 5, 4)
+    )
+
+    private val sorcererKnown = arrayOf(
+        intArrayOf(4, 2, 0, 0, 0, 0, 0, 0, 0, 0),
+        intArrayOf(5, 2, 0, 0, 0, 0, 0, 0, 0, 0),
+        intArrayOf(5, 3, 0, 0, 0, 0, 0, 0, 0, 0),
+        intArrayOf(6, 3, 1, 0, 0, 0, 0, 0, 0, 0),
+        intArrayOf(6, 4, 2, 0, 0, 0, 0, 0, 0, 0),
+        intArrayOf(7, 4, 2, 1, 0, 0, 0, 0, 0, 0),
+        intArrayOf(7, 5, 3, 2, 0, 0, 0, 0, 0, 0),
+        intArrayOf(8, 5, 3, 2, 1, 0, 0, 0, 0, 0),
+        intArrayOf(8, 5, 4, 3, 2, 0, 0, 0, 0, 0),
+        intArrayOf(9, 5, 4, 3, 2, 1, 0, 0, 0, 0),
+        intArrayOf(9, 5, 5, 4, 3, 2, 0, 0, 0, 0),
+        intArrayOf(9, 5, 5, 4, 3, 2, 1, 0, 0, 0),
+        intArrayOf(9, 5, 5, 4, 4, 3, 2, 0, 0, 0),
+        intArrayOf(9, 5, 5, 4, 4, 3, 2, 1, 0, 0),
+        intArrayOf(9, 5, 5, 4, 4, 4, 3, 2, 0, 0),
+        intArrayOf(9, 5, 5, 4, 4, 4, 3, 2, 1, 0),
+        intArrayOf(9, 5, 5, 4, 4, 4, 3, 3, 2, 0),
+        intArrayOf(9, 5, 5, 4, 4, 4, 3, 3, 2, 1),
+        intArrayOf(9, 5, 5, 4, 4, 4, 3, 3, 3, 2),
+        intArrayOf(9, 5, 5, 4, 4, 4, 3, 3, 3, 3)
+    )
+
+    /** Retorna a quantidade da tabela para o nível da classe e círculo indicados. */
+    fun knownSpells(className: String, classLevel: Int, spellLevel: Int): Int? {
+        if (classLevel !in 1..20 || spellLevel !in 0..9) return null
+        val table = when (className.trim().lowercase()) {
+            "bardo" -> bardKnown
+            "feiticeiro" -> sorcererKnown
+            else -> return null
+        }
+        val row = table[classLevel - 1]
+        return if (spellLevel < row.size) row[spellLevel] else 0
+    }
+}
