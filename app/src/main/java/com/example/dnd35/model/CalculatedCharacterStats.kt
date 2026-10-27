@@ -954,12 +954,25 @@ object SpellcastingRules {
         if (classLevel !in 1..20 || spellLevel !in 0..9) return null
         val table = when (className.trim().lowercase()) {
             "bardo" -> bardDaily
+            "clérigo" -> druidDaily // Tabela 3-6: mesma progressão-base diária do Druida.
             "druida" -> druidDaily
             "feiticeiro" -> sorcererDaily
             else -> return null
         }
         val row = table[classLevel - 1]
         return if (spellLevel < row.size) row[spellLevel] else 0
+    }
+
+    /**
+     * Espaço adicional de domínio do Clérigo. É separado dos espaços-base e dos bônus
+     * por atributo; círculos 0 não recebem espaço de domínio.
+     * Retorna null para níveis/círculos inválidos ou classes sem domínio.
+     */
+    fun domainSlots(className: String, classLevel: Int, spellLevel: Int): Int? {
+        if (classLevel !in 1..20 || spellLevel !in 0..9) return null
+        if (className.trim().lowercase() != "clérigo") return null
+        if (spellLevel == 0) return 0
+        return if ((baseDailySlots("Clérigo", classLevel, spellLevel) ?: 0) > 0) 1 else 0
     }
 
     /** Retorna a quantidade da tabela para o nível da classe e círculo indicados. */
