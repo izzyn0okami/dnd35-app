@@ -973,6 +973,32 @@ object SpellcastingRules {
         intArrayOf(6, 6, 6, 6, 6, 6, 6, 6, 6, 6)
     )
 
+    // Tabela 3-17 (Ranger), Livro do Jogador brasileiro: espaços-base por dia.
+    // O Ranger começa a conjurar no 4º nível; os valores zero indicam nível/círculo
+    // já listado na tabela, mas sem espaços-base disponíveis.
+    private val rangerDaily = arrayOf(
+        intArrayOf(0, 0, 0, 0, 0),
+        intArrayOf(0, 0, 0, 0, 0),
+        intArrayOf(0, 0, 0, 0, 0),
+        intArrayOf(0, 0, 0, 0, 0),
+        intArrayOf(0, 0, 0, 0, 0),
+        intArrayOf(0, 1, 0, 0, 0),
+        intArrayOf(0, 1, 0, 0, 0),
+        intArrayOf(0, 1, 0, 0, 0),
+        intArrayOf(0, 1, 0, 0, 0),
+        intArrayOf(0, 1, 1, 0, 0),
+        intArrayOf(0, 1, 1, 0, 0),
+        intArrayOf(0, 1, 1, 1, 0),
+        intArrayOf(0, 1, 1, 1, 0),
+        intArrayOf(0, 2, 1, 1, 0),
+        intArrayOf(0, 2, 1, 1, 1),
+        intArrayOf(0, 2, 2, 1, 1),
+        intArrayOf(0, 2, 2, 2, 1),
+        intArrayOf(0, 3, 2, 2, 1),
+        intArrayOf(0, 3, 3, 3, 2),
+        intArrayOf(0, 3, 3, 3, 3)
+    )
+
     /** Espaços-base por dia, sem bônus de atributo; null indica tabela ainda não implementada. */
     fun baseDailySlots(className: String, classLevel: Int, spellLevel: Int): Int? {
         if (classLevel !in 1..20 || spellLevel !in 0..9) return null
@@ -982,6 +1008,7 @@ object SpellcastingRules {
             "druida" -> druidDaily
             "mago" -> wizardDaily
             "feiticeiro" -> sorcererDaily
+            "ranger" -> rangerDaily
             else -> return null
         }
         val row = table[classLevel - 1]
