@@ -376,3 +376,12 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 ### Ajuste do teste legado do Mago após inclusão da tabela (2026-10-26)
 - O teste de espaços diários do Feiticeiro continha uma expectativa antiga que afirmava que a tabela do Mago não existia. Como a Tabela 3-13 foi implementada nesta mesma PR, o teste foi atualizado para verificar quatro espaços-base de 9º círculo no 20º nível do Mago.
 - Isso evita que o teste legado contradiga a implementação recém-adicionada. A CI deve confirmar o resultado no commit atualizado.
+
+
+## Progressão diária de magias do Ranger (2026-10-26)
+
+- Fonte normativa: Livro do Jogador brasileiro, Tabela 3-17 (O Ranger), página impressa 48.
+- Adicionada a tabela de espaços-base por dia para os níveis 1–20 e círculos 0–4 em `SpellcastingRules.baseDailySlots`. O Ranger não recebe espaços-base antes do 4º nível; a tabela preserva os zeros explícitos de transição.
+- Incluídos testes de regressão para o 4º, 6º, 8º, 10º, 12º, 14º, 15º e 20º níveis, além de entrada inválida.
+- A execução CI #1388 passou no commit anterior, mas esta alteração ainda precisa de uma nova CI. A progressão do Paladino e a integração à aba Magias continuam pendentes.
+- Correção documental: o sumário do PDF brasileiro localiza a Tabela 3-13 (O Mago) na página impressa 40; a anotação anterior que indicava página 45 estava incorreta.
