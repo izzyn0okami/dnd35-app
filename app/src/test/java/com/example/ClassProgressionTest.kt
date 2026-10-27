@@ -278,4 +278,29 @@ class ClassProgressionTest {
         assertEquals(7, SpellcastingRules.casterLevel("Mago", 7))
     }
 
+
+    @Test
+    fun bardKnownSpellProgressionMatchesPlayerHandbookTable() {
+        assertEquals(4, SpellcastingRules.knownSpells("Bardo", 1, 0))
+        assertEquals(0, SpellcastingRules.knownSpells("Bardo", 1, 1))
+        assertEquals(2, SpellcastingRules.knownSpells("Bardo", 2, 1))
+        assertEquals(2, SpellcastingRules.knownSpells("Bardo", 4, 2))
+        assertEquals(2, SpellcastingRules.knownSpells("Bardo", 7, 3))
+        assertEquals(4, SpellcastingRules.knownSpells("Bardo", 20, 6))
+        assertEquals(null, SpellcastingRules.knownSpells("Bardo", 21, 0))
+    }
+
+    @Test
+    fun sorcererKnownSpellProgressionMatchesPlayerHandbookTable() {
+        assertEquals(4, SpellcastingRules.knownSpells("Feiticeiro", 1, 0))
+        assertEquals(2, SpellcastingRules.knownSpells("Feiticeiro", 1, 1))
+        assertEquals(1, SpellcastingRules.knownSpells("Feiticeiro", 4, 2))
+        assertEquals(1, SpellcastingRules.knownSpells("Feiticeiro", 6, 3))
+        assertEquals(1, SpellcastingRules.knownSpells("Feiticeiro", 12, 6))
+        assertEquals(1, SpellcastingRules.knownSpells("Feiticeiro", 18, 9))
+        assertEquals(3, SpellcastingRules.knownSpells("Feiticeiro", 20, 9))
+        assertEquals(null, SpellcastingRules.knownSpells("Mago", 20, 9))
+        assertEquals(null, SpellcastingRules.knownSpells("Feiticeiro", 0, 0))
+    }
+
 }
