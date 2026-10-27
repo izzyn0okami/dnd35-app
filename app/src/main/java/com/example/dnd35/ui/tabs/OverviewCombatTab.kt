@@ -197,6 +197,81 @@ fun OverviewCombatTab(
             Spacer(modifier = Modifier.height(14.dp))
         }
 
+        // 2.1 Resumo de Combate: o que mais importa de olhar rápido durante a partida —
+        // Iniciativa, BBA corpo a corpo e à distância (prontos para somar ao d20) e Deslocamento.
+        // Fica logo após a barra de PV, antes de qualquer seção administrativa/de referência.
+        item {
+            Card(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .testTag("combat_summary_section"),
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primaryContainer),
+                shape = RoundedCornerShape(16.dp),
+                elevation = CardDefaults.cardElevation(defaultElevation = 3.dp)
+            ) {
+                Column(modifier = Modifier.padding(14.dp)) {
+                    Text(
+                        "Resumo de Combate",
+                        fontWeight = FontWeight.Bold,
+                        style = MaterialTheme.typography.titleMedium,
+                        color = MaterialTheme.colorScheme.onPrimaryContainer
+                    )
+                    Spacer(modifier = Modifier.height(10.dp))
+                    Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                        CombatSummaryStat(
+                            label = "Iniciativa",
+                            value = if (stats.initiativeTotal >= 0) "+${stats.initiativeTotal}" else "${stats.initiativeTotal}",
+                            modifier = Modifier.weight(1f),
+                            onClick = { diceRollTarget = Triple("Iniciativa", stats.initiativeTotal, "") }
+                        )
+                        CombatSummaryStat(
+                            label = "CA",
+                            value = "${stats.totalAc}",
+                            subtitle = "Toque ${stats.touchAc} • Surp. ${stats.flatFootedAc}",
+                            modifier = Modifier.weight(1f),
+                            onClick = { showArmorModal = true }
+                        )
+                        CombatSummaryStat(
+                            label = "Deslocamento",
+                            value = "${stats.speedMetersEffective} m",
+                            modifier = Modifier.weight(1f),
+                            onClick = {}
+                        )
+                    }
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                        CombatSummaryStat(
+                            label = "BBA Corpo a Corpo",
+                            value = stats.meleeAttackDisplay,
+                            modifier = Modifier.weight(1f),
+                            highlight = true,
+                            onClick = {
+                                val firstAttack = parseFirstAttackBonus(stats.meleeAttackDisplay)
+                                diceRollTarget = Triple("Ataque Corpo a Corpo", firstAttack, "")
+                            }
+                        )
+                        CombatSummaryStat(
+                            label = "BBA à Distância",
+                            value = stats.rangedAttackDisplay,
+                            modifier = Modifier.weight(1f),
+                            highlight = true,
+                            onClick = {
+                                val firstAttack = parseFirstAttackBonus(stats.rangedAttackDisplay)
+                                diceRollTarget = Triple("Ataque à Distância", firstAttack, "")
+                            }
+                        )
+                    }
+                    Spacer(modifier = Modifier.height(4.dp))
+                    Text(
+                        "BBA base (sem FOR/DES/tamanho): ${stats.babDisplay}",
+                        style = MaterialTheme.typography.labelSmall,
+                        color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.8f)
+                    )
+                }
+            }
+            Spacer(modifier = Modifier.height(14.dp))
+        }
+
         // 2.5 Classes & Multiclasse (D&D 3.5)
         item {
             Card(
@@ -480,32 +555,26 @@ fun OverviewCombatTab(
             Spacer(modifier = Modifier.height(14.dp))
         }
 
-        // 6. Estatísticas Rápidas de Combate (Iniciativa, BBA, Velocidade)
+        // 6. Nível de Carga (detalhe que não cabia no Resumo de Combate acima)
         item {
-            Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                StatCard(
-                    title = "Iniciativa",
-                    value = if (stats.initiativeTotal >= 0) "+${stats.initiativeTotal}" else "${stats.initiativeTotal}",
-                    subtitle = "Des ${stats.dexMod} + Extra",
-                    modifier = Modifier.weight(1f),
-                    onClick = {
-                        diceRollTarget = Triple("Iniciativa", stats.initiativeTotal, "")
-                    }
-                )
-                StatCard(
-                    title = "BBA Base",
-                    value = stats.babDisplay,
-                    subtitle = "Classe Nv ${character.level}",
-                    modifier = Modifier.weight(1f),
-                    onClick = {}
-                )
-                StatCard(
-                    title = "Deslocamento",
-                    value = "${stats.speedMetersEffective} m",
-                    subtitle = stats.encumbrance.label,
-                    modifier = Modifier.weight(1f),
-                    onClick = {}
-                )
+            Card(
+                modifier = Modifier.fillMaxWidth(),
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant),
+                shape = RoundedCornerShape(12.dp)
+            ) {
+                Row(
+                    modifier = Modifier.fillMaxWidth().padding(10.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text("Nível de Carga", style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    Text(
+                        stats.encumbrance.label,
+                        fontWeight = FontWeight.Bold,
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = if (stats.encumbrance.armorCheckPenalty < 0) DndCrimson else MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
             }
             Spacer(modifier = Modifier.height(14.dp))
         }
@@ -531,11 +600,12 @@ fun OverviewCombatTab(
 
                     val weapons = stats.inventory.filter { it.category.startsWith("Arma", ignoreCase = true) }
                     if (weapons.isEmpty()) {
-                        val unarmedBonus = stats.bab + stats.strMod
+                        val unarmedBonus = parseFirstAttackBonus(stats.meleeAttackDisplay)
                         val unarmedDamage = stats.monkUnarmedDamage?.let { "$it+${stats.strMod}" } ?: "1d3+${stats.strMod} (Concussão)"
                         AttackRow(
                             weaponName = if (stats.classInfo.name.equals("Monge", ignoreCase = true)) "Golpe Desarmado de Monge" else "Ataque Desarmado",
                             attackBonus = unarmedBonus,
+                            attackProgression = stats.meleeAttackDisplay,
                             damageNotation = unarmedDamage,
                             notes = if (stats.classInfo.name.equals("Monge", ignoreCase = true)) "Dano letal desarmado e Rajada de Golpes" else "Ataque básico sem armas",
                             onRoll = {
@@ -545,10 +615,11 @@ fun OverviewCombatTab(
                     } else {
                         for (w in weapons) {
                             val isRanged = w.notes.contains("alcance", ignoreCase = true) || w.name.contains("Arco", ignoreCase = true) || w.name.contains("Besta", ignoreCase = true)
-                            val atkBonus = if (isRanged) stats.bab + stats.dexMod else stats.bab + stats.strMod
+                            val atkBonus = if (isRanged) parseFirstAttackBonus(stats.rangedAttackDisplay) else parseFirstAttackBonus(stats.meleeAttackDisplay)
                             AttackRow(
                                 weaponName = w.name,
                                 attackBonus = atkBonus,
+                                attackProgression = if (isRanged) stats.rangedAttackDisplay else stats.meleeAttackDisplay,
                                 damageNotation = w.damageOrAc,
                                 notes = w.notes,
                                 onRoll = {
@@ -748,17 +819,51 @@ fun SaveBox(name: String, total: Int, base: Int, mod: Int, onClick: () -> Unit) 
     }
 }
 
+/** Extrai o primeiro (maior) bônus de uma string de progressão de BBA como "+11/+6/+1". */
+private fun parseFirstAttackBonus(progression: String): Int {
+    val first = progression.substringBefore('/')
+    return first.toIntOrNull() ?: 0
+}
+
 @Composable
-fun StatCard(title: String, value: String, subtitle: String, modifier: Modifier = Modifier, onClick: () -> Unit) {
+fun CombatSummaryStat(
+    label: String,
+    value: String,
+    modifier: Modifier = Modifier,
+    subtitle: String? = null,
+    highlight: Boolean = false,
+    onClick: () -> Unit
+) {
     Card(
         modifier = modifier.clickable(onClick = onClick),
-        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant),
+        colors = CardDefaults.cardColors(
+            containerColor = if (highlight) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.surface
+        ),
         shape = RoundedCornerShape(12.dp)
     ) {
-        Column(modifier = Modifier.padding(10.dp), horizontalAlignment = Alignment.CenterHorizontally) {
-            Text(title, style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
-            Text(value, style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.ExtraBold, color = MaterialTheme.colorScheme.primary)
-            Text(subtitle, style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+        Column(
+            modifier = Modifier.padding(horizontal = 6.dp, vertical = 10.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Text(
+                label,
+                style = MaterialTheme.typography.labelSmall,
+                fontWeight = FontWeight.Bold,
+                color = if (highlight) Color.White.copy(alpha = 0.85f) else MaterialTheme.colorScheme.onSurfaceVariant
+            )
+            Text(
+                value,
+                style = MaterialTheme.typography.titleLarge,
+                fontWeight = FontWeight.ExtraBold,
+                color = if (highlight) Color.White else MaterialTheme.colorScheme.primary
+            )
+            if (subtitle != null) {
+                Text(
+                    subtitle,
+                    style = MaterialTheme.typography.labelSmall,
+                    color = if (highlight) Color.White.copy(alpha = 0.85f) else MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
         }
     }
 }
@@ -767,6 +872,7 @@ fun StatCard(title: String, value: String, subtitle: String, modifier: Modifier 
 fun AttackRow(
     weaponName: String,
     attackBonus: Int,
+    attackProgression: String? = null,
     damageNotation: String,
     notes: String,
     onRoll: () -> Unit
@@ -787,6 +893,14 @@ fun AttackRow(
         ) {
             Column(modifier = Modifier.weight(1f)) {
                 Text(weaponName, fontWeight = FontWeight.Bold, style = MaterialTheme.typography.bodyMedium)
+                if (attackProgression != null) {
+                    Text(
+                        "Ataques: $attackProgression",
+                        style = MaterialTheme.typography.labelSmall,
+                        fontWeight = FontWeight.Bold,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
                 Text("Dano: $damageNotation", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.primary)
                 if (notes.isNotBlank()) {
                     Text(notes, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)

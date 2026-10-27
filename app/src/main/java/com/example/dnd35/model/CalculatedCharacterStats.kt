@@ -62,6 +62,8 @@ data class CalculatedCharacterStats(
     // BBA & Ataques
     val bab: Int,
     val babDisplay: String,
+    val meleeAttackDisplay: String,
+    val rangedAttackDisplay: String,
     val grappleBonus: Int,
 
     // Resistências
@@ -336,6 +338,11 @@ object CharacterCalculator {
         // 6. BBA Cumulativo de todas as classes & Agarrar
         val bab = multiclassDetails.sumOf { it.babContribution }
         val babDisplay = formatBabProgression(bab)
+        val sizeAttackMod = Dnd35Rules.getArmorClassSizeModifier(character.size)
+        // BBA corpo a corpo (FOR + tamanho) e à distância (DES + tamanho), já com os ataques
+        // extras de BBA alto (ex.: "+11/+6/+1") — para exibição bem visível na tela de combate.
+        val meleeAttackDisplay = formatBabProgression(bab, strMod + sizeAttackMod)
+        val rangedAttackDisplay = formatBabProgression(bab, dexMod + sizeAttackMod)
         val sizeGrappleMod = Dnd35Rules.getGrappleSizeModifier(character.size)
         val grappleBonus = bab + strMod + sizeGrappleMod
 
@@ -624,6 +631,8 @@ object CharacterCalculator {
             chaMod = chaMod,
             bab = bab,
             babDisplay = babDisplay,
+            meleeAttackDisplay = meleeAttackDisplay,
+            rangedAttackDisplay = rangedAttackDisplay,
             grappleBonus = grappleBonus,
             baseFort = baseFort,
             totalFort = totalFort,
@@ -768,16 +777,23 @@ object CharacterCalculator {
         return reducedFeet * 0.3f
     }
 
-    private fun formatBabProgression(bab: Int): String {
-        if (bab <= 0) return "+0"
+    /**
+     * Formata a progressão de BBA (ex.: "+11/+6/+1"), somando opcionalmente [extraBonus]
+     * (modificador de habilidade + tamanho) a cada ataque iterativo — usado para exibir o
+     * bônus de ataque corpo a corpo e à distância já prontos para rolar o d20.
+     */
+    private fun formatBabProgression(bab: Int, extraBonus: Int = 0): String {
+        if (bab <= 0) return formatSignedInt(extraBonus)
         val attacks = mutableListOf<String>()
         var current = bab
         while (current > 0) {
-            attacks.add("+$current")
+            attacks.add(formatSignedInt(current + extraBonus))
             current -= 5
         }
         return attacks.joinToString("/")
     }
+
+    private fun formatSignedInt(value: Int): String = if (value >= 0) "+$value" else "$value"
 
     private fun parseBonusNumber(text: String): Int {
         val match = Regex("""\+?(\d+)""").find(text)
