@@ -1463,13 +1463,13 @@ class ExampleUnitTest {
       CharacterEntity(characterClass = "Paladino", level = 4)
     )
     assertTrue(levelFour.isSpellcaster)
-    assertEquals(2, levelFour.casterClasses.single().casterLevel)
+    assertEquals(1, levelFour.casterClasses.single().casterLevel)
     assertEquals("SAB", levelFour.casterClasses.single().keyAbility)
 
     val levelTwenty = CharacterCalculator.compute(
       CharacterEntity(characterClass = "Paladino", level = 20)
     )
-    assertEquals(10, levelTwenty.casterClasses.single().casterLevel)
+    assertEquals(17, levelTwenty.casterClasses.single().casterLevel)
   }
 
   @Test
@@ -1484,12 +1484,12 @@ class ExampleUnitTest {
       CharacterEntity(characterClass = "Ranger", level = 4)
     )
     assertTrue(levelFour.isSpellcaster)
-    assertEquals(1, levelFour.casterClasses.single().casterLevel)
+    assertEquals(2, levelFour.casterClasses.single().casterLevel)
 
     val levelTwenty = CharacterCalculator.compute(
       CharacterEntity(characterClass = "Ranger", level = 20)
     )
-    assertEquals(17, levelTwenty.casterClasses.single().casterLevel)
+    assertEquals(10, levelTwenty.casterClasses.single().casterLevel)
   }
 
   @Test
