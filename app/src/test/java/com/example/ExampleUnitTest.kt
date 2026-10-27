@@ -408,6 +408,7 @@ class ExampleUnitTest {
       name = "Guerreiro Pequeno",
       characterClass = "Guerreiro",
       race = "Halfling",
+      size = "Pequeno", // CharacterEntity não deriva o tamanho da raça sozinho; a tela de criação é quem copia raceInfo.size ao montar a ficha.
       level = 6,
       baseStr = 14,
       baseDex = 14,
