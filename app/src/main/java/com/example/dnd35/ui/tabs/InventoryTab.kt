@@ -90,7 +90,9 @@ fun InventoryTab(
     var showCoinsModal by remember { mutableStateOf(false) }
     var showQuickGoldDialog by remember { mutableStateOf<Boolean?>(null) } // true: adicionar, false: gastar
     var selectedCategoryIndex by remember { mutableIntStateOf(0) }
-    var expandSlotsView by remember { mutableStateOf(true) }
+    // Fechado por padrão: é uma seção de configuração, não o que a maioria olha primeiro
+    // ao abrir o inventário (ver lista de itens e adicionar itens).
+    var expandSlotsView by remember { mutableStateOf(false) }
     var itemForSlotAssign by remember { mutableStateOf<CharacterInventoryItem?>(null) }
     var pendingItemDeleteId by remember { mutableStateOf<String?>(null) }
 
