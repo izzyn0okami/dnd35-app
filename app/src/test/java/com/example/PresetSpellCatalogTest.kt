@@ -2164,7 +2164,8 @@ class PresetSpellCatalogTest {
         val rules = com.example.dnd35.model.SpellcastingRules
         assertTrue(rules.meetsAbilityRequirement(11, 1))
         assertFalse(rules.meetsAbilityRequirement(11, 2))
-        assertTrue(rules.meetsAbilityRequirement(3, 0))
+        assertTrue(rules.meetsAbilityRequirement(10, 0))
+        assertFalse(rules.meetsAbilityRequirement(9, 0))
         assertFalse(rules.meetsAbilityRequirement(30, 10))
         assertEquals(1, rules.bonusSlots(18, 1))
         assertEquals(1, rules.bonusSlots(18, 4))
