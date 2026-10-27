@@ -364,4 +364,17 @@ class ClassProgressionTest {
         assertEquals(null, SpellcastingRules.baseDailySlots("Mago", 21, 9))
     }
 
+    @Test
+    fun rangerDailySpellSlotProgressionMatchesPlayerHandbookTable() {
+        assertEquals(0, SpellcastingRules.baseDailySlots("Ranger", 4, 1))
+        assertEquals(1, SpellcastingRules.baseDailySlots("Ranger", 6, 1))
+        assertEquals(0, SpellcastingRules.baseDailySlots("Ranger", 8, 2))
+        assertEquals(1, SpellcastingRules.baseDailySlots("Ranger", 10, 2))
+        assertEquals(1, SpellcastingRules.baseDailySlots("Ranger", 12, 3))
+        assertEquals(0, SpellcastingRules.baseDailySlots("Ranger", 14, 4))
+        assertEquals(1, SpellcastingRules.baseDailySlots("Ranger", 15, 4))
+        assertEquals(3, SpellcastingRules.baseDailySlots("Ranger", 20, 4))
+        assertEquals(null, SpellcastingRules.baseDailySlots("Ranger", 21, 1))
+    }
+
 }
