@@ -411,3 +411,12 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - A tela `SpellsTab.kt` permite gastar, recuperar e configurar manualmente os espaços existentes. Substituir os valores persistidos automaticamente poderia apagar escolhas do jogador; a integração deve separar progressão normativa calculada de espaços usados/configurados manualmente.
 - `CalculatedCharacterStats` já expõe classes e níveis de conjurador, mas a progressão diária ainda não está ligada à lista `spellSlots`. A próxima mudança deve acrescentar uma projeção normativa informativa por classe/círculo e testes, sem sobrescrever `spellSlotsJson` nem misturar níveis de classes distintas.
 - Nenhuma alteração visual ou de persistência foi feita nesta etapa; trata-se de mapeamento para orientar a implementação com segurança.
+
+
+### Projeção informativa de espaços-base na aba Magias (2026-10-27)
+
+- `CalculatedCharacterStats` agora expõe `spellSlotProgressions`, calculada separadamente para cada entrada de classe e nível, sem combinar os níveis de classes distintas.
+- A aba Magias exibe a progressão-base por classe/círculo em um cartão informativo, explicitando que os valores não incluem bônus por atributo e não alteram os espaços manuais persistidos.
+- Os controles atuais de gastar, recuperar e configurar espaços continuam ligados a `spellSlotsJson`; nenhuma migração ou sobrescrita automática foi introduzida.
+- Adicionado teste de regressão para projeção por classe, classe não conjuradora, círculos sem espaços e nível inválido. A CI para esses commits ainda precisa ser confirmada.
+- Ponto de atenção antes do merge: validar a tabela específica do Paladino contra a Tabela 3-16 do PDF brasileiro; não assumir que ela é idêntica à tabela do Ranger. A confirmação dessa tabela permanece requisito para a revisão normativa final.
