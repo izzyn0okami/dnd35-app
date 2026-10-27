@@ -314,3 +314,12 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - A tabela de magias conhecidas permanece separada dos espaços diários e dos bônus de atributo. Carisma alto não altera o total de magias conhecidas do Bardo/Feiticeiro.
 - Testes acrescentados para níveis iniciais, transições de círculos, níveis máximos e entradas inválidas.
 - Escopo ainda parcial: não foram implementadas aqui as progressões de magias por dia, nem as tabelas de Mago, Clérigo, Druida, Paladino e Ranger; a aba Magias ainda não consome esta API.
+
+
+## Progressão de espaços diários — Bardo e Feiticeiro (2026-10-27)
+
+- Transcritas as tabelas de espaços-base por dia das Tabelas 3-4 (Bardo) e 3-9 (Feiticeiro) do PDF brasileiro do *Livro do Jogador* (páginas impressas 24 e 33).
+- Adicionada a API `baseDailySlots(className, classLevel, spellLevel)`, separada de magias conhecidas e dos espaços bônus por atributo. Valores zero representam círculos sem espaços-base na linha; `null` indica classe/tabela não implementada ou entrada inválida.
+- Testes de regressão cobrem níveis iniciais, desbloqueio de círculos, níveis avançados e entradas não suportadas.
+- Correção estrutural no mesmo arquivo: as tabelas de magias conhecidas estavam fora do objeto `SpellcastingRules`; foram recolocadas dentro do objeto junto com as novas tabelas para que a API seja compilável.
+- Escopo continua parcial: progressões diárias e conhecidas de Mago, Clérigo, Druida, Paladino e Ranger, integração da aba Magias e composição de espaços totais com bônus de atributo continuam pendentes. Não considerar a auditoria concluída nem fazer merge antes de CI verde e integração funcional.
