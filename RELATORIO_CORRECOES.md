@@ -420,3 +420,11 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - Os controles atuais de gastar, recuperar e configurar espaços continuam ligados a `spellSlotsJson`; nenhuma migração ou sobrescrita automática foi introduzida.
 - Adicionado teste de regressão para projeção por classe, classe não conjuradora, círculos sem espaços e nível inválido. A CI para esses commits ainda precisa ser confirmada.
 - Ponto de atenção antes do merge: validar a tabela específica do Paladino contra a Tabela 3-16 do PDF brasileiro; não assumir que ela é idêntica à tabela do Ranger. A confirmação dessa tabela permanece requisito para a revisão normativa final.
+
+### Correção da progressão diária do Paladino pela Tabela 3-16 (2026-10-27)
+
+- Conferida diretamente a Tabela 3-16: O Paladino, na página impressa 45 do Livro do Jogador brasileiro (PDF, página 47).
+- A projeção diária agora usa tabela própria para Paladino; a tabela do Ranger permanece separada. Não se presume equivalência entre as duas classes.
+- A tabela registra os espaços-base por círculo do 1º ao 4º, mantendo zeros quando não há espaço-base. Espaços adicionais por Sabedoria continuam fora dessa projeção.
+- Os testes existentes de regressão do Paladino cobrem os marcos de desbloqueio dos círculos e o 20º nível; a CI após esta alteração ainda precisa confirmar a compilação e os testes.
+- A PR #265 continua em rascunho; não fazer merge até confirmar CI e revisar o escopo restante da auditoria de conjuração.
