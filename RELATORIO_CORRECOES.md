@@ -275,3 +275,10 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - Corrigida a exibição de identificadores internos do enum (`FULL`, `THREE_QUARTERS`, `HALF`) no cartão da classe. A interface agora mostra rótulos em português: progressão integral, de três quartos e de metade, explicando BBA como Bônus Base de Ataque.
 - Alteração somente de apresentação; cálculos e enums não foram modificados. Testes unitários cobrem os três rótulos.
 - Aguardar CI antes do merge.
+
+
+## Conjuracao: nucleo inicial (2026-10-26)
+- Centralizadas regras de atributo minimo, espacos bonus, metodo de conjuracao e nivel de conjurador.
+- Corrigido Ranger: nivel de conjurador e metade do nivel de Ranger a partir do 4o nivel; Paladino continua usando nivel menos 3.
+- Testes cobrem requisitos de atributo, espacos bonus, metodos das sete classes e niveis de conjurador.
+- Escopo pendente: tabelas completas por classe e integracao dos espacos e magias conhecidas/preparadas na aba Magias.
