@@ -801,3 +801,34 @@ object CharacterCalculator {
         return match?.groupValues?.getOrNull(1)?.toIntOrNull() ?: 0
     }
 }
+
+
+/** Regras comuns de conjuração do Livro do Jogador; progressões por classe ficam separadas. */
+object SpellcastingRules {
+    enum class Method { NONE, SPONTANEOUS_KNOWN_SPELLS, SPELLBOOK_PREPARATION, DIVINE_PREPARATION }
+
+    fun methodForClass(name: String): Method = when (name.trim().lowercase()) {
+        "bardo", "feiticeiro" -> Method.SPONTANEOUS_KNOWN_SPELLS
+        "mago" -> Method.SPELLBOOK_PREPARATION
+        "clérigo", "clerigo", "druida", "paladino", "ranger" -> Method.DIVINE_PREPARATION
+        else -> Method.NONE
+    }
+
+    fun bonusSlots(abilityScore: Int, spellLevel: Int): Int {
+        if (spellLevel !in 1..9) return 0
+        val modifier = Dnd35Rules.calculateModifier(abilityScore)
+        return if (modifier < spellLevel) 0 else 1 + (modifier - spellLevel) / 4
+    }
+
+    fun meetsAbilityRequirement(abilityScore: Int, spellLevel: Int): Boolean =
+        spellLevel == 0 || (spellLevel in 1..9 && abilityScore >= 10 + spellLevel)
+
+    fun casterLevel(className: String, classLevel: Int): Int {
+        val level = classLevel.coerceAtLeast(0)
+        return when (className.trim().lowercase()) {
+            "paladino" -> if (level >= 4) level - 3 else 0
+            "ranger" -> if (level >= 4) level / 2 else 0
+            else -> level
+        }
+    }
+}
