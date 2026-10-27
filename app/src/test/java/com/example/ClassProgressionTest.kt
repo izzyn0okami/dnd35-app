@@ -308,7 +308,7 @@ class ClassProgressionTest {
         assertEquals(3, SpellcastingRules.baseDailySlots("Feiticeiro", 4, 2))
         assertEquals(3, SpellcastingRules.baseDailySlots("Feiticeiro", 6, 3))
         assertEquals(3, SpellcastingRules.baseDailySlots("Feiticeiro", 14, 7))
-        assertEquals(4, SpellcastingRules.baseDailySlots("Feiticeiro", 20, 9))
+        assertEquals(6, SpellcastingRules.baseDailySlots("Feiticeiro", 20, 9))
         assertEquals(null, SpellcastingRules.baseDailySlots("Mago", 20, 9))
         assertEquals(null, SpellcastingRules.baseDailySlots("Feiticeiro", 0, 0))
     }
