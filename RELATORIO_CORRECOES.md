@@ -296,3 +296,12 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - Corrigida a exibição de identificadores internos do enum (`FULL`, `THREE_QUARTERS`, `HALF`) no cartão da classe. A interface agora mostra rótulos em português: progressão integral, de três quartos e de metade, explicando BBA como Bônus Base de Ataque.
 - Alteração somente de apresentação; cálculos e enums não foram modificados. Testes unitários cobrem os três rótulos.
 - Aguardar CI antes do merge.
+
+
+## CI #1366 — núcleo de conjuração (2026-10-27)
+
+- A execução de CI associada ao commit `bd16f3570e9ba4a9bdcd12d0f5a747f698a8a8f3` terminou com **sucesso** (execução #1366).
+- Isso valida o estado atual dos testes e da compilação para esse commit; não significa que a auditoria de conjuração esteja concluída.
+- A PR #265 permanece em rascunho. Ainda faltam as tabelas completas de progressão por classe (magias diárias e conhecidas/preparadas), o cálculo de espaços totais com bônus de atributo e a integração correta na aba Magias.
+- Referência normativa: PDF brasileiro do *Livro do Jogador* salvo na biblioteca. As progressões devem ser transcritas das tabelas por classe, sem inferir valores ausentes por padrão ou reutilizar uma tabela de outra classe.
+- PR relacionada #261 continua aberta e com conflito indicado pelo GitHub; não fazer merge automático nem abrir PR duplicada para o mesmo escopo. Resolver o conflito após verificar a base atual e a CI correspondente.
