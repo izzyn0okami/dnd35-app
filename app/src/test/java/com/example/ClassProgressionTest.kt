@@ -393,4 +393,19 @@ class ClassProgressionTest {
         assertEquals(null, SpellcastingRules.baseDailySlots("Paladino", 21, 1))
     }
 
+
+    @Test
+    fun dailyProgressionIsExposedPerClassWithoutMergingMulticlassLevels() {
+        val bard = SpellcastingRules.dailyProgression("Bardo", 5)
+        val fighter = SpellcastingRules.dailyProgression("Guerreiro", 5)
+        val ranger = SpellcastingRules.dailyProgression("Ranger", 8)
+
+        assertEquals(5, bard?.classLevel)
+        assertEquals(3, bard?.slotsByLevel?.get(1))
+        assertEquals(null, fighter)
+        assertEquals(1, ranger?.slotsByLevel?.get(1))
+        assertEquals(0, ranger?.slotsByLevel?.get(2))
+        assertEquals(null, SpellcastingRules.dailyProgression("Bardo", 21))
+    }
+
 }
