@@ -385,3 +385,12 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - Incluídos testes de regressão para o 4º, 6º, 8º, 10º, 12º, 14º, 15º e 20º níveis, além de entrada inválida.
 - A execução CI #1388 passou no commit anterior, mas esta alteração ainda precisa de uma nova CI. A progressão do Paladino e a integração à aba Magias continuam pendentes.
 - Correção documental: o sumário do PDF brasileiro localiza a Tabela 3-13 (O Mago) na página impressa 40; a anotação anterior que indicava página 45 estava incorreta.
+
+
+## Progressão diária de magias do Paladino (2026-10-27)
+
+- Fonte normativa: Livro do Jogador brasileiro, Tabela 3-16 (O Paladino), página impressa 45.
+- Implementada a progressão de espaços-base diários do Paladino para os níveis 1–20 e círculos 0–4. A tabela do Paladino coincide nos espaços diários com a progressão parcial já transcrita para o Ranger, mas a classe foi mapeada explicitamente para não deixar a consulta sem suporte.
+- Adicionados testes de regressão para os níveis 4–20, incluindo os níveis de transição e espaços de 2º, 3º e 4º círculos, além de nível inválido.
+- A tabela distingue espaços-base de magias adicionais por Sabedoria; os espaços marcados como 0 permanecem zero-base e não são convertidos em espaços completos.
+- A integração visual à aba Magias e a validação final pela CI permanecem pendentes.
