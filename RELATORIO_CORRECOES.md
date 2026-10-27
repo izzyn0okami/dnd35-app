@@ -371,3 +371,8 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - A execução CI #1381 apontou falha no teste de espaços diários do Feiticeiro: a tabela tinha 19 linhas em vez de 20, deslocando os valores a partir do nível 13.
 - Inserida a linha do 13º nível, mantendo o acesso ao 7º círculo para o 14º nível e a progressão dos níveis seguintes alinhada à Tabela 3-9 do Livro do Jogador brasileiro.
 - A correção foi commitada; é necessário aguardar nova CI na cabeça atual para confirmar que o teste e a compilação passam.
+
+
+### Ajuste do teste legado do Mago após inclusão da tabela (2026-10-26)
+- O teste de espaços diários do Feiticeiro continha uma expectativa antiga que afirmava que a tabela do Mago não existia. Como a Tabela 3-13 foi implementada nesta mesma PR, o teste foi atualizado para verificar quatro espaços-base de 9º círculo no 20º nível do Mago.
+- Isso evita que o teste legado contradiga a implementação recém-adicionada. A CI deve confirmar o resultado no commit atualizado.
