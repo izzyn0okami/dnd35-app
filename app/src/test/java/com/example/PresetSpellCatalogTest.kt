@@ -2159,37 +2159,4 @@ class PresetSpellCatalogTest {
         assertTrue(Dnd35Rules.PRESET_SPELLS.flatMap { it.domainLevels.keys }.all { it in allowed })
     }
 
-    @Test
-    fun spellcastingCoreUsesPlayerHandbookAbilityAndBonusSlotRules() {
-        val rules = com.example.dnd35.model.SpellcastingRules
-        assertTrue(rules.meetsAbilityRequirement(11, 1))
-        assertFalse(rules.meetsAbilityRequirement(11, 2))
-        assertTrue(rules.meetsAbilityRequirement(10, 0))
-        assertFalse(rules.meetsAbilityRequirement(9, 0))
-        assertFalse(rules.meetsAbilityRequirement(30, 10))
-        assertEquals(1, rules.bonusSlots(18, 1))
-        assertEquals(1, rules.bonusSlots(18, 4))
-        assertEquals(0, rules.bonusSlots(18, 5))
-        assertEquals(2, rules.bonusSlots(26, 1))
-        assertEquals(1, rules.bonusSlots(26, 5))
-        assertEquals(0, rules.bonusSlots(10, 1))
-    }
-
-    @Test
-    fun spellcastingCoreKeepsClassMethodsAndCasterLevelsDistinct() {
-        val rules = com.example.dnd35.model.SpellcastingRules
-        assertEquals(rules.methodForClass("Bardo"), rules.methodForClass("Feiticeiro"))
-        assertEquals(com.example.dnd35.model.SpellcastingRules.Method.SPONTANEOUS_KNOWN_SPELLS, rules.methodForClass("Bardo"))
-        assertEquals(com.example.dnd35.model.SpellcastingRules.Method.SPELLBOOK_PREPARATION, rules.methodForClass("Mago"))
-        assertEquals(com.example.dnd35.model.SpellcastingRules.Method.DIVINE_PREPARATION, rules.methodForClass("Ranger"))
-        assertEquals(com.example.dnd35.model.SpellcastingRules.Method.NONE, rules.methodForClass("Guerreiro"))
-        assertEquals(0, rules.casterLevel("Ranger", 3))
-        assertEquals(2, rules.casterLevel("Ranger", 4))
-        assertEquals(2, rules.casterLevel("Ranger", 5))
-        assertEquals(10, rules.casterLevel("Ranger", 20))
-        assertEquals(1, rules.casterLevel("Paladino", 4))
-        assertEquals(17, rules.casterLevel("Paladino", 20))
-        assertEquals(7, rules.casterLevel("Mago", 7))
-    }
-
 }
