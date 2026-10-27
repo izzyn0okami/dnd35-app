@@ -323,3 +323,10 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - Testes de regressão cobrem níveis iniciais, desbloqueio de círculos, níveis avançados e entradas não suportadas.
 - Correção estrutural no mesmo arquivo: as tabelas de magias conhecidas estavam fora do objeto `SpellcastingRules`; foram recolocadas dentro do objeto junto com as novas tabelas para que a API seja compilável.
 - Escopo continua parcial: progressões diárias e conhecidas de Mago, Clérigo, Druida, Paladino e Ranger, integração da aba Magias e composição de espaços totais com bônus de atributo continuam pendentes. Não considerar a auditoria concluída nem fazer merge antes de CI verde e integração funcional.
+
+
+### CI #1372 — correção da tabela diária do Feiticeiro (2026-10-27)
+
+- A CI executou 279 testes e encontrou uma falha no teste de espaços diários do Feiticeiro no 14º nível, círculo 7.
+- Conferência direta da Tabela 3-9 no PDF brasileiro (página impressa 33) confirmou a progressão dos círculos 7º a 9º: o 7º começa no 14º nível com 3 espaços; o 8º começa no 16º com 3; o 9º começa no 18º com 3. A linha do 20º nível tem 6 espaços para cada círculo de 0º a 9º.
+- Corrigida a transcrição dos níveis 14–20. A execução #1372 falhou somente no teste citado; é necessário aguardar nova CI após a correção.
