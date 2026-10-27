@@ -190,6 +190,11 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - A CI precisa ser executada novamente após a correção. A auditoria da progressão completa de magias e a integração visual continuam pendentes.
 
 
+### CI #1364 e separação das progressões de conjurador (2026-10-27)
+- A execução #1364 usou o commit anterior à correção final e falhou no teste legado do Ranger; portanto, esse resultado não valida nem invalida o commit mais recente.
+- Ao atualizar a expectativa do Ranger, os testes de Paladino e Ranger foram conferidos separadamente para impedir que as duas regras sejam confundidas: Paladino = nível de classe − 3 (níveis de conjuração a partir do 4º); Ranger = metade do nível de classe (a partir do 4º).
+- O commit `b42a52ebcc1ad0bc0b2ef24c38a58d895ff88e20` contém as expectativas distintas e disparou a CI #1365. Aguardar o resultado antes de qualquer merge.
+
 ## Auditoria do catálogo de magias — conferência incremental (2026-10-25)
 
 - Fonte de trabalho: `app/src/main/resources/dnd35/spells.json`; fonte normativa prioritária: PDF brasileiro do `D&D 3.5 — Livro do Jogador`.
