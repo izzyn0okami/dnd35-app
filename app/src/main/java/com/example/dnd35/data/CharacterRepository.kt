@@ -23,7 +23,17 @@ class CharacterRepository(private val characterDao: CharacterDao) {
         }
     }
 
-    suspend fun createNewCharacter(name: String, characterClass: String, race: String): Long {
+    suspend fun createNewCharacter(
+        name: String,
+        characterClass: String,
+        race: String,
+        baseStr: Int = 14,
+        baseDex: Int = 12,
+        baseCon: Int = 14,
+        baseInt: Int = 10,
+        baseWis: Int = 10,
+        baseCha: Int = 10
+    ): Long {
         val classInfo = Dnd35Rules.CLASSES.find { it.name.equals(characterClass, ignoreCase = true) }
             ?: Dnd35Rules.CLASSES.first()
         val raceInfo = Dnd35Rules.RACES.find { it.name.equals(race, ignoreCase = true) }
@@ -40,7 +50,7 @@ class CharacterRepository(private val characterDao: CharacterDao) {
             )
         }
 
-        val baseHp = classInfo.hitDie + Dnd35Rules.calculateModifier(14 + raceInfo.conMod)
+        val baseHp = classInfo.hitDie + Dnd35Rules.calculateModifier(baseCon + raceInfo.conMod)
         val initialSlots = (0..9).map { lvl ->
             SpellSlotInfo(level = lvl, totalSlots = if (lvl <= 1) 3 else 0, usedSlots = 0)
         }
@@ -56,12 +66,12 @@ class CharacterRepository(private val characterDao: CharacterDao) {
             baseSpeedMeters = raceInfo.baseSpeedMeters,
             currentHp = maxOf(1, baseHp),
             maxHp = maxOf(1, baseHp),
-            baseStr = 14,
-            baseDex = 12,
-            baseCon = 14,
-            baseInt = 10,
-            baseWis = 10,
-            baseCha = 10,
+            baseStr = baseStr,
+            baseDex = baseDex,
+            baseCon = baseCon,
+            baseInt = baseInt,
+            baseWis = baseWis,
+            baseCha = baseCha,
             skillsJson = CharacterJsonAdapters.serializeSkills(initialSkills),
             inventoryJson = "[]",
             featsJson = "[]",

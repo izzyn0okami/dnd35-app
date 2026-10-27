@@ -389,8 +389,8 @@ fun DndMainScreen(viewModel: CharacterViewModel) {
 
     if (showNewCharModal) {
         NewCharacterDialog(
-            onConfirm = { name, charClass, race ->
-                viewModel.createCharacter(name, charClass, race)
+            onConfirm = { name, charClass, race, baseStr, baseDex, baseCon, baseInt, baseWis, baseCha ->
+                viewModel.createCharacter(name, charClass, race, baseStr, baseDex, baseCon, baseInt, baseWis, baseCha)
             },
             onDismiss = { showNewCharModal = false }
         )

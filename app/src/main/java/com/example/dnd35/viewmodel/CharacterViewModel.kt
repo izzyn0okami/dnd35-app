@@ -265,9 +265,22 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
         }
     }
 
-    fun createCharacter(name: String, characterClass: String, race: String) {
+    fun createCharacter(
+        name: String,
+        characterClass: String,
+        race: String,
+        baseStr: Int = 14,
+        baseDex: Int = 12,
+        baseCon: Int = 14,
+        baseInt: Int = 10,
+        baseWis: Int = 10,
+        baseCha: Int = 10
+    ) {
         viewModelScope.launch(Dispatchers.IO) {
-            val newId = repository.createNewCharacter(name, characterClass, race)
+            val newId = repository.createNewCharacter(
+                name, characterClass, race,
+                baseStr, baseDex, baseCon, baseInt, baseWis, baseCha
+            )
             _selectedCharacterId.value = newId
         }
     }
