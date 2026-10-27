@@ -402,3 +402,12 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - A PR #265 está atualmente marcada como integrável pelo GitHub, embora continue em rascunho; não foi feito merge nesta etapa.
 - Inspeção inicial da tela SpellsTab.kt: a interface já possui grimório, CD por círculo, filtro de magias e gestão manual de espaços. A integração das progressões normativas precisa respeitar o modelo existente de SpellSlotInfo e o fluxo de persistência, evitando substituir contagens personalizadas sem migração.
 - Próxima etapa: mapear onde SpellSlotInfo é criado e persistido e conectar as tabelas auditadas à interface com testes de regressão para classes conjuradoras e multiclasse.
+
+
+### Mapeamento para integração da progressão de magias à aba Magias (2026-10-27)
+
+- Confirmado que `SpellSlotInfo` contém apenas `level`, `totalSlots` e `usedSlots`; os espaços atuais são serializados no campo `CharacterEntity.spellSlotsJson` por `CharacterJsonAdapters` e carregados por `CharacterCalculator.compute`.
+- `CharacterRepository.createNewCharacter` inicializa uma lista genérica de espaços (níveis 0–9), com valores padrão, independentemente da classe. Isso pode exibir espaços para personagens que não conjuram e não representa a progressão do Livro do Jogador.
+- A tela `SpellsTab.kt` permite gastar, recuperar e configurar manualmente os espaços existentes. Substituir os valores persistidos automaticamente poderia apagar escolhas do jogador; a integração deve separar progressão normativa calculada de espaços usados/configurados manualmente.
+- `CalculatedCharacterStats` já expõe classes e níveis de conjurador, mas a progressão diária ainda não está ligada à lista `spellSlots`. A próxima mudança deve acrescentar uma projeção normativa informativa por classe/círculo e testes, sem sobrescrever `spellSlotsJson` nem misturar níveis de classes distintas.
+- Nenhuma alteração visual ou de persistência foi feita nesta etapa; trata-se de mapeamento para orientar a implementação com segurança.
