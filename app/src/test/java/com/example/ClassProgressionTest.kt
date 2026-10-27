@@ -1,7 +1,9 @@
 package com.example
 
 import com.example.dnd35.model.Dnd35Rules
+import com.example.dnd35.model.SpellcastingRules
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
@@ -239,6 +241,38 @@ class ClassProgressionTest {
             assertTrue(feature.description.contains("oponente invisível"))
             assertTrue(feature.description.contains("imobilizado"))
         }
+    }
+
+
+    @Test
+    fun spellcastingCoreUsesPlayerHandbookAbilityAndBonusSlotRules() {
+        assertTrue(SpellcastingRules.meetsAbilityRequirement(11, 1))
+        assertFalse(SpellcastingRules.meetsAbilityRequirement(11, 2))
+        assertTrue(SpellcastingRules.meetsAbilityRequirement(10, 0))
+        assertFalse(SpellcastingRules.meetsAbilityRequirement(9, 0))
+        assertFalse(SpellcastingRules.meetsAbilityRequirement(30, 10))
+        assertEquals(1, SpellcastingRules.bonusSlots(18, 1))
+        assertEquals(1, SpellcastingRules.bonusSlots(18, 4))
+        assertEquals(0, SpellcastingRules.bonusSlots(18, 5))
+        assertEquals(2, SpellcastingRules.bonusSlots(26, 1))
+        assertEquals(1, SpellcastingRules.bonusSlots(26, 5))
+        assertEquals(0, SpellcastingRules.bonusSlots(10, 1))
+    }
+
+    @Test
+    fun spellcastingCoreKeepsClassMethodsAndCasterLevelsDistinct() {
+        assertEquals(SpellcastingRules.Method.SPONTANEOUS_KNOWN_SPELLS, SpellcastingRules.methodForClass("Bardo"))
+        assertEquals(SpellcastingRules.Method.SPONTANEOUS_KNOWN_SPELLS, SpellcastingRules.methodForClass("Feiticeiro"))
+        assertEquals(SpellcastingRules.Method.SPELLBOOK_PREPARATION, SpellcastingRules.methodForClass("Mago"))
+        assertEquals(SpellcastingRules.Method.DIVINE_PREPARATION, SpellcastingRules.methodForClass("Ranger"))
+        assertEquals(SpellcastingRules.Method.NONE, SpellcastingRules.methodForClass("Guerreiro"))
+        assertEquals(0, SpellcastingRules.casterLevel("Ranger", 3))
+        assertEquals(2, SpellcastingRules.casterLevel("Ranger", 4))
+        assertEquals(2, SpellcastingRules.casterLevel("Ranger", 5))
+        assertEquals(10, SpellcastingRules.casterLevel("Ranger", 20))
+        assertEquals(1, SpellcastingRules.casterLevel("Paladino", 4))
+        assertEquals(17, SpellcastingRules.casterLevel("Paladino", 20))
+        assertEquals(7, SpellcastingRules.casterLevel("Mago", 7))
     }
 
 }
