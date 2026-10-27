@@ -174,6 +174,15 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - **Reconciliação do histórico:** as notas anteriores deste relatório que classificaram *Símbolo da Morte* como magia arcana de 7º nível foram baseadas em interpretação incorreta da página impressa 168: as entradas que aparecem antes do cabeçalho “Magias de 9º nível” pertencem ao bloco de 8º nível. Essas notas ficam supersedidas por esta conclusão; preservadas como histórico para rastreabilidade.
 - **Procedimento reforçado:** quando a descrição individual divergir de listas por classe ou de fontes externas, verificar a página impressa e o contexto visual, comparar com a fonte original/SRD e registrar explicitamente a divergência antes de alterar catálogo ou testes.
 
+## Núcleo de regras de conjuração — etapa inicial (2026-10-26)
+
+- Fonte normativa prioritária: PDF brasileiro do *Livro do Jogador* salvo na biblioteca.
+- Centralizadas regras comuns de método de conjuração, requisito mínimo de atributo, espaços diários adicionais por atributo e nível de conjurador.
+- Correção confirmada: o nível de conjurador do Ranger é metade do nível de Ranger a partir do 4º nível; Paladino usa nível de conjurador igual ao nível de Paladino menos 3. O cálculo anterior aplicava nível menos 3 às duas classes.
+- Espaços bônus são calculados pelo modificador do atributo-chave e nível da magia; isso não aumenta a quantidade de magias conhecidas do Bardo ou Feiticeiro.
+- Testes de regressão cobrem método de conjuração, requisito mínimo (inclusive truques), espaços bônus e níveis de conjurador de Ranger, Paladino e Mago.
+- Escopo ainda incompleto: esta etapa cria o núcleo reutilizável, mas não inclui as tabelas completas de espaços diários nem as tabelas de magias conhecidas/preparadas por nível. A integração completa com a aba Magias continua pendente.
+
 ## Auditoria do catálogo de magias — conferência incremental (2026-10-25)
 
 - Fonte de trabalho: `app/src/main/resources/dnd35/spells.json`; fonte normativa prioritária: PDF brasileiro do `D&D 3.5 — Livro do Jogador`.
@@ -275,10 +284,3 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - Corrigida a exibição de identificadores internos do enum (`FULL`, `THREE_QUARTERS`, `HALF`) no cartão da classe. A interface agora mostra rótulos em português: progressão integral, de três quartos e de metade, explicando BBA como Bônus Base de Ataque.
 - Alteração somente de apresentação; cálculos e enums não foram modificados. Testes unitários cobrem os três rótulos.
 - Aguardar CI antes do merge.
-
-
-## Conjuracao: nucleo inicial (2026-10-26)
-- Centralizadas regras de atributo minimo, espacos bonus, metodo de conjuracao e nivel de conjurador.
-- Corrigido Ranger: nivel de conjurador e metade do nivel de Ranger a partir do 4o nivel; Paladino continua usando nivel menos 3.
-- Testes cobrem requisitos de atributo, espacos bonus, metodos das sete classes e niveis de conjurador.
-- Escopo pendente: tabelas completas por classe e integracao dos espacos e magias conhecidas/preparadas na aba Magias.
