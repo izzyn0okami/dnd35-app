@@ -338,3 +338,12 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - A Tabela 3-9 do PDF brasileiro do *Livro do Jogador* (página impressa 33) mostra 6 espaços-base por dia em cada círculo de 0º a 9º no 20º nível. A tabela de implementação já refletia esse valor; o defeito estava na expectativa do teste.
 - Corrigido o teste para esperar 6 espaços no 9º círculo. Esta alteração alinha a regressão com a fonte normativa; não comprova a CI até que uma nova execução termine.
 - A auditoria continua aberta: faltam tabelas por classe e integração da aba Magias. Não fazer merge da PR #265 enquanto a CI não estiver verde e o escopo acordado não estiver funcional.
+
+
+### Progressão diária de magias do Druida (2026-10-27)
+
+- **Fonte normativa:** Tabela 3-8, “O Druida”, no PDF brasileiro do *Livro do Jogador* (capítulo 3, página do arquivo 32; tabela impressa no capítulo de classes).
+- **Implementação:** transcrita a progressão diária-base completa do Druida, níveis 1–20 e círculos 0º–9º, em `SpellcastingRules.druidDaily`. A API `baseDailySlots` agora consulta essa tabela além das tabelas já existentes de Bardo e Feiticeiro.
+- **Separação de regras:** a tabela representa espaços-base; bônus por Sabedoria permanecem calculados separadamente. O Druida não recebe o espaço adicional de domínio da tabela do Clérigo.
+- **Regressão:** testes para níveis 1, 3, 7, 13 e 20, incluindo acesso a círculos altos e entrada inválida acima do nível 20.
+- **Escopo:** somente a progressão diária do Druida foi adicionada nesta rodada. Progressões de Mago e Clérigo (incluindo espaço de domínio), Paladino e Ranger, além da integração da aba Magias, seguem pendentes. CI ainda precisa validar a alteração antes de qualquer merge.
