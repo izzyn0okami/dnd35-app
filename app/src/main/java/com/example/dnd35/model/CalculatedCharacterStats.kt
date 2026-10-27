@@ -21,6 +21,12 @@ data class MulticlassPenaltyInfo(
     val explanation: String
 )
 
+data class SpellSlotProgressionInfo(
+    val className: String,
+    val classLevel: Int,
+    val slotsByLevel: Map<Int, Int>
+)
+
 data class CasterClassInfo(
     val className: String,
     val casterLevel: Int,
@@ -44,6 +50,7 @@ data class CalculatedCharacterStats(
     val feats: List<CharacterFeat>,
     val spells: List<CharacterSpell>,
     val spellSlots: List<SpellSlotInfo>,
+    val spellSlotProgressions: List<SpellSlotProgressionInfo>,
 
     // Atributos Finais (Base + Raça + Equipamentos/Mágicos)
     val totalStr: Int,
@@ -607,6 +614,9 @@ object CharacterCalculator {
             feats = feats,
             spells = spells,
             spellSlots = spellSlots,
+            spellSlotProgressions = classEntries.mapNotNull { entry ->
+                SpellcastingRules.dailyProgression(entry.className, entry.level)
+            },
             totalStr = totalStr,
             strMod = strMod,
             totalDex = totalDex,
@@ -809,6 +819,15 @@ object SpellcastingRules {
         "mago" -> Method.SPELLBOOK_PREPARATION
         "clérigo", "clerigo", "druida", "paladino", "ranger" -> Method.DIVINE_PREPARATION
         else -> Method.NONE
+    }
+
+    fun dailyProgression(className: String, classLevel: Int): SpellSlotProgressionInfo? {
+        if (classLevel !in 1..20) return null
+        if (methodForClass(className) == Method.NONE) return null
+        val slots = (0..9).associateWith { spellLevel ->
+            baseDailySlots(className, classLevel, spellLevel) ?: 0
+        }
+        return SpellSlotProgressionInfo(className = className, classLevel = classLevel, slotsByLevel = slots)
     }
 
     fun bonusSlots(abilityScore: Int, spellLevel: Int): Int {
