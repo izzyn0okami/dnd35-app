@@ -17,6 +17,43 @@ class AmmunitionCompatibilityTest {
     }
 
     @Test
+    fun packageOfTenAmmunitionProvidesTenShots() {
+        val pack = CharacterInventoryItem(
+            id = "ammo-pack",
+            name = "Virotes de Besta (10)",
+            category = "Itens de Aventura",
+            quantity = 1,
+            equippedSlot = ammoSlot
+        )
+
+        assertEquals(10, remainingAmmunitionUnits(pack))
+        val afterOne = consumeAmmunitionStack(listOf(pack), "ammo-pack")!!.single()
+        assertEquals(1, afterOne.quantity)
+        assertEquals(9, remainingAmmunitionUnits(afterOne))
+
+        val afterSecond = consumeAmmunitionStack(listOf(afterOne), "ammo-pack")!!.single()
+        assertEquals(8, remainingAmmunitionUnits(afterSecond))
+    }
+
+    @Test
+    fun twoPackagesOfTenKeepTwentyShotsAndReducePackageCountAtBoundary() {
+        val pack = CharacterInventoryItem(
+            id = "ammo-pack",
+            name = "Flechas (10)",
+            category = "Itens de Aventura",
+            quantity = 2,
+            equippedSlot = ammoSlot
+        )
+
+        var current = pack
+        repeat(10) {
+            current = consumeAmmunitionStack(listOf(current), "ammo-pack")!!.single()
+        }
+        assertEquals(10, remainingAmmunitionUnits(current))
+        assertEquals(1, current.quantity)
+    }
+
+    @Test
     fun removesLastUnitAndRejectsEmptyStack() {
         val selected = CharacterInventoryItem(id = "ammo-1", name = "Munição escolhida", category = "Consumíveis", quantity = 1, equippedSlot = ammoSlot)
         assertEquals(emptyList<CharacterInventoryItem>(), consumeAmmunitionStack(listOf(selected), "ammo-1"))
