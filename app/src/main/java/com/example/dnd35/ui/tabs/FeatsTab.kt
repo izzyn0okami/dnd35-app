@@ -19,6 +19,7 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.MilitaryTech
+import androidx.compose.material.icons.filled.WarningAmber
 import androidx.compose.material3.Button
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.ButtonDefaults
@@ -145,11 +146,24 @@ fun FeatsTab(
             }
         } else {
             items(stats.feats) { feat ->
+                // Pré-requisitos não cumpridos só deixam o talento esmaecido/com aviso aqui;
+                // continua totalmente editável e removível (ficha companion não bloqueia a
+                // compra — quem decide se a mesa permite é a pessoa jogando).
+                val assessment = if (feat.prerequisites.isNotBlank()) {
+                    FeatPrerequisiteChecker.assess(feat.prerequisites, stats)
+                } else null
+                val notMet = assessment?.status == FeatPrerequisiteStatus.NOT_MET
                 Card(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(vertical = 4.dp),
-                    colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+                    colors = CardDefaults.cardColors(
+                        containerColor = if (notMet) {
+                            MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f)
+                        } else {
+                            MaterialTheme.colorScheme.surface
+                        }
+                    ),
                     shape = RoundedCornerShape(12.dp)
                 ) {
                     Column(modifier = Modifier.padding(12.dp)) {
@@ -158,12 +172,27 @@ fun FeatsTab(
                             horizontalArrangement = Arrangement.SpaceBetween,
                             verticalAlignment = Alignment.CenterVertically
                         ) {
-                            Text(
-                                feat.name,
-                                fontWeight = FontWeight.Bold,
-                                style = MaterialTheme.typography.titleMedium,
-                                color = MaterialTheme.colorScheme.primary
-                            )
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                if (notMet) {
+                                    Icon(
+                                        Icons.Default.WarningAmber,
+                                        contentDescription = "Pré-requisitos não cumpridos",
+                                        tint = MaterialTheme.colorScheme.error,
+                                        modifier = Modifier.size(18.dp)
+                                    )
+                                    Spacer(modifier = Modifier.width(4.dp))
+                                }
+                                Text(
+                                    feat.name,
+                                    fontWeight = FontWeight.Bold,
+                                    style = MaterialTheme.typography.titleMedium,
+                                    color = if (notMet) {
+                                        MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f)
+                                    } else {
+                                        MaterialTheme.colorScheme.primary
+                                    }
+                                )
+                            }
 
                             Row {
                                 IconButton(onClick = { featToEdit = feat }, modifier = Modifier.size(48.dp)) {
@@ -175,7 +204,7 @@ fun FeatsTab(
                             }
                         }
 
-                        if (feat.prerequisites.isNotBlank()) {
+                        if (feat.prerequisites.isNotBlank() && assessment != null) {
                             Spacer(modifier = Modifier.height(2.dp))
                             Text(
                                 "Pré-requisitos: ${feat.prerequisites}",
@@ -184,7 +213,6 @@ fun FeatsTab(
                                 color = MaterialTheme.colorScheme.onSurfaceVariant
                             )
                             Spacer(modifier = Modifier.height(3.dp))
-                            val assessment = FeatPrerequisiteChecker.assess(feat.prerequisites, stats)
                             Text(
                                 assessment.message,
                                 style = MaterialTheme.typography.labelSmall,

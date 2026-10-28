@@ -8,6 +8,8 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
@@ -16,6 +18,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.WarningAmber
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
@@ -108,6 +111,11 @@ fun AddEditFeatDialog(
                             .height(280.dp)
                     ) {
                         items(filtered) { preset ->
+                            // Pré-requisitos não cumpridos só deixam o talento esmaecido/com aviso
+                            // na lista; o toque continua adicionando normalmente (ficha é companion,
+                            // não bloqueia a compra — a pessoa decide se segue a regra ou não).
+                            val assessment = stats?.let { FeatPrerequisiteChecker.assess(preset.prerequisites, it) }
+                            val notMet = assessment?.status == FeatPrerequisiteStatus.NOT_MET
                             Card(
                                 modifier = Modifier
                                     .fillMaxWidth()
@@ -122,7 +130,13 @@ fun AddEditFeatDialog(
                                         onConfirm(newFeat)
                                         onDismiss()
                                     },
-                                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant),
+                                colors = CardDefaults.cardColors(
+                                    containerColor = if (notMet) {
+                                        MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f)
+                                    } else {
+                                        MaterialTheme.colorScheme.surfaceVariant
+                                    }
+                                ),
                                 shape = RoundedCornerShape(8.dp)
                             ) {
                                 Row(
@@ -133,7 +147,27 @@ fun AddEditFeatDialog(
                                     verticalAlignment = Alignment.CenterVertically
                                 ) {
                                     Column(modifier = Modifier.weight(1f)) {
-                                        Text(preset.name, fontWeight = FontWeight.Bold, style = MaterialTheme.typography.bodyMedium)
+                                        Row(verticalAlignment = Alignment.CenterVertically) {
+                                            if (notMet) {
+                                                Icon(
+                                                    Icons.Default.WarningAmber,
+                                                    contentDescription = "Pré-requisitos não cumpridos",
+                                                    tint = MaterialTheme.colorScheme.error,
+                                                    modifier = Modifier.size(16.dp)
+                                                )
+                                                Spacer(modifier = Modifier.width(4.dp))
+                                            }
+                                            Text(
+                                                preset.name,
+                                                fontWeight = FontWeight.Bold,
+                                                style = MaterialTheme.typography.bodyMedium,
+                                                color = if (notMet) {
+                                                    MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.6f)
+                                                } else {
+                                                    MaterialTheme.colorScheme.onSurface
+                                                }
+                                            )
+                                        }
                                         if (preset.prerequisites.isNotBlank()) {
                                             Text(
                                                 "Pré-requisito: ${preset.prerequisites}",
@@ -141,8 +175,7 @@ fun AddEditFeatDialog(
                                                 color = MaterialTheme.colorScheme.primary
                                             )
                                         }
-                                        if (stats != null) {
-                                            val assessment = FeatPrerequisiteChecker.assess(preset.prerequisites, stats)
+                                        if (assessment != null) {
                                             Text(
                                                 assessment.message,
                                                 style = MaterialTheme.typography.labelSmall,
@@ -159,7 +192,7 @@ fun AddEditFeatDialog(
                                             color = MaterialTheme.colorScheme.onSurfaceVariant
                                         )
                                     }
-                                    Icon(Icons.Default.Add, contentDescription = "Adicionar", tint = MaterialTheme.colorScheme.primary)
+                                    Icon(Icons.Default.Add, contentDescription = "Adicionar mesmo assim", tint = MaterialTheme.colorScheme.primary)
                                 }
                             }
                         }
