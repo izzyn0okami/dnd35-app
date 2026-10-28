@@ -111,11 +111,18 @@ data class CharacterInventoryItem(
 )
 
 /** Quantidade de unidades individuais que uma embalagem representa (ex.: Flechas (20)). */
-fun ammunitionBundleSize(item: CharacterInventoryItem): Int =
-    item.name.substringAfterLast('(').substringBeforeLast(')')
+fun ammunitionBundleSize(item: CharacterInventoryItem): Int {
+    val normalizedName = item.name.lowercase()
+    val isKnownProjectile = normalizedName.contains("flecha") ||
+        normalizedName.contains("virote") ||
+        normalizedName.contains("bala de funda")
+    if (!isKnownProjectile) return 1
+
+    return item.name.substringAfterLast('(').substringBeforeLast(')')
         .toIntOrNull()
         ?.takeIf { item.name.endsWith(")") && it > 0 }
         ?: 1
+}
 
 /** Quantidade de projéteis disponíveis, distinguindo pacotes do número de disparos. */
 fun remainingAmmunitionUnits(item: CharacterInventoryItem): Int =
