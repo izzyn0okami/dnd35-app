@@ -7,6 +7,17 @@ package com.example.dnd35.model
  */
 object Dnd35Rules {
 
+    /**
+     * Como a classe conjura magias, para fins de cálculo automático de espaços diários e
+     * magias conhecidas:
+     * - PREPARED_*: conhece (pode preparar) qualquer magia da lista da classe que já possa
+     *   conjurar; o grimório da ficha já representa isso (cada magia adicionada é "conhecida",
+     *   o checkbox "Preparada" controla o que foi preparado no dia).
+     * - SPONTANEOUS_*: tem um repertório limitado de magias conhecidas por círculo (tabela
+     *   própria), conjuradas diretamente dos espaços diários sem preparação prévia.
+     */
+    enum class SpellcastingType { PREPARED_ARCANE, PREPARED_DIVINE, SPONTANEOUS_ARCANE, SPONTANEOUS_DIVINE }
+
     // ==========================================
     // ESPAÇOS DE CORPO (BODY SLOTS) DO D&D 3.5
     // ==========================================
@@ -190,6 +201,10 @@ object Dnd35Rules {
         val willType: SaveProgression,
         val skillPointsPerLevel: Int, // + mod Int
         val spellCastingAbility: String? = null, // INT, SAB, CAR ou null
+        val spellcastingType: SpellcastingType? = null,
+        // Clérigo: domínios concedem 1 espaço extra por círculo já acessível, independente
+        // de quais domínios foram escolhidos (a ficha não cadastra domínios individualmente).
+        val hasDomainSpellSlot: Boolean = false,
         val classSkills: List<String>,
         val features: List<ClassFeature>,
         val description: String
@@ -241,6 +256,7 @@ object Dnd35Rules {
             willType = SaveProgression.GOOD,
             skillPointsPerLevel = 6,
             spellCastingAbility = "CAR",
+            spellcastingType = SpellcastingType.SPONTANEOUS_ARCANE,
             classSkills = listOf("Acrobacia", "Arte da Fuga", "Atuação", "Avaliação", "Blefar", "Concentração", "Conhecimento (Arcano)", "Conhecimento (Arquitetura e Engenharia)", "Conhecimento (Geografia)", "Conhecimento (História)", "Conhecimento (Local)", "Conhecimento (Masmorras)", "Conhecimento (Natureza)", "Conhecimento (Nobreza e Realeza)", "Conhecimento (Planos)", "Conhecimento (Religião)", "Decifrar Escrita", "Diplomacia", "Disfarces", "Equilíbrio", "Escalar", "Esconder-se", "Furtividade", "Identificar Magia", "Natação", "Obter Informação", "Ofícios", "Ouvir", "Prestidigitação", "Profissão", "Saltar", "Sentir Motivação", "Usar Instrumento Mágico"),
             features = listOf(
                 ClassFeature(1, "Música de Bardo", "Pode usar habilidades de música de bardo um número de vezes por dia igual ao nível de bardo; exige graduações em Atuação conforme a habilidade."),
@@ -275,6 +291,8 @@ object Dnd35Rules {
             willType = SaveProgression.GOOD,
             skillPointsPerLevel = 2,
             spellCastingAbility = "SAB",
+            spellcastingType = SpellcastingType.PREPARED_DIVINE,
+            hasDomainSpellSlot = true,
             classSkills = listOf("Concentração", "Conhecimento (Arcano)", "Conhecimento (História)", "Conhecimento (Planos)", "Conhecimento (Religião)", "Cura", "Diplomacia", "Identificar Magia", "Ofícios", "Profissão"),
             features = listOf(
                 ClassFeature(1, "Aura", "A força da aura depende do poder da divindade, conforme a regra de detectar o bem ou detectar o mal."),
@@ -293,6 +311,7 @@ object Dnd35Rules {
             willType = SaveProgression.GOOD,
             skillPointsPerLevel = 4,
             spellCastingAbility = "SAB",
+            spellcastingType = SpellcastingType.PREPARED_DIVINE,
             classSkills = listOf("Adestrar Animais", "Cavalgar", "Concentração", "Conhecimento (Natureza)", "Cura", "Diplomacia", "Identificar Magia", "Natação", "Observar", "Ofícios", "Ouvir", "Profissão", "Sobrevivência"),
             features = listOf(
                 ClassFeature(1, "Companheiro Animal", "Recebe um companheiro animal; as opções e os benefícios seguem as regras da habilidade."),
@@ -402,6 +421,7 @@ object Dnd35Rules {
             willType = SaveProgression.GOOD,
             skillPointsPerLevel = 2,
             spellCastingAbility = "SAB",
+            spellcastingType = SpellcastingType.PREPARED_DIVINE,
             classSkills = listOf("Adestrar Animais", "Cavalgar", "Concentração", "Conhecimento (Nobreza e Realeza)", "Conhecimento (Religião)", "Cura", "Diplomacia", "Ofícios", "Profissão", "Sentir Motivação"),
             features = listOf(
                 ClassFeature(1, "Aura do Bem", "A aura de bondade é detectável por efeitos apropriados."),
@@ -436,6 +456,7 @@ object Dnd35Rules {
             willType = SaveProgression.POOR,
             skillPointsPerLevel = 6,
             spellCastingAbility = "SAB",
+            spellcastingType = SpellcastingType.PREPARED_DIVINE,
             classSkills = listOf("Adestrar Animais", "Cavalgar", "Concentração", "Conhecimento (Geografia)", "Conhecimento (Masmorras)", "Conhecimento (Natureza)", "Cura", "Escalar", "Esconder-se", "Furtividade", "Natação", "Observar", "Ofícios", "Ouvir", "Procurar", "Profissão", "Saltar", "Sobrevivência", "Usar Cordas"),
             features = listOf(
                 ClassFeature(1, "Inimigo Predileto +2", "+2 em testes de Blefar, Ouvir, Sentir Motivação, Observar e Sobrevivência, além de dano contra um tipo de criatura escolhido."),
@@ -504,6 +525,7 @@ object Dnd35Rules {
             willType = SaveProgression.GOOD,
             skillPointsPerLevel = 2,
             spellCastingAbility = "CAR",
+            spellcastingType = SpellcastingType.SPONTANEOUS_ARCANE,
             classSkills = listOf("Blefar", "Concentração", "Conhecimento (Arcano)", "Identificar Magia", "Ofícios", "Profissão"),
             features = listOf(
                 ClassFeature(1, "Conjuração Espontânea", "Conjura magias arcanas sem prepará-las antecipadamente; conhece um repertório limitado de magias e tem um limite diário de usos por nível."),
@@ -520,6 +542,7 @@ object Dnd35Rules {
             willType = SaveProgression.GOOD,
             skillPointsPerLevel = 2,
             spellCastingAbility = "INT",
+            spellcastingType = SpellcastingType.PREPARED_ARCANE,
             classSkills = listOf("Concentração", "Conhecimento (Arcano)", "Conhecimento (Arquitetura e Engenharia)", "Conhecimento (Geografia)", "Conhecimento (História)", "Conhecimento (Local)", "Conhecimento (Masmorras)", "Conhecimento (Natureza)", "Conhecimento (Nobreza e Realeza)", "Conhecimento (Planos)", "Conhecimento (Religião)", "Decifrar Escrita", "Identificar Magia", "Ofícios", "Profissão"),
             features = listOf(
                 ClassFeature(1, "Preparação com Grimório", "Estuda e prepara magias diárias a partir do seu livro de feitiços."),

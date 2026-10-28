@@ -26,7 +26,16 @@ data class CasterClassInfo(
     val casterLevel: Int,
     val keyAbility: String,
     val keyAbilityMod: Int,
-    val dcByLevel: Map<Int, Int>
+    val dcByLevel: Map<Int, Int>,
+    val spellcastingType: Dnd35Rules.SpellcastingType?,
+    // Espaços de magia por dia desta classe por círculo (0..9), já com bônus de atributo
+    // (e, para Clérigo, o espaço extra de domínio) somados à base da tabela.
+    val slotsByLevel: Map<Int, Int>,
+    // Magias conhecidas por círculo, só para conjuradores espontâneos (Bardo/Feiticeiro).
+    // Null para conjuradores preparados: "conhecem" toda a lista da classe (o grimório da
+    // ficha já reflete isso — cada magia adicionada é conhecida; "Preparada" é o que foi
+    // preparado no dia).
+    val knownSpellsByLevel: Map<Int, Int>?
 )
 
 data class CalculatedCharacterStats(
@@ -250,7 +259,6 @@ object CharacterCalculator {
         val inventory = CharacterJsonAdapters.deserializeInventory(character.inventoryJson)
         val feats = CharacterJsonAdapters.deserializeFeats(character.featsJson)
         val spells = CharacterJsonAdapters.deserializeSpells(character.spellsJson)
-        val spellSlots = CharacterJsonAdapters.deserializeSpellSlots(character.spellSlotsJson)
 
         // 4. Processar bônus concedidos por itens equipados nos espaços de corpo (EquipmentSlots)
         var itemStrBonus = character.modStrBonus
@@ -523,12 +531,21 @@ object CharacterCalculator {
                     }
                     else -> (0..9).associateWith { lvl -> 10 + lvl + mod }
                 }
+                val slotsArray = SpellcastingRules.spellsPerDayForClassLevel(
+                    className, casterLevel, mod, hasDomainSlot = detail.classInfo.hasDomainSpellSlot
+                )
+                val slotsByLevel = (0..9).associateWith { lvl -> slotsArray?.getOrNull(lvl) ?: 0 }
+                val knownArray = SpellcastingRules.knownSpellsForClassLevel(className, casterLevel)
+                val knownSpellsByLevel = knownArray?.let { arr -> (0..9).associateWith { lvl -> arr.getOrNull(lvl) ?: 0 } }
                 CasterClassInfo(
                     className = className,
                     casterLevel = casterLevel,
                     keyAbility = ability,
                     keyAbilityMod = mod,
-                    dcByLevel = dcMap
+                    dcByLevel = dcMap,
+                    spellcastingType = detail.classInfo.spellcastingType,
+                    slotsByLevel = slotsByLevel,
+                    knownSpellsByLevel = knownSpellsByLevel
                 )
             }
 
@@ -538,6 +555,16 @@ object CharacterCalculator {
         val castingAbilityMod = primaryCaster?.keyAbilityMod ?: 0
 
         val spellSaveDcByLevel = primaryCaster?.dcByLevel ?: emptyMap()
+
+        // Espaços de magia por dia: soma automática das classes conjuradoras da multiclasse
+        // (cada uma já com seu próprio bônus de atributo-chave). Os espaços "usados" no dia
+        // continuam vindo do que foi salvo na ficha (gastos ao conjurar, zerados no descanso).
+        val persistedSpellSlots = CharacterJsonAdapters.deserializeSpellSlots(character.spellSlotsJson)
+        val spellSlots = (0..9).map { lvl ->
+            val total = casterClasses.sumOf { it.slotsByLevel[lvl] ?: 0 }
+            val used = persistedSpellSlots.find { it.level == lvl }?.usedSlots ?: 0
+            SpellSlotInfo(level = lvl, totalSlots = total, usedSlots = used.coerceIn(0, total))
+        }
 
         // 12. Perícias Calculadas (Regra 3.5: Perícia de classe se pertencer a QUALQUER uma das classes)
         val computedSkills = skills.map { skill ->
