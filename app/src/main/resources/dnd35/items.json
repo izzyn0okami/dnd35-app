@@ -1516,9 +1516,9 @@
     "category": "Armas",
     "defaultSlot": "Mão Secundária",
     "weightLb": 11,
-    "costGp": 4,
+    "costGp": 13,
     "damageOrAc": "1d4 (x2)",
-    "properties": "Perfurante; escudo com cravos usado como arma"
+    "properties": "Perfurante; custo indicativo com escudo pequeno de madeira e cravos; preço varia conforme o escudo-base"
   },
   {
     "name": "Escudo Grande (arma)",
@@ -1536,7 +1536,7 @@
     "weightLb": 16.5,
     "costGp": 17,
     "damageOrAc": "1d6 (x2)",
-    "properties": "Perfurante; escudo com cravos usado como arma"
+    "properties": "Perfurante; custo indicativo com escudo grande de madeira e cravos; preço varia conforme o escudo-base"
   },
   {
     "name": "Virotes de Besta (5)",
