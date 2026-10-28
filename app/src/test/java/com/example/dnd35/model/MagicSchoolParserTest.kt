@@ -59,6 +59,20 @@ class MagicSchoolParserTest {
     }
 
     @Test
+    fun descriptorRecognitionFollowsTheBrazilianPlayerHandbookList() {
+        val mentalAction = MagicSchoolParser.parse("Encantamento (Compulsão) [Ação Mental]")
+        val languageDependent = MagicSchoolParser.parse("Encantamento (Compulsão) [Dependente de idioma]")
+        val unlisted = MagicSchoolParser.parse("Evocação [Força]")
+
+        assertEquals(listOf("Ação Mental"), mentalAction.descriptors)
+        assertEquals(listOf("Dependente de idioma"), languageDependent.descriptors)
+        // "Força" não aparece na lista de descritores do trecho consultado; preservá-lo
+        // como anotação evita classificá-lo silenciosamente como descritor oficial.
+        assertTrue(unlisted.descriptors.isEmpty())
+        assertEquals(listOf("Força"), unlisted.annotations)
+    }
+
+    @Test
     fun universalIsASeparateFilterAndAllMatchesEverySchool() {
         assertTrue(MagicSchoolParser.matchesBaseSchool("Universal", "Universal"))
         assertFalse(MagicSchoolParser.matchesBaseSchool("Necromancia [Morte]", "Universal"))
