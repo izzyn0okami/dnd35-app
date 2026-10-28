@@ -393,3 +393,12 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - Corrigido **Saco de dormir** de 5 lb para 5,5 lb: a tabela informa 2,5 kg.
 - Incluídos testes de regressão para ambos os pesos. Os custos foram preservados; esta alteração trata somente de conversão de massa.
 - A auditoria da Tabela 7-8 continua em andamento. Divergências de nomenclatura ou valores que não possam ser confirmados diretamente na tabela permanecem sem alteração.
+
+
+### Combate — consumo de munição (2026-10-28)
+
+- Adicionada à seção **Ataques & Armas** a ação **Gastar 1 munição** para armas de ataque à distância equipadas.
+- A interface exibe a primeira pilha compatível encontrada para arcos (flechas), bestas (virotes) e fundas (balas/pedras de funda), incluindo a quantidade atual.
+- O consumo atualiza inventoryJson por meio do repositório já usado pela ficha; quando a última unidade é consumida, a pilha é removida. Sem munição compatível, o botão fica desabilitado e a operação retorna sem alterar os dados.
+- A compatibilidade é inferida pelos nomes da arma e da munição existentes no inventário. Uma associação manual entre arma e pilha de munição ainda não faz parte desta alteração.
+- Testes de regressão devem confirmar compatibilidade, decremento, remoção da última unidade e ausência de valores negativos.
