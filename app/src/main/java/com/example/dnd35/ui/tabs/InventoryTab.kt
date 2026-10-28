@@ -99,12 +99,22 @@ fun InventoryTab(
     val categories = listOf("Todas", "Armas", "Armaduras", "Escudos", "Itens Mágicos", "Itens de Aventura", "Consumíveis")
 
     val cap = stats.carryingCapacity
-    val totalWeight = stats.totalWeightLb
+    val droppedBackpackWeight = stats.inventory.filter {
+        !it.inBackpack && !it.equipped && it.equippedSlot == Dnd35Rules.EquipmentSlots.NONE
+    }.fold(0f) { total, item -> total + item.weightLb * item.quantity }
+    val totalWeight = (stats.totalWeightLb - droppedBackpackWeight).coerceAtLeast(0f)
+    val encumbrance = Dnd35Rules.calculateEncumbrance(totalWeight, character.baseStr + character.modStrBonus, character.size)
+    val hasDroppedBackpackContents = stats.inventory.any {
+        !it.inBackpack && !it.equipped && it.equippedSlot == Dnd35Rules.EquipmentSlots.NONE
+    }
+    val hasBackpackContents = stats.inventory.any {
+        it.inBackpack && !it.equipped && it.equippedSlot == Dnd35Rules.EquipmentSlots.NONE
+    }
     val heavyMax = maxOf(1, cap.heavyMaxLb).toFloat()
     val weightFraction = (totalWeight / heavyMax).coerceIn(0f, 1f)
     val animatedWeightFraction by animateFloatAsState(targetValue = weightFraction, label = "weight_progress")
 
-    val encumbranceColor = when (stats.encumbrance) {
+    val encumbranceColor = when (encumbrance) {
         Dnd35Rules.EncumbranceLevel.LIGHT -> DndHpGreen
         Dnd35Rules.EncumbranceLevel.MEDIUM -> DndHpYellow
         Dnd35Rules.EncumbranceLevel.HEAVY -> DndCrimson
@@ -157,7 +167,7 @@ fun InventoryTab(
                             shape = RoundedCornerShape(8.dp)
                         ) {
                             Text(
-                                stats.encumbrance.label,
+                                encumbrance.label,
                                 color = Color.White,
                                 style = MaterialTheme.typography.labelSmall,
                                 fontWeight = FontWeight.Bold,
@@ -436,6 +446,18 @@ fun InventoryTab(
             Spacer(modifier = Modifier.height(10.dp))
         }
 
+        // Ações da mochila: mover todos os itens guardados de uma só vez.
+        item {
+            OutlinedButton(
+                onClick = { viewModel.setBackpackContentsCarried(carried = hasDroppedBackpackContents) },
+                enabled = hasDroppedBackpackContents || hasBackpackContents,
+                modifier = Modifier.fillMaxWidth().testTag("toggle_backpack_contents")
+            ) {
+                Text(if (hasDroppedBackpackContents) "Pegar mochila inteira" else "Soltar mochila inteira")
+            }
+            Spacer(modifier = Modifier.height(8.dp))
+        }
+
         // 5. Barra de Ação "+ Adicionar Item"
         item {
             Row(
@@ -513,7 +535,14 @@ fun InventoryTab(
             itemToEdit = item,
             onConfirm = { updated ->
                 viewModel.removeInventoryItem(item.id)
-                viewModel.addInventoryItem(updated)
+                viewModel.addInventoryItem(
+                    updated.copy(
+                        id = item.id,
+                        equipped = item.equipped,
+                        equippedSlot = item.equippedSlot,
+                        inBackpack = item.inBackpack
+                    )
+                )
                 itemToEdit = null
             },
             onDismiss = { itemToEdit = null }
@@ -784,6 +813,10 @@ fun InventoryItemRowRefined(
                             fontWeight = FontWeight.Bold
                         )
                     }
+                }
+
+                if (!item.inBackpack && !isEquipped) {
+                    Text("Fora da mochila", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.error)
                 }
 
                 if (item.notes.isNotBlank()) {

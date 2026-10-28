@@ -12,6 +12,7 @@ object Dnd35Rules {
     // ==========================================
     object EquipmentSlots {
         const val NONE = "Mochila (Não Equipado)"
+        const val AMMUNITION = "Munição equipada"
         const val MAIN_HAND = "Mão Principal"
         const val OFF_HAND = "Mão Secundária / Escudo"
         const val TWO_HANDS = "Duas Mãos"

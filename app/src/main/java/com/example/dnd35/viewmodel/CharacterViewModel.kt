@@ -442,6 +442,46 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
         persistCharacter(curr.copy(inventoryJson = CharacterJsonAdapters.serializeInventory(list)))
     }
 
+    /** Coloca uma pilha escolhida pelo jogador no slot global de munição de combate. */
+    fun equipAmmunition(itemId: String) {
+        val curr = _activeCharacter.value ?: return
+        val items = CharacterJsonAdapters.deserializeInventory(curr.inventoryJson)
+        val selected = items.firstOrNull { it.id == itemId && it.quantity > 0 && it.inBackpack } ?: return
+        val ammoSlot = com.example.dnd35.model.Dnd35Rules.EquipmentSlots.AMMUNITION
+        val updated = items.map { item ->
+            when {
+                item.id == selected.id -> item.copy(equipped = false, equippedSlot = ammoSlot)
+                item.equippedSlot == ammoSlot -> item.copy(equipped = false, equippedSlot = com.example.dnd35.model.Dnd35Rules.EquipmentSlots.NONE)
+                else -> item
+            }
+        }
+        persistCharacter(curr.copy(inventoryJson = CharacterJsonAdapters.serializeInventory(updated)))
+    }
+
+    /** Consome uma unidade somente da pilha escolhida no slot de munição. */
+    fun consumeEquippedAmmunition(): Boolean {
+        val curr = _activeCharacter.value ?: return false
+        val items = CharacterJsonAdapters.deserializeInventory(curr.inventoryJson)
+        val ammunition = items.firstOrNull {
+            it.equippedSlot == com.example.dnd35.model.Dnd35Rules.EquipmentSlots.AMMUNITION && it.quantity > 0
+        } ?: return false
+        val updated = com.example.dnd35.model.consumeAmmunitionStack(items, ammunition.id) ?: return false
+        persistCharacter(curr.copy(inventoryJson = CharacterJsonAdapters.serializeInventory(updated)))
+        return true
+    }
+
+    /** Pega ou solta os itens guardados na mochila sem alterar itens equipados no corpo/combate. */
+    fun setBackpackContentsCarried(carried: Boolean) {
+        val curr = _activeCharacter.value ?: return
+        val items = CharacterJsonAdapters.deserializeInventory(curr.inventoryJson)
+        val updated = items.map { item ->
+            if (!item.equipped && item.equippedSlot == com.example.dnd35.model.Dnd35Rules.EquipmentSlots.NONE) {
+                item.copy(inBackpack = carried)
+            } else item
+        }
+        persistCharacter(curr.copy(inventoryJson = CharacterJsonAdapters.serializeInventory(updated)))
+    }
+
     fun toggleEquipItem(itemId: String) {
         val curr = _activeCharacter.value ?: return
         val list = CharacterJsonAdapters.deserializeInventory(curr.inventoryJson).map {
