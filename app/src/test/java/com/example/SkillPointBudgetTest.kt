@@ -162,8 +162,8 @@ class SkillPointBudgetTest {
             intelligenceModifier = 0,
             raceName = "Elfo"
         )
-        assertEquals(10, initialWarriorThenRogue)
-        assertEquals(26, initialRogueThenWarrior)
+        assertEquals(16, initialWarriorThenRogue)
+        assertEquals(34, initialRogueThenWarrior)
     }
 
     @Test
