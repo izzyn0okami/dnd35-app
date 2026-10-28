@@ -7375,5 +7375,26 @@
     "domainLevels": {
       "Água": 7
     }
+  }  ,
+  {
+    "name": "Permanência",
+    "level": 5,
+    "school": "Universal",
+    "classes": [
+      "Feiticeiro",
+      "Mago"
+    ],
+    "castTime": "2 rodadas",
+    "components": "V, G, XP",
+    "range": "Veja texto",
+    "duration": "Permanente; veja texto",
+    "savingThrow": "Nenhum",
+    "spellResistance": false,
+    "description": "Torna permanentes determinados efeitos mágicos, conforme a lista e os requisitos indicados no Livro do Jogador. Cada aplicação exige o nível mínimo de conjurador e o custo em XP definidos para a magia escolhida. Alguns efeitos podem ser tornados permanentes no próprio conjurador; outros só podem afetar objetos ou áreas. Os efeitos aplicados a outras criaturas, objetos ou locais normalmente são vulneráveis a dissipar magia. O Mestre pode permitir outros efeitos após pesquisa.",
+    "classLevels": {
+      "Feiticeiro": 5,
+      "Mago": 5
+    },
+    "domainLevels": {}
   }
 ]
