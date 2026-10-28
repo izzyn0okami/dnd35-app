@@ -57,6 +57,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
+import coil.compose.AsyncImage
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
@@ -752,6 +754,19 @@ fun InventoryItemRowRefined(
                 .padding(10.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
+            if (!item.imageUri.isNullOrBlank()) {
+                AsyncImage(
+                    model = item.imageUri,
+                    contentDescription = "Foto de ${item.name}",
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier
+                        .size(64.dp)
+                        .clip(RoundedCornerShape(8.dp))
+                        .clickable(onClick = onEdit)
+                )
+                Spacer(modifier = Modifier.width(10.dp))
+            }
+
             Column(
                 modifier = Modifier
                     .weight(1f)
