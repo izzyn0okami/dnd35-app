@@ -72,6 +72,7 @@ fun AddEditItemDialog(
     val context = LocalContext.current
     val coroutineScope = rememberCoroutineScope()
     var photoError by remember { mutableStateOf<String?>(null) }
+    var isSavingPhoto by remember { mutableStateOf(false) }
 
     // Copia a foto para o armazenamento privado do app. Assim, a imagem não depende
     // das permissões temporárias do seletor nem da disponibilidade do provedor original.
@@ -81,19 +82,34 @@ fun AddEditItemDialog(
     ) { uri ->
         if (uri != null) {
             photoError = null
+            isSavingPhoto = true
             coroutineScope.launch {
                 val savedUri = withContext(Dispatchers.IO) {
                     runCatching {
                         val photoDir = File(context.filesDir, "item_photos").apply { mkdirs() }
-                        val photoFile = File(photoDir, "${UUID.randomUUID()}.img")
-                        context.contentResolver.openInputStream(uri)?.use { input ->
-                            photoFile.outputStream().use { output -> input.copyTo(output) }
-                        } ?: error("Não foi possível abrir a imagem selecionada.")
-                        Uri.fromFile(photoFile).toString()
+                        val mimeType = context.contentResolver.getType(uri)
+                        val extension = android.webkit.MimeTypeMap.getSingleton()
+                            .getExtensionFromMimeType(mimeType)
+                            ?.takeIf { it.matches(Regex("[A-Za-z0-9]{2,5}")) }
+                            ?: "jpg"
+                        val photoFile = File(photoDir, "${UUID.randomUUID()}.$extension")
+                        try {
+                            val input = context.contentResolver.openInputStream(uri)
+                                ?: error("Não foi possível abrir a imagem selecionada.")
+                            input.use { source ->
+                                photoFile.outputStream().use { output -> source.copyTo(output) }
+                            }
+                            check(photoFile.length() > 0L) { "A imagem selecionada está vazia." }
+                            Uri.fromFile(photoFile).toString()
+                        } catch (error: Throwable) {
+                            photoFile.delete()
+                            throw error
+                        }
                     }
                 }
                 savedUri.onSuccess { imageUri = it }
                     .onFailure { photoError = "Não foi possível salvar a foto. Tente escolher outra imagem." }
+                isSavingPhoto = false
             }
         }
     }
@@ -437,7 +453,7 @@ fun AddEditItemDialog(
                         onConfirm(finalItem)
                         onDismiss()
                     },
-                    enabled = name.isNotBlank() && parsedQuantity != null && parsedQuantity >= 1 && parsedWeight != null && parsedWeight >= 0f && parsedCost != null && parsedCost >= 0f
+                    enabled = !isSavingPhoto && name.isNotBlank() && parsedQuantity != null && parsedQuantity >= 1 && parsedWeight != null && parsedWeight >= 0f && parsedCost != null && parsedCost >= 0f
                 ) {
                     Text("Salvar")
                 }
