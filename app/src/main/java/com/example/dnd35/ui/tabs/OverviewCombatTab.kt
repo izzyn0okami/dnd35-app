@@ -626,6 +626,28 @@ fun OverviewCombatTab(
                                     diceRollTarget = Triple("Ataque com ${w.name}", atkBonus, w.damageOrAc)
                                 }
                             )
+
+                            if (isRanged && w.equipped) {
+                                val ammunition = com.example.dnd35.model.findCompatibleAmmunition(stats.inventory, w.name)
+                                Row(
+                                    modifier = Modifier.fillMaxWidth().padding(start = 8.dp, top = 2.dp, bottom = 8.dp),
+                                    verticalAlignment = Alignment.CenterVertically,
+                                    horizontalArrangement = Arrangement.SpaceBetween
+                                ) {
+                                    Text(
+                                        text = ammunition?.let { "Munição: ${it.name} (${it.quantity})" } ?: "Sem munição compatível",
+                                        style = MaterialTheme.typography.bodySmall,
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                                    )
+                                    OutlinedButton(
+                                        onClick = { viewModel.consumeAmmoForWeapon(w.name) },
+                                        enabled = ammunition != null,
+                                        modifier = Modifier.testTag("spend_ammo_${w.id}")
+                                    ) {
+                                        Text("Gastar 1 munição")
+                                    }
+                                }
+                            }
                         }
                     }
                 }
