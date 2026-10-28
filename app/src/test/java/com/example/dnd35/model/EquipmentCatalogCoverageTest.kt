@@ -89,6 +89,33 @@ class EquipmentCatalogCoverageTest {
         assertEquals(3000.0f, byName[normalize("Barcaça")]!!.costGp, 0.01f)
     }
 
+
+    @Test
+    fun includesPlayerHandbookClothingAndFixedPriceServices() {
+        listOf(
+            "Traje de Artesão", "Traje de Clima Frio", "Traje de Corte",
+            "Traje de Entretenimento", "Traje de Explorador", "Traje de Monge",
+            "Traje de Nobre", "Traje de Plebeu", "Traje de Sábio", "Traje de Viajante",
+            "Traje Real", "Vestimentas de Clérigo", "Condução de Carroça (1,5 km)",
+            "Mensageiro (1,5 km)", "Passagem de Navio (1,5 km)",
+            "Trabalhador Treinado (por dia)", "Trabalhador sem Treinamento (por dia)",
+            "Pedágio (estrada ou portão)"
+        ).forEach { assertTrue("Indumentária/serviço ausente: $it", normalize(it) in names) }
+    }
+
+    @Test
+    fun convertsPlayerHandbookClothingWeightsAndServicePrices() {
+        val byName = Dnd35Rules.PRESET_ITEMS.associateBy { normalize(it.name) }
+        assertEquals(4.4f, byName[normalize("Traje de Artesão")]!!.weightLb, 0.01f)
+        assertEquals(7.7f, byName[normalize("Traje de Clima Frio")]!!.weightLb, 0.01f)
+        assertEquals(16.5f, byName[normalize("Traje Real")]!!.weightLb, 0.01f)
+        assertEquals(0.1f, byName[normalize("Traje de Plebeu")]!!.costGp, 0.001f)
+        assertEquals(0.03f, byName[normalize("Condução de Carroça (1,5 km)")]!!.costGp, 0.001f)
+        assertEquals(0.02f, byName[normalize("Mensageiro (1,5 km)")]!!.costGp, 0.001f)
+        assertEquals(0.3f, byName[normalize("Trabalhador Treinado (por dia)")]!!.costGp, 0.001f)
+        assertEquals(0.01f, byName[normalize("Pedágio (estrada ou portão)")]!!.costGp, 0.001f)
+    }
+
     @Test
     fun catalogNamesAreUniqueIgnoringAccentsAndCase() {
         val normalized = Dnd35Rules.PRESET_ITEMS.map { normalize(it.name) }
