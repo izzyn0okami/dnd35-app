@@ -1407,7 +1407,7 @@
     "name": "Fogo Alquímico",
     "category": "Consumíveis",
     "defaultSlot": "Mochila (Não Equipado)",
-    "weightLb": 1,
+    "weightLb": 1.1,
     "costGp": 20,
     "damageOrAc": "1d6 fogo",
     "properties": "Substância alquímica; arremessável"
