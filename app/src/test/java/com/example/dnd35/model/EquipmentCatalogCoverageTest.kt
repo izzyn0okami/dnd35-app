@@ -185,6 +185,14 @@ class EquipmentCatalogCoverageTest {
         }
     }
 
+
+    @Test
+    fun convertsCopperPieceCandleCostFromTheHandbookCorrectly() {
+        val byName = Dnd35Rules.PRESET_ITEMS.associateBy { normalize(it.name) }
+        // Table 7-8: vela custa 1 PC, equivalente a 0,01 PO.
+        assertEquals(0.01f, byName[normalize("Vela")]!!.costGp, 0.001f)
+    }
+
     @Test
     fun catalogNamesAreUniqueIgnoringAccentsAndCase() {
         val normalized = Dnd35Rules.PRESET_ITEMS.map { normalize(it.name) }
