@@ -150,6 +150,23 @@ class SkillPointBudgetTest {
     }
 
     @Test
+    fun totalEstimateKeepsFirstEntryAsTheOnlyInitialClassForMultiplier() {
+        // A primeira entrada representa a classe inicial; a classe adicionada depois não recebe x4.
+        val initialWarriorThenRogue = estimateTotalSkillPoints(
+            listOf(CharacterClassEntry("Guerreiro", 1), CharacterClassEntry("Ladino", 1)),
+            intelligenceModifier = 0,
+            raceName = "Elfo"
+        )
+        val initialRogueThenWarrior = estimateTotalSkillPoints(
+            listOf(CharacterClassEntry("Ladino", 1), CharacterClassEntry("Guerreiro", 1)),
+            intelligenceModifier = 0,
+            raceName = "Elfo"
+        )
+        assertEquals(10, initialWarriorThenRogue)
+        assertEquals(26, initialRogueThenWarrior)
+    }
+
+    @Test
     fun totalEstimateHasNoRacialBonusForNonHumans() {
         // Elfo Mago nível 2, Int 3: 1º nível (2+3)x4 = 20; 2º nível normal (2+3) = 5.
         assertEquals(
