@@ -219,7 +219,7 @@
     "name": "Broquel",
     "category": "Escudos",
     "defaultSlot": "Mão Secundária / Escudo",
-    "weightLb": 5,
+    "weightLb": 5.5,
     "costGp": 15,
     "damageOrAc": "+1 CA",
     "properties": "Pen -1, Falha 5%"
@@ -462,7 +462,7 @@
     "name": "Pederneira e Isqueiro",
     "category": "Itens de Aventura",
     "defaultSlot": "Mochila (Não Equipado)",
-    "weightLb": 0.1,
+    "weightLb": 0,
     "costGp": 1,
     "damageOrAc": "-",
     "properties": "Para acender fogueiras"
@@ -471,7 +471,7 @@
     "name": "Instrumentos de Ladrão (Obra-Prima)",
     "category": "Itens de Aventura",
     "defaultSlot": "Mochila (Não Equipado)",
-    "weightLb": 2,
+    "weightLb": 2.2,
     "costGp": 100,
     "damageOrAc": "-",
     "properties": "+2 em Operar Mecanismo e Arrombar"
@@ -480,7 +480,7 @@
     "name": "Kit de Primeiros Socorros",
     "category": "Itens de Aventura",
     "defaultSlot": "Mochila (Não Equipado)",
-    "weightLb": 1,
+    "weightLb": 1.1,
     "costGp": 50,
     "damageOrAc": "-",
     "properties": "+2 em testes de Cura, 10 usos"
@@ -1137,8 +1137,8 @@
     "name": "Escudo Pequeno de Metal",
     "category": "Escudos",
     "defaultSlot": "Mão Secundária / Escudo",
-    "weightLb": 6.6,
-    "costGp": 9,
+    "weightLb": 8.3,
+    "costGp": 10,
     "damageOrAc": "+1 CA",
     "properties": "Penalidade -1; falha arcana 5%"
   },
@@ -1245,7 +1245,7 @@
     "name": "Pé de Cabra",
     "category": "Itens de Aventura",
     "defaultSlot": "Mochila (Não Equipado)",
-    "weightLb": 5,
+    "weightLb": 5.5,
     "costGp": 2,
     "damageOrAc": "-",
     "properties": "Alavanca; pode auxiliar a forçar portas"
@@ -1254,7 +1254,7 @@
     "name": "Espelho de Metal Pequeno",
     "category": "Itens de Aventura",
     "defaultSlot": "Mochila (Não Equipado)",
-    "weightLb": 0.5,
+    "weightLb": 0.55,
     "costGp": 10,
     "damageOrAc": "-",
     "properties": "Pequeno espelho metálico"
@@ -1353,7 +1353,7 @@
     "name": "Lamparina",
     "category": "Itens de Aventura",
     "defaultSlot": "Mochila (Não Equipado)",
-    "weightLb": 1,
+    "weightLb": 1.1,
     "costGp": 0.1,
     "damageOrAc": "-",
     "properties": "Iluminação"
@@ -1398,7 +1398,7 @@
     "name": "Picareta de Mina",
     "category": "Itens de Aventura",
     "defaultSlot": "Mochila (Não Equipado)",
-    "weightLb": 10,
+    "weightLb": 11,
     "costGp": 3,
     "damageOrAc": "-",
     "properties": "Ferramenta de mineração"
@@ -2113,5 +2113,77 @@
     "costGp": 0.01,
     "damageOrAc": "—",
     "properties": "Ilumina como uma tocha por 1 hora"
+  },
+  {
+    "name": "Corda de Cânhamo (15 m)",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 11,
+    "costGp": 1,
+    "damageOrAc": "—",
+    "properties": "Equipamento comum conforme a Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Corda de Seda (15 m)",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 5.5,
+    "costGp": 10,
+    "damageOrAc": "—",
+    "properties": "Equipamento comum conforme a Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Corrente (3 m)",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 2.2,
+    "costGp": 30,
+    "damageOrAc": "—",
+    "properties": "Equipamento comum conforme a Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Rações de Viagem (por dia)",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 1.1,
+    "costGp": 0.5,
+    "damageOrAc": "—",
+    "properties": "Equipamento comum conforme a Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Saco (Vazio)",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.55,
+    "costGp": 0.1,
+    "damageOrAc": "—",
+    "properties": "Equipamento comum conforme a Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Tenda",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 22,
+    "costGp": 10,
+    "damageOrAc": "—",
+    "properties": "Equipamento comum conforme a Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Instrumento Musical Comum",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 3.3,
+    "costGp": 5,
+    "damageOrAc": "—",
+    "properties": "Equipamento comum conforme a Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Ferramenta de Artesão (Obra-Prima)",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 5.5,
+    "costGp": 55,
+    "damageOrAc": "—",
+    "properties": "Equipamento comum conforme a Tabela 7-8 do Livro do Jogador"
   }
 ]

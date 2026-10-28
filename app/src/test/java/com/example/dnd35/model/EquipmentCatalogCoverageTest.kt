@@ -51,6 +51,11 @@ class EquipmentCatalogCoverageTest {
         assertEquals(5.5f, byName[normalize("Balas de Funda (10)")]!!.weightLb, 0.01f)
         assertEquals(49.6f, byName[normalize("Escudo de Corpo")]!!.weightLb, 0.1f)
         assertEquals(55.0f, byName[normalize("Armadura de Batalha")]!!.weightLb, 0.01f)
+        assertEquals(5.5f, byName[normalize("Broquel")]!!.weightLb, 0.01f)
+        assertEquals(10.0f, byName[normalize("Escudo Pequeno de Metal")]!!.costGp, 0.01f)
+        assertEquals(8.3f, byName[normalize("Escudo Pequeno de Metal")]!!.weightLb, 0.1f)
+        assertEquals(22.0f, byName[normalize("Tenda")]!!.weightLb, 0.01f)
+        assertEquals(11.0f, byName[normalize("Corda de Cânhamo (15 m)")]!!.weightLb, 0.01f)
     }
 
     @Test
