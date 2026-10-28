@@ -172,6 +172,8 @@ object CharacterJsonAdapters {
             obj.put("equippedSlot", item.equippedSlot)
             obj.put("notes", item.notes)
             obj.put("inBackpack", item.inBackpack)
+            obj.put("imageUri", item.imageUri ?: JSONObject.NULL)
+            obj.put("ammunitionUnitsRemaining", item.ammunitionUnitsRemaining ?: JSONObject.NULL)
             array.put(obj)
         }
         return array.toString()
@@ -208,7 +210,9 @@ object CharacterJsonAdapters {
                         equipped = isEq,
                         equippedSlot = obj.optString("equippedSlot", defaultSlot),
                         notes = obj.optString("notes", ""),
-                        inBackpack = obj.optBoolean("inBackpack", true)
+                        inBackpack = obj.optBoolean("inBackpack", true),
+                        imageUri = obj.optString("imageUri", "").takeIf { it.isNotBlank() && it != "null" },
+                        ammunitionUnitsRemaining = if (obj.has("ammunitionUnitsRemaining") && !obj.isNull("ammunitionUnitsRemaining")) obj.optInt("ammunitionUnitsRemaining") else null
                     )
                 )
             }
