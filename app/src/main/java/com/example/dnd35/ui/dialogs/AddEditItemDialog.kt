@@ -81,7 +81,7 @@ fun AddEditItemDialog(
     var ammoUnitsPerPackageText by remember {
         mutableStateOf(
             (itemToEdit?.ammunitionUnitsPerPackage
-                ?: Regex("\\\\((\\\\d+)\\\\)$").find(itemToEdit?.name.orEmpty())?.groupValues?.getOrNull(1)?.toIntOrNull()
+                ?: Regex("\\((\\d+)\\)$").find(itemToEdit?.name.orEmpty())?.groupValues?.getOrNull(1)?.toIntOrNull()
                 ?: 1).toString()
         )
     }
