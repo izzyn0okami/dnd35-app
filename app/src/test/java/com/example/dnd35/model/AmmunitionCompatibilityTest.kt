@@ -82,7 +82,8 @@ class AmmunitionCompatibilityTest {
             quantity = 1,
             equippedSlot = ammoSlot,
             imageUri = "file:///data/user/0/com.example.dnd35/files/item_photos/test.png",
-            ammunitionUnitsRemaining = 7
+            ammunitionUnitsRemaining = 7,
+            ammunitionUnitsPerPackage = 10
         )
 
         val restored = CharacterJsonAdapters.deserializeInventory(
@@ -91,7 +92,27 @@ class AmmunitionCompatibilityTest {
 
         assertEquals(item.imageUri, restored.imageUri)
         assertEquals(7, restored.ammunitionUnitsRemaining)
+        assertEquals(10, restored.ammunitionUnitsPerPackage)
         assertEquals(7, remainingAmmunitionUnits(restored))
+    }
+
+
+    @Test
+    fun explicitPackageSizeWorksWhenNameDoesNotContainPackageCount() {
+        val pack = CharacterInventoryItem(
+            id = "custom-ammo-pack",
+            name = "Munição especial",
+            category = "Consumíveis",
+            quantity = 2,
+            equippedSlot = ammoSlot,
+            ammunitionUnitsPerPackage = 6
+        )
+
+        assertEquals(12, remainingAmmunitionUnits(pack))
+        val afterOne = consumeAmmunitionStack(listOf(pack), "custom-ammo-pack")!!.single()
+        assertEquals(2, afterOne.quantity)
+        assertEquals(11, remainingAmmunitionUnits(afterOne))
+        assertEquals(6, afterOne.ammunitionUnitsPerPackage)
     }
 
     @Test
