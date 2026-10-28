@@ -1173,7 +1173,7 @@
     "name": "Saco de Dormir",
     "category": "Itens de Aventura",
     "defaultSlot": "Mochila (Não Equipado)",
-    "weightLb": 5,
+    "weightLb": 5.5,
     "costGp": 0.1,
     "damageOrAc": "-",
     "properties": "Equipamento para repouso"
@@ -1362,7 +1362,7 @@
     "name": "Corrente (3m)",
     "category": "Itens de Aventura",
     "defaultSlot": "Mochila (Não Equipado)",
-    "weightLb": 2,
+    "weightLb": 2.2,
     "costGp": 30,
     "damageOrAc": "-",
     "properties": "Corrente de ferro"

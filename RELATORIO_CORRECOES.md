@@ -384,3 +384,12 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - Identificada divergência na entrada “Vela”: a Tabela 7-8 informa custo de 1 PC, equivalente a 0,01 PO; o catálogo registrava 0,1 PO.
 - Corrigido o custo para 0,01 PO e incluído teste de regressão. Na mesma conferência da Tabela 7-8, corrigidos também os pesos do Martelo (1 kg → 2,2 lb; catálogo anterior 2 lb) e da Pá (4 kg → 8,8 lb; catálogo anterior 8 lb), com asserções de regressão.
 - A rodada permanece aberta para conferir outros preços e pesos diretamente contra a Tabela 7-8 antes de abrir PR, para agrupar correções relacionadas em vez de criar PRs pequenas.
+
+
+## Auditoria adicional de pesos — equipamentos de aventura (2026-10-28)
+
+- Conferência direta da Tabela 7-8 do Livro do Jogador brasileiro, página impressa 108 (PDF página 112).
+- Corrigida **Corrente (3 m)** de 2 lb para 2,2 lb: a tabela informa 1 kg.
+- Corrigido **Saco de dormir** de 5 lb para 5,5 lb: a tabela informa 2,5 kg.
+- Incluídos testes de regressão para ambos os pesos. Os custos foram preservados; esta alteração trata somente de conversão de massa.
+- A auditoria da Tabela 7-8 continua em andamento. Divergências de nomenclatura ou valores que não possam ser confirmados diretamente na tabela permanecem sem alteração.

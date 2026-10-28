@@ -201,6 +201,14 @@ class EquipmentCatalogCoverageTest {
         assertEquals(normalized.size, normalized.toSet().size)
     }
 
+    @Test
+    fun correctsRemainingAdventureGearWeightsFromPlayerHandbookTable78() {
+        val byName = Dnd35Rules.PRESET_ITEMS.associateBy { normalize(it.name) }
+        // Livro do Jogador: Corrente (3 m) = 1 kg; Saco de dormir = 2,5 kg.
+        assertEquals(2.2f, byName[normalize("Corrente (3 m)")]!!.weightLb, 0.01f)
+        assertEquals(5.5f, byName[normalize("Saco de dormir")]!!.weightLb, 0.01f)
+    }
+
     private fun normalize(value: String): String =
         java.text.Normalizer.normalize(value, java.text.Normalizer.Form.NFD)
             .replace(Regex("\\p{Mn}+"), "")
