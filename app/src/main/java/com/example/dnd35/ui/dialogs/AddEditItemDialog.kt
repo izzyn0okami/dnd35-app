@@ -1,6 +1,11 @@
 package com.example.dnd35.ui.dialogs
 
-import android.content.Intent
+import android.net.Uri
+import java.io.File
+import java.util.UUID
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.ui.platform.LocalContext
@@ -46,6 +51,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.draw.clip
@@ -64,19 +70,31 @@ fun AddEditItemDialog(
 ) {
     var selectedTab by remember { mutableIntStateOf(if (itemToEdit == null) 0 else 1) }
     val context = LocalContext.current
+    val coroutineScope = rememberCoroutineScope()
+    var photoError by remember { mutableStateOf<String?>(null) }
 
-    // Mantém a permissão de leitura da foto depois de fechar o seletor e reiniciar o app.
+    // Copia a foto para o armazenamento privado do app. Assim, a imagem não depende
+    // das permissões temporárias do seletor nem da disponibilidade do provedor original.
     var imageUri by remember { mutableStateOf(itemToEdit?.imageUri) }
     val imagePicker = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.OpenDocument()
     ) { uri ->
         if (uri != null) {
-            try {
-                context.contentResolver.takePersistableUriPermission(uri, Intent.FLAG_GRANT_READ_URI_PERMISSION)
-            } catch (_: SecurityException) {
-                // Alguns provedores não oferecem permissão persistente.
+            photoError = null
+            coroutineScope.launch {
+                val savedUri = withContext(Dispatchers.IO) {
+                    runCatching {
+                        val photoDir = File(context.filesDir, "item_photos").apply { mkdirs() }
+                        val photoFile = File(photoDir, "${UUID.randomUUID()}.img")
+                        context.contentResolver.openInputStream(uri)?.use { input ->
+                            photoFile.outputStream().use { output -> input.copyTo(output) }
+                        } ?: error("Não foi possível abrir a imagem selecionada.")
+                        Uri.fromFile(photoFile).toString()
+                    }
+                }
+                savedUri.onSuccess { imageUri = it }
+                    .onFailure { photoError = "Não foi possível salvar a foto. Tente escolher outra imagem." }
             }
-            imageUri = uri.toString()
         }
     }
 
@@ -227,6 +245,9 @@ fun AddEditItemDialog(
                         Spacer(modifier = Modifier.height(8.dp))
 
                         Text("Foto do item:", style = MaterialTheme.typography.labelSmall)
+                        photoError?.let { errorMessage ->
+                            Text(errorMessage, color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodySmall)
+                        }
                         Row(
                             modifier = Modifier.fillMaxWidth(),
                             verticalAlignment = Alignment.CenterVertically,
