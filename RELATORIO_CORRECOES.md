@@ -332,3 +332,12 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - **Veículos:** adicionados barco a remo, remo, barcaça, carroça, carruagem, charrete, galeão, navio de guerra, navio, trenó e veleiro.
 - **Conversão de dados:** preços de PC/PP/PO foram normalizados para PO; pesos indicados em kg foram convertidos para libras (campo weightLb) e arredondados a uma casa decimal. Onde a tabela usa traço para o peso, o catálogo mantém zero como ausência de peso informado, sem inventar um valor.
 - **Validação planejada:** testes automatizados cobrem a presença dos itens representativos, custos/pesos convertidos e unicidade dos nomes sem considerar acentos e caixa. Esta etapa não certifica ainda todos os itens restantes da Tabela 7-8 nem os serviços de conjuração.
+
+
+## Catálogo de equipamento do Livro do Jogador — etapa 4 (2026-10-28)
+
+- **Fonte normativa:** PDF brasileiro do Livro do Jogador, capítulo 7, Tabela 7-8 (Itens e Serviços), seção Indumentária e coluna Conjuração e Serviços.
+- **Indumentária recuperada:** adicionados traje de artesão, clima frio, corte, entretenimento, explorador, monge, nobre, plebeu, sábio, viajante, traje real e vestimentas de clérigo, com custo e peso da tabela. Pesos em kg foram convertidos para libras e arredondados a uma casa decimal.
+- **Serviços de preço fixo:** adicionados condução de carroça, mensageiro, passagem de navio, trabalhador treinado, trabalhador sem treinamento e pedágio, preservando as unidades de cobrança (por 1,5 km, por dia ou por passagem) no nome/descrição.
+- **Limite do modelo:** os serviços de conjuração têm preço variável conforme nível de conjurador e nível da magia; não foram cadastrados como itens de preço zero, pois isso confundiria ausência de preço fixo com gratuidade. A armadura de montaria também depende do tipo e tamanho da criatura e da armadura-base, portanto requer cálculo/representação própria em vez de um item genérico com preço arbitrário.
+- **Compatibilidade e regressão:** mantidos os campos e slots existentes. Testes cobrem os nomes adicionados, conversões de custo/peso e unicidade dos nomes normalizados.
