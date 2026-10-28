@@ -1218,7 +1218,7 @@
     "name": "Martelo",
     "category": "Itens de Aventura",
     "defaultSlot": "Mochila (Não Equipado)",
-    "weightLb": 2,
+    "weightLb": 2.2,
     "costGp": 0.5,
     "damageOrAc": "-",
     "properties": "Ferramenta"
@@ -1318,7 +1318,7 @@
     "category": "Itens de Aventura",
     "defaultSlot": "Mochila (Não Equipado)",
     "weightLb": 0,
-    "costGp": 0.1,
+    "costGp": 0.01,
     "damageOrAc": "-",
     "properties": "Ilumina uma pequena área"
   },
@@ -1371,7 +1371,7 @@
     "name": "Pá",
     "category": "Itens de Aventura",
     "defaultSlot": "Mochila (Não Equipado)",
-    "weightLb": 8,
+    "weightLb": 8.8,
     "costGp": 2,
     "damageOrAc": "-",
     "properties": "Ferramenta de escavação"

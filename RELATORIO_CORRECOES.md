@@ -377,3 +377,10 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - Corrigidos pesos que haviam sido arredondados ou truncados incorretamente: Algibeira (0,25 kg → 0,55 lb), Algemas (1 kg → 2,2 lb), Mochila (1 kg → 2,2 lb), Lanterna Furta-Fogo (1,5 kg → 3,3 lb), Ampulheta e Balança de Mercador (0,5 kg → 1,1 lb), Grimório de Mago em branco (1,5 kg → 3,3 lb), Símbolo Sagrado de Prata (0,5 kg → 1,1 lb), Clepsidra (100 kg → 220,5 lb), Laboratório Alquímico (20 kg → 44,1 lb), Bastão Solar e Pedra Trovão (0,5 kg → 1,1 lb) e Bastão de Fumaça (0,25 kg → 0,55 lb).
 - Adicionado teste de regressão para os treze valores. Itens com peso indicado como traço na tabela continuam com zero no modelo, sem atribuição de massa inventada.
 - Esta correção é uma rodada de conversões verificáveis, não uma declaração de auditoria completa de todas as entradas do catálogo.
+
+
+## Auditoria de custos de equipamentos — rodada em andamento (2026-10-28)
+
+- Identificada divergência na entrada “Vela”: a Tabela 7-8 informa custo de 1 PC, equivalente a 0,01 PO; o catálogo registrava 0,1 PO.
+- Corrigido o custo para 0,01 PO e incluído teste de regressão. Na mesma conferência da Tabela 7-8, corrigidos também os pesos do Martelo (1 kg → 2,2 lb; catálogo anterior 2 lb) e da Pá (4 kg → 8,8 lb; catálogo anterior 8 lb), com asserções de regressão.
+- A rodada permanece aberta para conferir outros preços e pesos diretamente contra a Tabela 7-8 antes de abrir PR, para agrupar correções relacionadas em vez de criar PRs pequenas.
