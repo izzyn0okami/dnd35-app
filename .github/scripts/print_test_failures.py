@@ -21,7 +21,9 @@ for f in files:
                 print(f"::error::{classname}.{name}: {message}")
                 text = (node.text or "").strip()
                 if text:
-                    for chunk_start in range(0, min(len(text), 4000), 900):
-                        print(f"::error::{classname}.{name} stack[{chunk_start}]: {text[chunk_start:chunk_start+900]}")
+                    lines = text.split("\n")
+                    relevant = [ln.strip() for ln in lines if "com.example" in ln or "CharacterJsonAdapters" in ln or "CharacterCalculator" in ln]
+                    for ln in relevant[:20]:
+                        print(f"::error::{classname}.{name} at: {ln[:300]}")
 if not found:
     print("Nenhuma falha de teste encontrada nos XMLs JUnit.")
