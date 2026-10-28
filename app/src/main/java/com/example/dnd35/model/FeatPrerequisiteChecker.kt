@@ -162,7 +162,16 @@ object FeatPrerequisiteChecker {
             .maxByOrNull { it.length }
 
         if (matchingFeat != null) {
-            val hasFeat = stats.feats.any { normalize(it.name) == matchingFeat }
+            // Talentos que exigem uma escolha podem ser registrados com essa escolha
+            // no nome (por exemplo, "Foco em Arma (Espada Longa)"). Comparar apenas
+            // igualdade exata gerava falso negativo para talentos já presentes na ficha.
+            val hasFeat = stats.feats.any { characterFeat ->
+                val registeredName = normalize(characterFeat.name)
+                registeredName == matchingFeat ||
+                    registeredName.startsWith("$matchingFeat (") ||
+                    registeredName.startsWith("$matchingFeat:") ||
+                    registeredName.startsWith("$matchingFeat -")
+            }
             if (!hasFeat) unmet += clause
             if (normalized.contains("mesma escola") || normalized.contains("arma escolhida") || normalized.contains("foco em magia (")) {
                 unverified += "$clause (a escola/arma escolhida não é registrada)"
