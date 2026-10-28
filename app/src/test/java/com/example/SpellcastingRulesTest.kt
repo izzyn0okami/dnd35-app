@@ -7,7 +7,15 @@ import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
 import org.junit.Test
+import org.junit.runner.RunWith
+import org.robolectric.RobolectricTestRunner
+import org.robolectric.annotation.Config
 
+// Robolectric: CharacterCalculator.compute() passa por CharacterJsonAdapters, que loga avisos
+// via android.util.Log quando o JSON é inválido; sem Robolectric, esse método não é
+// mockado e qualquer aviso (mesmo de outro código já existente) derruba o teste.
+@RunWith(RobolectricTestRunner::class)
+@Config(sdk = [35])
 class SpellcastingRulesTest {
 
     @Test
