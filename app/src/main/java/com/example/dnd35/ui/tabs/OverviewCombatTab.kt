@@ -83,7 +83,7 @@ fun OverviewCombatTab(
         it.equippedSlot == Dnd35Rules.EquipmentSlots.AMMUNITION && it.quantity > 0
     }
     val ammunitionOptions = stats.inventory.filter {
-        it.quantity > 0 && !it.equipped &&
+        it.quantity > 0 && it.inBackpack && !it.equipped &&
             (it.equippedSlot == Dnd35Rules.EquipmentSlots.NONE || it.equippedSlot == Dnd35Rules.EquipmentSlots.AMMUNITION)
     }
     val race = Dnd35Rules.RACES.find { it.name.equals(character.race, ignoreCase = true) } ?: Dnd35Rules.RACES.first()
