@@ -38,11 +38,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.dnd35.model.CharacterFeat
+import com.example.dnd35.model.CalculatedCharacterStats
+import com.example.dnd35.model.FeatPrerequisiteChecker
+import com.example.dnd35.model.FeatPrerequisiteStatus
 import com.example.dnd35.model.Dnd35Rules
 
 @Composable
 fun AddEditFeatDialog(
     featToEdit: CharacterFeat? = null,
+    stats: CalculatedCharacterStats? = null,
     onConfirm: (CharacterFeat) -> Unit,
     onDismiss: () -> Unit
 ) {
@@ -135,6 +139,18 @@ fun AddEditFeatDialog(
                                                 "Pré-requisito: ${preset.prerequisites}",
                                                 style = MaterialTheme.typography.labelSmall,
                                                 color = MaterialTheme.colorScheme.primary
+                                            )
+                                        }
+                                        if (stats != null) {
+                                            val assessment = FeatPrerequisiteChecker.assess(preset.prerequisites, stats)
+                                            Text(
+                                                assessment.message,
+                                                style = MaterialTheme.typography.labelSmall,
+                                                color = when (assessment.status) {
+                                                    FeatPrerequisiteStatus.MET -> MaterialTheme.colorScheme.primary
+                                                    FeatPrerequisiteStatus.NOT_MET -> MaterialTheme.colorScheme.error
+                                                    FeatPrerequisiteStatus.PARTIAL -> MaterialTheme.colorScheme.onSurfaceVariant
+                                                }
                                             )
                                         }
                                         Text(
