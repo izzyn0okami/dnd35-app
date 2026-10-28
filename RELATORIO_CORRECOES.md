@@ -450,3 +450,10 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - A CI identificou que o novo teste de ida e volta do inventário falhava no ambiente unitário Android padrão ao invocar `org.json`, antes de a compilação do APK começar.
 - O teste foi configurado para usar `RobolectricTestRunner`, já disponível nas dependências de teste do projeto, para executar as APIs Android usadas pelo serializador em vez de remover a cobertura de regressão.
 - Aguardar nova CI para confirmar se a falha era exclusivamente do ambiente de teste e se os 314+ testes passam.
+
+
+### Segunda correção do ambiente Robolectric — CI #1517 (2026-10-28)
+- A execução da CI `40672611238` voltou a falhar durante a inicialização da classe de teste, antes de executar os casos: `AmmunitionCompatibilityTest > classMethod FAILED`, com `UnsupportedOperationException` em `DefaultSdkProvider.java:170`.
+- A causa provável é a seleção automática do SDK padrão do projeto, que usa compileSdk 36.1, não suportado pelo conjunto de SDKs do Robolectric disponível nessa configuração.
+- Fixado explicitamente o SDK 35 com `@Config(sdk = [35])` no teste, mantendo a cobertura de serialização e o `RobolectricTestRunner`; não foi removido o teste para mascarar a falha.
+- **Pendente:** nova CI precisa confirmar que o runner inicializa, o teste de persistência passa e o APK compila. Não fazer merge antes disso.
