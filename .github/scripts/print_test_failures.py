@@ -21,6 +21,7 @@ for f in files:
                 print(f"::error::{classname}.{name}: {message}")
                 text = (node.text or "").strip()
                 if text:
-                    print(f"::error::{classname}.{name} details: {text[:1000]}")
+                    for chunk_start in range(0, min(len(text), 4000), 900):
+                        print(f"::error::{classname}.{name} stack[{chunk_start}]: {text[chunk_start:chunk_start+900]}")
 if not found:
     print("Nenhuma falha de teste encontrada nos XMLs JUnit.")
