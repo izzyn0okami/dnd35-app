@@ -54,6 +54,42 @@ class AmmunitionCompatibilityTest {
     }
 
     @Test
+    fun pluralSlingBulletsAreRecognizedAsPackagedAmmunition() {
+        val pack = CharacterInventoryItem(
+            id = "sling-pack",
+            name = "Balas de funda (10)",
+            category = "Itens de Aventura",
+            quantity = 1,
+            equippedSlot = ammoSlot
+        )
+
+        assertEquals(10, remainingAmmunitionUnits(pack))
+        val afterOne = consumeAmmunitionStack(listOf(pack), "sling-pack")!!.single()
+        assertEquals(9, remainingAmmunitionUnits(afterOne))
+    }
+
+    @Test
+    fun inventorySerializationPreservesPhotoAndAmmunitionBalance() {
+        val item = CharacterInventoryItem(
+            id = "persisted-item",
+            name = "Virotes de Besta (10)",
+            category = "Itens de Aventura",
+            quantity = 1,
+            equippedSlot = ammoSlot,
+            imageUri = "file:///data/user/0/com.example.dnd35/files/item_photos/test.png",
+            ammunitionUnitsRemaining = 7
+        )
+
+        val restored = CharacterJsonAdapters.deserializeInventory(
+            CharacterJsonAdapters.serializeInventory(listOf(item))
+        ).single()
+
+        assertEquals(item.imageUri, restored.imageUri)
+        assertEquals(7, restored.ammunitionUnitsRemaining)
+        assertEquals(7, remainingAmmunitionUnits(restored))
+    }
+
+    @Test
     fun removesLastUnitAndRejectsEmptyStack() {
         val selected = CharacterInventoryItem(id = "ammo-1", name = "Munição escolhida", category = "Consumíveis", quantity = 1, equippedSlot = ammoSlot)
         assertEquals(emptyList<CharacterInventoryItem>(), consumeAmmunitionStack(listOf(selected), "ammo-1"))
