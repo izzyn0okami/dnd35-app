@@ -193,31 +193,31 @@ fun OverviewCombatTab(
 
         // Slot único de munição, escolhido manualmente pelo jogador e independente da arma.
         item {
-                Card(
-                    modifier = Modifier.fillMaxWidth().padding(bottom = 10.dp),
-                    colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant),
-                    shape = RoundedCornerShape(12.dp)
-                ) {
-                    Column(modifier = Modifier.padding(12.dp)) {
-                        Text("Munição equipada", fontWeight = FontWeight.Bold, style = MaterialTheme.typography.titleMedium)
-                        Text(
-                            equippedAmmunition?.let { "${it.name} — ${it.quantity} unidade(s)" } ?: "Nenhuma pilha selecionada",
-                            style = MaterialTheme.typography.bodyMedium,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant
-                        )
-                        Row(horizontalArrangement = Arrangement.spacedBy(8.dp), modifier = Modifier.fillMaxWidth()) {
-                            OutlinedButton(onClick = { showAmmunitionPicker = true }, modifier = Modifier.weight(1f)) {
-                                Text(if (equippedAmmunition == null) "Equipar munição" else "Trocar munição")
-                            }
-                            Button(
-                                onClick = { viewModel.consumeEquippedAmmunition() },
-                                enabled = equippedAmmunition != null,
-                                modifier = Modifier.weight(1f)
-                            ) { Text("Gastar 1") }
+            Card(
+                modifier = Modifier.fillMaxWidth().padding(bottom = 10.dp),
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant),
+                shape = RoundedCornerShape(12.dp)
+            ) {
+                Column(modifier = Modifier.padding(12.dp)) {
+                    Text("Munição equipada", fontWeight = FontWeight.Bold, style = MaterialTheme.typography.titleMedium)
+                    Text(
+                        equippedAmmunition?.let { "${it.name} — ${it.quantity} unidade(s)" } ?: "Nenhuma pilha selecionada",
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                    Row(horizontalArrangement = Arrangement.spacedBy(8.dp), modifier = Modifier.fillMaxWidth()) {
+                        OutlinedButton(onClick = { showAmmunitionPicker = true }, modifier = Modifier.weight(1f)) {
+                            Text(if (equippedAmmunition == null) "Equipar munição" else "Trocar munição")
                         }
+                        Button(
+                            onClick = { viewModel.consumeEquippedAmmunition() },
+                            enabled = equippedAmmunition != null,
+                            modifier = Modifier.weight(1f)
+                        ) { Text("Gastar 1") }
                     }
                 }
             }
+        }
 
         // 2. Barra de Pontos de Vida (HP) com Ações
         item {
