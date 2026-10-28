@@ -322,3 +322,13 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - **Entradas recuperadas/completadas:** acrescentadas cordas de cânhamo e seda, corrente, rações diárias, saco vazio, tenda, instrumento musical comum e ferramenta de artesão obra-prima, que faltavam no catálogo após a normalização anterior.
 - **Conversão:** pesos em quilogramas foram convertidos para libras, unidade exigida por `weightLb`; itens cujo livro não informa peso permanecem com peso zero no modelo, sem inventar uma massa.
 - **Limite:** esta etapa corrige um conjunto verificável de discrepâncias; não declara concluída a conferência de todos os registros da Tabela 7-8 nem dos itens mágicos, montarias e serviços.
+
+
+## Catálogo de equipamento do Livro do Jogador — etapa 3 (2026-10-28)
+
+- **Fonte normativa:** PDF brasileiro do Livro do Jogador, capítulo 7, Tabela 7-8 (Itens e Serviços), conferido diretamente nas entradas de Comida, Bebida e Hospedagem e de Montarias e Equipamentos Relacionados, além da coluna de Transporte.
+- **Comida, bebida e alojamento:** adicionadas as faixas de acomodação pobre/padrão/boa, banquete, carne, cerveja em caneca/jarra, pão, queijo, refeições pobre/padrão/boa e vinhos normal/bom, com custos e pesos conforme a tabela.
+- **Montarias e acessórios:** adicionados alforje, alimentação diária, cachorro de montaria, cão de guarda, variedades de cavalos e pôneis, jumento/mula, estábulo, freio e rédeas, selas comuns e exóticas.
+- **Veículos:** adicionados barco a remo, remo, barcaça, carroça, carruagem, charrete, galeão, navio de guerra, navio, trenó e veleiro.
+- **Conversão de dados:** preços de PC/PP/PO foram normalizados para PO; pesos indicados em kg foram convertidos para libras (campo weightLb) e arredondados a uma casa decimal. Onde a tabela usa traço para o peso, o catálogo mantém zero como ausência de peso informado, sem inventar um valor.
+- **Validação planejada:** testes automatizados cobrem a presença dos itens representativos, custos/pesos convertidos e unicidade dos nomes sem considerar acentos e caixa. Esta etapa não certifica ainda todos os itens restantes da Tabela 7-8 nem os serviços de conjuração.
