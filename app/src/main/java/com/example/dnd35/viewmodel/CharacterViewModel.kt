@@ -436,6 +436,15 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
         persistCharacter(curr.copy(inventoryJson = CharacterJsonAdapters.serializeInventory(list)))
     }
 
+    /** Atualiza um item em uma única gravação, sem a corrida remove/adiciona. */
+    fun updateInventoryItem(item: CharacterInventoryItem) {
+        val curr = _activeCharacter.value ?: return
+        val list = CharacterJsonAdapters.deserializeInventory(curr.inventoryJson)
+        if (list.none { it.id == item.id }) return
+        val updated = list.map { existing -> if (existing.id == item.id) item else existing }
+        persistCharacter(curr.copy(inventoryJson = CharacterJsonAdapters.serializeInventory(updated)))
+    }
+
     fun removeInventoryItem(itemId: String) {
         val curr = _activeCharacter.value ?: return
         val list = CharacterJsonAdapters.deserializeInventory(curr.inventoryJson).filter { it.id != itemId }
