@@ -39,6 +39,22 @@ class MagicSchoolParserTest {
     }
 
     @Test
+    fun everyCatalogSpellHasOneOfTheEightBasicSchoolsOrUniversal() {
+        val accepted = setOf(
+            "Abjuração", "Adivinhação", "Conjuração", "Encantamento",
+            "Evocação", "Ilusão", "Necromancia", "Transmutação", "Universal"
+        )
+
+        assertTrue(Dnd35Rules.PRESET_SPELLS.isNotEmpty())
+        Dnd35Rules.PRESET_SPELLS.forEach { spell ->
+            assertTrue(
+                "${spell.name}: escola base inesperada em '${spell.school}'",
+                MagicSchoolParser.parse(spell.school).baseSchool in accepted
+            )
+        }
+    }
+
+    @Test
     fun universalIsASeparateFilterAndAllMatchesEverySchool() {
         assertTrue(MagicSchoolParser.matchesBaseSchool("Universal", "Universal"))
         assertFalse(MagicSchoolParser.matchesBaseSchool("Necromancia [Morte]", "Universal"))
