@@ -621,7 +621,7 @@
     "properties": "Concussão"
   },
   {
-    "name": "Maça Estrela",
+    "name": "Maça-Estrela",
     "category": "Armas",
     "defaultSlot": "Mão Principal",
     "weightLb": 6.6,
@@ -1505,7 +1505,7 @@
   {
     "name": "Escudo Pequeno (arma)",
     "category": "Armas",
-    "defaultSlot": "Mão Secundária",
+    "defaultSlot": "Mão Secundária / Escudo",
     "weightLb": 5.5,
     "costGp": 3,
     "damageOrAc": "1d3 (x2)",
@@ -1514,7 +1514,7 @@
   {
     "name": "Escudo Pequeno com Cravos (arma)",
     "category": "Armas",
-    "defaultSlot": "Mão Secundária",
+    "defaultSlot": "Mão Secundária / Escudo",
     "weightLb": 11,
     "costGp": 13,
     "damageOrAc": "1d4 (x2)",
@@ -1523,7 +1523,7 @@
   {
     "name": "Escudo Grande (arma)",
     "category": "Armas",
-    "defaultSlot": "Mão Secundária",
+    "defaultSlot": "Mão Secundária / Escudo",
     "weightLb": 11,
     "costGp": 7,
     "damageOrAc": "1d4 (x2)",
@@ -1532,7 +1532,7 @@
   {
     "name": "Escudo Grande com Cravos (arma)",
     "category": "Armas",
-    "defaultSlot": "Mão Secundária",
+    "defaultSlot": "Mão Secundária / Escudo",
     "weightLb": 16.5,
     "costGp": 17,
     "damageOrAc": "1d6 (x2)",
@@ -1577,7 +1577,7 @@
   {
     "name": "Cravos para Escudos",
     "category": "Escudos",
-    "defaultSlot": "Mão Secundária",
+    "defaultSlot": "Mão Secundária / Escudo",
     "weightLb": 5.5,
     "costGp": 10,
     "damageOrAc": "1d4 (x2)",
