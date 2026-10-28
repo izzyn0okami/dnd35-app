@@ -287,6 +287,14 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - Validação pendente: executar testes Android/Gradle e CI na PR antes de integrar.
 
 
+## Indicação automática de pré-requisitos de talentos (2026-10-27)
+
+- Implementada indicação informativa na aba de Talentos e na lista de seleção do catálogo do Livro do Jogador. A seleção e a manutenção de talentos continuam livres; nenhum requisito bloqueia a inclusão ou edição.
+- O verificador compara atributos, BBA, graduações registradas, nível total, níveis de classe, nível de conjurador, acesso a círculos de magia e algumas habilidades de classe quando os dados necessários estão disponíveis.
+- Quando a ficha não registra a escolha necessária (por exemplo, proficiência específica ou escola/arma escolhida), o resultado identifica a verificação como parcial em vez de afirmar incorretamente que o requisito foi cumprido.
+- Adicionados testes de regressão para requisitos atendidos, requisitos pendentes, níveis de classe/personagem e requisitos não verificáveis automaticamente.
+- Validação de CI pendente; não considerar a alteração integrada até a suíte Android/Gradle passar.
+
 ## Auditoria de escolas de magia e filtros — etapa 1 (2026-10-28)
 
 - **Fonte normativa:** Livro do Jogador brasileiro, capítulo “Descrição das Magias”. O livro estabelece oito escolas básicas e trata Universal como categoria à parte; Universal não integra as oito escolas.
