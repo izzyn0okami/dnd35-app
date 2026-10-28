@@ -319,8 +319,11 @@ object CharacterJsonAdapters {
     }
 
     fun deserializeSpellSlots(json: String?): List<SpellSlotInfo> {
+        // totalSlots aqui só importa para fichas muito antigas; o cálculo atual
+        // (CharacterCalculator.compute) sempre recalcula o total automaticamente e só lê
+        // usedSlots desta lista.
         if (json.isNullOrBlank()) {
-            return (0..9).map { SpellSlotInfo(level = it, totalSlots = if (it <= 1) 3 else 0, usedSlots = 0) }
+            return (0..9).map { SpellSlotInfo(level = it, totalSlots = 0, usedSlots = 0) }
         }
         val list = mutableListOf<SpellSlotInfo>()
         try {
@@ -339,7 +342,7 @@ object CharacterJsonAdapters {
             Log.w("CharacterJsonAdapters", "JSON de espaços de magia inválido; dados anteriores ao erro foram preservados", e)
         }
         if (list.isEmpty()) {
-            return (0..9).map { SpellSlotInfo(level = it, totalSlots = if (it <= 1) 3 else 0, usedSlots = 0) }
+            return (0..9).map { SpellSlotInfo(level = it, totalSlots = 0, usedSlots = 0) }
         }
         return list
     }

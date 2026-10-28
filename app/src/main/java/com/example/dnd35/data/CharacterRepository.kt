@@ -51,8 +51,11 @@ class CharacterRepository(private val characterDao: CharacterDao) {
         }
 
         val baseHp = classInfo.hitDie + Dnd35Rules.calculateModifier(baseCon + raceInfo.conMod)
+        // totalSlots não é mais usado: o total de espaços de magia é calculado automaticamente
+        // a partir das classes conjuradoras (ver CharacterCalculator.compute). Só os espaços
+        // já gastos no dia (usedSlots) são persistidos aqui.
         val initialSlots = (0..9).map { lvl ->
-            SpellSlotInfo(level = lvl, totalSlots = if (lvl <= 1) 3 else 0, usedSlots = 0)
+            SpellSlotInfo(level = lvl, totalSlots = 0, usedSlots = 0)
         }
 
         val newChar = CharacterEntity(

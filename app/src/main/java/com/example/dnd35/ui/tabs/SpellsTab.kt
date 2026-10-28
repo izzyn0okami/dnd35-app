@@ -17,7 +17,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.AutoStories
@@ -26,7 +25,6 @@ import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Remove
 import androidx.compose.material.icons.filled.Search
-import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -50,7 +48,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.example.dnd35.model.CalculatedCharacterStats
 import com.example.dnd35.model.CharacterEntity
@@ -72,7 +69,6 @@ fun SpellsTab(
     var showAddSpellModal by remember { mutableStateOf(false) }
     var spellToEdit by remember { mutableStateOf<CharacterSpell?>(null) }
     var pendingSpellDeleteId by remember { mutableStateOf<String?>(null) }
-    var configuringSlotsLevel by remember { mutableStateOf<SpellSlotInfo?>(null) }
 
     // Filtros de busca no grimório do personagem
     var searchQuery by remember { mutableStateOf("") }
@@ -166,11 +162,25 @@ fun SpellsTab(
                                             style = MaterialTheme.typography.labelSmall,
                                             color = MaterialTheme.colorScheme.onSurfaceVariant
                                         )
+                                        Text(
+                                            knownSpellsSummary(c),
+                                            style = MaterialTheme.typography.labelSmall,
+                                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                                        )
                                     }
                                 }
                             }
                         }
                         Spacer(modifier = Modifier.height(8.dp))
+                    } else {
+                        stats.casterClasses.firstOrNull()?.let { c ->
+                            Text(
+                                knownSpellsSummary(c),
+                                style = MaterialTheme.typography.labelSmall,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                            )
+                            Spacer(modifier = Modifier.height(8.dp))
+                        }
                     }
 
                     // Tabela de Classe de Dificuldade (CD) das Magias por Círculo
@@ -202,19 +212,22 @@ fun SpellsTab(
                     Spacer(modifier = Modifier.height(12.dp))
 
                     // Linha Horizontal de Espaços de Magia (Círculos 0 ao 9)
-                    Text("Espaços de magia por dia (toque para gastar ou recuperar):", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    Text(
+                        "Espaços de magia por dia (cálculo automático; toque para gastar ou recuperar):",
+                        style = MaterialTheme.typography.labelSmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
                     Spacer(modifier = Modifier.height(6.dp))
 
                     LazyRow(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.spacedBy(8.dp)
                     ) {
-                        items(stats.spellSlots) { slot ->
+                        items(stats.spellSlots.filter { it.totalSlots > 0 || it.usedSlots > 0 }) { slot ->
                             SpellSlotCard(
                                 slot = slot,
-                                onUseSlot = { viewModel.adjustSpellSlotUsed(slot.level, 1) },
-                                onRecoverSlot = { viewModel.adjustSpellSlotUsed(slot.level, -1) },
-                                onConfigure = { configuringSlotsLevel = slot }
+                                onUseSlot = { viewModel.adjustSpellSlotUsed(slot.level, 1, slot.totalSlots) },
+                                onRecoverSlot = { viewModel.adjustSpellSlotUsed(slot.level, -1, slot.totalSlots) }
                             )
                         }
                     }
@@ -465,37 +478,24 @@ fun SpellsTab(
         )
     }
 
-    // Modal para Configurar Espaços Totais deste Círculo
-    configuringSlotsLevel?.let { slot ->
-        var totalText by remember { mutableStateOf("${slot.totalSlots}") }
-        AlertDialog(
-            onDismissRequest = { configuringSlotsLevel = null },
-            title = { Text("Espaços Diários: Círculo ${slot.level}") },
-            text = {
-                OutlinedTextField(
-                    value = totalText,
-                    onValueChange = { totalText = it },
-                    label = { Text("Total de Espaços por Dia") },
-                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                    singleLine = true,
-                    modifier = Modifier.fillMaxWidth()
-                )
-            },
-            confirmButton = {
-                Button(onClick = {
-                    val tot = totalText.toIntOrNull()?.coerceAtLeast(0) ?: slot.totalSlots
-                    viewModel.setSpellSlotTotal(slot.level, tot)
-                    configuringSlotsLevel = null
-                }) {
-                    Text("Salvar")
-                }
-            },
-            dismissButton = {
-                OutlinedButton(onClick = { configuringSlotsLevel = null }) {
-                    Text("Cancelar")
-                }
-            }
-        )
+}
+
+/**
+ * Resumo de magias conhecidas de uma classe conjuradora, para exibição no banner.
+ * Conjuradores espontâneos (Bardo/Feiticeiro) têm um repertório limitado por círculo;
+ * conjuradores preparados conhecem toda a lista de magias da classe que já podem conjurar
+ * (o grimório da ficha já reflete isso — cada magia adicionada é conhecida).
+ */
+private fun knownSpellsSummary(c: com.example.dnd35.model.CasterClassInfo): String {
+    val known = c.knownSpellsByLevel
+    return if (known != null) {
+        val parts = (0..9).mapNotNull { lvl ->
+            val n = known[lvl] ?: 0
+            if (n > 0) "${if (lvl == 0) "Trq" else "${lvl}º"}:$n" else null
+        }
+        if (parts.isEmpty()) "Magias conhecidas: nenhuma ainda" else "Magias conhecidas por círculo: ${parts.joinToString(" ")}"
+    } else {
+        "Conhece toda a lista de magias de ${c.className} que já pode conjurar (sujeito à preparação diária)"
     }
 }
 
@@ -503,8 +503,7 @@ fun SpellsTab(
 private fun SpellSlotCard(
     slot: SpellSlotInfo,
     onUseSlot: () -> Unit,
-    onRecoverSlot: () -> Unit,
-    onConfigure: () -> Unit
+    onRecoverSlot: () -> Unit
 ) {
     val remaining = (slot.totalSlots - slot.usedSlots).coerceAtLeast(0)
     Card(
@@ -518,21 +517,12 @@ private fun SpellSlotCard(
             modifier = Modifier.padding(8.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(
-                    text = if (slot.level == 0) "Nível 0" else "Nível ${slot.level}",
-                    style = MaterialTheme.typography.labelSmall,
-                    fontWeight = FontWeight.Bold,
-                    color = DndArcaneBlue
-                )
-                IconButton(onClick = onConfigure, modifier = Modifier.size(48.dp)) {
-                    Icon(Icons.Default.Edit, contentDescription = "Configurar espaços de magia do nível ${slot.level}", modifier = Modifier.size(12.dp))
-                }
-            }
+            Text(
+                text = if (slot.level == 0) "Nível 0" else "Nível ${slot.level}",
+                style = MaterialTheme.typography.labelSmall,
+                fontWeight = FontWeight.Bold,
+                color = DndArcaneBlue
+            )
             Spacer(modifier = Modifier.height(4.dp))
             Text(
                 text = "$remaining / ${slot.totalSlots}",

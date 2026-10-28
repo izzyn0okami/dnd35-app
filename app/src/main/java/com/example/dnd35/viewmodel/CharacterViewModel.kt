@@ -549,23 +549,14 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
         persistCharacter(curr.copy(spellsJson = CharacterJsonAdapters.serializeSpells(list)))
     }
 
-    fun adjustSpellSlotUsed(level: Int, delta: Int) {
+    // maxSlots vem do total calculado automaticamente (stats.spellSlots), não do que está
+    // salvo na ficha: o total não é mais editado manualmente, só os espaços gastos no dia.
+    fun adjustSpellSlotUsed(level: Int, delta: Int, maxSlots: Int) {
         val curr = _activeCharacter.value ?: return
         val list = CharacterJsonAdapters.deserializeSpellSlots(curr.spellSlotsJson).map {
             if (it.level == level) {
-                val newUsed = (it.usedSlots + delta).coerceIn(0, it.totalSlots)
+                val newUsed = (it.usedSlots + delta).coerceIn(0, maxSlots)
                 it.copy(usedSlots = newUsed)
-            } else it
-        }
-        persistCharacter(curr.copy(spellSlotsJson = CharacterJsonAdapters.serializeSpellSlots(list)))
-    }
-
-    fun setSpellSlotTotal(level: Int, total: Int) {
-        val curr = _activeCharacter.value ?: return
-        val list = CharacterJsonAdapters.deserializeSpellSlots(curr.spellSlotsJson).map {
-            if (it.level == level) {
-                val newTotal = total.coerceAtLeast(0)
-                it.copy(totalSlots = newTotal, usedSlots = it.usedSlots.coerceAtMost(newTotal))
             } else it
         }
         persistCharacter(curr.copy(spellSlotsJson = CharacterJsonAdapters.serializeSpellSlots(list)))
