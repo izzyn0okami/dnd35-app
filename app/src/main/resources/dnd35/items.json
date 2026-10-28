@@ -3,7 +3,7 @@
     "name": "Adaga",
     "category": "Armas",
     "defaultSlot": "Mão Principal",
-    "weightLb": 1,
+    "weightLb": 1.1,
     "costGp": 2,
     "damageOrAc": "1d4 (19-20/x2)",
     "properties": "Perfuração/Corte, arremessável 3m"
@@ -12,7 +12,7 @@
     "name": "Espada Curta",
     "category": "Armas",
     "defaultSlot": "Mão Principal",
-    "weightLb": 2,
+    "weightLb": 2.2,
     "costGp": 10,
     "damageOrAc": "1d6 (19-20/x2)",
     "properties": "Perfuração, leve"
@@ -21,7 +21,7 @@
     "name": "Espada Longa",
     "category": "Armas",
     "defaultSlot": "Mão Principal",
-    "weightLb": 4,
+    "weightLb": 4.4,
     "costGp": 15,
     "damageOrAc": "1d8 (19-20/x2)",
     "properties": "Corte, uma mão"
@@ -48,7 +48,7 @@
     "name": "Machado Grande",
     "category": "Armas",
     "defaultSlot": "Duas Mãos",
-    "weightLb": 12,
+    "weightLb": 24.2,
     "costGp": 30,
     "damageOrAc": "1d12 (x3)",
     "properties": "Corte, duas mãos"
@@ -57,7 +57,7 @@
     "name": "Maça Pesada",
     "category": "Armas",
     "defaultSlot": "Mão Principal",
-    "weightLb": 8,
+    "weightLb": 8.8,
     "costGp": 12,
     "damageOrAc": "1d8 (x2)",
     "properties": "Concussão, uma mão"
@@ -66,7 +66,7 @@
     "name": "Lança Longa",
     "category": "Armas",
     "defaultSlot": "Duas Mãos",
-    "weightLb": 9,
+    "weightLb": 9.9,
     "costGp": 5,
     "damageOrAc": "1d8 (x3)",
     "properties": "Perfuração, alcance 3m"
@@ -75,7 +75,7 @@
     "name": "Arco Curto",
     "category": "Armas",
     "defaultSlot": "Duas Mãos",
-    "weightLb": 2,
+    "weightLb": 2.2,
     "costGp": 30,
     "damageOrAc": "1d6 (x3)",
     "properties": "Perfuração, alcance 18m"
@@ -84,7 +84,7 @@
     "name": "Arco Longo Composto",
     "category": "Armas",
     "defaultSlot": "Duas Mãos",
-    "weightLb": 3,
+    "weightLb": 3.3,
     "costGp": 100,
     "damageOrAc": "1d8 (x3)",
     "properties": "Perfuração, alcance 33m"
@@ -93,7 +93,7 @@
     "name": "Besta Leve",
     "category": "Armas",
     "defaultSlot": "Duas Mãos",
-    "weightLb": 4,
+    "weightLb": 4.4,
     "costGp": 35,
     "damageOrAc": "1d8 (19-20/x2)",
     "properties": "Perfuração, alcance 24m"
@@ -561,7 +561,7 @@
     "name": "Manopla",
     "category": "Armas",
     "defaultSlot": "Mão Principal",
-    "weightLb": 1,
+    "weightLb": 1.1,
     "costGp": 2,
     "damageOrAc": "1d3 (x2)",
     "properties": "Concussão; não ocupa a mão"
@@ -579,7 +579,7 @@
     "name": "Adaga de Soco",
     "category": "Armas",
     "defaultSlot": "Mão Principal",
-    "weightLb": 1,
+    "weightLb": 1.1,
     "costGp": 2,
     "damageOrAc": "1d4 (x3)",
     "properties": "Perfuração"
@@ -588,7 +588,7 @@
     "name": "Manopla com Cravos",
     "category": "Armas",
     "defaultSlot": "Mão Principal",
-    "weightLb": 1,
+    "weightLb": 1.1,
     "costGp": 5,
     "damageOrAc": "1d4 (x2)",
     "properties": "Perfuração"
@@ -597,7 +597,7 @@
     "name": "Maça Leve",
     "category": "Armas",
     "defaultSlot": "Mão Principal",
-    "weightLb": 4,
+    "weightLb": 4.4,
     "costGp": 5,
     "damageOrAc": "1d6 (x2)",
     "properties": "Concussão"
@@ -615,7 +615,7 @@
     "name": "Clava",
     "category": "Armas",
     "defaultSlot": "Mão Principal",
-    "weightLb": 3,
+    "weightLb": 3.3,
     "costGp": 0,
     "damageOrAc": "1d6 (x2)",
     "properties": "Concussão"
@@ -624,7 +624,7 @@
     "name": "Maça Estrela",
     "category": "Armas",
     "defaultSlot": "Mão Principal",
-    "weightLb": 6,
+    "weightLb": 6.6,
     "costGp": 8,
     "damageOrAc": "1d8 (x2)",
     "properties": "Concussão e perfuração"
@@ -633,7 +633,7 @@
     "name": "Lança Curta",
     "category": "Armas",
     "defaultSlot": "Mão Principal",
-    "weightLb": 3,
+    "weightLb": 3.3,
     "costGp": 1,
     "damageOrAc": "1d6 (x2)",
     "properties": "Perfuração; incremento 6m"
@@ -642,7 +642,7 @@
     "name": "Bordão",
     "category": "Armas",
     "defaultSlot": "Duas Mãos",
-    "weightLb": 4,
+    "weightLb": 4.4,
     "costGp": 0,
     "damageOrAc": "1d6/1d6 (x2)",
     "properties": "Concussão; arma dupla"
@@ -651,7 +651,7 @@
     "name": "Lança",
     "category": "Armas",
     "defaultSlot": "Duas Mãos",
-    "weightLb": 6,
+    "weightLb": 6.6,
     "costGp": 2,
     "damageOrAc": "1d8 (x3)",
     "properties": "Perfuração; arremesso 6m"
@@ -660,7 +660,7 @@
     "name": "Besta Pesada",
     "category": "Armas",
     "defaultSlot": "Duas Mãos",
-    "weightLb": 8,
+    "weightLb": 8.8,
     "costGp": 50,
     "damageOrAc": "1d10 (19-20/x2)",
     "properties": "Perfuração; incremento 36m"
@@ -669,7 +669,7 @@
     "name": "Dardo",
     "category": "Armas",
     "defaultSlot": "Mão Principal",
-    "weightLb": 0.5,
+    "weightLb": 0.22,
     "costGp": 0.5,
     "damageOrAc": "1d4 (x2)",
     "properties": "Perfuração; arremesso 6m"
@@ -696,7 +696,7 @@
     "name": "Virotes de Besta (10)",
     "category": "Itens de Aventura",
     "defaultSlot": "Mochila (Não Equipado)",
-    "weightLb": 1,
+    "weightLb": 1.1,
     "costGp": 1,
     "damageOrAc": "-",
     "properties": "Munição para bestas"
@@ -705,7 +705,7 @@
     "name": "Balas de Funda (10)",
     "category": "Itens de Aventura",
     "defaultSlot": "Mochila (Não Equipado)",
-    "weightLb": 2.5,
+    "weightLb": 5.5,
     "costGp": 0.1,
     "damageOrAc": "-",
     "properties": "Munição para funda"
@@ -714,7 +714,7 @@
     "name": "Flechas (20)",
     "category": "Itens de Aventura",
     "defaultSlot": "Mochila (Não Equipado)",
-    "weightLb": 1.5,
+    "weightLb": 3.3,
     "costGp": 1,
     "damageOrAc": "-",
     "properties": "Munição para arcos"
@@ -732,7 +732,7 @@
     "name": "Martelo Leve",
     "category": "Armas",
     "defaultSlot": "Mão Principal",
-    "weightLb": 2,
+    "weightLb": 2.2,
     "costGp": 1,
     "damageOrAc": "1d4 (x2)",
     "properties": "Concussão; arremesso 6m"
@@ -741,7 +741,7 @@
     "name": "Machadinha",
     "category": "Armas",
     "defaultSlot": "Mão Principal",
-    "weightLb": 3,
+    "weightLb": 3.3,
     "costGp": 6,
     "damageOrAc": "1d6 (x3)",
     "properties": "Corte"
@@ -750,7 +750,7 @@
     "name": "Kukri",
     "category": "Armas",
     "defaultSlot": "Mão Principal",
-    "weightLb": 2,
+    "weightLb": 2.2,
     "costGp": 8,
     "damageOrAc": "1d4 (18-20/x2)",
     "properties": "Corte"
@@ -759,7 +759,7 @@
     "name": "Picareta Leve",
     "category": "Armas",
     "defaultSlot": "Mão Principal",
-    "weightLb": 3,
+    "weightLb": 3.3,
     "costGp": 4,
     "damageOrAc": "1d4 (x4)",
     "properties": "Perfuração"
@@ -768,7 +768,7 @@
     "name": "Porrete",
     "category": "Armas",
     "defaultSlot": "Mão Principal",
-    "weightLb": 2,
+    "weightLb": 2.2,
     "costGp": 1,
     "damageOrAc": "1d6 (x2)",
     "properties": "Concussão; dano não letal"
@@ -777,7 +777,7 @@
     "name": "Mangual",
     "category": "Armas",
     "defaultSlot": "Mão Principal",
-    "weightLb": 5,
+    "weightLb": 5.5,
     "costGp": 8,
     "damageOrAc": "1d8 (x2)",
     "properties": "Concussão"
@@ -786,7 +786,7 @@
     "name": "Picareta Pesada",
     "category": "Armas",
     "defaultSlot": "Mão Principal",
-    "weightLb": 6,
+    "weightLb": 6.6,
     "costGp": 8,
     "damageOrAc": "1d6 (x4)",
     "properties": "Perfuração"
@@ -795,7 +795,7 @@
     "name": "Cimitarra",
     "category": "Armas",
     "defaultSlot": "Mão Principal",
-    "weightLb": 4,
+    "weightLb": 4.4,
     "costGp": 15,
     "damageOrAc": "1d6 (18-20/x2)",
     "properties": "Corte"
@@ -804,7 +804,7 @@
     "name": "Tridente",
     "category": "Armas",
     "defaultSlot": "Mão Principal",
-    "weightLb": 4,
+    "weightLb": 4.4,
     "costGp": 15,
     "damageOrAc": "1d8 (x2)",
     "properties": "Perfuração; arremesso 3m"
@@ -813,7 +813,7 @@
     "name": "Martelo de Guerra",
     "category": "Armas",
     "defaultSlot": "Mão Principal",
-    "weightLb": 5,
+    "weightLb": 5.5,
     "costGp": 12,
     "damageOrAc": "1d8 (x3)",
     "properties": "Concussão"
@@ -831,7 +831,7 @@
     "name": "Glaive",
     "category": "Armas",
     "defaultSlot": "Duas Mãos",
-    "weightLb": 10,
+    "weightLb": 22,
     "costGp": 8,
     "damageOrAc": "1d10 (x3)",
     "properties": "Corte; alcance"
@@ -840,7 +840,7 @@
     "name": "Clava Grande",
     "category": "Armas",
     "defaultSlot": "Duas Mãos",
-    "weightLb": 8,
+    "weightLb": 8.8,
     "costGp": 5,
     "damageOrAc": "1d10 (x2)",
     "properties": "Concussão"
@@ -849,7 +849,7 @@
     "name": "Mangual Pesado",
     "category": "Armas",
     "defaultSlot": "Duas Mãos",
-    "weightLb": 10,
+    "weightLb": 22,
     "costGp": 15,
     "damageOrAc": "1d10 (19-20/x2)",
     "properties": "Concussão"
@@ -858,7 +858,7 @@
     "name": "Guisarme",
     "category": "Armas",
     "defaultSlot": "Duas Mãos",
-    "weightLb": 12,
+    "weightLb": 24.2,
     "costGp": 9,
     "damageOrAc": "2d4 (x3)",
     "properties": "Corte; alcance"
@@ -867,7 +867,7 @@
     "name": "Alabarda",
     "category": "Armas",
     "defaultSlot": "Duas Mãos",
-    "weightLb": 12,
+    "weightLb": 24.2,
     "costGp": 10,
     "damageOrAc": "1d10 (x3)",
     "properties": "Corte ou perfuração"
@@ -885,7 +885,7 @@
     "name": "Ranseur",
     "category": "Armas",
     "defaultSlot": "Duas Mãos",
-    "weightLb": 12,
+    "weightLb": 24.2,
     "costGp": 10,
     "damageOrAc": "2d4 (x3)",
     "properties": "Perfuração; alcance"
@@ -903,7 +903,7 @@
     "name": "Arco Longo",
     "category": "Armas",
     "defaultSlot": "Duas Mãos",
-    "weightLb": 3,
+    "weightLb": 3.3,
     "costGp": 75,
     "damageOrAc": "1d8 (x3)",
     "properties": "Perfuração; incremento 30m"
@@ -912,7 +912,7 @@
     "name": "Arco Curto Composto",
     "category": "Armas",
     "defaultSlot": "Duas Mãos",
-    "weightLb": 2,
+    "weightLb": 2.2,
     "costGp": 75,
     "damageOrAc": "1d6 (x3)",
     "properties": "Perfuração; incremento 21m"
@@ -930,7 +930,7 @@
     "name": "Kama",
     "category": "Armas",
     "defaultSlot": "Mão Principal",
-    "weightLb": 2,
+    "weightLb": 2.2,
     "costGp": 2,
     "damageOrAc": "1d6 (x2)",
     "properties": "Corte"
@@ -939,7 +939,7 @@
     "name": "Nunchaku",
     "category": "Armas",
     "defaultSlot": "Mão Principal",
-    "weightLb": 2,
+    "weightLb": 2.2,
     "costGp": 2,
     "damageOrAc": "1d6 (x2)",
     "properties": "Concussão"
@@ -948,7 +948,7 @@
     "name": "Sai",
     "category": "Armas",
     "defaultSlot": "Mão Principal",
-    "weightLb": 1,
+    "weightLb": 1.1,
     "costGp": 1,
     "damageOrAc": "1d4 (x2)",
     "properties": "Concussão; arremesso 3m"
@@ -957,7 +957,7 @@
     "name": "Siangham",
     "category": "Armas",
     "defaultSlot": "Mão Principal",
-    "weightLb": 1,
+    "weightLb": 1.1,
     "costGp": 3,
     "damageOrAc": "1d6 (x2)",
     "properties": "Perfuração"
@@ -966,7 +966,7 @@
     "name": "Espada Bastarda",
     "category": "Armas",
     "defaultSlot": "Mão Principal",
-    "weightLb": 6,
+    "weightLb": 6.6,
     "costGp": 35,
     "damageOrAc": "1d10 (19-20/x2)",
     "properties": "Corte; pode ser usada com duas mãos"
@@ -975,7 +975,7 @@
     "name": "Machado de Guerra Anão",
     "category": "Armas",
     "defaultSlot": "Mão Principal",
-    "weightLb": 8,
+    "weightLb": 8.8,
     "costGp": 30,
     "damageOrAc": "1d10 (x3)",
     "properties": "Corte; exótica para não anões"
@@ -984,7 +984,7 @@
     "name": "Corrente com Cravos",
     "category": "Armas",
     "defaultSlot": "Duas Mãos",
-    "weightLb": 10,
+    "weightLb": 22,
     "costGp": 25,
     "damageOrAc": "2d4 (x2)",
     "properties": "Corte; alcance e manobras especiais"
@@ -993,7 +993,7 @@
     "name": "Chicote",
     "category": "Armas",
     "defaultSlot": "Mão Principal",
-    "weightLb": 2,
+    "weightLb": 2.2,
     "costGp": 1,
     "damageOrAc": "1d3 (x2)",
     "properties": "Corte; alcance e manobras especiais"
@@ -1002,7 +1002,7 @@
     "name": "Rede",
     "category": "Armas",
     "defaultSlot": "Mão Principal",
-    "weightLb": 6,
+    "weightLb": 6.6,
     "costGp": 20,
     "damageOrAc": "-",
     "properties": "Arma de distância; enredar; incremento 3m"
@@ -1011,7 +1011,7 @@
     "name": "Shuriken (5)",
     "category": "Armas",
     "defaultSlot": "Mão Principal",
-    "weightLb": 0.5,
+    "weightLb": 0.55,
     "costGp": 1,
     "damageOrAc": "1d2 (x2)",
     "properties": "Perfuração; arremesso 3m"
@@ -1029,7 +1029,7 @@
     "name": "Espada de Duas Lâminas",
     "category": "Armas",
     "defaultSlot": "Duas Mãos",
-    "weightLb": 10,
+    "weightLb": 22,
     "costGp": 100,
     "damageOrAc": "1d8/1d8 (19-20/x2)",
     "properties": "Corte; arma dupla exótica"
@@ -1038,7 +1038,7 @@
     "name": "Urgrosh Anão",
     "category": "Armas",
     "defaultSlot": "Duas Mãos",
-    "weightLb": 12,
+    "weightLb": 24.2,
     "costGp": 50,
     "damageOrAc": "1d8/1d6 (x3)",
     "properties": "Corte e perfuração; arma dupla"
@@ -1047,7 +1047,7 @@
     "name": "Martelo Gnômico com Gancho",
     "category": "Armas",
     "defaultSlot": "Duas Mãos",
-    "weightLb": 6,
+    "weightLb": 6.6,
     "costGp": 20,
     "damageOrAc": "1d8/1d6 (x3)",
     "properties": "Concussão e perfuração; arma dupla"
@@ -1065,7 +1065,7 @@
     "name": "Machado Orc Duplo",
     "category": "Armas",
     "defaultSlot": "Duas Mãos",
-    "weightLb": 15,
+    "weightLb": 27.5,
     "costGp": 60,
     "damageOrAc": "1d8/1d8 (x3)",
     "properties": "Corte; arma dupla"
@@ -1110,7 +1110,7 @@
     "name": "Besta de Mão",
     "category": "Armas",
     "defaultSlot": "Mão Principal",
-    "weightLb": 2,
+    "weightLb": 2.2,
     "costGp": 100,
     "damageOrAc": "1d4 (19-20/x2)",
     "properties": "Perfuração; incremento 9m"
@@ -1119,7 +1119,7 @@
     "name": "Besta Leve de Repetição",
     "category": "Armas",
     "defaultSlot": "Duas Mãos",
-    "weightLb": 6,
+    "weightLb": 6.6,
     "costGp": 250,
     "damageOrAc": "1d8 (19-20/x2)",
     "properties": "Perfuração; 5 virotes por carregamento"
@@ -1128,7 +1128,7 @@
     "name": "Besta Pesada de Repetição",
     "category": "Armas",
     "defaultSlot": "Duas Mãos",
-    "weightLb": 12,
+    "weightLb": 24.2,
     "costGp": 400,
     "damageOrAc": "1d10 (19-20/x2)",
     "properties": "Perfuração; 5 virotes por carregamento"
@@ -1470,7 +1470,7 @@
     "name": "Sabre",
     "category": "Armas",
     "defaultSlot": "Mão Principal",
-    "weightLb": 1,
+    "weightLb": 2.2,
     "costGp": 20,
     "damageOrAc": "1d6 (18-20/x2)",
     "properties": "Perfuração, uma mão"
@@ -1479,7 +1479,7 @@
     "name": "Boleadeira",
     "category": "Armas",
     "defaultSlot": "Mão Principal",
-    "weightLb": 1,
+    "weightLb": 2.2,
     "costGp": 5,
     "damageOrAc": "1d4 (x2)",
     "properties": "Concussão (não letal); arremesso 3m; derruba o alvo em acerto decisivo"
@@ -1497,7 +1497,7 @@
     "name": "Armaduras com Cravos",
     "category": "Armas",
     "defaultSlot": "Corpo (Armadura / Vestimenta)",
-    "weightLb": 0,
+    "weightLb": 11,
     "costGp": 50,
     "damageOrAc": "1d6 (x2)",
     "properties": "Perfurante; acessório de armadura"
@@ -1506,7 +1506,7 @@
     "name": "Escudo Pequeno (arma)",
     "category": "Armas",
     "defaultSlot": "Mão Secundária",
-    "weightLb": 0,
+    "weightLb": 5.5,
     "costGp": 3,
     "damageOrAc": "1d3 (x2)",
     "properties": "Concussão; dano ao usar como arma"
@@ -1515,7 +1515,7 @@
     "name": "Escudo Pequeno com Cravos (arma)",
     "category": "Armas",
     "defaultSlot": "Mão Secundária",
-    "weightLb": 0,
+    "weightLb": 11,
     "costGp": 4,
     "damageOrAc": "1d4 (x2)",
     "properties": "Perfurante; escudo com cravos usado como arma"
@@ -1524,7 +1524,7 @@
     "name": "Escudo Grande (arma)",
     "category": "Armas",
     "defaultSlot": "Mão Secundária",
-    "weightLb": 0,
+    "weightLb": 11,
     "costGp": 7,
     "damageOrAc": "1d4 (x2)",
     "properties": "Concussão; dano ao usar como arma"
@@ -1533,7 +1533,7 @@
     "name": "Escudo Grande com Cravos (arma)",
     "category": "Armas",
     "defaultSlot": "Mão Secundária",
-    "weightLb": 0,
+    "weightLb": 16.5,
     "costGp": 17,
     "damageOrAc": "1d6 (x2)",
     "properties": "Perfurante; escudo com cravos usado como arma"
