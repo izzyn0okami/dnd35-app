@@ -484,7 +484,7 @@ fun AddEditItemDialog(
                         onConfirm(finalItem)
                         onDismiss()
                     },
-                    enabled = !isSavingPhoto && name.isNotBlank() && ammoUnitsPerPackageText.toIntOrNull() in 1..9999 && parsedQuantity != null && parsedQuantity >= 1 && parsedWeight != null && parsedWeight >= 0f && parsedCost != null && parsedCost >= 0f
+                    enabled = !isSavingPhoto && name.isNotBlank() && (ammoUnitsPerPackageText.toIntOrNull() ?: 0) in 1..9999 && parsedQuantity != null && parsedQuantity >= 1 && parsedWeight != null && parsedWeight >= 0f && parsedCost != null && parsedCost >= 0f
                 ) {
                     Text("Salvar")
                 }
