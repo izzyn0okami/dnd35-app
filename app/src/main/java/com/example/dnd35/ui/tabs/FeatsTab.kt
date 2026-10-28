@@ -41,6 +41,8 @@ import androidx.compose.ui.unit.dp
 import com.example.dnd35.model.CalculatedCharacterStats
 import com.example.dnd35.model.CharacterEntity
 import com.example.dnd35.model.CharacterFeat
+import com.example.dnd35.model.FeatPrerequisiteChecker
+import com.example.dnd35.model.FeatPrerequisiteStatus
 import com.example.dnd35.ui.dialogs.AddEditFeatDialog
 import com.example.dnd35.viewmodel.CharacterViewModel
 import com.example.ui.theme.DndCrimson
@@ -181,6 +183,17 @@ fun FeatsTab(
                                 fontWeight = FontWeight.Bold,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant
                             )
+                            Spacer(modifier = Modifier.height(3.dp))
+                            val assessment = FeatPrerequisiteChecker.assess(feat.prerequisites, stats)
+                            Text(
+                                assessment.message,
+                                style = MaterialTheme.typography.labelSmall,
+                                color = when (assessment.status) {
+                                    FeatPrerequisiteStatus.MET -> MaterialTheme.colorScheme.primary
+                                    FeatPrerequisiteStatus.NOT_MET -> MaterialTheme.colorScheme.error
+                                    FeatPrerequisiteStatus.PARTIAL -> MaterialTheme.colorScheme.onSurfaceVariant
+                                }
+                            )
                         }
 
                         if (feat.summary.isNotBlank()) {
@@ -213,6 +226,7 @@ fun FeatsTab(
     if (showAddFeatModal) {
         AddEditFeatDialog(
             featToEdit = null,
+            stats = stats,
             onConfirm = { newFeat -> viewModel.addFeat(newFeat) },
             onDismiss = { showAddFeatModal = false }
         )
@@ -231,6 +245,7 @@ fun FeatsTab(
     featToEdit?.let { feat ->
         AddEditFeatDialog(
             featToEdit = feat,
+            stats = stats,
             onConfirm = { updated ->
                 viewModel.removeFeat(feat.id)
                 viewModel.addFeat(updated)

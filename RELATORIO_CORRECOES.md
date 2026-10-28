@@ -285,3 +285,12 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - A janela de multiclasse identifica a primeira classe como “Inicial” e não permite removê-la, para que uma classe posterior não herde indevidamente o multiplicador x4. As classes posteriores continuam removíveis.
 - Testes de regressão reforçam que somente a primeira entrada da lista de classes recebe o multiplicador de primeiro nível.
 - Validação pendente: executar testes Android/Gradle e CI na PR antes de integrar.
+
+
+## Indicação automática de pré-requisitos de talentos (2026-10-27)
+
+- Implementada indicação informativa na aba de Talentos e na lista de seleção do catálogo do Livro do Jogador. A seleção e a manutenção de talentos continuam livres; nenhum requisito bloqueia a inclusão ou edição.
+- O verificador compara atributos, BBA, graduações registradas, nível total, níveis de classe, nível de conjurador, acesso a círculos de magia e algumas habilidades de classe quando os dados necessários estão disponíveis.
+- Quando a ficha não registra a escolha necessária (por exemplo, proficiência específica ou escola/arma escolhida), o resultado identifica a verificação como parcial em vez de afirmar incorretamente que o requisito foi cumprido.
+- Adicionados testes de regressão para requisitos atendidos, requisitos pendentes, níveis de classe/personagem e requisitos não verificáveis automaticamente.
+- Validação de CI pendente; não considerar a alteração integrada até a suíte Android/Gradle passar.
