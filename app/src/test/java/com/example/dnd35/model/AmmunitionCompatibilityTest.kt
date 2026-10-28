@@ -3,7 +3,10 @@ package com.example.dnd35.model
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
 import org.junit.Test
+import org.junit.runner.RunWith
+import org.robolectric.RobolectricTestRunner
 
+@RunWith(RobolectricTestRunner::class)
 class AmmunitionCompatibilityTest {
     private val ammoSlot = Dnd35Rules.EquipmentSlots.AMMUNITION
 
