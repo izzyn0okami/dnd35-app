@@ -86,15 +86,6 @@ fun OverviewCombatTab(
         it.quantity > 0 && !it.equipped &&
             (it.equippedSlot == Dnd35Rules.EquipmentSlots.NONE || it.equippedSlot == Dnd35Rules.EquipmentSlots.AMMUNITION)
     }
-    val hasEquippedRangedWeapon = stats.inventory.any { weapon ->
-        weapon.equipped && (
-            weapon.notes.contains("alcance", ignoreCase = true) ||
-                weapon.name.contains("Arco", ignoreCase = true) ||
-                weapon.name.contains("Besta", ignoreCase = true) ||
-                weapon.name.contains("Funda", ignoreCase = true)
-            )
-    }
-
     val race = Dnd35Rules.RACES.find { it.name.equals(character.race, ignoreCase = true) } ?: Dnd35Rules.RACES.first()
 
     LazyColumn(
@@ -201,8 +192,7 @@ fun OverviewCombatTab(
         }
 
         // Slot único de munição, escolhido manualmente pelo jogador e independente da arma.
-        if (hasEquippedRangedWeapon) {
-            item {
+        item {
                 Card(
                     modifier = Modifier.fillMaxWidth().padding(bottom = 10.dp),
                     colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant),
@@ -228,7 +218,6 @@ fun OverviewCombatTab(
                     }
                 }
             }
-        }
 
         // 2. Barra de Pontos de Vida (HP) com Ações
         item {
