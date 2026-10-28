@@ -457,3 +457,13 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - A causa provável é a seleção automática do SDK padrão do projeto, que usa compileSdk 36.1, não suportado pelo conjunto de SDKs do Robolectric disponível nessa configuração.
 - Fixado explicitamente o SDK 35 com `@Config(sdk = [35])` no teste, mantendo a cobertura de serialização e o `RobolectricTestRunner`; não foi removido o teste para mascarar a falha.
 - **Pendente:** nova CI precisa confirmar que o runner inicializa, o teste de persistência passa e o APK compila. Não fazer merge antes disso.
+
+
+### Correção estrutural — persistência de fotos e unidades por pacote (2026-10-28)
+- A CI da revisão anterior ficou verde, mas isso só comprova testes e compilação; não comprova o comportamento real da interface nem a persistência no aparelho.
+- **Munição:** a lógica dependia principalmente do nome terminar em `(10)`, `(20)` etc. Isso não cobre nomes personalizados ou nomes cadastrados sem essa convenção. Adicionado o campo persistente `ammunitionUnitsPerPackage`; a tela de item agora permite informar quantas unidades há em cada pacote (1 = item avulso). O nome ainda sugere automaticamente um tamanho inicial quando termina em `(N)`, mas o valor passa a ser explícito e persistido depois de salvar/consumir.
+- Ao editar outros campos, o saldo de munição é preservado; se a quantidade de pacotes for alterada, o saldo é recalculado a partir da quantidade e do tamanho do pacote. A seleção de munição também ignora pilhas já esgotadas.
+- **Fotos:** o seletor continua copiando a imagem para o armazenamento privado do app. Foi acrescentada uma tentativa de manter a permissão de leitura da URI original enquanto a cópia é feita e uma verificação explícita de criação da pasta. O app não precisa de permissão geral de armazenamento para gravar em `filesDir`; solicitar `READ_EXTERNAL_STORAGE` ou `MANAGE_EXTERNAL_STORAGE` não é a correção adequada para esse fluxo.
+- **Persistência geral:** identificado que `persistCharacter` iniciava gravações independentes no dispatcher IO; gravações concorrentes podiam terminar fora de ordem e gravar um snapshot antigo do personagem, revertendo mudanças recentes no inventário. As gravações agora são serializadas por um `Mutex` antes de acessar o repositório.
+- **Regressão:** teste adicionado para pacote personalizado sem quantidade no nome e teste JSON ampliado para confirmar que o tamanho explícito do pacote é persistido.
+- **Validação pendente:** executar nova CI após estas alterações e testar no dispositivo: criar/editar item com foto, fechar e reabrir a ficha, reiniciar o app e verificar a miniatura; testar munição avulsa, pacote de 10 e pacote personalizado. Não fazer merge antes da CI verde.
