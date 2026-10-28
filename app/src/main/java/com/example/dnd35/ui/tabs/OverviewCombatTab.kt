@@ -52,6 +52,7 @@ import androidx.compose.ui.unit.dp
 import com.example.dnd35.model.CalculatedCharacterStats
 import com.example.dnd35.model.CharacterEntity
 import com.example.dnd35.model.Dnd35Rules
+import com.example.dnd35.model.remainingAmmunitionUnits
 import com.example.dnd35.ui.components.CharacterAvatar
 import com.example.dnd35.ui.components.HpBarSection
 import com.example.dnd35.ui.components.PhotoPickerModal
@@ -201,7 +202,7 @@ fun OverviewCombatTab(
                 Column(modifier = Modifier.padding(12.dp)) {
                     Text("Munição equipada", fontWeight = FontWeight.Bold, style = MaterialTheme.typography.titleMedium)
                     Text(
-                        equippedAmmunition?.let { "${it.name} — ${it.quantity} unidade(s)" } ?: "Nenhuma pilha selecionada",
+                        equippedAmmunition?.let { "${it.name} — ${remainingAmmunitionUnits(it)} disparo(s) restante(s)" } ?: "Nenhuma pilha selecionada",
                         style = MaterialTheme.typography.bodyMedium,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
