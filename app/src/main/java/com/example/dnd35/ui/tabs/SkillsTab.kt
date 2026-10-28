@@ -81,19 +81,16 @@ fun SkillsTab(
     // Orçamento de pontos de perícia: calculado automaticamente do 1º nível até o atual
     // (incluindo multiclasse), sem depender de nenhum registro manual por nível.
     val languageAcquisitions = CharacterJsonAdapters.deserializeLanguageAcquisitions(character.languageAcquisitionsJson)
-    val languagePurchasePointsSpent = languageAcquisitions
+    val totalSkillPointsSpent = stats.computedSkills.sumOf {
+        it.ranks.toDouble() * if (it.isClassSkill) 1.0 else 2.0
+    } + languageAcquisitions
         .filter { it.source == LanguageAcquisitionSource.PURCHASED }
         .sumOf { it.pointsSpent.toDouble() }
-    val skillRankPointsSpent = stats.computedSkills.sumOf {
-        it.ranks.toDouble() * if (it.isClassSkill) 1.0 else 2.0
-    }
-    val totalSkillPointsSpent = skillRankPointsSpent + languagePurchasePointsSpent
     val totalAvailableSkillPoints = com.example.dnd35.model.estimateTotalSkillPoints(
         stats.classEntries,
         stats.intMod,
         character.race
     )
-    val skillPointBalance = totalAvailableSkillPoints?.minus(totalSkillPointsSpent)
 
     val filteredSkills = stats.computedSkills.filter {
         val matchesQuery = it.skill.name.contains(searchQuery, ignoreCase = true) ||
@@ -132,28 +129,17 @@ fun SkillsTab(
                             color = MaterialTheme.colorScheme.onPrimaryContainer
                         )
                         Text(
-                            "Pontos gastos (perícias + idiomas comprados): ${String.format("%.1f", totalSkillPointsSpent)} pts",
+                            "Pontos gastos estimados (perícias + idiomas comprados): ${String.format("%.1f", totalSkillPointsSpent)} pts",
                             style = MaterialTheme.typography.labelSmall,
                             color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.8f)
                         )
-                        if (totalAvailableSkillPoints != null && skillPointBalance != null) {
-                            Text(
-                                "Pontos disponíveis (cálculo automático, 1º nível + seguintes): $totalAvailableSkillPoints pts • " +
-                                    when {
-                                        skillPointBalance < -0.001 -> "excesso de ${String.format("%.1f", -skillPointBalance)} pts"
-                                        skillPointBalance > 0.001 -> "saldo: ${String.format("%.1f", skillPointBalance)} pts"
-                                        else -> "saldo: 0 pts"
-                                    },
-                                style = MaterialTheme.typography.labelSmall,
-                                color = if (skillPointBalance < -0.001) DndCrimson else MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.8f)
-                            )
-                        } else {
-                            Text(
-                                "Não foi possível calcular o orçamento automaticamente (classe desconhecida).",
-                                style = MaterialTheme.typography.labelSmall,
-                                color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.8f)
-                            )
-                        }
+                        Text(
+                            totalAvailableSkillPoints?.let {
+                                "Pontos totais estimados para o personagem: $it pts (informativo; não limita o preenchimento)"
+                            } ?: "Estimativa total de pontos indisponível para esta combinação de classes.",
+                            style = MaterialTheme.typography.labelSmall,
+                            color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.8f)
+                        )
                     }
                     if (stats.armorCheckPenalty < 0) {
                         Card(
@@ -260,10 +246,6 @@ fun SkillsTab(
                 if (languageSource == LanguageAcquisitionSource.PURCHASED) {
                     if (level == null || level !in 1..stats.totalCharacterLevel) {
                         languageAcquisitionError = "Informe um nível de personagem válido, entre 1 e ${stats.totalCharacterLevel}."
-                        return
-                    }
-                    if (totalAvailableSkillPoints != null && totalSkillPointsSpent + 1.0 > totalAvailableSkillPoints) {
-                        languageAcquisitionError = "Não há pontos de perícia disponíveis para comprar este idioma (orçamento calculado automaticamente)."
                         return
                     }
                 }
