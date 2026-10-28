@@ -76,7 +76,7 @@ fun OverviewCombatTab(
     var showArmorModal by remember { mutableStateOf(false) }
     var showMulticlassModal by remember { mutableStateOf(false) }
     var editingAbility by remember { mutableStateOf<Pair<String, Triple<Int, Int, Int>>?>(null) } // Name to (Base, Magic, Racial)
-    var diceRollTarget by remember { mutableStateOf<Triple<String, Int, String>?>(null) // Title, Bonus, Damage
+    var diceRollTarget by remember { mutableStateOf<Triple<String, Int, String>?>(null) } // Title, Bonus, Damage
     var showAmmunitionPicker by remember { mutableStateOf(false) }
 
     val equippedAmmunition = stats.inventory.firstOrNull {
