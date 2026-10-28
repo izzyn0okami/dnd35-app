@@ -148,6 +148,14 @@ fun ManageMulticlassDialog(
                                 ) {
                                     Row(verticalAlignment = Alignment.CenterVertically) {
                                         Text(entry.className, fontWeight = FontWeight.Bold, style = MaterialTheme.typography.titleMedium)
+                                        if (entry == classesList.first()) {
+                                            Text(
+                                                "Inicial",
+                                                style = MaterialTheme.typography.labelSmall,
+                                                color = MaterialTheme.colorScheme.primary,
+                                                fontWeight = FontWeight.Bold
+                                            )
+                                        }
                                         Spacer(modifier = Modifier.width(6.dp))
                                         Card(
                                             colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.2f)),
@@ -206,7 +214,9 @@ fun ManageMulticlassDialog(
                                             Icon(Icons.Default.Add, contentDescription = "Aumentar Nível", modifier = Modifier.size(16.dp))
                                         }
 
-                                        if (classesList.size > 1) {
+                                        // A primeira classe registrada é a classe inicial e determina o multiplicador x4.
+                                        // Não permitir removê-la evita transferir esse benefício para uma classe posterior.
+                                        if (classesList.size > 1 && entry != classesList.first()) {
                                             IconButton(
                                                 onClick = {
                                                     classesList = classesList.filterNot { it.className == entry.className }
