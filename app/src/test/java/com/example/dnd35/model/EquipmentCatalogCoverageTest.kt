@@ -45,6 +45,15 @@ class EquipmentCatalogCoverageTest {
     }
 
     @Test
+    fun convertsCanonicalWeaponAndShieldWeightsFromTheHandbookToPounds() {
+        val byName = Dnd35Rules.PRESET_ITEMS.associateBy { normalize(it.name) }
+        assertEquals(1.1f, byName[normalize("Virotes de Besta (10)")]!!.weightLb, 0.01f)
+        assertEquals(5.5f, byName[normalize("Balas de Funda (10)")]!!.weightLb, 0.01f)
+        assertEquals(49.6f, byName[normalize("Escudo de Corpo")]!!.weightLb, 0.1f)
+        assertEquals(55.0f, byName[normalize("Armadura de Batalha")]!!.weightLb, 0.01f)
+    }
+
+    @Test
     fun catalogNamesAreUniqueIgnoringAccentsAndCase() {
         val normalized = Dnd35Rules.PRESET_ITEMS.map { normalize(it.name) }
         assertEquals(normalized.size, normalized.toSet().size)
