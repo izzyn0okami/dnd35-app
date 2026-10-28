@@ -73,6 +73,30 @@ class MagicSchoolParserTest {
     }
 
     @Test
+    fun universalSpellListMatchesTheFiveExamplesNamedInTheHandbook() {
+        val expected = setOf(
+            "Marca Arcana", "Desejo Restrito", "Permanência",
+            "Prestidigitação", "Desejo"
+        )
+        val universal = Dnd35Rules.PRESET_SPELLS.filter {
+            MagicSchoolParser.parse(it.school).baseSchool == "Universal"
+        }
+
+        assertEquals(expected, universal.map { it.name }.toSet())
+        assertEquals(expected.size, universal.size)
+
+        val permanence = universal.single { it.name == "Permanência" }
+        assertEquals(5, permanence.level)
+        assertEquals(mapOf("Feiticeiro" to 5, "Mago" to 5), permanence.classLevels)
+        assertEquals("2 rodadas", permanence.castTime)
+        assertEquals("V, G, XP", permanence.components)
+        assertEquals("Veja texto", permanence.range)
+        assertEquals("Permanente; veja texto", permanence.duration)
+        assertEquals("Nenhum", permanence.savingThrow)
+        assertFalse(permanence.spellResistance)
+    }
+
+    @Test
     fun universalIsASeparateFilterAndAllMatchesEverySchool() {
         assertTrue(MagicSchoolParser.matchesBaseSchool("Universal", "Universal"))
         assertFalse(MagicSchoolParser.matchesBaseSchool("Necromancia [Morte]", "Universal"))
