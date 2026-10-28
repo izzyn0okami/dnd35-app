@@ -34,9 +34,9 @@ data class FeatPrerequisiteAssessment(
  * explicitamente como não verificados, em vez de serem aprovados ou reprovados por suposição.
  */
 object FeatPrerequisiteChecker {
-    private val abilityRequirement = Regex("\\b(FOR|STR|DES|DEX|CON|INT|SAB|WIS|CAR|CHA)\\s*(\\d+)\\b")
-    private val babRequirement = Regex("\\bBBA\\s*\\+?\\s*(\\d+)\\b")
-    private val skillRequirement = Regex("^(.+?)\\s+(\\d+)\\s+graduações?$")
+    private val abilityRequirement = Regex("\\b(for|str|des|dex|con|int|sab|wis|car|cha)\\s*(\\d+)\\b")
+    private val babRequirement = Regex("\\bbba\\s*\\+?\\s*(\\d+)\\b")
+    private val skillRequirement = Regex("^(.+?)\\s+(\\d+)\\s+graduacoes?$")
     private val characterLevelRequirement = Regex("^(\\d+)[º°o]?\\s+nível de personagem$")
     private val casterLevelRequirement = Regex("^conjurador de (\\d+)[º°o]?\\s+nível$")
     private val casterLevelRequirementReversed = Regex("^(\\d+)[º°o]?\\s+nível de conjurador$")
@@ -68,11 +68,11 @@ object FeatPrerequisiteChecker {
                     val ability = match.groupValues[1]
                     val required = match.groupValues[2].toInt()
                     val actual = when (ability) {
-                        "FOR", "STR" -> stats.totalStr
-                        "DES", "DEX" -> stats.totalDex
-                        "CON" -> stats.totalCon
-                        "INT" -> stats.totalInt
-                        "SAB", "WIS" -> stats.totalWis
+                        "for", "str" -> stats.totalStr
+                        "des", "dex" -> stats.totalDex
+                        "con" -> stats.totalCon
+                        "int" -> stats.totalInt
+                        "sab", "wis" -> stats.totalWis
                         else -> stats.totalCha
                     }
                     if (actual < required) unmet += "$clause (atual: $actual)"
