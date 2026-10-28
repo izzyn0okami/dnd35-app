@@ -196,6 +196,13 @@ class EquipmentCatalogCoverageTest {
     }
 
     @Test
+    fun convertsAlchemicalFireWeightFromPlayerHandbookTable78() {
+        val byName = Dnd35Rules.PRESET_ITEMS.associateBy { normalize(it.name) }
+        // Tabela 7-8: Fogo alquímico (frasco) pesa 0,5 kg, aproximadamente 1,1 lb.
+        assertEquals(1.1f, byName[normalize("Fogo Alquímico")]!!.weightLb, 0.01f)
+    }
+
+    @Test
     fun catalogNamesAreUniqueIgnoringAccentsAndCase() {
         val normalized = Dnd35Rules.PRESET_ITEMS.map { normalize(it.name) }
         assertEquals(normalized.size, normalized.toSet().size)
