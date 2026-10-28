@@ -105,18 +105,42 @@ data class CharacterInventoryItem(
     val notes: String = "",
     val inBackpack: Boolean = true,
     /** URI persistível da imagem personalizada do item; nulo para itens sem foto. */
-    val imageUri: String? = null
+    val imageUri: String? = null,
+    /** Munição restante dentro dos pacotes; nulo para registros antigos ainda não consumidos. */
+    val ammunitionUnitsRemaining: Int? = null
 )
+
+/** Quantidade de unidades individuais que uma embalagem representa (ex.: Flechas (20)). */
+fun ammunitionBundleSize(item: CharacterInventoryItem): Int =
+    item.name.substringAfterLast('(').substringBeforeLast(')')
+        .toIntOrNull()
+        ?.takeIf { item.name.endsWith(")") && it > 0 }
+        ?: 1
+
+/** Quantidade de projéteis disponíveis, distinguindo pacotes do número de disparos. */
+fun remainingAmmunitionUnits(item: CharacterInventoryItem): Int =
+    (item.ammunitionUnitsRemaining ?: (item.quantity * ammunitionBundleSize(item))).coerceAtLeast(0)
 
 /** Consome uma unidade da pilha explicitamente selecionada no slot de munição. */
 fun consumeAmmunitionStack(items: List<CharacterInventoryItem>, ammunitionItemId: String): List<CharacterInventoryItem>? {
     val ammunition = items.firstOrNull {
-        it.id == ammunitionItemId && it.equippedSlot == Dnd35Rules.EquipmentSlots.AMMUNITION && it.quantity > 0
+        it.id == ammunitionItemId &&
+            it.equippedSlot == Dnd35Rules.EquipmentSlots.AMMUNITION &&
+            it.quantity > 0 &&
+            remainingAmmunitionUnits(it) > 0
     } ?: return null
-    return if (ammunition.quantity > 1) {
-        items.map { if (it.id == ammunition.id) it.copy(quantity = it.quantity - 1) else it }
-    } else {
-        items.filterNot { it.id == ammunition.id }
+
+    val remaining = remainingAmmunitionUnits(ammunition) - 1
+    if (remaining <= 0) return items.filterNot { it.id == ammunition.id }
+
+    val bundleSize = ammunitionBundleSize(ammunition)
+    val packagesRemaining = (remaining + bundleSize - 1) / bundleSize
+    return items.map {
+        if (it.id == ammunition.id) {
+            it.copy(quantity = packagesRemaining, ammunitionUnitsRemaining = remaining)
+        } else {
+            it
+        }
     }
 }
 data class CharacterFeat(
