@@ -40,6 +40,10 @@ jobs:
       - name: Run unit tests
         run: ./gradlew testDebugUnitTest
 
+      - name: Print test failures (diagnóstico temporário)
+        if: always()
+        run: python3 .github/scripts/print_test_failures.py
+
       - name: Compile Android app
         run: ./gradlew assembleDebug
 
