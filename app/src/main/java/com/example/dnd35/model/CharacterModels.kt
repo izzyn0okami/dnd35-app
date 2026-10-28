@@ -103,7 +103,9 @@ data class CharacterInventoryItem(
     val equipped: Boolean = false,
     val equippedSlot: String = Dnd35Rules.EquipmentSlots.NONE,
     val notes: String = "",
-    val inBackpack: Boolean = true
+    val inBackpack: Boolean = true,
+    /** URI persistível da imagem personalizada do item; nulo para itens sem foto. */
+    val imageUri: String? = null
 )
 
 /** Consome uma unidade da pilha explicitamente selecionada no slot de munição. */
