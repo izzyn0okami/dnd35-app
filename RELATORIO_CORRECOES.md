@@ -395,6 +395,14 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - A auditoria da Tabela 7-8 continua em andamento. Divergências de nomenclatura ou valores que não possam ser confirmados diretamente na tabela permanecem sem alteração.
 
 
+## Auditoria da Tabela 7-8 — peso do fogo alquímico (2026-10-28)
+
+- Na conferência direta da Tabela 7-8 do Livro do Jogador brasileiro, página impressa 108 (PDF página 112), foi confirmada uma divergência de conversão de peso.
+- Corrigido **Fogo Alquímico** de 1 lb para 1,1 lb: a tabela informa 0,5 kg por frasco.
+- Incluído teste de regressão para impedir a recorrência. Custo e demais propriedades foram preservados.
+- A revisão da Tabela 7-8 continua; nenhuma alteração foi feita em entradas sem divergência diretamente confirmada pela fonte.
+
+
 ### Combate e mochila — slot explícito de munição e transporte de itens (2026-10-28)
 
 - Substituída a inferência por nome da arma/munição por um único **slot de munição equipada** na aba Combate. O jogador seleciona manualmente uma pilha disponível no inventário; o slot não depende do tipo nem do nome da arma.
