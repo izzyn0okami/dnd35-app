@@ -107,11 +107,14 @@ data class CharacterInventoryItem(
     /** URI persistível da imagem personalizada do item; nulo para itens sem foto. */
     val imageUri: String? = null,
     /** Munição restante dentro dos pacotes; nulo para registros antigos ainda não consumidos. */
-    val ammunitionUnitsRemaining: Int? = null
+    val ammunitionUnitsRemaining: Int? = null,
+    /** Quantidade de projéteis por pacote; 1 representa item avulso. */
+    val ammunitionUnitsPerPackage: Int? = null
 )
 
 /** Quantidade de unidades individuais que uma embalagem representa (ex.: Flechas (20)). */
 fun ammunitionBundleSize(item: CharacterInventoryItem): Int {
+    item.ammunitionUnitsPerPackage?.takeIf { it > 0 }?.let { return it }
     val normalizedName = item.name.lowercase()
     val isKnownProjectile = normalizedName.contains("flecha") ||
         normalizedName.contains("virote") ||
@@ -144,7 +147,7 @@ fun consumeAmmunitionStack(items: List<CharacterInventoryItem>, ammunitionItemId
     val packagesRemaining = (remaining + bundleSize - 1) / bundleSize
     return items.map {
         if (it.id == ammunition.id) {
-            it.copy(quantity = packagesRemaining, ammunitionUnitsRemaining = remaining)
+            it.copy(quantity = packagesRemaining, ammunitionUnitsRemaining = remaining, ammunitionUnitsPerPackage = bundleSize)
         } else {
             it
         }
