@@ -401,5 +401,6 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - **Gastar 1** reduz somente a pilha selecionada. A última unidade remove a pilha do inventário e não há caminho que produza quantidade negativa. A escolha é persistida no JSON do inventário; registros antigos sem o campo novo continuam sendo lidos com `inBackpack = true`.
 - A mochila tem ação global para **Soltar mochila inteira / Pegar mochila inteira**. A ação altera os itens guardados e não desequipa armas, armaduras ou a munição selecionada. O peso dos itens soltos deixa de contar para a carga transportada; os itens continuam registrados e recuperáveis.
 - O estado de transporte é salvo por item no inventário, sem migração de banco de dados. Itens novos são carregados por padrão; se a mochila estiver solta, a próxima ação de pegar reúne novamente os itens guardados.
+- A edição de um item preserva o identificador, o slot de equipamento e o estado de transporte, evitando desassociar a munição selecionada ou alterar acidentalmente se o item está na mochila.
 - Testes unitários cobrem consumo de uma unidade da pilha selecionada, remoção da última unidade, recusa de pilhas vazias e recusa de itens que não ocupam o slot de munição.
 - A validação da CI deve ser repetida para esta revisão ampliada antes do merge.
