@@ -442,6 +442,25 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
         persistCharacter(curr.copy(inventoryJson = CharacterJsonAdapters.serializeInventory(list)))
     }
 
+    /**
+     * Consome uma unidade de munição compatível com a arma usada.
+     * A alteração é persistida no JSON da ficha; pilhas vazias são removidas.
+     * Retorna false quando não há munição compatível, sem modificar a ficha.
+     */
+    fun consumeAmmoForWeapon(weaponName: String): Boolean {
+        val curr = _activeCharacter.value ?: return false
+        val items = CharacterJsonAdapters.deserializeInventory(curr.inventoryJson)
+        val ammo = com.example.dnd35.model.findCompatibleAmmunition(items, weaponName) ?: return false
+        val updated = if (ammo.quantity > 1) {
+            items.map { if (it.id == ammo.id) it.copy(quantity = it.quantity - 1) else it }
+        } else {
+            items.filterNot { it.id == ammo.id }
+        }
+        persistCharacter(curr.copy(inventoryJson = CharacterJsonAdapters.serializeInventory(updated)))
+        return true
+    }
+
+
     fun toggleEquipItem(itemId: String) {
         val curr = _activeCharacter.value ?: return
         val list = CharacterJsonAdapters.deserializeInventory(curr.inventoryJson).map {
