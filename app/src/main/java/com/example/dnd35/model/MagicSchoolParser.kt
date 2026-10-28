@@ -17,11 +17,13 @@ data class MagicSchoolInfo(
 object MagicSchoolParser {
     private val parenthetical = Regex("\\(([^()]*)\\)")
     private val bracketed = Regex("\\[([^\\]]*)\\]")
+    // Lista de descritores conforme "Descrição das Magias" do Livro do Jogador
+    // brasileiro; termos fora dela ficam preservados como anotações para auditoria.
     private val knownDescriptors = setOf(
-        "acido", "agua", "ar", "audivel", "bem", "caos", "eletricidade",
-        "energia", "fogo", "forca", "frio", "luz", "mal", "medo",
-        "morte", "planta", "sônico", "sonico", "terra", "acao mental",
-        "mental", "teletransporte"
+        "acao mental", "acido", "agua", "ar", "bem", "caos",
+        "dependente de idioma", "eletricidade", "energia", "escuridao",
+        "fogo", "frio", "luz", "mal", "medo", "morte", "ordem",
+        "sonico", "terra"
     )
 
     fun parse(value: String): MagicSchoolInfo {
