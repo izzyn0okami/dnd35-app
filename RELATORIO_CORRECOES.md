@@ -434,3 +434,13 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - Corrigida a seleção de fotos para copiar o conteúdo escolhido para o armazenamento privado do aplicativo (`filesDir/item_photos`) e gravar no item uma URI `file://` interna.
 - Isso elimina a dependência de permissões persistentes do provedor externo, que podiam falhar silenciosamente e deixar a miniatura indisponível após fechar/reabrir o app.
 - A cópia ocorre em I/O de segundo plano e o formulário informa quando não consegue salvar a imagem; a URI interna continua sendo persistida pelo serializador do inventário.
+
+
+### Corrigir gravação concorrente de itens e estado da munição (2026-10-28)
+- A edição do inventário removia o item e o adicionava em duas gravações assíncronas independentes. Isso permitia que as gravações ao banco terminassem fora de ordem, sobrescrevendo a versão nova e fazendo fotos ou estado de munição desaparecerem.
+- A edição agora substitui o item em uma única gravação do inventário, preservando o ID e os campos persistentes como `imageUri` e `ammunitionUnitsRemaining`.
+- A seleção da foto bloqueia o botão Salvar até terminar a cópia para o armazenamento privado, evitando confirmar o item antes de a URI interna estar pronta.
+- O arquivo usa uma extensão derivada do tipo MIME quando disponível, e arquivos parciais são removidos se a cópia falhar.
+- Ajustada a detecção de pacotes de “Balas de funda” (plural), que não correspondia ao texto singular usado anteriormente.
+- Adicionados testes de regressão para o reconhecimento das balas de funda e para a ida e volta JSON de foto + saldo de munição.
+- A validação final depende de CI Android verde; não integrar antes dos testes e compilação.
