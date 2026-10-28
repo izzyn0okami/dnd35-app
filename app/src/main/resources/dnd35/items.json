@@ -2185,5 +2185,401 @@
     "costGp": 55,
     "damageOrAc": "—",
     "properties": "Equipamento comum conforme a Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Acomodação Pobre (por dia)",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0,
+    "costGp": 0.2,
+    "damageOrAc": "—",
+    "properties": "Alojamento pobre; Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Acomodação Padrão (por dia)",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0,
+    "costGp": 0.5,
+    "damageOrAc": "—",
+    "properties": "Alojamento padrão; Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Acomodação Boa (por dia)",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0,
+    "costGp": 2,
+    "damageOrAc": "—",
+    "properties": "Alojamento bom; Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Banquete (por pessoa)",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0,
+    "costGp": 10,
+    "damageOrAc": "—",
+    "properties": "Comida; custo por pessoa conforme a Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Carne (pedaço)",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.55,
+    "costGp": 0.3,
+    "damageOrAc": "—",
+    "properties": "Comida; Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Cerveja (caneca)",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 1.1,
+    "costGp": 0.04,
+    "damageOrAc": "—",
+    "properties": "Bebida; Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Cerveja (jarra)",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 8.8,
+    "costGp": 0.2,
+    "damageOrAc": "—",
+    "properties": "Bebida; Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Pão",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.55,
+    "costGp": 0.02,
+    "damageOrAc": "—",
+    "properties": "Comida; Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Queijo (pedaço)",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.55,
+    "costGp": 0.1,
+    "damageOrAc": "—",
+    "properties": "Comida; Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Refeição Pobre (por dia)",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0,
+    "costGp": 0.1,
+    "damageOrAc": "—",
+    "properties": "Refeições; Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Refeição Padrão (por dia)",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0,
+    "costGp": 0.3,
+    "damageOrAc": "—",
+    "properties": "Refeições; Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Refeição Boa (por dia)",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0,
+    "costGp": 0.5,
+    "damageOrAc": "—",
+    "properties": "Refeições; Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Vinho Normal (jarro)",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 6.6,
+    "costGp": 0.2,
+    "damageOrAc": "—",
+    "properties": "Bebida; Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Vinho Bom (garrafa)",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 1.65,
+    "costGp": 10,
+    "damageOrAc": "—",
+    "properties": "Bebida; Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Alforje",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 8.8,
+    "costGp": 4,
+    "damageOrAc": "—",
+    "properties": "Equipamento de montaria; Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Alimentação (por dia)",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 11,
+    "costGp": 0.05,
+    "damageOrAc": "—",
+    "properties": "Alimentação de montaria; Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Cachorro de Montaria",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0,
+    "costGp": 150,
+    "damageOrAc": "—",
+    "properties": "Montaria; Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Cão de Guarda",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0,
+    "costGp": 25,
+    "damageOrAc": "—",
+    "properties": "Animal de guarda; Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Cavalo de Guerra Leve",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0,
+    "costGp": 150,
+    "damageOrAc": "—",
+    "properties": "Montaria; Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Cavalo de Guerra Pesado",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0,
+    "costGp": 400,
+    "damageOrAc": "—",
+    "properties": "Montaria; Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Cavalo Leve",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0,
+    "costGp": 75,
+    "damageOrAc": "—",
+    "properties": "Montaria; Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Cavalo Pesado",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0,
+    "costGp": 200,
+    "damageOrAc": "—",
+    "properties": "Montaria; Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Pônei de Guerra",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0,
+    "costGp": 100,
+    "damageOrAc": "—",
+    "properties": "Montaria; Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Pônei",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0,
+    "costGp": 30,
+    "damageOrAc": "—",
+    "properties": "Montaria; Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Estábulo (por dia)",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0,
+    "costGp": 0.5,
+    "damageOrAc": "—",
+    "properties": "Serviço de estábulo; Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Freio e Rédeas",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 1.1,
+    "costGp": 2,
+    "damageOrAc": "—",
+    "properties": "Equipamento de montaria; Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Jumento ou Mula",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0,
+    "costGp": 8,
+    "damageOrAc": "—",
+    "properties": "Montaria/animal de carga; Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Sela de Carga",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 16.5,
+    "costGp": 5,
+    "damageOrAc": "—",
+    "properties": "Sela com alforjes para carga; Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Sela Militar",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 33.1,
+    "costGp": 20,
+    "damageOrAc": "—",
+    "properties": "Sela; Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Sela de Montaria",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 27.6,
+    "costGp": 10,
+    "damageOrAc": "—",
+    "properties": "Sela; Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Sela Exótica de Carga",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 22,
+    "costGp": 15,
+    "damageOrAc": "—",
+    "properties": "Sela para montaria incomum; Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Sela Exótica Militar",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 44.1,
+    "costGp": 60,
+    "damageOrAc": "—",
+    "properties": "Sela para montaria incomum; Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Sela Exótica de Montaria",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 33.1,
+    "costGp": 30,
+    "damageOrAc": "—",
+    "properties": "Sela para montaria incomum; Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Barco a Remo",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 110.2,
+    "costGp": 50,
+    "damageOrAc": "—",
+    "properties": "Veículo; Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Remo",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 11,
+    "costGp": 2,
+    "damageOrAc": "—",
+    "properties": "Equipamento de transporte aquático; Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Barcaça",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0,
+    "costGp": 3000,
+    "damageOrAc": "—",
+    "properties": "Veículo; peso não especificado na Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Carroça",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 440.9,
+    "costGp": 35,
+    "damageOrAc": "—",
+    "properties": "Veículo; Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Carruagem",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 661.4,
+    "costGp": 100,
+    "damageOrAc": "—",
+    "properties": "Veículo; Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Charrete",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 220.5,
+    "costGp": 15,
+    "damageOrAc": "—",
+    "properties": "Veículo; Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Galeão",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0,
+    "costGp": 30000,
+    "damageOrAc": "—",
+    "properties": "Embarcação; peso não especificado na Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Navio de Guerra",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0,
+    "costGp": 25000,
+    "damageOrAc": "—",
+    "properties": "Embarcação; peso não especificado na Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Navio",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0,
+    "costGp": 10000,
+    "damageOrAc": "—",
+    "properties": "Embarcação; peso não especificado na Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Trenó",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 330.7,
+    "costGp": 20,
+    "damageOrAc": "—",
+    "properties": "Veículo; Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Veleiro",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0,
+    "costGp": 10000,
+    "damageOrAc": "—",
+    "properties": "Embarcação; peso não especificado na Tabela 7-8 do Livro do Jogador"
   }
 ]
