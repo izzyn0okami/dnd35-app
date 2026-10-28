@@ -444,3 +444,9 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - Ajustada a detecção de pacotes de “Balas de funda” (plural), que não correspondia ao texto singular usado anteriormente.
 - Adicionados testes de regressão para o reconhecimento das balas de funda e para a ida e volta JSON de foto + saldo de munição.
 - A validação final depende de CI Android verde; não integrar antes dos testes e compilação.
+
+
+### Ajustar ambiente do teste de persistência JSON (2026-10-28)
+- A CI identificou que o novo teste de ida e volta do inventário falhava no ambiente unitário Android padrão ao invocar `org.json`, antes de a compilação do APK começar.
+- O teste foi configurado para usar `RobolectricTestRunner`, já disponível nas dependências de teste do projeto, para executar as APIs Android usadas pelo serializador em vez de remover a cobertura de regressão.
+- Aguardar nova CI para confirmar se a falha era exclusivamente do ambiente de teste e se os 314+ testes passam.
