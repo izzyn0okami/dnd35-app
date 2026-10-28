@@ -1,5 +1,12 @@
 package com.example.dnd35.ui.dialogs
 
+import android.content.Intent
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.layout.ContentScale
+import coil.compose.AsyncImage
+
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -54,6 +61,22 @@ fun AddEditItemDialog(
     onDismiss: () -> Unit
 ) {
     var selectedTab by remember { mutableIntStateOf(if (itemToEdit == null) 0 else 1) }
+    val context = LocalContext.current
+
+    // Mantém a permissão de leitura da foto depois de fechar o seletor e reiniciar o app.
+    var imageUri by remember { mutableStateOf(itemToEdit?.imageUri) }
+    val imagePicker = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.OpenDocument()
+    ) { uri ->
+        if (uri != null) {
+            try {
+                context.contentResolver.takePersistableUriPermission(uri, Intent.FLAG_GRANT_READ_URI_PERMISSION)
+            } catch (_: SecurityException) {
+                // Alguns provedores não oferecem permissão persistente.
+            }
+            imageUri = uri.toString()
+        }
+    }
 
     // Campos do item customizado
     var name by remember { mutableStateOf(itemToEdit?.name ?: "") }
@@ -198,6 +221,42 @@ fun AddEditItemDialog(
                             modifier = Modifier.fillMaxWidth(),
                             singleLine = true
                         )
+
+                        Spacer(modifier = Modifier.height(8.dp))
+
+                        Text("Foto do item:", style = MaterialTheme.typography.labelSmall)
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.spacedBy(10.dp)
+                        ) {
+                            if (!imageUri.isNullOrBlank()) {
+                                AsyncImage(
+                                    model = imageUri,
+                                    contentDescription = "Foto de $name",
+                                    contentScale = ContentScale.Crop,
+                                    modifier = Modifier
+                                        .size(76.dp)
+                                        .clip(RoundedCornerShape(8.dp))
+                                )
+                            }
+                            Column(modifier = Modifier.weight(1f)) {
+                                OutlinedButton(
+                                    onClick = { imagePicker.launch(arrayOf("image/*")) },
+                                    modifier = Modifier.fillMaxWidth()
+                                ) {
+                                    Text(if (imageUri.isNullOrBlank()) "Escolher foto" else "Trocar foto")
+                                }
+                                if (!imageUri.isNullOrBlank()) {
+                                    OutlinedButton(
+                                        onClick = { imageUri = null },
+                                        modifier = Modifier.fillMaxWidth()
+                                    ) {
+                                        Text("Remover foto")
+                                    }
+                                }
+                            }
+                        }
 
                         Spacer(modifier = Modifier.height(8.dp))
 
@@ -349,7 +408,8 @@ fun AddEditItemDialog(
                             damageOrAc = damageOrAc,
                             equipped = equipped,
                             equippedSlot = if (equipped && equippedSlot == Dnd35Rules.EquipmentSlots.NONE) Dnd35Rules.EquipmentSlots.MAIN_HAND else equippedSlot,
-                            notes = notes
+                            notes = notes,
+                            imageUri = imageUri
                         )
                         onConfirm(finalItem)
                         onDismiss()
