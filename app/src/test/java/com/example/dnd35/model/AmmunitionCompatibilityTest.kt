@@ -3,7 +3,12 @@ package com.example.dnd35.model
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
 import org.junit.Test
+import org.junit.runner.RunWith
+import org.robolectric.RobolectricTestRunner
+import org.robolectric.annotation.Config
 
+@RunWith(RobolectricTestRunner::class)
+@Config(sdk = [35])
 class AmmunitionCompatibilityTest {
     private val ammoSlot = Dnd35Rules.EquipmentSlots.AMMUNITION
 
@@ -14,6 +19,100 @@ class AmmunitionCompatibilityTest {
         val updated = consumeAmmunitionStack(listOf(selected, other), "ammo-1")!!
         assertEquals(19, updated.first { it.id == "ammo-1" }.quantity)
         assertEquals(12, updated.first { it.id == "ammo-2" }.quantity)
+    }
+
+    @Test
+    fun packageOfTenAmmunitionProvidesTenShots() {
+        val pack = CharacterInventoryItem(
+            id = "ammo-pack",
+            name = "Virotes de Besta (10)",
+            category = "Itens de Aventura",
+            quantity = 1,
+            equippedSlot = ammoSlot
+        )
+
+        assertEquals(10, remainingAmmunitionUnits(pack))
+        val afterOne = consumeAmmunitionStack(listOf(pack), "ammo-pack")!!.single()
+        assertEquals(1, afterOne.quantity)
+        assertEquals(9, remainingAmmunitionUnits(afterOne))
+
+        val afterSecond = consumeAmmunitionStack(listOf(afterOne), "ammo-pack")!!.single()
+        assertEquals(8, remainingAmmunitionUnits(afterSecond))
+    }
+
+    @Test
+    fun twoPackagesOfTenKeepTwentyShotsAndReducePackageCountAtBoundary() {
+        val pack = CharacterInventoryItem(
+            id = "ammo-pack",
+            name = "Flechas (10)",
+            category = "Itens de Aventura",
+            quantity = 2,
+            equippedSlot = ammoSlot
+        )
+
+        var current = pack
+        repeat(10) {
+            current = consumeAmmunitionStack(listOf(current), "ammo-pack")!!.single()
+        }
+        assertEquals(10, remainingAmmunitionUnits(current))
+        assertEquals(1, current.quantity)
+    }
+
+    @Test
+    fun pluralSlingBulletsAreRecognizedAsPackagedAmmunition() {
+        val pack = CharacterInventoryItem(
+            id = "sling-pack",
+            name = "Balas de funda (10)",
+            category = "Itens de Aventura",
+            quantity = 1,
+            equippedSlot = ammoSlot
+        )
+
+        assertEquals(10, remainingAmmunitionUnits(pack))
+        val afterOne = consumeAmmunitionStack(listOf(pack), "sling-pack")!!.single()
+        assertEquals(9, remainingAmmunitionUnits(afterOne))
+    }
+
+    @Test
+    fun inventorySerializationPreservesPhotoAndAmmunitionBalance() {
+        val item = CharacterInventoryItem(
+            id = "persisted-item",
+            name = "Virotes de Besta (10)",
+            category = "Itens de Aventura",
+            quantity = 1,
+            equippedSlot = ammoSlot,
+            imageUri = "file:///data/user/0/com.example.dnd35/files/item_photos/test.png",
+            ammunitionUnitsRemaining = 7,
+            ammunitionUnitsPerPackage = 10
+        )
+
+        val restored = CharacterJsonAdapters.deserializeInventory(
+            CharacterJsonAdapters.serializeInventory(listOf(item))
+        ).single()
+
+        assertEquals(item.imageUri, restored.imageUri)
+        assertEquals(7, restored.ammunitionUnitsRemaining)
+        assertEquals(10, restored.ammunitionUnitsPerPackage)
+        assertEquals(7, remainingAmmunitionUnits(restored))
+    }
+
+
+    @Test
+    fun explicitPackageSizeWorksWhenNameDoesNotContainPackageCount() {
+        val pack = CharacterInventoryItem(
+            id = "custom-ammo-pack",
+            name = "Munição especial",
+            category = "Consumíveis",
+            quantity = 2,
+            equippedSlot = ammoSlot,
+            ammunitionUnitsPerPackage = 6
+        )
+
+        assertEquals(12, remainingAmmunitionUnits(pack))
+        val afterOne = consumeAmmunitionStack(listOf(pack), "custom-ammo-pack")!!.single()
+        assertEquals(2, afterOne.quantity)
+        assertEquals(11, remainingAmmunitionUnits(afterOne))
+        assertEquals(6, afterOne.ammunitionUnitsPerPackage)
     }
 
     @Test

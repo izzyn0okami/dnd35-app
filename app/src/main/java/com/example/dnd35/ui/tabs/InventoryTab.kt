@@ -57,6 +57,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
+import coil.compose.AsyncImage
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
@@ -66,6 +68,8 @@ import com.example.dnd35.model.CalculatedCharacterStats
 import com.example.dnd35.model.CharacterEntity
 import com.example.dnd35.model.CharacterInventoryItem
 import com.example.dnd35.model.Dnd35Rules
+import com.example.dnd35.model.ammunitionBundleSize
+import com.example.dnd35.model.remainingAmmunitionUnits
 import com.example.dnd35.ui.dialogs.AddEditItemDialog
 import com.example.dnd35.viewmodel.CharacterViewModel
 import com.example.ui.theme.DndCrimson
@@ -534,8 +538,7 @@ fun InventoryTab(
         AddEditItemDialog(
             itemToEdit = item,
             onConfirm = { updated ->
-                viewModel.removeInventoryItem(item.id)
-                viewModel.addInventoryItem(
+                viewModel.updateInventoryItem(
                     updated.copy(
                         id = item.id,
                         equipped = item.equipped,
@@ -752,6 +755,19 @@ fun InventoryItemRowRefined(
                 .padding(10.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
+            if (!item.imageUri.isNullOrBlank()) {
+                AsyncImage(
+                    model = item.imageUri,
+                    contentDescription = "Foto de ${item.name}",
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier
+                        .size(64.dp)
+                        .clip(RoundedCornerShape(8.dp))
+                        .clickable(onClick = onEdit)
+                )
+                Spacer(modifier = Modifier.width(10.dp))
+            }
+
             Column(
                 modifier = Modifier
                     .weight(1f)
@@ -759,7 +775,11 @@ fun InventoryItemRowRefined(
             ) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(
-                        text = item.name + if (item.quantity > 1) " (x${item.quantity})" else "",
+                        text = item.name + when {
+                            ammunitionBundleSize(item) > 1 -> " (${remainingAmmunitionUnits(item)} munições restantes)"
+                            item.quantity > 1 -> " (x${item.quantity})"
+                            else -> ""
+                        },
                         style = MaterialTheme.typography.bodyMedium,
                         fontWeight = FontWeight.Bold
                     )

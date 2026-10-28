@@ -31,6 +31,9 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
+import kotlinx.coroutines.withContext
 
 internal fun isValidEditedSkillRanks(ranks: Float): Boolean {
     if (!ranks.isFinite() || ranks < 0f) return false
@@ -114,6 +117,8 @@ internal fun calculateHpAdjustment(currentHp: Int, maxHp: Int, tempHp: Int, delt
 
 class CharacterViewModel(application: Application) : AndroidViewModel(application) {
 
+    // Serializa snapshots do personagem para que gravações concorrentes não sobrescrevam estados mais recentes.
+    private val characterSaveMutex = Mutex()
     private val repository: CharacterRepository
 
     val allCharacters: StateFlow<List<CharacterEntity>>
@@ -174,8 +179,10 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
     private fun persistCharacter(char: CharacterEntity) {
         _activeCharacter.value = char
         _computedStats.value = CharacterCalculator.compute(char)
-        viewModelScope.launch(Dispatchers.IO) {
-            repository.saveCharacter(char)
+        viewModelScope.launch {
+            characterSaveMutex.withLock {
+                withContext(Dispatchers.IO) { repository.saveCharacter(char) }
+            }
         }
     }
 
@@ -436,6 +443,15 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
         persistCharacter(curr.copy(inventoryJson = CharacterJsonAdapters.serializeInventory(list)))
     }
 
+    /** Atualiza um item em uma única gravação, sem a corrida remove/adiciona. */
+    fun updateInventoryItem(item: CharacterInventoryItem) {
+        val curr = _activeCharacter.value ?: return
+        val list = CharacterJsonAdapters.deserializeInventory(curr.inventoryJson)
+        if (list.none { it.id == item.id }) return
+        val updated = list.map { existing -> if (existing.id == item.id) item else existing }
+        persistCharacter(curr.copy(inventoryJson = CharacterJsonAdapters.serializeInventory(updated)))
+    }
+
     fun removeInventoryItem(itemId: String) {
         val curr = _activeCharacter.value ?: return
         val list = CharacterJsonAdapters.deserializeInventory(curr.inventoryJson).filter { it.id != itemId }
@@ -463,7 +479,8 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
         val curr = _activeCharacter.value ?: return false
         val items = CharacterJsonAdapters.deserializeInventory(curr.inventoryJson)
         val ammunition = items.firstOrNull {
-            it.equippedSlot == com.example.dnd35.model.Dnd35Rules.EquipmentSlots.AMMUNITION && it.quantity > 0
+            it.equippedSlot == com.example.dnd35.model.Dnd35Rules.EquipmentSlots.AMMUNITION &&
+                it.quantity > 0 && com.example.dnd35.model.remainingAmmunitionUnits(it) > 0
         } ?: return false
         val updated = com.example.dnd35.model.consumeAmmunitionStack(items, ammunition.id) ?: return false
         persistCharacter(curr.copy(inventoryJson = CharacterJsonAdapters.serializeInventory(updated)))

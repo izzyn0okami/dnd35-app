@@ -412,3 +412,58 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - A edição de um item preserva o identificador, o slot de equipamento e o estado de transporte, evitando desassociar a munição selecionada ou alterar acidentalmente se o item está na mochila.
 - Testes unitários cobrem consumo de uma unidade da pilha selecionada, remoção da última unidade, recusa de pilhas vazias e recusa de itens que não ocupam o slot de munição.
 - A validação da CI deve ser repetida para esta revisão ampliada antes do merge.
+
+
+### Fotos personalizadas para itens do inventário (2026-10-28)
+- Implementado no formulário de criação/edição de item personalizado: escolher uma imagem pela seleção de documentos do Android, visualizar a foto, trocar por outra ou removê-la.
+- O modelo CharacterInventoryItem agora possui imageUri opcional, com valor padrão nulo para manter compatibilidade com fichas antigas e itens sem imagem.
+- A URI escolhida solicita permissão de leitura persistente quando suportada pelo provedor; assim, a foto pode continuar disponível após reiniciar o aplicativo, sem copiar arquivos de imagem para o banco.
+- A lista do inventário exibe uma miniatura para itens com foto. Itens do catálogo do Livro do Jogador e registros antigos continuam funcionando sem foto.
+- A edição conserva a imagem quando o usuário não a remove; remover a foto não apaga os demais dados do item.
+- Validação pendente: executar a CI Android (compilação e testes) nesta PR antes de integrar.
+
+
+### Corrigir contagem de munição vendida em pacotes (2026-10-28)
+- Identificado que entradas como “Virotes de Besta (10)”, “Balas de Funda (10)” e “Flechas (20)” representam pacotes de múltiplos projéteis, mas o consumo em combate tratava a quantidade do inventário como se fosse o número de disparos.
+- Adicionado saldo persistente de unidades individuais de munição, mantendo a quantidade de pacotes separada para cálculo de peso/custo. O primeiro disparo de um pacote com 10 agora deixa 9 disparos, não remove o pacote; ao esgotar o conteúdo, o item é removido.
+- A aba Combate e a lista do inventário exibem as munições restantes. O estado é salvo no JSON e os registros antigos sem o novo campo continuam usando a contagem derivada do nome do pacote.
+- Incluídos testes para pacotes de 10 unidades e consumo até a transição entre pacotes. A validação da CI Android deve passar antes do merge.
+
+
+### Persistência confiável das fotos dos itens (2026-10-28)
+- Corrigida a seleção de fotos para copiar o conteúdo escolhido para o armazenamento privado do aplicativo (`filesDir/item_photos`) e gravar no item uma URI `file://` interna.
+- Isso elimina a dependência de permissões persistentes do provedor externo, que podiam falhar silenciosamente e deixar a miniatura indisponível após fechar/reabrir o app.
+- A cópia ocorre em I/O de segundo plano e o formulário informa quando não consegue salvar a imagem; a URI interna continua sendo persistida pelo serializador do inventário.
+
+
+### Corrigir gravação concorrente de itens e estado da munição (2026-10-28)
+- A edição do inventário removia o item e o adicionava em duas gravações assíncronas independentes. Isso permitia que as gravações ao banco terminassem fora de ordem, sobrescrevendo a versão nova e fazendo fotos ou estado de munição desaparecerem.
+- A edição agora substitui o item em uma única gravação do inventário, preservando o ID e os campos persistentes como `imageUri` e `ammunitionUnitsRemaining`.
+- A seleção da foto bloqueia o botão Salvar até terminar a cópia para o armazenamento privado, evitando confirmar o item antes de a URI interna estar pronta.
+- O arquivo usa uma extensão derivada do tipo MIME quando disponível, e arquivos parciais são removidos se a cópia falhar.
+- Ajustada a detecção de pacotes de “Balas de funda” (plural), que não correspondia ao texto singular usado anteriormente.
+- Adicionados testes de regressão para o reconhecimento das balas de funda e para a ida e volta JSON de foto + saldo de munição.
+- A validação final depende de CI Android verde; não integrar antes dos testes e compilação.
+
+
+### Ajustar ambiente do teste de persistência JSON (2026-10-28)
+- A CI identificou que o novo teste de ida e volta do inventário falhava no ambiente unitário Android padrão ao invocar `org.json`, antes de a compilação do APK começar.
+- O teste foi configurado para usar `RobolectricTestRunner`, já disponível nas dependências de teste do projeto, para executar as APIs Android usadas pelo serializador em vez de remover a cobertura de regressão.
+- Aguardar nova CI para confirmar se a falha era exclusivamente do ambiente de teste e se os 314+ testes passam.
+
+
+### Segunda correção do ambiente Robolectric — CI #1517 (2026-10-28)
+- A execução da CI `40672611238` voltou a falhar durante a inicialização da classe de teste, antes de executar os casos: `AmmunitionCompatibilityTest > classMethod FAILED`, com `UnsupportedOperationException` em `DefaultSdkProvider.java:170`.
+- A causa provável é a seleção automática do SDK padrão do projeto, que usa compileSdk 36.1, não suportado pelo conjunto de SDKs do Robolectric disponível nessa configuração.
+- Fixado explicitamente o SDK 35 com `@Config(sdk = [35])` no teste, mantendo a cobertura de serialização e o `RobolectricTestRunner`; não foi removido o teste para mascarar a falha.
+- **Pendente:** nova CI precisa confirmar que o runner inicializa, o teste de persistência passa e o APK compila. Não fazer merge antes disso.
+
+
+### Correção estrutural — persistência de fotos e unidades por pacote (2026-10-28)
+- A CI da revisão anterior ficou verde, mas isso só comprova testes e compilação; não comprova o comportamento real da interface nem a persistência no aparelho.
+- **Munição:** a lógica dependia principalmente do nome terminar em `(10)`, `(20)` etc. Isso não cobre nomes personalizados ou nomes cadastrados sem essa convenção. Adicionado o campo persistente `ammunitionUnitsPerPackage`; a tela de item agora permite informar quantas unidades há em cada pacote (1 = item avulso). O nome ainda sugere automaticamente um tamanho inicial quando termina em `(N)`, mas o valor passa a ser explícito e persistido depois de salvar/consumir.
+- Ao editar outros campos, o saldo de munição é preservado; se a quantidade de pacotes for alterada, o saldo é recalculado a partir da quantidade e do tamanho do pacote. A seleção de munição também ignora pilhas já esgotadas.
+- **Fotos:** o seletor continua copiando a imagem para o armazenamento privado do app. Foi acrescentada uma tentativa de manter a permissão de leitura da URI original enquanto a cópia é feita e uma verificação explícita de criação da pasta. O app não precisa de permissão geral de armazenamento para gravar em `filesDir`; solicitar `READ_EXTERNAL_STORAGE` ou `MANAGE_EXTERNAL_STORAGE` não é a correção adequada para esse fluxo.
+- **Persistência geral:** identificado que `persistCharacter` iniciava gravações independentes no dispatcher IO; gravações concorrentes podiam terminar fora de ordem e gravar um snapshot antigo do personagem, revertendo mudanças recentes no inventário. As gravações agora são serializadas por um `Mutex` antes de acessar o repositório.
+- **Regressão:** teste adicionado para pacote personalizado sem quantidade no nome e teste JSON ampliado para confirmar que o tamanho explícito do pacote é persistido.
+- **Validação pendente:** executar nova CI após estas alterações e testar no dispositivo: criar/editar item com foto, fechar e reabrir a ficha, reiniciar o app e verificar a miniatura; testar munição avulsa, pacote de 10 e pacote personalizado. Não fazer merge antes da CI verde.
