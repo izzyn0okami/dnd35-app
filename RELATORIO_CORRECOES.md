@@ -275,3 +275,13 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - Corrigida a exibição de identificadores internos do enum (`FULL`, `THREE_QUARTERS`, `HALF`) no cartão da classe. A interface agora mostra rótulos em português: progressão integral, de três quartos e de metade, explicando BBA como Bônus Base de Ataque.
 - Alteração somente de apresentação; cálculos e enums não foram modificados. Testes unitários cobrem os três rótulos.
 - Aguardar CI antes do merge.
+
+
+## Correção do cálculo informativo de pontos de perícia (2026-10-27)
+
+- A estimativa total já aplica o multiplicador x4 ao primeiro nível do personagem e soma os níveis seguintes normalmente; a regressão estava no modelo de interface/gestão da classe inicial e na apresentação do orçamento.
+- A aba Perícias agora identifica os pontos gastos e o total estimado como valores informativos, sem apresentar saldo/excesso como um orçamento de bloqueio.
+- Removido o bloqueio que impedia registrar idioma comprado quando os gastos estimados ultrapassavam os pontos calculados. A validação do nível do personagem e duplicidade de idioma permanece.
+- A janela de multiclasse identifica a primeira classe como “Inicial” e não permite removê-la, para que uma classe posterior não herde indevidamente o multiplicador x4. As classes posteriores continuam removíveis.
+- Testes de regressão reforçam que somente a primeira entrada da lista de classes recebe o multiplicador de primeiro nível.
+- Validação pendente: executar testes Android/Gradle e CI na PR antes de integrar.
