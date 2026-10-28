@@ -268,7 +268,7 @@ fun AddEditItemDialog(
                             value = name,
                             onValueChange = {
                                 name = it
-                                val inferred = Regex("\\\\((\\\\d+)\\\\)$").find(it.trim())?.groupValues?.getOrNull(1)
+                                val inferred = Regex("\\((\\d+)\\)$").find(it.trim())?.groupValues?.getOrNull(1)
                                 if (ammoUnitsPerPackageText == "1" && inferred != null) ammoUnitsPerPackageText = inferred
                             },
                             label = { Text("Nome do Item") },
