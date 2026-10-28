@@ -421,3 +421,10 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - A lista do inventário exibe uma miniatura para itens com foto. Itens do catálogo do Livro do Jogador e registros antigos continuam funcionando sem foto.
 - A edição conserva a imagem quando o usuário não a remove; remover a foto não apaga os demais dados do item.
 - Validação pendente: executar a CI Android (compilação e testes) nesta PR antes de integrar.
+
+
+### Corrigir contagem de munição vendida em pacotes (2026-10-28)
+- Identificado que entradas como “Virotes de Besta (10)”, “Balas de Funda (10)” e “Flechas (20)” representam pacotes de múltiplos projéteis, mas o consumo em combate tratava a quantidade do inventário como se fosse o número de disparos.
+- Adicionado saldo persistente de unidades individuais de munição, mantendo a quantidade de pacotes separada para cálculo de peso/custo. O primeiro disparo de um pacote com 10 agora deixa 9 disparos, não remove o pacote; ao esgotar o conteúdo, o item é removido.
+- A aba Combate e a lista do inventário exibem as munições restantes. O estado é salvo no JSON e os registros antigos sem o novo campo continuam usando a contagem derivada do nome do pacote.
+- Incluídos testes para pacotes de 10 unidades e consumo até a transição entre pacotes. A validação da CI Android deve passar antes do merge.
