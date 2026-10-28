@@ -116,6 +116,20 @@ class EquipmentCatalogCoverageTest {
         assertEquals(0.01f, byName[normalize("Pedágio (estrada ou portão)")]!!.costGp, 0.001f)
     }
 
+
+    @Test
+    fun matchesPlayerHandbookLampChalkAndInkEntries() {
+        val byName = Dnd35Rules.PRESET_ITEMS.associateBy { normalize(it.name) }
+        listOf("Lâmpada", "Giz (1 pedaço)", "Tinta (vidro de 30 ml)")
+            .forEach { assertTrue("Item da Tabela 7-8 ausente: $it", normalize(it) in names) }
+        assertEquals(1.0f, byName[normalize("Lâmpada")]!!.costGp, 0.001f)
+        assertEquals(1.1f, byName[normalize("Lâmpada")]!!.weightLb, 0.01f)
+        assertEquals(0.01f, byName[normalize("Giz (1 pedaço)")]!!.costGp, 0.001f)
+        assertEquals(0.0f, byName[normalize("Giz (1 pedaço)")]!!.weightLb, 0.0f)
+        assertEquals(8.0f, byName[normalize("Tinta (vidro de 30 ml)")]!!.costGp, 0.001f)
+        assertEquals(0.0f, byName[normalize("Tinta (vidro de 30 ml)")]!!.weightLb, 0.0f)
+    }
+
     @Test
     fun catalogNamesAreUniqueIgnoringAccentsAndCase() {
         val normalized = Dnd35Rules.PRESET_ITEMS.map { normalize(it.name) }

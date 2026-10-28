@@ -341,3 +341,13 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - **Serviços de preço fixo:** adicionados condução de carroça, mensageiro, passagem de navio, trabalhador treinado, trabalhador sem treinamento e pedágio, preservando as unidades de cobrança (por 1,5 km, por dia ou por passagem) no nome/descrição.
 - **Limite do modelo:** os serviços de conjuração têm preço variável conforme nível de conjurador e nível da magia; não foram cadastrados como itens de preço zero, pois isso confundiria ausência de preço fixo com gratuidade. A armadura de montaria também depende do tipo e tamanho da criatura e da armadura-base, portanto requer cálculo/representação própria em vez de um item genérico com preço arbitrário.
 - **Compatibilidade e regressão:** mantidos os campos e slots existentes. Testes cobrem os nomes adicionados, conversões de custo/peso e unicidade dos nomes normalizados.
+
+
+## Correções pontuais da Tabela 7-8 — nomes e unidades (2026-10-28)
+
+- Conferido diretamente no PDF brasileiro do Livro do Jogador, capítulo 7, Tabela 7-8, página impressa 108 (página 112 do arquivo PDF).
+- **Giz:** nome corrigido para “Giz (1 pedaço)” e preço ajustado para 1 PC = 0,01 PO; peso mantido como zero no modelo porque a tabela usa traço e não informa peso.
+- **Lâmpada:** adicionada com preço de 1 PO e peso de 0,5 kg convertido para 1,1 lb.
+- **Tinta:** nome normalizado para “Tinta (vidro de 30 ml)”, seguindo a tabela; preço de 8 PO e peso não informado preservados.
+- O item “Papel (folha)” existente não foi tratado como entrada confirmada da Tabela 7-8 nesta verificação; não se acrescentou nenhuma informação normativa sem evidência direta na tabela.
+- Testes de regressão cobrem os três nomes e seus custos/pesos. Nomes do catálogo foram revalidados sem diferenciar acentos e caixa.

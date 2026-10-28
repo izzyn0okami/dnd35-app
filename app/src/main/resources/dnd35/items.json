@@ -1296,16 +1296,16 @@
     "properties": "Restringe os movimentos de uma criatura"
   },
   {
-    "name": "Giz (1 unidade)",
+    "name": "Giz (1 pedaço)",
     "category": "Itens de Aventura",
     "defaultSlot": "Mochila (Não Equipado)",
     "weightLb": 0,
-    "costGp": 0.1,
+    "costGp": 0.01,
     "damageOrAc": "-",
     "properties": "Marcar superfícies"
   },
   {
-    "name": "Tinta (frasco de 30 ml)",
+    "name": "Tinta (vidro de 30 ml)",
     "category": "Itens de Aventura",
     "defaultSlot": "Mochila (Não Equipado)",
     "weightLb": 0,
@@ -2743,5 +2743,14 @@
     "costGp": 0.01,
     "damageOrAc": "—",
     "properties": "Serviço; custo por passagem conforme a Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Lâmpada",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 1.1,
+    "costGp": 1,
+    "damageOrAc": "—",
+    "properties": "Fonte de iluminação; custo e peso conforme Tabela 7-8 do Livro do Jogador"
   }
 ]
