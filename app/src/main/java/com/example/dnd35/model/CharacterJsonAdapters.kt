@@ -171,6 +171,7 @@ object CharacterJsonAdapters {
             obj.put("equipped", item.equipped)
             obj.put("equippedSlot", item.equippedSlot)
             obj.put("notes", item.notes)
+            obj.put("inBackpack", item.inBackpack)
             array.put(obj)
         }
         return array.toString()
@@ -206,7 +207,8 @@ object CharacterJsonAdapters {
                         damageOrAc = obj.optString("damageOrAc", ""),
                         equipped = isEq,
                         equippedSlot = obj.optString("equippedSlot", defaultSlot),
-                        notes = obj.optString("notes", "")
+                        notes = obj.optString("notes", ""),
+                        inBackpack = obj.optBoolean("inBackpack", true)
                     )
                 )
             }

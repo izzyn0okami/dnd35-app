@@ -102,8 +102,21 @@ data class CharacterInventoryItem(
     val damageOrAc: String = "",
     val equipped: Boolean = false,
     val equippedSlot: String = Dnd35Rules.EquipmentSlots.NONE,
-    val notes: String = ""
+    val notes: String = "",
+    val inBackpack: Boolean = true
 )
+
+/** Consome uma unidade da pilha explicitamente selecionada no slot de munição. */
+fun consumeAmmunitionStack(items: List<CharacterInventoryItem>, ammunitionItemId: String): List<CharacterInventoryItem>? {
+    val ammunition = items.firstOrNull {
+        it.id == ammunitionItemId && it.equippedSlot == Dnd35Rules.EquipmentSlots.AMMUNITION && it.quantity > 0
+    } ?: return null
+    return if (ammunition.quantity > 1) {
+        items.map { if (it.id == ammunition.id) it.copy(quantity = it.quantity - 1) else it }
+    } else {
+        items.filterNot { it.id == ammunition.id }
+    }
+}
 data class CharacterFeat(
     val id: String = UUID.randomUUID().toString(),
     val name: String,
