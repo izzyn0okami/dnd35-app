@@ -37,11 +37,11 @@ object FeatPrerequisiteChecker {
     private val abilityRequirement = Regex("\\b(for|str|des|dex|con|int|sab|wis|car|cha)\\s*(\\d+)\\b")
     private val babRequirement = Regex("\\bbba\\s*\\+?\\s*(\\d+)\\b")
     private val skillRequirement = Regex("^(.+?)\\s+(\\d+)\\s+graduacoes?$")
-    private val characterLevelRequirement = Regex("^(\\d+)[º°o]?\\s+nível de personagem$")
-    private val casterLevelRequirement = Regex("^conjurador de (\\d+)[º°o]?\\s+nível$")
-    private val casterLevelRequirementReversed = Regex("^(\\d+)[º°o]?\\s+nível de conjurador$")
-    private val classLevelRequirement = Regex("^(\\d+)[º°o]?\\s+nível de (.+)$")
-    private val classLevelRequirementReversed = Regex("^(.+?)\\s+(\\d+)[º°o]?\\s+nível$")
+    private val characterLevelRequirement = Regex("^(\\d+)[º°o]?\\s+nivel de personagem$")
+    private val casterLevelRequirement = Regex("^conjurador de (\\d+)[º°o]?\\s+nivel$")
+    private val casterLevelRequirementReversed = Regex("^(\\d+)[º°o]?\\s+nivel de conjurador$")
+    private val classLevelRequirement = Regex("^(\\d+)[º°o]?\\s+nivel de (.+)$")
+    private val classLevelRequirementReversed = Regex("^(.+?)\\s+(\\d+)[º°o]?\\s+nivel$")
 
     private val metamagicFeats = setOf(
         "acelerar magia", "aumentar magia", "estender magia", "maximizar magia",
@@ -103,7 +103,7 @@ object FeatPrerequisiteChecker {
                     if (actual < required) unmet += "$clause (maior nível de conjurador registrado: $actual)"
                 }
                 normalized.startsWith("capacidade de conjurar magias de ") -> {
-                    val match = Regex("magias de (\\d+)[º°o]? nível").find(normalized)
+                    val match = Regex("magias de (\\d+)[º°o]? nivel").find(normalized)
                     val requiredSpellLevel = match?.groupValues?.get(1)?.toIntOrNull()
                     if (requiredSpellLevel == null) {
                         unverified += clause
@@ -164,7 +164,7 @@ object FeatPrerequisiteChecker {
         if (matchingFeat != null) {
             val hasFeat = stats.feats.any { normalize(it.name) == matchingFeat }
             if (!hasFeat) unmet += clause
-            if (normalized.contains("mesma escola") || normalized.contains("arma escolhida")) {
+            if (normalized.contains("mesma escola") || normalized.contains("arma escolhida") || normalized.contains("foco em magia (")) {
                 unverified += "$clause (a escola/arma escolhida não é registrada)"
             }
         } else {
