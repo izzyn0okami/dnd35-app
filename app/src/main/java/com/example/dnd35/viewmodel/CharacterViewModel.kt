@@ -31,6 +31,9 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
+import kotlinx.coroutines.withContext
 
 internal fun isValidEditedSkillRanks(ranks: Float): Boolean {
     if (!ranks.isFinite() || ranks < 0f) return false
@@ -114,6 +117,8 @@ internal fun calculateHpAdjustment(currentHp: Int, maxHp: Int, tempHp: Int, delt
 
 class CharacterViewModel(application: Application) : AndroidViewModel(application) {
 
+    // Serializa snapshots do personagem para que gravações concorrentes não sobrescrevam estados mais recentes.
+    private val characterSaveMutex = Mutex()
     private val repository: CharacterRepository
 
     val allCharacters: StateFlow<List<CharacterEntity>>
@@ -174,8 +179,10 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
     private fun persistCharacter(char: CharacterEntity) {
         _activeCharacter.value = char
         _computedStats.value = CharacterCalculator.compute(char)
-        viewModelScope.launch(Dispatchers.IO) {
-            repository.saveCharacter(char)
+        viewModelScope.launch {
+            characterSaveMutex.withLock {
+                withContext(Dispatchers.IO) { repository.saveCharacter(char) }
+            }
         }
     }
 
