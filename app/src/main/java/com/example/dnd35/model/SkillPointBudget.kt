@@ -30,6 +30,47 @@ fun estimateSkillPointsForLevel(
 
 
 /**
+ * Estima o total de pontos de perícia disponíveis ao personagem, somando automaticamente
+ * do 1º nível até o nível atual — incluindo multiclasse — sem depender de nenhum registro
+ * manual por nível. Usa o INT atual para todos os níveis (se o INT mudou ao longo da
+ * carreira, o total não é recalculado retroativamente; é uma estimativa, como o resto
+ * deste arquivo). Nulo se não houver classes ou alguma classe for desconhecida.
+ *
+ * Regra 3.5: o multiplicador x4 e o bônus racial de 1º nível (ex.: Humano +4) valem só
+ * para o 1º nível do PERSONAGEM, não o 1º nível de cada classe tomada em multiclasse.
+ * Por isso a primeira entrada de [classEntries] é tratada como a classe inicial — só o
+ * primeiro nível dela recebe o multiplicador — e toda classe seguinte (e os demais
+ * níveis da classe inicial) seguem a regra normal de nível seguinte.
+ */
+fun estimateTotalSkillPoints(
+    classEntries: List<CharacterClassEntry>,
+    intelligenceModifier: Int,
+    raceName: String
+): Int? {
+    if (classEntries.isEmpty()) return null
+    val human = raceName.equals("Humano", ignoreCase = true)
+    var total = 0
+    for ((index, entry) in classEntries.withIndex()) {
+        val classInfo = Dnd35Rules.CLASSES.firstOrNull {
+            it.name.equals(entry.className.trim(), ignoreCase = true)
+        } ?: return null
+        val perLevel = (classInfo.skillPointsPerLevel + intelligenceModifier).coerceAtLeast(1)
+        val levels = entry.level.coerceAtLeast(0)
+        if (levels == 0) continue
+        if (index == 0) {
+            // Classe inicial: 1º nível do personagem (multiplicado) + demais níveis dela (normais).
+            total += perLevel * 4 + (if (human) 4 else 0)
+            val remainingLevels = levels - 1
+            total += remainingLevels * perLevel + remainingLevels * (if (human) 1 else 0)
+        } else {
+            // Classe tomada depois: todos os seus níveis seguem a regra de nível seguinte.
+            total += levels * perLevel + levels * (if (human) 1 else 0)
+        }
+    }
+    return total
+}
+
+/**
  * Analisa gastos por perícia para um novo registro de nível.
  * Pontos de perícia são inteiros; graduações fracionárias não significam
  * gasto fracionário (uma perícia entreclasse consome 1 ponto para meia graduação).

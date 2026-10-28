@@ -53,9 +53,7 @@ import com.example.dnd35.model.CharacterJsonAdapters
 import com.example.dnd35.model.LanguageRules
 import com.example.dnd35.model.LanguageAcquisition
 import com.example.dnd35.model.LanguageAcquisitionSource
-import com.example.dnd35.model.SkillPointAllocation
 import com.example.dnd35.model.ComputedSkill
-import com.example.dnd35.model.estimateSkillPointsForLevel
 import com.example.dnd35.ui.dialogs.DiceRollDialog
 import com.example.dnd35.viewmodel.CharacterViewModel
 import com.example.dnd35.viewmodel.isValidEditedSkillRanks
@@ -79,28 +77,23 @@ fun SkillsTab(
 
     val maxClassRank = stats.totalCharacterLevel + 3
     val maxCrossRank = maxClassRank / 2.0f
-    val skillPointHistory = CharacterJsonAdapters.deserializeSkillPointHistory(character.skillPointHistoryJson)
-    val skillPointHistoryTotal = com.example.dnd35.model.calculateSkillPointHistoryTotal(
-        skillPointHistory,
-        stats.totalCharacterLevel
+
+    // Orçamento de pontos de perícia: calculado automaticamente do 1º nível até o atual
+    // (incluindo multiclasse), sem depender de nenhum registro manual por nível.
+    val languageAcquisitions = CharacterJsonAdapters.deserializeLanguageAcquisitions(character.languageAcquisitionsJson)
+    val languagePurchasePointsSpent = languageAcquisitions
+        .filter { it.source == LanguageAcquisitionSource.PURCHASED }
+        .sumOf { it.pointsSpent.toDouble() }
+    val skillRankPointsSpent = stats.computedSkills.sumOf {
+        it.ranks.toDouble() * if (it.isClassSkill) 1.0 else 2.0
+    }
+    val totalSkillPointsSpent = skillRankPointsSpent + languagePurchasePointsSpent
+    val totalAvailableSkillPoints = com.example.dnd35.model.estimateTotalSkillPoints(
+        stats.classEntries,
+        stats.intMod,
+        character.race
     )
-    val hasCompleteSkillPointHistory = skillPointHistoryTotal.isComplete
-    val currentLevelSkillPointHistory = skillPointHistory.filter {
-        it.characterLevel in 1..stats.totalCharacterLevel
-    }
-    val totalAvailableSkillPoints = if (hasCompleteSkillPointHistory) {
-        currentLevelSkillPointHistory.sumOf { it.availablePoints.toDouble() }
-    } else {
-        null
-    }
-    val totalSkillPointsSpent = if (hasCompleteSkillPointHistory) {
-        skillPointHistoryTotal.pointsSpent.toDouble()
-    } else {
-        stats.computedSkills.sumOf {
-            it.ranks.toDouble() * if (it.isClassSkill) 1.0 else 2.0
-        }
-    }
-    val recordedSkillPointBalance = totalAvailableSkillPoints?.minus(skillPointHistoryTotal.pointsSpent.toDouble())
+    val skillPointBalance = totalAvailableSkillPoints?.minus(totalSkillPointsSpent)
 
     val filteredSkills = stats.computedSkills.filter {
         val matchesQuery = it.skill.name.contains(searchQuery, ignoreCase = true) ||
@@ -139,24 +132,24 @@ fun SkillsTab(
                             color = MaterialTheme.colorScheme.onPrimaryContainer
                         )
                         Text(
-                            "${if (hasCompleteSkillPointHistory) "Pontos gastos (histórico completo)" else "Pontos gastos (estimativa atual)"}: ${String.format("%.1f", totalSkillPointsSpent)} pts",
+                            "Pontos gastos (perícias + idiomas comprados): ${String.format("%.1f", totalSkillPointsSpent)} pts",
                             style = MaterialTheme.typography.labelSmall,
                             color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.8f)
                         )
-                        if (hasCompleteSkillPointHistory && totalAvailableSkillPoints != null && recordedSkillPointBalance != null) {
+                        if (totalAvailableSkillPoints != null && skillPointBalance != null) {
                             Text(
-                                "Orçamento registrado: ${String.format("%.1f", totalAvailableSkillPoints)} pts • " +
+                                "Pontos disponíveis (cálculo automático, 1º nível + seguintes): $totalAvailableSkillPoints pts • " +
                                     when {
-                                        recordedSkillPointBalance < -0.001 -> "excesso de ${String.format("%.1f", -recordedSkillPointBalance)} pts"
-                                        recordedSkillPointBalance > 0.001 -> "saldo: ${String.format("%.1f", recordedSkillPointBalance)} pts"
+                                        skillPointBalance < -0.001 -> "excesso de ${String.format("%.1f", -skillPointBalance)} pts"
+                                        skillPointBalance > 0.001 -> "saldo: ${String.format("%.1f", skillPointBalance)} pts"
                                         else -> "saldo: 0 pts"
                                     },
                                 style = MaterialTheme.typography.labelSmall,
-                                color = if (recordedSkillPointBalance < -0.001) DndCrimson else MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.8f)
+                                color = if (skillPointBalance < -0.001) DndCrimson else MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.8f)
                             )
                         } else {
                             Text(
-                                "Saldo disponível: indisponível — registre o orçamento e os gastos de todos os níveis atuais.",
+                                "Não foi possível calcular o orçamento automaticamente (classe desconhecida).",
                                 style = MaterialTheme.typography.labelSmall,
                                 color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.8f)
                             )
@@ -245,7 +238,7 @@ fun SkillsTab(
             var languageLevelInput by remember(character.id) { mutableStateOf("") }
             var languageAcquisitionError by remember(character.id) { mutableStateOf<String?>(null) }
             val languages = CharacterJsonAdapters.deserializeLanguages(character.languagesJson)
-            val acquisitions = CharacterJsonAdapters.deserializeLanguageAcquisitions(character.languageAcquisitionsJson)
+            val acquisitions = languageAcquisitions
             fun addLanguage(language: String) {
                 val cleaned = language.trim()
                 if (cleaned.isEmpty()) return
@@ -269,33 +262,10 @@ fun SkillsTab(
                         languageAcquisitionError = "Informe um nível de personagem válido, entre 1 e ${stats.totalCharacterLevel}."
                         return
                     }
-                    val recordsForLevel = skillPointHistory.filter { it.characterLevel == level }
-                    if (recordsForLevel.isEmpty()) {
-                        languageAcquisitionError = "Registre primeiro o orçamento de perícias desse nível para contabilizar o ponto."
+                    if (totalAvailableSkillPoints != null && totalSkillPointsSpent + 1.0 > totalAvailableSkillPoints) {
+                        languageAcquisitionError = "Não há pontos de perícia disponíveis para comprar este idioma (orçamento calculado automaticamente)."
                         return
                     }
-                    if (recordsForLevel.size != 1) {
-                        languageAcquisitionError = "Há registros duplicados nesse nível. Corrija o histórico antes de contabilizar o idioma."
-                        return
-                    }
-                    val levelRecord = recordsForLevel.single()
-                    val languageAllocationName = "Falar Idioma ($cleaned)"
-                    if (levelRecord.allocations.any { it.skillName.equals(languageAllocationName, ignoreCase = true) }) {
-                        languageAcquisitionError = "Esse gasto já consta no histórico de perícias."
-                        return
-                    }
-                    val alreadySpent = levelRecord.allocations.sumOf { it.pointsSpent.toDouble() }
-                    if (alreadySpent + 1.0 > levelRecord.availablePoints.toDouble()) {
-                        languageAcquisitionError = "Não há ponto disponível nesse nível no histórico registrado."
-                        return
-                    }
-                    viewModel.updateSkillPointHistory(
-                        skillPointHistory.map { record ->
-                            if (record.characterLevel == level) record.copy(
-                                allocations = record.allocations + SkillPointAllocation(languageAllocationName, 1f)
-                            ) else record
-                        }
-                    )
                 }
                 viewModel.updateLanguages(languages + cleaned)
                 viewModel.updateLanguageAcquisitions(acquisitions + acquisition)
@@ -439,19 +409,8 @@ fun SkillsTab(
                                     }
                                 }
                                 IconButton(onClick = {
-                                    val removedAcquisition = acquisition
-                                    if (removedAcquisition?.source == LanguageAcquisitionSource.PURCHASED) {
-                                        val allocationName = "Falar Idioma (${removedAcquisition.language})"
-                                        viewModel.updateSkillPointHistory(
-                                            skillPointHistory.map { record ->
-                                                if (record.characterLevel == removedAcquisition.characterLevel) {
-                                                    record.copy(allocations = record.allocations.filterNot {
-                                                        it.skillName.equals(allocationName, ignoreCase = true)
-                                                    })
-                                                } else record
-                                            }
-                                        )
-                                    }
+                                    // O ponto gasto é contado a partir de LanguageAcquisition.pointsSpent
+                                    // (orçamento automático), então removê-lo daqui já libera o ponto.
                                     viewModel.updateLanguages(languages.filterNot { it == language })
                                     viewModel.updateLanguageAcquisitions(acquisitions.filterNot { it.language.equals(language, ignoreCase = true) })
                                 }) {
@@ -525,157 +484,6 @@ fun SkillsTab(
                             style = MaterialTheme.typography.bodySmall,
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
-                    }
-                }
-            }
-            Spacer(modifier = Modifier.height(12.dp))
-        }
-        // Histórico explícito de orçamento de pontos de perícia
-        item {
-            var levelInput by remember(character.id) { mutableStateOf("") }
-            var classInput by remember(character.id) { mutableStateOf("") }
-            var availableInput by remember(character.id) { mutableStateOf("") }
-            var allocationsInput by remember(character.id) { mutableStateOf("") }
-            val history = CharacterJsonAdapters.deserializeSkillPointHistory(character.skillPointHistoryJson)
-            val parsedAllocations = remember(allocationsInput) {
-                com.example.dnd35.model.parseSkillPointAllocations(allocationsInput)
-            }
-            val level = levelInput.toIntOrNull()
-            val available = com.example.dnd35.model.parseWholeSkillPointBudget(availableInput)
-            val estimatedBudget = estimateSkillPointsForLevel(
-                className = classInput.trim(),
-                characterLevel = level ?: 0,
-                intelligenceModifier = stats.intMod,
-                raceName = character.race
-            )
-            val duplicateLevel = level != null && history.any { it.characterLevel == level }
-            val allocationsValid = parsedAllocations != null
-            val canSave = level != null && level >= 1 && classInput.isNotBlank() &&
-                available != null &&
-                allocationsValid && !duplicateLevel
-
-            Card(
-                modifier = Modifier.fillMaxWidth().testTag("skill_point_history_section"),
-                shape = RoundedCornerShape(12.dp)
-            ) {
-                Column(modifier = Modifier.padding(12.dp)) {
-                    Text("Orçamento de pontos de perícia", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
-                    Text(
-                        "Registre cada nível separadamente. A estimativa usa a INT atual e serve como referência; se o modificador mudou, informe o orçamento histórico confirmado. O aplicativo não deduz gastos pelas graduações atuais.",
-                        style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
-                    )
-                    Spacer(modifier = Modifier.height(8.dp))
-                    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                        OutlinedTextField(
-                            value = levelInput,
-                            onValueChange = { levelInput = it.filter(Char::isDigit).take(2) },
-                            label = { Text("Nível") },
-                            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                            modifier = Modifier.weight(0.7f),
-                            singleLine = true
-                        )
-                        OutlinedTextField(
-                            value = classInput,
-                            onValueChange = { classInput = it },
-                            label = { Text("Classe do nível") },
-                            modifier = Modifier.weight(1.5f),
-                            singleLine = true
-                        )
-                    }
-                    OutlinedTextField(
-                        value = availableInput,
-                        onValueChange = { availableInput = it },
-                        label = { Text("Pontos disponíveis (inteiro)") },
-                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                        modifier = Modifier.fillMaxWidth(),
-                        singleLine = true
-                    )
-                    if (estimatedBudget != null) {
-                        Text(
-                            "Estimativa pelas regras: $estimatedBudget ponto(s), usando a INT atual (${if (stats.intMod >= 0) "+" else ""}${stats.intMod}) e a raça cadastrada. Se a INT mudou, informe o orçamento histórico confirmado.",
-                            style = MaterialTheme.typography.bodySmall,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant
-                        )
-                        OutlinedButton(
-                            onClick = { availableInput = estimatedBudget.toString() },
-                            modifier = Modifier.fillMaxWidth()
-                        ) { Text("Usar estimativa") }
-                    }
-                    OutlinedTextField(
-                        value = allocationsInput,
-                        onValueChange = { allocationsInput = it },
-                        label = { Text("Gastos por perícia") },
-                        placeholder = { Text("Atuação=2\nOuvir=1\nEscalar=1") },
-                        supportingText = { Text("Uma linha por perícia: nome=pontos inteiros gastos. Não repita nomes; meia graduação entreclasse custa 1 ponto.") },
-                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
-                        modifier = Modifier.fillMaxWidth(),
-                        minLines = 2,
-                        maxLines = 5
-                    )
-                    if (duplicateLevel) {
-                        Text("Já existe um registro para esse nível. Remova-o antes de cadastrá-lo novamente.", color = DndCrimson, style = MaterialTheme.typography.bodySmall)
-                    }
-                    if (!allocationsValid) {
-                        Text("Confira os gastos: use nome=pontos inteiros não negativos, sem repetir perícias.", color = DndCrimson, style = MaterialTheme.typography.bodySmall)
-                    }
-                    Spacer(modifier = Modifier.height(8.dp))
-                    Button(
-                        onClick = {
-                            val record = com.example.dnd35.model.SkillPointLevelRecord(
-                                characterLevel = level!!,
-                                className = classInput.trim(),
-                                availablePoints = available!!.toFloat(),
-                                allocations = parsedAllocations!!
-                            )
-                            viewModel.updateSkillPointHistory(history + record)
-                            levelInput = ""
-                            classInput = ""
-                            availableInput = ""
-                            allocationsInput = ""
-                        },
-                        enabled = canSave,
-                        modifier = Modifier.fillMaxWidth()
-                    ) { Text("Registrar nível") }
-
-                    if (history.isNotEmpty()) {
-                        Spacer(modifier = Modifier.height(8.dp))
-                        Text("Histórico registrado", style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.Bold)
-                        history.withIndex().sortedBy { it.value.characterLevel }.forEach { (recordIndex, indexedRecord) ->
-                            val record = indexedRecord
-                            val spent = record.allocations.sumOf { it.pointsSpent.toDouble() }.toFloat()
-                            val difference = record.availablePoints - spent
-                            Row(
-                                modifier = Modifier.fillMaxWidth(),
-                                verticalAlignment = Alignment.CenterVertically
-                            ) {
-                                Column(modifier = Modifier.weight(1f)) {
-                                    Text("Nível ${record.characterLevel} — ${record.className}", fontWeight = FontWeight.SemiBold)
-                                    if (record.characterLevel > character.level) {
-                                        Text(
-                                            "Acima do nível atual (${character.level}); preservado, mas não entra no total de pontos gastos.",
-                                            style = MaterialTheme.typography.bodySmall,
-                                            color = MaterialTheme.colorScheme.tertiary
-                                        )
-                                    }
-                                    val status = when {
-                                        difference < -0.001f -> "Excede o orçamento em ${String.format("%.1f", -difference)} ponto(s)"
-                                        difference > 0.001f -> "Restam ${String.format("%.1f", difference)} ponto(s) sem alocação"
-                                        else -> "Gastos correspondem ao orçamento"
-                                    }
-                                    Text(
-                                        "${String.format("%.1f", spent)} / ${String.format("%.1f", record.availablePoints)} pontos — $status",
-                                        style = MaterialTheme.typography.bodySmall,
-                                        color = if (difference < -0.001f) DndCrimson else MaterialTheme.colorScheme.onSurfaceVariant
-                                    )
-                                }
-                                IconButton(onClick = {
-                                    viewModel.updateSkillPointHistory(history.filterIndexed { index, _ -> index != recordIndex })
-                                }) {
-                                    Icon(Icons.Default.Remove, contentDescription = "Remover histórico do nível ${record.characterLevel}")
-                                }
-                            }
-                        }
                     }
                 }
             }

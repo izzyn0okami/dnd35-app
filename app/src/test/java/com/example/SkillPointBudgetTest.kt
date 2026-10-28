@@ -1,9 +1,11 @@
 package com.example
 
+import com.example.dnd35.model.CharacterClassEntry
 import com.example.dnd35.model.SkillPointAllocation
 import com.example.dnd35.model.SkillPointLevelRecord
 import com.example.dnd35.model.calculateSkillPointHistoryTotal
 import com.example.dnd35.model.estimateSkillPointsForLevel
+import com.example.dnd35.model.estimateTotalSkillPoints
 import com.example.dnd35.model.parseSkillPointAllocations
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
@@ -118,6 +120,58 @@ class SkillPointBudgetTest {
         val result = calculateSkillPointHistoryTotal(history, totalCharacterLevel = 2)
 
         assertEquals(false, result.isComplete)
+    }
+
+    @Test
+    fun totalEstimateSumsSingleClassLevelsWithFirstLevelMultiplierOnlyOnce() {
+        // Guerreiro Humano nível 3, Int 0: 1º nível (2+0)x4+4 humano = 12; níveis 2 e 3 normais (2+1 cada) = 3+3.
+        assertEquals(
+            18,
+            estimateTotalSkillPoints(
+                listOf(CharacterClassEntry("Guerreiro", 3)),
+                intelligenceModifier = 0,
+                raceName = "Humano"
+            )
+        )
+    }
+
+    @Test
+    fun totalEstimateAppliesMultiplierOnlyToTheFirstClassEnteredNotEveryClasssFirstLevel() {
+        // Guerreiro 1 (classe inicial) + Ladino 2 (multiclasse), Humano, Int +1:
+        // nível 1 (Guerreiro) multiplicado: (2+1)x4+4 = 16; níveis 2 e 3 (Ladino, normais): (8+1)+1 cada = 10+10.
+        assertEquals(
+            36,
+            estimateTotalSkillPoints(
+                listOf(CharacterClassEntry("Guerreiro", 1), CharacterClassEntry("Ladino", 2)),
+                intelligenceModifier = 1,
+                raceName = "Humano"
+            )
+        )
+    }
+
+    @Test
+    fun totalEstimateHasNoRacialBonusForNonHumans() {
+        // Elfo Mago nível 2, Int 3: 1º nível (2+3)x4 = 20; 2º nível normal (2+3) = 5.
+        assertEquals(
+            25,
+            estimateTotalSkillPoints(
+                listOf(CharacterClassEntry("Mago", 2)),
+                intelligenceModifier = 3,
+                raceName = "Elfo"
+            )
+        )
+    }
+
+    @Test
+    fun totalEstimateIsNullForEmptyOrUnknownClasses() {
+        assertNull(estimateTotalSkillPoints(emptyList(), intelligenceModifier = 2, raceName = "Humano"))
+        assertNull(
+            estimateTotalSkillPoints(
+                listOf(CharacterClassEntry("Classe inexistente", 1)),
+                intelligenceModifier = 2,
+                raceName = "Humano"
+            )
+        )
     }
 
 }
