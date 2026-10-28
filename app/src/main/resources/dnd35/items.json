@@ -2311,23 +2311,5 @@
     "costGp": 0.01,
     "damageOrAc": "—",
     "properties": "Ilumina como uma tocha por 1 hora"
-  },
-  {
-    "name": "Tenda (duas pessoas)",
-    "category": "Itens de Aventura",
-    "defaultSlot": "Mochila (Não Equipado)",
-    "weightLb": 22,
-    "costGp": 10,
-    "damageOrAc": "—",
-    "properties": "Tenda simples para duas pessoas"
-  },
-  {
-    "name": "Tenda (uma pessoa)",
-    "category": "Itens de Aventura",
-    "defaultSlot": "Mochila (Não Equipado)",
-    "weightLb": 11,
-    "costGp": 5,
-    "damageOrAc": "—",
-    "properties": "Tenda simples para uma pessoa"
   }
 ]
