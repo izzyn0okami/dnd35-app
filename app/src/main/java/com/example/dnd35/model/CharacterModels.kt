@@ -102,27 +102,19 @@ data class CharacterInventoryItem(
     val damageOrAc: String = "",
     val equipped: Boolean = false,
     val equippedSlot: String = Dnd35Rules.EquipmentSlots.NONE,
-    val notes: String = ""
+    val notes: String = "",
+    val inBackpack: Boolean = true
 )
 
-/**
- * Localiza a primeira pilha de munição compatível com a arma.
- * A compatibilidade usa nomes canônicos comuns do Livro do Jogador.
- * Itens com quantidade zero ou negativa nunca são considerados disponíveis.
- */
-fun findCompatibleAmmunition(
-    items: List<CharacterInventoryItem>,
-    weaponName: String
-): CharacterInventoryItem? {
-    val weapon = weaponName.lowercase()
-    val ammoTerms = when {
-        "arco" in weapon || "bow" in weapon -> listOf("flecha", "flechas", "arrow", "arrows")
-        "besta" in weapon || "crossbow" in weapon -> listOf("virote", "virotes", "bolt", "bolts")
-        "funda" in weapon || "sling" in weapon -> listOf("bala de funda", "balas de funda", "pedra de funda", "sling bullet")
-        else -> return null
-    }
-    return items.firstOrNull { item ->
-        item.quantity > 0 && item.name.lowercase().let { name -> ammoTerms.any { term -> term in name } }
+/** Consome uma unidade da pilha explicitamente selecionada no slot de munição. */
+fun consumeAmmunitionStack(items: List<CharacterInventoryItem>, ammunitionItemId: String): List<CharacterInventoryItem>? {
+    val ammunition = items.firstOrNull {
+        it.id == ammunitionItemId && it.equippedSlot == Dnd35Rules.EquipmentSlots.AMMUNITION && it.quantity > 0
+    } ?: return null
+    return if (ammunition.quantity > 1) {
+        items.map { if (it.id == ammunition.id) it.copy(quantity = it.quantity - 1) else it }
+    } else {
+        items.filterNot { it.id == ammunition.id }
     }
 }
 data class CharacterFeat(
