@@ -664,8 +664,6 @@ fun OverviewCombatTab(
                                     diceRollTarget = Triple("Ataque com ${w.name}", atkBonus, w.damageOrAc)
                                 }
                             )
-                                }
-                            }
                         }
                     }
                 }
