@@ -68,6 +68,8 @@ import com.example.dnd35.model.CalculatedCharacterStats
 import com.example.dnd35.model.CharacterEntity
 import com.example.dnd35.model.CharacterInventoryItem
 import com.example.dnd35.model.Dnd35Rules
+import com.example.dnd35.model.ammunitionBundleSize
+import com.example.dnd35.model.remainingAmmunitionUnits
 import com.example.dnd35.ui.dialogs.AddEditItemDialog
 import com.example.dnd35.viewmodel.CharacterViewModel
 import com.example.ui.theme.DndCrimson
@@ -774,7 +776,11 @@ fun InventoryItemRowRefined(
             ) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(
-                        text = item.name + if (item.quantity > 1) " (x${item.quantity})" else "",
+                        text = item.name + when {
+                            ammunitionBundleSize(item) > 1 -> " (${remainingAmmunitionUnits(item)} munições restantes)"
+                            item.quantity > 1 -> " (x${item.quantity})"
+                            else -> ""
+                        },
                         style = MaterialTheme.typography.bodyMedium,
                         fontWeight = FontWeight.Bold
                     )
