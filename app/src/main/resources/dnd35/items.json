@@ -1678,7 +1678,7 @@
     "category": "Itens de Aventura",
     "defaultSlot": "Mochila (Não Equipado)",
     "weightLb": 0,
-    "costGp": 0.05,
+    "costGp": 0.5,
     "damageOrAc": "—",
     "properties": "Ferramenta simples"
   },
@@ -2266,5 +2266,68 @@
     "costGp": 1,
     "damageOrAc": "—",
     "properties": "Foco divino"
+  },
+  {
+    "name": "Camisão de Cota de Malha",
+    "category": "Armaduras",
+    "defaultSlot": "Corpo (Armadura / Vestimenta)",
+    "weightLb": 27.5,
+    "costGp": 100,
+    "damageOrAc": "+4 CA",
+    "properties": "Armadura leve; Des Máx +4; penalidade -2; falha arcana 20%"
+  },
+  {
+    "name": "Escudo Pequeno de Madeira",
+    "category": "Escudos",
+    "defaultSlot": "Mão Secundária",
+    "weightLb": 5.5,
+    "costGp": 3,
+    "damageOrAc": "+1 CA",
+    "properties": "Penalidade -1; falha arcana 5%"
+  },
+  {
+    "name": "Escudo Grande de Madeira",
+    "category": "Escudos",
+    "defaultSlot": "Mão Secundária",
+    "weightLb": 11,
+    "costGp": 7,
+    "damageOrAc": "+2 CA",
+    "properties": "Penalidade -2; falha arcana 15%"
+  },
+  {
+    "name": "Sinete",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0,
+    "costGp": 5,
+    "damageOrAc": "—",
+    "properties": "Selo personalizado para marcar parafina aquecida"
+  },
+  {
+    "name": "Tocha",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 1.1,
+    "costGp": 0.01,
+    "damageOrAc": "—",
+    "properties": "Ilumina como uma tocha por 1 hora"
+  },
+  {
+    "name": "Tenda (duas pessoas)",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 22,
+    "costGp": 10,
+    "damageOrAc": "—",
+    "properties": "Tenda simples para duas pessoas"
+  },
+  {
+    "name": "Tenda (uma pessoa)",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 11,
+    "costGp": 5,
+    "damageOrAc": "—",
+    "properties": "Tenda simples para uma pessoa"
   }
 ]
