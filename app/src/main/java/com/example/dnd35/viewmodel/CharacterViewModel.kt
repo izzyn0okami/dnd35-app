@@ -479,7 +479,8 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
         val curr = _activeCharacter.value ?: return false
         val items = CharacterJsonAdapters.deserializeInventory(curr.inventoryJson)
         val ammunition = items.firstOrNull {
-            it.equippedSlot == com.example.dnd35.model.Dnd35Rules.EquipmentSlots.AMMUNITION && it.quantity > 0
+            it.equippedSlot == com.example.dnd35.model.Dnd35Rules.EquipmentSlots.AMMUNITION &&
+                it.quantity > 0 && com.example.dnd35.model.remainingAmmunitionUnits(it) > 0
         } ?: return false
         val updated = com.example.dnd35.model.consumeAmmunitionStack(items, ammunition.id) ?: return false
         persistCharacter(curr.copy(inventoryJson = CharacterJsonAdapters.serializeInventory(updated)))
