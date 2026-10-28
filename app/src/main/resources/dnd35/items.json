@@ -1318,7 +1318,7 @@
     "category": "Itens de Aventura",
     "defaultSlot": "Mochila (Não Equipado)",
     "weightLb": 0,
-    "costGp": 0.1,
+    "costGp": 0.01,
     "damageOrAc": "-",
     "properties": "Ilumina uma pequena área"
   },
