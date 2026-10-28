@@ -58,6 +58,37 @@ class EquipmentCatalogCoverageTest {
         assertEquals(11.0f, byName[normalize("Corda de Cânhamo (15 m)")]!!.weightLb, 0.01f)
     }
 
+
+    @Test
+    fun includesPlayerHandbookFoodLodgingMountsAndTransport() {
+        listOf(
+            "Acomodação Pobre (por dia)", "Acomodação Padrão (por dia)", "Acomodação Boa (por dia)",
+            "Banquete (por pessoa)", "Carne (pedaço)", "Cerveja (caneca)", "Cerveja (jarra)",
+            "Pão", "Queijo (pedaço)", "Refeição Pobre (por dia)", "Refeição Padrão (por dia)",
+            "Refeição Boa (por dia)", "Vinho Normal (jarro)", "Vinho Bom (garrafa)",
+            "Alforje", "Alimentação (por dia)", "Cachorro de Montaria", "Cão de Guarda",
+            "Cavalo de Guerra Leve", "Cavalo de Guerra Pesado", "Cavalo Leve", "Cavalo Pesado",
+            "Pônei de Guerra", "Pônei", "Estábulo (por dia)", "Freio e Rédeas",
+            "Jumento ou Mula", "Sela de Carga", "Sela Militar", "Sela de Montaria",
+            "Sela Exótica de Carga", "Sela Exótica Militar", "Sela Exótica de Montaria",
+            "Barco a Remo", "Remo", "Barcaça", "Carroça", "Carruagem", "Charrete",
+            "Galeão", "Navio de Guerra", "Navio", "Trenó", "Veleiro"
+        ).forEach { assertTrue("Equipamento/serviço ausente: $it", normalize(it) in names) }
+    }
+
+    @Test
+    fun convertsFoodMountAndTransportCostsAndWeightsFromTheHandbook() {
+        val byName = Dnd35Rules.PRESET_ITEMS.associateBy { normalize(it.name) }
+        assertEquals(0.04f, byName[normalize("Cerveja (caneca)")]!!.costGp, 0.001f)
+        assertEquals(0.2f, byName[normalize("Acomodação Pobre (por dia)")]!!.costGp, 0.001f)
+        assertEquals(8.8f, byName[normalize("Alforje")]!!.weightLb, 0.01f)
+        assertEquals(16.5f, byName[normalize("Sela de Carga")]!!.weightLb, 0.01f)
+        assertEquals(110.2f, byName[normalize("Barco a Remo")]!!.weightLb, 0.1f)
+        assertEquals(440.9f, byName[normalize("Carroça")]!!.weightLb, 0.1f)
+        assertEquals(0.0f, byName[normalize("Barcaça")]!!.weightLb, 0.0f)
+        assertEquals(3000.0f, byName[normalize("Barcaça")]!!.costGp, 0.01f)
+    }
+
     @Test
     fun catalogNamesAreUniqueIgnoringAccentsAndCase() {
         val normalized = Dnd35Rules.PRESET_ITEMS.map { normalize(it.name) }
