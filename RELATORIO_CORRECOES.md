@@ -369,3 +369,11 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - Não foram removidas “Tenda para uma Pessoa” e “Tenda para duas Pessoas”: embora não sejam a entrada genérica “Tenda” da tabela, podem representar opções distintas no catálogo; não há evidência suficiente para tratá-las como duplicatas exatas.
 - Não alterados “Papel (folha)” nem “Pergaminho em Branco”, conforme a distinção já registrada: apenas “Pergaminho (folha)” está confirmado como linha da Tabela 7-8.
 - Adicionado teste de regressão para exigir as quatro entradas canônicas, rejeitar as variantes legadas e conferir os pesos convertidos das duas cordas.
+
+
+## Correções de conversão de peso na Tabela 7-8 (2026-10-28)
+
+- Conferência direta das massas na Tabela 7-8 do Livro do Jogador brasileiro (PDF, páginas 112–113; páginas impressas 108–109).
+- Corrigidos pesos que haviam sido arredondados ou truncados incorretamente: Algibeira (0,25 kg → 0,55 lb), Algemas (1 kg → 2,2 lb), Mochila (1 kg → 2,2 lb), Lanterna Furta-Fogo (1,5 kg → 3,3 lb), Ampulheta e Balança de Mercador (0,5 kg → 1,1 lb), Grimório de Mago em branco (1,5 kg → 3,3 lb), Símbolo Sagrado de Prata (0,5 kg → 1,1 lb), Clepsidra (100 kg → 220,5 lb), Laboratório Alquímico (20 kg → 44,1 lb), Bastão Solar e Pedra Trovão (0,5 kg → 1,1 lb) e Bastão de Fumaça (0,25 kg → 0,55 lb).
+- Adicionado teste de regressão para os treze valores. Itens com peso indicado como traço na tabela continuam com zero no modelo, sem atribuição de massa inventada.
+- Esta correção é uma rodada de conversões verificáveis, não uma declaração de auditoria completa de todas as entradas do catálogo.

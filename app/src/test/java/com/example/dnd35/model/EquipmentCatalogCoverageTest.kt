@@ -161,6 +161,30 @@ class EquipmentCatalogCoverageTest {
         assertEquals(5.5f, byName[normalize("Corda de Seda (15 m)")]!!.weightLb, 0.01f)
     }
 
+
+    @Test
+    fun convertsRemainingTable78EquipmentWeightsToPounds() {
+        val byName = Dnd35Rules.PRESET_ITEMS.associateBy { normalize(it.name) }
+        val expected = mapOf(
+            "Algibeira" to 0.55f,
+            "Algemas" to 2.2f,
+            "Mochila" to 2.2f,
+            "Lanterna Furta-Fogo" to 3.3f,
+            "Ampulheta" to 1.1f,
+            "Balança de Mercador" to 1.1f,
+            "Grimório de Mago (Em Branco)" to 3.3f,
+            "Símbolo Sagrado de Prata" to 1.1f,
+            "Clepsidra" to 220.5f,
+            "Laboratório Alquímico" to 44.1f,
+            "Bastão Solar" to 1.1f,
+            "Pedra Trovão" to 1.1f,
+            "Bastão de Fumaça" to 0.55f
+        )
+        expected.forEach { (name, weight) ->
+            assertEquals("Peso convertido incorreto: $name", weight, byName[normalize(name)]!!.weightLb, 0.01f)
+        }
+    }
+
     @Test
     fun catalogNamesAreUniqueIgnoringAccentsAndCase() {
         val normalized = Dnd35Rules.PRESET_ITEMS.map { normalize(it.name) }
