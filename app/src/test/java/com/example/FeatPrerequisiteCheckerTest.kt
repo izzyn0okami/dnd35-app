@@ -58,6 +58,28 @@ class FeatPrerequisiteCheckerTest {
     }
 
     @Test
+    fun recognizesSelectedVariantOfPrerequisiteFeat() {
+        val stats = CharacterCalculator.compute(
+            CharacterEntity(
+                characterClass = "Guerreiro",
+                level = 4,
+                featsJson = """[{"name":"Foco em Arma (Espada Longa)"}]"""
+            )
+        )
+
+        val result = FeatPrerequisiteChecker.assess(
+            "Foco em Arma com a arma escolhida",
+            stats
+        )
+
+        // A ficha registra o talento escolhido, mas não guarda a arma como campo próprio;
+        // portanto, não deve acusar o talento como ausente nem afirmar a escolha verificada.
+        assertTrue(result.unmet.isEmpty())
+        assertEquals(FeatPrerequisiteStatus.PARTIAL, result.status)
+        assertTrue(result.message.contains("Não verificados"))
+    }
+
+    @Test
     fun noPrerequisiteIsAutomaticallySatisfied() {
         val stats = CharacterCalculator.compute(CharacterEntity())
         assertEquals(
