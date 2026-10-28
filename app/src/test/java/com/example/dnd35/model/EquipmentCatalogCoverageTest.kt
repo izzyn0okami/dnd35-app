@@ -130,6 +130,16 @@ class EquipmentCatalogCoverageTest {
         assertEquals(0.0f, byName[normalize("Tinta (vidro de 30 ml)")]!!.weightLb, 0.0f)
     }
 
+
+    @Test
+    fun matchesPlayerHandbookCanteenEntry() {
+        val byName = Dnd35Rules.PRESET_ITEMS.associateBy { normalize(it.name) }
+        val cantil = byName[normalize("Cantil")]
+        assertTrue("Cantil da Tabela 7-8 ausente", cantil != null)
+        assertEquals(1.0f, cantil!!.costGp, 0.001f)
+        assertEquals(4.4f, cantil.weightLb, 0.01f)
+    }
+
     @Test
     fun catalogNamesAreUniqueIgnoringAccentsAndCase() {
         val normalized = Dnd35Rules.PRESET_ITEMS.map { normalize(it.name) }

@@ -432,13 +432,13 @@
     "properties": "Alimentos desidratados"
   },
   {
-    "name": "Cantil de Água Fresca",
+    "name": "Cantil",
     "category": "Itens de Aventura",
     "defaultSlot": "Mochila (Não Equipado)",
-    "weightLb": 4,
+    "weightLb": 4.4,
     "costGp": 1,
     "damageOrAc": "-",
-    "properties": "Cheio com água potável"
+    "properties": "Recipiente para água; peso de 2 kg conforme Tabela 7-8 do Livro do Jogador"
   },
   {
     "name": "Tochas de Piche (x5)",

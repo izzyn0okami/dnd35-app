@@ -351,3 +351,11 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - **Tinta:** nome normalizado para “Tinta (vidro de 30 ml)”, seguindo a tabela; preço de 8 PO e peso não informado preservados.
 - O item “Papel (folha)” existente não foi tratado como entrada confirmada da Tabela 7-8 nesta verificação; não se acrescentou nenhuma informação normativa sem evidência direta na tabela.
 - Testes de regressão cobrem os três nomes e seus custos/pesos. Nomes do catálogo foram revalidados sem diferenciar acentos e caixa.
+
+
+## Correção de cantil conforme a Tabela 7-8 (2026-10-27)
+
+- Conferência direta do PDF brasileiro do Livro do Jogador, capítulo 7, Tabela 7-8, página impressa 108 (PDF página 112): a entrada canônica é **Cantil**, custo de 1 PO e peso de 2 kg.
+- O catálogo trazia **Cantil de Água Fresca** com o mesmo custo, mas nome ampliado e peso de 4 lb. O registro foi normalizado para **Cantil** e o peso convertido de 2 kg para 4,4 lb, mantendo o custo de 1 PO.
+- Adicionado teste de regressão para presença, custo e peso do cantil. A unicidade de nomes normalizados continua sendo verificada.
+- **Distinção importante:** a prosa do livro descreve “Papel”, mas a linha tabelada é “Pergaminho (folha)” (2 PP, peso não informado). A presença de “Papel (folha)” no catálogo não é evidência de que seja uma entrada da Tabela 7-8; não foi alterada nesta correção para evitar misturar a revisão do catálogo com a decisão específica sobre esse registro.
