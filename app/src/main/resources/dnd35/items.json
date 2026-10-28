@@ -27,22 +27,22 @@
     "properties": "Corte, uma mão"
   },
   {
-    "name": "Espada Grande",
+    "name": "Espada Larga",
     "category": "Armas",
     "defaultSlot": "Duas Mãos",
-    "weightLb": 8,
+    "weightLb": 8.8,
     "costGp": 50,
     "damageOrAc": "2d6 (19-20/x2)",
-    "properties": "Corte, duas mãos"
+    "properties": "Cortante; duas mãos"
   },
   {
-    "name": "Machado de Guerra",
+    "name": "Machado de Batalha",
     "category": "Armas",
     "defaultSlot": "Mão Principal",
-    "weightLb": 6,
-    "costGp": 20,
-    "damageOrAc": "1d10 (x3)",
-    "properties": "Corte, uma mão anã"
+    "weightLb": 6.6,
+    "costGp": 10,
+    "damageOrAc": "1d8 (x3)",
+    "properties": "Cortante; uma mão"
   },
   {
     "name": "Machado Grande",
@@ -111,82 +111,82 @@
     "name": "Armadura Acolchoada",
     "category": "Armaduras",
     "defaultSlot": "Corpo (Armadura / Vestimenta)",
-    "weightLb": 10,
+    "weightLb": 11,
     "costGp": 5,
     "damageOrAc": "+1 CA",
-    "properties": "Des Max +8, Pen 0, Falha 5%"
+    "properties": "Des Máx +8; penalidade 0; falha arcana 5%"
   },
   {
     "name": "Armadura de Couro",
     "category": "Armaduras",
     "defaultSlot": "Corpo (Armadura / Vestimenta)",
-    "weightLb": 15,
+    "weightLb": 16.5,
     "costGp": 10,
     "damageOrAc": "+2 CA",
-    "properties": "Des Max +6, Pen 0, Falha 10%"
+    "properties": "Des Máx +6; penalidade 0; falha arcana 10%"
   },
   {
     "name": "Couro Batido",
     "category": "Armaduras",
     "defaultSlot": "Corpo (Armadura / Vestimenta)",
-    "weightLb": 20,
+    "weightLb": 22,
     "costGp": 25,
     "damageOrAc": "+3 CA",
-    "properties": "Des Max +5, Pen -1, Falha 15%"
+    "properties": "Des Máx +5; penalidade -1; falha arcana 15%"
   },
   {
     "name": "Gibão de Peles",
     "category": "Armaduras",
     "defaultSlot": "Corpo (Armadura / Vestimenta)",
-    "weightLb": 25,
+    "weightLb": 27.5,
     "costGp": 15,
     "damageOrAc": "+3 CA",
-    "properties": "Des Max +4, Pen -3, Falha 20%"
+    "properties": "Armadura média; Des Máx +4; penalidade -3; falha arcana 20%"
   },
   {
-    "name": "Camisa de Cota de Malha",
+    "name": "Camisão de Cota de Malha",
     "category": "Armaduras",
     "defaultSlot": "Corpo (Armadura / Vestimenta)",
-    "weightLb": 25,
+    "weightLb": 27.5,
     "costGp": 100,
     "damageOrAc": "+4 CA",
-    "properties": "Des Max +4, Pen -2, Falha 20%"
+    "properties": "Armadura leve; Des Máx +4; penalidade -2; falha arcana 20%"
   },
   {
     "name": "Brunea",
     "category": "Armaduras",
     "defaultSlot": "Corpo (Armadura / Vestimenta)",
-    "weightLb": 30,
+    "weightLb": 33,
     "costGp": 50,
     "damageOrAc": "+4 CA",
-    "properties": "Des Max +3, Pen -4, Falha 25%"
+    "properties": "Armadura média; Des Máx +3; penalidade -4; falha arcana 25%"
   },
   {
     "name": "Cota de Malha",
     "category": "Armaduras",
     "defaultSlot": "Corpo (Armadura / Vestimenta)",
-    "weightLb": 40,
+    "weightLb": 44,
     "costGp": 150,
     "damageOrAc": "+5 CA",
-    "properties": "Des Max +2, Pen -5, Falha 30%"
+    "properties": "Armadura média; Des Máx +2; penalidade -5; falha arcana 30%"
   },
   {
     "name": "Peitoral de Aço",
     "category": "Armaduras",
     "defaultSlot": "Corpo (Armadura / Vestimenta)",
-    "weightLb": 30,
+    "weightLb": 33,
     "costGp": 200,
     "damageOrAc": "+5 CA",
-    "properties": "Des Max +3, Pen -4, Falha 25%"
+    "properties": "Armadura média; Des Máx +3; penalidade -4; falha arcana 25%"
   },
   {
     "name": "Cota de Talas",
     "category": "Armaduras",
     "defaultSlot": "Corpo (Armadura / Vestimenta)",
-    "weightLb": 45,
-    "costGp": 200,
+    "weightLb": 49.6,
+    "costGp": 20,
     "damageOrAc": "+6 CA",
-    "properties": "Des Max +0, Pen -7, Falha 40%"
+    "properties": "Armadura pesada; Des Máx +0; penalidade -7; falha arcana 40%"
   },
   {
     "name": "Cota de Bandas",
@@ -198,22 +198,22 @@
     "properties": "Des Max +1, Pen -6, Falha 35%"
   },
   {
-    "name": "Armadura de Meia-Placa",
+    "name": "Meia Armadura",
     "category": "Armaduras",
     "defaultSlot": "Corpo (Armadura / Vestimenta)",
-    "weightLb": 50,
+    "weightLb": 55,
     "costGp": 600,
     "damageOrAc": "+7 CA",
-    "properties": "Des Max +0, Pen -7, Falha 40%"
+    "properties": "Armadura pesada; Des Máx +0; penalidade -7; falha arcana 40%"
   },
   {
-    "name": "Armadura Completa (Full Plate)",
+    "name": "Armadura de Batalha",
     "category": "Armaduras",
     "defaultSlot": "Corpo (Armadura / Vestimenta)",
-    "weightLb": 50,
+    "weightLb": 55,
     "costGp": 1500,
     "damageOrAc": "+8 CA",
-    "properties": "Des Max +1, Pen -6, Falha 35%"
+    "properties": "Armadura pesada; Des Máx +1; penalidade -6; falha arcana 35%"
   },
   {
     "name": "Broquel",
@@ -225,31 +225,31 @@
     "properties": "Pen -1, Falha 5%"
   },
   {
-    "name": "Escudo Leve de Madeira",
+    "name": "Escudo Pequeno de Madeira",
     "category": "Escudos",
     "defaultSlot": "Mão Secundária / Escudo",
-    "weightLb": 5,
+    "weightLb": 5.5,
     "costGp": 3,
     "damageOrAc": "+1 CA",
-    "properties": "Pen -1, Falha 5%"
+    "properties": "Penalidade -1; falha arcana 5%"
   },
   {
-    "name": "Escudo Pesado de Aço",
+    "name": "Escudo Grande de Metal",
     "category": "Escudos",
     "defaultSlot": "Mão Secundária / Escudo",
-    "weightLb": 15,
+    "weightLb": 16.5,
     "costGp": 20,
     "damageOrAc": "+2 CA",
-    "properties": "Pen -2, Falha 15%"
+    "properties": "Penalidade -2; falha arcana 15%"
   },
   {
-    "name": "Escudo de Corpo (Torre)",
+    "name": "Escudo de Corpo",
     "category": "Escudos",
     "defaultSlot": "Mão Secundária / Escudo",
-    "weightLb": 45,
+    "weightLb": 49.6,
     "costGp": 30,
     "damageOrAc": "+4 CA",
-    "properties": "Des Max +2, Pen -10, Falha 50%"
+    "properties": "Des Máx +2; penalidade -10; falha arcana 50%"
   },
   {
     "name": "Elmo de Ferro Batido",
@@ -468,7 +468,7 @@
     "properties": "Para acender fogueiras"
   },
   {
-    "name": "Ferramentas de Ladrão Obra-Prima",
+    "name": "Instrumentos de Ladrão (Obra-Prima)",
     "category": "Itens de Aventura",
     "defaultSlot": "Mochila (Não Equipado)",
     "weightLb": 2,
@@ -495,7 +495,7 @@
     "properties": "Foco divino para conjuração"
   },
   {
-    "name": "Grimório do Mago (100 págs)",
+    "name": "Grimório de Mago (Em Branco)",
     "category": "Itens de Aventura",
     "defaultSlot": "Mochila (Não Equipado)",
     "weightLb": 3,
@@ -603,13 +603,13 @@
     "properties": "Concussão"
   },
   {
-    "name": "Foice",
+    "name": "Foice Curta",
     "category": "Armas",
     "defaultSlot": "Mão Principal",
-    "weightLb": 2,
+    "weightLb": 2.2,
     "costGp": 6,
     "damageOrAc": "1d6 (x2)",
-    "properties": "Corte"
+    "properties": "Cortante; arma leve; pode realizar imobilização"
   },
   {
     "name": "Clava",
@@ -873,13 +873,13 @@
     "properties": "Corte ou perfuração"
   },
   {
-    "name": "Lança de Cavalaria",
+    "name": "Lança Montada",
     "category": "Armas",
     "defaultSlot": "Duas Mãos",
-    "weightLb": 10,
+    "weightLb": 22,
     "costGp": 10,
     "damageOrAc": "1d8 (x3)",
-    "properties": "Perfuração; arma de investida montada"
+    "properties": "Perfurante; alcance 3 m; causa dano dobrado em investida montada"
   },
   {
     "name": "Ranseur",
@@ -891,13 +891,13 @@
     "properties": "Perfuração; alcance"
   },
   {
-    "name": "Foice de Guerra",
+    "name": "Foice Longa",
     "category": "Armas",
     "defaultSlot": "Duas Mãos",
-    "weightLb": 10,
+    "weightLb": 22,
     "costGp": 18,
     "damageOrAc": "2d4 (x4)",
-    "properties": "Corte ou perfuração"
+    "properties": "Perfurante ou cortante; arma de haste; pode realizar imobilização"
   },
   {
     "name": "Arco Longo",
@@ -1035,7 +1035,7 @@
     "properties": "Corte; arma dupla exótica"
   },
   {
-    "name": "Machado Urgrosh Anão",
+    "name": "Urgrosh Anão",
     "category": "Armas",
     "defaultSlot": "Duas Mãos",
     "weightLb": 12,
@@ -1116,7 +1116,7 @@
     "properties": "Perfuração; incremento 9m"
   },
   {
-    "name": "Besta de Repetição Leve",
+    "name": "Besta Leve de Repetição",
     "category": "Armas",
     "defaultSlot": "Duas Mãos",
     "weightLb": 6,
@@ -1125,7 +1125,7 @@
     "properties": "Perfuração; 5 virotes por carregamento"
   },
   {
-    "name": "Besta de Repetição Pesada",
+    "name": "Besta Pesada de Repetição",
     "category": "Armas",
     "defaultSlot": "Duas Mãos",
     "weightLb": 12,
@@ -1134,22 +1134,22 @@
     "properties": "Perfuração; 5 virotes por carregamento"
   },
   {
-    "name": "Escudo Leve de Aço",
+    "name": "Escudo Pequeno de Metal",
     "category": "Escudos",
     "defaultSlot": "Mão Secundária / Escudo",
-    "weightLb": 6,
+    "weightLb": 6.6,
     "costGp": 9,
     "damageOrAc": "+1 CA",
-    "properties": "Pen -1, Falha arcana 5%"
+    "properties": "Penalidade -1; falha arcana 5%"
   },
   {
-    "name": "Escudo Pesado de Madeira",
+    "name": "Escudo Grande de Madeira",
     "category": "Escudos",
     "defaultSlot": "Mão Secundária / Escudo",
-    "weightLb": 10,
+    "weightLb": 11,
     "costGp": 7,
     "damageOrAc": "+2 CA",
-    "properties": "Pen -2, Falha arcana 15%"
+    "properties": "Penalidade -2; falha arcana 15%"
   },
   {
     "name": "Algibeira",
@@ -1251,7 +1251,7 @@
     "properties": "Alavanca; pode auxiliar a forçar portas"
   },
   {
-    "name": "Espelho de Aço",
+    "name": "Espelho de Metal Pequeno",
     "category": "Itens de Aventura",
     "defaultSlot": "Mochila (Não Equipado)",
     "weightLb": 0.5,
@@ -1305,13 +1305,13 @@
     "properties": "Marcar superfícies"
   },
   {
-    "name": "Tinta (frasco)",
+    "name": "Tinta (frasco de 30 ml)",
     "category": "Itens de Aventura",
     "defaultSlot": "Mochila (Não Equipado)",
     "weightLb": 0,
     "costGp": 8,
     "damageOrAc": "-",
-    "properties": "Tinta para escrita"
+    "properties": "Tinta preta; outras cores custam o dobro"
   },
   {
     "name": "Papel (folha)",
@@ -1386,7 +1386,7 @@
     "properties": "Corrente de ferro"
   },
   {
-    "name": "Pá ou Enxada",
+    "name": "Pá",
     "category": "Itens de Aventura",
     "defaultSlot": "Mochila (Não Equipado)",
     "weightLb": 8,
@@ -1395,7 +1395,7 @@
     "properties": "Ferramenta de escavação"
   },
   {
-    "name": "Picareta de Mineiro",
+    "name": "Picareta de Mina",
     "category": "Itens de Aventura",
     "defaultSlot": "Mochila (Não Equipado)",
     "weightLb": 10,
@@ -1413,10 +1413,10 @@
     "properties": "Ferramenta"
   },
   {
-    "name": "Frasco de Ácido",
+    "name": "Ácido (frasco)",
     "category": "Consumíveis",
     "defaultSlot": "Mochila (Não Equipado)",
-    "weightLb": 1,
+    "weightLb": 1.1,
     "costGp": 10,
     "damageOrAc": "1d6 ácido",
     "properties": "Substância alquímica; arremessável"
@@ -1458,13 +1458,13 @@
     "properties": "Cria uma nuvem de fumaça"
   },
   {
-    "name": "Antitoxina",
+    "name": "Antídoto (frasco)",
     "category": "Consumíveis",
     "defaultSlot": "Mochila (Não Equipado)",
     "weightLb": 0,
     "costGp": 50,
-    "damageOrAc": "-",
-    "properties": "Bônus alquímico contra venenos"
+    "damageOrAc": "—",
+    "properties": "+5 alquímico em testes de Fortitude contra venenos por 1 hora"
   },
   {
     "name": "Sabre",
@@ -1539,51 +1539,6 @@
     "properties": "Perfurante; escudo com cravos usado como arma"
   },
   {
-    "name": "Espada Larga",
-    "category": "Armas",
-    "defaultSlot": "Duas Mãos",
-    "weightLb": 8.8,
-    "costGp": 50,
-    "damageOrAc": "2d6 (19-20/x2)",
-    "properties": "Cortante; duas mãos"
-  },
-  {
-    "name": "Machado de Batalha",
-    "category": "Armas",
-    "defaultSlot": "Mão Principal",
-    "weightLb": 6.6,
-    "costGp": 10,
-    "damageOrAc": "1d8 (x3)",
-    "properties": "Cortante; uma mão"
-  },
-  {
-    "name": "Foice Curta",
-    "category": "Armas",
-    "defaultSlot": "Mão Principal",
-    "weightLb": 2.2,
-    "costGp": 6,
-    "damageOrAc": "1d6 (x2)",
-    "properties": "Cortante; arma leve; pode realizar imobilização"
-  },
-  {
-    "name": "Foice Longa",
-    "category": "Armas",
-    "defaultSlot": "Duas Mãos",
-    "weightLb": 22,
-    "costGp": 18,
-    "damageOrAc": "2d4 (x4)",
-    "properties": "Perfurante ou cortante; arma de haste; pode realizar imobilização"
-  },
-  {
-    "name": "Lança Montada",
-    "category": "Armas",
-    "defaultSlot": "Duas Mãos",
-    "weightLb": 22,
-    "costGp": 10,
-    "damageOrAc": "1d8 (x3)",
-    "properties": "Perfurante; alcance 3 m; causa dano dobrado em investida montada"
-  },
-  {
     "name": "Virotes de Besta (5)",
     "category": "Itens de Aventura",
     "defaultSlot": "Mochila (Não Equipado)",
@@ -1600,51 +1555,6 @@
     "costGp": 250,
     "damageOrAc": "+6 CA",
     "properties": "Armadura pesada; Des Máx +1; penalidade -6; falha arcana 35%"
-  },
-  {
-    "name": "Meia Armadura",
-    "category": "Armaduras",
-    "defaultSlot": "Corpo (Armadura / Vestimenta)",
-    "weightLb": 55,
-    "costGp": 600,
-    "damageOrAc": "+7 CA",
-    "properties": "Armadura pesada; Des Máx +0; penalidade -7; falha arcana 40%"
-  },
-  {
-    "name": "Armadura de Batalha",
-    "category": "Armaduras",
-    "defaultSlot": "Corpo (Armadura / Vestimenta)",
-    "weightLb": 55,
-    "costGp": 1500,
-    "damageOrAc": "+8 CA",
-    "properties": "Armadura pesada; Des Máx +1; penalidade -6; falha arcana 35%"
-  },
-  {
-    "name": "Escudo Pequeno de Metal",
-    "category": "Escudos",
-    "defaultSlot": "Mão Secundária",
-    "weightLb": 6.6,
-    "costGp": 9,
-    "damageOrAc": "+1 CA",
-    "properties": "Penalidade -1; falha arcana 5%"
-  },
-  {
-    "name": "Escudo Grande de Metal",
-    "category": "Escudos",
-    "defaultSlot": "Mão Secundária",
-    "weightLb": 16.5,
-    "costGp": 20,
-    "damageOrAc": "+2 CA",
-    "properties": "Penalidade -2; falha arcana 15%"
-  },
-  {
-    "name": "Escudo de Corpo",
-    "category": "Escudos",
-    "defaultSlot": "Mão Secundária",
-    "weightLb": 49.6,
-    "costGp": 30,
-    "damageOrAc": "+4 CA",
-    "properties": "Des Máx +2; penalidade -10; falha arcana 50%"
   },
   {
     "name": "Cravos para Armadura",
@@ -1800,15 +1710,6 @@
     "properties": "Ferramenta para afiar"
   },
   {
-    "name": "Espelho de Metal Pequeno",
-    "category": "Itens de Aventura",
-    "defaultSlot": "Mochila (Não Equipado)",
-    "weightLb": 0.55,
-    "costGp": 10,
-    "damageOrAc": "—",
-    "properties": "Espelho metálico"
-  },
-  {
     "name": "Estrepes",
     "category": "Itens de Aventura",
     "defaultSlot": "Mochila (Não Equipado)",
@@ -1879,15 +1780,6 @@
     "costGp": 0.03,
     "damageOrAc": "—",
     "properties": "Recipiente"
-  },
-  {
-    "name": "Lâmpada",
-    "category": "Itens de Aventura",
-    "defaultSlot": "Mochila (Não Equipado)",
-    "weightLb": 1.1,
-    "costGp": 1,
-    "damageOrAc": "—",
-    "properties": "Fonte de luz; requer óleo"
   },
   {
     "name": "Lanterna Coberta",
@@ -1962,15 +1854,6 @@
     "properties": "Material combustível"
   },
   {
-    "name": "Pá",
-    "category": "Itens de Aventura",
-    "defaultSlot": "Mochila (Não Equipado)",
-    "weightLb": 8.8,
-    "costGp": 2,
-    "damageOrAc": "—",
-    "properties": "Ferramenta para escavar"
-  },
-  {
     "name": "Pergaminho (Folha)",
     "category": "Itens de Aventura",
     "defaultSlot": "Mochila (Não Equipado)",
@@ -1978,15 +1861,6 @@
     "costGp": 0.2,
     "damageOrAc": "—",
     "properties": "Folha para escrita"
-  },
-  {
-    "name": "Picareta de Mina",
-    "category": "Itens de Aventura",
-    "defaultSlot": "Mochila (Não Equipado)",
-    "weightLb": 11,
-    "costGp": 3,
-    "damageOrAc": "—",
-    "properties": "Ferramenta de mineração"
   },
   {
     "name": "Píton",
@@ -2043,15 +1917,6 @@
     "properties": "Conjunto de cordas e roldanas"
   },
   {
-    "name": "Tinta (frasco de 30 ml)",
-    "category": "Itens de Aventura",
-    "defaultSlot": "Mochila (Não Equipado)",
-    "weightLb": 0,
-    "costGp": 8,
-    "damageOrAc": "—",
-    "properties": "Tinta preta; outras cores custam o dobro"
-  },
-  {
     "name": "Vara (3 m)",
     "category": "Itens de Aventura",
     "defaultSlot": "Mochila (Não Equipado)",
@@ -2070,15 +1935,6 @@
     "properties": "Pequeno recipiente de vidro"
   },
   {
-    "name": "Ácido (frasco)",
-    "category": "Consumíveis",
-    "defaultSlot": "Mochila (Não Equipado)",
-    "weightLb": 1.1,
-    "costGp": 10,
-    "damageOrAc": "1d6 ácido",
-    "properties": "Arremesso 3 m; ataque de toque à distância"
-  },
-  {
     "name": "Água Benta (frasco)",
     "category": "Consumíveis",
     "defaultSlot": "Mochila (Não Equipado)",
@@ -2086,15 +1942,6 @@
     "costGp": 25,
     "damageOrAc": "2d4",
     "properties": "Causa dano a mortos-vivos e extra-planares malignos"
-  },
-  {
-    "name": "Antídoto (frasco)",
-    "category": "Consumíveis",
-    "defaultSlot": "Mochila (Não Equipado)",
-    "weightLb": 0,
-    "costGp": 50,
-    "damageOrAc": "—",
-    "properties": "+5 alquímico em testes de Fortitude contra venenos por 1 hora"
   },
   {
     "name": "Bolsa de Cola",
@@ -2178,15 +2025,6 @@
     "properties": "Ferramentas para uma perícia Ofícios"
   },
   {
-    "name": "Grimório de Mago (Em Branco)",
-    "category": "Itens de Aventura",
-    "defaultSlot": "Mochila (Não Equipado)",
-    "weightLb": 3.3,
-    "costGp": 15,
-    "damageOrAc": "—",
-    "properties": "Livro de 100 páginas para magias de mago"
-  },
-  {
     "name": "Instrumento Musical (Obra-Prima)",
     "category": "Itens de Aventura",
     "defaultSlot": "Mochila (Não Equipado)",
@@ -2203,15 +2041,6 @@
     "costGp": 5,
     "damageOrAc": "—",
     "properties": "Instrumento musical comum"
-  },
-  {
-    "name": "Instrumentos de Ladrão (Obra-Prima)",
-    "category": "Itens de Aventura",
-    "defaultSlot": "Mochila (Não Equipado)",
-    "weightLb": 2.2,
-    "costGp": 100,
-    "damageOrAc": "—",
-    "properties": "+2 circunstancial em Operar Mecanismo e Abrir Fechaduras"
   },
   {
     "name": "Instrumentos de Ladrão",
@@ -2266,33 +2095,6 @@
     "costGp": 1,
     "damageOrAc": "—",
     "properties": "Foco divino"
-  },
-  {
-    "name": "Camisão de Cota de Malha",
-    "category": "Armaduras",
-    "defaultSlot": "Corpo (Armadura / Vestimenta)",
-    "weightLb": 27.5,
-    "costGp": 100,
-    "damageOrAc": "+4 CA",
-    "properties": "Armadura leve; Des Máx +4; penalidade -2; falha arcana 20%"
-  },
-  {
-    "name": "Escudo Pequeno de Madeira",
-    "category": "Escudos",
-    "defaultSlot": "Mão Secundária",
-    "weightLb": 5.5,
-    "costGp": 3,
-    "damageOrAc": "+1 CA",
-    "properties": "Penalidade -1; falha arcana 5%"
-  },
-  {
-    "name": "Escudo Grande de Madeira",
-    "category": "Escudos",
-    "defaultSlot": "Mão Secundária",
-    "weightLb": 11,
-    "costGp": 7,
-    "damageOrAc": "+2 CA",
-    "properties": "Penalidade -2; falha arcana 15%"
   },
   {
     "name": "Sinete",
