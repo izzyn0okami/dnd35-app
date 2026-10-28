@@ -2581,5 +2581,167 @@
     "costGp": 10000,
     "damageOrAc": "—",
     "properties": "Embarcação; peso não especificado na Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Traje de Artesão",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 4.4,
+    "costGp": 1,
+    "damageOrAc": "—",
+    "properties": "Indumentária; peso indicado para personagem Médio na Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Traje de Clima Frio",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 7.7,
+    "costGp": 8,
+    "damageOrAc": "—",
+    "properties": "Indumentária; peso indicado para personagem Médio na Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Traje de Corte",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 6.6,
+    "costGp": 30,
+    "damageOrAc": "—",
+    "properties": "Indumentária; peso indicado para personagem Médio na Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Traje de Entretenimento",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 4.4,
+    "costGp": 3,
+    "damageOrAc": "—",
+    "properties": "Indumentária; peso indicado para personagem Médio na Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Traje de Explorador",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 8.8,
+    "costGp": 10,
+    "damageOrAc": "—",
+    "properties": "Indumentária; peso indicado para personagem Médio na Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Traje de Monge",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 2.2,
+    "costGp": 5,
+    "damageOrAc": "—",
+    "properties": "Indumentária; peso indicado para personagem Médio na Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Traje de Nobre",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 11,
+    "costGp": 75,
+    "damageOrAc": "—",
+    "properties": "Indumentária; pode exigir sinete e joias conforme a descrição do Livro do Jogador"
+  },
+  {
+    "name": "Traje de Plebeu",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 2.2,
+    "costGp": 0.1,
+    "damageOrAc": "—",
+    "properties": "Indumentária; peso indicado para personagem Médio na Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Traje de Sábio",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 6.6,
+    "costGp": 5,
+    "damageOrAc": "—",
+    "properties": "Indumentária; peso indicado para personagem Médio na Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Traje de Viajante",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 5.5,
+    "costGp": 1,
+    "damageOrAc": "—",
+    "properties": "Indumentária; peso indicado para personagem Médio na Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Traje Real",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 16.5,
+    "costGp": 200,
+    "damageOrAc": "—",
+    "properties": "Indumentária; peso indicado para personagem Médio na Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Vestimentas de Clérigo",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 6.6,
+    "costGp": 5,
+    "damageOrAc": "—",
+    "properties": "Indumentária eclesiástica; peso indicado para personagem Médio na Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Condução de Carroça (1,5 km)",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0,
+    "costGp": 0.03,
+    "damageOrAc": "—",
+    "properties": "Serviço; custo por cada 1,5 km conforme a Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Mensageiro (1,5 km)",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0,
+    "costGp": 0.02,
+    "damageOrAc": "—",
+    "properties": "Serviço; custo por cada 1,5 km conforme a Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Passagem de Navio (1,5 km)",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0,
+    "costGp": 0.1,
+    "damageOrAc": "—",
+    "properties": "Serviço; custo por cada 1,5 km conforme a Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Trabalhador Treinado (por dia)",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0,
+    "costGp": 0.3,
+    "damageOrAc": "—",
+    "properties": "Serviço; soldo mínimo por dia conforme a Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Trabalhador sem Treinamento (por dia)",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0,
+    "costGp": 0.1,
+    "damageOrAc": "—",
+    "properties": "Serviço; soldo mínimo por dia conforme a Tabela 7-8 do Livro do Jogador"
+  },
+  {
+    "name": "Pedágio (estrada ou portão)",
+    "category": "Itens de Aventura",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0,
+    "costGp": 0.01,
+    "damageOrAc": "—",
+    "properties": "Serviço; custo por passagem conforme a Tabela 7-8 do Livro do Jogador"
   }
 ]
