@@ -412,3 +412,12 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - A edição de um item preserva o identificador, o slot de equipamento e o estado de transporte, evitando desassociar a munição selecionada ou alterar acidentalmente se o item está na mochila.
 - Testes unitários cobrem consumo de uma unidade da pilha selecionada, remoção da última unidade, recusa de pilhas vazias e recusa de itens que não ocupam o slot de munição.
 - A validação da CI deve ser repetida para esta revisão ampliada antes do merge.
+
+
+### Fotos personalizadas para itens do inventário (2026-10-28)
+- Implementado no formulário de criação/edição de item personalizado: escolher uma imagem pela seleção de documentos do Android, visualizar a foto, trocar por outra ou removê-la.
+- O modelo CharacterInventoryItem agora possui imageUri opcional, com valor padrão nulo para manter compatibilidade com fichas antigas e itens sem imagem.
+- A URI escolhida solicita permissão de leitura persistente quando suportada pelo provedor; assim, a foto pode continuar disponível após reiniciar o aplicativo, sem copiar arquivos de imagem para o banco.
+- A lista do inventário exibe uma miniatura para itens com foto. Itens do catálogo do Livro do Jogador e registros antigos continuam funcionando sem foto.
+- A edição conserva a imagem quando o usuário não a remove; remover a foto não apaga os demais dados do item.
+- Validação pendente: executar a CI Android (compilação e testes) nesta PR antes de integrar.
