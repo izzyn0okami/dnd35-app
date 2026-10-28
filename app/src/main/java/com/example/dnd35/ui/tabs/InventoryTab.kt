@@ -538,8 +538,7 @@ fun InventoryTab(
         AddEditItemDialog(
             itemToEdit = item,
             onConfirm = { updated ->
-                viewModel.removeInventoryItem(item.id)
-                viewModel.addInventoryItem(
+                viewModel.updateInventoryItem(
                     updated.copy(
                         id = item.id,
                         equipped = item.equipped,
