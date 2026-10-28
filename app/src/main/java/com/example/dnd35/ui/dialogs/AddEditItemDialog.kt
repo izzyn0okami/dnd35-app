@@ -1,6 +1,7 @@
 package com.example.dnd35.ui.dialogs
 
 import android.net.Uri
+import android.content.Intent
 import java.io.File
 import java.util.UUID
 import kotlinx.coroutines.Dispatchers
@@ -77,16 +78,29 @@ fun AddEditItemDialog(
     // Copia a foto para o armazenamento privado do app. Assim, a imagem não depende
     // das permissões temporárias do seletor nem da disponibilidade do provedor original.
     var imageUri by remember { mutableStateOf(itemToEdit?.imageUri) }
+    var ammoUnitsPerPackageText by remember {
+        mutableStateOf(
+            (itemToEdit?.ammunitionUnitsPerPackage
+                ?: Regex("\\\\((\\\\d+)\\\\)$").find(itemToEdit?.name.orEmpty())?.groupValues?.getOrNull(1)?.toIntOrNull()
+                ?: 1).toString()
+        )
+    }
     val imagePicker = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.OpenDocument()
     ) { uri ->
         if (uri != null) {
             photoError = null
+            // OpenDocument normalmente concede acesso persistente; a cópia privada continua sendo a fonte final.
+            runCatching {
+                context.contentResolver.takePersistableUriPermission(uri, Intent.FLAG_GRANT_READ_URI_PERMISSION)
+            }
             isSavingPhoto = true
             coroutineScope.launch {
                 val savedUri = withContext(Dispatchers.IO) {
                     runCatching {
-                        val photoDir = File(context.filesDir, "item_photos").apply { mkdirs() }
+                        val photoDir = File(context.filesDir, "item_photos").apply {
+                            check(isDirectory || mkdirs()) { "Não foi possível criar a pasta privada das fotos." }
+                        }
                         val mimeType = context.contentResolver.getType(uri)
                         val extension = android.webkit.MimeTypeMap.getSingleton()
                             .getExtensionFromMimeType(mimeType)
@@ -252,7 +266,11 @@ fun AddEditItemDialog(
                     ) {
                         OutlinedTextField(
                             value = name,
-                            onValueChange = { name = it },
+                            onValueChange = {
+                                name = it
+                                val inferred = Regex("\\\\((\\\\d+)\\\\)$").find(it.trim())?.groupValues?.getOrNull(1)
+                                if (ammoUnitsPerPackageText == "1" && inferred != null) ammoUnitsPerPackageText = inferred
+                            },
                             label = { Text("Nome do Item") },
                             modifier = Modifier.fillMaxWidth(),
                             singleLine = true
@@ -366,6 +384,17 @@ fun AddEditItemDialog(
 
                         Spacer(modifier = Modifier.height(8.dp))
 
+                        OutlinedTextField(
+                            value = ammoUnitsPerPackageText,
+                            onValueChange = { ammoUnitsPerPackageText = it.filter(Char::isDigit).take(4) },
+                            label = { Text("Unidades por pacote (1 = avulso)") },
+                            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                            modifier = Modifier.fillMaxWidth(),
+                            singleLine = true
+                        )
+
+                        Spacer(modifier = Modifier.height(8.dp))
+
                         Row(modifier = Modifier.fillMaxWidth()) {
                             OutlinedTextField(
                                 value = quantityText,
@@ -448,12 +477,14 @@ fun AddEditItemDialog(
                             equipped = equipped,
                             equippedSlot = if (equipped && equippedSlot == Dnd35Rules.EquipmentSlots.NONE) Dnd35Rules.EquipmentSlots.MAIN_HAND else equippedSlot,
                             notes = notes,
-                            imageUri = imageUri
+                            imageUri = imageUri,
+                            ammunitionUnitsPerPackage = ammoUnitsPerPackageText.toIntOrNull()?.takeIf { it in 1..9999 },
+                            ammunitionUnitsRemaining = if (itemToEdit != null && parsedQuantity == itemToEdit.quantity) itemToEdit.ammunitionUnitsRemaining else null
                         )
                         onConfirm(finalItem)
                         onDismiss()
                     },
-                    enabled = !isSavingPhoto && name.isNotBlank() && parsedQuantity != null && parsedQuantity >= 1 && parsedWeight != null && parsedWeight >= 0f && parsedCost != null && parsedCost >= 0f
+                    enabled = !isSavingPhoto && name.isNotBlank() && ammoUnitsPerPackageText.toIntOrNull() in 1..9999 && parsedQuantity != null && parsedQuantity >= 1 && parsedWeight != null && parsedWeight >= 0f && parsedCost != null && parsedCost >= 0f
                 ) {
                     Text("Salvar")
                 }
