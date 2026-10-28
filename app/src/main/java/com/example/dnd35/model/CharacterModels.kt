@@ -104,6 +104,27 @@ data class CharacterInventoryItem(
     val equippedSlot: String = Dnd35Rules.EquipmentSlots.NONE,
     val notes: String = ""
 )
+
+/**
+ * Localiza a primeira pilha de munição compatível com a arma.
+ * A compatibilidade usa nomes canônicos comuns do Livro do Jogador.
+ * Itens com quantidade zero ou negativa nunca são considerados disponíveis.
+ */
+fun findCompatibleAmmunition(
+    items: List<CharacterInventoryItem>,
+    weaponName: String
+): CharacterInventoryItem? {
+    val weapon = weaponName.lowercase()
+    val ammoTerms = when {
+        "arco" in weapon || "bow" in weapon -> listOf("flecha", "flechas", "arrow", "arrows")
+        "besta" in weapon || "crossbow" in weapon -> listOf("virote", "virotes", "bolt", "bolts")
+        "funda" in weapon || "sling" in weapon -> listOf("bala de funda", "balas de funda", "pedra de funda", "sling bullet")
+        else -> return null
+    }
+    return items.firstOrNull { item ->
+        item.quantity > 0 && item.name.lowercase().let { name -> ammoTerms.any { term -> term in name } }
+    }
+}
 data class CharacterFeat(
     val id: String = UUID.randomUUID().toString(),
     val name: String,
