@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -25,6 +26,7 @@ import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Shield
 import androidx.compose.material.icons.filled.Speed
 import androidx.compose.material.icons.filled.Star
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
@@ -74,7 +76,24 @@ fun OverviewCombatTab(
     var showArmorModal by remember { mutableStateOf(false) }
     var showMulticlassModal by remember { mutableStateOf(false) }
     var editingAbility by remember { mutableStateOf<Pair<String, Triple<Int, Int, Int>>?>(null) } // Name to (Base, Magic, Racial)
-    var diceRollTarget by remember { mutableStateOf<Triple<String, Int, String>?>(null) } // Title, Bonus, Damage
+    var diceRollTarget by remember { mutableStateOf<Triple<String, Int, String>?>(null) // Title, Bonus, Damage
+    var showAmmunitionPicker by remember { mutableStateOf(false) }
+
+    val equippedAmmunition = stats.inventory.firstOrNull {
+        it.equippedSlot == Dnd35Rules.EquipmentSlots.AMMUNITION && it.quantity > 0
+    }
+    val ammunitionOptions = stats.inventory.filter {
+        it.quantity > 0 && !it.equipped &&
+            (it.equippedSlot == Dnd35Rules.EquipmentSlots.NONE || it.equippedSlot == Dnd35Rules.EquipmentSlots.AMMUNITION)
+    }
+    val hasEquippedRangedWeapon = stats.inventory.any { weapon ->
+        weapon.equipped && (
+            weapon.notes.contains("alcance", ignoreCase = true) ||
+                weapon.name.contains("Arco", ignoreCase = true) ||
+                weapon.name.contains("Besta", ignoreCase = true) ||
+                weapon.name.contains("Funda", ignoreCase = true)
+            )
+    }
 
     val race = Dnd35Rules.RACES.find { it.name.equals(character.race, ignoreCase = true) } ?: Dnd35Rules.RACES.first()
 
@@ -179,6 +198,36 @@ fun OverviewCombatTab(
                 }
             }
             Spacer(modifier = Modifier.height(12.dp))
+        }
+
+        // Slot único de munição, escolhido manualmente pelo jogador e independente da arma.
+        if (hasEquippedRangedWeapon) {
+            item {
+                Card(
+                    modifier = Modifier.fillMaxWidth().padding(bottom = 10.dp),
+                    colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant),
+                    shape = RoundedCornerShape(12.dp)
+                ) {
+                    Column(modifier = Modifier.padding(12.dp)) {
+                        Text("Munição equipada", fontWeight = FontWeight.Bold, style = MaterialTheme.typography.titleMedium)
+                        Text(
+                            equippedAmmunition?.let { "${it.name} — ${it.quantity} unidade(s)" } ?: "Nenhuma pilha selecionada",
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                        Row(horizontalArrangement = Arrangement.spacedBy(8.dp), modifier = Modifier.fillMaxWidth()) {
+                            OutlinedButton(onClick = { showAmmunitionPicker = true }, modifier = Modifier.weight(1f)) {
+                                Text(if (equippedAmmunition == null) "Equipar munição" else "Trocar munição")
+                            }
+                            Button(
+                                onClick = { viewModel.consumeEquippedAmmunition() },
+                                enabled = equippedAmmunition != null,
+                                modifier = Modifier.weight(1f)
+                            ) { Text("Gastar 1") }
+                        }
+                    }
+                }
+            }
         }
 
         // 2. Barra de Pontos de Vida (HP) com Ações
@@ -614,7 +663,7 @@ fun OverviewCombatTab(
                         )
                     } else {
                         for (w in weapons) {
-                            val isRanged = w.notes.contains("alcance", ignoreCase = true) || w.name.contains("Arco", ignoreCase = true) || w.name.contains("Besta", ignoreCase = true)
+                            val isRanged = w.notes.contains("alcance", ignoreCase = true) || w.name.contains("Arco", ignoreCase = true) || w.name.contains("Besta", ignoreCase = true) || w.name.contains("Funda", ignoreCase = true)
                             val atkBonus = if (isRanged) parseFirstAttackBonus(stats.rangedAttackDisplay) else parseFirstAttackBonus(stats.meleeAttackDisplay)
                             AttackRow(
                                 weaponName = w.name,
@@ -626,26 +675,6 @@ fun OverviewCombatTab(
                                     diceRollTarget = Triple("Ataque com ${w.name}", atkBonus, w.damageOrAc)
                                 }
                             )
-
-                            if (isRanged && w.equipped) {
-                                val ammunition = com.example.dnd35.model.findCompatibleAmmunition(stats.inventory, w.name)
-                                Row(
-                                    modifier = Modifier.fillMaxWidth().padding(start = 8.dp, top = 2.dp, bottom = 8.dp),
-                                    verticalAlignment = Alignment.CenterVertically,
-                                    horizontalArrangement = Arrangement.SpaceBetween
-                                ) {
-                                    Text(
-                                        text = ammunition?.let { "Munição: ${it.name} (${it.quantity})" } ?: "Sem munição compatível",
-                                        style = MaterialTheme.typography.bodySmall,
-                                        color = MaterialTheme.colorScheme.onSurfaceVariant
-                                    )
-                                    OutlinedButton(
-                                        onClick = { viewModel.consumeAmmoForWeapon(w.name) },
-                                        enabled = ammunition != null,
-                                        modifier = Modifier.testTag("spend_ammo_${w.id}")
-                                    ) {
-                                        Text("Gastar 1 munição")
-                                    }
                                 }
                             }
                         }
@@ -782,6 +811,32 @@ fun OverviewCombatTab(
             bonus = bonus,
             damageNotation = damage,
             onDismiss = { diceRollTarget = null }
+        )
+    }
+
+    if (showAmmunitionPicker) {
+        AlertDialog(
+            onDismissRequest = { showAmmunitionPicker = false },
+            title = { Text("Escolher munição") },
+            text = {
+                LazyColumn(modifier = Modifier.height(280.dp)) {
+                    items(ammunitionOptions) { item ->
+                        Text(
+                            text = "${item.name} (${item.quantity})",
+                            modifier = Modifier.fillMaxWidth().clickable {
+                                viewModel.equipAmmunition(item.id)
+                                showAmmunitionPicker = false
+                            }.padding(vertical = 12.dp, horizontal = 8.dp),
+                            color = MaterialTheme.colorScheme.onSurface
+                        )
+                    }
+                    if (ammunitionOptions.isEmpty()) {
+                        item { Text("Não há itens disponíveis para selecionar.") }
+                    }
+                }
+            },
+            confirmButton = {},
+            dismissButton = { OutlinedButton(onClick = { showAmmunitionPicker = false }) { Text("Fechar") } }
         )
     }
 }
