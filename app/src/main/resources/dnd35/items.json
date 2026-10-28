@@ -405,24 +405,6 @@
     "properties": "Capacidade para até 30 kg de carga"
   },
   {
-    "name": "Corda de Cânhamo (15m)",
-    "category": "Itens de Aventura",
-    "defaultSlot": "Mochila (Não Equipado)",
-    "weightLb": 10,
-    "costGp": 1,
-    "damageOrAc": "-",
-    "properties": "Corda resistente"
-  },
-  {
-    "name": "Corda de Seda (15m)",
-    "category": "Itens de Aventura",
-    "defaultSlot": "Mochila (Não Equipado)",
-    "weightLb": 5,
-    "costGp": 10,
-    "damageOrAc": "-",
-    "properties": "Corda leve com +2 em Usar Cordas"
-  },
-  {
     "name": "Ração de Viagem (7 dias)",
     "category": "Itens de Aventura",
     "defaultSlot": "Mochila (Não Equipado)",
@@ -2007,15 +1989,6 @@
     "properties": "Ferramenta de qualidade superior"
   },
   {
-    "name": "Ferramentas de Artesão (Obra-Prima)",
-    "category": "Itens de Aventura",
-    "defaultSlot": "Mochila (Não Equipado)",
-    "weightLb": 5.5,
-    "costGp": 55,
-    "damageOrAc": "—",
-    "properties": "Conjunto de ferramentas de artesão de qualidade superior"
-  },
-  {
     "name": "Ferramentas de Artesão",
     "category": "Itens de Aventura",
     "defaultSlot": "Mochila (Não Equipado)",
@@ -2032,15 +2005,6 @@
     "costGp": 100,
     "damageOrAc": "—",
     "properties": "+2 circunstancial em Atuação com o instrumento"
-  },
-  {
-    "name": "Instrumento Musical (Comum)",
-    "category": "Itens de Aventura",
-    "defaultSlot": "Mochila (Não Equipado)",
-    "weightLb": 3.3,
-    "costGp": 5,
-    "damageOrAc": "—",
-    "properties": "Instrumento musical comum"
   },
   {
     "name": "Instrumentos de Ladrão",

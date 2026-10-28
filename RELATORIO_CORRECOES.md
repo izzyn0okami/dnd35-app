@@ -359,3 +359,13 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - O catálogo trazia **Cantil de Água Fresca** com o mesmo custo, mas nome ampliado e peso de 4 lb. O registro foi normalizado para **Cantil** e o peso convertido de 2 kg para 4,4 lb, mantendo o custo de 1 PO.
 - Adicionado teste de regressão para presença, custo e peso do cantil. A unicidade de nomes normalizados continua sendo verificada.
 - **Distinção importante:** a prosa do livro descreve “Papel”, mas a linha tabelada é “Pergaminho (folha)” (2 PP, peso não informado). A presença de “Papel (folha)” no catálogo não é evidência de que seja uma entrada da Tabela 7-8; não foi alterada nesta correção para evitar misturar a revisão do catálogo com a decisão específica sobre esse registro.
+
+
+## Consolidação de variantes duplicadas do equipamento (2026-10-28)
+
+- Conferência do catálogo contra os nomes da Tabela 7-8 do PDF brasileiro do Livro do Jogador (capítulo 7, página impressa 108 / PDF 112).
+- Removidas quatro variantes legadas que duplicavam entradas canônicas sem representar opções diferentes: “Corda de Cânhamo (15m)”, “Corda de Seda (15m)”, “Instrumento Musical (Comum)” e “Ferramentas de Artesão (Obra-Prima)”.
+- Mantidas as entradas canônicas “Corda de Cânhamo (15 m)” (1 PO; 5 kg ≈ 11 lb), “Corda de Seda (15 m)” (10 PO; 2,5 kg ≈ 5,5 lb), “Instrumento Musical Comum” e “Ferramenta de Artesão (Obra-Prima)”.
+- Não foram removidas “Tenda para uma Pessoa” e “Tenda para duas Pessoas”: embora não sejam a entrada genérica “Tenda” da tabela, podem representar opções distintas no catálogo; não há evidência suficiente para tratá-las como duplicatas exatas.
+- Não alterados “Papel (folha)” nem “Pergaminho em Branco”, conforme a distinção já registrada: apenas “Pergaminho (folha)” está confirmado como linha da Tabela 7-8.
+- Adicionado teste de regressão para exigir as quatro entradas canônicas, rejeitar as variantes legadas e conferir os pesos convertidos das duas cordas.

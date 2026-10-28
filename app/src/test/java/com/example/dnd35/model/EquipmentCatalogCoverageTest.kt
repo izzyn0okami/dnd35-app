@@ -141,6 +141,27 @@ class EquipmentCatalogCoverageTest {
     }
 
     @Test
+    fun usesCanonicalPlayerHandbookNamesForEquipmentVariants() {
+        val byName = Dnd35Rules.PRESET_ITEMS.associateBy { normalize(it.name) }
+        listOf(
+            "Corda de Cânhamo (15 m)",
+            "Corda de Seda (15 m)",
+            "Instrumento Musical Comum",
+            "Ferramenta de Artesão (Obra-Prima)"
+        ).forEach { assertTrue("Entrada canônica ausente: $it", normalize(it) in byName) }
+
+        listOf(
+            "Corda de Cânhamo (15m)",
+            "Corda de Seda (15m)",
+            "Instrumento Musical (Comum)",
+            "Ferramentas de Artesão (Obra-Prima)"
+        ).forEach { assertTrue("Variante duplicada ainda presente: $it", normalize(it) !in byName) }
+
+        assertEquals(11.0f, byName[normalize("Corda de Cânhamo (15 m)")]!!.weightLb, 0.01f)
+        assertEquals(5.5f, byName[normalize("Corda de Seda (15 m)")]!!.weightLb, 0.01f)
+    }
+
+    @Test
     fun catalogNamesAreUniqueIgnoringAccentsAndCase() {
         val normalized = Dnd35Rules.PRESET_ITEMS.map { normalize(it.name) }
         assertEquals(normalized.size, normalized.toSet().size)
