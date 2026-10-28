@@ -115,7 +115,7 @@ fun ammunitionBundleSize(item: CharacterInventoryItem): Int {
     val normalizedName = item.name.lowercase()
     val isKnownProjectile = normalizedName.contains("flecha") ||
         normalizedName.contains("virote") ||
-        normalizedName.contains("bala de funda")
+        (normalizedName.contains("bala") && normalizedName.contains("funda"))
     if (!isKnownProjectile) return 1
 
     return item.name.substringAfterLast('(').substringBeforeLast(')')
