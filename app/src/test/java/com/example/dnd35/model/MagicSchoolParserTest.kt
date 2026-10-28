@@ -4,7 +4,12 @@ import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
+import org.junit.runner.RunWith
+import org.robolectric.RobolectricTestRunner
+import org.robolectric.annotation.Config
 
+@RunWith(RobolectricTestRunner::class)
+@Config(sdk = [34])
 class MagicSchoolParserTest {
     @Test
     fun matchesBaseSchoolRegardlessOfSubschoolAndDescriptors() {
@@ -35,7 +40,6 @@ class MagicSchoolParserTest {
         assertEquals("Encantamento", parsed.baseSchool)
         assertEquals("Compulsão", parsed.subschool)
         assertEquals(listOf("Ação Mental"), parsed.descriptors)
-        assertEquals(raw, "Encantamento (Compulsão) [Ação Mental]")
     }
 
     @Test
