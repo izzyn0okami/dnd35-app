@@ -428,3 +428,9 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - Adicionado saldo persistente de unidades individuais de munição, mantendo a quantidade de pacotes separada para cálculo de peso/custo. O primeiro disparo de um pacote com 10 agora deixa 9 disparos, não remove o pacote; ao esgotar o conteúdo, o item é removido.
 - A aba Combate e a lista do inventário exibem as munições restantes. O estado é salvo no JSON e os registros antigos sem o novo campo continuam usando a contagem derivada do nome do pacote.
 - Incluídos testes para pacotes de 10 unidades e consumo até a transição entre pacotes. A validação da CI Android deve passar antes do merge.
+
+
+### Persistência confiável das fotos dos itens (2026-10-28)
+- Corrigida a seleção de fotos para copiar o conteúdo escolhido para o armazenamento privado do aplicativo (`filesDir/item_photos`) e gravar no item uma URI `file://` interna.
+- Isso elimina a dependência de permissões persistentes do provedor externo, que podiam falhar silenciosamente e deixar a miniatura indisponível após fechar/reabrir o app.
+- A cópia ocorre em I/O de segundo plano e o formulário informa quando não consegue salvar a imagem; a URI interna continua sendo persistida pelo serializador do inventário.
