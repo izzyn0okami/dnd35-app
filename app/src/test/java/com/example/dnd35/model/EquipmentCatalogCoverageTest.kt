@@ -18,7 +18,7 @@ class EquipmentCatalogCoverageTest {
             "Azagaia", "Adaga de Soco", "Foice Curta", "Maça-Estrela", "Lança Longa",
             "Besta Pesada", "Virotes de Besta (10)", "Balas de Funda (10)", "Machado de Batalha",
             "Espada Larga", "Foice Longa", "Lança Montada", "Rede", "Boleadeira",
-            "Besta de Mão", "Besta de Repetição Leve", "Besta de Repetição Pesada", "Shuriken (5)"
+            "Besta de Mão", "Besta Leve de Repetição", "Besta Pesada de Repetição", "Shuriken (5)"
         ).forEach { assertTrue("Arma/munição ausente: $it", normalize(it) in names) }
     }
 
