@@ -294,3 +294,12 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - Quando a ficha não registra a escolha necessária (por exemplo, proficiência específica ou escola/arma escolhida), o resultado identifica a verificação como parcial em vez de afirmar incorretamente que o requisito foi cumprido.
 - Adicionados testes de regressão para requisitos atendidos, requisitos pendentes, níveis de classe/personagem e requisitos não verificáveis automaticamente.
 - Validação de CI pendente; não considerar a alteração integrada até a suíte Android/Gradle passar.
+
+## Auditoria de escolas de magia e filtros — etapa 1 (2026-10-28)
+
+- **Fonte normativa:** Livro do Jogador brasileiro, capítulo “Descrição das Magias”. O livro estabelece oito escolas básicas e trata Universal como categoria à parte; Universal não integra as oito escolas.
+- **Problema confirmado:** o filtro da aba de Magias comparava o campo completo da escola por igualdade exata. Por isso, registros como `Conjuração (Invocação)`, `Evocação [Fogo]` e `Encantamento (Compulsão) [Ação Mental]` não apareciam ao filtrar pela escola básica.
+- **Correção:** introduzido `MagicSchoolParser` para interpretar escola básica, subescola, descritores conhecidos e anotações entre colchetes sem alterar o texto legado do catálogo ou os dados já salvos nas fichas. O filtro usa a escola básica e agora oferece `Universal`.
+- **Regressão:** testes cobrem subescolas, descritores, anotações como “veja texto”, o filtro Universal e a validade da escola básica nas 331 entradas atuais do catálogo.
+- **Limite desta etapa:** não se declara concluída a revisão semântica de todas as classificações no Livro do Jogador. O trabalho atual corrige a interpretação/filtro e preserva metadados existentes; divergências específicas de classificação serão registradas somente após comparação individual com o livro.
+- **Compatibilidade:** mantido o campo `school` original em JSON e nos modelos persistidos; nenhuma migração ou alteração destrutiva foi introduzida.

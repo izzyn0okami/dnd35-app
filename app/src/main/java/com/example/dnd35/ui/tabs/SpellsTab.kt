@@ -55,6 +55,7 @@ import androidx.compose.ui.unit.dp
 import com.example.dnd35.model.CalculatedCharacterStats
 import com.example.dnd35.model.CharacterEntity
 import com.example.dnd35.model.CharacterSpell
+import com.example.dnd35.model.MagicSchoolParser
 import com.example.dnd35.model.SpellSlotInfo
 import com.example.dnd35.ui.dialogs.AddEditSpellDialog
 import com.example.dnd35.viewmodel.CharacterViewModel
@@ -80,13 +81,13 @@ fun SpellsTab(
     var selectedSchoolFilter by remember { mutableStateOf("Todas") }
     var filterOnlyPrepared by remember { mutableStateOf(false) }
 
-    val schools = listOf("Todas", "Abjuração", "Adivinhação", "Conjuração", "Encantamento", "Evocação", "Ilusão", "Necromancia", "Transmutação")
+    val schools = listOf("Todas", "Abjuração", "Adivinhação", "Conjuração", "Encantamento", "Evocação", "Ilusão", "Necromancia", "Transmutação", "Universal")
 
     val filteredSpells = stats.spells.filter { spell ->
         val matchesText = spell.name.contains(searchQuery, ignoreCase = true) ||
                 spell.description.contains(searchQuery, ignoreCase = true)
         val matchesLevel = selectedLevelFilter == null || spell.level == selectedLevelFilter
-        val matchesSchool = selectedSchoolFilter == "Todas" || spell.school.equals(selectedSchoolFilter, ignoreCase = true)
+        val matchesSchool = MagicSchoolParser.matchesBaseSchool(spell.school, selectedSchoolFilter)
         val matchesPrepared = !filterOnlyPrepared || spell.prepared
         matchesText && matchesLevel && matchesSchool && matchesPrepared
     }.sortedBy { it.level }
