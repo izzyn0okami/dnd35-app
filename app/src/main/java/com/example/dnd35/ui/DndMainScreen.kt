@@ -33,6 +33,7 @@ import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.PictureAsPdf
 import androidx.compose.material.icons.filled.Shield
 import androidx.compose.material.icons.filled.Star
+import androidx.compose.material.icons.filled.Wifi
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
@@ -75,13 +76,15 @@ import com.example.dnd35.ui.tabs.InventoryTab
 import com.example.dnd35.ui.tabs.OverviewCombatTab
 import com.example.dnd35.ui.tabs.SkillsTab
 import com.example.dnd35.ui.tabs.SpellsTab
+import com.example.dnd35.ui.session.SessionHubScreen
 import com.example.dnd35.viewmodel.CharacterViewModel
+import com.example.dnd35.viewmodel.SessionViewModel
 import com.example.ui.theme.DndCrimson
 import com.example.ui.theme.DndGold
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DndMainScreen(viewModel: CharacterViewModel) {
+fun DndMainScreen(viewModel: CharacterViewModel, sessionViewModel: SessionViewModel? = null) {
     val context = LocalContext.current
     val characters by viewModel.allCharacters.collectAsStateWithLifecycle()
     val activeCharacter by viewModel.activeCharacter.collectAsStateWithLifecycle()
@@ -93,6 +96,7 @@ fun DndMainScreen(viewModel: CharacterViewModel) {
     var showNewCharModal by remember { mutableStateOf(false) }
     var showDeleteConfirmModal by remember { mutableStateOf(false) }
     var exportAllPending by remember { mutableStateOf(false) }
+    var showSessionHub by remember { mutableStateOf(false) }
 
     LaunchedEffect(viewModel) {
         viewModel.backupMessages.collect { message ->
@@ -179,6 +183,20 @@ fun DndMainScreen(viewModel: CharacterViewModel) {
                     }
                 },
                 actions = {
+                    // Botão Sessão de Mesa (Mestre/Jogador, offline, mesma rede local)
+                    if (sessionViewModel != null) {
+                        IconButton(
+                            onClick = { showSessionHub = true },
+                            modifier = Modifier.testTag("session_hub_button")
+                        ) {
+                            Icon(
+                                Icons.Default.Wifi,
+                                contentDescription = "Sessão de Mesa",
+                                tint = DndGold
+                            )
+                        }
+                    }
+
                     // Botão Exportar PDF Oficial
                     IconButton(
                         onClick = {
@@ -331,7 +349,9 @@ fun DndMainScreen(viewModel: CharacterViewModel) {
             val char = activeCharacter
             val calc = computedStats
 
-            if (char == null && characters.isEmpty()) {
+            if (showSessionHub && sessionViewModel != null) {
+                SessionHubScreen(viewModel = sessionViewModel, onClose = { showSessionHub = false })
+            } else if (char == null && characters.isEmpty()) {
                 Column(
                     modifier = Modifier
                         .fillMaxSize()

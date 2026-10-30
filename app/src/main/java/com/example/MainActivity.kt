@@ -10,6 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.dnd35.ui.DndMainScreen
 import com.example.dnd35.viewmodel.CharacterViewModel
+import com.example.dnd35.viewmodel.SessionViewModel
 import com.example.ui.theme.MyApplicationTheme
 
 class MainActivity : ComponentActivity() {
@@ -20,7 +21,8 @@ class MainActivity : ComponentActivity() {
             MyApplicationTheme {
                 Surface(modifier = Modifier.fillMaxSize()) {
                     val characterViewModel: CharacterViewModel = viewModel()
-                    DndMainScreen(viewModel = characterViewModel)
+                    val sessionViewModel: SessionViewModel = viewModel()
+                    DndMainScreen(viewModel = characterViewModel, sessionViewModel = sessionViewModel)
                 }
             }
         }

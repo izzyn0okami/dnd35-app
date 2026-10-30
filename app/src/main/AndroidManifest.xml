@@ -2,6 +2,18 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- Usadas apenas para a sessão de mesa offline (Mestre/Jogadores na mesma rede local).
+         Nenhuma delas dá acesso à internet em si: ACCESS_NETWORK_STATE/ACCESS_WIFI_STATE só
+         permitem descobrir o IP do próprio aparelho na rede local, e CAMERA é usada somente
+         para escanear o QR Code de outro jogador. -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
     <application
         android:allowBackup="false"
         android:dataExtractionRules="@xml/data_extraction_rules"

@@ -1,0 +1,120 @@
+package com.example.dnd35.session
+
+import org.json.JSONArray
+import org.json.JSONObject
+import java.io.DataInputStream
+import java.io.DataOutputStream
+import java.io.EOFException
+
+/**
+ * Protocolo de mensagens trocadas entre o Mestre (servidor) e os Jogadores (clientes) via socket
+ * TCP, dentro da rede local. Cada mensagem é um JSON simples com um campo "type".
+ *
+ * Fase atual (conexão + lista de participantes): HELLO, WELCOME, ROSTER e BYE. Fases futuras
+ * (PV, iniciativa, pedidos/aprovações, trocas) vão adicionar novos tipos a este mesmo canal,
+ * sem precisar trocar o transporte.
+ */
+sealed class SessionMessage {
+
+    /** Jogador -> Mestre: pedido para entrar na sessão com um nome de exibição. */
+    data class Hello(val displayName: String) : SessionMessage()
+
+    /** Mestre -> Jogador: confirma a entrada e informa o id atribuído a esse participante. */
+    data class Welcome(val participantId: String, val sessionId: String) : SessionMessage()
+
+    /** Mestre -> todos: lista atualizada de participantes conectados. */
+    data class Roster(val participants: List<Participant>) : SessionMessage()
+
+    /** Qualquer direção: encerramento da conexão (saída voluntária ou sessão encerrada). */
+    data class Bye(val reason: String = "") : SessionMessage()
+
+    fun toJson(): String {
+        val obj = JSONObject()
+        when (this) {
+            is Hello -> obj.put("type", TYPE_HELLO).put("displayName", displayName)
+            is Welcome -> obj.put("type", TYPE_WELCOME)
+                .put("participantId", participantId)
+                .put("sessionId", sessionId)
+            is Roster -> obj.put("type", TYPE_ROSTER).put("participants", JSONArray().also { arr ->
+                participants.forEach { p ->
+                    arr.put(
+                        JSONObject()
+                            .put("id", p.id)
+                            .put("displayName", p.displayName)
+                            .put("role", p.role.name)
+                            .put("characterId", p.characterId ?: JSONObject.NULL)
+                    )
+                }
+            })
+            is Bye -> obj.put("type", TYPE_BYE).put("reason", reason)
+        }
+        return obj.toString()
+    }
+
+    companion object {
+        const val TYPE_HELLO = "HELLO"
+        const val TYPE_WELCOME = "WELCOME"
+        const val TYPE_ROSTER = "ROSTER"
+        const val TYPE_BYE = "BYE"
+
+        fun fromJson(raw: String): SessionMessage? {
+            return try {
+                val obj = JSONObject(raw)
+                when (obj.getString("type")) {
+                    TYPE_HELLO -> Hello(obj.getString("displayName"))
+                    TYPE_WELCOME -> Welcome(obj.getString("participantId"), obj.getString("sessionId"))
+                    TYPE_ROSTER -> {
+                        val arr = obj.getJSONArray("participants")
+                        val list = buildList {
+                            for (i in 0 until arr.length()) {
+                                val p = arr.getJSONObject(i)
+                                add(
+                                    Participant(
+                                        id = p.getString("id"),
+                                        displayName = p.getString("displayName"),
+                                        role = ParticipantRole.valueOf(p.getString("role")),
+                                        characterId = if (p.isNull("characterId")) null else p.getLong("characterId")
+                                    )
+                                )
+                            }
+                        }
+                        Roster(list)
+                    }
+                    TYPE_BYE -> Bye(obj.optString("reason", ""))
+                    else -> null
+                }
+            } catch (e: Exception) {
+                null
+            }
+        }
+    }
+}
+
+/**
+ * Framing simples sobre o socket: cada mensagem é escrita/lida como um inteiro de 4 bytes com o
+ * tamanho em bytes seguido do conteúdo UTF-8. Evita qualquer ambiguidade com quebras de linha
+ * dentro do JSON e funciona de forma idêntica em testes de JVM puro e no app em si.
+ */
+object SessionWire {
+    fun write(out: DataOutputStream, message: SessionMessage) {
+        val bytes = message.toJson().toByteArray(Charsets.UTF_8)
+        out.writeInt(bytes.size)
+        out.write(bytes)
+        out.flush()
+    }
+
+    /** Retorna `null` se a conexão foi fechada corretamente (fim do stream). */
+    fun read(input: DataInputStream): SessionMessage? {
+        val length = try {
+            input.readInt()
+        } catch (e: EOFException) {
+            return null
+        }
+        if (length <= 0 || length > MAX_MESSAGE_BYTES) return null
+        val bytes = ByteArray(length)
+        input.readFully(bytes)
+        return SessionMessage.fromJson(String(bytes, Charsets.UTF_8))
+    }
+
+    private const val MAX_MESSAGE_BYTES = 1 shl 20 // 1 MiB — generoso para listas de participantes
+}
