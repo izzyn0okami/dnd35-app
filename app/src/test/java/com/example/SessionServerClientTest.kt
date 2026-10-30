@@ -10,12 +10,17 @@ import kotlinx.coroutines.withTimeout
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
+import org.junit.runner.RunWith
+import org.robolectric.RobolectricTestRunner
+import org.robolectric.annotation.Config
 
 /**
- * Teste de integração em JVM puro: SessionServer/SessionClient usam apenas java.net
- * (ServerSocket/Socket), então rodam em loopback (127.0.0.1) sem precisar de Robolectric
- * nem de um aparelho/emulador Android de verdade.
+ * Teste de integração em JVM puro (ServerSocket/Socket reais em loopback, sem emulador):
+ * precisa do Robolectric mesmo assim porque SessionMessage usa org.json.JSONObject, que é
+ * um stub sem mock fora do Robolectric (mesma causa documentada em SessionMessageTest).
  */
+@RunWith(RobolectricTestRunner::class)
+@Config(sdk = [35])
 class SessionServerClientTest {
 
     @Test

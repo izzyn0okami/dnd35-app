@@ -8,11 +8,15 @@ import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
 import org.junit.Test
+import org.junit.runner.RunWith
+import org.robolectric.RobolectricTestRunner
+import org.robolectric.annotation.Config
 
-/**
- * Testes puros de JVM (sem Robolectric): o protocolo da sessão só usa org.json e java.net,
- * nada de android.util.Log, então não precisa de mock de Android aqui.
- */
+// Robolectric: mesmo não usando nenhuma classe exclusiva do Android, org.json.JSONObject
+// (usado em SessionMessage/JoinPayload) é um stub em testes de JVM puro e lança
+// "Method put in org.json.JSONObject not mocked" sem o Robolectric mockar essas classes.
+@RunWith(RobolectricTestRunner::class)
+@Config(sdk = [35])
 class SessionMessageTest {
 
     @Test
