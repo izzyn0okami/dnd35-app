@@ -1,5 +1,7 @@
 package com.example.dnd35.session
 
+import com.example.dnd35.backup.CharacterBackup
+import com.example.dnd35.model.CharacterEntity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -37,6 +39,11 @@ class SessionServer(
     private val _roster = MutableStateFlow(listOf(dmParticipant))
     val roster: StateFlow<List<Participant>> = _roster
 
+    // Fichas que cada jogador mandou ao entrar (chave = id do participante). Só existe aqui, do
+    // lado do Mestre — não é repassada a outros jogadores pelo ROSTER.
+    private val _receivedCharacters = MutableStateFlow<Map<String, CharacterEntity>>(emptyMap())
+    val receivedCharacters: StateFlow<Map<String, CharacterEntity>> = _receivedCharacters
+
     private class ClientHandle(val id: String, val socket: Socket, val out: DataOutputStream)
 
     /** Inicia o servidor em uma porta livre escolhida pelo sistema e retorna essa porta. */
@@ -53,6 +60,7 @@ class SessionServer(
         clients.values.forEach { runCatching { it.socket.close() } }
         clients.clear()
         _roster.value = listOf(dmParticipant)
+        _receivedCharacters.value = emptyMap()
     }
 
     private suspend fun acceptLoop(socket: ServerSocket) {
@@ -84,8 +92,12 @@ class SessionServer(
 
             while (true) {
                 val msg = SessionWire.read(input) ?: break
-                if (msg is SessionMessage.Bye) break
-                // Fases futuras (PV/iniciativa/pedidos) vão tratar outros tipos aqui.
+                when (msg) {
+                    is SessionMessage.Bye -> break
+                    is SessionMessage.CharacterSheet -> receiveCharacterSheet(id, msg.characterJson)
+                    // Fases futuras (PV/iniciativa/pedidos) vão tratar outros tipos aqui.
+                    else -> Unit
+                }
             }
         } catch (e: IOException) {
             // Conexão caiu de forma inesperada — removida abaixo como qualquer outra saída.
@@ -102,7 +114,15 @@ class SessionServer(
     private fun removeParticipant(id: String) {
         clients.remove(id)
         _roster.value = _roster.value.filterNot { it.id == id }
+        _receivedCharacters.value = _receivedCharacters.value - id
         broadcastRoster()
+    }
+
+    /** Guarda a ficha mandada por um jogador; entradas inválidas são ignoradas silenciosamente. */
+    private fun receiveCharacterSheet(participantId: String, characterJson: String) {
+        val parsed = CharacterBackup.parse(characterJson) as? CharacterBackup.ParseResult.Success ?: return
+        val entity = parsed.characters.firstOrNull()?.entity ?: return
+        _receivedCharacters.value = _receivedCharacters.value + (participantId to entity)
     }
 
     private fun broadcastRoster() {

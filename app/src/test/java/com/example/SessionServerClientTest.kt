@@ -1,5 +1,7 @@
 package com.example
 
+import com.example.dnd35.backup.CharacterBackup
+import com.example.dnd35.model.CharacterEntity
 import com.example.dnd35.session.ParticipantRole
 import com.example.dnd35.session.SessionClient
 import com.example.dnd35.session.SessionClientState
@@ -67,6 +69,56 @@ class SessionServerClientTest {
 
             val rosterAfterLeave = withTimeout(5_000) { server.roster.first { it.size == 1 } }
             assertEquals(ParticipantRole.DM, rosterAfterLeave.single().role)
+        } finally {
+            server.stop()
+        }
+    }
+
+    @Test
+    fun `ficha enviada pelo jogador aparece do lado do Mestre`() = runBlocking {
+        val server = SessionServer(sessionId = "sess-3", hostDisplayName = "Mestre")
+        val port = server.start()
+        try {
+            val character = CharacterEntity(name = "Legolas", characterClass = "Patrulheiro", level = 5)
+            val characterJson = CharacterBackup.toJson(listOf(character)) { null }
+
+            val client = SessionClient()
+            try {
+                client.connect("127.0.0.1", port, "Legolas", characterJson)
+                val connected = withTimeout(5_000) {
+                    client.state.first { it is SessionClientState.Connected } as SessionClientState.Connected
+                }
+
+                val received = withTimeout(5_000) {
+                    server.receivedCharacters.first { it.containsKey(connected.selfId) }
+                }
+                val entity = received.getValue(connected.selfId)
+                assertEquals("Legolas", entity.name)
+                assertEquals("Patrulheiro", entity.characterClass)
+                assertEquals(5, entity.level)
+            } finally {
+                client.disconnect()
+            }
+        } finally {
+            server.stop()
+        }
+    }
+
+    @Test
+    fun `jogador sem ficha nao aparece em receivedCharacters`() = runBlocking {
+        val server = SessionServer(sessionId = "sess-4", hostDisplayName = "Mestre")
+        val port = server.start()
+        try {
+            val client = SessionClient()
+            try {
+                client.connect("127.0.0.1", port, "Observador")
+                withTimeout(5_000) { client.state.first { it is SessionClientState.Connected } }
+                // Dá tempo da mensagem (se houvesse) chegar antes de garantir que nada chegou.
+                withTimeout(5_000) { server.roster.first { it.size == 2 } }
+                assertTrue(server.receivedCharacters.value.isEmpty())
+            } finally {
+                client.disconnect()
+            }
         } finally {
             server.stop()
         }

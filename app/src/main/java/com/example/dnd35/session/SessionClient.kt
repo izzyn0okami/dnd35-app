@@ -37,7 +37,12 @@ class SessionClient {
     private val _state = MutableStateFlow<SessionClientState>(SessionClientState.Connecting)
     val state: StateFlow<SessionClientState> = _state
 
-    fun connect(host: String, port: Int, displayName: String) {
+    /**
+     * @param characterJson ficha do jogador já serializada (mesmo formato do backup de fichas),
+     * mandada ao Mestre logo após a entrada ser confirmada. `null` entra na sessão sem vincular
+     * nenhuma ficha (por exemplo, um observador).
+     */
+    fun connect(host: String, port: Int, displayName: String, characterJson: String? = null) {
         scope.launch {
             try {
                 val sock = Socket()
@@ -54,6 +59,9 @@ class SessionClient {
                 if (welcome == null) {
                     _state.value = SessionClientState.Disconnected("Resposta inesperada do Mestre.")
                     return@launch
+                }
+                if (characterJson != null) {
+                    SessionWire.write(out, SessionMessage.CharacterSheet(characterJson))
                 }
                 _state.value = SessionClientState.Connected(welcome.participantId, welcome.sessionId)
 

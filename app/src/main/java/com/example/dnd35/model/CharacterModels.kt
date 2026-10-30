@@ -57,6 +57,9 @@ data class CharacterEntity(
     val spellSlotsJson: String = "",
     val multiclassJson: String = "",
     val notes: String = "",
+    // Marcação usada só na Sessão de Mesa: fichas de NPC não representam um jogador
+    // conectado, são controladas inteiramente pelo Mestre (loja, monstros, etc.).
+    val isNpc: Boolean = false,
     val updatedAt: Long = System.currentTimeMillis()
 )
 

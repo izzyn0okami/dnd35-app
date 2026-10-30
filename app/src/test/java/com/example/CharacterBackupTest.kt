@@ -85,6 +85,14 @@ class CharacterBackupTest {
     }
 
     @Test
+    fun roundTripPreservesIsNpcFlag() {
+        val original = sampleCharacter().copy(isNpc = true)
+        val json = CharacterBackup.toJson(listOf(original))
+        val parsed = success(json).characters[0].entity
+        assertTrue(parsed.isNpc)
+    }
+
+    @Test
     fun roundTripKeepsFloatsWithoutBinaryNoise() {
         val original = sampleCharacter().copy(goldGp = 1.1f, baseSpeedMeters = 4.5f)
         val json = CharacterBackup.toJson(listOf(original))

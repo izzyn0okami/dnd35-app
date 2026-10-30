@@ -350,7 +350,11 @@ fun DndMainScreen(viewModel: CharacterViewModel, sessionViewModel: SessionViewMo
             val calc = computedStats
 
             if (showSessionHub && sessionViewModel != null) {
-                SessionHubScreen(viewModel = sessionViewModel, onClose = { showSessionHub = false })
+                SessionHubScreen(
+                    viewModel = sessionViewModel,
+                    characterViewModel = viewModel,
+                    onClose = { showSessionHub = false }
+                )
             } else if (char == null && characters.isEmpty()) {
                 Column(
                     modifier = Modifier

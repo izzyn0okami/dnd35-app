@@ -308,6 +308,26 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
         }
     }
 
+    /**
+     * Marca/desmarca uma ficha qualquer (não precisa ser a ficha ativa) como NPC — usado na
+     * Sessão de Mesa para o Mestre organizar quais fichas locais são personagens dele (NPCs)
+     * em vez de jogadores conectados.
+     */
+    fun setNpcFlag(characterId: Long, isNpc: Boolean) {
+        val target = allCharacters.value.find { it.id == characterId } ?: return
+        if (target.isNpc == isNpc) return
+        val updated = target.copy(isNpc = isNpc)
+        if (_activeCharacter.value?.id == characterId) {
+            persistCharacter(updated)
+        } else {
+            viewModelScope.launch {
+                characterSaveMutex.withLock {
+                    withContext(Dispatchers.IO) { repository.saveCharacter(updated) }
+                }
+            }
+        }
+    }
+
     // Gestão de Pontos de Vida
     fun adjustHp(delta: Int) {
         val curr = _activeCharacter.value ?: return
