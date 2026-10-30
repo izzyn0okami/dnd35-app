@@ -114,6 +114,7 @@ object CharacterBackup {
         o.put("spellSlotsJson", c.spellSlotsJson)
         o.put("multiclassJson", c.multiclassJson)
         o.put("notes", c.notes)
+        o.put("isNpc", c.isNpc)
         o.put("updatedAt", c.updatedAt)
 
         val photoUri = c.photoUri
@@ -268,6 +269,7 @@ object CharacterBackup {
             spellSlotsJson = jsonColumn("spellSlotsJson"),
             multiclassJson = jsonColumn("multiclassJson"),
             notes = str(o, "notes", ""),
+            isNpc = o.optBoolean("isNpc", false),
             updatedAt = longValue(o, "updatedAt", System.currentTimeMillis()).takeIf { it > 0 }
                 ?: System.currentTimeMillis()
         )

@@ -4,6 +4,8 @@ import android.app.Application
 import android.graphics.Bitmap
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.dnd35.backup.CharacterBackup
+import com.example.dnd35.model.CharacterEntity
 import com.example.dnd35.session.JoinPayload
 import com.example.dnd35.session.LocalNetworkUtil
 import com.example.dnd35.session.Participant
@@ -14,6 +16,7 @@ import com.example.dnd35.session.SessionServer
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.launch
 
 /** Estado de tela do modo Mestre (hospedando uma sessão). */
@@ -23,7 +26,9 @@ sealed class DmSessionUiState {
         val sessionId: String,
         val qrBitmap: Bitmap,
         val qrPayload: String,
-        val participants: List<Participant>
+        val participants: List<Participant>,
+        /** Fichas recebidas dos jogadores conectados, indexadas pelo id do participante. */
+        val characters: Map<String, CharacterEntity> = emptyMap()
     ) : DmSessionUiState()
     data class Error(val message: String) : DmSessionUiState()
 }
@@ -75,19 +80,21 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
         val qrContent = payload.toJson()
         val bitmap = QrCodeUtil.generate(qrContent)
 
-        viewModelScope.launchCollectRoster(newServer, sessionId, bitmap, qrContent)
+        viewModelScope.launchCollectDmState(newServer, sessionId, bitmap, qrContent)
     }
 
-    private fun CoroutineScope.launchCollectRoster(
+    private fun CoroutineScope.launchCollectDmState(
         activeServer: SessionServer,
         sessionId: String,
         bitmap: Bitmap,
         qrContent: String
     ) {
         launch {
-            activeServer.roster.collect { participants ->
+            combine(activeServer.roster, activeServer.receivedCharacters) { participants, characters ->
+                participants to characters
+            }.collect { (participants, characters) ->
                 if (server === activeServer) {
-                    _dmState.value = DmSessionUiState.Hosting(sessionId, bitmap, qrContent, participants)
+                    _dmState.value = DmSessionUiState.Hosting(sessionId, bitmap, qrContent, participants, characters)
                 }
             }
         }
@@ -101,19 +108,22 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
     }
 
     /** Jogador: entra em uma sessão a partir de um QR Code já decodificado. */
-    fun joinSession(payload: JoinPayload, displayName: String) {
-        joinSession(payload.hostAddress, payload.port, displayName)
+    fun joinSession(payload: JoinPayload, displayName: String, character: CharacterEntity?) {
+        joinSession(payload.hostAddress, payload.port, displayName, character)
     }
 
     /** Jogador: entra em uma sessão informando manualmente o IP e a porta do Mestre. */
-    fun joinSession(hostAddress: String, port: Int, displayName: String) {
+    fun joinSession(hostAddress: String, port: Int, displayName: String, character: CharacterEntity?) {
         leaveSession()
         val name = displayName.ifBlank { "Jogador" }
+        // Sem foto: o retrato não é necessário para o Mestre acompanhar a ficha durante a sessão,
+        // e evita inflar a mensagem enviada pela rede local.
+        val characterJson = character?.let { CharacterBackup.toJson(listOf(it)) { null } }
         _playerState.value = PlayerSessionUiState.Connecting
         val newClient = SessionClient()
         client = newClient
         viewModelScope.launchCollectClientState(newClient)
-        newClient.connect(hostAddress, port, name)
+        newClient.connect(hostAddress, port, name, characterJson)
     }
 
     private fun CoroutineScope.launchCollectClientState(activeClient: SessionClient) {

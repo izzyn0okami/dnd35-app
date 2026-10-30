@@ -52,6 +52,13 @@ class SessionMessageTest {
     }
 
     @Test
+    fun `CharacterSheet preserva o JSON da ficha`() {
+        val msg = SessionMessage.CharacterSheet("""{"app":"ficha-dnd35","characters":[]}""")
+        val roundTrip = SessionMessage.fromJson(msg.toJson()) as SessionMessage.CharacterSheet
+        assertEquals(msg.characterJson, roundTrip.characterJson)
+    }
+
+    @Test
     fun `JSON invalido ou tipo desconhecido retorna null`() {
         assertNull(SessionMessage.fromJson("{not json"))
         assertNull(SessionMessage.fromJson("""{"type":"ALGO_DESCONHECIDO"}"""))

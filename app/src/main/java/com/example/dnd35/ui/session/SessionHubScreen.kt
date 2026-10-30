@@ -2,7 +2,9 @@ package com.example.dnd35.ui.session
 
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -17,6 +19,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material.icons.filled.Groups
 import androidx.compose.material.icons.filled.MeetingRoom
 import androidx.compose.material.icons.filled.Person
@@ -26,11 +29,14 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -44,9 +50,11 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.example.dnd35.model.CharacterEntity
 import com.example.dnd35.session.JoinPayload
 import com.example.dnd35.session.Participant
 import com.example.dnd35.session.ParticipantRole
+import com.example.dnd35.viewmodel.CharacterViewModel
 import com.example.dnd35.viewmodel.DmSessionUiState
 import com.example.dnd35.viewmodel.PlayerSessionUiState
 import com.example.dnd35.viewmodel.SessionViewModel
@@ -62,7 +70,7 @@ private enum class SessionHubMode { SELECT, DM, PLAYER }
  * totalmente offline — a única rede usada é a que os aparelhos já compartilham localmente.
  */
 @Composable
-fun SessionHubScreen(viewModel: SessionViewModel, onClose: () -> Unit) {
+fun SessionHubScreen(viewModel: SessionViewModel, characterViewModel: CharacterViewModel, onClose: () -> Unit) {
     var mode by remember { mutableStateOf(SessionHubMode.SELECT) }
 
     Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
@@ -86,8 +94,8 @@ fun SessionHubScreen(viewModel: SessionViewModel, onClose: () -> Unit) {
 
         when (mode) {
             SessionHubMode.SELECT -> ModeSelectContent(onPickDm = { mode = SessionHubMode.DM }, onPickPlayer = { mode = SessionHubMode.PLAYER })
-            SessionHubMode.DM -> DmHostContent(viewModel)
-            SessionHubMode.PLAYER -> PlayerJoinContent(viewModel)
+            SessionHubMode.DM -> DmHostContent(viewModel, characterViewModel)
+            SessionHubMode.PLAYER -> PlayerJoinContent(viewModel, characterViewModel)
         }
     }
 }
@@ -144,7 +152,7 @@ private fun ModeSelectContent(onPickDm: () -> Unit, onPickPlayer: () -> Unit) {
 }
 
 @Composable
-private fun DmHostContent(viewModel: SessionViewModel) {
+private fun DmHostContent(viewModel: SessionViewModel, characterViewModel: CharacterViewModel) {
     val state by viewModel.dmState.collectAsStateWithLifecycle()
     var hostName by remember { mutableStateOf("Mestre") }
 
@@ -162,6 +170,8 @@ private fun DmHostContent(viewModel: SessionViewModel) {
                 Spacer(modifier = Modifier.width(8.dp))
                 Text("Criar sessão")
             }
+            Spacer(modifier = Modifier.height(24.dp))
+            NpcManagementSection(characterViewModel)
         }
         is DmSessionUiState.Hosting -> {
             Text(
@@ -175,11 +185,13 @@ private fun DmHostContent(viewModel: SessionViewModel) {
                 modifier = Modifier.size(220.dp)
             )
             Spacer(modifier = Modifier.height(16.dp))
-            ParticipantRoster(s.participants)
+            ParticipantRoster(s.participants, s.characters)
             Spacer(modifier = Modifier.height(16.dp))
             OutlinedButton(onClick = { viewModel.stopHosting() }) {
                 Text("Encerrar sessão", color = DndCrimson)
             }
+            Spacer(modifier = Modifier.height(24.dp))
+            NpcManagementSection(characterViewModel)
         }
         is DmSessionUiState.Error -> {
             Text(s.message, color = MaterialTheme.colorScheme.error)
@@ -189,18 +201,65 @@ private fun DmHostContent(viewModel: SessionViewModel) {
     }
 }
 
+/** Permite ao Mestre marcar suas próprias fichas locais como NPC (monstros/figurantes). */
 @Composable
-private fun PlayerJoinContent(viewModel: SessionViewModel) {
+private fun NpcManagementSection(characterViewModel: CharacterViewModel) {
+    val myCharacters by characterViewModel.allCharacters.collectAsStateWithLifecycle()
+    if (myCharacters.isEmpty()) return
+
+    Column {
+        Text(
+            "Minhas fichas",
+            style = MaterialTheme.typography.titleMedium,
+            fontWeight = FontWeight.Bold
+        )
+        Text(
+            "Marque como NPC as fichas que são suas (monstros, figurantes) para diferenciar " +
+                "das fichas dos jogadores. Isso não afeta a ficha de forma alguma fora da sessão.",
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant
+        )
+        Spacer(modifier = Modifier.height(8.dp))
+        myCharacters.forEach { character ->
+            Row(
+                modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Column(modifier = Modifier.weight(1f)) {
+                    Text(character.name, fontWeight = FontWeight.SemiBold)
+                    Text(
+                        "${character.characterClass} Nv ${character.level}",
+                        style = MaterialTheme.typography.labelSmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
+                Text(if (character.isNpc) "NPC" else "Jogador próprio", style = MaterialTheme.typography.labelSmall)
+                Spacer(modifier = Modifier.width(8.dp))
+                Switch(
+                    checked = character.isNpc,
+                    onCheckedChange = { checked -> characterViewModel.setNpcFlag(character.id, checked) }
+                )
+            }
+        }
+    }
+}
+
+@Composable
+private fun PlayerJoinContent(viewModel: SessionViewModel, characterViewModel: CharacterViewModel) {
     val state by viewModel.playerState.collectAsStateWithLifecycle()
+    val myCharacters by characterViewModel.allCharacters.collectAsStateWithLifecycle()
+    val activeCharacter by characterViewModel.activeCharacter.collectAsStateWithLifecycle()
     var displayName by remember { mutableStateOf("Jogador") }
     var manualHost by remember { mutableStateOf("") }
     var manualPort by remember { mutableStateOf("") }
+    var selectedCharacter by remember(activeCharacter) { mutableStateOf(activeCharacter) }
 
     val scanLauncher = rememberLauncherForActivityResult(ScanContract()) { result ->
         val raw = result.contents
         if (raw != null) {
             JoinPayload.fromJson(raw)?.let { payload ->
-                viewModel.joinSession(payload, displayName)
+                viewModel.joinSession(payload, displayName, selectedCharacter)
             }
         }
     }
@@ -218,6 +277,12 @@ private fun PlayerJoinContent(viewModel: SessionViewModel) {
                 modifier = Modifier.fillMaxWidth()
             )
             Spacer(modifier = Modifier.height(12.dp))
+            CharacterPicker(
+                characters = myCharacters,
+                selected = selectedCharacter,
+                onSelect = { selectedCharacter = it }
+            )
+            Spacer(modifier = Modifier.height(16.dp))
             Button(
                 onClick = {
                     val options = ScanOptions()
@@ -257,7 +322,7 @@ private fun PlayerJoinContent(viewModel: SessionViewModel) {
                 onClick = {
                     val port = manualPort.toIntOrNull()
                     if (manualHost.isNotBlank() && port != null) {
-                        viewModel.joinSession(manualHost.trim(), port, displayName)
+                        viewModel.joinSession(manualHost.trim(), port, displayName, selectedCharacter)
                     }
                 },
                 enabled = manualHost.isNotBlank() && manualPort.toIntOrNull() != null
@@ -275,7 +340,7 @@ private fun PlayerJoinContent(viewModel: SessionViewModel) {
         is PlayerSessionUiState.Connected -> {
             Text("Conectado!", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold, color = DndGold)
             Spacer(modifier = Modifier.height(12.dp))
-            ParticipantRoster(s.participants)
+            ParticipantRoster(s.participants, emptyMap())
             Spacer(modifier = Modifier.height(16.dp))
             OutlinedButton(onClick = { viewModel.leaveSession() }) {
                 Text("Sair da sessão", color = DndCrimson)
@@ -284,8 +349,59 @@ private fun PlayerJoinContent(viewModel: SessionViewModel) {
     }
 }
 
+/** Escolha de qual ficha local mandar ao Mestre (padrão: a ficha ativa do jogador). */
 @Composable
-private fun ParticipantRoster(participants: List<Participant>) {
+private fun CharacterPicker(
+    characters: List<CharacterEntity>,
+    selected: CharacterEntity?,
+    onSelect: (CharacterEntity?) -> Unit
+) {
+    var expanded by remember { mutableStateOf(false) }
+
+    if (characters.isEmpty()) {
+        Text(
+            "Nenhuma ficha cadastrada neste aparelho — você vai entrar sem vincular uma ficha.",
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant
+        )
+        return
+    }
+
+    Column {
+        Text("Ficha a enviar ao Mestre", style = MaterialTheme.typography.labelMedium)
+        Spacer(modifier = Modifier.height(4.dp))
+        Box {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clickable { expanded = true }
+                    .padding(vertical = 8.dp),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    selected?.let { "${it.name} (${it.characterClass} Nv ${it.level})" } ?: "Nenhuma",
+                    fontWeight = FontWeight.SemiBold
+                )
+                Icon(Icons.Default.ArrowDropDown, contentDescription = "Escolher ficha")
+            }
+            DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
+                characters.forEach { character ->
+                    DropdownMenuItem(
+                        text = { Text("${character.name} (${character.characterClass} Nv ${character.level})") },
+                        onClick = {
+                            onSelect(character)
+                            expanded = false
+                        }
+                    )
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun ParticipantRoster(participants: List<Participant>, characters: Map<String, CharacterEntity>) {
     Column {
         Row(verticalAlignment = Alignment.CenterVertically) {
             Icon(Icons.Default.Groups, contentDescription = null, tint = DndGold, modifier = Modifier.size(20.dp))
@@ -295,6 +411,7 @@ private fun ParticipantRoster(participants: List<Participant>) {
         Spacer(modifier = Modifier.height(8.dp))
         LazyColumn(modifier = Modifier.height((participants.size.coerceAtLeast(1) * 56).dp.coerceAtMost(280.dp))) {
             items(participants, key = { it.id }) { participant ->
+                val character = characters[participant.id]
                 Card(
                     modifier = Modifier.fillMaxWidth().padding(vertical = 3.dp),
                     colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant),
@@ -305,7 +422,22 @@ private fun ParticipantRoster(participants: List<Participant>) {
                         horizontalArrangement = Arrangement.SpaceBetween,
                         verticalAlignment = Alignment.CenterVertically
                     ) {
-                        Text(participant.displayName, fontWeight = FontWeight.SemiBold)
+                        Column {
+                            Text(participant.displayName, fontWeight = FontWeight.SemiBold)
+                            if (character != null) {
+                                Text(
+                                    "${character.characterClass} Nv ${character.level} • PV ${character.currentHp}/${character.maxHp}",
+                                    style = MaterialTheme.typography.labelSmall,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                                )
+                            } else if (participant.role == ParticipantRole.PLAYER) {
+                                Text(
+                                    "Sem ficha vinculada",
+                                    style = MaterialTheme.typography.labelSmall,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                                )
+                            }
+                        }
                         Text(
                             if (participant.role == ParticipantRole.DM) "Mestre" else "Jogador",
                             style = MaterialTheme.typography.labelSmall,

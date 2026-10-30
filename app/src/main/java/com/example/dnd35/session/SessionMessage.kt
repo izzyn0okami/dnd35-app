@@ -28,6 +28,14 @@ sealed class SessionMessage {
     /** Qualquer direção: encerramento da conexão (saída voluntária ou sessão encerrada). */
     data class Bye(val reason: String = "") : SessionMessage()
 
+    /**
+     * Jogador -> Mestre: ficha completa do personagem desse jogador, enviada logo após o
+     * HELLO. `characterJson` é o mesmo formato usado no backup/exportação de fichas
+     * ([com.example.dnd35.backup.CharacterBackup]), com uma única ficha dentro do envelope.
+     * Só o Mestre guarda esse conteúdo (não é repassado aos outros jogadores no ROSTER).
+     */
+    data class CharacterSheet(val characterJson: String) : SessionMessage()
+
     fun toJson(): String {
         val obj = JSONObject()
         when (this) {
@@ -47,6 +55,7 @@ sealed class SessionMessage {
                 }
             })
             is Bye -> obj.put("type", TYPE_BYE).put("reason", reason)
+            is CharacterSheet -> obj.put("type", TYPE_CHARACTER_SHEET).put("characterJson", characterJson)
         }
         return obj.toString()
     }
@@ -56,6 +65,7 @@ sealed class SessionMessage {
         const val TYPE_WELCOME = "WELCOME"
         const val TYPE_ROSTER = "ROSTER"
         const val TYPE_BYE = "BYE"
+        const val TYPE_CHARACTER_SHEET = "CHARACTER_SHEET"
 
         fun fromJson(raw: String): SessionMessage? {
             return try {
@@ -81,6 +91,7 @@ sealed class SessionMessage {
                         Roster(list)
                     }
                     TYPE_BYE -> Bye(obj.optString("reason", ""))
+                    TYPE_CHARACTER_SHEET -> CharacterSheet(obj.getString("characterJson"))
                     else -> null
                 }
             } catch (e: Exception) {
