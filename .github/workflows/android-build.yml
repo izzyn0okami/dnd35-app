@@ -8,6 +8,7 @@ on:
 
 permissions:
   contents: read
+  pull-requests: write
 
 jobs:
   assemble-debug:
@@ -42,7 +43,13 @@ jobs:
 
       - name: Print test failures (diagnóstico temporário)
         if: failure()
-        run: python3 .github/scripts/print_test_failures.py
+        run: python3 .github/scripts/print_test_failures.py | tee test_failures.txt
+
+      - name: Comentar falha na PR (diagnóstico temporário)
+        if: failure() && github.event_name == 'pull_request'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh pr comment "${{ github.event.pull_request.number }}" --body-file test_failures.txt
 
       - name: Compile Android app
         run: ./gradlew assembleDebug
