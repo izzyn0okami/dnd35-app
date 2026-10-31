@@ -10,6 +10,7 @@ import com.example.dnd35.session.RequestKind
 import com.example.dnd35.session.SessionClient
 import com.example.dnd35.session.SessionClientState
 import com.example.dnd35.session.SessionServer
+import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.mapNotNull
 import kotlinx.coroutines.runBlocking
@@ -424,12 +425,19 @@ class SessionServerClientTest {
                 assertEquals(RequestKind.TAKE_LOOT, request.kind)
                 assertEquals(item.id, request.lootItemId)
 
+                // LootGranted e RequestResolved são mandados em sequência, quase simultâneos —
+                // os dois coletores precisam já estar inscritos antes do Mestre aprovar, senão o
+                // laço de leitura do cliente (que processa as duas mensagens de uma vez, sem
+                // esperar ninguém) pode emitir e descartar uma delas antes de alguém ouvir.
+                val grantedDeferred = async { withTimeout(5_000) { client.lootGranted.first() } }
+                val resolvedDeferred = async { withTimeout(5_000) { client.requestResults.first() } }
+
                 server.approveRequest(request.id)
 
-                val granted = withTimeout(5_000) { client.lootGranted.first() }
+                val granted = grantedDeferred.await()
                 assertEquals(item, granted)
 
-                val resolved = withTimeout(5_000) { client.requestResults.first() }
+                val resolved = resolvedDeferred.await()
                 assertTrue(resolved.approved)
 
                 assertTrue(server.lootChest.value.isEmpty())
