@@ -6,6 +6,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.dnd35.backup.CharacterBackup
 import com.example.dnd35.model.CharacterEntity
+import com.example.dnd35.model.CharacterInventoryItem
 import com.example.dnd35.session.ActionRequest
 import com.example.dnd35.session.Combatant
 import com.example.dnd35.session.CombatState
@@ -18,7 +19,9 @@ import com.example.dnd35.session.SessionClient
 import com.example.dnd35.session.SessionClientState
 import com.example.dnd35.session.SessionServer
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.launch
@@ -36,7 +39,9 @@ sealed class DmSessionUiState {
         /** `null` quando não há combate ativo no momento. */
         val combat: CombatState? = null,
         /** Pedidos de jogadores aguardando aprovação do Mestre. */
-        val pendingRequests: List<ActionRequest> = emptyList()
+        val pendingRequests: List<ActionRequest> = emptyList(),
+        /** Conteúdo atual do baú de loot compartilhado da sessão. */
+        val lootChest: List<CharacterInventoryItem> = emptyList()
     ) : DmSessionUiState()
     data class Error(val message: String) : DmSessionUiState()
 }
@@ -48,7 +53,8 @@ sealed class PlayerSessionUiState {
     data class Connected(
         val selfId: String,
         val participants: List<Participant>,
-        val combat: CombatState? = null
+        val combat: CombatState? = null,
+        val lootChest: List<CharacterInventoryItem> = emptyList()
     ) : PlayerSessionUiState()
     data class Disconnected(val reason: String) : PlayerSessionUiState()
 }
@@ -78,6 +84,11 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
     fun clearRequestFeedback() {
         _playerRequestFeedback.value = null
     }
+
+    // Item concedido ao pegar algo do baú de loot (pedido aprovado) — a UI usa isso para colocar
+    // o item no inventário local da ficha ativa (SessionViewModel não mexe em fichas direto).
+    private val _lootGranted = MutableSharedFlow<CharacterInventoryItem>(extraBufferCapacity = 4)
+    val lootGranted: SharedFlow<CharacterInventoryItem> = _lootGranted
 
     /** Mestre: cria e hospeda uma nova sessão, exibindo o QR Code para os jogadores escanearem. */
     fun hostSession(hostDisplayName: String) {
@@ -116,9 +127,10 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
                 activeServer.roster,
                 activeServer.receivedCharacters,
                 activeServer.combatState,
-                activeServer.pendingRequests
-            ) { participants, characters, combat, requests ->
-                DmSessionUiState.Hosting(sessionId, bitmap, qrContent, participants, characters, combat, requests)
+                activeServer.pendingRequests,
+                activeServer.lootChest
+            ) { participants, characters, combat, requests, lootChest ->
+                DmSessionUiState.Hosting(sessionId, bitmap, qrContent, participants, characters, combat, requests, lootChest)
             }.collect { newState ->
                 if (server === activeServer) {
                     _dmState.value = newState
@@ -135,6 +147,16 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
     /** Mestre: nega um pedido pendente de jogador (nada é aplicado). */
     fun denyRequest(requestId: String) {
         server?.denyRequest(requestId)
+    }
+
+    /** Mestre: adiciona um item ao baú de loot compartilhado. */
+    fun addLootItem(item: CharacterInventoryItem) {
+        server?.addLootItem(item)
+    }
+
+    /** Mestre: remove um item do baú de loot diretamente (sem precisar de pedido de jogador). */
+    fun removeLootItem(itemId: String) {
+        server?.removeLootItem(itemId)
     }
 
     /** Mestre: inicia um combate novo com os combatentes informados. */
@@ -190,7 +212,7 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
                 if (client === activeClient) {
                     _playerState.value = when (state) {
                         is SessionClientState.Connecting -> PlayerSessionUiState.Connecting
-                        is SessionClientState.Connected -> PlayerSessionUiState.Connected(state.selfId, state.participants, state.combat)
+                        is SessionClientState.Connected -> PlayerSessionUiState.Connected(state.selfId, state.participants, state.combat, state.lootChest)
                         is SessionClientState.Disconnected -> PlayerSessionUiState.Disconnected(state.reason)
                     }
                 }
@@ -207,6 +229,13 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
                 }
             }
         }
+        launch {
+            activeClient.lootGranted.collect { item ->
+                if (client === activeClient) {
+                    _lootGranted.tryEmit(item)
+                }
+            }
+        }
     }
 
     /** Jogador: pede ao Mestre uma mudança de PV num combate ativo (ex.: usar uma poção). */
@@ -218,6 +247,11 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
     fun requestCharacterUpdate(character: CharacterEntity, summary: String) {
         val characterJson = CharacterBackup.toJson(listOf(character)) { null }
         client?.requestAction(RequestKind.CHARACTER_UPDATE, summary, characterJson = characterJson)
+    }
+
+    /** Jogador: pede ao Mestre para pegar um item do baú de loot compartilhado. */
+    fun requestTakeLoot(itemId: String, summary: String) {
+        client?.requestAction(RequestKind.TAKE_LOOT, summary, lootItemId = itemId)
     }
 
     /** Jogador: sai da sessão atual, se houver uma. */

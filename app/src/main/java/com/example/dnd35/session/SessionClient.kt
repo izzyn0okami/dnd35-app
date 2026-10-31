@@ -1,5 +1,7 @@
 package com.example.dnd35.session
 
+import com.example.dnd35.model.CharacterInventoryItem
+import com.example.dnd35.model.CharacterJsonAdapters
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -22,7 +24,9 @@ sealed class SessionClientState {
         val selfId: String,
         val sessionId: String,
         val participants: List<Participant> = emptyList(),
-        val combat: CombatState? = null
+        val combat: CombatState? = null,
+        /** Conteúdo atual do baú de loot compartilhado da sessão. */
+        val lootChest: List<CharacterInventoryItem> = emptyList()
     ) : SessionClientState()
     data class Disconnected(val reason: String) : SessionClientState()
 }
@@ -44,6 +48,11 @@ class SessionClient {
     // não um estado contínuo — por isso SharedFlow em vez de StateFlow.
     private val _requestResults = MutableSharedFlow<SessionMessage.RequestResolved>(extraBufferCapacity = 4)
     val requestResults: SharedFlow<SessionMessage.RequestResolved> = _requestResults
+
+    // Item concedido ao pegar algo do baú de loot (pedido aprovado) — evento, não estado
+    // contínuo, já que vira um item novo no inventário local assim que é recebido.
+    private val _lootGranted = MutableSharedFlow<CharacterInventoryItem>(extraBufferCapacity = 4)
+    val lootGranted: SharedFlow<CharacterInventoryItem> = _lootGranted
 
     /**
      * @param characterJson ficha do jogador já serializada (mesmo formato do backup de fichas),
@@ -95,6 +104,15 @@ class SessionClient {
                             }
                         }
                         is SessionMessage.RequestResolved -> _requestResults.tryEmit(msg)
+                        is SessionMessage.LootChestUpdate -> {
+                            val current = _state.value
+                            if (current is SessionClientState.Connected) {
+                                _state.value = current.copy(lootChest = CharacterJsonAdapters.deserializeInventory(msg.itemsJson))
+                            }
+                        }
+                        is SessionMessage.LootGranted -> {
+                            CharacterJsonAdapters.deserializeInventory(msg.itemJson).firstOrNull()?.let { _lootGranted.tryEmit(it) }
+                        }
                         is SessionMessage.Bye -> break
                         else -> Unit
                     }
@@ -115,12 +133,13 @@ class SessionClient {
         summary: String,
         characterJson: String? = null,
         combatantId: String? = null,
-        hpDelta: Int? = null
+        hpDelta: Int? = null,
+        lootItemId: String? = null
     ) {
         val out = output ?: return
         scope.launch {
             runCatching {
-                SessionWire.write(out, SessionMessage.ActionRequested(kind, summary, characterJson, combatantId, hpDelta))
+                SessionWire.write(out, SessionMessage.ActionRequested(kind, summary, characterJson, combatantId, hpDelta, lootItemId))
             }
         }
     }

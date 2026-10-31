@@ -2,6 +2,8 @@ package com.example.dnd35.session
 
 import com.example.dnd35.backup.CharacterBackup
 import com.example.dnd35.model.CharacterEntity
+import com.example.dnd35.model.CharacterInventoryItem
+import com.example.dnd35.model.CharacterJsonAdapters
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -54,6 +56,12 @@ class SessionServer(
     private val _pendingRequests = MutableStateFlow<List<ActionRequest>>(emptyList())
     val pendingRequests: StateFlow<List<ActionRequest>> = _pendingRequests
 
+    // Baú de loot compartilhado: itens que o Mestre disponibiliza (ex.: depois de um combate) e
+    // qualquer jogador pode pedir para pegar (via RequestKind.TAKE_LOOT). Não pertence a nenhuma
+    // ficha — só vira item de alguém quando um pedido de pegar é aprovado.
+    private val _lootChest = MutableStateFlow<List<CharacterInventoryItem>>(emptyList())
+    val lootChest: StateFlow<List<CharacterInventoryItem>> = _lootChest
+
     private class ClientHandle(val id: String, val socket: Socket, val out: DataOutputStream)
 
     /** Inicia o servidor em uma porta livre escolhida pelo sistema e retorna essa porta. */
@@ -73,6 +81,7 @@ class SessionServer(
         _receivedCharacters.value = emptyMap()
         _combatState.value = null
         _pendingRequests.value = emptyList()
+        _lootChest.value = emptyList()
     }
 
     private suspend fun acceptLoop(socket: ServerSocket) {
@@ -103,6 +112,10 @@ class SessionServer(
             broadcastRoster()
             // Quem entra no meio de um combate já começa vendo o estado atual.
             _combatState.value?.let { SessionWire.write(output, SessionMessage.CombatUpdate(it)) }
+            // Idem para o baú de loot, se já tiver algo nele.
+            if (_lootChest.value.isNotEmpty()) {
+                SessionWire.write(output, SessionMessage.LootChestUpdate(CharacterJsonAdapters.serializeInventory(_lootChest.value)))
+            }
 
             while (true) {
                 val msg = SessionWire.read(input) ?: break
@@ -194,6 +207,25 @@ class SessionServer(
         broadcast(SessionMessage.CombatUpdate(updated))
     }
 
+    // --- Baú de loot (estado global, autoridade do Mestre) ---
+
+    /** Adiciona um item ao baú compartilhado e sincroniza com todos. */
+    fun addLootItem(item: CharacterInventoryItem) {
+        _lootChest.value = _lootChest.value + item
+        broadcastLootChest()
+    }
+
+    /** Remove um item do baú diretamente (não confundir com um pedido de jogador aprovado). */
+    fun removeLootItem(itemId: String) {
+        if (_lootChest.value.none { it.id == itemId }) return
+        _lootChest.value = _lootChest.value.filterNot { it.id == itemId }
+        broadcastLootChest()
+    }
+
+    private fun broadcastLootChest() {
+        broadcast(SessionMessage.LootChestUpdate(CharacterJsonAdapters.serializeInventory(_lootChest.value)))
+    }
+
     // --- Pedidos/aprovações (ações iniciadas pelo Jogador, dependem do Mestre) ---
 
     /** Guarda um pedido de jogador na fila de pendentes, aguardando aprovação do Mestre. */
@@ -207,7 +239,8 @@ class SessionServer(
             summary = msg.summary,
             characterJson = msg.characterJson,
             combatantId = msg.combatantId,
-            hpDelta = msg.hpDelta
+            hpDelta = msg.hpDelta,
+            lootItemId = msg.lootItemId
         )
         _pendingRequests.value = _pendingRequests.value + request
     }
@@ -216,14 +249,29 @@ class SessionServer(
     fun approveRequest(requestId: String) {
         val request = _pendingRequests.value.firstOrNull { it.id == requestId } ?: return
         when (request.kind) {
-            RequestKind.CHARACTER_UPDATE -> request.characterJson?.let { receiveCharacterSheet(request.requesterId, it) }
+            RequestKind.CHARACTER_UPDATE -> {
+                request.characterJson?.let { receiveCharacterSheet(request.requesterId, it) }
+                resolveRequest(request, approved = true)
+            }
             RequestKind.COMBAT_HP_CHANGE -> {
                 val combatantId = request.combatantId
                 val delta = request.hpDelta
                 if (combatantId != null && delta != null) applyDamage(combatantId, delta)
+                resolveRequest(request, approved = true)
+            }
+            RequestKind.TAKE_LOOT -> {
+                val item = request.lootItemId?.let { id -> _lootChest.value.firstOrNull { it.id == id } }
+                if (item == null) {
+                    // Outro jogador pode ter pego o item antes, ou o Mestre já removeu do baú.
+                    resolveRequest(request, approved = false, reason = "Item não está mais disponível no baú.")
+                } else {
+                    _lootChest.value = _lootChest.value.filterNot { it.id == item.id }
+                    broadcastLootChest()
+                    sendTo(request.requesterId, SessionMessage.LootGranted(CharacterJsonAdapters.serializeInventory(listOf(item))))
+                    resolveRequest(request, approved = true)
+                }
             }
         }
-        resolveRequest(request, approved = true)
     }
 
     /** Nega um pedido pendente: nada é aplicado, só avisa quem pediu (com motivo opcional). */
@@ -234,11 +282,15 @@ class SessionServer(
 
     private fun resolveRequest(request: ActionRequest, approved: Boolean, reason: String = "") {
         _pendingRequests.value = _pendingRequests.value.filterNot { it.id == request.id }
-        clients[request.requesterId]?.let { handle ->
+        sendTo(request.requesterId, SessionMessage.RequestResolved(request.id, approved, reason))
+    }
+
+    private fun sendTo(participantId: String, message: SessionMessage) {
+        clients[participantId]?.let { handle ->
             try {
-                SessionWire.write(handle.out, SessionMessage.RequestResolved(request.id, approved, reason))
+                SessionWire.write(handle.out, message)
             } catch (e: IOException) {
-                // Jogador pode ter caído antes da resposta chegar — o próprio loop dele detecta isso.
+                // Jogador pode ter caído antes da mensagem chegar — o próprio loop dele detecta isso.
             }
         }
     }
