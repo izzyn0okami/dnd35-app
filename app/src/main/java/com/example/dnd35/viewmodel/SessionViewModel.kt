@@ -6,6 +6,8 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.dnd35.backup.CharacterBackup
 import com.example.dnd35.model.CharacterEntity
+import com.example.dnd35.session.Combatant
+import com.example.dnd35.session.CombatState
 import com.example.dnd35.session.JoinPayload
 import com.example.dnd35.session.LocalNetworkUtil
 import com.example.dnd35.session.Participant
@@ -28,7 +30,9 @@ sealed class DmSessionUiState {
         val qrPayload: String,
         val participants: List<Participant>,
         /** Fichas recebidas dos jogadores conectados, indexadas pelo id do participante. */
-        val characters: Map<String, CharacterEntity> = emptyMap()
+        val characters: Map<String, CharacterEntity> = emptyMap(),
+        /** `null` quando não há combate ativo no momento. */
+        val combat: CombatState? = null
     ) : DmSessionUiState()
     data class Error(val message: String) : DmSessionUiState()
 }
@@ -37,7 +41,11 @@ sealed class DmSessionUiState {
 sealed class PlayerSessionUiState {
     data object Idle : PlayerSessionUiState()
     data object Connecting : PlayerSessionUiState()
-    data class Connected(val selfId: String, val participants: List<Participant>) : PlayerSessionUiState()
+    data class Connected(
+        val selfId: String,
+        val participants: List<Participant>,
+        val combat: CombatState? = null
+    ) : PlayerSessionUiState()
     data class Disconnected(val reason: String) : PlayerSessionUiState()
 }
 
@@ -90,14 +98,37 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
         qrContent: String
     ) {
         launch {
-            combine(activeServer.roster, activeServer.receivedCharacters) { participants, characters ->
-                participants to characters
-            }.collect { (participants, characters) ->
-                if (server === activeServer) {
-                    _dmState.value = DmSessionUiState.Hosting(sessionId, bitmap, qrContent, participants, characters)
+            combine(
+                activeServer.roster,
+                activeServer.receivedCharacters,
+                activeServer.combatState
+            ) { participants, characters, combat -> Triple(participants, characters, combat) }
+                .collect { (participants, characters, combat) ->
+                    if (server === activeServer) {
+                        _dmState.value = DmSessionUiState.Hosting(sessionId, bitmap, qrContent, participants, characters, combat)
+                    }
                 }
-            }
         }
+    }
+
+    /** Mestre: inicia um combate novo com os combatentes informados. */
+    fun startCombat(combatants: List<Combatant>) {
+        server?.startCombat(combatants)
+    }
+
+    /** Mestre: aplica dano (positivo) ou cura (negativo) direto num combatente. */
+    fun applyCombatDamage(combatantId: String, amount: Int) {
+        server?.applyDamage(combatantId, amount)
+    }
+
+    /** Mestre: avança para o próximo combatente na ordem de iniciativa. */
+    fun nextCombatTurn() {
+        server?.nextTurn()
+    }
+
+    /** Mestre: encerra o combate ativo. */
+    fun endCombat() {
+        server?.endCombat()
     }
 
     /** Mestre: encerra a sessão ativa, desconectando todos os jogadores. */
@@ -132,7 +163,7 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
                 if (client === activeClient) {
                     _playerState.value = when (state) {
                         is SessionClientState.Connecting -> PlayerSessionUiState.Connecting
-                        is SessionClientState.Connected -> PlayerSessionUiState.Connected(state.selfId, state.participants)
+                        is SessionClientState.Connected -> PlayerSessionUiState.Connected(state.selfId, state.participants, state.combat)
                         is SessionClientState.Disconnected -> PlayerSessionUiState.Disconnected(state.reason)
                     }
                 }

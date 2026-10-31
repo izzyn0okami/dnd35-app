@@ -36,6 +36,16 @@ sealed class SessionMessage {
      */
     data class CharacterSheet(val characterJson: String) : SessionMessage()
 
+    /**
+     * Mestre -> todos: estado de combate atual (quem está na iniciativa, de quem é a vez,
+     * PV/condições de cada combatente). `null` em [CombatState] (fora deste tipo, representado
+     * por não mandar a mensagem) significa "sem combate ativo" — ver [EndCombat].
+     */
+    data class CombatUpdate(val state: CombatState) : SessionMessage()
+
+    /** Mestre -> todos: encerra o combate ativo (sem combatentes/iniciativa). */
+    data object EndCombat : SessionMessage()
+
     fun toJson(): String {
         val obj = JSONObject()
         when (this) {
@@ -56,6 +66,25 @@ sealed class SessionMessage {
             })
             is Bye -> obj.put("type", TYPE_BYE).put("reason", reason)
             is CharacterSheet -> obj.put("type", TYPE_CHARACTER_SHEET).put("characterJson", characterJson)
+            is CombatUpdate -> obj.put("type", TYPE_COMBAT_UPDATE)
+                .put("currentTurnIndex", state.currentTurnIndex)
+                .put("round", state.round)
+                .put("combatants", JSONArray().also { arr ->
+                    state.combatants.forEach { c ->
+                        arr.put(
+                            JSONObject()
+                                .put("id", c.id)
+                                .put("displayName", c.displayName)
+                                .put("isNpc", c.isNpc)
+                                .put("initiative", c.initiative)
+                                .put("currentHp", c.currentHp)
+                                .put("maxHp", c.maxHp)
+                                .put("tempHp", c.tempHp)
+                                .put("conditions", JSONArray(c.conditions))
+                        )
+                    }
+                })
+            is EndCombat -> obj.put("type", TYPE_END_COMBAT)
         }
         return obj.toString()
     }
@@ -66,6 +95,8 @@ sealed class SessionMessage {
         const val TYPE_ROSTER = "ROSTER"
         const val TYPE_BYE = "BYE"
         const val TYPE_CHARACTER_SHEET = "CHARACTER_SHEET"
+        const val TYPE_COMBAT_UPDATE = "COMBAT_UPDATE"
+        const val TYPE_END_COMBAT = "END_COMBAT"
 
         fun fromJson(raw: String): SessionMessage? {
             return try {
@@ -92,6 +123,40 @@ sealed class SessionMessage {
                     }
                     TYPE_BYE -> Bye(obj.optString("reason", ""))
                     TYPE_CHARACTER_SHEET -> CharacterSheet(obj.getString("characterJson"))
+                    TYPE_COMBAT_UPDATE -> {
+                        val arr = obj.getJSONArray("combatants")
+                        val combatants = buildList {
+                            for (i in 0 until arr.length()) {
+                                val c = arr.getJSONObject(i)
+                                val conditionsArr = c.optJSONArray("conditions")
+                                val conditions = buildList {
+                                    if (conditionsArr != null) {
+                                        for (j in 0 until conditionsArr.length()) add(conditionsArr.getString(j))
+                                    }
+                                }
+                                add(
+                                    Combatant(
+                                        id = c.getString("id"),
+                                        displayName = c.getString("displayName"),
+                                        isNpc = c.getBoolean("isNpc"),
+                                        initiative = c.getInt("initiative"),
+                                        currentHp = c.getInt("currentHp"),
+                                        maxHp = c.getInt("maxHp"),
+                                        tempHp = c.optInt("tempHp", 0),
+                                        conditions = conditions
+                                    )
+                                )
+                            }
+                        }
+                        CombatUpdate(
+                            CombatState(
+                                combatants = combatants,
+                                currentTurnIndex = obj.optInt("currentTurnIndex", 0),
+                                round = obj.optInt("round", 1)
+                            )
+                        )
+                    }
+                    TYPE_END_COMBAT -> EndCombat
                     else -> null
                 }
             } catch (e: Exception) {

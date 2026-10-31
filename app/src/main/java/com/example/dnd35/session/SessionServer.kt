@@ -44,6 +44,11 @@ class SessionServer(
     private val _receivedCharacters = MutableStateFlow<Map<String, CharacterEntity>>(emptyMap())
     val receivedCharacters: StateFlow<Map<String, CharacterEntity>> = _receivedCharacters
 
+    // Combate é estado global da sessão: PV/iniciativa/condições sincronizados com todos os
+    // aparelhos. `null` = nenhum combate ativo no momento.
+    private val _combatState = MutableStateFlow<CombatState?>(null)
+    val combatState: StateFlow<CombatState?> = _combatState
+
     private class ClientHandle(val id: String, val socket: Socket, val out: DataOutputStream)
 
     /** Inicia o servidor em uma porta livre escolhida pelo sistema e retorna essa porta. */
@@ -61,6 +66,7 @@ class SessionServer(
         clients.clear()
         _roster.value = listOf(dmParticipant)
         _receivedCharacters.value = emptyMap()
+        _combatState.value = null
     }
 
     private suspend fun acceptLoop(socket: ServerSocket) {
@@ -89,6 +95,8 @@ class SessionServer(
             SessionWire.write(output, SessionMessage.Welcome(id, sessionId))
             addParticipant(Participant(id, hello.displayName, ParticipantRole.PLAYER))
             broadcastRoster()
+            // Quem entra no meio de um combate já começa vendo o estado atual.
+            _combatState.value?.let { SessionWire.write(output, SessionMessage.CombatUpdate(it)) }
 
             while (true) {
                 val msg = SessionWire.read(input) ?: break
@@ -126,7 +134,10 @@ class SessionServer(
     }
 
     private fun broadcastRoster() {
-        val message = SessionMessage.Roster(_roster.value)
+        broadcast(SessionMessage.Roster(_roster.value))
+    }
+
+    private fun broadcast(message: SessionMessage) {
         clients.values.forEach { handle ->
             try {
                 SessionWire.write(handle.out, message)
@@ -134,6 +145,46 @@ class SessionServer(
                 // O próprio loop de leitura desse cliente vai detectar a queda e removê-lo.
             }
         }
+    }
+
+    // --- Combate (estado global, autoridade do Mestre) ---
+
+    /** Inicia um combate novo com os combatentes informados (a ordem de iniciativa é calculada aqui). */
+    fun startCombat(combatants: List<Combatant>) {
+        val state = CombatState.start(combatants)
+        _combatState.value = state
+        broadcast(SessionMessage.CombatUpdate(state))
+    }
+
+    /** Aplica dano (positivo) ou cura (negativo) a um combatente e sincroniza com todos. */
+    fun applyDamage(combatantId: String, amount: Int) {
+        updateCombat { state ->
+            state.copy(combatants = state.combatants.map { if (it.id == combatantId) it.withDamage(amount) else it })
+        }
+    }
+
+    /** Avança para o próximo combatente vivo na ordem de iniciativa; passa de rodada ao dar a volta. */
+    fun nextTurn() {
+        updateCombat { state ->
+            if (state.combatants.isEmpty()) return@updateCombat state
+            val nextIndex = (state.currentTurnIndex + 1) % state.combatants.size
+            val nextRound = if (nextIndex <= state.currentTurnIndex) state.round + 1 else state.round
+            state.copy(currentTurnIndex = nextIndex, round = nextRound)
+        }
+    }
+
+    /** Encerra o combate ativo (se houver) e avisa a todos. */
+    fun endCombat() {
+        if (_combatState.value == null) return
+        _combatState.value = null
+        broadcast(SessionMessage.EndCombat)
+    }
+
+    private inline fun updateCombat(transform: (CombatState) -> CombatState) {
+        val current = _combatState.value ?: return
+        val updated = transform(current)
+        _combatState.value = updated
+        broadcast(SessionMessage.CombatUpdate(updated))
     }
 
     companion object {

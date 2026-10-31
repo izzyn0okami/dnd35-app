@@ -1,5 +1,7 @@
 package com.example
 
+import com.example.dnd35.session.Combatant
+import com.example.dnd35.session.CombatState
 import com.example.dnd35.session.JoinPayload
 import com.example.dnd35.session.Participant
 import com.example.dnd35.session.ParticipantRole
@@ -56,6 +58,27 @@ class SessionMessageTest {
         val msg = SessionMessage.CharacterSheet("""{"app":"ficha-dnd35","characters":[]}""")
         val roundTrip = SessionMessage.fromJson(msg.toJson()) as SessionMessage.CharacterSheet
         assertEquals(msg.characterJson, roundTrip.characterJson)
+    }
+
+    @Test
+    fun `CombatUpdate preserva combatentes, turno e rodada`() {
+        val state = CombatState(
+            combatants = listOf(
+                Combatant(id = "p1", displayName = "Legolas", isNpc = false, initiative = 18, currentHp = 20, maxHp = 20, tempHp = 5, conditions = listOf("Abençoado")),
+                Combatant(id = CombatState.npcCombatantId(99L), displayName = "Goblin", isNpc = true, initiative = 10, currentHp = 7, maxHp = 7)
+            ),
+            currentTurnIndex = 1,
+            round = 3
+        )
+        val msg = SessionMessage.CombatUpdate(state)
+        val roundTrip = SessionMessage.fromJson(msg.toJson()) as SessionMessage.CombatUpdate
+        assertEquals(state, roundTrip.state)
+    }
+
+    @Test
+    fun `EndCombat serializa e desserializa corretamente`() {
+        val roundTrip = SessionMessage.fromJson(SessionMessage.EndCombat.toJson())
+        assertEquals(SessionMessage.EndCombat, roundTrip)
     }
 
     @Test

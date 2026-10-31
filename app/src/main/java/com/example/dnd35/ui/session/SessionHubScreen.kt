@@ -18,6 +18,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material.icons.filled.Groups
@@ -25,9 +26,12 @@ import androidx.compose.material.icons.filled.MeetingRoom
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.QrCodeScanner
 import androidx.compose.material.icons.filled.Shield
+import androidx.compose.material.icons.filled.SkipNext
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Checkbox
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
@@ -38,8 +42,10 @@ import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateMapOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -51,6 +57,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.dnd35.model.CharacterEntity
+import com.example.dnd35.session.Combatant
+import com.example.dnd35.session.CombatState
 import com.example.dnd35.session.JoinPayload
 import com.example.dnd35.session.Participant
 import com.example.dnd35.session.ParticipantRole
@@ -187,6 +195,8 @@ private fun DmHostContent(viewModel: SessionViewModel, characterViewModel: Chara
             Spacer(modifier = Modifier.height(16.dp))
             ParticipantRoster(s.participants, s.characters)
             Spacer(modifier = Modifier.height(16.dp))
+            CombatSection(viewModel, characterViewModel, s)
+            Spacer(modifier = Modifier.height(16.dp))
             OutlinedButton(onClick = { viewModel.stopHosting() }) {
                 Text("Encerrar sessão", color = DndCrimson)
             }
@@ -240,6 +250,247 @@ private fun NpcManagementSection(characterViewModel: CharacterViewModel) {
                     checked = character.isNpc,
                     onCheckedChange = { checked -> characterViewModel.setNpcFlag(character.id, checked) }
                 )
+            }
+        }
+    }
+}
+
+/** Candidato a combatente: um jogador conectado (com ou sem ficha) ou uma ficha NPC do Mestre. */
+private data class CombatCandidate(
+    val id: String,
+    val displayName: String,
+    val isNpc: Boolean,
+    val currentHp: Int,
+    val maxHp: Int
+)
+
+/**
+ * Seção de combate do Mestre: inicia um combate novo (escolhendo combatentes e iniciativa) ou,
+ * se já houver um ativo, mostra a ordem de turnos com controles de PV, já que o Mestre é a
+ * autoridade e suas mudanças são aplicadas direto (sem passar por aprovação).
+ */
+@Composable
+private fun CombatSection(
+    viewModel: SessionViewModel,
+    characterViewModel: CharacterViewModel,
+    hosting: DmSessionUiState.Hosting
+) {
+    val myCharacters by characterViewModel.allCharacters.collectAsStateWithLifecycle()
+    var showStartDialog by remember { mutableStateOf(false) }
+
+    Column {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Icon(Icons.Default.Shield, contentDescription = null, tint = DndGold, modifier = Modifier.size(20.dp))
+            Spacer(modifier = Modifier.width(6.dp))
+            Text("Combate", fontWeight = FontWeight.Bold)
+        }
+        Spacer(modifier = Modifier.height(8.dp))
+
+        val combat = hosting.combat
+        if (combat == null) {
+            Button(onClick = { showStartDialog = true }) {
+                Text("Iniciar combate")
+            }
+        } else {
+            CombatTracker(
+                combat = combat,
+                isDm = true,
+                onDamage = { id, amount -> viewModel.applyCombatDamage(id, amount) },
+                onNextTurn = { viewModel.nextCombatTurn() },
+                onEndCombat = { viewModel.endCombat() }
+            )
+        }
+    }
+
+    if (showStartDialog) {
+        val players = hosting.participants.filter { it.role == ParticipantRole.PLAYER }
+        val playerCandidates = players.map { p ->
+            val sheet = hosting.characters[p.id]
+            CombatCandidate(
+                id = p.id,
+                displayName = p.displayName,
+                isNpc = false,
+                currentHp = sheet?.currentHp ?: 10,
+                maxHp = sheet?.maxHp ?: 10
+            )
+        }
+        val npcCandidates = myCharacters.filter { it.isNpc }.map { c ->
+            CombatCandidate(
+                id = CombatState.npcCombatantId(c.id),
+                displayName = c.name,
+                isNpc = true,
+                currentHp = c.currentHp,
+                maxHp = c.maxHp
+            )
+        }
+        StartCombatDialog(
+            candidates = playerCandidates + npcCandidates,
+            onDismiss = { showStartDialog = false },
+            onConfirm = { combatants ->
+                viewModel.startCombat(combatants)
+                showStartDialog = false
+            }
+        )
+    }
+}
+
+/** Diálogo de seleção de combatentes (jogadores conectados + NPCs do Mestre) e sua iniciativa. */
+@Composable
+private fun StartCombatDialog(
+    candidates: List<CombatCandidate>,
+    onDismiss: () -> Unit,
+    onConfirm: (List<Combatant>) -> Unit
+) {
+    // id do candidato -> texto digitado de iniciativa; presença na mapa = selecionado.
+    val selections = remember { mutableStateMapOf<String, String>() }
+
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text("Iniciar combate") },
+        text = {
+            if (candidates.isEmpty()) {
+                Text(
+                    "Nenhum jogador conectado nem ficha marcada como NPC. Conecte jogadores ou " +
+                        "marque alguma ficha como NPC em \"Minhas fichas\" antes de iniciar."
+                )
+            } else {
+                Column {
+                    Text(
+                        "Marque quem participa e informe a iniciativa de cada um.",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                    Spacer(modifier = Modifier.height(8.dp))
+                    candidates.forEach { candidate ->
+                        val checked = selections.containsKey(candidate.id)
+                        Row(
+                            modifier = Modifier.fillMaxWidth().padding(vertical = 2.dp),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Checkbox(
+                                checked = checked,
+                                onCheckedChange = { isChecked ->
+                                    if (isChecked) selections[candidate.id] = "" else selections.remove(candidate.id)
+                                }
+                            )
+                            Column(modifier = Modifier.weight(1f)) {
+                                Text(
+                                    candidate.displayName + if (candidate.isNpc) " (NPC)" else "",
+                                    fontWeight = FontWeight.SemiBold
+                                )
+                                Text(
+                                    "PV ${candidate.currentHp}/${candidate.maxHp}",
+                                    style = MaterialTheme.typography.labelSmall,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                                )
+                            }
+                            if (checked) {
+                                OutlinedTextField(
+                                    value = selections[candidate.id] ?: "",
+                                    onValueChange = { selections[candidate.id] = it },
+                                    label = { Text("Iniciativa") },
+                                    modifier = Modifier.width(96.dp)
+                                )
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        confirmButton = {
+            TextButton(
+                enabled = selections.isNotEmpty(),
+                onClick = {
+                    val combatants = candidates.filter { selections.containsKey(it.id) }.map { c ->
+                        Combatant(
+                            id = c.id,
+                            displayName = c.displayName,
+                            isNpc = c.isNpc,
+                            initiative = selections[c.id]?.toIntOrNull() ?: 0,
+                            currentHp = c.currentHp,
+                            maxHp = c.maxHp
+                        )
+                    }
+                    onConfirm(combatants)
+                }
+            ) {
+                Text("Iniciar")
+            }
+        },
+        dismissButton = {
+            TextButton(onClick = onDismiss) { Text("Cancelar") }
+        }
+    )
+}
+
+/**
+ * Mostra a ordem de iniciativa e o PV de cada combatente, destacando de quem é a vez. Para o
+ * Mestre ([isDm] = true), inclui controles de dano/cura diretos e avanço de turno; para o
+ * Jogador, é somente leitura (mudanças de jogador ficam para a fase de pedidos/aprovações).
+ */
+@Composable
+private fun CombatTracker(
+    combat: CombatState,
+    isDm: Boolean,
+    onDamage: ((String, Int) -> Unit)? = null,
+    onNextTurn: (() -> Unit)? = null,
+    onEndCombat: (() -> Unit)? = null
+) {
+    Column {
+        Text("Rodada ${combat.round}", style = MaterialTheme.typography.labelMedium, fontWeight = FontWeight.Bold)
+        Spacer(modifier = Modifier.height(4.dp))
+        combat.combatants.forEach { combatant ->
+            val isCurrentTurn = combatant.id == combat.currentCombatantId
+            Card(
+                modifier = Modifier.fillMaxWidth().padding(vertical = 3.dp),
+                colors = CardDefaults.cardColors(
+                    containerColor = if (isCurrentTurn) {
+                        DndGold.copy(alpha = 0.18f)
+                    } else {
+                        MaterialTheme.colorScheme.surfaceVariant
+                    }
+                )
+            ) {
+                Column(modifier = Modifier.padding(10.dp)) {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Text(
+                            (if (isCurrentTurn) "▶ " else "") + combatant.displayName + if (combatant.isNpc) " (NPC)" else "",
+                            fontWeight = FontWeight.Bold
+                        )
+                        Text("Iniciativa ${combatant.initiative}", style = MaterialTheme.typography.labelSmall)
+                    }
+                    Text(
+                        "PV ${combatant.currentHp}/${combatant.maxHp}" +
+                            if (combatant.tempHp > 0) " (+${combatant.tempHp} temp)" else "",
+                        style = MaterialTheme.typography.bodySmall
+                    )
+                    if (isDm && onDamage != null) {
+                        Row(modifier = Modifier.wrapContentWidth()) {
+                            TextButton(onClick = { onDamage(combatant.id, 5) }) { Text("Dano 5") }
+                            TextButton(onClick = { onDamage(combatant.id, 1) }) { Text("Dano 1") }
+                            TextButton(onClick = { onDamage(combatant.id, -1) }) { Text("Cura 1") }
+                            TextButton(onClick = { onDamage(combatant.id, -5) }) { Text("Cura 5") }
+                        }
+                    }
+                }
+            }
+        }
+        if (isDm && onNextTurn != null && onEndCombat != null) {
+            Spacer(modifier = Modifier.height(8.dp))
+            Row {
+                Button(onClick = onNextTurn) {
+                    Icon(Icons.Default.SkipNext, contentDescription = null)
+                    Spacer(modifier = Modifier.width(4.dp))
+                    Text("Próximo turno")
+                }
+                Spacer(modifier = Modifier.width(8.dp))
+                OutlinedButton(onClick = onEndCombat) {
+                    Text("Encerrar combate", color = DndCrimson)
+                }
             }
         }
     }
@@ -341,6 +592,10 @@ private fun PlayerJoinContent(viewModel: SessionViewModel, characterViewModel: C
             Text("Conectado!", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold, color = DndGold)
             Spacer(modifier = Modifier.height(12.dp))
             ParticipantRoster(s.participants, emptyMap())
+            s.combat?.let { combat ->
+                Spacer(modifier = Modifier.height(16.dp))
+                CombatTracker(combat = combat, isDm = false)
+            }
             Spacer(modifier = Modifier.height(16.dp))
             OutlinedButton(onClick = { viewModel.leaveSession() }) {
                 Text("Sair da sessão", color = DndCrimson)

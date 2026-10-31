@@ -19,7 +19,8 @@ sealed class SessionClientState {
     data class Connected(
         val selfId: String,
         val sessionId: String,
-        val participants: List<Participant> = emptyList()
+        val participants: List<Participant> = emptyList(),
+        val combat: CombatState? = null
     ) : SessionClientState()
     data class Disconnected(val reason: String) : SessionClientState()
 }
@@ -72,6 +73,18 @@ class SessionClient {
                             val current = _state.value
                             if (current is SessionClientState.Connected) {
                                 _state.value = current.copy(participants = msg.participants)
+                            }
+                        }
+                        is SessionMessage.CombatUpdate -> {
+                            val current = _state.value
+                            if (current is SessionClientState.Connected) {
+                                _state.value = current.copy(combat = msg.state)
+                            }
+                        }
+                        is SessionMessage.EndCombat -> {
+                            val current = _state.value
+                            if (current is SessionClientState.Connected) {
+                                _state.value = current.copy(combat = null)
                             }
                         }
                         is SessionMessage.Bye -> break
