@@ -2,11 +2,14 @@ package com.example
 
 import com.example.dnd35.backup.CharacterBackup
 import com.example.dnd35.model.CharacterEntity
+import com.example.dnd35.session.Combatant
+import com.example.dnd35.session.CombatState
 import com.example.dnd35.session.ParticipantRole
 import com.example.dnd35.session.SessionClient
 import com.example.dnd35.session.SessionClientState
 import com.example.dnd35.session.SessionServer
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.mapNotNull
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withTimeout
 import org.junit.Assert.assertEquals
@@ -116,6 +119,112 @@ class SessionServerClientTest {
                 // Dá tempo da mensagem (se houvesse) chegar antes de garantir que nada chegou.
                 withTimeout(5_000) { server.roster.first { it.size == 2 } }
                 assertTrue(server.receivedCharacters.value.isEmpty())
+            } finally {
+                client.disconnect()
+            }
+        } finally {
+            server.stop()
+        }
+    }
+
+    @Test
+    fun `startCombat sincroniza estado de combate com o jogador conectado`() = runBlocking {
+        val server = SessionServer(sessionId = "sess-5", hostDisplayName = "Mestre")
+        val port = server.start()
+        try {
+            val client = SessionClient()
+            try {
+                client.connect("127.0.0.1", port, "Legolas")
+                val connected = withTimeout(5_000) {
+                    client.state.first { it is SessionClientState.Connected } as SessionClientState.Connected
+                }
+
+                val combatants = listOf(
+                    Combatant(id = connected.selfId, displayName = "Legolas", isNpc = false, initiative = 18, currentHp = 20, maxHp = 20),
+                    Combatant(id = CombatState.npcCombatantId(1L), displayName = "Goblin", isNpc = true, initiative = 9, currentHp = 7, maxHp = 7)
+                )
+                server.startCombat(combatants)
+
+                val clientCombat = withTimeout(5_000) {
+                    client.state.mapNotNull { (it as? SessionClientState.Connected)?.combat }.first()
+                }
+                assertEquals(listOf(connected.selfId, CombatState.npcCombatantId(1L)), clientCombat.combatants.map { it.id })
+                assertEquals(0, clientCombat.currentTurnIndex)
+                assertEquals(1, clientCombat.round)
+                assertEquals(connected.selfId, clientCombat.currentCombatantId)
+            } finally {
+                client.disconnect()
+            }
+        } finally {
+            server.stop()
+        }
+    }
+
+    @Test
+    fun `applyDamage, nextTurn e endCombat sincronizam com o jogador`() = runBlocking {
+        val server = SessionServer(sessionId = "sess-6", hostDisplayName = "Mestre")
+        val port = server.start()
+        try {
+            val client = SessionClient()
+            try {
+                client.connect("127.0.0.1", port, "Gimli")
+                val connected = withTimeout(5_000) {
+                    client.state.first { it is SessionClientState.Connected } as SessionClientState.Connected
+                }
+
+                server.startCombat(
+                    listOf(
+                        Combatant(id = connected.selfId, displayName = "Gimli", isNpc = false, initiative = 15, currentHp = 30, maxHp = 30)
+                    )
+                )
+                withTimeout(5_000) {
+                    client.state.mapNotNull { (it as? SessionClientState.Connected)?.combat }.first()
+                }
+
+                server.applyDamage(connected.selfId, 12)
+                val afterDamage = withTimeout(5_000) {
+                    client.state.mapNotNull { (it as? SessionClientState.Connected)?.combat }
+                        .first { it.combatants.first().currentHp == 18 }
+                }
+                assertEquals(18, afterDamage.combatants.single().currentHp)
+
+                server.nextTurn()
+                val afterNextTurn = withTimeout(5_000) {
+                    client.state.mapNotNull { (it as? SessionClientState.Connected)?.combat }
+                        .first { it.round == 2 }
+                }
+                assertEquals(0, afterNextTurn.currentTurnIndex)
+                assertEquals(2, afterNextTurn.round)
+
+                server.endCombat()
+                withTimeout(5_000) {
+                    client.state.first { (it as? SessionClientState.Connected)?.combat == null }
+                }
+            } finally {
+                client.disconnect()
+            }
+        } finally {
+            server.stop()
+        }
+    }
+
+    @Test
+    fun `jogador que entra durante combate ja recebe o estado atual`() = runBlocking {
+        val server = SessionServer(sessionId = "sess-7", hostDisplayName = "Mestre")
+        val port = server.start()
+        try {
+            // Combate iniciado só com um NPC do Mestre, antes de qualquer jogador conectar.
+            server.startCombat(
+                listOf(Combatant(id = CombatState.npcCombatantId(2L), displayName = "Orc", isNpc = true, initiative = 11, currentHp = 15, maxHp = 15))
+            )
+
+            val client = SessionClient()
+            try {
+                client.connect("127.0.0.1", port, "Retardatário")
+                val lateJoinCombat = withTimeout(5_000) {
+                    client.state.mapNotNull { (it as? SessionClientState.Connected)?.combat }.first()
+                }
+                assertEquals(CombatState.npcCombatantId(2L), lateJoinCombat.combatants.single().id)
             } finally {
                 client.disconnect()
             }
