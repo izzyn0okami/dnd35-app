@@ -56,11 +56,26 @@ sealed class SessionMessage {
         val summary: String,
         val characterJson: String? = null,
         val combatantId: String? = null,
-        val hpDelta: Int? = null
+        val hpDelta: Int? = null,
+        val lootItemId: String? = null
     ) : SessionMessage()
 
     /** Mestre -> Jogador que pediu: resultado da aprovação (aceito ou negado, com motivo opcional). */
     data class RequestResolved(val requestId: String, val approved: Boolean, val reason: String = "") : SessionMessage()
+
+    /**
+     * Mestre -> todos: conteúdo atual do baú de loot compartilhado da sessão. `itemsJson` usa o
+     * mesmo formato de [com.example.dnd35.model.CharacterJsonAdapters.serializeInventory] (uma
+     * lista, mesmo que vazia), para reaproveitar o parser já existente do inventário.
+     */
+    data class LootChestUpdate(val itemsJson: String) : SessionMessage()
+
+    /**
+     * Mestre -> Jogador que pegou: item concedido do baú de loot, já removido de lá (ver
+     * [LootChestUpdate] que acompanha esta mensagem). `itemJson` usa o mesmo formato de
+     * inventário, com um único item na lista.
+     */
+    data class LootGranted(val itemJson: String) : SessionMessage()
 
     fun toJson(): String {
         val obj = JSONObject()
@@ -107,10 +122,13 @@ sealed class SessionMessage {
                 .put("characterJson", characterJson ?: JSONObject.NULL)
                 .put("combatantId", combatantId ?: JSONObject.NULL)
                 .put("hpDelta", hpDelta ?: JSONObject.NULL)
+                .put("lootItemId", lootItemId ?: JSONObject.NULL)
             is RequestResolved -> obj.put("type", TYPE_REQUEST_RESOLVED)
                 .put("requestId", requestId)
                 .put("approved", approved)
                 .put("reason", reason)
+            is LootChestUpdate -> obj.put("type", TYPE_LOOT_CHEST_UPDATE).put("itemsJson", itemsJson)
+            is LootGranted -> obj.put("type", TYPE_LOOT_GRANTED).put("itemJson", itemJson)
         }
         return obj.toString()
     }
@@ -125,6 +143,8 @@ sealed class SessionMessage {
         const val TYPE_END_COMBAT = "END_COMBAT"
         const val TYPE_ACTION_REQUESTED = "ACTION_REQUESTED"
         const val TYPE_REQUEST_RESOLVED = "REQUEST_RESOLVED"
+        const val TYPE_LOOT_CHEST_UPDATE = "LOOT_CHEST_UPDATE"
+        const val TYPE_LOOT_GRANTED = "LOOT_GRANTED"
 
         fun fromJson(raw: String): SessionMessage? {
             return try {
@@ -190,13 +210,16 @@ sealed class SessionMessage {
                         summary = obj.getString("summary"),
                         characterJson = if (obj.isNull("characterJson")) null else obj.getString("characterJson"),
                         combatantId = if (obj.isNull("combatantId")) null else obj.getString("combatantId"),
-                        hpDelta = if (obj.isNull("hpDelta")) null else obj.getInt("hpDelta")
+                        hpDelta = if (obj.isNull("hpDelta")) null else obj.getInt("hpDelta"),
+                        lootItemId = if (obj.isNull("lootItemId")) null else obj.getString("lootItemId")
                     )
                     TYPE_REQUEST_RESOLVED -> RequestResolved(
                         requestId = obj.getString("requestId"),
                         approved = obj.getBoolean("approved"),
                         reason = obj.optString("reason", "")
                     )
+                    TYPE_LOOT_CHEST_UPDATE -> LootChestUpdate(obj.getString("itemsJson"))
+                    TYPE_LOOT_GRANTED -> LootGranted(obj.getString("itemJson"))
                     else -> null
                 }
             } catch (e: Exception) {

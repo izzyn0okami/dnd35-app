@@ -10,7 +10,10 @@ enum class RequestKind {
     CHARACTER_UPDATE,
 
     /** Jogador pede uma mudança de PV num combate ativo (ex.: usar uma poção, sofrer dano). */
-    COMBAT_HP_CHANGE
+    COMBAT_HP_CHANGE,
+
+    /** Jogador pede para pegar um item do baú de loot compartilhado da sessão. */
+    TAKE_LOOT
 }
 
 /**
@@ -25,5 +28,7 @@ data class ActionRequest(
     val summary: String,
     val characterJson: String? = null,
     val combatantId: String? = null,
-    val hpDelta: Int? = null
+    val hpDelta: Int? = null,
+    /** Id do item do baú de loot (dentro de [SessionServer.lootChest]) que o jogador quer pegar. */
+    val lootItemId: String? = null
 )

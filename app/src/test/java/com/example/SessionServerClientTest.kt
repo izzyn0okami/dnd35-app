@@ -2,6 +2,7 @@ package com.example
 
 import com.example.dnd35.backup.CharacterBackup
 import com.example.dnd35.model.CharacterEntity
+import com.example.dnd35.model.CharacterInventoryItem
 import com.example.dnd35.session.Combatant
 import com.example.dnd35.session.CombatState
 import com.example.dnd35.session.ParticipantRole
@@ -9,6 +10,7 @@ import com.example.dnd35.session.RequestKind
 import com.example.dnd35.session.SessionClient
 import com.example.dnd35.session.SessionClientState
 import com.example.dnd35.session.SessionServer
+import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.mapNotNull
 import kotlinx.coroutines.runBlocking
@@ -341,6 +343,142 @@ class SessionServerClientTest {
                     server.receivedCharacters.first { it[connected.selfId]?.currentHp == 25 }
                 }
                 assertEquals(25, finalCharacters.getValue(connected.selfId).currentHp)
+            } finally {
+                client.disconnect()
+            }
+        } finally {
+            server.stop()
+        }
+    }
+
+    @Test
+    fun `addLootItem e removeLootItem sincronizam o bau com o jogador conectado`() = runBlocking {
+        val server = SessionServer(sessionId = "sess-11", hostDisplayName = "Mestre")
+        val port = server.start()
+        try {
+            val client = SessionClient()
+            try {
+                client.connect("127.0.0.1", port, "Legolas")
+                withTimeout(5_000) { client.state.first { it is SessionClientState.Connected } }
+
+                val item = CharacterInventoryItem(name = "Poção de cura", category = "Itens de Aventura", quantity = 3)
+                server.addLootItem(item)
+
+                val chestAfterAdd = withTimeout(5_000) {
+                    client.state.mapNotNull { (it as? SessionClientState.Connected)?.lootChest }.first { it.isNotEmpty() }
+                }
+                assertEquals(listOf(item), chestAfterAdd)
+
+                server.removeLootItem(item.id)
+                val chestAfterRemove = withTimeout(5_000) {
+                    client.state.mapNotNull { (it as? SessionClientState.Connected)?.lootChest }.first { it.isEmpty() }
+                }
+                assertTrue(chestAfterRemove.isEmpty())
+            } finally {
+                client.disconnect()
+            }
+        } finally {
+            server.stop()
+        }
+    }
+
+    @Test
+    fun `jogador que entra com o bau ja populado recebe o conteudo atual`() = runBlocking {
+        val server = SessionServer(sessionId = "sess-12", hostDisplayName = "Mestre")
+        val port = server.start()
+        try {
+            val item = CharacterInventoryItem(name = "Adaga", category = "Armas", quantity = 1)
+            server.addLootItem(item)
+
+            val client = SessionClient()
+            try {
+                client.connect("127.0.0.1", port, "Retardatário")
+                val chest = withTimeout(5_000) {
+                    client.state.mapNotNull { (it as? SessionClientState.Connected)?.lootChest }.first { it.isNotEmpty() }
+                }
+                assertEquals(listOf(item), chest)
+            } finally {
+                client.disconnect()
+            }
+        } finally {
+            server.stop()
+        }
+    }
+
+    @Test
+    fun `pedido de pegar loot aprovado remove do bau e concede o item ao jogador`() = runBlocking {
+        val server = SessionServer(sessionId = "sess-13", hostDisplayName = "Mestre")
+        val port = server.start()
+        try {
+            val item = CharacterInventoryItem(name = "Elmo élfico", category = "Armaduras", quantity = 1)
+            server.addLootItem(item)
+
+            val client = SessionClient()
+            try {
+                client.connect("127.0.0.1", port, "Legolas")
+                withTimeout(5_000) {
+                    client.state.mapNotNull { (it as? SessionClientState.Connected)?.lootChest }.first { it.isNotEmpty() }
+                }
+
+                client.requestAction(RequestKind.TAKE_LOOT, "Pedido de pegar \"Elmo élfico\"", lootItemId = item.id)
+                val request = withTimeout(5_000) { server.pendingRequests.first { it.isNotEmpty() } }.single()
+                assertEquals(RequestKind.TAKE_LOOT, request.kind)
+                assertEquals(item.id, request.lootItemId)
+
+                // LootGranted e RequestResolved são mandados em sequência, quase simultâneos —
+                // os dois coletores precisam já estar inscritos antes do Mestre aprovar, senão o
+                // laço de leitura do cliente (que processa as duas mensagens de uma vez, sem
+                // esperar ninguém) pode emitir e descartar uma delas antes de alguém ouvir.
+                val grantedDeferred = async { withTimeout(5_000) { client.lootGranted.first() } }
+                val resolvedDeferred = async { withTimeout(5_000) { client.requestResults.first() } }
+
+                server.approveRequest(request.id)
+
+                val granted = grantedDeferred.await()
+                assertEquals(item, granted)
+
+                val resolved = resolvedDeferred.await()
+                assertTrue(resolved.approved)
+
+                assertTrue(server.lootChest.value.isEmpty())
+                val chestAfter = withTimeout(5_000) {
+                    client.state.mapNotNull { (it as? SessionClientState.Connected)?.lootChest }.first { it.isEmpty() }
+                }
+                assertTrue(chestAfter.isEmpty())
+            } finally {
+                client.disconnect()
+            }
+        } finally {
+            server.stop()
+        }
+    }
+
+    @Test
+    fun `pedido de pegar loot de item ja removido e negado automaticamente`() = runBlocking {
+        val server = SessionServer(sessionId = "sess-14", hostDisplayName = "Mestre")
+        val port = server.start()
+        try {
+            val item = CharacterInventoryItem(name = "Corda (15m)", category = "Itens de Aventura", quantity = 1)
+            server.addLootItem(item)
+
+            val client = SessionClient()
+            try {
+                client.connect("127.0.0.1", port, "Gimli")
+                withTimeout(5_000) {
+                    client.state.mapNotNull { (it as? SessionClientState.Connected)?.lootChest }.first { it.isNotEmpty() }
+                }
+
+                client.requestAction(RequestKind.TAKE_LOOT, "Pedido de pegar \"Corda (15m)\"", lootItemId = item.id)
+                val request = withTimeout(5_000) { server.pendingRequests.first { it.isNotEmpty() } }.single()
+
+                // O Mestre removeu o item direto do baú antes de decidir o pedido.
+                server.removeLootItem(item.id)
+
+                server.approveRequest(request.id)
+
+                val resolved = withTimeout(5_000) { client.requestResults.first() }
+                assertEquals(false, resolved.approved)
+                assertTrue(resolved.reason.isNotBlank())
             } finally {
                 client.disconnect()
             }

@@ -22,6 +22,7 @@ import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material.icons.filled.Groups
+import androidx.compose.material.icons.filled.Inventory2
 import androidx.compose.material.icons.filled.MeetingRoom
 import androidx.compose.material.icons.filled.NotificationsActive
 import androidx.compose.material.icons.filled.Person
@@ -45,6 +46,7 @@ import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateMapOf
 import androidx.compose.runtime.mutableStateOf
@@ -58,6 +60,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.dnd35.model.CharacterEntity
+import com.example.dnd35.model.CharacterInventoryItem
 import com.example.dnd35.session.ActionRequest
 import com.example.dnd35.session.Combatant
 import com.example.dnd35.session.CombatState
@@ -206,6 +209,13 @@ private fun DmHostContent(viewModel: SessionViewModel, characterViewModel: Chara
             }
             Spacer(modifier = Modifier.height(16.dp))
             CombatSection(viewModel, characterViewModel, s)
+            Spacer(modifier = Modifier.height(16.dp))
+            LootChestSection(
+                items = s.lootChest,
+                isDm = true,
+                onAddItem = { viewModel.addLootItem(it) },
+                onRemoveItem = { viewModel.removeLootItem(it) }
+            )
             Spacer(modifier = Modifier.height(16.dp))
             OutlinedButton(onClick = { viewModel.stopHosting() }) {
                 Text("Encerrar sessão", color = DndCrimson)
@@ -550,6 +560,104 @@ private fun PendingRequestsSection(
     }
 }
 
+/**
+ * Baú de loot compartilhado da sessão. Para o Mestre ([isDm] = true), permite adicionar e
+ * remover itens direto (é a autoridade); para o Jogador, é somente leitura com um botão
+ * "Pegar" por item, que só vira item de verdade na ficha depois do Mestre aprovar o pedido.
+ */
+@Composable
+private fun LootChestSection(
+    items: List<CharacterInventoryItem>,
+    isDm: Boolean,
+    onAddItem: ((CharacterInventoryItem) -> Unit)? = null,
+    onRemoveItem: ((String) -> Unit)? = null,
+    onRequestTake: ((CharacterInventoryItem) -> Unit)? = null
+) {
+    Column {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Icon(Icons.Default.Inventory2, contentDescription = null, tint = DndGold, modifier = Modifier.size(20.dp))
+            Spacer(modifier = Modifier.width(6.dp))
+            Text("Baú de loot", fontWeight = FontWeight.Bold)
+        }
+        Spacer(modifier = Modifier.height(8.dp))
+        if (items.isEmpty()) {
+            Text(
+                "O baú está vazio.",
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+        } else {
+            items.forEach { item ->
+                Card(modifier = Modifier.fillMaxWidth().padding(vertical = 3.dp)) {
+                    Row(
+                        modifier = Modifier.fillMaxWidth().padding(10.dp),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Column(modifier = Modifier.weight(1f)) {
+                            Text(
+                                item.name + if (item.quantity > 1) " x${item.quantity}" else "",
+                                fontWeight = FontWeight.SemiBold
+                            )
+                            Text(
+                                "Peso ${item.weightLb} lb • ${item.costGp} po",
+                                style = MaterialTheme.typography.labelSmall,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                            )
+                        }
+                        if (isDm && onRemoveItem != null) {
+                            TextButton(onClick = { onRemoveItem(item.id) }) { Text("Remover", color = DndCrimson) }
+                        } else if (!isDm && onRequestTake != null) {
+                            Button(onClick = { onRequestTake(item) }) { Text("Pegar") }
+                        }
+                    }
+                }
+            }
+        }
+        if (isDm && onAddItem != null) {
+            Spacer(modifier = Modifier.height(12.dp))
+            AddLootItemForm(onAddItem)
+        }
+    }
+}
+
+/** Formulário simples para o Mestre adicionar um item novo ao baú de loot. */
+@Composable
+private fun AddLootItemForm(onAddItem: (CharacterInventoryItem) -> Unit) {
+    var name by remember { mutableStateOf("") }
+    var quantity by remember { mutableStateOf("1") }
+
+    Column {
+        Text("Adicionar item ao baú", style = MaterialTheme.typography.labelMedium)
+        Spacer(modifier = Modifier.height(4.dp))
+        OutlinedTextField(
+            value = name,
+            onValueChange = { name = it },
+            label = { Text("Nome do item") },
+            modifier = Modifier.fillMaxWidth()
+        )
+        Spacer(modifier = Modifier.height(4.dp))
+        OutlinedTextField(
+            value = quantity,
+            onValueChange = { quantity = it },
+            label = { Text("Quantidade") },
+            modifier = Modifier.fillMaxWidth()
+        )
+        Spacer(modifier = Modifier.height(8.dp))
+        Button(
+            onClick = {
+                val qty = quantity.toIntOrNull()?.coerceAtLeast(1) ?: 1
+                onAddItem(CharacterInventoryItem(name = name.trim(), category = "Itens de Aventura", quantity = qty))
+                name = ""
+                quantity = "1"
+            },
+            enabled = name.isNotBlank()
+        ) {
+            Text("Adicionar ao baú")
+        }
+    }
+}
+
 @Composable
 private fun PlayerJoinContent(viewModel: SessionViewModel, characterViewModel: CharacterViewModel) {
     val state by viewModel.playerState.collectAsStateWithLifecycle()
@@ -644,12 +752,26 @@ private fun PlayerJoinContent(viewModel: SessionViewModel, characterViewModel: C
         }
         is PlayerSessionUiState.Connected -> {
             val feedback by viewModel.playerRequestFeedback.collectAsStateWithLifecycle()
+            var lootFeedback by remember { mutableStateOf<String?>(null) }
+            LaunchedEffect(viewModel) {
+                viewModel.lootGranted.collect { item ->
+                    characterViewModel.addInventoryItem(item.copy(id = java.util.UUID.randomUUID().toString()))
+                    lootFeedback = "Você recebeu \"${item.name}\" do baú de loot!"
+                }
+            }
             Text("Conectado!", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold, color = DndGold)
             feedback?.let { message ->
                 Spacer(modifier = Modifier.height(8.dp))
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(message, style = MaterialTheme.typography.bodySmall, modifier = Modifier.weight(1f))
                     TextButton(onClick = { viewModel.clearRequestFeedback() }) { Text("OK") }
+                }
+            }
+            lootFeedback?.let { message ->
+                Spacer(modifier = Modifier.height(8.dp))
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Text(message, style = MaterialTheme.typography.bodySmall, modifier = Modifier.weight(1f))
+                    TextButton(onClick = { lootFeedback = null }) { Text("OK") }
                 }
             }
             Spacer(modifier = Modifier.height(12.dp))
@@ -670,6 +792,14 @@ private fun PlayerJoinContent(viewModel: SessionViewModel, characterViewModel: C
                     }
                 )
             }
+            Spacer(modifier = Modifier.height(16.dp))
+            LootChestSection(
+                items = s.lootChest,
+                isDm = false,
+                onRequestTake = { item ->
+                    viewModel.requestTakeLoot(item.id, "Pedido de pegar \"${item.name}\" do baú de loot")
+                }
+            )
             if (selectedCharacter != null) {
                 Spacer(modifier = Modifier.height(16.dp))
                 OutlinedButton(

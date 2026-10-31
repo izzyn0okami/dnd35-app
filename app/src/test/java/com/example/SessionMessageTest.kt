@@ -1,5 +1,7 @@
 package com.example
 
+import com.example.dnd35.model.CharacterInventoryItem
+import com.example.dnd35.model.CharacterJsonAdapters
 import com.example.dnd35.session.Combatant
 import com.example.dnd35.session.CombatState
 import com.example.dnd35.session.JoinPayload
@@ -114,6 +116,38 @@ class SessionMessageTest {
 
         val denied = SessionMessage.RequestResolved("req-2", approved = false, reason = "Sem itens suficientes")
         assertEquals(denied, SessionMessage.fromJson(denied.toJson()))
+    }
+
+    @Test
+    fun `ActionRequested de pegar loot preserva o lootItemId e omite os demais campos`() {
+        val msg = SessionMessage.ActionRequested(
+            kind = RequestKind.TAKE_LOOT,
+            summary = "Pedido de pegar \"Poção de cura\" do baú de loot",
+            lootItemId = "item-1"
+        )
+        val roundTrip = SessionMessage.fromJson(msg.toJson()) as SessionMessage.ActionRequested
+        assertEquals(msg, roundTrip)
+        assertNull(roundTrip.characterJson)
+        assertNull(roundTrip.combatantId)
+        assertNull(roundTrip.hpDelta)
+    }
+
+    @Test
+    fun `LootChestUpdate preserva a lista de itens`() {
+        val items = listOf(
+            CharacterInventoryItem(id = "item-1", name = "Poção de cura", category = "Itens de Aventura", quantity = 2, weightLb = 0.5f, costGp = 50f)
+        )
+        val msg = SessionMessage.LootChestUpdate(CharacterJsonAdapters.serializeInventory(items))
+        val roundTrip = SessionMessage.fromJson(msg.toJson()) as SessionMessage.LootChestUpdate
+        assertEquals(items, CharacterJsonAdapters.deserializeInventory(roundTrip.itemsJson))
+    }
+
+    @Test
+    fun `LootGranted preserva o item concedido`() {
+        val item = CharacterInventoryItem(id = "item-2", name = "Espada longa +1", category = "Armas", quantity = 1)
+        val msg = SessionMessage.LootGranted(CharacterJsonAdapters.serializeInventory(listOf(item)))
+        val roundTrip = SessionMessage.fromJson(msg.toJson()) as SessionMessage.LootGranted
+        assertEquals(item, CharacterJsonAdapters.deserializeInventory(roundTrip.itemJson).single())
     }
 
     @Test
