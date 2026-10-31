@@ -4,7 +4,9 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import java.io.DataInputStream
@@ -37,6 +39,11 @@ class SessionClient {
 
     private val _state = MutableStateFlow<SessionClientState>(SessionClientState.Connecting)
     val state: StateFlow<SessionClientState> = _state
+
+    // Resultado de pedidos feitos por este Jogador (aprovado/negado pelo Mestre). É um evento,
+    // não um estado contínuo — por isso SharedFlow em vez de StateFlow.
+    private val _requestResults = MutableSharedFlow<SessionMessage.RequestResolved>(extraBufferCapacity = 4)
+    val requestResults: SharedFlow<SessionMessage.RequestResolved> = _requestResults
 
     /**
      * @param characterJson ficha do jogador já serializada (mesmo formato do backup de fichas),
@@ -87,6 +94,7 @@ class SessionClient {
                                 _state.value = current.copy(combat = null)
                             }
                         }
+                        is SessionMessage.RequestResolved -> _requestResults.tryEmit(msg)
                         is SessionMessage.Bye -> break
                         else -> Unit
                     }
@@ -94,6 +102,25 @@ class SessionClient {
                 _state.value = SessionClientState.Disconnected("Conexão encerrada pelo Mestre.")
             } catch (e: IOException) {
                 _state.value = SessionClientState.Disconnected(e.message ?: "Não foi possível conectar.")
+            }
+        }
+    }
+
+    /**
+     * Manda ao Mestre um pedido de ação que depende de aprovação (ver [RequestKind]) — o
+     * resultado chega depois em [requestResults]. Não faz nada se a conexão já caiu.
+     */
+    fun requestAction(
+        kind: RequestKind,
+        summary: String,
+        characterJson: String? = null,
+        combatantId: String? = null,
+        hpDelta: Int? = null
+    ) {
+        val out = output ?: return
+        scope.launch {
+            runCatching {
+                SessionWire.write(out, SessionMessage.ActionRequested(kind, summary, characterJson, combatantId, hpDelta))
             }
         }
     }

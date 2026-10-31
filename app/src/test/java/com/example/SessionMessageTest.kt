@@ -5,6 +5,7 @@ import com.example.dnd35.session.CombatState
 import com.example.dnd35.session.JoinPayload
 import com.example.dnd35.session.Participant
 import com.example.dnd35.session.ParticipantRole
+import com.example.dnd35.session.RequestKind
 import com.example.dnd35.session.SessionMessage
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
@@ -79,6 +80,40 @@ class SessionMessageTest {
     fun `EndCombat serializa e desserializa corretamente`() {
         val roundTrip = SessionMessage.fromJson(SessionMessage.EndCombat.toJson())
         assertEquals(SessionMessage.EndCombat, roundTrip)
+    }
+
+    @Test
+    fun `ActionRequested de mudanca de PV preserva todos os campos`() {
+        val msg = SessionMessage.ActionRequested(
+            kind = RequestKind.COMBAT_HP_CHANGE,
+            summary = "Pedido de dano (5 PV) em combate",
+            combatantId = "p1",
+            hpDelta = 5
+        )
+        val roundTrip = SessionMessage.fromJson(msg.toJson()) as SessionMessage.ActionRequested
+        assertEquals(msg, roundTrip)
+    }
+
+    @Test
+    fun `ActionRequested de atualizacao de ficha preserva o JSON e omite campos de combate`() {
+        val msg = SessionMessage.ActionRequested(
+            kind = RequestKind.CHARACTER_UPDATE,
+            summary = "Atualização da ficha de Legolas",
+            characterJson = """{"app":"ficha-dnd35","characters":[]}"""
+        )
+        val roundTrip = SessionMessage.fromJson(msg.toJson()) as SessionMessage.ActionRequested
+        assertEquals(msg, roundTrip)
+        assertNull(roundTrip.combatantId)
+        assertNull(roundTrip.hpDelta)
+    }
+
+    @Test
+    fun `RequestResolved preserva aprovacao e motivo`() {
+        val approved = SessionMessage.RequestResolved("req-1", approved = true)
+        assertEquals(approved, SessionMessage.fromJson(approved.toJson()))
+
+        val denied = SessionMessage.RequestResolved("req-2", approved = false, reason = "Sem itens suficientes")
+        assertEquals(denied, SessionMessage.fromJson(denied.toJson()))
     }
 
     @Test

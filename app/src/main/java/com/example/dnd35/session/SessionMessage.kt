@@ -46,6 +46,22 @@ sealed class SessionMessage {
     /** Mestre -> todos: encerra o combate ativo (sem combatentes/iniciativa). */
     data object EndCombat : SessionMessage()
 
+    /**
+     * Jogador -> Mestre: pedido de uma ação que precisa de aprovação (ver [RequestKind]). O
+     * Mestre atribui um id a esse pedido ao recebê-lo (ver [SessionServer.pendingRequests]) —
+     * aqui ainda não existe id porque quem está pedindo não sabe se vai ser aceito.
+     */
+    data class ActionRequested(
+        val kind: RequestKind,
+        val summary: String,
+        val characterJson: String? = null,
+        val combatantId: String? = null,
+        val hpDelta: Int? = null
+    ) : SessionMessage()
+
+    /** Mestre -> Jogador que pediu: resultado da aprovação (aceito ou negado, com motivo opcional). */
+    data class RequestResolved(val requestId: String, val approved: Boolean, val reason: String = "") : SessionMessage()
+
     fun toJson(): String {
         val obj = JSONObject()
         when (this) {
@@ -85,6 +101,16 @@ sealed class SessionMessage {
                     }
                 })
             is EndCombat -> obj.put("type", TYPE_END_COMBAT)
+            is ActionRequested -> obj.put("type", TYPE_ACTION_REQUESTED)
+                .put("kind", kind.name)
+                .put("summary", summary)
+                .put("characterJson", characterJson ?: JSONObject.NULL)
+                .put("combatantId", combatantId ?: JSONObject.NULL)
+                .put("hpDelta", hpDelta ?: JSONObject.NULL)
+            is RequestResolved -> obj.put("type", TYPE_REQUEST_RESOLVED)
+                .put("requestId", requestId)
+                .put("approved", approved)
+                .put("reason", reason)
         }
         return obj.toString()
     }
@@ -97,6 +123,8 @@ sealed class SessionMessage {
         const val TYPE_CHARACTER_SHEET = "CHARACTER_SHEET"
         const val TYPE_COMBAT_UPDATE = "COMBAT_UPDATE"
         const val TYPE_END_COMBAT = "END_COMBAT"
+        const val TYPE_ACTION_REQUESTED = "ACTION_REQUESTED"
+        const val TYPE_REQUEST_RESOLVED = "REQUEST_RESOLVED"
 
         fun fromJson(raw: String): SessionMessage? {
             return try {
@@ -157,6 +185,18 @@ sealed class SessionMessage {
                         )
                     }
                     TYPE_END_COMBAT -> EndCombat
+                    TYPE_ACTION_REQUESTED -> ActionRequested(
+                        kind = RequestKind.valueOf(obj.getString("kind")),
+                        summary = obj.getString("summary"),
+                        characterJson = if (obj.isNull("characterJson")) null else obj.getString("characterJson"),
+                        combatantId = if (obj.isNull("combatantId")) null else obj.getString("combatantId"),
+                        hpDelta = if (obj.isNull("hpDelta")) null else obj.getInt("hpDelta")
+                    )
+                    TYPE_REQUEST_RESOLVED -> RequestResolved(
+                        requestId = obj.getString("requestId"),
+                        approved = obj.getBoolean("approved"),
+                        reason = obj.optString("reason", "")
+                    )
                     else -> null
                 }
             } catch (e: Exception) {

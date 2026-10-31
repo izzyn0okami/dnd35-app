@@ -6,12 +6,14 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.dnd35.backup.CharacterBackup
 import com.example.dnd35.model.CharacterEntity
+import com.example.dnd35.session.ActionRequest
 import com.example.dnd35.session.Combatant
 import com.example.dnd35.session.CombatState
 import com.example.dnd35.session.JoinPayload
 import com.example.dnd35.session.LocalNetworkUtil
 import com.example.dnd35.session.Participant
 import com.example.dnd35.session.QrCodeUtil
+import com.example.dnd35.session.RequestKind
 import com.example.dnd35.session.SessionClient
 import com.example.dnd35.session.SessionClientState
 import com.example.dnd35.session.SessionServer
@@ -32,7 +34,9 @@ sealed class DmSessionUiState {
         /** Fichas recebidas dos jogadores conectados, indexadas pelo id do participante. */
         val characters: Map<String, CharacterEntity> = emptyMap(),
         /** `null` quando não há combate ativo no momento. */
-        val combat: CombatState? = null
+        val combat: CombatState? = null,
+        /** Pedidos de jogadores aguardando aprovação do Mestre. */
+        val pendingRequests: List<ActionRequest> = emptyList()
     ) : DmSessionUiState()
     data class Error(val message: String) : DmSessionUiState()
 }
@@ -64,6 +68,16 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
 
     private val _playerState = MutableStateFlow<PlayerSessionUiState>(PlayerSessionUiState.Idle)
     val playerState: StateFlow<PlayerSessionUiState> = _playerState
+
+    // Mensagem de retorno do último pedido feito pelo Jogador (aprovado/negado pelo Mestre).
+    // É um aviso pontual, por isso fica separado do estado contínuo de conexão.
+    private val _playerRequestFeedback = MutableStateFlow<String?>(null)
+    val playerRequestFeedback: StateFlow<String?> = _playerRequestFeedback
+
+    /** Jogador: descarta o aviso de resultado do último pedido (depois que o jogador já leu). */
+    fun clearRequestFeedback() {
+        _playerRequestFeedback.value = null
+    }
 
     /** Mestre: cria e hospeda uma nova sessão, exibindo o QR Code para os jogadores escanearem. */
     fun hostSession(hostDisplayName: String) {
@@ -101,14 +115,26 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
             combine(
                 activeServer.roster,
                 activeServer.receivedCharacters,
-                activeServer.combatState
-            ) { participants, characters, combat -> Triple(participants, characters, combat) }
-                .collect { (participants, characters, combat) ->
-                    if (server === activeServer) {
-                        _dmState.value = DmSessionUiState.Hosting(sessionId, bitmap, qrContent, participants, characters, combat)
-                    }
+                activeServer.combatState,
+                activeServer.pendingRequests
+            ) { participants, characters, combat, requests ->
+                DmSessionUiState.Hosting(sessionId, bitmap, qrContent, participants, characters, combat, requests)
+            }.collect { newState ->
+                if (server === activeServer) {
+                    _dmState.value = newState
                 }
+            }
         }
+    }
+
+    /** Mestre: aprova um pedido pendente de jogador, aplicando a mudança correspondente. */
+    fun approveRequest(requestId: String) {
+        server?.approveRequest(requestId)
+    }
+
+    /** Mestre: nega um pedido pendente de jogador (nada é aplicado). */
+    fun denyRequest(requestId: String) {
+        server?.denyRequest(requestId)
     }
 
     /** Mestre: inicia um combate novo com os combatentes informados. */
@@ -146,6 +172,7 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
     /** Jogador: entra em uma sessão informando manualmente o IP e a porta do Mestre. */
     fun joinSession(hostAddress: String, port: Int, displayName: String, character: CharacterEntity?) {
         leaveSession()
+        _playerRequestFeedback.value = null
         val name = displayName.ifBlank { "Jogador" }
         // Sem foto: o retrato não é necessário para o Mestre acompanhar a ficha durante a sessão,
         // e evita inflar a mensagem enviada pela rede local.
@@ -169,6 +196,28 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
                 }
             }
         }
+        launch {
+            activeClient.requestResults.collect { resolved ->
+                if (client === activeClient) {
+                    _playerRequestFeedback.value = if (resolved.approved) {
+                        "Pedido aprovado pelo Mestre."
+                    } else {
+                        "Pedido negado pelo Mestre." + if (resolved.reason.isNotBlank()) " (${resolved.reason})" else ""
+                    }
+                }
+            }
+        }
+    }
+
+    /** Jogador: pede ao Mestre uma mudança de PV num combate ativo (ex.: usar uma poção). */
+    fun requestCombatHpChange(combatantId: String, delta: Int, summary: String) {
+        client?.requestAction(RequestKind.COMBAT_HP_CHANGE, summary, combatantId = combatantId, hpDelta = delta)
+    }
+
+    /** Jogador: pede ao Mestre para atualizar a ficha vinculada com uma versão mais recente. */
+    fun requestCharacterUpdate(character: CharacterEntity, summary: String) {
+        val characterJson = CharacterBackup.toJson(listOf(character)) { null }
+        client?.requestAction(RequestKind.CHARACTER_UPDATE, summary, characterJson = characterJson)
     }
 
     /** Jogador: sai da sessão atual, se houver uma. */

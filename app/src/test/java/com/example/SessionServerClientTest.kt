@@ -5,6 +5,7 @@ import com.example.dnd35.model.CharacterEntity
 import com.example.dnd35.session.Combatant
 import com.example.dnd35.session.CombatState
 import com.example.dnd35.session.ParticipantRole
+import com.example.dnd35.session.RequestKind
 import com.example.dnd35.session.SessionClient
 import com.example.dnd35.session.SessionClientState
 import com.example.dnd35.session.SessionServer
@@ -226,6 +227,120 @@ class SessionServerClientTest {
                     client.state.mapNotNull { (it as? SessionClientState.Connected)?.combat }.first()
                 }
                 assertEquals(CombatState.npcCombatantId(2L), lateJoinCombat.combatants.single().id)
+            } finally {
+                client.disconnect()
+            }
+        } finally {
+            server.stop()
+        }
+    }
+
+    @Test
+    fun `pedido de mudanca de PV aprovado aplica dano e avisa o jogador`() = runBlocking {
+        val server = SessionServer(sessionId = "sess-8", hostDisplayName = "Mestre")
+        val port = server.start()
+        try {
+            val client = SessionClient()
+            try {
+                client.connect("127.0.0.1", port, "Legolas")
+                val connected = withTimeout(5_000) {
+                    client.state.first { it is SessionClientState.Connected } as SessionClientState.Connected
+                }
+                server.startCombat(
+                    listOf(Combatant(id = connected.selfId, displayName = "Legolas", isNpc = false, initiative = 12, currentHp = 20, maxHp = 20))
+                )
+                withTimeout(5_000) { client.state.mapNotNull { (it as? SessionClientState.Connected)?.combat }.first() }
+
+                client.requestAction(RequestKind.COMBAT_HP_CHANGE, "Pedido de dano (5 PV)", combatantId = connected.selfId, hpDelta = 5)
+
+                val pending = withTimeout(5_000) { server.pendingRequests.first { it.isNotEmpty() } }
+                val request = pending.single()
+                assertEquals("Legolas", request.requesterName)
+                assertEquals(RequestKind.COMBAT_HP_CHANGE, request.kind)
+
+                server.approveRequest(request.id)
+
+                val resolved = withTimeout(5_000) { client.requestResults.first() }
+                assertTrue(resolved.approved)
+
+                val combatAfter = withTimeout(5_000) {
+                    client.state.mapNotNull { (it as? SessionClientState.Connected)?.combat }
+                        .first { it.combatants.first().currentHp == 15 }
+                }
+                assertEquals(15, combatAfter.combatants.single().currentHp)
+                assertTrue(server.pendingRequests.value.isEmpty())
+            } finally {
+                client.disconnect()
+            }
+        } finally {
+            server.stop()
+        }
+    }
+
+    @Test
+    fun `pedido negado nao altera o estado e avisa o jogador`() = runBlocking {
+        val server = SessionServer(sessionId = "sess-9", hostDisplayName = "Mestre")
+        val port = server.start()
+        try {
+            val client = SessionClient()
+            try {
+                client.connect("127.0.0.1", port, "Gimli")
+                val connected = withTimeout(5_000) {
+                    client.state.first { it is SessionClientState.Connected } as SessionClientState.Connected
+                }
+                server.startCombat(
+                    listOf(Combatant(id = connected.selfId, displayName = "Gimli", isNpc = false, initiative = 10, currentHp = 30, maxHp = 30))
+                )
+                withTimeout(5_000) { client.state.mapNotNull { (it as? SessionClientState.Connected)?.combat }.first() }
+
+                client.requestAction(RequestKind.COMBAT_HP_CHANGE, "Pedido de cura (10 PV)", combatantId = connected.selfId, hpDelta = -10)
+                val request = withTimeout(5_000) { server.pendingRequests.first { it.isNotEmpty() } }.single()
+
+                server.denyRequest(request.id, reason = "Sem poção de cura disponível")
+
+                val resolved = withTimeout(5_000) { client.requestResults.first() }
+                assertEquals(false, resolved.approved)
+                assertEquals("Sem poção de cura disponível", resolved.reason)
+                assertTrue(server.pendingRequests.value.isEmpty())
+                assertEquals(30, server.combatState.value?.combatants?.single()?.currentHp)
+            } finally {
+                client.disconnect()
+            }
+        } finally {
+            server.stop()
+        }
+    }
+
+    @Test
+    fun `pedido de atualizacao de ficha aprovado atualiza receivedCharacters`() = runBlocking {
+        val server = SessionServer(sessionId = "sess-10", hostDisplayName = "Mestre")
+        val port = server.start()
+        try {
+            val original = CharacterEntity(name = "Legolas", characterClass = "Patrulheiro", level = 5, currentHp = 30, maxHp = 40)
+            val originalJson = CharacterBackup.toJson(listOf(original)) { null }
+
+            val client = SessionClient()
+            try {
+                client.connect("127.0.0.1", port, "Legolas", originalJson)
+                val connected = withTimeout(5_000) {
+                    client.state.first { it is SessionClientState.Connected } as SessionClientState.Connected
+                }
+                withTimeout(5_000) { server.receivedCharacters.first { it.containsKey(connected.selfId) } }
+
+                val updated = original.copy(currentHp = 25)
+                val updatedJson = CharacterBackup.toJson(listOf(updated)) { null }
+                client.requestAction(RequestKind.CHARACTER_UPDATE, "Atualização da ficha de Legolas", characterJson = updatedJson)
+
+                val request = withTimeout(5_000) { server.pendingRequests.first { it.isNotEmpty() } }.single()
+                assertEquals(RequestKind.CHARACTER_UPDATE, request.kind)
+
+                server.approveRequest(request.id)
+                withTimeout(5_000) { client.requestResults.first() }
+
+                val finalCharacters = withTimeout(5_000) {
+                    server.receivedCharacters.first { it[connected.selfId]?.currentHp == 25 }
+                }
+                assertEquals(25, finalCharacters.getValue(connected.selfId).currentHp)
             } finally {
                 client.disconnect()
             }
