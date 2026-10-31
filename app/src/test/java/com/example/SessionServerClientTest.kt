@@ -197,9 +197,10 @@ class SessionServerClientTest {
                 assertEquals(2, afterNextTurn.round)
 
                 server.endCombat()
-                withTimeout(5_000) {
+                val afterEnd = withTimeout(5_000) {
                     client.state.first { (it as? SessionClientState.Connected)?.combat == null }
-                }
+                } as SessionClientState.Connected
+                assertEquals(null, afterEnd.combat)
             } finally {
                 client.disconnect()
             }
