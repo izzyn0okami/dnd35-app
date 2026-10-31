@@ -23,6 +23,7 @@ import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material.icons.filled.Groups
 import androidx.compose.material.icons.filled.MeetingRoom
+import androidx.compose.material.icons.filled.NotificationsActive
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.QrCodeScanner
 import androidx.compose.material.icons.filled.Shield
@@ -57,6 +58,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.dnd35.model.CharacterEntity
+import com.example.dnd35.session.ActionRequest
 import com.example.dnd35.session.Combatant
 import com.example.dnd35.session.CombatState
 import com.example.dnd35.session.JoinPayload
@@ -194,6 +196,14 @@ private fun DmHostContent(viewModel: SessionViewModel, characterViewModel: Chara
             )
             Spacer(modifier = Modifier.height(16.dp))
             ParticipantRoster(s.participants, s.characters)
+            if (s.pendingRequests.isNotEmpty()) {
+                Spacer(modifier = Modifier.height(16.dp))
+                PendingRequestsSection(
+                    requests = s.pendingRequests,
+                    onApprove = { viewModel.approveRequest(it) },
+                    onDeny = { viewModel.denyRequest(it) }
+                )
+            }
             Spacer(modifier = Modifier.height(16.dp))
             CombatSection(viewModel, characterViewModel, s)
             Spacer(modifier = Modifier.height(16.dp))
@@ -425,14 +435,17 @@ private fun StartCombatDialog(
 
 /**
  * Mostra a ordem de iniciativa e o PV de cada combatente, destacando de quem é a vez. Para o
- * Mestre ([isDm] = true), inclui controles de dano/cura diretos e avanço de turno; para o
- * Jogador, é somente leitura (mudanças de jogador ficam para a fase de pedidos/aprovações).
+ * Mestre ([isDm] = true), inclui controles de dano/cura diretos e avanço de turno. Para o
+ * Jogador, é somente leitura, exceto no próprio combatente ([selfId]), onde pode *pedir* uma
+ * mudança de PV ao Mestre (via [onRequestHpChange]) — o pedido só vale depois de aprovado.
  */
 @Composable
 private fun CombatTracker(
     combat: CombatState,
     isDm: Boolean,
+    selfId: String? = null,
     onDamage: ((String, Int) -> Unit)? = null,
+    onRequestHpChange: ((String, Int) -> Unit)? = null,
     onNextTurn: (() -> Unit)? = null,
     onEndCombat: (() -> Unit)? = null
 ) {
@@ -475,6 +488,13 @@ private fun CombatTracker(
                             TextButton(onClick = { onDamage(combatant.id, -1) }) { Text("Cura 1") }
                             TextButton(onClick = { onDamage(combatant.id, -5) }) { Text("Cura 5") }
                         }
+                    } else if (!isDm && onRequestHpChange != null && combatant.id == selfId) {
+                        Row(modifier = Modifier.wrapContentWidth()) {
+                            TextButton(onClick = { onRequestHpChange(combatant.id, 5) }) { Text("Pedir dano 5") }
+                            TextButton(onClick = { onRequestHpChange(combatant.id, 1) }) { Text("Pedir dano 1") }
+                            TextButton(onClick = { onRequestHpChange(combatant.id, -1) }) { Text("Pedir cura 1") }
+                            TextButton(onClick = { onRequestHpChange(combatant.id, -5) }) { Text("Pedir cura 5") }
+                        }
                     }
                 }
             }
@@ -490,6 +510,40 @@ private fun CombatTracker(
                 Spacer(modifier = Modifier.width(8.dp))
                 OutlinedButton(onClick = onEndCombat) {
                     Text("Encerrar combate", color = DndCrimson)
+                }
+            }
+        }
+    }
+}
+
+/**
+ * Lista de pedidos de jogadores aguardando decisão do Mestre (ver [RequestKind]). Aprovar aplica
+ * a mudança correspondente (PV em combate, ou nova versão da ficha); negar não aplica nada.
+ */
+@Composable
+private fun PendingRequestsSection(
+    requests: List<ActionRequest>,
+    onApprove: (String) -> Unit,
+    onDeny: (String) -> Unit
+) {
+    Column {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Icon(Icons.Default.NotificationsActive, contentDescription = null, tint = DndGold, modifier = Modifier.size(20.dp))
+            Spacer(modifier = Modifier.width(6.dp))
+            Text("Pedidos pendentes (${requests.size})", fontWeight = FontWeight.Bold)
+        }
+        Spacer(modifier = Modifier.height(8.dp))
+        requests.forEach { request ->
+            Card(modifier = Modifier.fillMaxWidth().padding(vertical = 3.dp)) {
+                Column(modifier = Modifier.padding(10.dp)) {
+                    Text(request.requesterName, fontWeight = FontWeight.SemiBold)
+                    Text(request.summary, style = MaterialTheme.typography.bodySmall)
+                    Spacer(modifier = Modifier.height(6.dp))
+                    Row {
+                        Button(onClick = { onApprove(request.id) }) { Text("Aprovar") }
+                        Spacer(modifier = Modifier.width(8.dp))
+                        OutlinedButton(onClick = { onDeny(request.id) }) { Text("Negar", color = DndCrimson) }
+                    }
                 }
             }
         }
@@ -589,12 +643,44 @@ private fun PlayerJoinContent(viewModel: SessionViewModel, characterViewModel: C
             }
         }
         is PlayerSessionUiState.Connected -> {
+            val feedback by viewModel.playerRequestFeedback.collectAsStateWithLifecycle()
             Text("Conectado!", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold, color = DndGold)
+            feedback?.let { message ->
+                Spacer(modifier = Modifier.height(8.dp))
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Text(message, style = MaterialTheme.typography.bodySmall, modifier = Modifier.weight(1f))
+                    TextButton(onClick = { viewModel.clearRequestFeedback() }) { Text("OK") }
+                }
+            }
             Spacer(modifier = Modifier.height(12.dp))
             ParticipantRoster(s.participants, emptyMap())
             s.combat?.let { combat ->
                 Spacer(modifier = Modifier.height(16.dp))
-                CombatTracker(combat = combat, isDm = false)
+                CombatTracker(
+                    combat = combat,
+                    isDm = false,
+                    selfId = s.selfId,
+                    onRequestHpChange = { combatantId, delta ->
+                        val summary = if (delta > 0) {
+                            "Pedido de dano ($delta PV) em combate"
+                        } else {
+                            "Pedido de cura (${-delta} PV) em combate"
+                        }
+                        viewModel.requestCombatHpChange(combatantId, delta, summary)
+                    }
+                )
+            }
+            if (selectedCharacter != null) {
+                Spacer(modifier = Modifier.height(16.dp))
+                OutlinedButton(
+                    onClick = {
+                        selectedCharacter?.let {
+                            viewModel.requestCharacterUpdate(it, "Atualização da ficha de ${it.name}")
+                        }
+                    }
+                ) {
+                    Text("Pedir atualização da ficha")
+                }
             }
             Spacer(modifier = Modifier.height(16.dp))
             OutlinedButton(onClick = { viewModel.leaveSession() }) {

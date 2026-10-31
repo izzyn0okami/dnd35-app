@@ -49,6 +49,11 @@ class SessionServer(
     private val _combatState = MutableStateFlow<CombatState?>(null)
     val combatState: StateFlow<CombatState?> = _combatState
 
+    // Pedidos de jogadores aguardando aprovação do Mestre (ver RequestKind). Diferente das ações
+    // do próprio Mestre (combate acima), que mutam o estado direto.
+    private val _pendingRequests = MutableStateFlow<List<ActionRequest>>(emptyList())
+    val pendingRequests: StateFlow<List<ActionRequest>> = _pendingRequests
+
     private class ClientHandle(val id: String, val socket: Socket, val out: DataOutputStream)
 
     /** Inicia o servidor em uma porta livre escolhida pelo sistema e retorna essa porta. */
@@ -67,6 +72,7 @@ class SessionServer(
         _roster.value = listOf(dmParticipant)
         _receivedCharacters.value = emptyMap()
         _combatState.value = null
+        _pendingRequests.value = emptyList()
     }
 
     private suspend fun acceptLoop(socket: ServerSocket) {
@@ -103,7 +109,7 @@ class SessionServer(
                 when (msg) {
                     is SessionMessage.Bye -> break
                     is SessionMessage.CharacterSheet -> receiveCharacterSheet(id, msg.characterJson)
-                    // Fases futuras (PV/iniciativa/pedidos) vão tratar outros tipos aqui.
+                    is SessionMessage.ActionRequested -> receiveActionRequest(id, msg)
                     else -> Unit
                 }
             }
@@ -123,6 +129,7 @@ class SessionServer(
         clients.remove(id)
         _roster.value = _roster.value.filterNot { it.id == id }
         _receivedCharacters.value = _receivedCharacters.value - id
+        _pendingRequests.value = _pendingRequests.value.filterNot { it.requesterId == id }
         broadcastRoster()
     }
 
@@ -185,6 +192,55 @@ class SessionServer(
         val updated = transform(current)
         _combatState.value = updated
         broadcast(SessionMessage.CombatUpdate(updated))
+    }
+
+    // --- Pedidos/aprovações (ações iniciadas pelo Jogador, dependem do Mestre) ---
+
+    /** Guarda um pedido de jogador na fila de pendentes, aguardando aprovação do Mestre. */
+    private fun receiveActionRequest(participantId: String, msg: SessionMessage.ActionRequested) {
+        val requesterName = _roster.value.firstOrNull { it.id == participantId }?.displayName ?: "Jogador"
+        val request = ActionRequest(
+            id = UUID.randomUUID().toString(),
+            requesterId = participantId,
+            requesterName = requesterName,
+            kind = msg.kind,
+            summary = msg.summary,
+            characterJson = msg.characterJson,
+            combatantId = msg.combatantId,
+            hpDelta = msg.hpDelta
+        )
+        _pendingRequests.value = _pendingRequests.value + request
+    }
+
+    /** Aprova um pedido pendente: aplica a mudança correspondente e avisa quem pediu. */
+    fun approveRequest(requestId: String) {
+        val request = _pendingRequests.value.firstOrNull { it.id == requestId } ?: return
+        when (request.kind) {
+            RequestKind.CHARACTER_UPDATE -> request.characterJson?.let { receiveCharacterSheet(request.requesterId, it) }
+            RequestKind.COMBAT_HP_CHANGE -> {
+                val combatantId = request.combatantId
+                val delta = request.hpDelta
+                if (combatantId != null && delta != null) applyDamage(combatantId, delta)
+            }
+        }
+        resolveRequest(request, approved = true)
+    }
+
+    /** Nega um pedido pendente: nada é aplicado, só avisa quem pediu (com motivo opcional). */
+    fun denyRequest(requestId: String, reason: String = "") {
+        val request = _pendingRequests.value.firstOrNull { it.id == requestId } ?: return
+        resolveRequest(request, approved = false, reason = reason)
+    }
+
+    private fun resolveRequest(request: ActionRequest, approved: Boolean, reason: String = "") {
+        _pendingRequests.value = _pendingRequests.value.filterNot { it.id == request.id }
+        clients[request.requesterId]?.let { handle ->
+            try {
+                SessionWire.write(handle.out, SessionMessage.RequestResolved(request.id, approved, reason))
+            } catch (e: IOException) {
+                // Jogador pode ter caído antes da resposta chegar — o próprio loop dele detecta isso.
+            }
+        }
     }
 
     companion object {
