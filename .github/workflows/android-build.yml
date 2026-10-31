@@ -8,6 +8,7 @@ on:
 
 permissions:
   contents: read
+  pull-requests: write
 
 jobs:
   assemble-debug:
@@ -39,6 +40,19 @@ jobs:
 
       - name: Run unit tests
         run: ./gradlew testDebugUnitTest
+
+      - name: Print test failures (diagnostic temporário)
+        if: failure()
+        run: python3 .github/scripts/print_test_failures.py | tee test_failures.txt
+
+      - name: Comment test failures on PR (diagnostic temporário)
+        if: failure() && github.event_name == 'pull_request'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ -f test_failures.txt ]; then
+            gh pr comment "${{ github.event.pull_request.number }}" --body-file test_failures.txt
+          fi
 
       - name: Compile Android app
         run: ./gradlew assembleDebug
