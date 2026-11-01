@@ -1,4 +1,5 @@
 import glob
+import os
 import subprocess
 import xml.etree.ElementTree as ET
 
@@ -22,8 +23,10 @@ body = body[:60000]
 with open("/tmp/test_failures.md", "w") as f:
     f.write(body)
 
-pr_number = subprocess.check_output(
-    ["gh", "pr", "view", "--json", "number", "-q", ".number"]
-).decode().strip()
+repo = os.environ["GITHUB_REPOSITORY"]
+pr_number = os.environ["PR_NUMBER"]
 
-subprocess.run(["gh", "pr", "comment", pr_number, "--body-file", "/tmp/test_failures.md"], check=True)
+subprocess.run(
+    ["gh", "pr", "comment", pr_number, "--repo", repo, "--body-file", "/tmp/test_failures.md"],
+    check=True,
+)
