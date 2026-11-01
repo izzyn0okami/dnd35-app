@@ -661,6 +661,11 @@ class SessionServerClientTest {
                 val targetConnected = withTimeout(5_000) {
                     targetClient.state.first { it is SessionClientState.Connected } as SessionClientState.Connected
                 }
+                // sendPrivateMessage busca o nome do jogador no roster do servidor — esperar o
+                // cliente ficar "Connected" não garante que o servidor já processou addParticipant
+                // (mesma corrida documentada no primeiro teste da classe), então espera o roster
+                // também antes de mandar a mensagem.
+                withTimeout(5_000) { server.roster.first { roster -> roster.any { it.id == targetConnected.selfId } } }
                 otherClient.connect("127.0.0.1", port, "Gimli")
                 withTimeout(5_000) { otherClient.state.first { it is SessionClientState.Connected } }
 
