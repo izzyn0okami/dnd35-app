@@ -10,6 +10,7 @@ import com.example.dnd35.session.RequestKind
 import com.example.dnd35.session.SessionClient
 import com.example.dnd35.session.SessionClientState
 import com.example.dnd35.session.SessionServer
+import kotlinx.coroutines.CoroutineStart
 import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.mapNotNull
@@ -669,7 +670,14 @@ class SessionServerClientTest {
                 otherClient.connect("127.0.0.1", port, "Gimli")
                 withTimeout(5_000) { otherClient.state.first { it is SessionClientState.Connected } }
 
-                val received = async { withTimeout(5_000) { targetClient.privateMessages.first() } }
+                // CoroutineStart.UNDISPATCHED: diferente do padrão usado para duas mensagens em
+                // sequência (ver os testes de loot/loja acima), aqui existe só uma emissão — então
+                // em vez de confiar na sorte de timing entre o laço de leitura do cliente (outra
+                // thread, socket real) e o agendamento deste coletor no event loop do runBlocking,
+                // força a inscrição no SharedFlow a acontecer de verdade antes de mandar a mensagem.
+                val received = async(start = CoroutineStart.UNDISPATCHED) {
+                    withTimeout(5_000) { targetClient.privateMessages.first() }
+                }
                 server.sendPrivateMessage(targetConnected.selfId, "Psiu, o baú ali tem uma armadilha.")
 
                 assertEquals("Psiu, o baú ali tem uma armadilha.", received.await())
