@@ -62,6 +62,16 @@ class SessionServer(
     private val _lootChest = MutableStateFlow<List<CharacterInventoryItem>>(emptyList())
     val lootChest: StateFlow<List<CharacterInventoryItem>> = _lootChest
 
+    // Loja de NPC aberta pelo Mestre a partir do inventário de uma de suas fichas marcadas como
+    // NPC (ver ShopModels.kt). `null` = nenhuma loja aberta no momento.
+    private val _shop = MutableStateFlow<ShopState?>(null)
+    val shop: StateFlow<ShopState?> = _shop
+
+    // Log de mensagens privadas trocadas na sessão (Mestre <-> um Jogador específico). Visível
+    // só para o Mestre — cada Jogador só vê as próprias, entregues direto via PrivateMessage.
+    private val _privateChatLog = MutableStateFlow<List<PrivateChatEntry>>(emptyList())
+    val privateChatLog: StateFlow<List<PrivateChatEntry>> = _privateChatLog
+
     private class ClientHandle(val id: String, val socket: Socket, val out: DataOutputStream)
 
     /** Inicia o servidor em uma porta livre escolhida pelo sistema e retorna essa porta. */
@@ -82,6 +92,8 @@ class SessionServer(
         _combatState.value = null
         _pendingRequests.value = emptyList()
         _lootChest.value = emptyList()
+        _shop.value = null
+        _privateChatLog.value = emptyList()
     }
 
     private suspend fun acceptLoop(socket: ServerSocket) {
@@ -116,6 +128,10 @@ class SessionServer(
             if (_lootChest.value.isNotEmpty()) {
                 SessionWire.write(output, SessionMessage.LootChestUpdate(CharacterJsonAdapters.serializeInventory(_lootChest.value)))
             }
+            // Idem para a loja de NPC, se já tiver uma aberta.
+            _shop.value?.let {
+                SessionWire.write(output, SessionMessage.ShopUpdate(it.npcName, CharacterJsonAdapters.serializeInventory(it.items)))
+            }
 
             while (true) {
                 val msg = SessionWire.read(input) ?: break
@@ -123,6 +139,7 @@ class SessionServer(
                     is SessionMessage.Bye -> break
                     is SessionMessage.CharacterSheet -> receiveCharacterSheet(id, msg.characterJson)
                     is SessionMessage.ActionRequested -> receiveActionRequest(id, msg)
+                    is SessionMessage.PrivateMessage -> receivePrivateMessage(id, msg.text)
                     else -> Unit
                 }
             }
@@ -226,6 +243,45 @@ class SessionServer(
         broadcast(SessionMessage.LootChestUpdate(CharacterJsonAdapters.serializeInventory(_lootChest.value)))
     }
 
+    // --- Loja de NPC (estado global, autoridade do Mestre) ---
+
+    /**
+     * Abre (ou atualiza) a loja com os itens informados, tirados do inventário de um NPC do
+     * Mestre no momento da chamada. Comprar não altera a ficha real do NPC — é só uma vitrine.
+     */
+    fun openShop(npcCharacterId: Long, npcName: String, items: List<CharacterInventoryItem>) {
+        val state = ShopState(npcCharacterId, npcName, items)
+        _shop.value = state
+        broadcastShop()
+    }
+
+    /** Fecha a loja aberta (se houver) e avisa a todos. */
+    fun closeShop() {
+        if (_shop.value == null) return
+        _shop.value = null
+        broadcast(SessionMessage.ShopClosed)
+    }
+
+    private fun broadcastShop() {
+        val state = _shop.value ?: return
+        broadcast(SessionMessage.ShopUpdate(state.npcName, CharacterJsonAdapters.serializeInventory(state.items)))
+    }
+
+    // --- Mensagens privadas (comunicação, não muda o estado do jogo) ---
+
+    /** Guarda no log a mensagem que um Jogador mandou para o Mestre (não é repassada a mais ninguém). */
+    private fun receivePrivateMessage(participantId: String, text: String) {
+        val name = _roster.value.firstOrNull { it.id == participantId }?.displayName ?: "Jogador"
+        _privateChatLog.value = _privateChatLog.value + PrivateChatEntry(participantId = participantId, participantName = name, text = text, fromDm = false)
+    }
+
+    /** Mestre manda uma mensagem privada para um Jogador específico — só ele recebe. */
+    fun sendPrivateMessage(participantId: String, text: String) {
+        val name = _roster.value.firstOrNull { it.id == participantId }?.displayName ?: return
+        _privateChatLog.value = _privateChatLog.value + PrivateChatEntry(participantId = participantId, participantName = name, text = text, fromDm = true)
+        sendTo(participantId, SessionMessage.PrivateMessage(text))
+    }
+
     // --- Pedidos/aprovações (ações iniciadas pelo Jogador, dependem do Mestre) ---
 
     /** Guarda um pedido de jogador na fila de pendentes, aguardando aprovação do Mestre. */
@@ -240,7 +296,8 @@ class SessionServer(
             characterJson = msg.characterJson,
             combatantId = msg.combatantId,
             hpDelta = msg.hpDelta,
-            lootItemId = msg.lootItemId
+            lootItemId = msg.lootItemId,
+            shopItemId = msg.shopItemId
         )
         _pendingRequests.value = _pendingRequests.value + request
     }
@@ -268,6 +325,19 @@ class SessionServer(
                     _lootChest.value = _lootChest.value.filterNot { it.id == item.id }
                     broadcastLootChest()
                     sendTo(request.requesterId, SessionMessage.LootGranted(CharacterJsonAdapters.serializeInventory(listOf(item))))
+                    resolveRequest(request, approved = true)
+                }
+            }
+            RequestKind.BUY_FROM_SHOP -> {
+                val shopState = _shop.value
+                val item = request.shopItemId?.let { id -> shopState?.items?.firstOrNull { it.id == id } }
+                if (shopState == null || item == null) {
+                    // A loja pode ter fechado, ou outro jogador já comprou esse item antes.
+                    resolveRequest(request, approved = false, reason = "Item não está mais disponível na loja.")
+                } else {
+                    _shop.value = shopState.copy(items = shopState.items.filterNot { it.id == item.id })
+                    broadcastShop()
+                    sendTo(request.requesterId, SessionMessage.ShopPurchaseGranted(CharacterJsonAdapters.serializeInventory(listOf(item))))
                     resolveRequest(request, approved = true)
                 }
             }
