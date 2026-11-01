@@ -26,7 +26,9 @@ sealed class SessionClientState {
         val participants: List<Participant> = emptyList(),
         val combat: CombatState? = null,
         /** Conteúdo atual do baú de loot compartilhado da sessão. */
-        val lootChest: List<CharacterInventoryItem> = emptyList()
+        val lootChest: List<CharacterInventoryItem> = emptyList(),
+        /** `null` quando não há loja de NPC aberta no momento. */
+        val shop: ShopSnapshot? = null
     ) : SessionClientState()
     data class Disconnected(val reason: String) : SessionClientState()
 }
@@ -53,6 +55,15 @@ class SessionClient {
     // contínuo, já que vira um item novo no inventário local assim que é recebido.
     private val _lootGranted = MutableSharedFlow<CharacterInventoryItem>(extraBufferCapacity = 4)
     val lootGranted: SharedFlow<CharacterInventoryItem> = _lootGranted
+
+    // Item concedido ao comprar algo da loja de NPC (pedido aprovado) — mesmo motivo do loot:
+    // evento, não estado contínuo.
+    private val _shopPurchases = MutableSharedFlow<CharacterInventoryItem>(extraBufferCapacity = 4)
+    val shopPurchases: SharedFlow<CharacterInventoryItem> = _shopPurchases
+
+    // Mensagens privadas recebidas do Mestre — evento, não estado contínuo.
+    private val _privateMessages = MutableSharedFlow<String>(extraBufferCapacity = 8)
+    val privateMessages: SharedFlow<String> = _privateMessages
 
     /**
      * @param characterJson ficha do jogador já serializada (mesmo formato do backup de fichas),
@@ -113,6 +124,24 @@ class SessionClient {
                         is SessionMessage.LootGranted -> {
                             CharacterJsonAdapters.deserializeInventory(msg.itemJson).firstOrNull()?.let { _lootGranted.tryEmit(it) }
                         }
+                        is SessionMessage.ShopUpdate -> {
+                            val current = _state.value
+                            if (current is SessionClientState.Connected) {
+                                _state.value = current.copy(
+                                    shop = ShopSnapshot(msg.npcName, CharacterJsonAdapters.deserializeInventory(msg.itemsJson))
+                                )
+                            }
+                        }
+                        is SessionMessage.ShopClosed -> {
+                            val current = _state.value
+                            if (current is SessionClientState.Connected) {
+                                _state.value = current.copy(shop = null)
+                            }
+                        }
+                        is SessionMessage.ShopPurchaseGranted -> {
+                            CharacterJsonAdapters.deserializeInventory(msg.itemJson).firstOrNull()?.let { _shopPurchases.tryEmit(it) }
+                        }
+                        is SessionMessage.PrivateMessage -> _privateMessages.tryEmit(msg.text)
                         is SessionMessage.Bye -> break
                         else -> Unit
                     }
@@ -134,13 +163,22 @@ class SessionClient {
         characterJson: String? = null,
         combatantId: String? = null,
         hpDelta: Int? = null,
-        lootItemId: String? = null
+        lootItemId: String? = null,
+        shopItemId: String? = null
     ) {
         val out = output ?: return
         scope.launch {
             runCatching {
-                SessionWire.write(out, SessionMessage.ActionRequested(kind, summary, characterJson, combatantId, hpDelta, lootItemId))
+                SessionWire.write(out, SessionMessage.ActionRequested(kind, summary, characterJson, combatantId, hpDelta, lootItemId, shopItemId))
             }
+        }
+    }
+
+    /** Manda uma mensagem privada ao Mestre (não passa pela fila de pedidos/aprovações). */
+    fun sendPrivateMessage(text: String) {
+        val out = output ?: return
+        scope.launch {
+            runCatching { SessionWire.write(out, SessionMessage.PrivateMessage(text)) }
         }
     }
 

@@ -48,6 +48,7 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateMapOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -67,6 +68,10 @@ import com.example.dnd35.session.CombatState
 import com.example.dnd35.session.JoinPayload
 import com.example.dnd35.session.Participant
 import com.example.dnd35.session.ParticipantRole
+import com.example.dnd35.session.PrivateChatEntry
+import com.example.dnd35.session.ShopSnapshot
+import com.example.dnd35.session.ShopState
+import com.example.dnd35.model.CharacterJsonAdapters
 import com.example.dnd35.viewmodel.CharacterViewModel
 import com.example.dnd35.viewmodel.DmSessionUiState
 import com.example.dnd35.viewmodel.PlayerSessionUiState
@@ -215,6 +220,19 @@ private fun DmHostContent(viewModel: SessionViewModel, characterViewModel: Chara
                 isDm = true,
                 onAddItem = { viewModel.addLootItem(it) },
                 onRemoveItem = { viewModel.removeLootItem(it) }
+            )
+            Spacer(modifier = Modifier.height(16.dp))
+            DmShopSection(
+                shop = s.shop,
+                characterViewModel = characterViewModel,
+                onOpenShop = { npcId, npcName, items -> viewModel.openShop(npcId, npcName, items) },
+                onCloseShop = { viewModel.closeShop() }
+            )
+            Spacer(modifier = Modifier.height(16.dp))
+            DmPrivateChatSection(
+                players = s.participants.filter { it.role == ParticipantRole.PLAYER },
+                chatLog = s.privateChatLog,
+                onSend = { participantId, text -> viewModel.sendPrivateMessageToPlayer(participantId, text) }
             )
             Spacer(modifier = Modifier.height(16.dp))
             OutlinedButton(onClick = { viewModel.stopHosting() }) {
@@ -658,6 +676,235 @@ private fun AddLootItemForm(onAddItem: (CharacterInventoryItem) -> Unit) {
     }
 }
 
+/**
+ * Loja de NPC: o Mestre escolhe uma de suas fichas marcadas como NPC e abre a loja usando o
+ * inventário dela como estoque (preço = `costGp` de cada item). Comprar não altera a ficha
+ * real do NPC — é só um instantâneo da sessão, igual ao baú de loot.
+ */
+@Composable
+private fun DmShopSection(
+    shop: ShopState?,
+    characterViewModel: CharacterViewModel,
+    onOpenShop: (Long, String, List<CharacterInventoryItem>) -> Unit,
+    onCloseShop: () -> Unit
+) {
+    val myCharacters by characterViewModel.allCharacters.collectAsStateWithLifecycle()
+    val npcCandidates = myCharacters.filter { it.isNpc }
+
+    Column {
+        Text("Loja de NPC", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
+        Spacer(modifier = Modifier.height(8.dp))
+        if (shop == null) {
+            if (npcCandidates.isEmpty()) {
+                Text(
+                    "Marque alguma ficha como NPC (acima) para poder abrir uma loja com o inventário dela.",
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            } else {
+                var expanded by remember { mutableStateOf(false) }
+                var selectedNpc by remember(npcCandidates) { mutableStateOf(npcCandidates.firstOrNull()) }
+                Box {
+                    OutlinedButton(onClick = { expanded = true }) {
+                        Text(selectedNpc?.name ?: "Escolher NPC")
+                        Icon(Icons.Default.ArrowDropDown, contentDescription = null)
+                    }
+                    DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
+                        npcCandidates.forEach { npc ->
+                            DropdownMenuItem(
+                                text = { Text(npc.name) },
+                                onClick = {
+                                    selectedNpc = npc
+                                    expanded = false
+                                }
+                            )
+                        }
+                    }
+                }
+                Spacer(modifier = Modifier.height(8.dp))
+                Button(onClick = {
+                    selectedNpc?.let { npc ->
+                        val items = CharacterJsonAdapters.deserializeInventory(npc.inventoryJson)
+                        onOpenShop(npc.id, npc.name, items)
+                    }
+                }, enabled = selectedNpc != null) {
+                    Text("Abrir loja")
+                }
+            }
+        } else {
+            Text("Loja aberta: ${shop.npcName}", fontWeight = FontWeight.SemiBold)
+            Spacer(modifier = Modifier.height(6.dp))
+            if (shop.items.isEmpty()) {
+                Text(
+                    "Essa loja não tem mais itens à venda.",
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            } else {
+                shop.items.forEach { item ->
+                    Text(
+                        "• ${item.name}" + (if (item.quantity > 1) " x${item.quantity}" else "") + " — ${item.costGp} po",
+                        style = MaterialTheme.typography.bodySmall
+                    )
+                }
+            }
+            Spacer(modifier = Modifier.height(8.dp))
+            OutlinedButton(onClick = onCloseShop) {
+                Text("Fechar loja", color = DndCrimson)
+            }
+        }
+    }
+}
+
+/** Mensagens privadas do Mestre: escolhe um jogador e manda texto que só ele recebe. */
+@Composable
+private fun DmPrivateChatSection(
+    players: List<Participant>,
+    chatLog: List<PrivateChatEntry>,
+    onSend: (String, String) -> Unit
+) {
+    var expanded by remember { mutableStateOf(false) }
+    var selectedPlayer by remember(players) { mutableStateOf(players.firstOrNull()) }
+    var message by remember { mutableStateOf("") }
+
+    Column {
+        Text("Mensagens privadas", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
+        Spacer(modifier = Modifier.height(8.dp))
+        if (players.isEmpty()) {
+            Text(
+                "Nenhum jogador conectado ainda.",
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+            return
+        }
+        Box {
+            OutlinedButton(onClick = { expanded = true }) {
+                Text(selectedPlayer?.displayName ?: "Escolher jogador")
+                Icon(Icons.Default.ArrowDropDown, contentDescription = null)
+            }
+            DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
+                players.forEach { player ->
+                    DropdownMenuItem(
+                        text = { Text(player.displayName) },
+                        onClick = {
+                            selectedPlayer = player
+                            expanded = false
+                        }
+                    )
+                }
+            }
+        }
+        Spacer(modifier = Modifier.height(8.dp))
+        OutlinedTextField(
+            value = message,
+            onValueChange = { message = it },
+            label = { Text("Mensagem") },
+            modifier = Modifier.fillMaxWidth()
+        )
+        Spacer(modifier = Modifier.height(4.dp))
+        Button(
+            onClick = {
+                selectedPlayer?.let { player ->
+                    onSend(player.id, message)
+                    message = ""
+                }
+            },
+            enabled = selectedPlayer != null && message.isNotBlank()
+        ) {
+            Text("Enviar")
+        }
+        if (chatLog.isNotEmpty()) {
+            Spacer(modifier = Modifier.height(10.dp))
+            Text("Histórico", style = MaterialTheme.typography.labelMedium)
+            chatLog.takeLast(10).forEach { entry ->
+                Text(
+                    (if (entry.fromDm) "Você → ${entry.participantName}: " else "${entry.participantName}: ") + entry.text,
+                    style = MaterialTheme.typography.bodySmall
+                )
+            }
+        }
+    }
+}
+
+/**
+ * Loja de NPC do lado do Jogador: lista somente leitura com um botão "Comprar" por item, que
+ * manda um pedido de compra ao Mestre (não desconta ouro nem adiciona o item até ser aprovado).
+ */
+@Composable
+private fun PlayerShopSection(shop: ShopSnapshot, onRequestBuy: (CharacterInventoryItem) -> Unit) {
+    Column {
+        Text("Loja: ${shop.npcName}", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
+        Spacer(modifier = Modifier.height(8.dp))
+        if (shop.items.isEmpty()) {
+            Text(
+                "Não há mais itens à venda.",
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+        } else {
+            shop.items.forEach { item ->
+                Card(modifier = Modifier.fillMaxWidth().padding(vertical = 3.dp)) {
+                    Row(
+                        modifier = Modifier.fillMaxWidth().padding(10.dp),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Column(modifier = Modifier.weight(1f)) {
+                            Text(
+                                item.name + if (item.quantity > 1) " x${item.quantity}" else "",
+                                fontWeight = FontWeight.SemiBold
+                            )
+                            Text(
+                                "${item.costGp} po",
+                                style = MaterialTheme.typography.labelSmall,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                            )
+                        }
+                        Button(onClick = { onRequestBuy(item) }) { Text("Comprar") }
+                    }
+                }
+            }
+        }
+    }
+}
+
+/** Mensagem privada do Jogador ao Mestre, mais o histórico recebido nesta sessão. */
+@Composable
+private fun PlayerPrivateChatSection(receivedMessages: List<String>, onSend: (String) -> Unit) {
+    var message by remember { mutableStateOf("") }
+
+    Column {
+        Text("Mensagem privada ao Mestre", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
+        Spacer(modifier = Modifier.height(8.dp))
+        OutlinedTextField(
+            value = message,
+            onValueChange = { message = it },
+            label = { Text("Mensagem") },
+            modifier = Modifier.fillMaxWidth()
+        )
+        Spacer(modifier = Modifier.height(4.dp))
+        Button(
+            onClick = {
+                if (message.isNotBlank()) {
+                    onSend(message)
+                    message = ""
+                }
+            },
+            enabled = message.isNotBlank()
+        ) {
+            Text("Enviar")
+        }
+        if (receivedMessages.isNotEmpty()) {
+            Spacer(modifier = Modifier.height(10.dp))
+            Text("Mensagens do Mestre", style = MaterialTheme.typography.labelMedium)
+            receivedMessages.takeLast(10).forEach { text ->
+                Text("Mestre: $text", style = MaterialTheme.typography.bodySmall)
+            }
+        }
+    }
+}
+
 @Composable
 private fun PlayerJoinContent(viewModel: SessionViewModel, characterViewModel: CharacterViewModel) {
     val state by viewModel.playerState.collectAsStateWithLifecycle()
@@ -753,10 +1000,24 @@ private fun PlayerJoinContent(viewModel: SessionViewModel, characterViewModel: C
         is PlayerSessionUiState.Connected -> {
             val feedback by viewModel.playerRequestFeedback.collectAsStateWithLifecycle()
             var lootFeedback by remember { mutableStateOf<String?>(null) }
+            var shopFeedback by remember { mutableStateOf<String?>(null) }
+            val receivedDmMessages = remember { mutableStateListOf<String>() }
             LaunchedEffect(viewModel) {
                 viewModel.lootGranted.collect { item ->
                     characterViewModel.addInventoryItem(item.copy(id = java.util.UUID.randomUUID().toString()))
                     lootFeedback = "Você recebeu \"${item.name}\" do baú de loot!"
+                }
+            }
+            LaunchedEffect(viewModel) {
+                viewModel.shopPurchaseGranted.collect { item ->
+                    characterViewModel.addInventoryItem(item.copy(id = java.util.UUID.randomUUID().toString()))
+                    characterViewModel.quickCoinAction(-item.costGp)
+                    shopFeedback = "Você comprou \"${item.name}\" por ${item.costGp} po!"
+                }
+            }
+            LaunchedEffect(viewModel) {
+                viewModel.playerPrivateMessages.collect { text ->
+                    receivedDmMessages.add(text)
                 }
             }
             Text("Conectado!", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold, color = DndGold)
@@ -772,6 +1033,13 @@ private fun PlayerJoinContent(viewModel: SessionViewModel, characterViewModel: C
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(message, style = MaterialTheme.typography.bodySmall, modifier = Modifier.weight(1f))
                     TextButton(onClick = { lootFeedback = null }) { Text("OK") }
+                }
+            }
+            shopFeedback?.let { message ->
+                Spacer(modifier = Modifier.height(8.dp))
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Text(message, style = MaterialTheme.typography.bodySmall, modifier = Modifier.weight(1f))
+                    TextButton(onClick = { shopFeedback = null }) { Text("OK") }
                 }
             }
             Spacer(modifier = Modifier.height(12.dp))
@@ -799,6 +1067,20 @@ private fun PlayerJoinContent(viewModel: SessionViewModel, characterViewModel: C
                 onRequestTake = { item ->
                     viewModel.requestTakeLoot(item.id, "Pedido de pegar \"${item.name}\" do baú de loot")
                 }
+            )
+            s.shop?.let { shop ->
+                Spacer(modifier = Modifier.height(16.dp))
+                PlayerShopSection(
+                    shop = shop,
+                    onRequestBuy = { item ->
+                        viewModel.requestBuyFromShop(item.id, "Pedido de comprar \"${item.name}\" (${item.costGp} po)")
+                    }
+                )
+            }
+            Spacer(modifier = Modifier.height(16.dp))
+            PlayerPrivateChatSection(
+                receivedMessages = receivedDmMessages,
+                onSend = { text -> viewModel.sendPrivateMessageToDm(text) }
             )
             if (selectedCharacter != null) {
                 Spacer(modifier = Modifier.height(16.dp))

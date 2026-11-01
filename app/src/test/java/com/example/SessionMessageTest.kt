@@ -151,6 +151,53 @@ class SessionMessageTest {
     }
 
     @Test
+    fun `ActionRequested de comprar da loja preserva o shopItemId e omite os demais campos`() {
+        val msg = SessionMessage.ActionRequested(
+            kind = RequestKind.BUY_FROM_SHOP,
+            summary = "Pedido de comprar \"Poção de cura\" (50.0 po)",
+            shopItemId = "shop-item-1"
+        )
+        val roundTrip = SessionMessage.fromJson(msg.toJson()) as SessionMessage.ActionRequested
+        assertEquals(msg, roundTrip)
+        assertNull(roundTrip.characterJson)
+        assertNull(roundTrip.combatantId)
+        assertNull(roundTrip.hpDelta)
+        assertNull(roundTrip.lootItemId)
+    }
+
+    @Test
+    fun `ShopUpdate preserva o nome do NPC e a lista de itens`() {
+        val items = listOf(
+            CharacterInventoryItem(id = "shop-item-1", name = "Poção de cura", category = "Itens de Aventura", quantity = 3, costGp = 50f)
+        )
+        val msg = SessionMessage.ShopUpdate("Vendedor Gundren", CharacterJsonAdapters.serializeInventory(items))
+        val roundTrip = SessionMessage.fromJson(msg.toJson()) as SessionMessage.ShopUpdate
+        assertEquals("Vendedor Gundren", roundTrip.npcName)
+        assertEquals(items, CharacterJsonAdapters.deserializeInventory(roundTrip.itemsJson))
+    }
+
+    @Test
+    fun `ShopClosed serializa e desserializa corretamente`() {
+        val roundTrip = SessionMessage.fromJson(SessionMessage.ShopClosed.toJson())
+        assertEquals(SessionMessage.ShopClosed, roundTrip)
+    }
+
+    @Test
+    fun `ShopPurchaseGranted preserva o item comprado`() {
+        val item = CharacterInventoryItem(id = "shop-item-2", name = "Adaga +1", category = "Armas", quantity = 1, costGp = 320f)
+        val msg = SessionMessage.ShopPurchaseGranted(CharacterJsonAdapters.serializeInventory(listOf(item)))
+        val roundTrip = SessionMessage.fromJson(msg.toJson()) as SessionMessage.ShopPurchaseGranted
+        assertEquals(item, CharacterJsonAdapters.deserializeInventory(roundTrip.itemJson).single())
+    }
+
+    @Test
+    fun `PrivateMessage preserva o texto`() {
+        val msg = SessionMessage.PrivateMessage("Cuidado com a armadilha na próxima sala.")
+        val roundTrip = SessionMessage.fromJson(msg.toJson()) as SessionMessage.PrivateMessage
+        assertEquals(msg.text, roundTrip.text)
+    }
+
+    @Test
     fun `JSON invalido ou tipo desconhecido retorna null`() {
         assertNull(SessionMessage.fromJson("{not json"))
         assertNull(SessionMessage.fromJson("""{"type":"ALGO_DESCONHECIDO"}"""))

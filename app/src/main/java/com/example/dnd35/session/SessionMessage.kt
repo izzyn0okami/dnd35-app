@@ -57,7 +57,8 @@ sealed class SessionMessage {
         val characterJson: String? = null,
         val combatantId: String? = null,
         val hpDelta: Int? = null,
-        val lootItemId: String? = null
+        val lootItemId: String? = null,
+        val shopItemId: String? = null
     ) : SessionMessage()
 
     /** Mestre -> Jogador que pediu: resultado da aprovação (aceito ou negado, com motivo opcional). */
@@ -76,6 +77,28 @@ sealed class SessionMessage {
      * inventário, com um único item na lista.
      */
     data class LootGranted(val itemJson: String) : SessionMessage()
+
+    /**
+     * Mestre -> todos: loja de NPC aberta no momento, com o nome do NPC e seus itens (preço vem
+     * de `costGp` de cada um). `itemsJson` usa o mesmo formato de inventário do baú de loot.
+     */
+    data class ShopUpdate(val npcName: String, val itemsJson: String) : SessionMessage()
+
+    /** Mestre -> todos: fecha a loja de NPC que estava aberta. */
+    data object ShopClosed : SessionMessage()
+
+    /**
+     * Mestre -> Jogador que comprou: item concedido pela compra, já removido da loja (ver
+     * [ShopUpdate] que acompanha esta mensagem). O custo pago é o próprio `costGp` do item.
+     */
+    data class ShopPurchaseGranted(val itemJson: String) : SessionMessage()
+
+    /**
+     * Mensagem privada: de um Jogador para o Mestre (não é repassada a mais ninguém), ou do
+     * Mestre para um Jogador específico (só aquele participante recebe). Não precisa de
+     * aprovação — é comunicação, não muda o estado do jogo.
+     */
+    data class PrivateMessage(val text: String) : SessionMessage()
 
     fun toJson(): String {
         val obj = JSONObject()
@@ -123,12 +146,17 @@ sealed class SessionMessage {
                 .put("combatantId", combatantId ?: JSONObject.NULL)
                 .put("hpDelta", hpDelta ?: JSONObject.NULL)
                 .put("lootItemId", lootItemId ?: JSONObject.NULL)
+                .put("shopItemId", shopItemId ?: JSONObject.NULL)
             is RequestResolved -> obj.put("type", TYPE_REQUEST_RESOLVED)
                 .put("requestId", requestId)
                 .put("approved", approved)
                 .put("reason", reason)
             is LootChestUpdate -> obj.put("type", TYPE_LOOT_CHEST_UPDATE).put("itemsJson", itemsJson)
             is LootGranted -> obj.put("type", TYPE_LOOT_GRANTED).put("itemJson", itemJson)
+            is ShopUpdate -> obj.put("type", TYPE_SHOP_UPDATE).put("npcName", npcName).put("itemsJson", itemsJson)
+            is ShopClosed -> obj.put("type", TYPE_SHOP_CLOSED)
+            is ShopPurchaseGranted -> obj.put("type", TYPE_SHOP_PURCHASE_GRANTED).put("itemJson", itemJson)
+            is PrivateMessage -> obj.put("type", TYPE_PRIVATE_MESSAGE).put("text", text)
         }
         return obj.toString()
     }
@@ -145,6 +173,10 @@ sealed class SessionMessage {
         const val TYPE_REQUEST_RESOLVED = "REQUEST_RESOLVED"
         const val TYPE_LOOT_CHEST_UPDATE = "LOOT_CHEST_UPDATE"
         const val TYPE_LOOT_GRANTED = "LOOT_GRANTED"
+        const val TYPE_SHOP_UPDATE = "SHOP_UPDATE"
+        const val TYPE_SHOP_CLOSED = "SHOP_CLOSED"
+        const val TYPE_SHOP_PURCHASE_GRANTED = "SHOP_PURCHASE_GRANTED"
+        const val TYPE_PRIVATE_MESSAGE = "PRIVATE_MESSAGE"
 
         fun fromJson(raw: String): SessionMessage? {
             return try {
@@ -211,7 +243,8 @@ sealed class SessionMessage {
                         characterJson = if (obj.isNull("characterJson")) null else obj.getString("characterJson"),
                         combatantId = if (obj.isNull("combatantId")) null else obj.getString("combatantId"),
                         hpDelta = if (obj.isNull("hpDelta")) null else obj.getInt("hpDelta"),
-                        lootItemId = if (obj.isNull("lootItemId")) null else obj.getString("lootItemId")
+                        lootItemId = if (obj.isNull("lootItemId")) null else obj.getString("lootItemId"),
+                        shopItemId = if (obj.isNull("shopItemId")) null else obj.getString("shopItemId")
                     )
                     TYPE_REQUEST_RESOLVED -> RequestResolved(
                         requestId = obj.getString("requestId"),
@@ -220,6 +253,10 @@ sealed class SessionMessage {
                     )
                     TYPE_LOOT_CHEST_UPDATE -> LootChestUpdate(obj.getString("itemsJson"))
                     TYPE_LOOT_GRANTED -> LootGranted(obj.getString("itemJson"))
+                    TYPE_SHOP_UPDATE -> ShopUpdate(obj.getString("npcName"), obj.getString("itemsJson"))
+                    TYPE_SHOP_CLOSED -> ShopClosed
+                    TYPE_SHOP_PURCHASE_GRANTED -> ShopPurchaseGranted(obj.getString("itemJson"))
+                    TYPE_PRIVATE_MESSAGE -> PrivateMessage(obj.getString("text"))
                     else -> null
                 }
             } catch (e: Exception) {

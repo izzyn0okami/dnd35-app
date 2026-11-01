@@ -13,11 +13,14 @@ import com.example.dnd35.session.CombatState
 import com.example.dnd35.session.JoinPayload
 import com.example.dnd35.session.LocalNetworkUtil
 import com.example.dnd35.session.Participant
+import com.example.dnd35.session.PrivateChatEntry
 import com.example.dnd35.session.QrCodeUtil
 import com.example.dnd35.session.RequestKind
 import com.example.dnd35.session.SessionClient
 import com.example.dnd35.session.SessionClientState
 import com.example.dnd35.session.SessionServer
+import com.example.dnd35.session.ShopSnapshot
+import com.example.dnd35.session.ShopState
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -41,7 +44,11 @@ sealed class DmSessionUiState {
         /** Pedidos de jogadores aguardando aprovação do Mestre. */
         val pendingRequests: List<ActionRequest> = emptyList(),
         /** Conteúdo atual do baú de loot compartilhado da sessão. */
-        val lootChest: List<CharacterInventoryItem> = emptyList()
+        val lootChest: List<CharacterInventoryItem> = emptyList(),
+        /** `null` quando não há loja de NPC aberta no momento. */
+        val shop: ShopState? = null,
+        /** Log de mensagens privadas trocadas com os jogadores. */
+        val privateChatLog: List<PrivateChatEntry> = emptyList()
     ) : DmSessionUiState()
     data class Error(val message: String) : DmSessionUiState()
 }
@@ -54,10 +61,23 @@ sealed class PlayerSessionUiState {
         val selfId: String,
         val participants: List<Participant>,
         val combat: CombatState? = null,
-        val lootChest: List<CharacterInventoryItem> = emptyList()
+        val lootChest: List<CharacterInventoryItem> = emptyList(),
+        val shop: ShopSnapshot? = null
     ) : PlayerSessionUiState()
     data class Disconnected(val reason: String) : PlayerSessionUiState()
 }
+
+/**
+ * Agrupa os flows do servidor que não cabem no limite de 5 argumentos do `combine` padrão, para
+ * poder combiná-los em duas etapas (ver [SessionViewModel.launchCollectDmState]).
+ */
+private data class DmExtraState(
+    val combat: CombatState?,
+    val pendingRequests: List<ActionRequest>,
+    val lootChest: List<CharacterInventoryItem>,
+    val shop: ShopState?,
+    val privateChatLog: List<PrivateChatEntry>
+)
 
 /**
  * ViewModel da sessão de mesa offline: cria (Mestre) ou entra (Jogador) em uma sessão local,
@@ -89,6 +109,14 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
     // o item no inventário local da ficha ativa (SessionViewModel não mexe em fichas direto).
     private val _lootGranted = MutableSharedFlow<CharacterInventoryItem>(extraBufferCapacity = 4)
     val lootGranted: SharedFlow<CharacterInventoryItem> = _lootGranted
+
+    // Item concedido ao comprar algo da loja de NPC (pedido aprovado) — mesmo motivo do loot.
+    private val _shopPurchaseGranted = MutableSharedFlow<CharacterInventoryItem>(extraBufferCapacity = 4)
+    val shopPurchaseGranted: SharedFlow<CharacterInventoryItem> = _shopPurchaseGranted
+
+    // Mensagens privadas recebidas do Mestre — evento, não estado contínuo.
+    private val _playerPrivateMessages = MutableSharedFlow<String>(extraBufferCapacity = 8)
+    val playerPrivateMessages: SharedFlow<String> = _playerPrivateMessages
 
     /** Mestre: cria e hospeda uma nova sessão, exibindo o QR Code para os jogadores escanearem. */
     fun hostSession(hostDisplayName: String) {
@@ -123,20 +151,41 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
         qrContent: String
     ) {
         launch {
-            combine(
-                activeServer.roster,
-                activeServer.receivedCharacters,
+            val extra = combine(
                 activeServer.combatState,
                 activeServer.pendingRequests,
-                activeServer.lootChest
-            ) { participants, characters, combat, requests, lootChest ->
-                DmSessionUiState.Hosting(sessionId, bitmap, qrContent, participants, characters, combat, requests, lootChest)
+                activeServer.lootChest,
+                activeServer.shop,
+                activeServer.privateChatLog
+            ) { combat, requests, lootChest, shop, chatLog ->
+                DmExtraState(combat, requests, lootChest, shop, chatLog)
+            }
+            combine(activeServer.roster, activeServer.receivedCharacters, extra) { participants, characters, ex ->
+                DmSessionUiState.Hosting(
+                    sessionId, bitmap, qrContent, participants, characters,
+                    ex.combat, ex.pendingRequests, ex.lootChest, ex.shop, ex.privateChatLog
+                )
             }.collect { newState ->
                 if (server === activeServer) {
                     _dmState.value = newState
                 }
             }
         }
+    }
+
+    /** Mestre: abre (ou atualiza) a loja com os itens informados, tirados de um NPC seu. */
+    fun openShop(npcCharacterId: Long, npcName: String, items: List<CharacterInventoryItem>) {
+        server?.openShop(npcCharacterId, npcName, items)
+    }
+
+    /** Mestre: fecha a loja de NPC aberta no momento. */
+    fun closeShop() {
+        server?.closeShop()
+    }
+
+    /** Mestre: manda uma mensagem privada para um Jogador específico (só ele recebe). */
+    fun sendPrivateMessageToPlayer(participantId: String, text: String) {
+        server?.sendPrivateMessage(participantId, text)
     }
 
     /** Mestre: aprova um pedido pendente de jogador, aplicando a mudança correspondente. */
@@ -212,7 +261,7 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
                 if (client === activeClient) {
                     _playerState.value = when (state) {
                         is SessionClientState.Connecting -> PlayerSessionUiState.Connecting
-                        is SessionClientState.Connected -> PlayerSessionUiState.Connected(state.selfId, state.participants, state.combat, state.lootChest)
+                        is SessionClientState.Connected -> PlayerSessionUiState.Connected(state.selfId, state.participants, state.combat, state.lootChest, state.shop)
                         is SessionClientState.Disconnected -> PlayerSessionUiState.Disconnected(state.reason)
                     }
                 }
@@ -236,6 +285,20 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
                 }
             }
         }
+        launch {
+            activeClient.shopPurchases.collect { item ->
+                if (client === activeClient) {
+                    _shopPurchaseGranted.tryEmit(item)
+                }
+            }
+        }
+        launch {
+            activeClient.privateMessages.collect { text ->
+                if (client === activeClient) {
+                    _playerPrivateMessages.tryEmit(text)
+                }
+            }
+        }
     }
 
     /** Jogador: pede ao Mestre uma mudança de PV num combate ativo (ex.: usar uma poção). */
@@ -252,6 +315,16 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
     /** Jogador: pede ao Mestre para pegar um item do baú de loot compartilhado. */
     fun requestTakeLoot(itemId: String, summary: String) {
         client?.requestAction(RequestKind.TAKE_LOOT, summary, lootItemId = itemId)
+    }
+
+    /** Jogador: pede ao Mestre para comprar um item da loja de NPC aberta no momento. */
+    fun requestBuyFromShop(itemId: String, summary: String) {
+        client?.requestAction(RequestKind.BUY_FROM_SHOP, summary, shopItemId = itemId)
+    }
+
+    /** Jogador: manda uma mensagem privada ao Mestre (não passa por aprovação). */
+    fun sendPrivateMessageToDm(text: String) {
+        client?.sendPrivateMessage(text)
     }
 
     /** Jogador: sai da sessão atual, se houver uma. */

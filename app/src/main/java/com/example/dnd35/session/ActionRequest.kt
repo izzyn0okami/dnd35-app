@@ -13,7 +13,10 @@ enum class RequestKind {
     COMBAT_HP_CHANGE,
 
     /** Jogador pede para pegar um item do baú de loot compartilhado da sessão. */
-    TAKE_LOOT
+    TAKE_LOOT,
+
+    /** Jogador pede para comprar um item da loja de NPC aberta no momento. */
+    BUY_FROM_SHOP
 }
 
 /**
@@ -30,5 +33,21 @@ data class ActionRequest(
     val combatantId: String? = null,
     val hpDelta: Int? = null,
     /** Id do item do baú de loot (dentro de [SessionServer.lootChest]) que o jogador quer pegar. */
-    val lootItemId: String? = null
+    val lootItemId: String? = null,
+    /** Id do item da loja aberta (dentro de [SessionServer.shop]) que o jogador quer comprar. */
+    val shopItemId: String? = null
+)
+
+/**
+ * Mensagem privada trocada durante a sessão (do Mestre para um Jogador específico, ou de um
+ * Jogador para o Mestre) — não passa pela fila de pedidos/aprovações, é só comunicação, não
+ * mexe no estado do jogo.
+ */
+data class PrivateChatEntry(
+    val id: String = java.util.UUID.randomUUID().toString(),
+    val participantId: String,
+    val participantName: String,
+    val text: String,
+    val fromDm: Boolean,
+    val timestamp: Long = System.currentTimeMillis()
 )
