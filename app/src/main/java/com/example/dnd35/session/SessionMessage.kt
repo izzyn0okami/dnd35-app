@@ -16,11 +16,21 @@ import java.io.EOFException
  */
 sealed class SessionMessage {
 
-    /** Jogador -> Mestre: pedido para entrar na sessão com um nome de exibição. */
-    data class Hello(val displayName: String) : SessionMessage()
+    /**
+     * Jogador -> Mestre: pedido para entrar na sessão com um nome de exibição. [rejoinToken] é o
+     * token recebido num [Welcome] anterior (ver abaixo) — mandado de volta quando a conexão cai
+     * e o Jogador reconecta, para o Mestre reconhecer que é a mesma pessoa e devolver o mesmo id
+     * de participante (em vez de criar um novo, duplicado). `null` = entrada nova (primeira vez
+     * nesta sessão, token desconhecido, ou sessão foi reiniciada).
+     */
+    data class Hello(val displayName: String, val rejoinToken: String? = null) : SessionMessage()
 
-    /** Mestre -> Jogador: confirma a entrada e informa o id atribuído a esse participante. */
-    data class Welcome(val participantId: String, val sessionId: String) : SessionMessage()
+    /**
+     * Mestre -> Jogador: confirma a entrada e informa o id atribuído a esse participante.
+     * [rejoinToken] é sempre mandado (mesmo numa entrada nova) — o Jogador deve guardá-lo e
+     * reenviar num [Hello] futuro para reconectar como o mesmo participante.
+     */
+    data class Welcome(val participantId: String, val sessionId: String, val rejoinToken: String = "") : SessionMessage()
 
     /** Mestre -> todos: lista atualizada de participantes conectados. */
     data class Roster(val participants: List<Participant>) : SessionMessage()
@@ -103,10 +113,13 @@ sealed class SessionMessage {
     fun toJson(): String {
         val obj = JSONObject()
         when (this) {
-            is Hello -> obj.put("type", TYPE_HELLO).put("displayName", displayName)
+            is Hello -> obj.put("type", TYPE_HELLO)
+                .put("displayName", displayName)
+                .put("rejoinToken", rejoinToken ?: JSONObject.NULL)
             is Welcome -> obj.put("type", TYPE_WELCOME)
                 .put("participantId", participantId)
                 .put("sessionId", sessionId)
+                .put("rejoinToken", rejoinToken)
             is Roster -> obj.put("type", TYPE_ROSTER).put("participants", JSONArray().also { arr ->
                 participants.forEach { p ->
                     arr.put(
@@ -115,6 +128,7 @@ sealed class SessionMessage {
                             .put("displayName", p.displayName)
                             .put("role", p.role.name)
                             .put("characterId", p.characterId ?: JSONObject.NULL)
+                            .put("connected", p.connected)
                     )
                 }
             })
@@ -182,8 +196,15 @@ sealed class SessionMessage {
             return try {
                 val obj = JSONObject(raw)
                 when (obj.getString("type")) {
-                    TYPE_HELLO -> Hello(obj.getString("displayName"))
-                    TYPE_WELCOME -> Welcome(obj.getString("participantId"), obj.getString("sessionId"))
+                    TYPE_HELLO -> Hello(
+                        obj.getString("displayName"),
+                        if (obj.isNull("rejoinToken")) null else obj.getString("rejoinToken")
+                    )
+                    TYPE_WELCOME -> Welcome(
+                        obj.getString("participantId"),
+                        obj.getString("sessionId"),
+                        obj.optString("rejoinToken", "")
+                    )
                     TYPE_ROSTER -> {
                         val arr = obj.getJSONArray("participants")
                         val list = buildList {
@@ -194,7 +215,8 @@ sealed class SessionMessage {
                                         id = p.getString("id"),
                                         displayName = p.getString("displayName"),
                                         role = ParticipantRole.valueOf(p.getString("role")),
-                                        characterId = if (p.isNull("characterId")) null else p.getLong("characterId")
+                                        characterId = if (p.isNull("characterId")) null else p.getLong("characterId"),
+                                        connected = if (p.has("connected")) p.getBoolean("connected") else true
                                     )
                                 )
                             }

@@ -63,7 +63,9 @@ class SessionServerClientTest {
     }
 
     @Test
-    fun `ao sair, jogador some do roster do Mestre`() = runBlocking {
+    fun `ao sair, jogador continua no roster do Mestre mas marcado como desconectado`() = runBlocking {
+        // Diferente de simplesmente sumir: o jogador pode reconectar (ver testes de reconexão
+        // abaixo), então o Mestre continua vendo quem ele era, só sinalizado como offline.
         val server = SessionServer(sessionId = "sess-2", hostDisplayName = "Mestre")
         val port = server.start()
         try {
@@ -74,8 +76,13 @@ class SessionServerClientTest {
 
             client.disconnect()
 
-            val rosterAfterLeave = withTimeout(5_000) { server.roster.first { it.size == 1 } }
-            assertEquals(ParticipantRole.DM, rosterAfterLeave.single().role)
+            val rosterAfterLeave = withTimeout(5_000) {
+                server.roster.first { roster -> roster.any { it.role == ParticipantRole.PLAYER && !it.connected } }
+            }
+            assertEquals(2, rosterAfterLeave.size)
+            val player = rosterAfterLeave.single { it.role == ParticipantRole.PLAYER }
+            assertEquals("Gimli", player.displayName)
+            assertEquals(false, player.connected)
         } finally {
             server.stop()
         }
@@ -687,6 +694,124 @@ class SessionServerClientTest {
             } finally {
                 targetClient.disconnect()
                 otherClient.disconnect()
+            }
+        } finally {
+            server.stop()
+        }
+    }
+
+    @Test
+    fun `reconectar com o token do WELCOME recupera o mesmo id de participante`() = runBlocking {
+        val server = SessionServer(sessionId = "sess-21", hostDisplayName = "Mestre")
+        val port = server.start()
+        try {
+            val client = SessionClient()
+            try {
+                client.connect("127.0.0.1", port, "Legolas")
+                val connected = withTimeout(5_000) {
+                    client.state.first { it is SessionClientState.Connected } as SessionClientState.Connected
+                }
+                withTimeout(5_000) { server.roster.first { it.size == 2 } }
+
+                // Simula uma queda de Wi-Fi (não um client.disconnect() voluntário, que encerraria
+                // de vez o cliente e impediria o reconnect() abaixo): o socket cai sem BYE.
+                server.disconnectParticipant(connected.selfId)
+                withTimeout(5_000) {
+                    server.roster.first { roster -> roster.any { it.id == connected.selfId && !it.connected } }
+                }
+
+                client.reconnect()
+                val reconnected = withTimeout(5_000) {
+                    client.state.first { it is SessionClientState.Connected } as SessionClientState.Connected
+                }
+                assertEquals(connected.selfId, reconnected.selfId)
+
+                val rosterAfterReconnect = withTimeout(5_000) {
+                    server.roster.first { roster -> roster.any { it.id == connected.selfId && it.connected } }
+                }
+                // Continua sendo só Mestre + Legolas — não duplicou a entrada no roster.
+                assertEquals(2, rosterAfterReconnect.size)
+            } finally {
+                client.disconnect()
+            }
+        } finally {
+            server.stop()
+        }
+    }
+
+    @Test
+    fun `reconectar preserva a ficha ja recebida pelo Mestre`() = runBlocking {
+        val server = SessionServer(sessionId = "sess-22", hostDisplayName = "Mestre")
+        val port = server.start()
+        try {
+            val character = CharacterEntity(name = "Legolas", characterClass = "Patrulheiro", level = 5)
+            val characterJson = CharacterBackup.toJson(listOf(character)) { null }
+
+            val client = SessionClient()
+            try {
+                client.connect("127.0.0.1", port, "Legolas", characterJson)
+                val connected = withTimeout(5_000) {
+                    client.state.first { it is SessionClientState.Connected } as SessionClientState.Connected
+                }
+                withTimeout(5_000) { server.receivedCharacters.first { it.containsKey(connected.selfId) } }
+
+                server.disconnectParticipant(connected.selfId)
+                withTimeout(5_000) {
+                    server.roster.first { roster -> roster.any { it.id == connected.selfId && !it.connected } }
+                }
+
+                // O Mestre continua vendo a última ficha que recebeu, mesmo com o jogador offline.
+                assertEquals("Legolas", server.receivedCharacters.value[connected.selfId]?.name)
+
+                client.reconnect()
+                withTimeout(5_000) { client.state.first { it is SessionClientState.Connected } }
+                withTimeout(5_000) {
+                    server.roster.first { roster -> roster.any { it.id == connected.selfId && it.connected } }
+                }
+                assertEquals("Legolas", server.receivedCharacters.value[connected.selfId]?.name)
+            } finally {
+                client.disconnect()
+            }
+        } finally {
+            server.stop()
+        }
+    }
+
+    @Test
+    fun `reconnect sem ter conectado antes nao faz nada`() = runBlocking {
+        val client = SessionClient()
+        assertEquals(false, client.reconnect())
+    }
+
+    @Test
+    fun `reconexao rapida nao deixa conexao antiga derrubar a nova por engano`() = runBlocking {
+        val server = SessionServer(sessionId = "sess-24", hostDisplayName = "Mestre")
+        val port = server.start()
+        try {
+            val client = SessionClient()
+            try {
+                client.connect("127.0.0.1", port, "Legolas")
+                val connected = withTimeout(5_000) {
+                    client.state.first { it is SessionClientState.Connected } as SessionClientState.Connected
+                }
+                withTimeout(5_000) { server.roster.first { it.size == 2 } }
+
+                // Reconecta sem esperar o servidor perceber a queda da conexão antiga — o socket
+                // antigo só vai ser fechado quando o novo registrar o mesmo id (ver handleClient).
+                client.reconnect()
+                val reconnected = withTimeout(5_000) {
+                    client.state.first { it is SessionClientState.Connected } as SessionClientState.Connected
+                }
+                assertEquals(connected.selfId, reconnected.selfId)
+
+                // Mesmo que a conexão antiga perceba a própria queda com atraso, ela não pode
+                // marcar esse mesmo id como desconectado agora que já existe uma reconexão válida.
+                val rosterAfter = withTimeout(5_000) {
+                    server.roster.first { roster -> roster.any { it.id == connected.selfId && it.connected } }
+                }
+                assertEquals(2, rosterAfter.size)
+            } finally {
+                client.disconnect()
             }
         } finally {
             server.stop()

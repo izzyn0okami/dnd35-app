@@ -43,6 +43,17 @@ class SessionClient {
     private var socket: Socket? = null
     private var output: DataOutputStream? = null
 
+    // Parâmetros da última chamada a connect(), guardados só para reconnect() poder repetir a
+    // mesma conexão sem o chamador precisar lembrar host/porta/nome de novo.
+    private var lastHost: String? = null
+    private var lastPort: Int = 0
+    private var lastDisplayName: String = ""
+    private var lastCharacterJson: String? = null
+
+    // Token recebido no último WELCOME (ver SessionMessage.Hello/Welcome) — mandado de volta ao
+    // reconectar para o Mestre reconhecer que é o mesmo participante, não um novo.
+    private var rejoinToken: String? = null
+
     private val _state = MutableStateFlow<SessionClientState>(SessionClientState.Connecting)
     val state: StateFlow<SessionClientState> = _state
 
@@ -71,6 +82,31 @@ class SessionClient {
      * nenhuma ficha (por exemplo, um observador).
      */
     fun connect(host: String, port: Int, displayName: String, characterJson: String? = null) {
+        lastHost = host
+        lastPort = port
+        lastDisplayName = displayName
+        lastCharacterJson = characterJson
+        rejoinToken = null // entrada nova: nunca reconecta como um participante de uma sessão anterior.
+        connectInternal(host, port, displayName, characterJson, rejoinToken = null)
+    }
+
+    /**
+     * Tenta reconectar com os mesmos parâmetros da última chamada a [connect] (mesmo host/porta/
+     * nome/ficha), mandando o token recebido no WELCOME anterior para o Mestre devolver o mesmo
+     * id de participante. Não faz nada e retorna `false` se [connect] nunca foi chamado antes.
+     */
+    fun reconnect(): Boolean {
+        val host = lastHost ?: return false
+        connectInternal(host, lastPort, lastDisplayName, lastCharacterJson, rejoinToken)
+        return true
+    }
+
+    private fun connectInternal(host: String, port: Int, displayName: String, characterJson: String?, rejoinToken: String?) {
+        _state.value = SessionClientState.Connecting
+        // Fecha uma conexão anterior ainda viva, se houver — evita duas leituras concorrentes
+        // (o laço antigo e o novo) brigando pelas mesmas variáveis de instância caso reconnect()
+        // seja chamado antes do laço de leitura anterior perceber a própria queda sozinho.
+        runCatching { socket?.close() }
         scope.launch {
             try {
                 val sock = Socket()
@@ -81,13 +117,14 @@ class SessionClient {
                 val out = DataOutputStream(sock.getOutputStream())
                 output = out
 
-                SessionWire.write(out, SessionMessage.Hello(displayName))
+                SessionWire.write(out, SessionMessage.Hello(displayName, rejoinToken))
 
                 val welcome = SessionWire.read(input) as? SessionMessage.Welcome
                 if (welcome == null) {
                     _state.value = SessionClientState.Disconnected("Resposta inesperada do Mestre.")
                     return@launch
                 }
+                this@SessionClient.rejoinToken = welcome.rejoinToken
                 if (characterJson != null) {
                     SessionWire.write(out, SessionMessage.CharacterSheet(characterJson))
                 }
