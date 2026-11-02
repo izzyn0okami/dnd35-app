@@ -32,6 +32,11 @@ class SessionServer(
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
     private val clients = ConcurrentHashMap<String, ClientHandle>()
 
+    // Token de reconexão (ver SessionMessage.Hello/Welcome) -> id de participante. Permite que um
+    // Jogador cuja conexão caiu (Wi-Fi instável, app em segundo plano) volte como o MESMO
+    // participante em vez de duplicar entrada no roster/combate ao reconectar.
+    private val rejoinTokens = ConcurrentHashMap<String, String>()
+
     private val dmParticipant = Participant(
         id = DM_PARTICIPANT_ID,
         displayName = hostDisplayName,
@@ -87,6 +92,7 @@ class SessionServer(
         runCatching { serverSocket?.close() }
         clients.values.forEach { runCatching { it.socket.close() } }
         clients.clear()
+        rejoinTokens.clear()
         _roster.value = listOf(dmParticipant)
         _receivedCharacters.value = emptyMap()
         _combatState.value = null
@@ -111,18 +117,30 @@ class SessionServer(
         val input = DataInputStream(socket.getInputStream())
         val output = DataOutputStream(socket.getOutputStream())
         var participantId: String? = null
+        var handle: ClientHandle? = null
         try {
             val first = SessionWire.read(input) ?: return
             val hello = first as? SessionMessage.Hello ?: return
 
-            val id = UUID.randomUUID().toString()
+            // Token de uma conexão anterior reconhecido -> é uma reconexão, reusa o mesmo id (e
+            // com ele, o mesmo combatente em combate, ficha já recebida, pedidos pendentes etc.).
+            // Token ausente/desconhecido (primeira vez, ou sessão foi reiniciada) -> participante novo.
+            val existingId = hello.rejoinToken?.let { rejoinTokens[it] }
+            val id = existingId ?: UUID.randomUUID().toString()
+            val token = if (existingId != null) hello.rejoinToken!! else UUID.randomUUID().toString().also { rejoinTokens[it] = id }
             participantId = id
-            clients[id] = ClientHandle(id, socket, output)
 
-            SessionWire.write(output, SessionMessage.Welcome(id, sessionId))
+            val newHandle = ClientHandle(id, socket, output)
+            handle = newHandle
+            // Se havia uma conexão antiga pendurada para esse mesmo id (reconexão antes do
+            // servidor perceber que a anterior caiu), fecha-a — o loop de leitura dela vai sair
+            // sozinho na próxima tentativa de ler, sem derrubar esta conexão nova (ver finally).
+            clients.put(id, newHandle)?.let { stale -> runCatching { stale.socket.close() } }
+
+            SessionWire.write(output, SessionMessage.Welcome(id, sessionId, token))
             addParticipant(Participant(id, hello.displayName, ParticipantRole.PLAYER))
             broadcastRoster()
-            // Quem entra no meio de um combate já começa vendo o estado atual.
+            // Quem entra (ou reconecta) no meio de um combate já começa vendo o estado atual.
             _combatState.value?.let { SessionWire.write(output, SessionMessage.CombatUpdate(it)) }
             // Idem para o baú de loot, se já tiver algo nele.
             if (_lootChest.value.isNotEmpty()) {
@@ -144,9 +162,16 @@ class SessionServer(
                 }
             }
         } catch (e: IOException) {
-            // Conexão caiu de forma inesperada — removida abaixo como qualquer outra saída.
+            // Conexão caiu de forma inesperada — tratada abaixo como qualquer outra saída.
         } finally {
-            participantId?.let { removeParticipant(it) }
+            val pid = participantId
+            val h = handle
+            // Só marca como desconectado se essa ainda for a conexão "atual" desse participante
+            // (remove atômico por valor) — evita que uma conexão antiga, ao perceber a queda com
+            // atraso, derrube por engano uma reconexão que já está em andamento (ver acima).
+            if (pid != null && h != null && clients.remove(pid, h)) {
+                markDisconnected(pid)
+            }
             runCatching { socket.close() }
         }
     }
@@ -155,10 +180,16 @@ class SessionServer(
         _roster.value = _roster.value.filterNot { it.id == participant.id } + participant
     }
 
-    private fun removeParticipant(id: String) {
-        clients.remove(id)
-        _roster.value = _roster.value.filterNot { it.id == id }
-        _receivedCharacters.value = _receivedCharacters.value - id
+    /**
+     * Marca um participante como desconectado SEM tirá-lo do roster nem descartar a última ficha
+     * recebida — ele pode reconectar (mesmo id, via token) e o Mestre continua vendo quem ele era
+     * enquanto isso. Pedidos pendentes dele são descartados: aprovar um pedido de pegar loot ou
+     * comprar da loja manda o item só para quem pediu (sendTo), e com a conexão caída isso se
+     * perderia — o item sumiria do baú/loja sem ir para ninguém. Reconectado, o Jogador pode
+     * mandar o pedido de novo. Ver [stop] para a limpeza completa quando a sessão é encerrada.
+     */
+    private fun markDisconnected(id: String) {
+        _roster.value = _roster.value.map { if (it.id == id) it.copy(connected = false) else it }
         _pendingRequests.value = _pendingRequests.value.filterNot { it.requesterId == id }
         broadcastRoster()
     }
@@ -353,6 +384,16 @@ class SessionServer(
     private fun resolveRequest(request: ActionRequest, approved: Boolean, reason: String = "") {
         _pendingRequests.value = _pendingRequests.value.filterNot { it.id == request.id }
         sendTo(request.requesterId, SessionMessage.RequestResolved(request.id, approved, reason))
+    }
+
+    /**
+     * Mestre: força o encerramento da conexão de um participante agora (ex.: remover alguém que
+     * não vai mais jogar), fechando só o socket dele — diferente de [stop], que encerra a sessão
+     * inteira. Não revoga o token de reconexão: se o Jogador tentar de novo, ainda é reconhecido
+     * como o mesmo participante (mesma regra de uma queda de rede comum).
+     */
+    fun disconnectParticipant(participantId: String) {
+        clients[participantId]?.let { handle -> runCatching { handle.socket.close() } }
     }
 
     private fun sendTo(participantId: String, message: SessionMessage) {

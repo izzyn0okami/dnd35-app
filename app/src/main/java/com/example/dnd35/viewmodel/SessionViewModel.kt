@@ -327,6 +327,19 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
         client?.sendPrivateMessage(text)
     }
 
+    /**
+     * Jogador: tenta reconectar depois de uma queda inesperada (Wi-Fi instável, app em segundo
+     * plano), com os mesmos host/porta/nome/ficha da última entrada — o Mestre reconhece o token
+     * da sessão anterior e devolve o mesmo id de participante (sem duplicar no roster/combate).
+     * Não faz nada se nunca chegou a entrar em uma sessão (não confundir com reentrar depois de
+     * um [leaveSession] voluntário, que usa [joinSession] de novo).
+     */
+    fun reconnect() {
+        val current = client ?: return
+        _playerState.value = PlayerSessionUiState.Connecting
+        current.reconnect()
+    }
+
     /** Jogador: sai da sessão atual, se houver uma. */
     fun leaveSession() {
         client?.disconnect()

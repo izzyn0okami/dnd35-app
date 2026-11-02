@@ -25,28 +25,39 @@ import org.robolectric.annotation.Config
 class SessionMessageTest {
 
     @Test
-    fun `Hello serializa e desserializa corretamente`() {
+    fun `Hello sem rejoinToken serializa e desserializa corretamente`() {
         val msg = SessionMessage.Hello("Aragorn")
         val roundTrip = SessionMessage.fromJson(msg.toJson())
         assertEquals(msg, roundTrip)
+        assertNull((roundTrip as SessionMessage.Hello).rejoinToken)
     }
 
     @Test
-    fun `Welcome serializa e desserializa corretamente`() {
-        val msg = SessionMessage.Welcome(participantId = "p1", sessionId = "s1")
-        val roundTrip = SessionMessage.fromJson(msg.toJson())
+    fun `Hello com rejoinToken preserva o token (reconexao)`() {
+        val msg = SessionMessage.Hello("Aragorn", rejoinToken = "token-123")
+        val roundTrip = SessionMessage.fromJson(msg.toJson()) as SessionMessage.Hello
+        assertEquals("token-123", roundTrip.rejoinToken)
+    }
+
+    @Test
+    fun `Welcome preserva o rejoinToken`() {
+        val msg = SessionMessage.Welcome(participantId = "p1", sessionId = "s1", rejoinToken = "token-abc")
+        val roundTrip = SessionMessage.fromJson(msg.toJson()) as SessionMessage.Welcome
         assertEquals(msg, roundTrip)
+        assertEquals("token-abc", roundTrip.rejoinToken)
     }
 
     @Test
-    fun `Roster preserva a lista de participantes, incluindo characterId nulo`() {
+    fun `Roster preserva a lista de participantes, incluindo characterId nulo e connected`() {
         val participants = listOf(
             Participant("dm", "Mestre", ParticipantRole.DM),
-            Participant("p1", "Legolas", ParticipantRole.PLAYER, characterId = 42L)
+            Participant("p1", "Legolas", ParticipantRole.PLAYER, characterId = 42L),
+            Participant("p2", "Gimli", ParticipantRole.PLAYER, connected = false)
         )
         val msg = SessionMessage.Roster(participants)
         val roundTrip = SessionMessage.fromJson(msg.toJson()) as SessionMessage.Roster
         assertEquals(participants, roundTrip.participants)
+        assertEquals(false, roundTrip.participants.single { it.id == "p2" }.connected)
     }
 
     @Test

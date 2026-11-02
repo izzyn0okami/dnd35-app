@@ -24,7 +24,13 @@ data class Participant(
     val id: String,
     val displayName: String,
     val role: ParticipantRole,
-    val characterId: Long? = null
+    val characterId: Long? = null,
+    /**
+     * `false` quando a conexão caiu mas o participante continua no roster (pode reconectar e
+     * recuperar o mesmo id — ver `rejoinToken` em [SessionMessage.Hello]/[SessionMessage.Welcome]).
+     * O Mestre sempre tem `connected = true`, já que não passa pela rede.
+     */
+    val connected: Boolean = true
 )
 
 /** Informações necessárias para um jogador se conectar à sessão de um Mestre. */

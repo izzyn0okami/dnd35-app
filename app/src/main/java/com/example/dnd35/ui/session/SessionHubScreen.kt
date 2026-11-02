@@ -926,8 +926,19 @@ private fun PlayerJoinContent(viewModel: SessionViewModel, characterViewModel: C
 
     when (val s = state) {
         is PlayerSessionUiState.Idle, is PlayerSessionUiState.Disconnected -> {
-            if (s is PlayerSessionUiState.Disconnected && s.reason.isNotBlank()) {
-                Text(s.reason, color = MaterialTheme.colorScheme.error)
+            if (s is PlayerSessionUiState.Disconnected) {
+                if (s.reason.isNotBlank()) {
+                    Text(s.reason, color = MaterialTheme.colorScheme.error)
+                    Spacer(modifier = Modifier.height(8.dp))
+                }
+                Button(onClick = { viewModel.reconnect() }, modifier = Modifier.fillMaxWidth()) {
+                    Text("Reconectar")
+                }
+                Text(
+                    "Ou entre de novo preenchendo os dados abaixo.",
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
                 Spacer(modifier = Modifier.height(12.dp))
             }
             OutlinedTextField(
@@ -1191,11 +1202,20 @@ private fun ParticipantRoster(participants: List<Participant>, characters: Map<S
                                 )
                             }
                         }
-                        Text(
-                            if (participant.role == ParticipantRole.DM) "Mestre" else "Jogador",
-                            style = MaterialTheme.typography.labelSmall,
-                            color = if (participant.role == ParticipantRole.DM) DndGold else MaterialTheme.colorScheme.onSurfaceVariant
-                        )
+                        Column(horizontalAlignment = Alignment.End) {
+                            Text(
+                                if (participant.role == ParticipantRole.DM) "Mestre" else "Jogador",
+                                style = MaterialTheme.typography.labelSmall,
+                                color = if (participant.role == ParticipantRole.DM) DndGold else MaterialTheme.colorScheme.onSurfaceVariant
+                            )
+                            if (!participant.connected) {
+                                Text(
+                                    "Desconectado",
+                                    style = MaterialTheme.typography.labelSmall,
+                                    color = DndCrimson
+                                )
+                            }
+                        }
                     }
                 }
             }
