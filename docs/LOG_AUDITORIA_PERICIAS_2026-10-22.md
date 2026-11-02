@@ -2025,3 +2025,14 @@ Limitações: a validação estática não substitui build/CI nem teste visual e
 - **Critério:** validar presença única, nível por classe e domínio; não tratar Ondas da Exaustão como magia de 8º nível, pois o verbete detalhado a classifica como Feiticeiro/Mago 7. A conferência também corrigiu Dedo da Morte para Druida 8 e Feiticeiro/Mago 7, conforme o verbete detalhado.
 - **CI:** pendente; a primeira validação estática encontrou e corrigiu a vírgula separadora ao acrescentar os níveis de domínio. Não integrar antes de testes unitários, compilação Android e upload do APK de depuração passarem.
 - **Limitação:** não foi realizado teste manual em dispositivo Android.
+
+
+## 2026-11-02 — Retratos locais aleatórios na criação de personagens
+
+- **Escopo:** coleção local de 22 imagens `portrait_01.jpg` a `portrait_22.jpg` em `app/src/main/res/drawable`; sem dependência de internet e sem categorias no seletor.
+- **Criação:** `CharacterRepository.createNewCharacter` escolhe um retrato aleatório uma única vez e grava a referência `preset:portrait_NN` no próprio personagem. A referência permanece estável ao reabrir a ficha e reiniciar o aplicativo.
+- **Fichas existentes:** nenhuma migração ou atualização em massa; fichas já salvas mantêm o valor atual de `photoUri`.
+- **Fotos próprias:** mantido o seletor da galeria e o fluxo de recorte quadrado já existente; o recorte continua salvo no armazenamento privado do aplicativo.
+- **Interface:** removidos os dois presets antigos do seletor e o fallback para o retrato padrão legado. Referências vazias passam a exibir o ícone de câmera.
+- **Recursos legados:** removidos `hero_portrait_default_1792461602152.jpg` e `hero_portrait_mage_1792461617980.jpg`.
+- **Validação pendente:** executar testes unitários, compilação Android e CI da PR; teste visual em dispositivo também permanece necessário.
