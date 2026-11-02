@@ -225,43 +225,6 @@ fun SquarePhotoCropDialog(sourceUri: Uri, onCancel: () -> Unit, onConfirm: (Stri
 }
 
 @Composable
-fun PresetAvatarCard(
-    resName: String,
-    label: String,
-    onSelect: () -> Unit
-) {
-    val context = LocalContext.current
-    val resId = context.resources.getIdentifier(resName, "drawable", context.packageName)
-
-    Card(
-        modifier = Modifier
-            .clickable(onClick = onSelect)
-            .padding(4.dp),
-        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant),
-        shape = RoundedCornerShape(12.dp)
-    ) {
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier.padding(8.dp)
-        ) {
-            if (resId != 0) {
-                Image(
-                    painter = painterResource(id = resId),
-                    contentDescription = label,
-                    modifier = Modifier
-                        .size(60.dp)
-                        .clip(CircleShape)
-                        .border(1.5.dp, DndGold, CircleShape),
-                    contentScale = ContentScale.Crop
-                )
-            }
-            Spacer(modifier = Modifier.height(4.dp))
-            Text(label, style = MaterialTheme.typography.bodySmall)
-        }
-    }
-}
-
-@Composable
 fun CharacterAvatar(
     photoUri: String?,
     modifier: Modifier = Modifier,
