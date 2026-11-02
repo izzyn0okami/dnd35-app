@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Ficha D&amp;D 3.5</string>
+
+    <!-- Precisam bater exatamente com Dnd35FileTypes.CHARACTER_MIME/ITEM_MIME (Kotlin) — usados
+         só no intent-filter do AndroidManifest, que não pode referenciar uma constante Kotlin
+         diretamente. -->
+    <string name="dnd35_character_mime" translatable="false">application/vnd.dnd35.ficha+json</string>
+    <string name="dnd35_item_mime" translatable="false">application/vnd.dnd35.item+json</string>
 </resources>

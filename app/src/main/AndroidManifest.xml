@@ -27,11 +27,47 @@
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"
+            android:launchMode="singleTop"
             android:theme="@style/Theme.MyApplication">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <!-- Abre direto o app ao tocar num arquivo de ficha (.fichadnd35) ou de item avulso
+                 de inventário (.itemdnd35) exportado por este mesmo app — ver Dnd35FileTypes.kt.
+                 Duas entradas de <data> por extensão: uma pelo tipo MIME próprio (o jeito mais
+                 confiável quando o arquivo vem de um content:// de um provedor de documentos, que
+                 guarda o MIME dado na exportação) e outra por pathPattern/esquema file (gerenciadores
+                 de arquivo mais simples, sem SAF, que resolvem pelo caminho/extensão). -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:mimeType="@string/dnd35_character_mime" />
+                <data android:mimeType="@string/dnd35_item_mime" />
+                <data
+                    android:scheme="file"
+                    android:host="*"
+                    android:pathPattern=".*\\.fichadnd35"
+                    android:mimeType="*/*" />
+                <data
+                    android:scheme="file"
+                    android:host="*"
+                    android:pathPattern=".*\\.itemdnd35"
+                    android:mimeType="*/*" />
+                <data
+                    android:scheme="content"
+                    android:host="*"
+                    android:pathPattern=".*\\.fichadnd35"
+                    android:mimeType="*/*" />
+                <data
+                    android:scheme="content"
+                    android:host="*"
+                    android:pathPattern=".*\\.itemdnd35"
+                    android:mimeType="*/*" />
             </intent-filter>
         </activity>
 

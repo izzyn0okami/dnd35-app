@@ -1,5 +1,6 @@
 package com.example.dnd35.ui
 
+import android.net.Uri
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.clickable
@@ -69,6 +70,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import android.widget.Toast
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.example.dnd35.backup.Dnd35FileKind
+import com.example.dnd35.backup.Dnd35FileTypes
 import com.example.dnd35.pdf.CharacterPdfExporter
 import com.example.dnd35.ui.dialogs.NewCharacterDialog
 import com.example.dnd35.ui.tabs.FeatsTab
@@ -84,7 +87,12 @@ import com.example.ui.theme.DndGold
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DndMainScreen(viewModel: CharacterViewModel, sessionViewModel: SessionViewModel? = null) {
+fun DndMainScreen(
+    viewModel: CharacterViewModel,
+    sessionViewModel: SessionViewModel? = null,
+    incomingFileUri: Uri? = null,
+    onIncomingFileHandled: () -> Unit = {}
+) {
     val context = LocalContext.current
     val characters by viewModel.allCharacters.collectAsStateWithLifecycle()
     val activeCharacter by viewModel.activeCharacter.collectAsStateWithLifecycle()
@@ -105,7 +113,7 @@ fun DndMainScreen(viewModel: CharacterViewModel, sessionViewModel: SessionViewMo
     }
 
     val exportLauncher = rememberLauncherForActivityResult(
-        ActivityResultContracts.CreateDocument("application/json")
+        ActivityResultContracts.CreateDocument(Dnd35FileTypes.CHARACTER_MIME)
     ) { uri ->
         if (uri != null) viewModel.exportBackup(uri, exportAllPending)
     }
@@ -285,9 +293,7 @@ fun DndMainScreen(viewModel: CharacterViewModel, sessionViewModel: SessionViewMo
                             },
                             onClick = {
                                 showOverflowMenu = false
-                                importLauncher.launch(
-                                    arrayOf("application/json", "application/octet-stream", "text/plain")
-                                )
+                                importLauncher.launch(Dnd35FileTypes.CHARACTER_IMPORT_MIME_TYPES)
                             }
                         )
 
@@ -445,17 +451,67 @@ fun DndMainScreen(viewModel: CharacterViewModel, sessionViewModel: SessionViewMo
             }
         )
     }
+
+    // Arquivo .fichadnd35/.itemdnd35 tocado fora do app (gerenciador de arquivos, anexo, etc.) —
+    // ver AndroidManifest/MainActivity. Confirma antes de importar, já que tocar sem querer num
+    // arquivo não deveria mudar a ficha ativa sozinho.
+    if (incomingFileUri != null) {
+        val kind = remember(incomingFileUri) { Dnd35FileTypes.classify(context, incomingFileUri) }
+        AlertDialog(
+            onDismissRequest = onIncomingFileHandled,
+            title = { Text("Importar arquivo") },
+            text = {
+                Text(
+                    when (kind) {
+                        Dnd35FileKind.CHARACTER -> "Este arquivo parece ser uma ficha de personagem. Importar agora?"
+                        Dnd35FileKind.ITEM -> "Este arquivo parece ser um item de inventário. Adicionar à ficha ativa (${activeCharacter?.name ?: "nenhuma selecionada"})?"
+                        null -> "Não foi possível reconhecer este arquivo como ficha ou item do app."
+                    }
+                )
+            },
+            confirmButton = {
+                if (kind != null) {
+                    Button(onClick = {
+                        when (kind) {
+                            Dnd35FileKind.CHARACTER -> viewModel.importBackup(incomingFileUri)
+                            Dnd35FileKind.ITEM -> viewModel.importInventoryItems(incomingFileUri)
+                        }
+                        onIncomingFileHandled()
+                    }) {
+                        Text("Importar")
+                    }
+                }
+            },
+            dismissButton = {
+                OutlinedButton(onClick = onIncomingFileHandled) {
+                    Text(if (kind == null) "Fechar" else "Cancelar")
+                }
+            }
+        )
+    }
 }
 
 /** Nome sugerido para o arquivo de backup: sem acentos e caracteres problemáticos. */
 internal fun backupFileName(characterName: String?): String {
     val date = java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.ROOT).format(java.util.Date())
-    if (characterName.isNullOrBlank()) return "fichas-dnd35-$date.json"
-    val safe = java.text.Normalizer.normalize(characterName.trim(), java.text.Normalizer.Form.NFD)
+    val ext = Dnd35FileTypes.CHARACTER_EXTENSION
+    if (characterName.isNullOrBlank()) return "fichas-dnd35-$date$ext"
+    val safe = sanitizeFileNamePart(characterName, fallback = "ficha")
+    return "ficha-$safe-$date$ext"
+}
+
+/** Nome de arquivo seguro para um item avulso de inventário. */
+internal fun itemFileName(itemName: String): String {
+    val date = java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.ROOT).format(java.util.Date())
+    val safe = sanitizeFileNamePart(itemName, fallback = "item")
+    return "item-$safe-$date${Dnd35FileTypes.ITEM_EXTENSION}"
+}
+
+private fun sanitizeFileNamePart(raw: String, fallback: String): String {
+    return java.text.Normalizer.normalize(raw.trim(), java.text.Normalizer.Form.NFD)
         .replace(Regex("\\p{M}+"), "")
         .replace(Regex("[^A-Za-z0-9_-]+"), "_")
         .trim('_')
         .take(40)
-        .ifEmpty { "ficha" }
-    return "ficha-$safe-$date.json"
+        .ifEmpty { fallback }
 }

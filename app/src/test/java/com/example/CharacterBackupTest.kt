@@ -5,6 +5,7 @@ import com.example.dnd35.model.CharacterEntity
 import com.example.dnd35.model.CharacterJsonAdapters
 import com.example.dnd35.model.CharacterSkill
 import com.example.dnd35.ui.backupFileName
+import com.example.dnd35.ui.itemFileName
 import org.json.JSONArray
 import org.json.JSONObject
 import org.junit.Assert.assertArrayEquals
@@ -287,11 +288,22 @@ class CharacterBackupTest {
     fun backupFileNameIsSafeForAnyCharacterName() {
         val single = backupFileName("Tordek, o Anão!")
         assertTrue(single, single.startsWith("ficha-Tordek_o_Anao-"))
-        assertTrue(single.endsWith(".json"))
+        assertTrue(single.endsWith(".fichadnd35"))
         assertTrue(backupFileName("日本語 ???").startsWith("ficha-ficha-"))
         assertTrue(backupFileName("../../etc/passwd").none { it == '/' })
         assertTrue(backupFileName(null).startsWith("fichas-dnd35-"))
         assertTrue(backupFileName("   ").startsWith("fichas-dnd35-"))
         assertTrue(backupFileName("A".repeat(300)).length < 80)
+    }
+
+    @Test
+    fun itemFileNameIsSafeForAnyItemName() {
+        val single = itemFileName("Espada Longa +1")
+        assertTrue(single, single.startsWith("item-Espada_Longa_1-"))
+        assertTrue(single.endsWith(".itemdnd35"))
+        assertTrue(itemFileName("日本語 ???").startsWith("item-item-"))
+        assertTrue(itemFileName("../../etc/passwd").none { it == '/' })
+        assertTrue(itemFileName("   ").startsWith("item-item-"))
+        assertTrue(itemFileName("A".repeat(300)).length < 80)
     }
 }

@@ -1,5 +1,7 @@
 package com.example.dnd35.ui.tabs
 
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.background
@@ -29,10 +31,13 @@ import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.CurrencyExchange
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Edit
+import androidx.compose.material.icons.filled.FileDownload
+import androidx.compose.material.icons.filled.FileUpload
 import androidx.compose.material.icons.filled.FitnessCenter
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material.icons.filled.MonetizationOn
+import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.Shield
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
@@ -64,6 +69,7 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import com.example.dnd35.backup.Dnd35FileTypes
 import com.example.dnd35.model.CalculatedCharacterStats
 import com.example.dnd35.model.CharacterEntity
 import com.example.dnd35.model.CharacterInventoryItem
@@ -71,6 +77,7 @@ import com.example.dnd35.model.Dnd35Rules
 import com.example.dnd35.model.ammunitionBundleSize
 import com.example.dnd35.model.remainingAmmunitionUnits
 import com.example.dnd35.ui.dialogs.AddEditItemDialog
+import com.example.dnd35.ui.itemFileName
 import com.example.dnd35.viewmodel.CharacterViewModel
 import com.example.ui.theme.DndCrimson
 import com.example.ui.theme.DndGold
@@ -99,6 +106,20 @@ fun InventoryTab(
     var expandSlotsView by remember { mutableStateOf(false) }
     var itemForSlotAssign by remember { mutableStateOf<CharacterInventoryItem?>(null) }
     var pendingItemDeleteId by remember { mutableStateOf<String?>(null) }
+    var itemPendingExport by remember { mutableStateOf<CharacterInventoryItem?>(null) }
+
+    val exportItemLauncher = rememberLauncherForActivityResult(
+        ActivityResultContracts.CreateDocument(Dnd35FileTypes.ITEM_MIME)
+    ) { uri ->
+        val item = itemPendingExport
+        itemPendingExport = null
+        if (uri != null && item != null) viewModel.exportInventoryItem(uri, item)
+    }
+    val importItemLauncher = rememberLauncherForActivityResult(
+        ActivityResultContracts.OpenDocument()
+    ) { uri ->
+        if (uri != null) viewModel.importInventoryItems(uri)
+    }
 
     val categories = listOf("Todas", "Armas", "Armaduras", "Escudos", "Itens Mágicos", "Itens de Aventura", "Consumíveis")
 
@@ -475,13 +496,28 @@ fun InventoryTab(
                     fontWeight = FontWeight.Bold
                 )
 
-                Button(
-                    onClick = { showAddItemModal = true },
-                    colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary)
-                ) {
-                    Icon(Icons.Default.Add, contentDescription = null, modifier = Modifier.size(18.dp))
-                    Spacer(modifier = Modifier.width(4.dp))
-                    Text("Adicionar Item")
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    IconButton(
+                        onClick = {
+                            importItemLauncher.launch(Dnd35FileTypes.ITEM_IMPORT_MIME_TYPES)
+                        },
+                        modifier = Modifier.testTag("import_item_button")
+                    ) {
+                        Icon(
+                            Icons.Default.FileDownload,
+                            contentDescription = "Importar item (arquivo)",
+                            tint = DndGold
+                        )
+                    }
+
+                    Button(
+                        onClick = { showAddItemModal = true },
+                        colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary)
+                    ) {
+                        Icon(Icons.Default.Add, contentDescription = null, modifier = Modifier.size(18.dp))
+                        Spacer(modifier = Modifier.width(4.dp))
+                        Text("Adicionar Item")
+                    }
                 }
             }
             Spacer(modifier = Modifier.height(8.dp))
@@ -513,7 +549,11 @@ fun InventoryTab(
                     item = item,
                     onOpenSlotPicker = { itemForSlotAssign = item },
                     onEdit = { itemToEdit = item },
-                    onDelete = { pendingItemDeleteId = item.id }
+                    onDelete = { pendingItemDeleteId = item.id },
+                    onExport = {
+                        itemPendingExport = item
+                        exportItemLauncher.launch(itemFileName(item.name))
+                    }
                 )
                 Spacer(modifier = Modifier.height(6.dp))
             }
@@ -737,8 +777,10 @@ fun InventoryItemRowRefined(
     item: CharacterInventoryItem,
     onOpenSlotPicker: () -> Unit,
     onEdit: () -> Unit,
-    onDelete: () -> Unit
+    onDelete: () -> Unit,
+    onExport: () -> Unit
 ) {
+    var showItemMenu by remember { mutableStateOf(false) }
     val totalItemWeight = item.weightLb * item.quantity
     val isEquipped = item.equipped || (item.equippedSlot != Dnd35Rules.EquipmentSlots.NONE && item.equippedSlot.isNotBlank())
 
@@ -858,6 +900,27 @@ fun InventoryItemRowRefined(
 
             IconButton(onClick = onDelete, modifier = Modifier.size(48.dp)) {
                 Icon(Icons.Default.Delete, contentDescription = "Excluir ${item.name}", modifier = Modifier.size(18.dp), tint = DndCrimson)
+            }
+
+            Box {
+                IconButton(onClick = { showItemMenu = true }, modifier = Modifier.size(48.dp)) {
+                    Icon(Icons.Default.MoreVert, contentDescription = "Mais opções de ${item.name}", modifier = Modifier.size(18.dp))
+                }
+                DropdownMenu(expanded = showItemMenu, onDismissRequest = { showItemMenu = false }) {
+                    DropdownMenuItem(
+                        text = {
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                Icon(Icons.Default.FileUpload, contentDescription = null, modifier = Modifier.size(18.dp))
+                                Spacer(modifier = Modifier.width(8.dp))
+                                Text("Exportar item (arquivo)")
+                            }
+                        },
+                        onClick = {
+                            showItemMenu = false
+                            onExport()
+                        }
+                    )
+                }
             }
         }
     }

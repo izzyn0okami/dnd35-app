@@ -478,6 +478,55 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
         persistCharacter(curr.copy(inventoryJson = CharacterJsonAdapters.serializeInventory(list)))
     }
 
+    /**
+     * Exporta um único item do inventário para o arquivo escolhido pelo usuário (ex: pra passar
+     * pra outro jogador por fora da sessão de mesa). Não leva a foto personalizada do item: ela
+     * é um arquivo local deste aparelho e não existiria em quem recebe.
+     */
+    fun exportInventoryItem(target: Uri, item: CharacterInventoryItem) {
+        val app = getApplication<Application>()
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val json = CharacterJsonAdapters.serializeInventory(listOf(item.copy(imageUri = null)))
+                CharacterBackupIo.writeText(app, target, json)
+                _backupMessages.emit("Item exportado.")
+            } catch (e: Exception) {
+                _backupMessages.emit("Erro ao exportar item: ${e.localizedMessage ?: "falha desconhecida"}")
+            }
+        }
+    }
+
+    /** Importa item(ns) de um arquivo exportado e adiciona à ficha ativa. */
+    fun importInventoryItems(source: Uri) {
+        val app = getApplication<Application>()
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val text = CharacterBackupIo.readBackupText(app, source)
+                val imported = CharacterJsonAdapters.deserializeInventory(text)
+                if (imported.isEmpty()) {
+                    _backupMessages.emit("Nenhum item válido encontrado no arquivo.")
+                    return@launch
+                }
+                val curr = _activeCharacter.value
+                if (curr == null) {
+                    _backupMessages.emit("Selecione uma ficha antes de importar itens.")
+                    return@launch
+                }
+                val list = CharacterJsonAdapters.deserializeInventory(curr.inventoryJson).toMutableList()
+                // Novo id a cada importação: evita colidir com um item já existente na ficha.
+                imported.forEach { list.add(it.copy(id = java.util.UUID.randomUUID().toString())) }
+                persistCharacter(curr.copy(inventoryJson = CharacterJsonAdapters.serializeInventory(list)))
+                _backupMessages.emit(
+                    if (imported.size == 1) "1 item importado." else "${imported.size} itens importados."
+                )
+            } catch (e: BackupFileException) {
+                _backupMessages.emit(e.message ?: "Arquivo de item inválido.")
+            } catch (e: Exception) {
+                _backupMessages.emit("Erro ao importar item: ${e.localizedMessage ?: "falha desconhecida"}")
+            }
+        }
+    }
+
     /** Coloca uma pilha escolhida pelo jogador no slot global de munição de combate. */
     fun equipAmmunition(itemId: String) {
         val curr = _activeCharacter.value ?: return
