@@ -268,9 +268,16 @@ class SessionServerClientTest {
                 assertEquals("Legolas", request.requesterName)
                 assertEquals(RequestKind.COMBAT_HP_CHANGE, request.kind)
 
+                // CoroutineStart.UNDISPATCHED garante que a inscrição em requestResults já
+                // aconteceu antes de aprovar — sem isso, o teste fica à mercê da sorte entre o
+                // laço de leitura do cliente (socket real, outra thread) e o agendamento deste
+                // coletor no event loop do runBlocking (replay=0: quem chega depois perde o evento).
+                val resolvedDeferred = async(start = CoroutineStart.UNDISPATCHED) {
+                    withTimeout(5_000) { client.requestResults.first() }
+                }
                 server.approveRequest(request.id)
 
-                val resolved = withTimeout(5_000) { client.requestResults.first() }
+                val resolved = resolvedDeferred.await()
                 assertTrue(resolved.approved)
 
                 val combatAfter = withTimeout(5_000) {
@@ -306,9 +313,12 @@ class SessionServerClientTest {
                 client.requestAction(RequestKind.COMBAT_HP_CHANGE, "Pedido de cura (10 PV)", combatantId = connected.selfId, hpDelta = -10)
                 val request = withTimeout(5_000) { server.pendingRequests.first { it.isNotEmpty() } }.single()
 
+                val resolvedDeferred = async(start = CoroutineStart.UNDISPATCHED) {
+                    withTimeout(5_000) { client.requestResults.first() }
+                }
                 server.denyRequest(request.id, reason = "Sem poção de cura disponível")
 
-                val resolved = withTimeout(5_000) { client.requestResults.first() }
+                val resolved = resolvedDeferred.await()
                 assertEquals(false, resolved.approved)
                 assertEquals("Sem poção de cura disponível", resolved.reason)
                 assertTrue(server.pendingRequests.value.isEmpty())
@@ -344,8 +354,11 @@ class SessionServerClientTest {
                 val request = withTimeout(5_000) { server.pendingRequests.first { it.isNotEmpty() } }.single()
                 assertEquals(RequestKind.CHARACTER_UPDATE, request.kind)
 
+                val resolvedDeferred = async(start = CoroutineStart.UNDISPATCHED) {
+                    withTimeout(5_000) { client.requestResults.first() }
+                }
                 server.approveRequest(request.id)
-                withTimeout(5_000) { client.requestResults.first() }
+                resolvedDeferred.await()
 
                 val finalCharacters = withTimeout(5_000) {
                     server.receivedCharacters.first { it[connected.selfId]?.currentHp == 25 }
@@ -437,8 +450,10 @@ class SessionServerClientTest {
                 // os dois coletores precisam já estar inscritos antes do Mestre aprovar, senão o
                 // laço de leitura do cliente (que processa as duas mensagens de uma vez, sem
                 // esperar ninguém) pode emitir e descartar uma delas antes de alguém ouvir.
-                val grantedDeferred = async { withTimeout(5_000) { client.lootGranted.first() } }
-                val resolvedDeferred = async { withTimeout(5_000) { client.requestResults.first() } }
+                // CoroutineStart.UNDISPATCHED garante a inscrição de verdade antes de prosseguir,
+                // em vez de contar com a sorte de timing entre threads.
+                val grantedDeferred = async(start = CoroutineStart.UNDISPATCHED) { withTimeout(5_000) { client.lootGranted.first() } }
+                val resolvedDeferred = async(start = CoroutineStart.UNDISPATCHED) { withTimeout(5_000) { client.requestResults.first() } }
 
                 server.approveRequest(request.id)
 
@@ -482,9 +497,12 @@ class SessionServerClientTest {
                 // O Mestre removeu o item direto do baú antes de decidir o pedido.
                 server.removeLootItem(item.id)
 
+                val resolvedDeferred = async(start = CoroutineStart.UNDISPATCHED) {
+                    withTimeout(5_000) { client.requestResults.first() }
+                }
                 server.approveRequest(request.id)
 
-                val resolved = withTimeout(5_000) { client.requestResults.first() }
+                val resolved = resolvedDeferred.await()
                 assertEquals(false, resolved.approved)
                 assertTrue(resolved.reason.isNotBlank())
             } finally {
@@ -573,9 +591,10 @@ class SessionServerClientTest {
 
                 // Mesmo cuidado documentado no teste de loot: ShopPurchaseGranted e RequestResolved
                 // chegam quase juntos de uma única chamada a approveRequest, então os dois
-                // coletores precisam estar inscritos antes de disparar a aprovação.
-                val grantedDeferred = async { withTimeout(5_000) { client.shopPurchases.first() } }
-                val resolvedDeferred = async { withTimeout(5_000) { client.requestResults.first() } }
+                // coletores precisam estar inscritos antes de disparar a aprovação (UNDISPATCHED
+                // garante isso de verdade, em vez de contar com a sorte de timing entre threads).
+                val grantedDeferred = async(start = CoroutineStart.UNDISPATCHED) { withTimeout(5_000) { client.shopPurchases.first() } }
+                val resolvedDeferred = async(start = CoroutineStart.UNDISPATCHED) { withTimeout(5_000) { client.requestResults.first() } }
 
                 server.approveRequest(request.id)
 
@@ -619,9 +638,12 @@ class SessionServerClientTest {
                 // O Mestre fechou a loja antes de decidir o pedido.
                 server.closeShop()
 
+                val resolvedDeferred = async(start = CoroutineStart.UNDISPATCHED) {
+                    withTimeout(5_000) { client.requestResults.first() }
+                }
                 server.approveRequest(request.id)
 
-                val resolved = withTimeout(5_000) { client.requestResults.first() }
+                val resolved = resolvedDeferred.await()
                 assertEquals(false, resolved.approved)
                 assertTrue(resolved.reason.isNotBlank())
             } finally {
