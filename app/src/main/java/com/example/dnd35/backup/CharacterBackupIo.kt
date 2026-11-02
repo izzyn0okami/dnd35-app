@@ -15,9 +15,14 @@ object CharacterBackupIo {
 
     fun writeBackup(context: Context, target: Uri, characters: List<CharacterEntity>) {
         val json = CharacterBackup.toJson(characters) { photoUri -> readPortrait(context, photoUri) }
+        writeText(context, target, json)
+    }
+
+    /** Grava texto puro (UTF-8) no arquivo escolhido pelo usuário — usado por ficha e item avulso. */
+    fun writeText(context: Context, target: Uri, text: String) {
         val output = context.contentResolver.openOutputStream(target, "wt")
             ?: throw java.io.IOException("Não foi possível abrir o arquivo de destino.")
-        output.use { it.write(json.toByteArray(Charsets.UTF_8)) }
+        output.use { it.write(text.toByteArray(Charsets.UTF_8)) }
     }
 
     /** Lê o arquivo escolhido pelo usuário. Falha com [BackupFileException] se for grande demais. */
