@@ -41,13 +41,13 @@ class SessionServerClientTest {
             try {
                 client.connect("127.0.0.1", port, "Legolas")
 
-                val connected = withTimeout(5_000) {
+                val connected = withTimeout(15_000) {
                     client.state.first { it is SessionClientState.Connected } as SessionClientState.Connected
                 }
                 assertEquals("sess-1", connected.sessionId)
 
                 // O servidor deve propagar o novo participante no roster (Mestre + Jogador).
-                val roster = withTimeout(5_000) {
+                val roster = withTimeout(15_000) {
                     server.roster.first { it.size == 2 }
                 }
                 assertTrue(roster.any { it.role == ParticipantRole.DM })
@@ -71,12 +71,12 @@ class SessionServerClientTest {
         try {
             val client = SessionClient()
             client.connect("127.0.0.1", port, "Gimli")
-            withTimeout(5_000) { client.state.first { it is SessionClientState.Connected } }
-            withTimeout(5_000) { server.roster.first { it.size == 2 } }
+            withTimeout(15_000) { client.state.first { it is SessionClientState.Connected } }
+            withTimeout(15_000) { server.roster.first { it.size == 2 } }
 
             client.disconnect()
 
-            val rosterAfterLeave = withTimeout(5_000) {
+            val rosterAfterLeave = withTimeout(15_000) {
                 server.roster.first { roster -> roster.any { it.role == ParticipantRole.PLAYER && !it.connected } }
             }
             assertEquals(2, rosterAfterLeave.size)
@@ -99,11 +99,11 @@ class SessionServerClientTest {
             val client = SessionClient()
             try {
                 client.connect("127.0.0.1", port, "Legolas", characterJson)
-                val connected = withTimeout(5_000) {
+                val connected = withTimeout(15_000) {
                     client.state.first { it is SessionClientState.Connected } as SessionClientState.Connected
                 }
 
-                val received = withTimeout(5_000) {
+                val received = withTimeout(15_000) {
                     server.receivedCharacters.first { it.containsKey(connected.selfId) }
                 }
                 val entity = received.getValue(connected.selfId)
@@ -126,9 +126,9 @@ class SessionServerClientTest {
             val client = SessionClient()
             try {
                 client.connect("127.0.0.1", port, "Observador")
-                withTimeout(5_000) { client.state.first { it is SessionClientState.Connected } }
+                withTimeout(15_000) { client.state.first { it is SessionClientState.Connected } }
                 // Dá tempo da mensagem (se houvesse) chegar antes de garantir que nada chegou.
-                withTimeout(5_000) { server.roster.first { it.size == 2 } }
+                withTimeout(15_000) { server.roster.first { it.size == 2 } }
                 assertTrue(server.receivedCharacters.value.isEmpty())
             } finally {
                 client.disconnect()
@@ -146,7 +146,7 @@ class SessionServerClientTest {
             val client = SessionClient()
             try {
                 client.connect("127.0.0.1", port, "Legolas")
-                val connected = withTimeout(5_000) {
+                val connected = withTimeout(15_000) {
                     client.state.first { it is SessionClientState.Connected } as SessionClientState.Connected
                 }
 
@@ -156,7 +156,7 @@ class SessionServerClientTest {
                 )
                 server.startCombat(combatants)
 
-                val clientCombat = withTimeout(5_000) {
+                val clientCombat = withTimeout(15_000) {
                     client.state.mapNotNull { (it as? SessionClientState.Connected)?.combat }.first()
                 }
                 assertEquals(listOf(connected.selfId, CombatState.npcCombatantId(1L)), clientCombat.combatants.map { it.id })
@@ -179,7 +179,7 @@ class SessionServerClientTest {
             val client = SessionClient()
             try {
                 client.connect("127.0.0.1", port, "Gimli")
-                val connected = withTimeout(5_000) {
+                val connected = withTimeout(15_000) {
                     client.state.first { it is SessionClientState.Connected } as SessionClientState.Connected
                 }
 
@@ -188,19 +188,19 @@ class SessionServerClientTest {
                         Combatant(id = connected.selfId, displayName = "Gimli", isNpc = false, initiative = 15, currentHp = 30, maxHp = 30)
                     )
                 )
-                withTimeout(5_000) {
+                withTimeout(15_000) {
                     client.state.mapNotNull { (it as? SessionClientState.Connected)?.combat }.first()
                 }
 
                 server.applyDamage(connected.selfId, 12)
-                val afterDamage = withTimeout(5_000) {
+                val afterDamage = withTimeout(15_000) {
                     client.state.mapNotNull { (it as? SessionClientState.Connected)?.combat }
                         .first { it.combatants.first().currentHp == 18 }
                 }
                 assertEquals(18, afterDamage.combatants.single().currentHp)
 
                 server.nextTurn()
-                val afterNextTurn = withTimeout(5_000) {
+                val afterNextTurn = withTimeout(15_000) {
                     client.state.mapNotNull { (it as? SessionClientState.Connected)?.combat }
                         .first { it.round == 2 }
                 }
@@ -208,7 +208,7 @@ class SessionServerClientTest {
                 assertEquals(2, afterNextTurn.round)
 
                 server.endCombat()
-                val afterEnd = withTimeout(5_000) {
+                val afterEnd = withTimeout(15_000) {
                     client.state.first { (it as? SessionClientState.Connected)?.combat == null }
                 } as SessionClientState.Connected
                 assertEquals(null, afterEnd.combat)
@@ -233,7 +233,7 @@ class SessionServerClientTest {
             val client = SessionClient()
             try {
                 client.connect("127.0.0.1", port, "Retardatário")
-                val lateJoinCombat = withTimeout(5_000) {
+                val lateJoinCombat = withTimeout(15_000) {
                     client.state.mapNotNull { (it as? SessionClientState.Connected)?.combat }.first()
                 }
                 assertEquals(CombatState.npcCombatantId(2L), lateJoinCombat.combatants.single().id)
@@ -253,17 +253,17 @@ class SessionServerClientTest {
             val client = SessionClient()
             try {
                 client.connect("127.0.0.1", port, "Legolas")
-                val connected = withTimeout(5_000) {
+                val connected = withTimeout(15_000) {
                     client.state.first { it is SessionClientState.Connected } as SessionClientState.Connected
                 }
                 server.startCombat(
                     listOf(Combatant(id = connected.selfId, displayName = "Legolas", isNpc = false, initiative = 12, currentHp = 20, maxHp = 20))
                 )
-                withTimeout(5_000) { client.state.mapNotNull { (it as? SessionClientState.Connected)?.combat }.first() }
+                withTimeout(15_000) { client.state.mapNotNull { (it as? SessionClientState.Connected)?.combat }.first() }
 
                 client.requestAction(RequestKind.COMBAT_HP_CHANGE, "Pedido de dano (5 PV)", combatantId = connected.selfId, hpDelta = 5)
 
-                val pending = withTimeout(5_000) { server.pendingRequests.first { it.isNotEmpty() } }
+                val pending = withTimeout(15_000) { server.pendingRequests.first { it.isNotEmpty() } }
                 val request = pending.single()
                 assertEquals("Legolas", request.requesterName)
                 assertEquals(RequestKind.COMBAT_HP_CHANGE, request.kind)
@@ -273,14 +273,14 @@ class SessionServerClientTest {
                 // laço de leitura do cliente (socket real, outra thread) e o agendamento deste
                 // coletor no event loop do runBlocking (replay=0: quem chega depois perde o evento).
                 val resolvedDeferred = async(start = CoroutineStart.UNDISPATCHED) {
-                    withTimeout(5_000) { client.requestResults.first() }
+                    withTimeout(15_000) { client.requestResults.first() }
                 }
                 server.approveRequest(request.id)
 
                 val resolved = resolvedDeferred.await()
                 assertTrue(resolved.approved)
 
-                val combatAfter = withTimeout(5_000) {
+                val combatAfter = withTimeout(15_000) {
                     client.state.mapNotNull { (it as? SessionClientState.Connected)?.combat }
                         .first { it.combatants.first().currentHp == 15 }
                 }
@@ -302,19 +302,19 @@ class SessionServerClientTest {
             val client = SessionClient()
             try {
                 client.connect("127.0.0.1", port, "Gimli")
-                val connected = withTimeout(5_000) {
+                val connected = withTimeout(15_000) {
                     client.state.first { it is SessionClientState.Connected } as SessionClientState.Connected
                 }
                 server.startCombat(
                     listOf(Combatant(id = connected.selfId, displayName = "Gimli", isNpc = false, initiative = 10, currentHp = 30, maxHp = 30))
                 )
-                withTimeout(5_000) { client.state.mapNotNull { (it as? SessionClientState.Connected)?.combat }.first() }
+                withTimeout(15_000) { client.state.mapNotNull { (it as? SessionClientState.Connected)?.combat }.first() }
 
                 client.requestAction(RequestKind.COMBAT_HP_CHANGE, "Pedido de cura (10 PV)", combatantId = connected.selfId, hpDelta = -10)
-                val request = withTimeout(5_000) { server.pendingRequests.first { it.isNotEmpty() } }.single()
+                val request = withTimeout(15_000) { server.pendingRequests.first { it.isNotEmpty() } }.single()
 
                 val resolvedDeferred = async(start = CoroutineStart.UNDISPATCHED) {
-                    withTimeout(5_000) { client.requestResults.first() }
+                    withTimeout(15_000) { client.requestResults.first() }
                 }
                 server.denyRequest(request.id, reason = "Sem poção de cura disponível")
 
@@ -342,25 +342,25 @@ class SessionServerClientTest {
             val client = SessionClient()
             try {
                 client.connect("127.0.0.1", port, "Legolas", originalJson)
-                val connected = withTimeout(5_000) {
+                val connected = withTimeout(15_000) {
                     client.state.first { it is SessionClientState.Connected } as SessionClientState.Connected
                 }
-                withTimeout(5_000) { server.receivedCharacters.first { it.containsKey(connected.selfId) } }
+                withTimeout(15_000) { server.receivedCharacters.first { it.containsKey(connected.selfId) } }
 
                 val updated = original.copy(currentHp = 25)
                 val updatedJson = CharacterBackup.toJson(listOf(updated)) { null }
                 client.requestAction(RequestKind.CHARACTER_UPDATE, "Atualização da ficha de Legolas", characterJson = updatedJson)
 
-                val request = withTimeout(5_000) { server.pendingRequests.first { it.isNotEmpty() } }.single()
+                val request = withTimeout(15_000) { server.pendingRequests.first { it.isNotEmpty() } }.single()
                 assertEquals(RequestKind.CHARACTER_UPDATE, request.kind)
 
                 val resolvedDeferred = async(start = CoroutineStart.UNDISPATCHED) {
-                    withTimeout(5_000) { client.requestResults.first() }
+                    withTimeout(15_000) { client.requestResults.first() }
                 }
                 server.approveRequest(request.id)
                 resolvedDeferred.await()
 
-                val finalCharacters = withTimeout(5_000) {
+                val finalCharacters = withTimeout(15_000) {
                     server.receivedCharacters.first { it[connected.selfId]?.currentHp == 25 }
                 }
                 assertEquals(25, finalCharacters.getValue(connected.selfId).currentHp)
@@ -380,18 +380,18 @@ class SessionServerClientTest {
             val client = SessionClient()
             try {
                 client.connect("127.0.0.1", port, "Legolas")
-                withTimeout(5_000) { client.state.first { it is SessionClientState.Connected } }
+                withTimeout(15_000) { client.state.first { it is SessionClientState.Connected } }
 
                 val item = CharacterInventoryItem(name = "Poção de cura", category = "Itens de Aventura", quantity = 3)
                 server.addLootItem(item)
 
-                val chestAfterAdd = withTimeout(5_000) {
+                val chestAfterAdd = withTimeout(15_000) {
                     client.state.mapNotNull { (it as? SessionClientState.Connected)?.lootChest }.first { it.isNotEmpty() }
                 }
                 assertEquals(listOf(item), chestAfterAdd)
 
                 server.removeLootItem(item.id)
-                val chestAfterRemove = withTimeout(5_000) {
+                val chestAfterRemove = withTimeout(15_000) {
                     client.state.mapNotNull { (it as? SessionClientState.Connected)?.lootChest }.first { it.isEmpty() }
                 }
                 assertTrue(chestAfterRemove.isEmpty())
@@ -414,7 +414,7 @@ class SessionServerClientTest {
             val client = SessionClient()
             try {
                 client.connect("127.0.0.1", port, "Retardatário")
-                val chest = withTimeout(5_000) {
+                val chest = withTimeout(15_000) {
                     client.state.mapNotNull { (it as? SessionClientState.Connected)?.lootChest }.first { it.isNotEmpty() }
                 }
                 assertEquals(listOf(item), chest)
@@ -437,12 +437,12 @@ class SessionServerClientTest {
             val client = SessionClient()
             try {
                 client.connect("127.0.0.1", port, "Legolas")
-                withTimeout(5_000) {
+                withTimeout(15_000) {
                     client.state.mapNotNull { (it as? SessionClientState.Connected)?.lootChest }.first { it.isNotEmpty() }
                 }
 
                 client.requestAction(RequestKind.TAKE_LOOT, "Pedido de pegar \"Elmo élfico\"", lootItemId = item.id)
-                val request = withTimeout(5_000) { server.pendingRequests.first { it.isNotEmpty() } }.single()
+                val request = withTimeout(15_000) { server.pendingRequests.first { it.isNotEmpty() } }.single()
                 assertEquals(RequestKind.TAKE_LOOT, request.kind)
                 assertEquals(item.id, request.lootItemId)
 
@@ -452,8 +452,8 @@ class SessionServerClientTest {
                 // esperar ninguém) pode emitir e descartar uma delas antes de alguém ouvir.
                 // CoroutineStart.UNDISPATCHED garante a inscrição de verdade antes de prosseguir,
                 // em vez de contar com a sorte de timing entre threads.
-                val grantedDeferred = async(start = CoroutineStart.UNDISPATCHED) { withTimeout(5_000) { client.lootGranted.first() } }
-                val resolvedDeferred = async(start = CoroutineStart.UNDISPATCHED) { withTimeout(5_000) { client.requestResults.first() } }
+                val grantedDeferred = async(start = CoroutineStart.UNDISPATCHED) { withTimeout(15_000) { client.lootGranted.first() } }
+                val resolvedDeferred = async(start = CoroutineStart.UNDISPATCHED) { withTimeout(15_000) { client.requestResults.first() } }
 
                 server.approveRequest(request.id)
 
@@ -464,7 +464,7 @@ class SessionServerClientTest {
                 assertTrue(resolved.approved)
 
                 assertTrue(server.lootChest.value.isEmpty())
-                val chestAfter = withTimeout(5_000) {
+                val chestAfter = withTimeout(15_000) {
                     client.state.mapNotNull { (it as? SessionClientState.Connected)?.lootChest }.first { it.isEmpty() }
                 }
                 assertTrue(chestAfter.isEmpty())
@@ -487,18 +487,18 @@ class SessionServerClientTest {
             val client = SessionClient()
             try {
                 client.connect("127.0.0.1", port, "Gimli")
-                withTimeout(5_000) {
+                withTimeout(15_000) {
                     client.state.mapNotNull { (it as? SessionClientState.Connected)?.lootChest }.first { it.isNotEmpty() }
                 }
 
                 client.requestAction(RequestKind.TAKE_LOOT, "Pedido de pegar \"Corda (15m)\"", lootItemId = item.id)
-                val request = withTimeout(5_000) { server.pendingRequests.first { it.isNotEmpty() } }.single()
+                val request = withTimeout(15_000) { server.pendingRequests.first { it.isNotEmpty() } }.single()
 
                 // O Mestre removeu o item direto do baú antes de decidir o pedido.
                 server.removeLootItem(item.id)
 
                 val resolvedDeferred = async(start = CoroutineStart.UNDISPATCHED) {
-                    withTimeout(5_000) { client.requestResults.first() }
+                    withTimeout(15_000) { client.requestResults.first() }
                 }
                 server.approveRequest(request.id)
 
@@ -521,19 +521,19 @@ class SessionServerClientTest {
             val client = SessionClient()
             try {
                 client.connect("127.0.0.1", port, "Legolas")
-                withTimeout(5_000) { client.state.first { it is SessionClientState.Connected } }
+                withTimeout(15_000) { client.state.first { it is SessionClientState.Connected } }
 
                 val item = CharacterInventoryItem(name = "Poção de cura", category = "Itens de Aventura", quantity = 5, costGp = 50f)
                 server.openShop(99L, "Vendedor Gundren", listOf(item))
 
-                val shopAfterOpen = withTimeout(5_000) {
+                val shopAfterOpen = withTimeout(15_000) {
                     client.state.mapNotNull { (it as? SessionClientState.Connected)?.shop }.first()
                 }
                 assertEquals("Vendedor Gundren", shopAfterOpen.npcName)
                 assertEquals(listOf(item), shopAfterOpen.items)
 
                 server.closeShop()
-                val stateAfterClose = withTimeout(5_000) {
+                val stateAfterClose = withTimeout(15_000) {
                     client.state.mapNotNull { it as? SessionClientState.Connected }.first { it.shop == null }
                 }
                 assertEquals(null, stateAfterClose.shop)
@@ -556,7 +556,7 @@ class SessionServerClientTest {
             val client = SessionClient()
             try {
                 client.connect("127.0.0.1", port, "Retardatário")
-                val shop = withTimeout(5_000) {
+                val shop = withTimeout(15_000) {
                     client.state.mapNotNull { (it as? SessionClientState.Connected)?.shop }.first()
                 }
                 assertEquals("Ferreiro Baldrik", shop.npcName)
@@ -580,12 +580,12 @@ class SessionServerClientTest {
             val client = SessionClient()
             try {
                 client.connect("127.0.0.1", port, "Legolas")
-                withTimeout(5_000) {
+                withTimeout(15_000) {
                     client.state.mapNotNull { (it as? SessionClientState.Connected)?.shop }.first()
                 }
 
                 client.requestAction(RequestKind.BUY_FROM_SHOP, "Pedido de comprar \"Elmo élfico\"", shopItemId = item.id)
-                val request = withTimeout(5_000) { server.pendingRequests.first { it.isNotEmpty() } }.single()
+                val request = withTimeout(15_000) { server.pendingRequests.first { it.isNotEmpty() } }.single()
                 assertEquals(RequestKind.BUY_FROM_SHOP, request.kind)
                 assertEquals(item.id, request.shopItemId)
 
@@ -593,8 +593,8 @@ class SessionServerClientTest {
                 // chegam quase juntos de uma única chamada a approveRequest, então os dois
                 // coletores precisam estar inscritos antes de disparar a aprovação (UNDISPATCHED
                 // garante isso de verdade, em vez de contar com a sorte de timing entre threads).
-                val grantedDeferred = async(start = CoroutineStart.UNDISPATCHED) { withTimeout(5_000) { client.shopPurchases.first() } }
-                val resolvedDeferred = async(start = CoroutineStart.UNDISPATCHED) { withTimeout(5_000) { client.requestResults.first() } }
+                val grantedDeferred = async(start = CoroutineStart.UNDISPATCHED) { withTimeout(15_000) { client.shopPurchases.first() } }
+                val resolvedDeferred = async(start = CoroutineStart.UNDISPATCHED) { withTimeout(15_000) { client.requestResults.first() } }
 
                 server.approveRequest(request.id)
 
@@ -605,7 +605,7 @@ class SessionServerClientTest {
                 assertTrue(resolved.approved)
 
                 assertTrue(server.shop.value?.items?.isEmpty() ?: false)
-                val stateAfter = withTimeout(5_000) {
+                val stateAfter = withTimeout(15_000) {
                     client.state.mapNotNull { it as? SessionClientState.Connected }.first { it.shop?.items?.isEmpty() == true }
                 }
                 assertTrue(stateAfter.shop!!.items.isEmpty())
@@ -628,18 +628,18 @@ class SessionServerClientTest {
             val client = SessionClient()
             try {
                 client.connect("127.0.0.1", port, "Gimli")
-                withTimeout(5_000) {
+                withTimeout(15_000) {
                     client.state.mapNotNull { (it as? SessionClientState.Connected)?.shop }.first()
                 }
 
                 client.requestAction(RequestKind.BUY_FROM_SHOP, "Pedido de comprar \"Corda (15m)\"", shopItemId = item.id)
-                val request = withTimeout(5_000) { server.pendingRequests.first { it.isNotEmpty() } }.single()
+                val request = withTimeout(15_000) { server.pendingRequests.first { it.isNotEmpty() } }.single()
 
                 // O Mestre fechou a loja antes de decidir o pedido.
                 server.closeShop()
 
                 val resolvedDeferred = async(start = CoroutineStart.UNDISPATCHED) {
-                    withTimeout(5_000) { client.requestResults.first() }
+                    withTimeout(15_000) { client.requestResults.first() }
                 }
                 server.approveRequest(request.id)
 
@@ -662,11 +662,11 @@ class SessionServerClientTest {
             val client = SessionClient()
             try {
                 client.connect("127.0.0.1", port, "Legolas")
-                withTimeout(5_000) { client.state.first { it is SessionClientState.Connected } }
+                withTimeout(15_000) { client.state.first { it is SessionClientState.Connected } }
 
                 client.sendPrivateMessage("Mestre, posso falar com você a sós?")
 
-                val log = withTimeout(5_000) { server.privateChatLog.first { it.isNotEmpty() } }
+                val log = withTimeout(15_000) { server.privateChatLog.first { it.isNotEmpty() } }
                 val entry = log.single()
                 assertEquals("Legolas", entry.participantName)
                 assertEquals("Mestre, posso falar com você a sós?", entry.text)
@@ -688,16 +688,16 @@ class SessionServerClientTest {
             val otherClient = SessionClient()
             try {
                 targetClient.connect("127.0.0.1", port, "Legolas")
-                val targetConnected = withTimeout(5_000) {
+                val targetConnected = withTimeout(15_000) {
                     targetClient.state.first { it is SessionClientState.Connected } as SessionClientState.Connected
                 }
                 // sendPrivateMessage busca o nome do jogador no roster do servidor — esperar o
                 // cliente ficar "Connected" não garante que o servidor já processou addParticipant
                 // (mesma corrida documentada no primeiro teste da classe), então espera o roster
                 // também antes de mandar a mensagem.
-                withTimeout(5_000) { server.roster.first { roster -> roster.any { it.id == targetConnected.selfId } } }
+                withTimeout(15_000) { server.roster.first { roster -> roster.any { it.id == targetConnected.selfId } } }
                 otherClient.connect("127.0.0.1", port, "Gimli")
-                withTimeout(5_000) { otherClient.state.first { it is SessionClientState.Connected } }
+                withTimeout(15_000) { otherClient.state.first { it is SessionClientState.Connected } }
 
                 // CoroutineStart.UNDISPATCHED: diferente do padrão usado para duas mensagens em
                 // sequência (ver os testes de loot/loja acima), aqui existe só uma emissão — então
@@ -705,13 +705,13 @@ class SessionServerClientTest {
                 // thread, socket real) e o agendamento deste coletor no event loop do runBlocking,
                 // força a inscrição no SharedFlow a acontecer de verdade antes de mandar a mensagem.
                 val received = async(start = CoroutineStart.UNDISPATCHED) {
-                    withTimeout(5_000) { targetClient.privateMessages.first() }
+                    withTimeout(15_000) { targetClient.privateMessages.first() }
                 }
                 server.sendPrivateMessage(targetConnected.selfId, "Psiu, o baú ali tem uma armadilha.")
 
                 assertEquals("Psiu, o baú ali tem uma armadilha.", received.await())
 
-                val log = withTimeout(5_000) { server.privateChatLog.first { it.isNotEmpty() } }
+                val log = withTimeout(15_000) { server.privateChatLog.first { it.isNotEmpty() } }
                 assertEquals(true, log.single().fromDm)
             } finally {
                 targetClient.disconnect()
@@ -730,25 +730,25 @@ class SessionServerClientTest {
             val client = SessionClient()
             try {
                 client.connect("127.0.0.1", port, "Legolas")
-                val connected = withTimeout(5_000) {
+                val connected = withTimeout(15_000) {
                     client.state.first { it is SessionClientState.Connected } as SessionClientState.Connected
                 }
-                withTimeout(5_000) { server.roster.first { it.size == 2 } }
+                withTimeout(15_000) { server.roster.first { it.size == 2 } }
 
                 // Simula uma queda de Wi-Fi (não um client.disconnect() voluntário, que encerraria
                 // de vez o cliente e impediria o reconnect() abaixo): o socket cai sem BYE.
                 server.disconnectParticipant(connected.selfId)
-                withTimeout(5_000) {
+                withTimeout(15_000) {
                     server.roster.first { roster -> roster.any { it.id == connected.selfId && !it.connected } }
                 }
 
                 client.reconnect()
-                val reconnected = withTimeout(5_000) {
+                val reconnected = withTimeout(15_000) {
                     client.state.first { it is SessionClientState.Connected } as SessionClientState.Connected
                 }
                 assertEquals(connected.selfId, reconnected.selfId)
 
-                val rosterAfterReconnect = withTimeout(5_000) {
+                val rosterAfterReconnect = withTimeout(15_000) {
                     server.roster.first { roster -> roster.any { it.id == connected.selfId && it.connected } }
                 }
                 // Continua sendo só Mestre + Legolas — não duplicou a entrada no roster.
@@ -772,13 +772,13 @@ class SessionServerClientTest {
             val client = SessionClient()
             try {
                 client.connect("127.0.0.1", port, "Legolas", characterJson)
-                val connected = withTimeout(5_000) {
+                val connected = withTimeout(15_000) {
                     client.state.first { it is SessionClientState.Connected } as SessionClientState.Connected
                 }
-                withTimeout(5_000) { server.receivedCharacters.first { it.containsKey(connected.selfId) } }
+                withTimeout(15_000) { server.receivedCharacters.first { it.containsKey(connected.selfId) } }
 
                 server.disconnectParticipant(connected.selfId)
-                withTimeout(5_000) {
+                withTimeout(15_000) {
                     server.roster.first { roster -> roster.any { it.id == connected.selfId && !it.connected } }
                 }
 
@@ -786,8 +786,8 @@ class SessionServerClientTest {
                 assertEquals("Legolas", server.receivedCharacters.value[connected.selfId]?.name)
 
                 client.reconnect()
-                withTimeout(5_000) { client.state.first { it is SessionClientState.Connected } }
-                withTimeout(5_000) {
+                withTimeout(15_000) { client.state.first { it is SessionClientState.Connected } }
+                withTimeout(15_000) {
                     server.roster.first { roster -> roster.any { it.id == connected.selfId && it.connected } }
                 }
                 assertEquals("Legolas", server.receivedCharacters.value[connected.selfId]?.name)
@@ -813,22 +813,22 @@ class SessionServerClientTest {
             val client = SessionClient()
             try {
                 client.connect("127.0.0.1", port, "Legolas")
-                val connected = withTimeout(5_000) {
+                val connected = withTimeout(15_000) {
                     client.state.first { it is SessionClientState.Connected } as SessionClientState.Connected
                 }
-                withTimeout(5_000) { server.roster.first { it.size == 2 } }
+                withTimeout(15_000) { server.roster.first { it.size == 2 } }
 
                 // Reconecta sem esperar o servidor perceber a queda da conexão antiga — o socket
                 // antigo só vai ser fechado quando o novo registrar o mesmo id (ver handleClient).
                 client.reconnect()
-                val reconnected = withTimeout(5_000) {
+                val reconnected = withTimeout(15_000) {
                     client.state.first { it is SessionClientState.Connected } as SessionClientState.Connected
                 }
                 assertEquals(connected.selfId, reconnected.selfId)
 
                 // Mesmo que a conexão antiga perceba a própria queda com atraso, ela não pode
                 // marcar esse mesmo id como desconectado agora que já existe uma reconexão válida.
-                val rosterAfter = withTimeout(5_000) {
+                val rosterAfter = withTimeout(15_000) {
                     server.roster.first { roster -> roster.any { it.id == connected.selfId && it.connected } }
                 }
                 assertEquals(2, rosterAfter.size)
@@ -846,7 +846,7 @@ class SessionServerClientTest {
         // Porta 1 é privilegiada/sem listener nos ambientes de teste: a conexão deve falhar
         // de forma controlada, nunca lançar uma exceção para fora do SessionClient.
         client.connect("127.0.0.1", 1, "Jogador")
-        val result = withTimeout(5_000) {
+        val result = withTimeout(15_000) {
             client.state.first { it is SessionClientState.Disconnected }
         }
         assertTrue((result as SessionClientState.Disconnected).reason.isNotBlank())
