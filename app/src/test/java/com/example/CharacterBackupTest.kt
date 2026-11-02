@@ -119,9 +119,9 @@ class CharacterBackupTest {
 
     @Test
     fun presetPortraitIsKeptAsReference() {
-        val original = sampleCharacter().copy(photoUri = "preset:hero_portrait_mage_1792461617980")
+        val original = sampleCharacter().copy(photoUri = "preset:portrait_02")
         val imported = success(CharacterBackup.toJson(listOf(original))).characters[0]
-        assertEquals("preset:hero_portrait_mage_1792461617980", imported.entity.photoUri)
+        assertEquals("preset:portrait_02", imported.entity.photoUri)
         assertNull(imported.photoBytes)
     }
 

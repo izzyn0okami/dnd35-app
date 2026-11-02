@@ -58,8 +58,11 @@ class CharacterRepository(private val characterDao: CharacterDao) {
             SpellSlotInfo(level = lvl, totalSlots = 0, usedSlots = 0)
         }
 
+        // O retrato aleatório é escolhido somente na criação e persistido como referência estável.
+        val initialPortrait = "preset:portrait_${kotlin.random.Random.nextInt(1, 23).toString().padStart(2, '0')}"
         val newChar = CharacterEntity(
             name = name.ifBlank { "Novo Herói" },
+            photoUri = initialPortrait,
             characterClass = characterClass,
             race = race,
             level = 1,

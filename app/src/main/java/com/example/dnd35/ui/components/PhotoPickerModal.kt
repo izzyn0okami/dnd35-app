@@ -124,38 +124,8 @@ fun PhotoPickerModal(
                     Text("Escolher da Galeria")
                 }
 
-                Spacer(modifier = Modifier.height(16.dp))
-                Text(
-                    "Ou escolha um retrato clássico:",
-                    style = MaterialTheme.typography.labelMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
-                Spacer(modifier = Modifier.height(8.dp))
+                // Retratos padrão são atribuídos automaticamente na criação da ficha.
 
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceEvenly
-                ) {
-                    // Avatar 1: Guerreiro Paladino
-                    PresetAvatarCard(
-                        resName = "hero_portrait_default_1792461602152",
-                        label = "Guerreiro",
-                        onSelect = {
-                            onPhotoSelected("preset:hero_portrait_default_1792461602152")
-                            onDismiss()
-                        }
-                    )
-
-                    // Avatar 2: Maga Elfa
-                    PresetAvatarCard(
-                        resName = "hero_portrait_mage_1792461617980",
-                        label = "Maga Elfa",
-                        onSelect = {
-                            onPhotoSelected("preset:hero_portrait_mage_1792461617980")
-                            onDismiss()
-                        }
-                    )
-                }
             }
         },
         confirmButton = {
@@ -256,43 +226,6 @@ fun SquarePhotoCropDialog(sourceUri: Uri, onCancel: () -> Unit, onConfirm: (Stri
 }
 
 @Composable
-fun PresetAvatarCard(
-    resName: String,
-    label: String,
-    onSelect: () -> Unit
-) {
-    val context = LocalContext.current
-    val resId = context.resources.getIdentifier(resName, "drawable", context.packageName)
-
-    Card(
-        modifier = Modifier
-            .clickable(onClick = onSelect)
-            .padding(4.dp),
-        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant),
-        shape = RoundedCornerShape(12.dp)
-    ) {
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier.padding(8.dp)
-        ) {
-            if (resId != 0) {
-                Image(
-                    painter = painterResource(id = resId),
-                    contentDescription = label,
-                    modifier = Modifier
-                        .size(60.dp)
-                        .clip(CircleShape)
-                        .border(1.5.dp, DndGold, CircleShape),
-                    contentScale = ContentScale.Crop
-                )
-            }
-            Spacer(modifier = Modifier.height(4.dp))
-            Text(label, style = MaterialTheme.typography.bodySmall)
-        }
-    }
-}
-
-@Composable
 fun CharacterAvatar(
     photoUri: String?,
     modifier: Modifier = Modifier,
@@ -301,28 +234,14 @@ fun CharacterAvatar(
     val context = LocalContext.current
 
     if (photoUri.isNullOrBlank()) {
-        val defaultRes = context.resources.getIdentifier(
-            "hero_portrait_default_1792461602152",
-            "drawable",
-            context.packageName
+        Icon(
+            Icons.Default.PhotoCamera,
+            contentDescription = null,
+            modifier = modifier
+                .clip(shape)
+                .padding(16.dp),
+            tint = DndGold
         )
-        if (defaultRes != 0) {
-            Image(
-                painter = painterResource(id = defaultRes),
-                contentDescription = "Avatar do Personagem",
-                modifier = modifier.clip(shape),
-                contentScale = ContentScale.Crop
-            )
-        } else {
-            Icon(
-                Icons.Default.PhotoCamera,
-                contentDescription = null,
-                modifier = modifier
-                    .clip(CircleShape)
-                    .padding(16.dp),
-                tint = DndGold
-            )
-        }
     } else if (photoUri.startsWith("preset:")) {
         val resName = photoUri.removePrefix("preset:")
         val resId = context.resources.getIdentifier(resName, "drawable", context.packageName)
