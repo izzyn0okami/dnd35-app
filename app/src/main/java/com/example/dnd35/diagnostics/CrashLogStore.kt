@@ -65,6 +65,7 @@ object CrashLogStore {
             FileOutputStream(file, true).bufferedWriter(Charsets.UTF_8).use { writer ->
                 writer.appendLine("[$timestamp] [$category] $message")
                 writer.appendLine("App: ${context.packageName}")
+                writer.appendLine("Versão: ${runCatching { context.packageManager.getPackageInfo(context.packageName, 0).versionName }.getOrNull() ?: "desconhecida"}")
                 writer.appendLine("Android: ${android.os.Build.VERSION.RELEASE} (API ${android.os.Build.VERSION.SDK_INT})")
                 writer.appendLine("Dispositivo: ${android.os.Build.MANUFACTURER} ${android.os.Build.MODEL}")
                 if (stack.isNotBlank()) writer.appendLine(stack)
@@ -95,7 +96,8 @@ object CrashLogStore {
             buildString {
                 appendLine("D&D 3.5 — Relatório de diagnóstico")
                 appendLine("Gerado em: ${Date()}")
-                appendLine("Versão: ${context.packageName}")
+                appendLine("Pacote: ${context.packageName}")
+                appendLine("Versão: ${runCatching { context.packageManager.getPackageInfo(context.packageName, 0).versionName }.getOrNull() ?: "desconhecida"}")
                 appendLine("Android: ${android.os.Build.VERSION.RELEASE} (API ${android.os.Build.VERSION.SDK_INT})")
                 appendLine("Dispositivo: ${android.os.Build.MANUFACTURER} ${android.os.Build.MODEL}")
                 appendLine()
