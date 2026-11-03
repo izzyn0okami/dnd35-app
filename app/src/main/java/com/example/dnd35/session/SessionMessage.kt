@@ -293,12 +293,18 @@ sealed class SessionMessage {
  * tamanho em bytes seguido do conteúdo UTF-8. Evita qualquer ambiguidade com quebras de linha
  * dentro do JSON e funciona de forma idêntica em testes de JVM puro e no app em si.
  */
+class SessionProtocolException(message: String, cause: Throwable? = null) : IOException(message, cause)
+
 object SessionWire {
     fun write(out: DataOutputStream, message: SessionMessage) {
         val bytes = message.toJson().toByteArray(Charsets.UTF_8)
-        out.writeInt(bytes.size)
-        out.write(bytes)
-        out.flush()
+        // Uma conexão pode receber mensagens de várias corrotinas. O frame inteiro
+        // (tamanho + payload + flush) precisa ser atômico para não intercalar bytes.
+        synchronized(out) {
+            out.writeInt(bytes.size)
+            out.write(bytes)
+            out.flush()
+        }
     }
 
     /** Retorna `null` se a conexão foi fechada corretamente (fim do stream). */
@@ -308,10 +314,13 @@ object SessionWire {
         } catch (e: EOFException) {
             return null
         }
-        if (length <= 0 || length > MAX_MESSAGE_BYTES) return null
+        if (length <= 0 || length > MAX_MESSAGE_BYTES) {
+            throw SessionProtocolException("Tamanho de mensagem inválido: $length bytes.")
+        }
         val bytes = ByteArray(length)
         input.readFully(bytes)
         return SessionMessage.fromJson(String(bytes, Charsets.UTF_8))
+            ?: throw SessionProtocolException("Mensagem recebida contém JSON inválido ou tipo desconhecido.")
     }
 
     private const val MAX_MESSAGE_BYTES = 1 shl 20 // 1 MiB — generoso para listas de participantes
