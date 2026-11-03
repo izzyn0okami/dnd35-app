@@ -2,6 +2,7 @@ package com.example.dnd35.session
 
 import com.example.dnd35.model.CharacterInventoryItem
 import com.example.dnd35.model.CharacterJsonAdapters
+import com.example.dnd35.diagnostics.CrashLogStore
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -185,7 +186,15 @@ class SessionClient {
                 }
                 _state.value = SessionClientState.Disconnected("Conexão encerrada pelo Mestre.")
             } catch (e: IOException) {
-                _state.value = SessionClientState.Disconnected(e.message ?: "Não foi possível conectar.")
+                CrashLogStore.record("MULTIPLAYER_CLIENT", "Conexão interrompida ou protocolo inválido", e)
+                _state.value = SessionClientState.Disconnected(
+                    e.message?.takeIf { it.isNotBlank() } ?: "Falha de comunicação com o Mestre."
+                )
+            } catch (e: Exception) {
+                CrashLogStore.record("MULTIPLAYER_CLIENT", "Erro inesperado no cliente multiplayer", e)
+                _state.value = SessionClientState.Disconnected(
+                    "Erro inesperado na comunicação: ${e.message ?: e.javaClass.simpleName}"
+                )
             }
         }
     }
@@ -207,7 +216,7 @@ class SessionClient {
         scope.launch {
             runCatching {
                 SessionWire.write(out, SessionMessage.ActionRequested(kind, summary, characterJson, combatantId, hpDelta, lootItemId, shopItemId))
-            }
+            }.onFailure { CrashLogStore.record("MULTIPLAYER_CLIENT", "Falha ao enviar pedido de ação", it) }
         }
     }
 
@@ -216,6 +225,7 @@ class SessionClient {
         val out = output ?: return
         scope.launch {
             runCatching { SessionWire.write(out, SessionMessage.PrivateMessage(text)) }
+                .onFailure { CrashLogStore.record("MULTIPLAYER_CLIENT", "Falha ao enviar mensagem privada", it) }
         }
     }
 
