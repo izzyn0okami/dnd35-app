@@ -4,6 +4,7 @@ import com.example.dnd35.backup.CharacterBackup
 import com.example.dnd35.model.CharacterEntity
 import com.example.dnd35.model.CharacterInventoryItem
 import com.example.dnd35.model.CharacterJsonAdapters
+import com.example.dnd35.diagnostics.CrashLogStore
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -162,7 +163,9 @@ class SessionServer(
                 }
             }
         } catch (e: IOException) {
-            // Conexão caiu de forma inesperada — tratada abaixo como qualquer outra saída.
+            CrashLogStore.record("MULTIPLAYER_SERVER", "Falha de comunicação com participante ${participantId ?: "não identificado"}", e)
+        } catch (e: Exception) {
+            CrashLogStore.record("MULTIPLAYER_SERVER", "Erro inesperado no processamento de conexão", e)
         } finally {
             val pid = participantId
             val h = handle
@@ -210,7 +213,8 @@ class SessionServer(
             try {
                 SessionWire.write(handle.out, message)
             } catch (e: IOException) {
-                // O próprio loop de leitura desse cliente vai detectar a queda e removê-lo.
+                CrashLogStore.record("MULTIPLAYER_SERVER", "Falha ao transmitir mensagem para ${handle.id}", e)
+                runCatching { handle.socket.close() }
             }
         }
     }
@@ -401,7 +405,8 @@ class SessionServer(
             try {
                 SessionWire.write(handle.out, message)
             } catch (e: IOException) {
-                // Jogador pode ter caído antes da mensagem chegar — o próprio loop dele detecta isso.
+                CrashLogStore.record("MULTIPLAYER_SERVER", "Falha ao enviar mensagem individual para $participantId", e)
+                runCatching { handle.socket.close() }
             }
         }
     }
