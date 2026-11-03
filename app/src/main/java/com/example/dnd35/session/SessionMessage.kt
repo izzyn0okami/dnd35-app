@@ -5,6 +5,7 @@ import org.json.JSONObject
 import java.io.DataInputStream
 import java.io.DataOutputStream
 import java.io.EOFException
+import java.io.IOException
 
 /**
  * Protocolo de mensagens trocadas entre o Mestre (servidor) e os Jogadores (clientes) via socket
