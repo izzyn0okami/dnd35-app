@@ -26,6 +26,7 @@ import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material.icons.filled.AutoStories
 import androidx.compose.material.icons.filled.ContentCopy
 import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.BugReport
 import androidx.compose.material.icons.filled.FileDownload
 import androidx.compose.material.icons.filled.FileUpload
 import androidx.compose.material.icons.filled.FitnessCenter
@@ -72,6 +73,7 @@ import android.widget.Toast
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.dnd35.backup.Dnd35FileKind
 import com.example.dnd35.backup.Dnd35FileTypes
+import com.example.dnd35.diagnostics.CrashLogStore
 import com.example.dnd35.pdf.CharacterPdfExporter
 import com.example.dnd35.ui.dialogs.NewCharacterDialog
 import com.example.dnd35.ui.tabs.FeatsTab
@@ -235,6 +237,19 @@ fun DndMainScreen(
                         expanded = showOverflowMenu,
                         onDismissRequest = { showOverflowMenu = false }
                     ) {
+                        DropdownMenuItem(
+                            text = {
+                                Row(verticalAlignment = Alignment.CenterVertically) {
+                                    Icon(Icons.Default.BugReport, contentDescription = null, modifier = Modifier.size(18.dp))
+                                    Spacer(modifier = Modifier.width(8.dp))
+                                    Text("Exportar logs de diagnóstico")
+                                }
+                            },
+                            onClick = {
+                                showOverflowMenu = false
+                                CrashLogStore.shareLogs(context)
+                            }
+                        )
                         DropdownMenuItem(
                             text = {
                                 Row(verticalAlignment = Alignment.CenterVertically) {
