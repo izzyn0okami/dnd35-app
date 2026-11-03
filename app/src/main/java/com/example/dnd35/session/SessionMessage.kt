@@ -310,16 +310,27 @@ object SessionWire {
 
     /** Retorna `null` se a conexão foi fechada corretamente (fim do stream). */
     fun read(input: DataInputStream): SessionMessage? {
+        // Só EOF antes do primeiro byte representa fechamento limpo. EOF no meio do
+        // cabeçalho ou do payload é corrupção/interrupção e precisa aparecer no diagnóstico.
         val length = try {
-            input.readInt()
+            val first = input.read()
+            if (first == -1) return null
+            (first shl 24) or
+                (input.readUnsignedByte() shl 16) or
+                (input.readUnsignedByte() shl 8) or
+                input.readUnsignedByte()
         } catch (e: EOFException) {
-            return null
+            throw SessionProtocolException("Cabeçalho TCP incompleto.", e)
         }
         if (length <= 0 || length > MAX_MESSAGE_BYTES) {
             throw SessionProtocolException("Tamanho de mensagem inválido: $length bytes.")
         }
         val bytes = ByteArray(length)
-        input.readFully(bytes)
+        try {
+            input.readFully(bytes)
+        } catch (e: EOFException) {
+            throw SessionProtocolException("Payload TCP incompleto: esperado $length bytes.", e)
+        }
         return SessionMessage.fromJson(String(bytes, Charsets.UTF_8))
             ?: throw SessionProtocolException("Mensagem recebida contém JSON inválido ou tipo desconhecido.")
     }
