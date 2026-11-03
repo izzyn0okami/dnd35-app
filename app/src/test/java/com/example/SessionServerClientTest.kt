@@ -10,12 +10,19 @@ import com.example.dnd35.session.RequestKind
 import com.example.dnd35.session.SessionClient
 import com.example.dnd35.session.SessionClientState
 import com.example.dnd35.session.SessionServer
+import com.example.dnd35.session.SessionMessage
+import com.example.dnd35.session.SessionWire
 import kotlinx.coroutines.CoroutineStart
 import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.mapNotNull
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withTimeout
+import java.io.ByteArrayInputStream
+import java.io.ByteArrayOutputStream
+import java.io.DataInputStream
+import java.io.DataOutputStream
+import java.util.concurrent.Executors
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
@@ -31,6 +38,49 @@ import org.robolectric.annotation.Config
 @RunWith(RobolectricTestRunner::class)
 @Config(sdk = [35])
 class SessionServerClientTest {
+
+    @Test
+    fun `escritas concorrentes preservam cada frame TCP`() {
+        val bytes = ByteArrayOutputStream()
+        val output = DataOutputStream(bytes)
+        val workers = 8
+        val messagesPerWorker = 100
+        val executor = Executors.newFixedThreadPool(workers)
+        try {
+            val tasks = (0 until workers).map { worker ->
+                executor.submit {
+                    repeat(messagesPerWorker) { index ->
+                        SessionWire.write(output, SessionMessage.PrivateMessage("$worker:$index"))
+                    }
+                }
+            }
+            tasks.forEach { it.get() }
+        } finally {
+            executor.shutdownNow()
+        }
+
+        val input = DataInputStream(ByteArrayInputStream(bytes.toByteArray()))
+        val received = mutableSetOf<String>()
+        repeat(workers * messagesPerWorker) {
+            val message = SessionWire.read(input) as SessionMessage.PrivateMessage
+            assertTrue("Mensagem duplicada: ${message.text}", received.add(message.text))
+        }
+        assertEquals(workers * messagesPerWorker, received.size)
+        assertEquals(null, SessionWire.read(input))
+    }
+
+    @Test
+    fun `frame com tamanho invalido gera erro de protocolo em vez de desconexao silenciosa`() {
+        val bytes = ByteArrayOutputStream()
+        DataOutputStream(bytes).writeInt(0)
+        val input = DataInputStream(ByteArrayInputStream(bytes.toByteArray()))
+        try {
+            SessionWire.read(input)
+            throw AssertionError("Era esperado SessionProtocolException.")
+        } catch (expected: com.example.dnd35.session.SessionProtocolException) {
+            assertTrue(expected.message!!.contains("inválido"))
+        }
+    }
 
     @Test
     fun `jogador conecta, recebe Welcome e aparece no roster do Mestre`() = runBlocking {
