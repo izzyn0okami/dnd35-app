@@ -1736,9 +1736,9 @@ class ExampleUnitTest {
         inventoryJson = CharacterJsonAdapters.serializeInventory(listOf(armor, shield))
       )
     )
-    println("DIAGNOSTICO_CA total=${stats.totalAc}, raca=${stats.character.race}, racaDex=${stats.raceInfo.dexMod}, dexBase=${stats.character.baseDex}, bonusDexFicha=${stats.character.modDexBonus}, dexTotal=${stats.totalDex}, bonusDexDerivado=${stats.totalDex - stats.character.baseDex - stats.raceInfo.dexMod}, dexMod=${stats.dexMod}, dexEfetiva=${stats.effectiveDexForAc}, itens=${stats.inventory.joinToString { it.name + ":" + it.category + ":" + it.effectiveArmorClassBonus() + ":" + it.damageOrAc + ":" + it.notes }}, armadura=${stats.armorBonusTotal}, escudo=${stats.shieldBonusTotal}, natural=${stats.naturalArmorTotal}, deflexao=${stats.deflectionBonusTotal}, misc=${stats.character.miscAcBonus}, tamanho=${stats.character.size}, modTamanho=${Dnd35Rules.getArmorClassSizeModifier(stats.character.size)}, carga=${stats.encumbrance}")
     assertEquals(4, stats.armorBonusTotal)
     assertEquals(2, stats.shieldBonusTotal)
+    assertEquals("O bônus +4 CA e a anotação Des Max não podem conceder +4 DES", 10, stats.totalDex)
     assertEquals(
       "CA=${stats.totalAc}; DES efetiva=${stats.effectiveDexForAc}; armadura=${stats.armorBonusTotal}; " +
         "escudo=${stats.shieldBonusTotal}; armadura natural=${stats.naturalArmorTotal}; " +
