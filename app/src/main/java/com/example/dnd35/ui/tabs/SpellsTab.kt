@@ -222,11 +222,13 @@ fun SpellsTab(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.spacedBy(8.dp)
                     ) {
+                        // Um cartão por classe e círculo; o nome da classe só aparece na multiclasse.
                         items(stats.spellSlots.filter { it.totalSlots > 0 || it.usedSlots > 0 }) { slot ->
                             SpellSlotCard(
                                 slot = slot,
-                                onUseSlot = { viewModel.adjustSpellSlotUsed(slot.level, 1, slot.totalSlots) },
-                                onRecoverSlot = { viewModel.adjustSpellSlotUsed(slot.level, -1, slot.totalSlots) }
+                                classLabel = slot.className.takeIf { stats.casterClasses.size > 1 },
+                                onUseSlot = { viewModel.adjustSpellSlotUsed(slot, 1, stats.spellSlots) },
+                                onRecoverSlot = { viewModel.adjustSpellSlotUsed(slot, -1, stats.spellSlots) }
                             )
                         }
                     }
@@ -362,6 +364,7 @@ private fun knownSpellsSummary(c: com.example.dnd35.model.CasterClassInfo): Stri
 @Composable
 private fun SpellSlotCard(
     slot: SpellSlotInfo,
+    classLabel: String? = null,
     onUseSlot: () -> Unit,
     onRecoverSlot: () -> Unit
 ) {
@@ -377,6 +380,14 @@ private fun SpellSlotCard(
             modifier = Modifier.padding(8.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
+            if (!classLabel.isNullOrBlank()) {
+                Text(
+                    text = classLabel,
+                    style = MaterialTheme.typography.labelSmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    maxLines = 1
+                )
+            }
             Text(
                 text = if (slot.level == 0) "Nível 0" else "Nível ${slot.level}",
                 style = MaterialTheme.typography.labelSmall,

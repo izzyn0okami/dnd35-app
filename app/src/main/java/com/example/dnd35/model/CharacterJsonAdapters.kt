@@ -384,6 +384,8 @@ object CharacterJsonAdapters {
             obj.put("level", slot.level)
             obj.put("totalSlots", slot.totalSlots)
             obj.put("usedSlots", slot.usedSlots)
+            // Sem className = formato antigo (soma de todas as classes); lido como "legado".
+            if (slot.className.isNotBlank()) obj.put("className", slot.className)
             array.put(obj)
         }
         return array.toString()
@@ -405,7 +407,8 @@ object CharacterJsonAdapters {
                     SpellSlotInfo(
                         level = obj.optInt("level", i),
                         totalSlots = obj.optInt("totalSlots", 0),
-                        usedSlots = obj.optInt("usedSlots", 0)
+                        usedSlots = obj.optInt("usedSlots", 0),
+                        className = obj.optString("className", "")
                     )
                 )
             }

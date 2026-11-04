@@ -200,7 +200,10 @@ internal fun LazyListScope.preparedSection(
             }
         } else {
             items(spellsOfClass) { spell ->
-                val slot = stats.spellSlots.firstOrNull { it.level == spell.level }
+                // Espaço da PRÓPRIA classe desta seção: espaços de outra classe não conjuram esta magia.
+                val slot = stats.spellSlots.firstOrNull {
+                    it.level == spell.level && it.className.equals(info.className, ignoreCase = true)
+                }
                 val remaining = slot?.let { (it.totalSlots - it.usedSlots).coerceAtLeast(0) } ?: 0
                 Card(
                     modifier = Modifier
@@ -242,8 +245,8 @@ internal fun LazyListScope.preparedSection(
                             ) { Icon(Icons.Default.Add, contentDescription = "Preparar mais uma vez: ${spell.name}", modifier = Modifier.size(16.dp)) }
                         }
                         OutlinedButton(
-                            onClick = { viewModel.castSpell(spell.id, spell.level, slot?.totalSlots ?: 0) },
-                            enabled = remaining > 0,
+                            onClick = { if (slot != null) viewModel.castSpell(spell.id, slot, stats.spellSlots) },
+                            enabled = slot != null && remaining > 0,
                             contentPadding = ButtonDefaults.TextButtonContentPadding
                         ) { Text("Conjurar", style = MaterialTheme.typography.labelSmall) }
                     }

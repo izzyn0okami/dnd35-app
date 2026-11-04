@@ -746,34 +746,44 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
     }
 
     /**
-     * Conjura uma magia: gasta um espaço do círculo indicado (maxSlots vem do total calculado)
-     * e registra no histórico. Não faz nada se não houver espaço disponível.
+     * Regrava o uso dos espaços a partir da lista calculada (stats.spellSlots), trocando o uso
+     * de [target] (classe + círculo) por [newUsed]. Regravar a lista inteira também converte
+     * fichas antigas (uso somado, sem classe) para o formato por classe.
      */
-    fun castSpell(spellId: String, slotLevel: Int, maxSlots: Int) {
+    private fun slotsJsonWithUsed(allSlots: List<SpellSlotInfo>, target: SpellSlotInfo, newUsed: Int): String {
+        val updated = allSlots
+            .map {
+                if (it.level == target.level && it.className.equals(target.className, ignoreCase = true)) {
+                    it.copy(usedSlots = newUsed)
+                } else it
+            }
+            .filter { it.totalSlots > 0 || it.usedSlots > 0 }
+        return CharacterJsonAdapters.serializeSpellSlots(updated)
+    }
+
+    /**
+     * Conjura uma magia: gasta um espaço de [slot] (círculo de uma classe conjuradora específica,
+     * vindo de stats.spellSlots, junto com [allSlots]) e registra no histórico. Não faz nada se
+     * não houver espaço disponível nessa classe.
+     */
+    fun castSpell(spellId: String, slot: SpellSlotInfo, allSlots: List<SpellSlotInfo>) {
         val curr = _activeCharacter.value ?: return
         val spell = CharacterJsonAdapters.deserializeSpells(curr.spellsJson).firstOrNull { it.id == spellId } ?: return
-        val slots = CharacterJsonAdapters.deserializeSpellSlots(curr.spellSlotsJson)
-        val currentUsed = slots.firstOrNull { it.level == slotLevel }?.usedSlots ?: 0
-        if (currentUsed >= maxSlots) return
-        val newSlots = if (slots.any { it.level == slotLevel }) {
-            slots.map { if (it.level == slotLevel) it.copy(usedSlots = currentUsed + 1) else it }
-        } else {
-            slots + SpellSlotInfo(level = slotLevel, totalSlots = 0, usedSlots = 1)
-        }
+        if (slot.usedSlots >= slot.totalSlots) return
         val history = CharacterJsonAdapters.deserializeSpellHistory(curr.spellHistoryJson).toMutableList()
         history.add(
             SpellCastRecord(
                 spellName = spell.name,
                 spellLevel = spell.level,
-                casterClass = spell.casterClass,
-                slotLevel = slotLevel
+                casterClass = spell.casterClass.ifBlank { slot.className },
+                slotLevel = slot.level
             )
         )
         // Mantém só os registros mais recentes para o histórico não crescer sem limite.
         val trimmed = history.takeLast(MAX_SPELL_HISTORY)
         persistCharacter(
             curr.copy(
-                spellSlotsJson = CharacterJsonAdapters.serializeSpellSlots(newSlots),
+                spellSlotsJson = slotsJsonWithUsed(allSlots, slot, slot.usedSlots + 1),
                 spellHistoryJson = CharacterJsonAdapters.serializeSpellHistory(trimmed)
             )
         )
@@ -784,17 +794,12 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
         persistCharacter(curr.copy(spellHistoryJson = ""))
     }
 
-    // maxSlots vem do total calculado automaticamente (stats.spellSlots), não do que está
-    // salvo na ficha: o total não é mais editado manualmente, só os espaços gastos no dia.
-    fun adjustSpellSlotUsed(level: Int, delta: Int, maxSlots: Int) {
+    // [slot] e [allSlots] vêm do total calculado automaticamente (stats.spellSlots), não do que
+    // está salvo na ficha: o total não é mais editado manualmente, só os espaços gastos no dia.
+    fun adjustSpellSlotUsed(slot: SpellSlotInfo, delta: Int, allSlots: List<SpellSlotInfo>) {
         val curr = _activeCharacter.value ?: return
-        val list = CharacterJsonAdapters.deserializeSpellSlots(curr.spellSlotsJson).map {
-            if (it.level == level) {
-                val newUsed = (it.usedSlots + delta).coerceIn(0, maxSlots)
-                it.copy(usedSlots = newUsed)
-            } else it
-        }
-        persistCharacter(curr.copy(spellSlotsJson = CharacterJsonAdapters.serializeSpellSlots(list)))
+        val newUsed = (slot.usedSlots + delta).coerceIn(0, slot.totalSlots)
+        persistCharacter(curr.copy(spellSlotsJson = slotsJsonWithUsed(allSlots, slot, newUsed)))
     }
 
     // Foto do personagem
