@@ -495,3 +495,13 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - A miniatura passou a usar tamanho fixo de 88 dp e `ContentScale.Fit`, preservando melhor a imagem completa de armas, armaduras e outros equipamentos.
 - Mantidos os callbacks existentes de atribuição de espaço, edição, exclusão e exportação. Itens sem fotografia continuam sem miniatura e utilizam o mesmo alinhamento de conteúdo.
 - **Validação pendente:** CI Android após a alteração e inspeção manual em aparelho, incluindo itens com/sem foto, nomes longos, descrições extensas, itens equipados e itens fora da mochila. A captura de tela original deve ser comparada com a nova versão antes do merge.
+
+### Separar dano de armas e bônus de CA (2026-11-03)
+- Corrigida a classificação de ataques: o filtro anterior usava `startsWith("Arma")`, que também aceitava a categoria `Armaduras`. A aba Combate e a exportação PDF agora reconhecem somente as categorias exatas `Arma/Armas`.
+- O modelo do inventário agora possui campos próprios `damage` e `armorClassBonus`. O campo legado `damageOrAc` permanece serializado para compatibilidade com versões anteriores e para bônus/efeitos de itens mágicos e outros equipamentos.
+- A leitura de fichas antigas migra o valor legado para o campo tipado conforme a categoria: armas → dano; armaduras e escudos → bônus de CA. A exportação grava os campos tipados e mantém o campo legado, sem descartar dados existentes.
+- O formulário de item personalizado mostra **Dano** para armas, **Bônus de armadura à CA** para armaduras, **Bônus de escudo à CA** para escudos e mantém **Bônus / efeito** para as demais categorias.
+- O cálculo de CA só considera a categoria real do equipamento; o espaço Corpo, por si só, não transforma uma vestimenta em armadura. Armaduras e escudos alimentam seus respectivos bônus de CA, sem confundir seus valores com dano.
+- O inventário e a exportação PDF exibem o atributo apropriado para cada categoria. O catálogo do Livro do Jogador mantém seu esquema de origem `damageOrAc`, que é convertido para os campos tipados ao adicionar o item à ficha.
+- Incluídos testes de regressão para classificação exata de categorias, migração JSON antiga, serialização dos campos tipados, cálculo separado de bônus de armadura/escudo e vestimenta equipada no espaço Corpo.
+- **Validação pendente:** CI Android (testes e compilação) e inspeção manual com a Túnica Hyliana, uma arma, uma armadura e um escudo; verificar também edição e reabertura de fichas antigas.
