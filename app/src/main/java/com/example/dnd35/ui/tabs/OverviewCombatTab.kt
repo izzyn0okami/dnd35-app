@@ -53,6 +53,8 @@ import com.example.dnd35.model.CalculatedCharacterStats
 import com.example.dnd35.model.CharacterEntity
 import com.example.dnd35.model.Dnd35Rules
 import com.example.dnd35.model.remainingAmmunitionUnits
+import com.example.dnd35.model.isWeaponInventoryCategory
+import com.example.dnd35.model.effectiveDamage
 import com.example.dnd35.ui.components.CharacterAvatar
 import com.example.dnd35.ui.components.HpBarSection
 import com.example.dnd35.ui.components.PhotoPickerModal
