@@ -103,7 +103,7 @@ object ItemBackupIo {
             if (uri.scheme != "file") return null
             val file = File(uri.path ?: return null).canonicalFile
             val directory = File(context.filesDir, PHOTO_DIR).canonicalFile
-            if (file.parentFile != directory || !file.isFile || file.length() !in 1..MAX_IMAGE_BYTES.toLong()) {
+            if (file.parentFile != directory || !file.isFile || file.length() !in 1L..MAX_IMAGE_BYTES.toLong()) {
                 return null
             }
             val bytes = file.readBytes()
