@@ -283,7 +283,7 @@ object CharacterCalculator {
             if (!isEquipped) continue
 
             val slot = item.equippedSlot
-            val props = "${item.effectiveDamage()} ${item.effectiveArmorClassBonus()} ${item.notes}"
+            val props = "${item.effectiveDamage()} ${item.effectiveArmorClassBonus()} ${item.damageOrAc} ${item.notes}"
 
             // Somente a categoria Armaduras concede bônus de armadura; Corpo também pode conter vestimentas.
             if (isArmorInventoryCategory(item.category)) {
