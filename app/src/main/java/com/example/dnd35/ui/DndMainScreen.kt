@@ -485,7 +485,7 @@ fun DndMainScreen(
                 Text(
                     when (kind) {
                         Dnd35FileKind.CHARACTER -> "Este arquivo parece ser uma ficha de personagem. Importar agora?"
-                        Dnd35FileKind.ITEM -> "Este arquivo parece ser um item de inventário. Adicionar à ficha ativa (${activeCharacter?.name ?: "nenhuma selecionada"})?"
+                        Dnd35FileKind.ITEM -> "Este arquivo parece ser um item de inventário. Escolha em qual ficha deseja adicioná-lo."
                         null -> "Não foi possível reconhecer este arquivo como ficha ou item do app."
                     }
                 )
