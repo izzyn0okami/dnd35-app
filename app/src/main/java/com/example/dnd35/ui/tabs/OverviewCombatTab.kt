@@ -637,7 +637,7 @@ fun OverviewCombatTab(
 
                     Spacer(modifier = Modifier.height(8.dp))
 
-                    val weapons = stats.inventory.filter { it.category.startsWith("Arma", ignoreCase = true) }
+                    val weapons = stats.inventory.filter { isWeaponInventoryCategory(it.category) }
                     if (weapons.isEmpty()) {
                         val unarmedBonus = parseFirstAttackBonus(stats.meleeAttackDisplay)
                         val unarmedDamage = stats.monkUnarmedDamage?.let { "$it+${stats.strMod}" } ?: "1d3+${stats.strMod} (Concussão)"
@@ -659,10 +659,10 @@ fun OverviewCombatTab(
                                 weaponName = w.name,
                                 attackBonus = atkBonus,
                                 attackProgression = if (isRanged) stats.rangedAttackDisplay else stats.meleeAttackDisplay,
-                                damageNotation = w.damageOrAc,
+                                damageNotation = w.effectiveDamage(),
                                 notes = w.notes,
                                 onRoll = {
-                                    diceRollTarget = Triple("Ataque com ${w.name}", atkBonus, w.damageOrAc)
+                                    diceRollTarget = Triple("Ataque com ${w.name}", atkBonus, w.effectiveDamage())
                                 }
                             )
                         }
