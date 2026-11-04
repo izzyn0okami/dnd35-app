@@ -53,6 +53,8 @@ import com.example.dnd35.model.CalculatedCharacterStats
 import com.example.dnd35.model.CharacterEntity
 import com.example.dnd35.model.Dnd35Rules
 import com.example.dnd35.model.remainingAmmunitionUnits
+import com.example.dnd35.model.isWeaponInventoryCategory
+import com.example.dnd35.model.effectiveDamage
 import com.example.dnd35.ui.components.CharacterAvatar
 import com.example.dnd35.ui.components.HpBarSection
 import com.example.dnd35.ui.components.PhotoPickerModal
@@ -637,7 +639,7 @@ fun OverviewCombatTab(
 
                     Spacer(modifier = Modifier.height(8.dp))
 
-                    val weapons = stats.inventory.filter { it.category.startsWith("Arma", ignoreCase = true) }
+                    val weapons = stats.inventory.filter { isWeaponInventoryCategory(it.category) }
                     if (weapons.isEmpty()) {
                         val unarmedBonus = parseFirstAttackBonus(stats.meleeAttackDisplay)
                         val unarmedDamage = stats.monkUnarmedDamage?.let { "$it+${stats.strMod}" } ?: "1d3+${stats.strMod} (Concussão)"
@@ -659,10 +661,10 @@ fun OverviewCombatTab(
                                 weaponName = w.name,
                                 attackBonus = atkBonus,
                                 attackProgression = if (isRanged) stats.rangedAttackDisplay else stats.meleeAttackDisplay,
-                                damageNotation = w.damageOrAc,
+                                damageNotation = w.effectiveDamage(),
                                 notes = w.notes,
                                 onRoll = {
-                                    diceRollTarget = Triple("Ataque com ${w.name}", atkBonus, w.damageOrAc)
+                                    diceRollTarget = Triple("Ataque com ${w.name}", atkBonus, w.effectiveDamage())
                                 }
                             )
                         }

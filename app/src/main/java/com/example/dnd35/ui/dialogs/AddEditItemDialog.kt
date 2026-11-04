@@ -62,6 +62,11 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.example.dnd35.model.CharacterInventoryItem
 import com.example.dnd35.model.Dnd35Rules
+import com.example.dnd35.model.effectiveDamage
+import com.example.dnd35.model.effectiveArmorClassBonus
+import com.example.dnd35.model.isWeaponInventoryCategory
+import com.example.dnd35.model.isArmorInventoryCategory
+import com.example.dnd35.model.isShieldInventoryCategory
 
 @Composable
 fun AddEditItemDialog(
@@ -134,7 +139,9 @@ fun AddEditItemDialog(
     var quantityText by remember { mutableStateOf("${itemToEdit?.quantity ?: 1}") }
     var weightText by remember { mutableStateOf("${itemToEdit?.weightLb ?: 1.0f}") }
     var costText by remember { mutableStateOf("${itemToEdit?.costGp ?: 0.0f}") }
-    var damageOrAc by remember { mutableStateOf(itemToEdit?.damageOrAc ?: "") }
+    var damage by remember { mutableStateOf(itemToEdit?.effectiveDamage().orEmpty()) }
+    var armorClassBonus by remember { mutableStateOf(itemToEdit?.effectiveArmorClassBonus().orEmpty()) }
+    var otherBonus by remember { mutableStateOf(itemToEdit?.damageOrAc.orEmpty()) }
     var notes by remember { mutableStateOf(itemToEdit?.notes ?: "") }
     var equipped by remember { mutableStateOf(itemToEdit?.equipped ?: false) }
     val parsedQuantity = quantityText.toIntOrNull()
@@ -213,6 +220,10 @@ fun AddEditItemDialog(
                                             weightLb = preset.weightLb,
                                             costGp = preset.costGp,
                                             damageOrAc = preset.damageOrAc,
+                                            damage = preset.damageOrAc.takeIf { isWeaponInventoryCategory(preset.category) }.orEmpty(),
+                                            armorClassBonus = preset.damageOrAc.takeIf {
+                                                isArmorInventoryCategory(preset.category) || isShieldInventoryCategory(preset.category)
+                                            }.orEmpty(),
                                             equipped = isDefaultEquipped,
                                             equippedSlot = preset.defaultSlot,
                                             notes = preset.properties
@@ -427,14 +438,32 @@ fun AddEditItemDialog(
                                 singleLine = true
                             )
                             Spacer(modifier = Modifier.padding(horizontal = 4.dp))
-                            OutlinedTextField(
-                                value = damageOrAc,
-                                onValueChange = { damageOrAc = it },
-                                label = { Text("Dano ou CA") },
-                                placeholder = { Text("ex: 1d8 / +4 CA") },
-                                modifier = Modifier.weight(1.2f),
-                                singleLine = true
-                            )
+                            when {
+                                isWeaponInventoryCategory(category) -> OutlinedTextField(
+                                    value = damage,
+                                    onValueChange = { damage = it },
+                                    label = { Text("Dano") },
+                                    placeholder = { Text("ex: 1d8 (19-20/x2)") },
+                                    modifier = Modifier.weight(1.2f),
+                                    singleLine = true
+                                )
+                                isArmorInventoryCategory(category) || isShieldInventoryCategory(category) -> OutlinedTextField(
+                                    value = armorClassBonus,
+                                    onValueChange = { armorClassBonus = it },
+                                    label = { Text(if (isShieldInventoryCategory(category)) "Bônus de escudo à CA" else "Bônus de armadura à CA") },
+                                    placeholder = { Text(if (isShieldInventoryCategory(category)) "ex: +2" else "ex: +4") },
+                                    modifier = Modifier.weight(1.2f),
+                                    singleLine = true
+                                )
+                                else -> OutlinedTextField(
+                                    value = otherBonus,
+                                    onValueChange = { otherBonus = it },
+                                    label = { Text("Bônus / efeito") },
+                                    placeholder = { Text("ex: +2 Deflexão") },
+                                    modifier = Modifier.weight(1.2f),
+                                    singleLine = true
+                                )
+                            }
                         }
 
                         Spacer(modifier = Modifier.height(8.dp))
@@ -473,7 +502,13 @@ fun AddEditItemDialog(
                             quantity = parsedQuantity ?: return@Button,
                             weightLb = parsedWeight ?: return@Button,
                             costGp = parsedCost ?: return@Button,
-                            damageOrAc = damageOrAc,
+                            damageOrAc = when {
+                                isWeaponInventoryCategory(category) -> damage
+                                isArmorInventoryCategory(category) || isShieldInventoryCategory(category) -> armorClassBonus
+                                else -> otherBonus
+                            },
+                            damage = if (isWeaponInventoryCategory(category)) damage else "",
+                            armorClassBonus = if (isArmorInventoryCategory(category) || isShieldInventoryCategory(category)) armorClassBonus else "",
                             equipped = equipped,
                             equippedSlot = if (equipped && equippedSlot == Dnd35Rules.EquipmentSlots.NONE) Dnd35Rules.EquipmentSlots.MAIN_HAND else equippedSlot,
                             notes = notes,

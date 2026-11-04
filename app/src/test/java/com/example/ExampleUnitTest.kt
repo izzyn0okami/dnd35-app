@@ -14,6 +14,9 @@ import com.example.dnd35.model.SkillPointLevelRecord
 import com.example.dnd35.model.parseSkillPointAllocations
 import com.example.dnd35.model.parseWholeSkillPointBudget
 import com.example.dnd35.model.Dnd35Rules
+import com.example.dnd35.model.isWeaponInventoryCategory
+import com.example.dnd35.model.effectiveDamage
+import com.example.dnd35.model.effectiveArmorClassBonus
 import com.example.dnd35.model.Dnd35Rules.SaveProgression
 import com.example.dnd35.model.Dnd35Rules.BabProgression
 import org.junit.Assert.assertEquals
@@ -1678,4 +1681,89 @@ class ExampleUnitTest {
       calculateHpAdjustment(currentHp = 3, maxHp = 20, tempHp = 2, delta = Int.MIN_VALUE)
     )
   }
+
+  @Test
+  fun armorCategoryIsNeverClassifiedAsAWeapon() {
+    assertTrue(isWeaponInventoryCategory("Armas"))
+    assertTrue(!isWeaponInventoryCategory("Armaduras"))
+    assertTrue(!isWeaponInventoryCategory("Itens de Aventura"))
+    assertTrue(!isWeaponInventoryCategory("Escudos"))
+  }
+
+  @Test
+  fun legacyInventoryDamageOrAcMigratesToTheCorrectTypedField() {
+    val legacyJson = """[
+      {"id":"old-sword","name":"Espada","category":"Armas","damageOrAc":"1d8 (19-20/x2)"},
+      {"id":"old-armor","name":"Brunea","category":"Armaduras","damageOrAc":"+4 CA"},
+      {"id":"old-shield","name":"Escudo","category":"Escudos","damageOrAc":"+2 CA"}
+    ]"""
+
+    val items = CharacterJsonAdapters.deserializeInventory(legacyJson)
+    assertEquals("1d8 (19-20/x2)", items[0].effectiveDamage())
+    assertEquals("", items[0].effectiveArmorClassBonus())
+    assertEquals("", items[1].effectiveDamage())
+    assertEquals("+4 CA", items[1].effectiveArmorClassBonus())
+    assertEquals("+2 CA", items[2].effectiveArmorClassBonus())
+
+    val roundTrip = CharacterJsonAdapters.deserializeInventory(CharacterJsonAdapters.serializeInventory(items))
+    assertEquals("1d8 (19-20/x2)", roundTrip[0].damage)
+    assertEquals("+4 CA", roundTrip[1].armorClassBonus)
+    assertEquals("+2 CA", roundTrip[2].armorClassBonus)
+  }
+
+  @Test
+  fun armorAndShieldApplyOnlyTheirOwnTypedArmorClassBonuses() {
+    val armor = CharacterInventoryItem(
+      id = "armor",
+      name = "Brunea",
+      category = "Armaduras",
+      equipped = true,
+      equippedSlot = Dnd35Rules.EquipmentSlots.ARMOR_BODY,
+      armorClassBonus = "+4",
+      notes = "Des Max +3, Pen -4"
+    )
+    val shield = CharacterInventoryItem(
+      id = "shield",
+      name = "Escudo grande",
+      category = "Escudos",
+      equipped = true,
+      equippedSlot = Dnd35Rules.EquipmentSlots.OFF_HAND,
+      armorClassBonus = "+2"
+    )
+    val stats = CharacterCalculator.compute(
+      CharacterEntity(
+        baseDex = 10,
+        inventoryJson = CharacterJsonAdapters.serializeInventory(listOf(armor, shield))
+      )
+    )
+    assertEquals(4, stats.armorBonusTotal)
+    assertEquals(2, stats.shieldBonusTotal)
+    assertEquals("O bônus +4 CA e a anotação Des Max não podem conceder +4 DES", 10, stats.totalDex)
+    assertEquals(
+      "CA=${stats.totalAc}; DES efetiva=${stats.effectiveDexForAc}; armadura=${stats.armorBonusTotal}; " +
+        "escudo=${stats.shieldBonusTotal}; armadura natural=${stats.naturalArmorTotal}; " +
+        "deflexão=${stats.deflectionBonusTotal}; tamanho=${Dnd35Rules.getArmorClassSizeModifier(stats.character.size)}",
+      16,
+      stats.totalAc
+    ) // CA 10 + DES 0 + armadura +4 + escudo +2
+  }
+
+  @Test
+  fun ordinaryClothingInBodySlotDoesNotBecomeArmorOrWeapon() {
+    val tunic = CharacterInventoryItem(
+      id = "hylian-tunic",
+      name = "Túnica Hyliana",
+      category = "Itens de Aventura",
+      equipped = true,
+      equippedSlot = Dnd35Rules.EquipmentSlots.ARMOR_BODY
+    )
+    val stats = CharacterCalculator.compute(
+      CharacterEntity(inventoryJson = CharacterJsonAdapters.serializeInventory(listOf(tunic)))
+    )
+    assertTrue(!isWeaponInventoryCategory(tunic.category))
+    assertEquals(0, stats.armorBonusTotal)
+    assertEquals(0, stats.shieldBonusTotal)
+    assertEquals(11, stats.totalAc) // CA base 10 + modificador de DES +1; a túnica não altera a CA
+  }
+
 }

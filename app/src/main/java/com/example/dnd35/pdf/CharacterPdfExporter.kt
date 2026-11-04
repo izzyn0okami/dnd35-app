@@ -18,6 +18,11 @@ import com.example.dnd35.model.CalculatedCharacterStats
 import com.example.dnd35.model.CharacterCalculator
 import com.example.dnd35.model.CharacterEntity
 import com.example.dnd35.model.Dnd35Rules
+import com.example.dnd35.model.isWeaponInventoryCategory
+import com.example.dnd35.model.effectiveDamage
+import com.example.dnd35.model.effectiveArmorClassBonus
+import com.example.dnd35.model.isArmorInventoryCategory
+import com.example.dnd35.model.isShieldInventoryCategory
 import java.io.File
 import java.util.Locale
 import java.io.FileOutputStream
@@ -217,7 +222,7 @@ object CharacterPdfExporter {
             canvas1.drawRoundRect(RectF(30f, weaponY, pageWidth - 30f, weaponY + 120f), 4f, 4f, fillBoxPaint)
             canvas1.drawRoundRect(RectF(30f, weaponY, pageWidth - 30f, weaponY + 120f), 4f, 4f, borderPaint)
             canvas1.drawRect(RectF(30f, weaponY, pageWidth - 30f, weaponY + 20f), goldBannerPaint)
-            val equippedWeapons = stats.inventory.filter { it.equipped && it.category.startsWith("Arma", ignoreCase = true) }
+            val equippedWeapons = stats.inventory.filter { it.equipped && isWeaponInventoryCategory(it.category) }
             canvas1.drawText("ATAQUES & ARMAS (${equippedWeapons.size} cadastradas; máx. 4 exibidas)", 40f, weaponY + 14f, headerPaint)
             var wRowY = weaponY + 36f
             if (equippedWeapons.isEmpty()) {
@@ -226,7 +231,7 @@ object CharacterPdfExporter {
                 for (w in equippedWeapons.take(4)) {
                     val atkBonus = stats.bab + stats.strMod
                     val atkStr = if (atkBonus >= 0) "+$atkBonus" else "$atkBonus"
-                    canvas1.drawText("${w.name}  •  Ataque: $atkStr  •  Dano: ${w.damageOrAc}  •  ${w.notes}", 42f, wRowY, boldBodyPaint)
+                    canvas1.drawText("${w.name}  •  Ataque: $atkStr  •  Dano: ${w.effectiveDamage()}  •  ${w.notes}", 42f, wRowY, boldBodyPaint)
                     wRowY += 20f
                 }
             }
@@ -354,8 +359,13 @@ object CharacterPdfExporter {
                 val eq = if (item.equipped || item.equippedSlot != Dnd35Rules.EquipmentSlots.NONE) "[${item.equippedSlot.take(7)}] " else ""
                 val itemStr = "$eq${item.name} (x${item.quantity}) - ${item.weightLb * item.quantity} lb"
                 canvas2.drawText(itemStr, col2Left + 10f, invY, boldBodyPaint)
-                if (item.damageOrAc.isNotBlank() || item.notes.isNotBlank()) {
-                    canvas2.drawText("${item.damageOrAc} ${item.notes}".take(40), col2Left + 15f, invY + 11f, subtitlePaint)
+                val itemCombatStat = when {
+                    isWeaponInventoryCategory(item.category) -> item.effectiveDamage()
+                    isArmorInventoryCategory(item.category) || isShieldInventoryCategory(item.category) -> item.effectiveArmorClassBonus()
+                    else -> item.damageOrAc
+                }
+                if (itemCombatStat.isNotBlank() || item.notes.isNotBlank()) {
+                    canvas2.drawText("$itemCombatStat ${item.notes}".take(40), col2Left + 15f, invY + 11f, subtitlePaint)
                 }
                 invY += 22f
             }
