@@ -3,7 +3,7 @@
 O app não faz backup automático do Android (`allowBackup="false"`). Para guardar ou levar fichas
 para outro aparelho, use o menu **⋮** na barra superior:
 
-- **Exportar Ficha (arquivo)**: grava a ficha ativa em um arquivo `.json`.
+- **Exportar Ficha (arquivo)**: grava a ficha ativa em um arquivo `.fichadnd35`.
 - **Exportar Todas as Fichas**: grava todas as fichas em um único arquivo.
 - **Importar Fichas (arquivo)**: lê um arquivo exportado e cria **novas** fichas. Nada é sobrescrito;
   fichas com o mesmo nome continuam existindo lado a lado.
@@ -11,7 +11,7 @@ para outro aparelho, use o menu **⋮** na barra superior:
 O arquivo é escolhido pelo seletor de arquivos do Android, então pode ser salvo no Drive, enviado por
 mensageiro ou guardado no computador.
 
-## Formato (versão 1)
+## Formato de ficha (versão 1)
 
 ```json
 {
@@ -42,3 +42,19 @@ mensageiro ou guardado no computador.
 Ao mudar o esquema do banco (nova coluna em `CharacterEntity`), atualize `CharacterBackup`
 (exportação e leitura) e `CharacterBackupTest`. Se a mudança não for compatível com a versão 1,
 aumente `FORMAT_VERSION` e mantenha a leitura dos arquivos antigos.
+
+## Exportar e importar itens
+
+Na aba **Carga & Itens**, cada item pode ser exportado individualmente para um arquivo
+`.itemdnd35`. O arquivo contém os dados do item e incorpora a imagem personalizada em Base64,
+quando ela está disponível no armazenamento privado do aplicativo. O caminho local da imagem
+nunca é compartilhado.
+
+Ao importar um item, o usuário escolhe primeiro a ficha de destino. Os itens são acrescentados
+ao inventário dessa ficha, sem substituir os itens existentes; cada item importado recebe um novo
+identificador para evitar colisões. A imagem é extraída para a pasta privada `item_photos` do
+aparelho receptor e o item passa a usar a nova URI local.
+
+Arquivos antigos de item, que contêm apenas o array JSON sem envelope ou imagem incorporada,
+continuam aceitos. Imagens inválidas ou maiores que 5 MB são ignoradas com aviso; os dados do
+item continuam sendo importados. O arquivo completo continua sujeito ao limite geral de 30 MB.
