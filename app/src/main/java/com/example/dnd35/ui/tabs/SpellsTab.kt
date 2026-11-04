@@ -37,10 +37,13 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Tab
+import androidx.compose.material3.TabRow
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -52,9 +55,12 @@ import androidx.compose.ui.unit.dp
 import com.example.dnd35.model.CalculatedCharacterStats
 import com.example.dnd35.model.CharacterEntity
 import com.example.dnd35.model.CharacterSpell
-import com.example.dnd35.model.MagicSchoolParser
+import com.example.dnd35.model.Dnd35Rules
+import com.example.dnd35.model.SpellFilters
+import com.example.dnd35.model.SpellbookRules
 import com.example.dnd35.model.SpellSlotInfo
 import com.example.dnd35.ui.dialogs.AddEditSpellDialog
+import com.example.dnd35.ui.dialogs.SpellDetailDialog
 import com.example.dnd35.viewmodel.CharacterViewModel
 import com.example.ui.theme.DndArcaneBlue
 import com.example.ui.theme.DndCrimson
@@ -71,22 +77,14 @@ fun SpellsTab(
     var spellToEdit by remember { mutableStateOf<CharacterSpell?>(null) }
     var pendingSpellDeleteId by remember { mutableStateOf<String?>(null) }
 
-    // Filtros de busca no grimório do personagem
-    var searchQuery by remember { mutableStateOf("") }
-    var selectedLevelFilter by remember { mutableStateOf<Int?>(null) }
-    var selectedSchoolFilter by remember { mutableStateOf("Todas") }
-    var filterOnlyPrepared by remember { mutableStateOf(false) }
-
-    val schools = listOf("Todas", "Abjuração", "Adivinhação", "Conjuração", "Encantamento", "Evocação", "Ilusão", "Necromancia", "Transmutação", "Universal")
-
-    val filteredSpells = stats.spells.filter { spell ->
-        val matchesText = spell.name.contains(searchQuery, ignoreCase = true) ||
-                spell.description.contains(searchQuery, ignoreCase = true)
-        val matchesLevel = selectedLevelFilter == null || spell.level == selectedLevelFilter
-        val matchesSchool = MagicSchoolParser.matchesBaseSchool(spell.school, selectedSchoolFilter)
-        val matchesPrepared = !filterOnlyPrepared || spell.prepared
-        matchesText && matchesLevel && matchesSchool && matchesPrepared
-    }.sortedBy { it.level }
+    // Seção ativa (Preparadas, Conhecidas, Catálogo, Histórico) e filtros de cada uma
+    var selectedSection by rememberSaveable { mutableStateOf(0) }
+    var knownQuery by remember { mutableStateOf("") }
+    var onlyFavorites by remember { mutableStateOf(false) }
+    var catalogCriteria by remember { mutableStateOf(SpellFilters.Criteria()) }
+    var showMoreFilters by remember { mutableStateOf(false) }
+    var detailSpell by remember { mutableStateOf<Dnd35Rules.PresetSpell?>(null) }
+    var showClearHistory by remember { mutableStateOf(false) }
 
     LazyColumn(
         modifier = Modifier
@@ -237,209 +235,50 @@ fun SpellsTab(
             Spacer(modifier = Modifier.height(12.dp))
         }
 
-        // 2. Barra de Busca e Filtros Avançados
+        // 2. Seções: Preparadas, Conhecidas, Catálogo e Histórico
         item {
-            OutlinedTextField(
-                value = searchQuery,
-                onValueChange = { searchQuery = it },
-                placeholder = { Text("Buscar magia no seu grimório...") },
-                leadingIcon = { Icon(Icons.Default.Search, null) },
-                modifier = Modifier.fillMaxWidth(),
-                singleLine = true
-            )
-            Spacer(modifier = Modifier.height(8.dp))
-
-            // Filtro por Círculo
-            Text("Filtrar por nível da magia:", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
-            LazyRow(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.spacedBy(4.dp)
-            ) {
-                item {
-                    FilterChip(
-                        selected = selectedLevelFilter == null,
-                        onClick = { selectedLevelFilter = null },
-                        label = { Text("Todos") }
+            TabRow(selectedTabIndex = selectedSection) {
+                SPELL_SECTIONS.forEachIndexed { index, title ->
+                    Tab(
+                        selected = selectedSection == index,
+                        onClick = { selectedSection = index },
+                        text = { Text(title, maxLines = 1, style = MaterialTheme.typography.labelMedium) }
                     )
                 }
-                items((0..9).toList()) { lvl ->
-                    FilterChip(
-                        selected = selectedLevelFilter == lvl,
-                        onClick = { selectedLevelFilter = if (selectedLevelFilter == lvl) null else lvl },
-                        label = { Text(if (lvl == 0) "Nível 0" else "Nível $lvl") }
-                    )
-                }
-            }
-            Spacer(modifier = Modifier.height(6.dp))
-
-            // Filtro por Escola e Preparadas
-            Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
-                LazyRow(
-                    modifier = Modifier.weight(1f),
-                    horizontalArrangement = Arrangement.spacedBy(4.dp)
-                ) {
-                    items(schools) { sch ->
-                        FilterChip(
-                            selected = selectedSchoolFilter == sch,
-                            onClick = { selectedSchoolFilter = sch },
-                            label = { Text(sch) }
-                        )
-                    }
-                }
-                FilterChip(
-                    selected = filterOnlyPrepared,
-                    onClick = { filterOnlyPrepared = !filterOnlyPrepared },
-                    label = { Text("★ Preparadas") },
-                    modifier = Modifier.padding(start = 6.dp)
-                )
             }
             Spacer(modifier = Modifier.height(10.dp))
         }
 
-        // 3. Barra de Ação "+ Adicionar Magia"
-        item {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(
-                    "Magias na Ficha (${filteredSpells.size})",
-                    style = MaterialTheme.typography.titleMedium,
-                    fontWeight = FontWeight.Bold
-                )
-
-                Button(
-                    onClick = { showAddSpellModal = true },
-                    colors = ButtonDefaults.buttonColors(containerColor = DndArcaneBlue)
-                ) {
-                    Icon(Icons.Default.Add, contentDescription = null, modifier = Modifier.size(18.dp))
-                    Spacer(modifier = Modifier.width(4.dp))
-                    Text("Adicionar Magia")
-                }
-            }
-            Spacer(modifier = Modifier.height(8.dp))
-        }
-
-        // 4. Lista Detalhada de Magias
-        if (filteredSpells.isEmpty()) {
-            item {
-                Card(
-                    modifier = Modifier.fillMaxWidth(),
-                    colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant),
-                    shape = RoundedCornerShape(12.dp)
-                ) {
-                    Column(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(24.dp),
-                        horizontalAlignment = Alignment.CenterHorizontally
-                    ) {
-                        Text("Nenhuma magia encontrada.", style = MaterialTheme.typography.bodyMedium)
-                        Spacer(modifier = Modifier.height(4.dp))
-                        Text(
-                            "Toque em '+ Adicionar Magia' para pesquisar magias do Livro do Jogador por nível, escola e classe conjuradora.",
-                            style = MaterialTheme.typography.bodySmall,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant
-                        )
-                    }
-                }
-            }
-        } else {
-            items(filteredSpells) { spell ->
-                val dc = stats.spellSaveDcByLevel[spell.level] ?: (10 + spell.level)
-                Card(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(vertical = 4.dp),
-                    colors = CardDefaults.cardColors(
-                        containerColor = if (spell.prepared) MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.25f) else MaterialTheme.colorScheme.surface
-                    ),
-                    shape = RoundedCornerShape(12.dp)
-                ) {
-                    Column(modifier = Modifier.padding(12.dp)) {
-                        Row(
-                            modifier = Modifier.fillMaxWidth(),
-                            horizontalArrangement = Arrangement.SpaceBetween,
-                            verticalAlignment = Alignment.CenterVertically
-                        ) {
-                            Row(verticalAlignment = Alignment.CenterVertically) {
-                                Card(
-                                    colors = CardDefaults.cardColors(containerColor = DndArcaneBlue),
-                                    shape = RoundedCornerShape(6.dp)
-                                ) {
-                                    Text(
-                                        text = if (spell.level == 0) "Truque" else "${spell.level}º Círculo",
-                                        color = Color.White,
-                                        style = MaterialTheme.typography.labelSmall,
-                                        fontWeight = FontWeight.Bold,
-                                        modifier = Modifier.padding(horizontal = 6.dp, vertical = 2.dp)
-                                    )
-                                }
-                                Spacer(modifier = Modifier.width(8.dp))
-                                Text(
-                                    spell.name,
-                                    fontWeight = FontWeight.Bold,
-                                    style = MaterialTheme.typography.titleMedium
-                                )
-                            }
-
-                            Row(verticalAlignment = Alignment.CenterVertically) {
-                                IconButton(onClick = { spellToEdit = spell }, modifier = Modifier.size(48.dp)) {
-                                    Icon(Icons.Default.Edit, contentDescription = "Editar ${spell.name}", modifier = Modifier.size(18.dp), tint = MaterialTheme.colorScheme.primary)
-                                }
-                                IconButton(onClick = { pendingSpellDeleteId = spell.id }, modifier = Modifier.size(48.dp)) {
-                                    Icon(Icons.Default.Delete, contentDescription = "Excluir ${spell.name}", modifier = Modifier.size(18.dp), tint = DndCrimson)
-                                }
-                            }
-                        }
-
-                        Spacer(modifier = Modifier.height(4.dp))
-
-                        // Linha de Propriedades da Magia
-                        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-                            Text(
-                                "${spell.school} • Comp: ${spell.components} • CD $dc",
-                                style = MaterialTheme.typography.labelSmall,
-                                fontWeight = FontWeight.Bold,
-                                color = DndArcaneBlue
-                            )
-                            Row(verticalAlignment = Alignment.CenterVertically) {
-                                Checkbox(
-                                    checked = spell.prepared,
-                                    onCheckedChange = { viewModel.toggleSpellPrepared(spell.id) },
-                                    modifier = Modifier.size(24.dp)
-                                )
-                                Spacer(modifier = Modifier.width(4.dp))
-                                Text("Preparada", style = MaterialTheme.typography.labelSmall)
-                            }
-                        }
-
-                        Text(
-                            "Tempo: ${spell.castTime} • Alcance: ${spell.range} • Duração: ${spell.duration}",
-                            style = MaterialTheme.typography.labelSmall,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant
-                        )
-
-                        if (spell.savingThrow != "Nenhum" && spell.savingThrow.isNotBlank()) {
-                            Text(
-                                "Resistência: ${spell.savingThrow} • RM: ${if (spell.spellResistance) "Sim" else "Não"}",
-                                style = MaterialTheme.typography.labelSmall,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant
-                            )
-                        }
-
-                        if (spell.description.isNotBlank()) {
-                            Spacer(modifier = Modifier.height(4.dp))
-                            Text(
-                                spell.description,
-                                style = MaterialTheme.typography.bodySmall,
-                                color = MaterialTheme.colorScheme.onSurface
-                            )
-                        }
-                    }
-                }
-            }
+        when (selectedSection) {
+            0 -> preparedSection(
+                viewModel = viewModel,
+                stats = stats,
+                onOpenSpell = { detailSpell = SpellbookRules.presetFor(it) }
+            )
+            1 -> knownSection(
+                viewModel = viewModel,
+                stats = stats,
+                query = knownQuery,
+                onQueryChange = { knownQuery = it },
+                onlyFavorites = onlyFavorites,
+                onOnlyFavoritesChange = { onlyFavorites = it },
+                onAddManual = { showAddSpellModal = true },
+                onOpenSpell = { detailSpell = SpellbookRules.presetFor(it) },
+                onEditSpell = { spellToEdit = it },
+                onDeleteSpell = { pendingSpellDeleteId = it }
+            )
+            2 -> catalogSection(
+                stats = stats,
+                criteria = catalogCriteria,
+                onCriteriaChange = { catalogCriteria = it },
+                showMoreFilters = showMoreFilters,
+                onShowMoreFiltersChange = { showMoreFilters = it },
+                onOpenSpell = { detailSpell = it }
+            )
+            else -> historySection(
+                stats = stats,
+                onClear = { showClearHistory = true }
+            )
         }
 
         item {
@@ -447,10 +286,30 @@ fun SpellsTab(
         }
     }
 
+    detailSpell?.let { preset ->
+        SpellDetailDialog(
+            spell = preset,
+            stats = stats,
+            viewModel = viewModel,
+            onDismiss = { detailSpell = null }
+        )
+    }
+
+    if (showClearHistory) {
+        AlertDialog(
+            onDismissRequest = { showClearHistory = false },
+            title = { Text("Limpar histórico?") },
+            text = { Text("Os registros de magias conjuradas serão apagados. Os espaços de magia não mudam.") },
+            confirmButton = { Button(onClick = { viewModel.clearSpellHistory(); showClearHistory = false }) { Text("Limpar") } },
+            dismissButton = { OutlinedButton(onClick = { showClearHistory = false }) { Text("Cancelar") } }
+        )
+    }
+
     // Modal para Adicionar Magia
     if (showAddSpellModal) {
         AddEditSpellDialog(
             spellToEdit = null,
+            manualOnly = true,
             onConfirm = { newSpell -> viewModel.addSpell(newSpell) },
             onDismiss = { showAddSpellModal = false }
         )

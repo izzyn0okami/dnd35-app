@@ -225,6 +225,17 @@ object SpellcastingRules {
         }
     }
 
+    /**
+     * Maior círculo que a classe já acessa neste nível de conjurador (independe de bônus de
+     * atributo: um círculo "0 base" ainda conta como acessível). Retorna -1 se a classe não
+     * tem tabela de conjuração ou ainda não conjura.
+     */
+    fun highestAccessibleCircle(className: String, casterLevel: Int): Int {
+        val table = tableFor(className) ?: return -1
+        val base = table[casterLevel.coerceAtLeast(1)] ?: return -1
+        return base.indices.lastOrNull { base[it] >= 0 } ?: -1
+    }
+
     /** Magias conhecidas por círculo para classes conjuradoras espontâneas (Bardo, Feiticeiro). */
     fun knownSpellsForClassLevel(className: String, casterLevel: Int): IntArray? {
         val table = knownTableFor(className) ?: return null

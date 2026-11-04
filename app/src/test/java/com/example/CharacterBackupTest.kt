@@ -54,6 +54,7 @@ class CharacterBackupTest {
             featsJson = "[]",
             spellsJson = "[]",
             spellSlotsJson = "[{\"level\":0,\"totalSlots\":3}]",
+            spellHistoryJson = "[{\"id\":\"h1\",\"timestamp\":1000,\"spellName\":\"Luz\",\"spellLevel\":0}]",
             multiclassJson = "[{\"className\":\"Guerreiro\",\"level\":3},{\"className\":\"Ladino\",\"level\":2}]",
             notes = "Linha 1\nLinha 2 com \"aspas\" e acentuação: ção, ñ, 日本",
             updatedAt = 1_700_000_000_000L

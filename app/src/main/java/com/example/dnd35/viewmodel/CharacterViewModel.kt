@@ -20,6 +20,8 @@ import com.example.dnd35.model.CharacterJsonAdapters
 import com.example.dnd35.model.CharacterSkill
 import com.example.dnd35.model.SkillPointLevelRecord
 import com.example.dnd35.model.CharacterSpell
+import com.example.dnd35.model.SpellCastRecord
+import com.example.dnd35.model.SpellbookRules
 import com.example.dnd35.model.SpellSlotInfo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -684,6 +686,104 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
         persistCharacter(curr.copy(spellsJson = CharacterJsonAdapters.serializeSpells(list)))
     }
 
+    /** Altera uma magia da ficha pelo id; não faz nada se o id não existir. */
+    private fun updateSpell(spellId: String, transform: (CharacterSpell) -> CharacterSpell) {
+        val curr = _activeCharacter.value ?: return
+        val list = CharacterJsonAdapters.deserializeSpells(curr.spellsJson)
+        if (list.none { it.id == spellId }) return
+        val updated = list.map { if (it.id == spellId) transform(it) else it }
+        persistCharacter(curr.copy(spellsJson = CharacterJsonAdapters.serializeSpells(updated)))
+    }
+
+    /**
+     * Aprende uma magia do catálogo por uma classe. Se a ficha já tiver a mesma magia dessa
+     * classe, só atualiza os marcadores (grimório/preparada) em vez de duplicar.
+     */
+    fun learnSpell(spell: CharacterSpell, addToSpellbook: Boolean, prepare: Boolean) {
+        val curr = _activeCharacter.value ?: return
+        val list = CharacterJsonAdapters.deserializeSpells(curr.spellsJson).toMutableList()
+        val idx = list.indexOfFirst {
+            it.name.equals(spell.name, ignoreCase = true) &&
+                it.casterClass.equals(spell.casterClass, ignoreCase = true)
+        }
+        if (idx >= 0) {
+            val existing = list[idx]
+            list[idx] = existing.copy(
+                inSpellbook = existing.inSpellbook || addToSpellbook,
+                prepared = if (prepare) true else existing.prepared
+            )
+        } else {
+            list.add(spell.copy(inSpellbook = addToSpellbook, prepared = prepare))
+        }
+        persistCharacter(curr.copy(spellsJson = CharacterJsonAdapters.serializeSpells(list)))
+    }
+
+    /** Prepara ou desprepara. Mago só prepara magia que esteja no grimório. */
+    fun setSpellPrepared(spellId: String, prepared: Boolean) {
+        updateSpell(spellId) { s ->
+            val needsBook = SpellbookRules.styleFor(s.casterClass) == SpellbookRules.Style.SPELLBOOK
+            if (prepared && needsBook && !SpellbookRules.isInSpellbook(s)) s
+            else s.copy(prepared = prepared, preparedCount = if (prepared) s.preparedCount.coerceAtLeast(1) else s.preparedCount)
+        }
+    }
+
+    /** Quantas vezes a magia está preparada (cada uma ocupa um espaço do círculo). */
+    fun setSpellPreparedCount(spellId: String, count: Int) {
+        updateSpell(spellId) { s ->
+            val n = count.coerceIn(0, 20)
+            s.copy(preparedCount = n.coerceAtLeast(1), prepared = n > 0)
+        }
+    }
+
+    fun setSpellInSpellbook(spellId: String, inSpellbook: Boolean) {
+        updateSpell(spellId) { s ->
+            s.copy(inSpellbook = inSpellbook, prepared = if (inSpellbook) s.prepared else false)
+        }
+    }
+
+    fun toggleSpellFavorite(spellId: String) {
+        updateSpell(spellId) { it.copy(favorite = !it.favorite) }
+    }
+
+    /**
+     * Conjura uma magia: gasta um espaço do círculo indicado (maxSlots vem do total calculado)
+     * e registra no histórico. Não faz nada se não houver espaço disponível.
+     */
+    fun castSpell(spellId: String, slotLevel: Int, maxSlots: Int) {
+        val curr = _activeCharacter.value ?: return
+        val spell = CharacterJsonAdapters.deserializeSpells(curr.spellsJson).firstOrNull { it.id == spellId } ?: return
+        val slots = CharacterJsonAdapters.deserializeSpellSlots(curr.spellSlotsJson)
+        val currentUsed = slots.firstOrNull { it.level == slotLevel }?.usedSlots ?: 0
+        if (currentUsed >= maxSlots) return
+        val newSlots = if (slots.any { it.level == slotLevel }) {
+            slots.map { if (it.level == slotLevel) it.copy(usedSlots = currentUsed + 1) else it }
+        } else {
+            slots + SpellSlotInfo(level = slotLevel, totalSlots = 0, usedSlots = 1)
+        }
+        val history = CharacterJsonAdapters.deserializeSpellHistory(curr.spellHistoryJson).toMutableList()
+        history.add(
+            SpellCastRecord(
+                spellName = spell.name,
+                spellLevel = spell.level,
+                casterClass = spell.casterClass,
+                slotLevel = slotLevel
+            )
+        )
+        // Mantém só os registros mais recentes para o histórico não crescer sem limite.
+        val trimmed = history.takeLast(MAX_SPELL_HISTORY)
+        persistCharacter(
+            curr.copy(
+                spellSlotsJson = CharacterJsonAdapters.serializeSpellSlots(newSlots),
+                spellHistoryJson = CharacterJsonAdapters.serializeSpellHistory(trimmed)
+            )
+        )
+    }
+
+    fun clearSpellHistory() {
+        val curr = _activeCharacter.value ?: return
+        persistCharacter(curr.copy(spellHistoryJson = ""))
+    }
+
     // maxSlots vem do total calculado automaticamente (stats.spellSlots), não do que está
     // salvo na ficha: o total não é mais editado manualmente, só os espaços gastos no dia.
     fun adjustSpellSlotUsed(level: Int, delta: Int, maxSlots: Int) {
@@ -801,3 +901,6 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
         persistCharacter(curr.copy(notes = notes))
     }
 }
+
+/** Quantidade máxima de conjurações guardadas no histórico de magias. */
+private const val MAX_SPELL_HISTORY = 200
