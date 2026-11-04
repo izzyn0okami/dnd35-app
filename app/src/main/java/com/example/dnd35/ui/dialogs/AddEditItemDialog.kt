@@ -141,6 +141,7 @@ fun AddEditItemDialog(
     var costText by remember { mutableStateOf("${itemToEdit?.costGp ?: 0.0f}") }
     var damage by remember { mutableStateOf(itemToEdit?.effectiveDamage().orEmpty()) }
     var armorClassBonus by remember { mutableStateOf(itemToEdit?.effectiveArmorClassBonus().orEmpty()) }
+    var otherBonus by remember { mutableStateOf(itemToEdit?.damageOrAc.orEmpty()) }
     var notes by remember { mutableStateOf(itemToEdit?.notes ?: "") }
     var equipped by remember { mutableStateOf(itemToEdit?.equipped ?: false) }
     val parsedQuantity = quantityText.toIntOrNull()
@@ -436,29 +437,32 @@ fun AddEditItemDialog(
                                 modifier = Modifier.weight(1f),
                                 singleLine = true
                             )
-                            if (isWeaponInventoryCategory(category) ||
-                                isArmorInventoryCategory(category) || isShieldInventoryCategory(category)
-                            ) {
-                                Spacer(modifier = Modifier.padding(horizontal = 4.dp))
-                                if (isWeaponInventoryCategory(category)) {
-                                    OutlinedTextField(
-                                        value = damage,
-                                        onValueChange = { damage = it },
-                                        label = { Text("Dano") },
-                                        placeholder = { Text("ex: 1d8 (19-20/x2)") },
-                                        modifier = Modifier.weight(1.2f),
-                                        singleLine = true
-                                    )
-                                } else {
-                                    OutlinedTextField(
-                                        value = armorClassBonus,
-                                        onValueChange = { armorClassBonus = it },
-                                        label = { Text(if (isShieldInventoryCategory(category)) "Bônus de escudo à CA" else "Bônus de armadura à CA") },
-                                        placeholder = { Text(if (isShieldInventoryCategory(category)) "ex: +2" else "ex: +4") },
-                                        modifier = Modifier.weight(1.2f),
-                                        singleLine = true
-                                    )
-                                }
+                            Spacer(modifier = Modifier.padding(horizontal = 4.dp))
+                            when {
+                                isWeaponInventoryCategory(category) -> OutlinedTextField(
+                                    value = damage,
+                                    onValueChange = { damage = it },
+                                    label = { Text("Dano") },
+                                    placeholder = { Text("ex: 1d8 (19-20/x2)") },
+                                    modifier = Modifier.weight(1.2f),
+                                    singleLine = true
+                                )
+                                isArmorInventoryCategory(category) || isShieldInventoryCategory(category) -> OutlinedTextField(
+                                    value = armorClassBonus,
+                                    onValueChange = { armorClassBonus = it },
+                                    label = { Text(if (isShieldInventoryCategory(category)) "Bônus de escudo à CA" else "Bônus de armadura à CA") },
+                                    placeholder = { Text(if (isShieldInventoryCategory(category)) "ex: +2" else "ex: +4") },
+                                    modifier = Modifier.weight(1.2f),
+                                    singleLine = true
+                                )
+                                else -> OutlinedTextField(
+                                    value = otherBonus,
+                                    onValueChange = { otherBonus = it },
+                                    label = { Text("Bônus / efeito") },
+                                    placeholder = { Text("ex: +2 Deflexão") },
+                                    modifier = Modifier.weight(1.2f),
+                                    singleLine = true
+                                )
                             }
                         }
 
@@ -501,7 +505,7 @@ fun AddEditItemDialog(
                             damageOrAc = when {
                                 isWeaponInventoryCategory(category) -> damage
                                 isArmorInventoryCategory(category) || isShieldInventoryCategory(category) -> armorClassBonus
-                                else -> ""
+                                else -> otherBonus
                             },
                             damage = if (isWeaponInventoryCategory(category)) damage else "",
                             armorClassBonus = if (isArmorInventoryCategory(category) || isShieldInventoryCategory(category)) armorClassBonus else "",
