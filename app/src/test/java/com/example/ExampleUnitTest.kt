@@ -1736,6 +1736,7 @@ class ExampleUnitTest {
         inventoryJson = CharacterJsonAdapters.serializeInventory(listOf(armor, shield))
       )
     )
+    println("DIAGNOSTICO_CA total=${stats.totalAc}, dexBase=${stats.character.baseDex}, dexTotal=${stats.totalDex}, dexMod=${stats.dexMod}, dexEfetiva=${stats.effectiveDexForAc}, armadura=${stats.armorBonusTotal}, escudo=${stats.shieldBonusTotal}, natural=${stats.naturalArmorTotal}, deflexao=${stats.deflectionBonusTotal}, misc=${stats.character.miscAcBonus}, tamanho=${stats.character.size}, modTamanho=${Dnd35Rules.getArmorClassSizeModifier(stats.character.size)}, carga=${stats.encumbrance}")
     assertEquals(4, stats.armorBonusTotal)
     assertEquals(2, stats.shieldBonusTotal)
     assertEquals(
