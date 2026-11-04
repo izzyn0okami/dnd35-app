@@ -551,6 +551,73 @@ class ExampleUnitTest {
   }
 
   @Test
+  fun droppedBackpackContentsDoNotCountTowardLoadOrMovement() {
+    val droppedContents = CharacterInventoryItem(
+      name = "Conteúdo da mochila solta",
+      category = "Itens de Aventura",
+      weightLb = 60f,
+      quantity = 1,
+      inBackpack = false,
+      equipped = false,
+      equippedSlot = Dnd35Rules.EquipmentSlots.NONE
+    )
+    val stats = CharacterCalculator.compute(
+      CharacterEntity(
+        baseStr = 10,
+        goldGp = 0f,
+        inventoryJson = CharacterJsonAdapters.serializeInventory(listOf(droppedContents))
+      )
+    )
+
+    assertEquals(0f, stats.totalWeightLb, 0.01f)
+    assertEquals(Dnd35Rules.EncumbranceLevel.LIGHT, stats.encumbrance)
+    assertEquals(9.0f, stats.speedMetersEffective, 0.01f)
+  }
+
+  @Test
+  fun backpackContentsStillCountTowardLoadAndMovement() {
+    val carriedContents = CharacterInventoryItem(
+      name = "Conteúdo da mochila",
+      category = "Itens de Aventura",
+      weightLb = 60f,
+      quantity = 1,
+      inBackpack = true,
+      equipped = false
+    )
+    val stats = CharacterCalculator.compute(
+      CharacterEntity(
+        baseStr = 10,
+        goldGp = 0f,
+        inventoryJson = CharacterJsonAdapters.serializeInventory(listOf(carriedContents))
+      )
+    )
+
+    assertEquals(60f, stats.totalWeightLb, 0.01f)
+    assertEquals(Dnd35Rules.EncumbranceLevel.MEDIUM, stats.encumbrance)
+    assertEquals(6.0f, stats.speedMetersEffective, 0.01f)
+  }
+
+  @Test
+  fun loadAboveTwiceMaximumCannotBeMoved() {
+    val stats = CharacterCalculator.compute(
+      CharacterEntity(
+        baseStr = 10,
+        inventoryJson = CharacterJsonAdapters.serializeInventory(
+          listOf(CharacterInventoryItem(
+            name = "Carga impossível de erguer",
+            category = "Itens de Aventura",
+            weightLb = 201f,
+            equipped = false
+          ))
+        )
+      )
+    )
+
+    assertEquals(Dnd35Rules.EncumbranceLevel.OVERLOADED, stats.encumbrance)
+    assertEquals(0.0f, stats.speedMetersEffective, 0.01f)
+  }
+
+  @Test
   fun overloadedCharacterCanOnlyMoveOnePointFiveMeters() {
     val stats = CharacterCalculator.compute(
       CharacterEntity(

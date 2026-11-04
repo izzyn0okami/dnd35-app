@@ -385,10 +385,14 @@ object CharacterCalculator {
 
         // 8. Peso e Gestão de Carga
         val coinWeight = (character.goldGp + character.silverSp + character.copperCp + character.platinumPp) / 50.0f
-        var itemsWeight = 0.0f
-        for (item in inventory) {
-            itemsWeight += (item.weightLb * item.quantity)
-        }
+        // Somente o que o personagem efetivamente transporta entra na carga.
+        // Itens fora da mochila, não equipados e sem slot atribuído foram deixados no chão.
+        // Equipamentos equipados ou carregados fora da mochila continuam contando.
+        val itemsWeight = inventory
+            .filter {
+                it.inBackpack || it.equipped || it.equippedSlot != Dnd35Rules.EquipmentSlots.NONE
+            }
+            .fold(0.0f) { total, item -> total + (item.weightLb * item.quantity) }
         val totalWeightLb = itemsWeight + coinWeight
         val carryingCapacity = Dnd35Rules.getCarryingCapacity(totalStr, character.size)
         val encumbrance = Dnd35Rules.calculateEncumbrance(totalWeightLb, totalStr, character.size)
@@ -458,7 +462,12 @@ object CharacterCalculator {
             race.name.equals("Anão da Montanha", ignoreCase = true)
         val hasMediumOrHeavyArmor = equippedArmor.any { isMediumOrHeavyArmor(it.name) }
         val hasMediumOrHeavyLoad = encumbrance != Dnd35Rules.EncumbranceLevel.LIGHT
+        // O Livro do Jogador permite erguer até o dobro da carga máxima do chão,
+        // mas nesse limite o personagem só consegue mover-se 1,5 m por rodada.
+        // Acima desse limite, não consegue erguer a carga para se deslocar.
+        val liftLimitLb = carryingCapacity.heavyMaxLb * 2.0f
         val speedMetersEffective = when {
+            encumbrance == Dnd35Rules.EncumbranceLevel.OVERLOADED && totalWeightLb > liftLimitLb -> 0.0f
             encumbrance == Dnd35Rules.EncumbranceLevel.OVERLOADED -> 1.5f
             isDwarf -> baseSpeed
             !hasMediumOrHeavyArmor && !hasMediumOrHeavyLoad -> baseSpeed
