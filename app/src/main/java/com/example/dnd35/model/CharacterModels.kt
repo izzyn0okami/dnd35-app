@@ -112,8 +112,33 @@ data class CharacterInventoryItem(
     /** Munição restante dentro dos pacotes; nulo para registros antigos ainda não consumidos. */
     val ammunitionUnitsRemaining: Int? = null,
     /** Quantidade de projéteis por pacote; 1 representa item avulso. */
-    val ammunitionUnitsPerPackage: Int? = null
+    val ammunitionUnitsPerPackage: Int? = null,
+    /** Dano próprio de armas; separado de qualquer bônus defensivo. */
+    val damage: String = "",
+    /** Bônus de armadura ou de escudo à CA, conforme a categoria do item. */
+    val armorClassBonus: String = ""
 )
+
+/** Categorias exatas: "Armaduras" não pode ser confundida com "Armas". */
+fun isWeaponInventoryCategory(category: String): Boolean =
+    category.trim().equals("Armas", ignoreCase = true) ||
+        category.trim().equals("Arma", ignoreCase = true)
+
+fun isArmorInventoryCategory(category: String): Boolean =
+    category.trim().equals("Armaduras", ignoreCase = true) ||
+        category.trim().equals("Armadura", ignoreCase = true)
+
+fun isShieldInventoryCategory(category: String): Boolean =
+    category.trim().equals("Escudos", ignoreCase = true) ||
+        category.trim().equals("Escudo", ignoreCase = true)
+
+fun CharacterInventoryItem.effectiveDamage(): String =
+    damage.ifBlank { damageOrAc.takeIf { isWeaponInventoryCategory(category) }.orEmpty() }
+
+fun CharacterInventoryItem.effectiveArmorClassBonus(): String =
+    armorClassBonus.ifBlank {
+        damageOrAc.takeIf { isArmorInventoryCategory(category) || isShieldInventoryCategory(category) }.orEmpty()
+    }
 
 /** Quantidade de unidades individuais que uma embalagem representa (ex.: Flechas (20)). */
 fun ammunitionBundleSize(item: CharacterInventoryItem): Int {
