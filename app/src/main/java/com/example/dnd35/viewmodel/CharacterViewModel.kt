@@ -502,23 +502,29 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
                     _backupMessages.emit("Nenhum item válido encontrado no arquivo.")
                     return@launch
                 }
-                val target = repository.getAllCharactersOnce().firstOrNull { it.id == targetCharacterId }
-                if (target == null) {
+                // Busca, mescla e grava sob o mesmo mutex para não sobrescrever uma edição
+                // recente da ficha enquanto o arquivo estava sendo lido.
+                val targetName = characterSaveMutex.withLock {
+                    val target = repository.getAllCharactersOnce().firstOrNull { it.id == targetCharacterId }
+                        ?: return@withLock null
+                    val currentItems = CharacterJsonAdapters.deserializeInventory(target.inventoryJson)
+                    // Novo ID para cada cópia, sem alterar o item original nem colidir com IDs existentes.
+                    val merged = currentItems + imported.items.map {
+                        it.copy(id = java.util.UUID.randomUUID().toString())
+                    }
+                    val updated = target.copy(
+                        inventoryJson = CharacterJsonAdapters.serializeInventory(merged),
+                        updatedAt = System.currentTimeMillis()
+                    )
+                    repository.saveCharacter(updated)
+                    target.name
+                }
+                if (targetName == null) {
                     _backupMessages.emit("A ficha escolhida não está mais disponível. Selecione outra ficha.")
                     return@launch
                 }
-                val currentItems = CharacterJsonAdapters.deserializeInventory(target.inventoryJson)
-                // Novo ID para cada cópia, sem alterar o item original nem colidir com IDs existentes.
-                val merged = currentItems + imported.items.map {
-                    it.copy(id = java.util.UUID.randomUUID().toString())
-                }
-                val updated = target.copy(
-                    inventoryJson = CharacterJsonAdapters.serializeInventory(merged),
-                    updatedAt = System.currentTimeMillis()
-                )
-                characterSaveMutex.withLock { repository.saveCharacter(updated) }
-                val countMessage = if (imported.items.size == 1) "1 item importado para ${target.name}."
-                    else "${imported.items.size} itens importados para ${target.name}."
+                val countMessage = if (imported.items.size == 1) "1 item importado para $targetName."
+                    else "${imported.items.size} itens importados para $targetName."
                 val warningMessage = imported.warnings.takeIf { it.isNotEmpty() }
                     ?.let { " Avisos: " + it.take(2).joinToString(" ") } ?: ""
                 _backupMessages.emit(countMessage + warningMessage)
