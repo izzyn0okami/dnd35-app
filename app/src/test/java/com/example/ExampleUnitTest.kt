@@ -14,6 +14,7 @@ import com.example.dnd35.model.SkillPointLevelRecord
 import com.example.dnd35.model.parseSkillPointAllocations
 import com.example.dnd35.model.parseWholeSkillPointBudget
 import com.example.dnd35.model.Dnd35Rules
+import com.example.dnd35.model.isWeaponInventoryCategory
 import com.example.dnd35.model.Dnd35Rules.SaveProgression
 import com.example.dnd35.model.Dnd35Rules.BabProgression
 import org.junit.Assert.assertEquals
@@ -1678,4 +1679,79 @@ class ExampleUnitTest {
       calculateHpAdjustment(currentHp = 3, maxHp = 20, tempHp = 2, delta = Int.MIN_VALUE)
     )
   }
+
+  @Test
+  fun armorCategoryIsNeverClassifiedAsAWeapon() {
+    assertTrue(isWeaponInventoryCategory("Armas"))
+    assertTrue(!isWeaponInventoryCategory("Armaduras"))
+    assertTrue(!isWeaponInventoryCategory("Itens de Aventura"))
+    assertTrue(!isWeaponInventoryCategory("Escudos"))
+  }
+
+  @Test
+  fun legacyInventoryDamageOrAcMigratesToTheCorrectTypedField() {
+    val legacyJson = """[
+      {"id":"old-sword","name":"Espada","category":"Armas","damageOrAc":"1d8 (19-20/x2)"},
+      {"id":"old-armor","name":"Brunea","category":"Armaduras","damageOrAc":"+4 CA"},
+      {"id":"old-shield","name":"Escudo","category":"Escudos","damageOrAc":"+2 CA"}
+    ]"""
+
+    val items = CharacterJsonAdapters.deserializeInventory(legacyJson)
+    assertEquals("1d8 (19-20/x2)", items[0].effectiveDamage())
+    assertEquals("", items[0].effectiveArmorClassBonus())
+    assertEquals("", items[1].effectiveDamage())
+    assertEquals("+4 CA", items[1].effectiveArmorClassBonus())
+    assertEquals("+2 CA", items[2].effectiveArmorClassBonus())
+
+    val roundTrip = CharacterJsonAdapters.deserializeInventory(CharacterJsonAdapters.serializeInventory(items))
+    assertEquals("1d8 (19-20/x2)", roundTrip[0].damage)
+    assertEquals("+4 CA", roundTrip[1].armorClassBonus)
+    assertEquals("+2 CA", roundTrip[2].armorClassBonus)
+  }
+
+  @Test
+  fun armorAndShieldApplyOnlyTheirOwnTypedArmorClassBonuses() {
+    val armor = CharacterInventoryItem(
+      id = "armor",
+      name = "Brunea",
+      category = "Armaduras",
+      equipped = true,
+      equippedSlot = Dnd35Rules.EquipmentSlots.ARMOR_BODY,
+      armorClassBonus = "+4",
+      notes = "Des Max +3, Pen -4"
+    )
+    val shield = CharacterInventoryItem(
+      id = "shield",
+      name = "Escudo grande",
+      category = "Escudos",
+      equipped = true,
+      equippedSlot = Dnd35Rules.EquipmentSlots.OFF_HAND,
+      armorClassBonus = "+2"
+    )
+    val stats = CharacterCalculator.compute(
+      CharacterEntity(inventoryJson = CharacterJsonAdapters.serializeInventory(listOf(armor, shield)))
+    )
+    assertEquals(4, stats.armorBonusTotal)
+    assertEquals(2, stats.shieldBonusTotal)
+    assertEquals(16, stats.totalAc)
+  }
+
+  @Test
+  fun ordinaryClothingInBodySlotDoesNotBecomeArmorOrWeapon() {
+    val tunic = CharacterInventoryItem(
+      id = "hylian-tunic",
+      name = "Túnica Hyliana",
+      category = "Itens de Aventura",
+      equipped = true,
+      equippedSlot = Dnd35Rules.EquipmentSlots.ARMOR_BODY
+    )
+    val stats = CharacterCalculator.compute(
+      CharacterEntity(inventoryJson = CharacterJsonAdapters.serializeInventory(listOf(tunic)))
+    )
+    assertTrue(!isWeaponInventoryCategory(tunic.category))
+    assertEquals(0, stats.armorBonusTotal)
+    assertEquals(0, stats.shieldBonusTotal)
+    assertEquals(10, stats.totalAc)
+  }
+
 }
