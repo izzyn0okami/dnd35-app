@@ -1738,7 +1738,13 @@ class ExampleUnitTest {
     )
     assertEquals(4, stats.armorBonusTotal)
     assertEquals(2, stats.shieldBonusTotal)
-    assertEquals(16, stats.totalAc) // CA 10 + DES 0 + armadura +4 + escudo +2
+    assertEquals(
+      "CA=${stats.totalAc}; DES efetiva=${stats.effectiveDexForAc}; armadura=${stats.armorBonusTotal}; " +
+        "escudo=${stats.shieldBonusTotal}; armadura natural=${stats.naturalArmorTotal}; " +
+        "deflexão=${stats.deflectionBonusTotal}; tamanho=${Dnd35Rules.getArmorClassSizeModifier(stats.character.size)}",
+      16,
+      stats.totalAc
+    ) // CA 10 + DES 0 + armadura +4 + escudo +2
   }
 
   @Test
