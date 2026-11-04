@@ -72,6 +72,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.example.dnd35.backup.Dnd35FileTypes
+import com.example.dnd35.model.effectiveDamage
+import com.example.dnd35.model.effectiveArmorClassBonus
+import com.example.dnd35.model.isWeaponInventoryCategory
+import com.example.dnd35.model.isArmorInventoryCategory
+import com.example.dnd35.model.isShieldInventoryCategory
 import com.example.dnd35.model.CalculatedCharacterStats
 import com.example.dnd35.model.CharacterEntity
 import com.example.dnd35.model.CharacterInventoryItem
@@ -944,9 +949,14 @@ fun InventoryItemRowRefined(
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
 
-                    if (item.damageOrAc.isNotBlank() && item.damageOrAc != "-") {
+                    val itemCombatStat = when {
+                        isWeaponInventoryCategory(item.category) -> item.effectiveDamage()
+                        isArmorInventoryCategory(item.category) || isShieldInventoryCategory(item.category) -> item.effectiveArmorClassBonus()
+                        else -> ""
+                    }
+                    if (itemCombatStat.isNotBlank() && itemCombatStat != "-") {
                         Text(
-                            text = item.damageOrAc,
+                            text = itemCombatStat,
                             style = MaterialTheme.typography.labelMedium,
                             color = MaterialTheme.colorScheme.primary,
                             fontWeight = FontWeight.Bold
