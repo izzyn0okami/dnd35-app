@@ -1731,11 +1731,14 @@ class ExampleUnitTest {
       armorClassBonus = "+2"
     )
     val stats = CharacterCalculator.compute(
-      CharacterEntity(inventoryJson = CharacterJsonAdapters.serializeInventory(listOf(armor, shield)))
+      CharacterEntity(
+        baseDex = 10,
+        inventoryJson = CharacterJsonAdapters.serializeInventory(listOf(armor, shield))
+      )
     )
     assertEquals(4, stats.armorBonusTotal)
     assertEquals(2, stats.shieldBonusTotal)
-    assertEquals(17, stats.totalAc) // CA 10 + DES +1 + armadura +4 + escudo +2
+    assertEquals(16, stats.totalAc) // CA 10 + DES 0 + armadura +4 + escudo +2
   }
 
   @Test
