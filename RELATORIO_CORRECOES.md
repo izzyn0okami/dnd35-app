@@ -478,3 +478,13 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - Adicionada a opção **Exportar logs de diagnóstico** ao menu principal. Ela consolida os arquivos locais em um relatório e abre o compartilhamento Android; somente o usuário escolhe se e para onde enviar.
 - Incluídos testes de escrita concorrente (800 frames no mesmo stream) e de rejeição explícita de cabeçalho inválido.
 - **Validação pendente:** CI Android deve confirmar compilação e testes. Também é necessário teste em aparelhos reais com dois ou mais jogadores, iniciando combate e transmitindo atualizações simultâneas. Não fazer merge apenas com base nos testes de loopback.
+
+
+### Exportação portátil de itens com imagem e escolha da ficha de destino (2026-11-03)
+- A exportação individual de itens agora usa um envelope versionado `ficha-dnd35-item` e incorpora a imagem personalizada em Base64 quando o arquivo local está disponível e dentro do limite de 5 MB.
+- O caminho `file://` do aparelho de origem nunca é exportado. Na importação, a imagem é validada e gravada em `filesDir/item_photos` no aparelho receptor; o item recebe a nova URI local.
+- Arquivos antigos de item que contêm apenas o array JSON continuam aceitos. Imagens ausentes, inválidas ou grandes demais não impedem a importação dos demais dados.
+- Antes de abrir o seletor de arquivos, a interface apresenta as fichas salvas e exige a escolha da ficha de destino. A importação acrescenta os itens ao inventário escolhido, preserva os itens existentes e gera novos IDs.
+- A gravação é feita diretamente na ficha de destino, sem mudar a ficha ativa do usuário.
+- Atualizada a documentação `docs/BACKUP_FICHAS.md` para refletir as extensões próprias `.fichadnd35` e `.itemdnd35` e explicar o fluxo portátil de itens.
+- **Validação pendente:** CI Android (testes e compilação) e teste manual em dois aparelhos: exportar item com imagem, compartilhar o arquivo, importar escolhendo uma ficha diferente da ativa e confirmar miniatura, dados, inventário e persistência após reiniciar o app.
