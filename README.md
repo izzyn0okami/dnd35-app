@@ -9,7 +9,7 @@ Aplicativo Android nativo para criar, consultar e gerenciar fichas de personagen
 - **Fichas de personagem:** criação e edição de personagens, com dados e estatísticas derivados da ficha.
 - **Regras de D&D 3.5:** catálogos e cálculos de apoio para classes, atributos, perícias, talentos e magias, com auditoria priorizando a edição brasileira do *Livro do Jogador*.
 - **Perícias e talentos:** acompanhamento de graduações e sinalização visual de pré-requisitos de talentos sem impedir que o usuário registre uma escolha.
-- **Grimório:** catálogo de magias e cálculo automático de espaços diários e magias conhecidas para as classes conjuradoras implementadas, incluindo multiclasse.
+- **Grimório e Magias:** aba Magias com Preparadas, Conhecidas, Catálogo e Histórico. O catálogo do Livro do Jogador tem filtros (classe, círculo, escola, tempo de conjuração, alcance, duração, componentes, resistência e texto) e as ações seguem a classe: o Mago adiciona ao grimório e prepara; Clérigo, Druida, Paladino e Ranger preparam da lista da classe; Feiticeiro e Bardo aprendem magias conhecidas. Espaços diários, magias conhecidas, CD e limites são calculados automaticamente, incluindo multiclasse.
 - **Combate:** consulta às estatísticas relevantes da ficha.
 - **Inventário e equipamento:** itens do catálogo e personalizados, equipamento, carga/mochila e controle de munição por pilha e por pacote.
 - **Itens personalizados com fotos:** imagens salvas no armazenamento privado do aplicativo e associadas ao item.

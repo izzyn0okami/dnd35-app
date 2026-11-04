@@ -52,10 +52,13 @@ import com.example.ui.theme.DndArcaneBlue
 @Composable
 fun AddEditSpellDialog(
     spellToEdit: CharacterSpell? = null,
+    // Só entrada manual: o catálogo do Livro do Jogador fica na seção Catálogo da aba Magias,
+    // onde a classe conjuradora e as regras de grimório/preparação são aplicadas.
+    manualOnly: Boolean = false,
     onConfirm: (CharacterSpell) -> Unit,
     onDismiss: () -> Unit
 ) {
-    var selectedTab by remember { mutableIntStateOf(if (spellToEdit == null) 0 else 1) }
+    var selectedTab by remember { mutableIntStateOf(if (spellToEdit == null && !manualOnly) 0 else 1) }
 
     // Campos da magia
     var name by remember { mutableStateOf(spellToEdit?.name ?: "") }
@@ -83,13 +86,13 @@ fun AddEditSpellDialog(
         onDismissRequest = onDismiss,
         title = {
             Text(
-                if (spellToEdit == null) "Adicionar Magia ao Grimório" else "Editar Magia",
+                if (spellToEdit != null) "Editar Magia" else if (manualOnly) "Criar Magia" else "Adicionar Magia ao Grimório",
                 fontWeight = FontWeight.Bold
             )
         },
         text = {
             Column(modifier = Modifier.fillMaxWidth()) {
-                if (spellToEdit == null) {
+                if (spellToEdit == null && !manualOnly) {
                     TabRow(selectedTabIndex = selectedTab) {
                         Tab(
                             selected = selectedTab == 0,

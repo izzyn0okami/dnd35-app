@@ -55,6 +55,8 @@ data class CharacterEntity(
     val featsJson: String = "",
     val spellsJson: String = "",
     val spellSlotsJson: String = "",
+    // Registro de magias conjuradas (histórico). Vazio em fichas antigas.
+    val spellHistoryJson: String = "",
     val multiclassJson: String = "",
     val notes: String = "",
     // Marcação usada só na Sessão de Mesa: fichas de NPC não representam um jogador
@@ -201,6 +203,23 @@ data class CharacterSpell(
     val spellResistance: Boolean = true,
     val prepared: Boolean = true,
     val preparedCount: Int = 1,
-    val description: String = ""
+    val description: String = "",
+    // Classe conjuradora pela qual a magia foi aprendida (vazio em fichas antigas: assume-se a
+    // classe conjuradora que acessa esse círculo).
+    val casterClass: String = "",
+    // Só Mago: a magia está registrada no grimório (condição para prepará-la).
+    val inSpellbook: Boolean = false,
+    val favorite: Boolean = false
+)
+
+/** Uma magia conjurada, para o histórico da aba Magias. */
+data class SpellCastRecord(
+    val id: String = UUID.randomUUID().toString(),
+    val timestamp: Long = System.currentTimeMillis(),
+    val spellName: String,
+    val spellLevel: Int,
+    val casterClass: String = "",
+    // Círculo do espaço consumido (-1 quando nenhum espaço foi gasto).
+    val slotLevel: Int = -1
 )
 data class SpellSlotInfo(val level: Int, val totalSlots: Int = 0, val usedSlots: Int = 0)

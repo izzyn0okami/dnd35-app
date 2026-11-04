@@ -296,6 +296,9 @@ object CharacterJsonAdapters {
             obj.put("prepared", s.prepared)
             obj.put("preparedCount", s.preparedCount)
             obj.put("description", s.description)
+            obj.put("casterClass", s.casterClass)
+            obj.put("inSpellbook", s.inSpellbook)
+            obj.put("favorite", s.favorite)
             array.put(obj)
         }
         return array.toString()
@@ -322,12 +325,54 @@ object CharacterJsonAdapters {
                         spellResistance = obj.optBoolean("spellResistance", true),
                         prepared = obj.optBoolean("prepared", true),
                         preparedCount = obj.optInt("preparedCount", 1),
-                        description = obj.optString("description", "")
+                        description = obj.optString("description", ""),
+                        casterClass = obj.optString("casterClass", ""),
+                        inSpellbook = obj.optBoolean("inSpellbook", false),
+                        favorite = obj.optBoolean("favorite", false)
                     )
                 )
             }
         } catch (e: Exception) {
             Log.w("CharacterJsonAdapters", "JSON de magias inválido; dados anteriores ao erro foram preservados", e)
+        }
+        return list
+    }
+
+    fun serializeSpellHistory(records: List<SpellCastRecord>): String {
+        val array = JSONArray()
+        for (r in records) {
+            val obj = JSONObject()
+            obj.put("id", r.id)
+            obj.put("timestamp", r.timestamp)
+            obj.put("spellName", r.spellName)
+            obj.put("spellLevel", r.spellLevel)
+            obj.put("casterClass", r.casterClass)
+            obj.put("slotLevel", r.slotLevel)
+            array.put(obj)
+        }
+        return array.toString()
+    }
+
+    fun deserializeSpellHistory(json: String?): List<SpellCastRecord> {
+        if (json.isNullOrBlank()) return emptyList()
+        val list = mutableListOf<SpellCastRecord>()
+        try {
+            val array = JSONArray(json)
+            for (i in 0 until array.length()) {
+                val obj = array.getJSONObject(i)
+                list.add(
+                    SpellCastRecord(
+                        id = obj.optString("id"),
+                        timestamp = obj.optLong("timestamp", 0L),
+                        spellName = obj.optString("spellName", ""),
+                        spellLevel = obj.optInt("spellLevel", 0),
+                        casterClass = obj.optString("casterClass", ""),
+                        slotLevel = obj.optInt("slotLevel", -1)
+                    )
+                )
+            }
+        } catch (e: Exception) {
+            Log.w("CharacterJsonAdapters", "JSON de histórico de magias inválido; dados anteriores ao erro foram preservados", e)
         }
         return list
     }
