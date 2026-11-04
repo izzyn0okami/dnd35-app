@@ -334,7 +334,12 @@ object CharacterPdfExporter {
             var spY = spellBoxTop + 36f
             val activeSlots = stats.spellSlots.filter { it.totalSlots > 0 }
             if (activeSlots.isNotEmpty()) {
-                val slotSummary = activeSlots.joinToString("  |  ") { "Nv ${it.level}: ${it.usedSlots}/${it.totalSlots}" }
+                // Na multiclasse os espaços são separados por classe; o rótulo evita somá-los de cabeça.
+                val multi = stats.casterClasses.size > 1
+                val slotSummary = activeSlots.joinToString("  |  ") {
+                    val prefix = if (multi) "${it.className.take(3)} " else ""
+                    "${prefix}Nv ${it.level}: ${it.usedSlots}/${it.totalSlots}"
+                }
                 canvas2.drawText("Espaços: $slotSummary", 36f, spY, boldBodyPaint)
                 spY += 18f
             }

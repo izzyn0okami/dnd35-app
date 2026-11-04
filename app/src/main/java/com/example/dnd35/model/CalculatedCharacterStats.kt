@@ -571,14 +571,33 @@ object CharacterCalculator {
 
         val spellSaveDcByLevel = primaryCaster?.dcByLevel ?: emptyMap()
 
-        // Espaços de magia por dia: soma automática das classes conjuradoras da multiclasse
-        // (cada uma já com seu próprio bônus de atributo-chave). Os espaços "usados" no dia
-        // continuam vindo do que foi salvo na ficha (gastos ao conjurar, zerados no descanso).
+        // Espaços de magia por dia: UMA lista por classe conjuradora e círculo (cada classe com
+        // seu próprio bônus de atributo-chave). Na multiclasse os espaços NÃO se misturam. Os
+        // espaços "usados" no dia vêm do que foi salvo na ficha (gastos ao conjurar, zerados no
+        // descanso). Fichas antigas guardavam o uso somado, sem classe: esse uso legado é
+        // atribuído à primeira classe que tem espaço no círculo.
         val persistedSpellSlots = CharacterJsonAdapters.deserializeSpellSlots(character.spellSlotsJson)
-        val spellSlots = (0..9).map { lvl ->
-            val total = casterClasses.sumOf { it.slotsByLevel[lvl] ?: 0 }
-            val used = persistedSpellSlots.find { it.level == lvl }?.usedSlots ?: 0
-            SpellSlotInfo(level = lvl, totalSlots = total, usedSlots = used.coerceIn(0, total))
+        val spellSlots = casterClasses.flatMap { caster ->
+            (0..9).map { lvl ->
+                val total = caster.slotsByLevel[lvl] ?: 0
+                val ownUsed = persistedSpellSlots.firstOrNull {
+                    it.level == lvl && it.className.equals(caster.className, ignoreCase = true)
+                }?.usedSlots
+                val used = ownUsed ?: run {
+                    val legacyOwner = casterClasses.firstOrNull { (it.slotsByLevel[lvl] ?: 0) > 0 }
+                    if (legacyOwner?.className.equals(caster.className, ignoreCase = true)) {
+                        persistedSpellSlots
+                            .filter { it.level == lvl && it.className.isBlank() }
+                            .sumOf { it.usedSlots }
+                    } else 0
+                }
+                SpellSlotInfo(
+                    level = lvl,
+                    totalSlots = total,
+                    usedSlots = used.coerceIn(0, total),
+                    className = caster.className
+                )
+            }
         }
 
         // 12. Perícias Calculadas (Regra 3.5: Perícia de classe se pertencer a QUALQUER uma das classes)

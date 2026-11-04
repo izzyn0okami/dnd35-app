@@ -77,9 +77,9 @@ class SpellcastingRulesTest {
     }
 
     @Test
-    fun characterCalculatorAutomaticallySumsSlotsAcrossMulticlassCasters() {
-        // Mago 5 / Clérigo 1 (valores de Int e Sab iguais a 10, mod 0): soma dos espaços
-        // de 1º círculo de ambas as classes na mesma lista combinada de espaços por dia.
+    fun characterCalculatorKeepsSlotsSeparatePerClassInMulticlass() {
+        // Mago 5 / Clérigo 1 (Int e Sab = 10, mod 0): cada classe tem seus próprios espaços de
+        // 1º círculo; eles NÃO são somados numa lista única.
         val character = CharacterEntity(
             multiclassJson = "[{\"className\":\"Mago\",\"level\":5},{\"className\":\"Clérigo\",\"level\":1}]",
             baseInt = 10,
@@ -88,13 +88,29 @@ class SpellcastingRulesTest {
         val stats = CharacterCalculator.compute(character)
         val wizardSlots1 = stats.casterClasses.find { it.className == "Mago" }?.slotsByLevel?.get(1) ?: 0
         val clericSlots1 = stats.casterClasses.find { it.className == "Clérigo" }?.slotsByLevel?.get(1) ?: 0
-        val combined = stats.spellSlots.find { it.level == 1 }?.totalSlots
-        assertEquals(wizardSlots1 + clericSlots1, combined)
-        assertTrue(combined!! > 0)
+        val wizardEntry = stats.spellSlots.single { it.level == 1 && it.className == "Mago" }
+        val clericEntry = stats.spellSlots.single { it.level == 1 && it.className == "Clérigo" }
+        assertEquals(wizardSlots1, wizardEntry.totalSlots)
+        assertEquals(clericSlots1, clericEntry.totalSlots)
+        assertTrue(wizardEntry.totalSlots > 0 && clericEntry.totalSlots > 0)
     }
 
     @Test
-    fun usedSlotsArePreservedAndClampedToTheNewAutomaticTotal() {
+    fun usedSlotsArePerClassAndDoNotLeakBetweenMulticlassCasters() {
+        val character = CharacterEntity(
+            multiclassJson = "[{\"className\":\"Mago\",\"level\":5},{\"className\":\"Clérigo\",\"level\":1}]",
+            baseInt = 10,
+            baseWis = 10,
+            spellSlotsJson = "[{\"level\":1,\"totalSlots\":0,\"usedSlots\":1,\"className\":\"Clérigo\"}]"
+        )
+        val stats = CharacterCalculator.compute(character)
+        assertEquals(1, stats.spellSlots.single { it.level == 1 && it.className == "Clérigo" }.usedSlots)
+        assertEquals(0, stats.spellSlots.single { it.level == 1 && it.className == "Mago" }.usedSlots)
+    }
+
+    @Test
+    fun legacyUsedSlotsWithoutClassGoToTheFirstClassWithSlotsAtThatCircle() {
+        // Formato antigo (uso somado, sem className): vai para a primeira classe com espaço no círculo.
         val character = CharacterEntity(
             characterClass = "Mago",
             level = 1,
@@ -102,8 +118,21 @@ class SpellcastingRulesTest {
             spellSlotsJson = "[{\"level\":1,\"totalSlots\":0,\"usedSlots\":1}]"
         )
         val stats = CharacterCalculator.compute(character)
-        val slot1 = stats.spellSlots.find { it.level == 1 }
-        assertEquals(1, slot1?.usedSlots)
-        assertTrue((slot1?.totalSlots ?: 0) >= 1)
+        val slot1 = stats.spellSlots.single { it.level == 1 && it.className == "Mago" }
+        assertEquals(1, slot1.usedSlots)
+        assertTrue(slot1.totalSlots >= 1)
+    }
+
+    @Test
+    fun slotClassNameRoundTripsThroughJsonAndOldFormatStillLoads() {
+        val json = com.example.dnd35.model.CharacterJsonAdapters.serializeSpellSlots(
+            listOf(com.example.dnd35.model.SpellSlotInfo(level = 2, totalSlots = 3, usedSlots = 1, className = "Clérigo"))
+        )
+        val back = com.example.dnd35.model.CharacterJsonAdapters.deserializeSpellSlots(json).single()
+        assertEquals("Clérigo", back.className)
+        val legacy = com.example.dnd35.model.CharacterJsonAdapters
+            .deserializeSpellSlots("[{\"level\":2,\"totalSlots\":0,\"usedSlots\":1}]").single()
+        assertEquals("", legacy.className)
+        assertEquals(1, legacy.usedSlots)
     }
 }

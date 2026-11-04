@@ -222,4 +222,15 @@ data class SpellCastRecord(
     // Círculo do espaço consumido (-1 quando nenhum espaço foi gasto).
     val slotLevel: Int = -1
 )
-data class SpellSlotInfo(val level: Int, val totalSlots: Int = 0, val usedSlots: Int = 0)
+/**
+ * Espaços de magia de UMA classe conjuradora em UM círculo. Na multiclasse, cada classe tem sua
+ * própria progressão e seus próprios espaços (um espaço de Clérigo não conjura magia de Mago).
+ * [className] vazio só existe em fichas salvas antes da separação por classe: esses espaços
+ * "legados" são atribuídos à primeira classe que tem espaço naquele círculo (ver compute()).
+ */
+data class SpellSlotInfo(
+    val level: Int,
+    val totalSlots: Int = 0,
+    val usedSlots: Int = 0,
+    val className: String = ""
+)

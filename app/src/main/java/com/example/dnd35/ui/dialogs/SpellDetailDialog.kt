@@ -61,7 +61,11 @@ fun SpellDetailDialog(
             (info == null || SpellbookRules.classFor(s, casters)?.className.equals(info.className, ignoreCase = true))
     }
 
-    val slot = entry?.let { e -> stats.spellSlots.firstOrNull { it.level == e.level } }
+    // Espaço da classe que conjura esta magia (espaços de outras classes não servem).
+    val slot = entry?.let { e ->
+        val slotClass = info?.className ?: SpellbookRules.classFor(e, casters)?.className
+        stats.spellSlots.firstOrNull { it.level == e.level && it.className.equals(slotClass, ignoreCase = true) }
+    }
     val remainingSlots = slot?.let { (it.totalSlots - it.usedSlots).coerceAtLeast(0) } ?: 0
 
     fun newCharacterSpell(): CharacterSpell = CharacterSpell(
@@ -204,7 +208,7 @@ fun SpellDetailDialog(
                             horizontalArrangement = Arrangement.spacedBy(8.dp)
                         ) {
                             OutlinedButton(
-                                onClick = { viewModel.castSpell(entry.id, entry.level, slot?.totalSlots ?: 0) },
+                                onClick = { if (slot != null) viewModel.castSpell(entry.id, slot, stats.spellSlots) },
                                 enabled = canCast && remainingSlots > 0,
                                 modifier = Modifier.weight(1f)
                             ) { Text("Marcar como conjurada") }
