@@ -508,3 +508,12 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 
 
 - **Causa raiz identificada na CI (2026-11-04):** o teste isolado mostrou Destreza total 14, apesar de raça Humano, Destreza base 10 e bônus manual 0. O cálculo concatenava o bônus de CA `+4` da armadura com a anotação `Des Max +3`; o parser de bônus de atributo interpretava o trecho resultante `+4 Des` como bônus de +4 em Destreza. Corrigido o cálculo para não usar o campo de bônus de CA nem o valor legado de armaduras/escudos na leitura de bônus de atributos. Mantida a leitura de bônus explícitos em descrições de outros itens. O teste agora exige Destreza total 10 nesse cenário, além de validar CA 16, bônus de armadura +4 e escudo +2. Diagnóstico temporário removido e CI restaurada ao comando normal. Aguardar testes e compilação APK verdes antes do merge.
+
+
+### Corrigir peso transportado, mochila solta e deslocamento por carga (2026-11-04)
+- Corrigida a origem da divergência entre Inventário e deslocamento: o cálculo central somava todos os itens, mesmo os marcados como fora da mochila. Agora só contam itens guardados na mochila, equipados ou que mantenham um slot atribuído; itens efetivamente deixados no chão deixam de pesar na carga.
+- A aba Inventário deixou de descontar o peso da mochila por conta própria e de recalcular a categoria com Força parcial. Peso exibido, categoria de carga, penalidades e deslocamento agora usam os mesmos valores calculados centralmente, incluindo Força racial e bônus de itens.
+- Mantido o peso das moedas no cálculo, conforme a regra de 50 moedas por libra.
+- Aplicada a distinção do Livro do Jogador entre carga acima do limite máximo e o limite de erguer do chão: até o dobro da carga máxima, o personagem sobrecarregado move-se apenas 1,5 m por rodada; acima do dobro, não consegue erguer a carga para se deslocar.
+- Adicionados testes de regressão para mochila solta (carga leve e deslocamento normal), mochila transportada (carga média e deslocamento reduzido) e peso acima do limite de levantamento.
+- **Validação pendente:** executar CI completa (testes unitários, compilação Android e geração do APK) e revisar o diff antes de qualquer merge. A inspeção manual no aparelho ainda é necessária para confirmar a ação de soltar/recolher mochila e a atualização imediata da ficha.
