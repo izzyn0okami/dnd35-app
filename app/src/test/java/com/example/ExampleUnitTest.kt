@@ -564,6 +564,7 @@ class ExampleUnitTest {
     val stats = CharacterCalculator.compute(
       CharacterEntity(
         baseStr = 10,
+        goldGp = 0f,
         inventoryJson = CharacterJsonAdapters.serializeInventory(listOf(droppedContents))
       )
     )
@@ -586,6 +587,7 @@ class ExampleUnitTest {
     val stats = CharacterCalculator.compute(
       CharacterEntity(
         baseStr = 10,
+        goldGp = 0f,
         inventoryJson = CharacterJsonAdapters.serializeInventory(listOf(carriedContents))
       )
     )
