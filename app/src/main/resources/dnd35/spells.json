@@ -7517,5 +7517,267 @@
       "Mago": 5
     },
     "domainLevels": {}
+  },
+  {
+    "name": "Ajuda",
+    "level": 2,
+    "school": "Encantamento (Compulsão) [Ação Mental]",
+    "classes": [
+      "Clérigo"
+    ],
+    "castTime": "1 ação padrão",
+    "components": "V, G, FD",
+    "range": "Toque",
+    "duration": "1 minuto/nível",
+    "savingThrow": "Nenhum",
+    "spellResistance": true,
+    "description": "Concede à criatura viva tocada +1 de bônus de moral nas jogadas de ataque e nos testes de resistência contra medo, além de 1d8 + nível do conjurador (máx. +10) pontos de vida temporários.",
+    "classLevels": {
+      "Clérigo": 2
+    },
+    "domainLevels": {
+      "Bem": 2,
+      "Sorte": 2
+    }
+  },
+  {
+    "name": "Barreira de Lâminas",
+    "level": 6,
+    "school": "Evocação [Energia]",
+    "classes": [
+      "Clérigo"
+    ],
+    "castTime": "1 ação padrão",
+    "components": "V, G",
+    "range": "Médio (30 m + 3 m/nível)",
+    "duration": "1 min/nível (D)",
+    "savingThrow": "Reflexos reduz à metade ou evita (veja texto)",
+    "spellResistance": true,
+    "description": "Cria uma barreira vertical e imóvel de lâminas giratórias, com 6 m de altura (reta, de até 6 m/nível de comprimento, ou uma muralha circular). Quem tentar atravessá-la, ou estiver na área quando ela surgir, sofre 1d6 de dano por nível de conjurador (máx. 15d6); um teste de Reflexos reduz o dano à metade.",
+    "classLevels": {
+      "Clérigo": 6
+    },
+    "domainLevels": {
+      "Bem": 6,
+      "Guerra": 6
+    }
+  },
+  {
+    "name": "Criar Mortos-Vivos",
+    "level": 6,
+    "school": "Necromancia [Mal]",
+    "classes": [
+      "Clérigo",
+      "Feiticeiro",
+      "Mago"
+    ],
+    "castTime": "1 hora",
+    "components": "V, G, M",
+    "range": "Curto (7,5 m + 1,5 m/2 níveis)",
+    "duration": "Instantânea",
+    "savingThrow": "Nenhum",
+    "spellResistance": false,
+    "description": "Transforma corpos em mortos-vivos mais poderosos que os de criar mortos-vivos menor: carniçal (conjurador de nível 11 ou menos), lívido (12 a 14), múmia (15 a 17) ou mohrg (18 ou mais). É possível criar tipos mais fracos, se o conjurador desejar.",
+    "classLevels": {
+      "Clérigo": 6,
+      "Feiticeiro": 6,
+      "Mago": 6
+    },
+    "domainLevels": {
+      "Mal": 6,
+      "Morte": 6
+    }
+  },
+  {
+    "name": "Despedaçar",
+    "level": 2,
+    "school": "Evocação [Sônica]",
+    "classes": [
+      "Bardo",
+      "Clérigo",
+      "Feiticeiro",
+      "Mago"
+    ],
+    "castTime": "1 ação padrão",
+    "components": "V, G, M/FD",
+    "range": "Curto (7,5 m + 1,5 m/2 níveis)",
+    "duration": "Instantânea",
+    "savingThrow": "Vontade anula (objeto) ou Fortitude reduz à metade (criatura cristalina); veja texto",
+    "spellResistance": true,
+    "description": "Emite um som agudo que estilhaça objetos mundanos frágeis (cristal, vidro, cerâmica) em 1,5 m de raio, desde que pesem até 500 g por nível; ou quebra um único objeto sólido de até 5 kg por nível; ou causa 1d6 de dano sônico por nível (máx. 10d6) a uma criatura cristalina, com Fortitude reduzindo à metade.",
+    "classLevels": {
+      "Bardo": 2,
+      "Clérigo": 2,
+      "Feiticeiro": 2,
+      "Mago": 2
+    },
+    "domainLevels": {
+      "Caos": 2,
+      "Destruição": 2
+    }
+  },
+  {
+    "name": "Despistar",
+    "level": 5,
+    "school": "Ilusão (Idéia, Sensação)",
+    "classes": [
+      "Bardo",
+      "Feiticeiro",
+      "Mago"
+    ],
+    "castTime": "1 ação padrão",
+    "components": "G",
+    "range": "Curto (7,5 m + 1,5 m/2 níveis)",
+    "duration": "1 rodada/nível (D) e concentração + 3 rodadas; veja texto",
+    "savingThrow": "Nenhum ou Vontade desacredita (se interagir); veja texto",
+    "spellResistance": false,
+    "description": "O conjurador fica invisível (como em invisibilidade aprimorada) e, ao mesmo tempo, surge uma duplicata ilusória dele (como em imagem maior), que se move conforme ele a dirige; isso exige concentração na primeira rodada. Permite sair de cena enquanto a duplicata atrai a atenção.",
+    "classLevels": {
+      "Bardo": 5,
+      "Feiticeiro": 6,
+      "Mago": 6
+    },
+    "domainLevels": {
+      "Enganação": 6,
+      "Sorte": 6
+    }
+  },
+  {
+    "name": "Encontrar o Caminho",
+    "level": 6,
+    "school": "Adivinhação",
+    "classes": [
+      "Bardo",
+      "Clérigo",
+      "Druida"
+    ],
+    "castTime": "3 rodadas",
+    "components": "V, G, F",
+    "range": "Pessoal ou toque",
+    "duration": "10 minutos/nível",
+    "savingThrow": "Nenhum ou Vontade anula (inofensiva)",
+    "spellResistance": false,
+    "description": "O alvo (o conjurador ou uma criatura tocada) descobre a rota física mais curta e direta até um local específico, a céu aberto, no subsolo ou até dentro de um labirinto. Funciona para locais, não para objetos ou criaturas.",
+    "classLevels": {
+      "Bardo": 6,
+      "Clérigo": 6,
+      "Druida": 6
+    },
+    "domainLevels": {
+      "Conhecimento": 6,
+      "Viagem": 6
+    }
+  },
+  {
+    "name": "Imunidade à Magia",
+    "level": 4,
+    "school": "Abjuração",
+    "classes": [
+      "Clérigo"
+    ],
+    "castTime": "1 ação padrão",
+    "components": "V, G, FD",
+    "range": "Toque",
+    "duration": "10 minutos/nível",
+    "savingThrow": "Vontade anula (inofensiva)",
+    "spellResistance": true,
+    "description": "A criatura tocada fica imune aos efeitos de uma magia específica (de 4º círculo ou inferior) a cada 4 níveis do conjurador. Vale contra magias e habilidades similares à magia, mas não contra habilidades sobrenaturais ou extraordinárias, nem contra magias que ignoram a Resistência à Magia.",
+    "classLevels": {
+      "Clérigo": 4
+    },
+    "domainLevels": {
+      "Força": 4,
+      "Proteção": 4
+    }
+  },
+  {
+    "name": "Resistência à Magia",
+    "level": 5,
+    "school": "Abjuração",
+    "classes": [
+      "Clérigo"
+    ],
+    "castTime": "1 ação padrão",
+    "components": "V, G, FD",
+    "range": "Toque",
+    "duration": "1 minuto/nível",
+    "savingThrow": "Vontade anula (inofensiva)",
+    "spellResistance": true,
+    "description": "A criatura tocada recebe Resistência à Magia igual a 12 + nível do conjurador.",
+    "classLevels": {
+      "Clérigo": 5
+    },
+    "domainLevels": {
+      "Magia": 5,
+      "Proteção": 5
+    }
+  },
+  {
+    "name": "Roupa Encantada",
+    "level": 3,
+    "school": "Transmutação",
+    "classes": [
+      "Clérigo"
+    ],
+    "castTime": "1 ação padrão",
+    "components": "V, G, FD",
+    "range": "Toque",
+    "duration": "1 hora/nível",
+    "savingThrow": "Vontade anula (inofensiva, objeto)",
+    "spellResistance": true,
+    "description": "Uma armadura ou escudo tocado recebe +1 de bônus de encantamento a cada 4 níveis do conjurador (máx. +5 no 20º nível). Para esta magia, roupas comuns contam como uma armadura que não dá bônus na CA.",
+    "classLevels": {
+      "Clérigo": 3
+    },
+    "domainLevels": {
+      "Força": 3,
+      "Guerra": 3
+    }
+  },
+  {
+    "name": "Escudo de Fogo",
+    "level": 4,
+    "school": "Evocação [Fogo ou Frio]",
+    "classes": [
+      "Feiticeiro",
+      "Mago"
+    ],
+    "castTime": "1 ação padrão",
+    "components": "V, G, M/FD",
+    "range": "Pessoal",
+    "duration": "1 rodada/nível (D)",
+    "savingThrow": "Nenhum",
+    "spellResistance": false,
+    "description": "Envolve o conjurador em chamas finas que ferem quem o atacar em combate corpo a corpo (1d6 por nível, máx. +15; dano de frio ou de fogo conforme a versão) e o protegem: o escudo de calor reduz à metade o dano de frio, e o escudo de frio, o de fogo. Se o ataque permitir Reflexos para reduzir à metade, um sucesso evita o dano. As chamas iluminam como metade de uma tocha.",
+    "classLevels": {
+      "Feiticeiro": 4,
+      "Mago": 4
+    },
+    "domainLevels": {
+      "Fogo": 5,
+      "Sol": 4
+    }
+  },
+  {
+    "name": "Sementes de Fogo",
+    "level": 6,
+    "school": "Conjuração (Criação) [Fogo]",
+    "classes": [
+      "Druida"
+    ],
+    "castTime": "1 ação padrão",
+    "components": "V, G, M",
+    "range": "Toque",
+    "duration": "10 minutos/nível",
+    "savingThrow": "Nenhum ou Reflexos reduz à metade; veja texto",
+    "spellResistance": false,
+    "description": "Transforma até quatro bolotas em granadas arremessáveis (até 30 m, ataque de toque à distância; juntas causam 1d6 de dano de fogo por nível, máx. 20d6, divididos como o conjurador quiser) ou até oito bagas de azevinho em bombas que explodem à palavra de comando, a até 60 m (1d8 + 1 por nível de dano de fogo em 1,5 m de raio; Reflexos reduz à metade).",
+    "classLevels": {
+      "Druida": 6
+    },
+    "domainLevels": {
+      "Fogo": 6,
+      "Sol": 6
+    }
   }
 ]
