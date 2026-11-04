@@ -52,8 +52,10 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -107,6 +109,10 @@ fun InventoryTab(
     var itemForSlotAssign by remember { mutableStateOf<CharacterInventoryItem?>(null) }
     var pendingItemDeleteId by remember { mutableStateOf<String?>(null) }
     var itemPendingExport by remember { mutableStateOf<CharacterInventoryItem?>(null) }
+    val allCharacters by viewModel.allCharacters.collectAsStateWithLifecycle()
+    var showImportTargetDialog by remember { mutableStateOf(false) }
+    var selectedImportTargetId by remember(character.id) { mutableStateOf<Long?>(character.id) }
+    var pendingImportTargetId by remember { mutableStateOf<Long?>(null) }
 
     val exportItemLauncher = rememberLauncherForActivityResult(
         ActivityResultContracts.CreateDocument(Dnd35FileTypes.ITEM_MIME)
@@ -118,7 +124,9 @@ fun InventoryTab(
     val importItemLauncher = rememberLauncherForActivityResult(
         ActivityResultContracts.OpenDocument()
     ) { uri ->
-        if (uri != null) viewModel.importInventoryItems(uri)
+        val targetId = pendingImportTargetId
+        pendingImportTargetId = null
+        if (uri != null && targetId != null) viewModel.importInventoryItems(uri, targetId)
     }
 
     val categories = listOf("Todas", "Armas", "Armaduras", "Escudos", "Itens Mágicos", "Itens de Aventura", "Consumíveis")
@@ -499,7 +507,8 @@ fun InventoryTab(
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     IconButton(
                         onClick = {
-                            importItemLauncher.launch(Dnd35FileTypes.ITEM_IMPORT_MIME_TYPES)
+                            selectedImportTargetId = character.id
+                            showImportTargetDialog = true
                         },
                         modifier = Modifier.testTag("import_item_button")
                     ) {
@@ -562,6 +571,59 @@ fun InventoryTab(
         item {
             Spacer(modifier = Modifier.height(24.dp))
         }
+    }
+
+    // A ficha de destino é escolhida antes de abrir o seletor do arquivo.
+    if (showImportTargetDialog) {
+        AlertDialog(
+            onDismissRequest = { showImportTargetDialog = false },
+            title = { Text("Importar item para qual ficha?") },
+            text = {
+                if (allCharacters.isEmpty()) {
+                    Text("Não há fichas salvas para receber o item.")
+                } else {
+                    LazyColumn(modifier = Modifier.height(280.dp)) {
+                        items(allCharacters, key = { it.id }) { target ->
+                            Row(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .clickable { selectedImportTargetId = target.id }
+                                    .padding(vertical = 6.dp),
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                RadioButton(
+                                    selected = selectedImportTargetId == target.id,
+                                    onClick = { selectedImportTargetId = target.id }
+                                )
+                                Column(modifier = Modifier.padding(start = 8.dp)) {
+                                    Text(target.name, fontWeight = FontWeight.SemiBold)
+                                    Text(
+                                        "${target.characterClass} • Nv ${target.level}",
+                                        style = MaterialTheme.typography.bodySmall,
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                                    )
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            confirmButton = {
+                Button(
+                    enabled = selectedImportTargetId != null && allCharacters.any { it.id == selectedImportTargetId },
+                    onClick = {
+                        pendingImportTargetId = selectedImportTargetId
+                        showImportTargetDialog = false
+                        importItemLauncher.launch(Dnd35FileTypes.ITEM_IMPORT_MIME_TYPES)
+                    }
+                ) { Text("Escolher arquivo") }
+            },
+            dismissButton = {
+                OutlinedButton(onClick = { showImportTargetDialog = false }) {
+                    Text("Cancelar")
+                }
+            }
+        )
     }
 
     // Modal de Adição de Item
