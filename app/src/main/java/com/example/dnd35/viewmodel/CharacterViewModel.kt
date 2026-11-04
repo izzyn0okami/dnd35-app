@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.dnd35.backup.BackupFileException
 import com.example.dnd35.backup.CharacterBackup
 import com.example.dnd35.backup.CharacterBackupIo
+import com.example.dnd35.backup.ItemBackupIo
 import com.example.dnd35.data.AppDatabase
 import com.example.dnd35.data.CharacterRepository
 import com.example.dnd35.model.CalculatedCharacterStats
@@ -478,47 +479,55 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
         persistCharacter(curr.copy(inventoryJson = CharacterJsonAdapters.serializeInventory(list)))
     }
 
-    /**
-     * Exporta um único item do inventário para o arquivo escolhido pelo usuário (ex: pra passar
-     * pra outro jogador por fora da sessão de mesa). Não leva a foto personalizada do item: ela
-     * é um arquivo local deste aparelho e não existiria em quem recebe.
-     */
+    /** Exporta o item com seus dados e, quando disponível, sua imagem personalizada. */
     fun exportInventoryItem(target: Uri, item: CharacterInventoryItem) {
         val app = getApplication<Application>()
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                val json = CharacterJsonAdapters.serializeInventory(listOf(item.copy(imageUri = null)))
-                CharacterBackupIo.writeText(app, target, json)
-                _backupMessages.emit("Item exportado.")
+                ItemBackupIo.writeItemBackup(app, target, item)
+                _backupMessages.emit("Item exportado com seus dados e imagem (quando disponível).")
             } catch (e: Exception) {
                 _backupMessages.emit("Erro ao exportar item: ${e.localizedMessage ?: "falha desconhecida"}")
             }
         }
     }
 
-    /** Importa item(ns) de um arquivo exportado e adiciona à ficha ativa. */
-    fun importInventoryItems(source: Uri) {
+    /** Importa item(ns) para a ficha escolhida, sem depender da ficha atualmente aberta. */
+    fun importInventoryItems(source: Uri, targetCharacterId: Long) {
         val app = getApplication<Application>()
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                val text = CharacterBackupIo.readBackupText(app, source)
-                val imported = CharacterJsonAdapters.deserializeInventory(text)
-                if (imported.isEmpty()) {
+                val imported = ItemBackupIo.readItemBackup(app, source)
+                if (imported.items.isEmpty()) {
                     _backupMessages.emit("Nenhum item válido encontrado no arquivo.")
                     return@launch
                 }
-                val curr = _activeCharacter.value
-                if (curr == null) {
-                    _backupMessages.emit("Selecione uma ficha antes de importar itens.")
+                // Busca, mescla e grava sob o mesmo mutex para não sobrescrever uma edição
+                // recente da ficha enquanto o arquivo estava sendo lido.
+                val targetName = characterSaveMutex.withLock {
+                    val target = repository.getAllCharactersOnce().firstOrNull { it.id == targetCharacterId }
+                        ?: return@withLock null
+                    val currentItems = CharacterJsonAdapters.deserializeInventory(target.inventoryJson)
+                    // Novo ID para cada cópia, sem alterar o item original nem colidir com IDs existentes.
+                    val merged = currentItems + imported.items.map {
+                        it.copy(id = java.util.UUID.randomUUID().toString())
+                    }
+                    val updated = target.copy(
+                        inventoryJson = CharacterJsonAdapters.serializeInventory(merged),
+                        updatedAt = System.currentTimeMillis()
+                    )
+                    repository.saveCharacter(updated)
+                    target.name
+                }
+                if (targetName == null) {
+                    _backupMessages.emit("A ficha escolhida não está mais disponível. Selecione outra ficha.")
                     return@launch
                 }
-                val list = CharacterJsonAdapters.deserializeInventory(curr.inventoryJson).toMutableList()
-                // Novo id a cada importação: evita colidir com um item já existente na ficha.
-                imported.forEach { list.add(it.copy(id = java.util.UUID.randomUUID().toString())) }
-                persistCharacter(curr.copy(inventoryJson = CharacterJsonAdapters.serializeInventory(list)))
-                _backupMessages.emit(
-                    if (imported.size == 1) "1 item importado." else "${imported.size} itens importados."
-                )
+                val countMessage = if (imported.items.size == 1) "1 item importado para $targetName."
+                    else "${imported.items.size} itens importados para $targetName."
+                val warningMessage = imported.warnings.takeIf { it.isNotEmpty() }
+                    ?.let { " Avisos: " + it.take(2).joinToString(" ") } ?: ""
+                _backupMessages.emit(countMessage + warningMessage)
             } catch (e: BackupFileException) {
                 _backupMessages.emit(e.message ?: "Arquivo de item inválido.")
             } catch (e: Exception) {

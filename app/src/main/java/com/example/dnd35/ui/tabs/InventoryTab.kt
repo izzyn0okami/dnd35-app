@@ -52,8 +52,10 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -107,6 +109,10 @@ fun InventoryTab(
     var itemForSlotAssign by remember { mutableStateOf<CharacterInventoryItem?>(null) }
     var pendingItemDeleteId by remember { mutableStateOf<String?>(null) }
     var itemPendingExport by remember { mutableStateOf<CharacterInventoryItem?>(null) }
+    val allCharacters by viewModel.allCharacters.collectAsStateWithLifecycle()
+    var showImportTargetDialog by remember { mutableStateOf(false) }
+    var selectedImportTargetId by remember(character.id) { mutableStateOf<Long?>(character.id) }
+    var pendingImportTargetId by remember { mutableStateOf<Long?>(null) }
 
     val exportItemLauncher = rememberLauncherForActivityResult(
         ActivityResultContracts.CreateDocument(Dnd35FileTypes.ITEM_MIME)
@@ -118,7 +124,9 @@ fun InventoryTab(
     val importItemLauncher = rememberLauncherForActivityResult(
         ActivityResultContracts.OpenDocument()
     ) { uri ->
-        if (uri != null) viewModel.importInventoryItems(uri)
+        val targetId = pendingImportTargetId
+        pendingImportTargetId = null
+        if (uri != null && targetId != null) viewModel.importInventoryItems(uri, targetId)
     }
 
     val categories = listOf("Todas", "Armas", "Armaduras", "Escudos", "Itens Mágicos", "Itens de Aventura", "Consumíveis")
@@ -499,7 +507,8 @@ fun InventoryTab(
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     IconButton(
                         onClick = {
-                            importItemLauncher.launch(Dnd35FileTypes.ITEM_IMPORT_MIME_TYPES)
+                            selectedImportTargetId = character.id
+                            showImportTargetDialog = true
                         },
                         modifier = Modifier.testTag("import_item_button")
                     ) {
@@ -562,6 +571,59 @@ fun InventoryTab(
         item {
             Spacer(modifier = Modifier.height(24.dp))
         }
+    }
+
+    // A ficha de destino é escolhida antes de abrir o seletor do arquivo.
+    if (showImportTargetDialog) {
+        AlertDialog(
+            onDismissRequest = { showImportTargetDialog = false },
+            title = { Text("Importar item para qual ficha?") },
+            text = {
+                if (allCharacters.isEmpty()) {
+                    Text("Não há fichas salvas para receber o item.")
+                } else {
+                    LazyColumn(modifier = Modifier.height(280.dp)) {
+                        items(allCharacters, key = { it.id }) { target ->
+                            Row(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .clickable { selectedImportTargetId = target.id }
+                                    .padding(vertical = 6.dp),
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                RadioButton(
+                                    selected = selectedImportTargetId == target.id,
+                                    onClick = { selectedImportTargetId = target.id }
+                                )
+                                Column(modifier = Modifier.padding(start = 8.dp)) {
+                                    Text(target.name, fontWeight = FontWeight.SemiBold)
+                                    Text(
+                                        "${target.characterClass} • Nv ${target.level}",
+                                        style = MaterialTheme.typography.bodySmall,
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                                    )
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            confirmButton = {
+                Button(
+                    enabled = selectedImportTargetId != null && allCharacters.any { it.id == selectedImportTargetId },
+                    onClick = {
+                        pendingImportTargetId = selectedImportTargetId
+                        showImportTargetDialog = false
+                        importItemLauncher.launch(Dnd35FileTypes.ITEM_IMPORT_MIME_TYPES)
+                    }
+                ) { Text("Escolher arquivo") }
+            },
+            dismissButton = {
+                OutlinedButton(onClick = { showImportTargetDialog = false }) {
+                    Text("Cancelar")
+                }
+            }
+        )
     }
 
     // Modal de Adição de Item
@@ -783,149 +845,192 @@ fun InventoryItemRowRefined(
     var showItemMenu by remember { mutableStateOf(false) }
     val totalItemWeight = item.weightLb * item.quantity
     val isEquipped = item.equipped || (item.equippedSlot != Dnd35Rules.EquipmentSlots.NONE && item.equippedSlot.isNotBlank())
+    val displayName = item.name + when {
+        ammunitionBundleSize(item) > 1 -> " (${remainingAmmunitionUnits(item)} munições restantes)"
+        item.quantity > 1 -> " (x${item.quantity})"
+        else -> ""
+    }
 
     Card(
         modifier = Modifier.fillMaxWidth(),
         colors = CardDefaults.cardColors(
             containerColor = if (isEquipped) MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.35f) else MaterialTheme.colorScheme.surface
         ),
-        shape = RoundedCornerShape(10.dp)
+        shape = RoundedCornerShape(12.dp)
     ) {
-        Row(
+        Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(10.dp),
-            verticalAlignment = Alignment.CenterVertically
+                .padding(12.dp)
         ) {
-            if (!item.imageUri.isNullOrBlank()) {
-                AsyncImage(
-                    model = item.imageUri,
-                    contentDescription = "Foto de ${item.name}",
-                    contentScale = ContentScale.Crop,
-                    modifier = Modifier
-                        .size(64.dp)
-                        .clip(RoundedCornerShape(8.dp))
-                        .clickable(onClick = onEdit)
-                )
-                Spacer(modifier = Modifier.width(10.dp))
-            }
-
-            Column(
-                modifier = Modifier
-                    .weight(1f)
-                    .clickable(onClick = onEdit)
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.Top
             ) {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text(
-                        text = item.name + when {
-                            ammunitionBundleSize(item) > 1 -> " (${remainingAmmunitionUnits(item)} munições restantes)"
-                            item.quantity > 1 -> " (x${item.quantity})"
-                            else -> ""
-                        },
-                        style = MaterialTheme.typography.bodyMedium,
-                        fontWeight = FontWeight.Bold
+                if (!item.imageUri.isNullOrBlank()) {
+                    AsyncImage(
+                        model = item.imageUri,
+                        contentDescription = "Foto de ${item.name}",
+                        contentScale = ContentScale.Fit,
+                        modifier = Modifier
+                            .size(88.dp)
+                            .clip(RoundedCornerShape(10.dp))
+                            .clickable(onClick = onEdit)
                     )
+                    Spacer(modifier = Modifier.width(12.dp))
+                }
+
+                Column(
+                    modifier = Modifier
+                        .weight(1f)
+                        .clickable(onClick = onEdit)
+                ) {
+                    Text(
+                        text = displayName,
+                        style = MaterialTheme.typography.titleMedium,
+                        fontWeight = FontWeight.Bold,
+                        color = MaterialTheme.colorScheme.onSurface
+                    )
+
                     if (isEquipped) {
-                        Spacer(modifier = Modifier.width(6.dp))
+                        Spacer(modifier = Modifier.height(5.dp))
                         Card(
                             colors = CardDefaults.cardColors(containerColor = DndGold),
-                            shape = RoundedCornerShape(4.dp)
+                            shape = RoundedCornerShape(5.dp)
                         ) {
                             Text(
-                                "EQUIPADO",
+                                text = "EQUIPADO",
                                 color = Color.Black,
                                 style = MaterialTheme.typography.labelSmall,
                                 fontWeight = FontWeight.ExtraBold,
-                                modifier = Modifier.padding(horizontal = 4.dp, vertical = 1.dp)
+                                modifier = Modifier.padding(horizontal = 7.dp, vertical = 3.dp)
                             )
                         }
                     }
-                }
 
-                Spacer(modifier = Modifier.height(2.dp))
+                    Spacer(modifier = Modifier.height(6.dp))
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        modifier = Modifier.clickable(onClick = onOpenSlotPicker)
+                    ) {
+                        Text(
+                            text = "Espaço: ${item.equippedSlot}",
+                            style = MaterialTheme.typography.labelMedium,
+                            fontWeight = FontWeight.SemiBold,
+                            color = MaterialTheme.colorScheme.primary
+                        )
+                        Icon(
+                            Icons.Default.ArrowDropDown,
+                            contentDescription = "Alterar espaço de equipamento",
+                            modifier = Modifier.size(18.dp),
+                            tint = MaterialTheme.colorScheme.primary
+                        )
+                    }
 
-                // Espaço Corporal Atribuído
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier.clickable(onClick = onOpenSlotPicker)
-                ) {
+                    Spacer(modifier = Modifier.height(4.dp))
                     Text(
-                        "Espaço: ${item.equippedSlot}",
-                        style = MaterialTheme.typography.labelSmall,
-                        fontWeight = FontWeight.SemiBold,
-                        color = MaterialTheme.colorScheme.primary
-                    )
-                    Icon(Icons.Default.ArrowDropDown, contentDescription = "Alterar espaço de equipamento", modifier = Modifier.size(16.dp), tint = MaterialTheme.colorScheme.primary)
-                }
-
-                Spacer(modifier = Modifier.height(2.dp))
-
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text(
-                        "${item.category} • ${String.format("%.1f", totalItemWeight)} lb" + (if (item.costGp > 0) " • ${item.costGp} PO" else ""),
-                        style = MaterialTheme.typography.labelSmall,
+                        text = buildString {
+                            append(item.category)
+                            append(" • ")
+                            append(String.format("%.1f", totalItemWeight))
+                            append(" lb")
+                            if (item.costGp > 0) {
+                                append(" • ")
+                                append(item.costGp)
+                                append(" PO")
+                            }
+                        },
+                        style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
+
                     if (item.damageOrAc.isNotBlank() && item.damageOrAc != "-") {
-                        Spacer(modifier = Modifier.width(6.dp))
                         Text(
-                            item.damageOrAc,
-                            style = MaterialTheme.typography.labelSmall,
+                            text = item.damageOrAc,
+                            style = MaterialTheme.typography.labelMedium,
                             color = MaterialTheme.colorScheme.primary,
                             fontWeight = FontWeight.Bold
                         )
                     }
                 }
+            }
 
-                if (!item.inBackpack && !isEquipped) {
-                    Text("Fora da mochila", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.error)
-                }
+            if (!item.inBackpack && !isEquipped) {
+                Spacer(modifier = Modifier.height(8.dp))
+                Text(
+                    "Fora da mochila",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = MaterialTheme.colorScheme.error
+                )
+            }
 
-                if (item.notes.isNotBlank()) {
-                    Text(
-                        item.notes,
-                        style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
+            if (item.notes.isNotBlank()) {
+                Spacer(modifier = Modifier.height(10.dp))
+                Text(
+                    text = item.notes,
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
+
+            Spacer(modifier = Modifier.height(6.dp))
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.End,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                IconButton(onClick = onOpenSlotPicker, modifier = Modifier.size(44.dp)) {
+                    Icon(
+                        Icons.Default.Shield,
+                        contentDescription = "Atribuir espaço de equipamento",
+                        modifier = Modifier.size(20.dp),
+                        tint = MaterialTheme.colorScheme.primary
                     )
                 }
-            }
-
-            IconButton(onClick = onOpenSlotPicker, modifier = Modifier.size(48.dp)) {
-                Icon(Icons.Default.Shield, contentDescription = "Atribuir espaço de equipamento", modifier = Modifier.size(18.dp), tint = MaterialTheme.colorScheme.primary)
-            }
-
-            IconButton(onClick = onEdit, modifier = Modifier.size(48.dp)) {
-                Icon(Icons.Default.Edit, contentDescription = "Editar ${item.name}", modifier = Modifier.size(18.dp), tint = MaterialTheme.colorScheme.primary)
-            }
-
-            IconButton(onClick = onDelete, modifier = Modifier.size(48.dp)) {
-                Icon(Icons.Default.Delete, contentDescription = "Excluir ${item.name}", modifier = Modifier.size(18.dp), tint = DndCrimson)
-            }
-
-            Box {
-                IconButton(onClick = { showItemMenu = true }, modifier = Modifier.size(48.dp)) {
-                    Icon(Icons.Default.MoreVert, contentDescription = "Mais opções de ${item.name}", modifier = Modifier.size(18.dp))
+                IconButton(onClick = onEdit, modifier = Modifier.size(44.dp)) {
+                    Icon(
+                        Icons.Default.Edit,
+                        contentDescription = "Editar ${item.name}",
+                        modifier = Modifier.size(20.dp),
+                        tint = MaterialTheme.colorScheme.primary
+                    )
                 }
-                DropdownMenu(expanded = showItemMenu, onDismissRequest = { showItemMenu = false }) {
-                    DropdownMenuItem(
-                        text = {
-                            Row(verticalAlignment = Alignment.CenterVertically) {
-                                Icon(Icons.Default.FileUpload, contentDescription = null, modifier = Modifier.size(18.dp))
-                                Spacer(modifier = Modifier.width(8.dp))
-                                Text("Exportar item (arquivo)")
+                IconButton(onClick = onDelete, modifier = Modifier.size(44.dp)) {
+                    Icon(
+                        Icons.Default.Delete,
+                        contentDescription = "Excluir ${item.name}",
+                        modifier = Modifier.size(20.dp),
+                        tint = DndCrimson
+                    )
+                }
+                Box {
+                    IconButton(onClick = { showItemMenu = true }, modifier = Modifier.size(44.dp)) {
+                        Icon(
+                            Icons.Default.MoreVert,
+                            contentDescription = "Mais opções de ${item.name}",
+                            modifier = Modifier.size(20.dp)
+                        )
+                    }
+                    DropdownMenu(expanded = showItemMenu, onDismissRequest = { showItemMenu = false }) {
+                        DropdownMenuItem(
+                            text = {
+                                Row(verticalAlignment = Alignment.CenterVertically) {
+                                    Icon(Icons.Default.FileUpload, contentDescription = null, modifier = Modifier.size(18.dp))
+                                    Spacer(modifier = Modifier.width(8.dp))
+                                    Text("Exportar item (arquivo)")
+                                }
+                            },
+                            onClick = {
+                                showItemMenu = false
+                                onExport()
                             }
-                        },
-                        onClick = {
-                            showItemMenu = false
-                            onExport()
-                        }
-                    )
+                        )
+                    }
                 }
             }
         }
     }
 }
-
 fun defaultSlotMatches(item: CharacterInventoryItem, slotName: String): Boolean {
     return when (item.category.lowercase()) {
         "armas", "arma" -> slotName == Dnd35Rules.EquipmentSlots.MAIN_HAND

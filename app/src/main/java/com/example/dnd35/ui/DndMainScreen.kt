@@ -13,6 +13,8 @@ import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
@@ -51,6 +53,7 @@ import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -107,6 +110,9 @@ fun DndMainScreen(
     var showDeleteConfirmModal by remember { mutableStateOf(false) }
     var exportAllPending by remember { mutableStateOf(false) }
     var showSessionHub by remember { mutableStateOf(false) }
+    var incomingItemImportUri by remember { mutableStateOf<Uri?>(null) }
+    var showIncomingItemTargetDialog by remember { mutableStateOf(false) }
+    var selectedIncomingItemTargetId by remember { mutableStateOf<Long?>(null) }
 
     LaunchedEffect(viewModel) {
         viewModel.backupMessages.collect { message ->
@@ -479,7 +485,7 @@ fun DndMainScreen(
                 Text(
                     when (kind) {
                         Dnd35FileKind.CHARACTER -> "Este arquivo parece ser uma ficha de personagem. Importar agora?"
-                        Dnd35FileKind.ITEM -> "Este arquivo parece ser um item de inventário. Adicionar à ficha ativa (${activeCharacter?.name ?: "nenhuma selecionada"})?"
+                        Dnd35FileKind.ITEM -> "Este arquivo parece ser um item de inventário. Escolha em qual ficha deseja adicioná-lo."
                         null -> "Não foi possível reconhecer este arquivo como ficha ou item do app."
                     }
                 )
@@ -489,7 +495,11 @@ fun DndMainScreen(
                     Button(onClick = {
                         when (kind) {
                             Dnd35FileKind.CHARACTER -> viewModel.importBackup(incomingFileUri)
-                            Dnd35FileKind.ITEM -> viewModel.importInventoryItems(incomingFileUri)
+                            Dnd35FileKind.ITEM -> {
+                                incomingItemImportUri = incomingFileUri
+                                selectedIncomingItemTargetId = activeCharacter?.id ?: characters.firstOrNull()?.id
+                                showIncomingItemTargetDialog = true
+                            }
                         }
                         onIncomingFileHandled()
                     }) {
@@ -501,6 +511,67 @@ fun DndMainScreen(
                 OutlinedButton(onClick = onIncomingFileHandled) {
                     Text(if (kind == null) "Fechar" else "Cancelar")
                 }
+            }
+        )
+    }
+
+    if (showIncomingItemTargetDialog) {
+        AlertDialog(
+            onDismissRequest = {
+                showIncomingItemTargetDialog = false
+                incomingItemImportUri = null
+            },
+            title = { Text("Adicionar item a qual ficha?") },
+            text = {
+                if (characters.isEmpty()) {
+                    Text("Não há fichas salvas para receber o item.")
+                } else {
+                    LazyColumn(modifier = Modifier.height(280.dp)) {
+                        items(characters, key = { it.id }) { target ->
+                            Row(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .clickable { selectedIncomingItemTargetId = target.id }
+                                    .padding(vertical = 6.dp),
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                RadioButton(
+                                    selected = selectedIncomingItemTargetId == target.id,
+                                    onClick = { selectedIncomingItemTargetId = target.id }
+                                )
+                                Column(modifier = Modifier.padding(start = 8.dp)) {
+                                    Text(target.name, fontWeight = FontWeight.SemiBold)
+                                    Text(
+                                        "${target.characterClass} • Nv ${target.level}",
+                                        style = MaterialTheme.typography.bodySmall,
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                                    )
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            confirmButton = {
+                Button(
+                    enabled = selectedIncomingItemTargetId != null &&
+                        characters.any { it.id == selectedIncomingItemTargetId },
+                    onClick = {
+                        val uri = incomingItemImportUri
+                        val targetId = selectedIncomingItemTargetId
+                        if (uri != null && targetId != null) {
+                            viewModel.importInventoryItems(uri, targetId)
+                        }
+                        incomingItemImportUri = null
+                        showIncomingItemTargetDialog = false
+                    }
+                ) { Text("Importar") }
+            },
+            dismissButton = {
+                OutlinedButton(onClick = {
+                    showIncomingItemTargetDialog = false
+                    incomingItemImportUri = null
+                }) { Text("Cancelar") }
             }
         )
     }
