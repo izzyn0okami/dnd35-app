@@ -15,6 +15,8 @@ import com.example.dnd35.model.parseSkillPointAllocations
 import com.example.dnd35.model.parseWholeSkillPointBudget
 import com.example.dnd35.model.Dnd35Rules
 import com.example.dnd35.model.isWeaponInventoryCategory
+import com.example.dnd35.model.effectiveDamage
+import com.example.dnd35.model.effectiveArmorClassBonus
 import com.example.dnd35.model.Dnd35Rules.SaveProgression
 import com.example.dnd35.model.Dnd35Rules.BabProgression
 import org.junit.Assert.assertEquals
