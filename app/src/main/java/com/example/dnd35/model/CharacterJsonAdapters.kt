@@ -167,7 +167,10 @@ object CharacterJsonAdapters {
             obj.put("quantity", item.quantity)
             obj.put("weightLb", item.weightLb.toDouble())
             obj.put("costGp", item.costGp.toDouble())
+            // Mantém damageOrAc para leitores antigos; os campos tipados são a fonte atual.
             obj.put("damageOrAc", item.damageOrAc)
+            obj.put("damage", item.effectiveDamage())
+            obj.put("armorClassBonus", item.effectiveArmorClassBonus())
             obj.put("equipped", item.equipped)
             obj.put("equippedSlot", item.equippedSlot)
             obj.put("notes", item.notes)
@@ -188,6 +191,8 @@ object CharacterJsonAdapters {
             for (i in 0 until array.length()) {
                 val obj = array.getJSONObject(i)
                 val isEq = obj.optBoolean("equipped", false)
+                val category = obj.optString("category", "Itens de Aventura")
+                val legacyDamageOrAc = obj.optString("damageOrAc", "")
                 val defaultSlot = if (isEq) {
                     when (obj.optString("category", "Equipamento").lowercase()) {
                         "armas", "arma" -> Dnd35Rules.EquipmentSlots.MAIN_HAND
@@ -203,11 +208,19 @@ object CharacterJsonAdapters {
                     CharacterInventoryItem(
                         id = obj.optString("id"),
                         name = obj.optString("name"),
-                        category = obj.optString("category", "Itens de Aventura"),
+                        category = category,
                         quantity = obj.optInt("quantity", 1),
                         weightLb = obj.optDouble("weightLb", 0.0).toFloat(),
                         costGp = obj.optDouble("costGp", 0.0).toFloat(),
-                        damageOrAc = obj.optString("damageOrAc", ""),
+                        damageOrAc = legacyDamageOrAc,
+                        damage = obj.optString("damage", "").ifBlank {
+                            legacyDamageOrAc.takeIf { isWeaponInventoryCategory(category) }.orEmpty()
+                        },
+                        armorClassBonus = obj.optString("armorClassBonus", "").ifBlank {
+                            legacyDamageOrAc.takeIf {
+                                isArmorInventoryCategory(category) || isShieldInventoryCategory(category)
+                            }.orEmpty()
+                        },
                         equipped = isEq,
                         equippedSlot = obj.optString("equippedSlot", defaultSlot),
                         notes = obj.optString("notes", ""),
