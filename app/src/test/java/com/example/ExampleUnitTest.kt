@@ -1736,7 +1736,7 @@ class ExampleUnitTest {
         inventoryJson = CharacterJsonAdapters.serializeInventory(listOf(armor, shield))
       )
     )
-    println("DIAGNOSTICO_CA total=${stats.totalAc}, dexBase=${stats.character.baseDex}, dexTotal=${stats.totalDex}, dexMod=${stats.dexMod}, dexEfetiva=${stats.effectiveDexForAc}, armadura=${stats.armorBonusTotal}, escudo=${stats.shieldBonusTotal}, natural=${stats.naturalArmorTotal}, deflexao=${stats.deflectionBonusTotal}, misc=${stats.character.miscAcBonus}, tamanho=${stats.character.size}, modTamanho=${Dnd35Rules.getArmorClassSizeModifier(stats.character.size)}, carga=${stats.encumbrance}")
+    println("DIAGNOSTICO_CA total=${stats.totalAc}, raca=${stats.character.race}, racaDex=${stats.raceInfo.dexMod}, dexBase=${stats.character.baseDex}, bonusDexFicha=${stats.character.modDexBonus}, dexTotal=${stats.totalDex}, bonusDexDerivado=${stats.totalDex - stats.character.baseDex - stats.raceInfo.dexMod}, dexMod=${stats.dexMod}, dexEfetiva=${stats.effectiveDexForAc}, itens=${stats.inventory.map { \"${it.name}[cat=${it.category},equip=${it.equipped},bonusCA=${it.effectiveArmorClassBonus()},legado=${it.damageOrAc},notas=${it.notes}]\" }}, armadura=${stats.armorBonusTotal}, escudo=${stats.shieldBonusTotal}, natural=${stats.naturalArmorTotal}, deflexao=${stats.deflectionBonusTotal}, misc=${stats.character.miscAcBonus}, tamanho=${stats.character.size}, modTamanho=${Dnd35Rules.getArmorClassSizeModifier(stats.character.size)}, carga=${stats.encumbrance}")
     assertEquals(4, stats.armorBonusTotal)
     assertEquals(2, stats.shieldBonusTotal)
     assertEquals(
