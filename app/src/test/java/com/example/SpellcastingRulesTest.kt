@@ -27,13 +27,28 @@ class SpellcastingRulesTest {
     }
 
     @Test
-    fun bonusSpellsGrantOneSlotOncePassingTheThresholdAndAnotherEveryNinePointsAbove() {
+    fun bonusSpellsGrantOneSlotOncePassingTheThresholdAndAnotherEveryFourPointsAbove() {
+        // 1º círculo: mod +1 = 1, +5 = 2, +9 = 3, +13 = 4 (atributos 12, 20, 28, 36).
         assertEquals(1, SpellcastingRules.bonusSpellsForAbilityMod(1, 1))
-        assertEquals(1, SpellcastingRules.bonusSpellsForAbilityMod(1, 9))
-        assertEquals(2, SpellcastingRules.bonusSpellsForAbilityMod(1, 10))
+        assertEquals(1, SpellcastingRules.bonusSpellsForAbilityMod(1, 4)) // atributo 18
+        assertEquals(2, SpellcastingRules.bonusSpellsForAbilityMod(1, 5)) // atributo 20
+        assertEquals(2, SpellcastingRules.bonusSpellsForAbilityMod(1, 8))
+        assertEquals(3, SpellcastingRules.bonusSpellsForAbilityMod(1, 9)) // atributo 28
+        assertEquals(4, SpellcastingRules.bonusSpellsForAbilityMod(1, 13))
+        // 3º círculo: mod +3 = 1, +7 = 2, +11 = 3.
         assertEquals(1, SpellcastingRules.bonusSpellsForAbilityMod(3, 3))
-        assertEquals(1, SpellcastingRules.bonusSpellsForAbilityMod(3, 11))
-        assertEquals(2, SpellcastingRules.bonusSpellsForAbilityMod(3, 12))
+        assertEquals(1, SpellcastingRules.bonusSpellsForAbilityMod(3, 6))
+        assertEquals(2, SpellcastingRules.bonusSpellsForAbilityMod(3, 7))
+        assertEquals(3, SpellcastingRules.bonusSpellsForAbilityMod(3, 11))
+    }
+
+    @Test
+    fun bonusSpellsMatchPhbTableForScoreTwenty() {
+        // Atributo 20-21 (mod +5): 1º=2, 2º=1, 3º=1, 4º=1, 5º=1, 6º em diante = 0.
+        val expected = listOf(0, 2, 1, 1, 1, 1, 0, 0, 0, 0)
+        expected.forEachIndexed { circle, bonus ->
+            assertEquals("círculo $circle", bonus, SpellcastingRules.bonusSpellsForAbilityMod(circle, 5))
+        }
     }
 
     @Test
