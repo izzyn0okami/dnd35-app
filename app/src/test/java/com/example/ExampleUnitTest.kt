@@ -1735,7 +1735,7 @@ class ExampleUnitTest {
     )
     assertEquals(4, stats.armorBonusTotal)
     assertEquals(2, stats.shieldBonusTotal)
-    assertEquals(16, stats.totalAc)
+    assertEquals(17, stats.totalAc) // CA 10 + DES +1 + armadura +4 + escudo +2
   }
 
   @Test
@@ -1753,7 +1753,7 @@ class ExampleUnitTest {
     assertTrue(!isWeaponInventoryCategory(tunic.category))
     assertEquals(0, stats.armorBonusTotal)
     assertEquals(0, stats.shieldBonusTotal)
-    assertEquals(10, stats.totalAc)
+    assertEquals(11, stats.totalAc) // CA base 10 + modificador de DES +1; a túnica não altera a CA
   }
 
 }
