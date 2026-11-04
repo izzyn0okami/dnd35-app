@@ -168,7 +168,12 @@ object CharacterJsonAdapters {
             obj.put("weightLb", item.weightLb.toDouble())
             obj.put("costGp", item.costGp.toDouble())
             // Mantém damageOrAc para leitores antigos; os campos tipados são a fonte atual.
-            obj.put("damageOrAc", item.damageOrAc)
+            val legacyCombatValue = when {
+                isWeaponInventoryCategory(item.category) -> item.effectiveDamage()
+                isArmorInventoryCategory(item.category) || isShieldInventoryCategory(item.category) -> item.effectiveArmorClassBonus()
+                else -> item.damageOrAc
+            }
+            obj.put("damageOrAc", legacyCombatValue)
             obj.put("damage", item.effectiveDamage())
             obj.put("armorClassBonus", item.effectiveArmorClassBonus())
             obj.put("equipped", item.equipped)
