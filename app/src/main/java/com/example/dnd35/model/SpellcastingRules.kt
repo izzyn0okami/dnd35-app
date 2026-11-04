@@ -197,13 +197,13 @@ object SpellcastingRules {
 
     /**
      * Bônus de magias por circulo concedido por um modificador de atributo alto (regra padrão
-     * 3.5): 0 se o modificador for menor que o círculo; caso contrário, 1 espaço extra, mais
-     * mais 1 a cada 9 pontos adicionais de modificador acima do mínimo necessário. Círculo 0
-     * (truques/orações) nunca recebe bônus.
+     * 3.5, Tabela 1-1 do Livro do Jogador): 0 se o modificador for menor que o círculo; caso
+     * contrário, 1 espaço extra, mais 1 a cada 4 pontos adicionais de modificador acima do
+     * mínimo necessário. Círculo 0 (truques/orações) nunca recebe bônus.
      */
     fun bonusSpellsForAbilityMod(spellLevel: Int, abilityMod: Int): Int {
         if (spellLevel < 1 || abilityMod < spellLevel) return 0
-        return 1 + (abilityMod - spellLevel) / 9
+        return 1 + (abilityMod - spellLevel) / 4
     }
 
     /**
