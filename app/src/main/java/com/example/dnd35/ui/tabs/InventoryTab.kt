@@ -137,11 +137,10 @@ fun InventoryTab(
     val categories = listOf("Todas", "Armas", "Armaduras", "Escudos", "Itens Mágicos", "Itens de Aventura", "Consumíveis")
 
     val cap = stats.carryingCapacity
-    val droppedBackpackWeight = stats.inventory.filter {
-        !it.inBackpack && !it.equipped && it.equippedSlot == Dnd35Rules.EquipmentSlots.NONE
-    }.fold(0f) { total, item -> total + item.weightLb * item.quantity }
-    val totalWeight = (stats.totalWeightLb - droppedBackpackWeight).coerceAtLeast(0f)
-    val encumbrance = Dnd35Rules.calculateEncumbrance(totalWeight, character.baseStr + character.modStrBonus, character.size)
+    // O cálculo central já considera apenas o peso efetivamente transportado
+    // e usa a Força final (base + raça + itens). A interface não deve recalcular.
+    val totalWeight = stats.totalWeightLb.coerceAtLeast(0f)
+    val encumbrance = stats.encumbrance
     val hasDroppedBackpackContents = stats.inventory.any {
         !it.inBackpack && !it.equipped && it.equippedSlot == Dnd35Rules.EquipmentSlots.NONE
     }
