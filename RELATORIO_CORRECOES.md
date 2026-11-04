@@ -488,3 +488,10 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - A gravação é feita diretamente na ficha de destino, sem mudar a ficha ativa do usuário.
 - Atualizada a documentação `docs/BACKUP_FICHAS.md` para refletir as extensões próprias `.fichadnd35` e `.itemdnd35` e explicar o fluxo portátil de itens.
 - **Validação pendente:** CI Android (testes e compilação) e teste manual em dois aparelhos: exportar item com imagem, compartilhar o arquivo, importar escolhendo uma ficha diferente da ativa e confirmar miniatura, dados, inventário e persistência após reiniciar o app.
+
+### Reorganização visual dos cartões do inventário (2026-11-03)
+- A captura de tela da ficha Link revelou que os quatro controles de ação dividiam a mesma linha horizontal com a miniatura e o conteúdo do item. Em telas estreitas, isso comprimia a coluna de texto e fazia o selo **EQUIPADO** quebrar em uma faixa vertical.
+- O cartão foi reorganizado em blocos: imagem e identificação lado a lado; selo de equipamento em linha própria; espaço, categoria, peso e preço agrupados; descrição usando toda a largura do cartão; ações transferidas para uma linha inferior alinhada à direita.
+- A miniatura passou a usar tamanho fixo de 88 dp e `ContentScale.Fit`, preservando melhor a imagem completa de armas, armaduras e outros equipamentos.
+- Mantidos os callbacks existentes de atribuição de espaço, edição, exclusão e exportação. Itens sem fotografia continuam sem miniatura e utilizam o mesmo alinhamento de conteúdo.
+- **Validação pendente:** CI Android após a alteração e inspeção manual em aparelho, incluindo itens com/sem foto, nomes longos, descrições extensas, itens equipados e itens fora da mochila. A captura de tela original deve ser comparada com a nova versão antes do merge.
