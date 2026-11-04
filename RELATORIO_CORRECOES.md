@@ -467,3 +467,14 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - **Persistência geral:** identificado que `persistCharacter` iniciava gravações independentes no dispatcher IO; gravações concorrentes podiam terminar fora de ordem e gravar um snapshot antigo do personagem, revertendo mudanças recentes no inventário. As gravações agora são serializadas por um `Mutex` antes de acessar o repositório.
 - **Regressão:** teste adicionado para pacote personalizado sem quantidade no nome e teste JSON ampliado para confirmar que o tamanho explícito do pacote é persistido.
 - **Validação pendente:** executar nova CI após estas alterações e testar no dispositivo: criar/editar item com foto, fechar e reabrir a ficha, reiniciar o app e verificar a miniatura; testar munição avulsa, pacote de 10 e pacote personalizado. Não fazer merge antes da CI verde.
+
+
+### Estabilizar multiplayer e adicionar crash log (2026-11-03)
+- Auditoria identificou que várias corrotinas podiam escrever simultaneamente no mesmo `DataOutputStream`. Como cada frame TCP é composto por tamanho + JSON + flush, a intercalação dos bytes podia corromper o protocolo e desconectar jogadores ao iniciar combate ou durante atualizações concorrentes.
+- `SessionWire.write` agora sincroniza o frame completo por stream, impedindo que mensagens de remetentes diferentes se intercalem no mesmo socket.
+- A leitura diferencia EOF limpo (somente antes do primeiro byte de um novo frame) de cabeçalho/payload truncado, tamanho inválido e JSON/tipo inválido. Erros de protocolo agora são explícitos e registrados em vez de serem silenciosamente tratados como desconexão normal.
+- Servidor e cliente registram falhas de transmissão, leitura, protocolo e processamento multiplayer, preservando a exceção e o contexto disponível. Em falha de escrita no servidor, o socket afetado é fechado para que o ciclo de leitura finalize e atualize o roster.
+- Criado `Dnd35Application` com handler global de exceções não tratadas. `CrashLogStore` grava localmente data/hora, categoria, thread, versão do Android, modelo do aparelho e stack trace; mantém rotação de arquivos e não envia dados automaticamente.
+- Adicionada a opção **Exportar logs de diagnóstico** ao menu principal. Ela consolida os arquivos locais em um relatório e abre o compartilhamento Android; somente o usuário escolhe se e para onde enviar.
+- Incluídos testes de escrita concorrente (800 frames no mesmo stream) e de rejeição explícita de cabeçalho inválido.
+- **Validação pendente:** CI Android deve confirmar compilação e testes. Também é necessário teste em aparelhos reais com dois ou mais jogadores, iniciando combate e transmitindo atualizações simultâneas. Não fazer merge apenas com base nos testes de loopback.
