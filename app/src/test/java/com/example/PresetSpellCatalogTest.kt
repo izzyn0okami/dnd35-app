@@ -36,7 +36,8 @@ class PresetSpellCatalogTest {
         val spell = Dnd35Rules.PRESET_SPELLS.single { it.name == "Invocar Criaturas IX" }
         assertEquals(setOf("Clérigo", "Feiticeiro", "Mago"), spell.classes.toSet())
         assertEquals(mapOf("Clérigo" to 9, "Feiticeiro" to 9, "Mago" to 9), spell.classLevels)
-        assertEquals(mapOf("Animais" to 9, "Bem" to 9, "Caos" to 9, "Mal" to 9, "Ordem" to 9), spell.domainLevels)
+        // Livro do Jogador: 9º círculo de Bem, Caos, Mal e Ordem. Animais usa Alterar Forma.
+        assertEquals(mapOf("Bem" to 9, "Caos" to 9, "Mal" to 9, "Ordem" to 9), spell.domainLevels)
     }
 
 
@@ -1551,7 +1552,8 @@ class PresetSpellCatalogTest {
         assertEquals("Evocação [Energia]", spell.school)
         assertEquals(setOf("Feiticeiro", "Mago"), spell.classes.toSet())
         assertEquals(mapOf("Feiticeiro" to 8, "Mago" to 8), spell.classLevels)
-        assertTrue(spell.domainLevels.isEmpty())
+        // Domínio da Força do Livro do Jogador (8º círculo).
+        assertEquals(mapOf("Força" to 8), spell.domainLevels)
         assertEquals("1 ação padrão", spell.castTime)
         assertEquals("V, G, F/FD", spell.components)
         assertEquals("Médio (30 m + 3 m/nível)", spell.range)
@@ -2153,9 +2155,205 @@ class PresetSpellCatalogTest {
     fun spellCatalogUsesOnlyPlayerHandbookDomains() {
         val allowed = setOf(
             "Água", "Animais", "Ar", "Bem", "Caos", "Conhecimento", "Cura",
-            "Destruição", "Enganação", "Fogo", "Guerra", "Magia", "Mal",
+            "Destruição", "Enganação", "Fogo", "Força", "Guerra", "Magia", "Mal",
             "Morte", "Ordem", "Planta", "Proteção", "Sol", "Sorte", "Terra", "Viagem"
         )
         assertTrue(Dnd35Rules.PRESET_SPELLS.flatMap { it.domainLevels.keys }.all { it in allowed })
+    }
+
+    /**
+     * Listas de magias de domínio do Livro do Jogador (cap. 11, "Domínios de Clérigo"),
+     * restritas às magias que já existem no catálogo. As demais magias de domínio ainda
+     * precisam entrar no catálogo (auditoria dos círculos 1-6); quando entrarem, devem ser
+     * acrescentadas a esta tabela.
+     */
+    @Test
+    fun domainSpellListsMatchPlayerHandbook() {
+        val expected: Map<String, Map<Int, List<String>>> = mapOf(
+            "Animais" to mapOf(
+                1 to listOf("Acalmar Animais"),
+                2 to listOf("Imobilizar Animal"),
+                4 to listOf("Invocar Aliado da Natureza IV"),
+                5 to listOf("Comunhão Com a Natureza"),
+                7 to listOf("Forma Animal"),
+                8 to listOf("Invocar Aliado da Natureza VIII"),
+                9 to listOf("Alterar Forma")
+            ),
+            "Ar" to mapOf(
+                2 to listOf("Muralha de Vento"),
+                7 to listOf("Controlar o Clima"),
+                8 to listOf("Ciclone"),
+                9 to listOf("Grupo de Elementais")
+            ),
+            "Bem" to mapOf(
+                1 to listOf("Proteção contra o Mal"),
+                3 to listOf("Círculo Mágico Contra o Mal"),
+                5 to listOf("Dissipar o Mal"),
+                7 to listOf("Palavra Sagrada"),
+                8 to listOf("Aura Sagrada"),
+                9 to listOf("Invocar Criaturas IX")
+            ),
+            "Caos" to mapOf(
+                7 to listOf("Palavra do Caos"),
+                8 to listOf("Manto do Caos"),
+                9 to listOf("Invocar Criaturas IX")
+            ),
+            "Conhecimento" to mapOf(
+                1 to listOf("Detectar Portas Secretas"),
+                5 to listOf("Visão da Verdade"),
+                7 to listOf("Lendas e Histórias"),
+                8 to listOf("Discernir Localização"),
+                9 to listOf("Sexto Sentido")
+            ),
+            "Cura" to mapOf(
+                1 to listOf("Curar Ferimentos Leves"),
+                2 to listOf("Curar Ferimentos Moderados"),
+                3 to listOf("Curar Ferimentos Graves"),
+                4 to listOf("Curar Ferimentos Críticos"),
+                6 to listOf("Cura Completa (Heal)"),
+                7 to listOf("Regeneração"),
+                8 to listOf("Curar Ferimentos Críticos em Massa"),
+                9 to listOf("Cura Completa em Massa")
+            ),
+            "Destruição" to mapOf(
+                1 to listOf("Infligir Ferimentos Leves"),
+                7 to listOf("Desintegrar"),
+                8 to listOf("Terremoto"),
+                9 to listOf("Implosão")
+            ),
+            "Enganação" to mapOf(
+                1 to listOf("Transformação Momentânea"),
+                2 to listOf("Invisibilidade"),
+                3 to listOf("Dificultar Detecção"),
+                7 to listOf("Animação Ilusória"),
+                8 to listOf("Metamorfosear Objetos"),
+                9 to listOf("Parar o Tempo (Time Stop)", "Parar o Tempo")
+            ),
+            "Fogo" to mapOf(
+                1 to listOf("Mãos Flamejantes"),
+                3 to listOf("Resistência à Elementos"),
+                7 to listOf("Tempestade de Fogo"),
+                8 to listOf("Nuvem Incendiária"),
+                9 to listOf("Grupo de Elementais")
+            ),
+            "Força" to mapOf(
+                1 to listOf("Aumentar Pessoa"),
+                2 to listOf("Força do Touro"),
+                6 to listOf("Pele Rochosa"),
+                7 to listOf("Mão Poderosa de Bigby"),
+                8 to listOf("Punho Cerrado de Bigby, O"),
+                9 to listOf("Mão Esmagadora de Bigby")
+            ),
+            "Guerra" to mapOf(
+                1 to listOf("Arma Mágica"),
+                5 to listOf("Coluna de Chamas"),
+                7 to listOf("Palavra de Poder, Cegar"),
+                8 to listOf("Palavra de Poder, Atordoar"),
+                9 to listOf("Palavra de Poder, Matar")
+            ),
+            "Magia" to mapOf(
+                1 to listOf("Aura Mágica de Nystul"),
+                2 to listOf("Identificação"),
+                3 to listOf("Dissipar Magia"),
+                6 to listOf("Campo Antimagia"),
+                7 to listOf("Reverter Magia"),
+                8 to listOf("Proteção contra Magias"),
+                9 to listOf("Disjunção de Mordenkainen")
+            ),
+            "Mal" to mapOf(
+                1 to listOf("Proteção contra o Bem"),
+                7 to listOf("Blasfêmia"),
+                8 to listOf("Aura Profana"),
+                9 to listOf("Invocar Criaturas IX")
+            ),
+            "Morte" to mapOf(
+                1 to listOf("Causar Medo"),
+                4 to listOf("Proteção Contra a Morte"),
+                7 to listOf("Destruição"),
+                8 to listOf("Criar Mortos-Vivos Maior"),
+                9 to listOf("Grito da Banshee")
+            ),
+            "Ordem" to mapOf(
+                1 to listOf("Proteção contra o Caos"),
+                3 to listOf("Círculo Mágico Contra o Caos"),
+                5 to listOf("Dissipar o Caos"),
+                7 to listOf("Ditado"),
+                8 to listOf("Escudo da Ordem"),
+                9 to listOf("Invocar Criaturas IX")
+            ),
+            "Planta" to mapOf(
+                1 to listOf("Constrição"),
+                2 to listOf("Pele de Árvore"),
+                3 to listOf("Ampliar Plantas"),
+                4 to listOf("Comandar Plantas"),
+                7 to listOf("Animar Plantas"),
+                8 to listOf("Controlar Plantas"),
+                9 to listOf("Homens Vegetais")
+            ),
+            "Proteção" to mapOf(
+                1 to listOf("Santuário"),
+                2 to listOf("Proteger Outro"),
+                3 to listOf("Proteção Contra Elementos"),
+                6 to listOf("Campo Antimagia"),
+                7 to listOf("Repulsão"),
+                8 to listOf("Limpar a Mente"),
+                9 to listOf("Esfera Prismática")
+            ),
+            "Sol" to mapOf(
+                1 to listOf("Suportar Elementos"),
+                5 to listOf("Coluna de Chamas"),
+                7 to listOf("Raio de Sol"),
+                8 to listOf("Explosão Solar"),
+                9 to listOf("Esfera Prismática")
+            ),
+            "Sorte" to mapOf(
+                1 to listOf("Escudo Entrópico"),
+                3 to listOf("Proteção Contra Elementos"),
+                4 to listOf("Movimentação Livre"),
+                5 to listOf("Cancelar Encantamento"),
+                7 to listOf("Reverter Magia"),
+                8 to listOf("Instante de Presciência"),
+                9 to listOf("Milagre")
+            ),
+            "Terra" to mapOf(
+                1 to listOf("Pedra Encantada"),
+                6 to listOf("Pele Rochosa"),
+                7 to listOf("Terremoto"),
+                8 to listOf("Corpo de Ferro"),
+                9 to listOf("Grupo de Elementais")
+            ),
+            "Viagem" to mapOf(
+                1 to listOf("Passos Longos"),
+                3 to listOf("Voo"),
+                4 to listOf("Porta Dimensional"),
+                5 to listOf("Teletransporte"),
+                7 to listOf("Teletransporte Maior"),
+                8 to listOf("Passagem Invisível"),
+                9 to listOf("Projeção Astral")
+            ),
+            "Água" to mapOf(
+                7 to listOf("Névoa Ácida"),
+                8 to listOf("Evaporação"),
+                9 to listOf("Grupo de Elementais")
+            )
+        )
+        val spells = Dnd35Rules.PRESET_SPELLS
+        expected.forEach { (domain, byLevel) ->
+            byLevel.forEach { (level, names) ->
+                names.forEach { name ->
+                    val matches = spells.filter { it.name == name }
+                    assertTrue("$name deve existir no catálogo", matches.isNotEmpty())
+                    matches.forEach { assertEquals("$name em $domain", level, it.domainLevels[domain]) }
+                }
+            }
+        }
+        spells.forEach { spell ->
+            spell.domainLevels.forEach { (domain, level) ->
+                assertTrue(
+                    "${spell.name} não é magia de $domain $level no Livro do Jogador",
+                    expected[domain]?.get(level)?.contains(spell.name) == true
+                )
+            }
+        }
     }
 }

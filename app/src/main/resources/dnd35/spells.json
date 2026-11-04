@@ -1095,7 +1095,9 @@
       "Paladino": 1,
       "Ranger": 2
     },
-    "domainLevels": {}
+    "domainLevels": {
+      "Cura": 1
+    }
   },
   {
     "name": "Infligir Ferimentos Leves",
@@ -1114,7 +1116,9 @@
     "classLevels": {
       "Clérigo": 1
     },
-    "domainLevels": {}
+    "domainLevels": {
+      "Destruição": 1
+    }
   },
   {
     "name": "Abençoar Arma",
@@ -1286,7 +1290,9 @@
       "Clérigo": 1,
       "Druida": 1
     },
-    "domainLevels": {}
+    "domainLevels": {
+      "Terra": 1
+    }
   },
   {
     "name": "Visão da Morte",
@@ -1355,7 +1361,9 @@
       "Mago": 1,
       "Feiticeiro": 1
     },
-    "domainLevels": {}
+    "domainLevels": {
+      "Morte": 1
+    }
   },
   {
     "name": "Compreender Idiomas",
@@ -1449,7 +1457,9 @@
       "Mago": 1,
       "Feiticeiro": 1
     },
-    "domainLevels": {}
+    "domainLevels": {
+      "Conhecimento": 1
+    }
   },
   {
     "name": "Proteção contra o Mal",
@@ -1474,7 +1484,9 @@
       "Mago": 1,
       "Feiticeiro": 1
     },
-    "domainLevels": {}
+    "domainLevels": {
+      "Bem": 1
+    }
   },
   {
     "name": "Detectar Mortos-Vivos",
@@ -1593,7 +1605,9 @@
       "Mago": 1,
       "Feiticeiro": 1
     },
-    "domainLevels": {}
+    "domainLevels": {
+      "Magia": 2
+    }
   },
   {
     "name": "Raio do Enfraquecimento",
@@ -1635,7 +1649,9 @@
       "Mago": 1,
       "Feiticeiro": 1
     },
-    "domainLevels": {}
+    "domainLevels": {
+      "Força": 1
+    }
   },
   {
     "name": "Arma Mágica",
@@ -1660,7 +1676,9 @@
       "Mago": 1,
       "Feiticeiro": 1
     },
-    "domainLevels": {}
+    "domainLevels": {
+      "Guerra": 1
+    }
   },
   {
     "name": "Salto",
@@ -1708,7 +1726,9 @@
       "Mago": 1,
       "Feiticeiro": 1
     },
-    "domainLevels": {}
+    "domainLevels": {
+      "Fogo": 1
+    }
   },
   {
     "name": "Enfeitiçar Animal",
@@ -1750,7 +1770,9 @@
       "Druida": 1,
       "Ranger": 1
     },
-    "domainLevels": {}
+    "domainLevels": {
+      "Planta": 1
+    }
   },
   {
     "name": "Bom Fruto",
@@ -1889,7 +1911,9 @@
     "classLevels": {
       "Clérigo": 1
     },
-    "domainLevels": {}
+    "domainLevels": {
+      "Proteção": 1
+    }
   },
   {
     "name": "Escudo da Fé",
@@ -1950,7 +1974,9 @@
       "Druida": 1,
       "Ranger": 1
     },
-    "domainLevels": {}
+    "domainLevels": {
+      "Viagem": 1
+    }
   },
   {
     "name": "Fogo das Fadas",
@@ -2078,7 +2104,9 @@
       "Mago": 2,
       "Feiticeiro": 2
     },
-    "domainLevels": {}
+    "domainLevels": {
+      "Fogo": 3
+    }
   },
   {
     "name": "Retardar Envenenamento",
@@ -2136,7 +2164,9 @@
       "Mago": 1,
       "Feiticeiro": 1
     },
-    "domainLevels": {}
+    "domainLevels": {
+      "Sol": 1
+    }
   },
   {
     "name": "Porrete Mágico",
@@ -2218,7 +2248,9 @@
       "Mago": 1,
       "Feiticeiro": 1
     },
-    "domainLevels": {}
+    "domainLevels": {
+      "Sorte": 1
+    }
   },
   {
     "name": "Ocultar-se de Mortos-Vivos",
@@ -2373,7 +2405,9 @@
       "Mago": 1,
       "Feiticeiro": 1
     },
-    "domainLevels": {}
+    "domainLevels": {
+      "Ordem": 1
+    }
   },
   {
     "name": "Proteção contra o Bem",
@@ -2396,7 +2430,9 @@
       "Mago": 1,
       "Feiticeiro": 1
     },
-    "domainLevels": {}
+    "domainLevels": {
+      "Mal": 1
+    }
   },
   {
     "name": "Proteção contra a Lei",
@@ -2440,7 +2476,9 @@
       "Druida": 1,
       "Ranger": 1
     },
-    "domainLevels": {}
+    "domainLevels": {
+      "Animais": 1
+    }
   },
   {
     "name": "Invocar Aliado da Natureza I",
@@ -2505,7 +2543,9 @@
       "Feiticeiro": 2,
       "Bardo": 2
     },
-    "domainLevels": {}
+    "domainLevels": {
+      "Enganação": 2
+    }
   },
   {
     "name": "Teia",
@@ -2553,7 +2593,9 @@
       "Druida": 2,
       "Paladino": 2
     },
-    "domainLevels": {}
+    "domainLevels": {
+      "Força": 2
+    }
   },
   {
     "name": "Agilidade do Gato",
@@ -2670,7 +2712,9 @@
       "Paladino": 3,
       "Ranger": 3
     },
-    "domainLevels": {}
+    "domainLevels": {
+      "Cura": 2
+    }
   },
   {
     "name": "Neutralizar Venenos",
@@ -2856,7 +2900,9 @@
       "Mago": 3,
       "Feiticeiro": 3
     },
-    "domainLevels": {}
+    "domainLevels": {
+      "Viagem": 3
+    }
   },
   {
     "name": "Dissipar Magia",
@@ -2885,7 +2931,9 @@
       "Bardo": 3,
       "Paladino": 3
     },
-    "domainLevels": {}
+    "domainLevels": {
+      "Magia": 3
+    }
   },
   {
     "name": "Oração",
@@ -2929,7 +2977,9 @@
       "Feiticeiro": 4,
       "Bardo": 4
     },
-    "domainLevels": {}
+    "domainLevels": {
+      "Viagem": 4
+    }
   },
   {
     "name": "Metamorfose",
@@ -2973,7 +3023,10 @@
       "Feiticeiro": 4,
       "Druida": 4
     },
-    "domainLevels": {}
+    "domainLevels": {
+      "Força": 6,
+      "Terra": 6
+    }
   },
   {
     "name": "Curar Ferimentos Críticos",
@@ -2996,7 +3049,9 @@
       "Druida": 4,
       "Bardo": 4
     },
-    "domainLevels": {}
+    "domainLevels": {
+      "Cura": 4
+    }
   },
   {
     "name": "Teletransporte",
@@ -3017,7 +3072,9 @@
       "Mago": 5,
       "Feiticeiro": 5
     },
-    "domainLevels": {}
+    "domainLevels": {
+      "Viagem": 5
+    }
   },
   {
     "name": "Muralha de Força",
@@ -3059,7 +3116,10 @@
       "Clérigo": 5,
       "Druida": 5
     },
-    "domainLevels": {}
+    "domainLevels": {
+      "Guerra": 5,
+      "Sol": 5
+    }
   },
   {
     "name": "Desintegração",
@@ -3101,7 +3161,9 @@
       "Clérigo": 6,
       "Druida": 7
     },
-    "domainLevels": {}
+    "domainLevels": {
+      "Cura": 6
+    }
   },
   {
     "name": "Dedo da Morte",
@@ -3145,7 +3207,9 @@
       "Mago": 9,
       "Feiticeiro": 9
     },
-    "domainLevels": {}
+    "domainLevels": {
+      "Enganação": 9
+    }
   },
   {
     "name": "Limpar a Mente",
@@ -3476,7 +3540,9 @@
       "Mago": 1,
       "Feiticeiro": 1
     },
-    "domainLevels": {}
+    "domainLevels": {
+      "Magia": 1
+    }
   },
   {
     "name": "Apagar",
@@ -3679,7 +3745,9 @@
       "Mago": 1,
       "Feiticeiro": 1
     },
-    "domainLevels": {}
+    "domainLevels": {
+      "Enganação": 1
+    }
   },
   {
     "name": "Detectar Armadilhas",
@@ -3788,7 +3856,9 @@
       "Druida": 2,
       "Ranger": 2
     },
-    "domainLevels": {}
+    "domainLevels": {
+      "Animais": 2
+    }
   },
   {
     "name": "Muralha de Vento",
@@ -3815,7 +3885,9 @@
       "Mago": 3,
       "Feiticeiro": 3
     },
-    "domainLevels": {}
+    "domainLevels": {
+      "Ar": 2
+    }
   },
   {
     "name": "Pele de Árvore",
@@ -3836,7 +3908,9 @@
       "Druida": 2,
       "Ranger": 2
     },
-    "domainLevels": {}
+    "domainLevels": {
+      "Planta": 2
+    }
   },
   {
     "name": "Proteção Contra Elementos",
@@ -3863,7 +3937,10 @@
       "Mago": 3,
       "Feiticeiro": 3
     },
-    "domainLevels": {}
+    "domainLevels": {
+      "Proteção": 3,
+      "Sorte": 3
+    }
   },
   {
     "name": "Sabedoria da Coruja",
@@ -3913,7 +3990,9 @@
       "Druida": 3,
       "Ranger": 3
     },
-    "domainLevels": {}
+    "domainLevels": {
+      "Planta": 3
+    }
   },
   {
     "name": "Comandar Plantas",
@@ -3934,7 +4013,9 @@
       "Druida": 4,
       "Ranger": 3
     },
-    "domainLevels": {}
+    "domainLevels": {
+      "Planta": 4
+    }
   },
   {
     "name": "Enfraquecer Plantas",
@@ -4177,7 +4258,9 @@
       "Druida": 5,
       "Ranger": 4
     },
-    "domainLevels": {}
+    "domainLevels": {
+      "Animais": 5
+    }
   },
   {
     "name": "Curar Ferimentos Graves",
@@ -4204,7 +4287,9 @@
       "Paladino": 4,
       "Ranger": 4
     },
-    "domainLevels": {}
+    "domainLevels": {
+      "Cura": 3
+    }
   },
   {
     "name": "Dificultar Detecção",
@@ -4227,7 +4312,9 @@
       "Feiticeiro": 3,
       "Mago": 3
     },
-    "domainLevels": {}
+    "domainLevels": {
+      "Enganação": 3
+    }
   },
   {
     "name": "Invocar Aliado da Natureza IV",
@@ -4248,7 +4335,9 @@
       "Druida": 4,
       "Ranger": 4
     },
-    "domainLevels": {}
+    "domainLevels": {
+      "Animais": 4
+    }
   },
   {
     "name": "Movimentação Livre",
@@ -4271,7 +4360,9 @@
       "Druida": 4,
       "Ranger": 4
     },
-    "domainLevels": {}
+    "domainLevels": {
+      "Sorte": 4
+    }
   },
   {
     "name": "Esplendor da Águia",
@@ -4325,7 +4416,9 @@
       "Mago": 2,
       "Feiticeiro": 2
     },
-    "domainLevels": {}
+    "domainLevels": {
+      "Proteção": 2
+    }
   },
   {
     "name": "Remover Paralisia",
@@ -4421,7 +4514,9 @@
       "Mago": 3,
       "Feiticeiro": 3
     },
-    "domainLevels": {}
+    "domainLevels": {
+      "Ordem": 3
+    }
   },
   {
     "name": "Círculo Mágico Contra o Mal",
@@ -4446,7 +4541,9 @@
       "Mago": 3,
       "Feiticeiro": 3
     },
-    "domainLevels": {}
+    "domainLevels": {
+      "Bem": 3
+    }
   },
   {
     "name": "Curar Montaria",
@@ -4594,7 +4691,9 @@
       "Mago": 5,
       "Feiticeiro": 5
     },
-    "domainLevels": {}
+    "domainLevels": {
+      "Sorte": 5
+    }
   },
   {
     "name": "Dissipar o Caos",
@@ -4615,7 +4714,9 @@
       "Clérigo": 5,
       "Paladino": 4
     },
-    "domainLevels": {}
+    "domainLevels": {
+      "Ordem": 5
+    }
   },
   {
     "name": "Dissipar o Mal",
@@ -4636,7 +4737,9 @@
       "Clérigo": 5,
       "Paladino": 4
     },
-    "domainLevels": {}
+    "domainLevels": {
+      "Bem": 5
+    }
   },
   {
     "name": "Espada Sagrada",
@@ -4697,7 +4800,9 @@
       "Clérigo": 4,
       "Paladino": 4
     },
-    "domainLevels": {}
+    "domainLevels": {
+      "Morte": 4
+    }
   },
   {
     "name": "Restauração",
@@ -4783,7 +4888,9 @@
       "Feiticeiro": 8,
       "Mago": 8
     },
-    "domainLevels": {}
+    "domainLevels": {
+      "Força": 8
+    }
   },
   {
     "name": "Padrão Cintilante",
@@ -6083,7 +6190,9 @@
     "classLevels": {
       "Clérigo": 9
     },
-    "domainLevels": {},
+    "domainLevels": {
+      "Cura": 9
+    },
     "castTime": "1 ação padrão",
     "components": "V, G",
     "range": "Curto (7,5 m + 1,5 m/2 níveis)",
@@ -6148,7 +6257,9 @@
     "classLevels": {
       "Clérigo": 9
     },
-    "domainLevels": {},
+    "domainLevels": {
+      "Destruição": 9
+    },
     "castTime": "1 ação padrão",
     "components": "V, G, FD",
     "range": "Médio (30 m + 3 m/nível)",
@@ -6193,7 +6304,6 @@
       "Mago": 9
     },
     "domainLevels": {
-      "Animais": 9,
       "Bem": 9,
       "Caos": 9,
       "Mal": 9,
@@ -6267,7 +6377,9 @@
       "Feiticeiro": 9,
       "Mago": 9
     },
-    "domainLevels": {},
+    "domainLevels": {
+      "Viagem": 9
+    },
     "castTime": "30 minutos",
     "components": "V, G, M",
     "range": "Toque",
@@ -6349,10 +6461,7 @@
       "Clérigo": 6,
       "Druida": 7
     },
-    "domainLevels": {
-      "Ar": 6,
-      "Viagem": 6
-    },
+    "domainLevels": {},
     "castTime": "1 ação padrão",
     "components": "V, G",
     "range": "Toque",
@@ -6437,7 +6546,7 @@
       "Mago": 6
     },
     "domainLevels": {
-      "Sol": 5
+      "Conhecimento": 5
     },
     "castTime": "1 ação padrão",
     "components": "V, G, M, FD",
@@ -6785,7 +6894,9 @@
       "Feiticeiro": 7,
       "Mago": 7
     },
-    "domainLevels": {},
+    "domainLevels": {
+      "Força": 7
+    },
     "castTime": "1 ação padrão",
     "components": "V, G",
     "range": "Médio (30 m + 3 m/nível)",
@@ -6995,7 +7106,9 @@
       "Feiticeiro": 9,
       "Mago": 9
     },
-    "domainLevels": {},
+    "domainLevels": {
+      "Magia": 9
+    },
     "castTime": "1 ação padrão",
     "components": "V",
     "range": "Médio (30 m + 3 m/nível)",
@@ -7124,7 +7237,9 @@
       "Feiticeiro": 9,
       "Mago": 9
     },
-    "domainLevels": {},
+    "domainLevels": {
+      "Guerra": 9
+    },
     "castTime": "1 ação padrão",
     "components": "V",
     "range": "Médio (30 m + 3 m/nível)",
@@ -7166,7 +7281,9 @@
       "Feiticeiro": 9,
       "Mago": 9
     },
-    "domainLevels": {},
+    "domainLevels": {
+      "Força": 9
+    },
     "castTime": "1 ação padrão",
     "components": "V, G",
     "range": "Médio (30 m + 3 m/nível)",
@@ -7229,7 +7346,9 @@
       "Feiticeiro": 9,
       "Mago": 9
     },
-    "domainLevels": {},
+    "domainLevels": {
+      "Morte": 9
+    },
     "castTime": "1 ação padrão",
     "components": "V",
     "range": "9 m",
@@ -7250,7 +7369,9 @@
       "Feiticeiro": 9,
       "Mago": 9
     },
-    "domainLevels": {},
+    "domainLevels": {
+      "Enganação": 9
+    },
     "castTime": "1 ação padrão",
     "components": "V",
     "range": "Pessoal",
