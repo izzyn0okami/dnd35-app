@@ -28,6 +28,8 @@ mensageiro ou guardado no computador.
 - O retrato personalizado vai embutido em `photoJpegBase64`; retratos predefinidos vão como
   `photoPreset`. Retratos que não estejam na pasta do app não são exportados.
 - Campos ausentes usam o valor padrão; campos desconhecidos são ignorados.
+- Cada item do inventário mantém o campo legado `damageOrAc` e pode incluir `damage` (dano de arma) e `armorClassBonus` (bônus de armadura/escudo à CA). Na leitura, fichas antigas sem os campos novos migram automaticamente o valor legado de acordo com a categoria do item.
+
 
 ## Regras da importação
 
