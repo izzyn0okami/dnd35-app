@@ -846,8 +846,8 @@ fun InventoryItemRowRefined(
     val totalItemWeight = item.weightLb * item.quantity
     val isEquipped = item.equipped || (item.equippedSlot != Dnd35Rules.EquipmentSlots.NONE && item.equippedSlot.isNotBlank())
     val displayName = item.name + when {
-        ammunitionBundleSize(item) > 1 -> " (\${remainingAmmunitionUnits(item)} munições restantes)"
-        item.quantity > 1 -> " (x\${item.quantity})"
+        ammunitionBundleSize(item) > 1 -> " (${remainingAmmunitionUnits(item)} munições restantes)"
+        item.quantity > 1 -> " (x${item.quantity})"
         else -> ""
     }
 
@@ -870,7 +870,7 @@ fun InventoryItemRowRefined(
                 if (!item.imageUri.isNullOrBlank()) {
                     AsyncImage(
                         model = item.imageUri,
-                        contentDescription = "Foto de \${item.name}",
+                        contentDescription = "Foto de ${item.name}",
                         contentScale = ContentScale.Fit,
                         modifier = Modifier
                             .size(88.dp)
@@ -914,7 +914,7 @@ fun InventoryItemRowRefined(
                         modifier = Modifier.clickable(onClick = onOpenSlotPicker)
                     ) {
                         Text(
-                            text = "Espaço: \${item.equippedSlot}",
+                            text = "Espaço: ${item.equippedSlot}",
                             style = MaterialTheme.typography.labelMedium,
                             fontWeight = FontWeight.SemiBold,
                             color = MaterialTheme.colorScheme.primary
@@ -990,7 +990,7 @@ fun InventoryItemRowRefined(
                 IconButton(onClick = onEdit, modifier = Modifier.size(44.dp)) {
                     Icon(
                         Icons.Default.Edit,
-                        contentDescription = "Editar \${item.name}",
+                        contentDescription = "Editar ${item.name}",
                         modifier = Modifier.size(20.dp),
                         tint = MaterialTheme.colorScheme.primary
                     )
@@ -998,7 +998,7 @@ fun InventoryItemRowRefined(
                 IconButton(onClick = onDelete, modifier = Modifier.size(44.dp)) {
                     Icon(
                         Icons.Default.Delete,
-                        contentDescription = "Excluir \${item.name}",
+                        contentDescription = "Excluir ${item.name}",
                         modifier = Modifier.size(20.dp),
                         tint = DndCrimson
                     )
@@ -1007,7 +1007,7 @@ fun InventoryItemRowRefined(
                     IconButton(onClick = { showItemMenu = true }, modifier = Modifier.size(44.dp)) {
                         Icon(
                             Icons.Default.MoreVert,
-                            contentDescription = "Mais opções de \${item.name}",
+                            contentDescription = "Mais opções de ${item.name}",
                             modifier = Modifier.size(20.dp)
                         )
                     }
