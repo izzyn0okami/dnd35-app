@@ -284,6 +284,13 @@ object CharacterCalculator {
 
             val slot = item.equippedSlot
             val props = "${item.effectiveDamage()} ${item.effectiveArmorClassBonus()} ${item.damageOrAc} ${item.notes}"
+            // Bônus de CA não pode ser concatenado às notas para inferir atributos:
+            // em armaduras, "+4" seguido de "Des Max" seria lido falsamente como "+4 DES".
+            val abilityProps = listOfNotNull(
+                item.effectiveDamage().takeIf { it.isNotBlank() },
+                item.damageOrAc.takeIf { !isArmorInventoryCategory(item.category) && !isShieldInventoryCategory(item.category) && it.isNotBlank() },
+                item.notes.takeIf { it.isNotBlank() }
+            ).joinToString(" ")
 
             // Somente a categoria Armaduras concede bônus de armadura; Corpo também pode conter vestimentas.
             if (isArmorInventoryCategory(item.category)) {
@@ -304,12 +311,12 @@ object CharacterCalculator {
             }
 
             // Itens de Cabeça, Pescoço, Ombros, Mãos, etc.
-            parseSpecificBonus(props, "FOR").takeIf { it > 0 }?.let { itemStrBonus = maxOf(itemStrBonus, it) }
-            parseSpecificBonus(props, "DES").takeIf { it > 0 }?.let { itemDexBonus = maxOf(itemDexBonus, it) }
-            parseSpecificBonus(props, "CON").takeIf { it > 0 }?.let { itemConBonus = maxOf(itemConBonus, it) }
-            parseSpecificBonus(props, "INT").takeIf { it > 0 }?.let { itemIntBonus = maxOf(itemIntBonus, it) }
-            parseSpecificBonus(props, "SAB").takeIf { it > 0 }?.let { itemWisBonus = maxOf(itemWisBonus, it) }
-            parseSpecificBonus(props, "CAR").takeIf { it > 0 }?.let { itemChaBonus = maxOf(itemChaBonus, it) }
+            parseSpecificBonus(abilityProps, "FOR").takeIf { it > 0 }?.let { itemStrBonus = maxOf(itemStrBonus, it) }
+            parseSpecificBonus(abilityProps, "DES").takeIf { it > 0 }?.let { itemDexBonus = maxOf(itemDexBonus, it) }
+            parseSpecificBonus(abilityProps, "CON").takeIf { it > 0 }?.let { itemConBonus = maxOf(itemConBonus, it) }
+            parseSpecificBonus(abilityProps, "INT").takeIf { it > 0 }?.let { itemIntBonus = maxOf(itemIntBonus, it) }
+            parseSpecificBonus(abilityProps, "SAB").takeIf { it > 0 }?.let { itemWisBonus = maxOf(itemWisBonus, it) }
+            parseSpecificBonus(abilityProps, "CAR").takeIf { it > 0 }?.let { itemChaBonus = maxOf(itemChaBonus, it) }
 
             if (props.contains("Deflexão", ignoreCase = true) || slot in listOf(Dnd35Rules.EquipmentSlots.RING_1, Dnd35Rules.EquipmentSlots.RING_2)) {
                 val defl = parseBonusNumber(item.damageOrAc)
