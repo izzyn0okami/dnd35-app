@@ -952,7 +952,7 @@ fun InventoryItemRowRefined(
                     val itemCombatStat = when {
                         isWeaponInventoryCategory(item.category) -> item.effectiveDamage()
                         isArmorInventoryCategory(item.category) || isShieldInventoryCategory(item.category) -> item.effectiveArmorClassBonus()
-                        else -> ""
+                        else -> item.damageOrAc
                     }
                     if (itemCombatStat.isNotBlank() && itemCombatStat != "-") {
                         Text(
