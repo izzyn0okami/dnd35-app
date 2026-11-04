@@ -301,7 +301,7 @@ internal fun LazyListScope.knownSection(
             Button(onClick = onAddManual, colors = ButtonDefaults.buttonColors(containerColor = DndArcaneBlue)) {
                 Icon(Icons.Default.Add, contentDescription = null, modifier = Modifier.size(18.dp))
                 Spacer(Modifier.width(4.dp))
-                Text("Adicionar Magia")
+                Text("Criar magia")
             }
         }
     }

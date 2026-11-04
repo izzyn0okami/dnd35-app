@@ -86,7 +86,7 @@ fun AddEditSpellDialog(
         onDismissRequest = onDismiss,
         title = {
             Text(
-                if (spellToEdit != null) "Editar Magia" else if (manualOnly) "Adicionar Magia Personalizada" else "Adicionar Magia ao Grimório",
+                if (spellToEdit != null) "Editar Magia" else if (manualOnly) "Criar Magia" else "Adicionar Magia ao Grimório",
                 fontWeight = FontWeight.Bold
             )
         },

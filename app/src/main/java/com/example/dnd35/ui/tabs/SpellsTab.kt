@@ -305,7 +305,7 @@ fun SpellsTab(
         )
     }
 
-    // Modal para Adicionar Magia
+    // Modal para criar magia personalizada
     if (showAddSpellModal) {
         AddEditSpellDialog(
             spellToEdit = null,
