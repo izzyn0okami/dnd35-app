@@ -2163,12 +2163,10 @@ class PresetSpellCatalogTest {
 
     /**
      * Listas de magias de domínio do Livro do Jogador (cap. 11, "Domínios de Clérigo"),
-     * restritas às magias que já existem no catálogo. As demais magias de domínio ainda
-     * precisam entrar no catálogo (círculos 4-6); quando entrarem, devem ser acrescentadas
-     * a esta tabela. Proteção contra a Lei, Névoa Obscurecente e Clariaudiência/Clarividência
-     * aparecem nas listas como "Proteção Contra a Ordem", "Névoa Obscurescente" e
-     * "Clarividência/Clariaudiência". Escudo de Fogo e Sementes de Fogo aparecem na lista de
-     * domínios como "Escudo do Fogo" e "Semente de Fogo"; o catálogo usa o título do verbete.
+     * com todas as magias de domínio já presentes no catálogo. Algumas aparecem nas listas com grafia
+     * diferente do verbete ("Proteção Contra a Ordem", "Névoa Obscurescente", "Escudo do Fogo",
+     * "Semente de Fogo", "Clarividência/Clariaudiência"); o catálogo usa o nome já existente ou o título
+     * do verbete.
      */
     @Test
     fun domainSpellListsMatchPlayerHandbook() {
@@ -2179,6 +2177,7 @@ class PresetSpellCatalogTest {
                 3 to listOf("Dominar Animal"),
                 4 to listOf("Invocar Aliado da Natureza IV"),
                 5 to listOf("Comunhão Com a Natureza"),
+                6 to listOf("Cúpula de Proteção Contra a Vida"),
                 7 to listOf("Forma Animal"),
                 8 to listOf("Invocar Aliado da Natureza VIII"),
                 9 to listOf("Alterar Forma")
@@ -2187,6 +2186,9 @@ class PresetSpellCatalogTest {
                 1 to listOf("Névoa Obscurecente"),
                 2 to listOf("Muralha de Vento"),
                 3 to listOf("Forma Gasosa"),
+                4 to listOf("Andar no Ar"),
+                5 to listOf("Controlar os Ventos"),
+                6 to listOf("Corrente de Relâmpagos"),
                 7 to listOf("Controlar o Clima"),
                 8 to listOf("Ciclone"),
                 9 to listOf("Grupo de Elementais")
@@ -2195,6 +2197,7 @@ class PresetSpellCatalogTest {
                 1 to listOf("Proteção contra o Mal"),
                 2 to listOf("Ajuda"),
                 3 to listOf("Círculo Mágico Contra o Mal"),
+                4 to listOf("Destruição Sagrada"),
                 5 to listOf("Dissipar o Mal"),
                 6 to listOf("Barreira de Lâminas"),
                 7 to listOf("Palavra Sagrada"),
@@ -2205,7 +2208,9 @@ class PresetSpellCatalogTest {
                 1 to listOf("Proteção contra a Lei"),
                 2 to listOf("Despedaçar"),
                 3 to listOf("Círculo Mágico Contra a Ordem"),
+                4 to listOf("Martelo do Caos"),
                 5 to listOf("Dissipar a Ordem"),
+                6 to listOf("Animar Objetos"),
                 7 to listOf("Palavra do Caos"),
                 8 to listOf("Manto do Caos"),
                 9 to listOf("Invocar Criaturas IX")
@@ -2214,6 +2219,7 @@ class PresetSpellCatalogTest {
                 1 to listOf("Detectar Portas Secretas"),
                 2 to listOf("Detectar Pensamentos"),
                 3 to listOf("Clariaudiência/Clarividência"),
+                4 to listOf("Adivinhação"),
                 5 to listOf("Visão da Verdade"),
                 6 to listOf("Encontrar o Caminho"),
                 7 to listOf("Lendas e Histórias"),
@@ -2225,6 +2231,7 @@ class PresetSpellCatalogTest {
                 2 to listOf("Curar Ferimentos Moderados"),
                 3 to listOf("Curar Ferimentos Graves"),
                 4 to listOf("Curar Ferimentos Críticos"),
+                5 to listOf("Curar Ferimentos Leves em Massa"),
                 6 to listOf("Cura Completa (Heal)"),
                 7 to listOf("Regeneração"),
                 8 to listOf("Curar Ferimentos Críticos em Massa"),
@@ -2234,6 +2241,9 @@ class PresetSpellCatalogTest {
                 1 to listOf("Infligir Ferimentos Leves"),
                 2 to listOf("Despedaçar"),
                 3 to listOf("Praga"),
+                4 to listOf("Infligir Ferimentos Críticos"),
+                5 to listOf("Infligir Ferimentos Leves em Massa"),
+                6 to listOf("Doença Plena"),
                 7 to listOf("Desintegrar"),
                 8 to listOf("Terremoto"),
                 9 to listOf("Implosão")
@@ -2242,6 +2252,8 @@ class PresetSpellCatalogTest {
                 1 to listOf("Transformação Momentânea"),
                 2 to listOf("Invisibilidade"),
                 3 to listOf("Dificultar Detecção"),
+                4 to listOf("Confusão"),
+                5 to listOf("Visão Falsa"),
                 6 to listOf("Despistar"),
                 7 to listOf("Animação Ilusória"),
                 8 to listOf("Metamorfosear Objetos"),
@@ -2251,6 +2263,7 @@ class PresetSpellCatalogTest {
                 1 to listOf("Mãos Flamejantes"),
                 2 to listOf("Criar Chamas"),
                 3 to listOf("Resistência à Elementos"),
+                4 to listOf("Muralha de Fogo"),
                 5 to listOf("Escudo de Fogo"),
                 6 to listOf("Sementes de Fogo"),
                 7 to listOf("Tempestade de Fogo"),
@@ -2262,6 +2275,7 @@ class PresetSpellCatalogTest {
                 2 to listOf("Força do Touro"),
                 3 to listOf("Roupa Encantada"),
                 4 to listOf("Imunidade à Magia"),
+                5 to listOf("Força dos Justos"),
                 6 to listOf("Pele Rochosa"),
                 7 to listOf("Mão Poderosa de Bigby"),
                 8 to listOf("Punho Cerrado de Bigby, O"),
@@ -2271,6 +2285,7 @@ class PresetSpellCatalogTest {
                 1 to listOf("Arma Mágica"),
                 2 to listOf("Arma Espiritual"),
                 3 to listOf("Roupa Encantada"),
+                4 to listOf("Poder Divino"),
                 5 to listOf("Coluna de Chamas"),
                 6 to listOf("Barreira de Lâminas"),
                 7 to listOf("Palavra de Poder, Cegar"),
@@ -2281,6 +2296,7 @@ class PresetSpellCatalogTest {
                 1 to listOf("Aura Mágica de Nystul"),
                 2 to listOf("Identificação"),
                 3 to listOf("Dissipar Magia"),
+                4 to listOf("Transferência de Poder Divino"),
                 5 to listOf("Resistência à Magia"),
                 6 to listOf("Campo Antimagia"),
                 7 to listOf("Reverter Magia"),
@@ -2291,6 +2307,7 @@ class PresetSpellCatalogTest {
                 1 to listOf("Proteção contra o Bem"),
                 2 to listOf("Profanar"),
                 3 to listOf("Círculo Mágico Contra o Bem"),
+                4 to listOf("Nuvem Profana"),
                 5 to listOf("Dissipar o Bem"),
                 6 to listOf("Criar Mortos-Vivos"),
                 7 to listOf("Blasfêmia"),
@@ -2302,6 +2319,7 @@ class PresetSpellCatalogTest {
                 2 to listOf("Drenar Força Vital"),
                 3 to listOf("Criar Mortos-Vivos Menor"),
                 4 to listOf("Proteção Contra a Morte"),
+                5 to listOf("Matar"),
                 6 to listOf("Criar Mortos-Vivos"),
                 7 to listOf("Destruição"),
                 8 to listOf("Criar Mortos-Vivos Maior"),
@@ -2311,7 +2329,9 @@ class PresetSpellCatalogTest {
                 1 to listOf("Proteção contra o Caos"),
                 2 to listOf("Acalmar Emoções"),
                 3 to listOf("Círculo Mágico Contra o Caos"),
+                4 to listOf("Cólera da Ordem"),
                 5 to listOf("Dissipar o Caos"),
+                6 to listOf("Imobilizar Monstro"),
                 7 to listOf("Ditado"),
                 8 to listOf("Escudo da Ordem"),
                 9 to listOf("Invocar Criaturas IX")
@@ -2321,6 +2341,8 @@ class PresetSpellCatalogTest {
                 2 to listOf("Pele de Árvore"),
                 3 to listOf("Ampliar Plantas"),
                 4 to listOf("Comandar Plantas"),
+                5 to listOf("Muralha de Espinhos"),
+                6 to listOf("Repelir Madeira"),
                 7 to listOf("Animar Plantas"),
                 8 to listOf("Controlar Plantas"),
                 9 to listOf("Homens Vegetais")
@@ -2362,6 +2384,8 @@ class PresetSpellCatalogTest {
                 1 to listOf("Pedra Encantada"),
                 2 to listOf("Amolecer Terra e Pedra"),
                 3 to listOf("Moldar Rochas"),
+                4 to listOf("Pedras Afiadas"),
+                5 to listOf("Muralha de Pedra"),
                 6 to listOf("Pele Rochosa"),
                 7 to listOf("Terremoto"),
                 8 to listOf("Corpo de Ferro"),
@@ -2382,6 +2406,9 @@ class PresetSpellCatalogTest {
                 1 to listOf("Névoa Obscurecente"),
                 2 to listOf("Névoa"),
                 3 to listOf("Respirar na Água"),
+                4 to listOf("Controlar Água"),
+                5 to listOf("Tempestade Glacial"),
+                6 to listOf("Cone Glacial"),
                 7 to listOf("Névoa Ácida"),
                 8 to listOf("Evaporação"),
                 9 to listOf("Grupo de Elementais")
@@ -2521,5 +2548,84 @@ class PresetSpellCatalogTest {
         val byName = Dnd35Rules.PRESET_SPELLS.associateBy { it.name }
         assertEquals(mapOf("Caos" to 1), byName.getValue("Proteção contra a Lei").domainLevels)
         assertEquals(mapOf("Água" to 1, "Ar" to 1), byName.getValue("Névoa Obscurecente").domainLevels)
+    }
+
+    /**
+     * Terceiro e último lote de magias de domínio (círculos 4-6). Os campos foram conferidos nos
+     * verbetes do Livro do Jogador brasileiro e, onde o PDF estava ambíguo, no SRD oficial.
+     * Cólera da Ordem, Destruição Sagrada, Martelo do Caos e Nuvem Profana são magias exclusivas
+     * de domínio e por isso não têm classe própria.
+     */
+    @Test
+    fun domainSpellBatchThreeMatchesPlayerHandbook() {
+        data class Expected(
+            val name: String,
+            val level: Int,
+            val school: String,
+            val classLevels: Map<String, Int>,
+            val domainLevels: Map<String, Int>,
+            val components: String,
+            val range: String,
+            val duration: String,
+            val savingThrow: String,
+            val spellResistance: Boolean
+        )
+        val expected = listOf(
+            Expected("Adivinhação", 4, "Adivinhação", mapOf("Clérigo" to 4), mapOf("Conhecimento" to 4), "V, G, M", "Pessoal", "Instantânea", "Nenhum", false),
+            Expected("Andar no Ar", 4, "Transmutação [Ar]", mapOf("Clérigo" to 4, "Druida" to 4), mapOf("Ar" to 4), "V, G, FD", "Toque", "10 minutos/nível", "Nenhum", true),
+            Expected("Confusão", 3, "Encantamento (Compulsão) [Ação Mental]", mapOf("Bardo" to 3, "Feiticeiro" to 4, "Mago" to 4), mapOf("Enganação" to 4), "V, G, M/FD", "Médio (30 m + 3 m/nível)", "1 rodada/nível", "Vontade anula", true),
+            Expected("Controlar Água", 4, "Transmutação [Água]", mapOf("Clérigo" to 4, "Druida" to 4, "Feiticeiro" to 6, "Mago" to 6), mapOf("Água" to 4), "V, G, M/FD", "Longo (120 m + 12 m/nível)", "10 minutos/nível (D)", "Nenhum; veja texto", false),
+            Expected("Cólera da Ordem", 4, "Evocação [Ordem]", mapOf(), mapOf("Ordem" to 4), "V, G, FD", "Médio (30 m + 3 m/nível)", "Instantânea (1 rodada); veja texto", "Vontade parcial; veja texto", true),
+            Expected("Destruição Sagrada", 4, "Evocação [Bem]", mapOf(), mapOf("Bem" to 4), "V, G", "Médio (30 m + 3 m/nível)", "Instantânea (1 rodada); veja texto", "Vontade parcial; veja texto", true),
+            Expected("Infligir Ferimentos Críticos", 4, "Necromancia", mapOf("Clérigo" to 4), mapOf("Destruição" to 4), "V, G", "Toque", "Instantânea", "Vontade metade", true),
+            Expected("Martelo do Caos", 4, "Evocação [Caos]", mapOf(), mapOf("Caos" to 4), "V, G", "Médio (30 m + 3 m/nível)", "Instantânea (1d6 rodadas; veja texto)", "Vontade parcial; veja texto", true),
+            Expected("Muralha de Fogo", 4, "Evocação [Fogo]", mapOf("Druida" to 5, "Feiticeiro" to 4, "Mago" to 4), mapOf("Fogo" to 4), "V, G, M/FD", "Médio (30 m + 3 m/nível)", "Concentração + 1 rodada/nível", "Nenhum", true),
+            Expected("Nuvem Profana", 4, "Evocação [Mal]", mapOf(), mapOf("Mal" to 4), "V, G", "Médio (30 m + 3 m/nível)", "Instantânea (1d4 rodadas); veja texto", "Vontade parcial", true),
+            Expected("Pedras Afiadas", 4, "Transmutação [Terra]", mapOf("Druida" to 4), mapOf("Terra" to 4), "V, G, FD", "Médio (30 m + 3 m/nível)", "1 hora/nível (D)", "Reflexos parcial", true),
+            Expected("Poder Divino", 4, "Evocação", mapOf("Clérigo" to 4), mapOf("Guerra" to 4), "V, G, FD", "Pessoal", "1 rodada/nível", "Nenhum", false),
+            Expected("Transferência de Poder Divino", 4, "Evocação", mapOf("Clérigo" to 4), mapOf("Magia" to 4), "V, G, FD", "Toque", "Permanente até descarregada (D)", "Vontade anula (inofensiva)", true),
+            Expected("Controlar os Ventos", 5, "Transmutação [Ar]", mapOf("Druida" to 5), mapOf("Ar" to 5), "V, G", "12 m/nível", "10 minutos/nível", "Fortitude anula", false),
+            Expected("Curar Ferimentos Leves em Massa", 5, "Conjuração (Cura)", mapOf("Bardo" to 5, "Clérigo" to 5, "Druida" to 6), mapOf("Cura" to 5), "V, G", "Curto", "Instantânea", "Vontade metade (inofensiva) ou Vontade metade (veja texto)", true),
+            Expected("Força dos Justos", 5, "Transmutação", mapOf("Clérigo" to 5), mapOf("Força" to 5), "V, G, FD", "Pessoal", "1 rodada/nível", "Nenhum", false),
+            Expected("Infligir Ferimentos Leves em Massa", 5, "Necromancia", mapOf("Clérigo" to 5), mapOf("Destruição" to 5), "V, G", "Curto (7,5 m + 1,5 m/2 níveis)", "Instantânea", "Vontade metade", true),
+            Expected("Matar", 5, "Necromancia [Morte]", mapOf("Clérigo" to 5), mapOf("Morte" to 5), "V, G", "Toque", "Instantânea", "Fortitude parcial", true),
+            Expected("Muralha de Espinhos", 5, "Conjuração (Criação)", mapOf("Druida" to 5), mapOf("Planta" to 5), "V, G", "Médio (30 m + 3 m/nível)", "10 minutos/nível (D)", "Nenhum", false),
+            Expected("Muralha de Pedra", 5, "Conjuração (Criação) [Terra]", mapOf("Clérigo" to 5, "Druida" to 6, "Feiticeiro" to 5, "Mago" to 5), mapOf("Terra" to 5), "V, G, M/FD", "Médio (30 m + 3 m/nível)", "Instantânea", "Veja texto", false),
+            Expected("Tempestade Glacial", 4, "Evocação [Frio]", mapOf("Druida" to 4, "Feiticeiro" to 4, "Mago" to 4), mapOf("Água" to 5), "V, G, M/FD", "Longo (120 m + 12 m/nível)", "1 rodada completa", "Nenhum", true),
+            Expected("Visão Falsa", 5, "Ilusão (Sensação)", mapOf("Bardo" to 5, "Feiticeiro" to 5, "Mago" to 5), mapOf("Enganação" to 5), "V, G, M", "Toque", "1 hora/nível (D)", "Nenhum", false),
+            Expected("Animar Objetos", 6, "Transmutação", mapOf("Bardo" to 6, "Clérigo" to 6), mapOf("Caos" to 6), "V, G", "Médio (30 m + 3 m/nível)", "1 rodada/nível", "Nenhum", false),
+            Expected("Cone Glacial", 5, "Evocação [Frio]", mapOf("Feiticeiro" to 5, "Mago" to 5), mapOf("Água" to 6), "V, G, M/FD", "18 m", "Instantânea", "Reflexos reduz à metade", true),
+            Expected("Corrente de Relâmpagos", 6, "Evocação [Eletricidade]", mapOf("Feiticeiro" to 6, "Mago" to 6), mapOf("Ar" to 6), "V, G, F", "Longo (120 m + 12 m/nível)", "Instantânea", "Reflexos reduz à metade", true),
+            Expected("Cúpula de Proteção Contra a Vida", 6, "Abjuração", mapOf("Clérigo" to 6, "Druida" to 6), mapOf("Animais" to 6), "V, G, FD", "3 m", "10 minutos/nível (D)", "Nenhum", true),
+            Expected("Doença Plena", 6, "Necromancia", mapOf("Clérigo" to 6), mapOf("Destruição" to 6), "V, G", "Toque", "Instantânea", "Vontade para reduzir à metade; veja texto", true),
+            Expected("Imobilizar Monstro", 4, "Encantamento (Compulsão) [Ação Mental]", mapOf("Bardo" to 4, "Feiticeiro" to 5, "Mago" to 5), mapOf("Ordem" to 6), "V, G, M/FD", "Médio (30 m + 3 m/nível)", "1 rodada/nível (D); veja texto", "Vontade anula; veja texto", true),
+            Expected("Repelir Madeira", 6, "Transmutação", mapOf("Druida" to 6), mapOf("Planta" to 6), "V, G", "18 m", "1 minuto/nível (D)", "Nenhum", false)
+        )
+        expected.forEach { e ->
+            val matches = Dnd35Rules.PRESET_SPELLS.filter { it.name == e.name }
+            assertEquals("${e.name} deve existir uma única vez", 1, matches.size)
+            val spell = matches.single()
+            assertEquals(e.name, e.level, spell.level)
+            assertEquals(e.name, e.school, spell.school)
+            assertEquals(e.name, e.classLevels, spell.classLevels)
+            assertEquals(e.name, e.classLevels.keys, spell.classes.toSet())
+            assertEquals(e.name, e.domainLevels, spell.domainLevels)
+            assertEquals(e.name, e.components, spell.components)
+            assertEquals(e.name, e.range, spell.range)
+            assertEquals(e.name, e.duration, spell.duration)
+            assertEquals(e.name, e.savingThrow, spell.savingThrow)
+            assertEquals(e.name, e.spellResistance, spell.spellResistance)
+            assertTrue("${e.name} deve ter descrição", spell.description.isNotBlank())
+        }
+    }
+
+    @Test
+    fun everyPlayerHandbookDomainSpellIsInTheCatalog() {
+        val names = Dnd35Rules.PRESET_SPELLS.map { it.name }.toSet()
+        listOf(
+            "Cólera da Ordem", "Destruição Sagrada", "Martelo do Caos", "Nuvem Profana",
+            "Poder Divino", "Matar", "Doença Plena", "Imobilizar Monstro"
+        ).forEach { assertTrue("$it deve estar no catálogo", it in names) }
+        assertTrue(Dnd35Rules.PRESET_SPELLS.filter { it.classes.isEmpty() }.all { it.domainLevels.isNotEmpty() })
     }
 }

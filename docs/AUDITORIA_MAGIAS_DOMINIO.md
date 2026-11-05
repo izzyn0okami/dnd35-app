@@ -23,43 +23,16 @@ magias que o espaço de domínio do Clérigo precisa oferecer.
 - Lote 2 (círculos 1-3, mais Círculo Mágico Contra o Bem/a Ordem e Dissipar o Bem/a Ordem): 22 magias
   novas. Domínio acrescentado sem renomear em Proteção contra a Lei (Caos 1) e Névoa Obscurecente
   (Água 1, Ar 1). Amolecer Terra e Pedra foi conferida no SRD oficial, pois o PDF misturava seus campos.
+- Lote 3 (círculos 4-6): 29 magias novas. Cólera da Ordem, Destruição Sagrada, Martelo do Caos e Nuvem
+  Profana são exclusivas de domínio no livro (`classes` vazio; o nível é o do domínio). Vários verbetes do
+  PDF vinham com campos misturados de outras magias (Adivinhação, Poder Divino, Força dos Justos, Animar
+  Objetos, Doença Plena, Imobilizar Monstro, etc.); nesses casos valeram o SRD oficial e o conhecimento
+  das regras, e as descrições são resumos próprios.
 - `domainLevels` corrigido e completado nas magias que já existiam (PR #305), incluindo o domínio da Força.
 
-## Pendente: 29 magias de domínio ainda fora do catálogo (círculos 4-6)
-Observação: o PDF tem erros de OCR e grafias inconsistentes ("Animal", "Viajem"); cada verbete deve
-ser lido antes de entrar (e conferido no SRD oficial quando o PDF estiver ambíguo).
-
-| Magia | Domínio e círculo | Situação |
-| --- | --- | --- |
-| Adivinhação | Conhecimento 4 | verbete localizado |
-| Andar no Ar | Ar 4 | verbete localizado |
-| Confusão | Enganação 4 | verbete localizado |
-| Controlar Água | Água 4 | conferir nome do verbete |
-| Cólera da Ordem | Ordem 4 | verbete localizado |
-| Destruição Sagrada | Bem 4 | verbete localizado |
-| Infligir Ferimentos Críticos | Destruição 4 | conferir nome do verbete |
-| Martelo do Caos | Caos 4 | verbete localizado |
-| Muralha de Fogo | Fogo 4 | verbete localizado |
-| Nuvem Profana | Mal 4 | verbete localizado |
-| Pedras Afiadas | Terra 4 | verbete localizado |
-| Poder Divino | Guerra 4 | verbete localizado |
-| Transferência de Poder Divino | Magia 4 | verbete localizado |
-| Controlar os Ventos | Ar 5 | verbete localizado |
-| Curar Ferimentos Leves em Massa | Cura 5 | conferir nome do verbete |
-| Força dos Justos | Força 5 | verbete localizado |
-| Infligir Ferimentos Leves em Massa | Destruição 5 | conferir nome do verbete |
-| Matar | Morte 5 | verbete localizado |
-| Muralha de Espinhos | Planta 5 | verbete localizado |
-| Muralha de Pedra | Terra 5 | verbete localizado |
-| Tempestade Glacial | Água 5 | verbete localizado |
-| Visão Falsa | Enganação 5 | verbete localizado |
-| Animar Objetos | Caos 6 | verbete localizado |
-| Cone Glacial | Água 6 | verbete localizado |
-| Corrente de Relâmpagos | Ar 6 | verbete localizado |
-| Cúpula de Proteção Contra a Vida | Animais 6 | conferir nome do verbete |
-| Doença Plena | Destruição 6 | verbete localizado |
-| Imobilizar Monstro | Ordem 6 | verbete localizado |
-| Repelir Madeira | Planta 6 | verbete localizado |
+## Pendente
+Nenhuma magia de domínio do Livro do Jogador fica fora do catálogo. Falta apenas implementar o espaço
+de domínio na ficha (dois domínios, uma magia de domínio por círculo).
 
 ## Fora do escopo deste documento
 Divergências de `classLevels` em magias que já existiam (ex.: Coluna de Chamas, Dissipar Magia,

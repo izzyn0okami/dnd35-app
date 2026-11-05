@@ -61,7 +61,8 @@ class CatalogJsonLoadingTest {
     fun everySpellHasConsistentClassLevelsAndValidLevel() {
         Dnd35Rules.PRESET_SPELLS.forEach { spell ->
             assertTrue("${spell.name}: nível fora de 0-9", spell.level in 0..9)
-            assertTrue("${spell.name}: sem nenhuma classe", spell.classes.isNotEmpty())
+            // Magias exclusivas de domínio (ex.: Cólera da Ordem) não têm classe própria.
+            assertTrue("${spell.name}: sem classe nem domínio", spell.classes.isNotEmpty() || spell.domainLevels.isNotEmpty())
             // classLevels deve cobrir exatamente as classes declaradas, nem mais nem menos.
             assertEquals(
                 "${spell.name}: classLevels não bate com classes",
