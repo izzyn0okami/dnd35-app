@@ -57,6 +57,21 @@ object SpellbookRules {
      */
     fun spellbookPages(spellLevel: Int): Int = spellLevel.coerceAtLeast(1)
 
+    /**
+     * Magias de 1º círculo ou mais que o Mago recebe de graça no grimório (Livro do Jogador 3.5):
+     * 3 + modificador de Inteligência (mínimo 0) no 1º nível e 2 por nível ganho depois. Os
+     * truques do 1º nível também são grátis, mas não entram nessa conta.
+     */
+    fun freeSpellsAllowance(wizardLevel: Int, intMod: Int): Int =
+        if (wizardLevel < 1) 0 else 3 + intMod.coerceAtLeast(0) + 2 * (wizardLevel - 1)
+
+    /** Magias de 1º círculo ou mais já no grimório do Mago que não foram copiadas pagando. */
+    fun freeSpellsUsed(spells: List<CharacterSpell>): Int =
+        spells.count {
+            (it.casterClass.equals("Mago", ignoreCase = true) || it.casterClass.isBlank()) &&
+                isInSpellbook(it) && it.level >= 1 && !it.copied
+        }
+
     /** Custo, em peças de ouro, de copiar uma magia para o grimório: 100 po por página. */
     fun copyCostGp(spellLevel: Int): Int = 100 * spellbookPages(spellLevel)
 

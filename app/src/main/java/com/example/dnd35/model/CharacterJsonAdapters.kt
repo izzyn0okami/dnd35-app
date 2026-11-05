@@ -300,6 +300,7 @@ object CharacterJsonAdapters {
             obj.put("inSpellbook", s.inSpellbook)
             obj.put("favorite", s.favorite)
             if (s.domain.isNotBlank()) obj.put("domain", s.domain)
+            if (s.copied) obj.put("copied", true)
             array.put(obj)
         }
         return array.toString()
@@ -330,7 +331,8 @@ object CharacterJsonAdapters {
                         casterClass = obj.optString("casterClass", ""),
                         inSpellbook = obj.optBoolean("inSpellbook", false),
                         favorite = obj.optBoolean("favorite", false),
-                        domain = obj.optString("domain", "")
+                        domain = obj.optString("domain", ""),
+                        copied = obj.optBoolean("copied", false)
                     )
                 )
             }

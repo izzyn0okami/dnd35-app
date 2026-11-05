@@ -713,6 +713,7 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
             val existing = list[idx]
             list[idx] = existing.copy(
                 inSpellbook = existing.inSpellbook || addToSpellbook,
+                copied = if (!existing.inSpellbook && addToSpellbook) spell.copied else existing.copied,
                 prepared = if (prepare) true else existing.prepared
             )
         } else {
