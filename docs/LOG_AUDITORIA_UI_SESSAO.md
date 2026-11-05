@@ -63,3 +63,26 @@
 - Nenhum código de produção foi alterado nesta auditoria.
 - Nenhuma regra de D&D 3.5 ou protocolo de rede foi modificada.
 - A validação integrada de reconexão, alternância repetida entre ficha/sessão e estados de falha continua pendente.
+## 2026-11-05 — Implementação consolidada da entrada e retorno à sessão
+
+### Alterações implementadas
+- `JoinPayload` agora valida identificador/nome não vazios, endereço IPv4 completo e porta TCP entre 1 e 65535. Payload QR inválido passa a ser rejeitado durante o parsing.
+- A validação do endereço e da porta também ocorre no `SessionViewModel`, protegendo a conexão mesmo quando a chamada não parte da tela.
+- A entrada manual aceita somente IPv4 válido e porta entre 1 e 65535; o campo de porta aceita apenas dígitos e até cinco caracteres, com mensagens de validação visíveis.
+- QR Code inválido ou incompatível agora apresenta feedback ao jogador, sem iniciar uma tentativa de conexão.
+- O seletor de destinatário de mensagem privada do Mestre lista apenas participantes com papel de Jogador e conexão ativa. Participantes desconectados continuam no roster.
+- Ao voltar à seleção de modo com uma sessão ativa, a tela informa o estado e oferece **Retornar à sessão existente**. A ação apenas retorna à interface já ativa; não chama `stopHosting()` nem `leaveSession()` e não inicia uma nova conexão.
+
+### Testes acrescentados
+- Cobertura de payload válido e rejeição de IPv4 incompleto/inválido, porta fora do intervalo e identificador vazio.
+- Cobertura da validação do endereço IPv4 usado na entrada manual.
+- A execução dos testes e a compilação ainda dependem da CI desta PR.
+
+### Validação ainda pendente
+- CI: `testDebugUnitTest` e `assembleDebug`.
+- Teste integrado com Mestre e Jogador em aparelhos distintos, incluindo QR inválido, entrada manual inválida, desconexão/reconexão e alternância repetida entre ficha e sessão.
+- Confirmar visualmente a tela de seleção de modo em aparelhos com tela reduzida.
+
+### Limites
+- Não foram alteradas regras de D&D 3.5 nem o protocolo de rede.
+- Esta alteração cobre a entrada/retorno e a seleção de destinatários privados; não encerra a auditoria das áreas Combate, Recursos e navegação geral da sessão.
