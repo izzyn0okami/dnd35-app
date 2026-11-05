@@ -41,8 +41,8 @@ sealed class SessionClientState {
  */
 class SessionClient {
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
-    private var socket: Socket? = null
-    private var output: DataOutputStream? = null
+    @Volatile private var socket: Socket? = null
+    @Volatile private var output: DataOutputStream? = null
 
     // Parâmetros da última chamada a connect(), guardados só para reconnect() poder repetir a
     // mesma conexão sem o chamador precisar lembrar host/porta/nome de novo.
@@ -231,9 +231,27 @@ class SessionClient {
 
     /** Sai da sessão de forma educada (avisa o Mestre) e libera os recursos do cliente. */
     fun disconnect() {
-        runCatching { output?.let { SessionWire.write(it, SessionMessage.Bye()) } }
-        runCatching { socket?.close() }
-        scope.cancel()
+        // Pode ser chamado pela interface: o BYE é enviado em I/O e o socket fecha em seguida.
+        val currentOutput = output
+        val currentSocket = socket
+        output = null
+        socket = null
+
+        if (currentSocket == null) {
+            scope.cancel()
+            return
+        }
+
+        scope.launch {
+            try {
+                currentOutput?.let { SessionWire.write(it, SessionMessage.Bye()) }
+            } catch (e: Exception) {
+                CrashLogStore.record("MULTIPLAYER_CLIENT", "Falha ao enviar encerramento da sessão", e)
+            } finally {
+                runCatching { currentSocket.close() }
+                scope.cancel()
+            }
+        }
     }
 
     companion object {
