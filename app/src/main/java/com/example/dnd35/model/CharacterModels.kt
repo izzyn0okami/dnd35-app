@@ -215,7 +215,9 @@ data class CharacterSpell(
     val inSpellbook: Boolean = false,
     val favorite: Boolean = false,
     // Clérigo: domínio cuja magia esta ficha ocupa no espaço de domínio do círculo (vazio = magia comum).
-    val domain: String = ""
+    val domain: String = "",
+    // Mago: magia copiada para o grimório pagando (100 po/página), em vez de uma das magias grátis.
+    val copied: Boolean = false
 )
 
 /** Uma magia conjurada, para o histórico da aba Magias. */

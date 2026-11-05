@@ -361,7 +361,9 @@ internal fun LazyListScope.knownSection(
                 SectionNote("Conhecidas / limite: ${parts.joinToString("  ")}")
             } else if (info != null && style == SpellbookRules.Style.SPELLBOOK) {
                 val inBook = stats.spells.count { SpellbookRules.classFor(it, casters)?.className == info.className && SpellbookRules.isInSpellbook(it) }
-                SectionNote("$inBook magia(s) no grimório")
+                val free = SpellbookRules.freeSpellsAllowance(info.casterLevel, info.keyAbilityMod)
+                val freeUsed = SpellbookRules.freeSpellsUsed(stats.spells)
+                SectionNote("$inBook magia(s) no grimório • magias grátis (1º círculo ou mais): $freeUsed/$free")
             }
         }
         items(group.sortedWith(compareBy({ it.level }, { it.name }))) { spell ->

@@ -228,4 +228,23 @@ class SpellbookRulesTest {
         assertEquals(1, SpellbookRules.copyHours(0))
         assertEquals(3, SpellbookRules.copyHours(3))
     }
+
+    @Test
+    fun wizardFreeSpellsFollowThreePlusIntModThenTwoPerLevel() {
+        assertEquals(0, SpellbookRules.freeSpellsAllowance(0, 3))
+        assertEquals(6, SpellbookRules.freeSpellsAllowance(1, 3)) // 3 + mod +3
+        assertEquals(3, SpellbookRules.freeSpellsAllowance(1, -1)) // mod negativo não reduz
+        assertEquals(6 + 2 * 4, SpellbookRules.freeSpellsAllowance(5, 3))
+    }
+
+    @Test
+    fun onlyUncopiedFirstCircleOrHigherWizardBookSpellsUseFreeSpells() {
+        fun s(name: String, level: Int, copied: Boolean = false, inBook: Boolean = true, cls: String = "Mago") =
+            com.example.dnd35.model.CharacterSpell(name = name, level = level, casterClass = cls, inSpellbook = inBook, copied = copied)
+        val spells = listOf(
+            s("A", 1), s("B", 2, copied = true), s("C", 0), s("D", 3, inBook = false),
+            s("E", 1, cls = "Clérigo", inBook = false)
+        )
+        assertEquals(1, SpellbookRules.freeSpellsUsed(spells))
+    }
 }

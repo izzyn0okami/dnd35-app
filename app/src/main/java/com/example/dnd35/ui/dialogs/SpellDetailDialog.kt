@@ -185,18 +185,31 @@ fun SpellDetailDialog(
                         when (style) {
                             SpellbookRules.Style.SPELLBOOK -> {
                                 if (entry == null || !SpellbookRules.isInSpellbook(entry)) {
+                                    val freeLeft = info.let {
+                                        SpellbookRules.freeSpellsAllowance(it.casterLevel, it.keyAbilityMod) -
+                                            SpellbookRules.freeSpellsUsed(stats.spells)
+                                    }
+                                    val isCantrip = level == 0
                                     Text(
-                                        "Copiar para o grimório: ${SpellbookRules.copyCostGp(level)} po e " +
-                                            "${SpellbookRules.copyHours(level)} h (100 po e 1 hora por página; " +
-                                            "magias de nível novo ganhas de graça não custam nada).",
+                                        "Magias grátis restantes (1º círculo ou mais): ${freeLeft.coerceAtLeast(0)}. " +
+                                            "Copiar pagando: ${SpellbookRules.copyCostGp(level)} po e " +
+                                            "${SpellbookRules.copyHours(level)} h (100 po e 1 hora por página).",
                                         style = MaterialTheme.typography.labelSmall,
                                         color = MaterialTheme.colorScheme.onSurfaceVariant
                                     )
-                                    Button(
-                                        onClick = { viewModel.learnSpell(newCharacterSpell(), addToSpellbook = true, prepare = false) },
-                                        colors = ButtonDefaults.buttonColors(containerColor = DndArcaneBlue),
-                                        modifier = Modifier.fillMaxWidth()
-                                    ) { Text("Adicionar ao grimório") }
+                                    if (isCantrip || freeLeft > 0) {
+                                        Button(
+                                            onClick = { viewModel.learnSpell(newCharacterSpell(), addToSpellbook = true, prepare = false) },
+                                            colors = ButtonDefaults.buttonColors(containerColor = DndArcaneBlue),
+                                            modifier = Modifier.fillMaxWidth()
+                                        ) { Text(if (isCantrip) "Adicionar ao grimório" else "Adicionar ao grimório (grátis)") }
+                                    }
+                                    if (!isCantrip) {
+                                        OutlinedButton(
+                                            onClick = { viewModel.learnSpell(newCharacterSpell().copy(copied = true), addToSpellbook = true, prepare = false) },
+                                            modifier = Modifier.fillMaxWidth()
+                                        ) { Text("Copiar para o grimório (${SpellbookRules.copyCostGp(level)} po)") }
+                                    }
                                 } else if (!entry.prepared) {
                                     Button(
                                         onClick = { viewModel.setSpellPrepared(entry.id, true) },
