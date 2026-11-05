@@ -233,6 +233,27 @@ class SessionMessageTest {
     }
 
     @Test
+    fun `JoinPayload rejeita endereco IPv4 e porta invalidos`() {
+        val valid = JoinPayload("s1", "Mestre", "192.168.0.10", 54321)
+        assertTrue(valid.isValid())
+        assertNull(JoinPayload.fromJson(valid.copy(hostAddress = "999.168.0.10").toJson()))
+        assertNull(JoinPayload.fromJson(valid.copy(hostAddress = "192.168.0").toJson()))
+        assertNull(JoinPayload.fromJson(valid.copy(port = 0).toJson()))
+        assertNull(JoinPayload.fromJson(valid.copy(port = 65536).toJson()))
+        assertNull(JoinPayload.fromJson(valid.copy(sessionId = " ").toJson()))
+    }
+
+    @Test
+    fun `validacao do endereco manual aceita apenas IPv4 completo`() {
+        assertTrue(JoinPayload.isValidHostAddress("192.168.0.10"))
+        assertTrue(JoinPayload.isValidHostAddress("10.0.0.255"))
+        assertTrue(!JoinPayload.isValidHostAddress("192.168.0"))
+        assertTrue(!JoinPayload.isValidHostAddress("256.1.1.1"))
+        assertTrue(!JoinPayload.isValidHostAddress("192.168.0.1:54321"))
+        assertTrue(!JoinPayload.isValidHostAddress("192.168.0.1 "))
+    }
+
+    @Test
     fun `newSessionId gera valores diferentes a cada chamada`() {
         val a = JoinPayload.newSessionId()
         val b = JoinPayload.newSessionId()
