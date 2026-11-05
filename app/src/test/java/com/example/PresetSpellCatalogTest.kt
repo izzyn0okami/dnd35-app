@@ -1893,8 +1893,7 @@ class PresetSpellCatalogTest {
             "Evaporação",
             "Corpo de Ferro",
             "Estase Temporal",
-            "Metamorfosear Objetos",
-            "Ondas da Exaustão"
+            "Metamorfosear Objetos"
         ).forEach { name ->
             val spell = spells.getValue(name)
             assertEquals(8, spell.classLevels["Feiticeiro"])
@@ -1902,6 +1901,9 @@ class PresetSpellCatalogTest {
         }
 
         val wavesOfExhaustion = spells.getValue("Ondas da Exaustão")
+        // SRD: Waves of Exhaustion é Sor/Wiz 7 (cabeçalhos 7/8 do PDF saem trocados na extração).
+        assertEquals(7, wavesOfExhaustion.classLevels["Feiticeiro"])
+        assertEquals(7, wavesOfExhaustion.classLevels["Mago"])
         assertEquals("Cone de 18 m", wavesOfExhaustion.range)
         assertEquals("Instantânea", wavesOfExhaustion.duration)
         assertEquals("Nenhum", wavesOfExhaustion.savingThrow)
@@ -2515,7 +2517,7 @@ class PresetSpellCatalogTest {
             Expected("Criar Mortos-Vivos Menor", 3, "Necromancia [Mal]", mapOf("Clérigo" to 3, "Feiticeiro" to 4, "Mago" to 4), mapOf("Morte" to 3), "V, G, M", "Toque", "Instantânea", "Nenhum", false),
             Expected("Forma Gasosa", 3, "Transmutação", mapOf("Bardo" to 3, "Feiticeiro" to 3, "Mago" to 3), mapOf("Ar" to 3), "G, M/FD", "Toque", "2 minutos/nível (D)", "Nenhum", false),
             Expected("Luz Cegante", 3, "Evocação", mapOf("Clérigo" to 3), mapOf("Sol" to 3), "V, G", "Médio (30 m + 3 m/nível)", "Instantânea", "Nenhum", true),
-            Expected("Moldar Rochas", 3, "Transmutação [Terra]", mapOf("Clérigo" to 3, "Druida" to 3, "Feiticeiro" to 5, "Mago" to 5), mapOf("Terra" to 3), "V, G, M/FD", "Toque", "Instantânea", "Nenhum", false),
+            Expected("Moldar Rochas", 3, "Transmutação [Terra]", mapOf("Clérigo" to 3, "Druida" to 3, "Feiticeiro" to 4, "Mago" to 4), mapOf("Terra" to 3), "V, G, M/FD", "Toque", "Instantânea", "Nenhum", false),
             Expected("Praga", 3, "Necromancia [Mal]", mapOf("Clérigo" to 3, "Druida" to 3, "Feiticeiro" to 4, "Mago" to 4), mapOf("Destruição" to 3), "V, G", "Toque", "Instantânea", "Fortitude anula", true),
             Expected("Respirar na Água", 3, "Transmutação", mapOf("Clérigo" to 3, "Druida" to 3, "Feiticeiro" to 3, "Mago" to 3), mapOf("Água" to 3), "V, G, M/FD", "Toque", "2 horas/nível; veja texto", "Vontade anula (inofensiva)", true),
             Expected("Dominar Animal", 3, "Encantamento (Compulsão) [Ação Mental]", mapOf("Druida" to 3), mapOf("Animais" to 3), "V, G", "Curto (7,5 m + 1,5 m/2 níveis)", "1 rodada/nível", "Vontade anula", true),

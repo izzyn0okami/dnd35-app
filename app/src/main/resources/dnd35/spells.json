@@ -5840,7 +5840,7 @@
   },
   {
     "name": "Ondas da Exaustão",
-    "level": 8,
+    "level": 7,
     "school": "Necromancia",
     "classes": [
       "Feiticeiro",
@@ -5854,8 +5854,8 @@
     "spellResistance": true,
     "description": "Uma onda de energia negativa se espalha a partir do conjurador, deixando exaustas todas as criaturas vivas na área. Não permite teste de resistência; resistência à magia se aplica.",
     "classLevels": {
-      "Feiticeiro": 8,
-      "Mago": 8
+      "Feiticeiro": 7,
+      "Mago": 7
     },
     "domainLevels": {}
   },
@@ -8071,8 +8071,8 @@
     "classLevels": {
       "Clérigo": 3,
       "Druida": 3,
-      "Feiticeiro": 5,
-      "Mago": 5
+      "Feiticeiro": 4,
+      "Mago": 4
     },
     "domainLevels": {
       "Terra": 3
