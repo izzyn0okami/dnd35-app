@@ -1,5 +1,6 @@
 package com.example
 
+import android.os.StrictMode
 import com.example.dnd35.backup.CharacterBackup
 import com.example.dnd35.model.CharacterEntity
 import com.example.dnd35.model.CharacterInventoryItem
@@ -13,11 +14,13 @@ import com.example.dnd35.session.SessionServer
 import com.example.dnd35.session.SessionMessage
 import com.example.dnd35.session.SessionWire
 import kotlinx.coroutines.CoroutineStart
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.mapNotNull
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withTimeout
+import kotlinx.coroutines.withContext
 import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
 import java.io.DataInputStream
@@ -217,6 +220,35 @@ class SessionServerClientTest {
                 client.disconnect()
             }
         } finally {
+            server.stop()
+        }
+    }
+
+    @Test
+    fun `broadcast do servidor nao executa escrita de socket na thread chamadora`() = runBlocking {
+        val server = SessionServer(sessionId = "sess-main-thread", hostDisplayName = "Mestre")
+        val port = withContext(Dispatchers.IO) { server.start() }
+        val client = SessionClient()
+        try {
+            client.connect("127.0.0.1", port, "Legolas")
+            val connected = withTimeout(15_000) {
+                client.state.first { it is SessionClientState.Connected } as SessionClientState.Connected
+            }
+            val previousPolicy = StrictMode.getThreadPolicy()
+            try {
+                StrictMode.setThreadPolicy(StrictMode.ThreadPolicy.Builder().detectNetwork().penaltyDeath().build())
+                server.startCombat(
+                    listOf(Combatant(id = connected.selfId, displayName = "Legolas", isNpc = false, initiative = 17, currentHp = 20, maxHp = 20))
+                )
+            } finally {
+                StrictMode.setThreadPolicy(previousPolicy)
+            }
+            val receivedCombat = withTimeout(15_000) {
+                client.state.mapNotNull { (it as? SessionClientState.Connected)?.combat }.first()
+            }
+            assertEquals(connected.selfId, receivedCombat.combatants.single().id)
+        } finally {
+            client.disconnect()
             server.stop()
         }
     }
