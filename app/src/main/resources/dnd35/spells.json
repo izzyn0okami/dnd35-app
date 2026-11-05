@@ -1229,7 +1229,10 @@
       "Clérigo": 1,
       "Druida": 1
     },
-    "domainLevels": {}
+    "domainLevels": {
+      "Ar": 1,
+      "Água": 1
+    }
   },
   {
     "name": "Auxílio Divino",
@@ -2455,7 +2458,9 @@
       "Mago": 1,
       "Feiticeiro": 1
     },
-    "domainLevels": {}
+    "domainLevels": {
+      "Caos": 1
+    }
   },
   {
     "name": "Acalmar Animais",
@@ -7778,6 +7783,522 @@
     "domainLevels": {
       "Fogo": 6,
       "Sol": 6
+    }
+  },
+  {
+    "name": "Acalmar Emoções",
+    "level": 2,
+    "school": "Encantamento (Compulsão) [Ação Mental]",
+    "classes": [
+      "Bardo",
+      "Clérigo"
+    ],
+    "castTime": "1 ação padrão",
+    "components": "V, G, FD",
+    "range": "Médio (30 m + 3 m/nível)",
+    "duration": "Concentração, até 1 rodada/nível (D)",
+    "savingThrow": "Vontade anula",
+    "spellResistance": true,
+    "description": "Acalma criaturas agitadas numa dispersão de 6 m de raio: elas não podem realizar ações violentas nem destrutivas (mas podem se defender), e qualquer ação agressiva ou dano contra uma criatura afetada encerra a magia para ela. O conjurador não controla as criaturas.",
+    "classLevels": {
+      "Bardo": 2,
+      "Clérigo": 2
+    },
+    "domainLevels": {
+      "Ordem": 2
+    }
+  },
+  {
+    "name": "Amolecer Terra e Pedra",
+    "level": 2,
+    "school": "Transmutação [Terra]",
+    "classes": [
+      "Druida"
+    ],
+    "castTime": "1 ação padrão",
+    "components": "V, G, FD",
+    "range": "Curto (7,5 m + 1,5 m/2 níveis)",
+    "duration": "Instantânea",
+    "savingThrow": "Nenhum",
+    "spellResistance": false,
+    "description": "Transforma terra e pedra naturais (um quadrado de 3 m por nível) em lama, terra solta ou argila, o que pode prender ou retardar criaturas e facilita escavar. Não afeta pedra ou terra trabalhada, mágica, nem criaturas de terra.",
+    "classLevels": {
+      "Druida": 2
+    },
+    "domainLevels": {
+      "Terra": 2
+    }
+  },
+  {
+    "name": "Arma Espiritual",
+    "level": 2,
+    "school": "Evocação [Energia]",
+    "classes": [
+      "Clérigo"
+    ],
+    "castTime": "1 ação padrão",
+    "components": "V, G, FD",
+    "range": "Médio (30 m + 3 m/nível)",
+    "duration": "1 rodada/nível (D)",
+    "savingThrow": "Nenhum",
+    "spellResistance": true,
+    "description": "Cria uma arma de energia que ataca à distância os oponentes indicados pelo conjurador, causando 1d8 de dano de energia por golpe, +1 a cada 3 níveis (máx. +5 no 15º nível). Assume a forma da arma predileta da divindade do conjurador e usa a margem de ameaça e o multiplicador dela.",
+    "classLevels": {
+      "Clérigo": 2
+    },
+    "domainLevels": {
+      "Guerra": 2
+    }
+  },
+  {
+    "name": "Criar Chamas",
+    "level": 1,
+    "school": "Evocação [Fogo]",
+    "classes": [
+      "Druida"
+    ],
+    "castTime": "1 ação padrão",
+    "components": "V, G",
+    "range": "0 metro",
+    "duration": "1 minuto/nível (D)",
+    "savingThrow": "Nenhum",
+    "spellResistance": true,
+    "description": "Uma chama tão brilhante quanto uma tocha surge na palma da mão do conjurador, sem ferir ele nem seu equipamento. Serve de luz e pode ser usada num ataque de toque (1d4 + 1 por nível de dano de fogo, máx. +5) ou arremessada a até 36 m como arma de arremesso.",
+    "classLevels": {
+      "Druida": 1
+    },
+    "domainLevels": {
+      "Fogo": 2
+    }
+  },
+  {
+    "name": "Detectar Pensamentos",
+    "level": 2,
+    "school": "Adivinhação [Ação Mental]",
+    "classes": [
+      "Bardo",
+      "Feiticeiro",
+      "Mago"
+    ],
+    "castTime": "1 ação padrão",
+    "components": "V, G, F/FD",
+    "range": "18 m",
+    "duration": "Concentração, até 1 min/nível (D)",
+    "savingThrow": "Vontade anula (veja texto)",
+    "spellResistance": false,
+    "description": "Detecta pensamentos superficiais numa emanação em cone. A informação cresce a cada rodada de concentração: presença ou ausência de pensamentos, depois número de mentes e Inteligência de cada uma e, por fim, os pensamentos superficiais de quem falhar no teste de Vontade.",
+    "classLevels": {
+      "Bardo": 2,
+      "Feiticeiro": 2,
+      "Mago": 2
+    },
+    "domainLevels": {
+      "Conhecimento": 2
+    }
+  },
+  {
+    "name": "Drenar Força Vital",
+    "level": 2,
+    "school": "Necromancia [Morte, Mal]",
+    "classes": [
+      "Clérigo"
+    ],
+    "castTime": "1 ação padrão",
+    "components": "V, G",
+    "range": "Toque",
+    "duration": "Instantânea/10 minutos por DV alvo (veja texto)",
+    "savingThrow": "Vontade anula",
+    "spellResistance": true,
+    "description": "Ao tocar uma criatura viva com -1 PV ou menos, o conjurador a mata se ela falhar no teste e ganha 1d8 PV temporários, +2 de bônus de Força e +1 nível de conjurador efetivo por 10 minutos por DV da vítima.",
+    "classLevels": {
+      "Clérigo": 2
+    },
+    "domainLevels": {
+      "Morte": 2
+    }
+  },
+  {
+    "name": "Esquentar Metal",
+    "level": 2,
+    "school": "Transmutação [Fogo]",
+    "classes": [
+      "Druida"
+    ],
+    "castTime": "1 ação padrão",
+    "components": "V, G, FD",
+    "range": "Curto (7,5 m + 1,5 m/2 níveis)",
+    "duration": "7 rodadas",
+    "savingThrow": "Vontade anula (objeto)",
+    "spellResistance": true,
+    "description": "Torna extremamente quente o equipamento de metal de 1 criatura a cada 2 níveis (ou 12,5 kg de metal por nível). Quem o carrega ou veste sofre dano de fogo que cresce e depois diminui ao longo das 7 rodadas (até 4d4 por rodada). Metal mundano solto não faz teste de resistência.",
+    "classLevels": {
+      "Druida": 2
+    },
+    "domainLevels": {
+      "Sol": 2
+    }
+  },
+  {
+    "name": "Localizar Objetos",
+    "level": 2,
+    "school": "Adivinhação",
+    "classes": [
+      "Bardo",
+      "Clérigo",
+      "Feiticeiro",
+      "Mago"
+    ],
+    "castTime": "1 ação padrão",
+    "components": "V, G, F/FD",
+    "range": "Longo (120 m + 12 m/nível)",
+    "duration": "1 minuto/nível",
+    "savingThrow": "Nenhum",
+    "spellResistance": false,
+    "description": "Indica a direção de um objeto conhecido ou claramente visualizado, num raio de 120 m + 12 m/nível. Pode procurar um tipo geral de objeto (o mais próximo é localizado) ou um objeto específico, desde que o conjurador o conheça bem. Não localiza criaturas.",
+    "classLevels": {
+      "Bardo": 2,
+      "Clérigo": 2,
+      "Feiticeiro": 2,
+      "Mago": 2
+    },
+    "domainLevels": {
+      "Viagem": 2
+    }
+  },
+  {
+    "name": "Névoa",
+    "level": 2,
+    "school": "Conjuração (Criação)",
+    "classes": [
+      "Druida",
+      "Feiticeiro",
+      "Mago"
+    ],
+    "castTime": "1 ação padrão",
+    "components": "V, G",
+    "range": "Médio (30 m + 3 m/nível)",
+    "duration": "10 minutos/nível",
+    "savingThrow": "Nenhum",
+    "spellResistance": false,
+    "description": "Cria um nevoeiro numa dispersão de 6 m de raio e 6 m de altura que obscurece toda a visão além de 1,5 m: meia camuflagem (20% de falha) a até 1,5 m e camuflagem total (50%) além disso. Um vento moderado (16,5 km/h ou mais) o dispersa em 4 rodadas.",
+    "classLevels": {
+      "Druida": 2,
+      "Feiticeiro": 2,
+      "Mago": 2
+    },
+    "domainLevels": {
+      "Água": 2
+    }
+  },
+  {
+    "name": "Profanar",
+    "level": 2,
+    "school": "Evocação [Mal]",
+    "classes": [
+      "Clérigo"
+    ],
+    "castTime": "1 ação padrão",
+    "components": "V, G, M, FD",
+    "range": "Curto (7,5 m + 1,5 m/2 níveis)",
+    "duration": "2 horas/nível",
+    "savingThrow": "Nenhum",
+    "spellResistance": false,
+    "description": "Infunde energia negativa numa emanação de 6 m de raio: expulsões contra mortos-vivos na área sofrem -3 de penalidade de profana nos testes de Carisma, e mortos-vivos que entram ou são invocados ali recebem +1 profano em ataque, dano e resistência e +1 PV por DV. Um altar ou templo maligno na área dobra esses efeitos.",
+    "classLevels": {
+      "Clérigo": 2
+    },
+    "domainLevels": {
+      "Mal": 2
+    }
+  },
+  {
+    "name": "Criar Mortos-Vivos Menor",
+    "level": 3,
+    "school": "Necromancia [Mal]",
+    "classes": [
+      "Clérigo",
+      "Feiticeiro",
+      "Mago"
+    ],
+    "castTime": "1 ação padrão",
+    "components": "V, G, M",
+    "range": "Toque",
+    "duration": "Instantânea",
+    "savingThrow": "Nenhum",
+    "spellResistance": false,
+    "description": "Transforma corpos ou ossos de criaturas mortas em esqueletos ou zumbis, mortos-vivos que obedecem aos comandos do conjurador (seguir o conjurador ou guardar um local). Permanecem animados até serem destruídos; o conjurador controla até 2 DV de mortos-vivos por nível.",
+    "classLevels": {
+      "Clérigo": 3,
+      "Feiticeiro": 4,
+      "Mago": 4
+    },
+    "domainLevels": {
+      "Morte": 3
+    }
+  },
+  {
+    "name": "Forma Gasosa",
+    "level": 3,
+    "school": "Transmutação",
+    "classes": [
+      "Bardo",
+      "Feiticeiro",
+      "Mago"
+    ],
+    "castTime": "1 ação padrão",
+    "components": "G, M/FD",
+    "range": "Toque",
+    "duration": "2 minutos/nível (D)",
+    "savingThrow": "Nenhum",
+    "spellResistance": false,
+    "description": "Torna o alvo voluntário e todo o seu equipamento insubstanciais, enfumaçados e translúcidos: ele ganha Redução de Dano 10/mágico, fica imune a veneno e a sucessos decisivos e pode voar lentamente. Armadura material (inclusive natural) se torna inútil, e ele não pode atacar nem conjurar magias com componentes verbais, gestuais ou materiais.",
+    "classLevels": {
+      "Bardo": 3,
+      "Feiticeiro": 3,
+      "Mago": 3
+    },
+    "domainLevels": {
+      "Ar": 3
+    }
+  },
+  {
+    "name": "Luz Cegante",
+    "level": 3,
+    "school": "Evocação",
+    "classes": [
+      "Clérigo"
+    ],
+    "castTime": "1 ação padrão",
+    "components": "V, G",
+    "range": "Médio (30 m + 3 m/nível)",
+    "duration": "Instantânea",
+    "savingThrow": "Nenhum",
+    "spellResistance": true,
+    "description": "Projeta da palma da mão um raio de luz (ataque de toque à distância) que causa 1d8 de dano a cada 2 níveis (máx. 5d8). Um morto-vivo sofre 1d6 por nível (máx. 10d6), e mais ainda se for particularmente vulnerável à luz do sol.",
+    "classLevels": {
+      "Clérigo": 3
+    },
+    "domainLevels": {
+      "Sol": 3
+    }
+  },
+  {
+    "name": "Moldar Rochas",
+    "level": 3,
+    "school": "Transmutação [Terra]",
+    "classes": [
+      "Clérigo",
+      "Druida",
+      "Feiticeiro",
+      "Mago"
+    ],
+    "castTime": "1 ação padrão",
+    "components": "V, G, M/FD",
+    "range": "Toque",
+    "duration": "Instantânea",
+    "savingThrow": "Nenhum",
+    "spellResistance": false,
+    "description": "Molda uma peça de pedra tocada em qualquer forma adequada (uma arma de pedra, um alçapão, um ídolo), inclusive para abrir ou lacrar uma saída numa porta de pedra. Detalhes pequenos são impossíveis, e há 30% de chance de falha em formas com partes móveis.",
+    "classLevels": {
+      "Clérigo": 3,
+      "Druida": 3,
+      "Feiticeiro": 5,
+      "Mago": 5
+    },
+    "domainLevels": {
+      "Terra": 3
+    }
+  },
+  {
+    "name": "Praga",
+    "level": 3,
+    "school": "Necromancia [Mal]",
+    "classes": [
+      "Clérigo",
+      "Druida",
+      "Feiticeiro",
+      "Mago"
+    ],
+    "castTime": "1 ação padrão",
+    "components": "V, G",
+    "range": "Toque",
+    "duration": "Instantânea",
+    "savingThrow": "Fortitude anula",
+    "spellResistance": true,
+    "description": "O alvo contrai imediatamente, sem incubação, uma doença escolhida pelo conjurador entre as da tabela da magia (enjôo cegante, febre risonha, febre do esgoto, ardência mental, dor vermelha, tremedeira e perdição pegajosa). A CD de cada doença vale para os testes seguintes.",
+    "classLevels": {
+      "Clérigo": 3,
+      "Druida": 3,
+      "Feiticeiro": 4,
+      "Mago": 4
+    },
+    "domainLevels": {
+      "Destruição": 3
+    }
+  },
+  {
+    "name": "Respirar na Água",
+    "level": 3,
+    "school": "Transmutação",
+    "classes": [
+      "Clérigo",
+      "Druida",
+      "Feiticeiro",
+      "Mago"
+    ],
+    "castTime": "1 ação padrão",
+    "components": "V, G, M/FD",
+    "range": "Toque",
+    "duration": "2 horas/nível; veja texto",
+    "savingThrow": "Vontade anula (inofensiva)",
+    "spellResistance": true,
+    "description": "A criatura tocada passa a respirar normalmente na água, sem perder a capacidade de respirar ar. A duração é dividida igualmente entre todas as criaturas tocadas.",
+    "classLevels": {
+      "Clérigo": 3,
+      "Druida": 3,
+      "Feiticeiro": 3,
+      "Mago": 3
+    },
+    "domainLevels": {
+      "Água": 3
+    }
+  },
+  {
+    "name": "Dominar Animal",
+    "level": 3,
+    "school": "Encantamento (Compulsão) [Ação Mental]",
+    "classes": [
+      "Druida"
+    ],
+    "castTime": "1 rodada",
+    "components": "V, G",
+    "range": "Curto (7,5 m + 1,5 m/2 níveis)",
+    "duration": "1 rodada/nível",
+    "savingThrow": "Vontade anula",
+    "spellResistance": true,
+    "description": "Encanta um animal e o comanda por ordens simples (como ataque, fuja e apanhe). Comandos suicidas ou autodestrutivos são ignorados. A magia cria uma ligação mental, e o animal pode receber ordens telepáticas silenciosas enquanto estiver no alcance.",
+    "classLevels": {
+      "Druida": 3
+    },
+    "domainLevels": {
+      "Animais": 3
+    }
+  },
+  {
+    "name": "Clariaudiência/Clarividência",
+    "level": 3,
+    "school": "Adivinhação (Vidência)",
+    "classes": [
+      "Bardo",
+      "Feiticeiro",
+      "Mago"
+    ],
+    "castTime": "10 minutos",
+    "components": "V, G, F/FD",
+    "range": "Longo (120 m + 12 m/nível)",
+    "duration": "1 minuto/nível (D)",
+    "savingThrow": "Nenhum",
+    "spellResistance": false,
+    "description": "Cria um sensor mágico invisível num local conhecido (familiar ou óbvio), a qualquer distância no mesmo plano, por onde o conjurador escolhe ouvir ou enxergar tudo o que acontece. O sensor fica fixo, mas pode ser girado; não transmite sentidos sobrenaturais nem enxerga em escuridão mágica.",
+    "classLevels": {
+      "Bardo": 3,
+      "Feiticeiro": 3,
+      "Mago": 3
+    },
+    "domainLevels": {
+      "Conhecimento": 3
+    }
+  },
+  {
+    "name": "Círculo Mágico Contra o Bem",
+    "level": 3,
+    "school": "Abjuração [Mal]",
+    "classes": [
+      "Clérigo",
+      "Feiticeiro",
+      "Mago"
+    ],
+    "castTime": "1 ação padrão",
+    "components": "V, G, M/FD",
+    "range": "Toque",
+    "duration": "10 min/nível",
+    "savingThrow": "Vontade anula (inofensiva)",
+    "spellResistance": true,
+    "description": "Cria uma aura protetora contra criaturas bondosas em um raio de 3 m, conforme os efeitos da magia Proteção contra o Bem.",
+    "classLevels": {
+      "Clérigo": 3,
+      "Feiticeiro": 3,
+      "Mago": 3
+    },
+    "domainLevels": {
+      "Mal": 3
+    }
+  },
+  {
+    "name": "Círculo Mágico Contra a Ordem",
+    "level": 3,
+    "school": "Abjuração [Caos]",
+    "classes": [
+      "Clérigo",
+      "Feiticeiro",
+      "Mago"
+    ],
+    "castTime": "1 ação padrão",
+    "components": "V, G, M/FD",
+    "range": "Toque",
+    "duration": "10 min/nível",
+    "savingThrow": "Vontade anula (inofensiva)",
+    "spellResistance": true,
+    "description": "Cria uma aura protetora contra criaturas leais em um raio de 3 m, conforme os efeitos da magia Proteção contra a Lei.",
+    "classLevels": {
+      "Clérigo": 3,
+      "Feiticeiro": 3,
+      "Mago": 3
+    },
+    "domainLevels": {
+      "Caos": 3
+    }
+  },
+  {
+    "name": "Dissipar o Bem",
+    "level": 5,
+    "school": "Abjuração [Mal]",
+    "classes": [
+      "Clérigo"
+    ],
+    "castTime": "1 ação padrão",
+    "components": "V, G, FD",
+    "range": "Toque",
+    "duration": "1 rodada/nível",
+    "savingThrow": "Vontade anula (inofensiva)",
+    "spellResistance": true,
+    "description": "Como dissipar o mal, mas o conjurador é cercado por uma aura escura e profana, e a magia protege contra criaturas e magias bondosas em vez de malignas.",
+    "classLevels": {
+      "Clérigo": 5
+    },
+    "domainLevels": {
+      "Mal": 5
+    }
+  },
+  {
+    "name": "Dissipar a Ordem",
+    "level": 5,
+    "school": "Abjuração [Caos]",
+    "classes": [
+      "Clérigo"
+    ],
+    "castTime": "1 ação padrão",
+    "components": "V, G, FD",
+    "range": "Toque",
+    "duration": "1 rodada/nível",
+    "savingThrow": "Vontade anula (inofensiva)",
+    "spellResistance": true,
+    "description": "Como dissipar o mal, mas o conjurador é cercado por uma energia caótica e amarelada, e a magia protege contra criaturas e magias leais em vez de malignas.",
+    "classLevels": {
+      "Clérigo": 5
+    },
+    "domainLevels": {
+      "Caos": 5
     }
   }
 ]
