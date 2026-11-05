@@ -26,7 +26,7 @@ object CharacterBackup {
     /** Colunas que guardam JSON como texto e são copiadas sem reinterpretar. */
     private val JSON_COLUMNS = listOf(
         "skillsJson", "languagesJson", "skillPointHistoryJson", "languageAcquisitionsJson",
-        "inventoryJson", "featsJson", "spellsJson", "spellSlotsJson", "spellHistoryJson", "clericDomainsJson", "multiclassJson"
+        "inventoryJson", "featsJson", "spellsJson", "spellSlotsJson", "spellHistoryJson", "clericDomainsJson", "wizardSpecialtyJson", "multiclassJson"
     )
 
     data class ImportedCharacter(
@@ -114,6 +114,7 @@ object CharacterBackup {
         o.put("spellSlotsJson", c.spellSlotsJson)
         o.put("spellHistoryJson", c.spellHistoryJson)
         o.put("clericDomainsJson", c.clericDomainsJson)
+        o.put("wizardSpecialtyJson", c.wizardSpecialtyJson)
         o.put("multiclassJson", c.multiclassJson)
         o.put("notes", c.notes)
         o.put("isNpc", c.isNpc)
@@ -271,6 +272,7 @@ object CharacterBackup {
             spellSlotsJson = jsonColumn("spellSlotsJson"),
             spellHistoryJson = jsonColumn("spellHistoryJson"),
             clericDomainsJson = jsonColumn("clericDomainsJson"),
+            wizardSpecialtyJson = jsonColumn("wizardSpecialtyJson"),
             multiclassJson = jsonColumn("multiclassJson"),
             notes = str(o, "notes", ""),
             isNpc = o.optBoolean("isNpc", false),

@@ -31,6 +31,7 @@ import com.example.dnd35.model.CharacterSpell
 import com.example.dnd35.model.ClericDomainRules
 import com.example.dnd35.model.Dnd35Rules
 import com.example.dnd35.model.SpellbookRules
+import com.example.dnd35.model.WizardSpecialtyRules
 import com.example.dnd35.viewmodel.CharacterViewModel
 import com.example.ui.theme.DndArcaneBlue
 
@@ -54,7 +55,9 @@ fun SpellDetailDialog(
     val level = info?.let { SpellbookRules.classLevelOf(spell, it.className) } ?: spell.level
     val style = info?.let { SpellbookRules.styleFor(it.className) }
     val abilityScore = info?.let { SpellbookRules.abilityScoreFor(it, stats) } ?: 0
-    val eligibility = info?.let { SpellbookRules.eligibility(spell, it, abilityScore) }
+    val eligibility = info?.let {
+        SpellbookRules.eligibility(spell, it, abilityScore, WizardSpecialtyRules.specialtyOf(stats.character))
+    }
 
     // Entrada da magia na ficha para a classe escolhida (se já foi aprendida/preparada).
     val entry: CharacterSpell? = stats.spells.firstOrNull { s ->
@@ -170,6 +173,8 @@ fun SpellDetailDialog(
                     when (eligibility) {
                         SpellbookRules.Eligibility.CIRCLE_NOT_REACHED ->
                             Text("${info.className} ainda não acessa magias de ${SpellbookRules.circleLabel(level)}.", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.error)
+                        SpellbookRules.Eligibility.PROHIBITED_SCHOOL ->
+                            Text("Escola proibida para este Mago: a magia não pode ser aprendida nem preparada.", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.error)
                         SpellbookRules.Eligibility.ABILITY_TOO_LOW ->
                             Text("Atributo-chave baixo demais para conjurar magias de ${SpellbookRules.circleLabel(level)}.", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.error)
                         else -> Unit

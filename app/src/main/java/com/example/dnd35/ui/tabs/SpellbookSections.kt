@@ -47,6 +47,7 @@ import com.example.dnd35.model.ClericDomainRules
 import com.example.dnd35.model.Dnd35Rules
 import com.example.dnd35.model.SpellFilters
 import com.example.dnd35.model.SpellbookRules
+import com.example.dnd35.model.WizardSpecialtyRules
 import com.example.dnd35.viewmodel.CharacterViewModel
 import com.example.ui.theme.DndArcaneBlue
 import com.example.ui.theme.DndCrimson
@@ -131,7 +132,12 @@ internal fun LazyListScope.preparedSection(
     }
 
     val warnings = SpellbookRules.overLimitWarnings(stats.spells, casters) +
-        ClericDomainRules.warnings(stats.spells, ClericDomainRules.domainsOf(stats.character))
+        ClericDomainRules.warnings(stats.spells, ClericDomainRules.domainsOf(stats.character)) +
+        WizardSpecialtyRules.warnings(
+            stats.spells,
+            WizardSpecialtyRules.specialtyOf(stats.character),
+            casters.firstOrNull { it.className.equals(WizardSpecialtyRules.WIZARD, ignoreCase = true) }
+        )
     if (warnings.isNotEmpty()) {
         item {
             Card(

@@ -239,6 +239,8 @@ fun SpellsTab(
 
         // Domínios do Clérigo (só aparece para quem tem a classe Clérigo)
         clericDomainSection(viewModel, stats)
+        // Especialização do Mago (só aparece para quem tem a classe Mago)
+        wizardSpecialtySection(viewModel, stats)
 
         // 2. Seções: Preparadas, Conhecidas, Catálogo e Histórico
         item {

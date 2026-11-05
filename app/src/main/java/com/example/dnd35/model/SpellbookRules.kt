@@ -51,11 +51,19 @@ object SpellbookRules {
     fun maxCastableCircle(info: CasterClassInfo, abilityScore: Int): Int =
         minOf(highestAccessibleCircle(info), abilityScore - 10, 9)
 
-    enum class Eligibility { OK, CIRCLE_NOT_REACHED, ABILITY_TOO_LOW, NOT_ON_CLASS_LIST }
+    enum class Eligibility { OK, CIRCLE_NOT_REACHED, ABILITY_TOO_LOW, NOT_ON_CLASS_LIST, PROHIBITED_SCHOOL }
 
     /** Se a classe pode aprender/preparar uma magia do catálogo e, se não, por quê. */
-    fun eligibility(preset: Dnd35Rules.PresetSpell, info: CasterClassInfo, abilityScore: Int): Eligibility {
+    fun eligibility(
+        preset: Dnd35Rules.PresetSpell,
+        info: CasterClassInfo,
+        abilityScore: Int,
+        wizardSpecialty: WizardSpecialty = WizardSpecialty()
+    ): Eligibility {
         val level = classLevelOf(preset, info.className) ?: return Eligibility.NOT_ON_CLASS_LIST
+        if (info.className.equals(WizardSpecialtyRules.WIZARD, ignoreCase = true) &&
+            WizardSpecialtyRules.isProhibited(preset.school, wizardSpecialty)
+        ) return Eligibility.PROHIBITED_SCHOOL
         if (level > highestAccessibleCircle(info)) return Eligibility.CIRCLE_NOT_REACHED
         if (abilityScore < minAbilityScore(level)) return Eligibility.ABILITY_TOO_LOW
         return Eligibility.OK
