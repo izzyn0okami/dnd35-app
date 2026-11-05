@@ -94,6 +94,24 @@ private enum class SessionAreaTab { SESSION, COMBAT, RESOURCES }
 fun SessionHubScreen(viewModel: SessionViewModel, characterViewModel: CharacterViewModel, onClose: () -> Unit) {
     var mode by remember { mutableStateOf(SessionHubMode.SELECT) }
     var selectedArea by remember { mutableStateOf(SessionAreaTab.SESSION) }
+    val dmState by viewModel.dmState.collectAsStateWithLifecycle()
+    val playerState by viewModel.playerState.collectAsStateWithLifecycle()
+    val activeSessionMode = when {
+        dmState is DmSessionUiState.Hosting -> SessionHubMode.DM
+        playerState is PlayerSessionUiState.Connected ||
+            playerState is PlayerSessionUiState.Connecting ||
+            playerState is PlayerSessionUiState.Disconnected -> SessionHubMode.PLAYER
+        else -> null
+    }
+    val activeSessionLabel = when (activeSessionMode) {
+        SessionHubMode.DM -> "Você já está hospedando uma sessão."
+        SessionHubMode.PLAYER -> when (playerState) {
+            is PlayerSessionUiState.Connected -> "Você já está conectado a uma sessão."
+            is PlayerSessionUiState.Connecting -> "Sua conexão com a sessão está em andamento."
+            else -> "Sua sessão anterior foi desconectada e pode ser retomada."
+        }
+        else -> null
+    }
     Column(modifier = Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp)) {
         Row(verticalAlignment = Alignment.CenterVertically) {
             IconButton(onClick = {
@@ -114,7 +132,12 @@ fun SessionHubScreen(viewModel: SessionViewModel, characterViewModel: CharacterV
         Spacer(modifier = Modifier.height(16.dp))
 
         when (mode) {
-            SessionHubMode.SELECT -> ModeSelectContent(onPickDm = { mode = SessionHubMode.DM }, onPickPlayer = { mode = SessionHubMode.PLAYER })
+            SessionHubMode.SELECT -> ModeSelectContent(
+                activeSessionLabel = activeSessionLabel,
+                onReturnToSession = { mode = activeSessionMode ?: SessionHubMode.SELECT },
+                onPickDm = { mode = SessionHubMode.DM },
+                onPickPlayer = { mode = SessionHubMode.PLAYER }
+            )
             SessionHubMode.DM -> DmHostContent(viewModel, characterViewModel, selectedArea) { selectedArea = it }
             SessionHubMode.PLAYER -> PlayerJoinContent(viewModel, characterViewModel, selectedArea) { selectedArea = it }
         }
@@ -135,7 +158,33 @@ private fun SessionAreaNavigation(selected: SessionAreaTab, onSelect: (SessionAr
 }
 
 @Composable
-private fun ModeSelectContent(onPickDm: () -> Unit, onPickPlayer: () -> Unit) {
+private fun ModeSelectContent(
+    activeSessionLabel: String?,
+    onReturnToSession: () -> Unit,
+    onPickDm: () -> Unit,
+    onPickPlayer: () -> Unit
+) {
+    if (activeSessionLabel != null) {
+        Card(
+            modifier = Modifier.fillMaxWidth(),
+            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)
+        ) {
+            Column(modifier = Modifier.padding(16.dp)) {
+                Text(activeSessionLabel, fontWeight = FontWeight.SemiBold)
+                Spacer(modifier = Modifier.height(10.dp))
+                Button(onClick = onReturnToSession, modifier = Modifier.fillMaxWidth()) {
+                    Text("Retornar à sessão existente")
+                }
+                Text(
+                    "A sessão será retomada sem criar outra conexão.",
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
+        }
+        return
+    }
+
     Text(
         "Nenhum dado sai da rede local: os aparelhos precisam estar na mesma rede Wi-Fi " +
             "(mesmo sem internet) para se conectarem.",
@@ -223,7 +272,7 @@ private fun DmHostContent(viewModel: SessionViewModel, characterViewModel: Chara
                         PendingRequestsSection(requests = s.pendingRequests, onApprove = { viewModel.approveRequest(it) }, onDeny = { viewModel.denyRequest(it) })
                     }
                     Spacer(modifier = Modifier.height(16.dp))
-                    DmPrivateChatSection(players = s.participants.filter { it.role == ParticipantRole.PLAYER }, chatLog = s.privateChatLog,
+                    DmPrivateChatSection(players = s.participants.filter { it.role == ParticipantRole.PLAYER && it.connected }, chatLog = s.privateChatLog,
                         onSend = { participantId, text -> viewModel.sendPrivateMessageToPlayer(participantId, text) })
                     Spacer(modifier = Modifier.height(16.dp))
                     OutlinedButton(onClick = { viewModel.stopHosting() }) { Text("Encerrar sessão", color = DndCrimson) }
@@ -912,11 +961,16 @@ private fun PlayerJoinContent(viewModel: SessionViewModel, characterViewModel: C
     var manualHost by remember { mutableStateOf("") }
     var manualPort by remember { mutableStateOf("") }
     var selectedCharacter by remember(activeCharacter) { mutableStateOf(activeCharacter) }
+    var joinFeedback by remember { mutableStateOf<String?>(null) }
 
     val scanLauncher = rememberLauncherForActivityResult(ScanContract()) { result ->
         val raw = result.contents
         if (raw != null) {
-            JoinPayload.fromJson(raw)?.let { payload ->
+            val payload = JoinPayload.fromJson(raw)
+            if (payload == null) {
+                joinFeedback = "QR Code inválido ou incompatível. Solicite ao Mestre um novo código."
+            } else {
+                joinFeedback = null
                 viewModel.joinSession(payload, displayName, selectedCharacter)
             }
         }
@@ -924,6 +978,10 @@ private fun PlayerJoinContent(viewModel: SessionViewModel, characterViewModel: C
 
     when (val s = state) {
         is PlayerSessionUiState.Idle, is PlayerSessionUiState.Disconnected -> {
+            joinFeedback?.let { message ->
+                Text(message, color = MaterialTheme.colorScheme.error)
+                Spacer(modifier = Modifier.height(8.dp))
+            }
             if (s is PlayerSessionUiState.Disconnected) {
                 if (s.reason.isNotBlank()) {
                     Text(s.reason, color = MaterialTheme.colorScheme.error)
@@ -982,19 +1040,35 @@ private fun PlayerJoinContent(viewModel: SessionViewModel, characterViewModel: C
             Spacer(modifier = Modifier.height(8.dp))
             OutlinedTextField(
                 value = manualPort,
-                onValueChange = { manualPort = it },
+                onValueChange = { manualPort = it.filter(Char::isDigit).take(5) },
                 label = { Text("Porta") },
                 modifier = Modifier.fillMaxWidth()
             )
+            val manualPortValue = manualPort.toIntOrNull()
+            val validManualHost = JoinPayload.isValidHostAddress(manualHost.trim())
+            val validManualPort = manualPortValue != null && manualPortValue in 1..65535
+            if (manualHost.isNotBlank() && !validManualHost) {
+                Text(
+                    "Informe um endereço IPv4 válido (quatro números entre 0 e 255).",
+                    color = MaterialTheme.colorScheme.error,
+                    style = MaterialTheme.typography.bodySmall
+                )
+            }
+            if (manualPort.isNotBlank() && !validManualPort) {
+                Text(
+                    "A porta deve estar entre 1 e 65535.",
+                    color = MaterialTheme.colorScheme.error,
+                    style = MaterialTheme.typography.bodySmall
+                )
+            }
             Spacer(modifier = Modifier.height(12.dp))
             Button(
                 onClick = {
-                    val port = manualPort.toIntOrNull()
-                    if (manualHost.isNotBlank() && port != null) {
-                        viewModel.joinSession(manualHost.trim(), port, displayName, selectedCharacter)
+                    if (validManualHost && validManualPort) {
+                        viewModel.joinSession(manualHost.trim(), manualPortValue!!, displayName, selectedCharacter)
                     }
                 },
-                enabled = manualHost.isNotBlank() && manualPort.toIntOrNull() != null
+                enabled = validManualHost && validManualPort
             ) {
                 Text("Entrar manualmente")
             }
