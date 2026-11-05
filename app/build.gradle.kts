@@ -68,6 +68,12 @@ android {
   }
 }
 
+// Exporta o schema do Room em app/schemas (um JSON por versão do banco), usado para revisar
+// migrações. Os arquivos gerados devem ser versionados junto com cada mudança de schema.
+ksp {
+  arg("room.schemaLocation", "$projectDir/schemas")
+}
+
 // Some unused dependencies are commented out below instead of being removed.
 // This makes it easy to add them back in the future if needed.
 dependencies {

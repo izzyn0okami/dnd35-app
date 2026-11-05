@@ -57,6 +57,8 @@ data class CharacterEntity(
     val spellSlotsJson: String = "",
     // Registro de magias conjuradas (histórico). Vazio em fichas antigas.
     val spellHistoryJson: String = "",
+    // Domínios escolhidos pelo Clérigo (até 2), em JSON. Vazio quando não há escolha.
+    val clericDomainsJson: String = "",
     val multiclassJson: String = "",
     val notes: String = "",
     // Marcação usada só na Sessão de Mesa: fichas de NPC não representam um jogador
@@ -209,7 +211,9 @@ data class CharacterSpell(
     val casterClass: String = "",
     // Só Mago: a magia está registrada no grimório (condição para prepará-la).
     val inSpellbook: Boolean = false,
-    val favorite: Boolean = false
+    val favorite: Boolean = false,
+    // Clérigo: domínio cuja magia esta ficha ocupa no espaço de domínio do círculo (vazio = magia comum).
+    val domain: String = ""
 )
 
 /** Uma magia conjurada, para o histórico da aba Magias. */

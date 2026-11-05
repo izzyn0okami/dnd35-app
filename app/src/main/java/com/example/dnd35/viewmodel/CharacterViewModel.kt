@@ -20,6 +20,8 @@ import com.example.dnd35.model.CharacterJsonAdapters
 import com.example.dnd35.model.CharacterSkill
 import com.example.dnd35.model.SkillPointLevelRecord
 import com.example.dnd35.model.CharacterSpell
+import com.example.dnd35.model.ClericDomainRules
+import com.example.dnd35.model.Dnd35Rules
 import com.example.dnd35.model.SpellCastRecord
 import com.example.dnd35.model.SpellbookRules
 import com.example.dnd35.model.SpellSlotInfo
@@ -739,6 +741,74 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
         updateSpell(spellId) { s ->
             s.copy(inSpellbook = inSpellbook, prepared = if (inSpellbook) s.prepared else false)
         }
+    }
+
+    /**
+     * Define os domínios do Clérigo (no máximo 2, só os do Livro do Jogador). Magias de domínio
+     * preparadas de um domínio que deixou de ser escolhido voltam a ser magias comuns, despreparadas.
+     */
+    fun setClericDomains(domains: List<String>) {
+        val curr = _activeCharacter.value ?: return
+        val chosen = ClericDomainRules.normalize(domains)
+        val spells = CharacterJsonAdapters.deserializeSpells(curr.spellsJson).map { s ->
+            if (s.domain.isNotBlank() && chosen.none { it.equals(s.domain, ignoreCase = true) }) {
+                s.copy(domain = "", prepared = false)
+            } else s
+        }
+        persistCharacter(
+            curr.copy(
+                clericDomainsJson = CharacterJsonAdapters.serializeDomains(chosen),
+                spellsJson = CharacterJsonAdapters.serializeSpells(spells)
+            )
+        )
+    }
+
+    /**
+     * Prepara [preset] no espaço de domínio do círculo dele. Só vale para um domínio já escolhido;
+     * a magia de domínio anterior do mesmo círculo sai do espaço (fica despreparada).
+     */
+    fun prepareDomainSpell(preset: Dnd35Rules.PresetSpell, domain: String) {
+        val curr = _activeCharacter.value ?: return
+        val chosen = ClericDomainRules.domainsOf(curr)
+        val canonical = chosen.firstOrNull { it.equals(domain, ignoreCase = true) } ?: return
+        val circle = preset.domainLevels[canonical] ?: return
+        if (!ClericDomainRules.hasDomainSlotAt(circle)) return
+        val list = CharacterJsonAdapters.deserializeSpells(curr.spellsJson).map { s ->
+            if (s.domain.isNotBlank() && s.level == circle && !s.name.equals(preset.name, ignoreCase = true)) {
+                s.copy(domain = "", prepared = false)
+            } else s
+        }.toMutableList()
+        val idx = list.indexOfFirst {
+            it.name.equals(preset.name, ignoreCase = true) &&
+                it.casterClass.equals(ClericDomainRules.CLERIC, ignoreCase = true)
+        }
+        if (idx >= 0) {
+            list[idx] = list[idx].copy(domain = canonical, level = circle, prepared = true, preparedCount = 1)
+        } else {
+            list.add(
+                CharacterSpell(
+                    name = preset.name,
+                    level = circle,
+                    school = preset.school,
+                    castTime = preset.castTime,
+                    components = preset.components,
+                    range = preset.range,
+                    duration = preset.duration,
+                    savingThrow = preset.savingThrow,
+                    spellResistance = preset.spellResistance,
+                    prepared = true,
+                    description = preset.description,
+                    casterClass = ClericDomainRules.CLERIC,
+                    domain = canonical
+                )
+            )
+        }
+        persistCharacter(curr.copy(spellsJson = CharacterJsonAdapters.serializeSpells(list)))
+    }
+
+    /** Tira a magia do espaço de domínio (ela continua na ficha, despreparada). */
+    fun clearDomainSpell(spellId: String) {
+        updateSpell(spellId) { it.copy(domain = "", prepared = false) }
     }
 
     fun toggleSpellFavorite(spellId: String) {

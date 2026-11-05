@@ -3194,29 +3194,6 @@
     "domainLevels": {}
   },
   {
-    "name": "Parar o Tempo (Time Stop)",
-    "level": 9,
-    "school": "Transmutação",
-    "classes": [
-      "Mago",
-      "Feiticeiro"
-    ],
-    "castTime": "1 ação padrão",
-    "components": "V",
-    "range": "Pessoal",
-    "duration": "1d4 + 1 rodadas de tempo aparente",
-    "savingThrow": "Nenhum",
-    "spellResistance": false,
-    "description": "O fluxo do tempo cessa para todo o universo, exceto para o conjurador, que pode agir livremente por 1d4+1 rodadas.",
-    "classLevels": {
-      "Mago": 9,
-      "Feiticeiro": 9
-    },
-    "domainLevels": {
-      "Enganação": 9
-    }
-  },
-  {
     "name": "Limpar a Mente",
     "level": 8,
     "school": "Abjuração",
