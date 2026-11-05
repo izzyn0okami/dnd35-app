@@ -22,6 +22,8 @@ import com.example.dnd35.session.SessionServer
 import com.example.dnd35.session.ShopSnapshot
 import com.example.dnd35.session.ShopState
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
@@ -125,23 +127,45 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
         val name = hostDisplayName.ifBlank { "Mestre" }
         val newServer = SessionServer(sessionId, name)
         server = newServer
-        val port = newServer.start()
 
-        val ip = LocalNetworkUtil.findLocalIpAddress()
-        if (ip == null) {
-            _dmState.value = DmSessionUiState.Error(
-                "Não foi possível encontrar o endereço deste aparelho na rede local. " +
-                    "Confirme se o Wi-Fi está ligado (não precisa ter internet, só precisa " +
-                    "estar na mesma rede dos jogadores)."
-            )
-            return
+        // Abrir o ServerSocket e consultar a interface de rede são operações de I/O:
+        // executá-las fora da thread principal evita outro NetworkOnMainThreadException.
+        viewModelScope.launch {
+            try {
+                val (port, ip) = withContext(Dispatchers.IO) {
+                    newServer.start() to LocalNetworkUtil.findLocalIpAddress()
+                }
+                if (server !== newServer) {
+                    newServer.stop()
+                    return@launch
+                }
+
+                if (ip == null) {
+                    newServer.stop()
+                    server = null
+                    _dmState.value = DmSessionUiState.Error(
+                        "Não foi possível encontrar o endereço deste aparelho na rede local. " +
+                            "Confirme se o Wi-Fi está ligado (não precisa ter internet, só precisa " +
+                            "estar na mesma rede dos jogadores)."
+                    )
+                    return@launch
+                }
+
+                val payload = JoinPayload(sessionId, name, ip, port)
+                val qrContent = payload.toJson()
+                val bitmap = QrCodeUtil.generate(qrContent)
+                viewModelScope.launchCollectDmState(newServer, sessionId, bitmap, qrContent)
+            } catch (e: Exception) {
+                newServer.stop()
+                if (server === newServer) {
+                    server = null
+                    _dmState.value = DmSessionUiState.Error(
+                        "Não foi possível iniciar a sessão local: " +
+                            (e.message?.takeIf { it.isNotBlank() } ?: e.javaClass.simpleName)
+                    )
+                }
+            }
         }
-
-        val payload = JoinPayload(sessionId, name, ip, port)
-        val qrContent = payload.toJson()
-        val bitmap = QrCodeUtil.generate(qrContent)
-
-        viewModelScope.launchCollectDmState(newServer, sessionId, bitmap, qrContent)
     }
 
     private fun CoroutineScope.launchCollectDmState(
