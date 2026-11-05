@@ -346,7 +346,7 @@ fun DndMainScreen(
                 containerColor = MaterialTheme.colorScheme.surface
             ) {
                 val items = listOf(
-                    Triple("Combate", Icons.Default.Shield, 0),
+                    Triple("Personagem", Icons.Default.Shield, 0),
                     Triple("Perícias", Icons.Default.Star, 1),
                     Triple("Carga & Itens", Icons.Default.FitnessCenter, 2),
                     Triple("Talentos", Icons.Default.MilitaryTech, 3),
@@ -356,7 +356,11 @@ fun DndMainScreen(
                 items.forEach { (label, icon, index) ->
                     NavigationBarItem(
                         selected = selectedTab == index,
-                        onClick = { selectedTab = index },
+                        onClick = {
+                            selectedTab = index
+                            // A sessão permanece conectada no SessionViewModel ao consultar a ficha.
+                            showSessionHub = false
+                        },
                         icon = { Icon(icon, contentDescription = label) },
                         label = { Text(label, style = MaterialTheme.typography.labelSmall) },
                         colors = NavigationBarItemDefaults.colors(

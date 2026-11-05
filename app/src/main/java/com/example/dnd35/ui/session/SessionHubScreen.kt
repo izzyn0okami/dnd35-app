@@ -14,6 +14,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -82,6 +84,7 @@ import com.journeyapps.barcodescanner.ScanContract
 import com.journeyapps.barcodescanner.ScanOptions
 
 private enum class SessionHubMode { SELECT, DM, PLAYER }
+private enum class SessionAreaTab { SESSION, COMBAT, RESOURCES }
 
 /**
  * Tela de "Sessão de Mesa": ponto de entrada para o modo Mestre (hospedar) ou Jogador (entrar),
@@ -90,8 +93,8 @@ private enum class SessionHubMode { SELECT, DM, PLAYER }
 @Composable
 fun SessionHubScreen(viewModel: SessionViewModel, characterViewModel: CharacterViewModel, onClose: () -> Unit) {
     var mode by remember { mutableStateOf(SessionHubMode.SELECT) }
-
-    Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
+    var selectedArea by remember { mutableStateOf(SessionAreaTab.SESSION) }
+    Column(modifier = Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp)) {
         Row(verticalAlignment = Alignment.CenterVertically) {
             IconButton(onClick = {
                 when (mode) {
@@ -112,8 +115,21 @@ fun SessionHubScreen(viewModel: SessionViewModel, characterViewModel: CharacterV
 
         when (mode) {
             SessionHubMode.SELECT -> ModeSelectContent(onPickDm = { mode = SessionHubMode.DM }, onPickPlayer = { mode = SessionHubMode.PLAYER })
-            SessionHubMode.DM -> DmHostContent(viewModel, characterViewModel)
-            SessionHubMode.PLAYER -> PlayerJoinContent(viewModel, characterViewModel)
+            SessionHubMode.DM -> DmHostContent(viewModel, characterViewModel, selectedArea) { selectedArea = it }
+            SessionHubMode.PLAYER -> PlayerJoinContent(viewModel, characterViewModel, selectedArea) { selectedArea = it }
+        }
+    }
+}
+
+
+@Composable
+private fun SessionAreaNavigation(selected: SessionAreaTab, onSelect: (SessionAreaTab) -> Unit) {
+    Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(4.dp), verticalAlignment = Alignment.CenterVertically) {
+        listOf(SessionAreaTab.SESSION to "Sessão", SessionAreaTab.COMBAT to "Combate", SessionAreaTab.RESOURCES to "Recursos").forEach { (tab, label) ->
+            TextButton(onClick = { onSelect(tab) }) {
+                Text(label, color = if (selected == tab) DndGold else MaterialTheme.colorScheme.onSurfaceVariant,
+                    fontWeight = if (selected == tab) FontWeight.Bold else FontWeight.Normal)
+            }
         }
     }
 }
@@ -170,7 +186,7 @@ private fun ModeSelectContent(onPickDm: () -> Unit, onPickPlayer: () -> Unit) {
 }
 
 @Composable
-private fun DmHostContent(viewModel: SessionViewModel, characterViewModel: CharacterViewModel) {
+private fun DmHostContent(viewModel: SessionViewModel, characterViewModel: CharacterViewModel, selectedArea: SessionAreaTab, onSelectArea: (SessionAreaTab) -> Unit) {
     val state by viewModel.dmState.collectAsStateWithLifecycle()
     var hostName by remember { mutableStateOf("Mestre") }
 
@@ -192,54 +208,36 @@ private fun DmHostContent(viewModel: SessionViewModel, characterViewModel: Chara
             NpcManagementSection(characterViewModel)
         }
         is DmSessionUiState.Hosting -> {
-            Text(
-                "Peça para os jogadores escanearem este código no app deles.",
-                style = MaterialTheme.typography.bodyMedium
-            )
+            Text("Sessão ativa", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
+            SessionAreaNavigation(selectedArea, onSelectArea)
             Spacer(modifier = Modifier.height(12.dp))
-            Image(
-                bitmap = s.qrBitmap.asImageBitmap(),
-                contentDescription = "QR Code da sessão",
-                modifier = Modifier.size(220.dp)
-            )
-            Spacer(modifier = Modifier.height(16.dp))
-            ParticipantRoster(s.participants, s.characters)
-            if (s.pendingRequests.isNotEmpty()) {
-                Spacer(modifier = Modifier.height(16.dp))
-                PendingRequestsSection(
-                    requests = s.pendingRequests,
-                    onApprove = { viewModel.approveRequest(it) },
-                    onDeny = { viewModel.denyRequest(it) }
-                )
+            when (selectedArea) {
+                SessionAreaTab.SESSION -> {
+                    Text("Peça para os jogadores escanearem este código no app deles.", style = MaterialTheme.typography.bodyMedium)
+                    Spacer(modifier = Modifier.height(12.dp))
+                    Image(bitmap = s.qrBitmap.asImageBitmap(), contentDescription = "QR Code da sessão", modifier = Modifier.size(220.dp))
+                    Spacer(modifier = Modifier.height(16.dp))
+                    ParticipantRoster(s.participants, s.characters)
+                    if (s.pendingRequests.isNotEmpty()) {
+                        Spacer(modifier = Modifier.height(16.dp))
+                        PendingRequestsSection(requests = s.pendingRequests, onApprove = { viewModel.approveRequest(it) }, onDeny = { viewModel.denyRequest(it) })
+                    }
+                    Spacer(modifier = Modifier.height(16.dp))
+                    DmPrivateChatSection(players = s.participants.filter { it.role == ParticipantRole.PLAYER }, chatLog = s.privateChatLog,
+                        onSend = { participantId, text -> viewModel.sendPrivateMessageToPlayer(participantId, text) })
+                    Spacer(modifier = Modifier.height(16.dp))
+                    OutlinedButton(onClick = { viewModel.stopHosting() }) { Text("Encerrar sessão", color = DndCrimson) }
+                    Spacer(modifier = Modifier.height(20.dp))
+                    NpcManagementSection(characterViewModel)
+                }
+                SessionAreaTab.COMBAT -> CombatSection(viewModel, characterViewModel, s)
+                SessionAreaTab.RESOURCES -> {
+                    LootChestSection(items = s.lootChest, isDm = true, onAddItem = { viewModel.addLootItem(it) }, onRemoveItem = { viewModel.removeLootItem(it) })
+                    Spacer(modifier = Modifier.height(16.dp))
+                    DmShopSection(shop = s.shop, characterViewModel = characterViewModel,
+                        onOpenShop = { npcId, npcName, items -> viewModel.openShop(npcId, npcName, items) }, onCloseShop = { viewModel.closeShop() })
+                }
             }
-            Spacer(modifier = Modifier.height(16.dp))
-            CombatSection(viewModel, characterViewModel, s)
-            Spacer(modifier = Modifier.height(16.dp))
-            LootChestSection(
-                items = s.lootChest,
-                isDm = true,
-                onAddItem = { viewModel.addLootItem(it) },
-                onRemoveItem = { viewModel.removeLootItem(it) }
-            )
-            Spacer(modifier = Modifier.height(16.dp))
-            DmShopSection(
-                shop = s.shop,
-                characterViewModel = characterViewModel,
-                onOpenShop = { npcId, npcName, items -> viewModel.openShop(npcId, npcName, items) },
-                onCloseShop = { viewModel.closeShop() }
-            )
-            Spacer(modifier = Modifier.height(16.dp))
-            DmPrivateChatSection(
-                players = s.participants.filter { it.role == ParticipantRole.PLAYER },
-                chatLog = s.privateChatLog,
-                onSend = { participantId, text -> viewModel.sendPrivateMessageToPlayer(participantId, text) }
-            )
-            Spacer(modifier = Modifier.height(16.dp))
-            OutlinedButton(onClick = { viewModel.stopHosting() }) {
-                Text("Encerrar sessão", color = DndCrimson)
-            }
-            Spacer(modifier = Modifier.height(24.dp))
-            NpcManagementSection(characterViewModel)
         }
         is DmSessionUiState.Error -> {
             Text(s.message, color = MaterialTheme.colorScheme.error)
@@ -906,7 +904,7 @@ private fun PlayerPrivateChatSection(receivedMessages: List<String>, onSend: (St
 }
 
 @Composable
-private fun PlayerJoinContent(viewModel: SessionViewModel, characterViewModel: CharacterViewModel) {
+private fun PlayerJoinContent(viewModel: SessionViewModel, characterViewModel: CharacterViewModel, selectedArea: SessionAreaTab, onSelectArea: (SessionAreaTab) -> Unit) {
     val state by viewModel.playerState.collectAsStateWithLifecycle()
     val myCharacters by characterViewModel.allCharacters.collectAsStateWithLifecycle()
     val activeCharacter by characterViewModel.activeCharacter.collectAsStateWithLifecycle()
@@ -1026,11 +1024,7 @@ private fun PlayerJoinContent(viewModel: SessionViewModel, characterViewModel: C
                     shopFeedback = "Você comprou \"${item.name}\" por ${item.costGp} po!"
                 }
             }
-            LaunchedEffect(viewModel) {
-                viewModel.playerPrivateMessages.collect { text ->
-                    receivedDmMessages.add(text)
-                }
-            }
+            LaunchedEffect(viewModel) { viewModel.playerPrivateMessages.collect { text -> receivedDmMessages.add(text) } }
             Text("Conectado!", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold, color = DndGold)
             feedback?.let { message ->
                 Spacer(modifier = Modifier.height(8.dp))
@@ -1053,61 +1047,41 @@ private fun PlayerJoinContent(viewModel: SessionViewModel, characterViewModel: C
                     TextButton(onClick = { shopFeedback = null }) { Text("OK") }
                 }
             }
+            SessionAreaNavigation(selectedArea, onSelectArea)
             Spacer(modifier = Modifier.height(12.dp))
-            ParticipantRoster(s.participants, emptyMap())
-            s.combat?.let { combat ->
-                Spacer(modifier = Modifier.height(16.dp))
-                CombatTracker(
-                    combat = combat,
-                    isDm = false,
-                    selfId = s.selfId,
-                    onRequestHpChange = { combatantId, delta ->
-                        val summary = if (delta > 0) {
-                            "Pedido de dano ($delta PV) em combate"
-                        } else {
-                            "Pedido de cura (${-delta} PV) em combate"
+            when (selectedArea) {
+                SessionAreaTab.SESSION -> {
+                    ParticipantRoster(s.participants, emptyMap())
+                    Spacer(modifier = Modifier.height(16.dp))
+                    PlayerPrivateChatSection(receivedMessages = receivedDmMessages, onSend = { text -> viewModel.sendPrivateMessageToDm(text) })
+                    if (selectedCharacter != null) {
+                        Spacer(modifier = Modifier.height(16.dp))
+                        OutlinedButton(onClick = { selectedCharacter?.let { viewModel.requestCharacterUpdate(it, "Atualização da ficha de ${it.name}") } }) {
+                            Text("Pedir atualização da ficha")
                         }
+                    }
+                    Spacer(modifier = Modifier.height(16.dp))
+                    OutlinedButton(onClick = { viewModel.leaveSession() }) { Text("Sair da sessão", color = DndCrimson) }
+                }
+                SessionAreaTab.COMBAT -> {
+                    val combat = s.combat
+                    if (combat == null) Text("O Mestre ainda não iniciou um combate.", color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    else CombatTracker(combat = combat, isDm = false, selfId = s.selfId, onRequestHpChange = { combatantId, delta ->
+                        val summary = if (delta > 0) "Pedido de dano (${delta} PV) em combate" else "Pedido de cura (${-delta} PV) em combate"
                         viewModel.requestCombatHpChange(combatantId, delta, summary)
-                    }
-                )
-            }
-            Spacer(modifier = Modifier.height(16.dp))
-            LootChestSection(
-                items = s.lootChest,
-                isDm = false,
-                onRequestTake = { item ->
-                    viewModel.requestTakeLoot(item.id, "Pedido de pegar \"${item.name}\" do baú de loot")
+                    })
                 }
-            )
-            s.shop?.let { shop ->
-                Spacer(modifier = Modifier.height(16.dp))
-                PlayerShopSection(
-                    shop = shop,
-                    onRequestBuy = { item ->
-                        viewModel.requestBuyFromShop(item.id, "Pedido de comprar \"${item.name}\" (${item.costGp} po)")
+                SessionAreaTab.RESOURCES -> {
+                    LootChestSection(items = s.lootChest, isDm = false, onRequestTake = { item ->
+                        viewModel.requestTakeLoot(item.id, "Pedido de pegar \"${item.name}\" do baú de loot")
+                    })
+                    s.shop?.let { shop ->
+                        Spacer(modifier = Modifier.height(16.dp))
+                        PlayerShopSection(shop = shop, onRequestBuy = { item ->
+                            viewModel.requestBuyFromShop(item.id, "Pedido de comprar \"${item.name}\" (${item.costGp} po)")
+                        })
                     }
-                )
-            }
-            Spacer(modifier = Modifier.height(16.dp))
-            PlayerPrivateChatSection(
-                receivedMessages = receivedDmMessages,
-                onSend = { text -> viewModel.sendPrivateMessageToDm(text) }
-            )
-            if (selectedCharacter != null) {
-                Spacer(modifier = Modifier.height(16.dp))
-                OutlinedButton(
-                    onClick = {
-                        selectedCharacter?.let {
-                            viewModel.requestCharacterUpdate(it, "Atualização da ficha de ${it.name}")
-                        }
-                    }
-                ) {
-                    Text("Pedir atualização da ficha")
                 }
-            }
-            Spacer(modifier = Modifier.height(16.dp))
-            OutlinedButton(onClick = { viewModel.leaveSession() }) {
-                Text("Sair da sessão", color = DndCrimson)
             }
         }
     }
@@ -1173,7 +1147,7 @@ private fun ParticipantRoster(participants: List<Participant>, characters: Map<S
             Text("Participantes (${participants.size})", fontWeight = FontWeight.Bold)
         }
         Spacer(modifier = Modifier.height(8.dp))
-        LazyColumn(modifier = Modifier.height((participants.size.coerceAtLeast(1) * 56).dp.coerceAtMost(280.dp))) {
+        LazyColumn(modifier = Modifier.height((participants.size.coerceAtLeast(1) * 72).dp.coerceAtMost(360.dp))) {
             items(participants, key = { it.id }) { participant ->
                 val character = characters[participant.id]
                 Card(
