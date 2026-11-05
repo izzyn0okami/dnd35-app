@@ -59,6 +59,8 @@ data class CharacterEntity(
     val spellHistoryJson: String = "",
     // Domínios escolhidos pelo Clérigo (até 2), em JSON. Vazio quando não há escolha.
     val clericDomainsJson: String = "",
+    // Especialização do Mago em JSON: [escola de especialidade, escola proibida, ...]. Vazio = generalista.
+    val wizardSpecialtyJson: String = "",
     val multiclassJson: String = "",
     val notes: String = "",
     // Marcação usada só na Sessão de Mesa: fichas de NPC não representam um jogador

@@ -354,6 +354,17 @@ object CharacterJsonAdapters {
         }
     }
 
+    fun serializeSpecialty(specialty: WizardSpecialty): String {
+        val school = specialty.school ?: return ""
+        return JSONArray(listOf(school) + specialty.prohibited).toString()
+    }
+
+    fun deserializeSpecialty(json: String?): WizardSpecialty {
+        val items = deserializeDomains(json)
+        if (items.isEmpty()) return WizardSpecialty()
+        return WizardSpecialtyRules.normalize(items.first(), items.drop(1))
+    }
+
     fun serializeSpellHistory(records: List<SpellCastRecord>): String {
         val array = JSONArray()
         for (r in records) {

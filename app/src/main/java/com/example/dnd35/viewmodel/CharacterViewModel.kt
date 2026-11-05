@@ -25,6 +25,7 @@ import com.example.dnd35.model.Dnd35Rules
 import com.example.dnd35.model.SpellCastRecord
 import com.example.dnd35.model.SpellbookRules
 import com.example.dnd35.model.SpellSlotInfo
+import com.example.dnd35.model.WizardSpecialtyRules
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -804,6 +805,16 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
             )
         }
         persistCharacter(curr.copy(spellsJson = CharacterJsonAdapters.serializeSpells(list)))
+    }
+
+    /**
+     * Define a especialização do Mago. [school] nulo = generalista (sem escolas proibidas).
+     * Escolhas inválidas são normalizadas (máx. 2 escolas proibidas, 1 para Adivinhação).
+     */
+    fun setWizardSpecialty(school: String?, prohibited: List<String>) {
+        val curr = _activeCharacter.value ?: return
+        val specialty = WizardSpecialtyRules.normalize(school, prohibited)
+        persistCharacter(curr.copy(wizardSpecialtyJson = CharacterJsonAdapters.serializeSpecialty(specialty)))
     }
 
     /** Tira a magia do espaço de domínio (ela continua na ficha, despreparada). */

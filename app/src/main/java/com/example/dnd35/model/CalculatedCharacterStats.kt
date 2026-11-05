@@ -547,7 +547,9 @@ object CharacterCalculator {
                     else -> (0..9).associateWith { lvl -> 10 + lvl + mod }
                 }
                 val slotsArray = SpellcastingRules.spellsPerDayForClassLevel(
-                    className, casterLevel, mod, hasDomainSlot = detail.classInfo.hasDomainSpellSlot
+                    className, casterLevel, mod, hasDomainSlot = detail.classInfo.hasDomainSpellSlot,
+                    hasSpecialistSlot = className.equals(WizardSpecialtyRules.WIZARD, ignoreCase = true) &&
+                        WizardSpecialtyRules.specialtyOf(character).isSpecialist
                 )
                 val slotsByLevel = (0..9).associateWith { lvl -> slotsArray?.getOrNull(lvl) ?: 0 }
                 val knownArray = SpellcastingRules.knownSpellsForClassLevel(className, casterLevel)

@@ -1,0 +1,348 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 9,
+    "identityHash": "4f9cb342bbe9b978fd4cc175aa9d4038",
+    "entities": [
+      {
+        "tableName": "characters",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT NOT NULL, `characterClass` TEXT NOT NULL, `race` TEXT NOT NULL, `level` INTEGER NOT NULL, `alignment` TEXT NOT NULL, `deity` TEXT NOT NULL, `size` TEXT NOT NULL, `photoUri` TEXT, `currentHp` INTEGER NOT NULL, `maxHp` INTEGER NOT NULL, `tempHp` INTEGER NOT NULL, `nonLethalDamage` INTEGER NOT NULL, `baseStr` INTEGER NOT NULL, `baseDex` INTEGER NOT NULL, `baseCon` INTEGER NOT NULL, `baseInt` INTEGER NOT NULL, `baseWis` INTEGER NOT NULL, `baseCha` INTEGER NOT NULL, `modStrBonus` INTEGER NOT NULL, `modDexBonus` INTEGER NOT NULL, `modConBonus` INTEGER NOT NULL, `modIntBonus` INTEGER NOT NULL, `modWisBonus` INTEGER NOT NULL, `modChaBonus` INTEGER NOT NULL, `armorBonus` INTEGER NOT NULL, `shieldBonus` INTEGER NOT NULL, `naturalArmor` INTEGER NOT NULL, `deflectionBonus` INTEGER NOT NULL, `miscAcBonus` INTEGER NOT NULL, `miscFortitude` INTEGER NOT NULL, `miscReflex` INTEGER NOT NULL, `miscWill` INTEGER NOT NULL, `miscInitiative` INTEGER NOT NULL, `baseSpeedMeters` REAL NOT NULL, `goldGp` REAL NOT NULL, `silverSp` REAL NOT NULL, `copperCp` REAL NOT NULL, `platinumPp` REAL NOT NULL, `skillsJson` TEXT NOT NULL, `languagesJson` TEXT NOT NULL, `skillPointHistoryJson` TEXT NOT NULL, `languageAcquisitionsJson` TEXT NOT NULL, `inventoryJson` TEXT NOT NULL, `featsJson` TEXT NOT NULL, `spellsJson` TEXT NOT NULL, `spellSlotsJson` TEXT NOT NULL, `spellHistoryJson` TEXT NOT NULL, `clericDomainsJson` TEXT NOT NULL, `wizardSpecialtyJson` TEXT NOT NULL, `multiclassJson` TEXT NOT NULL, `notes` TEXT NOT NULL, `isNpc` INTEGER NOT NULL, `updatedAt` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "characterClass",
+            "columnName": "characterClass",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "race",
+            "columnName": "race",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "level",
+            "columnName": "level",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "alignment",
+            "columnName": "alignment",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "deity",
+            "columnName": "deity",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "size",
+            "columnName": "size",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "photoUri",
+            "columnName": "photoUri",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "currentHp",
+            "columnName": "currentHp",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "maxHp",
+            "columnName": "maxHp",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tempHp",
+            "columnName": "tempHp",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nonLethalDamage",
+            "columnName": "nonLethalDamage",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "baseStr",
+            "columnName": "baseStr",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "baseDex",
+            "columnName": "baseDex",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "baseCon",
+            "columnName": "baseCon",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "baseInt",
+            "columnName": "baseInt",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "baseWis",
+            "columnName": "baseWis",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "baseCha",
+            "columnName": "baseCha",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "modStrBonus",
+            "columnName": "modStrBonus",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "modDexBonus",
+            "columnName": "modDexBonus",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "modConBonus",
+            "columnName": "modConBonus",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "modIntBonus",
+            "columnName": "modIntBonus",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "modWisBonus",
+            "columnName": "modWisBonus",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "modChaBonus",
+            "columnName": "modChaBonus",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "armorBonus",
+            "columnName": "armorBonus",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "shieldBonus",
+            "columnName": "shieldBonus",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "naturalArmor",
+            "columnName": "naturalArmor",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "deflectionBonus",
+            "columnName": "deflectionBonus",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "miscAcBonus",
+            "columnName": "miscAcBonus",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "miscFortitude",
+            "columnName": "miscFortitude",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "miscReflex",
+            "columnName": "miscReflex",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "miscWill",
+            "columnName": "miscWill",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "miscInitiative",
+            "columnName": "miscInitiative",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "baseSpeedMeters",
+            "columnName": "baseSpeedMeters",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "goldGp",
+            "columnName": "goldGp",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "silverSp",
+            "columnName": "silverSp",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "copperCp",
+            "columnName": "copperCp",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "platinumPp",
+            "columnName": "platinumPp",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "skillsJson",
+            "columnName": "skillsJson",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "languagesJson",
+            "columnName": "languagesJson",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "skillPointHistoryJson",
+            "columnName": "skillPointHistoryJson",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "languageAcquisitionsJson",
+            "columnName": "languageAcquisitionsJson",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "inventoryJson",
+            "columnName": "inventoryJson",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "featsJson",
+            "columnName": "featsJson",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "spellsJson",
+            "columnName": "spellsJson",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "spellSlotsJson",
+            "columnName": "spellSlotsJson",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "spellHistoryJson",
+            "columnName": "spellHistoryJson",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "clericDomainsJson",
+            "columnName": "clericDomainsJson",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "wizardSpecialtyJson",
+            "columnName": "wizardSpecialtyJson",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "multiclassJson",
+            "columnName": "multiclassJson",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "notes",
+            "columnName": "notes",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "isNpc",
+            "columnName": "isNpc",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "updatedAt",
+            "columnName": "updatedAt",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        }
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '4f9cb342bbe9b978fd4cc175aa9d4038')"
+    ]
+  }
+}

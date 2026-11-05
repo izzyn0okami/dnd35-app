@@ -211,7 +211,7 @@ object SpellcastingRules {
      * bônus de atributo (só aplicado a círculos que a classe já acessa nesse nível). Retorna
      * null se a classe não tiver tabela de conjuração própria.
      */
-    fun spellsPerDayForClassLevel(className: String, casterLevel: Int, abilityMod: Int, hasDomainSlot: Boolean): IntArray? {
+    fun spellsPerDayForClassLevel(className: String, casterLevel: Int, abilityMod: Int, hasDomainSlot: Boolean, hasSpecialistSlot: Boolean = false): IntArray? {
         val table = tableFor(className) ?: return null
         val base = table[casterLevel.coerceAtLeast(1)] ?: return (0..9).map { 0 }.toIntArray()
         return IntArray(10) { circle ->
@@ -220,7 +220,9 @@ object SpellcastingRules {
             else {
                 val bonus = bonusSpellsForAbilityMod(circle, abilityMod)
                 val domainBonus = if (hasDomainSlot && circle >= 1) 1 else 0
-                baseValue + bonus + domainBonus
+                // Mago especialista: +1 magia por círculo (de 0 em diante), só da escola de especialidade.
+                val specialistBonus = if (hasSpecialistSlot) 1 else 0
+                baseValue + bonus + domainBonus + specialistBonus
             }
         }
     }
