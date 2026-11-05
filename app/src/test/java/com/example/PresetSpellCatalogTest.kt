@@ -2164,8 +2164,10 @@ class PresetSpellCatalogTest {
     /**
      * Listas de magias de domínio do Livro do Jogador (cap. 11, "Domínios de Clérigo"),
      * restritas às magias que já existem no catálogo. As demais magias de domínio ainda
-     * precisam entrar no catálogo (auditoria dos círculos 1-6); quando entrarem, devem ser
-     * acrescentadas a esta tabela. Escudo de Fogo e Sementes de Fogo aparecem na lista de
+     * precisam entrar no catálogo (círculos 4-6); quando entrarem, devem ser acrescentadas
+     * a esta tabela. Proteção contra a Lei, Névoa Obscurecente e Clariaudiência/Clarividência
+     * aparecem nas listas como "Proteção Contra a Ordem", "Névoa Obscurescente" e
+     * "Clarividência/Clariaudiência". Escudo de Fogo e Sementes de Fogo aparecem na lista de
      * domínios como "Escudo do Fogo" e "Semente de Fogo"; o catálogo usa o título do verbete.
      */
     @Test
@@ -2174,6 +2176,7 @@ class PresetSpellCatalogTest {
             "Animais" to mapOf(
                 1 to listOf("Acalmar Animais"),
                 2 to listOf("Imobilizar Animal"),
+                3 to listOf("Dominar Animal"),
                 4 to listOf("Invocar Aliado da Natureza IV"),
                 5 to listOf("Comunhão Com a Natureza"),
                 7 to listOf("Forma Animal"),
@@ -2181,7 +2184,9 @@ class PresetSpellCatalogTest {
                 9 to listOf("Alterar Forma")
             ),
             "Ar" to mapOf(
+                1 to listOf("Névoa Obscurecente"),
                 2 to listOf("Muralha de Vento"),
+                3 to listOf("Forma Gasosa"),
                 7 to listOf("Controlar o Clima"),
                 8 to listOf("Ciclone"),
                 9 to listOf("Grupo de Elementais")
@@ -2197,13 +2202,18 @@ class PresetSpellCatalogTest {
                 9 to listOf("Invocar Criaturas IX")
             ),
             "Caos" to mapOf(
+                1 to listOf("Proteção contra a Lei"),
                 2 to listOf("Despedaçar"),
+                3 to listOf("Círculo Mágico Contra a Ordem"),
+                5 to listOf("Dissipar a Ordem"),
                 7 to listOf("Palavra do Caos"),
                 8 to listOf("Manto do Caos"),
                 9 to listOf("Invocar Criaturas IX")
             ),
             "Conhecimento" to mapOf(
                 1 to listOf("Detectar Portas Secretas"),
+                2 to listOf("Detectar Pensamentos"),
+                3 to listOf("Clariaudiência/Clarividência"),
                 5 to listOf("Visão da Verdade"),
                 6 to listOf("Encontrar o Caminho"),
                 7 to listOf("Lendas e Histórias"),
@@ -2223,6 +2233,7 @@ class PresetSpellCatalogTest {
             "Destruição" to mapOf(
                 1 to listOf("Infligir Ferimentos Leves"),
                 2 to listOf("Despedaçar"),
+                3 to listOf("Praga"),
                 7 to listOf("Desintegrar"),
                 8 to listOf("Terremoto"),
                 9 to listOf("Implosão")
@@ -2238,6 +2249,7 @@ class PresetSpellCatalogTest {
             ),
             "Fogo" to mapOf(
                 1 to listOf("Mãos Flamejantes"),
+                2 to listOf("Criar Chamas"),
                 3 to listOf("Resistência à Elementos"),
                 5 to listOf("Escudo de Fogo"),
                 6 to listOf("Sementes de Fogo"),
@@ -2257,6 +2269,7 @@ class PresetSpellCatalogTest {
             ),
             "Guerra" to mapOf(
                 1 to listOf("Arma Mágica"),
+                2 to listOf("Arma Espiritual"),
                 3 to listOf("Roupa Encantada"),
                 5 to listOf("Coluna de Chamas"),
                 6 to listOf("Barreira de Lâminas"),
@@ -2276,6 +2289,9 @@ class PresetSpellCatalogTest {
             ),
             "Mal" to mapOf(
                 1 to listOf("Proteção contra o Bem"),
+                2 to listOf("Profanar"),
+                3 to listOf("Círculo Mágico Contra o Bem"),
+                5 to listOf("Dissipar o Bem"),
                 6 to listOf("Criar Mortos-Vivos"),
                 7 to listOf("Blasfêmia"),
                 8 to listOf("Aura Profana"),
@@ -2283,6 +2299,8 @@ class PresetSpellCatalogTest {
             ),
             "Morte" to mapOf(
                 1 to listOf("Causar Medo"),
+                2 to listOf("Drenar Força Vital"),
+                3 to listOf("Criar Mortos-Vivos Menor"),
                 4 to listOf("Proteção Contra a Morte"),
                 6 to listOf("Criar Mortos-Vivos"),
                 7 to listOf("Destruição"),
@@ -2291,6 +2309,7 @@ class PresetSpellCatalogTest {
             ),
             "Ordem" to mapOf(
                 1 to listOf("Proteção contra o Caos"),
+                2 to listOf("Acalmar Emoções"),
                 3 to listOf("Círculo Mágico Contra o Caos"),
                 5 to listOf("Dissipar o Caos"),
                 7 to listOf("Ditado"),
@@ -2319,6 +2338,8 @@ class PresetSpellCatalogTest {
             ),
             "Sol" to mapOf(
                 1 to listOf("Suportar Elementos"),
+                2 to listOf("Esquentar Metal"),
+                3 to listOf("Luz Cegante"),
                 4 to listOf("Escudo de Fogo"),
                 5 to listOf("Coluna de Chamas"),
                 6 to listOf("Sementes de Fogo"),
@@ -2339,6 +2360,8 @@ class PresetSpellCatalogTest {
             ),
             "Terra" to mapOf(
                 1 to listOf("Pedra Encantada"),
+                2 to listOf("Amolecer Terra e Pedra"),
+                3 to listOf("Moldar Rochas"),
                 6 to listOf("Pele Rochosa"),
                 7 to listOf("Terremoto"),
                 8 to listOf("Corpo de Ferro"),
@@ -2346,6 +2369,7 @@ class PresetSpellCatalogTest {
             ),
             "Viagem" to mapOf(
                 1 to listOf("Passos Longos"),
+                2 to listOf("Localizar Objetos"),
                 3 to listOf("Voo"),
                 4 to listOf("Porta Dimensional"),
                 5 to listOf("Teletransporte"),
@@ -2355,6 +2379,9 @@ class PresetSpellCatalogTest {
                 9 to listOf("Projeção Astral")
             ),
             "Água" to mapOf(
+                1 to listOf("Névoa Obscurecente"),
+                2 to listOf("Névoa"),
+                3 to listOf("Respirar na Água"),
                 7 to listOf("Névoa Ácida"),
                 8 to listOf("Evaporação"),
                 9 to listOf("Grupo de Elementais")
@@ -2427,5 +2454,72 @@ class PresetSpellCatalogTest {
             assertEquals(e.name, e.spellResistance, spell.spellResistance)
             assertTrue("${e.name} deve ter descrição", spell.description.isNotBlank())
         }
+    }
+
+    /**
+     * Segundo lote de magias de domínio (círculos 1-3 e variantes de Círculo Mágico/Dissipar),
+     * conferidas no Livro do Jogador brasileiro e, quando o PDF estava ambíguo, no SRD oficial.
+     */
+    @Test
+    fun domainSpellBatchTwoMatchesPlayerHandbook() {
+        data class Expected(
+            val name: String,
+            val level: Int,
+            val school: String,
+            val classLevels: Map<String, Int>,
+            val domainLevels: Map<String, Int>,
+            val components: String,
+            val range: String,
+            val duration: String,
+            val savingThrow: String,
+            val spellResistance: Boolean
+        )
+        val expected = listOf(
+            Expected("Acalmar Emoções", 2, "Encantamento (Compulsão) [Ação Mental]", mapOf("Bardo" to 2, "Clérigo" to 2), mapOf("Ordem" to 2), "V, G, FD", "Médio (30 m + 3 m/nível)", "Concentração, até 1 rodada/nível (D)", "Vontade anula", true),
+            Expected("Amolecer Terra e Pedra", 2, "Transmutação [Terra]", mapOf("Druida" to 2), mapOf("Terra" to 2), "V, G, FD", "Curto (7,5 m + 1,5 m/2 níveis)", "Instantânea", "Nenhum", false),
+            Expected("Arma Espiritual", 2, "Evocação [Energia]", mapOf("Clérigo" to 2), mapOf("Guerra" to 2), "V, G, FD", "Médio (30 m + 3 m/nível)", "1 rodada/nível (D)", "Nenhum", true),
+            Expected("Criar Chamas", 1, "Evocação [Fogo]", mapOf("Druida" to 1), mapOf("Fogo" to 2), "V, G", "0 metro", "1 minuto/nível (D)", "Nenhum", true),
+            Expected("Detectar Pensamentos", 2, "Adivinhação [Ação Mental]", mapOf("Bardo" to 2, "Feiticeiro" to 2, "Mago" to 2), mapOf("Conhecimento" to 2), "V, G, F/FD", "18 m", "Concentração, até 1 min/nível (D)", "Vontade anula (veja texto)", false),
+            Expected("Drenar Força Vital", 2, "Necromancia [Morte, Mal]", mapOf("Clérigo" to 2), mapOf("Morte" to 2), "V, G", "Toque", "Instantânea/10 minutos por DV alvo (veja texto)", "Vontade anula", true),
+            Expected("Esquentar Metal", 2, "Transmutação [Fogo]", mapOf("Druida" to 2), mapOf("Sol" to 2), "V, G, FD", "Curto (7,5 m + 1,5 m/2 níveis)", "7 rodadas", "Vontade anula (objeto)", true),
+            Expected("Localizar Objetos", 2, "Adivinhação", mapOf("Bardo" to 2, "Clérigo" to 2, "Feiticeiro" to 2, "Mago" to 2), mapOf("Viagem" to 2), "V, G, F/FD", "Longo (120 m + 12 m/nível)", "1 minuto/nível", "Nenhum", false),
+            Expected("Névoa", 2, "Conjuração (Criação)", mapOf("Druida" to 2, "Feiticeiro" to 2, "Mago" to 2), mapOf("Água" to 2), "V, G", "Médio (30 m + 3 m/nível)", "10 minutos/nível", "Nenhum", false),
+            Expected("Profanar", 2, "Evocação [Mal]", mapOf("Clérigo" to 2), mapOf("Mal" to 2), "V, G, M, FD", "Curto (7,5 m + 1,5 m/2 níveis)", "2 horas/nível", "Nenhum", false),
+            Expected("Criar Mortos-Vivos Menor", 3, "Necromancia [Mal]", mapOf("Clérigo" to 3, "Feiticeiro" to 4, "Mago" to 4), mapOf("Morte" to 3), "V, G, M", "Toque", "Instantânea", "Nenhum", false),
+            Expected("Forma Gasosa", 3, "Transmutação", mapOf("Bardo" to 3, "Feiticeiro" to 3, "Mago" to 3), mapOf("Ar" to 3), "G, M/FD", "Toque", "2 minutos/nível (D)", "Nenhum", false),
+            Expected("Luz Cegante", 3, "Evocação", mapOf("Clérigo" to 3), mapOf("Sol" to 3), "V, G", "Médio (30 m + 3 m/nível)", "Instantânea", "Nenhum", true),
+            Expected("Moldar Rochas", 3, "Transmutação [Terra]", mapOf("Clérigo" to 3, "Druida" to 3, "Feiticeiro" to 5, "Mago" to 5), mapOf("Terra" to 3), "V, G, M/FD", "Toque", "Instantânea", "Nenhum", false),
+            Expected("Praga", 3, "Necromancia [Mal]", mapOf("Clérigo" to 3, "Druida" to 3, "Feiticeiro" to 4, "Mago" to 4), mapOf("Destruição" to 3), "V, G", "Toque", "Instantânea", "Fortitude anula", true),
+            Expected("Respirar na Água", 3, "Transmutação", mapOf("Clérigo" to 3, "Druida" to 3, "Feiticeiro" to 3, "Mago" to 3), mapOf("Água" to 3), "V, G, M/FD", "Toque", "2 horas/nível; veja texto", "Vontade anula (inofensiva)", true),
+            Expected("Dominar Animal", 3, "Encantamento (Compulsão) [Ação Mental]", mapOf("Druida" to 3), mapOf("Animais" to 3), "V, G", "Curto (7,5 m + 1,5 m/2 níveis)", "1 rodada/nível", "Vontade anula", true),
+            Expected("Clariaudiência/Clarividência", 3, "Adivinhação (Vidência)", mapOf("Bardo" to 3, "Feiticeiro" to 3, "Mago" to 3), mapOf("Conhecimento" to 3), "V, G, F/FD", "Longo (120 m + 12 m/nível)", "1 minuto/nível (D)", "Nenhum", false),
+            Expected("Círculo Mágico Contra o Bem", 3, "Abjuração [Mal]", mapOf("Clérigo" to 3, "Feiticeiro" to 3, "Mago" to 3), mapOf("Mal" to 3), "V, G, M/FD", "Toque", "10 min/nível", "Vontade anula (inofensiva)", true),
+            Expected("Círculo Mágico Contra a Ordem", 3, "Abjuração [Caos]", mapOf("Clérigo" to 3, "Feiticeiro" to 3, "Mago" to 3), mapOf("Caos" to 3), "V, G, M/FD", "Toque", "10 min/nível", "Vontade anula (inofensiva)", true),
+            Expected("Dissipar o Bem", 5, "Abjuração [Mal]", mapOf("Clérigo" to 5), mapOf("Mal" to 5), "V, G, FD", "Toque", "1 rodada/nível", "Vontade anula (inofensiva)", true),
+            Expected("Dissipar a Ordem", 5, "Abjuração [Caos]", mapOf("Clérigo" to 5), mapOf("Caos" to 5), "V, G, FD", "Toque", "1 rodada/nível", "Vontade anula (inofensiva)", true)
+        )
+        expected.forEach { e ->
+            val matches = Dnd35Rules.PRESET_SPELLS.filter { it.name == e.name }
+            assertEquals("${e.name} deve existir uma única vez", 1, matches.size)
+            val spell = matches.single()
+            assertEquals(e.name, e.level, spell.level)
+            assertEquals(e.name, e.school, spell.school)
+            assertEquals(e.name, e.classLevels, spell.classLevels)
+            assertEquals(e.name, e.classLevels.keys, spell.classes.toSet())
+            assertEquals(e.name, e.domainLevels, spell.domainLevels)
+            assertEquals(e.name, e.components, spell.components)
+            assertEquals(e.name, e.range, spell.range)
+            assertEquals(e.name, e.duration, spell.duration)
+            assertEquals(e.name, e.savingThrow, spell.savingThrow)
+            assertEquals(e.name, e.spellResistance, spell.spellResistance)
+            assertTrue("${e.name} deve ter descrição", spell.description.isNotBlank())
+        }
+    }
+
+    @Test
+    fun domainOnlyUpdatesKeepExistingSpellNames() {
+        val byName = Dnd35Rules.PRESET_SPELLS.associateBy { it.name }
+        assertEquals(mapOf("Caos" to 1), byName.getValue("Proteção contra a Lei").domainLevels)
+        assertEquals(mapOf("Água" to 1, "Ar" to 1), byName.getValue("Névoa Obscurecente").domainLevels)
     }
 }

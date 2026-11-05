@@ -20,37 +20,17 @@ magias que o espaço de domínio do Clérigo precisa oferecer.
 - Lote 1 (11 magias que aparecem em mais de um domínio): Ajuda, Barreira de Lâminas, Criar
   Mortos-Vivos, Despedaçar, Despistar, Encontrar o Caminho, Imunidade à Magia, Resistência à
   Magia, Roupa Encantada, Escudo de Fogo, Sementes de Fogo.
+- Lote 2 (círculos 1-3, mais Círculo Mágico Contra o Bem/a Ordem e Dissipar o Bem/a Ordem): 22 magias
+  novas. Domínio acrescentado sem renomear em Proteção contra a Lei (Caos 1) e Névoa Obscurecente
+  (Água 1, Ar 1). Amolecer Terra e Pedra foi conferida no SRD oficial, pois o PDF misturava seus campos.
 - `domainLevels` corrigido e completado nas magias que já existiam (PR #305), incluindo o domínio da Força.
 
-## Pendente: 53 magias de domínio ainda fora do catálogo
+## Pendente: 29 magias de domínio ainda fora do catálogo (círculos 4-6)
 Observação: o PDF tem erros de OCR e grafias inconsistentes ("Animal", "Viajem"); cada verbete deve
-ser lido antes de entrar. "Névoa Obscurescente" (Água 1, Ar 1) provavelmente já existe como
-"Névoa Obscurecente"; confirmar e, se for a mesma magia, apenas acrescentar o domínio.
+ser lido antes de entrar (e conferido no SRD oficial quando o PDF estiver ambíguo).
 
 | Magia | Domínio e círculo | Situação |
 | --- | --- | --- |
-| Névoa Obscurescente | Água 1, Ar 1 | verbete localizado |
-| Proteção Contra a Ordem | Caos 1 | conferir nome do verbete |
-| Acalmar Emoções | Ordem 2 | verbete localizado |
-| Amolecer Terra e Pedra | Terra 2 | verbete localizado |
-| Arma Espiritual | Guerra 2 | verbete localizado |
-| Criar Chamas | Fogo 2 | verbete localizado |
-| Detectar Pensamentos | Conhecimento 2 | verbete localizado |
-| Drenar Força Vital | Morte 2 | verbete localizado |
-| Esquentar Metal | Sol 2 | verbete localizado |
-| Localizar Objetos | Viagem 2 | verbete localizado |
-| Névoa | Água 2 | verbete localizado |
-| Profanar | Mal 2 | verbete localizado |
-| Circulo Mágico Contra a Ordem | Caos 3 | conferir nome do verbete |
-| Circulo Mágico Contra o Bem | Mal 3 | conferir nome do verbete |
-| Clarividência/Clariaudiência | Conhecimento 3 | conferir nome do verbete |
-| Criar Mortos-Vivos Menor | Morte 3 | verbete localizado |
-| Dominar Animal | Animais 3 | conferir nome do verbete |
-| Forma Gasosa | Ar 3 | verbete localizado |
-| Luz Cegante | Sol 3 | verbete localizado |
-| Moldar Rochas | Terra 3 | verbete localizado |
-| Praga | Destruição 3 | verbete localizado |
-| Respirar na Água | Água 3 | verbete localizado |
 | Adivinhação | Conhecimento 4 | verbete localizado |
 | Andar no Ar | Ar 4 | verbete localizado |
 | Confusão | Enganação 4 | verbete localizado |
@@ -66,8 +46,6 @@ ser lido antes de entrar. "Névoa Obscurescente" (Água 1, Ar 1) provavelmente j
 | Transferência de Poder Divino | Magia 4 | verbete localizado |
 | Controlar os Ventos | Ar 5 | verbete localizado |
 | Curar Ferimentos Leves em Massa | Cura 5 | conferir nome do verbete |
-| Dissipar a Ordem | Caos 5 | conferir nome do verbete |
-| Dissipar o Bem | Mal 5 | conferir nome do verbete |
 | Força dos Justos | Força 5 | verbete localizado |
 | Infligir Ferimentos Leves em Massa | Destruição 5 | conferir nome do verbete |
 | Matar | Morte 5 | verbete localizado |
