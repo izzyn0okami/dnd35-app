@@ -261,11 +261,23 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
 
     /** Jogador: entra em uma sessão a partir de um QR Code já decodificado. */
     fun joinSession(payload: JoinPayload, displayName: String, character: CharacterEntity?) {
+        if (!payload.isValid()) {
+            _playerState.value = PlayerSessionUiState.Disconnected(
+                "O QR Code contém dados inválidos. Solicite ao Mestre um novo código."
+            )
+            return
+        }
         joinSession(payload.hostAddress, payload.port, displayName, character)
     }
 
     /** Jogador: entra em uma sessão informando manualmente o IP e a porta do Mestre. */
     fun joinSession(hostAddress: String, port: Int, displayName: String, character: CharacterEntity?) {
+        if (!JoinPayload.isValidHostAddress(hostAddress) || port !in 1..65535) {
+            _playerState.value = PlayerSessionUiState.Disconnected(
+                "Endereço IPv4 ou porta inválidos. Confira os dados informados pelo Mestre."
+            )
+            return
+        }
         leaveSession()
         _playerRequestFeedback.value = null
         val name = displayName.ifBlank { "Jogador" }
