@@ -2628,4 +2628,20 @@ class PresetSpellCatalogTest {
         ).forEach { assertTrue("$it deve estar no catálogo", it in names) }
         assertTrue(Dnd35Rules.PRESET_SPELLS.filter { it.classes.isEmpty() }.all { it.domainLevels.isNotEmpty() })
     }
+
+    /** Níveis por classe de magias antigas, conferidos no Livro do Jogador brasileiro (e no SRD 3.5). */
+    @Test
+    fun olderSpellsKeepPlayerHandbookClassLevels() {
+        val byName = Dnd35Rules.PRESET_SPELLS.associateBy { it.name }
+        assertEquals(mapOf("Clérigo" to 5, "Druida" to 4), byName.getValue("Coluna de Chamas").classLevels)
+        assertEquals(4, byName.getValue("Coluna de Chamas").level)
+        assertEquals(4, byName.getValue("Dissipar Magia").classLevels["Druida"])
+        assertEquals(5, byName.getValue("Pele Rochosa").classLevels["Druida"])
+        assertEquals(4, byName.getValue("Arma Mágica Maior").classLevels["Clérigo"])
+        assertEquals(5, byName.getValue("Proteção Contra a Morte").classLevels["Druida"])
+        val breakEnchantment = byName.getValue("Cancelar Encantamento")
+        assertFalse("Druida", "Druida" in breakEnchantment.classes)
+        assertEquals(mapOf("Bardo" to 4, "Clérigo" to 5, "Paladino" to 4, "Mago" to 5, "Feiticeiro" to 5), breakEnchantment.classLevels)
+        Dnd35Rules.PRESET_SPELLS.forEach { assertEquals(it.name, it.classLevels.keys, it.classes.toSet()) }
+    }
 }
