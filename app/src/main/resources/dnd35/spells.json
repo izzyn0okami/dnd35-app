@@ -1688,7 +1688,6 @@
     "level": 1,
     "school": "Transmutação",
     "classes": [
-      "Bardo",
       "Druida",
       "Ranger",
       "Mago",
@@ -1702,7 +1701,6 @@
     "spellResistance": true,
     "description": "Concede bônus de melhoria de +10 em testes de Saltar, aumentado em +1 por nível de conjurador até o máximo de +20.",
     "classLevels": {
-      "Bardo": 1,
       "Druida": 1,
       "Ranger": 1,
       "Mago": 1,
@@ -1823,7 +1821,8 @@
     "school": "Adivinhação",
     "classes": [
       "Druida",
-      "Ranger"
+      "Ranger",
+      "Bardo"
     ],
     "castTime": "1 ação padrão",
     "components": "V, G",
@@ -1834,7 +1833,8 @@
     "description": "Permite comunicação verbal com animais; não os torna mais amigáveis nem garante respostas cooperativas.",
     "classLevels": {
       "Druida": 1,
-      "Ranger": 1
+      "Ranger": 1,
+      "Bardo": 3
     },
     "domainLevels": {}
   },
@@ -2143,7 +2143,6 @@
     "level": 1,
     "school": "Abjuração",
     "classes": [
-      "Bardo",
       "Clérigo",
       "Druida",
       "Paladino",
@@ -2159,7 +2158,6 @@
     "spellResistance": false,
     "description": "Protege uma criatura contra temperaturas ambientais extremas, sem protegê-la de dano de fogo ou frio.",
     "classLevels": {
-      "Bardo": 1,
       "Clérigo": 1,
       "Druida": 1,
       "Paladino": 1,
@@ -3051,7 +3049,7 @@
     "description": "Cura 4d8 + 1 ponto de vida por nível de conjurador (máx +20).",
     "classLevels": {
       "Clérigo": 4,
-      "Druida": 4,
+      "Druida": 5,
       "Bardo": 4
     },
     "domainLevels": {
@@ -3418,7 +3416,6 @@
     "level": 1,
     "school": "Transmutação",
     "classes": [
-      "Bardo",
       "Mago",
       "Feiticeiro"
     ],
@@ -3430,7 +3427,6 @@
     "spellResistance": true,
     "description": "Reduz uma criatura humanoide voluntária ou uma criatura que falhe no teste de resistência, diminuindo seu tamanho e sua força física.",
     "classLevels": {
-      "Bardo": 1,
       "Mago": 1,
       "Feiticeiro": 1
     },
@@ -4169,7 +4165,7 @@
     "spellResistance": true,
     "description": "O alvo adquire a habilidade de enxergar a até 18 m, inclusive em completa escuridão. A visão é em preto e branco e não permite enxergar sob escuridão mágica. Componente material: um pedaço de cenoura seca ou uma ágata.",
     "classLevels": {
-      "Ranger": 2,
+      "Ranger": 3,
       "Feiticeiro": 2,
       "Mago": 2
     },
@@ -4328,7 +4324,8 @@
     "classes": [
       "Bardo",
       "Druida",
-      "Ranger"
+      "Ranger",
+      "Clérigo"
     ],
     "castTime": "1 ação padrão",
     "components": "V, G, M, FD",
@@ -4340,7 +4337,8 @@
     "classLevels": {
       "Bardo": 4,
       "Druida": 4,
-      "Ranger": 4
+      "Ranger": 4,
+      "Clérigo": 4
     },
     "domainLevels": {
       "Sorte": 4
@@ -4353,7 +4351,6 @@
     "classes": [
       "Bardo",
       "Clérigo",
-      "Druida",
       "Paladino",
       "Mago",
       "Feiticeiro"
@@ -4368,7 +4365,6 @@
     "classLevels": {
       "Bardo": 2,
       "Clérigo": 2,
-      "Druida": 2,
       "Paladino": 2,
       "Mago": 2,
       "Feiticeiro": 2
@@ -4381,9 +4377,7 @@
     "school": "Abjuração",
     "classes": [
       "Clérigo",
-      "Paladino",
-      "Mago",
-      "Feiticeiro"
+      "Paladino"
     ],
     "castTime": "1 ação padrão",
     "components": "V, G, F",
@@ -4394,9 +4388,7 @@
     "description": "Cria um vínculo protetor: o conjurador sofre metade do dano dirigido à criatura protegida, conforme os limites da magia.",
     "classLevels": {
       "Clérigo": 2,
-      "Paladino": 2,
-      "Mago": 2,
-      "Feiticeiro": 2
+      "Paladino": 2
     },
     "domainLevels": {
       "Proteção": 2
@@ -4407,7 +4399,6 @@
     "level": 2,
     "school": "Conjuração (Cura)",
     "classes": [
-      "Bardo",
       "Clérigo",
       "Paladino"
     ],
@@ -4419,7 +4410,6 @@
     "spellResistance": true,
     "description": "Liberta uma ou mais criaturas de paralisia ou lentidão.",
     "classLevels": {
-      "Bardo": 2,
       "Clérigo": 2,
       "Paladino": 2
     },
@@ -4430,7 +4420,6 @@
     "level": 2,
     "school": "Encantamento (Compulsão) [Ação Mental]",
     "classes": [
-      "Bardo",
       "Clérigo",
       "Paladino"
     ],
@@ -4442,7 +4431,6 @@
     "spellResistance": true,
     "description": "As criaturas na área não conseguem mentir deliberadamente, embora possam evitar responder ou formular respostas evasivas.",
     "classLevels": {
-      "Bardo": 2,
       "Clérigo": 2,
       "Paladino": 2
     },
@@ -4551,7 +4539,6 @@
     "level": 3,
     "school": "Adivinhação",
     "classes": [
-      "Bardo",
       "Clérigo",
       "Paladino"
     ],
@@ -4563,7 +4550,6 @@
     "spellResistance": true,
     "description": "Permite ao conjurador perceber quando as criaturas observadas mentem deliberadamente.",
     "classLevels": {
-      "Bardo": 3,
       "Clérigo": 4,
       "Paladino": 3
     },
@@ -4577,9 +4563,9 @@
       "Clérigo",
       "Druida",
       "Paladino",
-      "Ranger",
       "Mago",
-      "Feiticeiro"
+      "Feiticeiro",
+      "Bardo"
     ],
     "castTime": "1 ação padrão",
     "components": "V, G",
@@ -4592,9 +4578,9 @@
       "Clérigo": 3,
       "Druida": 3,
       "Paladino": 3,
-      "Ranger": 3,
       "Mago": 3,
-      "Feiticeiro": 3
+      "Feiticeiro": 3,
+      "Bardo": 3
     },
     "domainLevels": {}
   },
@@ -5835,7 +5821,8 @@
     "school": "Conjuração (Cura)",
     "classes": [
       "Clérigo",
-      "Druida"
+      "Druida",
+      "Bardo"
     ],
     "castTime": "1 ação padrão",
     "components": "V, G",
@@ -5846,7 +5833,8 @@
     "description": "Canaliza energia positiva para curar 2d8 pontos de vida +1 ponto por nível de conjurador (máximo +30) em diversas criaturas, com os alvos limitados pela distância entre si conforme a descrição da magia.",
     "classLevels": {
       "Clérigo": 6,
-      "Druida": 7
+      "Druida": 7,
+      "Bardo": 6
     },
     "domainLevels": {}
   },
@@ -6717,15 +6705,17 @@
   },
   {
     "name": "Viagem Planar",
-    "level": 7,
+    "level": 5,
     "school": "Conjuração (Teletransporte)",
     "classes": [
       "Feiticeiro",
-      "Mago"
+      "Mago",
+      "Clérigo"
     ],
     "classLevels": {
       "Feiticeiro": 7,
-      "Mago": 7
+      "Mago": 7,
+      "Clérigo": 5
     },
     "domainLevels": {},
     "castTime": "1 ação padrão",
@@ -6952,15 +6942,17 @@
   },
   {
     "name": "Projetar Imagem",
-    "level": 7,
+    "level": 6,
     "school": "Ilusão (Figura)",
     "classes": [
       "Feiticeiro",
-      "Mago"
+      "Mago",
+      "Bardo"
     ],
     "classLevels": {
       "Feiticeiro": 7,
-      "Mago": 7
+      "Mago": 7,
+      "Bardo": 6
     },
     "domainLevels": {},
     "castTime": "1 ação padrão",
@@ -7934,7 +7926,7 @@
     "description": "Indica a direção de um objeto conhecido ou claramente visualizado, num raio de 120 m + 12 m/nível. Pode procurar um tipo geral de objeto (o mais próximo é localizado) ou um objeto específico, desde que o conjurador o conheça bem. Não localiza criaturas.",
     "classLevels": {
       "Bardo": 2,
-      "Clérigo": 2,
+      "Clérigo": 3,
       "Feiticeiro": 2,
       "Mago": 2
     },

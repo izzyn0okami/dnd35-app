@@ -210,7 +210,7 @@ class PresetSpellCatalogTest {
         assertEquals(setOf("Clérigo"), spells.getValue("Maldição Menor").classes.toSet())
         assertEquals(setOf("Clérigo", "Paladino"), spells.getValue("Abençoar Água").classes.toSet())
         assertEquals("1 minuto", spells.getValue("Abençoar Água").castTime)
-        assertEquals(setOf("Bardo", "Clérigo", "Druida", "Paladino", "Ranger", "Mago", "Feiticeiro"), spells.getValue("Suportar Elementos").classes.toSet())
+        assertEquals(setOf("Clérigo", "Druida", "Paladino", "Ranger", "Mago", "Feiticeiro"), spells.getValue("Suportar Elementos").classes.toSet())
         assertEquals(setOf("Druida", "Ranger"), spells.getValue("Detectar Animais ou Plantas").classes.toSet())
         assertFalse(spells.getValue("Detectar Animais ou Plantas").spellResistance)
         assertEquals(setOf("Druida", "Ranger"), spells.getValue("Invisibilidade Contra Animais").classes.toSet())
@@ -295,7 +295,7 @@ class PresetSpellCatalogTest {
         assertEquals(setOf("Mago", "Feiticeiro"), spells.getValue("Raio do Enfraquecimento").classes.toSet())
         assertTrue(spells.getValue("Raio do Enfraquecimento").spellResistance)
         assertEquals(setOf("Clérigo", "Paladino", "Mago", "Feiticeiro"), spells.getValue("Arma Mágica").classes.toSet())
-        assertEquals(setOf("Bardo", "Druida", "Ranger", "Mago", "Feiticeiro"), spells.getValue("Salto").classes.toSet())
+        assertEquals(setOf("Druida", "Ranger", "Mago", "Feiticeiro"), spells.getValue("Salto").classes.toSet())
         assertEquals(1, spells.getValue("Arma Mágica").classLevels.getValue("Paladino"))
         assertEquals(1, spells.getValue("Salto").classLevels.getValue("Ranger"))
     }
@@ -310,7 +310,7 @@ class PresetSpellCatalogTest {
         assertEquals(setOf("Druida", "Ranger"), spells.getValue("Constrição").classes.toSet())
         assertFalse(spells.getValue("Constrição").spellResistance)
         assertEquals(setOf("Druida", "Ranger"), spells.getValue("Passos sem Pegadas").classes.toSet())
-        assertEquals(setOf("Druida", "Ranger"), spells.getValue("Falar com Animais").classes.toSet())
+        assertEquals(setOf("Bardo", "Druida", "Ranger"), spells.getValue("Falar com Animais").classes.toSet())
         assertEquals(setOf("Druida"), spells.getValue("Produzir Chama").classes.toSet())
         assertEquals(setOf("Mago", "Feiticeiro"), spells.getValue("Raio Colorido").classes.toSet())
         assertTrue(spells.getValue("Raio Colorido").spellResistance)
@@ -372,7 +372,7 @@ class PresetSpellCatalogTest {
         assertFalse(floatingDisk.spellResistance)
 
         val reducePerson = spells.getValue("Reduzir Pessoa")
-        assertEquals(setOf("Bardo", "Mago", "Feiticeiro"), reducePerson.classes.toSet())
+        assertEquals(setOf("Mago", "Feiticeiro"), reducePerson.classes.toSet())
         assertEquals("1 minuto/nível", reducePerson.duration)
         assertTrue(reducePerson.spellResistance)
 
@@ -968,12 +968,12 @@ class PresetSpellCatalogTest {
 
 
     @Test
-    fun darkvisionIsCatalogedAtSecondLevelForRangerAndArcaneCasters() {
+    fun darkvisionIsSecondLevelForArcaneCastersAndThirdForRanger() {
         val spells = Dnd35Rules.PRESET_SPELLS
         val darkvision = spells.single { it.name == "Visão no Escuro" }
         assertEquals(2, darkvision.level)
         assertEquals(
-            mapOf("Ranger" to 2, "Feiticeiro" to 2, "Mago" to 2),
+            mapOf("Ranger" to 3, "Feiticeiro" to 2, "Mago" to 2),
             darkvision.classLevels
         )
         assertEquals("Transmutação", darkvision.school)
@@ -998,7 +998,7 @@ class PresetSpellCatalogTest {
             "Curar Ferimentos Graves" to mapOf("Bardo" to 3, "Clérigo" to 3, "Druida" to 4, "Paladino" to 4, "Ranger" to 4),
             "Dificultar Detecção" to mapOf("Ranger" to 4, "Feiticeiro" to 3, "Mago" to 3),
             "Invocar Aliado da Natureza IV" to mapOf("Druida" to 4, "Ranger" to 4),
-            "Movimentação Livre" to mapOf("Bardo" to 4, "Druida" to 4, "Ranger" to 4)
+            "Movimentação Livre" to mapOf("Bardo" to 4, "Clérigo" to 4, "Druida" to 4, "Ranger" to 4)
         )
         expected.forEach { (name, levels) ->
             val spell = spells.single { it.name == name }
@@ -1957,7 +1957,7 @@ class PresetSpellCatalogTest {
             "Visão" to mapOf("Feiticeiro" to 7, "Mago" to 7),
             "Convocação Instantânea de Drawmij" to mapOf("Feiticeiro" to 7, "Mago" to 7),
             "Evocação de Sombras Maior" to mapOf("Feiticeiro" to 8, "Mago" to 8),
-            "Curar Ferimentos Moderados em Massa" to mapOf("Clérigo" to 6, "Druida" to 7)
+            "Curar Ferimentos Moderados em Massa" to mapOf("Bardo" to 6, "Clérigo" to 6, "Druida" to 7)
         )
         expected.forEach { (name, levels) ->
             val matches = Dnd35Rules.PRESET_SPELLS.filter { it.name == name }
@@ -2509,7 +2509,7 @@ class PresetSpellCatalogTest {
             Expected("Detectar Pensamentos", 2, "Adivinhação [Ação Mental]", mapOf("Bardo" to 2, "Feiticeiro" to 2, "Mago" to 2), mapOf("Conhecimento" to 2), "V, G, F/FD", "18 m", "Concentração, até 1 min/nível (D)", "Vontade anula (veja texto)", false),
             Expected("Drenar Força Vital", 2, "Necromancia [Morte, Mal]", mapOf("Clérigo" to 2), mapOf("Morte" to 2), "V, G", "Toque", "Instantânea/10 minutos por DV alvo (veja texto)", "Vontade anula", true),
             Expected("Esquentar Metal", 2, "Transmutação [Fogo]", mapOf("Druida" to 2), mapOf("Sol" to 2), "V, G, FD", "Curto (7,5 m + 1,5 m/2 níveis)", "7 rodadas", "Vontade anula (objeto)", true),
-            Expected("Localizar Objetos", 2, "Adivinhação", mapOf("Bardo" to 2, "Clérigo" to 2, "Feiticeiro" to 2, "Mago" to 2), mapOf("Viagem" to 2), "V, G, F/FD", "Longo (120 m + 12 m/nível)", "1 minuto/nível", "Nenhum", false),
+            Expected("Localizar Objetos", 2, "Adivinhação", mapOf("Bardo" to 2, "Clérigo" to 3, "Feiticeiro" to 2, "Mago" to 2), mapOf("Viagem" to 2), "V, G, F/FD", "Longo (120 m + 12 m/nível)", "1 minuto/nível", "Nenhum", false),
             Expected("Névoa", 2, "Conjuração (Criação)", mapOf("Druida" to 2, "Feiticeiro" to 2, "Mago" to 2), mapOf("Água" to 2), "V, G", "Médio (30 m + 3 m/nível)", "10 minutos/nível", "Nenhum", false),
             Expected("Profanar", 2, "Evocação [Mal]", mapOf("Clérigo" to 2), mapOf("Mal" to 2), "V, G, M, FD", "Curto (7,5 m + 1,5 m/2 níveis)", "2 horas/nível", "Nenhum", false),
             Expected("Criar Mortos-Vivos Menor", 3, "Necromancia [Mal]", mapOf("Clérigo" to 3, "Feiticeiro" to 4, "Mago" to 4), mapOf("Morte" to 3), "V, G, M", "Toque", "Instantânea", "Nenhum", false),
@@ -2643,5 +2643,22 @@ class PresetSpellCatalogTest {
         assertFalse("Druida", "Druida" in breakEnchantment.classes)
         assertEquals(mapOf("Bardo" to 4, "Clérigo" to 5, "Paladino" to 4, "Mago" to 5, "Feiticeiro" to 5), breakEnchantment.classLevels)
         Dnd35Rules.PRESET_SPELLS.forEach { assertEquals(it.name, it.classLevels.keys, it.classes.toSet()) }
+    }
+
+    /** Conferido contra as listas de magias por classe ("Magias de Clérigo", "de Bardo"...) do Livro do Jogador. */
+    @Test
+    fun classListsMatchPlayerHandbookSpellListsForReviewedSpells() {
+        val byName = Dnd35Rules.PRESET_SPELLS.associateBy { it.name }
+        assertEquals(5, byName.getValue("Curar Ferimentos Críticos").classLevels["Druida"])
+        assertEquals(3, byName.getValue("Localizar Objetos").classLevels["Clérigo"])
+        assertEquals(3, byName.getValue("Falar com Animais").classLevels["Bardo"])
+        assertEquals(setOf("Bardo", "Clérigo", "Druida", "Paladino", "Mago", "Feiticeiro"), byName.getValue("Luz do Dia").classes.toSet())
+        assertEquals(6, byName.getValue("Projetar Imagem").classLevels["Bardo"])
+        assertEquals(5, byName.getValue("Viagem Planar").classLevels["Clérigo"])
+        assertEquals(setOf("Clérigo", "Paladino"), byName.getValue("Proteger Outro").classes.toSet())
+        assertEquals(setOf("Clérigo", "Paladino"), byName.getValue("Remover Paralisia").classes.toSet())
+        assertEquals(setOf("Clérigo", "Paladino"), byName.getValue("Zona da Verdade").classes.toSet())
+        assertEquals(mapOf("Clérigo" to 4, "Paladino" to 3), byName.getValue("Discernir Mentiras").classLevels)
+        assertFalse("Druida" in byName.getValue("Esplendor da Águia").classes)
     }
 }
