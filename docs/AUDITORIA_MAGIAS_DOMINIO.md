@@ -39,3 +39,14 @@ Coluna de Chamas (Druida 4), Dissipar Magia (Druida 4), Pele Rochosa (Druida 5),
 (Clérigo 4), Proteção Contra a Morte (+Druida 5) e Cancelar Encantamento (sem Druida; Paladino 4 pelo SRD,
 pois o texto do PDF extraído traz 5). Uma auditoria completa de `classLevels` por classe, verbete a verbete,
 continua pendente: a extração automática do PDF é ruidosa demais para corrigir tudo em massa.
+
+## Auditoria de classLevels pelas listas de classe
+Comparação do catálogo com as listas "Magias de <classe>" do Livro do Jogador (extraídas do PDF). Corrigidos:
+Curar Ferimentos Críticos (Druida 5), Localizar Objetos (Clérigo 3), Visão no Escuro (Ranger 3), Falar com Animais
+(+Bardo 3), Luz do Dia (+Bardo 3, sem Ranger), Projetar Imagem (+Bardo 6), Viagem Planar (+Clérigo 5),
+Movimentação Livre (+Clérigo 4), Curar Ferimentos Moderados em Massa (+Bardo 6); removidos classes que o livro não
+lista: Bardo em Suportar Elementos, Salto, Reduzir Pessoa, Remover Paralisia, Zona da Verdade e Discernir Mentiras;
+Druida em Esplendor da Águia; Mago/Feiticeiro em Proteger Outro. As seções de Feiticeiro/Mago dos círculos 4/5 e 7/8
+vêm trocadas na extração do PDF e foram ignoradas na comparação (Ondas da Exaustão e outras do 8º círculo seguem
+como estavam, conferidas na auditoria anterior). Níveis do catálogo (campo `level`) não seguem sempre o menor
+`classLevels`; isso não foi alterado.
