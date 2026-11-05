@@ -8300,5 +8300,644 @@
     "domainLevels": {
       "Caos": 5
     }
+  },
+  {
+    "name": "Adivinhação",
+    "level": 4,
+    "school": "Adivinhação",
+    "classes": [
+      "Clérigo"
+    ],
+    "castTime": "10 minutos",
+    "components": "V, G, M",
+    "range": "Pessoal",
+    "duration": "Instantânea",
+    "savingThrow": "Nenhum",
+    "spellResistance": false,
+    "description": "O conjurador recebe uma resposta curta (uma frase, rima ou presságio) sobre um objetivo, evento ou atividade que ocorrerá em até 1 semana. A chance de acerto é 70% + 1% por nível (máx. 90%); se falhar, o conjurador sabe que a resposta não veio. Componente material: incenso e um objeto sacrificial.",
+    "classLevels": {
+      "Clérigo": 4
+    },
+    "domainLevels": {
+      "Conhecimento": 4
+    }
+  },
+  {
+    "name": "Andar no Ar",
+    "level": 4,
+    "school": "Transmutação [Ar]",
+    "classes": [
+      "Clérigo",
+      "Druida"
+    ],
+    "castTime": "1 ação padrão",
+    "components": "V, G, FD",
+    "range": "Toque",
+    "duration": "10 minutos/nível",
+    "savingThrow": "Nenhum",
+    "spellResistance": true,
+    "description": "Permite à criatura tocada (Imensa ou menor) caminhar no ar como se fosse chão firme, subindo ou descendo até 45° com metade do deslocamento. Ventos fortes podem empurrá-la, e se a magia acabar no ar ela desce devagar em vez de cair.",
+    "classLevels": {
+      "Clérigo": 4,
+      "Druida": 4
+    },
+    "domainLevels": {
+      "Ar": 4
+    }
+  },
+  {
+    "name": "Confusão",
+    "level": 3,
+    "school": "Encantamento (Compulsão) [Ação Mental]",
+    "classes": [
+      "Bardo",
+      "Feiticeiro",
+      "Mago"
+    ],
+    "castTime": "1 ação padrão",
+    "components": "V, G, M/FD",
+    "range": "Médio (30 m + 3 m/nível)",
+    "duration": "1 rodada/nível",
+    "savingThrow": "Vontade anula",
+    "spellResistance": true,
+    "description": "Deixa as criaturas numa explosão de 4,5 m de raio incapazes de controlar as próprias ações. No início do turno de cada uma, uma rolagem de 1d% define se ela ataca o conjurador, age normalmente, balbucia sem agir, foge ou ataca a criatura mais próxima.",
+    "classLevels": {
+      "Bardo": 3,
+      "Feiticeiro": 4,
+      "Mago": 4
+    },
+    "domainLevels": {
+      "Enganação": 4
+    }
+  },
+  {
+    "name": "Controlar Água",
+    "level": 4,
+    "school": "Transmutação [Água]",
+    "classes": [
+      "Clérigo",
+      "Druida",
+      "Feiticeiro",
+      "Mago"
+    ],
+    "castTime": "1 ação padrão",
+    "components": "V, G, M/FD",
+    "range": "Longo (120 m + 12 m/nível)",
+    "duration": "10 minutos/nível (D)",
+    "savingThrow": "Nenhum; veja texto",
+    "spellResistance": false,
+    "description": "Abaixa a água numa área (até 60 cm por nível de conjurador, no mínimo 2,5 cm) ou a ergue em uma elevação. Em águas profundas, abaixar o nível pode criar um redemoinho que arrasta embarcações para baixo; contra criaturas aquáticas, age como lentidão.",
+    "classLevels": {
+      "Clérigo": 4,
+      "Druida": 4,
+      "Feiticeiro": 6,
+      "Mago": 6
+    },
+    "domainLevels": {
+      "Água": 4
+    }
+  },
+  {
+    "name": "Cólera da Ordem",
+    "level": 4,
+    "school": "Evocação [Ordem]",
+    "classes": [],
+    "castTime": "1 ação padrão",
+    "components": "V, G, FD",
+    "range": "Médio (30 m + 3 m/nível)",
+    "duration": "Instantânea (1 rodada); veja texto",
+    "savingThrow": "Vontade parcial; veja texto",
+    "spellResistance": true,
+    "description": "Libera poder da ordem numa explosão que atinge apenas criaturas caóticas e neutras: 1d8 de dano a cada 2 níveis (máx. 5d8) contra as caóticas, que ainda ficam lentas por 1d6 rodadas (Vontade reduz o dano à metade e evita o efeito adicional). Neutras sofrem só metade e não ficam lentas.",
+    "classLevels": {},
+    "domainLevels": {
+      "Ordem": 4
+    }
+  },
+  {
+    "name": "Destruição Sagrada",
+    "level": 4,
+    "school": "Evocação [Bem]",
+    "classes": [],
+    "castTime": "1 ação padrão",
+    "components": "V, G",
+    "range": "Médio (30 m + 3 m/nível)",
+    "duration": "Instantânea (1 rodada); veja texto",
+    "savingThrow": "Vontade parcial; veja texto",
+    "spellResistance": true,
+    "description": "Invoca poder sagrado numa explosão de 6 m de raio que não afeta criaturas boas. Causa 1d8 de dano a cada 2 níveis (máx. 5d8) a criaturas más, que também ficam cegas por 1 rodada; neutras sofrem menos. Um teste de Vontade bem-sucedido reduz o dano e evita a cegueira.",
+    "classLevels": {},
+    "domainLevels": {
+      "Bem": 4
+    }
+  },
+  {
+    "name": "Infligir Ferimentos Críticos",
+    "level": 4,
+    "school": "Necromancia",
+    "classes": [
+      "Clérigo"
+    ],
+    "castTime": "1 ação padrão",
+    "components": "V, G",
+    "range": "Toque",
+    "duration": "Instantânea",
+    "savingThrow": "Vontade metade",
+    "spellResistance": true,
+    "description": "Como infligir ferimentos leves, mas causa 4d8 pontos de dano +1 por nível de conjurador (máx. +20). Cura mortos-vivos em vez de feri-los.",
+    "classLevels": {
+      "Clérigo": 4
+    },
+    "domainLevels": {
+      "Destruição": 4
+    }
+  },
+  {
+    "name": "Martelo do Caos",
+    "level": 4,
+    "school": "Evocação [Caos]",
+    "classes": [],
+    "castTime": "1 ação padrão",
+    "components": "V, G",
+    "range": "Médio (30 m + 3 m/nível)",
+    "duration": "Instantânea (1d6 rodadas; veja texto)",
+    "savingThrow": "Vontade parcial; veja texto",
+    "spellResistance": true,
+    "description": "Libera poder caótico numa explosão de 6 m de raio que afeta apenas criaturas leais e neutras: 1d8 de dano a cada 2 níveis (máx. 5d8) contra as leais, que também ficam lentas por 1d6 rodadas. Um teste de Vontade reduz o dano à metade e evita a lentidão; neutras sofrem metade e não ficam lentas.",
+    "classLevels": {},
+    "domainLevels": {
+      "Caos": 4
+    }
+  },
+  {
+    "name": "Muralha de Fogo",
+    "level": 4,
+    "school": "Evocação [Fogo]",
+    "classes": [
+      "Druida",
+      "Feiticeiro",
+      "Mago"
+    ],
+    "castTime": "1 ação padrão",
+    "components": "V, G, M/FD",
+    "range": "Médio (30 m + 3 m/nível)",
+    "duration": "Concentração + 1 rodada/nível",
+    "savingThrow": "Nenhum",
+    "spellResistance": true,
+    "description": "Cria uma cortina de chamas opacas (placa de até 6 m por nível ou um anel de raio até 1,5 m para cada 2 níveis, com 6 m de altura). Um lado emite calor que causa dano a quem estiver até 6 m; atravessar a muralha causa dano de fogo alto, ainda maior contra mortos-vivos.",
+    "classLevels": {
+      "Druida": 5,
+      "Feiticeiro": 4,
+      "Mago": 4
+    },
+    "domainLevels": {
+      "Fogo": 4
+    }
+  },
+  {
+    "name": "Nuvem Profana",
+    "level": 4,
+    "school": "Evocação [Mal]",
+    "classes": [],
+    "castTime": "1 ação padrão",
+    "components": "V, G",
+    "range": "Médio (30 m + 3 m/nível)",
+    "duration": "Instantânea (1d4 rodadas); veja texto",
+    "savingThrow": "Vontade parcial",
+    "spellResistance": true,
+    "description": "Cria uma nuvem escura de gases venenosos numa dispersão de 6 m de raio que atinge apenas criaturas boas e neutras: 1d8 de dano a cada 2 níveis (máx. 5d8) contra as boas, que também ficam enjoadas por 1d4 rodadas. Um teste de Vontade reduz o dano e evita o efeito adicional.",
+    "classLevels": {},
+    "domainLevels": {
+      "Mal": 4
+    }
+  },
+  {
+    "name": "Pedras Afiadas",
+    "level": 4,
+    "school": "Transmutação [Terra]",
+    "classes": [
+      "Druida"
+    ],
+    "castTime": "1 ação padrão",
+    "components": "V, G, FD",
+    "range": "Médio (30 m + 3 m/nível)",
+    "duration": "1 hora/nível (D)",
+    "savingThrow": "Reflexos parcial",
+    "spellResistance": true,
+    "description": "Molda o chão de pedra ou rochoso numa área de 6 m por nível em pontas afiadas camufladas. Quem anda sobre elas se move à metade do deslocamento e sofre dano; as vítimas podem ainda ter as pernas feridas, reduzindo o deslocamento até serem curadas.",
+    "classLevels": {
+      "Druida": 4
+    },
+    "domainLevels": {
+      "Terra": 4
+    }
+  },
+  {
+    "name": "Poder Divino",
+    "level": 4,
+    "school": "Evocação",
+    "classes": [
+      "Clérigo"
+    ],
+    "castTime": "1 ação padrão",
+    "components": "V, G, FD",
+    "range": "Pessoal",
+    "duration": "1 rodada/nível",
+    "savingThrow": "Nenhum",
+    "spellResistance": false,
+    "description": "O conjurador canaliza o poder da divindade: seu bônus base de ataque passa a ser igual ao nível de personagem, ele recebe +6 de bônus de aprimoramento na Força e ganha pontos de vida temporários iguais ao nível de conjurador.",
+    "classLevels": {
+      "Clérigo": 4
+    },
+    "domainLevels": {
+      "Guerra": 4
+    }
+  },
+  {
+    "name": "Transferência de Poder Divino",
+    "level": 4,
+    "school": "Evocação",
+    "classes": [
+      "Clérigo"
+    ],
+    "castTime": "10 minutos",
+    "components": "V, G, FD",
+    "range": "Toque",
+    "duration": "Permanente até descarregada (D)",
+    "savingThrow": "Vontade anula (inofensiva)",
+    "spellResistance": true,
+    "description": "O conjurador transfere algumas de suas magias preparadas e a capacidade de conjurá-las a uma criatura tocada com Inteligência 5+ e Sabedoria 9+. O número e o círculo das magias dependem dos Dados de Vida do receptor, e o conjurador responde pelo uso delas até serem usadas ou o efeito ser dissipado.",
+    "classLevels": {
+      "Clérigo": 4
+    },
+    "domainLevels": {
+      "Magia": 4
+    }
+  },
+  {
+    "name": "Controlar os Ventos",
+    "level": 5,
+    "school": "Transmutação [Ar]",
+    "classes": [
+      "Druida"
+    ],
+    "castTime": "1 ação padrão",
+    "components": "V, G",
+    "range": "12 m/nível",
+    "duration": "10 minutos/nível",
+    "savingThrow": "Fortitude anula",
+    "spellResistance": false,
+    "description": "Altera a direção e a força dos ventos numa área cilíndrica de 12 m/nível de raio e 12 m de altura, desde brisas até furacões, com efeitos sobre voo, projéteis e navegação. Criaturas no ar podem fazer teste de Fortitude para evitar ser afetadas.",
+    "classLevels": {
+      "Druida": 5
+    },
+    "domainLevels": {
+      "Ar": 5
+    }
+  },
+  {
+    "name": "Curar Ferimentos Leves em Massa",
+    "level": 5,
+    "school": "Conjuração (Cura)",
+    "classes": [
+      "Bardo",
+      "Clérigo",
+      "Druida"
+    ],
+    "castTime": "1 ação padrão",
+    "components": "V, G",
+    "range": "Curto",
+    "duration": "Instantânea",
+    "savingThrow": "Vontade metade (inofensiva) ou Vontade metade (veja texto)",
+    "spellResistance": true,
+    "description": "Canaliza energia positiva para curar 1d8 pontos de vida +1 por nível de conjurador (máx. +25) em até uma criatura por nível, todas a até 9 m entre si. Causa dano em mortos-vivos (Vontade reduz à metade).",
+    "classLevels": {
+      "Bardo": 5,
+      "Clérigo": 5,
+      "Druida": 6
+    },
+    "domainLevels": {
+      "Cura": 5
+    }
+  },
+  {
+    "name": "Força dos Justos",
+    "level": 5,
+    "school": "Transmutação",
+    "classes": [
+      "Clérigo"
+    ],
+    "castTime": "1 ação padrão",
+    "components": "V, G, FD",
+    "range": "Pessoal",
+    "duration": "1 rodada/nível",
+    "savingThrow": "Nenhum",
+    "spellResistance": false,
+    "description": "O conjurador aumenta de tamanho em uma categoria, ganhando bônus de Força e Constituição, armadura natural e redução de dano contra criaturas más, enquanto o poder divino o fortalece.",
+    "classLevels": {
+      "Clérigo": 5
+    },
+    "domainLevels": {
+      "Força": 5
+    }
+  },
+  {
+    "name": "Infligir Ferimentos Leves em Massa",
+    "level": 5,
+    "school": "Necromancia",
+    "classes": [
+      "Clérigo"
+    ],
+    "castTime": "1 ação padrão",
+    "components": "V, G",
+    "range": "Curto (7,5 m + 1,5 m/2 níveis)",
+    "duration": "Instantânea",
+    "savingThrow": "Vontade metade",
+    "spellResistance": true,
+    "description": "A energia negativa se espalha causando 1d8 pontos de dano +1 por nível de conjurador (máx. +25) a até uma criatura por nível, todas a até 9 m entre si. Cura mortos-vivos em vez de feri-los.",
+    "classLevels": {
+      "Clérigo": 5
+    },
+    "domainLevels": {
+      "Destruição": 5
+    }
+  },
+  {
+    "name": "Matar",
+    "level": 5,
+    "school": "Necromancia [Morte]",
+    "classes": [
+      "Clérigo"
+    ],
+    "castTime": "1 ação padrão",
+    "components": "V, G",
+    "range": "Toque",
+    "duration": "Instantânea",
+    "savingThrow": "Fortitude parcial",
+    "spellResistance": true,
+    "description": "Um ataque de toque corporal bem-sucedido mata uma criatura viva, a menos que ela passe num teste de Fortitude, caso em que sofre 3d6 de dano +1 por nível de conjurador.",
+    "classLevels": {
+      "Clérigo": 5
+    },
+    "domainLevels": {
+      "Morte": 5
+    }
+  },
+  {
+    "name": "Muralha de Espinhos",
+    "level": 5,
+    "school": "Conjuração (Criação)",
+    "classes": [
+      "Druida"
+    ],
+    "castTime": "1 ação padrão",
+    "components": "V, G",
+    "range": "Médio (30 m + 3 m/nível)",
+    "duration": "10 minutos/nível (D)",
+    "savingThrow": "Nenhum",
+    "spellResistance": false,
+    "description": "Cria uma barreira de arbustos rígidos e espinhosos (até um cubo de 3 m por nível). Criaturas que a atravessam sofrem dano a cada movimento e ficam presas, e a muralha dificulta a visão e o avanço.",
+    "classLevels": {
+      "Druida": 5
+    },
+    "domainLevels": {
+      "Planta": 5
+    }
+  },
+  {
+    "name": "Muralha de Pedra",
+    "level": 5,
+    "school": "Conjuração (Criação) [Terra]",
+    "classes": [
+      "Clérigo",
+      "Druida",
+      "Feiticeiro",
+      "Mago"
+    ],
+    "castTime": "1 ação padrão",
+    "components": "V, G, M/FD",
+    "range": "Médio (30 m + 3 m/nível)",
+    "duration": "Instantânea",
+    "savingThrow": "Veja texto",
+    "spellResistance": false,
+    "description": "Cria uma muralha de pedra que se une às superfícies de pedra próximas, com 2,5 cm de espessura a cada 4 níveis, geralmente usada para fechar portais, passagens e aberturas contra oponentes. Pode ser moldada para formar pontes, rampas e outros elementos.",
+    "classLevels": {
+      "Clérigo": 5,
+      "Druida": 6,
+      "Feiticeiro": 5,
+      "Mago": 5
+    },
+    "domainLevels": {
+      "Terra": 5
+    }
+  },
+  {
+    "name": "Tempestade Glacial",
+    "level": 4,
+    "school": "Evocação [Frio]",
+    "classes": [
+      "Druida",
+      "Feiticeiro",
+      "Mago"
+    ],
+    "castTime": "1 ação padrão",
+    "components": "V, G, M/FD",
+    "range": "Longo (120 m + 12 m/nível)",
+    "duration": "1 rodada completa",
+    "savingThrow": "Nenhum",
+    "spellResistance": true,
+    "description": "Grandes pedras de granizo caem por uma rodada num cilindro de 6 m de raio e 12 m de altura, causando 3d6 de dano de concussão e 2d6 de frio a quem estiver na área, além de -4 de penalidade em testes de Ouvir e deslocamento reduzido.",
+    "classLevels": {
+      "Druida": 4,
+      "Feiticeiro": 4,
+      "Mago": 4
+    },
+    "domainLevels": {
+      "Água": 5
+    }
+  },
+  {
+    "name": "Visão Falsa",
+    "level": 5,
+    "school": "Ilusão (Sensação)",
+    "classes": [
+      "Bardo",
+      "Feiticeiro",
+      "Mago"
+    ],
+    "castTime": "1 ação padrão",
+    "components": "V, G, M",
+    "range": "Toque",
+    "duration": "1 hora/nível (D)",
+    "savingThrow": "Nenhum",
+    "spellResistance": false,
+    "description": "Qualquer magia de adivinhação (vidência) usada para observar algo dentro da emanação de 12 m de raio recebe uma imagem falsa, definida pelo conjurador ao lançar a magia, como em imagem maior.",
+    "classLevels": {
+      "Bardo": 5,
+      "Feiticeiro": 5,
+      "Mago": 5
+    },
+    "domainLevels": {
+      "Enganação": 5
+    }
+  },
+  {
+    "name": "Animar Objetos",
+    "level": 6,
+    "school": "Transmutação",
+    "classes": [
+      "Bardo",
+      "Clérigo"
+    ],
+    "castTime": "1 ação padrão",
+    "components": "V, G",
+    "range": "Médio (30 m + 3 m/nível)",
+    "duration": "1 rodada/nível",
+    "savingThrow": "Nenhum",
+    "spellResistance": false,
+    "description": "Dá vida a objetos inanimados, até um objeto Pequeno por nível de conjurador, que atacam os inimigos do conjurador conforme as estatísticas de objetos animados do tamanho correspondente.",
+    "classLevels": {
+      "Bardo": 6,
+      "Clérigo": 6
+    },
+    "domainLevels": {
+      "Caos": 6
+    }
+  },
+  {
+    "name": "Cone Glacial",
+    "level": 5,
+    "school": "Evocação [Frio]",
+    "classes": [
+      "Feiticeiro",
+      "Mago"
+    ],
+    "castTime": "1 ação padrão",
+    "components": "V, G, M/FD",
+    "range": "18 m",
+    "duration": "Instantânea",
+    "savingThrow": "Reflexos reduz à metade",
+    "spellResistance": true,
+    "description": "Um cone de frio extremo parte da mão do conjurador, causando 1d6 pontos de dano de frio por nível de conjurador (máx. 15d6) a todas as criaturas na área.",
+    "classLevels": {
+      "Feiticeiro": 5,
+      "Mago": 5
+    },
+    "domainLevels": {
+      "Água": 6
+    }
+  },
+  {
+    "name": "Corrente de Relâmpagos",
+    "level": 6,
+    "school": "Evocação [Eletricidade]",
+    "classes": [
+      "Feiticeiro",
+      "Mago"
+    ],
+    "castTime": "1 ação padrão",
+    "components": "V, G, F",
+    "range": "Longo (120 m + 12 m/nível)",
+    "duration": "Instantânea",
+    "savingThrow": "Reflexos reduz à metade",
+    "spellResistance": true,
+    "description": "Uma descarga elétrica atinge um alvo primário e salta para um alvo secundário por nível (a até 9 m do primário), causando 1d6 de dano por nível (máx. 20d6) ao primário e metade disso aos demais.",
+    "classLevels": {
+      "Feiticeiro": 6,
+      "Mago": 6
+    },
+    "domainLevels": {
+      "Ar": 6
+    }
+  },
+  {
+    "name": "Cúpula de Proteção Contra a Vida",
+    "level": 6,
+    "school": "Abjuração",
+    "classes": [
+      "Clérigo",
+      "Druida"
+    ],
+    "castTime": "1 rodada",
+    "components": "V, G, FD",
+    "range": "3 m",
+    "duration": "10 minutos/nível (D)",
+    "savingThrow": "Nenhum",
+    "spellResistance": true,
+    "description": "Cria um campo de energia móvel em emanação de 3 m de raio que impede a entrada da maior parte dos seres vivos (animais, plantas, humanoides, dragões etc.), mas não constructos, seres planares ou mortos-vivos. Só protege; forçar a barreira contra criaturas bloqueadas a quebra.",
+    "classLevels": {
+      "Clérigo": 6,
+      "Druida": 6
+    },
+    "domainLevels": {
+      "Animais": 6
+    }
+  },
+  {
+    "name": "Doença Plena",
+    "level": 6,
+    "school": "Necromancia",
+    "classes": [
+      "Clérigo"
+    ],
+    "castTime": "1 ação padrão",
+    "components": "V, G",
+    "range": "Toque",
+    "duration": "Instantânea",
+    "savingThrow": "Vontade para reduzir à metade; veja texto",
+    "spellResistance": true,
+    "description": "Um toque canaliza energia negativa que reduz os pontos de vida do alvo a poucos (deixando-o com pelo menos 1 PV), causando até 10 pontos de dano por nível de conjurador; o teste de Vontade reduz o dano à metade. Cura mortos-vivos.",
+    "classLevels": {
+      "Clérigo": 6
+    },
+    "domainLevels": {
+      "Destruição": 6
+    }
+  },
+  {
+    "name": "Imobilizar Monstro",
+    "level": 4,
+    "school": "Encantamento (Compulsão) [Ação Mental]",
+    "classes": [
+      "Bardo",
+      "Feiticeiro",
+      "Mago"
+    ],
+    "castTime": "1 ação padrão",
+    "components": "V, G, M/FD",
+    "range": "Médio (30 m + 3 m/nível)",
+    "duration": "1 rodada/nível (D); veja texto",
+    "savingThrow": "Vontade anula; veja texto",
+    "spellResistance": true,
+    "description": "Paralisa uma criatura viva, que fica indefesa; a cada rodada ela pode repetir o teste de Vontade como ação de rodada completa para se libertar.",
+    "classLevels": {
+      "Bardo": 4,
+      "Feiticeiro": 5,
+      "Mago": 5
+    },
+    "domainLevels": {
+      "Ordem": 6
+    }
+  },
+  {
+    "name": "Repelir Madeira",
+    "level": 6,
+    "school": "Transmutação",
+    "classes": [
+      "Druida"
+    ],
+    "castTime": "1 ação padrão",
+    "components": "V, G",
+    "range": "18 m",
+    "duration": "1 minuto/nível (D)",
+    "savingThrow": "Nenhum",
+    "spellResistance": false,
+    "description": "Ondas de energia partem do conjurador numa linha de 18 m e empurram para longe todos os objetos de madeira soltos no caminho.",
+    "classLevels": {
+      "Druida": 6
+    },
+    "domainLevels": {
+      "Planta": 6
+    }
   }
 ]
