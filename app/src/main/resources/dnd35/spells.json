@@ -2932,7 +2932,7 @@
       "Mago": 3,
       "Feiticeiro": 3,
       "Clérigo": 3,
-      "Druida": 3,
+      "Druida": 4,
       "Bardo": 3,
       "Paladino": 3
     },
@@ -3026,7 +3026,7 @@
     "classLevels": {
       "Mago": 4,
       "Feiticeiro": 4,
-      "Druida": 4
+      "Druida": 5
     },
     "domainLevels": {
       "Força": 6,
@@ -3104,7 +3104,7 @@
   },
   {
     "name": "Coluna de Chamas",
-    "level": 5,
+    "level": 4,
     "school": "Evocação",
     "classes": [
       "Clérigo",
@@ -3119,7 +3119,7 @@
     "description": "Uma coluna celestial de fogo cai do céu, causando 1d6 por nível (metade fogo, metade energia divina).",
     "classLevels": {
       "Clérigo": 5,
-      "Druida": 5
+      "Druida": 4
     },
     "domainLevels": {
       "Guerra": 5,
@@ -4466,7 +4466,7 @@
     "spellResistance": true,
     "description": "Concede à arma bônus de melhoria de +1 para cada quatro níveis de conjurador, até +5.",
     "classLevels": {
-      "Clérigo": 3,
+      "Clérigo": 4,
       "Paladino": 3,
       "Mago": 3,
       "Feiticeiro": 3
@@ -4653,7 +4653,6 @@
     "classes": [
       "Bardo",
       "Clérigo",
-      "Druida",
       "Paladino",
       "Mago",
       "Feiticeiro"
@@ -4668,7 +4667,6 @@
     "classLevels": {
       "Bardo": 4,
       "Clérigo": 5,
-      "Druida": 5,
       "Paladino": 4,
       "Mago": 5,
       "Feiticeiro": 5
@@ -4769,7 +4767,8 @@
     "school": "Abjuração",
     "classes": [
       "Clérigo",
-      "Paladino"
+      "Paladino",
+      "Druida"
     ],
     "castTime": "1 ação padrão",
     "components": "V, G, FD",
@@ -4780,7 +4779,8 @@
     "description": "Concede imunidade a efeitos de energia negativa, incluindo drenar níveis, conforme a magia.",
     "classLevels": {
       "Clérigo": 4,
-      "Paladino": 4
+      "Paladino": 4,
+      "Druida": 5
     },
     "domainLevels": {
       "Morte": 4

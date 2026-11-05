@@ -34,7 +34,8 @@ magias que o espaço de domínio do Clérigo precisa oferecer.
 Nenhuma magia de domínio do Livro do Jogador fica fora do catálogo. Falta apenas implementar o espaço
 de domínio na ficha (dois domínios, uma magia de domínio por círculo).
 
-## Fora do escopo deste documento
-Divergências de `classLevels` em magias que já existiam (ex.: Coluna de Chamas, Dissipar Magia,
-Pele Rochosa, Cancelar Encantamento parecem diferir do livro) precisam de auditoria própria,
-verbete a verbete; a extração automática do PDF é ruidosa demais para corrigi-las em massa.
+## Níveis de classe corrigidos fora do escopo dos domínios
+Coluna de Chamas (Druida 4), Dissipar Magia (Druida 4), Pele Rochosa (Druida 5), Arma Mágica Maior
+(Clérigo 4), Proteção Contra a Morte (+Druida 5) e Cancelar Encantamento (sem Druida; Paladino 4 pelo SRD,
+pois o texto do PDF extraído traz 5). Uma auditoria completa de `classLevels` por classe, verbete a verbete,
+continua pendente: a extração automática do PDF é ruidosa demais para corrigir tudo em massa.
