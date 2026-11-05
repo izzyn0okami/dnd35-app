@@ -43,10 +43,6 @@ jobs:
       - name: Compile Android app
         run: ./gradlew assembleDebug
 
-      - name: Print Room schema (temporário)
-        run: |
-          for f in app/schemas/*/9.json; do echo "@@BEGIN $f"; cat "$f"; echo; echo "@@END"; done
-
       - name: Upload Room schemas
         uses: actions/upload-artifact@v4
         with:
