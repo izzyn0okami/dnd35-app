@@ -51,6 +51,18 @@ object SpellbookRules {
     fun maxCastableCircle(info: CasterClassInfo, abilityScore: Int): Int =
         minOf(highestAccessibleCircle(info), abilityScore - 10, 9)
 
+    /**
+     * Páginas que a magia ocupa no grimório (Livro do Jogador 3.5): 1 página por círculo, com
+     * mínimo de 1 (truques também ocupam uma página).
+     */
+    fun spellbookPages(spellLevel: Int): Int = spellLevel.coerceAtLeast(1)
+
+    /** Custo, em peças de ouro, de copiar uma magia para o grimório: 100 po por página. */
+    fun copyCostGp(spellLevel: Int): Int = 100 * spellbookPages(spellLevel)
+
+    /** Tempo de cópia em horas: 1 hora por página. */
+    fun copyHours(spellLevel: Int): Int = spellbookPages(spellLevel)
+
     enum class Eligibility { OK, CIRCLE_NOT_REACHED, ABILITY_TOO_LOW, NOT_ON_CLASS_LIST, PROHIBITED_SCHOOL }
 
     /** Se a classe pode aprender/preparar uma magia do catálogo e, se não, por quê. */

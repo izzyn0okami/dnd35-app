@@ -218,4 +218,14 @@ class SpellbookRulesTest {
         assertTrue(CharacterJsonAdapters.deserializeSpellHistory("").isEmpty())
         assertTrue(CharacterJsonAdapters.deserializeSpellHistory("isto não é json").isEmpty())
     }
+
+    @Test
+    fun copyingASpellCostsOneHundredGoldAndOneHourPerPage() {
+        assertEquals(100, SpellbookRules.copyCostGp(0)) // truque: 1 página
+        assertEquals(100, SpellbookRules.copyCostGp(1))
+        assertEquals(500, SpellbookRules.copyCostGp(5))
+        assertEquals(900, SpellbookRules.copyCostGp(9))
+        assertEquals(1, SpellbookRules.copyHours(0))
+        assertEquals(3, SpellbookRules.copyHours(3))
+    }
 }
