@@ -299,6 +299,7 @@ object CharacterJsonAdapters {
             obj.put("casterClass", s.casterClass)
             obj.put("inSpellbook", s.inSpellbook)
             obj.put("favorite", s.favorite)
+            if (s.domain.isNotBlank()) obj.put("domain", s.domain)
             array.put(obj)
         }
         return array.toString()
@@ -328,7 +329,8 @@ object CharacterJsonAdapters {
                         description = obj.optString("description", ""),
                         casterClass = obj.optString("casterClass", ""),
                         inSpellbook = obj.optBoolean("inSpellbook", false),
-                        favorite = obj.optBoolean("favorite", false)
+                        favorite = obj.optBoolean("favorite", false),
+                        domain = obj.optString("domain", "")
                     )
                 )
             }
@@ -336,6 +338,20 @@ object CharacterJsonAdapters {
             Log.w("CharacterJsonAdapters", "JSON de magias inválido; dados anteriores ao erro foram preservados", e)
         }
         return list
+    }
+
+    fun serializeDomains(domains: List<String>): String =
+        if (domains.isEmpty()) "" else JSONArray(domains).toString()
+
+    fun deserializeDomains(json: String?): List<String> {
+        if (json.isNullOrBlank()) return emptyList()
+        return try {
+            val array = JSONArray(json)
+            (0 until array.length()).map { array.optString(it, "") }.filter { it.isNotBlank() }
+        } catch (e: Exception) {
+            Log.w("CharacterJsonAdapters", "JSON de domínios inválido; ignorado", e)
+            emptyList()
+        }
     }
 
     fun serializeSpellHistory(records: List<SpellCastRecord>): String {
