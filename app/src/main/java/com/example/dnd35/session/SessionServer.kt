@@ -11,6 +11,7 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.channels.Channel
 import java.io.DataInputStream
 import java.io.DataOutputStream
 import java.io.IOException
@@ -78,7 +79,7 @@ class SessionServer(
     private val _privateChatLog = MutableStateFlow<List<PrivateChatEntry>>(emptyList())
     val privateChatLog: StateFlow<List<PrivateChatEntry>> = _privateChatLog
 
-    private class ClientHandle(val id: String, val socket: Socket, val out: DataOutputStream)
+    private class ClientHandle(val id: String, val socket: Socket, val out: DataOutputStream, val outbound: Channel<SessionMessage>)
 
     /** Inicia o servidor em uma porta livre escolhida pelo sistema e retorna essa porta. */
     fun start(): Int {
@@ -91,7 +92,7 @@ class SessionServer(
     /** Encerra a sessão: fecha todas as conexões e para de aceitar novas. */
     fun stop() {
         runCatching { serverSocket?.close() }
-        clients.values.forEach { runCatching { it.socket.close() } }
+        clients.values.forEach { handle -> handle.outbound.close(); runCatching { handle.socket.close() } }
         clients.clear()
         rejoinTokens.clear()
         _roster.value = listOf(dmParticipant)
@@ -131,26 +132,23 @@ class SessionServer(
             val token = if (existingId != null) hello.rejoinToken!! else UUID.randomUUID().toString().also { rejoinTokens[it] = id }
             participantId = id
 
-            val newHandle = ClientHandle(id, socket, output)
+            val newHandle = ClientHandle(id, socket, output, Channel(OUTBOUND_QUEUE_CAPACITY))
             handle = newHandle
-            // Se havia uma conexão antiga pendurada para esse mesmo id (reconexão antes do
-            // servidor perceber que a anterior caiu), fecha-a — o loop de leitura dela vai sair
-            // sozinho na próxima tentativa de ler, sem derrubar esta conexão nova (ver finally).
-            clients.put(id, newHandle)?.let { stale -> runCatching { stale.socket.close() } }
-
-            SessionWire.write(output, SessionMessage.Welcome(id, sessionId, token))
+            clients.put(id, newHandle)?.let { stale -> stale.outbound.close(); runCatching { stale.socket.close() } }
+            scope.launch {
+                try {
+                    for (message in newHandle.outbound) SessionWire.write(newHandle.out, message)
+                } catch (e: Exception) {
+                    CrashLogStore.record("MULTIPLAYER_SERVER", "Falha na fila de saída do participante $id", e)
+                    runCatching { newHandle.socket.close() }
+                }
+            }
+            enqueue(newHandle, SessionMessage.Welcome(id, sessionId, token))
             addParticipant(Participant(id, hello.displayName, ParticipantRole.PLAYER))
             broadcastRoster()
-            // Quem entra (ou reconecta) no meio de um combate já começa vendo o estado atual.
-            _combatState.value?.let { SessionWire.write(output, SessionMessage.CombatUpdate(it)) }
-            // Idem para o baú de loot, se já tiver algo nele.
-            if (_lootChest.value.isNotEmpty()) {
-                SessionWire.write(output, SessionMessage.LootChestUpdate(CharacterJsonAdapters.serializeInventory(_lootChest.value)))
-            }
-            // Idem para a loja de NPC, se já tiver uma aberta.
-            _shop.value?.let {
-                SessionWire.write(output, SessionMessage.ShopUpdate(it.npcName, CharacterJsonAdapters.serializeInventory(it.items)))
-            }
+            _combatState.value?.let { enqueue(newHandle, SessionMessage.CombatUpdate(it)) }
+            if (_lootChest.value.isNotEmpty()) enqueue(newHandle, SessionMessage.LootChestUpdate(CharacterJsonAdapters.serializeInventory(_lootChest.value)))
+            _shop.value?.let { enqueue(newHandle, SessionMessage.ShopUpdate(it.npcName, CharacterJsonAdapters.serializeInventory(it.items))) }
 
             while (true) {
                 val msg = SessionWire.read(input) ?: break
@@ -175,6 +173,7 @@ class SessionServer(
             if (pid != null && h != null && clients.remove(pid, h)) {
                 markDisconnected(pid)
             }
+            h?.outbound?.close()
             runCatching { socket.close() }
         }
     }
@@ -209,13 +208,14 @@ class SessionServer(
     }
 
     private fun broadcast(message: SessionMessage) {
-        clients.values.forEach { handle ->
-            try {
-                SessionWire.write(handle.out, message)
-            } catch (e: IOException) {
-                CrashLogStore.record("MULTIPLAYER_SERVER", "Falha ao transmitir mensagem para ${handle.id}", e)
-                runCatching { handle.socket.close() }
-            }
+        clients.values.forEach { enqueue(it, message) }
+    }
+
+    private fun enqueue(handle: ClientHandle, message: SessionMessage) {
+        if (handle.outbound.trySend(message).isFailure) {
+            CrashLogStore.record("MULTIPLAYER_SERVER", "Fila de saída indisponível ou saturada para ${handle.id}")
+            handle.outbound.close()
+            runCatching { handle.socket.close() }
         }
     }
 
@@ -401,17 +401,11 @@ class SessionServer(
     }
 
     private fun sendTo(participantId: String, message: SessionMessage) {
-        clients[participantId]?.let { handle ->
-            try {
-                SessionWire.write(handle.out, message)
-            } catch (e: IOException) {
-                CrashLogStore.record("MULTIPLAYER_SERVER", "Falha ao enviar mensagem individual para $participantId", e)
-                runCatching { handle.socket.close() }
-            }
-        }
+        clients[participantId]?.let { enqueue(it, message) }
     }
 
     companion object {
         const val DM_PARTICIPANT_ID = "dm"
+        private const val OUTBOUND_QUEUE_CAPACITY = 64
     }
 }
