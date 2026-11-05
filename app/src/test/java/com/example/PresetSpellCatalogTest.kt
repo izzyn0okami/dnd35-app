@@ -2257,7 +2257,7 @@ class PresetSpellCatalogTest {
                 6 to listOf("Despistar"),
                 7 to listOf("Animação Ilusória"),
                 8 to listOf("Metamorfosear Objetos"),
-                9 to listOf("Parar o Tempo (Time Stop)", "Parar o Tempo")
+                9 to listOf("Parar o Tempo")
             ),
             "Fogo" to mapOf(
                 1 to listOf("Mãos Flamejantes"),
