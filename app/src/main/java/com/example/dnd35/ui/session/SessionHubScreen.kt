@@ -1014,14 +1014,14 @@ private fun PlayerJoinContent(viewModel: SessionViewModel, characterViewModel: C
             LaunchedEffect(viewModel) {
                 viewModel.lootGranted.collect { item ->
                     characterViewModel.addInventoryItem(item.copy(id = java.util.UUID.randomUUID().toString()))
-                    lootFeedback = "Você recebeu \"\${item.name}\" do baú de loot!"
+                    lootFeedback = "Você recebeu \"${item.name}\" do baú de loot!"
                 }
             }
             LaunchedEffect(viewModel) {
                 viewModel.shopPurchaseGranted.collect { item ->
                     characterViewModel.addInventoryItem(item.copy(id = java.util.UUID.randomUUID().toString()))
                     characterViewModel.quickCoinAction(-item.costGp)
-                    shopFeedback = "Você comprou \"\${item.name}\" por \${item.costGp} po!"
+                    shopFeedback = "Você comprou \"${item.name}\" por ${item.costGp} po!"
                 }
             }
             LaunchedEffect(viewModel) { viewModel.playerPrivateMessages.collect { text -> receivedDmMessages.add(text) } }
@@ -1056,7 +1056,7 @@ private fun PlayerJoinContent(viewModel: SessionViewModel, characterViewModel: C
                     PlayerPrivateChatSection(receivedMessages = receivedDmMessages, onSend = { text -> viewModel.sendPrivateMessageToDm(text) })
                     if (selectedCharacter != null) {
                         Spacer(modifier = Modifier.height(16.dp))
-                        OutlinedButton(onClick = { selectedCharacter?.let { viewModel.requestCharacterUpdate(it, "Atualização da ficha de \${it.name}") } }) {
+                        OutlinedButton(onClick = { selectedCharacter?.let { viewModel.requestCharacterUpdate(it, "Atualização da ficha de ${it.name}") } }) {
                             Text("Pedir atualização da ficha")
                         }
                     }
@@ -1067,18 +1067,18 @@ private fun PlayerJoinContent(viewModel: SessionViewModel, characterViewModel: C
                     val combat = s.combat
                     if (combat == null) Text("O Mestre ainda não iniciou um combate.", color = MaterialTheme.colorScheme.onSurfaceVariant)
                     else CombatTracker(combat = combat, isDm = false, selfId = s.selfId, onRequestHpChange = { combatantId, delta ->
-                        val summary = if (delta > 0) "Pedido de dano (\${delta} PV) em combate" else "Pedido de cura (\${-delta} PV) em combate"
+                        val summary = if (delta > 0) "Pedido de dano (${delta} PV) em combate" else "Pedido de cura (${-delta} PV) em combate"
                         viewModel.requestCombatHpChange(combatantId, delta, summary)
                     })
                 }
                 SessionAreaTab.RESOURCES -> {
                     LootChestSection(items = s.lootChest, isDm = false, onRequestTake = { item ->
-                        viewModel.requestTakeLoot(item.id, "Pedido de pegar \"\${item.name}\" do baú de loot")
+                        viewModel.requestTakeLoot(item.id, "Pedido de pegar \"${item.name}\" do baú de loot")
                     })
                     s.shop?.let { shop ->
                         Spacer(modifier = Modifier.height(16.dp))
                         PlayerShopSection(shop = shop, onRequestBuy = { item ->
-                            viewModel.requestBuyFromShop(item.id, "Pedido de comprar \"\${item.name}\" (\${item.costGp} po)")
+                            viewModel.requestBuyFromShop(item.id, "Pedido de comprar \"${item.name}\" (${item.costGp} po)")
                         })
                     }
                 }
@@ -1147,7 +1147,7 @@ private fun ParticipantRoster(participants: List<Participant>, characters: Map<S
             Text("Participantes (${participants.size})", fontWeight = FontWeight.Bold)
         }
         Spacer(modifier = Modifier.height(8.dp))
-        LazyColumn(modifier = Modifier.height((participants.size.coerceAtLeast(1) * 56).dp.coerceAtMost(280.dp))) {
+        LazyColumn(modifier = Modifier.height((participants.size.coerceAtLeast(1) * 72).dp.coerceAtMost(360.dp))) {
             items(participants, key = { it.id }) { participant ->
                 val character = characters[participant.id]
                 Card(
