@@ -30,3 +30,36 @@
 - Testar manualmente Mestre e pelo menos um jogador conectado.
 - Confirmar alternância repetida entre ficha e sessão sem desconexão, perda de estado ou perda de sincronização.
 - Verificar rolagem em aparelhos com alturas reduzidas e lista grande de participantes.
+
+
+## 2026-11-05 — Auditoria funcional da área Sessão (entrada e reconexão)
+
+### Escopo verificado
+- Revisados `SessionHubScreen.kt`, `SessionViewModel.kt` e `SessionModels.kt` na branch principal.
+- Verificados os fluxos de seleção de modo, hospedagem, entrada por QR Code, entrada manual e reconexão.
+- Confirmado que não havia PRs abertas no repositório durante esta revisão.
+
+### Constatações confirmadas
+1. **QR Code inválido sem feedback:** o retorno do leitor é passado a `JoinPayload.fromJson()`; quando o conteúdo não corresponde ao formato esperado, o método retorna `null` e a UI não informa ao jogador por que a entrada não ocorreu.
+2. **Validação insuficiente do payload:** `JoinPayload.fromJson()` extrai os campos obrigatórios, mas não valida conteúdo vazio do endereço/sessão nem o intervalo da porta. A validação deve existir no modelo/fluxo de entrada, não apenas na aparência do campo.
+3. **Porta manual sem limite válido:** a tela habilita a ação quando o texto pode ser convertido para inteiro, sem verificar o intervalo TCP válido (1–65535). A validação deve impedir valores fora do intervalo e apresentar mensagem clara.
+4. **Destinatário privado desconectado:** o Mestre constrói a lista de destinatários filtrando apenas `role == PLAYER`; participantes com `connected == false` continuam selecionáveis. A lista de envio deve priorizar/exibir apenas jogadores conectados, mantendo os desconectados visíveis no roster.
+5. **Retorno à seleção de modo:** voltar de Mestre/Jogador altera somente o estado local `mode`; não encerra a sessão. Isso preserva a conexão, conforme decisão aprovada. Porém, a tela de seleção não indica que já existe uma sessão ativa, podendo induzir a iniciar outro fluxo. A solução deve preservar a sessão e deixar explícito o estado ativo, sem chamar `stopHosting()` ou `leaveSession()`.
+
+### Reconexão — comportamento observado
+- O estado desconectado oferece botão **Reconectar** e mantém a opção de entrar novamente manualmente.
+- `SessionViewModel.reconnect()` delega ao cliente existente, que mantém os dados de conexão/token da tentativa anterior.
+- A implementação documenta que reconexão deve recuperar o mesmo identificador de participante, sem duplicar roster/combate. A confirmação completa desse comportamento ainda depende de teste integrado com Mestre e Jogador; não foi declarada como validada apenas pela leitura da UI.
+
+### Decisões para a próxima implementação consolidada
+- Exibir feedback para QR Code inválido ou incompatível.
+- Validar endereço e porta tanto no payload QR quanto na entrada manual.
+- Não permitir selecionar destinatário desconectado para mensagem privada.
+- Ao retornar à seleção de modo, mostrar claramente se há hospedagem/conexão ativa e oferecer retorno à sessão existente, sem recriá-la.
+- Preservar participantes desconectados no roster para permitir reconexão.
+- Acrescentar testes unitários de parsing/validação do payload e testes de UI para feedback e seleção de destinatários.
+
+### Limites desta etapa
+- Nenhum código de produção foi alterado nesta auditoria.
+- Nenhuma regra de D&D 3.5 ou protocolo de rede foi modificada.
+- A validação integrada de reconexão, alternância repetida entre ficha/sessão e estados de falha continua pendente.
