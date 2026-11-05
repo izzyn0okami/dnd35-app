@@ -43,6 +43,7 @@ import com.example.dnd35.model.CalculatedCharacterStats
 import com.example.dnd35.model.CasterClassInfo
 import com.example.dnd35.model.CharacterJsonAdapters
 import com.example.dnd35.model.CharacterSpell
+import com.example.dnd35.model.ClericDomainRules
 import com.example.dnd35.model.Dnd35Rules
 import com.example.dnd35.model.SpellFilters
 import com.example.dnd35.model.SpellbookRules
@@ -129,7 +130,8 @@ internal fun LazyListScope.preparedSection(
         return
     }
 
-    val warnings = SpellbookRules.overLimitWarnings(stats.spells, casters)
+    val warnings = SpellbookRules.overLimitWarnings(stats.spells, casters) +
+        ClericDomainRules.warnings(stats.spells, ClericDomainRules.domainsOf(stats.character))
     if (warnings.isNotEmpty()) {
         item {
             Card(
@@ -228,12 +230,13 @@ internal fun LazyListScope.preparedSection(
                                 style = MaterialTheme.typography.bodyMedium
                             )
                             Text(
-                                "${spell.school} • CD ${SpellbookRules.spellDc(spell.level, info.keyAbilityMod)}",
+                                "${spell.school} • CD ${SpellbookRules.spellDc(spell.level, info.keyAbilityMod)}" +
+                                    if (spell.domain.isNotBlank()) " • Domínio ${spell.domain}" else "",
                                 style = MaterialTheme.typography.labelSmall,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant
                             )
                         }
-                        if (style != SpellbookRules.Style.SPONTANEOUS) {
+                        if (style != SpellbookRules.Style.SPONTANEOUS && spell.domain.isBlank()) {
                             IconButton(
                                 onClick = { viewModel.setSpellPreparedCount(spell.id, spell.preparedCount - 1) },
                                 modifier = Modifier.size(40.dp)

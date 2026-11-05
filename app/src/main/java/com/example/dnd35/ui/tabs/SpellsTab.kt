@@ -237,6 +237,9 @@ fun SpellsTab(
             Spacer(modifier = Modifier.height(12.dp))
         }
 
+        // Domínios do Clérigo (só aparece para quem tem a classe Clérigo)
+        clericDomainSection(viewModel, stats)
+
         // 2. Seções: Preparadas, Conhecidas, Catálogo e Histórico
         item {
             TabRow(selectedTabIndex = selectedSection) {

@@ -28,6 +28,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.dnd35.model.CalculatedCharacterStats
 import com.example.dnd35.model.CharacterSpell
+import com.example.dnd35.model.ClericDomainRules
 import com.example.dnd35.model.Dnd35Rules
 import com.example.dnd35.model.SpellbookRules
 import com.example.dnd35.viewmodel.CharacterViewModel
@@ -109,6 +110,40 @@ fun SpellDetailDialog(
                 if (spell.description.isNotBlank()) {
                     Spacer(Modifier.height(6.dp))
                     Text(spell.description, style = MaterialTheme.typography.bodySmall)
+                }
+
+                // Clérigo: magia de um dos domínios escolhidos pode ocupar o espaço de domínio do círculo.
+                val clericInfo = casters.firstOrNull { it.className.equals(ClericDomainRules.CLERIC, ignoreCase = true) }
+                if (clericInfo != null) {
+                    val topCircle = SpellbookRules.highestAccessibleCircle(clericInfo)
+                    ClericDomainRules.domainsOf(stats.character)
+                        .filter { spell.domainLevels.containsKey(it) }
+                        .forEach { domain ->
+                            val circle = spell.domainLevels.getValue(domain)
+                            val domainEntry = stats.spells.firstOrNull {
+                                it.name.equals(spell.name, ignoreCase = true) &&
+                                    it.domain.equals(domain, ignoreCase = true) && it.prepared
+                            }
+                            Spacer(Modifier.height(6.dp))
+                            if (circle > topCircle) {
+                                Text(
+                                    "Domínio $domain: o Clérigo ainda não acessa magias de ${SpellbookRules.circleLabel(circle)}.",
+                                    style = MaterialTheme.typography.labelSmall,
+                                    color = MaterialTheme.colorScheme.error
+                                )
+                            } else if (domainEntry != null) {
+                                OutlinedButton(
+                                    onClick = { viewModel.clearDomainSpell(domainEntry.id) },
+                                    modifier = Modifier.fillMaxWidth()
+                                ) { Text("Tirar do espaço de domínio ($domain)") }
+                            } else {
+                                Button(
+                                    onClick = { viewModel.prepareDomainSpell(spell, domain) },
+                                    colors = ButtonDefaults.buttonColors(containerColor = DndArcaneBlue),
+                                    modifier = Modifier.fillMaxWidth()
+                                ) { Text("Preparar no espaço de domínio ($domain, ${SpellbookRules.circleLabel(circle)})") }
+                            }
+                        }
                 }
 
                 if (info != null) {
