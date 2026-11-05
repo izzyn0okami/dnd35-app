@@ -185,6 +185,13 @@ fun SpellDetailDialog(
                         when (style) {
                             SpellbookRules.Style.SPELLBOOK -> {
                                 if (entry == null || !SpellbookRules.isInSpellbook(entry)) {
+                                    Text(
+                                        "Copiar para o grimório: ${SpellbookRules.copyCostGp(level)} po e " +
+                                            "${SpellbookRules.copyHours(level)} h (100 po e 1 hora por página; " +
+                                            "magias de nível novo ganhas de graça não custam nada).",
+                                        style = MaterialTheme.typography.labelSmall,
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                                    )
                                     Button(
                                         onClick = { viewModel.learnSpell(newCharacterSpell(), addToSpellbook = true, prepare = false) },
                                         colors = ButtonDefaults.buttonColors(containerColor = DndArcaneBlue),
