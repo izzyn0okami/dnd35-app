@@ -111,7 +111,7 @@ object HostedSessionSnapshotCodec {
         val requestsJson = root.getJSONArray("pendingRequests")
         val requests = (0 until requestsJson.length()).map { requestFromJson(requestsJson.getJSONObject(it)) }
 
-        val lootChest = CharacterJsonAdapters.deserializeInventory(root.getString("lootChest"))
+        val lootChest = decodeInventory(root.getString("lootChest"))
         val shop = if (root.isNull("shop")) null else shopFromJson(root.getJSONObject("shop"))
 
         val chatJson = root.getJSONArray("privateChatLog")
@@ -227,8 +227,16 @@ object HostedSessionSnapshotCodec {
     private fun shopFromJson(json: JSONObject) = ShopState(
         npcCharacterId = json.getLong("npcCharacterId"),
         npcName = json.getString("npcName"),
-        items = CharacterJsonAdapters.deserializeInventory(json.getString("items"))
+        items = decodeInventory(json.getString("items"))
     )
+
+
+    private fun decodeInventory(raw: String): List<CharacterInventoryItem> {
+        val expectedCount = JSONArray(raw).length()
+        val decoded = CharacterJsonAdapters.deserializeInventory(raw)
+        require(decoded.size == expectedCount) { "Inventário incompleto ou inválido no snapshot" }
+        return decoded
+    }
 
     private fun JSONObject.optNullableString(key: String): String? =
         if (!has(key) || isNull(key)) null else getString(key)
