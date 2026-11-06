@@ -14,6 +14,7 @@ import com.example.dnd35.session.SessionServer
 import com.example.dnd35.session.SessionMessage
 import com.example.dnd35.session.SessionWire
 import kotlinx.coroutines.CoroutineStart
+import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
@@ -21,6 +22,7 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.mapNotNull
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withTimeout
+import kotlinx.coroutines.withTimeoutOrNull
 import kotlinx.coroutines.withContext
 import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
@@ -29,7 +31,9 @@ import java.io.DataOutputStream
 import java.net.Socket
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.Executors
+import java.util.concurrent.TimeUnit
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -85,6 +89,79 @@ class SessionServerClientTest {
             throw AssertionError("Era esperado SessionProtocolException.")
         } catch (expected: com.example.dnd35.session.SessionProtocolException) {
             assertTrue(expected.message!!.contains("inválido"))
+        }
+    }
+
+    @Test
+    fun `WELCOME so e enviado depois do checkpoint do participante`() = runBlocking {
+        val checkpointStarted = CountDownLatch(1)
+        val allowCheckpoint = CountDownLatch(1)
+        val server = SessionServer(
+            sessionId = "sess-welcome-durable",
+            hostDisplayName = "Mestre",
+            onSnapshotChanged = {
+                checkpointStarted.countDown()
+                check(allowCheckpoint.await(10, TimeUnit.SECONDS)) {
+                    "O teste não liberou o checkpoint a tempo."
+                }
+            }
+        )
+        val port = server.start()
+        val socket = Socket("127.0.0.1", port).apply { soTimeout = 300 }
+        try {
+            val input = DataInputStream(socket.getInputStream())
+            val output = DataOutputStream(socket.getOutputStream())
+            SessionWire.write(output, SessionMessage.Hello("Legolas"))
+
+            assertTrue("O servidor não iniciou o checkpoint do participante.", checkpointStarted.await(10, TimeUnit.SECONDS))
+            try {
+                input.read()
+                throw AssertionError("WELCOME foi enviado antes da confirmação do checkpoint.")
+            } catch (_: java.net.SocketTimeoutException) {
+                // Nenhum byte de confirmação pode sair enquanto o armazenamento está bloqueado.
+            }
+
+            allowCheckpoint.countDown()
+            val welcome = withContext(Dispatchers.IO) {
+                SessionWire.read(input) as SessionMessage.Welcome
+            }
+            assertEquals("sess-welcome-durable", welcome.sessionId)
+            assertTrue(server.roster.value.any { it.id == welcome.participantId })
+        } finally {
+            allowCheckpoint.countDown()
+            socket.close()
+            server.stop()
+        }
+    }
+
+    @Test
+    fun `mutacao aguarda callback de checkpoint antes de retornar`() {
+        val checkpointStarted = CountDownLatch(1)
+        val allowCheckpoint = CountDownLatch(1)
+        val server = SessionServer(
+            sessionId = "sess-checkpoint-barrier",
+            hostDisplayName = "Mestre",
+            onSnapshotChanged = { snapshot ->
+                assertEquals("Espada longa", snapshot.lootChest.single().name)
+                checkpointStarted.countDown()
+                check(allowCheckpoint.await(10, TimeUnit.SECONDS)) {
+                    "O teste não liberou o checkpoint a tempo."
+                }
+            }
+        )
+        val executor = Executors.newSingleThreadExecutor()
+        try {
+            val item = CharacterInventoryItem(name = "Espada longa", category = "Armas")
+            val mutation = executor.submit { server.addLootItem(item) }
+            assertTrue("A mutação não solicitou checkpoint.", checkpointStarted.await(10, TimeUnit.SECONDS))
+            assertTrue("A mutação retornou antes do checkpoint.", !mutation.isDone)
+            allowCheckpoint.countDown()
+            mutation.get(10, TimeUnit.SECONDS)
+            assertEquals(item, server.lootChest.value.single())
+        } finally {
+            allowCheckpoint.countDown()
+            executor.shutdownNow()
+            server.stop()
         }
     }
 
@@ -611,7 +688,18 @@ class SessionServerClientTest {
 
     @Test
     fun `aprovacao duplicada de compra debita e concede apenas uma vez`() = runBlocking {
-        val server = SessionServer(sessionId = "sess-duplicate-approval", hostDisplayName = "Mestre")
+        val commitEntered = CompletableDeferred<Unit>()
+        val allowCommit = CompletableDeferred<Unit>()
+        val server = SessionServer(
+            sessionId = "sess-duplicate-approval",
+            hostDisplayName = "Mestre",
+            persistCriticalSnapshot = { snapshot ->
+                assertTrue(snapshot.pendingGrants.values.flatten().isNotEmpty())
+                assertTrue(snapshot.shop?.items?.isEmpty() == true)
+                commitEntered.complete(Unit)
+                allowCommit.await()
+            }
+        )
         val port = server.start()
         try {
             val original = CharacterEntity(
@@ -656,6 +744,10 @@ class SessionServerClientTest {
                     async(Dispatchers.Default) { server.approveRequest(request.id) },
                     async(Dispatchers.Default) { server.approveRequest(request.id) }
                 )
+                withTimeout(15_000) { commitEntered.await() }
+                val grantBeforeCommit = withTimeoutOrNull(300) { client.shopPurchases.first() }
+                assertNull(grantBeforeCommit)
+                allowCommit.complete(Unit)
                 approvals.awaitAll()
                 val grant = grantDeferred.await()
 
@@ -672,6 +764,45 @@ class SessionServerClientTest {
             }
         } finally {
             server.stop()
+        }
+    }
+
+
+    @Test
+    fun `jogador reconecta ao host recuperado com novo endereco e mesmo identificador`() = runBlocking {
+        val originalServer = SessionServer(sessionId = "session-host-recovery", hostDisplayName = "Mestre")
+        val originalPort = originalServer.start()
+        val client = SessionClient()
+        var restoredServer: SessionServer? = null
+        try {
+            client.connect("127.0.0.1", originalPort, "Legolas")
+            val firstConnection = withTimeout(15_000) {
+                client.state.first { it is SessionClientState.Connected } as SessionClientState.Connected
+            }
+            withTimeout(15_000) {
+                originalServer.roster.first { roster -> roster.any { it.id == firstConnection.selfId && it.connected } }
+            }
+            val snapshot = originalServer.stopAndCreateSnapshot()
+
+            val recovered = SessionServer(snapshot.sessionId, snapshot.hostDisplayName)
+            restoredServer = recovered
+            recovered.restoreSnapshot(snapshot)
+            val recoveredPort = recovered.start()
+
+            assertTrue(client.reconnectTo("127.0.0.1", recoveredPort, snapshot.sessionId))
+            val secondConnection = withTimeout(15_000) {
+                client.state.first { it is SessionClientState.Connected } as SessionClientState.Connected
+            }
+
+            assertEquals(firstConnection.selfId, secondConnection.selfId)
+            withTimeout(15_000) {
+                recovered.roster.first { roster -> roster.any { it.id == firstConnection.selfId && it.connected } }
+            }
+            assertTrue(!client.reconnectTo("127.0.0.1", recoveredPort, "different-session"))
+        } finally {
+            client.disconnect()
+            originalServer.stop()
+            restoredServer?.stop()
         }
     }
 

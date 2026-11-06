@@ -447,3 +447,75 @@
 - Diferenciar explicitamente os estados de sessão ativa, recuperação pendente/recuperável e encerrada manualmente. O diálogo deve explicar que encerrar desconecta os jogadores e descarta a possibilidade de retomar aquela sessão, caso esse seja o comportamento final definido.
 - Persistência e retomada devem ser implementadas em etapas: primeiro modelo durável e transações atômicas; depois restauração/reconexão; por fim ciclo de vida da hospedagem e diálogo de confirmação, com testes de morte/recriação do processo.
 - A sessão não deve ser considerada encerrada apenas porque o processo morreu; a intenção é preservar o último estado confirmado no armazenamento local do Mestre.
+
+
+## 2026-11-06 — Primeira camada de armazenamento durável da sessão
+
+### Implementação iniciada na branch `feature/durable-session-storage`
+- Criada a entidade Room `HostedSessionEntity`, com registro singleton para a sessão hospedada neste aparelho.
+- O registro separa identificador da sessão, nome do Mestre, estado (`ACTIVE`/`ENDED`), versão do formato do snapshot, conteúdo JSON e instante da última gravação.
+- Criado `HostedSessionDao` com leitura exclusiva de sessão recuperável, leitura do registro atual, substituição do checkpoint, marcação de encerramento manual condicionada ao ID da sessão e limpeza explícita.
+- A entidade não armazena objetos de runtime (sockets, Bitmap, Flow ou corrotinas); esses elementos deverão ser reconstruídos na recuperação.
+- `AppDatabase` foi atualizado da versão 9 para 10, incluindo a entidade e a migração não destrutiva `MIGRATION_9_10`, que cria somente a tabela `hosted_session`. A tabela `characters` e suas fichas não são alteradas.
+
+### Limites desta fatia
+- Esta camada fornece armazenamento, mas ainda não conecta checkpoints às mutações do `SessionServer`; não considerar a recuperação funcional nesta etapa.
+- O formato de snapshot está versionado, mas o codec completo e a captura/restauração de participantes, fichas aprovadas, combate, pedidos, baú, loja, chat, tokens e grants ainda precisam ser implementados.
+- Compras/loot ainda exigem transação durável coordenando saldo, estoque/baú, grant e outbox antes de enviar a concessão; o DAO isolado não resolve essa atomicidade.
+- Ainda não foram executados testes Android/Room nem CI para esta branch. Não mesclar até validar migração 9→10, preservação de fichas existentes e integração transacional.
+
+## 2026-11-06 — Codec versionado e captura/restauração do snapshot
+
+- PR #324: SHA inicial desta etapa `05560913fa3c60000721ae9b8a566779b37d5eb4`; CI anterior concluiu com sucesso para a base Room 9→10.
+- Criado `HostedSessionSnapshot` e `HostedSessionSnapshotCodec`, com envelope `dnd35-hosted-session` e versão explícita 1.
+- Snapshot inclui: ID/nome da sessão, roster, vínculos de ficha, fichas recebidas, combate, pedidos pendentes, baú, loja, chat privado, tokens de reconexão e grants pendentes por participante.
+- A lista persistida de participantes usa serialização própria e preserva `characterId`. Não reutiliza `SessionMessage.Roster`, cujo formato de rede deliberadamente omite o ID local da ficha.
+- Fichas recebidas são codificadas pelo formato de backup existente; o vínculo local de ficha permanece no campo `Participant.characterId`. URIs privadas de retratos não são transportadas pelo formato de backup e não são necessárias para reconstruir a autoridade de sessão.
+- Decodificação rejeita formato ou versão desconhecida e falha diante de ficha, pedido ou grant inválido; não descarta silenciosamente partes críticas do snapshot.
+- `SessionServer.createSnapshot()` captura o estado sob `stateLock`. `restoreSnapshot()` restaura os dados antes de abrir a porta, marca jogadores desconectados e mantém tokens e grants para reconexão/entrega.
+- Testes adicionados para round-trip dos componentes do snapshot, versão futura, preservação do ID de ficha no roster e restauração do estado no servidor.
+- **Limitação deliberada:** ainda não há gravação automática dos snapshots no Room, nem retomada no `SessionViewModel`. As mutações ainda não aguardam commit durável; compra/loot continuam sem garantia transacional após queda do processo. Não anunciar recuperação funcional nem mesclar esta PR como solução completa.
+- Próximas etapas: versionar o schema Room 10 gerado; integrar checkpoints sequenciados ao ciclo de vida do servidor; fazer compra/loot persistirem saldo/estoque/grant/outbox antes do envio e só remover outbox após ACK durável; restaurar o host e gerar QR/endereço/porta novos; implementar confirmação explícita para encerramento manual; validar migração 9→10 e reinício real do processo.
+
+- O schema Room `app/schemas/com.example.dnd35.data.AppDatabase/10.json` foi versionado. Foi comparado com o artefato `room-schemas` produzido pela CI da base Room 10; preserva a entidade `characters` e inclui somente `hosted_session`. A migração 9→10 cria a mesma definição SQL da entidade.
+- O decoder valida também a integridade estrutural das listas de inventário: JSON truncado/inválido não pode virar uma lista vazia silenciosamente.
+
+## 2026-11-06 — Integração dos checkpoints, retomada e barreira transacional
+
+- `SessionServer` passou a emitir snapshots após mutações autoritativas: participantes/conexões, fichas recebidas, combate, pedidos, baú, loja, chat e ACKs da outbox.
+- `SessionViewModel` grava checkpoints na entidade Room singleton por uma fila serial de comandos. A fila preserva a ordem entre checkpoints, encerramento manual e novas sessões.
+- Ao iniciar o ViewModel, procura uma sessão `ACTIVE`, valida a versão e a identidade do snapshot, restaura o domínio antes de abrir o TCP e gera novo QR Code com endereço/porta atuais. Jogadores são apresentados como desconectados e podem reconectar usando os tokens restaurados.
+- Falha de leitura/decodificação não apaga nem encerra o registro salvo; a UI apresenta erro e mantém os dados para diagnóstico/tentativa posterior.
+- Encerramento manual agora exige diálogo de confirmação. A confirmação enfileira `markManuallyEnded`; `onCleared` não marca sessão como encerrada e tenta concluir os checkpoints/encerramentos já enfileirados antes de liberar o ViewModel.
+- Compras e retiradas do baú foram alteradas para montar um snapshot com saldo/estoque/baú atualizado e grant na outbox, aguardar o commit Room e só então transmitir a concessão e a resposta de aprovação. Em falha de persistência, o servidor restaura o snapshot anterior e nega o pedido. A barreira é serializada com a fila de checkpoints, evitando que um snapshot antigo sobrescreva o commit da transação.
+- O ACK continua idempotente: se a remoção da outbox não chegar a ser persistida antes de uma queda, a concessão pode ser reenviada; o cliente deve reconhecer o mesmo `grantId` e não duplicar a aplicação.
+- Teste de integração adicionado para manter a compra bloqueada enquanto o commit não é liberado, verificando que nenhum grant chega antes da persistência.
+- **Ainda pendente:** confirmar que o workflow Android passa para o SHA mais recente; teste real de morte/recriação do processo; teste físico Mestre/Jogador; teste de migração 9→10 sobre base real com fichas; revisão de que todos os fluxos de mutação disparam checkpoint. A retomada automática não deve ser considerada validada até esses testes.
+
+- O cliente do Jogador agora aceita o novo IP/porta do QR recuperado e tenta reconectar com o token já recebido, desde que o ID da sessão seja o mesmo. Foi adicionado teste de integração com dois servidores sequenciais e preservação do mesmo ID de participante.
+- Limitação do lado Jogador: o token de reconexão ainda vive na memória de `SessionClient`; se o processo do Jogador também for encerrado, ele não tem token local persistido e deverá entrar novamente como participante novo. A retomada do processo do Mestre permanece o requisito desta etapa.
+- Decoder e restauração agora recusam referências órfãs (fichas, pedidos, tokens ou outbox sem participante no roster), em vez de descartá-las silenciosamente.
+
+- Aprovações do Mestre agora suprimem checkpoints intermediários durante a mutação composta e emitem um único snapshot após resolver o pedido. Isso evita persistir, por exemplo, dano aplicado com o pedido de PV ainda pendente e reaplicar o dano após recuperação.
+
+- Teste de migração adicionado com banco Room v9 criado de verdade por uma definição legada contendo `CharacterEntity`: insere uma ficha com PV, nível, moedas e inventário, abre a versão 10 usando `MIGRATION_9_10` e verifica a preservação dos dados e a disponibilidade da nova tabela. A execução ainda depende da CI.
+
+- Encerramento manual agora aguarda a confirmação do comando `EndAndWait` na mesma fila serial, depois de checkpoints anteriores. Assim, o método não retorna ao fluxo da UI antes de gravar `ENDED`; falha de gravação é registrada e exibida como erro.
+
+- O encerramento do ViewModel agora captura o snapshot final e fecha o servidor/sockets sob o mesmo `stateLock`; só depois aguarda o commit final e drena a fila. Isso evita uma mutação concorrente entre o checkpoint final e o fechamento do host.
+
+
+## 2026-11-06 — Checkpoints síncronos antes de confirmar alterações da sessão
+
+### Decisão e correção na PR #324
+- O usuário autorizou reforçar a persistência na própria PR #324, sem abrir uma PR paralela e sem mesclar antes da validação.
+- A auditoria identificou que os checkpoints ordinários eram apenas enfileirados. Uma morte abrupta do processo entre a mutação em memória e o commit Room poderia perder combate, participantes, fichas recebidas, pedidos, baú, loja, chat ou ACKs.
+- Os callbacks de alteração do SessionServer agora aguardam o commit Room pela fila serial (SaveAndWait). A mesma barreira é usada tanto na hospedagem nova quanto na restauração.
+- As mensagens de estado que atualizam os clientes (roster, combate, baú e loja) passaram a ser transmitidas depois do checkpoint correspondente.
+- A entrada de participante foi reordenada: o servidor persiste roster e token de reconexão antes de enviar WELCOME. Se o commit falhar, a confirmação não é enviada.
+- Respostas de aprovação/negação de pedidos comuns agora são enviadas após o checkpoint que remove o pedido da fila. Compras e retiradas mantêm a gravação crítica atômica de saldo/estoque/baú + outbox antes da entrega do grant.
+- Testes adicionados em SessionServerClientTest: bloqueiam intencionalmente o checkpoint e verificam que (1) nenhuma mensagem WELCOME sai antes da liberação e (2) a mutação não retorna enquanto o callback de persistência não conclui.
+- A gravação síncrona aumenta a latência das mutações na rede local, pois a confirmação aguarda o Room. Esse custo é intencional para reduzir a janela de perda; deve ser observado na CI e em teste físico.
+- **Validação ainda pendente:** executar CI no SHA atualizado, inspecionar logs se houver falha e revisar o diff completo. Não considerar a etapa concluída nem mesclar antes de CI verde e validação de campo.
+
+- Ajuste adicional: a sessão nova e o estado restaurado agora são gravados com confirmação antes de abrir o ServerSocket. Isso elimina a janela em que o primeiro jogador poderia tentar entrar antes de existir um registro ACTIVE durável e remove os antigos comandos de gravação inicial assíncrona.

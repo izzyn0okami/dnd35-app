@@ -5,6 +5,9 @@ import android.graphics.Bitmap
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.dnd35.backup.CharacterBackup
+import com.example.dnd35.data.AppDatabase
+import com.example.dnd35.data.HostedSessionEntity
+import com.example.dnd35.diagnostics.CrashLogStore
 import com.example.dnd35.model.CharacterEntity
 import com.example.dnd35.model.CharacterInventoryItem
 import com.example.dnd35.session.ActionRequest
@@ -16,12 +19,16 @@ import com.example.dnd35.session.Participant
 import com.example.dnd35.session.PrivateChatEntry
 import com.example.dnd35.session.QrCodeUtil
 import com.example.dnd35.session.RequestKind
+import com.example.dnd35.session.HostedSessionSnapshot
+import com.example.dnd35.session.HostedSessionSnapshotCodec
 import com.example.dnd35.session.SessionClient
 import com.example.dnd35.session.SessionClientState
 import com.example.dnd35.session.SessionServer
 import com.example.dnd35.session.ShopSnapshot
 import com.example.dnd35.session.ShopState
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -83,6 +90,12 @@ private data class DmExtraState(
     val privateChatLog: List<PrivateChatEntry>
 )
 
+private sealed interface HostedSessionPersistenceCommand {
+    data class SaveAndWait(val snapshot: HostedSessionSnapshot, val completion: CompletableDeferred<Unit>) : HostedSessionPersistenceCommand
+    data class EndAndWait(val sessionId: String, val completion: CompletableDeferred<Unit>) : HostedSessionPersistenceCommand
+    data class Flush(val completion: CompletableDeferred<Unit>) : HostedSessionPersistenceCommand
+}
+
 /**
  * ViewModel da sessão de mesa offline: cria (Mestre) ou entra (Jogador) em uma sessão local,
  * sem depender de internet — apenas da rede já compartilhada pelos aparelhos (Wi-Fi local,
@@ -90,7 +103,45 @@ private data class DmExtraState(
  */
 class SessionViewModel(application: Application) : AndroidViewModel(application) {
 
+    private val hostedSessionDao = AppDatabase.getDatabase(application).hostedSessionDao()
+    private val persistenceCommands = Channel<HostedSessionPersistenceCommand>(Channel.UNLIMITED)
     private var server: SessionServer? = null
+    private var manualHostRequested = false
+
+    init {
+        viewModelScope.launch(Dispatchers.IO) {
+            for (command in persistenceCommands) {
+                try {
+                    when (command) {
+                        is HostedSessionPersistenceCommand.SaveAndWait -> {
+                            try {
+                                saveHostedSnapshot(command.snapshot)
+                                command.completion.complete(Unit)
+                            } catch (error: Exception) {
+                                command.completion.completeExceptionally(error)
+                                throw error
+                            }
+                        }
+                        is HostedSessionPersistenceCommand.EndAndWait -> {
+                            try {
+                                hostedSessionDao.markManuallyEnded(command.sessionId)
+                                command.completion.complete(Unit)
+                            } catch (error: Exception) {
+                                command.completion.completeExceptionally(error)
+                                throw error
+                            }
+                        }
+                        is HostedSessionPersistenceCommand.Flush -> {
+                            command.completion.complete(Unit)
+                        }
+                    }
+                } catch (error: Exception) {
+                    CrashLogStore.record("MULTIPLAYER_PERSISTENCE", "Falha ao persistir estado da sessão", error)
+                }
+            }
+        }
+        recoverHostedSession()
+    }
     private var client: SessionClient? = null
     // Mantém o vínculo exato da ficha usada para entrar, mesmo se o jogador trocar de ficha ativa.
     private var linkedPlayerCharacterId: Long? = null
@@ -123,18 +174,127 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
     private val _playerPrivateMessages = MutableSharedFlow<String>(extraBufferCapacity = 8)
     val playerPrivateMessages: SharedFlow<String> = _playerPrivateMessages
 
+    private suspend fun persistManualEndAndWait(sessionId: String) {
+        val completion = CompletableDeferred<Unit>()
+        persistenceCommands.send(HostedSessionPersistenceCommand.EndAndWait(sessionId, completion))
+        completion.await()
+    }
+
+    private suspend fun flushPersistenceQueue() {
+        val completion = CompletableDeferred<Unit>()
+        persistenceCommands.send(HostedSessionPersistenceCommand.Flush(completion))
+        completion.await()
+    }
+
+    private suspend fun persistSnapshotAndWait(snapshot: HostedSessionSnapshot) {
+        val completion = CompletableDeferred<Unit>()
+        persistenceCommands.send(HostedSessionPersistenceCommand.SaveAndWait(snapshot, completion))
+        completion.await()
+    }
+
+    private suspend fun saveHostedSnapshot(snapshot: HostedSessionSnapshot) {
+        hostedSessionDao.saveCheckpoint(
+            HostedSessionEntity(
+                sessionId = snapshot.sessionId,
+                hostDisplayName = snapshot.hostDisplayName,
+                status = HostedSessionEntity.STATUS_ACTIVE,
+                snapshotVersion = HostedSessionSnapshotCodec.VERSION,
+                snapshotJson = HostedSessionSnapshotCodec.encode(snapshot)
+            )
+        )
+    }
+
+    /** Recupera uma sessão cujo processo terminou sem encerramento manual. */
+    private fun recoverHostedSession() {
+        viewModelScope.launch {
+            if (manualHostRequested || server != null) return@launch
+            val stored = withContext(Dispatchers.IO) { hostedSessionDao.getRecoverableSession() } ?: return@launch
+            if (manualHostRequested || server != null) return@launch
+            val snapshot = try {
+                require(stored.snapshotVersion == HostedSessionSnapshotCodec.VERSION) {
+                    "A versão do snapshot salvo não é suportada."
+                }
+                HostedSessionSnapshotCodec.decode(stored.snapshotJson)
+            } catch (error: Exception) {
+                _dmState.value = DmSessionUiState.Error(
+                    "A sessão salva foi encontrada, mas não pôde ser restaurada: " +
+                        (error.message?.takeIf { it.isNotBlank() } ?: error.javaClass.simpleName)
+                )
+                return@launch
+            }
+            if (snapshot.sessionId != stored.sessionId || snapshot.hostDisplayName != stored.hostDisplayName) {
+                _dmState.value = DmSessionUiState.Error("Os dados de identificação da sessão salva não correspondem ao snapshot.")
+                return@launch
+            }
+
+            val restoredServer = SessionServer(snapshot.sessionId, snapshot.hostDisplayName, persistCriticalSnapshot = { critical ->
+                persistSnapshotAndWait(critical)
+            }) { updated ->
+                // Toda mutação autoritativa aguarda o commit Room antes de ser anunciada
+                // aos clientes ou considerada concluída pelo servidor.
+                kotlinx.coroutines.runBlocking(Dispatchers.IO) {
+                    persistSnapshotAndWait(updated)
+                }
+            }
+            try {
+                restoredServer.restoreSnapshot(snapshot)
+                // Persiste o roster restaurado (jogadores desconectados) antes de reabrir a porta.
+                persistSnapshotAndWait(restoredServer.createSnapshot())
+                val (port, ip) = withContext(Dispatchers.IO) {
+                    restoredServer.start() to LocalNetworkUtil.findLocalIpAddress()
+                }
+                if (manualHostRequested || server != null) {
+                    restoredServer.stop()
+                    return@launch
+                }
+                if (ip == null) {
+                    restoredServer.stop()
+                    _dmState.value = DmSessionUiState.Error(
+                        "A sessão foi recuperada, mas não foi possível encontrar o endereço IPv4 deste aparelho. " +
+                            "Ative o Wi-Fi para gerar um novo QR Code."
+                    )
+                    return@launch
+                }
+
+                server = restoredServer
+                val payload = JoinPayload(snapshot.sessionId, snapshot.hostDisplayName, ip, port)
+                val qrContent = payload.toJson()
+                val bitmap = withContext(Dispatchers.Default) { QrCodeUtil.generate(qrContent) }
+                viewModelScope.launchCollectDmState(restoredServer, snapshot.sessionId, bitmap, qrContent)
+            } catch (error: Exception) {
+                restoredServer.stop()
+                if (server === restoredServer) server = null
+                _dmState.value = DmSessionUiState.Error(
+                    "Não foi possível reabrir a sessão salva: " +
+                        (error.message?.takeIf { it.isNotBlank() } ?: error.javaClass.simpleName)
+                )
+            }
+        }
+    }
+
     /** Mestre: cria e hospeda uma nova sessão, exibindo o QR Code para os jogadores escanearem. */
     fun hostSession(hostDisplayName: String) {
-        stopHosting()
+        manualHostRequested = true
+        stopHosting(manual = true)
         val sessionId = JoinPayload.newSessionId()
         val name = hostDisplayName.ifBlank { "Mestre" }
-        val newServer = SessionServer(sessionId, name)
+        val newServer = SessionServer(sessionId, name, persistCriticalSnapshot = { critical ->
+            persistSnapshotAndWait(critical)
+        }) { snapshot ->
+            // Checkpoint síncrono: não há janela assíncrona entre uma mutação do servidor
+            // e a confirmação de que seu estado está armazenado no Room.
+            kotlinx.coroutines.runBlocking(Dispatchers.IO) {
+                persistSnapshotAndWait(snapshot)
+            }
+        }
         server = newServer
 
         // Abrir o ServerSocket e consultar a interface de rede são operações de I/O:
         // executá-las fora da thread principal evita outro NetworkOnMainThreadException.
         viewModelScope.launch {
             try {
+                // O registro ACTIVE precisa existir no Room antes de aceitar o primeiro jogador.
+                persistSnapshotAndWait(newServer.createSnapshot())
                 val (port, ip) = withContext(Dispatchers.IO) {
                     newServer.start() to LocalNetworkUtil.findLocalIpAddress()
                 }
@@ -217,7 +377,8 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
 
     /** Mestre: aprova um pedido pendente de jogador, aplicando a mudança correspondente. */
     fun approveRequest(requestId: String) {
-        server?.approveRequest(requestId)
+        val activeServer = server ?: return
+        viewModelScope.launch(Dispatchers.IO) { activeServer.approveRequest(requestId) }
     }
 
     /** Mestre: nega um pedido pendente de jogador (nada é aplicado). */
@@ -256,10 +417,27 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
     }
 
     /** Mestre: encerra a sessão ativa, desconectando todos os jogadores. */
-    fun stopHosting() {
-        server?.stop()
+    fun stopHosting(manual: Boolean = true) {
+        val activeServer = server
+        val activeSessionId = activeServer?.createSnapshot()?.sessionId
+        activeServer?.stop()
         server = null
-        _dmState.value = DmSessionUiState.Idle
+        var endFailed = false
+        if (manual && activeSessionId != null) {
+            runCatching {
+                kotlinx.coroutines.runBlocking(Dispatchers.IO) {
+                    persistManualEndAndWait(activeSessionId)
+                }
+            }.onFailure { error ->
+                endFailed = true
+                CrashLogStore.record("MULTIPLAYER_PERSISTENCE", "Falha ao marcar encerramento manual da sessão", error)
+            }
+        }
+        _dmState.value = if (endFailed) {
+            DmSessionUiState.Error("Não foi possível confirmar o encerramento da sessão no armazenamento local.")
+        } else {
+            DmSessionUiState.Idle
+        }
     }
 
     /** Jogador: entra em uma sessão a partir de um QR Code já decodificado. */
@@ -268,6 +446,11 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
             _playerState.value = PlayerSessionUiState.Disconnected(
                 "O QR Code contém dados inválidos. Solicite ao Mestre um novo código."
             )
+            return
+        }
+        val existingClient = client
+        if (existingClient?.reconnectTo(payload.hostAddress, payload.port, payload.sessionId) == true) {
+            _playerState.value = PlayerSessionUiState.Connecting
             return
         }
         joinSession(payload.hostAddress, payload.port, displayName, character)
@@ -396,8 +579,24 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
     }
 
     override fun onCleared() {
+        val finalSnapshot = server?.stopAndCreateSnapshot()
+        server = null
+        if (finalSnapshot != null) {
+            runCatching {
+                kotlinx.coroutines.runBlocking(Dispatchers.IO) {
+                    persistSnapshotAndWait(finalSnapshot)
+                }
+            }.onFailure { error ->
+                CrashLogStore.record("MULTIPLAYER_PERSISTENCE", "Falha no checkpoint final ao encerrar o ViewModel", error)
+            }
+        }
+        runCatching {
+            kotlinx.coroutines.runBlocking(Dispatchers.IO) { flushPersistenceQueue() }
+        }.onFailure { error ->
+            CrashLogStore.record("MULTIPLAYER_PERSISTENCE", "Falha ao concluir a fila de persistência", error)
+        }
         super.onCleared()
-        stopHosting()
+        persistenceCommands.close()
         leaveSession()
     }
 }

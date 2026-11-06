@@ -11,6 +11,7 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.channels.Channel
 import java.io.DataInputStream
 import java.io.DataOutputStream
@@ -28,7 +29,9 @@ import java.util.concurrent.ConcurrentHashMap
  */
 class SessionServer(
     private val sessionId: String,
-    hostDisplayName: String
+    private val hostDisplayName: String,
+    private val persistCriticalSnapshot: (suspend (HostedSessionSnapshot) -> Unit)? = null,
+    private val onSnapshotChanged: ((HostedSessionSnapshot) -> Unit)? = null
 ) {
     private var serverSocket: ServerSocket? = null
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
@@ -38,6 +41,7 @@ class SessionServer(
     // Serialize compound session mutations: pending requests/grants and combat state.
     // In particular, combat state changes and their broadcasts must share one critical section.
     private val stateLock = Any()
+    private var snapshotBatchDepth = 0
 
     // Token de reconexão (ver SessionMessage.Hello/Welcome) -> id de participante. Permite que um
     // Jogador cuja conexão caiu (Wi-Fi instável, app em segundo plano) volte como o MESMO
@@ -86,6 +90,79 @@ class SessionServer(
 
     private class ClientHandle(val id: String, val socket: Socket, val out: DataOutputStream, val outbound: Channel<SessionMessage>)
 
+
+    /**
+     * Captura um snapshot consistente de todo o estado em memória.
+     */
+    fun createSnapshot(): HostedSessionSnapshot = synchronized(stateLock) {
+        HostedSessionSnapshot(
+            sessionId = sessionId,
+            hostDisplayName = hostDisplayName,
+            roster = _roster.value.toList(),
+            receivedCharacters = _receivedCharacters.value.toMap(),
+            combat = _combatState.value,
+            pendingRequests = _pendingRequests.value.toList(),
+            lootChest = _lootChest.value.toList(),
+            shop = _shop.value,
+            privateChatLog = _privateChatLog.value.toList(),
+            rejoinTokens = rejoinTokens.toMap(),
+            pendingGrants = pendingGrants.mapValues { (_, grants) -> grants.values.toList() }
+        )
+    }
+
+    /**
+     * Restaura o domínio antes de abrir a porta TCP. Conexões antigas não sobrevivem à morte
+     * do processo; jogadores voltam desconectados, mas conservam IDs, fichas, tokens e outbox.
+     */
+    fun restoreSnapshot(snapshot: HostedSessionSnapshot, markPlayersDisconnected: Boolean = true) = synchronized(stateLock) {
+        require(snapshot.sessionId == sessionId) { "O snapshot pertence a outra sessão." }
+        require(snapshot.hostDisplayName == hostDisplayName) { "O nome do Mestre não corresponde ao snapshot." }
+
+        _roster.value = listOf(dmParticipant) + snapshot.roster
+            .filterNot { it.role == ParticipantRole.DM }
+            .map { it.copy(connected = if (markPlayersDisconnected) false else it.connected) }
+        _receivedCharacters.value = snapshot.receivedCharacters.toMap()
+        _combatState.value = snapshot.combat
+        _pendingRequests.value = snapshot.pendingRequests.toList()
+        _lootChest.value = snapshot.lootChest.toList()
+        _shop.value = snapshot.shop
+        _privateChatLog.value = snapshot.privateChatLog.toList()
+
+        val playerIds = _roster.value.filter { it.role == ParticipantRole.PLAYER }.map { it.id }.toSet()
+        require(snapshot.rejoinTokens.values.all { it in playerIds }) {
+            "Snapshot contém token de reconexão sem participante."
+        }
+        require(snapshot.pendingGrants.keys.all { it in playerIds }) {
+            "Snapshot contém outbox sem participante."
+        }
+        rejoinTokens.clear()
+        rejoinTokens.putAll(snapshot.rejoinTokens)
+        pendingGrants.clear()
+        snapshot.pendingGrants.forEach { (participantId, messages) ->
+            val grants = ConcurrentHashMap<String, SessionMessage>()
+            messages.forEach { message ->
+                val grantId = when (message) {
+                    is SessionMessage.LootGranted -> message.grantId
+                    is SessionMessage.ShopPurchaseGranted -> message.grantId
+                    else -> error("Tipo de mensagem inválido no outbox")
+                }
+                grants[grantId] = message
+            }
+            if (grants.isNotEmpty()) pendingGrants[participantId] = grants
+        }
+    }
+
+    private fun persistCriticalSnapshotLocked() {
+        val persist = persistCriticalSnapshot ?: return
+        runBlocking(Dispatchers.IO) { persist(createSnapshot()) }
+    }
+
+    private fun notifySnapshotChanged() {
+        if (snapshotBatchDepth > 0) return
+        val callback = onSnapshotChanged ?: return
+        callback(createSnapshot())
+    }
+
     /** Inicia o servidor em uma porta livre escolhida pelo sistema e retorna essa porta. */
     fun start(): Int {
         val socket = ServerSocket(0)
@@ -95,6 +172,16 @@ class SessionServer(
     }
 
     /** Encerra a sessão: fecha todas as conexões e para de aceitar novas. */
+    /**
+     * Fecha o host e captura o último estado sob o mesmo lock, impedindo mutações concorrentes
+     * entre o snapshot final e o encerramento dos sockets.
+     */
+    fun stopAndCreateSnapshot(): HostedSessionSnapshot = synchronized(stateLock) {
+        val snapshot = createSnapshot()
+        stop()
+        snapshot
+    }
+
     fun stop() {
         runCatching { serverSocket?.close() }
         clients.values.forEach { handle -> handle.outbound.close(); runCatching { handle.socket.close() } }
@@ -151,10 +238,13 @@ class SessionServer(
                     runCatching { newHandle.socket.close() }
                 }
             }
-            enqueue(newHandle, SessionMessage.Welcome(id, sessionId, token))
             val linkedCharacterId = hello.characterId?.takeIf { it > 0L }
                 ?: _roster.value.firstOrNull { it.id == id }?.characterId
-            addParticipant(Participant(id, hello.displayName, ParticipantRole.PLAYER, characterId = linkedCharacterId))
+            addParticipant(Participant(id, hello.displayName, ParticipantRole.PLAYER, characterId = linkedCharacterId)) {
+                // WELCOME só é enviado depois que identidade, token e participante foram
+                // confirmados no Room pelo checkpoint síncrono.
+                enqueue(newHandle, SessionMessage.Welcome(id, sessionId, token))
+            }
             synchronized(stateLock) {
                 // Snapshot inicial e broadcasts de alterações usam o mesmo lock: evita enviar
                 // CombatUpdate/ShopUpdate antigos depois de uma atualização mais recente.
@@ -207,8 +297,10 @@ class SessionServer(
         }
     }
 
-    private fun addParticipant(participant: Participant) = synchronized(stateLock) {
+    private fun addParticipant(participant: Participant, afterPersist: () -> Unit = {}) = synchronized(stateLock) {
         _roster.value = _roster.value.filterNot { it.id == participant.id } + participant
+        notifySnapshotChanged()
+        afterPersist()
         broadcastRoster()
     }
 
@@ -224,6 +316,7 @@ class SessionServer(
         // Keep pending requests while the participant is offline. They remain visible to the
         // DM and can be resolved after reconnection; resource requests must not be approved
         // while their recipient cannot receive the resulting grant.
+        notifySnapshotChanged()
         broadcastRoster()
     }
 
@@ -232,6 +325,7 @@ class SessionServer(
         val parsed = CharacterBackup.parse(characterJson) as? CharacterBackup.ParseResult.Success ?: return false
         val incoming = parsed.characters.firstOrNull()?.entity ?: return false
         _receivedCharacters.value = _receivedCharacters.value + (participantId to incoming)
+        notifySnapshotChanged()
         return true
     }
 
@@ -246,6 +340,7 @@ class SessionServer(
         val grants = pendingGrants[participantId] ?: return@synchronized
         grants.remove(grantId)
         if (grants.isEmpty()) pendingGrants.remove(participantId, grants)
+        notifySnapshotChanged()
     }
 
     private fun broadcastRoster() {
@@ -270,6 +365,7 @@ class SessionServer(
     fun startCombat(combatants: List<Combatant>) = synchronized(stateLock) {
         val state = CombatState.start(combatants)
         _combatState.value = state
+        notifySnapshotChanged()
         broadcast(SessionMessage.CombatUpdate(state))
     }
 
@@ -299,6 +395,7 @@ class SessionServer(
                 )
             }
         }
+        notifySnapshotChanged()
         broadcast(SessionMessage.CombatUpdate(updated))
     }
 
@@ -311,6 +408,7 @@ class SessionServer(
     fun endCombat() = synchronized(stateLock) {
         if (_combatState.value == null) return@synchronized
         _combatState.value = null
+        notifySnapshotChanged()
         broadcast(SessionMessage.EndCombat)
     }
 
@@ -318,6 +416,7 @@ class SessionServer(
         val current = _combatState.value ?: return@synchronized
         val updated = transform(current)
         _combatState.value = updated
+        notifySnapshotChanged()
         broadcast(SessionMessage.CombatUpdate(updated))
     }
 
@@ -326,6 +425,7 @@ class SessionServer(
     /** Adiciona um item ao baú compartilhado e sincroniza com todos. */
     fun addLootItem(item: CharacterInventoryItem) = synchronized(stateLock) {
         _lootChest.value = _lootChest.value + item
+        notifySnapshotChanged()
         broadcastLootChest()
     }
 
@@ -333,6 +433,7 @@ class SessionServer(
     fun removeLootItem(itemId: String) = synchronized(stateLock) {
         if (_lootChest.value.none { it.id == itemId }) return@synchronized
         _lootChest.value = _lootChest.value.filterNot { it.id == itemId }
+        notifySnapshotChanged()
         broadcastLootChest()
     }
 
@@ -349,6 +450,7 @@ class SessionServer(
     fun openShop(npcCharacterId: Long, npcName: String, items: List<CharacterInventoryItem>) = synchronized(stateLock) {
         val state = ShopState(npcCharacterId, npcName, items)
         _shop.value = state
+        notifySnapshotChanged()
         broadcastShop()
     }
 
@@ -356,6 +458,7 @@ class SessionServer(
     fun closeShop() = synchronized(stateLock) {
         if (_shop.value == null) return@synchronized
         _shop.value = null
+        notifySnapshotChanged()
         broadcast(SessionMessage.ShopClosed)
     }
 
@@ -370,6 +473,7 @@ class SessionServer(
     private fun receivePrivateMessage(participantId: String, text: String) = synchronized(stateLock) {
         val name = _roster.value.firstOrNull { it.id == participantId }?.displayName ?: "Jogador"
         _privateChatLog.value = _privateChatLog.value + PrivateChatEntry(participantId = participantId, participantName = name, text = text, fromDm = false)
+        notifySnapshotChanged()
     }
 
     /** Mestre manda uma mensagem privada para um Jogador específico — só ele recebe. */
@@ -383,6 +487,7 @@ class SessionServer(
                 text = text,
                 fromDm = true
             )
+            notifySnapshotChanged()
             participantName
         } ?: return
         sendTo(participantId, SessionMessage.PrivateMessage(text))
@@ -411,6 +516,7 @@ class SessionServer(
         )
         synchronized(stateLock) {
             _pendingRequests.value = _pendingRequests.value + request
+            notifySnapshotChanged()
         }
     }
 
@@ -419,33 +525,36 @@ class SessionServer(
         val request = _pendingRequests.value.firstOrNull { it.id == requestId } ?: return@synchronized
         val requester = _roster.value.firstOrNull { it.id == request.requesterId }
         if (requester?.connected != true) return@synchronized
-        when (request.kind) {
+        var resolution: SessionMessage.RequestResolved? = null
+        snapshotBatchDepth++
+        try {
+            when (request.kind) {
             RequestKind.CHARACTER_UPDATE -> {
                 val applied = request.characterJson?.let {
                     receiveCharacterSheet(request.requesterId, it)
                 } == true
                 if (applied) {
-                    resolveRequest(request, approved = true)
+                    resolution = resolveRequest(request, approved = true)
                 } else {
-                    resolveRequest(request, approved = false, reason = "Snapshot de ficha inválido.")
+                    resolution = resolveRequest(request, approved = false, reason = "Snapshot de ficha inválido.")
                 }
             }
             RequestKind.COMBAT_HP_CHANGE -> {
                 val combatantId = request.combatantId
                 val delta = request.hpDelta
                 if (combatantId != null && delta != null) applyDamage(combatantId, delta)
-                resolveRequest(request, approved = true)
+                resolution = resolveRequest(request, approved = true)
             }
             RequestKind.TAKE_LOOT -> {
                 val item = request.lootItemId?.let { id -> _lootChest.value.firstOrNull { it.id == id } }
                 if (item == null) {
-                    // Outro jogador pode ter pego o item antes, ou o Mestre já removeu do baú.
-                    resolveRequest(request, approved = false, reason = "Item não está mais disponível no baú.")
+                    resolution = resolveRequest(request, approved = false, reason = "Item não está mais disponível no baú.")
                 } else {
                     val characterId = _roster.value.firstOrNull { it.id == request.requesterId }?.characterId
                     if (characterId == null || _receivedCharacters.value[request.requesterId] == null) {
-                        resolveRequest(request, approved = false, reason = "Vincule uma ficha válida antes de retirar itens do baú.")
+                        resolution = resolveRequest(request, approved = false, reason = "Vincule uma ficha válida antes de retirar itens do baú.")
                     } else {
+                        val before = createSnapshot()
                         val grantId = UUID.randomUUID().toString()
                         val grantedItem = item.copy(id = grantId)
                         val grant = SessionMessage.LootGranted(
@@ -455,9 +564,18 @@ class SessionServer(
                         )
                         registerPendingGrant(request.requesterId, grantId, grant)
                         _lootChest.value = _lootChest.value.filterNot { it.id == item.id }
-                        broadcastLootChest()
-                        sendTo(request.requesterId, grant)
-                        resolveRequest(request, approved = true)
+                        _pendingRequests.value = _pendingRequests.value.filterNot { it.id == request.id }
+                        try {
+                            // O checkpoint contém baú atualizado e outbox antes de qualquer entrega.
+                            persistCriticalSnapshotLocked()
+                            broadcastLootChest()
+                            sendTo(request.requesterId, grant)
+                            sendTo(request.requesterId, SessionMessage.RequestResolved(request.id, approved = true))
+                        } catch (error: Exception) {
+                            restoreSnapshot(before, markPlayersDisconnected = false)
+                            resolution = resolveRequest(request, approved = false, reason = "Não foi possível salvar a retirada. Tente novamente.")
+                            CrashLogStore.record("MULTIPLAYER_PERSISTENCE", "Falha ao confirmar retirada do baú antes da entrega", error)
+                        }
                     }
                 }
             }
@@ -465,18 +583,18 @@ class SessionServer(
                 val shopState = _shop.value
                 val item = request.shopItemId?.let { id -> shopState?.items?.firstOrNull { it.id == id } }
                 if (shopState == null || item == null || item.quantity <= 0) {
-                    // A loja pode ter fechado, ou outro jogador já comprou esse item antes.
-                    resolveRequest(request, approved = false, reason = "Item não está mais disponível na loja.")
+                    resolution = resolveRequest(request, approved = false, reason = "Item não está mais disponível na loja.")
                 } else {
                     val characterId = _roster.value.firstOrNull { it.id == request.requesterId }?.characterId
                     val character = _receivedCharacters.value[request.requesterId]
                     if (characterId == null || character == null) {
-                        resolveRequest(request, approved = false, reason = "Vincule uma ficha válida antes de comprar.")
+                        resolution = resolveRequest(request, approved = false, reason = "Vincule uma ficha válida antes de comprar.")
                     } else {
                         val purse = SessionCurrency.debit(character, item.costGp)
                         if (purse == null) {
-                            resolveRequest(request, approved = false, reason = "Saldo insuficiente ou preço/saldo inválido.")
+                            resolution = resolveRequest(request, approved = false, reason = "Saldo insuficiente ou preço/saldo inválido.")
                         } else {
+                            val before = createSnapshot()
                             val grantId = UUID.randomUUID().toString()
                             val grantedItem = item.copy(id = grantId, quantity = 1)
                             val grant = SessionMessage.ShopPurchaseGranted(
@@ -499,25 +617,45 @@ class SessionServer(
                                 shopState.items.filterNot { it.id == item.id }
                             }
                             _shop.value = shopState.copy(items = remainingStock)
-                            broadcastShop()
-                            sendTo(request.requesterId, grant)
-                            resolveRequest(request, approved = true)
+                            _pendingRequests.value = _pendingRequests.value.filterNot { it.id == request.id }
+                            try {
+                                // Saldo, estoque e outbox são gravados juntos antes do envio.
+                                persistCriticalSnapshotLocked()
+                                broadcastShop()
+                                sendTo(request.requesterId, grant)
+                                sendTo(request.requesterId, SessionMessage.RequestResolved(request.id, approved = true))
+                            } catch (error: Exception) {
+                                restoreSnapshot(before, markPlayersDisconnected = false)
+                                resolution = resolveRequest(request, approved = false, reason = "Não foi possível salvar a compra. Tente novamente.")
+                                CrashLogStore.record("MULTIPLAYER_PERSISTENCE", "Falha ao confirmar compra antes da entrega", error)
+                            }
                         }
                     }
                 }
             }
+            }
+        } finally {
+            snapshotBatchDepth--
         }
+        notifySnapshotChanged()
+        resolution?.let { sendTo(request.requesterId, it) }
     }
 
     /** Nega um pedido pendente: nada é aplicado, só avisa quem pediu (com motivo opcional). */
     fun denyRequest(requestId: String, reason: String = "") = synchronized(stateLock) {
         val request = _pendingRequests.value.firstOrNull { it.id == requestId } ?: return@synchronized
-        resolveRequest(request, approved = false, reason = reason)
+        val response = resolveRequest(request, approved = false, reason = reason)
+        notifySnapshotChanged()
+        sendTo(request.requesterId, response)
     }
 
-    private fun resolveRequest(request: ActionRequest, approved: Boolean, reason: String = "") {
+    private fun resolveRequest(
+        request: ActionRequest,
+        approved: Boolean,
+        reason: String = ""
+    ): SessionMessage.RequestResolved {
         _pendingRequests.value = _pendingRequests.value.filterNot { it.id == request.id }
-        sendTo(request.requesterId, SessionMessage.RequestResolved(request.id, approved, reason))
+        return SessionMessage.RequestResolved(request.id, approved, reason)
     }
 
     /**
