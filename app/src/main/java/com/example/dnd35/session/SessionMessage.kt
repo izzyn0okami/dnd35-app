@@ -75,6 +75,9 @@ sealed class SessionMessage {
     /** Mestre -> Jogador que pediu: resultado da aprovação (aceito ou negado, com motivo opcional). */
     data class RequestResolved(val requestId: String, val approved: Boolean, val reason: String = "") : SessionMessage()
 
+    /** Jogador confirma que persistiu um grant; o Mestre pode então removê-lo do outbox. */
+    data class GrantAcknowledged(val grantId: String) : SessionMessage()
+
     /**
      * Mestre -> todos: conteúdo atual do baú de loot compartilhado da sessão. `itemsJson` usa o
      * mesmo formato de [com.example.dnd35.model.CharacterJsonAdapters.serializeInventory] (uma
@@ -87,7 +90,7 @@ sealed class SessionMessage {
      * [LootChestUpdate] que acompanha esta mensagem). `itemJson` usa o mesmo formato de
      * inventário, com um único item na lista.
      */
-    data class LootGranted(val itemJson: String, val characterId: Long) : SessionMessage()
+    data class LootGranted(val grantId: String, val itemJson: String, val characterId: Long) : SessionMessage()
 
     /**
      * Mestre -> todos: loja de NPC aberta no momento, com o nome do NPC e seus itens (preço vem
@@ -103,6 +106,7 @@ sealed class SessionMessage {
      * [ShopUpdate] que acompanha esta mensagem). O custo pago é o próprio `costGp` do item.
      */
     data class ShopPurchaseGranted(
+        val grantId: String,
         val itemJson: String,
         val characterId: Long,
         val goldGp: Float,
@@ -174,11 +178,13 @@ sealed class SessionMessage {
                 .put("requestId", requestId)
                 .put("approved", approved)
                 .put("reason", reason)
+            is GrantAcknowledged -> obj.put("type", TYPE_GRANT_ACKNOWLEDGED).put("grantId", grantId)
             is LootChestUpdate -> obj.put("type", TYPE_LOOT_CHEST_UPDATE).put("itemsJson", itemsJson)
-            is LootGranted -> obj.put("type", TYPE_LOOT_GRANTED).put("itemJson", itemJson).put("characterId", characterId)
+            is LootGranted -> obj.put("type", TYPE_LOOT_GRANTED).put("grantId", grantId).put("itemJson", itemJson).put("characterId", characterId)
             is ShopUpdate -> obj.put("type", TYPE_SHOP_UPDATE).put("npcName", npcName).put("itemsJson", itemsJson)
             is ShopClosed -> obj.put("type", TYPE_SHOP_CLOSED)
             is ShopPurchaseGranted -> obj.put("type", TYPE_SHOP_PURCHASE_GRANTED)
+                .put("grantId", grantId)
                 .put("itemJson", itemJson)
                 .put("characterId", characterId)
                 .put("goldGp", goldGp)
@@ -200,6 +206,7 @@ sealed class SessionMessage {
         const val TYPE_END_COMBAT = "END_COMBAT"
         const val TYPE_ACTION_REQUESTED = "ACTION_REQUESTED"
         const val TYPE_REQUEST_RESOLVED = "REQUEST_RESOLVED"
+        const val TYPE_GRANT_ACKNOWLEDGED = "GRANT_ACKNOWLEDGED"
         const val TYPE_LOOT_CHEST_UPDATE = "LOOT_CHEST_UPDATE"
         const val TYPE_LOOT_GRANTED = "LOOT_GRANTED"
         const val TYPE_SHOP_UPDATE = "SHOP_UPDATE"
@@ -289,11 +296,13 @@ sealed class SessionMessage {
                         approved = obj.getBoolean("approved"),
                         reason = obj.optString("reason", "")
                     )
+                    TYPE_GRANT_ACKNOWLEDGED -> GrantAcknowledged(obj.getString("grantId"))
                     TYPE_LOOT_CHEST_UPDATE -> LootChestUpdate(obj.getString("itemsJson"))
-                    TYPE_LOOT_GRANTED -> LootGranted(obj.getString("itemJson"), obj.getLong("characterId"))
+                    TYPE_LOOT_GRANTED -> LootGranted(obj.getString("grantId"), obj.getString("itemJson"), obj.getLong("characterId"))
                     TYPE_SHOP_UPDATE -> ShopUpdate(obj.getString("npcName"), obj.getString("itemsJson"))
                     TYPE_SHOP_CLOSED -> ShopClosed
                     TYPE_SHOP_PURCHASE_GRANTED -> ShopPurchaseGranted(
+                        grantId = obj.getString("grantId"),
                         itemJson = obj.getString("itemJson"),
                         characterId = obj.getLong("characterId"),
                         goldGp = obj.getDouble("goldGp").toFloat(),
