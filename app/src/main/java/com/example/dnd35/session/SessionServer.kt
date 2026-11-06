@@ -525,6 +525,7 @@ class SessionServer(
         val request = _pendingRequests.value.firstOrNull { it.id == requestId } ?: return@synchronized
         val requester = _roster.value.firstOrNull { it.id == request.requesterId }
         if (requester?.connected != true) return@synchronized
+        var resolution: SessionMessage.RequestResolved? = null
         snapshotBatchDepth++
         try {
             when (request.kind) {
@@ -533,25 +534,25 @@ class SessionServer(
                     receiveCharacterSheet(request.requesterId, it)
                 } == true
                 if (applied) {
-                    resolveRequest(request, approved = true)
+                    resolution = resolveRequest(request, approved = true)
                 } else {
-                    resolveRequest(request, approved = false, reason = "Snapshot de ficha inválido.")
+                    resolution = resolveRequest(request, approved = false, reason = "Snapshot de ficha inválido.")
                 }
             }
             RequestKind.COMBAT_HP_CHANGE -> {
                 val combatantId = request.combatantId
                 val delta = request.hpDelta
                 if (combatantId != null && delta != null) applyDamage(combatantId, delta)
-                resolveRequest(request, approved = true)
+                resolution = resolveRequest(request, approved = true)
             }
             RequestKind.TAKE_LOOT -> {
                 val item = request.lootItemId?.let { id -> _lootChest.value.firstOrNull { it.id == id } }
                 if (item == null) {
-                    resolveRequest(request, approved = false, reason = "Item não está mais disponível no baú.")
+                    resolution = resolveRequest(request, approved = false, reason = "Item não está mais disponível no baú.")
                 } else {
                     val characterId = _roster.value.firstOrNull { it.id == request.requesterId }?.characterId
                     if (characterId == null || _receivedCharacters.value[request.requesterId] == null) {
-                        resolveRequest(request, approved = false, reason = "Vincule uma ficha válida antes de retirar itens do baú.")
+                        resolution = resolveRequest(request, approved = false, reason = "Vincule uma ficha válida antes de retirar itens do baú.")
                     } else {
                         val before = createSnapshot()
                         val grantId = UUID.randomUUID().toString()
@@ -572,7 +573,7 @@ class SessionServer(
                             sendTo(request.requesterId, SessionMessage.RequestResolved(request.id, approved = true))
                         } catch (error: Exception) {
                             restoreSnapshot(before, markPlayersDisconnected = false)
-                            resolveRequest(request, approved = false, reason = "Não foi possível salvar a retirada. Tente novamente.")
+                            resolution = resolveRequest(request, approved = false, reason = "Não foi possível salvar a retirada. Tente novamente.")
                             CrashLogStore.record("MULTIPLAYER_PERSISTENCE", "Falha ao confirmar retirada do baú antes da entrega", error)
                         }
                     }
@@ -582,16 +583,16 @@ class SessionServer(
                 val shopState = _shop.value
                 val item = request.shopItemId?.let { id -> shopState?.items?.firstOrNull { it.id == id } }
                 if (shopState == null || item == null || item.quantity <= 0) {
-                    resolveRequest(request, approved = false, reason = "Item não está mais disponível na loja.")
+                    resolution = resolveRequest(request, approved = false, reason = "Item não está mais disponível na loja.")
                 } else {
                     val characterId = _roster.value.firstOrNull { it.id == request.requesterId }?.characterId
                     val character = _receivedCharacters.value[request.requesterId]
                     if (characterId == null || character == null) {
-                        resolveRequest(request, approved = false, reason = "Vincule uma ficha válida antes de comprar.")
+                        resolution = resolveRequest(request, approved = false, reason = "Vincule uma ficha válida antes de comprar.")
                     } else {
                         val purse = SessionCurrency.debit(character, item.costGp)
                         if (purse == null) {
-                            resolveRequest(request, approved = false, reason = "Saldo insuficiente ou preço/saldo inválido.")
+                            resolution = resolveRequest(request, approved = false, reason = "Saldo insuficiente ou preço/saldo inválido.")
                         } else {
                             val before = createSnapshot()
                             val grantId = UUID.randomUUID().toString()
@@ -625,7 +626,7 @@ class SessionServer(
                                 sendTo(request.requesterId, SessionMessage.RequestResolved(request.id, approved = true))
                             } catch (error: Exception) {
                                 restoreSnapshot(before, markPlayersDisconnected = false)
-                                resolveRequest(request, approved = false, reason = "Não foi possível salvar a compra. Tente novamente.")
+                                resolution = resolveRequest(request, approved = false, reason = "Não foi possível salvar a compra. Tente novamente.")
                                 CrashLogStore.record("MULTIPLAYER_PERSISTENCE", "Falha ao confirmar compra antes da entrega", error)
                             }
                         }
@@ -637,18 +638,24 @@ class SessionServer(
             snapshotBatchDepth--
         }
         notifySnapshotChanged()
+        resolution?.let { sendTo(request.requesterId, it) }
     }
 
     /** Nega um pedido pendente: nada é aplicado, só avisa quem pediu (com motivo opcional). */
     fun denyRequest(requestId: String, reason: String = "") = synchronized(stateLock) {
         val request = _pendingRequests.value.firstOrNull { it.id == requestId } ?: return@synchronized
-        resolveRequest(request, approved = false, reason = reason)
+        val response = resolveRequest(request, approved = false, reason = reason)
         notifySnapshotChanged()
+        sendTo(request.requesterId, response)
     }
 
-    private fun resolveRequest(request: ActionRequest, approved: Boolean, reason: String = "") {
+    private fun resolveRequest(
+        request: ActionRequest,
+        approved: Boolean,
+        reason: String = ""
+    ): SessionMessage.RequestResolved {
         _pendingRequests.value = _pendingRequests.value.filterNot { it.id == request.id }
-        sendTo(request.requesterId, SessionMessage.RequestResolved(request.id, approved, reason))
+        return SessionMessage.RequestResolved(request.id, approved, reason)
     }
 
     /**
