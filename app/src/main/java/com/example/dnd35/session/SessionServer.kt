@@ -398,7 +398,7 @@ class SessionServer(
             RequestKind.BUY_FROM_SHOP -> {
                 val shopState = _shop.value
                 val item = request.shopItemId?.let { id -> shopState?.items?.firstOrNull { it.id == id } }
-                if (shopState == null || item == null) {
+                if (shopState == null || item == null || item.quantity <= 0) {
                     // A loja pode ter fechado, ou outro jogador já comprou esse item antes.
                     resolveRequest(request, approved = false, reason = "Item não está mais disponível na loja.")
                 } else {
