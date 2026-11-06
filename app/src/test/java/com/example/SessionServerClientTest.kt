@@ -1397,15 +1397,21 @@ class SessionServerClientTest {
                 }
             }
 
-            clients.forEachIndexed { clientIndex, client ->
-                repeat(messagesPerClient) { messageIndex ->
+            // Mantém concorrência real entre conexões, mas aguarda cada lote antes do próximo.
+            // O método público de envio é fire-and-forget; disparar 240 corrotinas de uma vez
+            // tornava o teste dependente do agendamento do dispatcher, não apenas do lock do servidor.
+            repeat(messagesPerClient) { messageIndex ->
+                clients.forEachIndexed { clientIndex, client ->
                     client.sendPrivateMessage("mensagem-$clientIndex-$messageIndex")
+                }
+                val expectedSoFar = (messageIndex + 1) * clients.size
+                withTimeout(30_000) {
+                    server.privateChatLog.first { it.size == expectedSoFar }
                 }
             }
 
-            val entries = withTimeout(15_000) {
-                server.privateChatLog.first { it.size == expectedMessages }
-            }
+            val entries = server.privateChatLog.value
+            assertEquals(expectedMessages, entries.size)
             assertEquals(expectedMessages, entries.map { it.text }.toSet().size)
         } finally {
             clients.forEach { it.disconnect() }
