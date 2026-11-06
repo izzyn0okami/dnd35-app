@@ -1514,4 +1514,30 @@ class SessionServerClientTest {
         }
     }
 
+
+    @Test
+    fun `adicoes concorrentes ao bau nao perdem itens`() = runBlocking {
+        val server = SessionServer(sessionId = "sess-loot-concurrency", hostDisplayName = "Mestre")
+        try {
+            val items = (1..200).map { index ->
+                CharacterInventoryItem(
+                    id = "loot-$index",
+                    name = "Item $index",
+                    category = "Equipamento",
+                    quantity = 1
+                )
+            }
+
+            items.map { item ->
+                async(Dispatchers.Default) { server.addLootItem(item) }
+            }.awaitAll()
+
+            assertEquals(items.map { it.id }.toSet(), server.lootChest.value.map { it.id }.toSet())
+            assertEquals(items.size, server.lootChest.value.size)
+        } finally {
+            server.stop()
+        }
+    }
+
+
 }
