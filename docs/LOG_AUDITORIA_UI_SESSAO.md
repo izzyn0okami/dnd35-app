@@ -381,3 +381,11 @@
 - Executar `testDebugUnitTest` e `assembleDebug` na CI para o SHA final desta branch.
 - Revisar o teste concorrente e a proteção de eventos obsoletos após a execução.
 - Nenhum merge foi realizado. A limitação de persistência volátil do outbox/estoque/pedidos/grants permanece fora deste escopo.
+
+
+### Ajuste após a primeira CI
+- A primeira execução compilou o código e executou 464 testes; 463 passaram e o teste novo expirou ao aguardar as 240 mensagens.
+- A causa provável foi o desenho do teste: o método público `sendPrivateMessage` é fire-and-forget e o teste disparava 240 corrotinas em rajada, sem aguardar a conclusão de cada lote. Isso tornava a validação excessivamente dependente do agendamento das corrotinas.
+- O teste foi reestruturado para manter seis conexões concorrentes, enviar um lote de seis mensagens por rodada e aguardar o histórico atingir o total esperado antes de iniciar a rodada seguinte. São mantidas 40 rodadas e 240 mensagens distintas. O timeout por lote foi ampliado para 30 segundos.
+- Esta alteração corrige a determinabilidade do teste; não é apresentada como prova de que o timeout anterior demonstrou perda de mensagens.
+- A CI precisa ser executada novamente no novo SHA antes de qualquer merge.
