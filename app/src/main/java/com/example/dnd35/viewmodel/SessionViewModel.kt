@@ -360,6 +360,11 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
         client?.requestAction(RequestKind.BUY_FROM_SHOP, summary, characterJson = snapshot, shopItemId = itemId)
     }
 
+    /** Jogador: confirma que um grant foi salvo na ficha local. */
+    fun acknowledgeResourceGrant(grantId: String) {
+        client?.acknowledgeGrant(grantId)
+    }
+
     /** Jogador: manda uma mensagem privada ao Mestre (não passa por aprovação). */
     fun sendPrivateMessageToDm(text: String) {
         client?.sendPrivateMessage(text)
