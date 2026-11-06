@@ -248,3 +248,10 @@
 - O teste também verifica que a reconexão mantém o mesmo ID de participante e que a mensagem privada enviada depois do ACK funciona como barreira de ordenação TCP para confirmar que o servidor processou a confirmação antes da próxima reconexão.
 - O teste foi adicionado à suíte `SessionServerClientTest` na branch da PR #322. A execução Android build #1860 (run `42150172672`) foi iniciada para validar a nova cobertura; registrar o resultado após conclusão.
 - O teste cobre o replay/ACK enquanto o processo do Mestre permanece ativo. Não cobre persistência após reinício, que continua sendo uma limitação separada do outbox em memória.
+
+
+### Validação de snapshot inválido na aprovação de ficha — PR #322 (2026-11-06)
+- A revisão identificou que `approveRequest(CHARACTER_UPDATE)` chamava `receiveCharacterSheet()`, mas essa função ignorava silenciosamente JSON inválido ou backup sem ficha e não informava se a atualização havia sido aplicada. Mesmo assim, o pedido era respondido como aprovado.
+- `receiveCharacterSheet()` agora retorna sucesso/falha. Na aprovação, o servidor só confirma o pedido quando consegue interpretar e aplicar a ficha; snapshot inválido ou ausente é negado com motivo explícito, sem alterar a última ficha recebida.
+- Acrescentado teste TCP/cliente-servidor que envia snapshot malformado, aprova o pedido no Mestre e verifica resposta negativa, motivo e preservação dos PV anteriores.
+- A correção e o teste foram adicionados à branch existente da PR #322. A CI deve ser conferida novamente no SHA final após o registro deste log.
