@@ -1178,6 +1178,64 @@ class SessionServerClientTest {
     }
 
     @Test
+    fun `reconexao completa ficha quando primeira entrada caiu antes do snapshot`() = runBlocking {
+        val server = SessionServer(sessionId = "sess-23a", hostDisplayName = "Mestre")
+        val port = server.start()
+        var firstSocket: Socket? = null
+        var secondSocket: Socket? = null
+        try {
+            val character = CharacterEntity(
+                id = 2301L,
+                name = "Legolas",
+                characterClass = "Patrulheiro",
+                level = 5
+            )
+            val characterJson = CharacterBackup.toJson(listOf(character)) { null }
+
+            // Primeira conexão recebe o WELCOME, mas cai antes de enviar CharacterSheet.
+            firstSocket = Socket("127.0.0.1", port).apply { soTimeout = 15_000 }
+            val firstInput = DataInputStream(firstSocket.getInputStream())
+            val firstOutput = DataOutputStream(firstSocket.getOutputStream())
+            SessionWire.write(firstOutput, SessionMessage.Hello("Legolas", characterId = character.id))
+            val firstWelcome = withContext(Dispatchers.IO) {
+                SessionWire.read(firstInput) as SessionMessage.Welcome
+            }
+            withTimeout(15_000) {
+                server.roster.first { roster -> roster.any { it.id == firstWelcome.participantId } }
+            }
+            assertEquals(null, server.receivedCharacters.value[firstWelcome.participantId])
+            firstSocket.close()
+            withTimeout(15_000) {
+                server.roster.first { roster -> roster.any { it.id == firstWelcome.participantId && !it.connected } }
+            }
+
+            // A reconexão usa o mesmo token e finalmente envia a primeira ficha.
+            secondSocket = Socket("127.0.0.1", port).apply { soTimeout = 15_000 }
+            val secondInput = DataInputStream(secondSocket.getInputStream())
+            val secondOutput = DataOutputStream(secondSocket.getOutputStream())
+            SessionWire.write(
+                secondOutput,
+                SessionMessage.Hello("Legolas", firstWelcome.rejoinToken, character.id)
+            )
+            val secondWelcome = withContext(Dispatchers.IO) {
+                SessionWire.read(secondInput) as SessionMessage.Welcome
+            }
+            assertEquals(firstWelcome.participantId, secondWelcome.participantId)
+            SessionWire.write(secondOutput, SessionMessage.CharacterSheet(characterJson))
+
+            val received = withTimeout(15_000) {
+                server.receivedCharacters.first { it.containsKey(firstWelcome.participantId) }
+            }
+            assertEquals("Legolas", received[firstWelcome.participantId]?.name)
+            assertEquals(character.id, server.roster.value.first { it.id == firstWelcome.participantId }.characterId)
+        } finally {
+            runCatching { firstSocket?.close() }
+            runCatching { secondSocket?.close() }
+            server.stop()
+        }
+    }
+
+    @Test
     fun `reconnect sem ter conectado antes nao faz nada`() = runBlocking {
         val client = SessionClient()
         assertEquals(false, client.reconnect())
