@@ -439,3 +439,11 @@
 ### Situação
 - Diagnóstico estático concluído; nenhuma implementação de persistência foi feita nesta etapa.
 - A persistência durável é uma frente separada e maior que a correção de concorrência da PR #323. Não iniciar alteração de protocolo, serviço em primeiro plano ou migração do banco sem definir primeiro o requisito de retomada e o ciclo de vida desejado.
+
+
+### Decisão de produto — retomada após falha e encerramento manual (2026-11-06)
+- Requisito confirmado pelo usuário: se o aplicativo/processo do Mestre terminar inesperadamente, a sessão deve poder ser retomada, recuperando o estado persistido necessário e permitindo que os jogadores reconectem.
+- Encerramento manual da sessão deve exigir confirmação em diálogo antes de executar `stopHosting()`. A ação confirmada é intencional e encerra a sessão; não deve deixar uma sessão marcada como recuperável para retomada automática.
+- Diferenciar explicitamente os estados de sessão ativa, recuperação pendente/recuperável e encerrada manualmente. O diálogo deve explicar que encerrar desconecta os jogadores e descarta a possibilidade de retomar aquela sessão, caso esse seja o comportamento final definido.
+- Persistência e retomada devem ser implementadas em etapas: primeiro modelo durável e transações atômicas; depois restauração/reconexão; por fim ciclo de vida da hospedagem e diálogo de confirmação, com testes de morte/recriação do processo.
+- A sessão não deve ser considerada encerrada apenas porque o processo morreu; a intenção é preservar o último estado confirmado no armazenamento local do Mestre.
