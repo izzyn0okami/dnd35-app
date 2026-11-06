@@ -59,8 +59,4 @@ interface HostedSessionDao {
     @Query("DELETE FROM hosted_session WHERE id = 1")
     suspend fun clearStoredSession()
 
-    /** Confirma que uma escrita de checkpoint é uma operação transacional do banco. */
-        suspend fun replaceCheckpoint(session: HostedSessionEntity) {
-        saveCheckpoint(session)
-    }
 }
