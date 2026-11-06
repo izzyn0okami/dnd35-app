@@ -16,6 +16,7 @@ import com.example.dnd35.session.SessionWire
 import kotlinx.coroutines.CoroutineStart
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.mapNotNull
 import kotlinx.coroutines.runBlocking
@@ -462,6 +463,7 @@ class SessionServerClientTest {
         val port = server.start()
         try {
             val original = CharacterEntity(
+                id = 1701L,
                 name = "Legolas",
                 characterClass = "Patrulheiro",
                 level = 5,
@@ -472,7 +474,7 @@ class SessionServerClientTest {
             val originalJson = CharacterBackup.toJson(listOf(original)) { null }
             val client = SessionClient()
             try {
-                client.connect("127.0.0.1", port, "Legolas", originalJson)
+                client.connect("127.0.0.1", port, "Legolas", originalJson, original.id)
                 val connected = withTimeout(15_000) {
                     client.state.first { it is SessionClientState.Connected } as SessionClientState.Connected
                 }
