@@ -508,10 +508,13 @@ class SessionServerClientTest {
                 val grant = grantDeferred.await()
 
                 val stored = server.receivedCharacters.value.getValue(connected.selfId)
-                assertEquals(900f, stored.goldGp)
+                // O servidor normaliza o saldo em platina: 1.000 PO - 100 PO = 90 PP.
+                assertEquals(0f, stored.goldGp)
+                assertEquals(90f, stored.platinumPp)
                 assertTrue(server.shop.value?.items?.isEmpty() == true)
                 assertEquals(request.requesterId, connected.selfId)
                 assertEquals("Poção", grant.item.name)
+                assertEquals(90f, grant.coinPurse?.platinumPp)
             } finally {
                 client.disconnect()
             }
