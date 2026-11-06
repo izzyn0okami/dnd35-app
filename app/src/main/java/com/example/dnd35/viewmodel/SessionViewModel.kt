@@ -349,13 +349,15 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
     }
 
     /** Jogador: pede ao Mestre para pegar um item do baú de loot compartilhado. */
-    fun requestTakeLoot(itemId: String, summary: String) {
-        client?.requestAction(RequestKind.TAKE_LOOT, summary, lootItemId = itemId)
+    fun requestTakeLoot(itemId: String, summary: String, character: CharacterEntity?) {
+        val snapshot = character?.let { CharacterBackup.toJson(listOf(it)) { null } }
+        client?.requestAction(RequestKind.TAKE_LOOT, summary, characterJson = snapshot, lootItemId = itemId)
     }
 
     /** Jogador: pede ao Mestre para comprar um item da loja de NPC aberta no momento. */
-    fun requestBuyFromShop(itemId: String, summary: String) {
-        client?.requestAction(RequestKind.BUY_FROM_SHOP, summary, shopItemId = itemId)
+    fun requestBuyFromShop(itemId: String, summary: String, character: CharacterEntity?) {
+        val snapshot = character?.let { CharacterBackup.toJson(listOf(it)) { null } }
+        client?.requestAction(RequestKind.BUY_FROM_SHOP, summary, characterJson = snapshot, shopItemId = itemId)
     }
 
     /** Jogador: manda uma mensagem privada ao Mestre (não passa por aprovação). */
