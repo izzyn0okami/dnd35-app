@@ -14,6 +14,7 @@ import com.example.dnd35.session.SessionServer
 import com.example.dnd35.session.SessionMessage
 import com.example.dnd35.session.SessionWire
 import kotlinx.coroutines.CoroutineStart
+import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
@@ -21,6 +22,7 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.mapNotNull
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withTimeout
+import kotlinx.coroutines.withTimeoutOrNull
 import kotlinx.coroutines.withContext
 import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
@@ -30,6 +32,7 @@ import java.net.Socket
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.Executors
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -611,7 +614,18 @@ class SessionServerClientTest {
 
     @Test
     fun `aprovacao duplicada de compra debita e concede apenas uma vez`() = runBlocking {
-        val server = SessionServer(sessionId = "sess-duplicate-approval", hostDisplayName = "Mestre")
+        val commitEntered = CompletableDeferred<Unit>()
+        val allowCommit = CompletableDeferred<Unit>()
+        val server = SessionServer(
+            sessionId = "sess-duplicate-approval",
+            hostDisplayName = "Mestre",
+            persistCriticalSnapshot = { snapshot ->
+                assertTrue(snapshot.pendingGrants.values.flatten().isNotEmpty())
+                assertTrue(snapshot.shop?.items?.isEmpty() == true)
+                commitEntered.complete(Unit)
+                allowCommit.await()
+            }
+        )
         val port = server.start()
         try {
             val original = CharacterEntity(
@@ -656,6 +670,10 @@ class SessionServerClientTest {
                     async(Dispatchers.Default) { server.approveRequest(request.id) },
                     async(Dispatchers.Default) { server.approveRequest(request.id) }
                 )
+                withTimeout(15_000) { commitEntered.await() }
+                val grantBeforeCommit = withTimeoutOrNull(300) { client.shopPurchases.first() }
+                assertNull(grantBeforeCommit)
+                allowCommit.complete(Unit)
                 approvals.awaitAll()
                 val grant = grantDeferred.await()
 
