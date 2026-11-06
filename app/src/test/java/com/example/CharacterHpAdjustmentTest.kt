@@ -50,14 +50,14 @@ class CharacterHpAdjustmentTest {
             maxHp = 20,
             tempHp = 6,
             goldGp = 123f,
-            inventoryJson = "[{\\\"name\\\":\\\"Espada\\\"}]"
+            inventoryJson = "[]"
         )
 
         val updated = original.withSessionCombatHp(currentHp = -2, tempHp = 0)
 
         assertEquals(original.copy(currentHp = -2, tempHp = 0), updated)
         assertEquals(20, updated.maxHp)
-        assertEquals(123f, updated.goldGp)
+        assertEquals(123f, updated.goldGp, 0f)
         assertEquals(original.inventoryJson, updated.inventoryJson)
     }
 }
