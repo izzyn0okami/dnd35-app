@@ -35,6 +35,9 @@ class SessionServer(
     private val clients = ConcurrentHashMap<String, ClientHandle>()
     // In-memory outbox: grants remain until the player confirms local persistence.
     private val pendingGrants = ConcurrentHashMap<String, ConcurrentHashMap<String, SessionMessage>>()
+    // Serialize pending-request mutations and approvals so a duplicated tap/message cannot
+    // grant the same loot twice or debit a purchase more than once.
+    private val requestLock = Any()
 
     // Token de reconexão (ver SessionMessage.Hello/Welcome) -> id de participante. Permite que um
     // Jogador cuja conexão caiu (Wi-Fi instável, app em segundo plano) volte como o MESMO
@@ -370,14 +373,16 @@ class SessionServer(
             lootItemId = msg.lootItemId,
             shopItemId = msg.shopItemId
         )
-        _pendingRequests.value = _pendingRequests.value + request
+        synchronized(requestLock) {
+            _pendingRequests.value = _pendingRequests.value + request
+        }
     }
 
     /** Aprova um pedido pendente: aplica a mudança correspondente e avisa quem pediu. */
-    fun approveRequest(requestId: String) {
-        val request = _pendingRequests.value.firstOrNull { it.id == requestId } ?: return
+    fun approveRequest(requestId: String) = synchronized(requestLock) {
+        val request = _pendingRequests.value.firstOrNull { it.id == requestId } ?: return@synchronized
         val requester = _roster.value.firstOrNull { it.id == request.requesterId }
-        if (requester?.connected != true) return
+        if (requester?.connected != true) return@synchronized
         when (request.kind) {
             RequestKind.CHARACTER_UPDATE -> {
                 request.characterJson?.let { receiveCharacterSheet(request.requesterId, it) }
@@ -463,8 +468,8 @@ class SessionServer(
     }
 
     /** Nega um pedido pendente: nada é aplicado, só avisa quem pediu (com motivo opcional). */
-    fun denyRequest(requestId: String, reason: String = "") {
-        val request = _pendingRequests.value.firstOrNull { it.id == requestId } ?: return
+    fun denyRequest(requestId: String, reason: String = "") = synchronized(requestLock) {
+        val request = _pendingRequests.value.firstOrNull { it.id == requestId } ?: return@synchronized
         resolveRequest(request, approved = false, reason = reason)
     }
 
