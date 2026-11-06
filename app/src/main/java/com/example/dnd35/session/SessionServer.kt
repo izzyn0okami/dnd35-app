@@ -416,8 +416,8 @@ class SessionServer(
         val current = _combatState.value ?: return@synchronized
         val updated = transform(current)
         _combatState.value = updated
-        broadcast(SessionMessage.CombatUpdate(updated))
         notifySnapshotChanged()
+        broadcast(SessionMessage.CombatUpdate(updated))
     }
 
     // --- Baú de loot (estado global, autoridade do Mestre) ---
@@ -433,8 +433,8 @@ class SessionServer(
     fun removeLootItem(itemId: String) = synchronized(stateLock) {
         if (_lootChest.value.none { it.id == itemId }) return@synchronized
         _lootChest.value = _lootChest.value.filterNot { it.id == itemId }
-        broadcastLootChest()
         notifySnapshotChanged()
+        broadcastLootChest()
     }
 
     private fun broadcastLootChest() {
