@@ -234,7 +234,11 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
             val restoredServer = SessionServer(snapshot.sessionId, snapshot.hostDisplayName, persistCriticalSnapshot = { critical ->
                 persistSnapshotAndWait(critical)
             }) { updated ->
-                persistenceCommands.trySend(HostedSessionPersistenceCommand.Save(updated))
+                // Toda mutação autoritativa aguarda o commit Room antes de ser anunciada
+                // aos clientes ou considerada concluída pelo servidor.
+                kotlinx.coroutines.runBlocking(Dispatchers.IO) {
+                    persistSnapshotAndWait(updated)
+                }
             }
             try {
                 restoredServer.restoreSnapshot(snapshot)
@@ -280,7 +284,11 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
         val newServer = SessionServer(sessionId, name, persistCriticalSnapshot = { critical ->
             persistSnapshotAndWait(critical)
         }) { snapshot ->
-            persistenceCommands.trySend(HostedSessionPersistenceCommand.Save(snapshot))
+            // Checkpoint síncrono: não há janela assíncrona entre uma mutação do servidor
+            // e a confirmação de que seu estado está armazenado no Room.
+            kotlinx.coroutines.runBlocking(Dispatchers.IO) {
+                persistSnapshotAndWait(snapshot)
+            }
         }
         server = newServer
 
