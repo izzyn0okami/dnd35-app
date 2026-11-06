@@ -96,6 +96,62 @@ class SessionMessageTest {
     }
 
     @Test
+    fun `nextTurn ignora combatentes com zero PV ou PV negativos e avanca a rodada ao voltar`() {
+        val state = CombatState.start(
+            listOf(
+                Combatant("a", "A", false, 20, 0, 20),
+                Combatant("b", "B", false, 15, 12, 12),
+                Combatant("c", "C", false, 10, -2, 10),
+                Combatant("d", "D", false, 5, 8, 8)
+            )
+        )
+
+        val afterFirst = state.nextTurn()
+        assertEquals("b", afterFirst.currentCombatantId)
+        assertEquals(1, afterFirst.round)
+
+        val afterSecond = afterFirst.nextTurn()
+        assertEquals("d", afterSecond.currentCombatantId)
+        assertEquals(1, afterSecond.round)
+
+        val afterWrap = afterSecond.nextTurn()
+        assertEquals("b", afterWrap.currentCombatantId)
+        assertEquals(2, afterWrap.round)
+    }
+
+    @Test
+    fun `nextTurn sem combatentes vivos deixa turno sem alvo e nao incrementa rodada`() {
+        val state = CombatState.start(
+            listOf(
+                Combatant("a", "A", false, 20, 0, 20),
+                Combatant("b", "B", false, 10, -1, 10)
+            )
+        )
+
+        val next = state.nextTurn()
+        assertEquals(-1, next.currentTurnIndex)
+        assertNull(next.currentCombatantId)
+        assertEquals(1, next.round)
+    }
+
+    @Test
+    fun `nextTurn com um unico combatente vivo avanca para a proxima rodada`() {
+        val state = CombatState.start(
+            listOf(
+                Combatant("a", "A", false, 20, 0, 20),
+                Combatant("b", "B", false, 10, 5, 10)
+            )
+        )
+
+        val next = state.nextTurn()
+        assertEquals("b", next.currentCombatantId)
+        assertEquals(1, next.round)
+        val nextRound = next.nextTurn()
+        assertEquals("b", nextRound.currentCombatantId)
+        assertEquals(2, nextRound.round)
+    }
+
+    @Test
     fun `ActionRequested de mudanca de PV preserva todos os campos`() {
         val msg = SessionMessage.ActionRequested(
             kind = RequestKind.COMBAT_HP_CHANGE,
