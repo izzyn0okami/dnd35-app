@@ -499,3 +499,5 @@
 - Aprovações do Mestre agora suprimem checkpoints intermediários durante a mutação composta e emitem um único snapshot após resolver o pedido. Isso evita persistir, por exemplo, dano aplicado com o pedido de PV ainda pendente e reaplicar o dano após recuperação.
 
 - Teste de migração adicionado com banco Room v9 criado de verdade por uma definição legada contendo `CharacterEntity`: insere uma ficha com PV, nível, moedas e inventário, abre a versão 10 usando `MIGRATION_9_10` e verifica a preservação dos dados e a disponibilidade da nova tabela. A execução ainda depende da CI.
+
+- Encerramento manual agora aguarda a confirmação do comando `EndAndWait` na mesma fila serial, depois de checkpoints anteriores. Assim, o método não retorna ao fluxo da UI antes de gravar `ENDED`; falha de gravação é registrada e exibida como erro.
