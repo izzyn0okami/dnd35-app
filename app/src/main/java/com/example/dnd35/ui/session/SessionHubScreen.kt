@@ -282,6 +282,14 @@ private fun DmHostContent(viewModel: SessionViewModel, characterViewModel: Chara
                 }
                 SessionAreaTab.COMBAT -> CombatSection(viewModel, characterViewModel, s)
                 SessionAreaTab.RESOURCES -> {
+                    if (s.pendingRequests.isNotEmpty()) {
+                        PendingRequestsSection(
+                            requests = s.pendingRequests,
+                            onApprove = { viewModel.approveRequest(it) },
+                            onDeny = { viewModel.denyRequest(it) }
+                        )
+                        Spacer(modifier = Modifier.height(16.dp))
+                    }
                     LootChestSection(items = s.lootChest, isDm = true, onAddItem = { viewModel.addLootItem(it) }, onRemoveItem = { viewModel.removeLootItem(it) })
                     Spacer(modifier = Modifier.height(16.dp))
                     DmShopSection(shop = s.shop, characterViewModel = characterViewModel,
