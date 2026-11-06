@@ -66,7 +66,7 @@ class SessionClient {
 
     // Item concedido ao pegar algo do baú de loot (pedido aprovado) — evento, não estado
     // contínuo, já que vira um item novo no inventário local assim que é recebido.
-    private val _lootGranted = MutableSharedFlow<CharacterInventoryItem>(extraBufferCapacity = 4)
+    private val _lootGranted = MutableSharedFlow<SessionItemGrant>(extraBufferCapacity = 4)
     val lootGranted: SharedFlow<CharacterInventoryItem> = _lootGranted
 
     // Item concedido ao comprar algo da loja de NPC (pedido aprovado) — mesmo motivo do loot:
@@ -162,7 +162,9 @@ class SessionClient {
                             }
                         }
                         is SessionMessage.LootGranted -> {
-                            CharacterJsonAdapters.deserializeInventory(msg.itemJson).firstOrNull()?.let { _lootGranted.tryEmit(it) }
+                            CharacterJsonAdapters.deserializeInventory(msg.itemJson).firstOrNull()?.let { item ->
+                                _lootGranted.tryEmit(SessionItemGrant(msg.characterId, item))
+                            }
                         }
                         is SessionMessage.ShopUpdate -> {
                             val current = _state.value
@@ -179,7 +181,10 @@ class SessionClient {
                             }
                         }
                         is SessionMessage.ShopPurchaseGranted -> {
-                            CharacterJsonAdapters.deserializeInventory(msg.itemJson).firstOrNull()?.let { _shopPurchases.tryEmit(it) }
+                            CharacterJsonAdapters.deserializeInventory(msg.itemJson).firstOrNull()?.let { item ->
+                                val purse = SessionCoinPurse(msg.goldGp, msg.silverSp, msg.copperCp, msg.platinumPp)
+                                _shopPurchases.tryEmit(SessionItemGrant(msg.characterId, item, purse))
+                            }
                         }
                         is SessionMessage.PrivateMessage -> _privateMessages.tryEmit(msg.text)
                         is SessionMessage.Bye -> break
