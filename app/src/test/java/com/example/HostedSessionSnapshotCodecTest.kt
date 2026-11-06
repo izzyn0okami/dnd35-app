@@ -141,6 +141,29 @@ class HostedSessionSnapshotCodecTest {
         }
     }
 
+
+    @Test
+    fun `snapshot rejeita inventario truncado em vez de restaurar lista vazia`() {
+        val valid = HostedSessionSnapshot(
+            sessionId = "s1",
+            hostDisplayName = "Mestre",
+            roster = emptyList(),
+            receivedCharacters = emptyMap(),
+            combat = null,
+            pendingRequests = emptyList(),
+            lootChest = emptyList(),
+            shop = null,
+            privateChatLog = emptyList(),
+            rejoinTokens = emptyMap(),
+            pendingGrants = emptyMap()
+        )
+        val malformed = HostedSessionSnapshotCodec.encode(valid).replace("\"lootChest\":\"[]\"", "\"lootChest\":\"{broken}\"")
+
+        assertThrows(IllegalArgumentException::class.java) {
+            HostedSessionSnapshotCodec.decode(malformed)
+        }
+    }
+
     @Test
     fun `snapshot recusa versao futura em vez de interpretar parcialmente`() {
         val raw = HostedSessionSnapshotCodec.encode(
