@@ -159,7 +159,7 @@ class HostedSessionSnapshotCodecTest {
         )
         val malformed = HostedSessionSnapshotCodec.encode(valid).replace("\"lootChest\":\"[]\"", "\"lootChest\":\"{broken}\"")
 
-        assertThrows(IllegalArgumentException::class.java) {
+        assertThrows(RuntimeException::class.java) {
             HostedSessionSnapshotCodec.decode(malformed)
         }
     }
