@@ -194,7 +194,9 @@ class SessionServer(
      */
     private fun markDisconnected(id: String) {
         _roster.value = _roster.value.map { if (it.id == id) it.copy(connected = false) else it }
-        _pendingRequests.value = _pendingRequests.value.filterNot { it.requesterId == id }
+        // Keep pending requests while the participant is offline. They remain visible to the
+        // DM and can be resolved after reconnection; resource requests must not be approved
+        // while their recipient cannot receive the resulting grant.
         broadcastRoster()
     }
 
@@ -340,6 +342,8 @@ class SessionServer(
     /** Aprova um pedido pendente: aplica a mudança correspondente e avisa quem pediu. */
     fun approveRequest(requestId: String) {
         val request = _pendingRequests.value.firstOrNull { it.id == requestId } ?: return
+        val requester = _roster.value.firstOrNull { it.id == request.requesterId }
+        if (requester?.connected != true) return
         when (request.kind) {
             RequestKind.CHARACTER_UPDATE -> {
                 request.characterJson?.let { receiveCharacterSheet(request.requesterId, it) }
