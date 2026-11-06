@@ -503,3 +503,17 @@
 - Encerramento manual agora aguarda a confirmação do comando `EndAndWait` na mesma fila serial, depois de checkpoints anteriores. Assim, o método não retorna ao fluxo da UI antes de gravar `ENDED`; falha de gravação é registrada e exibida como erro.
 
 - O encerramento do ViewModel agora captura o snapshot final e fecha o servidor/sockets sob o mesmo `stateLock`; só depois aguarda o commit final e drena a fila. Isso evita uma mutação concorrente entre o checkpoint final e o fechamento do host.
+
+
+## 2026-11-06 — Checkpoints síncronos antes de confirmar alterações da sessão
+
+### Decisão e correção na PR #324
+- O usuário autorizou reforçar a persistência na própria PR #324, sem abrir uma PR paralela e sem mesclar antes da validação.
+- A auditoria identificou que os checkpoints ordinários eram apenas enfileirados. Uma morte abrupta do processo entre a mutação em memória e o commit Room poderia perder combate, participantes, fichas recebidas, pedidos, baú, loja, chat ou ACKs.
+- Os callbacks de alteração do SessionServer agora aguardam o commit Room pela fila serial (SaveAndWait). A mesma barreira é usada tanto na hospedagem nova quanto na restauração.
+- As mensagens de estado que atualizam os clientes (roster, combate, baú e loja) passaram a ser transmitidas depois do checkpoint correspondente.
+- A entrada de participante foi reordenada: o servidor persiste roster e token de reconexão antes de enviar WELCOME. Se o commit falhar, a confirmação não é enviada.
+- Respostas de aprovação/negação de pedidos comuns agora são enviadas após o checkpoint que remove o pedido da fila. Compras e retiradas mantêm a gravação crítica atômica de saldo/estoque/baú + outbox antes da entrega do grant.
+- Testes adicionados em SessionServerClientTest: bloqueiam intencionalmente o checkpoint e verificam que (1) nenhuma mensagem WELCOME sai antes da liberação e (2) a mutação não retorna enquanto o callback de persistência não conclui.
+- A gravação síncrona aumenta a latência das mutações na rede local, pois a confirmação aguarda o Room. Esse custo é intencional para reduzir a janela de perda; deve ser observado na CI e em teste físico.
+- **Validação ainda pendente:** executar CI no SHA atualizado, inspecionar logs se houver falha e revisar o diff completo. Não considerar a etapa concluída nem mesclar antes de CI verde e validação de campo.
