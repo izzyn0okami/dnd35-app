@@ -1,6 +1,7 @@
 package com.example.dnd35.session
 
 import com.example.dnd35.model.CharacterEntity
+import com.example.dnd35.model.CharacterInventoryItem
 import java.math.BigDecimal
 import java.math.RoundingMode
 
@@ -94,3 +95,10 @@ object SessionCurrency {
         )
     }
 }
+
+/** One approved resource delivery, targeted at the local character selected for this session. */
+data class SessionItemGrant(
+    val characterId: Long,
+    val item: CharacterInventoryItem,
+    val coinPurse: SessionCoinPurse? = null
+)
