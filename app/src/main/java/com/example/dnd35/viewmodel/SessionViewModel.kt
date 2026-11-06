@@ -91,7 +91,6 @@ private data class DmExtraState(
 )
 
 private sealed interface HostedSessionPersistenceCommand {
-    data class Save(val snapshot: HostedSessionSnapshot) : HostedSessionPersistenceCommand
     data class SaveAndWait(val snapshot: HostedSessionSnapshot, val completion: CompletableDeferred<Unit>) : HostedSessionPersistenceCommand
     data class EndAndWait(val sessionId: String, val completion: CompletableDeferred<Unit>) : HostedSessionPersistenceCommand
     data class Flush(val completion: CompletableDeferred<Unit>) : HostedSessionPersistenceCommand
@@ -114,9 +113,6 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
             for (command in persistenceCommands) {
                 try {
                     when (command) {
-                        is HostedSessionPersistenceCommand.Save -> {
-                            saveHostedSnapshot(command.snapshot)
-                        }
                         is HostedSessionPersistenceCommand.SaveAndWait -> {
                             try {
                                 saveHostedSnapshot(command.snapshot)
@@ -242,6 +238,8 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
             }
             try {
                 restoredServer.restoreSnapshot(snapshot)
+                // Persiste o roster restaurado (jogadores desconectados) antes de reabrir a porta.
+                persistSnapshotAndWait(restoredServer.createSnapshot())
                 val (port, ip) = withContext(Dispatchers.IO) {
                     restoredServer.start() to LocalNetworkUtil.findLocalIpAddress()
                 }
@@ -263,7 +261,6 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
                 val qrContent = payload.toJson()
                 val bitmap = withContext(Dispatchers.Default) { QrCodeUtil.generate(qrContent) }
                 viewModelScope.launchCollectDmState(restoredServer, snapshot.sessionId, bitmap, qrContent)
-                persistenceCommands.trySend(HostedSessionPersistenceCommand.Save(restoredServer.createSnapshot()))
             } catch (error: Exception) {
                 restoredServer.stop()
                 if (server === restoredServer) server = null
@@ -296,6 +293,8 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
         // executá-las fora da thread principal evita outro NetworkOnMainThreadException.
         viewModelScope.launch {
             try {
+                // O registro ACTIVE precisa existir no Room antes de aceitar o primeiro jogador.
+                persistSnapshotAndWait(newServer.createSnapshot())
                 val (port, ip) = withContext(Dispatchers.IO) {
                     newServer.start() to LocalNetworkUtil.findLocalIpAddress()
                 }
@@ -319,7 +318,6 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
                 val qrContent = payload.toJson()
                 val bitmap = QrCodeUtil.generate(qrContent)
                 viewModelScope.launchCollectDmState(newServer, sessionId, bitmap, qrContent)
-                persistenceCommands.trySend(HostedSessionPersistenceCommand.Save(newServer.createSnapshot()))
             } catch (e: Exception) {
                 newServer.stop()
                 if (server === newServer) {
