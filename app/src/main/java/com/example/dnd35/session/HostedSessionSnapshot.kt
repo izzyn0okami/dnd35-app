@@ -40,7 +40,7 @@ object HostedSessionSnapshotCodec {
             .put("version", VERSION)
             .put("sessionId", snapshot.sessionId)
             .put("hostDisplayName", snapshot.hostDisplayName)
-            .put("roster", SessionMessage.Roster(snapshot.roster).toJson())
+            .put("roster", participantsToJson(snapshot.roster))
             .put("combat", snapshot.combat?.let { SessionMessage.CombatUpdate(it).toJson() } ?: JSONObject.NULL)
 
         val characters = JSONArray()
@@ -89,8 +89,7 @@ object HostedSessionSnapshotCodec {
         val version = root.optInt("version", -1)
         require(version == VERSION) { "Versão de snapshot não suportada: $version" }
 
-        val rosterMessage = SessionMessage.fromJson(root.getString("roster")) as? SessionMessage.Roster
-            ?: error("Roster inválido no snapshot")
+        val roster = participantsFromJson(root.getJSONArray("roster"))
         val combat = if (root.isNull("combat")) null else {
             (SessionMessage.fromJson(root.getString("combat")) as? SessionMessage.CombatUpdate)?.state
                 ?: error("Combate inválido no snapshot")
@@ -159,7 +158,7 @@ object HostedSessionSnapshotCodec {
         return HostedSessionSnapshot(
             sessionId = sessionId,
             hostDisplayName = root.getString("hostDisplayName"),
-            roster = rosterMessage.participants,
+            roster = roster,
             receivedCharacters = characters,
             combat = combat,
             pendingRequests = requests,
@@ -170,6 +169,30 @@ object HostedSessionSnapshotCodec {
             pendingGrants = grants
         )
     }
+
+
+    private fun participantsToJson(participants: List<Participant>): JSONArray = JSONArray().apply {
+        participants.forEach { participant ->
+            put(JSONObject()
+                .put("id", participant.id)
+                .put("displayName", participant.displayName)
+                .put("role", participant.role.name)
+                .put("characterId", participant.characterId ?: JSONObject.NULL)
+                .put("connected", participant.connected))
+        }
+    }
+
+    private fun participantsFromJson(array: JSONArray): List<Participant> =
+        (0 until array.length()).map { index ->
+            val item = array.getJSONObject(index)
+            Participant(
+                id = item.getString("id"),
+                displayName = item.getString("displayName"),
+                role = ParticipantRole.valueOf(item.getString("role")),
+                characterId = if (item.isNull("characterId")) null else item.getLong("characterId"),
+                connected = item.getBoolean("connected")
+            )
+        }
 
     private fun requestToJson(request: ActionRequest) = JSONObject()
         .put("id", request.id)
