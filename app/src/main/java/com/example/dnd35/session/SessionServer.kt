@@ -144,7 +144,9 @@ class SessionServer(
                 }
             }
             enqueue(newHandle, SessionMessage.Welcome(id, sessionId, token))
-            addParticipant(Participant(id, hello.displayName, ParticipantRole.PLAYER))
+            val linkedCharacterId = hello.characterId?.takeIf { it > 0L }
+                ?: _roster.value.firstOrNull { it.id == id }?.characterId
+            addParticipant(Participant(id, hello.displayName, ParticipantRole.PLAYER, characterId = linkedCharacterId))
             broadcastRoster()
             _combatState.value?.let { enqueue(newHandle, SessionMessage.CombatUpdate(it)) }
             if (_lootChest.value.isNotEmpty()) enqueue(newHandle, SessionMessage.LootChestUpdate(CharacterJsonAdapters.serializeInventory(_lootChest.value)))
