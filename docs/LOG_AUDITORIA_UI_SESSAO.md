@@ -517,3 +517,5 @@
 - Testes adicionados em SessionServerClientTest: bloqueiam intencionalmente o checkpoint e verificam que (1) nenhuma mensagem WELCOME sai antes da liberação e (2) a mutação não retorna enquanto o callback de persistência não conclui.
 - A gravação síncrona aumenta a latência das mutações na rede local, pois a confirmação aguarda o Room. Esse custo é intencional para reduzir a janela de perda; deve ser observado na CI e em teste físico.
 - **Validação ainda pendente:** executar CI no SHA atualizado, inspecionar logs se houver falha e revisar o diff completo. Não considerar a etapa concluída nem mesclar antes de CI verde e validação de campo.
+
+- Ajuste adicional: a sessão nova e o estado restaurado agora são gravados com confirmação antes de abrir o ServerSocket. Isso elimina a janela em que o primeiro jogador poderia tentar entrar antes de existir um registro ACTIVE durável e remove os antigos comandos de gravação inicial assíncrona.
