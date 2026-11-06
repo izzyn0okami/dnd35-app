@@ -315,3 +315,11 @@
 - A execução validou o head exato da PR #322. A compilação Kotlin, os testes unitários e o empacotamento Android passaram.
 - Testes manuais em dois aparelhos: o usuário já confirmou os cenários 1 e 2 da lista de integração anterior. Cenários 3 a 6 ainda precisam ser executados, incluindo grants de loot/compra e reconexão/ACK.
 - PR permanece aberta, em rascunho, mergeável, sem commits atrasados e sem revisões pendentes. Não mesclar até os testes restantes e autorização explícita do usuário.
+
+
+### Correção de concorrência no estado de combate — PR #322 (2026-11-06)
+- Revisão estática encontrou que `applyDamage()` usava o lock compartilhado, mas `startCombat()`, `nextTurn()` e `endCombat()` liam/alteravam `_combatState` fora dele. Operações simultâneas podiam sobrescrever alterações recentes e transmitir atualizações fora da ordem do estado efetivamente persistido.
+- O mecanismo foi renomeado para `stateLock` e passou a proteger, na mesma seção crítica, início, dano/cura, avanço de turno, encerramento e os broadcasts correspondentes. A atualização dos PV da ficha aprovada continua sob o mesmo lock; aprovações/negações de pedidos e registro/ACK de grants também permanecem serializados.
+- A limpeza do estado de combate em `stop()` também usa o lock, evitando competir com uma mutação em andamento.
+- Adicionado teste concorrente com duas threads: 1.000 aplicações de dano e 1.000 avanços de turno partem simultaneamente; o resultado esperado é 0 PV e rodada 1.001, sem perda de atualização.
+- Esta correção foi aplicada diretamente na branch existente `fix/session-character-update-approval` da PR #322, sem abrir outra PR. A validação automatizada do novo head ainda precisa ser concluída; não mesclar antes da CI e da autorização explícita.
