@@ -103,18 +103,21 @@
 - A iniciativa precisa ser informada como inteiro válido; o diálogo não substitui campos vazios ou inválidos por zero.
 - O conteúdo do diálogo de início de combate recebeu limite de altura e rolagem vertical própria.
 - Os controles de dano/cura do Mestre e os pedidos de alteração de PV do Jogador foram reorganizados em duas linhas, reduzindo o risco de estouro horizontal.
-- O avanço de turno passou a ignorar combatentes com PV iguais ou inferiores a zero. A rodada aumenta quando a ordem retorna ao primeiro combatente ativo.
-- Quando todos estão com PV 0 ou negativos, o estado fica sem combatente atual (índice de turno -1) e a interface informa que não há combatentes ativos. Se alguém for curado depois, o próximo avanço seleciona novamente um combatente com PV positivos.
+- O avanço de turno passou a ignorar somente combatentes mortos (PV iguais ou inferiores a -10). Personagens com 0 PV estão incapacitados, mas ainda podem realizar uma ação de movimento ou padrão; personagens entre -1 e -9 PV estão morrendo, inconscientes e não podem agir, mas ainda não estão mortos. Ambos permanecem na ordem de iniciativa. A rodada aumenta quando a ordem retorna ao primeiro combatente vivo.
+- Quando todos estão com PV iguais ou inferiores a -10, o estado fica sem combatente atual (índice de turno -1) e a interface informa que todos estão mortos. A recuperação desses personagens não é simulada pelo tracker; o combate deve ser encerrado ou o estado deve ser corrigido pelo Mestre.
 - A lógica de avanço foi centralizada em CombatState.nextTurn() para permitir testes unitários sem depender de socket.
 
 ### Testes acrescentados
-- Próximo turno ignora PV 0 e PV negativos.
+- Próximo turno ignora somente PV -10 ou inferiores, mantendo na ordem personagens com 0 PV e com PV entre -1 e -9.
 - Retorno ao início da ordem incrementa a rodada.
-- Todos derrotados deixam o turno sem alvo e não incrementam a rodada.
-- Um único combatente ativo continua avançando a rodada corretamente.
+- Todos mortos (PV -10 ou inferiores) deixam o turno sem alvo e não incrementam a rodada.
+- Um único combatente vivo, mesmo com 0 PV, continua avançando a rodada corretamente.
 
 ### Limites e validação pendente
 - Não foram alteradas regras de D&D 3.5, cálculos de PV, protocolo de rede ou regras de dano/cura.
 - Os valores manuais de PV são apenas dados iniciais do encontro para participantes sem ficha vinculada; não são gravados na ficha do jogador.
 - Ainda é necessário executar a CI (testDebugUnitTest e assembleDebug) e revisar eventuais falhas antes de considerar a alteração pronta.
 - O teste integrado em dois aparelhos, com Mestre e Jogador, continua pendente para validar visualmente o diálogo em telas pequenas e a sincronização do combate após a queda/retorno de conexão.
+
+### Referência de regra consultada
+- **Livro do Jogador D&D 3.5, edição brasileira, Capítulo 8: Combate, páginas impressas 124–125** (páginas 128–129 do PDF): 0 PV = incapacitado; -1 a -9 PV = morrendo; -10 PV ou menos = morto. A regra de iniciativa deve preservar a distinção entre incapacitação, condição de morrendo e morte. Esta auditoria não implementa a perda automática de 1 PV ao fim de cada rodada nem testes de estabilização.
