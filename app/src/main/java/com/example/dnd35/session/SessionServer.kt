@@ -164,14 +164,13 @@ class SessionServer(
                 when (msg) {
                     is SessionMessage.Bye -> break
                     is SessionMessage.CharacterSheet -> {
-                        // A ficha enviada no HELLO só inicializa um participante novo. A mesma
-                        // mensagem é reenviada durante reconnect(), mas nunca pode sobrescrever
-                        // a última ficha aprovada que o Mestre já mantém para esse participante.
-                        if (existingId == null) {
-                            synchronized(requestLock) {
-                                if (!_receivedCharacters.value.containsKey(id)) {
-                                    receiveCharacterSheet(id, msg.characterJson)
-                                }
+                        // CharacterSheet pode inicializar a ficha na primeira entrada ou completar
+                        // uma entrada interrompida antes do primeiro snapshot. Se o Mestre já tem
+                        // uma ficha, a mensagem reenviada na reconexão nunca pode sobrescrevê-la:
+                        // atualizações posteriores exigem aprovação via CHARACTER_UPDATE.
+                        synchronized(requestLock) {
+                            if (!_receivedCharacters.value.containsKey(id)) {
+                                receiveCharacterSheet(id, msg.characterJson)
                             }
                         }
                     }
