@@ -255,3 +255,9 @@
 - `receiveCharacterSheet()` agora retorna sucesso/falha. Na aprovação, o servidor só confirma o pedido quando consegue interpretar e aplicar a ficha; snapshot inválido ou ausente é negado com motivo explícito, sem alterar a última ficha recebida.
 - Acrescentado teste TCP/cliente-servidor que envia snapshot malformado, aprova o pedido no Mestre e verifica resposta negativa, motivo e preservação dos PV anteriores.
 - A correção e o teste foram adicionados à branch existente da PR #322. A CI deve ser conferida novamente no SHA final após o registro deste log.
+
+
+### Serialização do ACK com registro de grants — PR #322 (2026-11-06)
+- Revisão estática encontrou uma corrida possível entre `acknowledgeGrant()` e `registerPendingGrant()`: a remoção do último grant podia observar o mapa vazio e removê-lo do outbox enquanto uma nova concessão era inserida no mesmo mapa.
+- `acknowledgeGrant()` agora usa o mesmo `requestLock` que serializa aprovação/registro de grants. Assim, ACK e criação de uma nova concessão não removem acidentalmente o mapa que contém a nova entrega.
+- A correção foi aplicada na branch existente da PR #322. A nova CI precisa validar o SHA final antes de qualquer merge.
