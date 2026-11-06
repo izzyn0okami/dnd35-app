@@ -40,10 +40,26 @@ data class CombatState(
     val round: Int = 1
 ) {
     val currentCombatantId: String?
-        get() = combatants.getOrNull(currentTurnIndex)?.id
+        get() = combatants.getOrNull(currentTurnIndex)?.takeIf { it.currentHp > DEAD_HP_THRESHOLD }?.id
+
+    /**
+     * Avança para o próximo combatente vivo. Pelo Livro do Jogador, personagens com 0 PV
+     * estão incapacitados e ainda podem agir; entre -1 e -9 PV estão morrendo, mas ainda vivos.
+     * Apenas personagens com -10 PV ou menos são considerados mortos e ignorados na iniciativa.
+     */
+    fun nextTurn(): CombatState {
+        if (combatants.isEmpty()) return copy(currentTurnIndex = -1)
+        val livingIndices = combatants.indices.filter { combatants[it].currentHp > DEAD_HP_THRESHOLD }
+        if (livingIndices.isEmpty()) return copy(currentTurnIndex = -1)
+
+        val nextIndex = livingIndices.firstOrNull { it > currentTurnIndex } ?: livingIndices.first()
+        val wrapped = currentTurnIndex >= 0 && nextIndex <= currentTurnIndex
+        return copy(currentTurnIndex = nextIndex, round = if (wrapped) round + 1 else round)
+    }
 
     companion object {
         const val NPC_ID_PREFIX = "npc:"
+        const val DEAD_HP_THRESHOLD = -10
 
         fun npcCombatantId(characterId: Long): String = "$NPC_ID_PREFIX$characterId"
 

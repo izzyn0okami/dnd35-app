@@ -235,14 +235,9 @@ class SessionServer(
         }
     }
 
-    /** Avança para o próximo combatente vivo na ordem de iniciativa; passa de rodada ao dar a volta. */
+    /** Avança para o próximo combatente com PV positivos e sincroniza a nova ordem/rodada. */
     fun nextTurn() {
-        updateCombat { state ->
-            if (state.combatants.isEmpty()) return@updateCombat state
-            val nextIndex = (state.currentTurnIndex + 1) % state.combatants.size
-            val nextRound = if (nextIndex <= state.currentTurnIndex) state.round + 1 else state.round
-            state.copy(currentTurnIndex = nextIndex, round = nextRound)
-        }
+        updateCombat { state -> state.nextTurn() }
     }
 
     /** Encerra o combate ativo (se houver) e avisa a todos. */

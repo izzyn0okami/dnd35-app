@@ -96,6 +96,67 @@ class SessionMessageTest {
     }
 
     @Test
+    fun `nextTurn ignora somente combatentes mortos e inclui PV zero e negativos acima de -10`() {
+        val state = CombatState.start(
+            listOf(
+                Combatant("a", "A", false, 20, -10, 20),
+                Combatant("b", "B", false, 15, 0, 12),
+                Combatant("c", "C", false, 10, -1, 10),
+                Combatant("d", "D", false, 5, -9, 8),
+                Combatant("e", "E", false, 1, -11, 8)
+            )
+        )
+
+        val afterFirst = state.nextTurn()
+        assertEquals("b", afterFirst.currentCombatantId)
+        assertEquals(1, afterFirst.round)
+
+        val afterSecond = afterFirst.nextTurn()
+        assertEquals("c", afterSecond.currentCombatantId)
+        assertEquals(1, afterSecond.round)
+
+        val afterThird = afterSecond.nextTurn()
+        assertEquals("d", afterThird.currentCombatantId)
+        assertEquals(1, afterThird.round)
+
+        val afterWrap = afterThird.nextTurn()
+        assertEquals("b", afterWrap.currentCombatantId)
+        assertEquals(2, afterWrap.round)
+    }
+
+    @Test
+    fun `nextTurn sem combatentes vivos deixa turno sem alvo e nao incrementa rodada`() {
+        val state = CombatState.start(
+            listOf(
+                Combatant("a", "A", false, 20, -10, 20),
+                Combatant("b", "B", false, 10, -11, 10)
+            )
+        )
+
+        val next = state.nextTurn()
+        assertEquals(-1, next.currentTurnIndex)
+        assertNull(next.currentCombatantId)
+        assertEquals(1, next.round)
+    }
+
+    @Test
+    fun `nextTurn com um unico combatente vivo avanca para a proxima rodada`() {
+        val state = CombatState.start(
+            listOf(
+                Combatant("a", "A", false, 20, -10, 20),
+                Combatant("b", "B", false, 10, 0, 10)
+            )
+        )
+
+        val next = state.nextTurn()
+        assertEquals("b", next.currentCombatantId)
+        assertEquals(1, next.round)
+        val nextRound = next.nextTurn()
+        assertEquals("b", nextRound.currentCombatantId)
+        assertEquals(2, nextRound.round)
+    }
+
+    @Test
     fun `ActionRequested de mudanca de PV preserva todos os campos`() {
         val msg = SessionMessage.ActionRequested(
             kind = RequestKind.COMBAT_HP_CHANGE,

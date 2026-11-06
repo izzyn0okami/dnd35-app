@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -345,8 +346,8 @@ private data class CombatCandidate(
     val id: String,
     val displayName: String,
     val isNpc: Boolean,
-    val currentHp: Int,
-    val maxHp: Int
+    val currentHp: Int?,
+    val maxHp: Int?
 )
 
 /**
@@ -388,15 +389,15 @@ private fun CombatSection(
     }
 
     if (showStartDialog) {
-        val players = hosting.participants.filter { it.role == ParticipantRole.PLAYER }
+        val players = hosting.participants.filter { it.role == ParticipantRole.PLAYER && it.connected }
         val playerCandidates = players.map { p ->
             val sheet = hosting.characters[p.id]
             CombatCandidate(
                 id = p.id,
                 displayName = p.displayName,
                 isNpc = false,
-                currentHp = sheet?.currentHp ?: 10,
-                maxHp = sheet?.maxHp ?: 10
+                currentHp = sheet?.currentHp,
+                maxHp = sheet?.maxHp
             )
         }
         val npcCandidates = myCharacters.filter { it.isNpc }.map { c ->
@@ -426,8 +427,18 @@ private fun StartCombatDialog(
     onDismiss: () -> Unit,
     onConfirm: (List<Combatant>) -> Unit
 ) {
-    // id do candidato -> texto digitado de iniciativa; presença na mapa = selecionado.
+    // id do candidato -> texto digitado de iniciativa; presença no mapa = selecionado.
     val selections = remember { mutableStateMapOf<String, String>() }
+    val manualCurrentHp = remember { mutableStateMapOf<String, String>() }
+    val manualMaxHp = remember { mutableStateMapOf<String, String>() }
+    val selectedCandidates = candidates.filter { selections.containsKey(it.id) }
+    val validSelections = selectedCandidates.isNotEmpty() && selectedCandidates.all { candidate ->
+        val initiativeValid = selections[candidate.id]?.toIntOrNull() != null
+        val hasSheetHp = candidate.currentHp != null && candidate.maxHp != null
+        val manualCurrent = manualCurrentHp[candidate.id]?.toIntOrNull()
+        val manualMax = manualMaxHp[candidate.id]?.toIntOrNull()
+        initiativeValid && (hasSheetHp || (manualCurrent != null && manualMax != null && manualMax > 0 && manualCurrent <= manualMax))
+    }
 
     AlertDialog(
         onDismissRequest = onDismiss,
@@ -439,9 +450,11 @@ private fun StartCombatDialog(
                         "marque alguma ficha como NPC em \"Minhas fichas\" antes de iniciar."
                 )
             } else {
-                Column {
+                Column(
+                    modifier = Modifier.heightIn(max = 420.dp).verticalScroll(rememberScrollState())
+                ) {
                     Text(
-                        "Marque quem participa e informe a iniciativa de cada um.",
+                        "Marque quem participa e informe a iniciativa de cada um. Jogadores sem ficha precisam informar os PV manualmente.",
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
@@ -464,7 +477,9 @@ private fun StartCombatDialog(
                                     fontWeight = FontWeight.SemiBold
                                 )
                                 Text(
-                                    "PV ${candidate.currentHp}/${candidate.maxHp}",
+                                    if (candidate.currentHp != null && candidate.maxHp != null)
+                                        "PV ${candidate.currentHp}/${candidate.maxHp}"
+                                    else "PV não informado",
                                     style = MaterialTheme.typography.labelSmall,
                                     color = MaterialTheme.colorScheme.onSurfaceVariant
                                 )
@@ -478,22 +493,41 @@ private fun StartCombatDialog(
                                 )
                             }
                         }
+                        if (checked && (candidate.currentHp == null || candidate.maxHp == null)) {
+                            Row(
+                                modifier = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.spacedBy(8.dp)
+                            ) {
+                                OutlinedTextField(
+                                    value = manualCurrentHp[candidate.id] ?: "",
+                                    onValueChange = { manualCurrentHp[candidate.id] = it },
+                                    label = { Text("PV atuais") },
+                                    modifier = Modifier.weight(1f)
+                                )
+                                OutlinedTextField(
+                                    value = manualMaxHp[candidate.id] ?: "",
+                                    onValueChange = { manualMaxHp[candidate.id] = it },
+                                    label = { Text("PV máximos") },
+                                    modifier = Modifier.weight(1f)
+                                )
+                            }
+                        }
                     }
                 }
             }
         },
         confirmButton = {
             TextButton(
-                enabled = selections.isNotEmpty(),
+                enabled = validSelections,
                 onClick = {
-                    val combatants = candidates.filter { selections.containsKey(it.id) }.map { c ->
+                    val combatants = selectedCandidates.map { candidate ->
                         Combatant(
-                            id = c.id,
-                            displayName = c.displayName,
-                            isNpc = c.isNpc,
-                            initiative = selections[c.id]?.toIntOrNull() ?: 0,
-                            currentHp = c.currentHp,
-                            maxHp = c.maxHp
+                            id = candidate.id,
+                            displayName = candidate.displayName,
+                            isNpc = candidate.isNpc,
+                            initiative = selections.getValue(candidate.id).toInt(),
+                            currentHp = candidate.currentHp ?: manualCurrentHp.getValue(candidate.id).toInt(),
+                            maxHp = candidate.maxHp ?: manualMaxHp.getValue(candidate.id).toInt()
                         )
                     }
                     onConfirm(combatants)
@@ -527,6 +561,19 @@ private fun CombatTracker(
     Column {
         Text("Rodada ${combat.round}", style = MaterialTheme.typography.labelMedium, fontWeight = FontWeight.Bold)
         Spacer(modifier = Modifier.height(4.dp))
+        if (combat.combatants.isNotEmpty() && combat.currentCombatantId == null) {
+            val allDead = combat.combatants.none { it.currentHp > CombatState.DEAD_HP_THRESHOLD }
+            Text(
+                if (allDead) {
+                    "Todos os combatentes estão mortos (−10 PV ou menos). Encerre o combate para continuar."
+                } else {
+                    "O combatente atual está morto. Avance para o próximo turno."
+                },
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.error
+            )
+            Spacer(modifier = Modifier.height(4.dp))
+        }
         combat.combatants.forEach { combatant ->
             val isCurrentTurn = combatant.id == combat.currentCombatantId
             Card(
@@ -557,18 +604,26 @@ private fun CombatTracker(
                         style = MaterialTheme.typography.bodySmall
                     )
                     if (isDm && onDamage != null) {
-                        Row(modifier = Modifier.wrapContentWidth()) {
-                            TextButton(onClick = { onDamage(combatant.id, 5) }) { Text("Dano 5") }
-                            TextButton(onClick = { onDamage(combatant.id, 1) }) { Text("Dano 1") }
-                            TextButton(onClick = { onDamage(combatant.id, -1) }) { Text("Cura 1") }
-                            TextButton(onClick = { onDamage(combatant.id, -5) }) { Text("Cura 5") }
+                        Column {
+                            Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+                                TextButton(onClick = { onDamage(combatant.id, 5) }, modifier = Modifier.weight(1f)) { Text("Dano 5") }
+                                TextButton(onClick = { onDamage(combatant.id, 1) }, modifier = Modifier.weight(1f)) { Text("Dano 1") }
+                            }
+                            Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+                                TextButton(onClick = { onDamage(combatant.id, -1) }, modifier = Modifier.weight(1f)) { Text("Cura 1") }
+                                TextButton(onClick = { onDamage(combatant.id, -5) }, modifier = Modifier.weight(1f)) { Text("Cura 5") }
+                            }
                         }
                     } else if (!isDm && onRequestHpChange != null && combatant.id == selfId) {
-                        Row(modifier = Modifier.wrapContentWidth()) {
-                            TextButton(onClick = { onRequestHpChange(combatant.id, 5) }) { Text("Pedir dano 5") }
-                            TextButton(onClick = { onRequestHpChange(combatant.id, 1) }) { Text("Pedir dano 1") }
-                            TextButton(onClick = { onRequestHpChange(combatant.id, -1) }) { Text("Pedir cura 1") }
-                            TextButton(onClick = { onRequestHpChange(combatant.id, -5) }) { Text("Pedir cura 5") }
+                        Column {
+                            Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+                                TextButton(onClick = { onRequestHpChange(combatant.id, 5) }, modifier = Modifier.weight(1f)) { Text("Pedir dano 5") }
+                                TextButton(onClick = { onRequestHpChange(combatant.id, 1) }, modifier = Modifier.weight(1f)) { Text("Pedir dano 1") }
+                            }
+                            Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+                                TextButton(onClick = { onRequestHpChange(combatant.id, -1) }, modifier = Modifier.weight(1f)) { Text("Pedir cura 1") }
+                                TextButton(onClick = { onRequestHpChange(combatant.id, -5) }, modifier = Modifier.weight(1f)) { Text("Pedir cura 5") }
+                            }
                         }
                     }
                 }
