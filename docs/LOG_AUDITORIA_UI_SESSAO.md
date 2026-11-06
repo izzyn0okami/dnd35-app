@@ -491,3 +491,7 @@
 - O ACK continua idempotente: se a remoção da outbox não chegar a ser persistida antes de uma queda, a concessão pode ser reenviada; o cliente deve reconhecer o mesmo `grantId` e não duplicar a aplicação.
 - Teste de integração adicionado para manter a compra bloqueada enquanto o commit não é liberado, verificando que nenhum grant chega antes da persistência.
 - **Ainda pendente:** confirmar que o workflow Android passa para o SHA mais recente; teste real de morte/recriação do processo; teste físico Mestre/Jogador; teste de migração 9→10 sobre base real com fichas; revisão de que todos os fluxos de mutação disparam checkpoint. A retomada automática não deve ser considerada validada até esses testes.
+
+- O cliente do Jogador agora aceita o novo IP/porta do QR recuperado e tenta reconectar com o token já recebido, desde que o ID da sessão seja o mesmo. Foi adicionado teste de integração com dois servidores sequenciais e preservação do mesmo ID de participante.
+- Limitação do lado Jogador: o token de reconexão ainda vive na memória de `SessionClient`; se o processo do Jogador também for encerrado, ele não tem token local persistido e deverá entrar novamente como participante novo. A retomada do processo do Mestre permanece o requisito desta etapa.
+- Decoder e restauração agora recusam referências órfãs (fichas, pedidos, tokens ou outbox sem participante no roster), em vez de descartá-las silenciosamente.
