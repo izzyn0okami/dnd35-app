@@ -1738,13 +1738,13 @@ class ExampleUnitTest {
   }
 
   @Test
-  fun damageCannotReduceRegularHpBelowZeroAndHandlesVeryLargeDamage() {
+  fun damageCanReduceRegularHpBelowZeroAndHandlesVeryLargeDamage() {
     assertEquals(
-      com.example.dnd35.viewmodel.HpAdjustment(currentHp = 0, tempHp = 0),
+      com.example.dnd35.viewmodel.HpAdjustment(currentHp = -5, tempHp = 0),
       calculateHpAdjustment(currentHp = 3, maxHp = 20, tempHp = 2, delta = -10)
     )
     assertEquals(
-      com.example.dnd35.viewmodel.HpAdjustment(currentHp = 0, tempHp = 0),
+      com.example.dnd35.viewmodel.HpAdjustment(currentHp = -999, tempHp = 0),
       calculateHpAdjustment(currentHp = 3, maxHp = 20, tempHp = 2, delta = Int.MIN_VALUE)
     )
   }
