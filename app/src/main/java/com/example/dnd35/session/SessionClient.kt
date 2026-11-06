@@ -167,7 +167,7 @@ class SessionClient {
                                 _state.value = current.copy(combat = null)
                             }
                         }
-                        is SessionMessage.RequestResolved -> _requestResults.tryEmit(msg)
+                        is SessionMessage.RequestResolved -> if (generation == connectionGeneration.get()) _requestResults.tryEmit(msg)
                         is SessionMessage.LootChestUpdate -> {
                             val current = _state.value
                             if (generation == connectionGeneration.get() && current is SessionClientState.Connected) {
@@ -175,8 +175,10 @@ class SessionClient {
                             }
                         }
                         is SessionMessage.LootGranted -> {
-                            CharacterJsonAdapters.deserializeInventory(msg.itemJson).firstOrNull()?.let { item ->
-                                _lootGranted.tryEmit(SessionItemGrant(msg.grantId, msg.characterId, item))
+                            if (generation == connectionGeneration.get()) {
+                                CharacterJsonAdapters.deserializeInventory(msg.itemJson).firstOrNull()?.let { item ->
+                                    _lootGranted.tryEmit(SessionItemGrant(msg.grantId, msg.characterId, item))
+                                }
                             }
                         }
                         is SessionMessage.ShopUpdate -> {
@@ -194,12 +196,14 @@ class SessionClient {
                             }
                         }
                         is SessionMessage.ShopPurchaseGranted -> {
-                            CharacterJsonAdapters.deserializeInventory(msg.itemJson).firstOrNull()?.let { item ->
-                                val purse = SessionCoinPurse(msg.goldGp, msg.silverSp, msg.copperCp, msg.platinumPp)
-                                _shopPurchases.tryEmit(SessionItemGrant(msg.grantId, msg.characterId, item, purse))
+                            if (generation == connectionGeneration.get()) {
+                                CharacterJsonAdapters.deserializeInventory(msg.itemJson).firstOrNull()?.let { item ->
+                                    val purse = SessionCoinPurse(msg.goldGp, msg.silverSp, msg.copperCp, msg.platinumPp)
+                                    _shopPurchases.tryEmit(SessionItemGrant(msg.grantId, msg.characterId, item, purse))
+                                }
                             }
                         }
-                        is SessionMessage.PrivateMessage -> _privateMessages.tryEmit(msg.text)
+                        is SessionMessage.PrivateMessage -> if (generation == connectionGeneration.get()) _privateMessages.tryEmit(msg.text)
                         is SessionMessage.Bye -> break
                         else -> Unit
                     }
