@@ -219,10 +219,11 @@ class SessionServer(
     }
 
     /** Guarda a ficha mandada por um jogador; entradas inválidas são ignoradas silenciosamente. */
-    private fun receiveCharacterSheet(participantId: String, characterJson: String) {
-        val parsed = CharacterBackup.parse(characterJson) as? CharacterBackup.ParseResult.Success ?: return
-        val incoming = parsed.characters.firstOrNull()?.entity ?: return
+    private fun receiveCharacterSheet(participantId: String, characterJson: String): Boolean {
+        val parsed = CharacterBackup.parse(characterJson) as? CharacterBackup.ParseResult.Success ?: return false
+        val incoming = parsed.characters.firstOrNull()?.entity ?: return false
         _receivedCharacters.value = _receivedCharacters.value + (participantId to incoming)
+        return true
     }
 
     private fun registerPendingGrant(participantId: String, grantId: String, message: SessionMessage) {
@@ -377,8 +378,14 @@ class SessionServer(
         if (requester?.connected != true) return@synchronized
         when (request.kind) {
             RequestKind.CHARACTER_UPDATE -> {
-                request.characterJson?.let { receiveCharacterSheet(request.requesterId, it) }
-                resolveRequest(request, approved = true)
+                val applied = request.characterJson?.let {
+                    receiveCharacterSheet(request.requesterId, it)
+                } == true
+                if (applied) {
+                    resolveRequest(request, approved = true)
+                } else {
+                    resolveRequest(request, approved = false, reason = "Snapshot de ficha inválido.")
+                }
             }
             RequestKind.COMBAT_HP_CHANGE -> {
                 val combatantId = request.combatantId
