@@ -122,7 +122,7 @@
 ### Referência de regra consultada
 - **Livro do Jogador D&D 3.5, edição brasileira, Capítulo 8: Combate, páginas impressas 124–125** (páginas 128–129 do PDF): 0 PV = incapacitado; -1 a -9 PV = morrendo; -10 PV ou menos = morto. A regra de iniciativa deve preservar a distinção entre incapacitação, condição de morrendo e morte. Esta auditoria não implementa a perda automática de 1 PV ao fim de cada rodada nem testes de estabilização.
 
-## 2026-11-06 — Implementação em andamento: transações e entregas da área Recursos
+## 2026-11-06 — Implementação consolidada: transações e entregas da área Recursos
 
 ### Alterações já registradas nesta branch
 - O HELLO do jogador transmite o ID local da ficha escolhida, separado do JSON de backup; o cliente preserva esse vínculo ao reconectar.
@@ -171,4 +171,6 @@
 - As duas falhas de asserção de grant da execução anterior foram eliminadas nesta execução.
 - A revisão do fluxo confirmou que o servidor valida saldo/preço antes de debitar, gera ID único para cada concessão, conserva grants não confirmados no outbox e só os remove após ACK do cliente; o cliente grava item e saldo na ficha vinculada pelo ID local. A conversão monetária segue o Livro do Jogador brasileiro: 10 PC = 1 PP, 10 PP = 1 PO e 10 PO = 1 PL (Capítulo 7, seção Moedas / Tabela 7-2).
 - A CI valida testes unitários e compilação, mas não substitui o teste integrado com dois aparelhos. O outbox, pedidos, estoque e concessões pendentes permanecem em memória e são perdidos se o Mestre encerrar/reiniciar a hospedagem.
-- PR #321 permanece aberta e draft; não mesclada. A etapa de Recursos não deve ser declarada integralmente concluída até o teste integrado de desconexão, persistência e ACK.
+- PR #321 foi marcada pronta para revisão e mesclada por squash em 2026-11-06. Commit de merge: `3c8be2b69f9a027a147ad1bbdc8af38039910885`.
+- CI #1814 (run `42146247120`) validou o commit funcional `f5adc83cca3571ce20ff2b86ebbd458f352628dd`, com `testDebugUnitTest`, `assembleDebug` e upload do APK debug concluídos com sucesso. A comparação entre esse commit e o head final `5c31d4d127e9f6261be42c529ded5e73d575db83` confirmou que o único commit adicional alterou somente este log (9 linhas adicionadas, sem mudanças de código). A CI #1816, disparada para o commit de documentação, estava em andamento no momento do merge.
+- A mesclagem foi autorizada pelo usuário. O teste integrado em dois aparelhos continua pendente; portanto, a implementação está integrada ao `main`, mas a auditoria funcional de Recursos ainda não está integralmente concluída. Validar compra/loot, desconexão antes e depois da gravação, reconexão e ACK sem duplicação. A persistência após reinício do Mestre continua fora do escopo implementado: outbox, pedidos, estoque e grants pendentes são mantidos em memória e se perdem quando o processo/hospedagem é encerrado.
