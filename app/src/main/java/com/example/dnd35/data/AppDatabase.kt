@@ -10,7 +10,8 @@ import com.example.dnd35.model.CharacterEntity
 
 @Database(entities = [CharacterEntity::class, HostedSessionEntity::class], version = 10, exportSchema = true)
 abstract class AppDatabase : RoomDatabase() {
-    abstract fun characterDao(): CharacterDao\n    abstract fun hostedSessionDao(): HostedSessionDao
+    abstract fun characterDao(): CharacterDao
+    abstract fun hostedSessionDao(): HostedSessionDao
 
     companion object {
         @Volatile
@@ -64,18 +65,33 @@ abstract class AppDatabase : RoomDatabase() {
             }
         }
 
-        private val MIGRATION_9_10 = object : Migration(9, 10) {\n            override fun migrate(db: SupportSQLiteDatabase) {\n                db.execSQL(\"CREATE TABLE IF NOT EXISTS hosted_session (id INTEGER NOT NULL, sessionId TEXT NOT NULL, hostDisplayName TEXT NOT NULL, status TEXT NOT NULL, snapshotVersion INTEGER NOT NULL, snapshotJson TEXT NOT NULL, updatedAt INTEGER NOT NULL, PRIMARY KEY(id))\")\n            }\n        }\n\n        fun getDatabase(context: Context): AppDatabase {
+        private val MIGRATION_9_10 = object : Migration(9, 10) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL(
+                    "CREATE TABLE IF NOT EXISTS hosted_session (" +
+                        "id INTEGER NOT NULL, sessionId TEXT NOT NULL, hostDisplayName TEXT NOT NULL, " +
+                        "status TEXT NOT NULL, snapshotVersion INTEGER NOT NULL, snapshotJson TEXT NOT NULL, " +
+                        "updatedAt INTEGER NOT NULL, PRIMARY KEY(id))"
+                )
+            }
+        }
+
+        fun getDatabase(context: Context): AppDatabase {
             return INSTANCE ?: synchronized(this) {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     AppDatabase::class.java,
                     "dnd35_database"
                 )
-                .addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5, MIGRATION_5_6, MIGRATION_6_7, MIGRATION_7_8, MIGRATION_8_9, MIGRATION_9_10)
-                // Não usar fallbackToDestructiveMigration: fichas são dados do usuário e
-                // não devem ser apagadas silenciosamente quando surgir uma versão nova.
-                .addCallback(DatabaseCallback())
-                .build()
+                    .addMigrations(
+                        MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5,
+                        MIGRATION_5_6, MIGRATION_6_7, MIGRATION_7_8, MIGRATION_8_9,
+                        MIGRATION_9_10
+                    )
+                    // Não usar fallbackToDestructiveMigration: fichas são dados do usuário e
+                    // não devem ser apagadas silenciosamente quando surgir uma versão nova.
+                    .addCallback(DatabaseCallback())
+                    .build()
                 INSTANCE = instance
                 instance
             }
