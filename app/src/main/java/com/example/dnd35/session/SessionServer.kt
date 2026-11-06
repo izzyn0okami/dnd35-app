@@ -265,9 +265,31 @@ class SessionServer(
 
     /** Aplica dano (positivo) ou cura (negativo) a um combatente e sincroniza com todos. */
     fun applyDamage(combatantId: String, amount: Int) {
-        updateCombat { state ->
-            state.copy(combatants = state.combatants.map { if (it.id == combatantId) it.withDamage(amount) else it })
+        val current = _combatState.value ?: return
+        val updatedCombatants = current.combatants.map {
+            if (it.id == combatantId) it.withDamage(amount) else it
         }
+        val updated = current.copy(combatants = updatedCombatants)
+        _combatState.value = updated
+
+        // Mantém a última ficha aprovada do jogador alinhada ao PV autoritativo do combate.
+        // Isso evita iniciar um encontro posterior com PV antigos ou validar recursos sobre snapshot obsoleto.
+        val changedCombatant = updatedCombatants.firstOrNull { it.id == combatantId }
+        if (changedCombatant != null && !changedCombatant.isNpc) {
+            val approvedSheet = _receivedCharacters.value[combatantId]
+            if (approvedSheet != null &&
+                (approvedSheet.currentHp != changedCombatant.currentHp ||
+                    approvedSheet.tempHp != changedCombatant.tempHp)
+            ) {
+                _receivedCharacters.value = _receivedCharacters.value + (
+                    combatantId to approvedSheet.copy(
+                        currentHp = changedCombatant.currentHp,
+                        tempHp = changedCombatant.tempHp
+                    )
+                )
+            }
+        }
+        broadcast(SessionMessage.CombatUpdate(updated))
     }
 
     /** Avança para o próximo combatente com PV positivos e sincroniza a nova ordem/rodada. */
