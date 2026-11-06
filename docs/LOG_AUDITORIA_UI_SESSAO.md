@@ -463,3 +463,16 @@
 - O formato de snapshot está versionado, mas o codec completo e a captura/restauração de participantes, fichas aprovadas, combate, pedidos, baú, loja, chat, tokens e grants ainda precisam ser implementados.
 - Compras/loot ainda exigem transação durável coordenando saldo, estoque/baú, grant e outbox antes de enviar a concessão; o DAO isolado não resolve essa atomicidade.
 - Ainda não foram executados testes Android/Room nem CI para esta branch. Não mesclar até validar migração 9→10, preservação de fichas existentes e integração transacional.
+
+## 2026-11-06 — Codec versionado e captura/restauração do snapshot
+
+- PR #324: SHA inicial desta etapa `05560913fa3c60000721ae9b8a566779b37d5eb4`; CI anterior concluiu com sucesso para a base Room 9→10.
+- Criado `HostedSessionSnapshot` e `HostedSessionSnapshotCodec`, com envelope `dnd35-hosted-session` e versão explícita 1.
+- Snapshot inclui: ID/nome da sessão, roster, vínculos de ficha, fichas recebidas, combate, pedidos pendentes, baú, loja, chat privado, tokens de reconexão e grants pendentes por participante.
+- A lista persistida de participantes usa serialização própria e preserva `characterId`. Não reutiliza `SessionMessage.Roster`, cujo formato de rede deliberadamente omite o ID local da ficha.
+- Fichas recebidas são codificadas pelo formato de backup existente; o vínculo local de ficha permanece no campo `Participant.characterId`. URIs privadas de retratos não são transportadas pelo formato de backup e não são necessárias para reconstruir a autoridade de sessão.
+- Decodificação rejeita formato ou versão desconhecida e falha diante de ficha, pedido ou grant inválido; não descarta silenciosamente partes críticas do snapshot.
+- `SessionServer.createSnapshot()` captura o estado sob `stateLock`. `restoreSnapshot()` restaura os dados antes de abrir a porta, marca jogadores desconectados e mantém tokens e grants para reconexão/entrega.
+- Testes adicionados para round-trip dos componentes do snapshot, versão futura, preservação do ID de ficha no roster e restauração do estado no servidor.
+- **Limitação deliberada:** ainda não há gravação automática dos snapshots no Room, nem retomada no `SessionViewModel`. As mutações ainda não aguardam commit durável; compra/loot continuam sem garantia transacional após queda do processo. Não anunciar recuperação funcional nem mesclar esta PR como solução completa.
+- Próximas etapas: versionar o schema Room 10 gerado; integrar checkpoints sequenciados ao ciclo de vida do servidor; fazer compra/loot persistirem saldo/estoque/grant/outbox antes do envio e só remover outbox após ACK durável; restaurar o host e gerar QR/endereço/porta novos; implementar confirmação explícita para encerramento manual; validar migração 9→10 e reinício real do processo.
