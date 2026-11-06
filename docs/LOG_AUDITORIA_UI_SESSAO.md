@@ -476,3 +476,6 @@
 - Testes adicionados para round-trip dos componentes do snapshot, versão futura, preservação do ID de ficha no roster e restauração do estado no servidor.
 - **Limitação deliberada:** ainda não há gravação automática dos snapshots no Room, nem retomada no `SessionViewModel`. As mutações ainda não aguardam commit durável; compra/loot continuam sem garantia transacional após queda do processo. Não anunciar recuperação funcional nem mesclar esta PR como solução completa.
 - Próximas etapas: versionar o schema Room 10 gerado; integrar checkpoints sequenciados ao ciclo de vida do servidor; fazer compra/loot persistirem saldo/estoque/grant/outbox antes do envio e só remover outbox após ACK durável; restaurar o host e gerar QR/endereço/porta novos; implementar confirmação explícita para encerramento manual; validar migração 9→10 e reinício real do processo.
+
+- O schema Room `app/schemas/com.example.dnd35.data.AppDatabase/10.json` foi versionado. Foi comparado com o artefato `room-schemas` produzido pela CI da base Room 10; preserva a entidade `characters` e inclui somente `hosted_session`. A migração 9→10 cria a mesma definição SQL da entidade.
+- O decoder valida também a integridade estrutural das listas de inventário: JSON truncado/inválido não pode virar uma lista vazia silenciosamente.
