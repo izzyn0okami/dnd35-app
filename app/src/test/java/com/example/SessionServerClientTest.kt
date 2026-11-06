@@ -1384,37 +1384,48 @@ class SessionServerClientTest {
     fun `mensagens privadas simultaneas nao perdem entradas no log do mestre`() = runBlocking {
         val server = SessionServer(sessionId = "sess-private-chat-concurrency", hostDisplayName = "Mestre")
         val port = server.start()
-        val clients = List(6) { SessionClient() }
-        val messagesPerClient = 40
-        val expectedMessages = clients.size * messagesPerClient
+        val workerCount = 6
+        val messagesPerWorker = 40
+        val expectedMessages = workerCount * messagesPerWorker
+        val sockets = mutableListOf<Socket>()
+        val outputs = mutableListOf<DataOutputStream>()
+        val executor = Executors.newFixedThreadPool(workerCount)
         try {
-            clients.forEachIndexed { index, client ->
-                client.connect("127.0.0.1", port, "Jogador $index")
+            // Usa sockets TCP independentes para que a concorrência exercitada seja a dos
+            // handlers do servidor, sem depender do agendamento fire-and-forget do SessionClient.
+            repeat(workerCount) { index ->
+                val socket = Socket("127.0.0.1", port)
+                sockets += socket
+                val input = DataInputStream(socket.getInputStream())
+                val output = DataOutputStream(socket.getOutputStream())
+                outputs += output
+                SessionWire.write(output, SessionMessage.Hello("Jogador $index"))
+                assertTrue(SessionWire.read(input) is SessionMessage.Welcome)
             }
-            clients.forEach { client ->
-                withTimeout(15_000) {
-                    client.state.first { it is SessionClientState.Connected }
-                }
-            }
-
-            // Mantém concorrência real entre conexões, mas aguarda cada lote antes do próximo.
-            // O método público de envio é fire-and-forget; disparar 240 corrotinas de uma vez
-            // tornava o teste dependente do agendamento do dispatcher, não apenas do lock do servidor.
-            repeat(messagesPerClient) { messageIndex ->
-                clients.forEachIndexed { clientIndex, client ->
-                    client.sendPrivateMessage("mensagem-$clientIndex-$messageIndex")
-                }
-                val expectedSoFar = (messageIndex + 1) * clients.size
-                withTimeout(30_000) {
-                    server.privateChatLog.first { it.size >= expectedSoFar }
-                }
+            withTimeout(15_000) {
+                server.roster.first { it.size == workerCount + 1 }
             }
 
-            val entries = server.privateChatLog.value
+            val tasks = outputs.mapIndexed { clientIndex, output ->
+                executor.submit {
+                    repeat(messagesPerWorker) { messageIndex ->
+                        SessionWire.write(
+                            output,
+                            SessionMessage.PrivateMessage("mensagem-$clientIndex-$messageIndex")
+                        )
+                    }
+                }
+            }
+            tasks.forEach { it.get() }
+
+            val entries = withTimeout(30_000) {
+                server.privateChatLog.first { it.size >= expectedMessages }
+            }
             assertEquals(expectedMessages, entries.size)
             assertEquals(expectedMessages, entries.map { it.text }.toSet().size)
         } finally {
-            clients.forEach { it.disconnect() }
+            executor.shutdownNow()
+            sockets.forEach { runCatching { it.close() } }
             server.stop()
         }
     }
