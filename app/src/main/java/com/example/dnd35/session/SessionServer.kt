@@ -412,7 +412,7 @@ class SessionServer(
                             resolveRequest(request, approved = false, reason = "Saldo insuficiente ou preço/saldo inválido.")
                         } else {
                             val grantId = UUID.randomUUID().toString()
-                            val grantedItem = item.copy(id = grantId)
+                            val grantedItem = item.copy(id = grantId, quantity = 1)
                             val grant = SessionMessage.ShopPurchaseGranted(
                                 grantId = grantId,
                                 itemJson = CharacterJsonAdapters.serializeInventory(listOf(grantedItem)),
@@ -425,7 +425,14 @@ class SessionServer(
                             registerPendingGrant(request.requesterId, grantId, grant)
                             _receivedCharacters.value = _receivedCharacters.value +
                                 (request.requesterId to purse.toCharacterUpdate(character))
-                            _shop.value = shopState.copy(items = shopState.items.filterNot { it.id == item.id })
+                            val remainingStock = if (item.quantity > 1) {
+                                shopState.items.map { stock ->
+                                    if (stock.id == item.id) stock.copy(quantity = stock.quantity - 1) else stock
+                                }
+                            } else {
+                                shopState.items.filterNot { it.id == item.id }
+                            }
+                            _shop.value = shopState.copy(items = remainingStock)
                             broadcastShop()
                             sendTo(request.requesterId, grant)
                             resolveRequest(request, approved = true)
