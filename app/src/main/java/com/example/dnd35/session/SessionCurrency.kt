@@ -31,7 +31,7 @@ object SessionCurrency {
     private val HUNDRED = BigDecimal("100")
     private val THOUSAND = BigDecimal("1000")
 
-    /** Returns null for negative, non-finite, fractional-coin or overflowing balances. */
+    /** Returns null for negative, non-finite, sub-copper or overflowing balances. */
     fun totalCopper(character: CharacterEntity): Long? {
         val values = listOf(character.goldGp, character.silverSp, character.copperCp, character.platinumPp)
         if (values.any { !it.isFinite() || it < 0f }) return null
