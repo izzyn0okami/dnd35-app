@@ -353,14 +353,10 @@ class SessionServer(
 
     /** Guarda um pedido de jogador na fila de pendentes, aguardando aprovação do Mestre. */
     private fun receiveActionRequest(participantId: String, msg: SessionMessage.ActionRequested) {
-        // Resource requests need the latest snapshot to validate a transaction. A
-        // CHARACTER_UPDATE request, however, must not mutate the stored sheet before the DM
-        // explicitly approves it below.
-        if (msg.kind == RequestKind.TAKE_LOOT || msg.kind == RequestKind.BUY_FROM_SHOP) {
-            msg.characterJson?.let {
-                receiveCharacterSheet(participantId, it, preserveAuthoritativeCurrency = true)
-            }
-        }
+        // A player-submitted snapshot is never authoritative merely because a request
+        // arrived. Resource validation uses the last server-approved sheet and its purse;
+        // CHARACTER_UPDATE is applied only in approveRequest().
+
         val requesterName = _roster.value.firstOrNull { it.id == participantId }?.displayName ?: "Jogador"
         val request = ActionRequest(
             id = UUID.randomUUID().toString(),
