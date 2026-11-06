@@ -759,8 +759,8 @@ private fun AddLootItemForm(onAddItem: (CharacterInventoryItem) -> Unit) {
     var cost by remember { mutableStateOf("0") }
 
     val parsedQuantity = quantity.toIntOrNull()?.takeIf { it > 0 }
-    val parsedWeight = weight.toFloatOrNull()?.takeIf { it.isFinite() && it >= 0f }
-    val parsedCost = cost.toFloatOrNull()?.takeIf { it.isFinite() && it >= 0f }
+    val parsedWeight = weight.replace(',', '.').toFloatOrNull()?.takeIf { it.isFinite() && it >= 0f }
+    val parsedCost = cost.replace(',', '.').toFloatOrNull()?.takeIf { it.isFinite() && it >= 0f }
     val valid = name.isNotBlank() && category.isNotBlank() &&
         parsedQuantity != null && parsedWeight != null && parsedCost != null
 
@@ -785,7 +785,7 @@ private fun AddLootItemForm(onAddItem: (CharacterInventoryItem) -> Unit) {
         Spacer(modifier = Modifier.height(4.dp))
         OutlinedTextField(
             value = quantity,
-            onValueChange = { quantity = it.filter(Char::isDigit).take(6) },
+            onValueChange = { quantity = it.take(7) },
             label = { Text("Quantidade") },
             modifier = Modifier.fillMaxWidth(),
             singleLine = true,
@@ -794,7 +794,7 @@ private fun AddLootItemForm(onAddItem: (CharacterInventoryItem) -> Unit) {
         Spacer(modifier = Modifier.height(4.dp))
         OutlinedTextField(
             value = weight,
-            onValueChange = { weight = it.filter { ch -> ch.isDigit() || ch == '.' || ch == ',' }.replace(',', '.') },
+            onValueChange = { weight = it.take(12) },
             label = { Text("Peso por unidade (lb)") },
             modifier = Modifier.fillMaxWidth(),
             singleLine = true,
@@ -803,7 +803,7 @@ private fun AddLootItemForm(onAddItem: (CharacterInventoryItem) -> Unit) {
         Spacer(modifier = Modifier.height(4.dp))
         OutlinedTextField(
             value = cost,
-            onValueChange = { cost = it.filter { ch -> ch.isDigit() || ch == '.' || ch == ',' }.replace(',', '.') },
+            onValueChange = { cost = it.take(12) },
             label = { Text("Preço por unidade (po)") },
             modifier = Modifier.fillMaxWidth(),
             singleLine = true,
