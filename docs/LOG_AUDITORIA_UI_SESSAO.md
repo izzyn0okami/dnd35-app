@@ -447,3 +447,19 @@
 - Diferenciar explicitamente os estados de sessão ativa, recuperação pendente/recuperável e encerrada manualmente. O diálogo deve explicar que encerrar desconecta os jogadores e descarta a possibilidade de retomar aquela sessão, caso esse seja o comportamento final definido.
 - Persistência e retomada devem ser implementadas em etapas: primeiro modelo durável e transações atômicas; depois restauração/reconexão; por fim ciclo de vida da hospedagem e diálogo de confirmação, com testes de morte/recriação do processo.
 - A sessão não deve ser considerada encerrada apenas porque o processo morreu; a intenção é preservar o último estado confirmado no armazenamento local do Mestre.
+
+
+## 2026-11-06 — Primeira camada de armazenamento durável da sessão
+
+### Implementação iniciada na branch `feature/durable-session-storage`
+- Criada a entidade Room `HostedSessionEntity`, com registro singleton para a sessão hospedada neste aparelho.
+- O registro separa identificador da sessão, nome do Mestre, estado (`ACTIVE`/`ENDED`), versão do formato do snapshot, conteúdo JSON e instante da última gravação.
+- Criado `HostedSessionDao` com leitura exclusiva de sessão recuperável, leitura do registro atual, substituição do checkpoint, marcação de encerramento manual condicionada ao ID da sessão e limpeza explícita.
+- A entidade não armazena objetos de runtime (sockets, Bitmap, Flow ou corrotinas); esses elementos deverão ser reconstruídos na recuperação.
+- `AppDatabase` foi atualizado da versão 9 para 10, incluindo a entidade e a migração não destrutiva `MIGRATION_9_10`, que cria somente a tabela `hosted_session`. A tabela `characters` e suas fichas não são alteradas.
+
+### Limites desta fatia
+- Esta camada fornece armazenamento, mas ainda não conecta checkpoints às mutações do `SessionServer`; não considerar a recuperação funcional nesta etapa.
+- O formato de snapshot está versionado, mas o codec completo e a captura/restauração de participantes, fichas aprovadas, combate, pedidos, baú, loja, chat, tokens e grants ainda precisam ser implementados.
+- Compras/loot ainda exigem transação durável coordenando saldo, estoque/baú, grant e outbox antes de enviar a concessão; o DAO isolado não resolve essa atomicidade.
+- Ainda não foram executados testes Android/Room nem CI para esta branch. Não mesclar até validar migração 9→10, preservação de fichas existentes e integração transacional.
