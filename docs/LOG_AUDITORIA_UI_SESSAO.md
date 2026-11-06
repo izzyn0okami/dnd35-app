@@ -206,3 +206,10 @@
 - Adicionado um lock dedicado para serializar inclusão, aprovação e negação dos pedidos. Uma segunda aprovação/negação do mesmo ID não encontra mais o pedido pendente e não repete a transação.
 - Teste concorrente dispara duas aprovações para a mesma compra e verifica que o saldo é debitado uma única vez e o estoque é consumido uma única vez.
 - Aguardar CI após o commit; teste ainda não validado nesta etapa.
+
+
+### Diagnóstico da primeira CI do teste concorrente — PR #322
+- A execução de `testDebugUnitTest` executou 451 testes e falhou somente no novo teste de aprovação concorrente da compra. A compilação Kotlin foi concluída; `assembleDebug` foi ignorado porque os testes falharam.
+- A causa foi uma expectativa incorreta no teste, não uma falha demonstrada na serialização: o servidor normaliza o saldo para a denominação canônica de platina. O teste esperava 900 em `goldGp`, mas o fluxo de moeda representa 1.000 PO como 100 PP e, após uma compra de 100 PO, o saldo esperado é 90 PP e 0 PO.
+- Corrigidas as asserções para verificar `goldGp = 0`, `platinumPp = 90` e o mesmo saldo na concessão recebida pelo jogador.
+- A correção ainda depende de nova CI; não declarar o teste aprovado até a execução mais recente do head confirmar `testDebugUnitTest` e `assembleDebug`.
