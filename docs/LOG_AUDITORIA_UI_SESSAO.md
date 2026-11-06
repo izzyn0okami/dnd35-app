@@ -232,3 +232,12 @@
 - A revisão da branch não encontrou comentários nem threads de revisão pendentes.
 - A CI valida testes automatizados e compilação, mas não substitui teste integrado em dois aparelhos. Continuam pendentes os cenários reais de aprovação/negação de atualização de ficha, reconexão, compra/loot e ACK de concessões sem duplicação. Não declarar a auditoria multiplayer integralmente concluída até esses testes.
 - A PR permanece em rascunho e não foi mesclada.
+
+
+### Revisão estática da entrega de grants e ACK — PR #322 (2026-11-06)
+- O cliente recebe a concessão, encaminha o evento à tela de Recursos e chama `applySessionGrant()` antes de enviar `GrantAcknowledged`. A confirmação, portanto, ocorre somente depois que a ficha vinculada foi localizada e a gravação local terminou com sucesso.
+- `applySessionGrant()` busca a ficha pelo ID persistente recebido no vínculo da sessão, grava inventário e saldo da compra na mesma atualização da entidade e usa `grantId` como ID do item. Se o mesmo grant for reapresentado após uma queda, a presença desse ID faz a operação retornar sucesso sem inserir outra cópia; então o cliente pode confirmar novamente.
+- O servidor guarda grants pendentes por participante, reenvia os grants na reconexão reconhecida pelo token e remove cada grant ao receber o ACK correspondente.
+- Não foi encontrado, na suíte atual, um teste de integração que percorra explicitamente a sequência completa: grant emitido -> conexão cai antes do ACK -> grant reenviado com o mesmo ID -> ACK recebido -> reconexão posterior sem novo envio. Os testes atuais cobrem identificadores/protocolo e aplicação local idempotente, mas não substituem esse cenário de transporte ponta a ponta.
+- A revisão estática não identificou falha funcional demonstrada nesse fluxo. A cobertura de regressão para replay/ACK permanece uma lacuna e deve ser adicionada antes de declarar a entrega resiliente integralmente auditada.
+- Limitação já conhecida e mantida: o outbox é em memória. O replay protege contra queda de conexão enquanto o processo do Mestre continua ativo; não protege contra encerramento/reinício do processo ou do aparelho do Mestre. Persistência durável exige uma etapa separada de armazenamento.
