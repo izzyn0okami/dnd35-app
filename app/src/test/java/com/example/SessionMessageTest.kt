@@ -222,12 +222,6 @@ class SessionMessageTest {
         val roundTrip = SessionMessage.fromJson(msg.toJson()) as SessionMessage.LootGranted
         assertEquals(item, CharacterJsonAdapters.deserializeInventory(roundTrip.itemJson).single())
         assertEquals(42L, roundTrip.characterId)
-        assertEquals("grant-2", roundTrip.grantId)
-        assertEquals(1f, roundTrip.goldGp)
-        assertEquals(2f, roundTrip.silverSp)
-        assertEquals(3f, roundTrip.copperCp)
-        assertEquals(4f, roundTrip.platinumPp)
-        assertEquals(42L, roundTrip.characterId)
         assertEquals("grant-1", roundTrip.grantId)
     }
 
@@ -277,6 +271,12 @@ class SessionMessageTest {
         )
         val roundTrip = SessionMessage.fromJson(msg.toJson()) as SessionMessage.ShopPurchaseGranted
         assertEquals(item, CharacterJsonAdapters.deserializeInventory(roundTrip.itemJson).single())
+        assertEquals(42L, roundTrip.characterId)
+        assertEquals("grant-2", roundTrip.grantId)
+        assertEquals(1f, roundTrip.goldGp)
+        assertEquals(2f, roundTrip.silverSp)
+        assertEquals(3f, roundTrip.copperCp)
+        assertEquals(4f, roundTrip.platinumPp)
     }
 
     @Test
