@@ -516,14 +516,22 @@ class SessionServerClientTest {
             val item = CharacterInventoryItem(name = "Elmo élfico", category = "Armaduras", quantity = 1)
             server.addLootItem(item)
 
+            val character = CharacterEntity(id = 1301L, name = "Legolas", characterClass = "Patrulheiro", level = 5)
+            val characterJson = CharacterBackup.toJson(listOf(character)) { null }
             val client = SessionClient()
             try {
-                client.connect("127.0.0.1", port, "Legolas")
+                client.connect("127.0.0.1", port, "Legolas", characterJson, character.id)
                 withTimeout(15_000) {
+                    client.state.first { it is SessionClientState.Connected }
                     client.state.mapNotNull { (it as? SessionClientState.Connected)?.lootChest }.first { it.isNotEmpty() }
                 }
 
-                client.requestAction(RequestKind.TAKE_LOOT, "Pedido de pegar \"Elmo élfico\"", lootItemId = item.id)
+                client.requestAction(
+                    RequestKind.TAKE_LOOT,
+                    "Pedido de pegar \"Elmo élfico\"",
+                    characterJson = characterJson,
+                    lootItemId = item.id
+                )
                 val request = withTimeout(15_000) { server.pendingRequests.first { it.isNotEmpty() } }.single()
                 assertEquals(RequestKind.TAKE_LOOT, request.kind)
                 assertEquals(item.id, request.lootItemId)
@@ -540,7 +548,9 @@ class SessionServerClientTest {
                 server.approveRequest(request.id)
 
                 val granted = grantedDeferred.await()
-                assertEquals(item, granted)
+                assertEquals(item, granted.item)
+                assertEquals(character.id, granted.characterId)
+                assertTrue(granted.grantId.isNotBlank())
 
                 val resolved = resolvedDeferred.await()
                 assertTrue(resolved.approved)
@@ -659,14 +669,28 @@ class SessionServerClientTest {
             val item = CharacterInventoryItem(name = "Elmo élfico", category = "Armaduras", quantity = 1, costGp = 500f)
             server.openShop(7L, "Vendedor Gundren", listOf(item))
 
+            val character = CharacterEntity(
+                id = 1701L,
+                name = "Legolas",
+                characterClass = "Patrulheiro",
+                level = 5,
+                goldGp = 1000f
+            )
+            val characterJson = CharacterBackup.toJson(listOf(character)) { null }
             val client = SessionClient()
             try {
-                client.connect("127.0.0.1", port, "Legolas")
+                client.connect("127.0.0.1", port, "Legolas", characterJson, character.id)
                 withTimeout(15_000) {
+                    client.state.first { it is SessionClientState.Connected }
                     client.state.mapNotNull { (it as? SessionClientState.Connected)?.shop }.first()
                 }
 
-                client.requestAction(RequestKind.BUY_FROM_SHOP, "Pedido de comprar \"Elmo élfico\"", shopItemId = item.id)
+                client.requestAction(
+                    RequestKind.BUY_FROM_SHOP,
+                    "Pedido de comprar \"Elmo élfico\"",
+                    characterJson = characterJson,
+                    shopItemId = item.id
+                )
                 val request = withTimeout(15_000) { server.pendingRequests.first { it.isNotEmpty() } }.single()
                 assertEquals(RequestKind.BUY_FROM_SHOP, request.kind)
                 assertEquals(item.id, request.shopItemId)
@@ -681,7 +705,9 @@ class SessionServerClientTest {
                 server.approveRequest(request.id)
 
                 val granted = grantedDeferred.await()
-                assertEquals(item, granted)
+                assertEquals(item, granted.item)
+                assertEquals(character.id, granted.characterId)
+                assertEquals(500f, granted.coinPurse?.goldGp)
 
                 val resolved = resolvedDeferred.await()
                 assertTrue(resolved.approved)
