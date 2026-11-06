@@ -343,3 +343,23 @@
 - O encerramento limpa os estados mutáveis da sessão sob o mesmo lock.
 - Acrescentado teste concorrente com 200 adições ao baú, verificando que nenhum item é perdido.
 - Estas alterações e o novo teste foram adicionados à PR #322 existente. A CI precisa ser executada novamente no head atualizado antes de considerar a revisão concluída.
+
+
+## 2026-11-06 — Validação final e merge da PR #322
+
+### Validação final
+- Head validado: `a530dfa5306795b77ba45eb51283cf2f0d8f9c5c`.
+- Android build #1923, run ID `42229638697`: sucesso, associado exatamente ao head acima. `testDebugUnitTest`, `assembleDebug` e publicação dos artefatos foram concluídos.
+- A PR estava aberta, pronta para revisão e mergeável; não havia revisões, threads ou comentários pendentes. Era a única PR aberta no repositório.
+- O usuário autorizou explicitamente a mesclagem em 2026-11-06.
+
+### Resultado
+- PR #322 (`fix/session-character-update-approval`) mesclada por squash.
+- Commit de merge: `8527a7b13a47a71b7117fd01534450bd990bd8fe`.
+- A implementação de autoridade dos snapshots, aprovação de atualização de ficha, reconexão, grants/ACK, sincronização de PV e serialização de estado foi integrada à branch `main`.
+- Os cenários integrados 3 a 6 permanecem registrados como aprovação provisória do usuário, não como execução técnica independente confirmada nesta validação.
+
+### Limitações e continuidade
+- Outbox, pedidos, estoque e grants pendentes continuam em memória e podem ser perdidos se a hospedagem/processo do Mestre for encerrado ou reiniciado. Persistência durável permanece fora do escopo desta PR.
+- Teste integrado físico em dois aparelhos continua sendo uma validação recomendada para compra/loot, desconexão, reconexão e ACK; não confundir CI verde com teste de campo.
+- O acompanhamento automático da PR #322 foi encerrado após o merge.
