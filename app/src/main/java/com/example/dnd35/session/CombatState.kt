@@ -40,7 +40,7 @@ data class CombatState(
     val round: Int = 1
 ) {
     val currentCombatantId: String?
-        get() = combatants.getOrNull(currentTurnIndex)?.id
+        get() = combatants.getOrNull(currentTurnIndex)?.takeIf { it.currentHp > 0 }?.id
 
     /**
      * Avança para o próximo combatente com PV positivos. Combatentes com 0 PV ou menos
