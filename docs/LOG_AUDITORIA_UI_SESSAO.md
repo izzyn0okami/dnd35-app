@@ -407,3 +407,35 @@
 - As três primeiras execuções do teste concorrente expiraram; a quarta, no head final, passou. O histórico de tentativas permanece registrado acima para evitar repetição do diagnóstico.
 - A correção de concorrência do chat e o descarte de eventos de conexões obsoletas estão integrados em `main`.
 - A persistência durável do outbox, pedidos, estoque e grants continua não implementada. A próxima etapa da auditoria deve primeiro mapear o ciclo de vida e os dados que precisam sobreviver a encerramento inesperado do processo do Mestre; qualquer implementação de persistência deve ser tratada como escopo próprio.
+
+
+## 2026-11-06 — Diagnóstico de persistência e recuperação da sessão do Mestre
+
+### Escopo inspecionado
+- `SessionServer.kt`: criação/encerramento do servidor, estado da sessão, pedidos, fichas recebidas, combate, baú, loja, chat privado, tokens de reconexão e outbox de grants.
+- `SessionViewModel.kt`: ciclo de vida da hospedagem, estado apresentado à UI e limpeza em `onCleared()`.
+- `AppDatabase.kt`, `CharacterDao.kt` e `CharacterModels.kt`: armazenamento Room existente e entidades persistidas.
+
+### Constatações confirmadas
+1. O estado autoritativo da sessão é mantido em memória no objeto `SessionServer`: roster, fichas recebidas, combate, pedidos pendentes, baú, loja, chat privado, tokens de reconexão e grants aguardando ACK.
+2. `SessionServer.stop()` fecha o servidor e os sockets, limpa tokens e grants e redefine os demais estados para os valores iniciais. Não há rotina de restauração de sessão.
+3. `SessionViewModel` mantém o servidor apenas em uma propriedade de instância. `onCleared()` chama `stopHosting()`; portanto, a hospedagem não tem mecanismo próprio de restauração após destruição do processo/ViewModel.
+4. O banco Room atual contém somente a entidade `CharacterEntity`, na tabela `characters` (versão 9). Não há entidade/DAO para sessões, participantes, pedidos, estoque/baú, estado de combate ou outbox de grants.
+5. A ficha do jogador é persistida localmente, mas isso não torna duráveis os dados de sessão mantidos no aparelho do Mestre. A reconexão atual depende de `rejoinTokens` e do estado de participantes que existem apenas na memória do servidor.
+6. A aplicação já usa Room com migrações explícitas e evita migração destrutiva; qualquer expansão do banco deve preservar as fichas existentes.
+
+### Impacto
+- Se o processo do Mestre for encerrado inesperadamente, não existe estado persistido para reconstruir a sessão, restaurar os tokens de reconexão, recuperar pedidos pendentes, reabrir a loja/baú, reconstruir o combate ou reenviar grants não confirmados.
+- A reconexão atual cobre queda/retorno de conexão enquanto o mesmo servidor permanece vivo; não equivale a retomar uma sessão após reinício do processo.
+- Os testes unitários e a CI não demonstram recuperação após morte do processo. Isso requer testes de persistência/reinicialização, além dos testes físicos em dois aparelhos já registrados.
+
+### Decisões ainda necessárias antes de implementar
+- Definir se o requisito é retomar a sessão automaticamente após recriar o processo do Mestre ou apenas permitir salvar/encerrar uma sessão de forma controlada. Não presumir que uma sessão encerrada voluntariamente deva ser retomável.
+- Definir quais dados precisam sobreviver: identidade/convite da sessão, participantes e tokens, fichas aprovadas, combate, pedidos pendentes, baú, loja e grants pendentes.
+- Definir política de expiração/segurança dos tokens e o que fazer com jogadores que tentem reconectar depois de a sessão ser restaurada.
+- Garantir atomicidade entre débito de moedas/alteração de estoque, criação do grant e gravação no outbox; o ACK só deve remover um grant depois da confirmação de persistência local pelo jogador.
+- Projetar entidades e migrações Room sem alterar ou apagar fichas existentes. A gravação e a restauração devem ser serializadas com as mutações do estado autoritativo.
+
+### Situação
+- Diagnóstico estático concluído; nenhuma implementação de persistência foi feita nesta etapa.
+- A persistência durável é uma frente separada e maior que a correção de concorrência da PR #323. Não iniciar alteração de protocolo, serviço em primeiro plano ou migração do banco sem definir primeiro o requisito de retomada e o ciclo de vida desejado.
