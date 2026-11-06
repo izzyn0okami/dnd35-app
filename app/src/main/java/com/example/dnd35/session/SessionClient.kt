@@ -17,6 +17,7 @@ import java.io.DataOutputStream
 import java.io.IOException
 import java.net.InetSocketAddress
 import java.net.Socket
+import java.util.concurrent.atomic.AtomicLong
 
 /** Estado da conexão do lado do Jogador. */
 sealed class SessionClientState {
@@ -50,10 +51,12 @@ class SessionClient {
     private var lastPort: Int = 0
     private var lastDisplayName: String = ""
     private var lastCharacterJson: String? = null
+    private var lastCharacterId: Long? = null
 
     // Token recebido no último WELCOME (ver SessionMessage.Hello/Welcome) — mandado de volta ao
     // reconectar para o Mestre reconhecer que é o mesmo participante, não um novo.
     private var rejoinToken: String? = null
+    private val connectionGeneration = AtomicLong(0L)
 
     private val _state = MutableStateFlow<SessionClientState>(SessionClientState.Connecting)
     val state: StateFlow<SessionClientState> = _state
@@ -65,13 +68,13 @@ class SessionClient {
 
     // Item concedido ao pegar algo do baú de loot (pedido aprovado) — evento, não estado
     // contínuo, já que vira um item novo no inventário local assim que é recebido.
-    private val _lootGranted = MutableSharedFlow<CharacterInventoryItem>(extraBufferCapacity = 4)
-    val lootGranted: SharedFlow<CharacterInventoryItem> = _lootGranted
+    private val _lootGranted = MutableSharedFlow<SessionItemGrant>(extraBufferCapacity = 4)
+    val lootGranted: SharedFlow<SessionItemGrant> = _lootGranted
 
     // Item concedido ao comprar algo da loja de NPC (pedido aprovado) — mesmo motivo do loot:
     // evento, não estado contínuo.
-    private val _shopPurchases = MutableSharedFlow<CharacterInventoryItem>(extraBufferCapacity = 4)
-    val shopPurchases: SharedFlow<CharacterInventoryItem> = _shopPurchases
+    private val _shopPurchases = MutableSharedFlow<SessionItemGrant>(extraBufferCapacity = 4)
+    val shopPurchases: SharedFlow<SessionItemGrant> = _shopPurchases
 
     // Mensagens privadas recebidas do Mestre — evento, não estado contínuo.
     private val _privateMessages = MutableSharedFlow<String>(extraBufferCapacity = 8)
@@ -82,13 +85,14 @@ class SessionClient {
      * mandada ao Mestre logo após a entrada ser confirmada. `null` entra na sessão sem vincular
      * nenhuma ficha (por exemplo, um observador).
      */
-    fun connect(host: String, port: Int, displayName: String, characterJson: String? = null) {
+    fun connect(host: String, port: Int, displayName: String, characterJson: String? = null, characterId: Long? = null) {
         lastHost = host
         lastPort = port
         lastDisplayName = displayName
         lastCharacterJson = characterJson
+        lastCharacterId = characterId?.takeIf { it > 0L }
         rejoinToken = null // entrada nova: nunca reconecta como um participante de uma sessão anterior.
-        connectInternal(host, port, displayName, characterJson, rejoinToken = null)
+        connectInternal(host, port, displayName, characterJson, lastCharacterId, rejoinToken = null)
     }
 
     /**
@@ -98,11 +102,12 @@ class SessionClient {
      */
     fun reconnect(): Boolean {
         val host = lastHost ?: return false
-        connectInternal(host, lastPort, lastDisplayName, lastCharacterJson, rejoinToken)
+        connectInternal(host, lastPort, lastDisplayName, lastCharacterJson, lastCharacterId, rejoinToken)
         return true
     }
 
-    private fun connectInternal(host: String, port: Int, displayName: String, characterJson: String?, rejoinToken: String?) {
+    private fun connectInternal(host: String, port: Int, displayName: String, characterJson: String?, characterId: Long?, rejoinToken: String?) {
+        val generation = connectionGeneration.incrementAndGet()
         _state.value = SessionClientState.Connecting
         // Fecha uma conexão anterior ainda viva, se houver — evita duas leituras concorrentes
         // (o laço antigo e o novo) brigando pelas mesmas variáveis de instância caso reconnect()
@@ -112,59 +117,71 @@ class SessionClient {
             try {
                 val sock = Socket()
                 sock.connect(InetSocketAddress(host, port), CONNECT_TIMEOUT_MS)
+                if (generation != connectionGeneration.get()) {
+                    runCatching { sock.close() }
+                    return@launch
+                }
                 socket = sock
 
                 val input = DataInputStream(sock.getInputStream())
                 val out = DataOutputStream(sock.getOutputStream())
                 output = out
 
-                SessionWire.write(out, SessionMessage.Hello(displayName, rejoinToken))
+                SessionWire.write(out, SessionMessage.Hello(displayName, rejoinToken, characterId))
 
                 val welcome = SessionWire.read(input) as? SessionMessage.Welcome
                 if (welcome == null) {
-                    _state.value = SessionClientState.Disconnected("Resposta inesperada do Mestre.")
+                    if (generation == connectionGeneration.get()) _state.value = SessionClientState.Disconnected("Resposta inesperada do Mestre.")
+                    return@launch
+                }
+                if (generation != connectionGeneration.get()) {
+                    runCatching { sock.close() }
                     return@launch
                 }
                 this@SessionClient.rejoinToken = welcome.rejoinToken
                 if (characterJson != null) {
                     SessionWire.write(out, SessionMessage.CharacterSheet(characterJson))
                 }
-                _state.value = SessionClientState.Connected(welcome.participantId, welcome.sessionId)
+                if (generation == connectionGeneration.get()) {
+                    _state.value = SessionClientState.Connected(welcome.participantId, welcome.sessionId)
+                }
 
                 while (true) {
                     val msg = SessionWire.read(input) ?: break
                     when (msg) {
                         is SessionMessage.Roster -> {
                             val current = _state.value
-                            if (current is SessionClientState.Connected) {
+                            if (generation == connectionGeneration.get() && current is SessionClientState.Connected) {
                                 _state.value = current.copy(participants = msg.participants)
                             }
                         }
                         is SessionMessage.CombatUpdate -> {
                             val current = _state.value
-                            if (current is SessionClientState.Connected) {
+                            if (generation == connectionGeneration.get() && current is SessionClientState.Connected) {
                                 _state.value = current.copy(combat = msg.state)
                             }
                         }
                         is SessionMessage.EndCombat -> {
                             val current = _state.value
-                            if (current is SessionClientState.Connected) {
+                            if (generation == connectionGeneration.get() && current is SessionClientState.Connected) {
                                 _state.value = current.copy(combat = null)
                             }
                         }
                         is SessionMessage.RequestResolved -> _requestResults.tryEmit(msg)
                         is SessionMessage.LootChestUpdate -> {
                             val current = _state.value
-                            if (current is SessionClientState.Connected) {
+                            if (generation == connectionGeneration.get() && current is SessionClientState.Connected) {
                                 _state.value = current.copy(lootChest = CharacterJsonAdapters.deserializeInventory(msg.itemsJson))
                             }
                         }
                         is SessionMessage.LootGranted -> {
-                            CharacterJsonAdapters.deserializeInventory(msg.itemJson).firstOrNull()?.let { _lootGranted.tryEmit(it) }
+                            CharacterJsonAdapters.deserializeInventory(msg.itemJson).firstOrNull()?.let { item ->
+                                _lootGranted.tryEmit(SessionItemGrant(msg.grantId, msg.characterId, item))
+                            }
                         }
                         is SessionMessage.ShopUpdate -> {
                             val current = _state.value
-                            if (current is SessionClientState.Connected) {
+                            if (generation == connectionGeneration.get() && current is SessionClientState.Connected) {
                                 _state.value = current.copy(
                                     shop = ShopSnapshot(msg.npcName, CharacterJsonAdapters.deserializeInventory(msg.itemsJson))
                                 )
@@ -172,29 +189,36 @@ class SessionClient {
                         }
                         is SessionMessage.ShopClosed -> {
                             val current = _state.value
-                            if (current is SessionClientState.Connected) {
+                            if (generation == connectionGeneration.get() && current is SessionClientState.Connected) {
                                 _state.value = current.copy(shop = null)
                             }
                         }
                         is SessionMessage.ShopPurchaseGranted -> {
-                            CharacterJsonAdapters.deserializeInventory(msg.itemJson).firstOrNull()?.let { _shopPurchases.tryEmit(it) }
+                            CharacterJsonAdapters.deserializeInventory(msg.itemJson).firstOrNull()?.let { item ->
+                                val purse = SessionCoinPurse(msg.goldGp, msg.silverSp, msg.copperCp, msg.platinumPp)
+                                _shopPurchases.tryEmit(SessionItemGrant(msg.grantId, msg.characterId, item, purse))
+                            }
                         }
                         is SessionMessage.PrivateMessage -> _privateMessages.tryEmit(msg.text)
                         is SessionMessage.Bye -> break
                         else -> Unit
                     }
                 }
-                _state.value = SessionClientState.Disconnected("Conexão encerrada pelo Mestre.")
+                if (generation == connectionGeneration.get()) _state.value = SessionClientState.Disconnected("Conexão encerrada pelo Mestre.")
             } catch (e: IOException) {
                 CrashLogStore.record("MULTIPLAYER_CLIENT", "Conexão interrompida ou protocolo inválido", e)
-                _state.value = SessionClientState.Disconnected(
-                    e.message?.takeIf { it.isNotBlank() } ?: "Falha de comunicação com o Mestre."
-                )
+                if (generation == connectionGeneration.get()) {
+                    _state.value = SessionClientState.Disconnected(
+                        e.message?.takeIf { it.isNotBlank() } ?: "Falha de comunicação com o Mestre."
+                    )
+                }
             } catch (e: Exception) {
                 CrashLogStore.record("MULTIPLAYER_CLIENT", "Erro inesperado no cliente multiplayer", e)
-                _state.value = SessionClientState.Disconnected(
-                    "Erro inesperado na comunicação: ${e.message ?: e.javaClass.simpleName}"
-                )
+                if (generation == connectionGeneration.get()) {
+                    _state.value = SessionClientState.Disconnected(
+                        "Erro inesperado na comunicação: ${e.message ?: e.javaClass.simpleName}"
+                    )
+                }
             }
         }
     }
@@ -217,6 +241,15 @@ class SessionClient {
             runCatching {
                 SessionWire.write(out, SessionMessage.ActionRequested(kind, summary, characterJson, combatantId, hpDelta, lootItemId, shopItemId))
             }.onFailure { CrashLogStore.record("MULTIPLAYER_CLIENT", "Falha ao enviar pedido de ação", it) }
+        }
+    }
+
+    /** Confirma ao Mestre que o grant foi persistido na ficha local. */
+    fun acknowledgeGrant(grantId: String) {
+        val out = output ?: return
+        scope.launch {
+            runCatching { SessionWire.write(out, SessionMessage.GrantAcknowledged(grantId)) }
+                .onFailure { CrashLogStore.record("MULTIPLAYER_CLIENT", "Falha ao confirmar entrega de recurso", it) }
         }
     }
 

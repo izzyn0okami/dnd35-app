@@ -282,6 +282,14 @@ private fun DmHostContent(viewModel: SessionViewModel, characterViewModel: Chara
                 }
                 SessionAreaTab.COMBAT -> CombatSection(viewModel, characterViewModel, s)
                 SessionAreaTab.RESOURCES -> {
+                    if (s.pendingRequests.isNotEmpty()) {
+                        PendingRequestsSection(
+                            requests = s.pendingRequests,
+                            onApprove = { viewModel.approveRequest(it) },
+                            onDeny = { viewModel.denyRequest(it) }
+                        )
+                        Spacer(modifier = Modifier.height(16.dp))
+                    }
                     LootChestSection(items = s.lootChest, isDm = true, onAddItem = { viewModel.addLootItem(it) }, onRemoveItem = { viewModel.removeLootItem(it) })
                     Spacer(modifier = Modifier.height(16.dp))
                     DmShopSection(shop = s.shop, characterViewModel = characterViewModel,
@@ -745,7 +753,16 @@ private fun LootChestSection(
 @Composable
 private fun AddLootItemForm(onAddItem: (CharacterInventoryItem) -> Unit) {
     var name by remember { mutableStateOf("") }
+    var category by remember { mutableStateOf("Itens de Aventura") }
     var quantity by remember { mutableStateOf("1") }
+    var weight by remember { mutableStateOf("0") }
+    var cost by remember { mutableStateOf("0") }
+
+    val parsedQuantity = quantity.toIntOrNull()?.takeIf { it > 0 }
+    val parsedWeight = weight.replace(',', '.').toFloatOrNull()?.takeIf { it.isFinite() && it >= 0f }
+    val parsedCost = cost.replace(',', '.').toFloatOrNull()?.takeIf { it.isFinite() && it >= 0f }
+    val valid = name.isNotBlank() && category.isNotBlank() &&
+        parsedQuantity != null && parsedWeight != null && parsedCost != null
 
     Column {
         Text("Adicionar item ao baú", style = MaterialTheme.typography.labelMedium)
@@ -754,24 +771,66 @@ private fun AddLootItemForm(onAddItem: (CharacterInventoryItem) -> Unit) {
             value = name,
             onValueChange = { name = it },
             label = { Text("Nome do item") },
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
+            singleLine = true
+        )
+        Spacer(modifier = Modifier.height(4.dp))
+        OutlinedTextField(
+            value = category,
+            onValueChange = { category = it },
+            label = { Text("Categoria") },
+            modifier = Modifier.fillMaxWidth(),
+            singleLine = true
         )
         Spacer(modifier = Modifier.height(4.dp))
         OutlinedTextField(
             value = quantity,
-            onValueChange = { quantity = it },
+            onValueChange = { quantity = it.take(7) },
             label = { Text("Quantidade") },
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
+            singleLine = true,
+            isError = parsedQuantity == null
+        )
+        Spacer(modifier = Modifier.height(4.dp))
+        OutlinedTextField(
+            value = weight,
+            onValueChange = { weight = it.take(12) },
+            label = { Text("Peso por unidade (lb)") },
+            modifier = Modifier.fillMaxWidth(),
+            singleLine = true,
+            isError = parsedWeight == null
+        )
+        Spacer(modifier = Modifier.height(4.dp))
+        OutlinedTextField(
+            value = cost,
+            onValueChange = { cost = it.take(12) },
+            label = { Text("Preço por unidade (po)") },
+            modifier = Modifier.fillMaxWidth(),
+            singleLine = true,
+            isError = parsedCost == null
         )
         Spacer(modifier = Modifier.height(8.dp))
         Button(
             onClick = {
-                val qty = quantity.toIntOrNull()?.coerceAtLeast(1) ?: 1
-                onAddItem(CharacterInventoryItem(name = name.trim(), category = "Itens de Aventura", quantity = qty))
+                val qty = parsedQuantity ?: return@Button
+                val itemWeight = parsedWeight ?: return@Button
+                val itemCost = parsedCost ?: return@Button
+                if (name.isBlank() || category.isBlank()) return@Button
+                onAddItem(
+                    CharacterInventoryItem(
+                        name = name.trim(),
+                        category = category.trim(),
+                        quantity = qty,
+                        weightLb = itemWeight,
+                        costGp = itemCost
+                    )
+                )
                 name = ""
                 quantity = "1"
+                weight = "0"
+                cost = "0"
             },
-            enabled = name.isNotBlank()
+            enabled = valid
         ) {
             Text("Adicionar ao baú")
         }
@@ -1016,6 +1075,7 @@ private fun PlayerJoinContent(viewModel: SessionViewModel, characterViewModel: C
     var manualHost by remember { mutableStateOf("") }
     var manualPort by remember { mutableStateOf("") }
     var selectedCharacter by remember(activeCharacter) { mutableStateOf(activeCharacter) }
+    val linkedCharacter = myCharacters.firstOrNull { it.id == selectedCharacter?.id }
     var joinFeedback by remember { mutableStateOf<String?>(null) }
 
     val scanLauncher = rememberLauncherForActivityResult(ScanContract()) { result ->
@@ -1026,7 +1086,7 @@ private fun PlayerJoinContent(viewModel: SessionViewModel, characterViewModel: C
                 joinFeedback = "QR Code inválido ou incompatível. Solicite ao Mestre um novo código."
             } else {
                 joinFeedback = null
-                viewModel.joinSession(payload, displayName, selectedCharacter)
+                viewModel.joinSession(payload, displayName, linkedCharacter)
             }
         }
     }
@@ -1120,7 +1180,7 @@ private fun PlayerJoinContent(viewModel: SessionViewModel, characterViewModel: C
             Button(
                 onClick = {
                     if (validManualHost && validManualPort) {
-                        viewModel.joinSession(manualHost.trim(), manualPortValue!!, displayName, selectedCharacter)
+                        viewModel.joinSession(manualHost.trim(), manualPortValue!!, displayName, linkedCharacter)
                     }
                 },
                 enabled = validManualHost && validManualPort
@@ -1141,16 +1201,23 @@ private fun PlayerJoinContent(viewModel: SessionViewModel, characterViewModel: C
             var shopFeedback by remember { mutableStateOf<String?>(null) }
             val receivedDmMessages = remember { mutableStateListOf<String>() }
             LaunchedEffect(viewModel) {
-                viewModel.lootGranted.collect { item ->
-                    characterViewModel.addInventoryItem(item.copy(id = java.util.UUID.randomUUID().toString()))
-                    lootFeedback = "Você recebeu \"${item.name}\" do baú de loot!"
+                viewModel.lootGranted.collect { grant ->
+                    if (characterViewModel.applySessionGrant(grant)) {
+                        viewModel.acknowledgeResourceGrant(grant.grantId)
+                        lootFeedback = "Você recebeu \"${grant.item.name}\" do baú de loot!"
+                    } else {
+                        lootFeedback = "Não foi possível localizar ou atualizar a ficha vinculada. A entrega permanece pendente."
+                    }
                 }
             }
             LaunchedEffect(viewModel) {
-                viewModel.shopPurchaseGranted.collect { item ->
-                    characterViewModel.addInventoryItem(item.copy(id = java.util.UUID.randomUUID().toString()))
-                    characterViewModel.quickCoinAction(-item.costGp)
-                    shopFeedback = "Você comprou \"${item.name}\" por ${item.costGp} po!"
+                viewModel.shopPurchaseGranted.collect { grant ->
+                    if (characterViewModel.applySessionGrant(grant)) {
+                        viewModel.acknowledgeResourceGrant(grant.grantId)
+                        shopFeedback = "Você comprou \"${grant.item.name}\" por ${grant.item.costGp} po!"
+                    } else {
+                        shopFeedback = "Não foi possível atualizar a ficha vinculada. A entrega permanece pendente."
+                    }
                 }
             }
             LaunchedEffect(viewModel) { viewModel.playerPrivateMessages.collect { text -> receivedDmMessages.add(text) } }
@@ -1202,12 +1269,12 @@ private fun PlayerJoinContent(viewModel: SessionViewModel, characterViewModel: C
                 }
                 SessionAreaTab.RESOURCES -> {
                     LootChestSection(items = s.lootChest, isDm = false, onRequestTake = { item ->
-                        viewModel.requestTakeLoot(item.id, "Pedido de pegar \"${item.name}\" do baú de loot")
+                        viewModel.requestTakeLoot(item.id, "Pedido de pegar \"${item.name}\" do baú de loot", linkedCharacter)
                     })
                     s.shop?.let { shop ->
                         Spacer(modifier = Modifier.height(16.dp))
                         PlayerShopSection(shop = shop, onRequestBuy = { item ->
-                            viewModel.requestBuyFromShop(item.id, "Pedido de comprar \"${item.name}\" (${item.costGp} po)")
+                            viewModel.requestBuyFromShop(item.id, "Pedido de comprar \"${item.name}\" (${item.costGp} po)", linkedCharacter)
                         })
                     }
                 }

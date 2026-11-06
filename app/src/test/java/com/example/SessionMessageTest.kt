@@ -34,9 +34,10 @@ class SessionMessageTest {
 
     @Test
     fun `Hello com rejoinToken preserva o token (reconexao)`() {
-        val msg = SessionMessage.Hello("Aragorn", rejoinToken = "token-123")
+        val msg = SessionMessage.Hello("Aragorn", rejoinToken = "token-123", characterId = 42L)
         val roundTrip = SessionMessage.fromJson(msg.toJson()) as SessionMessage.Hello
         assertEquals("token-123", roundTrip.rejoinToken)
+        assertEquals(42L, roundTrip.characterId)
     }
 
     @Test
@@ -48,7 +49,7 @@ class SessionMessageTest {
     }
 
     @Test
-    fun `Roster preserva a lista de participantes, incluindo characterId nulo e connected`() {
+    fun `Roster nao expoe IDs locais de ficha e preserva estado de conexao`() {
         val participants = listOf(
             Participant("dm", "Mestre", ParticipantRole.DM),
             Participant("p1", "Legolas", ParticipantRole.PLAYER, characterId = 42L),
@@ -56,7 +57,7 @@ class SessionMessageTest {
         )
         val msg = SessionMessage.Roster(participants)
         val roundTrip = SessionMessage.fromJson(msg.toJson()) as SessionMessage.Roster
-        assertEquals(participants, roundTrip.participants)
+        assertNull(roundTrip.participants.single { it.id == "p1" }.characterId)
         assertEquals(false, roundTrip.participants.single { it.id == "p2" }.connected)
     }
 
@@ -217,9 +218,11 @@ class SessionMessageTest {
     @Test
     fun `LootGranted preserva o item concedido`() {
         val item = CharacterInventoryItem(id = "item-2", name = "Espada longa +1", category = "Armas", quantity = 1)
-        val msg = SessionMessage.LootGranted(CharacterJsonAdapters.serializeInventory(listOf(item)))
+        val msg = SessionMessage.LootGranted(grantId = "grant-1", itemJson = CharacterJsonAdapters.serializeInventory(listOf(item)), characterId = 42L)
         val roundTrip = SessionMessage.fromJson(msg.toJson()) as SessionMessage.LootGranted
         assertEquals(item, CharacterJsonAdapters.deserializeInventory(roundTrip.itemJson).single())
+        assertEquals(42L, roundTrip.characterId)
+        assertEquals("grant-1", roundTrip.grantId)
     }
 
     @Test
@@ -257,9 +260,29 @@ class SessionMessageTest {
     @Test
     fun `ShopPurchaseGranted preserva o item comprado`() {
         val item = CharacterInventoryItem(id = "shop-item-2", name = "Adaga +1", category = "Armas", quantity = 1, costGp = 320f)
-        val msg = SessionMessage.ShopPurchaseGranted(CharacterJsonAdapters.serializeInventory(listOf(item)))
+        val msg = SessionMessage.ShopPurchaseGranted(
+            grantId = "grant-2",
+            itemJson = CharacterJsonAdapters.serializeInventory(listOf(item)),
+            characterId = 42L,
+            goldGp = 1f,
+            silverSp = 2f,
+            copperCp = 3f,
+            platinumPp = 4f
+        )
         val roundTrip = SessionMessage.fromJson(msg.toJson()) as SessionMessage.ShopPurchaseGranted
         assertEquals(item, CharacterJsonAdapters.deserializeInventory(roundTrip.itemJson).single())
+        assertEquals(42L, roundTrip.characterId)
+        assertEquals("grant-2", roundTrip.grantId)
+        assertEquals(1f, roundTrip.goldGp)
+        assertEquals(2f, roundTrip.silverSp)
+        assertEquals(3f, roundTrip.copperCp)
+        assertEquals(4f, roundTrip.platinumPp)
+    }
+
+    @Test
+    fun `GrantAcknowledged preserva o identificador da entrega`() {
+        val msg = SessionMessage.GrantAcknowledged("grant-42")
+        assertEquals(msg, SessionMessage.fromJson(msg.toJson()))
     }
 
     @Test

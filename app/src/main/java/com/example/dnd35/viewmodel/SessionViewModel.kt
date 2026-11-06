@@ -107,14 +107,13 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
         _playerRequestFeedback.value = null
     }
 
-    // Item concedido ao pegar algo do baú de loot (pedido aprovado) — a UI usa isso para colocar
-    // o item no inventário local da ficha ativa (SessionViewModel não mexe em fichas direto).
-    private val _lootGranted = MutableSharedFlow<CharacterInventoryItem>(extraBufferCapacity = 4)
-    val lootGranted: SharedFlow<CharacterInventoryItem> = _lootGranted
+    // Concessão de loot aprovada — a UI persiste na ficha local vinculada ao participante.
+    private val _lootGranted = MutableSharedFlow<com.example.dnd35.session.SessionItemGrant>(replay = 8, extraBufferCapacity = 4)
+    val lootGranted: SharedFlow<com.example.dnd35.session.SessionItemGrant> = _lootGranted
 
-    // Item concedido ao comprar algo da loja de NPC (pedido aprovado) — mesmo motivo do loot.
-    private val _shopPurchaseGranted = MutableSharedFlow<CharacterInventoryItem>(extraBufferCapacity = 4)
-    val shopPurchaseGranted: SharedFlow<CharacterInventoryItem> = _shopPurchaseGranted
+    // Compra aprovada com saldo atualizado; a UI persiste item e moedas na ficha vinculada.
+    private val _shopPurchaseGranted = MutableSharedFlow<com.example.dnd35.session.SessionItemGrant>(replay = 8, extraBufferCapacity = 4)
+    val shopPurchaseGranted: SharedFlow<com.example.dnd35.session.SessionItemGrant> = _shopPurchaseGranted
 
     // Mensagens privadas recebidas do Mestre — evento, não estado contínuo.
     private val _playerPrivateMessages = MutableSharedFlow<String>(extraBufferCapacity = 8)
@@ -288,7 +287,7 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
         val newClient = SessionClient()
         client = newClient
         viewModelScope.launchCollectClientState(newClient)
-        newClient.connect(hostAddress, port, name, characterJson)
+        newClient.connect(hostAddress, port, name, characterJson, character?.id)
     }
 
     private fun CoroutineScope.launchCollectClientState(activeClient: SessionClient) {
@@ -315,16 +314,16 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
             }
         }
         launch {
-            activeClient.lootGranted.collect { item ->
+            activeClient.lootGranted.collect { grant ->
                 if (client === activeClient) {
-                    _lootGranted.tryEmit(item)
+                    _lootGranted.tryEmit(grant)
                 }
             }
         }
         launch {
-            activeClient.shopPurchases.collect { item ->
+            activeClient.shopPurchases.collect { grant ->
                 if (client === activeClient) {
-                    _shopPurchaseGranted.tryEmit(item)
+                    _shopPurchaseGranted.tryEmit(grant)
                 }
             }
         }
@@ -349,13 +348,20 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
     }
 
     /** Jogador: pede ao Mestre para pegar um item do baú de loot compartilhado. */
-    fun requestTakeLoot(itemId: String, summary: String) {
-        client?.requestAction(RequestKind.TAKE_LOOT, summary, lootItemId = itemId)
+    fun requestTakeLoot(itemId: String, summary: String, character: CharacterEntity?) {
+        val snapshot = character?.let { CharacterBackup.toJson(listOf(it)) { null } }
+        client?.requestAction(RequestKind.TAKE_LOOT, summary, characterJson = snapshot, lootItemId = itemId)
     }
 
     /** Jogador: pede ao Mestre para comprar um item da loja de NPC aberta no momento. */
-    fun requestBuyFromShop(itemId: String, summary: String) {
-        client?.requestAction(RequestKind.BUY_FROM_SHOP, summary, shopItemId = itemId)
+    fun requestBuyFromShop(itemId: String, summary: String, character: CharacterEntity?) {
+        val snapshot = character?.let { CharacterBackup.toJson(listOf(it)) { null } }
+        client?.requestAction(RequestKind.BUY_FROM_SHOP, summary, characterJson = snapshot, shopItemId = itemId)
+    }
+
+    /** Jogador: confirma que um grant foi salvo na ficha local. */
+    fun acknowledgeResourceGrant(grantId: String) {
+        client?.acknowledgeGrant(grantId)
     }
 
     /** Jogador: manda uma mensagem privada ao Mestre (não passa por aprovação). */

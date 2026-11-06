@@ -33,6 +33,8 @@ class SessionServer(
     private var serverSocket: ServerSocket? = null
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
     private val clients = ConcurrentHashMap<String, ClientHandle>()
+    // In-memory outbox: grants remain until the player confirms local persistence.
+    private val pendingGrants = ConcurrentHashMap<String, ConcurrentHashMap<String, SessionMessage>>()
 
     // Token de reconexão (ver SessionMessage.Hello/Welcome) -> id de participante. Permite que um
     // Jogador cuja conexão caiu (Wi-Fi instável, app em segundo plano) volte como o MESMO
@@ -94,6 +96,7 @@ class SessionServer(
         runCatching { serverSocket?.close() }
         clients.values.forEach { handle -> handle.outbound.close(); runCatching { handle.socket.close() } }
         clients.clear()
+        pendingGrants.clear()
         rejoinTokens.clear()
         _roster.value = listOf(dmParticipant)
         _receivedCharacters.value = emptyMap()
@@ -144,19 +147,27 @@ class SessionServer(
                 }
             }
             enqueue(newHandle, SessionMessage.Welcome(id, sessionId, token))
-            addParticipant(Participant(id, hello.displayName, ParticipantRole.PLAYER))
+            val linkedCharacterId = hello.characterId?.takeIf { it > 0L }
+                ?: _roster.value.firstOrNull { it.id == id }?.characterId
+            addParticipant(Participant(id, hello.displayName, ParticipantRole.PLAYER, characterId = linkedCharacterId))
             broadcastRoster()
             _combatState.value?.let { enqueue(newHandle, SessionMessage.CombatUpdate(it)) }
             if (_lootChest.value.isNotEmpty()) enqueue(newHandle, SessionMessage.LootChestUpdate(CharacterJsonAdapters.serializeInventory(_lootChest.value)))
             _shop.value?.let { enqueue(newHandle, SessionMessage.ShopUpdate(it.npcName, CharacterJsonAdapters.serializeInventory(it.items))) }
+            pendingGrants[id]?.values?.forEach { enqueue(newHandle, it) }
 
             while (true) {
                 val msg = SessionWire.read(input) ?: break
                 when (msg) {
                     is SessionMessage.Bye -> break
-                    is SessionMessage.CharacterSheet -> receiveCharacterSheet(id, msg.characterJson)
+                    is SessionMessage.CharacterSheet -> receiveCharacterSheet(
+                        id,
+                        msg.characterJson,
+                        preserveAuthoritativeCurrency = _receivedCharacters.value.containsKey(id)
+                    )
                     is SessionMessage.ActionRequested -> receiveActionRequest(id, msg)
                     is SessionMessage.PrivateMessage -> receivePrivateMessage(id, msg.text)
+                    is SessionMessage.GrantAcknowledged -> acknowledgeGrant(id, msg.grantId)
                     else -> Unit
                 }
             }
@@ -185,22 +196,48 @@ class SessionServer(
     /**
      * Marca um participante como desconectado SEM tirá-lo do roster nem descartar a última ficha
      * recebida — ele pode reconectar (mesmo id, via token) e o Mestre continua vendo quem ele era
-     * enquanto isso. Pedidos pendentes dele são descartados: aprovar um pedido de pegar loot ou
-     * comprar da loja manda o item só para quem pediu (sendTo), e com a conexão caída isso se
-     * perderia — o item sumiria do baú/loja sem ir para ninguém. Reconectado, o Jogador pode
-     * mandar o pedido de novo. Ver [stop] para a limpeza completa quando a sessão é encerrada.
+     * enquanto isso. Pedidos pendentes são preservados e só podem ser aprovados quando o
+     * participante estiver conectado; concessões já aprovadas permanecem no outbox até a
+     * confirmação de persistência pelo cliente. Ver [stop] para a limpeza ao encerrar a sessão.
      */
     private fun markDisconnected(id: String) {
         _roster.value = _roster.value.map { if (it.id == id) it.copy(connected = false) else it }
-        _pendingRequests.value = _pendingRequests.value.filterNot { it.requesterId == id }
+        // Keep pending requests while the participant is offline. They remain visible to the
+        // DM and can be resolved after reconnection; resource requests must not be approved
+        // while their recipient cannot receive the resulting grant.
         broadcastRoster()
     }
 
     /** Guarda a ficha mandada por um jogador; entradas inválidas são ignoradas silenciosamente. */
-    private fun receiveCharacterSheet(participantId: String, characterJson: String) {
+    private fun receiveCharacterSheet(
+        participantId: String,
+        characterJson: String,
+        preserveAuthoritativeCurrency: Boolean = false
+    ) {
         val parsed = CharacterBackup.parse(characterJson) as? CharacterBackup.ParseResult.Success ?: return
-        val entity = parsed.characters.firstOrNull()?.entity ?: return
+        val incoming = parsed.characters.firstOrNull()?.entity ?: return
+        val current = _receivedCharacters.value[participantId]
+        val entity = if (preserveAuthoritativeCurrency && current != null) {
+            // A pending purchase may already have debited the server purse while the client
+            // still holds an older snapshot. Resource requests must never restore that balance.
+            incoming.copy(
+                goldGp = current.goldGp,
+                silverSp = current.silverSp,
+                copperCp = current.copperCp,
+                platinumPp = current.platinumPp
+            )
+        } else incoming
         _receivedCharacters.value = _receivedCharacters.value + (participantId to entity)
+    }
+
+    private fun registerPendingGrant(participantId: String, grantId: String, message: SessionMessage) {
+        pendingGrants.computeIfAbsent(participantId) { ConcurrentHashMap() }[grantId] = message
+    }
+
+    private fun acknowledgeGrant(participantId: String, grantId: String) {
+        val grants = pendingGrants[participantId] ?: return
+        grants.remove(grantId)
+        if (grants.isEmpty()) pendingGrants.remove(participantId, grants)
     }
 
     private fun broadcastRoster() {
@@ -211,12 +248,12 @@ class SessionServer(
         clients.values.forEach { enqueue(it, message) }
     }
 
-    private fun enqueue(handle: ClientHandle, message: SessionMessage) {
-        if (handle.outbound.trySend(message).isFailure) {
-            CrashLogStore.record("MULTIPLAYER_SERVER", "Fila de saída indisponível ou saturada para ${handle.id}")
-            handle.outbound.close()
-            runCatching { handle.socket.close() }
-        }
+    private fun enqueue(handle: ClientHandle, message: SessionMessage): Boolean {
+        if (handle.outbound.trySend(message).isSuccess) return true
+        CrashLogStore.record("MULTIPLAYER_SERVER", "Fila de saída indisponível ou saturada para ${handle.id}")
+        handle.outbound.close()
+        runCatching { handle.socket.close() }
+        return false
     }
 
     // --- Combate (estado global, autoridade do Mestre) ---
@@ -316,6 +353,15 @@ class SessionServer(
 
     /** Guarda um pedido de jogador na fila de pendentes, aguardando aprovação do Mestre. */
     private fun receiveActionRequest(participantId: String, msg: SessionMessage.ActionRequested) {
+        // Reconcile the latest client-side sheet before a resource transaction is evaluated.
+        // The participant's local database ID remains a separate, session-scoped link.
+        msg.characterJson?.let {
+            receiveCharacterSheet(
+                participantId,
+                it,
+                preserveAuthoritativeCurrency = msg.kind == RequestKind.TAKE_LOOT || msg.kind == RequestKind.BUY_FROM_SHOP
+            )
+        }
         val requesterName = _roster.value.firstOrNull { it.id == participantId }?.displayName ?: "Jogador"
         val request = ActionRequest(
             id = UUID.randomUUID().toString(),
@@ -335,6 +381,8 @@ class SessionServer(
     /** Aprova um pedido pendente: aplica a mudança correspondente e avisa quem pediu. */
     fun approveRequest(requestId: String) {
         val request = _pendingRequests.value.firstOrNull { it.id == requestId } ?: return
+        val requester = _roster.value.firstOrNull { it.id == request.requesterId }
+        if (requester?.connected != true) return
         when (request.kind) {
             RequestKind.CHARACTER_UPDATE -> {
                 request.characterJson?.let { receiveCharacterSheet(request.requesterId, it) }
@@ -352,23 +400,68 @@ class SessionServer(
                     // Outro jogador pode ter pego o item antes, ou o Mestre já removeu do baú.
                     resolveRequest(request, approved = false, reason = "Item não está mais disponível no baú.")
                 } else {
-                    _lootChest.value = _lootChest.value.filterNot { it.id == item.id }
-                    broadcastLootChest()
-                    sendTo(request.requesterId, SessionMessage.LootGranted(CharacterJsonAdapters.serializeInventory(listOf(item))))
-                    resolveRequest(request, approved = true)
+                    val characterId = _roster.value.firstOrNull { it.id == request.requesterId }?.characterId
+                    if (characterId == null || _receivedCharacters.value[request.requesterId] == null) {
+                        resolveRequest(request, approved = false, reason = "Vincule uma ficha válida antes de retirar itens do baú.")
+                    } else {
+                        val grantId = UUID.randomUUID().toString()
+                        val grantedItem = item.copy(id = grantId)
+                        val grant = SessionMessage.LootGranted(
+                            grantId = grantId,
+                            itemJson = CharacterJsonAdapters.serializeInventory(listOf(grantedItem)),
+                            characterId = characterId
+                        )
+                        registerPendingGrant(request.requesterId, grantId, grant)
+                        _lootChest.value = _lootChest.value.filterNot { it.id == item.id }
+                        broadcastLootChest()
+                        sendTo(request.requesterId, grant)
+                        resolveRequest(request, approved = true)
+                    }
                 }
             }
             RequestKind.BUY_FROM_SHOP -> {
                 val shopState = _shop.value
                 val item = request.shopItemId?.let { id -> shopState?.items?.firstOrNull { it.id == id } }
-                if (shopState == null || item == null) {
+                if (shopState == null || item == null || item.quantity <= 0) {
                     // A loja pode ter fechado, ou outro jogador já comprou esse item antes.
                     resolveRequest(request, approved = false, reason = "Item não está mais disponível na loja.")
                 } else {
-                    _shop.value = shopState.copy(items = shopState.items.filterNot { it.id == item.id })
-                    broadcastShop()
-                    sendTo(request.requesterId, SessionMessage.ShopPurchaseGranted(CharacterJsonAdapters.serializeInventory(listOf(item))))
-                    resolveRequest(request, approved = true)
+                    val characterId = _roster.value.firstOrNull { it.id == request.requesterId }?.characterId
+                    val character = _receivedCharacters.value[request.requesterId]
+                    if (characterId == null || character == null) {
+                        resolveRequest(request, approved = false, reason = "Vincule uma ficha válida antes de comprar.")
+                    } else {
+                        val purse = SessionCurrency.debit(character, item.costGp)
+                        if (purse == null) {
+                            resolveRequest(request, approved = false, reason = "Saldo insuficiente ou preço/saldo inválido.")
+                        } else {
+                            val grantId = UUID.randomUUID().toString()
+                            val grantedItem = item.copy(id = grantId, quantity = 1)
+                            val grant = SessionMessage.ShopPurchaseGranted(
+                                grantId = grantId,
+                                itemJson = CharacterJsonAdapters.serializeInventory(listOf(grantedItem)),
+                                characterId = characterId,
+                                goldGp = purse.goldGp,
+                                silverSp = purse.silverSp,
+                                copperCp = purse.copperCp,
+                                platinumPp = purse.platinumPp
+                            )
+                            registerPendingGrant(request.requesterId, grantId, grant)
+                            _receivedCharacters.value = _receivedCharacters.value +
+                                (request.requesterId to purse.toCharacterUpdate(character))
+                            val remainingStock = if (item.quantity > 1) {
+                                shopState.items.map { stock ->
+                                    if (stock.id == item.id) stock.copy(quantity = stock.quantity - 1) else stock
+                                }
+                            } else {
+                                shopState.items.filterNot { it.id == item.id }
+                            }
+                            _shop.value = shopState.copy(items = remainingStock)
+                            broadcastShop()
+                            sendTo(request.requesterId, grant)
+                            resolveRequest(request, approved = true)
+                        }
+                    }
                 }
             }
         }
@@ -395,8 +488,9 @@ class SessionServer(
         clients[participantId]?.let { handle -> runCatching { handle.socket.close() } }
     }
 
-    private fun sendTo(participantId: String, message: SessionMessage) {
-        clients[participantId]?.let { enqueue(it, message) }
+    private fun sendTo(participantId: String, message: SessionMessage): Boolean {
+        val handle = clients[participantId] ?: return false
+        return enqueue(handle, message)
     }
 
     companion object {

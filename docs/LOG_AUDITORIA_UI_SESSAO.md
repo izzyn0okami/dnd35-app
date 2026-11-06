@@ -121,3 +121,54 @@
 
 ### Referência de regra consultada
 - **Livro do Jogador D&D 3.5, edição brasileira, Capítulo 8: Combate, páginas impressas 124–125** (páginas 128–129 do PDF): 0 PV = incapacitado; -1 a -9 PV = morrendo; -10 PV ou menos = morto. A regra de iniciativa deve preservar a distinção entre incapacitação, condição de morrendo e morte. Esta auditoria não implementa a perda automática de 1 PV ao fim de cada rodada nem testes de estabilização.
+
+## 2026-11-06 — Implementação em andamento: transações e entregas da área Recursos
+
+### Alterações já registradas nesta branch
+- O HELLO do jogador transmite o ID local da ficha escolhida, separado do JSON de backup; o cliente preserva esse vínculo ao reconectar.
+- O Mestre mantém o vínculo entre participante e ficha no roster local. O ID local não é transmitido no roster para os demais jogadores.
+- Pedidos de pegar loot e comprar enviam um snapshot atualizado da ficha escolhida; o servidor reconcilia os dados, mas preserva o saldo monetário já autoritativo para impedir que um snapshot antigo restaure moedas gastas. A reconexão também preserva o saldo mantido pelo Mestre.
+- O servidor rejeita retirada/compra quando não existe ficha vinculada e recebida.
+- Compras passam a validar preço e saldo no servidor. A aritmética usa cobre como unidade exata: 1 PP = 10 PC, 1 PO = 100 PC e 1 PL = 1.000 PC. Preço ou saldo inválido, subcobre ou insuficiente é rejeitado; a conversão preserva o valor total.
+- O saldo atualizado e o item comprado são enviados como uma única mensagem de concessão, e a ficha local recebe item e moedas na mesma gravação por ID.
+- A concessão usa identificador único como ID do item local. Reenvio não duplica o item se ele já foi persistido.
+- O servidor mantém um outbox em memória por participante, reenviando concessões não confirmadas após reconexão. O cliente só confirma depois de salvar a ficha.
+- Pedidos pendentes não são descartados quando o jogador desconecta. O Mestre não pode aprová-los enquanto o destinatário estiver desconectado.
+- A aba Recursos do Mestre também exibe os pedidos pendentes.
+- O formulário do baú agora aceita categoria, quantidade, peso e preço; entradas inválidas não são convertidas silenciosamente para quantidade 1.
+
+### Testes acrescentados/atualizados
+- Testes unitários de conversão monetária, saldo insuficiente, preço subcobre, valores negativos e valores não finitos.
+- Testes de serialização do ID local no HELLO, ocultação do ID local no roster, ID de concessão, saldo pós-compra e confirmação de entrega.
+- A execução dos testes e a compilação ainda dependem da CI da PR; nenhuma aprovação de CI é declarada nesta etapa.
+
+### Limitações ainda abertas
+- O outbox é mantido somente em memória no processo do Mestre. Encerrar o processo/hospedagem perde pedidos, estoque e concessões pendentes; persistência após reinício exige armazenamento local durável.
+- A entrega ainda precisa ser validada em teste integrado com dois aparelhos, incluindo queda de conexão antes/depois da gravação e confirmação.
+- Na loja, cada compra debita o preço registrado e entrega uma unidade; quando o estoque é uma pilha, a quantidade é reduzida em 1 e o restante permanece disponível.
+- A CI precisa confirmar compilação, testes unitários e empacotamento do APK antes de abrir solicitação de merge.
+
+
+### Correções após a primeira execução da CI (2026-11-06)
+- A primeira CI executou 448 testes e identificou três timeouts: reconexão rápida, concessão de loot e compra na loja.
+- Os testes de loot e loja foram atualizados para entrar com uma ficha local identificada, enviar o snapshot da ficha no pedido e verificar o ID da ficha e os dados do grant recebido. O teste da loja também usa saldo suficiente e verifica o saldo após a compra.
+- O cliente passou a numerar as tentativas de conexão. Respostas e atualizações de estado de uma conexão antiga são ignoradas quando uma tentativa mais recente já começou; isso evita que o encerramento tardio da conexão anterior substitua o estado da reconexão.
+- Estas correções foram publicadas na branch da PR #321. A nova execução da CI ainda precisa confirmar que os três timeouts foram eliminados; não considerar a etapa validada até testDebugUnitTest e assembleDebug concluírem com sucesso.
+
+- Ajuste adicional no teste de compra: o troco é conferido na denominação canônica de platina (50 PP para saldo inicial de 1.000 PO e preço de 500 PO), sem esperar que o servidor mantenha moedas em ouro quando a conversão as representa em platina.
+
+
+### Diagnóstico da CI #1811 — falhas nas asserções de concessão (2026-11-06)
+- A CI executou 448 testes; 2 falharam: concessão de loot e compra na loja. A compilação Kotlin foi concluída, mas `assembleDebug` e upload do APK foram ignorados devido à falha dos testes.
+- A causa foi localizada nos testes: o servidor substitui o ID original do item pelo ID único do grant para permitir deduplicação/idempotência na persistência local. As asserções ainda comparavam o item recebido com o objeto original, incluindo o ID antigo, embora os demais campos fossem preservados.
+- Corrigidas as duas expectativas para comparar o item recebido com `item.copy(id = granted.grantId)`. Isso alinha o teste ao contrato de concessão sem alterar o comportamento de produção.
+- A correção foi enviada à mesma branch da PR #321. A CI precisa ser executada novamente; até sua conclusão, a etapa Recursos permanece não validada.
+
+
+### Validação da CI #1814 — PR #321 (2026-11-06)
+- Commit validado: `f5adc83cca3571ce20ff2b86ebbd458f352628dd`.
+- Workflow Android build nº 1814, run ID `42146247120`: sucesso. `testDebugUnitTest`, `assembleDebug`, upload dos esquemas Room e upload do APK debug concluídos com sucesso.
+- As duas falhas de asserção de grant da execução anterior foram eliminadas nesta execução.
+- A revisão do fluxo confirmou que o servidor valida saldo/preço antes de debitar, gera ID único para cada concessão, conserva grants não confirmados no outbox e só os remove após ACK do cliente; o cliente grava item e saldo na ficha vinculada pelo ID local. A conversão monetária segue o Livro do Jogador brasileiro: 10 PC = 1 PP, 10 PP = 1 PO e 10 PO = 1 PL (Capítulo 7, seção Moedas / Tabela 7-2).
+- A CI valida testes unitários e compilação, mas não substitui o teste integrado com dois aparelhos. O outbox, pedidos, estoque e concessões pendentes permanecem em memória e são perdidos se o Mestre encerrar/reiniciar a hospedagem.
+- PR #321 permanece aberta e draft; não mesclada. A etapa de Recursos não deve ser declarada integralmente concluída até o teste integrado de desconexão, persistência e ACK.
