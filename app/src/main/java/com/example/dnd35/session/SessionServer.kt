@@ -192,10 +192,9 @@ class SessionServer(
     /**
      * Marca um participante como desconectado SEM tirá-lo do roster nem descartar a última ficha
      * recebida — ele pode reconectar (mesmo id, via token) e o Mestre continua vendo quem ele era
-     * enquanto isso. Pedidos pendentes dele são descartados: aprovar um pedido de pegar loot ou
-     * comprar da loja manda o item só para quem pediu (sendTo), e com a conexão caída isso se
-     * perderia — o item sumiria do baú/loja sem ir para ninguém. Reconectado, o Jogador pode
-     * mandar o pedido de novo. Ver [stop] para a limpeza completa quando a sessão é encerrada.
+     * enquanto isso. Pedidos pendentes são preservados e só podem ser aprovados quando o
+     * participante estiver conectado; concessões já aprovadas permanecem no outbox até a
+     * confirmação de persistência pelo cliente. Ver [stop] para a limpeza ao encerrar a sessão.
      */
     private fun markDisconnected(id: String) {
         _roster.value = _roster.value.map { if (it.id == id) it.copy(connected = false) else it }
