@@ -548,7 +548,7 @@ class SessionServerClientTest {
                 server.approveRequest(request.id)
 
                 val granted = grantedDeferred.await()
-                assertEquals(item, granted.item)
+                assertEquals(item.copy(id = granted.grantId), granted.item)
                 assertEquals(character.id, granted.characterId)
                 assertTrue(granted.grantId.isNotBlank())
 
@@ -705,7 +705,7 @@ class SessionServerClientTest {
                 server.approveRequest(request.id)
 
                 val granted = grantedDeferred.await()
-                assertEquals(item, granted.item)
+                assertEquals(item.copy(id = granted.grantId), granted.item)
                 assertEquals(character.id, granted.characterId)
                 assertEquals(0f, granted.coinPurse?.goldGp)
                 assertEquals(50f, granted.coinPurse?.platinumPp)
