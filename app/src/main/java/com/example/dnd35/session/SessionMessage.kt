@@ -140,7 +140,7 @@ sealed class SessionMessage {
                             .put("id", p.id)
                             .put("displayName", p.displayName)
                             .put("role", p.role.name)
-                            .put("characterId", p.characterId ?: JSONObject.NULL)
+                            .put("characterId", JSONObject.NULL)
                             .put("connected", p.connected)
                     )
                 }
