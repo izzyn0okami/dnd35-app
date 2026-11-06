@@ -127,24 +127,27 @@ class SessionServer(
         _shop.value = snapshot.shop
         _privateChatLog.value = snapshot.privateChatLog.toList()
 
+        val playerIds = _roster.value.filter { it.role == ParticipantRole.PLAYER }.map { it.id }.toSet()
+        require(snapshot.rejoinTokens.values.all { it in playerIds }) {
+            "Snapshot contém token de reconexão sem participante."
+        }
+        require(snapshot.pendingGrants.keys.all { it in playerIds }) {
+            "Snapshot contém outbox sem participante."
+        }
         rejoinTokens.clear()
-        rejoinTokens.putAll(snapshot.rejoinTokens.filterValues { participantId ->
-            _roster.value.any { it.id == participantId && it.role == ParticipantRole.PLAYER }
-        })
+        rejoinTokens.putAll(snapshot.rejoinTokens)
         pendingGrants.clear()
         snapshot.pendingGrants.forEach { (participantId, messages) ->
-            if (_roster.value.any { it.id == participantId && it.role == ParticipantRole.PLAYER }) {
-                val grants = ConcurrentHashMap<String, SessionMessage>()
-                messages.forEach { message ->
-                    val grantId = when (message) {
-                        is SessionMessage.LootGranted -> message.grantId
-                        is SessionMessage.ShopPurchaseGranted -> message.grantId
-                        else -> error("Tipo de mensagem inválido no outbox")
-                    }
-                    grants[grantId] = message
+            val grants = ConcurrentHashMap<String, SessionMessage>()
+            messages.forEach { message ->
+                val grantId = when (message) {
+                    is SessionMessage.LootGranted -> message.grantId
+                    is SessionMessage.ShopPurchaseGranted -> message.grantId
+                    else -> error("Tipo de mensagem inválido no outbox")
                 }
-                if (grants.isNotEmpty()) pendingGrants[participantId] = grants
+                grants[grantId] = message
             }
+            if (grants.isNotEmpty()) pendingGrants[participantId] = grants
         }
     }
 
