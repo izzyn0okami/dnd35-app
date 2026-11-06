@@ -127,7 +127,7 @@
 ### Alterações já registradas nesta branch
 - O HELLO do jogador transmite o ID local da ficha escolhida, separado do JSON de backup; o cliente preserva esse vínculo ao reconectar.
 - O Mestre mantém o vínculo entre participante e ficha no roster local. O ID local não é transmitido no roster para os demais jogadores.
-- Pedidos de pegar loot e comprar enviam um snapshot atualizado da ficha escolhida; o servidor reconcilia esse snapshot antes de avaliar o pedido.
+- Pedidos de pegar loot e comprar enviam um snapshot atualizado da ficha escolhida; o servidor reconcilia os dados, mas preserva o saldo monetário já autoritativo para impedir que um snapshot antigo restaure moedas gastas. A reconexão também preserva o saldo mantido pelo Mestre.
 - O servidor rejeita retirada/compra quando não existe ficha vinculada e recebida.
 - Compras passam a validar preço e saldo no servidor. A aritmética usa cobre como unidade exata: 1 PP = 10 PC, 1 PO = 100 PC e 1 PL = 1.000 PC. Preço ou saldo inválido, subcobre ou insuficiente é rejeitado; a conversão preserva o valor total.
 - O saldo atualizado e o item comprado são enviados como uma única mensagem de concessão, e a ficha local recebe item e moedas na mesma gravação por ID.
