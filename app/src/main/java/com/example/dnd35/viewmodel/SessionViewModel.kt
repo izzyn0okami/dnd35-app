@@ -110,11 +110,11 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
     // Item concedido ao pegar algo do baú de loot (pedido aprovado) — a UI usa isso para colocar
     // o item no inventário local da ficha ativa (SessionViewModel não mexe em fichas direto).
     private val _lootGranted = MutableSharedFlow<com.example.dnd35.session.SessionItemGrant>(extraBufferCapacity = 4)
-    val lootGranted: SharedFlow<CharacterInventoryItem> = _lootGranted
+    val lootGranted: SharedFlow<com.example.dnd35.session.SessionItemGrant> = _lootGranted
 
     // Item concedido ao comprar algo da loja de NPC (pedido aprovado) — mesmo motivo do loot.
-    private val _shopPurchaseGranted = MutableSharedFlow<CharacterInventoryItem>(extraBufferCapacity = 4)
-    val shopPurchaseGranted: SharedFlow<CharacterInventoryItem> = _shopPurchaseGranted
+    private val _shopPurchaseGranted = MutableSharedFlow<com.example.dnd35.session.SessionItemGrant>(extraBufferCapacity = 4)
+    val shopPurchaseGranted: SharedFlow<com.example.dnd35.session.SessionItemGrant> = _shopPurchaseGranted
 
     // Mensagens privadas recebidas do Mestre — evento, não estado contínuo.
     private val _playerPrivateMessages = MutableSharedFlow<String>(extraBufferCapacity = 8)
