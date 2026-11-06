@@ -215,12 +215,12 @@ class SessionServer(
         clients.values.forEach { enqueue(it, message) }
     }
 
-    private fun enqueue(handle: ClientHandle, message: SessionMessage) {
-        if (handle.outbound.trySend(message).isFailure) {
-            CrashLogStore.record("MULTIPLAYER_SERVER", "Fila de saída indisponível ou saturada para ${handle.id}")
-            handle.outbound.close()
-            runCatching { handle.socket.close() }
-        }
+    private fun enqueue(handle: ClientHandle, message: SessionMessage): Boolean {
+        if (handle.outbound.trySend(message).isSuccess) return true
+        CrashLogStore.record("MULTIPLAYER_SERVER", "Fila de saída indisponível ou saturada para ${handle.id}")
+        handle.outbound.close()
+        runCatching { handle.socket.close() }
+        return false
     }
 
     // --- Combate (estado global, autoridade do Mestre) ---
@@ -361,10 +361,20 @@ class SessionServer(
                     // Outro jogador pode ter pego o item antes, ou o Mestre já removeu do baú.
                     resolveRequest(request, approved = false, reason = "Item não está mais disponível no baú.")
                 } else {
-                    _lootChest.value = _lootChest.value.filterNot { it.id == item.id }
-                    broadcastLootChest()
-                    sendTo(request.requesterId, SessionMessage.LootGranted(CharacterJsonAdapters.serializeInventory(listOf(item))))
-                    resolveRequest(request, approved = true)
+                    val characterId = _roster.value.firstOrNull { it.id == request.requesterId }?.characterId
+                    if (characterId == null || _receivedCharacters.value[request.requesterId] == null) {
+                        resolveRequest(request, approved = false, reason = "Vincule uma ficha válida antes de retirar itens do baú.")
+                    } else {
+                        val grant = SessionMessage.LootGranted(
+                            CharacterJsonAdapters.serializeInventory(listOf(item)),
+                            characterId
+                        )
+                        if (sendTo(request.requesterId, grant)) {
+                            _lootChest.value = _lootChest.value.filterNot { it.id == item.id }
+                            broadcastLootChest()
+                            resolveRequest(request, approved = true)
+                        }
+                    }
                 }
             }
             RequestKind.BUY_FROM_SHOP -> {
@@ -374,10 +384,32 @@ class SessionServer(
                     // A loja pode ter fechado, ou outro jogador já comprou esse item antes.
                     resolveRequest(request, approved = false, reason = "Item não está mais disponível na loja.")
                 } else {
-                    _shop.value = shopState.copy(items = shopState.items.filterNot { it.id == item.id })
-                    broadcastShop()
-                    sendTo(request.requesterId, SessionMessage.ShopPurchaseGranted(CharacterJsonAdapters.serializeInventory(listOf(item))))
-                    resolveRequest(request, approved = true)
+                    val characterId = _roster.value.firstOrNull { it.id == request.requesterId }?.characterId
+                    val character = _receivedCharacters.value[request.requesterId]
+                    if (characterId == null || character == null) {
+                        resolveRequest(request, approved = false, reason = "Vincule uma ficha válida antes de comprar.")
+                    } else {
+                        val purse = SessionCurrency.debit(character, item.costGp)
+                        if (purse == null) {
+                            resolveRequest(request, approved = false, reason = "Saldo insuficiente ou preço/saldo inválido.")
+                        } else {
+                            val grant = SessionMessage.ShopPurchaseGranted(
+                                itemJson = CharacterJsonAdapters.serializeInventory(listOf(item)),
+                                characterId = characterId,
+                                goldGp = purse.goldGp,
+                                silverSp = purse.silverSp,
+                                copperCp = purse.copperCp,
+                                platinumPp = purse.platinumPp
+                            )
+                            if (sendTo(request.requesterId, grant)) {
+                                _receivedCharacters.value = _receivedCharacters.value +
+                                    (request.requesterId to purse.toCharacterUpdate(character))
+                                _shop.value = shopState.copy(items = shopState.items.filterNot { it.id == item.id })
+                                broadcastShop()
+                                resolveRequest(request, approved = true)
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -404,8 +436,9 @@ class SessionServer(
         clients[participantId]?.let { handle -> runCatching { handle.socket.close() } }
     }
 
-    private fun sendTo(participantId: String, message: SessionMessage) {
-        clients[participantId]?.let { enqueue(it, message) }
+    private fun sendTo(participantId: String, message: SessionMessage): Boolean {
+        val handle = clients[participantId] ?: return false
+        return enqueue(handle, message)
     }
 
     companion object {
