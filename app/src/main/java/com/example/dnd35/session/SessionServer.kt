@@ -526,13 +526,13 @@ class SessionServer(
             RequestKind.TAKE_LOOT -> {
                 val item = request.lootItemId?.let { id -> _lootChest.value.firstOrNull { it.id == id } }
                 if (item == null) {
-                    // Outro jogador pode ter pego o item antes, ou o Mestre já removeu do baú.
                     resolveRequest(request, approved = false, reason = "Item não está mais disponível no baú.")
                 } else {
                     val characterId = _roster.value.firstOrNull { it.id == request.requesterId }?.characterId
                     if (characterId == null || _receivedCharacters.value[request.requesterId] == null) {
                         resolveRequest(request, approved = false, reason = "Vincule uma ficha válida antes de retirar itens do baú.")
                     } else {
+                        val before = createSnapshot()
                         val grantId = UUID.randomUUID().toString()
                         val grantedItem = item.copy(id = grantId)
                         val grant = SessionMessage.LootGranted(
@@ -542,9 +542,18 @@ class SessionServer(
                         )
                         registerPendingGrant(request.requesterId, grantId, grant)
                         _lootChest.value = _lootChest.value.filterNot { it.id == item.id }
-                        broadcastLootChest()
-                        sendTo(request.requesterId, grant)
-                        resolveRequest(request, approved = true)
+                        _pendingRequests.value = _pendingRequests.value.filterNot { it.id == request.id }
+                        try {
+                            // O checkpoint contém baú atualizado e outbox antes de qualquer entrega.
+                            persistCriticalSnapshotLocked()
+                            broadcastLootChest()
+                            sendTo(request.requesterId, grant)
+                            sendTo(request.requesterId, SessionMessage.RequestResolved(request.id, approved = true))
+                        } catch (error: Exception) {
+                            restoreSnapshot(before, markPlayersDisconnected = false)
+                            resolveRequest(request, approved = false, reason = "Não foi possível salvar a retirada. Tente novamente.")
+                            CrashLogStore.record("MULTIPLAYER_PERSISTENCE", "Falha ao confirmar retirada do baú antes da entrega", error)
+                        }
                     }
                 }
             }
@@ -552,7 +561,6 @@ class SessionServer(
                 val shopState = _shop.value
                 val item = request.shopItemId?.let { id -> shopState?.items?.firstOrNull { it.id == id } }
                 if (shopState == null || item == null || item.quantity <= 0) {
-                    // A loja pode ter fechado, ou outro jogador já comprou esse item antes.
                     resolveRequest(request, approved = false, reason = "Item não está mais disponível na loja.")
                 } else {
                     val characterId = _roster.value.firstOrNull { it.id == request.requesterId }?.characterId
@@ -564,6 +572,7 @@ class SessionServer(
                         if (purse == null) {
                             resolveRequest(request, approved = false, reason = "Saldo insuficiente ou preço/saldo inválido.")
                         } else {
+                            val before = createSnapshot()
                             val grantId = UUID.randomUUID().toString()
                             val grantedItem = item.copy(id = grantId, quantity = 1)
                             val grant = SessionMessage.ShopPurchaseGranted(
@@ -586,14 +595,22 @@ class SessionServer(
                                 shopState.items.filterNot { it.id == item.id }
                             }
                             _shop.value = shopState.copy(items = remainingStock)
-                            broadcastShop()
-                            sendTo(request.requesterId, grant)
-                            resolveRequest(request, approved = true)
+                            _pendingRequests.value = _pendingRequests.value.filterNot { it.id == request.id }
+                            try {
+                                // Saldo, estoque e outbox são gravados juntos antes do envio.
+                                persistCriticalSnapshotLocked()
+                                broadcastShop()
+                                sendTo(request.requesterId, grant)
+                                sendTo(request.requesterId, SessionMessage.RequestResolved(request.id, approved = true))
+                            } catch (error: Exception) {
+                                restoreSnapshot(before, markPlayersDisconnected = false)
+                                resolveRequest(request, approved = false, reason = "Não foi possível salvar a compra. Tente novamente.")
+                                CrashLogStore.record("MULTIPLAYER_PERSISTENCE", "Falha ao confirmar compra antes da entrega", error)
+                            }
                         }
                     }
                 }
-            }
-        }
+            }        }
         notifySnapshotChanged()
     }
 
