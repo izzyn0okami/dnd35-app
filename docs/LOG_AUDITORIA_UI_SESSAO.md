@@ -302,3 +302,5 @@
 - Teste TCP/cliente-servidor acrescentado: a ficha aprovada começa com 20 PV e 4 PV temporários; 10 de dano resulta em 14 PV e 0 temporários no estado de combate e no snapshot aprovado; 5 de cura eleva para 19 PV sem ultrapassar o máximo.
 - A sincronização local do jogador continua sendo executada no DndMainScreen, inclusive fora da tela de sessão. O snapshot do servidor é atualizado somente pelo comando de dano/cura do Mestre.
 - CI do head atualizado ainda pendente. Não considerar a correção validada até testes unitários e compilação concluírem; teste manual em dois aparelhos continua obrigatório.
+
+- Revisão de concorrência: a atualização de PV do servidor agora compartilha requestLock com a aprovação/negação de pedidos. Isso impede que um snapshot aprovado concorra com a escrita dos PV do combate e sobrescreva um dos estados.
