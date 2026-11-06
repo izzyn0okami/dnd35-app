@@ -55,7 +55,8 @@ class SessionClient {
 
     // Token recebido no último WELCOME (ver SessionMessage.Hello/Welcome) — mandado de volta ao
     // reconectar para o Mestre reconhecer que é o mesmo participante, não um novo.
-    private var rejoinToken: String? = null
+    @Volatile private var rejoinToken: String? = null
+    @Volatile private var lastSessionId: String? = null
     private val connectionGeneration = AtomicLong(0L)
 
     private val _state = MutableStateFlow<SessionClientState>(SessionClientState.Connecting)
@@ -92,6 +93,7 @@ class SessionClient {
         lastCharacterJson = characterJson
         lastCharacterId = characterId?.takeIf { it > 0L }
         rejoinToken = null // entrada nova: nunca reconecta como um participante de uma sessão anterior.
+        lastSessionId = null
         connectInternal(host, port, displayName, characterJson, lastCharacterId, rejoinToken = null)
     }
 
@@ -103,6 +105,22 @@ class SessionClient {
     fun reconnect(): Boolean {
         val host = lastHost ?: return false
         connectInternal(host, lastPort, lastDisplayName, lastCharacterJson, lastCharacterId, rejoinToken)
+        return true
+    }
+
+
+    /**
+     * Atualiza o endereço do Mestre após a recuperação do host, preservando o token da sessão
+     * anterior. Só reutiliza a identidade quando o ID da sessão continua igual.
+     */
+    fun reconnectTo(host: String, port: Int, sessionId: String): Boolean {
+        val token = rejoinToken ?: return false
+        if (lastSessionId != sessionId || !JoinPayload.isValidHostAddress(host) || port !in 1..65535) {
+            return false
+        }
+        lastHost = host
+        lastPort = port
+        connectInternal(host, port, lastDisplayName, lastCharacterJson, lastCharacterId, token)
         return true
     }
 
@@ -139,6 +157,7 @@ class SessionClient {
                     return@launch
                 }
                 this@SessionClient.rejoinToken = welcome.rejoinToken
+                this@SessionClient.lastSessionId = welcome.sessionId
                 if (characterJson != null) {
                     SessionWire.write(out, SessionMessage.CharacterSheet(characterJson))
                 }
