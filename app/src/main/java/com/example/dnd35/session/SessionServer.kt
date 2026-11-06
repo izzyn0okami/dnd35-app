@@ -28,7 +28,7 @@ import java.util.concurrent.ConcurrentHashMap
  */
 class SessionServer(
     private val sessionId: String,
-    hostDisplayName: String
+    private val hostDisplayName: String
 ) {
     private var serverSocket: ServerSocket? = null
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
@@ -85,6 +85,65 @@ class SessionServer(
     val privateChatLog: StateFlow<List<PrivateChatEntry>> = _privateChatLog
 
     private class ClientHandle(val id: String, val socket: Socket, val out: DataOutputStream, val outbound: Channel<SessionMessage>)
+
+
+    /**
+     * Captura um snapshot consistente de todo o estado em memória.
+     */
+    fun createSnapshot(): HostedSessionSnapshot = synchronized(stateLock) {
+        HostedSessionSnapshot(
+            sessionId = sessionId,
+            hostDisplayName = hostDisplayName,
+            roster = _roster.value.toList(),
+            receivedCharacters = _receivedCharacters.value.toMap(),
+            combat = _combatState.value,
+            pendingRequests = _pendingRequests.value.toList(),
+            lootChest = _lootChest.value.toList(),
+            shop = _shop.value,
+            privateChatLog = _privateChatLog.value.toList(),
+            rejoinTokens = rejoinTokens.toMap(),
+            pendingGrants = pendingGrants.mapValues { (_, grants) -> grants.values.toList() }
+        )
+    }
+
+    /**
+     * Restaura o domínio antes de abrir a porta TCP. Conexões antigas não sobrevivem à morte
+     * do processo; jogadores voltam desconectados, mas conservam IDs, fichas, tokens e outbox.
+     */
+    fun restoreSnapshot(snapshot: HostedSessionSnapshot) = synchronized(stateLock) {
+        require(snapshot.sessionId == sessionId) { "O snapshot pertence a outra sessão." }
+        require(snapshot.hostDisplayName == hostDisplayName) { "O nome do Mestre não corresponde ao snapshot." }
+
+        _roster.value = listOf(dmParticipant) + snapshot.roster
+            .filterNot { it.role == ParticipantRole.DM }
+            .map { it.copy(connected = false) }
+        _receivedCharacters.value = snapshot.receivedCharacters.toMap()
+        _combatState.value = snapshot.combat
+        _pendingRequests.value = snapshot.pendingRequests.toList()
+        _lootChest.value = snapshot.lootChest.toList()
+        _shop.value = snapshot.shop
+        _privateChatLog.value = snapshot.privateChatLog.toList()
+
+        rejoinTokens.clear()
+        rejoinTokens.putAll(snapshot.rejoinTokens.filterValues { participantId ->
+            _roster.value.any { it.id == participantId && it.role == ParticipantRole.PLAYER }
+        })
+        pendingGrants.clear()
+        snapshot.pendingGrants.forEach { (participantId, messages) ->
+            if (_roster.value.any { it.id == participantId && it.role == ParticipantRole.PLAYER }) {
+                val grants = ConcurrentHashMap<String, SessionMessage>()
+                messages.forEach { message ->
+                    val grantId = when (message) {
+                        is SessionMessage.LootGranted -> message.grantId
+                        is SessionMessage.ShopPurchaseGranted -> message.grantId
+                        else -> error("Tipo de mensagem inválido no outbox")
+                    }
+                    grants[grantId] = message
+                }
+                if (grants.isNotEmpty()) pendingGrants[participantId] = grants
+            }
+        }
+    }
 
     /** Inicia o servidor em uma porta livre escolhida pelo sistema e retorna essa porta. */
     fun start(): Int {
