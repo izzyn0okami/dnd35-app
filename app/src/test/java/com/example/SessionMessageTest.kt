@@ -34,9 +34,10 @@ class SessionMessageTest {
 
     @Test
     fun `Hello com rejoinToken preserva o token (reconexao)`() {
-        val msg = SessionMessage.Hello("Aragorn", rejoinToken = "token-123")
+        val msg = SessionMessage.Hello("Aragorn", rejoinToken = "token-123", characterId = 42L)
         val roundTrip = SessionMessage.fromJson(msg.toJson()) as SessionMessage.Hello
         assertEquals("token-123", roundTrip.rejoinToken)
+        assertEquals(42L, roundTrip.characterId)
     }
 
     @Test
@@ -217,9 +218,15 @@ class SessionMessageTest {
     @Test
     fun `LootGranted preserva o item concedido`() {
         val item = CharacterInventoryItem(id = "item-2", name = "Espada longa +1", category = "Armas", quantity = 1)
-        val msg = SessionMessage.LootGranted(CharacterJsonAdapters.serializeInventory(listOf(item)))
+        val msg = SessionMessage.LootGranted(CharacterJsonAdapters.serializeInventory(listOf(item)), characterId = 42L)
         val roundTrip = SessionMessage.fromJson(msg.toJson()) as SessionMessage.LootGranted
         assertEquals(item, CharacterJsonAdapters.deserializeInventory(roundTrip.itemJson).single())
+        assertEquals(42L, roundTrip.characterId)
+        assertEquals(1f, roundTrip.goldGp)
+        assertEquals(2f, roundTrip.silverSp)
+        assertEquals(3f, roundTrip.copperCp)
+        assertEquals(4f, roundTrip.platinumPp)
+        assertEquals(42L, roundTrip.characterId)
     }
 
     @Test
@@ -257,7 +264,14 @@ class SessionMessageTest {
     @Test
     fun `ShopPurchaseGranted preserva o item comprado`() {
         val item = CharacterInventoryItem(id = "shop-item-2", name = "Adaga +1", category = "Armas", quantity = 1, costGp = 320f)
-        val msg = SessionMessage.ShopPurchaseGranted(CharacterJsonAdapters.serializeInventory(listOf(item)))
+        val msg = SessionMessage.ShopPurchaseGranted(
+            itemJson = CharacterJsonAdapters.serializeInventory(listOf(item)),
+            characterId = 42L,
+            goldGp = 1f,
+            silverSp = 2f,
+            copperCp = 3f,
+            platinumPp = 4f
+        )
         val roundTrip = SessionMessage.fromJson(msg.toJson()) as SessionMessage.ShopPurchaseGranted
         assertEquals(item, CharacterJsonAdapters.deserializeInventory(roundTrip.itemJson).single())
     }
