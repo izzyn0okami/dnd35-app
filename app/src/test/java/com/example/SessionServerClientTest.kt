@@ -31,6 +31,7 @@ import java.io.DataOutputStream
 import java.net.Socket
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.Executors
+import java.util.concurrent.TimeUnit
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
@@ -88,6 +89,79 @@ class SessionServerClientTest {
             throw AssertionError("Era esperado SessionProtocolException.")
         } catch (expected: com.example.dnd35.session.SessionProtocolException) {
             assertTrue(expected.message!!.contains("inválido"))
+        }
+    }
+
+    @Test
+    fun `WELCOME so e enviado depois do checkpoint do participante`() = runBlocking {
+        val checkpointStarted = CountDownLatch(1)
+        val allowCheckpoint = CountDownLatch(1)
+        val server = SessionServer(
+            sessionId = "sess-welcome-durable",
+            hostDisplayName = "Mestre",
+            onSnapshotChanged = {
+                checkpointStarted.countDown()
+                check(allowCheckpoint.await(10, TimeUnit.SECONDS)) {
+                    "O teste não liberou o checkpoint a tempo."
+                }
+            }
+        )
+        val port = server.start()
+        val socket = Socket("127.0.0.1", port).apply { soTimeout = 300 }
+        try {
+            val input = DataInputStream(socket.getInputStream())
+            val output = DataOutputStream(socket.getOutputStream())
+            SessionWire.write(output, SessionMessage.Hello("Legolas"))
+
+            assertTrue("O servidor não iniciou o checkpoint do participante.", checkpointStarted.await(10, TimeUnit.SECONDS))
+            try {
+                input.read()
+                throw AssertionError("WELCOME foi enviado antes da confirmação do checkpoint.")
+            } catch (_: java.net.SocketTimeoutException) {
+                // Nenhum byte de confirmação pode sair enquanto o armazenamento está bloqueado.
+            }
+
+            allowCheckpoint.countDown()
+            val welcome = withContext(Dispatchers.IO) {
+                SessionWire.read(input) as SessionMessage.Welcome
+            }
+            assertEquals("sess-welcome-durable", welcome.sessionId)
+            assertTrue(server.roster.value.any { it.id == welcome.participantId })
+        } finally {
+            allowCheckpoint.countDown()
+            socket.close()
+            server.stop()
+        }
+    }
+
+    @Test
+    fun `mutacao aguarda callback de checkpoint antes de retornar`() {
+        val checkpointStarted = CountDownLatch(1)
+        val allowCheckpoint = CountDownLatch(1)
+        val server = SessionServer(
+            sessionId = "sess-checkpoint-barrier",
+            hostDisplayName = "Mestre",
+            onSnapshotChanged = { snapshot ->
+                assertEquals("Espada longa", snapshot.lootChest.single().name)
+                checkpointStarted.countDown()
+                check(allowCheckpoint.await(10, TimeUnit.SECONDS)) {
+                    "O teste não liberou o checkpoint a tempo."
+                }
+            }
+        )
+        val executor = Executors.newSingleThreadExecutor()
+        try {
+            val item = CharacterInventoryItem(name = "Espada longa", category = "Armas")
+            val mutation = executor.submit { server.addLootItem(item) }
+            assertTrue("A mutação não solicitou checkpoint.", checkpointStarted.await(10, TimeUnit.SECONDS))
+            assertTrue("A mutação retornou antes do checkpoint.", !mutation.isDone)
+            allowCheckpoint.countDown()
+            mutation.get(10, TimeUnit.SECONDS)
+            assertEquals(item, server.lootChest.value.single())
+        } finally {
+            allowCheckpoint.countDown()
+            executor.shutdownNow()
+            server.stop()
         }
     }
 
