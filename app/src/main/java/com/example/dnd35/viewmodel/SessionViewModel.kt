@@ -168,6 +168,12 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
     private val _playerPrivateMessages = MutableSharedFlow<String>(extraBufferCapacity = 8)
     val playerPrivateMessages: SharedFlow<String> = _playerPrivateMessages
 
+    private suspend fun persistSnapshotAndWait(snapshot: HostedSessionSnapshot) {
+        val completion = CompletableDeferred<Unit>()
+        persistenceCommands.send(HostedSessionPersistenceCommand.SaveAndWait(snapshot, completion))
+        completion.await()
+    }
+
     private suspend fun saveHostedSnapshot(snapshot: HostedSessionSnapshot) {
         hostedSessionDao.saveCheckpoint(
             HostedSessionEntity(
@@ -203,7 +209,7 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
             }
 
             val restoredServer = SessionServer(snapshot.sessionId, snapshot.hostDisplayName, persistCriticalSnapshot = { critical ->
-                saveHostedSnapshot(critical)
+                persistSnapshotAndWait(critical)
             }) { updated ->
                 persistenceCommands.trySend(HostedSessionPersistenceCommand.Save(updated))
             }
@@ -249,7 +255,7 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
         val sessionId = JoinPayload.newSessionId()
         val name = hostDisplayName.ifBlank { "Mestre" }
         val newServer = SessionServer(sessionId, name, persistCriticalSnapshot = { critical ->
-            saveHostedSnapshot(critical)
+            persistSnapshotAndWait(critical)
         }) { snapshot ->
             persistenceCommands.trySend(HostedSessionPersistenceCommand.Save(snapshot))
         }
