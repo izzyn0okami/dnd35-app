@@ -228,10 +228,13 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
 
     /** Mestre: cria e hospeda uma nova sessão, exibindo o QR Code para os jogadores escanearem. */
     fun hostSession(hostDisplayName: String) {
-        stopHosting()
+        manualHostRequested = true
+        stopHosting(manual = true)
         val sessionId = JoinPayload.newSessionId()
         val name = hostDisplayName.ifBlank { "Mestre" }
-        val newServer = SessionServer(sessionId, name)
+        val newServer = SessionServer(sessionId, name) { snapshot ->
+            persistenceCommands.trySend(HostedSessionPersistenceCommand.Save(snapshot))
+        }
         server = newServer
 
         // Abrir o ServerSocket e consultar a interface de rede são operações de I/O:
@@ -261,6 +264,7 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
                 val qrContent = payload.toJson()
                 val bitmap = QrCodeUtil.generate(qrContent)
                 viewModelScope.launchCollectDmState(newServer, sessionId, bitmap, qrContent)
+                persistenceCommands.trySend(HostedSessionPersistenceCommand.Save(newServer.createSnapshot()))
             } catch (e: Exception) {
                 newServer.stop()
                 if (server === newServer) {
@@ -359,9 +363,14 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
     }
 
     /** Mestre: encerra a sessão ativa, desconectando todos os jogadores. */
-    fun stopHosting() {
-        server?.stop()
+    fun stopHosting(manual: Boolean = true) {
+        val activeServer = server
+        val activeSessionId = activeServer?.createSnapshot()?.sessionId
+        activeServer?.stop()
         server = null
+        if (manual && activeSessionId != null) {
+            persistenceCommands.trySend(HostedSessionPersistenceCommand.End(activeSessionId))
+        }
         _dmState.value = DmSessionUiState.Idle
     }
 
@@ -500,7 +509,8 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
 
     override fun onCleared() {
         super.onCleared()
-        stopHosting()
+        stopHosting(manual = false)
+        persistenceCommands.close()
         leaveSession()
     }
 }
