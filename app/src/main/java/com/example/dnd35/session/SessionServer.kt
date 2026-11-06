@@ -230,8 +230,11 @@ class SessionServer(
         pendingGrants.computeIfAbsent(participantId) { ConcurrentHashMap() }[grantId] = message
     }
 
-    private fun acknowledgeGrant(participantId: String, grantId: String) {
-        val grants = pendingGrants[participantId] ?: return
+    private fun acknowledgeGrant(participantId: String, grantId: String) = synchronized(requestLock) {
+        // Serialize ACK removal with grant registration in approveRequest(). Otherwise an ACK
+        // could observe an empty map while a new grant is being inserted, then remove that map
+        // and accidentally discard the newly registered grant from the in-memory outbox.
+        val grants = pendingGrants[participantId] ?: return@synchronized
         grants.remove(grantId)
         if (grants.isEmpty()) pendingGrants.remove(participantId, grants)
     }
