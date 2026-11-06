@@ -17,6 +17,7 @@ import java.io.DataOutputStream
 import java.io.IOException
 import java.net.InetSocketAddress
 import java.net.Socket
+import java.util.concurrent.atomic.AtomicLong
 
 /** Estado da conexão do lado do Jogador. */
 sealed class SessionClientState {
@@ -55,6 +56,7 @@ class SessionClient {
     // Token recebido no último WELCOME (ver SessionMessage.Hello/Welcome) — mandado de volta ao
     // reconectar para o Mestre reconhecer que é o mesmo participante, não um novo.
     private var rejoinToken: String? = null
+    private val connectionGeneration = AtomicLong(0L)
 
     private val _state = MutableStateFlow<SessionClientState>(SessionClientState.Connecting)
     val state: StateFlow<SessionClientState> = _state
@@ -105,6 +107,7 @@ class SessionClient {
     }
 
     private fun connectInternal(host: String, port: Int, displayName: String, characterJson: String?, characterId: Long?, rejoinToken: String?) {
+        val generation = connectionGeneration.incrementAndGet()
         _state.value = SessionClientState.Connecting
         // Fecha uma conexão anterior ainda viva, se houver — evita duas leituras concorrentes
         // (o laço antigo e o novo) brigando pelas mesmas variáveis de instância caso reconnect()
@@ -114,6 +117,10 @@ class SessionClient {
             try {
                 val sock = Socket()
                 sock.connect(InetSocketAddress(host, port), CONNECT_TIMEOUT_MS)
+                if (generation != connectionGeneration.get()) {
+                    runCatching { sock.close() }
+                    return@launch
+                }
                 socket = sock
 
                 val input = DataInputStream(sock.getInputStream())
@@ -124,40 +131,46 @@ class SessionClient {
 
                 val welcome = SessionWire.read(input) as? SessionMessage.Welcome
                 if (welcome == null) {
-                    _state.value = SessionClientState.Disconnected("Resposta inesperada do Mestre.")
+                    if (generation == connectionGeneration.get()) _state.value = SessionClientState.Disconnected("Resposta inesperada do Mestre.")
+                    return@launch
+                }
+                if (generation != connectionGeneration.get()) {
+                    runCatching { sock.close() }
                     return@launch
                 }
                 this@SessionClient.rejoinToken = welcome.rejoinToken
                 if (characterJson != null) {
                     SessionWire.write(out, SessionMessage.CharacterSheet(characterJson))
                 }
-                _state.value = SessionClientState.Connected(welcome.participantId, welcome.sessionId)
+                if (generation == connectionGeneration.get()) {
+                    _state.value = SessionClientState.Connected(welcome.participantId, welcome.sessionId)
+                }
 
                 while (true) {
                     val msg = SessionWire.read(input) ?: break
                     when (msg) {
                         is SessionMessage.Roster -> {
                             val current = _state.value
-                            if (current is SessionClientState.Connected) {
+                            if (generation == connectionGeneration.get() && current is SessionClientState.Connected) {
                                 _state.value = current.copy(participants = msg.participants)
                             }
                         }
                         is SessionMessage.CombatUpdate -> {
                             val current = _state.value
-                            if (current is SessionClientState.Connected) {
+                            if (generation == connectionGeneration.get() && current is SessionClientState.Connected) {
                                 _state.value = current.copy(combat = msg.state)
                             }
                         }
                         is SessionMessage.EndCombat -> {
                             val current = _state.value
-                            if (current is SessionClientState.Connected) {
+                            if (generation == connectionGeneration.get() && current is SessionClientState.Connected) {
                                 _state.value = current.copy(combat = null)
                             }
                         }
                         is SessionMessage.RequestResolved -> _requestResults.tryEmit(msg)
                         is SessionMessage.LootChestUpdate -> {
                             val current = _state.value
-                            if (current is SessionClientState.Connected) {
+                            if (generation == connectionGeneration.get() && current is SessionClientState.Connected) {
                                 _state.value = current.copy(lootChest = CharacterJsonAdapters.deserializeInventory(msg.itemsJson))
                             }
                         }
@@ -168,7 +181,7 @@ class SessionClient {
                         }
                         is SessionMessage.ShopUpdate -> {
                             val current = _state.value
-                            if (current is SessionClientState.Connected) {
+                            if (generation == connectionGeneration.get() && current is SessionClientState.Connected) {
                                 _state.value = current.copy(
                                     shop = ShopSnapshot(msg.npcName, CharacterJsonAdapters.deserializeInventory(msg.itemsJson))
                                 )
@@ -176,7 +189,7 @@ class SessionClient {
                         }
                         is SessionMessage.ShopClosed -> {
                             val current = _state.value
-                            if (current is SessionClientState.Connected) {
+                            if (generation == connectionGeneration.get() && current is SessionClientState.Connected) {
                                 _state.value = current.copy(shop = null)
                             }
                         }
@@ -191,17 +204,21 @@ class SessionClient {
                         else -> Unit
                     }
                 }
-                _state.value = SessionClientState.Disconnected("Conexão encerrada pelo Mestre.")
+                if (generation == connectionGeneration.get()) _state.value = SessionClientState.Disconnected("Conexão encerrada pelo Mestre.")
             } catch (e: IOException) {
                 CrashLogStore.record("MULTIPLAYER_CLIENT", "Conexão interrompida ou protocolo inválido", e)
-                _state.value = SessionClientState.Disconnected(
-                    e.message?.takeIf { it.isNotBlank() } ?: "Falha de comunicação com o Mestre."
-                )
+                if (generation == connectionGeneration.get()) {
+                    _state.value = SessionClientState.Disconnected(
+                        e.message?.takeIf { it.isNotBlank() } ?: "Falha de comunicação com o Mestre."
+                    )
+                }
             } catch (e: Exception) {
                 CrashLogStore.record("MULTIPLAYER_CLIENT", "Erro inesperado no cliente multiplayer", e)
-                _state.value = SessionClientState.Disconnected(
-                    "Erro inesperado na comunicação: ${e.message ?: e.javaClass.simpleName}"
-                )
+                if (generation == connectionGeneration.get()) {
+                    _state.value = SessionClientState.Disconnected(
+                        "Erro inesperado na comunicação: ${e.message ?: e.javaClass.simpleName}"
+                    )
+                }
             }
         }
     }
