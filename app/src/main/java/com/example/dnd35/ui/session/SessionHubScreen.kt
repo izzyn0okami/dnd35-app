@@ -1130,7 +1130,7 @@ private fun PlayerJoinContent(viewModel: SessionViewModel, characterViewModel: C
                     Text("Reconectar")
                 }
                 Text(
-                    "Ou entre de novo preenchendo os dados abaixo.",
+                    "Se o Mestre recuperou a sessão após reiniciar, escaneie o novo QR Code para manter seu participante. Também é possível entrar novamente preenchendo os dados abaixo.",
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
