@@ -153,11 +153,18 @@ class SessionServer(
             val linkedCharacterId = hello.characterId?.takeIf { it > 0L }
                 ?: _roster.value.firstOrNull { it.id == id }?.characterId
             addParticipant(Participant(id, hello.displayName, ParticipantRole.PLAYER, characterId = linkedCharacterId))
-            broadcastRoster()
-            _combatState.value?.let { enqueue(newHandle, SessionMessage.CombatUpdate(it)) }
-            if (_lootChest.value.isNotEmpty()) enqueue(newHandle, SessionMessage.LootChestUpdate(CharacterJsonAdapters.serializeInventory(_lootChest.value)))
-            _shop.value?.let { enqueue(newHandle, SessionMessage.ShopUpdate(it.npcName, CharacterJsonAdapters.serializeInventory(it.items))) }
-            pendingGrants[id]?.values?.forEach { enqueue(newHandle, it) }
+            synchronized(stateLock) {
+                // Snapshot inicial e broadcasts de alterações usam o mesmo lock: evita enviar
+                // CombatUpdate/ShopUpdate antigos depois de uma atualização mais recente.
+                _combatState.value?.let { enqueue(newHandle, SessionMessage.CombatUpdate(it)) }
+                if (_lootChest.value.isNotEmpty()) {
+                    enqueue(newHandle, SessionMessage.LootChestUpdate(CharacterJsonAdapters.serializeInventory(_lootChest.value)))
+                }
+                _shop.value?.let {
+                    enqueue(newHandle, SessionMessage.ShopUpdate(it.npcName, CharacterJsonAdapters.serializeInventory(it.items)))
+                }
+                pendingGrants[id]?.values?.forEach { enqueue(newHandle, it) }
+            }
 
             while (true) {
                 val msg = SessionWire.read(input) ?: break
@@ -198,8 +205,9 @@ class SessionServer(
         }
     }
 
-    private fun addParticipant(participant: Participant) {
+    private fun addParticipant(participant: Participant) = synchronized(stateLock) {
         _roster.value = _roster.value.filterNot { it.id == participant.id } + participant
+        broadcastRoster()
     }
 
     /**
@@ -209,7 +217,7 @@ class SessionServer(
      * participante estiver conectado; concessões já aprovadas permanecem no outbox até a
      * confirmação de persistência pelo cliente. Ver [stop] para a limpeza ao encerrar a sessão.
      */
-    private fun markDisconnected(id: String) {
+    private fun markDisconnected(id: String) = synchronized(stateLock) {
         _roster.value = _roster.value.map { if (it.id == id) it.copy(connected = false) else it }
         // Keep pending requests while the participant is offline. They remain visible to the
         // DM and can be resolved after reconnection; resource requests must not be approved
@@ -314,14 +322,14 @@ class SessionServer(
     // --- Baú de loot (estado global, autoridade do Mestre) ---
 
     /** Adiciona um item ao baú compartilhado e sincroniza com todos. */
-    fun addLootItem(item: CharacterInventoryItem) {
+    fun addLootItem(item: CharacterInventoryItem) = synchronized(stateLock) {
         _lootChest.value = _lootChest.value + item
         broadcastLootChest()
     }
 
     /** Remove um item do baú diretamente (não confundir com um pedido de jogador aprovado). */
-    fun removeLootItem(itemId: String) {
-        if (_lootChest.value.none { it.id == itemId }) return
+    fun removeLootItem(itemId: String) = synchronized(stateLock) {
+        if (_lootChest.value.none { it.id == itemId }) return@synchronized
         _lootChest.value = _lootChest.value.filterNot { it.id == itemId }
         broadcastLootChest()
     }
@@ -336,15 +344,15 @@ class SessionServer(
      * Abre (ou atualiza) a loja com os itens informados, tirados do inventário de um NPC do
      * Mestre no momento da chamada. Comprar não altera a ficha real do NPC — é só uma vitrine.
      */
-    fun openShop(npcCharacterId: Long, npcName: String, items: List<CharacterInventoryItem>) {
+    fun openShop(npcCharacterId: Long, npcName: String, items: List<CharacterInventoryItem>) = synchronized(stateLock) {
         val state = ShopState(npcCharacterId, npcName, items)
         _shop.value = state
         broadcastShop()
     }
 
     /** Fecha a loja aberta (se houver) e avisa a todos. */
-    fun closeShop() {
-        if (_shop.value == null) return
+    fun closeShop() = synchronized(stateLock) {
+        if (_shop.value == null) return@synchronized
         _shop.value = null
         broadcast(SessionMessage.ShopClosed)
     }
