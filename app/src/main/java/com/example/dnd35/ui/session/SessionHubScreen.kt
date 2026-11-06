@@ -355,7 +355,8 @@ private data class CombatCandidate(
     val displayName: String,
     val isNpc: Boolean,
     val currentHp: Int?,
-    val maxHp: Int?
+    val maxHp: Int?,
+    val tempHp: Int = 0
 )
 
 /**
@@ -405,7 +406,8 @@ private fun CombatSection(
                 displayName = p.displayName,
                 isNpc = false,
                 currentHp = sheet?.currentHp,
-                maxHp = sheet?.maxHp
+                maxHp = sheet?.maxHp,
+                tempHp = sheet?.tempHp ?: 0
             )
         }
         val npcCandidates = myCharacters.filter { it.isNpc }.map { c ->
@@ -414,7 +416,8 @@ private fun CombatSection(
                 displayName = c.name,
                 isNpc = true,
                 currentHp = c.currentHp,
-                maxHp = c.maxHp
+                maxHp = c.maxHp,
+                tempHp = c.tempHp
             )
         }
         StartCombatDialog(
@@ -535,7 +538,8 @@ private fun StartCombatDialog(
                             isNpc = candidate.isNpc,
                             initiative = selections.getValue(candidate.id).toInt(),
                             currentHp = candidate.currentHp ?: manualCurrentHp.getValue(candidate.id).toInt(),
-                            maxHp = candidate.maxHp ?: manualMaxHp.getValue(candidate.id).toInt()
+                            maxHp = candidate.maxHp ?: manualMaxHp.getValue(candidate.id).toInt(),
+                            tempHp = candidate.tempHp
                         )
                     }
                     onConfirm(combatants)
