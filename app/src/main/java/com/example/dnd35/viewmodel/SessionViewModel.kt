@@ -111,7 +111,7 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
     private val _lootGranted = MutableSharedFlow<com.example.dnd35.session.SessionItemGrant>(replay = 8, extraBufferCapacity = 4)
     val lootGranted: SharedFlow<com.example.dnd35.session.SessionItemGrant> = _lootGranted
 
-    // Item concedido ao comprar algo da loja de NPC (pedido aprovado) — mesmo motivo do loot.
+    // Compra aprovada com saldo atualizado; a UI persiste item e moedas na ficha vinculada.
     private val _shopPurchaseGranted = MutableSharedFlow<com.example.dnd35.session.SessionItemGrant>(replay = 8, extraBufferCapacity = 4)
     val shopPurchaseGranted: SharedFlow<com.example.dnd35.session.SessionItemGrant> = _shopPurchaseGranted
 
