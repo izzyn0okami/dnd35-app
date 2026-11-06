@@ -457,6 +457,72 @@ class SessionServerClientTest {
     }
 
     @Test
+    fun `aprovacao duplicada de compra debita e concede apenas uma vez`() = runBlocking {
+        val server = SessionServer(sessionId = "sess-duplicate-approval", hostDisplayName = "Mestre")
+        val port = server.start()
+        try {
+            val original = CharacterEntity(
+                name = "Legolas",
+                characterClass = "Patrulheiro",
+                level = 5,
+                currentHp = 30,
+                maxHp = 40,
+                goldGp = 1000f
+            )
+            val originalJson = CharacterBackup.toJson(listOf(original)) { null }
+            val client = SessionClient()
+            try {
+                client.connect("127.0.0.1", port, "Legolas", originalJson)
+                val connected = withTimeout(15_000) {
+                    client.state.first { it is SessionClientState.Connected } as SessionClientState.Connected
+                }
+                withTimeout(15_000) { server.receivedCharacters.first { it.containsKey(connected.selfId) } }
+
+                server.openShop(
+                    ShopState(
+                        name = "Loja",
+                        items = listOf(
+                            InventoryItem(
+                                id = "unique-shop-item",
+                                name = "Poção",
+                                quantity = 1,
+                                costGp = 100f
+                            )
+                        )
+                    )
+                )
+                client.requestAction(
+                    RequestKind.BUY_FROM_SHOP,
+                    "Compra de poção",
+                    shopItemId = "unique-shop-item"
+                )
+                val request = withTimeout(15_000) {
+                    server.pendingRequests.first { it.any { pending -> pending.kind == RequestKind.BUY_FROM_SHOP } }
+                }.single { it.kind == RequestKind.BUY_FROM_SHOP }
+
+                val approvals = listOf(
+                    async(Dispatchers.Default) { server.approveRequest(request.id) },
+                    async(Dispatchers.Default) { server.approveRequest(request.id) }
+                )
+                approvals.awaitAll()
+
+                val stored = server.receivedCharacters.value.getValue(connected.selfId)
+                assertEquals(900f, stored.goldGp)
+                assertTrue(server.shop.value?.items?.isEmpty() == true)
+                val grant = withTimeout(15_000) {
+                    client.incomingMessages.first { it is SessionMessage.ShopPurchaseGranted }
+                }
+                assertEquals(request.requesterId, connected.selfId)
+                assertTrue(grant is SessionMessage.ShopPurchaseGranted)
+            } finally {
+                client.disconnect()
+            }
+        } finally {
+            server.stop()
+        }
+    }
+
+    @Test
     fun `pedido de compra nao aplica snapshot do jogador antes da aprovacao`() = runBlocking {
         val server = SessionServer(sessionId = "sess-resource-snapshot", hostDisplayName = "Mestre")
         val port = server.start()
