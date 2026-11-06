@@ -153,6 +153,15 @@ object HostedSessionSnapshotCodec {
             }
         }
 
+        val playerIds = roster.filter { it.role == ParticipantRole.PLAYER }.map { it.id }.toSet()
+        require(roster.all { it.id.isNotBlank() }) { "Roster contém participante sem ID" }
+        require(roster.map { it.id }.distinct().size == roster.size) { "Roster contém IDs duplicados" }
+        require(roster.count { it.role == ParticipantRole.DM } <= 1) { "Roster contém mais de um Mestre" }
+        require(characters.keys.all { it in playerIds }) { "Ficha recebida sem participante correspondente" }
+        require(tokens.values.all { it in playerIds }) { "Token de reconexão aponta para participante ausente" }
+        require(grants.keys.all { it in playerIds }) { "Outbox aponta para participante ausente" }
+        require(requests.all { it.requesterId in playerIds }) { "Pedido pendente aponta para participante ausente" }
+
         val sessionId = root.getString("sessionId")
         require(sessionId.isNotBlank()) { "sessionId vazio no snapshot" }
         return HostedSessionSnapshot(
