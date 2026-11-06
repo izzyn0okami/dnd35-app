@@ -42,6 +42,20 @@ data class CombatState(
     val currentCombatantId: String?
         get() = combatants.getOrNull(currentTurnIndex)?.id
 
+    /**
+     * Avança para o próximo combatente com PV positivos. Combatentes com 0 PV ou menos
+     * permanecem na ordem, mas são ignorados. Se todos estiverem derrotados, não há turno ativo.
+     */
+    fun nextTurn(): CombatState {
+        if (combatants.isEmpty()) return copy(currentTurnIndex = -1)
+        val livingIndices = combatants.indices.filter { combatants[it].currentHp > 0 }
+        if (livingIndices.isEmpty()) return copy(currentTurnIndex = -1)
+
+        val nextIndex = livingIndices.firstOrNull { it > currentTurnIndex } ?: livingIndices.first()
+        val wrapped = currentTurnIndex >= 0 && nextIndex <= currentTurnIndex
+        return copy(currentTurnIndex = nextIndex, round = if (wrapped) round + 1 else round)
+    }
+
     companion object {
         const val NPC_ID_PREFIX = "npc:"
 
