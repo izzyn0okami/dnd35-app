@@ -27,6 +27,7 @@ import java.io.ByteArrayOutputStream
 import java.io.DataInputStream
 import java.io.DataOutputStream
 import java.net.Socket
+import java.util.concurrent.CountDownLatch
 import java.util.concurrent.Executors
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
@@ -359,6 +360,50 @@ class SessionServerClientTest {
                 client.disconnect()
             }
         } finally {
+            server.stop()
+        }
+    }
+
+    @Test
+    fun `mutacoes concorrentes de dano e turno nao perdem atualizacoes`() {
+        val server = SessionServer(sessionId = "sess-combat-concurrency", hostDisplayName = "Mestre")
+        val combatantId = "player-concurrent"
+        val damageOperations = 1_000
+        val turnOperations = 1_000
+        val start = CountDownLatch(1)
+        val executor = Executors.newFixedThreadPool(2)
+        try {
+            server.startCombat(
+                listOf(
+                    Combatant(
+                        id = combatantId,
+                        displayName = "Gimli",
+                        isNpc = false,
+                        initiative = 15,
+                        currentHp = damageOperations,
+                        maxHp = damageOperations
+                    )
+                )
+            )
+            val damageTask = executor.submit {
+                start.await()
+                repeat(damageOperations) { server.applyDamage(combatantId, 1) }
+            }
+            val turnTask = executor.submit {
+                start.await()
+                repeat(turnOperations) { server.nextTurn() }
+            }
+
+            start.countDown()
+            damageTask.get()
+            turnTask.get()
+
+            val finalState = server.combatState.value
+            assertEquals(damageOperations + 1, finalState?.round)
+            assertEquals(0, finalState?.combatants?.single()?.currentHp)
+        } finally {
+            start.countDown()
+            executor.shutdownNow()
             server.stop()
         }
     }
