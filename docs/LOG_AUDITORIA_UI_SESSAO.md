@@ -281,3 +281,15 @@
 - Ajustado o servidor para aceitar `CharacterSheet` sempre que ainda não existir ficha recebida para aquele participante, inclusive após reconexão. Se já houver ficha no estado do Mestre, o snapshot reenviado continua sendo ignorado; alterações posteriores permanecem restritas ao fluxo aprovado de `CHARACTER_UPDATE`.
 - Acrescentado teste TCP real que interrompe a primeira entrada antes do snapshot, reconecta com o mesmo token e confirma que a primeira ficha é então recebida e vinculada.
 - Esta correção complementa, sem enfraquecer, a proteção contra sobrescrita de fichas já aprovadas. A CI do novo head deve ser conferida antes de qualquer merge.
+
+
+### Sincronização dos PV do combate com a ficha do jogador — PR #322 (2026-11-06)
+- Decisão do usuário: a sincronização automática dos PV entre Combate e Personagem é o comportamento definitivo.
+- Achado: CombatUpdate atualizava somente o estado de sessão (PlayerSessionUiState); não havia persistência do combatente do jogador na ficha Room local. A sincronização precisa continuar ativa mesmo quando o jogador navega para fora da tela/aba Sessão.
+- O ID de Combatant para jogadores é o ID do participante da sessão; para NPCs é npc:<characterId>. A sincronização filtra estritamente combatant.id == selfId e usa o ID da ficha local capturado no momento da entrada, sem depender da ficha atualmente selecionada.
+- A coleta foi colocada no nível de DndMainScreen, para permanecer ativa enquanto o jogador navega pelas abas do aplicativo. A ficha vinculada é atualizada somente nos campos currentHp e tempHp; PV máximos, inventário, moedas e demais dados não são substituídos.
+- A gravação consulta a entidade mais recente pelo ID e usa o mesmo characterSaveMutex dos grants de loot/compra, evitando atualizar uma ficha diferente ou disputar uma gravação de concessão.
+- O modelo de combate já consome PV temporários antes dos PV normais, mantém PV negativos e não restaura PV temporários com cura. A rotina de ajuste local da ficha foi corrigida para também preservar PV negativos e permitir cura a partir de valores negativos, sem ultrapassar o máximo.
+- Testes acrescentados para dano absorvido por PV temporários, dano abaixo de zero, cura a partir de PV negativos, limite máximo de cura e preservação de todos os campos da ficha fora dos PV atuais/temporários.
+- A sincronização não altera NPCs, fichas não vinculadas nem a UI. A reformulação visual continua planejada para uma etapa posterior.
+- Validação da CI e teste integrado em dois aparelhos ainda pendentes para este novo head. Manter a PR em rascunho e não mesclar até concluir os testes manuais já combinados.
