@@ -334,3 +334,12 @@
 - A sincronização automática de PV atuais e temporários entre Combate e a ficha vinculada está implementada e coberta por testes automatizados. A CI passou para o head atual.
 - Limitação conhecida: outbox e estado da sessão continuam em memória; encerramento/reinício do processo do Mestre perde pedidos, estoque e grants pendentes. Persistência durável não foi incluída nesta PR.
 - A PR ainda não foi mesclada. Não realizar merge sem autorização explícita do usuário.
+
+
+### Serialização das mutações de sessão e snapshots iniciais — PR #322 (2026-11-06)
+- Revisão estática após a CI #1913 encontrou mutações de estado compartilhado fora de `stateLock`: alterações diretas no baú/loja, atualizações do roster e a leitura dos snapshots de estado enviados a uma nova conexão podiam intercalar-se com aprovações e broadcasts.
+- As mutações de adicionar/remover loot, abrir/fechar loja, adicionar participante e marcar desconexão agora usam o mesmo lock que serializa aprovações, grants e estado de combate.
+- O snapshot inicial enviado a uma conexão (combate, baú, loja e grants pendentes) também é preparado/enfileirado sob o lock, evitando que uma atualização mais antiga seja colocada na fila depois de um broadcast mais recente.
+- O encerramento limpa os estados mutáveis da sessão sob o mesmo lock.
+- Acrescentado teste concorrente com 200 adições ao baú, verificando que nenhum item é perdido.
+- Estas alterações e o novo teste foram adicionados à PR #322 existente. A CI precisa ser executada novamente no head atualizado antes de considerar a revisão concluída.
