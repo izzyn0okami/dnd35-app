@@ -218,15 +218,17 @@ class SessionMessageTest {
     @Test
     fun `LootGranted preserva o item concedido`() {
         val item = CharacterInventoryItem(id = "item-2", name = "Espada longa +1", category = "Armas", quantity = 1)
-        val msg = SessionMessage.LootGranted(CharacterJsonAdapters.serializeInventory(listOf(item)), characterId = 42L)
+        val msg = SessionMessage.LootGranted(grantId = "grant-1", itemJson = CharacterJsonAdapters.serializeInventory(listOf(item)), characterId = 42L)
         val roundTrip = SessionMessage.fromJson(msg.toJson()) as SessionMessage.LootGranted
         assertEquals(item, CharacterJsonAdapters.deserializeInventory(roundTrip.itemJson).single())
         assertEquals(42L, roundTrip.characterId)
+        assertEquals("grant-2", roundTrip.grantId)
         assertEquals(1f, roundTrip.goldGp)
         assertEquals(2f, roundTrip.silverSp)
         assertEquals(3f, roundTrip.copperCp)
         assertEquals(4f, roundTrip.platinumPp)
         assertEquals(42L, roundTrip.characterId)
+        assertEquals("grant-1", roundTrip.grantId)
     }
 
     @Test
@@ -265,6 +267,7 @@ class SessionMessageTest {
     fun `ShopPurchaseGranted preserva o item comprado`() {
         val item = CharacterInventoryItem(id = "shop-item-2", name = "Adaga +1", category = "Armas", quantity = 1, costGp = 320f)
         val msg = SessionMessage.ShopPurchaseGranted(
+            grantId = "grant-2",
             itemJson = CharacterJsonAdapters.serializeInventory(listOf(item)),
             characterId = 42L,
             goldGp = 1f,
@@ -274,6 +277,12 @@ class SessionMessageTest {
         )
         val roundTrip = SessionMessage.fromJson(msg.toJson()) as SessionMessage.ShopPurchaseGranted
         assertEquals(item, CharacterJsonAdapters.deserializeInventory(roundTrip.itemJson).single())
+    }
+
+    @Test
+    fun `GrantAcknowledged preserva o identificador da entrega`() {
+        val msg = SessionMessage.GrantAcknowledged("grant-42")
+        assertEquals(msg, SessionMessage.fromJson(msg.toJson()))
     }
 
     @Test
