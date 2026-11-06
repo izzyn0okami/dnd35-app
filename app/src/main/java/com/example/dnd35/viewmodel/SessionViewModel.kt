@@ -28,6 +28,7 @@ import com.example.dnd35.session.ShopSnapshot
 import com.example.dnd35.session.ShopState
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -91,6 +92,7 @@ private data class DmExtraState(
 
 private sealed interface HostedSessionPersistenceCommand {
     data class Save(val snapshot: HostedSessionSnapshot) : HostedSessionPersistenceCommand
+    data class SaveAndWait(val snapshot: HostedSessionSnapshot, val completion: CompletableDeferred<Unit>) : HostedSessionPersistenceCommand
     data class End(val sessionId: String) : HostedSessionPersistenceCommand
 }
 
@@ -112,16 +114,16 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
                 try {
                     when (command) {
                         is HostedSessionPersistenceCommand.Save -> {
-                            val snapshot = command.snapshot
-                            hostedSessionDao.saveCheckpoint(
-                                HostedSessionEntity(
-                                    sessionId = snapshot.sessionId,
-                                    hostDisplayName = snapshot.hostDisplayName,
-                                    status = HostedSessionEntity.STATUS_ACTIVE,
-                                    snapshotVersion = HostedSessionSnapshotCodec.VERSION,
-                                    snapshotJson = HostedSessionSnapshotCodec.encode(snapshot)
-                                )
-                            )
+                            saveHostedSnapshot(command.snapshot)
+                        }
+                        is HostedSessionPersistenceCommand.SaveAndWait -> {
+                            try {
+                                saveHostedSnapshot(command.snapshot)
+                                command.completion.complete(Unit)
+                            } catch (error: Exception) {
+                                command.completion.completeExceptionally(error)
+                                throw error
+                            }
                         }
                         is HostedSessionPersistenceCommand.End -> {
                             hostedSessionDao.markManuallyEnded(command.sessionId)
@@ -166,6 +168,18 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
     private val _playerPrivateMessages = MutableSharedFlow<String>(extraBufferCapacity = 8)
     val playerPrivateMessages: SharedFlow<String> = _playerPrivateMessages
 
+    private suspend fun saveHostedSnapshot(snapshot: HostedSessionSnapshot) {
+        hostedSessionDao.saveCheckpoint(
+            HostedSessionEntity(
+                sessionId = snapshot.sessionId,
+                hostDisplayName = snapshot.hostDisplayName,
+                status = HostedSessionEntity.STATUS_ACTIVE,
+                snapshotVersion = HostedSessionSnapshotCodec.VERSION,
+                snapshotJson = HostedSessionSnapshotCodec.encode(snapshot)
+            )
+        )
+    }
+
     /** Recupera uma sessão cujo processo terminou sem encerramento manual. */
     private fun recoverHostedSession() {
         viewModelScope.launch {
@@ -188,7 +202,9 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
                 return@launch
             }
 
-            val restoredServer = SessionServer(snapshot.sessionId, snapshot.hostDisplayName) { updated ->
+            val restoredServer = SessionServer(snapshot.sessionId, snapshot.hostDisplayName, persistCriticalSnapshot = { critical ->
+                saveHostedSnapshot(critical)
+            }) { updated ->
                 persistenceCommands.trySend(HostedSessionPersistenceCommand.Save(updated))
             }
             try {
@@ -232,7 +248,9 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
         stopHosting(manual = true)
         val sessionId = JoinPayload.newSessionId()
         val name = hostDisplayName.ifBlank { "Mestre" }
-        val newServer = SessionServer(sessionId, name) { snapshot ->
+        val newServer = SessionServer(sessionId, name, persistCriticalSnapshot = { critical ->
+            saveHostedSnapshot(critical)
+        }) { snapshot ->
             persistenceCommands.trySend(HostedSessionPersistenceCommand.Save(snapshot))
         }
         server = newServer
@@ -324,7 +342,8 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
 
     /** Mestre: aprova um pedido pendente de jogador, aplicando a mudança correspondente. */
     fun approveRequest(requestId: String) {
-        server?.approveRequest(requestId)
+        val activeServer = server ?: return
+        viewModelScope.launch(Dispatchers.IO) { activeServer.approveRequest(requestId) }
     }
 
     /** Mestre: nega um pedido pendente de jogador (nada é aplicado). */
