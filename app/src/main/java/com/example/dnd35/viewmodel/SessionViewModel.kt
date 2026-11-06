@@ -418,6 +418,11 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
             )
             return
         }
+        val existingClient = client
+        if (existingClient?.reconnectTo(payload.hostAddress, payload.port, payload.sessionId) == true) {
+            _playerState.value = PlayerSessionUiState.Connecting
+            return
+        }
         joinSession(payload.hostAddress, payload.port, displayName, character)
     }
 
