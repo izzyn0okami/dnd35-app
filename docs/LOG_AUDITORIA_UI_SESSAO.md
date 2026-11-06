@@ -145,5 +145,5 @@
 ### Limitações ainda abertas
 - O outbox é mantido somente em memória no processo do Mestre. Encerrar o processo/hospedagem perde pedidos, estoque e concessões pendentes; persistência após reinício exige armazenamento local durável.
 - A entrega ainda precisa ser validada em teste integrado com dois aparelhos, incluindo queda de conexão antes/depois da gravação e confirmação.
-- Deve ser revisado o comportamento de compra de itens com quantidade maior que 1: nesta etapa a loja trata o registro/stack como uma unidade de estoque e debita o preço registrado no item.
+- Na loja, cada compra debita o preço registrado e entrega uma unidade; quando o estoque é uma pilha, a quantidade é reduzida em 1 e o restante permanece disponível.
 - A CI precisa confirmar compilação, testes unitários e empacotamento do APK antes de abrir solicitação de merge.
