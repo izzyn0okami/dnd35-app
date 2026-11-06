@@ -461,6 +461,33 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
         persistCharacter(curr.copy(skillsJson = CharacterJsonAdapters.serializeSkills(currentSkills)))
     }
 
+    /**
+     * Applies an approved multiplayer grant to the exact local sheet selected when joining.
+     * Inventory and (for purchases) all coin denominations are persisted in one sheet update.
+     */
+    fun applySessionGrant(grant: com.example.dnd35.session.SessionItemGrant) {
+        if (grant.characterId <= 0L) return
+        viewModelScope.launch {
+            characterSaveMutex.withLock {
+                val target = withContext(Dispatchers.IO) {
+                    repository.getAllCharactersOnce().firstOrNull { it.id == grant.characterId }
+                } ?: return@withLock
+                val inventory = CharacterJsonAdapters.deserializeInventory(target.inventoryJson)
+                val updatedInventory = inventory + grant.item.copy(id = java.util.UUID.randomUUID().toString())
+                val purse = grant.coinPurse
+                val updated = target.copy(
+                    inventoryJson = CharacterJsonAdapters.serializeInventory(updatedInventory),
+                    goldGp = purse?.goldGp ?: target.goldGp,
+                    silverSp = purse?.silverSp ?: target.silverSp,
+                    copperCp = purse?.copperCp ?: target.copperCp,
+                    platinumPp = purse?.platinumPp ?: target.platinumPp,
+                    updatedAt = System.currentTimeMillis()
+                )
+                withContext(Dispatchers.IO) { repository.saveCharacter(updated) }
+            }
+        }
+    }
+
     // Inventário
     fun addInventoryItem(item: CharacterInventoryItem) {
         val curr = _activeCharacter.value ?: return
