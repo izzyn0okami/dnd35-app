@@ -389,3 +389,6 @@
 - O teste foi reestruturado para manter seis conexões concorrentes, enviar um lote de seis mensagens por rodada e aguardar o histórico atingir o total esperado antes de iniciar a rodada seguinte. São mantidas 40 rodadas e 240 mensagens distintas. O timeout por lote foi ampliado para 30 segundos.
 - Esta alteração corrige a determinabilidade do teste; não é apresentada como prova de que o timeout anterior demonstrou perda de mensagens.
 - A CI precisa ser executada novamente no novo SHA antes de qualquer merge.
+
+- A segunda CI mostrou que a espera entre lotes também usava igualdade exata (`size == esperado`) em um `StateFlow`. Como `StateFlow` pode conflar estados intermediários, o coletor poderia observar um tamanho posterior e nunca satisfazer a igualdade. O predicado agora usa `size >= esperado`, mantendo a espera monotônica sem depender da observação de cada tamanho intermediário.
+- A segunda execução voltou a falhar somente no teste novo; a terceira CI deve validar o predicado corrigido antes de qualquer merge.
