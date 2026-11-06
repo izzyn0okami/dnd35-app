@@ -707,7 +707,8 @@ class SessionServerClientTest {
                 val granted = grantedDeferred.await()
                 assertEquals(item, granted.item)
                 assertEquals(character.id, granted.characterId)
-                assertEquals(500f, granted.coinPurse?.goldGp)
+                assertEquals(0f, granted.coinPurse?.goldGp)
+                assertEquals(50f, granted.coinPurse?.platinumPp)
 
                 val resolved = resolvedDeferred.await()
                 assertTrue(resolved.approved)
