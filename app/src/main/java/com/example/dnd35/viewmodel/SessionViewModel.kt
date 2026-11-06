@@ -191,6 +191,7 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
         viewModelScope.launch {
             if (manualHostRequested || server != null) return@launch
             val stored = withContext(Dispatchers.IO) { hostedSessionDao.getRecoverableSession() } ?: return@launch
+            if (manualHostRequested || server != null) return@launch
             val snapshot = try {
                 require(stored.snapshotVersion == HostedSessionSnapshotCodec.VERSION) {
                     "A versão do snapshot salvo não é suportada."
@@ -533,6 +534,16 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
     }
 
     override fun onCleared() {
+        val activeServer = server
+        if (activeServer != null) {
+            runCatching {
+                kotlinx.coroutines.runBlocking(Dispatchers.IO) {
+                    persistSnapshotAndWait(activeServer.createSnapshot())
+                }
+            }.onFailure { error ->
+                CrashLogStore.record("MULTIPLAYER_PERSISTENCE", "Falha no checkpoint final ao encerrar o ViewModel", error)
+            }
+        }
         super.onCleared()
         stopHosting(manual = false)
         persistenceCommands.close()
