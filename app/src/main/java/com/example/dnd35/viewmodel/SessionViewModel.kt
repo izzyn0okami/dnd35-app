@@ -416,17 +416,22 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
         val activeSessionId = activeServer?.createSnapshot()?.sessionId
         activeServer?.stop()
         server = null
+        var endFailed = false
         if (manual && activeSessionId != null) {
             runCatching {
                 kotlinx.coroutines.runBlocking(Dispatchers.IO) {
                     persistManualEndAndWait(activeSessionId)
                 }
             }.onFailure { error ->
+                endFailed = true
                 CrashLogStore.record("MULTIPLAYER_PERSISTENCE", "Falha ao marcar encerramento manual da sessão", error)
-                _dmState.value = DmSessionUiState.Error("Não foi possível confirmar o encerramento da sessão no armazenamento local.")
             }
         }
-        _dmState.value = DmSessionUiState.Idle
+        _dmState.value = if (endFailed) {
+            DmSessionUiState.Error("Não foi possível confirmar o encerramento da sessão no armazenamento local.")
+        } else {
+            DmSessionUiState.Idle
+        }
     }
 
     /** Jogador: entra em uma sessão a partir de um QR Code já decodificado. */
