@@ -156,3 +156,10 @@
 - Estas correções foram publicadas na branch da PR #321. A nova execução da CI ainda precisa confirmar que os três timeouts foram eliminados; não considerar a etapa validada até testDebugUnitTest e assembleDebug concluírem com sucesso.
 
 - Ajuste adicional no teste de compra: o troco é conferido na denominação canônica de platina (50 PP para saldo inicial de 1.000 PO e preço de 500 PO), sem esperar que o servidor mantenha moedas em ouro quando a conversão as representa em platina.
+
+
+### Diagnóstico da CI #1811 — falhas nas asserções de concessão (2026-11-06)
+- A CI executou 448 testes; 2 falharam: concessão de loot e compra na loja. A compilação Kotlin foi concluída, mas `assembleDebug` e upload do APK foram ignorados devido à falha dos testes.
+- A causa foi localizada nos testes: o servidor substitui o ID original do item pelo ID único do grant para permitir deduplicação/idempotência na persistência local. As asserções ainda comparavam o item recebido com o objeto original, incluindo o ID antigo, embora os demais campos fossem preservados.
+- Corrigidas as duas expectativas para comparar o item recebido com `item.copy(id = granted.grantId)`. Isso alinha o teste ao contrato de concessão sem alterar o comportamento de produção.
+- A correção foi enviada à mesma branch da PR #321. A CI precisa ser executada novamente; até sua conclusão, a etapa Recursos permanece não validada.
