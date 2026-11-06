@@ -33,6 +33,8 @@ class SessionServer(
     private var serverSocket: ServerSocket? = null
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
     private val clients = ConcurrentHashMap<String, ClientHandle>()
+    // In-memory outbox: grants remain until the player confirms local persistence.
+    private val pendingGrants = ConcurrentHashMap<String, ConcurrentHashMap<String, SessionMessage>>()
 
     // Token de reconexão (ver SessionMessage.Hello/Welcome) -> id de participante. Permite que um
     // Jogador cuja conexão caiu (Wi-Fi instável, app em segundo plano) volte como o MESMO
@@ -94,6 +96,7 @@ class SessionServer(
         runCatching { serverSocket?.close() }
         clients.values.forEach { handle -> handle.outbound.close(); runCatching { handle.socket.close() } }
         clients.clear()
+        pendingGrants.clear()
         rejoinTokens.clear()
         _roster.value = listOf(dmParticipant)
         _receivedCharacters.value = emptyMap()
@@ -151,6 +154,7 @@ class SessionServer(
             _combatState.value?.let { enqueue(newHandle, SessionMessage.CombatUpdate(it)) }
             if (_lootChest.value.isNotEmpty()) enqueue(newHandle, SessionMessage.LootChestUpdate(CharacterJsonAdapters.serializeInventory(_lootChest.value)))
             _shop.value?.let { enqueue(newHandle, SessionMessage.ShopUpdate(it.npcName, CharacterJsonAdapters.serializeInventory(it.items))) }
+            pendingGrants[id]?.values?.forEach { enqueue(newHandle, it) }
 
             while (true) {
                 val msg = SessionWire.read(input) ?: break
@@ -159,6 +163,7 @@ class SessionServer(
                     is SessionMessage.CharacterSheet -> receiveCharacterSheet(id, msg.characterJson)
                     is SessionMessage.ActionRequested -> receiveActionRequest(id, msg)
                     is SessionMessage.PrivateMessage -> receivePrivateMessage(id, msg.text)
+                    is SessionMessage.GrantAcknowledged -> acknowledgeGrant(id, msg.grantId)
                     else -> Unit
                 }
             }
@@ -205,6 +210,16 @@ class SessionServer(
         val parsed = CharacterBackup.parse(characterJson) as? CharacterBackup.ParseResult.Success ?: return
         val entity = parsed.characters.firstOrNull()?.entity ?: return
         _receivedCharacters.value = _receivedCharacters.value + (participantId to entity)
+    }
+
+    private fun registerPendingGrant(participantId: String, grantId: String, message: SessionMessage) {
+        pendingGrants.computeIfAbsent(participantId) { ConcurrentHashMap() }[grantId] = message
+    }
+
+    private fun acknowledgeGrant(participantId: String, grantId: String) {
+        val grants = pendingGrants[participantId] ?: return
+        grants.remove(grantId)
+        if (grants.isEmpty()) pendingGrants.remove(participantId, grants)
     }
 
     private fun broadcastRoster() {
@@ -365,15 +380,18 @@ class SessionServer(
                     if (characterId == null || _receivedCharacters.value[request.requesterId] == null) {
                         resolveRequest(request, approved = false, reason = "Vincule uma ficha válida antes de retirar itens do baú.")
                     } else {
+                        val grantId = UUID.randomUUID().toString()
+                        val grantedItem = item.copy(id = grantId)
                         val grant = SessionMessage.LootGranted(
-                            CharacterJsonAdapters.serializeInventory(listOf(item)),
-                            characterId
+                            grantId = grantId,
+                            itemJson = CharacterJsonAdapters.serializeInventory(listOf(grantedItem)),
+                            characterId = characterId
                         )
-                        if (sendTo(request.requesterId, grant)) {
-                            _lootChest.value = _lootChest.value.filterNot { it.id == item.id }
-                            broadcastLootChest()
-                            resolveRequest(request, approved = true)
-                        }
+                        registerPendingGrant(request.requesterId, grantId, grant)
+                        _lootChest.value = _lootChest.value.filterNot { it.id == item.id }
+                        broadcastLootChest()
+                        sendTo(request.requesterId, grant)
+                        resolveRequest(request, approved = true)
                     }
                 }
             }
@@ -393,21 +411,24 @@ class SessionServer(
                         if (purse == null) {
                             resolveRequest(request, approved = false, reason = "Saldo insuficiente ou preço/saldo inválido.")
                         } else {
+                            val grantId = UUID.randomUUID().toString()
+                            val grantedItem = item.copy(id = grantId)
                             val grant = SessionMessage.ShopPurchaseGranted(
-                                itemJson = CharacterJsonAdapters.serializeInventory(listOf(item)),
+                                grantId = grantId,
+                                itemJson = CharacterJsonAdapters.serializeInventory(listOf(grantedItem)),
                                 characterId = characterId,
                                 goldGp = purse.goldGp,
                                 silverSp = purse.silverSp,
                                 copperCp = purse.copperCp,
                                 platinumPp = purse.platinumPp
                             )
-                            if (sendTo(request.requesterId, grant)) {
-                                _receivedCharacters.value = _receivedCharacters.value +
-                                    (request.requesterId to purse.toCharacterUpdate(character))
-                                _shop.value = shopState.copy(items = shopState.items.filterNot { it.id == item.id })
-                                broadcastShop()
-                                resolveRequest(request, approved = true)
-                            }
+                            registerPendingGrant(request.requesterId, grantId, grant)
+                            _receivedCharacters.value = _receivedCharacters.value +
+                                (request.requesterId to purse.toCharacterUpdate(character))
+                            _shop.value = shopState.copy(items = shopState.items.filterNot { it.id == item.id })
+                            broadcastShop()
+                            sendTo(request.requesterId, grant)
+                            resolveRequest(request, approved = true)
                         }
                     }
                 }
