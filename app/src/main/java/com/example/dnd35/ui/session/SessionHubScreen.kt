@@ -561,6 +561,14 @@ private fun CombatTracker(
     Column {
         Text("Rodada ${combat.round}", style = MaterialTheme.typography.labelMedium, fontWeight = FontWeight.Bold)
         Spacer(modifier = Modifier.height(4.dp))
+        if (combat.combatants.isNotEmpty() && combat.currentCombatantId == null) {
+            Text(
+                "Não há combatentes com PV positivos. Cure ou encerre o combate para continuar.",
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.error
+            )
+            Spacer(modifier = Modifier.height(4.dp))
+        }
         combat.combatants.forEach { combatant ->
             val isCurrentTurn = combatant.id == combat.currentCombatantId
             Card(
