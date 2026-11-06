@@ -67,12 +67,12 @@ class SessionClient {
     // Item concedido ao pegar algo do baú de loot (pedido aprovado) — evento, não estado
     // contínuo, já que vira um item novo no inventário local assim que é recebido.
     private val _lootGranted = MutableSharedFlow<SessionItemGrant>(extraBufferCapacity = 4)
-    val lootGranted: SharedFlow<CharacterInventoryItem> = _lootGranted
+    val lootGranted: SharedFlow<SessionItemGrant> = _lootGranted
 
     // Item concedido ao comprar algo da loja de NPC (pedido aprovado) — mesmo motivo do loot:
     // evento, não estado contínuo.
-    private val _shopPurchases = MutableSharedFlow<CharacterInventoryItem>(extraBufferCapacity = 4)
-    val shopPurchases: SharedFlow<CharacterInventoryItem> = _shopPurchases
+    private val _shopPurchases = MutableSharedFlow<SessionItemGrant>(extraBufferCapacity = 4)
+    val shopPurchases: SharedFlow<SessionItemGrant> = _shopPurchases
 
     // Mensagens privadas recebidas do Mestre — evento, não estado contínuo.
     private val _privateMessages = MutableSharedFlow<String>(extraBufferCapacity = 8)
