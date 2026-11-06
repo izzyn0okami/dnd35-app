@@ -35,9 +35,9 @@ class SessionServer(
     private val clients = ConcurrentHashMap<String, ClientHandle>()
     // In-memory outbox: grants remain until the player confirms local persistence.
     private val pendingGrants = ConcurrentHashMap<String, ConcurrentHashMap<String, SessionMessage>>()
-    // Serialize pending-request mutations and approvals so a duplicated tap/message cannot
-    // grant the same loot twice or debit a purchase more than once.
-    private val requestLock = Any()
+    // Serialize compound session mutations: pending requests/grants and combat state.
+    // In particular, combat state changes and their broadcasts must share one critical section.
+    private val stateLock = Any()
 
     // Token de reconexão (ver SessionMessage.Hello/Welcome) -> id de participante. Permite que um
     // Jogador cuja conexão caiu (Wi-Fi instável, app em segundo plano) volte como o MESMO
@@ -103,7 +103,7 @@ class SessionServer(
         rejoinTokens.clear()
         _roster.value = listOf(dmParticipant)
         _receivedCharacters.value = emptyMap()
-        _combatState.value = null
+        synchronized(stateLock) { _combatState.value = null }
         _pendingRequests.value = emptyList()
         _lootChest.value = emptyList()
         _shop.value = null
@@ -168,7 +168,7 @@ class SessionServer(
                         // uma entrada interrompida antes do primeiro snapshot. Se o Mestre já tem
                         // uma ficha, a mensagem reenviada na reconexão nunca pode sobrescrevê-la:
                         // atualizações posteriores exigem aprovação via CHARACTER_UPDATE.
-                        synchronized(requestLock) {
+                        synchronized(stateLock) {
                             if (!_receivedCharacters.value.containsKey(id)) {
                                 receiveCharacterSheet(id, msg.characterJson)
                             }
@@ -229,7 +229,7 @@ class SessionServer(
         pendingGrants.computeIfAbsent(participantId) { ConcurrentHashMap() }[grantId] = message
     }
 
-    private fun acknowledgeGrant(participantId: String, grantId: String) = synchronized(requestLock) {
+    private fun acknowledgeGrant(participantId: String, grantId: String) = synchronized(stateLock) {
         // Serialize ACK removal with grant registration in approveRequest(). Otherwise an ACK
         // could observe an empty map while a new grant is being inserted, then remove that map
         // and accidentally discard the newly registered grant from the in-memory outbox.
@@ -257,14 +257,14 @@ class SessionServer(
     // --- Combate (estado global, autoridade do Mestre) ---
 
     /** Inicia um combate novo com os combatentes informados (a ordem de iniciativa é calculada aqui). */
-    fun startCombat(combatants: List<Combatant>) {
+    fun startCombat(combatants: List<Combatant>) = synchronized(stateLock) {
         val state = CombatState.start(combatants)
         _combatState.value = state
         broadcast(SessionMessage.CombatUpdate(state))
     }
 
     /** Aplica dano (positivo) ou cura (negativo) a um combatente e sincroniza com todos. */
-    fun applyDamage(combatantId: String, amount: Int) = synchronized(requestLock) {
+    fun applyDamage(combatantId: String, amount: Int) = synchronized(stateLock) {
         val current = _combatState.value ?: return@synchronized
         val updatedCombatants = current.combatants.map {
             if (it.id == combatantId) it.withDamage(amount) else it
@@ -298,14 +298,14 @@ class SessionServer(
     }
 
     /** Encerra o combate ativo (se houver) e avisa a todos. */
-    fun endCombat() {
-        if (_combatState.value == null) return
+    fun endCombat() = synchronized(stateLock) {
+        if (_combatState.value == null) return@synchronized
         _combatState.value = null
         broadcast(SessionMessage.EndCombat)
     }
 
-    private inline fun updateCombat(transform: (CombatState) -> CombatState) {
-        val current = _combatState.value ?: return
+    private inline fun updateCombat(transform: (CombatState) -> CombatState) = synchronized(stateLock) {
+        val current = _combatState.value ?: return@synchronized
         val updated = transform(current)
         _combatState.value = updated
         broadcast(SessionMessage.CombatUpdate(updated))
@@ -390,13 +390,13 @@ class SessionServer(
             lootItemId = msg.lootItemId,
             shopItemId = msg.shopItemId
         )
-        synchronized(requestLock) {
+        synchronized(stateLock) {
             _pendingRequests.value = _pendingRequests.value + request
         }
     }
 
     /** Aprova um pedido pendente: aplica a mudança correspondente e avisa quem pediu. */
-    fun approveRequest(requestId: String) = synchronized(requestLock) {
+    fun approveRequest(requestId: String) = synchronized(stateLock) {
         val request = _pendingRequests.value.firstOrNull { it.id == requestId } ?: return@synchronized
         val requester = _roster.value.firstOrNull { it.id == request.requesterId }
         if (requester?.connected != true) return@synchronized
@@ -491,7 +491,7 @@ class SessionServer(
     }
 
     /** Nega um pedido pendente: nada é aplicado, só avisa quem pediu (com motivo opcional). */
-    fun denyRequest(requestId: String, reason: String = "") = synchronized(requestLock) {
+    fun denyRequest(requestId: String, reason: String = "") = synchronized(stateLock) {
         val request = _pendingRequests.value.firstOrNull { it.id == requestId } ?: return@synchronized
         resolveRequest(request, approved = false, reason = reason)
     }
