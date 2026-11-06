@@ -1201,14 +1201,22 @@ private fun PlayerJoinContent(viewModel: SessionViewModel, characterViewModel: C
             val receivedDmMessages = remember { mutableStateListOf<String>() }
             LaunchedEffect(viewModel) {
                 viewModel.lootGranted.collect { grant ->
-                    characterViewModel.applySessionGrant(grant)
-                    lootFeedback = "Você recebeu \"${grant.item.name}\" do baú de loot!"
+                    if (characterViewModel.applySessionGrant(grant)) {
+                        viewModel.acknowledgeResourceGrant(grant.grantId)
+                        lootFeedback = "Você recebeu \"${grant.item.name}\" do baú de loot!"
+                    } else {
+                        lootFeedback = "Não foi possível localizar ou atualizar a ficha vinculada. A entrega permanece pendente."
+                    }
                 }
             }
             LaunchedEffect(viewModel) {
                 viewModel.shopPurchaseGranted.collect { grant ->
-                    characterViewModel.applySessionGrant(grant)
-                    shopFeedback = "Você comprou \"${grant.item.name}\" por ${grant.item.costGp} po!"
+                    if (characterViewModel.applySessionGrant(grant)) {
+                        viewModel.acknowledgeResourceGrant(grant.grantId)
+                        shopFeedback = "Você comprou \"${grant.item.name}\" por ${grant.item.costGp} po!"
+                    } else {
+                        shopFeedback = "Não foi possível atualizar a ficha vinculada. A entrega permanece pendente."
+                    }
                 }
             }
             LaunchedEffect(viewModel) { viewModel.playerPrivateMessages.collect { text -> receivedDmMessages.add(text) } }
