@@ -695,7 +695,7 @@ class SessionServerClientTest {
 
 
     @Test
-    fun \`jogador reconecta ao host recuperado com novo endereco e mesmo identificador\`() = runBlocking {
+    fun `jogador reconecta ao host recuperado com novo endereco e mesmo identificador`() = runBlocking {
         val originalServer = SessionServer(sessionId = "session-host-recovery", hostDisplayName = "Mestre")
         val originalPort = originalServer.start()
         val client = SessionClient()
