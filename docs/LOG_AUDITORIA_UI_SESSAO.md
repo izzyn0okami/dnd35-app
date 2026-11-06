@@ -273,3 +273,11 @@
 - Testes automatizados cobrem snapshot inválido, atualização aprovada/negada, tentativas concorrentes de compra e replay/ACK de grant por sockets TCP reais.
 - A PR permanece em rascunho e não foi mesclada. A CI verde não substitui teste manual integrado em dois aparelhos.
 - Limitações mantidas: outbox e estado da sessão são voláteis e se perdem quando o processo do Mestre é encerrado/reiniciado; teste real com dois aparelhos continua pendente.
+
+
+
+### Correção complementar identificada na revisão de reconexão — PR #322 (2026-11-06)
+- A revisão estática identificou um caso-limite: se a primeira conexão recebesse o WELCOME e caísse antes de enviar `CharacterSheet`, a reconexão seria reconhecida pelo token, mas o servidor descartaria o primeiro snapshot porque condicionava a aceitação a `existingId == null`.
+- Ajustado o servidor para aceitar `CharacterSheet` sempre que ainda não existir ficha recebida para aquele participante, inclusive após reconexão. Se já houver ficha no estado do Mestre, o snapshot reenviado continua sendo ignorado; alterações posteriores permanecem restritas ao fluxo aprovado de `CHARACTER_UPDATE`.
+- Acrescentado teste TCP real que interrompe a primeira entrada antes do snapshot, reconecta com o mesmo token e confirma que a primeira ficha é então recebida e vinculada.
+- Esta correção complementa, sem enfraquecer, a proteção contra sobrescrita de fichas já aprovadas. A CI do novo head deve ser conferida antes de qualquer merge.
