@@ -241,3 +241,10 @@
 - Não foi encontrado, na suíte atual, um teste de integração que percorra explicitamente a sequência completa: grant emitido -> conexão cai antes do ACK -> grant reenviado com o mesmo ID -> ACK recebido -> reconexão posterior sem novo envio. Os testes atuais cobrem identificadores/protocolo e aplicação local idempotente, mas não substituem esse cenário de transporte ponta a ponta.
 - A revisão estática não identificou falha funcional demonstrada nesse fluxo. A cobertura de regressão para replay/ACK permanece uma lacuna e deve ser adicionada antes de declarar a entrega resiliente integralmente auditada.
 - Limitação já conhecida e mantida: o outbox é em memória. O replay protege contra queda de conexão enquanto o processo do Mestre continua ativo; não protege contra encerramento/reinício do processo ou do aparelho do Mestre. Persistência durável exige uma etapa separada de armazenamento.
+
+
+### Teste de integração de replay e ACK acrescentado — PR #322 (2026-11-06)
+- Acrescentado teste com sockets TCP reais que simula: jogador recebe grant de loot; conexão cai sem ACK; jogador reconecta com o mesmo token e recebe o mesmo `grantId`; cliente envia ACK; uma reconexão posterior não recebe novamente o grant confirmado.
+- O teste também verifica que a reconexão mantém o mesmo ID de participante e que a mensagem privada enviada depois do ACK funciona como barreira de ordenação TCP para confirmar que o servidor processou a confirmação antes da próxima reconexão.
+- O teste foi adicionado à suíte `SessionServerClientTest` na branch da PR #322. A execução Android build #1860 (run `42150172672`) foi iniciada para validar a nova cobertura; registrar o resultado após conclusão.
+- O teste cobre o replay/ACK enquanto o processo do Mestre permanece ativo. Não cobre persistência após reinício, que continua sendo uma limitação separada do outbox em memória.
