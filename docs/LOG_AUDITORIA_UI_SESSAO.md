@@ -199,3 +199,10 @@
 - Corrigido na mesma branch: o servidor não aplica snapshots anexados a pedidos de Recursos. A validação da compra usa a ficha e o saldo já aprovados e mantidos pelo servidor; alterações de ficha devem passar pelo pedido `CHARACTER_UPDATE`.
 - Teste adicional envia uma compra com PV e saldo adulterados no snapshot e verifica que o estado do servidor permanece inalterado enquanto o pedido está pendente.
 - Esta decisão reforça a autoridade do servidor e evita que um pedido pendente de loot/compra funcione como atualização implícita da ficha.
+
+
+### Achado adicional na revisão da PR #322 — aprovação concorrente/duplicada
+- `approveRequest()` e `denyRequest()` consultavam e alteravam a lista de pedidos pendentes sem sincronização. Duas chamadas simultâneas para aprovar o mesmo pedido poderiam processar a mesma compra/retirada mais de uma vez, além de atualizações concorrentes da lista poderem sobrescrever pedidos recém-chegados.
+- Adicionado um lock dedicado para serializar inclusão, aprovação e negação dos pedidos. Uma segunda aprovação/negação do mesmo ID não encontra mais o pedido pendente e não repete a transação.
+- Teste concorrente dispara duas aprovações para a mesma compra e verifica que o saldo é debitado uma única vez e o estoque é consumido uma única vez.
+- Aguardar CI após o commit; teste ainda não validado nesta etapa.
