@@ -192,3 +192,10 @@
 - Alterações concentradas no servidor, nos testes de integração JVM e neste log.
 - CI ainda pendente nesta branch; não declarar a correção validada até `testDebugUnitTest` e `assembleDebug` concluírem.
 - Não altera regras de D&D 3.5, cálculos da ficha ou protocolo de rede.
+
+
+### Achado adicional na revisão da PR #322 — snapshot em pedidos de Recursos
+- Mesmo após separar `CHARACTER_UPDATE`, pedidos `TAKE_LOOT` e `BUY_FROM_SHOP` ainda aplicavam o snapshot completo enviado pelo cliente antes da aprovação do Mestre. Preservar apenas as moedas não impedia alterações antecipadas em PV, atributos ou inventário.
+- Corrigido na mesma branch: o servidor não aplica snapshots anexados a pedidos de Recursos. A validação da compra usa a ficha e o saldo já aprovados e mantidos pelo servidor; alterações de ficha devem passar pelo pedido `CHARACTER_UPDATE`.
+- Teste adicional envia uma compra com PV e saldo adulterados no snapshot e verifica que o estado do servidor permanece inalterado enquanto o pedido está pendente.
+- Esta decisão reforça a autoridade do servidor e evita que um pedido pendente de loot/compra funcione como atualização implícita da ficha.
