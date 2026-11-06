@@ -479,3 +479,15 @@
 
 - O schema Room `app/schemas/com.example.dnd35.data.AppDatabase/10.json` foi versionado. Foi comparado com o artefato `room-schemas` produzido pela CI da base Room 10; preserva a entidade `characters` e inclui somente `hosted_session`. A migração 9→10 cria a mesma definição SQL da entidade.
 - O decoder valida também a integridade estrutural das listas de inventário: JSON truncado/inválido não pode virar uma lista vazia silenciosamente.
+
+## 2026-11-06 — Integração dos checkpoints, retomada e barreira transacional
+
+- `SessionServer` passou a emitir snapshots após mutações autoritativas: participantes/conexões, fichas recebidas, combate, pedidos, baú, loja, chat e ACKs da outbox.
+- `SessionViewModel` grava checkpoints na entidade Room singleton por uma fila serial de comandos. A fila preserva a ordem entre checkpoints, encerramento manual e novas sessões.
+- Ao iniciar o ViewModel, procura uma sessão `ACTIVE`, valida a versão e a identidade do snapshot, restaura o domínio antes de abrir o TCP e gera novo QR Code com endereço/porta atuais. Jogadores são apresentados como desconectados e podem reconectar usando os tokens restaurados.
+- Falha de leitura/decodificação não apaga nem encerra o registro salvo; a UI apresenta erro e mantém os dados para diagnóstico/tentativa posterior.
+- Encerramento manual agora exige diálogo de confirmação. A confirmação enfileira `markManuallyEnded`; `onCleared` não marca sessão como encerrada e tenta concluir os checkpoints/encerramentos já enfileirados antes de liberar o ViewModel.
+- Compras e retiradas do baú foram alteradas para montar um snapshot com saldo/estoque/baú atualizado e grant na outbox, aguardar o commit Room e só então transmitir a concessão e a resposta de aprovação. Em falha de persistência, o servidor restaura o snapshot anterior e nega o pedido. A barreira é serializada com a fila de checkpoints, evitando que um snapshot antigo sobrescreva o commit da transação.
+- O ACK continua idempotente: se a remoção da outbox não chegar a ser persistida antes de uma queda, a concessão pode ser reenviada; o cliente deve reconhecer o mesmo `grantId` e não duplicar a aplicação.
+- Teste de integração adicionado para manter a compra bloqueada enquanto o commit não é liberado, verificando que nenhum grant chega antes da persistência.
+- **Ainda pendente:** confirmar que o workflow Android passa para o SHA mais recente; teste real de morte/recriação do processo; teste físico Mestre/Jogador; teste de migração 9→10 sobre base real com fichas; revisão de que todos os fluxos de mutação disparam checkpoint. A retomada automática não deve ser considerada validada até esses testes.
