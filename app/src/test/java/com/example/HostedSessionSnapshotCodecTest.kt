@@ -12,6 +12,7 @@ import com.example.dnd35.session.ParticipantRole
 import com.example.dnd35.session.PrivateChatEntry
 import com.example.dnd35.session.RequestKind
 import com.example.dnd35.session.SessionMessage
+import com.example.dnd35.session.SessionServer
 import com.example.dnd35.session.ShopState
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
@@ -100,6 +101,44 @@ class HostedSessionSnapshotCodecTest {
         assertNull(decoded.combat)
         assertNull(decoded.shop)
         assertEquals(emptyList<Participant>(), decoded.roster)
+    }
+
+
+    @Test
+    fun `servidor restaura participantes desconectados e captura novamente o estado`() {
+        val original = HostedSessionSnapshot(
+            sessionId = "recoverable-session",
+            hostDisplayName = "Mestre",
+            roster = listOf(
+                Participant("dm", "Mestre", ParticipantRole.DM),
+                Participant("p1", "Legolas", ParticipantRole.PLAYER, characterId = 77L, connected = true)
+            ),
+            receivedCharacters = mapOf("p1" to CharacterEntity(name = "Legolas", currentHp = 12, maxHp = 20)),
+            combat = null,
+            pendingRequests = listOf(ActionRequest("req-1", "p1", "Legolas", RequestKind.TAKE_LOOT, "Pegar item")),
+            lootChest = emptyList(),
+            shop = null,
+            privateChatLog = emptyList(),
+            rejoinTokens = mapOf("rejoin-secret" to "p1"),
+            pendingGrants = mapOf("p1" to listOf(
+                SessionMessage.LootGranted("grant-1", """[{"id":"grant-1","name":"Poção","category":"Itens de Aventura"}]""", 77L)
+            ))
+        )
+        val server = SessionServer(original.sessionId, original.hostDisplayName)
+
+        try {
+            server.restoreSnapshot(original)
+            val restored = server.createSnapshot()
+
+            assertEquals(77L, restored.roster.single { it.id == "p1" }.characterId)
+            assertEquals(false, restored.roster.single { it.id == "p1" }.connected)
+            assertEquals("Legolas", restored.receivedCharacters.getValue("p1").name)
+            assertEquals(original.pendingRequests, restored.pendingRequests)
+            assertEquals(original.rejoinTokens, restored.rejoinTokens)
+            assertEquals(original.pendingGrants, restored.pendingGrants)
+        } finally {
+            server.stop()
+        }
     }
 
     @Test
