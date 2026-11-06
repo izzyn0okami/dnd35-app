@@ -166,6 +166,66 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
     private val _playerPrivateMessages = MutableSharedFlow<String>(extraBufferCapacity = 8)
     val playerPrivateMessages: SharedFlow<String> = _playerPrivateMessages
 
+    /** Recupera uma sessão cujo processo terminou sem encerramento manual. */
+    private fun recoverHostedSession() {
+        viewModelScope.launch {
+            if (manualHostRequested || server != null) return@launch
+            val stored = withContext(Dispatchers.IO) { hostedSessionDao.getRecoverableSession() } ?: return@launch
+            val snapshot = try {
+                require(stored.snapshotVersion == HostedSessionSnapshotCodec.VERSION) {
+                    "A versão do snapshot salvo não é suportada."
+                }
+                HostedSessionSnapshotCodec.decode(stored.snapshotJson)
+            } catch (error: Exception) {
+                _dmState.value = DmSessionUiState.Error(
+                    "A sessão salva foi encontrada, mas não pôde ser restaurada: " +
+                        (error.message?.takeIf { it.isNotBlank() } ?: error.javaClass.simpleName)
+                )
+                return@launch
+            }
+            if (snapshot.sessionId != stored.sessionId || snapshot.hostDisplayName != stored.hostDisplayName) {
+                _dmState.value = DmSessionUiState.Error("Os dados de identificação da sessão salva não correspondem ao snapshot.")
+                return@launch
+            }
+
+            val restoredServer = SessionServer(snapshot.sessionId, snapshot.hostDisplayName) { updated ->
+                persistenceCommands.trySend(HostedSessionPersistenceCommand.Save(updated))
+            }
+            try {
+                restoredServer.restoreSnapshot(snapshot)
+                val (port, ip) = withContext(Dispatchers.IO) {
+                    restoredServer.start() to LocalNetworkUtil.findLocalIpAddress()
+                }
+                if (manualHostRequested || server != null) {
+                    restoredServer.stop()
+                    return@launch
+                }
+                if (ip == null) {
+                    restoredServer.stop()
+                    _dmState.value = DmSessionUiState.Error(
+                        "A sessão foi recuperada, mas não foi possível encontrar o endereço IPv4 deste aparelho. " +
+                            "Ative o Wi-Fi para gerar um novo QR Code."
+                    )
+                    return@launch
+                }
+
+                server = restoredServer
+                val payload = JoinPayload(snapshot.sessionId, snapshot.hostDisplayName, ip, port)
+                val qrContent = payload.toJson()
+                val bitmap = withContext(Dispatchers.Default) { QrCodeUtil.generate(qrContent) }
+                viewModelScope.launchCollectDmState(restoredServer, snapshot.sessionId, bitmap, qrContent)
+                persistenceCommands.trySend(HostedSessionPersistenceCommand.Save(restoredServer.createSnapshot()))
+            } catch (error: Exception) {
+                restoredServer.stop()
+                if (server === restoredServer) server = null
+                _dmState.value = DmSessionUiState.Error(
+                    "Não foi possível reabrir a sessão salva: " +
+                        (error.message?.takeIf { it.isNotBlank() } ?: error.javaClass.simpleName)
+                )
+            }
+        }
+    }
+
     /** Mestre: cria e hospeda uma nova sessão, exibindo o QR Code para os jogadores escanearem. */
     fun hostSession(hostDisplayName: String) {
         stopHosting()
