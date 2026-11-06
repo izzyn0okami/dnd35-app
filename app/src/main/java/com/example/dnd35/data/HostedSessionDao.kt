@@ -60,8 +60,7 @@ interface HostedSessionDao {
     suspend fun clearStoredSession()
 
     /** Confirma que uma escrita de checkpoint é uma operação transacional do banco. */
-    @Transaction
-    suspend fun replaceCheckpoint(session: HostedSessionEntity) {
+        suspend fun replaceCheckpoint(session: HostedSessionEntity) {
         saveCheckpoint(session)
     }
 }
