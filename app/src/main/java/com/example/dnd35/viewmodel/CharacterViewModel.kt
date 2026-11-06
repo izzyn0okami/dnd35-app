@@ -466,10 +466,6 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
     }
 
     /**
-     * Applies an approved multiplayer grant to the exact local sheet selected when joining.
-     * Inventory and (for purchases) all coin denominations are persisted in one sheet update.
-     */
-    /**
      * Persiste somente os PV atuais e temporários recebidos do estado autoritativo de combate.
      * O ID é o da ficha vinculada ao entrar na sessão, não necessariamente a ficha ativa na UI.
      */
@@ -486,6 +482,10 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
         }
     }
 
+    /**
+     * Applies an approved multiplayer grant to the exact local sheet selected when joining.
+     * Inventory and (for purchases) all coin denominations are persisted in one sheet update.
+     */
     suspend fun applySessionGrant(grant: com.example.dnd35.session.SessionItemGrant): Boolean {
         if (grant.characterId <= 0L || grant.grantId.isBlank()) return false
         return characterSaveMutex.withLock {
