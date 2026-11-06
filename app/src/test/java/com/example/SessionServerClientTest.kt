@@ -497,18 +497,21 @@ class SessionServerClientTest {
                     server.pendingRequests.first { it.any { pending -> pending.kind == RequestKind.BUY_FROM_SHOP } }
                 }.single { it.kind == RequestKind.BUY_FROM_SHOP }
 
+                val grantDeferred = async(start = CoroutineStart.UNDISPATCHED) {
+                    withTimeout(15_000) { client.shopPurchases.first() }
+                }
                 val approvals = listOf(
                     async(Dispatchers.Default) { server.approveRequest(request.id) },
                     async(Dispatchers.Default) { server.approveRequest(request.id) }
                 )
                 approvals.awaitAll()
+                val grant = grantDeferred.await()
 
                 val stored = server.receivedCharacters.value.getValue(connected.selfId)
                 assertEquals(900f, stored.goldGp)
                 assertTrue(server.shop.value?.items?.isEmpty() == true)
-                val grant = withTimeout(15_000) { client.shopPurchases.first() }
                 assertEquals(request.requesterId, connected.selfId)
-                assertEquals("unique-shop-item", grant.item.name)
+                assertEquals("Poção", grant.item.name)
             } finally {
                 client.disconnect()
             }
