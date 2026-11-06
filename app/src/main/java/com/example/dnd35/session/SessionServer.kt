@@ -172,6 +172,16 @@ class SessionServer(
     }
 
     /** Encerra a sessão: fecha todas as conexões e para de aceitar novas. */
+    /**
+     * Fecha o host e captura o último estado sob o mesmo lock, impedindo mutações concorrentes
+     * entre o snapshot final e o encerramento dos sockets.
+     */
+    fun stopAndCreateSnapshot(): HostedSessionSnapshot = synchronized(stateLock) {
+        val snapshot = createSnapshot()
+        stop()
+        snapshot
+    }
+
     fun stop() {
         runCatching { serverSocket?.close() }
         clients.values.forEach { handle -> handle.outbound.close(); runCatching { handle.socket.close() } }
