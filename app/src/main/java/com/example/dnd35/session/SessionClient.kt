@@ -163,7 +163,7 @@ class SessionClient {
                         }
                         is SessionMessage.LootGranted -> {
                             CharacterJsonAdapters.deserializeInventory(msg.itemJson).firstOrNull()?.let { item ->
-                                _lootGranted.tryEmit(SessionItemGrant(msg.characterId, item))
+                                _lootGranted.tryEmit(SessionItemGrant(msg.grantId, msg.characterId, item))
                             }
                         }
                         is SessionMessage.ShopUpdate -> {
@@ -183,7 +183,7 @@ class SessionClient {
                         is SessionMessage.ShopPurchaseGranted -> {
                             CharacterJsonAdapters.deserializeInventory(msg.itemJson).firstOrNull()?.let { item ->
                                 val purse = SessionCoinPurse(msg.goldGp, msg.silverSp, msg.copperCp, msg.platinumPp)
-                                _shopPurchases.tryEmit(SessionItemGrant(msg.characterId, item, purse))
+                                _shopPurchases.tryEmit(SessionItemGrant(msg.grantId, msg.characterId, item, purse))
                             }
                         }
                         is SessionMessage.PrivateMessage -> _privateMessages.tryEmit(msg.text)
@@ -224,6 +224,15 @@ class SessionClient {
             runCatching {
                 SessionWire.write(out, SessionMessage.ActionRequested(kind, summary, characterJson, combatantId, hpDelta, lootItemId, shopItemId))
             }.onFailure { CrashLogStore.record("MULTIPLAYER_CLIENT", "Falha ao enviar pedido de ação", it) }
+        }
+    }
+
+    /** Confirma ao Mestre que o grant foi persistido na ficha local. */
+    fun acknowledgeGrant(grantId: String) {
+        val out = output ?: return
+        scope.launch {
+            runCatching { SessionWire.write(out, SessionMessage.GrantAcknowledged(grantId)) }
+                .onFailure { CrashLogStore.record("MULTIPLAYER_CLIENT", "Falha ao confirmar entrega de recurso", it) }
         }
     }
 
