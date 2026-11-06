@@ -40,9 +40,8 @@ object SessionCurrency {
             val sp = BigDecimal(character.silverSp.toString())
             val cp = BigDecimal(character.copperCp.toString())
             val pp = BigDecimal(character.platinumPp.toString())
-            listOf(gp, sp, cp, pp).forEach { value ->
-                if (value.stripTrailingZeros().scale() > 0) return null
-            }
+            // Fractional denomination values are accepted only when their combined value
+            // is an exact whole copper piece; sub-copper balances cannot be spent exactly.
             gp.multiply(HUNDRED)
                 .add(sp.multiply(TEN))
                 .add(cp)
