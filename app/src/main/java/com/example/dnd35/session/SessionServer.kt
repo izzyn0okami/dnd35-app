@@ -367,15 +367,24 @@ class SessionServer(
     // --- Mensagens privadas (comunicação, não muda o estado do jogo) ---
 
     /** Guarda no log a mensagem que um Jogador mandou para o Mestre (não é repassada a mais ninguém). */
-    private fun receivePrivateMessage(participantId: String, text: String) {
+    private fun receivePrivateMessage(participantId: String, text: String) = synchronized(stateLock) {
         val name = _roster.value.firstOrNull { it.id == participantId }?.displayName ?: "Jogador"
         _privateChatLog.value = _privateChatLog.value + PrivateChatEntry(participantId = participantId, participantName = name, text = text, fromDm = false)
     }
 
     /** Mestre manda uma mensagem privada para um Jogador específico — só ele recebe. */
     fun sendPrivateMessage(participantId: String, text: String) {
-        val name = _roster.value.firstOrNull { it.id == participantId }?.displayName ?: return
-        _privateChatLog.value = _privateChatLog.value + PrivateChatEntry(participantId = participantId, participantName = name, text = text, fromDm = true)
+        val name = synchronized(stateLock) {
+            val participantName = _roster.value.firstOrNull { it.id == participantId }?.displayName
+                ?: return@synchronized null
+            _privateChatLog.value = _privateChatLog.value + PrivateChatEntry(
+                participantId = participantId,
+                participantName = participantName,
+                text = text,
+                fromDm = true
+            )
+            participantName
+        } ?: return
         sendTo(participantId, SessionMessage.PrivateMessage(text))
     }
 

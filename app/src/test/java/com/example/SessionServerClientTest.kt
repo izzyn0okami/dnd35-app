@@ -1381,6 +1381,56 @@ class SessionServerClientTest {
     }
 
     @Test
+    fun `mensagens privadas simultaneas nao perdem entradas no log do mestre`() = runBlocking {
+        val server = SessionServer(sessionId = "sess-private-chat-concurrency", hostDisplayName = "Mestre")
+        val port = server.start()
+        val workerCount = 6
+        val messagesPerWorker = 40
+        val expectedMessages = workerCount * messagesPerWorker
+        val sockets = mutableListOf<Socket>()
+        val outputs = mutableListOf<DataOutputStream>()
+        val executor = Executors.newFixedThreadPool(workerCount)
+        try {
+            // Usa sockets TCP independentes para que a concorrência exercitada seja a dos
+            // handlers do servidor, sem depender do agendamento fire-and-forget do SessionClient.
+            repeat(workerCount) { index ->
+                val socket = Socket("127.0.0.1", port)
+                sockets += socket
+                val input = DataInputStream(socket.getInputStream())
+                val output = DataOutputStream(socket.getOutputStream())
+                outputs += output
+                SessionWire.write(output, SessionMessage.Hello("Jogador $index"))
+                assertTrue(SessionWire.read(input) is SessionMessage.Welcome)
+            }
+            withTimeout(15_000) {
+                server.roster.first { it.size == workerCount + 1 }
+            }
+
+            val tasks = outputs.mapIndexed { clientIndex, output ->
+                executor.submit {
+                    repeat(messagesPerWorker) { messageIndex ->
+                        SessionWire.write(
+                            output,
+                            SessionMessage.PrivateMessage("mensagem-$clientIndex-$messageIndex")
+                        )
+                    }
+                }
+            }
+            tasks.forEach { it.get() }
+
+            val entries = withTimeout(30_000) {
+                server.privateChatLog.first { it.size >= expectedMessages }
+            }
+            assertEquals(expectedMessages, entries.size)
+            assertEquals(expectedMessages, entries.map { it.text }.toSet().size)
+        } finally {
+            executor.shutdownNow()
+            sockets.forEach { runCatching { it.close() } }
+            server.stop()
+        }
+    }
+
+    @Test
     fun `conectar em porta sem servidor resulta em Disconnected, nao em excecao`() = runBlocking {
         val client = SessionClient()
         // Porta 1 é privilegiada/sem listener nos ambientes de teste: a conexão deve falhar

@@ -363,3 +363,35 @@
 - Outbox, pedidos, estoque e grants pendentes continuam em memória e podem ser perdidos se a hospedagem/processo do Mestre for encerrado ou reiniciado. Persistência durável permanece fora do escopo desta PR.
 - Teste integrado físico em dois aparelhos continua sendo uma validação recomendada para compra/loot, desconexão, reconexão e ACK; não confundir CI verde com teste de campo.
 - O acompanhamento automático da PR #322 foi encerrado após o merge.
+
+
+## 2026-11-06 — Auditoria complementar de concorrência no chat multiplayer
+
+### Constatações
+- A leitura do estado após o merge da PR #322 encontrou duas rotas de escrita concorrentes em `_privateChatLog`: mensagens recebidas de vários jogadores são processadas em handlers TCP distintos, enquanto o Mestre também pode registrar mensagens enviadas pela interface.
+- As duas rotas faziam leitura-modificação-escrita do mesmo `MutableStateFlow` sem sincronização. Intercalações podiam descartar uma ou mais entradas do histórico, apesar de as mensagens terem sido recebidas.
+- No cliente, os eventos `RequestResolved`, `LootGranted`, `ShopPurchaseGranted` e `PrivateMessage` não verificavam a geração da conexão. Uma mensagem já lida por uma conexão antiga poderia ser emitida depois de uma reconexão mais recente ter começado.
+
+### Correções nesta branch
+- As duas rotas de escrita do histórico privado agora usam o mesmo `stateLock` que protege o estado compartilhado do servidor. O envio de rede da mensagem privada do Mestre permanece fora da seção crítica.
+- O cliente agora confere `connectionGeneration` antes de emitir resultados de pedidos, concessões de loot/compra e mensagens privadas; eventos de uma conexão obsoleta são descartados.
+- Acrescentado teste de integração com seis clientes TCP concorrentes, cada um enviando 40 mensagens privadas. O teste exige que as 240 entradas distintas apareçam no histórico do Mestre, sem perda.
+
+### Validação pendente
+- Executar `testDebugUnitTest` e `assembleDebug` na CI para o SHA final desta branch.
+- Revisar o teste concorrente e a proteção de eventos obsoletos após a execução.
+- Nenhum merge foi realizado. A limitação de persistência volátil do outbox/estoque/pedidos/grants permanece fora deste escopo.
+
+
+### Ajuste após a primeira CI
+- A primeira execução compilou o código e executou 464 testes; 463 passaram e o teste novo expirou ao aguardar as 240 mensagens.
+- A causa provável foi o desenho do teste: o método público `sendPrivateMessage` é fire-and-forget e o teste disparava 240 corrotinas em rajada, sem aguardar a conclusão de cada lote. Isso tornava a validação excessivamente dependente do agendamento das corrotinas.
+- O teste foi reestruturado para manter seis conexões concorrentes, enviar um lote de seis mensagens por rodada e aguardar o histórico atingir o total esperado antes de iniciar a rodada seguinte. São mantidas 40 rodadas e 240 mensagens distintas. O timeout por lote foi ampliado para 30 segundos.
+- Esta alteração corrige a determinabilidade do teste; não é apresentada como prova de que o timeout anterior demonstrou perda de mensagens.
+- A CI precisa ser executada novamente no novo SHA antes de qualquer merge.
+
+- A segunda CI mostrou que a espera entre lotes também usava igualdade exata (`size == esperado`) em um `StateFlow`. Como `StateFlow` pode conflar estados intermediários, o coletor poderia observar um tamanho posterior e nunca satisfazer a igualdade. O predicado agora usa `size >= esperado`, mantendo a espera monotônica sem depender da observação de cada tamanho intermediário.
+- A segunda execução voltou a falhar somente no teste novo; a terceira CI deve validar o predicado corrigido antes de qualquer merge.
+
+- A terceira CI voltou a expirar no teste, indicando que a espera por estado do cliente ainda deixava o teste acoplado ao comportamento assíncrono de envio/recepção do `SessionClient`. Para isolar o alvo da auditoria, o teste foi simplificado para seis sockets TCP reais e independentes: cada um faz HELLO/WELCOME, o teste aguarda o roster completo e então seis workers enviam 40 frames privados cada. A validação aguarda o histórico do servidor atingir pelo menos 240 entradas e confere quantidade e unicidade.
+- A quarta CI deverá validar esse teste de integração isolado. Até lá, não há autorização técnica para merge.
