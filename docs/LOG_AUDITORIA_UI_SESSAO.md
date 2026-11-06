@@ -174,3 +174,21 @@
 - PR #321 foi marcada pronta para revisão e mesclada por squash em 2026-11-06. Commit de merge: `3c8be2b69f9a027a147ad1bbdc8af38039910885`.
 - CI #1814 (run `42146247120`) validou o commit funcional `f5adc83cca3571ce20ff2b86ebbd458f352628dd`, com `testDebugUnitTest`, `assembleDebug` e upload do APK debug concluídos com sucesso. A comparação entre esse commit e o head final `5c31d4d127e9f6261be42c529ded5e73d575db83` confirmou que o único commit adicional alterou somente este log (9 linhas adicionadas, sem mudanças de código). A CI #1816, disparada para o commit de documentação, estava em andamento no momento do merge.
 - A mesclagem foi autorizada pelo usuário. O teste integrado em dois aparelhos continua pendente; portanto, a implementação está integrada ao `main`, mas a auditoria funcional de Recursos ainda não está integralmente concluída. Validar compra/loot, desconexão antes e depois da gravação, reconexão e ACK sem duplicação. A persistência após reinício do Mestre continua fora do escopo implementado: outbox, pedidos, estoque e grants pendentes são mantidos em memória e se perdem quando o processo/hospedagem é encerrado.
+
+
+## 2026-11-06 — Correção complementar: aprovação de atualização de ficha
+
+### Achado na revisão após o merge da PR #321
+- O servidor recebia o snapshot de uma solicitação `CHARACTER_UPDATE` e o aplicava imediatamente em `receivedCharacters`, antes de o Mestre aprovar ou negar o pedido. Isso tornava a aprovação ineficaz para a cópia da ficha mantida na sessão e permitia que uma atualização negada já aparecesse no estado do Mestre.
+- O problema foi identificado por leitura do fluxo `SessionServer.receiveActionRequest()` e do teste de integração existente, que verificava somente o estado depois da aprovação e não verificava o estado antes da decisão.
+
+### Correção proposta nesta branch
+- Atualizações de ficha deixam de ser aplicadas ao receber o pedido. O snapshot só é aplicado no caminho de aprovação `approveRequest()`.
+- Pedidos de loot/compra continuam reconciliando o snapshot antes da decisão, pois o servidor precisa validar a ficha e o saldo mais recentes; a moeda autoritativa permanece preservada.
+- O teste de atualização aprovada agora verifica que o snapshot antigo permanece intacto enquanto o pedido aguarda aprovação.
+- Foi acrescentado teste de atualização negada, que confirma que a ficha original permanece inalterada.
+
+### Validação
+- Alterações concentradas no servidor, nos testes de integração JVM e neste log.
+- CI ainda pendente nesta branch; não declarar a correção validada até `testDebugUnitTest` e `assembleDebug` concluírem.
+- Não altera regras de D&D 3.5, cálculos da ficha ou protocolo de rede.
