@@ -5,6 +5,9 @@ import android.graphics.Bitmap
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.dnd35.backup.CharacterBackup
+import com.example.dnd35.data.AppDatabase
+import com.example.dnd35.data.HostedSessionEntity
+import com.example.dnd35.diagnostics.CrashLogStore
 import com.example.dnd35.model.CharacterEntity
 import com.example.dnd35.model.CharacterInventoryItem
 import com.example.dnd35.session.ActionRequest
@@ -16,12 +19,15 @@ import com.example.dnd35.session.Participant
 import com.example.dnd35.session.PrivateChatEntry
 import com.example.dnd35.session.QrCodeUtil
 import com.example.dnd35.session.RequestKind
+import com.example.dnd35.session.HostedSessionSnapshot
+import com.example.dnd35.session.HostedSessionSnapshotCodec
 import com.example.dnd35.session.SessionClient
 import com.example.dnd35.session.SessionClientState
 import com.example.dnd35.session.SessionServer
 import com.example.dnd35.session.ShopSnapshot
 import com.example.dnd35.session.ShopState
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -83,6 +89,11 @@ private data class DmExtraState(
     val privateChatLog: List<PrivateChatEntry>
 )
 
+private sealed interface HostedSessionPersistenceCommand {
+    data class Save(val snapshot: HostedSessionSnapshot) : HostedSessionPersistenceCommand
+    data class End(val sessionId: String) : HostedSessionPersistenceCommand
+}
+
 /**
  * ViewModel da sessão de mesa offline: cria (Mestre) ou entra (Jogador) em uma sessão local,
  * sem depender de internet — apenas da rede já compartilhada pelos aparelhos (Wi-Fi local,
@@ -90,7 +101,39 @@ private data class DmExtraState(
  */
 class SessionViewModel(application: Application) : AndroidViewModel(application) {
 
+    private val hostedSessionDao = AppDatabase.getDatabase(application).hostedSessionDao()
+    private val persistenceCommands = Channel<HostedSessionPersistenceCommand>(Channel.UNLIMITED)
     private var server: SessionServer? = null
+    private var manualHostRequested = false
+
+    init {
+        viewModelScope.launch(Dispatchers.IO) {
+            for (command in persistenceCommands) {
+                try {
+                    when (command) {
+                        is HostedSessionPersistenceCommand.Save -> {
+                            val snapshot = command.snapshot
+                            hostedSessionDao.saveCheckpoint(
+                                HostedSessionEntity(
+                                    sessionId = snapshot.sessionId,
+                                    hostDisplayName = snapshot.hostDisplayName,
+                                    status = HostedSessionEntity.STATUS_ACTIVE,
+                                    snapshotVersion = HostedSessionSnapshotCodec.VERSION,
+                                    snapshotJson = HostedSessionSnapshotCodec.encode(snapshot)
+                                )
+                            )
+                        }
+                        is HostedSessionPersistenceCommand.End -> {
+                            hostedSessionDao.markManuallyEnded(command.sessionId)
+                        }
+                    }
+                } catch (error: Exception) {
+                    CrashLogStore.record("MULTIPLAYER_PERSISTENCE", "Falha ao persistir estado da sessão", error)
+                }
+            }
+        }
+        recoverHostedSession()
+    }
     private var client: SessionClient? = null
     // Mantém o vínculo exato da ficha usada para entrar, mesmo se o jogador trocar de ficha ativa.
     private var linkedPlayerCharacterId: Long? = null
