@@ -86,12 +86,15 @@ object SessionCurrency {
         val sp = remaining / 10L
         val cp = remaining % 10L
 
-        return SessionCoinPurse(
+        val purse = SessionCoinPurse(
             goldGp = gp.toFloat(),
             silverSp = sp.toFloat(),
             copperCp = cp.toFloat(),
             platinumPp = pp.toFloat()
         )
+        // Float-backed sheet fields cannot represent every very large integer exactly.
+        // Reject such a debit rather than silently losing a copper piece during conversion.
+        return purse.takeIf { totalCopper(it.toCharacterUpdate(character)) == available - price }
     }
 }
 
