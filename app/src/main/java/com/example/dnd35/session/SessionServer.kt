@@ -610,7 +610,8 @@ class SessionServer(
                         }
                     }
                 }
-            }        }
+            }
+        }
         notifySnapshotChanged()
     }
 
