@@ -163,11 +163,18 @@ class SessionServer(
                 val msg = SessionWire.read(input) ?: break
                 when (msg) {
                     is SessionMessage.Bye -> break
-                    is SessionMessage.CharacterSheet -> receiveCharacterSheet(
-                        id,
-                        msg.characterJson,
-                        preserveAuthoritativeCurrency = _receivedCharacters.value.containsKey(id)
-                    )
+                    is SessionMessage.CharacterSheet -> {
+                        // A ficha enviada no HELLO só inicializa um participante novo. A mesma
+                        // mensagem é reenviada durante reconnect(), mas nunca pode sobrescrever
+                        // a última ficha aprovada que o Mestre já mantém para esse participante.
+                        if (existingId == null) {
+                            synchronized(requestLock) {
+                                if (!_receivedCharacters.value.containsKey(id)) {
+                                    receiveCharacterSheet(id, msg.characterJson)
+                                }
+                            }
+                        }
+                    }
                     is SessionMessage.ActionRequested -> receiveActionRequest(id, msg)
                     is SessionMessage.PrivateMessage -> receivePrivateMessage(id, msg.text)
                     is SessionMessage.GrantAcknowledged -> acknowledgeGrant(id, msg.grantId)
