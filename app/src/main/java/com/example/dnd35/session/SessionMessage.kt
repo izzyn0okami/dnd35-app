@@ -87,7 +87,7 @@ sealed class SessionMessage {
      * [LootChestUpdate] que acompanha esta mensagem). `itemJson` usa o mesmo formato de
      * inventário, com um único item na lista.
      */
-    data class LootGranted(val itemJson: String) : SessionMessage()
+    data class LootGranted(val itemJson: String, val characterId: Long) : SessionMessage()
 
     /**
      * Mestre -> todos: loja de NPC aberta no momento, com o nome do NPC e seus itens (preço vem
@@ -102,7 +102,14 @@ sealed class SessionMessage {
      * Mestre -> Jogador que comprou: item concedido pela compra, já removido da loja (ver
      * [ShopUpdate] que acompanha esta mensagem). O custo pago é o próprio `costGp` do item.
      */
-    data class ShopPurchaseGranted(val itemJson: String) : SessionMessage()
+    data class ShopPurchaseGranted(
+        val itemJson: String,
+        val characterId: Long,
+        val goldGp: Float,
+        val silverSp: Float,
+        val copperCp: Float,
+        val platinumPp: Float
+    ) : SessionMessage()
 
     /**
      * Mensagem privada: de um Jogador para o Mestre (não é repassada a mais ninguém), ou do
@@ -168,10 +175,16 @@ sealed class SessionMessage {
                 .put("approved", approved)
                 .put("reason", reason)
             is LootChestUpdate -> obj.put("type", TYPE_LOOT_CHEST_UPDATE).put("itemsJson", itemsJson)
-            is LootGranted -> obj.put("type", TYPE_LOOT_GRANTED).put("itemJson", itemJson)
+            is LootGranted -> obj.put("type", TYPE_LOOT_GRANTED).put("itemJson", itemJson).put("characterId", characterId)
             is ShopUpdate -> obj.put("type", TYPE_SHOP_UPDATE).put("npcName", npcName).put("itemsJson", itemsJson)
             is ShopClosed -> obj.put("type", TYPE_SHOP_CLOSED)
-            is ShopPurchaseGranted -> obj.put("type", TYPE_SHOP_PURCHASE_GRANTED).put("itemJson", itemJson)
+            is ShopPurchaseGranted -> obj.put("type", TYPE_SHOP_PURCHASE_GRANTED)
+                .put("itemJson", itemJson)
+                .put("characterId", characterId)
+                .put("goldGp", goldGp)
+                .put("silverSp", silverSp)
+                .put("copperCp", copperCp)
+                .put("platinumPp", platinumPp)
             is PrivateMessage -> obj.put("type", TYPE_PRIVATE_MESSAGE).put("text", text)
         }
         return obj.toString()
@@ -277,10 +290,17 @@ sealed class SessionMessage {
                         reason = obj.optString("reason", "")
                     )
                     TYPE_LOOT_CHEST_UPDATE -> LootChestUpdate(obj.getString("itemsJson"))
-                    TYPE_LOOT_GRANTED -> LootGranted(obj.getString("itemJson"))
+                    TYPE_LOOT_GRANTED -> LootGranted(obj.getString("itemJson"), obj.getLong("characterId"))
                     TYPE_SHOP_UPDATE -> ShopUpdate(obj.getString("npcName"), obj.getString("itemsJson"))
                     TYPE_SHOP_CLOSED -> ShopClosed
-                    TYPE_SHOP_PURCHASE_GRANTED -> ShopPurchaseGranted(obj.getString("itemJson"))
+                    TYPE_SHOP_PURCHASE_GRANTED -> ShopPurchaseGranted(
+                        itemJson = obj.getString("itemJson"),
+                        characterId = obj.getLong("characterId"),
+                        goldGp = obj.getDouble("goldGp").toFloat(),
+                        silverSp = obj.getDouble("silverSp").toFloat(),
+                        copperCp = obj.getDouble("copperCp").toFloat(),
+                        platinumPp = obj.getDouble("platinumPp").toFloat()
+                    )
                     TYPE_PRIVATE_MESSAGE -> PrivateMessage(obj.getString("text"))
                     else -> null
                 }
