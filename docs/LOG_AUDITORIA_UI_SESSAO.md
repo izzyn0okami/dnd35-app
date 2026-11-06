@@ -363,3 +363,21 @@
 - Outbox, pedidos, estoque e grants pendentes continuam em memória e podem ser perdidos se a hospedagem/processo do Mestre for encerrado ou reiniciado. Persistência durável permanece fora do escopo desta PR.
 - Teste integrado físico em dois aparelhos continua sendo uma validação recomendada para compra/loot, desconexão, reconexão e ACK; não confundir CI verde com teste de campo.
 - O acompanhamento automático da PR #322 foi encerrado após o merge.
+
+
+## 2026-11-06 — Auditoria complementar de concorrência no chat multiplayer
+
+### Constatações
+- A leitura do estado após o merge da PR #322 encontrou duas rotas de escrita concorrentes em `_privateChatLog`: mensagens recebidas de vários jogadores são processadas em handlers TCP distintos, enquanto o Mestre também pode registrar mensagens enviadas pela interface.
+- As duas rotas faziam leitura-modificação-escrita do mesmo `MutableStateFlow` sem sincronização. Intercalações podiam descartar uma ou mais entradas do histórico, apesar de as mensagens terem sido recebidas.
+- No cliente, os eventos `RequestResolved`, `LootGranted`, `ShopPurchaseGranted` e `PrivateMessage` não verificavam a geração da conexão. Uma mensagem já lida por uma conexão antiga poderia ser emitida depois de uma reconexão mais recente ter começado.
+
+### Correções nesta branch
+- As duas rotas de escrita do histórico privado agora usam o mesmo `stateLock` que protege o estado compartilhado do servidor. O envio de rede da mensagem privada do Mestre permanece fora da seção crítica.
+- O cliente agora confere `connectionGeneration` antes de emitir resultados de pedidos, concessões de loot/compra e mensagens privadas; eventos de uma conexão obsoleta são descartados.
+- Acrescentado teste de integração com seis clientes TCP concorrentes, cada um enviando 40 mensagens privadas. O teste exige que as 240 entradas distintas apareçam no histórico do Mestre, sem perda.
+
+### Validação pendente
+- Executar `testDebugUnitTest` e `assembleDebug` na CI para o SHA final desta branch.
+- Revisar o teste concorrente e a proteção de eventos obsoletos após a execução.
+- Nenhum merge foi realizado. A limitação de persistência volátil do outbox/estoque/pedidos/grants permanece fora deste escopo.
