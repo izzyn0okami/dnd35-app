@@ -264,8 +264,8 @@ class SessionServer(
     }
 
     /** Aplica dano (positivo) ou cura (negativo) a um combatente e sincroniza com todos. */
-    fun applyDamage(combatantId: String, amount: Int) {
-        val current = _combatState.value ?: return
+    fun applyDamage(combatantId: String, amount: Int) = synchronized(requestLock) {
+        val current = _combatState.value ?: return@synchronized
         val updatedCombatants = current.combatants.map {
             if (it.id == combatantId) it.withDamage(amount) else it
         }
@@ -273,7 +273,7 @@ class SessionServer(
         _combatState.value = updated
 
         // Mantém a última ficha aprovada do jogador alinhada ao PV autoritativo do combate.
-        // Isso evita iniciar um encontro posterior com PV antigos ou validar recursos sobre snapshot obsoleto.
+        // O mesmo lock impede que a atualização concorra com a aprovação de um snapshot de ficha.
         val changedCombatant = updatedCombatants.firstOrNull { it.id == combatantId }
         if (changedCombatant != null && !changedCombatant.isNpc) {
             val approvedSheet = _receivedCharacters.value[combatantId]
