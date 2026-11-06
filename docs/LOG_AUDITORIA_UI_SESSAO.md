@@ -392,3 +392,6 @@
 
 - A segunda CI mostrou que a espera entre lotes também usava igualdade exata (`size == esperado`) em um `StateFlow`. Como `StateFlow` pode conflar estados intermediários, o coletor poderia observar um tamanho posterior e nunca satisfazer a igualdade. O predicado agora usa `size >= esperado`, mantendo a espera monotônica sem depender da observação de cada tamanho intermediário.
 - A segunda execução voltou a falhar somente no teste novo; a terceira CI deve validar o predicado corrigido antes de qualquer merge.
+
+- A terceira CI voltou a expirar no teste, indicando que a espera por estado do cliente ainda deixava o teste acoplado ao comportamento assíncrono de envio/recepção do `SessionClient`. Para isolar o alvo da auditoria, o teste foi simplificado para seis sockets TCP reais e independentes: cada um faz HELLO/WELCOME, o teste aguarda o roster completo e então seis workers enviam 40 frames privados cada. A validação aguarda o histórico do servidor atingir pelo menos 240 entradas e confere quantidade e unicidade.
+- A quarta CI deverá validar esse teste de integração isolado. Até lá, não há autorização técnica para merge.
