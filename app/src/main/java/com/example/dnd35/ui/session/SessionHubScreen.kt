@@ -753,7 +753,16 @@ private fun LootChestSection(
 @Composable
 private fun AddLootItemForm(onAddItem: (CharacterInventoryItem) -> Unit) {
     var name by remember { mutableStateOf("") }
+    var category by remember { mutableStateOf("Itens de Aventura") }
     var quantity by remember { mutableStateOf("1") }
+    var weight by remember { mutableStateOf("0") }
+    var cost by remember { mutableStateOf("0") }
+
+    val parsedQuantity = quantity.toIntOrNull()?.takeIf { it > 0 }
+    val parsedWeight = weight.toFloatOrNull()?.takeIf { it.isFinite() && it >= 0f }
+    val parsedCost = cost.toFloatOrNull()?.takeIf { it.isFinite() && it >= 0f }
+    val valid = name.isNotBlank() && category.isNotBlank() &&
+        parsedQuantity != null && parsedWeight != null && parsedCost != null
 
     Column {
         Text("Adicionar item ao baú", style = MaterialTheme.typography.labelMedium)
@@ -762,24 +771,66 @@ private fun AddLootItemForm(onAddItem: (CharacterInventoryItem) -> Unit) {
             value = name,
             onValueChange = { name = it },
             label = { Text("Nome do item") },
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
+            singleLine = true
+        )
+        Spacer(modifier = Modifier.height(4.dp))
+        OutlinedTextField(
+            value = category,
+            onValueChange = { category = it },
+            label = { Text("Categoria") },
+            modifier = Modifier.fillMaxWidth(),
+            singleLine = true
         )
         Spacer(modifier = Modifier.height(4.dp))
         OutlinedTextField(
             value = quantity,
-            onValueChange = { quantity = it },
+            onValueChange = { quantity = it.filter(Char::isDigit).take(6) },
             label = { Text("Quantidade") },
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
+            singleLine = true,
+            isError = parsedQuantity == null
+        )
+        Spacer(modifier = Modifier.height(4.dp))
+        OutlinedTextField(
+            value = weight,
+            onValueChange = { weight = it.filter { ch -> ch.isDigit() || ch == '.' || ch == ',' }.replace(',', '.') },
+            label = { Text("Peso por unidade (lb)") },
+            modifier = Modifier.fillMaxWidth(),
+            singleLine = true,
+            isError = parsedWeight == null
+        )
+        Spacer(modifier = Modifier.height(4.dp))
+        OutlinedTextField(
+            value = cost,
+            onValueChange = { cost = it.filter { ch -> ch.isDigit() || ch == '.' || ch == ',' }.replace(',', '.') },
+            label = { Text("Preço por unidade (po)") },
+            modifier = Modifier.fillMaxWidth(),
+            singleLine = true,
+            isError = parsedCost == null
         )
         Spacer(modifier = Modifier.height(8.dp))
         Button(
             onClick = {
-                val qty = quantity.toIntOrNull()?.coerceAtLeast(1) ?: 1
-                onAddItem(CharacterInventoryItem(name = name.trim(), category = "Itens de Aventura", quantity = qty))
+                val qty = parsedQuantity ?: return@Button
+                val itemWeight = parsedWeight ?: return@Button
+                val itemCost = parsedCost ?: return@Button
+                if (name.isBlank() || category.isBlank()) return@Button
+                onAddItem(
+                    CharacterInventoryItem(
+                        name = name.trim(),
+                        category = category.trim(),
+                        quantity = qty,
+                        weightLb = itemWeight,
+                        costGp = itemCost
+                    )
+                )
                 name = ""
                 quantity = "1"
+                weight = "0"
+                cost = "0"
             },
-            enabled = name.isNotBlank()
+            enabled = valid
         ) {
             Text("Adicionar ao baú")
         }
