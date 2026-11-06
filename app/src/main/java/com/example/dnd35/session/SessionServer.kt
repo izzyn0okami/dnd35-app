@@ -353,14 +353,13 @@ class SessionServer(
 
     /** Guarda um pedido de jogador na fila de pendentes, aguardando aprovação do Mestre. */
     private fun receiveActionRequest(participantId: String, msg: SessionMessage.ActionRequested) {
-        // Reconcile the latest client-side sheet before a resource transaction is evaluated.
-        // The participant's local database ID remains a separate, session-scoped link.
-        msg.characterJson?.let {
-            receiveCharacterSheet(
-                participantId,
-                it,
-                preserveAuthoritativeCurrency = msg.kind == RequestKind.TAKE_LOOT || msg.kind == RequestKind.BUY_FROM_SHOP
-            )
+        // Resource requests need the latest snapshot to validate a transaction. A
+        // CHARACTER_UPDATE request, however, must not mutate the stored sheet before the DM
+        // explicitly approves it below.
+        if (msg.kind == RequestKind.TAKE_LOOT || msg.kind == RequestKind.BUY_FROM_SHOP) {
+            msg.characterJson?.let {
+                receiveCharacterSheet(participantId, it, preserveAuthoritativeCurrency = true)
+            }
         }
         val requesterName = _roster.value.firstOrNull { it.id == participantId }?.displayName ?: "Jogador"
         val request = ActionRequest(
