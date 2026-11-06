@@ -693,6 +693,46 @@ class SessionServerClientTest {
         }
     }
 
+
+    @Test
+    fun \`jogador reconecta ao host recuperado com novo endereco e mesmo identificador\`() = runBlocking {
+        val originalServer = SessionServer(sessionId = "session-host-recovery", hostDisplayName = "Mestre")
+        val originalPort = originalServer.start()
+        val client = SessionClient()
+        var restoredServer: SessionServer? = null
+        try {
+            client.connect("127.0.0.1", originalPort, "Legolas")
+            val firstConnection = withTimeout(15_000) {
+                client.state.first { it is SessionClientState.Connected } as SessionClientState.Connected
+            }
+            withTimeout(15_000) {
+                originalServer.roster.first { roster -> roster.any { it.id == firstConnection.selfId && it.connected } }
+            }
+            val snapshot = originalServer.createSnapshot()
+            originalServer.stop()
+
+            val recovered = SessionServer(snapshot.sessionId, snapshot.hostDisplayName)
+            restoredServer = recovered
+            recovered.restoreSnapshot(snapshot)
+            val recoveredPort = recovered.start()
+
+            assertTrue(client.reconnectTo("127.0.0.1", recoveredPort, snapshot.sessionId))
+            val secondConnection = withTimeout(15_000) {
+                client.state.first { it is SessionClientState.Connected } as SessionClientState.Connected
+            }
+
+            assertEquals(firstConnection.selfId, secondConnection.selfId)
+            withTimeout(15_000) {
+                recovered.roster.first { roster -> roster.any { it.id == firstConnection.selfId && it.connected } }
+            }
+            assertTrue(!client.reconnectTo("127.0.0.1", recoveredPort, "different-session"))
+        } finally {
+            client.disconnect()
+            originalServer.stop()
+            restoredServer?.stop()
+        }
+    }
+
     @Test
     fun `snapshot enviado na reconexao nao sobrescreve ficha ja recebida pelo Mestre`() = runBlocking {
         val server = SessionServer(sessionId = "sess-reconnect-sheet-authority", hostDisplayName = "Mestre")
