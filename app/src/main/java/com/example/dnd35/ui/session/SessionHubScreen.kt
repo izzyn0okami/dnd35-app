@@ -562,8 +562,13 @@ private fun CombatTracker(
         Text("Rodada ${combat.round}", style = MaterialTheme.typography.labelMedium, fontWeight = FontWeight.Bold)
         Spacer(modifier = Modifier.height(4.dp))
         if (combat.combatants.isNotEmpty() && combat.currentCombatantId == null) {
+            val allDead = combat.combatants.none { it.currentHp > CombatState.DEAD_HP_THRESHOLD }
             Text(
-                "Todos os combatentes estão mortos (−10 PV ou menos). Encerre o combate para continuar.",
+                if (allDead) {
+                    "Todos os combatentes estão mortos (−10 PV ou menos). Encerre o combate para continuar."
+                } else {
+                    "O combatente atual está morto. Avance para o próximo turno."
+                },
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.error
             )
