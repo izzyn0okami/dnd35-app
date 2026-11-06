@@ -573,11 +573,12 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
     }
 
     override fun onCleared() {
-        val activeServer = server
-        if (activeServer != null) {
+        val finalSnapshot = server?.stopAndCreateSnapshot()
+        server = null
+        if (finalSnapshot != null) {
             runCatching {
                 kotlinx.coroutines.runBlocking(Dispatchers.IO) {
-                    persistSnapshotAndWait(activeServer.createSnapshot())
+                    persistSnapshotAndWait(finalSnapshot)
                 }
             }.onFailure { error ->
                 CrashLogStore.record("MULTIPLAYER_PERSISTENCE", "Falha no checkpoint final ao encerrar o ViewModel", error)
@@ -589,7 +590,6 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
             CrashLogStore.record("MULTIPLAYER_PERSISTENCE", "Falha ao concluir a fila de persistência", error)
         }
         super.onCleared()
-        stopHosting(manual = false)
         persistenceCommands.close()
         leaveSession()
     }
