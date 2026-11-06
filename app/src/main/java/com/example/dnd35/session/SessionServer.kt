@@ -160,7 +160,11 @@ class SessionServer(
                 val msg = SessionWire.read(input) ?: break
                 when (msg) {
                     is SessionMessage.Bye -> break
-                    is SessionMessage.CharacterSheet -> receiveCharacterSheet(id, msg.characterJson)
+                    is SessionMessage.CharacterSheet -> receiveCharacterSheet(
+                        id,
+                        msg.characterJson,
+                        preserveAuthoritativeCurrency = _receivedCharacters.value.containsKey(id)
+                    )
                     is SessionMessage.ActionRequested -> receiveActionRequest(id, msg)
                     is SessionMessage.PrivateMessage -> receivePrivateMessage(id, msg.text)
                     is SessionMessage.GrantAcknowledged -> acknowledgeGrant(id, msg.grantId)
