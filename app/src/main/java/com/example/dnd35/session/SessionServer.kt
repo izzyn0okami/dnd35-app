@@ -99,15 +99,17 @@ class SessionServer(
         runCatching { serverSocket?.close() }
         clients.values.forEach { handle -> handle.outbound.close(); runCatching { handle.socket.close() } }
         clients.clear()
-        pendingGrants.clear()
-        rejoinTokens.clear()
-        _roster.value = listOf(dmParticipant)
-        _receivedCharacters.value = emptyMap()
-        synchronized(stateLock) { _combatState.value = null }
-        _pendingRequests.value = emptyList()
-        _lootChest.value = emptyList()
-        _shop.value = null
-        _privateChatLog.value = emptyList()
+        synchronized(stateLock) {
+            pendingGrants.clear()
+            rejoinTokens.clear()
+            _roster.value = listOf(dmParticipant)
+            _receivedCharacters.value = emptyMap()
+            _combatState.value = null
+            _pendingRequests.value = emptyList()
+            _lootChest.value = emptyList()
+            _shop.value = null
+            _privateChatLog.value = emptyList()
+        }
     }
 
     private suspend fun acceptLoop(socket: ServerSocket) {
