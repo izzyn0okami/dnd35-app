@@ -93,7 +93,7 @@ private data class DmExtraState(
 private sealed interface HostedSessionPersistenceCommand {
     data class Save(val snapshot: HostedSessionSnapshot) : HostedSessionPersistenceCommand
     data class SaveAndWait(val snapshot: HostedSessionSnapshot, val completion: CompletableDeferred<Unit>) : HostedSessionPersistenceCommand
-    data class End(val sessionId: String) : HostedSessionPersistenceCommand
+    data class EndAndWait(val sessionId: String, val completion: CompletableDeferred<Unit>) : HostedSessionPersistenceCommand
     data class Flush(val completion: CompletableDeferred<Unit>) : HostedSessionPersistenceCommand
 }
 
@@ -126,8 +126,14 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
                                 throw error
                             }
                         }
-                        is HostedSessionPersistenceCommand.End -> {
-                            hostedSessionDao.markManuallyEnded(command.sessionId)
+                        is HostedSessionPersistenceCommand.EndAndWait -> {
+                            try {
+                                hostedSessionDao.markManuallyEnded(command.sessionId)
+                                command.completion.complete(Unit)
+                            } catch (error: Exception) {
+                                command.completion.completeExceptionally(error)
+                                throw error
+                            }
                         }
                         is HostedSessionPersistenceCommand.Flush -> {
                             command.completion.complete(Unit)
@@ -171,6 +177,12 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
     // Mensagens privadas recebidas do Mestre — evento, não estado contínuo.
     private val _playerPrivateMessages = MutableSharedFlow<String>(extraBufferCapacity = 8)
     val playerPrivateMessages: SharedFlow<String> = _playerPrivateMessages
+
+    private suspend fun persistManualEndAndWait(sessionId: String) {
+        val completion = CompletableDeferred<Unit>()
+        persistenceCommands.send(HostedSessionPersistenceCommand.EndAndWait(sessionId, completion))
+        completion.await()
+    }
 
     private suspend fun flushPersistenceQueue() {
         val completion = CompletableDeferred<Unit>()
@@ -405,7 +417,14 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
         activeServer?.stop()
         server = null
         if (manual && activeSessionId != null) {
-            persistenceCommands.trySend(HostedSessionPersistenceCommand.End(activeSessionId))
+            runCatching {
+                kotlinx.coroutines.runBlocking(Dispatchers.IO) {
+                    persistManualEndAndWait(activeSessionId)
+                }
+            }.onFailure { error ->
+                CrashLogStore.record("MULTIPLAYER_PERSISTENCE", "Falha ao marcar encerramento manual da sessão", error)
+                _dmState.value = DmSessionUiState.Error("Não foi possível confirmar o encerramento da sessão no armazenamento local.")
+            }
         }
         _dmState.value = DmSessionUiState.Idle
     }
