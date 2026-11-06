@@ -306,3 +306,12 @@
 - Revisão de concorrência: a atualização de PV do servidor agora compartilha requestLock com a aprovação/negação de pedidos. Isso impede que um snapshot aprovado concorra com a escrita dos PV do combate e sobrescreva um dos estados.
 
 - Diagnóstico da CI #1893: a compilação Kotlin passou, mas um teste legado ainda exigia que dano nunca reduzisse PV abaixo de zero. Como isso contradiz as regras de estados incapacitado/morrendo e a sincronização agora preserva PV negativos, a expectativa antiga foi atualizada para -5 PV (e -999 no caso extremo limitado pelo modelo). Nova CI necessária no head atualizado.
+
+
+### Validação da sincronização de PV — CI #1906 / PR #322 (2026-11-06)
+- Head validado: dad79a588ca35fa934105b9565e505c8eefd5d26.
+- Workflow Android build nº 1906, run ID 42218656288: sucesso. testDebugUnitTest, assembleDebug, upload dos esquemas Room e upload do APK debug concluídos com sucesso.
+- Artefato APK debug: dnd35-app-debug, ID 13501944388, aproximadamente 20,4 MB; expira em 2026-11-13. Esquemas Room: artefato ID 13501454933.
+- A execução validou o head exato da PR #322. A compilação Kotlin, os testes unitários e o empacotamento Android passaram.
+- Testes manuais em dois aparelhos: o usuário já confirmou os cenários 1 e 2 da lista de integração anterior. Cenários 3 a 6 ainda precisam ser executados, incluindo grants de loot/compra e reconexão/ACK.
+- PR permanece aberta, em rascunho, mergeável, sem commits atrasados e sem revisões pendentes. Não mesclar até os testes restantes e autorização explícita do usuário.
