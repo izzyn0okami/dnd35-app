@@ -304,3 +304,5 @@
 - CI do head atualizado ainda pendente. Não considerar a correção validada até testes unitários e compilação concluírem; teste manual em dois aparelhos continua obrigatório.
 
 - Revisão de concorrência: a atualização de PV do servidor agora compartilha requestLock com a aprovação/negação de pedidos. Isso impede que um snapshot aprovado concorra com a escrita dos PV do combate e sobrescreva um dos estados.
+
+- Diagnóstico da CI #1893: a compilação Kotlin passou, mas um teste legado ainda exigia que dano nunca reduzisse PV abaixo de zero. Como isso contradiz as regras de estados incapacitado/morrendo e a sincronização agora preserva PV negativos, a expectativa antiga foi atualizada para -5 PV (e -999 no caso extremo limitado pelo modelo). Nova CI necessária no head atualizado.
