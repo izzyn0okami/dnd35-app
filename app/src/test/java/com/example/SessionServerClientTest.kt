@@ -435,6 +435,8 @@ class SessionServerClientTest {
 
                 val request = withTimeout(15_000) { server.pendingRequests.first { it.isNotEmpty() } }.single()
                 assertEquals(RequestKind.CHARACTER_UPDATE, request.kind)
+                // The requested snapshot is not applied before the DM's decision.
+                assertEquals(30, server.receivedCharacters.value[connected.selfId]?.currentHp)
 
                 val resolvedDeferred = async(start = CoroutineStart.UNDISPATCHED) {
                     withTimeout(15_000) { client.requestResults.first() }
@@ -446,6 +448,48 @@ class SessionServerClientTest {
                     server.receivedCharacters.first { it[connected.selfId]?.currentHp == 25 }
                 }
                 assertEquals(25, finalCharacters.getValue(connected.selfId).currentHp)
+            } finally {
+                client.disconnect()
+            }
+        } finally {
+            server.stop()
+        }
+    }
+
+    @Test
+    fun `pedido negado de atualizacao de ficha preserva snapshot anterior`() = runBlocking {
+        val server = SessionServer(sessionId = "sess-character-update-denied", hostDisplayName = "Mestre")
+        val port = server.start()
+        try {
+            val original = CharacterEntity(name = "Legolas", characterClass = "Patrulheiro", level = 5, currentHp = 30, maxHp = 40)
+            val originalJson = CharacterBackup.toJson(listOf(original)) { null }
+            val client = SessionClient()
+            try {
+                client.connect("127.0.0.1", port, "Legolas", originalJson)
+                val connected = withTimeout(15_000) {
+                    client.state.first { it is SessionClientState.Connected } as SessionClientState.Connected
+                }
+                withTimeout(15_000) { server.receivedCharacters.first { it.containsKey(connected.selfId) } }
+
+                val updatedJson = CharacterBackup.toJson(listOf(original.copy(currentHp = 5))) { null }
+                client.requestAction(
+                    RequestKind.CHARACTER_UPDATE,
+                    "Atualização da ficha de Legolas",
+                    characterJson = updatedJson
+                )
+                val request = withTimeout(15_000) {
+                    server.pendingRequests.first { it.isNotEmpty() }
+                }.single()
+
+                val resolvedDeferred = async(start = CoroutineStart.UNDISPATCHED) {
+                    withTimeout(15_000) { client.requestResults.first() }
+                }
+                server.denyRequest(request.id, reason = "Atualização não autorizada")
+                val resolved = resolvedDeferred.await()
+
+                assertEquals(false, resolved.approved)
+                assertEquals("Atualização não autorizada", resolved.reason)
+                assertEquals(30, server.receivedCharacters.value[connected.selfId]?.currentHp)
             } finally {
                 client.disconnect()
             }
