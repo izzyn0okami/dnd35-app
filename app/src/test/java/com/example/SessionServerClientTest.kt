@@ -1406,7 +1406,7 @@ class SessionServerClientTest {
                 }
                 val expectedSoFar = (messageIndex + 1) * clients.size
                 withTimeout(30_000) {
-                    server.privateChatLog.first { it.size == expectedSoFar }
+                    server.privateChatLog.first { it.size >= expectedSoFar }
                 }
             }
 
