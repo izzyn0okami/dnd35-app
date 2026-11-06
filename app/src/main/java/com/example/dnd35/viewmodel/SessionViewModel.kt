@@ -107,8 +107,7 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
         _playerRequestFeedback.value = null
     }
 
-    // Item concedido ao pegar algo do baú de loot (pedido aprovado) — a UI usa isso para colocar
-    // o item no inventário local da ficha ativa (SessionViewModel não mexe em fichas direto).
+    // Concessão de loot aprovada — a UI persiste na ficha local vinculada ao participante.
     private val _lootGranted = MutableSharedFlow<com.example.dnd35.session.SessionItemGrant>(replay = 8, extraBufferCapacity = 4)
     val lootGranted: SharedFlow<com.example.dnd35.session.SessionItemGrant> = _lootGranted
 
