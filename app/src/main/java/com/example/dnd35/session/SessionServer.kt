@@ -219,25 +219,10 @@ class SessionServer(
     }
 
     /** Guarda a ficha mandada por um jogador; entradas inválidas são ignoradas silenciosamente. */
-    private fun receiveCharacterSheet(
-        participantId: String,
-        characterJson: String,
-        preserveAuthoritativeCurrency: Boolean = false
-    ) {
+    private fun receiveCharacterSheet(participantId: String, characterJson: String) {
         val parsed = CharacterBackup.parse(characterJson) as? CharacterBackup.ParseResult.Success ?: return
         val incoming = parsed.characters.firstOrNull()?.entity ?: return
-        val current = _receivedCharacters.value[participantId]
-        val entity = if (preserveAuthoritativeCurrency && current != null) {
-            // A pending purchase may already have debited the server purse while the client
-            // still holds an older snapshot. Resource requests must never restore that balance.
-            incoming.copy(
-                goldGp = current.goldGp,
-                silverSp = current.silverSp,
-                copperCp = current.copperCp,
-                platinumPp = current.platinumPp
-            )
-        } else incoming
-        _receivedCharacters.value = _receivedCharacters.value + (participantId to entity)
+        _receivedCharacters.value = _receivedCharacters.value + (participantId to incoming)
     }
 
     private fun registerPendingGrant(participantId: String, grantId: String, message: SessionMessage) {
