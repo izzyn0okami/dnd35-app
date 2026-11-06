@@ -495,3 +495,5 @@
 - O cliente do Jogador agora aceita o novo IP/porta do QR recuperado e tenta reconectar com o token já recebido, desde que o ID da sessão seja o mesmo. Foi adicionado teste de integração com dois servidores sequenciais e preservação do mesmo ID de participante.
 - Limitação do lado Jogador: o token de reconexão ainda vive na memória de `SessionClient`; se o processo do Jogador também for encerrado, ele não tem token local persistido e deverá entrar novamente como participante novo. A retomada do processo do Mestre permanece o requisito desta etapa.
 - Decoder e restauração agora recusam referências órfãs (fichas, pedidos, tokens ou outbox sem participante no roster), em vez de descartá-las silenciosamente.
+
+- Aprovações do Mestre agora suprimem checkpoints intermediários durante a mutação composta e emitem um único snapshot após resolver o pedido. Isso evita persistir, por exemplo, dano aplicado com o pedido de PV ainda pendente e reaplicar o dano após recuperação.
