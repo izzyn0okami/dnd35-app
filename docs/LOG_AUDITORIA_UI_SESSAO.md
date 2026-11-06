@@ -184,7 +184,7 @@
 
 ### Correção proposta nesta branch
 - Atualizações de ficha deixam de ser aplicadas ao receber o pedido. O snapshot só é aplicado no caminho de aprovação `approveRequest()`.
-- Pedidos de loot/compra continuam reconciliando o snapshot antes da decisão, pois o servidor precisa validar a ficha e o saldo mais recentes; a moeda autoritativa permanece preservada.
+- Na primeira revisão, pedidos de loot/compra ainda reconciliavam o snapshot; o achado adicional abaixo corrigiu esse comportamento. Na versão atual, nenhum pedido de recurso aplica snapshots enviados pelo jogador: a validação usa o último estado aprovado mantido pelo servidor.
 - O teste de atualização aprovada agora verifica que o snapshot antigo permanece intacto enquanto o pedido aguarda aprovação.
 - Foi acrescentado teste de atualização negada, que confirma que a ficha original permanece inalterada.
 
