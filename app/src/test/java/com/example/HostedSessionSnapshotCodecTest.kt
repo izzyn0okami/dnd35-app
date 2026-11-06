@@ -17,6 +17,7 @@ import com.example.dnd35.session.ShopState
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertThrows
+import org.json.JSONException
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
@@ -159,7 +160,7 @@ class HostedSessionSnapshotCodecTest {
         )
         val malformed = HostedSessionSnapshotCodec.encode(valid).replace("\"lootChest\":\"[]\"", "\"lootChest\":\"{broken}\"")
 
-        assertThrows(RuntimeException::class.java) {
+        assertThrows(JSONException::class.java) {
             HostedSessionSnapshotCodec.decode(malformed)
         }
     }
