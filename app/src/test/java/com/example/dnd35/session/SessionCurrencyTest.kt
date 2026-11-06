@@ -31,9 +31,10 @@ class SessionCurrencyTest {
     }
 
     @Test
-    fun negativeAndFractionalCoinBalancesAreRejected() {
+    fun negativeAndSubCopperBalancesAreRejected() {
         assertNull(SessionCurrency.totalCopper(CharacterEntity(goldGp = -1f)))
-        assertNull(SessionCurrency.totalCopper(CharacterEntity(goldGp = 1.5f)))
+        assertNull(SessionCurrency.totalCopper(CharacterEntity(goldGp = 0.001f)))
+        assertEquals(150L, SessionCurrency.totalCopper(CharacterEntity(goldGp = 1.5f)))
     }
 
     @Test
