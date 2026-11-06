@@ -113,7 +113,7 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
     val lootGranted: SharedFlow<com.example.dnd35.session.SessionItemGrant> = _lootGranted
 
     // Item concedido ao comprar algo da loja de NPC (pedido aprovado) — mesmo motivo do loot.
-    private val _shopPurchaseGranted = MutableSharedFlow<com.example.dnd35.session.SessionItemGrant>(extraBufferCapacity = 4)
+    private val _shopPurchaseGranted = MutableSharedFlow<com.example.dnd35.session.SessionItemGrant>(replay = 8, extraBufferCapacity = 4)
     val shopPurchaseGranted: SharedFlow<com.example.dnd35.session.SessionItemGrant> = _shopPurchaseGranted
 
     // Mensagens privadas recebidas do Mestre — evento, não estado contínuo.
