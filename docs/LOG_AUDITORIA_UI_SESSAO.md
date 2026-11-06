@@ -154,3 +154,5 @@
 - Os testes de loot e loja foram atualizados para entrar com uma ficha local identificada, enviar o snapshot da ficha no pedido e verificar o ID da ficha e os dados do grant recebido. O teste da loja também usa saldo suficiente e verifica o saldo após a compra.
 - O cliente passou a numerar as tentativas de conexão. Respostas e atualizações de estado de uma conexão antiga são ignoradas quando uma tentativa mais recente já começou; isso evita que o encerramento tardio da conexão anterior substitua o estado da reconexão.
 - Estas correções foram publicadas na branch da PR #321. A nova execução da CI ainda precisa confirmar que os três timeouts foram eliminados; não considerar a etapa validada até testDebugUnitTest e assembleDebug concluírem com sucesso.
+
+- Ajuste adicional no teste de compra: o troco é conferido na denominação canônica de platina (50 PP para saldo inicial de 1.000 PO e preço de 500 PO), sem esperar que o servidor mantenha moedas em ouro quando a conversão as representa em platina.
