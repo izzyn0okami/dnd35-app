@@ -323,3 +323,14 @@
 - A limpeza do estado de combate em `stop()` também usa o lock, evitando competir com uma mutação em andamento.
 - Adicionado teste concorrente com duas threads: 1.000 aplicações de dano e 1.000 avanços de turno partem simultaneamente; o resultado esperado é 0 PV e rodada 1.001, sem perda de atualização.
 - Esta correção foi aplicada diretamente na branch existente `fix/session-character-update-approval` da PR #322, sem abrir outra PR. A validação automatizada do novo head ainda precisa ser concluída; não mesclar antes da CI e da autorização explícita.
+
+
+### Validação da CI #1913 e atualização dos testes integrados — PR #322 (2026-11-06)
+- Head de código validado: `aed32f13a3ba8c05b082ad0ff612beaddab7a9f8`.
+- Workflow Android build nº 1913, run ID `42228831033`: sucesso. `testDebugUnitTest`, `assembleDebug`, upload dos esquemas Room e upload do APK debug concluídos.
+- A execução corresponde exatamente ao head de código consultado da PR #322.
+- O usuário confirmou os cenários integrados 1 e 2 e orientou considerar os cenários 3 a 6 aprovados provisoriamente. Registrar essa aprovação como provisória, sem afirmar que houve nova execução técnica desses cenários nesta etapa.
+- A comparação com `main` confirma 52 commits à frente e nenhum commit atrasado (`behind_by = 0`). A PR #322 continua sendo a única PR aberta e o GitHub informa que ela é mergeável.
+- A sincronização automática de PV atuais e temporários entre Combate e a ficha vinculada está implementada e coberta por testes automatizados. A CI passou para o head atual.
+- Limitação conhecida: outbox e estado da sessão continuam em memória; encerramento/reinício do processo do Mestre perde pedidos, estoque e grants pendentes. Persistência durável não foi incluída nesta PR.
+- A PR ainda não foi mesclada. Não realizar merge sem autorização explícita do usuário.
