@@ -87,6 +87,7 @@ import com.example.dnd35.ui.tabs.SpellsTab
 import com.example.dnd35.ui.session.SessionHubScreen
 import com.example.dnd35.viewmodel.CharacterViewModel
 import com.example.dnd35.viewmodel.SessionViewModel
+import com.example.dnd35.viewmodel.PlayerSessionUiState
 import com.example.ui.theme.DndCrimson
 import com.example.ui.theme.DndGold
 
@@ -117,6 +118,24 @@ fun DndMainScreen(
     LaunchedEffect(viewModel) {
         viewModel.backupMessages.collect { message ->
             Toast.makeText(context, message, Toast.LENGTH_LONG).show()
+        }
+    }
+
+    // A coleta fica no nível da tela principal, não dentro do painel da sessão:
+    // os PV continuam sendo persistidos mesmo quando o jogador está em outra aba.
+    LaunchedEffect(sessionViewModel, viewModel) {
+        val activeSession = sessionViewModel ?: return@LaunchedEffect
+        activeSession.playerState.collect { sessionState ->
+            val connected = sessionState as? PlayerSessionUiState.Connected ?: return@collect
+            val characterId = connected.characterId ?: return@collect
+            val ownCombatant = connected.combat?.combatants
+                ?.firstOrNull { it.id == connected.selfId && !it.isNpc }
+                ?: return@collect
+            viewModel.applySessionCombatHp(
+                characterId = characterId,
+                currentHp = ownCombatant.currentHp,
+                tempHp = ownCombatant.tempHp
+            )
         }
     }
 

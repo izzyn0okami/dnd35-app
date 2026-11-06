@@ -106,7 +106,8 @@ internal data class HpAdjustment(val currentHp: Int, val tempHp: Int)
  */
 internal fun calculateHpAdjustment(currentHp: Int, maxHp: Int, tempHp: Int, delta: Int): HpAdjustment {
     val safeMaxHp = maxHp.coerceAtLeast(0)
-    val safeCurrentHp = currentHp.coerceIn(0, safeMaxHp)
+    // PV negativos são estados válidos no D&D 3.5 (incapacitado/morrendo); não os normalize para zero.
+    val safeCurrentHp = currentHp.coerceAtMost(safeMaxHp)
     val safeTempHp = tempHp.coerceAtLeast(0)
 
     if (delta >= 0) {
@@ -117,9 +118,12 @@ internal fun calculateHpAdjustment(currentHp: Int, maxHp: Int, tempHp: Int, delt
     val damage = -delta.toLong()
     val absorbedByTemp = minOf(safeTempHp.toLong(), damage).toInt()
     val remainingDamage = damage - absorbedByTemp
-    val newHp = (safeCurrentHp.toLong() - remainingDamage).coerceAtLeast(0L).toInt()
+    val newHp = (safeCurrentHp.toLong() - remainingDamage).coerceAtLeast(-999L).toInt()
     return HpAdjustment(currentHp = newHp, tempHp = safeTempHp - absorbedByTemp)
 }
+
+internal fun CharacterEntity.withSessionCombatHp(currentHp: Int, tempHp: Int): CharacterEntity =
+    copy(currentHp = currentHp, tempHp = tempHp.coerceAtLeast(0))
 
 class CharacterViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -459,6 +463,23 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
             ))
         }
         persistCharacter(curr.copy(skillsJson = CharacterJsonAdapters.serializeSkills(currentSkills)))
+    }
+
+    /**
+     * Persiste somente os PV atuais e temporários recebidos do estado autoritativo de combate.
+     * O ID é o da ficha vinculada ao entrar na sessão, não necessariamente a ficha ativa na UI.
+     */
+    suspend fun applySessionCombatHp(characterId: Long, currentHp: Int, tempHp: Int): Boolean {
+        if (characterId <= 0L) return false
+        return characterSaveMutex.withLock {
+            val target = withContext(Dispatchers.IO) {
+                repository.getAllCharactersOnce().firstOrNull { it.id == characterId }
+            } ?: return@withLock false
+            val updated = target.withSessionCombatHp(currentHp, tempHp)
+            if (updated == target) return@withLock true
+            withContext(Dispatchers.IO) { repository.saveCharacter(updated) }
+            true
+        }
     }
 
     /**

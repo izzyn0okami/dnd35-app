@@ -174,3 +174,172 @@
 - PR #321 foi marcada pronta para revisão e mesclada por squash em 2026-11-06. Commit de merge: `3c8be2b69f9a027a147ad1bbdc8af38039910885`.
 - CI #1814 (run `42146247120`) validou o commit funcional `f5adc83cca3571ce20ff2b86ebbd458f352628dd`, com `testDebugUnitTest`, `assembleDebug` e upload do APK debug concluídos com sucesso. A comparação entre esse commit e o head final `5c31d4d127e9f6261be42c529ded5e73d575db83` confirmou que o único commit adicional alterou somente este log (9 linhas adicionadas, sem mudanças de código). A CI #1816, disparada para o commit de documentação, estava em andamento no momento do merge.
 - A mesclagem foi autorizada pelo usuário. O teste integrado em dois aparelhos continua pendente; portanto, a implementação está integrada ao `main`, mas a auditoria funcional de Recursos ainda não está integralmente concluída. Validar compra/loot, desconexão antes e depois da gravação, reconexão e ACK sem duplicação. A persistência após reinício do Mestre continua fora do escopo implementado: outbox, pedidos, estoque e grants pendentes são mantidos em memória e se perdem quando o processo/hospedagem é encerrado.
+
+
+## 2026-11-06 — Correção complementar: aprovação de atualização de ficha
+
+### Achado na revisão após o merge da PR #321
+- O servidor recebia o snapshot de uma solicitação `CHARACTER_UPDATE` e o aplicava imediatamente em `receivedCharacters`, antes de o Mestre aprovar ou negar o pedido. Isso tornava a aprovação ineficaz para a cópia da ficha mantida na sessão e permitia que uma atualização negada já aparecesse no estado do Mestre.
+- O problema foi identificado por leitura do fluxo `SessionServer.receiveActionRequest()` e do teste de integração existente, que verificava somente o estado depois da aprovação e não verificava o estado antes da decisão.
+
+### Correção proposta nesta branch
+- Atualizações de ficha deixam de ser aplicadas ao receber o pedido. O snapshot só é aplicado no caminho de aprovação `approveRequest()`.
+- Na primeira revisão, pedidos de loot/compra ainda reconciliavam o snapshot; o achado adicional abaixo corrigiu esse comportamento. Na versão atual, nenhum pedido de recurso aplica snapshots enviados pelo jogador: a validação usa o último estado aprovado mantido pelo servidor.
+- O teste de atualização aprovada agora verifica que o snapshot antigo permanece intacto enquanto o pedido aguarda aprovação.
+- Foi acrescentado teste de atualização negada, que confirma que a ficha original permanece inalterada.
+
+### Validação
+- Alterações concentradas no servidor, nos testes de integração JVM e neste log.
+- CI ainda pendente nesta branch; não declarar a correção validada até `testDebugUnitTest` e `assembleDebug` concluírem.
+- Não altera regras de D&D 3.5, cálculos da ficha ou protocolo de rede.
+
+
+### Achado adicional na revisão da PR #322 — snapshot em pedidos de Recursos
+- Mesmo após separar `CHARACTER_UPDATE`, pedidos `TAKE_LOOT` e `BUY_FROM_SHOP` ainda aplicavam o snapshot completo enviado pelo cliente antes da aprovação do Mestre. Preservar apenas as moedas não impedia alterações antecipadas em PV, atributos ou inventário.
+- Corrigido na mesma branch: o servidor não aplica snapshots anexados a pedidos de Recursos. A validação da compra usa a ficha e o saldo já aprovados e mantidos pelo servidor; alterações de ficha devem passar pelo pedido `CHARACTER_UPDATE`.
+- Teste adicional envia uma compra com PV e saldo adulterados no snapshot e verifica que o estado do servidor permanece inalterado enquanto o pedido está pendente.
+- Esta decisão reforça a autoridade do servidor e evita que um pedido pendente de loot/compra funcione como atualização implícita da ficha.
+
+
+### Achado adicional na revisão da PR #322 — aprovação concorrente/duplicada
+- `approveRequest()` e `denyRequest()` consultavam e alteravam a lista de pedidos pendentes sem sincronização. Duas chamadas simultâneas para aprovar o mesmo pedido poderiam processar a mesma compra/retirada mais de uma vez, além de atualizações concorrentes da lista poderem sobrescrever pedidos recém-chegados.
+- Adicionado um lock dedicado para serializar inclusão, aprovação e negação dos pedidos. Uma segunda aprovação/negação do mesmo ID não encontra mais o pedido pendente e não repete a transação.
+- Teste concorrente dispara duas aprovações para a mesma compra e verifica que o saldo é debitado uma única vez e o estoque é consumido uma única vez.
+- Aguardar CI após o commit; teste ainda não validado nesta etapa.
+
+
+### Diagnóstico da primeira CI do teste concorrente — PR #322
+- A execução de `testDebugUnitTest` executou 451 testes e falhou somente no novo teste de aprovação concorrente da compra. A compilação Kotlin foi concluída; `assembleDebug` foi ignorado porque os testes falharam.
+- A causa foi uma expectativa incorreta no teste, não uma falha demonstrada na serialização: o servidor normaliza o saldo para a denominação canônica de platina. O teste esperava 900 em `goldGp`, mas o fluxo de moeda representa 1.000 PO como 100 PP e, após uma compra de 100 PO, o saldo esperado é 90 PP e 0 PO.
+- Corrigidas as asserções para verificar `goldGp = 0`, `platinumPp = 90` e o mesmo saldo na concessão recebida pelo jogador.
+- A correção ainda depende de nova CI; não declarar o teste aprovado até a execução mais recente do head confirmar `testDebugUnitTest` e `assembleDebug`.
+
+
+### Achado adicional na revisão da PR #322 — snapshot reenviado na reconexão
+- A proteção de `CHARACTER_UPDATE` ainda podia ser contornada: ao reconectar, o cliente reenvia `SessionMessage.CharacterSheet` logo após o WELCOME. O servidor aceitava essa mensagem e sobrescrevia `receivedCharacters` sem aprovação.
+- Corrigido no servidor: `CharacterSheet` só inicializa a ficha quando o participante está entrando pela primeira vez e ainda não possui snapshot recebido. Quando o token de reconexão identifica um participante existente, a ficha já mantida pelo Mestre é preservada; mudanças posteriores continuam usando o pedido `CHARACTER_UPDATE`.
+- Adicionado teste de integração com socket TCP real: o participante entra com PV 30, cai, reconecta com o mesmo token e envia um snapshot adulterado com PV 5; o teste confirma que o Mestre mantém PV 30.
+- Esta proteção também impede que a reconexão restaure moedas ou inventário a partir de um snapshot local antigo. CI do novo head ainda pendente.
+
+- Após tornar `CharacterSheet` uma mensagem exclusivamente inicial, foi removido do helper o parâmetro antigo de preservação condicional de moedas: snapshots iniciais e snapshots aprovados passam por um único caminho explícito. O servidor não usa mais esse helper para aceitar atualizações espontâneas em reconexões.
+
+
+### Validação da CI #1854 — PR #322 (2026-11-06)
+- Commit funcional validado: `0f220566ff917d0a289d7aebe3cc086b2ec49431`.
+- Workflow Android build nº 1854, run ID `42148579103`: sucesso. `testDebugUnitTest`, `assembleDebug`, upload dos esquemas Room e upload do APK debug concluídos.
+- O run corresponde exatamente ao head SHA consultado da PR; não foi usada uma execução de commit anterior para declarar sucesso.
+- A comparação com `main` confirmou base atual `8235c1f4987ce1f066eb23167f1fcda1e339ce81`, sem commits de atraso (`behind_by = 0`). A PR #322 permanece como única PR aberta no repositório.
+- A revisão da branch não encontrou comentários nem threads de revisão pendentes.
+- A CI valida testes automatizados e compilação, mas não substitui teste integrado em dois aparelhos. Continuam pendentes os cenários reais de aprovação/negação de atualização de ficha, reconexão, compra/loot e ACK de concessões sem duplicação. Não declarar a auditoria multiplayer integralmente concluída até esses testes.
+- A PR permanece em rascunho e não foi mesclada.
+
+
+### Revisão estática da entrega de grants e ACK — PR #322 (2026-11-06)
+- O cliente recebe a concessão, encaminha o evento à tela de Recursos e chama `applySessionGrant()` antes de enviar `GrantAcknowledged`. A confirmação, portanto, ocorre somente depois que a ficha vinculada foi localizada e a gravação local terminou com sucesso.
+- `applySessionGrant()` busca a ficha pelo ID persistente recebido no vínculo da sessão, grava inventário e saldo da compra na mesma atualização da entidade e usa `grantId` como ID do item. Se o mesmo grant for reapresentado após uma queda, a presença desse ID faz a operação retornar sucesso sem inserir outra cópia; então o cliente pode confirmar novamente.
+- O servidor guarda grants pendentes por participante, reenvia os grants na reconexão reconhecida pelo token e remove cada grant ao receber o ACK correspondente.
+- Não foi encontrado, na suíte atual, um teste de integração que percorra explicitamente a sequência completa: grant emitido -> conexão cai antes do ACK -> grant reenviado com o mesmo ID -> ACK recebido -> reconexão posterior sem novo envio. Os testes atuais cobrem identificadores/protocolo e aplicação local idempotente, mas não substituem esse cenário de transporte ponta a ponta.
+- A revisão estática não identificou falha funcional demonstrada nesse fluxo. A cobertura de regressão para replay/ACK permanece uma lacuna e deve ser adicionada antes de declarar a entrega resiliente integralmente auditada.
+- Limitação já conhecida e mantida: o outbox é em memória. O replay protege contra queda de conexão enquanto o processo do Mestre continua ativo; não protege contra encerramento/reinício do processo ou do aparelho do Mestre. Persistência durável exige uma etapa separada de armazenamento.
+
+
+### Teste de integração de replay e ACK acrescentado — PR #322 (2026-11-06)
+- Acrescentado teste com sockets TCP reais que simula: jogador recebe grant de loot; conexão cai sem ACK; jogador reconecta com o mesmo token e recebe o mesmo `grantId`; cliente envia ACK; uma reconexão posterior não recebe novamente o grant confirmado.
+- O teste também verifica que a reconexão mantém o mesmo ID de participante e que a mensagem privada enviada depois do ACK funciona como barreira de ordenação TCP para confirmar que o servidor processou a confirmação antes da próxima reconexão.
+- O teste foi adicionado à suíte `SessionServerClientTest` na branch da PR #322. A execução Android build #1860 (run `42150172672`) foi iniciada para validar a nova cobertura; registrar o resultado após conclusão.
+- O teste cobre o replay/ACK enquanto o processo do Mestre permanece ativo. Não cobre persistência após reinício, que continua sendo uma limitação separada do outbox em memória.
+
+
+### Validação de snapshot inválido na aprovação de ficha — PR #322 (2026-11-06)
+- A revisão identificou que `approveRequest(CHARACTER_UPDATE)` chamava `receiveCharacterSheet()`, mas essa função ignorava silenciosamente JSON inválido ou backup sem ficha e não informava se a atualização havia sido aplicada. Mesmo assim, o pedido era respondido como aprovado.
+- `receiveCharacterSheet()` agora retorna sucesso/falha. Na aprovação, o servidor só confirma o pedido quando consegue interpretar e aplicar a ficha; snapshot inválido ou ausente é negado com motivo explícito, sem alterar a última ficha recebida.
+- Acrescentado teste TCP/cliente-servidor que envia snapshot malformado, aprova o pedido no Mestre e verifica resposta negativa, motivo e preservação dos PV anteriores.
+- A correção e o teste foram adicionados à branch existente da PR #322. A CI deve ser conferida novamente no SHA final após o registro deste log.
+
+
+### Serialização do ACK com registro de grants — PR #322 (2026-11-06)
+- Revisão estática encontrou uma corrida possível entre `acknowledgeGrant()` e `registerPendingGrant()`: a remoção do último grant podia observar o mapa vazio e removê-lo do outbox enquanto uma nova concessão era inserida no mesmo mapa.
+- `acknowledgeGrant()` agora usa o mesmo `requestLock` que serializa aprovação/registro de grants. Assim, ACK e criação de uma nova concessão não removem acidentalmente o mapa que contém a nova entrega.
+- A correção foi aplicada na branch existente da PR #322. A nova CI precisa validar o SHA final antes de qualquer merge.
+
+
+
+### Validação final da CI #1871 — PR #322 (2026-11-06)
+- Commit de código validado: `eb9da3e9f209a9b643967ad00f2355778a3c1834`.
+- Workflow Android build nº 1871, run ID `42151823349`: sucesso. `testDebugUnitTest`, `assembleDebug`, upload dos esquemas Room e upload do APK debug concluídos com sucesso.
+- A execução corresponde exatamente ao head consultado da PR #322; não foi usada uma execução anterior para declarar sucesso.
+- A comparação com `main` confirmou 29 commits à frente e nenhum commit atrasado (`behind_by = 0`). A PR #322 permanece como única PR aberta.
+- A revisão estática confirmou que snapshots de ficha só são aplicados no caminho de aprovação de `CHARACTER_UPDATE`; snapshots anexados a pedidos de loot/compra não alteram o estado aprovado; reconexão não substitui a ficha mantida pelo Mestre; aprovação/negação e ACK/registro de grants são serializados pelo mesmo lock.
+- Testes automatizados cobrem snapshot inválido, atualização aprovada/negada, tentativas concorrentes de compra e replay/ACK de grant por sockets TCP reais.
+- A PR permanece em rascunho e não foi mesclada. A CI verde não substitui teste manual integrado em dois aparelhos.
+- Limitações mantidas: outbox e estado da sessão são voláteis e se perdem quando o processo do Mestre é encerrado/reiniciado; teste real com dois aparelhos continua pendente.
+
+
+
+### Correção complementar identificada na revisão de reconexão — PR #322 (2026-11-06)
+- A revisão estática identificou um caso-limite: se a primeira conexão recebesse o WELCOME e caísse antes de enviar `CharacterSheet`, a reconexão seria reconhecida pelo token, mas o servidor descartaria o primeiro snapshot porque condicionava a aceitação a `existingId == null`.
+- Ajustado o servidor para aceitar `CharacterSheet` sempre que ainda não existir ficha recebida para aquele participante, inclusive após reconexão. Se já houver ficha no estado do Mestre, o snapshot reenviado continua sendo ignorado; alterações posteriores permanecem restritas ao fluxo aprovado de `CHARACTER_UPDATE`.
+- Acrescentado teste TCP real que interrompe a primeira entrada antes do snapshot, reconecta com o mesmo token e confirma que a primeira ficha é então recebida e vinculada.
+- Esta correção complementa, sem enfraquecer, a proteção contra sobrescrita de fichas já aprovadas. A CI do novo head deve ser conferida antes de qualquer merge.
+
+
+### Sincronização dos PV do combate com a ficha do jogador — PR #322 (2026-11-06)
+- Decisão do usuário: a sincronização automática dos PV entre Combate e Personagem é o comportamento definitivo.
+- Achado: CombatUpdate atualizava somente o estado de sessão (PlayerSessionUiState); não havia persistência do combatente do jogador na ficha Room local. A sincronização precisa continuar ativa mesmo quando o jogador navega para fora da tela/aba Sessão.
+- O ID de Combatant para jogadores é o ID do participante da sessão; para NPCs é npc:<characterId>. A sincronização filtra estritamente combatant.id == selfId e usa o ID da ficha local capturado no momento da entrada, sem depender da ficha atualmente selecionada.
+- A coleta foi colocada no nível de DndMainScreen, para permanecer ativa enquanto o jogador navega pelas abas do aplicativo. A ficha vinculada é atualizada somente nos campos currentHp e tempHp; PV máximos, inventário, moedas e demais dados não são substituídos.
+- A gravação consulta a entidade mais recente pelo ID e usa o mesmo characterSaveMutex dos grants de loot/compra, evitando atualizar uma ficha diferente ou disputar uma gravação de concessão.
+- O modelo de combate já consome PV temporários antes dos PV normais, mantém PV negativos e não restaura PV temporários com cura. A rotina de ajuste local da ficha foi corrigida para também preservar PV negativos e permitir cura a partir de valores negativos, sem ultrapassar o máximo.
+- Testes acrescentados para dano absorvido por PV temporários, dano abaixo de zero, cura a partir de PV negativos, limite máximo de cura e preservação de todos os campos da ficha fora dos PV atuais/temporários.
+- A sincronização não altera NPCs, fichas não vinculadas nem a UI. A reformulação visual continua planejada para uma etapa posterior.
+- Validação da CI e teste integrado em dois aparelhos ainda pendentes para este novo head. Manter a PR em rascunho e não mesclar até concluir os testes manuais já combinados.
+
+
+### Complemento da sincronização de PV — estado aprovado no servidor e PV temporários (2026-11-06)
+- A revisão do fluxo revelou que sincronizar apenas o banco local do jogador deixaria o snapshot aprovado mantido pelo Mestre desatualizado. Isso poderia fazer um combate posterior começar com PV antigos e manter a ficha do servidor divergente após o fim do encontro.
+- SessionServer.applyDamage agora atualiza, para combatentes jogadores vinculados, somente currentHp e tempHp também em receivedCharacters antes de transmitir a atualização de combate. Assim, o servidor conserva os PV autoritativos para encontros seguintes e validações futuras.
+- O diálogo de início de combate agora carrega tempHp da ficha recebida do jogador ou da ficha NPC do Mestre para Combatant. Isso evita apagar PV temporários existentes quando o combate começa.
+- Teste TCP/cliente-servidor acrescentado: a ficha aprovada começa com 20 PV e 4 PV temporários; 10 de dano resulta em 14 PV e 0 temporários no estado de combate e no snapshot aprovado; 5 de cura eleva para 19 PV sem ultrapassar o máximo.
+- A sincronização local do jogador continua sendo executada no DndMainScreen, inclusive fora da tela de sessão. O snapshot do servidor é atualizado somente pelo comando de dano/cura do Mestre.
+- CI do head atualizado ainda pendente. Não considerar a correção validada até testes unitários e compilação concluírem; teste manual em dois aparelhos continua obrigatório.
+
+- Revisão de concorrência: a atualização de PV do servidor agora compartilha requestLock com a aprovação/negação de pedidos. Isso impede que um snapshot aprovado concorra com a escrita dos PV do combate e sobrescreva um dos estados.
+
+- Diagnóstico da CI #1893: a compilação Kotlin passou, mas um teste legado ainda exigia que dano nunca reduzisse PV abaixo de zero. Como isso contradiz as regras de estados incapacitado/morrendo e a sincronização agora preserva PV negativos, a expectativa antiga foi atualizada para -5 PV (e -999 no caso extremo limitado pelo modelo). Nova CI necessária no head atualizado.
+
+
+### Validação da sincronização de PV — CI #1906 / PR #322 (2026-11-06)
+- Head validado: dad79a588ca35fa934105b9565e505c8eefd5d26.
+- Workflow Android build nº 1906, run ID 42218656288: sucesso. testDebugUnitTest, assembleDebug, upload dos esquemas Room e upload do APK debug concluídos com sucesso.
+- Artefato APK debug: dnd35-app-debug, ID 13501944388, aproximadamente 20,4 MB; expira em 2026-11-13. Esquemas Room: artefato ID 13501454933.
+- A execução validou o head exato da PR #322. A compilação Kotlin, os testes unitários e o empacotamento Android passaram.
+- Testes manuais em dois aparelhos: o usuário já confirmou os cenários 1 e 2 da lista de integração anterior. Cenários 3 a 6 ainda precisam ser executados, incluindo grants de loot/compra e reconexão/ACK.
+- PR permanece aberta, em rascunho, mergeável, sem commits atrasados e sem revisões pendentes. Não mesclar até os testes restantes e autorização explícita do usuário.
+
+
+### Correção de concorrência no estado de combate — PR #322 (2026-11-06)
+- Revisão estática encontrou que `applyDamage()` usava o lock compartilhado, mas `startCombat()`, `nextTurn()` e `endCombat()` liam/alteravam `_combatState` fora dele. Operações simultâneas podiam sobrescrever alterações recentes e transmitir atualizações fora da ordem do estado efetivamente persistido.
+- O mecanismo foi renomeado para `stateLock` e passou a proteger, na mesma seção crítica, início, dano/cura, avanço de turno, encerramento e os broadcasts correspondentes. A atualização dos PV da ficha aprovada continua sob o mesmo lock; aprovações/negações de pedidos e registro/ACK de grants também permanecem serializados.
+- A limpeza do estado de combate em `stop()` também usa o lock, evitando competir com uma mutação em andamento.
+- Adicionado teste concorrente com duas threads: 1.000 aplicações de dano e 1.000 avanços de turno partem simultaneamente; o resultado esperado é 0 PV e rodada 1.001, sem perda de atualização.
+- Esta correção foi aplicada diretamente na branch existente `fix/session-character-update-approval` da PR #322, sem abrir outra PR. A validação automatizada do novo head ainda precisa ser concluída; não mesclar antes da CI e da autorização explícita.
+
+
+### Validação da CI #1913 e atualização dos testes integrados — PR #322 (2026-11-06)
+- Head de código validado: `aed32f13a3ba8c05b082ad0ff612beaddab7a9f8`.
+- Workflow Android build nº 1913, run ID `42228831033`: sucesso. `testDebugUnitTest`, `assembleDebug`, upload dos esquemas Room e upload do APK debug concluídos.
+- A execução corresponde exatamente ao head de código consultado da PR #322.
+- O usuário confirmou os cenários integrados 1 e 2 e orientou considerar os cenários 3 a 6 aprovados provisoriamente. Registrar essa aprovação como provisória, sem afirmar que houve nova execução técnica desses cenários nesta etapa.
+- A comparação com `main` confirma 52 commits à frente e nenhum commit atrasado (`behind_by = 0`). A PR #322 continua sendo a única PR aberta e o GitHub informa que ela é mergeável.
+- A sincronização automática de PV atuais e temporários entre Combate e a ficha vinculada está implementada e coberta por testes automatizados. A CI passou para o head atual.
+- Limitação conhecida: outbox e estado da sessão continuam em memória; encerramento/reinício do processo do Mestre perde pedidos, estoque e grants pendentes. Persistência durável não foi incluída nesta PR.
+- A PR ainda não foi mesclada. Não realizar merge sem autorização explícita do usuário.
+
+
+### Serialização das mutações de sessão e snapshots iniciais — PR #322 (2026-11-06)
+- Revisão estática após a CI #1913 encontrou mutações de estado compartilhado fora de `stateLock`: alterações diretas no baú/loja, atualizações do roster e a leitura dos snapshots de estado enviados a uma nova conexão podiam intercalar-se com aprovações e broadcasts.
+- As mutações de adicionar/remover loot, abrir/fechar loja, adicionar participante e marcar desconexão agora usam o mesmo lock que serializa aprovações, grants e estado de combate.
+- O snapshot inicial enviado a uma conexão (combate, baú, loja e grants pendentes) também é preparado/enfileirado sob o lock, evitando que uma atualização mais antiga seja colocada na fila depois de um broadcast mais recente.
+- O encerramento limpa os estados mutáveis da sessão sob o mesmo lock.
+- Acrescentado teste concorrente com 200 adições ao baú, verificando que nenhum item é perdido.
+- Estas alterações e o novo teste foram adicionados à PR #322 existente. A CI precisa ser executada novamente no head atualizado antes de considerar a revisão concluída.

@@ -16,6 +16,7 @@ import com.example.dnd35.session.SessionWire
 import kotlinx.coroutines.CoroutineStart
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.mapNotNull
 import kotlinx.coroutines.runBlocking
@@ -25,6 +26,8 @@ import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
 import java.io.DataInputStream
 import java.io.DataOutputStream
+import java.net.Socket
+import java.util.concurrent.CountDownLatch
 import java.util.concurrent.Executors
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
@@ -254,6 +257,65 @@ class SessionServerClientTest {
     }
 
     @Test
+    fun `PV do combate atualizam a ficha aprovada no servidor e preservam PV temporarios`() = runBlocking {
+        val server = SessionServer(sessionId = "sess-combat-sheet", hostDisplayName = "Mestre")
+        val port = server.start()
+        val character = CharacterEntity(
+            name = "Gimli",
+            currentHp = 20,
+            maxHp = 30,
+            tempHp = 4
+        )
+        val client = SessionClient()
+        try {
+            client.connect(
+                "127.0.0.1",
+                port,
+                "Gimli",
+                CharacterBackup.toJson(listOf(character)) { null }
+            )
+            val connected = withTimeout(15_000) {
+                client.state.first { it is SessionClientState.Connected } as SessionClientState.Connected
+            }
+            withTimeout(15_000) {
+                server.receivedCharacters.first { it.containsKey(connected.selfId) }
+            }
+
+            server.startCombat(
+                listOf(
+                    Combatant(
+                        id = connected.selfId,
+                        displayName = "Gimli",
+                        isNpc = false,
+                        initiative = 12,
+                        currentHp = 20,
+                        maxHp = 30,
+                        tempHp = 4
+                    )
+                )
+            )
+            server.applyDamage(connected.selfId, 10)
+            val afterDamage = withTimeout(15_000) {
+                server.receivedCharacters.first {
+                    it[connected.selfId]?.currentHp == 14 && it[connected.selfId]?.tempHp == 0
+                }
+            }
+            assertEquals(14, afterDamage.getValue(connected.selfId).currentHp)
+            assertEquals(0, afterDamage.getValue(connected.selfId).tempHp)
+
+            server.applyDamage(connected.selfId, -5)
+            val afterHealing = withTimeout(15_000) {
+                server.receivedCharacters.first { it[connected.selfId]?.currentHp == 19 }
+            }
+            assertEquals(19, afterHealing.getValue(connected.selfId).currentHp)
+            assertEquals(30, afterHealing.getValue(connected.selfId).maxHp)
+        } finally {
+            client.disconnect()
+            server.stop()
+        }
+    }
+
+    @Test
     fun `applyDamage, nextTurn e endCombat sincronizam com o jogador`() = runBlocking {
         val server = SessionServer(sessionId = "sess-6", hostDisplayName = "Mestre")
         val port = server.start()
@@ -298,6 +360,50 @@ class SessionServerClientTest {
                 client.disconnect()
             }
         } finally {
+            server.stop()
+        }
+    }
+
+    @Test
+    fun `mutacoes concorrentes de dano e turno nao perdem atualizacoes`() {
+        val server = SessionServer(sessionId = "sess-combat-concurrency", hostDisplayName = "Mestre")
+        val combatantId = "player-concurrent"
+        val damageOperations = 1_000
+        val turnOperations = 1_000
+        val start = CountDownLatch(1)
+        val executor = Executors.newFixedThreadPool(2)
+        try {
+            server.startCombat(
+                listOf(
+                    Combatant(
+                        id = combatantId,
+                        displayName = "Gimli",
+                        isNpc = false,
+                        initiative = 15,
+                        currentHp = damageOperations,
+                        maxHp = damageOperations
+                    )
+                )
+            )
+            val damageTask = executor.submit {
+                start.await()
+                repeat(damageOperations) { server.applyDamage(combatantId, 1) }
+            }
+            val turnTask = executor.submit {
+                start.await()
+                repeat(turnOperations) { server.nextTurn() }
+            }
+
+            start.countDown()
+            damageTask.get()
+            turnTask.get()
+
+            val finalState = server.combatState.value
+            assertEquals(damageOperations + 1, finalState?.round)
+            assertEquals(0, finalState?.combatants?.single()?.currentHp)
+        } finally {
+            start.countDown()
+            executor.shutdownNow()
             server.stop()
         }
     }
@@ -435,6 +541,8 @@ class SessionServerClientTest {
 
                 val request = withTimeout(15_000) { server.pendingRequests.first { it.isNotEmpty() } }.single()
                 assertEquals(RequestKind.CHARACTER_UPDATE, request.kind)
+                // The requested snapshot is not applied before the DM's decision.
+                assertEquals(30, server.receivedCharacters.value[connected.selfId]?.currentHp)
 
                 val resolvedDeferred = async(start = CoroutineStart.UNDISPATCHED) {
                     withTimeout(15_000) { client.requestResults.first() }
@@ -446,6 +554,271 @@ class SessionServerClientTest {
                     server.receivedCharacters.first { it[connected.selfId]?.currentHp == 25 }
                 }
                 assertEquals(25, finalCharacters.getValue(connected.selfId).currentHp)
+            } finally {
+                client.disconnect()
+            }
+        } finally {
+            server.stop()
+        }
+    }
+
+    @Test
+    fun `pedido de atualizacao com snapshot invalido e negado sem alterar ficha`() = runBlocking {
+        val server = SessionServer(sessionId = "sess-invalid-character-update", hostDisplayName = "Mestre")
+        val port = server.start()
+        try {
+            val original = CharacterEntity(
+                name = "Legolas",
+                characterClass = "Patrulheiro",
+                level = 5,
+                currentHp = 30,
+                maxHp = 40
+            )
+            val originalJson = CharacterBackup.toJson(listOf(original)) { null }
+            val client = SessionClient()
+            try {
+                client.connect("127.0.0.1", port, "Legolas", originalJson)
+                val connected = withTimeout(15_000) {
+                    client.state.first { it is SessionClientState.Connected } as SessionClientState.Connected
+                }
+                withTimeout(15_000) { server.receivedCharacters.first { it.containsKey(connected.selfId) } }
+
+                client.requestAction(
+                    RequestKind.CHARACTER_UPDATE,
+                    "Atualização inválida da ficha",
+                    characterJson = "{snapshot-invalido"
+                )
+                val request = withTimeout(15_000) {
+                    server.pendingRequests.first { it.any { pending -> pending.kind == RequestKind.CHARACTER_UPDATE } }
+                }.single()
+
+                val resolvedDeferred = async(start = CoroutineStart.UNDISPATCHED) {
+                    withTimeout(15_000) { client.requestResults.first() }
+                }
+                server.approveRequest(request.id)
+                val resolved = resolvedDeferred.await()
+
+                assertEquals(false, resolved.approved)
+                assertEquals("Snapshot de ficha inválido.", resolved.reason)
+                assertEquals(30, server.receivedCharacters.value[connected.selfId]?.currentHp)
+            } finally {
+                client.disconnect()
+            }
+        } finally {
+            server.stop()
+        }
+    }
+
+    @Test
+    fun `aprovacao duplicada de compra debita e concede apenas uma vez`() = runBlocking {
+        val server = SessionServer(sessionId = "sess-duplicate-approval", hostDisplayName = "Mestre")
+        val port = server.start()
+        try {
+            val original = CharacterEntity(
+                id = 1701L,
+                name = "Legolas",
+                characterClass = "Patrulheiro",
+                level = 5,
+                currentHp = 30,
+                maxHp = 40,
+                goldGp = 1000f
+            )
+            val originalJson = CharacterBackup.toJson(listOf(original)) { null }
+            val client = SessionClient()
+            try {
+                client.connect("127.0.0.1", port, "Legolas", originalJson, original.id)
+                val connected = withTimeout(15_000) {
+                    client.state.first { it is SessionClientState.Connected } as SessionClientState.Connected
+                }
+                withTimeout(15_000) { server.receivedCharacters.first { it.containsKey(connected.selfId) } }
+
+                val shopItem = CharacterInventoryItem(
+                    id = "unique-shop-item",
+                    name = "Poção",
+                    category = "Itens de Aventura",
+                    quantity = 1,
+                    costGp = 100f
+                )
+                server.openShop(1L, "Loja", listOf(shopItem))
+                client.requestAction(
+                    RequestKind.BUY_FROM_SHOP,
+                    "Compra de poção",
+                    shopItemId = "unique-shop-item"
+                )
+                val request = withTimeout(15_000) {
+                    server.pendingRequests.first { it.any { pending -> pending.kind == RequestKind.BUY_FROM_SHOP } }
+                }.single { it.kind == RequestKind.BUY_FROM_SHOP }
+
+                val grantDeferred = async(start = CoroutineStart.UNDISPATCHED) {
+                    withTimeout(15_000) { client.shopPurchases.first() }
+                }
+                val approvals = listOf(
+                    async(Dispatchers.Default) { server.approveRequest(request.id) },
+                    async(Dispatchers.Default) { server.approveRequest(request.id) }
+                )
+                approvals.awaitAll()
+                val grant = grantDeferred.await()
+
+                val stored = server.receivedCharacters.value.getValue(connected.selfId)
+                // O servidor normaliza o saldo em platina: 1.000 PO - 100 PO = 90 PP.
+                assertEquals(0f, stored.goldGp)
+                assertEquals(90f, stored.platinumPp)
+                assertTrue(server.shop.value?.items?.isEmpty() == true)
+                assertEquals(request.requesterId, connected.selfId)
+                assertEquals("Poção", grant.item.name)
+                assertEquals(90f, grant.coinPurse?.platinumPp)
+            } finally {
+                client.disconnect()
+            }
+        } finally {
+            server.stop()
+        }
+    }
+
+    @Test
+    fun `snapshot enviado na reconexao nao sobrescreve ficha ja recebida pelo Mestre`() = runBlocking {
+        val server = SessionServer(sessionId = "sess-reconnect-sheet-authority", hostDisplayName = "Mestre")
+        val port = server.start()
+        var firstSocket: Socket? = null
+        var reconnectSocket: Socket? = null
+        try {
+            val original = CharacterEntity(
+                id = 1801L,
+                name = "Legolas",
+                characterClass = "Patrulheiro",
+                level = 5,
+                currentHp = 30,
+                maxHp = 40
+            )
+            val originalJson = CharacterBackup.toJson(listOf(original)) { null }
+            val alteredJson = CharacterBackup.toJson(listOf(original.copy(currentHp = 5))) { null }
+
+            firstSocket = Socket("127.0.0.1", port)
+            val firstInput = DataInputStream(firstSocket.getInputStream())
+            val firstOutput = DataOutputStream(firstSocket.getOutputStream())
+            SessionWire.write(firstOutput, SessionMessage.Hello("Legolas", characterId = original.id))
+            val firstWelcome = withContext(Dispatchers.IO) {
+                withTimeout(15_000) { SessionWire.read(firstInput) as SessionMessage.Welcome }
+            }
+            SessionWire.write(firstOutput, SessionMessage.CharacterSheet(originalJson))
+            withTimeout(15_000) {
+                server.receivedCharacters.first { it[firstWelcome.participantId]?.currentHp == 30 }
+            }
+            firstSocket.close()
+            withTimeout(15_000) {
+                server.roster.first { roster -> roster.any { it.id == firstWelcome.participantId && !it.connected } }
+            }
+
+            reconnectSocket = Socket("127.0.0.1", port)
+            val reconnectInput = DataInputStream(reconnectSocket.getInputStream())
+            val reconnectOutput = DataOutputStream(reconnectSocket.getOutputStream())
+            SessionWire.write(
+                reconnectOutput,
+                SessionMessage.Hello("Legolas", firstWelcome.rejoinToken, original.id)
+            )
+            val reconnectWelcome = withContext(Dispatchers.IO) {
+                withTimeout(15_000) { SessionWire.read(reconnectInput) as SessionMessage.Welcome }
+            }
+            assertEquals(firstWelcome.participantId, reconnectWelcome.participantId)
+
+            // Simula um cliente alterado/adulterado: a reconexão repete CharacterSheet com PV
+            // diferentes. A mensagem privada seguinte confirma que o servidor já leu o snapshot.
+            SessionWire.write(reconnectOutput, SessionMessage.CharacterSheet(alteredJson))
+            SessionWire.write(reconnectOutput, SessionMessage.PrivateMessage("reconnect-snapshot-sent"))
+            withTimeout(15_000) {
+                server.privateChatLog.first { entries -> entries.any { it.text == "reconnect-snapshot-sent" } }
+            }
+
+            val stored = server.receivedCharacters.value.getValue(firstWelcome.participantId)
+            assertEquals(30, stored.currentHp)
+            assertEquals(2, server.roster.value.size)
+        } finally {
+            runCatching { firstSocket?.close() }
+            runCatching { reconnectSocket?.close() }
+            server.stop()
+        }
+    }
+
+    @Test
+    fun `pedido de compra nao aplica snapshot do jogador antes da aprovacao`() = runBlocking {
+        val server = SessionServer(sessionId = "sess-resource-snapshot", hostDisplayName = "Mestre")
+        val port = server.start()
+        try {
+            val original = CharacterEntity(
+                name = "Legolas",
+                characterClass = "Patrulheiro",
+                level = 5,
+                currentHp = 30,
+                maxHp = 40,
+                goldGp = 1000f
+            )
+            val originalJson = CharacterBackup.toJson(listOf(original)) { null }
+            val client = SessionClient()
+            try {
+                client.connect("127.0.0.1", port, "Legolas", originalJson)
+                val connected = withTimeout(15_000) {
+                    client.state.first { it is SessionClientState.Connected } as SessionClientState.Connected
+                }
+                withTimeout(15_000) { server.receivedCharacters.first { it.containsKey(connected.selfId) } }
+
+                val unapprovedSnapshot = CharacterBackup.toJson(
+                    listOf(original.copy(currentHp = 5, goldGp = 1f))
+                ) { null }
+                client.requestAction(
+                    RequestKind.BUY_FROM_SHOP,
+                    "Pedido de compra",
+                    characterJson = unapprovedSnapshot,
+                    shopItemId = "item-pending"
+                )
+
+                withTimeout(15_000) {
+                    server.pendingRequests.first { requests -> requests.any { it.kind == RequestKind.BUY_FROM_SHOP } }
+                }
+                val stored = server.receivedCharacters.value.getValue(connected.selfId)
+                assertEquals(30, stored.currentHp)
+                assertEquals(1000f, stored.goldGp)
+            } finally {
+                client.disconnect()
+            }
+        } finally {
+            server.stop()
+        }
+    }
+
+    @Test
+    fun `pedido negado de atualizacao de ficha preserva snapshot anterior`() = runBlocking {
+        val server = SessionServer(sessionId = "sess-character-update-denied", hostDisplayName = "Mestre")
+        val port = server.start()
+        try {
+            val original = CharacterEntity(name = "Legolas", characterClass = "Patrulheiro", level = 5, currentHp = 30, maxHp = 40)
+            val originalJson = CharacterBackup.toJson(listOf(original)) { null }
+            val client = SessionClient()
+            try {
+                client.connect("127.0.0.1", port, "Legolas", originalJson)
+                val connected = withTimeout(15_000) {
+                    client.state.first { it is SessionClientState.Connected } as SessionClientState.Connected
+                }
+                withTimeout(15_000) { server.receivedCharacters.first { it.containsKey(connected.selfId) } }
+
+                val updatedJson = CharacterBackup.toJson(listOf(original.copy(currentHp = 5))) { null }
+                client.requestAction(
+                    RequestKind.CHARACTER_UPDATE,
+                    "Atualização da ficha de Legolas",
+                    characterJson = updatedJson
+                )
+                val request = withTimeout(15_000) {
+                    server.pendingRequests.first { it.isNotEmpty() }
+                }.single()
+
+                val resolvedDeferred = async(start = CoroutineStart.UNDISPATCHED) {
+                    withTimeout(15_000) { client.requestResults.first() }
+                }
+                server.denyRequest(request.id, reason = "Atualização não autorizada")
+                val resolved = resolvedDeferred.await()
+
+                assertEquals(false, resolved.approved)
+                assertEquals("Atualização não autorizada", resolved.reason)
+                assertEquals(30, server.receivedCharacters.value[connected.selfId]?.currentHp)
             } finally {
                 client.disconnect()
             }
@@ -909,6 +1282,64 @@ class SessionServerClientTest {
     }
 
     @Test
+    fun `reconexao completa ficha quando primeira entrada caiu antes do snapshot`() = runBlocking {
+        val server = SessionServer(sessionId = "sess-23a", hostDisplayName = "Mestre")
+        val port = server.start()
+        var firstSocket: Socket? = null
+        var secondSocket: Socket? = null
+        try {
+            val character = CharacterEntity(
+                id = 2301L,
+                name = "Legolas",
+                characterClass = "Patrulheiro",
+                level = 5
+            )
+            val characterJson = CharacterBackup.toJson(listOf(character)) { null }
+
+            // Primeira conexão recebe o WELCOME, mas cai antes de enviar CharacterSheet.
+            firstSocket = Socket("127.0.0.1", port).apply { soTimeout = 15_000 }
+            val firstInput = DataInputStream(firstSocket.getInputStream())
+            val firstOutput = DataOutputStream(firstSocket.getOutputStream())
+            SessionWire.write(firstOutput, SessionMessage.Hello("Legolas", characterId = character.id))
+            val firstWelcome = withContext(Dispatchers.IO) {
+                SessionWire.read(firstInput) as SessionMessage.Welcome
+            }
+            withTimeout(15_000) {
+                server.roster.first { roster -> roster.any { it.id == firstWelcome.participantId } }
+            }
+            assertEquals(null, server.receivedCharacters.value[firstWelcome.participantId])
+            firstSocket.close()
+            withTimeout(15_000) {
+                server.roster.first { roster -> roster.any { it.id == firstWelcome.participantId && !it.connected } }
+            }
+
+            // A reconexão usa o mesmo token e finalmente envia a primeira ficha.
+            secondSocket = Socket("127.0.0.1", port).apply { soTimeout = 15_000 }
+            val secondInput = DataInputStream(secondSocket.getInputStream())
+            val secondOutput = DataOutputStream(secondSocket.getOutputStream())
+            SessionWire.write(
+                secondOutput,
+                SessionMessage.Hello("Legolas", firstWelcome.rejoinToken, character.id)
+            )
+            val secondWelcome = withContext(Dispatchers.IO) {
+                SessionWire.read(secondInput) as SessionMessage.Welcome
+            }
+            assertEquals(firstWelcome.participantId, secondWelcome.participantId)
+            SessionWire.write(secondOutput, SessionMessage.CharacterSheet(characterJson))
+
+            val received = withTimeout(15_000) {
+                server.receivedCharacters.first { it.containsKey(firstWelcome.participantId) }
+            }
+            assertEquals("Legolas", received[firstWelcome.participantId]?.name)
+            assertEquals(character.id, server.roster.value.first { it.id == firstWelcome.participantId }.characterId)
+        } finally {
+            runCatching { firstSocket?.close() }
+            runCatching { secondSocket?.close() }
+            server.stop()
+        }
+    }
+
+    @Test
     fun `reconnect sem ter conectado antes nao faz nada`() = runBlocking {
         val client = SessionClient()
         assertEquals(false, client.reconnect())
@@ -960,4 +1391,153 @@ class SessionServerClientTest {
         }
         assertTrue((result as SessionClientState.Disconnected).reason.isNotBlank())
     }
+
+    @Test
+    fun `grant pendente e reenviado ate ACK e removido depois da confirmacao`() = runBlocking {
+        val server = SessionServer(sessionId = "sess-grant-replay-ack", hostDisplayName = "Mestre")
+        val port = server.start()
+        var firstSocket: Socket? = null
+        var secondSocket: Socket? = null
+        var thirdSocket: Socket? = null
+
+        suspend fun readGrant(input: DataInputStream): SessionMessage.LootGranted =
+            withContext(Dispatchers.IO) {
+                while (true) {
+                    val message = SessionWire.read(input) ?: throw AssertionError("Conexão encerrada antes da concessão.")
+                    if (message is SessionMessage.LootGranted) return@withContext message
+                }
+                throw AssertionError("Grant não recebido.")
+            }
+
+        try {
+            val character = CharacterEntity(
+                id = 1901L,
+                name = "Legolas",
+                characterClass = "Patrulheiro",
+                level = 5
+            )
+            val characterJson = CharacterBackup.toJson(listOf(character)) { null }
+            val item = CharacterInventoryItem(name = "Anel de proteção", category = "Itens Maravilhosos", quantity = 1)
+            server.addLootItem(item)
+
+            firstSocket = Socket("127.0.0.1", port).apply { soTimeout = 15_000 }
+            val firstInput = DataInputStream(firstSocket.getInputStream())
+            val firstOutput = DataOutputStream(firstSocket.getOutputStream())
+            SessionWire.write(firstOutput, SessionMessage.Hello("Legolas", characterId = character.id))
+            val firstWelcome = withContext(Dispatchers.IO) {
+                SessionWire.read(firstInput) as SessionMessage.Welcome
+            }
+            SessionWire.write(firstOutput, SessionMessage.CharacterSheet(characterJson))
+            withTimeout(15_000) {
+                server.receivedCharacters.first { it.containsKey(firstWelcome.participantId) }
+            }
+
+            SessionWire.write(
+                firstOutput,
+                SessionMessage.ActionRequested(
+                    kind = RequestKind.TAKE_LOOT,
+                    summary = "Pegar Anel de proteção",
+                    lootItemId = item.id
+                )
+            )
+            val request = withTimeout(15_000) {
+                server.pendingRequests.first { requests -> requests.any { it.kind == RequestKind.TAKE_LOOT } }
+            }.single { it.kind == RequestKind.TAKE_LOOT }
+
+            server.approveRequest(request.id)
+            val originalGrant = readGrant(firstInput)
+            assertEquals(character.id, originalGrant.characterId)
+            assertTrue(originalGrant.grantId.isNotBlank())
+            firstSocket.close()
+            withTimeout(15_000) {
+                server.roster.first { roster -> roster.any { it.id == firstWelcome.participantId && !it.connected } }
+            }
+
+            // Sem ACK, a reconexão com o mesmo token deve receber o mesmo grant novamente.
+            secondSocket = Socket("127.0.0.1", port).apply { soTimeout = 15_000 }
+            val secondInput = DataInputStream(secondSocket.getInputStream())
+            val secondOutput = DataOutputStream(secondSocket.getOutputStream())
+            SessionWire.write(
+                secondOutput,
+                SessionMessage.Hello("Legolas", firstWelcome.rejoinToken, character.id)
+            )
+            val secondWelcome = withContext(Dispatchers.IO) {
+                SessionWire.read(secondInput) as SessionMessage.Welcome
+            }
+            assertEquals(firstWelcome.participantId, secondWelcome.participantId)
+            val replayedGrant = readGrant(secondInput)
+            assertEquals(originalGrant.grantId, replayedGrant.grantId)
+            assertEquals(originalGrant.itemJson, replayedGrant.itemJson)
+
+            // A mensagem privada seguinte serve como barreira: quando ela chega ao servidor,
+            // o ACK anterior já foi lido e processado na mesma conexão TCP.
+            SessionWire.write(secondOutput, SessionMessage.GrantAcknowledged(originalGrant.grantId))
+            SessionWire.write(secondOutput, SessionMessage.PrivateMessage("grant-ack-processed"))
+            withTimeout(15_000) {
+                server.privateChatLog.first { entries -> entries.any { it.text == "grant-ack-processed" } }
+            }
+            secondSocket.close()
+            withTimeout(15_000) {
+                server.roster.first { roster -> roster.any { it.id == firstWelcome.participantId && !it.connected } }
+            }
+
+            // Após ACK, uma nova reconexão não deve receber novamente a concessão confirmada.
+            thirdSocket = Socket("127.0.0.1", port).apply { soTimeout = 1_000 }
+            val thirdInput = DataInputStream(thirdSocket.getInputStream())
+            val thirdOutput = DataOutputStream(thirdSocket.getOutputStream())
+            SessionWire.write(
+                thirdOutput,
+                SessionMessage.Hello("Legolas", firstWelcome.rejoinToken, character.id)
+            )
+            val thirdWelcome = withContext(Dispatchers.IO) {
+                SessionWire.read(thirdInput) as SessionMessage.Welcome
+            }
+            assertEquals(firstWelcome.participantId, thirdWelcome.participantId)
+
+            val unexpectedGrant = withContext(Dispatchers.IO) {
+                try {
+                    while (true) {
+                        val message = SessionWire.read(thirdInput) ?: break
+                        if (message is SessionMessage.LootGranted) return@withContext message
+                    }
+                    null
+                } catch (_: java.net.SocketTimeoutException) {
+                    null
+                }
+            }
+            assertEquals(null, unexpectedGrant)
+        } finally {
+            runCatching { firstSocket?.close() }
+            runCatching { secondSocket?.close() }
+            runCatching { thirdSocket?.close() }
+            server.stop()
+        }
+    }
+
+
+    @Test
+    fun `adicoes concorrentes ao bau nao perdem itens`() = runBlocking {
+        val server = SessionServer(sessionId = "sess-loot-concurrency", hostDisplayName = "Mestre")
+        try {
+            val items = (1..200).map { index ->
+                CharacterInventoryItem(
+                    id = "loot-$index",
+                    name = "Item $index",
+                    category = "Equipamento",
+                    quantity = 1
+                )
+            }
+
+            items.map { item ->
+                async(Dispatchers.Default) { server.addLootItem(item) }
+            }.awaitAll()
+
+            assertEquals(items.map { it.id }.toSet(), server.lootChest.value.map { it.id }.toSet())
+            assertEquals(items.size, server.lootChest.value.size)
+        } finally {
+            server.stop()
+        }
+    }
+
+
 }

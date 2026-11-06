@@ -64,7 +64,9 @@ sealed class PlayerSessionUiState {
         val participants: List<Participant>,
         val combat: CombatState? = null,
         val lootChest: List<CharacterInventoryItem> = emptyList(),
-        val shop: ShopSnapshot? = null
+        val shop: ShopSnapshot? = null,
+        /** ID da ficha local vinculada no momento da entrada; não depende da ficha atualmente selecionada. */
+        val characterId: Long? = null
     ) : PlayerSessionUiState()
     data class Disconnected(val reason: String) : PlayerSessionUiState()
 }
@@ -90,6 +92,8 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
 
     private var server: SessionServer? = null
     private var client: SessionClient? = null
+    // Mantém o vínculo exato da ficha usada para entrar, mesmo se o jogador trocar de ficha ativa.
+    private var linkedPlayerCharacterId: Long? = null
 
     private val _dmState = MutableStateFlow<DmSessionUiState>(DmSessionUiState.Idle)
     val dmState: StateFlow<DmSessionUiState> = _dmState
@@ -278,6 +282,7 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
             return
         }
         leaveSession()
+        linkedPlayerCharacterId = character?.id?.takeIf { it > 0L }
         _playerRequestFeedback.value = null
         val name = displayName.ifBlank { "Jogador" }
         // Sem foto: o retrato não é necessário para o Mestre acompanhar a ficha durante a sessão,
@@ -296,7 +301,7 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
                 if (client === activeClient) {
                     _playerState.value = when (state) {
                         is SessionClientState.Connecting -> PlayerSessionUiState.Connecting
-                        is SessionClientState.Connected -> PlayerSessionUiState.Connected(state.selfId, state.participants, state.combat, state.lootChest, state.shop)
+                        is SessionClientState.Connected -> PlayerSessionUiState.Connected(state.selfId, state.participants, state.combat, state.lootChest, state.shop, linkedPlayerCharacterId)
                         is SessionClientState.Disconnected -> PlayerSessionUiState.Disconnected(state.reason)
                     }
                 }
@@ -386,6 +391,7 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
     fun leaveSession() {
         client?.disconnect()
         client = null
+        linkedPlayerCharacterId = null
         _playerState.value = PlayerSessionUiState.Idle
     }
 
