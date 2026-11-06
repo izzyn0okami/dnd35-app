@@ -28,7 +28,8 @@ import java.util.concurrent.ConcurrentHashMap
  */
 class SessionServer(
     private val sessionId: String,
-    private val hostDisplayName: String
+    private val hostDisplayName: String,
+    private val onSnapshotChanged: ((HostedSessionSnapshot) -> Unit)? = null
 ) {
     private var serverSocket: ServerSocket? = null
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
@@ -143,6 +144,11 @@ class SessionServer(
                 if (grants.isNotEmpty()) pendingGrants[participantId] = grants
             }
         }
+    }
+
+    private fun notifySnapshotChanged() {
+        val callback = onSnapshotChanged ?: return
+        callback(createSnapshot())
     }
 
     /** Inicia o servidor em uma porta livre escolhida pelo sistema e retorna essa porta. */
@@ -269,6 +275,7 @@ class SessionServer(
     private fun addParticipant(participant: Participant) = synchronized(stateLock) {
         _roster.value = _roster.value.filterNot { it.id == participant.id } + participant
         broadcastRoster()
+        notifySnapshotChanged()
     }
 
     /**
@@ -284,6 +291,7 @@ class SessionServer(
         // DM and can be resolved after reconnection; resource requests must not be approved
         // while their recipient cannot receive the resulting grant.
         broadcastRoster()
+        notifySnapshotChanged()
     }
 
     /** Guarda a ficha mandada por um jogador; entradas inválidas são ignoradas silenciosamente. */
@@ -291,6 +299,7 @@ class SessionServer(
         val parsed = CharacterBackup.parse(characterJson) as? CharacterBackup.ParseResult.Success ?: return false
         val incoming = parsed.characters.firstOrNull()?.entity ?: return false
         _receivedCharacters.value = _receivedCharacters.value + (participantId to incoming)
+        notifySnapshotChanged()
         return true
     }
 
@@ -305,6 +314,7 @@ class SessionServer(
         val grants = pendingGrants[participantId] ?: return@synchronized
         grants.remove(grantId)
         if (grants.isEmpty()) pendingGrants.remove(participantId, grants)
+        notifySnapshotChanged()
     }
 
     private fun broadcastRoster() {
@@ -330,6 +340,7 @@ class SessionServer(
         val state = CombatState.start(combatants)
         _combatState.value = state
         broadcast(SessionMessage.CombatUpdate(state))
+        notifySnapshotChanged()
     }
 
     /** Aplica dano (positivo) ou cura (negativo) a um combatente e sincroniza com todos. */
@@ -359,6 +370,7 @@ class SessionServer(
             }
         }
         broadcast(SessionMessage.CombatUpdate(updated))
+        notifySnapshotChanged()
     }
 
     /** Avança para o próximo combatente com PV positivos e sincroniza a nova ordem/rodada. */
@@ -371,6 +383,7 @@ class SessionServer(
         if (_combatState.value == null) return@synchronized
         _combatState.value = null
         broadcast(SessionMessage.EndCombat)
+        notifySnapshotChanged()
     }
 
     private inline fun updateCombat(transform: (CombatState) -> CombatState) = synchronized(stateLock) {
@@ -378,6 +391,7 @@ class SessionServer(
         val updated = transform(current)
         _combatState.value = updated
         broadcast(SessionMessage.CombatUpdate(updated))
+        notifySnapshotChanged()
     }
 
     // --- Baú de loot (estado global, autoridade do Mestre) ---
@@ -386,6 +400,7 @@ class SessionServer(
     fun addLootItem(item: CharacterInventoryItem) = synchronized(stateLock) {
         _lootChest.value = _lootChest.value + item
         broadcastLootChest()
+        notifySnapshotChanged()
     }
 
     /** Remove um item do baú diretamente (não confundir com um pedido de jogador aprovado). */
@@ -393,6 +408,7 @@ class SessionServer(
         if (_lootChest.value.none { it.id == itemId }) return@synchronized
         _lootChest.value = _lootChest.value.filterNot { it.id == itemId }
         broadcastLootChest()
+        notifySnapshotChanged()
     }
 
     private fun broadcastLootChest() {
@@ -409,6 +425,7 @@ class SessionServer(
         val state = ShopState(npcCharacterId, npcName, items)
         _shop.value = state
         broadcastShop()
+        notifySnapshotChanged()
     }
 
     /** Fecha a loja aberta (se houver) e avisa a todos. */
@@ -416,6 +433,7 @@ class SessionServer(
         if (_shop.value == null) return@synchronized
         _shop.value = null
         broadcast(SessionMessage.ShopClosed)
+        notifySnapshotChanged()
     }
 
     private fun broadcastShop() {
@@ -429,6 +447,7 @@ class SessionServer(
     private fun receivePrivateMessage(participantId: String, text: String) = synchronized(stateLock) {
         val name = _roster.value.firstOrNull { it.id == participantId }?.displayName ?: "Jogador"
         _privateChatLog.value = _privateChatLog.value + PrivateChatEntry(participantId = participantId, participantName = name, text = text, fromDm = false)
+        notifySnapshotChanged()
     }
 
     /** Mestre manda uma mensagem privada para um Jogador específico — só ele recebe. */
@@ -442,6 +461,7 @@ class SessionServer(
                 text = text,
                 fromDm = true
             )
+            notifySnapshotChanged()
             participantName
         } ?: return
         sendTo(participantId, SessionMessage.PrivateMessage(text))
@@ -470,6 +490,7 @@ class SessionServer(
         )
         synchronized(stateLock) {
             _pendingRequests.value = _pendingRequests.value + request
+            notifySnapshotChanged()
         }
     }
 
@@ -566,12 +587,14 @@ class SessionServer(
                 }
             }
         }
+        notifySnapshotChanged()
     }
 
     /** Nega um pedido pendente: nada é aplicado, só avisa quem pediu (com motivo opcional). */
     fun denyRequest(requestId: String, reason: String = "") = synchronized(stateLock) {
         val request = _pendingRequests.value.firstOrNull { it.id == requestId } ?: return@synchronized
         resolveRequest(request, approved = false, reason = reason)
+        notifySnapshotChanged()
     }
 
     private fun resolveRequest(request: ActionRequest, approved: Boolean, reason: String = "") {
