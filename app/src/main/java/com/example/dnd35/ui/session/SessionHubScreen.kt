@@ -563,7 +563,7 @@ private fun CombatTracker(
         Spacer(modifier = Modifier.height(4.dp))
         if (combat.combatants.isNotEmpty() && combat.currentCombatantId == null) {
             Text(
-                "Não há combatentes com PV positivos. Cure ou encerre o combate para continuar.",
+                "Todos os combatentes estão mortos (−10 PV ou menos). Encerre o combate para continuar.",
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.error
             )
