@@ -94,6 +94,7 @@ private sealed interface HostedSessionPersistenceCommand {
     data class Save(val snapshot: HostedSessionSnapshot) : HostedSessionPersistenceCommand
     data class SaveAndWait(val snapshot: HostedSessionSnapshot, val completion: CompletableDeferred<Unit>) : HostedSessionPersistenceCommand
     data class End(val sessionId: String) : HostedSessionPersistenceCommand
+    data class Flush(val completion: CompletableDeferred<Unit>) : HostedSessionPersistenceCommand
 }
 
 /**
@@ -127,6 +128,9 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
                         }
                         is HostedSessionPersistenceCommand.End -> {
                             hostedSessionDao.markManuallyEnded(command.sessionId)
+                        }
+                        is HostedSessionPersistenceCommand.Flush -> {
+                            command.completion.complete(Unit)
                         }
                     }
                 } catch (error: Exception) {
@@ -167,6 +171,12 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
     // Mensagens privadas recebidas do Mestre — evento, não estado contínuo.
     private val _playerPrivateMessages = MutableSharedFlow<String>(extraBufferCapacity = 8)
     val playerPrivateMessages: SharedFlow<String> = _playerPrivateMessages
+
+    private suspend fun flushPersistenceQueue() {
+        val completion = CompletableDeferred<Unit>()
+        persistenceCommands.send(HostedSessionPersistenceCommand.Flush(completion))
+        completion.await()
+    }
 
     private suspend fun persistSnapshotAndWait(snapshot: HostedSessionSnapshot) {
         val completion = CompletableDeferred<Unit>()
@@ -543,6 +553,11 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
             }.onFailure { error ->
                 CrashLogStore.record("MULTIPLAYER_PERSISTENCE", "Falha no checkpoint final ao encerrar o ViewModel", error)
             }
+        }
+        runCatching {
+            kotlinx.coroutines.runBlocking(Dispatchers.IO) { flushPersistenceQueue() }
+        }.onFailure { error ->
+            CrashLogStore.record("MULTIPLAYER_PERSISTENCE", "Falha ao concluir a fila de persistência", error)
         }
         super.onCleared()
         stopHosting(manual = false)
