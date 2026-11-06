@@ -24,7 +24,7 @@ sealed class SessionMessage {
      * de participante (em vez de criar um novo, duplicado). `null` = entrada nova (primeira vez
      * nesta sessão, token desconhecido, ou sessão foi reiniciada).
      */
-    data class Hello(val displayName: String, val rejoinToken: String? = null) : SessionMessage()
+    data class Hello(val displayName: String, val rejoinToken: String? = null, val characterId: Long? = null) : SessionMessage()
 
     /**
      * Mestre -> Jogador: confirma a entrada e informa o id atribuído a esse participante.
@@ -117,6 +117,7 @@ sealed class SessionMessage {
             is Hello -> obj.put("type", TYPE_HELLO)
                 .put("displayName", displayName)
                 .put("rejoinToken", rejoinToken ?: JSONObject.NULL)
+                .put("characterId", characterId ?: JSONObject.NULL)
             is Welcome -> obj.put("type", TYPE_WELCOME)
                 .put("participantId", participantId)
                 .put("sessionId", sessionId)
@@ -199,7 +200,8 @@ sealed class SessionMessage {
                 when (obj.getString("type")) {
                     TYPE_HELLO -> Hello(
                         obj.getString("displayName"),
-                        if (obj.isNull("rejoinToken")) null else obj.getString("rejoinToken")
+                        if (obj.isNull("rejoinToken")) null else obj.getString("rejoinToken"),
+                        if (obj.isNull("characterId")) null else obj.getLong("characterId")
                     )
                     TYPE_WELCOME -> Welcome(
                         obj.getString("participantId"),
