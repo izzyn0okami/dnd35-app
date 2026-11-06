@@ -213,3 +213,10 @@
 - A causa foi uma expectativa incorreta no teste, não uma falha demonstrada na serialização: o servidor normaliza o saldo para a denominação canônica de platina. O teste esperava 900 em `goldGp`, mas o fluxo de moeda representa 1.000 PO como 100 PP e, após uma compra de 100 PO, o saldo esperado é 90 PP e 0 PO.
 - Corrigidas as asserções para verificar `goldGp = 0`, `platinumPp = 90` e o mesmo saldo na concessão recebida pelo jogador.
 - A correção ainda depende de nova CI; não declarar o teste aprovado até a execução mais recente do head confirmar `testDebugUnitTest` e `assembleDebug`.
+
+
+### Achado adicional na revisão da PR #322 — snapshot reenviado na reconexão
+- A proteção de `CHARACTER_UPDATE` ainda podia ser contornada: ao reconectar, o cliente reenvia `SessionMessage.CharacterSheet` logo após o WELCOME. O servidor aceitava essa mensagem e sobrescrevia `receivedCharacters` sem aprovação.
+- Corrigido no servidor: `CharacterSheet` só inicializa a ficha quando o participante está entrando pela primeira vez e ainda não possui snapshot recebido. Quando o token de reconexão identifica um participante existente, a ficha já mantida pelo Mestre é preservada; mudanças posteriores continuam usando o pedido `CHARACTER_UPDATE`.
+- Adicionado teste de integração com socket TCP real: o participante entra com PV 30, cai, reconecta com o mesmo token e envia um snapshot adulterado com PV 5; o teste confirma que o Mestre mantém PV 30.
+- Esta proteção também impede que a reconexão restaure moedas ou inventário a partir de um snapshot local antigo. CI do novo head ainda pendente.
