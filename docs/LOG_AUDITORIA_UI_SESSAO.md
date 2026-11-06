@@ -395,3 +395,15 @@
 
 - A terceira CI voltou a expirar no teste, indicando que a espera por estado do cliente ainda deixava o teste acoplado ao comportamento assíncrono de envio/recepção do `SessionClient`. Para isolar o alvo da auditoria, o teste foi simplificado para seis sockets TCP reais e independentes: cada um faz HELLO/WELCOME, o teste aguarda o roster completo e então seis workers enviam 40 frames privados cada. A validação aguarda o histórico do servidor atingir pelo menos 240 entradas e confere quantidade e unicidade.
 - A quarta CI deverá validar esse teste de integração isolado. Até lá, não há autorização técnica para merge.
+
+
+### Validação final e merge da PR #323 (2026-11-06)
+- Head validado: `dee7039ee94e4490e17b24b8bfdaad05e68d17a7`.
+- Android build nº 1942, run ID `42236392921`: sucesso. `testDebugUnitTest`, `assembleDebug`, upload dos esquemas Room e upload do APK debug concluídos.
+- Revisão final do diff confirmou a sincronização das duas rotas que escrevem em `_privateChatLog`, a verificação de geração antes de emitir os eventos assíncronos no cliente e o teste TCP com seis conexões/240 mensagens distintas.
+- A PR não tinha reviews, threads nem comentários pendentes; a branch estava atualizada em relação a `main` e o GitHub informou `mergeable=true`.
+- A PR #323 foi marcada pronta para revisão e mesclada por squash após autorização prévia do usuário para mesclar quando possível.
+- Commit de merge: `75ac4bd87b1b9f114e073534a1a0017b818b7235`.
+- As três primeiras execuções do teste concorrente expiraram; a quarta, no head final, passou. O histórico de tentativas permanece registrado acima para evitar repetição do diagnóstico.
+- A correção de concorrência do chat e o descarte de eventos de conexões obsoletas estão integrados em `main`.
+- A persistência durável do outbox, pedidos, estoque e grants continua não implementada. A próxima etapa da auditoria deve primeiro mapear o ciclo de vida e os dados que precisam sobreviver a encerramento inesperado do processo do Mestre; qualquer implementação de persistência deve ser tratada como escopo próprio.
