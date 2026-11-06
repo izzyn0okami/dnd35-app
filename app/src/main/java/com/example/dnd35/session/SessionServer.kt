@@ -238,10 +238,13 @@ class SessionServer(
                     runCatching { newHandle.socket.close() }
                 }
             }
-            enqueue(newHandle, SessionMessage.Welcome(id, sessionId, token))
             val linkedCharacterId = hello.characterId?.takeIf { it > 0L }
                 ?: _roster.value.firstOrNull { it.id == id }?.characterId
-            addParticipant(Participant(id, hello.displayName, ParticipantRole.PLAYER, characterId = linkedCharacterId))
+            addParticipant(Participant(id, hello.displayName, ParticipantRole.PLAYER, characterId = linkedCharacterId)) {
+                // WELCOME só é enviado depois que identidade, token e participante foram
+                // confirmados no Room pelo checkpoint síncrono.
+                enqueue(newHandle, SessionMessage.Welcome(id, sessionId, token))
+            }
             synchronized(stateLock) {
                 // Snapshot inicial e broadcasts de alterações usam o mesmo lock: evita enviar
                 // CombatUpdate/ShopUpdate antigos depois de uma atualização mais recente.
@@ -294,10 +297,11 @@ class SessionServer(
         }
     }
 
-    private fun addParticipant(participant: Participant) = synchronized(stateLock) {
+    private fun addParticipant(participant: Participant, afterPersist: () -> Unit = {}) = synchronized(stateLock) {
         _roster.value = _roster.value.filterNot { it.id == participant.id } + participant
-        broadcastRoster()
         notifySnapshotChanged()
+        afterPersist()
+        broadcastRoster()
     }
 
     /**
@@ -312,8 +316,8 @@ class SessionServer(
         // Keep pending requests while the participant is offline. They remain visible to the
         // DM and can be resolved after reconnection; resource requests must not be approved
         // while their recipient cannot receive the resulting grant.
-        broadcastRoster()
         notifySnapshotChanged()
+        broadcastRoster()
     }
 
     /** Guarda a ficha mandada por um jogador; entradas inválidas são ignoradas silenciosamente. */
@@ -361,8 +365,8 @@ class SessionServer(
     fun startCombat(combatants: List<Combatant>) = synchronized(stateLock) {
         val state = CombatState.start(combatants)
         _combatState.value = state
-        broadcast(SessionMessage.CombatUpdate(state))
         notifySnapshotChanged()
+        broadcast(SessionMessage.CombatUpdate(state))
     }
 
     /** Aplica dano (positivo) ou cura (negativo) a um combatente e sincroniza com todos. */
@@ -391,8 +395,8 @@ class SessionServer(
                 )
             }
         }
-        broadcast(SessionMessage.CombatUpdate(updated))
         notifySnapshotChanged()
+        broadcast(SessionMessage.CombatUpdate(updated))
     }
 
     /** Avança para o próximo combatente com PV positivos e sincroniza a nova ordem/rodada. */
@@ -404,8 +408,8 @@ class SessionServer(
     fun endCombat() = synchronized(stateLock) {
         if (_combatState.value == null) return@synchronized
         _combatState.value = null
-        broadcast(SessionMessage.EndCombat)
         notifySnapshotChanged()
+        broadcast(SessionMessage.EndCombat)
     }
 
     private inline fun updateCombat(transform: (CombatState) -> CombatState) = synchronized(stateLock) {
@@ -421,8 +425,8 @@ class SessionServer(
     /** Adiciona um item ao baú compartilhado e sincroniza com todos. */
     fun addLootItem(item: CharacterInventoryItem) = synchronized(stateLock) {
         _lootChest.value = _lootChest.value + item
-        broadcastLootChest()
         notifySnapshotChanged()
+        broadcastLootChest()
     }
 
     /** Remove um item do baú diretamente (não confundir com um pedido de jogador aprovado). */
@@ -446,16 +450,16 @@ class SessionServer(
     fun openShop(npcCharacterId: Long, npcName: String, items: List<CharacterInventoryItem>) = synchronized(stateLock) {
         val state = ShopState(npcCharacterId, npcName, items)
         _shop.value = state
-        broadcastShop()
         notifySnapshotChanged()
+        broadcastShop()
     }
 
     /** Fecha a loja aberta (se houver) e avisa a todos. */
     fun closeShop() = synchronized(stateLock) {
         if (_shop.value == null) return@synchronized
         _shop.value = null
-        broadcast(SessionMessage.ShopClosed)
         notifySnapshotChanged()
+        broadcast(SessionMessage.ShopClosed)
     }
 
     private fun broadcastShop() {
