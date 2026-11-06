@@ -256,6 +256,65 @@ class SessionServerClientTest {
     }
 
     @Test
+    fun `PV do combate atualizam a ficha aprovada no servidor e preservam PV temporarios`() = runBlocking {
+        val server = SessionServer(sessionId = "sess-combat-sheet", hostDisplayName = "Mestre")
+        val port = server.start()
+        val character = CharacterEntity(
+            name = "Gimli",
+            currentHp = 20,
+            maxHp = 30,
+            tempHp = 4
+        )
+        val client = SessionClient()
+        try {
+            client.connect(
+                "127.0.0.1",
+                port,
+                "Gimli",
+                CharacterBackup.toJson(listOf(character)) { null }
+            )
+            val connected = withTimeout(15_000) {
+                client.state.first { it is SessionClientState.Connected } as SessionClientState.Connected
+            }
+            withTimeout(15_000) {
+                server.receivedCharacters.first { it.containsKey(connected.selfId) }
+            }
+
+            server.startCombat(
+                listOf(
+                    Combatant(
+                        id = connected.selfId,
+                        displayName = "Gimli",
+                        isNpc = false,
+                        initiative = 12,
+                        currentHp = 20,
+                        maxHp = 30,
+                        tempHp = 4
+                    )
+                )
+            )
+            server.applyDamage(connected.selfId, 10)
+            val afterDamage = withTimeout(15_000) {
+                server.receivedCharacters.first {
+                    it[connected.selfId]?.currentHp == 14 && it[connected.selfId]?.tempHp == 0
+                }
+            }
+            assertEquals(14, afterDamage.getValue(connected.selfId).currentHp)
+            assertEquals(0, afterDamage.getValue(connected.selfId).tempHp)
+
+            server.applyDamage(connected.selfId, -5)
+            val afterHealing = withTimeout(15_000) {
+                server.receivedCharacters.first { it[connected.selfId]?.currentHp == 19 }
+            }
+            assertEquals(19, afterHealing.getValue(connected.selfId).currentHp)
+            assertEquals(30, afterHealing.getValue(connected.selfId).maxHp)
+        } finally {
+            client.disconnect()
+            server.stop()
+        }
+    }
+
+    @Test
     fun `applyDamage, nextTurn e endCombat sincronizam com o jogador`() = runBlocking {
         val server = SessionServer(sessionId = "sess-6", hostDisplayName = "Mestre")
         val port = server.start()
