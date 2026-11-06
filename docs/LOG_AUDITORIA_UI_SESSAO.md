@@ -261,3 +261,15 @@
 - Revisão estática encontrou uma corrida possível entre `acknowledgeGrant()` e `registerPendingGrant()`: a remoção do último grant podia observar o mapa vazio e removê-lo do outbox enquanto uma nova concessão era inserida no mesmo mapa.
 - `acknowledgeGrant()` agora usa o mesmo `requestLock` que serializa aprovação/registro de grants. Assim, ACK e criação de uma nova concessão não removem acidentalmente o mapa que contém a nova entrega.
 - A correção foi aplicada na branch existente da PR #322. A nova CI precisa validar o SHA final antes de qualquer merge.
+
+
+
+### Validação final da CI #1871 — PR #322 (2026-11-06)
+- Commit de código validado: `eb9da3e9f209a9b643967ad00f2355778a3c1834`.
+- Workflow Android build nº 1871, run ID `42151823349`: sucesso. `testDebugUnitTest`, `assembleDebug`, upload dos esquemas Room e upload do APK debug concluídos com sucesso.
+- A execução corresponde exatamente ao head consultado da PR #322; não foi usada uma execução anterior para declarar sucesso.
+- A comparação com `main` confirmou 29 commits à frente e nenhum commit atrasado (`behind_by = 0`). A PR #322 permanece como única PR aberta.
+- A revisão estática confirmou que snapshots de ficha só são aplicados no caminho de aprovação de `CHARACTER_UPDATE`; snapshots anexados a pedidos de loot/compra não alteram o estado aprovado; reconexão não substitui a ficha mantida pelo Mestre; aprovação/negação e ACK/registro de grants são serializados pelo mesmo lock.
+- Testes automatizados cobrem snapshot inválido, atualização aprovada/negada, tentativas concorrentes de compra e replay/ACK de grant por sockets TCP reais.
+- A PR permanece em rascunho e não foi mesclada. A CI verde não substitui teste manual integrado em dois aparelhos.
+- Limitações mantidas: outbox e estado da sessão são voláteis e se perdem quando o processo do Mestre é encerrado/reiniciado; teste real com dois aparelhos continua pendente.
