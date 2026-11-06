@@ -501,3 +501,5 @@
 - Teste de migração adicionado com banco Room v9 criado de verdade por uma definição legada contendo `CharacterEntity`: insere uma ficha com PV, nível, moedas e inventário, abre a versão 10 usando `MIGRATION_9_10` e verifica a preservação dos dados e a disponibilidade da nova tabela. A execução ainda depende da CI.
 
 - Encerramento manual agora aguarda a confirmação do comando `EndAndWait` na mesma fila serial, depois de checkpoints anteriores. Assim, o método não retorna ao fluxo da UI antes de gravar `ENDED`; falha de gravação é registrada e exibida como erro.
+
+- O encerramento do ViewModel agora captura o snapshot final e fecha o servidor/sockets sob o mesmo `stateLock`; só depois aguarda o commit final e drena a fila. Isso evita uma mutação concorrente entre o checkpoint final e o fechamento do host.
