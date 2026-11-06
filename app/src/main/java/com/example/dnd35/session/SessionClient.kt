@@ -50,6 +50,7 @@ class SessionClient {
     private var lastPort: Int = 0
     private var lastDisplayName: String = ""
     private var lastCharacterJson: String? = null
+    private var lastCharacterId: Long? = null
 
     // Token recebido no último WELCOME (ver SessionMessage.Hello/Welcome) — mandado de volta ao
     // reconectar para o Mestre reconhecer que é o mesmo participante, não um novo.
@@ -82,13 +83,14 @@ class SessionClient {
      * mandada ao Mestre logo após a entrada ser confirmada. `null` entra na sessão sem vincular
      * nenhuma ficha (por exemplo, um observador).
      */
-    fun connect(host: String, port: Int, displayName: String, characterJson: String? = null) {
+    fun connect(host: String, port: Int, displayName: String, characterJson: String? = null, characterId: Long? = null) {
         lastHost = host
         lastPort = port
         lastDisplayName = displayName
         lastCharacterJson = characterJson
+        lastCharacterId = characterId?.takeIf { it > 0L }
         rejoinToken = null // entrada nova: nunca reconecta como um participante de uma sessão anterior.
-        connectInternal(host, port, displayName, characterJson, rejoinToken = null)
+        connectInternal(host, port, displayName, characterJson, lastCharacterId, rejoinToken = null)
     }
 
     /**
@@ -98,11 +100,11 @@ class SessionClient {
      */
     fun reconnect(): Boolean {
         val host = lastHost ?: return false
-        connectInternal(host, lastPort, lastDisplayName, lastCharacterJson, rejoinToken)
+        connectInternal(host, lastPort, lastDisplayName, lastCharacterJson, lastCharacterId, rejoinToken)
         return true
     }
 
-    private fun connectInternal(host: String, port: Int, displayName: String, characterJson: String?, rejoinToken: String?) {
+    private fun connectInternal(host: String, port: Int, displayName: String, characterJson: String?, characterId: Long?, rejoinToken: String?) {
         _state.value = SessionClientState.Connecting
         // Fecha uma conexão anterior ainda viva, se houver — evita duas leituras concorrentes
         // (o laço antigo e o novo) brigando pelas mesmas variáveis de instância caso reconnect()
@@ -118,7 +120,7 @@ class SessionClient {
                 val out = DataOutputStream(sock.getOutputStream())
                 output = out
 
-                SessionWire.write(out, SessionMessage.Hello(displayName, rejoinToken))
+                SessionWire.write(out, SessionMessage.Hello(displayName, rejoinToken, characterId))
 
                 val welcome = SessionWire.read(input) as? SessionMessage.Welcome
                 if (welcome == null) {
