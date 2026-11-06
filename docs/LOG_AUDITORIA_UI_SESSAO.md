@@ -222,3 +222,13 @@
 - Esta proteção também impede que a reconexão restaure moedas ou inventário a partir de um snapshot local antigo. CI do novo head ainda pendente.
 
 - Após tornar `CharacterSheet` uma mensagem exclusivamente inicial, foi removido do helper o parâmetro antigo de preservação condicional de moedas: snapshots iniciais e snapshots aprovados passam por um único caminho explícito. O servidor não usa mais esse helper para aceitar atualizações espontâneas em reconexões.
+
+
+### Validação da CI #1854 — PR #322 (2026-11-06)
+- Commit funcional validado: `0f220566ff917d0a289d7aebe3cc086b2ec49431`.
+- Workflow Android build nº 1854, run ID `42148579103`: sucesso. `testDebugUnitTest`, `assembleDebug`, upload dos esquemas Room e upload do APK debug concluídos.
+- O run corresponde exatamente ao head SHA consultado da PR; não foi usada uma execução de commit anterior para declarar sucesso.
+- A comparação com `main` confirmou base atual `8235c1f4987ce1f066eb23167f1fcda1e339ce81`, sem commits de atraso (`behind_by = 0`). A PR #322 permanece como única PR aberta no repositório.
+- A revisão da branch não encontrou comentários nem threads de revisão pendentes.
+- A CI valida testes automatizados e compilação, mas não substitui teste integrado em dois aparelhos. Continuam pendentes os cenários reais de aprovação/negação de atualização de ficha, reconexão, compra/loot e ACK de concessões sem duplicação. Não declarar a auditoria multiplayer integralmente concluída até esses testes.
+- A PR permanece em rascunho e não foi mesclada.
