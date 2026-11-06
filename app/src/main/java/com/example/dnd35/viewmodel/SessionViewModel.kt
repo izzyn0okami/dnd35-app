@@ -109,7 +109,7 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
 
     // Item concedido ao pegar algo do baú de loot (pedido aprovado) — a UI usa isso para colocar
     // o item no inventário local da ficha ativa (SessionViewModel não mexe em fichas direto).
-    private val _lootGranted = MutableSharedFlow<CharacterInventoryItem>(extraBufferCapacity = 4)
+    private val _lootGranted = MutableSharedFlow<com.example.dnd35.session.SessionItemGrant>(extraBufferCapacity = 4)
     val lootGranted: SharedFlow<CharacterInventoryItem> = _lootGranted
 
     // Item concedido ao comprar algo da loja de NPC (pedido aprovado) — mesmo motivo do loot.
@@ -315,16 +315,16 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
             }
         }
         launch {
-            activeClient.lootGranted.collect { item ->
+            activeClient.lootGranted.collect { grant ->
                 if (client === activeClient) {
-                    _lootGranted.tryEmit(item)
+                    _lootGranted.tryEmit(grant)
                 }
             }
         }
         launch {
-            activeClient.shopPurchases.collect { item ->
+            activeClient.shopPurchases.collect { grant ->
                 if (client === activeClient) {
-                    _shopPurchaseGranted.tryEmit(item)
+                    _shopPurchaseGranted.tryEmit(grant)
                 }
             }
         }
