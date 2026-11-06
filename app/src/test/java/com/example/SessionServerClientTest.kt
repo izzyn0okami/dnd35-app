@@ -26,6 +26,7 @@ import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
 import java.io.DataInputStream
 import java.io.DataOutputStream
+import java.net.Socket
 import java.util.concurrent.Executors
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
@@ -519,6 +520,70 @@ class SessionServerClientTest {
                 client.disconnect()
             }
         } finally {
+            server.stop()
+        }
+    }
+
+    @Test
+    fun `snapshot enviado na reconexao nao sobrescreve ficha ja recebida pelo Mestre`() = runBlocking {
+        val server = SessionServer(sessionId = "sess-reconnect-sheet-authority", hostDisplayName = "Mestre")
+        val port = server.start()
+        var firstSocket: Socket? = null
+        var reconnectSocket: Socket? = null
+        try {
+            val original = CharacterEntity(
+                id = 1801L,
+                name = "Legolas",
+                characterClass = "Patrulheiro",
+                level = 5,
+                currentHp = 30,
+                maxHp = 40
+            )
+            val originalJson = CharacterBackup.toJson(listOf(original)) { null }
+            val alteredJson = CharacterBackup.toJson(listOf(original.copy(currentHp = 5))) { null }
+
+            firstSocket = Socket("127.0.0.1", port)
+            val firstInput = DataInputStream(firstSocket.getInputStream())
+            val firstOutput = DataOutputStream(firstSocket.getOutputStream())
+            SessionWire.write(firstOutput, SessionMessage.Hello("Legolas", characterId = original.id))
+            val firstWelcome = withContext(Dispatchers.IO) {
+                withTimeout(15_000) { SessionWire.read(firstInput) as SessionMessage.Welcome }
+            }
+            SessionWire.write(firstOutput, SessionMessage.CharacterSheet(originalJson))
+            withTimeout(15_000) {
+                server.receivedCharacters.first { it[firstWelcome.participantId]?.currentHp == 30 }
+            }
+            firstSocket.close()
+            withTimeout(15_000) {
+                server.roster.first { roster -> roster.any { it.id == firstWelcome.participantId && !it.connected } }
+            }
+
+            reconnectSocket = Socket("127.0.0.1", port)
+            val reconnectInput = DataInputStream(reconnectSocket.getInputStream())
+            val reconnectOutput = DataOutputStream(reconnectSocket.getOutputStream())
+            SessionWire.write(
+                reconnectOutput,
+                SessionMessage.Hello("Legolas", firstWelcome.rejoinToken, original.id)
+            )
+            val reconnectWelcome = withContext(Dispatchers.IO) {
+                withTimeout(15_000) { SessionWire.read(reconnectInput) as SessionMessage.Welcome }
+            }
+            assertEquals(firstWelcome.participantId, reconnectWelcome.participantId)
+
+            // Simula um cliente alterado/adulterado: a reconexão repete CharacterSheet com PV
+            // diferentes. A mensagem privada seguinte confirma que o servidor já leu o snapshot.
+            SessionWire.write(reconnectOutput, SessionMessage.CharacterSheet(alteredJson))
+            SessionWire.write(reconnectOutput, SessionMessage.PrivateMessage("reconnect-snapshot-sent"))
+            withTimeout(15_000) {
+                server.privateChatLog.first { entries -> entries.any { it.text == "reconnect-snapshot-sent" } }
+            }
+
+            val stored = server.receivedCharacters.value.getValue(firstWelcome.participantId)
+            assertEquals(30, stored.currentHp)
+            assertEquals(2, server.roster.value.size)
+        } finally {
+            runCatching { firstSocket?.close() }
+            runCatching { reconnectSocket?.close() }
             server.stop()
         }
     }
