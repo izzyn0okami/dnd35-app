@@ -708,8 +708,7 @@ class SessionServerClientTest {
             withTimeout(15_000) {
                 originalServer.roster.first { roster -> roster.any { it.id == firstConnection.selfId && it.connected } }
             }
-            val snapshot = originalServer.createSnapshot()
-            originalServer.stop()
+            val snapshot = originalServer.stopAndCreateSnapshot()
 
             val recovered = SessionServer(snapshot.sessionId, snapshot.hostDisplayName)
             restoredServer = recovered
