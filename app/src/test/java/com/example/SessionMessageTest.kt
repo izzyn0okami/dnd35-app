@@ -96,13 +96,14 @@ class SessionMessageTest {
     }
 
     @Test
-    fun `nextTurn ignora combatentes com zero PV ou PV negativos e avanca a rodada ao voltar`() {
+    fun `nextTurn ignora somente combatentes mortos e inclui PV zero e negativos acima de -10`() {
         val state = CombatState.start(
             listOf(
-                Combatant("a", "A", false, 20, 0, 20),
-                Combatant("b", "B", false, 15, 12, 12),
-                Combatant("c", "C", false, 10, -2, 10),
-                Combatant("d", "D", false, 5, 8, 8)
+                Combatant("a", "A", false, 20, -10, 20),
+                Combatant("b", "B", false, 15, 0, 12),
+                Combatant("c", "C", false, 10, -1, 10),
+                Combatant("d", "D", false, 5, -9, 8),
+                Combatant("e", "E", false, 1, -11, 8)
             )
         )
 
@@ -111,10 +112,14 @@ class SessionMessageTest {
         assertEquals(1, afterFirst.round)
 
         val afterSecond = afterFirst.nextTurn()
-        assertEquals("d", afterSecond.currentCombatantId)
+        assertEquals("c", afterSecond.currentCombatantId)
         assertEquals(1, afterSecond.round)
 
-        val afterWrap = afterSecond.nextTurn()
+        val afterThird = afterSecond.nextTurn()
+        assertEquals("d", afterThird.currentCombatantId)
+        assertEquals(1, afterThird.round)
+
+        val afterWrap = afterThird.nextTurn()
         assertEquals("b", afterWrap.currentCombatantId)
         assertEquals(2, afterWrap.round)
     }
@@ -123,8 +128,8 @@ class SessionMessageTest {
     fun `nextTurn sem combatentes vivos deixa turno sem alvo e nao incrementa rodada`() {
         val state = CombatState.start(
             listOf(
-                Combatant("a", "A", false, 20, 0, 20),
-                Combatant("b", "B", false, 10, -1, 10)
+                Combatant("a", "A", false, 20, -10, 20),
+                Combatant("b", "B", false, 10, -11, 10)
             )
         )
 
@@ -138,8 +143,8 @@ class SessionMessageTest {
     fun `nextTurn com um unico combatente vivo avanca para a proxima rodada`() {
         val state = CombatState.start(
             listOf(
-                Combatant("a", "A", false, 20, 0, 20),
-                Combatant("b", "B", false, 10, 5, 10)
+                Combatant("a", "A", false, 20, -10, 20),
+                Combatant("b", "B", false, 10, 0, 10)
             )
         )
 
