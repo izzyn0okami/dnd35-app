@@ -41,6 +41,7 @@ class SessionServer(
     // Serialize compound session mutations: pending requests/grants and combat state.
     // In particular, combat state changes and their broadcasts must share one critical section.
     private val stateLock = Any()
+    private var snapshotBatchDepth = 0
 
     // Token de reconexão (ver SessionMessage.Hello/Welcome) -> id de participante. Permite que um
     // Jogador cuja conexão caiu (Wi-Fi instável, app em segundo plano) volte como o MESMO
@@ -157,6 +158,7 @@ class SessionServer(
     }
 
     private fun notifySnapshotChanged() {
+        if (snapshotBatchDepth > 0) return
         val callback = onSnapshotChanged ?: return
         callback(createSnapshot())
     }
@@ -509,7 +511,9 @@ class SessionServer(
         val request = _pendingRequests.value.firstOrNull { it.id == requestId } ?: return@synchronized
         val requester = _roster.value.firstOrNull { it.id == request.requesterId }
         if (requester?.connected != true) return@synchronized
-        when (request.kind) {
+        snapshotBatchDepth++
+        try {
+            when (request.kind) {
             RequestKind.CHARACTER_UPDATE -> {
                 val applied = request.characterJson?.let {
                     receiveCharacterSheet(request.requesterId, it)
@@ -614,6 +618,9 @@ class SessionServer(
                     }
                 }
             }
+            }
+        } finally {
+            snapshotBatchDepth--
         }
         notifySnapshotChanged()
     }
