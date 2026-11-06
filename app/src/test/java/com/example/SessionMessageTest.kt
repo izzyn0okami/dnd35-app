@@ -49,7 +49,7 @@ class SessionMessageTest {
     }
 
     @Test
-    fun `Roster preserva a lista de participantes, incluindo characterId nulo e connected`() {
+    fun `Roster nao expoe IDs locais de ficha e preserva estado de conexao`() {
         val participants = listOf(
             Participant("dm", "Mestre", ParticipantRole.DM),
             Participant("p1", "Legolas", ParticipantRole.PLAYER, characterId = 42L),
@@ -57,7 +57,7 @@ class SessionMessageTest {
         )
         val msg = SessionMessage.Roster(participants)
         val roundTrip = SessionMessage.fromJson(msg.toJson()) as SessionMessage.Roster
-        assertEquals(participants, roundTrip.participants)
+        assertNull(roundTrip.participants.single { it.id == "p1" }.characterId)
         assertEquals(false, roundTrip.participants.single { it.id == "p2" }.connected)
     }
 
