@@ -205,9 +205,24 @@ class SessionServer(
     }
 
     /** Guarda a ficha mandada por um jogador; entradas inválidas são ignoradas silenciosamente. */
-    private fun receiveCharacterSheet(participantId: String, characterJson: String) {
+    private fun receiveCharacterSheet(
+        participantId: String,
+        characterJson: String,
+        preserveAuthoritativeCurrency: Boolean = false
+    ) {
         val parsed = CharacterBackup.parse(characterJson) as? CharacterBackup.ParseResult.Success ?: return
-        val entity = parsed.characters.firstOrNull()?.entity ?: return
+        val incoming = parsed.characters.firstOrNull()?.entity ?: return
+        val current = _receivedCharacters.value[participantId]
+        val entity = if (preserveAuthoritativeCurrency && current != null) {
+            // A pending purchase may already have debited the server purse while the client
+            // still holds an older snapshot. Resource requests must never restore that balance.
+            incoming.copy(
+                goldGp = current.goldGp,
+                silverSp = current.silverSp,
+                copperCp = current.copperCp,
+                platinumPp = current.platinumPp
+            )
+        } else incoming
         _receivedCharacters.value = _receivedCharacters.value + (participantId to entity)
     }
 
@@ -336,7 +351,13 @@ class SessionServer(
     private fun receiveActionRequest(participantId: String, msg: SessionMessage.ActionRequested) {
         // Reconcile the latest client-side sheet before a resource transaction is evaluated.
         // The participant's local database ID remains a separate, session-scoped link.
-        msg.characterJson?.let { receiveCharacterSheet(participantId, it) }
+        msg.characterJson?.let {
+            receiveCharacterSheet(
+                participantId,
+                it,
+                preserveAuthoritativeCurrency = msg.kind == RequestKind.TAKE_LOOT || msg.kind == RequestKind.BUY_FROM_SHOP
+            )
+        }
         val requesterName = _roster.value.firstOrNull { it.id == participantId }?.displayName ?: "Jogador"
         val request = ActionRequest(
             id = UUID.randomUUID().toString(),
