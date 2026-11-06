@@ -1381,6 +1381,39 @@ class SessionServerClientTest {
     }
 
     @Test
+    fun `mensagens privadas simultaneas nao perdem entradas no log do mestre`() = runBlocking {
+        val server = SessionServer(sessionId = "sess-private-chat-concurrency", hostDisplayName = "Mestre")
+        val port = server.start()
+        val clients = List(6) { SessionClient() }
+        val messagesPerClient = 40
+        val expectedMessages = clients.size * messagesPerClient
+        try {
+            clients.forEachIndexed { index, client ->
+                client.connect("127.0.0.1", port, "Jogador $index")
+            }
+            clients.forEach { client ->
+                withTimeout(15_000) {
+                    client.state.first { it is SessionClientState.Connected }
+                }
+            }
+
+            clients.forEachIndexed { clientIndex, client ->
+                repeat(messagesPerClient) { messageIndex ->
+                    client.sendPrivateMessage("mensagem-$clientIndex-$messageIndex")
+                }
+            }
+
+            val entries = withTimeout(15_000) {
+                server.privateChatLog.first { it.size == expectedMessages }
+            }
+            assertEquals(expectedMessages, entries.map { it.text }.toSet().size)
+        } finally {
+            clients.forEach { it.disconnect() }
+            server.stop()
+        }
+    }
+
+    @Test
     fun `conectar em porta sem servidor resulta em Disconnected, nao em excecao`() = runBlocking {
         val client = SessionClient()
         // Porta 1 é privilegiada/sem listener nos ambientes de teste: a conexão deve falhar
