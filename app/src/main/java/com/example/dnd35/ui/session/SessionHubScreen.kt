@@ -1075,6 +1075,7 @@ private fun PlayerJoinContent(viewModel: SessionViewModel, characterViewModel: C
     var manualHost by remember { mutableStateOf("") }
     var manualPort by remember { mutableStateOf("") }
     var selectedCharacter by remember(activeCharacter) { mutableStateOf(activeCharacter) }
+    val linkedCharacter = myCharacters.firstOrNull { it.id == selectedCharacter?.id }
     var joinFeedback by remember { mutableStateOf<String?>(null) }
 
     val scanLauncher = rememberLauncherForActivityResult(ScanContract()) { result ->
@@ -1085,7 +1086,7 @@ private fun PlayerJoinContent(viewModel: SessionViewModel, characterViewModel: C
                 joinFeedback = "QR Code inválido ou incompatível. Solicite ao Mestre um novo código."
             } else {
                 joinFeedback = null
-                viewModel.joinSession(payload, displayName, selectedCharacter)
+                viewModel.joinSession(payload, displayName, linkedCharacter)
             }
         }
     }
@@ -1179,7 +1180,7 @@ private fun PlayerJoinContent(viewModel: SessionViewModel, characterViewModel: C
             Button(
                 onClick = {
                     if (validManualHost && validManualPort) {
-                        viewModel.joinSession(manualHost.trim(), manualPortValue!!, displayName, selectedCharacter)
+                        viewModel.joinSession(manualHost.trim(), manualPortValue!!, displayName, linkedCharacter)
                     }
                 },
                 enabled = validManualHost && validManualPort
