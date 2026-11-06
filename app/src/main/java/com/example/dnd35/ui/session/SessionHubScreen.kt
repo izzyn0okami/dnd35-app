@@ -239,6 +239,7 @@ private fun ModeSelectContent(
 private fun DmHostContent(viewModel: SessionViewModel, characterViewModel: CharacterViewModel, selectedArea: SessionAreaTab, onSelectArea: (SessionAreaTab) -> Unit) {
     val state by viewModel.dmState.collectAsStateWithLifecycle()
     var hostName by remember { mutableStateOf("Mestre") }
+    var showEndConfirmation by remember { mutableStateOf(false) }
 
     when (val s = state) {
         is DmSessionUiState.Idle -> {
@@ -276,7 +277,7 @@ private fun DmHostContent(viewModel: SessionViewModel, characterViewModel: Chara
                     DmPrivateChatSection(players = s.participants.filter { it.role == ParticipantRole.PLAYER && it.connected }, chatLog = s.privateChatLog,
                         onSend = { participantId, text -> viewModel.sendPrivateMessageToPlayer(participantId, text) })
                     Spacer(modifier = Modifier.height(16.dp))
-                    OutlinedButton(onClick = { viewModel.stopHosting() }) { Text("Encerrar sessão", color = DndCrimson) }
+                    OutlinedButton(onClick = { showEndConfirmation = true }) { Text("Encerrar sessão", color = DndCrimson) }
                     Spacer(modifier = Modifier.height(20.dp))
                     NpcManagementSection(characterViewModel)
                 }
@@ -302,6 +303,25 @@ private fun DmHostContent(viewModel: SessionViewModel, characterViewModel: Chara
             Spacer(modifier = Modifier.height(12.dp))
             Button(onClick = { viewModel.hostSession(hostName) }) { Text("Tentar novamente") }
         }
+    }
+
+    if (showEndConfirmation) {
+        AlertDialog(
+            onDismissRequest = { showEndConfirmation = false },
+            title = { Text("Encerrar sessão?") },
+            text = {
+                Text("Todos os jogadores serão desconectados. A sessão será marcada como encerrada e não poderá ser retomada.")
+            },
+            confirmButton = {
+                TextButton(onClick = {
+                    showEndConfirmation = false
+                    viewModel.stopHosting()
+                }) { Text("Encerrar") }
+            },
+            dismissButton = {
+                TextButton(onClick = { showEndConfirmation = false }) { Text("Cancelar") }
+            }
+        )
     }
 }
 
