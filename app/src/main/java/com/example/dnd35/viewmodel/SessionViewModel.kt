@@ -288,7 +288,7 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
         val newClient = SessionClient()
         client = newClient
         viewModelScope.launchCollectClientState(newClient)
-        newClient.connect(hostAddress, port, name, characterJson)
+        newClient.connect(hostAddress, port, name, characterJson, character?.id)
     }
 
     private fun CoroutineScope.launchCollectClientState(activeClient: SessionClient) {
