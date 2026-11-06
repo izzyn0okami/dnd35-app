@@ -98,6 +98,7 @@ object SessionCurrency {
 
 /** One approved resource delivery, targeted at the local character selected for this session. */
 data class SessionItemGrant(
+    val grantId: String,
     val characterId: Long,
     val item: CharacterInventoryItem,
     val coinPurse: SessionCoinPurse? = null
