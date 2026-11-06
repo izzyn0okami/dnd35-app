@@ -459,6 +459,53 @@ class SessionServerClientTest {
     }
 
     @Test
+    fun `pedido de atualizacao com snapshot invalido e negado sem alterar ficha`() = runBlocking {
+        val server = SessionServer(sessionId = "sess-invalid-character-update", hostDisplayName = "Mestre")
+        val port = server.start()
+        try {
+            val original = CharacterEntity(
+                name = "Legolas",
+                characterClass = "Patrulheiro",
+                level = 5,
+                currentHp = 30,
+                maxHp = 40
+            )
+            val originalJson = CharacterBackup.toJson(listOf(original)) { null }
+            val client = SessionClient()
+            try {
+                client.connect("127.0.0.1", port, "Legolas", originalJson)
+                val connected = withTimeout(15_000) {
+                    client.state.first { it is SessionClientState.Connected } as SessionClientState.Connected
+                }
+                withTimeout(15_000) { server.receivedCharacters.first { it.containsKey(connected.selfId) } }
+
+                client.requestAction(
+                    RequestKind.CHARACTER_UPDATE,
+                    "Atualização inválida da ficha",
+                    characterJson = "{snapshot-invalido"
+                )
+                val request = withTimeout(15_000) {
+                    server.pendingRequests.first { it.any { pending -> pending.kind == RequestKind.CHARACTER_UPDATE } }
+                }.single()
+
+                val resolvedDeferred = async(start = CoroutineStart.UNDISPATCHED) {
+                    withTimeout(15_000) { client.requestResults.first() }
+                }
+                server.approveRequest(request.id)
+                val resolved = resolvedDeferred.await()
+
+                assertEquals(false, resolved.approved)
+                assertEquals("Snapshot de ficha inválido.", resolved.reason)
+                assertEquals(30, server.receivedCharacters.value[connected.selfId]?.currentHp)
+            } finally {
+                client.disconnect()
+            }
+        } finally {
+            server.stop()
+        }
+    }
+
+    @Test
     fun `aprovacao duplicada de compra debita e concede apenas uma vez`() = runBlocking {
         val server = SessionServer(sessionId = "sess-duplicate-approval", hostDisplayName = "Mestre")
         val port = server.start()
