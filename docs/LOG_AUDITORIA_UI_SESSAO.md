@@ -293,3 +293,12 @@
 - Testes acrescentados para dano absorvido por PV temporários, dano abaixo de zero, cura a partir de PV negativos, limite máximo de cura e preservação de todos os campos da ficha fora dos PV atuais/temporários.
 - A sincronização não altera NPCs, fichas não vinculadas nem a UI. A reformulação visual continua planejada para uma etapa posterior.
 - Validação da CI e teste integrado em dois aparelhos ainda pendentes para este novo head. Manter a PR em rascunho e não mesclar até concluir os testes manuais já combinados.
+
+
+### Complemento da sincronização de PV — estado aprovado no servidor e PV temporários (2026-11-06)
+- A revisão do fluxo revelou que sincronizar apenas o banco local do jogador deixaria o snapshot aprovado mantido pelo Mestre desatualizado. Isso poderia fazer um combate posterior começar com PV antigos e manter a ficha do servidor divergente após o fim do encontro.
+- SessionServer.applyDamage agora atualiza, para combatentes jogadores vinculados, somente currentHp e tempHp também em receivedCharacters antes de transmitir a atualização de combate. Assim, o servidor conserva os PV autoritativos para encontros seguintes e validações futuras.
+- O diálogo de início de combate agora carrega tempHp da ficha recebida do jogador ou da ficha NPC do Mestre para Combatant. Isso evita apagar PV temporários existentes quando o combate começa.
+- Teste TCP/cliente-servidor acrescentado: a ficha aprovada começa com 20 PV e 4 PV temporários; 10 de dano resulta em 14 PV e 0 temporários no estado de combate e no snapshot aprovado; 5 de cura eleva para 19 PV sem ultrapassar o máximo.
+- A sincronização local do jogador continua sendo executada no DndMainScreen, inclusive fora da tela de sessão. O snapshot do servidor é atualizado somente pelo comando de dano/cura do Mestre.
+- CI do head atualizado ainda pendente. Não considerar a correção validada até testes unitários e compilação concluírem; teste manual em dois aparelhos continua obrigatório.
