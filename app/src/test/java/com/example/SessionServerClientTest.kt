@@ -478,19 +478,14 @@ class SessionServerClientTest {
                 }
                 withTimeout(15_000) { server.receivedCharacters.first { it.containsKey(connected.selfId) } }
 
-                server.openShop(
-                    ShopState(
-                        name = "Loja",
-                        items = listOf(
-                            InventoryItem(
-                                id = "unique-shop-item",
-                                name = "Poção",
-                                quantity = 1,
-                                costGp = 100f
-                            )
-                        )
-                    )
+                val shopItem = CharacterInventoryItem(
+                    id = "unique-shop-item",
+                    name = "Poção",
+                    category = "Itens de Aventura",
+                    quantity = 1,
+                    costGp = 100f
                 )
+                server.openShop(1L, "Loja", listOf(shopItem))
                 client.requestAction(
                     RequestKind.BUY_FROM_SHOP,
                     "Compra de poção",
@@ -509,11 +504,9 @@ class SessionServerClientTest {
                 val stored = server.receivedCharacters.value.getValue(connected.selfId)
                 assertEquals(900f, stored.goldGp)
                 assertTrue(server.shop.value?.items?.isEmpty() == true)
-                val grant = withTimeout(15_000) {
-                    client.incomingMessages.first { it is SessionMessage.ShopPurchaseGranted }
-                }
+                val grant = withTimeout(15_000) { client.shopPurchases.first() }
                 assertEquals(request.requesterId, connected.selfId)
-                assertTrue(grant is SessionMessage.ShopPurchaseGranted)
+                assertEquals("unique-shop-item", grant.item.name)
             } finally {
                 client.disconnect()
             }
