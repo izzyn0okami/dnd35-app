@@ -318,6 +318,9 @@ class SessionServer(
 
     /** Guarda um pedido de jogador na fila de pendentes, aguardando aprovação do Mestre. */
     private fun receiveActionRequest(participantId: String, msg: SessionMessage.ActionRequested) {
+        // Reconcile the latest client-side sheet before a resource transaction is evaluated.
+        // The participant's local database ID remains a separate, session-scoped link.
+        msg.characterJson?.let { receiveCharacterSheet(participantId, it) }
         val requesterName = _roster.value.firstOrNull { it.id == participantId }?.displayName ?: "Jogador"
         val request = ActionRequest(
             id = UUID.randomUUID().toString(),
