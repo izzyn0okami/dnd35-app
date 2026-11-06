@@ -11,6 +11,7 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.channels.Channel
 import java.io.DataInputStream
 import java.io.DataOutputStream
@@ -29,6 +30,7 @@ import java.util.concurrent.ConcurrentHashMap
 class SessionServer(
     private val sessionId: String,
     private val hostDisplayName: String,
+    private val persistCriticalSnapshot: (suspend (HostedSessionSnapshot) -> Unit)? = null,
     private val onSnapshotChanged: ((HostedSessionSnapshot) -> Unit)? = null
 ) {
     private var serverSocket: ServerSocket? = null
@@ -111,13 +113,13 @@ class SessionServer(
      * Restaura o domínio antes de abrir a porta TCP. Conexões antigas não sobrevivem à morte
      * do processo; jogadores voltam desconectados, mas conservam IDs, fichas, tokens e outbox.
      */
-    fun restoreSnapshot(snapshot: HostedSessionSnapshot) = synchronized(stateLock) {
+    fun restoreSnapshot(snapshot: HostedSessionSnapshot, markPlayersDisconnected: Boolean = true) = synchronized(stateLock) {
         require(snapshot.sessionId == sessionId) { "O snapshot pertence a outra sessão." }
         require(snapshot.hostDisplayName == hostDisplayName) { "O nome do Mestre não corresponde ao snapshot." }
 
         _roster.value = listOf(dmParticipant) + snapshot.roster
             .filterNot { it.role == ParticipantRole.DM }
-            .map { it.copy(connected = false) }
+            .map { it.copy(connected = if (markPlayersDisconnected) false else it.connected) }
         _receivedCharacters.value = snapshot.receivedCharacters.toMap()
         _combatState.value = snapshot.combat
         _pendingRequests.value = snapshot.pendingRequests.toList()
@@ -144,6 +146,11 @@ class SessionServer(
                 if (grants.isNotEmpty()) pendingGrants[participantId] = grants
             }
         }
+    }
+
+    private fun persistCriticalSnapshotLocked() {
+        val persist = persistCriticalSnapshot ?: return
+        runBlocking(Dispatchers.IO) { persist(createSnapshot()) }
     }
 
     private fun notifySnapshotChanged() {
