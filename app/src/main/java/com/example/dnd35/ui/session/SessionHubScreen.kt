@@ -1200,16 +1200,15 @@ private fun PlayerJoinContent(viewModel: SessionViewModel, characterViewModel: C
             var shopFeedback by remember { mutableStateOf<String?>(null) }
             val receivedDmMessages = remember { mutableStateListOf<String>() }
             LaunchedEffect(viewModel) {
-                viewModel.lootGranted.collect { item ->
-                    characterViewModel.addInventoryItem(item.copy(id = java.util.UUID.randomUUID().toString()))
-                    lootFeedback = "Você recebeu \"${item.name}\" do baú de loot!"
+                viewModel.lootGranted.collect { grant ->
+                    characterViewModel.applySessionGrant(grant)
+                    lootFeedback = "Você recebeu \"${grant.item.name}\" do baú de loot!"
                 }
             }
             LaunchedEffect(viewModel) {
-                viewModel.shopPurchaseGranted.collect { item ->
-                    characterViewModel.addInventoryItem(item.copy(id = java.util.UUID.randomUUID().toString()))
-                    characterViewModel.quickCoinAction(-item.costGp)
-                    shopFeedback = "Você comprou \"${item.name}\" por ${item.costGp} po!"
+                viewModel.shopPurchaseGranted.collect { grant ->
+                    characterViewModel.applySessionGrant(grant)
+                    shopFeedback = "Você comprou \"${grant.item.name}\" por ${grant.item.costGp} po!"
                 }
             }
             LaunchedEffect(viewModel) { viewModel.playerPrivateMessages.collect { text -> receivedDmMessages.add(text) } }
