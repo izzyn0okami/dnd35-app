@@ -609,3 +609,20 @@
 - A PR permanece integrada; não abrir PR paralela para os mesmos painéis ou chat.
 - A validação manual em dois aparelhos ainda deve confirmar mensagens privadas nos dois sentidos, seleção de destinatário pelo Mestre, fechamento/reabertura dos painéis sem desconexão, disponibilidade contextual e entrega de loot/compras com painéis fechados.
 - Limitação conhecida mantida: o histórico visual local do Jogador não é persistido no aparelho após a composição/tela ser destruída; o histórico autoritativo permanece no Mestre.
+
+
+## 2026-11-07 — Auditoria do isolamento de conversas privadas
+
+### Defeito confirmado
+- Os dois pontos de exibição do histórico privado do Mestre (painel de gerenciamento e painel flutuante) não isolavam corretamente as conversas: um filtrava por `participantName`, embora cada `PrivateChatEntry` já possua `participantId` persistente, e o outro mostrava as últimas mensagens de todos os participantes.
+- O Mestre podia ver conversas de participantes diferentes misturadas quando eles usavam o mesmo nome. Além disso, quando não havia jogador conectado/selecionado, a condição anterior aceitava todas as mensagens do histórico, expondo conversas de participantes desconectados no painel sem destinatário.
+
+### Correção proposta nesta branch
+- Os dois painéis passam a filtrar o histórico pelo ID único do participante; sem seleção, a conversa fica vazia.
+- Opções com nomes repetidos passam a exibir um sufixo curto do ID para permitir distinguir os destinatários no seletor e no cabeçalho.
+- O helper de filtragem tem testes para nomes repetidos e ausência de seleção.
+
+### Escopo e validação
+- Nenhuma alteração no protocolo, transporte ou persistência do chat.
+- A CI deverá validar testes unitários e compilação Android antes de merge.
+- Teste manual Mestre/Jogador continua necessário para confirmar conversas separadas entre dois participantes com o mesmo nome e ausência de histórico quando todos estiverem desconectados.

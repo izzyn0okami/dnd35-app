@@ -74,6 +74,7 @@ import com.example.dnd35.session.JoinPayload
 import com.example.dnd35.session.Participant
 import com.example.dnd35.session.ParticipantRole
 import com.example.dnd35.session.PrivateChatEntry
+import com.example.dnd35.session.privateChatConversationFor
 import com.example.dnd35.session.ShopSnapshot
 import com.example.dnd35.session.ShopState
 import com.example.dnd35.model.CharacterJsonAdapters
@@ -972,7 +973,7 @@ private fun DmPrivateChatSection(
             DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
                 players.forEach { player ->
                     DropdownMenuItem(
-                        text = { Text(player.displayName) },
+                        text = { Text(player.displayName + if (players.count { it.displayName.equals(player.displayName, ignoreCase = true) } > 1) " (${player.id.take(6)})" else "") },
                         onClick = {
                             selectedPlayer = player
                             expanded = false
@@ -1000,10 +1001,11 @@ private fun DmPrivateChatSection(
         ) {
             Text("Enviar")
         }
-        if (chatLog.isNotEmpty()) {
+        val conversation = privateChatConversationFor(selectedPlayer?.id, chatLog)
+        if (conversation.isNotEmpty()) {
             Spacer(modifier = Modifier.height(10.dp))
             Text("Histórico", style = MaterialTheme.typography.labelMedium)
-            chatLog.takeLast(10).forEach { entry ->
+            conversation.takeLast(10).forEach { entry ->
                 Text(
                     (if (entry.fromDm) "Você → ${entry.participantName}: " else "${entry.participantName}: ") + entry.text,
                     style = MaterialTheme.typography.bodySmall
@@ -1512,13 +1514,13 @@ private fun DmFloatingPrivateChat(
     Column(modifier = Modifier.fillMaxSize()) {
         Box {
             OutlinedButton(onClick = { expanded = true }, enabled = players.isNotEmpty()) {
-                Text(selectedPlayer?.displayName ?: "Nenhum jogador conectado")
+                Text(selectedPlayer?.let { player -> player.displayName + if (players.count { it.displayName.equals(player.displayName, ignoreCase = true) } > 1) " (${player.id.take(6)})" else "" } ?: "Nenhum jogador conectado")
                 Icon(Icons.Default.ArrowDropDown, contentDescription = null)
             }
             DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
                 players.forEach { player ->
                     DropdownMenuItem(
-                        text = { Text(player.displayName) },
+                        text = { Text(player.displayName + if (players.count { it.displayName.equals(player.displayName, ignoreCase = true) } > 1) " (${player.id.take(6)})" else "") },
                         onClick = {
                             onSelectPlayer(player)
                             expanded = false
@@ -1532,7 +1534,7 @@ private fun DmFloatingPrivateChat(
             modifier = Modifier.weight(1f).fillMaxWidth().verticalScroll(rememberScrollState()),
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            val conversation = chatLog.filter { selectedPlayer == null || it.participantName == selectedPlayer.displayName }
+            val conversation = privateChatConversationFor(selectedPlayer?.id, chatLog)
             if (conversation.isEmpty()) {
                 Text(
                     if (selectedPlayer == null) "Conecte um jogador para iniciar uma conversa."
