@@ -593,3 +593,9 @@
 ### Limites e validação
 - O histórico completo persistido continua disponível no Mestre. No Jogador, o histórico visual local é mantido enquanto a tela/composição permanece ativa; não foi acrescentada persistência local de chat no aparelho do Jogador.
 - A CI deve validar compilação e testes após as alterações. O teste físico Mestre/Jogador deve confirmar envio nos dois sentidos, seleção do destinatário pelo Mestre, rolagem e fechamento/reabertura do painel sem desconexão.
+
+
+### Correção após CI #2023
+- A primeira execução da CI apontou erro Kotlin em SessionHubScreen.kt: a anotação @Composable havia sido aplicada por engano à classe de dados PrivateChatUiMessage, e não à função SessionFloatingPanels.
+- A anotação foi removida da classe de dados e aplicada à função composable. Os erros subsequentes de chamadas Compose fora de contexto eram consequência do mesmo posicionamento incorreto.
+- Correção registrada no commit ae418df. Aguardando nova CI para confirmar compilação e testes.
