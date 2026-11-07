@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.lazy.LazyColumn
@@ -62,6 +63,7 @@ import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.Dialog
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.dnd35.model.CharacterEntity
 import com.example.dnd35.model.CharacterInventoryItem
@@ -86,6 +88,7 @@ import com.journeyapps.barcodescanner.ScanOptions
 
 private enum class SessionHubMode { SELECT, DM, PLAYER }
 private enum class SessionAreaTab { SESSION, COMBAT, RESOURCES }
+private enum class SessionFloatingPanel { COMBAT, LOOT, SHOP }
 
 /**
  * Tela de "Sessão de Mesa": ponto de entrada para o modo Mestre (hospedar) ou Jogador (entrar),
@@ -1221,29 +1224,7 @@ private fun PlayerJoinContent(viewModel: SessionViewModel, characterViewModel: C
         }
         is PlayerSessionUiState.Connected -> {
             val feedback by viewModel.playerRequestFeedback.collectAsStateWithLifecycle()
-            var lootFeedback by remember { mutableStateOf<String?>(null) }
-            var shopFeedback by remember { mutableStateOf<String?>(null) }
             val receivedDmMessages = remember { mutableStateListOf<String>() }
-            LaunchedEffect(viewModel) {
-                viewModel.lootGranted.collect { grant ->
-                    if (characterViewModel.applySessionGrant(grant)) {
-                        viewModel.acknowledgeResourceGrant(grant.grantId)
-                        lootFeedback = "Você recebeu \"${grant.item.name}\" do baú de loot!"
-                    } else {
-                        lootFeedback = "Não foi possível localizar ou atualizar a ficha vinculada. A entrega permanece pendente."
-                    }
-                }
-            }
-            LaunchedEffect(viewModel) {
-                viewModel.shopPurchaseGranted.collect { grant ->
-                    if (characterViewModel.applySessionGrant(grant)) {
-                        viewModel.acknowledgeResourceGrant(grant.grantId)
-                        shopFeedback = "Você comprou \"${grant.item.name}\" por ${grant.item.costGp} po!"
-                    } else {
-                        shopFeedback = "Não foi possível atualizar a ficha vinculada. A entrega permanece pendente."
-                    }
-                }
-            }
             LaunchedEffect(viewModel) { viewModel.playerPrivateMessages.collect { text -> receivedDmMessages.add(text) } }
             Text("Conectado!", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold, color = DndGold)
             feedback?.let { message ->
@@ -1251,20 +1232,6 @@ private fun PlayerJoinContent(viewModel: SessionViewModel, characterViewModel: C
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(message, style = MaterialTheme.typography.bodySmall, modifier = Modifier.weight(1f))
                     TextButton(onClick = { viewModel.clearRequestFeedback() }) { Text("OK") }
-                }
-            }
-            lootFeedback?.let { message ->
-                Spacer(modifier = Modifier.height(8.dp))
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text(message, style = MaterialTheme.typography.bodySmall, modifier = Modifier.weight(1f))
-                    TextButton(onClick = { lootFeedback = null }) { Text("OK") }
-                }
-            }
-            shopFeedback?.let { message ->
-                Spacer(modifier = Modifier.height(8.dp))
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text(message, style = MaterialTheme.typography.bodySmall, modifier = Modifier.weight(1f))
-                    TextButton(onClick = { shopFeedback = null }) { Text("OK") }
                 }
             }
             SessionAreaNavigation(selectedArea, onSelectArea)
@@ -1300,6 +1267,165 @@ private fun PlayerJoinContent(viewModel: SessionViewModel, characterViewModel: C
                         PlayerShopSection(shop = shop, onRequestBuy = { item ->
                             viewModel.requestBuyFromShop(item.id, "Pedido de comprar \"${item.name}\" (${item.costGp} po)", linkedCharacter)
                         })
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/**
+ * Ações multiplayer contextuais sobre a ficha principal. Cada painel tem seu próprio ciclo
+ * de abertura/fechamento; fechar um painel nunca altera o estado da sessão.
+ */
+@Composable
+fun SessionFloatingPanels(
+    viewModel: SessionViewModel,
+    characterViewModel: CharacterViewModel
+) {
+    val dmState by viewModel.dmState.collectAsStateWithLifecycle()
+    val playerState by viewModel.playerState.collectAsStateWithLifecycle()
+    val myCharacters by characterViewModel.allCharacters.collectAsStateWithLifecycle()
+    val hosting = dmState as? DmSessionUiState.Hosting
+    val connected = playerState as? PlayerSessionUiState.Connected
+    val linkedCharacter = myCharacters.firstOrNull { it.id == connected?.characterId }
+    var activePanel by remember { mutableStateOf<SessionFloatingPanel?>(null) }
+
+    if (hosting != null || connected != null) {
+        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.TopEnd) {
+            Card(
+                modifier = Modifier.padding(8.dp),
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
+            ) {
+                Row(
+                    modifier = Modifier.padding(horizontal = 4.dp, vertical = 2.dp),
+                    horizontalArrangement = Arrangement.spacedBy(2.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    if (hosting != null || connected?.combat != null) {
+                        TextButton(
+                            onClick = { activePanel = SessionFloatingPanel.COMBAT },
+                            modifier = Modifier.testTag("session_quick_combat")
+                        ) { Text("Combate") }
+                    }
+                    if (hosting != null || connected?.lootChest?.isNotEmpty() == true) {
+                        TextButton(
+                            onClick = { activePanel = SessionFloatingPanel.LOOT },
+                            modifier = Modifier.testTag("session_quick_loot")
+                        ) { Text("Loot") }
+                    }
+                    if (hosting != null || connected?.shop != null) {
+                        TextButton(
+                            onClick = { activePanel = SessionFloatingPanel.SHOP },
+                            modifier = Modifier.testTag("session_quick_shop")
+                        ) { Text("Loja") }
+                    }
+                }
+            }
+        }
+    }
+
+    val panel = activePanel
+    if (panel != null && (hosting != null || connected != null)) {
+        Dialog(onDismissRequest = { activePanel = null }) {
+            Card(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .widthIn(max = 560.dp)
+                    .heightIn(max = 620.dp)
+            ) {
+                Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    ) {
+                        Text(
+                            when (panel) {
+                                SessionFloatingPanel.COMBAT -> "Combate"
+                                SessionFloatingPanel.LOOT -> "Baú de loot"
+                                SessionFloatingPanel.SHOP -> "Loja de NPC"
+                            },
+                            style = MaterialTheme.typography.titleLarge,
+                            fontWeight = FontWeight.Bold
+                        )
+                        TextButton(onClick = { activePanel = null }) { Text("Fechar") }
+                    }
+                    Column(
+                        modifier = Modifier.weight(1f).verticalScroll(rememberScrollState())
+                    ) {
+                        when (panel) {
+                            SessionFloatingPanel.COMBAT -> {
+                                when {
+                                    hosting != null -> CombatSection(viewModel, characterViewModel, hosting)
+                                    connected != null && connected.combat != null -> CombatTracker(
+                                        combat = connected.combat,
+                                        isDm = false,
+                                        selfId = connected.selfId,
+                                        onRequestHpChange = { combatantId, delta ->
+                                            val summary = if (delta > 0) {
+                                                "Pedido de dano ($delta PV) em combate"
+                                            } else {
+                                                "Pedido de cura ($\{-delta} PV) em combate"
+                                            }
+                                            viewModel.requestCombatHpChange(combatantId, delta, summary)
+                                        }
+                                    )
+                                    else -> Text(
+                                        "O Mestre ainda não iniciou um combate.",
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                                    )
+                                }
+                            }
+                            SessionFloatingPanel.LOOT -> {
+                                when {
+                                    hosting != null -> LootChestSection(
+                                        items = hosting.lootChest,
+                                        isDm = true,
+                                        onAddItem = { viewModel.addLootItem(it) },
+                                        onRemoveItem = { viewModel.removeLootItem(it) }
+                                    )
+                                    connected != null -> LootChestSection(
+                                        items = connected.lootChest,
+                                        isDm = false,
+                                        onRequestTake = { item ->
+                                            viewModel.requestTakeLoot(
+                                                item.id,
+                                                "Pedido de pegar \\"\${item.name}\\" do baú de loot",
+                                                linkedCharacter
+                                            )
+                                        }
+                                    )
+                                }
+                            }
+                            SessionFloatingPanel.SHOP -> {
+                                when {
+                                    hosting != null -> DmShopSection(
+                                        shop = hosting.shop,
+                                        characterViewModel = characterViewModel,
+                                        onOpenShop = { npcId, npcName, items ->
+                                            viewModel.openShop(npcId, npcName, items)
+                                        },
+                                        onCloseShop = { viewModel.closeShop() }
+                                    )
+                                    connected != null && connected.shop != null -> PlayerShopSection(
+                                        shop = connected.shop,
+                                        onRequestBuy = { item ->
+                                            viewModel.requestBuyFromShop(
+                                                item.id,
+                                                "Pedido de comprar \\"\${item.name}\\" (\${item.costGp} po)",
+                                                linkedCharacter
+                                            )
+                                        }
+                                    )
+                                    else -> Text(
+                                        "O Mestre ainda não disponibilizou uma loja.",
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                                    )
+                                }
+                            }
+                        }
                     }
                 }
             }
