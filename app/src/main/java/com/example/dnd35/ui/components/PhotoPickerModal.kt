@@ -2,6 +2,7 @@ package com.example.dnd35.ui.components
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import androidx.exifinterface.media.ExifInterface
 import android.net.Uri
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.gestures.detectTransformGestures
@@ -154,6 +155,16 @@ fun SquarePhotoCropDialog(sourceUri: Uri, onCancel: () -> Unit, onConfirm: (Stri
     var viewportSize by remember { mutableStateOf(androidx.compose.ui.unit.IntSize.Zero) }
     LaunchedEffect(sourceUri) {
         bitmap = try {
+            // BitmapFactory não aplica a orientação EXIF; leia-a separadamente antes do recorte.
+            val orientation = runCatching {
+                context.contentResolver.openInputStream(sourceUri)?.use { input ->
+                    ExifInterface(input).getAttributeInt(
+                        ExifInterface.TAG_ORIENTATION,
+                        ExifInterface.ORIENTATION_NORMAL
+                    )
+                } ?: ExifInterface.ORIENTATION_NORMAL
+            }.getOrDefault(ExifInterface.ORIENTATION_NORMAL)
+
             val bounds = BitmapFactory.Options().apply { inJustDecodeBounds = true }
             context.contentResolver.openInputStream(sourceUri)?.use {
                 BitmapFactory.decodeStream(it, null, bounds)
@@ -165,8 +176,13 @@ fun SquarePhotoCropDialog(sourceUri: Uri, onCancel: () -> Unit, onConfirm: (Stri
                 var sampleSize = 1
                 while (maxDimension / sampleSize > 2048) sampleSize *= 2
                 val options = BitmapFactory.Options().apply { inSampleSize = sampleSize }
-                context.contentResolver.openInputStream(sourceUri)?.use {
+                val decoded = context.contentResolver.openInputStream(sourceUri)?.use {
                     BitmapFactory.decodeStream(it, null, options)
+                }
+                decoded?.let { source ->
+                    val oriented = applyExifOrientation(source, orientation)
+                    if (oriented !== source) source.recycle()
+                    oriented
                 }
             }
         } catch (_: Exception) { null }
