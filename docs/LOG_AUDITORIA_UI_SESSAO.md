@@ -614,13 +614,13 @@
 ## 2026-11-07 — Auditoria do isolamento de conversas privadas
 
 ### Defeito confirmado
-- O painel flutuante do Mestre filtrava o histórico de mensagens por `participantName`, embora cada `PrivateChatEntry` já possua `participantId` persistente.
+- Os dois pontos de exibição do histórico privado do Mestre (painel de gerenciamento e painel flutuante) não isolavam corretamente as conversas: um filtrava por `participantName`, embora cada `PrivateChatEntry` já possua `participantId` persistente, e o outro mostrava as últimas mensagens de todos os participantes.
 - Dois participantes com o mesmo nome podiam ver conversas misturadas. Além disso, quando não havia jogador conectado/selecionado, a condição anterior aceitava todas as mensagens do histórico, expondo conversas de participantes desconectados no painel sem destinatário.
 
 ### Correção proposta nesta branch
-- O histórico passa a ser filtrado pelo ID único do participante; sem seleção, a conversa fica vazia.
+- Os dois painéis passam a filtrar o histórico pelo ID único do participante; sem seleção, a conversa fica vazia.
 - Opções com nomes repetidos passam a exibir um sufixo curto do ID para permitir distinguir os destinatários no seletor e no cabeçalho.
-- O helper de filtragem terá testes para nomes repetidos e ausência de seleção.
+- O helper de filtragem tem testes para nomes repetidos e ausência de seleção.
 
 ### Escopo e validação
 - Nenhuma alteração no protocolo, transporte ou persistência do chat.
