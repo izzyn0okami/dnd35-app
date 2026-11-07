@@ -572,3 +572,24 @@
 - Não foi alterado o estado de domínio nem a persistência Room.
 - A CI ainda precisa executar testDebugUnitTest, compilação e assembleDebug. Não considerar esta branch validada até o workflow concluir.
 - Após CI verde, testar em aparelhos: ficha visível durante a sessão; abertura/fechamento repetido dos três painéis; combate encerrado removendo a ação do lado do jogador; loot/loja surgindo e desaparecendo conforme disponibilidade; concessões persistidas e ACK mesmo com painéis fechados; rolagem em telas pequenas.
+
+
+## 2026-11-07 — Chat privado em balões na interface multiplayer
+
+### Decisão de produto
+- Mensagens privadas devem aparecer em uma janela de chat flutuante sobre a ficha, com balões alinhados à direita para mensagens enviadas e à esquerda para mensagens recebidas.
+- Abrir ou fechar o chat não altera a sessão nem desconecta participantes.
+- O Mestre escolhe o jogador conectado destinatário; a conversa exibe o histórico privado já mantido pelo servidor.
+- O Jogador pode enviar mensagens ao Mestre e vê, na mesma janela, as mensagens recebidas e as enviadas durante a composição atual da tela.
+
+### Implementação na PR #326
+- Adicionado o botão **Chat** à faixa de ações multiplayer.
+- Criada janela flutuante independente de mensagens privadas, com identificação do remetente, balões distintos, rolagem do histórico e campo de envio.
+- No lado do Mestre, o destinatário é selecionável entre os jogadores conectados e o histórico é filtrado pelo nome do participante selecionado.
+- No lado do Jogador, mensagens recebidas são coletadas enquanto a ficha está visível; mensagens enviadas também são acrescentadas ao histórico visual local.
+- Removidos os formulários antigos de mensagens privadas da tela de gerenciamento para evitar duplicação; o acesso principal passa a ser o botão Chat.
+- O transporte e a persistência autoritativa das mensagens continuam usando o sistema privado existente da sessão; não foi criado um segundo protocolo.
+
+### Limites e validação
+- O histórico completo persistido continua disponível no Mestre. No Jogador, o histórico visual local é mantido enquanto a tela/composição permanece ativa; não foi acrescentada persistência local de chat no aparelho do Jogador.
+- A CI deve validar compilação e testes após as alterações. O teste físico Mestre/Jogador deve confirmar envio nos dois sentidos, seleção do destinatário pelo Mestre, rolagem e fechamento/reabertura do painel sem desconexão.
