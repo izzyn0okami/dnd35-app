@@ -519,3 +519,12 @@
 - **Validação ainda pendente:** executar CI no SHA atualizado, inspecionar logs se houver falha e revisar o diff completo. Não considerar a etapa concluída nem mesclar antes de CI verde e validação de campo.
 
 - Ajuste adicional: a sessão nova e o estado restaurado agora são gravados com confirmação antes de abrir o ServerSocket. Isso elimina a janela em que o primeiro jogador poderia tentar entrar antes de existir um registro ACTIVE durável e remove os antigos comandos de gravação inicial assíncrona.
+
+
+## 2026-11-07 — Mutations persistidas fora da thread principal
+
+- Revisão do fluxo de persistência síncrona identificou que callbacks de checkpoint aguardam o Room sob o lock do servidor. Embora isso feche a janela de perda entre mutação e commit, algumas ações do Mestre ainda eram chamadas diretamente pelos eventos da UI e poderiam bloquear a thread principal.
+- As mutações iniciadas pela interface (loja, chat privado, aprovar/negar pedidos, baú, combate e turnos) agora são despachadas para Dispatchers.IO. Falhas são registradas no log de diagnóstico e apresentadas como estado de erro da sessão, em vez de propagar uma exceção pela thread da interface.
+- O encerramento manual também passou a executar captura do snapshot, fechamento do servidor e confirmação Room em I/O. A UI não aguarda o commit de forma bloqueante; a atualização para Idle/erro ocorre ao concluir, sem sobrescrever uma nova sessão iniciada nesse intervalo.
+- Mantida a ordem interna de cada mutação: o servidor ainda serializa o estado sob seu lock e aguarda o checkpoint antes de transmitir as atualizações. A mudança remove o bloqueio da thread principal, não relaxa a garantia de durabilidade.
+- A CI do SHA anterior ainda estava executando quando esta correção foi enviada. A nova validação deve ser considerada a referência para este commit; não considerar a execução anterior como validação do código atualizado.
