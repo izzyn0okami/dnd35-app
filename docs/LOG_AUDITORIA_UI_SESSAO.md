@@ -626,3 +626,11 @@
 - Nenhuma alteração no protocolo, transporte ou persistência do chat.
 - A CI deverá validar testes unitários e compilação Android antes de merge.
 - Teste manual Mestre/Jogador continua necessário para confirmar conversas separadas entre dois participantes com o mesmo nome e ausência de histórico quando todos estiverem desconectados.
+
+
+### Merge e validação — PR #327 (2026-11-07)
+- PR #327 foi mesclada por squash em `main` após revisão do diff e confirmação de que a branch estava sem divergência em relação à base.
+- Commit de merge: `165e1c6445d7b5bf4a51e743b6d7f4c807951c88`.
+- CI Android build #2040 (run `42426864157`), no head exato `feeebdd3d7b853eac567f42f34406ef17ff792fe`: sucesso. `testDebugUnitTest`, `assembleDebug`, upload dos esquemas Room e upload do APK debug concluídos.
+- A execução #2031 falhou antes da correção por import ausente de `privateChatConversationFor`; o import foi incluído antes do head validado. A execução #2040 validou a versão final, incluindo o filtro nos dois painéis.
+- A validação manual com dois jogadores de mesmo nome e sem jogadores conectados continua pendente; a CI cobre o helper de filtragem, não o comportamento visual em aparelhos.
