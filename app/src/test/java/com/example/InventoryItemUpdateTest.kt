@@ -69,11 +69,12 @@ class InventoryItemUpdateTest {
     @Test
     fun unknownItemIdLeavesInventoryUnchanged() {
         val existing = CharacterInventoryItem(id = "existing", name = "Poção", category = "Consumíveis")
+        val inventory = listOf(existing)
         val result = replaceInventoryItemInList(
-            listOf(existing),
+            inventory,
             CharacterInventoryItem(id = "missing", name = "Poção nova", category = "Consumíveis")
         )
 
-        assertSame(listOf(existing), result)
+        assertSame(inventory, result)
     }
 }
