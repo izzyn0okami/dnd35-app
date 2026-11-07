@@ -519,12 +519,34 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
         persistCharacter(curr.copy(inventoryJson = CharacterJsonAdapters.serializeInventory(list)))
     }
 
-    /** Atualiza um item em uma única gravação, sem a corrida remove/adiciona. */
+    /** Substitui um item e mantém exclusivo o espaço corporal quando ele é equipado. */
+    internal fun replaceInventoryItemInList(
+        items: List<CharacterInventoryItem>,
+        updatedItem: CharacterInventoryItem
+    ): List<CharacterInventoryItem> {
+        if (items.none { it.id == updatedItem.id }) return items
+
+        val targetSlot = updatedItem.equippedSlot
+        return items.map { existing ->
+            when {
+                existing.id == updatedItem.id -> updatedItem
+                updatedItem.equipped &&
+                    targetSlot != Dnd35Rules.EquipmentSlots.NONE &&
+                    existing.equippedSlot == targetSlot -> existing.copy(
+                        equipped = false,
+                        equippedSlot = Dnd35Rules.EquipmentSlots.NONE
+                    )
+                else -> existing
+            }
+        }
+    }
+
+    /** Atualiza um item em uma única gravação, respeitando o espaço escolhido no formulário. */
     fun updateInventoryItem(item: CharacterInventoryItem) {
         val curr = _activeCharacter.value ?: return
         val list = CharacterJsonAdapters.deserializeInventory(curr.inventoryJson)
-        if (list.none { it.id == item.id }) return
-        val updated = list.map { existing -> if (existing.id == item.id) item else existing }
+        val updated = replaceInventoryItemInList(list, item)
+        if (updated === list) return
         persistCharacter(curr.copy(inventoryJson = CharacterJsonAdapters.serializeInventory(updated)))
     }
 
