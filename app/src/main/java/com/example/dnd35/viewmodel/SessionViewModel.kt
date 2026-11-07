@@ -443,9 +443,11 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
     /** Mestre: encerra a sessão ativa, desconectando todos os jogadores. */
     fun stopHosting(manual: Boolean = true) {
         val activeServer = server
-        val activeSessionId = activeServer?.createSnapshot()?.sessionId
         server = null
         viewModelScope.launch(Dispatchers.IO) {
+            // A captura também usa o lock do servidor; mantê-la fora da thread principal evita
+            // travar a interface enquanto outra mutação aguarda o commit Room.
+            val activeSessionId = activeServer?.createSnapshot()?.sessionId
             activeServer?.stop()
             var endFailed = false
             if (manual && activeSessionId != null) {
