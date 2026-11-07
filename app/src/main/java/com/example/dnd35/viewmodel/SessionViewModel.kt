@@ -360,83 +360,113 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
         }
     }
 
+    /**
+     * Checkpoints síncronos podem aguardar I/O do Room. Todas as mutações disparadas pela UI
+     * passam por este helper para nunca bloquear a thread principal enquanto o servidor mantém
+     * o lock do estado e confirma a persistência.
+     */
+    private fun dispatchHostedMutation(mutation: (SessionServer) -> Unit) {
+        val activeServer = server ?: return
+        viewModelScope.launch(Dispatchers.IO) {
+            if (server !== activeServer) return@launch
+            try {
+                mutation(activeServer)
+            } catch (error: Exception) {
+                CrashLogStore.record("MULTIPLAYER_PERSISTENCE", "Falha ao persistir alteração da sessão hospedada", error)
+                withContext(Dispatchers.Main) {
+                    if (server === activeServer) {
+                        _dmState.value = DmSessionUiState.Error(
+                            "Não foi possível salvar a alteração da sessão: " +
+                                (error.message?.takeIf { it.isNotBlank() } ?: error.javaClass.simpleName)
+                        )
+                    }
+                }
+            }
+        }
+    }
+
     /** Mestre: abre (ou atualiza) a loja com os itens informados, tirados de um NPC seu. */
     fun openShop(npcCharacterId: Long, npcName: String, items: List<CharacterInventoryItem>) {
-        server?.openShop(npcCharacterId, npcName, items)
+        dispatchHostedMutation { it.openShop(npcCharacterId, npcName, items) }
     }
 
     /** Mestre: fecha a loja de NPC aberta no momento. */
     fun closeShop() {
-        server?.closeShop()
+        dispatchHostedMutation { it.closeShop() }
     }
 
     /** Mestre: manda uma mensagem privada para um Jogador específico (só ele recebe). */
     fun sendPrivateMessageToPlayer(participantId: String, text: String) {
-        server?.sendPrivateMessage(participantId, text)
+        dispatchHostedMutation { it.sendPrivateMessage(participantId, text) }
     }
 
     /** Mestre: aprova um pedido pendente de jogador, aplicando a mudança correspondente. */
     fun approveRequest(requestId: String) {
-        val activeServer = server ?: return
-        viewModelScope.launch(Dispatchers.IO) { activeServer.approveRequest(requestId) }
+        dispatchHostedMutation { it.approveRequest(requestId) }
     }
 
     /** Mestre: nega um pedido pendente de jogador (nada é aplicado). */
     fun denyRequest(requestId: String) {
-        server?.denyRequest(requestId)
+        dispatchHostedMutation { it.denyRequest(requestId) }
     }
 
     /** Mestre: adiciona um item ao baú de loot compartilhado. */
     fun addLootItem(item: CharacterInventoryItem) {
-        server?.addLootItem(item)
+        dispatchHostedMutation { it.addLootItem(item) }
     }
 
     /** Mestre: remove um item do baú de loot diretamente (sem precisar de pedido de jogador). */
     fun removeLootItem(itemId: String) {
-        server?.removeLootItem(itemId)
+        dispatchHostedMutation { it.removeLootItem(itemId) }
     }
 
     /** Mestre: inicia um combate novo com os combatentes informados. */
     fun startCombat(combatants: List<Combatant>) {
-        server?.startCombat(combatants)
+        dispatchHostedMutation { it.startCombat(combatants) }
     }
 
     /** Mestre: aplica dano (positivo) ou cura (negativo) direto num combatente. */
     fun applyCombatDamage(combatantId: String, amount: Int) {
-        server?.applyDamage(combatantId, amount)
+        dispatchHostedMutation { it.applyDamage(combatantId, amount) }
     }
 
     /** Mestre: avança para o próximo combatente na ordem de iniciativa. */
     fun nextCombatTurn() {
-        server?.nextTurn()
+        dispatchHostedMutation { it.nextTurn() }
     }
 
     /** Mestre: encerra o combate ativo. */
     fun endCombat() {
-        server?.endCombat()
+        dispatchHostedMutation { it.endCombat() }
     }
 
     /** Mestre: encerra a sessão ativa, desconectando todos os jogadores. */
     fun stopHosting(manual: Boolean = true) {
         val activeServer = server
         val activeSessionId = activeServer?.createSnapshot()?.sessionId
-        activeServer?.stop()
         server = null
-        var endFailed = false
-        if (manual && activeSessionId != null) {
-            runCatching {
-                kotlinx.coroutines.runBlocking(Dispatchers.IO) {
+        viewModelScope.launch(Dispatchers.IO) {
+            activeServer?.stop()
+            var endFailed = false
+            if (manual && activeSessionId != null) {
+                runCatching {
                     persistManualEndAndWait(activeSessionId)
+                }.onFailure { error ->
+                    endFailed = true
+                    CrashLogStore.record("MULTIPLAYER_PERSISTENCE", "Falha ao marcar encerramento manual da sessão", error)
                 }
-            }.onFailure { error ->
-                endFailed = true
-                CrashLogStore.record("MULTIPLAYER_PERSISTENCE", "Falha ao marcar encerramento manual da sessão", error)
             }
-        }
-        _dmState.value = if (endFailed) {
-            DmSessionUiState.Error("Não foi possível confirmar o encerramento da sessão no armazenamento local.")
-        } else {
-            DmSessionUiState.Idle
+            withContext(Dispatchers.Main) {
+                // Não sobrescreve o estado de uma sessão nova iniciada enquanto a anterior
+                // concluía o encerramento manual.
+                if (server == null) {
+                    _dmState.value = if (endFailed) {
+                        DmSessionUiState.Error("Não foi possível confirmar o encerramento da sessão no armazenamento local.")
+                    } else {
+                        DmSessionUiState.Idle
+                    }
+                }
+            }
         }
     }
 
