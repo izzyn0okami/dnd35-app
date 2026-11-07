@@ -38,8 +38,9 @@ class PortraitExifOrientationTest {
     }
 
     @Test
-    fun horizontalAndVerticalFlipsKeepDimensions() {
+    fun halfTurnAndFlipsKeepDimensions() {
         val orientations = listOf(
+            ExifInterface.ORIENTATION_ROTATE_180,
             ExifInterface.ORIENTATION_FLIP_HORIZONTAL,
             ExifInterface.ORIENTATION_FLIP_VERTICAL
         )
