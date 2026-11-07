@@ -154,7 +154,11 @@ class SessionServer(
 
     private fun persistCriticalSnapshotLocked() {
         val persist = persistCriticalSnapshot ?: return
-        runBlocking(Dispatchers.IO) { persist(createSnapshot()) }
+        // O snapshot é capturado aqui, na thread que já detém stateLock (monitor reentrante).
+        // Capturá-lo dentro do runBlocking(Dispatchers.IO) faria outra thread disputar o mesmo
+        // lock enquanto esta espera por ela: deadlock que nenhum withTimeout consegue cancelar.
+        val snapshot = createSnapshot()
+        runBlocking(Dispatchers.IO) { persist(snapshot) }
     }
 
     private fun notifySnapshotChanged() {
