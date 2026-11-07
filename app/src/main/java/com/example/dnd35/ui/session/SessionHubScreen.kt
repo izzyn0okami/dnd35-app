@@ -88,7 +88,7 @@ import com.journeyapps.barcodescanner.ScanOptions
 
 private enum class SessionHubMode { SELECT, DM, PLAYER }
 private enum class SessionAreaTab { SESSION, COMBAT, RESOURCES }
-private enum class SessionFloatingPanel { COMBAT, LOOT, SHOP }
+private enum class SessionFloatingPanel { COMBAT, LOOT, SHOP, CHAT }
 
 /**
  * Tela de "Sessão de Mesa": ponto de entrada para o modo Mestre (hospedar) ou Jogador (entrar),
@@ -276,8 +276,7 @@ private fun DmHostContent(viewModel: SessionViewModel, characterViewModel: Chara
                         PendingRequestsSection(requests = s.pendingRequests, onApprove = { viewModel.approveRequest(it) }, onDeny = { viewModel.denyRequest(it) })
                     }
                     Spacer(modifier = Modifier.height(16.dp))
-                    DmPrivateChatSection(players = s.participants.filter { it.role == ParticipantRole.PLAYER && it.connected }, chatLog = s.privateChatLog,
-                        onSend = { participantId, text -> viewModel.sendPrivateMessageToPlayer(participantId, text) })
+                    Text("As mensagens privadas ficam disponíveis no botão Chat sobre a ficha.", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                     Spacer(modifier = Modifier.height(16.dp))
                     OutlinedButton(onClick = { showEndConfirmation = true }) { Text("Encerrar sessão", color = DndCrimson) }
                     Spacer(modifier = Modifier.height(20.dp))
@@ -1223,8 +1222,6 @@ private fun PlayerJoinContent(viewModel: SessionViewModel, characterViewModel: C
         }
         is PlayerSessionUiState.Connected -> {
             val feedback by viewModel.playerRequestFeedback.collectAsStateWithLifecycle()
-            val receivedDmMessages = remember { mutableStateListOf<String>() }
-            LaunchedEffect(viewModel) { viewModel.playerPrivateMessages.collect { text -> receivedDmMessages.add(text) } }
             Text("Conectado!", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold, color = DndGold)
             feedback?.let { message ->
                 Spacer(modifier = Modifier.height(8.dp))
@@ -1238,7 +1235,7 @@ private fun PlayerJoinContent(viewModel: SessionViewModel, characterViewModel: C
                 SessionAreaTab.SESSION -> {
                     ParticipantRoster(s.participants, emptyMap())
                     Spacer(modifier = Modifier.height(16.dp))
-                    PlayerPrivateChatSection(receivedMessages = receivedDmMessages, onSend = { text -> viewModel.sendPrivateMessageToDm(text) })
+                    Text("As mensagens privadas ficam disponíveis no botão Chat sobre a ficha.", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                     if (selectedCharacter != null) {
                         Spacer(modifier = Modifier.height(16.dp))
                         OutlinedButton(onClick = { selectedCharacter?.let { viewModel.requestCharacterUpdate(it, "Atualização da ficha de ${it.name}") } }) {
@@ -1286,6 +1283,8 @@ private fun PlayerJoinContent(viewModel: SessionViewModel, characterViewModel: C
  * de abertura/fechamento; fechar um painel nunca altera o estado da sessão.
  */
 @Composable
+private data class PrivateChatUiMessage(val sender: String, val text: String, val fromMe: Boolean)
+
 fun SessionFloatingPanels(
     viewModel: SessionViewModel,
     characterViewModel: CharacterViewModel
@@ -1297,6 +1296,13 @@ fun SessionFloatingPanels(
     val connected = playerState as? PlayerSessionUiState.Connected
     val linkedCharacter = myCharacters.firstOrNull { it.id == connected?.characterId }
     var activePanel by remember { mutableStateOf<SessionFloatingPanel?>(null) }
+    val playerChatMessages = remember(viewModel) { mutableStateListOf<PrivateChatUiMessage>() }
+    LaunchedEffect(viewModel) {
+        viewModel.playerPrivateMessages.collect { text ->
+            playerChatMessages.add(PrivateChatUiMessage("Mestre", text, fromMe = false))
+        }
+    }
+    var selectedChatPlayer by remember { mutableStateOf<Participant?>(null) }
 
     // No lado do Jogador, o painel fecha assim que o Mestre retira sua disponibilidade.
     LaunchedEffect(connected?.combat, connected?.lootChest, connected?.shop) {
@@ -1342,6 +1348,10 @@ fun SessionFloatingPanels(
                             modifier = Modifier.testTag("session_quick_shop")
                         ) { Text("Loja") }
                     }
+                    TextButton(
+                        onClick = { activePanel = SessionFloatingPanel.CHAT },
+                        modifier = Modifier.testTag("session_quick_chat")
+                    ) { Text("Chat") }
                 }
             }
         }
@@ -1367,6 +1377,7 @@ fun SessionFloatingPanels(
                                 SessionFloatingPanel.COMBAT -> "Combate"
                                 SessionFloatingPanel.LOOT -> "Baú de loot"
                                 SessionFloatingPanel.SHOP -> "Loja de NPC"
+                                SessionFloatingPanel.CHAT -> "Mensagens privadas"
                             },
                             style = MaterialTheme.typography.titleLarge,
                             fontWeight = FontWeight.Bold
@@ -1374,7 +1385,10 @@ fun SessionFloatingPanels(
                         TextButton(onClick = { activePanel = null }) { Text("Fechar") }
                     }
                     Column(
-                        modifier = Modifier.weight(1f).verticalScroll(rememberScrollState())
+                        modifier = Modifier.weight(1f).then(
+                            if (panel == SessionFloatingPanel.CHAT) Modifier
+                            else Modifier.verticalScroll(rememberScrollState())
+                        )
                     ) {
                         when (panel) {
                             SessionFloatingPanel.COMBAT -> {
@@ -1446,9 +1460,178 @@ fun SessionFloatingPanels(
                                     )
                                 }
                             }
+                            SessionFloatingPanel.CHAT -> {
+                                when {
+                                    hosting != null -> {
+                                        val players = hosting.participants.filter {
+                                            it.role == ParticipantRole.PLAYER && it.connected
+                                        }
+                                        if (selectedChatPlayer?.id !in players.map { it.id }) {
+                                            selectedChatPlayer = players.firstOrNull()
+                                        }
+                                        DmFloatingPrivateChat(
+                                            players = players,
+                                            selectedPlayer = selectedChatPlayer,
+                                            chatLog = hosting.privateChatLog,
+                                            onSelectPlayer = { selectedChatPlayer = it },
+                                            onSend = { player, message ->
+                                                viewModel.sendPrivateMessageToPlayer(player.id, message)
+                                            }
+                                        )
+                                    }
+                                    connected != null -> PlayerFloatingPrivateChat(
+                                        messages = playerChatMessages,
+                                        onSend = { message ->
+                                            playerChatMessages.add(PrivateChatUiMessage("Você", message, fromMe = true))
+                                            viewModel.sendPrivateMessageToDm(message)
+                                        }
+                                    )
+                                }
+                            }
                         }
                     }
                 }
+            }
+        }
+    }
+}
+
+
+@Composable
+private fun DmFloatingPrivateChat(
+    players: List<Participant>,
+    selectedPlayer: Participant?,
+    chatLog: List<PrivateChatEntry>,
+    onSelectPlayer: (Participant) -> Unit,
+    onSend: (Participant, String) -> Unit
+) {
+    var expanded by remember { mutableStateOf(false) }
+    var message by remember { mutableStateOf("") }
+    Column(modifier = Modifier.fillMaxSize()) {
+        Box {
+            OutlinedButton(onClick = { expanded = true }, enabled = players.isNotEmpty()) {
+                Text(selectedPlayer?.displayName ?: "Nenhum jogador conectado")
+                Icon(Icons.Default.ArrowDropDown, contentDescription = null)
+            }
+            DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
+                players.forEach { player ->
+                    DropdownMenuItem(
+                        text = { Text(player.displayName) },
+                        onClick = {
+                            onSelectPlayer(player)
+                            expanded = false
+                        }
+                    )
+                }
+            }
+        }
+        Spacer(modifier = Modifier.height(8.dp))
+        Column(
+            modifier = Modifier.weight(1f).fillMaxWidth().verticalScroll(rememberScrollState()),
+            verticalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            val conversation = chatLog.filter { selectedPlayer == null || it.participantName == selectedPlayer.displayName }
+            if (conversation.isEmpty()) {
+                Text(
+                    if (selectedPlayer == null) "Conecte um jogador para iniciar uma conversa."
+                    else "Ainda não há mensagens nesta conversa.",
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    style = MaterialTheme.typography.bodySmall
+                )
+            }
+            conversation.forEach { entry ->
+                ChatMessageBubble(
+                    sender = if (entry.fromDm) "Você" else entry.participantName,
+                    text = entry.text,
+                    fromMe = entry.fromDm
+                )
+            }
+        }
+        Spacer(modifier = Modifier.height(8.dp))
+        OutlinedTextField(
+            value = message,
+            onValueChange = { message = it },
+            label = { Text("Mensagem privada") },
+            modifier = Modifier.fillMaxWidth(),
+            enabled = selectedPlayer != null
+        )
+        Spacer(modifier = Modifier.height(6.dp))
+        Button(
+            onClick = {
+                selectedPlayer?.let { player ->
+                    onSend(player, message.trim())
+                    message = ""
+                }
+            },
+            enabled = selectedPlayer != null && message.isNotBlank(),
+            modifier = Modifier.align(Alignment.End)
+        ) { Text("Enviar") }
+    }
+}
+
+@Composable
+private fun PlayerFloatingPrivateChat(
+    messages: List<PrivateChatUiMessage>,
+    onSend: (String) -> Unit
+) {
+    var message by remember { mutableStateOf("") }
+    Column(modifier = Modifier.fillMaxSize()) {
+        Column(
+            modifier = Modifier.weight(1f).fillMaxWidth().verticalScroll(rememberScrollState()),
+            verticalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            if (messages.isEmpty()) {
+                Text(
+                    "Envie uma mensagem privada ao Mestre. Somente ele poderá recebê-la.",
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    style = MaterialTheme.typography.bodySmall
+                )
+            }
+            messages.forEach { entry ->
+                ChatMessageBubble(entry.sender, entry.text, entry.fromMe)
+            }
+        }
+        Spacer(modifier = Modifier.height(8.dp))
+        OutlinedTextField(
+            value = message,
+            onValueChange = { message = it },
+            label = { Text("Mensagem privada ao Mestre") },
+            modifier = Modifier.fillMaxWidth()
+        )
+        Spacer(modifier = Modifier.height(6.dp))
+        Button(
+            onClick = {
+                onSend(message.trim())
+                message = ""
+            },
+            enabled = message.isNotBlank(),
+            modifier = Modifier.align(Alignment.End)
+        ) { Text("Enviar") }
+    }
+}
+
+@Composable
+private fun ChatMessageBubble(sender: String, text: String, fromMe: Boolean) {
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = if (fromMe) Arrangement.End else Arrangement.Start
+    ) {
+        Card(
+            modifier = Modifier.widthIn(max = 300.dp),
+            shape = RoundedCornerShape(14.dp),
+            colors = CardDefaults.cardColors(
+                containerColor = if (fromMe) MaterialTheme.colorScheme.primaryContainer
+                else MaterialTheme.colorScheme.surfaceVariant
+            )
+        ) {
+            Column(modifier = Modifier.padding(horizontal = 12.dp, vertical = 9.dp)) {
+                Text(
+                    sender,
+                    style = MaterialTheme.typography.labelSmall,
+                    fontWeight = FontWeight.Bold,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+                Text(text, style = MaterialTheme.typography.bodyMedium)
             }
         }
     }
