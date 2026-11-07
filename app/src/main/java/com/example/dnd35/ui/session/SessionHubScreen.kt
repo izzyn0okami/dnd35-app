@@ -1302,6 +1302,9 @@ fun SessionFloatingPanels(
             playerChatMessages.add(PrivateChatUiMessage("Mestre", text, fromMe = false))
         }
     }
+    LaunchedEffect(playerState) {
+        if (playerState is PlayerSessionUiState.Idle) playerChatMessages.clear()
+    }
     var selectedChatPlayer by remember { mutableStateOf<Participant?>(null) }
 
     // No lado do Jogador, o painel fecha assim que o Mestre retira sua disponibilidade.
