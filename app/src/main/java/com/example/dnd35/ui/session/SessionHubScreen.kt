@@ -1259,15 +1259,23 @@ private fun PlayerJoinContent(viewModel: SessionViewModel, characterViewModel: C
                     })
                 }
                 SessionAreaTab.RESOURCES -> {
-                    LootChestSection(items = s.lootChest, isDm = false, onRequestTake = { item ->
-                                                "Pedido de pegar \"" + item.name + "\" do baú de loot",
-                    })
-                    s.shop?.let { shop ->
-                        Spacer(modifier = Modifier.height(16.dp))
-                        PlayerShopSection(shop = shop, onRequestBuy = { item ->
-                                                "Pedido de comprar \"" + item.name + "\" (" + item.costGp + " po)",
+                        LootChestSection(items = s.lootChest, isDm = false, onRequestTake = { item ->
+                            viewModel.requestTakeLoot(
+                                item.id,
+                                "Pedido de pegar " + item.name + " do baú de loot",
+                                linkedCharacter
+                            )
                         })
-                    }
+                        s.shop?.let { shop ->
+                            Spacer(modifier = Modifier.height(16.dp))
+                            PlayerShopSection(shop = shop, onRequestBuy = { item ->
+                                viewModel.requestBuyFromShop(
+                                    item.id,
+                                    "Pedido de comprar " + item.name + " (" + item.costGp + " po)",
+                                    linkedCharacter
+                                )
+                            })
+                        }
                 }
             }
         }
