@@ -125,6 +125,28 @@ internal fun calculateHpAdjustment(currentHp: Int, maxHp: Int, tempHp: Int, delt
 internal fun CharacterEntity.withSessionCombatHp(currentHp: Int, tempHp: Int): CharacterEntity =
     copy(currentHp = currentHp, tempHp = tempHp.coerceAtLeast(0))
 
+/** Substitui um item e mantém exclusivo o espaço corporal quando ele é equipado. */
+internal fun replaceInventoryItemInList(
+    items: List<CharacterInventoryItem>,
+    updatedItem: CharacterInventoryItem
+): List<CharacterInventoryItem> {
+    if (items.none { it.id == updatedItem.id }) return items
+
+    val targetSlot = updatedItem.equippedSlot
+    return items.map { existing ->
+        when {
+            existing.id == updatedItem.id -> updatedItem
+            updatedItem.equipped &&
+                targetSlot != Dnd35Rules.EquipmentSlots.NONE &&
+                existing.equippedSlot == targetSlot -> existing.copy(
+                    equipped = false,
+                    equippedSlot = Dnd35Rules.EquipmentSlots.NONE
+                )
+            else -> existing
+        }
+    }
+}
+
 class CharacterViewModel(application: Application) : AndroidViewModel(application) {
 
     // Serializa snapshots do personagem para que gravações concorrentes não sobrescrevam estados mais recentes.
@@ -517,28 +539,6 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
         val list = CharacterJsonAdapters.deserializeInventory(curr.inventoryJson).toMutableList()
         list.add(item)
         persistCharacter(curr.copy(inventoryJson = CharacterJsonAdapters.serializeInventory(list)))
-    }
-
-    /** Substitui um item e mantém exclusivo o espaço corporal quando ele é equipado. */
-    internal fun replaceInventoryItemInList(
-        items: List<CharacterInventoryItem>,
-        updatedItem: CharacterInventoryItem
-    ): List<CharacterInventoryItem> {
-        if (items.none { it.id == updatedItem.id }) return items
-
-        val targetSlot = updatedItem.equippedSlot
-        return items.map { existing ->
-            when {
-                existing.id == updatedItem.id -> updatedItem
-                updatedItem.equipped &&
-                    targetSlot != Dnd35Rules.EquipmentSlots.NONE &&
-                    existing.equippedSlot == targetSlot -> existing.copy(
-                        equipped = false,
-                        equippedSlot = Dnd35Rules.EquipmentSlots.NONE
-                    )
-                else -> existing
-            }
-        }
     }
 
     /** Atualiza um item em uma única gravação, respeitando o espaço escolhido no formulário. */
