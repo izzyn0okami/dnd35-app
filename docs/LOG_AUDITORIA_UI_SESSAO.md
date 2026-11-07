@@ -599,3 +599,13 @@
 - A primeira execução da CI apontou erro Kotlin em SessionHubScreen.kt: a anotação @Composable havia sido aplicada por engano à classe de dados PrivateChatUiMessage, e não à função SessionFloatingPanels.
 - A anotação foi removida da classe de dados e aplicada à função composable. Os erros subsequentes de chamadas Compose fora de contexto eram consequência do mesmo posicionamento incorreto.
 - Correção registrada no commit ae418df. Aguardando nova CI para confirmar compilação e testes.
+
+
+## 2026-11-07 — Merge da reformulação multiplayer (PR #326)
+
+- PR #326 foi mesclada por squash em `main` após autorização explícita do usuário.
+- Commit de merge: `dc15a07bc4e518641ff4bfc02fcbda898209be2b`.
+- CI Android build #2025 (run `42426108990`), executada no head `1b064d59b961e3e08e2e3fcf6c569f94d32c81d9`: sucesso. Testes unitários, compilação Android, upload dos esquemas Room e upload do APK debug concluídos.
+- A PR permanece integrada; não abrir PR paralela para os mesmos painéis ou chat.
+- A validação manual em dois aparelhos ainda deve confirmar mensagens privadas nos dois sentidos, seleção de destinatário pelo Mestre, fechamento/reabertura dos painéis sem desconexão, disponibilidade contextual e entrega de loot/compras com painéis fechados.
+- Limitação conhecida mantida: o histórico visual local do Jogador não é persistido no aparelho após a composição/tela ser destruída; o histórico autoritativo permanece no Mestre.
