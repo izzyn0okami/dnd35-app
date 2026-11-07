@@ -548,3 +548,54 @@
 - A substituição do item passa a liberar outro item que já ocupe o mesmo espaço corporal exclusivo, evitando dois itens equipados no mesmo slot.
 - Adicionados testes unitários para alteração de categoria/espaço, liberação do item anterior e preservação do inventário quando o ID não existe.
 - A CI ainda precisa validar testes e compilação antes de qualquer merge.
+
+## 2026-11-07 — Primeira implementação da UI multiplayer contextual
+
+### Decisão de produto retomada
+- A ficha do personagem permanece como interface principal durante toda a sessão.
+- Combate, baú de loot e loja de NPC são ferramentas temporárias em painéis independentes, abertos somente quando relevantes.
+- Fechar um painel não encerra a sessão, não desconecta participantes e não altera o estado persistido.
+- A reformulação visual não modifica regras de D&D 3.5, cálculos da ficha ou protocolo de rede.
+
+### Alterações nesta branch
+- A tela de Sessão de Mesa deixou de substituir a ficha: ela agora abre em uma janela própria sobre a ficha, que permanece montada ao fundo.
+- Adicionada uma faixa de ações contextuais para abrir Combate, Loot e Loja sem abandonar a ficha.
+- Para o Mestre, os painéis de combate e recursos permanecem acessíveis para iniciar encontros, abastecer o baú e abrir lojas.
+- Para o Jogador, Combate aparece somente durante um encontro ativo; Loot e Loja aparecem quando há conteúdo disponibilizado pelo Mestre.
+- Cada painel usa uma janela independente, com largura máxima e rolagem vertical para acomodar telas menores.
+- O fechamento de qualquer janela altera somente o estado visual local.
+- Os coletores de concessões de loot e compras foram movidos para DndMainScreen, para que a gravação na ficha vinculada e o ACK continuem funcionando mesmo quando a janela da Sessão de Mesa ou os painéis contextuais estiverem fechados.
+- O retorno da aplicação de grants agora é informado por notificação do sistema; o ACK continua sendo enviado somente depois de applySessionGrant() concluir com sucesso.
+
+### Limites e validação
+- Esta é a primeira fatia visual da reformulação; a organização interna de Sessão, roster, QR Code, chat e pedidos continua no painel de gerenciamento da sessão.
+- Não foi alterado o estado de domínio nem a persistência Room.
+- A CI ainda precisa executar testDebugUnitTest, compilação e assembleDebug. Não considerar esta branch validada até o workflow concluir.
+- Após CI verde, testar em aparelhos: ficha visível durante a sessão; abertura/fechamento repetido dos três painéis; combate encerrado removendo a ação do lado do jogador; loot/loja surgindo e desaparecendo conforme disponibilidade; concessões persistidas e ACK mesmo com painéis fechados; rolagem em telas pequenas.
+
+
+## 2026-11-07 — Chat privado em balões na interface multiplayer
+
+### Decisão de produto
+- Mensagens privadas devem aparecer em uma janela de chat flutuante sobre a ficha, com balões alinhados à direita para mensagens enviadas e à esquerda para mensagens recebidas.
+- Abrir ou fechar o chat não altera a sessão nem desconecta participantes.
+- O Mestre escolhe o jogador conectado destinatário; a conversa exibe o histórico privado já mantido pelo servidor.
+- O Jogador pode enviar mensagens ao Mestre e vê, na mesma janela, as mensagens recebidas e as enviadas durante a composição atual da tela.
+
+### Implementação na PR #326
+- Adicionado o botão **Chat** à faixa de ações multiplayer.
+- Criada janela flutuante independente de mensagens privadas, com identificação do remetente, balões distintos, rolagem do histórico e campo de envio.
+- No lado do Mestre, o destinatário é selecionável entre os jogadores conectados e o histórico é filtrado pelo nome do participante selecionado.
+- No lado do Jogador, mensagens recebidas são coletadas enquanto a ficha está visível; mensagens enviadas também são acrescentadas ao histórico visual local.
+- Removidos os formulários antigos de mensagens privadas da tela de gerenciamento para evitar duplicação; o acesso principal passa a ser o botão Chat.
+- O transporte e a persistência autoritativa das mensagens continuam usando o sistema privado existente da sessão; não foi criado um segundo protocolo.
+
+### Limites e validação
+- O histórico completo persistido continua disponível no Mestre. No Jogador, o histórico visual local é mantido enquanto a tela/composição permanece ativa; não foi acrescentada persistência local de chat no aparelho do Jogador.
+- A CI deve validar compilação e testes após as alterações. O teste físico Mestre/Jogador deve confirmar envio nos dois sentidos, seleção do destinatário pelo Mestre, rolagem e fechamento/reabertura do painel sem desconexão.
+
+
+### Correção após CI #2023
+- A primeira execução da CI apontou erro Kotlin em SessionHubScreen.kt: a anotação @Composable havia sido aplicada por engano à classe de dados PrivateChatUiMessage, e não à função SessionFloatingPanels.
+- A anotação foi removida da classe de dados e aplicada à função composable. Os erros subsequentes de chamadas Compose fora de contexto eram consequência do mesmo posicionamento incorreto.
+- Correção registrada no commit ae418df. Aguardando nova CI para confirmar compilação e testes.

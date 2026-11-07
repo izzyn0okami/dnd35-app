@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.lazy.LazyColumn
@@ -62,6 +63,7 @@ import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.Dialog
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.dnd35.model.CharacterEntity
 import com.example.dnd35.model.CharacterInventoryItem
@@ -86,6 +88,7 @@ import com.journeyapps.barcodescanner.ScanOptions
 
 private enum class SessionHubMode { SELECT, DM, PLAYER }
 private enum class SessionAreaTab { SESSION, COMBAT, RESOURCES }
+private enum class SessionFloatingPanel { COMBAT, LOOT, SHOP, CHAT }
 
 /**
  * Tela de "Sessão de Mesa": ponto de entrada para o modo Mestre (hospedar) ou Jogador (entrar),
@@ -260,7 +263,6 @@ private fun DmHostContent(viewModel: SessionViewModel, characterViewModel: Chara
         }
         is DmSessionUiState.Hosting -> {
             Text("Sessão ativa", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
-            SessionAreaNavigation(selectedArea, onSelectArea)
             Spacer(modifier = Modifier.height(12.dp))
             when (selectedArea) {
                 SessionAreaTab.SESSION -> {
@@ -274,8 +276,7 @@ private fun DmHostContent(viewModel: SessionViewModel, characterViewModel: Chara
                         PendingRequestsSection(requests = s.pendingRequests, onApprove = { viewModel.approveRequest(it) }, onDeny = { viewModel.denyRequest(it) })
                     }
                     Spacer(modifier = Modifier.height(16.dp))
-                    DmPrivateChatSection(players = s.participants.filter { it.role == ParticipantRole.PLAYER && it.connected }, chatLog = s.privateChatLog,
-                        onSend = { participantId, text -> viewModel.sendPrivateMessageToPlayer(participantId, text) })
+                    Text("As mensagens privadas ficam disponíveis no botão Chat sobre a ficha.", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                     Spacer(modifier = Modifier.height(16.dp))
                     OutlinedButton(onClick = { showEndConfirmation = true }) { Text("Encerrar sessão", color = DndCrimson) }
                     Spacer(modifier = Modifier.height(20.dp))
@@ -1221,30 +1222,6 @@ private fun PlayerJoinContent(viewModel: SessionViewModel, characterViewModel: C
         }
         is PlayerSessionUiState.Connected -> {
             val feedback by viewModel.playerRequestFeedback.collectAsStateWithLifecycle()
-            var lootFeedback by remember { mutableStateOf<String?>(null) }
-            var shopFeedback by remember { mutableStateOf<String?>(null) }
-            val receivedDmMessages = remember { mutableStateListOf<String>() }
-            LaunchedEffect(viewModel) {
-                viewModel.lootGranted.collect { grant ->
-                    if (characterViewModel.applySessionGrant(grant)) {
-                        viewModel.acknowledgeResourceGrant(grant.grantId)
-                        lootFeedback = "Você recebeu \"${grant.item.name}\" do baú de loot!"
-                    } else {
-                        lootFeedback = "Não foi possível localizar ou atualizar a ficha vinculada. A entrega permanece pendente."
-                    }
-                }
-            }
-            LaunchedEffect(viewModel) {
-                viewModel.shopPurchaseGranted.collect { grant ->
-                    if (characterViewModel.applySessionGrant(grant)) {
-                        viewModel.acknowledgeResourceGrant(grant.grantId)
-                        shopFeedback = "Você comprou \"${grant.item.name}\" por ${grant.item.costGp} po!"
-                    } else {
-                        shopFeedback = "Não foi possível atualizar a ficha vinculada. A entrega permanece pendente."
-                    }
-                }
-            }
-            LaunchedEffect(viewModel) { viewModel.playerPrivateMessages.collect { text -> receivedDmMessages.add(text) } }
             Text("Conectado!", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold, color = DndGold)
             feedback?.let { message ->
                 Spacer(modifier = Modifier.height(8.dp))
@@ -1253,27 +1230,12 @@ private fun PlayerJoinContent(viewModel: SessionViewModel, characterViewModel: C
                     TextButton(onClick = { viewModel.clearRequestFeedback() }) { Text("OK") }
                 }
             }
-            lootFeedback?.let { message ->
-                Spacer(modifier = Modifier.height(8.dp))
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text(message, style = MaterialTheme.typography.bodySmall, modifier = Modifier.weight(1f))
-                    TextButton(onClick = { lootFeedback = null }) { Text("OK") }
-                }
-            }
-            shopFeedback?.let { message ->
-                Spacer(modifier = Modifier.height(8.dp))
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text(message, style = MaterialTheme.typography.bodySmall, modifier = Modifier.weight(1f))
-                    TextButton(onClick = { shopFeedback = null }) { Text("OK") }
-                }
-            }
-            SessionAreaNavigation(selectedArea, onSelectArea)
             Spacer(modifier = Modifier.height(12.dp))
             when (selectedArea) {
                 SessionAreaTab.SESSION -> {
                     ParticipantRoster(s.participants, emptyMap())
                     Spacer(modifier = Modifier.height(16.dp))
-                    PlayerPrivateChatSection(receivedMessages = receivedDmMessages, onSend = { text -> viewModel.sendPrivateMessageToDm(text) })
+                    Text("As mensagens privadas ficam disponíveis no botão Chat sobre a ficha.", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                     if (selectedCharacter != null) {
                         Spacer(modifier = Modifier.height(16.dp))
                         OutlinedButton(onClick = { selectedCharacter?.let { viewModel.requestCharacterUpdate(it, "Atualização da ficha de ${it.name}") } }) {
@@ -1292,16 +1254,386 @@ private fun PlayerJoinContent(viewModel: SessionViewModel, characterViewModel: C
                     })
                 }
                 SessionAreaTab.RESOURCES -> {
-                    LootChestSection(items = s.lootChest, isDm = false, onRequestTake = { item ->
-                        viewModel.requestTakeLoot(item.id, "Pedido de pegar \"${item.name}\" do baú de loot", linkedCharacter)
-                    })
-                    s.shop?.let { shop ->
-                        Spacer(modifier = Modifier.height(16.dp))
-                        PlayerShopSection(shop = shop, onRequestBuy = { item ->
-                            viewModel.requestBuyFromShop(item.id, "Pedido de comprar \"${item.name}\" (${item.costGp} po)", linkedCharacter)
+                        LootChestSection(items = s.lootChest, isDm = false, onRequestTake = { item ->
+                            viewModel.requestTakeLoot(
+                                item.id,
+                                "Pedido de pegar " + item.name + " do baú de loot",
+                                linkedCharacter
+                            )
                         })
+                        s.shop?.let { shop ->
+                            Spacer(modifier = Modifier.height(16.dp))
+                            PlayerShopSection(shop = shop, onRequestBuy = { item ->
+                                viewModel.requestBuyFromShop(
+                                    item.id,
+                                    "Pedido de comprar " + item.name + " (" + item.costGp + " po)",
+                                    linkedCharacter
+                                )
+                            })
+                        }
+                }
+            }
+        }
+    }
+}
+
+
+/**
+ * Ações multiplayer contextuais sobre a ficha principal. Cada painel tem seu próprio ciclo
+ * de abertura/fechamento; fechar um painel nunca altera o estado da sessão.
+ */
+private data class PrivateChatUiMessage(val sender: String, val text: String, val fromMe: Boolean)
+
+@Composable
+fun SessionFloatingPanels(
+    viewModel: SessionViewModel,
+    characterViewModel: CharacterViewModel
+) {
+    val dmState by viewModel.dmState.collectAsStateWithLifecycle()
+    val playerState by viewModel.playerState.collectAsStateWithLifecycle()
+    val myCharacters by characterViewModel.allCharacters.collectAsStateWithLifecycle()
+    val hosting = dmState as? DmSessionUiState.Hosting
+    val connected = playerState as? PlayerSessionUiState.Connected
+    val linkedCharacter = myCharacters.firstOrNull { it.id == connected?.characterId }
+    var activePanel by remember { mutableStateOf<SessionFloatingPanel?>(null) }
+    val playerChatMessages = remember(viewModel) { mutableStateListOf<PrivateChatUiMessage>() }
+    LaunchedEffect(viewModel) {
+        viewModel.playerPrivateMessages.collect { text ->
+            playerChatMessages.add(PrivateChatUiMessage("Mestre", text, fromMe = false))
+        }
+    }
+    LaunchedEffect(playerState) {
+        if (playerState is PlayerSessionUiState.Idle) playerChatMessages.clear()
+    }
+    var selectedChatPlayer by remember { mutableStateOf<Participant?>(null) }
+
+    // No lado do Jogador, o painel fecha assim que o Mestre retira sua disponibilidade.
+    LaunchedEffect(connected?.combat, connected?.lootChest, connected?.shop) {
+        if (connected != null) {
+            if (connected.combat == null && activePanel == SessionFloatingPanel.COMBAT) {
+                activePanel = null
+            }
+            if (connected.lootChest.isEmpty() && activePanel == SessionFloatingPanel.LOOT) {
+                activePanel = null
+            }
+            if (connected.shop == null && activePanel == SessionFloatingPanel.SHOP) {
+                activePanel = null
+            }
+        }
+    }
+
+    if (hosting != null || connected != null) {
+        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.TopEnd) {
+            Card(
+                modifier = Modifier.padding(8.dp),
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
+            ) {
+                Row(
+                    modifier = Modifier.padding(horizontal = 4.dp, vertical = 2.dp),
+                    horizontalArrangement = Arrangement.spacedBy(2.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    if (hosting != null || connected?.combat != null) {
+                        TextButton(
+                            onClick = { activePanel = SessionFloatingPanel.COMBAT },
+                            modifier = Modifier.testTag("session_quick_combat")
+                        ) { Text("Combate") }
+                    }
+                    if (hosting != null || connected?.lootChest?.isNotEmpty() == true) {
+                        TextButton(
+                            onClick = { activePanel = SessionFloatingPanel.LOOT },
+                            modifier = Modifier.testTag("session_quick_loot")
+                        ) { Text("Loot") }
+                    }
+                    if (hosting != null || connected?.shop != null) {
+                        TextButton(
+                            onClick = { activePanel = SessionFloatingPanel.SHOP },
+                            modifier = Modifier.testTag("session_quick_shop")
+                        ) { Text("Loja") }
+                    }
+                    TextButton(
+                        onClick = { activePanel = SessionFloatingPanel.CHAT },
+                        modifier = Modifier.testTag("session_quick_chat")
+                    ) { Text("Chat") }
+                }
+            }
+        }
+    }
+
+    val panel = activePanel
+    if (panel != null && (hosting != null || connected != null)) {
+        Dialog(onDismissRequest = { activePanel = null }) {
+            Card(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .widthIn(max = 560.dp)
+                    .heightIn(max = 620.dp)
+            ) {
+                Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    ) {
+                        Text(
+                            when (panel) {
+                                SessionFloatingPanel.COMBAT -> "Combate"
+                                SessionFloatingPanel.LOOT -> "Baú de loot"
+                                SessionFloatingPanel.SHOP -> "Loja de NPC"
+                                SessionFloatingPanel.CHAT -> "Mensagens privadas"
+                            },
+                            style = MaterialTheme.typography.titleLarge,
+                            fontWeight = FontWeight.Bold
+                        )
+                        TextButton(onClick = { activePanel = null }) { Text("Fechar") }
+                    }
+                    Column(
+                        modifier = Modifier.weight(1f).then(
+                            if (panel == SessionFloatingPanel.CHAT) Modifier
+                            else Modifier.verticalScroll(rememberScrollState())
+                        )
+                    ) {
+                        when (panel) {
+                            SessionFloatingPanel.COMBAT -> {
+                                when {
+                                    hosting != null -> CombatSection(viewModel, characterViewModel, hosting)
+                                    connected != null && connected.combat != null -> CombatTracker(
+                                        combat = connected.combat,
+                                        isDm = false,
+                                        selfId = connected.selfId,
+                                        onRequestHpChange = { combatantId, delta ->
+                                            val summary = if (delta > 0) {
+                                                "Pedido de dano ($delta PV) em combate"
+                                            } else {
+                                                "Pedido de cura (" + (-delta) + " PV) em combate"
+                                            }
+                                            viewModel.requestCombatHpChange(combatantId, delta, summary)
+                                        }
+                                    )
+                                    else -> Text(
+                                        "O Mestre ainda não iniciou um combate.",
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                                    )
+                                }
+                            }
+                            SessionFloatingPanel.LOOT -> {
+                                when {
+                                    hosting != null -> LootChestSection(
+                                        items = hosting.lootChest,
+                                        isDm = true,
+                                        onAddItem = { viewModel.addLootItem(it) },
+                                        onRemoveItem = { viewModel.removeLootItem(it) }
+                                    )
+                                    connected != null -> LootChestSection(
+                                        items = connected.lootChest,
+                                        isDm = false,
+                                        onRequestTake = { item ->
+                                            viewModel.requestTakeLoot(
+                                                item.id,
+                                                "Pedido de pegar " + item.name + " do baú de loot",
+                                                linkedCharacter
+                                            )
+                                        }
+                                    )
+                                }
+                            }
+                            SessionFloatingPanel.SHOP -> {
+                                when {
+                                    hosting != null -> DmShopSection(
+                                        shop = hosting.shop,
+                                        characterViewModel = characterViewModel,
+                                        onOpenShop = { npcId, npcName, items ->
+                                            viewModel.openShop(npcId, npcName, items)
+                                        },
+                                        onCloseShop = { viewModel.closeShop() }
+                                    )
+                                    connected != null && connected.shop != null -> PlayerShopSection(
+                                        shop = connected.shop,
+                                        onRequestBuy = { item ->
+                                            viewModel.requestBuyFromShop(
+                                                item.id,
+                                                "Pedido de comprar " + item.name + " (" + item.costGp + " po)",
+                                                linkedCharacter
+                                            )
+                                        }
+                                    )
+                                    else -> Text(
+                                        "O Mestre ainda não disponibilizou uma loja.",
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                                    )
+                                }
+                            }
+                            SessionFloatingPanel.CHAT -> {
+                                when {
+                                    hosting != null -> {
+                                        val players = hosting.participants.filter {
+                                            it.role == ParticipantRole.PLAYER && it.connected
+                                        }
+                                        val currentChatPlayer = players.firstOrNull { it.id == selectedChatPlayer?.id }
+                                            ?: players.firstOrNull()
+                                        DmFloatingPrivateChat(
+                                            players = players,
+                                            selectedPlayer = currentChatPlayer,
+                                            chatLog = hosting.privateChatLog,
+                                            onSelectPlayer = { selectedChatPlayer = it },
+                                            onSend = { player, message ->
+                                                viewModel.sendPrivateMessageToPlayer(player.id, message)
+                                            }
+                                        )
+                                    }
+                                    connected != null -> PlayerFloatingPrivateChat(
+                                        messages = playerChatMessages,
+                                        onSend = { message ->
+                                            playerChatMessages.add(PrivateChatUiMessage("Você", message, fromMe = true))
+                                            viewModel.sendPrivateMessageToDm(message)
+                                        }
+                                    )
+                                }
+                            }
+                        }
                     }
                 }
+            }
+        }
+    }
+}
+
+
+@Composable
+private fun DmFloatingPrivateChat(
+    players: List<Participant>,
+    selectedPlayer: Participant?,
+    chatLog: List<PrivateChatEntry>,
+    onSelectPlayer: (Participant) -> Unit,
+    onSend: (Participant, String) -> Unit
+) {
+    var expanded by remember { mutableStateOf(false) }
+    var message by remember { mutableStateOf("") }
+    Column(modifier = Modifier.fillMaxSize()) {
+        Box {
+            OutlinedButton(onClick = { expanded = true }, enabled = players.isNotEmpty()) {
+                Text(selectedPlayer?.displayName ?: "Nenhum jogador conectado")
+                Icon(Icons.Default.ArrowDropDown, contentDescription = null)
+            }
+            DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
+                players.forEach { player ->
+                    DropdownMenuItem(
+                        text = { Text(player.displayName) },
+                        onClick = {
+                            onSelectPlayer(player)
+                            expanded = false
+                        }
+                    )
+                }
+            }
+        }
+        Spacer(modifier = Modifier.height(8.dp))
+        Column(
+            modifier = Modifier.weight(1f).fillMaxWidth().verticalScroll(rememberScrollState()),
+            verticalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            val conversation = chatLog.filter { selectedPlayer == null || it.participantName == selectedPlayer.displayName }
+            if (conversation.isEmpty()) {
+                Text(
+                    if (selectedPlayer == null) "Conecte um jogador para iniciar uma conversa."
+                    else "Ainda não há mensagens nesta conversa.",
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    style = MaterialTheme.typography.bodySmall
+                )
+            }
+            conversation.forEach { entry ->
+                ChatMessageBubble(
+                    sender = if (entry.fromDm) "Você" else entry.participantName,
+                    text = entry.text,
+                    fromMe = entry.fromDm
+                )
+            }
+        }
+        Spacer(modifier = Modifier.height(8.dp))
+        OutlinedTextField(
+            value = message,
+            onValueChange = { message = it },
+            label = { Text("Mensagem privada") },
+            modifier = Modifier.fillMaxWidth(),
+            enabled = selectedPlayer != null
+        )
+        Spacer(modifier = Modifier.height(6.dp))
+        Button(
+            onClick = {
+                selectedPlayer?.let { player ->
+                    onSend(player, message.trim())
+                    message = ""
+                }
+            },
+            enabled = selectedPlayer != null && message.isNotBlank(),
+            modifier = Modifier.align(Alignment.End)
+        ) { Text("Enviar") }
+    }
+}
+
+@Composable
+private fun PlayerFloatingPrivateChat(
+    messages: List<PrivateChatUiMessage>,
+    onSend: (String) -> Unit
+) {
+    var message by remember { mutableStateOf("") }
+    Column(modifier = Modifier.fillMaxSize()) {
+        Column(
+            modifier = Modifier.weight(1f).fillMaxWidth().verticalScroll(rememberScrollState()),
+            verticalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            if (messages.isEmpty()) {
+                Text(
+                    "Envie uma mensagem privada ao Mestre. Somente ele poderá recebê-la.",
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    style = MaterialTheme.typography.bodySmall
+                )
+            }
+            messages.forEach { entry ->
+                ChatMessageBubble(entry.sender, entry.text, entry.fromMe)
+            }
+        }
+        Spacer(modifier = Modifier.height(8.dp))
+        OutlinedTextField(
+            value = message,
+            onValueChange = { message = it },
+            label = { Text("Mensagem privada ao Mestre") },
+            modifier = Modifier.fillMaxWidth()
+        )
+        Spacer(modifier = Modifier.height(6.dp))
+        Button(
+            onClick = {
+                onSend(message.trim())
+                message = ""
+            },
+            enabled = message.isNotBlank(),
+            modifier = Modifier.align(Alignment.End)
+        ) { Text("Enviar") }
+    }
+}
+
+@Composable
+private fun ChatMessageBubble(sender: String, text: String, fromMe: Boolean) {
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = if (fromMe) Arrangement.End else Arrangement.Start
+    ) {
+        Card(
+            modifier = Modifier.widthIn(max = 300.dp),
+            shape = RoundedCornerShape(14.dp),
+            colors = CardDefaults.cardColors(
+                containerColor = if (fromMe) MaterialTheme.colorScheme.primaryContainer
+                else MaterialTheme.colorScheme.surfaceVariant
+            )
+        ) {
+            Column(modifier = Modifier.padding(horizontal = 12.dp, vertical = 9.dp)) {
+                Text(
+                    sender,
+                    style = MaterialTheme.typography.labelSmall,
+                    fontWeight = FontWeight.Bold,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+                Text(text, style = MaterialTheme.typography.bodyMedium)
             }
         }
     }
