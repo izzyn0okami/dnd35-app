@@ -1392,7 +1392,7 @@ fun SessionFloatingPanels(
                                         onRequestTake = { item ->
                                             viewModel.requestTakeLoot(
                                                 item.id,
-                                                "Pedido de pegar \\"\${item.name}\\" do baú de loot",
+                                                "Pedido de pegar " + item.name + " do baú de loot",
                                                 linkedCharacter
                                             )
                                         }
@@ -1414,7 +1414,7 @@ fun SessionFloatingPanels(
                                         onRequestBuy = { item ->
                                             viewModel.requestBuyFromShop(
                                                 item.id,
-                                                "Pedido de comprar \\"\${item.name}\\" (\${item.costGp} po)",
+                                                "Pedido de comprar " + item.name + " (" + item.costGp + " po)",
                                                 linkedCharacter
                                             )
                                         }
