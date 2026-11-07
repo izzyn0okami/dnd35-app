@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.layout.navigationBars
@@ -72,6 +73,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.Dialog
 import android.widget.Toast
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.dnd35.backup.Dnd35FileKind
@@ -85,6 +87,7 @@ import com.example.dnd35.ui.tabs.OverviewCombatTab
 import com.example.dnd35.ui.tabs.SkillsTab
 import com.example.dnd35.ui.tabs.SpellsTab
 import com.example.dnd35.ui.session.SessionHubScreen
+import com.example.dnd35.ui.session.SessionFloatingPanels
 import com.example.dnd35.viewmodel.CharacterViewModel
 import com.example.dnd35.viewmodel.SessionViewModel
 import com.example.dnd35.viewmodel.PlayerSessionUiState
@@ -136,6 +139,35 @@ fun DndMainScreen(
                 currentHp = ownCombatant.currentHp,
                 tempHp = ownCombatant.tempHp
             )
+        }
+    }
+
+    // Concessões de loot e compras são processadas mesmo quando nenhum painel está aberto.
+    LaunchedEffect(sessionViewModel, viewModel) {
+        val activeSession = sessionViewModel ?: return@LaunchedEffect
+        activeSession.lootGranted.collect { grant ->
+            val applied = viewModel.applySessionGrant(grant)
+            if (applied) activeSession.acknowledgeResourceGrant(grant.grantId)
+            Toast.makeText(
+                context,
+                if (applied) "Você recebeu \"${grant.item.name}\" do baú de loot."
+                else "A entrega de loot continua pendente: não foi possível atualizar a ficha vinculada.",
+                Toast.LENGTH_LONG
+            ).show()
+        }
+    }
+
+    LaunchedEffect(sessionViewModel, viewModel) {
+        val activeSession = sessionViewModel ?: return@LaunchedEffect
+        activeSession.shopPurchaseGranted.collect { grant ->
+            val applied = viewModel.applySessionGrant(grant)
+            if (applied) activeSession.acknowledgeResourceGrant(grant.grantId)
+            Toast.makeText(
+                context,
+                if (applied) "Compra concluída: \"${grant.item.name}\" por ${grant.item.costGp} po."
+                else "A compra continua pendente: não foi possível atualizar a ficha vinculada.",
+                Toast.LENGTH_LONG
+            ).show()
         }
     }
 
@@ -399,13 +431,7 @@ fun DndMainScreen(
             val char = activeCharacter
             val calc = computedStats
 
-            if (showSessionHub && sessionViewModel != null) {
-                SessionHubScreen(
-                    viewModel = sessionViewModel,
-                    characterViewModel = viewModel,
-                    onClose = { showSessionHub = false }
-                )
-            } else if (char == null && characters.isEmpty()) {
+            if (char == null && characters.isEmpty()) {
                 Column(
                     modifier = Modifier
                         .fillMaxSize()
@@ -457,6 +483,23 @@ fun DndMainScreen(
                     3 -> FeatsTab(viewModel = viewModel, stats = calc, character = char)
                     4 -> SpellsTab(viewModel = viewModel, stats = calc, character = char)
                 }
+            }
+
+            // A ficha permanece como conteúdo principal; as ferramentas multiplayer são contextuais.
+            if (sessionViewModel != null) {
+                SessionFloatingPanels(viewModel = sessionViewModel, characterViewModel = viewModel)
+            }
+        }
+    }
+
+    if (showSessionHub && sessionViewModel != null) {
+        Dialog(onDismissRequest = { showSessionHub = false }) {
+            Card(modifier = Modifier.fillMaxWidth().heightIn(max = 640.dp)) {
+                SessionHubScreen(
+                    viewModel = sessionViewModel,
+                    characterViewModel = viewModel,
+                    onClose = { showSessionHub = false }
+                )
             }
         }
     }
