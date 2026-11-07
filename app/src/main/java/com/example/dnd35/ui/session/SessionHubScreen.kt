@@ -1282,9 +1282,9 @@ private fun PlayerJoinContent(viewModel: SessionViewModel, characterViewModel: C
  * Ações multiplayer contextuais sobre a ficha principal. Cada painel tem seu próprio ciclo
  * de abertura/fechamento; fechar um painel nunca altera o estado da sessão.
  */
-@Composable
 private data class PrivateChatUiMessage(val sender: String, val text: String, val fromMe: Boolean)
 
+@Composable
 fun SessionFloatingPanels(
     viewModel: SessionViewModel,
     characterViewModel: CharacterViewModel
