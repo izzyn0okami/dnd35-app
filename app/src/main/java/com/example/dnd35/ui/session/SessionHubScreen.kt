@@ -1466,12 +1466,11 @@ fun SessionFloatingPanels(
                                         val players = hosting.participants.filter {
                                             it.role == ParticipantRole.PLAYER && it.connected
                                         }
-                                        if (selectedChatPlayer?.id !in players.map { it.id }) {
-                                            selectedChatPlayer = players.firstOrNull()
-                                        }
+                                        val currentChatPlayer = players.firstOrNull { it.id == selectedChatPlayer?.id }
+                                            ?: players.firstOrNull()
                                         DmFloatingPrivateChat(
                                             players = players,
-                                            selectedPlayer = selectedChatPlayer,
+                                            selectedPlayer = currentChatPlayer,
                                             chatLog = hosting.privateChatLog,
                                             onSelectPlayer = { selectedChatPlayer = it },
                                             onSend = { player, message ->
