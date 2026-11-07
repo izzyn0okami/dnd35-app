@@ -1260,12 +1260,12 @@ private fun PlayerJoinContent(viewModel: SessionViewModel, characterViewModel: C
                 }
                 SessionAreaTab.RESOURCES -> {
                     LootChestSection(items = s.lootChest, isDm = false, onRequestTake = { item ->
-                        viewModel.requestTakeLoot(item.id, "Pedido de pegar \"${item.name}\" do baú de loot", linkedCharacter)
+                                                "Pedido de pegar \"" + item.name + "\" do baú de loot",
                     })
                     s.shop?.let { shop ->
                         Spacer(modifier = Modifier.height(16.dp))
                         PlayerShopSection(shop = shop, onRequestBuy = { item ->
-                            viewModel.requestBuyFromShop(item.id, "Pedido de comprar \"${item.name}\" (${item.costGp} po)", linkedCharacter)
+                                                "Pedido de comprar \"" + item.name + "\" (" + item.costGp + " po)",
                         })
                     }
                 }
@@ -1367,7 +1367,7 @@ fun SessionFloatingPanels(
                                             val summary = if (delta > 0) {
                                                 "Pedido de dano ($delta PV) em combate"
                                             } else {
-                                                "Pedido de cura ($\{-delta} PV) em combate"
+                                                "Pedido de cura (" + (-delta) + " PV) em combate"
                                             }
                                             viewModel.requestCombatHpChange(combatantId, delta, summary)
                                         }
