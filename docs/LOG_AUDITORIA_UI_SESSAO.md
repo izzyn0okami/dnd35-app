@@ -615,7 +615,7 @@
 
 ### Defeito confirmado
 - Os dois pontos de exibição do histórico privado do Mestre (painel de gerenciamento e painel flutuante) não isolavam corretamente as conversas: um filtrava por `participantName`, embora cada `PrivateChatEntry` já possua `participantId` persistente, e o outro mostrava as últimas mensagens de todos os participantes.
-- Dois participantes com o mesmo nome podiam ver conversas misturadas. Além disso, quando não havia jogador conectado/selecionado, a condição anterior aceitava todas as mensagens do histórico, expondo conversas de participantes desconectados no painel sem destinatário.
+- O Mestre podia ver conversas de participantes diferentes misturadas quando eles usavam o mesmo nome. Além disso, quando não havia jogador conectado/selecionado, a condição anterior aceitava todas as mensagens do histórico, expondo conversas de participantes desconectados no painel sem destinatário.
 
 ### Correção proposta nesta branch
 - Os dois painéis passam a filtrar o histórico pelo ID único do participante; sem seleção, a conversa fica vazia.
