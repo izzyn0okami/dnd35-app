@@ -263,7 +263,6 @@ private fun DmHostContent(viewModel: SessionViewModel, characterViewModel: Chara
         }
         is DmSessionUiState.Hosting -> {
             Text("Sessão ativa", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
-            SessionAreaNavigation(selectedArea, onSelectArea)
             Spacer(modifier = Modifier.height(12.dp))
             when (selectedArea) {
                 SessionAreaTab.SESSION -> {
@@ -1234,7 +1233,6 @@ private fun PlayerJoinContent(viewModel: SessionViewModel, characterViewModel: C
                     TextButton(onClick = { viewModel.clearRequestFeedback() }) { Text("OK") }
                 }
             }
-            SessionAreaNavigation(selectedArea, onSelectArea)
             Spacer(modifier = Modifier.height(12.dp))
             when (selectedArea) {
                 SessionAreaTab.SESSION -> {
