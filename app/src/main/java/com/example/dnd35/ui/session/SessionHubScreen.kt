@@ -1292,6 +1292,21 @@ fun SessionFloatingPanels(
     val linkedCharacter = myCharacters.firstOrNull { it.id == connected?.characterId }
     var activePanel by remember { mutableStateOf<SessionFloatingPanel?>(null) }
 
+    // No lado do Jogador, o painel fecha assim que o Mestre retira sua disponibilidade.
+    LaunchedEffect(connected?.combat, connected?.lootChest, connected?.shop) {
+        if (connected != null) {
+            if (connected.combat == null && activePanel == SessionFloatingPanel.COMBAT) {
+                activePanel = null
+            }
+            if (connected.lootChest.isEmpty() && activePanel == SessionFloatingPanel.LOOT) {
+                activePanel = null
+            }
+            if (connected.shop == null && activePanel == SessionFloatingPanel.SHOP) {
+                activePanel = null
+            }
+        }
+    }
+
     if (hosting != null || connected != null) {
         Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.TopEnd) {
             Card(
