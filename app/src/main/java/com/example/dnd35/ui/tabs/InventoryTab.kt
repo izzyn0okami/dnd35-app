@@ -647,8 +647,6 @@ fun InventoryTab(
                 viewModel.updateInventoryItem(
                     updated.copy(
                         id = item.id,
-                        equipped = item.equipped,
-                        equippedSlot = item.equippedSlot,
                         inBackpack = item.inBackpack
                     )
                 )

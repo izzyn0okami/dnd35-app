@@ -528,3 +528,23 @@
 - O encerramento manual também passou a executar captura do snapshot, fechamento do servidor e confirmação Room em I/O. A UI não aguarda o commit de forma bloqueante; a atualização para Idle/erro ocorre ao concluir, sem sobrescrever uma nova sessão iniciada nesse intervalo.
 - Mantida a ordem interna de cada mutação: o servidor ainda serializa o estado sob seu lock e aguarda o checkpoint antes de transmitir as atualizações. A mudança remove o bloqueio da thread principal, não relaxa a garantia de durabilidade.
 - A CI do SHA anterior ainda estava executando quando esta correção foi enviada. A nova validação deve ser considerada a referência para este commit; não considerar a execução anterior como validação do código atualizado.
+
+
+## 2026-11-07 — Validação integrada da sessão e auditoria de Carga & Itens
+
+### Sessão multiplayer
+- O usuário confirmou que os testes integrados em aparelhos foram concluídos com sucesso após o merge da PR #324.
+- A etapa de validação manual de Mestre/Jogador fica registrada como aprovada pelo usuário; não reabrir a PR #324 nem repetir esses testes sem um novo defeito observado.
+
+### Carga & Itens — constatações da revisão
+- A seleção de categoria e de espaço de equipamento no formulário personalizado já havia sido corrigida na PR #146: os campos usam botões e menus explícitos. Não repetir essa correção visual.
+- A categoria escolhida é incluída no item salvo e permanece editável.
+- Foi identificado um defeito no callback de edição de `InventoryTab.kt`: ele copiava novamente `equipped` e `equippedSlot` do item antigo depois de o formulário produzir os valores novos. Assim, alterações de espaço/equipamento feitas no formulário eram descartadas ao salvar.
+- O fluxo de atualização do ViewModel substituía somente o item e não liberava outro item que já ocupasse o mesmo espaço, ao contrário de `assignItemSlot()`.
+- O botão **Converter** já executa uma consolidação sem perda: calcula o equivalente total em cobre, recompõe PO/PP/PC, zera PL e preserva frações de PC. `CoinConversionTest` cobre combinações de denominações, preservação do valor, frações e entradas inválidas. Não foi identificado defeito que justifique alterar essa função.
+
+### Correção implementada nesta branch
+- O callback de edição agora preserva o ID e o estado de mochila do item, mas aceita os valores atualizados de equipamento e espaço enviados pelo formulário.
+- A substituição do item passa a liberar outro item que já ocupe o mesmo espaço corporal exclusivo, evitando dois itens equipados no mesmo slot.
+- Adicionados testes unitários para alteração de categoria/espaço, liberação do item anterior e preservação do inventário quando o ID não existe.
+- A CI ainda precisa validar testes e compilação antes de qualquer merge.
