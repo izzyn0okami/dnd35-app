@@ -74,6 +74,7 @@ import com.example.dnd35.session.JoinPayload
 import com.example.dnd35.session.Participant
 import com.example.dnd35.session.ParticipantRole
 import com.example.dnd35.session.PrivateChatEntry
+import com.example.dnd35.session.privateChatConversationFor
 import com.example.dnd35.session.ShopSnapshot
 import com.example.dnd35.session.ShopState
 import com.example.dnd35.model.CharacterJsonAdapters
