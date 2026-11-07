@@ -1001,10 +1001,11 @@ private fun DmPrivateChatSection(
         ) {
             Text("Enviar")
         }
-        if (chatLog.isNotEmpty()) {
+        val conversation = privateChatConversationFor(selectedPlayer?.id, chatLog)
+        if (conversation.isNotEmpty()) {
             Spacer(modifier = Modifier.height(10.dp))
             Text("Histórico", style = MaterialTheme.typography.labelMedium)
-            chatLog.takeLast(10).forEach { entry ->
+            conversation.takeLast(10).forEach { entry ->
                 Text(
                     (if (entry.fromDm) "Você → ${entry.participantName}: " else "${entry.participantName}: ") + entry.text,
                     style = MaterialTheme.typography.bodySmall
