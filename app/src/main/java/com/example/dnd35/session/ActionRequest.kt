@@ -51,3 +51,10 @@ data class PrivateChatEntry(
     val fromDm: Boolean,
     val timestamp: Long = System.currentTimeMillis()
 )
+
+
+/** Retorna somente a conversa privada do participante selecionado; sem seleção, não expõe histórico. */
+fun privateChatConversationFor(participantId: String?, entries: List<PrivateChatEntry>): List<PrivateChatEntry> {
+    if (participantId.isNullOrBlank()) return emptyList()
+    return entries.filter { it.participantId == participantId }
+}
