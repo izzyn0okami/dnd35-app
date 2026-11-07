@@ -548,3 +548,27 @@
 - A substituição do item passa a liberar outro item que já ocupe o mesmo espaço corporal exclusivo, evitando dois itens equipados no mesmo slot.
 - Adicionados testes unitários para alteração de categoria/espaço, liberação do item anterior e preservação do inventário quando o ID não existe.
 - A CI ainda precisa validar testes e compilação antes de qualquer merge.
+
+## 2026-11-07 — Primeira implementação da UI multiplayer contextual
+
+### Decisão de produto retomada
+- A ficha do personagem permanece como interface principal durante toda a sessão.
+- Combate, baú de loot e loja de NPC são ferramentas temporárias em painéis independentes, abertos somente quando relevantes.
+- Fechar um painel não encerra a sessão, não desconecta participantes e não altera o estado persistido.
+- A reformulação visual não modifica regras de D&D 3.5, cálculos da ficha ou protocolo de rede.
+
+### Alterações nesta branch
+- A tela de Sessão de Mesa deixou de substituir a ficha: ela agora abre em uma janela própria sobre a ficha, que permanece montada ao fundo.
+- Adicionada uma faixa de ações contextuais para abrir Combate, Loot e Loja sem abandonar a ficha.
+- Para o Mestre, os painéis de combate e recursos permanecem acessíveis para iniciar encontros, abastecer o baú e abrir lojas.
+- Para o Jogador, Combate aparece somente durante um encontro ativo; Loot e Loja aparecem quando há conteúdo disponibilizado pelo Mestre.
+- Cada painel usa uma janela independente, com largura máxima e rolagem vertical para acomodar telas menores.
+- O fechamento de qualquer janela altera somente o estado visual local.
+- Os coletores de concessões de loot e compras foram movidos para DndMainScreen, para que a gravação na ficha vinculada e o ACK continuem funcionando mesmo quando a janela da Sessão de Mesa ou os painéis contextuais estiverem fechados.
+- O retorno da aplicação de grants agora é informado por notificação do sistema; o ACK continua sendo enviado somente depois de applySessionGrant() concluir com sucesso.
+
+### Limites e validação
+- Esta é a primeira fatia visual da reformulação; a organização interna de Sessão, roster, QR Code, chat e pedidos continua no painel de gerenciamento da sessão.
+- Não foi alterado o estado de domínio nem a persistência Room.
+- A CI ainda precisa executar testDebugUnitTest, compilação e assembleDebug. Não considerar esta branch validada até o workflow concluir.
+- Após CI verde, testar em aparelhos: ficha visível durante a sessão; abertura/fechamento repetido dos três painéis; combate encerrado removendo a ação do lado do jogador; loot/loja surgindo e desaparecendo conforme disponibilidade; concessões persistidas e ACK mesmo com painéis fechados; rolagem em telas pequenas.
