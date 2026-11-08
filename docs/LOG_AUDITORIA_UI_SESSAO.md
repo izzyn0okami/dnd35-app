@@ -738,3 +738,21 @@
 
 ### Correção de formatação do histórico
 - Corrigidas quebras de linha que haviam sido unidas em alguns registros anteriores do mesmo arquivo durante a montagem do log por trechos. O conteúdo factual dos registros foi preservado; foram restauradas apenas as separações entre itens e títulos.
+
+
+## 2026-11-08 — Correção responsiva dos diálogos de multiclasse e atributos
+
+### Gerenciamento de classes e níveis
+- O controle de aumento de nível já existia em `ManageMulticlassDialog.kt`; o defeito observado na captura era de composição: nome, indicadores e botões de nível disputavam a mesma linha, podendo empurrar os controles para fora da largura útil.
+- Reorganizado cada cartão de classe em blocos verticais: nome; indicadores (classe inicial, dado de vida e classe favorecida); linha própria de progressão com o rótulo **Nível da classe**, botões de diminuir/aumentar e nível atual; contribuições de BBA e resistências em duas linhas.
+- Os botões mantêm as ações existentes. A alteração não muda regras, cálculos ou persistência.
+
+### Entrada manual de atributos
+- A linha anterior reservava largura fixa ao campo numérico e ao rótulo do atributo, mas colocava o texto **Racial** no espaço restante da mesma linha. Em telas estreitas, esse texto era comprimido e quebrava uma letra por linha.
+- Reorganizado o cartão: identificação, campo numérico flexível e rolagem na primeira linha; modificador racial e total na segunda linha. O campo manual passa a ocupar o espaço restante, sem disputar a largura com os textos de resultado.
+- Mantidos limites de entrada, rolagem, cálculo de modificador racial e total, e comportamento de compra por pontos.
+
+### Escopo e validação
+- Alterações exclusivamente de apresentação e distribuição de espaço; nenhuma alteração de regra de D&D, cálculos, ações ou dados persistidos.
+- CI de testes unitários e compilação Android obrigatória antes do merge.
+- Validação visual manual pendente em telas de 320–360 dp e em paisagem, incluindo nomes longos de classes e valores manuais de um e dois dígitos.
