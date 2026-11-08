@@ -19,11 +19,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.example.dnd35.model.CharacterInventoryItem
 import com.example.dnd35.model.InventoryIconKind
 import com.example.dnd35.model.inventoryIconKindFor
+import com.example.dnd35.ui.icons.resolveGameIcon
 import com.example.ui.theme.DndGold
 
 private fun InventoryIconKind.toImageVector(): ImageVector = when (this) {
@@ -37,9 +39,10 @@ private fun InventoryIconKind.toImageVector(): ImageVector = when (this) {
 }
 
 /**
- * Ícone padrão de um item do inventário, escolhido pela categoria. Decorativo: o nome do item já
- * aparece ao lado, então não há descrição de acessibilidade própria. Itens com foto
- * personalizada continuam mostrando a foto no lugar deste ícone.
+ * Ícone de um item do inventário: o ícone específico (escolhido ou do catálogo) quando existe e,
+ * senão, o ícone genérico da categoria. Decorativo: o nome do item já aparece ao lado, então não há
+ * descrição de acessibilidade própria. Itens com foto personalizada mostram a foto no lugar deste
+ * ícone (isso é decidido por quem usa o componente).
  */
 @Composable
 fun InventoryItemIcon(
@@ -47,6 +50,7 @@ fun InventoryItemIcon(
     modifier: Modifier = Modifier,
     size: Dp = 48.dp
 ) {
+    val gameIcon = resolveGameIcon(item)
     Box(
         modifier = modifier
             .size(size)
@@ -54,11 +58,20 @@ fun InventoryItemIcon(
             .background(MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.6f)),
         contentAlignment = Alignment.Center
     ) {
-        Icon(
-            imageVector = inventoryIconKindFor(item).toImageVector(),
-            contentDescription = null,
-            tint = DndGold,
-            modifier = Modifier.size(size * 0.55f)
-        )
+        if (gameIcon != null) {
+            Icon(
+                painter = painterResource(gameIcon.resId),
+                contentDescription = null,
+                tint = DndGold,
+                modifier = Modifier.size(size * 0.72f)
+            )
+        } else {
+            Icon(
+                imageVector = inventoryIconKindFor(item).toImageVector(),
+                contentDescription = null,
+                tint = DndGold,
+                modifier = Modifier.size(size * 0.55f)
+            )
+        }
     }
 }

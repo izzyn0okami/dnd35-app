@@ -181,6 +181,7 @@ object CharacterJsonAdapters {
             obj.put("notes", item.notes)
             obj.put("inBackpack", item.inBackpack)
             obj.put("imageUri", item.imageUri ?: JSONObject.NULL)
+            obj.put("iconKey", item.iconKey ?: JSONObject.NULL)
             obj.put("ammunitionUnitsRemaining", item.ammunitionUnitsRemaining ?: JSONObject.NULL)
             obj.put("ammunitionUnitsPerPackage", item.ammunitionUnitsPerPackage ?: JSONObject.NULL)
             array.put(obj)
@@ -231,6 +232,7 @@ object CharacterJsonAdapters {
                         notes = obj.optString("notes", ""),
                         inBackpack = obj.optBoolean("inBackpack", true),
                         imageUri = obj.optString("imageUri", "").takeIf { it.isNotBlank() && it != "null" },
+                        iconKey = obj.optString("iconKey", "").trim().takeIf { it.isNotEmpty() && it != "null" },
                         ammunitionUnitsRemaining = if (obj.has("ammunitionUnitsRemaining") && !obj.isNull("ammunitionUnitsRemaining")) obj.optInt("ammunitionUnitsRemaining") else null,
                         ammunitionUnitsPerPackage = if (obj.has("ammunitionUnitsPerPackage") && !obj.isNull("ammunitionUnitsPerPackage")) obj.optInt("ammunitionUnitsPerPackage").takeIf { it > 0 } else null
                     )
