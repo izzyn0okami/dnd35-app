@@ -653,3 +653,9 @@
 - Não altera o recorte quadrado, os gestos de zoom/deslocamento nem o armazenamento interno do retrato.
 - A CI deverá validar testes e compilação Android.
 - Teste visual em aparelho continua necessário com fotos em orientação normal, retrato, paisagem e imagens espelhadas.
+
+
+### Ajuste da CI #2052
+- A primeira execução da CI #2052 falhou em `PortraitExifOrientationTest > classMethod` antes de executar os métodos: `UnsupportedOperationException` em `DefaultSdkProvider.java:170`. Os 479 testes foram descobertos e apenas essa classe falhou na inicialização; compilação Kotlin de produção e dos testes passou.
+- Causa identificada: Robolectric selecionou automaticamente o SDK a partir do `compileSdk` 36.1, padrão incompatível com o conjunto de SDKs configurados para os testes. O histórico do projeto já registra esse mesmo problema e a solução adotada em outros testes.
+- Correção: fixar explicitamente `@Config(sdk = [35])` em `PortraitExifOrientationTest`, mantendo Robolectric e os testes de bitmap. A CI deve ser executada novamente antes de qualquer merge.
