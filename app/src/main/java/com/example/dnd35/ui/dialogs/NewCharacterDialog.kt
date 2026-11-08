@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.weight
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
@@ -438,46 +439,55 @@ private fun AbilityScoreRow(
 ) {
     val total = base + racialMod
     Card(shape = androidx.compose.foundation.shape.RoundedCornerShape(8.dp)) {
-        Row(
-            modifier = Modifier.fillMaxWidth().padding(horizontal = 10.dp, vertical = 6.dp),
-            verticalAlignment = Alignment.CenterVertically
+        Column(
+            modifier = Modifier.fillMaxWidth().padding(horizontal = 10.dp, vertical = 8.dp)
         ) {
-            Text(label, fontWeight = FontWeight.Bold, modifier = Modifier.width(36.dp))
-            when (method) {
-                AbilityScoreMethod.POINT_BUY -> {
-                    IconButton(onClick = onDecrease, enabled = canDecrease) { Text("−") }
-                    Text("$base", modifier = Modifier.width(32.dp), style = MaterialTheme.typography.bodyMedium)
-                    IconButton(onClick = onIncrease, enabled = canIncrease) { Text("+") }
-                }
-                AbilityScoreMethod.ROLL_OR_MANUAL -> {
-                    var text by remember(base) { mutableStateOf(base.toString()) }
-                    OutlinedTextField(
-                        value = text,
-                        onValueChange = { input ->
-                            text = input.filter(Char::isDigit).take(2)
-                            text.toIntOrNull()?.let { if (it in 1..30) onManualEntry(it) }
-                        },
-                        modifier = Modifier.width(72.dp),
-                        singleLine = true,
-                        keyboardOptions = androidx.compose.foundation.text.KeyboardOptions(keyboardType = KeyboardType.Number)
-                    )
-                    Spacer(modifier = Modifier.width(4.dp))
-                    IconButton(onClick = { onManualEntry(rollAbilityScore()) }) {
-                        Icon(Icons.Default.Casino, contentDescription = "Rolar $label (4d6, descarta o menor)", tint = DndGold)
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(label, fontWeight = FontWeight.Bold, modifier = Modifier.width(36.dp))
+                when (method) {
+                    AbilityScoreMethod.POINT_BUY -> {
+                        IconButton(onClick = onDecrease, enabled = canDecrease) { Text("−") }
+                        Text("$base", modifier = Modifier.width(32.dp), style = MaterialTheme.typography.bodyMedium)
+                        IconButton(onClick = onIncrease, enabled = canIncrease) { Text("+") }
+                    }
+                    AbilityScoreMethod.ROLL_OR_MANUAL -> {
+                        var text by remember(base) { mutableStateOf(base.toString()) }
+                        OutlinedTextField(
+                            value = text,
+                            onValueChange = { input ->
+                                text = input.filter(Char::isDigit).take(2)
+                                text.toIntOrNull()?.let { if (it in 1..30) onManualEntry(it) }
+                            },
+                            modifier = Modifier.weight(1f),
+                            singleLine = true,
+                            keyboardOptions = androidx.compose.foundation.text.KeyboardOptions(keyboardType = KeyboardType.Number)
+                        )
+                        IconButton(onClick = { onManualEntry(rollAbilityScore()) }) {
+                            Icon(Icons.Default.Casino, contentDescription = "Rolar $label (4d6, descarta o menor)", tint = DndGold)
+                        }
                     }
                 }
             }
-            Spacer(modifier = Modifier.width(8.dp))
-            Text(
-                "Racial: ${if (racialMod >= 0) "+" else ""}$racialMod",
-                style = MaterialTheme.typography.bodySmall,
-                modifier = Modifier.weight(1f)
-            )
-            Text(
-                "Total: $total",
-                fontWeight = FontWeight.ExtraBold,
-                style = MaterialTheme.typography.bodyMedium
-            )
+            Spacer(modifier = Modifier.height(4.dp))
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    "Modificador racial: ${if (racialMod >= 0) "+" else ""}$racialMod",
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+                Text(
+                    "Total: $total",
+                    fontWeight = FontWeight.ExtraBold,
+                    style = MaterialTheme.typography.bodyMedium
+                )
+            }
         }
     }
 }
