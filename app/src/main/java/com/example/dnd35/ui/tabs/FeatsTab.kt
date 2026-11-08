@@ -97,11 +97,7 @@ fun FeatsTab(
 
         // Barra de Ação "+ Adicionar Talento"
         item {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
+            Column(modifier = Modifier.fillMaxWidth()) {
                 Text(
                     "Talentos Registrados (${stats.feats.size})",
                     style = MaterialTheme.typography.titleMedium,
@@ -110,6 +106,7 @@ fun FeatsTab(
 
                 Button(
                     onClick = { showAddFeatModal = true },
+                    modifier = Modifier.align(Alignment.End),
                     colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary)
                 ) {
                     Icon(Icons.Default.Add, contentDescription = null, modifier = Modifier.size(18.dp))
