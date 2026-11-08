@@ -11,10 +11,8 @@ import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
 
 /**
- * Cobre o respaldo por extensão de [Dnd35FileTypes.classify] — o caminho usado quando o provedor
- * de documentos (ou um `file://` direto) não devolve o MIME próprio que a exportação gravou.
- * O caminho pelo MIME em si depende de um ContentProvider real por trás do Uri, fora do escopo
- * razoável de um teste de unidade.
+ * Cobre a classificação por MIME e extensão, inclusive o caso content:// em que o caminho da
+ * URI contém apenas um ID interno e o nome real vem de OpenableColumns.DISPLAY_NAME.
  */
 @RunWith(RobolectricTestRunner::class)
 @Config(sdk = [34])
@@ -40,8 +38,48 @@ class Dnd35FileTypesTest {
     }
 
     @Test
+    fun `reconhece ficha content uri pelo nome de exibicao do provedor`() {
+        val result = Dnd35FileTypes.classifyFromMetadata(
+            mimeType = "application/octet-stream",
+            displayName = "ficha-legolas.fichadnd35",
+            uriString = "content://downloads/document/4821"
+        )
+        assertEquals(Dnd35FileKind.CHARACTER, result)
+    }
+
+    @Test
+    fun `reconhece item content uri pelo nome de exibicao do provedor`() {
+        val result = Dnd35FileTypes.classifyFromMetadata(
+            mimeType = "application/json",
+            displayName = "item-espada.itemdnd35",
+            uriString = "content://downloads/document/4822"
+        )
+        assertEquals(Dnd35FileKind.ITEM, result)
+    }
+
+    @Test
+    fun `MIME personalizado identifica o arquivo mesmo sem extensao visivel`() {
+        val character = Dnd35FileTypes.classifyFromMetadata(
+            mimeType = Dnd35FileTypes.CHARACTER_MIME,
+            displayName = "backup sem extensao",
+            uriString = "content://provider/document/1"
+        )
+        val item = Dnd35FileTypes.classifyFromMetadata(
+            mimeType = Dnd35FileTypes.ITEM_MIME,
+            displayName = "export",
+            uriString = "content://provider/document/2"
+        )
+        assertEquals(Dnd35FileKind.CHARACTER, character)
+        assertEquals(Dnd35FileKind.ITEM, item)
+    }
+
+    @Test
     fun `arquivo com extensao desconhecida nao e reconhecido`() {
-        val uri = Uri.parse("file:///storage/emulated/0/Download/foto-ferias.json")
-        assertNull(Dnd35FileTypes.classify(context, uri))
+        val result = Dnd35FileTypes.classifyFromMetadata(
+            mimeType = "application/json",
+            displayName = "foto-ferias.json",
+            uriString = "content://downloads/document/4823"
+        )
+        assertNull(result)
     }
 }

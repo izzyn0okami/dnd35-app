@@ -2,6 +2,7 @@ package com.example.dnd35.backup
 
 import android.content.Context
 import android.net.Uri
+import android.provider.OpenableColumns
 
 /** O que um arquivo tocado pelo usuário (ACTION_VIEW) representa, pra saber como importar. */
 enum class Dnd35FileKind { CHARACTER, ITEM }
@@ -33,20 +34,46 @@ object Dnd35FileTypes {
     )
 
     /**
-     * Identifica se um arquivo tocado pelo usuário (ex: via ACTION_VIEW, abrindo no gerenciador
-     * de arquivos) é uma ficha ou um item avulso — primeiro pelo MIME que o provedor de
-     * documentos guardou na exportação, com a extensão do nome como respaldo pra provedores que
-     * não preservam o MIME original. Retorna `null` se não reconhecer nenhum dos dois.
+     * Identifica ficha ou item pelo MIME e, como respaldo, pelo nome real do arquivo.
+     *
+     * Em URIs content:// o caminho normalmente contém um ID interno do provedor, não o nome
+     * do arquivo. Por isso consultamos OpenableColumns.DISPLAY_NAME em vez de depender apenas
+     * de uri.toString(). O MIME tem prioridade quando o provedor o preserva.
      */
     fun classify(context: Context, uri: Uri): Dnd35FileKind? {
-        when (context.contentResolver.getType(uri)) {
-            CHARACTER_MIME -> return Dnd35FileKind.CHARACTER
-            ITEM_MIME -> return Dnd35FileKind.ITEM
-        }
-        val path = uri.toString()
+        val mimeType = runCatching { context.contentResolver.getType(uri) }.getOrNull()
+        if (mimeType == CHARACTER_MIME) return Dnd35FileKind.CHARACTER
+        if (mimeType == ITEM_MIME) return Dnd35FileKind.ITEM
+
+        val displayName = runCatching {
+            context.contentResolver.query(
+                uri,
+                arrayOf(OpenableColumns.DISPLAY_NAME),
+                null,
+                null,
+                null
+            )?.use { cursor ->
+                val nameColumn = cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME)
+                if (nameColumn >= 0 && cursor.moveToFirst()) cursor.getString(nameColumn) else null
+            }
+        }.getOrNull()
+
+        return classifyFromMetadata(mimeType, displayName, uri.toString())
+    }
+
+    /** Mantida separada para testar os metadados típicos de provedores content://. */
+    internal fun classifyFromMetadata(
+        mimeType: String?,
+        displayName: String?,
+        uriString: String
+    ): Dnd35FileKind? {
+        if (mimeType == CHARACTER_MIME) return Dnd35FileKind.CHARACTER
+        if (mimeType == ITEM_MIME) return Dnd35FileKind.ITEM
+
+        val candidate = displayName?.takeIf { it.isNotBlank() } ?: uriString
         return when {
-            path.endsWith(CHARACTER_EXTENSION, ignoreCase = true) -> Dnd35FileKind.CHARACTER
-            path.endsWith(ITEM_EXTENSION, ignoreCase = true) -> Dnd35FileKind.ITEM
+            candidate.endsWith(CHARACTER_EXTENSION, ignoreCase = true) -> Dnd35FileKind.CHARACTER
+            candidate.endsWith(ITEM_EXTENSION, ignoreCase = true) -> Dnd35FileKind.ITEM
             else -> null
         }
     }
