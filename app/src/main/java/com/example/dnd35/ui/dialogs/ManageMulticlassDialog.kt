@@ -141,103 +141,110 @@ fun ManageMulticlassDialog(
                             shape = RoundedCornerShape(12.dp)
                         ) {
                             Column(modifier = Modifier.padding(10.dp)) {
+                                Text(
+                                    entry.className,
+                                    fontWeight = FontWeight.Bold,
+                                    style = MaterialTheme.typography.titleMedium
+                                )
+                                Spacer(modifier = Modifier.height(4.dp))
                                 Row(
                                     modifier = Modifier.fillMaxWidth(),
-                                    horizontalArrangement = Arrangement.SpaceBetween,
                                     verticalAlignment = Alignment.CenterVertically
                                 ) {
-                                    Row(verticalAlignment = Alignment.CenterVertically) {
-                                        Text(entry.className, fontWeight = FontWeight.Bold, style = MaterialTheme.typography.titleMedium)
-                                        if (entry == classesList.first()) {
-                                            Text(
-                                                "Inicial",
-                                                style = MaterialTheme.typography.labelSmall,
-                                                color = MaterialTheme.colorScheme.primary,
-                                                fontWeight = FontWeight.Bold
-                                            )
-                                        }
-                                        Spacer(modifier = Modifier.width(6.dp))
-                                        Card(
-                                            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.2f)),
-                                            shape = RoundedCornerShape(4.dp)
-                                        ) {
-                                            Text(
-                                                "d${info.hitDie}",
-                                                modifier = Modifier.padding(horizontal = 4.dp, vertical = 2.dp),
-                                                style = MaterialTheme.typography.labelSmall,
-                                                fontWeight = FontWeight.Bold,
-                                                color = MaterialTheme.colorScheme.primary
-                                            )
-                                        }
-
-                                        if (isFavored) {
-                                            Spacer(modifier = Modifier.width(6.dp))
-                                            Row(verticalAlignment = Alignment.CenterVertically) {
-                                                Icon(Icons.Default.Star, contentDescription = null, tint = DndGold, modifier = Modifier.size(14.dp))
-                                                Text(if (anyClassFavored) "Isenta de XP" else "Favorecida", style = MaterialTheme.typography.labelSmall, color = DndGold, fontWeight = FontWeight.Bold)
-                                            }
-                                        }
-                                    }
-
-                                    // Controles de Nível
-                                    Row(verticalAlignment = Alignment.CenterVertically) {
-                                        IconButton(
-                                            onClick = {
-                                                if (entry.level > 1) {
-                                                    classesList = classesList.map {
-                                                        if (it.className == entry.className) it.copy(level = it.level - 1) else it
-                                                    }
-                                                }
-                                            },
-                                            enabled = entry.level > 1,
-                                            modifier = Modifier.size(48.dp)
-                                        ) {
-                                            Icon(Icons.Default.Remove, contentDescription = "Diminuir Nível", modifier = Modifier.size(16.dp))
-                                        }
-
+                                    if (entry == classesList.first()) {
                                         Text(
-                                            "Nv ${entry.level}",
-                                            fontWeight = FontWeight.ExtraBold,
-                                            style = MaterialTheme.typography.titleMedium,
+                                            "Inicial",
+                                            style = MaterialTheme.typography.labelSmall,
                                             color = MaterialTheme.colorScheme.primary,
-                                            modifier = Modifier.padding(horizontal = 6.dp)
+                                            fontWeight = FontWeight.Bold
                                         )
+                                        Spacer(modifier = Modifier.width(8.dp))
+                                    }
+                                    Card(
+                                        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.2f)),
+                                        shape = RoundedCornerShape(4.dp)
+                                    ) {
+                                        Text(
+                                            "d${info.hitDie}",
+                                            modifier = Modifier.padding(horizontal = 4.dp, vertical = 2.dp),
+                                            style = MaterialTheme.typography.labelSmall,
+                                            fontWeight = FontWeight.Bold,
+                                            color = MaterialTheme.colorScheme.primary
+                                        )
+                                    }
+                                    if (isFavored) {
+                                        Spacer(modifier = Modifier.width(8.dp))
+                                        Icon(Icons.Default.Star, contentDescription = null, tint = DndGold, modifier = Modifier.size(14.dp))
+                                        Spacer(modifier = Modifier.width(3.dp))
+                                        Text(
+                                            if (anyClassFavored) "Isenta de XP" else "Favorecida",
+                                            style = MaterialTheme.typography.labelSmall,
+                                            color = DndGold,
+                                            fontWeight = FontWeight.Bold
+                                        )
+                                    }
+                                }
 
+                                Spacer(modifier = Modifier.height(8.dp))
+                                Row(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    verticalAlignment = Alignment.CenterVertically
+                                ) {
+                                    Text("Nível da classe", style = MaterialTheme.typography.bodySmall)
+                                    Spacer(modifier = Modifier.weight(1f))
+                                    IconButton(
+                                        onClick = {
+                                            if (entry.level > 1) {
+                                                classesList = classesList.map {
+                                                    if (it.className == entry.className) it.copy(level = it.level - 1) else it
+                                                }
+                                            }
+                                        },
+                                        enabled = entry.level > 1,
+                                        modifier = Modifier.size(48.dp)
+                                    ) {
+                                        Icon(Icons.Default.Remove, contentDescription = "Diminuir nível de ${entry.className}")
+                                    }
+                                    Text(
+                                        "Nv ${entry.level}",
+                                        fontWeight = FontWeight.ExtraBold,
+                                        style = MaterialTheme.typography.titleMedium,
+                                        color = MaterialTheme.colorScheme.primary
+                                    )
+                                    IconButton(
+                                        onClick = {
+                                            classesList = classesList.map {
+                                                if (it.className == entry.className) it.copy(level = it.level + 1) else it
+                                            }
+                                        },
+                                        modifier = Modifier.size(48.dp)
+                                    ) {
+                                        Icon(Icons.Default.Add, contentDescription = "Aumentar nível de ${entry.className}")
+                                    }
+                                    if (classesList.size > 1 && entry != classesList.first()) {
                                         IconButton(
                                             onClick = {
-                                                classesList = classesList.map {
-                                                    if (it.className == entry.className) it.copy(level = it.level + 1) else it
-                                                }
+                                                classesList = classesList.filterNot { it.className == entry.className }
                                             },
                                             modifier = Modifier.size(48.dp)
                                         ) {
-                                            Icon(Icons.Default.Add, contentDescription = "Aumentar Nível", modifier = Modifier.size(16.dp))
-                                        }
-
-                                        // A primeira classe registrada é a classe inicial e determina o multiplicador x4.
-                                        // Não permitir removê-la evita transferir esse benefício para uma classe posterior.
-                                        if (classesList.size > 1 && entry != classesList.first()) {
-                                            IconButton(
-                                                onClick = {
-                                                    classesList = classesList.filterNot { it.className == entry.className }
-                                                },
-                                                modifier = Modifier.size(48.dp)
-                                            ) {
-                                                Icon(Icons.Default.Delete, contentDescription = "Remover Classe", tint = DndCrimson, modifier = Modifier.size(18.dp))
-                                            }
+                                            Icon(Icons.Default.Delete, contentDescription = "Remover classe ${entry.className}", tint = DndCrimson)
                                         }
                                     }
                                 }
 
                                 Spacer(modifier = Modifier.height(6.dp))
-
-                                // Contribuições desta classe
                                 Row(
                                     modifier = Modifier.fillMaxWidth(),
                                     horizontalArrangement = Arrangement.SpaceBetween
                                 ) {
                                     Text("BBA: +$babPart", style = MaterialTheme.typography.labelSmall, fontWeight = FontWeight.SemiBold)
                                     Text("Fort: +$fortPart", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                                }
+                                Row(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    horizontalArrangement = Arrangement.SpaceBetween
+                                ) {
                                     Text("Ref: +$refPart", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                                     Text("Vont: +$willPart", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                                 }
