@@ -756,3 +756,29 @@
 - Alterações exclusivamente de apresentação e distribuição de espaço; nenhuma alteração de regra de D&D, cálculos, ações ou dados persistidos.
 - CI de testes unitários e compilação Android obrigatória antes do merge.
 - Validação visual manual pendente em telas de 320–360 dp e em paisagem, incluindo nomes longos de classes e valores manuais de um e dois dígitos.
+
+
+## 2026-11-07 — Separação entre dados gerais e progressão de classe
+
+### Defeito confirmado
+- O cartão de informações do personagem abria `EditGeneralInfoDialog`, que permitia alterar classe e nível para personagens de classe única.
+- O mesmo cartão oferecia um atalho para o diálogo de multiclasse, enquanto a seção **Classes & Multiclasse** já possuía seu próprio botão **Gerenciar**. Havia, portanto, dois caminhos para a mesma responsabilidade.
+- `CharacterViewModel.updateGeneralInfo()` reconstruía `characterClass`, `level` e `multiclassJson` ao salvar dados gerais. Isso permitia que uma edição de nome, raça ou tendência também alterasse a progressão.
+
+### Decisão e alteração implementada
+- O diálogo de dados gerais mantém somente nome, raça, tendência, divindade, tamanho e os demais dados não relacionados à progressão.
+- Foram removidos desse diálogo os campos de classe e nível e o atalho redundante para gerenciamento de multiclasse.
+- A seção **Classes & Multiclasse** permanece como único ponto de entrada para adicionar/remover classes e aumentar/diminuir níveis.
+- `updateGeneralInfo()` agora atualiza somente os dados gerais. A função auxiliar `CharacterEntity.withGeneralInfo()` copia os novos dados sem reescrever `characterClass`, `level` ou `multiclassJson`.
+
+### Estimativa de pontos de perícia
+- A estimativa continua derivada de `stats.classEntries`, que é construída a partir da progressão persistida da ficha.
+- Acrescentados testes para aumento e redução manual de nível de classe única e para aumento de nível em uma classe secundária. A estimativa deve acompanhar a lista atualizada de classes/níveis; o registro de pontos gastos permanece apenas informativo.
+- Mantida a limitação já documentada: o modificador de Inteligência atual é aplicado retroativamente a todos os níveis na estimativa, que não substitui um histórico de valores de Inteligência por nível.
+
+### Testes e validação pendente
+- Acrescentado teste unitário de preservação de classe, nível e JSON de multiclasse ao editar os dados gerais.
+- Acrescentados testes de atualização da estimativa após alterações manuais de nível e multiclasse.
+- A CI deverá executar `testDebugUnitTest` e `assembleDebug` na PR. Não considerar a alteração validada até a execução no head final.
+- Validação manual pendente: editar nome/raça/tendência e salvar em personagem de classe única e multiclasse; confirmar que a progressão não muda. Em seguida, aumentar e diminuir níveis pelo botão **Gerenciar** e conferir a atualização do nível total e da estimativa de pontos de perícia.
+- Nenhuma regra de D&D 3.5 foi alterada.
