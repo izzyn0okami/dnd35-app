@@ -2,6 +2,7 @@ package com.example.dnd35.viewmodel
 
 import android.app.Application
 import android.net.Uri
+import android.os.SystemClock
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.dnd35.backup.BackupFileException
@@ -10,6 +11,7 @@ import com.example.dnd35.backup.CharacterBackupIo
 import com.example.dnd35.backup.ItemBackupIo
 import com.example.dnd35.data.AppDatabase
 import com.example.dnd35.data.CharacterRepository
+import com.example.dnd35.diagnostics.CrashLogStore
 import com.example.dnd35.model.CalculatedCharacterStats
 import com.example.dnd35.model.CharacterCalculator
 import com.example.dnd35.model.CharacterEntity
@@ -222,11 +224,31 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
         val token = statsCalculationGate.begin()
         _computedStats.value = null
         viewModelScope.launch {
-            val calculated = withContext(Dispatchers.Default) {
-                CharacterCalculator.compute(character)
-            }
-            if (statsCalculationGate.isCurrent(token) && _activeCharacter.value == character) {
-                _computedStats.value = calculated
+            val startedAt = SystemClock.elapsedRealtime()
+            try {
+                val calculated = withContext(Dispatchers.Default) {
+                    CharacterCalculator.compute(character)
+                }
+                val durationMs = SystemClock.elapsedRealtime() - startedAt
+                if (durationMs >= 500L) {
+                    withContext(Dispatchers.IO) {
+                        CrashLogStore.record(
+                            "SLOW_CHARACTER_CALCULATION",
+                            "Duração=${durationMs}ms; nível=${character.level}; token_atual=${statsCalculationGate.isCurrent(token)}"
+                        )
+                    }
+                }
+                if (statsCalculationGate.isCurrent(token) && _activeCharacter.value == character) {
+                    _computedStats.value = calculated
+                }
+            } catch (error: Exception) {
+                withContext(Dispatchers.IO) {
+                    CrashLogStore.record(
+                        "CHARACTER_CALCULATION_FAILED",
+                        "Tipo de falha=${error::class.java.simpleName}; token_atual=${statsCalculationGate.isCurrent(token)}"
+                    )
+                }
+                throw error
             }
         }
     }
@@ -1005,6 +1027,8 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
     fun exportBackup(target: Uri, allCharacters: Boolean) {
         val app = getApplication<Application>()
         viewModelScope.launch(Dispatchers.IO) {
+            val startedAt = SystemClock.elapsedRealtime()
+            CrashLogStore.record("BACKUP_EXPORT_STARTED", "Escopo=${if (allCharacters) "todas_as_fichas" else "ficha_ativa"}")
             try {
                 val list = if (allCharacters) {
                     repository.getAllCharactersOnce()
@@ -1012,14 +1036,23 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
                     listOfNotNull(_activeCharacter.value)
                 }
                 if (list.isEmpty()) {
+                    CrashLogStore.record("BACKUP_EXPORT_EMPTY", "Nenhuma ficha disponível para exportação")
                     _backupMessages.emit("Não há fichas para exportar.")
                     return@launch
                 }
                 CharacterBackupIo.writeBackup(app, target, list)
+                CrashLogStore.record(
+                    "BACKUP_EXPORT_COMPLETED",
+                    "Quantidade de fichas=${list.size}; duração=${SystemClock.elapsedRealtime() - startedAt}ms"
+                )
                 _backupMessages.emit(
                     if (list.size == 1) "Ficha exportada." else "${list.size} fichas exportadas."
                 )
             } catch (e: Exception) {
+                CrashLogStore.record(
+                    "BACKUP_EXPORT_FAILED",
+                    "Tipo de falha=${e::class.java.simpleName}; duração=${SystemClock.elapsedRealtime() - startedAt}ms"
+                )
                 _backupMessages.emit("Erro ao exportar: ${e.localizedMessage ?: "falha desconhecida"}")
             }
         }
@@ -1029,22 +1062,39 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
     fun importBackup(source: Uri) {
         val app = getApplication<Application>()
         viewModelScope.launch(Dispatchers.IO) {
+            val startedAt = SystemClock.elapsedRealtime()
+            CrashLogStore.record("BACKUP_IMPORT_STARTED", "Validação e leitura do arquivo iniciadas")
             try {
                 val text = CharacterBackupIo.readBackupText(app, source)
+                CrashLogStore.record("BACKUP_IMPORT_FILE_READ", "Leitura concluída; caracteres=${text.length}")
                 when (val parsed = CharacterBackup.parse(text)) {
-                    is CharacterBackup.ParseResult.Failure -> _backupMessages.emit(parsed.message)
+                    is CharacterBackup.ParseResult.Failure -> {
+                        CrashLogStore.record(
+                            "BACKUP_IMPORT_VALIDATION_FAILED",
+                            "Falha de validação; duração=${SystemClock.elapsedRealtime() - startedAt}ms"
+                        )
+                        _backupMessages.emit(parsed.message)
+                    }
                     is CharacterBackup.ParseResult.Success -> {
+                        CrashLogStore.record(
+                            "BACKUP_IMPORT_VALIDATION_COMPLETED",
+                            "Fichas identificadas=${parsed.characters.size}; avisos=${parsed.warnings.size}"
+                        )
                         val warnings = parsed.warnings.toMutableList()
                         val entities = parsed.characters.mapIndexed { index, imported ->
                             val bytes = imported.photoBytes
                             val photo = bytes?.let { CharacterBackupIo.savePortrait(app, it, index) }
                             if (bytes != null && photo == null) {
-                                warnings += "${imported.entity.name}: retrato não pôde ser importado."
+                                warnings += "Retrato não pôde ser importado (índice ${index + 1})."
                             }
                             if (photo != null) imported.entity.copy(photoUri = photo) else imported.entity
                         }
                         val ids = repository.importCharacters(entities)
                         ids.lastOrNull()?.let { _selectedCharacterId.value = it }
+                        CrashLogStore.record(
+                            "BACKUP_IMPORT_COMPLETED",
+                            "Fichas importadas=${ids.size}; duração=${SystemClock.elapsedRealtime() - startedAt}ms"
+                        )
                         val base = if (entities.size == 1) "1 ficha importada." else "${entities.size} fichas importadas."
                         val extra = if (warnings.isEmpty()) "" else
                             " Avisos: " + warnings.take(2).joinToString(" ") +
@@ -1053,8 +1103,16 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
                     }
                 }
             } catch (e: BackupFileException) {
+                CrashLogStore.record(
+                    "BACKUP_IMPORT_FAILED",
+                    "Tipo=BackupFileException; duração=${SystemClock.elapsedRealtime() - startedAt}ms"
+                )
                 _backupMessages.emit(e.message ?: "Arquivo de backup inválido.")
             } catch (e: Exception) {
+                CrashLogStore.record(
+                    "BACKUP_IMPORT_FAILED",
+                    "Tipo=${e::class.java.simpleName}; duração=${SystemClock.elapsedRealtime() - startedAt}ms"
+                )
                 _backupMessages.emit("Erro ao importar: ${e.localizedMessage ?: "falha desconhecida"}")
             }
         }
