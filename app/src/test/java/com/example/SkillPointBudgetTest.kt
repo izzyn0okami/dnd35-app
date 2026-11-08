@@ -197,10 +197,11 @@ class SkillPointBudgetTest {
     fun totalEstimateTracksManualClassLevelIncreaseAndDecrease() {
         val levelOne = listOf(CharacterClassEntry("Guerreiro", 1))
         val levelThree = listOf(CharacterClassEntry("Guerreiro", 3))
+        val decreasedBackToOne = listOf(CharacterClassEntry("Guerreiro", 1))
 
         assertEquals(12, estimateTotalSkillPoints(levelOne, 0, "Humano"))
         assertEquals(18, estimateTotalSkillPoints(levelThree, 0, "Humano"))
-        assertEquals(12, estimateTotalSkillPoints(levelOne, 0, "Humano"))
+        assertEquals(12, estimateTotalSkillPoints(decreasedBackToOne, 0, "Humano"))
     }
 
     @Test
@@ -220,7 +221,14 @@ class SkillPointBudgetTest {
 
     @Test
     fun editingGeneralInfoPreservesSingleAndMulticlassProgressionFields() {
-        val character = CharacterEntity(
+        val singleClass = CharacterEntity(
+            name = "Antigo",
+            characterClass = "Guerreiro",
+            race = "Humano",
+            level = 3,
+            multiclassJson = ""
+        )
+        val multiclass = CharacterEntity(
             name = "Antigo",
             characterClass = "Guerreiro 2 / Ladino 1",
             race = "Humano",
@@ -228,22 +236,23 @@ class SkillPointBudgetTest {
             multiclassJson = """[{"className":"Guerreiro","level":2},{"className":"Ladino","level":1}]"""
         )
 
-        val updated = character.withGeneralInfo(
-            name = "Novo nome",
-            race = "Elfo",
-            alignment = "Caótico e Bom",
-            deity = "Corellon",
-            size = "Médio"
-        )
+        for (character in listOf(singleClass, multiclass)) {
+            val updated = character.withGeneralInfo(
+                name = "Novo nome",
+                race = "Elfo",
+                alignment = "Caótico e Bom",
+                deity = "Corellon",
+                size = "Médio"
+            )
 
-        assertEquals("Novo nome", updated.name)
-        assertEquals("Elfo", updated.race)
-        assertEquals("Caótico e Bom", updated.alignment)
-        assertEquals("Corellon", updated.deity)
-        assertEquals("Médio", updated.size)
-        assertEquals(character.characterClass, updated.characterClass)
-        assertEquals(character.level, updated.level)
-        assertEquals(character.multiclassJson, updated.multiclassJson)
+            assertEquals("Novo nome", updated.name)
+            assertEquals("Elfo", updated.race)
+            assertEquals("Caótico e Bom", updated.alignment)
+            assertEquals("Corellon", updated.deity)
+            assertEquals("Médio", updated.size)
+            assertEquals(character.characterClass, updated.characterClass)
+            assertEquals(character.level, updated.level)
+            assertEquals(character.multiclassJson, updated.multiclassJson)
+        }
     }
-
 }
