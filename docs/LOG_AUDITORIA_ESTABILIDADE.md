@@ -56,3 +56,25 @@ Não há evidência suficiente para afirmar que a causa do congelamento já foi 
 ## PRs e isolamento
 
 - A PR #334, referente à abertura de fichas/itens exportados, permanece separada e não deve ser absorvida por esta alteração.
+
+## Instrumentação complementar — 2026-11-08
+
+A PR #337 foi ampliada sem abrir uma PR paralela, após conferir que ela continuava sendo a PR de estabilidade aberta e que a PR #334 trata de outro assunto.
+
+### Novos eventos operacionais
+- `SLOW_CHARACTER_CALCULATION`: registra cálculos com duração igual ou superior a 500 ms, incluindo duração, nível do personagem e se a solicitação ainda era a mais recente.
+- `CHARACTER_CALCULATION_FAILED`: registra o tipo da exceção e a validade do token; a exceção continua sendo propagada para preservar o comportamento de falha já existente e também ser capturada pelo handler global.
+- Exportação: registra início, ausência de fichas, conclusão ou falha, duração e quantidade de fichas. Não registra URI, nome ou conteúdo da ficha.
+- Importação: registra início, leitura concluída (somente tamanho em caracteres), validação, quantidade de fichas/avisos e conclusão/falha com duração. Avisos sobre retratos usam índice, não nome de personagem.
+- Os registros são feitos no fluxo `Dispatchers.IO`; cálculo permanece em `Dispatchers.Default`.
+
+### Privacidade e limites
+- Não são registrados nomes, conteúdo JSON, URI de origem/destino, tokens ou dados de personagem.
+- O texto integral do arquivo importado não é gravado; somente seu tamanho.
+- A rotação existente do `diagnostics.log` permanece responsável pelo limite de armazenamento.
+- O histórico circular geral de eventos e a identificação de tela ativa ainda não foram implementados. Devem ser avaliados separadamente para evitar gravar eventos de navegação em excesso ou introduzir I/O síncrono.
+
+### Validação desta ampliação
+- Commit: `eda5b33cf15d8d88cba8d68a31c6e780bf95f8d7`.
+- A CI do novo head ainda precisa ser verificada.
+- Permanecem pendentes testes manuais de importação/exportação e retorno do app em aparelho real.
