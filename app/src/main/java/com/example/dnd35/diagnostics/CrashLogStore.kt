@@ -125,6 +125,35 @@ object CrashLogStore {
         }
     }
 
+    /**
+     * Captura métricas agregadas de memória para correlacionar pressão do sistema com lentidão e encerramentos.
+     * Nenhum dado da ficha ou conteúdo pessoal é coletado.
+     */
+    fun recordMemorySnapshot(context: Context, category: String, extra: String? = null) {
+        runCatching {
+            val runtime = Runtime.getRuntime()
+            val activityManager = context.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
+            val systemMemory = ActivityManager.MemoryInfo().also { activityManager.getMemoryInfo(it) }
+            val processMemory = android.os.Debug.MemoryInfo()
+            android.os.Debug.getMemoryInfo(processMemory)
+            val usedHeapBytes = runtime.totalMemory() - runtime.freeMemory()
+            val details = buildString {
+                if (!extra.isNullOrBlank()) append(extra + "; ")
+                append("heap_usado=" + usedHeapBytes / 1024 + "KB")
+                append("; heap_total=" + runtime.totalMemory() / 1024 + "KB")
+                append("; heap_max=" + runtime.maxMemory() / 1024 + "KB")
+                append("; native_heap=" + android.os.Debug.getNativeHeapAllocatedSize() / 1024 + "KB")
+                append("; pss=" + processMemory.totalPss + "KB")
+                append("; pss_dalvik=" + processMemory.dalvikPss + "KB")
+                append("; pss_native=" + processMemory.nativePss + "KB")
+                append("; pss_outros=" + processMemory.otherPss + "KB")
+                append("; memoria_disponivel_dispositivo=" + systemMemory.availMem / 1024 + "KB")
+                append("; limite_baixa_memoria=" + systemMemory.threshold / 1024 + "KB")
+                append("; dispositivo_em_baixa_memoria=" + systemMemory.lowMemory)
+            }
+            record(category, details)
+        }
+    }
     private fun exitReasonName(reason: Int): String = when (reason) {
         ApplicationExitInfo.REASON_ANR -> "ANR"
         ApplicationExitInfo.REASON_CRASH -> "CRASH"
