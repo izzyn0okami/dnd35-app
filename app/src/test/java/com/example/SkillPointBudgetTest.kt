@@ -1,6 +1,8 @@
 package com.example
 
 import com.example.dnd35.model.CharacterClassEntry
+import com.example.dnd35.model.CharacterEntity
+import com.example.dnd35.model.withGeneralInfo
 import com.example.dnd35.model.SkillPointAllocation
 import com.example.dnd35.model.SkillPointLevelRecord
 import com.example.dnd35.model.calculateSkillPointHistoryTotal
@@ -189,6 +191,59 @@ class SkillPointBudgetTest {
                 raceName = "Humano"
             )
         )
+    }
+
+    @Test
+    fun totalEstimateTracksManualClassLevelIncreaseAndDecrease() {
+        val levelOne = listOf(CharacterClassEntry("Guerreiro", 1))
+        val levelThree = listOf(CharacterClassEntry("Guerreiro", 3))
+
+        assertEquals(12, estimateTotalSkillPoints(levelOne, 0, "Humano"))
+        assertEquals(18, estimateTotalSkillPoints(levelThree, 0, "Humano"))
+        assertEquals(12, estimateTotalSkillPoints(levelOne, 0, "Humano"))
+    }
+
+    @Test
+    fun totalEstimateTracksManuallyAddedMulticlassLevels() {
+        val beforeAddedLevel = listOf(
+            CharacterClassEntry("Guerreiro", 1),
+            CharacterClassEntry("Ladino", 1)
+        )
+        val afterAddedLevel = listOf(
+            CharacterClassEntry("Guerreiro", 1),
+            CharacterClassEntry("Ladino", 2)
+        )
+
+        assertEquals(21, estimateTotalSkillPoints(beforeAddedLevel, 0, "Humano"))
+        assertEquals(30, estimateTotalSkillPoints(afterAddedLevel, 0, "Humano"))
+    }
+
+    @Test
+    fun editingGeneralInfoPreservesSingleAndMulticlassProgressionFields() {
+        val character = CharacterEntity(
+            name = "Antigo",
+            characterClass = "Guerreiro 2 / Ladino 1",
+            race = "Humano",
+            level = 3,
+            multiclassJson = """[{"className":"Guerreiro","level":2},{"className":"Ladino","level":1}]"""
+        )
+
+        val updated = character.withGeneralInfo(
+            name = "Novo nome",
+            race = "Elfo",
+            alignment = "Caótico e Bom",
+            deity = "Corellon",
+            size = "Médio"
+        )
+
+        assertEquals("Novo nome", updated.name)
+        assertEquals("Elfo", updated.race)
+        assertEquals("Caótico e Bom", updated.alignment)
+        assertEquals("Corellon", updated.deity)
+        assertEquals("Médio", updated.size)
+        assertEquals(character.characterClass, updated.characterClass)
+        assertEquals(character.level, updated.level)
+        assertEquals(character.multiclassJson, updated.multiclassJson)
     }
 
 }
