@@ -197,8 +197,7 @@
 ### Achado adicional na revisão da PR #322 — snapshot em pedidos de Recursos
 - Mesmo após separar `CHARACTER_UPDATE`, pedidos `TAKE_LOOT` e `BUY_FROM_SHOP` ainda aplicavam o snapshot completo enviado pelo cliente antes da aprovação do Mestre. Preservar apenas as moedas não impedia alterações antecipadas em PV, atributos ou inventário.
 - Corrigido na mesma branch: o servidor não aplica snapshots anexados a pedidos de Recursos. A validação da compra usa a ficha e o saldo já aprovados e mantidos pelo servidor; alterações de ficha devem passar pelo pedido `CHARACTER_UPDATE`.
-- Teste adicional envia uma compra com PV e saldo adulterados no snapshot e verifica que o estado do servidor permanece inalterado enquanto o pedido está pendente.
-- Esta decisão reforça a autoridade do servidor e evita que um pedido pendente de loot/compra funcione como atualização implícita da ficha.
+- Teste adicional envia uma compra com PV e saldo adulterados no snapshot e verifica que o estado do servidor permanece inalterado enquanto o pedido está pendente.- Esta decisão reforça a autoridade do servidor e evita que um pedido pendente de loot/compra funcione como atualização implícita da ficha.
 
 
 ### Achado adicional na revisão da PR #322 — aprovação concorrente/duplicada
@@ -397,8 +396,7 @@
 - A quarta CI deverá validar esse teste de integração isolado. Até lá, não há autorização técnica para merge.
 
 
-### Validação final e merge da PR #323 (2026-11-06)
-- Head validado: `dee7039ee94e4490e17b24b8bfdaad05e68d17a7`.
+### Validação final e merge da PR #323 (2026-11-06)- Head validado: `dee7039ee94e4490e17b24b8bfdaad05e68d17a7`.
 - Android build nº 1942, run ID `42236392921`: sucesso. `testDebugUnitTest`, `assembleDebug`, upload dos esquemas Room e upload do APK debug concluídos.
 - Revisão final do diff confirmou a sincronização das duas rotas que escrevem em `_privateChatLog`, a verificação de geração antes de emitir os eventos assíncronos no cliente e o teste TCP com seis conexões/240 mensagens distintas.
 - A PR não tinha reviews, threads nem comentários pendentes; a branch estava atualizada em relação a `main` e o GitHub informou `mergeable=true`.
@@ -597,8 +595,7 @@
 
 ### Correção após CI #2023
 - A primeira execução da CI apontou erro Kotlin em SessionHubScreen.kt: a anotação @Composable havia sido aplicada por engano à classe de dados PrivateChatUiMessage, e não à função SessionFloatingPanels.
-- A anotação foi removida da classe de dados e aplicada à função composable. Os erros subsequentes de chamadas Compose fora de contexto eram consequência do mesmo posicionamento incorreto.
-- Correção registrada no commit ae418df. Aguardando nova CI para confirmar compilação e testes.
+- A anotação foi removida da classe de dados e aplicada à função composable. Os erros subsequentes de chamadas Compose fora de contexto eram consequência do mesmo posicionamento incorreto.- Correção registrada no commit ae418df. Aguardando nova CI para confirmar compilação e testes.
 
 
 ## 2026-11-07 — Merge da reformulação multiplayer (PR #326)
@@ -685,3 +682,11 @@
 - Não altera regras, cálculos, persistência ou conteúdo das fichas.
 - Revisar a CI e o diff completo antes do merge.
 - Validação manual recomendada: abrir edição/exclusão em cada aba, trocar de personagem sem fechar o diálogo e confirmar que a interface da nova ficha não herda o diálogo ou os filtros da anterior.
+
+### Merge e validação — PR #329 (2026-11-08)
+- PR #329, **Reiniciar estado das abas ao trocar personagem**, foi mesclada por squash em `main`.
+- Commit de merge: `20c6f03d1f40066ad749a0d6a093b4630624862c`.
+- CI Android build #2061 (run `42429383318`), executada no head exato `c0a0289d8241441d1da43eb37c05a071dc533a56`: sucesso. `testDebugUnitTest`, compilação Android, `assembleDebug`, upload dos esquemas Room e upload do APK debug concluídos.
+- O diff foi revisado: `DndMainScreen.kt` envolve a aba selecionada em `key(char.id)`, descartando estados transitórios da composição quando o personagem ativo muda. O log de auditoria também foi atualizado.
+- Não foram alterados dados persistidos, regras, cálculos ou conteúdo das fichas.
+- **Validação manual pendente:** abrir diálogos de edição/exclusão e filtros nas abas, trocar de personagem sem fechar a interface e confirmar que nenhum estado da ficha anterior permanece. Não considerar o comportamento visual em aparelho validado apenas pela CI.
