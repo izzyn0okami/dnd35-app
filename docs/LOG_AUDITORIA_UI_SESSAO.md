@@ -197,7 +197,8 @@
 ### Achado adicional na revisão da PR #322 — snapshot em pedidos de Recursos
 - Mesmo após separar `CHARACTER_UPDATE`, pedidos `TAKE_LOOT` e `BUY_FROM_SHOP` ainda aplicavam o snapshot completo enviado pelo cliente antes da aprovação do Mestre. Preservar apenas as moedas não impedia alterações antecipadas em PV, atributos ou inventário.
 - Corrigido na mesma branch: o servidor não aplica snapshots anexados a pedidos de Recursos. A validação da compra usa a ficha e o saldo já aprovados e mantidos pelo servidor; alterações de ficha devem passar pelo pedido `CHARACTER_UPDATE`.
-- Teste adicional envia uma compra com PV e saldo adulterados no snapshot e verifica que o estado do servidor permanece inalterado enquanto o pedido está pendente.- Esta decisão reforça a autoridade do servidor e evita que um pedido pendente de loot/compra funcione como atualização implícita da ficha.
+- Teste adicional envia uma compra com PV e saldo adulterados no snapshot e verifica que o estado do servidor permanece inalterado enquanto o pedido está pendente.
+- Esta decisão reforça a autoridade do servidor e evita que um pedido pendente de loot/compra funcione como atualização implícita da ficha.
 ### Achado adicional na revisão da PR #322 — aprovação concorrente/duplicada
 - `approveRequest()` e `denyRequest()` consultavam e alteravam a lista de pedidos pendentes sem sincronização. Duas chamadas simultâneas para aprovar o mesmo pedido poderiam processar a mesma compra/retirada mais de uma vez, além de atualizações concorrentes da lista poderem sobrescrever pedidos recém-chegados.
 - Adicionado um lock dedicado para serializar inclusão, aprovação e negação dos pedidos. Uma segunda aprovação/negação do mesmo ID não encontra mais o pedido pendente e não repete a transação.
@@ -394,9 +395,12 @@
 - A quarta CI deverá validar esse teste de integração isolado. Até lá, não há autorização técnica para merge.
 
 
-### Validação final e merge da PR #323 (2026-11-06)- Head validado: `dee7039ee94e4490e17b24b8bfdaad05e68d17a7`.
-- Android build nº 1942, run ID `42236392921`: sucesso. `testDebugUnitTest`, `assembleDebug`, upload dos esquemas Room e upload do APK debug concluídos.- Revisão final do diff confirmou a sincronização das duas rotas que escrevem em `_privateChatLog`, a verificação de geração antes de emitir os eventos assíncronos no cliente e o teste TCP com seis conexões/240 mensagens distintas.
-- A PR não tinha reviews, threads nem comentários pendentes; a branch estava atualizada em relação a `main` e o GitHub informou `mergeable=true`.- A PR #323 foi marcada pronta para revisão e mesclada por squash após autorização prévia do usuário para mesclar quando possível.
+### Validação final e merge da PR #323 (2026-11-06)
+- Head validado: `dee7039ee94e4490e17b24b8bfdaad05e68d17a7`.
+- Android build nº 1942, run ID `42236392921`: sucesso. `testDebugUnitTest`, `assembleDebug`, upload dos esquemas Room e upload do APK debug concluídos.
+- Revisão final do diff confirmou a sincronização das duas rotas que escrevem em `_privateChatLog`, a verificação de geração antes de emitir os eventos assíncronos no cliente e o teste TCP com seis conexões/240 mensagens distintas.
+- A PR não tinha reviews, threads nem comentários pendentes; a branch estava atualizada em relação a `main` e o GitHub informou `mergeable=true`.
+- A PR #323 foi marcada pronta para revisão e mesclada por squash após autorização prévia do usuário para mesclar quando possível.
 - Commit de merge: `75ac4bd87b1b9f114e073534a1a0017b818b7235`.
 - As três primeiras execuções do teste concorrente expiraram; a quarta, no head final, passou. O histórico de tentativas permanece registrado acima para evitar repetição do diagnóstico.
 - A correção de concorrência do chat e o descarte de eventos de conexões obsoletas estão integrados em `main`.
@@ -591,11 +595,13 @@
 
 ### Correção após CI #2023
 - A primeira execução da CI apontou erro Kotlin em SessionHubScreen.kt: a anotação @Composable havia sido aplicada por engano à classe de dados PrivateChatUiMessage, e não à função SessionFloatingPanels.
-- A anotação foi removida da classe de dados e aplicada à função composable. Os erros subsequentes de chamadas Compose fora de contexto eram consequência do mesmo posicionamento incorreto.- Correção registrada no commit ae418df. Aguardando nova CI para confirmar compilação e testes.
+- A anotação foi removida da classe de dados e aplicada à função composable. Os erros subsequentes de chamadas Compose fora de contexto eram consequência do mesmo posicionamento incorreto.
+- Correção registrada no commit ae418df. Aguardando nova CI para confirmar compilação e testes.
 
 ## 2026-11-07 — Merge da reformulação multiplayer (PR #326)
 
-- PR #326 foi mesclada por squash em `main` após autorização explícita do usuário.- Commit de merge: `dc15a07bc4e518641ff4bfc02fcbda898209be2b`.
+- PR #326 foi mesclada por squash em `main` após autorização explícita do usuário.
+- Commit de merge: `dc15a07bc4e518641ff4bfc02fcbda898209be2b`.
 - CI Android build #2025 (run `42426108990`), executada no head `1b064d59b961e3e08e2e3fcf6c569f94d32c81d9`: sucesso. Testes unitários, compilação Android, upload dos esquemas Room e upload do APK debug concluídos.
 - A PR permanece integrada; não abrir PR paralela para os mesmos painéis ou chat.
 - A validação manual em dois aparelhos ainda deve confirmar mensagens privadas nos dois sentidos, seleção de destinatário pelo Mestre, fechamento/reabertura dos painéis sem desconexão, disponibilidade contextual e entrega de loot/compras com painéis fechados.
@@ -712,3 +718,23 @@
 - Alterações integradas: reorganização das informações e ações nos cartões de Perícias; título e botão de adição em linhas separadas em Talentos; cabeçalho e recuperação de espaços em linhas separadas no Grimório.
 - Escopo restrito à apresentação; sem alterações em regras, cálculos ou dados persistidos.
 - **Validação manual pendente:** testar em aparelho/emulador com larguras de 320–360 dp e orientação paisagem, incluindo nomes e fórmulas extensos. A CI não substitui a conferência visual.
+
+
+## 2026-11-08 — Auditoria de responsividade: Carga e Itens
+
+### Achados
+- O cabeçalho da lista de inventário colocava o contador, importação e botão de adicionar na mesma linha, comprimindo o título em larguras pequenas.
+- O painel de espaços corporais reservava 150 dp fixos para o nome do espaço, sem considerar a largura disponível; nomes de itens equipados também não tinham uma área flexível definida.
+
+### Alterações nesta branch
+- Separar o contador/título da lista das ações de importar e adicionar, mantendo as ações alinhadas à direita em uma linha própria.
+- Trocar a largura fixa do nome do espaço por uma fração flexível da linha.
+- Dar ao nome do item equipado o espaço restante da linha, preservando o botão de desequipar.
+
+### Escopo e validação
+- Alterações apenas de layout; sem mudanças em regras, cálculos, persistência ou ações.
+- CI e compilação Android pendentes na PR.
+- Teste visual manual pendente em 320–360 dp e paisagem, incluindo nomes longos de espaços/itens e lista vazia.
+
+### Correção de formatação do histórico
+- Corrigidas quebras de linha que haviam sido unidas em alguns registros anteriores do mesmo arquivo durante a montagem do log por trechos. O conteúdo factual dos registros foi preservado; foram restauradas apenas as separações entre itens e títulos.
