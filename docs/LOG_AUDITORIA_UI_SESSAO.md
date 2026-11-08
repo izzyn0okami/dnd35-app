@@ -756,3 +756,30 @@
 - Alterações exclusivamente de apresentação e distribuição de espaço; nenhuma alteração de regra de D&D, cálculos, ações ou dados persistidos.
 - CI de testes unitários e compilação Android obrigatória antes do merge.
 - Validação visual manual pendente em telas de 320–360 dp e em paisagem, incluindo nomes longos de classes e valores manuais de um e dois dígitos.
+
+
+
+## 2026-11-08 — Correção da abertura externa de fichas e itens exportados
+
+### Defeito relatado
+- O usuário confirmou o cenário 1: ao tocar em um arquivo `.fichadnd35` ou `.itemdnd35` fora do aplicativo, o Android não oferece o Ficha D&D 3.5 como aplicativo para abrir.
+- A implementação anterior declarava somente os MIME personalizados e filtros por caminho/extensão. Isso não cobre de forma confiável provedores SAF que entregam `content://` com MIME genérico e identificador interno no caminho, sem expor a extensão na URI.
+- A classificação também consultava somente o MIME e o texto da URI; não consultava `OpenableColumns.DISPLAY_NAME`, que é onde esses provedores disponibilizam o nome real do arquivo.
+
+### Correções implementadas na branch
+- Separar o filtro MIME do filtro por esquema/caminho no Manifest, evitando a combinação involuntária de atributos de vários elementos `<data>`.
+- Registrar também os MIME genéricos `application/json`, `application/octet-stream` e `text/plain`, comuns em gerenciadores e provedores de documentos. O app só prossegue com importação se conseguir reconhecer o MIME próprio ou a extensão no nome/caminho.
+- Ao receber `ACTION_VIEW`, consultar o MIME e, como fallback, o nome real via `OpenableColumns.DISPLAY_NAME`; a URI não precisa conter o nome do arquivo.
+- Manter compatibilidade com as extensões e MIME próprios já usados na exportação e com os fluxos de importação manual existentes.
+
+### Testes acrescentados
+- Reconhecimento de ficha e item por `DISPLAY_NAME` mesmo quando a URI é `content://provider/document/ID`.
+- Reconhecimento por MIME personalizado mesmo sem extensão visível.
+- Rejeição de arquivo JSON genérico sem extensão própria, evitando importar JSON arbitrário como ficha/item.
+- Permanecem os testes de extensão em URI `file://` e reconhecimento sem distinção entre maiúsculas/minúsculas.
+
+### Validação pendente
+- Executar `testDebugUnitTest` e `assembleDebug` na CI antes de mesclar.
+- Testar em aparelho tocando diretamente em uma ficha e em um item exportados, a partir de pelo menos um gerenciador de arquivos que use `content://`; confirmar que o Android oferece o app e que os dois fluxos de importação concluem corretamente.
+- Testar também compartilhamento/abertura a partir de um anexo, se o aplicativo de origem disponibilizar a ação Abrir com.
+- A declaração de MIME genérico pode fazer o app aparecer para outros JSON/textos; o diálogo de confirmação continua recusando arquivos sem MIME próprio ou extensão reconhecida.
