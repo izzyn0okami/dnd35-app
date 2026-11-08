@@ -69,6 +69,21 @@ data class CharacterEntity(
     val updatedAt: Long = System.currentTimeMillis()
 )
 
+/** Atualiza somente dados gerais, preservando integralmente a progressão de classe. */
+fun CharacterEntity.withGeneralInfo(
+    name: String,
+    race: String,
+    alignment: String,
+    deity: String,
+    size: String
+): CharacterEntity = copy(
+    name = name,
+    race = race,
+    alignment = alignment,
+    deity = deity,
+    size = size
+)
+
 data class SkillPointAllocation(val skillName: String, val pointsSpent: Float)
 data class SkillPointLevelRecord(
     val characterLevel: Int,
