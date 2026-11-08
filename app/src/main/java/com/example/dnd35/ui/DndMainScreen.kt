@@ -33,6 +33,7 @@ import androidx.compose.material.icons.filled.BugReport
 import androidx.compose.material.icons.filled.FileDownload
 import androidx.compose.material.icons.filled.FileUpload
 import androidx.compose.material.icons.filled.FitnessCenter
+import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.MilitaryTech
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.PictureAsPdf
@@ -81,6 +82,7 @@ import com.example.dnd35.backup.Dnd35FileKind
 import com.example.dnd35.backup.Dnd35FileTypes
 import com.example.dnd35.diagnostics.CrashLogStore
 import com.example.dnd35.pdf.CharacterPdfExporter
+import com.example.dnd35.ui.dialogs.CreditsDialog
 import com.example.dnd35.ui.dialogs.NewCharacterDialog
 import com.example.dnd35.ui.tabs.FeatsTab
 import com.example.dnd35.ui.tabs.InventoryTab
@@ -115,6 +117,7 @@ fun DndMainScreen(
     var showDeleteConfirmModal by remember { mutableStateOf(false) }
     var exportAllPending by remember { mutableStateOf(false) }
     var showSessionHub by remember { mutableStateOf(false) }
+    var showCreditsDialog by remember { mutableStateOf(false) }
     var incomingItemImportUri by remember { mutableStateOf<Uri?>(null) }
     var showIncomingItemTargetDialog by remember { mutableStateOf(false) }
     var selectedIncomingItemTargetId by remember { mutableStateOf<Long?>(null) }
@@ -373,6 +376,21 @@ fun DndMainScreen(
                         DropdownMenuItem(
                             text = {
                                 Row(verticalAlignment = Alignment.CenterVertically) {
+                                    Icon(Icons.Default.Info, contentDescription = null, modifier = Modifier.size(18.dp))
+                                    Spacer(modifier = Modifier.width(8.dp))
+                                    Text("Créditos e licenças")
+                                }
+                            },
+                            modifier = Modifier.testTag("menu_credits"),
+                            onClick = {
+                                showOverflowMenu = false
+                                showCreditsDialog = true
+                            }
+                        )
+
+                        DropdownMenuItem(
+                            text = {
+                                Row(verticalAlignment = Alignment.CenterVertically) {
                                     Icon(Icons.Default.Delete, contentDescription = null, tint = DndCrimson, modifier = Modifier.size(18.dp))
                                     Spacer(modifier = Modifier.width(8.dp))
                                     Text("Excluir Personagem", color = DndCrimson)
@@ -505,6 +523,10 @@ fun DndMainScreen(
                 )
             }
         }
+    }
+
+    if (showCreditsDialog) {
+        CreditsDialog(onDismiss = { showCreditsDialog = false })
     }
 
     if (showNewCharModal) {
