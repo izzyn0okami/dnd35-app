@@ -237,16 +237,6 @@ fun ManageMulticlassDialog(
                                     ) {
                                         Icon(Icons.Default.Add, contentDescription = "Aumentar nível de ${entry.className}")
                                     }
-                                    if (classesList.size > 1 && entry != classesList.first()) {
-                                        IconButton(
-                                            onClick = {
-                                                classesList = classesList.filterNot { it.className == entry.className }
-                                            },
-                                            modifier = Modifier.size(48.dp)
-                                        ) {
-                                            Icon(Icons.Default.Delete, contentDescription = "Remover classe ${entry.className}", tint = DndCrimson)
-                                        }
-                                    }
                                 }
 
                                 Spacer(modifier = Modifier.height(6.dp))
