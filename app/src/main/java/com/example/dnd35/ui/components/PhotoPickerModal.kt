@@ -18,6 +18,8 @@ import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import androidx.compose.ui.graphics.Color
 import java.io.File
 import java.io.FileOutputStream
@@ -154,7 +156,8 @@ fun SquarePhotoCropDialog(sourceUri: Uri, onCancel: () -> Unit, onConfirm: (Stri
     var pan by remember(sourceUri) { mutableStateOf(Offset.Zero) }
     var viewportSize by remember { mutableStateOf(androidx.compose.ui.unit.IntSize.Zero) }
     LaunchedEffect(sourceUri) {
-        bitmap = try {
+        bitmap = withContext(Dispatchers.IO) {
+            try {
             // BitmapFactory não aplica a orientação EXIF; leia-a separadamente antes do recorte.
             val orientation = runCatching {
                 context.contentResolver.openInputStream(sourceUri)?.use { input ->
@@ -185,7 +188,8 @@ fun SquarePhotoCropDialog(sourceUri: Uri, onCancel: () -> Unit, onConfirm: (Stri
                     oriented
                 }
             }
-        } catch (_: Exception) { null }
+            } catch (_: Exception) { null }
+        }
         loadFailed = bitmap == null
     }
     AlertDialog(onDismissRequest = onCancel, title = { Text("Recortar foto") }, text = {
