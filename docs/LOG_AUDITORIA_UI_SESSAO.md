@@ -659,3 +659,12 @@
 - A primeira execução da CI #2052 falhou em `PortraitExifOrientationTest > classMethod` antes de executar os métodos: `UnsupportedOperationException` em `DefaultSdkProvider.java:170`. Os 479 testes foram descobertos e apenas essa classe falhou na inicialização; compilação Kotlin de produção e dos testes passou.
 - Causa identificada: Robolectric selecionou automaticamente o SDK a partir do `compileSdk` 36.1, padrão incompatível com o conjunto de SDKs configurados para os testes. O histórico do projeto já registra esse mesmo problema e a solução adotada em outros testes.
 - Correção: fixar explicitamente `@Config(sdk = [35])` em `PortraitExifOrientationTest`, mantendo Robolectric e os testes de bitmap. A CI deve ser executada novamente antes de qualquer merge.
+
+
+### Merge e validação — PR #328 (2026-11-08)
+- PR #328, **Corrigir orientação EXIF no recorte de retratos**, foi mesclada por squash em `main`.
+- Commit de merge: `b48e9b8769829c2cb944e85cf020fa1cc083bdf7`.
+- CI Android build #2055 (run `42428845624`), executada no head exato `0e438fcb2fa27ff7b9c8e5d60d230c5a443d51c6`: sucesso. `testDebugUnitTest`, compilação Android, `assembleDebug`, upload dos esquemas Room e upload do APK debug concluídos.
+- A primeira execução #2052 falhou na inicialização do teste Robolectric porque o SDK automático era incompatível; a classe foi fixada em SDK 35. A execução #2055 validou a correção.
+- A PR foi a única aberta no momento do merge; após a integração, a consulta confirmou nenhuma PR aberta.
+- **Validação manual pendente:** testar no aparelho fotos em orientação normal, retrato, paisagem e espelhadas, verificando prévia, recorte e JPEG final.
