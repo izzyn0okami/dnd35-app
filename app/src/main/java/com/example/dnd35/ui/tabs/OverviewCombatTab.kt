@@ -751,10 +751,9 @@ fun OverviewCombatTab(
     if (showGeneralInfoModal) {
         EditGeneralInfoDialog(
             character = character,
-            onSave = { name, charClass, r, lvl, align, deity, size ->
-                viewModel.updateGeneralInfo(name, charClass, r, lvl, align, deity, size)
+            onSave = { name, r, align, deity, size ->
+                viewModel.updateGeneralInfo(name, r, align, deity, size)
             },
-            onOpenMulticlass = { showMulticlassModal = true },
             onDismiss = { showGeneralInfoModal = false }
         )
     }
