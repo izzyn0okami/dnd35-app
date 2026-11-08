@@ -668,3 +668,20 @@
 - A primeira execução #2052 falhou na inicialização do teste Robolectric porque o SDK automático era incompatível; a classe foi fixada em SDK 35. A execução #2055 validou a correção.
 - A PR foi a única aberta no momento do merge; após a integração, a consulta confirmou nenhuma PR aberta.
 - **Validação manual pendente:** testar no aparelho fotos em orientação normal, retrato, paisagem e espelhadas, verificando prévia, recorte e JPEG final.
+
+
+## 2026-11-08 — Estado transitório das abas ao trocar personagem
+
+### Defeito confirmado por inspeção da composição
+- Em `DndMainScreen.kt`, a aba selecionada recebe o personagem ativo, mas o conteúdo da aba não estava associado à identidade (`id`) desse personagem por uma chave de composição.
+- Ao trocar de personagem sem trocar de aba, estados locais mantidos por `remember` podiam sobreviver: diálogos de edição/exclusão, seleção de filtros, consultas e outros estados temporários poderiam continuar apontando para dados da ficha anterior.
+- O caso mais sensível é um diálogo de edição aberto na ficha A permanecer visível após selecionar a ficha B, permitindo confirmar uma edição iniciada sobre dados de outro personagem.
+
+### Correção proposta
+- Envolver a composição da aba selecionada em `key(char.id)`. Quando o personagem ativo mudar, o Compose descarta a subárvore anterior e cria a nova, reinicializando os estados transitórios de cada aba sem alterar dados persistidos.
+- A chave engloba Personagem, Perícias, Carga & Itens, Talentos e Grimório, evitando correções fragmentadas em cada diálogo.
+
+### Escopo e validação
+- Não altera regras, cálculos, persistência ou conteúdo das fichas.
+- Revisar a CI e o diff completo antes do merge.
+- Validação manual recomendada: abrir edição/exclusão em cada aba, trocar de personagem sem fechar o diálogo e confirmar que a interface da nova ficha não herda o diálogo ou os filtros da anterior.
