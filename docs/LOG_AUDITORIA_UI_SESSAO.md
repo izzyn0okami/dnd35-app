@@ -782,3 +782,20 @@
 - A CI deverá executar `testDebugUnitTest` e `assembleDebug` na PR. Não considerar a alteração validada até a execução no head final.
 - Validação manual pendente: editar nome/raça/tendência e salvar em personagem de classe única e multiclasse; confirmar que a progressão não muda. Em seguida, aumentar e diminuir níveis pelo botão **Gerenciar** e conferir a atualização do nível total e da estimativa de pontos de perícia.
 - Nenhuma regra de D&D 3.5 foi alterada.
+
+
+## 2026-11-08 — Integração das PRs #333 e #336: ícones do inventário
+
+- PR #333 (**Adicionar ícones por categoria nos itens e tela de créditos**) integrada por squash no commit `fd2ad590963964966689812d2a0819dea2a27510`. CI Android build #2090 (run `42435158410`) aprovada: testes unitários, compilação Android, esquemas Room e APK debug.
+- PR #336 (**Ícones padrão do catálogo e troca de ícone em itens customizados**) integrada por squash no commit `fc19382c3f0a4fdb0933f25a222da38d583a8a92`. CI Android build #2110 (run `42439411516`), no head `9915ac852a5447dbd2c241921a2447662e9deb45`, aprovada integralmente.
+- O catálogo de 302 itens recebe ícones específicos; a foto personalizada tem prioridade, seguida pelo ícone escolhido, pelo ícone associado ao item do catálogo e pelo ícone genérico da categoria.
+- Adicionado seletor de ícones com busca e grupos, opção de retornar ao automático e créditos/licenças dos autores. A chave opcional `iconKey` é serializada nos dados do inventário; itens antigos sem chave continuam no fluxo automático.
+- A licença CC BY 3.0 e a atribuição dos autores devem permanecer acessíveis no aplicativo e na documentação. Nenhuma regra de D&D 3.5 foi alterada.
+- Validação manual pendente: conferir visualmente ícones de armas, armaduras, consumíveis e itens diversos; testar busca/troca/automático, prioridade da foto personalizada e exportação/importação de ficha com ícone escolhido.
+
+## 2026-11-08 — Merge da PR #335: progressão de classe centralizada
+
+- PR #335 integrada por squash no commit `a2b902ca49c2ab162d347cc3593a5e6f986e3e3c`. CI Android build #2107 (run `42437179587`), no head `9c84ff5ad76374cbd4043923161f7b0ef7701f9a`, aprovada integralmente.
+- A edição de dados gerais deixou de alterar classe, nível ou JSON de multiclasse. A seção **Classes & Multiclasse** é o único caminho para gerenciar progressão.
+- Testes cobrem preservação da progressão em edição de dados gerais e atualização da estimativa informativa de pontos de perícia após mudanças de nível.
+- Validação manual pendente: editar dados gerais em personagens de classe única e multiclasse; aumentar/diminuir níveis e conferir nível total e estimativa.
