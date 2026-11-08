@@ -83,6 +83,7 @@ import com.example.dnd35.model.CharacterInventoryItem
 import com.example.dnd35.model.Dnd35Rules
 import com.example.dnd35.model.ammunitionBundleSize
 import com.example.dnd35.model.remainingAmmunitionUnits
+import com.example.dnd35.ui.components.InventoryItemIcon
 import com.example.dnd35.ui.dialogs.AddEditItemDialog
 import com.example.dnd35.ui.itemFileName
 import com.example.dnd35.viewmodel.CharacterViewModel
@@ -879,6 +880,9 @@ fun InventoryItemRowRefined(
                             .clip(RoundedCornerShape(10.dp))
                             .clickable(onClick = onEdit)
                     )
+                    Spacer(modifier = Modifier.width(12.dp))
+                } else {
+                    InventoryItemIcon(item = item, modifier = Modifier.clickable(onClick = onEdit))
                     Spacer(modifier = Modifier.width(12.dp))
                 }
 
