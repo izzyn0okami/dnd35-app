@@ -61,6 +61,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.key
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -476,12 +477,14 @@ fun DndMainScreen(
                     Text("Carregando Grimório D&D 3.5...")
                 }
             } else {
-                when (selectedTab) {
-                    0 -> OverviewCombatTab(viewModel = viewModel, stats = calc, character = char)
-                    1 -> SkillsTab(viewModel = viewModel, stats = calc, character = char)
-                    2 -> InventoryTab(viewModel = viewModel, stats = calc, character = char)
-                    3 -> FeatsTab(viewModel = viewModel, stats = calc, character = char)
-                    4 -> SpellsTab(viewModel = viewModel, stats = calc, character = char)
+                key(char.id) {
+                    when (selectedTab) {
+                        0 -> OverviewCombatTab(viewModel = viewModel, stats = calc, character = char)
+                        1 -> SkillsTab(viewModel = viewModel, stats = calc, character = char)
+                        2 -> InventoryTab(viewModel = viewModel, stats = calc, character = char)
+                        3 -> FeatsTab(viewModel = viewModel, stats = calc, character = char)
+                        4 -> SpellsTab(viewModel = viewModel, stats = calc, character = char)
+                    }
                 }
             }
 
