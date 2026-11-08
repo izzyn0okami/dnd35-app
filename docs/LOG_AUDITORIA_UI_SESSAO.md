@@ -634,3 +634,28 @@
 - CI Android build #2040 (run `42426864157`), no head exato `feeebdd3d7b853eac567f42f34406ef17ff792fe`: sucesso. `testDebugUnitTest`, `assembleDebug`, upload dos esquemas Room e upload do APK debug concluídos.
 - A execução #2031 falhou antes da correção por import ausente de `privateChatConversationFor`; o import foi incluído antes do head validado. A execução #2040 validou a versão final, incluindo o filtro nos dois painéis.
 - A validação manual com dois jogadores de mesmo nome e sem jogadores conectados continua pendente; a CI cobre o helper de filtragem, não o comportamento visual em aparelhos.
+
+
+## 2026-11-07 — Auditoria do recorte de retratos: orientação EXIF
+
+### Defeito confirmado
+- `PhotoPickerModal.kt` decodificava a imagem com `BitmapFactory.decodeStream()` sem ler nem aplicar a tag EXIF de orientação.
+- Em fotos cujo arquivo depende da orientação EXIF (comum em imagens capturadas por câmeras de celulares), o bitmap usado na prévia podia ficar girado ou espelhado. Como o recorte é salvo em um novo JPEG, a orientação incorreta podia ficar permanente no retrato do personagem.
+- A busca no código não encontrou uso anterior de `ExifInterface`.
+
+### Correção proposta nesta branch
+- Ler a orientação EXIF da URI original e aplicar rotação/espelhamento ao bitmap já reduzido, antes de exibir e recortar.
+- Manter a decodificação com `inSampleSize` para limitar consumo de memória.
+- Liberar o bitmap decodificado original quando uma transformação gerar uma nova imagem.
+- Acrescentar testes de transformação para as orientações EXIF relevantes.
+
+### Escopo e validação
+- Não altera o recorte quadrado, os gestos de zoom/deslocamento nem o armazenamento interno do retrato.
+- A CI deverá validar testes e compilação Android.
+- Teste visual em aparelho continua necessário com fotos em orientação normal, retrato, paisagem e imagens espelhadas.
+
+
+### Ajuste da CI #2052
+- A primeira execução da CI #2052 falhou em `PortraitExifOrientationTest > classMethod` antes de executar os métodos: `UnsupportedOperationException` em `DefaultSdkProvider.java:170`. Os 479 testes foram descobertos e apenas essa classe falhou na inicialização; compilação Kotlin de produção e dos testes passou.
+- Causa identificada: Robolectric selecionou automaticamente o SDK a partir do `compileSdk` 36.1, padrão incompatível com o conjunto de SDKs configurados para os testes. O histórico do projeto já registra esse mesmo problema e a solução adotada em outros testes.
+- Correção: fixar explicitamente `@Config(sdk = [35])` em `PortraitExifOrientationTest`, mantendo Robolectric e os testes de bitmap. A CI deve ser executada novamente antes de qualquer merge.
