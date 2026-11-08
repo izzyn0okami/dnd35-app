@@ -345,7 +345,7 @@ fun InventoryTab(
                                         style = MaterialTheme.typography.labelMedium,
                                         fontWeight = FontWeight.SemiBold,
                                         color = MaterialTheme.colorScheme.primary,
-                                        modifier = Modifier.width(150.dp)
+                                        modifier = Modifier.weight(0.42f)
                                     )
 
                                     if (equippedInSlot != null) {
@@ -358,7 +358,7 @@ fun InventoryTab(
                                                 equippedInSlot.name,
                                                 style = MaterialTheme.typography.bodySmall,
                                                 fontWeight = FontWeight.Bold,
-                                                modifier = Modifier.padding(end = 4.dp)
+                                                modifier = Modifier.weight(1f).padding(end = 4.dp)
                                             )
                                             IconButton(
                                                 onClick = {
@@ -497,18 +497,18 @@ fun InventoryTab(
 
         // 5. Barra de Ação "+ Adicionar Item"
         item {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
+            Column(modifier = Modifier.fillMaxWidth()) {
                 Text(
                     "Itens no Inventário (${filteredItems.size})",
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.Bold
                 )
 
-                Row(verticalAlignment = Alignment.CenterVertically) {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.End,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
                     IconButton(
                         onClick = {
                             selectedImportTargetId = character.id
