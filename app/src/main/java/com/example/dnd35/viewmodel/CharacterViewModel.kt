@@ -13,6 +13,7 @@ import com.example.dnd35.data.CharacterRepository
 import com.example.dnd35.model.CalculatedCharacterStats
 import com.example.dnd35.model.CharacterCalculator
 import com.example.dnd35.model.CharacterEntity
+import com.example.dnd35.model.withGeneralInfo
 import com.example.dnd35.model.LanguageAcquisition
 import com.example.dnd35.model.CharacterFeat
 import com.example.dnd35.model.CharacterInventoryItem
@@ -221,33 +222,15 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
     // Gerenciamento geral de personagem
     fun updateGeneralInfo(
         name: String,
-        characterClass: String,
         race: String,
-        level: Int,
         alignment: String,
         deity: String,
         size: String
     ) {
         val curr = _activeCharacter.value ?: return
-        val currentClasses = CharacterJsonAdapters.deserializeClassEntries(curr.multiclassJson, curr.characterClass, curr.level)
-        val updatedClasses = if (currentClasses.size <= 1) {
-            listOf(com.example.dnd35.model.CharacterClassEntry(characterClass, level.coerceAtLeast(1)))
-        } else {
-            currentClasses
-        }
-        val totalLvl = updatedClasses.sumOf { it.level }.coerceAtLeast(1)
-        val classDisplay = updatedClasses.joinToString(" / ") { "${it.className} ${it.level}" }
-        val updated = curr.copy(
-            name = name,
-            characterClass = classDisplay,
-            race = race,
-            level = totalLvl,
-            multiclassJson = CharacterJsonAdapters.serializeClassEntries(updatedClasses),
-            alignment = alignment,
-            deity = deity,
-            size = size
-        )
-        persistCharacter(updated)
+        // Dados gerais nunca reconstroem a progressão: classe, níveis e multiclassJson
+        // são responsabilidade exclusiva de updateClasses()/ManageMulticlassDialog.
+        persistCharacter(curr.withGeneralInfo(name, race, alignment, deity, size))
     }
 
     fun updateClasses(classes: List<com.example.dnd35.model.CharacterClassEntry>) {
