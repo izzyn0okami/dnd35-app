@@ -198,7 +198,6 @@
 - Mesmo após separar `CHARACTER_UPDATE`, pedidos `TAKE_LOOT` e `BUY_FROM_SHOP` ainda aplicavam o snapshot completo enviado pelo cliente antes da aprovação do Mestre. Preservar apenas as moedas não impedia alterações antecipadas em PV, atributos ou inventário.
 - Corrigido na mesma branch: o servidor não aplica snapshots anexados a pedidos de Recursos. A validação da compra usa a ficha e o saldo já aprovados e mantidos pelo servidor; alterações de ficha devem passar pelo pedido `CHARACTER_UPDATE`.
 - Teste adicional envia uma compra com PV e saldo adulterados no snapshot e verifica que o estado do servidor permanece inalterado enquanto o pedido está pendente.- Esta decisão reforça a autoridade do servidor e evita que um pedido pendente de loot/compra funcione como atualização implícita da ficha.
-
 ### Achado adicional na revisão da PR #322 — aprovação concorrente/duplicada
 - `approveRequest()` e `denyRequest()` consultavam e alteravam a lista de pedidos pendentes sem sincronização. Duas chamadas simultâneas para aprovar o mesmo pedido poderiam processar a mesma compra/retirada mais de uma vez, além de atualizações concorrentes da lista poderem sobrescrever pedidos recém-chegados.
 - Adicionado um lock dedicado para serializar inclusão, aprovação e negação dos pedidos. Uma segunda aprovação/negação do mesmo ID não encontra mais o pedido pendente e não repete a transação.
@@ -397,8 +396,7 @@
 
 ### Validação final e merge da PR #323 (2026-11-06)- Head validado: `dee7039ee94e4490e17b24b8bfdaad05e68d17a7`.
 - Android build nº 1942, run ID `42236392921`: sucesso. `testDebugUnitTest`, `assembleDebug`, upload dos esquemas Room e upload do APK debug concluídos.- Revisão final do diff confirmou a sincronização das duas rotas que escrevem em `_privateChatLog`, a verificação de geração antes de emitir os eventos assíncronos no cliente e o teste TCP com seis conexões/240 mensagens distintas.
-- A PR não tinha reviews, threads nem comentários pendentes; a branch estava atualizada em relação a `main` e o GitHub informou `mergeable=true`.
-- A PR #323 foi marcada pronta para revisão e mesclada por squash após autorização prévia do usuário para mesclar quando possível.
+- A PR não tinha reviews, threads nem comentários pendentes; a branch estava atualizada em relação a `main` e o GitHub informou `mergeable=true`.- A PR #323 foi marcada pronta para revisão e mesclada por squash após autorização prévia do usuário para mesclar quando possível.
 - Commit de merge: `75ac4bd87b1b9f114e073534a1a0017b818b7235`.
 - As três primeiras execuções do teste concorrente expiraram; a quarta, no head final, passou. O histórico de tentativas permanece registrado acima para evitar repetição do diagnóstico.
 - A correção de concorrência do chat e o descarte de eventos de conexões obsoletas estão integrados em `main`.
@@ -597,8 +595,7 @@
 
 ## 2026-11-07 — Merge da reformulação multiplayer (PR #326)
 
-- PR #326 foi mesclada por squash em `main` após autorização explícita do usuário.
-- Commit de merge: `dc15a07bc4e518641ff4bfc02fcbda898209be2b`.
+- PR #326 foi mesclada por squash em `main` após autorização explícita do usuário.- Commit de merge: `dc15a07bc4e518641ff4bfc02fcbda898209be2b`.
 - CI Android build #2025 (run `42426108990`), executada no head `1b064d59b961e3e08e2e3fcf6c569f94d32c81d9`: sucesso. Testes unitários, compilação Android, upload dos esquemas Room e upload do APK debug concluídos.
 - A PR permanece integrada; não abrir PR paralela para os mesmos painéis ou chat.
 - A validação manual em dois aparelhos ainda deve confirmar mensagens privadas nos dois sentidos, seleção de destinatário pelo Mestre, fechamento/reabertura dos painéis sem desconexão, disponibilidade contextual e entrega de loot/compras com painéis fechados.
@@ -705,3 +702,13 @@
 - CI: executar testes unitários e compilação Android na PR.
 - Teste visual manual em tela estreita (aproximadamente 320–360 dp) e em orientação paisagem.
 - Conferir perícias com nomes/fórmulas longos, talentos com nomes extensos e o cabeçalho do Grimório com nomes de atributo/classe extensos.
+
+## 2026-11-08 — Merge da PR #330: responsividade das abas
+
+- PR #330 (**Melhorar responsividade das abas da ficha**) mesclada por squash em `main`.
+- Commit de merge: `61c52e039b744555a643548818dde9f755d04849`.
+- CI Android build #2069 (run `42432233855`) concluída com sucesso no head exato `0d6c2cfe0824df3e6168c2c699b5b25c950b073f`.
+- `testDebugUnitTest`, compilação Android, `assembleDebug`, upload dos esquemas Room e upload do APK debug passaram.
+- Alterações integradas: reorganização das informações e ações nos cartões de Perícias; título e botão de adição em linhas separadas em Talentos; cabeçalho e recuperação de espaços em linhas separadas no Grimório.
+- Escopo restrito à apresentação; sem alterações em regras, cálculos ou dados persistidos.
+- **Validação manual pendente:** testar em aparelho/emulador com larguras de 320–360 dp e orientação paisagem, incluindo nomes e fórmulas extensos. A CI não substitui a conferência visual.
