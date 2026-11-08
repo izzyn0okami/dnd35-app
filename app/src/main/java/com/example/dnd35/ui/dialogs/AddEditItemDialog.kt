@@ -67,6 +67,10 @@ import com.example.dnd35.model.effectiveArmorClassBonus
 import com.example.dnd35.model.isWeaponInventoryCategory
 import com.example.dnd35.model.isArmorInventoryCategory
 import com.example.dnd35.model.isShieldInventoryCategory
+import com.example.dnd35.ui.components.InventoryItemIcon
+import com.example.dnd35.ui.icons.resolveGameIcon
+import androidx.compose.material3.TextButton
+import androidx.compose.ui.platform.testTag
 
 @Composable
 fun AddEditItemDialog(
@@ -150,11 +154,25 @@ fun AddEditItemDialog(
     var equippedSlot by remember { mutableStateOf(itemToEdit?.equippedSlot ?: Dnd35Rules.EquipmentSlots.NONE) }
 
     // Busca no catálogo
+    var iconKey by remember { mutableStateOf(itemToEdit?.iconKey) }
+    var showIconPicker by remember { mutableStateOf(false) }
     var catalogQuery by remember { mutableStateOf("") }
     var categoryExpanded by remember { mutableStateOf(false) }
     var slotExpanded by remember { mutableStateOf(false) }
 
     val categories = listOf("Armas", "Armaduras", "Escudos", "Itens Mágicos", "Itens de Aventura", "Consumíveis", "Outros")
+
+    if (showIconPicker) {
+        IconPickerDialog(
+            selectedKey = iconKey,
+            automaticIcon = resolveGameIcon(null, name),
+            onSelect = {
+                iconKey = it
+                showIconPicker = false
+            },
+            onDismiss = { showIconPicker = false }
+        )
+    }
 
     AlertDialog(
         onDismissRequest = onDismiss,
@@ -226,7 +244,8 @@ fun AddEditItemDialog(
                                             }.orEmpty(),
                                             equipped = isDefaultEquipped,
                                             equippedSlot = preset.defaultSlot,
-                                            notes = preset.properties
+                                            notes = preset.properties,
+                                            iconKey = preset.iconKey
                                         )
                                         onConfirm(newItem)
                                         onDismiss()
@@ -285,6 +304,35 @@ fun AddEditItemDialog(
                             label = { Text("Nome do Item") },
                             modifier = Modifier.fillMaxWidth(),
                             singleLine = true
+                        )
+
+                        Spacer(modifier = Modifier.height(8.dp))
+
+                        Text("Ícone do item:", style = MaterialTheme.typography.labelSmall)
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.spacedBy(10.dp)
+                        ) {
+                            InventoryItemIcon(
+                                item = remember(name, category, iconKey) {
+                                    CharacterInventoryItem(name = name, category = category, iconKey = iconKey)
+                                },
+                                size = 56.dp
+                            )
+                            Column {
+                                OutlinedButton(
+                                    onClick = { showIconPicker = true },
+                                    modifier = Modifier.testTag("item_change_icon")
+                                ) { Text("Trocar ícone") }
+                                if (iconKey != null) {
+                                    TextButton(onClick = { iconKey = null }) { Text("Ícone automático") }
+                                }
+                            }
+                        }
+                        Text(
+                            "Se o item tiver foto, a foto aparece no lugar do ícone.",
+                            style = MaterialTheme.typography.bodySmall
                         )
 
                         Spacer(modifier = Modifier.height(8.dp))
@@ -513,6 +561,7 @@ fun AddEditItemDialog(
                             equippedSlot = if (equipped && equippedSlot == Dnd35Rules.EquipmentSlots.NONE) Dnd35Rules.EquipmentSlots.MAIN_HAND else equippedSlot,
                             notes = notes,
                             imageUri = imageUri,
+                            iconKey = iconKey,
                             ammunitionUnitsPerPackage = ammoUnitsPerPackageText.toIntOrNull()?.takeIf { it in 1..9999 },
                             ammunitionUnitsRemaining = if (itemToEdit != null && parsedQuantity == itemToEdit.quantity) itemToEdit.ammunitionUnitsRemaining else null
                         )

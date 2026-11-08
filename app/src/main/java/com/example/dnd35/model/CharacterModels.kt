@@ -137,7 +137,13 @@ data class CharacterInventoryItem(
     /** Dano próprio de armas; separado de qualquer bônus defensivo. */
     val damage: String = "",
     /** Bônus de armadura ou de escudo à CA, conforme a categoria do item. */
-    val armorClassBonus: String = ""
+    val armorClassBonus: String = "",
+    /**
+     * Chave do ícone escolhido para o item (ver GameIcons). Nulo = automático: o ícone do mesmo
+     * item no catálogo pelo nome e, sem correspondência, o ícone genérico da categoria. Itens
+     * adicionados do catálogo já guardam a chave, para manter o ícone mesmo se forem renomeados.
+     */
+    val iconKey: String? = null
 )
 
 /** Categorias exatas: "Armaduras" não pode ser confundida com "Armas". */

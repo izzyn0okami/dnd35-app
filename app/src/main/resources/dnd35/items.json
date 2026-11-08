@@ -6,7 +6,8 @@
     "weightLb": 1.1,
     "costGp": 2,
     "damageOrAc": "1d4 (19-20/x2)",
-    "properties": "Perfuração/Corte, arremessável 3m"
+    "properties": "Perfuração/Corte, arremessável 3m",
+    "icon": "plain-dagger"
   },
   {
     "name": "Espada Curta",
@@ -15,7 +16,8 @@
     "weightLb": 2.2,
     "costGp": 10,
     "damageOrAc": "1d6 (19-20/x2)",
-    "properties": "Perfuração, leve"
+    "properties": "Perfuração, leve",
+    "icon": "gladius"
   },
   {
     "name": "Espada Longa",
@@ -24,7 +26,8 @@
     "weightLb": 4.4,
     "costGp": 15,
     "damageOrAc": "1d8 (19-20/x2)",
-    "properties": "Corte, uma mão"
+    "properties": "Corte, uma mão",
+    "icon": "broadsword"
   },
   {
     "name": "Espada Larga",
@@ -33,7 +36,8 @@
     "weightLb": 8.8,
     "costGp": 50,
     "damageOrAc": "2d6 (19-20/x2)",
-    "properties": "Cortante; duas mãos"
+    "properties": "Cortante; duas mãos",
+    "icon": "shining-sword"
   },
   {
     "name": "Machado de Batalha",
@@ -42,7 +46,8 @@
     "weightLb": 6.6,
     "costGp": 10,
     "damageOrAc": "1d8 (x3)",
-    "properties": "Cortante; uma mão"
+    "properties": "Cortante; uma mão",
+    "icon": "battle-axe"
   },
   {
     "name": "Machado Grande",
@@ -51,7 +56,8 @@
     "weightLb": 24.2,
     "costGp": 30,
     "damageOrAc": "1d12 (x3)",
-    "properties": "Corte, duas mãos"
+    "properties": "Corte, duas mãos",
+    "icon": "war-axe"
   },
   {
     "name": "Maça Pesada",
@@ -60,7 +66,8 @@
     "weightLb": 8.8,
     "costGp": 12,
     "damageOrAc": "1d8 (x2)",
-    "properties": "Concussão, uma mão"
+    "properties": "Concussão, uma mão",
+    "icon": "flanged-mace"
   },
   {
     "name": "Lança Longa",
@@ -69,7 +76,8 @@
     "weightLb": 9.9,
     "costGp": 5,
     "damageOrAc": "1d8 (x3)",
-    "properties": "Perfuração, alcance 3m"
+    "properties": "Perfuração, alcance 3m",
+    "icon": "stone-spear"
   },
   {
     "name": "Arco Curto",
@@ -78,7 +86,8 @@
     "weightLb": 2.2,
     "costGp": 30,
     "damageOrAc": "1d6 (x3)",
-    "properties": "Perfuração, alcance 18m"
+    "properties": "Perfuração, alcance 18m",
+    "icon": "pocket-bow"
   },
   {
     "name": "Arco Longo Composto",
@@ -87,7 +96,8 @@
     "weightLb": 3.3,
     "costGp": 100,
     "damageOrAc": "1d8 (x3)",
-    "properties": "Perfuração, alcance 33m"
+    "properties": "Perfuração, alcance 33m",
+    "icon": "bow-arrow"
   },
   {
     "name": "Besta Leve",
@@ -96,7 +106,8 @@
     "weightLb": 4.4,
     "costGp": 35,
     "damageOrAc": "1d8 (19-20/x2)",
-    "properties": "Perfuração, alcance 24m"
+    "properties": "Perfuração, alcance 24m",
+    "icon": "crossbow"
   },
   {
     "name": "Rapieira Élfica",
@@ -105,7 +116,8 @@
     "weightLb": 2,
     "costGp": 20,
     "damageOrAc": "1d6 (18-20/x2)",
-    "properties": "Perfuração, acuidade com arma"
+    "properties": "Perfuração, acuidade com arma",
+    "icon": "piercing-sword"
   },
   {
     "name": "Armadura Acolchoada",
@@ -114,7 +126,8 @@
     "weightLb": 11,
     "costGp": 5,
     "damageOrAc": "+1 CA",
-    "properties": "Des Máx +8; penalidade 0; falha arcana 5%"
+    "properties": "Des Máx +8; penalidade 0; falha arcana 5%",
+    "icon": "armor-vest"
   },
   {
     "name": "Armadura de Couro",
@@ -123,7 +136,8 @@
     "weightLb": 16.5,
     "costGp": 10,
     "damageOrAc": "+2 CA",
-    "properties": "Des Máx +6; penalidade 0; falha arcana 10%"
+    "properties": "Des Máx +6; penalidade 0; falha arcana 10%",
+    "icon": "leather-armor"
   },
   {
     "name": "Couro Batido",
@@ -132,7 +146,8 @@
     "weightLb": 22,
     "costGp": 25,
     "damageOrAc": "+3 CA",
-    "properties": "Des Máx +5; penalidade -1; falha arcana 15%"
+    "properties": "Des Máx +5; penalidade -1; falha arcana 15%",
+    "icon": "leather-vest"
   },
   {
     "name": "Gibão de Peles",
@@ -141,7 +156,8 @@
     "weightLb": 27.5,
     "costGp": 15,
     "damageOrAc": "+3 CA",
-    "properties": "Armadura média; Des Máx +4; penalidade -3; falha arcana 20%"
+    "properties": "Armadura média; Des Máx +4; penalidade -3; falha arcana 20%",
+    "icon": "fur-shirt"
   },
   {
     "name": "Camisão de Cota de Malha",
@@ -150,7 +166,8 @@
     "weightLb": 27.5,
     "costGp": 100,
     "damageOrAc": "+4 CA",
-    "properties": "Armadura leve; Des Máx +4; penalidade -2; falha arcana 20%"
+    "properties": "Armadura leve; Des Máx +4; penalidade -2; falha arcana 20%",
+    "icon": "mail-shirt"
   },
   {
     "name": "Brunea",
@@ -159,7 +176,8 @@
     "weightLb": 33,
     "costGp": 50,
     "damageOrAc": "+4 CA",
-    "properties": "Armadura média; Des Máx +3; penalidade -4; falha arcana 25%"
+    "properties": "Armadura média; Des Máx +3; penalidade -4; falha arcana 25%",
+    "icon": "lamellar"
   },
   {
     "name": "Cota de Malha",
@@ -168,7 +186,8 @@
     "weightLb": 44,
     "costGp": 150,
     "damageOrAc": "+5 CA",
-    "properties": "Armadura média; Des Máx +2; penalidade -5; falha arcana 30%"
+    "properties": "Armadura média; Des Máx +2; penalidade -5; falha arcana 30%",
+    "icon": "chain-mail"
   },
   {
     "name": "Peitoral de Aço",
@@ -177,7 +196,8 @@
     "weightLb": 33,
     "costGp": 200,
     "damageOrAc": "+5 CA",
-    "properties": "Armadura média; Des Máx +3; penalidade -4; falha arcana 25%"
+    "properties": "Armadura média; Des Máx +3; penalidade -4; falha arcana 25%",
+    "icon": "breastplate"
   },
   {
     "name": "Cota de Talas",
@@ -186,7 +206,8 @@
     "weightLb": 49.6,
     "costGp": 20,
     "damageOrAc": "+6 CA",
-    "properties": "Armadura pesada; Des Máx +0; penalidade -7; falha arcana 40%"
+    "properties": "Armadura pesada; Des Máx +0; penalidade -7; falha arcana 40%",
+    "icon": "scale-mail"
   },
   {
     "name": "Cota de Bandas",
@@ -195,7 +216,8 @@
     "weightLb": 35,
     "costGp": 250,
     "damageOrAc": "+6 CA",
-    "properties": "Des Max +1, Pen -6, Falha 35%"
+    "properties": "Des Max +1, Pen -6, Falha 35%",
+    "icon": "layered-armor"
   },
   {
     "name": "Meia Armadura",
@@ -204,7 +226,8 @@
     "weightLb": 55,
     "costGp": 600,
     "damageOrAc": "+7 CA",
-    "properties": "Armadura pesada; Des Máx +0; penalidade -7; falha arcana 40%"
+    "properties": "Armadura pesada; Des Máx +0; penalidade -7; falha arcana 40%",
+    "icon": "chest-armor"
   },
   {
     "name": "Armadura de Batalha",
@@ -213,7 +236,8 @@
     "weightLb": 55,
     "costGp": 1500,
     "damageOrAc": "+8 CA",
-    "properties": "Armadura pesada; Des Máx +1; penalidade -6; falha arcana 35%"
+    "properties": "Armadura pesada; Des Máx +1; penalidade -6; falha arcana 35%",
+    "icon": "battle-gear"
   },
   {
     "name": "Broquel",
@@ -222,7 +246,8 @@
     "weightLb": 5.5,
     "costGp": 15,
     "damageOrAc": "+1 CA",
-    "properties": "Pen -1, Falha 5%"
+    "properties": "Pen -1, Falha 5%",
+    "icon": "round-shield"
   },
   {
     "name": "Escudo Pequeno de Madeira",
@@ -231,7 +256,8 @@
     "weightLb": 5.5,
     "costGp": 3,
     "damageOrAc": "+1 CA",
-    "properties": "Penalidade -1; falha arcana 5%"
+    "properties": "Penalidade -1; falha arcana 5%",
+    "icon": "viking-shield"
   },
   {
     "name": "Escudo Grande de Metal",
@@ -240,7 +266,8 @@
     "weightLb": 16.5,
     "costGp": 20,
     "damageOrAc": "+2 CA",
-    "properties": "Penalidade -2; falha arcana 15%"
+    "properties": "Penalidade -2; falha arcana 15%",
+    "icon": "crenulated-shield"
   },
   {
     "name": "Escudo de Corpo",
@@ -249,7 +276,8 @@
     "weightLb": 49.6,
     "costGp": 30,
     "damageOrAc": "+4 CA",
-    "properties": "Des Máx +2; penalidade -10; falha arcana 50%"
+    "properties": "Des Máx +2; penalidade -10; falha arcana 50%",
+    "icon": "roman-shield"
   },
   {
     "name": "Elmo de Ferro Batido",
@@ -258,7 +286,8 @@
     "weightLb": 3,
     "costGp": 10,
     "damageOrAc": "-",
-    "properties": "Proteção de cabeça"
+    "properties": "Proteção de cabeça",
+    "icon": "heavy-helm"
   },
   {
     "name": "Diadema do Intelecto +2",
@@ -267,7 +296,8 @@
     "weightLb": 0.5,
     "costGp": 4000,
     "damageOrAc": "+2 INT",
-    "properties": "Concede +2 de bônus de melhoria em Inteligência"
+    "properties": "Concede +2 de bônus de melhoria em Inteligência",
+    "icon": "tiara"
   },
   {
     "name": "Óculos da Visão Noturna",
@@ -276,7 +306,8 @@
     "weightLb": 0.5,
     "costGp": 12000,
     "damageOrAc": "-",
-    "properties": "Concede visão no escuro 18m ao usuário"
+    "properties": "Concede visão no escuro 18m ao usuário",
+    "icon": "steampunk-goggles"
   },
   {
     "name": "Amuleto de Armadura Natural +1",
@@ -285,7 +316,8 @@
     "weightLb": 0.5,
     "costGp": 2000,
     "damageOrAc": "+1 CA Natural",
-    "properties": "Concede +1 de armadura natural na CA"
+    "properties": "Concede +1 de armadura natural na CA",
+    "icon": "gem-pendant"
   },
   {
     "name": "Amuleto da Saúde +2",
@@ -294,7 +326,8 @@
     "weightLb": 0.5,
     "costGp": 4000,
     "damageOrAc": "+2 CON",
-    "properties": "Concede +2 de melhoria na Constituição"
+    "properties": "Concede +2 de melhoria na Constituição",
+    "icon": "heart-necklace"
   },
   {
     "name": "Capa de Resistência +1",
@@ -303,7 +336,8 @@
     "weightLb": 1,
     "costGp": 1000,
     "damageOrAc": "+1 Resistências",
-    "properties": "Concede +1 em todos os testes de resistência"
+    "properties": "Concede +1 em todos os testes de resistência",
+    "icon": "cape"
   },
   {
     "name": "Capa do Carisma +2",
@@ -312,7 +346,8 @@
     "weightLb": 1,
     "costGp": 4000,
     "damageOrAc": "+2 CAR",
-    "properties": "Concede +2 de melhoria no Carisma"
+    "properties": "Concede +2 de melhoria no Carisma",
+    "icon": "cloak"
   },
   {
     "name": "Capa Élfica",
@@ -321,7 +356,8 @@
     "weightLb": 1,
     "costGp": 2500,
     "damageOrAc": "+5 Furtividade",
-    "properties": "+5 de competência em testes de Furtividade"
+    "properties": "+5 de competência em testes de Furtividade",
+    "icon": "hood"
   },
   {
     "name": "Braçadeiras da Armadura +2",
@@ -330,7 +366,8 @@
     "weightLb": 1,
     "costGp": 4000,
     "damageOrAc": "+2 CA",
-    "properties": "Cria campo de força de +2 CA"
+    "properties": "Cria campo de força de +2 CA",
+    "icon": "bracers"
   },
   {
     "name": "Luvas da Destreza +2",
@@ -339,7 +376,8 @@
     "weightLb": 1,
     "costGp": 4000,
     "damageOrAc": "+2 DES",
-    "properties": "Concede +2 de melhoria em Destreza"
+    "properties": "Concede +2 de melhoria em Destreza",
+    "icon": "gloves"
   },
   {
     "name": "Manoplas da Força do Ogro",
@@ -348,7 +386,8 @@
     "weightLb": 4,
     "costGp": 4000,
     "damageOrAc": "+2 FOR",
-    "properties": "Concede +2 de melhoria em Força"
+    "properties": "Concede +2 de melhoria em Força",
+    "icon": "metal-hand"
   },
   {
     "name": "Anel de Proteção +1",
@@ -357,7 +396,8 @@
     "weightLb": 0.1,
     "costGp": 2000,
     "damageOrAc": "+1 Deflexão",
-    "properties": "Concede +1 de bônus de deflexão na CA"
+    "properties": "Concede +1 de bônus de deflexão na CA",
+    "icon": "ring"
   },
   {
     "name": "Anel de Sustento",
@@ -366,7 +406,8 @@
     "weightLb": 0.1,
     "costGp": 2500,
     "damageOrAc": "-",
-    "properties": "Dispensa alimentação e água, 2h sono diário"
+    "properties": "Dispensa alimentação e água, 2h sono diário",
+    "icon": "diamond-ring"
   },
   {
     "name": "Cinto da Força dos Gigantes +2",
@@ -375,7 +416,8 @@
     "weightLb": 1,
     "costGp": 4000,
     "damageOrAc": "+2 FOR",
-    "properties": "Concede +2 de melhoria em Força"
+    "properties": "Concede +2 de melhoria em Força",
+    "icon": "belt"
   },
   {
     "name": "Botas Élficas",
@@ -384,7 +426,8 @@
     "weightLb": 1,
     "costGp": 2500,
     "damageOrAc": "+5 Mover em Silêncio",
-    "properties": "+5 em Furtividade auditiva"
+    "properties": "+5 em Furtividade auditiva",
+    "icon": "boots"
   },
   {
     "name": "Botas Aladas",
@@ -393,7 +436,8 @@
     "weightLb": 1,
     "costGp": 16000,
     "damageOrAc": "Voo",
-    "properties": "Permite voar até 3 vezes ao dia"
+    "properties": "Permite voar até 3 vezes ao dia",
+    "icon": "wingfoot"
   },
   {
     "name": "Mochila de Couro Reforçada",
@@ -402,7 +446,8 @@
     "weightLb": 2,
     "costGp": 2,
     "damageOrAc": "-",
-    "properties": "Capacidade para até 30 kg de carga"
+    "properties": "Capacidade para até 30 kg de carga",
+    "icon": "backpack"
   },
   {
     "name": "Ração de Viagem (7 dias)",
@@ -411,7 +456,8 @@
     "weightLb": 7,
     "costGp": 3.5,
     "damageOrAc": "-",
-    "properties": "Alimentos desidratados"
+    "properties": "Alimentos desidratados",
+    "icon": "ham-shank"
   },
   {
     "name": "Cantil",
@@ -420,7 +466,8 @@
     "weightLb": 4.4,
     "costGp": 1,
     "damageOrAc": "-",
-    "properties": "Recipiente para água; peso de 2 kg conforme Tabela 7-8 do Livro do Jogador"
+    "properties": "Recipiente para água; peso de 2 kg conforme Tabela 7-8 do Livro do Jogador",
+    "icon": "water-flask"
   },
   {
     "name": "Tochas de Piche (x5)",
@@ -429,7 +476,8 @@
     "weightLb": 5,
     "costGp": 0.1,
     "damageOrAc": "-",
-    "properties": "Ilumina 6m de raio por 1 hora"
+    "properties": "Ilumina 6m de raio por 1 hora",
+    "icon": "torch"
   },
   {
     "name": "Lanterna Furta-Fogo",
@@ -438,7 +486,8 @@
     "weightLb": 3.3,
     "costGp": 12,
     "damageOrAc": "-",
-    "properties": "Foco de luz direcionado de 9m"
+    "properties": "Foco de luz direcionado de 9m",
+    "icon": "lantern"
   },
   {
     "name": "Pederneira e Isqueiro",
@@ -447,7 +496,8 @@
     "weightLb": 0,
     "costGp": 1,
     "damageOrAc": "-",
-    "properties": "Para acender fogueiras"
+    "properties": "Para acender fogueiras",
+    "icon": "flint-spark"
   },
   {
     "name": "Instrumentos de Ladrão (Obra-Prima)",
@@ -456,7 +506,8 @@
     "weightLb": 2.2,
     "costGp": 100,
     "damageOrAc": "-",
-    "properties": "+2 em Operar Mecanismo e Arrombar"
+    "properties": "+2 em Operar Mecanismo e Arrombar",
+    "icon": "lockpicks"
   },
   {
     "name": "Kit de Primeiros Socorros",
@@ -465,7 +516,8 @@
     "weightLb": 1.1,
     "costGp": 50,
     "damageOrAc": "-",
-    "properties": "+2 em testes de Cura, 10 usos"
+    "properties": "+2 em testes de Cura, 10 usos",
+    "icon": "first-aid-kit"
   },
   {
     "name": "Símbolo Sagrado de Prata",
@@ -474,7 +526,8 @@
     "weightLb": 1.1,
     "costGp": 25,
     "damageOrAc": "-",
-    "properties": "Foco divino para conjuração"
+    "properties": "Foco divino para conjuração",
+    "icon": "holy-symbol"
   },
   {
     "name": "Grimório de Mago (Em Branco)",
@@ -483,7 +536,8 @@
     "weightLb": 3.3,
     "costGp": 15,
     "damageOrAc": "-",
-    "properties": "Páginas tratadas para escrita de magias"
+    "properties": "Páginas tratadas para escrita de magias",
+    "icon": "spell-book"
   },
   {
     "name": "Poção de Curar Ferimentos Leves",
@@ -492,7 +546,8 @@
     "weightLb": 0.5,
     "costGp": 50,
     "damageOrAc": "Cura 1d8+1",
-    "properties": "Cura instantânea para feridos"
+    "properties": "Cura instantânea para feridos",
+    "icon": "health-potion"
   },
   {
     "name": "Poção de Curar Ferimentos Moderados",
@@ -501,7 +556,8 @@
     "weightLb": 0.5,
     "costGp": 300,
     "damageOrAc": "Cura 2d8+3",
-    "properties": "Cura mágica potável"
+    "properties": "Cura mágica potável",
+    "icon": "health-potion"
   },
   {
     "name": "Poção de Invisibilidade",
@@ -510,7 +566,8 @@
     "weightLb": 0.5,
     "costGp": 300,
     "damageOrAc": "Invisibilidade",
-    "properties": "Duração 3 minutos"
+    "properties": "Duração 3 minutos",
+    "icon": "potion-ball"
   },
   {
     "name": "Pergaminho de Escudo Arcano",
@@ -519,7 +576,8 @@
     "weightLb": 0.1,
     "costGp": 25,
     "damageOrAc": "+4 CA Escudo",
-    "properties": "Pergaminho de 1º círculo"
+    "properties": "Pergaminho de 1º círculo",
+    "icon": "tied-scroll"
   },
   {
     "name": "Pergaminho de Bola de Fogo",
@@ -528,7 +586,8 @@
     "weightLb": 0.1,
     "costGp": 375,
     "damageOrAc": "5d6 Fogo",
-    "properties": "Pergaminho de 3º círculo"
+    "properties": "Pergaminho de 3º círculo",
+    "icon": "scroll-unfurled"
   },
   {
     "name": "Varinha de Mísseis Mágicos (Nv 1)",
@@ -537,7 +596,8 @@
     "weightLb": 1,
     "costGp": 750,
     "damageOrAc": "1d4+1",
-    "properties": "50 cargas, disparo de dardo místico"
+    "properties": "50 cargas, disparo de dardo místico",
+    "icon": "crystal-wand"
   },
   {
     "name": "Manopla",
@@ -546,7 +606,8 @@
     "weightLb": 1.1,
     "costGp": 2,
     "damageOrAc": "1d3 (x2)",
-    "properties": "Concussão; não ocupa a mão"
+    "properties": "Concussão; não ocupa a mão",
+    "icon": "gauntlet"
   },
   {
     "name": "Ataque Desarmado",
@@ -555,7 +616,8 @@
     "weightLb": 0,
     "costGp": 0,
     "damageOrAc": "1d3 (x2)",
-    "properties": "Concussão; dano não letal sem talento apropriado"
+    "properties": "Concussão; dano não letal sem talento apropriado",
+    "icon": "fist"
   },
   {
     "name": "Adaga de Soco",
@@ -564,7 +626,8 @@
     "weightLb": 1.1,
     "costGp": 2,
     "damageOrAc": "1d4 (x3)",
-    "properties": "Perfuração"
+    "properties": "Perfuração",
+    "icon": "broad-dagger"
   },
   {
     "name": "Manopla com Cravos",
@@ -573,7 +636,8 @@
     "weightLb": 1.1,
     "costGp": 5,
     "damageOrAc": "1d4 (x2)",
-    "properties": "Perfuração"
+    "properties": "Perfuração",
+    "icon": "mailed-fist"
   },
   {
     "name": "Maça Leve",
@@ -582,7 +646,8 @@
     "weightLb": 4.4,
     "costGp": 5,
     "damageOrAc": "1d6 (x2)",
-    "properties": "Concussão"
+    "properties": "Concussão",
+    "icon": "mace-head"
   },
   {
     "name": "Foice Curta",
@@ -591,7 +656,8 @@
     "weightLb": 2.2,
     "costGp": 6,
     "damageOrAc": "1d6 (x2)",
-    "properties": "Cortante; arma leve; pode realizar imobilização"
+    "properties": "Cortante; arma leve; pode realizar imobilização",
+    "icon": "sickle"
   },
   {
     "name": "Clava",
@@ -600,7 +666,8 @@
     "weightLb": 3.3,
     "costGp": 0,
     "damageOrAc": "1d6 (x2)",
-    "properties": "Concussão"
+    "properties": "Concussão",
+    "icon": "wood-club"
   },
   {
     "name": "Maça-Estrela",
@@ -609,7 +676,8 @@
     "weightLb": 6.6,
     "costGp": 8,
     "damageOrAc": "1d8 (x2)",
-    "properties": "Concussão e perfuração"
+    "properties": "Concussão e perfuração",
+    "icon": "spiked-mace"
   },
   {
     "name": "Lança Curta",
@@ -618,7 +686,8 @@
     "weightLb": 3.3,
     "costGp": 1,
     "damageOrAc": "1d6 (x2)",
-    "properties": "Perfuração; incremento 6m"
+    "properties": "Perfuração; incremento 6m",
+    "icon": "thrown-spear"
   },
   {
     "name": "Bordão",
@@ -627,7 +696,8 @@
     "weightLb": 4.4,
     "costGp": 0,
     "damageOrAc": "1d6/1d6 (x2)",
-    "properties": "Concussão; arma dupla"
+    "properties": "Concussão; arma dupla",
+    "icon": "bo"
   },
   {
     "name": "Lança",
@@ -636,7 +706,8 @@
     "weightLb": 6.6,
     "costGp": 2,
     "damageOrAc": "1d8 (x3)",
-    "properties": "Perfuração; arremesso 6m"
+    "properties": "Perfuração; arremesso 6m",
+    "icon": "spears"
   },
   {
     "name": "Besta Pesada",
@@ -645,7 +716,8 @@
     "weightLb": 8.8,
     "costGp": 50,
     "damageOrAc": "1d10 (19-20/x2)",
-    "properties": "Perfuração; incremento 36m"
+    "properties": "Perfuração; incremento 36m",
+    "icon": "crossbow"
   },
   {
     "name": "Dardo",
@@ -654,7 +726,8 @@
     "weightLb": 0.22,
     "costGp": 0.5,
     "damageOrAc": "1d4 (x2)",
-    "properties": "Perfuração; arremesso 6m"
+    "properties": "Perfuração; arremesso 6m",
+    "icon": "dart"
   },
   {
     "name": "Dardo de Arremesso",
@@ -663,7 +736,8 @@
     "weightLb": 2,
     "costGp": 1,
     "damageOrAc": "1d6 (x2)",
-    "properties": "Perfuração; arremesso 9m"
+    "properties": "Perfuração; arremesso 9m",
+    "icon": "dart"
   },
   {
     "name": "Funda",
@@ -672,7 +746,8 @@
     "weightLb": 0,
     "costGp": 0,
     "damageOrAc": "1d4 (x2)",
-    "properties": "Concussão; incremento 15m"
+    "properties": "Concussão; incremento 15m",
+    "icon": "sling"
   },
   {
     "name": "Virotes de Besta (10)",
@@ -681,7 +756,8 @@
     "weightLb": 1.1,
     "costGp": 1,
     "damageOrAc": "-",
-    "properties": "Munição para bestas"
+    "properties": "Munição para bestas",
+    "icon": "broadhead-arrow"
   },
   {
     "name": "Balas de Funda (10)",
@@ -690,7 +766,8 @@
     "weightLb": 5.5,
     "costGp": 0.1,
     "damageOrAc": "-",
-    "properties": "Munição para funda"
+    "properties": "Munição para funda",
+    "icon": "marbles"
   },
   {
     "name": "Flechas (20)",
@@ -699,7 +776,8 @@
     "weightLb": 3.3,
     "costGp": 1,
     "damageOrAc": "-",
-    "properties": "Munição para arcos"
+    "properties": "Munição para arcos",
+    "icon": "arrow-flights"
   },
   {
     "name": "Machadinha de Arremesso",
@@ -708,7 +786,8 @@
     "weightLb": 2,
     "costGp": 8,
     "damageOrAc": "1d6 (x2)",
-    "properties": "Corte; arremesso 3m"
+    "properties": "Corte; arremesso 3m",
+    "icon": "tomahawk"
   },
   {
     "name": "Martelo Leve",
@@ -717,7 +796,8 @@
     "weightLb": 2.2,
     "costGp": 1,
     "damageOrAc": "1d4 (x2)",
-    "properties": "Concussão; arremesso 6m"
+    "properties": "Concussão; arremesso 6m",
+    "icon": "flat-hammer"
   },
   {
     "name": "Machadinha",
@@ -726,7 +806,8 @@
     "weightLb": 3.3,
     "costGp": 6,
     "damageOrAc": "1d6 (x3)",
-    "properties": "Corte"
+    "properties": "Corte",
+    "icon": "hatchet"
   },
   {
     "name": "Kukri",
@@ -735,7 +816,8 @@
     "weightLb": 2.2,
     "costGp": 8,
     "damageOrAc": "1d4 (18-20/x2)",
-    "properties": "Corte"
+    "properties": "Corte",
+    "icon": "curvy-knife"
   },
   {
     "name": "Picareta Leve",
@@ -744,7 +826,8 @@
     "weightLb": 3.3,
     "costGp": 4,
     "damageOrAc": "1d4 (x4)",
-    "properties": "Perfuração"
+    "properties": "Perfuração",
+    "icon": "war-pick"
   },
   {
     "name": "Porrete",
@@ -753,7 +836,8 @@
     "weightLb": 2.2,
     "costGp": 1,
     "damageOrAc": "1d6 (x2)",
-    "properties": "Concussão; dano não letal"
+    "properties": "Concussão; dano não letal",
+    "icon": "baton"
   },
   {
     "name": "Mangual",
@@ -762,7 +846,8 @@
     "weightLb": 5.5,
     "costGp": 8,
     "damageOrAc": "1d8 (x2)",
-    "properties": "Concussão"
+    "properties": "Concussão",
+    "icon": "flail"
   },
   {
     "name": "Picareta Pesada",
@@ -771,7 +856,8 @@
     "weightLb": 6.6,
     "costGp": 8,
     "damageOrAc": "1d6 (x4)",
-    "properties": "Perfuração"
+    "properties": "Perfuração",
+    "icon": "war-pick"
   },
   {
     "name": "Cimitarra",
@@ -780,7 +866,8 @@
     "weightLb": 4.4,
     "costGp": 15,
     "damageOrAc": "1d6 (18-20/x2)",
-    "properties": "Corte"
+    "properties": "Corte",
+    "icon": "katana"
   },
   {
     "name": "Tridente",
@@ -789,7 +876,8 @@
     "weightLb": 4.4,
     "costGp": 15,
     "damageOrAc": "1d8 (x2)",
-    "properties": "Perfuração; arremesso 3m"
+    "properties": "Perfuração; arremesso 3m",
+    "icon": "trident"
   },
   {
     "name": "Martelo de Guerra",
@@ -798,7 +886,8 @@
     "weightLb": 5.5,
     "costGp": 12,
     "damageOrAc": "1d8 (x3)",
-    "properties": "Concussão"
+    "properties": "Concussão",
+    "icon": "warhammer"
   },
   {
     "name": "Falcata",
@@ -807,7 +896,8 @@
     "weightLb": 8,
     "costGp": 75,
     "damageOrAc": "2d4 (18-20/x2)",
-    "properties": "Corte"
+    "properties": "Corte",
+    "icon": "machete"
   },
   {
     "name": "Glaive",
@@ -816,7 +906,8 @@
     "weightLb": 22,
     "costGp": 8,
     "damageOrAc": "1d10 (x3)",
-    "properties": "Corte; alcance"
+    "properties": "Corte; alcance",
+    "icon": "glaive"
   },
   {
     "name": "Clava Grande",
@@ -825,7 +916,8 @@
     "weightLb": 8.8,
     "costGp": 5,
     "damageOrAc": "1d10 (x2)",
-    "properties": "Concussão"
+    "properties": "Concussão",
+    "icon": "spiked-bat"
   },
   {
     "name": "Mangual Pesado",
@@ -834,7 +926,8 @@
     "weightLb": 22,
     "costGp": 15,
     "damageOrAc": "1d10 (19-20/x2)",
-    "properties": "Concussão"
+    "properties": "Concussão",
+    "icon": "flail"
   },
   {
     "name": "Guisarme",
@@ -843,7 +936,8 @@
     "weightLb": 24.2,
     "costGp": 9,
     "damageOrAc": "2d4 (x3)",
-    "properties": "Corte; alcance"
+    "properties": "Corte; alcance",
+    "icon": "spear-hook"
   },
   {
     "name": "Alabarda",
@@ -852,7 +946,8 @@
     "weightLb": 24.2,
     "costGp": 10,
     "damageOrAc": "1d10 (x3)",
-    "properties": "Corte ou perfuração"
+    "properties": "Corte ou perfuração",
+    "icon": "halberd"
   },
   {
     "name": "Lança Montada",
@@ -861,7 +956,8 @@
     "weightLb": 22,
     "costGp": 10,
     "damageOrAc": "1d8 (x3)",
-    "properties": "Perfurante; alcance 3 m; causa dano dobrado em investida montada"
+    "properties": "Perfurante; alcance 3 m; causa dano dobrado em investida montada",
+    "icon": "mounted-knight"
   },
   {
     "name": "Ranseur",
@@ -870,7 +966,8 @@
     "weightLb": 24.2,
     "costGp": 10,
     "damageOrAc": "2d4 (x3)",
-    "properties": "Perfuração; alcance"
+    "properties": "Perfuração; alcance",
+    "icon": "pitchfork"
   },
   {
     "name": "Foice Longa",
@@ -879,7 +976,8 @@
     "weightLb": 22,
     "costGp": 18,
     "damageOrAc": "2d4 (x4)",
-    "properties": "Perfurante ou cortante; arma de haste; pode realizar imobilização"
+    "properties": "Perfurante ou cortante; arma de haste; pode realizar imobilização",
+    "icon": "scythe"
   },
   {
     "name": "Arco Longo",
@@ -888,7 +986,8 @@
     "weightLb": 3.3,
     "costGp": 75,
     "damageOrAc": "1d8 (x3)",
-    "properties": "Perfuração; incremento 30m"
+    "properties": "Perfuração; incremento 30m",
+    "icon": "bow-arrow"
   },
   {
     "name": "Arco Curto Composto",
@@ -897,7 +996,8 @@
     "weightLb": 2.2,
     "costGp": 75,
     "damageOrAc": "1d6 (x3)",
-    "properties": "Perfuração; incremento 21m"
+    "properties": "Perfuração; incremento 21m",
+    "icon": "pocket-bow"
   },
   {
     "name": "Arco Longo Composto (Força +0)",
@@ -906,7 +1006,8 @@
     "weightLb": 3,
     "costGp": 100,
     "damageOrAc": "1d8 (x3)",
-    "properties": "Perfuração; incremento 33m"
+    "properties": "Perfuração; incremento 33m",
+    "icon": "bow-arrow"
   },
   {
     "name": "Kama",
@@ -915,7 +1016,8 @@
     "weightLb": 2.2,
     "costGp": 2,
     "damageOrAc": "1d6 (x2)",
-    "properties": "Corte"
+    "properties": "Corte",
+    "icon": "sickle"
   },
   {
     "name": "Nunchaku",
@@ -924,7 +1026,8 @@
     "weightLb": 2.2,
     "costGp": 2,
     "damageOrAc": "1d6 (x2)",
-    "properties": "Concussão"
+    "properties": "Concussão",
+    "icon": "nunchaku"
   },
   {
     "name": "Sai",
@@ -933,7 +1036,8 @@
     "weightLb": 1.1,
     "costGp": 1,
     "damageOrAc": "1d4 (x2)",
-    "properties": "Concussão; arremesso 3m"
+    "properties": "Concussão; arremesso 3m",
+    "icon": "sai"
   },
   {
     "name": "Siangham",
@@ -942,7 +1046,8 @@
     "weightLb": 1.1,
     "costGp": 3,
     "damageOrAc": "1d6 (x2)",
-    "properties": "Perfuração"
+    "properties": "Perfuração",
+    "icon": "telescopic-baton"
   },
   {
     "name": "Espada Bastarda",
@@ -951,7 +1056,8 @@
     "weightLb": 6.6,
     "costGp": 35,
     "damageOrAc": "1d10 (19-20/x2)",
-    "properties": "Corte; pode ser usada com duas mãos"
+    "properties": "Corte; pode ser usada com duas mãos",
+    "icon": "two-handed-sword"
   },
   {
     "name": "Machado de Guerra Anão",
@@ -960,7 +1066,8 @@
     "weightLb": 8.8,
     "costGp": 30,
     "damageOrAc": "1d10 (x3)",
-    "properties": "Corte; exótica para não anões"
+    "properties": "Corte; exótica para não anões",
+    "icon": "sharp-axe"
   },
   {
     "name": "Corrente com Cravos",
@@ -969,7 +1076,8 @@
     "weightLb": 22,
     "costGp": 25,
     "damageOrAc": "2d4 (x2)",
-    "properties": "Corte; alcance e manobras especiais"
+    "properties": "Corte; alcance e manobras especiais",
+    "icon": "spiked-ball"
   },
   {
     "name": "Chicote",
@@ -978,7 +1086,8 @@
     "weightLb": 2.2,
     "costGp": 1,
     "damageOrAc": "1d3 (x2)",
-    "properties": "Corte; alcance e manobras especiais"
+    "properties": "Corte; alcance e manobras especiais",
+    "icon": "whip"
   },
   {
     "name": "Rede",
@@ -987,7 +1096,8 @@
     "weightLb": 6.6,
     "costGp": 20,
     "damageOrAc": "-",
-    "properties": "Arma de distância; enredar; incremento 3m"
+    "properties": "Arma de distância; enredar; incremento 3m",
+    "icon": "fishing-net"
   },
   {
     "name": "Shuriken (5)",
@@ -996,7 +1106,8 @@
     "weightLb": 0.55,
     "costGp": 1,
     "damageOrAc": "1d2 (x2)",
-    "properties": "Perfuração; arremesso 3m"
+    "properties": "Perfuração; arremesso 3m",
+    "icon": "shuriken"
   },
   {
     "name": "Lança-Lâminas",
@@ -1005,7 +1116,8 @@
     "weightLb": 10,
     "costGp": 10,
     "damageOrAc": "1d8 (x3)",
-    "properties": "Perfuração; alcance"
+    "properties": "Perfuração; alcance",
+    "icon": "thrown-daggers"
   },
   {
     "name": "Espada de Duas Lâminas",
@@ -1014,7 +1126,8 @@
     "weightLb": 22,
     "costGp": 100,
     "damageOrAc": "1d8/1d8 (19-20/x2)",
-    "properties": "Corte; arma dupla exótica"
+    "properties": "Corte; arma dupla exótica",
+    "icon": "bat-leth"
   },
   {
     "name": "Urgrosh Anão",
@@ -1023,7 +1136,8 @@
     "weightLb": 24.2,
     "costGp": 50,
     "damageOrAc": "1d8/1d6 (x3)",
-    "properties": "Corte e perfuração; arma dupla"
+    "properties": "Corte e perfuração; arma dupla",
+    "icon": "sharp-halberd"
   },
   {
     "name": "Martelo Gnômico com Gancho",
@@ -1032,7 +1146,8 @@
     "weightLb": 6.6,
     "costGp": 20,
     "damageOrAc": "1d8/1d6 (x3)",
-    "properties": "Concussão e perfuração; arma dupla"
+    "properties": "Concussão e perfuração; arma dupla",
+    "icon": "gear-hammer"
   },
   {
     "name": "Mangual Duplo",
@@ -1041,7 +1156,8 @@
     "weightLb": 10,
     "costGp": 90,
     "damageOrAc": "1d8/1d8 (x2)",
-    "properties": "Concussão; arma dupla"
+    "properties": "Concussão; arma dupla",
+    "icon": "flail"
   },
   {
     "name": "Machado Orc Duplo",
@@ -1050,7 +1166,8 @@
     "weightLb": 27.5,
     "costGp": 60,
     "damageOrAc": "1d8/1d8 (x3)",
-    "properties": "Corte; arma dupla"
+    "properties": "Corte; arma dupla",
+    "icon": "crossed-axes"
   },
   {
     "name": "Espada Curva Élfica",
@@ -1059,7 +1176,8 @@
     "weightLb": 7,
     "costGp": 80,
     "damageOrAc": "1d10 (18-20/x2)",
-    "properties": "Corte; arma exótica"
+    "properties": "Corte; arma exótica",
+    "icon": "crescent-blade"
   },
   {
     "name": "Lança de Duas Pontas",
@@ -1068,7 +1186,8 @@
     "weightLb": 6,
     "costGp": 15,
     "damageOrAc": "1d6/1d6 (x2)",
-    "properties": "Perfuração; arma dupla"
+    "properties": "Perfuração; arma dupla",
+    "icon": "spears"
   },
   {
     "name": "Corrente com Cravos (arma dupla)",
@@ -1077,7 +1196,8 @@
     "weightLb": 10,
     "costGp": 25,
     "damageOrAc": "2d4/2d4 (x2)",
-    "properties": "Corte; arma dupla e alcance"
+    "properties": "Corte; arma dupla e alcance",
+    "icon": "spiked-ball"
   },
   {
     "name": "Picareta Pesada de Guerra",
@@ -1086,7 +1206,8 @@
     "weightLb": 6,
     "costGp": 8,
     "damageOrAc": "1d6 (x4)",
-    "properties": "Perfuração"
+    "properties": "Perfuração",
+    "icon": "war-pick"
   },
   {
     "name": "Besta de Mão",
@@ -1095,7 +1216,8 @@
     "weightLb": 2.2,
     "costGp": 100,
     "damageOrAc": "1d4 (19-20/x2)",
-    "properties": "Perfuração; incremento 9m"
+    "properties": "Perfuração; incremento 9m",
+    "icon": "crossbow"
   },
   {
     "name": "Besta Leve de Repetição",
@@ -1104,7 +1226,8 @@
     "weightLb": 6.6,
     "costGp": 250,
     "damageOrAc": "1d8 (19-20/x2)",
-    "properties": "Perfuração; 5 virotes por carregamento"
+    "properties": "Perfuração; 5 virotes por carregamento",
+    "icon": "crossbow"
   },
   {
     "name": "Besta Pesada de Repetição",
@@ -1113,7 +1236,8 @@
     "weightLb": 24.2,
     "costGp": 400,
     "damageOrAc": "1d10 (19-20/x2)",
-    "properties": "Perfuração; 5 virotes por carregamento"
+    "properties": "Perfuração; 5 virotes por carregamento",
+    "icon": "crossbow"
   },
   {
     "name": "Escudo Pequeno de Metal",
@@ -1122,7 +1246,8 @@
     "weightLb": 8.3,
     "costGp": 10,
     "damageOrAc": "+1 CA",
-    "properties": "Penalidade -1; falha arcana 5%"
+    "properties": "Penalidade -1; falha arcana 5%",
+    "icon": "round-shield"
   },
   {
     "name": "Escudo Grande de Madeira",
@@ -1131,7 +1256,8 @@
     "weightLb": 11,
     "costGp": 7,
     "damageOrAc": "+2 CA",
-    "properties": "Penalidade -2; falha arcana 15%"
+    "properties": "Penalidade -2; falha arcana 15%",
+    "icon": "bordered-shield"
   },
   {
     "name": "Algibeira",
@@ -1140,7 +1266,8 @@
     "weightLb": 0.55,
     "costGp": 1,
     "damageOrAc": "-",
-    "properties": "Pequena bolsa para moedas e objetos"
+    "properties": "Pequena bolsa para moedas e objetos",
+    "icon": "shiny-purse"
   },
   {
     "name": "Aljava",
@@ -1149,7 +1276,8 @@
     "weightLb": 1,
     "costGp": 1,
     "damageOrAc": "-",
-    "properties": "Transporta até 20 flechas"
+    "properties": "Transporta até 20 flechas",
+    "icon": "quiver"
   },
   {
     "name": "Mochila",
@@ -1158,7 +1286,8 @@
     "weightLb": 2.2,
     "costGp": 2,
     "damageOrAc": "-",
-    "properties": "Mochila comum"
+    "properties": "Mochila comum",
+    "icon": "backpack"
   },
   {
     "name": "Saco",
@@ -1167,7 +1296,8 @@
     "weightLb": 0.5,
     "costGp": 0.1,
     "damageOrAc": "-",
-    "properties": "Saco de tecido"
+    "properties": "Saco de tecido",
+    "icon": "bindle"
   },
   {
     "name": "Saco de Dormir",
@@ -1176,7 +1306,8 @@
     "weightLb": 5.5,
     "costGp": 0.1,
     "damageOrAc": "-",
-    "properties": "Equipamento para repouso"
+    "properties": "Equipamento para repouso",
+    "icon": "sleeping-bag"
   },
   {
     "name": "Cobertor",
@@ -1185,7 +1316,8 @@
     "weightLb": 3,
     "costGp": 0.1,
     "damageOrAc": "-",
-    "properties": "Cobertor de viagem"
+    "properties": "Cobertor de viagem",
+    "icon": "blanket"
   },
   {
     "name": "Tenda para uma Pessoa",
@@ -1194,7 +1326,8 @@
     "weightLb": 3,
     "costGp": 10,
     "damageOrAc": "-",
-    "properties": "Abrigo portátil"
+    "properties": "Abrigo portátil",
+    "icon": "camping-tent"
   },
   {
     "name": "Tenda para duas Pessoas",
@@ -1203,7 +1336,8 @@
     "weightLb": 20,
     "costGp": 12,
     "damageOrAc": "-",
-    "properties": "Abrigo portátil"
+    "properties": "Abrigo portátil",
+    "icon": "camping-tent"
   },
   {
     "name": "Gancho de Escalada",
@@ -1212,7 +1346,8 @@
     "weightLb": 4,
     "costGp": 1,
     "damageOrAc": "-",
-    "properties": "Usado com corda para escalada"
+    "properties": "Usado com corda para escalada",
+    "icon": "grapple"
   },
   {
     "name": "Martelo",
@@ -1221,7 +1356,8 @@
     "weightLb": 2.2,
     "costGp": 0.5,
     "damageOrAc": "-",
-    "properties": "Ferramenta"
+    "properties": "Ferramenta",
+    "icon": "claw-hammer"
   },
   {
     "name": "Pé de Cabra",
@@ -1230,7 +1366,8 @@
     "weightLb": 5.5,
     "costGp": 2,
     "damageOrAc": "-",
-    "properties": "Alavanca; pode auxiliar a forçar portas"
+    "properties": "Alavanca; pode auxiliar a forçar portas",
+    "icon": "crowbar"
   },
   {
     "name": "Espelho de Metal Pequeno",
@@ -1239,7 +1376,8 @@
     "weightLb": 0.55,
     "costGp": 10,
     "damageOrAc": "-",
-    "properties": "Pequeno espelho metálico"
+    "properties": "Pequeno espelho metálico",
+    "icon": "mirror-mirror"
   },
   {
     "name": "Ampulheta",
@@ -1248,7 +1386,8 @@
     "weightLb": 1.1,
     "costGp": 25,
     "damageOrAc": "-",
-    "properties": "Mede intervalos de tempo"
+    "properties": "Mede intervalos de tempo",
+    "icon": "hourglass"
   },
   {
     "name": "Balança de Mercador",
@@ -1257,7 +1396,8 @@
     "weightLb": 1.1,
     "costGp": 2,
     "damageOrAc": "-",
-    "properties": "Pesar mercadorias"
+    "properties": "Pesar mercadorias",
+    "icon": "scales"
   },
   {
     "name": "Cadeado Simples",
@@ -1266,7 +1406,8 @@
     "weightLb": 1,
     "costGp": 20,
     "damageOrAc": "-",
-    "properties": "Fechadura com chave"
+    "properties": "Fechadura com chave",
+    "icon": "padlock"
   },
   {
     "name": "Algemas",
@@ -1275,7 +1416,8 @@
     "weightLb": 2.2,
     "costGp": 15,
     "damageOrAc": "-",
-    "properties": "Restringe os movimentos de uma criatura"
+    "properties": "Restringe os movimentos de uma criatura",
+    "icon": "handcuffs"
   },
   {
     "name": "Giz (1 pedaço)",
@@ -1284,7 +1426,8 @@
     "weightLb": 0,
     "costGp": 0.01,
     "damageOrAc": "-",
-    "properties": "Marcar superfícies"
+    "properties": "Marcar superfícies",
+    "icon": "pencil"
   },
   {
     "name": "Tinta (vidro de 30 ml)",
@@ -1293,7 +1436,8 @@
     "weightLb": 0,
     "costGp": 8,
     "damageOrAc": "-",
-    "properties": "Tinta preta; outras cores custam o dobro"
+    "properties": "Tinta preta; outras cores custam o dobro",
+    "icon": "quill-ink"
   },
   {
     "name": "Papel (folha)",
@@ -1302,7 +1446,8 @@
     "weightLb": 0,
     "costGp": 0.4,
     "damageOrAc": "-",
-    "properties": "Folha para escrita"
+    "properties": "Folha para escrita",
+    "icon": "folded-paper"
   },
   {
     "name": "Pergaminho em Branco",
@@ -1311,7 +1456,8 @@
     "weightLb": 0,
     "costGp": 0.5,
     "damageOrAc": "-",
-    "properties": "Material para escrita"
+    "properties": "Material para escrita",
+    "icon": "scroll-quill"
   },
   {
     "name": "Vela",
@@ -1320,7 +1466,8 @@
     "weightLb": 0,
     "costGp": 0.01,
     "damageOrAc": "-",
-    "properties": "Ilumina uma pequena área"
+    "properties": "Ilumina uma pequena área",
+    "icon": "candles"
   },
   {
     "name": "Óleo de Lamparina (frasco)",
@@ -1329,7 +1476,8 @@
     "weightLb": 1,
     "costGp": 0.1,
     "damageOrAc": "-",
-    "properties": "Combustível para lamparinas"
+    "properties": "Combustível para lamparinas",
+    "icon": "oil-can"
   },
   {
     "name": "Lamparina",
@@ -1338,7 +1486,8 @@
     "weightLb": 1.1,
     "costGp": 0.1,
     "damageOrAc": "-",
-    "properties": "Iluminação"
+    "properties": "Iluminação",
+    "icon": "old-lantern"
   },
   {
     "name": "Apito",
@@ -1347,7 +1496,8 @@
     "weightLb": 0,
     "costGp": 0.8,
     "damageOrAc": "-",
-    "properties": "Sinal sonoro"
+    "properties": "Sinal sonoro",
+    "icon": "whistle"
   },
   {
     "name": "Sino",
@@ -1356,7 +1506,8 @@
     "weightLb": 0,
     "costGp": 1,
     "damageOrAc": "-",
-    "properties": "Sinal sonoro"
+    "properties": "Sinal sonoro",
+    "icon": "ringing-bell"
   },
   {
     "name": "Corrente (3m)",
@@ -1365,7 +1516,8 @@
     "weightLb": 2.2,
     "costGp": 30,
     "damageOrAc": "-",
-    "properties": "Corrente de ferro"
+    "properties": "Corrente de ferro",
+    "icon": "crossed-chains"
   },
   {
     "name": "Pá",
@@ -1374,7 +1526,8 @@
     "weightLb": 8.8,
     "costGp": 2,
     "damageOrAc": "-",
-    "properties": "Ferramenta de escavação"
+    "properties": "Ferramenta de escavação",
+    "icon": "spade"
   },
   {
     "name": "Picareta de Mina",
@@ -1383,7 +1536,8 @@
     "weightLb": 11,
     "costGp": 3,
     "damageOrAc": "-",
-    "properties": "Ferramenta de mineração"
+    "properties": "Ferramenta de mineração",
+    "icon": "mining"
   },
   {
     "name": "Serrote",
@@ -1392,7 +1546,8 @@
     "weightLb": 2,
     "costGp": 4,
     "damageOrAc": "-",
-    "properties": "Ferramenta"
+    "properties": "Ferramenta",
+    "icon": "hand-saw"
   },
   {
     "name": "Ácido (frasco)",
@@ -1401,7 +1556,8 @@
     "weightLb": 1.1,
     "costGp": 10,
     "damageOrAc": "1d6 ácido",
-    "properties": "Substância alquímica; arremessável"
+    "properties": "Substância alquímica; arremessável",
+    "icon": "acid"
   },
   {
     "name": "Fogo Alquímico",
@@ -1410,7 +1566,8 @@
     "weightLb": 1.1,
     "costGp": 20,
     "damageOrAc": "1d6 fogo",
-    "properties": "Substância alquímica; arremessável"
+    "properties": "Substância alquímica; arremessável",
+    "icon": "fire-bottle"
   },
   {
     "name": "Bastão Solar",
@@ -1419,7 +1576,8 @@
     "weightLb": 1.1,
     "costGp": 2,
     "damageOrAc": "-",
-    "properties": "Ilumina como uma lanterna por 6 horas"
+    "properties": "Ilumina como uma lanterna por 6 horas",
+    "icon": "glowing-artifact"
   },
   {
     "name": "Pedra Trovão",
@@ -1428,7 +1586,8 @@
     "weightLb": 1.1,
     "costGp": 30,
     "damageOrAc": "-",
-    "properties": "Estouro sonoro; pode ensurdecer"
+    "properties": "Estouro sonoro; pode ensurdecer",
+    "icon": "thunderball"
   },
   {
     "name": "Bastão de Fumaça",
@@ -1437,7 +1596,8 @@
     "weightLb": 0.55,
     "costGp": 20,
     "damageOrAc": "-",
-    "properties": "Cria uma nuvem de fumaça"
+    "properties": "Cria uma nuvem de fumaça",
+    "icon": "smoke-bomb"
   },
   {
     "name": "Antídoto (frasco)",
@@ -1446,7 +1606,8 @@
     "weightLb": 0,
     "costGp": 50,
     "damageOrAc": "—",
-    "properties": "+5 alquímico em testes de Fortitude contra venenos por 1 hora"
+    "properties": "+5 alquímico em testes de Fortitude contra venenos por 1 hora",
+    "icon": "round-bottom-flask"
   },
   {
     "name": "Sabre",
@@ -1455,7 +1616,8 @@
     "weightLb": 2.2,
     "costGp": 20,
     "damageOrAc": "1d6 (18-20/x2)",
-    "properties": "Perfuração, uma mão"
+    "properties": "Perfuração, uma mão",
+    "icon": "sparkling-sabre"
   },
   {
     "name": "Boleadeira",
@@ -1464,7 +1626,8 @@
     "weightLb": 2.2,
     "costGp": 5,
     "damageOrAc": "1d4 (x2)",
-    "properties": "Concussão (não letal); arremesso 3m; derruba o alvo em acerto decisivo"
+    "properties": "Concussão (não letal); arremesso 3m; derruba o alvo em acerto decisivo",
+    "icon": "bolas"
   },
   {
     "name": "Azagaia",
@@ -1473,7 +1636,8 @@
     "weightLb": 2.2,
     "costGp": 1,
     "damageOrAc": "1d6 (x2)",
-    "properties": "Perfurante; arremesso 9 m"
+    "properties": "Perfurante; arremesso 9 m",
+    "icon": "barbed-spear"
   },
   {
     "name": "Armaduras com Cravos",
@@ -1482,7 +1646,8 @@
     "weightLb": 11,
     "costGp": 50,
     "damageOrAc": "1d6 (x2)",
-    "properties": "Perfurante; acessório de armadura"
+    "properties": "Perfurante; acessório de armadura",
+    "icon": "spiked-armor"
   },
   {
     "name": "Escudo Pequeno (arma)",
@@ -1491,7 +1656,8 @@
     "weightLb": 5.5,
     "costGp": 3,
     "damageOrAc": "1d3 (x2)",
-    "properties": "Concussão; dano ao usar como arma"
+    "properties": "Concussão; dano ao usar como arma",
+    "icon": "round-shield"
   },
   {
     "name": "Escudo Pequeno com Cravos (arma)",
@@ -1500,7 +1666,8 @@
     "weightLb": 11,
     "costGp": 13,
     "damageOrAc": "1d4 (x2)",
-    "properties": "Perfurante; custo indicativo com escudo pequeno de madeira e cravos; preço varia conforme o escudo-base"
+    "properties": "Perfurante; custo indicativo com escudo pequeno de madeira e cravos; preço varia conforme o escudo-base",
+    "icon": "spiked-shield"
   },
   {
     "name": "Escudo Grande (arma)",
@@ -1509,7 +1676,8 @@
     "weightLb": 11,
     "costGp": 7,
     "damageOrAc": "1d4 (x2)",
-    "properties": "Concussão; dano ao usar como arma"
+    "properties": "Concussão; dano ao usar como arma",
+    "icon": "edged-shield"
   },
   {
     "name": "Escudo Grande com Cravos (arma)",
@@ -1518,7 +1686,8 @@
     "weightLb": 16.5,
     "costGp": 17,
     "damageOrAc": "1d6 (x2)",
-    "properties": "Perfurante; custo indicativo com escudo grande de madeira e cravos; preço varia conforme o escudo-base"
+    "properties": "Perfurante; custo indicativo com escudo grande de madeira e cravos; preço varia conforme o escudo-base",
+    "icon": "spiked-shield"
   },
   {
     "name": "Virotes de Besta (5)",
@@ -1527,7 +1696,8 @@
     "weightLb": 1.1,
     "costGp": 1,
     "damageOrAc": "—",
-    "properties": "Munição para bestas de repetição; pacote com 5"
+    "properties": "Munição para bestas de repetição; pacote com 5",
+    "icon": "broadhead-arrow"
   },
   {
     "name": "Loriga Segmentada",
@@ -1536,7 +1706,8 @@
     "weightLb": 38.6,
     "costGp": 250,
     "damageOrAc": "+6 CA",
-    "properties": "Armadura pesada; Des Máx +1; penalidade -6; falha arcana 35%"
+    "properties": "Armadura pesada; Des Máx +1; penalidade -6; falha arcana 35%",
+    "icon": "trench-body-armor"
   },
   {
     "name": "Cravos para Armadura",
@@ -1545,7 +1716,8 @@
     "weightLb": 11,
     "costGp": 50,
     "damageOrAc": "1d6 (x2)",
-    "properties": "Acessório; perfurante; acrescenta peso à armadura"
+    "properties": "Acessório; perfurante; acrescenta peso à armadura",
+    "icon": "spiked-armor"
   },
   {
     "name": "Manopla de Segurança",
@@ -1554,7 +1726,8 @@
     "weightLb": 5.5,
     "costGp": 8,
     "damageOrAc": "—",
-    "properties": "Permite prender a arma à mão; penalidades específicas conforme o livro"
+    "properties": "Permite prender a arma à mão; penalidades específicas conforme o livro",
+    "icon": "gloves"
   },
   {
     "name": "Cravos para Escudos",
@@ -1563,7 +1736,8 @@
     "weightLb": 5.5,
     "costGp": 10,
     "damageOrAc": "1d4 (x2)",
-    "properties": "Acessório para escudo; perfurante"
+    "properties": "Acessório para escudo; perfurante",
+    "icon": "spiked-shield"
   },
   {
     "name": "Agulha de Costura",
@@ -1572,7 +1746,8 @@
     "weightLb": 0,
     "costGp": 0.5,
     "damageOrAc": "—",
-    "properties": "Ferramenta simples"
+    "properties": "Ferramenta simples",
+    "icon": "sewing-needle"
   },
   {
     "name": "Algemas (Obra-Prima)",
@@ -1581,7 +1756,8 @@
     "weightLb": 2.2,
     "costGp": 50,
     "damageOrAc": "—",
-    "properties": "Algemas de melhor qualidade"
+    "properties": "Algemas de melhor qualidade",
+    "icon": "handcuffs"
   },
   {
     "name": "Anzol",
@@ -1590,7 +1766,8 @@
     "weightLb": 0,
     "costGp": 0.1,
     "damageOrAc": "—",
-    "properties": "Equipamento de pesca"
+    "properties": "Equipamento de pesca",
+    "icon": "fishing-hook"
   },
   {
     "name": "Apito de Advertência",
@@ -1599,7 +1776,8 @@
     "weightLb": 0,
     "costGp": 0.8,
     "damageOrAc": "—",
-    "properties": "Produz sinal sonoro alto"
+    "properties": "Produz sinal sonoro alto",
+    "icon": "whistle"
   },
   {
     "name": "Aríete",
@@ -1608,7 +1786,8 @@
     "weightLb": 22,
     "costGp": 10,
     "damageOrAc": "—",
-    "properties": "Ferramenta pesada para arrombar portas"
+    "properties": "Ferramenta pesada para arrombar portas",
+    "icon": "siege-ram"
   },
   {
     "name": "Balde (Vazio)",
@@ -1617,7 +1796,8 @@
     "weightLb": 2.2,
     "costGp": 0.5,
     "damageOrAc": "—",
-    "properties": "Recipiente"
+    "properties": "Recipiente",
+    "icon": "empty-wood-bucket"
   },
   {
     "name": "Barril (Vazio)",
@@ -1626,7 +1806,8 @@
     "weightLb": 33,
     "costGp": 2,
     "damageOrAc": "—",
-    "properties": "Recipiente grande"
+    "properties": "Recipiente grande",
+    "icon": "barrel"
   },
   {
     "name": "Baú (Vazio)",
@@ -1635,7 +1816,8 @@
     "weightLb": 27.5,
     "costGp": 2,
     "damageOrAc": "—",
-    "properties": "Recipiente com tampa"
+    "properties": "Recipiente com tampa",
+    "icon": "chest"
   },
   {
     "name": "Caneco de Cerâmica",
@@ -1644,7 +1826,8 @@
     "weightLb": 1.1,
     "costGp": 0.02,
     "damageOrAc": "—",
-    "properties": "Recipiente"
+    "properties": "Recipiente",
+    "icon": "coffee-mug"
   },
   {
     "name": "Caneta Tinteiro",
@@ -1653,7 +1836,8 @@
     "weightLb": 0,
     "costGp": 0.1,
     "damageOrAc": "—",
-    "properties": "Instrumento de escrita"
+    "properties": "Instrumento de escrita",
+    "icon": "fountain-pen"
   },
   {
     "name": "Cesto (Vazio)",
@@ -1662,7 +1846,8 @@
     "weightLb": 1.1,
     "costGp": 0.4,
     "damageOrAc": "—",
-    "properties": "Recipiente"
+    "properties": "Recipiente",
+    "icon": "basket"
   },
   {
     "name": "Cobertor de Inverno",
@@ -1671,7 +1856,8 @@
     "weightLb": 3.3,
     "costGp": 0.5,
     "damageOrAc": "—",
-    "properties": "Cobertor quente"
+    "properties": "Cobertor quente",
+    "icon": "blanket"
   },
   {
     "name": "Escada (3 m)",
@@ -1680,7 +1866,8 @@
     "weightLb": 22,
     "costGp": 0.05,
     "damageOrAc": "—",
-    "properties": "Escada portátil"
+    "properties": "Escada portátil",
+    "icon": "ladder"
   },
   {
     "name": "Esmeril",
@@ -1689,7 +1876,8 @@
     "weightLb": 1.1,
     "costGp": 0.02,
     "damageOrAc": "—",
-    "properties": "Ferramenta para afiar"
+    "properties": "Ferramenta para afiar",
+    "icon": "stone-wheel"
   },
   {
     "name": "Estrepes",
@@ -1698,7 +1886,8 @@
     "weightLb": 2.2,
     "costGp": 1,
     "damageOrAc": "—",
-    "properties": "Dispersados no chão para ferir ou dificultar movimento"
+    "properties": "Dispersados no chão para ferir ou dificultar movimento",
+    "icon": "caltrops"
   },
   {
     "name": "Fechadura (Muito Simples)",
@@ -1707,7 +1896,8 @@
     "weightLb": 1.1,
     "costGp": 20,
     "damageOrAc": "—",
-    "properties": "Fechadura; dificuldade conforme o livro"
+    "properties": "Fechadura; dificuldade conforme o livro",
+    "icon": "plain-padlock"
   },
   {
     "name": "Fechadura (Padrão)",
@@ -1716,7 +1906,8 @@
     "weightLb": 1.1,
     "costGp": 40,
     "damageOrAc": "—",
-    "properties": "Fechadura; dificuldade conforme o livro"
+    "properties": "Fechadura; dificuldade conforme o livro",
+    "icon": "key-lock"
   },
   {
     "name": "Fechadura (Boa)",
@@ -1725,7 +1916,8 @@
     "weightLb": 1.1,
     "costGp": 80,
     "damageOrAc": "—",
-    "properties": "Fechadura; dificuldade conforme o livro"
+    "properties": "Fechadura; dificuldade conforme o livro",
+    "icon": "combination-lock"
   },
   {
     "name": "Fechadura (Incrível)",
@@ -1734,7 +1926,8 @@
     "weightLb": 1.1,
     "costGp": 150,
     "damageOrAc": "—",
-    "properties": "Fechadura; dificuldade conforme o livro"
+    "properties": "Fechadura; dificuldade conforme o livro",
+    "icon": "triple-lock"
   },
   {
     "name": "Frasco (Vazio)",
@@ -1743,7 +1936,8 @@
     "weightLb": 1.65,
     "costGp": 0.03,
     "damageOrAc": "—",
-    "properties": "Recipiente de vidro"
+    "properties": "Recipiente de vidro",
+    "icon": "square-bottle"
   },
   {
     "name": "Garrafa de Vinho (Vidro)",
@@ -1752,7 +1946,8 @@
     "weightLb": 0,
     "costGp": 2,
     "damageOrAc": "—",
-    "properties": "Recipiente de vidro"
+    "properties": "Recipiente de vidro",
+    "icon": "wine-bottle"
   },
   {
     "name": "Jarro de Cerâmica",
@@ -1761,7 +1956,8 @@
     "weightLb": 9.9,
     "costGp": 0.03,
     "damageOrAc": "—",
-    "properties": "Recipiente"
+    "properties": "Recipiente",
+    "icon": "jug"
   },
   {
     "name": "Lanterna Coberta",
@@ -1770,7 +1966,8 @@
     "weightLb": 2.2,
     "costGp": 7,
     "damageOrAc": "—",
-    "properties": "Fonte de luz; requer óleo"
+    "properties": "Fonte de luz; requer óleo",
+    "icon": "lantern"
   },
   {
     "name": "Lenha (por dia)",
@@ -1779,7 +1976,8 @@
     "weightLb": 22,
     "costGp": 0.01,
     "damageOrAc": "—",
-    "properties": "Lenha para um dia"
+    "properties": "Lenha para um dia",
+    "icon": "wood-pile"
   },
   {
     "name": "Lona (m²)",
@@ -1788,7 +1986,8 @@
     "weightLb": 0.22,
     "costGp": 0.1,
     "damageOrAc": "—",
-    "properties": "Tecido impermeabilizado"
+    "properties": "Tecido impermeabilizado",
+    "icon": "rolled-cloth"
   },
   {
     "name": "Luneta",
@@ -1797,7 +1996,8 @@
     "weightLb": 1.1,
     "costGp": 1000,
     "damageOrAc": "—",
-    "properties": "Instrumento óptico"
+    "properties": "Instrumento óptico",
+    "icon": "spyglass"
   },
   {
     "name": "Marreta",
@@ -1806,7 +2006,8 @@
     "weightLb": 11,
     "costGp": 1,
     "damageOrAc": "—",
-    "properties": "Ferramenta pesada"
+    "properties": "Ferramenta pesada",
+    "icon": "hammer-drop"
   },
   {
     "name": "Óleo (500 ml)",
@@ -1815,7 +2016,8 @@
     "weightLb": 1.1,
     "costGp": 0.1,
     "damageOrAc": "—",
-    "properties": "Combustível para lâmpadas e lanternas"
+    "properties": "Combustível para lâmpadas e lanternas",
+    "icon": "oil-can"
   },
   {
     "name": "Panela de Ferro",
@@ -1824,7 +2026,8 @@
     "weightLb": 11,
     "costGp": 0.5,
     "damageOrAc": "—",
-    "properties": "Utensílio de cozinha"
+    "properties": "Utensílio de cozinha",
+    "icon": "cooking-pot"
   },
   {
     "name": "Parafina",
@@ -1833,7 +2036,8 @@
     "weightLb": 1.1,
     "costGp": 1,
     "damageOrAc": "—",
-    "properties": "Material combustível"
+    "properties": "Material combustível",
+    "icon": "candle-holder"
   },
   {
     "name": "Pergaminho (Folha)",
@@ -1842,7 +2046,8 @@
     "weightLb": 0,
     "costGp": 0.2,
     "damageOrAc": "—",
-    "properties": "Folha para escrita"
+    "properties": "Folha para escrita",
+    "icon": "scroll-quill"
   },
   {
     "name": "Píton",
@@ -1851,7 +2056,8 @@
     "weightLb": 0.55,
     "costGp": 0.1,
     "damageOrAc": "—",
-    "properties": "Pino metálico para escalada"
+    "properties": "Pino metálico para escalada",
+    "icon": "nails"
   },
   {
     "name": "Porta-Mapas",
@@ -1860,7 +2066,8 @@
     "weightLb": 0.55,
     "costGp": 1,
     "damageOrAc": "—",
-    "properties": "Tubo para guardar mapas ou pergaminhos"
+    "properties": "Tubo para guardar mapas ou pergaminhos",
+    "icon": "treasure-map"
   },
   {
     "name": "Pote de Cerâmica",
@@ -1869,7 +2076,8 @@
     "weightLb": 5.5,
     "costGp": 0.02,
     "damageOrAc": "—",
-    "properties": "Recipiente"
+    "properties": "Recipiente",
+    "icon": "painted-pottery"
   },
   {
     "name": "Rede de Pesca (5 x 5 m)",
@@ -1878,7 +2086,8 @@
     "weightLb": 5.5,
     "costGp": 4,
     "damageOrAc": "—",
-    "properties": "Rede de pesca"
+    "properties": "Rede de pesca",
+    "icon": "fishing-net"
   },
   {
     "name": "Sabão (por kg)",
@@ -1887,7 +2096,8 @@
     "weightLb": 1.1,
     "costGp": 0.5,
     "damageOrAc": "—",
-    "properties": "Produto de limpeza"
+    "properties": "Produto de limpeza",
+    "icon": "soap"
   },
   {
     "name": "Talha ou Sisal",
@@ -1896,7 +2106,8 @@
     "weightLb": 5.5,
     "costGp": 5,
     "damageOrAc": "—",
-    "properties": "Conjunto de cordas e roldanas"
+    "properties": "Conjunto de cordas e roldanas",
+    "icon": "pulley-hook"
   },
   {
     "name": "Vara (3 m)",
@@ -1905,7 +2116,8 @@
     "weightLb": 8.8,
     "costGp": 0.2,
     "damageOrAc": "—",
-    "properties": "Vara comprida"
+    "properties": "Vara comprida",
+    "icon": "wood-stick"
   },
   {
     "name": "Vidro para Tinta ou Poção",
@@ -1914,7 +2126,8 @@
     "weightLb": 0.11,
     "costGp": 1,
     "damageOrAc": "—",
-    "properties": "Pequeno recipiente de vidro"
+    "properties": "Pequeno recipiente de vidro",
+    "icon": "vial"
   },
   {
     "name": "Água Benta (frasco)",
@@ -1923,7 +2136,8 @@
     "weightLb": 1.1,
     "costGp": 25,
     "damageOrAc": "2d4",
-    "properties": "Causa dano a mortos-vivos e extra-planares malignos"
+    "properties": "Causa dano a mortos-vivos e extra-planares malignos",
+    "icon": "holy-water"
   },
   {
     "name": "Bolsa de Cola",
@@ -1932,7 +2146,8 @@
     "weightLb": 4.4,
     "costGp": 50,
     "damageOrAc": "—",
-    "properties": "Arremesso 3 m; cola restringe o alvo temporariamente"
+    "properties": "Arremesso 3 m; cola restringe o alvo temporariamente",
+    "icon": "honey-jar"
   },
   {
     "name": "Fósforo",
@@ -1941,7 +2156,8 @@
     "weightLb": 0,
     "costGp": 1,
     "damageOrAc": "—",
-    "properties": "Vareta alquímica que se incendeia por fricção"
+    "properties": "Vareta alquímica que se incendeia por fricção",
+    "icon": "match-head"
   },
   {
     "name": "Tocha da Chama Eterna",
@@ -1950,7 +2166,8 @@
     "weightLb": 1.1,
     "costGp": 110,
     "damageOrAc": "—",
-    "properties": "Iluminação mágica permanente; conforme descrição do livro"
+    "properties": "Iluminação mágica permanente; conforme descrição do livro",
+    "icon": "primitive-torch"
   },
   {
     "name": "Azevinho e Visco",
@@ -1959,7 +2176,8 @@
     "weightLb": 0,
     "costGp": 0,
     "damageOrAc": "—",
-    "properties": "Foco divino de druida"
+    "properties": "Foco divino de druida",
+    "icon": "herbs-bundle"
   },
   {
     "name": "Bolsa de Componentes de Magia",
@@ -1968,7 +2186,8 @@
     "weightLb": 2.2,
     "costGp": 5,
     "damageOrAc": "—",
-    "properties": "Contém componentes materiais e focos comuns"
+    "properties": "Contém componentes materiais e focos comuns",
+    "icon": "pouch-with-beads"
   },
   {
     "name": "Clepsidra",
@@ -1977,7 +2196,8 @@
     "weightLb": 220.5,
     "costGp": 1000,
     "damageOrAc": "—",
-    "properties": "Relógio de água; requer fonte de água e instalação fixa"
+    "properties": "Relógio de água; requer fonte de água e instalação fixa",
+    "icon": "pocket-watch"
   },
   {
     "name": "Ferramenta (Obra-Prima)",
@@ -1986,7 +2206,8 @@
     "weightLb": 1.1,
     "costGp": 50,
     "damageOrAc": "—",
-    "properties": "Ferramenta de qualidade superior"
+    "properties": "Ferramenta de qualidade superior",
+    "icon": "toolbox"
   },
   {
     "name": "Ferramentas de Artesão",
@@ -1995,7 +2216,8 @@
     "weightLb": 5.5,
     "costGp": 5,
     "damageOrAc": "—",
-    "properties": "Ferramentas para uma perícia Ofícios"
+    "properties": "Ferramentas para uma perícia Ofícios",
+    "icon": "toolbox"
   },
   {
     "name": "Instrumento Musical (Obra-Prima)",
@@ -2004,7 +2226,8 @@
     "weightLb": 3.3,
     "costGp": 100,
     "damageOrAc": "—",
-    "properties": "+2 circunstancial em Atuação com o instrumento"
+    "properties": "+2 circunstancial em Atuação com o instrumento",
+    "icon": "lyre"
   },
   {
     "name": "Instrumentos de Ladrão",
@@ -2013,7 +2236,8 @@
     "weightLb": 1.1,
     "costGp": 30,
     "damageOrAc": "—",
-    "properties": "Ferramentas para Operar Mecanismo e Abrir Fechaduras"
+    "properties": "Ferramentas para Operar Mecanismo e Abrir Fechaduras",
+    "icon": "lockpicks"
   },
   {
     "name": "Kit de Disfarces",
@@ -2022,7 +2246,8 @@
     "weightLb": 8.8,
     "costGp": 50,
     "damageOrAc": "—",
-    "properties": "Materiais para disfarces"
+    "properties": "Materiais para disfarces",
+    "icon": "domino-mask"
   },
   {
     "name": "Kit de Escalada",
@@ -2031,7 +2256,8 @@
     "weightLb": 5.5,
     "costGp": 80,
     "damageOrAc": "—",
-    "properties": "Ferramentas para escalada"
+    "properties": "Ferramentas para escalada",
+    "icon": "carabiner"
   },
   {
     "name": "Laboratório Alquímico",
@@ -2040,7 +2266,8 @@
     "weightLb": 44.1,
     "costGp": 500,
     "damageOrAc": "—",
-    "properties": "Equipamento para Ofícios (alquimia)"
+    "properties": "Equipamento para Ofícios (alquimia)",
+    "icon": "erlenmeyer"
   },
   {
     "name": "Lente de Aumento",
@@ -2049,7 +2276,8 @@
     "weightLb": 0,
     "costGp": 100,
     "damageOrAc": "—",
-    "properties": "Lente de aumento"
+    "properties": "Lente de aumento",
+    "icon": "magnifying-glass"
   },
   {
     "name": "Símbolo Sagrado de Madeira",
@@ -2058,7 +2286,8 @@
     "weightLb": 0,
     "costGp": 1,
     "damageOrAc": "—",
-    "properties": "Foco divino"
+    "properties": "Foco divino",
+    "icon": "gothic-cross"
   },
   {
     "name": "Sinete",
@@ -2067,7 +2296,8 @@
     "weightLb": 0,
     "costGp": 5,
     "damageOrAc": "—",
-    "properties": "Selo personalizado para marcar parafina aquecida"
+    "properties": "Selo personalizado para marcar parafina aquecida",
+    "icon": "wax-seal"
   },
   {
     "name": "Tocha",
@@ -2076,7 +2306,8 @@
     "weightLb": 1.1,
     "costGp": 0.01,
     "damageOrAc": "—",
-    "properties": "Ilumina como uma tocha por 1 hora"
+    "properties": "Ilumina como uma tocha por 1 hora",
+    "icon": "torch"
   },
   {
     "name": "Corda de Cânhamo (15 m)",
@@ -2085,7 +2316,8 @@
     "weightLb": 11,
     "costGp": 1,
     "damageOrAc": "—",
-    "properties": "Equipamento comum conforme a Tabela 7-8 do Livro do Jogador"
+    "properties": "Equipamento comum conforme a Tabela 7-8 do Livro do Jogador",
+    "icon": "rope-coil"
   },
   {
     "name": "Corda de Seda (15 m)",
@@ -2094,7 +2326,8 @@
     "weightLb": 5.5,
     "costGp": 10,
     "damageOrAc": "—",
-    "properties": "Equipamento comum conforme a Tabela 7-8 do Livro do Jogador"
+    "properties": "Equipamento comum conforme a Tabela 7-8 do Livro do Jogador",
+    "icon": "rope-coil"
   },
   {
     "name": "Corrente (3 m)",
@@ -2103,7 +2336,8 @@
     "weightLb": 2.2,
     "costGp": 30,
     "damageOrAc": "—",
-    "properties": "Equipamento comum conforme a Tabela 7-8 do Livro do Jogador"
+    "properties": "Equipamento comum conforme a Tabela 7-8 do Livro do Jogador",
+    "icon": "crossed-chains"
   },
   {
     "name": "Rações de Viagem (por dia)",
@@ -2112,7 +2346,8 @@
     "weightLb": 1.1,
     "costGp": 0.5,
     "damageOrAc": "—",
-    "properties": "Equipamento comum conforme a Tabela 7-8 do Livro do Jogador"
+    "properties": "Equipamento comum conforme a Tabela 7-8 do Livro do Jogador",
+    "icon": "ham-shank"
   },
   {
     "name": "Saco (Vazio)",
@@ -2121,7 +2356,8 @@
     "weightLb": 0.55,
     "costGp": 0.1,
     "damageOrAc": "—",
-    "properties": "Equipamento comum conforme a Tabela 7-8 do Livro do Jogador"
+    "properties": "Equipamento comum conforme a Tabela 7-8 do Livro do Jogador",
+    "icon": "bindle"
   },
   {
     "name": "Tenda",
@@ -2130,7 +2366,8 @@
     "weightLb": 22,
     "costGp": 10,
     "damageOrAc": "—",
-    "properties": "Equipamento comum conforme a Tabela 7-8 do Livro do Jogador"
+    "properties": "Equipamento comum conforme a Tabela 7-8 do Livro do Jogador",
+    "icon": "barracks-tent"
   },
   {
     "name": "Instrumento Musical Comum",
@@ -2139,7 +2376,8 @@
     "weightLb": 3.3,
     "costGp": 5,
     "damageOrAc": "—",
-    "properties": "Equipamento comum conforme a Tabela 7-8 do Livro do Jogador"
+    "properties": "Equipamento comum conforme a Tabela 7-8 do Livro do Jogador",
+    "icon": "lyre"
   },
   {
     "name": "Ferramenta de Artesão (Obra-Prima)",
@@ -2148,7 +2386,8 @@
     "weightLb": 5.5,
     "costGp": 55,
     "damageOrAc": "—",
-    "properties": "Equipamento comum conforme a Tabela 7-8 do Livro do Jogador"
+    "properties": "Equipamento comum conforme a Tabela 7-8 do Livro do Jogador",
+    "icon": "toolbox"
   },
   {
     "name": "Acomodação Pobre (por dia)",
@@ -2157,7 +2396,8 @@
     "weightLb": 0,
     "costGp": 0.2,
     "damageOrAc": "—",
-    "properties": "Alojamento pobre; Tabela 7-8 do Livro do Jogador"
+    "properties": "Alojamento pobre; Tabela 7-8 do Livro do Jogador",
+    "icon": "bed"
   },
   {
     "name": "Acomodação Padrão (por dia)",
@@ -2166,7 +2406,8 @@
     "weightLb": 0,
     "costGp": 0.5,
     "damageOrAc": "—",
-    "properties": "Alojamento padrão; Tabela 7-8 do Livro do Jogador"
+    "properties": "Alojamento padrão; Tabela 7-8 do Livro do Jogador",
+    "icon": "person-in-bed"
   },
   {
     "name": "Acomodação Boa (por dia)",
@@ -2175,7 +2416,8 @@
     "weightLb": 0,
     "costGp": 2,
     "damageOrAc": "—",
-    "properties": "Alojamento bom; Tabela 7-8 do Livro do Jogador"
+    "properties": "Alojamento bom; Tabela 7-8 do Livro do Jogador",
+    "icon": "person-in-bed"
   },
   {
     "name": "Banquete (por pessoa)",
@@ -2184,7 +2426,8 @@
     "weightLb": 0,
     "costGp": 10,
     "damageOrAc": "—",
-    "properties": "Comida; custo por pessoa conforme a Tabela 7-8 do Livro do Jogador"
+    "properties": "Comida; custo por pessoa conforme a Tabela 7-8 do Livro do Jogador",
+    "icon": "roast-chicken"
   },
   {
     "name": "Carne (pedaço)",
@@ -2193,7 +2436,8 @@
     "weightLb": 0.55,
     "costGp": 0.3,
     "damageOrAc": "—",
-    "properties": "Comida; Tabela 7-8 do Livro do Jogador"
+    "properties": "Comida; Tabela 7-8 do Livro do Jogador",
+    "icon": "meat"
   },
   {
     "name": "Cerveja (caneca)",
@@ -2202,7 +2446,8 @@
     "weightLb": 1.1,
     "costGp": 0.04,
     "damageOrAc": "—",
-    "properties": "Bebida; Tabela 7-8 do Livro do Jogador"
+    "properties": "Bebida; Tabela 7-8 do Livro do Jogador",
+    "icon": "beer-stein"
   },
   {
     "name": "Cerveja (jarra)",
@@ -2211,7 +2456,8 @@
     "weightLb": 8.8,
     "costGp": 0.2,
     "damageOrAc": "—",
-    "properties": "Bebida; Tabela 7-8 do Livro do Jogador"
+    "properties": "Bebida; Tabela 7-8 do Livro do Jogador",
+    "icon": "booze"
   },
   {
     "name": "Pão",
@@ -2220,7 +2466,8 @@
     "weightLb": 0.55,
     "costGp": 0.02,
     "damageOrAc": "—",
-    "properties": "Comida; Tabela 7-8 do Livro do Jogador"
+    "properties": "Comida; Tabela 7-8 do Livro do Jogador",
+    "icon": "bread"
   },
   {
     "name": "Queijo (pedaço)",
@@ -2229,7 +2476,8 @@
     "weightLb": 0.55,
     "costGp": 0.1,
     "damageOrAc": "—",
-    "properties": "Comida; Tabela 7-8 do Livro do Jogador"
+    "properties": "Comida; Tabela 7-8 do Livro do Jogador",
+    "icon": "cheese-wedge"
   },
   {
     "name": "Refeição Pobre (por dia)",
@@ -2238,7 +2486,8 @@
     "weightLb": 0,
     "costGp": 0.1,
     "damageOrAc": "—",
-    "properties": "Refeições; Tabela 7-8 do Livro do Jogador"
+    "properties": "Refeições; Tabela 7-8 do Livro do Jogador",
+    "icon": "meal"
   },
   {
     "name": "Refeição Padrão (por dia)",
@@ -2247,7 +2496,8 @@
     "weightLb": 0,
     "costGp": 0.3,
     "damageOrAc": "—",
-    "properties": "Refeições; Tabela 7-8 do Livro do Jogador"
+    "properties": "Refeições; Tabela 7-8 do Livro do Jogador",
+    "icon": "meal"
   },
   {
     "name": "Refeição Boa (por dia)",
@@ -2256,7 +2506,8 @@
     "weightLb": 0,
     "costGp": 0.5,
     "damageOrAc": "—",
-    "properties": "Refeições; Tabela 7-8 do Livro do Jogador"
+    "properties": "Refeições; Tabela 7-8 do Livro do Jogador",
+    "icon": "hot-meal"
   },
   {
     "name": "Vinho Normal (jarro)",
@@ -2265,7 +2516,8 @@
     "weightLb": 6.6,
     "costGp": 0.2,
     "damageOrAc": "—",
-    "properties": "Bebida; Tabela 7-8 do Livro do Jogador"
+    "properties": "Bebida; Tabela 7-8 do Livro do Jogador",
+    "icon": "jug"
   },
   {
     "name": "Vinho Bom (garrafa)",
@@ -2274,7 +2526,8 @@
     "weightLb": 1.65,
     "costGp": 10,
     "damageOrAc": "—",
-    "properties": "Bebida; Tabela 7-8 do Livro do Jogador"
+    "properties": "Bebida; Tabela 7-8 do Livro do Jogador",
+    "icon": "wine-bottle"
   },
   {
     "name": "Alforje",
@@ -2283,7 +2536,8 @@
     "weightLb": 8.8,
     "costGp": 4,
     "damageOrAc": "—",
-    "properties": "Equipamento de montaria; Tabela 7-8 do Livro do Jogador"
+    "properties": "Equipamento de montaria; Tabela 7-8 do Livro do Jogador",
+    "icon": "duffel-bag"
   },
   {
     "name": "Alimentação (por dia)",
@@ -2292,7 +2546,8 @@
     "weightLb": 11,
     "costGp": 0.05,
     "damageOrAc": "—",
-    "properties": "Alimentação de montaria; Tabela 7-8 do Livro do Jogador"
+    "properties": "Alimentação de montaria; Tabela 7-8 do Livro do Jogador",
+    "icon": "fork-knife-spoon"
   },
   {
     "name": "Cachorro de Montaria",
@@ -2301,7 +2556,8 @@
     "weightLb": 0,
     "costGp": 150,
     "damageOrAc": "—",
-    "properties": "Montaria; Tabela 7-8 do Livro do Jogador"
+    "properties": "Montaria; Tabela 7-8 do Livro do Jogador",
+    "icon": "direwolf"
   },
   {
     "name": "Cão de Guarda",
@@ -2310,7 +2566,8 @@
     "weightLb": 0,
     "costGp": 25,
     "damageOrAc": "—",
-    "properties": "Animal de guarda; Tabela 7-8 do Livro do Jogador"
+    "properties": "Animal de guarda; Tabela 7-8 do Livro do Jogador",
+    "icon": "hound"
   },
   {
     "name": "Cavalo de Guerra Leve",
@@ -2319,7 +2576,8 @@
     "weightLb": 0,
     "costGp": 150,
     "damageOrAc": "—",
-    "properties": "Montaria; Tabela 7-8 do Livro do Jogador"
+    "properties": "Montaria; Tabela 7-8 do Livro do Jogador",
+    "icon": "horse-head"
   },
   {
     "name": "Cavalo de Guerra Pesado",
@@ -2328,7 +2586,8 @@
     "weightLb": 0,
     "costGp": 400,
     "damageOrAc": "—",
-    "properties": "Montaria; Tabela 7-8 do Livro do Jogador"
+    "properties": "Montaria; Tabela 7-8 do Livro do Jogador",
+    "icon": "horse-head"
   },
   {
     "name": "Cavalo Leve",
@@ -2337,7 +2596,8 @@
     "weightLb": 0,
     "costGp": 75,
     "damageOrAc": "—",
-    "properties": "Montaria; Tabela 7-8 do Livro do Jogador"
+    "properties": "Montaria; Tabela 7-8 do Livro do Jogador",
+    "icon": "horse-head"
   },
   {
     "name": "Cavalo Pesado",
@@ -2346,7 +2606,8 @@
     "weightLb": 0,
     "costGp": 200,
     "damageOrAc": "—",
-    "properties": "Montaria; Tabela 7-8 do Livro do Jogador"
+    "properties": "Montaria; Tabela 7-8 do Livro do Jogador",
+    "icon": "horse-head"
   },
   {
     "name": "Pônei de Guerra",
@@ -2355,7 +2616,8 @@
     "weightLb": 0,
     "costGp": 100,
     "damageOrAc": "—",
-    "properties": "Montaria; Tabela 7-8 do Livro do Jogador"
+    "properties": "Montaria; Tabela 7-8 do Livro do Jogador",
+    "icon": "horse-head"
   },
   {
     "name": "Pônei",
@@ -2364,7 +2626,8 @@
     "weightLb": 0,
     "costGp": 30,
     "damageOrAc": "—",
-    "properties": "Montaria; Tabela 7-8 do Livro do Jogador"
+    "properties": "Montaria; Tabela 7-8 do Livro do Jogador",
+    "icon": "horse-head"
   },
   {
     "name": "Estábulo (por dia)",
@@ -2373,7 +2636,8 @@
     "weightLb": 0,
     "costGp": 0.5,
     "damageOrAc": "—",
-    "properties": "Serviço de estábulo; Tabela 7-8 do Livro do Jogador"
+    "properties": "Serviço de estábulo; Tabela 7-8 do Livro do Jogador",
+    "icon": "stable"
   },
   {
     "name": "Freio e Rédeas",
@@ -2382,7 +2646,8 @@
     "weightLb": 1.1,
     "costGp": 2,
     "damageOrAc": "—",
-    "properties": "Equipamento de montaria; Tabela 7-8 do Livro do Jogador"
+    "properties": "Equipamento de montaria; Tabela 7-8 do Livro do Jogador",
+    "icon": "horseshoe"
   },
   {
     "name": "Jumento ou Mula",
@@ -2391,7 +2656,8 @@
     "weightLb": 0,
     "costGp": 8,
     "damageOrAc": "—",
-    "properties": "Montaria/animal de carga; Tabela 7-8 do Livro do Jogador"
+    "properties": "Montaria/animal de carga; Tabela 7-8 do Livro do Jogador",
+    "icon": "donkey"
   },
   {
     "name": "Sela de Carga",
@@ -2400,7 +2666,8 @@
     "weightLb": 16.5,
     "costGp": 5,
     "damageOrAc": "—",
-    "properties": "Sela com alforjes para carga; Tabela 7-8 do Livro do Jogador"
+    "properties": "Sela com alforjes para carga; Tabela 7-8 do Livro do Jogador",
+    "icon": "saddle"
   },
   {
     "name": "Sela Militar",
@@ -2409,7 +2676,8 @@
     "weightLb": 33.1,
     "costGp": 20,
     "damageOrAc": "—",
-    "properties": "Sela; Tabela 7-8 do Livro do Jogador"
+    "properties": "Sela; Tabela 7-8 do Livro do Jogador",
+    "icon": "saddle"
   },
   {
     "name": "Sela de Montaria",
@@ -2418,7 +2686,8 @@
     "weightLb": 27.6,
     "costGp": 10,
     "damageOrAc": "—",
-    "properties": "Sela; Tabela 7-8 do Livro do Jogador"
+    "properties": "Sela; Tabela 7-8 do Livro do Jogador",
+    "icon": "saddle"
   },
   {
     "name": "Sela Exótica de Carga",
@@ -2427,7 +2696,8 @@
     "weightLb": 22,
     "costGp": 15,
     "damageOrAc": "—",
-    "properties": "Sela para montaria incomum; Tabela 7-8 do Livro do Jogador"
+    "properties": "Sela para montaria incomum; Tabela 7-8 do Livro do Jogador",
+    "icon": "saddle"
   },
   {
     "name": "Sela Exótica Militar",
@@ -2436,7 +2706,8 @@
     "weightLb": 44.1,
     "costGp": 60,
     "damageOrAc": "—",
-    "properties": "Sela para montaria incomum; Tabela 7-8 do Livro do Jogador"
+    "properties": "Sela para montaria incomum; Tabela 7-8 do Livro do Jogador",
+    "icon": "saddle"
   },
   {
     "name": "Sela Exótica de Montaria",
@@ -2445,7 +2716,8 @@
     "weightLb": 33.1,
     "costGp": 30,
     "damageOrAc": "—",
-    "properties": "Sela para montaria incomum; Tabela 7-8 do Livro do Jogador"
+    "properties": "Sela para montaria incomum; Tabela 7-8 do Livro do Jogador",
+    "icon": "saddle"
   },
   {
     "name": "Barco a Remo",
@@ -2454,7 +2726,8 @@
     "weightLb": 110.2,
     "costGp": 50,
     "damageOrAc": "—",
-    "properties": "Veículo; Tabela 7-8 do Livro do Jogador"
+    "properties": "Veículo; Tabela 7-8 do Livro do Jogador",
+    "icon": "wood-canoe"
   },
   {
     "name": "Remo",
@@ -2463,7 +2736,8 @@
     "weightLb": 11,
     "costGp": 2,
     "damageOrAc": "—",
-    "properties": "Equipamento de transporte aquático; Tabela 7-8 do Livro do Jogador"
+    "properties": "Equipamento de transporte aquático; Tabela 7-8 do Livro do Jogador",
+    "icon": "paddles"
   },
   {
     "name": "Barcaça",
@@ -2472,7 +2746,8 @@
     "weightLb": 0,
     "costGp": 3000,
     "damageOrAc": "—",
-    "properties": "Veículo; peso não especificado na Tabela 7-8 do Livro do Jogador"
+    "properties": "Veículo; peso não especificado na Tabela 7-8 do Livro do Jogador",
+    "icon": "galley"
   },
   {
     "name": "Carroça",
@@ -2481,7 +2756,8 @@
     "weightLb": 440.9,
     "costGp": 35,
     "damageOrAc": "—",
-    "properties": "Veículo; Tabela 7-8 do Livro do Jogador"
+    "properties": "Veículo; Tabela 7-8 do Livro do Jogador",
+    "icon": "old-wagon"
   },
   {
     "name": "Carruagem",
@@ -2490,7 +2766,8 @@
     "weightLb": 661.4,
     "costGp": 100,
     "damageOrAc": "—",
-    "properties": "Veículo; Tabela 7-8 do Livro do Jogador"
+    "properties": "Veículo; Tabela 7-8 do Livro do Jogador",
+    "icon": "caravan"
   },
   {
     "name": "Charrete",
@@ -2499,7 +2776,8 @@
     "weightLb": 220.5,
     "costGp": 15,
     "damageOrAc": "—",
-    "properties": "Veículo; Tabela 7-8 do Livro do Jogador"
+    "properties": "Veículo; Tabela 7-8 do Livro do Jogador",
+    "icon": "chariot"
   },
   {
     "name": "Galeão",
@@ -2508,7 +2786,8 @@
     "weightLb": 0,
     "costGp": 30000,
     "damageOrAc": "—",
-    "properties": "Embarcação; peso não especificado na Tabela 7-8 do Livro do Jogador"
+    "properties": "Embarcação; peso não especificado na Tabela 7-8 do Livro do Jogador",
+    "icon": "galleon"
   },
   {
     "name": "Navio de Guerra",
@@ -2517,7 +2796,8 @@
     "weightLb": 0,
     "costGp": 25000,
     "damageOrAc": "—",
-    "properties": "Embarcação; peso não especificado na Tabela 7-8 do Livro do Jogador"
+    "properties": "Embarcação; peso não especificado na Tabela 7-8 do Livro do Jogador",
+    "icon": "iron-hulled-warship"
   },
   {
     "name": "Navio",
@@ -2526,7 +2806,8 @@
     "weightLb": 0,
     "costGp": 10000,
     "damageOrAc": "—",
-    "properties": "Embarcação; peso não especificado na Tabela 7-8 do Livro do Jogador"
+    "properties": "Embarcação; peso não especificado na Tabela 7-8 do Livro do Jogador",
+    "icon": "caravel"
   },
   {
     "name": "Trenó",
@@ -2535,7 +2816,8 @@
     "weightLb": 330.7,
     "costGp": 20,
     "damageOrAc": "—",
-    "properties": "Veículo; Tabela 7-8 do Livro do Jogador"
+    "properties": "Veículo; Tabela 7-8 do Livro do Jogador",
+    "icon": "skis"
   },
   {
     "name": "Veleiro",
@@ -2544,7 +2826,8 @@
     "weightLb": 0,
     "costGp": 10000,
     "damageOrAc": "—",
-    "properties": "Embarcação; peso não especificado na Tabela 7-8 do Livro do Jogador"
+    "properties": "Embarcação; peso não especificado na Tabela 7-8 do Livro do Jogador",
+    "icon": "sailboat"
   },
   {
     "name": "Traje de Artesão",
@@ -2553,7 +2836,8 @@
     "weightLb": 4.4,
     "costGp": 1,
     "damageOrAc": "—",
-    "properties": "Indumentária; peso indicado para personagem Médio na Tabela 7-8 do Livro do Jogador"
+    "properties": "Indumentária; peso indicado para personagem Médio na Tabela 7-8 do Livro do Jogador",
+    "icon": "shirt"
   },
   {
     "name": "Traje de Clima Frio",
@@ -2562,7 +2846,8 @@
     "weightLb": 7.7,
     "costGp": 8,
     "damageOrAc": "—",
-    "properties": "Indumentária; peso indicado para personagem Médio na Tabela 7-8 do Livro do Jogador"
+    "properties": "Indumentária; peso indicado para personagem Médio na Tabela 7-8 do Livro do Jogador",
+    "icon": "moncler-jacket"
   },
   {
     "name": "Traje de Corte",
@@ -2571,7 +2856,8 @@
     "weightLb": 6.6,
     "costGp": 30,
     "damageOrAc": "—",
-    "properties": "Indumentária; peso indicado para personagem Médio na Tabela 7-8 do Livro do Jogador"
+    "properties": "Indumentária; peso indicado para personagem Médio na Tabela 7-8 do Livro do Jogador",
+    "icon": "tie"
   },
   {
     "name": "Traje de Entretenimento",
@@ -2580,7 +2866,8 @@
     "weightLb": 4.4,
     "costGp": 3,
     "damageOrAc": "—",
-    "properties": "Indumentária; peso indicado para personagem Médio na Tabela 7-8 do Livro do Jogador"
+    "properties": "Indumentária; peso indicado para personagem Médio na Tabela 7-8 do Livro do Jogador",
+    "icon": "drama-masks"
   },
   {
     "name": "Traje de Explorador",
@@ -2589,7 +2876,8 @@
     "weightLb": 8.8,
     "costGp": 10,
     "damageOrAc": "—",
-    "properties": "Indumentária; peso indicado para personagem Médio na Tabela 7-8 do Livro do Jogador"
+    "properties": "Indumentária; peso indicado para personagem Médio na Tabela 7-8 do Livro do Jogador",
+    "icon": "travel-dress"
   },
   {
     "name": "Traje de Monge",
@@ -2598,7 +2886,8 @@
     "weightLb": 2.2,
     "costGp": 5,
     "damageOrAc": "—",
-    "properties": "Indumentária; peso indicado para personagem Médio na Tabela 7-8 do Livro do Jogador"
+    "properties": "Indumentária; peso indicado para personagem Médio na Tabela 7-8 do Livro do Jogador",
+    "icon": "kimono"
   },
   {
     "name": "Traje de Nobre",
@@ -2607,7 +2896,8 @@
     "weightLb": 11,
     "costGp": 75,
     "damageOrAc": "—",
-    "properties": "Indumentária; pode exigir sinete e joias conforme a descrição do Livro do Jogador"
+    "properties": "Indumentária; pode exigir sinete e joias conforme a descrição do Livro do Jogador",
+    "icon": "large-dress"
   },
   {
     "name": "Traje de Plebeu",
@@ -2616,7 +2906,8 @@
     "weightLb": 2.2,
     "costGp": 0.1,
     "damageOrAc": "—",
-    "properties": "Indumentária; peso indicado para personagem Médio na Tabela 7-8 do Livro do Jogador"
+    "properties": "Indumentária; peso indicado para personagem Médio na Tabela 7-8 do Livro do Jogador",
+    "icon": "t-shirt"
   },
   {
     "name": "Traje de Sábio",
@@ -2625,7 +2916,8 @@
     "weightLb": 6.6,
     "costGp": 5,
     "damageOrAc": "—",
-    "properties": "Indumentária; peso indicado para personagem Médio na Tabela 7-8 do Livro do Jogador"
+    "properties": "Indumentária; peso indicado para personagem Médio na Tabela 7-8 do Livro do Jogador",
+    "icon": "robe"
   },
   {
     "name": "Traje de Viajante",
@@ -2634,7 +2926,8 @@
     "weightLb": 5.5,
     "costGp": 1,
     "damageOrAc": "—",
-    "properties": "Indumentária; peso indicado para personagem Médio na Tabela 7-8 do Livro do Jogador"
+    "properties": "Indumentária; peso indicado para personagem Médio na Tabela 7-8 do Livro do Jogador",
+    "icon": "poncho"
   },
   {
     "name": "Traje Real",
@@ -2643,7 +2936,8 @@
     "weightLb": 16.5,
     "costGp": 200,
     "damageOrAc": "—",
-    "properties": "Indumentária; peso indicado para personagem Médio na Tabela 7-8 do Livro do Jogador"
+    "properties": "Indumentária; peso indicado para personagem Médio na Tabela 7-8 do Livro do Jogador",
+    "icon": "crown"
   },
   {
     "name": "Vestimentas de Clérigo",
@@ -2652,7 +2946,8 @@
     "weightLb": 6.6,
     "costGp": 5,
     "damageOrAc": "—",
-    "properties": "Indumentária eclesiástica; peso indicado para personagem Médio na Tabela 7-8 do Livro do Jogador"
+    "properties": "Indumentária eclesiástica; peso indicado para personagem Médio na Tabela 7-8 do Livro do Jogador",
+    "icon": "hood"
   },
   {
     "name": "Condução de Carroça (1,5 km)",
@@ -2661,7 +2956,8 @@
     "weightLb": 0,
     "costGp": 0.03,
     "damageOrAc": "—",
-    "properties": "Serviço; custo por cada 1,5 km conforme a Tabela 7-8 do Livro do Jogador"
+    "properties": "Serviço; custo por cada 1,5 km conforme a Tabela 7-8 do Livro do Jogador",
+    "icon": "old-wagon"
   },
   {
     "name": "Mensageiro (1,5 km)",
@@ -2670,7 +2966,8 @@
     "weightLb": 0,
     "costGp": 0.02,
     "damageOrAc": "—",
-    "properties": "Serviço; custo por cada 1,5 km conforme a Tabela 7-8 do Livro do Jogador"
+    "properties": "Serviço; custo por cada 1,5 km conforme a Tabela 7-8 do Livro do Jogador",
+    "icon": "envelope"
   },
   {
     "name": "Passagem de Navio (1,5 km)",
@@ -2679,7 +2976,8 @@
     "weightLb": 0,
     "costGp": 0.1,
     "damageOrAc": "—",
-    "properties": "Serviço; custo por cada 1,5 km conforme a Tabela 7-8 do Livro do Jogador"
+    "properties": "Serviço; custo por cada 1,5 km conforme a Tabela 7-8 do Livro do Jogador",
+    "icon": "ticket"
   },
   {
     "name": "Trabalhador Treinado (por dia)",
@@ -2688,7 +2986,8 @@
     "weightLb": 0,
     "costGp": 0.3,
     "damageOrAc": "—",
-    "properties": "Serviço; soldo mínimo por dia conforme a Tabela 7-8 do Livro do Jogador"
+    "properties": "Serviço; soldo mínimo por dia conforme a Tabela 7-8 do Livro do Jogador",
+    "icon": "farmer"
   },
   {
     "name": "Trabalhador sem Treinamento (por dia)",
@@ -2697,7 +2996,8 @@
     "weightLb": 0,
     "costGp": 0.1,
     "damageOrAc": "—",
-    "properties": "Serviço; soldo mínimo por dia conforme a Tabela 7-8 do Livro do Jogador"
+    "properties": "Serviço; soldo mínimo por dia conforme a Tabela 7-8 do Livro do Jogador",
+    "icon": "wheelbarrow"
   },
   {
     "name": "Pedágio (estrada ou portão)",
@@ -2706,7 +3006,8 @@
     "weightLb": 0,
     "costGp": 0.01,
     "damageOrAc": "—",
-    "properties": "Serviço; custo por passagem conforme a Tabela 7-8 do Livro do Jogador"
+    "properties": "Serviço; custo por passagem conforme a Tabela 7-8 do Livro do Jogador",
+    "icon": "coins"
   },
   {
     "name": "Lâmpada",
@@ -2715,6 +3016,7 @@
     "weightLb": 1.1,
     "costGp": 1,
     "damageOrAc": "—",
-    "properties": "Fonte de iluminação; custo e peso conforme Tabela 7-8 do Livro do Jogador"
+    "properties": "Fonte de iluminação; custo e peso conforme Tabela 7-8 do Livro do Jogador",
+    "icon": "old-lantern"
   }
 ]

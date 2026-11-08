@@ -21,12 +21,15 @@ enum class InventoryIconKind {
 
 private val combiningMarks = "\\p{M}+".toRegex()
 
-/** Minúsculas e sem acentos, para "Itens Mágicos" e "itens magicos" cairem no mesmo ramo. */
-private fun String.normalizedForIcon(): String =
+/**
+ * Minúsculas, sem acentos e sem espaços nas pontas: "Itens Mágicos" e "itens magicos" caem no mesmo
+ * ramo, e o nome de um item pode ser comparado com o do catálogo mesmo digitado sem acento.
+ */
+internal fun String.normalizedForCatalogLookup(): String =
     Normalizer.normalize(trim(), Normalizer.Form.NFD).replace(combiningMarks, "").lowercase()
 
 fun inventoryIconKindFor(item: CharacterInventoryItem): InventoryIconKind {
-    val category = item.category.normalizedForIcon()
+    val category = item.category.normalizedForCatalogLookup()
     return when {
         isWeaponInventoryCategory(item.category) -> InventoryIconKind.WEAPON
         isArmorInventoryCategory(item.category) -> InventoryIconKind.ARMOR

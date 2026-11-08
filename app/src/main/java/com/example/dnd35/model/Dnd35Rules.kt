@@ -807,10 +807,21 @@ object Dnd35Rules {
         val weightLb: Float,
         val costGp: Float,
         val damageOrAc: String,
-        val properties: String
+        val properties: String,
+        /** Chave do ícone padrão do item (campo "icon" do items.json; ver GameIcons). */
+        val iconKey: String? = null
     )
 
     val PRESET_ITEMS: List<PresetItem> by lazy { loadItemsCatalog() }
+
+    private val presetIconKeyByName: Map<String, String> by lazy {
+        PRESET_ITEMS.mapNotNull { preset ->
+            preset.iconKey?.let { preset.name.normalizedForCatalogLookup() to it }
+        }.toMap()
+    }
+
+    /** Ícone padrão do item do catálogo com esse nome (ignora acentos e caixa), ou nulo. */
+    fun presetIconKeyFor(itemName: String): String? = presetIconKeyByName[itemName.normalizedForCatalogLookup()]
 
     // ==========================================
     // CATÁLOGO EXPANDIDO DE MAGIAS DO LIVRO DO JOGADOR
@@ -872,7 +883,8 @@ object Dnd35Rules {
                 weightLb = CatalogJson.requireFloat(o, "weightLb", name),
                 costGp = CatalogJson.requireFloat(o, "costGp", name),
                 damageOrAc = CatalogJson.requireString(o, "damageOrAc", name),
-                properties = CatalogJson.requireString(o, "properties", name)
+                properties = CatalogJson.requireString(o, "properties", name),
+                iconKey = o.optString("icon", "").trim().takeIf { it.isNotEmpty() }
             )
         }
     }

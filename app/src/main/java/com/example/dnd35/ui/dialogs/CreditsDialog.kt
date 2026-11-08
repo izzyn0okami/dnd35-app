@@ -22,6 +22,7 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
+import com.example.dnd35.ui.icons.GameIconCredits
 
 /** Um conjunto de ícones (ou autor, quando a licença exige crédito por autor) usado no app. */
 data class IconCredit(
@@ -73,6 +74,40 @@ fun CreditsDialog(
                         .verticalScroll(rememberScrollState()),
                     verticalArrangement = Arrangement.spacedBy(12.dp)
                 ) {
+                    Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                        Text("game-icons.net", style = MaterialTheme.typography.bodyLarge, fontWeight = FontWeight.SemiBold)
+                        Text(
+                            "Ícones dos itens do catálogo. Licença CC BY 3.0 (CC0 onde indicado pelo autor). " +
+                                "Os desenhos foram convertidos para VectorDrawable e coloridos com a cor do tema.",
+                            style = MaterialTheme.typography.bodySmall
+                        )
+                        Text(
+                            "Icons made by ${GameIconCredits.authors.joinToString(", ") { it.name }}. " +
+                                "Available on ${GameIconCredits.SITE_URL}",
+                            style = MaterialTheme.typography.bodySmall
+                        )
+                        Text(
+                            GameIconCredits.SITE_URL,
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.primary,
+                            modifier = Modifier.clickable { uriHandler.openUri(GameIconCredits.SITE_URL) }
+                        )
+                        Text(
+                            "Licença: ${GameIconCredits.CC_BY_URL}",
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.primary,
+                            modifier = Modifier.clickable { uriHandler.openUri(GameIconCredits.CC_BY_URL) }
+                        )
+                        Spacer(modifier = Modifier.height(4.dp))
+                        GameIconCredits.authors.forEach { author ->
+                            Text(
+                                "${author.name} • ${author.license} • ${author.iconCount} ícones",
+                                style = MaterialTheme.typography.bodySmall,
+                                color = MaterialTheme.colorScheme.primary,
+                                modifier = Modifier.clickable { uriHandler.openUri(author.url) }
+                            )
+                        }
+                    }
                     credits.forEach { credit ->
                         Column(modifier = Modifier.fillMaxWidth().clickable { uriHandler.openUri(credit.url) }) {
                             Text(credit.title, style = MaterialTheme.typography.bodyLarge, fontWeight = FontWeight.SemiBold)
