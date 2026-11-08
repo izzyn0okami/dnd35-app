@@ -41,6 +41,13 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
+import java.util.concurrent.atomic.AtomicLong
+
+internal class LatestCalculationGate {
+    private val generation = AtomicLong(0L)
+    fun begin(): Long = generation.incrementAndGet()
+    fun isCurrent(token: Long): Boolean = token == generation.get()
+}
 
 internal fun isValidEditedSkillRanks(ranks: Float): Boolean {
     if (!ranks.isFinite() || ranks < 0f) return false
@@ -152,6 +159,7 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
 
     // Serializa snapshots do personagem para que gravações concorrentes não sobrescrevam estados mais recentes.
     private val characterSaveMutex = Mutex()
+    private val statsCalculationGate = LatestCalculationGate()
     private val repository: CharacterRepository
 
     val allCharacters: StateFlow<List<CharacterEntity>>
@@ -186,13 +194,14 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
                         val first = list.first()
                         _selectedCharacterId.value = first.id
                         _activeCharacter.value = first
-                        _computedStats.value = CharacterCalculator.compute(first)
+                        recalculateStatsAsync(first)
                     } else {
                         val updated = list.first { it.id == currentId }
                         _activeCharacter.value = updated
-                        _computedStats.value = CharacterCalculator.compute(updated)
+                        recalculateStatsAsync(updated)
                     }
                 } else {
+                    statsCalculationGate.begin()
                     _activeCharacter.value = null
                     _computedStats.value = null
                 }
@@ -205,13 +214,26 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
         val found = allCharacters.value.find { it.id == id }
         if (found != null) {
             _activeCharacter.value = found
-            _computedStats.value = CharacterCalculator.compute(found)
+            recalculateStatsAsync(found)
+        }
+    }
+
+    private fun recalculateStatsAsync(character: CharacterEntity) {
+        val token = statsCalculationGate.begin()
+        _computedStats.value = null
+        viewModelScope.launch {
+            val calculated = withContext(Dispatchers.Default) {
+                CharacterCalculator.compute(character)
+            }
+            if (statsCalculationGate.isCurrent(token) && _activeCharacter.value == character) {
+                _computedStats.value = calculated
+            }
         }
     }
 
     private fun persistCharacter(char: CharacterEntity) {
         _activeCharacter.value = char
-        _computedStats.value = CharacterCalculator.compute(char)
+        recalculateStatsAsync(char)
         viewModelScope.launch {
             characterSaveMutex.withLock {
                 withContext(Dispatchers.IO) { repository.saveCharacter(char) }

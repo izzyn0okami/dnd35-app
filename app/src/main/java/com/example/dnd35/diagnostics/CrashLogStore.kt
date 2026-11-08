@@ -1,8 +1,11 @@
 package com.example.dnd35.diagnostics
 
+import android.app.ActivityManager
+import android.app.ApplicationExitInfo
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
 import android.os.Process
 import androidx.core.content.FileProvider
 import java.io.File
@@ -81,6 +84,56 @@ object CrashLogStore {
             if (source.exists()) source.renameTo(File(directory, "$LOG_FILE.${index + 1}"))
         }
         current.renameTo(File(directory, "$LOG_FILE.1"))
+    }
+
+    fun recordHistoricalProcessExits(context: Context) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) return
+        runCatching {
+            val preferences = context.getSharedPreferences("diagnostics_state", Context.MODE_PRIVATE)
+            val lastRecordedAt = preferences.getLong("last_process_exit_timestamp", 0L)
+            val manager = context.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
+            val exits = manager.getHistoricalProcessExitReasons(context.packageName, 0, 10)
+            var newestTimestamp = lastRecordedAt
+            val abnormalReasons = setOf(
+                ApplicationExitInfo.REASON_ANR,
+                ApplicationExitInfo.REASON_CRASH,
+                ApplicationExitInfo.REASON_CRASH_NATIVE,
+                ApplicationExitInfo.REASON_LOW_MEMORY,
+                ApplicationExitInfo.REASON_INITIALIZATION_FAILURE,
+                ApplicationExitInfo.REASON_EXCESSIVE_RESOURCE_USAGE,
+                ApplicationExitInfo.REASON_SIGNALED
+            )
+            exits.sortedBy { it.timestamp }.forEach { exit ->
+                newestTimestamp = maxOf(newestTimestamp, exit.timestamp)
+                if (exit.timestamp <= lastRecordedAt || exit.reason !in abnormalReasons) return@forEach
+                val trace = if (exit.reason == ApplicationExitInfo.REASON_ANR) {
+                    runCatching {
+                        exit.traceInputStream?.bufferedReader()?.use { it.readText().take(12_000) }
+                    }.getOrNull()
+                } else null
+                val details = buildString {
+                    append("Processo=${exit.processName}; motivo=${exitReasonName(exit.reason)}")
+                    append("; timestamp=${exit.timestamp}; status=${exit.status}; importance=${exit.importance}")
+                    if (!exit.description.isNullOrBlank()) append("; descrição=${exit.description}")
+                    if (!trace.isNullOrBlank()) appendLine().append("Trace ANR:\n").append(trace)
+                }
+                record("HISTORICAL_PROCESS_EXIT", details)
+            }
+            if (newestTimestamp > lastRecordedAt) {
+                preferences.edit().putLong("last_process_exit_timestamp", newestTimestamp).commit()
+            }
+        }
+    }
+
+    private fun exitReasonName(reason: Int): String = when (reason) {
+        ApplicationExitInfo.REASON_ANR -> "ANR"
+        ApplicationExitInfo.REASON_CRASH -> "CRASH"
+        ApplicationExitInfo.REASON_CRASH_NATIVE -> "CRASH_NATIVE"
+        ApplicationExitInfo.REASON_LOW_MEMORY -> "LOW_MEMORY"
+        ApplicationExitInfo.REASON_INITIALIZATION_FAILURE -> "INITIALIZATION_FAILURE"
+        ApplicationExitInfo.REASON_EXCESSIVE_RESOURCE_USAGE -> "EXCESSIVE_RESOURCE_USAGE"
+        ApplicationExitInfo.REASON_SIGNALED -> "SIGNALED"
+        else -> "OTHER_${reason}"
     }
 
     /** Abre o compartilhamento do relatório consolidado; o usuário escolhe o destino. */
