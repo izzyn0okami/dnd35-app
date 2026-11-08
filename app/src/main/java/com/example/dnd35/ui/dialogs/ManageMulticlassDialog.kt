@@ -151,6 +151,16 @@ fun ManageMulticlassDialog(
                                         style = MaterialTheme.typography.titleMedium
                                     )
                                     Spacer(modifier = Modifier.weight(1f))
+                                    if (classesList.size > 1 && entry != classesList.first()) {
+                                        IconButton(
+                                            onClick = {
+                                                classesList = classesList.filterNot { it.className == entry.className }
+                                            },
+                                            modifier = Modifier.size(48.dp)
+                                        ) {
+                                            Icon(Icons.Default.Delete, contentDescription = "Remover classe ${entry.className}", tint = DndCrimson)
+                                        }
+                                    }
                                 }
                                 Spacer(modifier = Modifier.height(4.dp))
                                 Row(
