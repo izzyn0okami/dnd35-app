@@ -358,8 +358,7 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
                 name, characterClass, race,
                 baseStr, baseDex, baseCon, baseInt, baseWis, baseCha
             )
-            _selectedCharacterId.value = newId
-            persistSelectedCharacterId(newId)
+            selectCharacter(newId)
         }
     }
 
@@ -367,7 +366,7 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
         val curr = _activeCharacter.value ?: return
         viewModelScope.launch(Dispatchers.IO) {
             val newId = repository.duplicateCharacter(curr)
-            _selectedCharacterId.value = newId
+            selectCharacter(newId)
         }
     }
 
