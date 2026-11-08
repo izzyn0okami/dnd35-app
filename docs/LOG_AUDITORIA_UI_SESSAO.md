@@ -199,7 +199,6 @@
 - Corrigido na mesma branch: o servidor não aplica snapshots anexados a pedidos de Recursos. A validação da compra usa a ficha e o saldo já aprovados e mantidos pelo servidor; alterações de ficha devem passar pelo pedido `CHARACTER_UPDATE`.
 - Teste adicional envia uma compra com PV e saldo adulterados no snapshot e verifica que o estado do servidor permanece inalterado enquanto o pedido está pendente.- Esta decisão reforça a autoridade do servidor e evita que um pedido pendente de loot/compra funcione como atualização implícita da ficha.
 
-
 ### Achado adicional na revisão da PR #322 — aprovação concorrente/duplicada
 - `approveRequest()` e `denyRequest()` consultavam e alteravam a lista de pedidos pendentes sem sincronização. Duas chamadas simultâneas para aprovar o mesmo pedido poderiam processar a mesma compra/retirada mais de uma vez, além de atualizações concorrentes da lista poderem sobrescrever pedidos recém-chegados.
 - Adicionado um lock dedicado para serializar inclusão, aprovação e negação dos pedidos. Uma segunda aprovação/negação do mesmo ID não encontra mais o pedido pendente e não repete a transação.
@@ -397,8 +396,7 @@
 
 
 ### Validação final e merge da PR #323 (2026-11-06)- Head validado: `dee7039ee94e4490e17b24b8bfdaad05e68d17a7`.
-- Android build nº 1942, run ID `42236392921`: sucesso. `testDebugUnitTest`, `assembleDebug`, upload dos esquemas Room e upload do APK debug concluídos.
-- Revisão final do diff confirmou a sincronização das duas rotas que escrevem em `_privateChatLog`, a verificação de geração antes de emitir os eventos assíncronos no cliente e o teste TCP com seis conexões/240 mensagens distintas.
+- Android build nº 1942, run ID `42236392921`: sucesso. `testDebugUnitTest`, `assembleDebug`, upload dos esquemas Room e upload do APK debug concluídos.- Revisão final do diff confirmou a sincronização das duas rotas que escrevem em `_privateChatLog`, a verificação de geração antes de emitir os eventos assíncronos no cliente e o teste TCP com seis conexões/240 mensagens distintas.
 - A PR não tinha reviews, threads nem comentários pendentes; a branch estava atualizada em relação a `main` e o GitHub informou `mergeable=true`.
 - A PR #323 foi marcada pronta para revisão e mesclada por squash após autorização prévia do usuário para mesclar quando possível.
 - Commit de merge: `75ac4bd87b1b9f114e073534a1a0017b818b7235`.
@@ -597,7 +595,6 @@
 - A primeira execução da CI apontou erro Kotlin em SessionHubScreen.kt: a anotação @Composable havia sido aplicada por engano à classe de dados PrivateChatUiMessage, e não à função SessionFloatingPanels.
 - A anotação foi removida da classe de dados e aplicada à função composable. Os erros subsequentes de chamadas Compose fora de contexto eram consequência do mesmo posicionamento incorreto.- Correção registrada no commit ae418df. Aguardando nova CI para confirmar compilação e testes.
 
-
 ## 2026-11-07 — Merge da reformulação multiplayer (PR #326)
 
 - PR #326 foi mesclada por squash em `main` após autorização explícita do usuário.
@@ -690,3 +687,21 @@
 - O diff foi revisado: `DndMainScreen.kt` envolve a aba selecionada em `key(char.id)`, descartando estados transitórios da composição quando o personagem ativo muda. O log de auditoria também foi atualizado.
 - Não foram alterados dados persistidos, regras, cálculos ou conteúdo das fichas.
 - **Validação manual pendente:** abrir diálogos de edição/exclusão e filtros nas abas, trocar de personagem sem fechar a interface e confirmar que nenhum estado da ficha anterior permanece. Não considerar o comportamento visual em aparelho validado apenas pela CI.
+
+## 2026-11-08 — Responsividade das abas Perícias, Talentos e Grimório
+
+### Constatações da auditoria visual por inspeção
+- Em Perícias, nome, fórmula, estimativa de pontos, bônus total e três controles de ação disputavam a mesma linha. Em larguras reduzidas, a coluna de informações ficava excessivamente estreita e quebrava textos em muitas linhas.
+- Em Talentos, o título da lista e o botão **Adicionar Talento** dividiam uma única linha sem distribuição adaptativa.
+- No Grimório, o título/atributo conjurador e o botão **Recuperar espaços de magia** dividiam a mesma linha, com risco de compressão/estouro horizontal em telas estreitas.
+
+### Alterações implementadas nesta branch
+- Perícias: separar as informações principais dos controles; manter nome, fórmula e estimativa em uma área flexível e colocar rolagem/ajuste de graduações em uma segunda linha.
+- Talentos: empilhar o título da lista e alinhar o botão de adição à direita.
+- Grimório: manter título e atributo em uma linha própria e posicionar a recuperação de espaços abaixo, alinhada à direita.
+- Nenhuma regra, cálculo, dado persistido ou ação de domínio foi alterada.
+
+### Validação pendente
+- CI: executar testes unitários e compilação Android na PR.
+- Teste visual manual em tela estreita (aproximadamente 320–360 dp) e em orientação paisagem.
+- Conferir perícias com nomes/fórmulas longos, talentos com nomes extensos e o cabeçalho do Grimório com nomes de atributo/classe extensos.

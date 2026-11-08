@@ -586,110 +586,113 @@ fun SkillItemRow(
         ),
         shape = RoundedCornerShape(10.dp)
     ) {
-        Row(
+        Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 10.dp, vertical = 6.dp),
-            verticalAlignment = Alignment.CenterVertically
+                .padding(horizontal = 10.dp, vertical = 6.dp)
         ) {
-            // Estrela de Classe
-            if (computed.isClassSkill) {
-                Icon(
-                    Icons.Default.Star,
-                    contentDescription = "Perícia de Classe",
-                    tint = DndGold,
-                    modifier = Modifier
-                        .size(16.dp)
-                        .padding(end = 4.dp)
-                )
-            } else {
-                Spacer(modifier = Modifier.width(16.dp))
-            }
-
-            // Nome e Detalhes
-            Column(
-                modifier = Modifier
-                    .weight(1f)
-                    .clickable(onClick = onEdit)
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically
             ) {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text(
-                        text = computed.skill.name,
-                        style = MaterialTheme.typography.bodyMedium,
-                        fontWeight = if (computed.ranks > 0) FontWeight.Bold else FontWeight.Normal
+                if (computed.isClassSkill) {
+                    Icon(
+                        Icons.Default.Star,
+                        contentDescription = "Perícia de Classe",
+                        tint = DndGold,
+                        modifier = Modifier
+                            .size(16.dp)
+                            .padding(end = 4.dp)
                     )
-                    Spacer(modifier = Modifier.width(6.dp))
-                    Text(
-                        "[${computed.skill.keyAbility}]",
-                        style = MaterialTheme.typography.labelSmall,
-                        color = MaterialTheme.colorScheme.primary,
-                        fontWeight = FontWeight.Bold
-                    )
+                } else {
+                    Spacer(modifier = Modifier.width(16.dp))
                 }
-                val formula = "Grad: ${computed.ranks} + Mod: ${computed.keyAbilityMod}" +
+
+                Column(
+                    modifier = Modifier
+                        .weight(1f)
+                        .clickable(onClick = onEdit)
+                ) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Text(
+                            text = computed.skill.name,
+                            style = MaterialTheme.typography.bodyMedium,
+                            fontWeight = if (computed.ranks > 0) FontWeight.Bold else FontWeight.Normal
+                        )
+                        Spacer(modifier = Modifier.width(6.dp))
+                        Text(
+                            "[${computed.skill.keyAbility}]",
+                            style = MaterialTheme.typography.labelSmall,
+                            color = MaterialTheme.colorScheme.primary,
+                            fontWeight = FontWeight.Bold
+                        )
+                    }
+                    val formula = "Grad: ${computed.ranks} + Mod: ${computed.keyAbilityMod}" +
                         (if (computed.racialBonus != 0) " + Rac: ${computed.racialBonus}" else "") +
                         (if (computed.sizeBonus != 0) " + Tam: ${computed.sizeBonus}" else "") +
                         (if (computed.miscBonus != 0) " + Div: ${computed.miscBonus}" else "") +
                         (if (computed.armorPenaltyApplied != 0) " Pen: ${computed.armorPenaltyApplied}" else "")
-                Text(
-                    text = formula,
-                    style = MaterialTheme.typography.labelSmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
-                val skillPointCost = computed.ranks * if (computed.isClassSkill) 1f else 2f
-                Text(
-                    text = "Pontos investidos nesta perícia: ${String.format("%.1f", skillPointCost)} pts (estimativa pelas graduações atuais)",
-                    style = MaterialTheme.typography.labelSmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
-                if (computed.trainedOnly && computed.ranks < 1f &&
-                    com.example.dnd35.model.Dnd35Rules.allowsUntrainedKnowledgeCheck(computed.skill.name)
-                ) {
                     Text(
-                        "Sem graduação: apenas informações comuns (CD 10 ou inferior).",
+                        text = formula,
                         style = MaterialTheme.typography.labelSmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
+                    val skillPointCost = computed.ranks * if (computed.isClassSkill) 1f else 2f
+                    Text(
+                        text = "Pontos investidos nesta perícia: ${String.format("%.1f", skillPointCost)} pts (estimativa pelas graduações atuais)",
+                        style = MaterialTheme.typography.labelSmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                    if (computed.trainedOnly && computed.ranks < 1f &&
+                        com.example.dnd35.model.Dnd35Rules.allowsUntrainedKnowledgeCheck(computed.skill.name)
+                    ) {
+                        Text(
+                            "Sem graduação: apenas informações comuns (CD 10 ou inferior).",
+                            style = MaterialTheme.typography.labelSmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    }
                 }
-            }
 
-            // Bônus Total em destaque
-            val totalStr = if (computed.totalBonus >= 0) "+${computed.totalBonus}" else "${computed.totalBonus}"
-            Text(
-                text = totalStr,
-                style = MaterialTheme.typography.titleMedium,
-                fontWeight = FontWeight.ExtraBold,
-                color = if (computed.totalBonus >= 0) DndHpGreen else DndCrimson,
-                modifier = Modifier
-                    .clickable(onClick = onRoll)
-                    .padding(horizontal = 8.dp)
-            )
-
-            // Botão de Rolar Dado d20
-            IconButton(onClick = onRoll, enabled = computed.canRoll, modifier = Modifier.size(48.dp)) {
-                Icon(
-                    Icons.Default.Casino,
-                    contentDescription = if (computed.canRoll) "Rolar" else "Exige treinamento",
-                    tint = MaterialTheme.colorScheme.primary,
-                    modifier = Modifier.size(20.dp)
+                val totalStr = if (computed.totalBonus >= 0) "+${computed.totalBonus}" else "${computed.totalBonus}"
+                Text(
+                    text = totalStr,
+                    style = MaterialTheme.typography.titleMedium,
+                    fontWeight = FontWeight.ExtraBold,
+                    color = if (computed.totalBonus >= 0) DndHpGreen else DndCrimson,
+                    modifier = Modifier
+                        .clickable(onClick = onRoll)
+                        .padding(horizontal = 8.dp)
                 )
             }
 
-            // Botões de Graduação (+ e -)
-            IconButton(
-                onClick = onSubRank,
-                enabled = computed.ranks > 0,
-                modifier = Modifier.size(48.dp)
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.End,
+                verticalAlignment = Alignment.CenterVertically
             ) {
-                Icon(Icons.Default.Remove, contentDescription = "Diminuir graduação de ${computed.skill.name}", modifier = Modifier.size(16.dp))
-            }
-
-            IconButton(
-                onClick = onAddRank,
-                enabled = computed.ranks < computed.maxRanks,
-                modifier = Modifier.size(48.dp)
-            ) {
-                Icon(Icons.Default.Add, contentDescription = "Aumentar graduação de ${computed.skill.name}", tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(16.dp))
+                IconButton(onClick = onRoll, enabled = computed.canRoll, modifier = Modifier.size(48.dp)) {
+                    Icon(
+                        Icons.Default.Casino,
+                        contentDescription = if (computed.canRoll) "Rolar" else "Exige treinamento",
+                        tint = MaterialTheme.colorScheme.primary,
+                        modifier = Modifier.size(20.dp)
+                    )
+                }
+                IconButton(
+                    onClick = onSubRank,
+                    enabled = computed.ranks > 0,
+                    modifier = Modifier.size(48.dp)
+                ) {
+                    Icon(Icons.Default.Remove, contentDescription = "Diminuir graduação de ${computed.skill.name}", modifier = Modifier.size(16.dp))
+                }
+                IconButton(
+                    onClick = onAddRank,
+                    enabled = computed.ranks < computed.maxRanks,
+                    modifier = Modifier.size(48.dp)
+                ) {
+                    Icon(Icons.Default.Add, contentDescription = "Aumentar graduação de ${computed.skill.name}", tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(16.dp))
+                }
             }
         }
     }

@@ -101,11 +101,7 @@ fun SpellsTab(
                 elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
             ) {
                 Column(modifier = Modifier.padding(14.dp)) {
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceBetween,
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
+                    Column(modifier = Modifier.fillMaxWidth()) {
                         Row(verticalAlignment = Alignment.CenterVertically) {
                             Icon(Icons.Default.AutoStories, contentDescription = null, tint = DndArcaneBlue, modifier = Modifier.size(26.dp))
                             Spacer(modifier = Modifier.width(8.dp))
@@ -120,8 +116,8 @@ fun SpellsTab(
 
                         Button(
                             onClick = { viewModel.longRest() },
+                            modifier = Modifier.align(Alignment.End).height(34.dp),
                             colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primaryContainer),
-                            modifier = Modifier.height(34.dp),
                             contentPadding = ButtonDefaults.TextButtonContentPadding
                         ) {
                             Icon(Icons.Default.Bedtime, contentDescription = null, modifier = Modifier.size(16.dp), tint = MaterialTheme.colorScheme.onPrimaryContainer)
