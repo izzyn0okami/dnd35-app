@@ -880,6 +880,366 @@
     "icon": "ring"
   },
   {
+    "name": "Bastão Metamágico, Aumentar (menor)",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 5.5,
+    "costGp": 3000,
+    "damageOrAc": "-",
+    "properties": "Bastão mágico; Tabela 7–19 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "baton"
+  },
+  {
+    "name": "Bastão Metamágico, Estender (menor)",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 5.5,
+    "costGp": 3000,
+    "damageOrAc": "-",
+    "properties": "Bastão mágico; Tabela 7–19 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "baton"
+  },
+  {
+    "name": "Bastão Metamágico, Silencioso (menor)",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 5.5,
+    "costGp": 3000,
+    "damageOrAc": "-",
+    "properties": "Bastão mágico; Tabela 7–19 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "baton"
+  },
+  {
+    "name": "Bastão Imóvel",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 5.5,
+    "costGp": 5000,
+    "damageOrAc": "-",
+    "properties": "Bastão mágico; Tabela 7–19 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "baton"
+  },
+  {
+    "name": "Bastão Metamágico, Potencializar (menor)",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 5.5,
+    "costGp": 9000,
+    "damageOrAc": "-",
+    "properties": "Bastão mágico; Tabela 7–19 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "baton"
+  },
+  {
+    "name": "Bastão de Detecção de Metais e Minerais",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 5.5,
+    "costGp": 10500,
+    "damageOrAc": "-",
+    "properties": "Bastão mágico; Tabela 7–19 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "baton"
+  },
+  {
+    "name": "Bastão de Cancelamento",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 5.5,
+    "costGp": 11000,
+    "damageOrAc": "-",
+    "properties": "Bastão mágico; Tabela 7–19 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "baton"
+  },
+  {
+    "name": "Bastão Metamágico, Aumentar",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 5.5,
+    "costGp": 11000,
+    "damageOrAc": "-",
+    "properties": "Bastão mágico; Tabela 7–19 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "baton"
+  },
+  {
+    "name": "Bastão Metamágico, Estender",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 5.5,
+    "costGp": 11000,
+    "damageOrAc": "-",
+    "properties": "Bastão mágico; Tabela 7–19 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "baton"
+  },
+  {
+    "name": "Bastão Metamágico, Silencioso",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 5.5,
+    "costGp": 11000,
+    "damageOrAc": "-",
+    "properties": "Bastão mágico; Tabela 7–19 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "baton"
+  },
+  {
+    "name": "Bastão de Maravilhas",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 5.5,
+    "costGp": 12000,
+    "damageOrAc": "-",
+    "properties": "Bastão mágico; Tabela 7–19 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "baton"
+  },
+  {
+    "name": "Bastão de Jiboia",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 5.5,
+    "costGp": 13000,
+    "damageOrAc": "-",
+    "properties": "Bastão mágico; Tabela 7–19 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "baton"
+  },
+  {
+    "name": "Bastão Metamágico, Maximizar (menor)",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 5.5,
+    "costGp": 14000,
+    "damageOrAc": "-",
+    "properties": "Bastão mágico; Tabela 7–19 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "baton"
+  },
+  {
+    "name": "Bastão de Antifogo",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 5.5,
+    "costGp": 15000,
+    "damageOrAc": "-",
+    "properties": "Bastão mágico; Tabela 7–19 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "baton"
+  },
+  {
+    "name": "Bastão de Víbora",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 5.5,
+    "costGp": 19000,
+    "damageOrAc": "-",
+    "properties": "Bastão mágico; Tabela 7–19 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "baton"
+  },
+  {
+    "name": "Bastão de Detecção de Inimigos",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 5.5,
+    "costGp": 23500,
+    "damageOrAc": "-",
+    "properties": "Bastão mágico; Tabela 7–19 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "baton"
+  },
+  {
+    "name": "Bastão Metamágico, Aumentar (maior)",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 5.5,
+    "costGp": 24500,
+    "damageOrAc": "-",
+    "properties": "Bastão mágico; Tabela 7–19 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "baton"
+  },
+  {
+    "name": "Bastão Metamágico, Estender (maior)",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 5.5,
+    "costGp": 24500,
+    "damageOrAc": "-",
+    "properties": "Bastão mágico; Tabela 7–19 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "baton"
+  },
+  {
+    "name": "Bastão Metamágico, Silencioso (maior)",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 5.5,
+    "costGp": 24500,
+    "damageOrAc": "-",
+    "properties": "Bastão mágico; Tabela 7–19 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "baton"
+  },
+  {
+    "name": "Bastão de Esplendor",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 5.5,
+    "costGp": 25000,
+    "damageOrAc": "-",
+    "properties": "Bastão mágico; Tabela 7–19 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "baton"
+  },
+  {
+    "name": "Bastão de Envelhecimento",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 5.5,
+    "costGp": 25000,
+    "damageOrAc": "-",
+    "properties": "Bastão mágico; Tabela 7–19 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "baton"
+  },
+  {
+    "name": "Bastão Metamágico, Potencializar",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 5.5,
+    "costGp": 32500,
+    "damageOrAc": "-",
+    "properties": "Bastão mágico; Tabela 7–19 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "baton"
+  },
+  {
+    "name": "Bastão de Trovões e Relâmpagos",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 5.5,
+    "costGp": 33000,
+    "damageOrAc": "-",
+    "properties": "Bastão mágico; Tabela 7–19 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "baton"
+  },
+  {
+    "name": "Bastão Metamágico, Acelerar (menor)",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 5.5,
+    "costGp": 35000,
+    "damageOrAc": "-",
+    "properties": "Bastão mágico; Tabela 7–19 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "baton"
+  },
+  {
+    "name": "Bastão de Negação",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 5.5,
+    "costGp": 37000,
+    "damageOrAc": "-",
+    "properties": "Bastão mágico; Tabela 7–19 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "baton"
+  },
+  {
+    "name": "Bastão de Absorção",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 5.5,
+    "costGp": 50000,
+    "damageOrAc": "-",
+    "properties": "Bastão mágico; Tabela 7–19 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "baton"
+  },
+  {
+    "name": "Bastão Mangual",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 5.5,
+    "costGp": 50000,
+    "damageOrAc": "-",
+    "properties": "Bastão mágico; Tabela 7–19 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "baton"
+  },
+  {
+    "name": "Bastão Metamágico, Maximizar",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 5.5,
+    "costGp": 54000,
+    "damageOrAc": "-",
+    "properties": "Bastão mágico; Tabela 7–19 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "baton"
+  },
+  {
+    "name": "Bastão de Obediência",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 5.5,
+    "costGp": 60000,
+    "damageOrAc": "-",
+    "properties": "Bastão mágico; Tabela 7–19 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "baton"
+  },
+  {
+    "name": "Bastão de Segurança",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 5.5,
+    "costGp": 61000,
+    "damageOrAc": "-",
+    "properties": "Bastão mágico; Tabela 7–19 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "baton"
+  },
+  {
+    "name": "Bastão de Grande Poder",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 5.5,
+    "costGp": 70000,
+    "damageOrAc": "-",
+    "properties": "Bastão mágico; Tabela 7–19 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "baton"
+  },
+  {
+    "name": "Bastão Metamágico, Potencializar (maior)",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 5.5,
+    "costGp": 73000,
+    "damageOrAc": "-",
+    "properties": "Bastão mágico; Tabela 7–19 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "baton"
+  },
+  {
+    "name": "Bastão Metamágico, Acelerar",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 5.5,
+    "costGp": 75500,
+    "damageOrAc": "-",
+    "properties": "Bastão mágico; Tabela 7–19 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "baton"
+  },
+  {
+    "name": "Bastão de Prontidão",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 5.5,
+    "costGp": 85000,
+    "damageOrAc": "-",
+    "properties": "Bastão mágico; Tabela 7–19 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "baton"
+  },
+  {
+    "name": "Bastão Metamágico, Maximizar (maior)",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 5.5,
+    "costGp": 121500,
+    "damageOrAc": "-",
+    "properties": "Bastão mágico; Tabela 7–19 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "baton"
+  },
+  {
+    "name": "Bastão Metamágico, Acelerar (maior)",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 5.5,
+    "costGp": 170000,
+    "damageOrAc": "-",
+    "properties": "Bastão mágico; Tabela 7–19 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "baton"
+  },
+  {
     "name": "Mochila de Couro Reforçada",
     "category": "Itens de Aventura",
     "defaultSlot": "Mochila (Não Equipado)",

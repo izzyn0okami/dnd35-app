@@ -61,4 +61,14 @@ class PresetEquipmentCatalogTest {
         assertTrue(byName.containsKey("Anel Arcano (IV)"))
         assertTrue(byName.values.filter { it.name.startsWith("Anel ") }.all { it.defaultSlot.startsWith("Dedo") })
     }
+
+    @Test
+    fun catalogContainsDungeonMasterGuideRods() {
+        val byName = Dnd35Rules.PRESET_ITEMS.associateBy { it.name }
+        assertEquals(170000f, byName.getValue("Bastão Metamágico, Acelerar (maior)").costGp, 0f)
+        assertEquals(12000f, byName.getValue("Bastão de Maravilhas").costGp, 0f)
+        assertEquals(60000f, byName.getValue("Bastão de Obediência").costGp, 0f)
+        assertTrue(byName.containsKey("Bastão Imóvel"))
+        assertTrue(byName.containsKey("Bastão Mangual"))
+    }
 }

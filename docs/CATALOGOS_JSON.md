@@ -154,3 +154,12 @@ Observações:
   as faixas de rolagem.
 - Os nomes seguem a tabela, inclusive "Escalada/Salto/Natação aprimorado" e "Arcano (I–IV)"
   (aqui como "Anel Arcano (I–IV)").
+
+### Bastões do Livro do Mestre (2026-11-09)
+
+A Tabela 7–19 (Bastões, Livro do Mestre 3.5 brasileiro, Cap. 7) foi importada para
+`items.json`: 36 bastões novos em "Itens Mágicos", com o preço de mercado da tabela (as duas
+colunas, Médio e Maior, cobrem 01–100 sem lacunas nem sobreposições). Espaço "Mão Principal"
+e peso 5,5 lb, que é o que o livro diz (cerca de 2,5 kg). Os nomes seguem a tabela
+("Bastão Metamágico, Aumentar (menor)" etc.) e a descrição é genérica, apontando para o livro;
+o detalhe de cada bastão fica para a fase de base de dados.
