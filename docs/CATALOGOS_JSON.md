@@ -115,3 +115,25 @@ Catálogo após esta auditoria: 110 talentos, 165 itens, 327 magias.
  
 ### Contagem atual verificada (2026-11-09)
 O arquivo `app/src/main/resources/dnd35/spells.json` contém 393 entradas. O número anterior de 327 neste documento estava desatualizado. Esta atualização registra a contagem observada no arquivo, sem alterar o conteúdo do catálogo.
+
+### Poções e Óleos do Livro do Mestre (2026-11-09)
+
+A Tabela 7–17 (Poções e Óleos, Livro do Mestre 3.5 brasileiro, p. 230) foi importada por
+completo para `items.json`: 84 itens novos na categoria "Consumíveis" (poções e óleos),
+com o preço de mercado da tabela. As três colunas (Menor/Médio/Maior) cobrem 01–100 sem
+lacunas nem sobreposições; as 3 poções que já existiam (Curar Ferimentos Leves/Moderados e
+Invisibilidade) foram mantidas, sem duplicar.
+
+Decisões e limitações:
+- Entradas "poção ou óleo" (Invisibilidade, Levitação) viraram dois itens.
+- Entradas com variável do livro ficaram genéricas, com o marcador entre parênteses:
+  `(tipo)` de energia em Resistência/Proteção contra Elementos e `(tendência)` em Proteção
+  contra / Círculo Mágico contra. O jogador escolhe ao registrar o item.
+- A tabela não traz peso. Usei 0,5 lb, o mesmo valor das poções que já estavam no catálogo
+  (frasco de 30 ml); revisar se o livro indicar outro valor.
+- A tabela não lista o efeito numérico (cura, bônus): `damageOrAc` fica "-" e a descrição
+  remete à magia correspondente, como diz o livro ("poções comuns são simplesmente magias
+  em forma líquida").
+- Duas correções de erros de impressão/extração do PDF: "Roupa encantada + 7 (óleo)" → `+1`
+  (o preço, 750 PO, e a sequência +2…+5 só fecham com +1), e "Ajuda (poção) (poção)" →
+  Ajuda. "Proteção contra elementos (tipo)", sem marcação no livro, foi tratada como poção.

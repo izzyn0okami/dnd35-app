@@ -2550,6 +2550,846 @@
     "icon": "fork-knife-spoon"
   },
   {
+    "name": "Poção de Suportar Elementos",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 50,
+    "damageOrAc": "-",
+    "properties": "Poção que reproduz a magia Suportar Elementos; Tabela 7–17 do Livro do Mestre",
+    "icon": "magic-potion"
+  },
+  {
+    "name": "Poção de Esconder-se de Animais",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 50,
+    "damageOrAc": "-",
+    "properties": "Poção que reproduz a magia Esconder-se de Animais; Tabela 7–17 do Livro do Mestre",
+    "icon": "magic-potion"
+  },
+  {
+    "name": "Poção de Esconder-se de Mortos-vivos",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 50,
+    "damageOrAc": "-",
+    "properties": "Poção que reproduz a magia Esconder-se de Mortos-vivos; Tabela 7–17 do Livro do Mestre",
+    "icon": "magic-potion"
+  },
+  {
+    "name": "Poção de Salto",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 50,
+    "damageOrAc": "-",
+    "properties": "Poção que reproduz a magia Salto; Tabela 7–17 do Livro do Mestre",
+    "icon": "magic-potion"
+  },
+  {
+    "name": "Poção de Armadura Arcana",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 50,
+    "damageOrAc": "-",
+    "properties": "Poção que reproduz a magia Armadura Arcana; Tabela 7–17 do Livro do Mestre",
+    "icon": "magic-potion"
+  },
+  {
+    "name": "Poção de Presa Mágica",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 50,
+    "damageOrAc": "-",
+    "properties": "Poção que reproduz a magia Presa Mágica; Tabela 7–17 do Livro do Mestre",
+    "icon": "magic-potion"
+  },
+  {
+    "name": "Óleo de Pedra Encantada",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 50,
+    "damageOrAc": "-",
+    "properties": "Óleo que reproduz a magia Pedra Encantada; Tabela 7–17 do Livro do Mestre",
+    "icon": "square-bottle"
+  },
+  {
+    "name": "Óleo de Arma Mágica",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 50,
+    "damageOrAc": "-",
+    "properties": "Óleo que reproduz a magia Arma Mágica; Tabela 7–17 do Livro do Mestre",
+    "icon": "square-bottle"
+  },
+  {
+    "name": "Poção de Passos Sem Pegadas",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 50,
+    "damageOrAc": "-",
+    "properties": "Poção que reproduz a magia Passos Sem Pegadas; Tabela 7–17 do Livro do Mestre",
+    "icon": "magic-potion"
+  },
+  {
+    "name": "Poção de Proteção contra (tendência)",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 50,
+    "damageOrAc": "-",
+    "properties": "Poção que reproduz a magia Proteção contra (tendência); Tabela 7–17 do Livro do Mestre",
+    "icon": "magic-potion"
+  },
+  {
+    "name": "Poção de Remover Medo",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 50,
+    "damageOrAc": "-",
+    "properties": "Poção que reproduz a magia Remover Medo; Tabela 7–17 do Livro do Mestre",
+    "icon": "magic-potion"
+  },
+  {
+    "name": "Poção de Santuário",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 50,
+    "damageOrAc": "-",
+    "properties": "Poção que reproduz a magia Santuário; Tabela 7–17 do Livro do Mestre",
+    "icon": "magic-potion"
+  },
+  {
+    "name": "Poção de Escudo da Fé +2",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 50,
+    "damageOrAc": "-",
+    "properties": "Poção que reproduz a magia Escudo da Fé +2; Tabela 7–17 do Livro do Mestre",
+    "icon": "magic-potion"
+  },
+  {
+    "name": "Óleo de Arma Abençoada",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 50,
+    "damageOrAc": "-",
+    "properties": "Óleo que reproduz a magia Arma Abençoada; Tabela 7–17 do Livro do Mestre",
+    "icon": "square-bottle"
+  },
+  {
+    "name": "Óleo de Abençoar Arma",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 100,
+    "damageOrAc": "-",
+    "properties": "Óleo que reproduz a magia Abençoar Arma; Tabela 7–17 do Livro do Mestre",
+    "icon": "square-bottle"
+  },
+  {
+    "name": "Poção de Aumentar Pessoa",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 250,
+    "damageOrAc": "-",
+    "properties": "Poção que reproduz a magia Aumentar Pessoa; Tabela 7–17 do Livro do Mestre",
+    "icon": "magic-potion"
+  },
+  {
+    "name": "Poção de Reduzir Pessoa",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 250,
+    "damageOrAc": "-",
+    "properties": "Poção que reproduz a magia Reduzir Pessoa; Tabela 7–17 do Livro do Mestre",
+    "icon": "magic-potion"
+  },
+  {
+    "name": "Poção de Ajuda",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 300,
+    "damageOrAc": "-",
+    "properties": "Poção que reproduz a magia Ajuda; Tabela 7–17 do Livro do Mestre",
+    "icon": "magic-potion"
+  },
+  {
+    "name": "Poção de Pele de Árvore +2",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 300,
+    "damageOrAc": "-",
+    "properties": "Poção que reproduz a magia Pele de Árvore +2; Tabela 7–17 do Livro do Mestre",
+    "icon": "magic-potion"
+  },
+  {
+    "name": "Poção de Vigor do Urso",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 300,
+    "damageOrAc": "-",
+    "properties": "Poção que reproduz a magia Vigor do Urso; Tabela 7–17 do Livro do Mestre",
+    "icon": "magic-potion"
+  },
+  {
+    "name": "Poção de Nublar",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 300,
+    "damageOrAc": "-",
+    "properties": "Poção que reproduz a magia Nublar; Tabela 7–17 do Livro do Mestre",
+    "icon": "magic-potion"
+  },
+  {
+    "name": "Poção de Força do Touro",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 300,
+    "damageOrAc": "-",
+    "properties": "Poção que reproduz a magia Força do Touro; Tabela 7–17 do Livro do Mestre",
+    "icon": "magic-potion"
+  },
+  {
+    "name": "Poção de Agilidade do Gato",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 300,
+    "damageOrAc": "-",
+    "properties": "Poção que reproduz a magia Agilidade do Gato; Tabela 7–17 do Livro do Mestre",
+    "icon": "magic-potion"
+  },
+  {
+    "name": "Óleo de Escuridão",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 300,
+    "damageOrAc": "-",
+    "properties": "Óleo que reproduz a magia Escuridão; Tabela 7–17 do Livro do Mestre",
+    "icon": "square-bottle"
+  },
+  {
+    "name": "Poção de Visão no Escuro",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 300,
+    "damageOrAc": "-",
+    "properties": "Poção que reproduz a magia Visão no Escuro; Tabela 7–17 do Livro do Mestre",
+    "icon": "magic-potion"
+  },
+  {
+    "name": "Poção de Retardar Envenenamento",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 300,
+    "damageOrAc": "-",
+    "properties": "Poção que reproduz a magia Retardar Envenenamento; Tabela 7–17 do Livro do Mestre",
+    "icon": "magic-potion"
+  },
+  {
+    "name": "Poção de Esplendor da Águia",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 300,
+    "damageOrAc": "-",
+    "properties": "Poção que reproduz a magia Esplendor da Águia; Tabela 7–17 do Livro do Mestre",
+    "icon": "magic-potion"
+  },
+  {
+    "name": "Poção de Astúcia da Raposa",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 300,
+    "damageOrAc": "-",
+    "properties": "Poção que reproduz a magia Astúcia da Raposa; Tabela 7–17 do Livro do Mestre",
+    "icon": "magic-potion"
+  },
+  {
+    "name": "Óleo de Invisibilidade",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 300,
+    "damageOrAc": "-",
+    "properties": "Óleo que reproduz a magia Invisibilidade; Tabela 7–17 do Livro do Mestre",
+    "icon": "square-bottle"
+  },
+  {
+    "name": "Poção de Restauração Menor",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 300,
+    "damageOrAc": "-",
+    "properties": "Poção que reproduz a magia Restauração Menor; Tabela 7–17 do Livro do Mestre",
+    "icon": "magic-potion"
+  },
+  {
+    "name": "Poção de Levitação",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 300,
+    "damageOrAc": "-",
+    "properties": "Poção que reproduz a magia Levitação; Tabela 7–17 do Livro do Mestre",
+    "icon": "magic-potion"
+  },
+  {
+    "name": "Óleo de Levitação",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 300,
+    "damageOrAc": "-",
+    "properties": "Óleo que reproduz a magia Levitação; Tabela 7–17 do Livro do Mestre",
+    "icon": "square-bottle"
+  },
+  {
+    "name": "Poção de Confundir Detecção",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 300,
+    "damageOrAc": "-",
+    "properties": "Poção que reproduz a magia Confundir Detecção; Tabela 7–17 do Livro do Mestre",
+    "icon": "magic-potion"
+  },
+  {
+    "name": "Poção de Sabedoria da Coruja",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 300,
+    "damageOrAc": "-",
+    "properties": "Poção que reproduz a magia Sabedoria da Coruja; Tabela 7–17 do Livro do Mestre",
+    "icon": "magic-potion"
+  },
+  {
+    "name": "Poção de Proteção contra Flechas 10/mágica",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 300,
+    "damageOrAc": "-",
+    "properties": "Poção que reproduz a magia Proteção contra Flechas 10/mágica; Tabela 7–17 do Livro do Mestre",
+    "icon": "magic-potion"
+  },
+  {
+    "name": "Poção de Remover Paralisia",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 300,
+    "damageOrAc": "-",
+    "properties": "Poção que reproduz a magia Remover Paralisia; Tabela 7–17 do Livro do Mestre",
+    "icon": "magic-potion"
+  },
+  {
+    "name": "Poção de Resistência a Elementos 10 (tipo)",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 300,
+    "damageOrAc": "-",
+    "properties": "Poção que reproduz a magia Resistência a Elementos 10 (tipo); Tabela 7–17 do Livro do Mestre",
+    "icon": "magic-potion"
+  },
+  {
+    "name": "Poção de Escudo da Fé +3",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 300,
+    "damageOrAc": "-",
+    "properties": "Poção que reproduz a magia Escudo da Fé +3; Tabela 7–17 do Livro do Mestre",
+    "icon": "magic-potion"
+  },
+  {
+    "name": "Poção de Patas de Aranha",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 300,
+    "damageOrAc": "-",
+    "properties": "Poção que reproduz a magia Patas de Aranha; Tabela 7–17 do Livro do Mestre",
+    "icon": "magic-potion"
+  },
+  {
+    "name": "Poção de Dissimular Tendência",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 300,
+    "damageOrAc": "-",
+    "properties": "Poção que reproduz a magia Dissimular Tendência; Tabela 7–17 do Livro do Mestre",
+    "icon": "magic-potion"
+  },
+  {
+    "name": "Poção de Pele de Árvore +3",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 600,
+    "damageOrAc": "-",
+    "properties": "Poção que reproduz a magia Pele de Árvore +3; Tabela 7–17 do Livro do Mestre",
+    "icon": "magic-potion"
+  },
+  {
+    "name": "Poção de Escudo da Fé +4",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 600,
+    "damageOrAc": "-",
+    "properties": "Poção que reproduz a magia Escudo da Fé +4; Tabela 7–17 do Livro do Mestre",
+    "icon": "magic-potion"
+  },
+  {
+    "name": "Poção de Resistência a Elementos 20 (tipo)",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 700,
+    "damageOrAc": "-",
+    "properties": "Poção que reproduz a magia Resistência a Elementos 20 (tipo); Tabela 7–17 do Livro do Mestre",
+    "icon": "magic-potion"
+  },
+  {
+    "name": "Poção de Curar Ferimentos Graves",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 750,
+    "damageOrAc": "-",
+    "properties": "Poção que reproduz a magia Curar Ferimentos Graves; Tabela 7–17 do Livro do Mestre",
+    "icon": "health-potion"
+  },
+  {
+    "name": "Óleo de Luz do Dia",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 750,
+    "damageOrAc": "-",
+    "properties": "Óleo que reproduz a magia Luz do Dia; Tabela 7–17 do Livro do Mestre",
+    "icon": "square-bottle"
+  },
+  {
+    "name": "Poção de Deslocamento",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 750,
+    "damageOrAc": "-",
+    "properties": "Poção que reproduz a magia Deslocamento; Tabela 7–17 do Livro do Mestre",
+    "icon": "magic-potion"
+  },
+  {
+    "name": "Óleo de Flecha de Chamas",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 750,
+    "damageOrAc": "-",
+    "properties": "Óleo que reproduz a magia Flecha de Chamas; Tabela 7–17 do Livro do Mestre",
+    "icon": "square-bottle"
+  },
+  {
+    "name": "Poção de Voo",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 750,
+    "damageOrAc": "-",
+    "properties": "Poção que reproduz a magia Voo; Tabela 7–17 do Livro do Mestre",
+    "icon": "magic-potion"
+  },
+  {
+    "name": "Poção de Forma Gasosa",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 750,
+    "damageOrAc": "-",
+    "properties": "Poção que reproduz a magia Forma Gasosa; Tabela 7–17 do Livro do Mestre",
+    "icon": "magic-potion"
+  },
+  {
+    "name": "Poção de Presa Mágica Maior +1",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 750,
+    "damageOrAc": "-",
+    "properties": "Poção que reproduz a magia Presa Mágica Maior +1; Tabela 7–17 do Livro do Mestre",
+    "icon": "magic-potion"
+  },
+  {
+    "name": "Óleo de Arma Mágica Maior +1",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 750,
+    "damageOrAc": "-",
+    "properties": "Óleo que reproduz a magia Arma Mágica Maior +1; Tabela 7–17 do Livro do Mestre",
+    "icon": "square-bottle"
+  },
+  {
+    "name": "Poção de Velocidade",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 750,
+    "damageOrAc": "-",
+    "properties": "Poção que reproduz a magia Velocidade; Tabela 7–17 do Livro do Mestre",
+    "icon": "magic-potion"
+  },
+  {
+    "name": "Poção de Heroísmo",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 750,
+    "damageOrAc": "-",
+    "properties": "Poção que reproduz a magia Heroísmo; Tabela 7–17 do Livro do Mestre",
+    "icon": "magic-potion"
+  },
+  {
+    "name": "Óleo de Lâmina Afiada",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 750,
+    "damageOrAc": "-",
+    "properties": "Óleo que reproduz a magia Lâmina Afiada; Tabela 7–17 do Livro do Mestre",
+    "icon": "square-bottle"
+  },
+  {
+    "name": "Poção de Círculo Mágico contra (tendência)",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 750,
+    "damageOrAc": "-",
+    "properties": "Poção que reproduz a magia Círculo Mágico contra (tendência); Tabela 7–17 do Livro do Mestre",
+    "icon": "magic-potion"
+  },
+  {
+    "name": "Óleo de Roupa Encantada +1",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 750,
+    "damageOrAc": "-",
+    "properties": "Óleo que reproduz a magia Roupa Encantada +1; Tabela 7–17 do Livro do Mestre",
+    "icon": "square-bottle"
+  },
+  {
+    "name": "Poção de Neutralizar Venenos",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 750,
+    "damageOrAc": "-",
+    "properties": "Poção que reproduz a magia Neutralizar Venenos; Tabela 7–17 do Livro do Mestre",
+    "icon": "magic-potion"
+  },
+  {
+    "name": "Poção de Dificultar Detecção",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 750,
+    "damageOrAc": "-",
+    "properties": "Poção que reproduz a magia Dificultar Detecção; Tabela 7–17 do Livro do Mestre",
+    "icon": "magic-potion"
+  },
+  {
+    "name": "Poção de Proteção contra Elementos (tipo)",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 750,
+    "damageOrAc": "-",
+    "properties": "Poção que reproduz a magia Proteção contra Elementos (tipo); Tabela 7–17 do Livro do Mestre",
+    "icon": "magic-potion"
+  },
+  {
+    "name": "Poção de Fúria",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 750,
+    "damageOrAc": "-",
+    "properties": "Poção que reproduz a magia Fúria; Tabela 7–17 do Livro do Mestre",
+    "icon": "magic-potion"
+  },
+  {
+    "name": "Poção de Remover Cegueira/Surdez",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 750,
+    "damageOrAc": "-",
+    "properties": "Poção que reproduz a magia Remover Cegueira/Surdez; Tabela 7–17 do Livro do Mestre",
+    "icon": "magic-potion"
+  },
+  {
+    "name": "Poção de Remover Maldição",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 750,
+    "damageOrAc": "-",
+    "properties": "Poção que reproduz a magia Remover Maldição; Tabela 7–17 do Livro do Mestre",
+    "icon": "magic-potion"
+  },
+  {
+    "name": "Poção de Remover Doença",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 750,
+    "damageOrAc": "-",
+    "properties": "Poção que reproduz a magia Remover Doença; Tabela 7–17 do Livro do Mestre",
+    "icon": "magic-potion"
+  },
+  {
+    "name": "Poção de Idiomas",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 750,
+    "damageOrAc": "-",
+    "properties": "Poção que reproduz a magia Idiomas; Tabela 7–17 do Livro do Mestre",
+    "icon": "magic-potion"
+  },
+  {
+    "name": "Poção de Respirar na Água",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 750,
+    "damageOrAc": "-",
+    "properties": "Poção que reproduz a magia Respirar na Água; Tabela 7–17 do Livro do Mestre",
+    "icon": "magic-potion"
+  },
+  {
+    "name": "Poção de Caminhar na Água",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 750,
+    "damageOrAc": "-",
+    "properties": "Poção que reproduz a magia Caminhar na Água; Tabela 7–17 do Livro do Mestre",
+    "icon": "magic-potion"
+  },
+  {
+    "name": "Poção de Pele de Árvore +4",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 900,
+    "damageOrAc": "-",
+    "properties": "Poção que reproduz a magia Pele de Árvore +4; Tabela 7–17 do Livro do Mestre",
+    "icon": "magic-potion"
+  },
+  {
+    "name": "Poção de Escudo da Fé +5",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 900,
+    "damageOrAc": "-",
+    "properties": "Poção que reproduz a magia Escudo da Fé +5; Tabela 7–17 do Livro do Mestre",
+    "icon": "magic-potion"
+  },
+  {
+    "name": "Poção de Boa Esperança",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 1050,
+    "damageOrAc": "-",
+    "properties": "Poção que reproduz a magia Boa Esperança; Tabela 7–17 do Livro do Mestre",
+    "icon": "magic-potion"
+  },
+  {
+    "name": "Poção de Resistência a Elementos 30 (tipo)",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 1100,
+    "damageOrAc": "-",
+    "properties": "Poção que reproduz a magia Resistência a Elementos 30 (tipo); Tabela 7–17 do Livro do Mestre",
+    "icon": "magic-potion"
+  },
+  {
+    "name": "Poção de Pele de Árvore +5",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 1200,
+    "damageOrAc": "-",
+    "properties": "Poção que reproduz a magia Pele de Árvore +5; Tabela 7–17 do Livro do Mestre",
+    "icon": "magic-potion"
+  },
+  {
+    "name": "Poção de Presa Mágica Maior +2",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 1200,
+    "damageOrAc": "-",
+    "properties": "Poção que reproduz a magia Presa Mágica Maior +2; Tabela 7–17 do Livro do Mestre",
+    "icon": "magic-potion"
+  },
+  {
+    "name": "Óleo de Arma Mágica Maior +2",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 1200,
+    "damageOrAc": "-",
+    "properties": "Óleo que reproduz a magia Arma Mágica Maior +2; Tabela 7–17 do Livro do Mestre",
+    "icon": "square-bottle"
+  },
+  {
+    "name": "Óleo de Roupa Encantada +2",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 1200,
+    "damageOrAc": "-",
+    "properties": "Óleo que reproduz a magia Roupa Encantada +2; Tabela 7–17 do Livro do Mestre",
+    "icon": "square-bottle"
+  },
+  {
+    "name": "Poção de Proteção contra Flechas 15/mágica",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 1500,
+    "damageOrAc": "-",
+    "properties": "Poção que reproduz a magia Proteção contra Flechas 15/mágica; Tabela 7–17 do Livro do Mestre",
+    "icon": "magic-potion"
+  },
+  {
+    "name": "Poção de Presa Mágica Maior +3",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 1800,
+    "damageOrAc": "-",
+    "properties": "Poção que reproduz a magia Presa Mágica Maior +3; Tabela 7–17 do Livro do Mestre",
+    "icon": "magic-potion"
+  },
+  {
+    "name": "Óleo de Arma Mágica Maior +3",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 1800,
+    "damageOrAc": "-",
+    "properties": "Óleo que reproduz a magia Arma Mágica Maior +3; Tabela 7–17 do Livro do Mestre",
+    "icon": "square-bottle"
+  },
+  {
+    "name": "Óleo de Roupa Encantada +3",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 1800,
+    "damageOrAc": "-",
+    "properties": "Óleo que reproduz a magia Roupa Encantada +3; Tabela 7–17 do Livro do Mestre",
+    "icon": "square-bottle"
+  },
+  {
+    "name": "Poção de Presa Mágica Maior +4",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 2400,
+    "damageOrAc": "-",
+    "properties": "Poção que reproduz a magia Presa Mágica Maior +4; Tabela 7–17 do Livro do Mestre",
+    "icon": "magic-potion"
+  },
+  {
+    "name": "Óleo de Arma Mágica Maior +4",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 2400,
+    "damageOrAc": "-",
+    "properties": "Óleo que reproduz a magia Arma Mágica Maior +4; Tabela 7–17 do Livro do Mestre",
+    "icon": "square-bottle"
+  },
+  {
+    "name": "Óleo de Roupa Encantada +4",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 2400,
+    "damageOrAc": "-",
+    "properties": "Óleo que reproduz a magia Roupa Encantada +4; Tabela 7–17 do Livro do Mestre",
+    "icon": "square-bottle"
+  },
+  {
+    "name": "Poção de Presa Mágica Maior +5",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 3000,
+    "damageOrAc": "-",
+    "properties": "Poção que reproduz a magia Presa Mágica Maior +5; Tabela 7–17 do Livro do Mestre",
+    "icon": "magic-potion"
+  },
+  {
+    "name": "Óleo de Arma Mágica Maior +5",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 3000,
+    "damageOrAc": "-",
+    "properties": "Óleo que reproduz a magia Arma Mágica Maior +5; Tabela 7–17 do Livro do Mestre",
+    "icon": "square-bottle"
+  },
+  {
+    "name": "Óleo de Roupa Encantada +5",
+    "category": "Consumíveis",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.5,
+    "costGp": 3000,
+    "damageOrAc": "-",
+    "properties": "Óleo que reproduz a magia Roupa Encantada +5; Tabela 7–17 do Livro do Mestre",
+    "icon": "square-bottle"
+  },
+  {
     "name": "Cachorro de Montaria",
     "category": "Itens de Aventura",
     "defaultSlot": "Mochila (Não Equipado)",
