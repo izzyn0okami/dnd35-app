@@ -24,11 +24,10 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import androidx.compose.foundation.layout.size
-import com.example.dnd35.ui.icons.SpellSchoolIcon
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.example.dnd35.ui.icons.SpellSchoolIcon
 import com.example.dnd35.model.CalculatedCharacterStats
 import com.example.dnd35.model.CharacterSpell
 import com.example.dnd35.model.ClericDomainRules
