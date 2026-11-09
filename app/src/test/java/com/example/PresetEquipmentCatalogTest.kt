@@ -45,7 +45,7 @@ class PresetEquipmentCatalogTest {
         val byName = Dnd35Rules.PRESET_ITEMS.associateBy { it.name }
         assertEquals(750f, byName.getValue("Poção de Curar Ferimentos Graves").costGp, 0f)
         assertEquals(3000f, byName.getValue("Óleo de Arma Mágica Maior +5").costGp, 0f)
-        assertEquals(1100.0, byName.getValue("Poção de Resistência a Elementos 30 (tipo)").costGp, 0.0)
+        assertEquals(1100f, byName.getValue("Poção de Resistência a Elementos 30 (tipo)").costGp, 0f)
         assertTrue(byName.containsKey("Poção de Levitação"))
         assertTrue(byName.containsKey("Óleo de Levitação"))
         assertTrue(byName.containsKey("Óleo de Roupa Encantada +1"))
