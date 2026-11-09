@@ -1450,6 +1450,2886 @@
     "icon": "wizard-staff"
   },
   {
+    "name": "Amuletos de Quaal (âncora)",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Pescoço (Amuleto / Colar)",
+    "weightLb": 0.0,
+    "costGp": 50,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gem-pendant"
+  },
+  {
+    "name": "Solvente Universal",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 50,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Filtro do Amor",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 150,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Unguento da Atemporalidade",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 150,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Amuletos de Quaal (leque)",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Pescoço (Amuleto / Colar)",
+    "weightLb": 0.0,
+    "costGp": 200,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gem-pendant"
+  },
+  {
+    "name": "Pó de Apagar Rastros",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 250,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Filtro da Ocultação",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 250,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Filtro da Furtividade",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 250,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Filtro da Natação",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 250,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Filtro da Visão",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 250,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Reflexo Prateado",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 250,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Amuletos de Quaal (pássaro)",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Pescoço (Amuleto / Colar)",
+    "weightLb": 0.0,
+    "costGp": 300,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gem-pendant"
+  },
+  {
+    "name": "Amuletos de Quaal (árvore)",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Pescoço (Amuleto / Colar)",
+    "weightLb": 0.0,
+    "costGp": 400,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gem-pendant"
+  },
+  {
+    "name": "Amuletos de Quaal (barco de cisne)",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Pescoço (Amuleto / Colar)",
+    "weightLb": 0.0,
+    "costGp": 450,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gem-pendant"
+  },
+  {
+    "name": "Filtro da Verdade",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 500,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Amuletos de Quaal (chicote)",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Pescoço (Amuleto / Colar)",
+    "weightLb": 0.0,
+    "costGp": 500,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gem-pendant"
+  },
+  {
+    "name": "Pó da Seca",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 850,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Bolsa de Truques (cinza)",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 900,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "backpack"
+  },
+  {
+    "name": "Mão do Mago",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 2.2,
+    "costGp": 900,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Braçadeiras da Armadura +1",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Braços (Braçadeiras)",
+    "weightLb": 1.1,
+    "costGp": 1000,
+    "damageOrAc": "+1 CA",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "bracers"
+  },
+  {
+    "name": "Pérola do Poder (magia de 1º nível)",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 1000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Filacteria da Fé",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 1000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Bálsamo Escorregadio",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 1000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Filtro de Cuspir Fogo",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 1100,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Flautas do Esgoto",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 3.3,
+    "costGp": 1150,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "lyre"
+  },
+  {
+    "name": "Pó da Ilusão",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 1200,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Óculos de Enxergar Detalhes",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Olhos (Óculos / Lentes)",
+    "weightLb": 0.0,
+    "costGp": 1250,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "steampunk-goggles"
+  },
+  {
+    "name": "Broche do Escudo",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 1500,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Colar de Bolas de Fogo Tipo I",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 1650,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Pó do Aparecimento",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 1800,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Chapéu do Disfarce",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Cabeça (Elmo / Tiara)",
+    "weightLb": 0.0,
+    "costGp": 1800,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "tiara"
+  },
+  {
+    "name": "Flauta dos Sons",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 1800,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "lyre"
+  },
+  {
+    "name": "Aljava de Ehlonna",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 2.2,
+    "costGp": 1800,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "A Sacola Prestativa de Heward",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 5.5,
+    "costGp": 2000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "backpack"
+  },
+  {
+    "name": "Trombeta das Névoas",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 1.1,
+    "costGp": 2000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "ringing-bell"
+  },
+  {
+    "name": "Joia Elemental",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 2250,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Robe dos Ossos",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Corpo (Armadura / Vestimenta)",
+    "weightLb": 1.1,
+    "costGp": 2400,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "robe"
+  },
+  {
+    "name": "Cola Soberana",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 2400,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Mochila de Carga Tipo I",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 2500,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "backpack"
+  },
+  {
+    "name": "Botas do Inverno",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Pés (Botas / Sapatos)",
+    "weightLb": 1.1,
+    "costGp": 2500,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "boots"
+  },
+  {
+    "name": "Vela da Verdade",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.55,
+    "costGp": 2500,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "candle-light"
+  },
+  {
+    "name": "Olhos de Águia",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Olhos (Óculos / Lentes)",
+    "weightLb": 0.0,
+    "costGp": 2500,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "steampunk-goggles"
+  },
+  {
+    "name": "Escaravelho Anti-golem",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 2500,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Colar de Bolas de Fogo Tipo II",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 2700,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Pedra de Alerta",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 2.2,
+    "costGp": 2700,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Bolsa de Truques (ferrugem)",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 3000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "backpack"
+  },
+  {
+    "name": "Contas da Força",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 3000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Carrilhão da Abertura",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 1.1,
+    "costGp": 3000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "ringing-bell"
+  },
+  {
+    "name": "Ferraduras da Velocidade",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 8.8,
+    "costGp": 3000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "horseshoe"
+  },
+  {
+    "name": "Corda da Escalada",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 3000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "rope-coil"
+  },
+  {
+    "name": "Pó do Desaparecimento",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 3500,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Lentes da Detecção",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Olhos (Óculos / Lentes)",
+    "weightLb": 0.0,
+    "costGp": 3500,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "steampunk-goggles"
+  },
+  {
+    "name": "Vestimenta do Druida",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Corpo (Armadura / Vestimenta)",
+    "weightLb": 0.0,
+    "costGp": 3750,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "robe"
+  },
+  {
+    "name": "Estatueta de Poderes Incríveis (corvo de prata)",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 3800,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Manto da Resistência +2",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Ombros (Capa / Manto)",
+    "weightLb": 1.1,
+    "costGp": 4000,
+    "damageOrAc": "+2 Resistências",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "cloak"
+  },
+  {
+    "name": "Luvas de Apanhar Flechas",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mãos (Luvas / Manoplas)",
+    "weightLb": 0.0,
+    "costGp": 4000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gloves"
+  },
+  {
+    "name": "Pedra Iônica, Fuso Transparente",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 4000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "O Unguento de Keoghtom",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.55,
+    "costGp": 4000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Os Pigmentos Maravilhosos de Nolzur",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 4000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Pérola do Poder (magia de 2º nível)",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 4000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Periapto da Sabedoria +2",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Pescoço (Amuleto / Colar)",
+    "weightLb": 0.0,
+    "costGp": 4000,
+    "damageOrAc": "+2 SAB",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gem-pendant"
+  },
+  {
+    "name": "Bálsamo de Pedra",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 4000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Colar de Bolas de Fogo Tipo III",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 4350,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Diadema da Persuasão",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Cabeça (Elmo / Tiara)",
+    "weightLb": 0.0,
+    "costGp": 4500,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "tiara"
+  },
+  {
+    "name": "Sandálias de Patas de Aranha",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Pés (Botas / Sapatos)",
+    "weightLb": 0.55,
+    "costGp": 4800,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "boots"
+  },
+  {
+    "name": "Incenso da Meditação",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 1.1,
+    "costGp": 4900,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Mochila de Carga Tipo II",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 5000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "backpack"
+  },
+  {
+    "name": "Braçadeiras do Arqueiro (menores)",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Braços (Braçadeiras)",
+    "weightLb": 1.1,
+    "costGp": 5000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "bracers"
+  },
+  {
+    "name": "Pedra Iônica, Prisma Rosa Pálido",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 5000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Elmo de Compreender Idiomas e Ler Magias",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Cabeça (Elmo / Tiara)",
+    "weightLb": 3.3,
+    "costGp": 5200,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "tiara"
+  },
+  {
+    "name": "Colete da Fuga",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Corpo (Armadura / Vestimenta)",
+    "weightLb": 0.0,
+    "costGp": 5200,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "robe"
+  },
+  {
+    "name": "Garrafa da Fumaça Eterna",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 1.1,
+    "costGp": 5400,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "A Colher de Murlynd",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 5400,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Colar de Bolas de Fogo Tipo IV",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 5400,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Botas de Caminhar e Saltar",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Pés (Botas / Sapatos)",
+    "weightLb": 1.1,
+    "costGp": 5500,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "boots"
+  },
+  {
+    "name": "Leque do Vento",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 5500,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Amuleto dos Punhos Poderosos +1",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Pescoço (Amuleto / Colar)",
+    "weightLb": 0.0,
+    "costGp": 6000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gem-pendant"
+  },
+  {
+    "name": "Ferradura do Zéfiro",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 6000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "horseshoe"
+  },
+  {
+    "name": "Flautas Assombradas",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 6.6,
+    "costGp": 6000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "lyre"
+  },
+  {
+    "name": "Colar de Bolas de Fogo Tipo V",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 5850,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Luvas de Nadar e Escalar",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mãos (Luvas / Manoplas)",
+    "weightLb": 0.0,
+    "costGp": 6250,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gloves"
+  },
+  {
+    "name": "Bolsa de Truques (bronze)",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 6300,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "backpack"
+  },
+  {
+    "name": "Diadema da Destruição (menor)",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Cabeça (Elmo / Tiara)",
+    "weightLb": 0.0,
+    "costGp": 6480,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "tiara"
+  },
+  {
+    "name": "Chifre da Bondade/maldade",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 6500,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "ringing-bell"
+  },
+  {
+    "name": "Robe dos Itens Úteis",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Corpo (Armadura / Vestimenta)",
+    "weightLb": 1.1,
+    "costGp": 7000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "robe"
+  },
+  {
+    "name": "Barco Dobrável",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 4.4,
+    "costGp": 7200,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Manto da Arraia",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Ombros (Capa / Manto)",
+    "weightLb": 1.1,
+    "costGp": 7200,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "cloak"
+  },
+  {
+    "name": "Garrafa do Ar",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 2.2,
+    "costGp": 7250,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Mochila de Carga Tipo III",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 7400,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "backpack"
+  },
+  {
+    "name": "Periapto da Saúde",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Pescoço (Amuleto / Colar)",
+    "weightLb": 0.0,
+    "costGp": 7400,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–27 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gem-pendant"
+  },
+  {
+    "name": "Botas da Levitação",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Pés (Botas / Sapatos)",
+    "weightLb": 1.1,
+    "costGp": 7500,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "boots"
+  },
+  {
+    "name": "Harpa do Encantamento",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 5.5,
+    "costGp": 7500,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "lyre"
+  },
+  {
+    "name": "Amuleto da Armadura Natural +2",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Pescoço (Amuleto / Colar)",
+    "weightLb": 0.0,
+    "costGp": 8000,
+    "damageOrAc": "+2 CA Natural",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gem-pendant"
+  },
+  {
+    "name": "Manual do Golem de Carne",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 8000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "spell-book"
+  },
+  {
+    "name": "Mão da Glória",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 2.2,
+    "costGp": 8000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Pedra Iônica, Esfera Vermelha Escura",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 8000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Pedra Iônica, Esfera Azul Luminoso",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 8000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Pedra Iônica, Romboide Azul Pálido",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 8000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Pedra Iônica, Esfera Rosa e Verde",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 8000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Pedra Iônica, Romboide Rosa",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 8000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Pedra Iônica, Esfera Escarlate e Azul",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 8000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Baralho da Ilusão",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.55,
+    "costGp": 8100,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Colar de Bolas de Fogo Tipo VI",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 8100,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Vela da Invocação",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.55,
+    "costGp": 8400,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "candle-light"
+  },
+  {
+    "name": "Braçadeiras da Armadura +3",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Braços (Braçadeiras)",
+    "weightLb": 1.1,
+    "costGp": 9000,
+    "damageOrAc": "+3 CA",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "bracers"
+  },
+  {
+    "name": "Manto da Resistência +3",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Ombros (Capa / Manto)",
+    "weightLb": 1.1,
+    "costGp": 9000,
+    "damageOrAc": "+3 Resistências",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "cloak"
+  },
+  {
+    "name": "Garrafa da Água Infinita",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 2.2,
+    "costGp": 9000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Colar da Adaptação",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Pescoço (Amuleto / Colar)",
+    "weightLb": 0.0,
+    "costGp": 9000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gem-pendant"
+  },
+  {
+    "name": "Pérola do Poder (magia de 3º nível)",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 9000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Talismã da Esfera",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 9000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Estatueta de Poderes Incríveis, Coruja de Serpentina",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 9100,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Colar de Bolas de Fogo Tipo VII",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 8700,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Cordão de Contas da Oração (menor)",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 9600,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "pouch-with-beads"
+  },
+  {
+    "name": "Mochila de Carga Tipo IV",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 10000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "backpack"
+  },
+  {
+    "name": "Estatueta de Poderes Incríveis, Grifo de Bronze",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 10000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Estatueta de Poderes Incríveis, Mosca de Ébano",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 10000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Luva de Armazenamento",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 10000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Pedra Iônica, Romboide Azul Escuro",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 10000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Cavalo de Pedra, Corcel",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 10000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Capa do Saltimbanco",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Ombros (Capa / Manto)",
+    "weightLb": 1.1,
+    "costGp": 10080,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "cloak"
+  },
+  {
+    "name": "Filacteria de Expulsar Mortos-vivos",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 11000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Manoplas da Ferrugem",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mãos (Luvas / Manoplas)",
+    "weightLb": 2.2,
+    "costGp": 11500,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gloves"
+  },
+  {
+    "name": "Botas da Velocidade",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Pés (Botas / Sapatos)",
+    "weightLb": 1.1,
+    "costGp": 12000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "boots"
+  },
+  {
+    "name": "Manual do Golem de Barro",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 5.5,
+    "costGp": 12000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "spell-book"
+  },
+  {
+    "name": "Medalhão dos Pensamentos",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Pescoço (Amuleto / Colar)",
+    "weightLb": 0.0,
+    "costGp": 12000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gem-pendant"
+  },
+  {
+    "name": "Flautas da Dor",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 3.3,
+    "costGp": 12000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "lyre"
+  },
+  {
+    "name": "O Livro Abençoado de Boccob",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 12500,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "spell-book"
+  },
+  {
+    "name": "Cinto do Monge",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Cintura (Cinto / Faixa)",
+    "weightLb": 1.1,
+    "costGp": 13000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "belt"
+  },
+  {
+    "name": "Gema da Luminosidade",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 13000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Lira da Construção",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 5.5,
+    "costGp": 13000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "lyre"
+  },
+  {
+    "name": "Manto da Aranha",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Ombros (Capa / Manto)",
+    "weightLb": 1.1,
+    "costGp": 14000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "cloak"
+  },
+  {
+    "name": "Cavalo de Pedra, Cavalo de Campanha",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 14800,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Cinto dos Anões",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 1.1,
+    "costGp": 14900,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Periapto da Cicatrização",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Pescoço (Amuleto / Colar)",
+    "weightLb": 0.0,
+    "costGp": 15000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gem-pendant"
+  },
+  {
+    "name": "Trombeta dos Tritões",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 2.2,
+    "costGp": 15100,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "ringing-bell"
+  },
+  {
+    "name": "Pérola das Sirenas",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 15300,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Estatueta de Poderes Incríveis, Cão de Ônix",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 15500,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Amuleto da Saúde +4",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Pescoço (Amuleto / Colar)",
+    "weightLb": 0.0,
+    "costGp": 16000,
+    "damageOrAc": "+4 CON",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gem-pendant"
+  },
+  {
+    "name": "Cinto da Força de Gigante +4",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Cintura (Cinto / Faixa)",
+    "weightLb": 1.1,
+    "costGp": 16000,
+    "damageOrAc": "+4 FOR",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "belt"
+  },
+  {
+    "name": "Braçadeiras da Armadura +4",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Braços (Braçadeiras)",
+    "weightLb": 1.1,
+    "costGp": 16000,
+    "damageOrAc": "+4 CA",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "bracers"
+  },
+  {
+    "name": "Manto do Carisma +4",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Ombros (Capa / Manto)",
+    "weightLb": 2.2,
+    "costGp": 16000,
+    "damageOrAc": "+4 CAR",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "cloak"
+  },
+  {
+    "name": "Manto da Resistência +4",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Ombros (Capa / Manto)",
+    "weightLb": 1.1,
+    "costGp": 16000,
+    "damageOrAc": "+4 Resistências",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "cloak"
+  },
+  {
+    "name": "Luvas da Destreza +4",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mãos (Luvas / Manoplas)",
+    "weightLb": 0.0,
+    "costGp": 16000,
+    "damageOrAc": "+4 DES",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gloves"
+  },
+  {
+    "name": "Tiara do Intelecto +4",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Cabeça (Elmo / Tiara)",
+    "weightLb": 0.0,
+    "costGp": 16000,
+    "damageOrAc": "+4 INT",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "tiara"
+  },
+  {
+    "name": "Pérola do Poder (magia de 4º nível)",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 16000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Periapto da Sabedoria +4",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Pescoço (Amuleto / Colar)",
+    "weightLb": 0.0,
+    "costGp": 16000,
+    "damageOrAc": "+4 SAB",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gem-pendant"
+  },
+  {
+    "name": "Bainha das Lâminas Afiadas",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 1.1,
+    "costGp": 16000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Estatueta de Poderes Incríveis, Leões de Ouro",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 16500,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Carrilhão da Interrupção",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 1.1,
+    "costGp": 16800,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "ringing-bell"
+  },
+  {
+    "name": "Vassoura Voadora",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 3.3,
+    "costGp": 17000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Estatueta de Poderes Incríveis, Elefante de Mármore",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 17000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Amuleto da Armadura Natural +3",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Pescoço (Amuleto / Colar)",
+    "weightLb": 0.0,
+    "costGp": 18000,
+    "damageOrAc": "+3 CA Natural",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gem-pendant"
+  },
+  {
+    "name": "Pedra Iônica, Fuso Iridescente",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 18000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Pulseira da Amizade",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 19000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Tapete Voador, 1,5 M por 1,5 M",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 20000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Trombeta da Destruição",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 1.1,
+    "costGp": 20000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "ringing-bell"
+  },
+  {
+    "name": "Pedra Iônica, Elíptica Lilás Pálida",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 20000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Pedra Iônica, Fuso Branco Perolado",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 20000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Buraco Portátil",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 20000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Pedra da Sorte",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 20000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Estatueta de Poderes Incríveis, Bodes de Marfim",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 21000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Corda da Constrição",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 5.5,
+    "costGp": 21000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "rope-coil"
+  },
+  {
+    "name": "Manual do Golem de Pedra",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 5.5,
+    "costGp": 22000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "spell-book"
+  },
+  {
+    "name": "Máscara da Caveira",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 22000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Picareta dos Titãs",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 132.0,
+    "costGp": 23348,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Diadema da Destruição (maior)",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Cabeça (Elmo / Tiara)",
+    "weightLb": 0.0,
+    "costGp": 23760,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "tiara"
+  },
+  {
+    "name": "Amuleto dos Punhos Poderosos +2",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Pescoço (Amuleto / Colar)",
+    "weightLb": 0.0,
+    "costGp": 24000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gem-pendant"
+  },
+  {
+    "name": "Manto do Deslocamento (menor)",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Ombros (Capa / Manto)",
+    "weightLb": 1.1,
+    "costGp": 24000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "cloak"
+  },
+  {
+    "name": "Elmo da Ação Subaquática",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Cabeça (Elmo / Tiara)",
+    "weightLb": 3.3,
+    "costGp": 24000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "tiara"
+  },
+  {
+    "name": "Braçadeiras do Arqueiro (maiores)",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Braços (Braçadeiras)",
+    "weightLb": 1.1,
+    "costGp": 25000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "bracers"
+  },
+  {
+    "name": "Braçadeiras da Armadura +5",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Braços (Braçadeiras)",
+    "weightLb": 1.1,
+    "costGp": 25000,
+    "damageOrAc": "+5 CA",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "bracers"
+  },
+  {
+    "name": "Manto da Resistência +5",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Ombros (Capa / Manto)",
+    "weightLb": 1.1,
+    "costGp": 25000,
+    "damageOrAc": "+5 Resistências",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "cloak"
+  },
+  {
+    "name": "Olhos da Perdição",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Olhos (Óculos / Lentes)",
+    "weightLb": 0.0,
+    "costGp": 25000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "steampunk-goggles"
+  },
+  {
+    "name": "Pérola do Poder (magia de 5º nível)",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 25000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Marreta dos Titãs",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 176.0,
+    "costGp": 25305,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Cordão de Contas da Oração",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 25800,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "pouch-with-beads"
+  },
+  {
+    "name": "Manto do Morcego",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Ombros (Capa / Manto)",
+    "weightLb": 1.1,
+    "costGp": 26000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "cloak"
+  },
+  {
+    "name": "As Faixas de Ferro de Bilarro",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 1.1,
+    "costGp": 26000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Cubo de Resistência ao Frio",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 27000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Elmo da Telepatia",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Cabeça (Elmo / Tiara)",
+    "weightLb": 3.3,
+    "costGp": 27000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "tiara"
+  },
+  {
+    "name": "Periapto de Resistência a Veneno",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Pescoço (Amuleto / Colar)",
+    "weightLb": 0.0,
+    "costGp": 27000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gem-pendant"
+  },
+  {
+    "name": "Robe das Cores Cintilantes",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Corpo (Armadura / Vestimenta)",
+    "weightLb": 1.1,
+    "costGp": 27000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "robe"
+  },
+  {
+    "name": "Manual da Saúde Corporal",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 5.5,
+    "costGp": 27500,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "spell-book"
+  },
+  {
+    "name": "Manual do Bom Exercício",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 5.5,
+    "costGp": 27500,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "spell-book"
+  },
+  {
+    "name": "Manual da Rapidez de Movimentos",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 5.5,
+    "costGp": 27500,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "spell-book"
+  },
+  {
+    "name": "Tomo dos Grandes Pensamentos",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 5.5,
+    "costGp": 27500,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "spell-book"
+  },
+  {
+    "name": "Tomo da Liderança e Influência",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 5.5,
+    "costGp": 27500,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "spell-book"
+  },
+  {
+    "name": "Tomo da Compreensão",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 5.5,
+    "costGp": 27500,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–28 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "spell-book"
+  },
+  {
+    "name": "Algemas Dimensionais",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 5.5,
+    "costGp": 28000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Estatueta de Poderes Incríveis, Corcel de Obsidiana",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 28500,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Tambores do Pânico",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 11.0,
+    "costGp": 30000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "ringing-bell"
+  },
+  {
+    "name": "Pedra Iônica, Prisma Alaranjado",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 30000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Pedra Iônica, Prisma Verde Pálido",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 30000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Lanterna da Revelação",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 2.2,
+    "costGp": 30000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "lantern"
+  },
+  {
+    "name": "Robe da Camuflagem",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Corpo (Armadura / Vestimenta)",
+    "weightLb": 1.1,
+    "costGp": 30000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "robe"
+  },
+  {
+    "name": "Amuleto da Armadura Natural +4",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Pescoço (Amuleto / Colar)",
+    "weightLb": 0.0,
+    "costGp": 32000,
+    "damageOrAc": "+4 CA Natural",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gem-pendant"
+  },
+  {
+    "name": "Amuleto de Proteção contra Detecção e Localização",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Pescoço (Amuleto / Colar)",
+    "weightLb": 0.0,
+    "costGp": 35000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gem-pendant"
+  },
+  {
+    "name": "Tapete Voador, 7,5 M por 3 M",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 35000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Manual do Golem de Ferro",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 5.5,
+    "costGp": 35000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "spell-book"
+  },
+  {
+    "name": "Amuleto da Saúde +6",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Pescoço (Amuleto / Colar)",
+    "weightLb": 0.0,
+    "costGp": 36000,
+    "damageOrAc": "+6 CON",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gem-pendant"
+  },
+  {
+    "name": "Cinto da Força de Gigante +6",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Cintura (Cinto / Faixa)",
+    "weightLb": 1.1,
+    "costGp": 36000,
+    "damageOrAc": "+6 FOR",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "belt"
+  },
+  {
+    "name": "Braçadeiras da Armadura +6",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Braços (Braçadeiras)",
+    "weightLb": 1.1,
+    "costGp": 36000,
+    "damageOrAc": "+6 CA",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "bracers"
+  },
+  {
+    "name": "Manto do Carisma +6",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Ombros (Capa / Manto)",
+    "weightLb": 2.2,
+    "costGp": 36000,
+    "damageOrAc": "+6 CAR",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "cloak"
+  },
+  {
+    "name": "Luvas da Destreza +6",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mãos (Luvas / Manoplas)",
+    "weightLb": 0.0,
+    "costGp": 36000,
+    "damageOrAc": "+6 DES",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gloves"
+  },
+  {
+    "name": "Tiara do Intelecto +6",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Cabeça (Elmo / Tiara)",
+    "weightLb": 0.0,
+    "costGp": 36000,
+    "damageOrAc": "+6 INT",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "tiara"
+  },
+  {
+    "name": "Pedra Iônica, Prisma Roxo Brilhante",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 36000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Pérola do Poder (magia de 6º nível)",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 36000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Periapto da Sabedoria +6",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Pescoço (Amuleto / Colar)",
+    "weightLb": 0.0,
+    "costGp": 36000,
+    "damageOrAc": "+6 SAB",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gem-pendant"
+  },
+  {
+    "name": "Escaravelho da Proteção",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 38000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Pedra Iônica, Elíptica Lilás e Verde",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 40000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Anéis Portal",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 1.1,
+    "costGp": 40000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Bola de Cristal",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 7.7,
+    "costGp": 42000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "crystal-ball"
+  },
+  {
+    "name": "Manual do Golem de Pedra Maior",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 5.5,
+    "costGp": 44000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "spell-book"
+  },
+  {
+    "name": "Orbe das Tempestades",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 6.6,
+    "costGp": 48000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Botas do Teletransporte",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Pés (Botas / Sapatos)",
+    "weightLb": 3.3,
+    "costGp": 49000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "boots"
+  },
+  {
+    "name": "Braçadeiras da Armadura +7",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Braços (Braçadeiras)",
+    "weightLb": 1.1,
+    "costGp": 49000,
+    "damageOrAc": "+7 CA",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "bracers"
+  },
+  {
+    "name": "Pérola do Poder (magia de 7º nível)",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 49000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Amuleto da Armadura Natural +5",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Pescoço (Amuleto / Colar)",
+    "weightLb": 0.0,
+    "costGp": 50000,
+    "damageOrAc": "+5 CA Natural",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gem-pendant"
+  },
+  {
+    "name": "Manto do Deslocamento (maior)",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Ombros (Capa / Manto)",
+    "weightLb": 1.1,
+    "costGp": 50000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "cloak"
+  },
+  {
+    "name": "Bola de Cristal com Ver o Invisível",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 50000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "crystal-ball"
+  },
+  {
+    "name": "Trombeta de Valhalla",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 50000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "ringing-bell"
+  },
+  {
+    "name": "Bola de Cristal com Detectar Pensamentos",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 51000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "crystal-ball"
+  },
+  {
+    "name": "Tapete Voador, 1,80 M por 2,70 M",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 53000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Amuleto dos Punhos Poderosos +3",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Pescoço (Amuleto / Colar)",
+    "weightLb": 0.0,
+    "costGp": 54000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gem-pendant"
+  },
+  {
+    "name": "Asas Voadoras",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 2.2,
+    "costGp": 54000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Manto da Forma Etérea",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Ombros (Capa / Manto)",
+    "weightLb": 1.1,
+    "costGp": 55000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "cloak"
+  },
+  {
+    "name": "A Fortaleza Instantânea de Daern",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 55000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Manual da Saúde Corporal +2",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 5.5,
+    "costGp": 55000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "spell-book"
+  },
+  {
+    "name": "Manual do Bom Exercício +2",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 55000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "spell-book"
+  },
+  {
+    "name": "Manual da Rapidez de Movimentos +2",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 5.5,
+    "costGp": 55000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "spell-book"
+  },
+  {
+    "name": "Tomo dos Grandes Pensamentos +2",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 5.5,
+    "costGp": 55000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "spell-book"
+  },
+  {
+    "name": "Tomo da Liderança e Influência +2",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 5.5,
+    "costGp": 55000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "spell-book"
+  },
+  {
+    "name": "Tomo da Compreensão +2",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 5.5,
+    "costGp": 55000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "spell-book"
+  },
+  {
+    "name": "Olhos do Encantamento",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Olhos (Óculos / Lentes)",
+    "weightLb": 0.0,
+    "costGp": 56000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "steampunk-goggles"
+  },
+  {
+    "name": "Robe das Estrelas",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Corpo (Armadura / Vestimenta)",
+    "weightLb": 1.1,
+    "costGp": 58000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "robe"
+  },
+  {
+    "name": "Tapete Voador, 3 M por 3 M",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 60000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Caveira Negra",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 5.5,
+    "costGp": 60000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "skull-crossed-bones"
+  },
+  {
+    "name": "Cubo de Energia",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 62000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Braçadeiras da Armadura +8",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Braços (Braçadeiras)",
+    "weightLb": 1.1,
+    "costGp": 64000,
+    "damageOrAc": "+8 CA",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "bracers"
+  },
+  {
+    "name": "Pérola do Poder (magia de 8º nível)",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 64000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Bola de Cristal com Telepatia",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 7.7,
+    "costGp": 70000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "crystal-ball"
+  },
+  {
+    "name": "Trombeta da Destruição (maior)",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 1.1,
+    "costGp": 70000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "ringing-bell"
+  },
+  {
+    "name": "Pérola do Poder (duas magias)",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 70000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Elmo do Teletransporte",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Cabeça (Elmo / Tiara)",
+    "weightLb": 3.3,
+    "costGp": 73500,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "tiara"
+  },
+  {
+    "name": "Gema da Visão",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 75000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Robe do Arquimago",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Corpo (Armadura / Vestimenta)",
+    "weightLb": 1.1,
+    "costGp": 75000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "robe"
+  },
+  {
+    "name": "Túnica da Fé",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Corpo (Armadura / Vestimenta)",
+    "weightLb": 0.0,
+    "costGp": 76000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "robe"
+  },
+  {
+    "name": "Bola de Cristal com Visão da Verdade",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 7.7,
+    "costGp": 80000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "crystal-ball"
+  },
+  {
+    "name": "Pérola do Poder (magia de 9º nível)",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 81000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Poço dos Diversos Mundos",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 82000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Manual da Saúde Corporal +3",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 5.5,
+    "costGp": 82500,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "spell-book"
+  },
+  {
+    "name": "Manual do Bom Exercício +3",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 5.5,
+    "costGp": 82500,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "spell-book"
+  },
+  {
+    "name": "Manual da Rapidez de Movimentos +3",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 5.5,
+    "costGp": 82500,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "spell-book"
+  },
+  {
+    "name": "Tomo dos Grandes Pensamentos +3",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 5.5,
+    "costGp": 82500,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "spell-book"
+  },
+  {
+    "name": "Tomo da Liderança e Influência +3",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 5.5,
+    "costGp": 82500,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "spell-book"
+  },
+  {
+    "name": "Tomo da Compreensão +3",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 5.5,
+    "costGp": 82500,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "spell-book"
+  },
+  {
+    "name": "O Aparelho de Kwalish",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 90000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Túnica da Resistência À Magia",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Corpo (Armadura / Vestimenta)",
+    "weightLb": 0.0,
+    "costGp": 90000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "robe"
+  },
+  {
+    "name": "Espelho da Oposição",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 49.5,
+    "costGp": 92000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "mirror-mirror"
+  },
+  {
+    "name": "Cordão de Contas da Oração (maior)",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 95800,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "pouch-with-beads"
+  },
+  {
+    "name": "Amuleto dos Punhos Poderosos +4",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Pescoço (Amuleto / Colar)",
+    "weightLb": 0.0,
+    "costGp": 96000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gem-pendant"
+  },
+  {
+    "name": "Olhos da Petrificação",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Olhos (Óculos / Lentes)",
+    "weightLb": 0.0,
+    "costGp": 98000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "steampunk-goggles"
+  },
+  {
+    "name": "Taça de Comandar Elementais da Água",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 3.3,
+    "costGp": 100000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Braseiro de Comandar Elementais do Fogo",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 3.3,
+    "costGp": 100000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Incensório de Comandar Elementais do Ar",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 100000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Pedra de Comandar Elementais da Terra",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 100000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Manual da Saúde Corporal +4",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 5.5,
+    "costGp": 110000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "spell-book"
+  },
+  {
+    "name": "Manual do Bom Exercício +4",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 5.5,
+    "costGp": 110000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "spell-book"
+  },
+  {
+    "name": "Manual da Rapidez de Movimentos +4",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 5.5,
+    "costGp": 110000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "spell-book"
+  },
+  {
+    "name": "Tomo dos Grandes Pensamentos +4",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 5.5,
+    "costGp": 110000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "spell-book"
+  },
+  {
+    "name": "Tomo da Liderança e Influência +4",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 5.5,
+    "costGp": 110000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "spell-book"
+  },
+  {
+    "name": "Tomo da Compreensão +4",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 5.5,
+    "costGp": 110000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "spell-book"
+  },
+  {
+    "name": "Amuleto dos Planos",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Pescoço (Amuleto / Colar)",
+    "weightLb": 0.0,
+    "costGp": 120000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gem-pendant"
+  },
+  {
+    "name": "Robe dos Olhos",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Corpo (Armadura / Vestimenta)",
+    "weightLb": 0.0,
+    "costGp": 120000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "robe"
+  },
+  {
+    "name": "Elmo Brilhante",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Cabeça (Elmo / Tiara)",
+    "weightLb": 3.3,
+    "costGp": 125000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "tiara"
+  },
+  {
+    "name": "Manual da Saúde Corporal +5",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 5.5,
+    "costGp": 137500,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "spell-book"
+  },
+  {
+    "name": "Manual do Bom Exercício +5",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 5.5,
+    "costGp": 137500,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "spell-book"
+  },
+  {
+    "name": "Manual da Rapidez de Movimentos +5",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 5.5,
+    "costGp": 137500,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "spell-book"
+  },
+  {
+    "name": "Tomo dos Grandes Pensamentos +5",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 5.5,
+    "costGp": 137500,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "spell-book"
+  },
+  {
+    "name": "Tomo da Liderança e Influência +5",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 5.5,
+    "costGp": 137500,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "spell-book"
+  },
+  {
+    "name": "Tomo da Compreensão +5",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 5.5,
+    "costGp": 137500,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "spell-book"
+  },
+  {
+    "name": "Garrafa do Efreeti",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 1.1,
+    "costGp": 145000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Amuleto dos Punhos Poderosos +5",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Pescoço (Amuleto / Colar)",
+    "weightLb": 0.0,
+    "costGp": 150000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gem-pendant"
+  },
+  {
+    "name": "Diamante do Caos",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 1.1,
+    "costGp": 160000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Cubo do Portal",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 164000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Frasco de Ferro",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 1.1,
+    "costGp": 170000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Espelho do Poder Mental",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 44.0,
+    "costGp": 175000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "mirror-mirror"
+  },
+  {
+    "name": "Espelho do Aprisionamento",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 200000,
+    "damageOrAc": "-",
+    "properties": "Item maravilhoso; Tabela 7–29 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "mirror-mirror"
+  },
+  {
     "name": "Mochila de Couro Reforçada",
     "category": "Itens de Aventura",
     "defaultSlot": "Mochila (Não Equipado)",

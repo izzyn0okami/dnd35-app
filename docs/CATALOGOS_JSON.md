@@ -245,3 +245,37 @@ Pendências assumidas:
   longa, que é o que usei. Conferir no livro impresso.
 - Habilidades de ativação aparecem resumidas; o texto completo fica para a fase de base de
   dados detalhada.
+
+### Itens maravilhosos do Livro do Mestre (2026-11-09)
+
+As Tabelas 7–27, 7–28 e 7–29 (Itens Maravilhosos Menores, Médios e Maiores, Livro do Mestre
+3.5 brasileiro, Cap. 7) foram importadas para `items.json`: 288 itens novos em "Itens
+Mágicos", com o preço de mercado da tabela (cada tabela tem as 100 linhas, 01–100 sem
+lacunas). Outras 12 linhas já existiam no catálogo, com preço idêntico, e não foram
+duplicadas: Botas Élficas, Botas Aladas, Amuleto da Saúde +2, Braçadeiras da Armadura +2,
+Luvas da Destreza +2, Amuleto de Armadura Natural +1 e as variantes de nome do catálogo
+antigo (Capa de Resistência +1 = "Manto da resistência +1", Capa do Carisma +2 = "Manto do
+Carisma +2", Capa Élfica = "Manto élfico", Diadema do Intelecto +2 = "Tiara do intelecto
++2", Óculos da Visão Noturna = "Óculos noturnos", Manoplas da Força do Ogro = "Manoplas do
+poder do ogro"). Os itens novos seguem o nome da tabela do livro ("Manto", "Tiara"), então
+ficam dois padrões de nome ao lado dos antigos; padronizar é um ajuste de renomeação futuro.
+
+Como foram preenchidos:
+- **Espaço:** deduzido do tipo de item pelo nome (botas → pés, luvas → mãos, braçadeiras →
+  braços, cinto, manto/capa → ombros, amuleto/periapto/medalhão → pescoço, elmo/diadema/tiara
+  → cabeça, óculos/olhos → olhos, robe/túnica/vestimenta/colete → corpo). O livro não lista
+  o espaço de cada item; o resto fica em "Mochila" e o jogador reposiciona.
+- **Peso:** 126 dos 288 itens têm o "Peso" da descrição do livro (kg × 2,2); os outros 162
+  ficam com 0 lb porque o livro/extração não traz peso, e não inventei valores.
+- **Efeito:** só os itens de bônus numérico óbvio no nome (Amuleto da Saúde, Cinto da Força de
+  Gigante, Luvas da Destreza, Tiara do Intelecto, Periapto da Sabedoria, Manto do Carisma,
+  Manto da Resistência, Braçadeiras da Armadura, Amuleto da Armadura Natural) têm `damageOrAc`
+  preenchido; o resto aponta para a descrição do livro, que será estruturada na fase de base
+  de dados detalhada.
+
+Erros de extração corrigidos: "Manto do resistência" → da, "Pô da ilusão" → Pó, "Corda da
+escolada" → escalada, "Bolso de truques" → Bolsa, "Bolo de cristal" → Bola (2 vezes), "bom
+exercido" → exercício, "(magia de 69 nível)" → 6º, "(duos magias)" → duas magias, e dois
+bônus que o OCR perdeu e a progressão de preço confirma: Manto da Resistência +4 (16.000 PO)
+e Cinto da Força de Gigante +6 (36.000 PO). A ordem de preços de alguns colares de bolas de
+fogo (tipos V, VI e VII) é a da tabela impressa.
