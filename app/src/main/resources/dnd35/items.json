@@ -2750,6 +2750,206 @@
     "icon": "spiked-shield"
   },
   {
+    "name": "Camisão de Mitral",
+    "category": "Armaduras",
+    "defaultSlot": "Corpo (Armadura / Vestimenta)",
+    "weightLb": 11,
+    "costGp": 1100,
+    "damageOrAc": "+4 CA",
+    "properties": "Armadura leve de mitral; Des Máx +6; sem penalidade; falha arcana 10%; deslocamento 9 m (Médio)/6 m (Pequeno) conforme o livro; item mundano; Tabela 7–7 do Livro do Mestre",
+    "icon": "mail-shirt"
+  },
+  {
+    "name": "Armadura de Couro de Dragão",
+    "category": "Armaduras",
+    "defaultSlot": "Corpo (Armadura / Vestimenta)",
+    "weightLb": 55,
+    "costGp": 3300,
+    "damageOrAc": "+8 CA",
+    "properties": "Armadura de batalha (obra-prima) feita de couro de dragão: druidas podem usá-la; Des Máx +1; penalidade -5; falha arcana 35%; item mundano; Tabela 7–7 do Livro do Mestre",
+    "icon": "battle-gear"
+  },
+  {
+    "name": "Cota de Malha Élfica",
+    "category": "Armaduras",
+    "defaultSlot": "Corpo (Armadura / Vestimenta)",
+    "weightLb": 22,
+    "costGp": 4150,
+    "damageOrAc": "+5 CA",
+    "properties": "Cota de malha de mitral, armadura leve; Des Máx +4; penalidade -2; falha arcana 20%; item mundano; Tabela 7–7 do Livro do Mestre",
+    "icon": "chain-mail"
+  },
+  {
+    "name": "Couro de Rinoceronte",
+    "category": "Armaduras",
+    "defaultSlot": "Corpo (Armadura / Vestimenta)",
+    "weightLb": 27.5,
+    "costGp": 5165,
+    "damageOrAc": "+5 CA",
+    "properties": "Gibão de peles +2; Des Máx +4; penalidade -1; falha arcana 20%; +2d6 de dano em investida; Tabela 7–7 do Livro do Mestre",
+    "icon": "fur-shirt"
+  },
+  {
+    "name": "Peitoral de Adamante",
+    "category": "Armaduras",
+    "defaultSlot": "Corpo (Armadura / Vestimenta)",
+    "weightLb": 33,
+    "costGp": 10200,
+    "damageOrAc": "+5 CA",
+    "properties": "Peitoral de adamante (obra-prima): redução de dano 2/—; Des Máx +3; penalidade -3; falha arcana 25%; item mundano; Tabela 7–7 do Livro do Mestre",
+    "icon": "breastplate"
+  },
+  {
+    "name": "Armadura dos Anões",
+    "category": "Armaduras",
+    "defaultSlot": "Corpo (Armadura / Vestimenta)",
+    "weightLb": 55,
+    "costGp": 16500,
+    "damageOrAc": "+8 CA",
+    "properties": "Armadura de batalha de adamante (obra-prima): redução de dano 3/—; Des Máx +1; penalidade -5; falha arcana 35%; item mundano; Tabela 7–7 do Livro do Mestre",
+    "icon": "battle-gear"
+  },
+  {
+    "name": "Loriga Segmentada da Sorte",
+    "category": "Armaduras",
+    "defaultSlot": "Corpo (Armadura / Vestimenta)",
+    "weightLb": 38.6,
+    "costGp": 18900,
+    "damageOrAc": "+9 CA",
+    "properties": "Loriga segmentada +3; Des Máx +1; penalidade -6; falha arcana 35%; uma vez por semana refaz uma jogada de ataque feita contra o usuário; Tabela 7–7 do Livro do Mestre",
+    "icon": "trench-body-armor"
+  },
+  {
+    "name": "Armadura Celestial",
+    "category": "Armaduras",
+    "defaultSlot": "Corpo (Armadura / Vestimenta)",
+    "weightLb": 22,
+    "costGp": 22400,
+    "damageOrAc": "+8 CA",
+    "properties": "Cota de malha +3, armadura leve; Des Máx +8; penalidade -2; falha arcana 15%; voo uma vez por dia; Tabela 7–7 do Livro do Mestre",
+    "icon": "chain-mail"
+  },
+  {
+    "name": "Armadura das Profundezas",
+    "category": "Armaduras",
+    "defaultSlot": "Corpo (Armadura / Vestimenta)",
+    "weightLb": 55,
+    "costGp": 24650,
+    "damageOrAc": "+9 CA",
+    "properties": "Armadura de batalha +1; Des Máx +1; penalidade -6 (sem penalidade em Natação); falha arcana 35%; respirar na água e falar com criaturas aquáticas; Tabela 7–7 do Livro do Mestre",
+    "icon": "battle-gear"
+  },
+  {
+    "name": "Peitoral do Comando",
+    "category": "Armaduras",
+    "defaultSlot": "Corpo (Armadura / Vestimenta)",
+    "weightLb": 33,
+    "costGp": 25400,
+    "damageOrAc": "+7 CA",
+    "properties": "Peitoral de aço +2; Des Máx +3; penalidade -4; falha arcana 25%; +2 de competência em testes de Carisma e Liderança; Tabela 7–7 do Livro do Mestre",
+    "icon": "breastplate"
+  },
+  {
+    "name": "Armadura de Mitral da Velocidade",
+    "category": "Armaduras",
+    "defaultSlot": "Corpo (Armadura / Vestimenta)",
+    "weightLb": 27.5,
+    "costGp": 26500,
+    "damageOrAc": "+9 CA",
+    "properties": "Armadura de batalha de mitral +1, armadura média; Des Máx +3; penalidade -3; falha arcana 25%; velocidade por até 10 rodadas/dia; deslocamento 6 m (Médio); Tabela 7–7 do Livro do Mestre",
+    "icon": "battle-gear"
+  },
+  {
+    "name": "Armadura Demoníaca",
+    "category": "Armaduras",
+    "defaultSlot": "Corpo (Armadura / Vestimenta)",
+    "weightLb": 55,
+    "costGp": 52260,
+    "damageOrAc": "+12 CA",
+    "properties": "Armadura de batalha +4; Des Máx +1; penalidade -6; falha arcana 35%; ataques de garra 1d10 que causam praga; impõe 1 nível negativo a quem não é maligno; Tabela 7–7 do Livro do Mestre",
+    "icon": "battle-gear"
+  },
+  {
+    "name": "Broquel de Madeira Negra",
+    "category": "Escudos",
+    "defaultSlot": "Mão Secundária / Escudo",
+    "weightLb": 2.75,
+    "costGp": 205,
+    "damageOrAc": "+1 CA",
+    "properties": "Broquel de madeira negra, sem penalidade; falha arcana 5%; item mundano; Tabela 7–8 do Livro do Mestre",
+    "icon": "round-shield"
+  },
+  {
+    "name": "Escudo de Madeira Negra",
+    "category": "Escudos",
+    "defaultSlot": "Mão Secundária / Escudo",
+    "weightLb": 5.5,
+    "costGp": 257,
+    "damageOrAc": "+2 CA",
+    "properties": "Escudo grande de madeira negra, sem penalidade; falha arcana 15%; item mundano; Tabela 7–8 do Livro do Mestre",
+    "icon": "bordered-shield"
+  },
+  {
+    "name": "Escudo Grande de Mitral",
+    "category": "Escudos",
+    "defaultSlot": "Mão Secundária / Escudo",
+    "weightLb": 5.5,
+    "costGp": 1020,
+    "damageOrAc": "+2 CA",
+    "properties": "Escudo grande de mitral, sem penalidade; falha arcana 5%; item mundano; Tabela 7–8 do Livro do Mestre",
+    "icon": "crenulated-shield"
+  },
+  {
+    "name": "Escudo do Conjurador",
+    "category": "Escudos",
+    "defaultSlot": "Mão Secundária / Escudo",
+    "weightLb": 5.5,
+    "costGp": 3153,
+    "damageOrAc": "+2 CA",
+    "properties": "Escudo pequeno de madeira +1; penalidade -1; falha arcana 5%; guarda uma magia de até 3º nível como pergaminho (preço sem a magia inscrita); Tabela 7–8 do Livro do Mestre",
+    "icon": "viking-shield"
+  },
+  {
+    "name": "Escudo Espinhoso",
+    "category": "Escudos",
+    "defaultSlot": "Mão Secundária / Escudo",
+    "weightLb": 16.5,
+    "costGp": 5580,
+    "damageOrAc": "+3 CA",
+    "properties": "Escudo grande de metal +1 com cravos; penalidade -2; falha arcana 15%; dispara espinhos 3 vezes por dia; Tabela 7–8 do Livro do Mestre",
+    "icon": "crenulated-shield"
+  },
+  {
+    "name": "Escudo do Leão",
+    "category": "Escudos",
+    "defaultSlot": "Mão Secundária / Escudo",
+    "weightLb": 16.5,
+    "costGp": 9170,
+    "damageOrAc": "+4 CA",
+    "properties": "Escudo grande de metal +2; penalidade -2; falha arcana 15%; cabeça de leão morde 3 vezes por dia (2d6); Tabela 7–8 do Livro do Mestre",
+    "icon": "crenulated-shield"
+  },
+  {
+    "name": "Escudo Alado",
+    "category": "Escudos",
+    "defaultSlot": "Mão Secundária / Escudo",
+    "weightLb": 11,
+    "costGp": 17257,
+    "damageOrAc": "+5 CA",
+    "properties": "Escudo grande de madeira +3; penalidade -2; falha arcana 15%; voo 1 vez por dia, até 66,5 kg e 12 m por rodada; Tabela 7–8 do Livro do Mestre",
+    "icon": "bordered-shield"
+  },
+  {
+    "name": "Escudo Absorvente",
+    "category": "Escudos",
+    "defaultSlot": "Mão Secundária / Escudo",
+    "weightLb": 16.5,
+    "costGp": 50170,
+    "damageOrAc": "+3 CA",
+    "properties": "Escudo grande de metal +1; penalidade -2; falha arcana 15%; desintegra um objeto tocado (1 vez a cada 2 dias); Tabela 7–8 do Livro do Mestre",
+    "icon": "crenulated-shield"
+  },
+  {
     "name": "Agulha de Costura",
     "category": "Itens de Aventura",
     "defaultSlot": "Mochila (Não Equipado)",
