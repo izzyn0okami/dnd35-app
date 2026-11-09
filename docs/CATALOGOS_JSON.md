@@ -198,3 +198,25 @@ Decisões:
 - Pendência: o catálogo de magias do app ainda não tem várias das magias que essas varinhas
   reproduzem (ex.: Sugestão, Lentidão, Levitação); isso é do catálogo de magias, não desta
   tabela.
+
+### Armaduras e escudos específicos do Livro do Mestre (2026-11-09)
+
+As Tabelas 7–7 (Armaduras Específicas) e 7–8 (Escudos Específicos) do Livro do Mestre 3.5
+brasileiro foram importadas para `items.json`: 12 armaduras e 8 escudos novos, com o preço
+de mercado da tabela (as colunas de rolagem cobrem 01–100 sem lacunas). O cabeçalho do PDF
+diz "Modificador do Preço Base", mas os valores batem com o "Preço" de cada descrição, então
+são o preço final do item e não um acréscimo sobre o item base.
+
+Os valores de combate saem do item base + bônus de melhoria que o texto de cada item
+informa (ex.: Armadura Demoníaca = armadura de batalha +4 = +12 CA; Escudo do Leão = escudo
+grande de metal +2 = +4 CA). Onde o livro dá os números (Camisão de Mitral, Cota de Malha
+Élfica, Armadura Celestial, Armadura de Mitral da Velocidade), usei os do livro. Armaduras
+de adamante são sempre obras-primas (penalidade 1 ponto menor, conforme Materiais
+Especiais), e o Couro de Dragão é "armadura de batalha (obra-prima)".
+
+Divergências do PDF resolvidas pela tabela:
+- Loriga Segmentada da Sorte: tabela 18.900 PO, descrição 18.000 PO → usei 18.900.
+- Escudo do Leão: descrição "0.170 PO" (extração quebrada), tabela 9.170 PO → usei 9.170.
+- Escudo do Conjurador: 3.153 PO é sem a magia inscrita (o livro soma o valor dela).
+Habilidades de ativação aparecem só resumidas na descrição; o texto completo fica para a fase
+de base de dados detalhada. Armas específicas (Tabela 7–16) vêm numa PR própria.

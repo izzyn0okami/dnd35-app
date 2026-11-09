@@ -92,4 +92,16 @@ class PresetEquipmentCatalogTest {
         assertTrue(byName.containsKey("Varinha de Mísseis Mágicos (Nv 1)"))
         assertTrue(!byName.containsKey("Varinha de Mísseis Mágicos (1º)"))
     }
+
+    @Test
+    fun catalogContainsDungeonMasterGuideSpecificArmorsAndShields() {
+        val byName = Dnd35Rules.PRESET_ITEMS.associateBy { it.name }
+        assertEquals(52260f, byName.getValue("Armadura Demoníaca").costGp, 0f)
+        assertEquals("+12 CA", byName.getValue("Armadura Demoníaca").damageOrAc)
+        assertEquals(18900f, byName.getValue("Loriga Segmentada da Sorte").costGp, 0f)
+        assertEquals("+9 CA", byName.getValue("Loriga Segmentada da Sorte").damageOrAc)
+        assertEquals(9170f, byName.getValue("Escudo do Leão").costGp, 0f)
+        assertEquals("Escudos", byName.getValue("Escudo Alado").category)
+        assertEquals("Armaduras", byName.getValue("Camisão de Mitral").category)
+    }
 }
