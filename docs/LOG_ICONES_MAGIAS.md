@@ -34,3 +34,12 @@
 - Cobertura após esta etapa: 362 magias com ícone individual e 31 com fallback de escola.
 - Testes rejeitam nomes de magia sem correspondência e chaves de ícone inexistentes. A terceira etapa preserva o fallback para efeitos sem símbolo visual inequívoco.
 - O Livro do Jogador brasileiro confirma que Mãos Flamejantes produz um cone de chamas; seu ícone representa fogo em área, não um ataque de toque.
+
+## Quarta etapa — revisão dos fallbacks (2026-11-09)
+
+- Conferidos os 31 nomes que ainda usavam o ícone da escola após a terceira etapa, comparando os verbetes e efeitos no Livro do Jogador brasileiro com os 277 recursos visuais já registrados.
+- Acrescentadas 21 associações quando havia um símbolo existente razoavelmente direto: truques e marcas, pontos de vida temporários, queda/deslocamento, invisibilidade, pedras arremessáveis, superfície escorregadia, proteção contra medo, disfarce de aura, transformação animal, natureza, bloqueio de detecção, raio de frio, convocação planar e vidência.
+- Mantidos 10 fallbacks por ausência de símbolo suficientemente específico: Orientação, Intuir Direção, Servo Invisível, Presa Mágica, Disco Flutuante de Tenser, Apagar, Sabedoria da Coruja, Presa Mágica Maior, Repelir Insetos e Destruição Rastejante.
+- Nenhum recurso SVG novo foi criado; todos os identificadores usados já existem em GameIcons.
+- A cobertura passa de 362 para 383 magias com ícone individual; 10 permanecem com o ícone da escola.
+- O escopo continua exclusivamente visual. Os nomes, descrições, níveis, classes e demais regras do catálogo não foram alterados.
