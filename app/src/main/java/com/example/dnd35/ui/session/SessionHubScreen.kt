@@ -1615,7 +1615,7 @@ private fun PlayerFloatingPrivateChat(
 }
 
 @Composable
-private fun ChatMessageBubble(sender: String, text: String, fromMe: Boolean) {
+internal fun ChatMessageBubble(sender: String, text: String, fromMe: Boolean) {
     Row(
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = if (fromMe) Arrangement.End else Arrangement.Start
