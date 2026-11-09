@@ -30,6 +30,8 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.withContext
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -105,11 +107,13 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
 
     private val hostedSessionDao = AppDatabase.getDatabase(application).hostedSessionDao()
     private val persistenceCommands = Channel<HostedSessionPersistenceCommand>(Channel.UNLIMITED)
+    // A fila precisa sobreviver ao cancelamento automático de viewModelScope antes de onCleared().
+    private val persistenceScope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
     private var server: SessionServer? = null
     private var manualHostRequested = false
 
     init {
-        viewModelScope.launch(Dispatchers.IO) {
+        persistenceScope.launch {
             for (command in persistenceCommands) {
                 try {
                     when (command) {
@@ -611,24 +615,34 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
     }
 
     override fun onCleared() {
+        // Captura e fecha o host sem aguardar I/O na thread principal.
         val finalSnapshot = server?.stopAndCreateSnapshot()
         server = null
-        if (finalSnapshot != null) {
-            runCatching {
-                kotlinx.coroutines.runBlocking(Dispatchers.IO) {
+
+        // A fila usa um escopo independente de viewModelScope: o Android cancela
+        // viewModelScope antes de chamar onCleared(), então esperar seus comandos aqui
+        // poderia bloquear indefinidamente a thread principal.
+        client?.disconnect()
+        client = null
+        linkedPlayerCharacterId = null
+
+        persistenceScope.launch {
+            try {
+                if (finalSnapshot != null) {
                     persistSnapshotAndWait(finalSnapshot)
                 }
-            }.onFailure { error ->
-                CrashLogStore.record("MULTIPLAYER_PERSISTENCE", "Falha no checkpoint final ao encerrar o ViewModel", error)
+                flushPersistenceQueue()
+            } catch (error: Exception) {
+                CrashLogStore.record(
+                    "MULTIPLAYER_PERSISTENCE",
+                    "Falha ao concluir a persistência durante o encerramento do ViewModel",
+                    error
+                )
+            } finally {
+                persistenceCommands.close()
+                persistenceScope.cancel()
             }
         }
-        runCatching {
-            kotlinx.coroutines.runBlocking(Dispatchers.IO) { flushPersistenceQueue() }
-        }.onFailure { error ->
-            CrashLogStore.record("MULTIPLAYER_PERSISTENCE", "Falha ao concluir a fila de persistência", error)
-        }
         super.onCleared()
-        persistenceCommands.close()
-        leaveSession()
     }
 }
