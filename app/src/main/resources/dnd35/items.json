@@ -4330,6 +4330,296 @@
     "icon": "mirror-mirror"
   },
   {
+    "name": "Incenso da Obsessão",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 200,
+    "damageOrAc": "-",
+    "properties": "Item amaldiçoado (Parece incenso da meditação); Tabela 7–31 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "candle-light"
+  },
+  {
+    "name": "Anel da Inabilidade",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Dedo (Anel 1)",
+    "weightLb": 0.0,
+    "costGp": 500,
+    "damageOrAc": "-",
+    "properties": "Item amaldiçoado (Parece anel de queda de pena, mas faz o oposto); Tabela 7–31 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "ring"
+  },
+  {
+    "name": "Amuleto da Localização Inevitável",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Pescoço (Amuleto / Colar)",
+    "weightLb": 0.0,
+    "costGp": 1000,
+    "damageOrAc": "-",
+    "properties": "Item amaldiçoado (Parece amuleto de proteção contra detecção e localização); Tabela 7–31 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gem-pendant"
+  },
+  {
+    "name": "Pedra do Peso",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 1000,
+    "damageOrAc": "-",
+    "properties": "Item amaldiçoado (Pedra negra polida (pedra de carga); reduz o deslocamento à metade); Tabela 7–31 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gems"
+  },
+  {
+    "name": "Braçadeiras da Fraqueza",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Braços (Braçadeiras)",
+    "weightLb": 0.0,
+    "costGp": 1200,
+    "damageOrAc": "-",
+    "properties": "Item amaldiçoado (Parece braçadeiras da armadura +5); Tabela 7–31 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "bracers"
+  },
+  {
+    "name": "Manoplas da Descoordenação",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mãos (Luvas / Manoplas)",
+    "weightLb": 0.0,
+    "costGp": 1300,
+    "damageOrAc": "-",
+    "properties": "Item amaldiçoado (Parece manoplas benéficas); Tabela 7–31 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gloves"
+  },
+  {
+    "name": "Espada Amaldiçoada –2",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.0,
+    "costGp": 1500,
+    "damageOrAc": "-",
+    "properties": "Item amaldiçoado (Espada longa amaldiçoada –2); Tabela 7–31 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "broadsword"
+  },
+  {
+    "name": "Armadura da Fúria",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Corpo (Armadura / Vestimenta)",
+    "weightLb": 0.0,
+    "costGp": 1600,
+    "damageOrAc": "-",
+    "properties": "Item amaldiçoado (Parece armadura de comando); Tabela 7–31 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "battle-gear"
+  },
+  {
+    "name": "Medalhão de Projeção de Pensamentos",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Pescoço (Amuleto / Colar)",
+    "weightLb": 0.0,
+    "costGp": 1800,
+    "damageOrAc": "-",
+    "properties": "Item amaldiçoado (Parece medalhão dos pensamentos); Tabela 7–31 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gem-pendant"
+  },
+  {
+    "name": "Frasco das Maldições",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 2100,
+    "damageOrAc": "-",
+    "properties": "Item amaldiçoado (Parece garrafa ou béquer comum); Tabela 7–31 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "round-bottom-flask"
+  },
+  {
+    "name": "Pó de Espirrar e Tossir",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 2400,
+    "damageOrAc": "-",
+    "properties": "Item amaldiçoado (Parece pó do aparecimento); Tabela 7–31 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "pouch-with-beads"
+  },
+  {
+    "name": "Elmo da Tendência Oposta",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Cabeça (Elmo / Tiara)",
+    "weightLb": 0.0,
+    "costGp": 4000,
+    "damageOrAc": "-",
+    "properties": "Item amaldiçoado (Parece elmo comum); Tabela 7–31 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "tiara"
+  },
+  {
+    "name": "Poção de Envenenamento",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 5000,
+    "damageOrAc": "-",
+    "properties": "Item amaldiçoado (Poção que perdeu as propriedades originais); Tabela 7–31 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "magic-potion"
+  },
+  {
+    "name": "Vassoura de Ataque",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 5200,
+    "damageOrAc": "-",
+    "properties": "Item amaldiçoado (Parece vassoura voadora; ataca o cavaleiro); Tabela 7–31 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "backpack"
+  },
+  {
+    "name": "Robe da Impotência",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Corpo (Armadura / Vestimenta)",
+    "weightLb": 0.0,
+    "costGp": 5500,
+    "damageOrAc": "-",
+    "properties": "Item amaldiçoado (Parece outro tipo de robe); Tabela 7–31 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "robe"
+  },
+  {
+    "name": "Grimório do Vácuo",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 6000,
+    "damageOrAc": "-",
+    "properties": "Item amaldiçoado (Parece livro comum); Tabela 7–31 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "spell-book"
+  },
+  {
+    "name": "Lança Traiçoeira Amaldiçoada",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.0,
+    "costGp": 7500,
+    "damageOrAc": "-",
+    "properties": "Item amaldiçoado (Lança curta +2 amaldiçoada); Tabela 7–31 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "barbed-spear"
+  },
+  {
+    "name": "Armadura de Atração de Flechas",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Corpo (Armadura / Vestimenta)",
+    "weightLb": 0.0,
+    "costGp": 9000,
+    "damageOrAc": "-",
+    "properties": "Item amaldiçoado (Armadura que atrai flechas); Tabela 7–31 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "battle-gear"
+  },
+  {
+    "name": "Rede do Aprisionamento",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 10000,
+    "damageOrAc": "-",
+    "properties": "Item amaldiçoado (Rede amaldiçoada); Tabela 7–31 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "rope-coil"
+  },
+  {
+    "name": "Mochila Devoradora",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 0,
+    "damageOrAc": "-",
+    "properties": "Item amaldiçoado (Parece sacola comum; sem preço no livro); Tabela 7–31 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "backpack"
+  },
+  {
+    "name": "Maça de Sangue",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.0,
+    "costGp": 16000,
+    "damageOrAc": "-",
+    "properties": "Item amaldiçoado (Maça pesada +3 amaldiçoada); Tabela 7–31 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "flanged-mace"
+  },
+  {
+    "name": "Robe dos Insetos",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Corpo (Armadura / Vestimenta)",
+    "weightLb": 0.0,
+    "costGp": 16500,
+    "damageOrAc": "-",
+    "properties": "Item amaldiçoado (O usuário não percebe nada ao vesti-lo); Tabela 7–31 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "robe"
+  },
+  {
+    "name": "Periapto do Apodrecimento",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Pescoço (Amuleto / Colar)",
+    "weightLb": 0.0,
+    "costGp": 17000,
+    "damageOrAc": "-",
+    "properties": "Item amaldiçoado (Joia que parece ter pouco valor); Tabela 7–31 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gem-pendant"
+  },
+  {
+    "name": "Espada da Fúria",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.0,
+    "costGp": 17500,
+    "damageOrAc": "-",
+    "properties": "Item amaldiçoado (Parece espada larga mágica); Tabela 7–31 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "shining-sword"
+  },
+  {
+    "name": "Botas Dançantes",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Pés (Botas / Sapatos)",
+    "weightLb": 0.0,
+    "costGp": 30000,
+    "damageOrAc": "-",
+    "properties": "Item amaldiçoado (Parecem botas benéficas); Tabela 7–31 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "boots"
+  },
+  {
+    "name": "Bola de Cristal Hipnótica",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.0,
+    "costGp": 0,
+    "damageOrAc": "-",
+    "properties": "Item amaldiçoado (Indistinguível de bola de cristal; sem preço no livro); Tabela 7–31 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "crystal-ball"
+  },
+  {
+    "name": "Colar do Estrangulamento",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Pescoço (Amuleto / Colar)",
+    "weightLb": 0.0,
+    "costGp": 60000,
+    "damageOrAc": "-",
+    "properties": "Item amaldiçoado (Parece colar benéfico); Tabela 7–31 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gem-pendant"
+  },
+  {
+    "name": "Manto Venenoso",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Ombros (Capa / Manto)",
+    "weightLb": 0.0,
+    "costGp": 62000,
+    "damageOrAc": "-",
+    "properties": "Item amaldiçoado (Manto de lã amaldiçoado); Tabela 7–31 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "cloak"
+  },
+  {
+    "name": "Escaravelho da Morte",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Pescoço (Amuleto / Colar)",
+    "weightLb": 0.0,
+    "costGp": 80000,
+    "damageOrAc": "-",
+    "properties": "Item amaldiçoado (Pequeno prendedor, parece amuleto benéfico); Tabela 7–31 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "gem-pendant"
+  },
+  {
     "name": "Mochila de Couro Reforçada",
     "category": "Itens de Aventura",
     "defaultSlot": "Mochila (Não Equipado)",

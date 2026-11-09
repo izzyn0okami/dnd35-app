@@ -132,4 +132,14 @@ class PresetEquipmentCatalogTest {
         assertTrue(!byName.containsKey("Manto Élfico"))
         assertTrue(!byName.containsKey("Óculos Noturnos"))
     }
+
+    @Test
+    fun catalogContainsDungeonMasterGuideCursedItems() {
+        val byName = Dnd35Rules.PRESET_ITEMS.associateBy { it.name }
+        assertEquals(80000f, byName.getValue("Escaravelho da Morte").costGp, 0f)
+        assertEquals(16000f, byName.getValue("Maça de Sangue").costGp, 0f)
+        assertEquals(0f, byName.getValue("Mochila Devoradora").costGp, 0f)
+        assertEquals("Pés (Botas / Sapatos)", byName.getValue("Botas Dançantes").defaultSlot)
+        assertTrue(byName.getValue("Colar do Estrangulamento").properties.startsWith("Item amaldiçoado"))
+    }
 }
