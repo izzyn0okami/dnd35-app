@@ -21,3 +21,19 @@ class LatestCalculationGateTest {
         assertTrue(gate.isCurrent(request))
     }
 }
+
+    @Test
+    fun sameCharacterKeepsPreviouslyCalculatedStatsDuringRefresh() {
+        assertFalse(shouldClearComputedStats(42L, 42L))
+    }
+
+    @Test
+    fun switchingCharacterClearsPreviouslyCalculatedStats() {
+        assertTrue(shouldClearComputedStats(42L, 99L))
+    }
+
+    @Test
+    fun initialCharacterLoadClearsMissingStats() {
+        assertTrue(shouldClearComputedStats(null, 42L))
+    }
+}
