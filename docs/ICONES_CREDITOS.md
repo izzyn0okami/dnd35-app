@@ -324,3 +324,12 @@ O Grimório usa o registro Game-icons.net já empacotado no aplicativo. Os símb
 Os símbolos aparecem nas linhas de magias preparadas/conhecidas, nos resultados do Catálogo e nos detalhes da magia. O nome textual da escola permanece visível. O ícone é decorativo e não altera regras, filtros ou dados salvos.
 
 Os ícones são reutilizados de recursos que já estavam incluídos no app; portanto, não foi necessário adicionar novos SVGs nem autores. Os créditos existentes continuam sendo a fonte de atribuição.
+
+
+## Ícones individuais de magias (2026-11-09)
+
+Foi criada uma camada de associação visual por nome de magia, reutilizando exclusivamente recursos já empacotados e creditados neste catálogo. O ícone específico tem prioridade; quando não há associação específica, permanece o ícone da escola. O nome da escola continua exibido no texto.
+
+As associações abrangem efeitos identificáveis do Livro do Jogador, como fogo, ácido, eletricidade, cura, morte, venenos, contenção, proteção, deslocamento, vidência, ilusão, natureza, água, armas mágicas, som e tempo. A associação não altera regras, filtros, níveis, descrições, dados salvos, backups ou compatibilidade de fichas antigas.
+
+Os símbolos são decorativos. As chaves utilizadas já constam na tabela de ícones acima, sem inclusão de novos SVGs ou autores.
