@@ -333,3 +333,8 @@ Foi criada uma camada de associação visual por nome de magia, reutilizando exc
 As associações abrangem efeitos identificáveis do Livro do Jogador, como fogo, ácido, eletricidade, cura, morte, venenos, contenção, proteção, deslocamento, vidência, ilusão, natureza, água, armas mágicas, som e tempo. A associação não altera regras, filtros, níveis, descrições, dados salvos, backups ou compatibilidade de fichas antigas.
 
 Os símbolos são decorativos. As chaves utilizadas já constam na tabela de ícones acima, sem inclusão de novos SVGs ou autores.
+
+
+## Ampliação da cobertura de magias (2026-11-09)
+
+A camada individual passou a cobrir 309 das 393 entradas atuais do catálogo, usando recursos que já estavam registrados. As 84 restantes continuam usando o ícone da escola. Foram removidas associações que não correspondiam a nomes existentes no catálogo do aplicativo, e os testes agora verificam nomes e recursos associados para impedir referências inválidas.

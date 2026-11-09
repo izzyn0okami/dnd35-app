@@ -22,3 +22,13 @@
 - Nem todo efeito do Livro do Jogador possui um símbolo inequívoco entre os 277 recursos atualmente empacotados.
 - Magias sem associação específica continuam representadas pela escola; não atribuir um desenho apenas para aumentar a quantidade de associações.
 - Uma expansão posterior com novos desenhos exige selecionar SVGs do Game-icons.net, conferir autor/licença, atualizar o gerador e os créditos e validar os VectorDrawables.
+
+
+## Segunda etapa da auditoria (2026-11-09)
+
+- Comparação automatizada das chaves de associação com os 393 nomes do catálogo atual.
+- Removidas chaves sem correspondência no catálogo; não foram adicionadas magias ao catálogo nesta etapa.
+- Expandidas as associações específicas para efeitos de influência, percepção, proteção, deslocamento, invocação, conjuração, energia, clima, natureza, objetos e efeitos de Bigby.
+- Cobertura final: 309 magias com ícone individual e 84 com fallback de escola.
+- Testes agora rejeitam nomes de magia sem correspondência e chaves de ícone inexistentes.
+- O Livro do Jogador brasileiro confirma que Mãos Flamejantes produz um cone de chamas; seu ícone representa fogo em área, não um ataque de toque.
