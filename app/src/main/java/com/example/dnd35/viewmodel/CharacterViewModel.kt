@@ -163,9 +163,12 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
     private val characterSaveMutex = Mutex()
     private val statsCalculationGate = LatestCalculationGate()
     private val repository: CharacterRepository
+    private val selectionPreferences = application.getSharedPreferences("character_selection", Application.MODE_PRIVATE)
 
     val allCharacters: StateFlow<List<CharacterEntity>>
-    private val _selectedCharacterId = MutableStateFlow<Long?>(null)
+    private val _selectedCharacterId = MutableStateFlow<Long?>(
+        selectionPreferences.getLong("selected_character_id", -1L).takeIf { it > 0L }
+    )
     val selectedCharacterId = _selectedCharacterId.asStateFlow()
 
     private val _activeCharacter = MutableStateFlow<CharacterEntity?>(null)
@@ -195,6 +198,7 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
                     if (currentId == null || list.none { it.id == currentId }) {
                         val first = list.first()
                         _selectedCharacterId.value = first.id
+                        persistSelectedCharacterId(first.id)
                         _activeCharacter.value = first
                         recalculateStatsAsync(first)
                     } else {
@@ -204,6 +208,8 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
                     }
                 } else {
                     statsCalculationGate.begin()
+                    _selectedCharacterId.value = null
+                    selectionPreferences.edit().remove("selected_character_id").apply()
                     _activeCharacter.value = null
                     _computedStats.value = null
                 }
@@ -211,8 +217,13 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
         }
     }
 
+    private fun persistSelectedCharacterId(id: Long) {
+        selectionPreferences.edit().putLong("selected_character_id", id).apply()
+    }
+
     fun selectCharacter(id: Long) {
         _selectedCharacterId.value = id
+        persistSelectedCharacterId(id)
         val found = allCharacters.value.find { it.id == id }
         if (found != null) {
             _activeCharacter.value = found
@@ -347,7 +358,7 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
                 name, characterClass, race,
                 baseStr, baseDex, baseCon, baseInt, baseWis, baseCha
             )
-            _selectedCharacterId.value = newId
+            selectCharacter(newId)
         }
     }
 
@@ -355,7 +366,7 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
         val curr = _activeCharacter.value ?: return
         viewModelScope.launch(Dispatchers.IO) {
             val newId = repository.duplicateCharacter(curr)
-            _selectedCharacterId.value = newId
+            selectCharacter(newId)
         }
     }
 
@@ -364,6 +375,7 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
         viewModelScope.launch(Dispatchers.IO) {
             repository.deleteCharacter(curr.id)
             _selectedCharacterId.value = null
+            selectionPreferences.edit().remove("selected_character_id").apply()
         }
     }
 

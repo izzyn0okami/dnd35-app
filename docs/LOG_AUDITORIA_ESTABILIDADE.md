@@ -78,3 +78,23 @@ A PR #337 foi ampliada sem abrir uma PR paralela, após conferir que ela continu
 - Commit: `eda5b33cf15d8d88cba8d68a31c6e780bf95f8d7`.
 - A CI do novo head ainda precisa ser verificada.
 - Permanecem pendentes testes manuais de importação/exportação e retorno do app em aparelho real.
+
+## Continuação da investigação após o relatório do usuário — 2026-11-08
+
+### Identificação da instalação analisada
+- O relatório identifica o pacote `com.aistudio.dndsheet.qvkztr`, versão `0.0.1-beta`, Android 17/API 37 e Motorola Edge 30 Fusion.
+- O `applicationId` atual em `app/build.gradle.kts` é exatamente `com.aistudio.dndsheet.qvkztr`; portanto, o relatório corresponde ao identificador configurado no projeto. O namespace Kotlin `com.example` é distinto do applicationId.
+- Os dois eventos históricos `LOW_MEMORY` não demonstram, isoladamente, vazamento de memória. Quadros de aproximadamente 540 ms e 498 ms indicam travamentos perceptíveis durante as retomadas, mas não identificam a função responsável.
+
+### Achados de código e correções desta etapa
+- A seleção da ficha era mantida apenas em `MutableStateFlow` no ViewModel. Após recriação do processo, o estado começava nulo e a primeira ficha da lista era selecionada. A seleção agora é persistida em preferências privadas e restaurada quando a lista do Room é carregada; se a ficha não existir mais, a seleção é corrigida para a primeira disponível.
+- A aba principal usava `remember`, que não sobrevive à recriação da Activity. Foi alterado para `rememberSaveable`.
+- A decodificação e leitura EXIF da fotografia no recortador era executada dentro de `LaunchedEffect`, mas sem dispatcher de I/O explícito. O trabalho agora é executado em `Dispatchers.IO`; o estado Compose continua sendo atualizado após o retorno ao contexto principal.
+- A aplicação passa a registrar snapshots agregados de memória na inicialização, em `onTrimMemory` e em `onLowMemory`: heap Java usado/total/máximo, heap nativo, PSS e memória disponível/limite do dispositivo. Não são coletados nomes, imagens, conteúdo ou atributos de fichas.
+
+### Limitações e validação
+- Esses snapshots permitirão observar a pressão de memória em ocorrências futuras; não reconstituem retroativamente a memória nos dois encerramentos históricos.
+- O callback `onTrimMemory` informa pressão do sistema, não prova vazamento no aplicativo.
+- A decodificação fora da thread principal reduz risco de congelamento, mas não reduz automaticamente o tamanho máximo da imagem decodificada.
+- Permanecem necessários testes automatizados, CI e validação manual no aparelho: selecionar uma ficha que não seja a primeira, forçar encerramento/recriação do processo, confirmar a ficha e a aba restauradas, selecionar/recortar foto grande e exportar novo relatório.
+- Nenhuma alteração foi feita em regras, cálculos de D&D, schema do Room ou formato de backup.
