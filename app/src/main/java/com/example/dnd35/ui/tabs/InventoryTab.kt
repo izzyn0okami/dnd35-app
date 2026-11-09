@@ -990,7 +990,7 @@ fun InventoryItemRowRefined(
                 horizontalArrangement = Arrangement.End,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                IconButton(onClick = onOpenSlotPicker, modifier = Modifier.size(44.dp)) {
+                IconButton(onClick = onOpenSlotPicker, modifier = Modifier.size(48.dp)) {
                     Icon(
                         Icons.Default.Shield,
                         contentDescription = "Atribuir espaço de equipamento",
@@ -998,7 +998,7 @@ fun InventoryItemRowRefined(
                         tint = MaterialTheme.colorScheme.primary
                     )
                 }
-                IconButton(onClick = onEdit, modifier = Modifier.size(44.dp)) {
+                IconButton(onClick = onEdit, modifier = Modifier.size(48.dp)) {
                     Icon(
                         Icons.Default.Edit,
                         contentDescription = "Editar ${item.name}",
@@ -1006,7 +1006,7 @@ fun InventoryItemRowRefined(
                         tint = MaterialTheme.colorScheme.primary
                     )
                 }
-                IconButton(onClick = onDelete, modifier = Modifier.size(44.dp)) {
+                IconButton(onClick = onDelete, modifier = Modifier.size(48.dp)) {
                     Icon(
                         Icons.Default.Delete,
                         contentDescription = "Excluir ${item.name}",
@@ -1015,7 +1015,7 @@ fun InventoryItemRowRefined(
                     )
                 }
                 Box {
-                    IconButton(onClick = { showItemMenu = true }, modifier = Modifier.size(44.dp)) {
+                    IconButton(onClick = { showItemMenu = true }, modifier = Modifier.size(48.dp)) {
                         Icon(
                             Icons.Default.MoreVert,
                             contentDescription = "Mais opções de ${item.name}",

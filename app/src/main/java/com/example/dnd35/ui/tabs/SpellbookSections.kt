@@ -245,12 +245,12 @@ internal fun LazyListScope.preparedSection(
                         if (style != SpellbookRules.Style.SPONTANEOUS && spell.domain.isBlank()) {
                             IconButton(
                                 onClick = { viewModel.setSpellPreparedCount(spell.id, spell.preparedCount - 1) },
-                                modifier = Modifier.size(40.dp)
+                                modifier = Modifier.size(48.dp)
                             ) { Icon(Icons.Default.Remove, contentDescription = "Preparar uma vez a menos: ${spell.name}", modifier = Modifier.size(16.dp)) }
                             Text("x${spell.preparedCount}", style = MaterialTheme.typography.labelMedium, fontWeight = FontWeight.Bold)
                             IconButton(
                                 onClick = { viewModel.setSpellPreparedCount(spell.id, spell.preparedCount + 1) },
-                                modifier = Modifier.size(40.dp)
+                                modifier = Modifier.size(48.dp)
                             ) { Icon(Icons.Default.Add, contentDescription = "Preparar mais uma vez: ${spell.name}", modifier = Modifier.size(16.dp)) }
                         }
                         OutlinedButton(
@@ -396,7 +396,7 @@ internal fun LazyListScope.knownSection(
                         }
                         Text(tags.joinToString(" • "), style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                     }
-                    IconButton(onClick = { viewModel.toggleSpellFavorite(spell.id) }, modifier = Modifier.size(40.dp)) {
+                    IconButton(onClick = { viewModel.toggleSpellFavorite(spell.id) }, modifier = Modifier.size(48.dp)) {
                         Icon(
                             if (spell.favorite) Icons.Default.Star else Icons.Default.StarBorder,
                             contentDescription = if (spell.favorite) "Desfavoritar ${spell.name}" else "Favoritar ${spell.name}",
@@ -404,10 +404,10 @@ internal fun LazyListScope.knownSection(
                             tint = DndArcaneBlue
                         )
                     }
-                    IconButton(onClick = { onEditSpell(spell) }, modifier = Modifier.size(40.dp)) {
+                    IconButton(onClick = { onEditSpell(spell) }, modifier = Modifier.size(48.dp)) {
                         Icon(Icons.Default.Edit, contentDescription = "Editar ${spell.name}", modifier = Modifier.size(18.dp), tint = MaterialTheme.colorScheme.primary)
                     }
-                    IconButton(onClick = { onDeleteSpell(spell.id) }, modifier = Modifier.size(40.dp)) {
+                    IconButton(onClick = { onDeleteSpell(spell.id) }, modifier = Modifier.size(48.dp)) {
                         Icon(Icons.Default.Delete, contentDescription = "Excluir ${spell.name}", modifier = Modifier.size(18.dp), tint = DndCrimson)
                     }
                 }
