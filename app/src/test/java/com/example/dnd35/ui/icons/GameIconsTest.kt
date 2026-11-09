@@ -54,8 +54,7 @@ class GameIconsTest {
             "Labirinto" to "crossed-chains",
             "Mãos Mágicas" to "orb-wand",
             "Mansão Magnífica de Mordenkainen" to "camping-tent",
-            "Punho Cerrado de Bigby, O" to "mailed-fist"
-
+            "Punho Cerrado de Bigby, O" to "mailed-fist",
             "Prestidigitação" to "fairy-wand",
             "Marca Arcana" to "wax-seal",
             "Virtude" to "heart-bottle",
