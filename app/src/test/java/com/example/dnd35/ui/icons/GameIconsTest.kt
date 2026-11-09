@@ -36,6 +36,31 @@ class GameIconsTest {
     }
 
     @Test
+    fun specificSpellIconsAreRegisteredAndFallbackUsesSchoolIcon() {
+        val expected = mapOf(
+            "Mãos Flamejantes" to "fire-bottle",
+            "Bola de Fogo" to "fire-bottle",
+            "Raio de Ácido" to "acid",
+            "Sono" to "person-in-bed",
+            "Teia" to "fishing-net",
+            "Curar Ferimentos Leves" to "health-potion",
+            "Dedo da Morte" to "skull-crossed-bones",
+            "Relâmpago" to "thunderball",
+            "Teletransporte" to "wingfoot",
+            "Detectar Magia" to "crystal-ball"
+        )
+        expected.forEach { (spell, key) ->
+            assertEquals(key, spellIconKey(spell))
+            assertNotNull("Ícone $key de $spell deve estar registrado", GameIcons.find(key))
+        }
+        assertNull(spellIconKey("Magia sem associação específica"))
+        Dnd35Rules.PRESET_SPELLS.forEach { spell ->
+            val key = spellIconKey(spell.name) ?: spellSchoolIcon(spell.school)
+            assertNotNull("Ícone ausente para ${spell.name}", GameIcons.find(key))
+        }
+    }
+
+    @Test
     fun iconKeysAreUnique() {
         val keys = GameIcons.all.map { it.key }
         assertEquals(keys.size, keys.toSet().size)
