@@ -163,3 +163,15 @@ colunas, Médio e Maior, cobrem 01–100 sem lacunas nem sobreposições). Espa�
 e peso 5,5 lb, que é o que o livro diz (cerca de 2,5 kg). Os nomes seguem a tabela
 ("Bastão Metamágico, Aumentar (menor)" etc.) e a descrição é genérica, apontando para o livro;
 o detalhe de cada bastão fica para a fase de base de dados.
+
+### Cajados do Livro do Mestre (2026-11-09)
+
+A Tabela 7–25 (Cajados, Livro do Mestre 3.5 brasileiro, Cap. 7) foi importada para
+`items.json`: 21 cajados novos em "Itens Mágicos", com o preço de mercado da tabela (as duas
+colunas, Menor e Maior, cobrem 01–100 sem lacunas nem sobreposições). Espaço "Mão Principal",
+peso 5,5 lb (cerca de 2,5 kg, como diz o livro); a descrição lembra que o cajado nasce com
+50 cargas, e o resto aponta para o livro.
+
+Três erros de extração do PDF nessa tabela foram corrigidos conferindo as descrições
+individuais: "65.000 FO" (Encantamento) → PO, "65:000" (Ilusão) → 65.000 e "Vido" → Vida.
+Todos os cajados das oito escolas custam 65.000 PO, o que bate com cada descrição.
