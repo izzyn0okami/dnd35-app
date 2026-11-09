@@ -45,6 +45,9 @@ import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
 import java.util.concurrent.atomic.AtomicLong
 
+internal fun shouldClearComputedStats(previousCharacterId: Long?, nextCharacterId: Long): Boolean =
+    previousCharacterId != nextCharacterId
+
 internal class LatestCalculationGate {
     private val generation = AtomicLong(0L)
     fun begin(): Long = generation.incrementAndGet()
@@ -194,15 +197,22 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
         viewModelScope.launch {
             allCharacters.collect { list ->
                 if (list.isNotEmpty()) {
+                    val previousCharacterId = _activeCharacter.value?.id
                     val currentId = _selectedCharacterId.value
                     if (currentId == null || list.none { it.id == currentId }) {
                         val first = list.first()
                         _selectedCharacterId.value = first.id
                         persistSelectedCharacterId(first.id)
+                        if (shouldClearComputedStats(previousCharacterId, first.id)) {
+                            _computedStats.value = null
+                        }
                         _activeCharacter.value = first
                         recalculateStatsAsync(first)
                     } else {
                         val updated = list.first { it.id == currentId }
+                        if (shouldClearComputedStats(previousCharacterId, updated.id)) {
+                            _computedStats.value = null
+                        }
                         _activeCharacter.value = updated
                         recalculateStatsAsync(updated)
                     }
@@ -226,6 +236,7 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
         persistSelectedCharacterId(id)
         val found = allCharacters.value.find { it.id == id }
         if (found != null) {
+            _computedStats.value = null
             _activeCharacter.value = found
             recalculateStatsAsync(found)
         }
@@ -233,7 +244,6 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
 
     private fun recalculateStatsAsync(character: CharacterEntity) {
         val token = statsCalculationGate.begin()
-        _computedStats.value = null
         viewModelScope.launch {
             val startedAt = SystemClock.elapsedRealtime()
             try {
