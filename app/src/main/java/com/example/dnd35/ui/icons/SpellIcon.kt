@@ -15,6 +15,7 @@ private val SPELL_ICON_OVERRIDES = mapOf(
     // Fogo, calor e luz intensa
     "mãos flamejantes" to "fire-bottle",
     "bola de fogo" to "fire-bottle",
+    "nuvem incendiária" to "fire-bottle",
     "muralha de fogo" to "fire-bottle",
     "coluna de chamas" to "fire-bottle",
     "tempestade de fogo" to "fire-bottle",
