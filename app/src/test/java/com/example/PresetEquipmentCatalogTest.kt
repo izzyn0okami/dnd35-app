@@ -116,4 +116,20 @@ class PresetEquipmentCatalogTest {
         assertTrue(byName.containsKey("Maça da Destruição"))
         assertTrue(byName.containsKey("Maça do Terror"))
     }
+
+    @Test
+    fun catalogContainsDungeonMasterGuideWondrousItems() {
+        val byName = Dnd35Rules.PRESET_ITEMS.associateBy { it.name }
+        assertEquals(200000f, byName.getValue("Espelho do Aprisionamento").costGp, 0f)
+        assertEquals(16000f, byName.getValue("Manto da Resistência +4").costGp, 0f)
+        assertEquals("+4 Resistências", byName.getValue("Manto da Resistência +4").damageOrAc)
+        assertEquals("+6 FOR", byName.getValue("Cinto da Força de Gigante +6").damageOrAc)
+        assertEquals("Pés (Botas / Sapatos)", byName.getValue("Botas do Teletransporte").defaultSlot)
+        assertTrue(byName.containsKey("Pérola do Poder (duas magias)"))
+        assertTrue(byName.containsKey("Bola de Cristal com Visão da Verdade"))
+        // itens que já existiam com outro nome não podem ser duplicados
+        assertTrue(!byName.containsKey("Manto da Resistência +1"))
+        assertTrue(!byName.containsKey("Manto Élfico"))
+        assertTrue(!byName.containsKey("Óculos Noturnos"))
+    }
 }
