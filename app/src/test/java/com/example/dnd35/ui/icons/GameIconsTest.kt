@@ -47,13 +47,28 @@ class GameIconsTest {
             "Dedo da Morte" to "skull-crossed-bones",
             "Relâmpago" to "thunderball",
             "Teletransporte" to "wingfoot",
-            "Detectar Magia" to "crystal-ball"
+            "Detectar Magia" to "crystal-ball",
+            "Grito Maior" to "lyre",
+            "Nuvem Incendiária" to "fire-bottle",
+            "Invocar Criaturas VII" to "magic-lamp",
+            "Labirinto" to "crossed-chains",
+            "Mãos Mágicas" to "orb-wand",
+            "Mansão Magnífica de Mordenkainen" to "camping-tent",
+            "Punho Cerrado de Bigby, O" to "mailed-fist"
         )
         expected.forEach { (spell, key) ->
             assertEquals(key, spellIconKey(spell))
             assertNotNull("Ícone $key de $spell deve estar registrado", GameIcons.find(key))
         }
         assertNull(spellIconKey("Magia sem associação específica"))
+        val catalogNames = Dnd35Rules.PRESET_SPELLS.map { it.name.trim().lowercase(java.util.Locale.ROOT) }.toSet()
+        val invalidNames = spellIconOverrideNames.filterNot { it in catalogNames }
+        assertTrue("Associações sem magia correspondente no catálogo: $invalidNames", invalidNames.isEmpty())
+        val invalidIcons = Dnd35Rules.PRESET_SPELLS.mapNotNull { spell ->
+            val key = spellIconKey(spell.name)
+            if (key != null && GameIcons.find(key) == null) "${spell.name}: $key" else null
+        }
+        assertTrue("Magias apontando para ícones inexistentes: $invalidIcons", invalidIcons.isEmpty())
         Dnd35Rules.PRESET_SPELLS.forEach { spell ->
             val key = spellIconKey(spell.name) ?: spellSchoolIcon(spell.school)
             assertNotNull("Ícone ausente para ${spell.name}", GameIcons.find(key))
