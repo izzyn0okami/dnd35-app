@@ -80,4 +80,16 @@ class PresetEquipmentCatalogTest {
         assertEquals(65000f, byName.getValue("Cajado de Ilusão").costGp, 0f)
         assertEquals(16500f, byName.getValue("Cajado de Enfeitiçar").costGp, 0f)
     }
+
+    @Test
+    fun catalogContainsDungeonMasterGuideWands() {
+        val byName = Dnd35Rules.PRESET_ITEMS.associateBy { it.name }
+        assertEquals(375f, byName.getValue("Varinha de Detectar Magia").costGp, 0f)
+        assertEquals(33500f, byName.getValue("Varinha de Pele Rochosa").costGp, 0f)
+        assertEquals(21000f, byName.getValue("Varinha de Muralha de Gelo").costGp, 0f)
+        assertEquals(24000f, byName.getValue("Varinha de Nuvem Profana (8º)").costGp, 0f)
+        assertTrue(byName.containsKey("Varinha de Enfeitiçar Pessoa, elevado (magia de 3º nível)"))
+        assertTrue(byName.containsKey("Varinha de Mísseis Mágicos (Nv 1)"))
+        assertTrue(!byName.containsKey("Varinha de Mísseis Mágicos (1º)"))
+    }
 }
