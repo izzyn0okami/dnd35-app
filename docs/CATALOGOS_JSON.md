@@ -279,3 +279,27 @@ exercido" → exercício, "(magia de 69 nível)" → 6º, "(duos magias)" → du
 bônus que o OCR perdeu e a progressão de preço confirma: Manto da Resistência +4 (16.000 PO)
 e Cinto da Força de Gigante +6 (36.000 PO). A ordem de preços de alguns colares de bolas de
 fogo (tipos V, VI e VII) é a da tabela impressa.
+
+### Itens amaldiçoados do Livro do Mestre (2026-11-09)
+
+A Tabela 7–31 (Itens Amaldiçoados Específicos, Livro do Mestre 3.5 brasileiro, p. 276) foi
+importada para `items.json`: 29 itens novos em "Itens Mágicos", com o preço de mercado da
+tabela (faixas 01–100 sem lacunas). A propriedade de cada um começa com "Item amaldiçoado",
+seguida de como o item se disfarça no livro (ex.: Amuleto da Localização Inevitável "parece
+amuleto de proteção contra detecção e localização"), para o Mestre reconhecer o que é; o
+efeito real fica no livro e será estruturado na fase de base de dados detalhada.
+
+Decisões:
+- Mochila Devoradora e Bola de Cristal Hipnótica não têm preço na tabela ("—"): entraram com
+  0 PO.
+- Peso 0 lb em todos (as descrições não trazem peso); espaço deduzido do tipo de item, como nos
+  itens maravilhosos.
+- Erro de extração: "Batas dançantes" → Botas Dançantes (a descrição confirma o nome).
+- Armas amaldiçoadas ficam com `damageOrAc` "-" e a arma base descrita na propriedade
+  (Maça de Sangue = maça pesada +3; Lança Traiçoeira Amaldiçoada = lança curta +2; Espada
+  Amaldiçoada –2 = espada longa).
+
+Materiais especiais (adamante, couro de dragão, ferro frio, madeira negra, mitral, prata
+alquímica) não foram importados: no livro são modificadores de preço e de estatísticas sobre
+qualquer arma/armadura, e o catálogo não tem um campo de material. Fica para a fase de dados
+estruturados, não como itens avulsos.
