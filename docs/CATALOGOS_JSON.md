@@ -303,3 +303,30 @@ Materiais especiais (adamante, couro de dragão, ferro frio, madeira negra, mitr
 alquímica) não foram importados: no livro são modificadores de preço e de estatísticas sobre
 qualquer arma/armadura, e o catálogo não tem um campo de material. Fica para a fase de dados
 estruturados, não como itens avulsos.
+
+### Criaturas do Livro dos Monstros (2026-11-09)
+
+`app/src/main/resources/dnd35/creatures.json` traz 230 criaturas do Livro dos Monstros 3.5
+brasileiro, lidas por `CreatureCatalog` (`CreatureDefinition`, com busca por nome sem acento e
+filtros de tipo, tamanho e ND). O arquivo é gerado por `tools/monstros/parse_livro_dos_monstros.py
+<livro.txt> <saida.json> <rejeitadas.json>`.
+
+Regras da extração:
+- Cada bloco de estatísticas começa na linha "Dados de Vida:". Só entra quem passa na
+  validação: PV coerentes com os DV (±1), seis atributos, três testes de resistência, CA, ND
+  e iniciativa numéricos, BBA/Agarrar e tamanho válido.
+- Quem falha vai para `tools/monstros/rejeitadas.json` (143 blocos, com linha, nome, tipo e
+  motivo), em vez de entrar com número chutado. Nada de estatística inventada.
+- Campos que o bloco não traz ficam como `""` (diferente do "—" impresso no livro).
+  Inteligência "—" (mortos-vivos, constructos, vermes etc.) vira `null`.
+- ND fica como texto ("1/4") e `challengeRatingValue` dá o número; DV fracionários (1/2d8) em
+  `hdCount` como Double.
+- Erros de OCR tratados no script: ligaturas quebradas ("fl exos"), cabeçalhos de página no
+  meio do bloco e a linha "CA;" colada. Nomes como "Constritora (Cobra)" viram "Cobra Constritora".
+- Textos descritivos (ecologia, combate, variantes) não foram copiados; só a ficha numérica e
+  as linhas de ataque/qualidades como aparecem no bloco.
+
+Pendências: variantes em várias colunas (víbora, aranha, centopeia, escorpião por tamanho),
+além de Hiena, Babuíno, Lula, Besouro Gigante e Texugo Atroz (PV não bate com os DV) ficaram
+nas rejeitadas. Vários são necessários para companheiros animais, familiares e Invocar
+Criaturas e serão tratados em um PR próprio.
