@@ -392,7 +392,7 @@ private val SPELL_ICON_OVERRIDES = mapOf(
     "dissipar a ordem" to "magic-shield",
     "adivinhação" to "crystal-ball",
     "matar" to "skull-crossed-bones",
-"intuir direção" to "compass",
+    "intuir direção" to "compass",
     "sabedoria da coruja" to "owl",
     "presa mágica" to "claws",
     "presa mágica maior" to "claws",
