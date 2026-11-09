@@ -1,0 +1,24 @@
+# Log — ícones individuais de magias
+
+## Decisão e escopo (2026-11-09)
+
+- Manter os nove ícones por escola já implementados na PR #347.
+- Acrescentar uma camada de ícones específicos por nome de magia, sem gravar qualquer chave no JSON da ficha, banco de dados ou backup.
+- Priorizar os recursos Game-icons.net já empacotados e creditados; não criar SVGs novos nesta etapa.
+- Usar o ícone da escola como fallback quando não houver associação individual adequada.
+- Preservar o nome textual da escola nas linhas e nos detalhes da magia.
+- A apresentação é estritamente visual: não altera regras, filtros, catálogo, nível, classe, descrição ou comportamento de conjuração.
+
+## Implementação
+
+- Criado `spellIconKey(spellName)` com associações explícitas para efeitos reconhecíveis.
+- Criado `SpellIcon`, que resolve ícone específico e aplica fallback pela escola.
+- Aplicado em Preparadas, Conhecidas, Catálogo e detalhes da magia.
+- Testes verificam chaves selecionadas, existência dos recursos e cobertura/fallback para todas as magias do catálogo atual (393 entradas).
+- Créditos atualizados em `docs/ICONES_CREDITOS.md`.
+
+## Limitações conhecidas
+
+- Nem todo efeito do Livro do Jogador possui um símbolo inequívoco entre os 277 recursos atualmente empacotados.
+- Magias sem associação específica continuam representadas pela escola; não atribuir um desenho apenas para aumentar a quantidade de associações.
+- Uma expansão posterior com novos desenhos exige selecionar SVGs do Game-icons.net, conferir autor/licença, atualizar o gerador e os créditos e validar os VectorDrawables.
