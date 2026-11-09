@@ -29,6 +29,8 @@
 - Comparação automatizada das chaves de associação com os 393 nomes do catálogo atual.
 - Removidas chaves sem correspondência no catálogo; não foram adicionadas magias ao catálogo nesta etapa.
 - Expandidas as associações específicas para efeitos de influência, percepção, proteção, deslocamento, invocação, conjuração, energia, clima, natureza, objetos e efeitos de Bigby.
-- Cobertura final: 309 magias com ícone individual e 84 com fallback de escola.
-- Testes agora rejeitam nomes de magia sem correspondência e chaves de ícone inexistentes.
+- Cobertura antes desta etapa: 310 magias com ícone individual e 83 com fallback de escola.
+- Terceira etapa: adicionadas associações semanticamente diretas para aprisionamento, bênçãos, névoa, detecção de mortos-vivos e tendências, invisibilidade, fortalecimento, escalada, dissipação, efeitos divinos, visão, teleporte, desejo e desintegração.
+- Cobertura após esta etapa: 362 magias com ícone individual e 31 com fallback de escola.
+- Testes rejeitam nomes de magia sem correspondência e chaves de ícone inexistentes. A terceira etapa preserva o fallback para efeitos sem símbolo visual inequívoco.
 - O Livro do Jogador brasileiro confirma que Mãos Flamejantes produz um cone de chamas; seu ícone representa fogo em área, não um ataque de toque.
