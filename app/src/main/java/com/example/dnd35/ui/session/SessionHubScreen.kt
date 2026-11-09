@@ -82,7 +82,6 @@ import com.example.dnd35.viewmodel.CharacterViewModel
 import com.example.dnd35.viewmodel.DmSessionUiState
 import com.example.dnd35.viewmodel.PlayerSessionUiState
 import com.example.dnd35.viewmodel.SessionViewModel
-import com.example.ui.theme.DndCrimson
 import com.example.ui.theme.DndGold
 import com.journeyapps.barcodescanner.ScanContract
 import com.journeyapps.barcodescanner.ScanOptions
@@ -155,7 +154,7 @@ private fun SessionAreaNavigation(selected: SessionAreaTab, onSelect: (SessionAr
     Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(4.dp), verticalAlignment = Alignment.CenterVertically) {
         listOf(SessionAreaTab.SESSION to "Sessão", SessionAreaTab.COMBAT to "Combate", SessionAreaTab.RESOURCES to "Recursos").forEach { (tab, label) ->
             TextButton(onClick = { onSelect(tab) }) {
-                Text(label, color = if (selected == tab) DndGold else MaterialTheme.colorScheme.onSurfaceVariant,
+                Text(label, color = if (selected == tab) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant,
                     fontWeight = if (selected == tab) FontWeight.Bold else FontWeight.Normal)
             }
         }
@@ -204,7 +203,7 @@ private fun ModeSelectContent(
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
-            Icon(Icons.Default.Shield, contentDescription = null, tint = DndGold, modifier = Modifier.size(28.dp))
+            Icon(Icons.Default.Shield, contentDescription = null, tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(28.dp))
             Spacer(modifier = Modifier.height(8.dp))
             Text("Sou o Mestre", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
             Text(
@@ -225,7 +224,7 @@ private fun ModeSelectContent(
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
-            Icon(Icons.Default.Person, contentDescription = null, tint = DndGold, modifier = Modifier.size(28.dp))
+            Icon(Icons.Default.Person, contentDescription = null, tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(28.dp))
             Spacer(modifier = Modifier.height(8.dp))
             Text("Sou Jogador", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
             Text(
@@ -279,7 +278,7 @@ private fun DmHostContent(viewModel: SessionViewModel, characterViewModel: Chara
                     Spacer(modifier = Modifier.height(16.dp))
                     Text("As mensagens privadas ficam disponíveis no botão Chat sobre a ficha.", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                     Spacer(modifier = Modifier.height(16.dp))
-                    OutlinedButton(onClick = { showEndConfirmation = true }) { Text("Encerrar sessão", color = DndCrimson) }
+                    OutlinedButton(onClick = { showEndConfirmation = true }) { Text("Encerrar sessão", color = MaterialTheme.colorScheme.error) }
                     Spacer(modifier = Modifier.height(20.dp))
                     NpcManagementSection(characterViewModel)
                 }
@@ -397,7 +396,7 @@ private fun CombatSection(
 
     Column {
         Row(verticalAlignment = Alignment.CenterVertically) {
-            Icon(Icons.Default.Shield, contentDescription = null, tint = DndGold, modifier = Modifier.size(20.dp))
+            Icon(Icons.Default.Shield, contentDescription = null, tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(20.dp))
             Spacer(modifier = Modifier.width(6.dp))
             Text("Combate", fontWeight = FontWeight.Bold)
         }
@@ -673,7 +672,7 @@ private fun CombatTracker(
                 }
                 Spacer(modifier = Modifier.width(8.dp))
                 OutlinedButton(onClick = onEndCombat) {
-                    Text("Encerrar combate", color = DndCrimson)
+                    Text("Encerrar combate", color = MaterialTheme.colorScheme.error)
                 }
             }
         }
@@ -692,7 +691,7 @@ private fun PendingRequestsSection(
 ) {
     Column {
         Row(verticalAlignment = Alignment.CenterVertically) {
-            Icon(Icons.Default.NotificationsActive, contentDescription = null, tint = DndGold, modifier = Modifier.size(20.dp))
+            Icon(Icons.Default.NotificationsActive, contentDescription = null, tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(20.dp))
             Spacer(modifier = Modifier.width(6.dp))
             Text("Pedidos pendentes (${requests.size})", fontWeight = FontWeight.Bold)
         }
@@ -706,7 +705,7 @@ private fun PendingRequestsSection(
                     Row {
                         Button(onClick = { onApprove(request.id) }) { Text("Aprovar") }
                         Spacer(modifier = Modifier.width(8.dp))
-                        OutlinedButton(onClick = { onDeny(request.id) }) { Text("Negar", color = DndCrimson) }
+                        OutlinedButton(onClick = { onDeny(request.id) }) { Text("Negar", color = MaterialTheme.colorScheme.error) }
                     }
                 }
             }
@@ -729,7 +728,7 @@ private fun LootChestSection(
 ) {
     Column {
         Row(verticalAlignment = Alignment.CenterVertically) {
-            Icon(Icons.Default.Inventory2, contentDescription = null, tint = DndGold, modifier = Modifier.size(20.dp))
+            Icon(Icons.Default.Inventory2, contentDescription = null, tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(20.dp))
             Spacer(modifier = Modifier.width(6.dp))
             Text("Baú de loot", fontWeight = FontWeight.Bold)
         }
@@ -760,7 +759,7 @@ private fun LootChestSection(
                             )
                         }
                         if (isDm && onRemoveItem != null) {
-                            TextButton(onClick = { onRemoveItem(item.id) }) { Text("Remover", color = DndCrimson) }
+                            TextButton(onClick = { onRemoveItem(item.id) }) { Text("Remover", color = MaterialTheme.colorScheme.error) }
                         } else if (!isDm && onRequestTake != null) {
                             Button(onClick = { onRequestTake(item) }) { Text("Pegar") }
                         }
@@ -937,7 +936,7 @@ private fun DmShopSection(
             }
             Spacer(modifier = Modifier.height(8.dp))
             OutlinedButton(onClick = onCloseShop) {
-                Text("Fechar loja", color = DndCrimson)
+                Text("Fechar loja", color = MaterialTheme.colorScheme.error)
             }
         }
     }
@@ -1217,14 +1216,14 @@ private fun PlayerJoinContent(viewModel: SessionViewModel, characterViewModel: C
         }
         is PlayerSessionUiState.Connecting -> {
             Row(verticalAlignment = Alignment.CenterVertically) {
-                CircularProgressIndicator(color = DndGold, modifier = Modifier.size(22.dp))
+                CircularProgressIndicator(color = MaterialTheme.colorScheme.primary, modifier = Modifier.size(22.dp))
                 Spacer(modifier = Modifier.width(12.dp))
                 Text("Conectando ao Mestre...")
             }
         }
         is PlayerSessionUiState.Connected -> {
             val feedback by viewModel.playerRequestFeedback.collectAsStateWithLifecycle()
-            Text("Conectado!", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold, color = DndGold)
+            Text("Conectado!", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.primary)
             feedback?.let { message ->
                 Spacer(modifier = Modifier.height(8.dp))
                 Row(verticalAlignment = Alignment.CenterVertically) {
@@ -1245,7 +1244,7 @@ private fun PlayerJoinContent(viewModel: SessionViewModel, characterViewModel: C
                         }
                     }
                     Spacer(modifier = Modifier.height(16.dp))
-                    OutlinedButton(onClick = { viewModel.leaveSession() }) { Text("Sair da sessão", color = DndCrimson) }
+                    OutlinedButton(onClick = { viewModel.leaveSession() }) { Text("Sair da sessão", color = MaterialTheme.colorScheme.error) }
                 }
                 SessionAreaTab.COMBAT -> {
                     val combat = s.combat
@@ -1696,7 +1695,7 @@ private fun CharacterPicker(
 private fun ParticipantRoster(participants: List<Participant>, characters: Map<String, CharacterEntity>) {
     Column {
         Row(verticalAlignment = Alignment.CenterVertically) {
-            Icon(Icons.Default.Groups, contentDescription = null, tint = DndGold, modifier = Modifier.size(20.dp))
+            Icon(Icons.Default.Groups, contentDescription = null, tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(20.dp))
             Spacer(modifier = Modifier.width(6.dp))
             Text("Participantes (${participants.size})", fontWeight = FontWeight.Bold)
         }
@@ -1734,13 +1733,13 @@ private fun ParticipantRoster(participants: List<Participant>, characters: Map<S
                             Text(
                                 if (participant.role == ParticipantRole.DM) "Mestre" else "Jogador",
                                 style = MaterialTheme.typography.labelSmall,
-                                color = if (participant.role == ParticipantRole.DM) DndGold else MaterialTheme.colorScheme.onSurfaceVariant
+                                color = if (participant.role == ParticipantRole.DM) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant
                             )
                             if (!participant.connected) {
                                 Text(
                                     "Desconectado",
                                     style = MaterialTheme.typography.labelSmall,
-                                    color = DndCrimson
+                                    color = MaterialTheme.colorScheme.error
                                 )
                             }
                         }

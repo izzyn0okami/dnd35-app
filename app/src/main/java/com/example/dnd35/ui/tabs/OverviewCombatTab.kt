@@ -391,7 +391,7 @@ fun OverviewCombatTab(
                                         }
                                         if (detail.isFavored) {
                                             Spacer(modifier = Modifier.width(4.dp))
-                                            Icon(Icons.Default.Star, contentDescription = "Favorecida", tint = DndGold, modifier = Modifier.size(14.dp))
+                                            Icon(Icons.Default.Star, contentDescription = "Favorecida", tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(14.dp))
                                         }
                                     }
                                     Text(
@@ -428,7 +428,7 @@ fun OverviewCombatTab(
                             Icon(
                                 Icons.Default.Info,
                                 contentDescription = null,
-                                tint = if (penalty.hasPenalty) DndCrimson else DndHpGreen,
+                                tint = if (penalty.hasPenalty) MaterialTheme.colorScheme.error else DndHpGreen,
                                 modifier = Modifier.size(16.dp)
                             )
                             Spacer(modifier = Modifier.width(6.dp))
@@ -504,7 +504,7 @@ fun OverviewCombatTab(
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Row(verticalAlignment = Alignment.CenterVertically) {
-                            Icon(Icons.Default.Shield, contentDescription = null, tint = DndGold)
+                            Icon(Icons.Default.Shield, contentDescription = null, tint = MaterialTheme.colorScheme.primary)
                             Spacer(modifier = Modifier.width(6.dp))
                             Text("Classe de Armadura (CA)", fontWeight = FontWeight.Bold, style = MaterialTheme.typography.titleMedium)
                         }
@@ -542,7 +542,7 @@ fun OverviewCombatTab(
                         Text(
                             "Penalidade de Armadura total: ${stats.armorCheckPenalty} (aplicada às perícias físicas)",
                             style = MaterialTheme.typography.labelSmall,
-                            color = DndCrimson,
+                            color = MaterialTheme.colorScheme.error,
                             fontWeight = FontWeight.Bold
                         )
                     }
@@ -613,7 +613,7 @@ fun OverviewCombatTab(
                         stats.encumbrance.label,
                         fontWeight = FontWeight.Bold,
                         style = MaterialTheme.typography.bodyMedium,
-                        color = if (stats.encumbrance.armorCheckPenalty < 0) DndCrimson else MaterialTheme.colorScheme.onSurfaceVariant
+                        color = if (stats.encumbrance.armorCheckPenalty < 0) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.onSurfaceVariant
                     )
                 }
             }
@@ -856,7 +856,7 @@ fun AbilityCard(data: AbilityData, modifier: Modifier = Modifier, onClick: () ->
                 text = modStr,
                 style = MaterialTheme.typography.titleLarge,
                 fontWeight = FontWeight.ExtraBold,
-                color = if (data.mod >= 0) DndHpGreen else DndCrimson
+                color = if (data.mod >= 0) DndHpGreen else MaterialTheme.colorScheme.error
             )
             Text(
                 text = "${data.total}",

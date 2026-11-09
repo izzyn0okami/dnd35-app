@@ -35,7 +35,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.ui.theme.DndCrimson
-import com.example.ui.theme.DndGold
 import com.example.ui.theme.DndHpGreen
 import kotlin.random.Random
 
@@ -57,7 +56,7 @@ fun DiceRollDialog(
         onDismissRequest = onDismiss,
         title = {
             Row(verticalAlignment = Alignment.CenterVertically) {
-                Icon(Icons.Default.Casino, contentDescription = null, tint = DndGold, modifier = Modifier.size(28.dp))
+                Icon(Icons.Default.Casino, contentDescription = null, tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(28.dp))
                 Spacer(modifier = Modifier.width(8.dp))
                 Text(actionTitle, fontWeight = FontWeight.Bold)
             }
@@ -83,8 +82,8 @@ fun DiceRollDialog(
                             3.dp,
                             when {
                                 isNat20 -> DndHpGreen
-                                isNat1 -> DndCrimson
-                                else -> DndGold
+                                isNat1 -> MaterialTheme.colorScheme.error
+                                else -> MaterialTheme.colorScheme.primary
                             },
                             CircleShape
                         ),
@@ -97,7 +96,7 @@ fun DiceRollDialog(
                             fontWeight = FontWeight.ExtraBold,
                             color = when {
                                 isNat20 -> DndHpGreen
-                                isNat1 -> DndCrimson
+                                isNat1 -> MaterialTheme.colorScheme.error
                                 else -> MaterialTheme.colorScheme.primary
                             }
                         )
@@ -119,7 +118,7 @@ fun DiceRollDialog(
                         if (isAttackRoll) "⚠ 1 NATURAL! FALHA CRÍTICA! ⚠" else "⚠ 1 NATURAL! ⚠",
                         style = MaterialTheme.typography.titleMedium,
                         fontWeight = FontWeight.Bold,
-                        color = DndCrimson
+                        color = MaterialTheme.colorScheme.error
                     )
                 }
 

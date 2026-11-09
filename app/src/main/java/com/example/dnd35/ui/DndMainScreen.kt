@@ -207,7 +207,7 @@ fun DndMainScreen(
                                     Text(
                                         text = "${activeCharacter?.characterClass} Nv ${activeCharacter?.level} • Salvamento Automático",
                                         style = MaterialTheme.typography.labelSmall,
-                                        color = DndGold
+                                        color = MaterialTheme.colorScheme.primary
                                     )
                                 }
                             }
@@ -241,9 +241,9 @@ fun DndMainScreen(
                             DropdownMenuItem(
                                 text = {
                                     Row(verticalAlignment = Alignment.CenterVertically) {
-                                        Icon(Icons.Default.Add, contentDescription = null, tint = DndGold, modifier = Modifier.size(18.dp))
+                                        Icon(Icons.Default.Add, contentDescription = null, tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(18.dp))
                                         Spacer(modifier = Modifier.width(6.dp))
-                                        Text("Criar Novo Personagem", color = DndGold, fontWeight = FontWeight.Bold)
+                                        Text("Criar Novo Personagem", color = MaterialTheme.colorScheme.primary, fontWeight = FontWeight.Bold)
                                     }
                                 },
                                 onClick = {
@@ -264,7 +264,7 @@ fun DndMainScreen(
                             Icon(
                                 Icons.Default.Wifi,
                                 contentDescription = "Sessão de Mesa",
-                                tint = DndGold
+                                tint = MaterialTheme.colorScheme.primary
                             )
                         }
                     }
@@ -281,7 +281,7 @@ fun DndMainScreen(
                         Icon(
                             Icons.Default.PictureAsPdf,
                             contentDescription = "Exportar PDF",
-                            tint = DndGold
+                            tint = MaterialTheme.colorScheme.primary
                         )
                     }
 
@@ -392,9 +392,9 @@ fun DndMainScreen(
                         DropdownMenuItem(
                             text = {
                                 Row(verticalAlignment = Alignment.CenterVertically) {
-                                    Icon(Icons.Default.Delete, contentDescription = null, tint = DndCrimson, modifier = Modifier.size(18.dp))
+                                    Icon(Icons.Default.Delete, contentDescription = null, tint = MaterialTheme.colorScheme.error, modifier = Modifier.size(18.dp))
                                     Spacer(modifier = Modifier.width(8.dp))
-                                    Text("Excluir Personagem", color = DndCrimson)
+                                    Text("Excluir Personagem", color = MaterialTheme.colorScheme.error)
                                 }
                             },
                             onClick = {
@@ -463,7 +463,7 @@ fun DndMainScreen(
                     Icon(
                         Icons.Default.Shield,
                         contentDescription = null,
-                        tint = DndGold,
+                        tint = MaterialTheme.colorScheme.primary,
                         modifier = Modifier.size(48.dp)
                     )
                     Spacer(modifier = Modifier.height(16.dp))
@@ -491,7 +491,7 @@ fun DndMainScreen(
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    CircularProgressIndicator(color = DndGold)
+                    CircularProgressIndicator(color = MaterialTheme.colorScheme.primary)
                     Spacer(modifier = Modifier.height(16.dp))
                     Text("Carregando Grimório D&D 3.5...")
                 }

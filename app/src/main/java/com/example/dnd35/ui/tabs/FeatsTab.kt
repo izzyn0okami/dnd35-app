@@ -46,8 +46,6 @@ import com.example.dnd35.model.FeatPrerequisiteChecker
 import com.example.dnd35.model.FeatPrerequisiteStatus
 import com.example.dnd35.ui.dialogs.AddEditFeatDialog
 import com.example.dnd35.viewmodel.CharacterViewModel
-import com.example.ui.theme.DndCrimson
-import com.example.ui.theme.DndGold
 
 @Composable
 fun FeatsTab(
@@ -76,7 +74,7 @@ fun FeatsTab(
                     modifier = Modifier.padding(14.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Icon(Icons.Default.MilitaryTech, contentDescription = null, tint = DndGold, modifier = Modifier.size(28.dp))
+                    Icon(Icons.Default.MilitaryTech, contentDescription = null, tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(28.dp))
                     Spacer(modifier = Modifier.width(10.dp))
                     Column {
                         Text(
@@ -196,7 +194,7 @@ fun FeatsTab(
                                     Icon(Icons.Default.Edit, contentDescription = "Editar ${feat.name}", modifier = Modifier.size(18.dp), tint = MaterialTheme.colorScheme.primary)
                                 }
                                 IconButton(onClick = { pendingFeatDeleteId = feat.id }, modifier = Modifier.size(48.dp)) {
-                                    Icon(Icons.Default.Delete, contentDescription = "Excluir ${feat.name}", modifier = Modifier.size(18.dp), tint = DndCrimson)
+                                    Icon(Icons.Default.Delete, contentDescription = "Excluir ${feat.name}", modifier = Modifier.size(18.dp), tint = MaterialTheme.colorScheme.error)
                                 }
                             }
                         }
