@@ -20,7 +20,6 @@ class LatestCalculationGateTest {
         val request = gate.begin()
         assertTrue(gate.isCurrent(request))
     }
-}
 
     @Test
     fun sameCharacterKeepsPreviouslyCalculatedStatsDuringRefresh() {
