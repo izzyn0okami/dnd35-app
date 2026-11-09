@@ -27,7 +27,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.foundation.layout.size
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.example.dnd35.ui.icons.SpellSchoolIcon
+import com.example.dnd35.ui.icons.SpellIcon
 import com.example.dnd35.model.CalculatedCharacterStats
 import com.example.dnd35.model.CharacterSpell
 import com.example.dnd35.model.ClericDomainRules
@@ -98,7 +98,7 @@ fun SpellDetailDialog(
                 verticalArrangement = Arrangement.spacedBy(4.dp)
             ) {
                 Row(verticalAlignment = androidx.compose.ui.Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                    SpellSchoolIcon(school = spell.school, modifier = Modifier.size(34.dp))
+                    SpellIcon(spellName = spell.name, school = spell.school, modifier = Modifier.size(34.dp))
                     Text(spell.school, style = MaterialTheme.typography.labelMedium, color = DndArcaneBlue, fontWeight = FontWeight.Bold)
                 }
                 val levels = buildList {
