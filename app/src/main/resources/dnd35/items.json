@@ -440,6 +440,446 @@
     "icon": "wingfoot"
   },
   {
+    "name": "Anel de Queda Suave",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Dedo (Anel 1)",
+    "weightLb": 0.1,
+    "costGp": 2200,
+    "damageOrAc": "-",
+    "properties": "Anel mágico; Tabela 7–18 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "ring"
+  },
+  {
+    "name": "Anel de Escalada",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Dedo (Anel 1)",
+    "weightLb": 0.1,
+    "costGp": 2500,
+    "damageOrAc": "-",
+    "properties": "Anel mágico; Tabela 7–18 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "ring"
+  },
+  {
+    "name": "Anel de Salto",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Dedo (Anel 1)",
+    "weightLb": 0.1,
+    "costGp": 2500,
+    "damageOrAc": "-",
+    "properties": "Anel mágico; Tabela 7–18 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "ring"
+  },
+  {
+    "name": "Anel de Natação",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Dedo (Anel 1)",
+    "weightLb": 0.1,
+    "costGp": 2500,
+    "damageOrAc": "-",
+    "properties": "Anel mágico; Tabela 7–18 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "ring"
+  },
+  {
+    "name": "Anel de Contramágica",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Dedo (Anel 1)",
+    "weightLb": 0.1,
+    "costGp": 4000,
+    "damageOrAc": "-",
+    "properties": "Anel mágico; Tabela 7–18 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "ring"
+  },
+  {
+    "name": "Anel de Escudo Mental",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Dedo (Anel 1)",
+    "weightLb": 0.1,
+    "costGp": 8000,
+    "damageOrAc": "-",
+    "properties": "Anel mágico; Tabela 7–18 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "ring"
+  },
+  {
+    "name": "Anel de Proteção +2",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Dedo (Anel 1)",
+    "weightLb": 0.1,
+    "costGp": 8000,
+    "damageOrAc": "+2 Deflexão",
+    "properties": "Concede +2 de bônus de deflexão na CA; Tabela 7–18 do Livro do Mestre",
+    "icon": "ring"
+  },
+  {
+    "name": "Anel de Escudo de Energia",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Dedo (Anel 1)",
+    "weightLb": 0.1,
+    "costGp": 8500,
+    "damageOrAc": "-",
+    "properties": "Anel mágico; Tabela 7–18 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "ring"
+  },
+  {
+    "name": "Anel de Aríete",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Dedo (Anel 1)",
+    "weightLb": 0.1,
+    "costGp": 8600,
+    "damageOrAc": "-",
+    "properties": "Anel mágico; Tabela 7–18 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "ring"
+  },
+  {
+    "name": "Anel de Escalada Aprimorado",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Dedo (Anel 1)",
+    "weightLb": 0.1,
+    "costGp": 10000,
+    "damageOrAc": "-",
+    "properties": "Anel mágico; Tabela 7–18 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "ring"
+  },
+  {
+    "name": "Anel de Salto Aprimorado",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Dedo (Anel 1)",
+    "weightLb": 0.1,
+    "costGp": 10000,
+    "damageOrAc": "-",
+    "properties": "Anel mágico; Tabela 7–18 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "ring"
+  },
+  {
+    "name": "Anel de Natação Aprimorado",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Dedo (Anel 1)",
+    "weightLb": 0.1,
+    "costGp": 10000,
+    "damageOrAc": "-",
+    "properties": "Anel mágico; Tabela 7–18 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "ring"
+  },
+  {
+    "name": "Anel de Cativar Animais",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Dedo (Anel 1)",
+    "weightLb": 0.1,
+    "costGp": 10800,
+    "damageOrAc": "-",
+    "properties": "Anel mágico; Tabela 7–18 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "ring"
+  },
+  {
+    "name": "Anel de Resistência a Elementos (menor)",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Dedo (Anel 1)",
+    "weightLb": 0.1,
+    "costGp": 12000,
+    "damageOrAc": "-",
+    "properties": "Anel mágico; Tabela 7–18 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "ring"
+  },
+  {
+    "name": "Anel de Poder do Camaleão",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Dedo (Anel 1)",
+    "weightLb": 0.1,
+    "costGp": 12700,
+    "damageOrAc": "-",
+    "properties": "Anel mágico; Tabela 7–18 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "ring"
+  },
+  {
+    "name": "Anel de Caminhar na Água",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Dedo (Anel 1)",
+    "weightLb": 0.1,
+    "costGp": 15000,
+    "damageOrAc": "-",
+    "properties": "Anel mágico; Tabela 7–18 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "ring"
+  },
+  {
+    "name": "Anel de Proteção +3",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Dedo (Anel 1)",
+    "weightLb": 0.1,
+    "costGp": 18000,
+    "damageOrAc": "+3 Deflexão",
+    "properties": "Concede +3 de bônus de deflexão na CA; Tabela 7–18 do Livro do Mestre",
+    "icon": "ring"
+  },
+  {
+    "name": "Anel de Armazenar Magias (menor)",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Dedo (Anel 1)",
+    "weightLb": 0.1,
+    "costGp": 18000,
+    "damageOrAc": "-",
+    "properties": "Anel mágico; Tabela 7–18 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "ring"
+  },
+  {
+    "name": "Anel de Invisibilidade",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Dedo (Anel 1)",
+    "weightLb": 0.1,
+    "costGp": 20000,
+    "damageOrAc": "-",
+    "properties": "Anel mágico; Tabela 7–18 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "ring"
+  },
+  {
+    "name": "Anel Arcano (I)",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Dedo (Anel 1)",
+    "weightLb": 0.1,
+    "costGp": 20000,
+    "damageOrAc": "-",
+    "properties": "Anel mágico; Tabela 7–18 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "ring"
+  },
+  {
+    "name": "Anel de Evasão",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Dedo (Anel 1)",
+    "weightLb": 0.1,
+    "costGp": 25000,
+    "damageOrAc": "-",
+    "properties": "Anel mágico; Tabela 7–18 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "ring"
+  },
+  {
+    "name": "Anel de Visão Contínua",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Dedo (Anel 1)",
+    "weightLb": 0.1,
+    "costGp": 25000,
+    "damageOrAc": "-",
+    "properties": "Anel mágico; Tabela 7–18 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "ring"
+  },
+  {
+    "name": "Anel de Movimento Súbito",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Dedo (Anel 1)",
+    "weightLb": 0.1,
+    "costGp": 27000,
+    "damageOrAc": "-",
+    "properties": "Anel mágico; Tabela 7–18 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "ring"
+  },
+  {
+    "name": "Anel de Resistência a Elementos (maior)",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Dedo (Anel 1)",
+    "weightLb": 0.1,
+    "costGp": 28000,
+    "damageOrAc": "-",
+    "properties": "Anel mágico; Tabela 7–18 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "ring"
+  },
+  {
+    "name": "Anel de Proteção +4",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Dedo (Anel 1)",
+    "weightLb": 0.1,
+    "costGp": 32000,
+    "damageOrAc": "+4 Deflexão",
+    "properties": "Concede +4 de bônus de deflexão na CA; Tabela 7–18 do Livro do Mestre",
+    "icon": "ring"
+  },
+  {
+    "name": "Anel Arcano (II)",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Dedo (Anel 1)",
+    "weightLb": 0.1,
+    "costGp": 40000,
+    "damageOrAc": "-",
+    "properties": "Anel mágico; Tabela 7–18 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "ring"
+  },
+  {
+    "name": "Anel de Movimentação Livre",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Dedo (Anel 1)",
+    "weightLb": 0.1,
+    "costGp": 40000,
+    "damageOrAc": "-",
+    "properties": "Anel mágico; Tabela 7–18 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "ring"
+  },
+  {
+    "name": "Anel de Resistência a Elementos (superior)",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Dedo (Anel 1)",
+    "weightLb": 0.1,
+    "costGp": 44000,
+    "damageOrAc": "-",
+    "properties": "Anel mágico; Tabela 7–18 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "ring"
+  },
+  {
+    "name": "Anel de Escudo Aliado (par)",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Dedo (Anel 1)",
+    "weightLb": 0.1,
+    "costGp": 50000,
+    "damageOrAc": "-",
+    "properties": "Anel mágico; Tabela 7–18 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "ring"
+  },
+  {
+    "name": "Anel de Proteção +5",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Dedo (Anel 1)",
+    "weightLb": 0.1,
+    "costGp": 50000,
+    "damageOrAc": "+5 Deflexão",
+    "properties": "Concede +5 de bônus de deflexão na CA; Tabela 7–18 do Livro do Mestre",
+    "icon": "ring"
+  },
+  {
+    "name": "Anel de Estrelas Cadentes",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Dedo (Anel 1)",
+    "weightLb": 0.1,
+    "costGp": 50000,
+    "damageOrAc": "-",
+    "properties": "Anel mágico; Tabela 7–18 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "ring"
+  },
+  {
+    "name": "Anel de Armazenar Magias",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Dedo (Anel 1)",
+    "weightLb": 0.1,
+    "costGp": 50000,
+    "damageOrAc": "-",
+    "properties": "Anel mágico; Tabela 7–18 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "ring"
+  },
+  {
+    "name": "Anel Arcano (III)",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Dedo (Anel 1)",
+    "weightLb": 0.1,
+    "costGp": 70000,
+    "damageOrAc": "-",
+    "properties": "Anel mágico; Tabela 7–18 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "ring"
+  },
+  {
+    "name": "Anel de Telecinésia",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Dedo (Anel 1)",
+    "weightLb": 0.1,
+    "costGp": 75000,
+    "damageOrAc": "-",
+    "properties": "Anel mágico; Tabela 7–18 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "ring"
+  },
+  {
+    "name": "Anel de Regeneração",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Dedo (Anel 1)",
+    "weightLb": 0.1,
+    "costGp": 90000,
+    "damageOrAc": "-",
+    "properties": "Anel mágico; Tabela 7–18 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "ring"
+  },
+  {
+    "name": "Anel de Três Desejos",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Dedo (Anel 1)",
+    "weightLb": 0.1,
+    "costGp": 97950,
+    "damageOrAc": "-",
+    "properties": "Anel mágico; Tabela 7–18 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "ring"
+  },
+  {
+    "name": "Anel de Refletir Magias",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Dedo (Anel 1)",
+    "weightLb": 0.1,
+    "costGp": 98280,
+    "damageOrAc": "-",
+    "properties": "Anel mágico; Tabela 7–18 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "ring"
+  },
+  {
+    "name": "Anel Arcano (IV)",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Dedo (Anel 1)",
+    "weightLb": 0.1,
+    "costGp": 100000,
+    "damageOrAc": "-",
+    "properties": "Anel mágico; Tabela 7–18 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "ring"
+  },
+  {
+    "name": "Anel de Convocar Djinn",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Dedo (Anel 1)",
+    "weightLb": 0.1,
+    "costGp": 125000,
+    "damageOrAc": "-",
+    "properties": "Anel mágico; Tabela 7–18 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "ring"
+  },
+  {
+    "name": "Anel de Comandar Elemental (ar)",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Dedo (Anel 1)",
+    "weightLb": 0.1,
+    "costGp": 200000,
+    "damageOrAc": "-",
+    "properties": "Anel mágico; Tabela 7–18 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "ring"
+  },
+  {
+    "name": "Anel de Comandar Elemental (terra)",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Dedo (Anel 1)",
+    "weightLb": 0.1,
+    "costGp": 200000,
+    "damageOrAc": "-",
+    "properties": "Anel mágico; Tabela 7–18 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "ring"
+  },
+  {
+    "name": "Anel de Comandar Elemental (fogo)",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Dedo (Anel 1)",
+    "weightLb": 0.1,
+    "costGp": 200000,
+    "damageOrAc": "-",
+    "properties": "Anel mágico; Tabela 7–18 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "ring"
+  },
+  {
+    "name": "Anel de Comandar Elemental (água)",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Dedo (Anel 1)",
+    "weightLb": 0.1,
+    "costGp": 200000,
+    "damageOrAc": "-",
+    "properties": "Anel mágico; Tabela 7–18 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "ring"
+  },
+  {
+    "name": "Anel de Armazenar Magias (maior)",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Dedo (Anel 1)",
+    "weightLb": 0.1,
+    "costGp": 200000,
+    "damageOrAc": "-",
+    "properties": "Anel mágico; Tabela 7–18 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "ring"
+  },
+  {
     "name": "Mochila de Couro Reforçada",
     "category": "Itens de Aventura",
     "defaultSlot": "Mochila (Não Equipado)",

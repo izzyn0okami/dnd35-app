@@ -137,3 +137,20 @@ Decisões e limitações:
 - Duas correções de erros de impressão/extração do PDF: "Roupa encantada + 7 (óleo)" → `+1`
   (o preço, 750 PO, e a sequência +2…+5 só fecham com +1), e "Ajuda (poção) (poção)" →
   Ajuda. "Proteção contra elementos (tipo)", sem marcação no livro, foi tratada como poção.
+
+### Anéis do Livro do Mestre (2026-11-09)
+
+A Tabela 7–18 (Anéis, Livro do Mestre 3.5 brasileiro, p. 233) foi importada para
+`items.json`: 44 anéis novos em "Itens Mágicos" (46 linhas da tabela; Proteção +1 e
+Sustento já existiam). Cada anel traz o preço de mercado da tabela, espaço "Dedo (Anel 1)"
+e peso 0,1 lb (convenção dos anéis que já estavam no catálogo; o livro diz só que anéis não
+têm peso considerável). Os anéis de Proteção +2 a +5 têm o bônus de deflexão preenchido.
+Os demais ficam com descrição genérica apontando para o livro: a descrição estruturada de
+cada anel é parte da fase de base de dados detalhada, ainda não feita.
+
+Observações:
+- A coluna "Médio" da tabela impressa repete 50–51 em dois anéis (Cativar animais 47–51 e
+  Resistência a elementos menor 50–56); é erro do livro e não afeta o catálogo, que não usa
+  as faixas de rolagem.
+- Os nomes seguem a tabela, inclusive "Escalada/Salto/Natação aprimorado" e "Arcano (I–IV)"
+  (aqui como "Anel Arcano (I–IV)").

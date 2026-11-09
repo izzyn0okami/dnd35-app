@@ -50,4 +50,15 @@ class PresetEquipmentCatalogTest {
         assertTrue(byName.containsKey("Óleo de Levitação"))
         assertTrue(byName.containsKey("Óleo de Roupa Encantada +1"))
     }
+
+    @Test
+    fun catalogContainsDungeonMasterGuideRings() {
+        val byName = Dnd35Rules.PRESET_ITEMS.associateBy { it.name }
+        assertEquals(50000f, byName.getValue("Anel de Proteção +5").costGp, 0f)
+        assertEquals("+3 Deflexão", byName.getValue("Anel de Proteção +3").damageOrAc)
+        assertEquals(200000f, byName.getValue("Anel de Comandar Elemental (fogo)").costGp, 0f)
+        assertEquals(97950f, byName.getValue("Anel de Três Desejos").costGp, 0f)
+        assertTrue(byName.containsKey("Anel Arcano (IV)"))
+        assertTrue(byName.values.filter { it.name.startsWith("Anel ") }.all { it.defaultSlot.startsWith("Dedo") })
+    }
 }
