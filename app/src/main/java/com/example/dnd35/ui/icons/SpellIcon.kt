@@ -15,7 +15,6 @@ private val SPELL_ICON_OVERRIDES = mapOf(
     // Fogo, calor e luz intensa
     "mãos flamejantes" to "fire-bottle",
     "bola de fogo" to "fire-bottle",
-    "bola de fogo controlável" to "fire-bottle",
     "muralha de fogo" to "fire-bottle",
     "coluna de chamas" to "fire-bottle",
     "tempestade de fogo" to "fire-bottle",
@@ -85,9 +84,7 @@ private val SPELL_ICON_OVERRIDES = mapOf(
     "imobilizar pessoa em massa" to "handcuffs",
     "imobilizar animal" to "handcuffs",
     "imobilizar monstro" to "handcuffs",
-    "imobilizar monstro em massa" to "handcuffs",
     "prisão" to "crossed-chains",
-    "aprisionamento" to "crossed-chains",
     "prender a alma" to "crossed-chains",
     "armadilha" to "lockpicks",
 
@@ -134,7 +131,6 @@ private val SPELL_ICON_OVERRIDES = mapOf(
     "disfarçar-se" to "domino-mask",
     "enfeitiçar pessoa" to "domino-mask",
     "enfeitiçar animal" to "domino-mask",
-    "enfeitiçar monstro em massa" to "domino-mask",
     "metamorfose" to "fairy-wand",
     "forma animal" to "fairy-wand",
     "alterar forma" to "fairy-wand",
@@ -168,7 +164,6 @@ private val SPELL_ICON_OVERRIDES = mapOf(
     // Magias de arma, som, tempo e invocação
     "arma espiritual" to "rune-sword",
     "espada sagrada" to "rune-sword",
-    "espada de mordenkainen" to "rune-sword",
     "barreira de lâminas" to "broadsword",
     "arma mágica" to "rune-sword",
     "arma mágica maior" to "rune-sword",
@@ -257,11 +252,6 @@ private val SPELL_ICON_OVERRIDES = mapOf(
     "punho cerrado de bigby, o" to "mailed-fist",
     "padrão cintilante" to "glowing-artifact",
     "símbolo da insanidade" to "skull-crossed-bones",
-    "invocar criaturas ii" to "magic-lamp",
-    "invocar criaturas iii" to "magic-lamp",
-    "invocar criaturas iv" to "magic-lamp",
-    "invocar criaturas v" to "magic-lamp",
-    "invocar criaturas vi" to "magic-lamp",
     "ciclone" to "thunderball",
     "controlar plantas" to "herbs-bundle",
     "inverter a gravidade" to "wingfoot",
@@ -350,6 +340,10 @@ private val SPELL_ICON_OVERRIDES = mapOf(
     "doença plena" to "skull-crossed-bones",
     "repelir madeira" to "herbs-bundle"
 )
+
+/** Nomes expostos para validar a cobertura do mapa nos testes. */
+internal val spellIconOverrideNames: Set<String>
+    get() = SPELL_ICON_OVERRIDES.keys
 
 /** Retorna apenas associações específicas; null significa usar o ícone da escola. */
 internal fun spellIconKey(spellName: String): String? =
