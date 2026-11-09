@@ -2700,6 +2700,346 @@
     "icon": "spiked-shield"
   },
   {
+    "name": "Flecha do Sono",
+    "category": "Armas",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.1,
+    "costGp": 132,
+    "damageOrAc": "Flecha +1",
+    "properties": "Flecha +1; dano não letal e teste de Vontade CD 11 ou adormece; Tabela 7–16 do Livro do Mestre",
+    "icon": "arrow-flights"
+  },
+  {
+    "name": "Virote Gritante",
+    "category": "Armas",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.1,
+    "costGp": 267,
+    "damageOrAc": "Virote +2",
+    "properties": "Virote +2; inimigos a até 6 m do trajeto: teste de resistência CD 14 ou ficam abalados; Tabela 7–16 do Livro do Mestre",
+    "icon": "broadhead-arrow"
+  },
+  {
+    "name": "Adaga de Prata (Obra-Prima)",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 1.1,
+    "costGp": 322,
+    "damageOrAc": "1d4 (19-20/x2)",
+    "properties": "Adaga de prata alquímica (obra-prima, +1 nos ataques); item mundano; Tabela 7–16 do Livro do Mestre",
+    "icon": "plain-dagger"
+  },
+  {
+    "name": "Espada Longa de Ferro Frio (Obra-Prima)",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 4.4,
+    "costGp": 330,
+    "damageOrAc": "1d8 (19-20/x2)",
+    "properties": "Espada longa de ferro frio (obra-prima, +1 nos ataques); item mundano; Tabela 7–16 do Livro do Mestre",
+    "icon": "broadsword"
+  },
+  {
+    "name": "Azagaia dos Relâmpagos",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 2.2,
+    "costGp": 1500,
+    "damageOrAc": "5d6 elétrico",
+    "properties": "Vira relâmpago de 5d6 ao ser arremessada (Reflexos CD 14 reduz à metade); consumida no ataque; Tabela 7–16 do Livro do Mestre",
+    "icon": "barbed-spear"
+  },
+  {
+    "name": "Flecha Assassina",
+    "category": "Armas",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.1,
+    "costGp": 2282,
+    "damageOrAc": "Flecha +1",
+    "properties": "Flecha +1 sintonizada com um tipo de criatura (inimigo designado): Fortitude CD 20 ou morre; Tabela 7–16 do Livro do Mestre",
+    "icon": "arrow-flights"
+  },
+  {
+    "name": "Adaga de Adamante",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 1.1,
+    "costGp": 3002,
+    "damageOrAc": "1d4 (19-20/x2)",
+    "properties": "Adaga de adamante (obra-prima, +1 nos ataques); ignora dureza inferior a 20; item mundano; Tabela 7–16 do Livro do Mestre",
+    "icon": "plain-dagger"
+  },
+  {
+    "name": "Machado de Combate de Adamante",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 6.6,
+    "costGp": 3010,
+    "damageOrAc": "1d8 (x3)",
+    "properties": "Machado de batalha de adamante (obra-prima, +1 nos ataques); ignora dureza inferior a 20; item mundano; Tabela 7–16 do Livro do Mestre",
+    "icon": "battle-axe"
+  },
+  {
+    "name": "Flecha da Morte (Maior)",
+    "category": "Armas",
+    "defaultSlot": "Mochila (Não Equipado)",
+    "weightLb": 0.1,
+    "costGp": 4057,
+    "damageOrAc": "Flecha +1",
+    "properties": "Como a flecha assassina, mas a CD de Fortitude é 23 (no livro também chamada flecha assassina maior); Tabela 7–16 do Livro do Mestre",
+    "icon": "arrow-flights"
+  },
+  {
+    "name": "Estilhaçadora",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 4.4,
+    "costGp": 4315,
+    "damageOrAc": "1d8+1 (19-20/x2)",
+    "properties": "Espada longa +1 (o PDF diz \"adaga longa\", mas o peso de 2 kg bate com espada longa); +4 para Separar com Separar Aprimorado; Tabela 7–16 do Livro do Mestre",
+    "icon": "broadsword"
+  },
+  {
+    "name": "Adaga Venenosa",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 1.1,
+    "costGp": 8302,
+    "damageOrAc": "1d4+1 (19-20/x2)",
+    "properties": "Adaga +1; uma vez por dia, efeito de envenenamento (CD 14) na criatura atingida; Tabela 7–16 do Livro do Mestre",
+    "icon": "plain-dagger"
+  },
+  {
+    "name": "Tridente de Alerta",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 4.4,
+    "costGp": 10115,
+    "damageOrAc": "1d8+2 (x2)",
+    "properties": "Tridente +2; detecta predadores aquáticos a menos de 200 m; Tabela 7–16 do Livro do Mestre",
+    "icon": "magic-trident"
+  },
+  {
+    "name": "Adaga do Assassino",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 1.1,
+    "costGp": 10302,
+    "damageOrAc": "1d4+2 (19-20/x2)",
+    "properties": "Adaga +2; +1 na CD de Fortitude do ataque mortal do assassino; Tabela 7–16 do Livro do Mestre",
+    "icon": "plain-dagger"
+  },
+  {
+    "name": "Ruína dos Metamorfos",
+    "category": "Armas",
+    "defaultSlot": "Duas Mãos",
+    "weightLb": 11,
+    "costGp": 12780,
+    "damageOrAc": "1d8+1/1d8+1 (19-20/x2)",
+    "properties": "Espada de duas lâminas +1/+1 de prata alquímica; +2d6 contra metamorfos e força forma natural (Vontade CD 15); Tabela 7–16 do Livro do Mestre",
+    "icon": "bat-leth"
+  },
+  {
+    "name": "Tridente de Comandar Peixes",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 4.4,
+    "costGp": 18650,
+    "damageOrAc": "1d8+1 (x2)",
+    "properties": "Tridente +1; enfeitiça até 14 DV de animais aquáticos 3 vezes por dia (Vontade CD 16); Tabela 7–16 do Livro do Mestre",
+    "icon": "magic-trident"
+  },
+  {
+    "name": "Língua Flamejante",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 4.4,
+    "costGp": 20715,
+    "damageOrAc": "1d8+1 (19-20/x2)",
+    "properties": "Espada longa +1 da explosão flamejante; uma vez por dia, raio de chamas de 4d6 de fogo; Tabela 7–16 do Livro do Mestre",
+    "icon": "broadsword"
+  },
+  {
+    "name": "Lâmina da Sorte (0 Desejos)",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 2.2,
+    "costGp": 22060,
+    "damageOrAc": "1d6+2 (19-20/x2)",
+    "properties": "Espada curta +2; +2 de sorte nas resistências; refazer uma jogada 1 vez por dia; Tabela 7–16 do Livro do Mestre",
+    "icon": "gladius"
+  },
+  {
+    "name": "Espada da Sutileza",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 2.2,
+    "costGp": 22310,
+    "damageOrAc": "1d6+1 (19-20/x2)",
+    "properties": "Espada curta +1; +4 nos ataques e danos em ataque furtivo; Tabela 7–16 do Livro do Mestre",
+    "icon": "gladius"
+  },
+  {
+    "name": "Espada dos Planos",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 4.4,
+    "costGp": 22315,
+    "damageOrAc": "1d8+1 (19-20/x2)",
+    "properties": "Espada longa +1 no Plano Material; +2 nos Planos de Elementos; +3 no Astral/Etéreo; +4 em outros planos; Tabela 7–16 do Livro do Mestre",
+    "icon": "broadsword"
+  },
+  {
+    "name": "Ladra das Nove Vidas",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 4.4,
+    "costGp": 23057,
+    "damageOrAc": "1d8+2 (19-20/x2)",
+    "properties": "Espada longa +2 maligna; 9 usos de morte em sucesso decisivo (Fortitude CD 20); impõe 2 níveis negativos a personagens bons; Tabela 7–16 do Livro do Mestre",
+    "icon": "broadsword"
+  },
+  {
+    "name": "Espada do Furto de Vidas",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 4.4,
+    "costGp": 25715,
+    "damageOrAc": "1d8+2 (19-20/x2)",
+    "properties": "Espada longa +2 de ferro negro; nível negativo em sucesso decisivo e 1d6 PV temporários; Tabela 7–16 do Livro do Mestre",
+    "icon": "broadsword"
+  },
+  {
+    "name": "Arco do Juramento",
+    "category": "Armas",
+    "defaultSlot": "Duas Mãos",
+    "weightLb": 3,
+    "costGp": 25600,
+    "damageOrAc": "1d8+2 (x3)",
+    "properties": "Arco longo composto +2 (bônus de For +2) feito por elfos; contra o inimigo jurado vira +5 e causa +2d6; Tabela 7–16 do Livro do Mestre",
+    "icon": "bow-arrow"
+  },
+  {
+    "name": "Maça do Terror",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 8.8,
+    "costGp": 38552,
+    "damageOrAc": "-",
+    "properties": "Texto da descrição ausente no PDF extraído; consultar o Livro do Mestre; Tabela 7–16 do Livro do Mestre",
+    "icon": "flanged-mace"
+  },
+  {
+    "name": "Sorvedouro de Vidas",
+    "category": "Armas",
+    "defaultSlot": "Duas Mãos",
+    "weightLb": 24.2,
+    "costGp": 40320,
+    "damageOrAc": "1d12+1 (x3)",
+    "properties": "Machado grande +1; impõe 2 níveis negativos ao alvo e 1 ao portador a cada dano; Tabela 7–16 do Livro do Mestre",
+    "icon": "war-axe"
+  },
+  {
+    "name": "Cimitarra Silvestre",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 4.4,
+    "costGp": 47315,
+    "damageOrAc": "1d6+3 (18-20/x2)",
+    "properties": "Cimitarra +3; ao ar livre em clima temperado dá Trespassar e +1d6 de dano; Tabela 7–16 do Livro do Mestre",
+    "icon": "katana"
+  },
+  {
+    "name": "Sabre da Perfuração",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 2.2,
+    "costGp": 50320,
+    "damageOrAc": "1d6+2 (18-20/x2)",
+    "properties": "Sabre do sangramento +2; 3 vezes por dia, ataque de toque que causa 1d6 de dano de Constituição; Tabela 7–16 do Livro do Mestre",
+    "icon": "sparkling-sabre"
+  },
+  {
+    "name": "Lâmina do Sol",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 6.6,
+    "costGp": 50335,
+    "damageOrAc": "1d10+2 (19-20/x2)",
+    "properties": "Espada bastarda +2 (+4 contra o mal) que se maneja como espada curta; luz do sol 1 vez por dia; dano x3 em mortos-vivos; Tabela 7–16 do Livro do Mestre",
+    "icon": "two-handed-sword"
+  },
+  {
+    "name": "Estigma do Gelo",
+    "category": "Armas",
+    "defaultSlot": "Duas Mãos",
+    "weightLb": 8.8,
+    "costGp": 54475,
+    "damageOrAc": "2d6+3 (19-20/x2)",
+    "properties": "Espada larga congelante +3; absorve 10 de dano de fogo por rodada e apaga fogo não mágico; Tabela 7–16 do Livro do Mestre",
+    "icon": "shining-sword"
+  },
+  {
+    "name": "Martelo de Arremesso Anão",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 5.5,
+    "costGp": 60312,
+    "damageOrAc": "1d8+2 (x3)",
+    "properties": "Martelo de guerra +2 (+3 e retorno nas mãos de um anão); arremesso, +1d8 (+2d8 contra gigantes); Tabela 7–16 do Livro do Mestre",
+    "icon": "warhammer"
+  },
+  {
+    "name": "Lâmina da Sorte (1 Desejo)",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 2.2,
+    "costGp": 62360,
+    "damageOrAc": "1d6+2 (19-20/x2)",
+    "properties": "Espada curta +2; +2 de sorte nas resistências; refazer uma jogada por dia; guarda 1 desejo; Tabela 7–16 do Livro do Mestre",
+    "icon": "gladius"
+  },
+  {
+    "name": "Maça da Destruição",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 8.8,
+    "costGp": 75312,
+    "damageOrAc": "-",
+    "properties": "Texto da descrição ausente no PDF extraído; consultar o Livro do Mestre; Tabela 7–16 do Livro do Mestre",
+    "icon": "flanged-mace"
+  },
+  {
+    "name": "Lâmina da Sorte (2 Desejos)",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 2.2,
+    "costGp": 102660,
+    "damageOrAc": "1d6+2 (19-20/x2)",
+    "properties": "Espada curta +2; +2 de sorte nas resistências; refazer uma jogada por dia; guarda 2 desejos; Tabela 7–16 do Livro do Mestre",
+    "icon": "gladius"
+  },
+  {
+    "name": "Vingadora Sagrada",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 4.4,
+    "costGp": 120630,
+    "damageOrAc": "1d8+2 (19-20/x2)",
+    "properties": "Espada longa de ferro frio +2 (+5 sagrada nas mãos de um paladino); resistência à magia 5 + nível de paladino; Tabela 7–16 do Livro do Mestre",
+    "icon": "broadsword"
+  },
+  {
+    "name": "Lâmina da Sorte (3 Desejos)",
+    "category": "Armas",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 2.2,
+    "costGp": 142960,
+    "damageOrAc": "1d6+2 (19-20/x2)",
+    "properties": "Espada curta +2; +2 de sorte nas resistências; refazer uma jogada por dia; guarda 3 desejos; Tabela 7–16 do Livro do Mestre",
+    "icon": "gladius"
+  },
+  {
     "name": "Virotes de Besta (5)",
     "category": "Itens de Aventura",
     "defaultSlot": "Mochila (Não Equipado)",
