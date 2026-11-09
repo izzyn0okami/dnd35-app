@@ -304,6 +304,17 @@ ICON_GROUPS = {
         ("bed", "Cama", "acomodação"),
         ("person-in-bed", "Cama confortável", "acomodação boa"),
     ],
+
+    "Magias": [
+        ("compass", "Bússola", "direção norte orientação"),
+        ("feather", "Pena", "queda suave leveza"),
+        ("owl", "Coruja", "sabedoria animal ave"),
+        ("wasp-sting", "Vespa", "inseto ferrão repelir"),
+        ("claws", "Garras naturais", "garras arma natural ataque"),
+        ("plain-circle", "Disco de energia", "disco círculo energia flutuante"),
+        ("invisible", "Invisibilidade", "invisível transparência oculto"),
+        ("alien-bug", "Enxame insetoide", "insetos enxame criatura rastejante"),
+    ],
 }
 
 # Chaves em que o nome do arquivo existe em mais de um autor: "chave": "pasta do autor".
