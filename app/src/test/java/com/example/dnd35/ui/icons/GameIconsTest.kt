@@ -54,7 +54,28 @@ class GameIconsTest {
             "Labirinto" to "crossed-chains",
             "Mãos Mágicas" to "orb-wand",
             "Mansão Magnífica de Mordenkainen" to "camping-tent",
-            "Punho Cerrado de Bigby, O" to "mailed-fist"
+            "Punho Cerrado de Bigby, O" to "mailed-fist",
+            "Prestidigitação" to "fairy-wand",
+            "Marca Arcana" to "wax-seal",
+            "Virtude" to "heart-bottle",
+            "Queda Suave" to "wingfoot",
+            "Pedra Encantada" to "marbles",
+            "Área Escorregadia" to "oil-can",
+            "Remover Medo" to "magic-shield",
+            "Aura Mágica de Nystul" to "mirror-mirror",
+            "Recuo Acelerado" to "wingfoot",
+            "Invisibilidade Contra Animais" to "mirror-mirror",
+            "Invisibilidade Contra Mortos-Vivos" to "mirror-mirror",
+            "Reduzir Animal" to "fairy-wand",
+            "Ampliar Animais" to "hound",
+            "Caminhar em Árvores" to "herbs-bundle",
+            "Comunhão Com a Natureza" to "herbs-bundle",
+            "Dificultar Detecção" to "magic-shield",
+            "Movimentação Livre" to "wingfoot",
+            "Raio Polar" to "crystal-wand",
+            "Aliado Extra-Planar Maior" to "magic-lamp",
+            "Refugiar Itens" to "mirror-mirror",
+            "Visão" to "crystal-ball"
         )
         expected.forEach { (spell, key) ->
             assertEquals(key, spellIconKey(spell))
@@ -72,6 +93,30 @@ class GameIconsTest {
         Dnd35Rules.PRESET_SPELLS.forEach { spell ->
             val key = spellIconKey(spell.name) ?: spellSchoolIcon(spell.school)
             assertNotNull("Ícone ausente para ${spell.name}", GameIcons.find(key))
+        }
+    }
+
+    @Test
+    fun spellsWithoutUnambiguousExistingSymbolsKeepSchoolFallback() {
+        val fallbackOnly = setOf(
+            "Orientação",
+            "Intuir Direção",
+            "Servo Invisível",
+            "Presa Mágica",
+            "Disco Flutuante de Tenser",
+            "Apagar",
+            "Sabedoria da Coruja",
+            "Presa Mágica Maior",
+            "Repelir Insetos",
+            "Destruição Rastejante"
+        )
+        val catalogFallbacks = Dnd35Rules.PRESET_SPELLS
+            .filter { spellIconKey(it.name) == null }
+            .map { it.name }
+            .toSet()
+        assertEquals(fallbackOnly, catalogFallbacks)
+        Dnd35Rules.PRESET_SPELLS.filter { it.name in fallbackOnly }.forEach { spell ->
+            assertNotNull(GameIcons.find(spellSchoolIcon(spell.school)))
         }
     }
 

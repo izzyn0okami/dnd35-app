@@ -392,6 +392,29 @@ private val SPELL_ICON_OVERRIDES = mapOf(
     "dissipar a ordem" to "magic-shield",
     "adivinhação" to "crystal-ball",
     "matar" to "skull-crossed-bones",
+
+    // Truques, marcas e efeitos pessoais
+    "prestidigitação" to "fairy-wand",
+    "marca arcana" to "wax-seal",
+    "virtude" to "heart-bottle",
+    "queda suave" to "wingfoot",
+    "pedra encantada" to "marbles",
+    "área escorregadia" to "oil-can",
+    "remover medo" to "magic-shield",
+    "aura mágica de nystul" to "mirror-mirror",
+    "recuo acelerado" to "wingfoot",
+    "invisibilidade contra animais" to "mirror-mirror",
+    "invisibilidade contra mortos-vivos" to "mirror-mirror",
+    "reduzir animal" to "fairy-wand",
+    "ampliar animais" to "hound",
+    "caminhar em árvores" to "herbs-bundle",
+    "comunhão com a natureza" to "herbs-bundle",
+    "dificultar detecção" to "magic-shield",
+    "movimentação livre" to "wingfoot",
+    "raio polar" to "crystal-wand",
+    "aliado extra-planar maior" to "magic-lamp",
+    "refugiar itens" to "mirror-mirror",
+    "visão" to "crystal-ball",
 )
 
 /** Nomes expostos para validar a cobertura do mapa nos testes. */
