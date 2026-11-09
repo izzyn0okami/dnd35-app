@@ -31,10 +31,10 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
@@ -70,23 +70,23 @@ fun NewCharacterDialog(
     ) -> Unit,
     onDismiss: () -> Unit
 ) {
-    var step by remember { mutableIntStateOf(0) }
+    var step by rememberSaveable { mutableStateOf(0) }
 
-    var name by remember { mutableStateOf("") }
-    var selectedClass by remember { mutableStateOf(Dnd35Rules.CLASSES.first().name) }
-    var selectedRace by remember { mutableStateOf(Dnd35Rules.RACES.first().name) }
+    var name by rememberSaveable { mutableStateOf("") }
+    var selectedClass by rememberSaveable { mutableStateOf(Dnd35Rules.CLASSES.first().name) }
+    var selectedRace by rememberSaveable { mutableStateOf(Dnd35Rules.RACES.first().name) }
 
     var classExpanded by remember { mutableStateOf(false) }
     var raceExpanded by remember { mutableStateOf(false) }
 
-    var method by remember { mutableStateOf(AbilityScoreMethod.ROLL_OR_MANUAL) }
-    var pointBuyBudget by remember { mutableStateOf(PointBuyBudget.PADRAO) }
-    var str by remember { mutableIntStateOf(10) }
-    var dex by remember { mutableIntStateOf(10) }
-    var con by remember { mutableIntStateOf(10) }
-    var intl by remember { mutableIntStateOf(10) }
-    var wis by remember { mutableIntStateOf(10) }
-    var cha by remember { mutableIntStateOf(10) }
+    var method by rememberSaveable { mutableStateOf(AbilityScoreMethod.ROLL_OR_MANUAL) }
+    var pointBuyBudget by rememberSaveable { mutableStateOf(PointBuyBudget.PADRAO) }
+    var str by rememberSaveable { mutableStateOf(10) }
+    var dex by rememberSaveable { mutableStateOf(10) }
+    var con by rememberSaveable { mutableStateOf(10) }
+    var intl by rememberSaveable { mutableStateOf(10) }
+    var wis by rememberSaveable { mutableStateOf(10) }
+    var cha by rememberSaveable { mutableStateOf(10) }
 
     fun resetScoresForMethod(newMethod: AbilityScoreMethod) {
         val base = if (newMethod == AbilityScoreMethod.POINT_BUY) 8 else 10
