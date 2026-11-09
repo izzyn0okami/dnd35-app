@@ -337,4 +337,4 @@ Os símbolos são decorativos. As chaves utilizadas já constam na tabela de íc
 
 ## Ampliação da cobertura de magias (2026-11-09)
 
-A camada individual passou a cobrir 314 das 393 entradas atuais do catálogo, usando recursos que já estavam registrados. As 79 restantes continuam usando o ícone da escola. Foram removidas associações que não correspondiam a nomes existentes no catálogo do aplicativo, e os testes agora verificam nomes e recursos associados para impedir referências inválidas.
+A camada individual passou a cobrir 309 das 393 entradas atuais do catálogo, usando recursos que já estavam registrados. As 84 restantes continuam usando o ícone da escola. Foram removidas associações que não correspondiam a nomes existentes no catálogo do aplicativo, e os testes agora verificam nomes e recursos associados para impedir referências inválidas.
