@@ -77,6 +77,8 @@ class GameIconsTest {
             "Refugiar Itens" to "invisible",
             "Visão" to "crystal-ball",
             "Intuir Direção" to "compass",
+            "Orientação" to "dice-twenty-faces-twenty",
+            "Apagar" to "scroll-quill",
             "Sabedoria da Coruja" to "owl",
             "Presa Mágica" to "claws",
             "Presa Mágica Maior" to "claws",
@@ -111,10 +113,7 @@ class GameIconsTest {
 
     @Test
     fun spellsWithoutUnambiguousExistingSymbolsKeepSchoolFallback() {
-        val fallbackOnly = setOf(
-            "Orientação",
-            "Apagar"
-        )
+        val fallbackOnly = emptySet<String>()
         val catalogFallbacks = Dnd35Rules.PRESET_SPELLS
             .filter { spellIconKey(it.name) == null }
             .map { it.name }

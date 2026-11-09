@@ -44,6 +44,14 @@
 - A cobertura passa de 362 para 383 magias com ícone individual; 10 permanecem com o ícone da escola.
 - O escopo continua exclusivamente visual. Os nomes, descrições, níveis, classes e demais regras do catálogo não foram alterados.
 
+## Sexta etapa — conclusão dos fallbacks restantes (2026-11-09)
+
+- **Orientação:** associado a `dice-twenty-faces-twenty`, pois o Livro do Jogador descreve um bônus de +1 para uma jogada ou teste; o dado comunica diretamente a rolagem beneficiada.
+- **Apagar:** associado a `scroll-quill`, cujo símbolo de pergaminho em branco representa o resultado da remoção de escrita comum ou mágica descrita no Livro do Jogador.
+- Ambos os recursos já estavam registrados e creditados; nenhum SVG novo foi necessário.
+- A cobertura específica chega a 393 de 393 magias do catálogo atual. Não resta fallback de escola.
+- A mudança é exclusivamente visual e não altera regras, dados persistidos ou comportamento de conjuração.
+
 ## Quinta etapa — novos recursos específicos do Game-icons.net (2026-11-09)
 
 - Incorporados oito SVGs originais do repositório game-icons/icons: compass, feather, owl e wasp-sting (Lorc); claws, plain-circle, invisible e alien-bug (Delapouite).
