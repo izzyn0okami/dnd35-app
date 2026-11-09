@@ -24,6 +24,18 @@ class GameIconsTest {
     }
 
     @Test
+    fun everySpellSchoolHasARegisteredIcon() {
+        val schools = listOf(
+            "Abjuração", "Adivinhação", "Conjuração", "Encantamento",
+            "Evocação", "Ilusão", "Necromancia", "Transmutação", "Universal"
+        )
+        schools.forEach { school ->
+            assertNotNull("$school deve ter ícone", spellSchoolIcon(school))
+            assertNotNull("$school deve apontar para ícone registrado", GameIcons.find(spellSchoolIcon(school)))
+        }
+    }
+
+    @Test
     fun iconKeysAreUnique() {
         val keys = GameIcons.all.map { it.key }
         assertEquals(keys.size, keys.toSet().size)
