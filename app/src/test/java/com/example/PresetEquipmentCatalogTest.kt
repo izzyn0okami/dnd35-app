@@ -43,8 +43,8 @@ class PresetEquipmentCatalogTest {
     @Test
     fun catalogContainsDungeonMasterGuidePotionsAndOils() {
         val byName = Dnd35Rules.PRESET_ITEMS.associateBy { it.name }
-        assertEquals(750.0, byName.getValue("Poção de Curar Ferimentos Graves").costGp, 0.0)
-        assertEquals(3000.0, byName.getValue("Óleo de Arma Mágica Maior +5").costGp, 0.0)
+        assertEquals(750f, byName.getValue("Poção de Curar Ferimentos Graves").costGp, 0f)
+        assertEquals(3000f, byName.getValue("Óleo de Arma Mágica Maior +5").costGp, 0f)
         assertEquals(1100.0, byName.getValue("Poção de Resistência a Elementos 30 (tipo)").costGp, 0.0)
         assertTrue(byName.containsKey("Poção de Levitação"))
         assertTrue(byName.containsKey("Óleo de Levitação"))
