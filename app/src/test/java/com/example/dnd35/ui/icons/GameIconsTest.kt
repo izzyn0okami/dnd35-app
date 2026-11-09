@@ -113,9 +113,7 @@ class GameIconsTest {
 
     @Test
     fun spellsWithoutUnambiguousExistingSymbolsKeepSchoolFallback() {
-        val fallbackOnly = setOf(
-            
-        )
+        val fallbackOnly = emptySet<String>()
         val catalogFallbacks = Dnd35Rules.PRESET_SPELLS
             .filter { spellIconKey(it.name) == null }
             .map { it.name }
