@@ -303,3 +303,24 @@ Esta lista e a tela **Créditos e licenças** (menu ⋮ do app) são geradas por
 | `wheelbarrow` | Carrinho de mão | Serviços | Delapouite | `delapouite/wheelbarrow.svg` |
 | `bed` | Cama | Serviços | Delapouite | `delapouite/bed.svg` |
 | `person-in-bed` | Cama confortável | Serviços | Delapouite | `delapouite/person-in-bed.svg` |
+
+ 
+## Ícones das escolas de magia (2026-11-09)
+
+O Grimório usa o registro Game-icons.net já empacotado no aplicativo. Os símbolos são resolvidos pela escola da magia, sem gravar novas chaves no banco de dados ou nos backups.
+
+| Escola | Chave Game-icons | Interpretação visual |
+|---|---|---|
+| Abjuração | `magic-shield` | proteção e barreiras |
+| Adivinhação | `crystal-ball` | vidência |
+| Conjuração | `magic-lamp` | invocação |
+| Encantamento | `domino-mask` | influência e controle |
+| Evocação | `glowing-artifact` | energia mágica |
+| Ilusão | `mirror-mirror` | reflexos e imagens |
+| Necromancia | `skull-crossed-bones` | morte e mortos-vivos |
+| Transmutação | `fairy-wand` | transformação por magia |
+| Universal | `spell-book` | magia geral |
+
+Os símbolos aparecem nas linhas de magias preparadas/conhecidas, nos resultados do Catálogo e nos detalhes da magia. O nome textual da escola permanece visível. O ícone é decorativo e não altera regras, filtros ou dados salvos.
+
+Os ícones são reutilizados de recursos que já estavam incluídos no app; portanto, não foi necessário adicionar novos SVGs nem autores. Os créditos existentes continuam sendo a fonte de atribuição.
