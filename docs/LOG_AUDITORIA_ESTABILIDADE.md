@@ -98,3 +98,23 @@ A PR #337 foi ampliada sem abrir uma PR paralela, após conferir que ela continu
 - A decodificação fora da thread principal reduz risco de congelamento, mas não reduz automaticamente o tamanho máximo da imagem decodificada.
 - Permanecem necessários testes automatizados, CI e validação manual no aparelho: selecionar uma ficha que não seja a primeira, forçar encerramento/recriação do processo, confirmar a ficha e a aba restauradas, selecionar/recortar foto grande e exportar novo relatório.
 - Nenhuma alteração foi feita em regras, cálculos de D&D, schema do Room ou formato de backup.
+
+## Preservação da interface durante atualizações da ficha — 2026-11-09
+
+### Problema observado
+- Ao usar os botões rápidos de PV, a ficha desaparecia brevemente e a tela principal exibia “Carregando Grimório D&D 3.5...”.
+- A causa foi localizada em `CharacterViewModel.recalculateStatsAsync()`: toda solicitação zerava `computedStats` antes de calcular novamente, embora a ficha ativa e as estatísticas anteriores ainda estivessem disponíveis.
+- Como `DndMainScreen` usa `computedStats == null` como condição de carregamento, a interface inteira era substituída pelo indicador durante atualizações comuns.
+
+### Correção proposta nesta PR
+- Manter as estatísticas calculadas anteriormente enquanto uma atualização do mesmo personagem é processada em `Dispatchers.Default`.
+- Continuar usando o token monotônico para impedir que cálculos antigos sobrescrevam o resultado mais recente.
+- Limpar as estatísticas somente quando a ficha ativa muda, quando a lista fica vazia ou durante a seleção explícita de outro personagem.
+- A primeira abertura continua exibindo o carregamento enquanto não existe cálculo inicial; a troca de personagem não reutiliza estatísticas da ficha anterior.
+- Nenhuma regra, fórmula, valor de PV, persistência ou formato de backup é alterado.
+
+### Testes e validação
+- Teste unitário da decisão de limpar estatísticas ao trocar de personagem, incluindo inicialização sem personagem anterior.
+- Teste de preservação quando o ID do personagem permanece o mesmo.
+- CI e compilação Android devem ser verificadas no head final da PR.
+- Validação manual pendente: usar repetidamente os botões rápidos de dano e cura, confirmar que a ficha permanece visível e verificar que os valores calculados são atualizados; trocar de personagem e confirmar que não aparecem dados da ficha anterior.
