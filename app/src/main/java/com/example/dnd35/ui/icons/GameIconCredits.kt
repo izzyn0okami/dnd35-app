@@ -10,8 +10,8 @@ object GameIconCredits {
     const val CC0_URL = "https://creativecommons.org/publicdomain/zero/1.0/"
 
     val authors: List<GameIconAuthor> = listOf(
-        GameIconAuthor("Delapouite", "http://delapouite.com", "CC BY 3.0", 123),
-        GameIconAuthor("Lorc", "http://lorcblog.blogspot.com", "CC BY 3.0", 122),
+        GameIconAuthor("Delapouite", "http://delapouite.com", "CC BY 3.0", 127),
+        GameIconAuthor("Lorc", "http://lorcblog.blogspot.com", "CC BY 3.0", 126),
         GameIconAuthor("Skoll", "https://game-icons.net", "CC BY 3.0", 15),
         GameIconAuthor("Lucas", "https://game-icons.net", "CC BY 3.0", 4),
         GameIconAuthor("Willdabeast", "http://wjbstories.blogspot.com", "CC BY 3.0", 4),
