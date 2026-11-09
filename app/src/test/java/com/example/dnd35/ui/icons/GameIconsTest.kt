@@ -58,14 +58,14 @@ class GameIconsTest {
             "Prestidigitação" to "fairy-wand",
             "Marca Arcana" to "wax-seal",
             "Virtude" to "heart-bottle",
-            "Queda Suave" to "wingfoot",
+            "Queda Suave" to "feather",
             "Pedra Encantada" to "marbles",
             "Área Escorregadia" to "oil-can",
             "Remover Medo" to "magic-shield",
             "Aura Mágica de Nystul" to "mirror-mirror",
             "Recuo Acelerado" to "wingfoot",
-            "Invisibilidade Contra Animais" to "mirror-mirror",
-            "Invisibilidade Contra Mortos-Vivos" to "mirror-mirror",
+            "Invisibilidade Contra Animais" to "invisible",
+            "Invisibilidade Contra Mortos-Vivos" to "invisible",
             "Reduzir Animal" to "fairy-wand",
             "Ampliar Animais" to "hound",
             "Caminhar em Árvores" to "herbs-bundle",
@@ -75,7 +75,21 @@ class GameIconsTest {
             "Raio Polar" to "crystal-wand",
             "Aliado Extra-Planar Maior" to "magic-lamp",
             "Refugiar Itens" to "mirror-mirror",
-            "Visão" to "crystal-ball"
+            "Visão" to "crystal-ball",
+            "Intuir Direção" to "compass",
+            "Sabedoria da Coruja" to "owl",
+            "Presa Mágica" to "claws",
+            "Presa Mágica Maior" to "claws",
+            "Disco Flutuante de Tenser" to "plain-circle",
+            "Servo Invisível" to "invisible",
+            "Repelir Insetos" to "wasp-sting",
+            "Destruição Rastejante" to "alien-bug",
+            "Invisibilidade" to "invisible",
+            "Invisibilidade em Massa" to "invisible",
+            "Passagem Invisível" to "invisible",
+            "Refugiar Itens" to "invisible",
+            "Obscurecer Objeto" to "magic-shield"
+
         )
         expected.forEach { (spell, key) ->
             assertEquals(key, spellIconKey(spell))
@@ -100,15 +114,7 @@ class GameIconsTest {
     fun spellsWithoutUnambiguousExistingSymbolsKeepSchoolFallback() {
         val fallbackOnly = setOf(
             "Orientação",
-            "Intuir Direção",
-            "Servo Invisível",
-            "Presa Mágica",
-            "Disco Flutuante de Tenser",
-            "Apagar",
-            "Sabedoria da Coruja",
-            "Presa Mágica Maior",
-            "Repelir Insetos",
-            "Destruição Rastejante"
+            "Apagar"
         )
         val catalogFallbacks = Dnd35Rules.PRESET_SPELLS
             .filter { spellIconKey(it.name) == null }
