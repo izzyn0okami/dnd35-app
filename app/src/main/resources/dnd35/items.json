@@ -1240,6 +1240,216 @@
     "icon": "baton"
   },
   {
+    "name": "Cajado de Enfeitiçar",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 5.5,
+    "costGp": 16500,
+    "damageOrAc": "-",
+    "properties": "Cajado mágico, 50 cargas ao ser criado; Tabela 7–25 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "wizard-staff"
+  },
+  {
+    "name": "Cajado de Fogo",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 5.5,
+    "costGp": 17750,
+    "damageOrAc": "-",
+    "properties": "Cajado mágico, 50 cargas ao ser criado; Tabela 7–25 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "wizard-staff"
+  },
+  {
+    "name": "Cajado de Enxame",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 5.5,
+    "costGp": 24750,
+    "damageOrAc": "-",
+    "properties": "Cajado mágico, 50 cargas ao ser criado; Tabela 7–25 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "wizard-staff"
+  },
+  {
+    "name": "Cajado de Cura",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 5.5,
+    "costGp": 27750,
+    "damageOrAc": "-",
+    "properties": "Cajado mágico, 50 cargas ao ser criado; Tabela 7–25 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "wizard-staff"
+  },
+  {
+    "name": "Cajado de Alteração de Tamanho",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 5.5,
+    "costGp": 29000,
+    "damageOrAc": "-",
+    "properties": "Cajado mágico, 50 cargas ao ser criado; Tabela 7–25 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "wizard-staff"
+  },
+  {
+    "name": "Cajado de Iluminação",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 5.5,
+    "costGp": 48250,
+    "damageOrAc": "-",
+    "properties": "Cajado mágico, 50 cargas ao ser criado; Tabela 7–25 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "wizard-staff"
+  },
+  {
+    "name": "Cajado de Frio",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 5.5,
+    "costGp": 56250,
+    "damageOrAc": "-",
+    "properties": "Cajado mágico, 50 cargas ao ser criado; Tabela 7–25 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "wizard-staff"
+  },
+  {
+    "name": "Cajado de Defesa",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 5.5,
+    "costGp": 58250,
+    "damageOrAc": "-",
+    "properties": "Cajado mágico, 50 cargas ao ser criado; Tabela 7–25 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "wizard-staff"
+  },
+  {
+    "name": "Cajado de Abjuração",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 5.5,
+    "costGp": 65000,
+    "damageOrAc": "-",
+    "properties": "Cajado mágico, 50 cargas ao ser criado; Tabela 7–25 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "wizard-staff"
+  },
+  {
+    "name": "Cajado de Conjuração",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 5.5,
+    "costGp": 65000,
+    "damageOrAc": "-",
+    "properties": "Cajado mágico, 50 cargas ao ser criado; Tabela 7–25 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "wizard-staff"
+  },
+  {
+    "name": "Cajado de Encantamento",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 5.5,
+    "costGp": 65000,
+    "damageOrAc": "-",
+    "properties": "Cajado mágico, 50 cargas ao ser criado; Tabela 7–25 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "wizard-staff"
+  },
+  {
+    "name": "Cajado de Evocação",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 5.5,
+    "costGp": 65000,
+    "damageOrAc": "-",
+    "properties": "Cajado mágico, 50 cargas ao ser criado; Tabela 7–25 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "wizard-staff"
+  },
+  {
+    "name": "Cajado de Ilusão",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 5.5,
+    "costGp": 65000,
+    "damageOrAc": "-",
+    "properties": "Cajado mágico, 50 cargas ao ser criado; Tabela 7–25 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "wizard-staff"
+  },
+  {
+    "name": "Cajado de Necromancia",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 5.5,
+    "costGp": 65000,
+    "damageOrAc": "-",
+    "properties": "Cajado mágico, 50 cargas ao ser criado; Tabela 7–25 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "wizard-staff"
+  },
+  {
+    "name": "Cajado de Transmutação",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 5.5,
+    "costGp": 65000,
+    "damageOrAc": "-",
+    "properties": "Cajado mágico, 50 cargas ao ser criado; Tabela 7–25 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "wizard-staff"
+  },
+  {
+    "name": "Cajado de Adivinhação",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 5.5,
+    "costGp": 73500,
+    "damageOrAc": "-",
+    "properties": "Cajado mágico, 50 cargas ao ser criado; Tabela 7–25 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "wizard-staff"
+  },
+  {
+    "name": "Cajado de Terra e Pedras",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 5.5,
+    "costGp": 80500,
+    "damageOrAc": "-",
+    "properties": "Cajado mágico, 50 cargas ao ser criado; Tabela 7–25 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "wizard-staff"
+  },
+  {
+    "name": "Cajado de Florestas",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 5.5,
+    "costGp": 101250,
+    "damageOrAc": "-",
+    "properties": "Cajado mágico, 50 cargas ao ser criado; Tabela 7–25 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "wizard-staff"
+  },
+  {
+    "name": "Cajado de Vida",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 5.5,
+    "costGp": 155750,
+    "damageOrAc": "-",
+    "properties": "Cajado mágico, 50 cargas ao ser criado; Tabela 7–25 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "wizard-staff"
+  },
+  {
+    "name": "Cajado de Passagem",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 5.5,
+    "costGp": 170500,
+    "damageOrAc": "-",
+    "properties": "Cajado mágico, 50 cargas ao ser criado; Tabela 7–25 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "wizard-staff"
+  },
+  {
+    "name": "Cajado de Poder",
+    "category": "Itens Mágicos",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 5.5,
+    "costGp": 211000,
+    "damageOrAc": "-",
+    "properties": "Cajado mágico, 50 cargas ao ser criado; Tabela 7–25 do Livro do Mestre (descrição no Cap. 7)",
+    "icon": "wizard-staff"
+  },
+  {
     "name": "Mochila de Couro Reforçada",
     "category": "Itens de Aventura",
     "defaultSlot": "Mochila (Não Equipado)",

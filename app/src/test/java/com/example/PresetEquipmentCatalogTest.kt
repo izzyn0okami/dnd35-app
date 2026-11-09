@@ -71,4 +71,13 @@ class PresetEquipmentCatalogTest {
         assertTrue(byName.containsKey("Bastão Imóvel"))
         assertTrue(byName.containsKey("Bastão Mangual"))
     }
+
+    @Test
+    fun catalogContainsDungeonMasterGuideStaffs() {
+        val byName = Dnd35Rules.PRESET_ITEMS.associateBy { it.name }
+        assertEquals(211000f, byName.getValue("Cajado de Poder").costGp, 0f)
+        assertEquals(155750f, byName.getValue("Cajado de Vida").costGp, 0f)
+        assertEquals(65000f, byName.getValue("Cajado de Ilusão").costGp, 0f)
+        assertEquals(16500f, byName.getValue("Cajado de Enfeitiçar").costGp, 0f)
+    }
 }
