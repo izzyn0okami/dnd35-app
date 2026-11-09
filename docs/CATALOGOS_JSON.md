@@ -220,3 +220,28 @@ Divergências do PDF resolvidas pela tabela:
 - Escudo do Conjurador: 3.153 PO é sem a magia inscrita (o livro soma o valor dela).
 Habilidades de ativação aparecem só resumidas na descrição; o texto completo fica para a fase
 de base de dados detalhada. Armas específicas (Tabela 7–16) vêm numa PR própria.
+
+### Armas específicas do Livro do Mestre (2026-11-09)
+
+A Tabela 7–16 (Armas Específicas, Livro do Mestre 3.5 brasileiro, p. 227–229) foi importada
+para `items.json`: 34 armas novas em "Armas", com o preço de mercado da tabela (as três
+colunas cobrem 01–100). Dano e bônus saem da arma base já existente no catálogo mais o bônus
+de melhoria descrito no livro (ex.: Cimitarra Silvestre = cimitarra +3 = 1d6+3, 18-20/x2).
+Munição mágica (flechas e virotes) entra como peça única, no espaço "Mochila".
+
+Divergências do PDF resolvidas pela tabela de preços (consistente com a progressão):
+- Adaga do Assassino: tabela 10.302 PO, descrição 18.302 → usei 10.302.
+- Lâmina do Sol: tabela 50.335 PO, descrição 50.315 → usei 50.335.
+- Lâmina da Sorte (3 desejos): tabela 142.960 PO, descrição 142.060 → usei 142.960, que fecha
+  com a diferença de 40.300 PO por desejo das demais versões.
+- A tabela imprime a faixa do Sabre da Perfuração como "53–67" (sobrepõe a Sorvedouro e a
+  Cimitarra); o correto é 63–67. Não afeta o catálogo, que não usa faixas de rolagem.
+
+Pendências assumidas:
+- Maça do Terror e Maça da Destruição: a tabela traz o preço, mas o texto da descrição não
+  aparece no PDF extraído. Entraram com preço, sem dano nem bônus (`damageOrAc` "-"); preencher
+  quando conferir o livro.
+- Estilhaçadora: o texto diz "adaga longa +1", mas o peso de 2 kg (4,4 lb) bate com espada
+  longa, que é o que usei. Conferir no livro impresso.
+- Habilidades de ativação aparecem resumidas; o texto completo fica para a fase de base de
+  dados detalhada.

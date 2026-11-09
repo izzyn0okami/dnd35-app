@@ -104,4 +104,16 @@ class PresetEquipmentCatalogTest {
         assertEquals("Escudos", byName.getValue("Escudo Alado").category)
         assertEquals("Armaduras", byName.getValue("Camisão de Mitral").category)
     }
+
+    @Test
+    fun catalogContainsDungeonMasterGuideSpecificWeapons() {
+        val byName = Dnd35Rules.PRESET_ITEMS.associateBy { it.name }
+        assertEquals(142960f, byName.getValue("Lâmina da Sorte (3 Desejos)").costGp, 0f)
+        assertEquals(50335f, byName.getValue("Lâmina do Sol").costGp, 0f)
+        assertEquals(10302f, byName.getValue("Adaga do Assassino").costGp, 0f)
+        assertEquals("1d6+3 (18-20/x2)", byName.getValue("Cimitarra Silvestre").damageOrAc)
+        assertEquals("Armas", byName.getValue("Vingadora Sagrada").category)
+        assertTrue(byName.containsKey("Maça da Destruição"))
+        assertTrue(byName.containsKey("Maça do Terror"))
+    }
 }
