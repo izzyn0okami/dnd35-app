@@ -111,3 +111,7 @@ para o catálogo por ser, em grande parte, economia de mesa e não inventário d
 personagem; ver conversa com o usuário sobre se isso deve ser expandido.
 
 Catálogo após esta auditoria: 110 talentos, 165 itens, 327 magias.
+
+ 
+### Contagem atual verificada (2026-11-09)
+O arquivo `app/src/main/resources/dnd35/spells.json` contém 393 entradas. O número anterior de 327 neste documento estava desatualizado. Esta atualização registra a contagem observada no arquivo, sem alterar o conteúdo do catálogo.
