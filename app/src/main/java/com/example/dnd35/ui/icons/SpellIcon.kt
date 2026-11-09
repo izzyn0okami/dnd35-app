@@ -175,7 +175,7 @@ private val SPELL_ICON_OVERRIDES = mapOf(
     "invocar criaturas vii" to "magic-lamp",
     "invocar criaturas viii" to "magic-lamp",
     "invocar criaturas ix" to "magic-lamp",
-    "portal" to "magic-lamp"
+    "portal" to "magic-lamp",
     // Magias de influência, percepção e controle
     "antipatia" to "domino-mask",
     "palavra de poder, atordoar" to "skull-crossed-bones",
