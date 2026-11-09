@@ -26,7 +26,6 @@ import com.example.dnd35.model.CharacterInventoryItem
 import com.example.dnd35.model.InventoryIconKind
 import com.example.dnd35.model.inventoryIconKindFor
 import com.example.dnd35.ui.icons.resolveGameIcon
-import com.example.ui.theme.DndGold
 
 private fun InventoryIconKind.toImageVector(): ImageVector = when (this) {
     InventoryIconKind.WEAPON -> Icons.Default.Gavel
@@ -62,14 +61,14 @@ fun InventoryItemIcon(
             Icon(
                 painter = painterResource(gameIcon.resId),
                 contentDescription = null,
-                tint = DndGold,
+                tint = MaterialTheme.colorScheme.primary,
                 modifier = Modifier.size(size * 0.72f)
             )
         } else {
             Icon(
                 imageVector = inventoryIconKindFor(item).toImageVector(),
                 contentDescription = null,
-                tint = DndGold,
+                tint = MaterialTheme.colorScheme.primary,
                 modifier = Modifier.size(size * 0.55f)
             )
         }

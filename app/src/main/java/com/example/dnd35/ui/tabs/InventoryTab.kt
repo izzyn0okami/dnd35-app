@@ -191,7 +191,7 @@ fun InventoryTab(
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Row(verticalAlignment = Alignment.CenterVertically) {
-                            Icon(Icons.Default.FitnessCenter, contentDescription = null, tint = DndGold)
+                            Icon(Icons.Default.FitnessCenter, contentDescription = null, tint = MaterialTheme.colorScheme.primary)
                             Spacer(modifier = Modifier.width(6.dp))
                             Text(
                                 "Peso e carga (D&D 3.5)",
@@ -266,7 +266,7 @@ fun InventoryTab(
                     Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
                         LoadLimitInfo("Leve", "0–${cap.lightMaxLb} lb", DndHpGreen)
                         LoadLimitInfo("Média", "${cap.lightMaxLb + 1}–${cap.mediumMaxLb} lb", DndHpYellow)
-                        LoadLimitInfo("Pesada", "${cap.mediumMaxLb + 1}–${cap.heavyMaxLb} lb", DndCrimson)
+                        LoadLimitInfo("Pesada", "${cap.mediumMaxLb + 1}–${cap.heavyMaxLb} lb", MaterialTheme.colorScheme.error)
                     }
                 }
             }
@@ -289,7 +289,7 @@ fun InventoryTab(
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Row(verticalAlignment = Alignment.CenterVertically) {
-                            Icon(Icons.Default.Shield, contentDescription = null, tint = DndGold)
+                            Icon(Icons.Default.Shield, contentDescription = null, tint = MaterialTheme.colorScheme.primary)
                             Spacer(modifier = Modifier.width(6.dp))
                             Text(
                                 "Espaços de Equipamento (Corpo)",
@@ -367,7 +367,7 @@ fun InventoryTab(
                                                 },
                                                 modifier = Modifier.size(48.dp)
                                             ) {
-                                                Icon(Icons.Default.Delete, contentDescription = "Desequipar ${equippedInSlot.name}", tint = DndCrimson, modifier = Modifier.size(16.dp))
+                                                Icon(Icons.Default.Delete, contentDescription = "Desequipar ${equippedInSlot.name}", tint = MaterialTheme.colorScheme.error, modifier = Modifier.size(16.dp))
                                             }
                                         }
                                     } else {
@@ -400,7 +400,7 @@ fun InventoryTab(
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Row(verticalAlignment = Alignment.CenterVertically) {
-                            Icon(Icons.Default.MonetizationOn, contentDescription = null, tint = DndGold)
+                            Icon(Icons.Default.MonetizationOn, contentDescription = null, tint = MaterialTheme.colorScheme.primary)
                             Spacer(modifier = Modifier.width(6.dp))
                             Text("Riqueza e moedas", fontWeight = FontWeight.Bold, style = MaterialTheme.typography.titleMedium)
                         }
@@ -520,7 +520,7 @@ fun InventoryTab(
                         Icon(
                             Icons.Default.FileDownload,
                             contentDescription = "Importar item (arquivo)",
-                            tint = DndGold
+                            tint = MaterialTheme.colorScheme.primary
                         )
                     }
 
@@ -1011,7 +1011,7 @@ fun InventoryItemRowRefined(
                         Icons.Default.Delete,
                         contentDescription = "Excluir ${item.name}",
                         modifier = Modifier.size(20.dp),
-                        tint = DndCrimson
+                        tint = MaterialTheme.colorScheme.error
                     )
                 }
                 Box {
@@ -1074,7 +1074,7 @@ private fun CoinBox(label: String, value: Float) {
                 displayStr,
                 fontWeight = FontWeight.Bold,
                 style = MaterialTheme.typography.titleMedium,
-                color = DndGold
+                color = MaterialTheme.colorScheme.primary
             )
             Text(
                 label,

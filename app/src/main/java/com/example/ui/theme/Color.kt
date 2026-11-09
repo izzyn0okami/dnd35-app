@@ -4,10 +4,11 @@ import androidx.compose.ui.graphics.Color
 
 val DndGold = Color(0xFFD4AF37)
 val DndGoldLight = Color(0xFFFFDF79)
-val DndGoldDark = Color(0xFF9E7B15)
+val DndGoldDark = Color(0xFF7A5C08) // escurecido: 5,3:1 sobre o pergaminho (antes 3,4:1)
 
 val DndCrimson = Color(0xFF991B1B)
 val DndCrimsonLight = Color(0xFFDC2626)
+val DndErrorOnDark = Color(0xFFF87171) // vermelho legível sobre fundos escuros (5,7:1 no card)
 
 val DndLeather = Color(0xFF3B271A)
 val DndLeatherLight = Color(0xFF5C3D2E)

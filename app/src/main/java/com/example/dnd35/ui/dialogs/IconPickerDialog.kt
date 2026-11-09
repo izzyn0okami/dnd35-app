@@ -46,7 +46,6 @@ import androidx.compose.ui.window.DialogProperties
 import com.example.dnd35.model.normalizedForCatalogLookup
 import com.example.dnd35.ui.icons.GameIcon
 import com.example.dnd35.ui.icons.GameIcons
-import com.example.ui.theme.DndGold
 
 /**
  * Seletor do ícone de um item. [selectedKey] é a escolha atual (nulo = automático) e
@@ -120,7 +119,7 @@ fun IconPickerDialog(
                                     .clip(shape)
                                     .border(
                                         width = if (selected) 2.dp else 1.dp,
-                                        color = if (selected) DndGold else MaterialTheme.colorScheme.outline.copy(alpha = 0.3f),
+                                        color = if (selected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.outline.copy(alpha = 0.3f),
                                         shape = shape
                                     )
                                     .clickable { onSelect(icon.key) }
@@ -130,7 +129,7 @@ fun IconPickerDialog(
                                 Icon(
                                     painter = painterResource(icon.resId),
                                     contentDescription = null,
-                                    tint = if (selected) DndGold else MaterialTheme.colorScheme.onSurface,
+                                    tint = if (selected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface,
                                     modifier = Modifier.size(40.dp)
                                 )
                                 Text(

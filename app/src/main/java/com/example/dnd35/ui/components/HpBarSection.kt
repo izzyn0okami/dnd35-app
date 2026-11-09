@@ -44,6 +44,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
@@ -376,6 +377,10 @@ fun QuickHpButton(label: String, color: Color, onClick: () -> Unit) {
             .height(36.dp)
             .width(42.dp)
     ) {
-        Text(label, style = MaterialTheme.typography.labelSmall, fontWeight = FontWeight.Bold, color = Color.White)
+        Text(label, style = MaterialTheme.typography.labelSmall, fontWeight = FontWeight.Bold, color = readableContentColor(color))
     }
 }
+
+/** Preto ou branco, o que tiver mais contraste com [container] (ponto de equilíbrio ≈ 0,179 de luminância). */
+internal fun readableContentColor(container: Color): Color =
+    if (container.luminance() > 0.179f) Color.Black else Color.White

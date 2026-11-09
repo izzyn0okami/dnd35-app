@@ -50,7 +50,6 @@ import com.example.dnd35.model.SpellbookRules
 import com.example.dnd35.model.WizardSpecialtyRules
 import com.example.dnd35.viewmodel.CharacterViewModel
 import com.example.ui.theme.DndArcaneBlue
-import com.example.ui.theme.DndCrimson
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -408,7 +407,7 @@ internal fun LazyListScope.knownSection(
                         Icon(Icons.Default.Edit, contentDescription = "Editar ${spell.name}", modifier = Modifier.size(18.dp), tint = MaterialTheme.colorScheme.primary)
                     }
                     IconButton(onClick = { onDeleteSpell(spell.id) }, modifier = Modifier.size(40.dp)) {
-                        Icon(Icons.Default.Delete, contentDescription = "Excluir ${spell.name}", modifier = Modifier.size(18.dp), tint = DndCrimson)
+                        Icon(Icons.Default.Delete, contentDescription = "Excluir ${spell.name}", modifier = Modifier.size(18.dp), tint = MaterialTheme.colorScheme.error)
                     }
                 }
             }

@@ -48,7 +48,6 @@ import com.example.dnd35.model.CharacterClassEntry
 import com.example.dnd35.model.Dnd35Rules
 import com.example.dnd35.model.calculateMulticlassXpPenalty
 import com.example.ui.theme.DndCrimson
-import com.example.ui.theme.DndGold
 import com.example.ui.theme.DndHpGreen
 
 @Composable
@@ -158,7 +157,7 @@ fun ManageMulticlassDialog(
                                             },
                                             modifier = Modifier.size(48.dp)
                                         ) {
-                                            Icon(Icons.Default.Delete, contentDescription = "Remover classe ${entry.className}", tint = DndCrimson)
+                                            Icon(Icons.Default.Delete, contentDescription = "Remover classe ${entry.className}", tint = MaterialTheme.colorScheme.error)
                                         }
                                     }
                                 }
@@ -190,12 +189,12 @@ fun ManageMulticlassDialog(
                                     }
                                     if (isFavored) {
                                         Spacer(modifier = Modifier.width(8.dp))
-                                        Icon(Icons.Default.Star, contentDescription = null, tint = DndGold, modifier = Modifier.size(14.dp))
+                                        Icon(Icons.Default.Star, contentDescription = null, tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(14.dp))
                                         Spacer(modifier = Modifier.width(3.dp))
                                         Text(
                                             if (anyClassFavored) "Isenta de XP" else "Favorecida",
                                             style = MaterialTheme.typography.labelSmall,
-                                            color = DndGold,
+                                            color = MaterialTheme.colorScheme.primary,
                                             fontWeight = FontWeight.Bold
                                         )
                                     }
@@ -338,7 +337,7 @@ fun ManageMulticlassDialog(
                         Icon(
                             Icons.Default.Info,
                             contentDescription = null,
-                            tint = if (hasXpPenalty) DndCrimson else DndHpGreen,
+                            tint = if (hasXpPenalty) MaterialTheme.colorScheme.error else DndHpGreen,
                             modifier = Modifier.size(18.dp)
                         )
                         Spacer(modifier = Modifier.width(8.dp))
@@ -347,7 +346,7 @@ fun ManageMulticlassDialog(
                                 if (hasXpPenalty) "Penalidade de XP: -${xpPenaltyPercent}%" else "Penalidade de XP: Nenhuma",
                                 fontWeight = FontWeight.Bold,
                                 style = MaterialTheme.typography.labelSmall,
-                                color = if (hasXpPenalty) DndCrimson else DndHpGreen
+                                color = if (hasXpPenalty) MaterialTheme.colorScheme.error else DndHpGreen
                             )
                             val explanation = if (hasXpPenalty) {
                                 "Classes não favorecidas diferem em 2 ou mais níveis (${offendingClasses.joinToString { it.className }}). Favorecida: $effectiveFavored."

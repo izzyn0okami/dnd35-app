@@ -59,7 +59,6 @@ import com.example.dnd35.viewmodel.CharacterViewModel
 import com.example.dnd35.viewmodel.isValidEditedSkillRanks
 import com.example.dnd35.viewmodel.skillRankAdjustmentStep
 import com.example.ui.theme.DndCrimson
-import com.example.ui.theme.DndGold
 import com.example.ui.theme.DndHpGreen
 
 @Composable
@@ -496,7 +495,7 @@ fun SkillsTab(
                         Text(
                             "Penalidade de Armadura aplicada: ${comp.armorPenaltyApplied}",
                             style = MaterialTheme.typography.bodySmall,
-                            color = DndCrimson
+                            color = MaterialTheme.colorScheme.error
                         )
                     }
 
@@ -599,7 +598,7 @@ fun SkillItemRow(
                     Icon(
                         Icons.Default.Star,
                         contentDescription = "Perícia de Classe",
-                        tint = DndGold,
+                        tint = MaterialTheme.colorScheme.primary,
                         modifier = Modifier
                             .size(16.dp)
                             .padding(end = 4.dp)
@@ -659,7 +658,7 @@ fun SkillItemRow(
                     text = totalStr,
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.ExtraBold,
-                    color = if (computed.totalBonus >= 0) DndHpGreen else DndCrimson,
+                    color = if (computed.totalBonus >= 0) DndHpGreen else MaterialTheme.colorScheme.error,
                     modifier = Modifier
                         .clickable(onClick = onRoll)
                         .padding(horizontal = 8.dp)

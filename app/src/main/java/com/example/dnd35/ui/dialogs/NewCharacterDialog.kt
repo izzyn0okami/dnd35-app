@@ -46,8 +46,6 @@ import com.example.dnd35.model.PointBuyBudget
 import com.example.dnd35.model.pointBuyCost
 import com.example.dnd35.model.pointBuyTotalCost
 import com.example.dnd35.model.rollAbilityScore
-import com.example.ui.theme.DndCrimson
-import com.example.ui.theme.DndGold
 
 private val STEP_TITLES = listOf("Nome", "Raça", "Classe", "Atributos", "Revisão")
 
@@ -392,7 +390,7 @@ private fun AbilityScoreStep(
             "Pontos gastos: $pointBuySpent / ${pointBuyBudget.totalPoints} — saldo: $pointBuyRemaining",
             style = MaterialTheme.typography.bodySmall,
             fontWeight = FontWeight.Bold,
-            color = if (pointBuyRemaining < 0) DndCrimson else MaterialTheme.colorScheme.onSurfaceVariant
+            color = if (pointBuyRemaining < 0) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.onSurfaceVariant
         )
     }
 
@@ -465,7 +463,7 @@ private fun AbilityScoreRow(
                             keyboardOptions = androidx.compose.foundation.text.KeyboardOptions(keyboardType = KeyboardType.Number)
                         )
                         IconButton(onClick = { onManualEntry(rollAbilityScore()) }) {
-                            Icon(Icons.Default.Casino, contentDescription = "Rolar $label (4d6, descarta o menor)", tint = DndGold)
+                            Icon(Icons.Default.Casino, contentDescription = "Rolar $label (4d6, descarta o menor)", tint = MaterialTheme.colorScheme.primary)
                         }
                     }
                 }
