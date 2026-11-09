@@ -825,3 +825,24 @@
 - Testar em aparelho tocando diretamente em uma ficha e em um item exportados, a partir de pelo menos um gerenciador de arquivos que use `content://`; confirmar que o Android oferece o app e que os dois fluxos de importação concluem corretamente.
 - Testar também compartilhamento/abertura a partir de um anexo, se o aplicativo de origem disponibilizar a ação Abrir com.
 - A declaração de MIME genérico pode fazer o app aparecer para outros JSON/textos; o diálogo de confirmação continua recusando arquivos sem MIME próprio ou extensão reconhecida.
+
+
+## 2026-11-08 — Correção do ANR no encerramento do SessionViewModel
+
+### Evidência do diagnóstico
+- O relatório Android de 2026-11-08 registrou ANR por timeout de despacho de entrada (5 s). A thread principal estava em runBlocking dentro de SessionViewModel.onCleared() (linha 626 no build diagnosticado).
+- A fila persistenceCommands era consumida por uma coroutine iniciada em viewModelScope. O ciclo de limpeza do Android cancela viewModelScope antes de chamar onCleared(); portanto, os runBlocking que aguardavam persistSnapshotAndWait()/flushPersistenceQueue() podiam esperar por um consumidor já cancelado.
+- A causa é compatível diretamente com o stack trace. Não há evidência neste relatório de que pressão de memória tenha causado este ANR.
+
+### Correção implementada nesta branch
+- Mover o consumidor da fila de persistência para um CoroutineScope(SupervisorJob() + Dispatchers.IO) independente do ciclo de vida do ViewModel.
+- Remover os runBlocking de onCleared(): o snapshot final e o flush são enfileirados em trabalho assíncrono, sem bloquear a thread principal.
+- Desconectar o cliente e liberar referências no encerramento; fechar a fila e cancelar o escopo independente após a conclusão do flush.
+- Preservar a ordem da fila: o checkpoint final é colocado depois dos comandos já pendentes e o flush só conclui quando o consumidor alcançar esse marcador.
+
+### Validação pendente
+- Aguardar CI na PR para testDebugUnitTest e assembleDebug.
+- Revisar o diff final e confirmar que nenhum outro caminho de persistência foi alterado.
+- Testar em aparelho: encerrar o app durante hospedagem, durante conexão como jogador, após mutações recentes da sessão e com rede interrompida.
+- Confirmar em novo relatório que não há ANR em SessionViewModel.onCleared() e que o checkpoint recuperável permanece consistente.
+- A persistência no encerramento é assíncrona e, como qualquer trabalho de processo em encerramento, não deve ser tratada como garantia de execução após morte abrupta do processo; mutações críticas continuam dependendo dos checkpoints já confirmados.
