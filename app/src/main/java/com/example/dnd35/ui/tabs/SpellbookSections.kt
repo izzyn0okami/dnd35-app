@@ -387,6 +387,8 @@ internal fun LazyListScope.knownSection(
                         .padding(horizontal = 10.dp, vertical = 6.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
+                    SpellSchoolIcon(school = spell.school, modifier = Modifier.size(30.dp))
+                    Spacer(Modifier.width(6.dp))
                     LevelBadge(spell.level)
                     Spacer(Modifier.width(8.dp))
                     Column(modifier = Modifier.weight(1f)) {
