@@ -398,7 +398,6 @@ private val SPELL_ICON_OVERRIDES = mapOf(
     "marca arcana" to "wax-seal",
     "virtude" to "heart-bottle",
     "queda suave" to "wingfoot",
-    "orientação" to "holy-symbol",
     "pedra encantada" to "marbles",
     "área escorregadia" to "oil-can",
     "remover medo" to "magic-shield",
