@@ -374,8 +374,8 @@ fun QuickHpButton(label: String, color: Color, onClick: () -> Unit) {
         shape = RoundedCornerShape(8.dp),
         contentPadding = ButtonDefaults.TextButtonContentPadding,
         modifier = Modifier
-            .height(36.dp)
-            .width(42.dp)
+            .height(48.dp)
+            .width(48.dp)
     ) {
         Text(label, style = MaterialTheme.typography.labelSmall, fontWeight = FontWeight.Bold, color = readableContentColor(color))
     }
