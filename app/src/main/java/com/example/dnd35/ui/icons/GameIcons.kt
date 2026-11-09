@@ -15,7 +15,7 @@ data class GameIcon(
 )
 
 object GameIcons {
-    val groups: List<String> = listOf("Armas", "Armaduras e escudos", "Itens mágicos", "Poções e consumíveis", "Equipamento de aventura", "Montarias e transporte", "Roupas", "Serviços")
+    val groups: List<String> = listOf("Armas", "Armaduras e escudos", "Itens mágicos", "Poções e consumíveis", "Equipamento de aventura", "Montarias e transporte", "Roupas", "Serviços", "Magias")
 
     val all: List<GameIcon> = listOf(
         GameIcon("plain-dagger", R.drawable.gi_plain_dagger, "Adaga", "faca punhal lâmina", "Armas", "Lorc"),
@@ -294,7 +294,15 @@ object GameIcons {
         GameIcon("farmer", R.drawable.gi_farmer, "Trabalhador", "trabalhador treinado", "Serviços", "Delapouite"),
         GameIcon("wheelbarrow", R.drawable.gi_wheelbarrow, "Carrinho de mão", "trabalhador sem treinamento", "Serviços", "Delapouite"),
         GameIcon("bed", R.drawable.gi_bed, "Cama", "acomodação", "Serviços", "Delapouite"),
-        GameIcon("person-in-bed", R.drawable.gi_person_in_bed, "Cama confortável", "acomodação boa", "Serviços", "Delapouite")
+        GameIcon("person-in-bed", R.drawable.gi_person_in_bed, "Cama confortável", "acomodação boa", "Serviços", "Delapouite"),
+        GameIcon("compass", R.drawable.gi_compass, "Bússola", "direção norte orientação", "Magias", "Lorc"),
+        GameIcon("feather", R.drawable.gi_feather, "Pena", "queda suave leveza", "Magias", "Lorc"),
+        GameIcon("owl", R.drawable.gi_owl, "Coruja", "sabedoria animal ave", "Magias", "Lorc"),
+        GameIcon("wasp-sting", R.drawable.gi_wasp_sting, "Vespa", "inseto ferrão repelir", "Magias", "Lorc"),
+        GameIcon("claws", R.drawable.gi_claws, "Garras naturais", "garras arma natural ataque", "Magias", "Delapouite"),
+        GameIcon("plain-circle", R.drawable.gi_plain_circle, "Disco de energia", "disco círculo energia flutuante", "Magias", "Delapouite"),
+        GameIcon("invisible", R.drawable.gi_invisible, "Invisibilidade", "invisível transparência oculto", "Magias", "Delapouite"),
+        GameIcon("alien-bug", R.drawable.gi_alien_bug, "Enxame insetoide", "insetos enxame criatura rastejante", "Magias", "Delapouite")
     )
 
     private val byKey: Map<String, GameIcon> = all.associateBy { it.key }

@@ -43,3 +43,12 @@
 - Nenhum recurso SVG novo foi criado; todos os identificadores usados já existem em GameIcons.
 - A cobertura passa de 362 para 383 magias com ícone individual; 10 permanecem com o ícone da escola.
 - O escopo continua exclusivamente visual. Os nomes, descrições, níveis, classes e demais regras do catálogo não foram alterados.
+
+## Quinta etapa — novos recursos específicos do Game-icons.net (2026-11-09)
+
+- Incorporados oito SVGs originais do repositório game-icons/icons: compass, feather, owl e wasp-sting (Lorc); claws, plain-circle, invisible e alien-bug (Delapouite).
+- A licença upstream identifica os recursos como CC BY 3.0; autores e arquivos de origem foram incluídos em docs/ICONES_CREDITOS.md e os créditos do app foram atualizados.
+- Os novos símbolos cobrem direção, sabedoria da coruja, armas naturais, disco de energia, invisibilidade e efeitos com insetos; a pena substitui o símbolo genérico de movimento em Queda Suave.
+- Atualizados os ícones de invisibilidade para usar o símbolo específico; Obscurecer Objeto passou a usar o escudo, pois o verbete protege contra adivinhações, não torna o objeto invisível à visão comum.
+- A cobertura passa de 383 para 391 magias com ícone individual; somente Orientação e Apagar permanecem com fallback da escola.
+- O registro de ícones ganhou o grupo Magias; não houve alteração de regras, níveis, classes, descrições ou dados persistidos.

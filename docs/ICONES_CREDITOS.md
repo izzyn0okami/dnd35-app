@@ -1,6 +1,6 @@
 # Créditos dos ícones
 
-Os ícones de itens vêm do [game-icons.net](https://game-icons.net) (repositório [game-icons/icons](https://github.com/game-icons/icons)). Segundo o `license.txt` do repositório, os ícones são distribuídos sob [Creative Commons 3.0 BY](https://creativecommons.org/licenses/by/3.0/), exceto os de autores marcados como CC0 ([CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/)). A licença pede a menção "Icons made by {autor}".
+Os ícones de itens e magias vêm do [game-icons.net](https://game-icons.net) (repositório [game-icons/icons](https://github.com/game-icons/icons)). Segundo o `license.txt` do repositório, os ícones são distribuídos sob [Creative Commons 3.0 BY](https://creativecommons.org/licenses/by/3.0/), exceto os de autores marcados como CC0 ([CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/)). A licença pede a menção "Icons made by {autor}".
 
 **Alterações feitas pelo app:** os desenhos foram convertidos de SVG para VectorDrawable do Android, sem o retângulo de fundo preto, e são pintados em tempo de execução com a cor do tema.
 
@@ -10,8 +10,8 @@ Esta lista e a tela **Créditos e licenças** (menu ⋮ do app) são geradas por
 
 | Autor | Licença | Ícones no app |
 |---|---|---|
-| [Delapouite](http://delapouite.com) | CC BY 3.0 | 123 |
-| [Lorc](http://lorcblog.blogspot.com) | CC BY 3.0 | 122 |
+| [Delapouite](http://delapouite.com) | CC BY 3.0 | 127 |
+| [Lorc](http://lorcblog.blogspot.com) | CC BY 3.0 | 126 |
 | [Skoll](https://game-icons.net) | CC BY 3.0 | 15 |
 | [Lucas](https://game-icons.net) | CC BY 3.0 | 4 |
 | [Willdabeast](http://wjbstories.blogspot.com) | CC BY 3.0 | 4 |
@@ -303,6 +303,14 @@ Esta lista e a tela **Créditos e licenças** (menu ⋮ do app) são geradas por
 | `wheelbarrow` | Carrinho de mão | Serviços | Delapouite | `delapouite/wheelbarrow.svg` |
 | `bed` | Cama | Serviços | Delapouite | `delapouite/bed.svg` |
 | `person-in-bed` | Cama confortável | Serviços | Delapouite | `delapouite/person-in-bed.svg` |
+| `compass` | Bússola | Magias | Lorc | `lorc/compass.svg` |
+| `feather` | Pena | Magias | Lorc | `lorc/feather.svg` |
+| `owl` | Coruja | Magias | Lorc | `lorc/owl.svg` |
+| `wasp-sting` | Vespa | Magias | Lorc | `lorc/wasp-sting.svg` |
+| `claws` | Garras naturais | Magias | Delapouite | `delapouite/claws.svg` |
+| `plain-circle` | Disco de energia | Magias | Delapouite | `delapouite/plain-circle.svg` |
+| `invisible` | Invisibilidade | Magias | Delapouite | `delapouite/invisible.svg` |
+| `alien-bug` | Enxame insetoide | Magias | Delapouite | `delapouite/alien-bug.svg` |
 
  
 ## Ícones das escolas de magia (2026-11-09)
@@ -338,3 +346,7 @@ Os símbolos são decorativos. As chaves utilizadas já constam na tabela de íc
 ## Ampliação da cobertura de magias (2026-11-09)
 
 A camada individual passou a cobrir 309 das 393 entradas atuais do catálogo, usando recursos que já estavam registrados. As 84 restantes continuam usando o ícone da escola. Foram removidas associações que não correspondiam a nomes existentes no catálogo do aplicativo, e os testes agora verificam nomes e recursos associados para impedir referências inválidas.
+
+## Recursos adicionados para magias (2026-11-09)
+
+Os oito recursos do grupo **Magias** foram obtidos do repositório [game-icons/icons](https://github.com/game-icons/icons). Os autores são Lorc e Delapouite; ambos estão identificados como CC BY 3.0 no arquivo `license.txt` da fonte. Os SVGs foram convertidos para VectorDrawable, removendo o fundo preto conforme o processo já usado pelo projeto.
