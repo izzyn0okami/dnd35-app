@@ -175,3 +175,26 @@ peso 5,5 lb (cerca de 2,5 kg, como diz o livro); a descrição lembra que o caja
 Três erros de extração do PDF nessa tabela foram corrigidos conferindo as descrições
 individuais: "65.000 FO" (Encantamento) → PO, "65:000" (Ilusão) → 65.000 e "Vido" → Vida.
 Todos os cajados das oito escolas custam 65.000 PO, o que bate com cada descrição.
+
+### Varinhas do Livro do Mestre (2026-11-09)
+
+A Tabela 7–26 (Varinhas, Livro do Mestre 3.5 brasileiro, Cap. 7) foi importada para
+`items.json`: 80 varinhas novas, com o preço de mercado da tabela (as três colunas, Menor,
+Médio e Maior, cobrem 01–100 sem lacunas nem sobreposições; 81 linhas, uma já existia).
+Ficam em "Consumíveis", na mesma categoria da varinha que já estava no catálogo (as cargas
+se esgotam), no espaço "Mão Principal" e com peso 0,7 lb (o livro diz "menos de 300 g").
+
+Decisões:
+- A linha "Mísseis mágicos (1º)" não foi duplicada: já existe "Varinha de Mísseis Mágicos
+  (Nv 1)" (750 PO, mesmo preço). Não renomeei o item antigo para não quebrar fichas que o
+  referenciam pelo nome.
+- Varinhas de nível de conjurador especial mantêm o sufixo do livro, como "(5º)", e as
+  versões "elevado" ficam como "Enfeitiçar Pessoa, elevado (magia de 3º nível)".
+- Restauração e Pele Rochosa levam, na descrição, o custo de criação das notas de rodapé da
+  tabela (10.500 PO + 840 XP + componentes).
+- Erros de extração corrigidos: "Ancora dimensional" → Âncora Dimensional, "Muralha de
+  Ceio" → Muralha de Gelo (grafia do próprio livro em outras páginas) e "Invocar criaturas
+  1" → I.
+- Pendência: o catálogo de magias do app ainda não tem várias das magias que essas varinhas
+  reproduzem (ex.: Sugestão, Lentidão, Levitação); isso é do catálogo de magias, não desta
+  tabela.

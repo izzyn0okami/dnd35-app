@@ -4400,6 +4400,806 @@
     "icon": "square-bottle"
   },
   {
+    "name": "Varinha de Detectar Magia",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 375,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Luz",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 375,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Mãos Flamejantes",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 750,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Enfeitiçar Animais",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 750,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Enfeitiçar Pessoa",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 750,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Leque Cromático",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 750,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Curar Ferimentos Leves",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 750,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Detectar Portas Secretas",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 750,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Aumentar Pessoa",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 750,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Toque Chocante",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 750,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Invocar Criaturas I",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 750,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Mísseis Mágicos (3º)",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 2250,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Mísseis Mágicos (5º)",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 3750,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Vigor do Urso",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 4500,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Força do Touro",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 4500,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Agilidade do Gato",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 4500,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Curar Ferimentos Moderados",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 4500,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Escuridão",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 4500,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Luz do Dia",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 4500,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Retardar Envenenamento",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 4500,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Esplendor da Águia",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 4500,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Vitalidade Ilusória",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 4500,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Astúcia da Raposa",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 4500,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Toque do Carniçal",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 4500,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Imobilizar Pessoa",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 4500,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Invisibilidade",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 4500,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Arrombar",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 4500,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Levitação",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 4500,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Flecha Ácida de Melf",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 4500,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Reflexos",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 4500,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Sabedoria da Coruja",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 4500,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Despedaçar",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 4500,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Silêncio",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 4500,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Invocar Criaturas II",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 4500,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Teia",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 4500,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Mísseis Mágicos (7º)",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 5250,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Mísseis Mágicos (9º)",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 6750,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Convocar Relâmpagos (5º)",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 11250,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Enfeitiçar Pessoa, elevado (magia de 3º nível)",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 11250,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Praga",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 11250,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Curar Ferimentos Graves",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 11250,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Dissipar Magia",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 11250,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Bola de Fogo (5º)",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 11250,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Lâmina Afiada",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 11250,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Relâmpago (5º)",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 11250,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Imagem Maior",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 11250,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Lentidão",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 11250,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Sugestão",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 11250,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Invocar Criaturas III",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 11250,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Bola de Fogo (6º)",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 13500,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Relâmpago (6º)",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 13500,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Luz Cegante (6º)",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 13500,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Convocar Relâmpagos (6º)",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 18000,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Bola de Fogo (8º)",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 18000,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Relâmpago (8º)",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 18000,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Enfeitiçar Monstro",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 21000,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Curar Ferimentos Críticos",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 21000,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Âncora Dimensional",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 21000,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Medo",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 21000,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Invisibilidade Maior",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 21000,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Imobilizar Pessoa, elevado (4º nível)",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 21000,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Tempestade Glacial",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 21000,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Infligir Ferimentos Críticos",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 21000,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Neutralizar Venenos",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 21000,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Envenenamento",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 21000,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Metamorfosear",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 21000,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Raio do Enfraquecimento, elevado (4º nível)",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 21000,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Sugestão, elevado (4º nível)",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 21000,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Invocar Criaturas IV",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 21000,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Muralha de Fogo",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 21000,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Muralha de Gelo",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 21000,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Dissipar Magia (10º)",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 22500,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Bola de Fogo (10º)",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 22500,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Relâmpago (10º)",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 22500,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Martelo do Caos (8º)",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 24000,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Destruição Sagrada (8º)",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 24000,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Cólera da Ordem (8º)",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 24000,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Nuvem Profana (8º)",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 24000,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Restauração",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 26000,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre; Custo de criação: 10.500 PO, 840 XP e mais 5.000 PO em componentes materiais",
+    "icon": "crystal-wand"
+  },
+  {
+    "name": "Varinha de Pele Rochosa",
+    "category": "Consumíveis",
+    "defaultSlot": "Mão Principal",
+    "weightLb": 0.7,
+    "costGp": 33500,
+    "damageOrAc": "-",
+    "properties": "Varinha mágica, 50 cargas ao ser criada; reproduz a magia indicada; Tabela 7–26 do Livro do Mestre; Custo de criação: 10.500 PO, 840 XP e mais 12.500 PO em componentes materiais",
+    "icon": "crystal-wand"
+  },
+  {
     "name": "Cachorro de Montaria",
     "category": "Itens de Aventura",
     "defaultSlot": "Mochila (Não Equipado)",
