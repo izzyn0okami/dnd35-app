@@ -74,7 +74,7 @@ class GameIconsTest {
             "Movimentação Livre" to "wingfoot",
             "Raio Polar" to "crystal-wand",
             "Aliado Extra-Planar Maior" to "magic-lamp",
-            "Refugiar Itens" to "mirror-mirror",
+            "Refugiar Itens" to "invisible",
             "Visão" to "crystal-ball",
             "Intuir Direção" to "compass",
             "Sabedoria da Coruja" to "owl",
@@ -87,7 +87,6 @@ class GameIconsTest {
             "Invisibilidade" to "invisible",
             "Invisibilidade em Massa" to "invisible",
             "Passagem Invisível" to "invisible",
-            "Refugiar Itens" to "invisible",
             "Obscurecer Objeto" to "magic-shield"
 
         )
