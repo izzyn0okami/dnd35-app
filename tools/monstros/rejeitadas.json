@@ -1,0 +1,860 @@
+[
+  {
+    "linha": 1171,
+    "nome": "Abolete Mago, Mago de 10º Nível",
+    "tipo": "Aberração (Enorme — Aquática)",
+    "motivo": "mais de uma variante (dados de vida)"
+  },
+  {
+    "linha": 1592,
+    "nome": "Combatente Duergar de 1º Nível",
+    "tipo": "Humanoide (Médio — Anão)",
+    "motivo": "mais de uma variante (dados de vida)"
+  },
+  {
+    "linha": 2031,
+    "nome": "TEXUGO ATROZ",
+    "tipo": "Animal (Médio)",
+    "motivo": "PV 23 incompatível com 3d8+15 (média 28)"
+  },
+  {
+    "linha": 2548,
+    "nome": "ANKHEG",
+    "tipo": "Besta Mágica (Grande)",
+    "motivo": "PV 25 incompatível com 3d70+12 (média 118)"
+  },
+  {
+    "linha": 2696,
+    "nome": "Aparição Tórrida",
+    "tipo": "Morto–vivo (Grande — Incorpóreo)",
+    "motivo": "mais de uma variante (dados de vida)"
+  },
+  {
+    "linha": 3146,
+    "nome": "Extra–Planar",
+    "tipo": "(Médio — Arconte, Planar, Bem, Leal)",
+    "motivo": "linha de tipo irregular"
+  },
+  {
+    "linha": 3287,
+    "nome": "ARCONTE MENSAGEIRO ",
+    "tipo": "28",
+    "motivo": "linha de tipo irregular"
+  },
+  {
+    "linha": 3578,
+    "nome": "Extra–Planar",
+    "tipo": "(Grande — Mal, Planar, Leal, Metamorfo)",
+    "motivo": "linha de tipo irregular"
+  },
+  {
+    "linha": 3662,
+    "nome": "Extra–Planar",
+    "tipo": "(Grande — Besta Mágica Avançada, Planar)",
+    "motivo": "linha de tipo irregular"
+  },
+  {
+    "linha": 3695,
+    "nome": "32",
+    "tipo": "Besta Mágica (Enorme)",
+    "motivo": "nome irregular"
+  },
+  {
+    "linha": 3803,
+    "nome": "BEHIR ",
+    "tipo": "33",
+    "motivo": "linha de tipo irregular"
+  },
+  {
+    "linha": 4062,
+    "nome": "BODAK",
+    "tipo": "Morto–Vivo (Médio — Planar)",
+    "motivo": "PV 58 incompatível com 8d12+0 (média 52)"
+  },
+  {
+    "linha": 4356,
+    "nome": "BRUXA DA NOITE",
+    "tipo": "Extra–planar Médio (Mal, Planar)",
+    "motivo": "linha de tipo irregular"
+  },
+  {
+    "linha": 4998,
+    "nome": "CENTAURO",
+    "tipo": "Humanoide Monstruoso (Grande)",
+    "motivo": "habilidades ilegíveis"
+  },
+  {
+    "linha": 5034,
+    "nome": "Lívido",
+    "tipo": "Morto–Vivo (Médio)",
+    "motivo": "mais de uma variante (dados de vida)"
+  },
+  {
+    "linha": 6132,
+    "nome": "CAÇADOR",
+    "tipo": "Constructo (Enorme — Planar)",
+    "motivo": "habilidades ilegíveis"
+  },
+  {
+    "linha": 6631,
+    "nome": "SÚCUBO",
+    "tipo": "Extra–Planar (Médio — Caótico, Planar, Mal, Tanar’ri)",
+    "motivo": "iniciativa ilegível"
+  },
+  {
+    "linha": 7004,
+    "nome": "DEVORADOR",
+    "tipo": "Morto–Vivo (Grande— Planar)",
+    "motivo": "habilidades ilegíveis"
+  },
+  {
+    "linha": 7205,
+    "nome": "Devorador de Mentes Feiticeiro 9º Nível",
+    "tipo": "Aberração Média",
+    "motivo": "linha de tipo irregular"
+  },
+  {
+    "linha": 7559,
+    "nome": "DIABO DE CHIFRES (CORNUGON)",
+    "tipo": "Extra–Planar (Grande — Baatezu, Mal, Planar, Leal)",
+    "motivo": "ND ilegível ('')"
+  },
+  {
+    "linha": 7855,
+    "nome": "DIABO DO GELO (GELUGON)",
+    "tipo": "Extra–Planar (Grande — Baatezu, Mal, Planar, Leal)",
+    "motivo": "dados de vida ilegíveis"
+  },
+  {
+    "linha": 8206,
+    "nome": "LÊMURE",
+    "tipo": "Extra–Planar (Médio — Baatezu, Mal, Planar, Leal)",
+    "motivo": "habilidades ilegíveis"
+  },
+  {
+    "linha": 11736,
+    "nome": "Elemental da Água, Grande",
+    "tipo": "Elemental (Grande — Água, Planar)",
+    "motivo": "mais de uma variante (dados de vida)"
+  },
+  {
+    "linha": 11789,
+    "nome": "Elemental da Água, Ancião Elemental",
+    "tipo": "(Enorme — Água, Planar)",
+    "motivo": "linha de tipo irregular"
+  },
+  {
+    "linha": 11858,
+    "nome": "Elemental do Ar, Grande",
+    "tipo": "Elemental (Grande — Ar, Planar)",
+    "motivo": "mais de uma variante (dados de vida)"
+  },
+  {
+    "linha": 11916,
+    "nome": "Elemental do Ar, Superior",
+    "tipo": "Elemental (Enorme — Ar, Planar)",
+    "motivo": "mais de uma variante (dados de vida)"
+  },
+  {
+    "linha": 11986,
+    "nome": "Elemental do Fogo, Grande",
+    "tipo": "Elemental (Grande — Fogo, Planar)",
+    "motivo": "mais de uma variante (dados de vida)"
+  },
+  {
+    "linha": 12047,
+    "nome": "Elemental do Fogo, Ancião",
+    "tipo": "Elemental (Enorme — Fogo, Planar)",
+    "motivo": "mais de uma variante (dados de vida)"
+  },
+  {
+    "linha": 12120,
+    "nome": "Elemental da Terra, Grande",
+    "tipo": "Elemental (Grande — Terra, Planar)",
+    "motivo": "mais de uma variante (dados de vida)"
+  },
+  {
+    "linha": 12173,
+    "nome": "Elemental da Terra, Ancião",
+    "tipo": "Elemental (Enorme — Terra, Planar)",
+    "motivo": "mais de uma variante (dados de vida)"
+  },
+  {
+    "linha": 12651,
+    "nome": "Combatente Drow de 1º Nível",
+    "tipo": "Humanoide (Médio — Elfo)",
+    "motivo": "mais de uma variante (dados de vida)"
+  },
+  {
+    "linha": 12950,
+    "nome": "ENXAME DE ARANHAS",
+    "tipo": "Inseto (Diminuto — Enxame)",
+    "motivo": "PV 9 incompatível com 2d3+0 (média 4)"
+  },
+  {
+    "linha": 13125,
+    "nome": "ENXAME DE RATOS",
+    "tipo": "Animal (Diminuto — Enxame)",
+    "motivo": "PV 13 incompatível com 4d8+0 (média 18)"
+  },
+  {
+    "linha": 13178,
+    "nome": "ENXAME DE VESPAS INFERNAIS",
+    "tipo": "Besta Mágica (Diminuto — Extra planar. Mal, Enxame)",
+    "motivo": "CA ilegível"
+  },
+  {
+    "linha": 13527,
+    "nome": "HIERACO–ESFINGE",
+    "tipo": "Besta Mágica (Grande)",
+    "motivo": "CA ilegível"
+  },
+  {
+    "linha": 13648,
+    "nome": "Esqueleto de Urso–coruja",
+    "tipo": "Morto–vivo (Grande)",
+    "motivo": "mais de uma variante (dados de vida)"
+  },
+  {
+    "linha": 13703,
+    "nome": "Esqueleto de Ettin",
+    "tipo": "Morto–vivo (Grande)",
+    "motivo": "mais de uma variante (dados de vida)"
+  },
+  {
+    "linha": 13795,
+    "nome": "Dragão Vermelho Jovem Adulto",
+    "tipo": "Morto–vivo (Enorme — Fogo)",
+    "motivo": "mais de uma variante (dados de vida)"
+  },
+  {
+    "linha": 13944,
+    "nome": "ESTRANGULADOR",
+    "tipo": "Besta Mágica (Grande)",
+    "motivo": "BBA/agarrar ilegível"
+  },
+  {
+    "linha": 15024,
+    "nome": "Capataz Formian",
+    "tipo": "Extra–Planar (Médio — Leal, Planar)",
+    "motivo": "mais de uma variante (dados de vida)"
+  },
+  {
+    "linha": 15152,
+    "nome": "Rainha Formian",
+    "tipo": "Extra–Planar (Grande — Leal, Planar)",
+    "motivo": "mais de uma variante (dados de vida)"
+  },
+  {
+    "linha": 15248,
+    "nome": "Fungo Violeta",
+    "tipo": "Planta (Média)",
+    "motivo": "mais de uma variante (dados de vida)"
+  },
+  {
+    "linha": 15556,
+    "nome": "Gavião–Seta Ancião",
+    "tipo": "Extra–Planar (Grande — Ar, Planar)",
+    "motivo": "mais de uma variante (dados de vida)"
+  },
+  {
+    "linha": 16176,
+    "nome": "Gigante do Gelo Jarl, Algoz de 8º Nível",
+    "tipo": "Gigante (Grande — Frio)",
+    "motivo": "nome irregular"
+  },
+  {
+    "linha": 16315,
+    "nome": "GIGANTE DAS COLINAS",
+    "tipo": "Gigante (Grande)",
+    "motivo": "habilidades ilegíveis"
+  },
+  {
+    "linha": 16540,
+    "nome": "GIGANTE DA TEMPESTADE",
+    "tipo": "Gigante (Enorme)",
+    "motivo": "CA ilegível"
+  },
+  {
+    "linha": 16725,
+    "nome": "Humanoide (Médio —",
+    "tipo": "Planar)",
+    "motivo": "linha de tipo irregular"
+  },
+  {
+    "linha": 16907,
+    "nome": "GITHZERAI",
+    "tipo": "Guerreiro Githzerai de 1º Nível Humanoide (Médio — Planar)",
+    "motivo": "linha de tipo irregular"
+  },
+  {
+    "linha": 17137,
+    "nome": "Combatente Svirfneblin de 1º Nível",
+    "tipo": "Humanoide (Pequeno — Gnomo)",
+    "motivo": "mais de uma variante (dados de vida)"
+  },
+  {
+    "linha": 17352,
+    "nome": "GOBLIN",
+    "tipo": "Humanoide Pequeno (Goblinóide)",
+    "motivo": "linha de tipo irregular"
+  },
+  {
+    "linha": 17626,
+    "nome": "GOLEM DE CARNE",
+    "tipo": "Constructo (Grande)",
+    "motivo": "habilidades ilegíveis"
+  },
+  {
+    "linha": 17831,
+    "nome": "GORGON",
+    "tipo": "Besta Mágica (Grande)",
+    "motivo": "ND ilegível ('')"
+  },
+  {
+    "linha": 17854,
+    "nome": "Golem de Pedra Maior",
+    "tipo": "Constructo (Enorme)",
+    "motivo": "mais de uma variante (dados de vida)"
+  },
+  {
+    "linha": 18150,
+    "nome": "GUARDIÃO PROTETOR",
+    "tipo": "Constructo (Grande)",
+    "motivo": "ND ilegível ('S')"
+  },
+  {
+    "linha": 18349,
+    "nome": "LEONAL",
+    "tipo": "Extra–planar (Médio, Planar, Bem, Guardinal)",
+    "motivo": "CA ilegível"
+  },
+  {
+    "linha": 18422,
+    "nome": "HALFLING",
+    "tipo": "Halfling, Combatente de 1º nível Humanoide (Pequeno — Halfling)",
+    "motivo": "linha de tipo irregular"
+  },
+  {
+    "linha": 18602,
+    "nome": "Harpia Arqueira Guerreiro de 7º nível",
+    "tipo": "Humanoide Monstruoso (Médio)",
+    "motivo": "mais de uma variante (dados de vida)"
+  },
+  {
+    "linha": 18708,
+    "nome": "Hidra de Sete Cabeças Besta Mágica",
+    "tipo": "(Enorme)",
+    "motivo": "linha de tipo irregular"
+  },
+  {
+    "linha": 18797,
+    "nome": "Hidra de Dez Cabeças",
+    "tipo": "Besta Mágica (Enorme)",
+    "motivo": "mais de uma variante (dados de vida)"
+  },
+  {
+    "linha": 18866,
+    "nome": "Hidra de Doze Cabeças",
+    "tipo": "Besta Mágica (Enorme)",
+    "motivo": "mais de uma variante (dados de vida)"
+  },
+  {
+    "linha": 19685,
+    "nome": "KRENSHAR",
+    "tipo": "Besta Mágica (Média)",
+    "motivo": "testes de resistência ilegíveis"
+  },
+  {
+    "linha": 19742,
+    "nome": "KUO–TOA",
+    "tipo": "Humanoide Monstruoso (Médio, Aquático)",
+    "motivo": "nome irregular"
+  },
+  {
+    "linha": 19991,
+    "nome": "LAMIA",
+    "tipo": "Besta Mágica (Grande)",
+    "motivo": "ND ilegível ('')"
+  },
+  {
+    "linha": 20353,
+    "nome": "Humanoide",
+    "tipo": "(Grande, Humano, Metamorfo)",
+    "motivo": "linha de tipo irregular"
+  },
+  {
+    "linha": 20471,
+    "nome": "Gigante",
+    "tipo": "(Grande, Gigante, Metamorfo)",
+    "motivo": "linha de tipo irregular"
+  },
+  {
+    "linha": 20603,
+    "nome": "Humanoide",
+    "tipo": "(Médio, Humano, Metamorfo)",
+    "motivo": "linha de tipo irregular"
+  },
+  {
+    "linha": 20723,
+    "nome": "Humanoide",
+    "tipo": "(Grande, Humano, Metamorfo)",
+    "motivo": "linha de tipo irregular"
+  },
+  {
+    "linha": 20853,
+    "nome": "Humanoide",
+    "tipo": "(Grande, Humano, Metamorfo)",
+    "motivo": "linha de tipo irregular"
+  },
+  {
+    "linha": 20987,
+    "nome": "Humanoide",
+    "tipo": "(Médio, Humano, Metamorfo)",
+    "motivo": "linha de tipo irregular"
+  },
+  {
+    "linha": 21093,
+    "nome": "Humanoide",
+    "tipo": "(Grande, Humano, Metamorfo)",
+    "motivo": "linha de tipo irregular"
+  },
+  {
+    "linha": 21672,
+    "nome": "CUBO GELATINOSO",
+    "tipo": "Limo (Enorme)",
+    "motivo": "testes de resistência ilegíveis"
+  },
+  {
+    "linha": 21737,
+    "nome": "GOSMA OCRE",
+    "tipo": "Limo (Grande)",
+    "motivo": "habilidades ilegíveis"
+  },
+  {
+    "linha": 21944,
+    "nome": "Pudim Negro Ancião",
+    "tipo": "Limo (Imenso)",
+    "motivo": "mais de uma variante (dados de vida)"
+  },
+  {
+    "linha": 22182,
+    "nome": "MANTÍCORA",
+    "tipo": "Besta Mágica (Grande)",
+    "motivo": "BBA/agarrar ilegível"
+  },
+  {
+    "linha": 22322,
+    "nome": "MANTOR",
+    "tipo": "Aberração (Grande)",
+    "motivo": "habilidades ilegíveis"
+  },
+  {
+    "linha": 22623,
+    "nome": "Meio–Abissal/Clérigo Humano 7",
+    "tipo": "Extra–Planar (Médio — Humanoide Avançado, Nativo)",
+    "motivo": "PV 49 incompatível com 7d8+14 (média 45)"
+  },
+  {
+    "linha": 22819,
+    "nome": "Meio–Celestial/Paladino Humano 9",
+    "tipo": "Extra–Planar (Médio — Humanoide Avançado, Nativo)",
+    "motivo": "PV 90 incompatível com 9d10+36 (média 85)"
+  },
+  {
+    "linha": 22991,
+    "nome": "Meio–Dragão/Guerreiro Humano 4",
+    "tipo": "Dragão (Médio — Humanoide Avançado)",
+    "motivo": "PV 43 incompatível com 4d10+16 (média 38)"
+  },
+  {
+    "linha": 23578,
+    "nome": "MEPHIT DA TERRA",
+    "tipo": "Extra–Planar Pequeno (Terra, Planar)",
+    "motivo": "linha de tipo irregular"
+  },
+  {
+    "linha": 23755,
+    "nome": "MINOTAURO",
+    "tipo": "Humanoide Monstruoso (Grande)",
+    "motivo": "CA ilegível"
+  },
+  {
+    "linha": 24164,
+    "nome": "Senhor das Múmias, Clérigo 10º Nível",
+    "tipo": "Morto–Vivo (Médio)",
+    "motivo": "mais de uma variante (dados de vida)"
+  },
+  {
+    "linha": 24213,
+    "nome": "NAGA AQUÁTICA",
+    "tipo": "Aberração Grande (Aquática)",
+    "motivo": "linha de tipo irregular"
+  },
+  {
+    "linha": 24262,
+    "nome": "NAGA ESPIRITUAL",
+    "tipo": "Aberração Grande",
+    "motivo": "linha de tipo irregular"
+  },
+  {
+    "linha": 24319,
+    "nome": "NAGA GUARDIÃ",
+    "tipo": "Aberração Grande",
+    "motivo": "linha de tipo irregular"
+  },
+  {
+    "linha": 24375,
+    "nome": "NAGA NEGRA",
+    "tipo": "Aberração Grande",
+    "motivo": "linha de tipo irregular"
+  },
+  {
+    "linha": 24436,
+    "nome": "NINFA",
+    "tipo": "Fada Média",
+    "motivo": "linha de tipo irregular"
+  },
+  {
+    "linha": 24567,
+    "nome": "de 12 m no seu deslocamento.",
+    "tipo": "Objeto Animado Colossal Constructo (Colossal)",
+    "motivo": "linha de tipo irregular"
+  },
+  {
+    "linha": 24577,
+    "nome": "Objeto Animado Médio",
+    "tipo": "Constructo (Médio)",
+    "motivo": "mais de uma variante (dados de vida)"
+  },
+  {
+    "linha": 24637,
+    "nome": "Objeto Animado Imenso",
+    "tipo": "Constructo (Imenso)",
+    "motivo": "mais de uma variante (dados de vida)"
+  },
+  {
+    "linha": 24858,
+    "nome": "Ogro, Bárbaro 4º Nível",
+    "tipo": "Gigante (Grande)",
+    "motivo": "mais de uma variante (dados de vida)"
+  },
+  {
+    "linha": 24958,
+    "nome": "ORC",
+    "tipo": "Combatente de 1º nível Humanoide (Médio — Orc)",
+    "motivo": "linha de tipo irregular"
+  },
+  {
+    "linha": 25082,
+    "nome": "OTYUGH",
+    "tipo": "Aberração (Grande)",
+    "motivo": "PV 33 incompatível com 6d8+9 (média 36)"
+  },
+  {
+    "linha": 25220,
+    "nome": "Pantera Deslocadora Líder da Matilha",
+    "tipo": "Besta Mágica (Enorme)",
+    "motivo": "mais de uma variante (dados de vida)"
+  },
+  {
+    "linha": 25401,
+    "nome": "PHASM",
+    "tipo": "Aberração (Médio — Metamorfo)",
+    "motivo": "'Testes de Resistência'"
+  },
+  {
+    "linha": 25432,
+    "nome": "Pesadelo, Cauchemar",
+    "tipo": "Extra–Planar (Enorme — Mal, Planar)",
+    "motivo": "mais de uma variante (dados de vida)"
+  },
+  {
+    "linha": 25535,
+    "nome": "POVO LAGARTO",
+    "tipo": "Humanoide (Médio, Réptil)",
+    "motivo": "testes de resistência ilegíveis"
+  },
+  {
+    "linha": 25662,
+    "nome": "Povo do Mar, Combatente 1º Nível",
+    "tipo": "Humanoide Médio (Aquático)",
+    "motivo": "linha de tipo irregular"
+  },
+  {
+    "linha": 25831,
+    "nome": "QUIMERA",
+    "tipo": "Besta Mágica (Grande)",
+    "motivo": "CA ilegível"
+  },
+  {
+    "linha": 25900,
+    "nome": "RAKSHASA",
+    "tipo": "Extra–Planar (Médio — Nativo)",
+    "motivo": "PV 58 incompatível com 7d8+21 (média 52)"
+  },
+  {
+    "linha": 26157,
+    "nome": "REMORHAZ",
+    "tipo": "Besta Mágica (Enorme)",
+    "motivo": "PV 71 incompatível com 7d10+35 (média 73)"
+  },
+  {
+    "linha": 26223,
+    "nome": "Robgoblin, Combatente de 1º Nível Humanoide (Médio —",
+    "tipo": "Goblinóide)",
+    "motivo": "linha de tipo irregular"
+  },
+  {
+    "linha": 26519,
+    "nome": "Extra–Planar",
+    "tipo": "(Grande — Planar, Fogo)",
+    "motivo": "linha de tipo irregular"
+  },
+  {
+    "linha": 26755,
+    "nome": "SAQUEADOR ETÉREO",
+    "tipo": "Besta Mágica (Média — Extra–planar)",
+    "motivo": "BBA/agarrar ilegível"
+  },
+  {
+    "linha": 27383,
+    "nome": "Sombra Superior",
+    "tipo": "Morto–vivo (Médio — Incorpóreo)",
+    "motivo": "mais de uma variante (dados de vida)"
+  },
+  {
+    "linha": 27979,
+    "nome": "Combatente de 1º nível Extra–Planar (Médio —",
+    "tipo": "Nativo)",
+    "motivo": "linha de tipo irregular"
+  },
+  {
+    "linha": 28058,
+    "nome": "Combatente de 1º nível Extra–",
+    "tipo": "Planar (Médio — Nativo)",
+    "motivo": "linha de tipo irregular"
+  },
+  {
+    "linha": 28202,
+    "nome": "Extra–Planar",
+    "tipo": "(Grande — Planar, Água)",
+    "motivo": "linha de tipo irregular"
+  },
+  {
+    "linha": 28282,
+    "nome": "Tribulo Brutal Aterrador",
+    "tipo": "Aberração (Enorme)",
+    "motivo": "mais de uma variante (dados de vida)"
+  },
+  {
+    "linha": 28591,
+    "nome": "Troll Caçador, Ranger de 6º nível",
+    "tipo": "Gigante (Grande)",
+    "motivo": "mais de uma variante (dados de vida)"
+  },
+  {
+    "linha": 28777,
+    "nome": "Corcel Celestial, Clérigo de 7º nível",
+    "tipo": "Besta Mágica (Grande)",
+    "motivo": "mais de uma variante (dados de vida)"
+  },
+  {
+    "linha": 28944,
+    "nome": "Morto–vivo (Médio — Humanoide",
+    "tipo": "Avançado)",
+    "motivo": "linha de tipo irregular"
+  },
+  {
+    "linha": 29009,
+    "nome": "Morto–vivo (Médio — Humanoide",
+    "tipo": "Avançado)",
+    "motivo": "linha de tipo irregular"
+  },
+  {
+    "linha": 29361,
+    "nome": "VERME DA CARNIÇA",
+    "tipo": "Aberração (Grande)",
+    "motivo": "testes de resistência ilegíveis"
+  },
+  {
+    "linha": 29754,
+    "nome": "ANDARILHO NOTURNO",
+    "tipo": "Morto–Vivo (Enorme — Planar)",
+    "motivo": "dados de vida ilegíveis"
+  },
+  {
+    "linha": 30153,
+    "nome": "XILL",
+    "tipo": "Extra–Planar (Médio — Planar)",
+    "motivo": "ND ilegível ('G')"
+  },
+  {
+    "linha": 30249,
+    "nome": "Extra–Planar",
+    "tipo": "(Grande — Planar, Terra)",
+    "motivo": "linha de tipo irregular"
+  },
+  {
+    "linha": 30477,
+    "nome": "ABOMINAÇÃO",
+    "tipo": "Humanoide Monstruoso (Grande)",
+    "motivo": "BBA/agarrar ilegível"
+  },
+  {
+    "linha": 30591,
+    "nome": "MESTIÇOS",
+    "tipo": "Humanoide Monstruoso (Médio)",
+    "motivo": "BBA/agarrar ilegível"
+  },
+  {
+    "linha": 30872,
+    "nome": "Zumbi de Troglodita",
+    "tipo": "Morto–vivo (Médio)",
+    "motivo": "mais de uma variante (dados de vida)"
+  },
+  {
+    "linha": 30937,
+    "nome": "Zumbi de Minotauro",
+    "tipo": "Morto–vivo (Grande)",
+    "motivo": "mais de uma variante (dados de vida)"
+  },
+  {
+    "linha": 31008,
+    "nome": "Zumbi de Dilacerador Cinzento",
+    "tipo": "Morto–vivo (Grande)",
+    "motivo": "mais de uma variante (dados de vida)"
+  },
+  {
+    "linha": 31584,
+    "nome": "Cavalo de Guerra",
+    "tipo": "Leve Animal (Grande)",
+    "motivo": "linha de tipo irregular"
+  },
+  {
+    "linha": 31659,
+    "nome": "Constritora Gigante (Cobra)",
+    "tipo": "Animal (Enorme)",
+    "motivo": "'Habilidades'"
+  },
+  {
+    "linha": 31665,
+    "nome": "Víbora Pequena",
+    "tipo": "Animal (Pequeno)",
+    "motivo": "mais de uma variante (dados de vida)"
+  },
+  {
+    "linha": 31733,
+    "nome": "Víbora Enorme",
+    "tipo": "Animal (Enorme)",
+    "motivo": "mais de uma variante (dados de vida)"
+  },
+  {
+    "linha": 32114,
+    "nome": "HIENA",
+    "tipo": "Animal (Médio)",
+    "motivo": "CA ilegível"
+  },
+  {
+    "linha": 32236,
+    "nome": "LAGARTO GIGANTE",
+    "tipo": "Animal (Médio)",
+    "motivo": "'Testes de Resistência'"
+  },
+  {
+    "linha": 32907,
+    "nome": "Animal",
+    "tipo": "(Enorme — Aquático)",
+    "motivo": "linha de tipo irregular"
+  },
+  {
+    "linha": 33085,
+    "nome": "ABELHA GIGANTE",
+    "tipo": "Inseto (Médio)",
+    "motivo": "BBA/agarrar ilegível"
+  },
+  {
+    "linha": 33146,
+    "nome": "Aranha Média",
+    "tipo": "Inseto (Médio)",
+    "motivo": "mais de uma variante (dados de vida)"
+  },
+  {
+    "linha": 33238,
+    "nome": "BESOURO GIGANTE",
+    "tipo": "Inseto (Médio)",
+    "motivo": "'Habilidades'"
+  },
+  {
+    "linha": 33247,
+    "nome": "Aranha Enorme",
+    "tipo": "Inseto (Enorme)",
+    "motivo": "mais de uma variante (dados de vida)"
+  },
+  {
+    "linha": 33274,
+    "nome": "Aranha Colossal",
+    "tipo": "Inseto (Colossal)",
+    "motivo": "mais de uma variante (dados de vida)"
+  },
+  {
+    "linha": 33349,
+    "nome": "Centopeia Média",
+    "tipo": "Inseto (Médio)",
+    "motivo": "mais de uma variante (dados de vida)"
+  },
+  {
+    "linha": 33399,
+    "nome": "Ajuste de Nível: — — —",
+    "tipo": "Centopeia Grande Inseto (Grande) Centopeia Enorme Inseto (Enorme)",
+    "motivo": "linha de tipo irregular"
+  },
+  {
+    "linha": 33460,
+    "nome": "Centopeia Colossal",
+    "tipo": "Inseto (Colossal)",
+    "motivo": "mais de uma variante (dados de vida)"
+  },
+  {
+    "linha": 33486,
+    "nome": "Escorpião Médio",
+    "tipo": "Inseto (Médio)",
+    "motivo": "mais de uma variante (dados de vida)"
+  },
+  {
+    "linha": 33543,
+    "nome": "GAFANHOTO GIGANTE",
+    "tipo": "Inseto (Grande)",
+    "motivo": "PV 58 incompatível com 7d8+21 (média 52)"
+  },
+  {
+    "linha": 33570,
+    "nome": "LOUVA-A-DEUS GIGANTE",
+    "tipo": "Inseto (Grande)",
+    "motivo": "'Habilidades'"
+  },
+  {
+    "linha": 33585,
+    "nome": "Escorpião Enorme",
+    "tipo": "Inseto (Enorme)",
+    "motivo": "mais de uma variante (dados de vida)"
+  },
+  {
+    "linha": 33615,
+    "nome": "Escorpião Colossal",
+    "tipo": "Inseto (Colossal)",
+    "motivo": "mais de uma variante (dados de vida)"
+  },
+  {
+    "linha": 33724,
+    "nome": "Formiga Gigante — Rainha",
+    "tipo": "Inseto (Grande)",
+    "motivo": "mais de uma variante (dados de vida)"
+  },
+  {
+    "linha": 34043,
+    "nome": "Estatísticas Antigas Estatísticas Atuais Observações",
+    "tipo": "Tipo (Tamanho): Aberração (Grande) Aberração (Enorme) Novo tamanho devido aos 15 DV",
+    "motivo": "linha de tipo irregular"
+  }
+]
