@@ -4,7 +4,13 @@ import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
+import org.junit.runner.RunWith
+import org.robolectric.RobolectricTestRunner
+import org.robolectric.annotation.Config
 
+// Os adaptadores usam org.json e android.util.Log; os testes precisam do ambiente Android simulado.
+@RunWith(RobolectricTestRunner::class)
+@Config(sdk = [35])
 class LegacyClassEntryCompatibilityTest {
 
     @Test
