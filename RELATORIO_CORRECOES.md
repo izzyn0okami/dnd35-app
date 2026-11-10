@@ -538,3 +538,10 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 ### Limites e validação
 - Esta correção trata a identidade da classe. Não altera o catálogo de classes nem reaudita suas habilidades.
 - A suíte Gradle/CI ainda precisa executar para confirmar compilação e testes. Não declarar a correção validada até a CI concluir com sucesso.
+
+
+### Ajuste do ambiente dos testes de compatibilidade (2026-11-10)
+- A primeira execução da CI (`42856019998`) compilou o código de produção e os testes, mas falhou nos seis casos novos de `LegacyClassEntryCompatibilityTest`.
+- A causa foi o teste executar sem Robolectric, embora `CharacterJsonAdapters` use APIs Android (`org.json` e `android.util.Log`). O projeto já possui Robolectric e testes equivalentes usam `@RunWith(RobolectricTestRunner::class)` e `@Config`.
+- Aplicado o mesmo ambiente Robolectric (SDK 35) à classe de teste de compatibilidade. Nenhuma regra de classe ou lógica de produção foi alterada por este ajuste.
+- Aguardar nova execução da CI; não considerar a PR validada nem integrada até todos os testes e a compilação do APK passarem.
