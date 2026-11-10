@@ -468,20 +468,20 @@ object CharacterJsonAdapters {
      * implicitamente na primeira classe do catálogo (Bárbaro). Versões antigas gravavam o nível
      * junto do nome, por exemplo "Guerreiro 4" ou "Guerreiro 4 4".
      */
-    private fun canonicalClassName(rawName: String, defaultName: String = "Guerreiro"): String {
-        fun resolve(candidate: String): String? =
-            Dnd35Rules.CLASSES.firstOrNull { it.name.equals(candidate.trim(), ignoreCase = true) }?.name
-
+    private fun canonicalClassNameOrNull(rawName: String): String? {
         var candidate = rawName.substringBefore("/").trim()
-        resolve(candidate)?.let { return it }
+        Dnd35Rules.CLASSES.firstOrNull { it.name.equals(candidate, ignoreCase = true) }?.let { return it.name }
         while (candidate.isNotBlank()) {
             val withoutTrailingNumber = candidate.replace(Regex("\\s+\\d+$"), "").trim()
             if (withoutTrailingNumber == candidate) break
             candidate = withoutTrailingNumber
-            resolve(candidate)?.let { return it }
+            Dnd35Rules.CLASSES.firstOrNull { it.name.equals(candidate, ignoreCase = true) }?.let { return it.name }
         }
-        return resolve(defaultName) ?: "Guerreiro"
+        return null
     }
+
+    private fun canonicalClassName(rawName: String, defaultName: String = "Guerreiro"): String =
+        canonicalClassNameOrNull(rawName) ?: canonicalClassNameOrNull(defaultName) ?: "Guerreiro"
 
     fun deserializeClassEntries(json: String?, fallbackClass: String = "Guerreiro", fallbackLevel: Int = 1): List<CharacterClassEntry> {
         val cleanFallbackClass = canonicalClassName(fallbackClass)
@@ -496,20 +496,7 @@ object CharacterJsonAdapters {
             for (i in 0 until array.length()) {
                 val obj = array.optJSONObject(i) ?: continue
                 val rawName = obj.optString("className", "")
-                val canonicalName = Dnd35Rules.CLASSES.firstOrNull { it.name.equals(rawName.trim(), ignoreCase = true) }?.name
-                    ?: run {
-                        var candidate = rawName.trim()
-                        var resolved: String? = null
-                        while (candidate.isNotBlank() && resolved == null) {
-                            candidate = candidate.replace(Regex("\\s+\\d+$"), "").trim()
-                            if (candidate != rawName.trim()) {
-                                resolved = Dnd35Rules.CLASSES.firstOrNull { it.name.equals(candidate, ignoreCase = true) }?.name
-                            } else {
-                                break
-                            }
-                        }
-                        resolved
-                    }
+                val canonicalName = canonicalClassNameOrNull(rawName)
                 // Entradas desconhecidas são ignoradas; nunca recebem habilidades de Bárbaro
                 // apenas por falha de correspondência com a primeira classe do catálogo.
                 if (canonicalName != null) {
