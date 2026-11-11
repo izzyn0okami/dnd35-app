@@ -56,4 +56,25 @@ class CreatureCatalogTest {
     fun undeadStyleCreaturesHaveNullIntelligence() {
         assertTrue(CreatureCatalog.ALL.any { it.abilities.int == null })
     }
+
+    @Test
+    fun srdAnimalsFillTheCompanionAndSummonGaps() {
+        val hyena = CreatureCatalog.byId("hiena")!!
+        assertEquals(13, hyena.hitPoints)
+        assertEquals(14, hyena.armorClass)
+        assertEquals("1", hyena.challengeRating)
+        assertTrue(hyena.source.startsWith("SRD 3.5"))
+
+        val viper = CreatureCatalog.byId("vibora-media")!!
+        assertEquals(9, viper.hitPoints)
+        assertEquals(16, viper.armorClass)
+
+        val scorpion = CreatureCatalog.byId("escorpiao-medio")!!
+        assertEquals("2d8+4", scorpion.hitDice)
+        assertEquals(null, scorpion.abilities.int)
+
+        assertTrue(CreatureCatalog.byId("aranha-colossal") != null)
+        assertTrue(CreatureCatalog.byId("centopeia-imensa") != null)
+        assertTrue(CreatureCatalog.byId("tubarao-enorme") != null)
+    }
 }

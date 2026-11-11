@@ -330,3 +330,24 @@ Pendências: variantes em várias colunas (víbora, aranha, centopeia, escorpiã
 além de Hiena, Babuíno, Lula, Besouro Gigante e Texugo Atroz (PV não bate com os DV) ficaram
 nas rejeitadas. Vários são necessários para companheiros animais, familiares e Invocar
 Criaturas e serão tratados em um PR próprio.
+
+### Animais e vermes do SRD 3.5 (2026-11-10)
+
+Para completar o que o parser do Livro dos Monstros rejeitou (variantes em várias colunas),
+`creatures.json` ganhou 32 fichas do SRD 3.5 (OGL), com `source` "SRD 3.5 (OGL), traduzido":
+Hiena, Lagarto-Monitor, Cavalo de Guerra Leve, Tubarão (Médio, Grande, Enorme), Víbora
+(Miúda a Enorme) e Aranha, Centopeia e Escorpião de Miúdo/a até Colossal (Centopeia e Aranha
+vão até Imenso/Colossal; o Escorpião Imenso e o Colossal também). Os dados brutos ficam em
+`tools/monstros/srd_animais_vermes.txt` e são convertidos por `gen_srd_animais.py`, que pula ids
+que já existem e valida PV×DV, atributos e testes.
+
+- Números idênticos aos do SRD; textos traduzidos por tabela (talentos e perícias com os
+  nomes do catálogo, deslocamento e alcance em metros: 5 pés = 1,5 m). "Percepção às cegas" do
+  tubarão ficou sem alcance, porque a linha do SRD não o traz.
+- O SRD pode divergir da edição impressa brasileira em detalhes; o campo `source` deixa claro
+  de onde veio cada ficha. Erro de fonte corrigido: "Jump +7')*" da Aranha Imensa → "+7*".
+- Variantes infernais das centopeias (modelo Infernal) não entraram: são o animal com um
+  modelo, não criaturas à parte.
+- Ainda faltam: Besouro, Gafanhoto, Louva-a-Deus e Abelha Gigantes, Formiga Gigante Rainha,
+  Texugo Atroz (PV não bate com os DV no livro) e os monstros de nível/grandes (gigantes,
+  hidras, nagas, elementais...).
