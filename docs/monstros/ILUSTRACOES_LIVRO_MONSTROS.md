@@ -12,7 +12,7 @@
 - O PDF contém imagens segmentadas em vários objetos internos. A extração direta desses objetos não corresponde necessariamente a uma ilustração completa. O método de produção deve renderizar a página e recortar a região da arte, conferindo visualmente o resultado.
 - Nenhuma imagem extraída foi adicionada ao repositório nesta etapa. A arte do livro tem direitos autorais; antes de embutir imagens no APK distribuído publicamente, é necessário resolver a autorização de redistribuição. O índice de páginas não redistribui a arte.
 
-## Primeira faixa do catálogo
+## Faixa 1 — catálogo 1 a 30
 
 | ID do catálogo | Nome no catálogo | Página impressa | Página PDF | Situação da arte |
 |---|---|---:|---:|---|
@@ -48,6 +48,41 @@
 | `bugbear` | Bugbear | 38 | 42 | Revisar arte |
 | `bulette` | Bulette | 39 | 43 | Revisar arte |
 
+## Faixa 2 — catálogo 31 a 60
+
+| ID do catálogo | Nome no catálogo | Página impressa | Página PDF | Situação da arte |
+|---|---|---:|---:|---|
+| `cacador-invisivel` | Caçador Invisível | 39 | 43 | Revisar arte |
+| `cao-infernal` | Cão Infernal | 40 | 44 | Revisar arte |
+| `cao-de-guerra-nessian` | Cão de Guerra Nessian | 40 | 44 | Revisar arte |
+| `cao-teleportador` | Cão Teleportador | 41 | 45 | Revisar arte |
+| `cao-yeth` | Cão Yeth | 41 | 45 | Revisar arte |
+| `chuul` | Chuul | 44 | 48 | Revisar arte |
+| `cocatriz` | Cocatriz | 45 | 49 | Revisar arte |
+| `constritor` | Constritor | 45 | 49 | Revisar arte |
+| `coruja-gigante` | Coruja Gigante | 46 | 50 | Revisar arte |
+| `couatl` | Couatl | 47 | 51 | Revisar arte |
+| `cria-vampirica` | Cria Vampírica | 48 | 52 | Revisar arte |
+| `rato-atroz-abissal` | Rato Atroz Abissal | 49 | 53 | Revisar arte |
+| `leao-celestial` | Leão Celestial | 49 | 53 | Revisar arte |
+| `babau` | Babau | 50 | 54 | Revisar arte |
+| `balor` | Balor | 51 | 55 | Revisar arte |
+| `bebilith` | Bebilith | 52 | 56 | Revisar arte |
+| `dretch` | Dretch | 52 | 56 | Revisar arte |
+| `glabrezu` | Glabrezu | 52 | 56 | Revisar arte |
+| `hezrou` | Hezrou | 53 | 57 | Revisar arte |
+| `marilith` | Marilith | 50 | 54 | Revisar arte |
+| `nalfeshnee` | Nalfeshnee | 51 | 55 | Revisar arte |
+| `quasit` | Quasit | 51 | 55 | Revisar arte |
+| `vrock` | Vrock | 53 | 57 | Revisar arte |
+| `derro` | Derro | 59 | 63 | Revisar arte |
+| `destrachan` | Destrachan | 60 | 64 | Revisar arte |
+| `devorador-de-aranhas` | Devorador de Aranhas | 61 | 65 | Revisar arte |
+| `diabo-barbado-barbazu` | Diabo Barbado (barbazu) | 64 | 68 | Revisar arte |
+| `diabo-das-correntes-kyton` | Diabo das Correntes (kyton) | 66 | 70 | Revisar arte |
+| `diabo-farpado-hamatula` | Diabo Farpado (hamatula) | 67 | 71 | Revisar arte |
+| `diabo-dos-ossos-osyluth` | Diabo dos Ossos (osyluth) | 68 | 72 | Revisar arte |
+
 ## Decisões técnicas registradas
 
 1. O catálogo de criaturas permanece como fonte de dados de jogo. O vínculo visual será feito por `CreatureDefinition.id`, sem alterar os nomes, IDs ou estatísticas.
@@ -60,6 +95,6 @@
 
 - Confirmada a existência de 230 entradas no catálogo atual.
 - Conferidas visualmente as páginas PDF 12, 14, 15 e 27; cinco associações de arte foram identificadas: Abocanhador Matraqueante, Achaierai, Águia Gigante, Aranea e Aranha Interplanar.
-- Localizadas as fichas da primeira faixa de 30 criaturas, da página impressa 8 à 39; 25 linhas ainda aguardam conferência visual individual da arte.
+- Localizadas as fichas das primeiras 60 criaturas, da página impressa 8 à 68; a segunda faixa teve suas páginas de ficha identificadas por busca textual e conferência do bloco, mas ainda aguarda revisão visual individual das artes.
 - Verificado que a contagem bruta de objetos de imagem do PDF não equivale à quantidade de ilustrações: várias imagens estão divididas em blocos. Para os recortes, usar renderização da página, não assumir que cada objeto interno seja uma figura.
 - Próxima etapa: continuar a associação sequencial dos IDs restantes, confirmar a presença e a região de cada ilustração e só então preparar o manifesto de recursos locais.
