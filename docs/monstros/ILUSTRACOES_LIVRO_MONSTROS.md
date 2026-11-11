@@ -81,7 +81,7 @@
 | `diabo-barbado-barbazu` | Diabo Barbado (barbazu) | 64 | 68 | **Confirmada** — ilustração compartilhada na página PDF 70 |
 | `diabo-das-correntes-kyton` | Diabo das Correntes (kyton) | 66 | 70 | **Confirmada** — ilustração na página PDF 71 |
 | `diabo-farpado-hamatula` | Diabo Farpado (hamatula) | 67 | 71 | **Confirmada** — ilustração na página PDF 71 |
-| `diabo-dos-ossos-osyluth` | Diabo dos Ossos (osyluth) | 68 | 72 | Revisar arte |
+| `diabo-dos-ossos-osyluth` | Diabo dos Ossos (osyluth) | 68 | 72 | **Confirmada** — ilustração na página PDF 75 |
 
 ## Faixa 3 — catálogo 62 a 95
 
@@ -89,21 +89,21 @@
 |---|---|---:|---:|---|
 | `diabrete` | Diabrete | 68 | 72 | **Confirmada** — ilustração compartilhada na página PDF 69 |
 | `erinyes` | Erinyes | 69 | 73 | **Confirmada** — ilustração compartilhada na página PDF 70 |
-| `gato-infernal-bezekira` | Gato Infernal (bezekira) | 70 | 74 | Revisar arte |
-| `lorde-das-profundezas` | Lorde das Profundezas | 70 | 74 | Revisar arte |
-| `digestor` | Digestor | 72 | 76 | Revisar arte |
-| `dilacerador-cinzento` | Dilacerador Cinzento | 72 | 76 | Revisar arte |
+| `gato-infernal-bezekira` | Gato Infernal (bezekira) | 70 | 74 | **Confirmada** — ilustração na página PDF 73 |
+| `lorde-das-profundezas` | Lorde das Profundezas | 70 | 74 | **Confirmada** — ilustração na página PDF 75 |
+| `digestor` | Digestor | 72 | 76 | **Confirmada** — ilustração na página PDF 76 |
+| `dilacerador-cinzento` | Dilacerador Cinzento | 72 | 76 | **Confirmada** — ilustração na página PDF 77 |
 | `dinonico` | Dinonico | 73 | 77 | Revisar arte |
 | `elasmossauro` | Elasmossauro | 74 | 78 | Revisar arte |
 | `megaraptor` | Megaraptor | 74 | 78 | Revisar arte |
-| `tiranossauro` | Tiranossauro | 74 | 78 | Revisar arte |
+| `tiranossauro` | Tiranossauro | 74 | 78 | **Confirmada** — ilustração na página PDF 78 |
 | `triceratops` | Tricerátops | 75 | 79 | Revisar arte |
-| `doppelganger` | Doppelganger | 75 | 79 | Revisar arte |
-| `dragonado` | Dragonado | 96 | 100 | Revisar arte |
-| `driade` | Dríade | 97 | 101 | Revisar arte |
-| `drider` | Drider | 98 | 102 | Revisar arte |
-| `bralani` | Bralani | 99 | 103 | Revisar arte |
-| `ghaele` | Ghaele | 100 | 104 | Revisar arte |
+| `doppelganger` | Doppelganger | 75 | 79 | **Confirmada** — ilustração na página PDF 79 |
+| `dragonado` | Dragonado | 96 | 100 | **Confirmada** — ilustração na página PDF 100 |
+| `driade` | Dríade | 97 | 101 | **Confirmada** — ilustração na página PDF 101 |
+| `drider` | Drider | 98 | 102 | **Confirmada** — ilustração na página PDF 102 |
+| `bralani` | Bralani | 99 | 103 | **Confirmada** — arte compartilhada com Ghaele na página PDF 103 |
+| `ghaele` | Ghaele | 100 | 104 | **Confirmada** — arte compartilhada com Bralani na página PDF 103 |
 | `ente` | Ente | 110 | 114 | Revisar arte |
 | `enxame-de-centopeias` | Enxame de Centopeias | 111 | 115 | Revisar arte |
 | `enxame-de-gafanhotos` | Enxame de Gafanhotos | 111 | 115 | Revisar arte |
@@ -335,6 +335,23 @@ Esta tabela separa a **página da ficha** da **página onde a ilustração apare
 | `diabo-das-correntes-kyton` | Diabo das Correntes (kyton) | 67 | 71 | Figura individual |
 | `diabo-farpado-hamatula` | Diabo Farpado (hamatula) | 67 | 71 | Figura individual |
 
+## Confirmação visual das artes — páginas 69 a 100
+
+| ID do catálogo | Criatura | Página impressa da arte | Página PDF da arte | Observação |
+|---|---|---:|---:|---|
+| `gato-infernal-bezekira` | Gato Infernal (bezekira) | 69 | 73 | Figura individual |
+| `lorde-das-profundezas` | Lorde das Profundezas | 71 | 75 | Figura compartilhada com Diabo dos Ossos |
+| `diabo-dos-ossos-osyluth` | Diabo dos Ossos (osyluth) | 71 | 75 | Figura compartilhada com Lorde das Profundezas |
+| `digestor` | Digestor | 72 | 76 | Figura individual |
+| `dilacerador-cinzento` | Dilacerador Cinzento | 73 | 77 | Figura individual |
+| `tiranossauro` | Tiranossauro | 74 | 78 | Figura individual |
+| `doppelganger` | Doppelganger | 75 | 79 | Figura individual |
+| `dragonado` | Dragonado | 96 | 100 | Figura individual |
+| `driade` | Dríade | 97 | 101 | Figura individual |
+| `drider` | Drider | 98 | 102 | Figura individual |
+| `bralani` | Bralani | 99 | 103 | Figura compartilhada com Ghaele |
+| `ghaele` | Ghaele | 99 | 103 | Figura compartilhada com Bralani |
+
 ## Decisões técnicas registradas
 
 1. O catálogo de criaturas permanece como fonte de dados de jogo. O vínculo visual será feito por `CreatureDefinition.id`, sem alterar os nomes, IDs ou estatísticas.
@@ -346,7 +363,7 @@ Esta tabela separa a **página da ficha** da **página onde a ilustração apare
 ## Log de progresso — 2026-11-10
 
 - Confirmada a existência de 230 entradas no catálogo atual.
-- Conferidas visualmente as páginas PDF 12, 14, 15 e 27; 45 associações criatura–arte foram confirmadas nas páginas PDF 12, 14–16, 22, 24, 27–28, 31, 37–43 e 44–52, 54, 56, 59–60, 62, 64–65 e 69–71. Há figuras compartilhadas; os rótulos impressos foram usados para não atribuir arte a criaturas erradas.
+- Conferidas visualmente as páginas PDF 12, 14, 15 e 27; 57 associações criatura–arte foram confirmadas até a página PDF 103. Há figuras compartilhadas; os rótulos impressos foram usados para não atribuir arte a criaturas erradas.
 - Localizadas as páginas de ficha das 230 criaturas do catálogo; a confirmação visual das artes ainda está incompleta. As faixas 2 e 3 foram associadas às páginas impressas por busca textual e conferência dos títulos dos blocos; a identificação visual individual das artes ainda está pendente.
 - Verificado que a contagem bruta de objetos de imagem do PDF não equivale à quantidade de ilustrações: várias imagens estão divididas em blocos. Para os recortes, usar renderização da página, não assumir que cada objeto interno seja uma figura.
 - Conferidos os títulos dos blocos de demônios nas páginas PDF 54–62; as páginas da Marilith, Nalfeshnee, Quasit e Vrock foram corrigidas para 59, 60, 61 e 62, respectivamente. Isso evita usar simples menções no texto como se fossem a página da ficha.
