@@ -52,43 +52,43 @@
 
 | ID do catálogo | Nome no catálogo | Página impressa | Página PDF | Situação da arte |
 |---|---|---:|---:|---|
-| `cacador-invisivel` | Caçador Invisível | 39 | 43 | Revisar arte |
-| `cao-infernal` | Cão Infernal | 40 | 44 | Revisar arte |
+| `cacador-invisivel` | Caçador Invisível | 39 | 43 | **Confirmada** — ilustração na página PDF 44 |
+| `cao-infernal` | Cão Infernal | 40 | 44 | **Confirmada** — ilustração na página PDF 44 |
 | `cao-de-guerra-nessian` | Cão de Guerra Nessian | 40 | 44 | Revisar arte |
-| `cao-teleportador` | Cão Teleportador | 41 | 45 | Revisar arte |
-| `cao-yeth` | Cão Yeth | 41 | 45 | Revisar arte |
-| `chuul` | Chuul | 44 | 48 | Revisar arte |
-| `cocatriz` | Cocatriz | 45 | 49 | Revisar arte |
-| `constritor` | Constritor | 45 | 49 | Revisar arte |
-| `coruja-gigante` | Coruja Gigante | 46 | 50 | Revisar arte |
-| `couatl` | Couatl | 47 | 51 | Revisar arte |
-| `cria-vampirica` | Cria Vampírica | 48 | 52 | Revisar arte |
+| `cao-teleportador` | Cão Teleportador | 41 | 45 | **Confirmada** — ilustração na página PDF 45 |
+| `cao-yeth` | Cão Yeth | 41 | 45 | **Confirmada** — ilustração na página PDF 46 |
+| `chuul` | Chuul | 44 | 48 | **Confirmada** — ilustração na página PDF 48 |
+| `cocatriz` | Cocatriz | 45 | 49 | **Confirmada** — ilustração na página PDF 49 |
+| `constritor` | Constritor | 45 | 49 | **Confirmada** — ilustração na página PDF 50 |
+| `coruja-gigante` | Coruja Gigante | 46 | 50 | **Confirmada** — ilustração na página PDF 51 |
+| `couatl` | Couatl | 47 | 51 | **Confirmada** — ilustração na página PDF 51 |
+| `cria-vampirica` | Cria Vampírica | 48 | 52 | **Confirmada** — ilustração na página PDF 52 |
 | `rato-atroz-abissal` | Rato Atroz Abissal | 49 | 53 | Revisar arte |
 | `leao-celestial` | Leão Celestial | 49 | 53 | Revisar arte |
-| `babau` | Babau | 50 | 54 | Revisar arte |
-| `balor` | Balor | 51 | 55 | Revisar arte |
-| `bebilith` | Bebilith | 52 | 56 | Revisar arte |
-| `dretch` | Dretch | 53 | 57 | Revisar arte |
-| `glabrezu` | Glabrezu | 54 | 58 | Revisar arte |
-| `hezrou` | Hezrou | 54 | 58 | Revisar arte |
-| `marilith` | Marilith | 55 | 59 | Revisar arte |
-| `nalfeshnee` | Nalfeshnee | 56 | 60 | Revisar arte |
+| `babau` | Babau | 50 | 54 | **Confirmada** — ilustração compartilhada na página PDF 59 |
+| `balor` | Balor | 51 | 55 | **Confirmada** — ilustração compartilhada na página PDF 54 |
+| `bebilith` | Bebilith | 52 | 56 | **Confirmada** — ilustração na página PDF 56 |
+| `dretch` | Dretch | 53 | 57 | **Confirmada** — ilustração compartilhada na página PDF 59 |
+| `glabrezu` | Glabrezu | 54 | 58 | **Confirmada** — ilustração compartilhada na página PDF 62 |
+| `hezrou` | Hezrou | 54 | 58 | **Confirmada** — ilustração compartilhada na página PDF 59 |
+| `marilith` | Marilith | 55 | 59 | **Confirmada** — ilustração compartilhada na página PDF 54 |
+| `nalfeshnee` | Nalfeshnee | 56 | 60 | **Confirmada** — ilustração na página PDF 60 |
 | `quasit` | Quasit | 57 | 61 | Revisar arte |
-| `vrock` | Vrock | 58 | 62 | Revisar arte |
+| `vrock` | Vrock | 58 | 62 | **Confirmada** — ilustração compartilhada na página PDF 62 |
 | `derro` | Derro | 59 | 63 | Revisar arte |
-| `destrachan` | Destrachan | 60 | 64 | Revisar arte |
-| `devorador-de-aranhas` | Devorador de Aranhas | 61 | 65 | Revisar arte |
-| `diabo-barbado-barbazu` | Diabo Barbado (barbazu) | 64 | 68 | Revisar arte |
-| `diabo-das-correntes-kyton` | Diabo das Correntes (kyton) | 66 | 70 | Revisar arte |
-| `diabo-farpado-hamatula` | Diabo Farpado (hamatula) | 67 | 71 | Revisar arte |
+| `destrachan` | Destrachan | 60 | 64 | **Confirmada** — ilustração na página PDF 64 |
+| `devorador-de-aranhas` | Devorador de Aranhas | 61 | 65 | **Confirmada** — ilustração na página PDF 65 |
+| `diabo-barbado-barbazu` | Diabo Barbado (barbazu) | 64 | 68 | **Confirmada** — ilustração compartilhada na página PDF 70 |
+| `diabo-das-correntes-kyton` | Diabo das Correntes (kyton) | 66 | 70 | **Confirmada** — ilustração na página PDF 71 |
+| `diabo-farpado-hamatula` | Diabo Farpado (hamatula) | 67 | 71 | **Confirmada** — ilustração na página PDF 71 |
 | `diabo-dos-ossos-osyluth` | Diabo dos Ossos (osyluth) | 68 | 72 | Revisar arte |
 
 ## Faixa 3 — catálogo 62 a 95
 
 | ID do catálogo | Nome no catálogo | Página impressa | Página PDF | Situação da arte |
 |---|---|---:|---:|---|
-| `diabrete` | Diabrete | 68 | 72 | Revisar arte |
-| `erinyes` | Erinyes | 69 | 73 | Revisar arte |
+| `diabrete` | Diabrete | 68 | 72 | **Confirmada** — ilustração compartilhada na página PDF 69 |
+| `erinyes` | Erinyes | 69 | 73 | **Confirmada** — ilustração compartilhada na página PDF 70 |
 | `gato-infernal-bezekira` | Gato Infernal (bezekira) | 70 | 74 | Revisar arte |
 | `lorde-das-profundezas` | Lorde das Profundezas | 70 | 74 | Revisar arte |
 | `digestor` | Digestor | 72 | 76 | Revisar arte |
@@ -304,6 +304,37 @@ Esta tabela separa a **página da ficha** da **página onde a ilustração apare
 | `bugbear` | Bugbear | 38 | 42 | Figura individual |
 | `bulette` | Bulette | 39 | 43 | Figura individual |
 
+## Confirmação visual das artes — páginas seguintes
+
+| ID do catálogo | Criatura | Página impressa da arte | Página PDF da arte | Observação |
+|---|---|---:|---:|---|
+| `cacador-invisivel` | Caçador Invisível | 40 | 44 | Figura individual |
+| `cao-infernal` | Cão Infernal | 40 | 44 | Figura individual |
+| `cao-teleportador` | Cão Teleportador | 41 | 45 | Figura individual |
+| `cao-yeth` | Cão Yeth | 42 | 46 | Figura individual |
+| `chuul` | Chuul | 44 | 48 | Figura individual |
+| `cocatriz` | Cocatriz | 45 | 49 | Figura individual |
+| `constritor` | Constritor | 46 | 50 | Figura individual |
+| `coruja-gigante` | Coruja Gigante | 47 | 51 | Figura individual |
+| `couatl` | Couatl | 47 | 51 | Figura individual |
+| `cria-vampirica` | Cria Vampírica | 48 | 52 | Figura individual |
+| `balor` | Balor | 50 | 54 | Figura compartilhada com Marilith |
+| `marilith` | Marilith | 50 | 54 | Figura compartilhada com Balor |
+| `bebilith` | Bebilith | 52 | 56 | Figura individual |
+| `babau` | Babau | 55 | 59 | Figura compartilhada com Dretch e Hezrou |
+| `dretch` | Dretch | 55 | 59 | Figura compartilhada com Babau e Hezrou |
+| `hezrou` | Hezrou | 55 | 59 | Figura compartilhada com Babau e Dretch |
+| `nalfeshnee` | Nalfeshnee | 56 | 60 | Figura individual |
+| `vrock` | Vrock | 58 | 62 | Figura compartilhada com Glabrezu |
+| `glabrezu` | Glabrezu | 58 | 62 | Figura compartilhada com Vrock |
+| `destrachan` | Destrachan | 60 | 64 | Figura individual |
+| `devorador-de-aranhas` | Devorador de Aranhas | 61 | 65 | Figura individual |
+| `diabrete` | Diabrete | 65 | 69 | Figura compartilhada com criaturas não catalogadas |
+| `diabo-barbado-barbazu` | Diabo Barbado (barbazu) | 66 | 70 | Figura compartilhada com Erinyes e criatura não catalogada |
+| `erinyes` | Erinyes | 66 | 70 | Figura compartilhada com Diabo Barbado e criatura não catalogada |
+| `diabo-das-correntes-kyton` | Diabo das Correntes (kyton) | 67 | 71 | Figura individual |
+| `diabo-farpado-hamatula` | Diabo Farpado (hamatula) | 67 | 71 | Figura individual |
+
 ## Decisões técnicas registradas
 
 1. O catálogo de criaturas permanece como fonte de dados de jogo. O vínculo visual será feito por `CreatureDefinition.id`, sem alterar os nomes, IDs ou estatísticas.
@@ -315,7 +346,7 @@ Esta tabela separa a **página da ficha** da **página onde a ilustração apare
 ## Log de progresso — 2026-11-10
 
 - Confirmada a existência de 230 entradas no catálogo atual.
-- Conferidas visualmente as páginas PDF 12, 14, 15 e 27; 20 associações criatura–arte foram confirmadas nas páginas PDF 12, 14–16, 22, 24, 27–28, 31 e 37–43. As páginas 24 e 31 contêm figuras compartilhadas, com rótulos que identificam as criaturas.
+- Conferidas visualmente as páginas PDF 12, 14, 15 e 27; 45 associações criatura–arte foram confirmadas nas páginas PDF 12, 14–16, 22, 24, 27–28, 31, 37–43 e 44–52, 54, 56, 59–60, 62, 64–65 e 69–71. Há figuras compartilhadas; os rótulos impressos foram usados para não atribuir arte a criaturas erradas.
 - Localizadas as páginas de ficha das 230 criaturas do catálogo; a confirmação visual das artes ainda está incompleta. As faixas 2 e 3 foram associadas às páginas impressas por busca textual e conferência dos títulos dos blocos; a identificação visual individual das artes ainda está pendente.
 - Verificado que a contagem bruta de objetos de imagem do PDF não equivale à quantidade de ilustrações: várias imagens estão divididas em blocos. Para os recortes, usar renderização da página, não assumir que cada objeto interno seja uma figura.
 - Conferidos os títulos dos blocos de demônios nas páginas PDF 54–62; as páginas da Marilith, Nalfeshnee, Quasit e Vrock foram corrigidas para 59, 60, 61 e 62, respectivamente. Isso evita usar simples menções no texto como se fossem a página da ficha.
