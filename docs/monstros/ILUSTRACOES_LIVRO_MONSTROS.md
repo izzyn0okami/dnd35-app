@@ -68,13 +68,13 @@
 | `babau` | Babau | 50 | 54 | Revisar arte |
 | `balor` | Balor | 51 | 55 | Revisar arte |
 | `bebilith` | Bebilith | 52 | 56 | Revisar arte |
-| `dretch` | Dretch | 52 | 56 | Revisar arte |
-| `glabrezu` | Glabrezu | 52 | 56 | Revisar arte |
-| `hezrou` | Hezrou | 53 | 57 | Revisar arte |
-| `marilith` | Marilith | 50 | 54 | Revisar arte |
-| `nalfeshnee` | Nalfeshnee | 51 | 55 | Revisar arte |
-| `quasit` | Quasit | 51 | 55 | Revisar arte |
-| `vrock` | Vrock | 53 | 57 | Revisar arte |
+| `dretch` | Dretch | 53 | 57 | Revisar arte |
+| `glabrezu` | Glabrezu | 54 | 58 | Revisar arte |
+| `hezrou` | Hezrou | 54 | 58 | Revisar arte |
+| `marilith` | Marilith | 55 | 59 | Revisar arte |
+| `nalfeshnee` | Nalfeshnee | 56 | 60 | Revisar arte |
+| `quasit` | Quasit | 57 | 61 | Revisar arte |
+| `vrock` | Vrock | 58 | 62 | Revisar arte |
 | `derro` | Derro | 59 | 63 | Revisar arte |
 | `destrachan` | Destrachan | 60 | 64 | Revisar arte |
 | `devorador-de-aranhas` | Devorador de Aranhas | 61 | 65 | Revisar arte |
@@ -95,6 +95,7 @@
 
 - Confirmada a existência de 230 entradas no catálogo atual.
 - Conferidas visualmente as páginas PDF 12, 14, 15 e 27; cinco associações de arte foram identificadas: Abocanhador Matraqueante, Achaierai, Águia Gigante, Aranea e Aranha Interplanar.
-- Localizadas as fichas das primeiras 60 criaturas, da página impressa 8 à 68; a segunda faixa teve suas páginas de ficha identificadas por busca textual e conferência do bloco, mas ainda aguarda revisão visual individual das artes.
+- Localizadas as fichas das primeiras 60 criaturas, da página impressa 8 à 68; a segunda faixa teve suas páginas de ficha identificadas por busca textual e conferência dos títulos dos blocos. A localização das artes dessa faixa ainda aguarda revisão visual individual.
 - Verificado que a contagem bruta de objetos de imagem do PDF não equivale à quantidade de ilustrações: várias imagens estão divididas em blocos. Para os recortes, usar renderização da página, não assumir que cada objeto interno seja uma figura.
+- Conferidos os títulos dos blocos de demônios nas páginas PDF 54–62; as páginas da Marilith, Nalfeshnee, Quasit e Vrock foram corrigidas para 59, 60, 61 e 62, respectivamente. Isso evita usar simples menções no texto como se fossem a página da ficha.
 - Próxima etapa: continuar a associação sequencial dos IDs restantes, confirmar a presença e a região de cada ilustração e só então preparar o manifesto de recursos locais.
