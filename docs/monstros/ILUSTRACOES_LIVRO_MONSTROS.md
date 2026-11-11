@@ -177,16 +177,16 @@
 | `mephit-da-poeira` | Mephit da Poeira | 200 | 204 | Revisar arte |
 | `mephit-do-sal` | Mephit do Sal | 200 | 204 | Revisar arte |
 | `mephit-do-vapor` | Mephit do Vapor | 201 | 205 | Revisar arte |
-| `mimico` | Mímico | 201 | 205 | Revisar arte |
-| `mohrg` | Mohrg | 203 | 207 | Revisar arte |
-| `monstro-da-ferrugem` | Monstro da Ferrugem | 203 | 207 | Revisar arte |
-| `ogro-mago` | Ogro Mago | 211 | 215 | Revisar arte |
-| `passaro-roca` | Pássaro Roca | 215 | 219 | Revisar arte |
-| `pegaso` | Pégaso | 216 | 220 | Revisar arte |
-| `pseudodragao` | Pseudodragão | 220 | 224 | Revisar arte |
-| `rast` | Rast | 222 | 226 | Revisar arte |
-| `ravid` | Ravid | 223 | 227 | Revisar arte |
-| `sahuagin` | Sahuagin | 225 | 229 | Revisar arte |
+| `mimico` | Mímico | 201 | 205 | **Confirmada** — ilustração na página PDF 205 |
+| `mohrg` | Mohrg | 203 | 207 | **Confirmada** — ilustração na página PDF 207 |
+| `monstro-da-ferrugem` | Monstro da Ferrugem | 203 | 207 | **Confirmada** — ilustração na página PDF 208 |
+| `ogro-mago` | Ogro Mago | 211 | 215 | **Confirmada** — ilustração na página PDF 216 |
+| `passaro-roca` | Pássaro Roca | 215 | 219 | **Confirmada** — ilustração na página PDF 219 |
+| `pegaso` | Pégaso | 216 | 220 | **Confirmada** — ilustração na página PDF 220 |
+| `pseudodragao` | Pseudodragão | 220 | 224 | **Confirmada** — ilustração na página PDF 224 |
+| `rast` | Rast | 222 | 226 | **Confirmada** — ilustração na página PDF 226 |
+| `ravid` | Ravid | 223 | 227 | **Confirmada** — ilustração na página PDF 227 |
+| `sahuagin` | Sahuagin | 225 | 229 | **Confirmada** — ilustração na página PDF 230 |
 | `salteador-etereo` | Salteador Etéreo | 228 | 232 | Revisar arte |
 | `satiro` | Sátiro | 229 | 233 | Revisar arte |
 | `skum` | Skum | 230 | 234 | Revisar arte |
@@ -409,6 +409,23 @@ Esta tabela separa a **página da ficha** da **página onde a ilustração apare
 | `mastim-das-sombras` | Mastim das Sombras | 191 | 195 | Figura individual |
 | `medusa` | Medusa | 192 | 196 | Figura individual |
 
+## Confirmação visual das artes — páginas 197 a 226
+
+| ID do catálogo | Criatura | Página impressa da arte | Página PDF da arte | Observação |
+|---|---|---:|---:|---|
+| `mimico` | Mímico | 201 | 205 | Figura individual |
+| `mohrg` | Mohrg | 203 | 207 | Figura individual |
+| `monstro-da-ferrugem` | Monstro da Ferrugem | 204 | 208 | Figura individual |
+| `ogro-mago` | Ogro Mago | 212 | 216 | Figura individual |
+| `passaro-roca` | Pássaro Roca | 215 | 219 | Figura individual |
+| `pegaso` | Pégaso | 216 | 220 | Figura individual |
+| `pseudodragao` | Pseudodragão | 220 | 224 | Figura individual |
+| `rast` | Rast | 222 | 226 | Figura individual |
+| `ravid` | Ravid | 223 | 227 | Figura individual |
+| `sahuagin` | Sahuagin | 226 | 230 | Figura individual |
+
+**Nota sobre os mephits:** a página PDF 202 contém uma ilustração genérica da família de mephits, sem identificação inequívoca de uma variante específica. Ela fica registrada como referência coletiva, sem atribuição a um ID individual, até que a arte seja validada para cada variante.
+
 ## Decisões técnicas registradas
 
 1. O catálogo de criaturas permanece como fonte de dados de jogo. O vínculo visual será feito por `CreatureDefinition.id`, sem alterar os nomes, IDs ou estatísticas.
@@ -420,7 +437,7 @@ Esta tabela separa a **página da ficha** da **página onde a ilustração apare
 ## Log de progresso — 2026-11-10
 
 - Confirmada a existência de 230 entradas no catálogo atual.
-- Conferidas visualmente as páginas PDF 12, 14, 15 e 27; 99 associações criatura–arte foram confirmadas até a página PDF 196. Há figuras compartilhadas; os rótulos impressos foram usados para não atribuir arte a criaturas erradas.
+- Conferidas visualmente as páginas PDF 12, 14, 15 e 27; 109 associações criatura–arte foram confirmadas até a página PDF 230. Há figuras compartilhadas; os rótulos impressos foram usados para não atribuir arte a criaturas erradas.
 - Localizadas as páginas de ficha das 230 criaturas do catálogo; a confirmação visual das artes ainda está incompleta. As faixas 2 e 3 foram associadas às páginas impressas por busca textual e conferência dos títulos dos blocos; a identificação visual individual das artes ainda está pendente.
 - Verificado que a contagem bruta de objetos de imagem do PDF não equivale à quantidade de ilustrações: várias imagens estão divididas em blocos. Para os recortes, usar renderização da página, não assumir que cada objeto interno seja uma figura.
 - Conferidos os títulos dos blocos de demônios nas páginas PDF 54–62; as páginas da Marilith, Nalfeshnee, Quasit e Vrock foram corrigidas para 59, 60, 61 e 62, respectivamente. Isso evita usar simples menções no texto como se fossem a página da ficha.
