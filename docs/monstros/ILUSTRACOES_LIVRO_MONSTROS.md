@@ -128,25 +128,25 @@
 |---|---|---:|---:|---|
 | `fungo-fantasma` | Fungo Fantasma | 131 | 135 | **Confirmada** — ilustração na página PDF 135 |
 | `gargula` | Gárgula | 131 | 135 | **Confirmada** — ilustração na página PDF 135 |
-| `djinni` | Djinni | 133 | 137 | Revisar arte |
-| `efreeti` | Efreeti | 134 | 138 | Revisar arte |
+| `djinni` | Djinni | 133 | 137 | **Confirmada** — arte compartilhada com Efreeti na página PDF 138 |
+| `efreeti` | Efreeti | 134 | 138 | **Confirmada** — arte compartilhada com Djinni na página PDF 138 |
 | `janni` | Janni | 135 | 139 | Revisar arte |
 | `gigante-das-nuvens` | Gigante das Nuvens | 136 | 140 | Revisar arte |
-| `gigante-do-fogo` | Gigante do Fogo | 137 | 141 | Revisar arte |
+| `gigante-do-fogo` | Gigante do Fogo | 137 | 141 | **Confirmada** — figura compartilhada na página PDF 141 |
 | `gigante-de-pedra` | Gigante de Pedra | 140 | 144 | Revisar arte |
-| `girallon` | Girallon | 142 | 146 | Revisar arte |
-| `gnoll` | Gnoll | 145 | 149 | Revisar arte |
+| `girallon` | Girallon | 142 | 146 | **Confirmada** — ilustração na página PDF 146 |
+| `gnoll` | Gnoll | 145 | 149 | **Confirmada** — ilustração na página PDF 149 |
 | `golem-de-barro` | Golem de Barro | 149 | 153 | Revisar arte |
-| `golem-de-ferro` | Golem de Ferro | 151 | 155 | Revisar arte |
-| `grick` | Grick | 153 | 157 | Revisar arte |
-| `grifo` | Grifo | 153 | 157 | Revisar arte |
-| `grimlock` | Grimlock | 154 | 158 | Revisar arte |
-| `avoral` | Avoral | 156 | 160 | Revisar arte |
-| `hipogrifo` | Hipogrifo | 162 | 166 | Revisar arte |
-| `homunculo` | Homúnculo | 163 | 167 | Revisar arte |
-| `marut` | Marut | 164 | 168 | Revisar arte |
-| `kolyarut` | Kolyarut | 165 | 169 | Revisar arte |
-| `zelekhut` | Zelekhut | 166 | 170 | Revisar arte |
+| `golem-de-ferro` | Golem de Ferro | 151 | 155 | **Confirmada** — ilustração na página PDF 154 |
+| `grick` | Grick | 153 | 157 | **Confirmada** — ilustração na página PDF 157 |
+| `grifo` | Grifo | 153 | 157 | **Confirmada** — ilustração na página PDF 158 |
+| `grimlock` | Grimlock | 154 | 158 | **Confirmada** — ilustração na página PDF 158 |
+| `avoral` | Avoral | 156 | 160 | **Confirmada** — arte compartilhada na página PDF 160 |
+| `hipogrifo` | Hipogrifo | 162 | 166 | **Confirmada** — ilustração na página PDF 167 |
+| `homunculo` | Homúnculo | 163 | 167 | **Confirmada** — ilustração na página PDF 167 |
+| `marut` | Marut | 164 | 168 | **Confirmada** — arte compartilhada na página PDF 168 |
+| `kolyarut` | Kolyarut | 165 | 169 | **Confirmada** — arte compartilhada na página PDF 168 |
+| `zelekhut` | Zelekhut | 166 | 170 | **Confirmada** — arte compartilhada na página PDF 168 |
 | `inumano` | Inumano | 166 | 170 | Revisar arte |
 | `kobold-combatente-de-1-nivel` | Kobold Combatente de 1º Nível | 167 | 171 | Revisar arte |
 | `kraken` | Kraken | 168 | 172 | Revisar arte |
@@ -370,6 +370,26 @@ Esta tabela separa a **página da ficha** da **página onde a ilustração apare
 | `fungo-fantasma` | Fungo Fantasma | 131 | 135 | Figura individual |
 | `gargula` | Gárgula | 131 | 135 | Figura individual |
 
+## Confirmação visual das artes — páginas 133 a 164
+
+| ID do catálogo | Criatura | Página impressa da arte | Página PDF da arte | Observação |
+|---|---|---:|---:|---|
+| `djinni` | Djinni | 134 | 138 | Figura compartilhada com Efreeti |
+| `efreeti` | Efreeti | 134 | 138 | Figura compartilhada com Djinni |
+| `gigante-do-fogo` | Gigante do Fogo | 137 | 141 | Figura compartilhada com gigantes não catalogados |
+| `girallon` | Girallon | 142 | 146 | Figura individual |
+| `gnoll` | Gnoll | 145 | 149 | Figura individual |
+| `golem-de-ferro` | Golem de Ferro | 150 | 154 | Figura compartilhada com Golem de Carne |
+| `grick` | Grick | 153 | 157 | Figura individual |
+| `grifo` | Grifo | 154 | 158 | Figura individual |
+| `grimlock` | Grimlock | 154 | 158 | Figura individual |
+| `avoral` | Avoral | 156 | 160 | Figura compartilhada com Guardinal e Leônal |
+| `hipogrifo` | Hipogrifo | 163 | 167 | Figura individual |
+| `homunculo` | Homúnculo | 163 | 167 | Figura individual |
+| `marut` | Marut | 164 | 168 | Figura compartilhada com Kolyarut e Zelekhut |
+| `kolyarut` | Kolyarut | 164 | 168 | Figura compartilhada com Marut e Zelekhut |
+| `zelekhut` | Zelekhut | 164 | 168 | Figura compartilhada com Marut e Kolyarut |
+
 ## Decisões técnicas registradas
 
 1. O catálogo de criaturas permanece como fonte de dados de jogo. O vínculo visual será feito por `CreatureDefinition.id`, sem alterar os nomes, IDs ou estatísticas.
@@ -381,7 +401,7 @@ Esta tabela separa a **página da ficha** da **página onde a ilustração apare
 ## Log de progresso — 2026-11-10
 
 - Confirmada a existência de 230 entradas no catálogo atual.
-- Conferidas visualmente as páginas PDF 12, 14, 15 e 27; 70 associações criatura–arte foram confirmadas até a página PDF 135. Há figuras compartilhadas; os rótulos impressos foram usados para não atribuir arte a criaturas erradas.
+- Conferidas visualmente as páginas PDF 12, 14, 15 e 27; 85 associações criatura–arte foram confirmadas até a página PDF 168. Há figuras compartilhadas; os rótulos impressos foram usados para não atribuir arte a criaturas erradas.
 - Localizadas as páginas de ficha das 230 criaturas do catálogo; a confirmação visual das artes ainda está incompleta. As faixas 2 e 3 foram associadas às páginas impressas por busca textual e conferência dos títulos dos blocos; a identificação visual individual das artes ainda está pendente.
 - Verificado que a contagem bruta de objetos de imagem do PDF não equivale à quantidade de ilustrações: várias imagens estão divididas em blocos. Para os recortes, usar renderização da página, não assumir que cada objeto interno seja uma figura.
 - Conferidos os títulos dos blocos de demônios nas páginas PDF 54–62; as páginas da Marilith, Nalfeshnee, Quasit e Vrock foram corrigidas para 59, 60, 61 e 62, respectivamente. Isso evita usar simples menções no texto como se fossem a página da ficha.
