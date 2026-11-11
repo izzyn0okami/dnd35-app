@@ -83,6 +83,41 @@
 | `diabo-farpado-hamatula` | Diabo Farpado (hamatula) | 67 | 71 | Revisar arte |
 | `diabo-dos-ossos-osyluth` | Diabo dos Ossos (osyluth) | 68 | 72 | Revisar arte |
 
+## Faixa 3 — catálogo 61 a 90
+
+| ID do catálogo | Nome no catálogo | Página impressa | Página PDF | Situação da arte |
+|---|---|---:|---:|---|
+| `digestor` | Digestor | 72 | 76 | Revisar arte |
+| `dilacerador-cinzento` | Dilacerador Cinzento | 72 | 76 | Revisar arte |
+| `dinonico` | Dinonico | 73 | 77 | Revisar arte |
+| `elasmossauro` | Elasmossauro | 74 | 78 | Revisar arte |
+| `megaraptor` | Megaraptor | 74 | 78 | Revisar arte |
+| `tiranossauro` | Tiranossauro | 74 | 78 | Revisar arte |
+| `triceratops` | Tricerátops | 75 | 79 | Revisar arte |
+| `doppelganger` | Doppelganger | 75 | 79 | Revisar arte |
+| `dragonado` | Dragonado | 96 | 100 | Revisar arte |
+| `driade` | Dríade | 97 | 101 | Revisar arte |
+| `drider` | Drider | 98 | 102 | Revisar arte |
+| `bralani` | Bralani | 99 | 103 | Revisar arte |
+| `ghaele` | Ghaele | 100 | 104 | Revisar arte |
+| `ente` | Ente | 110 | 114 | Revisar arte |
+| `enxame-de-centopeias` | Enxame de Centopeias | 111 | 115 | Revisar arte |
+| `enxame-de-gafanhotos` | Enxame de Gafanhotos | 111 | 115 | Revisar arte |
+| `enxame-de-morcegos` | Enxame de Morcegos | 112 | 116 | Revisar arte |
+| `escavador` | Escavador | 113 | 117 | Revisar arte |
+| `androesfinge` | Andro–esfinge | 114 | 118 | Revisar arte |
+| `crioesfinge` | Crio–esfinge | 115 | 119 | Revisar arte |
+| `ginoesfinge` | Gino–esfinge | 115 | 119 | Revisar arte |
+| `espectro` | Espectro | 116 | 120 | Revisar arte |
+| `ettercap` | Ettercap | 120 | 124 | Revisar arte |
+| `ettin` | Ettin | 121 | 125 | Revisar arte |
+| `grig` | Grig | 122 | 126 | Revisar arte |
+| `nixie` | Nixie | 122 | 126 | Revisar arte |
+| `pixie` | Pixie | 123 | 127 | Revisar arte |
+| `fantasma-guerreiro-humano-de-5-nivel` | Fantasma Guerreiro Humano de 5º Nível | 124 | 128 | Revisar arte |
+| `fera-do-caos` | Fera do Caos | 125 | 129 | Revisar arte |
+| `fogofatuo` | Fogo–fátuo | 126 | 130 | Revisar arte |
+
 ## Decisões técnicas registradas
 
 1. O catálogo de criaturas permanece como fonte de dados de jogo. O vínculo visual será feito por `CreatureDefinition.id`, sem alterar os nomes, IDs ou estatísticas.
@@ -95,7 +130,8 @@
 
 - Confirmada a existência de 230 entradas no catálogo atual.
 - Conferidas visualmente as páginas PDF 12, 14, 15 e 27; cinco associações de arte foram identificadas: Abocanhador Matraqueante, Achaierai, Águia Gigante, Aranea e Aranha Interplanar.
-- Localizadas as fichas das primeiras 60 criaturas, da página impressa 8 à 68; a segunda faixa teve suas páginas de ficha identificadas por busca textual e conferência dos títulos dos blocos. A localização das artes dessa faixa ainda aguarda revisão visual individual.
+- Localizadas as fichas das primeiras 90 criaturas. As faixas 2 e 3 foram associadas às páginas impressas por busca textual e conferência dos títulos dos blocos; a identificação visual individual das artes ainda está pendente.
 - Verificado que a contagem bruta de objetos de imagem do PDF não equivale à quantidade de ilustrações: várias imagens estão divididas em blocos. Para os recortes, usar renderização da página, não assumir que cada objeto interno seja uma figura.
 - Conferidos os títulos dos blocos de demônios nas páginas PDF 54–62; as páginas da Marilith, Nalfeshnee, Quasit e Vrock foram corrigidas para 59, 60, 61 e 62, respectivamente. Isso evita usar simples menções no texto como se fossem a página da ficha.
+- A terceira faixa foi mapeada entre as páginas impressas 72 e 126. Algumas páginas contêm várias criaturas, portanto a página comum não implica que todas tenham uma ilustração individual.
 - Próxima etapa: continuar a associação sequencial dos IDs restantes, confirmar a presença e a região de cada ilustração e só então preparar o manifesto de recursos locais.
