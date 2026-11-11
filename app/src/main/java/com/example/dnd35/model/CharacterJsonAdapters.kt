@@ -463,9 +463,28 @@ object CharacterJsonAdapters {
         return array.toString()
     }
 
+    /**
+     * Resolve nomes de classe antigos sem permitir que uma classe desconhecida seja convertida
+     * implicitamente na primeira classe do catálogo (Bárbaro). Versões antigas gravavam o nível
+     * junto do nome, por exemplo "Guerreiro 4" ou "Guerreiro 4 4".
+     */
+    private fun canonicalClassNameOrNull(rawName: String): String? {
+        var candidate = rawName.substringBefore("/").trim()
+        Dnd35Rules.CLASSES.firstOrNull { it.name.equals(candidate, ignoreCase = true) }?.let { return it.name }
+        while (candidate.isNotBlank()) {
+            val withoutTrailingNumber = candidate.replace(Regex("\\s+\\d+$"), "").trim()
+            if (withoutTrailingNumber == candidate) break
+            candidate = withoutTrailingNumber
+            Dnd35Rules.CLASSES.firstOrNull { it.name.equals(candidate, ignoreCase = true) }?.let { return it.name }
+        }
+        return null
+    }
+
+    private fun canonicalClassName(rawName: String, defaultName: String = "Guerreiro"): String =
+        canonicalClassNameOrNull(rawName) ?: canonicalClassNameOrNull(defaultName) ?: "Guerreiro"
+
     fun deserializeClassEntries(json: String?, fallbackClass: String = "Guerreiro", fallbackLevel: Int = 1): List<CharacterClassEntry> {
-        val cleanFallbackClass = fallbackClass.split("/").firstOrNull()?.trim()?.split(" ")?.firstOrNull()?.trim()
-            ?.ifBlank { "Guerreiro" } ?: "Guerreiro"
+        val cleanFallbackClass = canonicalClassName(fallbackClass)
         val cleanFallbackLevel = fallbackLevel.coerceAtLeast(1)
 
         if (json.isNullOrBlank()) {
@@ -475,13 +494,18 @@ object CharacterJsonAdapters {
         try {
             val array = JSONArray(json)
             for (i in 0 until array.length()) {
-                val obj = array.getJSONObject(i)
-                val name = obj.optString("className", cleanFallbackClass)
-                val lvl = obj.optInt("level", 1).coerceAtLeast(1)
-                list.add(CharacterClassEntry(name, lvl))
+                val obj = array.optJSONObject(i) ?: continue
+                val rawName = obj.optString("className", "")
+                val canonicalName = canonicalClassNameOrNull(rawName)
+                // Entradas desconhecidas são ignoradas; nunca recebem habilidades de Bárbaro
+                // apenas por falha de correspondência com a primeira classe do catálogo.
+                if (canonicalName != null) {
+                    val lvl = obj.optInt("level", 1).coerceAtLeast(1)
+                    list.add(CharacterClassEntry(canonicalName, lvl))
+                }
             }
         } catch (e: Exception) {
-            Log.w("CharacterJsonAdapters", "JSON de classes inválido; dados anteriores ao erro foram preservados", e)
+            Log.w("CharacterJsonAdapters", "JSON de classes inválido; usando a classe de compatibilidade", e)
         }
         return if (list.isEmpty()) listOf(CharacterClassEntry(cleanFallbackClass, cleanFallbackLevel)) else list
     }

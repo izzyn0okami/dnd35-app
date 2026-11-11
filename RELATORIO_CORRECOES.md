@@ -519,3 +519,29 @@ Esta rodada corrige defeitos pontuais identificados por inspeção estática. O 
 - **Validação pendente:** executar CI completa (testes unitários, compilação Android e geração do APK) e revisar o diff antes de qualquer merge. A inspeção manual no aparelho ainda é necessária para confirmar a ação de soltar/recolher mochila e a atualização imediata da ficha.
 
 - **Ajuste da CI (2026-11-04):** os dois novos testes de mochila falharam por causa do valor padrão da ficha de teste: 50 PO, que corretamente acrescentam 1 lb à carga (50 moedas por libra). A implementação preservou esse peso; a expectativa dos testes é que estava isolando apenas os itens sem zerar o ouro. Os dois cenários agora definem `goldGp = 0f`, mantendo o teste focado no peso transportado dos itens. Nenhuma regra de peso de moedas foi removida. Aguardar nova execução completa da CI.
+
+
+## Compatibilidade de fichas antigas — identidade da classe (2026-11-10)
+
+### Problema reproduzido
+- Uma ficha antiga pode conter `characterClass = "Guerreiro 4 4"` e `multiclassJson` com `className = "Guerreiro 4"` e `level = 4`.
+- A desserialização anterior preservava literalmente `"Guerreiro 4"`. A busca exata em `Dnd35Rules.CLASSES` falhava e o cálculo recorria à primeira classe do catálogo, Bárbaro.
+- Como consequência, uma ficha de Guerreiro podia exibir habilidades de Bárbaro (por exemplo, Fúria e Movimento Rápido). O defeito estava no tratamento de dados legados, não na progressão oficial do Guerreiro.
+
+### Correção aplicada nesta branch
+- A desserialização agora canonicaliza nomes de classes reconhecidos, removendo sufixos numéricos legados como `"Guerreiro 4"` e `"Guerreiro 4 4"`.
+- Entradas de classe desconhecidas são ignoradas; se nenhuma entrada válida restar, usa-se a classe de compatibilidade reconhecida, sem converter a entrada inválida em Bárbaro.
+- Os fallbacks de cálculo também deixam de apontar para a primeira classe do catálogo e usam Guerreiro como fallback explícito.
+- O JSON original da ficha não é regravado automaticamente durante a leitura; os demais campos e níveis válidos são preservados.
+- Foram adicionados testes de regressão para sufixos legados, multiclasse, classe desconhecida, ausência de habilidades de Bárbaro em Guerreiro e preservação das habilidades de Bárbaro em personagens dessa classe.
+
+### Limites e validação
+- Esta correção trata a identidade da classe. Não altera o catálogo de classes nem reaudita suas habilidades.
+- A suíte Gradle/CI ainda precisa executar para confirmar compilação e testes. Não declarar a correção validada até a CI concluir com sucesso.
+
+
+### Ajuste do ambiente dos testes de compatibilidade (2026-11-10)
+- A primeira execução da CI (`42856019998`) compilou o código de produção e os testes, mas falhou nos seis casos novos de `LegacyClassEntryCompatibilityTest`.
+- A causa foi o teste executar sem Robolectric, embora `CharacterJsonAdapters` use APIs Android (`org.json` e `android.util.Log`). O projeto já possui Robolectric e testes equivalentes usam `@RunWith(RobolectricTestRunner::class)` e `@Config`.
+- Aplicado o mesmo ambiente Robolectric (SDK 35) à classe de teste de compatibilidade. Nenhuma regra de classe ou lógica de produção foi alterada por este ajuste.
+- Aguardar nova execução da CI; não considerar a PR validada nem integrada até todos os testes e a compilação do APK passarem.

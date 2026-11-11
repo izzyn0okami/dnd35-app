@@ -215,7 +215,7 @@ object CharacterCalculator {
 
         // Classe primária (para compatibilidade com regras gerais)
         val primaryClassInfo = Dnd35Rules.CLASSES.find { it.name.equals(classEntries.first().className, ignoreCase = true) }
-            ?: Dnd35Rules.CLASSES.first()
+            ?: Dnd35Rules.CLASSES.first { it.name.equals("Guerreiro", ignoreCase = true) }
 
         // Determinar classe favorecida (para Humanos e Meio-Elfos é a classe de nível mais alto)
         val effectiveFavoredClassName = if (race.favoredClass.equals("Qualquer", ignoreCase = true) ||
@@ -230,7 +230,7 @@ object CharacterCalculator {
         // 2. Construir detalhes acumulados por classe
         val multiclassDetails = classEntries.map { entry ->
             val info = Dnd35Rules.CLASSES.find { it.name.equals(entry.className, ignoreCase = true) }
-                ?: Dnd35Rules.CLASSES.first()
+                ?: Dnd35Rules.CLASSES.first { it.name.equals("Guerreiro", ignoreCase = true) }
             val babPart = Dnd35Rules.calculateBaseAttackBonus(info.babType, entry.level)
             val fortPart = Dnd35Rules.calculateBaseSave(info.fortType, entry.level)
             val refPart = Dnd35Rules.calculateBaseSave(info.refType, entry.level)
