@@ -117,7 +117,7 @@
 | `ettin` | Ettin | 121 | 125 | **Confirmada** — ilustração na página PDF 125 |
 | `grig` | Grig | 122 | 126 | **Confirmada** — figura compartilhada na página PDF 126 |
 | `nixie` | Nixie | 122 | 126 | **Confirmada** — figura compartilhada na página PDF 126 |
-| `pixie` | Pixie | 122 | 126 | **Confirmada** — figura compartilhada na página PDF 126 |
+| `pixie` | Pixie | 123 | 127 | **Confirmada** — figura compartilhada na página PDF 126 |
 | `fantasma-guerreiro-humano-de-5-nivel` | Fantasma Guerreiro Humano de 5º Nível | 124 | 128 | Revisar arte |
 | `fera-do-caos` | Fera do Caos | 125 | 129 | **Confirmada** — ilustração na página PDF 130 |
 | `fogofatuo` | Fogo–fátuo | 126 | 130 | **Confirmada** — ilustração na página PDF 131 |
