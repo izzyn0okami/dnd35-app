@@ -118,6 +118,41 @@
 | `fera-do-caos` | Fera do Caos | 125 | 129 | Revisar arte |
 | `fogofatuo` | Fogo–fátuo | 126 | 130 | Revisar arte |
 
+## Faixa 4 — catálogo 91 a 120
+
+| ID do catálogo | Nome no catálogo | Página impressa | Página PDF | Situação da arte |
+|---|---|---:|---:|---|
+| `fungo-fantasma` | Fungo Fantasma | 131 | 135 | Revisar arte |
+| `gargula` | Gárgula | 131 | 135 | Revisar arte |
+| `djinni` | Djinni | 133 | 137 | Revisar arte |
+| `efreeti` | Efreeti | 134 | 138 | Revisar arte |
+| `janni` | Janni | 135 | 139 | Revisar arte |
+| `gigante-das-nuvens` | Gigante das Nuvens | 136 | 140 | Revisar arte |
+| `gigante-do-fogo` | Gigante do Fogo | 137 | 141 | Revisar arte |
+| `gigante-de-pedra` | Gigante de Pedra | 140 | 144 | Revisar arte |
+| `girallon` | Girallon | 142 | 146 | Revisar arte |
+| `gnoll` | Gnoll | 145 | 149 | Revisar arte |
+| `golem-de-barro` | Golem de Barro | 149 | 153 | Revisar arte |
+| `golem-de-ferro` | Golem de Ferro | 151 | 155 | Revisar arte |
+| `grick` | Grick | 153 | 157 | Revisar arte |
+| `grifo` | Grifo | 153 | 157 | Revisar arte |
+| `grimlock` | Grimlock | 154 | 158 | Revisar arte |
+| `avoral` | Avoral | 156 | 160 | Revisar arte |
+| `hipogrifo` | Hipogrifo | 162 | 166 | Revisar arte |
+| `homunculo` | Homúnculo | 163 | 167 | Revisar arte |
+| `marut` | Marut | 164 | 168 | Revisar arte |
+| `kolyarut` | Kolyarut | 165 | 169 | Revisar arte |
+| `zelekhut` | Zelekhut | 166 | 170 | Revisar arte |
+| `inumano` | Inumano | 166 | 170 | Revisar arte |
+| `kobold-combatente-de-1-nivel` | Kobold Combatente de 1º Nível | 167 | 171 | Revisar arte |
+| `kraken` | Kraken | 168 | 172 | Revisar arte |
+| `lagarto-eletrico` | Lagarto Elétrico | 170 | 174 | Revisar arte |
+| `lammasu` | Lammasu | 172 | 176 | Revisar arte |
+| `protetor-dourado-lammasu-meiodragao-celestial` | Protetor Dourado (lammasu Meio–dragão Celestial) | 172 | 176 | Revisar arte |
+| `leao-marinho` | Leão Marinho | 173 | 177 | Revisar arte |
+| `lich` | Lich | 183 | 187 | Revisar arte |
+| `lillend` | Lillend | 184 | 188 | Revisar arte |
+
 ## Decisões técnicas registradas
 
 1. O catálogo de criaturas permanece como fonte de dados de jogo. O vínculo visual será feito por `CreatureDefinition.id`, sem alterar os nomes, IDs ou estatísticas.
@@ -130,8 +165,8 @@
 
 - Confirmada a existência de 230 entradas no catálogo atual.
 - Conferidas visualmente as páginas PDF 12, 14, 15 e 27; cinco associações de arte foram identificadas: Abocanhador Matraqueante, Achaierai, Águia Gigante, Aranea e Aranha Interplanar.
-- Localizadas as fichas das primeiras 90 criaturas. As faixas 2 e 3 foram associadas às páginas impressas por busca textual e conferência dos títulos dos blocos; a identificação visual individual das artes ainda está pendente.
+- Localizadas as fichas das primeiras 120 criaturas. As faixas 2 e 3 foram associadas às páginas impressas por busca textual e conferência dos títulos dos blocos; a identificação visual individual das artes ainda está pendente.
 - Verificado que a contagem bruta de objetos de imagem do PDF não equivale à quantidade de ilustrações: várias imagens estão divididas em blocos. Para os recortes, usar renderização da página, não assumir que cada objeto interno seja uma figura.
 - Conferidos os títulos dos blocos de demônios nas páginas PDF 54–62; as páginas da Marilith, Nalfeshnee, Quasit e Vrock foram corrigidas para 59, 60, 61 e 62, respectivamente. Isso evita usar simples menções no texto como se fossem a página da ficha.
-- A terceira faixa foi mapeada entre as páginas impressas 72 e 126. Algumas páginas contêm várias criaturas, portanto a página comum não implica que todas tenham uma ilustração individual.
+- A terceira faixa foi mapeada entre as páginas impressas 72 e 126. A quarta faixa foi mapeada entre as páginas impressas 131 e 184. Algumas páginas contêm várias criaturas, portanto a página comum não implica que todas tenham uma ilustração individual.
 - Próxima etapa: continuar a associação sequencial dos IDs restantes, confirmar a presença e a região de cada ilustração e só então preparar o manifesto de recursos locais.
