@@ -147,27 +147,27 @@
 | `marut` | Marut | 164 | 168 | **Confirmada** — arte compartilhada na página PDF 168 |
 | `kolyarut` | Kolyarut | 165 | 169 | **Confirmada** — arte compartilhada na página PDF 168 |
 | `zelekhut` | Zelekhut | 166 | 170 | **Confirmada** — arte compartilhada na página PDF 168 |
-| `inumano` | Inumano | 166 | 170 | Revisar arte |
-| `kobold-combatente-de-1-nivel` | Kobold Combatente de 1º Nível | 167 | 171 | Revisar arte |
-| `kraken` | Kraken | 168 | 172 | Revisar arte |
-| `lagarto-eletrico` | Lagarto Elétrico | 170 | 174 | Revisar arte |
-| `lammasu` | Lammasu | 172 | 176 | Revisar arte |
+| `inumano` | Inumano | 166 | 170 | **Confirmada** — ilustração na página PDF 170 |
+| `kobold-combatente-de-1-nivel` | Kobold Combatente de 1º Nível | 167 | 171 | **Confirmada** — ilustração na página PDF 171 |
+| `kraken` | Kraken | 168 | 172 | **Confirmada** — ilustração na página PDF 172 |
+| `lagarto-eletrico` | Lagarto Elétrico | 170 | 174 | **Confirmada** — ilustração na página PDF 174 |
+| `lammasu` | Lammasu | 172 | 176 | **Confirmada** — ilustração na página PDF 176 |
 | `protetor-dourado-lammasu-meiodragao-celestial` | Protetor Dourado (lammasu Meio–dragão Celestial) | 172 | 176 | Revisar arte |
-| `leao-marinho` | Leão Marinho | 173 | 177 | Revisar arte |
-| `lich` | Lich | 183 | 187 | Revisar arte |
-| `lillend` | Lillend | 184 | 188 | Revisar arte |
+| `leao-marinho` | Leão Marinho | 173 | 177 | **Confirmada** — ilustração na página PDF 177 |
+| `lich` | Lich | 183 | 187 | **Confirmada** — ilustração na página PDF 187 |
+| `lillend` | Lillend | 184 | 188 | **Confirmada** — ilustração na página PDF 188 |
 
 ## Faixa 5 — catálogo 126 a 155
 
 | ID do catálogo | Nome no catálogo | Página impressa | Página PDF | Situação da arte |
 |---|---|---:|---:|---|
 | `limo-cinzento` | Limo Cinzento | 186 | 190 | Revisar arte |
-| `lobo-das-estepes` | Lobo das Estepes | 187 | 191 | Revisar arte |
-| `locathah` | Locathah | 188 | 192 | Revisar arte |
-| `magmin` | Magmin | 189 | 193 | Revisar arte |
-| `manto-negro` | Manto Negro | 190 | 194 | Revisar arte |
-| `mastim-das-sombras` | Mastim das Sombras | 191 | 195 | Revisar arte |
-| `medusa` | Medusa | 192 | 196 | Revisar arte |
+| `lobo-das-estepes` | Lobo das Estepes | 187 | 191 | **Confirmada** — ilustração na página PDF 191 |
+| `locathah` | Locathah | 188 | 192 | **Confirmada** — ilustração na página PDF 192 |
+| `magmin` | Magmin | 189 | 193 | **Confirmada** — ilustração na página PDF 193 |
+| `manto-negro` | Manto Negro | 190 | 194 | **Confirmada** — ilustração na página PDF 194 |
+| `mastim-das-sombras` | Mastim das Sombras | 191 | 195 | **Confirmada** — ilustração na página PDF 195 |
+| `medusa` | Medusa | 192 | 196 | **Confirmada** — ilustração na página PDF 196 |
 | `mephit-da-agua` | Mephit da Água | 197 | 201 | Revisar arte |
 | `mephit-do-ar` | Mephit do Ar | 197 | 201 | Revisar arte |
 | `mephit-do-fogo` | Mephit do Fogo | 198 | 202 | Revisar arte |
@@ -390,6 +390,25 @@ Esta tabela separa a **página da ficha** da **página onde a ilustração apare
 | `kolyarut` | Kolyarut | 164 | 168 | Figura compartilhada com Marut e Zelekhut |
 | `zelekhut` | Zelekhut | 164 | 168 | Figura compartilhada com Marut e Kolyarut |
 
+## Confirmação visual das artes — páginas 166 a 192
+
+| ID do catálogo | Criatura | Página impressa da arte | Página PDF da arte | Observação |
+|---|---|---:|---:|---|
+| `inumano` | Inumano | 166 | 170 | Figura individual |
+| `kobold-combatente-de-1-nivel` | Kobold Combatente de 1º Nível | 167 | 171 | Figura individual |
+| `kraken` | Kraken | 168 | 172 | Figura individual |
+| `lagarto-eletrico` | Lagarto Elétrico | 170 | 174 | Figura individual |
+| `lammasu` | Lammasu | 172 | 176 | Figura individual; não confundir com Protetor Dourado |
+| `leao-marinho` | Leão Marinho | 173 | 177 | Figura individual |
+| `lich` | Lich | 183 | 187 | Figura individual |
+| `lillend` | Lillend | 184 | 188 | Figura individual |
+| `lobo-das-estepes` | Lobo das Estepes | 187 | 191 | Figura individual |
+| `locathah` | Locathah | 188 | 192 | Figura individual |
+| `magmin` | Magmin | 189 | 193 | Figura individual |
+| `manto-negro` | Manto Negro | 190 | 194 | Figura individual |
+| `mastim-das-sombras` | Mastim das Sombras | 191 | 195 | Figura individual |
+| `medusa` | Medusa | 192 | 196 | Figura individual |
+
 ## Decisões técnicas registradas
 
 1. O catálogo de criaturas permanece como fonte de dados de jogo. O vínculo visual será feito por `CreatureDefinition.id`, sem alterar os nomes, IDs ou estatísticas.
@@ -401,7 +420,7 @@ Esta tabela separa a **página da ficha** da **página onde a ilustração apare
 ## Log de progresso — 2026-11-10
 
 - Confirmada a existência de 230 entradas no catálogo atual.
-- Conferidas visualmente as páginas PDF 12, 14, 15 e 27; 85 associações criatura–arte foram confirmadas até a página PDF 168. Há figuras compartilhadas; os rótulos impressos foram usados para não atribuir arte a criaturas erradas.
+- Conferidas visualmente as páginas PDF 12, 14, 15 e 27; 99 associações criatura–arte foram confirmadas até a página PDF 196. Há figuras compartilhadas; os rótulos impressos foram usados para não atribuir arte a criaturas erradas.
 - Localizadas as páginas de ficha das 230 criaturas do catálogo; a confirmação visual das artes ainda está incompleta. As faixas 2 e 3 foram associadas às páginas impressas por busca textual e conferência dos títulos dos blocos; a identificação visual individual das artes ainda está pendente.
 - Verificado que a contagem bruta de objetos de imagem do PDF não equivale à quantidade de ilustrações: várias imagens estão divididas em blocos. Para os recortes, usar renderização da página, não assumir que cada objeto interno seja uma figura.
 - Conferidos os títulos dos blocos de demônios nas páginas PDF 54–62; as páginas da Marilith, Nalfeshnee, Quasit e Vrock foram corrigidas para 59, 60, 61 e 62, respectivamente. Isso evita usar simples menções no texto como se fossem a página da ficha.
