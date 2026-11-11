@@ -188,6 +188,41 @@
 | `skum` | Skum | 230 | 234 | Revisar arte |
 | `slaad-azul` | Slaad Azul | 231 | 235 | Revisar arte |
 
+## Faixa 6 — catálogo 151 a 180
+
+| ID do catálogo | Nome no catálogo | Página impressa | Página PDF | Situação da arte |
+|---|---|---:|---:|---|
+| `slaad-cinza` | Slaad Cinza | 232 | 236 | Revisar arte |
+| `slaad-da-morte` | Slaad da Morte | 232 | 236 | Revisar arte |
+| `slaad-verde` | Slaad Verde | 233 | 237 | Revisar arte |
+| `slaad-vermelho` | Slaad Vermelho | 234 | 238 | Revisar arte |
+| `stirge` | Stirge | 235 | 239 | Revisar arte |
+| `tarrasque` | Tarrasque | 236 | 240 | Revisar arte |
+| `tartarugadragao` | Tartaruga–dragão | 237 | 241 | Revisar arte |
+| `tendriculo` | Tendrículo | 237 | 241 | Revisar arte |
+| `thoqqua` | Thoqqua | 238 | 242 | Revisar arte |
+| `tita` | Titã | 239 | 243 | Revisar arte |
+| `tritao` | Tritão | 243 | 247 | Revisar arte |
+| `troglodita` | Troglodita | 244 | 248 | Revisar arte |
+| `uivante` | Uivante | 246 | 250 | Revisar arte |
+| `ursocoruja` | Urso–coruja | 248 | 252 | Revisar arte |
+| `vargouille` | Vargouille | 251 | 255 | Revisar arte |
+| `verme-do-gelo` | Verme do Gelo | 253 | 257 | Revisar arte |
+| `verme-purpura` | Verme Púrpura | 254 | 258 | Revisar arte |
+| `vinha-assassina` | Vinha Assassina | 254 | 258 | Revisar arte |
+| `rastejante-noturno` | Rastejante Noturno | 257 | 261 | Revisar arte |
+| `vulto-alado` | Vulto Alado | 257 | 261 | Revisar arte |
+| `worg` | Worg | 258 | 262 | Revisar arte |
+| `wyvern` | Wyvern | 259 | 263 | Revisar arte |
+| `yrthak` | Yrthak | 262 | 266 | Revisar arte |
+| `puro-sangue` | Puro Sangue | 265 | 269 | Revisar arte |
+| `aguia` | Águia | 269 | 273 | Revisar arte |
+| `arminho` | Arminho | 269 | 273 | Revisar arte |
+| `arraia` | Arraia | 269 | 273 | Revisar arte |
+| `babuino` | Babuíno | 269 | 273 | Revisar arte |
+| `baleia-azul` | Baleia Azul | 270 | 274 | Revisar arte |
+| `baleia-cachalote` | Baleia Cachalote | 270 | 274 | Revisar arte |
+
 ## Decisões técnicas registradas
 
 1. O catálogo de criaturas permanece como fonte de dados de jogo. O vínculo visual será feito por `CreatureDefinition.id`, sem alterar os nomes, IDs ou estatísticas.
@@ -200,7 +235,7 @@
 
 - Confirmada a existência de 230 entradas no catálogo atual.
 - Conferidas visualmente as páginas PDF 12, 14, 15 e 27; cinco associações de arte foram identificadas: Abocanhador Matraqueante, Achaierai, Águia Gigante, Aranea e Aranha Interplanar.
-- Localizadas as fichas das primeiras 150 criaturas. As faixas 2 e 3 foram associadas às páginas impressas por busca textual e conferência dos títulos dos blocos; a identificação visual individual das artes ainda está pendente.
+- Localizadas as fichas das primeiras 180 criaturas. As faixas 2 e 3 foram associadas às páginas impressas por busca textual e conferência dos títulos dos blocos; a identificação visual individual das artes ainda está pendente.
 - Verificado que a contagem bruta de objetos de imagem do PDF não equivale à quantidade de ilustrações: várias imagens estão divididas em blocos. Para os recortes, usar renderização da página, não assumir que cada objeto interno seja uma figura.
 - Conferidos os títulos dos blocos de demônios nas páginas PDF 54–62; as páginas da Marilith, Nalfeshnee, Quasit e Vrock foram corrigidas para 59, 60, 61 e 62, respectivamente. Isso evita usar simples menções no texto como se fossem a página da ficha.
 - A terceira faixa foi mapeada entre as páginas impressas 72 e 126; a quarta, entre 131 e 184; e a quinta, entre 186 e 231. Algumas páginas contêm várias criaturas, portanto a página comum não implica que todas tenham uma ilustração individual.
