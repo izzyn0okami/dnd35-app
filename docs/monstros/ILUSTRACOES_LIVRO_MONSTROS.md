@@ -153,6 +153,41 @@
 | `lich` | Lich | 183 | 187 | Revisar arte |
 | `lillend` | Lillend | 184 | 188 | Revisar arte |
 
+## Faixa 5 — catálogo 121 a 150
+
+| ID do catálogo | Nome no catálogo | Página impressa | Página PDF | Situação da arte |
+|---|---|---:|---:|---|
+| `limo-cinzento` | Limo Cinzento | 186 | 190 | Revisar arte |
+| `lobo-das-estepes` | Lobo das Estepes | 187 | 191 | Revisar arte |
+| `locathah` | Locathah | 188 | 192 | Revisar arte |
+| `magmin` | Magmin | 189 | 193 | Revisar arte |
+| `manto-negro` | Manto Negro | 190 | 194 | Revisar arte |
+| `mastim-das-sombras` | Mastim das Sombras | 191 | 195 | Revisar arte |
+| `medusa` | Medusa | 192 | 196 | Revisar arte |
+| `mephit-da-agua` | Mephit da Água | 197 | 201 | Revisar arte |
+| `mephit-do-ar` | Mephit do Ar | 197 | 201 | Revisar arte |
+| `mephit-do-fogo` | Mephit do Fogo | 198 | 202 | Revisar arte |
+| `mephit-do-gelo` | Mephit do Gelo | 198 | 202 | Revisar arte |
+| `mephit-do-limo` | Mephit do Limo | 199 | 203 | Revisar arte |
+| `mephit-do-magma` | Mephit do Magma | 199 | 203 | Revisar arte |
+| `mephit-da-poeira` | Mephit da Poeira | 200 | 204 | Revisar arte |
+| `mephit-do-sal` | Mephit do Sal | 200 | 204 | Revisar arte |
+| `mephit-do-vapor` | Mephit do Vapor | 201 | 205 | Revisar arte |
+| `mimico` | Mímico | 201 | 205 | Revisar arte |
+| `mohrg` | Mohrg | 203 | 207 | Revisar arte |
+| `monstro-da-ferrugem` | Monstro da Ferrugem | 203 | 207 | Revisar arte |
+| `ogro-mago` | Ogro Mago | 211 | 215 | Revisar arte |
+| `passaro-roca` | Pássaro Roca | 215 | 219 | Revisar arte |
+| `pegaso` | Pégaso | 216 | 220 | Revisar arte |
+| `pseudodragao` | Pseudodragão | 220 | 224 | Revisar arte |
+| `rast` | Rast | 222 | 226 | Revisar arte |
+| `ravid` | Ravid | 223 | 227 | Revisar arte |
+| `sahuagin` | Sahuagin | 225 | 229 | Revisar arte |
+| `salteador-etereo` | Salteador Etéreo | 228 | 232 | Revisar arte |
+| `satiro` | Sátiro | 229 | 233 | Revisar arte |
+| `skum` | Skum | 230 | 234 | Revisar arte |
+| `slaad-azul` | Slaad Azul | 231 | 235 | Revisar arte |
+
 ## Decisões técnicas registradas
 
 1. O catálogo de criaturas permanece como fonte de dados de jogo. O vínculo visual será feito por `CreatureDefinition.id`, sem alterar os nomes, IDs ou estatísticas.
@@ -165,8 +200,8 @@
 
 - Confirmada a existência de 230 entradas no catálogo atual.
 - Conferidas visualmente as páginas PDF 12, 14, 15 e 27; cinco associações de arte foram identificadas: Abocanhador Matraqueante, Achaierai, Águia Gigante, Aranea e Aranha Interplanar.
-- Localizadas as fichas das primeiras 120 criaturas. As faixas 2 e 3 foram associadas às páginas impressas por busca textual e conferência dos títulos dos blocos; a identificação visual individual das artes ainda está pendente.
+- Localizadas as fichas das primeiras 150 criaturas. As faixas 2 e 3 foram associadas às páginas impressas por busca textual e conferência dos títulos dos blocos; a identificação visual individual das artes ainda está pendente.
 - Verificado que a contagem bruta de objetos de imagem do PDF não equivale à quantidade de ilustrações: várias imagens estão divididas em blocos. Para os recortes, usar renderização da página, não assumir que cada objeto interno seja uma figura.
 - Conferidos os títulos dos blocos de demônios nas páginas PDF 54–62; as páginas da Marilith, Nalfeshnee, Quasit e Vrock foram corrigidas para 59, 60, 61 e 62, respectivamente. Isso evita usar simples menções no texto como se fossem a página da ficha.
-- A terceira faixa foi mapeada entre as páginas impressas 72 e 126. A quarta faixa foi mapeada entre as páginas impressas 131 e 184. Algumas páginas contêm várias criaturas, portanto a página comum não implica que todas tenham uma ilustração individual.
+- A terceira faixa foi mapeada entre as páginas impressas 72 e 126; a quarta, entre 131 e 184; e a quinta, entre 186 e 231. Algumas páginas contêm várias criaturas, portanto a página comum não implica que todas tenham uma ilustração individual.
 - Próxima etapa: continuar a associação sequencial dos IDs restantes, confirmar a presença e a região de cada ilustração e só então preparar o manifesto de recursos locais.
