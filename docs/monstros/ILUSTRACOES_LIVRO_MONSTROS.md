@@ -12,7 +12,7 @@
 - O PDF contém imagens segmentadas em vários objetos internos. A extração direta desses objetos não corresponde necessariamente a uma ilustração completa. O método de produção deve renderizar a página e recortar a região da arte, conferindo visualmente o resultado.
 - Nenhuma imagem extraída foi adicionada ao repositório nesta etapa. A arte do livro tem direitos autorais; antes de embutir imagens no APK distribuído publicamente, é necessário resolver a autorização de redistribuição. O índice de páginas não redistribui a arte.
 
-## Faixa 1 — catálogo 1 a 30
+## Faixa 1 — catálogo 1 a 31
 
 | ID do catálogo | Nome no catálogo | Página impressa | Página PDF | Situação da arte |
 |---|---|---:|---:|---|
@@ -48,7 +48,7 @@
 | `bugbear` | Bugbear | 38 | 42 | Revisar arte |
 | `bulette` | Bulette | 39 | 43 | Revisar arte |
 
-## Faixa 2 — catálogo 31 a 60
+## Faixa 2 — catálogo 32 a 61
 
 | ID do catálogo | Nome no catálogo | Página impressa | Página PDF | Situação da arte |
 |---|---|---:|---:|---|
@@ -83,10 +83,14 @@
 | `diabo-farpado-hamatula` | Diabo Farpado (hamatula) | 67 | 71 | Revisar arte |
 | `diabo-dos-ossos-osyluth` | Diabo dos Ossos (osyluth) | 68 | 72 | Revisar arte |
 
-## Faixa 3 — catálogo 61 a 90
+## Faixa 3 — catálogo 62 a 95
 
 | ID do catálogo | Nome no catálogo | Página impressa | Página PDF | Situação da arte |
 |---|---|---:|---:|---|
+| `diabrete` | Diabrete | 68 | 72 | Revisar arte |
+| `erinyes` | Erinyes | 69 | 73 | Revisar arte |
+| `gato-infernal-bezekira` | Gato Infernal (bezekira) | 70 | 74 | Revisar arte |
+| `lorde-das-profundezas` | Lorde das Profundezas | 70 | 74 | Revisar arte |
 | `digestor` | Digestor | 72 | 76 | Revisar arte |
 | `dilacerador-cinzento` | Dilacerador Cinzento | 72 | 76 | Revisar arte |
 | `dinonico` | Dinonico | 73 | 77 | Revisar arte |
@@ -118,7 +122,7 @@
 | `fera-do-caos` | Fera do Caos | 125 | 129 | Revisar arte |
 | `fogofatuo` | Fogo–fátuo | 126 | 130 | Revisar arte |
 
-## Faixa 4 — catálogo 91 a 120
+## Faixa 4 — catálogo 96 a 125
 
 | ID do catálogo | Nome no catálogo | Página impressa | Página PDF | Situação da arte |
 |---|---|---:|---:|---|
@@ -153,7 +157,7 @@
 | `lich` | Lich | 183 | 187 | Revisar arte |
 | `lillend` | Lillend | 184 | 188 | Revisar arte |
 
-## Faixa 5 — catálogo 121 a 150
+## Faixa 5 — catálogo 126 a 155
 
 | ID do catálogo | Nome no catálogo | Página impressa | Página PDF | Situação da arte |
 |---|---|---:|---:|---|
@@ -188,7 +192,7 @@
 | `skum` | Skum | 230 | 234 | Revisar arte |
 | `slaad-azul` | Slaad Azul | 231 | 235 | Revisar arte |
 
-## Faixa 6 — catálogo 151 a 180
+## Faixa 6 — catálogo 156 a 185
 
 | ID do catálogo | Nome no catálogo | Página impressa | Página PDF | Situação da arte |
 |---|---|---:|---:|---|
@@ -223,6 +227,56 @@
 | `baleia-azul` | Baleia Azul | 270 | 274 | Revisar arte |
 | `baleia-cachalote` | Baleia Cachalote | 270 | 274 | Revisar arte |
 
+## Faixa 7 — catálogo 186 a 230
+
+| ID do catálogo | Nome no catálogo | Página impressa | Página PDF | Situação da arte |
+|---|---|---:|---:|---|
+| `baleia-orca` | Baleia Orca | 270 | 274 | Revisar arte |
+| `bisao` | Bisão | 270 | 274 | Revisar arte |
+| `cachorro` | Cachorro | 271 | 275 | Revisar arte |
+| `cachorro-de-montaria` | Cachorro de Montaria | 271 | 275 | Revisar arte |
+| `camelo` | Camelo | 271 | 275 | Revisar arte |
+| `carcaju` | Carcajú | 272 | 276 | Revisar arte |
+| `cavalo-pesado` | Cavalo Pesado | 272 | 276 | Revisar arte |
+| `cavalo-leve` | Cavalo Leve | 272 | 276 | Revisar arte |
+| `cavalo-de-guerra-pesado` | Cavalo de Guerra Pesado | 272 | 276 | Revisar arte |
+| `cobra-constritora` | Cobra Constritora | 273 | 277 | Revisar arte |
+| `coruja` | Coruja | 274 | 278 | Revisar arte |
+| `corvo` | Corvo | 275 | 279 | Revisar arte |
+| `crocodilo` | Crocodilo | 275 | 279 | Revisar arte |
+| `crocodilo-gigante` | Crocodilo Gigante | 275 | 279 | Revisar arte |
+| `elefante` | Elefante | 275 | 279 | Revisar arte |
+| `falcao` | Falcão | 276 | 280 | Revisar arte |
+| `gato` | Gato | 276 | 280 | Revisar arte |
+| `golfinho` | Golfinho | 276 | 280 | Revisar arte |
+| `gorila` | Gorila | 276 | 280 | Revisar arte |
+| `guepardo` | Guepardo | 277 | 281 | Revisar arte |
+| `javali` | Javali | 277 | 281 | Revisar arte |
+| `jumento` | Jumento | 277 | 281 | Revisar arte |
+| `lagarto` | Lagarto | 278 | 282 | Revisar arte |
+| `leao` | Leão | 278 | 282 | Revisar arte |
+| `leopardo` | Leopardo | 278 | 282 | Revisar arte |
+| `lobo` | Lobo | 279 | 283 | Revisar arte |
+| `lula` | Lula | 279 | 283 | Revisar arte |
+| `lula-gigante` | Lula Gigante | 279 | 283 | Revisar arte |
+| `macaco` | Macaco | 280 | 284 | Revisar arte |
+| `morcego` | Morcego | 280 | 284 | Revisar arte |
+| `mula` | Mula | 280 | 284 | Revisar arte |
+| `polvo` | Polvo | 280 | 284 | Revisar arte |
+| `polvo-gigante` | Polvo Gigante | 281 | 285 | Revisar arte |
+| `ponei` | Pônei | 281 | 285 | Revisar arte |
+| `ponei-de-guerra` | Pônei de Guerra | 282 | 286 | Revisar arte |
+| `rato` | Rato | 282 | 286 | Revisar arte |
+| `rinoceronte` | Rinoceronte | 282 | 286 | Revisar arte |
+| `sapo` | Sapo | 282 | 286 | Revisar arte |
+| `texugo` | Texugo | 283 | 287 | Revisar arte |
+| `tigre` | Tigre | 283 | 287 | Revisar arte |
+| `urso-marrom` | Urso Marrom | 284 | 288 | Revisar arte |
+| `urso-negro` | Urso Negro | 284 | 288 | Revisar arte |
+| `urso-polar` | Urso Polar | 284 | 288 | Revisar arte |
+| `vaga-lume-gigante` | Vaga-lume Gigante | 290 | 294 | Revisar arte |
+| `vespa-gigante` | Vespa Gigante | 290 | 294 | Revisar arte |
+
 ## Decisões técnicas registradas
 
 1. O catálogo de criaturas permanece como fonte de dados de jogo. O vínculo visual será feito por `CreatureDefinition.id`, sem alterar os nomes, IDs ou estatísticas.
@@ -235,8 +289,9 @@
 
 - Confirmada a existência de 230 entradas no catálogo atual.
 - Conferidas visualmente as páginas PDF 12, 14, 15 e 27; cinco associações de arte foram identificadas: Abocanhador Matraqueante, Achaierai, Águia Gigante, Aranea e Aranha Interplanar.
-- Localizadas as fichas das primeiras 180 criaturas. As faixas 2 e 3 foram associadas às páginas impressas por busca textual e conferência dos títulos dos blocos; a identificação visual individual das artes ainda está pendente.
+- Localizadas as páginas de ficha das 230 criaturas do catálogo; a confirmação visual das artes ainda está incompleta. As faixas 2 e 3 foram associadas às páginas impressas por busca textual e conferência dos títulos dos blocos; a identificação visual individual das artes ainda está pendente.
 - Verificado que a contagem bruta de objetos de imagem do PDF não equivale à quantidade de ilustrações: várias imagens estão divididas em blocos. Para os recortes, usar renderização da página, não assumir que cada objeto interno seja uma figura.
 - Conferidos os títulos dos blocos de demônios nas páginas PDF 54–62; as páginas da Marilith, Nalfeshnee, Quasit e Vrock foram corrigidas para 59, 60, 61 e 62, respectivamente. Isso evita usar simples menções no texto como se fossem a página da ficha.
-- A terceira faixa foi mapeada entre as páginas impressas 72 e 126; a quarta, entre 131 e 184; e a quinta, entre 186 e 231. Algumas páginas contêm várias criaturas, portanto a página comum não implica que todas tenham uma ilustração individual.
-- Próxima etapa: continuar a associação sequencial dos IDs restantes, confirmar a presença e a região de cada ilustração e só então preparar o manifesto de recursos locais.
+- As faixas intermediárias foram localizadas em sequência até a página impressa 270; as cinco últimas entradas de animais insetoides estão no capítulo 3, página impressa 290. Algumas páginas contêm várias criaturas, portanto a página comum não implica que todas tenham uma ilustração individual.
+- O índice agora cobre os 230 IDs do catálogo, com páginas de ficha identificadas. Isso não significa que as 230 criaturas tenham ilustração própria: a próxima etapa é verificar visualmente cada página, marcar ausências/figuras compartilhadas e registrar as regiões de recorte.
+- Próxima etapa: revisão visual sequencial das páginas, seguida pela preparação do manifesto de recursos locais.
