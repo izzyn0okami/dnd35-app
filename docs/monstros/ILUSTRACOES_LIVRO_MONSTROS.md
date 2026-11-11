@@ -104,30 +104,30 @@
 | `drider` | Drider | 98 | 102 | **Confirmada** — ilustração na página PDF 102 |
 | `bralani` | Bralani | 99 | 103 | **Confirmada** — arte compartilhada com Ghaele na página PDF 103 |
 | `ghaele` | Ghaele | 100 | 104 | **Confirmada** — arte compartilhada com Bralani na página PDF 103 |
-| `ente` | Ente | 110 | 114 | Revisar arte |
+| `ente` | Ente | 110 | 114 | **Confirmada** — ilustração na página PDF 114 |
 | `enxame-de-centopeias` | Enxame de Centopeias | 111 | 115 | Revisar arte |
 | `enxame-de-gafanhotos` | Enxame de Gafanhotos | 111 | 115 | Revisar arte |
 | `enxame-de-morcegos` | Enxame de Morcegos | 112 | 116 | Revisar arte |
-| `escavador` | Escavador | 113 | 117 | Revisar arte |
+| `escavador` | Escavador | 113 | 117 | **Confirmada** — ilustração na página PDF 117 |
 | `androesfinge` | Andro–esfinge | 114 | 118 | Revisar arte |
 | `crioesfinge` | Crio–esfinge | 115 | 119 | Revisar arte |
-| `ginoesfinge` | Gino–esfinge | 115 | 119 | Revisar arte |
-| `espectro` | Espectro | 116 | 120 | Revisar arte |
-| `ettercap` | Ettercap | 120 | 124 | Revisar arte |
-| `ettin` | Ettin | 121 | 125 | Revisar arte |
-| `grig` | Grig | 122 | 126 | Revisar arte |
-| `nixie` | Nixie | 122 | 126 | Revisar arte |
-| `pixie` | Pixie | 123 | 127 | Revisar arte |
+| `ginoesfinge` | Gino–esfinge | 115 | 119 | **Confirmada** — ilustração na página PDF 119 |
+| `espectro` | Espectro | 116 | 120 | **Confirmada** — ilustração na página PDF 120 |
+| `ettercap` | Ettercap | 120 | 124 | **Confirmada** — ilustração na página PDF 124 |
+| `ettin` | Ettin | 121 | 125 | **Confirmada** — ilustração na página PDF 125 |
+| `grig` | Grig | 122 | 126 | **Confirmada** — figura compartilhada na página PDF 126 |
+| `nixie` | Nixie | 122 | 126 | **Confirmada** — figura compartilhada na página PDF 126 |
+| `pixie` | Pixie | 122 | 126 | **Confirmada** — figura compartilhada na página PDF 126 |
 | `fantasma-guerreiro-humano-de-5-nivel` | Fantasma Guerreiro Humano de 5º Nível | 124 | 128 | Revisar arte |
-| `fera-do-caos` | Fera do Caos | 125 | 129 | Revisar arte |
-| `fogofatuo` | Fogo–fátuo | 126 | 130 | Revisar arte |
+| `fera-do-caos` | Fera do Caos | 125 | 129 | **Confirmada** — ilustração na página PDF 130 |
+| `fogofatuo` | Fogo–fátuo | 126 | 130 | **Confirmada** — ilustração na página PDF 131 |
 
 ## Faixa 4 — catálogo 96 a 125
 
 | ID do catálogo | Nome no catálogo | Página impressa | Página PDF | Situação da arte |
 |---|---|---:|---:|---|
-| `fungo-fantasma` | Fungo Fantasma | 131 | 135 | Revisar arte |
-| `gargula` | Gárgula | 131 | 135 | Revisar arte |
+| `fungo-fantasma` | Fungo Fantasma | 131 | 135 | **Confirmada** — ilustração na página PDF 135 |
+| `gargula` | Gárgula | 131 | 135 | **Confirmada** — ilustração na página PDF 135 |
 | `djinni` | Djinni | 133 | 137 | Revisar arte |
 | `efreeti` | Efreeti | 134 | 138 | Revisar arte |
 | `janni` | Janni | 135 | 139 | Revisar arte |
@@ -352,6 +352,24 @@ Esta tabela separa a **página da ficha** da **página onde a ilustração apare
 | `bralani` | Bralani | 99 | 103 | Figura compartilhada com Ghaele |
 | `ghaele` | Ghaele | 99 | 103 | Figura compartilhada com Bralani |
 
+## Confirmação visual das artes — páginas 110 a 132
+
+| ID do catálogo | Criatura | Página impressa da arte | Página PDF da arte | Observação |
+|---|---|---:|---:|---|
+| `ente` | Ente | 110 | 114 | Figura individual |
+| `escavador` | Escavador | 113 | 117 | Figura individual |
+| `ginoesfinge` | Gino–esfinge | 115 | 119 | Figura individual; não atribuir a arte às outras esfinges |
+| `espectro` | Espectro | 116 | 120 | Figura individual |
+| `ettercap` | Ettercap | 120 | 124 | Figura individual |
+| `ettin` | Ettin | 121 | 125 | Figura individual |
+| `grig` | Grig | 122 | 126 | Figura compartilhada com Nixie e Pixie |
+| `nixie` | Nixie | 122 | 126 | Figura compartilhada com Grig e Pixie |
+| `pixie` | Pixie | 122 | 126 | Figura compartilhada com Grig e Nixie |
+| `fera-do-caos` | Fera do Caos | 126 | 130 | Figura individual |
+| `fogofatuo` | Fogo–fátuo | 127 | 131 | Figura individual |
+| `fungo-fantasma` | Fungo Fantasma | 131 | 135 | Figura individual |
+| `gargula` | Gárgula | 131 | 135 | Figura individual |
+
 ## Decisões técnicas registradas
 
 1. O catálogo de criaturas permanece como fonte de dados de jogo. O vínculo visual será feito por `CreatureDefinition.id`, sem alterar os nomes, IDs ou estatísticas.
@@ -363,7 +381,7 @@ Esta tabela separa a **página da ficha** da **página onde a ilustração apare
 ## Log de progresso — 2026-11-10
 
 - Confirmada a existência de 230 entradas no catálogo atual.
-- Conferidas visualmente as páginas PDF 12, 14, 15 e 27; 57 associações criatura–arte foram confirmadas até a página PDF 103. Há figuras compartilhadas; os rótulos impressos foram usados para não atribuir arte a criaturas erradas.
+- Conferidas visualmente as páginas PDF 12, 14, 15 e 27; 70 associações criatura–arte foram confirmadas até a página PDF 135. Há figuras compartilhadas; os rótulos impressos foram usados para não atribuir arte a criaturas erradas.
 - Localizadas as páginas de ficha das 230 criaturas do catálogo; a confirmação visual das artes ainda está incompleta. As faixas 2 e 3 foram associadas às páginas impressas por busca textual e conferência dos títulos dos blocos; a identificação visual individual das artes ainda está pendente.
 - Verificado que a contagem bruta de objetos de imagem do PDF não equivale à quantidade de ilustrações: várias imagens estão divididas em blocos. Para os recortes, usar renderização da página, não assumir que cada objeto interno seja uma figura.
 - Conferidos os títulos dos blocos de demônios nas páginas PDF 54–62; as páginas da Marilith, Nalfeshnee, Quasit e Vrock foram corrigidas para 59, 60, 61 e 62, respectivamente. Isso evita usar simples menções no texto como se fossem a página da ficha.
