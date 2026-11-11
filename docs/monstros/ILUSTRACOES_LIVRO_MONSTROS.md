@@ -19,7 +19,7 @@
 | `abocanhador-matraqueante` | Abocanhador Matraqueante | 8 | 12 | **Confirmada** — ilustração na metade inferior |
 | `achaierai` | Achaierai | 10 | 14 | **Confirmada** — ilustração na metade inferior esquerda |
 | `aguia-gigante` | Águia Gigante | 11 | 15 | **Confirmada** — ilustração na metade inferior esquerda |
-| `allip` | Allip | 11 | 15 | Revisar arte — bloco localizado; não foi identificada arte própria nesta página |
+| `allip` | Allip | 11 | 15 | **Confirmada** — ilustração própria na página PDF 16 (página impressa 12) |
 | `arminho-atroz` | Arminho Atroz | 14 | 18 | Revisar arte |
 | `carcaju-atroz` | Carcajú Atroz | 14 | 18 | Revisar arte |
 | `gorila-atroz` | Gorila Atroz | 15 | 19 | Revisar arte |
@@ -30,23 +30,23 @@
 | `rato-atroz` | Rato Atroz | 16 | 20 | Revisar arte |
 | `tigre-atroz` | Tigre Atroz | 17 | 21 | Revisar arte |
 | `tubarao-atroz` | Tubarão Atroz | 17 | 21 | Revisar arte |
-| `urso-atroz` | Urso Atroz | 18 | 22 | Revisar arte |
-| `anjo-deva-astral` | Anjo, Deva Astral | 19 | 23 | Revisar arte |
-| `anjo-planetario` | Anjo, Planetário | 19 | 23 | Revisar arte |
-| `anjo-solar` | Anjo, Solar | 20 | 24 | Revisar arte |
+| `urso-atroz` | Urso Atroz | 18 | 22 | **Confirmada** — ilustração na página PDF 22 |
+| `anjo-deva-astral` | Anjo, Deva Astral | 19 | 23 | **Confirmada** — arte compartilhada na página PDF 24 |
+| `anjo-planetario` | Anjo, Planetário | 19 | 23 | **Confirmada** — arte compartilhada na página PDF 24 |
+| `anjo-solar` | Anjo, Solar | 20 | 24 | **Confirmada** — arte compartilhada na página PDF 24 |
 | `aranea` | Aranea | 23 | 27 | **Confirmada** — ilustração na região superior esquerda |
 | `aranha-interplanar` | Aranha Interplanar | 23 | 27 | **Confirmada** — ilustração na metade inferior |
-| `arbusto-errante` | Arbusto Errante | 24 | 28 | Revisar arte |
-| `arconte-luminar` | Arconte Luminar | 25 | 29 | Revisar arte |
-| `arconte-mensageiro` | Arconte Mensageiro | 27 | 31 | Revisar arte |
+| `arbusto-errante` | Arbusto Errante | 24 | 28 | **Confirmada** — ilustração na página PDF 28 |
+| `arconte-luminar` | Arconte Luminar | 25 | 29 | **Confirmada** — arte compartilhada na página PDF 31 |
+| `arconte-mensageiro` | Arconte Mensageiro | 27 | 31 | **Confirmada** — arte compartilhada na página PDF 31 |
 | `azer` | Azer | 28 | 32 | Revisar arte |
-| `beholder` | Beholder | 32 | 36 | Revisar arte |
-| `belker` | Belker | 34 | 38 | Revisar arte |
-| `anis` | Anis | 35 | 39 | Revisar arte |
-| `bruxa-verde` | Bruxa Verde | 36 | 40 | Revisar arte |
-| `bruxa-do-mar` | Bruxa do Mar | 36 | 40 | Revisar arte |
-| `bugbear` | Bugbear | 38 | 42 | Revisar arte |
-| `bulette` | Bulette | 39 | 43 | Revisar arte |
+| `beholder` | Beholder | 32 | 36 | **Confirmada** — ilustração na página PDF 37 |
+| `belker` | Belker | 34 | 38 | **Confirmada** — ilustração na página PDF 38 |
+| `anis` | Anis | 35 | 39 | **Confirmada** — ilustração na página PDF 39 |
+| `bruxa-verde` | Bruxa Verde | 36 | 40 | **Confirmada** — ilustração na página PDF 40 |
+| `bruxa-do-mar` | Bruxa do Mar | 36 | 40 | **Confirmada** — ilustração na página PDF 41 |
+| `bugbear` | Bugbear | 38 | 42 | **Confirmada** — ilustração na página PDF 42 |
+| `bulette` | Bulette | 39 | 43 | **Confirmada** — ilustração na página PDF 43 |
 
 ## Faixa 2 — catálogo 32 a 61
 
@@ -277,6 +277,33 @@
 | `vaga-lume-gigante` | Vaga-lume Gigante | 290 | 294 | Revisar arte |
 | `vespa-gigante` | Vespa Gigante | 290 | 294 | Revisar arte |
 
+## Confirmação visual das artes — páginas iniciais
+
+Esta tabela separa a **página da ficha** da **página onde a ilustração aparece**. Uma imagem compartilhada pode representar mais de uma entrada, conforme os rótulos impressos na própria figura.
+
+| ID do catálogo | Criatura | Página impressa da arte | Página PDF da arte | Observação |
+|---|---|---:|---:|---|
+| `abocanhador-matraqueante` | Abocanhador Matraqueante | 8 | 12 | Figura individual |
+| `achaierai` | Achaierai | 10 | 14 | Figura individual |
+| `aguia-gigante` | Águia Gigante | 11 | 15 | Figura individual |
+| `allip` | Allip | 12 | 16 | Figura individual |
+| `urso-atroz` | Urso Atroz | 18 | 22 | Figura individual |
+| `anjo-deva-astral` | Anjo, Deva Astral | 20 | 24 | Figura compartilhada, identificada pelo rótulo |
+| `anjo-planetario` | Anjo, Planetário | 20 | 24 | Figura compartilhada, identificada pelo rótulo |
+| `anjo-solar` | Anjo, Solar | 20 | 24 | Figura compartilhada, identificada pelo rótulo |
+| `aranea` | Aranea | 23 | 27 | Figura individual |
+| `aranha-interplanar` | Aranha Interplanar | 23 | 27 | Figura individual, na metade inferior |
+| `arbusto-errante` | Arbusto Errante | 24 | 28 | Figura individual |
+| `arconte-luminar` | Arconte Luminar | 27 | 31 | Figura compartilhada, identificada pelo rótulo |
+| `arconte-mensageiro` | Arconte Mensageiro | 27 | 31 | Figura compartilhada, identificada pelo rótulo |
+| `beholder` | Beholder | 33 | 37 | Figura individual |
+| `belker` | Belker | 34 | 38 | Figura individual |
+| `anis` | Anis | 35 | 39 | Figura individual |
+| `bruxa-verde` | Bruxa Verde | 36 | 40 | Figura individual |
+| `bruxa-do-mar` | Bruxa do Mar | 37 | 41 | Figura individual |
+| `bugbear` | Bugbear | 38 | 42 | Figura individual |
+| `bulette` | Bulette | 39 | 43 | Figura individual |
+
 ## Decisões técnicas registradas
 
 1. O catálogo de criaturas permanece como fonte de dados de jogo. O vínculo visual será feito por `CreatureDefinition.id`, sem alterar os nomes, IDs ou estatísticas.
@@ -288,7 +315,7 @@
 ## Log de progresso — 2026-11-10
 
 - Confirmada a existência de 230 entradas no catálogo atual.
-- Conferidas visualmente as páginas PDF 12, 14, 15 e 27; cinco associações de arte foram identificadas: Abocanhador Matraqueante, Achaierai, Águia Gigante, Aranea e Aranha Interplanar.
+- Conferidas visualmente as páginas PDF 12, 14, 15 e 27; 20 associações criatura–arte foram confirmadas nas páginas PDF 12, 14–16, 22, 24, 27–28, 31 e 37–43. As páginas 24 e 31 contêm figuras compartilhadas, com rótulos que identificam as criaturas.
 - Localizadas as páginas de ficha das 230 criaturas do catálogo; a confirmação visual das artes ainda está incompleta. As faixas 2 e 3 foram associadas às páginas impressas por busca textual e conferência dos títulos dos blocos; a identificação visual individual das artes ainda está pendente.
 - Verificado que a contagem bruta de objetos de imagem do PDF não equivale à quantidade de ilustrações: várias imagens estão divididas em blocos. Para os recortes, usar renderização da página, não assumir que cada objeto interno seja uma figura.
 - Conferidos os títulos dos blocos de demônios nas páginas PDF 54–62; as páginas da Marilith, Nalfeshnee, Quasit e Vrock foram corrigidas para 59, 60, 61 e 62, respectivamente. Isso evita usar simples menções no texto como se fossem a página da ficha.
