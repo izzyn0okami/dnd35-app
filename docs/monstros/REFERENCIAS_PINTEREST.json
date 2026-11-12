@@ -1,0 +1,2317 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Índice de descoberta visual provisória. URLs Pinterest são buscas, não fontes de licença nem arquivos incorporados.",
+  "repositoryPolicy": "O repositório é público. Não armazenar nem distribuir imagens de Pinterest sem identificar a obra original, autor e licença que permita redistribuição e adaptação.",
+  "catalogScope": "230 criaturas do Livro dos Monstros 3.5; entradas complementares do SRD excluídas.",
+  "assetNamingConvention": "app/src/main/assets/monsters/<creatureId>.webp",
+  "reviewWorkflow": [
+    "Abrir a busca Pinterest correspondente à criatura.",
+    "Escolher a imagem visualmente mais próxima da criatura do catálogo.",
+    "Rastrear o pin até a página original do criador/obra.",
+    "Verificar licença e permissão de redistribuição/adaptação.",
+    "Se permitido, salvar versão local otimizada no caminho assetPath e registrar proveniência.",
+    "Se não permitido ou não houver licença verificável, substituir manualmente por outra imagem."
+  ],
+  "records": [
+    {
+      "creatureId": "abocanhador-matraqueante",
+      "creatureName": "Abocanhador Matraqueante",
+      "searchQuery": "Abocanhador Matraqueante Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Abocanhador%20Matraqueante%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/abocanhador-matraqueante.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "achaierai",
+      "creatureName": "Achaierai",
+      "searchQuery": "Achaierai Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Achaierai%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/achaierai.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "aguia-gigante",
+      "creatureName": "Águia Gigante",
+      "searchQuery": "Águia Gigante Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=%C3%81guia%20Gigante%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/aguia-gigante.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "allip",
+      "creatureName": "Allip",
+      "searchQuery": "Allip Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Allip%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/allip.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "arminho-atroz",
+      "creatureName": "Arminho Atroz",
+      "searchQuery": "Arminho Atroz Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Arminho%20Atroz%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/arminho-atroz.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "carcaju-atroz",
+      "creatureName": "Carcajú Atroz",
+      "searchQuery": "Carcajú Atroz Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Carcaj%C3%BA%20Atroz%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/carcaju-atroz.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "gorila-atroz",
+      "creatureName": "Gorila Atroz",
+      "searchQuery": "Gorila Atroz Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Gorila%20Atroz%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/gorila-atroz.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "javali-atroz",
+      "creatureName": "Javali Atroz",
+      "searchQuery": "Javali Atroz Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Javali%20Atroz%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/javali-atroz.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "leao-atroz",
+      "creatureName": "Leão Atroz",
+      "searchQuery": "Leão Atroz Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Le%C3%A3o%20Atroz%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/leao-atroz.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "lobo-atroz",
+      "creatureName": "Lobo Atroz",
+      "searchQuery": "Lobo Atroz Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Lobo%20Atroz%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/lobo-atroz.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "morcego-atroz",
+      "creatureName": "Morcego Atroz",
+      "searchQuery": "Morcego Atroz Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Morcego%20Atroz%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/morcego-atroz.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "rato-atroz",
+      "creatureName": "Rato Atroz",
+      "searchQuery": "Rato Atroz Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Rato%20Atroz%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/rato-atroz.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "tigre-atroz",
+      "creatureName": "Tigre Atroz",
+      "searchQuery": "Tigre Atroz Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Tigre%20Atroz%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/tigre-atroz.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "tubarao-atroz",
+      "creatureName": "Tubarão Atroz",
+      "searchQuery": "Tubarão Atroz Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Tubar%C3%A3o%20Atroz%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/tubarao-atroz.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "urso-atroz",
+      "creatureName": "Urso Atroz",
+      "searchQuery": "Urso Atroz Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Urso%20Atroz%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/urso-atroz.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "anjo-deva-astral",
+      "creatureName": "Anjo, Deva Astral",
+      "searchQuery": "Anjo, Deva Astral Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Anjo%2C%20Deva%20Astral%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/anjo-deva-astral.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "anjo-planetario",
+      "creatureName": "Anjo, Planetário",
+      "searchQuery": "Anjo, Planetário Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Anjo%2C%20Planet%C3%A1rio%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/anjo-planetario.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "anjo-solar",
+      "creatureName": "Anjo, Solar",
+      "searchQuery": "Anjo, Solar Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Anjo%2C%20Solar%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/anjo-solar.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "aranea",
+      "creatureName": "Aranea",
+      "searchQuery": "Aranea Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Aranea%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/aranea.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "aranha-interplanar",
+      "creatureName": "Aranha Interplanar",
+      "searchQuery": "Aranha Interplanar Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Aranha%20Interplanar%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/aranha-interplanar.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "arbusto-errante",
+      "creatureName": "Arbusto Errante",
+      "searchQuery": "Arbusto Errante Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Arbusto%20Errante%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/arbusto-errante.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "arconte-luminar",
+      "creatureName": "Arconte Luminar",
+      "searchQuery": "Arconte Luminar Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Arconte%20Luminar%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/arconte-luminar.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "arconte-mensageiro",
+      "creatureName": "Arconte Mensageiro",
+      "searchQuery": "Arconte Mensageiro Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Arconte%20Mensageiro%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/arconte-mensageiro.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "azer",
+      "creatureName": "Azer",
+      "searchQuery": "Azer Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Azer%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/azer.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "beholder",
+      "creatureName": "Beholder",
+      "searchQuery": "Beholder Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Beholder%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/beholder.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "belker",
+      "creatureName": "Belker",
+      "searchQuery": "Belker Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Belker%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/belker.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "anis",
+      "creatureName": "Anis",
+      "searchQuery": "Anis Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Anis%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/anis.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "bruxa-verde",
+      "creatureName": "Bruxa Verde",
+      "searchQuery": "Bruxa Verde Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Bruxa%20Verde%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/bruxa-verde.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "bruxa-do-mar",
+      "creatureName": "Bruxa do Mar",
+      "searchQuery": "Bruxa do Mar Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Bruxa%20do%20Mar%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/bruxa-do-mar.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "bugbear",
+      "creatureName": "Bugbear",
+      "searchQuery": "Bugbear Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Bugbear%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/bugbear.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "bulette",
+      "creatureName": "Bulette",
+      "searchQuery": "Bulette Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Bulette%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/bulette.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "cacador-invisivel",
+      "creatureName": "Caçador Invisível",
+      "searchQuery": "Caçador Invisível Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Ca%C3%A7ador%20Invis%C3%ADvel%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/cacador-invisivel.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "cao-infernal",
+      "creatureName": "Cão Infernal",
+      "searchQuery": "Cão Infernal Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=C%C3%A3o%20Infernal%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/cao-infernal.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "cao-de-guerra-nessian",
+      "creatureName": "Cão de Guerra Nessían",
+      "searchQuery": "Cão de Guerra Nessían Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=C%C3%A3o%20de%20Guerra%20Ness%C3%ADan%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/cao-de-guerra-nessian.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "cao-teleportador",
+      "creatureName": "Cão Teleportador",
+      "searchQuery": "Cão Teleportador Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=C%C3%A3o%20Teleportador%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/cao-teleportador.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "cao-yeth",
+      "creatureName": "Cão Yeth",
+      "searchQuery": "Cão Yeth Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=C%C3%A3o%20Yeth%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/cao-yeth.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "chuul",
+      "creatureName": "Chuul",
+      "searchQuery": "Chuul Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Chuul%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/chuul.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "cocatriz",
+      "creatureName": "Cocatriz",
+      "searchQuery": "Cocatriz Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Cocatriz%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/cocatriz.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "constritor",
+      "creatureName": "Constritor",
+      "searchQuery": "Constritor Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Constritor%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/constritor.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "coruja-gigante",
+      "creatureName": "Coruja Gigante",
+      "searchQuery": "Coruja Gigante Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Coruja%20Gigante%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/coruja-gigante.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "couatl",
+      "creatureName": "Couatl",
+      "searchQuery": "Couatl Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Couatl%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/couatl.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "cria-vampirica",
+      "creatureName": "Cria Vampírica",
+      "searchQuery": "Cria Vampírica Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Cria%20Vamp%C3%ADrica%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/cria-vampirica.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "rato-atroz-abissal",
+      "creatureName": "Rato Atroz Abissal",
+      "searchQuery": "Rato Atroz Abissal Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Rato%20Atroz%20Abissal%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/rato-atroz-abissal.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "leao-celestial",
+      "creatureName": "Leão Celestial",
+      "searchQuery": "Leão Celestial Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Le%C3%A3o%20Celestial%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/leao-celestial.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "babau",
+      "creatureName": "Babau",
+      "searchQuery": "Babau Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Babau%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/babau.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "balor",
+      "creatureName": "Balor",
+      "searchQuery": "Balor Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Balor%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/balor.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "bebilith",
+      "creatureName": "Bebilith",
+      "searchQuery": "Bebilith Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Bebilith%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/bebilith.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "dretch",
+      "creatureName": "Dretch",
+      "searchQuery": "Dretch Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Dretch%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/dretch.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "glabrezu",
+      "creatureName": "Glabrezu",
+      "searchQuery": "Glabrezu Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Glabrezu%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/glabrezu.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "hezrou",
+      "creatureName": "Hezrou",
+      "searchQuery": "Hezrou Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Hezrou%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/hezrou.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "marilith",
+      "creatureName": "Marilith",
+      "searchQuery": "Marilith Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Marilith%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/marilith.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "nalfeshnee",
+      "creatureName": "Nalfeshnee",
+      "searchQuery": "Nalfeshnee Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Nalfeshnee%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/nalfeshnee.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "quasit",
+      "creatureName": "Quasit",
+      "searchQuery": "Quasit Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Quasit%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/quasit.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "vrock",
+      "creatureName": "Vrock",
+      "searchQuery": "Vrock Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Vrock%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/vrock.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "derro",
+      "creatureName": "Derro",
+      "searchQuery": "Derro Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Derro%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/derro.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "destrachan",
+      "creatureName": "Destrachan",
+      "searchQuery": "Destrachan Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Destrachan%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/destrachan.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "devorador-de-aranhas",
+      "creatureName": "Devorador de Aranhas",
+      "searchQuery": "Devorador de Aranhas Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Devorador%20de%20Aranhas%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/devorador-de-aranhas.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "diabo-barbado-barbazu",
+      "creatureName": "Diabo Barbado (barbazu)",
+      "searchQuery": "Diabo Barbado (barbazu) Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Diabo%20Barbado%20(barbazu)%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/diabo-barbado-barbazu.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "diabo-das-correntes-kyton",
+      "creatureName": "Diabo das Correntes (kyton)",
+      "searchQuery": "Diabo das Correntes (kyton) Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Diabo%20das%20Correntes%20(kyton)%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/diabo-das-correntes-kyton.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "diabo-farpado-hamatula",
+      "creatureName": "Diabo Farpado (hamatula)",
+      "searchQuery": "Diabo Farpado (hamatula) Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Diabo%20Farpado%20(hamatula)%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/diabo-farpado-hamatula.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "diabo-dos-ossos-osyluth",
+      "creatureName": "Diabo dos Ossos (osyluth)",
+      "searchQuery": "Diabo dos Ossos (osyluth) Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Diabo%20dos%20Ossos%20(osyluth)%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/diabo-dos-ossos-osyluth.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "diabrete",
+      "creatureName": "Diabrete",
+      "searchQuery": "Diabrete Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Diabrete%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/diabrete.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "erinyes",
+      "creatureName": "Erinyes",
+      "searchQuery": "Erinyes Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Erinyes%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/erinyes.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "gato-infernal-bezekira",
+      "creatureName": "Gato Infernal (bezekira)",
+      "searchQuery": "Gato Infernal (bezekira) Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Gato%20Infernal%20(bezekira)%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/gato-infernal-bezekira.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "lorde-das-profundezas",
+      "creatureName": "Lorde das Profundezas",
+      "searchQuery": "Lorde das Profundezas Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Lorde%20das%20Profundezas%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/lorde-das-profundezas.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "digestor",
+      "creatureName": "Digestor",
+      "searchQuery": "Digestor Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Digestor%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/digestor.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "dilacerador-cinzento",
+      "creatureName": "Dilacerador Cinzento",
+      "searchQuery": "Dilacerador Cinzento Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Dilacerador%20Cinzento%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/dilacerador-cinzento.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "dinonico",
+      "creatureName": "Dinonico",
+      "searchQuery": "Dinonico Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Dinonico%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/dinonico.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "elasmossauro",
+      "creatureName": "Elasmossauro",
+      "searchQuery": "Elasmossauro Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Elasmossauro%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/elasmossauro.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "megaraptor",
+      "creatureName": "Megaraptor",
+      "searchQuery": "Megaraptor Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Megaraptor%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/megaraptor.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "tiranossauro",
+      "creatureName": "Tiranossauro",
+      "searchQuery": "Tiranossauro Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Tiranossauro%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/tiranossauro.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "triceratops",
+      "creatureName": "Tricerátops",
+      "searchQuery": "Tricerátops Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Tricer%C3%A1tops%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/triceratops.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "doppelganger",
+      "creatureName": "Doppelganger",
+      "searchQuery": "Doppelganger Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Doppelganger%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/doppelganger.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "dragonado",
+      "creatureName": "Dragonado",
+      "searchQuery": "Dragonado Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Dragonado%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/dragonado.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "driade",
+      "creatureName": "Dríade",
+      "searchQuery": "Dríade Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Dr%C3%ADade%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/driade.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "drider",
+      "creatureName": "Drider",
+      "searchQuery": "Drider Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Drider%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/drider.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "bralani",
+      "creatureName": "Bralani",
+      "searchQuery": "Bralani Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Bralani%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/bralani.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "ghaele",
+      "creatureName": "Ghaele",
+      "searchQuery": "Ghaele Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Ghaele%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/ghaele.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "ente",
+      "creatureName": "Ente",
+      "searchQuery": "Ente Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Ente%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/ente.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "enxame-de-centopeias",
+      "creatureName": "Enxame de Centopeias",
+      "searchQuery": "Enxame de Centopeias Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Enxame%20de%20Centopeias%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/enxame-de-centopeias.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "enxame-de-gafanhotos",
+      "creatureName": "Enxame de Gafanhotos",
+      "searchQuery": "Enxame de Gafanhotos Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Enxame%20de%20Gafanhotos%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/enxame-de-gafanhotos.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "enxame-de-morcegos",
+      "creatureName": "Enxame de Morcegos",
+      "searchQuery": "Enxame de Morcegos Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Enxame%20de%20Morcegos%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/enxame-de-morcegos.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "escavador",
+      "creatureName": "Escavador",
+      "searchQuery": "Escavador Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Escavador%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/escavador.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "androesfinge",
+      "creatureName": "Andro–esfinge",
+      "searchQuery": "Andro–esfinge Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Andro%E2%80%93esfinge%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/androesfinge.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "crioesfinge",
+      "creatureName": "Crio–esfinge",
+      "searchQuery": "Crio–esfinge Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Crio%E2%80%93esfinge%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/crioesfinge.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "ginoesfinge",
+      "creatureName": "Gino–esfinge",
+      "searchQuery": "Gino–esfinge Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Gino%E2%80%93esfinge%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/ginoesfinge.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "espectro",
+      "creatureName": "Espectro",
+      "searchQuery": "Espectro Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Espectro%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/espectro.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "ettercap",
+      "creatureName": "Ettercap",
+      "searchQuery": "Ettercap Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Ettercap%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/ettercap.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "ettin",
+      "creatureName": "Ettin",
+      "searchQuery": "Ettin Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Ettin%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/ettin.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "grig",
+      "creatureName": "Grig",
+      "searchQuery": "Grig Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Grig%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/grig.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "nixie",
+      "creatureName": "Nixie",
+      "searchQuery": "Nixie Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Nixie%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/nixie.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "pixie",
+      "creatureName": "Pixie",
+      "searchQuery": "Pixie Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Pixie%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/pixie.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "fantasma-guerreiro-humano-de-5-nivel",
+      "creatureName": "Fantasma Guerreiro Humano de 5º Nível",
+      "searchQuery": "Fantasma Guerreiro Humano de 5º Nível Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Fantasma%20Guerreiro%20Humano%20de%205%C2%BA%20N%C3%ADvel%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/fantasma-guerreiro-humano-de-5-nivel.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "fera-do-caos",
+      "creatureName": "Fera do Caos",
+      "searchQuery": "Fera do Caos Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Fera%20do%20Caos%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/fera-do-caos.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "fogofatuo",
+      "creatureName": "Fogo–fátuo",
+      "searchQuery": "Fogo–fátuo Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Fogo%E2%80%93f%C3%A1tuo%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/fogofatuo.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "fungo-fantasma",
+      "creatureName": "Fungo Fantasma",
+      "searchQuery": "Fungo Fantasma Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Fungo%20Fantasma%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/fungo-fantasma.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "gargula",
+      "creatureName": "Gárgula",
+      "searchQuery": "Gárgula Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=G%C3%A1rgula%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/gargula.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "djinni",
+      "creatureName": "Djinni",
+      "searchQuery": "Djinni Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Djinni%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/djinni.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "efreeti",
+      "creatureName": "Efreeti",
+      "searchQuery": "Efreeti Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Efreeti%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/efreeti.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "janni",
+      "creatureName": "Janni",
+      "searchQuery": "Janni Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Janni%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/janni.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "gigante-das-nuvens",
+      "creatureName": "Gigante das Nuvens",
+      "searchQuery": "Gigante das Nuvens Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Gigante%20das%20Nuvens%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/gigante-das-nuvens.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "gigante-do-fogo",
+      "creatureName": "Gigante do Fogo",
+      "searchQuery": "Gigante do Fogo Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Gigante%20do%20Fogo%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/gigante-do-fogo.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "gigante-de-pedra",
+      "creatureName": "Gigante de Pedra",
+      "searchQuery": "Gigante de Pedra Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Gigante%20de%20Pedra%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/gigante-de-pedra.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "girallon",
+      "creatureName": "Girallon",
+      "searchQuery": "Girallon Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Girallon%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/girallon.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "gnoll",
+      "creatureName": "Gnoll",
+      "searchQuery": "Gnoll Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Gnoll%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/gnoll.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "golem-de-barro",
+      "creatureName": "Golem de Barro",
+      "searchQuery": "Golem de Barro Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Golem%20de%20Barro%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/golem-de-barro.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "golem-de-ferro",
+      "creatureName": "Golem de Ferro",
+      "searchQuery": "Golem de Ferro Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Golem%20de%20Ferro%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/golem-de-ferro.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "grick",
+      "creatureName": "Grick",
+      "searchQuery": "Grick Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Grick%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/grick.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "grifo",
+      "creatureName": "Grifo",
+      "searchQuery": "Grifo Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Grifo%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/grifo.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "grimlock",
+      "creatureName": "Grimlock",
+      "searchQuery": "Grimlock Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Grimlock%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/grimlock.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "avoral",
+      "creatureName": "Avoral",
+      "searchQuery": "Avoral Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Avoral%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/avoral.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "hipogrifo",
+      "creatureName": "Hipogrifo",
+      "searchQuery": "Hipogrifo Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Hipogrifo%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/hipogrifo.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "homunculo",
+      "creatureName": "Homúnculo",
+      "searchQuery": "Homúnculo Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Hom%C3%BAnculo%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/homunculo.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "marut",
+      "creatureName": "Marut",
+      "searchQuery": "Marut Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Marut%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/marut.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "kolyarut",
+      "creatureName": "Kolyarut",
+      "searchQuery": "Kolyarut Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Kolyarut%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/kolyarut.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "zelekhut",
+      "creatureName": "Zelekhut",
+      "searchQuery": "Zelekhut Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Zelekhut%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/zelekhut.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "inumano",
+      "creatureName": "Inumano",
+      "searchQuery": "Inumano Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Inumano%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/inumano.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "kobold-combatente-de-1-nivel",
+      "creatureName": "Kobold Combatente de 1º Nível",
+      "searchQuery": "Kobold Combatente de 1º Nível Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Kobold%20Combatente%20de%201%C2%BA%20N%C3%ADvel%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/kobold-combatente-de-1-nivel.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "kraken",
+      "creatureName": "Kraken",
+      "searchQuery": "Kraken Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Kraken%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/kraken.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "lagarto-eletrico",
+      "creatureName": "Lagarto Elétrico",
+      "searchQuery": "Lagarto Elétrico Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Lagarto%20El%C3%A9trico%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/lagarto-eletrico.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "lammasu",
+      "creatureName": "Lammasu",
+      "searchQuery": "Lammasu Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Lammasu%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/lammasu.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "protetor-dourado-lammasu-meiodragao-celestial",
+      "creatureName": "Protetor Dourado (lammasu Meio–dragão Celestial)",
+      "searchQuery": "Protetor Dourado (lammasu Meio–dragão Celestial) Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Protetor%20Dourado%20(lammasu%20Meio%E2%80%93drag%C3%A3o%20Celestial)%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/protetor-dourado-lammasu-meiodragao-celestial.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "leao-marinho",
+      "creatureName": "Leão Marinho",
+      "searchQuery": "Leão Marinho Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Le%C3%A3o%20Marinho%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/leao-marinho.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "lich",
+      "creatureName": "Lich",
+      "searchQuery": "Lich Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Lich%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/lich.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "lillend",
+      "creatureName": "Lillend",
+      "searchQuery": "Lillend Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Lillend%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/lillend.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "limo-cinzento",
+      "creatureName": "Limo Cinzento",
+      "searchQuery": "Limo Cinzento Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Limo%20Cinzento%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/limo-cinzento.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "lobo-das-estepes",
+      "creatureName": "Lobo das Estepes",
+      "searchQuery": "Lobo das Estepes Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Lobo%20das%20Estepes%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/lobo-das-estepes.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "locathah",
+      "creatureName": "Locathah",
+      "searchQuery": "Locathah Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Locathah%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/locathah.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "magmin",
+      "creatureName": "Magmin",
+      "searchQuery": "Magmin Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Magmin%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/magmin.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "manto-negro",
+      "creatureName": "Manto Negro",
+      "searchQuery": "Manto Negro Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Manto%20Negro%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/manto-negro.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "mastim-das-sombras",
+      "creatureName": "Mastim das Sombras",
+      "searchQuery": "Mastim das Sombras Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Mastim%20das%20Sombras%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/mastim-das-sombras.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "medusa",
+      "creatureName": "Medusa",
+      "searchQuery": "Medusa Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Medusa%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/medusa.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "mephit-da-agua",
+      "creatureName": "Mephit da Água",
+      "searchQuery": "Mephit da Água Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Mephit%20da%20%C3%81gua%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/mephit-da-agua.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "mephit-do-ar",
+      "creatureName": "Mephit do Ar",
+      "searchQuery": "Mephit do Ar Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Mephit%20do%20Ar%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/mephit-do-ar.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "mephit-do-fogo",
+      "creatureName": "Mephit do Fogo",
+      "searchQuery": "Mephit do Fogo Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Mephit%20do%20Fogo%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/mephit-do-fogo.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "mephit-do-gelo",
+      "creatureName": "Mephit do Gelo",
+      "searchQuery": "Mephit do Gelo Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Mephit%20do%20Gelo%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/mephit-do-gelo.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "mephit-do-limo",
+      "creatureName": "Mephit do Limo",
+      "searchQuery": "Mephit do Limo Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Mephit%20do%20Limo%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/mephit-do-limo.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "mephit-do-magma",
+      "creatureName": "Mephit do Magma",
+      "searchQuery": "Mephit do Magma Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Mephit%20do%20Magma%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/mephit-do-magma.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "mephit-da-poeira",
+      "creatureName": "Mephit da Poeira",
+      "searchQuery": "Mephit da Poeira Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Mephit%20da%20Poeira%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/mephit-da-poeira.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "mephit-do-sal",
+      "creatureName": "Mephit do Sal",
+      "searchQuery": "Mephit do Sal Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Mephit%20do%20Sal%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/mephit-do-sal.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "mephit-do-vapor",
+      "creatureName": "Mephit do Vapor",
+      "searchQuery": "Mephit do Vapor Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Mephit%20do%20Vapor%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/mephit-do-vapor.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "mimico",
+      "creatureName": "Mímico",
+      "searchQuery": "Mímico Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=M%C3%ADmico%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/mimico.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "mohrg",
+      "creatureName": "Mohrg",
+      "searchQuery": "Mohrg Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Mohrg%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/mohrg.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "monstro-da-ferrugem",
+      "creatureName": "Monstro da Ferrugem",
+      "searchQuery": "Monstro da Ferrugem Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Monstro%20da%20Ferrugem%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/monstro-da-ferrugem.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "ogro-mago",
+      "creatureName": "Ogro Mago",
+      "searchQuery": "Ogro Mago Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Ogro%20Mago%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/ogro-mago.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "passaro-roca",
+      "creatureName": "Pássaro Roca",
+      "searchQuery": "Pássaro Roca Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=P%C3%A1ssaro%20Roca%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/passaro-roca.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "pegaso",
+      "creatureName": "Pégaso",
+      "searchQuery": "Pégaso Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=P%C3%A9gaso%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/pegaso.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "pseudodragao",
+      "creatureName": "Pseudodragão",
+      "searchQuery": "Pseudodragão Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Pseudodrag%C3%A3o%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/pseudodragao.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "rast",
+      "creatureName": "Rast",
+      "searchQuery": "Rast Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Rast%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/rast.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "ravid",
+      "creatureName": "Ravid",
+      "searchQuery": "Ravid Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Ravid%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/ravid.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "sahuagin",
+      "creatureName": "Sahuagin",
+      "searchQuery": "Sahuagin Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Sahuagin%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/sahuagin.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "salteador-etereo",
+      "creatureName": "Salteador Etéreo",
+      "searchQuery": "Salteador Etéreo Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Salteador%20Et%C3%A9reo%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/salteador-etereo.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "satiro",
+      "creatureName": "Sátiro",
+      "searchQuery": "Sátiro Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=S%C3%A1tiro%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/satiro.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "skum",
+      "creatureName": "Skum",
+      "searchQuery": "Skum Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Skum%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/skum.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "slaad-azul",
+      "creatureName": "Slaad Azul",
+      "searchQuery": "Slaad Azul Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Slaad%20Azul%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/slaad-azul.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "slaad-cinza",
+      "creatureName": "Slaad Cinza",
+      "searchQuery": "Slaad Cinza Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Slaad%20Cinza%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/slaad-cinza.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "slaad-da-morte",
+      "creatureName": "Slaad da Morte",
+      "searchQuery": "Slaad da Morte Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Slaad%20da%20Morte%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/slaad-da-morte.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "slaad-verde",
+      "creatureName": "Slaad Verde",
+      "searchQuery": "Slaad Verde Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Slaad%20Verde%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/slaad-verde.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "slaad-vermelho",
+      "creatureName": "Slaad Vermelho",
+      "searchQuery": "Slaad Vermelho Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Slaad%20Vermelho%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/slaad-vermelho.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "stirge",
+      "creatureName": "Stirge",
+      "searchQuery": "Stirge Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Stirge%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/stirge.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "tarrasque",
+      "creatureName": "Tarrasque",
+      "searchQuery": "Tarrasque Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Tarrasque%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/tarrasque.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "tartarugadragao",
+      "creatureName": "Tartaruga–dragão",
+      "searchQuery": "Tartaruga–dragão Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Tartaruga%E2%80%93drag%C3%A3o%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/tartarugadragao.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "tendriculo",
+      "creatureName": "Tendrículo",
+      "searchQuery": "Tendrículo Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Tendr%C3%ADculo%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/tendriculo.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "thoqqua",
+      "creatureName": "Thoqqua",
+      "searchQuery": "Thoqqua Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Thoqqua%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/thoqqua.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "tita",
+      "creatureName": "Titã",
+      "searchQuery": "Titã Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Tit%C3%A3%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/tita.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "tritao",
+      "creatureName": "Tritão",
+      "searchQuery": "Tritão Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Trit%C3%A3o%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/tritao.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "troglodita",
+      "creatureName": "Troglodita",
+      "searchQuery": "Troglodita Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Troglodita%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/troglodita.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "uivante",
+      "creatureName": "Uivante",
+      "searchQuery": "Uivante Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Uivante%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/uivante.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "ursocoruja",
+      "creatureName": "Urso–coruja",
+      "searchQuery": "Urso–coruja Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Urso%E2%80%93coruja%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/ursocoruja.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "vargouille",
+      "creatureName": "Vargouille",
+      "searchQuery": "Vargouille Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Vargouille%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/vargouille.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "verme-do-gelo",
+      "creatureName": "Verme do Gelo",
+      "searchQuery": "Verme do Gelo Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Verme%20do%20Gelo%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/verme-do-gelo.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "verme-purpura",
+      "creatureName": "Verme Púrpura",
+      "searchQuery": "Verme Púrpura Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Verme%20P%C3%BArpura%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/verme-purpura.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "vinha-assassina",
+      "creatureName": "Vinha Assassina",
+      "searchQuery": "Vinha Assassina Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Vinha%20Assassina%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/vinha-assassina.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "rastejante-noturno",
+      "creatureName": "Rastejante Noturno",
+      "searchQuery": "Rastejante Noturno Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Rastejante%20Noturno%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/rastejante-noturno.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "vulto-alado",
+      "creatureName": "Vulto Alado",
+      "searchQuery": "Vulto Alado Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Vulto%20Alado%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/vulto-alado.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "worg",
+      "creatureName": "Worg",
+      "searchQuery": "Worg Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Worg%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/worg.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "wyvern",
+      "creatureName": "Wyvern",
+      "searchQuery": "Wyvern Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Wyvern%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/wyvern.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "yrthak",
+      "creatureName": "Yrthak",
+      "searchQuery": "Yrthak Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Yrthak%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/yrthak.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "puro-sangue",
+      "creatureName": "Puro Sangue",
+      "searchQuery": "Puro Sangue Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Puro%20Sangue%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/puro-sangue.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "aguia",
+      "creatureName": "Águia",
+      "searchQuery": "Águia Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=%C3%81guia%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/aguia.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "arminho",
+      "creatureName": "Arminho",
+      "searchQuery": "Arminho Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Arminho%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/arminho.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "arraia",
+      "creatureName": "Arraia",
+      "searchQuery": "Arraia Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Arraia%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/arraia.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "babuino",
+      "creatureName": "Babuíno",
+      "searchQuery": "Babuíno Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Babu%C3%ADno%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/babuino.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "baleia-azul",
+      "creatureName": "Baleia Azul",
+      "searchQuery": "Baleia Azul Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Baleia%20Azul%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/baleia-azul.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "baleia-cachalote",
+      "creatureName": "Baleia Cachalote",
+      "searchQuery": "Baleia Cachalote Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Baleia%20Cachalote%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/baleia-cachalote.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "baleia-orca",
+      "creatureName": "Baleia Orca",
+      "searchQuery": "Baleia Orca Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Baleia%20Orca%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/baleia-orca.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "bisao",
+      "creatureName": "Bisão",
+      "searchQuery": "Bisão Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Bis%C3%A3o%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/bisao.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "cachorro",
+      "creatureName": "Cachorro",
+      "searchQuery": "Cachorro Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Cachorro%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/cachorro.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "cachorro-de-montaria",
+      "creatureName": "Cachorro de Montaria",
+      "searchQuery": "Cachorro de Montaria Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Cachorro%20de%20Montaria%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/cachorro-de-montaria.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "camelo",
+      "creatureName": "Camelo",
+      "searchQuery": "Camelo Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Camelo%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/camelo.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "carcaju",
+      "creatureName": "Carcajú",
+      "searchQuery": "Carcajú Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Carcaj%C3%BA%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/carcaju.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "cavalo-pesado",
+      "creatureName": "Cavalo Pesado",
+      "searchQuery": "Cavalo Pesado Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Cavalo%20Pesado%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/cavalo-pesado.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "cavalo-leve",
+      "creatureName": "Cavalo Leve",
+      "searchQuery": "Cavalo Leve Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Cavalo%20Leve%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/cavalo-leve.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "cavalo-de-guerra-pesado",
+      "creatureName": "Cavalo de Guerra Pesado",
+      "searchQuery": "Cavalo de Guerra Pesado Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Cavalo%20de%20Guerra%20Pesado%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/cavalo-de-guerra-pesado.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "cobra-constritora",
+      "creatureName": "Cobra Constritora",
+      "searchQuery": "Cobra Constritora Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Cobra%20Constritora%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/cobra-constritora.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "coruja",
+      "creatureName": "Coruja",
+      "searchQuery": "Coruja Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Coruja%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/coruja.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "corvo",
+      "creatureName": "Corvo",
+      "searchQuery": "Corvo Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Corvo%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/corvo.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "crocodilo",
+      "creatureName": "Crocodilo",
+      "searchQuery": "Crocodilo Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Crocodilo%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/crocodilo.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "crocodilo-gigante",
+      "creatureName": "Crocodilo Gigante",
+      "searchQuery": "Crocodilo Gigante Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Crocodilo%20Gigante%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/crocodilo-gigante.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "elefante",
+      "creatureName": "Elefante",
+      "searchQuery": "Elefante Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Elefante%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/elefante.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "falcao",
+      "creatureName": "Falcão",
+      "searchQuery": "Falcão Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Falc%C3%A3o%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/falcao.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "gato",
+      "creatureName": "Gato",
+      "searchQuery": "Gato Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Gato%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/gato.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "golfinho",
+      "creatureName": "Golfinho",
+      "searchQuery": "Golfinho Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Golfinho%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/golfinho.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "gorila",
+      "creatureName": "Gorila",
+      "searchQuery": "Gorila Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Gorila%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/gorila.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "guepardo",
+      "creatureName": "Guepardo",
+      "searchQuery": "Guepardo Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Guepardo%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/guepardo.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "javali",
+      "creatureName": "Javali",
+      "searchQuery": "Javali Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Javali%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/javali.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "jumento",
+      "creatureName": "Jumento",
+      "searchQuery": "Jumento Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Jumento%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/jumento.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "lagarto",
+      "creatureName": "Lagarto",
+      "searchQuery": "Lagarto Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Lagarto%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/lagarto.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "leao",
+      "creatureName": "Leão",
+      "searchQuery": "Leão Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Le%C3%A3o%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/leao.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "leopardo",
+      "creatureName": "Leopardo",
+      "searchQuery": "Leopardo Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Leopardo%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/leopardo.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "lobo",
+      "creatureName": "Lobo",
+      "searchQuery": "Lobo Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Lobo%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/lobo.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "lula",
+      "creatureName": "Lula",
+      "searchQuery": "Lula Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Lula%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/lula.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "lula-gigante",
+      "creatureName": "Lula Gigante",
+      "searchQuery": "Lula Gigante Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Lula%20Gigante%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/lula-gigante.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "macaco",
+      "creatureName": "Macaco",
+      "searchQuery": "Macaco Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Macaco%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/macaco.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "morcego",
+      "creatureName": "Morcego",
+      "searchQuery": "Morcego Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Morcego%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/morcego.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "mula",
+      "creatureName": "Mula",
+      "searchQuery": "Mula Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Mula%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/mula.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "polvo",
+      "creatureName": "Polvo",
+      "searchQuery": "Polvo Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Polvo%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/polvo.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "polvo-gigante",
+      "creatureName": "Polvo Gigante",
+      "searchQuery": "Polvo Gigante Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Polvo%20Gigante%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/polvo-gigante.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "ponei",
+      "creatureName": "Pônei",
+      "searchQuery": "Pônei Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=P%C3%B4nei%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/ponei.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "ponei-de-guerra",
+      "creatureName": "Pônei de Guerra",
+      "searchQuery": "Pônei de Guerra Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=P%C3%B4nei%20de%20Guerra%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/ponei-de-guerra.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "rato",
+      "creatureName": "Rato",
+      "searchQuery": "Rato Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Rato%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/rato.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "rinoceronte",
+      "creatureName": "Rinoceronte",
+      "searchQuery": "Rinoceronte Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Rinoceronte%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/rinoceronte.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "sapo",
+      "creatureName": "Sapo",
+      "searchQuery": "Sapo Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Sapo%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/sapo.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "texugo",
+      "creatureName": "Texugo",
+      "searchQuery": "Texugo Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Texugo%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/texugo.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "tigre",
+      "creatureName": "Tigre",
+      "searchQuery": "Tigre Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Tigre%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/tigre.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "urso-marrom",
+      "creatureName": "Urso Marrom",
+      "searchQuery": "Urso Marrom Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Urso%20Marrom%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/urso-marrom.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "urso-negro",
+      "creatureName": "Urso Negro",
+      "searchQuery": "Urso Negro Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Urso%20Negro%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/urso-negro.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "urso-polar",
+      "creatureName": "Urso Polar",
+      "searchQuery": "Urso Polar Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Urso%20Polar%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/urso-polar.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "vaga-lume-gigante",
+      "creatureName": "Vaga-lume Gigante",
+      "searchQuery": "Vaga-lume Gigante Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Vaga-lume%20Gigante%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/vaga-lume-gigante.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    },
+    {
+      "creatureId": "vespa-gigante",
+      "creatureName": "Vespa Gigante",
+      "searchQuery": "Vespa Gigante Dungeons and Dragons monster fantasy illustration",
+      "pinterestSearchUrl": "https://www.pinterest.com/search/pins/?q=Vespa%20Gigante%20Dungeons%20and%20Dragons%20monster%20fantasy%20illustration",
+      "assetPath": "app/src/main/assets/monsters/vespa-gigante.webp",
+      "assetStatus": "not-downloaded",
+      "licenseStatus": "unverified",
+      "reviewStatus": "pending"
+    }
+  ]
+}
