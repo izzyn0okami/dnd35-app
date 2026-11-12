@@ -147,3 +147,8 @@ As páginas originais de cinco novos recursos do OpenGameArt foram abertas e seu
 | Demônio genérico | [Demon/Devil — Nerveona](https://opengameart.org/content/demondevil) | CC0 | Sprite direcional genérico. Não associar a demônios específicos do catálogo sem correspondência visual e conceitual comprovada. |
 
 **Conclusão desta rodada:** Beholder, Lich e Dríade têm candidatos específicos com licença declarada CC BY/CC0, mas ainda não aprovados visualmente. Goblin e Troll têm opções CC0 em pixel art que podem servir apenas como placeholders se o usuário aceitar estilos mistos. Os pacotes ShareAlike foram preservados como pesquisa, não selecionados. Nenhum arquivo de imagem foi baixado, convertido ou incluído no app.
+
+
+## Segunda expansão de candidatos por criatura
+
+Foram adicionados candidatos para Medusa, Wyvern, Aranea e Mímico. Medusa e Wyvern têm correspondência nominal nas páginas originais. Arachne foi classificada apenas como interpretação temática aproximada para Aranea, e o sprite de Mímico foi limitado a placeholder pela resolução 16×16. Todos permanecem pendentes de inspeção do arquivo e de validação de atribuição; nenhum foi incorporado.
