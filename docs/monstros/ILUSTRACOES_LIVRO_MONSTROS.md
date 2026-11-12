@@ -39,7 +39,7 @@
 | `arbusto-errante` | Arbusto Errante | 24 | 28 | **Confirmada** — ilustração na página PDF 28 |
 | `arconte-luminar` | Arconte Luminar | 25 | 29 | **Confirmada** — arte compartilhada na página PDF 31 |
 | `arconte-mensageiro` | Arconte Mensageiro | 27 | 31 | **Confirmada** — arte compartilhada na página PDF 31 |
-| `azer` | Azer | 28 | 32 | Revisar arte |
+| `azer` | Azer | 28 | 32 | **Confirmada** — ilustração individual na página PDF 32 |
 | `beholder` | Beholder | 32 | 36 | **Confirmada** — ilustração na página PDF 37 |
 | `belker` | Belker | 34 | 38 | **Confirmada** — ilustração na página PDF 38 |
 | `anis` | Anis | 35 | 39 | **Confirmada** — ilustração na página PDF 39 |
@@ -93,7 +93,7 @@
 | `lorde-das-profundezas` | Lorde das Profundezas | 70 | 74 | **Confirmada** — ilustração na página PDF 75 |
 | `digestor` | Digestor | 72 | 76 | **Confirmada** — ilustração na página PDF 76 |
 | `dilacerador-cinzento` | Dilacerador Cinzento | 72 | 76 | **Confirmada** — ilustração na página PDF 77 |
-| `dinonico` | Dinonico | 73 | 77 | Revisar arte |
+| `dinonico` | Dinonico | 73 | 77 | **Confirmada** — ilustração individual na página PDF 77 |
 | `elasmossauro` | Elasmossauro | 74 | 78 | Revisar arte |
 | `megaraptor` | Megaraptor | 74 | 78 | Revisar arte |
 | `tiranossauro` | Tiranossauro | 74 | 78 | **Confirmada** — ilustração na página PDF 78 |
@@ -544,3 +544,23 @@ A contagem foi refeita exclusivamente na tabela principal das Faixas 1 a 7, sem 
 - A varredura sequencial do PDF está concluída (páginas PDF 1–328), mas a auditoria individual de arte não está concluída: os 116 registros “Revisar arte” exigem conferência visual de suas páginas de ficha e páginas adjacentes.
 - Próxima etapa: revisar essas 116 pendências em lotes por intervalo de páginas, distinguindo claramente (a) arte encontrada e identificada, (b) figura compartilhada identificada por legenda, (c) página sem arte de criatura e (d) caso inconclusivo. Só depois dessa revisão iniciar os recortes e o manifesto local.
 - Nenhuma alteração foi feita no catálogo JSON ou no aplicativo; este commit atualiza somente a documentação do levantamento visual.
+
+
+### Confirmação visual das artes — páginas 28 e 73
+
+| ID do catálogo | Criatura | Página impressa da arte | Página PDF da arte | Observação |
+|---|---|---:|---:|---|
+| `azer` | Azer | 28 | 32 | Figura individual, identificada pelo título “Azer” junto à arte |
+| `dinonico` | Dinonico | 73 | 77 | Figura individual, identificada pelo título “Dinonico” junto à arte |
+
+### Revisão de pendências — primeiro lote (páginas PDF 18–79)
+
+- Confirmadas neste lote: Azer (PDF 32) e Dinonico (PDF 77).
+- PDF 18–21: fichas de animais atrozes; não foi identificada arte individual para as entradas pendentes desse conjunto. A arte do Urso Atroz em PDF 22 não deve ser reutilizada para as demais criaturas.
+- PDF 44: a figura inferior está legendada “Cão Infernal”; a ficha de Cão de Guerra Nessian na mesma página não possui arte própria identificável. Não associar a figura ao Nessian.
+- PDF 53: fichas de Rato Atroz Abissal e Leão Celestial; sem arte individual identificável nessa página.
+- PDF 61 e 63: páginas de fichas de Quasit e Derro; não foi identificada arte individual nessas páginas.
+- PDF 78–79: as artes visíveis pertencem a Tiranossauro e Doppelganger, respectivamente. Não associar essas imagens a Elasmossauro, Megaraptor ou Tricerátops.
+- As demais entradas do lote continuam pendentes até a conferência das páginas adjacentes; não foram alteradas por inferência.
+
+**Contagem após este lote:** 115 associações individuais/compartilhadas confirmadas, 1 referência genérica e 114 pendências (230 IDs no total).
