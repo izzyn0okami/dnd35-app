@@ -190,6 +190,80 @@
       "downloadStatus": "not-downloaded",
       "integrationStatus": "not-approved",
       "notes": "Não associar a demônio específico do catálogo sem revisão."
+    },
+    {
+      "id": "oga-medusa-the-gorgon",
+      "title": "Medusa the Gorgon",
+      "creator": "Lucas-C",
+      "sourceUrl": "https://opengameart.org/content/medusa-the-gorgon",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "possibleCreatureIds": [
+        "medusa"
+      ],
+      "assetDescription": "PNG gorgon-with-staff.png (20.3 KB), gorgon.png (17.4 KB) e arquivo XCF.",
+      "matchStatus": "candidate-specific-description",
+      "visualReview": "pending",
+      "downloadStatus": "not-downloaded",
+      "integrationStatus": "not-approved",
+      "notes": "A página identifica Medusa/Gorgon; pixel art em paleta DawnBringer 16. Conferir aparência e créditos antes de aceitar."
+    },
+    {
+      "id": "oga-wyvern-lineart",
+      "title": "Wyvern",
+      "creator": "Benalene",
+      "sourceUrl": "https://opengameart.org/content/wyvern",
+      "license": [
+        "CC-BY-3.0"
+      ],
+      "possibleCreatureIds": [
+        "wyvern"
+      ],
+      "assetDescription": "Dois PNGs de 840.8 KB e 664.8 KB.",
+      "matchStatus": "candidate-specific-description",
+      "visualReview": "pending",
+      "downloadStatus": "not-downloaded",
+      "integrationStatus": "not-approved",
+      "notes": "Página identifica wyvern e descreve criatura em mergulho; arte de linha, revisar composição e atribuição."
+    },
+    {
+      "id": "oga-arachne",
+      "title": "Arachne",
+      "creator": "AntumDeluge; contributors Stephen Challener, William.ThompsonJ, Svetlana Kushnariova and Jordan Irwin",
+      "sourceUrl": "https://opengameart.org/content/arachne",
+      "license": [
+        "CC-BY-3.0",
+        "OGA-BY-3.0"
+      ],
+      "possibleCreatureIds": [
+        "aranea"
+      ],
+      "assetDescription": "Spritesheet ZIP 48x64 com animações e quatro direções.",
+      "matchStatus": "thematic-not-exact",
+      "visualReview": "pending",
+      "downloadStatus": "not-downloaded",
+      "integrationStatus": "not-approved",
+      "notes": "Arachne de Stendhal é híbrida mulher/aranha; pode servir como interpretação aproximada da Aranea, não correspondência canônica confirmada. Atribuição exige todos os colaboradores indicados."
+    },
+    {
+      "id": "oga-chest-and-mimic",
+      "title": "Chest and Mimic",
+      "creator": "IndigoFenix; collaborator Redshrike; original art credited to Stephen Challener",
+      "sourceUrl": "https://opengameart.org/content/chest-and-mimic",
+      "license": [
+        "CC-BY-3.0",
+        "OGA-BY-3.0"
+      ],
+      "possibleCreatureIds": [
+        "mimico"
+      ],
+      "assetDescription": "PNG chest_mimic.png de 2.4 KB; sprite pixel art 16x16.",
+      "matchStatus": "candidate-specific-description",
+      "visualReview": "pending",
+      "downloadStatus": "not-downloaded",
+      "integrationStatus": "not-approved",
+      "notes": "Representação explícita de Mímico, mas dimensão extremamente baixa; somente placeholder. A página solicita crédito a Stephen Challener (Redshrike)."
     }
   ]
 }
