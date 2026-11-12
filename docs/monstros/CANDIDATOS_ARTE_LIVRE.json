@@ -69,13 +69,15 @@
       "license": [
         "CC0"
       ],
-      "possibleCreatureIds": [],
+      "possibleCreatureIds": [
+        "driade"
+      ],
       "assetDescription": "JPEG de 42,9 KB.",
       "matchStatus": "candidate-specific-description",
       "visualReview": "pending",
       "downloadStatus": "not-downloaded",
       "integrationStatus": "not-approved",
-      "notes": "A página identifica dryad; mapear ao ID da Dríade após confirmar que o catálogo contém essa criatura e inspecionar a imagem."
+      "notes": "A página identifica dryad e o catálogo possui o ID driade; conferir resolução, composição e adequação visual antes de aceitar."
     },
     {
       "id": "oga-goblin-monster",
