@@ -19,9 +19,9 @@
     "shared": 31,
     "generic": 1,
     "unresolvedPageMappings": 0,
-    "cropRectanglesPending": 85,
+    "cropRectanglesPending": 75,
     "cropRectanglesReviewed": 3,
-    "manualIsolationRequired": 81
+    "manualIsolationRequired": 91
   },
   "coordinateConvention": "cropRectPdfPoints uses [x0,y0,x1,y1] in PDF points, origin at top-left of the rendered page; null until visually reviewed.",
   "records": [
@@ -1487,8 +1487,10 @@
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Figura individual identificada pela legenda na página PDF 176 (página impressa 172). Isolamento manual necessário para evitar texto ou elementos adjacentes."
     },
     {
       "creatureId": "leao-marinho",
@@ -1501,8 +1503,10 @@
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Figura individual identificada pela legenda na página PDF 177 (página impressa 173). Isolamento manual necessário para evitar texto ou elementos adjacentes."
     },
     {
       "creatureId": "lich",
@@ -1515,8 +1519,10 @@
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Figura individual identificada pela legenda na página PDF 187 (página impressa 183). Isolamento manual necessário para evitar texto ou elementos adjacentes."
     },
     {
       "creatureId": "lillend",
@@ -1529,8 +1535,10 @@
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Figura individual identificada pela legenda na página PDF 188 (página impressa 184). Isolamento manual necessário para evitar texto ou elementos adjacentes."
     },
     {
       "creatureId": "lobo-das-estepes",
@@ -1543,8 +1551,10 @@
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Figura individual identificada pela legenda na página PDF 191 (página impressa 187). Isolamento manual necessário para evitar texto ou elementos adjacentes."
     },
     {
       "creatureId": "locathah",
@@ -1557,8 +1567,10 @@
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Figura individual identificada pela legenda na página PDF 192 (página impressa 188). Isolamento manual necessário para evitar texto ou elementos adjacentes."
     },
     {
       "creatureId": "magmin",
@@ -1571,8 +1583,10 @@
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Figura individual identificada pela legenda na página PDF 193 (página impressa 189). Isolamento manual necessário para evitar texto ou elementos adjacentes."
     },
     {
       "creatureId": "manto-negro",
@@ -1585,22 +1599,26 @@
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Figura individual identificada pela legenda na página PDF 194 (página impressa 190). Isolamento manual necessário para evitar texto ou elementos adjacentes."
     },
     {
       "creatureId": "mastim-das-sombras",
       "creatureName": "Mastim das Sombras",
-      "artworkPagePdf": 195,
-      "artworkPagePrinted": 191,
+      "artworkPagePdf": 196,
+      "artworkPagePrinted": 192,
       "associationType": "individual",
       "sourceCaption": null,
-      "sourceNote": "Confirmada — ilustração na página PDF 195",
+      "sourceNote": "Confirmada — figura legendada Mastim das Sombras na página PDF 196 (página impressa 192); a página PDF 195 contém a arte do Manto Negro.",
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Figura individual identificada pela legenda na página PDF 196 (página impressa 192). Isolamento manual necessário para evitar texto ou elementos adjacentes."
     },
     {
       "creatureId": "medusa",
@@ -1613,8 +1631,10 @@
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Figura individual identificada pela legenda na página PDF 196 (página impressa 192). Isolamento manual necessário para evitar texto ou elementos adjacentes."
     },
     {
       "creatureId": "mimico",
