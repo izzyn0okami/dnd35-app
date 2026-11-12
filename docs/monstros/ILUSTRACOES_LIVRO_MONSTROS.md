@@ -492,7 +492,7 @@ Os 32 registros abaixo aparecem na branch principal do catálogo com origem decl
 ## Log de progresso — 2026-11-10
 
 - Confirmada a existência de 230 entradas no catálogo atual.
-- Conferidas visualmente as páginas PDF 12, 14, 15 e 27; 113 associações criatura–arte foram confirmadas até a página PDF 268. Há figuras compartilhadas; os rótulos impressos foram usados para não atribuir arte a criaturas erradas.
+- Conferidas visualmente as páginas PDF 12, 14, 15 e 27; 113 associações criatura–arte foram confirmadas até a página PDF 266, além de uma referência genérica de Yuan-ti na página PDF 268. Há figuras compartilhadas; os rótulos impressos foram usados para não atribuir arte a criaturas erradas.
 - Localizadas as páginas de ficha das 230 criaturas do catálogo; a confirmação visual das artes ainda está incompleta. As faixas 2 e 3 foram associadas às páginas impressas por busca textual e conferência dos títulos dos blocos; a identificação visual individual das artes ainda está pendente.
 - Verificado que a contagem bruta de objetos de imagem do PDF não equivale à quantidade de ilustrações: várias imagens estão divididas em blocos. Para os recortes, usar renderização da página, não assumir que cada objeto interno seja uma figura.
 - Conferidos os títulos dos blocos de demônios nas páginas PDF 54–62; as páginas da Marilith, Nalfeshnee, Quasit e Vrock foram corrigidas para 59, 60, 61 e 62, respectivamente. Isso evita usar simples menções no texto como se fossem a página da ficha.
