@@ -737,3 +737,17 @@ Os 32 registros SRD continuam fora dessa contagem e precisam de fonte visual ext
 - As coordenadas foram registradas no manifesto em pontos PDF, com observação de revisão visual.
 - Abocanhador Matraqueante, Águia Gigante, Allip e Aranha Interplanar permanecem sem retângulo aprovado; os primeiros testes de enquadramento mostraram necessidade de ajuste para evitar texto adjacente ou corte de partes da figura.
 - Nenhum recorte foi exportado como recurso do app; a etapa atual valida apenas coordenadas e preserva a restrição de direitos autorais.
+
+
+### Triagem de recortes com sobreposição de texto — 2026-11-12
+
+Foram renderizadas e avaliadas as páginas PDF 12, 15, 16 e 27, além dos dois recortes já aprovados nas páginas 14 e 27.
+
+- **Achaierai (PDF 14):** retângulo visualmente aprovado; figura e legenda ficam no quadro sem texto estatístico.
+- **Aranea (PDF 27):** retângulo visualmente aprovado; ilustração superior isolada da ficha.
+- **Abocanhador Matraqueante (PDF 12):** arte confirmada, mas o retângulo simples inclui texto nas margens; exige extração do objeto ou máscara manual.
+- **Águia Gigante (PDF 15):** arte confirmada, mas próxima/sobreposta ao bloco estatístico à direita; exige isolamento manual.
+- **Allip (PDF 16):** arte vertical confirmada, porém o retângulo inclui texto corrido lateral; exige isolamento manual.
+- **Aranha Interplanar (PDF 27):** arte inferior confirmada, mas o quadro cruza regiões de texto; exige isolamento manual.
+
+Nenhuma dessas quatro imagens foi rejeitada ou reclassificada como ausente. Apenas se evitou aprovar coordenadas de recorte que produziriam imagens com texto indevido. O manifesto mantém 2 recortes aprovados e marca 4 casos para isolamento manual.
