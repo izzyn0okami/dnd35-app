@@ -14,14 +14,14 @@
     "srdEntriesExcluded": 32
   },
   "summary": {
-    "mappedCreatureRecords": 138,
-    "individual": 103,
-    "shared": 34,
+    "mappedCreatureRecords": 136,
+    "individual": 104,
+    "shared": 31,
     "generic": 1,
     "unresolvedPageMappings": 0,
-    "cropRectanglesPending": 111,
+    "cropRectanglesPending": 99,
     "cropRectanglesReviewed": 3,
-    "manualIsolationRequired": 55
+    "manualIsolationRequired": 67
   },
   "coordinateConvention": "cropRectPdfPoints uses [x0,y0,x1,y1] in PDF points, origin at top-left of the rendered page; null until visually reviewed.",
   "records": [
@@ -1061,46 +1061,20 @@
       "cropReviewNote": "Figura individual identificada pela legenda na página PDF 125 (página impressa 121). O recorte deve ser isolado manualmente para evitar texto ou figuras adjacentes."
     },
     {
-      "creatureId": "grig",
-      "creatureName": "Grig",
-      "artworkPagePdf": 126,
-      "artworkPagePrinted": 122,
-      "associationType": "shared",
-      "sourceCaption": null,
-      "sourceNote": "Confirmada — figura compartilhada na página PDF 126",
-      "cropRectPdfPoints": null,
-      "assetPath": null,
-      "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
-    },
-    {
-      "creatureId": "nixie",
-      "creatureName": "Nixie",
-      "artworkPagePdf": 126,
-      "artworkPagePrinted": 122,
-      "associationType": "shared",
-      "sourceCaption": null,
-      "sourceNote": "Confirmada — figura compartilhada na página PDF 126",
-      "cropRectPdfPoints": null,
-      "assetPath": null,
-      "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
-    },
-    {
       "creatureId": "pixie",
       "creatureName": "Pixie",
       "artworkPagePdf": 126,
       "artworkPagePrinted": 122,
-      "associationType": "shared",
+      "associationType": "individual",
       "sourceCaption": null,
-      "sourceNote": "Confirmada — figura compartilhada na página PDF 126",
+      "sourceNote": "Confirmada — figura individual legendada “Pixie” na página PDF 126 (página impressa 122). A mesma página contém fichas de Grig e Nixie, mas a ilustração não está legendada para essas criaturas.",
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Figura individual identificada pela legenda na página PDF 126 (página impressa 122). Isolamento manual necessário para evitar texto ou elementos adjacentes."
     },
     {
       "creatureId": "fera-do-caos",
@@ -1113,8 +1087,10 @@
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Figura individual identificada pela legenda na página PDF 130 (página impressa 126). Isolamento manual necessário para evitar texto ou elementos adjacentes."
     },
     {
       "creatureId": "fogofatuo",
@@ -1127,8 +1103,10 @@
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Figura individual identificada pela legenda na página PDF 131 (página impressa 127). Isolamento manual necessário para evitar texto ou elementos adjacentes."
     },
     {
       "creatureId": "fungo-fantasma",
@@ -1141,8 +1119,10 @@
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Figura individual identificada pela legenda na página PDF 135 (página impressa 131). Isolamento manual necessário para evitar texto ou elementos adjacentes."
     },
     {
       "creatureId": "gargula",
@@ -1155,8 +1135,10 @@
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Figura individual identificada pela legenda na página PDF 135 (página impressa 131). Isolamento manual necessário para evitar texto ou elementos adjacentes."
     },
     {
       "creatureId": "djinni",
@@ -1169,8 +1151,10 @@
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Composição com mais de uma criatura, identificada pelas legendas na página PDF 138 (página impressa 134). Preservar cada associação conforme a legenda; isolar manualmente sem criar atribuições adicionais."
     },
     {
       "creatureId": "efreeti",
@@ -1183,8 +1167,10 @@
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Composição com mais de uma criatura, identificada pelas legendas na página PDF 138 (página impressa 134). Preservar cada associação conforme a legenda; isolar manualmente sem criar atribuições adicionais."
     },
     {
       "creatureId": "gigante-das-nuvens",
@@ -1197,8 +1183,10 @@
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Composição com mais de uma criatura, identificada pelas legendas na página PDF 145 (página impressa 141). Preservar cada associação conforme a legenda; isolar manualmente sem criar atribuições adicionais."
     },
     {
       "creatureId": "gigante-do-fogo",
@@ -1211,8 +1199,10 @@
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Composição com mais de uma criatura, identificada pelas legendas na página PDF 141 (página impressa 137). Preservar cada associação conforme a legenda; isolar manualmente sem criar atribuições adicionais."
     },
     {
       "creatureId": "gigante-de-pedra",
@@ -1225,8 +1215,10 @@
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Composição com mais de uma criatura, identificada pelas legendas na página PDF 145 (página impressa 141). Preservar cada associação conforme a legenda; isolar manualmente sem criar atribuições adicionais."
     },
     {
       "creatureId": "girallon",
@@ -1239,8 +1231,10 @@
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Figura individual identificada pela legenda na página PDF 146 (página impressa 142). Isolamento manual necessário para evitar texto ou elementos adjacentes."
     },
     {
       "creatureId": "gnoll",
@@ -1253,8 +1247,10 @@
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Figura individual identificada pela legenda na página PDF 149 (página impressa 145). Isolamento manual necessário para evitar texto ou elementos adjacentes."
     },
     {
       "creatureId": "golem-de-ferro",
