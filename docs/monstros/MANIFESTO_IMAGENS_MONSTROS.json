@@ -20,7 +20,8 @@
     "generic": 1,
     "unresolvedPageMappings": 0,
     "cropRectanglesPending": 138,
-    "cropRectanglesReviewed": 2
+    "cropRectanglesReviewed": 2,
+    "manualIsolationRequired": 4
   },
   "coordinateConvention": "cropRectPdfPoints uses [x0,y0,x1,y1] in PDF points, origin at top-left of the rendered page; null until visually reviewed.",
   "records": [
@@ -35,8 +36,10 @@
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "A arte ocupa a região inferior, mas o recorte retangular da página inclui texto corrido nas margens. Não aprovar retângulo automático; avaliar extração do objeto de imagem ou máscara manual."
     },
     {
       "creatureId": "achaierai",
@@ -70,8 +73,10 @@
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "A ilustração da águia está parcialmente próxima/sobreposta ao bloco estatístico à direita. O recorte retangular testado inclui texto; exigir isolamento manual ou extração do objeto de imagem."
     },
     {
       "creatureId": "allip",
@@ -84,8 +89,10 @@
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "A figura é alta e ocupa a região esquerda da página, mas o retângulo também inclui texto corrido nas margens. Preservar a ilustração integral por extração/máscara manual."
     },
     {
       "creatureId": "urso-atroz",
@@ -175,8 +182,10 @@
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "A figura inferior atravessa grande parte da largura e se aproxima dos blocos de texto dos dois lados. O recorte testado inclui texto; requer isolamento manual."
     },
     {
       "creatureId": "arbusto-errante",
