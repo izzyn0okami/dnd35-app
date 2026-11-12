@@ -14,14 +14,14 @@
     "srdEntriesExcluded": 32
   },
   "summary": {
-    "mappedCreatureRecords": 139,
-    "individual": 104,
+    "mappedCreatureRecords": 138,
+    "individual": 103,
     "shared": 34,
     "generic": 1,
     "unresolvedPageMappings": 0,
-    "cropRectanglesPending": 123,
+    "cropRectanglesPending": 122,
     "cropRectanglesReviewed": 3,
-    "manualIsolationRequired": 30
+    "manualIsolationRequired": 44
   },
   "coordinateConvention": "cropRectPdfPoints uses [x0,y0,x1,y1] in PDF points, origin at top-left of the rendered page; null until visually reviewed.",
   "records": [
@@ -667,12 +667,14 @@
       "artworkPagePrinted": 60,
       "associationType": "individual",
       "sourceCaption": null,
-      "sourceNote": "Confirmada — ilustração na página PDF 64",
+      "sourceNote": "Confirmada — figura legendada na página PDF 64 (página impressa 60); isolamento manual necessário.",
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Arte confirmada pela legenda na página PDF 64 (página impressa 60). A composição inclui áreas de texto ou outras figuras; não aprovar recorte retangular sem isolamento manual."
     },
     {
       "creatureId": "devorador-de-aranhas",
@@ -681,12 +683,14 @@
       "artworkPagePrinted": 61,
       "associationType": "individual",
       "sourceCaption": null,
-      "sourceNote": "Confirmada — ilustração na página PDF 65",
+      "sourceNote": "Confirmada — figura legendada na página PDF 65 (página impressa 61); isolamento manual necessário.",
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Arte confirmada pela legenda na página PDF 65 (página impressa 61). A composição inclui áreas de texto ou outras figuras; não aprovar recorte retangular sem isolamento manual."
     },
     {
       "creatureId": "diabo-barbado-barbazu",
@@ -695,12 +699,14 @@
       "artworkPagePrinted": 66,
       "associationType": "shared",
       "sourceCaption": null,
-      "sourceNote": "Confirmada — ilustração compartilhada na página PDF 70",
+      "sourceNote": "Confirmada — figura legendada na página PDF 70 (página impressa 66); isolamento manual necessário.",
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Arte confirmada pela legenda na página PDF 70 (página impressa 66). A composição inclui áreas de texto ou outras figuras; não aprovar recorte retangular sem isolamento manual."
     },
     {
       "creatureId": "diabo-das-correntes-kyton",
@@ -709,26 +715,30 @@
       "artworkPagePrinted": 67,
       "associationType": "individual",
       "sourceCaption": null,
-      "sourceNote": "Confirmada — ilustração na página PDF 71",
+      "sourceNote": "Confirmada — figura legendada na página PDF 71 (página impressa 67); isolamento manual necessário.",
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Arte confirmada pela legenda na página PDF 71 (página impressa 67). A composição inclui áreas de texto ou outras figuras; não aprovar recorte retangular sem isolamento manual."
     },
     {
       "creatureId": "diabo-farpado-hamatula",
       "creatureName": "Diabo Farpado (hamatula)",
-      "artworkPagePdf": 71,
-      "artworkPagePrinted": 67,
+      "artworkPagePdf": 69,
+      "artworkPagePrinted": 65,
       "associationType": "individual",
       "sourceCaption": null,
-      "sourceNote": "Confirmada — ilustração na página PDF 71",
+      "sourceNote": "Confirmada — figura legendada como Diabo Farpado na composição da página PDF 69 (página impressa 65); a ficha de Hamatula aparece posteriormente, mas a arte está nesta composição.",
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "A figura está identificada pela legenda na composição com outros diabos. Preservar a associação individual com a criatura correta; o isolamento da composição requer máscara manual."
     },
     {
       "creatureId": "diabo-dos-ossos-osyluth",
@@ -737,12 +747,14 @@
       "artworkPagePrinted": 71,
       "associationType": "individual",
       "sourceCaption": null,
-      "sourceNote": "Confirmada — ilustração na página PDF 75",
+      "sourceNote": "Confirmada — figura legendada na página PDF 75 (página impressa 71); isolamento manual necessário.",
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Arte confirmada pela legenda na página PDF 75 (página impressa 71). A composição inclui áreas de texto ou outras figuras; não aprovar recorte retangular sem isolamento manual."
     },
     {
       "creatureId": "diabrete",
@@ -751,12 +763,14 @@
       "artworkPagePrinted": 65,
       "associationType": "shared",
       "sourceCaption": null,
-      "sourceNote": "Confirmada — ilustração compartilhada na página PDF 69",
+      "sourceNote": "Confirmada — figura legendada na página PDF 69 (página impressa 65); isolamento manual necessário.",
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Arte confirmada pela legenda na página PDF 69 (página impressa 65). A composição inclui áreas de texto ou outras figuras; não aprovar recorte retangular sem isolamento manual."
     },
     {
       "creatureId": "erinyes",
@@ -765,12 +779,14 @@
       "artworkPagePrinted": 66,
       "associationType": "shared",
       "sourceCaption": null,
-      "sourceNote": "Confirmada — ilustração compartilhada na página PDF 70",
+      "sourceNote": "Confirmada — figura legendada na página PDF 70 (página impressa 66); isolamento manual necessário.",
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Arte confirmada pela legenda na página PDF 70 (página impressa 66). A composição inclui áreas de texto ou outras figuras; não aprovar recorte retangular sem isolamento manual."
     },
     {
       "creatureId": "gato-infernal-bezekira",
@@ -779,12 +795,14 @@
       "artworkPagePrinted": 69,
       "associationType": "individual",
       "sourceCaption": null,
-      "sourceNote": "Confirmada — ilustração na página PDF 73",
+      "sourceNote": "Confirmada — figura legendada na página PDF 73 (página impressa 69); isolamento manual necessário.",
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Arte confirmada pela legenda na página PDF 73 (página impressa 69). A composição inclui áreas de texto ou outras figuras; não aprovar recorte retangular sem isolamento manual."
     },
     {
       "creatureId": "lorde-das-profundezas",
@@ -793,12 +811,14 @@
       "artworkPagePrinted": 71,
       "associationType": "individual",
       "sourceCaption": null,
-      "sourceNote": "Confirmada — ilustração na página PDF 75",
+      "sourceNote": "Confirmada — figura legendada na página PDF 75 (página impressa 71); isolamento manual necessário.",
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Arte confirmada pela legenda na página PDF 75 (página impressa 71). A composição inclui áreas de texto ou outras figuras; não aprovar recorte retangular sem isolamento manual."
     },
     {
       "creatureId": "digestor",
@@ -807,12 +827,14 @@
       "artworkPagePrinted": 72,
       "associationType": "individual",
       "sourceCaption": null,
-      "sourceNote": "Confirmada — ilustração na página PDF 76",
+      "sourceNote": "Confirmada — figura legendada na página PDF 76 (página impressa 72); isolamento manual necessário.",
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Arte confirmada pela legenda na página PDF 76 (página impressa 72). A composição inclui áreas de texto ou outras figuras; não aprovar recorte retangular sem isolamento manual."
     },
     {
       "creatureId": "dilacerador-cinzento",
@@ -821,26 +843,14 @@
       "artworkPagePrinted": 73,
       "associationType": "individual",
       "sourceCaption": null,
-      "sourceNote": "Confirmada — ilustração na página PDF 77",
+      "sourceNote": "Confirmada — figura legendada na página PDF 77 (página impressa 73); isolamento manual necessário.",
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
-    },
-    {
-      "creatureId": "dinonico",
-      "creatureName": "Dinonico",
-      "artworkPagePdf": 77,
-      "artworkPagePrinted": 73,
-      "associationType": "individual",
-      "sourceCaption": null,
-      "sourceNote": "Confirmada — ilustração individual na página PDF 77",
-      "cropRectPdfPoints": null,
-      "assetPath": null,
-      "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Arte confirmada pela legenda na página PDF 77 (página impressa 73). A composição inclui áreas de texto ou outras figuras; não aprovar recorte retangular sem isolamento manual."
     },
     {
       "creatureId": "tiranossauro",
@@ -849,12 +859,14 @@
       "artworkPagePrinted": 74,
       "associationType": "individual",
       "sourceCaption": null,
-      "sourceNote": "Confirmada — ilustração na página PDF 78",
+      "sourceNote": "Confirmada — figura legendada na página PDF 78 (página impressa 74); isolamento manual necessário.",
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Arte confirmada pela legenda na página PDF 78 (página impressa 74). A composição inclui áreas de texto ou outras figuras; não aprovar recorte retangular sem isolamento manual."
     },
     {
       "creatureId": "doppelganger",
@@ -863,12 +875,14 @@
       "artworkPagePrinted": 75,
       "associationType": "individual",
       "sourceCaption": null,
-      "sourceNote": "Confirmada — ilustração na página PDF 79",
+      "sourceNote": "Confirmada — figura legendada na página PDF 79 (página impressa 75); isolamento manual necessário.",
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Arte confirmada pela legenda na página PDF 79 (página impressa 75). A composição inclui áreas de texto ou outras figuras; não aprovar recorte retangular sem isolamento manual."
     },
     {
       "creatureId": "dragonado",
