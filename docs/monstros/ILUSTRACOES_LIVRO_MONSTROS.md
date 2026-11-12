@@ -948,3 +948,17 @@ As seis associações foram marcadas para isolamento manual. Não foram extraíd
 Os três vínculos individuais e a referência genérica foram marcados para isolamento manual. Nenhuma imagem foi extraída.
 
 **Contagem atualizada:** 136 registros no manifesto (104 individuais, 31 compartilhados e 1 genérico), equivalentes a 135 associações individuais/compartilhadas confirmadas e 1 referência genérica. No universo de 230 IDs, 94 não possuem arte individual identificada e nenhum permanece inconclusivo. O manifesto registra 3 recortes visualmente revisados, 65 pendentes e 101 vínculos marcados para isolamento manual.
+
+
+### Revisão visual complementar — páginas PDF 269–326 (2026-11-12)
+
+A inspeção sequencial das páginas finais do conteúdo principal e dos capítulos de referência identificou uma ilustração adicional fora do escopo do catálogo atual:
+
+- **Zumbi (PDF 272 / impressa 268):** figura individual claramente legendada “Zumbi”, na parte inferior da página. A criatura não possui ID no catálogo atual de 230 entradas do Livro dos Monstros; por isso, a imagem foi registrada como ocorrência fora do escopo e não foi adicionada ao manifesto de associações. Não criar um ID nem alterar o catálogo apenas para acomodar esta ilustração.
+- **PDF 269–271:** continuação das fichas de Yuan-ti e Zumbi, sem outra ilustração individual além da figura identificada na página 272.
+- **PDF 273–284:** capítulo de animais; páginas de fichas e tabelas, sem novas ilustrações de criaturas associáveis aos 230 IDs do catálogo.
+- **PDF 285–294:** capítulo de insetos; páginas de fichas, tabelas e descrições, sem novas ilustrações individuais identificadas.
+- **PDF 295–326:** capítulos de progressão, criação de monstros, perícias/talentos e tabelas de referência; não foram encontradas novas artes de criaturas.
+- **PDF 327–328:** capas finais do volume, fora do conjunto de ilustrações internas de criaturas.
+
+**Resultado do lote:** nenhuma associação do manifesto foi criada, removida ou alterada. A ocorrência de Zumbi foi documentada como fora do escopo porque o catálogo auditado não contém esse ID. Permanecem válidas as contagens do manifesto: 136 registros (104 individuais, 31 compartilhados e 1 genérico), 3 recortes visualmente revisados, 65 pendentes e 101 vínculos que exigem isolamento manual; 94 IDs do catálogo não possuem arte individual identificada e 0 estão inconclusivos. Nenhuma imagem foi extraída e nenhum arquivo do catálogo ou APK foi alterado.
