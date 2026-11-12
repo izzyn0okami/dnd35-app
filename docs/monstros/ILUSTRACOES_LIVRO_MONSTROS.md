@@ -1,6 +1,6 @@
 # Índice de ilustrações — Livro dos Monstros 3.5
 
-**Estado:** levantamento inicial em andamento  
+**Estado:** auditoria visual concluída; manifesto estruturado criado, recortes pendentes  
 **Fonte primária:** PDF brasileiro do Livro dos Monstros 3.5 fornecido para o projeto  
 **Catálogo associado:** `app/src/main/resources/dnd35/creatures.json` (262 registros: 230 entradas do Livro dos Monstros e 32 complementares do SRD 3.5; IDs preservados)
 
@@ -718,3 +718,14 @@ A revisão por renderização das páginas e adjacências concluiu os 21 registr
 A referência genérica de Yuan-ti permanece vinculada apenas como referência visual, sem afirmar que seja exclusiva do Puro Sangue. A figura coletiva dos Mephits está documentada como referência de família, sem atribuição individual.
 
 Os 32 registros SRD continuam fora dessa contagem e precisam de fonte visual externa compatível ou silhueta provisória. Nenhuma imagem foi extraída ou embutida no aplicativo nesta etapa.
+
+
+### Preparação do manifesto de imagens — 2026-11-12
+
+- Criado `docs/monstros/MANIFESTO_IMAGENS_MONSTROS.json`, separado do catálogo principal de criaturas.
+- O manifesto contém 140 vínculos de criaturas: 105 artes individuais, 34 associações compartilhadas e 1 referência genérica (Yuan-ti/Puro Sangue). A contagem mantém a reconciliação de 139 artes confirmadas + 1 referência genérica.
+- A figura coletiva dos Mephits foi registrada separadamente como referência de família na página PDF 202; não foi atribuída como retrato individual a nenhuma das nove variantes.
+- Os 32 registros SRD permanecem fora do manifesto baseado no livro brasileiro.
+- Cada vínculo contém ID/nome, página PDF e impressa da arte, tipo de associação, nota de identificação, legenda, retângulo de recorte, caminho local, estado de extração e estado de licença. Legendas, recortes e caminhos locais permanecem nulos até conferência visual individual.
+- Nenhuma imagem foi extraída, adicionada aos recursos Android ou incorporada ao APK. A arte do livro não pode ser redistribuída publicamente sem autorização/licença compatível.
+- Validação automatizada: 140 IDs únicos, todos presentes em `creatures.json`; 0 IDs ausentes e 0 páginas de arte sem mapeamento. Os recortes continuam pendentes de revisão visual.
