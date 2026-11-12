@@ -1037,3 +1037,8 @@ A direção aprovada para as cartas de monstros passa a ser utilizar ilustraçõ
 - Exemplos de assets de criaturas no OpenGameArt: https://opengameart.org/content/monster-concept e https://opengameart.org/content/tiny-creatures
 
 **Status:** política inicial documentada; nenhum asset de terceiros foi baixado, aprovado ou adicionado ao APK nesta etapa.
+
+
+## Pesquisa-piloto de fontes externas de arte livre (2026-11-12)
+
+A primeira busca de candidatos foi registrada no documento docs/monstros/PLANO_IMAGENS_LIVRES.md. Foram localizados candidatos para Beholder e Dríade (incluindo um arquivo CC0 com página e licença verificadas) e um candidato CC BY para Lich. Não houve validação de candidatos individuais suficientes para Bugbear, Tarrasque e Mephits nesta busca inicial. Pacotes pixel art CC0 foram catalogados apenas como possíveis placeholders, não como arte principal. Nenhuma imagem foi baixada, aprovada ou adicionada ao aplicativo. A política permanece: conferir a página original, inspecionar a imagem em resolução integral e registrar proveniência/licença antes de incorporar qualquer asset.
