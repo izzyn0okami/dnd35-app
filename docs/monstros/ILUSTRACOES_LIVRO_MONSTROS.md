@@ -131,9 +131,9 @@
 | `djinni` | Djinni | 133 | 137 | **Confirmada** — arte compartilhada com Efreeti na página PDF 138 |
 | `efreeti` | Efreeti | 134 | 138 | **Confirmada** — arte compartilhada com Djinni na página PDF 138 |
 | `janni` | Janni | 135 | 139 | Revisar arte |
-| `gigante-das-nuvens` | Gigante das Nuvens | 136 | 140 | Revisar arte |
+| `gigante-das-nuvens` | Gigante das Nuvens | 136 | 140 | **Confirmada** — figura compartilhada na página PDF 145 com Gigante de Pedra e Gigante das Colinas |
 | `gigante-do-fogo` | Gigante do Fogo | 137 | 141 | **Confirmada** — figura compartilhada na página PDF 141 |
-| `gigante-de-pedra` | Gigante de Pedra | 140 | 144 | Revisar arte |
+| `gigante-de-pedra` | Gigante de Pedra | 140 | 144 | **Confirmada** — figura compartilhada na página PDF 145 com Gigante das Nuvens e Gigante das Colinas |
 | `girallon` | Girallon | 142 | 146 | **Confirmada** — ilustração na página PDF 146 |
 | `gnoll` | Gnoll | 145 | 149 | **Confirmada** — ilustração na página PDF 149 |
 | `golem-de-barro` | Golem de Barro | 149 | 153 | Revisar arte |
@@ -564,3 +564,18 @@ A contagem foi refeita exclusivamente na tabela principal das Faixas 1 a 7, sem 
 - As demais entradas do lote continuam pendentes até a conferência das páginas adjacentes; não foram alteradas por inferência.
 
 **Contagem após este lote:** 115 associações individuais/compartilhadas confirmadas, 1 referência genérica e 114 pendências (230 IDs no total).
+
+
+### Revisão de pendências — segundo lote (páginas PDF 80–170)
+
+- PDF 80–100: seção de dragões cromáticos e metálicos. As ilustrações dessa seção não correspondem a IDs individuais do catálogo atual; não criar IDs nem atribuições fora do escopo do catálogo. Dragonado e Dríade já estavam confirmados em PDF 100 e 101.
+- PDF 105–112: elementais e material de referência; as imagens de elementais não correspondem a IDs individuais do catálogo de 230 entradas. Não associar por semelhança.
+- PDF 115–117: fichas dos enxames de centopeias, morcegos e gafanhotos; não foi identificada ilustração individual específica para esses três IDs.
+- PDF 118: Escavador já confirmado em registro anterior.
+- PDF 119: ilustração identificada como Gino–esfinge; Andro–esfinge e Crio–esfinge permanecem sem arte individual confirmada.
+- PDF 128–129: seção de fantasmas. A figura é genérica e não comprova representar especificamente o Fantasma Guerreiro Humano de 5º Nível; manter pendente.
+- PDF 141–145: confirmada a figura compartilhada na página PDF 145 (página impressa 141), identificada pelas legendas como Gigante das Nuvens, Gigante de Pedra e Gigante das Colinas. Foram atualizados somente os IDs existentes no catálogo: `gigante-das-nuvens` e `gigante-de-pedra`. Gigante das Colinas não foi adicionado, pois não há ID correspondente no conjunto indexado.
+- PDF 146–170: artes já confirmadas para Girallon, Gnoll, Grick, Grifo, Grimlock, Avoral, Hipogrifo, Homúnculo, Marut, Kolyarut, Zelekhut e Inumano foram conferidas no contexto das páginas; não foram criadas associações adicionais para figuras de criaturas fora do catálogo. Golem de Barro continua pendente: a arte de PDF 154 representa Golem de Ferro e Golem de Carne, não o Golem de Barro.
+- A inspeção visual deste lote não autoriza reutilizar as imagens de gigantes, fantasmas, elementais ou enxames para criaturas diferentes.
+
+**Contagem após este lote:** 117 associações individuais/compartilhadas confirmadas, 1 referência genérica e 112 pendências (230 IDs no total).
