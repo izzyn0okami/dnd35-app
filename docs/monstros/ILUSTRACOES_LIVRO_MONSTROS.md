@@ -636,7 +636,7 @@ Foram confirmadas 23 associações novas, sempre pela legenda ou identificação
 - PDF 239–259: as demais figuras da tabela foram identificadas por suas legendas. A figura do Verme da Carniça também aparece no intervalo, mas não foi associada a um ID inexistente no catálogo.
 - Nenhuma imagem de sombra, criatura planar ou variante foi reaproveitada para outra ficha.
 
-**Contagem após este lote:** 140 associações individuais/compartilhadas confirmadas, 1 referência genérica e 89 pendências (230 IDs no total).
+**Contagem após este lote:** 139 associações individuais/compartilhadas confirmadas, 1 referência genérica, 69 sem arte individual identificada e 21 pendências (230 IDs no total).
 
 
 ### Revisão visual — animais atrozes e capítulo de animais/insetos (2026-11-12)
@@ -672,4 +672,19 @@ Os 32 registros SRD continuam separados. Nenhum arquivo de imagem, recurso Andro
 - PDF 79: a ilustração corresponde ao Doppelganger; Tricerátops não tem figura própria identificável.
 - Oito registros foram classificados como “Sem arte individual identificada nas páginas da ficha e adjacentes”. As imagens de Cão Infernal, Caçador Invisível, Tiranossauro e Doppelganger não foram reaproveitadas.
 
-**Contagem após esta revisão:** 140 artes individuais/compartilhadas confirmadas, 1 referência genérica, 69 sem arte individual identificada e 20 ainda em revisão (230 IDs).
+**Contagem após esta revisão:** 139 artes individuais/compartilhadas confirmadas, 1 referência genérica, 69 sem arte individual identificada e 21 ainda em revisão (230 IDs).
+
+
+### Correção de contagem — reconciliação da tabela principal (2026-11-12)
+
+Uma nova contagem automatizada foi feita somente nas 230 linhas das Faixas 1 a 7, excluindo tabelas de logs e a seção complementar SRD. A conferência encontrou uma divergência de uma unidade em relação às contagens registradas nos lotes anteriores. A tabela principal é a fonte de verdade:
+
+| Situação | Quantidade |
+|---|---:|
+| Arte individual ou compartilhada confirmada | 139 |
+| Referência visual genérica | 1 |
+| Sem arte individual identificada no livro | 69 |
+| Revisar arte / inconclusiva | 21 |
+| **Total** | **230** |
+
+Os registros SRD (32) não entram nessa soma. Os logs anteriores foram mantidos como histórico das contagens feitas em cada etapa; esta reconciliação corrige a contagem vigente.
