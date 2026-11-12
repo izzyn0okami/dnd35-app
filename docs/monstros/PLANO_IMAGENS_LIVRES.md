@@ -92,3 +92,26 @@ O piloto deve testar qualidade visual, correspondência, licença, atribuição,
 ## Limites desta etapa
 
 Nenhuma imagem externa foi aprovada ou incorporada. A política e o fluxo foram definidos; o próximo passo é executar o lote-piloto e revisar cada candidato antes de versionar assets.
+
+
+## Pesquisa-piloto de candidatos (2026-11-12)
+
+A busca inicial encontrou alguns candidatos reais, mas nenhum foi ainda promovido a asset aprovado do aplicativo. A licença indicada na página da fonte foi conferida; a adequação artística e a correspondência final continuam sujeitas à revisão visual.
+
+| Criatura-alvo | Candidato | Licença informada na origem | Resultado preliminar |
+|---|---|---|---|
+| Beholder | [One Eye Armored Monster — Xacur / OpenGameArt](https://opengameart.org/content/one-eye-armored-monster) | CC BY 4.0 | Candidato promissor: a própria página marca a tag beholder e oferece arte colorida, P&B e line art. Preview do arquivo não carregou nesta auditoria; revisar imagem e atribuição antes de aceitar. |
+| Dríade | [DnD Dryad.png — LadyofHats / Wikimedia Commons](https://commons.wikimedia.org/wiki/File:DnD_Dryad.png) | CC0 1.0 | Licença, autoria declarada e resolução (1.145 × 1.500) verificadas na página original; imagem visualizada. Boa correspondência temática, mas estética de desenho monocromático com fundo claro pode destoar da direção pictórica desejada. Manter como candidata, não aprovada. |
+| Dríade (alternativa) | [Swamp Dryad — 5hiroi / OpenGameArt](https://opengameart.org/content/swamp-dryad) | CC0 | Página declara arte conceitual e CC0; arquivo de 42,9 KB. Preview não foi carregado, portanto adequação e resolução útil ainda não verificadas. |
+| Lich | [Lich, Death Knight and Fallen Warrior — Jastiv / OpenGameArt](https://opengameart.org/content/lich-death-knight-and-fallen-warrior) | CC BY 4.0 / CC BY 3.0 | Correspondência temática encontrada; sprites de mortos-vivos, não necessariamente retrato vertical. Candidato secundário sujeito à inspeção e atribuição à criadora indicada (Lori Angela Nagel). |
+| Bugbear | — | — | Nenhuma correspondência individual suficientemente específica foi validada nesta busca inicial. Continuar pesquisa; não substituir por goblin/ogro genérico sem rotular como inspiração. |
+| Tarrasque | — | — | Nenhuma correspondência individual suficientemente específica foi validada nesta busca inicial. Continuar pesquisa; não associar dinossauro ou dragão genérico como se fosse Tarrasque. |
+| Mephits | — | — | Nenhuma arte CC0/CC BY adequada para as variantes elementais foi validada nesta busca inicial. Pesquisar cada variante separadamente e preservar diferenças elementais. |
+
+### Outros pacotes encontrados, mas não selecionados como arte principal
+
+- [Tiny Creatures — OpenGameArt](https://opengameart.org/content/tiny-creatures), CC0: pacote com mais de 100 monstros e animais em sprites 16×16. É útil como referência de cobertura/placeholder, mas a resolução e o estilo pixel art não atendem à proposta de cartas ilustradas em alta qualidade.
+- [50+ Monsters Pack 2D — OpenGameArt](https://opengameart.org/content/50-monsters-pack-2d), CC0: 56 monstros em pixel art 64×64; pode ajudar em placeholders ou versões compactas, não como arte principal das cartas.
+- [The Free Monsters — OpenGameArt](https://lpc.opengameart.org/content/the-free-monsters), CC BY-SA 3.0/GPL: contém um Lichlord, mas a licença ShareAlike e o estilo do pacote exigem análise específica; não foi incluído no conjunto padrão.
+
+**Conclusão do piloto:** a disponibilidade de arte livre é real, mas não garante correspondência visual ou consistência estética. A Dríade e o Beholder já têm candidatos pesquisáveis; nenhum arquivo foi baixado, recortado, aprovado ou adicionado ao repositório. Próxima etapa: ampliar a busca por criatura e fazer revisão visual dos arquivos originais antes de fechar o primeiro conjunto.
