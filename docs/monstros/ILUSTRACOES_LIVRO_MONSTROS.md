@@ -920,3 +920,18 @@ A conferência das páginas completas e das legendas confirmou:
 As dez associações foram marcadas para isolamento manual. A correção do Mastim das Sombras evita confundir a página da ficha com a página da arte.
 
 **Contagem atualizada:** 136 registros no manifesto (104 individuais, 31 compartilhados e 1 genérico), equivalentes a 135 associações individuais/compartilhadas confirmadas e 1 referência genérica. No universo de 230 IDs, 94 não possuem arte individual identificada e nenhum permanece inconclusivo. O manifesto registra 3 recortes visualmente revisados, 75 pendentes e 91 vínculos marcados para isolamento manual.
+
+
+### Revisão visual complementar — páginas PDF 197–220 (2026-11-12)
+
+- **PDF 197–204:** páginas de referência e seção dos Mephits. A figura coletiva da família permanece registrada como referência genérica na página PDF 202, sem atribuição exclusiva a nenhuma das nove variantes.
+- **Mímico (PDF 205 / impressa 201):** figura individual confirmada pela legenda. A imagem mostra o baú mimético; não atribuir a arte a outra criatura da mesma seção.
+- **Mohrg (PDF 207 / impressa 203):** figura individual confirmada pela legenda.
+- **Monstro da Ferrugem (PDF 208 / impressa 204):** figura individual confirmada pela legenda.
+- **Ogro Mago (PDF 216 / impressa 212):** figura individual confirmada pela legenda.
+- **Pássaro Roca (PDF 219 / impressa 215):** figura individual confirmada pela legenda.
+- **Pégaso (PDF 220 / impressa 216):** figura individual confirmada pela legenda. A ficha de Pesadelo começa na mesma página, mas a imagem está identificada como Pégaso; não transferir a arte para Pesadelo.
+
+As seis associações foram marcadas para isolamento manual. Não foram extraídos arquivos de imagem. A referência coletiva dos Mephits continua separada dos retratos individuais.
+
+**Contagem atualizada:** 136 registros no manifesto (104 individuais, 31 compartilhados e 1 genérico), equivalentes a 135 associações individuais/compartilhadas confirmadas e 1 referência genérica. No universo de 230 IDs, 94 não possuem arte individual identificada e nenhum permanece inconclusivo. O manifesto registra 3 recortes visualmente revisados, 69 pendentes e 97 vínculos marcados para isolamento manual.
