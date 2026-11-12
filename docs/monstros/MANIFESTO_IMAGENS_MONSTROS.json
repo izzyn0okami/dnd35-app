@@ -19,9 +19,9 @@
     "shared": 34,
     "generic": 1,
     "unresolvedPageMappings": 0,
-    "cropRectanglesPending": 138,
-    "cropRectanglesReviewed": 2,
-    "manualIsolationRequired": 4
+    "cropRectanglesPending": 137,
+    "cropRectanglesReviewed": 3,
+    "manualIsolationRequired": 7
   },
   "coordinateConvention": "cropRectPdfPoints uses [x0,y0,x1,y1] in PDF points, origin at top-left of the rendered page; null until visually reviewed.",
   "records": [
@@ -101,12 +101,14 @@
       "artworkPagePrinted": 18,
       "associationType": "individual",
       "sourceCaption": null,
-      "sourceNote": "Confirmada — ilustração na página PDF 22",
+      "sourceNote": "Confirmada — ilustração própria na página PDF 22 (página impressa 18); isolamento manual necessário.",
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "A arte do urso está identificada pela legenda, mas o recorte retangular também alcança a ilustração do Anjo e/ou texto adjacente. Não aprovar retângulo simples; usar máscara manual ou extração do objeto de imagem."
     },
     {
       "creatureId": "anjo-deva-astral",
@@ -115,12 +117,14 @@
       "artworkPagePrinted": 20,
       "associationType": "shared",
       "sourceCaption": null,
-      "sourceNote": "Confirmada — arte compartilhada na página PDF 24",
+      "sourceNote": "Confirmada — composição compartilhada e legendada na página PDF 24 (página impressa 20); isolamento manual necessário.",
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Uma única composição reúne as três figuras, identificadas pelas legendas Deva Astral, Planetário e Solar. A composição se mistura com texto da página; preservar como arte compartilhada e isolar por máscara/extração, sem gerar retratos exclusivos."
     },
     {
       "creatureId": "anjo-planetario",
@@ -129,12 +133,14 @@
       "artworkPagePrinted": 20,
       "associationType": "shared",
       "sourceCaption": null,
-      "sourceNote": "Confirmada — arte compartilhada na página PDF 24",
+      "sourceNote": "Confirmada — composição compartilhada e legendada na página PDF 24 (página impressa 20); isolamento manual necessário.",
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Uma única composição reúne as três figuras, identificadas pelas legendas Deva Astral, Planetário e Solar. A composição se mistura com texto da página; preservar como arte compartilhada e isolar por máscara/extração, sem gerar retratos exclusivos."
     },
     {
       "creatureId": "anjo-solar",
@@ -143,12 +149,14 @@
       "artworkPagePrinted": 20,
       "associationType": "shared",
       "sourceCaption": null,
-      "sourceNote": "Confirmada — arte compartilhada na página PDF 24",
+      "sourceNote": "Confirmada — composição compartilhada e legendada na página PDF 24 (página impressa 20); isolamento manual necessário.",
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Uma única composição reúne as três figuras, identificadas pelas legendas Deva Astral, Planetário e Solar. A composição se mistura com texto da página; preservar como arte compartilhada e isolar por máscara/extração, sem gerar retratos exclusivos."
     },
     {
       "creatureId": "aranea",
@@ -194,12 +202,14 @@
       "artworkPagePrinted": 24,
       "associationType": "individual",
       "sourceCaption": null,
-      "sourceNote": "Confirmada — ilustração na página PDF 28",
+      "sourceNote": "Confirmada — ilustração própria na página PDF 28 (página impressa 24); isolamento manual necessário.",
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "A figura ocupa a região inferior central e se aproxima de texto corrido nas duas colunas. O recorte retangular testado incluiria texto; exigir máscara manual ou extração do objeto."
     },
     {
       "creatureId": "arconte-luminar",
@@ -208,12 +218,14 @@
       "artworkPagePrinted": 27,
       "associationType": "shared",
       "sourceCaption": null,
-      "sourceNote": "Confirmada — arte compartilhada na página PDF 31",
+      "sourceNote": "Confirmada — composição compartilhada e legendada na página PDF 31 (página impressa 27); isolamento manual necessário.",
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Uma composição compartilhada mostra Arconte Luminar e Arconte Mensageiro, com ambas as legendas visíveis. A figura se estende pela região superior esquerda e alcança áreas próximas ao texto; requer isolamento manual, sem separar as criaturas em imagens exclusivas."
     },
     {
       "creatureId": "arconte-mensageiro",
@@ -222,26 +234,35 @@
       "artworkPagePrinted": 27,
       "associationType": "shared",
       "sourceCaption": null,
-      "sourceNote": "Confirmada — arte compartilhada na página PDF 31",
+      "sourceNote": "Confirmada — composição compartilhada e legendada na página PDF 31 (página impressa 27); isolamento manual necessário.",
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Uma composição compartilhada mostra Arconte Luminar e Arconte Mensageiro, com ambas as legendas visíveis. A figura se estende pela região superior esquerda e alcança áreas próximas ao texto; requer isolamento manual, sem separar as criaturas em imagens exclusivas."
     },
     {
       "creatureId": "azer",
       "creatureName": "Azer",
-      "artworkPagePdf": 32,
-      "artworkPagePrinted": 28,
+      "artworkPagePdf": 33,
+      "artworkPagePrinted": 29,
       "associationType": "individual",
-      "sourceCaption": null,
-      "sourceNote": "Confirmada — ilustração individual na página PDF 32",
-      "cropRectPdfPoints": null,
+      "sourceCaption": "Azer",
+      "sourceNote": "Confirmada — ilustração individual legendada na página PDF 33 (página impressa 29); a página PDF 32 contém a arte legendada de Athach, não de Azer.",
+      "cropRectPdfPoints": [
+        155,
+        55,
+        380,
+        485
+      ],
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "crop-rectangle-reviewed; extraction-not-started",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "visually-reviewed",
+      "cropReviewNote": "Recorte conferido na página completa: figura e legenda Azer isoladas da coluna de texto; corrigida a atribuição anterior à página PDF 32, cuja arte está legendada Athach."
     },
     {
       "creatureId": "beholder",
