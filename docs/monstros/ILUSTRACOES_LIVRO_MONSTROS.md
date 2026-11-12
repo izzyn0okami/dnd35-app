@@ -935,3 +935,16 @@ As dez associações foram marcadas para isolamento manual. A correção do Mast
 As seis associações foram marcadas para isolamento manual. Não foram extraídos arquivos de imagem. A referência coletiva dos Mephits continua separada dos retratos individuais.
 
 **Contagem atualizada:** 136 registros no manifesto (104 individuais, 31 compartilhados e 1 genérico), equivalentes a 135 associações individuais/compartilhadas confirmadas e 1 referência genérica. No universo de 230 IDs, 94 não possuem arte individual identificada e nenhum permanece inconclusivo. O manifesto registra 3 recortes visualmente revisados, 69 pendentes e 97 vínculos marcados para isolamento manual.
+
+
+### Revisão visual complementar — páginas PDF 261–268 (2026-11-12)
+
+- **PDF 261:** páginas de referência e fichas sem nova arte individual correspondente aos IDs pendentes deste lote.
+- **Worg (PDF 262 / impressa 258):** figura individual confirmada pela legenda.
+- **Wyvern (PDF 263 / impressa 259):** figura individual confirmada pela legenda.
+- **Yrthak (PDF 266 / impressa 262):** figura individual confirmada pela legenda.
+- **Yuan-ti (PDF 268 / impressa 264):** figura identificada genericamente como Yuan-ti. A imagem permanece como referência visual genérica da família; não afirmar que representa exclusivamente o Puro Sangue.
+
+Os três vínculos individuais e a referência genérica foram marcados para isolamento manual. Nenhuma imagem foi extraída.
+
+**Contagem atualizada:** 136 registros no manifesto (104 individuais, 31 compartilhados e 1 genérico), equivalentes a 135 associações individuais/compartilhadas confirmadas e 1 referência genérica. No universo de 230 IDs, 94 não possuem arte individual identificada e nenhum permanece inconclusivo. O manifesto registra 3 recortes visualmente revisados, 65 pendentes e 101 vínculos marcados para isolamento manual.
