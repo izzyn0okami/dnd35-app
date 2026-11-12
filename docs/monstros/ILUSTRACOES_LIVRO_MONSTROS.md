@@ -579,3 +579,14 @@ A contagem foi refeita exclusivamente na tabela principal das Faixas 1 a 7, sem 
 - A inspeção visual deste lote não autoriza reutilizar as imagens de gigantes, fantasmas, elementais ou enxames para criaturas diferentes.
 
 **Contagem após este lote:** 117 associações individuais/compartilhadas confirmadas, 1 referência genérica e 112 pendências (230 IDs no total).
+
+
+### Revisão de pendências — terceiro lote (páginas PDF 171–200)
+
+- PDF 171–174: as ilustrações de Inumano, Kraken, Kuo–toa e Lagarto Elétrico foram conferidas. Inumano, Kraken e Lagarto Elétrico já possuem associação registrada; Kuo–toa não integra o conjunto de IDs indexados.
+- PDF 176–177: Lammasu e Leão Marinho já têm ilustrações próprias confirmadas. O texto do Protetor Dourado aparece junto à seção, mas a figura visível é a do Leão Marinho; não há arte identificada especificamente como Protetor Dourado. Manter pendente.
+- PDF 178–186: páginas de licantropos e limos. Não foi encontrada figura identificada como Limo Cinzento. A ilustração do Cubo Gelatinoso não deve ser atribuída ao Limo Cinzento; as páginas também apresentam Gosma Ocre e Pudim Negro, que não devem ser confundidos com o ID catalogado.
+- PDF 187–188: Lich e Lillend já possuem arte confirmada.
+- PDF 189–193: Magmin, Manticora, Manto Negro e Mastim das Sombras aparecem com legendas próprias e foram conferidos. As correspondências já registradas permanecem válidas; Meio–abissal não é um ID individual do catálogo.
+- PDF 194–200: páginas de referência e modelos; não foi identificada nova arte para os IDs pendentes neste intervalo.
+- Nenhuma nova associação foi adicionada neste lote. Permanecem 117 associações individuais/compartilhadas confirmadas, 1 referência genérica e 112 pendências.
