@@ -19,9 +19,9 @@
     "shared": 34,
     "generic": 1,
     "unresolvedPageMappings": 0,
-    "cropRectanglesPending": 117,
+    "cropRectanglesPending": 111,
     "cropRectanglesReviewed": 3,
-    "manualIsolationRequired": 49
+    "manualIsolationRequired": 55
   },
   "coordinateConvention": "cropRectPdfPoints uses [x0,y0,x1,y1] in PDF points, origin at top-left of the rendered page; null until visually reviewed.",
   "records": [
@@ -971,12 +971,14 @@
       "artworkPagePrinted": 110,
       "associationType": "individual",
       "sourceCaption": null,
-      "sourceNote": "Confirmada — ilustração na página PDF 114",
+      "sourceNote": "Confirmada — figura individual legendada na página PDF 114 (página impressa 110); isolamento manual necessário.",
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Figura individual identificada pela legenda na página PDF 114 (página impressa 110). O recorte deve ser isolado manualmente para evitar texto ou figuras adjacentes."
     },
     {
       "creatureId": "escavador",
@@ -985,12 +987,14 @@
       "artworkPagePrinted": 113,
       "associationType": "individual",
       "sourceCaption": null,
-      "sourceNote": "Confirmada — ilustração na página PDF 117",
+      "sourceNote": "Confirmada — figura individual legendada na página PDF 117 (página impressa 113); isolamento manual necessário.",
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Figura individual identificada pela legenda na página PDF 117 (página impressa 113). O recorte deve ser isolado manualmente para evitar texto ou figuras adjacentes."
     },
     {
       "creatureId": "ginoesfinge",
@@ -999,12 +1003,14 @@
       "artworkPagePrinted": 115,
       "associationType": "individual",
       "sourceCaption": null,
-      "sourceNote": "Confirmada — ilustração na página PDF 119",
+      "sourceNote": "Confirmada — figura individual legendada na página PDF 119 (página impressa 115); isolamento manual necessário.",
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Figura individual identificada pela legenda na página PDF 119 (página impressa 115). O recorte deve ser isolado manualmente para evitar texto ou figuras adjacentes."
     },
     {
       "creatureId": "espectro",
@@ -1013,12 +1019,14 @@
       "artworkPagePrinted": 116,
       "associationType": "individual",
       "sourceCaption": null,
-      "sourceNote": "Confirmada — ilustração na página PDF 120",
+      "sourceNote": "Confirmada — figura individual legendada na página PDF 120 (página impressa 116); isolamento manual necessário.",
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Figura individual identificada pela legenda na página PDF 120 (página impressa 116). O recorte deve ser isolado manualmente para evitar texto ou figuras adjacentes."
     },
     {
       "creatureId": "ettercap",
@@ -1027,12 +1035,14 @@
       "artworkPagePrinted": 120,
       "associationType": "individual",
       "sourceCaption": null,
-      "sourceNote": "Confirmada — ilustração na página PDF 124",
+      "sourceNote": "Confirmada — figura individual legendada na página PDF 124 (página impressa 120); isolamento manual necessário.",
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Figura individual identificada pela legenda na página PDF 124 (página impressa 120). O recorte deve ser isolado manualmente para evitar texto ou figuras adjacentes."
     },
     {
       "creatureId": "ettin",
@@ -1041,12 +1051,14 @@
       "artworkPagePrinted": 121,
       "associationType": "individual",
       "sourceCaption": null,
-      "sourceNote": "Confirmada — ilustração na página PDF 125",
+      "sourceNote": "Confirmada — figura individual legendada na página PDF 125 (página impressa 121); isolamento manual necessário.",
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Figura individual identificada pela legenda na página PDF 125 (página impressa 121). O recorte deve ser isolado manualmente para evitar texto ou figuras adjacentes."
     },
     {
       "creatureId": "grig",
