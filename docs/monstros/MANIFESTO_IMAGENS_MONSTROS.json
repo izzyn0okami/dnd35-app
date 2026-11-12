@@ -19,7 +19,8 @@
     "shared": 34,
     "generic": 1,
     "unresolvedPageMappings": 0,
-    "cropRectanglesPending": 140
+    "cropRectanglesPending": 138,
+    "cropRectanglesReviewed": 2
   },
   "coordinateConvention": "cropRectPdfPoints uses [x0,y0,x1,y1] in PDF points, origin at top-left of the rendered page; null until visually reviewed.",
   "records": [
@@ -45,11 +46,18 @@
       "associationType": "individual",
       "sourceCaption": null,
       "sourceNote": "Confirmada — ilustração na metade inferior esquerda",
-      "cropRectPdfPoints": null,
+      "cropRectPdfPoints": [
+        28,
+        495,
+        252,
+        770
+      ],
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "crop-rectangle-reviewed; extraction-not-started",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "visually-reviewed",
+      "cropReviewNote": "Recorte conferido visualmente; figura e legenda presentes sem texto de bloco de estatísticas dentro do quadro."
     },
     {
       "creatureId": "aguia-gigante",
@@ -143,11 +151,18 @@
       "associationType": "individual",
       "sourceCaption": null,
       "sourceNote": "Confirmada — ilustração na região superior esquerda",
-      "cropRectPdfPoints": null,
+      "cropRectPdfPoints": [
+        22,
+        40,
+        220,
+        205
+      ],
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "crop-rectangle-reviewed; extraction-not-started",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "visually-reviewed",
+      "cropReviewNote": "Recorte conferido visualmente; ilustração superior isolada da ficha."
     },
     {
       "creatureId": "aranha-interplanar",
