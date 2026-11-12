@@ -786,3 +786,21 @@ Foram conferidas as páginas completas e as legendas das artes deste intervalo:
 Os recortes dessas dez artes foram mantidos sem coordenadas aprovadas, pois a proximidade com texto ou outras figuras exige isolamento cuidadoso. Nenhuma imagem foi rejeitada por causa disso; os vínculos permanecem confirmados por legenda.
 
 **Contagem atualizada:** 139 registros no manifesto (104 individuais, 34 compartilhados e 1 genérico); 3 recortes revisados, 136 pendentes e 17 vínculos marcados para isolamento manual. A Bruxa do Mar foi retirada da contagem de artes confirmadas e deve ser contabilizada entre as 90 criaturas sem arte individual identificada, elevando essa categoria para 91 e mantendo 230 IDs no escopo.
+
+
+### Revisão visual complementar — páginas PDF 48–60 (2026-11-12)
+
+As páginas foram renderizadas integralmente e as legendas conferidas. As seguintes associações do manifesto foram confirmadas:
+
+- **Chuul (PDF 48 / impressa 44)** e **Cocatriz (PDF 49 / impressa 45)**: artes individuais legendadas.
+- **Constritor (PDF 50 / impressa 46)**: arte individual confirmada.
+- **Coruja Gigante e Couatl (PDF 51 / impressa 47)**: duas ilustrações distintas, cada uma identificada por legenda; não compartilhar as artes entre as criaturas.
+- **Cria Vampírica (PDF 52 / impressa 48)**: arte individual confirmada.
+- **Balor e Marilith (PDF 54 / impressa 50)**: composição compartilhada com as duas legendas; manter os dois vínculos à mesma arte, sem criar retratos exclusivos.
+- **Bebilith (PDF 56 / impressa 52)**: arte individual confirmada.
+- **Babau, Dretch e Hezrou (PDF 59 / impressa 55)**: composição compartilhada com as três legendas; manter os três vínculos à mesma arte.
+- **Nalfeshnee (PDF 60 / impressa 56)**: arte individual confirmada.
+
+Não foram encontradas divergências de página ou de identidade neste lote. Os recortes permanecem sem coordenadas aprovadas porque as composições se aproximam de texto ou de outras figuras e precisam de isolamento manual. As associações foram mantidas como confirmadas; isso não equivale à extração das imagens.
+
+**Contagem do manifesto após o lote:** 139 registros (104 individuais, 34 compartilhados e 1 genérico), 3 recortes visualmente revisados, 123 pendentes e 30 vínculos marcados para isolamento manual. A contagem global permanece: 138 associações individuais/compartilhadas confirmadas, 1 referência genérica e 91 criaturas sem arte individual identificada (230 IDs).
