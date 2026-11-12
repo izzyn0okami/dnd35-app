@@ -19,9 +19,9 @@
     "shared": 31,
     "generic": 1,
     "unresolvedPageMappings": 0,
-    "cropRectanglesPending": 69,
+    "cropRectanglesPending": 65,
     "cropRectanglesReviewed": 3,
-    "manualIsolationRequired": 97
+    "manualIsolationRequired": 101
   },
   "coordinateConvention": "cropRectPdfPoints uses [x0,y0,x1,y1] in PDF points, origin at top-left of the rendered page; null until visually reviewed.",
   "records": [
@@ -2107,8 +2107,10 @@
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Figura individual identificada pela legenda na página PDF 262 (página impressa 258). Isolamento manual necessário para evitar texto ou elementos adjacentes."
     },
     {
       "creatureId": "wyvern",
@@ -2121,8 +2123,10 @@
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Figura individual identificada pela legenda na página PDF 263 (página impressa 259). Isolamento manual necessário para evitar texto ou elementos adjacentes."
     },
     {
       "creatureId": "yrthak",
@@ -2135,8 +2139,10 @@
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Figura individual identificada pela legenda na página PDF 266 (página impressa 262). Isolamento manual necessário para evitar texto ou elementos adjacentes."
     },
     {
       "creatureId": "puro-sangue",
@@ -2149,8 +2155,10 @@
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "generic-reference-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Referência visual genérica da família Yuan-ti, identificada na página PDF 268 (página impressa 264). Não afirmar que o retrato representa exclusivamente o Puro Sangue; isolamento manual necessário."
     }
   ],
   "familyReferences": [
