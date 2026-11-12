@@ -19,9 +19,9 @@
     "shared": 34,
     "generic": 1,
     "unresolvedPageMappings": 0,
-    "cropRectanglesPending": 122,
+    "cropRectanglesPending": 117,
     "cropRectanglesReviewed": 3,
-    "manualIsolationRequired": 44
+    "manualIsolationRequired": 49
   },
   "coordinateConvention": "cropRectPdfPoints uses [x0,y0,x1,y1] in PDF points, origin at top-left of the rendered page; null until visually reviewed.",
   "records": [
@@ -891,12 +891,14 @@
       "artworkPagePrinted": 96,
       "associationType": "individual",
       "sourceCaption": null,
-      "sourceNote": "Confirmada — ilustração na página PDF 100",
+      "sourceNote": "Confirmada — figura individual legendada na página PDF 100 (página impressa 96); isolamento manual necessário.",
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Figura individual identificada por legenda na página PDF 100 (página impressa 96). O recorte deve ser isolado manualmente para evitar texto e elementos adjacentes."
     },
     {
       "creatureId": "driade",
@@ -905,12 +907,14 @@
       "artworkPagePrinted": 97,
       "associationType": "individual",
       "sourceCaption": null,
-      "sourceNote": "Confirmada — ilustração na página PDF 101",
+      "sourceNote": "Confirmada — figura individual legendada na página PDF 101 (página impressa 97); isolamento manual necessário.",
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Figura individual identificada por legenda na página PDF 101 (página impressa 97). O recorte deve ser isolado manualmente para evitar texto e elementos adjacentes."
     },
     {
       "creatureId": "drider",
@@ -919,12 +923,14 @@
       "artworkPagePrinted": 98,
       "associationType": "individual",
       "sourceCaption": null,
-      "sourceNote": "Confirmada — ilustração na página PDF 102",
+      "sourceNote": "Confirmada — figura individual legendada na página PDF 102 (página impressa 98); isolamento manual necessário.",
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Figura individual identificada por legenda na página PDF 102 (página impressa 98). O recorte deve ser isolado manualmente para evitar texto e elementos adjacentes."
     },
     {
       "creatureId": "bralani",
@@ -933,12 +939,14 @@
       "artworkPagePrinted": 99,
       "associationType": "shared",
       "sourceCaption": null,
-      "sourceNote": "Confirmada — arte compartilhada com Ghaele na página PDF 103",
+      "sourceNote": "Confirmada — composição compartilhada legendada na página PDF 103 (página impressa 99); isolamento manual necessário.",
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Composição compartilhada com as figuras de Bralani e Ghaele, ambas identificadas por legenda na página PDF 103. Preservar o vínculo compartilhado; não criar retratos exclusivos. O isolamento requer máscara manual."
     },
     {
       "creatureId": "ghaele",
@@ -947,12 +955,14 @@
       "artworkPagePrinted": 99,
       "associationType": "shared",
       "sourceCaption": null,
-      "sourceNote": "Confirmada — arte compartilhada com Bralani na página PDF 103",
+      "sourceNote": "Confirmada — composição compartilhada legendada na página PDF 103 (página impressa 99); isolamento manual necessário.",
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Composição compartilhada com as figuras de Bralani e Ghaele, ambas identificadas por legenda na página PDF 103. Preservar o vínculo compartilhado; não criar retratos exclusivos. O isolamento requer máscara manual."
     },
     {
       "creatureId": "ente",
