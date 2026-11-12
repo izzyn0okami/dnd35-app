@@ -216,10 +216,10 @@
 | `vinha-assassina` | Vinha Assassina | 254 | 258 | Revisar arte |
 | `rastejante-noturno` | Rastejante Noturno | 257 | 261 | Revisar arte |
 | `vulto-alado` | Vulto Alado | 257 | 261 | Revisar arte |
-| `worg` | Worg | 258 | 262 | Revisar arte |
-| `wyvern` | Wyvern | 259 | 263 | Revisar arte |
-| `yrthak` | Yrthak | 262 | 266 | Revisar arte |
-| `puro-sangue` | Puro Sangue | 265 | 269 | Revisar arte |
+| `worg` | Worg | 258 | 262 | **Confirmada** — ilustração individual na página PDF 262 |
+| `wyvern` | Wyvern | 259 | 263 | **Confirmada** — ilustração individual na página PDF 263 |
+| `yrthak` | Yrthak | 262 | 266 | **Confirmada** — ilustração individual na página PDF 266 |
+| `puro-sangue` | Puro Sangue | 265 | 269 | **Referência genérica** — arte identificada como Yuan-ti na página PDF 268; não exclusiva da variante |
 | `aguia` | Águia | 269 | 273 | Revisar arte |
 | `arminho` | Arminho | 269 | 273 | Revisar arte |
 | `arraia` | Arraia | 269 | 273 | Revisar arte |
