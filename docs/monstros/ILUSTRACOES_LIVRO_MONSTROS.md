@@ -751,3 +751,18 @@ Foram renderizadas e avaliadas as páginas PDF 12, 15, 16 e 27, além dos dois r
 - **Aranha Interplanar (PDF 27):** arte inferior confirmada, mas o quadro cruza regiões de texto; exige isolamento manual.
 
 Nenhuma dessas quatro imagens foi rejeitada ou reclassificada como ausente. Apenas se evitou aprovar coordenadas de recorte que produziriam imagens com texto indevido. O manifesto mantém 2 recortes aprovados e marca 4 casos para isolamento manual.
+
+
+### Revisão visual complementar — páginas PDF 22, 24, 28, 31 e 32–33 (2026-11-12)
+
+As páginas completas foram renderizadas e conferidas, incluindo a legenda de cada composição. A revisão resultou nas seguintes decisões:
+
+- **Urso Atroz (PDF 22 / impressa 18):** a legenda confirma a criatura. A imagem se aproxima da figura do Anjo e de conteúdo da página; não foi aprovado recorte retangular. Exige isolamento manual.
+- **Anjos — Deva Astral, Planetário e Solar (PDF 24 / impressa 20):** as três criaturas aparecem na mesma composição e são identificadas pelas legendas. A associação permanece compartilhada; não criar três retratos exclusivos. O recorte exige máscara manual ou extração do objeto.
+- **Arbusto Errante (PDF 28 / impressa 24):** figura confirmada pela legenda, mas o retângulo alcança texto das colunas adjacentes. Exige isolamento manual.
+- **Arcontes Luminar e Mensageiro (PDF 31 / impressa 27):** composição única com ambas as legendas. A arte permanece compartilhada e exige isolamento manual; não dividir em retratos individuais.
+- **Azer — correção de página:** a página PDF 32 (impressa 28) contém uma ilustração legendada **Athach**, não Azer. A ilustração de Azer está na página PDF 33 (impressa 29), com legenda inequívoca. O manifesto foi corrigido para PDF 33 e recebeu recorte visualmente aprovado `[155, 55, 380, 485]`, em pontos PDF.
+
+**Contagem atualizada do manifesto:** 140 registros de criaturas (105 individuais, 34 compartilhados e 1 genérico); 3 registros com retângulo revisado, 137 ainda pendentes e 7 registros marcados para isolamento manual. Os casos compartilhados contam por vínculo de criatura no manifesto, embora representem uma única composição artística.
+
+Nenhuma imagem foi extraída ou incorporada ao aplicativo. Os requisitos de licença e a restrição contra redistribuição pública de arte protegida permanecem inalterados.
