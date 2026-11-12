@@ -20,16 +20,16 @@
 | `achaierai` | Achaierai | 10 | 14 | **Confirmada** — ilustração na metade inferior esquerda |
 | `aguia-gigante` | Águia Gigante | 11 | 15 | **Confirmada** — ilustração na metade inferior esquerda |
 | `allip` | Allip | 11 | 15 | **Confirmada** — ilustração própria na página PDF 16 (página impressa 12) |
-| `arminho-atroz` | Arminho Atroz | 14 | 18 | Revisar arte |
-| `carcaju-atroz` | Carcajú Atroz | 14 | 18 | Revisar arte |
-| `gorila-atroz` | Gorila Atroz | 15 | 19 | Revisar arte |
-| `javali-atroz` | Javali Atroz | 15 | 19 | Revisar arte |
-| `leao-atroz` | Leão Atroz | 15 | 19 | Revisar arte |
-| `lobo-atroz` | Lobo Atroz | 16 | 20 | Revisar arte |
-| `morcego-atroz` | Morcego Atroz | 16 | 20 | Revisar arte |
-| `rato-atroz` | Rato Atroz | 16 | 20 | Revisar arte |
-| `tigre-atroz` | Tigre Atroz | 17 | 21 | Revisar arte |
-| `tubarao-atroz` | Tubarão Atroz | 17 | 21 | Revisar arte |
+| `arminho-atroz` | Arminho Atroz | 14 | 18 | Sem arte individual identificada — PDF 18–21 |
+| `carcaju-atroz` | Carcajú Atroz | 14 | 18 | Sem arte individual identificada — PDF 18–21 |
+| `gorila-atroz` | Gorila Atroz | 15 | 19 | Sem arte individual identificada — PDF 18–21 |
+| `javali-atroz` | Javali Atroz | 15 | 19 | Sem arte individual identificada — PDF 18–21 |
+| `leao-atroz` | Leão Atroz | 15 | 19 | Sem arte individual identificada — PDF 18–21 |
+| `lobo-atroz` | Lobo Atroz | 16 | 20 | Sem arte individual identificada — PDF 18–21 |
+| `morcego-atroz` | Morcego Atroz | 16 | 20 | Sem arte individual identificada — PDF 18–21 |
+| `rato-atroz` | Rato Atroz | 16 | 20 | Sem arte individual identificada — PDF 18–21 |
+| `tigre-atroz` | Tigre Atroz | 17 | 21 | Sem arte individual identificada — PDF 18–21 |
+| `tubarao-atroz` | Tubarão Atroz | 17 | 21 | Sem arte individual identificada — PDF 18–21 |
 | `urso-atroz` | Urso Atroz | 18 | 22 | **Confirmada** — ilustração na página PDF 22 |
 | `anjo-deva-astral` | Anjo, Deva Astral | 19 | 23 | **Confirmada** — arte compartilhada na página PDF 24 |
 | `anjo-planetario` | Anjo, Planetário | 19 | 23 | **Confirmada** — arte compartilhada na página PDF 24 |
@@ -220,62 +220,62 @@
 | `wyvern` | Wyvern | 259 | 263 | **Confirmada** — ilustração individual na página PDF 263 |
 | `yrthak` | Yrthak | 262 | 266 | **Confirmada** — ilustração individual na página PDF 266 |
 | `puro-sangue` | Puro Sangue | 265 | 269 | **Referência genérica** — arte identificada como Yuan-ti na página PDF 268; não exclusiva da variante |
-| `aguia` | Águia | 269 | 273 | Revisar arte |
-| `arminho` | Arminho | 269 | 273 | Revisar arte |
-| `arraia` | Arraia | 269 | 273 | Revisar arte |
-| `babuino` | Babuíno | 269 | 273 | Revisar arte |
-| `baleia-azul` | Baleia Azul | 270 | 274 | Revisar arte |
-| `baleia-cachalote` | Baleia Cachalote | 270 | 274 | Revisar arte |
+| `aguia` | Águia | 269 | 273 | Sem arte individual identificada — PDF 273–288 |
+| `arminho` | Arminho | 269 | 273 | Sem arte individual identificada — PDF 273–288 |
+| `arraia` | Arraia | 269 | 273 | Sem arte individual identificada — PDF 273–288 |
+| `babuino` | Babuíno | 269 | 273 | Sem arte individual identificada — PDF 273–288 |
+| `baleia-azul` | Baleia Azul | 270 | 274 | Sem arte individual identificada — PDF 273–288 |
+| `baleia-cachalote` | Baleia Cachalote | 270 | 274 | Sem arte individual identificada — PDF 273–288 |
 
 ## Faixa 7 — catálogo 186 a 230
 
 | ID do catálogo | Nome no catálogo | Página impressa | Página PDF | Situação da arte |
 |---|---|---:|---:|---|
-| `baleia-orca` | Baleia Orca | 270 | 274 | Revisar arte |
-| `bisao` | Bisão | 270 | 274 | Revisar arte |
-| `cachorro` | Cachorro | 271 | 275 | Revisar arte |
-| `cachorro-de-montaria` | Cachorro de Montaria | 271 | 275 | Revisar arte |
-| `camelo` | Camelo | 271 | 275 | Revisar arte |
-| `carcaju` | Carcajú | 272 | 276 | Revisar arte |
-| `cavalo-pesado` | Cavalo Pesado | 272 | 276 | Revisar arte |
-| `cavalo-leve` | Cavalo Leve | 272 | 276 | Revisar arte |
-| `cavalo-de-guerra-pesado` | Cavalo de Guerra Pesado | 272 | 276 | Revisar arte |
-| `cobra-constritora` | Cobra Constritora | 273 | 277 | Revisar arte |
-| `coruja` | Coruja | 274 | 278 | Revisar arte |
-| `corvo` | Corvo | 275 | 279 | Revisar arte |
-| `crocodilo` | Crocodilo | 275 | 279 | Revisar arte |
-| `crocodilo-gigante` | Crocodilo Gigante | 275 | 279 | Revisar arte |
-| `elefante` | Elefante | 275 | 279 | Revisar arte |
-| `falcao` | Falcão | 276 | 280 | Revisar arte |
-| `gato` | Gato | 276 | 280 | Revisar arte |
-| `golfinho` | Golfinho | 276 | 280 | Revisar arte |
-| `gorila` | Gorila | 276 | 280 | Revisar arte |
-| `guepardo` | Guepardo | 277 | 281 | Revisar arte |
-| `javali` | Javali | 277 | 281 | Revisar arte |
-| `jumento` | Jumento | 277 | 281 | Revisar arte |
-| `lagarto` | Lagarto | 278 | 282 | Revisar arte |
-| `leao` | Leão | 278 | 282 | Revisar arte |
-| `leopardo` | Leopardo | 278 | 282 | Revisar arte |
-| `lobo` | Lobo | 279 | 283 | Revisar arte |
-| `lula` | Lula | 279 | 283 | Revisar arte |
-| `lula-gigante` | Lula Gigante | 279 | 283 | Revisar arte |
-| `macaco` | Macaco | 280 | 284 | Revisar arte |
-| `morcego` | Morcego | 280 | 284 | Revisar arte |
-| `mula` | Mula | 280 | 284 | Revisar arte |
-| `polvo` | Polvo | 280 | 284 | Revisar arte |
-| `polvo-gigante` | Polvo Gigante | 281 | 285 | Revisar arte |
-| `ponei` | Pônei | 281 | 285 | Revisar arte |
-| `ponei-de-guerra` | Pônei de Guerra | 282 | 286 | Revisar arte |
-| `rato` | Rato | 282 | 286 | Revisar arte |
-| `rinoceronte` | Rinoceronte | 282 | 286 | Revisar arte |
-| `sapo` | Sapo | 282 | 286 | Revisar arte |
-| `texugo` | Texugo | 283 | 287 | Revisar arte |
-| `tigre` | Tigre | 283 | 287 | Revisar arte |
-| `urso-marrom` | Urso Marrom | 284 | 288 | Revisar arte |
-| `urso-negro` | Urso Negro | 284 | 288 | Revisar arte |
-| `urso-polar` | Urso Polar | 284 | 288 | Revisar arte |
-| `vaga-lume-gigante` | Vaga-lume Gigante | 290 | 294 | Revisar arte |
-| `vespa-gigante` | Vespa Gigante | 290 | 294 | Revisar arte |
+| `baleia-orca` | Baleia Orca | 270 | 274 | Sem arte individual identificada — PDF 273–288 |
+| `bisao` | Bisão | 270 | 274 | Sem arte individual identificada — PDF 273–288 |
+| `cachorro` | Cachorro | 271 | 275 | Sem arte individual identificada — PDF 273–288 |
+| `cachorro-de-montaria` | Cachorro de Montaria | 271 | 275 | Sem arte individual identificada — PDF 273–288 |
+| `camelo` | Camelo | 271 | 275 | Sem arte individual identificada — PDF 273–288 |
+| `carcaju` | Carcajú | 272 | 276 | Sem arte individual identificada — PDF 273–288 |
+| `cavalo-pesado` | Cavalo Pesado | 272 | 276 | Sem arte individual identificada — PDF 273–288 |
+| `cavalo-leve` | Cavalo Leve | 272 | 276 | Sem arte individual identificada — PDF 273–288 |
+| `cavalo-de-guerra-pesado` | Cavalo de Guerra Pesado | 272 | 276 | Sem arte individual identificada — PDF 273–288 |
+| `cobra-constritora` | Cobra Constritora | 273 | 277 | Sem arte individual identificada — PDF 273–288 |
+| `coruja` | Coruja | 274 | 278 | Sem arte individual identificada — PDF 273–288 |
+| `corvo` | Corvo | 275 | 279 | Sem arte individual identificada — PDF 273–288 |
+| `crocodilo` | Crocodilo | 275 | 279 | Sem arte individual identificada — PDF 273–288 |
+| `crocodilo-gigante` | Crocodilo Gigante | 275 | 279 | Sem arte individual identificada — PDF 273–288 |
+| `elefante` | Elefante | 275 | 279 | Sem arte individual identificada — PDF 273–288 |
+| `falcao` | Falcão | 276 | 280 | Sem arte individual identificada — PDF 273–288 |
+| `gato` | Gato | 276 | 280 | Sem arte individual identificada — PDF 273–288 |
+| `golfinho` | Golfinho | 276 | 280 | Sem arte individual identificada — PDF 273–288 |
+| `gorila` | Gorila | 276 | 280 | Sem arte individual identificada — PDF 273–288 |
+| `guepardo` | Guepardo | 277 | 281 | Sem arte individual identificada — PDF 273–288 |
+| `javali` | Javali | 277 | 281 | Sem arte individual identificada — PDF 273–288 |
+| `jumento` | Jumento | 277 | 281 | Sem arte individual identificada — PDF 273–288 |
+| `lagarto` | Lagarto | 278 | 282 | Sem arte individual identificada — PDF 273–288 |
+| `leao` | Leão | 278 | 282 | Sem arte individual identificada — PDF 273–288 |
+| `leopardo` | Leopardo | 278 | 282 | Sem arte individual identificada — PDF 273–288 |
+| `lobo` | Lobo | 279 | 283 | Sem arte individual identificada — PDF 273–288 |
+| `lula` | Lula | 279 | 283 | Sem arte individual identificada — PDF 273–288 |
+| `lula-gigante` | Lula Gigante | 279 | 283 | Sem arte individual identificada — PDF 273–288 |
+| `macaco` | Macaco | 280 | 284 | Sem arte individual identificada — PDF 273–288 |
+| `morcego` | Morcego | 280 | 284 | Sem arte individual identificada — PDF 273–288 |
+| `mula` | Mula | 280 | 284 | Sem arte individual identificada — PDF 273–288 |
+| `polvo` | Polvo | 280 | 284 | Sem arte individual identificada — PDF 273–288 |
+| `polvo-gigante` | Polvo Gigante | 281 | 285 | Sem arte individual identificada — PDF 273–288 |
+| `ponei` | Pônei | 281 | 285 | Sem arte individual identificada — PDF 273–288 |
+| `ponei-de-guerra` | Pônei de Guerra | 282 | 286 | Sem arte individual identificada — PDF 273–288 |
+| `rato` | Rato | 282 | 286 | Sem arte individual identificada — PDF 273–288 |
+| `rinoceronte` | Rinoceronte | 282 | 286 | Sem arte individual identificada — PDF 273–288 |
+| `sapo` | Sapo | 282 | 286 | Sem arte individual identificada — PDF 273–288 |
+| `texugo` | Texugo | 283 | 287 | Sem arte individual identificada — PDF 273–288 |
+| `tigre` | Tigre | 283 | 287 | Sem arte individual identificada — PDF 273–288 |
+| `urso-marrom` | Urso Marrom | 284 | 288 | Sem arte individual identificada — PDF 273–288 |
+| `urso-negro` | Urso Negro | 284 | 288 | Sem arte individual identificada — PDF 273–288 |
+| `urso-polar` | Urso Polar | 284 | 288 | Sem arte individual identificada — PDF 273–288 |
+| `vaga-lume-gigante` | Vaga-lume Gigante | 290 | 294 | Sem arte individual identificada — PDF 290–294 |
+| `vespa-gigante` | Vespa Gigante | 290 | 294 | Sem arte individual identificada — PDF 290–294 |
 
 ## Confirmação visual das artes — páginas iniciais
 
@@ -637,3 +637,26 @@ Foram confirmadas 23 associações novas, sempre pela legenda ou identificação
 - Nenhuma imagem de sombra, criatura planar ou variante foi reaproveitada para outra ficha.
 
 **Contagem após este lote:** 140 associações individuais/compartilhadas confirmadas, 1 referência genérica e 89 pendências (230 IDs no total).
+
+
+### Revisão visual — animais atrozes e capítulo de animais/insetos (2026-11-12)
+
+A inspeção foi feita por renderização das páginas completas do PDF, não apenas por busca textual ou contagem de imagens embutidas.
+
+- PDF 18–21 (páginas impressas 14–17): as fichas de Arminho Atroz, Carcajú Atroz, Gorila Atroz, Javali Atroz, Leão Atroz, Lobo Atroz, Morcego Atroz, Rato Atroz, Tigre Atroz e Tubarão Atroz foram verificadas. Não há ilustração individual identificável nessas páginas. A arte do Urso Atroz está na página PDF 22 e permanece exclusiva dessa criatura.
+- PDF 273–288 (páginas impressas 269–284): foram verificadas as páginas das fichas de animais comuns. O trecho apresenta blocos de estatísticas e tabelas, sem ilustrações individuais identificáveis para os 49 registros listados nessas páginas.
+- PDF 290–294 (páginas impressas 286–290): as páginas de insetos e tabelas foram verificadas. Não há ilustrações individuais identificáveis para Vaga-lume Gigante e Vespa Gigante.
+- As 61 linhas correspondentes foram alteradas de “Revisar arte” para “Sem arte individual identificada” com o intervalo exato de páginas. Isso não impede que futuramente seja adotada arte externa licenciada ou uma silhueta provisória; apenas evita manter como pendente uma busca por ilustração que não aparece no trecho do livro.
+- Nenhuma arte genérica foi atribuída a essas criaturas.
+
+**Contagem reconciliada após a revisão:**
+
+| Situação | Quantidade |
+|---|---:|
+| Arte individual ou compartilhada confirmada | 140 |
+| Referência visual genérica | 1 |
+| Sem arte individual identificada no Livro dos Monstros | 61 |
+| Revisar arte / casos ainda inconclusivos | 28 |
+| **Total de IDs do Livro dos Monstros** | **230** |
+
+Os 32 registros SRD continuam separados. Nenhum arquivo de imagem, recurso Android ou estatística de criatura foi alterado.
