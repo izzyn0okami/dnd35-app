@@ -19,9 +19,9 @@
     "shared": 31,
     "generic": 1,
     "unresolvedPageMappings": 0,
-    "cropRectanglesPending": 75,
+    "cropRectanglesPending": 69,
     "cropRectanglesReviewed": 3,
-    "manualIsolationRequired": 91
+    "manualIsolationRequired": 97
   },
   "coordinateConvention": "cropRectPdfPoints uses [x0,y0,x1,y1] in PDF points, origin at top-left of the rendered page; null until visually reviewed.",
   "records": [
@@ -1647,8 +1647,10 @@
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Figura individual identificada pela legenda na página PDF 205 (página impressa 201). Isolamento manual necessário para evitar texto ou elementos adjacentes."
     },
     {
       "creatureId": "mohrg",
@@ -1661,8 +1663,10 @@
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Figura individual identificada pela legenda na página PDF 207 (página impressa 203). Isolamento manual necessário para evitar texto ou elementos adjacentes."
     },
     {
       "creatureId": "monstro-da-ferrugem",
@@ -1675,8 +1679,10 @@
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Figura individual identificada pela legenda na página PDF 208 (página impressa 204). Isolamento manual necessário para evitar texto ou elementos adjacentes."
     },
     {
       "creatureId": "ogro-mago",
@@ -1689,8 +1695,10 @@
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Figura individual identificada pela legenda na página PDF 216 (página impressa 212). Isolamento manual necessário para evitar texto ou elementos adjacentes."
     },
     {
       "creatureId": "passaro-roca",
@@ -1703,8 +1711,10 @@
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Figura individual identificada pela legenda na página PDF 219 (página impressa 215). Isolamento manual necessário para evitar texto ou elementos adjacentes."
     },
     {
       "creatureId": "pegaso",
@@ -1717,8 +1727,10 @@
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Figura individual identificada pela legenda na página PDF 220 (página impressa 216). Isolamento manual necessário para evitar texto ou elementos adjacentes."
     },
     {
       "creatureId": "pseudodragao",
