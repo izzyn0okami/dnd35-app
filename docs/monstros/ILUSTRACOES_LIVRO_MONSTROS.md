@@ -1089,3 +1089,17 @@ As páginas originais de cinco novos recursos do OpenGameArt foram abertas e seu
 | Demônio genérico | [Demon/Devil — Nerveona](https://opengameart.org/content/demondevil) | CC0 | Sprite direcional genérico. Não associar a demônios específicos do catálogo sem correspondência visual e conceitual comprovada. |
 
 **Conclusão desta rodada:** Beholder, Lich e Dríade têm candidatos específicos com licença declarada CC BY/CC0, mas ainda não aprovados visualmente. Goblin e Troll têm opções CC0 em pixel art que podem servir apenas como placeholders se o usuário aceitar estilos mistos. Os pacotes ShareAlike foram preservados como pesquisa, não selecionados. Nenhum arquivo de imagem foi baixado, convertido ou incluído no app.
+
+
+## Terceira rodada — criaturas específicas adicionais (2026-11-12)
+
+Foram conferidas as páginas originais de quatro recursos que correspondem nominalmente a entradas existentes no catálogo. A associação foi registrada como candidata, não como asset aprovado:
+
+| Criatura do catálogo | Recurso | Licença | Limite atual |
+|---|---|---|---|
+| Medusa | [Medusa the Gorgon — Lucas-C](https://opengameart.org/content/medusa-the-gorgon) | CC BY 4.0 | A página identifica Medusa/Górgona e oferece duas imagens PNG; pixel art DawnBringer 16. Revisão visual e atribuição pendentes. |
+| Wyvern | [Wyvern — Benalene](https://opengameart.org/content/wyvern) | CC BY 3.0 | Dois PNGs de 840,8 KB e 664,8 KB; a descrição confirma uma wyvern em mergulho. Revisar imagem e crédito. |
+| Aranea | [Arachne — AntumDeluge e colaboradores](https://opengameart.org/content/arachne) | CC BY 3.0 / OGA-BY 3.0 | Sprite 48×64 de híbrida mulher/aranha. É uma interpretação temática aproximada, não confirmação de equivalência canônica entre Arachne e Aranea. Exige crédito de Stephen Challener, William.ThompsonJ, Svetlana Kushnariova e Jordan Irwin, conforme a página. |
+| Mímico | [Chest and Mimic — IndigoFenix / Redshrike](https://opengameart.org/content/chest-and-mimic) | CC BY 3.0 / OGA-BY 3.0 | Sprite 16×16 de baú mimético. Correspondência explícita, mas resolução muito baixa para arte principal; candidato apenas a placeholder. Crédito indicado para Stephen Challener (Redshrike). |
+
+Os quatro registros foram acrescentados a CANDIDATOS_ARTE_LIVRE.json, com os IDs do catálogo apenas quando a identidade está descrita pela fonte; Aranea permanece marcada como correspondência temática. Nenhuma imagem foi baixada ou integrada.
