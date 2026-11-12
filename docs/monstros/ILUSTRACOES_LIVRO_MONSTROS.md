@@ -2,7 +2,7 @@
 
 **Estado:** levantamento inicial em andamento  
 **Fonte primária:** PDF brasileiro do Livro dos Monstros 3.5 fornecido para o projeto  
-**Catálogo associado:** `app/src/main/resources/dnd35/creatures.json` (262 registros na branch principal consultada; este índice ainda contém 230 IDs e precisa ser ampliado)
+**Catálogo associado:** `app/src/main/resources/dnd35/creatures.json` (262 registros: 230 entradas do Livro dos Monstros e 32 complementares do SRD 3.5; IDs preservados)
 
 ## Método e convenções
 
@@ -442,6 +442,45 @@ Esta tabela separa a **página da ficha** da **página onde a ilustração apare
 - PDF 270–272 (páginas impressas 266–268): contém regras e exemplos de zumbis. A ilustração de zumbi na página PDF 272 é genérica e não corresponde a um ID do catálogo atual.
 - PDF 273–294 (páginas impressas 269–290): páginas de fichas de animais e insetos verificadas nesta passagem; não foram identificadas ilustrações individuais correspondentes aos animais/insetos catalogados nesse trecho. Não reutilizar a arte de outra criatura como substituta.
 
+## Registros complementares fora do Livro dos Monstros
+
+Os 32 registros abaixo aparecem na branch principal do catálogo com origem declarada como **SRD 3.5 (OGL), traduzido**. Não fazem parte dos 230 IDs deste índice do PDF brasileiro. Portanto, não atribuir páginas nem ilustrações do Livro dos Monstros a eles sem comprovação de correspondência.
+
+| ID | Nome | Procedência registrada | Situação visual |
+|---|---|---|---|
+| `hiena` | Hiena | SRD 3.5 (OGL), traduzido | Buscar fonte visual compatível |
+| `lagarto-monitor` | Lagarto-Monitor | SRD 3.5 (OGL), traduzido | Buscar fonte visual compatível |
+| `cavalo-de-guerra-leve` | Cavalo de Guerra Leve | SRD 3.5 (OGL), traduzido | Buscar fonte visual compatível |
+| `tubarao-medio` | Tubarão Médio | SRD 3.5 (OGL), traduzido | Buscar fonte visual compatível |
+| `tubarao-grande` | Tubarão Grande | SRD 3.5 (OGL), traduzido | Buscar fonte visual compatível |
+| `tubarao-enorme` | Tubarão Enorme | SRD 3.5 (OGL), traduzido | Buscar fonte visual compatível |
+| `vibora-miuda` | Víbora Miúda | SRD 3.5 (OGL), traduzido | Usar arte de família apenas se identificada como genérica |
+| `vibora-pequena` | Víbora Pequena | SRD 3.5 (OGL), traduzido | Usar arte de família apenas se identificada como genérica |
+| `vibora-media` | Víbora Média | SRD 3.5 (OGL), traduzido | Usar arte de família apenas se identificada como genérica |
+| `vibora-grande` | Víbora Grande | SRD 3.5 (OGL), traduzido | Usar arte de família apenas se identificada como genérica |
+| `vibora-enorme` | Víbora Enorme | SRD 3.5 (OGL), traduzido | Usar arte de família apenas se identificada como genérica |
+| `escorpiao-miudo` | Escorpião Miúdo | SRD 3.5 (OGL), traduzido | Usar arte de família apenas se identificada como genérica |
+| `escorpiao-pequeno` | Escorpião Pequeno | SRD 3.5 (OGL), traduzido | Usar arte de família apenas se identificada como genérica |
+| `escorpiao-medio` | Escorpião Médio | SRD 3.5 (OGL), traduzido | Usar arte de família apenas se identificada como genérica |
+| `escorpiao-grande` | Escorpião Grande | SRD 3.5 (OGL), traduzido | Usar arte de família apenas se identificada como genérica |
+| `escorpiao-enorme` | Escorpião Enorme | SRD 3.5 (OGL), traduzido | Usar arte de família apenas se identificada como genérica |
+| `escorpiao-imenso` | Escorpião Imenso | SRD 3.5 (OGL), traduzido | Usar arte de família apenas se identificada como genérica |
+| `escorpiao-colossal` | Escorpião Colossal | SRD 3.5 (OGL), traduzido | Usar arte de família apenas se identificada como genérica |
+| `aranha-miuda` | Aranha Miúda | SRD 3.5 (OGL), traduzido | Usar arte de família apenas se identificada como genérica |
+| `aranha-pequena` | Aranha Pequena | SRD 3.5 (OGL), traduzido | Usar arte de família apenas se identificada como genérica |
+| `aranha-media` | Aranha Média | SRD 3.5 (OGL), traduzido | Usar arte de família apenas se identificada como genérica |
+| `aranha-grande` | Aranha Grande | SRD 3.5 (OGL), traduzido | Usar arte de família apenas se identificada como genérica |
+| `aranha-enorme` | Aranha Enorme | SRD 3.5 (OGL), traduzido | Usar arte de família apenas se identificada como genérica |
+| `aranha-imensa` | Aranha Imensa | SRD 3.5 (OGL), traduzido | Usar arte de família apenas se identificada como genérica |
+| `aranha-colossal` | Aranha Colossal | SRD 3.5 (OGL), traduzido | Usar arte de família apenas se identificada como genérica |
+| `centopeia-miuda` | Centopeia Miúda | SRD 3.5 (OGL), traduzido | Usar arte de família apenas se identificada como genérica |
+| `centopeia-pequena` | Centopeia Pequena | SRD 3.5 (OGL), traduzido | Usar arte de família apenas se identificada como genérica |
+| `centopeia-media` | Centopeia Média | SRD 3.5 (OGL), traduzido | Usar arte de família apenas se identificada como genérica |
+| `centopeia-grande` | Centopeia Grande | SRD 3.5 (OGL), traduzido | Usar arte de família apenas se identificada como genérica |
+| `centopeia-enorme` | Centopeia Enorme | SRD 3.5 (OGL), traduzido | Usar arte de família apenas se identificada como genérica |
+| `centopeia-imensa` | Centopeia Imensa | SRD 3.5 (OGL), traduzido | Usar arte de família apenas se identificada como genérica |
+| `centopeia-colossal` | Centopeia Colossal | SRD 3.5 (OGL), traduzido | Usar arte de família apenas se identificada como genérica |
+
 ## Decisões técnicas registradas
 
 1. O catálogo de criaturas permanece como fonte de dados de jogo. O vínculo visual será feito por `CreatureDefinition.id`, sem alterar os nomes, IDs ou estatísticas.
@@ -458,7 +497,7 @@ Esta tabela separa a **página da ficha** da **página onde a ilustração apare
 - Verificado que a contagem bruta de objetos de imagem do PDF não equivale à quantidade de ilustrações: várias imagens estão divididas em blocos. Para os recortes, usar renderização da página, não assumir que cada objeto interno seja uma figura.
 - Conferidos os títulos dos blocos de demônios nas páginas PDF 54–62; as páginas da Marilith, Nalfeshnee, Quasit e Vrock foram corrigidas para 59, 60, 61 e 62, respectivamente. Isso evita usar simples menções no texto como se fossem a página da ficha.
 - As faixas intermediárias foram localizadas em sequência até a página impressa 270; as cinco últimas entradas de animais insetoides estão no capítulo 3, página impressa 290. Algumas páginas contêm várias criaturas, portanto a página comum não implica que todas tenham uma ilustração individual.
-- O índice cobre os 230 IDs da versão anterior do catálogo. A branch principal consultada já contém 262 registros; portanto, 32 IDs adicionais ainda precisam ser incorporados ao índice e suas páginas de ficha verificadas. A cobertura visual também permanece incompleta.
+- O índice cobre os 230 IDs da versão anterior do catálogo. A branch principal contém 262 registros: os 230 primeiros correspondem ao conjunto indexado do Livro dos Monstros, enquanto os 32 adicionais estão marcados no JSON como `SRD 3.5 (OGL), traduzido`. Esses complementos não devem ser forçados a uma correspondência com o PDF brasileiro; precisam de fonte visual própria ou silhueta provisória.
 - Próxima etapa: incorporar os 32 IDs adicionais encontrados na branch principal, completar a conferência das páginas restantes e só depois preparar o manifesto de recursos locais.
 
 ## Log de continuidade — 2026-11-12
@@ -469,3 +508,5 @@ Esta tabela separa a **página da ficha** da **página onde a ilustração apare
 - Conferidas as páginas PDF 261 e 264–294. A imagem de Xill e a imagem genérica de zumbi não foram associadas a criaturas diferentes; nas páginas de animais e insetos deste intervalo não foram identificadas artes individuais correspondentes aos registros analisados.
 - Detectada divergência importante: a branch principal de `creatures.json` contém 262 registros, mas este índice foi criado quando havia 230. Os 32 registros adicionais ainda precisam ser inseridos e verificados antes de declarar a cobertura completa.
 - Nenhum arquivo de imagem foi extraído nem adicionado ao APK nesta etapa.
+
+- Revisada a divergência do catálogo: os 32 registros posteriores aos 230 IDs do Livro dos Monstros têm fonte declarada como SRD 3.5 (OGL), traduzido. Eles foram separados neste documento e não serão associados artificialmente a páginas do PDF brasileiro.
