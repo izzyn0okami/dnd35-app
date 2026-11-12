@@ -1,0 +1,195 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Inventário de páginas de recursos artísticos pesquisados; não é manifesto de assets incorporados.",
+  "repositoryPolicy": "Nenhum arquivo pode ser integrado sem inspeção do original, confirmação da licença e registro de atribuição. Pinterest não constitui licença.",
+  "reviewedAt": "2026-11-12",
+  "candidates": [
+    {
+      "id": "oga-one-eye-armored-monster",
+      "title": "One Eye Armored Monster",
+      "creator": "Xacur",
+      "sourceUrl": "https://opengameart.org/content/one-eye-armored-monster",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "possibleCreatureIds": [
+        "beholder"
+      ],
+      "assetDescription": "Três PNGs: colorido, preto e branco, line art; aproximadamente 10 MB cada.",
+      "matchStatus": "candidate-specific-tag",
+      "visualReview": "pending",
+      "downloadStatus": "not-downloaded",
+      "integrationStatus": "not-approved",
+      "notes": "A página marca a tag beholder; confirmar aparência e atribuição antes de usar."
+    },
+    {
+      "id": "oga-observers",
+      "title": "Observers",
+      "creator": "AntumDeluge",
+      "sourceUrl": "https://opengameart.org/content/observers",
+      "license": [
+        "CC-BY-4.0",
+        "CC-BY-3.0",
+        "OGA-BY-3.0"
+      ],
+      "possibleCreatureIds": [
+        "beholder"
+      ],
+      "assetDescription": "Sprites de 19x19, 24x32 e 48x64; descrição cita Young Beholder, Beholder e Elder Beholder.",
+      "matchStatus": "candidate-specific-description",
+      "visualReview": "pending",
+      "downloadStatus": "not-downloaded",
+      "integrationStatus": "not-approved",
+      "notes": "Baixa resolução; avaliar somente como placeholder pixel art."
+    },
+    {
+      "id": "oga-lich-death-knight-fallen-warrior",
+      "title": "Lich, death knight and fallen warrior",
+      "creator": "Jastiv; copyright notice: Lori Angela Nagel 2018",
+      "sourceUrl": "https://opengameart.org/content/lich-death-knight-and-fallen-warrior",
+      "license": [
+        "CC-BY-4.0",
+        "CC-BY-3.0"
+      ],
+      "possibleCreatureIds": [
+        "lich"
+      ],
+      "assetDescription": "Pacote ZIP com sprites de mortos-vivos esqueléticos.",
+      "matchStatus": "candidate-thematic",
+      "visualReview": "pending",
+      "downloadStatus": "not-downloaded",
+      "integrationStatus": "not-approved",
+      "notes": "Conferir atribuição, arquivo e qualidade. A página lista Jastiv como autor e Lori Angela Nagel no aviso de copyright."
+    },
+    {
+      "id": "oga-swamp-dryad",
+      "title": "Swamp Dryad",
+      "creator": "5hiroi",
+      "sourceUrl": "https://opengameart.org/content/swamp-dryad",
+      "license": [
+        "CC0"
+      ],
+      "possibleCreatureIds": [],
+      "assetDescription": "JPEG de 42,9 KB.",
+      "matchStatus": "candidate-specific-description",
+      "visualReview": "pending",
+      "downloadStatus": "not-downloaded",
+      "integrationStatus": "not-approved",
+      "notes": "A página identifica dryad; mapear ao ID da Dríade após confirmar que o catálogo contém essa criatura e inspecionar a imagem."
+    },
+    {
+      "id": "oga-goblin-monster",
+      "title": "Goblin monster",
+      "creator": "ImogiaGames",
+      "sourceUrl": "https://opengameart.org/content/goblin-monster",
+      "license": [
+        "CC0"
+      ],
+      "possibleCreatureIds": [],
+      "assetDescription": "Spritesheet 32x32 com variações de cor e animação.",
+      "matchStatus": "candidate-specific-description",
+      "visualReview": "pending",
+      "downloadStatus": "not-downloaded",
+      "integrationStatus": "not-approved",
+      "notes": "Somente placeholder pixel art; não atribuir a Bugbear ou Orc."
+    },
+    {
+      "id": "oga-trolls",
+      "title": "Trolls",
+      "creator": "Blarumyrran",
+      "sourceUrl": "https://opengameart.org/content/trolls",
+      "license": [
+        "CC0"
+      ],
+      "possibleCreatureIds": [],
+      "assetDescription": "Quatro sprites pixel/Wesnoth.",
+      "matchStatus": "candidate-specific-description",
+      "visualReview": "pending",
+      "downloadStatus": "not-downloaded",
+      "integrationStatus": "not-approved",
+      "notes": "Não foi localizado ID Troll entre os 230 registros do índice atual."
+    },
+    {
+      "id": "oga-2d-dragon-spritesheet",
+      "title": "2D Dragon Spritesheet",
+      "creator": "Daniel Quevedo",
+      "sourceUrl": "https://opengameart.org/content/2d-dragon-spritesheet",
+      "license": [
+        "CC0"
+      ],
+      "possibleCreatureIds": [],
+      "assetDescription": "PNG de 170 KB e PSD.",
+      "matchStatus": "generic-category-only",
+      "visualReview": "pending",
+      "downloadStatus": "not-downloaded",
+      "integrationStatus": "not-approved",
+      "notes": "Dragão genérico; não atribuir ao Pseudodragão ou Tartaruga-dragão."
+    },
+    {
+      "id": "oga-the-free-monsters",
+      "title": "The Free Monsters",
+      "creator": "Justin Nichol",
+      "sourceUrl": "https://opengameart.org/content/the-free-monsters",
+      "license": [
+        "CC-BY-SA-3.0",
+        "GPL-3.0",
+        "GPL-2.0"
+      ],
+      "possibleCreatureIds": [],
+      "assetDescription": "Pacote ZIP 148,1 MB; Naga, Ratman, Treefolk, Troll, Divine Guardian, Lichlord, Violence Demon, Goblin, Orc, Harpy e Dragon.",
+      "matchStatus": "multi-creature-pack-uninspected",
+      "visualReview": "pending",
+      "downloadStatus": "not-downloaded",
+      "integrationStatus": "excluded-pending-license-review",
+      "notes": "ShareAlike/GPL; não incluir no lote padrão sem análise de compatibilidade e inspeção de cada arquivo."
+    },
+    {
+      "id": "oga-tiny-creatures",
+      "title": "Tiny Creatures",
+      "creator": "Clint Bellanger; collaborator Kenney",
+      "sourceUrl": "https://opengameart.org/content/tiny-creatures",
+      "license": [
+        "CC0"
+      ],
+      "possibleCreatureIds": [],
+      "assetDescription": "180 sprites 16x16; mais de 100 monstros e 50 animais.",
+      "matchStatus": "generic-multi-creature-pack-uninspected",
+      "visualReview": "pending",
+      "downloadStatus": "not-downloaded",
+      "integrationStatus": "placeholder-only-candidate",
+      "notes": "Pixel art muito pequena para retratos principais."
+    },
+    {
+      "id": "oga-monster-builder-pack",
+      "title": "Monster Builder Pack",
+      "creator": "Kenney",
+      "sourceUrl": "https://opengameart.org/content/monster-builder-pack",
+      "license": [
+        "CC0"
+      ],
+      "possibleCreatureIds": [],
+      "assetDescription": "178 tiles PNG modulares, spritesheets e fontes vetoriais.",
+      "matchStatus": "modular-placeholder-resource",
+      "visualReview": "pending",
+      "downloadStatus": "not-downloaded",
+      "integrationStatus": "placeholder-only-candidate",
+      "notes": "Requer composição; não é retrato pronto."
+    },
+    {
+      "id": "oga-demon-devil",
+      "title": "Demon/Devil",
+      "creator": "Nerveona",
+      "sourceUrl": "https://opengameart.org/content/demondevil",
+      "license": [
+        "CC0"
+      ],
+      "possibleCreatureIds": [],
+      "assetDescription": "Sprite direcional genérico.",
+      "matchStatus": "generic-category-only",
+      "visualReview": "pending",
+      "downloadStatus": "not-downloaded",
+      "integrationStatus": "not-approved",
+      "notes": "Não associar a demônio específico do catálogo sem revisão."
+    }
+  ]
+}
