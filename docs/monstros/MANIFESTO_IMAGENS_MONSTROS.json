@@ -19,9 +19,9 @@
     "shared": 31,
     "generic": 1,
     "unresolvedPageMappings": 0,
-    "cropRectanglesPending": 99,
+    "cropRectanglesPending": 85,
     "cropRectanglesReviewed": 3,
-    "manualIsolationRequired": 67
+    "manualIsolationRequired": 81
   },
   "coordinateConvention": "cropRectPdfPoints uses [x0,y0,x1,y1] in PDF points, origin at top-left of the rendered page; null until visually reviewed.",
   "records": [
@@ -1259,12 +1259,14 @@
       "artworkPagePrinted": 150,
       "associationType": "individual",
       "sourceCaption": null,
-      "sourceNote": "Confirmada — ilustração na página PDF 154",
+      "sourceNote": "Confirmada — composição legendada com Golem de Ferro e Golem de Carne na página PDF 154 (página impressa 150). Não atribuir essa arte ao Golem de Barro.",
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "A composição mostra Golem de Ferro e Golem de Carne com legendas próprias; a associação deste registro é somente com Golem de Ferro. Não confundir com Golem de Barro, cuja ausência de arte individual já foi auditada."
     },
     {
       "creatureId": "grick",
@@ -1277,8 +1279,10 @@
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Figura identificada pela legenda na página PDF 157 (página impressa 153). Isolamento manual necessário para evitar texto ou elementos adjacentes."
     },
     {
       "creatureId": "grifo",
@@ -1291,8 +1295,10 @@
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Figura identificada pela legenda na página PDF 158 (página impressa 154). Isolamento manual necessário para evitar texto ou elementos adjacentes."
     },
     {
       "creatureId": "grimlock",
@@ -1305,8 +1311,10 @@
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Figura identificada pela legenda na página PDF 158 (página impressa 154). Isolamento manual necessário para evitar texto ou elementos adjacentes."
     },
     {
       "creatureId": "avoral",
@@ -1319,8 +1327,10 @@
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Composição com outras criaturas, identificada por legendas na página PDF 160 (página impressa 156). Manter apenas as associações sustentadas pelas legendas; isolamento manual necessário."
     },
     {
       "creatureId": "hipogrifo",
@@ -1333,8 +1343,10 @@
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Figura identificada pela legenda na página PDF 167 (página impressa 163). Isolamento manual necessário para evitar texto ou elementos adjacentes."
     },
     {
       "creatureId": "homunculo",
@@ -1347,8 +1359,10 @@
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Figura identificada pela legenda na página PDF 167 (página impressa 163). Isolamento manual necessário para evitar texto ou elementos adjacentes."
     },
     {
       "creatureId": "marut",
@@ -1361,8 +1375,10 @@
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Composição com outras criaturas, identificada por legendas na página PDF 168 (página impressa 164). Manter apenas as associações sustentadas pelas legendas; isolamento manual necessário."
     },
     {
       "creatureId": "kolyarut",
@@ -1375,8 +1391,10 @@
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Composição com outras criaturas, identificada por legendas na página PDF 168 (página impressa 164). Manter apenas as associações sustentadas pelas legendas; isolamento manual necessário."
     },
     {
       "creatureId": "zelekhut",
@@ -1389,8 +1407,10 @@
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Composição com outras criaturas, identificada por legendas na página PDF 168 (página impressa 164). Manter apenas as associações sustentadas pelas legendas; isolamento manual necessário."
     },
     {
       "creatureId": "inumano",
@@ -1403,8 +1423,10 @@
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Figura identificada pela legenda na página PDF 170 (página impressa 166). Isolamento manual necessário para evitar texto ou elementos adjacentes."
     },
     {
       "creatureId": "kobold-combatente-de-1-nivel",
@@ -1417,8 +1439,10 @@
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Figura identificada pela legenda na página PDF 171 (página impressa 167). Isolamento manual necessário para evitar texto ou elementos adjacentes."
     },
     {
       "creatureId": "kraken",
@@ -1431,8 +1455,10 @@
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Figura identificada pela legenda na página PDF 172 (página impressa 168). Isolamento manual necessário para evitar texto ou elementos adjacentes."
     },
     {
       "creatureId": "lagarto-eletrico",
@@ -1445,8 +1471,10 @@
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Figura identificada pela legenda na página PDF 174 (página impressa 170). Isolamento manual necessário para evitar texto ou elementos adjacentes."
     },
     {
       "creatureId": "lammasu",
