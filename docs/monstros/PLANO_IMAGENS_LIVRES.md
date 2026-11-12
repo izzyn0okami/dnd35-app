@@ -126,3 +126,24 @@ Foi autorizada a utilização do Pinterest como base de descoberta visual provis
 **Convenção de nomes:** `app/src/main/assets/monsters/<creatureId>.webp`. O índice reserva esse caminho por criatura, mas não declara que o arquivo já existe. Os campos `assetStatus`, `licenseStatus` e `reviewStatus` deixam explícito o estado pendente.
 
 **Escopo:** 230 criaturas cuja origem é Livro dos Monstros 3.5; as entradas complementares do SRD permanecem fora deste lote, conforme o escopo aprovado. Nenhuma imagem foi baixada ou incorporada nesta atualização.
+
+
+## Segunda rodada de pesquisa de candidatos (2026-11-12)
+
+As páginas originais de cinco novos recursos do OpenGameArt foram abertas e seus autores, licenças declaradas e descrições foram conferidos. O resultado foi separado entre candidatos com identidade de criatura e pacotes genéricos; nenhum arquivo foi baixado ou inspecionado em resolução integral nesta rodada.
+
+| Alvo/uso possível | Recurso | Licença declarada | Avaliação e limite |
+|---|---|---|---|
+| Beholder | [One Eye Armored Monster — Xacur](https://opengameart.org/content/one-eye-armored-monster) | CC BY 4.0 | A página traz a tag beholder e três versões PNG (colorida, P&B e line art; cerca de 10 MB cada). Melhor candidato de ilustração conceitual para o Beholder, ainda pendente de inspeção visual e atribuição. |
+| Beholder | [Observers — AntumDeluge](https://opengameart.org/content/observers) | CC BY 4.0 / CC BY 3.0 / OGA-BY 3.0 | A descrição cita Young Beholder, Beholder e Elder Beholder, mas são sprites minúsculos (19×19, 24×32 e 48×64). Candidato secundário para placeholder, não para retrato principal. |
+| Lich | [Lich, Death Knight and Fallen Warrior — Jastiv](https://opengameart.org/content/lich-death-knight-and-fallen-warrior) | CC BY 4.0 / CC BY 3.0 | A página descreve mortos-vivos esqueléticos e informa copyright Lori Angela Nagel 2018. São sprites; qualidade para carta vertical não confirmada. Exigir atribuição correta e conferir arquivo/termos antes de usar. |
+| Dríade | [Swamp Dryad — 5hiroi](https://opengameart.org/content/swamp-dryad) | CC0 | Página identifica explicitamente dryad e disponibiliza JPEG de 42,9 KB. Candidata temática direta; resolução/qualidade visual ainda precisam ser inspecionadas. |
+| Goblin (referência genérica) | [Goblin monster — ImogiaGames](https://opengameart.org/content/goblin-monster) | CC0 | Spritesheet 32×32, oito variações de cor. Correspondência nominal forte, mas dimensão insuficiente para retrato principal; possível placeholder pixel art. Não associar a bugbear ou orc. |
+| Troll (referência genérica) | [Trolls — Blarumyrran](https://opengameart.org/content/trolls) | CC0 | Quatro sprites de troll, com estilo pixel/Wesnoth. Apenas placeholder; não há criatura Troll entre as entradas localizadas no índice atual de 230 IDs. |
+| Dragão (genérico) | [2D Dragon Spritesheet — Daniel Quevedo](https://opengameart.org/content/2d-dragon-spritesheet) | CC0 | PNG de 170 KB e PSD; é um dragão genérico em spritesheet. Não atribuir a Pseudodragão ou Tartaruga-dragão, pois a identidade não corresponde. |
+| Criaturas genéricas | [The Free Monsters — Justin Nichol](https://opengameart.org/content/the-free-monsters) | CC BY-SA 3.0 / GPL 3.0 / GPL 2.0 | Pacote de 148,1 MB com Naga, Ratman, Treefolk, Troll, Divine Guardian, Lichlord, Violence Demon, Goblin, Orc, Harpy e Dragon. A licença ShareAlike/GPL exige análise própria; mantido fora do lote padrão. |
+| Criaturas genéricas | [Tiny Creatures — Clint Bellanger e Kenney](https://opengameart.org/content/tiny-creatures) | CC0 | 180 sprites de 16×16, mais de 100 monstros e 50 animais. Cobertura ampla, mas pixel art muito pequena para as cartas ilustradas principais. |
+| Montagem de placeholders | [Monster Builder Pack — Kenney](https://opengameart.org/content/monster-builder-pack) | CC0 | 178 peças PNG modulares e fontes vetoriais. Pode gerar placeholders originais, mas não representa retratos prontos de criaturas específicas. |
+| Demônio genérico | [Demon/Devil — Nerveona](https://opengameart.org/content/demondevil) | CC0 | Sprite direcional genérico. Não associar a demônios específicos do catálogo sem correspondência visual e conceitual comprovada. |
+
+**Conclusão desta rodada:** Beholder, Lich e Dríade têm candidatos específicos com licença declarada CC BY/CC0, mas ainda não aprovados visualmente. Goblin e Troll têm opções CC0 em pixel art que podem servir apenas como placeholders se o usuário aceitar estilos mistos. Os pacotes ShareAlike foram preservados como pesquisa, não selecionados. Nenhum arquivo de imagem foi baixado, convertido ou incluído no app.
