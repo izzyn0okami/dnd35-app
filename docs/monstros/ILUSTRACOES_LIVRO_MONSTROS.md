@@ -843,3 +843,20 @@ A revisão das páginas completas e das legendas confirmou as associações abai
 As cinco associações foram marcadas para isolamento manual, pois os recortes retangulares precisam preservar a figura integral e evitar texto ou elementos adjacentes. Nenhuma imagem foi extraída.
 
 **Contagem do manifesto:** 138 registros (103 individuais, 34 compartilhados e 1 genérico), equivalentes a 137 associações individuais/compartilhadas confirmadas e 1 referência genérica. No conjunto de 230 IDs, 92 não possuem arte individual identificada e nenhum permanece inconclusivo. O manifesto agora registra 3 recortes visualmente revisados, 117 pendentes e 49 vínculos que exigem isolamento manual.
+
+
+### Revisão visual complementar — páginas PDF 104–125 (2026-11-12)
+
+A inspeção das páginas completas confirmou as seguintes artes por legenda:
+
+- **PDF 104–113:** tabelas de elementais e outras seções de referência, além de artes de criaturas que não correspondem a novos IDs do catálogo atual. Não associar imagens de elementais ou de elfos a criaturas diferentes por proximidade.
+- **Ente (PDF 114 / impressa 110):** ilustração individual legendada “Ente”. A figura aparece na mesma página em que começa a seção de Enxames; não atribuir a arte ao Enxame.
+- **Escavador (PDF 117 / impressa 113):** figura individual confirmada pela legenda.
+- **Gino–esfinge (PDF 119 / impressa 115):** figura individual confirmada. Andro–esfinge e Crio–esfinge permanecem sem arte individual identificada; não reutilizar a figura da Gino–esfinge.
+- **Espectro (PDF 120 / impressa 116):** figura individual confirmada pela legenda. A ilustração distinta de Esqueleto na mesma página não deve ser associada ao Espectro.
+- **Ettercap (PDF 124 / impressa 120):** figura individual confirmada. A figura de Estrangulador na parte superior da página não pertence ao Ettercap e não cria associação adicional.
+- **Ettin (PDF 125 / impressa 121):** figura individual confirmada pela legenda.
+
+As seis associações foram marcadas para isolamento manual. Nenhum recorte foi exportado.
+
+**Contagem atual do manifesto:** 138 registros (103 individuais, 34 compartilhados e 1 genérico), equivalentes a 137 associações individuais/compartilhadas confirmadas e 1 referência genérica. No universo de 230 IDs, 92 não possuem arte individual identificada e nenhum permanece inconclusivo. O manifesto registra 3 recortes visualmente revisados, 111 pendentes e 55 vínculos marcados para isolamento manual.
