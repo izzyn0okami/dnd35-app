@@ -590,3 +590,13 @@ A contagem foi refeita exclusivamente na tabela principal das Faixas 1 a 7, sem 
 - PDF 189–193: Magmin, Manticora, Manto Negro e Mastim das Sombras aparecem com legendas próprias e foram conferidos. As correspondências já registradas permanecem válidas; Meio–abissal não é um ID individual do catálogo.
 - PDF 194–200: páginas de referência e modelos; não foi identificada nova arte para os IDs pendentes neste intervalo.
 - Nenhuma nova associação foi adicionada neste lote. Permanecem 117 associações individuais/compartilhadas confirmadas, 1 referência genérica e 112 pendências.
+
+
+### Revisão de pendências — quarto lote (páginas PDF 201–230)
+
+- PDF 201–205: seção de mephits. A ilustração da página PDF 202 é uma referência coletiva da família; não há identificação inequívoca de cada uma das nove variantes. Mantém-se a nota genérica existente, sem marcar IDs individuais como confirmados.
+- PDF 205–208: Mímico, Minotauro e Monstro da Ferrugem aparecem nas páginas do intervalo; Mímico e Monstro da Ferrugem já possuem arte confirmada. Minotauro não é um ID do conjunto indexado.
+- PDF 209–214: figuras de Naga, Ninfa e criaturas relacionadas não correspondem a IDs individuais pendentes do catálogo de 230 entradas.
+- PDF 215–220: Ogro Mago, Orc, Otyugh, Pantera Deslocadora e Pássaro Roca foram conferidos; apenas Ogro Mago e Pássaro Roca são IDs deste catálogo e suas associações já estavam confirmadas.
+- PDF 221–230: imagens de Pesadelo, povo-lagarto, povo do mar, Pseudodragão, Ravid e Sahuagin. As correspondências com IDs existentes já estavam registradas; as demais figuras não devem ser associadas por proximidade.
+- Nenhuma nova associação foi confirmada neste lote. Permanecem 117 associações individuais/compartilhadas confirmadas, 1 referência genérica e 112 pendências.
