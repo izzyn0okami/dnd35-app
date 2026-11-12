@@ -105,12 +105,12 @@
 | `bralani` | Bralani | 99 | 103 | **Confirmada** — arte compartilhada com Ghaele na página PDF 103 |
 | `ghaele` | Ghaele | 100 | 104 | **Confirmada** — arte compartilhada com Bralani na página PDF 103 |
 | `ente` | Ente | 110 | 114 | **Confirmada** — ilustração na página PDF 114 |
-| `enxame-de-centopeias` | Enxame de Centopeias | 111 | 115 | Revisar arte |
-| `enxame-de-gafanhotos` | Enxame de Gafanhotos | 111 | 115 | Revisar arte |
-| `enxame-de-morcegos` | Enxame de Morcegos | 112 | 116 | Revisar arte |
+| `enxame-de-centopeias` | Enxame de Centopeias | 111 | 115 | Sem arte individual identificada nas páginas da ficha e adjacentes |
+| `enxame-de-gafanhotos` | Enxame de Gafanhotos | 111 | 115 | Sem arte individual identificada nas páginas da ficha e adjacentes |
+| `enxame-de-morcegos` | Enxame de Morcegos | 112 | 116 | Sem arte individual identificada nas páginas da ficha e adjacentes |
 | `escavador` | Escavador | 113 | 117 | **Confirmada** — ilustração na página PDF 117 |
-| `androesfinge` | Andro–esfinge | 114 | 118 | Revisar arte |
-| `crioesfinge` | Crio–esfinge | 115 | 119 | Revisar arte |
+| `androesfinge` | Andro–esfinge | 114 | 118 | Sem arte individual identificada nas páginas da ficha e adjacentes |
+| `crioesfinge` | Crio–esfinge | 115 | 119 | Sem arte individual identificada nas páginas da ficha e adjacentes |
 | `ginoesfinge` | Gino–esfinge | 115 | 119 | **Confirmada** — ilustração na página PDF 119 |
 | `espectro` | Espectro | 116 | 120 | **Confirmada** — ilustração na página PDF 120 |
 | `ettercap` | Ettercap | 120 | 124 | **Confirmada** — ilustração na página PDF 124 |
@@ -118,7 +118,7 @@
 | `grig` | Grig | 122 | 126 | **Confirmada** — figura compartilhada na página PDF 126 |
 | `nixie` | Nixie | 122 | 126 | **Confirmada** — figura compartilhada na página PDF 126 |
 | `pixie` | Pixie | 123 | 127 | **Confirmada** — figura compartilhada na página PDF 126 |
-| `fantasma-guerreiro-humano-de-5-nivel` | Fantasma Guerreiro Humano de 5º Nível | 124 | 128 | Revisar arte |
+| `fantasma-guerreiro-humano-de-5-nivel` | Fantasma Guerreiro Humano de 5º Nível | 124 | 128 | Sem arte individual identificada nas páginas da ficha e adjacentes |
 | `fera-do-caos` | Fera do Caos | 125 | 129 | **Confirmada** — ilustração na página PDF 130 |
 | `fogofatuo` | Fogo–fátuo | 126 | 130 | **Confirmada** — ilustração na página PDF 131 |
 
@@ -130,13 +130,13 @@
 | `gargula` | Gárgula | 131 | 135 | **Confirmada** — ilustração na página PDF 135 |
 | `djinni` | Djinni | 133 | 137 | **Confirmada** — arte compartilhada com Efreeti na página PDF 138 |
 | `efreeti` | Efreeti | 134 | 138 | **Confirmada** — arte compartilhada com Djinni na página PDF 138 |
-| `janni` | Janni | 135 | 139 | Revisar arte |
+| `janni` | Janni | 135 | 139 | Sem arte individual identificada nas páginas da ficha e adjacentes |
 | `gigante-das-nuvens` | Gigante das Nuvens | 136 | 140 | **Confirmada** — figura compartilhada na página PDF 145 com Gigante de Pedra e Gigante das Colinas |
 | `gigante-do-fogo` | Gigante do Fogo | 137 | 141 | **Confirmada** — figura compartilhada na página PDF 141 |
 | `gigante-de-pedra` | Gigante de Pedra | 140 | 144 | **Confirmada** — figura compartilhada na página PDF 145 com Gigante das Nuvens e Gigante das Colinas |
 | `girallon` | Girallon | 142 | 146 | **Confirmada** — ilustração na página PDF 146 |
 | `gnoll` | Gnoll | 145 | 149 | **Confirmada** — ilustração na página PDF 149 |
-| `golem-de-barro` | Golem de Barro | 149 | 153 | Revisar arte |
+| `golem-de-barro` | Golem de Barro | 149 | 153 | Sem arte individual identificada nas páginas da ficha e adjacentes |
 | `golem-de-ferro` | Golem de Ferro | 151 | 155 | **Confirmada** — ilustração na página PDF 154 |
 | `grick` | Grick | 153 | 157 | **Confirmada** — ilustração na página PDF 157 |
 | `grifo` | Grifo | 153 | 157 | **Confirmada** — ilustração na página PDF 158 |
@@ -152,7 +152,7 @@
 | `kraken` | Kraken | 168 | 172 | **Confirmada** — ilustração na página PDF 172 |
 | `lagarto-eletrico` | Lagarto Elétrico | 170 | 174 | **Confirmada** — ilustração na página PDF 174 |
 | `lammasu` | Lammasu | 172 | 176 | **Confirmada** — ilustração na página PDF 176 |
-| `protetor-dourado-lammasu-meiodragao-celestial` | Protetor Dourado (lammasu Meio–dragão Celestial) | 172 | 176 | Revisar arte |
+| `protetor-dourado-lammasu-meiodragao-celestial` | Protetor Dourado (lammasu Meio–dragão Celestial) | 172 | 176 | Sem arte individual identificada nas páginas da ficha e adjacentes |
 | `leao-marinho` | Leão Marinho | 173 | 177 | **Confirmada** — ilustração na página PDF 177 |
 | `lich` | Lich | 183 | 187 | **Confirmada** — ilustração na página PDF 187 |
 | `lillend` | Lillend | 184 | 188 | **Confirmada** — ilustração na página PDF 188 |
@@ -161,22 +161,22 @@
 
 | ID do catálogo | Nome no catálogo | Página impressa | Página PDF | Situação da arte |
 |---|---|---:|---:|---|
-| `limo-cinzento` | Limo Cinzento | 186 | 190 | Revisar arte |
+| `limo-cinzento` | Limo Cinzento | 186 | 190 | Sem arte individual identificada nas páginas da ficha e adjacentes |
 | `lobo-das-estepes` | Lobo das Estepes | 187 | 191 | **Confirmada** — ilustração na página PDF 191 |
 | `locathah` | Locathah | 188 | 192 | **Confirmada** — ilustração na página PDF 192 |
 | `magmin` | Magmin | 189 | 193 | **Confirmada** — ilustração na página PDF 193 |
 | `manto-negro` | Manto Negro | 190 | 194 | **Confirmada** — ilustração na página PDF 194 |
 | `mastim-das-sombras` | Mastim das Sombras | 191 | 195 | **Confirmada** — ilustração na página PDF 195 |
 | `medusa` | Medusa | 192 | 196 | **Confirmada** — ilustração na página PDF 196 |
-| `mephit-da-agua` | Mephit da Água | 197 | 201 | Revisar arte |
-| `mephit-do-ar` | Mephit do Ar | 197 | 201 | Revisar arte |
-| `mephit-do-fogo` | Mephit do Fogo | 198 | 202 | Revisar arte |
-| `mephit-do-gelo` | Mephit do Gelo | 198 | 202 | Revisar arte |
-| `mephit-do-limo` | Mephit do Limo | 199 | 203 | Revisar arte |
-| `mephit-do-magma` | Mephit do Magma | 199 | 203 | Revisar arte |
-| `mephit-da-poeira` | Mephit da Poeira | 200 | 204 | Revisar arte |
-| `mephit-do-sal` | Mephit do Sal | 200 | 204 | Revisar arte |
-| `mephit-do-vapor` | Mephit do Vapor | 201 | 205 | Revisar arte |
+| `mephit-da-agua` | Mephit da Água | 197 | 201 | Sem arte individual identificada — PDF 202 traz apenas figura coletiva genérica da família Mephit |
+| `mephit-do-ar` | Mephit do Ar | 197 | 201 | Sem arte individual identificada — PDF 202 traz apenas figura coletiva genérica da família Mephit |
+| `mephit-do-fogo` | Mephit do Fogo | 198 | 202 | Sem arte individual identificada — PDF 202 traz apenas figura coletiva genérica da família Mephit |
+| `mephit-do-gelo` | Mephit do Gelo | 198 | 202 | Sem arte individual identificada — PDF 202 traz apenas figura coletiva genérica da família Mephit |
+| `mephit-do-limo` | Mephit do Limo | 199 | 203 | Sem arte individual identificada — PDF 202 traz apenas figura coletiva genérica da família Mephit |
+| `mephit-do-magma` | Mephit do Magma | 199 | 203 | Sem arte individual identificada — PDF 202 traz apenas figura coletiva genérica da família Mephit |
+| `mephit-da-poeira` | Mephit da Poeira | 200 | 204 | Sem arte individual identificada — PDF 202 traz apenas figura coletiva genérica da família Mephit |
+| `mephit-do-sal` | Mephit do Sal | 200 | 204 | Sem arte individual identificada — PDF 202 traz apenas figura coletiva genérica da família Mephit |
+| `mephit-do-vapor` | Mephit do Vapor | 201 | 205 | Sem arte individual identificada — PDF 202 traz apenas figura coletiva genérica da família Mephit |
 | `mimico` | Mímico | 201 | 205 | **Confirmada** — ilustração na página PDF 205 |
 | `mohrg` | Mohrg | 203 | 207 | **Confirmada** — ilustração na página PDF 207 |
 | `monstro-da-ferrugem` | Monstro da Ferrugem | 203 | 207 | **Confirmada** — ilustração na página PDF 208 |
@@ -214,8 +214,8 @@
 | `verme-do-gelo` | Verme do Gelo | 253 | 257 | **Confirmada** — ilustração individual legendada na página PDF 257 |
 | `verme-purpura` | Verme Púrpura | 254 | 258 | **Confirmada** — ilustração individual legendada na página PDF 258 |
 | `vinha-assassina` | Vinha Assassina | 254 | 258 | **Confirmada** — ilustração individual legendada na página PDF 259 |
-| `rastejante-noturno` | Rastejante Noturno | 257 | 261 | Revisar arte |
-| `vulto-alado` | Vulto Alado | 257 | 261 | Revisar arte |
+| `rastejante-noturno` | Rastejante Noturno | 257 | 261 | Sem arte individual identificada nas páginas da ficha e adjacentes |
+| `vulto-alado` | Vulto Alado | 257 | 261 | Sem arte individual identificada nas páginas da ficha e adjacentes |
 | `worg` | Worg | 258 | 262 | **Confirmada** — ilustração individual na página PDF 262 |
 | `wyvern` | Wyvern | 259 | 263 | **Confirmada** — ilustração individual na página PDF 263 |
 | `yrthak` | Yrthak | 262 | 266 | **Confirmada** — ilustração individual na página PDF 266 |
@@ -688,3 +688,33 @@ Uma nova contagem automatizada foi feita somente nas 230 linhas das Faixas 1 a 7
 | **Total** | **230** |
 
 Os registros SRD (32) não entram nessa soma. Os logs anteriores foram mantidos como histórico das contagens feitas em cada etapa; esta reconciliação corrige a contagem vigente.
+
+
+### Revisão visual final das pendências — páginas PDF 115–119, 128–129, 139–140, 153–154, 176–177, 190–191, 201–206 e 261 (2026-11-12)
+
+A revisão por renderização das páginas e adjacências concluiu os 21 registros que ainda estavam marcados como “Revisar arte”:
+
+- **PDF 115–116:** Enxame de Centopeias, Enxame de Gafanhotos e Enxame de Morcegos. As páginas apresentam fichas, sem arte individual identificável.
+- **PDF 118–119:** Andro–esfinge e Crio–esfinge não têm arte individual identificável. A arte da Gino–esfinge está identificada e permanece exclusiva dela.
+- **PDF 128–129:** Fantasma Guerreiro Humano de 5º Nível não possui arte individual identificável. A arte da página PDF 129 corresponde à Fera do Caos.
+- **PDF 139–140:** Janni não possui arte individual identificável; as artes de Djinni e Efreeti em páginas próximas não foram reutilizadas.
+- **PDF 153–154:** Golem de Barro não possui arte individual identificável. A ilustração da página PDF 154 representa Golem de Ferro e Golem de Carne.
+- **PDF 176–177:** Protetor Dourado não possui arte individual identificável. A arte da página PDF 176 é a do Lammasu; a página seguinte apresenta o Leão Marinho.
+- **PDF 190–191:** Limo Cinzento não possui arte individual identificável. A arte de Lobo das Estepes na página seguinte não foi reutilizada.
+- **PDF 201–205:** as nove variantes de Mephit não têm retratos individuais identificados. A página PDF 202 contém uma figura coletiva genérica da família Mephit; ela foi documentada como referência de família, não atribuída como retrato exclusivo de nenhuma variante.
+- **PDF 261:** Rastejante Noturno e Vulto Alado não possuem arte individual identificável nessa página nem nas adjacentes verificadas.
+- As 21 linhas foram retiradas da categoria “Revisar arte” e classificadas como sem arte individual identificada. Não houve associação por mera proximidade de página.
+
+**Resultado final da revisão dos 230 IDs do Livro dos Monstros:**
+
+| Situação | Quantidade |
+|---|---:|
+| Arte individual ou compartilhada identificada | 139 |
+| Referência visual genérica identificada | 1 |
+| Sem arte individual identificada no livro | 90 |
+| Revisar arte / inconclusiva | 0 |
+| **Total** | **230** |
+
+A referência genérica de Yuan-ti permanece vinculada apenas como referência visual, sem afirmar que seja exclusiva do Puro Sangue. A figura coletiva dos Mephits está documentada como referência de família, sem atribuição individual.
+
+Os 32 registros SRD continuam fora dessa contagem e precisam de fonte visual externa compatível ou silhueta provisória. Nenhuma imagem foi extraída ou embutida no aplicativo nesta etapa.
