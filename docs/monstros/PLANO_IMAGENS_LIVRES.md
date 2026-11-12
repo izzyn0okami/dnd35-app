@@ -115,3 +115,14 @@ A busca inicial encontrou alguns candidatos reais, mas nenhum foi ainda promovid
 - [The Free Monsters — OpenGameArt](https://lpc.opengameart.org/content/the-free-monsters), CC BY-SA 3.0/GPL: contém um Lichlord, mas a licença ShareAlike e o estilo do pacote exigem análise específica; não foi incluído no conjunto padrão.
 
 **Conclusão do piloto:** a disponibilidade de arte livre é real, mas não garante correspondência visual ou consistência estética. A Dríade e o Beholder já têm candidatos pesquisáveis; nenhum arquivo foi baixado, recortado, aprovado ou adicionado ao repositório. Próxima etapa: ampliar a busca por criatura e fazer revisão visual dos arquivos originais antes de fechar o primeiro conjunto.
+
+
+## Expansão da descoberta visual via Pinterest (2026-11-12)
+
+Foi autorizada a utilização do Pinterest como base de descoberta visual provisória, para acelerar a localização de representações plausíveis das criaturas antes da auditoria manual. Foi criado o índice `docs/monstros/REFERENCIAS_PINTEREST.json`, com uma busca individual para cada uma das 230 criaturas do Livro dos Monstros 3.5, mantendo o ID estável do catálogo e um caminho de arquivo padronizado.
+
+**Limite de direitos:** Pinterest é tratado apenas como mecanismo de descoberta. Um pin, thumbnail ou repost não comprova licença. Como o repositório é público, imagens não verificadas não serão baixadas nem versionadas. Cada candidato deve ser rastreado até a fonte original e ter autor/licença confirmados antes de entrar no APK ou no Git. Quando não houver autorização, a imagem será substituída por uma alternativa licenciada.
+
+**Convenção de nomes:** `app/src/main/assets/monsters/<creatureId>.webp`. O índice reserva esse caminho por criatura, mas não declara que o arquivo já existe. Os campos `assetStatus`, `licenseStatus` e `reviewStatus` deixam explícito o estado pendente.
+
+**Escopo:** 230 criaturas cuja origem é Livro dos Monstros 3.5; as entradas complementares do SRD permanecem fora deste lote, conforme o escopo aprovado. Nenhuma imagem foi baixada ou incorporada nesta atualização.
