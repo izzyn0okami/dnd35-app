@@ -978,3 +978,62 @@ As duas composições compartilhadas permanecem como um único arquivo cada; nã
 **Limites desta validação:** a técnica recompõe corretamente os objetos raster e exclui texto vetorial, mas ainda exige conferência visual por página para distinguir artes múltiplas, preservar composições compartilhadas e confirmar a associação com a legenda. A resolução resultante é limitada pela resolução dos objetos originais incorporados; o aumento de escala usado no PNG apenas reduz artefatos de junção e não cria detalhe novo.
 
 **Estado do projeto:** 8 imagens de teste extraídas apenas localmente; 0 imagens adicionadas ao Git; 0 alterações no catálogo, código ou APK; 0 mudanças nas contagens do manifesto (136 registros, 3 recortes previamente revisados, 65 pendentes e 101 vínculos que ainda exigem isolamento manual). A restrição de direitos autorais continua válida: não redistribuir nem incorporar as artes em APK público sem autorização/licença compatível.
+
+
+## Decisão de projeto — substituir recortes por arte com licença aberta (2026-11-12)
+
+A direção aprovada para as cartas de monstros passa a ser utilizar ilustrações externas com direitos de reutilização verificáveis, em vez de recortes das imagens do Livro dos Monstros. A auditoria do PDF continua útil como referência de identidade visual e associação criatura/página, mas suas ilustrações não serão incorporadas ao APK nem ao repositório público sem autorização específica de redistribuição.
+
+### Fontes pesquisadas e função
+
+- **Openverse** (https://openverse.org/; API: https://api.openverse.org/v1/): mecanismo primário de descoberta e agregação. Permite filtrar por licenças e tipo de uso, mas seus próprios documentos alertam que a precisão dos metadados de licença não é garantida; confirmar sempre na página original do item.
+- **Wikimedia Commons** (https://commons.wikimedia.org/): fonte prioritária para gravuras, arte histórica e representações mitológicas. Cada arquivo tem condições próprias; verificar autor, página original, licença e obrigações de atribuição/adaptação.
+- **OpenGameArt** (https://opengameart.org/): fonte prioritária para arte de criaturas criada para jogos. Verificar a licença de cada pacote/arquivo e os créditos dos colaboradores; existem exemplos CC0 e CC BY.
+- **Smithsonian Open Access** (https://www.si.edu/openaccess): fonte complementar para objetos e imagens CC0, especialmente referências mitológicas/históricas. Usar apenas itens efetivamente marcados CC0; direitos de terceiros ainda podem existir.
+- **The Metropolitan Museum of Art — Open Access** (https://www.metmuseum.org/art/collection): fonte complementar de arte histórica em domínio público; usar somente imagens identificadas como Open Access.
+- **Kenney** (https://kenney.nl/assets): fonte complementar para recursos de jogo estilizados; a documentação do autor informa que os assets publicados nas páginas de assets são CC0. A adequação estética deve ser avaliada individualmente.
+
+### Política inicial de aceitação
+
+- **Aceitação preferencial:** CC0 1.0, Public Domain Mark e domínio público confirmado.
+- **Aceitação com atribuição:** CC BY 4.0 (e versões anteriores apenas após conferência dos termos); registrar e exibir título, autor, fonte, licença e alterações.
+- **Revisão específica antes de aceitar:** CC BY-SA, devido à obrigação ShareAlike em adaptações; não usar por padrão.
+- **Rejeitar para o pacote distribuível:** CC BY-NC, CC BY-ND, licenças incompatíveis com redistribuição/adaptação pretendida, termos ambíguos ou licença não verificável.
+- Um resultado de buscador, thumbnail ou texto de usuário não é prova suficiente de licença. Conferir a página original do item e guardar a evidência/URL consultada.
+- Não remover marcas d'água nem usar imagens de procedência duvidosa. Não atribuir uma imagem a uma criatura só por semelhança genérica.
+
+### Fluxo de seleção
+
+1. Pesquisar pelo nome da criatura em português e inglês, além de sinônimos/termos mitológicos quando apropriado.
+2. Priorizar correspondência visual específica com a criatura descrita no catálogo; não confundir inspiração mitológica com identidade canônica.
+3. Confirmar a página de origem, o autor/criador, a licença exata, a versão da licença e as permissões de redistribuição e adaptação.
+4. Avaliar resolução, proporção, legibilidade em carta vertical e se a imagem contém texto, molduras ou marcas d'água.
+5. Fazer revisão visual humana antes de associar o arquivo ao ID do catálogo.
+6. Registrar proveniência e atribuição por imagem; disponibilizar créditos/licença na ficha de detalhes e em arquivo de créditos do aplicativo.
+7. Otimizar cópia local para o aplicativo somente depois da aprovação. Manter o arquivo de origem e o registro de licença no processo de build/repositório conforme o tamanho e os termos permitirem.
+
+### Metadados mínimos por imagem
+
+- creatureId, assetPath, sourceTitle, creator, sourcePageUrl, directFileUrl;
+- licenseId, licenseVersion, licenseUrl, downloadedAt;
+- modified, modificationNote, reviewStatus, reviewNotes, sha256.
+
+### Consequências para a auditoria existente
+
+- O manifesto MANIFESTO_IMAGENS_MONSTROS.json continua sendo o índice da associação entre criaturas e ilustrações do livro, não um inventário de assets livres.
+- Os recortes privados já extraídos permanecem apenas como material de estudo local; não serão convertidos em assets do aplicativo.
+- A contagem anterior do manifesto (136 associações, 104 individuais, 31 compartilhadas, 1 genérica; 230 criaturas do livro no universo do catálogo) não muda.
+- Próxima etapa: criar um manifesto separado para arte licenciada, sem alterar IDs nem estatísticas das criaturas. Começar por um lote-piloto pequeno e visualmente diversificado, validar o processo de atribuição e só então escalar para o restante do catálogo.
+
+### Referências de licenciamento verificadas
+
+- Openverse API e filtros de licença: https://api.openverse.org/v1/ e https://docs.openverse.org/api/reference/made_with_ov.html
+- Openverse alerta que metadados de licença devem ser verificados na fonte original: https://docs.openverse.org/api/reference/made_with_ov.html
+- Reutilização e obrigações de conteúdo Creative Commons (TASL): https://creativecommons.org/reusing-cc-licensed-content/
+- Wikimedia Commons — reutilização externa e conferência por arquivo: https://commons.wikimedia.org/wiki/Commons:Reusing_content_outside_Wikimedia
+- Smithsonian Open Access FAQ: https://www.si.edu/openaccess/faq
+- The Met Open Access API: https://metmuseum.github.io/
+- Kenney — FAQ de CC0: https://kenney.nl/support
+- Exemplos de assets de criaturas no OpenGameArt: https://opengameart.org/content/monster-concept e https://opengameart.org/content/tiny-creatures
+
+**Status:** política inicial documentada; nenhum asset de terceiros foi baixado, aprovado ou adicionado ao APK nesta etapa.
