@@ -828,3 +828,18 @@ A conferência foi feita nas páginas completas, com leitura das legendas e dist
 Os recortes das 14 associações revisadas neste lote permanecem sem coordenadas aprovadas e foram marcados para isolamento manual quando a composição inclui outras criaturas ou texto. Não foram exportados arquivos de imagem.
 
 **Contagem reconciliada após este lote:** 138 registros no manifesto (103 individuais, 34 compartilhados e 1 genérico), equivalentes a 137 associações de arte individuais/compartilhadas confirmadas e 1 referência genérica. No universo de 230 IDs, 92 não possuem arte individual identificada e 0 permanecem inconclusivos. O manifesto tem 3 recortes visualmente revisados, 122 pendentes e 44 vínculos marcados para isolamento manual.
+
+
+### Revisão visual complementar — páginas PDF 80–103 (2026-11-12)
+
+A revisão das páginas completas e das legendas confirmou as associações abaixo:
+
+- **PDF 80–99:** intervalo da seção de dragões cromáticos e metálicos, com ilustrações de dragões que não correspondem a novos IDs do catálogo de 230 criaturas auditado. Não criar vínculos com base apenas na semelhança ou na proximidade das fichas. As artes dessa seção permanecem fora do manifesto atual.
+- **Dragonado (PDF 100 / impressa 96):** figura individual confirmada pela legenda “Dragonado”.
+- **Dríade (PDF 101 / impressa 97):** figura individual confirmada pela legenda “Dríade”.
+- **Drider (PDF 102 / impressa 98):** figura individual confirmada pela legenda “Drider”.
+- **Bralani e Ghaele (PDF 103 / impressa 99):** ambas as criaturas são identificadas na mesma composição, por suas legendas. Manter a associação compartilhada; não dividir a composição em retratos exclusivos.
+
+As cinco associações foram marcadas para isolamento manual, pois os recortes retangulares precisam preservar a figura integral e evitar texto ou elementos adjacentes. Nenhuma imagem foi extraída.
+
+**Contagem do manifesto:** 138 registros (103 individuais, 34 compartilhados e 1 genérico), equivalentes a 137 associações individuais/compartilhadas confirmadas e 1 referência genérica. No conjunto de 230 IDs, 92 não possuem arte individual identificada e nenhum permanece inconclusivo. O manifesto agora registra 3 recortes visualmente revisados, 117 pendentes e 49 vínculos que exigem isolamento manual.
