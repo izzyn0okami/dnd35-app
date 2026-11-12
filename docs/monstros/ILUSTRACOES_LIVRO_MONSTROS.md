@@ -2,7 +2,7 @@
 
 **Estado:** levantamento inicial em andamento  
 **Fonte primária:** PDF brasileiro do Livro dos Monstros 3.5 fornecido para o projeto  
-**Catálogo associado:** `app/src/main/resources/dnd35/creatures.json` (230 registros; IDs preservados)
+**Catálogo associado:** `app/src/main/resources/dnd35/creatures.json` (262 registros na branch principal consultada; este índice ainda contém 230 IDs e precisa ser ampliado)
 
 ## Método e convenções
 
@@ -426,6 +426,22 @@ Esta tabela separa a **página da ficha** da **página onde a ilustração apare
 
 **Nota sobre os mephits:** a página PDF 202 contém uma ilustração genérica da família de mephits, sem identificação inequívoca de uma variante específica. Ela fica registrada como referência coletiva, sem atribuição a um ID individual, até que a arte seja validada para cada variante.
 
+## Confirmação visual das artes — páginas 257 a 268
+
+| ID do catálogo | Criatura | Página impressa da arte | Página PDF da arte | Observação |
+|---|---|---:|---:|---|
+| `worg` | Worg | 258 | 262 | Figura individual, legenda “Worg” |
+| `wyvern` | Wyvern | 259 | 263 | Figura individual, legenda “Wyvern” |
+| `yrthak` | Yrthak | 262 | 266 | Figura individual, identificada no bloco e na arte |
+| `puro-sangue` | Puro Sangue (Yuan-ti) | 264 | 268 | Arte identificada genericamente como “Yuan-ti”; referência visual, não exclusiva da variante |
+
+### Páginas verificadas sem nova associação individual
+
+- PDF 261 (página impressa 257): contém fichas de Rastejante Noturno e Vulto Alado; não foi identificada ilustração individual nesta página.
+- PDF 264 (página impressa 260): apresenta ilustração de Xill, criatura que não possui ID no catálogo atual; não associar a outra criatura.
+- PDF 270–272 (páginas impressas 266–268): contém regras e exemplos de zumbis. A ilustração de zumbi na página PDF 272 é genérica e não corresponde a um ID do catálogo atual.
+- PDF 273–294 (páginas impressas 269–290): páginas de fichas de animais e insetos verificadas nesta passagem; não foram identificadas ilustrações individuais correspondentes aos animais/insetos catalogados nesse trecho. Não reutilizar a arte de outra criatura como substituta.
+
 ## Decisões técnicas registradas
 
 1. O catálogo de criaturas permanece como fonte de dados de jogo. O vínculo visual será feito por `CreatureDefinition.id`, sem alterar os nomes, IDs ou estatísticas.
@@ -437,10 +453,19 @@ Esta tabela separa a **página da ficha** da **página onde a ilustração apare
 ## Log de progresso — 2026-11-10
 
 - Confirmada a existência de 230 entradas no catálogo atual.
-- Conferidas visualmente as páginas PDF 12, 14, 15 e 27; 109 associações criatura–arte foram confirmadas até a página PDF 230. Há figuras compartilhadas; os rótulos impressos foram usados para não atribuir arte a criaturas erradas.
+- Conferidas visualmente as páginas PDF 12, 14, 15 e 27; 113 associações criatura–arte foram confirmadas até a página PDF 268. Há figuras compartilhadas; os rótulos impressos foram usados para não atribuir arte a criaturas erradas.
 - Localizadas as páginas de ficha das 230 criaturas do catálogo; a confirmação visual das artes ainda está incompleta. As faixas 2 e 3 foram associadas às páginas impressas por busca textual e conferência dos títulos dos blocos; a identificação visual individual das artes ainda está pendente.
 - Verificado que a contagem bruta de objetos de imagem do PDF não equivale à quantidade de ilustrações: várias imagens estão divididas em blocos. Para os recortes, usar renderização da página, não assumir que cada objeto interno seja uma figura.
 - Conferidos os títulos dos blocos de demônios nas páginas PDF 54–62; as páginas da Marilith, Nalfeshnee, Quasit e Vrock foram corrigidas para 59, 60, 61 e 62, respectivamente. Isso evita usar simples menções no texto como se fossem a página da ficha.
 - As faixas intermediárias foram localizadas em sequência até a página impressa 270; as cinco últimas entradas de animais insetoides estão no capítulo 3, página impressa 290. Algumas páginas contêm várias criaturas, portanto a página comum não implica que todas tenham uma ilustração individual.
-- O índice agora cobre os 230 IDs do catálogo, com páginas de ficha identificadas. Isso não significa que as 230 criaturas tenham ilustração própria: a próxima etapa é verificar visualmente cada página, marcar ausências/figuras compartilhadas e registrar as regiões de recorte.
-- Próxima etapa: revisão visual sequencial das páginas, seguida pela preparação do manifesto de recursos locais.
+- O índice cobre os 230 IDs da versão anterior do catálogo. A branch principal consultada já contém 262 registros; portanto, 32 IDs adicionais ainda precisam ser incorporados ao índice e suas páginas de ficha verificadas. A cobertura visual também permanece incompleta.
+- Próxima etapa: incorporar os 32 IDs adicionais encontrados na branch principal, completar a conferência das páginas restantes e só depois preparar o manifesto de recursos locais.
+
+## Log de continuidade — 2026-11-12
+
+- Retomada a conferência visual a partir da página impressa 257.
+- Confirmadas as ilustrações de Worg (PDF 262), Wyvern (PDF 263) e Yrthak (PDF 266).
+- Registrada a arte genérica de Yuan-ti (PDF 268) como referência visual para Puro Sangue, sem exclusividade de variante.
+- Conferidas as páginas PDF 261 e 264–294. A imagem de Xill e a imagem genérica de zumbi não foram associadas a criaturas diferentes; nas páginas de animais e insetos deste intervalo não foram identificadas artes individuais correspondentes aos registros analisados.
+- Detectada divergência importante: a branch principal de `creatures.json` contém 262 registros, mas este índice foi criado quando havia 230. Os 32 registros adicionais ainda precisam ser inseridos e verificados antes de declarar a cobertura completa.
+- Nenhum arquivo de imagem foi extraído nem adicionado ao APK nesta etapa.
