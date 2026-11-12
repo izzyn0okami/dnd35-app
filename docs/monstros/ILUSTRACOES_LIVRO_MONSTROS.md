@@ -900,3 +900,23 @@ A revisão das páginas completas confirmou as seguintes correspondências:
 As 14 associações foram marcadas para isolamento manual. No caso do Golem de Ferro, a composição inclui também Golem de Carne; no caso do Avoral, inclui Leonal. As legendas foram usadas para limitar as associações aos IDs realmente existentes no catálogo.
 
 **Contagem atualizada:** 136 registros no manifesto (104 individuais, 31 compartilhados e 1 genérico), equivalentes a 135 associações individuais/compartilhadas confirmadas e 1 referência genérica. No universo de 230 IDs, 94 não possuem arte individual identificada e nenhum permanece inconclusivo. O manifesto registra 3 recortes visualmente revisados, 85 pendentes e 81 vínculos marcados para isolamento manual.
+
+
+### Revisão visual complementar — páginas PDF 176–196 (2026-11-12)
+
+A conferência das páginas completas e das legendas confirmou:
+
+- **Lammasu (PDF 176 / impressa 172):** arte individual identificada pela legenda. A ficha de Protetor Dourado (Lammasu meio-dragão celestial) aparece na mesma página, mas a figura visível está legendada apenas como Lammasu; não atribuir arte individual ao Protetor Dourado.
+- **Leão Marinho (PDF 177 / impressa 173):** arte individual confirmada.
+- **Lich (PDF 187 / impressa 183):** arte individual confirmada.
+- **Lillend (PDF 188 / impressa 184):** arte individual confirmada.
+- **Lobo das Estepes (PDF 191 / impressa 187):** arte individual confirmada.
+- **Locathah (PDF 192 / impressa 188):** arte individual confirmada.
+- **Magmin (PDF 193 / impressa 189):** figura individual confirmada. A Manticora aparece na mesma página com figura própria, mas não foi criada associação adicional fora dos IDs já indexados.
+- **Manto Negro (PDF 194 / impressa 190):** figura individual confirmada.
+- **Mastim das Sombras — correção de página:** a arte está na página PDF **196** (impressa 192), não na página PDF 195. A página PDF 195 contém a arte legendada Manto Negro. O manifesto foi corrigido.
+- **Medusa (PDF 196 / impressa 192):** figura individual confirmada, distinta da arte do Mastim das Sombras na mesma página.
+
+As dez associações foram marcadas para isolamento manual. A correção do Mastim das Sombras evita confundir a página da ficha com a página da arte.
+
+**Contagem atualizada:** 136 registros no manifesto (104 individuais, 31 compartilhados e 1 genérico), equivalentes a 135 associações individuais/compartilhadas confirmadas e 1 referência genérica. No universo de 230 IDs, 94 não possuem arte individual identificada e nenhum permanece inconclusivo. O manifesto registra 3 recortes visualmente revisados, 75 pendentes e 91 vínculos marcados para isolamento manual.
