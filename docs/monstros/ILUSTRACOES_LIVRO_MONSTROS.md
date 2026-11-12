@@ -766,3 +766,23 @@ As páginas completas foram renderizadas e conferidas, incluindo a legenda de ca
 **Contagem atualizada do manifesto:** 140 registros de criaturas (105 individuais, 34 compartilhados e 1 genérico); 3 registros com retângulo revisado, 137 ainda pendentes e 7 registros marcados para isolamento manual. Os casos compartilhados contam por vínculo de criatura no manifesto, embora representem uma única composição artística.
 
 Nenhuma imagem foi extraída ou incorporada ao aplicativo. Os requisitos de licença e a restrição contra redistribuição pública de arte protegida permanecem inalterados.
+
+
+### Revisão visual complementar — páginas PDF 37–46 (2026-11-12)
+
+Foram conferidas as páginas completas e as legendas das artes deste intervalo:
+
+- **Beholder (PDF 37 / impressa 33):** arte individual confirmada.
+- **Belker (PDF 38 / impressa 34):** arte individual confirmada pela legenda.
+- **Anis (PDF 39 / impressa 35):** arte individual confirmada; não confundir com o Bodak ilustrado na mesma página.
+- **Bruxa Verde (PDF 40 / impressa 36):** arte individual confirmada.
+- **Bruxa do Mar:** correção de associação. A ficha aparece na página PDF 40, mas não há arte individual identificada para ela nas páginas 40–41. A figura da página PDF 41 está legendada **Bruxa da Noite**, portanto não pertence à Bruxa do Mar. O vínculo incorreto com PDF 41 foi removido do manifesto e a Bruxa do Mar passa a integrar a contagem de criaturas sem arte individual identificada.
+- **Bugbear (PDF 42 / impressa 38):** arte individual confirmada.
+- **Bulette (PDF 43 / impressa 39):** arte individual confirmada.
+- **Caçador Invisível e Cão Infernal (PDF 44 / impressa 40):** duas artes distintas, ambas confirmadas pelas legendas. A ficha de Cão de Guerra Nessian não recebe nenhuma dessas imagens.
+- **Cão Teleportador (PDF 45 / impressa 41):** arte individual confirmada e identificada pela legenda.
+- **Cão Yeth (PDF 46 / impressa 42):** arte individual confirmada na página seguinte. Não reutilizar a imagem do Cão Teleportador.
+
+Os recortes dessas dez artes foram mantidos sem coordenadas aprovadas, pois a proximidade com texto ou outras figuras exige isolamento cuidadoso. Nenhuma imagem foi rejeitada por causa disso; os vínculos permanecem confirmados por legenda.
+
+**Contagem atualizada:** 139 registros no manifesto (104 individuais, 34 compartilhados e 1 genérico); 3 recortes revisados, 136 pendentes e 17 vínculos marcados para isolamento manual. A Bruxa do Mar foi retirada da contagem de artes confirmadas e deve ser contabilizada entre as 90 criaturas sem arte individual identificada, elevando essa categoria para 91 e mantendo 230 IDs no escopo.
