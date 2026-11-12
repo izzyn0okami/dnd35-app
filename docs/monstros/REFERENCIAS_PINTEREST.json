@@ -2313,5 +2313,102 @@
       "licenseStatus": "unverified",
       "reviewStatus": "pending"
     }
-  ]
+  ],
+  "researchNotes": [
+    {
+      "creatureIds": [
+        "beholder"
+      ],
+      "creatureNames": [
+        "Beholder"
+      ],
+      "candidate": {
+        "title": "One Eye Armored Monster",
+        "author": "Xacur",
+        "source": "OpenGameArt",
+        "url": "https://opengameart.org/content/one-eye-armored-monster",
+        "license": "CC-BY 4.0",
+        "status": "candidate-not-downloaded",
+        "notes": "Concept art tagged beholder; color, grayscale and line-art variants. Verify attribution and inspect original files before adoption."
+      }
+    },
+    {
+      "creatureIds": [
+        "beholder"
+      ],
+      "creatureNames": [
+        "Beholder"
+      ],
+      "candidate": {
+        "title": "Observers",
+        "author": "AntumDeluge",
+        "source": "OpenGameArt",
+        "url": "https://opengameart.org/content/observers",
+        "license": "CC-BY 4.0 / CC-BY 3.0 / OGA-BY 3.0 as listed on page",
+        "status": "candidate-not-downloaded",
+        "notes": "Pixel sprites include Young Beholder, Beholder and Elder Beholder; visual style may not suit portrait cards."
+      }
+    },
+    {
+      "creatureIds": [],
+      "creatureNames": [
+        "Demônios e extraplanares (candidatos genéricos)"
+      ],
+      "candidate": {
+        "title": "Demon/Devil",
+        "author": "Nerveona",
+        "source": "OpenGameArt",
+        "url": "https://opengameart.org/content/demondevil",
+        "license": "CC0",
+        "status": "candidate-not-downloaded",
+        "notes": "Directional sprite set; not mapped to a specific D&D creature."
+      }
+    },
+    {
+      "creatureIds": [],
+      "creatureNames": [
+        "Monstros genéricos"
+      ],
+      "candidate": {
+        "title": "The Free Monsters",
+        "author": "Justin Nichol",
+        "source": "OpenGameArt",
+        "url": "https://opengameart.org/content/the-free-monsters",
+        "license": "CC-BY-SA 3.0 and GPL 2.0/3.0",
+        "status": "candidate-not-downloaded",
+        "notes": "Collection states Naga, Ratman, Treefolk, Troll, Divine Guardian, Lichlord, Violence Demon, Goblin, Orc, Harpy and Dragon. Need inspect individual art and license compatibility."
+      }
+    },
+    {
+      "creatureIds": [],
+      "creatureNames": [
+        "Monstros genéricos"
+      ],
+      "candidate": {
+        "title": "Monster Builder Pack",
+        "author": "Kenney",
+        "source": "OpenGameArt",
+        "url": "https://opengameart.org/content/monster-builder-pack",
+        "license": "CC0",
+        "status": "candidate-not-downloaded",
+        "notes": "178 modular PNG tiles; useful for placeholders, but requires assembly and may not fit final portrait aesthetic."
+      }
+    },
+    {
+      "creatureIds": [],
+      "creatureNames": [
+        "Monstros genéricos"
+      ],
+      "candidate": {
+        "title": "Tiny Creatures",
+        "author": "Clint Bellanger and Kenney",
+        "source": "OpenGameArt",
+        "url": "https://opengameart.org/content/tiny-creatures",
+        "license": "CC0",
+        "status": "candidate-not-downloaded",
+        "notes": "180 pixel-art sprites, over 100 monsters and over 50 animals; potential fallback/placeholders, not portrait art."
+      }
+    }
+  ],
+  "pinterestSearchStatus": "Pinterest remains the preferred visual discovery starting point, but public web indexing returned mostly unrelated or generic pins in the first targeted batch; no individual Pinterest pin was accepted as a creature match. Keep per-creature Pinterest searches as discovery links and do not treat pins as license evidence."
 }
