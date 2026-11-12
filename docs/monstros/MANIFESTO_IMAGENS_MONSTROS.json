@@ -19,9 +19,9 @@
     "shared": 34,
     "generic": 1,
     "unresolvedPageMappings": 0,
-    "cropRectanglesPending": 136,
+    "cropRectanglesPending": 123,
     "cropRectanglesReviewed": 3,
-    "manualIsolationRequired": 17
+    "manualIsolationRequired": 30
   },
   "coordinateConvention": "cropRectPdfPoints uses [x0,y0,x1,y1] in PDF points, origin at top-left of the rendered page; null until visually reviewed.",
   "records": [
@@ -431,12 +431,14 @@
       "artworkPagePrinted": 44,
       "associationType": "individual",
       "sourceCaption": null,
-      "sourceNote": "Confirmada — ilustração na página PDF 48",
+      "sourceNote": "Confirmada — figura legendada na página PDF 48 (página impressa 44); isolamento manual necessário.",
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Arte confirmada pela legenda na página PDF 48 (página impressa 44). A composição se aproxima de texto ou de outras figuras; não aprovar recorte retangular sem isolamento manual."
     },
     {
       "creatureId": "cocatriz",
@@ -445,12 +447,14 @@
       "artworkPagePrinted": 45,
       "associationType": "individual",
       "sourceCaption": null,
-      "sourceNote": "Confirmada — ilustração na página PDF 49",
+      "sourceNote": "Confirmada — figura legendada na página PDF 49 (página impressa 45); isolamento manual necessário.",
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Arte confirmada pela legenda na página PDF 49 (página impressa 45). A composição se aproxima de texto ou de outras figuras; não aprovar recorte retangular sem isolamento manual."
     },
     {
       "creatureId": "constritor",
@@ -459,12 +463,14 @@
       "artworkPagePrinted": 46,
       "associationType": "individual",
       "sourceCaption": null,
-      "sourceNote": "Confirmada — ilustração na página PDF 50",
+      "sourceNote": "Confirmada — figura legendada na página PDF 50 (página impressa 46); isolamento manual necessário.",
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Arte confirmada pela legenda na página PDF 50 (página impressa 46). A composição se aproxima de texto ou de outras figuras; não aprovar recorte retangular sem isolamento manual."
     },
     {
       "creatureId": "coruja-gigante",
@@ -473,12 +479,14 @@
       "artworkPagePrinted": 47,
       "associationType": "individual",
       "sourceCaption": null,
-      "sourceNote": "Confirmada — ilustração na página PDF 51",
+      "sourceNote": "Confirmada — figura legendada na página PDF 51 (página impressa 47); isolamento manual necessário.",
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Arte confirmada pela legenda na página PDF 51 (página impressa 47). A composição se aproxima de texto ou de outras figuras; não aprovar recorte retangular sem isolamento manual."
     },
     {
       "creatureId": "couatl",
@@ -487,12 +495,14 @@
       "artworkPagePrinted": 47,
       "associationType": "individual",
       "sourceCaption": null,
-      "sourceNote": "Confirmada — ilustração na página PDF 51",
+      "sourceNote": "Confirmada — figura legendada na página PDF 51 (página impressa 47); isolamento manual necessário.",
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Arte confirmada pela legenda na página PDF 51 (página impressa 47). A composição se aproxima de texto ou de outras figuras; não aprovar recorte retangular sem isolamento manual."
     },
     {
       "creatureId": "cria-vampirica",
@@ -501,12 +511,14 @@
       "artworkPagePrinted": 48,
       "associationType": "individual",
       "sourceCaption": null,
-      "sourceNote": "Confirmada — ilustração na página PDF 52",
+      "sourceNote": "Confirmada — figura legendada na página PDF 52 (página impressa 48); isolamento manual necessário.",
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Arte confirmada pela legenda na página PDF 52 (página impressa 48). A composição se aproxima de texto ou de outras figuras; não aprovar recorte retangular sem isolamento manual."
     },
     {
       "creatureId": "babau",
@@ -515,12 +527,14 @@
       "artworkPagePrinted": 55,
       "associationType": "shared",
       "sourceCaption": null,
-      "sourceNote": "Confirmada — ilustração compartilhada na página PDF 59",
+      "sourceNote": "Confirmada — figura legendada na página PDF 59 (página impressa 55); isolamento manual necessário.",
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Arte confirmada pela legenda na página PDF 59 (página impressa 55). A composição se aproxima de texto ou de outras figuras; não aprovar recorte retangular sem isolamento manual."
     },
     {
       "creatureId": "balor",
@@ -529,12 +543,14 @@
       "artworkPagePrinted": 50,
       "associationType": "shared",
       "sourceCaption": null,
-      "sourceNote": "Confirmada — ilustração compartilhada na página PDF 54",
+      "sourceNote": "Confirmada — figura legendada na página PDF 54 (página impressa 50); isolamento manual necessário.",
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Arte confirmada pela legenda na página PDF 54 (página impressa 50). A composição se aproxima de texto ou de outras figuras; não aprovar recorte retangular sem isolamento manual."
     },
     {
       "creatureId": "bebilith",
@@ -543,12 +559,14 @@
       "artworkPagePrinted": 52,
       "associationType": "individual",
       "sourceCaption": null,
-      "sourceNote": "Confirmada — ilustração na página PDF 56",
+      "sourceNote": "Confirmada — figura legendada na página PDF 56 (página impressa 52); isolamento manual necessário.",
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Arte confirmada pela legenda na página PDF 56 (página impressa 52). A composição se aproxima de texto ou de outras figuras; não aprovar recorte retangular sem isolamento manual."
     },
     {
       "creatureId": "dretch",
@@ -557,12 +575,14 @@
       "artworkPagePrinted": 55,
       "associationType": "shared",
       "sourceCaption": null,
-      "sourceNote": "Confirmada — ilustração compartilhada na página PDF 59",
+      "sourceNote": "Confirmada — figura legendada na página PDF 59 (página impressa 55); isolamento manual necessário.",
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Arte confirmada pela legenda na página PDF 59 (página impressa 55). A composição se aproxima de texto ou de outras figuras; não aprovar recorte retangular sem isolamento manual."
     },
     {
       "creatureId": "glabrezu",
@@ -585,12 +605,14 @@
       "artworkPagePrinted": 55,
       "associationType": "shared",
       "sourceCaption": null,
-      "sourceNote": "Confirmada — ilustração compartilhada na página PDF 59",
+      "sourceNote": "Confirmada — figura legendada na página PDF 59 (página impressa 55); isolamento manual necessário.",
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Arte confirmada pela legenda na página PDF 59 (página impressa 55). A composição se aproxima de texto ou de outras figuras; não aprovar recorte retangular sem isolamento manual."
     },
     {
       "creatureId": "marilith",
@@ -599,12 +621,14 @@
       "artworkPagePrinted": 50,
       "associationType": "shared",
       "sourceCaption": null,
-      "sourceNote": "Confirmada — ilustração compartilhada na página PDF 54",
+      "sourceNote": "Confirmada — figura legendada na página PDF 54 (página impressa 50); isolamento manual necessário.",
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Arte confirmada pela legenda na página PDF 54 (página impressa 50). A composição se aproxima de texto ou de outras figuras; não aprovar recorte retangular sem isolamento manual."
     },
     {
       "creatureId": "nalfeshnee",
@@ -613,12 +637,14 @@
       "artworkPagePrinted": 56,
       "associationType": "individual",
       "sourceCaption": null,
-      "sourceNote": "Confirmada — ilustração na página PDF 60",
+      "sourceNote": "Confirmada — figura legendada na página PDF 60 (página impressa 56); isolamento manual necessário.",
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "Arte confirmada pela legenda na página PDF 60 (página impressa 56). A composição se aproxima de texto ou de outras figuras; não aprovar recorte retangular sem isolamento manual."
     },
     {
       "creatureId": "vrock",
