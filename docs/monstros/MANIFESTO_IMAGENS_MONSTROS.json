@@ -14,14 +14,14 @@
     "srdEntriesExcluded": 32
   },
   "summary": {
-    "mappedCreatureRecords": 140,
-    "individual": 105,
+    "mappedCreatureRecords": 139,
+    "individual": 104,
     "shared": 34,
     "generic": 1,
     "unresolvedPageMappings": 0,
-    "cropRectanglesPending": 137,
+    "cropRectanglesPending": 136,
     "cropRectanglesReviewed": 3,
-    "manualIsolationRequired": 7
+    "manualIsolationRequired": 17
   },
   "coordinateConvention": "cropRectPdfPoints uses [x0,y0,x1,y1] in PDF points, origin at top-left of the rendered page; null until visually reviewed.",
   "records": [
@@ -271,12 +271,14 @@
       "artworkPagePrinted": 33,
       "associationType": "individual",
       "sourceCaption": null,
-      "sourceNote": "Confirmada — ilustração na página PDF 37",
+      "sourceNote": "Confirmada — figura legendada na página PDF 37 (página impressa 33); isolamento manual necessário.",
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "A figura está identificada na página PDF 37, mas se mistura com texto das duas colunas; recorte retangular simples requer conferência/máscara para não incluir texto."
     },
     {
       "creatureId": "belker",
@@ -285,12 +287,14 @@
       "artworkPagePrinted": 34,
       "associationType": "individual",
       "sourceCaption": null,
-      "sourceNote": "Confirmada — ilustração na página PDF 38",
+      "sourceNote": "Confirmada — figura legendada na página PDF 38 (página impressa 34); isolamento manual necessário.",
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "A figura está legendada na página PDF 38, na região inferior; o enquadramento se aproxima do texto corrido e requer isolamento cuidadoso."
     },
     {
       "creatureId": "anis",
@@ -299,12 +303,14 @@
       "artworkPagePrinted": 35,
       "associationType": "individual",
       "sourceCaption": null,
-      "sourceNote": "Confirmada — ilustração na página PDF 39",
+      "sourceNote": "Confirmada — figura legendada na página PDF 39 (página impressa 35); isolamento manual necessário.",
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "A figura está identificada como Anis na página PDF 39; o retrato ocupa a coluna central e se aproxima dos blocos estatísticos. Exigir isolamento manual."
     },
     {
       "creatureId": "bruxa-verde",
@@ -313,26 +319,14 @@
       "artworkPagePrinted": 36,
       "associationType": "individual",
       "sourceCaption": null,
-      "sourceNote": "Confirmada — ilustração na página PDF 40",
+      "sourceNote": "Confirmada — figura legendada na página PDF 40 (página impressa 36); isolamento manual necessário.",
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
-    },
-    {
-      "creatureId": "bruxa-do-mar",
-      "creatureName": "Bruxa do Mar",
-      "artworkPagePdf": 41,
-      "artworkPagePrinted": 37,
-      "associationType": "individual",
-      "sourceCaption": null,
-      "sourceNote": "Confirmada — ilustração na página PDF 41",
-      "cropRectPdfPoints": null,
-      "assetPath": null,
-      "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "A figura está legendada Bruxa Verde na página PDF 40; a composição atravessa a região central entre as colunas e exige máscara/extração."
     },
     {
       "creatureId": "bugbear",
@@ -341,12 +335,14 @@
       "artworkPagePrinted": 38,
       "associationType": "individual",
       "sourceCaption": null,
-      "sourceNote": "Confirmada — ilustração na página PDF 42",
+      "sourceNote": "Confirmada — figura legendada na página PDF 42 (página impressa 38); isolamento manual necessário.",
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "A figura está identificada na página PDF 42; o recorte retangular alcança texto e áreas adjacentes. Exigir isolamento manual."
     },
     {
       "creatureId": "bulette",
@@ -355,12 +351,14 @@
       "artworkPagePrinted": 39,
       "associationType": "individual",
       "sourceCaption": null,
-      "sourceNote": "Confirmada — ilustração na página PDF 43",
+      "sourceNote": "Confirmada — figura legendada na página PDF 43 (página impressa 39); isolamento manual necessário.",
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "A figura está identificada na página PDF 43; a ilustração se aproxima da borda inferior e do texto. Exigir isolamento manual."
     },
     {
       "creatureId": "cacador-invisivel",
@@ -369,12 +367,14 @@
       "artworkPagePrinted": 40,
       "associationType": "individual",
       "sourceCaption": null,
-      "sourceNote": "Confirmada — ilustração na página PDF 44",
+      "sourceNote": "Confirmada — figura legendada na página PDF 44 (página impressa 40); isolamento manual necessário.",
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "A figura está legendada Caçador Invisível na página PDF 44; a composição central se mistura com texto e exige isolamento manual."
     },
     {
       "creatureId": "cao-infernal",
@@ -383,12 +383,14 @@
       "artworkPagePrinted": 40,
       "associationType": "individual",
       "sourceCaption": null,
-      "sourceNote": "Confirmada — ilustração na página PDF 44",
+      "sourceNote": "Confirmada — figura legendada na página PDF 44 (página impressa 40); isolamento manual necessário.",
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "A figura está legendada Cão Infernal na página PDF 44; não confundir com a figura do Caçador Invisível ou com a ficha do Cão de Guerra Nessian. Exigir isolamento manual."
     },
     {
       "creatureId": "cao-teleportador",
@@ -397,12 +399,14 @@
       "artworkPagePrinted": 41,
       "associationType": "individual",
       "sourceCaption": null,
-      "sourceNote": "Confirmada — ilustração na página PDF 45",
+      "sourceNote": "Confirmada — figura legendada na página PDF 45 (página impressa 41); isolamento manual necessário.",
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "A figura está legendada Cão Teleportador na página PDF 45; a ficha de Cão Yeth na mesma página não possui essa imagem. Exigir isolamento manual."
     },
     {
       "creatureId": "cao-yeth",
@@ -411,12 +415,14 @@
       "artworkPagePrinted": 42,
       "associationType": "individual",
       "sourceCaption": null,
-      "sourceNote": "Confirmada — ilustração na página PDF 46",
+      "sourceNote": "Confirmada — figura legendada na página PDF 46 (página impressa 42); isolamento manual necessário.",
       "cropRectPdfPoints": null,
       "assetPath": null,
       "extractionStatus": "not-extracted",
-      "reviewStatus": "page-mapped; caption-and-crop-review-required",
-      "licenseStatus": "permission-required-before-public-redistribution"
+      "reviewStatus": "page-confirmed; manual-art-isolation-required",
+      "licenseStatus": "permission-required-before-public-redistribution",
+      "cropReviewStatus": "manual-isolation-required",
+      "cropReviewNote": "A figura está legendada Cão Yeth na página PDF 46; não atribuir a figura do Cão Teleportador da página 45 a esta criatura. Exigir isolamento manual."
     },
     {
       "creatureId": "chuul",
