@@ -880,3 +880,23 @@ As 12 associações mantidas neste lote foram marcadas para isolamento manual; n
 **Correção de escopo:** a arte legendada Pixie não comprova representar Grig ou Nixie. Os dois vínculos foram removidos, evitando a reutilização de uma imagem apenas por proximidade na página.
 
 **Contagem atualizada:** 136 registros no manifesto (104 individuais, 31 compartilhados e 1 genérico), equivalentes a 135 associações individuais/compartilhadas confirmadas e 1 referência genérica. No universo de 230 IDs, 94 não possuem arte individual identificada e nenhum permanece inconclusivo. O manifesto registra 3 recortes visualmente revisados, 99 pendentes e 67 vínculos marcados para isolamento manual.
+
+
+### Revisão visual complementar — páginas PDF 150–174 (2026-11-12)
+
+A revisão das páginas completas confirmou as seguintes correspondências:
+
+- **Golem de Ferro (PDF 154 / impressa 150):** composição com Golem de Ferro e Golem de Carne, ambos legendados. O vínculo do manifesto permanece somente com Golem de Ferro. Não atribuir essa arte ao Golem de Barro, cuja ausência de arte individual já foi confirmada.
+- **Grick (PDF 157 / impressa 153):** figura individual confirmada pela legenda.
+- **Grifo e Grimlock (PDF 158 / impressa 154):** duas figuras distintas, ambas legendadas na mesma página.
+- **Avoral (PDF 160 / impressa 156):** figura identificada na composição com um Leonal. O Leonal não integra os IDs atuais; não criar associação adicional.
+- **Hipogrifo e Homúnculo (PDF 167 / impressa 163):** figuras distintas, ambas identificadas por legenda.
+- **Marut, Kolyarut e Zelekhut (PDF 168 / impressa 164):** composição compartilhada com as três criaturas identificadas por legenda. Preservar os três vínculos, sem separar a arte em retratos exclusivos.
+- **Inumano (PDF 170 / impressa 166):** figura individual confirmada.
+- **Kobold Combatente de 1º Nível (PDF 171 / impressa 167):** figura individual confirmada.
+- **Kraken (PDF 172 / impressa 168):** figura individual confirmada.
+- **Lagarto Elétrico (PDF 174 / impressa 170):** figura individual confirmada. A figura de Kuo–toa na mesma página não pertence ao Lagarto Elétrico e não gera vínculo adicional.
+
+As 14 associações foram marcadas para isolamento manual. No caso do Golem de Ferro, a composição inclui também Golem de Carne; no caso do Avoral, inclui Leonal. As legendas foram usadas para limitar as associações aos IDs realmente existentes no catálogo.
+
+**Contagem atualizada:** 136 registros no manifesto (104 individuais, 31 compartilhados e 1 genérico), equivalentes a 135 associações individuais/compartilhadas confirmadas e 1 referência genérica. No universo de 230 IDs, 94 não possuem arte individual identificada e nenhum permanece inconclusivo. O manifesto registra 3 recortes visualmente revisados, 85 pendentes e 81 vínculos marcados para isolamento manual.
