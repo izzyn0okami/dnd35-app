@@ -729,3 +729,11 @@ Os 32 registros SRD continuam fora dessa contagem e precisam de fonte visual ext
 - Cada vínculo contém ID/nome, página PDF e impressa da arte, tipo de associação, nota de identificação, legenda, retângulo de recorte, caminho local, estado de extração e estado de licença. Legendas, recortes e caminhos locais permanecem nulos até conferência visual individual.
 - Nenhuma imagem foi extraída, adicionada aos recursos Android ou incorporada ao APK. A arte do livro não pode ser redistribuída publicamente sem autorização/licença compatível.
 - Validação automatizada: 140 IDs únicos, todos presentes em `creatures.json`; 0 IDs ausentes e 0 páginas de arte sem mapeamento. Os recortes continuam pendentes de revisão visual.
+
+
+### Revisão inicial de retângulos de recorte — 2026-11-12
+
+- Conferidos visualmente os primeiros recortes do lote: Achaierai (PDF 14) e Aranea (PDF 27).
+- As coordenadas foram registradas no manifesto em pontos PDF, com observação de revisão visual.
+- Abocanhador Matraqueante, Águia Gigante, Allip e Aranha Interplanar permanecem sem retângulo aprovado; os primeiros testes de enquadramento mostraram necessidade de ajuste para evitar texto adjacente ou corte de partes da figura.
+- Nenhum recorte foi exportado como recurso do app; a etapa atual valida apenas coordenadas e preserva a restrição de direitos autorais.
