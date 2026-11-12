@@ -530,13 +530,13 @@ Os 32 registros abaixo aparecem na branch principal do catálogo com origem decl
 
 ### Reconciliação da cobertura — 2026-11-12
 
-A contagem foi refeita exclusivamente na tabela principal das Faixas 1 a 7, sem contar novamente as tabelas de confirmação visual:
+A contagem foi refeita exclusivamente na tabela principal das Faixas 1 a 7, sem contar novamente as tabelas de confirmação visual. Após o primeiro lote de revisão visual, o quadro foi atualizado:
 
 | Situação | Quantidade |
 |---|---:|
-| Arte individual ou compartilhada confirmada | 113 |
+| Arte individual ou compartilhada confirmada | 115 |
 | Referência visual genérica | 1 |
-| Revisar arte | 116 |
+| Revisar arte | 114 |
 | **Total de IDs do Livro dos Monstros** | **230** |
 
 - A soma fecha exatamente com os 230 IDs do Livro dos Monstros presentes no catálogo.
