@@ -187,33 +187,33 @@
 | `rast` | Rast | 222 | 226 | **Confirmada** — ilustração na página PDF 226 |
 | `ravid` | Ravid | 223 | 227 | **Confirmada** — ilustração na página PDF 227 |
 | `sahuagin` | Sahuagin | 225 | 229 | **Confirmada** — ilustração na página PDF 230 |
-| `salteador-etereo` | Salteador Etéreo | 228 | 232 | Revisar arte |
-| `satiro` | Sátiro | 229 | 233 | Revisar arte |
-| `skum` | Skum | 230 | 234 | Revisar arte |
-| `slaad-azul` | Slaad Azul | 231 | 235 | Revisar arte |
+| `salteador-etereo` | Salteador Etéreo | 228 | 232 | **Confirmada** — ilustração individual legendada na página PDF 232 |
+| `satiro` | Sátiro | 229 | 233 | **Confirmada** — ilustração individual legendada na página PDF 233 |
+| `skum` | Skum | 230 | 234 | **Confirmada** — ilustração individual legendada na página PDF 234 |
+| `slaad-azul` | Slaad Azul | 231 | 235 | **Confirmada** — figura compartilhada com Slaad da Morte na página PDF 235 |
 
 ## Faixa 6 — catálogo 156 a 185
 
 | ID do catálogo | Nome no catálogo | Página impressa | Página PDF | Situação da arte |
 |---|---|---:|---:|---|
-| `slaad-cinza` | Slaad Cinza | 232 | 236 | Revisar arte |
-| `slaad-da-morte` | Slaad da Morte | 232 | 236 | Revisar arte |
-| `slaad-verde` | Slaad Verde | 233 | 237 | Revisar arte |
-| `slaad-vermelho` | Slaad Vermelho | 234 | 238 | Revisar arte |
-| `stirge` | Stirge | 235 | 239 | Revisar arte |
-| `tarrasque` | Tarrasque | 236 | 240 | Revisar arte |
-| `tartarugadragao` | Tartaruga–dragão | 237 | 241 | Revisar arte |
-| `tendriculo` | Tendrículo | 237 | 241 | Revisar arte |
-| `thoqqua` | Thoqqua | 238 | 242 | Revisar arte |
-| `tita` | Titã | 239 | 243 | Revisar arte |
-| `tritao` | Tritão | 243 | 247 | Revisar arte |
-| `troglodita` | Troglodita | 244 | 248 | Revisar arte |
-| `uivante` | Uivante | 246 | 250 | Revisar arte |
-| `ursocoruja` | Urso–coruja | 248 | 252 | Revisar arte |
-| `vargouille` | Vargouille | 251 | 255 | Revisar arte |
-| `verme-do-gelo` | Verme do Gelo | 253 | 257 | Revisar arte |
-| `verme-purpura` | Verme Púrpura | 254 | 258 | Revisar arte |
-| `vinha-assassina` | Vinha Assassina | 254 | 258 | Revisar arte |
+| `slaad-cinza` | Slaad Cinza | 232 | 236 | **Confirmada** — figura compartilhada na página PDF 237 |
+| `slaad-da-morte` | Slaad da Morte | 232 | 236 | **Confirmada** — figura compartilhada com Slaad Azul na página PDF 235 |
+| `slaad-verde` | Slaad Verde | 233 | 237 | **Confirmada** — figura compartilhada na página PDF 237 |
+| `slaad-vermelho` | Slaad Vermelho | 234 | 238 | **Confirmada** — figura compartilhada na página PDF 237 |
+| `stirge` | Stirge | 235 | 239 | **Confirmada** — ilustração individual legendada na página PDF 239 |
+| `tarrasque` | Tarrasque | 236 | 240 | **Confirmada** — ilustração individual legendada na página PDF 240 |
+| `tartarugadragao` | Tartaruga–dragão | 237 | 241 | **Confirmada** — ilustração individual legendada na página PDF 241 |
+| `tendriculo` | Tendrículo | 237 | 241 | **Confirmada** — ilustração individual legendada na página PDF 242 |
+| `thoqqua` | Thoqqua | 238 | 242 | **Confirmada** — ilustração individual legendada na página PDF 243 |
+| `tita` | Titã | 239 | 243 | **Confirmada** — ilustração individual legendada na página PDF 244 |
+| `tritao` | Tritão | 243 | 247 | **Confirmada** — ilustração individual legendada na página PDF 247 |
+| `troglodita` | Troglodita | 244 | 248 | **Confirmada** — ilustração individual legendada na página PDF 248 |
+| `uivante` | Uivante | 246 | 250 | **Confirmada** — ilustração individual legendada na página PDF 250 |
+| `ursocoruja` | Urso–coruja | 248 | 252 | **Confirmada** — ilustração individual legendada na página PDF 253 |
+| `vargouille` | Vargouille | 251 | 255 | **Confirmada** — ilustração individual legendada na página PDF 255 |
+| `verme-do-gelo` | Verme do Gelo | 253 | 257 | **Confirmada** — ilustração individual legendada na página PDF 257 |
+| `verme-purpura` | Verme Púrpura | 254 | 258 | **Confirmada** — ilustração individual legendada na página PDF 258 |
+| `vinha-assassina` | Vinha Assassina | 254 | 258 | **Confirmada** — ilustração individual legendada na página PDF 259 |
 | `rastejante-noturno` | Rastejante Noturno | 257 | 261 | Revisar arte |
 | `vulto-alado` | Vulto Alado | 257 | 261 | Revisar arte |
 | `worg` | Worg | 258 | 262 | **Confirmada** — ilustração individual na página PDF 262 |
@@ -600,3 +600,40 @@ A contagem foi refeita exclusivamente na tabela principal das Faixas 1 a 7, sem 
 - PDF 215–220: Ogro Mago, Orc, Otyugh, Pantera Deslocadora e Pássaro Roca foram conferidos; apenas Ogro Mago e Pássaro Roca são IDs deste catálogo e suas associações já estavam confirmadas.
 - PDF 221–230: imagens de Pesadelo, povo-lagarto, povo do mar, Pseudodragão, Ravid e Sahuagin. As correspondências com IDs existentes já estavam registradas; as demais figuras não devem ser associadas por proximidade.
 - Nenhuma nova associação foi confirmada neste lote. Permanecem 117 associações individuais/compartilhadas confirmadas, 1 referência genérica e 112 pendências.
+
+
+### Revisão de pendências — quinto lote (páginas PDF 231–260)
+
+Foram confirmadas 23 associações novas, sempre pela legenda ou identificação visual inequívoca na própria arte:
+
+| ID | Criatura | Página impressa da ficha | Página PDF da arte | Observação |
+|---|---|---:|---:|---|
+| `salteador-etereo` | Salteador Etéreo | 228 | 232 | Figura individual |
+| `satiro` | Sátiro | 229 | 233 | Figura individual |
+| `skum` | Skum | 230 | 234 | Figura individual |
+| `slaad-azul` | Slaad Azul | 231 | 235 | Figura compartilhada com Slaad da Morte |
+| `slaad-da-morte` | Slaad da Morte | 232 | 235 | Figura compartilhada com Slaad Azul |
+| `slaad-cinza` | Slaad Cinza | 232 | 237 | Figura compartilhada com Slaad Verde e Slaad Vermelho |
+| `slaad-verde` | Slaad Verde | 233 | 237 | Figura compartilhada com Slaad Cinza e Slaad Vermelho |
+| `slaad-vermelho` | Slaad Vermelho | 234 | 237 | Figura compartilhada com Slaad Cinza e Slaad Verde |
+| `stirge` | Stirge | 235 | 239 | Figura individual |
+| `tarrasque` | Tarrasque | 236 | 240 | Figura individual |
+| `tartarugadragao` | Tartaruga–dragão | 237 | 241 | Figura individual |
+| `tendriculo` | Tendrículo | 237 | 242 | Figura individual |
+| `thoqqua` | Thoqqua | 238 | 243 | Figura individual |
+| `tita` | Titã | 239 | 244 | Figura individual |
+| `tritao` | Tritão | 243 | 247 | Figura individual |
+| `troglodita` | Troglodita | 244 | 248 | Figura individual |
+| `uivante` | Uivante | 246 | 250 | Figura individual |
+| `ursocoruja` | Urso–coruja | 248 | 253 | Figura individual |
+| `vargouille` | Vargouille | 251 | 255 | Figura individual |
+| `verme-do-gelo` | Verme do Gelo | 253 | 257 | Figura individual |
+| `verme-purpura` | Verme Púrpura | 254 | 258 | Figura individual |
+| `vinha-assassina` | Vinha Assassina | 254 | 259 | Figura individual |
+
+- PDF 232–234: as três artes de Salteador Etéreo, Sátiro e Skum estão identificadas por legenda.
+- PDF 235 e 237: as artes dos cinco slaad são compartilhadas, mas as legendas distinguem as variantes; as associações foram registradas separadamente.
+- PDF 239–259: as demais figuras da tabela foram identificadas por suas legendas. A figura do Verme da Carniça também aparece no intervalo, mas não foi associada a um ID inexistente no catálogo.
+- Nenhuma imagem de sombra, criatura planar ou variante foi reaproveitada para outra ficha.
+
+**Contagem após este lote:** 140 associações individuais/compartilhadas confirmadas, 1 referência genérica e 89 pendências (230 IDs no total).
