@@ -526,3 +526,21 @@ Os 32 registros abaixo aparecem na branch principal do catálogo com origem decl
 
 **Resultado desta etapa:** a varredura visual sequencial do PDF foi concluída até a última página (328). Isso não significa que todas as criaturas tenham arte individual: diversas fichas permanecem sem imagem confirmada no livro.
 
+
+
+### Reconciliação da cobertura — 2026-11-12
+
+A contagem foi refeita exclusivamente na tabela principal das Faixas 1 a 7, sem contar novamente as tabelas de confirmação visual:
+
+| Situação | Quantidade |
+|---|---:|
+| Arte individual ou compartilhada confirmada | 113 |
+| Referência visual genérica | 1 |
+| Revisar arte | 116 |
+| **Total de IDs do Livro dos Monstros** | **230** |
+
+- A soma fecha exatamente com os 230 IDs do Livro dos Monstros presentes no catálogo.
+- As 32 entradas SRD continuam separadas e não fazem parte desse total.
+- A varredura sequencial do PDF está concluída (páginas PDF 1–328), mas a auditoria individual de arte não está concluída: os 116 registros “Revisar arte” exigem conferência visual de suas páginas de ficha e páginas adjacentes.
+- Próxima etapa: revisar essas 116 pendências em lotes por intervalo de páginas, distinguindo claramente (a) arte encontrada e identificada, (b) figura compartilhada identificada por legenda, (c) página sem arte de criatura e (d) caso inconclusivo. Só depois dessa revisão iniciar os recortes e o manifesto local.
+- Nenhuma alteração foi feita no catálogo JSON ou no aplicativo; este commit atualiza somente a documentação do levantamento visual.
