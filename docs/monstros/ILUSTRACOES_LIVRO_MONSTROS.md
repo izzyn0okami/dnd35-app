@@ -804,3 +804,27 @@ As páginas foram renderizadas integralmente e as legendas conferidas. As seguin
 Não foram encontradas divergências de página ou de identidade neste lote. Os recortes permanecem sem coordenadas aprovadas porque as composições se aproximam de texto ou de outras figuras e precisam de isolamento manual. As associações foram mantidas como confirmadas; isso não equivale à extração das imagens.
 
 **Contagem do manifesto após o lote:** 139 registros (104 individuais, 34 compartilhados e 1 genérico), 3 recortes visualmente revisados, 123 pendentes e 30 vínculos marcados para isolamento manual. A contagem global permanece: 138 associações individuais/compartilhadas confirmadas, 1 referência genérica e 91 criaturas sem arte individual identificada (230 IDs).
+
+
+### Revisão visual complementar — páginas PDF 61–79 (2026-11-12)
+
+A conferência foi feita nas páginas completas, com leitura das legendas e distinção entre ilustrações e fichas de criaturas adjacentes.
+
+- **PDF 62:** Glabrezu e Vrock aparecem na mesma composição, cada um identificado por legenda. Manter os vínculos compartilhados já registrados.
+- **PDF 64:** Destrachan possui arte própria legendada. O texto de “Devorador” na margem inicia a ficha seguinte; não confundir essa ficha com a criatura Devorador de Aranhas.
+- **PDF 65:** Devorador e Devorador de Aranhas aparecem como figuras distintas, com legendas próprias. A associação do catálogo é com **Devorador de Aranhas**; não criar um registro para o Devorador se ele não existir no conjunto de IDs.
+- **PDF 69:** a composição reúne Diabrete, Diabo do Gelo, Diabo Farpado e Lemure. O Diabrete e o Diabo Farpado são identificados pelas legendas. Corrigida a página da arte de **Diabo Farpado (Hamatula)** de PDF 71 para PDF 69 (página impressa 65); a ficha da Hamatula aparece depois, mas a figura legendada está nesta composição.
+- **PDF 70:** Diabo Barbado (Barbazu) e Erinyes aparecem na mesma composição, com legendas próprias. Preservar as associações compartilhadas.
+- **PDF 71:** a figura legendada Diabo das Correntes (Kyton) foi confirmada.
+- **PDF 73:** Gato Infernal (Bezekira) possui figura própria legendada. A ficha de Erinyes que aparece na página não altera sua associação à arte compartilhada da página PDF 70.
+- **PDF 75:** Lorde das Profundezas e Diabo dos Ossos (Osyluth) aparecem na mesma página com legendas próprias; são figuras distintas.
+- **PDF 76:** a ilustração inferior está legendada Digestor. A ficha de Dilacerador Cinzento começa na página seguinte.
+- **PDF 77:** a figura grande está legendada **Dilacerador Cinzento**. A ficha de Dinonico começa na página, mas não há figura identificada como Dinonico.
+- **PDF 78:** Tiranossauro possui arte própria legendada. Elasmossauro e Megaraptor não devem receber essa imagem.
+- **PDF 79:** Doppelganger possui arte própria legendada. A ficha de Tricerátops na mesma página não possui arte individual nessa página.
+
+**Correção de associação:** o vínculo de Dinonico com PDF 77 foi removido. A figura dessa página pertence ao Dilacerador Cinzento. Dinonico passa a integrar a categoria sem arte individual identificada nas páginas verificadas. A arte de Diabo Farpado foi realocada para PDF 69, conforme a legenda da figura.
+
+Os recortes das 14 associações revisadas neste lote permanecem sem coordenadas aprovadas e foram marcados para isolamento manual quando a composição inclui outras criaturas ou texto. Não foram exportados arquivos de imagem.
+
+**Contagem reconciliada após este lote:** 138 registros no manifesto (103 individuais, 34 compartilhados e 1 genérico), equivalentes a 137 associações de arte individuais/compartilhadas confirmadas e 1 referência genérica. No universo de 230 IDs, 92 não possuem arte individual identificada e 0 permanecem inconclusivos. O manifesto tem 3 recortes visualmente revisados, 122 pendentes e 44 vínculos marcados para isolamento manual.
