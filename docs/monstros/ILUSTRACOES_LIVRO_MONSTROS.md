@@ -54,7 +54,7 @@
 |---|---|---:|---:|---|
 | `cacador-invisivel` | Caçador Invisível | 39 | 43 | **Confirmada** — ilustração na página PDF 44 |
 | `cao-infernal` | Cão Infernal | 40 | 44 | **Confirmada** — ilustração na página PDF 44 |
-| `cao-de-guerra-nessian` | Cão de Guerra Nessian | 40 | 44 | Revisar arte |
+| `cao-de-guerra-nessian` | Cão de Guerra Nessian | 40 | 44 | Sem arte individual identificada nas páginas da ficha e adjacentes |
 | `cao-teleportador` | Cão Teleportador | 41 | 45 | **Confirmada** — ilustração na página PDF 45 |
 | `cao-yeth` | Cão Yeth | 41 | 45 | **Confirmada** — ilustração na página PDF 46 |
 | `chuul` | Chuul | 44 | 48 | **Confirmada** — ilustração na página PDF 48 |
@@ -63,8 +63,8 @@
 | `coruja-gigante` | Coruja Gigante | 46 | 50 | **Confirmada** — ilustração na página PDF 51 |
 | `couatl` | Couatl | 47 | 51 | **Confirmada** — ilustração na página PDF 51 |
 | `cria-vampirica` | Cria Vampírica | 48 | 52 | **Confirmada** — ilustração na página PDF 52 |
-| `rato-atroz-abissal` | Rato Atroz Abissal | 49 | 53 | Revisar arte |
-| `leao-celestial` | Leão Celestial | 49 | 53 | Revisar arte |
+| `rato-atroz-abissal` | Rato Atroz Abissal | 49 | 53 | Sem arte individual identificada nas páginas da ficha e adjacentes |
+| `leao-celestial` | Leão Celestial | 49 | 53 | Sem arte individual identificada nas páginas da ficha e adjacentes |
 | `babau` | Babau | 50 | 54 | **Confirmada** — ilustração compartilhada na página PDF 59 |
 | `balor` | Balor | 51 | 55 | **Confirmada** — ilustração compartilhada na página PDF 54 |
 | `bebilith` | Bebilith | 52 | 56 | **Confirmada** — ilustração na página PDF 56 |
@@ -73,9 +73,9 @@
 | `hezrou` | Hezrou | 54 | 58 | **Confirmada** — ilustração compartilhada na página PDF 59 |
 | `marilith` | Marilith | 55 | 59 | **Confirmada** — ilustração compartilhada na página PDF 54 |
 | `nalfeshnee` | Nalfeshnee | 56 | 60 | **Confirmada** — ilustração na página PDF 60 |
-| `quasit` | Quasit | 57 | 61 | Revisar arte |
+| `quasit` | Quasit | 57 | 61 | Sem arte individual identificada nas páginas da ficha e adjacentes |
 | `vrock` | Vrock | 58 | 62 | **Confirmada** — ilustração compartilhada na página PDF 62 |
-| `derro` | Derro | 59 | 63 | Revisar arte |
+| `derro` | Derro | 59 | 63 | Sem arte individual identificada nas páginas da ficha e adjacentes |
 | `destrachan` | Destrachan | 60 | 64 | **Confirmada** — ilustração na página PDF 64 |
 | `devorador-de-aranhas` | Devorador de Aranhas | 61 | 65 | **Confirmada** — ilustração na página PDF 65 |
 | `diabo-barbado-barbazu` | Diabo Barbado (barbazu) | 64 | 68 | **Confirmada** — ilustração compartilhada na página PDF 70 |
@@ -94,10 +94,10 @@
 | `digestor` | Digestor | 72 | 76 | **Confirmada** — ilustração na página PDF 76 |
 | `dilacerador-cinzento` | Dilacerador Cinzento | 72 | 76 | **Confirmada** — ilustração na página PDF 77 |
 | `dinonico` | Dinonico | 73 | 77 | **Confirmada** — ilustração individual na página PDF 77 |
-| `elasmossauro` | Elasmossauro | 74 | 78 | Revisar arte |
-| `megaraptor` | Megaraptor | 74 | 78 | Revisar arte |
+| `elasmossauro` | Elasmossauro | 74 | 78 | Sem arte individual identificada nas páginas da ficha e adjacentes |
+| `megaraptor` | Megaraptor | 74 | 78 | Sem arte individual identificada nas páginas da ficha e adjacentes |
 | `tiranossauro` | Tiranossauro | 74 | 78 | **Confirmada** — ilustração na página PDF 78 |
-| `triceratops` | Tricerátops | 75 | 79 | Revisar arte |
+| `triceratops` | Tricerátops | 75 | 79 | Sem arte individual identificada nas páginas da ficha e adjacentes |
 | `doppelganger` | Doppelganger | 75 | 79 | **Confirmada** — ilustração na página PDF 79 |
 | `dragonado` | Dragonado | 96 | 100 | **Confirmada** — ilustração na página PDF 100 |
 | `driade` | Dríade | 97 | 101 | **Confirmada** — ilustração na página PDF 101 |
@@ -660,3 +660,16 @@ A inspeção foi feita por renderização das páginas completas do PDF, não ap
 | **Total de IDs do Livro dos Monstros** | **230** |
 
 Os 32 registros SRD continuam separados. Nenhum arquivo de imagem, recurso Android ou estatística de criatura foi alterado.
+
+
+### Revisão visual complementar — páginas PDF 44, 53, 61, 63 e 78–79
+
+- PDF 44: a arte central é legendada “Caçador Invisível”; a arte inferior é “Cão Infernal”. A ficha de Cão de Guerra Nessian não tem ilustração própria identificável.
+- PDF 53: as fichas de Rato Atroz Abissal e Leão Celestial não apresentam ilustração individual.
+- PDF 61: a ficha de Quasit não apresenta ilustração individual.
+- PDF 63: a ficha de Derro não apresenta ilustração individual.
+- PDF 78: a ilustração corresponde ao Tiranossauro; Elasmossauro e Megaraptor não têm figura própria identificável.
+- PDF 79: a ilustração corresponde ao Doppelganger; Tricerátops não tem figura própria identificável.
+- Oito registros foram classificados como “Sem arte individual identificada nas páginas da ficha e adjacentes”. As imagens de Cão Infernal, Caçador Invisível, Tiranossauro e Doppelganger não foram reaproveitadas.
+
+**Contagem após esta revisão:** 140 artes individuais/compartilhadas confirmadas, 1 referência genérica, 69 sem arte individual identificada e 20 ainda em revisão (230 IDs).
