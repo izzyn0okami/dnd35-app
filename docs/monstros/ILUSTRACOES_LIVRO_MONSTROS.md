@@ -1042,3 +1042,12 @@ A direção aprovada para as cartas de monstros passa a ser utilizar ilustraçõ
 ## Pesquisa-piloto de fontes externas de arte livre (2026-11-12)
 
 A primeira busca de candidatos foi registrada no documento docs/monstros/PLANO_IMAGENS_LIVRES.md. Foram localizados candidatos para Beholder e Dríade (incluindo um arquivo CC0 com página e licença verificadas) e um candidato CC BY para Lich. Não houve validação de candidatos individuais suficientes para Bugbear, Tarrasque e Mephits nesta busca inicial. Pacotes pixel art CC0 foram catalogados apenas como possíveis placeholders, não como arte principal. Nenhuma imagem foi baixada, aprovada ou adicionada ao aplicativo. A política permanece: conferir a página original, inspecionar a imagem em resolução integral e registrar proveniência/licença antes de incorporar qualquer asset.
+
+
+## Decisão operacional — Pinterest como descoberta visual provisória (2026-11-12)
+
+O usuário autorizou usar Pinterest como base de busca para encontrar rapidamente as representações mais prováveis de todas as criaturas, deixando a auditoria estética/substituição manual para uma etapa posterior. Para não confundir descoberta com autorização de uso, foi criado o índice `docs/monstros/REFERENCIAS_PINTEREST.json`, com 230 buscas individualizadas vinculadas aos IDs do catálogo e com caminhos de assets padronizados.
+
+O repositório `izzyn0okami/dnd35-app` está público. Portanto, imagens encontradas no Pinterest não serão baixadas nem commitadas sem rastrear a publicação original e confirmar direitos compatíveis com redistribuição e adaptação. Pinterest não é fonte de licença. Os nomes de arquivo reservados seguem `app/src/main/assets/monsters/<creatureId>.webp`; o índice distingue caminhos planejados de arquivos efetivamente existentes.
+
+**Estado:** 230 buscas registradas; 0 imagens baixadas; 0 imagens aprovadas; 0 alterações em código, catálogo ou APK. As 32 entradas complementares do SRD não foram incluídas, preservando o escopo de 230 criaturas do Livro dos Monstros.
