@@ -1051,3 +1051,20 @@ O usuário autorizou usar Pinterest como base de busca para encontrar rapidament
 O repositório `izzyn0okami/dnd35-app` está público. Portanto, imagens encontradas no Pinterest não serão baixadas nem commitadas sem rastrear a publicação original e confirmar direitos compatíveis com redistribuição e adaptação. Pinterest não é fonte de licença. Os nomes de arquivo reservados seguem `app/src/main/assets/monsters/<creatureId>.webp`; o índice distingue caminhos planejados de arquivos efetivamente existentes.
 
 **Estado:** 230 buscas registradas; 0 imagens baixadas; 0 imagens aprovadas; 0 alterações em código, catálogo ou APK. As 32 entradas complementares do SRD não foram incluídas, preservando o escopo de 230 criaturas do Livro dos Monstros.
+
+
+## Primeira rodada de descoberta de candidatos — Pinterest e OpenGameArt (2026-11-12)
+
+A busca pública por pins individuais do Pinterest para Beholder, Tarrasque, Mephit, Aboleth, Devorador de Mentes, Umber Hulk, Besta Deslocadora, Monstro da Ferrugem, Slaad e Bruxa da Noite retornou resultados escassos ou sem correspondência confiável. Não foi associado nenhum pin individual a uma criatura nesta rodada. As URLs de busca por criatura permanecem no índice para revisão visual manual.
+
+Como fontes de contingência com licenças declaradas, foram identificados candidatos no OpenGameArt:
+- **One Eye Armored Monster**, Xacur — CC BY 4.0; marcado como beholder; variantes colorida, monocromática e line art. Candidato específico para Beholder, ainda não baixado/inspecionado.
+- **Observers**, AntumDeluge — CC BY 4.0 / CC BY 3.0 / OGA-BY 3.0 conforme página; inclui sprites Young Beholder, Beholder e Elder Beholder. Candidato específico, mas em pixel art.
+- **Demon/Devil**, Nerveona — CC0; sprite direcional genérico, sem associação a uma criatura específica.
+- **The Free Monsters**, Justin Nichol — CC BY-SA 3.0 e GPL 2.0/3.0; coleção declara Naga, Ratman, Treefolk, Troll, Divine Guardian, Lichlord, Violence Demon, Goblin, Orc, Harpy e Dragon.
+- **Monster Builder Pack**, Kenney — CC0; 178 tiles modulares, útil como placeholder, mas exige composição.
+- **Tiny Creatures**, Clint Bellanger e Kenney — CC0; pacote de sprites pixel art com mais de 100 monstros e mais de 50 animais, candidato a placeholders.
+
+Nenhum arquivo foi baixado ou incluído no app nesta rodada. As licenças e descrições acima são as declaradas nas páginas do OpenGameArt; a seleção final exige inspeção do arquivo e preservação dos créditos/termos. Não foram atribuídos assets a IDs de criaturas além de registrar candidatos explicitamente marcados para Beholder.
+
+**Estado acumulado:** 230 buscas Pinterest individualizadas; 0 pins aprovados; 0 imagens incorporadas; 0 alterações no catálogo, código ou APK. Referências: https://opengameart.org/content/one-eye-armored-monster ; https://opengameart.org/content/observers ; https://opengameart.org/content/demondevil ; https://opengameart.org/content/the-free-monsters ; https://opengameart.org/content/monster-builder-pack ; https://opengameart.org/content/tiny-creatures .
