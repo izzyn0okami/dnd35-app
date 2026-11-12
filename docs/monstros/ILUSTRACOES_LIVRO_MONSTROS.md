@@ -510,3 +510,19 @@ Os 32 registros abaixo aparecem na branch principal do catálogo com origem decl
 - Nenhum arquivo de imagem foi extraído nem adicionado ao APK nesta etapa.
 
 - Revisada a divergência do catálogo: os 32 registros posteriores aos 230 IDs do Livro dos Monstros têm fonte declarada como SRD 3.5 (OGL), traduzido. Eles foram separados neste documento e não serão associados artificialmente a páginas do PDF brasileiro.
+
+
+### Continuação da conferência — PDF 295 a 328
+
+- PDF 295–299 (páginas impressas 291–295): Capítulo 4, “Monstros com Progressão”. Páginas de texto e tabelas; não foram identificadas ilustrações de criaturas.
+- PDF 300–307 (páginas impressas 296–303): Capítulo 5, “Criando Monstros”. Conteúdo textual e tabelas; sem ilustrações individuais de criaturas.
+- PDF 308–309 (páginas impressas 304–305): Capítulo 6, “Perícias e Talentos para Monstros”. Conteúdo textual/tabelas; sem arte de criaturas.
+- PDF 310–322 (páginas impressas 306–318): Capítulo 7, glossário. Páginas textuais; não foi encontrada arte de criatura.
+- PDF 323–324 (páginas impressas 319–320): índices/listas de referência. Sem ilustrações individuais.
+- PDF 325–326: páginas finais sem conteúdo visual de criatura associado ao catálogo.
+- PDF 327–328: imagens de encerramento/capa do volume, não são ilustrações de criaturas e não devem ser vinculadas a IDs.
+- A inspeção estrutural do PDF confirmou que as páginas 295–324 não contêm imagens raster embutidas. As miniaturas e a inspeção visual também não revelaram ilustrações vetoriais de criaturas nessas páginas.
+- Nenhuma nova associação criatura–arte foi confirmada neste intervalo. As entradas ainda marcadas como “Revisar arte” permanecem pendentes; a ausência de arte nas páginas finais não autoriza substituições genéricas.
+
+**Resultado desta etapa:** a varredura visual sequencial do PDF foi concluída até a última página (328). Isso não significa que todas as criaturas tenham arte individual: diversas fichas permanecem sem imagem confirmada no livro.
+
