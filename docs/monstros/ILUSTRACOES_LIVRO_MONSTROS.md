@@ -860,3 +860,23 @@ A inspeção das páginas completas confirmou as seguintes artes por legenda:
 As seis associações foram marcadas para isolamento manual. Nenhum recorte foi exportado.
 
 **Contagem atual do manifesto:** 138 registros (103 individuais, 34 compartilhados e 1 genérico), equivalentes a 137 associações individuais/compartilhadas confirmadas e 1 referência genérica. No universo de 230 IDs, 92 não possuem arte individual identificada e nenhum permanece inconclusivo. O manifesto registra 3 recortes visualmente revisados, 111 pendentes e 55 vínculos marcados para isolamento manual.
+
+
+### Revisão visual complementar — páginas PDF 126–149 (2026-11-12)
+
+A inspeção das páginas completas permitiu confirmar as artes e corrigir uma associação compartilhada indevida:
+
+- **PDF 126:** a única ilustração está legendada **Pixie**. Embora as fichas de Grig e Nixie também apareçam na página, a imagem não está identificada como representação dessas criaturas. Corrigida a associação de Pixie para individual e removidos os vínculos de Grig e Nixie com essa arte. Grig e Nixie passam à categoria sem arte individual identificada.
+- **Fera do Caos (PDF 130 / impressa 126):** figura individual confirmada pela legenda.
+- **Fogo–fátuo (PDF 131 / impressa 127):** figura individual confirmada pela legenda.
+- **Fungo Fantasma e Gárgula (PDF 135 / impressa 131):** duas figuras distintas na mesma página, ambas identificadas por legendas próprias.
+- **Djinni e Efreeti (PDF 138 / impressa 134):** composição compartilhada, com as duas criaturas identificadas por legenda. Preservar a associação comum.
+- **Gigante do Fogo (PDF 141 / impressa 137):** figura identificada pela legenda na composição com o Gigante do Gelo. Não criar associação para o Gigante do Gelo, que não integra o conjunto de IDs atual.
+- **Gigante das Nuvens e Gigante de Pedra (PDF 145 / impressa 141):** ambas as figuras estão identificadas na composição compartilhada. A figura do Gigante das Colinas também aparece na composição, mas não há ID correspondente no catálogo atual; não criar vínculo.
+- **Girallon (PDF 146 / impressa 142)** e **Gnoll (PDF 149 / impressa 145):** artes individuais confirmadas pelas legendas.
+
+As 12 associações mantidas neste lote foram marcadas para isolamento manual; nenhuma imagem foi exportada.
+
+**Correção de escopo:** a arte legendada Pixie não comprova representar Grig ou Nixie. Os dois vínculos foram removidos, evitando a reutilização de uma imagem apenas por proximidade na página.
+
+**Contagem atualizada:** 136 registros no manifesto (104 individuais, 31 compartilhados e 1 genérico), equivalentes a 135 associações individuais/compartilhadas confirmadas e 1 referência genérica. No universo de 230 IDs, 94 não possuem arte individual identificada e nenhum permanece inconclusivo. O manifesto registra 3 recortes visualmente revisados, 99 pendentes e 67 vínculos marcados para isolamento manual.
