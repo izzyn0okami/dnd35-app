@@ -962,3 +962,19 @@ A inspeção sequencial das páginas finais do conteúdo principal e dos capítu
 - **PDF 327–328:** capas finais do volume, fora do conjunto de ilustrações internas de criaturas.
 
 **Resultado do lote:** nenhuma associação do manifesto foi criada, removida ou alterada. A ocorrência de Zumbi foi documentada como fora do escopo porque o catálogo auditado não contém esse ID. Permanecem válidas as contagens do manifesto: 136 registros (104 individuais, 31 compartilhados e 1 genérico), 3 recortes visualmente revisados, 65 pendentes e 101 vínculos que exigem isolamento manual; 94 IDs do catálogo não possuem arte individual identificada e 0 estão inconclusivos. Nenhuma imagem foi extraída e nenhum arquivo do catálogo ou APK foi alterado.
+
+
+### Teste de extração por recomposição de objetos PDF — lotes privados 01 e 02 (2026-11-12)
+
+Foi validada uma técnica que evita rasterizar a página inteira: os blocos de imagem incorporados são lidos individualmente e recompostos pelas respectivas caixas de posicionamento no PDF. Como as legendas e o texto corrido são vetoriais, eles não entram nos PNGs. Um pequeno alargamento controlado das bordas dos blocos elimina linhas claras artificiais causadas pelo arredondamento de coordenadas fracionárias; a correção foi conferida especialmente na arte do Arbusto Errante.
+
+**Oito extrações privadas locais foram produzidas e inspecionadas:**
+
+- **Individuais:** Abocanhador Matraqueante (PDF 12), Águia Gigante (PDF 15), Allip (PDF 16), Aranea (PDF 27, composição superior), Aranha Interplanar (PDF 27, composição inferior) e Arbusto Errante (PDF 28).
+- **Compartilhadas:** Anjos Deva Astral, Planetário e Solar (PDF 24, uma única composição) e Arcontes Luminar e Mensageiro (PDF 31, uma única composição).
+
+As duas composições compartilhadas permanecem como um único arquivo cada; não foram inventados retratos individuais. Os arquivos PNG e seus metadados foram empacotados em dois arquivos ZIP privados locais, separados por lote. Eles não foram enviados ao repositório, não receberam caminhos públicos no manifesto e não foram incluídos no APK. O status de extração do manifesto permanece inalterado, pois ele descreve os recursos versionados/distribuíveis do projeto, não os arquivos privados desta sessão.
+
+**Limites desta validação:** a técnica recompõe corretamente os objetos raster e exclui texto vetorial, mas ainda exige conferência visual por página para distinguir artes múltiplas, preservar composições compartilhadas e confirmar a associação com a legenda. A resolução resultante é limitada pela resolução dos objetos originais incorporados; o aumento de escala usado no PNG apenas reduz artefatos de junção e não cria detalhe novo.
+
+**Estado do projeto:** 8 imagens de teste extraídas apenas localmente; 0 imagens adicionadas ao Git; 0 alterações no catálogo, código ou APK; 0 mudanças nas contagens do manifesto (136 registros, 3 recortes previamente revisados, 65 pendentes e 101 vínculos que ainda exigem isolamento manual). A restrição de direitos autorais continua válida: não redistribuir nem incorporar as artes em APK público sem autorização/licença compatível.
