@@ -174,6 +174,18 @@ private fun CreatureListItem(creature: CreatureDefinition, onClick: () -> Unit) 
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
+                val usageLabels = buildList {
+                    if (creature.animalCompanion) add("Companheiro animal")
+                    if (creature.summonedCreature) add("Invocável")
+                    if (creature.familiar) add("Familiar")
+                }
+                if (usageLabels.isNotEmpty()) {
+                    Text(
+                        usageLabels.joinToString(" • "),
+                        style = MaterialTheme.typography.labelSmall,
+                        color = MaterialTheme.colorScheme.primary
+                    )
+                }
             }
             Surface(
                 shape = RoundedCornerShape(8.dp),
