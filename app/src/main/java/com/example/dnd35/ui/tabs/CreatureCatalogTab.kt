@@ -220,6 +220,15 @@ private fun CreatureDetail(
         }
         item { CreatureImagePlaceholder() }
         item {
+            CreatureSection("Descrição") {
+                Text(
+                    "Texto descritivo da criatura será incorporado após extração e conferência no Livro dos Monstros.",
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
+        }
+        item {
             CreatureSection("Bloco de Estatísticas") {
                 CreatureField("Dados de Vida", "${creature.hitDice} (${creature.hitPoints} PV)")
                 CreatureField("Iniciativa", signed(creature.initiative))
@@ -255,6 +264,15 @@ private fun CreatureDetail(
             }
         }
         item {
+            CreatureSection("Combate") {
+                Text(
+                    "Regras de combate, habilidades e efeitos específicos serão incorporados após conferência do verbete no livro.",
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
+        }
+        item {
             CreatureSection("Informações Gerais") {
                 CreatureField("Ambiente", creature.environment)
                 CreatureField("Organização", creature.organization)
@@ -265,14 +283,6 @@ private fun CreatureDetail(
                 CreatureField("Ajuste de Nível", creature.levelAdjustment)
                 CreatureField("Fonte dos dados", creature.source)
             }
-        }
-        item {
-            Text(
-                "As descrições extensas e as regras individuais de combate serão incorporadas à ficha em uma etapa própria, após a estrutura-base.",
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                modifier = Modifier.padding(bottom = 20.dp)
-            )
         }
     }
 }

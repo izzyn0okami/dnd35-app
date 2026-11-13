@@ -366,3 +366,5 @@ A tela **Monstros** foi adicionada à navegação principal e consome o catálog
 A área de imagem é somente um espaço reservado nesta etapa. A seleção e persistência de imagens locais serão implementadas posteriormente, quando o usuário escolher as ilustrações. Não inserir URLs ou imagens de terceiros no catálogo.
 
 Limitação registrada: os 230 registros atuais ainda não contêm os textos narrativos completos nem o desenvolvimento individual de Combate/descrições especiais para todas as criaturas. Esses conteúdos não devem ser inventados nem preenchidos com texto genérico como se fossem transcrições do livro; serão extraídos e conferidos separadamente contra o PDF brasileiro do Livro dos Monstros.
+
+A interface reserva seções separadas para **Descrição** e **Combate**, sem preencher o conteúdo até a conferência do verbete no PDF.

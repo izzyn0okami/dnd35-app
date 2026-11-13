@@ -37,3 +37,7 @@ Conferência inicial no PDF brasileiro fornecido, Introdução, páginas impress
 
 ### Regra contra redundância
 Não reimplementar a listagem, busca, filtros por tipo/tamanho ou os campos mecânicos já presentes nesta etapa. Próximas alterações devem avançar nas pendências acima e atualizar este log.
+
+
+### Complemento de estrutura — 2026-11-12
+- A ficha também reserva seções próprias para **Descrição** e **Combate**. Elas permanecem explicitamente identificadas como conteúdo pendente até que o texto seja extraído e conferido no PDF; nenhum texto de regra é presumido.
