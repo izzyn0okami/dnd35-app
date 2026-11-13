@@ -188,13 +188,23 @@ object SummoningRules {
         spellName: String,
         spellCircle: Int,
         casterClass: String,
-        stats: CalculatedCharacterStats
+        stats: CalculatedCharacterStats,
+        character: CharacterEntity,
+        spellDomain: String = ""
     ): List<SummonCreatureOption>? {
         val family = familyForSpell(spellName) ?: return null
-        if (!isClassAllowed(family, casterClass)) return emptyList()
+        val clericAnimalDomain = family == SummoningFamily.SUMMON_NATURE_ALLY &&
+            casterClass.equals("Clérigo", ignoreCase = true) &&
+            spellDomain.equals("Animais", ignoreCase = true) &&
+            ClericDomainRules.domainsOf(character).any { it.equals("Animais", ignoreCase = true) }
+        if (!isClassAllowed(family, casterClass) && !clericAnimalDomain) return emptyList()
         val preset = Dnd35Rules.PRESET_SPELLS.firstOrNull { it.name.equals(spellName, ignoreCase = true) }
             ?: return emptyList()
-        val listedCircle = SpellbookRules.classLevelOf(preset, casterClass) ?: return emptyList()
+        val listedCircle = if (clericAnimalDomain) {
+            preset.domainLevels.entries.firstOrNull { it.key.equals("Animais", ignoreCase = true) }?.value
+        } else {
+            SpellbookRules.classLevelOf(preset, casterClass)
+        } ?: return emptyList()
         if (listedCircle != spellCircle) return emptyList()
         val caster = stats.casterClasses.firstOrNull { it.className.equals(casterClass, ignoreCase = true) }
             ?: return emptyList()

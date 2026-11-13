@@ -92,7 +92,7 @@ fun SpellsTab(
     var summonSelectionError by remember { mutableStateOf<String?>(null) }
 
     fun castSpellOrChooseCreature(spell: CharacterSpell, slot: SpellSlotInfo, casterClass: String) {
-        val options = SummoningRules.optionsForSpell(spell.name, spell.level, casterClass, stats)
+        val options = SummoningRules.optionsForSpell(spell.name, spell.level, casterClass, stats, character, spell.domain)
         when {
             options == null -> viewModel.castSpell(spell.id, slot, stats.spellSlots)
             options.isEmpty() -> summonSelectionError = "Não há cartas elegíveis para esta magia, classe e círculo na progressão atual."

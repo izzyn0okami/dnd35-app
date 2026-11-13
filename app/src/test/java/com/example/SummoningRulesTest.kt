@@ -50,6 +50,16 @@ class SummoningRulesTest {
     }
 
     @Test
+    fun animalDomainProvidesNatureAllySpellsToClerics() {
+        val animalDomainSpells = com.example.dnd35.model.ClericDomainRules.domainSpellsAt(
+            listOf("Animais"),
+            1
+        )
+        assertTrue(animalDomainSpells.any { it.second.name == "Invocar Aliado da Natureza I" })
+        assertFalse(SummoningRules.isClassAllowed(SummoningFamily.SUMMON_NATURE_ALLY, "Clérigo"))
+    }
+
+    @Test
     fun templatedSummonsAreMarkedInOptions() {
         val dog = SummoningRules.creaturesForCircle(SummoningFamily.SUMMON_CREATURES, 1)
             .first { it.creature.id == "cachorro" }
