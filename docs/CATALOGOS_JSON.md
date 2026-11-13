@@ -351,3 +351,18 @@ que já existem e valida PV×DV, atributos e testes.
 - Ainda faltam: Besouro, Gafanhoto, Louva-a-Deus e Abelha Gigantes, Formiga Gigante Rainha,
   Texugo Atroz (PV não bate com os DV no livro) e os monstros de nível/grandes (gigantes,
   hidras, nagas, elementais...).
+
+
+### Estrutura visual do bestiário (2026-11-12)
+
+A tela **Monstros** foi adicionada à navegação principal e consome o catálogo existente por meio de `CreatureCatalog`, sem duplicar os registros. A primeira versão inclui:
+
+- busca por nome, sem distinção de acentos (reaproveita a normalização do catálogo);
+- filtros combináveis por tipo e tamanho;
+- listagem com tamanho, tipo e Nível de Desafio;
+- ficha detalhada com todos os campos mecânicos atualmente presentes em `CreatureDefinition`;
+- área vazia reservada à ilustração, sem download, pesquisa ou inclusão automática de imagens.
+
+A área de imagem é somente um espaço reservado nesta etapa. A seleção e persistência de imagens locais serão implementadas posteriormente, quando o usuário escolher as ilustrações. Não inserir URLs ou imagens de terceiros no catálogo.
+
+Limitação registrada: os 230 registros atuais ainda não contêm os textos narrativos completos nem o desenvolvimento individual de Combate/descrições especiais para todas as criaturas. Esses conteúdos não devem ser inventados nem preenchidos com texto genérico como se fossem transcrições do livro; serão extraídos e conferidos separadamente contra o PDF brasileiro do Livro dos Monstros.

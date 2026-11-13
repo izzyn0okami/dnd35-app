@@ -90,6 +90,7 @@ import com.example.dnd35.ui.tabs.InventoryTab
 import com.example.dnd35.ui.tabs.OverviewCombatTab
 import com.example.dnd35.ui.tabs.SkillsTab
 import com.example.dnd35.ui.tabs.SpellsTab
+import com.example.dnd35.ui.tabs.CreatureCatalogTab
 import com.example.dnd35.ui.session.SessionHubScreen
 import com.example.dnd35.ui.session.SessionFloatingPanels
 import com.example.dnd35.viewmodel.CharacterViewModel
@@ -421,7 +422,8 @@ fun DndMainScreen(
                     Triple("Perícias", Icons.Default.Star, 1),
                     Triple("Carga & Itens", Icons.Default.FitnessCenter, 2),
                     Triple("Talentos", Icons.Default.MilitaryTech, 3),
-                    Triple("Grimório", Icons.Default.AutoStories, 4)
+                    Triple("Grimório", Icons.Default.AutoStories, 4),
+                    Triple("Monstros", Icons.Default.Pets, 5)
                 )
 
                 items.forEach { (label, icon, index) ->
@@ -451,7 +453,7 @@ fun DndMainScreen(
             val char = activeCharacter
             val calc = computedStats
 
-            if (char == null && characters.isEmpty()) {
+            if (selectedTab == 5) {\n                CreatureCatalogTab(modifier = Modifier.fillMaxSize())\n            } else if (char == null && characters.isEmpty()) {
                 Column(
                     modifier = Modifier
                         .fillMaxSize()
