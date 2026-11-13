@@ -19,7 +19,7 @@ data class SummonCreatureOption(
 object SummoningRules {
     private val natureLists = mapOf(
         1 to "rato-atroz aguia macaco polvo coruja golfinho vibora-pequena lobo",
-        2 to "urso-negro crocodilo morcego-atroz hipogrifo tubarao-medio vibora-media lula carcaju",
+        2 to "urso-negro crocodilo texugo-atroz morcego-atroz hipogrifo tubarao-medio vibora-media lula carcaju",
         3 to "gorila arminho-atroz lobo-atroz aguia-gigante leao coruja-gigante satiro texugo-atroz tubarao-grande cobra-constritora vibora-grande thoqqua",
         4 to "crocodilo-gigante dinonico gorila-atroz javali-atroz carcaju-atroz leao-marinho tubarao-enorme vibora-enorme tigre urso-marrom",
         5 to "leao-atroz elasmossauro grifo janni nixie satiro cobra-constritora-gigante rinoceronte baleia-orca",
@@ -32,7 +32,7 @@ object SummoningRules {
     private val monsterLists = mapOf(
         1 to "cachorro coruja vaga-lume-gigante golfinho texugo macaco rato-atroz-abissal centopeia-media falcao aranha-pequena polvo vibora-pequena",
         2 to "cachorro-de-montaria aguia lula lobo centopeia-grande escorpiao-medio tubarao-medio aranha-media vibora-media",
-        3 to "urso-negro bisao hipogrifo gorila arminho-atroz cao-infernal cobra-constritora javali morcego-atroz centopeia-enorme crocodilo dretch vibora-grande carcaju",
+        3 to "urso-negro bisao texugo-atroz hipogrifo gorila arminho-atroz cao-infernal cobra-constritora javali morcego-atroz centopeia-enorme crocodilo dretch vibora-grande carcaju",
         4 to "coruja-gigante aguia-gigante leao-celestial mephit-da-agua mephit-do-ar mephit-do-fogo mephit-do-gelo mephit-do-limo mephit-do-magma mephit-da-poeira mephit-do-sal mephit-do-vapor lobo-atroz vespa-gigante tubarao-grande aranha-grande vibora-enorme uivante",
         5 to "achaierai urso-marrom grifo diabo-barbado-barbazu dinonico gorila-atroz javali-atroz tubarao-enorme escorpiao-grande mastim-das-sombras carcaju-atroz crocodilo-gigante tigre",
         6 to "urso-atroz baleia-orca leao-atroz cobra-constritora-gigante diabo-das-correntes-kyton centopeia-imensa rinoceronte elasmossauro aranha-enorme",
