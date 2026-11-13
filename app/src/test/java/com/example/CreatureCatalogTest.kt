@@ -77,8 +77,6 @@ class CreatureCatalogTest {
         assertTrue(CreatureCatalog.byId("centopeia-imensa") != null)
         assertTrue(CreatureCatalog.byId("tubarao-enorme") != null)
     }
-}
-
 
     @Test
     fun rulesEligibilityFlagsMatchPlayersHandbookLists() {
@@ -116,3 +114,4 @@ class CreatureCatalogTest {
             assertTrue("$id deveria constar nas listas de invocação", CreatureCatalog.byId(id)!!.summonedCreature)
         }
     }
+}
