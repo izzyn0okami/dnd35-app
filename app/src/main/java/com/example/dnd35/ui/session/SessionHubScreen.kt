@@ -3,6 +3,7 @@ package com.example.dnd35.ui.session
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -47,6 +48,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Switch
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -66,11 +68,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.dnd35.model.CharacterEntity
+import com.example.dnd35.model.CreatureCatalog
+import com.example.dnd35.model.CreatureDefinition
 import com.example.dnd35.model.CharacterInventoryItem
 import com.example.dnd35.session.ActionRequest
 import com.example.dnd35.session.Combatant
 import com.example.dnd35.session.CombatState
 import com.example.dnd35.session.JoinPayload
+import com.example.dnd35.session.MonsterCardShortcut
 import com.example.dnd35.session.Participant
 import com.example.dnd35.session.ParticipantRole
 import com.example.dnd35.session.PrivateChatEntry
@@ -370,6 +375,274 @@ private fun NpcManagementSection(characterViewModel: CharacterViewModel) {
     }
 }
 
+
+
+/**
+ * Coleção privada de atalhos do Mestre. Cada card guarda apenas o ID da criatura do bestiário;
+ * os dados mecânicos continuam sendo lidos do catálogo e nunca são copiados para uma ficha.
+ */
+@Composable
+private fun MonsterCardsSection(
+    cards: List<MonsterCardShortcut>,
+    onAdd: (String) -> Unit,
+    onRemove: (String) -> Unit
+) {
+    var showPicker by remember { mutableStateOf(false) }
+    var selectedCreature by remember { mutableStateOf<CreatureDefinition?>(null) }
+
+    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Column(modifier = Modifier.weight(1f)) {
+                Text("Monstros da sessão", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
+                Text(
+                    "Atalhos para consultar criaturas sem criar fichas completas.",
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
+            Button(onClick = { showPicker = true }) { Text("Adicionar monstro") }
+        }
+
+        if (cards.isEmpty()) {
+            Text(
+                "Nenhum monstro adicionado. Use “Adicionar monstro” para escolher no bestiário.",
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+        } else {
+            // Espaçamento negativo cria a aparência de uma pilha, mantendo a faixa superior
+            // de cada carta visível para indicar que há mais cards abaixo.
+            Column(verticalArrangement = Arrangement.spacedBy((-34).dp)) {
+                cards.asReversed().forEach { shortcut ->
+                    val creature = CreatureCatalog.byId(shortcut.creatureId)
+                    if (creature != null) {
+                        MonsterShortcutCard(
+                            creature = creature,
+                            onLongClick = { selectedCreature = creature },
+                            onRemove = { onRemove(shortcut.instanceId) }
+                        )
+                    }
+                }
+            }
+        }
+    }
+
+    if (showPicker) {
+        AddMonsterCardDialog(
+            onDismiss = { showPicker = false },
+            onSelect = { creature ->
+                onAdd(creature.id)
+                showPicker = false
+            }
+        )
+    }
+    selectedCreature?.let { creature ->
+        MonsterCreatureDetailDialog(creature = creature, onDismiss = { selectedCreature = null })
+    }
+}
+
+@Composable
+private fun MonsterShortcutCard(
+    creature: CreatureDefinition,
+    onLongClick: () -> Unit,
+    onRemove: () -> Unit
+) {
+    var showBack by remember(creature.id) { mutableStateOf(false) }
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .combinedClickable(onClick = { showBack = !showBack }, onLongClick = onLongClick),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainer)
+    ) {
+        Column(modifier = Modifier.padding(12.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Column(modifier = Modifier.weight(1f)) {
+                    Text(creature.name, style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
+                    Text(
+                        "${creature.size} • ${creature.typeDetail.ifBlank { creature.type }} • ND ${creature.challengeRating}",
+                        style = MaterialTheme.typography.labelSmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
+                TextButton(onClick = onRemove) { Text("Remover") }
+            }
+            if (!showBack) {
+                Text("FRENTE", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.primary)
+                Row(horizontalArrangement = Arrangement.spacedBy(10.dp), verticalAlignment = Alignment.CenterVertically) {
+                    Surface(
+                        modifier = Modifier.size(width = 72.dp, height = 92.dp),
+                        shape = RoundedCornerShape(8.dp),
+                        color = MaterialTheme.colorScheme.surfaceVariant
+                    ) {
+                        Box(contentAlignment = Alignment.Center) {
+                            Text("Imagem", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                        }
+                    }
+                    Column(modifier = Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                        Text("PV ${creature.hitPoints}")
+                        Text("BBA ${signed(creature.baseAttack)}")
+                        Text("CA ${creature.armorClassText}")
+                        Text("Iniciativa ${signed(creature.initiative)}")
+                        Text("Ataque: ${creature.attack.ifBlank { "—" }}")
+                    }
+                }
+            } else {
+                Text("VERSO", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.primary)
+                val a = creature.abilities
+                Text(
+                    "FOR ${abilityWithModifier(a.str)}   DES ${abilityWithModifier(a.dex)}   CON ${abilityWithModifier(a.con)}"
+                )
+                Text(
+                    "INT ${abilityWithModifier(a.int)}   SAB ${abilityWithModifier(a.wis)}   CAR ${abilityWithModifier(a.cha)}"
+                )
+                if (creature.specialAttacks.isNotBlank()) Text("Habilidades: ${creature.specialAttacks}")
+                if (creature.specialQualities.isNotBlank()) Text("Qualidades: ${creature.specialQualities}")
+                if (creature.feats.isNotBlank()) Text("Talentos: ${creature.feats}")
+            }
+            Text(
+                "Toque para virar • Pressione e segure para ver a ficha completa",
+                style = MaterialTheme.typography.labelSmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+        }
+    }
+}
+
+@Composable
+private fun AddMonsterCardDialog(
+    onDismiss: () -> Unit,
+    onSelect: (CreatureDefinition) -> Unit
+) {
+    var query by remember { mutableStateOf("") }
+    var selectedType by remember { mutableStateOf<String?>(null) }
+    var selectedSize by remember { mutableStateOf<String?>(null) }
+    var typeExpanded by remember { mutableStateOf(false) }
+    var sizeExpanded by remember { mutableStateOf(false) }
+    val filtered = remember(query, selectedType, selectedSize) {
+        CreatureCatalog.filter(query = query, type = selectedType, size = selectedSize)
+    }
+
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text("Adicionar monstro") },
+        text = {
+            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                OutlinedTextField(
+                    value = query,
+                    onValueChange = { query = it },
+                    label = { Text("Buscar por nome") },
+                    modifier = Modifier.fillMaxWidth(),
+                    singleLine = true
+                )
+                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    Box {
+                        OutlinedButton(onClick = { typeExpanded = true }) {
+                            Text(selectedType ?: "Todos os tipos")
+                        }
+                        DropdownMenu(expanded = typeExpanded, onDismissRequest = { typeExpanded = false }) {
+                            DropdownMenuItem(text = { Text("Todos os tipos") }, onClick = {
+                                selectedType = null
+                                typeExpanded = false
+                            })
+                            CreatureCatalog.TYPES.forEach { type ->
+                                DropdownMenuItem(text = { Text(type) }, onClick = {
+                                    selectedType = type
+                                    typeExpanded = false
+                                })
+                            }
+                        }
+                    }
+                    Box {
+                        OutlinedButton(onClick = { sizeExpanded = true }) {
+                            Text(selectedSize ?: "Todos os tamanhos")
+                        }
+                        DropdownMenu(expanded = sizeExpanded, onDismissRequest = { sizeExpanded = false }) {
+                            DropdownMenuItem(text = { Text("Todos os tamanhos") }, onClick = {
+                                selectedSize = null
+                                sizeExpanded = false
+                            })
+                            CreatureCatalog.SIZES.forEach { size ->
+                                DropdownMenuItem(text = { Text(size) }, onClick = {
+                                    selectedSize = size
+                                    sizeExpanded = false
+                                })
+                            }
+                        }
+                    }
+                }
+                Text("${filtered.size} criaturas encontradas", style = MaterialTheme.typography.labelSmall)
+                Column(
+                    modifier = Modifier.fillMaxWidth().heightIn(max = 340.dp).verticalScroll(rememberScrollState())
+                ) {
+                    filtered.forEach { creature ->
+                        TextButton(onClick = { onSelect(creature) }, modifier = Modifier.fillMaxWidth()) {
+                            Column(modifier = Modifier.fillMaxWidth()) {
+                                Text(creature.name, fontWeight = FontWeight.SemiBold)
+                                Text(
+                                    "${creature.size} • ${creature.type} • ND ${creature.challengeRating}",
+                                    style = MaterialTheme.typography.labelSmall,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                                )
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        confirmButton = { TextButton(onClick = onDismiss) { Text("Fechar") } }
+    )
+}
+
+@Composable
+private fun MonsterCreatureDetailDialog(creature: CreatureDefinition, onDismiss: () -> Unit) {
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text(creature.name) },
+        text = {
+            Column(
+                modifier = Modifier.fillMaxWidth().heightIn(max = 480.dp).verticalScroll(rememberScrollState()),
+                verticalArrangement = Arrangement.spacedBy(6.dp)
+            ) {
+                Text("${creature.size} • ${creature.typeDetail.ifBlank { creature.type }}")
+                Text("DV: ${creature.hitDice} (${creature.hitPoints} PV)")
+                Text("Iniciativa: ${signed(creature.initiative)} • Deslocamento: ${creature.speed}")
+                Text("CA: ${creature.armorClassText} • Toque: ${creature.touchAc} • Surpresa: ${creature.flatFootedAc}")
+                Text("BBA/Agarrar: ${signed(creature.baseAttack)}/${signed(creature.grapple)}")
+                Text("Ataque: ${creature.attack}")
+                Text("Ataque total: ${creature.fullAttack}")
+                Text("Espaço/Alcance: ${creature.spaceReach}")
+                Text("Ataques especiais: ${creature.specialAttacks}")
+                Text("Qualidades especiais: ${creature.specialQualities}")
+                Text("Resistências: Fort ${signed(creature.saves.fort)} • Ref ${signed(creature.saves.ref)} • Von ${signed(creature.saves.will)}")
+                val a = creature.abilities
+                Text("FOR ${abilityWithModifier(a.str)} • DES ${abilityWithModifier(a.dex)} • CON ${abilityWithModifier(a.con)}")
+                Text("INT ${abilityWithModifier(a.int)} • SAB ${abilityWithModifier(a.wis)} • CAR ${abilityWithModifier(a.cha)}")
+                Text("Perícias: ${creature.skills}")
+                Text("Talentos: ${creature.feats}")
+                Text("Habilidades especiais: ${creature.specialAttacks} • ${creature.specialQualities}")
+                Text("Descrição: ${creature.description.ifBlank { "Descrição ainda não conferida no livro." }}")
+                Text("Combate: ${creature.combat.ifBlank { "Texto de combate ainda não conferido no livro." }}")
+                Text("Ambiente: ${creature.environment} • Organização: ${creature.organization}")
+                Text("Tesouro: ${creature.treasure} • Tendência: ${creature.alignment}")
+                Text("Progressão: ${creature.advancement} • Ajuste de nível: ${creature.levelAdjustment}")
+                Text("Fonte: ${creature.source}")
+            }
+        },
+        confirmButton = { TextButton(onClick = onDismiss) { Text("Fechar") } }
+    )
+}
+
+private fun abilityWithModifier(score: Int?): String {
+    if (score == null) return "—"
+    val modifier = Math.floorDiv(score - 10, 2)
+    return "$score (${signed(modifier)})"
+}
+
+
 /** Candidato a combatente: um jogador conectado (com ou sem ficha) ou uma ficha NPC do Mestre. */
 private data class CombatCandidate(
     val id: String,
@@ -395,6 +668,12 @@ private fun CombatSection(
     var showStartDialog by remember { mutableStateOf(false) }
 
     Column {
+        MonsterCardsSection(
+            cards = hosting.monsterCards,
+            onAdd = { viewModel.addMonsterCard(it) },
+            onRemove = { viewModel.removeMonsterCard(it) }
+        )
+        Spacer(modifier = Modifier.height(18.dp))
         Row(verticalAlignment = Alignment.CenterVertically) {
             Icon(Icons.Default.Shield, contentDescription = null, tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(20.dp))
             Spacer(modifier = Modifier.width(6.dp))

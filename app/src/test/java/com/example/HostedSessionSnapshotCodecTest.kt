@@ -7,6 +7,7 @@ import com.example.dnd35.session.Combatant
 import com.example.dnd35.session.CombatState
 import com.example.dnd35.session.HostedSessionSnapshot
 import com.example.dnd35.session.HostedSessionSnapshotCodec
+import com.example.dnd35.session.MonsterCardShortcut
 import com.example.dnd35.session.Participant
 import com.example.dnd35.session.ParticipantRole
 import com.example.dnd35.session.PrivateChatEntry
@@ -18,6 +19,7 @@ import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertThrows
 import org.json.JSONException
+import org.json.JSONObject
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
@@ -61,7 +63,8 @@ class HostedSessionSnapshotCodecTest {
             shop = ShopState(99L, "Vendedor", listOf(shopItem)),
             privateChatLog = listOf(PrivateChatEntry("chat-1", "p1", "Legolas", "Olá", false, 1234L)),
             rejoinTokens = mapOf("token-p1" to "p1"),
-            pendingGrants = mapOf("p1" to listOf(grant))
+            pendingGrants = mapOf("p1" to listOf(grant)),
+            monsterCards = listOf(MonsterCardShortcut("card-1", "red-dragon"), MonsterCardShortcut("card-2", "red-dragon"))
         )
 
         val decoded = HostedSessionSnapshotCodec.decode(HostedSessionSnapshotCodec.encode(snapshot))
@@ -79,6 +82,17 @@ class HostedSessionSnapshotCodecTest {
         assertEquals(snapshot.privateChatLog, decoded.privateChatLog)
         assertEquals(snapshot.rejoinTokens, decoded.rejoinTokens)
         assertEquals(grant, decoded.pendingGrants.getValue("p1").single())
+        assertEquals(snapshot.monsterCards, decoded.monsterCards)
+    }
+
+    @Test
+    fun `servidor adiciona e remove atalhos sem criar fichas`() {
+        val server = SessionServer("monster-session", "Mestre")
+        val card = server.addMonsterCard("red-dragon")
+        assertEquals("red-dragon", server.createSnapshot().monsterCards.single().creatureId)
+        assertEquals(emptyMap<String, CharacterEntity>(), server.createSnapshot().receivedCharacters)
+        server.removeMonsterCard(card.instanceId)
+        assertEquals(emptyList<MonsterCardShortcut>(), server.createSnapshot().monsterCards)
     }
 
     @Test
@@ -102,6 +116,9 @@ class HostedSessionSnapshotCodecTest {
         assertNull(decoded.combat)
         assertNull(decoded.shop)
         assertEquals(emptyList<Participant>(), decoded.roster)
+        assertEquals(emptyList<MonsterCardShortcut>(), decoded.monsterCards)
+        val legacyJson = JSONObject(HostedSessionSnapshotCodec.encode(snapshot)).apply { remove("monsterCards") }.toString()
+        assertEquals(emptyList<MonsterCardShortcut>(), HostedSessionSnapshotCodec.decode(legacyJson).monsterCards)
     }
 
 

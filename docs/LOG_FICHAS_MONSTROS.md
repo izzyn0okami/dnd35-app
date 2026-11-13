@@ -166,3 +166,23 @@ Cada registro do catálogo recebe três flags independentes:
 - Ajuste de nomenclatura: a entrada inglesa *dire weasel* da lista alternativa corresponde ao **Arminho Atroz** do Livro dos Monstros brasileiro; a ficha existente `arminho-atroz` foi marcada como companheiro animal, sem criar duplicata.
 
 - Complemento de apresentação: as categorias elegíveis também aparecem resumidas diretamente em cada linha da lista de monstros, além da seção completa na ficha detalhada.
+
+
+## 2026-11-13 — Atalhos de monstros no modo Mestre
+
+### Decisão de arquitetura
+- A ação **Adicionar monstro** no modo Mestre cria um card/atalho para uma criatura já existente em `CreatureCatalog`.
+- O atalho guarda somente um identificador próprio da instância e o `creatureId` de origem. Não cria, duplica ou converte `CharacterEntity`.
+- Várias instâncias da mesma criatura são permitidas, cada uma com identidade independente.
+- Remover um card remove somente o atalho da sessão; o registro original do bestiário permanece intacto.
+- Os atalhos são privados do Mestre nesta etapa e são persistidos no snapshot da sessão hospedada. Não são transmitidos aos jogadores.
+- A seleção reutiliza o catálogo existente e oferece busca por nome e filtros por tipo e tamanho. Os filtros e a busca da aba Monstros não são modificados.
+- Toque simples alterna frente/verso do card; pressão prolongada abre os detalhes disponíveis da criatura.
+- Os cards usam os dados do catálogo em tempo de exibição. Campos ainda não auditados continuam identificados como pendentes; a imagem permanece no estado de placeholder existente.
+- A coleção aparece na área de Combate do Mestre como uma pilha visual. Nesta etapa, os cards são atalhos de consulta e ainda não são inseridos automaticamente na ordem de iniciativa.
+- O snapshot mantém compatibilidade com sessões anteriores: ausência do campo `monsterCards` é interpretada como lista vazia, sem aumentar a versão do formato.
+
+### Testes adicionados
+- Serialização e restauração dos cards no snapshot.
+- Snapshot antigo/sem cards retorna coleção vazia.
+- Adição e remoção de atalhos no estado do servidor sem criação de fichas.

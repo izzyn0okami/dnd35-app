@@ -14,6 +14,7 @@ import com.example.dnd35.session.ActionRequest
 import com.example.dnd35.session.Combatant
 import com.example.dnd35.session.CombatState
 import com.example.dnd35.session.JoinPayload
+import com.example.dnd35.session.MonsterCardShortcut
 import com.example.dnd35.session.LocalNetworkUtil
 import com.example.dnd35.session.Participant
 import com.example.dnd35.session.PrivateChatEntry
@@ -59,7 +60,9 @@ sealed class DmSessionUiState {
         /** `null` quando não há loja de NPC aberta no momento. */
         val shop: ShopState? = null,
         /** Log de mensagens privadas trocadas com os jogadores. */
-        val privateChatLog: List<PrivateChatEntry> = emptyList()
+        val privateChatLog: List<PrivateChatEntry> = emptyList(),
+        /** Atalhos do bestiário pertencentes somente ao Mestre. */
+        val monsterCards: List<MonsterCardShortcut> = emptyList()
     ) : DmSessionUiState()
     data class Error(val message: String) : DmSessionUiState()
 }
@@ -351,10 +354,10 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
             ) { combat, requests, lootChest, shop, chatLog ->
                 DmExtraState(combat, requests, lootChest, shop, chatLog)
             }
-            combine(activeServer.roster, activeServer.receivedCharacters, extra) { participants, characters, ex ->
+            combine(activeServer.roster, activeServer.receivedCharacters, activeServer.monsterCards, extra) { participants, characters, monsterCards, ex ->
                 DmSessionUiState.Hosting(
                     sessionId, bitmap, qrContent, participants, characters,
-                    ex.combat, ex.pendingRequests, ex.lootChest, ex.shop, ex.privateChatLog
+                    ex.combat, ex.pendingRequests, ex.lootChest, ex.shop, ex.privateChatLog, monsterCards
                 )
             }.collect { newState ->
                 if (server === activeServer) {
@@ -422,6 +425,16 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
     /** Mestre: remove um item do baú de loot diretamente (sem precisar de pedido de jogador). */
     fun removeLootItem(itemId: String) {
         dispatchHostedMutation { it.removeLootItem(itemId) }
+    }
+
+    /** Mestre: adiciona um card de referência do bestiário à sessão, sem criar ficha completa. */
+    fun addMonsterCard(creatureId: String) {
+        dispatchHostedMutation { it.addMonsterCard(creatureId) }
+    }
+
+    /** Mestre: remove um card da sessão sem alterar o catálogo de criaturas. */
+    fun removeMonsterCard(instanceId: String) {
+        dispatchHostedMutation { it.removeMonsterCard(instanceId) }
     }
 
     /** Mestre: inicia um combate novo com os combatentes informados. */

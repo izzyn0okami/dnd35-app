@@ -13,6 +13,11 @@ import org.json.JSONObject
  * Não contém sockets, flows ou estado de UI. A versão externa é validada antes de qualquer
  * restauração; versões futuras nunca são interpretadas parcialmente.
  */
+data class MonsterCardShortcut(
+    val instanceId: String,
+    val creatureId: String
+)
+
 data class HostedSessionSnapshot(
     val sessionId: String,
     val hostDisplayName: String,
@@ -26,7 +31,9 @@ data class HostedSessionSnapshot(
     /** token de reconexão -> id persistente do participante */
     val rejoinTokens: Map<String, String>,
     /** participante -> grants serializados que ainda aguardam ACK */
-    val pendingGrants: Map<String, List<SessionMessage>>
+    val pendingGrants: Map<String, List<SessionMessage>>,
+    /** Atalhos de monstros escolhidos pelo Mestre; nunca são convertidos em fichas de personagem. */
+    val monsterCards: List<MonsterCardShortcut> = emptyList()
 )
 
 object HostedSessionSnapshotCodec {
@@ -80,6 +87,11 @@ object HostedSessionSnapshotCodec {
             grants.put(participantId, entries)
         }
         root.put("pendingGrants", grants)
+        root.put("monsterCards", JSONArray().apply {
+            snapshot.monsterCards.forEach { card ->
+                put(JSONObject().put("instanceId", card.instanceId).put("creatureId", card.creatureId))
+            }
+        })
         return root.toString()
     }
 
@@ -153,6 +165,12 @@ object HostedSessionSnapshotCodec {
             }
         }
 
+        val monsterCardsJson = root.optJSONArray("monsterCards") ?: JSONArray()
+        val monsterCards = (0 until monsterCardsJson.length()).map { index ->
+            val item = monsterCardsJson.getJSONObject(index)
+            MonsterCardShortcut(item.getString("instanceId"), item.getString("creatureId"))
+        }
+
         val playerIds = roster.filter { it.role == ParticipantRole.PLAYER }.map { it.id }.toSet()
         require(roster.all { it.id.isNotBlank() }) { "Roster contém participante sem ID" }
         require(roster.map { it.id }.distinct().size == roster.size) { "Roster contém IDs duplicados" }
@@ -161,6 +179,8 @@ object HostedSessionSnapshotCodec {
         require(tokens.values.all { it in playerIds }) { "Token de reconexão aponta para participante ausente" }
         require(grants.keys.all { it in playerIds }) { "Outbox aponta para participante ausente" }
         require(requests.all { it.requesterId in playerIds }) { "Pedido pendente aponta para participante ausente" }
+        require(monsterCards.all { it.instanceId.isNotBlank() && it.creatureId.isNotBlank() }) { "Atalho de monstro inválido" }
+        require(monsterCards.map { it.instanceId }.distinct().size == monsterCards.size) { "Atalhos de monstro contêm IDs duplicados" }
 
         val sessionId = root.getString("sessionId")
         require(sessionId.isNotBlank()) { "sessionId vazio no snapshot" }
@@ -175,7 +195,8 @@ object HostedSessionSnapshotCodec {
             shop = shop,
             privateChatLog = chat,
             rejoinTokens = tokens,
-            pendingGrants = grants
+            pendingGrants = grants,
+            monsterCards = monsterCards
         )
     }
 
