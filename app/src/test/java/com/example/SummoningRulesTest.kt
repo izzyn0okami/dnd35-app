@@ -42,6 +42,9 @@ class SummoningRulesTest {
         assertTrue(sixth.any { it.creature.id == "polvo-gigante" })
         assertTrue(seventh.any { it.creature.id == "lula-gigante" })
         assertTrue(seventh.any { it.creature.id == "tiranossauro" })
+        assertTrue(SummoningRules.creaturesForCircle(SummoningFamily.SUMMON_NATURE_ALLY, 4).any { it.creature.id == "leao-marinho" })
+        assertTrue(SummoningRules.creaturesForCircle(SummoningFamily.SUMMON_NATURE_ALLY, 5).any { it.creature.id == "janni" })
+        assertTrue(ninth.any { it.creature.id == "grig" })
         assertTrue(ninth.any { it.creature.id == "pixie" && it.templateLabel.contains("memória") })
         assertEquals(3, ninth.count { it.creature.id == "pixie" })
     }

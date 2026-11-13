@@ -21,12 +21,12 @@ object SummoningRules {
         1 to "rato-atroz aguia macaco polvo coruja golfinho vibora-pequena lobo",
         2 to "urso-negro crocodilo morcego-atroz hipogrifo tubarao-medio vibora-media lula carcaju",
         3 to "gorila arminho-atroz lobo-atroz aguia-gigante leao coruja-gigante satiro tubarao-grande cobra-constritora vibora-grande thoqqua",
-        4 to "crocodilo-gigante dinonico gorila-atroz javali-atroz carcaju-atroz tubarao-enorme vibora-enorme tigre urso-marrom",
-        5 to "leao-atroz elasmossauro grifo rinoceronte nixie baleia-orca",
+        4 to "crocodilo-gigante dinonico gorila-atroz javali-atroz carcaju-atroz leao-marinho tubarao-enorme vibora-enorme tigre urso-marrom",
+        5 to "leao-atroz elasmossauro grifo janni nixie satiro rinoceronte baleia-orca",
         6 to "urso-atroz elefante girallon megaraptor polvo-gigante pixie baleia-azul",
         7 to "tigre-atroz djinni cacador-invisivel pixie lula-gigante triceratops tiranossauro baleia-cachalote",
         8 to "tubarao-atroz passaro-roca",
-        9 to "pixie"
+        9 to "grig pixie"
     )
 
     private val monsterLists = mapOf(
