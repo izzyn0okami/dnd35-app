@@ -11,6 +11,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
@@ -50,6 +51,7 @@ fun CreatureBondSection(
     var showCurrent by remember { mutableStateOf(false) }
     var showPicker by remember { mutableStateOf(false) }
     var includeAquatic by remember { mutableStateOf(false) }
+    var bondPendingRemoval by remember { mutableStateOf<CharacterCreatureBond?>(null) }
 
     val bondsForActiveKind = when (activeKind) {
         CreatureBondKind.FAMILIAR -> familiarBonds
@@ -120,12 +122,19 @@ fun CreatureBondSection(
                     items(bondsForActiveKind, key = { it.id }) { bond ->
                         val creature = CreatureCatalog.byId(bond.creatureId)
                         if (creature != null) {
-                            CreatureTradingCard(
-                                name = creature.name,
-                                classification = "${creature.type} • ${creature.size} • ND ${creature.challengeRating}",
-                                details = "Criatura vinculada • ${if (activeKind == CreatureBondKind.FAMILIAR) "Familiar" else "Companheiro animal"}",
-                                stats = "PV ${creature.hitPoints}  •  CA ${creature.armorClassText}  •  Iniciativa ${creature.initiative}"
-                            )
+                            Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                                CreatureTradingCard(
+                                    name = creature.name,
+                                    classification = "${creature.type} • ${creature.size} • ND ${creature.challengeRating}",
+                                    details = "Criatura vinculada • ${if (activeKind == CreatureBondKind.FAMILIAR) "Familiar" else "Companheiro animal"}",
+                                    stats = "PV ${creature.hitPoints}  •  CA ${creature.armorClassText}  •  Iniciativa ${creature.initiative}"
+                                )
+                                Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
+                                    TextButton(onClick = { bondPendingRemoval = bond }) {
+                                        Text("Remover vínculo", color = MaterialTheme.colorScheme.error)
+                                    }
+                                }
+                            }
                         }
                     }
                 }
@@ -140,6 +149,23 @@ fun CreatureBondSection(
         }
     }
 
+    bondPendingRemoval?.let { bond ->
+        val creatureName = CreatureCatalog.byId(bond.creatureId)?.name ?: "esta criatura"
+        AlertDialog(
+            onDismissRequest = { bondPendingRemoval = null },
+            title = { Text("Remover vínculo?") },
+            text = { Text("Deseja remover $creatureName deste personagem? A criatura será desvinculada, mas sua carta continuará no bestiário.") },
+            confirmButton = {
+                TextButton(onClick = {
+                    viewModel.updateCreatureBonds(savedBonds.filterNot { it.id == bond.id })
+                    bondPendingRemoval = null
+                }) { Text("Remover", color = MaterialTheme.colorScheme.error) }
+            },
+            dismissButton = {
+                TextButton(onClick = { bondPendingRemoval = null }) { Text("Cancelar") }
+            }
+        )
+    }
     if (showPicker && activeKind != null) {
         CreatureDeckOverlay(
             title = if (activeKind == CreatureBondKind.FAMILIAR) "Escolher familiar" else "Escolher companheiro animal",
