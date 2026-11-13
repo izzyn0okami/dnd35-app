@@ -129,3 +129,30 @@ Não reimplementar a listagem, busca, filtros por tipo/tamanho ou os campos mec�
 - **Imagem:** placeholder vazio; nenhuma imagem pesquisada, baixada ou inserida.
 - **Contagem:** 264 registros, 264 IDs únicos; 9 fichas com Descrição e Combate.
 - **Próxima criatura:** seguir a ordem alfabética do Livro dos Monstros após os anjos.
+
+
+## 2026-11-13 — Elegibilidade para companheiro animal, invocação e familiar
+
+### Alteração solicitada
+Cada registro do catálogo recebe três flags independentes:
+- `animalCompanion`: a criatura consta na lista básica ou em uma lista alternativa de companheiros animais do druida/ranger.
+- `summonedCreature`: a criatura consta em uma lista de **Invocar Criaturas** ou **Invocar Aliado da Natureza**.
+- `familiar`: a espécie consta na tabela básica de familiares do Livro do Jogador.
+
+### Fonte e critério
+- Conferência feita no PDF brasileiro do **Livro do Jogador 3.5**, nas seções de Companheiro Animal, Companheiros Animais Alternativos, Familiares, Invocar Criaturas e Invocar Aliado da Natureza.
+- O tipo de criatura, tamanho ou aparência não são usados como substitutos da lista de regras: somente entradas identificadas nas listas recebem a flag.
+- As listas alternativas de companheiro animal preservam a restrição de nível efetivo do druida/ranger indicada pelo livro; a flag sinaliza elegibilidade eventual, não disponibilidade em qualquer nível.
+- A flag de invocação abrange as duas famílias de magia. Algumas entradas de **Invocar Criaturas** são formas celestiais/abissais; a flag indica a entrada correspondente da lista de invocação, não que o bloco-base sem modelo seja idêntico à criatura invocada.
+- Familiares são limitados às espécies indicadas na tabela básica; a flag não presume acesso a familiares especiais de suplementos ou talentos que não constam no escopo desta conferência.
+
+### Interface e compatibilidade
+- As três flags são independentes: uma criatura pode receber nenhuma, uma, duas ou as três.
+- As flags são exibidas na ficha detalhada em uma seção própria.
+- Registros antigos/JSON sem essas propriedades continuam compatíveis: o carregador assume `false` para campos ausentes.
+- Não foram alterados os blocos de estatísticas, nomes, descrições ou textos de combate das criaturas.
+
+### Validação
+- Testes de regressão cobrem lobo, coruja, gato e abolete, incluindo sobreposição entre categorias e um caso sem elegibilidade.
+- Registros do catálogo: 264; IDs únicos preservados.
+- IDs candidatos que não existem no catálogo atual e, portanto, não receberam registro novo: texugo-atroz, xorn, corvo-abissal, bruxa-da-noite.
