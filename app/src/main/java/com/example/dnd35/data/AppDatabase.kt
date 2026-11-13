@@ -78,7 +78,16 @@ abstract class AppDatabase : RoomDatabase() {
 
         internal val MIGRATION_10_11 = object : Migration(10, 11) {
             override fun migrate(db: SupportSQLiteDatabase) {
-                db.execSQL("ALTER TABLE characters ADD COLUMN creatureBondsJson TEXT NOT NULL DEFAULT ''")
+                // Idempotente: alguns bancos de teste/instalações intermediárias podem já conter
+                // a coluna, mas bancos 10 oficiais ainda precisam recebê-la.
+                val columns = mutableSetOf<String>()
+                db.query("PRAGMA table_info(characters)").use { cursor ->
+                    val nameIndex = cursor.getColumnIndexOrThrow("name")
+                    while (cursor.moveToNext()) columns += cursor.getString(nameIndex)
+                }
+                if ("creatureBondsJson" !in columns) {
+                    db.execSQL("ALTER TABLE characters ADD COLUMN creatureBondsJson TEXT NOT NULL DEFAULT ''")
+                }
             }
         }
 

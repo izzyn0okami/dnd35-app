@@ -110,9 +110,10 @@ class CreatureCatalogTest {
             "aranha-pequena", "aranha-media", "aranha-grande",
             "aranha-enorme", "aranha-imensa", "aranha-colossal",
             "escorpiao-medio", "escorpiao-grande", "escorpiao-enorme",
-            "escorpiao-imenso", "escorpiao-colossal"
+            "escorpiao-imenso"
         ).forEach { id ->
             assertTrue("$id deveria constar nas listas de invocação", CreatureCatalog.byId(id)!!.summonedCreature)
         }
+        assertTrue("Escorpião Colossal não consta na tabela de Invocar Criaturas", !CreatureCatalog.byId("escorpiao-colossal")!!.summonedCreature)
     }
 }

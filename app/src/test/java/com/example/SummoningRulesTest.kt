@@ -46,6 +46,7 @@ class SummoningRulesTest {
     @Test
     fun everySummonFlagHasAnExplicitBookListCircle() {
         assertEquals(emptyList<String>(), SummoningRules.unclassifiedCatalogCreatureIds())
+        assertFalse(com.example.dnd35.model.CreatureCatalog.byId("escorpiao-colossal")!!.summonedCreature)
     }
 
     @Test
