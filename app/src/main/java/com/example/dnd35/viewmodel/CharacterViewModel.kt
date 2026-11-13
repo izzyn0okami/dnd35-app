@@ -15,6 +15,8 @@ import com.example.dnd35.diagnostics.CrashLogStore
 import com.example.dnd35.model.CalculatedCharacterStats
 import com.example.dnd35.model.CharacterCalculator
 import com.example.dnd35.model.CharacterEntity
+import com.example.dnd35.model.CharacterCreatureBond
+import com.example.dnd35.model.CharacterJsonAdapters
 import com.example.dnd35.model.withGeneralInfo
 import com.example.dnd35.model.LanguageAcquisition
 import com.example.dnd35.model.CharacterFeat
@@ -285,6 +287,13 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
     }
 
     // Gerenciamento geral de personagem
+    /** Atualiza os vínculos de familiares/companheiros sem alterar a progressão ou outros dados da ficha. */
+    fun updateCreatureBonds(bonds: List<CharacterCreatureBond>) {
+        val curr = _activeCharacter.value ?: return
+        val valid = bonds.filter { it.creatureId.isNotBlank() }.distinctBy { it.id }
+        persistCharacter(curr.copy(creatureBondsJson = CharacterJsonAdapters.serializeCreatureBonds(valid)))
+    }
+
     fun updateGeneralInfo(
         name: String,
         race: String,

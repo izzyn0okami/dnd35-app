@@ -26,7 +26,7 @@ object CharacterBackup {
     /** Colunas que guardam JSON como texto e são copiadas sem reinterpretar. */
     private val JSON_COLUMNS = listOf(
         "skillsJson", "languagesJson", "skillPointHistoryJson", "languageAcquisitionsJson",
-        "inventoryJson", "featsJson", "spellsJson", "spellSlotsJson", "spellHistoryJson", "clericDomainsJson", "wizardSpecialtyJson", "multiclassJson"
+        "inventoryJson", "featsJson", "spellsJson", "spellSlotsJson", "spellHistoryJson", "clericDomainsJson", "wizardSpecialtyJson", "multiclassJson", "creatureBondsJson"
     )
 
     data class ImportedCharacter(
@@ -116,6 +116,7 @@ object CharacterBackup {
         o.put("clericDomainsJson", c.clericDomainsJson)
         o.put("wizardSpecialtyJson", c.wizardSpecialtyJson)
         o.put("multiclassJson", c.multiclassJson)
+        o.put("creatureBondsJson", c.creatureBondsJson)
         o.put("notes", c.notes)
         o.put("isNpc", c.isNpc)
         o.put("updatedAt", c.updatedAt)
@@ -274,6 +275,7 @@ object CharacterBackup {
             clericDomainsJson = jsonColumn("clericDomainsJson"),
             wizardSpecialtyJson = jsonColumn("wizardSpecialtyJson"),
             multiclassJson = jsonColumn("multiclassJson"),
+            creatureBondsJson = jsonColumn("creatureBondsJson"),
             notes = str(o, "notes", ""),
             isNpc = o.optBoolean("isNpc", false),
             updatedAt = longValue(o, "updatedAt", System.currentTimeMillis()).takeIf { it > 0 }
