@@ -78,3 +78,26 @@ class CreatureCatalogTest {
         assertTrue(CreatureCatalog.byId("tubarao-enorme") != null)
     }
 }
+
+
+    @Test
+    fun rulesEligibilityFlagsMatchPlayersHandbookLists() {
+        val wolf = CreatureCatalog.byId("lobo")!!
+        assertTrue(wolf.animalCompanion)
+        assertTrue(wolf.summonedCreature)
+        assertTrue(!wolf.familiar)
+
+        val owl = CreatureCatalog.byId("coruja")!!
+        assertTrue(owl.animalCompanion)
+        assertTrue(owl.summonedCreature)
+        assertTrue(owl.familiar)
+
+        val cat = CreatureCatalog.byId("gato")!!
+        assertTrue(cat.familiar)
+        assertTrue(!cat.animalCompanion)
+
+        val aboleth = CreatureCatalog.byId("abolete")!!
+        assertTrue(!aboleth.animalCompanion)
+        assertTrue(!aboleth.summonedCreature)
+        assertTrue(!aboleth.familiar)
+    }
