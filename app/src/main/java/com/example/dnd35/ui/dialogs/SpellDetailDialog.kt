@@ -33,6 +33,7 @@ import com.example.dnd35.model.CharacterSpell
 import com.example.dnd35.model.ClericDomainRules
 import com.example.dnd35.model.Dnd35Rules
 import com.example.dnd35.model.SpellbookRules
+import com.example.dnd35.model.SpellSlotInfo
 import com.example.dnd35.model.WizardSpecialtyRules
 import com.example.dnd35.viewmodel.CharacterViewModel
 import com.example.ui.theme.DndArcaneBlue
@@ -48,7 +49,8 @@ fun SpellDetailDialog(
     spell: Dnd35Rules.PresetSpell,
     stats: CalculatedCharacterStats,
     viewModel: CharacterViewModel,
-    onDismiss: () -> Unit
+    onDismiss: () -> Unit,
+    onCastSpell: (CharacterSpell, SpellSlotInfo, String) -> Unit
 ) {
     val casters = stats.casterClasses
     val options = casters.filter { SpellbookRules.classLevelOf(spell, it.className) != null }
@@ -273,7 +275,7 @@ fun SpellDetailDialog(
                             horizontalArrangement = Arrangement.spacedBy(8.dp)
                         ) {
                             OutlinedButton(
-                                onClick = { if (slot != null) viewModel.castSpell(entry.id, slot, stats.spellSlots) },
+                                onClick = { if (slot != null) onCastSpell(entry, slot, info?.className ?: slot.className) },
                                 enabled = canCast && remainingSlots > 0,
                                 modifier = Modifier.weight(1f)
                             ) { Text("Marcar como conjurada") }
