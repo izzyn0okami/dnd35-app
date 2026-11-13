@@ -81,3 +81,12 @@ Não reimplementar a listagem, busca, filtros por tipo/tamanho ou os campos mec�
 - **Combate:** transcritos os trechos de combate e as habilidades descritas sob essa seção para ambos os blocos. As magias preparadas do mago foram mantidas no texto de Combate por constarem nesse trecho do verbete.
 - **Imagem:** placeholders continuam vazios; nenhuma imagem pesquisada, baixada ou inserida.
 - **Conferência:** conferir visualmente no app a apresentação dos campos longos e validar a interpretação dos Dados de Vida mistos do Abolete Mago antes de considerar o verbete encerrado.
+
+
+## 2026-11-13 — Águia Gigante
+- **Fonte:** Livro dos Monstros brasileiro, página impressa 11 (página 15 do PDF fornecido).
+- **Descrição:** transcritos os quatro parágrafos do verbete, incluindo habitat social, comportamento predatório, dimensões e idiomas.
+- **Combate e informações associadas:** transcritos os dois parágrafos táticos, Evasão, bônus racial de Observar, instruções de treinamento, valores de ovos/filhotes e capacidade de carga. Os subtítulos originais foram preservados dentro do campo narrativo disponível, sem criar campos de dados que o modelo ainda não possui.
+- **Dados mecânicos:** ficha existente reaproveitada; nenhum registro duplicado.
+- **Imagem:** placeholder vazio; nenhuma imagem pesquisada, baixada ou inserida.
+- **Próxima criatura:** Allip (ordem alfabética do catálogo/livro).
