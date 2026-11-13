@@ -373,3 +373,8 @@ A interface reserva seções separadas para **Descrição** e **Combate**, sem p
 ### Campos narrativos das criaturas (2026-11-13)
 
 O modelo `CreatureDefinition` e `creatures.json` aceitam agora os campos opcionais `description` e `combat`. Quando ausentes, o carregador fornece texto vazio; a interface mantém um aviso de pendência e não apresenta conteúdo inferido. Os primeiros verbetes transcritos e conferidos no PDF brasileiro são Abocanhador Matraqueante (página impressa 8) e Achaierai (páginas impressas 10–11). A cobertura deve avançar criatura por criatura, registrando páginas e pendências em `docs/LOG_FICHAS_MONSTROS.md`.
+
+
+### Complemento do bestiário — 2026-11-13
+
+O catálogo de criaturas passou de 262 para 264 registros com a inclusão dos dois blocos de estatísticas que o Livro dos Monstros apresenta para o **Abolete**: a criatura padrão (ND 7) e o **Abolete Mago, Mago de 10º Nível** (ND 17). Os registros mantêm os campos mecânicos próprios de cada bloco e agora incluem `description` e `combat`, transcritos das páginas impressas 9–10. O campo `hitDice` preserva a expressão mista do abolete mago (`8d8+56 mais 10d4+70`); `hdCount`/`hdType` continuam sendo uma representação simplificada e não devem ser usados para recalcular seus PV. A transcrição e essa limitação estão detalhadas em `docs/LOG_FICHAS_MONSTROS.md`.
