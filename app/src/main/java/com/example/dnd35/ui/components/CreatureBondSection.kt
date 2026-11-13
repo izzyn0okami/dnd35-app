@@ -1,18 +1,14 @@
 package com.example.dnd35.ui.components
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Checkbox
@@ -35,7 +31,6 @@ import com.example.dnd35.model.CharacterJsonAdapters
 import com.example.dnd35.model.CreatureBondKind
 import com.example.dnd35.model.CreatureBondRules
 import com.example.dnd35.model.CreatureCatalog
-import com.example.dnd35.model.CreatureDefinition
 import com.example.dnd35.viewmodel.CharacterViewModel
 
 @Composable
@@ -61,11 +56,22 @@ fun CreatureBondSection(
         CreatureBondKind.ANIMAL_COMPANION -> companionBonds
         null -> emptyList()
     }
+    val options = when (activeKind) {
+        CreatureBondKind.FAMILIAR -> familiarOptions.map { it to "" }
+        CreatureBondKind.ANIMAL_COMPANION -> CreatureBondRules.animalCompanionOptions(
+            classEntries,
+            aquaticCampaign = includeAquatic
+        ).map { option ->
+            option.creature to option.restriction.ifBlank {
+                if (option.effectiveLevelPenalty > 0) "Nível efetivo -${option.effectiveLevelPenalty}" else ""
+            }
+        }
+        null -> emptyList()
+    }
 
     Card(
         modifier = Modifier.fillMaxWidth(),
-        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant),
-        shape = RoundedCornerShape(14.dp)
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)
     ) {
         Column(modifier = Modifier.padding(12.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
             Text("Familiares e companheiros", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
@@ -75,24 +81,16 @@ fun CreatureBondSection(
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
             if (familiarOptions.isNotEmpty() || familiarBonds.isNotEmpty()) {
-                BondActionButton(
-                    title = "Familiar",
-                    current = familiarBonds,
-                    onClick = {
-                        activeKind = CreatureBondKind.FAMILIAR
-                        if (familiarBonds.isEmpty()) showPicker = true else showCurrent = true
-                    }
-                )
+                BondActionButton("Familiar", familiarBonds) {
+                    activeKind = CreatureBondKind.FAMILIAR
+                    if (familiarBonds.isEmpty()) showPicker = true else showCurrent = true
+                }
             }
             if (companionOptions.isNotEmpty() || companionBonds.isNotEmpty()) {
-                BondActionButton(
-                    title = "Companheiro animal",
-                    current = companionBonds,
-                    onClick = {
-                        activeKind = CreatureBondKind.ANIMAL_COMPANION
-                        if (companionBonds.isEmpty()) showPicker = true else showCurrent = true
-                    }
-                )
+                BondActionButton("Companheiro animal", companionBonds) {
+                    activeKind = CreatureBondKind.ANIMAL_COMPANION
+                    if (companionBonds.isEmpty()) showPicker = true else showCurrent = true
+                }
             }
             if (familiarOptions.isEmpty() && companionOptions.isEmpty() &&
                 familiarBonds.isEmpty() && companionBonds.isEmpty()
@@ -107,88 +105,87 @@ fun CreatureBondSection(
     }
 
     if (showCurrent && activeKind != null) {
-        AlertDialog(
-            onDismissRequest = { showCurrent = false },
-            title = { Text(if (activeKind == CreatureBondKind.FAMILIAR) "Familiares atuais" else "Companheiros animais atuais") },
-            text = {
+        CreatureDeckOverlay(
+            title = if (activeKind == CreatureBondKind.FAMILIAR) "Familiares atuais" else "Companheiros animais atuais",
+            subtitle = "${bondsForActiveKind.size} carta(s) vinculada(s) a este personagem",
+            onDismiss = { showCurrent = false }
+        ) {
+            if (bondsForActiveKind.isEmpty()) {
+                Text("Nenhuma criatura vinculada.", color = MaterialTheme.colorScheme.onSurfaceVariant)
+            } else {
                 LazyColumn(
-                    modifier = Modifier.heightIn(max = 420.dp),
-                    verticalArrangement = Arrangement.spacedBy(8.dp)
+                    modifier = Modifier.weight(1f),
+                    verticalArrangement = Arrangement.spacedBy(12.dp)
                 ) {
-                    if (bondsForActiveKind.isEmpty()) {
-                        item { Text("Nenhuma criatura vinculada.") }
-                    } else {
-                        items(bondsForActiveKind, key = { it.id }) { bond ->
-                            val creature = CreatureCatalog.byId(bond.creatureId)
-                            if (creature != null) CreatureSummary(creature)
+                    items(bondsForActiveKind, key = { it.id }) { bond ->
+                        val creature = CreatureCatalog.byId(bond.creatureId)
+                        if (creature != null) {
+                            CreatureTradingCard(
+                                name = creature.name,
+                                classification = "${creature.type} • ${creature.size} • ND ${creature.challengeRating}",
+                                details = "Criatura vinculada • ${if (activeKind == CreatureBondKind.FAMILIAR) "Familiar" else "Companheiro animal"}",
+                                stats = "PV ${creature.hitPoints}  •  CA ${creature.armorClassText}  •  Iniciativa ${creature.initiative}"
+                            )
                         }
                     }
                 }
-            },
-            confirmButton = {
+            }
+            Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
+                TextButton(onClick = { showCurrent = false }) { Text("Fechar") }
                 TextButton(onClick = {
                     showCurrent = false
                     showPicker = true
                 }) { Text("Adicionar outra") }
-            },
-            dismissButton = {
-                TextButton(onClick = { showCurrent = false }) { Text("Fechar") }
             }
-        )
+        }
     }
 
     if (showPicker && activeKind != null) {
-        val options = when (activeKind) {
-            CreatureBondKind.FAMILIAR -> familiarOptions.map { it to "" }
-            CreatureBondKind.ANIMAL_COMPANION -> CreatureBondRules.animalCompanionOptions(
-                classEntries,
-                aquaticCampaign = includeAquatic
-            ).map { option ->
-                option.creature to option.restriction.ifBlank {
-                    if (option.effectiveLevelPenalty > 0) "Nível efetivo -${option.effectiveLevelPenalty}" else ""
+        CreatureDeckOverlay(
+            title = if (activeKind == CreatureBondKind.FAMILIAR) "Escolher familiar" else "Escolher companheiro animal",
+            subtitle = "Selecione uma carta disponível para a progressão atual",
+            onDismiss = { showPicker = false }
+        ) {
+            if (activeKind == CreatureBondKind.ANIMAL_COMPANION) {
+                Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+                    Text("Incluir opções aquáticas", style = MaterialTheme.typography.bodyMedium)
+                    Checkbox(checked = includeAquatic, onCheckedChange = { includeAquatic = it })
+                }
+                Spacer(modifier = Modifier.height(4.dp))
+            }
+            Text("${options.size} criatura(s) elegível(is)", style = MaterialTheme.typography.labelMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant)
+            if (options.isEmpty()) {
+                Text(
+                    "Nenhuma criatura disponível para a progressão atual.",
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            } else {
+                LazyColumn(
+                    modifier = Modifier.weight(1f),
+                    verticalArrangement = Arrangement.spacedBy(12.dp)
+                ) {
+                    items(options, key = { it.first.id }) { (creature, restriction) ->
+                        CreatureTradingCard(
+                            name = creature.name,
+                            classification = "${creature.type} • ${creature.size} • ND ${creature.challengeRating}",
+                            details = "Escolha esta criatura como ${if (activeKind == CreatureBondKind.FAMILIAR) "familiar" else "companheiro animal"}.",
+                            stats = "PV ${creature.hitPoints}  •  CA ${creature.armorClassText}  •  Iniciativa ${creature.initiative}",
+                            footer = restriction.ifBlank { null },
+                            onClick = {
+                                val kind = activeKind ?: return@CreatureTradingCard
+                                val updated = savedBonds + CharacterCreatureBond(kind = kind, creatureId = creature.id)
+                                viewModel.updateCreatureBonds(updated)
+                                showPicker = false
+                            }
+                        )
+                    }
                 }
             }
-            null -> emptyList()
+            Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
+                TextButton(onClick = { showPicker = false }) { Text("Cancelar") }
+            }
         }
-        AlertDialog(
-            onDismissRequest = { showPicker = false },
-            title = { Text(if (activeKind == CreatureBondKind.FAMILIAR) "Escolher familiar" else "Escolher companheiro animal") },
-            text = {
-                Column {
-                    if (activeKind == CreatureBondKind.ANIMAL_COMPANION) {
-                        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-                            Text("Incluir opções aquáticas", style = MaterialTheme.typography.bodySmall)
-                            Checkbox(checked = includeAquatic, onCheckedChange = { includeAquatic = it })
-                        }
-                        Spacer(modifier = Modifier.height(4.dp))
-                    }
-                    LazyColumn(modifier = Modifier.height(360.dp)) {
-                        items(options, key = { it.first.id }) { (creature, restriction) ->
-                            Column(
-                                modifier = Modifier.fillMaxWidth().clickable {
-                                    val kind = activeKind ?: return@clickable
-                                    val updated = savedBonds + CharacterCreatureBond(kind = kind, creatureId = creature.id)
-                                    viewModel.updateCreatureBonds(updated)
-                                    showPicker = false
-                                }.padding(vertical = 8.dp, horizontal = 4.dp)
-                            ) {
-                                Text(creature.name, fontWeight = FontWeight.Bold)
-                                Text(
-                                    "${creature.type} • ${creature.size} • ND ${creature.challengeRating}" +
-                                        if (restriction.isNotBlank()) " • $restriction" else "",
-                                    style = MaterialTheme.typography.labelSmall,
-                                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                                )
-                            }
-                        }
-                        if (options.isEmpty()) {
-                            item { Text("Nenhuma criatura disponível para a progressão atual.") }
-                        }
-                    }
-                }
-            },
-            confirmButton = { TextButton(onClick = { showPicker = false }) { Text("Cancelar") } }
-        )
     }
 }
 
@@ -200,27 +197,5 @@ private fun BondActionButton(
 ) {
     OutlinedButton(onClick = onClick, modifier = Modifier.fillMaxWidth()) {
         Text(if (current.isEmpty()) "Selecionar $title" else "$title atual (${current.size})")
-    }
-}
-
-@Composable
-private fun CreatureSummary(creature: CreatureDefinition) {
-    Card(
-        modifier = Modifier.fillMaxWidth(),
-        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
-        shape = RoundedCornerShape(10.dp)
-    ) {
-        Column(modifier = Modifier.padding(10.dp)) {
-            Text(creature.name, fontWeight = FontWeight.Bold)
-            Text(
-                "${creature.type} • ${creature.size} • ND ${creature.challengeRating}",
-                style = MaterialTheme.typography.labelSmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
-            )
-            Text(
-                "PV ${creature.hitPoints} • CA ${creature.armorClassText} • Iniciativa ${creature.initiative}",
-                style = MaterialTheme.typography.bodySmall
-            )
-        }
     }
 }
