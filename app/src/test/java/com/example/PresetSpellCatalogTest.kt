@@ -1720,6 +1720,19 @@ class PresetSpellCatalogTest {
 
 
     @Test
+    fun natureAllyFiveAndSixArePresentWithCorrectDruidCircles() {
+        val byName = Dnd35Rules.PRESET_SPELLS.associateBy { it.name }
+        val fifth = byName.getValue("Invocar Aliado da Natureza V")
+        val sixth = byName.getValue("Invocar Aliado da Natureza VI")
+        assertEquals(mapOf("Druida" to 5), fifth.classLevels)
+        assertEquals(mapOf("Druida" to 6), sixth.classLevels)
+        assertTrue(fifth.domainLevels.isEmpty())
+        assertTrue(sixth.domainLevels.isEmpty())
+        assertTrue(fifth.description.contains("lista de 5º nível"))
+        assertTrue(sixth.description.contains("lista de 6º nível"))
+    }
+
+    @Test
     fun consolidatedEighthLevelSpellBatchMatchesPlayerHandbook() {
         val expected = mapOf(
             "Campo Antimagia" to Triple("Abjuração", mapOf("Clérigo" to 8, "Feiticeiro" to 6, "Mago" to 6), mapOf("Magia" to 6, "Proteção" to 6)),

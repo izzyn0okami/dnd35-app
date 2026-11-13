@@ -279,3 +279,5 @@ A alteração foi enviada ao PR #367 no commit `6b8a5eb32cf202c1393ad95803500f7e
 - Ajustado o workflow auxiliar Android para executar somente `testDebugUnitTest`; a geração do APK permanece no workflow de build existente, que restaura o keystore de depuração. Isso evita falha duplicada de assinatura causada por `./gradlew build` no workflow auxiliar.
 
 - Conferidas as tabelas completas de Invocar Aliado da Natureza e Invocar Criaturas: adicionadas as cartas existentes Urso Atroz, Elefante, Polvo Gigante e Lula Gigante às listas e tags de invocação. Pixie agora possui as três variantes de lista (6º, 7º e 9º círculo); Satyr mantém as versões sem/com flauta (3º e 5º).
+
+- Corrigida lacuna no catálogo de magias: adicionadas Invocar Aliado da Natureza V e VI, ausentes da lista de magias apesar de constarem no Livro do Jogador. O domínio Animais concede Invocar Aliado da Natureza IV e VIII (não I); a seleção para Clérigo agora respeita apenas esses círculos de domínio.

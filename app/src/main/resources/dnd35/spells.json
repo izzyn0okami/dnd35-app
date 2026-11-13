@@ -5618,6 +5618,44 @@
     "domainLevels": {}
   },
   {
+    "name": "Invocar Aliado da Natureza V",
+    "level": 5,
+    "school": "Conjuração (Invocação) [veja texto de Invocar Aliado da Natureza I]",
+    "classes": [
+      "Druida"
+    ],
+    "castTime": "1 rodada",
+    "components": "V, G, FD",
+    "range": "Curto (7,5 m + 1,5 m/2 níveis)",
+    "duration": "1 rodada/nível (D)",
+    "savingThrow": "Nenhum",
+    "spellResistance": false,
+    "description": "Como invocar aliado da natureza I, mas o personagem pode invocar uma criatura da lista de 5º nível, 1d3 do mesmo tipo da lista de 4º nível ou 1d4+1 criaturas do mesmo tipo de uma lista de nível inferior.",
+    "classLevels": {
+      "Druida": 5
+    },
+    "domainLevels": {}
+  },
+  {
+    "name": "Invocar Aliado da Natureza VI",
+    "level": 6,
+    "school": "Conjuração (Invocação) [veja texto de Invocar Aliado da Natureza I]",
+    "classes": [
+      "Druida"
+    ],
+    "castTime": "1 rodada",
+    "components": "V, G, FD",
+    "range": "Curto (7,5 m + 1,5 m/2 níveis)",
+    "duration": "1 rodada/nível (D)",
+    "savingThrow": "Nenhum",
+    "spellResistance": false,
+    "description": "Como invocar aliado da natureza I, mas o personagem pode invocar uma criatura da lista de 6º nível, 1d3 do mesmo tipo da lista de 5º nível ou 1d4+1 criaturas do mesmo tipo de uma lista de nível inferior.",
+    "classLevels": {
+      "Druida": 6
+    },
+    "domainLevels": {}
+  },
+  {
     "name": "Invocar Aliado da Natureza VII",
     "level": 7,
     "school": "Conjuração (Invocação) [veja texto de Invocar Aliado da Natureza I]",
