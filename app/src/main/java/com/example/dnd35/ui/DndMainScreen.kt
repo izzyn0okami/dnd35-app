@@ -453,7 +453,9 @@ fun DndMainScreen(
             val char = activeCharacter
             val calc = computedStats
 
-            if (selectedTab == 5) {\n                CreatureCatalogTab(modifier = Modifier.fillMaxSize())\n            } else if (char == null && characters.isEmpty()) {
+            if (selectedTab == 5) {
+                CreatureCatalogTab(modifier = Modifier.fillMaxSize())
+            } else if (char == null && characters.isEmpty()) {
                 Column(
                     modifier = Modifier
                         .fillMaxSize()
