@@ -222,9 +222,9 @@ private fun CreatureDetail(
         item {
             CreatureSection("Descrição") {
                 Text(
-                    "Texto descritivo da criatura será incorporado após extração e conferência no Livro dos Monstros.",
+                    creature.description.ifBlank { "Texto descritivo pendente de extração e conferência no Livro dos Monstros." },
                     style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                    color = if (creature.description.isBlank()) MaterialTheme.colorScheme.onSurfaceVariant else MaterialTheme.colorScheme.onSurface
                 )
             }
         }
@@ -268,9 +268,9 @@ private fun CreatureDetail(
         item {
             CreatureSection("Combate") {
                 Text(
-                    "Regras de combate, habilidades e efeitos específicos serão incorporados após conferência do verbete no livro.",
+                    creature.combat.ifBlank { "Texto da seção Combate pendente de extração e conferência no Livro dos Monstros." },
                     style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                    color = if (creature.combat.isBlank()) MaterialTheme.colorScheme.onSurfaceVariant else MaterialTheme.colorScheme.onSurface
                 )
             }
         }
