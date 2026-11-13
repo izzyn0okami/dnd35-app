@@ -73,7 +73,11 @@ class CreatureBondRulesTest {
     }
 
     @Test
-    fun alternativeCompanionListsContinueAtLevelsTenThirteenAndSixteen() {
+    fun alternativeCompanionListsContinueAtLevelsFourTenThirteenAndSixteen() {
+        val druid4 = listOf(CharacterClassEntry("Druida", 4))
+        val options4 = CreatureBondRules.animalCompanionOptions(druid4)
+        assertTrue(options4.any { it.creature.id == "texugo-atroz" && it.effectiveLevelPenalty == 3 })
+
         val druid10 = listOf(CharacterClassEntry("Druida", 10))
         val options10 = CreatureBondRules.animalCompanionOptions(druid10, aquaticCampaign = true)
         assertTrue(options10.any { it.creature.id == "megaraptor" && it.effectiveLevelPenalty == 9 })
