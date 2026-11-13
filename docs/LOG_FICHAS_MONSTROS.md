@@ -230,3 +230,15 @@ Cada registro do catálogo recebe três flags independentes:
 - Aguardar CI da nova revisão.
 - Testar no aparelho o deslocamento horizontal, a sobreposição, o toque para virar, pressão prolongada e remoção de instâncias duplicadas.
 - Não mesclar antes da validação manual.
+
+
+## Correção de compilação — 2026-11-13
+
+A primeira execução de CI após a reformulação visual apontou referências ausentes em `SessionHubScreen.kt`. Foram implementados no mesmo arquivo e na mesma branch:
+
+- Seletor de criaturas com busca por nome e filtros combináveis por tipo e tamanho, usando diretamente `CreatureCatalog.filter`.
+- Diálogo de detalhes que consulta os dados originais de `CreatureDefinition`, sem criar ou modificar fichas.
+- Funções auxiliares locais para exibir modificadores e valores positivos com sinal.
+- Correção da separação entre o título e o botão de fechar no cabeçalho dos painéis flutuantes, que causava erro adicional de análise Kotlin.
+
+A alteração foi enviada ao PR #367 no commit `6b8a5eb32cf202c1393ad95803500f7e4db5ce37`. A validação final depende da nova execução do GitHub Actions; não considerar aprovado até testes e compilação concluídos.
