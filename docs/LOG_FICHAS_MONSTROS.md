@@ -99,3 +99,12 @@ Não reimplementar a listagem, busca, filtros por tipo/tamanho ou os campos mec�
 - **Dados mecânicos:** registro existente reaproveitado, sem duplicação.
 - **Imagem:** placeholder vazio; nenhuma imagem pesquisada, baixada ou inserida.
 - **Próxima criatura:** Anão (o livro inicia o verbete na mesma página 12; preservar a separação entre ficha de monstro e bloco racial quando aplicável).
+
+
+## 2026-11-13 — Anjo, Deva Astral
+- **Fonte:** Livro dos Monstros brasileiro, página impressa 19 (página 23 do PDF fornecido).
+- **Descrição:** transcritos os três parágrafos específicos do deva astral.
+- **Combate:** transcritos os parágrafos táticos, o uso de armas sagradas, a lista de habilidades similares a magia e as habilidades Atordoamento e Esquiva Sobrenatural.
+- **Escopo:** as características gerais compartilhadas por todos os anjos aparecem em um bloco comum no livro; não foram copiadas como se fossem texto exclusivo do deva astral. Permanecem representadas pelas qualidades especiais já presentes na ficha numérica quando aplicável.
+- **Dados mecânicos:** registro existente reaproveitado, sem duplicação.
+- **Imagem:** placeholder vazio; nenhuma imagem pesquisada, baixada ou inserida.
