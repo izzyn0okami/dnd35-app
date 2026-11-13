@@ -310,3 +310,9 @@ A alteração foi enviada ao PR #367 no commit `6b8a5eb32cf202c1393ad95803500f7e
 - Aguardar CI e build Android desta branch.
 - Testar no aparelho: abrir/fechar os quatro menus, rolagem de cartas, seleção, botão Voltar do Android, filtros do bestiário e alternância de opções aquáticas.
 - Confirmar que a seleção continua salvando vínculos e registrando a criatura invocada como antes.
+
+
+### Correção complementar — remoção de vínculos
+- Restaurada a ação explícita **Remover vínculo** em cada carta de familiar ou companheiro animal atualmente vinculado.
+- A remoção exige confirmação e altera somente a lista de vínculos salva no personagem; não apaga a criatura do bestiário nem altera suas regras ou dados.
+- A remoção de uma carta não afeta os demais vínculos. O usuário pode adicionar outra criatura posteriormente.
