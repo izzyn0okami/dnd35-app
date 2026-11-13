@@ -398,3 +398,8 @@ O registro **Anjo, Deva Astral** recebeu `description` e `combat`, conferidos na
 ### Atualização do bestiário — 2026-11-13 (Anjo, Planetário)
 
 O registro existente **Anjo, Planetário** recebeu os campos `description` e `combat`, conferidos nas páginas impressas 19–20 do Livro dos Monstros brasileiro. A seção Combate inclui a lista de magias similares a magia, os efeitos sempre ativos, a conjuração divina como clérigo de 17º nível e a lista de magias preparadas até o 9º nível. A página impressa 20 foi conferida visualmente para confirmar a continuação da lista e a nota dos domínios Destruição e Bem. Nenhum dado mecânico foi alterado. O total permanece em 264 registros, com 8 fichas contendo Descrição e Combate.
+
+
+### Atualização do bestiário — 2026-11-13 (Anjo, Solar)
+
+O registro existente **Anjo, Solar** recebeu os campos `description` e `combat`, conferidos nas páginas impressas 20–21 do Livro dos Monstros brasileiro. A seção Combate inclui as habilidades similares a magia, os efeitos sempre ativos, a conjuração divina como clérigo de 20º nível e a lista de magias preparadas até o 9º nível. Nenhum dado mecânico foi alterado. O catálogo permanece com 264 registros; agora são 9 as fichas com Descrição e Combate.
