@@ -164,3 +164,5 @@ Cada registro do catálogo recebe três flags independentes:
 - Total atualizado: 264 fichas; 45 companheiros animais; 103 criaturas invocáveis; 10 familiares.
 
 - Ajuste de nomenclatura: a entrada inglesa *dire weasel* da lista alternativa corresponde ao **Arminho Atroz** do Livro dos Monstros brasileiro; a ficha existente `arminho-atroz` foi marcada como companheiro animal, sem criar duplicata.
+
+- Complemento de apresentação: as categorias elegíveis também aparecem resumidas diretamente em cada linha da lista de monstros, além da seção completa na ficha detalhada.
