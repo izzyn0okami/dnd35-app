@@ -21,9 +21,9 @@ object SummoningRules {
         1 to "rato-atroz aguia macaco polvo coruja golfinho vibora-pequena lobo",
         2 to "urso-negro crocodilo morcego-atroz hipogrifo tubarao-medio vibora-media lula carcaju",
         3 to "gorila arminho-atroz lobo-atroz aguia-gigante leao coruja-gigante satiro tubarao-grande cobra-constritora vibora-grande thoqqua",
-        4 to "baleia-azul crocodilo-gigante dinonico gorila-atroz javali-atroz carcaju-atroz tubarao-enorme vibora-enorme tigre girallon urso-marrom",
+        4 to "crocodilo-gigante dinonico gorila-atroz javali-atroz carcaju-atroz tubarao-enorme vibora-enorme tigre urso-marrom",
         5 to "leao-atroz elasmossauro grifo rinoceronte nixie baleia-orca",
-        7 to "tigre-atroz djinni cacador-invisivel pixie megaraptor triceratops tiranossauro baleia-cachalote",
+        7 to "baleia-azul girallon tigre-atroz djinni cacador-invisivel pixie megaraptor triceratops tiranossauro baleia-cachalote",
         8 to "tubarao-atroz passaro-roca"
     )
 
