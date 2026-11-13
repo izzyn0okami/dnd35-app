@@ -683,7 +683,7 @@ private fun MonsterCreatureDetailDialog(creature: CreatureDefinition, onDismiss:
                         }
                     }
                     item { MonsterDetailSection("Ataques e qualidades especiais", listOf(creature.specialAttacks, creature.specialQualities).filter { it.isNotBlank() }) }
-                    item { MonsterDetailSection("Testes de resistência", listOf(creature.saves).filter { it.isNotBlank() }) }
+                    item { MonsterDetailSection("Testes de resistência", listOf("Fortitude ${signed(creature.saves.fort)} • Reflexos ${signed(creature.saves.ref)} • Vontade ${signed(creature.saves.will)}")) }
                     item {
                         val a = creature.abilities
                         MonsterDetailSection("Habilidades", listOf(
