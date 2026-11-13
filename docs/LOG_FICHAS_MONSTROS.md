@@ -242,3 +242,28 @@ A primeira execução de CI após a reformulação visual apontou referências a
 - Correção da separação entre o título e o botão de fechar no cabeçalho dos painéis flutuantes, que causava erro adicional de análise Kotlin.
 
 A alteração foi enviada ao PR #367 no commit `6b8a5eb32cf202c1393ad95803500f7e4db5ce37`. A validação final depende da nova execução do GitHub Actions; não considerar aprovado até testes e compilação concluídos.
+
+
+## 2026-11-13 — Regras e vínculos persistentes de familiares/companheiros
+
+### Implementação
+- Criado o modelo `CharacterCreatureBond`, que armazena somente o ID da criatura do catálogo e o tipo de vínculo; não duplica fichas de monstros.
+- Adicionada a coluna `creatureBondsJson` à ficha, com migração Room 10→11 e valor padrão vazio para preservar personagens existentes.
+- Serialização/deserialização tolerante a dados antigos e inclusão do campo nos backups.
+- Criado `CreatureBondRules` para filtrar familiares e companheiros conforme classes e níveis atuais.
+- Mago e Feiticeiro acumulam níveis para determinar o familiar.
+- Druida soma seus níveis aos níveis de Ranger divididos por dois (arredondamento para baixo) para o companheiro animal.
+- Listas alternativas de companheiros aplicam requisitos de 4º/7º nível e penalidades efetivas de -3/-6.
+- Opções aquáticas permanecem ocultas por padrão e só aparecem quando a campanha é explicitamente marcada como aquática.
+- Adicionada à ficha uma seção com consulta dos vínculos atuais e seleção filtrada de novas criaturas.
+
+### Testes adicionados
+- Progressão multiclasse de familiar e companheiro animal.
+- Penalidades e requisitos das listas alternativas.
+- Restrição de companheiros aquáticos.
+- Validação de vínculos contra as flags do catálogo.
+
+### CI
+- Corrigida a estrutura duplicada/inválida de gatilhos no workflow Android.
+- A CI agora executa em pushes nas branches `main`, `fix/**` e `feature/**`, além de PRs direcionadas a `main`.
+- O workflow usa JDK 17, alinhado à configuração atual do projeto.

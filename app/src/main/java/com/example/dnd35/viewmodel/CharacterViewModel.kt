@@ -21,7 +21,6 @@ import com.example.dnd35.model.withGeneralInfo
 import com.example.dnd35.model.LanguageAcquisition
 import com.example.dnd35.model.CharacterFeat
 import com.example.dnd35.model.CharacterInventoryItem
-import com.example.dnd35.model.CharacterJsonAdapters
 import com.example.dnd35.model.CharacterSkill
 import com.example.dnd35.model.SkillPointLevelRecord
 import com.example.dnd35.model.CharacterSpell
