@@ -101,3 +101,18 @@ class CreatureCatalogTest {
         assertTrue(!aboleth.summonedCreature)
         assertTrue(!aboleth.familiar)
     }
+
+
+    @Test
+    fun monstrousArthropodsInSummonMonsterListsAreMarked() {
+        listOf(
+            "centopeia-media", "centopeia-grande", "centopeia-enorme",
+            "centopeia-imensa", "centopeia-colossal",
+            "aranha-pequena", "aranha-media", "aranha-grande",
+            "aranha-enorme", "aranha-imensa", "aranha-colossal",
+            "escorpiao-medio", "escorpiao-grande", "escorpiao-enorme",
+            "escorpiao-imenso", "escorpiao-colossal"
+        ).forEach { id ->
+            assertTrue("$id deveria constar nas listas de invocação", CreatureCatalog.byId(id)!!.summonedCreature)
+        }
+    }
