@@ -72,3 +72,12 @@ Não reimplementar a listagem, busca, filtros por tipo/tamanho ou os campos mec�
 - Considerar a integração da aba à navegação como verificada; não repetir esse teste sem alteração relevante na navegação ou no ponto de entrada.
 - **CI Android:** execução `43352262968` concluída com sucesso; testes unitários, compilação Android e publicação do APK de debug concluídos.
 - A confirmação manual da aba e o resultado desse workflow ficam registrados separadamente. Antes do merge, conferir também o estado de validação associado ao commit mais recente do PR.
+
+
+## 2026-11-13 — Abolete e variante Abolete Mago
+- **Fonte:** Livro dos Monstros brasileiro, páginas impressas 9–10 (PDF, páginas 13–14).
+- **Catálogo:** incluídos dois blocos distintos apresentados lado a lado no livro: Abolete (ND 7) e Abolete Mago, Mago de 10º Nível (ND 17). A variante foi mantida como registro próprio para preservar seus Dados de Vida, atributos, perícias, talentos e magias.
+- **Descrição:** transcritos os parágrafos descritivos próprios do Abolete e do Abolete Mago.
+- **Combate:** transcritos os trechos de combate e as habilidades descritas sob essa seção para ambos os blocos. As magias preparadas do mago foram mantidas no texto de Combate por constarem nesse trecho do verbete.
+- **Imagem:** placeholders continuam vazios; nenhuma imagem pesquisada, baixada ou inserida.
+- **Conferência:** conferir visualmente no app a apresentação dos campos longos e validar a interpretação dos Dados de Vida mistos do Abolete Mago antes de considerar o verbete encerrado.
