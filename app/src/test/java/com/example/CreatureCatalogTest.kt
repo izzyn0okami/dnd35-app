@@ -82,6 +82,7 @@ class CreatureCatalogTest {
     fun rulesEligibilityFlagsMatchPlayersHandbookLists() {
         val wolf = CreatureCatalog.byId("lobo")!!
         assertTrue(wolf.animalCompanion)
+        assertTrue(CreatureCatalog.byId("arminho-atroz")!!.animalCompanion)
         assertTrue(wolf.summonedCreature)
         assertTrue(!wolf.familiar)
 
