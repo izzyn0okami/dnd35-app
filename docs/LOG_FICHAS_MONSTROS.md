@@ -65,3 +65,10 @@ Não reimplementar a listagem, busca, filtros por tipo/tamanho ou os campos mec�
 - **Combate:** transcritos os dois parágrafos táticos e a descrição de Nuvem Negra apresentada sob o título Combate.
 - **Dados mecânicos:** registro existente reaproveitado, sem duplicação.
 - **Imagem:** placeholder vazio mantido; nenhuma imagem foi pesquisada, baixada ou inserida.
+
+
+## 2026-11-13 — Confirmação funcional da aba Monstros
+- **Verificação manual do usuário:** a aba Monstros foi adicionada corretamente e está presente no aplicativo.
+- Considerar a integração da aba à navegação como verificada; não repetir esse teste sem alteração relevante na navegação ou no ponto de entrada.
+- **CI Android:** execução `43352262968` concluída com sucesso; testes unitários, compilação Android e publicação do APK de debug concluídos.
+- A confirmação manual da aba e o resultado desse workflow ficam registrados separadamente. Antes do merge, conferir também o estado de validação associado ao commit mais recente do PR.
