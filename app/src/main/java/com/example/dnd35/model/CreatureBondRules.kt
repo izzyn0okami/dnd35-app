@@ -60,6 +60,7 @@ object CreatureBondRules {
         "cobra-constritora" to CompanionRequirement(4, 3),
         "vibora-grande" to CompanionRequirement(4, 3),
         "arminho-atroz" to CompanionRequirement(4, 3),
+        "texugo-atroz" to CompanionRequirement(4, 3),
         "guepardo" to CompanionRequirement(4, 3),
         "javali" to CompanionRequirement(4, 3),
         "gorila" to CompanionRequirement(4, 3),
@@ -88,6 +89,7 @@ object CreatureBondRules {
         "leao-atroz" to CompanionRequirement(10, 9),
         "tubarao-enorme" to CompanionRequirement(10, 9, aquaticOnly = true),
         "megaraptor" to CompanionRequirement(10, 9),
+        "cobra-constritora-gigante" to CompanionRequirement(10, 9),
         "urso-polar" to CompanionRequirement(10, 9),
 
         // Alternativas a partir do 13º nível efetivo: penalidade -12

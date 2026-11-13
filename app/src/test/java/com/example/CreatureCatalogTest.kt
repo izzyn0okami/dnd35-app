@@ -89,6 +89,10 @@ class CreatureCatalogTest {
         assertTrue(CreatureCatalog.byId("elefante")!!.summonedCreature)
         assertTrue(CreatureCatalog.byId("polvo-gigante")!!.summonedCreature)
         assertTrue(CreatureCatalog.byId("lula-gigante")!!.summonedCreature)
+        assertTrue(CreatureCatalog.byId("texugo-atroz")!!.animalCompanion)
+        assertTrue(CreatureCatalog.byId("texugo-atroz")!!.summonedCreature)
+        assertTrue(CreatureCatalog.byId("cobra-constritora-gigante")!!.animalCompanion)
+        assertTrue(CreatureCatalog.byId("cobra-constritora-gigante")!!.summonedCreature)
 
         val owl = CreatureCatalog.byId("coruja")!!
         assertTrue(owl.animalCompanion)

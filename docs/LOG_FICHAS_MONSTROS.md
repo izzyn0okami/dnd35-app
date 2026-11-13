@@ -287,3 +287,5 @@ A alteração foi enviada ao PR #367 no commit `6b8a5eb32cf202c1393ad95803500f7e
 - Completo o catálogo de Invocar Criaturas II–VI, que também estavam ausentes do catálogo apesar de existirem no Livro do Jogador. Invocar Criaturas IX mantém os domínios Bem, Caos, Mal e Ordem; a seleção de invocações agora reconhece qualquer domínio clerical explicitamente registrado na magia. Ícones de todas as magias de invocação foram alinhados.
 
 - Auditoria das listas de Invocar Aliado da Natureza: adicionadas as opções já existentes no catálogo que estavam sem a tag de invocação (Janni, Leão Marinho e Grig), nos círculos 5, 4 e 9, respectivamente.
+
+- Incluídas no catálogo as duas opções de companheiro animal que existiam no Livro dos Monstros, mas ainda não tinham cartas: Texugo Atroz e Cobra Constritora Gigante. Ambas receberam dados do bloco oficial e tags de companheiro/invocável; foram adicionadas às listas corretas de Invocar Aliado da Natureza, Invocar Criaturas e Companheiro Animal.

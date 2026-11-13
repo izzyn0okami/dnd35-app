@@ -77,6 +77,7 @@ class CreatureBondRulesTest {
         val druid10 = listOf(CharacterClassEntry("Druida", 10))
         val options10 = CreatureBondRules.animalCompanionOptions(druid10, aquaticCampaign = true)
         assertTrue(options10.any { it.creature.id == "megaraptor" && it.effectiveLevelPenalty == 9 })
+        assertTrue(options10.any { it.creature.id == "cobra-constritora-gigante" && it.effectiveLevelPenalty == 9 })
         assertTrue(options10.any { it.creature.id == "leao-atroz" && it.effectiveLevelPenalty == 9 })
 
         val druid13 = listOf(CharacterClassEntry("Druida", 13))
