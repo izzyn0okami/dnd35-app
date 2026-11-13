@@ -41,3 +41,19 @@ Não reimplementar a listagem, busca, filtros por tipo/tamanho ou os campos mec�
 
 ### Complemento de estrutura — 2026-11-12
 - A ficha também reserva seções próprias para **Descrição** e **Combate**. Elas permanecem explicitamente identificadas como conteúdo pendente até que o texto seja extraído e conferido no PDF; nenhum texto de regra é presumido.
+
+
+## 2026-11-13 — Primeira criatura com descrição e Combate conferidos
+
+### Abocanhador Matraqueante
+- **Fonte:** Livro dos Monstros brasileiro, página impressa 8 (página 12 do PDF fornecido).
+- **Descrição:** transcritos os cinco parágrafos descritivos do verbete, preservando as informações e a terminologia da edição.
+- **Combate:** transcrito o parágrafo sob o título “Combate”, sem incorporar textos de habilidades especiais de outras partes do verbete.
+- **Dados mecânicos:** mantidos no registro já existente; nenhuma ficha duplicada foi criada.
+- **Imagem:** placeholder vazio mantido; nenhuma imagem foi pesquisada, baixada ou inserida.
+
+### Alterações estruturais
+- O modelo CreatureDefinition agora aceita os campos opcionais description e combat, com valor vazio para registros ainda não auditados.
+- O carregador JSON lê esses campos sem exigir que as 229 fichas restantes já os possuam.
+- A interface exibe o texto transcrito quando disponível e mantém o aviso de pendência quando o campo estiver vazio.
+- Próxima criatura: seguir a ordem alfabética do livro e conferir o verbete diretamente no PDF antes de registrar o texto.
