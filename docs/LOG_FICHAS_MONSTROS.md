@@ -119,3 +119,13 @@ Não reimplementar a listagem, busca, filtros por tipo/tamanho ou os campos mec�
 - **Imagem:** placeholder vazio; nenhuma imagem pesquisada, baixada ou inserida.
 - **Contagem:** 264 registros, 264 IDs únicos; 8 fichas com Descrição e Combate.
 - **Próxima criatura:** Anjo, Solar.
+
+
+## 2026-11-13 — Anjo, Solar
+- **Fonte:** Livro dos Monstros brasileiro, páginas impressas 20–21 (PDF, páginas 24–25).
+- **Descrição:** transcritos os dois parágrafos específicos do solar, incluindo aparência, papel entre os anjos, voz e dimensões.
+- **Combate:** transcritos os trechos táticos, armas sagradas, Regeneração, habilidades similares a magia, habilidades sempre ativas, conjuração divina como clérigo de 20º nível e magias preparadas dos níveis 0 a 9.
+- **Dados mecânicos:** registro existente `anjo-solar` reaproveitado; nenhum dado numérico foi alterado.
+- **Imagem:** placeholder vazio; nenhuma imagem pesquisada, baixada ou inserida.
+- **Contagem:** 264 registros, 264 IDs únicos; 9 fichas com Descrição e Combate.
+- **Próxima criatura:** seguir a ordem alfabética do Livro dos Monstros após os anjos.
