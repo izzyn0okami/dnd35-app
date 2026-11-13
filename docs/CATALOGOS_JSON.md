@@ -306,7 +306,7 @@ estruturados, não como itens avulsos.
 
 ### Criaturas do Livro dos Monstros (2026-11-09)
 
-`app/src/main/resources/dnd35/creatures.json` traz 230 criaturas do Livro dos Monstros 3.5
+`app/src/main/resources/dnd35/creatures.json` traz 264 registros de criaturas (230 extraídos do Livro dos Monstros 3.5, mais 32 fichas complementares do SRD e duas variantes de Abolete documentadas separadamente)
 brasileiro, lidas por `CreatureCatalog` (`CreatureDefinition`, com busca por nome sem acento e
 filtros de tipo, tamanho e ND). O arquivo é gerado por `tools/monstros/parse_livro_dos_monstros.py
 <livro.txt> <saida.json> <rejeitadas.json>`.
