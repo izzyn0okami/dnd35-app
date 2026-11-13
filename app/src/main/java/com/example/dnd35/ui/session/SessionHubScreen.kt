@@ -2,8 +2,11 @@ package com.example.dnd35.ui.session
 
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -43,6 +46,7 @@ import androidx.compose.material3.Checkbox
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -347,8 +351,7 @@ private fun NpcManagementSection(characterViewModel: CharacterViewModel) {
         Text(
             "Marque como NPC as fichas que são suas (monstros, figurantes) para diferenciar " +
                 "das fichas dos jogadores. Isso não afeta a ficha de forma alguma fora da sessão.",
-            style = MaterialTheme.typography.bodySmall,
-            color = MaterialTheme.colorScheme.onSurfaceVariant
+            style = MaterialTheme.typography.bodySmall,            color = MaterialTheme.colorScheme.onSurfaceVariant
         )
         Spacer(modifier = Modifier.height(8.dp))
         myCharacters.forEach { character ->
@@ -379,8 +382,9 @@ private fun NpcManagementSection(characterViewModel: CharacterViewModel) {
 
 
 /**
- * Coleção privada de atalhos do Mestre. Cada card guarda apenas o ID da criatura do bestiário;
- * os dados mecânicos continuam sendo lidos do catálogo e nunca são copiados para uma ficha.
+ * Coleção privada de atalhos do Mestre. Os cards mantêm apenas referências ao catálogo.
+ * A disposição horizontal com sobreposição reproduz um baralho físico; cada carta mantém
+ * proporção vertical e hierarquia visual inspirada em cards colecionáveis.
  */
 @Composable
 private fun MonsterCardsSection(
@@ -391,37 +395,47 @@ private fun MonsterCardsSection(
     var showPicker by remember { mutableStateOf(false) }
     var selectedCreature by remember { mutableStateOf<CreatureDefinition?>(null) }
 
-    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+    Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
             Column(modifier = Modifier.weight(1f)) {
-                Text("Monstros da sessão", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
+                Text("Baralho de monstros", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
                 Text(
-                    "Atalhos para consultar criaturas sem criar fichas completas.",
+                    if (cards.isEmpty()) "Nenhuma carta na sessão" else "${cards.size} carta(s) • deslize para percorrer",
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             }
-            Button(onClick = { showPicker = true }) { Text("Adicionar monstro") }
+            Button(onClick = { showPicker = true }) { Text("Adicionar") }
         }
 
         if (cards.isEmpty()) {
-            Text(
-                "Nenhum monstro adicionado. Use “Adicionar monstro” para escolher no bestiário.",
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
-            )
+            Surface(
+                modifier = Modifier.fillMaxWidth(),
+                shape = RoundedCornerShape(14.dp),
+                color = MaterialTheme.colorScheme.surfaceVariant
+            ) {
+                Text(
+                    "Adicione criaturas do bestiário para montar o baralho desta sessão.",
+                    modifier = Modifier.padding(16.dp),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
         } else {
-            // Espaçamento negativo cria a aparência de uma pilha, mantendo a faixa superior
-            // de cada carta visível para indicar que há mais cards abaixo.
-            Column(verticalArrangement = Arrangement.spacedBy((-34).dp)) {
-                cards.asReversed().forEach { shortcut ->
+            Row(
+                modifier = Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()).padding(vertical = 8.dp),
+                horizontalArrangement = Arrangement.spacedBy((-164).dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                cards.forEach { shortcut ->
                     val creature = CreatureCatalog.byId(shortcut.creatureId)
                     if (creature != null) {
                         MonsterShortcutCard(
+                            instanceId = shortcut.instanceId,
                             creature = creature,
                             onLongClick = { selectedCreature = creature },
                             onRemove = { onRemove(shortcut.instanceId) }
@@ -429,6 +443,11 @@ private fun MonsterCardsSection(
                     }
                 }
             }
+            Text(
+                "Toque na carta para virar • pressione e segure para abrir os detalhes • deslize o baralho lateralmente",
+                style = MaterialTheme.typography.labelSmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
         }
     }
 
@@ -449,286 +468,120 @@ private fun MonsterCardsSection(
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 private fun MonsterShortcutCard(
+    instanceId: String,
     creature: CreatureDefinition,
     onLongClick: () -> Unit,
     onRemove: () -> Unit
 ) {
-    var showBack by remember(creature.id) { mutableStateOf(false) }
+    var showBack by remember(instanceId) { mutableStateOf(false) }
     Card(
         modifier = Modifier
-            .fillMaxWidth()
+            .width(220.dp)
+            .height(326.dp)
             .combinedClickable(onClick = { showBack = !showBack }, onLongClick = onLongClick),
-        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainer)
+        shape = RoundedCornerShape(15.dp),
+        border = androidx.compose.foundation.BorderStroke(3.dp, DndGold),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
     ) {
-        Column(modifier = Modifier.padding(12.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Column(modifier = Modifier.weight(1f)) {
-                    Text(creature.name, style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
-                    Text(
-                        "${creature.size} • ${creature.typeDetail.ifBlank { creature.type }} • ND ${creature.challengeRating}",
-                        style = MaterialTheme.typography.labelSmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
-                    )
-                }
-                TextButton(onClick = onRemove) { Text("Remover") }
+        Column(
+            modifier = Modifier.fillMaxSize().padding(7.dp),
+            verticalArrangement = Arrangement.spacedBy(5.dp)
+        ) {
+            Row(
+                modifier = Modifier.fillMaxWidth()
+                    .background(DndGold.copy(alpha = 0.16f), RoundedCornerShape(7.dp))
+                    .padding(horizontal = 7.dp, vertical = 5.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    creature.name,
+                    modifier = Modifier.weight(1f),
+                    style = MaterialTheme.typography.titleSmall,
+                    fontWeight = FontWeight.ExtraBold,
+                    maxLines = 1
+                )
+                Text("ND ${creature.challengeRating}", style = MaterialTheme.typography.labelSmall, fontWeight = FontWeight.Bold)
             }
+
             if (!showBack) {
-                Text("FRENTE", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.primary)
-                Row(horizontalArrangement = Arrangement.spacedBy(10.dp), verticalAlignment = Alignment.CenterVertically) {
-                    Surface(
-                        modifier = Modifier.size(width = 72.dp, height = 92.dp),
-                        shape = RoundedCornerShape(8.dp),
-                        color = MaterialTheme.colorScheme.surfaceVariant
-                    ) {
-                        Box(contentAlignment = Alignment.Center) {
-                            Text("Imagem", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                Surface(
+                    modifier = Modifier.fillMaxWidth().weight(1f),
+                    shape = RoundedCornerShape(5.dp),
+                    color = MaterialTheme.colorScheme.surfaceVariant,
+                    border = androidx.compose.foundation.BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant)
+                ) {
+                    Box(contentAlignment = Alignment.Center) {
+                        Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(5.dp)) {
+                            Icon(Icons.Default.Shield, contentDescription = null, modifier = Modifier.size(38.dp), tint = MaterialTheme.colorScheme.onSurfaceVariant)
+                            Text("ILUSTRAÇÃO", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                            Text("Imagem do bestiário", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                         }
                     }
-                    Column(modifier = Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                        Text("PV ${creature.hitPoints}")
-                        Text("BBA ${signed(creature.baseAttack)}")
-                        Text("CA ${creature.armorClassText}")
-                        Text("Iniciativa ${signed(creature.initiative)}")
-                        Text("Ataque: ${creature.attack.ifBlank { "—" }}")
+                }
+                Surface(
+                    modifier = Modifier.fillMaxWidth(),
+                    color = MaterialTheme.colorScheme.surfaceVariant,
+                    shape = RoundedCornerShape(5.dp)
+                ) {
+                    Text(
+                        "Monstro • ${creature.size} • ${creature.typeDetail.ifBlank { creature.type }}",
+                        modifier = Modifier.padding(horizontal = 6.dp, vertical = 4.dp),
+                        style = MaterialTheme.typography.labelSmall,
+                        fontWeight = FontWeight.Bold,
+                        maxLines = 2
+                    )
+                }
+                Column(
+                    modifier = Modifier.fillMaxWidth().weight(0.78f)
+                        .border(1.dp, MaterialTheme.colorScheme.outlineVariant, RoundedCornerShape(5.dp))
+                        .padding(7.dp),
+                    verticalArrangement = Arrangement.spacedBy(3.dp)
+                ) {
+                    Text("PV ${creature.hitPoints}   CA ${creature.armorClassText}", style = MaterialTheme.typography.bodySmall, fontWeight = FontWeight.Bold)
+                    Text("BBA ${signed(creature.baseAttack)}   Inic. ${signed(creature.initiative)}", style = MaterialTheme.typography.bodySmall)
+                    Text(
+                        "Ataque: ${creature.attack.ifBlank { "—" }}",
+                        style = MaterialTheme.typography.labelSmall,
+                        maxLines = 3
+                    )
+                }
+                Row(modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+                    Text("D&D 3.5 • BESTIÁRIO", modifier = Modifier.weight(1f), style = MaterialTheme.typography.labelSmall, fontWeight = FontWeight.Bold)
+                    TextButton(onClick = onRemove, contentPadding = androidx.compose.foundation.layout.PaddingValues(horizontal = 5.dp, vertical = 0.dp)) {
+                        Text("Remover", style = MaterialTheme.typography.labelSmall)
                     }
                 }
             } else {
-                Text("VERSO", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.primary)
-                val a = creature.abilities
-                Text(
-                    "FOR ${abilityWithModifier(a.str)}   DES ${abilityWithModifier(a.dex)}   CON ${abilityWithModifier(a.con)}"
-                )
-                Text(
-                    "INT ${abilityWithModifier(a.int)}   SAB ${abilityWithModifier(a.wis)}   CAR ${abilityWithModifier(a.cha)}"
-                )
-                if (creature.specialAttacks.isNotBlank()) Text("Habilidades: ${creature.specialAttacks}")
-                if (creature.specialQualities.isNotBlank()) Text("Qualidades: ${creature.specialQualities}")
-                if (creature.feats.isNotBlank()) Text("Talentos: ${creature.feats}")
-            }
-            Text(
-                "Toque para virar • Pressione e segure para ver a ficha completa",
-                style = MaterialTheme.typography.labelSmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
-            )
-        }
-    }
-}
-
-@Composable
-private fun AddMonsterCardDialog(
-    onDismiss: () -> Unit,
-    onSelect: (CreatureDefinition) -> Unit
-) {
-    var query by remember { mutableStateOf("") }
-    var selectedType by remember { mutableStateOf<String?>(null) }
-    var selectedSize by remember { mutableStateOf<String?>(null) }
-    var typeExpanded by remember { mutableStateOf(false) }
-    var sizeExpanded by remember { mutableStateOf(false) }
-    val filtered = remember(query, selectedType, selectedSize) {
-        CreatureCatalog.filter(query = query, type = selectedType, size = selectedSize)
-    }
-
-    // Janela de tela inteira: visualmente funciona como uma camada do modo Mestre,
-    // sem o enquadramento de AlertDialog e sem limitar a lista a uma pequena janela.
-    Dialog(
-        onDismissRequest = onDismiss,
-        properties = androidx.compose.ui.window.DialogProperties(
-            usePlatformDefaultWidth = false,
-            decorFitsSystemWindows = false
-        )
-    ) {
-        Surface(
-            modifier = Modifier.fillMaxSize(),
-            color = MaterialTheme.colorScheme.background,
-            shape = RoundedCornerShape(0.dp)
-        ) {
-            Column(
-                modifier = Modifier.fillMaxSize().padding(horizontal = 18.dp, vertical = 16.dp),
-                verticalArrangement = Arrangement.spacedBy(12.dp)
-            ) {
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.SpaceBetween
+                Surface(
+                    modifier = Modifier.fillMaxWidth().weight(1f),
+                    color = MaterialTheme.colorScheme.surfaceVariant,
+                    shape = RoundedCornerShape(5.dp)
                 ) {
-                    Column(modifier = Modifier.weight(1f)) {
-                        Text("Baralho de monstros", style = MaterialTheme.typography.headlineSmall, fontWeight = FontWeight.Bold)
-                        Text("Escolha uma criatura para adicionar à sessão", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                    }
-                    TextButton(onClick = onDismiss) { Text("Fechar") }
-                }
-                OutlinedTextField(
-                    value = query,
-                    onValueChange = { query = it },
-                    label = { Text("Buscar criatura") },
-                    modifier = Modifier.fillMaxWidth(),
-                    singleLine = true
-                )
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.spacedBy(8.dp)
-                ) {
-                    Box(modifier = Modifier.weight(1f)) {
-                        OutlinedButton(onClick = { typeExpanded = true }, modifier = Modifier.fillMaxWidth()) {
-                            Text(selectedType ?: "Todos os tipos", maxLines = 1)
-                        }
-                        DropdownMenu(expanded = typeExpanded, onDismissRequest = { typeExpanded = false }) {
-                            DropdownMenuItem(text = { Text("Todos os tipos") }, onClick = { selectedType = null; typeExpanded = false })
-                            CreatureCatalog.TYPES.forEach { type ->
-                                DropdownMenuItem(text = { Text(type) }, onClick = { selectedType = type; typeExpanded = false })
-                            }
-                        }
-                    }
-                    Box(modifier = Modifier.weight(1f)) {
-                        OutlinedButton(onClick = { sizeExpanded = true }, modifier = Modifier.fillMaxWidth()) {
-                            Text(selectedSize ?: "Todos os tamanhos", maxLines = 1)
-                        }
-                        DropdownMenu(expanded = sizeExpanded, onDismissRequest = { sizeExpanded = false }) {
-                            DropdownMenuItem(text = { Text("Todos os tamanhos") }, onClick = { selectedSize = null; sizeExpanded = false })
-                            CreatureCatalog.SIZES.forEach { size ->
-                                DropdownMenuItem(text = { Text(size) }, onClick = { selectedSize = size; sizeExpanded = false })
-                            }
-                        }
+                    Column(modifier = Modifier.padding(8.dp), verticalArrangement = Arrangement.spacedBy(7.dp)) {
+                        Text("ATRIBUTOS", style = MaterialTheme.typography.labelMedium, fontWeight = FontWeight.ExtraBold)
+                        val abilities = creature.abilities
+                        Text("FOR  ${abilityWithModifier(abilities.str)}", style = MaterialTheme.typography.bodySmall)
+                        Text("DES  ${abilityWithModifier(abilities.dex)}", style = MaterialTheme.typography.bodySmall)
+                        Text("CON  ${abilityWithModifier(abilities.con)}", style = MaterialTheme.typography.bodySmall)
+                        Text("INT  ${abilityWithModifier(abilities.int)}", style = MaterialTheme.typography.bodySmall)
+                        Text("SAB  ${abilityWithModifier(abilities.wis)}", style = MaterialTheme.typography.bodySmall)
+                        Text("CAR  ${abilityWithModifier(abilities.cha)}", style = MaterialTheme.typography.bodySmall)
+                        Divider(color = MaterialTheme.colorScheme.outlineVariant)
+                        Text("Habilidades especiais", style = MaterialTheme.typography.labelSmall, fontWeight = FontWeight.Bold)
+                        Text(creature.specialAttacks.ifBlank { "—" }, style = MaterialTheme.typography.labelSmall, maxLines = 3)
+                        Text("Qualidades: ${creature.specialQualities.ifBlank { "—" }}", style = MaterialTheme.typography.labelSmall, maxLines = 3)
+                        Text("Talentos: ${creature.feats.ifBlank { "—" }}", style = MaterialTheme.typography.labelSmall, maxLines = 3)
                     }
                 }
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text("${filtered.size} criaturas encontradas", style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                    Spacer(modifier = Modifier.weight(1f))
-                    Text("Toque em uma carta para adicionar", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.primary)
-                }
-                LazyColumn(
-                    modifier = Modifier.weight(1f).fillMaxWidth(),
-                    verticalArrangement = Arrangement.spacedBy(9.dp),
-                    contentPadding = androidx.compose.foundation.layout.PaddingValues(bottom = 18.dp)
-                ) {
-                    items(filtered, key = { it.id }) { creature ->
-                        Card(
-                            modifier = Modifier.fillMaxWidth().clickable { onSelect(creature) },
-                            shape = RoundedCornerShape(16.dp),
-                            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainer)
-                        ) {
-                            Row(
-                                modifier = Modifier.fillMaxWidth().padding(14.dp),
-                                verticalAlignment = Alignment.CenterVertically,
-                                horizontalArrangement = Arrangement.spacedBy(12.dp)
-                            ) {
-                                Surface(
-                                    modifier = Modifier.size(width = 58.dp, height = 76.dp),
-                                    shape = RoundedCornerShape(9.dp),
-                                    color = MaterialTheme.colorScheme.surfaceVariant
-                                ) {
-                                    Box(contentAlignment = Alignment.Center) {
-                                        Text("D&D", style = MaterialTheme.typography.labelMedium, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.primary)
-                                    }
-                                }
-                                Column(modifier = Modifier.weight(1f)) {
-                                    Text(creature.name, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.primary)
-                                    Text("${creature.size} • ${creature.type} • ND ${creature.challengeRating}", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                                }
-                                Text("＋", style = MaterialTheme.typography.titleLarge, color = MaterialTheme.colorScheme.primary)
-                            }
-                        }
+                Row(modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+                    Text("VERSO DA CARTA", modifier = Modifier.weight(1f), style = MaterialTheme.typography.labelSmall, fontWeight = FontWeight.Bold)
+                    TextButton(onClick = onRemove, contentPadding = androidx.compose.foundation.layout.PaddingValues(horizontal = 5.dp, vertical = 0.dp)) {
+                        Text("Remover", style = MaterialTheme.typography.labelSmall)
                     }
                 }
             }
         }
     }
-}
-
-@Composable
-private fun MonsterCreatureDetailDialog(creature: CreatureDefinition, onDismiss: () -> Unit) {
-    Dialog(
-        onDismissRequest = onDismiss,
-        properties = androidx.compose.ui.window.DialogProperties(
-            usePlatformDefaultWidth = false,
-            decorFitsSystemWindows = false
-        )
-    ) {
-        Surface(
-            modifier = Modifier.fillMaxSize(),
-            color = MaterialTheme.colorScheme.background,
-            shape = RoundedCornerShape(0.dp)
-        ) {
-            Column(modifier = Modifier.fillMaxSize()) {
-                Row(
-                    modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 12.dp),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    TextButton(onClick = onDismiss) { Text("‹ Baralho") }
-                    Spacer(modifier = Modifier.weight(1f))
-                    Text("Ficha da criatura", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
-                }
-                LazyColumn(
-                    modifier = Modifier.fillMaxSize().padding(horizontal = 18.dp),
-                    verticalArrangement = Arrangement.spacedBy(8.dp),
-                    contentPadding = androidx.compose.foundation.layout.PaddingValues(bottom = 28.dp)
-                ) {
-                    item {
-                        Card(
-                            modifier = Modifier.fillMaxWidth(),
-                            shape = RoundedCornerShape(18.dp),
-                            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainer)
-                        ) {
-                            Column(modifier = Modifier.padding(18.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                                Text(creature.name, style = MaterialTheme.typography.headlineSmall, fontWeight = FontWeight.Bold)
-                                Text("${creature.size} • ${creature.typeDetail.ifBlank { creature.type }} • ND ${creature.challengeRating}", color = MaterialTheme.colorScheme.onSurfaceVariant)
-                                Text("DV: ${creature.hitDice} (${creature.hitPoints} PV)")
-                                Text("Iniciativa: ${signed(creature.initiative)} • Deslocamento: ${creature.speed}")
-                                Text("CA: ${creature.armorClassText} • Toque: ${creature.touchAc} • Surpresa: ${creature.flatFootedAc}")
-                                Text("BBA/Agarrar: ${signed(creature.baseAttack)}/${signed(creature.grapple)}")
-                                Text("Ataque: ${creature.attack}")
-                                Text("Ataque total: ${creature.fullAttack}")
-                                Text("Espaço/Alcance: ${creature.spaceReach}")
-                            }
-                        }
-                    }
-                    item { MonsterDetailSection("Ataques e qualidades especiais", listOf(creature.specialAttacks, creature.specialQualities).filter { it.isNotBlank() }) }
-                    item { MonsterDetailSection("Testes de resistência", listOf("Fortitude ${signed(creature.saves.fort)} • Reflexos ${signed(creature.saves.ref)} • Vontade ${signed(creature.saves.will)}")) }
-                    item {
-                        val a = creature.abilities
-                        MonsterDetailSection("Habilidades", listOf(
-                            "FOR ${abilityWithModifier(a.str)} • DES ${abilityWithModifier(a.dex)} • CON ${abilityWithModifier(a.con)}",
-                            "INT ${abilityWithModifier(a.int)} • SAB ${abilityWithModifier(a.wis)} • CAR ${abilityWithModifier(a.cha)}"
-                        ))
-                    }
-                    item { MonsterDetailSection("Perícias e talentos", listOf(creature.skills, creature.feats).filter { it.isNotBlank() }) }
-                    item { MonsterDetailSection("Descrição", listOf(creature.description.ifBlank { "Descrição ainda não conferida no livro." })) }
-                    item { MonsterDetailSection("Combate", listOf(creature.combat.ifBlank { "Texto de combate ainda não conferido no livro." })) }
-                    item { MonsterDetailSection("Outras informações", listOf(
-                        "Ambiente: ${creature.environment}",
-                        "Organização: ${creature.organization}",
-                        "Tesouro: ${creature.treasure}",
-                        "Tendência: ${creature.alignment}",
-                        "Progressão: ${creature.advancement}",
-                        "Ajuste de nível: ${creature.levelAdjustment}"
-                    ).filterNot { it.endsWith(": ") }) }
-                }
-            }
-        }
-    }
-}
-
-@Composable
-private fun MonsterDetailSection(title: String, lines: List<String>) {
-    if (lines.isEmpty()) return
-    Card(
-        modifier = Modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(14.dp),
-        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainer)
-    ) {
-        Column(modifier = Modifier.padding(14.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
-            Text(title, style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.Bold)
-            lines.forEach { Text(it, style = MaterialTheme.typography.bodyMedium) }
-        }
-    }
-}
-
-private fun signed(value: Int): String = if (value >= 0) "+$value" else value.toString()
-
-private fun abilityWithModifier(score: Int?): String {
-    if (score == null) return "—"
-    val modifier = Math.floorDiv(score - 10, 2)
-    return "$score (${signed(modifier)})"
 }
 
 /** Candidato a combatente: jogador conectado ou ficha NPC do Mestre. */
@@ -1047,8 +900,7 @@ private fun CombatTracker(
  */
 @Composable
 private fun PendingRequestsSection(
-    requests: List<ActionRequest>,
-    onApprove: (String) -> Unit,
+    requests: List<ActionRequest>,    onApprove: (String) -> Unit,
     onDeny: (String) -> Unit
 ) {
     Column {
@@ -1397,8 +1249,7 @@ private fun PlayerShopSection(shop: ShopSnapshot, onRequestBuy: (CharacterInvent
                     Row(
                         modifier = Modifier.fillMaxWidth().padding(10.dp),
                         horizontalArrangement = Arrangement.SpaceBetween,
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
+                        verticalAlignment = Alignment.CenterVertically                    ) {
                         Column(modifier = Modifier.weight(1f)) {
                             Text(
                                 item.name + if (item.quantity > 1) " x${item.quantity}" else "",
@@ -1747,8 +1598,7 @@ fun SessionFloatingPanels(
                             },
                             style = MaterialTheme.typography.titleLarge,
                             fontWeight = FontWeight.Bold
-                        )
-                        TextButton(onClick = { activePanel = null }) { Text("Fechar") }
+                        )                        TextButton(onClick = { activePanel = null }) { Text("Fechar") }
                     }
                     Column(
                         modifier = Modifier.weight(1f).then(
@@ -2097,8 +1947,7 @@ private fun ParticipantRoster(participants: List<Participant>, characters: Map<S
                                 style = MaterialTheme.typography.labelSmall,
                                 color = if (participant.role == ParticipantRole.DM) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant
                             )
-                            if (!participant.connected) {
-                                Text(
+                            if (!participant.connected) {                                Text(
                                     "Desconectado",
                                     style = MaterialTheme.typography.labelSmall,
                                     color = MaterialTheme.colorScheme.error
