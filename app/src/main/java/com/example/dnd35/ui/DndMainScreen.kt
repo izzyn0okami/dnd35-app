@@ -423,7 +423,7 @@ fun DndMainScreen(
                     Triple("Carga & Itens", Icons.Default.FitnessCenter, 2),
                     Triple("Talentos", Icons.Default.MilitaryTech, 3),
                     Triple("Grimório", Icons.Default.AutoStories, 4),
-                    Triple("Monstros", Icons.Default.Pets, 5)
+                    Triple("Monstros", Icons.Default.BugReport, 5)
                 )
 
                 items.forEach { (label, icon, index) ->
