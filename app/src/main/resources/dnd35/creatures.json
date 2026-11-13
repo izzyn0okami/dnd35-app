@@ -12364,7 +12364,7 @@
     "levelAdjustment": "—",
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": false,
-    "summonedCreature": false,
+    "summonedCreature": true,
     "familiar": false
   },
   {
@@ -12414,7 +12414,7 @@
     "levelAdjustment": "—",
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": false,
-    "summonedCreature": false,
+    "summonedCreature": true,
     "familiar": false
   },
   {
@@ -12464,7 +12464,7 @@
     "levelAdjustment": "—",
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": false,
-    "summonedCreature": false,
+    "summonedCreature": true,
     "familiar": false
   },
   {
@@ -12514,7 +12514,7 @@
     "levelAdjustment": "—",
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": false,
-    "summonedCreature": false,
+    "summonedCreature": true,
     "familiar": false
   },
   {
@@ -12714,7 +12714,7 @@
     "levelAdjustment": "—",
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": false,
-    "summonedCreature": false,
+    "summonedCreature": true,
     "familiar": false
   },
   {
@@ -12764,7 +12764,7 @@
     "levelAdjustment": "—",
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": false,
-    "summonedCreature": false,
+    "summonedCreature": true,
     "familiar": false
   },
   {
@@ -12814,7 +12814,7 @@
     "levelAdjustment": "—",
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": false,
-    "summonedCreature": false,
+    "summonedCreature": true,
     "familiar": false
   },
   {
@@ -12864,7 +12864,7 @@
     "levelAdjustment": "—",
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": false,
-    "summonedCreature": false,
+    "summonedCreature": true,
     "familiar": false
   },
   {
@@ -13014,7 +13014,7 @@
     "levelAdjustment": "—",
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": false,
-    "summonedCreature": false,
+    "summonedCreature": true,
     "familiar": false
   },
   {
@@ -13064,7 +13064,7 @@
     "levelAdjustment": "—",
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": false,
-    "summonedCreature": false,
+    "summonedCreature": true,
     "familiar": false
   },
   {
@@ -13114,7 +13114,7 @@
     "levelAdjustment": "—",
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": false,
-    "summonedCreature": false,
+    "summonedCreature": true,
     "familiar": false
   },
   {
@@ -13164,7 +13164,7 @@
     "levelAdjustment": "—",
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": false,
-    "summonedCreature": false,
+    "summonedCreature": true,
     "familiar": false
   },
   {
@@ -13214,7 +13214,7 @@
     "levelAdjustment": "—",
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": false,
-    "summonedCreature": false,
+    "summonedCreature": true,
     "familiar": false
   }
 ]
