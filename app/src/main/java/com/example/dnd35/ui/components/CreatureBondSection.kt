@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -73,7 +74,7 @@ fun CreatureBondSection(
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
-            if (familiarOptions.isNotEmpty()) {
+            if (familiarOptions.isNotEmpty() || familiarBonds.isNotEmpty()) {
                 BondActionButton(
                     title = "Familiar",
                     current = familiarBonds,
@@ -110,11 +111,14 @@ fun CreatureBondSection(
             onDismissRequest = { showCurrent = false },
             title = { Text(if (activeKind == CreatureBondKind.FAMILIAR) "Familiares atuais" else "Companheiros animais atuais") },
             text = {
-                Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                LazyColumn(
+                    modifier = Modifier.heightIn(max = 420.dp),
+                    verticalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
                     if (bondsForActiveKind.isEmpty()) {
-                        Text("Nenhuma criatura vinculada.")
+                        item { Text("Nenhuma criatura vinculada.") }
                     } else {
-                        bondsForActiveKind.forEach { bond ->
+                        items(bondsForActiveKind, key = { it.id }) { bond ->
                             val creature = CreatureCatalog.byId(bond.creatureId)
                             if (creature != null) CreatureSummary(creature)
                         }

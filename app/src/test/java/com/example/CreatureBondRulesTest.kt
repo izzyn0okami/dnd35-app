@@ -52,6 +52,19 @@ class CreatureBondRulesTest {
     }
 
     @Test
+    fun rangerUsesItsRestrictedBasicListAndAquaticOptionsAreConditional() {
+        val ranger4 = listOf(CharacterClassEntry("Ranger", 4))
+        val ordinary = CreatureBondRules.animalCompanionOptions(ranger4)
+        assertTrue(ordinary.any { it.creature.id == "lobo" })
+        assertFalse(ordinary.any { it.creature.id == "camelo" })
+        assertFalse(ordinary.any { it.creature.id == "crocodilo" })
+
+        val aquatic = CreatureBondRules.animalCompanionOptions(ranger4, aquaticCampaign = true)
+        assertTrue(aquatic.any { it.creature.id == "crocodilo" })
+        assertTrue(aquatic.any { it.creature.id == "golfinho" })
+    }
+
+    @Test
     fun aquaticCompanionsRequireAquaticCampaignFlag() {
         val druid = listOf(CharacterClassEntry("Druida", 10))
         assertFalse(CreatureBondRules.animalCompanionOptions(druid).any { it.creature.id == "golfinho" })

@@ -89,6 +89,12 @@ object CreatureBondRules {
         "tubarao-enorme" to CompanionRequirement(7, 6, aquaticOnly = true)
     )
 
+    private val rangerBasicCompanionIds = setOf(
+        "cavalo-leve", "cavalo-pesado", "coruja", "falcao", "lobo",
+        "ponei", "rato-atroz", "texugo", "vibora-pequena", "vibora-media"
+    )
+    private val rangerAquaticCompanionIds = setOf("crocodilo", "golfinho", "lula", "tubarao-medio")
+
     private fun levelOf(classes: List<CharacterClassEntry>, className: String): Int =
         classes.filter { it.className.equals(className, ignoreCase = true) }.sumOf { it.level }
 
@@ -105,8 +111,13 @@ object CreatureBondRules {
      * O nível de druida e metade dos níveis de ranger (arredondado para baixo) se acumulam.
      * Um ranger de 4º nível, portanto, possui nível efetivo de druida 2 para essa habilidade.
      */
-    fun animalCompanionEffectiveLevel(classes: List<CharacterClassEntry>): Int =
-        levelOf(classes, "Druida") + levelOf(classes, "Ranger") / 2
+    fun animalCompanionEffectiveLevel(classes: List<CharacterClassEntry>): Int {
+        val druidLevel = levelOf(classes, "Druida")
+        val rangerLevel = levelOf(classes, "Ranger")
+        // O Ranger só recebe Companheiro Animal no 4º nível; níveis anteriores não contribuem.
+        val rangerContribution = if (rangerLevel >= 4) rangerLevel / 2 else 0
+        return druidLevel + rangerContribution
+    }
 
     fun animalCompanionOptions(
         classes: List<CharacterClassEntry>,
@@ -114,10 +125,19 @@ object CreatureBondRules {
     ): List<CreatureSelectionOption> {
         val effectiveLevel = animalCompanionEffectiveLevel(classes)
         if (effectiveLevel < 1) return emptyList()
+        val hasDruidLevels = levelOf(classes, "Druida") > 0
+        val rangerOnly = !hasDruidLevels && levelOf(classes, "Ranger") >= 4
 
         return CreatureCatalog.ALL.mapNotNull { creature ->
             if (!creature.animalCompanion) return@mapNotNull null
-            val requirement = companionRequirements[creature.id] ?: return@mapNotNull null
+            var requirement = companionRequirements[creature.id] ?: return@mapNotNull null
+            if (rangerOnly && creature.id !in rangerBasicCompanionIds &&
+                !(aquaticCampaign && creature.id in rangerAquaticCompanionIds) &&
+                requirement.minimumLevel == 1
+            ) return@mapNotNull null
+            if (rangerOnly && aquaticCampaign && creature.id in rangerAquaticCompanionIds) {
+                requirement = CompanionRequirement(1, aquaticOnly = true)
+            }
             if (requirement.aquaticOnly && !aquaticCampaign) return@mapNotNull null
             if (effectiveLevel < requirement.minimumLevel) return@mapNotNull null
             val adjustedLevel = (effectiveLevel - requirement.penalty).coerceAtLeast(1)
