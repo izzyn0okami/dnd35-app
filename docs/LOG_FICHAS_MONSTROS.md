@@ -90,3 +90,12 @@ Não reimplementar a listagem, busca, filtros por tipo/tamanho ou os campos mec�
 - **Dados mecânicos:** ficha existente reaproveitada; nenhum registro duplicado.
 - **Imagem:** placeholder vazio; nenhuma imagem pesquisada, baixada ou inserida.
 - **Próxima criatura:** Allip (ordem alfabética do catálogo/livro).
+
+
+## 2026-11-13 — Allip
+- **Fonte:** Livro dos Monstros brasileiro, páginas impressas 11–12 (páginas 15–16 do PDF fornecido; bloco de estatísticas na p. 11 e descrição/Combate na p. 12).
+- **Descrição:** transcritos os três parágrafos descritivos, incluindo a origem espectral e a incapacidade de falar.
+- **Combate:** transcritos o parágrafo tático e as três habilidades descritas sob Combate: Murmúrio, Enlouquecer e Drenar Sabedoria.
+- **Dados mecânicos:** registro existente reaproveitado, sem duplicação.
+- **Imagem:** placeholder vazio; nenhuma imagem pesquisada, baixada ou inserida.
+- **Próxima criatura:** Anão (o livro inicia o verbete na mesma página 12; preservar a separação entre ficha de monstro e bloco racial quando aplicável).
