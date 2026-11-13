@@ -91,6 +91,9 @@ class HostedSessionSnapshotCodecTest {
         val card = server.addMonsterCard("red-dragon")
         assertEquals("red-dragon", server.createSnapshot().monsterCards.single().creatureId)
         assertEquals(emptyMap<String, CharacterEntity>(), server.createSnapshot().receivedCharacters)
+        val restoredServer = SessionServer("monster-session", "Mestre")
+        restoredServer.restoreSnapshot(server.createSnapshot())
+        assertEquals(listOf(card), restoredServer.createSnapshot().monsterCards)
         server.removeMonsterCard(card.instanceId)
         assertEquals(emptyList<MonsterCardShortcut>(), server.createSnapshot().monsterCards)
     }

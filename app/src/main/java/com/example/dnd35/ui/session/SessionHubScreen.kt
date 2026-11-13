@@ -2,6 +2,7 @@ package com.example.dnd35.ui.session
 
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Arrangement
@@ -445,6 +446,7 @@ private fun MonsterCardsSection(
     }
 }
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 private fun MonsterShortcutCard(
     creature: CreatureDefinition,
@@ -635,6 +637,8 @@ private fun MonsterCreatureDetailDialog(creature: CreatureDefinition, onDismiss:
         confirmButton = { TextButton(onClick = onDismiss) { Text("Fechar") } }
     )
 }
+
+private fun signed(value: Int): String = if (value >= 0) "+$value" else value.toString()
 
 private fun abilityWithModifier(score: Int?): String {
     if (score == null) return "—"
