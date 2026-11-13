@@ -388,3 +388,8 @@ O verbete da **Águia Gigante** (página impressa 11 do Livro dos Monstros brasi
 ### Atualização do bestiário — 2026-11-13 (Allip)
 
 O registro existente de **Allip** recebeu `description` e `combat`, conferidos nas páginas impressas 11–12 do Livro dos Monstros brasileiro. O texto de Combate inclui as habilidades Murmúrio, Enlouquecer e Drenar Sabedoria. Nenhum dado mecânico foi duplicado ou alterado.
+
+
+### Atualização do bestiário — 2026-11-13 (Deva Astral)
+
+O registro **Anjo, Deva Astral** recebeu `description` e `combat`, conferidos na página impressa 19 do Livro dos Monstros brasileiro. Foram preservadas as habilidades similares a magia, Atordoamento e Esquiva Sobrenatural. As características gerais compartilhadas por todos os anjos não foram duplicadas como texto exclusivo dessa criatura.
