@@ -306,7 +306,7 @@ estruturados, não como itens avulsos.
 
 ### Criaturas do Livro dos Monstros (2026-11-09)
 
-`app/src/main/resources/dnd35/creatures.json` traz 230 criaturas do Livro dos Monstros 3.5
+`app/src/main/resources/dnd35/creatures.json` traz 264 registros de criaturas (230 extraídos do Livro dos Monstros 3.5, mais 32 fichas complementares do SRD e duas variantes de Abolete documentadas separadamente)
 brasileiro, lidas por `CreatureCatalog` (`CreatureDefinition`, com busca por nome sem acento e
 filtros de tipo, tamanho e ND). O arquivo é gerado por `tools/monstros/parse_livro_dos_monstros.py
 <livro.txt> <saida.json> <rejeitadas.json>`.
@@ -351,3 +351,55 @@ que já existem e valida PV×DV, atributos e testes.
 - Ainda faltam: Besouro, Gafanhoto, Louva-a-Deus e Abelha Gigantes, Formiga Gigante Rainha,
   Texugo Atroz (PV não bate com os DV no livro) e os monstros de nível/grandes (gigantes,
   hidras, nagas, elementais...).
+
+
+### Estrutura visual do bestiário (2026-11-12)
+
+A tela **Monstros** foi adicionada à navegação principal e consome o catálogo existente por meio de `CreatureCatalog`, sem duplicar os registros. A primeira versão inclui:
+
+- busca por nome, sem distinção de acentos (reaproveita a normalização do catálogo);
+- filtros combináveis por tipo e tamanho;
+- listagem com tamanho, tipo e Nível de Desafio;
+- ficha detalhada com todos os campos mecânicos atualmente presentes em `CreatureDefinition`;
+- área vazia reservada à ilustração, sem download, pesquisa ou inclusão automática de imagens.
+
+A área de imagem é somente um espaço reservado nesta etapa. A seleção e persistência de imagens locais serão implementadas posteriormente, quando o usuário escolher as ilustrações. Não inserir URLs ou imagens de terceiros no catálogo.
+
+Limitação registrada: os 230 registros atuais ainda não contêm os textos narrativos completos nem o desenvolvimento individual de Combate/descrições especiais para todas as criaturas. Esses conteúdos não devem ser inventados nem preenchidos com texto genérico como se fossem transcrições do livro; serão extraídos e conferidos separadamente contra o PDF brasileiro do Livro dos Monstros.
+
+A interface reserva seções separadas para **Descrição** e **Combate**, sem preencher o conteúdo até a conferência do verbete no PDF.
+
+
+### Campos narrativos das criaturas (2026-11-13)
+
+O modelo `CreatureDefinition` e `creatures.json` aceitam agora os campos opcionais `description` e `combat`. Quando ausentes, o carregador fornece texto vazio; a interface mantém um aviso de pendência e não apresenta conteúdo inferido. Os primeiros verbetes transcritos e conferidos no PDF brasileiro são Abocanhador Matraqueante (página impressa 8) e Achaierai (páginas impressas 10–11). A cobertura deve avançar criatura por criatura, registrando páginas e pendências em `docs/LOG_FICHAS_MONSTROS.md`.
+
+
+### Complemento do bestiário — 2026-11-13
+
+O catálogo de criaturas passou de 262 para 264 registros com a inclusão dos dois blocos de estatísticas que o Livro dos Monstros apresenta para o **Abolete**: a criatura padrão (ND 7) e o **Abolete Mago, Mago de 10º Nível** (ND 17). Os registros mantêm os campos mecânicos próprios de cada bloco e agora incluem `description` e `combat`, transcritos das páginas impressas 9–10. O campo `hitDice` preserva a expressão mista do abolete mago (`8d8+56 mais 10d4+70`); `hdCount`/`hdType` continuam sendo uma representação simplificada e não devem ser usados para recalcular seus PV. A transcrição e essa limitação estão detalhadas em `docs/LOG_FICHAS_MONSTROS.md`.
+
+
+### Atualização do bestiário — 2026-11-13
+
+O verbete da **Águia Gigante** (página impressa 11 do Livro dos Monstros brasileiro) recebeu os campos `description` e `combat`. O campo narrativo de Combate também preserva os subtítulos e textos subsequentes do verbete: Evasão, bônus racial de Observar, treinamento, valores de ovos/filhotes e capacidade de carga. O registro mecânico original foi mantido.
+
+
+### Atualização do bestiário — 2026-11-13 (Allip)
+
+O registro existente de **Allip** recebeu `description` e `combat`, conferidos nas páginas impressas 11–12 do Livro dos Monstros brasileiro. O texto de Combate inclui as habilidades Murmúrio, Enlouquecer e Drenar Sabedoria. Nenhum dado mecânico foi duplicado ou alterado.
+
+
+### Atualização do bestiário — 2026-11-13 (Deva Astral)
+
+O registro **Anjo, Deva Astral** recebeu `description` e `combat`, conferidos na página impressa 19 do Livro dos Monstros brasileiro. Foram preservadas as habilidades similares a magia, Atordoamento e Esquiva Sobrenatural. As características gerais compartilhadas por todos os anjos não foram duplicadas como texto exclusivo dessa criatura.
+
+
+### Atualização do bestiário — 2026-11-13 (Anjo, Planetário)
+
+O registro existente **Anjo, Planetário** recebeu os campos `description` e `combat`, conferidos nas páginas impressas 19–20 do Livro dos Monstros brasileiro. A seção Combate inclui a lista de magias similares a magia, os efeitos sempre ativos, a conjuração divina como clérigo de 17º nível e a lista de magias preparadas até o 9º nível. A página impressa 20 foi conferida visualmente para confirmar a continuação da lista e a nota dos domínios Destruição e Bem. Nenhum dado mecânico foi alterado. O total permanece em 264 registros, com 8 fichas contendo Descrição e Combate.
+
+
+### Atualização do bestiário — 2026-11-13 (Anjo, Solar)
+
+O registro existente **Anjo, Solar** recebeu os campos `description` e `combat`, conferidos nas páginas impressas 20–21 do Livro dos Monstros brasileiro. A seção Combate inclui as habilidades similares a magia, os efeitos sempre ativos, a conjuração divina como clérigo de 20º nível e a lista de magias preparadas até o 9º nível. Nenhum dado mecânico foi alterado. O catálogo permanece com 264 registros; agora são 9 as fichas com Descrição e Combate.
