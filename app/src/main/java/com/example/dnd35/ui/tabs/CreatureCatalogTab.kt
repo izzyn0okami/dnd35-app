@@ -229,6 +229,22 @@ private fun CreatureDetail(
             }
         }
         item {
+            CreatureSection("Usos previstos nas regras") {
+                val uses = listOfNotNull(
+                    "Companheiro animal" takeIf { creature.animalCompanion },
+                    "Criatura invocável" takeIf { creature.summonedCreature },
+                    "Familiar" takeIf { creature.familiar }
+                )
+                if (uses.isEmpty()) {
+                    Text("Não consta nas listas básicas de companheiro animal, invocação ou familiar do Livro do Jogador.")
+                } else {
+                    uses.forEach { use ->
+                        Text("• $use", style = MaterialTheme.typography.bodyMedium)
+                    }
+                }
+            }
+        }
+        item {
             CreatureSection("Bloco de Estatísticas") {
                 CreatureField("Dados de Vida", "${creature.hitDice} (${creature.hitPoints} PV)")
                 CreatureField("Iniciativa", signed(creature.initiative))
