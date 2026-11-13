@@ -378,3 +378,8 @@ O modelo `CreatureDefinition` e `creatures.json` aceitam agora os campos opciona
 ### Complemento do bestiário — 2026-11-13
 
 O catálogo de criaturas passou de 262 para 264 registros com a inclusão dos dois blocos de estatísticas que o Livro dos Monstros apresenta para o **Abolete**: a criatura padrão (ND 7) e o **Abolete Mago, Mago de 10º Nível** (ND 17). Os registros mantêm os campos mecânicos próprios de cada bloco e agora incluem `description` e `combat`, transcritos das páginas impressas 9–10. O campo `hitDice` preserva a expressão mista do abolete mago (`8d8+56 mais 10d4+70`); `hdCount`/`hdType` continuam sendo uma representação simplificada e não devem ser usados para recalcular seus PV. A transcrição e essa limitação estão detalhadas em `docs/LOG_FICHAS_MONSTROS.md`.
+
+
+### Atualização do bestiário — 2026-11-13
+
+O verbete da **Águia Gigante** (página impressa 11 do Livro dos Monstros brasileiro) recebeu os campos `description` e `combat`. O campo narrativo de Combate também preserva os subtítulos e textos subsequentes do verbete: Evasão, bônus racial de Observar, treinamento, valores de ovos/filhotes e capacidade de carga. O registro mecânico original foi mantido.
