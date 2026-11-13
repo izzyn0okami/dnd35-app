@@ -108,3 +108,14 @@ Não reimplementar a listagem, busca, filtros por tipo/tamanho ou os campos mec�
 - **Escopo:** as características gerais compartilhadas por todos os anjos aparecem em um bloco comum no livro; não foram copiadas como se fossem texto exclusivo do deva astral. Permanecem representadas pelas qualidades especiais já presentes na ficha numérica quando aplicável.
 - **Dados mecânicos:** registro existente reaproveitado, sem duplicação.
 - **Imagem:** placeholder vazio; nenhuma imagem pesquisada, baixada ou inserida.
+
+
+## 2026-11-13 — Anjo, Planetário
+- **Fonte:** Livro dos Monstros brasileiro, páginas impressas 19–20 (PDF, páginas 23–24).
+- **Descrição:** transcritos os dois parágrafos específicos do planetário, incluindo sua aparência, função como general dos exércitos celestiais e dimensões.
+- **Combate:** transcritos os trechos táticos, armas sagradas, Regeneração, habilidades similares a magia, habilidades sempre ativas, capacidade de conjuração como clérigo de 17º nível e lista de magias preparadas dos níveis 0 a 9.
+- **Conferência adicional:** a página impressa 20 foi conferida visualmente para confirmar a continuação da lista de magias preparadas, incluindo as magias de 9º nível e a nota sobre os domínios Destruição e Bem.
+- **Dados mecânicos:** registro existente `anjo-planetario` reaproveitado; nenhum dado numérico foi alterado.
+- **Imagem:** placeholder vazio; nenhuma imagem pesquisada, baixada ou inserida.
+- **Contagem:** 264 registros, 264 IDs únicos; 8 fichas com Descrição e Combate.
+- **Próxima criatura:** Anjo, Solar.
