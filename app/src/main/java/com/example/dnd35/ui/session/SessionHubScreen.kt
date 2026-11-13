@@ -75,6 +75,8 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.dnd35.model.CharacterEntity
 import com.example.dnd35.model.CreatureCatalog
 import com.example.dnd35.model.CreatureDefinition
+import com.example.dnd35.ui.components.CreatureDeckOverlay
+import com.example.dnd35.ui.components.CreatureTradingCard
 import com.example.dnd35.model.CharacterInventoryItem
 import com.example.dnd35.session.ActionRequest
 import com.example.dnd35.session.Combatant
@@ -1977,84 +1979,79 @@ private fun AddMonsterCardDialog(
         CreatureCatalog.filter(query = query, type = selectedType, size = selectedSize)
     }
 
-    AlertDialog(
-        onDismissRequest = onDismiss,
-        title = { Text("Adicionar monstro") },
-        text = {
-            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                OutlinedTextField(
-                    value = query,
-                    onValueChange = { query = it },
-                    modifier = Modifier.fillMaxWidth(),
-                    label = { Text("Buscar no bestiário") },
-                    singleLine = true
-                )
-                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                    Box {
-                        OutlinedButton(onClick = { typeMenu = true }) {
-                            Text(selectedType ?: "Todos os tipos")
-                        }
-                        DropdownMenu(expanded = typeMenu, onDismissRequest = { typeMenu = false }) {
-                            DropdownMenuItem(text = { Text("Todos os tipos") }, onClick = {
-                                selectedType = null
-                                typeMenu = false
-                            })
-                            CreatureCatalog.TYPES.forEach { type ->
-                                DropdownMenuItem(text = { Text(type) }, onClick = {
-                                    selectedType = type
-                                    typeMenu = false
-                                })
-                            }
-                        }
-                    }
-                    Box {
-                        OutlinedButton(onClick = { sizeMenu = true }) {
-                            Text(selectedSize ?: "Todos os tamanhos")
-                        }
-                        DropdownMenu(expanded = sizeMenu, onDismissRequest = { sizeMenu = false }) {
-                            DropdownMenuItem(text = { Text("Todos os tamanhos") }, onClick = {
-                                selectedSize = null
-                                sizeMenu = false
-                            })
-                            CreatureCatalog.SIZES.forEach { size ->
-                                DropdownMenuItem(text = { Text(size) }, onClick = {
-                                    selectedSize = size
-                                    sizeMenu = false
-                                })
-                            }
-                        }
-                    }
+    CreatureDeckOverlay(
+        title = "Adicionar monstro",
+        subtitle = "Baralho do bestiário • ${results.size} criatura(s)",
+        onDismiss = onDismiss
+    ) {
+        OutlinedTextField(
+            value = query,
+            onValueChange = { query = it },
+            modifier = Modifier.fillMaxWidth(),
+            label = { Text("Buscar no bestiário") },
+            singleLine = true
+        )
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            Box {
+                OutlinedButton(onClick = { typeMenu = true }) {
+                    Text(selectedType ?: "Todos os tipos")
                 }
-                Text("${results.size} criatura(s)", style = MaterialTheme.typography.labelSmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant)
-                if (results.isEmpty()) {
-                    Text("Nenhuma criatura corresponde aos filtros.", style = MaterialTheme.typography.bodyMedium)
-                } else {
-                    LazyColumn(modifier = Modifier.heightIn(max = 360.dp)) {
-                        items(results, key = { it.id }) { creature ->
-                            Column {
-                                DropdownMenuItem(
-                                    text = {
-                                        Column {
-                                            Text(creature.name, fontWeight = FontWeight.SemiBold)
-                                            Text(
-                                                "${creature.type} • ${creature.size} • ND ${creature.challengeRating}",
-                                                style = MaterialTheme.typography.labelSmall,
-                                                color = MaterialTheme.colorScheme.onSurfaceVariant
-                                            )
-                                        }
-                                    },
-                                    onClick = { onSelect(creature) }
-                                )
-                            }
-                        }
+                DropdownMenu(expanded = typeMenu, onDismissRequest = { typeMenu = false }) {
+                    DropdownMenuItem(text = { Text("Todos os tipos") }, onClick = {
+                        selectedType = null
+                        typeMenu = false
+                    })
+                    CreatureCatalog.TYPES.forEach { type ->
+                        DropdownMenuItem(text = { Text(type) }, onClick = {
+                            selectedType = type
+                            typeMenu = false
+                        })
                     }
                 }
             }
-        },
-        confirmButton = { TextButton(onClick = onDismiss) { Text("Concluir") } },
-        dismissButton = { TextButton(onClick = onDismiss) { Text("Cancelar") } }
-    )
+            Box {
+                OutlinedButton(onClick = { sizeMenu = true }) {
+                    Text(selectedSize ?: "Todos os tamanhos")
+                }
+                DropdownMenu(expanded = sizeMenu, onDismissRequest = { sizeMenu = false }) {
+                    DropdownMenuItem(text = { Text("Todos os tamanhos") }, onClick = {
+                        selectedSize = null
+                        sizeMenu = false
+                    })
+                    CreatureCatalog.SIZES.forEach { size ->
+                        DropdownMenuItem(text = { Text(size) }, onClick = {
+                            selectedSize = size
+                            sizeMenu = false
+                        })
+                    }
+                }
+            }
+        }
+        if (results.isEmpty()) {
+            Text("Nenhuma criatura corresponde aos filtros.", color = MaterialTheme.colorScheme.onSurfaceVariant)
+        } else {
+            LazyColumn(
+                modifier = Modifier.weight(1f),
+                verticalArrangement = Arrangement.spacedBy(12.dp)
+            ) {
+                items(results, key = { it.id }) { creature ->
+                    CreatureTradingCard(
+                        name = creature.name,
+                        classification = "${creature.type} • ${creature.size} • ND ${creature.challengeRating}",
+                        details = "Selecione para adicionar esta criatura à sessão do Mestre.",
+                        stats = "PV ${creature.hitPoints}  •  CA ${creature.armorClassText}  •  Iniciativa ${creature.initiative}",
+                        onClick = { onSelect(creature) }
+                    )
+                }
+            }
+        }
+        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
+            TextButton(onClick = onDismiss) { Text("Fechar") }
+        }
+    }
 }
 
 /** Consulta detalhada do registro original do bestiário; não cria nem altera ficha. */
