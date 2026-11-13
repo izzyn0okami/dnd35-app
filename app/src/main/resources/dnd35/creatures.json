@@ -858,7 +858,7 @@
     "levelAdjustment": "—",
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
-    "summonedCreature": false,
+    "summonedCreature": true,
     "familiar": false
   },
   {
@@ -10114,7 +10114,7 @@
     "levelAdjustment": "—",
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
-    "summonedCreature": false,
+    "summonedCreature": true,
     "familiar": false
   },
   {
@@ -10764,7 +10764,7 @@
     "levelAdjustment": "—",
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
-    "summonedCreature": false,
+    "summonedCreature": true,
     "familiar": false
   },
   {
@@ -11014,7 +11014,7 @@
     "levelAdjustment": "—",
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
-    "summonedCreature": false,
+    "summonedCreature": true,
     "familiar": false
   },
   {

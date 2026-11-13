@@ -277,3 +277,5 @@ A alteração foi enviada ao PR #367 no commit `6b8a5eb32cf202c1393ad95803500f7e
 - Auditoria ampliada da tabela de Companheiros Animais Alternativos: adicionados os patamares de 10º, 13º e 16º nível, com penalidades -9, -12 e -15; opções aquáticas foram limitadas aos ambientes aquáticos. Flags do catálogo foram alinhadas à tabela do Livro do Jogador, incluindo Megaraptor, Baleia Orca, Leão Atroz, Tubarão Enorme, Elefante, Urso Atroz, Polvo Gigante, Lula Gigante, Tricerátops, Tigre Atroz, Tubarão Atroz e Tiranossauro.
 
 - Ajustado o workflow auxiliar Android para executar somente `testDebugUnitTest`; a geração do APK permanece no workflow de build existente, que restaura o keystore de depuração. Isso evita falha duplicada de assinatura causada por `./gradlew build` no workflow auxiliar.
+
+- Conferidas as tabelas completas de Invocar Aliado da Natureza e Invocar Criaturas: adicionadas as cartas existentes Urso Atroz, Elefante, Polvo Gigante e Lula Gigante às listas e tags de invocação. Pixie agora possui as três variantes de lista (6º, 7º e 9º círculo); Satyr mantém as versões sem/com flauta (3º e 5º).

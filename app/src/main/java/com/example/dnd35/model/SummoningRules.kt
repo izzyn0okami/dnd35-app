@@ -23,8 +23,10 @@ object SummoningRules {
         3 to "gorila arminho-atroz lobo-atroz aguia-gigante leao coruja-gigante satiro tubarao-grande cobra-constritora vibora-grande thoqqua",
         4 to "crocodilo-gigante dinonico gorila-atroz javali-atroz carcaju-atroz tubarao-enorme vibora-enorme tigre urso-marrom",
         5 to "leao-atroz elasmossauro grifo rinoceronte nixie baleia-orca",
-        7 to "baleia-azul girallon tigre-atroz djinni cacador-invisivel pixie megaraptor triceratops tiranossauro baleia-cachalote",
-        8 to "tubarao-atroz passaro-roca"
+        6 to "urso-atroz elefante girallon megaraptor polvo-gigante pixie baleia-azul",
+        7 to "tigre-atroz djinni cacador-invisivel pixie lula-gigante triceratops tiranossauro baleia-cachalote",
+        8 to "tubarao-atroz passaro-roca",
+        9 to "pixie"
     )
 
     private val monsterLists = mapOf(
@@ -33,9 +35,9 @@ object SummoningRules {
         3 to "urso-negro bisao hipogrifo gorila arminho-atroz cao-infernal cobra-constritora javali morcego-atroz centopeia-enorme crocodilo dretch vibora-grande carcaju",
         4 to "coruja-gigante aguia-gigante leao-celestial mephit-da-agua mephit-do-ar mephit-do-fogo mephit-do-gelo mephit-do-limo mephit-do-magma mephit-da-poeira mephit-do-sal mephit-do-vapor lobo-atroz vespa-gigante tubarao-grande aranha-grande vibora-enorme uivante",
         5 to "achaierai urso-marrom grifo diabo-barbado-barbazu dinonico gorila-atroz javali-atroz tubarao-enorme escorpiao-grande mastim-das-sombras carcaju-atroz crocodilo-gigante tigre",
-        6 to "baleia-orca leao-atroz diabo-das-correntes-kyton centopeia-imensa rinoceronte elasmossauro aranha-enorme",
-        7 to "djinni cacador-invisivel slaad-vermelho diabo-dos-ossos-osyluth megaraptor escorpiao-enorme babau girallon",
-        8 to "baleia-cachalote triceratops lillend slaad-azul gato-infernal-bezekira centopeia-colossal tigre-atroz aranha-imensa tiranossauro vrock",
+        6 to "urso-atroz baleia-orca leao-atroz diabo-das-correntes-kyton centopeia-imensa rinoceronte elasmossauro aranha-enorme",
+        7 to "elefante djinni cacador-invisivel slaad-vermelho diabo-dos-ossos-osyluth megaraptor escorpiao-enorme babau polvo-gigante girallon",
+        8 to "baleia-cachalote triceratops lillend slaad-azul gato-infernal-bezekira centopeia-colossal tigre-atroz aranha-imensa tiranossauro lula-gigante vrock",
         9 to "couatl passaro-roca slaad-verde tubarao-atroz escorpiao-imenso bebilith aranha-colossal hezrou"
     )
 
@@ -49,11 +51,15 @@ object SummoningRules {
 
     private val natureVariants = mapOf(
         "satiro" to listOf(3 to "Sem flauta", 5 to "Com flauta"),
-        "pixie" to listOf(7 to "Flechas soníferas", 9 to "Flechas soníferas e de perda de memória")
+        "pixie" to listOf(6 to "Sem flechas especiais", 7 to "Com flechas soníferas", 9 to "Com flechas soníferas e de perda de memória")
     )
 
     private val monsterTemplates = mapOf(
         "cachorro" to "Celestial",
+        "elefante" to "Celestial",
+        "urso-atroz" to "Celestial",
+        "polvo-gigante" to "Abissal",
+        "lula-gigante" to "Abissal",
         "cachorro-de-montaria" to "Celestial",
         "coruja" to "Celestial",
         "vaga-lume-gigante" to "Celestial",
