@@ -723,6 +723,24 @@ private fun MonsterDetailSection(title: String, lines: List<String>) {
     }
 }
 
+private fun signed(value: Int): String = if (value >= 0) "+$value" else value.toString()
+
+private fun abilityWithModifier(score: Int?): String {
+    if (score == null) return "—"
+    val modifier = Math.floorDiv(score - 10, 2)
+    return "$score (${signed(modifier)})"
+}
+
+/** Candidato a combatente: jogador conectado ou ficha NPC do Mestre. */
+private data class CombatCandidate(
+    val id: String,
+    val displayName: String,
+    val isNpc: Boolean,
+    val currentHp: Int?,
+    val maxHp: Int?,
+    val tempHp: Int = 0
+)
+
 @Composable
 private fun CombatSection(
     viewModel: SessionViewModel,
