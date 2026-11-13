@@ -357,7 +357,7 @@
     "advancement": "4–6 DV (Médio); 7–9 (Grande)",
     "levelAdjustment": "—",
     "source": "Livro dos Monstros 3.5",
-    "animalCompanion": false,
+    "animalCompanion": true,
     "summonedCreature": true,
     "familiar": false
   },
