@@ -47,8 +47,14 @@ object SummoningRules {
     private val natureCircleById = circleMap(natureLists)
     private val monsterCircleById = circleMap(monsterLists)
 
+    private val natureVariants = mapOf(
+        "satiro" to listOf(3 to "Sem flauta", 5 to "Com flauta"),
+        "pixie" to listOf(7 to "Flechas soníferas", 9 to "Flechas soníferas e de perda de memória")
+    )
+
     private val monsterTemplates = mapOf(
         "cachorro" to "Celestial",
+        "cachorro-de-montaria" to "Celestial",
         "coruja" to "Celestial",
         "vaga-lume-gigante" to "Celestial",
         "golfinho" to "Celestial",
@@ -75,7 +81,13 @@ object SummoningRules {
         "lula" to "Abissal",
         "lobo" to "Abissal",
         "centopeia-grande" to "Abissal",
+        "centopeia-enorme" to "Abissal",
+        "centopeia-imensa" to "Abissal",
+        "centopeia-colossal" to "Abissal",
         "escorpiao-medio" to "Abissal",
+        "escorpiao-grande" to "Abissal",
+        "escorpiao-enorme" to "Abissal",
+        "escorpiao-imenso" to "Abissal",
         "tubarao-medio" to "Abissal",
         "aranha-media" to "Abissal",
         "vibora-media" to "Abissal",
@@ -91,6 +103,9 @@ object SummoningRules {
         "vespa-gigante" to "Abissal",
         "tubarao-grande" to "Abissal",
         "aranha-grande" to "Abissal",
+        "aranha-enorme" to "Abissal",
+        "aranha-imensa" to "Abissal",
+        "aranha-colossal" to "Abissal",
         "vibora-enorme" to "Abissal",
         "dinonico" to "Abissal",
         "gorila-atroz" to "Abissal",
@@ -135,18 +150,27 @@ object SummoningRules {
     /** Retorna todas as cartas válidas até o círculo da magia, incluindo as listas inferiores. */
     fun creaturesForCircle(family: SummoningFamily, circle: Int): List<SummonCreatureOption> {
         if (circle !in 1..9) return emptyList()
-        val levels = if (family == SummoningFamily.SUMMON_CREATURES) monsterCircleById else natureCircleById
-        return CreatureCatalog.ALL.mapNotNull { creature ->
-            if (!creature.summonedCreature) return@mapNotNull null
-            val sourceCircle = levels[creature.id] ?: return@mapNotNull null
-            if (sourceCircle > circle) return@mapNotNull null
-            SummonCreatureOption(
-                creature = creature,
-                family = family,
-                sourceCircle = sourceCircle,
-                templateLabel = if (family == SummoningFamily.SUMMON_CREATURES) monsterTemplates[creature.id].orEmpty() else ""
-            )
-        }.sortedWith(compareBy({ it.sourceCircle }, { CreatureCatalog.normalizeForSearch(it.creature.name) }))
+        return CreatureCatalog.ALL.flatMap { creature ->
+            if (!creature.summonedCreature) {
+                emptyList()
+            } else {
+                val candidates: List<Pair<Int, String>> = when (family) {
+                    SummoningFamily.SUMMON_NATURE_ALLY ->
+                        natureVariants[creature.id]
+                            ?: listOfNotNull(natureCircleById[creature.id]?.let { it to "" })
+                    SummoningFamily.SUMMON_CREATURES ->
+                        listOfNotNull(monsterCircleById[creature.id]?.let { it to monsterTemplates[creature.id].orEmpty() })
+                }
+                candidates.filter { it.first <= circle }.map { (sourceCircle, variant) ->
+                    SummonCreatureOption(
+                        creature = creature,
+                        family = family,
+                        sourceCircle = sourceCircle,
+                        templateLabel = variant
+                    )
+                }
+            }
+        }.sortedWith(compareBy({ it.sourceCircle }, { CreatureCatalog.normalizeForSearch(it.creature.name) }, { it.templateLabel }))
     }
 
     /**
