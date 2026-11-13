@@ -1598,7 +1598,8 @@ fun SessionFloatingPanels(
                             },
                             style = MaterialTheme.typography.titleLarge,
                             fontWeight = FontWeight.Bold
-                        )                        TextButton(onClick = { activePanel = null }) { Text("Fechar") }
+                        )
+                        TextButton(onClick = { activePanel = null }) { Text("Fechar") }
                     }
                     Column(
                         modifier = Modifier.weight(1f).then(
@@ -1959,4 +1960,151 @@ private fun ParticipantRoster(participants: List<Participant>, characters: Map<S
             }
         }
     }
+}
+
+/** Seletor de criaturas do bestiário; mantém busca e filtros sem duplicar os dados do catálogo. */
+@Composable
+private fun AddMonsterCardDialog(
+    onDismiss: () -> Unit,
+    onSelect: (CreatureDefinition) -> Unit
+) {
+    var query by remember { mutableStateOf("") }
+    var selectedType by remember { mutableStateOf<String?>(null) }
+    var selectedSize by remember { mutableStateOf<String?>(null) }
+    var typeMenu by remember { mutableStateOf(false) }
+    var sizeMenu by remember { mutableStateOf(false) }
+    val results = remember(query, selectedType, selectedSize) {
+        CreatureCatalog.filter(query = query, type = selectedType, size = selectedSize)
+    }
+
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text("Adicionar monstro") },
+        text = {
+            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                OutlinedTextField(
+                    value = query,
+                    onValueChange = { query = it },
+                    modifier = Modifier.fillMaxWidth(),
+                    label = { Text("Buscar no bestiário") },
+                    singleLine = true
+                )
+                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    Box {
+                        OutlinedButton(onClick = { typeMenu = true }) {
+                            Text(selectedType ?: "Todos os tipos")
+                        }
+                        DropdownMenu(expanded = typeMenu, onDismissRequest = { typeMenu = false }) {
+                            DropdownMenuItem(text = { Text("Todos os tipos") }, onClick = {
+                                selectedType = null
+                                typeMenu = false
+                            })
+                            CreatureCatalog.TYPES.forEach { type ->
+                                DropdownMenuItem(text = { Text(type) }, onClick = {
+                                    selectedType = type
+                                    typeMenu = false
+                                })
+                            }
+                        }
+                    }
+                    Box {
+                        OutlinedButton(onClick = { sizeMenu = true }) {
+                            Text(selectedSize ?: "Todos os tamanhos")
+                        }
+                        DropdownMenu(expanded = sizeMenu, onDismissRequest = { sizeMenu = false }) {
+                            DropdownMenuItem(text = { Text("Todos os tamanhos") }, onClick = {
+                                selectedSize = null
+                                sizeMenu = false
+                            })
+                            CreatureCatalog.SIZES.forEach { size ->
+                                DropdownMenuItem(text = { Text(size) }, onClick = {
+                                    selectedSize = size
+                                    sizeMenu = false
+                                })
+                            }
+                        }
+                    }
+                }
+                Text("${results.size} criatura(s)", style = MaterialTheme.typography.labelSmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant)
+                if (results.isEmpty()) {
+                    Text("Nenhuma criatura corresponde aos filtros.", style = MaterialTheme.typography.bodyMedium)
+                } else {
+                    LazyColumn(modifier = Modifier.heightIn(max = 360.dp)) {
+                        items(results, key = { it.id }) { creature ->
+                            Column {
+                                DropdownMenuItem(
+                                    text = {
+                                        Column {
+                                            Text(creature.name, fontWeight = FontWeight.SemiBold)
+                                            Text(
+                                                "${creature.type} • ${creature.size} • ND ${creature.challengeRating}",
+                                                style = MaterialTheme.typography.labelSmall,
+                                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                                            )
+                                        }
+                                    },
+                                    onClick = { onSelect(creature) }
+                                )
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        confirmButton = { TextButton(onClick = onDismiss) { Text("Concluir") } },
+        dismissButton = { TextButton(onClick = onDismiss) { Text("Cancelar") } }
+    )
+}
+
+/** Consulta detalhada do registro original do bestiário; não cria nem altera ficha. */
+@Composable
+private fun MonsterCreatureDetailDialog(
+    creature: CreatureDefinition,
+    onDismiss: () -> Unit
+) {
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text(creature.name) },
+        text = {
+            Column(
+                modifier = Modifier.fillMaxWidth().heightIn(max = 480.dp).verticalScroll(rememberScrollState()),
+                verticalArrangement = Arrangement.spacedBy(5.dp)
+            ) {
+                Text("${creature.typeDetail.ifBlank { creature.type }} • ${creature.size} • ND ${creature.challengeRating}",
+                    fontWeight = FontWeight.Bold)
+                Text("Dados de Vida: ${creature.hitDice} (${creature.hitPoints} PV)")
+                Text("Iniciativa: ${signed(creature.initiative)} • Deslocamento: ${creature.speed}")
+                Text("CA: ${creature.armorClassText} • Toque: ${creature.touchAc} • Surpreso: ${creature.flatFootedAc}")
+                Text("BBA/Agarrar: ${signed(creature.baseAttack)}/${signed(creature.grapple)}")
+                Text("Ataque: ${creature.attack}")
+                Text("Ataque total: ${creature.fullAttack}")
+                Text("Espaço/Alcance: ${creature.spaceReach}")
+                Text("Fortitude ${signed(creature.saves.fort)} • Reflexos ${signed(creature.saves.ref)} • Vontade ${signed(creature.saves.will)}")
+                Text("FOR ${abilityWithModifier(creature.abilities.str)} • DES ${abilityWithModifier(creature.abilities.dex)} • CON ${abilityWithModifier(creature.abilities.con)}")
+                Text("INT ${abilityWithModifier(creature.abilities.int)} • SAB ${abilityWithModifier(creature.abilities.wis)} • CAR ${abilityWithModifier(creature.abilities.cha)}")
+                Text("Ataques especiais: ${creature.specialAttacks.ifBlank { "—" }}")
+                Text("Qualidades especiais: ${creature.specialQualities.ifBlank { "—" }}")
+                Text("Perícias: ${creature.skills.ifBlank { "—" }}")
+                Text("Talentos: ${creature.feats.ifBlank { "—" }}")
+                Text("Ambiente: ${creature.environment.ifBlank { "—" }}")
+                Text("Organização: ${creature.organization.ifBlank { "—" }}")
+                Text("Tesouro: ${creature.treasure.ifBlank { "—" }} • Tendência: ${creature.alignment}")
+                Text("Avanço: ${creature.advancement.ifBlank { "—" }} • Ajuste de nível: ${creature.levelAdjustment.ifBlank { "—" }}")
+                if (creature.description.isNotBlank()) Text(creature.description)
+                if (creature.combat.isNotBlank()) Text("Combate: ${creature.combat}")
+                Text("Fonte: ${creature.source}", style = MaterialTheme.typography.labelSmall)
+            }
+        },
+        confirmButton = { TextButton(onClick = onDismiss) { Text("Fechar") } }
+    )
+}
+
+private fun signed(value: Int): String = if (value > 0) "+$value" else value.toString()
+
+private fun abilityWithModifier(score: Int?): String {
+    if (score == null) return "—"
+    val modifier = kotlin.math.floor((score - 10) / 2.0).toInt()
+    val modifierText = if (modifier > 0) "+$modifier" else modifier.toString()
+    return "$score ($modifierText)"
 }
