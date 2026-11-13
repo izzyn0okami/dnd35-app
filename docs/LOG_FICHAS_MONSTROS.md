@@ -186,3 +186,26 @@ Cada registro do catálogo recebe três flags independentes:
 - Serialização e restauração dos cards no snapshot.
 - Snapshot antigo/sem cards retorna coleção vazia.
 - Adição e remoção de atalhos no estado do servidor sem criação de fichas.
+
+
+## 2026-11-13 — Baralho de monstros em sobreposição de tela inteira
+
+### Alteração solicitada
+- Substituir o seletor compacto em janela de diálogo por uma experiência visual de baralho que ocupe a tela inteira.
+- Evitar a janela central limitada: pesquisa, filtros e catálogo passam a ocupar uma camada integral, com rolagem própria para a lista.
+- A seleção mantém a busca por nome e os filtros por tipo e tamanho já existentes.
+- A ficha completa também passa a ocupar a tela inteira, com retorno explícito ao baralho e conteúdo organizado em cartões/sections roláveis.
+- O baralho da sessão continua usando atalhos para o catálogo; nenhuma ficha de personagem é criada e os dados mecânicos não são duplicados.
+- O comportamento de adicionar/remover e a persistência dos atalhos permanecem inalterados.
+
+### Implementação visual
+- Sobreposição de tela inteira sem moldura de AlertDialog.
+- Cabeçalho e ação de fechar separados da lista.
+- Campo de busca e filtros mantidos no topo.
+- Lista de criaturas em LazyColumn com rolagem independente e cartões maiores, simulando cartas de um baralho.
+- Detalhes completos em uma camada integral rolável, com retorno ao baralho.
+
+### Validação pendente
+- Aguardar CI para validar compilação e testes automatizados.
+- Testar no aparelho a abertura/fechamento, botão Voltar do Android, rolagem da lista, filtros, seleção e visualização de detalhes.
+- Não mesclar até a validação manual do usuário.
