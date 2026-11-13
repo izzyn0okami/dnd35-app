@@ -8,7 +8,7 @@ import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.dnd35.model.CharacterEntity
 
-@Database(entities = [CharacterEntity::class, HostedSessionEntity::class], version = 10, exportSchema = true)
+@Database(entities = [CharacterEntity::class, HostedSessionEntity::class], version = 11, exportSchema = true)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun characterDao(): CharacterDao
     abstract fun hostedSessionDao(): HostedSessionDao
@@ -76,6 +76,21 @@ abstract class AppDatabase : RoomDatabase() {
             }
         }
 
+        internal val MIGRATION_10_11 = object : Migration(10, 11) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                // Idempotente: alguns bancos de teste/instalações intermediárias podem já conter
+                // a coluna, mas bancos 10 oficiais ainda precisam recebê-la.
+                val columns = mutableSetOf<String>()
+                db.query("PRAGMA table_info(characters)").use { cursor ->
+                    val nameIndex = cursor.getColumnIndexOrThrow("name")
+                    while (cursor.moveToNext()) columns += cursor.getString(nameIndex)
+                }
+                if ("creatureBondsJson" !in columns) {
+                    db.execSQL("ALTER TABLE characters ADD COLUMN creatureBondsJson TEXT NOT NULL DEFAULT ''")
+                }
+            }
+        }
+
         fun getDatabase(context: Context): AppDatabase {
             return INSTANCE ?: synchronized(this) {
                 val instance = Room.databaseBuilder(
@@ -86,7 +101,7 @@ abstract class AppDatabase : RoomDatabase() {
                     .addMigrations(
                         MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5,
                         MIGRATION_5_6, MIGRATION_6_7, MIGRATION_7_8, MIGRATION_8_9,
-                        MIGRATION_9_10
+                        MIGRATION_9_10, MIGRATION_10_11
                     )
                     // Não usar fallbackToDestructiveMigration: fichas são dados do usuário e
                     // não devem ser apagadas silenciosamente quando surgir uma versão nova.

@@ -15,11 +15,12 @@ import com.example.dnd35.diagnostics.CrashLogStore
 import com.example.dnd35.model.CalculatedCharacterStats
 import com.example.dnd35.model.CharacterCalculator
 import com.example.dnd35.model.CharacterEntity
+import com.example.dnd35.model.CharacterCreatureBond
+import com.example.dnd35.model.CharacterJsonAdapters
 import com.example.dnd35.model.withGeneralInfo
 import com.example.dnd35.model.LanguageAcquisition
 import com.example.dnd35.model.CharacterFeat
 import com.example.dnd35.model.CharacterInventoryItem
-import com.example.dnd35.model.CharacterJsonAdapters
 import com.example.dnd35.model.CharacterSkill
 import com.example.dnd35.model.SkillPointLevelRecord
 import com.example.dnd35.model.CharacterSpell
@@ -285,6 +286,13 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
     }
 
     // Gerenciamento geral de personagem
+    /** Atualiza os vínculos de familiares/companheiros sem alterar a progressão ou outros dados da ficha. */
+    fun updateCreatureBonds(bonds: List<CharacterCreatureBond>) {
+        val curr = _activeCharacter.value ?: return
+        val valid = bonds.filter { it.creatureId.isNotBlank() }.distinctBy { it.id }
+        persistCharacter(curr.copy(creatureBondsJson = CharacterJsonAdapters.serializeCreatureBonds(valid)))
+    }
+
     fun updateGeneralInfo(
         name: String,
         race: String,
@@ -969,7 +977,13 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
      * vindo de stats.spellSlots, junto com [allSlots]) e registra no histórico. Não faz nada se
      * não houver espaço disponível nessa classe.
      */
-    fun castSpell(spellId: String, slot: SpellSlotInfo, allSlots: List<SpellSlotInfo>) {
+    fun castSpell(
+        spellId: String,
+        slot: SpellSlotInfo,
+        allSlots: List<SpellSlotInfo>,
+        summonedCreatureId: String = "",
+        summonedCreatureVariant: String = ""
+    ) {
         val curr = _activeCharacter.value ?: return
         val spell = CharacterJsonAdapters.deserializeSpells(curr.spellsJson).firstOrNull { it.id == spellId } ?: return
         if (slot.usedSlots >= slot.totalSlots) return
@@ -979,7 +993,9 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
                 spellName = spell.name,
                 spellLevel = spell.level,
                 casterClass = spell.casterClass.ifBlank { slot.className },
-                slotLevel = slot.level
+                slotLevel = slot.level,
+                summonedCreatureId = summonedCreatureId,
+                summonedCreatureVariant = summonedCreatureVariant
             )
         )
         // Mantém só os registros mais recentes para o histórico não crescer sem limite.

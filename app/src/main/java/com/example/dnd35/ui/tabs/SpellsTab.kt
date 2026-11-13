@@ -59,8 +59,11 @@ import com.example.dnd35.model.Dnd35Rules
 import com.example.dnd35.model.SpellFilters
 import com.example.dnd35.model.SpellbookRules
 import com.example.dnd35.model.SpellSlotInfo
+import com.example.dnd35.model.SummonCreatureOption
+import com.example.dnd35.model.SummoningRules
 import com.example.dnd35.ui.dialogs.AddEditSpellDialog
 import com.example.dnd35.ui.dialogs.SpellDetailDialog
+import com.example.dnd35.ui.dialogs.SummonedCreaturePickerDialog
 import com.example.dnd35.viewmodel.CharacterViewModel
 import com.example.ui.theme.DndArcaneBlue
 import com.example.ui.theme.DndCrimson
@@ -85,6 +88,20 @@ fun SpellsTab(
     var showMoreFilters by remember { mutableStateOf(false) }
     var detailSpell by remember { mutableStateOf<Dnd35Rules.PresetSpell?>(null) }
     var showClearHistory by remember { mutableStateOf(false) }
+    var pendingSummonCast by remember { mutableStateOf<PendingSummonCast?>(null) }
+    var summonSelectionError by remember { mutableStateOf<String?>(null) }
+
+    fun castSpellOrChooseCreature(spell: CharacterSpell, slot: SpellSlotInfo, casterClass: String) {
+        val options = SummoningRules.optionsForSpell(spell.name, spell.level, casterClass, stats, character, spell.domain)
+        when {
+            options == null -> viewModel.castSpell(spell.id, slot, stats.spellSlots)
+            options.isEmpty() -> summonSelectionError = "Não há cartas elegíveis para esta magia, classe e círculo na progressão atual."
+            else -> {
+                detailSpell = null
+                pendingSummonCast = PendingSummonCast(spell, slot, casterClass, options)
+            }
+        }
+    }
 
     LazyColumn(
         modifier = Modifier
@@ -256,7 +273,8 @@ fun SpellsTab(
             0 -> preparedSection(
                 viewModel = viewModel,
                 stats = stats,
-                onOpenSpell = { detailSpell = SpellbookRules.presetFor(it) }
+                onOpenSpell = { detailSpell = SpellbookRules.presetFor(it) },
+                onCastSpell = { spell, slot, casterClass -> castSpellOrChooseCreature(spell, slot, casterClass) }
             )
             1 -> knownSection(
                 viewModel = viewModel,
@@ -294,7 +312,35 @@ fun SpellsTab(
             spell = preset,
             stats = stats,
             viewModel = viewModel,
-            onDismiss = { detailSpell = null }
+            onDismiss = { detailSpell = null },
+            onCastSpell = { spell, slot, casterClass -> castSpellOrChooseCreature(spell, slot, casterClass) }
+        )
+    }
+
+    pendingSummonCast?.let { pending ->
+        SummonedCreaturePickerDialog(
+            spellName = pending.spell.name,
+            options = pending.options,
+            onSelect = { option ->
+                viewModel.castSpell(
+                    spellId = pending.spell.id,
+                    slot = pending.slot,
+                    allSlots = stats.spellSlots,
+                    summonedCreatureId = option.creature.id,
+                    summonedCreatureVariant = option.templateLabel
+                )
+                pendingSummonCast = null
+            },
+            onDismiss = { pendingSummonCast = null }
+        )
+    }
+
+    summonSelectionError?.let { message ->
+        AlertDialog(
+            onDismissRequest = { summonSelectionError = null },
+            title = { Text("Invocação indisponível") },
+            text = { Text(message) },
+            confirmButton = { Button(onClick = { summonSelectionError = null }) { Text("Fechar") } }
         )
     }
 
@@ -430,3 +476,10 @@ private fun SpellSlotCard(
         }
     }
 }
+
+private data class PendingSummonCast(
+    val spell: CharacterSpell,
+    val slot: SpellSlotInfo,
+    val casterClass: String,
+    val options: List<SummonCreatureOption>
+)

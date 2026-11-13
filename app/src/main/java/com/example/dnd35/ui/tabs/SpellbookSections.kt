@@ -47,6 +47,7 @@ import com.example.dnd35.model.CharacterSpell
 import com.example.dnd35.model.ClericDomainRules
 import com.example.dnd35.model.Dnd35Rules
 import com.example.dnd35.model.SpellFilters
+import com.example.dnd35.model.SpellSlotInfo
 import com.example.dnd35.model.SpellbookRules
 import com.example.dnd35.model.WizardSpecialtyRules
 import com.example.dnd35.viewmodel.CharacterViewModel
@@ -123,7 +124,8 @@ private fun EmptyCard(title: String, hint: String) {
 internal fun LazyListScope.preparedSection(
     viewModel: CharacterViewModel,
     stats: CalculatedCharacterStats,
-    onOpenSpell: (CharacterSpell) -> Unit
+    onOpenSpell: (CharacterSpell) -> Unit,
+    onCastSpell: (CharacterSpell, SpellSlotInfo, String) -> Unit
 ) {
     val casters = stats.casterClasses
     if (casters.isEmpty()) {
@@ -256,7 +258,7 @@ internal fun LazyListScope.preparedSection(
                             ) { Icon(Icons.Default.Add, contentDescription = "Preparar mais uma vez: ${spell.name}", modifier = Modifier.size(16.dp)) }
                         }
                         OutlinedButton(
-                            onClick = { if (slot != null) viewModel.castSpell(spell.id, slot, stats.spellSlots) },
+                            onClick = { if (slot != null) onCastSpell(spell, slot, info.className) },
                             enabled = slot != null && remaining > 0,
                             contentPadding = ButtonDefaults.TextButtonContentPadding
                         ) { Text("Conjurar", style = MaterialTheme.typography.labelSmall) }
@@ -614,6 +616,15 @@ internal fun LazyListScope.historySection(
                 Spacer(Modifier.width(8.dp))
                 Column(modifier = Modifier.weight(1f)) {
                     Text(r.spellName, fontWeight = FontWeight.Bold, style = MaterialTheme.typography.bodyMedium)
+                    if (r.summonedCreatureId.isNotBlank()) {
+                        val summoned = com.example.dnd35.model.CreatureCatalog.byId(r.summonedCreatureId)
+                        Text(
+                            "Invocada: ${summoned?.name ?: r.summonedCreatureId}" +
+                                if (r.summonedCreatureVariant.isNotBlank()) " • ${r.summonedCreatureVariant}" else "",
+                            style = MaterialTheme.typography.labelSmall,
+                            color = MaterialTheme.colorScheme.primary
+                        )
+                    }
                     val detail = buildList {
                         if (r.casterClass.isNotBlank()) add(r.casterClass)
                         if (r.slotLevel >= 0) add("espaço de ${SpellbookRules.circleLabel(r.slotLevel)}")

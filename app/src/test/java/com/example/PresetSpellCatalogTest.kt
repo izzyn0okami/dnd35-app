@@ -1720,6 +1720,30 @@ class PresetSpellCatalogTest {
 
 
     @Test
+    fun summonCreatureTwoThroughSixArePresentForAllFourClasses() {
+        val byName = Dnd35Rules.PRESET_SPELLS.associateBy { it.name }
+        for ((roman, level) in listOf("II" to 2, "III" to 3, "IV" to 4, "V" to 5, "VI" to 6)) {
+            val spell = byName.getValue("Invocar Criaturas $roman")
+            assertEquals(level, spell.level)
+            assertEquals(mapOf("Bardo" to level, "Clérigo" to level, "Feiticeiro" to level, "Mago" to level), spell.classLevels)
+            assertTrue(spell.domainLevels.isEmpty())
+        }
+    }
+
+    @Test
+    fun natureAllyFiveAndSixArePresentWithCorrectDruidCircles() {
+        val byName = Dnd35Rules.PRESET_SPELLS.associateBy { it.name }
+        val fifth = byName.getValue("Invocar Aliado da Natureza V")
+        val sixth = byName.getValue("Invocar Aliado da Natureza VI")
+        assertEquals(mapOf("Druida" to 5), fifth.classLevels)
+        assertEquals(mapOf("Druida" to 6), sixth.classLevels)
+        assertTrue(fifth.domainLevels.isEmpty())
+        assertTrue(sixth.domainLevels.isEmpty())
+        assertTrue(fifth.description.contains("lista de 5º nível"))
+        assertTrue(sixth.description.contains("lista de 6º nível"))
+    }
+
+    @Test
     fun consolidatedEighthLevelSpellBatchMatchesPlayerHandbook() {
         val expected = mapOf(
             "Campo Antimagia" to Triple("Abjuração", mapOf("Clérigo" to 8, "Feiticeiro" to 6, "Mago" to 6), mapOf("Magia" to 6, "Proteção" to 6)),

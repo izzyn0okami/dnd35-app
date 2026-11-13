@@ -166,3 +166,128 @@ Cada registro do catálogo recebe três flags independentes:
 - Ajuste de nomenclatura: a entrada inglesa *dire weasel* da lista alternativa corresponde ao **Arminho Atroz** do Livro dos Monstros brasileiro; a ficha existente `arminho-atroz` foi marcada como companheiro animal, sem criar duplicata.
 
 - Complemento de apresentação: as categorias elegíveis também aparecem resumidas diretamente em cada linha da lista de monstros, além da seção completa na ficha detalhada.
+
+
+## 2026-11-13 — Atalhos de monstros no modo Mestre
+
+### Decisão de arquitetura
+- A ação **Adicionar monstro** no modo Mestre cria um card/atalho para uma criatura já existente em `CreatureCatalog`.
+- O atalho guarda somente um identificador próprio da instância e o `creatureId` de origem. Não cria, duplica ou converte `CharacterEntity`.
+- Várias instâncias da mesma criatura são permitidas, cada uma com identidade independente.
+- Remover um card remove somente o atalho da sessão; o registro original do bestiário permanece intacto.
+- Os atalhos são privados do Mestre nesta etapa e são persistidos no snapshot da sessão hospedada. Não são transmitidos aos jogadores.
+- A seleção reutiliza o catálogo existente e oferece busca por nome e filtros por tipo e tamanho. Os filtros e a busca da aba Monstros não são modificados.
+- Toque simples alterna frente/verso do card; pressão prolongada abre os detalhes disponíveis da criatura.
+- Os cards usam os dados do catálogo em tempo de exibição. Campos ainda não auditados continuam identificados como pendentes; a imagem permanece no estado de placeholder existente.
+- A coleção aparece na área de Combate do Mestre como uma pilha visual. Nesta etapa, os cards são atalhos de consulta e ainda não são inseridos automaticamente na ordem de iniciativa.
+- O snapshot mantém compatibilidade com sessões anteriores: ausência do campo `monsterCards` é interpretada como lista vazia, sem aumentar a versão do formato.
+
+### Testes adicionados
+- Serialização e restauração dos cards no snapshot.
+- Snapshot antigo/sem cards retorna coleção vazia.
+- Adição e remoção de atalhos no estado do servidor sem criação de fichas.
+
+
+## 2026-11-13 — Baralho de monstros em sobreposição de tela inteira
+
+### Alteração solicitada
+- Substituir o seletor compacto em janela de diálogo por uma experiência visual de baralho que ocupe a tela inteira.
+- Evitar a janela central limitada: pesquisa, filtros e catálogo passam a ocupar uma camada integral, com rolagem própria para a lista.
+- A seleção mantém a busca por nome e os filtros por tipo e tamanho já existentes.
+- A ficha completa também passa a ocupar a tela inteira, com retorno explícito ao baralho e conteúdo organizado em cartões/sections roláveis.
+- O baralho da sessão continua usando atalhos para o catálogo; nenhuma ficha de personagem é criada e os dados mecânicos não são duplicados.
+- O comportamento de adicionar/remover e a persistência dos atalhos permanecem inalterados.
+
+### Implementação visual
+- Sobreposição de tela inteira sem moldura de AlertDialog.
+- Cabeçalho e ação de fechar separados da lista.
+- Campo de busca e filtros mantidos no topo.
+- Lista de criaturas em LazyColumn com rolagem independente e cartões maiores, simulando cartas de um baralho.
+- Detalhes completos em uma camada integral rolável, com retorno ao baralho.
+
+### Validação pendente
+- Aguardar CI para validar compilação e testes automatizados.
+- Testar no aparelho a abertura/fechamento, botão Voltar do Android, rolagem da lista, filtros, seleção e visualização de detalhes.
+- Não mesclar até a validação manual do usuário.
+
+
+## 2026-11-13 — Identidade visual de cartas e baralho empilhado
+
+### Referências visuais recebidas
+- Primeira imagem: cartas físicas parcialmente sobrepostas, com deslocamento horizontal regular e as bordas das cartas posteriores visíveis.
+- Segunda imagem: hierarquia de carta colecionável com faixa de título, grande área de ilustração, linha de tipo, área de texto/regras e bloco de valores no rodapé.
+
+### Decisões de implementação
+- A coleção do Mestre passa a ser um baralho horizontal com cartas sobrepostas e navegação lateral, em vez de cartões largos empilhados verticalmente.
+- Cada carta adota proporção vertical e moldura própria, com cabeçalho do nome/ND, área de ilustração, linha de tipo, painel de estatísticas e rodapé.
+- A frente prioriza PV, CA, BBA, iniciativa e ataque.
+- O verso organiza os seis atributos, ataques/qualidades especiais e talentos.
+- Toque alterna frente/verso; pressão prolongada abre os detalhes completos; remoção continua vinculada à instância da sessão.
+- O seletor e os detalhes completos mantêm os atalhos de catálogo e a persistência existentes.
+- A área de ilustração continua como placeholder: não foi criada nem presumida uma fonte de imagens para criaturas.
+
+### Validação
+- Aguardar CI da nova revisão.
+- Testar no aparelho o deslocamento horizontal, a sobreposição, o toque para virar, pressão prolongada e remoção de instâncias duplicadas.
+- Não mesclar antes da validação manual.
+
+
+## Correção de compilação — 2026-11-13
+
+A primeira execução de CI após a reformulação visual apontou referências ausentes em `SessionHubScreen.kt`. Foram implementados no mesmo arquivo e na mesma branch:
+
+- Seletor de criaturas com busca por nome e filtros combináveis por tipo e tamanho, usando diretamente `CreatureCatalog.filter`.
+- Diálogo de detalhes que consulta os dados originais de `CreatureDefinition`, sem criar ou modificar fichas.
+- Funções auxiliares locais para exibir modificadores e valores positivos com sinal.
+- Correção da separação entre o título e o botão de fechar no cabeçalho dos painéis flutuantes, que causava erro adicional de análise Kotlin.
+
+A alteração foi enviada ao PR #367 no commit `6b8a5eb32cf202c1393ad95803500f7e4db5ce37`. A validação final depende da nova execução do GitHub Actions; não considerar aprovado até testes e compilação concluídos.
+
+
+## 2026-11-13 — Regras e vínculos persistentes de familiares/companheiros
+
+### Implementação
+- Criado o modelo `CharacterCreatureBond`, que armazena somente o ID da criatura do catálogo e o tipo de vínculo; não duplica fichas de monstros.
+- Adicionada a coluna `creatureBondsJson` à ficha, com migração Room 10→11 e valor padrão vazio para preservar personagens existentes.
+- Serialização/deserialização tolerante a dados antigos e inclusão do campo nos backups.
+- Criado `CreatureBondRules` para filtrar familiares e companheiros conforme classes e níveis atuais.
+- Mago e Feiticeiro acumulam níveis para determinar o familiar.
+- Druida soma seus níveis aos níveis de Ranger divididos por dois (arredondamento para baixo) para o companheiro animal.
+- Listas alternativas de companheiros aplicam requisitos de 4º/7º nível e penalidades efetivas de -3/-6.
+- Opções aquáticas permanecem ocultas por padrão e só aparecem quando a campanha é explicitamente marcada como aquática.
+- Adicionada à ficha uma seção com consulta dos vínculos atuais e seleção filtrada de novas criaturas.
+- Corrigido o teste de migração da base para percorrer a cadeia 9→10→11 e verificar que o novo campo começa vazio.
+
+### Testes adicionados
+- Progressão multiclasse de familiar e companheiro animal.
+- Penalidades e requisitos das listas alternativas.
+- Restrição de companheiros aquáticos.
+- Validação de vínculos contra as flags do catálogo.
+
+### CI
+- Corrigida a estrutura duplicada/inválida de gatilhos no workflow Android.
+- A CI agora executa em pushes nas branches `main`, `fix/**` e `feature/**`, além de PRs direcionadas a `main`.
+- O workflow usa JDK 17, alinhado à configuração atual do projeto.
+
+- Revisão da tabela oficial de Invocar Criaturas: removida a elegibilidade de `escorpiao-colossal`; o Livro do Jogador lista o escorpião monstruoso abissal Imenso (`escorpiao-imenso`), não a versão Colossal.
+- Criado mapeamento explícito de círculos para as listas de Invocar Criaturas e Invocar Aliado da Natureza. Opções de círculos inferiores permanecem disponíveis conforme a descrição das magias.
+
+- Ajustados os testes do catálogo para refletir a lista impressa: Escorpião Colossal não é invocável pelo Livro do Jogador; Escorpião Imenso é a opção válida. A migração 10→11 foi tornada idempotente para suportar bancos de teste e instalações intermediárias que já tenham a coluna.
+
+- Auditoria ampliada da tabela de Companheiros Animais Alternativos: adicionados os patamares de 10º, 13º e 16º nível, com penalidades -9, -12 e -15; opções aquáticas foram limitadas aos ambientes aquáticos. Flags do catálogo foram alinhadas à tabela do Livro do Jogador, incluindo Megaraptor, Baleia Orca, Leão Atroz, Tubarão Enorme, Elefante, Urso Atroz, Polvo Gigante, Lula Gigante, Tricerátops, Tigre Atroz, Tubarão Atroz e Tiranossauro.
+
+- Ajustado o workflow auxiliar Android para executar somente `testDebugUnitTest`; a geração do APK permanece no workflow de build existente, que restaura o keystore de depuração. Isso evita falha duplicada de assinatura causada por `./gradlew build` no workflow auxiliar.
+
+- Conferidas as tabelas completas de Invocar Aliado da Natureza e Invocar Criaturas: adicionadas as cartas existentes Urso Atroz, Elefante, Polvo Gigante e Lula Gigante às listas e tags de invocação. Pixie agora possui as três variantes de lista (6º, 7º e 9º círculo); Satyr mantém as versões sem/com flauta (3º e 5º).
+
+- Corrigida lacuna no catálogo de magias: adicionadas Invocar Aliado da Natureza V e VI, ausentes da lista de magias apesar de constarem no Livro do Jogador. O domínio Animais concede Invocar Aliado da Natureza IV e VIII (não I); a seleção para Clérigo agora respeita apenas esses círculos de domínio.
+
+- Adicionados testes para as listas superiores e variantes de Pixie, além de regressões para as cartas de invocação que estavam sem a flag (urso-atroz, elefante, polvo-gigante, lula-gigante). A interface identifica os modelos Celestial/Abissal e informa que os modificadores completos ainda não são aplicados à ficha de combate.
+
+- Completo o catálogo de Invocar Criaturas II–VI, que também estavam ausentes do catálogo apesar de existirem no Livro do Jogador. Invocar Criaturas IX mantém os domínios Bem, Caos, Mal e Ordem; a seleção de invocações agora reconhece qualquer domínio clerical explicitamente registrado na magia. Ícones de todas as magias de invocação foram alinhados.
+
+- Auditoria das listas de Invocar Aliado da Natureza: adicionadas as opções já existentes no catálogo que estavam sem a tag de invocação (Janni, Leão Marinho e Grig), nos círculos 5, 4 e 9, respectivamente.
+
+- Incluídas no catálogo as duas opções de companheiro animal que existiam no Livro dos Monstros, mas ainda não tinham cartas: Texugo Atroz e Cobra Constritora Gigante. Ambas receberam dados do bloco oficial e tags de companheiro/invocável; foram adicionadas às listas corretas de Invocar Aliado da Natureza, Invocar Criaturas e Companheiro Animal.
+
+- Pendência de cobertura identificada ao confrontar as listas do Livro do Jogador com o Livro dos Monstros: ainda faltam cartas para algumas opções de invocação, incluindo famílias de Elementais (quatro elementos e seis estágios), Xorns, Tojanidas, Salamandras, Gaviões Seta e Unicórnios, entre outras. Essas criaturas não são oferecidas como opções até que suas fichas oficiais sejam cadastradas; não criar placeholders nem inventar estatísticas. Texugo Atroz e Cobra Constritora Gigante já foram adicionados por serem necessários também às listas de Companheiro Animal.

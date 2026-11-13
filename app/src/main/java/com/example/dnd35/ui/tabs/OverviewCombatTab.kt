@@ -51,6 +51,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.dnd35.model.CalculatedCharacterStats
 import com.example.dnd35.model.CharacterEntity
+import com.example.dnd35.ui.components.CreatureBondSection
 import com.example.dnd35.model.Dnd35Rules
 import com.example.dnd35.model.remainingAmmunitionUnits
 import com.example.dnd35.model.isWeaponInventoryCategory
@@ -192,6 +193,15 @@ fun OverviewCombatTab(
                 }
             }
             Spacer(modifier = Modifier.height(12.dp))
+        }
+
+        item {
+            CreatureBondSection(
+                character = character,
+                classEntries = stats.classEntries,
+                viewModel = viewModel
+            )
+            Spacer(modifier = Modifier.height(10.dp))
         }
 
         // Slot único de munição, escolhido manualmente pelo jogador e independente da arma.

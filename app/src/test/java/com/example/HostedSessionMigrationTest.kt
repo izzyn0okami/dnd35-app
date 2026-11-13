@@ -32,7 +32,7 @@ abstract class LegacyV9Database : RoomDatabase() {
 class HostedSessionMigrationTest {
 
     @Test
-    fun `migracao 9 para 10 preserva fichas existentes e cria tabela de sessao`() = runBlocking {
+    fun `migracao 9 para 11 preserva fichas existentes e cria tabela de sessao`() = runBlocking {
         val context = RuntimeEnvironment.getApplication()
         val databaseName = "hosted-session-migration-test.db"
         context.deleteDatabase(databaseName)
@@ -51,7 +51,7 @@ class HostedSessionMigrationTest {
         legacy.close()
 
         val upgraded = Room.databaseBuilder(context, AppDatabase::class.java, databaseName)
-            .addMigrations(AppDatabase.MIGRATION_9_10)
+            .addMigrations(AppDatabase.MIGRATION_9_10, AppDatabase.MIGRATION_10_11)
             .build()
 
         try {
@@ -62,6 +62,7 @@ class HostedSessionMigrationTest {
             assertEquals(42, restored.currentHp)
             assertEquals(88f, restored.goldGp)
             assertEquals(character.inventoryJson, restored.inventoryJson)
+            assertEquals("", restored.creatureBondsJson)
             assertNull(upgraded.hostedSessionDao().getStoredSession())
         } finally {
             upgraded.close()

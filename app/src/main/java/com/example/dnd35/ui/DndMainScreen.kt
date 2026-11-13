@@ -94,6 +94,7 @@ import com.example.dnd35.ui.tabs.CreatureCatalogTab
 import com.example.dnd35.ui.session.SessionHubScreen
 import com.example.dnd35.ui.session.SessionFloatingPanels
 import com.example.dnd35.viewmodel.CharacterViewModel
+import com.example.dnd35.viewmodel.DmSessionUiState
 import com.example.dnd35.viewmodel.SessionViewModel
 import com.example.dnd35.viewmodel.PlayerSessionUiState
 import com.example.ui.theme.DndCrimson
@@ -112,6 +113,10 @@ fun DndMainScreen(
     val activeCharacter by viewModel.activeCharacter.collectAsStateWithLifecycle()
     val computedStats by viewModel.computedStats.collectAsStateWithLifecycle()
 
+    val dmSessionState = sessionViewModel?.dmState?.collectAsStateWithLifecycle()?.value ?: DmSessionUiState.Idle
+    // O bestiário integral é uma ferramenta do Mestre e só aparece enquanto há combate ativo.
+    val canAccessBestiary = dmSessionState is DmSessionUiState.Hosting && dmSessionState.combat != null
+
     var selectedTab by rememberSaveable { mutableIntStateOf(0) }
     var showCharacterMenu by remember { mutableStateOf(false) }
     var showOverflowMenu by remember { mutableStateOf(false) }
@@ -123,6 +128,10 @@ fun DndMainScreen(
     var incomingItemImportUri by remember { mutableStateOf<Uri?>(null) }
     var showIncomingItemTargetDialog by remember { mutableStateOf(false) }
     var selectedIncomingItemTargetId by remember { mutableStateOf<Long?>(null) }
+
+    LaunchedEffect(canAccessBestiary) {
+        if (!canAccessBestiary && selectedTab == 5) selectedTab = 0
+    }
 
     LaunchedEffect(viewModel) {
         viewModel.backupMessages.collect { message ->
@@ -417,14 +426,14 @@ fun DndMainScreen(
                     .testTag("main_bottom_nav"),
                 containerColor = MaterialTheme.colorScheme.surface
             ) {
-                val items = listOf(
-                    Triple("Personagem", Icons.Default.Shield, 0),
-                    Triple("Perícias", Icons.Default.Star, 1),
-                    Triple("Carga & Itens", Icons.Default.FitnessCenter, 2),
-                    Triple("Talentos", Icons.Default.MilitaryTech, 3),
-                    Triple("Grimório", Icons.Default.AutoStories, 4),
-                    Triple("Monstros", Icons.Default.BugReport, 5)
-                )
+                val items = buildList {
+                    add(Triple("Personagem", Icons.Default.Shield, 0))
+                    add(Triple("Perícias", Icons.Default.Star, 1))
+                    add(Triple("Carga & Itens", Icons.Default.FitnessCenter, 2))
+                    add(Triple("Talentos", Icons.Default.MilitaryTech, 3))
+                    add(Triple("Grimório", Icons.Default.AutoStories, 4))
+                    if (canAccessBestiary) add(Triple("Monstros", Icons.Default.BugReport, 5))
+                }
 
                 items.forEach { (label, icon, index) ->
                     NavigationBarItem(
@@ -453,7 +462,7 @@ fun DndMainScreen(
             val char = activeCharacter
             val calc = computedStats
 
-            if (selectedTab == 5) {
+            if (selectedTab == 5 && canAccessBestiary) {
                 CreatureCatalogTab(modifier = Modifier.fillMaxSize())
             } else if (char == null && characters.isEmpty()) {
                 Column(

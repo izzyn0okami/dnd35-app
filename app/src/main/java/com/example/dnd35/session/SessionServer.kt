@@ -67,6 +67,10 @@ class SessionServer(
     private val _combatState = MutableStateFlow<CombatState?>(null)
     val combatState: StateFlow<CombatState?> = _combatState
 
+    // Cards de monstros são referências ao catálogo, não fichas CharacterEntity.
+    private val _monsterCards = MutableStateFlow<List<MonsterCardShortcut>>(emptyList())
+    val monsterCards: StateFlow<List<MonsterCardShortcut>> = _monsterCards
+
     // Pedidos de jogadores aguardando aprovação do Mestre (ver RequestKind). Diferente das ações
     // do próprio Mestre (combate acima), que mutam o estado direto.
     private val _pendingRequests = MutableStateFlow<List<ActionRequest>>(emptyList())
@@ -106,7 +110,8 @@ class SessionServer(
             shop = _shop.value,
             privateChatLog = _privateChatLog.value.toList(),
             rejoinTokens = rejoinTokens.toMap(),
-            pendingGrants = pendingGrants.mapValues { (_, grants) -> grants.values.toList() }
+            pendingGrants = pendingGrants.mapValues { (_, grants) -> grants.values.toList() },
+            monsterCards = _monsterCards.value.toList()
         )
     }
 
@@ -123,6 +128,7 @@ class SessionServer(
             .map { it.copy(connected = if (markPlayersDisconnected) false else it.connected) }
         _receivedCharacters.value = snapshot.receivedCharacters.toMap()
         _combatState.value = snapshot.combat
+        _monsterCards.value = snapshot.monsterCards.toList()
         _pendingRequests.value = snapshot.pendingRequests.toList()
         _lootChest.value = snapshot.lootChest.toList()
         _shop.value = snapshot.shop
@@ -361,6 +367,25 @@ class SessionServer(
         handle.outbound.close()
         runCatching { handle.socket.close() }
         return false
+    }
+
+    // --- Cartas de monstros (atalhos privados do Mestre) ---
+
+    /** Adiciona uma referência a uma criatura do catálogo sem criar/alterar ficha de personagem. */
+    fun addMonsterCard(creatureId: String): MonsterCardShortcut = synchronized(stateLock) {
+        require(creatureId.isNotBlank()) { "ID da criatura não pode ficar vazio" }
+        val card = MonsterCardShortcut(UUID.randomUUID().toString(), creatureId)
+        _monsterCards.value = _monsterCards.value + card
+        notifySnapshotChanged()
+        card
+    }
+
+    /** Remove somente a instância do atalho; o registro original do bestiário permanece intacto. */
+    fun removeMonsterCard(instanceId: String) = synchronized(stateLock) {
+        val updated = _monsterCards.value.filterNot { it.instanceId == instanceId }
+        if (updated.size == _monsterCards.value.size) return@synchronized
+        _monsterCards.value = updated
+        notifySnapshotChanged()
     }
 
     // --- Combate (estado global, autoridade do Mestre) ---

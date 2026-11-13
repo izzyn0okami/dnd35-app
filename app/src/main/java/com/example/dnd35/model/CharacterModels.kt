@@ -62,6 +62,8 @@ data class CharacterEntity(
     // Especialização do Mago em JSON: [escola de especialidade, escola proibida, ...]. Vazio = generalista.
     val wizardSpecialtyJson: String = "",
     val multiclassJson: String = "",
+    // Vínculos persistentes a familiares e companheiros animais; vazio em fichas antigas.
+    val creatureBondsJson: String = "",
     val notes: String = "",
     // Marcação usada só na Sessão de Mesa: fichas de NPC não representam um jogador
     // conectado, são controladas inteiramente pelo Mestre (loja, monstros, etc.).
@@ -249,7 +251,11 @@ data class SpellCastRecord(
     val spellLevel: Int,
     val casterClass: String = "",
     // Círculo do espaço consumido (-1 quando nenhum espaço foi gasto).
-    val slotLevel: Int = -1
+    val slotLevel: Int = -1,
+    /** ID da carta escolhida ao conjurar uma magia de invocação. */
+    val summonedCreatureId: String = "",
+    /** Variante celestial/abissal ou outra opção específica da lista, quando aplicável. */
+    val summonedCreatureVariant: String = ""
 )
 /**
  * Espaços de magia de UMA classe conjuradora em UM círculo. Na multiclasse, cada classe tem sua

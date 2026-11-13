@@ -507,7 +507,7 @@
     "advancement": "8–16 DV (Grande); 17–21 (Enorme)",
     "levelAdjustment": "—",
     "source": "Livro dos Monstros 3.5",
-    "animalCompanion": false,
+    "animalCompanion": true,
     "summonedCreature": false,
     "familiar": false
   },
@@ -757,7 +757,7 @@
     "advancement": "17–32 DV (Grande); 33–48 (Enorme)",
     "levelAdjustment": "—",
     "source": "Livro dos Monstros 3.5",
-    "animalCompanion": false,
+    "animalCompanion": true,
     "summonedCreature": false,
     "familiar": false
   },
@@ -807,7 +807,7 @@
     "advancement": "19–32 DV (Enorme); 33–54 (Imenso)",
     "levelAdjustment": "—",
     "source": "Livro dos Monstros 3.5",
-    "animalCompanion": false,
+    "animalCompanion": true,
     "summonedCreature": true,
     "familiar": false
   },
@@ -857,8 +857,8 @@
     "advancement": "13–16 DV (Grande); 17–36 (Enorme)",
     "levelAdjustment": "—",
     "source": "Livro dos Monstros 3.5",
-    "animalCompanion": false,
-    "summonedCreature": false,
+    "animalCompanion": true,
+    "summonedCreature": true,
     "familiar": false
   },
   {
@@ -3613,7 +3613,7 @@
     "advancement": "9–16 DV (Enorme); 17–24 DV (Imenso)",
     "levelAdjustment": "—",
     "source": "Livro dos Monstros 3.5",
-    "animalCompanion": false,
+    "animalCompanion": true,
     "summonedCreature": true,
     "familiar": false
   },
@@ -3663,7 +3663,7 @@
     "advancement": "19–36 DV (Enorme); 37–54 DV (Imenso)",
     "levelAdjustment": "—",
     "source": "Livro dos Monstros 3.5",
-    "animalCompanion": false,
+    "animalCompanion": true,
     "summonedCreature": true,
     "familiar": false
   },
@@ -3713,7 +3713,7 @@
     "advancement": "17–32 DV (Enorme); 33–48 DV (Imenso)",
     "levelAdjustment": "—",
     "source": "Livro dos Monstros 3.5",
-    "animalCompanion": false,
+    "animalCompanion": true,
     "summonedCreature": true,
     "familiar": false
   },
@@ -4614,7 +4614,7 @@
     "levelAdjustment": "+3",
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
-    "summonedCreature": false,
+    "summonedCreature": true,
     "familiar": false
   },
   {
@@ -5114,7 +5114,7 @@
     "levelAdjustment": "+5",
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
-    "summonedCreature": false,
+    "summonedCreature": true,
     "familiar": false
   },
   {
@@ -6264,7 +6264,7 @@
     "levelAdjustment": "—",
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
-    "summonedCreature": false,
+    "summonedCreature": true,
     "familiar": false
   },
   {
@@ -10113,8 +10113,8 @@
     "advancement": "12–22 DV (Enorme)",
     "levelAdjustment": "—",
     "source": "Livro dos Monstros 3.5",
-    "animalCompanion": false,
-    "summonedCreature": false,
+    "animalCompanion": true,
+    "summonedCreature": true,
     "familiar": false
   },
   {
@@ -10763,8 +10763,8 @@
     "advancement": "13–18 DV (Enorme); 19–36 DV (Imenso)",
     "levelAdjustment": "—",
     "source": "Livro dos Monstros 3.5",
-    "animalCompanion": false,
-    "summonedCreature": false,
+    "animalCompanion": true,
+    "summonedCreature": true,
     "familiar": false
   },
   {
@@ -11013,8 +11013,8 @@
     "advancement": "9–12 DV (Grande); 13–24 DV (Enorme)",
     "levelAdjustment": "—",
     "source": "Livro dos Monstros 3.5",
-    "animalCompanion": false,
-    "summonedCreature": false,
+    "animalCompanion": true,
+    "summonedCreature": true,
     "familiar": false
   },
   {
@@ -11513,7 +11513,7 @@
     "advancement": "9–12 DV (Grande)",
     "levelAdjustment": "—",
     "source": "Livro dos Monstros 3.5",
-    "animalCompanion": false,
+    "animalCompanion": true,
     "summonedCreature": false,
     "familiar": false
   },
@@ -12514,7 +12514,7 @@
     "levelAdjustment": "—",
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": false,
-    "summonedCreature": true,
+    "summonedCreature": false,
     "familiar": false
   },
   {
@@ -13214,6 +13214,106 @@
     "levelAdjustment": "—",
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": false,
+    "summonedCreature": true,
+    "familiar": false
+  },
+  {
+    "id": "texugo-atroz",
+    "name": "Texugo Atroz",
+    "type": "Animal",
+    "size": "Médio",
+    "typeDetail": "Médio",
+    "hitDice": "3d8+15",
+    "hdCount": 3,
+    "hdType": 8,
+    "hitPoints": 23,
+    "initiative": 3,
+    "speed": "9 m (6 quadrados), escavar 3 m",
+    "armorClass": 16,
+    "armorClassText": "16 (+3 Des, +3 natural), toque 13, surpresa 13",
+    "touchAc": 13,
+    "flatFootedAc": 13,
+    "baseAttack": 2,
+    "grapple": 4,
+    "attack": "Corpo a corpo: garra +4 (dano: 1d4+2)",
+    "fullAttack": "Corpo a corpo: 2 garras +4 (dano: 1d4+2) e mordida –1 (dano: 1d6+1)",
+    "spaceReach": "1,5 m/1,5 m",
+    "specialAttacks": "Fúria",
+    "specialQualities": "Visão na penumbra, faro",
+    "saves": {
+      "fort": 7,
+      "ref": 6,
+      "will": 4
+    },
+    "abilities": {
+      "str": 14,
+      "dex": 17,
+      "con": 19,
+      "int": 2,
+      "wis": 12,
+      "cha": 10
+    },
+    "skills": "Ouvir +6, Observar +6",
+    "feats": "Prontidão, RastrearB, Vitalidade",
+    "environment": "Florestas temperadas",
+    "organization": "Solitário ou bando (2–5)",
+    "challengeRating": "2",
+    "treasure": "",
+    "alignment": "Sempre Neutro",
+    "advancement": "4–9 DV (Grande)",
+    "levelAdjustment": "—",
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": true,
+    "summonedCreature": true,
+    "familiar": false
+  },
+  {
+    "id": "cobra-constritora-gigante",
+    "name": "Cobra Constritora Gigante",
+    "type": "Animal",
+    "size": "Enorme",
+    "typeDetail": "Enorme",
+    "hitDice": "11d8+14",
+    "hdCount": 11,
+    "hdType": 8,
+    "hitPoints": 63,
+    "initiative": 3,
+    "speed": "6 m (4 quadrados), escalada 6 m, natação 6 m",
+    "armorClass": 15,
+    "armorClassText": "15 (–2 tamanho, +3 Des, +4 natural), toque 11, surpresa 12",
+    "touchAc": 11,
+    "flatFootedAc": 12,
+    "baseAttack": 8,
+    "grapple": 23,
+    "attack": "Corpo a corpo: mordida +13 (dano: 1d8+10)",
+    "fullAttack": "Corpo a corpo: mordida +13 (dano: 1d8+10)",
+    "spaceReach": "4,5 m/3 m",
+    "specialAttacks": "Constrição 1d8+10, agarrar aprimorado",
+    "specialQualities": "Faro",
+    "saves": {
+      "fort": 8,
+      "ref": 10,
+      "will": 4
+    },
+    "abilities": {
+      "str": 25,
+      "dex": 17,
+      "con": 13,
+      "int": 1,
+      "wis": 12,
+      "cha": 2
+    },
+    "skills": "Equilíbrio +11, Escalar +17, Esconder-se +10, Ouvir +9, Observar +9, Natação +16",
+    "feats": "Prontidão, Tolerância, Foco em Perícia (Esconder-se), Vitalidade",
+    "environment": "Florestas quentes",
+    "organization": "Solitário",
+    "challengeRating": "5",
+    "treasure": "",
+    "alignment": "Sempre Neutro",
+    "advancement": "12–16 DV (Enorme); 17–33 DV (Imenso)",
+    "levelAdjustment": "—",
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": true,
     "summonedCreature": true,
     "familiar": false
   }

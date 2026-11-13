@@ -344,6 +344,41 @@ object CharacterJsonAdapters {
         return list
     }
 
+    fun serializeCreatureBonds(bonds: List<CharacterCreatureBond>): String {
+        val array = JSONArray()
+        bonds.filter { it.creatureId.isNotBlank() }.forEach { bond ->
+            val item = JSONObject()
+            item.put("id", bond.id)
+            item.put("kind", bond.kind.name)
+            item.put("creatureId", bond.creatureId)
+            array.put(item)
+        }
+        return if (array.length() == 0) "" else array.toString()
+    }
+
+    fun deserializeCreatureBonds(json: String?): List<CharacterCreatureBond> {
+        if (json.isNullOrBlank()) return emptyList()
+        return try {
+            val array = JSONArray(json)
+            (0 until array.length()).mapNotNull { index ->
+                val item = array.optJSONObject(index) ?: return@mapNotNull null
+                val creatureId = item.optString("creatureId", "").trim()
+                val kind = runCatching {
+                    CreatureBondKind.valueOf(item.optString("kind", ""))
+                }.getOrNull()
+                if (creatureId.isBlank() || kind == null) return@mapNotNull null
+                CharacterCreatureBond(
+                    id = item.optString("id").takeIf { it.isNotBlank() } ?: java.util.UUID.randomUUID().toString(),
+                    kind = kind,
+                    creatureId = creatureId
+                )
+            }.distinctBy { it.id }
+        } catch (e: Exception) {
+            Log.w("CharacterJsonAdapters", "JSON de vínculos de criaturas inválido; ignorado", e)
+            emptyList()
+        }
+    }
+
     fun serializeDomains(domains: List<String>): String =
         if (domains.isEmpty()) "" else JSONArray(domains).toString()
 
@@ -379,6 +414,8 @@ object CharacterJsonAdapters {
             obj.put("spellLevel", r.spellLevel)
             obj.put("casterClass", r.casterClass)
             obj.put("slotLevel", r.slotLevel)
+            obj.put("summonedCreatureId", r.summonedCreatureId)
+            obj.put("summonedCreatureVariant", r.summonedCreatureVariant)
             array.put(obj)
         }
         return array.toString()
@@ -398,7 +435,9 @@ object CharacterJsonAdapters {
                         spellName = obj.optString("spellName", ""),
                         spellLevel = obj.optInt("spellLevel", 0),
                         casterClass = obj.optString("casterClass", ""),
-                        slotLevel = obj.optInt("slotLevel", -1)
+                        slotLevel = obj.optInt("slotLevel", -1),
+                        summonedCreatureId = obj.optString("summonedCreatureId", ""),
+                        summonedCreatureVariant = obj.optString("summonedCreatureVariant", "")
                     )
                 )
             }
