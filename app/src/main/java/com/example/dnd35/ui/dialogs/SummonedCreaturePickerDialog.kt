@@ -37,6 +37,11 @@ fun SummonedCreaturePickerDialog(
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
+                Text(
+                    "Quando houver modelo Celestial ou Abissal, a variante será registrada; os ajustes completos do modelo ainda não são aplicados automaticamente à ficha de combate.",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = MaterialTheme.colorScheme.tertiary
+                )
                 LazyColumn(
                     modifier = Modifier.fillMaxWidth().heightIn(max = 440.dp)
                 ) {

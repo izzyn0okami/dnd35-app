@@ -34,6 +34,19 @@ class SummoningRulesTest {
     }
 
     @Test
+    fun natureSummoningVariantsAppearAtTheirCorrectCircles() {
+        val sixth = SummoningRules.creaturesForCircle(SummoningFamily.SUMMON_NATURE_ALLY, 6)
+        val seventh = SummoningRules.creaturesForCircle(SummoningFamily.SUMMON_NATURE_ALLY, 7)
+        val ninth = SummoningRules.creaturesForCircle(SummoningFamily.SUMMON_NATURE_ALLY, 9)
+        assertTrue(sixth.any { it.creature.id == "urso-atroz" })
+        assertTrue(sixth.any { it.creature.id == "polvo-gigante" })
+        assertTrue(seventh.any { it.creature.id == "lula-gigante" })
+        assertTrue(seventh.any { it.creature.id == "tiranossauro" })
+        assertTrue(ninth.any { it.creature.id == "pixie" && it.templateLabel.contains("memória") })
+        assertEquals(3, ninth.count { it.creature.id == "pixie" })
+    }
+
+    @Test
     fun classRestrictionsFollowSpellLists() {
         assertTrue(SummoningRules.isClassAllowed(SummoningFamily.SUMMON_CREATURES, "Mago"))
         assertTrue(SummoningRules.isClassAllowed(SummoningFamily.SUMMON_CREATURES, "Clérigo"))
