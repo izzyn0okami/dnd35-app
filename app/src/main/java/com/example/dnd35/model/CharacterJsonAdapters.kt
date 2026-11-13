@@ -414,6 +414,8 @@ object CharacterJsonAdapters {
             obj.put("spellLevel", r.spellLevel)
             obj.put("casterClass", r.casterClass)
             obj.put("slotLevel", r.slotLevel)
+            obj.put("summonedCreatureId", r.summonedCreatureId)
+            obj.put("summonedCreatureVariant", r.summonedCreatureVariant)
             array.put(obj)
         }
         return array.toString()
@@ -433,7 +435,9 @@ object CharacterJsonAdapters {
                         spellName = obj.optString("spellName", ""),
                         spellLevel = obj.optInt("spellLevel", 0),
                         casterClass = obj.optString("casterClass", ""),
-                        slotLevel = obj.optInt("slotLevel", -1)
+                        slotLevel = obj.optInt("slotLevel", -1),
+                        summonedCreatureId = obj.optString("summonedCreatureId", ""),
+                        summonedCreatureVariant = obj.optString("summonedCreatureVariant", "")
                     )
                 )
             }

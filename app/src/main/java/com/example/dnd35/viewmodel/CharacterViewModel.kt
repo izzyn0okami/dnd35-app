@@ -977,7 +977,13 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
      * vindo de stats.spellSlots, junto com [allSlots]) e registra no histórico. Não faz nada se
      * não houver espaço disponível nessa classe.
      */
-    fun castSpell(spellId: String, slot: SpellSlotInfo, allSlots: List<SpellSlotInfo>) {
+    fun castSpell(
+        spellId: String,
+        slot: SpellSlotInfo,
+        allSlots: List<SpellSlotInfo>,
+        summonedCreatureId: String = "",
+        summonedCreatureVariant: String = ""
+    ) {
         val curr = _activeCharacter.value ?: return
         val spell = CharacterJsonAdapters.deserializeSpells(curr.spellsJson).firstOrNull { it.id == spellId } ?: return
         if (slot.usedSlots >= slot.totalSlots) return
@@ -987,7 +993,9 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
                 spellName = spell.name,
                 spellLevel = spell.level,
                 casterClass = spell.casterClass.ifBlank { slot.className },
-                slotLevel = slot.level
+                slotLevel = slot.level,
+                summonedCreatureId = summonedCreatureId,
+                summonedCreatureVariant = summonedCreatureVariant
             )
         )
         // Mantém só os registros mais recentes para o histórico não crescer sem limite.

@@ -614,6 +614,15 @@ internal fun LazyListScope.historySection(
                 Spacer(Modifier.width(8.dp))
                 Column(modifier = Modifier.weight(1f)) {
                     Text(r.spellName, fontWeight = FontWeight.Bold, style = MaterialTheme.typography.bodyMedium)
+                    if (r.summonedCreatureId.isNotBlank()) {
+                        val summoned = com.example.dnd35.model.CreatureCatalog.byId(r.summonedCreatureId)
+                        Text(
+                            "Invocada: ${summoned?.name ?: r.summonedCreatureId}" +
+                                if (r.summonedCreatureVariant.isNotBlank()) " • ${r.summonedCreatureVariant}" else "",
+                            style = MaterialTheme.typography.labelSmall,
+                            color = MaterialTheme.colorScheme.primary
+                        )
+                    }
                     val detail = buildList {
                         if (r.casterClass.isNotBlank()) add(r.casterClass)
                         if (r.slotLevel >= 0) add("espaço de ${SpellbookRules.circleLabel(r.slotLevel)}")

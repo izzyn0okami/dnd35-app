@@ -251,7 +251,11 @@ data class SpellCastRecord(
     val spellLevel: Int,
     val casterClass: String = "",
     // Círculo do espaço consumido (-1 quando nenhum espaço foi gasto).
-    val slotLevel: Int = -1
+    val slotLevel: Int = -1,
+    /** ID da carta escolhida ao conjurar uma magia de invocação. */
+    val summonedCreatureId: String = "",
+    /** Variante celestial/abissal ou outra opção específica da lista, quando aplicável. */
+    val summonedCreatureVariant: String = ""
 )
 /**
  * Espaços de magia de UMA classe conjuradora em UM círculo. Na multiclasse, cada classe tem sua
