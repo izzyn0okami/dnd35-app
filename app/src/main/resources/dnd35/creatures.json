@@ -93,7 +93,9 @@
     "alignment": "Sempre Leal e Mau",
     "advancement": "7–12 DV (Grande); 13–18 DV (Enorme)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "description": "Uma criatura grande se equilibra em quatro patas semelhantes a estacas. Seu corpo é semelhante ao de um pássaro, arredondado e roliço, do tamanho de um pônei pequeno; coberto com penas que variam de cor entre marrom e vermelho. Suas garras enormes e seu bico ameaçador brilham como se fossem feitos de metal polido.\n\nOs achaierai são aves robustas de 4,5 m de altura, incapazes de voar, que habitam o plano de Aqueronte e apenas ocasionalmente são encontradas em outros locais. Eles são maus, inteligentes e predatórios, com um gosto especial para torturar suas vítimas.\n\nOs achaierai falam o idioma Infernal e pesam cerca de 375 kg.",
+    "combat": "Num combate corporal, os achaierai golpeiam com duas de suas quatro patas e atacam com seu poderoso bico. Eles usam o talento Ataque em Movimento para golpear com velocidade e sair do alcance antes que o inimigo consiga revidar.\n\nAs armas naturais dos achaierai, bem como quaisquer outras que utilizem, são consideradas ordeiras e profanas para ignorar a Redução de Dano.\n\nNuvem Negra (Ext): Três vezes por dia, um achaierai é capaz de expelir uma nuvem sufocante de fumaça tóxica negra. Qualquer criatura (exceto outros achaierai) num raio de 3 metros sofre instantaneamente 2d6 pontos de dano; além disso, deve obter sucesso num teste de resistência de Fortitude (CD 15) ou ficará sob efeito da magia insanidade (16º nível de conjurador), durante 3 horas. A CD para o teste de resistência é baseada em Constituição."
   },
   {
     "id": "aguia-gigante",
