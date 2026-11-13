@@ -69,6 +69,25 @@ class CreatureBondRulesTest {
         val druid = listOf(CharacterClassEntry("Druida", 10))
         assertFalse(CreatureBondRules.animalCompanionOptions(druid).any { it.creature.id == "golfinho" })
         assertTrue(CreatureBondRules.animalCompanionOptions(druid, aquaticCampaign = true).any { it.creature.id == "golfinho" })
+        assertTrue(CreatureBondRules.animalCompanionOptions(druid, aquaticCampaign = true).any { it.creature.id == "elasmossauro" })
+    }
+
+    @Test
+    fun alternativeCompanionListsContinueAtLevelsTenThirteenAndSixteen() {
+        val druid10 = listOf(CharacterClassEntry("Druida", 10))
+        val options10 = CreatureBondRules.animalCompanionOptions(druid10, aquaticCampaign = true)
+        assertTrue(options10.any { it.creature.id == "megaraptor" && it.effectiveLevelPenalty == 9 })
+        assertTrue(options10.any { it.creature.id == "leao-atroz" && it.effectiveLevelPenalty == 9 })
+
+        val druid13 = listOf(CharacterClassEntry("Druida", 13))
+        val options13 = CreatureBondRules.animalCompanionOptions(druid13, aquaticCampaign = true)
+        assertTrue(options13.any { it.creature.id == "elefante" && it.effectiveLevelPenalty == 12 })
+        assertTrue(options13.any { it.creature.id == "polvo-gigante" && it.effectiveLevelPenalty == 12 })
+
+        val druid16 = listOf(CharacterClassEntry("Druida", 16))
+        val options16 = CreatureBondRules.animalCompanionOptions(druid16, aquaticCampaign = true)
+        assertTrue(options16.any { it.creature.id == "tiranossauro" && it.effectiveLevelPenalty == 15 })
+        assertTrue(options16.any { it.creature.id == "tubarao-atroz" && it.effectiveLevelPenalty == 15 })
     }
 
     @Test

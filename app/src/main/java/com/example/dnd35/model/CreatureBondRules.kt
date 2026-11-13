@@ -32,7 +32,7 @@ object CreatureBondRules {
     )
 
     private val companionRequirements = mapOf(
-        // Lista básica
+        // Lista básica terrestre
         "texugo" to CompanionRequirement(1),
         "camelo" to CompanionRequirement(1),
         "rato-atroz" to CompanionRequirement(1),
@@ -48,12 +48,17 @@ object CreatureBondRules {
         "vibora-media" to CompanionRequirement(1),
         "lobo" to CompanionRequirement(1),
 
-        // Lista alternativa de 4º nível: nível efetivo -3
+        // Lista básica aquática
+        "golfinho" to CompanionRequirement(1, aquaticOnly = true),
+        "lula" to CompanionRequirement(1, aquaticOnly = true),
+        "tubarao-medio" to CompanionRequirement(1, aquaticOnly = true),
+        "crocodilo" to CompanionRequirement(4, 3, aquaticOnly = true),
+
+        // Alternativas a partir do 4º nível efetivo: penalidade -3
         "bisao" to CompanionRequirement(4, 3),
         "carcaju" to CompanionRequirement(4, 3),
         "cobra-constritora" to CompanionRequirement(4, 3),
         "vibora-grande" to CompanionRequirement(4, 3),
-        "crocodilo" to CompanionRequirement(4, 3),
         "arminho-atroz" to CompanionRequirement(4, 3),
         "guepardo" to CompanionRequirement(4, 3),
         "javali" to CompanionRequirement(4, 3),
@@ -61,11 +66,10 @@ object CreatureBondRules {
         "lagarto" to CompanionRequirement(4, 3),
         "leopardo" to CompanionRequirement(4, 3),
         "morcego-atroz" to CompanionRequirement(4, 3),
-        "texugo-atroz" to CompanionRequirement(4, 3),
         "tubarao-grande" to CompanionRequirement(4, 3, aquaticOnly = true),
         "urso-negro" to CompanionRequirement(4, 3),
 
-        // Lista alternativa de 7º nível: nível efetivo -6
+        // Alternativas a partir do 7º nível efetivo: penalidade -6
         "carcaju-atroz" to CompanionRequirement(7, 6),
         "vibora-enorme" to CompanionRequirement(7, 6),
         "crocodilo-gigante" to CompanionRequirement(7, 6),
@@ -75,25 +79,35 @@ object CreatureBondRules {
         "rinoceronte" to CompanionRequirement(7, 6),
         "lobo-atroz" to CompanionRequirement(7, 6),
         "leao" to CompanionRequirement(7, 6),
-        "leao-atroz" to CompanionRequirement(7, 6),
+        "elasmossauro" to CompanionRequirement(7, 6, aquaticOnly = true),
         "tigre" to CompanionRequirement(7, 6),
         "urso-marrom" to CompanionRequirement(7, 6),
 
-        // Opções aquáticas condicionadas à campanha/ambiente apropriado
-        "golfinho" to CompanionRequirement(1, aquaticOnly = true),
-        "lula" to CompanionRequirement(1, aquaticOnly = true),
-        "polvo" to CompanionRequirement(1, aquaticOnly = true),
-        "tubarao-medio" to CompanionRequirement(1, aquaticOnly = true),
-        "baleia-orca" to CompanionRequirement(7, 6, aquaticOnly = true),
-        "elasmossauro" to CompanionRequirement(7, 6, aquaticOnly = true),
-        "tubarao-enorme" to CompanionRequirement(7, 6, aquaticOnly = true)
+        // Alternativas a partir do 10º nível efetivo: penalidade -9
+        "baleia-orca" to CompanionRequirement(10, 9, aquaticOnly = true),
+        "leao-atroz" to CompanionRequirement(10, 9),
+        "tubarao-enorme" to CompanionRequirement(10, 9, aquaticOnly = true),
+        "megaraptor" to CompanionRequirement(10, 9),
+        "urso-polar" to CompanionRequirement(10, 9),
+
+        // Alternativas a partir do 13º nível efetivo: penalidade -12
+        "elefante" to CompanionRequirement(13, 12),
+        "urso-atroz" to CompanionRequirement(13, 12),
+        "polvo-gigante" to CompanionRequirement(13, 12, aquaticOnly = true),
+
+        // Alternativas a partir do 16º nível efetivo: penalidade -15
+        "lula-gigante" to CompanionRequirement(16, 15, aquaticOnly = true),
+        "triceratops" to CompanionRequirement(16, 15),
+        "tigre-atroz" to CompanionRequirement(16, 15),
+        "tubarao-atroz" to CompanionRequirement(16, 15, aquaticOnly = true),
+        "tiranossauro" to CompanionRequirement(16, 15)
     )
 
     private val rangerBasicCompanionIds = setOf(
         "cavalo-leve", "cavalo-pesado", "coruja", "falcao", "lobo",
         "ponei", "rato-atroz", "texugo", "vibora-pequena", "vibora-media"
     )
-    private val rangerAquaticCompanionIds = setOf("crocodilo", "golfinho", "lula", "tubarao-medio")
+    private val aquaticBasicCompanionIds = setOf("crocodilo", "golfinho", "lula", "tubarao-medio")
 
     private fun levelOf(classes: List<CharacterClassEntry>, className: String): Int =
         classes.filter { it.className.equals(className, ignoreCase = true) }.sumOf { it.level }
@@ -126,19 +140,21 @@ object CreatureBondRules {
         val effectiveLevel = animalCompanionEffectiveLevel(classes)
         if (effectiveLevel < 1) return emptyList()
         val hasDruidLevels = levelOf(classes, "Druida") > 0
-        val rangerOnly = !hasDruidLevels && levelOf(classes, "Ranger") >= 4
+        val rangerLevel = levelOf(classes, "Ranger")
+        val rangerOnly = !hasDruidLevels && rangerLevel >= 4
+        val hasCompanionFeature = hasDruidLevels || rangerLevel >= 4
 
         return CreatureCatalog.ALL.mapNotNull { creature ->
             if (!creature.animalCompanion) return@mapNotNull null
             var requirement = companionRequirements[creature.id] ?: return@mapNotNull null
             if (rangerOnly && creature.id !in rangerBasicCompanionIds &&
-                !(aquaticCampaign && creature.id in rangerAquaticCompanionIds) &&
+                !(aquaticCampaign && creature.id in aquaticBasicCompanionIds) &&
                 requirement.minimumLevel == 1
             ) return@mapNotNull null
-            if (rangerOnly && aquaticCampaign && creature.id in rangerAquaticCompanionIds) {
+            if (aquaticCampaign && hasCompanionFeature && creature.id in aquaticBasicCompanionIds) {
                 requirement = CompanionRequirement(1, aquaticOnly = true)
             }
-            if (requirement.aquaticOnly && !aquaticCampaign) return@mapNotNull null
+            if (requirement.aquaticOnly && (!aquaticCampaign || !hasCompanionFeature)) return@mapNotNull null
             if (effectiveLevel < requirement.minimumLevel) return@mapNotNull null
             val adjustedLevel = (effectiveLevel - requirement.penalty).coerceAtLeast(1)
             CreatureSelectionOption(
@@ -146,11 +162,10 @@ object CreatureBondRules {
                 requiredEffectiveLevel = requirement.minimumLevel,
                 effectiveLevelPenalty = requirement.penalty,
                 companionEffectiveLevel = adjustedLevel,
-                restriction = when {
-                    requirement.aquaticOnly -> "Campanha/ambiente aquático"
-                    requirement.penalty > 0 -> "Nível efetivo de druida -${requirement.penalty}"
-                    else -> ""
-                }
+                restriction = listOfNotNull(
+                    if (requirement.aquaticOnly) "Campanha/ambiente aquático" else null,
+                    if (requirement.penalty > 0) "Nível efetivo de druida -${requirement.penalty}" else null
+                ).joinToString(" • ")
             )
         }.sortedBy { CreatureCatalog.normalizeForSearch(it.creature.name) }
     }

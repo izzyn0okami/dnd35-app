@@ -507,7 +507,7 @@
     "advancement": "8–16 DV (Grande); 17–21 (Enorme)",
     "levelAdjustment": "—",
     "source": "Livro dos Monstros 3.5",
-    "animalCompanion": false,
+    "animalCompanion": true,
     "summonedCreature": false,
     "familiar": false
   },
@@ -757,7 +757,7 @@
     "advancement": "17–32 DV (Grande); 33–48 (Enorme)",
     "levelAdjustment": "—",
     "source": "Livro dos Monstros 3.5",
-    "animalCompanion": false,
+    "animalCompanion": true,
     "summonedCreature": false,
     "familiar": false
   },
@@ -807,7 +807,7 @@
     "advancement": "19–32 DV (Enorme); 33–54 (Imenso)",
     "levelAdjustment": "—",
     "source": "Livro dos Monstros 3.5",
-    "animalCompanion": false,
+    "animalCompanion": true,
     "summonedCreature": true,
     "familiar": false
   },
@@ -857,7 +857,7 @@
     "advancement": "13–16 DV (Grande); 17–36 (Enorme)",
     "levelAdjustment": "—",
     "source": "Livro dos Monstros 3.5",
-    "animalCompanion": false,
+    "animalCompanion": true,
     "summonedCreature": false,
     "familiar": false
   },
@@ -3613,7 +3613,7 @@
     "advancement": "9–16 DV (Enorme); 17–24 DV (Imenso)",
     "levelAdjustment": "—",
     "source": "Livro dos Monstros 3.5",
-    "animalCompanion": false,
+    "animalCompanion": true,
     "summonedCreature": true,
     "familiar": false
   },
@@ -3663,7 +3663,7 @@
     "advancement": "19–36 DV (Enorme); 37–54 DV (Imenso)",
     "levelAdjustment": "—",
     "source": "Livro dos Monstros 3.5",
-    "animalCompanion": false,
+    "animalCompanion": true,
     "summonedCreature": true,
     "familiar": false
   },
@@ -3713,7 +3713,7 @@
     "advancement": "17–32 DV (Enorme); 33–48 DV (Imenso)",
     "levelAdjustment": "—",
     "source": "Livro dos Monstros 3.5",
-    "animalCompanion": false,
+    "animalCompanion": true,
     "summonedCreature": true,
     "familiar": false
   },
@@ -10113,7 +10113,7 @@
     "advancement": "12–22 DV (Enorme)",
     "levelAdjustment": "—",
     "source": "Livro dos Monstros 3.5",
-    "animalCompanion": false,
+    "animalCompanion": true,
     "summonedCreature": false,
     "familiar": false
   },
@@ -10763,7 +10763,7 @@
     "advancement": "13–18 DV (Enorme); 19–36 DV (Imenso)",
     "levelAdjustment": "—",
     "source": "Livro dos Monstros 3.5",
-    "animalCompanion": false,
+    "animalCompanion": true,
     "summonedCreature": false,
     "familiar": false
   },
@@ -11013,7 +11013,7 @@
     "advancement": "9–12 DV (Grande); 13–24 DV (Enorme)",
     "levelAdjustment": "—",
     "source": "Livro dos Monstros 3.5",
-    "animalCompanion": false,
+    "animalCompanion": true,
     "summonedCreature": false,
     "familiar": false
   },
@@ -11513,7 +11513,7 @@
     "advancement": "9–12 DV (Grande)",
     "levelAdjustment": "—",
     "source": "Livro dos Monstros 3.5",
-    "animalCompanion": false,
+    "animalCompanion": true,
     "summonedCreature": false,
     "familiar": false
   },

@@ -273,3 +273,5 @@ A alteração foi enviada ao PR #367 no commit `6b8a5eb32cf202c1393ad95803500f7e
 - Criado mapeamento explícito de círculos para as listas de Invocar Criaturas e Invocar Aliado da Natureza. Opções de círculos inferiores permanecem disponíveis conforme a descrição das magias.
 
 - Ajustados os testes do catálogo para refletir a lista impressa: Escorpião Colossal não é invocável pelo Livro do Jogador; Escorpião Imenso é a opção válida. A migração 10→11 foi tornada idempotente para suportar bancos de teste e instalações intermediárias que já tenham a coluna.
+
+- Auditoria ampliada da tabela de Companheiros Animais Alternativos: adicionados os patamares de 10º, 13º e 16º nível, com penalidades -9, -12 e -15; opções aquáticas foram limitadas aos ambientes aquáticos. Flags do catálogo foram alinhadas à tabela do Livro do Jogador, incluindo Megaraptor, Baleia Orca, Leão Atroz, Tubarão Enorme, Elefante, Urso Atroz, Polvo Gigante, Lula Gigante, Tricerátops, Tigre Atroz, Tubarão Atroz e Tiranossauro.
