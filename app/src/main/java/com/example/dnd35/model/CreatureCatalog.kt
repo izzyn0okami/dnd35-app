@@ -60,7 +60,9 @@ data class CreatureDefinition(
     val alignment: String,
     val advancement: String,
     val levelAdjustment: String,
-    val source: String
+    val source: String,
+    val description: String = "",
+    val combat: String = ""
 ) {
     /** ND numérico para ordenar e filtrar ("1/3" = 0,333). */
     val challengeRatingValue: Double get() = CreatureCatalog.parseChallengeRating(challengeRating)
@@ -133,6 +135,7 @@ object CreatureCatalog {
             if (!o.has(key) || o.isNull(key)) throw IllegalStateException("$ctx: campo obrigatório ausente: $key")
             return o.getString(key)
         }
+        fun optionalStr(key: String): String = if (!o.has(key) || o.isNull(key)) "" else o.getString(key)
         fun int(key: String): Int {
             if (!o.has(key) || o.isNull(key)) throw IllegalStateException("$ctx: campo obrigatório ausente: $key")
             return o.getInt(key)
@@ -175,7 +178,9 @@ object CreatureCatalog {
             alignment = str("alignment"),
             advancement = str("advancement"),
             levelAdjustment = str("levelAdjustment"),
-            source = str("source")
+            source = str("source"),
+            description = optionalStr("description"),
+            combat = optionalStr("combat")
         )
     }
 }
