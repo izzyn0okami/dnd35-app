@@ -57,3 +57,11 @@ Não reimplementar a listagem, busca, filtros por tipo/tamanho ou os campos mec�
 - O carregador JSON lê esses campos sem exigir que as 229 fichas restantes já os possuam.
 - A interface exibe o texto transcrito quando disponível e mantém o aviso de pendência quando o campo estiver vazio.
 - Próxima criatura: seguir a ordem alfabética do livro e conferir o verbete diretamente no PDF antes de registrar o texto.
+
+
+### Achaierai
+- **Fonte:** Livro dos Monstros brasileiro, página impressa 10 (PDF, página 14: descrição e bloco; página impressa 11/PDF 15: seção Combate).
+- **Descrição:** transcritos os três parágrafos do verbete.
+- **Combate:** transcritos os dois parágrafos táticos e a descrição de Nuvem Negra apresentada sob o título Combate.
+- **Dados mecânicos:** registro existente reaproveitado, sem duplicação.
+- **Imagem:** placeholder vazio mantido; nenhuma imagem foi pesquisada, baixada ou inserida.
