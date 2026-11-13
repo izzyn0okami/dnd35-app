@@ -383,3 +383,8 @@ O catálogo de criaturas passou de 262 para 264 registros com a inclusão dos do
 ### Atualização do bestiário — 2026-11-13
 
 O verbete da **Águia Gigante** (página impressa 11 do Livro dos Monstros brasileiro) recebeu os campos `description` e `combat`. O campo narrativo de Combate também preserva os subtítulos e textos subsequentes do verbete: Evasão, bônus racial de Observar, treinamento, valores de ovos/filhotes e capacidade de carga. O registro mecânico original foi mantido.
+
+
+### Atualização do bestiário — 2026-11-13 (Allip)
+
+O registro existente de **Allip** recebeu `description` e `combat`, conferidos nas páginas impressas 11–12 do Livro dos Monstros brasileiro. O texto de Combate inclui as habilidades Murmúrio, Enlouquecer e Drenar Sabedoria. Nenhum dado mecânico foi duplicado ou alterado.
