@@ -209,3 +209,24 @@ Cada registro do catálogo recebe três flags independentes:
 - Aguardar CI para validar compilação e testes automatizados.
 - Testar no aparelho a abertura/fechamento, botão Voltar do Android, rolagem da lista, filtros, seleção e visualização de detalhes.
 - Não mesclar até a validação manual do usuário.
+
+
+## 2026-11-13 — Identidade visual de cartas e baralho empilhado
+
+### Referências visuais recebidas
+- Primeira imagem: cartas físicas parcialmente sobrepostas, com deslocamento horizontal regular e as bordas das cartas posteriores visíveis.
+- Segunda imagem: hierarquia de carta colecionável com faixa de título, grande área de ilustração, linha de tipo, área de texto/regras e bloco de valores no rodapé.
+
+### Decisões de implementação
+- A coleção do Mestre passa a ser um baralho horizontal com cartas sobrepostas e navegação lateral, em vez de cartões largos empilhados verticalmente.
+- Cada carta adota proporção vertical e moldura própria, com cabeçalho do nome/ND, área de ilustração, linha de tipo, painel de estatísticas e rodapé.
+- A frente prioriza PV, CA, BBA, iniciativa e ataque.
+- O verso organiza os seis atributos, ataques/qualidades especiais e talentos.
+- Toque alterna frente/verso; pressão prolongada abre os detalhes completos; remoção continua vinculada à instância da sessão.
+- O seletor e os detalhes completos mantêm os atalhos de catálogo e a persistência existentes.
+- A área de ilustração continua como placeholder: não foi criada nem presumida uma fonte de imagens para criaturas.
+
+### Validação
+- Aguardar CI da nova revisão.
+- Testar no aparelho o deslocamento horizontal, a sobreposição, o toque para virar, pressão prolongada e remoção de instâncias duplicadas.
+- Não mesclar antes da validação manual.
