@@ -291,3 +291,22 @@ A alteração foi enviada ao PR #367 no commit `6b8a5eb32cf202c1393ad95803500f7e
 - Incluídas no catálogo as duas opções de companheiro animal que existiam no Livro dos Monstros, mas ainda não tinham cartas: Texugo Atroz e Cobra Constritora Gigante. Ambas receberam dados do bloco oficial e tags de companheiro/invocável; foram adicionadas às listas corretas de Invocar Aliado da Natureza, Invocar Criaturas e Companheiro Animal.
 
 - Pendência de cobertura identificada ao confrontar as listas do Livro do Jogador com o Livro dos Monstros: ainda faltam cartas para algumas opções de invocação, incluindo famílias de Elementais (quatro elementos e seis estágios), Xorns, Tojanidas, Salamandras, Gaviões Seta e Unicórnios, entre outras. Essas criaturas não são oferecidas como opções até que suas fichas oficiais sejam cadastradas; não criar placeholders nem inventar estatísticas. Texugo Atroz e Cobra Constritora Gigante já foram adicionados por serem necessários também às listas de Companheiro Animal.
+
+
+## 2026-11-13 — Acabamento visual dos menus de criaturas em deck
+
+### Escopo
+- Mantidas integralmente as regras já implementadas de invocação, familiar e companheiro animal. Esta alteração é exclusivamente de apresentação e navegação.
+- Criado um componente compartilhado de sobreposição integral (CreatureDeckOverlay) e um componente visual de carta (CreatureTradingCard), para manter a mesma identidade entre os diferentes menus de criaturas.
+- Os diálogos de criaturas deixam de usar a janela pequena central de AlertDialog e passam a ocupar a tela, com cabeçalho, ação de fechar e área de cartas rolável.
+- A consulta dos vínculos atuais exibe cada familiar/companheiro em uma carta individual; quando há múltiplos vínculos, as cartas aparecem em sequência no mesmo deck.
+- A seleção de familiares e companheiros exibe cartas selecionáveis, mantendo o controle de opções aquáticas e os avisos de restrição de nível.
+- O seletor de criaturas invocadas exibe cartas com círculo da lista e variante Celestial/Abissal, preservando a seleção e o registro no histórico da magia.
+- O seletor de criaturas do Mestre preserva pesquisa, filtros por tipo/tamanho e o callback de adição à sessão, mas passa a apresentar resultados como cartas em uma tela integral.
+- A área de ilustração é um espaço reservado estilizado; não foi associada arte fictícia nem alterado o catálogo.
+- Nenhum dado mecânico, vínculo salvo, serialização, elegibilidade ou regra de acesso foi alterado.
+
+### Validação pendente
+- Aguardar CI e build Android desta branch.
+- Testar no aparelho: abrir/fechar os quatro menus, rolagem de cartas, seleção, botão Voltar do Android, filtros do bestiário e alternância de opções aquáticas.
+- Confirmar que a seleção continua salvando vínculos e registrando a criatura invocada como antes.
