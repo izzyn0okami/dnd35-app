@@ -62,7 +62,11 @@ data class CreatureDefinition(
     val levelAdjustment: String,
     val source: String,
     val description: String = "",
-    val combat: String = ""
+    val combat: String = "",
+    /** Elegibilidade explícita conforme as listas do Livro do Jogador. */
+    val animalCompanion: Boolean = false,
+    val summonedCreature: Boolean = false,
+    val familiar: Boolean = false
 ) {
     /** ND numérico para ordenar e filtrar ("1/3" = 0,333). */
     val challengeRatingValue: Double get() = CreatureCatalog.parseChallengeRating(challengeRating)
@@ -180,7 +184,10 @@ object CreatureCatalog {
             levelAdjustment = str("levelAdjustment"),
             source = str("source"),
             description = optionalStr("description"),
-            combat = optionalStr("combat")
+            combat = optionalStr("combat"),
+            animalCompanion = o.optBoolean("animalCompanion", false),
+            summonedCreature = o.optBoolean("summonedCreature", false),
+            familiar = o.optBoolean("familiar", false)
         )
     }
 }
