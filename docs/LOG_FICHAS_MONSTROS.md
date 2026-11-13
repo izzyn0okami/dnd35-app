@@ -256,6 +256,7 @@ A alteração foi enviada ao PR #367 no commit `6b8a5eb32cf202c1393ad95803500f7e
 - Listas alternativas de companheiros aplicam requisitos de 4º/7º nível e penalidades efetivas de -3/-6.
 - Opções aquáticas permanecem ocultas por padrão e só aparecem quando a campanha é explicitamente marcada como aquática.
 - Adicionada à ficha uma seção com consulta dos vínculos atuais e seleção filtrada de novas criaturas.
+- Corrigido o teste de migração da base para percorrer a cadeia 9→10→11 e verificar que o novo campo começa vazio.
 
 ### Testes adicionados
 - Progressão multiclasse de familiar e companheiro animal.
