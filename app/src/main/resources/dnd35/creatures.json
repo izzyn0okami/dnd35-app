@@ -46,7 +46,10 @@
     "levelAdjustment": "—",
     "source": "Livro dos Monstros 3.5",
     "description": "Esta criatura hedionda tem um corpo com a forma e a fluidez de uma ameba. Sua superfície tem a cor da carne humana, mas não sua consistência. Incontáveis olhos e bocas repletas de dentes formam-se e desaparecem por toda a criatura, muitas vezes dissolvendo-se em seu corpo assim que surgem.\n\nUm abocanhador matraqueante é uma criatura horrível, aparentemente saída dos pesadelos de um lunático. Embora não seja maligna, está sempre ávida por fluidos corporais e prefere o sangue de criaturas inteligentes.\n\nÀs vezes, a disposição de olhos e bocas no corpo de um abocanhador matraqueante se parece com um rosto, mas com a mesma frequência não há qualquer relação entre eles.\n\nUm abocanhador matraqueante tem cerca de 9 m de comprimento e entre 90 cm e 1,20 m de altura, e pesa em torno de 100 kg.\n\nOs abocanhadores matraqueantes conhecem o idioma Comum, mas raramente dizem qualquer coisa inteligível.",
-    "combat": "Os abocanhadores atacam disparando linhas de carne protoplasmática, cujas pontas têm um ou mais olhos e uma boca capaz de morder seus oponentes. A criatura consegue disparar até 6 destes tentáculos a cada rodada."
+    "combat": "Os abocanhadores atacam disparando linhas de carne protoplasmática, cujas pontas têm um ou mais olhos e uma boca capaz de morder seus oponentes. A criatura consegue disparar até 6 destes tentáculos a cada rodada.",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "achaierai",
@@ -95,7 +98,10 @@
     "levelAdjustment": "—",
     "source": "Livro dos Monstros 3.5",
     "description": "Uma criatura grande se equilibra em quatro patas semelhantes a estacas. Seu corpo é semelhante ao de um pássaro, arredondado e roliço, do tamanho de um pônei pequeno; coberto com penas que variam de cor entre marrom e vermelho. Suas garras enormes e seu bico ameaçador brilham como se fossem feitos de metal polido.\n\nOs achaierai são aves robustas de 4,5 m de altura, incapazes de voar, que habitam o plano de Aqueronte e apenas ocasionalmente são encontradas em outros locais. Eles são maus, inteligentes e predatórios, com um gosto especial para torturar suas vítimas.\n\nOs achaierai falam o idioma Infernal e pesam cerca de 375 kg.",
-    "combat": "Num combate corporal, os achaierai golpeiam com duas de suas quatro patas e atacam com seu poderoso bico. Eles usam o talento Ataque em Movimento para golpear com velocidade e sair do alcance antes que o inimigo consiga revidar.\n\nAs armas naturais dos achaierai, bem como quaisquer outras que utilizem, são consideradas ordeiras e profanas para ignorar a Redução de Dano.\n\nNuvem Negra (Ext): Três vezes por dia, um achaierai é capaz de expelir uma nuvem sufocante de fumaça tóxica negra. Qualquer criatura (exceto outros achaierai) num raio de 3 metros sofre instantaneamente 2d6 pontos de dano; além disso, deve obter sucesso num teste de resistência de Fortitude (CD 15) ou ficará sob efeito da magia insanidade (16º nível de conjurador), durante 3 horas. A CD para o teste de resistência é baseada em Constituição."
+    "combat": "Num combate corporal, os achaierai golpeiam com duas de suas quatro patas e atacam com seu poderoso bico. Eles usam o talento Ataque em Movimento para golpear com velocidade e sair do alcance antes que o inimigo consiga revidar.\n\nAs armas naturais dos achaierai, bem como quaisquer outras que utilizem, são consideradas ordeiras e profanas para ignorar a Redução de Dano.\n\nNuvem Negra (Ext): Três vezes por dia, um achaierai é capaz de expelir uma nuvem sufocante de fumaça tóxica negra. Qualquer criatura (exceto outros achaierai) num raio de 3 metros sofre instantaneamente 2d6 pontos de dano; além disso, deve obter sucesso num teste de resistência de Fortitude (CD 15) ou ficará sob efeito da magia insanidade (16º nível de conjurador), durante 3 horas. A CD para o teste de resistência é baseada em Constituição.",
+    "animalCompanion": false,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "source": "Livro dos Monstros 3.5",
@@ -144,7 +150,10 @@
     "advancement": "9–16 DV (Enorme); 17–24 DV (Imenso)",
     "levelAdjustment": "—",
     "description": "As águas tranquilas e refrescantes de súbito irrompem numa massa de tentáculos sinuosos. Eles estão presos a um peixe primitivo, com cerca de 6 m de comprimento entre a cabeça bulbosa e a cauda em forma de lua crescente. Três frestas oculares, protegidas por protuberâncias ósseas, enfileiram-se verticalmente no alto do crânio, que permanece a poucos centímetros da superfície da água enquanto o monstro se aproxima.\n\nO abolete é um anfíbio aquático repugnante, encontrado principalmente em lagos e rios subterrâneos. Ele despreza os seres da superfície e procura destruí-los a qualquer custo.\n\nO ventre rosado do abolete é caracterizado por quatro orifícios negro-azulados que secretam um muco acinzentado com cheiro de gordura estragada. Ele usa a cauda para se mover na água e os tentáculos para se arrastar em terra firme.\n\nA astúcia dessas criaturas se equipara à sua crueldade, tornando-os predadores muito perigosos. Eles conhecem diversos segredos antigos e terríveis, pois adquirem o conhecimento de seus pais durante o nascimento e assimilam as memórias de todos aqueles que consomem.\n\nOs aboletes falam um idioma próprio, além de Subterrâneo e Aquan.",
-    "combat": "Um abolete ataca chicoteando com seus tentáculos longos e pegajosos, mas prefere lutar à distância usando seus poderes de ilusão.\n\nEscravizar (Sob): Três vezes por dia, um abolete pode tentar escravizar qualquer ser vivo em um raio de 10 metros. A vítima deve obter sucesso num teste de resistência de Vontade (CD 17) ou será afetada por um efeito similar à magia dominar pessoa conjurada por um feiticeiro de 16º nível. Uma criatura escravizada obedecerá aos comandos telepáticos do abolete (mas não lutará em seu lugar) e permanecerá assim até ser alvo da magia remover maldição; é possível realizar um novo teste de resistência a cada 24 horas para libertar-se do controle. O efeito também será dissipado caso o abolete seja morto ou afaste-se 1,5 km ou mais de sua vítima. A CD para o teste de resistência é baseada em Carisma.\n\nPsiquismo (SM): Sem Limite — imagem persistente (CD 18), imagem programada (CD 19), miragem arcana (CD 18), padrão hipnótico (CD 15), parede ilusória (CD 17), projetar imagem (CD 20), véu (CD 19). Nível de conjurador efetivo: 16º. As CDs para os testes de resistência são baseadas em Carisma.\n\nMuco (Ext): O golpe do tentáculo de um abolete pode provocar uma angústia terrível. A vítima atingida deve obter sucesso num teste de resistência de Fortitude (CD 19) ou sua pele se transformará gradualmente numa membrana fina, translúcida e oleosa ao longo dos próximos 1d4+1 minutos. Uma criatura transformada deverá permanecer imersa em água fria e fresca ou sofrerá 1d12 pontos de dano a cada 10 minutos. O muco reduz seu bônus de armadura natural em 1 (nunca inferior a 0). A CD para o teste de resistência é baseada em Constituição. A magia remover doença, conjurada antes que a transformação se complete, devolverá a criatura ao normal. Depois disso, apenas as magias cura completa e cura completa em massa podem reverter a transformação.\n\nNuvem de Visco (Ext): Um abolete submerso é capaz de cercar-se com uma nuvem viscosa de 30 centímetros de espessura. Qualquer criatura que tenha contato ou inale esta substância precisa obter sucesso num teste de resistência de Fortitude (CD 19) ou perderá a capacidade de respirar fora da água. A CD para o teste de resistência é baseada em Constituição."
+    "combat": "Um abolete ataca chicoteando com seus tentáculos longos e pegajosos, mas prefere lutar à distância usando seus poderes de ilusão.\n\nEscravizar (Sob): Três vezes por dia, um abolete pode tentar escravizar qualquer ser vivo em um raio de 10 metros. A vítima deve obter sucesso num teste de resistência de Vontade (CD 17) ou será afetada por um efeito similar à magia dominar pessoa conjurada por um feiticeiro de 16º nível. Uma criatura escravizada obedecerá aos comandos telepáticos do abolete (mas não lutará em seu lugar) e permanecerá assim até ser alvo da magia remover maldição; é possível realizar um novo teste de resistência a cada 24 horas para libertar-se do controle. O efeito também será dissipado caso o abolete seja morto ou afaste-se 1,5 km ou mais de sua vítima. A CD para o teste de resistência é baseada em Carisma.\n\nPsiquismo (SM): Sem Limite — imagem persistente (CD 18), imagem programada (CD 19), miragem arcana (CD 18), padrão hipnótico (CD 15), parede ilusória (CD 17), projetar imagem (CD 20), véu (CD 19). Nível de conjurador efetivo: 16º. As CDs para os testes de resistência são baseadas em Carisma.\n\nMuco (Ext): O golpe do tentáculo de um abolete pode provocar uma angústia terrível. A vítima atingida deve obter sucesso num teste de resistência de Fortitude (CD 19) ou sua pele se transformará gradualmente numa membrana fina, translúcida e oleosa ao longo dos próximos 1d4+1 minutos. Uma criatura transformada deverá permanecer imersa em água fria e fresca ou sofrerá 1d12 pontos de dano a cada 10 minutos. O muco reduz seu bônus de armadura natural em 1 (nunca inferior a 0). A CD para o teste de resistência é baseada em Constituição. A magia remover doença, conjurada antes que a transformação se complete, devolverá a criatura ao normal. Depois disso, apenas as magias cura completa e cura completa em massa podem reverter a transformação.\n\nNuvem de Visco (Ext): Um abolete submerso é capaz de cercar-se com uma nuvem viscosa de 30 centímetros de espessura. Qualquer criatura que tenha contato ou inale esta substância precisa obter sucesso num teste de resistência de Fortitude (CD 19) ou perderá a capacidade de respirar fora da água. A CD para o teste de resistência é baseada em Constituição.",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "source": "Livro dos Monstros 3.5",
@@ -193,7 +202,10 @@
     "advancement": "Conforme a classe de personagem",
     "levelAdjustment": "—",
     "description": "Entre as tumbas e masmorras aquáticas onde vivem, os senhores dos aboletes concentram seus esforços no estudo da magia, com o objetivo de adquirir a supremacia. Seu grande poder lhes assegura um lugar entre os mestres de todas as criaturas subterrâneas. Entretanto, essas criaturas devotadas aos seus estudos arcanos gastam a maior parte de suas longas vidas isoladas.",
-    "combat": "A CD para o teste de resistência do ataque de muco de um abolete mago (CD 21) e de sua nuvem de visco (CD 21) são ajustadas de acordo com seu valor superior de Constituição. A CD para o teste de resistência de sua habilidade escravizar (CD 16) é reduzida pelo seu valor inferior de Carisma, bem como as CDs para os testes de resistência de suas habilidades psíquicas: imagem persistente (CD 17), imagem programada (CD 18), miragem arcana (CD 17), padrão hipnótico (CD 14), parede ilusória (CD 16), projetar imagem (CD 19), véu (CD 18). Nível de conjurador efetivo: 16º.\n\nO abolete mago utiliza diversas magias, como deslocamento, invisibilidade maior e muralha de energia para se proteger enquanto assume o controle de seus inimigos com suas magias e habilidades inatas.\n\nMagias de Mago Preparadas (4/6/5/4/4/3; CD para o teste de resistência 15 + nível da magia): 0 — detectar magia (2), pasmar, resistência; 1º — alarme, armadura arcana, enfeitiçar pessoa, leque cromático, mísseis mágicos (2); 2º — astúcia da raposa, escuridão, força do touro, nublar, ver o invisível; 3º — deslocamento, dissipar magia, relâmpago, voo; 4º — assassino fantasmagórico, invisibilidade maior, pele rochosa, vidência; 5º — imobilizar monstro, muralha de energia, relâmpago potencializado."
+    "combat": "A CD para o teste de resistência do ataque de muco de um abolete mago (CD 21) e de sua nuvem de visco (CD 21) são ajustadas de acordo com seu valor superior de Constituição. A CD para o teste de resistência de sua habilidade escravizar (CD 16) é reduzida pelo seu valor inferior de Carisma, bem como as CDs para os testes de resistência de suas habilidades psíquicas: imagem persistente (CD 17), imagem programada (CD 18), miragem arcana (CD 17), padrão hipnótico (CD 14), parede ilusória (CD 16), projetar imagem (CD 19), véu (CD 18). Nível de conjurador efetivo: 16º.\n\nO abolete mago utiliza diversas magias, como deslocamento, invisibilidade maior e muralha de energia para se proteger enquanto assume o controle de seus inimigos com suas magias e habilidades inatas.\n\nMagias de Mago Preparadas (4/6/5/4/4/3; CD para o teste de resistência 15 + nível da magia): 0 — detectar magia (2), pasmar, resistência; 1º — alarme, armadura arcana, enfeitiçar pessoa, leque cromático, mísseis mágicos (2); 2º — astúcia da raposa, escuridão, força do touro, nublar, ver o invisível; 3º — deslocamento, dissipar magia, relâmpago, voo; 4º — assassino fantasmagórico, invisibilidade maior, pele rochosa, vidência; 5º — imobilizar monstro, muralha de energia, relâmpago potencializado.",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "aguia-gigante",
@@ -242,7 +254,10 @@
     "levelAdjustment": "+2 (parceiro)",
     "source": "Livro dos Monstros 3.5",
     "description": "As águias gigantes são aves de rapina inteligentes e de visão aguçada que algumas vezes se associam com as criaturas boas.\n\nElas atacam as criaturas que parecem ameaçadoras, em especial se estiverem com a intenção de saquear seus ninhos em busca de ovos ou filhotes, que podem ser vendidos por um bom preço em várias regiões civilizadas. É possível treinar as águias jovens e elas são valorizadas como montarias aladas.\n\nUma águia gigante comum tem cerca de 3 metros de altura e a envergadura das asas atinge até 6 metros. Elas lembram suas primas menores em quase todos os aspectos, exceto pelo tamanho, e pesam cerca de 250 kg.\n\nAs águias gigantes falam os idiomas Comum e Auran.",
-    "combat": "Uma águia gigante normalmente ataca de grandes alturas, mergulhando para o solo com uma velocidade incrível. Quando não pode mergulhar, utiliza suas poderosas garras e seu bico afiado para golpear a cabeça ou os olhos do alvo.\n\nUma águia gigante solitária normalmente estará caçando ou patrulhando as proximidades do seu ninho, e quase sempre ignora as criaturas que não pareçam ameaçadoras. Um casal atacará em conjunto, mergulhando sequencialmente para afastar os invasores; elas lutarão até a morte para defender seus ninhos ou filhotes.\n\nEvasão (Ext): Sempre que a águia gigante se tornar alvo de um ataque que permita um teste de resistência de Reflexos para reduzir o dano à metade, ela não sofrerá qualquer dano se obtiver sucesso no teste de resistência.\n\nPerícias: As águias gigantes recebem +4 de bônus racial nos testes de Observar.\n\nComo Treinar uma Águia Gigante\nEmbora sejam inteligentes, as águias gigantes devem ser treinadas antes que possam transportar um cavaleiro em combate. Para ser treinada, a águia gigante deve ter uma atitude amigável em relação ao amestrador (o que pode ser conseguido obtendo sucesso em um teste de Diplomacia). Treinar uma águia gigante amigável exige seis semanas de trabalho e um teste bem-sucedido de Adestrar Animais (CD 25). Para se cavalgar uma águia gigante é necessário utilizar uma sela exótica. A criatura pode voar enquanto transporta um cavaleiro, mas este não pode atacar a menos que obtenha sucesso em um teste de Cavalgar.\n\nOs ovos das águias valem 2.500 PO cada; os filhotes valem 4.000 PO cada. Um treinador profissional cobra 1.000 PO para cuidar ou treinar uma águia gigante.\n\nCapacidade de Carga: A carga leve para uma águia gigante é 150 kg; a carga média varia entre 151–300 kg; a carga pesada entre 301–450 kg."
+    "combat": "Uma águia gigante normalmente ataca de grandes alturas, mergulhando para o solo com uma velocidade incrível. Quando não pode mergulhar, utiliza suas poderosas garras e seu bico afiado para golpear a cabeça ou os olhos do alvo.\n\nUma águia gigante solitária normalmente estará caçando ou patrulhando as proximidades do seu ninho, e quase sempre ignora as criaturas que não pareçam ameaçadoras. Um casal atacará em conjunto, mergulhando sequencialmente para afastar os invasores; elas lutarão até a morte para defender seus ninhos ou filhotes.\n\nEvasão (Ext): Sempre que a águia gigante se tornar alvo de um ataque que permita um teste de resistência de Reflexos para reduzir o dano à metade, ela não sofrerá qualquer dano se obtiver sucesso no teste de resistência.\n\nPerícias: As águias gigantes recebem +4 de bônus racial nos testes de Observar.\n\nComo Treinar uma Águia Gigante\nEmbora sejam inteligentes, as águias gigantes devem ser treinadas antes que possam transportar um cavaleiro em combate. Para ser treinada, a águia gigante deve ter uma atitude amigável em relação ao amestrador (o que pode ser conseguido obtendo sucesso em um teste de Diplomacia). Treinar uma águia gigante amigável exige seis semanas de trabalho e um teste bem-sucedido de Adestrar Animais (CD 25). Para se cavalgar uma águia gigante é necessário utilizar uma sela exótica. A criatura pode voar enquanto transporta um cavaleiro, mas este não pode atacar a menos que obtenha sucesso em um teste de Cavalgar.\n\nOs ovos das águias valem 2.500 PO cada; os filhotes valem 4.000 PO cada. Um treinador profissional cobra 1.000 PO para cuidar ou treinar uma águia gigante.\n\nCapacidade de Carga: A carga leve para uma águia gigante é 150 kg; a carga média varia entre 151–300 kg; a carga pesada entre 301–450 kg.",
+    "animalCompanion": false,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "allip",
@@ -291,7 +306,10 @@
     "levelAdjustment": "—",
     "source": "Livro dos Monstros 3.5",
     "description": "A criatura flutuando à sua frente parece algo saído de um pesadelo. Sua silhueta é vagamente humanoide, mas trata-se de uma forma sem traços físicos, distorcida e carregada de insanidade. Da cintura para baixo, ela se desfaz em vapor, deixando um tênue rastro de névoa por onde passa.\n\nUm allip é o conjunto dos vestígios espectrais de alguém que se suicidou devido à loucura que lhe afligiu em vida. Estas criaturas só desejam vingança e caçam impiedosamente os responsáveis por sua insanidade.\n\nOs allip são incapazes de falar de forma compreensível.",
-    "combat": "Os allip são incapazes de causar qualquer tipo de dano físico, embora talvez não tenham consciência disso. Eles continuam a investir contra seus oponentes, apesar de não lhes causarem nenhum ferimento.\n\nMurmúrio (Sob): O allip resmunga e lamenta consigo mesmo constantemente, criando um efeito hipnótico. Qualquer criatura sã num raio de 18 metros deve obter sucesso num teste de resistência de Vontade (CD 16) ou será afetada por um efeito similar à magia hipnotismo durante 2d4 rodadas. Este é um efeito sônico e uma compulsão de ação mental. Qualquer oponente bem-sucedido no teste de resistência não será afetado pelo murmúrio do mesmo allip durante um dia inteiro. A CD para o teste de resistência é baseada em Carisma.\n\nEnlouquecer (Sob): Qualquer conjurador que tentar atingir um allip com efeitos ou habilidades de detecção de pensamentos, controle mental ou telepatia entrará em contato direto com a mente torturada e ensandecida da criatura, sofrendo 1d4 pontos de dano temporário de Sabedoria.\n\nDrenar Sabedoria (Sob): Um allip causa 1d4 pontos de dano permanente de Sabedoria sempre que atinge um oponente com seu toque incorpóreo. A cada ataque bem-sucedido, ele adquire 5 pontos de vida temporários."
+    "combat": "Os allip são incapazes de causar qualquer tipo de dano físico, embora talvez não tenham consciência disso. Eles continuam a investir contra seus oponentes, apesar de não lhes causarem nenhum ferimento.\n\nMurmúrio (Sob): O allip resmunga e lamenta consigo mesmo constantemente, criando um efeito hipnótico. Qualquer criatura sã num raio de 18 metros deve obter sucesso num teste de resistência de Vontade (CD 16) ou será afetada por um efeito similar à magia hipnotismo durante 2d4 rodadas. Este é um efeito sônico e uma compulsão de ação mental. Qualquer oponente bem-sucedido no teste de resistência não será afetado pelo murmúrio do mesmo allip durante um dia inteiro. A CD para o teste de resistência é baseada em Carisma.\n\nEnlouquecer (Sob): Qualquer conjurador que tentar atingir um allip com efeitos ou habilidades de detecção de pensamentos, controle mental ou telepatia entrará em contato direto com a mente torturada e ensandecida da criatura, sofrendo 1d4 pontos de dano temporário de Sabedoria.\n\nDrenar Sabedoria (Sob): Um allip causa 1d4 pontos de dano permanente de Sabedoria sempre que atinge um oponente com seu toque incorpóreo. A cada ataque bem-sucedido, ele adquire 5 pontos de vida temporários.",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "arminho-atroz",
@@ -338,7 +356,10 @@
     "alignment": "Sempre Neutro",
     "advancement": "4–6 DV (Médio); 7–9 (Grande)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "carcaju-atroz",
@@ -385,7 +406,10 @@
     "alignment": "Sempre Neutro",
     "advancement": "6–15 DV (Grande)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": true,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "gorila-atroz",
@@ -432,7 +456,10 @@
     "alignment": "Sempre Neutro",
     "advancement": "6–15 DV (Grande)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": true,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "javali-atroz",
@@ -479,7 +506,10 @@
     "alignment": "Sempre Neutro",
     "advancement": "8–16 DV (Grande); 17–21 (Enorme)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "leao-atroz",
@@ -526,7 +556,10 @@
     "alignment": "Sempre Neutro",
     "advancement": "9–16 DV (Grande); 17–24 (Enorme)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": true,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "lobo-atroz",
@@ -573,7 +606,10 @@
     "alignment": "Sempre Neutro",
     "advancement": "7–18 DV (Grande)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": true,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "morcego-atroz",
@@ -620,7 +656,10 @@
     "alignment": "Sempre Neutro",
     "advancement": "5–12 DV (Grande)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": true,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "rato-atroz",
@@ -667,7 +706,10 @@
     "alignment": "Sempre Neutro",
     "advancement": "2–3 DV (Pequeno); 4–6 (Médio)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": true,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "tigre-atroz",
@@ -714,7 +756,10 @@
     "alignment": "Sempre Neutro",
     "advancement": "17–32 DV (Grande); 33–48 (Enorme)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "tubarao-atroz",
@@ -761,7 +806,10 @@
     "alignment": "Sempre Neutro",
     "advancement": "19–32 DV (Enorme); 33–54 (Imenso)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "urso-atroz",
@@ -808,7 +856,10 @@
     "alignment": "Sempre Neutro",
     "advancement": "13–16 DV (Grande); 17–36 (Enorme)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "anjo-deva-astral",
@@ -857,7 +908,10 @@
     "levelAdjustment": "+8",
     "source": "Livro dos Monstros 3.5",
     "description": "Uma bela criatura humanoide, muito alta, com longas asas emplumadas e um corpo ágil e gracioso, brilha com um poder interior que torna difícil observá-la diretamente.\n\nOs devas astrais protegem outros seres menores de tendência boa e ajudam sempre que possível. Eles são os defensores especiais dos viajantes planares, bem como das criaturas poderosas que assumiram causas benéficas.\n\nUm deva astral tem cerca de 2,25 m de altura e pesa cerca de 125 kg.",
-    "combat": "Os devas astrais não temem de forma alguma o combate corporal. Eles são adversários dedicados quando é necessário enfrentar as forças do mal com suas fabulosas maças pesadas do rompimento +3.\n\nAs armas naturais de um deva astral, bem como quaisquer outras que utilize, são consideradas sagradas para ignorar a Redução de Dano.\n\nHabilidades Similares a Magia: Sem Limite — ajuda, aura sagrada (CD 23), chama contínua, destruição sagrada (CD 19), detectar o mal, discernir mentiras (CD 19), dissipar magia, dissipar o mal (CD 20), invisibilidade (pessoal), metamorfosear (pessoal), palavra sagrada (CD 22), remover doença (CD 18), remover maldição (CD 18), remover medo (CD 16), viagem planar (CD 22); 7/dia — curar ferimentos leves (CD 16), ver o invisível; 1/dia — barreira de lâminas (CD 21), cura completa (CD 21). Nível de Conjurador: 12º. As CDs para os testes de resistência são baseadas em Carisma.\n\nAtordoamento (Sob): Caso um deva astral atinja um oponente duas vezes na mesma rodada com sua maça, a vítima deverá obter sucesso num teste de resistência de Fortitude (CD 22) ou ficará atordoada durante 1d6 rodadas. A CD para o teste de resistência é baseada em Força.\n\nEsquiva Sobrenatural (Ext): Os devas astrais conservam seu bônus de Destreza na CA mesmo quando são surpreendidos e não podem ser flanqueados, exceto por ladinos de 16º nível ou superior. Ele pode flanquear personagens com esta habilidade como se fosse um ladino de 12º nível."
+    "combat": "Os devas astrais não temem de forma alguma o combate corporal. Eles são adversários dedicados quando é necessário enfrentar as forças do mal com suas fabulosas maças pesadas do rompimento +3.\n\nAs armas naturais de um deva astral, bem como quaisquer outras que utilize, são consideradas sagradas para ignorar a Redução de Dano.\n\nHabilidades Similares a Magia: Sem Limite — ajuda, aura sagrada (CD 23), chama contínua, destruição sagrada (CD 19), detectar o mal, discernir mentiras (CD 19), dissipar magia, dissipar o mal (CD 20), invisibilidade (pessoal), metamorfosear (pessoal), palavra sagrada (CD 22), remover doença (CD 18), remover maldição (CD 18), remover medo (CD 16), viagem planar (CD 22); 7/dia — curar ferimentos leves (CD 16), ver o invisível; 1/dia — barreira de lâminas (CD 21), cura completa (CD 21). Nível de Conjurador: 12º. As CDs para os testes de resistência são baseadas em Carisma.\n\nAtordoamento (Sob): Caso um deva astral atinja um oponente duas vezes na mesma rodada com sua maça, a vítima deverá obter sucesso num teste de resistência de Fortitude (CD 22) ou ficará atordoada durante 1d6 rodadas. A CD para o teste de resistência é baseada em Força.\n\nEsquiva Sobrenatural (Ext): Os devas astrais conservam seu bônus de Destreza na CA mesmo quando são surpreendidos e não podem ser flanqueados, exceto por ladinos de 16º nível ou superior. Ele pode flanquear personagens com esta habilidade como se fosse um ladino de 12º nível.",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "anjo-planetario",
@@ -906,7 +960,10 @@
     "levelAdjustment": "—",
     "source": "Livro dos Monstros 3.5",
     "description": "A criatura assemelha-se a um humano extremamente alto e musculoso, calvo, com pele esmeralda e asas brancas emplumadas.\n\nOs planetários são os magníficos generais dos exércitos celestiais. Eles também auxiliam mortais poderosos em cruzadas pelo bem, principalmente aquelas que envolvem batalhas contra seres das profundezas. Um planetário tem cerca de 2,7 m de altura e pesa em torno de 250 kg.",
-    "combat": "A despeito de seu vasto arsenal de poderes mágicos, os planetários adoram se engajar em combates corporais, brandindo suas espadas largas +3. Em especial, estes celestiais apreciam confrontar as criaturas abissais.\n\nAs armas naturais de um planetário, bem como quaisquer outras que utilize, são consideradas sagradas para ignorar a Redução de Dano.\n\nRegeneração: Um planetário sofre dano normal de armas de tendência maligna e magias e efeitos com o descritor [Mal].\n\nHabilidades Similares a Magia: Sem Limite — chama contínua, destruição sagrada (CD 20), dissipar magia, falar com os mortos (CD 19), invisibilidade (pessoal), remover doença (CD 19), remover maldição (CD 19), remover medo (CD 17), remover maldição (CD 18); 3/dia — barreira de lâminas (CD 22), coluna de chamas (CD 21), metamorfosear (pessoal), ondas da fadiga, palavra de poder, atordoar, reviver os mortos; 1/dia — enfeitiçar monstros em massa (CD 24), ondas da exaustão, restauração aprimorada (CD 23), terremoto (CD 24). Nível de Conjurador: 17º. As CDs para os testes de resistência são baseadas em Carisma.\n\nAs seguintes habilidades estarão sempre ativas sobre o planetário, como as magias homônimas (Nível de Conjurador: 17º): detectar armadilhas, detectar o mal, discernir mentiras (CD 20), ver o invisível, visão da verdade. Elas podem ser dissipadas, mas o planetário será capaz de reativá-las no turno subsequente como uma ação livre.\n\nMagias: Os planetários são capazes de conjurar magias divinas como clérigos de 17º nível, com acesso a dois entre os seguintes domínios: Ar, Destruição, Bem, Ordem e Guerra (mais quaisquer outros provenientes de sua divindade). As CDs para os testes de resistência são baseadas em Sabedoria.\n\nMagias de Clérigo Preparadas (6/8/8/7/7/6/6/4/3/2; CD para o teste de resistência: 16 + nível da magia): 0 — criar água, detectar magia, orientação, resistência (2), virtude; 1º — auxílio divino (2), bênção (2), causar medo, escudo da fé, escudo entrópico, infligir ferimentos leves*; 2º — ajuda*, consagrar, esplendor da águia, força do touro (2), imobilizar pessoa, tendência em arma, vigor do urso; 3º — invocar criaturas III, luz do dia, muralha de vento, oração (2), praga*, purgar invisibilidade; 4º — expulsão*, infligir ferimentos críticos*, invocar criaturas IV, neutralizar venenos (2), proteção contra a morte; 5º — cancelar encantamento, círculo da destruição*, dissipar o mal, força dos justos, marca da justiça, viagem planar; 6º — banimento, banquete de heróis, cura completa, curar ferimentos moderados em massa, dissipar magia maior, doença plena*; 7º — ditado, desintegrar*, palavra sagrada, regeneração; 8º — aura sagrada*, curar ferimentos graves em massa, escudo da ordem; 9º — implosão, invocar criaturas IX (bem)*. * Magias de domínio. Domínios: Destruição e Bem."
+    "combat": "A despeito de seu vasto arsenal de poderes mágicos, os planetários adoram se engajar em combates corporais, brandindo suas espadas largas +3. Em especial, estes celestiais apreciam confrontar as criaturas abissais.\n\nAs armas naturais de um planetário, bem como quaisquer outras que utilize, são consideradas sagradas para ignorar a Redução de Dano.\n\nRegeneração: Um planetário sofre dano normal de armas de tendência maligna e magias e efeitos com o descritor [Mal].\n\nHabilidades Similares a Magia: Sem Limite — chama contínua, destruição sagrada (CD 20), dissipar magia, falar com os mortos (CD 19), invisibilidade (pessoal), remover doença (CD 19), remover maldição (CD 19), remover medo (CD 17), remover maldição (CD 18); 3/dia — barreira de lâminas (CD 22), coluna de chamas (CD 21), metamorfosear (pessoal), ondas da fadiga, palavra de poder, atordoar, reviver os mortos; 1/dia — enfeitiçar monstros em massa (CD 24), ondas da exaustão, restauração aprimorada (CD 23), terremoto (CD 24). Nível de Conjurador: 17º. As CDs para os testes de resistência são baseadas em Carisma.\n\nAs seguintes habilidades estarão sempre ativas sobre o planetário, como as magias homônimas (Nível de Conjurador: 17º): detectar armadilhas, detectar o mal, discernir mentiras (CD 20), ver o invisível, visão da verdade. Elas podem ser dissipadas, mas o planetário será capaz de reativá-las no turno subsequente como uma ação livre.\n\nMagias: Os planetários são capazes de conjurar magias divinas como clérigos de 17º nível, com acesso a dois entre os seguintes domínios: Ar, Destruição, Bem, Ordem e Guerra (mais quaisquer outros provenientes de sua divindade). As CDs para os testes de resistência são baseadas em Sabedoria.\n\nMagias de Clérigo Preparadas (6/8/8/7/7/6/6/4/3/2; CD para o teste de resistência: 16 + nível da magia): 0 — criar água, detectar magia, orientação, resistência (2), virtude; 1º — auxílio divino (2), bênção (2), causar medo, escudo da fé, escudo entrópico, infligir ferimentos leves*; 2º — ajuda*, consagrar, esplendor da águia, força do touro (2), imobilizar pessoa, tendência em arma, vigor do urso; 3º — invocar criaturas III, luz do dia, muralha de vento, oração (2), praga*, purgar invisibilidade; 4º — expulsão*, infligir ferimentos críticos*, invocar criaturas IV, neutralizar venenos (2), proteção contra a morte; 5º — cancelar encantamento, círculo da destruição*, dissipar o mal, força dos justos, marca da justiça, viagem planar; 6º — banimento, banquete de heróis, cura completa, curar ferimentos moderados em massa, dissipar magia maior, doença plena*; 7º — ditado, desintegrar*, palavra sagrada, regeneração; 8º — aura sagrada*, curar ferimentos graves em massa, escudo da ordem; 9º — implosão, invocar criaturas IX (bem)*. * Magias de domínio. Domínios: Destruição e Bem.",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "anjo-solar",
@@ -955,7 +1012,10 @@
     "levelAdjustment": "—",
     "source": "Livro dos Monstros 3.5",
     "description": "A criatura assemelha-se a um humano gigantesco, de constituição poderosa, com olhos brilhantes cor de topázio, pele prateada (ou dourada) e asas trançadas luminosas.\n\nOs solares são os anjos mais poderosos entre sua espécie e geralmente atuam como os braços direitos de alguma divindade ou como campeões de cruzadas cósmicas com objetivos benéficos maiores (como eliminar um tipo específico de obstáculo ou maldade). A voz de um solar é profunda e imponente. A criatura tem cerca de 2,7 m de altura e pesa cerca de 250 kg.",
-    "combat": "Os solares são poderosos campeões do bem. Apenas os abissais mais poderosos podem ser comparados a estas criaturas. Ainda mais temíveis que suas espadas largas dançarinas +5, seus arcos longos compostos +2 são capazes de criar qualquer tipo de flecha assassina quando são retesados.\n\nAs armas naturais de um solar, bem como quaisquer outras que utilize, são consideradas sagradas para ignorar a Redução de Dano.\n\nRegeneração: Um solar sofre dano normal de armas épicas e profanas e de magias e efeitos com o descritor [Mal].\n\nHabilidades Similares a Magia: Sem Limite — ajuda, âncora dimensional, animar objetos, aprisionamento (CD 26), chama contínua, comunhão, destruição sagrada (CD 21), dissipar magia maior, falar com os mortos (CD 20), invisibilidade (pessoal), invocar criaturas VII, metamorfosear (pessoal), ondas da fadiga, palavra de poder, atordoar, remover doença (CD 20), remover maldição (CD 20), remover medo (CD 18), resistência a energia, remover maldição; 3/dia — barreira de lâminas (CD 23), cura completa (CD 23), enfeitiçar monstros em massa (CD 25), ondas da exaustão, permanência, ressurreição, terremoto (CD 25); 1/dia — desejo, palavra de poder, cegar, palavra de poder, matar, rajada prismática (CD 24), restauração maior (CD 24). Nível de Conjurador: 20º. As CDs dos testes de resistência são baseadas em Carisma.\n\nAs seguintes habilidades estarão sempre ativas sobre o solar, como as magias homônimas (Nível de Conjurador: 20º): detectar armadilhas, detectar o mal, discernir mentiras (CD 21), ver o invisível, visão da verdade. Elas podem ser dissipadas, mas o solar será capaz de reativá-las no turno subsequente como uma ação livre.\n\nMagias: Os solares são capazes de conjurar magias divinas como clérigos de 20º nível, com acesso a dois entre os seguintes domínios: Ar, Destruição, Bem, Ordem e Guerra (mais quaisquer outros provenientes de sua divindade). As CDs para os testes de resistência são baseadas em Sabedoria.\n\nMagias de Clérigo Preparadas (6/8/8/8/7/7/6/6/5/5; CD para o teste de resistência 17 + nível da magia): 0 — criar água, detectar magia, orientação (2), resistência (2); 1º — auxílio divino (2), bênção (2), causar medo, escudo da fé, escudo entrópico, névoa obscurescente*; 2º — arma espiritual*, consagrar, esplendor da águia, força do touro (2), tendência em arma, vigor do urso (2); 3º — círculo mágico contra o mal, luz do dia, muralha de vento, oração (2), proteção contra energia, purgar invisibilidade, roupa encantada*; 4º — expulsão (2), neutralizar venenos (2), poder divino*, proteção contra a morte (2); 5º — cancelar encantamento, controlar os ventos*, dissipar o mal, força dos justos (2), símbolo da dor, viagem planar; 6º — banimento, banquete de heróis, corrente de relâmpagos*, curar ferimentos moderados em massa, destruir mortos-vivos, palavra de recordação; 7º — controlar o clima*, destruição, ditado, palavra sagrada, passeio etéreo, regeneração; 8º — aura sagrada, ciclone*, curar ferimentos graves em massa (2), tempestade de fogo; 9º — cura completa em massa, forma etérea, grupo de elementais (ar)*, milagre, tempestade da vingança. * Magias de domínio. Domínios: Ar e Guerra."
+    "combat": "Os solares são poderosos campeões do bem. Apenas os abissais mais poderosos podem ser comparados a estas criaturas. Ainda mais temíveis que suas espadas largas dançarinas +5, seus arcos longos compostos +2 são capazes de criar qualquer tipo de flecha assassina quando são retesados.\n\nAs armas naturais de um solar, bem como quaisquer outras que utilize, são consideradas sagradas para ignorar a Redução de Dano.\n\nRegeneração: Um solar sofre dano normal de armas épicas e profanas e de magias e efeitos com o descritor [Mal].\n\nHabilidades Similares a Magia: Sem Limite — ajuda, âncora dimensional, animar objetos, aprisionamento (CD 26), chama contínua, comunhão, destruição sagrada (CD 21), dissipar magia maior, falar com os mortos (CD 20), invisibilidade (pessoal), invocar criaturas VII, metamorfosear (pessoal), ondas da fadiga, palavra de poder, atordoar, remover doença (CD 20), remover maldição (CD 20), remover medo (CD 18), resistência a energia, remover maldição; 3/dia — barreira de lâminas (CD 23), cura completa (CD 23), enfeitiçar monstros em massa (CD 25), ondas da exaustão, permanência, ressurreição, terremoto (CD 25); 1/dia — desejo, palavra de poder, cegar, palavra de poder, matar, rajada prismática (CD 24), restauração maior (CD 24). Nível de Conjurador: 20º. As CDs dos testes de resistência são baseadas em Carisma.\n\nAs seguintes habilidades estarão sempre ativas sobre o solar, como as magias homônimas (Nível de Conjurador: 20º): detectar armadilhas, detectar o mal, discernir mentiras (CD 21), ver o invisível, visão da verdade. Elas podem ser dissipadas, mas o solar será capaz de reativá-las no turno subsequente como uma ação livre.\n\nMagias: Os solares são capazes de conjurar magias divinas como clérigos de 20º nível, com acesso a dois entre os seguintes domínios: Ar, Destruição, Bem, Ordem e Guerra (mais quaisquer outros provenientes de sua divindade). As CDs para os testes de resistência são baseadas em Sabedoria.\n\nMagias de Clérigo Preparadas (6/8/8/8/7/7/6/6/5/5; CD para o teste de resistência 17 + nível da magia): 0 — criar água, detectar magia, orientação (2), resistência (2); 1º — auxílio divino (2), bênção (2), causar medo, escudo da fé, escudo entrópico, névoa obscurescente*; 2º — arma espiritual*, consagrar, esplendor da águia, força do touro (2), tendência em arma, vigor do urso (2); 3º — círculo mágico contra o mal, luz do dia, muralha de vento, oração (2), proteção contra energia, purgar invisibilidade, roupa encantada*; 4º — expulsão (2), neutralizar venenos (2), poder divino*, proteção contra a morte (2); 5º — cancelar encantamento, controlar os ventos*, dissipar o mal, força dos justos (2), símbolo da dor, viagem planar; 6º — banimento, banquete de heróis, corrente de relâmpagos*, curar ferimentos moderados em massa, destruir mortos-vivos, palavra de recordação; 7º — controlar o clima*, destruição, ditado, palavra sagrada, passeio etéreo, regeneração; 8º — aura sagrada, ciclone*, curar ferimentos graves em massa (2), tempestade de fogo; 9º — cura completa em massa, forma etérea, grupo de elementais (ar)*, milagre, tempestade da vingança. * Magias de domínio. Domínios: Ar e Guerra.",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "aranea",
@@ -1002,7 +1062,10 @@
     "alignment": "Geralmente Neutro",
     "advancement": "Conforme a classe de personagem",
     "levelAdjustment": "+4",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "aranha-interplanar",
@@ -1049,7 +1112,10 @@
     "alignment": "Sempre Neutro",
     "advancement": "6–8 DV (Grande); 9–15 (Enorme)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "arbusto-errante",
@@ -1096,7 +1162,10 @@
     "alignment": "Geralmente Neutro",
     "advancement": "9–12 DV (Grande); 13–24 DV (Enorme)",
     "levelAdjustment": "+6",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "arconte-luminar",
@@ -1143,7 +1212,10 @@
     "alignment": "Sempre Leal e Bom",
     "advancement": "2–4 DV (Pequeno)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "arconte-mensageiro",
@@ -1190,7 +1262,10 @@
     "alignment": "Sempre Leal e Bom",
     "advancement": "13–18 DV (Médio); 19–36 DV (Grande)",
     "levelAdjustment": "+8",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "azer",
@@ -1237,7 +1312,10 @@
     "alignment": "Sempre Leal e Neutro",
     "advancement": "Conforme a classe de personagem",
     "levelAdjustment": "+4",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "beholder",
@@ -1284,7 +1362,10 @@
     "alignment": "Geralmente Leal e Mau",
     "advancement": "12–16 DV (Grande); 17–33 DV (Enorme)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "belker",
@@ -1331,7 +1412,10 @@
     "alignment": "Geralmente Neutro e Mau",
     "advancement": "8–10 DV (Grande); 11–21 DV (Enorme)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "anis",
@@ -1378,7 +1462,10 @@
     "alignment": "Geralmente Caótico e Mau",
     "advancement": "Conforme a classe do personagem",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "bruxa-verde",
@@ -1425,7 +1512,10 @@
     "alignment": "Geralmente Caótico e Mau",
     "advancement": "Conforme a classe do personagem",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "bruxa-do-mar",
@@ -1472,7 +1562,10 @@
     "alignment": "Geralmente Caótico e Mau",
     "advancement": "Conforme a classe do personagem",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "bugbear",
@@ -1519,7 +1612,10 @@
     "alignment": "Geralmente Caótico e Mau",
     "advancement": "Conforme a classe de personagem",
     "levelAdjustment": "+1",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "bulette",
@@ -1566,7 +1662,10 @@
     "alignment": "Sempre Neutro",
     "advancement": "10–16 DV (Enorme); 17–27 DV (Imenso)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "cacador-invisivel",
@@ -1613,7 +1712,10 @@
     "alignment": "Geralmente Neutro",
     "advancement": "9–12 DV (Grande); 13—24 DV (Enorme)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "cao-infernal",
@@ -1660,7 +1762,10 @@
     "alignment": "Sempre Leal e Mau",
     "advancement": "5–8 DV (Médio); 9–12 DV (Grande)",
     "levelAdjustment": "+3 (parceiro)",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "cao-de-guerra-nessian",
@@ -1707,7 +1812,10 @@
     "alignment": "Sempre Leal e Mau",
     "advancement": "13–17 DV (Grande); 18–24 DV (Enorme)",
     "levelAdjustment": "+4 (parceiro)",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "cao-teleportador",
@@ -1754,7 +1862,10 @@
     "alignment": "Geralmente Leal e Bom",
     "advancement": "5–7 DV (Médio); 8–12 DV (Grande)",
     "levelAdjustment": "+2 (parceiro)",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "cao-yeth",
@@ -1801,7 +1912,10 @@
     "alignment": "Sempre Neutro e Mau",
     "advancement": "4–6 DV (Médio); 7–9 DV (Grande)",
     "levelAdjustment": "+3 (parceiro)",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "chuul",
@@ -1848,7 +1962,10 @@
     "alignment": "Geralmente Caótico e Mau",
     "advancement": "12–16 DV (Grande); 17–33 DV (Enorme)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "cocatriz",
@@ -1895,7 +2012,10 @@
     "alignment": "Sempre Neutro",
     "advancement": "6–8 DV (Pequeno); 9–15 DV (Médio)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "constritor",
@@ -1942,7 +2062,10 @@
     "alignment": "Geralmente Caótico e Mau",
     "advancement": "4–6 DV (Pequeno); 7–12 DV (Médio)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "coruja-gigante",
@@ -1989,7 +2112,10 @@
     "alignment": "Geralmente Neutro e Bom",
     "advancement": "5–S DV (Grande); 9–12 DV (Enorme)",
     "levelAdjustment": "+2 (parceiro)",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "couatl",
@@ -2036,7 +2162,10 @@
     "alignment": "Sempre Leal e Bom",
     "advancement": "10–13 DV (Grande); 14–27 DV (Enorme)",
     "levelAdjustment": "+7",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "cria-vampirica",
@@ -2083,7 +2212,10 @@
     "alignment": "Sempre Mau (qualquer)",
     "advancement": "—",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "rato-atroz-abissal",
@@ -2130,7 +2262,10 @@
     "alignment": "Sempre Mau (qualquer)",
     "advancement": "2–3 DV (Pequeno); 4–6 DV (Médio)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "leao-celestial",
@@ -2177,7 +2312,10 @@
     "alignment": "Sempre Bom (qualquer)",
     "advancement": "6–8 DV (Grande)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "babau",
@@ -2224,7 +2362,10 @@
     "alignment": "Sempre Caótico e Mau",
     "advancement": "8–14 DV (Cirande); 15–21 DV (Enorme)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "balor",
@@ -2271,7 +2412,10 @@
     "alignment": "Sempre Caótico e Mau",
     "advancement": "21–30 DV (Grande); 31–60 DV (Enorme)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "bebilith",
@@ -2318,7 +2462,10 @@
     "alignment": "Sempre Caótico e Mau",
     "advancement": "13–18 DV (Enorme); 19–36 DV (Imenso)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "dretch",
@@ -2365,7 +2512,10 @@
     "alignment": "Sempre Caótico e Mau",
     "advancement": "3–6 DV (Pequeno)",
     "levelAdjustment": "+2",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "glabrezu",
@@ -2412,7 +2562,10 @@
     "alignment": "Sempre Caótico e Mau",
     "advancement": "13–18 DV (Enorme); 19–36 DV (Imenso)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "hezrou",
@@ -2459,7 +2612,10 @@
     "alignment": "Sempre Caótico e Mau",
     "advancement": "11–15 DV (Grande); 16–30 DV (Enorme)",
     "levelAdjustment": "+9",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "marilith",
@@ -2506,7 +2662,10 @@
     "alignment": "Sempre Caótico e Mau",
     "advancement": "17–20 DV (Grande); 21–48 DV (Enorme)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "nalfeshnee",
@@ -2553,7 +2712,10 @@
     "alignment": "Sempre Caótico e Mau",
     "advancement": "15–20 DV (Enorme); 21–42 DV (Imenso)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "quasit",
@@ -2600,7 +2762,10 @@
     "alignment": "Sempre Caótico e Mau",
     "advancement": "4–6 DV (Miúdo)",
     "levelAdjustment": "— (Familiar Aprimorado)",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "vrock",
@@ -2647,7 +2812,10 @@
     "alignment": "Sempre Caótico e Mau",
     "advancement": "11–14 DV (Grande); 15–30 DV (Enorme)",
     "levelAdjustment": "+8",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "derro",
@@ -2694,7 +2862,10 @@
     "alignment": "Geralmente Caótico e Mau",
     "advancement": "Conforme a classe de personagem",
     "levelAdjustment": "— (+2 se for são)",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "destrachan",
@@ -2741,7 +2912,10 @@
     "alignment": "Geralmente Neutro e Mau",
     "advancement": "9–16 DV (Grande); 17–24 DV (Enorme)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "devorador-de-aranhas",
@@ -2788,7 +2962,10 @@
     "alignment": "Sempre Neutro",
     "advancement": "5–12 DV (Enorme)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "diabo-barbado-barbazu",
@@ -2835,7 +3012,10 @@
     "alignment": "Sempre Leal e Mau",
     "advancement": "7–9 DV (Médio); 10–13 DV (Grande)",
     "levelAdjustment": "+6",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "diabo-das-correntes-kyton",
@@ -2882,7 +3062,10 @@
     "alignment": "Sempre Leal e Mau",
     "advancement": "9–16 DV (Médio)",
     "levelAdjustment": "+6",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "diabo-farpado-hamatula",
@@ -2929,7 +3112,10 @@
     "alignment": "Sempre Leal e Mau",
     "advancement": "13–24 DV (Médio); 25–36 DV (Grande)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "diabo-dos-ossos-osyluth",
@@ -2976,7 +3162,10 @@
     "alignment": "Sempre Leal e Mau",
     "advancement": "11–20 DV (Grande); 21–30 DV (Enorme)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "diabrete",
@@ -3023,7 +3212,10 @@
     "alignment": "",
     "advancement": "4–6 DV (Miúdo)",
     "levelAdjustment": "— (Familiar Aprimorado)",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "erinyes",
@@ -3070,7 +3262,10 @@
     "alignment": "Sempre Leal e Mau",
     "advancement": "10–18 DV (Médio)",
     "levelAdjustment": "+7",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "gato-infernal-bezekira",
@@ -3117,7 +3312,10 @@
     "alignment": "Sempre Leal e Mau",
     "advancement": "9–10 DV (Grande); 11–24 DV (Enorme)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "lorde-das-profundezas",
@@ -3164,7 +3362,10 @@
     "alignment": "Sempre Leal e Mau",
     "advancement": "19–36 DV (Grande); 37–54 DV (Enorme)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "digestor",
@@ -3211,7 +3412,10 @@
     "alignment": "Sempre Neutro",
     "advancement": "9–12 DV (Médio); 13–24 DV (Grande)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "dilacerador-cinzento",
@@ -3258,7 +3462,10 @@
     "alignment": "Geralmente Neutro",
     "advancement": "11–15 DV (Grande); 16–30 DV (Enorme)",
     "levelAdjustment": "+5 (parceiro)",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "dinonico",
@@ -3305,7 +3512,10 @@
     "alignment": "Sempre Neutro",
     "advancement": "5–8 DV (Grande)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": true,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "elasmossauro",
@@ -3352,7 +3562,10 @@
     "alignment": "Sempre Neutro",
     "advancement": "11–20 DV (Enorme); 21–30 DV (Imenso)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": true,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "megaraptor",
@@ -3399,7 +3612,10 @@
     "alignment": "Sempre Neutro",
     "advancement": "9–16 DV (Enorme); 17–24 DV (Imenso)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "tiranossauro",
@@ -3446,7 +3662,10 @@
     "alignment": "Sempre Neutro",
     "advancement": "19–36 DV (Enorme); 37–54 DV (Imenso)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "triceratops",
@@ -3493,7 +3712,10 @@
     "alignment": "Sempre Neutro",
     "advancement": "17–32 DV (Enorme); 33–48 DV (Imenso)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "doppelganger",
@@ -3540,7 +3762,10 @@
     "alignment": "Geralmente Neutro",
     "advancement": "Conforme a classe de personagem",
     "levelAdjustment": "+4",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "dragonado",
@@ -3587,7 +3812,10 @@
     "alignment": "Geralmente Neutro",
     "advancement": "10–12 DV (Grande); 13–27 DV (Enorme)",
     "levelAdjustment": "+4 (subalterno)",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "driade",
@@ -3634,7 +3862,10 @@
     "alignment": "Geralmente caótico e bom",
     "advancement": "Conforme a classe de personagem",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "drider",
@@ -3681,7 +3912,10 @@
     "alignment": "Sempre caótico e mau",
     "advancement": "Conforme a classe de personagem",
     "levelAdjustment": "+4",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "bralani",
@@ -3728,7 +3962,10 @@
     "alignment": "Sempre Caótico e Bom",
     "advancement": "7–12 DV (Médio); 13–18 DV (Grande)",
     "levelAdjustment": "+5",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "ghaele",
@@ -3775,7 +4012,10 @@
     "alignment": "Sempre Caótico e Bom",
     "advancement": "11–15 DV (Médio); 16–30 DV (Grande)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "ente",
@@ -3822,7 +4062,10 @@
     "alignment": "Geralmente Neutro e Bom",
     "advancement": "8–16 DV (Enorme); 17–21 DV (Imenso)",
     "levelAdjustment": "+5",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "enxame-de-centopeias",
@@ -3869,7 +4112,10 @@
     "alignment": "Sempre Neutro",
     "advancement": "—",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "enxame-de-gafanhotos",
@@ -3916,7 +4162,10 @@
     "alignment": "Sempre Neutro",
     "advancement": "—",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "enxame-de-morcegos",
@@ -3963,7 +4212,10 @@
     "alignment": "Sempre Neutro",
     "advancement": "—",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "escavador",
@@ -4010,7 +4262,10 @@
     "alignment": "Geralmente Neutro",
     "advancement": "16–30 DV (Enorme); 31–45 DV (Imenso)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "androesfinge",
@@ -4057,7 +4312,10 @@
     "alignment": "Sempre Caótico e Bom",
     "advancement": "13–18 DV (Grande); 19–36 DV (Enorme)",
     "levelAdjustment": "+5 (parceiro)",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "crioesfinge",
@@ -4104,7 +4362,10 @@
     "alignment": "Sempre Neutro",
     "advancement": "11–15 DV (Grande); 16–30 DV (Enorme)",
     "levelAdjustment": "+3 (parceiro)",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "ginoesfinge",
@@ -4151,7 +4412,10 @@
     "alignment": "Sempre Neutro",
     "advancement": "9–12 DV (Grande); 13–24 DV (Enorme)",
     "levelAdjustment": "+4 (parceiro)",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "espectro",
@@ -4198,7 +4462,10 @@
     "alignment": "Sempre Leal e Mau",
     "advancement": "8–14 DV (Médio)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "ettercap",
@@ -4245,7 +4512,10 @@
     "alignment": "Geralmente Neutro e Mau",
     "advancement": "6–7 DV (Médio); 8–15 DV (Grande)",
     "levelAdjustment": "+4",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "ettin",
@@ -4292,7 +4562,10 @@
     "alignment": "Geralmente Caótico e Mau",
     "advancement": "Conforme a classe de personagem",
     "levelAdjustment": "+5",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "grig",
@@ -4339,7 +4612,10 @@
     "alignment": "Sempre Neutro e Bom",
     "advancement": "1–3 DV (Miúdo)",
     "levelAdjustment": "+3",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "nixie",
@@ -4386,7 +4662,10 @@
     "alignment": "Sempre Neutro",
     "advancement": "2–3 DV (Pequeno)",
     "levelAdjustment": "+3",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "pixie",
@@ -4433,7 +4712,10 @@
     "alignment": "Sempre Neutro e Bom",
     "advancement": "2–3 DV (Miúdo)",
     "levelAdjustment": "+4 (+6 com a dança irresistível de Otto)",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "fantasma-guerreiro-humano-de-5-nivel",
@@ -4480,7 +4762,10 @@
     "alignment": "Qualquer",
     "advancement": "+5",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "fera-do-caos",
@@ -4527,7 +4812,10 @@
     "alignment": "Sempre Caótico e Neutro",
     "advancement": "9–12 DV (Médio); 13–24 DV (Grande)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "fogofatuo",
@@ -4574,7 +4862,10 @@
     "alignment": "Geralmente Caótico e Mau",
     "advancement": "10–18 DV (Pequeno)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "fungo-fantasma",
@@ -4621,7 +4912,10 @@
     "alignment": "Sempre Neutro",
     "advancement": "3–4 DV (Médio); 5–6 DV (Grande)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "gargula",
@@ -4668,7 +4962,10 @@
     "alignment": "Geralmente Caótico e Mau",
     "advancement": "5–6 DV (Médio); 7–12 DV (Grande)",
     "levelAdjustment": "+5",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "djinni",
@@ -4715,7 +5012,10 @@
     "alignment": "Sempre Caótico e Bom",
     "advancement": "8–10 DV (Grande); 11–21 DV (Enorme)",
     "levelAdjustment": "+6",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "efreeti",
@@ -4762,7 +5062,10 @@
     "alignment": "Sempre Leaf e Mau",
     "advancement": "11–15 DV (Grande); 16–30 DV (Enorme)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "janni",
@@ -4809,7 +5112,10 @@
     "alignment": "Geralmente Neutro",
     "advancement": "7–9 DV (Médio); 10–18 DV (Grande)",
     "levelAdjustment": "+5",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "gigante-das-nuvens",
@@ -4856,7 +5162,10 @@
     "alignment": "Geralmente Neutro e Bom ou Neutro e Mau",
     "advancement": "Conforme a classe de personagem",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "gigante-do-fogo",
@@ -4903,7 +5212,10 @@
     "alignment": "Frequentemente Leal e Mau",
     "advancement": "Conforme a classe de personagem",
     "levelAdjustment": "+4",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "gigante-de-pedra",
@@ -4950,7 +5262,10 @@
     "alignment": "Geralmente Neutro",
     "advancement": "Conforme a classe de personagem",
     "levelAdjustment": "+4 (ancião +6)",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "girallon",
@@ -4997,7 +5312,10 @@
     "alignment": "Sempre Neutro",
     "advancement": "8–10 DV (Grande); 11–21 DV (Enorme)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "gnoll",
@@ -5044,7 +5362,10 @@
     "alignment": "Geralmente Caótico e Mau",
     "advancement": "Conforme a classe de personagem",
     "levelAdjustment": "+1",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "golem-de-barro",
@@ -5091,7 +5412,10 @@
     "alignment": "Sempre Neutro",
     "advancement": "12–18 DV (Grande); 19–33 DV (Enorme)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "golem-de-ferro",
@@ -5138,7 +5462,10 @@
     "alignment": "Sempre Neutro",
     "advancement": "19–24 DV (Grande): 25–54 DV (Enorme)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "grick",
@@ -5185,7 +5512,10 @@
     "alignment": "Geralmente Neutro",
     "advancement": "3–4 DV (Médio); 5–6 DV (Grande)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "grifo",
@@ -5232,7 +5562,10 @@
     "alignment": "Sempre Neutro",
     "advancement": "8–10 DV (Grande); 11–21 DV (Enorme)",
     "levelAdjustment": "+3 (parceiro)",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "grimlock",
@@ -5279,7 +5612,10 @@
     "alignment": "Frequentemente Neutro e Mau",
     "advancement": "Conforme a classe do personagem",
     "levelAdjustment": "+2",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "avoral",
@@ -5326,7 +5662,10 @@
     "alignment": "Sempre Neutro e Bom",
     "advancement": "8–14 DV (Médio); 15–21 DV (Grande)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "hipogrifo",
@@ -5373,7 +5712,10 @@
     "alignment": "Sempre Neutro",
     "advancement": "4–6 DV (Grande), 7–9 PV (Enorme)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "homunculo",
@@ -5420,7 +5762,10 @@
     "alignment": "Qualquer uma (idêntico ao criador)",
     "advancement": "3–6 DV (Miúdo)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "marut",
@@ -5467,7 +5812,10 @@
     "alignment": "Sempre Leal e Neutro",
     "advancement": "16–28 DV (Grande); 29–45 DV (Enorme)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "kolyarut",
@@ -5514,7 +5862,10 @@
     "alignment": "Sempre Leal e Neutro",
     "advancement": "14–22 DV (Médio); 23–39 DV (Grande)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "zelekhut",
@@ -5561,7 +5912,10 @@
     "alignment": "Sempre Leal e Neutro",
     "advancement": "9–16 DV (Grande); 17–24 DV (Enorme)",
     "levelAdjustment": "+7",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "inumano",
@@ -5608,7 +5962,10 @@
     "alignment": "Sempre Leal e Mau",
     "advancement": "5–8 DV (Médio)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "kobold-combatente-de-1-nivel",
@@ -5655,7 +6012,10 @@
     "alignment": "Geralmente Leal e Mau",
     "advancement": "Conforme a classe do personagem",
     "levelAdjustment": "+0",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "kraken",
@@ -5702,7 +6062,10 @@
     "alignment": "Geralmente Neutro e Mau",
     "advancement": "21–32 DV (Imenso); 33–60 DV (Colossal)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "lagarto-eletrico",
@@ -5749,7 +6112,10 @@
     "alignment": "Sempre Neutro",
     "advancement": "3–4 DV (Pequeno): 5–6 (Médio)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "lammasu",
@@ -5796,7 +6162,10 @@
     "alignment": "Sempre Leal e Bom",
     "advancement": "8–10 DV (Grande); 11–21 DV (Enorme)",
     "levelAdjustment": "+5",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "protetor-dourado-lammasu-meiodragao-celestial",
@@ -5843,7 +6212,10 @@
     "alignment": "Sempre Leal e Bom",
     "advancement": "11–30 DV (Enorme)",
     "levelAdjustment": "+10",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "leao-marinho",
@@ -5890,7 +6262,10 @@
     "alignment": "Sempre Neutro",
     "advancement": "7–9 DV (Grande); 10–18 DV (Enorme)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "lich",
@@ -5937,7 +6312,10 @@
     "alignment": "Neutro e Mau",
     "advancement": "Conforme a classe de personagem",
     "levelAdjustment": "+4",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "lillend",
@@ -5984,7 +6362,10 @@
     "alignment": "Sempre Caótico e Bom",
     "advancement": "8–10 DV (Grande); 11–21 DV (Enorme)",
     "levelAdjustment": "+6",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "limo-cinzento",
@@ -6031,7 +6412,10 @@
     "alignment": "Sempre Neutro",
     "advancement": "4–6 DV (Médio); 7–9 DV (Grande)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "lobo-das-estepes",
@@ -6078,7 +6462,10 @@
     "alignment": "Geralmente Neutro e Mau",
     "advancement": "7–9 DV Grande); 10–18 DV (Enorme)",
     "levelAdjustment": "+3 (parceiro)",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "locathah",
@@ -6125,7 +6512,10 @@
     "alignment": "Geralmente Neutro",
     "advancement": "Conforme a classe do personagem",
     "levelAdjustment": "+1",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "magmin",
@@ -6172,7 +6562,10 @@
     "alignment": "Geralmente Caótico e Neutro",
     "advancement": "3–4 DV (Pequeno); 5–6 DV (Médio)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "manto-negro",
@@ -6219,7 +6612,10 @@
     "alignment": "Sempre Neutro",
     "advancement": "2–3 DV (Pequeno)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "mastim-das-sombras",
@@ -6266,7 +6662,10 @@
     "alignment": "Sempre Neutro e Mau",
     "advancement": "5–6 DV (Médio); 7–12 DV (Grande)",
     "levelAdjustment": "+3 (parceiro)",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "medusa",
@@ -6313,7 +6712,10 @@
     "alignment": "Geralmente Leal e Mau",
     "advancement": "Conforme a classe do personagem",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "mephit-da-agua",
@@ -6360,7 +6762,10 @@
     "alignment": "Geralmente Neutro",
     "advancement": "4–6 DV (Pequeno); 7–9 DV (Médio)",
     "levelAdjustment": "+3 (parceiro)",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "mephit-do-ar",
@@ -6407,7 +6812,10 @@
     "alignment": "Geralmente Neutro",
     "advancement": "4–6 DV (Pequeno); 7–9 DV (Médio)",
     "levelAdjustment": "+3 (parceiro)",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "mephit-do-fogo",
@@ -6454,7 +6862,10 @@
     "alignment": "Geralmente Neutro",
     "advancement": "4–6 DV (Pequeno); 7–9 DV (Médio)",
     "levelAdjustment": "+3 (parceiro)",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "mephit-do-gelo",
@@ -6501,7 +6912,10 @@
     "alignment": "Geralmente Neutro",
     "advancement": "4–6 DV (Pequeno); 7–9 DV (Médio)",
     "levelAdjustment": "+3 (parceiro)",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "mephit-do-limo",
@@ -6548,7 +6962,10 @@
     "alignment": "Geralmente Neutro",
     "advancement": "4–6 DV (Pequeno); 7–9 DV (Médio)",
     "levelAdjustment": "+3 (parceiro)",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "mephit-do-magma",
@@ -6595,7 +7012,10 @@
     "alignment": "Geralmente Neutro",
     "advancement": "4–6 DV (Pequeno); 7–9 DV (Médio)",
     "levelAdjustment": "+3 (parceiro)",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "mephit-da-poeira",
@@ -6642,7 +7062,10 @@
     "alignment": "Geralmente Neutro",
     "advancement": "4–6 DV (Pequeno); 7–9 DV (Médio)",
     "levelAdjustment": "+3 (parceiro)",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "mephit-do-sal",
@@ -6689,7 +7112,10 @@
     "alignment": "Geralmente Neutro",
     "advancement": "4–6 DV (Pequeno); 7–9 DV (Médio)",
     "levelAdjustment": "+3 (parceiro)",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "mephit-do-vapor",
@@ -6736,7 +7162,10 @@
     "alignment": "Geralmente Neutro",
     "advancement": "4–6 DV (Pequeno); 7–9 DV (Médio)",
     "levelAdjustment": "+3 (parceiro)",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "mimico",
@@ -6783,7 +7212,10 @@
     "alignment": "Geralmente Neutro",
     "advancement": "8–10 DV (Grande); 11–21 DV (Enorme)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "mohrg",
@@ -6830,7 +7262,10 @@
     "alignment": "Sempre Caótico e Mau",
     "advancement": "15–21 DV (Médio); 22–28 DV (Grande)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "monstro-da-ferrugem",
@@ -6877,7 +7312,10 @@
     "alignment": "Sempre Neutro",
     "advancement": "6–8 DV (Médio); 9–15 DV (Grande)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "ogro-mago",
@@ -6924,7 +7362,10 @@
     "alignment": "Geralmente Leal e Mau",
     "advancement": "Conforme a classe de personagem",
     "levelAdjustment": "+7",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "passaro-roca",
@@ -6971,7 +7412,10 @@
     "alignment": "Sempre Neutro",
     "advancement": "19–32 DV (Imenso); 33–54 DV (Colossal)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "pegaso",
@@ -7018,7 +7462,10 @@
     "alignment": "Geralmente Caótico e Bom",
     "advancement": "5–8 DV (Grande)",
     "levelAdjustment": "+2 (parceiro)",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "pseudodragao",
@@ -7065,7 +7512,10 @@
     "alignment": "Sempre Neutro e Bom",
     "advancement": "3–4 DV (Miúdo)",
     "levelAdjustment": "+3",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "rast",
@@ -7112,7 +7562,10 @@
     "alignment": "Geralmente Neutro",
     "advancement": "6 DV (Médio); 7–12 DV (Grande)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "ravid",
@@ -7159,7 +7612,10 @@
     "alignment": "Sempre Neutro",
     "advancement": "4 DV (Médio); 5–9 DV (Grande)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "sahuagin",
@@ -7206,7 +7662,10 @@
     "alignment": "Geralmente Leal e Mau",
     "advancement": "3–5 DV (Médio); 6–10 DV (Grande) ou conforme a classe de personagem",
     "levelAdjustment": "+2 (+3 sahuagin mutante)",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "salteador-etereo",
@@ -7253,7 +7712,10 @@
     "alignment": "Geralmente Neutro",
     "advancement": "6–7 DV (Médio); S–15 DV (Grande)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "satiro",
@@ -7300,7 +7762,10 @@
     "alignment": "Geralmente Caótico e Neutro",
     "advancement": "6–10 DV (Médio)",
     "levelAdjustment": "+2",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "skum",
@@ -7347,7 +7812,10 @@
     "alignment": "Geralmente Leal e Mau",
     "advancement": "3–4 DV (Médio); 5–6 DV (Grande)",
     "levelAdjustment": "+3",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "slaad-azul",
@@ -7394,7 +7862,10 @@
     "alignment": "Geralmente Caótico e Neutro",
     "advancement": "9–12 DV (Grande); 13–24 DV (Enorme)",
     "levelAdjustment": "+6",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "slaad-cinza",
@@ -7441,7 +7912,10 @@
     "alignment": "Geralmente Caótico e Neutro",
     "advancement": "11–15 DV (Médio); 16–30 DV (Grande)",
     "levelAdjustment": "+6",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "slaad-da-morte",
@@ -7488,7 +7962,10 @@
     "alignment": "Geralmente Caótico e Neutro",
     "advancement": "16–22 DV (Médio); 23–45 DV (Grande)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "slaad-verde",
@@ -7535,7 +8012,10 @@
     "alignment": "Geralmente Caótico e Neutro",
     "advancement": "10–15 DV (Grande); 16–27 DV (Enorme)",
     "levelAdjustment": "+7",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "slaad-vermelho",
@@ -7582,7 +8062,10 @@
     "alignment": "Geralmente Caótico e Neutro",
     "advancement": "8–10 DV (Grande); 11–21 DV (Enorme)",
     "levelAdjustment": "+6",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "stirge",
@@ -7629,7 +8112,10 @@
     "alignment": "Sempre Neutro",
     "advancement": "—",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "tarrasque",
@@ -7676,7 +8162,10 @@
     "alignment": "Sempre Neutro",
     "advancement": "49+ DV (Colossal)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "tartarugadragao",
@@ -7723,7 +8212,10 @@
     "alignment": "Geralmente Neutro",
     "advancement": "13–24 DV (Enorme); 25–36 DV (Imenso)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "tendriculo",
@@ -7770,7 +8262,10 @@
     "alignment": "Sempre Neutro",
     "advancement": "10–16 DV (Enorme); 17–27 DV (Imenso)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "thoqqua",
@@ -7817,7 +8312,10 @@
     "alignment": "Geralmente Neutro",
     "advancement": "4–9 DV (Grande)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "tita",
@@ -7864,7 +8362,10 @@
     "alignment": "Sempre Caótico (qualquer)",
     "advancement": "21–30 DV (Enorme); 31–60 DV (Imenso)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "tritao",
@@ -7911,7 +8412,10 @@
     "alignment": "Geralmente Neutro e Bom",
     "advancement": "4–9 DV (Médio)",
     "levelAdjustment": "2",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "troglodita",
@@ -7958,7 +8462,10 @@
     "alignment": "Geralmente Caótico e Mau",
     "advancement": "Conforme a classe de personagem",
     "levelAdjustment": "2",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "uivante",
@@ -8005,7 +8512,10 @@
     "alignment": "Sempre Caótico e Mau",
     "advancement": "7–9 DV (Grande); 11–18 DV (Enorme)",
     "levelAdjustment": "+3 (parceiro)",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "ursocoruja",
@@ -8052,7 +8562,10 @@
     "alignment": "Sempre Neutro",
     "advancement": "6–8 DV (Grande); 9–15 DV (Enorme)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "vargouille",
@@ -8099,7 +8612,10 @@
     "alignment": "Sempre Neutro e Mau",
     "advancement": "2–3 DV (Pequeno)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "verme-do-gelo",
@@ -8146,7 +8662,10 @@
     "alignment": "Geralmente Neutro",
     "advancement": "15–21 DV (Enorme); 22–42 DV (Imenso)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "verme-purpura",
@@ -8193,7 +8712,10 @@
     "alignment": "Sempre Neutro",
     "advancement": "16–32 DV (Imenso); 32–48 DV (Colossal)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "vinha-assassina",
@@ -8240,7 +8762,10 @@
     "alignment": "Sempre Neutro",
     "advancement": "5–16 DV (Enorme); 17–32 DV (Imenso); 33+ DV (Colossal)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "rastejante-noturno",
@@ -8287,7 +8812,10 @@
     "alignment": "Sempre Caótico e Mau",
     "advancement": "26–50 DV (Colossal)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "vulto-alado",
@@ -8334,7 +8862,10 @@
     "alignment": "Sempre Caótico e Mau",
     "advancement": "18–25 DV (Enorme); 26–34 DV (Imenso)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "worg",
@@ -8381,7 +8912,10 @@
     "alignment": "Geralmente Neutro e Mau",
     "advancement": "5–6 DV (Médio); 7–12 DV (Grande)",
     "levelAdjustment": "+1 (parceiro)",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "wyvern",
@@ -8428,7 +8962,10 @@
     "alignment": "Geralmente Neutro",
     "advancement": "8–10 DV (Enorme); 11–21 DV (Imenso)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "yrthak",
@@ -8475,7 +9012,10 @@
     "alignment": "Frequentemente Neutro",
     "advancement": "13–16 DV (Enorme); 17–36 DV (Imenso)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "puro-sangue",
@@ -8522,7 +9062,10 @@
     "alignment": "Geralmente Caótico e Mau",
     "advancement": "Conforme a classe de personagem",
     "levelAdjustment": "+2",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "aguia",
@@ -8569,7 +9112,10 @@
     "alignment": "",
     "advancement": "2–3 DV (Médio)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": true,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "arminho",
@@ -8616,7 +9162,10 @@
     "alignment": "",
     "advancement": "—",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "arraia",
@@ -8663,7 +9212,10 @@
     "alignment": "",
     "advancement": "5–6 DV (Médio)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "babuino",
@@ -8710,7 +9262,10 @@
     "alignment": "",
     "advancement": "2–3 DV (Médio)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "baleia-azul",
@@ -8757,7 +9312,10 @@
     "alignment": "",
     "advancement": "13–18 DV (Imenso); 19–36 DV (Colossal)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "baleia-cachalote",
@@ -8804,7 +9362,10 @@
     "alignment": "",
     "advancement": "13–18 DV (Imenso); 19–36 DV (Colossal)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "baleia-orca",
@@ -8851,7 +9412,10 @@
     "alignment": "",
     "advancement": "10–13 DV (Enorme); 14–27 DV (Imenso)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": true,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "bisao",
@@ -8898,7 +9462,10 @@
     "alignment": "",
     "advancement": "6–7 DV (Grande)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": true,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "cachorro",
@@ -8945,7 +9512,10 @@
     "alignment": "",
     "advancement": "—",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": true,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "cachorro-de-montaria",
@@ -8992,7 +9562,10 @@
     "alignment": "",
     "advancement": "—",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": true,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "camelo",
@@ -9039,7 +9612,10 @@
     "alignment": "",
     "advancement": "—",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": true,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "carcaju",
@@ -9086,7 +9662,10 @@
     "alignment": "",
     "advancement": "4–5 DV (Grande)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": true,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "cavalo-pesado",
@@ -9133,7 +9712,10 @@
     "alignment": "",
     "advancement": "—",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": true,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "cavalo-leve",
@@ -9180,7 +9762,10 @@
     "alignment": "",
     "advancement": "—",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": true,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "cavalo-de-guerra-pesado",
@@ -9227,7 +9812,10 @@
     "alignment": "",
     "advancement": "—",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "cobra-constritora",
@@ -9274,7 +9862,10 @@
     "alignment": "",
     "advancement": "4–5 DV (Médio); 6–70 DV (Grande)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": true,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "coruja",
@@ -9321,7 +9912,10 @@
     "alignment": "",
     "advancement": "2 DV (Pequeno)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": true,
+    "summonedCreature": true,
+    "familiar": true
   },
   {
     "id": "corvo",
@@ -9368,7 +9962,10 @@
     "alignment": "",
     "advancement": "—",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": true
   },
   {
     "id": "crocodilo",
@@ -9415,7 +10012,10 @@
     "alignment": "",
     "advancement": "4–5 DV (Médio)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": true,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "crocodilo-gigante",
@@ -9462,7 +10062,10 @@
     "alignment": "",
     "advancement": "8–14 DV (Médio)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": true,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "elefante",
@@ -9509,7 +10112,10 @@
     "alignment": "",
     "advancement": "12–22 DV (Enorme)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "falcao",
@@ -9556,7 +10162,10 @@
     "alignment": "",
     "advancement": "—",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": true,
+    "summonedCreature": true,
+    "familiar": true
   },
   {
     "id": "gato",
@@ -9603,7 +10212,10 @@
     "alignment": "",
     "advancement": "—",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": true
   },
   {
     "id": "golfinho",
@@ -9650,7 +10262,10 @@
     "alignment": "",
     "advancement": "3–4 DV (Médio); 6–5 DV (Grande)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": true,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "gorila",
@@ -9697,7 +10312,10 @@
     "alignment": "",
     "advancement": "5–8 DV (Grande)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": true,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "guepardo",
@@ -9744,7 +10362,10 @@
     "alignment": "",
     "advancement": "4–5 DV (Médio)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": true,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "javali",
@@ -9791,7 +10412,10 @@
     "alignment": "",
     "advancement": "4–5 DV (Médio)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": true,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "jumento",
@@ -9838,7 +10462,10 @@
     "alignment": "",
     "advancement": "—",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "lagarto",
@@ -9885,7 +10512,10 @@
     "alignment": "",
     "advancement": "—",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": true,
+    "summonedCreature": false,
+    "familiar": true
   },
   {
     "id": "leao",
@@ -9932,7 +10562,10 @@
     "alignment": "",
     "advancement": "6–8 DV (Grande)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": true,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "leopardo",
@@ -9979,7 +10612,10 @@
     "alignment": "",
     "advancement": "4–5 DV (Médio)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": true,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "lobo",
@@ -10026,7 +10662,10 @@
     "alignment": "",
     "advancement": "3 DV (Médio); 4–6 DV (Grande)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": true,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "lula",
@@ -10073,7 +10712,10 @@
     "alignment": "",
     "advancement": "4–6 DV (Médio); 7–11 DV (Grande)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": true,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "lula-gigante",
@@ -10120,7 +10762,10 @@
     "alignment": "",
     "advancement": "13–18 DV (Enorme); 19–36 DV (Imenso)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "macaco",
@@ -10167,7 +10812,10 @@
     "alignment": "",
     "advancement": "2–3 DV (Pequeno)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "morcego",
@@ -10214,7 +10862,10 @@
     "alignment": "",
     "advancement": "—",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": true
   },
   {
     "id": "mula",
@@ -10261,7 +10912,10 @@
     "alignment": "",
     "advancement": "—",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "polvo",
@@ -10308,7 +10962,10 @@
     "alignment": "",
     "advancement": "3–6 DV (Médio)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "polvo-gigante",
@@ -10355,7 +11012,10 @@
     "alignment": "",
     "advancement": "9–12 DV (Grande); 13–24 DV (Enorme)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "ponei",
@@ -10402,7 +11062,10 @@
     "alignment": "",
     "advancement": "—",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": true,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "ponei-de-guerra",
@@ -10449,7 +11112,10 @@
     "alignment": "",
     "advancement": "—",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "rato",
@@ -10496,7 +11162,10 @@
     "alignment": "",
     "advancement": "—",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": true
   },
   {
     "id": "rinoceronte",
@@ -10543,7 +11212,10 @@
     "alignment": "",
     "advancement": "9–12 DV (Grande); 13–24 DV (Enorme)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": true,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "sapo",
@@ -10590,7 +11262,10 @@
     "alignment": "",
     "advancement": "—",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": true
   },
   {
     "id": "texugo",
@@ -10637,7 +11312,10 @@
     "alignment": "",
     "advancement": "2 DV (Pequeno)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": true,
+    "summonedCreature": true,
+    "familiar": true
   },
   {
     "id": "tigre",
@@ -10684,7 +11362,10 @@
     "alignment": "",
     "advancement": "7–12 DV (Grande); 13–18 DV (Enorme)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": true,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "urso-marrom",
@@ -10731,7 +11412,10 @@
     "alignment": "",
     "advancement": "7–10 DV (Grande)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": true,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "urso-negro",
@@ -10778,7 +11462,10 @@
     "alignment": "",
     "advancement": "4–5 DV (Médio)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": true,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "urso-polar",
@@ -10825,7 +11512,10 @@
     "alignment": "",
     "advancement": "9–12 DV (Grande)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "vaga-lume-gigante",
@@ -10872,7 +11562,10 @@
     "alignment": "",
     "advancement": "2–3 DV (Pequeno)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "vespa-gigante",
@@ -10919,7 +11612,10 @@
     "alignment": "",
     "advancement": "6–8 DV (Grande); 9–15 DV (Enorme)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "hiena",
@@ -10966,7 +11662,10 @@
     "alignment": "",
     "advancement": "3 DV (Médio); 4-5 DV (Grande)",
     "levelAdjustment": "—",
-    "source": "SRD 3.5 (OGL), traduzido"
+    "source": "SRD 3.5 (OGL), traduzido",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "lagarto-monitor",
@@ -11013,7 +11712,10 @@
     "alignment": "",
     "advancement": "4-5 DV (Médio)",
     "levelAdjustment": "—",
-    "source": "SRD 3.5 (OGL), traduzido"
+    "source": "SRD 3.5 (OGL), traduzido",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "cavalo-de-guerra-leve",
@@ -11060,7 +11762,10 @@
     "alignment": "",
     "advancement": "—",
     "levelAdjustment": "—",
-    "source": "SRD 3.5 (OGL), traduzido"
+    "source": "SRD 3.5 (OGL), traduzido",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "tubarao-medio",
@@ -11107,7 +11812,10 @@
     "alignment": "",
     "advancement": "4-6 DV (Médio)",
     "levelAdjustment": "—",
-    "source": "SRD 3.5 (OGL), traduzido"
+    "source": "SRD 3.5 (OGL), traduzido",
+    "animalCompanion": true,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "tubarao-grande",
@@ -11154,7 +11862,10 @@
     "alignment": "",
     "advancement": "8-9 DV (Grande)",
     "levelAdjustment": "—",
-    "source": "SRD 3.5 (OGL), traduzido"
+    "source": "SRD 3.5 (OGL), traduzido",
+    "animalCompanion": true,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "tubarao-enorme",
@@ -11201,7 +11912,10 @@
     "alignment": "",
     "advancement": "11-17 DV (Enorme)",
     "levelAdjustment": "—",
-    "source": "SRD 3.5 (OGL), traduzido"
+    "source": "SRD 3.5 (OGL), traduzido",
+    "animalCompanion": true,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "vibora-miuda",
@@ -11248,7 +11962,10 @@
     "alignment": "",
     "advancement": "—",
     "levelAdjustment": "—",
-    "source": "SRD 3.5 (OGL), traduzido"
+    "source": "SRD 3.5 (OGL), traduzido",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "vibora-pequena",
@@ -11295,7 +12012,10 @@
     "alignment": "",
     "advancement": "—",
     "levelAdjustment": "—",
-    "source": "SRD 3.5 (OGL), traduzido"
+    "source": "SRD 3.5 (OGL), traduzido",
+    "animalCompanion": true,
+    "summonedCreature": true,
+    "familiar": true
   },
   {
     "id": "vibora-media",
@@ -11342,7 +12062,10 @@
     "alignment": "",
     "advancement": "—",
     "levelAdjustment": "—",
-    "source": "SRD 3.5 (OGL), traduzido"
+    "source": "SRD 3.5 (OGL), traduzido",
+    "animalCompanion": true,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "vibora-grande",
@@ -11389,7 +12112,10 @@
     "alignment": "",
     "advancement": "—",
     "levelAdjustment": "—",
-    "source": "SRD 3.5 (OGL), traduzido"
+    "source": "SRD 3.5 (OGL), traduzido",
+    "animalCompanion": true,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "vibora-enorme",
@@ -11436,7 +12162,10 @@
     "alignment": "",
     "advancement": "7-18 DV (Enorme)",
     "levelAdjustment": "—",
-    "source": "SRD 3.5 (OGL), traduzido"
+    "source": "SRD 3.5 (OGL), traduzido",
+    "animalCompanion": true,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "escorpiao-miudo",
@@ -11483,7 +12212,10 @@
     "alignment": "",
     "advancement": "—",
     "levelAdjustment": "—",
-    "source": "SRD 3.5 (OGL), traduzido"
+    "source": "SRD 3.5 (OGL), traduzido",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "escorpiao-pequeno",
@@ -11530,7 +12262,10 @@
     "alignment": "",
     "advancement": "—",
     "levelAdjustment": "—",
-    "source": "SRD 3.5 (OGL), traduzido"
+    "source": "SRD 3.5 (OGL), traduzido",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "escorpiao-medio",
@@ -11577,7 +12312,10 @@
     "alignment": "",
     "advancement": "3-4 DV (Médio)",
     "levelAdjustment": "—",
-    "source": "SRD 3.5 (OGL), traduzido"
+    "source": "SRD 3.5 (OGL), traduzido",
+    "animalCompanion": false,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "escorpiao-grande",
@@ -11624,7 +12362,10 @@
     "alignment": "",
     "advancement": "6-9 DV (Grande)",
     "levelAdjustment": "—",
-    "source": "SRD 3.5 (OGL), traduzido"
+    "source": "SRD 3.5 (OGL), traduzido",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "escorpiao-enorme",
@@ -11671,7 +12412,10 @@
     "alignment": "",
     "advancement": "11-19 DV (Enorme)",
     "levelAdjustment": "—",
-    "source": "SRD 3.5 (OGL), traduzido"
+    "source": "SRD 3.5 (OGL), traduzido",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "escorpiao-imenso",
@@ -11718,7 +12462,10 @@
     "alignment": "",
     "advancement": "21-39 DV (Imenso)",
     "levelAdjustment": "—",
-    "source": "SRD 3.5 (OGL), traduzido"
+    "source": "SRD 3.5 (OGL), traduzido",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "escorpiao-colossal",
@@ -11765,7 +12512,10 @@
     "alignment": "",
     "advancement": "41-60 DV (Colossal)",
     "levelAdjustment": "—",
-    "source": "SRD 3.5 (OGL), traduzido"
+    "source": "SRD 3.5 (OGL), traduzido",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "aranha-miuda",
@@ -11812,7 +12562,10 @@
     "alignment": "",
     "advancement": "—",
     "levelAdjustment": "—",
-    "source": "SRD 3.5 (OGL), traduzido"
+    "source": "SRD 3.5 (OGL), traduzido",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "aranha-pequena",
@@ -11859,7 +12612,10 @@
     "alignment": "",
     "advancement": "—",
     "levelAdjustment": "—",
-    "source": "SRD 3.5 (OGL), traduzido"
+    "source": "SRD 3.5 (OGL), traduzido",
+    "animalCompanion": false,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "aranha-media",
@@ -11906,7 +12662,10 @@
     "alignment": "",
     "advancement": "3 DV (Médio)",
     "levelAdjustment": "—",
-    "source": "SRD 3.5 (OGL), traduzido"
+    "source": "SRD 3.5 (OGL), traduzido",
+    "animalCompanion": false,
+    "summonedCreature": true,
+    "familiar": false
   },
   {
     "id": "aranha-grande",
@@ -11953,7 +12712,10 @@
     "alignment": "",
     "advancement": "5-7 DV (Grande)",
     "levelAdjustment": "—",
-    "source": "SRD 3.5 (OGL), traduzido"
+    "source": "SRD 3.5 (OGL), traduzido",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "aranha-enorme",
@@ -12000,7 +12762,10 @@
     "alignment": "",
     "advancement": "9-15 DV (Enorme)",
     "levelAdjustment": "—",
-    "source": "SRD 3.5 (OGL), traduzido"
+    "source": "SRD 3.5 (OGL), traduzido",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "aranha-imensa",
@@ -12047,7 +12812,10 @@
     "alignment": "",
     "advancement": "17-31 DV (Imenso)",
     "levelAdjustment": "—",
-    "source": "SRD 3.5 (OGL), traduzido"
+    "source": "SRD 3.5 (OGL), traduzido",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "aranha-colossal",
@@ -12094,7 +12862,10 @@
     "alignment": "",
     "advancement": "33-60 DV (Colossal)",
     "levelAdjustment": "—",
-    "source": "SRD 3.5 (OGL), traduzido"
+    "source": "SRD 3.5 (OGL), traduzido",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "centopeia-miuda",
@@ -12141,7 +12912,10 @@
     "alignment": "",
     "advancement": "—",
     "levelAdjustment": "—",
-    "source": "SRD 3.5 (OGL), traduzido"
+    "source": "SRD 3.5 (OGL), traduzido",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "centopeia-pequena",
@@ -12188,7 +12962,10 @@
     "alignment": "",
     "advancement": "—",
     "levelAdjustment": "—",
-    "source": "SRD 3.5 (OGL), traduzido"
+    "source": "SRD 3.5 (OGL), traduzido",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "centopeia-media",
@@ -12235,7 +13012,10 @@
     "alignment": "",
     "advancement": "—",
     "levelAdjustment": "—",
-    "source": "SRD 3.5 (OGL), traduzido"
+    "source": "SRD 3.5 (OGL), traduzido",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "centopeia-grande",
@@ -12282,7 +13062,10 @@
     "alignment": "",
     "advancement": "4-5 DV (Grande)",
     "levelAdjustment": "—",
-    "source": "SRD 3.5 (OGL), traduzido"
+    "source": "SRD 3.5 (OGL), traduzido",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "centopeia-enorme",
@@ -12329,7 +13112,10 @@
     "alignment": "",
     "advancement": "7-11 DV (Enorme)",
     "levelAdjustment": "—",
-    "source": "SRD 3.5 (OGL), traduzido"
+    "source": "SRD 3.5 (OGL), traduzido",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "centopeia-imensa",
@@ -12376,7 +13162,10 @@
     "alignment": "",
     "advancement": "13-23 DV (Imenso)",
     "levelAdjustment": "—",
-    "source": "SRD 3.5 (OGL), traduzido"
+    "source": "SRD 3.5 (OGL), traduzido",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   },
   {
     "id": "centopeia-colossal",
@@ -12423,6 +13212,9 @@
     "alignment": "",
     "advancement": "25-48 DV (Colossal)",
     "levelAdjustment": "—",
-    "source": "SRD 3.5 (OGL), traduzido"
+    "source": "SRD 3.5 (OGL), traduzido",
+    "animalCompanion": false,
+    "summonedCreature": false,
+    "familiar": false
   }
 ]
