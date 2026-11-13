@@ -161,4 +161,6 @@ Cada registro do catálogo recebe três flags independentes:
 ### Revisão de cobertura das listas de invocação
 - Conferidas também as progressões de centopeias, aranhas e escorpiões monstruosos presentes na tabela de **Invocar Criaturas**. Todas as fichas correspondentes existentes no catálogo receberam a flag de invocação.
 - O teste automatizado verifica os tamanhos registrados para esses três grupos, evitando que uma futura edição marque apenas uma variante e deixe as demais sem indicação.
-- Total atualizado: 264 fichas; 44 companheiros animais; 103 criaturas invocáveis; 10 familiares.
+- Total atualizado: 264 fichas; 45 companheiros animais; 103 criaturas invocáveis; 10 familiares.
+
+- Ajuste de nomenclatura: a entrada inglesa *dire weasel* da lista alternativa corresponde ao **Arminho Atroz** do Livro dos Monstros brasileiro; a ficha existente `arminho-atroz` foi marcada como companheiro animal, sem criar duplicata.
