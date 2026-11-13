@@ -156,3 +156,9 @@ Cada registro do catálogo recebe três flags independentes:
 - Testes de regressão cobrem lobo, coruja, gato e abolete, incluindo sobreposição entre categorias e um caso sem elegibilidade.
 - Registros do catálogo: 264; IDs únicos preservados.
 - IDs candidatos que não existem no catálogo atual e, portanto, não receberam registro novo: texugo-atroz, xorn, corvo-abissal, bruxa-da-noite.
+
+
+### Revisão de cobertura das listas de invocação
+- Conferidas também as progressões de centopeias, aranhas e escorpiões monstruosos presentes na tabela de **Invocar Criaturas**. Todas as fichas correspondentes existentes no catálogo receberam a flag de invocação.
+- O teste automatizado verifica os tamanhos registrados para esses três grupos, evitando que uma futura edição marque apenas uma variante e deixe as demais sem indicação.
+- Total atualizado: 264 fichas; 44 companheiros animais; 103 criaturas invocáveis; 10 familiares.
