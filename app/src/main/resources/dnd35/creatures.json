@@ -12514,7 +12514,7 @@
     "levelAdjustment": "—",
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": false,
-    "summonedCreature": true,
+    "summonedCreature": false,
     "familiar": false
   },
   {

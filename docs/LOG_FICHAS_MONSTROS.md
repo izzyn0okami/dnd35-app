@@ -268,3 +268,6 @@ A alteração foi enviada ao PR #367 no commit `6b8a5eb32cf202c1393ad95803500f7e
 - Corrigida a estrutura duplicada/inválida de gatilhos no workflow Android.
 - A CI agora executa em pushes nas branches `main`, `fix/**` e `feature/**`, além de PRs direcionadas a `main`.
 - O workflow usa JDK 17, alinhado à configuração atual do projeto.
+
+- Revisão da tabela oficial de Invocar Criaturas: removida a elegibilidade de `escorpiao-colossal`; o Livro do Jogador lista o escorpião monstruoso abissal Imenso (`escorpiao-imenso`), não a versão Colossal.
+- Criado mapeamento explícito de círculos para as listas de Invocar Criaturas e Invocar Aliado da Natureza. Opções de círculos inferiores permanecem disponíveis conforme a descrição das magias.
