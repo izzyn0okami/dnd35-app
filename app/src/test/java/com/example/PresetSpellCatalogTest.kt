@@ -1720,6 +1720,17 @@ class PresetSpellCatalogTest {
 
 
     @Test
+    fun summonCreatureTwoThroughSixArePresentForAllFourClasses() {
+        val byName = Dnd35Rules.PRESET_SPELLS.associateBy { it.name }
+        for ((roman, level) in listOf("II" to 2, "III" to 3, "IV" to 4, "V" to 5, "VI" to 6)) {
+            val spell = byName.getValue("Invocar Criaturas $roman")
+            assertEquals(level, spell.level)
+            assertEquals(mapOf("Bardo" to level, "Clérigo" to level, "Feiticeiro" to level, "Mago" to level), spell.classLevels)
+            assertTrue(spell.domainLevels.isEmpty())
+        }
+    }
+
+    @Test
     fun natureAllyFiveAndSixArePresentWithCorrectDruidCircles() {
         val byName = Dnd35Rules.PRESET_SPELLS.associateBy { it.name }
         val fifth = byName.getValue("Invocar Aliado da Natureza V")

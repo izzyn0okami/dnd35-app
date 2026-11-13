@@ -75,6 +75,8 @@ class SummoningRulesTest {
         assertTrue(animalDomainSpells4.any { it.second.name == "Invocar Aliado da Natureza IV" })
         assertTrue(animalDomainSpells8.any { it.second.name == "Invocar Aliado da Natureza VIII" })
         assertFalse(SummoningRules.isClassAllowed(SummoningFamily.SUMMON_NATURE_ALLY, "Clérigo"))
+        val chaosDomainSpells9 = com.example.dnd35.model.ClericDomainRules.domainSpellsAt(listOf("Caos"), 9)
+        assertTrue(chaosDomainSpells9.any { it.second.name == "Invocar Criaturas IX" })
     }
 
     @Test

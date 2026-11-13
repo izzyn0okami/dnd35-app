@@ -283,3 +283,5 @@ A alteração foi enviada ao PR #367 no commit `6b8a5eb32cf202c1393ad95803500f7e
 - Corrigida lacuna no catálogo de magias: adicionadas Invocar Aliado da Natureza V e VI, ausentes da lista de magias apesar de constarem no Livro do Jogador. O domínio Animais concede Invocar Aliado da Natureza IV e VIII (não I); a seleção para Clérigo agora respeita apenas esses círculos de domínio.
 
 - Adicionados testes para as listas superiores e variantes de Pixie, além de regressões para as cartas de invocação que estavam sem a flag (urso-atroz, elefante, polvo-gigante, lula-gigante). A interface identifica os modelos Celestial/Abissal e informa que os modificadores completos ainda não são aplicados à ficha de combate.
+
+- Completo o catálogo de Invocar Criaturas II–VI, que também estavam ausentes do catálogo apesar de existirem no Livro do Jogador. Invocar Criaturas IX mantém os domínios Bem, Caos, Mal e Ordem; a seleção de invocações agora reconhece qualquer domínio clerical explicitamente registrado na magia. Ícones de todas as magias de invocação foram alinhados.

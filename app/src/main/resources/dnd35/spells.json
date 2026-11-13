@@ -5557,6 +5557,131 @@
     }
   },
   {
+    "name": "Invocar Criaturas II",
+    "level": 2,
+    "school": "Conjuração (Invocação) [veja texto de Invocar Criaturas I]",
+    "classes": [
+      "Bardo",
+      "Clérigo",
+      "Feiticeiro",
+      "Mago"
+    ],
+    "castTime": "1 rodada",
+    "components": "V, G, F/FD",
+    "range": "Curto (7,5 m + 1,5 m/2 níveis)",
+    "duration": "1 rodada/nível (D)",
+    "savingThrow": "Nenhum",
+    "spellResistance": false,
+    "description": "Essa magia funciona como Invocar Criaturas I, exceto por invocar uma criatura da lista de 2º nível ou 1d3 criaturas do mesmo tipo da lista de 1º nível.",
+    "classLevels": {
+      "Bardo": 2,
+      "Clérigo": 2,
+      "Feiticeiro": 2,
+      "Mago": 2
+    },
+    "domainLevels": {}
+  },
+  {
+    "name": "Invocar Criaturas III",
+    "level": 3,
+    "school": "Conjuração (Invocação) [veja texto de Invocar Criaturas I]",
+    "classes": [
+      "Bardo",
+      "Clérigo",
+      "Feiticeiro",
+      "Mago"
+    ],
+    "castTime": "1 rodada",
+    "components": "V, G, F/FD",
+    "range": "Curto (7,5 m + 1,5 m/2 níveis)",
+    "duration": "1 rodada/nível (D)",
+    "savingThrow": "Nenhum",
+    "spellResistance": false,
+    "description": "Essa magia funciona como Invocar Criaturas I, exceto por invocar uma criatura da lista de 3º nível, 1d3 criaturas do mesmo tipo da lista de 2º nível ou 1d4+1 criaturas do mesmo tipo da lista de 1º nível.",
+    "classLevels": {
+      "Bardo": 3,
+      "Clérigo": 3,
+      "Feiticeiro": 3,
+      "Mago": 3
+    },
+    "domainLevels": {}
+  },
+  {
+    "name": "Invocar Criaturas IV",
+    "level": 4,
+    "school": "Conjuração (Invocação) [veja texto de Invocar Criaturas I]",
+    "classes": [
+      "Bardo",
+      "Clérigo",
+      "Feiticeiro",
+      "Mago"
+    ],
+    "castTime": "1 rodada",
+    "components": "V, G, F/FD",
+    "range": "Curto (7,5 m + 1,5 m/2 níveis)",
+    "duration": "1 rodada/nível (D)",
+    "savingThrow": "Nenhum",
+    "spellResistance": false,
+    "description": "Essa magia funciona como Invocar Criaturas I, exceto por invocar uma criatura da lista de 4º nível, 1d3 criaturas do mesmo tipo da lista de 3º nível ou 1d4+1 criaturas do mesmo tipo de uma lista de nível inferior.",
+    "classLevels": {
+      "Bardo": 4,
+      "Clérigo": 4,
+      "Feiticeiro": 4,
+      "Mago": 4
+    },
+    "domainLevels": {}
+  },
+  {
+    "name": "Invocar Criaturas V",
+    "level": 5,
+    "school": "Conjuração (Invocação) [veja texto de Invocar Criaturas I]",
+    "classes": [
+      "Bardo",
+      "Clérigo",
+      "Feiticeiro",
+      "Mago"
+    ],
+    "castTime": "1 rodada",
+    "components": "V, G, F/FD",
+    "range": "Curto (7,5 m + 1,5 m/2 níveis)",
+    "duration": "1 rodada/nível (D)",
+    "savingThrow": "Nenhum",
+    "spellResistance": false,
+    "description": "Essa magia funciona como Invocar Criaturas I, exceto por invocar uma criatura da lista de 5º nível, 1d3 criaturas do mesmo tipo da lista de 4º nível ou 1d4+1 criaturas do mesmo tipo de uma lista de nível inferior.",
+    "classLevels": {
+      "Bardo": 5,
+      "Clérigo": 5,
+      "Feiticeiro": 5,
+      "Mago": 5
+    },
+    "domainLevels": {}
+  },
+  {
+    "name": "Invocar Criaturas VI",
+    "level": 6,
+    "school": "Conjuração (Invocação) [veja texto de Invocar Criaturas I]",
+    "classes": [
+      "Bardo",
+      "Clérigo",
+      "Feiticeiro",
+      "Mago"
+    ],
+    "castTime": "1 rodada",
+    "components": "V, G, F/FD",
+    "range": "Curto (7,5 m + 1,5 m/2 níveis)",
+    "duration": "1 rodada/nível (D)",
+    "savingThrow": "Nenhum",
+    "spellResistance": false,
+    "description": "Essa magia funciona como Invocar Criaturas I, exceto por invocar uma criatura da lista de 6º nível, 1d3 criaturas do mesmo tipo da lista de 5º nível ou 1d4+1 criaturas do mesmo tipo de uma lista de nível inferior.",
+    "classLevels": {
+      "Bardo": 6,
+      "Clérigo": 6,
+      "Feiticeiro": 6,
+      "Mago": 6
+    },
+    "domainLevels": {}
+  },
+  {
     "name": "Invocar Criaturas VII",
     "level": 7,
     "school": "Conjuração (Invocação) [veja texto de Invocar Criaturas I]",
