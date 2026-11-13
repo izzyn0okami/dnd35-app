@@ -368,3 +368,8 @@ A área de imagem é somente um espaço reservado nesta etapa. A seleção e per
 Limitação registrada: os 230 registros atuais ainda não contêm os textos narrativos completos nem o desenvolvimento individual de Combate/descrições especiais para todas as criaturas. Esses conteúdos não devem ser inventados nem preenchidos com texto genérico como se fossem transcrições do livro; serão extraídos e conferidos separadamente contra o PDF brasileiro do Livro dos Monstros.
 
 A interface reserva seções separadas para **Descrição** e **Combate**, sem preencher o conteúdo até a conferência do verbete no PDF.
+
+
+### Campos narrativos das criaturas (2026-11-13)
+
+O modelo `CreatureDefinition` e `creatures.json` aceitam agora os campos opcionais `description` e `combat`. Quando ausentes, o carregador fornece texto vazio; a interface mantém um aviso de pendência e não apresenta conteúdo inferido. Os primeiros verbetes transcritos e conferidos no PDF brasileiro são Abocanhador Matraqueante (página impressa 8) e Achaierai (páginas impressas 10–11). A cobertura deve avançar criatura por criatura, registrando páginas e pendências em `docs/LOG_FICHAS_MONSTROS.md`.
