@@ -289,7 +289,9 @@
     "alignment": "Sempre Neutro e Mau",
     "advancement": "5–12 DV (Médio)",
     "levelAdjustment": "—",
-    "source": "Livro dos Monstros 3.5"
+    "source": "Livro dos Monstros 3.5",
+    "description": "A criatura flutuando à sua frente parece algo saído de um pesadelo. Sua silhueta é vagamente humanoide, mas trata-se de uma forma sem traços físicos, distorcida e carregada de insanidade. Da cintura para baixo, ela se desfaz em vapor, deixando um tênue rastro de névoa por onde passa.\n\nUm allip é o conjunto dos vestígios espectrais de alguém que se suicidou devido à loucura que lhe afligiu em vida. Estas criaturas só desejam vingança e caçam impiedosamente os responsáveis por sua insanidade.\n\nOs allip são incapazes de falar de forma compreensível.",
+    "combat": "Os allip são incapazes de causar qualquer tipo de dano físico, embora talvez não tenham consciência disso. Eles continuam a investir contra seus oponentes, apesar de não lhes causarem nenhum ferimento.\n\nMurmúrio (Sob): O allip resmunga e lamenta consigo mesmo constantemente, criando um efeito hipnótico. Qualquer criatura sã num raio de 18 metros deve obter sucesso num teste de resistência de Vontade (CD 16) ou será afetada por um efeito similar à magia hipnotismo durante 2d4 rodadas. Este é um efeito sônico e uma compulsão de ação mental. Qualquer oponente bem-sucedido no teste de resistência não será afetado pelo murmúrio do mesmo allip durante um dia inteiro. A CD para o teste de resistência é baseada em Carisma.\n\nEnlouquecer (Sob): Qualquer conjurador que tentar atingir um allip com efeitos ou habilidades de detecção de pensamentos, controle mental ou telepatia entrará em contato direto com a mente torturada e ensandecida da criatura, sofrendo 1d4 pontos de dano temporário de Sabedoria.\n\nDrenar Sabedoria (Sob): Um allip causa 1d4 pontos de dano permanente de Sabedoria sempre que atinge um oponente com seu toque incorpóreo. A cada ataque bem-sucedido, ele adquire 5 pontos de vida temporários."
   },
   {
     "id": "arminho-atroz",
