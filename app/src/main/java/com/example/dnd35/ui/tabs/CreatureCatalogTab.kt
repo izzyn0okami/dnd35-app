@@ -234,6 +234,8 @@ private fun CreatureDetail(
                 CreatureField("Iniciativa", signed(creature.initiative))
                 CreatureField("Deslocamento", creature.speed)
                 CreatureField("Classe de Armadura", creature.armorClassText)
+                CreatureField("CA de Toque", creature.touchAc.toString())
+                CreatureField("CA de Surpresa", creature.flatFootedAc.toString())
                 CreatureField("Ataque Base/Agarrar", "${signed(creature.baseAttack)}/${signed(creature.grapple)}")
                 CreatureField("Ataque", creature.attack)
                 CreatureField("Ataque Total", creature.fullAttack)
