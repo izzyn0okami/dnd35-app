@@ -555,4 +555,18 @@ class CreatureCatalogTest {
         assertEquals("5", rast.challengeRating)
     }
 
+
+
+    @Test
+    fun ravidHasPositiveEnergyBurstAndAnimatesNearbyObjects() {
+        val ravid = CreatureCatalog.byId("ravid")!!
+        assertTrue(ravid.description.contains("Plano da Energia Positiva"))
+        assertTrue(ravid.description.contains("2 m"))
+        assertTrue(ravid.combat.contains("2d10 pontos de dano"))
+        assertTrue(ravid.combat.contains("inclusive incorpóreos"))
+        assertTrue(ravid.combat.contains("a até 6 m"))
+        assertTrue(ravid.combat.contains("nível de conjurador 20º"))
+        assertTrue(ravid.combat.contains("Ataques Múltiplos"))
+        assertEquals("5", ravid.challengeRating)
+    }
 }

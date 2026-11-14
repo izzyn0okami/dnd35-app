@@ -7899,7 +7899,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "O ravid tem um longo corpo de serpente que flutua sem esforço pelo ar, com uma única garra que surge próxima à cabeça. É nativo do Plano da Energia Positiva. Essas entidades bizarras saturam outras criaturas com energia por meio do toque e concedem vida a objetos inanimados ao seu redor. Os ravids encontrados no Plano Material vagam sem destino, seguidos pelos objetos que animaram anteriormente. Medem cerca de 2 m e pesam pouco mais de 30 kg.",
+    "combat": "Os ravids lutam somente em autodefesa. Sozinho, um ravid não é muito poderoso, mas está sempre acompanhado por pelo menos um objeto animado para defendê-lo. Rajada de Energia Positiva (Sob): por meio de um ataque de toque com a garra ou a cauda, o ravid imbui o alvo com energia positiva. Em criaturas vivas, isso provoca apenas um formigamento desagradável; contra mortos-vivos, inclusive incorpóreos, causa 2d10 pontos de dano. Animar Objetos (Sob): uma vez por rodada, um objeto aleatório a até 6 m do ravid ganha vida como pela magia animar objetos (nível de conjurador 20º). Os objetos defendem o ravid da melhor maneira possível, mas ele não é inteligente o bastante para coordená-los em táticas elaboradas. Voo (Sob): pode alçar voo ou pousar como ação livre; se perder essa habilidade, cai e só pode realizar uma única ação por rodada. O ravid possui o talento Ataques Múltiplos mesmo sem cumprir o pré-requisito de três ou mais armas naturais."
   },
   {
     "id": "sahuagin",

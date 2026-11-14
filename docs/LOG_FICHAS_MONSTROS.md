@@ -769,3 +769,13 @@ As fichas-base devem ser reutilizadas por ID sempre que a tabela pedir apenas um
 - Corrigida uma corrupção evidente no bloco existente: deslocamento terrestre de “105 m” para “10,5 m” e removido o texto estranho “Rakshasa RAST” das qualidades especiais. Ambos foram conferidos no bloco impresso da p. 222; as demais estatísticas foram preservadas.
 - Adicionado teste de regressão para capacidades, ND e correções de deslocamento/qualidades especiais.
 - Contagem após esta etapa: 319 fichas; 204 com Descrição e Combate; 115 pendentes.
+
+
+## 2026-11-14 — Trigésima etapa: Ravid
+
+- Conferido o verbete do Ravid no Livro dos Monstros brasileiro, p. 223 (PDF, p. 227).
+- Preenchidos Descrição e Combate no registro existente, preservando integralmente o bloco de estatísticas e o ND 5.
+- Descrição registra anatomia serpentina flutuante, garra próxima à cabeça, origem no Plano da Energia Positiva, saturação de energia pelo toque, animação de objetos e dimensões aproximadas (2 m; pouco mais de 30 kg).
+- Combate registra comportamento defensivo, Rajada de Energia Positiva (2d10 contra mortos-vivos, inclusive incorpóreos), animação de objeto aleatório a até 6 m uma vez por rodada como animar objetos (NC 20º), voo e a exceção do talento Ataques Múltiplos.
+- Adicionado teste de regressão para os efeitos distintivos, alcance, nível de conjurador e ND.
+- Contagem após esta etapa: 319 fichas; 205 com Descrição e Combate; 114 pendentes.
