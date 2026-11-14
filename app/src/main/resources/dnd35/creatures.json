@@ -7795,7 +7795,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "O pseudodragão se assemelha a um dragão vermelho em miniatura, mas sua coloração é marrom-avermelhada. Tem escamas finas, chifres e dentes afiados e uma cauda farpada, muito flexível, com o dobro do comprimento do corpo. O corpo mede cerca de 30 cm, além de 60 cm de cauda, e pesa aproximadamente 3,5 kg. Sua personalidade é quase felina: pode ser arrogante, exigente e pouco prestativo, mas aceita servir quando é bem alimentado, cuidado e recebe muita atenção. Detesta crueldade e não serve a mestres malignos. Comunica emoções por sons semelhantes aos de animais e pode se comunicar telepaticamente.",
+    "combat": "Ataca com mordidas e, principalmente, com o ferrão venenoso da cauda. Veneno (Ext): Fortitude CD 14; efeito inicial — sono por 1 minuto; efeito secundário — sono por 1d3 horas. Sentido Cego (Ext): localiza criaturas num raio de 18 m sem usar a visão, embora alvos que não consiga enxergar ainda tenham camuflagem total. Telepatia (Sob): comunica-se com criaturas que conheçam Comum ou Silvestre num raio de 18 m. Perícias: recebe +4 de bônus racial em Esconder-se, aumentado para +8 em florestas ou vegetação densa. Como companheiro, observa silenciosamente um possível parceiro humanoide por dias, avaliando seus pensamentos e feitos; só o aceita se considerar o candidato promissor, encantado com sua presença e disposto a cuidar bem dele. Se for maltratado ou insultado, pode partir ou retaliar."
   },
   {
     "id": "rast",

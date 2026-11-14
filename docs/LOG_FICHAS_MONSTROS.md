@@ -750,3 +750,13 @@ As fichas-base devem ser reutilizadas por ID sempre que a tabela pedir apenas um
 - Combate registra cascos e mordida, defesa cooperativa de ovos e filhotes, detectar o bem/mal à vontade (18 m; nível de conjurador 5º), bônus raciais em Ouvir/Observar e as regras de treinamento e montaria (Diplomacia, seis semanas, Adestrar Animais CD 25 e sela exótica).
 - Adicionado teste de regressão para os elementos distintivos do verbete e preservação do ND.
 - Contagem após esta etapa: 319 fichas; 202 com Descrição e Combate; 117 pendentes.
+
+
+## 2026-11-14 — Vigésima oitava etapa: Pseudodragão
+
+- Conferido o verbete do Pseudodragão no Livro dos Monstros brasileiro, p. 220 (PDF, p. 224).
+- Preenchidos Descrição e Combate no registro existente, sem modificar estatísticas, ND ou marcações de companheiro/invocação.
+- Descrição registra aparência e dimensões, peso, personalidade quase felina, exigências para aceitar um parceiro, aversão à crueldade e comunicação por sons/telepatia.
+- Combate registra o veneno do ferrão (Fortitude CD 14; sono por 1 minuto e depois 1d3 horas), Sentido Cego 18 m, Telepatia 18 m limitada a idiomas Comum ou Silvestre e bônus raciais de Esconder-se (+4; +8 em florestas/vegetação densa).
+- Adicionado teste de regressão para os detalhes distintivos e preservação do ND.
+- Contagem após esta etapa: 319 fichas; 203 com Descrição e Combate; 116 pendentes.
