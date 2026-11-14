@@ -372,6 +372,7 @@ A alteração foi enviada ao PR #367 no commit `6b8a5eb32cf202c1393ad95803500f7e
 - Corrigidas dez flags `summonedCreature` que estavam falsas apesar de a criatura constar nas tabelas: Carcajú Atroz, Javali Atroz, Tigre Atroz, Arconte Luminar, Bralani, Fera do Caos, Avoral, Corvo, Urso Polar e Víbora Enorme.
 - A lista Celestial/Abissal agora registra as variantes no seletor sem criar uma ficha duplicada para o modelo. As variantes de Sátiro (com/sem flauta) e Pixie (sem flechas especiais, com flechas soníferas e com flechas soníferas/de perda de memória) permanecem separadas por círculo.
 - O seletor continua usando o ID da ficha original do bestiário. Pressionar e segurar uma carta abre a ficha completa; virar a carta e acionar **Invocar** confirma a seleção. O texto do seletor foi atualizado para tornar esse caminho explícito.
+- O histórico de magias também transforma a criatura registrada em um acesso direto à ficha completa: o registro persiste o ID do catálogo, e tocar no nome da criatura invocada abre seus detalhes. Isso mantém o vínculo mesmo após fechar o seletor ou reabrir a ficha.
 
 ### Fichas ainda ausentes no catálogo
 Não foram criados placeholders nem estatísticas presumidas. As seguintes opções impressas no Livro do Jogador ainda dependem de fichas próprias do Livro dos Monstros para serem disponibilizadas no seletor:
