@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -335,8 +336,8 @@ private fun CreatureCombatValue(label: String, value: String, modifier: Modifier
 @Composable
 private fun CreatureAttackLine(title: String, value: String, onRoll: (Int, String) -> Unit) {
     if (value.isBlank()) return
-    val bonus = Regex("[+-]\\\\d+").find(value)?.value?.toIntOrNull()
-    val damage = Regex("\\\\(([^()]*(?:\\\\d+d\\\\d+)[^()]*)\\\\)", RegexOption.IGNORE_CASE)
+    val bonus = Regex("[+-]\\d+").find(value)?.value?.toIntOrNull()
+    val damage = Regex("\\(([^()]*(?:\\d+d\\d+)[^()]*)\\)", RegexOption.IGNORE_CASE)
         .find(value)?.groupValues?.getOrNull(1).orEmpty()
     Surface(modifier = Modifier.fillMaxWidth(), color = MaterialTheme.colorScheme.surface,
         shape = RoundedCornerShape(9.dp)) {
