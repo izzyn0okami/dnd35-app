@@ -690,3 +690,13 @@ As fichas-base devem ser reutilizadas por ID sempre que a tabela pedir apenas um
 - Nenhuma estatística mecânica foi alterada.
 - Teste de regressão adicionado para as duas fichas e suas capacidades distintivas.
 - Situação após esta etapa: 314 fichas no catálogo; 194 possuem Descrição e resumo de Combate; 120 ainda precisam de ao menos um desses campos.
+
+
+## 2026-11-14 — Vigésima terceira etapa: Múmia
+
+- Incluída a ficha da Múmia, ausente do catálogo, com os valores do bloco de estatísticas do Livro dos Monstros (p. 204).
+- Descrição e Combate sintetizados a partir do verbete: guardiã de tumbas, Desespero (Vontade CD 16), Toque Pútrido (Fortitude CD 16; incubação de 1 minuto; dano temporário de Constituição e Carisma), regras de cura da maldição, transformação em areia ao morrer e vulnerabilidade ao fogo.
+- Os valores do bloco foram transcritos sem ajustes; Constituição permanece nula, conforme as características de morto-vivo.
+- Corrigida a importação ausente de assertFalse no teste de catálogo, que fazia a CI falhar na compilação dos testes unitários.
+- Teste de regressão adicionado para a ficha da Múmia e suas capacidades distintivas.
+- Situação após esta etapa: 315 fichas no catálogo; 195 possuem Descrição e Combate; 120 ainda precisam de ao menos um desses campos.

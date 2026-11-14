@@ -2,6 +2,7 @@ package com.example
 
 import com.example.dnd35.model.CreatureCatalog
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertTrue
 import org.junit.Test
@@ -471,6 +472,17 @@ class CreatureCatalogTest {
         assertTrue(CreatureCatalog.byId("mohrg")!!.combat.contains("CD 17"))
         assertTrue(CreatureCatalog.byId("monstro-da-ferrugem")!!.combat.contains("Reflexos CD 17"))
         assertTrue(CreatureCatalog.byId("monstro-da-ferrugem")!!.combat.contains("27 m"))
+    }
+
+
+    @Test
+    fun mummyHasBookAccurateNarrativeAndSpecialAttacks() {
+        val mummy = CreatureCatalog.byId("mumia")!!
+        assertTrue(mummy.description.contains("deuses sombrios do deserto"))
+        assertTrue(mummy.combat.contains("Desespero"))
+        assertTrue(mummy.combat.contains("1d6 pontos de dano temporário de Constituição"))
+        assertTrue(mummy.combat.contains("CD 20"))
+        assertTrue(mummy.specialQualities.contains("vulnerabilidade ao fogo"))
     }
 
 }
