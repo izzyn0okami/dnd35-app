@@ -86,7 +86,7 @@ object SummoningRules {
         "tubarao-enorme" to "Abissal", "escorpiao-grande" to "Abissal", "carcaju-atroz" to "Abissal",
         "crocodilo-gigante" to "Abissal", "tigre" to "Abissal", "cobra-constritora-gigante" to "Abissal",
         "centopeia-imensa" to "Abissal", "elasmossauro" to "Abissal", "aranha-enorme" to "Abissal",
-        "megaraptor" to "Abissal", "escorpiao-enorme" to "Abissal", "babau" to "Abissal",
+        "megaraptor" to "Abissal", "escorpiao-enorme" to "Abissal",
         "polvo-gigante" to "Abissal", "girallon" to "Abissal", "lula-gigante" to "Abissal",
         "centopeia-colossal" to "Abissal",
         "tigre-atroz" to "Abissal", "aranha-imensa" to "Abissal", "tiranossauro" to "Abissal",
