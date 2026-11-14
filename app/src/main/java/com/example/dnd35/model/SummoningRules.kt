@@ -34,9 +34,9 @@ object SummoningRules {
 
     private val monsterLists = mapOf(
         1 to "cachorro coruja vaga-lume-gigante golfinho texugo macaco rato-atroz-abissal corvo centopeia-media falcao aranha-pequena polvo vibora-pequena",
-        2 to "cachorro-de-montaria aguia lula lobo centopeia-grande escorpiao-medio tubarao-medio aranha-media vibora-media",
+        2 to "cachorro-de-montaria aguia lula lobo lemure centopeia-grande escorpiao-medio tubarao-medio aranha-media vibora-media",
         3 to "urso-negro bisao texugo-atroz hipogrifo gorila arminho-atroz cao-infernal cobra-constritora javali morcego-atroz centopeia-enorme crocodilo dretch vibora-grande carcaju",
-        4 to "arconte-luminar coruja-gigante aguia-gigante leao-celestial mephit-da-agua mephit-do-ar mephit-do-fogo mephit-do-gelo mephit-do-limo mephit-do-magma mephit-da-poeira mephit-do-sal mephit-do-vapor lobo-atroz vespa-gigante tubarao-grande aranha-grande vibora-enorme uivante",
+        4 to "cao-yeth arconte-luminar coruja-gigante aguia-gigante leao-celestial mephit-da-agua mephit-do-ar mephit-do-fogo mephit-do-gelo mephit-do-limo mephit-do-magma mephit-da-poeira mephit-do-sal mephit-do-vapor lobo-atroz vespa-gigante tubarao-grande aranha-grande vibora-enorme uivante",
         5 to "urso-marrom leao-marinho grifo achaierai diabo-barbado-barbazu dinonico gorila-atroz javali-atroz tubarao-enorme escorpiao-grande mastim-das-sombras carcaju-atroz crocodilo-gigante tigre",
         6 to "urso-atroz baleia-orca leao-atroz cobra-constritora-gigante diabo-das-correntes-kyton centopeia-imensa rinoceronte elasmossauro aranha-enorme bralani janni fera-do-caos",
         7 to "elefante avoral djinni cacador-invisivel slaad-vermelho diabo-dos-ossos-osyluth megaraptor escorpiao-enorme babau polvo-gigante girallon",
