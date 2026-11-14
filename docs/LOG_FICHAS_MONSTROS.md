@@ -342,3 +342,22 @@ A alteração foi enviada ao PR #367 no commit `6b8a5eb32cf202c1393ad95803500f7e
 - Nenhuma estatística, regra de elegibilidade, progressão, serialização ou estrutura persistida de personagem/sessão foi alterada.
 - Nenhuma imagem foi movida, renomeada ou duplicada.
 - Validação de CI e conferência visual em aparelho permanecem pendentes para esta revisão.
+
+## 2026-11-14 — Pilhas navegáveis, iniciativa de monstros e retrato do turno
+
+### Decisões e implementação
+- As listas de cartas do bestiário, seleção de monstros para a sessão, criaturas invocadas e criaturas vinculadas passam a usar uma pilha visual sobreposta.
+- A carta da frente responde ao gesto horizontal: arrastar para a esquerda revela a próxima; arrastar para a direita retorna à anterior. A pilha mostra as cartas seguintes parcialmente, sem depender de uma rolagem horizontal longa.
+- O baralho de monstros do Mestre usa o mesmo comportamento; toque continua virando a carta e pressão prolongada continua abrindo os detalhes.
+- As criaturas adicionadas ao baralho da sessão passam a aparecer como candidatas no diálogo de início de combate. Cada instância recebe identificador próprio, PV derivados da ficha do bestiário e iniciativa informada pelo Mestre; a ordenação final continua sendo feita por iniciativa.
+- O atalho flutuante multiplayer exibe um retrato circular do combatente ativo. No dispositivo do Mestre, a foto vem da ficha recebida do jogador ou da ficha NPC local; para monstros, usa a ilustração do bestiário. No dispositivo de jogador, a foto só pode ser exibida quando a ficha ativa está disponível localmente; o protocolo atual não distribui fotos personalizadas de outros participantes.
+- A seção de criaturas vinculadas não exibe mais um cartão vazio ou aviso em fichas sem vínculos. Classes elegíveis ainda recebem ações compactas para criar o primeiro vínculo.
+
+### Preservação
+- As 266 ilustrações existentes em `assets/monsters` são reutilizadas; nenhuma imagem foi substituída, movida ou duplicada.
+- Não foram alteradas regras de elegibilidade de familiares/companheiros, estatísticas das criaturas, regras de iniciativa, nem o protocolo multiplayer.
+- A iniciativa de criaturas do baralho usa os valores de PV do catálogo como PV inicial; dano e cura passam a ser controlados pelo rastreador de combate.
+
+### Validação pendente
+- Executar testes unitários e compilação Android na CI da PR #368.
+- Validar no aparelho: gesto para avançar/voltar em cada pilha, toque para virar, pressão prolongada, inclusão de monstros na iniciativa, ordem por iniciativa e retrato do turno.
