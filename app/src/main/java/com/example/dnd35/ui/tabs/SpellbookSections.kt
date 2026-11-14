@@ -578,7 +578,8 @@ internal fun LazyListScope.catalogSection(
 /** Registro das magias conjuradas, da mais recente para a mais antiga. */
 internal fun LazyListScope.historySection(
     stats: CalculatedCharacterStats,
-    onClear: () -> Unit
+    onClear: () -> Unit,
+    onOpenCreature: (com.example.dnd35.model.CreatureDefinition) -> Unit
 ) {
     val records = CharacterJsonAdapters.deserializeSpellHistory(stats.character.spellHistoryJson).asReversed()
     if (records.isEmpty()) {
@@ -621,6 +622,7 @@ internal fun LazyListScope.historySection(
                         Text(
                             "Invocada: ${summoned?.name ?: r.summonedCreatureId}" +
                                 if (r.summonedCreatureVariant.isNotBlank()) " • ${r.summonedCreatureVariant}" else "",
+                            modifier = if (summoned != null) Modifier.clickable { onOpenCreature(summoned) } else Modifier,
                             style = MaterialTheme.typography.labelSmall,
                             color = MaterialTheme.colorScheme.primary
                         )
