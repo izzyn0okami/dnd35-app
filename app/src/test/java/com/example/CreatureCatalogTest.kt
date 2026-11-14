@@ -600,4 +600,47 @@ class CreatureCatalogTest {
         assertFalse(skum.fullAttack.contains("Sátiro"))
     }
 
+    
+    @Test
+    fun allSlaadVariantsHaveBookBasedNarrativeAndCombatDetails() {
+        val ids = listOf(
+            "slaad-azul", "slaad-cinza", "slaad-da-morte",
+            "slaad-verde", "slaad-vermelho"
+        )
+        ids.forEach { id ->
+            val creature = CreatureCatalog.byId(id)!!
+            assertTrue("$id sem descrição", creature.description.isNotBlank())
+            assertTrue("$id sem resumo de combate", creature.combat.isNotBlank())
+            assertTrue("$id sem origem planar", creature.environment.contains("Limbo"))
+            assertTrue("$id sem invocação", creature.combat.contains("Invocar Slaad"))
+        }
+        val azul = CreatureCatalog.byId("slaad-azul")!!
+        assertTrue(azul.combat.contains("Febre Slaad"))
+        assertTrue(azul.combat.contains("CD 18"))
+        assertEquals("8", azul.challengeRating)
+        assertEquals("Caos Eternamente Mutável do Limbo", azul.environment)
+
+        val cinza = CreatureCatalog.byId("slaad-cinza")!!
+        assertTrue(cinza.combat.contains("Mudar Forma"))
+        assertTrue(cinza.combat.contains("palavra de poder: atordoar"))
+        assertEquals("10", cinza.challengeRating)
+
+        val morte = CreatureCatalog.byId("slaad-da-morte")!!
+        assertTrue(morte.combat.contains("Atordoar"))
+        assertTrue(morte.combat.contains("implosão"))
+        assertTrue(morte.combat.contains("telepatia 30 m"))
+        assertEquals("13", morte.challengeRating)
+
+        val verde = CreatureCatalog.byId("slaad-verde")!!
+        assertTrue(verde.combat.contains("detectar pensamentos"))
+        assertTrue(verde.combat.contains("Mudar Forma"))
+        assertEquals("9", verde.challengeRating)
+
+        val vermelho = CreatureCatalog.byId("slaad-vermelho")!!
+        assertTrue(vermelho.combat.contains("Implante"))
+        assertTrue(vermelho.combat.contains("Fortitude CD 16"))
+        assertTrue(vermelho.combat.contains("Coaxar Atordoante"))
+        assertEquals("7", vermelho.challengeRating)
+    }
+
 }
