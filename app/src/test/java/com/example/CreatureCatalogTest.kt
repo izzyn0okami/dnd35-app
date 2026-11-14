@@ -271,4 +271,19 @@ class CreatureCatalogTest {
         assertTrue(CreatureCatalog.byId("ginoesfinge")!!.combat.contains("símbolo"))
     }
 
+
+    @Test
+    fun specterEttercapEttinAndFeyHaveNarrativeAndCombatSummaries() {
+        listOf("espectro", "ettercap", "ettin", "grig", "nixie").forEach { id ->
+            val creature = CreatureCatalog.byId(id)!!
+            assertTrue("$id sem descrição", creature.description.isNotBlank())
+            assertTrue("$id sem resumo de combate", creature.combat.isNotBlank())
+        }
+        assertTrue(CreatureCatalog.byId("espectro")!!.combat.contains("Drenar Energia"))
+        assertTrue(CreatureCatalog.byId("ettercap")!!.combat.contains("Teia"))
+        assertTrue(CreatureCatalog.byId("ettin")!!.combat.contains("Duas Armas"))
+        assertTrue(CreatureCatalog.byId("grig")!!.combat.contains("Rabeca"))
+        assertTrue(CreatureCatalog.byId("nixie")!!.combat.contains("Enfeitiçar Pessoa"))
+    }
+
 }
