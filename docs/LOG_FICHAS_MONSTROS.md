@@ -604,3 +604,12 @@ As fichas-base devem ser reutilizadas por ID sempre que a tabela pedir apenas um
 - O resumo do Gigante das Nuvens destaca combate organizado em altitude, arremesso de rochas a 42 m e habilidades de névoa/levitação; o Gigante do Fogo, rochas aquecidas com dano adicional de fogo e imunidade ao fogo com vulnerabilidade ao frio; o Gigante de Pedra, camuflagem rochosa, emboscada, arremesso e captura de rochas.
 - Nenhuma estatística mecânica foi alterada. Teste de regressão cobre as três fichas e seus elementos distintivos.
 - Situação após esta etapa: 313 fichas no catálogo; 152 possuem descrição e resumo de combate; 161 ainda precisam de ao menos um desses campos.
+
+
+## 2026-11-14 — Décima quarta etapa: girallon, gnoll e golem de barro
+
+- Preenchidas descrição e síntese de combate de 3 fichas: Girallon, Gnoll e Golem de Barro.
+- Fonte primária: Livro dos Monstros 3.5 em português, páginas impressas 142, 145 e 149. Os resumos preservam a ecologia, o comportamento e as táticas descritas nos verbetes.
+- Foram destacados: emboscada, investida e Dilacerar do girallon; vantagem numérica, táticas de horda e emboscadas dos gnoll; e Fúria, ferimento amaldiçoado, Velocidade e imunidades do golem de barro.
+- Nenhuma estatística mecânica foi alterada. Teste de regressão cobre as três fichas e suas características distintivas.
+- Situação após esta etapa: 313 fichas no catálogo; 155 possuem descrição e resumo de combate; 158 ainda precisam de ao menos um desses campos.
