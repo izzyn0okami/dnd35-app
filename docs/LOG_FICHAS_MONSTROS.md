@@ -649,3 +649,12 @@ As fichas-base devem ser reutilizadas por ID sempre que a tabela pedir apenas um
 - Destaques: aura de medo, toque paralisante e filactéria do lich; arte, magias e constrição da lillend; ácido, agarrar e transparência do limo cinzento; sopro congelante, mordida e imobilização do lobo das estepes; e táticas de besta e lança e natação dos locathah.
 - Nenhuma estatística mecânica foi alterada. Teste de regressão cobre as cinco fichas e suas capacidades distintivas.
 - Situação após esta etapa: 313 fichas no catálogo; 176 possuem descrição e resumo de combate; 137 ainda precisam de ao menos um desses campos.
+
+
+## 2026-11-14 — Décima nona etapa: lagarto elétrico, magmin e predadores das sombras
+
+- Preenchidas descrição e síntese de combate de 5 fichas: Lagarto Elétrico, Magmin, Manto Negro, Mastim das Sombras e Medusa.
+- Fonte primária: Livro dos Monstros 3.5 em português, páginas impressas 170, 188–192. Os resumos preservam as táticas de emboscada, os efeitos elementais e as capacidades especiais descritas nos verbetes.
+- Destaques: choques atordoante e letal do lagarto elétrico; Combustão, Aura Ígnea e Derreter Armas do magmin; camuflagem, escuridão e constrição do manto negro; ladrar apavorante e Camuflagem de Sombras do mastim; Olhar Petrificante e veneno das serpentes da medusa.
+- Nenhuma estatística mecânica foi alterada. Teste de regressão cobre as cinco fichas e suas capacidades distintivas.
+- Situação após esta etapa: 313 fichas no catálogo; 181 possuem descrição e resumo de combate; 132 ainda precisam de ao menos um desses campos.
