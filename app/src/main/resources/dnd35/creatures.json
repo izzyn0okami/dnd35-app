@@ -3687,7 +3687,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "O elasmossauro é um réptil aquático de corpo ovalado, nadadeiras no lugar das patas, cauda serpenteante e pescoço muito longo, que corresponde a cerca de metade do comprimento total. Apesar de passar a maior parte da vida na água, precisa subir à superfície para respirar. Mede aproximadamente 9 m, incluindo a cauda, e pesa cerca de 2.500 kg. A cabeça e o pescoço que emergem da água podem ser confundidos com os de uma serpente gigantesca.",
+    "combat": "O elasmossauro é agressivo e ataca qualquer criatura que se mova. É forte e surpreendentemente ágil na água, muda de direção com rapidez e dispara contra as presas. Durante a caça, mantém a cabeça fora da água e a movimenta para abocanhar o alvo. Quando está submerso, recebe +8 de bônus racial nos testes de Esconder-se."
   },
   {
     "id": "megaraptor",
@@ -3737,7 +3739,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "O megaraptor é um dinossauro carnívoro enorme, semelhante ao dinonico, mas muito maior. Mede cerca de 3,6 m de altura e 7,2 m de comprimento total. Compartilha a aparência, os hábitos predatórios e as habilidades de caça de sua versão menor.",
+    "combat": "O megaraptor combina velocidade, garras traseiras poderosas e membros dianteiros com garras para atacar. Costuma investir contra a presa e saltar sobre ela, rasgando-a com as garras. Bote (Ext): quando realiza uma investida contra um oponente, pode executar um ataque total na mesma rodada. Recebe +8 de bônus racial nos testes de Esconder-se, Saltar, Ouvir, Observar e Sobrevivência."
   },
   {
     "id": "tiranossauro",
@@ -3787,7 +3791,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "O tiranossauro é um predador gigantesco, com cabeça enorme, boca repleta de dentes do tamanho de adagas, duas pernas poderosas e membros dianteiros vestigiais. Apesar de pesar cerca de 6 toneladas e medir pouco mais de 9 m do focinho à ponta da cauda, é um corredor veloz. Sua cabeça tem quase 2 m de largura e seus dentes medem entre 7,5 e 15 cm. Alimenta-se de praticamente qualquer coisa que consiga abocanhar, procurando carcaças e afastando predadores menores de suas presas.",
+    "combat": "O tiranossauro persegue e devora quase tudo que consegue ver; sua tática habitual é correr até a presa e mordê-la. Agarrar Aprimorado (Ext): ao atingir com a mordida uma criatura pelo menos uma categoria de tamanho menor, pode iniciar uma manobra Agarrar como ação livre, sem provocar ataques de oportunidade. Engolir (Ext): pode engolir um inimigo agarrado que seja duas categorias de tamanho menor ou menor, após vencer um teste resistido de Agarrar. A criatura engolida sofre 2d8+8 pontos de dano por esmagamento e 8 pontos de dano por ácido a cada rodada. Ela pode abrir caminho para sair causando 25 pontos de dano ao sistema digestivo (CA 12). O estômago comporta até duas criaturas Médias, oito Pequenas, 32 Miúdas ou 128 Mínimas ou menores. O tiranossauro recebe +2 de bônus racial nos testes de Ouvir e Observar."
   },
   {
     "id": "triceratops",
@@ -3837,7 +3843,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "O tricerátops é um herbívoro enorme e irritadiço, com uma placa óssea de aproximadamente 2 m de largura protegendo a fronte. Dois grandes chifres projetam-se dessa placa, enquanto um terceiro, menor, emerge da ponta do focinho. Mede cerca de 7,5 m de comprimento e pesa aproximadamente 10 toneladas. Apesar de herbívoro, reage de forma agressiva a invasores de seu território.",
+    "combat": "O tricerátops normalmente investe contra qualquer ser vivo Grande ou maior que invada seu território. Usa o ataque de atropelar contra oponentes menores. Investida Poderosa (Ext): durante uma investida, seus chifres causam 4d8+20 pontos de dano. Atropelar (Ext): uma criatura atingida pode realizar um teste de Reflexos (CD 28) para reduzir o dano à metade; a CD é baseada em Força."
   },
   {
     "id": "doppelganger",
