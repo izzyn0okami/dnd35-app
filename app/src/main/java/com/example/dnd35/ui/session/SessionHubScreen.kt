@@ -6,7 +6,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -23,9 +22,8 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.material.icons.filled.ArrowBack
@@ -65,6 +63,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.layout.Layout
@@ -81,6 +80,8 @@ import com.example.dnd35.ui.components.CreatureDeckOverlay
 import com.example.dnd35.ui.components.CreatureDetailsOverlay
 import com.example.dnd35.ui.components.CreatureImage
 import com.example.dnd35.ui.components.CreatureImageTradingCard
+import com.example.dnd35.ui.components.CreatureCardStack
+import com.example.dnd35.ui.components.CharacterAvatar
 import com.example.dnd35.model.CharacterInventoryItem
 import com.example.dnd35.session.ActionRequest
 import com.example.dnd35.session.Combatant
@@ -432,34 +433,23 @@ private fun MonsterCardsSection(
                 )
             }
         } else {
-            Box(modifier = Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()).padding(vertical = 8.dp)) {
-                Layout(content = {
-                    cards.forEach { shortcut ->
-                        val creature = CreatureCatalog.byId(shortcut.creatureId)
-                        if (creature != null) {
-                            MonsterShortcutCard(
-                                instanceId = shortcut.instanceId,
-                                creature = creature,
-                                onLongClick = { selectedCreature = creature },
-                                onRemove = { onRemove(shortcut.instanceId) }
-                            )
-                        }
-                    }
-                }) { measurables, _ ->
-                    val cardWidth = 220.dp.roundToPx()
-                    val cardHeight = 326.dp.roundToPx()
-                    val cardStep = 72.dp.roundToPx()
-                    val placeables = measurables.map { it.measure(Constraints.fixed(cardWidth, cardHeight)) }
-                    val layoutWidth = if (placeables.isEmpty()) 0 else cardWidth + cardStep * (placeables.size - 1)
-                    layout(layoutWidth, cardHeight) {
-                        placeables.forEachIndexed { index, placeable ->
-                            placeable.placeRelative(x = index * cardStep, y = 0)
-                        }
-                    }
+            CreatureCardStack(
+                items = cards,
+                key = { it.instanceId },
+                modifier = Modifier.fillMaxWidth()
+            ) { shortcut ->
+                val creature = CreatureCatalog.byId(shortcut.creatureId)
+                if (creature != null) {
+                    MonsterShortcutCard(
+                        instanceId = shortcut.instanceId,
+                        creature = creature,
+                        onLongClick = { selectedCreature = creature },
+                        onRemove = { onRemove(shortcut.instanceId) }
+                    )
                 }
             }
             Text(
-                "Toque na carta para virar • pressione e segure para abrir os detalhes • deslize o baralho lateralmente",
+                "Toque para virar • segure para abrir os detalhes • arraste a carta da frente para percorrer o baralho",
                 style = MaterialTheme.typography.labelSmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
@@ -670,8 +660,18 @@ private fun CombatSection(
                 tempHp = c.tempHp
             )
         }
+        val monsterCandidates = hosting.monsterCards.mapNotNull { shortcut ->
+            val creature = CreatureCatalog.byId(shortcut.creatureId) ?: return@mapNotNull null
+            CombatCandidate(
+                id = "monster:${creature.id}:${shortcut.instanceId}",
+                displayName = creature.name,
+                isNpc = true,
+                currentHp = creature.hitPoints,
+                maxHp = creature.hitPoints
+            )
+        }
         StartCombatDialog(
-            candidates = playerCandidates + npcCandidates,
+            candidates = playerCandidates + npcCandidates + monsterCandidates,
             onDismiss = { showStartDialog = false },
             onConfirm = { combatants ->
                 viewModel.startCombat(combatants)
@@ -734,7 +734,7 @@ private fun StartCombatDialog(
                             )
                             Column(modifier = Modifier.weight(1f)) {
                                 Text(
-                                    candidate.displayName + if (candidate.isNpc) " (NPC)" else "",
+                                    candidate.displayName + when { candidate.id.startsWith("monster:") -> " (Monstro)"; candidate.isNpc -> " (NPC)"; else -> "" },
                                     fontWeight = FontWeight.SemiBold
                                 )
                                 Text(
@@ -1523,6 +1523,19 @@ fun SessionFloatingPanels(
     val hosting = dmState as? DmSessionUiState.Hosting
     val connected = playerState as? PlayerSessionUiState.Connected
     val linkedCharacter = myCharacters.firstOrNull { it.id == connected?.characterId }
+    val activeCombat = hosting?.combat ?: connected?.combat
+    val activeCombatant = activeCombat?.combatants?.firstOrNull { it.id == activeCombat.currentCombatantId }
+    val activeMonster = activeCombatant?.id?.takeIf { it.startsWith("monster:") }
+        ?.removePrefix("monster:")?.substringBefore(':')?.let(CreatureCatalog::byId)
+    val activeCharacter = activeCombatant?.let { combatant ->
+        when {
+            combatant.id.startsWith("npc:") -> combatant.id.removePrefix("npc:").toLongOrNull()
+                ?.let { id -> myCharacters.firstOrNull { it.id == id } }
+            hosting != null -> hosting.characters[combatant.id]
+            connected?.selfId == combatant.id -> linkedCharacter
+            else -> null
+        }
+    }
     var activePanel by remember { mutableStateOf<SessionFloatingPanel?>(null) }
     val playerChatMessages = remember(viewModel) { mutableStateListOf<PrivateChatUiMessage>() }
     LaunchedEffect(viewModel) {
@@ -1561,6 +1574,26 @@ fun SessionFloatingPanels(
                     horizontalArrangement = Arrangement.spacedBy(2.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
+                    if (activeCombatant != null) {
+                        Box(
+                            modifier = Modifier.size(38.dp).clip(CircleShape)
+                                .border(2.dp, DndGold, CircleShape)
+                        ) {
+                            if (activeMonster != null) {
+                                CreatureImage(
+                                    creature = activeMonster,
+                                    modifier = Modifier.fillMaxSize().clip(CircleShape),
+                                    contentScale = androidx.compose.ui.layout.ContentScale.Crop,
+                                    maxDimensionPx = 320
+                                )
+                            } else {
+                                CharacterAvatar(
+                                    photoUri = activeCharacter?.photoUri,
+                                    modifier = Modifier.fillMaxSize().clip(CircleShape)
+                                )
+                            }
+                        }
+                    }
                     if (hosting != null || connected?.combat != null) {
                         TextButton(
                             onClick = { activePanel = SessionFloatingPanel.COMBAT },
