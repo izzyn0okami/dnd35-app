@@ -855,3 +855,13 @@
 - A seção de familiares/companheiros não apresenta caixa vazia nem aviso em fichas sem vínculos. Quando a classe permite o vínculo inicial, são exibidas apenas ações compactas para criá-lo.
 - Não houve alteração do protocolo de sessão, dos dados persistidos ou das regras de combate.
 - Validação manual em aparelhos Mestre/Jogador pendente após CI.
+
+
+## 2026-11-14 — Ilustrações dedicadas para Abolete Mago e Diabo Farpado
+
+- Identificada uma fragilidade na associação visual: o componente tentava resolver imagens apenas pelo nome normalizado do arquivo e pela chave da criatura. Isso deixava o Abolete Mago dependente de um nome de arquivo excessivamente longo e não permitia distinguir com clareza um retrato dedicado.
+- O arquivo do Diabo Farpado (hamatula) existente era anormalmente pequeno (1.623 bytes), compatível com uma imagem ausente, placeholder ou inválida para o resultado visual esperado.
+- Criados dois recursos vetoriais Android dedicados, escaláveis e incluídos no APK: `creature_abolete_mago.xml` e `creature_diabo_farpado.xml`.
+- O componente `CreatureImage` agora prioriza esses recursos pelas chaves estáveis `abolete-mago-nivel-10` e `diabo-farpado-hamatula`; as demais criaturas continuam usando a resolução automática existente.
+- Não foram alterados os blocos de estatísticas, identificadores do catálogo ou regras das criaturas.
+- Validação pendente: CI, inspeção visual em aparelho e confirmação de que as duas cartas exibem os retratos sem fallback.
