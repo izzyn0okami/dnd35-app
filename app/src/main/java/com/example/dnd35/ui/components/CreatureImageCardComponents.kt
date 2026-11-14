@@ -157,7 +157,7 @@ fun <T> CreatureCardStack(
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(520.dp)
+                .height(560.dp)
                 .pointerInput(identity, safeIndex) {
                     var dragDistance = 0f
                     detectHorizontalDragGestures(
@@ -181,14 +181,14 @@ fun <T> CreatureCardStack(
                     modifier = Modifier
                         .offset(x = ((index + 1) * 18).dp, y = 5.dp)
                         .width(300.dp)
-                        .height(500.dp)
+                        .height(540.dp)
                         .zIndex(index.toFloat())
                 ) { card(item) }
             }
             Box(
                 modifier = Modifier
                     .width(300.dp)
-                    .height(500.dp)
+                    .height(540.dp)
                     .zIndex(10f)
             ) { card(visible.first()) }
         }
@@ -216,7 +216,7 @@ fun CreatureImageTradingCard(
     var showDetails by remember(creature.id) { mutableStateOf(false) }
 
     Card(
-        modifier = modifier.fillMaxWidth().height(500.dp).combinedClickable(
+        modifier = modifier.fillMaxWidth().height(540.dp).combinedClickable(
             onClick = { showBack = !showBack },
             onLongClick = { showDetails = true }
         ),
@@ -243,7 +243,7 @@ fun CreatureImageTradingCard(
             }
             if (!showBack) {
                 CreatureImage(creature = creature,
-                    modifier = Modifier.fillMaxWidth().height(104.dp),
+                    modifier = Modifier.fillMaxWidth().height(150.dp),
                     contentScale = ContentScale.Crop, maxDimensionPx = 1000)
                 Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
                     CreatureCombatValue("PV", creature.hitPoints.toString(), Modifier.weight(1f))

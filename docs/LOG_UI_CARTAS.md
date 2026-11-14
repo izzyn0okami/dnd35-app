@@ -40,3 +40,15 @@ Melhoria do componente compartilhado nas cartas do Bestiário, seleção de cria
 
 ### Validação
 - Aguardando CI Android e testes automatizados nesta alteração.
+
+
+## 2026-11-14 — Ampliação vertical da área de arte
+
+### Alterações
+- Aumentada a altura da ilustração frontal de 104 dp para 150 dp, dando mais destaque visual à criatura.
+- Aumentada a altura total da carta de 500 dp para 540 dp.
+- Aumentada a área da pilha de 520 dp para 560 dp e ajustada a altura das cartas sobrepostas para acompanhar a nova dimensão.
+- Mantidos os espaços destinados aos atributos de combate e às informações textuais, evitando que o aumento da arte os comprima.
+
+### Validação
+- Alteração agrupada na PR #374; aguardando CI Android e testes automatizados.
