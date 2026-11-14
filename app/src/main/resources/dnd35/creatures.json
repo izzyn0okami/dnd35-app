@@ -3167,7 +3167,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "O Diabo das Correntes, ou kyton, é um extraplanar de forma humanoide envolto por correntes e grilhões de ferro. Seu corpo parece humano à primeira vista, mas a presença de correntes vivas e a aparência perturbadora revelam sua natureza infernal. Habita os Nove Infernos de Baator e costuma atuar como carrasco, guardião ou executor.",
+    "combat": "O Kyton ataca com correntes dotadas de cravos, mantendo os adversários à distância. Pode controlar correntes próximas e fazê-las atacar de forma independente, além de usar seu olhar irritante para perturbar os inimigos. Sua regeneração e resistência dificultam derrotá-lo, e ele pode escalar as correntes que controla para obter vantagem no terreno."
   },
   {
     "id": "diabo-farpado-hamatula",
@@ -3217,7 +3219,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "O Diabo Farpado, ou hamatula, é um baatezu de cerca de 2,1 m, coberto por espinhos e dotado de garras perigosas. Atua como guerreiro de elite e guardião dos fossos e dos aposentos dos habitantes mais poderosos dos Nove Infernos. Sua natureza agressiva combina-se com a disciplina militar infernal.",
+    "combat": "O Hamatula procura agarrar e empalar os adversários com seus espinhos, usando as garras para iniciar o confronto. Seus espinhos também ferem quem o ataca diretamente, e seu toque pode inspirar medo. É capaz de invocar outros baatezu e utiliza sua resistência e defesa farpada para punir inimigos que insistem em enfrentá-lo de perto."
   },
   {
     "id": "diabo-dos-ossos-osyluth",
@@ -3267,7 +3271,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "O Diabo dos Ossos, ou osyluth, é uma criatura infernal de aproximadamente 2,7 m, com corpo ressequido e ossos muito evidentes. Sua aparência lembra um esqueleto revestido por pele repuxada, e sua cauda termina em um ferrão venenoso. Atua como supervisor, investigador e agente de terror nos Nove Infernos de Baator.",
+    "combat": "O Osyluth utiliza sua aura de medo para desorganizar os inimigos e ataca com garras, mordida e ferrão venenoso. Pode recorrer a habilidades similares a magia para perseguir ou controlar adversários e invocar lêmures ou outro diabo dos ossos. Sua resistência infernal permite que continue lutando mesmo quando sofre ferimentos graves."
   },
   {
     "id": "diabrete",
@@ -3317,7 +3323,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "O Diabrete é um pequeno humanoide infernal com asas coriáceas de morcego, cauda farpada e ferrão venenoso. É insidioso e covarde, preferindo manipular e enganar em vez de enfrentar inimigos diretamente. Costuma servir como familiar de conjuradores malignos e atua como espião e conselheiro traiçoeiro.",
+    "combat": "O Diabrete prefere evitar o combate, usando voo, furtividade e habilidades similares a magia para observar, enganar ou escapar. Quando ataca, utiliza o ferrão venenoso e tenta surpreender uma vítima isolada. Pode alterar sua forma para assumir outras aparências e, uma vez por semana, conjurar comunhão para obter informações."
   },
   {
     "id": "erinyes",
@@ -3367,7 +3375,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "As Erinyes são diabos que, segundo os rumores, descendem de anjos caídos. Ao contrário de muitos baatezu, possuem aparência atraente e podem se apresentar como mulheres ou homens belíssimos. Medem cerca de 1,8 m e servem aos senhores infernais como caçadoras, executoras e guerreiras especializadas.",
+    "combat": "As Erinyes preferem combater à distância, utilizando seu arco longo composto flamejante e habilidades similares a magia. Também podem enredar inimigos com uma corda encantada, que se move como se estivesse sob a magia animar cordas. Sua visão da verdade dificulta enganá-las, e podem invocar outros baatezu para reforçar o combate."
   },
   {
     "id": "gato-infernal-bezekira",
@@ -3417,7 +3427,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "O Gato Infernal, ou bezekira, é um predador felino extraplanar dos Nove Infernos de Baator. Seu corpo lembra o de um grande felino, mas sua natureza infernal permite que permaneça invisível sob determinadas condições. É astuto, feroz e utiliza a telepatia para comunicar-se com outros de sua espécie.",
+    "combat": "O Bezekira caça por emboscada, aproximando-se invisível e atacando com garras e mordida. Quando investe, pode executar um bote e rasgar a vítima com as garras. Seu agarrar aprimorado permite prender adversários, enquanto a invisibilidade sob a luz lhe dá vantagem para iniciar ou abandonar um confronto."
   },
   {
     "id": "lorde-das-profundezas",
@@ -3467,7 +3479,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "O Lorde das Profundezas é um dos mais poderosos baatezu, um senhor infernal de cerca de 3,6 m, com corpo coberto por grandes escamas, asas de morcego e cauda semelhante a um chicote. Seu corpo parece envolto em chamas, e suas presas gotejam veneno corrosivo. É um comandante supremo dos Nove Infernos, temido tanto por mortais quanto por outros diabos.",
+    "combat": "O Lorde das Profundezas normalmente começa o combate usando suas habilidades similares a magia para neutralizar os adversários mais perigosos, além de ativar suas auras profana e de medo e invocar baatezu. Depois avança para atacar com garras, mordida, cauda e constrição. Seu veneno e sua doença tornam os ataques físicos ainda mais perigosos; sua regeneração e resistência permitem sustentar confrontos prolongados."
   },
   {
     "id": "digestor",
@@ -3517,7 +3531,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "O Digestor é uma besta mágica predadora de corpo alongado, apoiada em duas patas traseiras poderosas e com uma longa cauda. Sua pele é cinzenta e irregular, e sua cabeça estreita apresenta ventosas e um orifício tubular na testa. Mede cerca de 1,5 m de altura e 2,1 m do focinho à cauda. É um caçador voraz que pode viver em diversos ambientes onde encontre presas.",
+    "combat": "O Digestor localiza uma presa, investe contra ela e borrifa ácido, capaz de dissolver carne em poucos segundos. Pode lançar um jato em cone contra vários alvos ou concentrar o ácido em um único inimigo próximo. Se o primeiro ataque não matar a presa, golpeia com as patas traseiras até poder borrifar ácido novamente."
   },
   {
     "id": "dilacerador-cinzento",
@@ -3567,7 +3583,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "O Dilacerador Cinzento é uma besta mágica enorme, de corpo bípede, ombros largos, braços longos e musculosos e seis pequenos olhos amarelados. Sua pele cinzenta não possui pelos e sua boca larga é repleta de dentes negros. Apesar de sua aparência selvagem, pode desenvolver um vínculo incomum com criaturas nativas de seu ambiente, protegendo-as e levando-lhes alimento.",
+    "combat": "O Dilacerador Cinzento ataca para matar quando caça ou protege a si mesmo e às criaturas que adotou. Pode esconder-se e esperar que a presa se aproxime; então morde para iniciar um agarrão aprimorado e dilacera a vítima com as garras. É extremamente protetor com seus companheiros adotivos e recua se eles próprios o atacarem."
   },
   {
     "id": "dinonico",
@@ -3617,7 +3635,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "O Dinonico é um dinossauro carnívoro bípede, esguio e veloz, com pernas longas, braços preênseis e grandes garras nas patas traseiras. Sua pele apresenta cores verdes brilhantes, com manchas ou listras escuras, e sua cauda rígida equilibra o corpo durante a corrida. Mede aproximadamente a altura de um humano, mas sua cauda dobra o comprimento total.",
+    "combat": "O Dinonico combina velocidade, braços preênseis, dentes grandes e garras afiadas. Corre em direção à presa, salta sobre ela e a rasga com as garras traseiras enquanto morde e desfere patadas. O bote permite realizar um ataque total ao final de uma investida, e matilhas utilizam táticas astuciosas para cercar suas vítimas."
   },
   {
     "id": "elasmossauro",
