@@ -5,8 +5,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -17,6 +15,7 @@ import com.example.dnd35.model.SummonCreatureOption
 import com.example.dnd35.model.SpellbookRules
 import com.example.dnd35.ui.components.CreatureDeckOverlay
 import com.example.dnd35.ui.components.CreatureImageTradingCard
+import com.example.dnd35.ui.components.CreatureCardStack
 
 @Composable
 fun SummonedCreaturePickerDialog(
@@ -48,10 +47,22 @@ fun SummonedCreaturePickerDialog(
         if (options.isEmpty()) {
             Text("Nenhuma criatura disponível para esta magia.")
         } else {
-            LazyColumn(
-                modifier = Modifier.weight(1f),
-                verticalArrangement = Arrangement.spacedBy(12.dp)
-            ) {
+            CreatureCardStack(
+                items = options,
+                key = { "${it.creature.id}-${it.sourceCircle}-${it.templateLabel}" },
+                modifier = Modifier.fillMaxWidth()
+            ) { option ->
+                val variant = option.templateLabel.takeIf { it.isNotBlank() }
+                    ?.let { "Modelo/variante: $it" }
+                CreatureImageTradingCard(
+                    creature = option.creature,
+                    details = "Lista de ${SpellbookRules.circleLabel(option.sourceCircle)}",
+                    stats = "PV ${option.creature.hitPoints}  •  CA ${option.creature.armorClass}  •  Iniciativa ${option.creature.initiative}",
+                    footer = variant,
+                    selectLabel = "Invocar",
+                    onSelect = { onSelect(option) }
+                )
+            } {
                 items(options, key = { "${it.creature.id}-${it.sourceCircle}-${it.templateLabel}" }) { option ->
                     val variant = option.templateLabel.takeIf { it.isNotBlank() }
                         ?.let { "Modelo/variante: $it" }
