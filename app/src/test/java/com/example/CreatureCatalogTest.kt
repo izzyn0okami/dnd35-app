@@ -692,4 +692,32 @@ class CreatureCatalogTest {
         assertTrue(CreatureCatalog.byId("ursocoruja")!!.description.contains("CD 30"))
     }
 
+    
+    @Test
+    fun fiveVMonsterSheetsHaveBookBasedNarrativeAndCombat() {
+        val vargouille = CreatureCatalog.byId("vargouille")!!
+        assertTrue(vargouille.description.contains("Carceri"))
+        assertTrue(vargouille.combat.contains("Silvo (Sob)"))
+        assertTrue(vargouille.combat.contains("Fortitude CD 15"))
+
+        val verme = CreatureCatalog.byId("verme-purpura")!!
+        assertTrue(verme.description.contains("20 toneladas"))
+        assertTrue(verme.combat.contains("Engolir (Ext)"))
+        assertTrue(verme.combat.contains("Fortitude CD 25"))
+
+        val vinha = CreatureCatalog.byId("vinha-assassina")!!
+        assertTrue(vinha.description.contains("vinho tóxico"))
+        assertTrue(vinha.combat.contains("Percepção às Cegas"))
+        assertTrue(vinha.combat.contains("Observar CD 20"))
+
+        val rastejante = CreatureCatalog.byId("rastejante-noturno")!!
+        assertTrue(rastejante.description.contains("30 m de comprimento"))
+        assertTrue(rastejante.combat.contains("Drenar Energia"))
+        assertTrue(rastejante.combat.contains("Fortitude CD 22"))
+
+        val vulto = CreatureCatalog.byId("vulto-alado")!!
+        assertTrue(vulto.description.contains("12 m"))
+        assertTrue(vulto.combat.contains("Drenar Magia"))
+        assertTrue(vulto.combat.contains("nível de conjurador 17º"))
+    }
 }
