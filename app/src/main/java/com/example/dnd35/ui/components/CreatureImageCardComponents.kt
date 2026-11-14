@@ -157,7 +157,7 @@ fun <T> CreatureCardStack(
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(560.dp)
+                .height(620.dp)
                 .pointerInput(identity, safeIndex) {
                     var dragDistance = 0f
                     detectHorizontalDragGestures(
@@ -181,14 +181,14 @@ fun <T> CreatureCardStack(
                     modifier = Modifier
                         .offset(x = ((index + 1) * 18).dp, y = 5.dp)
                         .width(300.dp)
-                        .height(540.dp)
+                        .height(600.dp)
                         .zIndex(index.toFloat())
                 ) { card(item) }
             }
             Box(
                 modifier = Modifier
                     .width(300.dp)
-                    .height(540.dp)
+                    .height(600.dp)
                     .zIndex(10f)
             ) { card(visible.first()) }
         }
@@ -216,7 +216,7 @@ fun CreatureImageTradingCard(
     var showDetails by remember(creature.id) { mutableStateOf(false) }
 
     Card(
-        modifier = modifier.fillMaxWidth().height(540.dp).combinedClickable(
+        modifier = modifier.fillMaxWidth().height(600.dp).combinedClickable(
             onClick = { showBack = !showBack },
             onLongClick = { showDetails = true }
         ),
@@ -243,13 +243,18 @@ fun CreatureImageTradingCard(
             }
             if (!showBack) {
                 CreatureImage(creature = creature,
-                    modifier = Modifier.fillMaxWidth().height(150.dp),
+                    modifier = Modifier.fillMaxWidth().height(210.dp),
                     contentScale = ContentScale.Crop, maxDimensionPx = 1000)
                 Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
                     CreatureCombatValue("PV", creature.hitPoints.toString(), Modifier.weight(1f))
                     CreatureCombatValue("CA", creature.armorClassText, Modifier.weight(1f))
-                    CreatureCombatValue("BBA", creature.baseAttack.creatureSigned(), Modifier.weight(1f))
-                    CreatureCombatValue("Desloc.", creature.speed, Modifier.weight(1.35f))
+                    CreatureCombatValue("Iniciativa", creature.initiative.creatureSigned(), Modifier.weight(1.15f))
+                    CreatureCombatValue("Desloc.", creature.speed, Modifier.weight(1.25f))
+                }
+                Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                    CreatureCombatValue("Fort.", creature.saves.fort.creatureSigned(), Modifier.weight(1f))
+                    CreatureCombatValue("Ref.", creature.saves.ref.creatureSigned(), Modifier.weight(1f))
+                    CreatureCombatValue("Von.", creature.saves.will.creatureSigned(), Modifier.weight(1f))
                 }
                 CreatureAttackLine("Ataque", creature.attack)
                 if (creature.fullAttack.isNotBlank() && creature.fullAttack != creature.attack) {
@@ -277,7 +282,9 @@ fun CreatureImageTradingCard(
                         fontWeight = FontWeight.ExtraBold)
                     Text("${creature.type} • ${creature.typeDetail.ifBlank { creature.type }}",
                         style = MaterialTheme.typography.bodySmall)
-                    Text("Iniciativa: ${creature.initiative.creatureSigned()} • Agarrar: ${creature.grapple.creatureSigned()}",
+                    Text("BBA: ${creature.baseAttack.creatureSigned()} • Agarrar: ${creature.grapple.creatureSigned()}",
+                        style = MaterialTheme.typography.bodySmall)
+                    Text("Iniciativa: ${creature.initiative.creatureSigned()}",
                         style = MaterialTheme.typography.bodySmall)
                     Text("CA de toque: ${creature.touchAc} • CA surpresa: ${creature.flatFootedAc}",
                         style = MaterialTheme.typography.bodySmall)
