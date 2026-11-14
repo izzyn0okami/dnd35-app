@@ -43,6 +43,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
+import com.example.R
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -87,8 +89,21 @@ fun CreatureImage(
         }
     }
 
+    val specialDrawable = when (creature.id) {
+        "abolete-mago-nivel-10" -> R.drawable.creature_abolete_mago
+        "diabo-farpado-hamatula" -> R.drawable.creature_diabo_farpado
+        else -> null
+    }
+
     Box(modifier = modifier.clip(RoundedCornerShape(12.dp)), contentAlignment = Alignment.Center) {
-        if (bitmap != null) {
+        if (specialDrawable != null) {
+            Image(
+                painter = painterResource(id = specialDrawable),
+                contentDescription = "Ilustração de ${creature.name}",
+                modifier = Modifier.fillMaxSize(),
+                contentScale = contentScale
+            )
+        } else if (bitmap != null) {
             Image(
                 bitmap = bitmap!!,
                 contentDescription = "Ilustração de ${creature.name}",
