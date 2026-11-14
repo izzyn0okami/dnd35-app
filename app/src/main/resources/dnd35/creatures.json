@@ -5975,7 +5975,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Pequeno constructo humanoide, com cerca de 50 cm de altura, pele áspera e verrugosa, asas e dentes finos como agulhas. É criado por um mago como servo, mensageiro, espião ou patrulheiro. Sua aparência e tendência refletem as do criador; não fala, mas está ligado telepaticamente a ele e pode compartilhar o que vê e ouve a até 500 m.",
+    "combat": "É um combatente limitado que pousa sobre a vítima e a morde com presas venenosas. O veneno exige Fortitude (CD 13): inicialmente provoca sono por 1 minuto e, no efeito secundário, sono por mais 5d6 minutos. A destruição do homúnculo causa 2d10 pontos de dano ao criador; se o mestre morrer, o constructo também morre e seu corpo derrete lentamente."
   },
   {
     "id": "marut",
@@ -6025,7 +6027,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Inevitável de Mecânus que representa a inevitabilidade da morte. É uma figura mecanizada de aproximadamente 3,5 m, com armadura dourada e corpo de partes metálicas. Caça criaturas que tentam prolongar artificialmente a própria existência ou que procuram enganar a morte por meios extremos; não costuma perseguir quem simplesmente recorre à magia para ressuscitar os mortos de forma ocasional.",
+    "combat": "Depois de identificar seu alvo, avança sem descanso e procura impedir sua fuga, normalmente usando muralha de energia. Aproxima-se com corrente de relâmpagos e ataca com os punhos, recorrendo a círculo da morte quando cercado. O punho esquerdo acrescenta 3d6 de dano sônico e pode ensurdecer por 2d6 rodadas; o direito acrescenta 3d6 de eletricidade e pode cegar pelo mesmo período. Também dispõe de magias para localizar fugitivos, atravessar o espaço e neutralizar conjuradores. Suas armas são consideradas ordeiras para superar Redução de Dano, e possui cura acelerada 10."
   },
   {
     "id": "kolyarut",
@@ -6075,7 +6079,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Inevitável de Mecânus que pune a violação voluntária de contratos e juramentos importantes. Tem corpo humanoide de partes mecânicas, pele vermelha, armadura e manto dourados, além de uma espada. Antes de agir, investiga o acordo e distingue a traição deliberada de uma quebra acidental ou involuntária; costuma apresentar-se formalmente e pode assumir outra aparência para infiltrar-se entre os habitantes de uma cidade.",
+    "combat": "Estuda as habilidades e defesas do alvo e tenta encerrar o confronto rapidamente, evitando destruição desnecessária, embora não poupe quem atrapalhe sua missão. Sua tática preferida é aproximar-se invisível ou disfarçado e usar Toque Vampírico para drenar energia vital antes que a vítima reaja. Também dispara um raio de drenar temporário a até 60 m e dispõe de habilidades similares à magia para localizar, imobilizar, amedrontar ou persuadir o alvo. Suas armas são consideradas ordeiras para superar Redução de Dano."
   },
   {
     "id": "zelekhut",
@@ -6125,7 +6131,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Inevitável de Mecânus com corpo mecanizado em forma de centauro, armadura dourada e asas metálicas retráteis. É enviado para caçar aqueles que desprezam a justiça, sobretudo fugitivos que tentam escapar de uma punição legítima. É um rastreador persistente, mas procura evitar ferir espectadores inocentes durante a captura.",
+    "combat": "Ao entrar em combate, pode liberar duas correntes com cravos dos antebraços e abrir as asas metálicas como ações livres. Usa velocidade e habilidades similares à magia para bloquear rotas de fuga, localizar o alvo e imobilizar adversários que ameacem inocentes. Em seguida, agarra o fugitivo com as correntes, podendo imobilizá-lo ou desarmá-lo; se a sentença for de morte, executa o alvo. Suas correntes causam dano contundente e elétrico, e suas armas são consideradas ordeiras para superar Redução de Dano."
   },
   {
     "id": "inumano",
@@ -6175,7 +6183,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Morto-vivo de aparência semelhante a um cadáver humano, com carne ressecada esticada sobre os ossos, olhos selvagens e dentes transformados em agulhas irregulares. Nasce do ódio e da violência extremos e costuma vagar por covas rasas, catacumbas e lugares marcados pela morte. Deseja destruir toda a vida e povoar o mundo com suas crias.",
+    "combat": "Ataca esmagando os oponentes com os punhos, que também drenam energia. Qualquer humanoide morto por um inumano ergue-se após 1d4 rodadas como uma cria sob o comando de seu criador; a cria perde todas as habilidades que possuía em vida e permanece escravizada até ser destruída. Os inumanos são mortos-vivos e possuem as imunidades correspondentes a esse tipo."
   },
   {
     "id": "kobold-combatente-de-1-nivel",
