@@ -159,12 +159,6 @@ fun CreatureCatalogTab(modifier: Modifier = Modifier) {
                     selectLabel = "Abrir ficha completa",
                     onSelect = { selectedCreatureId = creature.id }
                 )
-            } {
-                items(filtered, key = { it.id }) { creature ->
-                    CreatureListItem(creature = creature) {
-                        selectedCreatureId = creature.id
-                    }
-                }
             }
         }
     }
