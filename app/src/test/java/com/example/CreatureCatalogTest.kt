@@ -569,4 +569,35 @@ class CreatureCatalogTest {
         assertTrue(ravid.combat.contains("Ataques Múltiplos"))
         assertEquals("5", ravid.challengeRating)
     }
+    @Test
+    fun sahuaginEtherealRaidersSatyrAndSkumHaveBookBasedDetails() {
+        val sahuagin = CreatureCatalog.byId("sahuagin")!!
+        assertTrue(sahuagin.description.contains("demônios do mar"))
+        assertTrue(sahuagin.combat.contains("Frenesi de Sangue"))
+        assertTrue(sahuagin.combat.contains("50 m"))
+        assertFalse(sahuagin.organization.contains("Robgoblin"))
+        
+        val salteador = CreatureCatalog.byId("salteador-etereo")!!
+        assertTrue(salteador.description.contains("quatro braços"))
+        assertTrue(salteador.combat.contains("Detectar Magia"))
+        assertTrue(salteador.combat.contains("Prestidigitação"))
+        
+        val saqueador = CreatureCatalog.byId("saqueador-etereo")!!
+        assertEquals("Besta Mágica", saqueador.type)
+        assertEquals("2d10", saqueador.hitDice)
+        assertTrue(saqueador.description.contains("três mandíbulas"))
+        assertTrue(saqueador.combat.contains("nível de conjurador 15º"))
+        
+        val satiro = CreatureCatalog.byId("satiro")!!
+        assertTrue(satiro.description.contains("fauno"))
+        assertEquals("Flautas", satiro.specialAttacks)
+        assertTrue(satiro.combat.contains("Vontade CD 13"))
+        assertTrue(satiro.combat.contains("Nível de Desafio é 2 sem flautas e 4 com flautas"))
+        
+        val skum = CreatureCatalog.byId("skum")!!
+        assertTrue(skum.description.contains("criadas pelos aboletes"))
+        assertTrue(skum.combat.contains("1d6+2"))
+        assertFalse(skum.fullAttack.contains("Sátiro"))
+    }
+
 }

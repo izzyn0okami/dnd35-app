@@ -779,3 +779,27 @@ As fichas-base devem ser reutilizadas por ID sempre que a tabela pedir apenas um
 - Combate registra comportamento defensivo, Rajada de Energia Positiva (2d10 contra mortos-vivos, inclusive incorpóreos), animação de objeto aleatório a até 6 m uma vez por rodada como animar objetos (NC 20º), voo e a exceção do talento Ataques Múltiplos.
 - Adicionado teste de regressão para os efeitos distintivos, alcance, nível de conjurador e ND.
 - Contagem após esta etapa: 319 fichas; 205 com Descrição e Combate; 114 pendentes.
+
+
+## 2026-11-14 — Trigésima primeira etapa: Sahuagin, salteadores etéreos, Sátiro e Skum
+
+- Conferidas as páginas impressas 225–230 do Livro dos Monstros brasileiro.
+- Preenchidas Descrição e Combate de cinco fichas: Sahuagin, Salteador Etéreo, Saqueador Etéreo, Sátiro e Skum.
+- O verbete apresenta duas criaturas etéreas distintas, que foram mantidas em registros separados:
+  - **Salteador Etéreo:** aberração de corpo bulboso, quatro braços e uma perna preênsil; detecta magia e rouba objetos usando Passeio Etéreo.
+  - **Saqueador Etéreo:** besta mágica predadora, sem cabeça, com três mandíbulas; caça a partir do Plano Etéreo. A ficha completa foi adicionada porque não existia no catálogo.
+- Sahuagin: acrescentados frenesi de sangue, rasgar, sentido aquático, sensibilidade à água doce, cegueira sob luz, comunicação com tubarões, anfíbio, bônus de perícia e variantes de quatro braços/malenti.
+- Sátiro: detalhados os efeitos das flautas (enfeitiçar pessoa, sono ou medo, Vontade CD 13), imunidade por 24 horas após resistir e a diferença de ND com/sem flautas. Corrigido o campo Ataques Especiais, que continha resíduos de OCR.
+- Skum: detalhados Rasgar, ataques subaquáticos, uso eventual de armas e bônus de perícia; removido texto de OCR anexado ao Ataque Total.
+- Corrigidos resíduos de cabeçalho/OCR no campo Organização do Sahuagin, preservando o conteúdo restante, e em campos narrativos/ataques das fichas afetadas.
+- Nenhuma regra de elegibilidade de companheiro, familiar ou invocação foi alterada. Nenhuma imagem foi pesquisada ou inserida.
+- Testes de regressão adicionados para os cinco registros, incluindo a distinção entre as duas criaturas etéreas e a integridade dos campos corrigidos.
+- Contagem após esta etapa: 320 fichas no catálogo; 210 com Descrição e Combate; 110 ainda precisam de ao menos um desses campos.
+
+
+### Correção de CI — 2026-11-14
+
+- A primeira execução dos testes apontou uma falha exclusivamente na asserção recém-adicionada para a descrição do Skum.
+- O texto do catálogo usa corretamente a concordância feminina em “criaturas renegadas criadas pelos aboletes”; o teste esperava “criados”.
+- Ajustada a expectativa do teste para refletir literalmente o conteúdo da ficha. Nenhuma regra ou texto do catálogo foi alterado nesta correção.
+- Aguardar nova execução de Android CI e compilação do APK antes do merge.
