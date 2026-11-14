@@ -855,3 +855,17 @@ As fichas-base devem ser reutilizadas por ID sempre que a tabela pedir apenas um
 - A nova execução confirmou outra expectativa excessivamente literal no teste: a ficha registra “neutralizar veneno (CD 21, nível de conjurador 8º)”, portanto a sequência “neutralizar veneno (CD 21)” sem a vírgula não existe no texto.
 - Ajustada somente a expressão esperada no teste para corresponder ao texto efetivamente registrado.
 - O conteúdo da ficha, a CD 21 e o nível de conjurador 8º foram preservados.
+
+
+## 2026-11-14 — Trigésima quinta etapa: cinco criaturas (Vargouille a Vulto Alado)
+
+- Fonte: Livro dos Monstros brasileiro, páginas impressas 251–257 (PDF fornecido).
+- Preenchidas Descrição e Combate de cinco registros existentes: Vargouille, Verme Púrpura, Vinha Assassina, Rastejante Noturno e Vulto Alado.
+- Vargouille: silvo, beijo e metamorfose, veneno e condições para interromper/reverter a transformação.
+- Verme Púrpura: agarrar aprimorado, veneno, engolir, dano digestivo, capacidade interna e bônus de Natação.
+- Vinha Assassina: constrição, enredar, agarrar aprimorado, percepção às cegas e camuflagem.
+- Rastejante Noturno: drenagem de energia, agarrar, veneno e escape do interior.
+- Vulto Alado: drenagem de magia, habilidades similares à magia, invocação de mortos-vivos e bônus de Esconder-se noturno.
+- Os blocos de estatísticas existentes foram preservados. O Verme do Gelo foi deixado para a etapa seguinte porque a extração textual disponível apresentou trechos intercalados e precisa de conferência visual antes de transcrição.
+- Adicionado teste de regressão para os cinco registros e seus efeitos distintivos.
+- Contagem de partida: 320 fichas; 225 completas; 95 pendentes. Esta etapa acrescenta cinco fichas completas, totalizando 230 completas e 90 pendentes.
