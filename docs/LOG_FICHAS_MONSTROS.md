@@ -849,3 +849,9 @@ As fichas-base devem ser reutilizadas por ID sempre que a tabela pedir apenas um
 - Corrigido o teste para validar CD 30 no campo Descrição, sem alterar conteúdo da criatura nem suas estatísticas.
 - A falha não indicava defeito no catálogo; era apenas uma expectativa de teste aplicada ao campo errado.
 - Aguardando nova execução dos fluxos Android CI e compilação do APK.
+
+
+### Segunda correção de CI — 2026-11-14 (Unicórnio)
+- A nova execução confirmou outra expectativa excessivamente literal no teste: a ficha registra “neutralizar veneno (CD 21, nível de conjurador 8º)”, portanto a sequência “neutralizar veneno (CD 21)” sem a vírgula não existe no texto.
+- Ajustada somente a expressão esperada no teste para corresponder ao texto efetivamente registrado.
+- O conteúdo da ficha, a CD 21 e o nível de conjurador 8º foram preservados.
