@@ -205,6 +205,7 @@ fun CreatureImageTradingCard(
     stats: String,
     modifier: Modifier = Modifier,
     footer: String? = null,
+    titleOverride: String? = null,
     selectLabel: String = "Selecionar criatura",
     onSelect: (() -> Unit)? = null
 ) {
@@ -226,7 +227,7 @@ fun CreatureImageTradingCard(
         ) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Column(modifier = Modifier.weight(1f)) {
-                    Text(creature.name, style = MaterialTheme.typography.titleMedium,
+                    Text(titleOverride?.takeIf { it.isNotBlank() } ?: creature.name, style = MaterialTheme.typography.titleMedium,
                         fontWeight = FontWeight.Bold, maxLines = 1, overflow = TextOverflow.Ellipsis)
                     Text(
                         "${creature.type} • ${creature.size} • ND ${creature.challengeRating}",
