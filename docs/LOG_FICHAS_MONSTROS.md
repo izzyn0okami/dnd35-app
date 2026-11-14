@@ -375,19 +375,23 @@ A alteração foi enviada ao PR #367 no commit `6b8a5eb32cf202c1393ad95803500f7e
 - O histórico de magias também transforma a criatura registrada em um acesso direto à ficha completa: o registro persiste o ID do catálogo, e tocar no nome da criatura invocada abre seus detalhes. Isso mantém o vínculo mesmo após fechar o seletor ou reabrir a ficha.
 
 ### Fichas ainda ausentes no catálogo
-Não foram criados placeholders nem estatísticas presumidas. As seguintes opções impressas no Livro do Jogador ainda dependem de fichas próprias do Livro dos Monstros para serem disponibilizadas no seletor:
+Não foram criados placeholders nem estatísticas presumidas. As opções abaixo aparecem nas tabelas do Livro do Jogador, mas ainda não têm ficha própria em `CreatureCatalog`; por isso não são oferecidas no seletor até a extração e conferência dos blocos no Livro dos Monstros.
 
-- **Elementais:** Água, Ar, Fogo e Terra, nos estágios Pequeno, Médio, Grande, Enorme, Maior e Ancião.
-- **Gaviões-Seta:** Jovem, Adulto e Ancião.
-- **Tojanidas:** Jovem, Adulto e Ancião.
-- **Salamandras:** Irmã de Chama, Média e Nobre.
-- **Xorns:** Menor, Médio e Ancião.
-- **Unicórnio** e **Unicórnio, Arauto Celestial**.
-- **Arconte Guardião**, **Leonal**, **Bruxa da Noite**, **Xill**, **Cão Yeth** e **Lêmure**.
-- **Insetos gigantes:** Abelha, Besouro, Gafanhoto e Louva-a-Deus.
-- **Baleia Celestial** (a tabela não especifica uma das espécies de baleia).
+**Invocar Aliado da Natureza**
+- Elementais: Pequeno (2º), Médio (4º), Grande (5º), Enorme (6º), Maior (7º) e Ancião (9º).
+- Gavião-Seta: Jovem (4º), Adulto (5º) e Ancião (7º).
+- Salamandras: Irmã de Chama (4º), Média (6º) e Nobre (8º).
+- Tojanidas: Jovem (4º), Adulto (5º) e Anciã (8º).
+- Xorns: Menor (4º), Médio (6º) e Ancião (7º).
+- Unicórnio (4º) e Unicórnio, Arauto Celestial (9º).
 
-Essas fichas devem ser extraídas e conferidas individualmente no Livro dos Monstros antes de entrar no catálogo. A ficha-base deve ser reutilizada por ID sempre que a tabela pedir apenas um modelo Celestial/Abissal; não duplicar registros para representar o modelo.
+**Invocar Criaturas**
+- Elementais: Pequeno (3º), Médio (5º), Grande (6º), Enorme (7º), Maior (8º) e Ancião (9º).
+- Insetos gigantes: Abelha e Besouro (2º), Louva-a-Deus (4º) e Gafanhoto (5º).
+- Lêmure (2º), Cão Yeth (4º), Arconte Guardião (5º), Xill (6º), Leonal (9º) e Bruxa da Noite (9º).
+- Baleia Celestial (7º); a tabela não especifica uma espécie de baleia para essa entrada.
+
+As fichas-base devem ser reutilizadas por ID sempre que a tabela pedir apenas um modelo Celestial/Abissal; não duplicar registros para representar o modelo. Para Elementais, manter as fichas separadas por elemento e estágio, pois seus blocos de estatísticas e habilidades não são intercambiáveis.
 
 ### Testes
 - Acrescentados testes para as criaturas existentes que estavam sem flag e para suas listas/círculos corretos.
