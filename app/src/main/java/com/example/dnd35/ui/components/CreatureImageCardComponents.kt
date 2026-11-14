@@ -6,6 +6,11 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.combinedClickable
+import androidx.compose.foundation.gestures.detectHorizontalDragGestures
+import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.draw.zIndex
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -109,6 +114,73 @@ private fun normalizeCreatureImageKey(value: String): String =
         .replace(Regex("\\p{Mn}+"), "")
         .lowercase()
         .filter { it.isLetterOrDigit() }
+
+/**
+ * Apresenta uma pilha navegável de cartas. A carta da frente pode ser arrastada
+ * horizontalmente para revelar a próxima, sem perder o estado de busca/filtro da lista.
+ */
+@Composable
+fun <T> CreatureCardStack(
+    items: List<T>,
+    key: (T) -> String,
+    modifier: Modifier = Modifier,
+    card: @Composable (T) -> Unit
+) {
+    if (items.isEmpty()) return
+    val identity = items.map(key)
+    var activeIndex by remember(identity) { mutableStateOf(0) }
+    val safeIndex = activeIndex.coerceIn(0, items.lastIndex)
+    val visibleCount = minOf(items.size, 4)
+    val visible = (0 until visibleCount).map { offset ->
+        items[(safeIndex + offset) % items.size]
+    }
+
+    Column(modifier = modifier, horizontalAlignment = Alignment.CenterHorizontally) {
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(370.dp)
+                .pointerInput(identity, safeIndex) {
+                    var dragDistance = 0f
+                    detectHorizontalDragGestures(
+                        onHorizontalDrag = { change, amount ->
+                            dragDistance += amount
+                            change.consume()
+                        },
+                        onDragEnd = {
+                            if (dragDistance < -48f) activeIndex = (safeIndex + 1) % items.size
+                            else if (dragDistance > 48f) activeIndex = (safeIndex - 1 + items.size) % items.size
+                            dragDistance = 0f
+                        },
+                        onDragCancel = { dragDistance = 0f }
+                    )
+                },
+            contentAlignment = Alignment.TopStart
+        ) {
+            // As cartas seguintes ficam atrás; a carta ativa é desenhada por último.
+            visible.drop(1).forEachIndexed { index, item ->
+                Box(
+                    modifier = Modifier
+                        .offset(x = ((index + 1) * 18).dp, y = 5.dp)
+                        .width(250.dp)
+                        .height(350.dp)
+                        .zIndex(index.toFloat())
+                ) { card(item) }
+            }
+            Box(
+                modifier = Modifier
+                    .width(250.dp)
+                    .height(350.dp)
+                    .zIndex(10f)
+            ) { card(visible.first()) }
+        }
+        Text(
+            "${safeIndex + 1} / ${items.size} • arraste a carta para revelar a próxima",
+            style = MaterialTheme.typography.labelSmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant
+        )
+    }
+}
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
