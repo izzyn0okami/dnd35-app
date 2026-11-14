@@ -6545,7 +6545,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Conjurador morto-vivo, normalmente um mago ou feiticeiro, mas também podendo ter sido clérigo ou outro conjurador. Seu corpo humanoide é esquelético, com restos de carne apodrecida sobre os ossos e pontos escarlates brilhando nas órbitas vazias. Busca poder e conhecimentos esquecidos, e pode planejar por décadas ou séculos. Para preservar sua força vital, cria uma filactéria mágica.",
+    "combat": "Conserva as habilidades de sua classe e adquire poderes próprios de morto-vivo. Sua presença gera uma aura de medo que pode afetar criaturas com menos de 5 DV a até 18 m; seu toque pode paralisar permanentemente criaturas vivas, efeito que exige magia apropriada para ser removido. Também pode usar um toque de energia negativa que causa 1d8+5 de dano, reduzido à metade com Vontade. Possui Redução de Dano 15/contusão e mágica, resistência à expulsão +4 e imunidade a frio, eletricidade, metamorfose imposta e efeitos de ação mental. Se destruído, pode retornar em 1d10 dias enquanto sua filactéria existir."
   },
   {
     "id": "lillend",
@@ -6595,7 +6597,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Extraplanar de Ysgard com tronco semelhante ao de uma mulher humana ou elfa, cauda longa de serpente multicolorida e asas de pássaro. É apaixonada por música, história, arte e áreas selvagens; protege artistas, obras e retiros naturais com grande determinação. Em geral é pacífica, mas reage com fúria contra quem destrói ou ameaça aquilo que considera valioso.",
+    "combat": "Usa magias arcanas como um bardo de 6º nível e habilidades similares à magia para confundir e enfraquecer os adversários antes de atacar. Pode prender um oponente com a cauda usando Agarrar Aprimorado e, após vencer a disputa de Agarrar, aplicar Constrição, causando 2d6+5 de dano; enquanto mantém a vítima presa, não pode se deslocar, mas ainda pode atacar com a espada. Suas armas naturais e manufaturadas são consideradas anárquicas e sagradas para superar Redução de Dano."
   },
   {
     "id": "limo-cinzento",
@@ -6645,7 +6649,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Limo amorfo que pode parecer uma poça de água ou lama, ou mesmo uma pedra molhada, até começar a se mover. Tem cerca de 2,5 m de comprimento, 15 cm de espessura e pesa aproximadamente 350 kg. Rasteja lentamente por ambientes subterrâneos e pântanos, confundindo-se com o terreno até que uma presa se aproxime.",
+    "combat": "Ataca lançando o próprio corpo contra os oponentes. Seu ácido digestivo causa dano a criaturas e dissolve rapidamente matéria orgânica e metais, embora não afete rochas. O contato também pode destruir armas, roupas e armaduras, a menos que os objetos resistam ao ácido. Se agarrar uma vítima, causa automaticamente dano de pancada e ácido por Constrição; Agarrar Aprimorado permite iniciar a manobra sem provocar ataques de oportunidade. Sua Transparência exige Observar (CD 15) para ser percebida, e quem não a notar pode ser atingido automaticamente ao avançar em sua direção."
   },
   {
     "id": "lobo-das-estepes",
@@ -6695,7 +6701,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Grande lobo branco das tundras e regiões frias, do tamanho de um cavalo, com olhos azuis e hálito gelado. É um predador persistente que raramente abandona uma perseguição antes de derrotar a presa. Mais inteligente que lobos comuns, às vezes serve gigantes do gelo como vigia, caçador ou rastreador.",
+    "combat": "Caça em matilhas que cercam a presa e atacam de vários lados para esgotá-la. Seu sopro forma um cone de frio de 4,5 m, usado uma vez a cada 1d4 rodadas, causando 4d6 pontos de dano por frio (Reflexos CD 16 reduz à metade). A mordida acrescenta 1d6 de dano por frio. Ao atingir um oponente, pode tentar Imobilização como ação livre, com bônus de +8, sem ataque de toque ou ataques de oportunidade. Recebe bônus raciais em Ouvir, Furtividade, Observar e Esconder-se, especialmente em neve ou gelo."
   },
   {
     "id": "locathah",
@@ -6745,7 +6753,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Humanoide aquático esguio, um pouco menor que um humano, com escamas finas amarelo-esverdeadas e grandes barbatanas nos braços e nas pernas. É um povo nômade de regiões costeiras quentes, que pesca e recolhe crustáceos. Em geral não é agressivo, mas desconfia dos habitantes da superfície por causa da captura de indivíduos em redes de pesca.",
+    "combat": "Começa os confrontos disparando virotes de bestas e, dentro d'água, aproveita o incremento de distância de 6 m. Se puder preparar uma emboscada, continua atacando à distância; caso contrário, aproxima-se para usar lanças longas. Não possui garras, dentes ou armas naturais e costuma fugir se for obrigado a lutar desarmado. Recebe +8 racial em Natação para ações especiais e para evitar perigos, podendo escolher 10 mesmo sob distração ou ameaça."
   },
   {
     "id": "magmin",
