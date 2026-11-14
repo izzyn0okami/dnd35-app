@@ -5195,7 +5195,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Gênio do Plano Elemental do Ar, de aparência semelhante à de um humano muito alto e bem constituído. Habita ilhas flutuantes com cidades, jardins e cortes governadas por xeiques e integradas a uma hierarquia política liderada por um califa. Prefere a liberdade e a negociação à servidão.",
+    "combat": "Prefere usar poderes mágicos e mobilidade aérea em vez de lutar corpo a corpo. Sua Maestria Aérea lhe dá vantagem contra criaturas que voam com meios naturais. Pode usar invisibilidade e outras habilidades similares à magia, assumir forma gasosa e transformar-se em vendaval. Nesse estado, voa sem provocar ataques de oportunidade e pode envolver criaturas menores, causando dano e suspendendo-as nas correntes de ar; o turbilhão também dificulta a visão e a conjuração. Um djinni nobre, variante mais poderosa, pode conceder três desejos a quem o capturar."
   },
   {
     "id": "efreeti",
@@ -5245,7 +5247,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Gênio do Plano Elemental do Fogo, de aspecto gigantesco, pele cor de tijolo, olhos flamejantes, pequenos chifres e presas. Sua sociedade tem como centro a Cidade de Bronze, governada por um sultão. É conhecido pela crueldade, pelo desejo de vingança e pela aversão à servidão; costuma enganar e frustrar os inimigos por prazer e como estratégia.",
+    "combat": "Usa Alterar Tamanho duas vezes por dia, aplicando aumentar pessoa ou reduzir pessoa a si mesmo ou a outra criatura (Fortitude CD 13 anula). Seu corpo incandescente acrescenta 1d6 de dano por fogo aos ataques corporais e ao dano causado enquanto mantém uma criatura agarrada. Suas habilidades similares à magia incluem criar chamas, detectar magia, pirotecnia, raio ardente, invisibilidade, muralha de fogo, forma gasosa, imagem permanente, metamorfose e conceder até três desejos por dia. É imune a fogo e vulnerável ao frio."
   },
   {
     "id": "janni",
@@ -5295,7 +5299,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "O mais fraco dos gênios, formado pela combinação dos quatro elementos e por isso adaptado a viver principalmente no Plano Material. Tem aparência de humano alto e porte nobre, e costuma vagar por desertos e oásis em tribos nômades. Sua sociedade é relativamente igualitária, liderada por xeiques e vizires; alguns chefes poderosos recebem o título de emir.",
+    "combat": "É um combatente fisicamente forte e corajoso, mas recua do confronto direto quando enfrenta um inimigo superior, usando voo e invisibilidade para reposicionar-se. Pode Alterar Tamanho duas vezes por dia, como aumentar pessoa ou reduzir pessoa (Fortitude CD 13 anula), inclusive sobre si mesmo. Suas habilidades similares à magia incluem falar com animais, invisibilidade, criar alimentos e passeio etéreo. Sua Tolerância aos Elementos permite sobreviver por até 48 horas nos Planos Elementais do Ar, da Terra, do Fogo ou da Água; excedido esse período, sofre dano progressivo."
   },
   {
     "id": "gigante-das-nuvens",
