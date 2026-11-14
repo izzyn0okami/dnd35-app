@@ -539,4 +539,20 @@ class CreatureCatalogTest {
         assertEquals("3", pegasus.challengeRating)
     }
 
+
+    @Test
+    fun rastHasBookBasedDescriptionAndCombatAbilities() {
+        val rast = CreatureCatalog.byId("rast")!!
+        assertTrue(rast.description.contains("dez a quinze garras"))
+        assertTrue(rast.description.contains("100 kg"))
+        assertTrue(rast.combat.contains("Olhar Paralisante"))
+        assertTrue(rast.combat.contains("Fortitude CD 13"))
+        assertTrue(rast.combat.contains("1d6 rodadas"))
+        assertTrue(rast.combat.contains("1 ponto de dano temporário de Constituição"))
+        assertTrue(rast.combat.contains("vulnerável a frio"))
+        assertEquals("10,5 m (7 quadrados), voo 18 m (bom)", rast.speed)
+        assertFalse(rast.specialQualities.contains("Rakshasa"))
+        assertEquals("5", rast.challengeRating)
+    }
+
 }
