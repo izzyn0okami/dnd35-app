@@ -538,3 +538,13 @@ As fichas-base devem ser reutilizadas por ID sempre que a tabela pedir apenas um
 - Para o Dinonico, a descrição de combate registra o bote e a capacidade de executar um ataque total após a investida, conforme o verbete.
 - Nenhum valor mecânico foi alterado nesta etapa. Teste de regressão adicionado para as dez fichas.
 - Situação após esta etapa: 313 fichas no catálogo; 117 possuem descrição e resumo de combate; 196 ainda precisam de ao menos um desses campos.
+
+
+## 2026-11-14 — Sétima etapa: dinossauros aquáticos e grandes predadores
+
+- Preenchidas descrição e síntese de combate de 4 fichas: Elasmossauro, Megaraptor, Tiranossauro e Tricerátops.
+- Fonte primária: Livro dos Monstros 3.5 em português, páginas impressas 74–75. Os textos foram resumidos a partir dos verbetes, preservando anatomia, ecologia e táticas especiais.
+- O resumo do Megaraptor registra que sua aparência, hábitos e habilidades correspondem aos do Dinonico, conforme a própria entrada do livro, e inclui seu Bote e bônus raciais de perícia.
+- O combate do Tiranossauro inclui Agarrar Aprimorado e Engolir, com os danos e a forma de escapar descritos no livro. O Tricerátops mantém os valores impressos para Investida Poderosa e Atropelar.
+- Nenhuma estatística mecânica foi alterada; dados duvidosos ou não necessários não foram inferidos. Teste de regressão cobre as quatro fichas e verifica capacidades específicas.
+- Situação após esta etapa: 313 fichas no catálogo; 121 possuem descrição e resumo de combate; 192 ainda precisam de ao menos um desses campos.
