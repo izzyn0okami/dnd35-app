@@ -427,4 +427,21 @@ class CreatureCatalogTest {
         assertTrue(CreatureCatalog.byId("medusa")!!.combat.contains("Olhar Petrificante"))
     }
 
+
+    @Test
+    fun mephitsHaveNarrativeAndCombatSummaries() {
+        listOf(
+            "mephit-da-agua", "mephit-do-ar", "mephit-do-fogo", "mephit-do-gelo",
+            "mephit-do-limo", "mephit-do-magma", "mephit-da-poeira", "mephit-do-sal",
+            "mephit-do-vapor"
+        ).forEach { id ->
+            val creature = CreatureCatalog.byId(id)!!
+            assertTrue("$id sem descrição", creature.description.isNotBlank())
+            assertTrue("$id sem resumo de combate", creature.combat.isNotBlank())
+        }
+        assertTrue(CreatureCatalog.byId("mephit-do-vapor")!!.combat.contains("água fervente"))
+        assertTrue(CreatureCatalog.byId("mephit-do-gelo")!!.combat.contains("hipotermia"))
+        assertTrue(CreatureCatalog.byId("mephit-da-agua")!!.combat.contains("Natação"))
+    }
+
 }

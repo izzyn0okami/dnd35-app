@@ -658,3 +658,14 @@ As fichas-base devem ser reutilizadas por ID sempre que a tabela pedir apenas um
 - Destaques: choques atordoante e letal do lagarto elétrico; Combustão, Aura Ígnea e Derreter Armas do magmin; camuflagem, escuridão e constrição do manto negro; ladrar apavorante e Camuflagem de Sombras do mastim; Olhar Petrificante e veneno das serpentes da medusa.
 - Nenhuma estatística mecânica foi alterada. Teste de regressão cobre as cinco fichas e suas capacidades distintivas.
 - Situação após esta etapa: 313 fichas no catálogo; 181 possuem descrição e resumo de combate; 132 ainda precisam de ao menos um desses campos.
+
+
+## 2026-11-14 — Vigésima etapa: família dos mephit
+
+- Preenchidas a descrição e a síntese de Combate de 9 fichas: Mephit da Água, do Ar, do Fogo, do Gelo, do Limo, do Magma, da Poeira, do Sal e do Vapor.
+- Fonte primária: Livro dos Monstros 3.5 brasileiro, páginas impressas 197–201 (PDF, páginas 201–205). As descrições são sínteses em linguagem própria, e não transcrições integrais.
+- Cada resumo distingue o elemento de origem, aparência, idiomas, sopro, habilidades similares à magia e condição ambiental da Cura Acelerada; foram preservadas imunidades e vulnerabilidades elementais relevantes.
+- Nenhuma estatística mecânica foi alterada.
+- **Pendência de cobertura identificada:** o índice do livro também lista Mephit da Terra (p. 200), mas não existe registro com esse nome/ID no catálogo da branch. Não foi criado um registro parcial: a inclusão exige transcrição e validação do bloco mecânico completo.
+- Teste de regressão adicionado para exigir Descrição e Combate nas nove fichas preenchidas e conferir características distintivas.
+- Situação após esta etapa: 313 fichas no catálogo; 190 possuem Descrição e resumo de Combate; 123 ainda precisam de ao menos um desses campos.

@@ -7015,7 +7015,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Pequeno extraplanar alado de aparência pisciforme, com escamas e olhos negros salientes. Vem do Plano Elemental da Água, mede cerca de um metro e pesa aproximadamente 15 kg. É viajante e brincalhão, embora seu humor costume irritar os demais. Fala Comum e Aquan.",
+    "combat": "Ataca com duas garras e um sopro de líquido cáustico em cone. Suas habilidades similares à magia incluem uma bolha de ácido (flecha ácida de Melf) e névoa fétida. Recupera 2 PV por rodada quando está submerso até a cintura ou sob chuva. Recebe +8 racial em Natação para ações especiais e perigos e pode escolher 10 mesmo sob distração ou ameaça."
   },
   {
     "id": "mephit-do-ar",
@@ -7065,7 +7067,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Pequeno extraplanar alado, semelhante a um humano diminuto, branco como nuvens e com um vendaval no lugar das pernas. É originário do Plano Elemental do Ar, tem pouco mais de um metro, pesa cerca de meio quilo e fala Comum e Auran.",
+    "combat": "Combate com duas garras e um sopro de poeira e pedregulhos em cone. Pode envolver-se em vapor para reproduzir o efeito de nublar e lançar lufada de vento. Sua cura acelerada funciona somente quando está exposto a ar em movimento, inclusive uma brisa ou o vento produzido por ele próprio."
   },
   {
     "id": "mephit-do-fogo",
@@ -7115,7 +7119,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Pequeno extraplanar alado que lembra um diabrete em miniatura envolto em chamas. Provém do Plano Elemental do Fogo, tem pouco mais de um metro, pesa cerca de meio quilo e fala Comum e Ígneo.",
+    "combat": "Ataca com garras que também causam dano de fogo e com um sopro flamejante em cone. Suas habilidades similares à magia incluem mãos flamejantes e, uma vez por dia, um efeito de metal quente. É imune ao fogo, vulnerável ao frio e recupera 2 PV por rodada quando está próximo de chamas do tamanho de uma tocha ou maiores."
   },
   {
     "id": "mephit-do-gelo",
@@ -7165,7 +7171,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Pequeno extraplanar alado de aspecto gélido, proveniente do Plano Elemental do Ar. Tem pouco mais de um metro, pesa cerca de 15 kg e fala Comum e Auran. Sua aparência e seus poderes manifestam o frio intenso de sua origem.",
+    "combat": "Ataca com duas garras que causam dano adicional por frio e com um sopro de fragmentos de gelo. As criaturas vivas que falham contra o sopro sofrem hipotermia e irritação/congelamento dos olhos, recebendo penalidades temporárias na CA e nos ataques. Pode conjurar mísseis mágicos e esfriar metal. Recupera 2 PV por rodada quando está junto a gelo ou em temperatura de 0 °C ou inferior; é imune ao frio e vulnerável ao fogo."
   },
   {
     "id": "mephit-do-limo",
@@ -7215,7 +7223,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Pequeno extraplanar alado, repugnante e aparentemente formado por lixo e sujeira em liquefação constante. Vem do Plano Elemental da Água, tem pouco mais de um metro, pesa cerca de 15 kg e fala Comum e Aquan.",
+    "combat": "Usa duas garras e um sopro de líquido cáustico. O sopro pode irritar a pele e os olhos, impondo penalidades temporárias na CA e nas jogadas de ataque. Suas habilidades similares à magia permitem lançar ácido viscoso como flecha ácida de Melf e produzir névoa fétida. Recupera 2 PV por rodada quando está submerso até a cintura ou sob chuva."
   },
   {
     "id": "mephit-do-magma",
@@ -7265,7 +7275,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Pequeno extraplanar alado que parece uma miniatura brutal de um humano, formado por rocha derretida e lava brilhante. É originário do Plano Elemental do Fogo, mede pouco mais de um metro, pesa cerca de 30 kg e fala Comum e Ígneo. É descrito como estúpido e brutal.",
+    "combat": "Ataca com duas garras flamejantes e um sopro de magma em cone, que pode queimar e prejudicar temporariamente os adversários. Pode assumir a forma de uma poça de lava por meio de alterar forma e usar pirotecnia, inclusive tomando o próprio corpo como fonte das chamas sem sofrer dano. É imune ao fogo, vulnerável ao frio e recupera 2 PV por rodada quando está em contato com magma, lava ou chamas de tamanho suficiente."
   },
   {
     "id": "mephit-da-poeira",
@@ -7315,7 +7327,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Pequeno extraplanar alado de aparência humanoide, com pele enrugada e expressão ressentida. Vem do Plano Elemental do Ar, mede cerca de um metro, pesa quase meio quilo e fala Comum e Auran.",
+    "combat": "Ataca com garras e um sopro de partículas irritantes em cone, capaz de causar coceira e irritação nos olhos, além de penalidades temporárias na CA e nos ataques. Pode envolver-se em poeira para reproduzir nublar e criar uma massa giratória equivalente a muralha de vento. Sua cura acelerada funciona apenas em ambiente árido."
   },
   {
     "id": "mephit-do-sal",
@@ -7365,7 +7379,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Pequeno extraplanar alado, semelhante a uma miniatura humana de olhos vermelhos e carne cristalizada. É originário do Plano Elemental da Terra, mede pouco mais de um metro, pesa cerca de 40 kg e fala Comum e Terran. É sarcástico e detesta água e umidade.",
+    "combat": "Ataca com garras e um sopro de cristais de sal em cone, que irrita a pele e os olhos e impõe penalidades temporárias na CA e nos ataques. Pode conjurar poeira ofuscante e drenar a umidade de uma área ao redor, causando dano às criaturas afetadas. Sua cura acelerada depende das condições ambientais indicadas no verbete."
   },
   {
     "id": "mephit-do-vapor",
@@ -7415,7 +7431,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Pequeno extraplanar alado que lembra uma miniatura humana pálida, com vapor saindo do nariz, da boca e das orelhas e um rastro de água escaldante. Vem do Plano Elemental do Fogo, mede pouco mais de um metro, pesa cerca de um quilo e fala Comum e Ígneo. É autoritário e se considera superior aos demais mephit.",
+    "combat": "Ao contrário dos outros mephit, procura ativamente o combate. Ataca com garras flamejantes e um sopro de vapor que queima a pele e os olhos, impondo penalidades temporárias na CA e nos ataques. Pode criar uma nuvem escaldante equivalente a nublar e uma tempestade de água fervente que causa dano de fogo em área. É imune ao fogo, vulnerável ao frio e recupera 2 PV por rodada em água fervente ou ambiente quente e úmido."
   },
   {
     "id": "mimico",
