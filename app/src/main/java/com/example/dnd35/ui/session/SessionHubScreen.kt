@@ -2078,19 +2078,18 @@ private fun AddMonsterCardDialog(
         if (results.isEmpty()) {
             Text("Nenhuma criatura corresponde aos filtros.", color = MaterialTheme.colorScheme.onSurfaceVariant)
         } else {
-            LazyColumn(
-                modifier = Modifier.weight(1f),
-                verticalArrangement = Arrangement.spacedBy(12.dp)
-            ) {
-                items(results, key = { it.id }) { creature ->
-                    CreatureImageTradingCard(
-                        creature = creature,
-                        details = "Criatura do bestiário • adicionar à sessão do Mestre",
-                        stats = "PV ${creature.hitPoints} • CA ${creature.armorClassText} • Iniciativa ${creature.initiative}",
-                        selectLabel = "Adicionar à sessão",
-                        onSelect = { onSelect(creature) }
-                    )
-                }
+            CreatureCardStack(
+                items = results,
+                key = { it.id },
+                modifier = Modifier.fillMaxWidth()
+            ) { creature ->
+                CreatureImageTradingCard(
+                    creature = creature,
+                    details = "Criatura do bestiário • adicionar à sessão do Mestre",
+                    stats = "PV ${creature.hitPoints} • CA ${creature.armorClassText} • Iniciativa ${creature.initiative}",
+                    selectLabel = "Adicionar à sessão",
+                    onSelect = { onSelect(creature) }
+                )
             }
         }
         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
