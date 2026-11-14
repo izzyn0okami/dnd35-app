@@ -709,3 +709,14 @@ As fichas-base devem ser reutilizadas por ID sempre que a tabela pedir apenas um
 - Incluído o ID `mephit-da-terra` na lista do 4º círculo, junto aos demais mephits.
 - Adicionado teste de regressão que exige a presença dos quatro tipos de mephit no círculo IV.
 - A falha explica os dois testes de SummoningRulesTest que falhavam na verificação de criaturas invocáveis sem círculo; nenhuma alteração foi feita nas regras ou fichas da Múmia.
+
+
+## 2026-11-14 — Vigésima quarta etapa: família das nagas
+
+- Conferidas diretamente as páginas 206–207 do Livro dos Monstros brasileiro (PDF, páginas 210–211).
+- Adicionadas as quatro fichas ausentes: Naga Aquática, Naga Espiritual, Naga Guardiã e Naga Negra.
+- Transcritos os blocos de estatísticas (DV/PV, iniciativa, deslocamento, CA, ataques, base/agarrar, espaço/alcance, resistências, atributos, perícias, talentos, ambiente, organização, ND, tesouro, tendência e progressão) conforme impresso.
+- Descrição e Combate sintetizados dos verbetes, preservando capacidades distintivas: veneno e natação da Aquática; olhar encantador e veneno da Espiritual; saliva venenosa e magias divinas da Guardiã; sono por veneno, detectar pensamentos e pensamentos protegidos da Negra.
+- Adicionado teste de regressão para existência, completude e capacidades específicas das quatro fichas.
+- Nenhuma criatura foi marcada como invocável: as tabelas de invocação do Livro do Jogador não listam nagas.
+- Contagem após esta etapa: 319 fichas; 199 com Descrição e Combate; 120 pendentes.

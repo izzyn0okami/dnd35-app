@@ -485,4 +485,21 @@ class CreatureCatalogTest {
         assertTrue(mummy.specialQualities.contains("vulnerabilidade ao fogo"))
     }
 
+
+    @Test
+    fun allFourNagaEntriesHaveCompleteBookBasedSheets() {
+        val ids = listOf("naga-aquatica", "naga-espiritual", "naga-guardia", "naga-negra")
+        ids.forEach { id ->
+            val creature = CreatureCatalog.byId(id)!!
+            assertTrue("$id sem descrição", creature.description.isNotBlank())
+            assertTrue("$id sem combate", creature.combat.isNotBlank())
+            assertEquals("Aberração", creature.type)
+            assertEquals("Grande", creature.size)
+        }
+        assertTrue(CreatureCatalog.byId("naga-aquatica")!!.combat.contains("Natação"))
+        assertTrue(CreatureCatalog.byId("naga-espiritual")!!.combat.contains("Olhar Encantador"))
+        assertTrue(CreatureCatalog.byId("naga-guardia")!!.combat.contains("Saliva"))
+        assertTrue(CreatureCatalog.byId("naga-negra")!!.combat.contains("Pensamentos Protegidos"))
+    }
+
 }
