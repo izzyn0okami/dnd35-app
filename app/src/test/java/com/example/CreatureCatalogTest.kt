@@ -675,7 +675,7 @@ class CreatureCatalogTest {
     fun threeMoreCreatureSheetsHaveBookBasedNarrativeAndCombat() {
         val expected = mapOf(
             "uivante" to listOf("Espinhos", "Reflexos CD 16", "Vontade CD 12", "Adestrar Animais CD 25"),
-            "unicornio" to listOf("Círculo Mágico Contra o Mal", "teletransporte maior", "neutralizar veneno (CD 21)", "+6 de bônus racial"),
+            "unicornio" to listOf("Círculo Mágico Contra o Mal", "teletransporte maior", "neutralizar veneno (CD 21,", "+6 de bônus racial"),
             "ursocoruja" to listOf("Agarrar Aprimorado", "ação livre", "sempre lutam até a morte")
         )
         expected.forEach { (id, fragments) ->
