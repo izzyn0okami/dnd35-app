@@ -518,3 +518,13 @@ As fichas-base devem ser reutilizadas por ID sempre que a tabela pedir apenas um
 - Não foram alterados valores de combate incertos nem preenchidos dados por inferência. As descrições e táticas já existentes foram preservadas.
 - Teste de regressão cobre as dez fichas e verifica também a ausência dos resíduos de importação removidos.
 - Situação após esta etapa: 313 fichas no catálogo; 97 possuem descrição e resumo de combate; 216 ainda precisam de ao menos um desses campos.
+
+
+## 2026-11-14 — Quinta etapa: criaturas abissais/celestiais, demônios e habitantes subterrâneos
+
+- Preenchidas descrição e síntese de combate de 10 fichas: Rato Atroz Abissal, Leão Celestial, Marilith, Nalfeshnee, Quasit, Vrock, Derro, Destrachan, Devorador de Aranhas e Diabo Barbado (Barbazu).
+- Fonte primária: Livro dos Monstros 3.5 em português, páginas impressas 48–49, 54–61 e 64. As descrições e táticas foram resumidas dos verbetes, mantendo a terminologia e as capacidades apresentadas na fonte.
+- Corrigido erro numérico evidente na ficha do Quasit: CA 78 foi corrigida para CA 18, compatível com a soma impressa (+2 tamanho, +3 Des, +3 natural).
+- Removidos resíduos de extração anexados ao final dos talentos da Marilith; a lista foi mantida conforme o bloco impresso. Corrigida a pontuação da perícia Concentração e a grafia de “Lutar às Cegas” no Derro.
+- Os dados não envolvidos nessas correções foram preservados. Teste de regressão adicionado para as dez fichas, incluindo a CA do Quasit e os campos contaminados.
+- Situação após esta etapa: 313 fichas no catálogo; 107 possuem descrição e resumo de combate; 206 ainda precisam de ao menos um desses campos.
