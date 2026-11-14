@@ -1607,7 +1607,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "A Bruxa do Mar parece uma mulher idosa, de pele viscosa e amarelada, marcada por verrugas e sulcos gosmentos. Seus cabelos longos e imundos lembram algas marinhas apodrecidas. Vive nas proximidades do oceano ou de grandes lagos e tem aproximadamente a altura e o peso de uma mulher comum.",
+    "combat": "A Bruxa do Mar prefere uma aproximação direta, mas tenta permanecer escondida até alcançar vários adversários com sua Aparência Horripilante. Quem falha no teste de Fortitude pode sofrer dano temporário de Força. Ela também pode dirigir seu Olhar Maligno contra uma criatura próxima, usando essa capacidade sobrenatural para enfraquecer ou incapacitar a vítima antes de recorrer às garras."
   },
   {
     "id": "bugbear",
@@ -2177,7 +2179,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "A Coruja Gigante é uma ave de rapina noturna, com cerca de 3 m de altura e envergadura de até 6 m. Inteligente e naturalmente desconfiada, caça quase em silêncio e costuma patrulhar as proximidades do ninho. Pode associar-se a criaturas bondosas e, quando jovem, pode ser treinada como montaria alada.",
+    "combat": "A Coruja Gigante plana silenciosamente a poucos metros da presa e mergulha para golpeá-la quando está diretamente acima do alvo. Um indivíduo costuma ignorar criaturas que não pareçam ameaçadoras; casais coordenam mergulhos sucessivos para expulsar invasores e lutam até a morte para defender ovos e filhotes. Grupos maiores podem agir em conjunto para afastar ameaças, especialmente humanoides malignos. Sua visão na penumbra superior e seus sentidos aguçados favorecem a caça noturna."
   },
   {
     "id": "couatl",
@@ -2216,7 +2220,7 @@
       "cha": 17
     },
     "skills": "Acrobacia +15, Concentração +14, Conhecimento (dois quaisquer) +15, Diplomacia +17, identificar Magia +15 (+17 para pergaminhos), Observar +16, Ouvir +16, Procurar +15, Saltar +10, Sentir Motivação +16, Sobrevivência +4 (+6 seguindo rastros), Usar Instrumento Mágico +15 (+17 para pergaminhos)",
-    "feats": "Esquiva, Ignorar ComponentesB, Iniciativa Aprimorada, Pairar, Potencializar Magia",
+    "feats": "Esquiva, Ignorar Componentes Materiais, Iniciativa Aprimorada, Pairar, Potencializar Magia",
     "environment": "Florestas quentes",
     "organization": "Solitário, casal ou revoada (3–6)",
     "challengeRating": "10",
@@ -2227,7 +2231,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "O Couatl é uma grande serpente alada, coberta por penas com as cores do arco-íris. É conhecido por sua beleza, inteligência, poderes mágicos e virtude incorruptível. Mede cerca de 3,6 m de comprimento, possui asas com envergadura aproximada de 4,5 m e pesa em torno de 900 kg. Fala Celestial, Comum e Dracônico, além de comunicar-se telepaticamente.",
+    "combat": "O Couatl raramente ataca sem provocação, mas pune malfeitores que presencia. Costuma detectar pensamentos de criaturas suspeitas e iniciar o confronto com magias à distância, aproximando-se apenas quando conveniente. Se necessário, morde para iniciar um agarrão aprimorado e então comprime a vítima; sua mordida também inocula veneno que causa dano temporário de Força. Pode recorrer a poderes psíquicos, magias e passeio etéreo para controlar a distância e escapar de ameaças."
   },
   {
     "id": "cria-vampirica",
@@ -2277,7 +2283,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "A Cria Vampírica é um morto-vivo criado quando um vampiro assassina um mortal e o transforma em seu servo. Conserva a aparência que possuía em vida, mas suas feições tornam-se mais ferinas e malignas, com caninos evidentes e olhar de predador noturno. Como os vampiros, permanece ligada ao caixão e ao solo de sua sepultura. Fala Comum.",
+    "combat": "A Cria Vampírica usa sua força sobrenatural para esmagar os adversários com pancadas, podendo também arremessá-los contra obstáculos. Quando consegue agarrar uma vítima, suga seu sangue e drena Constituição, recebendo pontos de vida temporários. Seu olhar pode dominar uma criatura, enquanto suas pancadas drenam energia e impõem níveis negativos. Se reduzida a 0 PV ou menos, pode assumir forma gasosa para escapar; também escala superfícies como uma aranha e recupera ferimentos rapidamente."
   },
   {
     "id": "rato-atroz-abissal",
@@ -2415,7 +2423,7 @@
       "wis": 13,
       "cha": 16
     },
-    "skills": "Abrir Fechaduras +11, Arte da Fuga +11, Disfarces +13, Escalar +15, Esconder–se +19, Furtividade +19, Operar Mecanismo +12, Ouvir +19, Prestidigitação +11, Procurar +20, Sobrevivência +1 (+3 seguindo rastros), Usar Cordas +1 (+3 para amarrar) Balor Marilith DEMÔNIO BABAU",
+    "skills": "Abrir Fechaduras +11, Arte da Fuga +11, Disfarces +13, Escalar +15, Esconder–se +19, Furtividade +19, Operar Mecanismo +12, Ouvir +19, Prestidigitação +11, Procurar +20, Sobrevivência +1 (+3 seguindo rastros), Usar Cordas +1 (+3 para amarrar)",
     "feats": "Ataque Poderoso, Ataques Múltiplos, Trespassar",
     "environment": "Camadas Infinitas do Abismo",
     "organization": "Solitário ou gangue (3–6)",
@@ -2427,7 +2435,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "O Babau é um demônio humanoide esquálido, de pele negra e coriácea, quase sem pelos, com carne flácida, orelhas pontiagudas, um grande chifre curvado atrás do crânio e uma boca repleta de dentes afiados. Tem cerca de 1,8 m de altura e pesa aproximadamente 70 kg. Astuto e meticuloso, atua como assassino e espião a serviço de poderosos senhores demoníacos.",
+    "combat": "O Babau evita confrontos justos e prefere emboscar seus alvos. Procura eliminar primeiro o adversário mais perigoso, combinando seus ataques múltiplos com ataque furtivo. Suas habilidades similares a magia, como dissipar magia, escuridão e teletransporte, ajudam a preparar emboscadas e controlar o terreno. Seu muco protetor dificulta ataques físicos, e ele pode tentar invocar outro tanar’ri quando pressionado."
   },
   {
     "id": "balor",
@@ -2477,7 +2487,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "O Balor é um dos mais poderosos demônios tanar’ri, uma figura humanoide colossal de cerca de 4,5 m, cercada por uma presença aterradora e chamas sobrenaturais. É um comandante cruel e estrategista, capaz de liderar outros demônios e destruir adversários com magia e força física. Sua espada longa vorpal e seu chicote flamejante são armas temidas.",
+    "combat": "O Balor costuma começar o combate à distância, recorrendo a habilidades similares a magia devastadoras, como tempestade de fogo, implosão, telecinésia, insanidade e palavra de poder: atordoar. Quando se aproxima, ataca com a espada vorpal e o chicote flamejante, que também pode enredar o oponente. Pode invocar outros tanar’ri, teleportar-se para recuperar distância e usar seu corpo ígneo para causar dano a quem o agarrar. Sua visão da verdade e resistências tornam difícil surpreendê-lo ou detê-lo."
   },
   {
     "id": "bebilith",
@@ -2527,7 +2539,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "O Bebilith é um demônio aracnídeo enorme e deformado, com patas dianteiras terminadas em ferrões e presas que expelem uma gosma repugnante. Seu corpo tem aproximadamente o tamanho de um cavalo, com pernas que ultrapassam 4,2 m de envergadura, e pesa mais de duas toneladas. É um predador que caça sobretudo outros demônios, mas ataca qualquer criatura viva. Não fala, embora compreenda Abissal e use telepatia para comunicar-se com outros bebilith.",
+    "combat": "O Bebilith escolhe uma vítima e concentra nela seus ataques, usando teias para separá-la dos aliados. Sua mordida injeta veneno que causa dano temporário de Constituição; se enfrentar inimigos mais perigosos, pode recuar e deixar que o veneno os enfraqueça. Quando atinge com as duas garras, pode destruir a armadura do alvo. Suas teias imobilizam criaturas grandes, são difíceis de romper e resistem ao fogo. Também pode viajar entre planos."
   },
   {
     "id": "dretch",
@@ -2550,7 +2564,7 @@
     "attack": "Corpo a corpo: garra +4 (dano: 1d6+1)",
     "fullAttack": "Corpo a corpo: 2 garras +4 (dano: 1d6+1) e mordida +2 (dano: 1d4)",
     "spaceReach": "1,5 m/1,5 m",
-    "specialAttacks": "Habilidades similares a magia, invocar tanar’ri Caçador DEMÔNIO DRETCH",
+    "specialAttacks": "Habilidades similares a magia, invocar tanar’ri",
     "specialQualities": "Redução de Dano 5/ferro frio ou bem, visão no escuro 18 m, imunidade a eletricidade e veneno, resistência a ácido 10, frio 10 e fogo 10, telepatia 30 m",
     "saves": {
       "fort": 5,
@@ -2577,7 +2591,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "O Dretch é um demônio pequeno, atarracado e repulsivo, com corpo quase sem pelos, carne flácida e boca caída cheia de pequenas presas. Atinge cerca de 1,2 m de altura e pesa aproximadamente 30 kg. É uma criatura pouco inteligente e patética, frequentemente encontrada em turbas ou servindo como soldado raso nos exércitos dos tanar’ri. Não fala, mas comunica-se por telepatia.",
+    "combat": "O Dretch é lento e pouco eficiente em combate. Quando luta sozinho, depende de sua resistência sobrenatural para sobreviver; em grupos, tenta superar os inimigos pela quantidade e invoca imediatamente outros dretch para reforçar a turba. Pode usar névoa fétida e aterrorizar, mas costuma fugir ao primeiro sinal de adversidade, a menos que demônios mais poderosos o obriguem a permanecer. Suas armas naturais são consideradas anárquicas e profanas para superar redução de dano."
   },
   {
     "id": "glabrezu",
@@ -2627,7 +2643,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "O Glabrezu é um demônio enorme, de olhos violeta penetrantes e pele que varia do castanho-avermelhado escuro ao negro. Mede cerca de 4,5 m de altura e pesa aproximadamente 2.750 kg. É um manipulador astuto que, como a súcubo, busca levar mortais à ruína, mas prefere seduzi-los com promessas de poder e riqueza.",
+    "combat": "O Glabrezu prefere enganar e corromper em vez de lutar imediatamente. Quando o subterfúgio falha, usa confusão e outras habilidades similares a magia antes de avançar com suas duas tenazes, garras e mordida. Pode agarrar adversários menores com uma tenaz, invocar outros tanar’ri e, uma vez por mês, oferecer um desejo a um mortal em troca de atos malignos ou sacrifícios. Sua visão da verdade permanece ativa continuamente."
   },
   {
     "id": "hezrou",
@@ -2649,7 +2667,7 @@
     "grapple": 19,
     "attack": "Corpo a corpo: mordida +14 (dano: 4d4+5)",
     "fullAttack": "Corpo a corpo: mordida +14 (dano: 4d4+5) e 2 garras +9 (dano: 3d8+2)",
-    "spaceReach": "3 m/3 m DEMÔNIO GLABREZU",
+    "spaceReach": "3 m/3 m",
     "specialAttacks": "Habilidades similares a magia, fedor, agarrar aprimorado, invocar tanar’ri",
     "specialQualities": "Redução de Dano 1 Q/bem, visão no escuro 18 m, imunidade a eletricidade e veneno, resistência a ácido 10, frio 10 e fogo 10, Resistência à Magia 19, telepatia 30 m",
     "saves": {
@@ -2677,7 +2695,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "O Hezrou é um tanar’ri de grande porte, com corpo robusto e aspecto anfíbio, conhecido pelo fedor nauseante que exala. Habita o Abismo e costuma atuar em grupos de demônios, usando sua força e resistência para dominar inimigos em combate próximo.",
+    "combat": "O Hezrou procura aproximar-se dos adversários e explorar seu fedor para enfraquecê-los antes de atacar com mordida e garras. Seu agarrar aprimorado permite prender inimigos atingidos, enquanto suas habilidades similares a magia e a capacidade de invocar tanar’ri ampliam sua ameaça. Suas resistências, imunidades e redução de dano permitem sustentar confrontos prolongados."
   },
   {
     "id": "marilith",
