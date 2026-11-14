@@ -3895,7 +3895,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "O doppelganger é um metamorfo de aparência humanoide, mas delgada e frágil, com membros desajeitados, pele pálida sem pelos e traços pouco definidos. Seus olhos são grandes e amarelos, com pupilas fendidas. Pode assumir a aparência de qualquer humanoide Pequeno ou Médio, habilidade que o torna um infiltrador, espião e assassino perigoso. Costuma agir com paciência, preparando emboscadas e infiltrando-se em comunidades para manipular seus habitantes. Em sua forma natural, mede cerca de 1,65 m e pesa aproximadamente 75 kg. Nem todos são malignos, mas tendem a priorizar o próprio bem-estar.",
+    "combat": "Na forma natural, o doppelganger ataca com os punhos; quando assume a aparência de um combatente armado, utiliza armas apropriadas e imita as táticas da pessoa personificada. Detectar Pensamentos (Sob): pode detectar pensamentos continuamente, como a magia homônima, e ativar ou desativar o efeito como ação livre; Vontade CD 13 anula. Mudar Forma (Sob): pode assumir indefinidamente a forma de qualquer humanoide Pequeno ou Médio, mas perde os ataques naturais enquanto transformado. A mudança não pode ser dissipada e termina quando a criatura morre."
   },
   {
     "id": "dragonado",
@@ -3945,7 +3947,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "O dragonado é uma besta mágica que combina características de leão e dragão. Tem corpo coberto por escamas cor de latão, uma juba espessa e emaranhada, grandes presas e garras, olhos grandes e um par de pequenas asas nas costas. É um caçador implacável, mas sua fama de devorador indiscriminado de aventureiros é exagerada: normalmente ataca quem ameaça seu covil ou invade seu território. Prefere alimentar-se de rebanhos e só costuma atacar humanoides quando não encontra outras presas. Fala Dracônico.",
+    "combat": "As asas permitem voos curtos, de cerca de 10 a 30 minutos, e são usadas para escapar de cercos ou de investidas, buscando uma posição mais defensável. Bote (Ext): quando realiza uma investida contra um oponente, pode executar um ataque total na mesma rodada. Rugido (Sob): a cada 1d4 rodadas, pode emitir um rugido que afeta criaturas (exceto outros dragonados) num raio de 40 m; falhar no teste de Vontade CD 15 deixa a vítima fatigada, ou exausta se estiver a até 9 m. A CD é baseada em Carisma."
   },
   {
     "id": "driade",
@@ -3995,7 +3999,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "A dríade é uma fada ligada às florestas, que surge da casca de uma árvore venerável. Inicialmente parece um novo galho, até assumir uma forma feminina de pele semelhante a madeira polida, cabelo de textura vegetal e grandes olhos amendoados de expressão selvagem. É uma entidade reservada, misteriosa e sedutora, que raramente se relaciona com humanos. Cada dríade mantém um vínculo místico com um carvalho específico e não pode afastar-se muito dele sem adoecer.",
+    "combat": "Tímida, inteligente e determinada, a dríade evita o combate e prefere permanecer escondida. Quando ameaçada ou em busca de um aliado, utiliza enfeitiçar pessoa ou sugestão para controlar um agressor e fazê-lo enfrentar os demais inimigos. Um ataque contra seu carvalho provoca uma reação defensiva frenética. Habilidades Similares a Magia (SM): à vontade — constrição, falar com plantas e forma de árvore; 3/dia — caminhar em árvores, enfeitiçar pessoa e sono profundo; 1/dia — sugestão. Simbiose (Sob): não pode afastar-se mais de 300 m de seu carvalho; se ultrapassar esse limite, adoece e morre em 4d6 horas. Empatia com a Natureza (Ext): funciona como a habilidade do druida, com bônus racial de +6 no teste."
   },
   {
     "id": "drider",
@@ -4045,7 +4051,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Os drider são criaturas monstruosas e sanguinárias que espreitam nas profundezas subterrâneas. São drow transformados pela deusa Lolth após fracassarem em uma missão divina que lhes foi atribuída; por causa dessa falha, são exilados e desprezados por suas antigas comunidades. Drow e drider nutrem ódio profundo uns pelos outros. Falam Drow, Comum e Subterrâneo.",
+    "combat": "Os drider são caçadores oportunistas e raramente deixam passar uma chance de atacar, sobretudo por meio de emboscadas. Quase sempre iniciam o combate com uma magia ofensiva e frequentemente levitam para manter distância dos inimigos. Podem atacar com adagas, mordida venenosa ou arco curto. Veneno (Ext): inoculado pela mordida; Fortitude CD 16 ou a vítima sofre 1d6 pontos de dano temporário de Força, tanto inicial quanto secundário. A CD é baseada em Constituição. Também utilizam magias e habilidades similares a magia, conforme sua ficha."
   },
   {
     "id": "bralani",
@@ -4095,7 +4103,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "O bralani é um eladrin de porte baixo e musculoso, ombros largos e movimentos rápidos. Seu cabelo prateado é luminoso e seus olhos exibem tons de arco-íris em constante mudança. É um dos eladrin mais selvagens e ferozes, movido por uma paixão intensa. Além da forma humanoide, pode assumir a forma de um redemoinho ou de uma rajada de poeira, neve ou areia. Fala Celestial, Infernal e Dracônico e pode comunicar-se com criaturas que falem outros idiomas.",
+    "combat": "O bralani prefere lutar com cimitarra e arco, como os nômades do deserto. Suas armas naturais e demais armas que utilize são consideradas anárquicas e sagradas para superar Redução de Dano. Habilidades Similares a Magia (SM): pode usar diversos efeitos de vento, ilusão e encantamento, além de curar ferimentos e lançar relâmpagos conforme os limites indicados na ficha. Rajada Turbilhão (Sob): em sua forma de redemoinho, pode lançar uma rajada corrosiva de vento em uma linha de 6 m, causando 3d6 pontos de dano; Reflexos CD 16 reduz à metade. Alterar Forma (Sob): muda entre a forma humanoide e a de redemoinho como ação padrão; na forma humanoide não voa nem usa a rajada, enquanto na forma de redemoinho pode voar e atacar com pancadas."
   },
   {
     "id": "ghaele",
@@ -4145,7 +4155,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "O ghaele é um celestial de aparência élfica, porte altivo e imponente, olhos perolados e opalescentes e uma aura radiante. É um cavaleiro errante entre os eladrin, que enfrenta o mal e a tirania, mas também atua nos bastidores, organizando resistência e aconselhando os que lutam contra opressores. Pode assumir a forma de um globo incorpóreo de luzes radiantes com cerca de 1,5 m de diâmetro. Mede aproximadamente 1,8 m em sua forma humanoide e pesa cerca de 85 kg.",
+    "combat": "Quando forçado a lutar, o ghaele prefere o confronto direto e costuma combater em forma humanoide, empunhando sua espada larga sagrada +4. Se precisar de mobilidade, assume a forma de globo e ataca com raios de luz, que ignoram Redução de Dano. Ataque Visual (Sob): na forma humanoide, seu olhar pode matar criaturas malignas com 5 DV ou menos a até 18 m; as demais criaturas que falharem no teste de Vontade CD 18 são afetadas por medo. Alterar Forma (Sob): muda entre as formas humanoide e de globo como ação padrão; na forma de globo pode voar e disparar raios, mas não conjura magias nem usa o ataque visual. Aura de Proteção (Sob): concede benefícios defensivos contra seres malignos às criaturas próximas. Também conjura magias divinas e habilidades similares a magia."
   },
   {
     "id": "ente",
@@ -4195,7 +4207,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "O ente é uma planta enorme, alta e quase indistinguível das árvores. Sua pele grossa e marrom tem textura de caule; os braços parecem galhos retorcidos e os pés se contraem quando está imóvel, lembrando raízes. Galhos menores crescem acima dos olhos espalhados pela cabeça. Os entes protegem as florestas e observam cuidadosamente possíveis ameaças antes de agir, podendo reunir árvores próximas como aliadas.",
+    "combat": "Os entes costumam atacar de surpresa, saindo de seus disfarces para atropelar invasores e devastadores da floresta. Quando pressionados, animam árvores próximas para lutar ao seu lado. Animar Árvores (SM): pode animar e controlar até duas árvores num raio de 54 m; cada árvore precisa de uma ação de rodada completa para desenraizar-se e passa a deslocar-se a 3 m. As árvores animadas deixam de se mover se o ente for incapacitado ou sair do alcance e, assim como ele, são vulneráveis ao fogo. Dano Dobrado Contra Objetos (Ext): ataques totais contra objetos e estruturas causam dano dobrado. Atropelar (Ext): Reflexos CD 22 reduz o dano à metade. Em áreas florestais, recebe +16 de bônus racial em Esconder-se."
   },
   {
     "id": "enxame-de-centopeias",
