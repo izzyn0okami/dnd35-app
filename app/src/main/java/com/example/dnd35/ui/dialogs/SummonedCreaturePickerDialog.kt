@@ -52,13 +52,18 @@ fun SummonedCreaturePickerDialog(
                 key = { "${it.creature.id}-${it.sourceCircle}-${it.templateLabel}" },
                 modifier = Modifier.fillMaxWidth()
             ) { option ->
-                val variant = option.templateLabel.takeIf { it.isNotBlank() }
-                    ?.let { "Modelo/variante: $it" }
+                val template = option.templateLabel.takeIf { it.isNotBlank() }
+                val displayName = when {
+                    template == null -> option.creature.name
+                    option.creature.id == "cachorro" && template == "Celestial" -> "Cão Celestial"
+                    else -> "${option.creature.name} $template"
+                }
                 CreatureImageTradingCard(
                     creature = option.creature,
                     details = "Lista de ${SpellbookRules.circleLabel(option.sourceCircle)}",
                     stats = "PV ${option.creature.hitPoints}  •  CA ${option.creature.armorClass}  •  Iniciativa ${option.creature.initiative}",
-                    footer = variant,
+                    footer = template?.let { "Modelo aplicado: $it" },
+                    titleOverride = displayName,
                     selectLabel = "Invocar",
                     onSelect = { onSelect(option) }
                 )
