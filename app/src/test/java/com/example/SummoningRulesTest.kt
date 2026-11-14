@@ -88,8 +88,13 @@ class SummoningRulesTest {
 
         assertTrue(monsters1.any { it.creature.id == "corvo" && it.templateLabel == "Abissal" })
         assertTrue(SummoningRules.creaturesForCircle(SummoningFamily.SUMMON_CREATURES, 2).any { it.creature.id == "lemure" })
+        val monsters2 = SummoningRules.creaturesForCircle(SummoningFamily.SUMMON_CREATURES, 2)
+        assertTrue(monsters2.any { it.creature.id == "abelha-gigante" && it.templateLabel == "Celestial" })
+        assertTrue(monsters2.any { it.creature.id == "besouro-gigante" && it.templateLabel == "Celestial" })
         assertTrue(SummoningRules.creaturesForCircle(SummoningFamily.SUMMON_CREATURES, 4).any { it.creature.id == "cao-yeth" })
         assertTrue(monsters4.any { it.creature.id == "arconte-luminar" && it.templateLabel.isBlank() })
+        assertTrue(monsters4.any { it.creature.id == "louva-a-deus-gigante" && it.templateLabel == "Abissal" })
+        assertTrue(SummoningRules.creaturesForCircle(SummoningFamily.SUMMON_CREATURES, 5).any { it.creature.id == "gafanhoto-gigante" && it.templateLabel == "Celestial" })
         assertTrue(monsters6.any { it.creature.id == "bralani" })
         assertTrue(monsters6.any { it.creature.id == "fera-do-caos" })
         assertTrue(monsters7.any { it.creature.id == "avoral" })
