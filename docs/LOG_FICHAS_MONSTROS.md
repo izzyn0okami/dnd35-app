@@ -803,3 +803,14 @@ As fichas-base devem ser reutilizadas por ID sempre que a tabela pedir apenas um
 - O texto do catálogo usa corretamente a concordância feminina em “criaturas renegadas criadas pelos aboletes”; o teste esperava “criados”.
 - Ajustada a expectativa do teste para refletir literalmente o conteúdo da ficha. Nenhuma regra ou texto do catálogo foi alterado nesta correção.
 - Aguardar nova execução de Android CI e compilação do APK antes do merge.
+
+
+## 2026-11-14 — Trigésima segunda etapa: cinco variações de slaad
+
+- Conferidas diretamente as páginas impressas 231–234 do Livro dos Monstros brasileiro (PDF, páginas correspondentes ao trecho dos slaad).
+- Preenchidas Descrição e Combate de cinco fichas já existentes: Slaad Azul, Slaad Cinza, Slaad da Morte, Slaad Verde e Slaad Vermelho.
+- Descrições distinguem anatomia, coloração, dimensões, comportamento e transformação entre as variações.
+- Combate registra, conforme cada verbete, habilidades similares à magia com frequências, CDs e níveis de conjurador; Febre Slaad; Atordoar; Bote; Implante; Coaxar Atordoante; Mudar Forma; Invocar Slaad e resistências compartilhadas.
+- Corrigido apenas o resíduo inequívoco de OCR no campo Ambiente do Slaad Azul, restaurando “Caos Eternamente Mutável do Limbo”; nenhuma outra estatística foi alterada.
+- Adicionado teste de regressão cobrindo os cinco registros, seus efeitos distintivos, ND e ambiente.
+- Situação após esta etapa: 320 fichas no catálogo; 215 com Descrição e Combate; 105 ainda precisam de ao menos um desses campos.
