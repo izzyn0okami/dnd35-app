@@ -80,7 +80,7 @@ class SummoningRulesTest {
         val nature7 = SummoningRules.creaturesForCircle(SummoningFamily.SUMMON_NATURE_ALLY, 7)
 
         assertTrue(monsters1.any { it.creature.id == "corvo" && it.templateLabel == "Abissal" })
-        assertTrue(monsters4.any { it.creature.id == "arconte-luminar" && it.templateLabel == "Celestial" })
+        assertTrue(monsters4.any { it.creature.id == "arconte-luminar" && it.templateLabel.isBlank() })
         assertTrue(monsters6.any { it.creature.id == "bralani" })
         assertTrue(monsters6.any { it.creature.id == "fera-do-caos" })
         assertTrue(monsters7.any { it.creature.id == "avoral" })
@@ -117,5 +117,15 @@ class SummoningRulesTest {
         val fiendishRat = SummoningRules.creaturesForCircle(SummoningFamily.SUMMON_CREATURES, 1)
             .first { it.creature.id == "rato-atroz-abissal" }
         assertEquals("", fiendishRat.templateLabel)
+
+        val archon = SummoningRules.creaturesForCircle(SummoningFamily.SUMMON_CREATURES, 4)
+            .first { it.creature.id == "arconte-luminar" }
+        val hellHound = SummoningRules.creaturesForCircle(SummoningFamily.SUMMON_CREATURES, 3)
+            .first { it.creature.id == "cao-infernal" }
+        val hellcat = SummoningRules.creaturesForCircle(SummoningFamily.SUMMON_CREATURES, 8)
+            .first { it.creature.id == "gato-infernal-bezekira" }
+        assertEquals("", archon.templateLabel)
+        assertEquals("", hellHound.templateLabel)
+        assertEquals("", hellcat.templateLabel)
     }
 }
