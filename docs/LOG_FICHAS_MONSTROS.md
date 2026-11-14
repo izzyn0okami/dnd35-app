@@ -466,3 +466,11 @@ As fichas-base devem ser reutilizadas por ID sempre que a tabela pedir apenas um
 
 - A CI identificou que `unicornio-arauto-celestial` tinha ficha e teste de círculo, mas não estava efetivamente incluído na lista de Invocar Aliado da Natureza IX. O ID foi acrescentado à lista; o teste que cobre essa opção permanece como regressão.
 - A PR deve permanecer sem merge até a nova execução da CI concluir com sucesso e o APK ser disponibilizado para validação.
+
+
+## 2026-11-14 — Revisão da lista de Invocar Criaturas: Cão Celestial
+
+- Conferida novamente a tabela brasileira do Livro do Jogador, p. 211, diretamente no PDF da Biblioteca. O Cão Celestial consta em Invocar Criaturas I.
+- A opção já estava funcionalmente representada pelo registro-base `cachorro` (ficha de Cachorro) com `templateLabel = Celestial`, e já era retornada no círculo I. Portanto, não faltava uma entrada de regra nem uma segunda ficha-base.
+- A causa da impressão de ausência era a apresentação do card: o título mostrava apenas “Cachorro” e o modelo celestial ficava no rodapé. A carta agora apresenta “Cão Celestial” como nome principal e identifica o modelo aplicado; a ficha-base continua sendo aberta para preservar os dados originais do animal.
+- A conferência visual da tabela de Invocar Criaturas (círculos I–IX) não revelou outra omissão evidente na lista de opções mapeadas. As criaturas que usam modelo Celestial/Abissal continuam vinculadas à ficha-base, sem duplicar blocos de estatísticas.
