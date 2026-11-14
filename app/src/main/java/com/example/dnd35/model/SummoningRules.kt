@@ -72,7 +72,7 @@ object SummoningRules {
         "leao-atroz" to "Celestial", "elefante" to "Celestial", "baleia-cachalote" to "Celestial",
         "triceratops" to "Celestial", "passaro-roca" to "Celestial",
 
-        "rato-atroz-abissal" to "Abissal", "corvo" to "Abissal", "centopeia-media" to "Abissal",
+        "corvo" to "Abissal", "centopeia-media" to "Abissal",
         "falcao" to "Abissal", "aranha-pequena" to "Abissal", "polvo" to "Abissal",
         "vibora-pequena" to "Abissal", "lula" to "Abissal", "lobo" to "Abissal",
         "centopeia-grande" to "Abissal", "escorpiao-medio" to "Abissal", "tubarao-medio" to "Abissal",
