@@ -835,10 +835,10 @@ As fichas-base devem ser reutilizadas por ID sempre que a tabela pedir apenas um
 
 ## 2026-11-14 — Trigésima quarta etapa: Uivante, Unicórnio e Urso-Coruja
 - Fonte: Livro dos Monstros brasileiro, páginas impressas 246–248 (PDF fornecido, páginas 250–252); conferida visualmente a continuação do Urso-Coruja na página impressa 249 (PDF, página 253).
-- Preenchidas Descrição e Combate das três fichas existentes, sem criar duplicatas ou substituir blocos estatísticos.
+- Concluídos os campos Descrição e Combate do Uivante e do Urso-Coruja; a descrição e o combate do Unicórnio, que já tinham resumos breves, foram ampliados e conferidos. Nenhuma duplicata foi criada nem bloco estatístico substituído.
 - Uivante: comportamento de caça em grupo, armas anárquicas, espinhos (1d4, Reflexos CD 16, penalidade cumulativa), uivo (Vontade CD 12, dano temporário de Sabedoria), treinamento, sela e capacidade de carga.
 - Unicórnio: comportamento territorial, chifre mágico +3, círculo mágico contra o mal, habilidades similares à magia, cura pelo chifre, CDs/níveis de conjurador, empatia selvagem e bônus de perícia.
 - Urso-Coruja: aparência, habitat, comportamento predatório, reprodução/covil, valor dos filhotes e treinamento; Combate registra luta até a morte e Agarrar Aprimorado.
 - Corrigida a capitalização da asserção de “carapaça” no teste do Tarrasque; nenhuma ficha foi alterada por essa correção.
 - Adicionado teste de regressão para as três fichas e seus efeitos distintivos.
-- Contagem após esta etapa: 320 fichas no catálogo; 226 com Descrição e Combate; 94 ainda precisam de ao menos um desses campos.
+- Contagem após esta etapa: 320 fichas no catálogo; 225 com Descrição e Combate; 95 ainda precisam de ao menos um desses campos. O Unicórnio já estava contabilizado entre as fichas preenchidas antes desta etapa.
