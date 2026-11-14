@@ -80,6 +80,8 @@ class SummoningRulesTest {
         val nature7 = SummoningRules.creaturesForCircle(SummoningFamily.SUMMON_NATURE_ALLY, 7)
 
         assertTrue(monsters1.any { it.creature.id == "corvo" && it.templateLabel == "Abissal" })
+        assertTrue(SummoningRules.creaturesForCircle(SummoningFamily.SUMMON_CREATURES, 2).any { it.creature.id == "lemure" })
+        assertTrue(SummoningRules.creaturesForCircle(SummoningFamily.SUMMON_CREATURES, 4).any { it.creature.id == "cao-yeth" })
         assertTrue(monsters4.any { it.creature.id == "arconte-luminar" && it.templateLabel.isBlank() })
         assertTrue(monsters6.any { it.creature.id == "bralani" })
         assertTrue(monsters6.any { it.creature.id == "fera-do-caos" })
