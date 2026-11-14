@@ -16,7 +16,7 @@ import androidx.compose.ui.unit.dp
 import com.example.dnd35.model.SummonCreatureOption
 import com.example.dnd35.model.SpellbookRules
 import com.example.dnd35.ui.components.CreatureDeckOverlay
-import com.example.dnd35.ui.components.CreatureTradingCard
+import com.example.dnd35.ui.components.CreatureImageTradingCard
 
 @Composable
 fun SummonedCreaturePickerDialog(
@@ -55,13 +55,13 @@ fun SummonedCreaturePickerDialog(
                 items(options, key = { "${it.creature.id}-${it.sourceCircle}-${it.templateLabel}" }) { option ->
                     val variant = option.templateLabel.takeIf { it.isNotBlank() }
                         ?.let { "Modelo/variante: $it" }
-                    CreatureTradingCard(
-                        name = option.creature.name,
-                        classification = "${option.creature.type} • ${option.creature.size} • ND ${option.creature.challengeRating}",
+                    CreatureImageTradingCard(
+                        creature = option.creature,
                         details = "Lista de ${SpellbookRules.circleLabel(option.sourceCircle)}",
-                        stats = "PV ${option.creature.hitPoints}  •  CA ${option.creature.armorClass}  •  Iniciativa ${option.creature.initiative}",
+                        stats = "PV ${option.creature.hitPoints} • CA ${option.creature.armorClassText} • Iniciativa ${option.creature.initiative}",
                         footer = variant,
-                        onClick = { onSelect(option) }
+                        selectLabel = "Invocar criatura",
+                        onSelect = { onSelect(option) }
                     )
                 }
             }

@@ -316,3 +316,29 @@ A alteração foi enviada ao PR #367 no commit `6b8a5eb32cf202c1393ad95803500f7e
 - Restaurada a ação explícita **Remover vínculo** em cada carta de familiar ou companheiro animal atualmente vinculado.
 - A remoção exige confirmação e altera somente a lista de vínculos salva no personagem; não apaga a criatura do bestiário nem altera suas regras ou dados.
 - A remoção de uma carta não afeta os demais vínculos. O usuário pode adicionar outra criatura posteriormente.
+
+
+## 2026-11-14 — Integração das ilustrações e padronização das cartas
+
+### Imagens
+- A pasta `app/src/main/assets/monsters/` foi integrada à branch de cartas sem copiar nem renomear os arquivos.
+- Conferência por nome normalizado (sem acentos e ignorando espaços, hífens e sublinhados): **266 imagens para 266 registros do catálogo; 266 correspondências; nenhuma criatura sem imagem**.
+- As ilustrações são carregadas sob demanda a partir de Assets, com decodificação fora da thread principal e redução de resolução para limitar memória.
+- A frente das cartas usa enquadramento preenchido; a ficha ampliada usa `ContentScale.Fit` para exibir a imagem inteira, sem cortes.
+
+### Interação comum das cartas
+- Cartas do bestiário, familiares, companheiros e criaturas invocadas usam o mesmo componente visual.
+- Toque simples alterna frente e verso.
+- Pressão prolongada abre a ficha completa em tela integral, incluindo a ilustração inteira e os dados disponíveis no catálogo.
+- Nos seletores, a ação de vincular/invocar/adicionar fica no verso da carta; virar a carta não confirma a seleção acidentalmente.
+- A seção de familiares e companheiros exibe as criaturas vinculadas como cartas diretamente na ficha, preservando a remoção do vínculo e as regras de elegibilidade já existentes.
+
+### Baralho de combate do Mestre
+- A pilha horizontal passou a usar posicionamento explícito de sobreposição: cartas consecutivas avançam 72 dp, mantendo 148 dp da carta anterior visíveis.
+- A rolagem horizontal permanece disponível quando o número de cartas ultrapassa a largura da tela.
+- As cartas de combate agora usam a ilustração correspondente na frente; toque para virar e pressão prolongada para abrir a ficha completa continuam disponíveis.
+
+### Escopo preservado
+- Nenhuma estatística, regra de elegibilidade, progressão, serialização ou estrutura persistida de personagem/sessão foi alterada.
+- Nenhuma imagem foi movida, renomeada ou duplicada.
+- Validação de CI e conferência visual em aparelho permanecem pendentes para esta revisão.

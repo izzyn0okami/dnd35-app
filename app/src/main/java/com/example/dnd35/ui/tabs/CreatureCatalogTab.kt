@@ -38,14 +38,16 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.dnd35.model.CreatureDefinition
 import com.example.dnd35.model.CreatureCatalog
+import com.example.dnd35.ui.components.CreatureImage
 
 /**
- * Bestiário consultivo. A área de imagem é intencionalmente vazia: as ilustrações serão
- * escolhidas e associadas manualmente em uma etapa posterior.
+ * Bestiário consultivo. As ilustrações são resolvidas automaticamente em assets/monsters
+ * pelo nome normalizado da criatura.
  */
 @Composable
 fun CreatureCatalogTab(modifier: Modifier = Modifier) {
@@ -167,6 +169,8 @@ private fun CreatureListItem(creature: CreatureDefinition, onClick: () -> Unit) 
             modifier = Modifier.fillMaxWidth().padding(14.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
+            CreatureImage(creature, Modifier.size(76.dp), ContentScale.Crop, maxDimensionPx = 700)
+            Spacer(modifier = Modifier.size(10.dp))
             Column(modifier = Modifier.weight(1f)) {
                 Text(creature.name, style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
                 Text(
@@ -230,7 +234,10 @@ private fun CreatureDetail(
                 }
             }
         }
-        item { CreatureImagePlaceholder() }
+        item {
+            CreatureImage(creature, Modifier.fillMaxWidth().height(300.dp),
+                contentScale = ContentScale.Fit, maxDimensionPx = 1800)
+        }
         item {
             CreatureSection("Descrição") {
                 Text(
@@ -312,27 +319,6 @@ private fun CreatureDetail(
                 CreatureField("Progressão", creature.advancement)
                 CreatureField("Ajuste de Nível", creature.levelAdjustment)
                 CreatureField("Fonte dos dados", creature.source)
-            }
-        }
-    }
-}
-
-@Composable
-private fun CreatureImagePlaceholder() {
-    Surface(
-        modifier = Modifier.fillMaxWidth().height(190.dp).clip(RoundedCornerShape(16.dp)),
-        shape = RoundedCornerShape(16.dp),
-        color = MaterialTheme.colorScheme.surfaceVariant,
-        border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant)
-    ) {
-        Box(contentAlignment = Alignment.Center) {
-            Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                Text("Espaço reservado para imagem", fontWeight = FontWeight.SemiBold)
-                Text(
-                    "Ilustração a ser adicionada manualmente",
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
             }
         }
     }

@@ -67,6 +67,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.asImageBitmap
+import androidx.compose.ui.layout.Layout
+import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -76,7 +78,9 @@ import com.example.dnd35.model.CharacterEntity
 import com.example.dnd35.model.CreatureCatalog
 import com.example.dnd35.model.CreatureDefinition
 import com.example.dnd35.ui.components.CreatureDeckOverlay
-import com.example.dnd35.ui.components.CreatureTradingCard
+import com.example.dnd35.ui.components.CreatureDetailsOverlay
+import com.example.dnd35.ui.components.CreatureImage
+import com.example.dnd35.ui.components.CreatureImageTradingCard
 import com.example.dnd35.model.CharacterInventoryItem
 import com.example.dnd35.session.ActionRequest
 import com.example.dnd35.session.Combatant
@@ -428,20 +432,29 @@ private fun MonsterCardsSection(
                 )
             }
         } else {
-            Row(
-                modifier = Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()).padding(vertical = 8.dp),
-                horizontalArrangement = Arrangement.spacedBy((-164).dp),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                cards.forEach { shortcut ->
-                    val creature = CreatureCatalog.byId(shortcut.creatureId)
-                    if (creature != null) {
-                        MonsterShortcutCard(
-                            instanceId = shortcut.instanceId,
-                            creature = creature,
-                            onLongClick = { selectedCreature = creature },
-                            onRemove = { onRemove(shortcut.instanceId) }
-                        )
+            Box(modifier = Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()).padding(vertical = 8.dp)) {
+                Layout(content = {
+                    cards.forEach { shortcut ->
+                        val creature = CreatureCatalog.byId(shortcut.creatureId)
+                        if (creature != null) {
+                            MonsterShortcutCard(
+                                instanceId = shortcut.instanceId,
+                                creature = creature,
+                                onLongClick = { selectedCreature = creature },
+                                onRemove = { onRemove(shortcut.instanceId) }
+                            )
+                        }
+                    }
+                }) { measurables, _ ->
+                    val cardWidth = 220.dp.roundToPx()
+                    val cardHeight = 326.dp.roundToPx()
+                    val cardStep = 72.dp.roundToPx()
+                    val placeables = measurables.map { it.measure(Constraints.fixed(cardWidth, cardHeight)) }
+                    val layoutWidth = if (placeables.isEmpty()) 0 else cardWidth + cardStep * (placeables.size - 1)
+                    layout(layoutWidth, cardHeight) {
+                        placeables.forEachIndexed { index, placeable ->
+                            placeable.placeRelative(x = index * cardStep, y = 0)
+                        }
                     }
                 }
             }
@@ -512,13 +525,12 @@ private fun MonsterShortcutCard(
                     color = MaterialTheme.colorScheme.surfaceVariant,
                     border = androidx.compose.foundation.BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant)
                 ) {
-                    Box(contentAlignment = Alignment.Center) {
-                        Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(5.dp)) {
-                            Icon(Icons.Default.Shield, contentDescription = null, modifier = Modifier.size(38.dp), tint = MaterialTheme.colorScheme.onSurfaceVariant)
-                            Text("ILUSTRAÇÃO", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                            Text("Imagem do bestiário", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                        }
-                    }
+                    CreatureImage(
+                        creature = creature,
+                        modifier = Modifier.fillMaxSize(),
+                        contentScale = androidx.compose.ui.layout.ContentScale.Crop,
+                        maxDimensionPx = 1100
+                    )
                 }
                 Surface(
                     modifier = Modifier.fillMaxWidth(),
@@ -2038,12 +2050,12 @@ private fun AddMonsterCardDialog(
                 verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
                 items(results, key = { it.id }) { creature ->
-                    CreatureTradingCard(
-                        name = creature.name,
-                        classification = "${creature.type} • ${creature.size} • ND ${creature.challengeRating}",
-                        details = "Selecione para adicionar esta criatura à sessão do Mestre.",
-                        stats = "PV ${creature.hitPoints}  •  CA ${creature.armorClassText}  •  Iniciativa ${creature.initiative}",
-                        onClick = { onSelect(creature) }
+                    CreatureImageTradingCard(
+                        creature = creature,
+                        details = "Criatura do bestiário • adicionar à sessão do Mestre",
+                        stats = "PV ${creature.hitPoints} • CA ${creature.armorClassText} • Iniciativa ${creature.initiative}",
+                        selectLabel = "Adicionar à sessão",
+                        onSelect = { onSelect(creature) }
                     )
                 }
             }
@@ -2056,45 +2068,8 @@ private fun AddMonsterCardDialog(
 
 /** Consulta detalhada do registro original do bestiário; não cria nem altera ficha. */
 @Composable
-private fun MonsterCreatureDetailDialog(
-    creature: CreatureDefinition,
-    onDismiss: () -> Unit
-) {
-    AlertDialog(
-        onDismissRequest = onDismiss,
-        title = { Text(creature.name) },
-        text = {
-            Column(
-                modifier = Modifier.fillMaxWidth().heightIn(max = 480.dp).verticalScroll(rememberScrollState()),
-                verticalArrangement = Arrangement.spacedBy(5.dp)
-            ) {
-                Text("${creature.typeDetail.ifBlank { creature.type }} • ${creature.size} • ND ${creature.challengeRating}",
-                    fontWeight = FontWeight.Bold)
-                Text("Dados de Vida: ${creature.hitDice} (${creature.hitPoints} PV)")
-                Text("Iniciativa: ${signed(creature.initiative)} • Deslocamento: ${creature.speed}")
-                Text("CA: ${creature.armorClassText} • Toque: ${creature.touchAc} • Surpreso: ${creature.flatFootedAc}")
-                Text("BBA/Agarrar: ${signed(creature.baseAttack)}/${signed(creature.grapple)}")
-                Text("Ataque: ${creature.attack}")
-                Text("Ataque total: ${creature.fullAttack}")
-                Text("Espaço/Alcance: ${creature.spaceReach}")
-                Text("Fortitude ${signed(creature.saves.fort)} • Reflexos ${signed(creature.saves.ref)} • Vontade ${signed(creature.saves.will)}")
-                Text("FOR ${abilityWithModifier(creature.abilities.str)} • DES ${abilityWithModifier(creature.abilities.dex)} • CON ${abilityWithModifier(creature.abilities.con)}")
-                Text("INT ${abilityWithModifier(creature.abilities.int)} • SAB ${abilityWithModifier(creature.abilities.wis)} • CAR ${abilityWithModifier(creature.abilities.cha)}")
-                Text("Ataques especiais: ${creature.specialAttacks.ifBlank { "—" }}")
-                Text("Qualidades especiais: ${creature.specialQualities.ifBlank { "—" }}")
-                Text("Perícias: ${creature.skills.ifBlank { "—" }}")
-                Text("Talentos: ${creature.feats.ifBlank { "—" }}")
-                Text("Ambiente: ${creature.environment.ifBlank { "—" }}")
-                Text("Organização: ${creature.organization.ifBlank { "—" }}")
-                Text("Tesouro: ${creature.treasure.ifBlank { "—" }} • Tendência: ${creature.alignment}")
-                Text("Avanço: ${creature.advancement.ifBlank { "—" }} • Ajuste de nível: ${creature.levelAdjustment.ifBlank { "—" }}")
-                if (creature.description.isNotBlank()) Text(creature.description)
-                if (creature.combat.isNotBlank()) Text("Combate: ${creature.combat}")
-                Text("Fonte: ${creature.source}", style = MaterialTheme.typography.labelSmall)
-            }
-        },
-        confirmButton = { TextButton(onClick = onDismiss) { Text("Fechar") } }
-    )
+private fun MonsterCreatureDetailDialog(creature: CreatureDefinition, onDismiss: () -> Unit) {
+    CreatureDetailsOverlay(creature = creature, onDismiss = onDismiss)
 }
 
 private fun signed(value: Int): String = if (value > 0) "+$value" else value.toString()

@@ -32,6 +32,7 @@ import com.example.dnd35.model.CharacterJsonAdapters
 import com.example.dnd35.model.CreatureBondKind
 import com.example.dnd35.model.CreatureBondRules
 import com.example.dnd35.model.CreatureCatalog
+import com.example.dnd35.ui.components.CreatureImageTradingCard
 import com.example.dnd35.viewmodel.CharacterViewModel
 
 @Composable
@@ -48,7 +49,6 @@ fun CreatureBondSection(
     val companionOptions = remember(classEntries) { CreatureBondRules.animalCompanionOptions(classEntries) }
 
     var activeKind by remember { mutableStateOf<CreatureBondKind?>(null) }
-    var showCurrent by remember { mutableStateOf(false) }
     var showPicker by remember { mutableStateOf(false) }
     var includeAquatic by remember { mutableStateOf(false) }
     var bondPendingRemoval by remember { mutableStateOf<CharacterCreatureBond?>(null) }
@@ -83,15 +83,15 @@ fun CreatureBondSection(
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
             if (familiarOptions.isNotEmpty() || familiarBonds.isNotEmpty()) {
-                BondActionButton("Familiar", familiarBonds) {
-                    activeKind = CreatureBondKind.FAMILIAR
-                    if (familiarBonds.isEmpty()) showPicker = true else showCurrent = true
+                OutlinedButton(onClick = { activeKind = CreatureBondKind.FAMILIAR; showPicker = true },
+                    modifier = Modifier.fillMaxWidth()) {
+                    Text(if (familiarBonds.isEmpty()) "Selecionar familiar" else "Adicionar outro familiar")
                 }
             }
             if (companionOptions.isNotEmpty() || companionBonds.isNotEmpty()) {
-                BondActionButton("Companheiro animal", companionBonds) {
-                    activeKind = CreatureBondKind.ANIMAL_COMPANION
-                    if (companionBonds.isEmpty()) showPicker = true else showCurrent = true
+                OutlinedButton(onClick = { activeKind = CreatureBondKind.ANIMAL_COMPANION; showPicker = true },
+                    modifier = Modifier.fillMaxWidth()) {
+                    Text(if (companionBonds.isEmpty()) "Selecionar companheiro animal" else "Adicionar outro companheiro")
                 }
             }
             if (familiarOptions.isEmpty() && companionOptions.isEmpty() &&
@@ -106,45 +106,29 @@ fun CreatureBondSection(
         }
     }
 
-    if (showCurrent && activeKind != null) {
-        CreatureDeckOverlay(
-            title = if (activeKind == CreatureBondKind.FAMILIAR) "Familiares atuais" else "Companheiros animais atuais",
-            subtitle = "${bondsForActiveKind.size} carta(s) vinculada(s) a este personagem",
-            onDismiss = { showCurrent = false }
-        ) {
-            if (bondsForActiveKind.isEmpty()) {
-                Text("Nenhuma criatura vinculada.", color = MaterialTheme.colorScheme.onSurfaceVariant)
-            } else {
-                LazyColumn(
-                    modifier = Modifier.weight(1f),
-                    verticalArrangement = Arrangement.spacedBy(12.dp)
-                ) {
-                    items(bondsForActiveKind, key = { it.id }) { bond ->
-                        val creature = CreatureCatalog.byId(bond.creatureId)
-                        if (creature != null) {
-                            Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                                CreatureTradingCard(
-                                    name = creature.name,
-                                    classification = "${creature.type} • ${creature.size} • ND ${creature.challengeRating}",
-                                    details = "Criatura vinculada • ${if (activeKind == CreatureBondKind.FAMILIAR) "Familiar" else "Companheiro animal"}",
-                                    stats = "PV ${creature.hitPoints}  •  CA ${creature.armorClassText}  •  Iniciativa ${creature.initiative}"
-                                )
-                                Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
-                                    TextButton(onClick = { bondPendingRemoval = bond }) {
-                                        Text("Remover vínculo", color = MaterialTheme.colorScheme.error)
-                                    }
-                                }
-                            }
-                        }
+    if (familiarBonds.isNotEmpty() || companionBonds.isNotEmpty()) {
+        Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+            familiarBonds.forEach { bond ->
+                CreatureCatalog.byId(bond.creatureId)?.let { creature ->
+                    CreatureImageTradingCard(creature,
+                        details = "Familiar vinculado ao personagem",
+                        stats = "PV ${creature.hitPoints} • CA ${creature.armorClassText} • Iniciativa ${creature.initiative}")
+                    TextButton(onClick = { bondPendingRemoval = bond },
+                        modifier = Modifier.align(androidx.compose.ui.Alignment.End)) {
+                        Text("Remover vínculo", color = MaterialTheme.colorScheme.error)
                     }
                 }
             }
-            Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
-                TextButton(onClick = { showCurrent = false }) { Text("Fechar") }
-                TextButton(onClick = {
-                    showCurrent = false
-                    showPicker = true
-                }) { Text("Adicionar outra") }
+            companionBonds.forEach { bond ->
+                CreatureCatalog.byId(bond.creatureId)?.let { creature ->
+                    CreatureImageTradingCard(creature,
+                        details = "Companheiro animal vinculado ao personagem",
+                        stats = "PV ${creature.hitPoints} • CA ${creature.armorClassText} • Iniciativa ${creature.initiative}")
+                    TextButton(onClick = { bondPendingRemoval = bond },
+                        modifier = Modifier.align(androidx.compose.ui.Alignment.End)) {
+                        Text("Remover vínculo", color = MaterialTheme.colorScheme.error)
+                    }
+                }
             }
         }
     }
@@ -192,16 +176,15 @@ fun CreatureBondSection(
                     verticalArrangement = Arrangement.spacedBy(12.dp)
                 ) {
                     items(options, key = { it.first.id }) { (creature, restriction) ->
-                        CreatureTradingCard(
-                            name = creature.name,
-                            classification = "${creature.type} • ${creature.size} • ND ${creature.challengeRating}",
-                            details = "Escolha esta criatura como ${if (activeKind == CreatureBondKind.FAMILIAR) "familiar" else "companheiro animal"}.",
-                            stats = "PV ${creature.hitPoints}  •  CA ${creature.armorClassText}  •  Iniciativa ${creature.initiative}",
+                        CreatureImageTradingCard(
+                            creature = creature,
+                            details = "Disponível como ${if (activeKind == CreatureBondKind.FAMILIAR) "familiar" else "companheiro animal"}.",
+                            stats = "PV ${creature.hitPoints} • CA ${creature.armorClassText} • Iniciativa ${creature.initiative}",
                             footer = restriction.ifBlank { null },
-                            onClick = {
-                                val kind = activeKind ?: return@CreatureTradingCard
-                                val updated = savedBonds + CharacterCreatureBond(kind = kind, creatureId = creature.id)
-                                viewModel.updateCreatureBonds(updated)
+                            selectLabel = "Vincular criatura",
+                            onSelect = {
+                                val kind = activeKind ?: return@CreatureImageTradingCard
+                                viewModel.updateCreatureBonds(savedBonds + CharacterCreatureBond(kind = kind, creatureId = creature.id))
                                 showPicker = false
                             }
                         )
