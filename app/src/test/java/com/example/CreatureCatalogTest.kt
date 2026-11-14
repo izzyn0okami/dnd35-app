@@ -152,4 +152,21 @@ class CreatureCatalogTest {
         assertTrue(beholder.attack.contains("raios ópticos"))
         assertTrue(beholder.fullAttack.contains("raios ópticos"))
     }
+
+    @Test
+    fun bugbearToConstrictorHaveNarrativeAndCombatSummaries() {
+        listOf(
+            "bugbear", "bulette", "cacador-invisivel", "cao-infernal",
+            "cao-de-guerra-nessian", "cao-teleportador", "cao-yeth",
+            "chuul", "cocatriz", "constritor"
+        ).forEach { id ->
+            val creature = CreatureCatalog.byId(id)!!
+            assertTrue("$id sem descrição", creature.description.isNotBlank())
+            assertTrue("$id sem resumo de combate", creature.combat.isNotBlank())
+        }
+        assertEquals(17, CreatureCatalog.byId("bugbear")!!.armorClass)
+        assertEquals("Plano Elemental do Ar", CreatureCatalog.byId("cacador-invisivel")!!.environment)
+        assertEquals("Pântanos temperados", CreatureCatalog.byId("chuul")!!.environment)
+        assertEquals("Subterrâneo", CreatureCatalog.byId("constritor")!!.environment)
+    }
 }
