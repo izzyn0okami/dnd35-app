@@ -39,7 +39,7 @@ object SummoningRules {
         4 to "louva-a-deus-gigante cao-yeth arconte-luminar coruja-gigante aguia-gigante leao-celestial mephit-da-agua mephit-do-ar mephit-do-fogo mephit-do-gelo mephit-do-limo mephit-do-magma mephit-da-poeira mephit-do-sal mephit-do-vapor lobo-atroz vespa-gigante tubarao-grande aranha-grande vibora-enorme uivante",
         5 to "elemental-agua-medio elemental-ar-medio elemental-fogo-medio elemental-terra-medio arconte-guardiao gafanhoto-gigante urso-marrom leao-marinho grifo achaierai diabo-barbado-barbazu dinonico gorila-atroz javali-atroz tubarao-enorme escorpiao-grande mastim-das-sombras carcaju-atroz crocodilo-gigante tigre",
         6 to "elemental-agua-grande elemental-ar-grande elemental-fogo-grande elemental-terra-grande xill urso-atroz baleia-orca leao-atroz cobra-constritora-gigante diabo-das-correntes-kyton centopeia-imensa rinoceronte elasmossauro aranha-enorme bralani janni fera-do-caos",
-        7 to "elemental-agua-enorme elemental-ar-enorme elemental-fogo-enorme elemental-terra-enorme elefante avoral djinni cacador-invisivel slaad-vermelho diabo-dos-ossos-osyluth megaraptor escorpiao-enorme babau polvo-gigante girallon",
+        7 to "elemental-agua-enorme elemental-ar-enorme elemental-fogo-enorme elemental-terra-enorme elefante baleia-azul avoral djinni cacador-invisivel slaad-vermelho diabo-dos-ossos-osyluth megaraptor escorpiao-enorme babau polvo-gigante girallon",
         8 to "elemental-agua-maior elemental-ar-maior elemental-fogo-maior elemental-terra-maior baleia-cachalote triceratops lillend slaad-azul lula-gigante gato-infernal-bezekira centopeia-colossal tigre-atroz aranha-imensa tiranossauro vrock",
         9 to "elemental-agua-anciao elemental-ar-anciao elemental-fogo-anciao elemental-terra-anciao bruxa-da-noite leonal unicornio-arauto-celestial couatl passaro-roca slaad-verde diabo-barbado-barbazu tubarao-atroz escorpiao-imenso bebilith aranha-colossal hezrou"
     )
@@ -70,7 +70,7 @@ object SummoningRules {
         "leao-celestial" to "Celestial", "urso-marrom" to "Celestial", "leao-marinho" to "Celestial",
         "grifo" to "Celestial", "urso-atroz" to "Celestial", "baleia-orca" to "Celestial",
         "leao-atroz" to "Celestial", "elefante" to "Celestial", "baleia-cachalote" to "Celestial",
-        "triceratops" to "Celestial", "passaro-roca" to "Celestial",
+        "triceratops" to "Celestial", "baleia-azul" to "Celestial", "passaro-roca" to "Celestial",
 
         "corvo" to "Abissal", "louva-a-deus-gigante" to "Abissal", "centopeia-media" to "Abissal",
         "falcao" to "Abissal", "aranha-pequena" to "Abissal", "polvo" to "Abissal",
