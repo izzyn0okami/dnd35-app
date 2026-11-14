@@ -169,4 +169,22 @@ class CreatureCatalogTest {
         assertEquals("Pântanos temperados", CreatureCatalog.byId("chuul")!!.environment)
         assertEquals("Subterrâneo", CreatureCatalog.byId("constritor")!!.environment)
     }
+
+    @Test
+    fun seaWitchThroughHezrouHaveNarrativeAndCombatSummaries() {
+        listOf(
+            "bruxa-do-mar", "coruja-gigante", "couatl", "cria-vampirica",
+            "babau", "balor", "bebilith", "dretch", "glabrezu", "hezrou"
+        ).forEach { id ->
+            val creature = CreatureCatalog.byId(id)!!
+            assertTrue("$id sem descrição", creature.description.isNotBlank())
+            assertTrue("$id sem resumo de combate", creature.combat.isNotBlank())
+        }
+
+        assertTrue(!CreatureCatalog.byId("babau")!!.skills.contains("DEMÔNIO"))
+        assertTrue(!CreatureCatalog.byId("dretch")!!.specialAttacks.contains("Caçador"))
+        assertTrue(!CreatureCatalog.byId("hezrou")!!.spaceReach.contains("GLABREZU"))
+        assertTrue(CreatureCatalog.byId("coruja-gigante")!!.summonedCreature)
+    }
+
 }
