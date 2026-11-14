@@ -99,6 +99,7 @@ class SummoningRulesTest {
         assertTrue(nature7.any { it.creature.id == "gaviao-seta-anciao" })
         assertTrue(SummoningRules.creaturesForCircle(SummoningFamily.SUMMON_NATURE_ALLY, 6).any { it.creature.id == "salamandra-media" })
         assertTrue(SummoningRules.creaturesForCircle(SummoningFamily.SUMMON_NATURE_ALLY, 8).any { it.creature.id == "salamandra-nobre" })
+        assertTrue(SummoningRules.creaturesForCircle(SummoningFamily.SUMMON_NATURE_ALLY, 8).any { it.creature.id == "tojanida-anciao" })
         assertTrue(nature4.any { it.creature.id == "javali-atroz" })
         assertTrue(nature4.any { it.creature.id == "carcaju-atroz" })
         assertTrue(nature4.any { it.creature.id == "vibora-enorme" })
