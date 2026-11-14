@@ -826,3 +826,19 @@ As fichas-base devem ser reutilizadas por ID sempre que a tabela pedir apenas um
 - Nenhum valor do bloco estatístico foi substituído; os campos narrativos e de combate foram preenchidos.
 - Adicionado teste de regressão para os oito registros e suas habilidades distintivas.
 - Contagem após esta etapa: 320 fichas no catálogo; 223 com Descrição e Combate; 97 ainda precisam de ao menos um desses campos.
+
+
+### Correção de CI — 2026-11-14 (lote T–U)
+- A CI identificou uma asserção com diferença apenas de capitalização: o texto do Tarrasque contém “carapaça” em minúscula. Corrigida a expectativa do teste; o conteúdo da ficha permanece inalterado.
+- As duas execuções de CI falharam pela mesma asserção em `eightCreatureSheetsHaveNarrativeAndCombatDetails`; a compilação Kotlin ocorreu normalmente e 609 dos 610 testes passaram.
+- Nenhuma alteração de regra ou estatística foi necessária.
+
+## 2026-11-14 — Trigésima quarta etapa: Uivante, Unicórnio e Urso-Coruja
+- Fonte: Livro dos Monstros brasileiro, páginas impressas 246–248 (PDF fornecido, páginas 250–252); conferida visualmente a continuação do Urso-Coruja na página impressa 249 (PDF, página 253).
+- Preenchidas Descrição e Combate das três fichas existentes, sem criar duplicatas ou substituir blocos estatísticos.
+- Uivante: comportamento de caça em grupo, armas anárquicas, espinhos (1d4, Reflexos CD 16, penalidade cumulativa), uivo (Vontade CD 12, dano temporário de Sabedoria), treinamento, sela e capacidade de carga.
+- Unicórnio: comportamento territorial, chifre mágico +3, círculo mágico contra o mal, habilidades similares à magia, cura pelo chifre, CDs/níveis de conjurador, empatia selvagem e bônus de perícia.
+- Urso-Coruja: aparência, habitat, comportamento predatório, reprodução/covil, valor dos filhotes e treinamento; Combate registra luta até a morte e Agarrar Aprimorado.
+- Corrigida a capitalização da asserção de “carapaça” no teste do Tarrasque; nenhuma ficha foi alterada por essa correção.
+- Adicionado teste de regressão para as três fichas e seus efeitos distintivos.
+- Contagem após esta etapa: 320 fichas no catálogo; 226 com Descrição e Combate; 94 ainda precisam de ao menos um desses campos.
