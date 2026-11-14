@@ -27,3 +27,16 @@ Melhoria do componente compartilhado nas cartas do Bestiário, seleção de cria
 - Corrigidas as expressões para interpolação Kotlin normal (`${...}`), restaurando a renderização dinâmica dos dados e eliminando os erros de sintaxe reportados nas linhas 293–296.
 - Confirmado no código-fonte que `CreatureDefinition` fornece os campos utilizados pela carta e que `DiceRollDialog` aceita os parâmetros usados.
 - A correção está no commit `0aaefae6abfaf2ceaef87d183ee8066d7e4bbcca`; CI/build desse commit em execução no momento do registro.
+
+
+## 2026-11-14 — Simplificação da frente: sem rolagens nas cartas
+
+### Decisão
+- As cartas são um resumo visual de combate; as rolagens não são necessárias nesse contexto.
+- Removidos os botões de rolagem dos ataques e ataques totais para liberar espaço.
+- Mantidas as descrições textuais completas de Ataque e Ataque total, sem alterar bônus, dano ou estatísticas do catálogo.
+- Removidos o estado temporário de rolagem, a análise de bônus/dano e a dependência de DiceRollDialog do componente de cartas.
+- A rolagem continua disponível nas áreas próprias do aplicativo; esta mudança é restrita às cartas.
+
+### Validação
+- Aguardando CI Android e testes automatizados nesta alteração.

@@ -52,7 +52,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.example.dnd35.model.CreatureDefinition
-import com.example.dnd35.ui.dialogs.DiceRollDialog
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.text.Normalizer
@@ -215,7 +214,6 @@ fun CreatureImageTradingCard(
 ) {
     var showBack by remember(creature.id) { mutableStateOf(false) }
     var showDetails by remember(creature.id) { mutableStateOf(false) }
-    var diceRollTarget by remember(creature.id) { mutableStateOf<Triple<String, Int, String>?>(null) }
 
     Card(
         modifier = modifier.fillMaxWidth().height(500.dp).combinedClickable(
@@ -253,13 +251,9 @@ fun CreatureImageTradingCard(
                     CreatureCombatValue("BBA", creature.baseAttack.creatureSigned(), Modifier.weight(1f))
                     CreatureCombatValue("Desloc.", creature.speed, Modifier.weight(1.35f))
                 }
-                CreatureAttackLine("Ataque", creature.attack) { bonus, damage ->
-                    diceRollTarget = Triple("Ataque: ${creature.name}", bonus, damage)
-                }
+                CreatureAttackLine("Ataque", creature.attack)
                 if (creature.fullAttack.isNotBlank() && creature.fullAttack != creature.attack) {
-                    CreatureAttackLine("Ataque total", creature.fullAttack) { bonus, damage ->
-                        diceRollTarget = Triple("Ataque total: ${creature.name}", bonus, damage)
-                    }
+                    CreatureAttackLine("Ataque total", creature.fullAttack)
                 }
                 if (creature.specialAttacks.isNotBlank()) {
                     Surface(modifier = Modifier.fillMaxWidth().weight(1f),
@@ -313,10 +307,6 @@ fun CreatureImageTradingCard(
             }
         }
     }
-    diceRollTarget?.let { (title, bonus, damage) ->
-        DiceRollDialog(actionTitle = title, bonus = bonus, damageNotation = damage,
-            onDismiss = { diceRollTarget = null })
-    }
     if (showDetails) CreatureDetailsOverlay(creature, onDismiss = { showDetails = false })
 }
 
@@ -334,25 +324,16 @@ private fun CreatureCombatValue(label: String, value: String, modifier: Modifier
 }
 
 @Composable
-private fun CreatureAttackLine(title: String, value: String, onRoll: (Int, String) -> Unit) {
+private fun CreatureAttackLine(title: String, value: String) {
     if (value.isBlank()) return
-    val bonus = Regex("[+-]\\d+").find(value)?.value?.toIntOrNull()
-    val damage = Regex("\\(([^()]*(?:\\d+d\\d+)[^()]*)\\)", RegexOption.IGNORE_CASE)
-        .find(value)?.groupValues?.getOrNull(1).orEmpty()
     Surface(modifier = Modifier.fillMaxWidth(), color = MaterialTheme.colorScheme.surface,
         shape = RoundedCornerShape(9.dp)) {
-        Row(modifier = Modifier.fillMaxWidth().padding(8.dp), verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-            Column(modifier = Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(2.dp)) {
-                Text(title, style = MaterialTheme.typography.labelMedium, fontWeight = FontWeight.Bold,
-                    color = MaterialTheme.colorScheme.primary)
-                Text(value, style = MaterialTheme.typography.bodySmall, maxLines = 2,
-                    overflow = TextOverflow.Ellipsis)
-            }
-            if (bonus != null) Button(onClick = { onRoll(bonus, damage) },
-                contentPadding = androidx.compose.foundation.layout.PaddingValues(horizontal = 9.dp, vertical = 5.dp)) {
-                Text("Rolar " + (if (bonus >= 0) "+$bonus" else "$bonus"), style = MaterialTheme.typography.labelSmall)
-            }
+        Column(modifier = Modifier.fillMaxWidth().padding(8.dp),
+            verticalArrangement = Arrangement.spacedBy(2.dp)) {
+            Text(title, style = MaterialTheme.typography.labelMedium, fontWeight = FontWeight.Bold,
+                color = MaterialTheme.colorScheme.primary)
+            Text(value, style = MaterialTheme.typography.bodySmall, maxLines = 2,
+                overflow = TextOverflow.Ellipsis)
         }
     }
 }
