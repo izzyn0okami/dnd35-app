@@ -514,4 +514,15 @@ class CreatureCatalogTest {
         assertTrue(ogre.combat.contains("fogo e ácido"))
     }
 
+
+    @Test
+    fun rocHasBookBasedDescriptionAndHuntingBehavior() {
+        val roc = CreatureCatalog.byId("passaro-roca")!!
+        assertTrue(roc.description.contains("envergadura próxima de 25 m"))
+        assertTrue(roc.description.contains("raio de aproximadamente 15 km"))
+        assertTrue(roc.combat.contains("criatura Média ou maior"))
+        assertTrue(roc.combat.contains("até a morte"))
+        assertTrue(roc.combat.contains("+4 de bônus racial"))
+    }
+
 }

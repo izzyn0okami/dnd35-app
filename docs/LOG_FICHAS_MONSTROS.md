@@ -730,3 +730,13 @@ As fichas-base devem ser reutilizadas por ID sempre que a tabela pedir apenas um
 - Combate registra habilidades similares à magia e suas frequências/CDs, voo, regeneração 5 e as exceções/condições para recolocar partes do corpo.
 - Adicionado teste de regressão para os elementos distintivos do verbete.
 - Contagem após esta etapa: 319 fichas; 200 com Descrição e Combate; 119 pendentes.
+
+
+## 2026-11-14 — Vigésima sexta etapa: Pássaro Roca
+
+- Conferido o verbete do Pássaro Roca no Livro dos Monstros brasileiro, p. 215 (PDF, p. 219).
+- Preenchidos Descrição e Combate no registro existente, sem modificar estatísticas nem a marcação de invocação.
+- Descrição registra dimensões, plumagem, habitat, ninhos e raio de caça conforme o texto do livro.
+- Combate resume os ataques aéreos, captura e transporte de presas, comportamento solitário e defesa coletiva do ninho, além do bônus racial em Observar.
+- Adicionado teste de regressão para dimensões, caça, defesa do ninho e perícia.
+- Contagem após esta etapa: 319 fichas; 201 com Descrição e Combate; 118 pendentes.

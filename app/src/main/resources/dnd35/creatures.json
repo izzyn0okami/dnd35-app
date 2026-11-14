@@ -7691,7 +7691,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "O pássaro roca é uma ave de rapina imensa, quase do tamanho de uma casa, com cerca de 10 m do bico à base da cauda e envergadura próxima de 25 m. Sua plumagem costuma ser marrom-escura ou dourada; exemplares vermelhos, pretos ou brancos são raros e frequentemente vistos como mau presságio. Habita regiões montanhosas e quentes e é conhecido por arrebatar animais enormes, como gado, cavalos e até elefantes. Constrói ninhos amplos de árvores, ramos e madeira nos picos das montanhas, caçando num raio de aproximadamente 15 km. Um pássaro roca solitário caça por conta própria; casais defendem juntos o ninho e os filhotes.",
+    "combat": "O pássaro roca ataca do ar, mergulhando sobre a presa para agarrá-la com as garras e carregá-la para si ou para alimentar os filhotes. Um indivíduo solitário caça e ataca qualquer criatura Média ou maior que pareça comestível. Um casal luta em conjunto e até a morte para defender o ninho e os filhotes. Perícias: recebe +4 de bônus racial nos testes de Observar."
   },
   {
     "id": "pegaso",
