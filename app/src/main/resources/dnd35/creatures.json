@@ -1621,7 +1621,7 @@
     "hitPoints": 16,
     "initiative": 1,
     "speed": "9 m (6 quadrados)",
-    "armorClass": 1,
+    "armorClass": 17,
     "armorClassText": "1 7 (+1 Des, +3 natural, +2 corselete de couro, +1 escudo de madeira leve), toque 11, surpresa 16",
     "touchAc": 11,
     "flatFootedAc": 16,
@@ -1657,7 +1657,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Humanoide goblinóide selvagem e musculoso, com cerca de 2,1 m de altura. A maior parte do corpo é coberta por pelos ásperos; possui presas compridas e afiadas e um nariz semelhante ao focinho de um urso. É o maior e mais forte dos goblinóides comuns e caça criaturas mais fracas. Vive em unidades tribais em regiões temperadas e montanhosas, geralmente em cavernas.",
+    "combat": "Prefere emboscar os adversários. Durante a caça, envia batedores à frente; quando localizam uma presa, eles retornam para informar o grupo e buscar reforços. Os ataques são coordenados e suas táticas são eficientes, embora não especialmente sofisticadas. Recebe bônus racial em Furtividade e costuma explorar a surpresa e a superioridade numérica."
   },
   {
     "id": "bulette",
@@ -1707,7 +1709,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Predador monstruoso conhecido como tubarão terrestre: uma besta mágica enorme, de corpo encouraçado em forma de bala, mandíbula gigantesca e pernas curtas e poderosas. Mede vários metros e percorre um território vasto, que pode alcançar cerca de 70 km². Não constrói covil e escava túneis para descansar. É solitário e voraz, temido até por outros monstros.",
+    "combat": "Detecta movimentos no subsolo por meio do sentido sísmico e emerge de repente para atacar. Ataca qualquer criatura que considere alimento, escolhendo normalmente a presa mais fácil ou mais próxima; não costuma devorar elfos e não aprecia anões. Pode saltar durante o combate e atacar com as quatro garras em vez de duas, mas essa manobra impede a mordida na mesma rodada. Devora suas vítimas por completo, inclusive equipamentos."
   },
   {
     "id": "cacador-invisivel",
@@ -1747,7 +1751,7 @@
     },
     "skills": "Ouvir +11, Furtividade +15, Procurar +13, Observar +13, Sobrevivência +2 (+4 rastreando)",
     "feats": "Reflexos de Combate, Iniciativa Aprimorada, Foco em Arma (pancada)",
-    "environment": "Plano Elemental do Ar Bulette INVISÍVEL CAÇADOR",
+    "environment": "Plano Elemental do Ar",
     "organization": "Solitário",
     "challengeRating": "7",
     "treasure": "Nenhum",
@@ -1757,7 +1761,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Elemental nativo do Plano Elemental do Ar, sem forma definida. A magia ver o invisível revela apenas uma silhueta enevoada, enquanto visão da verdade mostra uma nuvem turva de vapor. Às vezes é invocado por magos e feiticeiros para cumprir tarefas específicas; entende Comum, mas fala apenas Auran. Obedece às ordens do invocador, embora possa tentar distorcer instruções prolongadas ou complexas.",
+    "combat": "Ataca manipulando o próprio ar, criando um vórtice repentino e intenso que golpeia um único alvo que esteja no mesmo plano. Sua invisibilidade natural permanece ativa mesmo quando ataca e não é anulada por purgar invisibilidade. É um rastreador excepcional: usa Observar em vez de Sobrevivência para seguir qualquer criatura. Só pode ser morto no Plano Elemental do Ar; se sofrer dano suficiente para ser destruído em outro plano, retorna automaticamente ao seu plano natal."
   },
   {
     "id": "cao-infernal",
@@ -1807,7 +1813,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Canídeo extraplanar agressivo, semelhante a um cão grande e poderoso, com pelagem curta vermelho-ferrugem, feições, dentes e língua negros como carvão e olhos vermelhos brilhantes. Mede cerca de 1,3 m na altura dos ombros e pesa aproximadamente 60 kg. É originário de Acheron; alguns são levados ao Plano Material para servir a criaturas malignas, enquanto outros formam matilhas e tribos primitivas. Não fala, mas compreende Infernal.",
+    "combat": "Caça em matilhas e rastreia as presas incansavelmente. A tática comum é rondar em silêncio, atacar com um ou dois membros e usar o sopro de fogo para empurrar a vítima na direção dos demais cães; se ela não fugir, a matilha inteira avança. O sopro é um cone de fogo que pode ser usado periodicamente. A mordida também causa dano adicional por fogo. Suas armas são consideradas ordeiras e profanas para superar redução de dano."
   },
   {
     "id": "cao-de-guerra-nessian",
@@ -1857,7 +1865,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Mastim infernal gigantesco, negro como carvão e do tamanho de um cavalo de carga, criado nos canis de Nessus, o mais profundo dos Nove Infernos. Costuma vestir uma camisa de cota de malha infernal. É uma versão especialmente poderosa do cão infernal, usada como montaria e guardião pelos grandes senhores dos Nove Infernos.",
+    "combat": "Mantém as táticas de caça em matilha dos cães infernais, combinando sopro de fogo e mordida ardente. Seu sopro é mais poderoso, formando um cone de 9 m que causa 3d6 pontos de dano por fogo a cada 2d4 rodadas; um teste de Reflexos reduz o dano à metade. A mordida causa dano adicional de fogo e ameaça um acerto decisivo com maior facilidade. Geralmente atua acompanhado por cães infernais."
   },
   {
     "id": "cao-teleportador",
@@ -1907,7 +1917,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Canídeo inteligente de aparência comum, semelhante a um cão grande e poderoso, com pelagem marrom-amarelada e orelhas grandes. Desaparece num piscar de olhos e reaparece em outro lugar graças à sua capacidade limitada de teletransporte. É sociável, costuma viajar em matilhas, alimenta-se de carne e vegetais e protege cuidadosamente seus filhotes. Evita regiões habitadas por humanos e expulsa humanoides malignos de seu território.",
+    "combat": "Caça em matilhas, teleportando-se de modo aparentemente aleatório para cercar a presa e permitir ataques pelos flancos. Pode ativar ou desativar o efeito de piscar como ação livre e usar porta dimensional uma vez por rodada, também como ação livre. Depois do teletransporte, pode agir imediatamente. É inimigo natural das panteras deslocadoras."
   },
   {
     "id": "cao-yeth",
@@ -1957,7 +1969,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Canídeo extraplanar maligno semelhante a um grande lobo cinzento, com pelos negros e turvos e olhos que brilham em vermelho-cereja. Paira rente ao solo durante a noite, quando procura presas. Mede cerca de 1,5 m na altura dos ombros e pesa quase 200 kg. Não fala, mas compreende Infernal.",
+    "combat": "Caça exclusivamente à noite e teme tanto a luz solar que não se aventura durante o dia. Seu ladrar ou uivo apavora criaturas num raio de 90 m que falhem no teste de Vontade; o efeito é sônico, mental e de medo. Quando acerta uma mordida, pode tentar derrubar o alvo como ação livre, sem ataque de toque nem ataque de oportunidade. Pode levantar voo ou aterrissar como ação livre e suas armas são consideradas profanas para superar redução de dano."
   },
   {
     "id": "chuul",
@@ -1997,7 +2011,7 @@
     },
     "skills": "Esconder–se +13, Natação +13, Observar +11, Ouvir +11",
     "feats": "Iniciativa Aprimorada, Lutar às Cegas, Prontidão, Reflexos de Combate",
-    "environment": "Pântanos temperados Chuul CHUUL",
+    "environment": "Pântanos temperados",
     "organization": "Solitário, casal ou matilha (3–5)",
     "challengeRating": "7",
     "treasure": "1/10 de moedas; 50% de bens; padrão de Itens",
@@ -2007,7 +2021,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Abominação aquática de cerca de 2,4 m e 325 kg, mistura horripilante de crustáceo, inseto e serpente. Possui carapaça mosqueada, tenazes e tentáculos que se projetam da boca. Espreita total ou parcialmente submerso, aguardando presas inteligentes. Embora anfíbio, não é bom nadador e prefere terra firme ou águas rasas. Costuma colecionar troféus de suas vítimas e guardar objetos ou crânios em sua toca.",
+    "combat": "Aguarda submerso perto das margens até ouvir uma presa aproximar-se e então ataca de surpresa. Agarra e esmaga a vítima com as garras, depois a arrasta até os tentáculos, que secretam uma substância paralisante. Pode iniciar um agarrar aprimorado ao acertar uma garra e usar constrição; os tentáculos podem paralisar a vítima por várias rodadas e as mandíbulas continuam causando dano enquanto ela permanece presa. Costuma manter uma garra livre para capturar outros alvos."
   },
   {
     "id": "cocatriz",
@@ -2057,7 +2073,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Híbrido pequeno e repulsivo, do tamanho aproximado de um peru ou ganso grande. Possui cabeça e corpo de galo, asas de morcego e cauda comprida de lagarto; seus olhos brilham com fulgor escarlate. Os machos apresentam crista e barbilhão, ausentes nas fêmeas, que são muito mais raras. Pesa cerca de 12 kg. É famoso por transformar carne em pedra.",
+    "combat": "Ataca furiosamente qualquer criatura que considere ameaça a si ou ao ninho. Em revoadas, tenta confundir os adversários e frequentemente voa diretamente sobre seus rostos. Sua bicada pode petrificar instantaneamente uma criatura que falhe no teste de Fortitude. É imune à petrificação causada por outros cocatrizes, mas continua vulnerável a outras fontes de petrificação."
   },
   {
     "id": "constritor",
@@ -2097,8 +2115,8 @@
     },
     "skills": "Escalar +13, Esconder–se +10, Furtividade +6",
     "feats": "iniciativa AprimoradaB, Reflexos Rápidos. Sorrateiro",
-    "environment": "Subterrâneo Organizado: Solitário",
-    "organization": "",
+    "environment": "Subterrâneo",
+    "organization": "Solitário",
     "challengeRating": "2",
     "treasure": "1/10 de moedas; 50% de bens; 50% de itens",
     "alignment": "Geralmente Caótico e Mau",
@@ -2107,7 +2125,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Pequeno predador aberrante que se esconde nas sombras do subterrâneo, próximo ao teto, em cantos e passagens. Seu corpo lembra o de um halfling sem pelos, com pele manchada, membros muito longos e esguios e dentes grandes e afiados. O crânio, a coluna e a caixa torácica são ósseos; os membros são tentáculos articulados e fluidos. Ventosas nas mãos e nos pés permitem que se agarre a quase qualquer superfície. Pesa cerca de 17 kg e fala Subterrâneo.",
+    "combat": "Empoleira-se junto ao teto em interseções de túneis, arcos e escadas, de onde se estica para agarrar vítimas que passam. Prefere presas solitárias, mas pode atacar grupos quando está faminto, aguardando a última criatura da fila. Ao acertar com um tentáculo, inicia um agarrar aprimorado e aperta o pescoço da vítima, impedindo-a de falar ou conjurar magias com componentes verbais. Sua velocidade sobrenatural permite executar uma ação padrão ou de movimento adicional a cada rodada. Pode ser subornado com comida."
   },
   {
     "id": "coruja-gigante",
