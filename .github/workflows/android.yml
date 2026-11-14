@@ -10,6 +10,7 @@ on:
   pull_request:
     branches:
       - main
+      - 'feature/**'
 
 jobs:
   build:
@@ -26,3 +27,22 @@ jobs:
         run: chmod +x gradlew
       - name: Build and test
         run: ./gradlew testDebugUnitTest
+      - name: Restore stable debug keystore
+        env:
+          DND35_DEBUG_KEYSTORE_BASE64: ${{ secrets.DND35_DEBUG_KEYSTORE_BASE64 }}
+        run: |
+          if [ -z "$DND35_DEBUG_KEYSTORE_BASE64" ]; then
+            echo "::error::Configure o segredo DND35_DEBUG_KEYSTORE_BASE64 nas configurações do repositório antes de compilar o APK."
+            exit 1
+          fi
+          printf '%s' "$DND35_DEBUG_KEYSTORE_BASE64" | base64 --decode > debug.keystore
+          keytool -list -keystore debug.keystore -storepass android -alias androiddebugkey >/dev/null
+      - name: Assemble debug APK
+        run: ./gradlew assembleDebug
+      - name: Upload debug APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: dnd35-debug-apk
+          path: app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+          retention-days: 14

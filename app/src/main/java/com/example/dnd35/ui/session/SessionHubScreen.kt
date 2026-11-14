@@ -68,6 +68,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.asImageBitmap
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.platform.testTag
@@ -83,6 +84,7 @@ import com.example.dnd35.ui.components.CreatureDetailsOverlay
 import com.example.dnd35.ui.components.CreatureImage
 import com.example.dnd35.ui.components.CreatureImageTradingCard
 import com.example.dnd35.ui.components.CreatureCardStack
+import com.example.dnd35.ui.dialogs.AddEditItemDialog
 import com.example.dnd35.ui.components.CharacterAvatar
 import com.example.dnd35.model.CharacterInventoryItem
 import com.example.dnd35.session.ActionRequest
@@ -96,6 +98,8 @@ import com.example.dnd35.session.PrivateChatEntry
 import com.example.dnd35.session.privateChatConversationFor
 import com.example.dnd35.session.ShopSnapshot
 import com.example.dnd35.session.ShopState
+import com.example.dnd35.session.SESSION_LOOT_GOLD_MARKER
+import com.example.dnd35.session.ShopTemplateStore
 import com.example.dnd35.model.CharacterJsonAdapters
 import com.example.dnd35.viewmodel.CharacterViewModel
 import com.example.dnd35.viewmodel.DmSessionUiState
@@ -313,8 +317,19 @@ private fun DmHostContent(viewModel: SessionViewModel, characterViewModel: Chara
                     }
                     LootChestSection(items = s.lootChest, isDm = true, onAddItem = { viewModel.addLootItem(it) }, onRemoveItem = { viewModel.removeLootItem(it) })
                     Spacer(modifier = Modifier.height(16.dp))
-                    DmShopSection(shop = s.shop, characterViewModel = characterViewModel,
-                        onOpenShop = { npcId, npcName, items -> viewModel.openShop(npcId, npcName, items) }, onCloseShop = { viewModel.closeShop() })
+                    DmShopSection(
+                        shop = s.shop,
+                        onOpenShop = { npcId, shopName, items -> viewModel.openShop(npcId, shopName, items) },
+                        onCloseShop = { viewModel.closeShop() },
+                        onAddItem = { viewModel.addShopItem(it) },
+                        onUpdateItem = { viewModel.updateShopItem(it) },
+                        onRemoveItem = { viewModel.removeShopItem(it) }
+                    )
+                    Spacer(modifier = Modifier.height(16.dp))
+                    DmQuickGrantSection(
+                        participants = s.participants,
+                        onGrant = { participantId, item -> viewModel.grantItemToPlayer(participantId, item) }
+                    )
                 }
             }
         }
@@ -956,6 +971,11 @@ private fun LootChestSection(
     onRemoveItem: ((String) -> Unit)? = null,
     onRequestTake: ((CharacterInventoryItem) -> Unit)? = null
 ) {
+    var showAddItemDialog by remember { mutableStateOf(false) }
+    var goldAmount by remember { mutableStateOf("0") }
+    var randomLootSummary by remember { mutableStateOf<String?>(null) }
+    val parsedGold = goldAmount.replace(',', '.').toFloatOrNull()?.takeIf { it.isFinite() && it > 0f && com.example.dnd35.session.SessionCurrency.isValidGpAmount(it) }
+    val addItem = onAddItem
     Column {
         Row(verticalAlignment = Alignment.CenterVertically) {
             Icon(Icons.Default.Inventory2, contentDescription = null, tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(20.dp))
@@ -979,11 +999,11 @@ private fun LootChestSection(
                     ) {
                         Column(modifier = Modifier.weight(1f)) {
                             Text(
-                                item.name + if (item.quantity > 1) " x${item.quantity}" else "",
+                                if (item.notes == SESSION_LOOT_GOLD_MARKER) item.name + " (" + String.format("%.2f", item.costGp) + " PO equivalentes)" else item.name + if (item.quantity > 1) " x${item.quantity}" else "",
                                 fontWeight = FontWeight.SemiBold
                             )
                             Text(
-                                "Peso ${item.weightLb} lb • ${item.costGp} po",
+                                if (item.notes == SESSION_LOOT_GOLD_MARKER) "Moeda disponível para retirada" else "Peso ${String.format("%.2f", com.example.dnd35.model.MetricUnits.poundsToKilograms(item.weightLb))} kg • ${item.costGp} PO",
                                 style = MaterialTheme.typography.labelSmall,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant
                             )
@@ -997,9 +1017,107 @@ private fun LootChestSection(
                 }
             }
         }
-        if (isDm && onAddItem != null) {
+        if (isDm && addItem != null) {
             Spacer(modifier = Modifier.height(12.dp))
-            AddLootItemForm(onAddItem)
+            Button(onClick = { showAddItemDialog = true }) { Text("Adicionar item do catálogo") }
+            Spacer(modifier = Modifier.height(8.dp))
+            var encounterLevel by remember { mutableStateOf("1") }
+            val parsedEncounterLevel = encounterLevel.toIntOrNull()?.takeIf { it in 1..20 }
+            OutlinedTextField(
+                value = encounterLevel,
+                onValueChange = { encounterLevel = it.filter(Char::isDigit).take(2) },
+                label = { Text("Nível de desafio do encontro (1–20)") },
+                modifier = Modifier.fillMaxWidth(),
+                singleLine = true,
+                isError = parsedEncounterLevel == null
+            )
+            Button(
+                onClick = {
+                    val level = parsedEncounterLevel ?: return@Button
+                    val value = com.example.dnd35.session.Dnd35LootGenerator.averageTreasureForEncounterLevel(level) ?: return@Button
+                    addItem(
+                        CharacterInventoryItem(
+                            name = "Tesouro médio do encontro (ND $level)",
+                            category = "Moedas",
+                            quantity = 1,
+                            weightLb = 0f,
+                            costGp = value.toFloat(),
+                            notes = SESSION_LOOT_GOLD_MARKER
+                        )
+                    )
+                },
+                enabled = parsedEncounterLevel != null
+            ) { Text("Adicionar tesouro médio (ND)") }
+            Button(
+                onClick = {
+                    val level = parsedEncounterLevel ?: return@Button
+                    val generated = com.example.dnd35.session.Dnd35LootGenerator.generateRandomTreasure(level)
+                        ?: return@Button
+                    randomLootSummary = generated.summary + if (generated.items.isEmpty()) {
+                        " Nenhum tesouro foi obtido nas três rolagens."
+                    } else {
+                        " Itens gerados: " + generated.items.size + "."
+                    }
+                    generated.items.forEach { loot ->
+                        addItem(
+                            CharacterInventoryItem(
+                                name = loot.name,
+                                category = loot.category,
+                                quantity = loot.quantity,
+                                weightLb = com.example.dnd35.session.Dnd35LootGenerator.weightForInventory(loot) ?: 0f,
+                                costGp = loot.valueGp,
+                                notes = when {
+                                    loot.isCurrency -> SESSION_LOOT_GOLD_MARKER
+                                    com.example.dnd35.session.Dnd35LootGenerator.weightForInventory(loot) == null ->
+                                        loot.notes + " Peso pendente: escolha o modelo específico no catálogo antes de considerar a carga."
+                                    else -> loot.notes
+                                }
+                            )
+                        )
+                    }
+                },
+                enabled = parsedEncounterLevel != null
+            ) { Text("Gerar tesouro aleatório (ND)") }
+            randomLootSummary?.let {
+                Text(it, style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            }
+            Text(
+                "O modo aleatório faz três rolagens d% independentes: moedas, bens e itens. Gemas, objetos de arte e itens mágicos recebem rolagens complementares.",
+                style = MaterialTheme.typography.labelSmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+            OutlinedTextField(
+                value = goldAmount,
+                onValueChange = { goldAmount = it.take(12) },
+                label = { Text("Adicionar ouro (PO)") },
+                modifier = Modifier.fillMaxWidth(),
+                singleLine = true,
+                isError = goldAmount.isNotBlank() && goldAmount != "0" && parsedGold == null
+            )
+            Button(
+                onClick = {
+                    val amount = parsedGold ?: return@Button
+                    addItem(
+                        CharacterInventoryItem(
+                            name = "Ouro",
+                            category = "Moedas",
+                            quantity = 1,
+                            weightLb = 0f,
+                            costGp = amount,
+                            notes = SESSION_LOOT_GOLD_MARKER
+                        )
+                    )
+                    goldAmount = "0"
+                },
+                enabled = parsedGold != null
+            ) { Text("Adicionar ouro ao baú") }
+            if (showAddItemDialog) {
+                AddEditItemDialog(
+                    onConfirm = { item -> addItem(item); showAddItemDialog = false },
+                    onDismiss = { showAddItemDialog = false },
+                    allowCatalog = true
+                )
+            }
         }
     }
 }
@@ -1050,7 +1168,7 @@ private fun AddLootItemForm(onAddItem: (CharacterInventoryItem) -> Unit) {
         OutlinedTextField(
             value = weight,
             onValueChange = { weight = it.take(12) },
-            label = { Text("Peso por unidade (lb)") },
+            label = { Text("Peso por unidade (kg)") },
             modifier = Modifier.fillMaxWidth(),
             singleLine = true,
             isError = parsedWeight == null
@@ -1076,7 +1194,7 @@ private fun AddLootItemForm(onAddItem: (CharacterInventoryItem) -> Unit) {
                         name = name.trim(),
                         category = category.trim(),
                         quantity = qty,
-                        weightLb = itemWeight,
+                        weightLb = com.example.dnd35.model.MetricUnits.kilogramsToPounds(itemWeight),
                         costGp = itemCost
                     )
                 )
@@ -1100,68 +1218,135 @@ private fun AddLootItemForm(onAddItem: (CharacterInventoryItem) -> Unit) {
 @Composable
 private fun DmShopSection(
     shop: ShopState?,
-    characterViewModel: CharacterViewModel,
     onOpenShop: (Long, String, List<CharacterInventoryItem>) -> Unit,
-    onCloseShop: () -> Unit
+    onCloseShop: () -> Unit,
+    onAddItem: (CharacterInventoryItem) -> Unit,
+    onUpdateItem: (CharacterInventoryItem) -> Unit,
+    onRemoveItem: (String) -> Unit
 ) {
-    val myCharacters by characterViewModel.allCharacters.collectAsStateWithLifecycle()
-    val npcCandidates = myCharacters.filter { it.isNpc }
+    val context = LocalContext.current
+    var shopName by remember { mutableStateOf("Loja") }
+    var templateName by remember { mutableStateOf("") }
+    var templates by remember { mutableStateOf(ShopTemplateStore.names(context)) }
+    var templateStatus by remember { mutableStateOf<String?>(null) }
+    var templatesExpanded by remember { mutableStateOf(false) }
+    var showAddItemDialog by remember { mutableStateOf(false) }
+    var itemToEdit by remember { mutableStateOf<CharacterInventoryItem?>(null) }
 
     Column {
-        Text("Loja de NPC", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
+        Text("Loja", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
         Spacer(modifier = Modifier.height(8.dp))
         if (shop == null) {
-            if (npcCandidates.isEmpty()) {
-                Text(
-                    "Marque alguma ficha como NPC (acima) para poder abrir uma loja com o inventário dela.",
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
-            } else {
-                var expanded by remember { mutableStateOf(false) }
-                var selectedNpc by remember(npcCandidates) { mutableStateOf(npcCandidates.firstOrNull()) }
+            OutlinedTextField(
+                value = shopName,
+                onValueChange = { shopName = it.take(48) },
+                label = { Text("Nome da loja ou comerciante") },
+                modifier = Modifier.fillMaxWidth(),
+                singleLine = true
+            )
+            Spacer(modifier = Modifier.height(8.dp))
+            Button(
+                onClick = { onOpenShop(0L, shopName.trim(), emptyList()) },
+                enabled = shopName.isNotBlank()
+            ) { Text("Criar loja vazia") }
+
+            if (templates.isNotEmpty()) {
+                Spacer(modifier = Modifier.height(8.dp))
                 Box {
-                    OutlinedButton(onClick = { expanded = true }) {
-                        Text(selectedNpc?.name ?: "Escolher NPC")
+                    OutlinedButton(onClick = { templatesExpanded = true }) {
+                        Text("Abrir inventário salvo")
                         Icon(Icons.Default.ArrowDropDown, contentDescription = null)
                     }
-                    DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
-                        npcCandidates.forEach { npc ->
+                    DropdownMenu(expanded = templatesExpanded, onDismissRequest = { templatesExpanded = false }) {
+                        templates.forEach { name ->
                             DropdownMenuItem(
-                                text = { Text(npc.name) },
+                                text = { Text(name) },
                                 onClick = {
-                                    selectedNpc = npc
-                                    expanded = false
+                                    val savedItems = ShopTemplateStore.load(context, name)
+                                    if (savedItems != null) onOpenShop(0L, name, savedItems)
+                                    templatesExpanded = false
                                 }
                             )
                         }
                     }
                 }
-                Spacer(modifier = Modifier.height(8.dp))
-                Button(onClick = {
-                    selectedNpc?.let { npc ->
-                        val items = CharacterJsonAdapters.deserializeInventory(npc.inventoryJson)
-                        onOpenShop(npc.id, npc.name, items)
-                    }
-                }, enabled = selectedNpc != null) {
-                    Text("Abrir loja")
-                }
             }
         } else {
             Text("Loja aberta: ${shop.npcName}", fontWeight = FontWeight.SemiBold)
-            Spacer(modifier = Modifier.height(6.dp))
+            Spacer(modifier = Modifier.height(8.dp))
+            Button(onClick = { showAddItemDialog = true }) { Text("Adicionar produto do catálogo") }
+
             if (shop.items.isEmpty()) {
                 Text(
-                    "Essa loja não tem mais itens à venda.",
+                    "Essa loja ainda não possui produtos.",
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             } else {
                 shop.items.forEach { item ->
-                    Text(
-                        "• ${item.name}" + (if (item.quantity > 1) " x${item.quantity}" else "") + " — ${item.costGp} po",
-                        style = MaterialTheme.typography.bodySmall
-                    )
+                    Card(modifier = Modifier.fillMaxWidth().padding(vertical = 3.dp)) {
+                        Column(modifier = Modifier.fillMaxWidth().padding(10.dp)) {
+                            Text(item.name, fontWeight = FontWeight.SemiBold)
+                            Text(
+                                "Preço: ${String.format("%.2f", item.costGp)} PO por unidade • Estoque: ${item.quantity}",
+                                style = MaterialTheme.typography.labelSmall,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                            )
+                            Row(horizontalArrangement = Arrangement.End, modifier = Modifier.fillMaxWidth()) {
+                                TextButton(onClick = { itemToEdit = item }) { Text("Editar preço/estoque") }
+                                TextButton(onClick = { onRemoveItem(item.id) }) {
+                                    Text("Remover", color = MaterialTheme.colorScheme.error)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            Spacer(modifier = Modifier.height(8.dp))
+            OutlinedTextField(
+                value = templateName,
+                onValueChange = { templateName = it.take(48) },
+                label = { Text("Nome para salvar este inventário") },
+                modifier = Modifier.fillMaxWidth(),
+                singleLine = true
+            )
+            Button(
+                onClick = {
+                    if (ShopTemplateStore.save(context, templateName, shop.items)) {
+                        templates = ShopTemplateStore.names(context)
+                        templateStatus = "Inventário salvo neste aparelho."
+                        templateName = ""
+                    } else {
+                        templateStatus = "Não foi possível salvar. Verifique o nome e se há produtos no estoque."
+                    }
+                },
+                enabled = templateName.isNotBlank() && shop.items.isNotEmpty()
+            ) { Text("Salvar inventário da loja") }
+            templateStatus?.let {
+                Text(it, style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            }
+            Text(
+                "Os modelos ficam salvos localmente neste aparelho.",
+                style = MaterialTheme.typography.labelSmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+
+            if (templates.isNotEmpty()) {
+                Box {
+                    OutlinedButton(onClick = { templatesExpanded = true }) { Text("Carregar outro inventário salvo") }
+                    DropdownMenu(expanded = templatesExpanded, onDismissRequest = { templatesExpanded = false }) {
+                        templates.forEach { name ->
+                            DropdownMenuItem(
+                                text = { Text(name) },
+                                onClick = {
+                                    val savedItems = ShopTemplateStore.load(context, name)
+                                    if (savedItems != null) onOpenShop(shop.npcCharacterId, name, savedItems)
+                                    templatesExpanded = false
+                                }
+                            )
+                        }
+                    }
                 }
             }
             Spacer(modifier = Modifier.height(8.dp))
@@ -1169,6 +1354,75 @@ private fun DmShopSection(
                 Text("Fechar loja", color = MaterialTheme.colorScheme.error)
             }
         }
+    }
+
+    if (showAddItemDialog) {
+        AddEditItemDialog(
+            onConfirm = { item -> onAddItem(item); showAddItemDialog = false },
+            onDismiss = { showAddItemDialog = false },
+            allowCatalog = true
+        )
+    }
+    itemToEdit?.let { current ->
+        AddEditItemDialog(
+            itemToEdit = current,
+            onConfirm = { updated -> onUpdateItem(updated.copy(id = current.id)); itemToEdit = null },
+            onDismiss = { itemToEdit = null }
+        )
+    }
+}
+
+/** Entrega rápida de um item pelo Mestre, sem criar pedido de aprovação. */
+@Composable
+private fun DmQuickGrantSection(
+    participants: List<Participant>,
+    onGrant: (String, CharacterInventoryItem) -> Unit
+) {
+    val players = participants.filter { it.role == ParticipantRole.PLAYER && it.characterId != null }
+    var selectedPlayer by remember(players) { mutableStateOf(players.firstOrNull()) }
+    var expanded by remember { mutableStateOf(false) }
+    var showItemPicker by remember { mutableStateOf(false) }
+
+    Column {
+        Text("Entrega rápida de itens", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
+        Spacer(modifier = Modifier.height(6.dp))
+        if (players.isEmpty()) {
+            Text(
+                "Nenhum jogador com ficha vinculada está disponível para receber itens.",
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+        } else {
+            Box {
+                OutlinedButton(onClick = { expanded = true }) {
+                    Text(selectedPlayer?.displayName ?: "Escolher jogador")
+                    Icon(Icons.Default.ArrowDropDown, contentDescription = null)
+                }
+                DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
+                    players.forEach { player ->
+                        DropdownMenuItem(
+                            text = { Text(player.displayName) },
+                            onClick = {
+                                selectedPlayer = player
+                                expanded = false
+                            }
+                        )
+                    }
+                }
+            }
+            Spacer(modifier = Modifier.height(6.dp))
+            Button(onClick = { showItemPicker = true }, enabled = selectedPlayer != null) {
+                Text("Escolher item para enviar")
+            }
+        }
+    }
+
+    if (showItemPicker) {
+        AddEditItemDialog(
+            onConfirm = { item -> selectedPlayer?.let { onGrant(it.id, item) }; showItemPicker = false },
+            onDismiss = { showItemPicker = false },
+            allowCatalog = true
+        )
     }
 }
 
@@ -1249,7 +1503,7 @@ private fun DmPrivateChatSection(
  * manda um pedido de compra ao Mestre (não desconta ouro nem adiciona o item até ser aprovado).
  */
 @Composable
-private fun PlayerShopSection(shop: ShopSnapshot, onRequestBuy: (CharacterInventoryItem) -> Unit) {
+private fun PlayerShopSection(shop: ShopSnapshot, character: CharacterEntity?, onRequestBuy: (CharacterInventoryItem, Int) -> Unit) {
     Column {
         Text("Loja: ${shop.npcName}", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
         Spacer(modifier = Modifier.height(8.dp))
@@ -1261,23 +1515,37 @@ private fun PlayerShopSection(shop: ShopSnapshot, onRequestBuy: (CharacterInvent
             )
         } else {
             shop.items.forEach { item ->
+                var quantity by remember(item.id) { mutableStateOf(1) }
+                val quantityToBuy = quantity.coerceIn(1, item.quantity)
+                val canAfford = character?.let { com.example.dnd35.session.SessionCurrency.debit(it, item.costGp, quantityToBuy) != null } ?: false
                 Card(modifier = Modifier.fillMaxWidth().padding(vertical = 3.dp)) {
-                    Row(
-                        modifier = Modifier.fillMaxWidth().padding(10.dp),
-                        horizontalArrangement = Arrangement.SpaceBetween,
-                        verticalAlignment = Alignment.CenterVertically                    ) {
-                        Column(modifier = Modifier.weight(1f)) {
-                            Text(
-                                item.name + if (item.quantity > 1) " x${item.quantity}" else "",
-                                fontWeight = FontWeight.SemiBold
-                            )
-                            Text(
-                                "${item.costGp} po",
-                                style = MaterialTheme.typography.labelSmall,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant
-                            )
+                    Column(modifier = Modifier.fillMaxWidth().padding(10.dp)) {
+                        Text(item.name, fontWeight = FontWeight.SemiBold)
+                        Text(
+                            "${String.format("%.2f", item.costGp)} PO por unidade • Total: ${String.format("%.2f", item.costGp * quantityToBuy)} PO • Estoque: ${item.quantity}",
+                            style = MaterialTheme.typography.labelSmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                        if (!canAfford) {
+                            Text("Saldo insuficiente para essa quantidade.", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.error)
                         }
-                        Button(onClick = { onRequestBuy(item) }) { Text("Comprar") }
+                        Spacer(modifier = Modifier.height(6.dp))
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.SpaceBetween,
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                TextButton(onClick = { quantity = (quantityToBuy - 1).coerceAtLeast(1) }, enabled = quantityToBuy > 1) {
+                                    Text("−")
+                                }
+                                Text("$quantityToBuy")
+                                TextButton(onClick = { quantity = (quantityToBuy + 1).coerceAtMost(item.quantity) }, enabled = quantityToBuy < item.quantity) {
+                                    Text("+")
+                                }
+                            }
+                            Button(onClick = { onRequestBuy(item, quantityToBuy) }, enabled = canAfford) { Text("Comprar") }
+                        }
                     }
                 }
             }
@@ -1493,11 +1761,12 @@ private fun PlayerJoinContent(viewModel: SessionViewModel, characterViewModel: C
                         })
                         s.shop?.let { shop ->
                             Spacer(modifier = Modifier.height(16.dp))
-                            PlayerShopSection(shop = shop, onRequestBuy = { item ->
+                            PlayerShopSection(shop = shop, character = linkedCharacter, onRequestBuy = { item, quantity ->
                                 viewModel.requestBuyFromShop(
                                     item.id,
-                                    "Pedido de comprar " + item.name + " (" + item.costGp + " po)",
-                                    linkedCharacter
+                                    "Pedido de comprar $quantity x ${item.name} (${item.costGp * quantity} PO)",
+                                    linkedCharacter,
+                                    quantity
                                 )
                             })
                         }
@@ -1681,12 +1950,19 @@ fun SessionFloatingPanels(
                             }
                             SessionFloatingPanel.LOOT -> {
                                 when {
-                                    hosting != null -> LootChestSection(
-                                        items = hosting.lootChest,
-                                        isDm = true,
-                                        onAddItem = { viewModel.addLootItem(it) },
-                                        onRemoveItem = { viewModel.removeLootItem(it) }
-                                    )
+                                    hosting != null -> Column {
+                                        LootChestSection(
+                                            items = hosting.lootChest,
+                                            isDm = true,
+                                            onAddItem = { viewModel.addLootItem(it) },
+                                            onRemoveItem = { viewModel.removeLootItem(it) }
+                                        )
+                                        Spacer(modifier = Modifier.height(16.dp))
+                                        DmQuickGrantSection(
+                                            participants = hosting.participants,
+                                            onGrant = { participantId, item -> viewModel.grantItemToPlayer(participantId, item) }
+                                        )
+                                    }
                                     connected != null -> LootChestSection(
                                         items = connected.lootChest,
                                         isDm = false,
@@ -1704,19 +1980,23 @@ fun SessionFloatingPanels(
                                 when {
                                     hosting != null -> DmShopSection(
                                         shop = hosting.shop,
-                                        characterViewModel = characterViewModel,
-                                        onOpenShop = { npcId, npcName, items ->
-                                            viewModel.openShop(npcId, npcName, items)
+                                        onOpenShop = { shopId, shopName, items ->
+                                            viewModel.openShop(shopId, shopName, items)
                                         },
-                                        onCloseShop = { viewModel.closeShop() }
+                                        onCloseShop = { viewModel.closeShop() },
+                                        onAddItem = { viewModel.addShopItem(it) },
+                                        onUpdateItem = { viewModel.updateShopItem(it) },
+                                        onRemoveItem = { viewModel.removeShopItem(it) }
                                     )
                                     connected != null && connected.shop != null -> PlayerShopSection(
                                         shop = connected.shop,
-                                        onRequestBuy = { item ->
+                                        character = linkedCharacter,
+                                        onRequestBuy = { item, quantity ->
                                             viewModel.requestBuyFromShop(
                                                 item.id,
-                                                "Pedido de comprar " + item.name + " (" + item.costGp + " po)",
-                                                linkedCharacter
+                                                "Pedido de comprar $quantity x ${item.name} (${item.costGp * quantity} PO)",
+                                                linkedCharacter,
+                                                quantity
                                             )
                                         }
                                     )

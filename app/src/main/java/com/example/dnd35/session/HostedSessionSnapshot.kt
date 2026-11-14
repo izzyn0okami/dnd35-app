@@ -235,6 +235,7 @@ object HostedSessionSnapshotCodec {
         .put("hpDelta", request.hpDelta ?: JSONObject.NULL)
         .put("lootItemId", request.lootItemId ?: JSONObject.NULL)
         .put("shopItemId", request.shopItemId ?: JSONObject.NULL)
+        .put("quantity", request.quantity)
 
     private fun requestFromJson(json: JSONObject) = ActionRequest(
         id = json.getString("id"),
@@ -246,7 +247,8 @@ object HostedSessionSnapshotCodec {
         combatantId = json.optNullableString("combatantId"),
         hpDelta = if (json.isNull("hpDelta")) null else json.getInt("hpDelta"),
         lootItemId = json.optNullableString("lootItemId"),
-        shopItemId = json.optNullableString("shopItemId")
+        shopItemId = json.optNullableString("shopItemId"),
+        quantity = json.optInt("quantity", 1)
     )
 
     private fun shopToJson(shop: ShopState) = JSONObject()

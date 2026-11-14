@@ -1198,7 +1198,7 @@
     "duration": "Até pousar ou 1 rodada/nível",
     "savingThrow": "Vontade anula",
     "spellResistance": true,
-    "description": "Faz as criaturas caírem suavemente, a cerca de 18m por rodada (60 pés), anulando o dano de queda enquanto a magia durar.",
+    "description": "Faz as criaturas caírem suavemente, a cerca de 18 m por rodada, anulando o dano de queda enquanto a magia durar.",
     "classLevels": {
       "Mago": 1,
       "Feiticeiro": 1,

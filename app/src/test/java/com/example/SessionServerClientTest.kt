@@ -1721,4 +1721,96 @@ class SessionServerClientTest {
     }
 
 
+    @Test
+    fun `compra de varias unidades debita o total e reduz o estoque pela mesma quantidade`() = runBlocking {
+        val server = SessionServer(sessionId = "sess-bulk-buy", hostDisplayName = "Mestre")
+        val port = server.start()
+        try {
+            val character = CharacterEntity(
+                id = 1901L,
+                name = "Legolas",
+                characterClass = "Patrulheiro",
+                level = 5,
+                goldGp = 1000f
+            )
+            val characterJson = CharacterBackup.toJson(listOf(character)) { null }
+            val client = SessionClient()
+            try {
+                client.connect("127.0.0.1", port, "Legolas", characterJson, character.id)
+                val connected = withTimeout(15_000) {
+                    client.state.first { it is SessionClientState.Connected } as SessionClientState.Connected
+                }
+                withTimeout(15_000) { server.receivedCharacters.first { it.containsKey(connected.selfId) } }
+
+                val item = CharacterInventoryItem(
+                    id = "bulk-stock",
+                    name = "Poção",
+                    category = "Consumíveis",
+                    quantity = 5,
+                    costGp = 10f
+                )
+                server.openShop(0L, "Mercador", listOf(item))
+                client.requestAction(
+                    RequestKind.BUY_FROM_SHOP,
+                    "Comprar três poções",
+                    shopItemId = item.id,
+                    quantity = 3
+                )
+                val request = withTimeout(15_000) {
+                    server.pendingRequests.first { pending -> pending.any { it.kind == RequestKind.BUY_FROM_SHOP } }
+                }.single()
+
+                val grantDeferred = async(start = CoroutineStart.UNDISPATCHED) {
+                    withTimeout(15_000) { client.shopPurchases.first() }
+                }
+                val resultDeferred = async(start = CoroutineStart.UNDISPATCHED) {
+                    withTimeout(15_000) { client.requestResults.first() }
+                }
+                server.approveRequest(request.id)
+
+                val grant = grantDeferred.await()
+                assertEquals(3, grant.item.quantity)
+                assertEquals(97f, grant.coinPurse?.platinumPp)
+                assertTrue(resultDeferred.await().approved)
+                assertEquals(2, server.shop.value?.items?.single()?.quantity)
+            } finally {
+                client.disconnect()
+            }
+        } finally {
+            server.stop()
+        }
+    }
+
+    @Test
+    fun `mestre concede item diretamente sem criar pedido de aprovacao`() = runBlocking {
+        val server = SessionServer(sessionId = "sess-direct-grant", hostDisplayName = "Mestre")
+        val port = server.start()
+        try {
+            val character = CharacterEntity(id = 1902L, name = "Gimli", characterClass = "Guerreiro")
+            val characterJson = CharacterBackup.toJson(listOf(character)) { null }
+            val client = SessionClient()
+            try {
+                client.connect("127.0.0.1", port, "Gimli", characterJson, character.id)
+                val connected = withTimeout(15_000) {
+                    client.state.first { it is SessionClientState.Connected } as SessionClientState.Connected
+                }
+                withTimeout(15_000) { server.receivedCharacters.first { it.containsKey(connected.selfId) } }
+
+                val grantDeferred = async(start = CoroutineStart.UNDISPATCHED) {
+                    withTimeout(15_000) { client.lootGranted.first() }
+                }
+                val item = CharacterInventoryItem(name = "Poção de cura", category = "Consumíveis", quantity = 2)
+                assertTrue(server.grantItemToPlayer(connected.selfId, item))
+                val grant = grantDeferred.await()
+                assertEquals("Poção de cura", grant.item.name)
+                assertEquals(2, grant.item.quantity)
+                assertTrue(server.pendingRequests.value.isEmpty())
+            } finally {
+                client.disconnect()
+            }
+        } finally {
+            server.stop()
+        }
+    }
+
 }

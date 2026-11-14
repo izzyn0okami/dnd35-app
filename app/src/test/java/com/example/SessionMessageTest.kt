@@ -226,6 +226,19 @@ class SessionMessageTest {
     }
 
     @Test
+    fun `ActionRequested de comprar preserva quantidade solicitada`() {
+        val msg = SessionMessage.ActionRequested(
+            kind = RequestKind.BUY_FROM_SHOP,
+            summary = "Comprar três unidades",
+            shopItemId = "shop-item-1",
+            quantity = 3
+        )
+        val roundTrip = SessionMessage.fromJson(msg.toJson()) as SessionMessage.ActionRequested
+        assertEquals(msg, roundTrip)
+        assertEquals(3, roundTrip.quantity)
+    }
+
+    @Test
     fun `ActionRequested de comprar da loja preserva o shopItemId e omite os demais campos`() {
         val msg = SessionMessage.ActionRequested(
             kind = RequestKind.BUY_FROM_SHOP,

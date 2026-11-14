@@ -397,6 +397,26 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
         dispatchHostedMutation { it.openShop(npcCharacterId, npcName, items) }
     }
 
+    /** Mestre: adiciona um produto à loja ativa. */
+    fun addShopItem(item: CharacterInventoryItem) {
+        dispatchHostedMutation { it.addShopItem(item) }
+    }
+
+    /** Mestre: edita preço, quantidade e detalhes de um produto da loja. */
+    fun updateShopItem(item: CharacterInventoryItem) {
+        dispatchHostedMutation { it.updateShopItem(item) }
+    }
+
+    /** Mestre: remove um produto do estoque da loja. */
+    fun removeShopItem(itemId: String) {
+        dispatchHostedMutation { it.removeShopItem(itemId) }
+    }
+
+    /** Mestre: entrega um item diretamente a um jogador, com persistência e reenvio idempotente. */
+    fun grantItemToPlayer(participantId: String, item: CharacterInventoryItem) {
+        dispatchHostedMutation { it.grantItemToPlayer(participantId, item) }
+    }
+
     /** Mestre: fecha a loja de NPC aberta no momento. */
     fun closeShop() {
         dispatchHostedMutation { it.closeShop() }
@@ -591,9 +611,9 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
     }
 
     /** Jogador: pede ao Mestre para comprar um item da loja de NPC aberta no momento. */
-    fun requestBuyFromShop(itemId: String, summary: String, character: CharacterEntity?) {
+    fun requestBuyFromShop(itemId: String, summary: String, character: CharacterEntity?, quantity: Int = 1) {
         val snapshot = character?.let { CharacterBackup.toJson(listOf(it)) { null } }
-        client?.requestAction(RequestKind.BUY_FROM_SHOP, summary, characterJson = snapshot, shopItemId = itemId)
+        client?.requestAction(RequestKind.BUY_FROM_SHOP, summary, characterJson = snapshot, shopItemId = itemId, quantity = quantity)
     }
 
     /** Jogador: confirma que um grant foi salvo na ficha local. */

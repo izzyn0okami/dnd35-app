@@ -4,6 +4,7 @@ import com.example.dnd35.model.CharacterEntity
 import com.example.dnd35.model.CharacterJsonAdapters
 import com.example.dnd35.model.CharacterSkill
 import com.example.dnd35.model.Dnd35Rules
+import com.example.dnd35.model.StartingEquipmentKits
 import com.example.dnd35.model.SpellSlotInfo
 import kotlinx.coroutines.flow.Flow
 
@@ -60,6 +61,7 @@ class CharacterRepository(private val characterDao: CharacterDao) {
 
         // O retrato aleatório é escolhido somente na criação e persistido como referência estável.
         val initialPortrait = "preset:portrait_${kotlin.random.Random.nextInt(1, 23).toString().padStart(2, '0')}"
+        val startingKit = StartingEquipmentKits.forClass(characterClass, race)
         val newChar = CharacterEntity(
             name = name.ifBlank { "Novo Herói" },
             photoUri = initialPortrait,
@@ -79,7 +81,8 @@ class CharacterRepository(private val characterDao: CharacterDao) {
             baseWis = baseWis,
             baseCha = baseCha,
             skillsJson = CharacterJsonAdapters.serializeSkills(initialSkills),
-            inventoryJson = "[]",
+            inventoryJson = CharacterJsonAdapters.serializeInventory(startingKit?.items.orEmpty()),
+            goldGp = startingKit?.rollStartingGold() ?: 0f,
             featsJson = "[]",
             spellsJson = "[]",
             spellSlotsJson = CharacterJsonAdapters.serializeSpellSlots(initialSlots),
