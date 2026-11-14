@@ -5507,7 +5507,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Besta mágica aparentada aos gorilas, de pelagem branca e quatro braços. É extremamente forte, agressiva e territorial, atacando qualquer criatura que invada seu território. Costuma esconder-se nas árvores ou sob a vegetação, deixando apenas o focinho visível enquanto espera uma presa.",
+    "combat": "Ao avistar ou farejar uma presa, investe contra ela. Procura escolher uma vítima pequena o bastante para ser carregada e retirada do local; contra vários adversários grandes, concentra os ataques em um único alvo. Se acertar o mesmo oponente com duas ou mais garras, prende-o e dilacera sua carne, causando 2d4+12 pontos de dano adicionais. Recebe +8 de bônus racial em Escalar e pode escolher 10 nesses testes mesmo sob distração ou ameaça."
   },
   {
     "id": "gnoll",
@@ -5557,7 +5559,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Humanoide de cabeça semelhante à de uma hiena, pelagem geralmente amarelo-areia ou castanho-avermelhada e hábitos carnívoros noturnos. Vive em tribos pouco organizadas e costuma caçar criaturas inteligentes. É oportunista, pouco disciplinado e tende a abandonar alianças quando a fome fala mais alto.",
+    "combat": "Prefere atacar em vantagem numérica, usando a força e táticas de horda para superar os adversários. Sem um líder forte, luta de modo desorganizado; sob comando firme, consegue manter formação. Embora raramente prepare armadilhas, costuma emboscar e flanquear, buscando escuridão ou cobertura para compensar sua dificuldade em esconder-se. Usa machado de batalha no corpo a corpo ou arco curto à distância."
   },
   {
     "id": "golem-de-barro",
@@ -5607,7 +5611,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Autômato mágico de corpo humanoide esculpido em barro mole, com tórax largo, braços compridos e musculosos, cabeça achatada e pernas curtas. Move-se de maneira lenta e desajeitada, não fala nem emite sons pela boca e obedece às ordens explícitas de seu criador, sem capacidade própria de formular estratégias.",
+    "combat": "Ataca com duas pancadas pesadas, cada uma capaz de provocar ferimento amaldiçoado. Sua Fúria pode libertar o espírito elemental durante o combate: o golem passa a atacar a criatura viva mais próxima ou a destruir objetos caso não encontre alvos vivos. Após a primeira rodada, pode acelerar a si mesmo com a habilidade Velocidade por três rodadas, uma vez por dia. Como constructo, possui imunidades próprias desse tipo, Redução de Dano 10/adamante e concussão e imunidade à magia conforme as regras do verbete."
   },
   {
     "id": "golem-de-ferro",
