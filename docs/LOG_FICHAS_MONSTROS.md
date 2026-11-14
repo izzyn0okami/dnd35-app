@@ -451,3 +451,11 @@ As fichas-base devem ser reutilizadas por ID sempre que a tabela pedir apenas um
 - As fichas armazenam a criatura-base; o rótulo Celestial/Abissal é aplicado pela regra de invocação, sem duplicar fichas com modelos.
 - O bloco do Louva-a-deus foi completado usando o SRD 3.5, que confirma DV 4d8+8, 26 PV, iniciativa –1, deslocamento terrestre e voo, CA 14, ataques, agarrar aprimorado, testes de resistência e habilidades. A versão em português do Livro dos Monstros apresenta o bloco quebrado entre colunas; não foram inferidos os campos ausentes.
 - Nenhuma imagem foi substituída ou gerada.
+
+
+## 2026-11-14 — Criaturas planares restantes das listas de Invocar Criaturas
+
+- Adicionadas fichas de Arconte Guardião (Livro dos Monstros, p. 25), Bruxa da Noite (p. 37), Xill (p. 260) e Leonal (p. 157).
+- Vinculações conforme Livro do Jogador, p. 211: Arconte Guardião (5º círculo), Xill (6º), Bruxa da Noite (9º) e Leonal (9º).
+- Bruxa da Noite e Xill foram conferidos com referências SRD 3.5 para validar blocos cuja extração do PDF apresenta colunas quebradas; os dados foram mantidos consistentes com o Livro dos Monstros em português.
+- Permanecem pendentes: Baleia Celestial (a tabela do Livro do Jogador não especifica a espécie), Unicórnio, Arauto Celestial (conferir correspondência com o bloco Corcel Celestial, clérigo de 7º nível), e quaisquer variantes que dependam de esclarecer uma base não especificada.
