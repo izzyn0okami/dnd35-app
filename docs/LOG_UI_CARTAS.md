@@ -27,3 +27,44 @@ Melhoria do componente compartilhado nas cartas do Bestiário, seleção de cria
 - Corrigidas as expressões para interpolação Kotlin normal (`${...}`), restaurando a renderização dinâmica dos dados e eliminando os erros de sintaxe reportados nas linhas 293–296.
 - Confirmado no código-fonte que `CreatureDefinition` fornece os campos utilizados pela carta e que `DiceRollDialog` aceita os parâmetros usados.
 - A correção está no commit `0aaefae6abfaf2ceaef87d183ee8066d7e4bbcca`; CI/build desse commit em execução no momento do registro.
+
+
+## 2026-11-14 — Simplificação da frente: sem rolagens nas cartas
+
+### Decisão
+- As cartas são um resumo visual de combate; as rolagens não são necessárias nesse contexto.
+- Removidos os botões de rolagem dos ataques e ataques totais para liberar espaço.
+- Mantidas as descrições textuais completas de Ataque e Ataque total, sem alterar bônus, dano ou estatísticas do catálogo.
+- Removidos o estado temporário de rolagem, a análise de bônus/dano e a dependência de DiceRollDialog do componente de cartas.
+- A rolagem continua disponível nas áreas próprias do aplicativo; esta mudança é restrita às cartas.
+
+### Validação
+- Aguardando CI Android e testes automatizados nesta alteração.
+
+
+## 2026-11-14 — Ampliação vertical da área de arte
+
+### Alterações
+- Aumentada a altura da ilustração frontal de 104 dp para 150 dp, dando mais destaque visual à criatura.
+- Aumentada a altura total da carta de 500 dp para 540 dp.
+- Aumentada a área da pilha de 520 dp para 560 dp e ajustada a altura das cartas sobrepostas para acompanhar a nova dimensão.
+- Mantidos os espaços destinados aos atributos de combate e às informações textuais, evitando que o aumento da arte os comprima.
+
+### Validação
+- Alteração agrupada na PR #374; aguardando CI Android e testes automatizados.
+
+## 2026-11-14 — Frente orientada ao combate e ilustração ampliada
+
+### Alterações
+- Ampliada a ilustração frontal de 150 dp para 210 dp.
+- Aumentada a altura da carta para 600 dp e da área da pilha para 620 dp, acompanhando a nova composição.
+- Priorizados na frente PV, CA, iniciativa e deslocamento.
+- Incluídos Fortitude, Reflexos e Vontade em uma segunda linha compacta.
+- Mantidos Ataque, Ataque total e ataques especiais quando existentes, sem botões de rolagem.
+- Retirado o BBA da frente para evitar redundância com os bônus já descritos nos ataques; BBA e agarrar permanecem nas informações do verso.
+- Preservados o verso, a ficha completa por pressão prolongada, a seleção e a navegação por gesto.
+- Aplicado no componente compartilhado, abrangendo Bestiário, invocações e companheiros animais.
+
+### Validação
+- Aguardando CI Android e testes automatizados da PR #374.
+- A conferência visual em aparelho continua necessária para confirmar enquadramento da arte, legibilidade e ausência de cortes em cartas com ataques especiais extensos.

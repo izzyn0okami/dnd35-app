@@ -52,7 +52,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.example.dnd35.model.CreatureDefinition
-import com.example.dnd35.ui.dialogs.DiceRollDialog
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.text.Normalizer
@@ -158,7 +157,7 @@ fun <T> CreatureCardStack(
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(520.dp)
+                .height(620.dp)
                 .pointerInput(identity, safeIndex) {
                     var dragDistance = 0f
                     detectHorizontalDragGestures(
@@ -182,14 +181,14 @@ fun <T> CreatureCardStack(
                     modifier = Modifier
                         .offset(x = ((index + 1) * 18).dp, y = 5.dp)
                         .width(300.dp)
-                        .height(500.dp)
+                        .height(600.dp)
                         .zIndex(index.toFloat())
                 ) { card(item) }
             }
             Box(
                 modifier = Modifier
                     .width(300.dp)
-                    .height(500.dp)
+                    .height(600.dp)
                     .zIndex(10f)
             ) { card(visible.first()) }
         }
@@ -215,10 +214,9 @@ fun CreatureImageTradingCard(
 ) {
     var showBack by remember(creature.id) { mutableStateOf(false) }
     var showDetails by remember(creature.id) { mutableStateOf(false) }
-    var diceRollTarget by remember(creature.id) { mutableStateOf<Triple<String, Int, String>?>(null) }
 
     Card(
-        modifier = modifier.fillMaxWidth().height(500.dp).combinedClickable(
+        modifier = modifier.fillMaxWidth().height(600.dp).combinedClickable(
             onClick = { showBack = !showBack },
             onLongClick = { showDetails = true }
         ),
@@ -245,21 +243,22 @@ fun CreatureImageTradingCard(
             }
             if (!showBack) {
                 CreatureImage(creature = creature,
-                    modifier = Modifier.fillMaxWidth().height(104.dp),
+                    modifier = Modifier.fillMaxWidth().height(210.dp),
                     contentScale = ContentScale.Crop, maxDimensionPx = 1000)
                 Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
                     CreatureCombatValue("PV", creature.hitPoints.toString(), Modifier.weight(1f))
                     CreatureCombatValue("CA", creature.armorClassText, Modifier.weight(1f))
-                    CreatureCombatValue("BBA", creature.baseAttack.creatureSigned(), Modifier.weight(1f))
-                    CreatureCombatValue("Desloc.", creature.speed, Modifier.weight(1.35f))
+                    CreatureCombatValue("Iniciativa", creature.initiative.creatureSigned(), Modifier.weight(1.15f))
+                    CreatureCombatValue("Desloc.", creature.speed, Modifier.weight(1.25f))
                 }
-                CreatureAttackLine("Ataque", creature.attack) { bonus, damage ->
-                    diceRollTarget = Triple("Ataque: ${creature.name}", bonus, damage)
+                Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                    CreatureCombatValue("Fort.", creature.saves.fort.creatureSigned(), Modifier.weight(1f))
+                    CreatureCombatValue("Ref.", creature.saves.ref.creatureSigned(), Modifier.weight(1f))
+                    CreatureCombatValue("Von.", creature.saves.will.creatureSigned(), Modifier.weight(1f))
                 }
+                CreatureAttackLine("Ataque", creature.attack)
                 if (creature.fullAttack.isNotBlank() && creature.fullAttack != creature.attack) {
-                    CreatureAttackLine("Ataque total", creature.fullAttack) { bonus, damage ->
-                        diceRollTarget = Triple("Ataque total: ${creature.name}", bonus, damage)
-                    }
+                    CreatureAttackLine("Ataque total", creature.fullAttack)
                 }
                 if (creature.specialAttacks.isNotBlank()) {
                     Surface(modifier = Modifier.fillMaxWidth().weight(1f),
@@ -283,7 +282,9 @@ fun CreatureImageTradingCard(
                         fontWeight = FontWeight.ExtraBold)
                     Text("${creature.type} • ${creature.typeDetail.ifBlank { creature.type }}",
                         style = MaterialTheme.typography.bodySmall)
-                    Text("Iniciativa: ${creature.initiative.creatureSigned()} • Agarrar: ${creature.grapple.creatureSigned()}",
+                    Text("BBA: ${creature.baseAttack.creatureSigned()} • Agarrar: ${creature.grapple.creatureSigned()}",
+                        style = MaterialTheme.typography.bodySmall)
+                    Text("Iniciativa: ${creature.initiative.creatureSigned()}",
                         style = MaterialTheme.typography.bodySmall)
                     Text("CA de toque: ${creature.touchAc} • CA surpresa: ${creature.flatFootedAc}",
                         style = MaterialTheme.typography.bodySmall)
@@ -313,10 +314,6 @@ fun CreatureImageTradingCard(
             }
         }
     }
-    diceRollTarget?.let { (title, bonus, damage) ->
-        DiceRollDialog(actionTitle = title, bonus = bonus, damageNotation = damage,
-            onDismiss = { diceRollTarget = null })
-    }
     if (showDetails) CreatureDetailsOverlay(creature, onDismiss = { showDetails = false })
 }
 
@@ -334,25 +331,16 @@ private fun CreatureCombatValue(label: String, value: String, modifier: Modifier
 }
 
 @Composable
-private fun CreatureAttackLine(title: String, value: String, onRoll: (Int, String) -> Unit) {
+private fun CreatureAttackLine(title: String, value: String) {
     if (value.isBlank()) return
-    val bonus = Regex("[+-]\\d+").find(value)?.value?.toIntOrNull()
-    val damage = Regex("\\(([^()]*(?:\\d+d\\d+)[^()]*)\\)", RegexOption.IGNORE_CASE)
-        .find(value)?.groupValues?.getOrNull(1).orEmpty()
     Surface(modifier = Modifier.fillMaxWidth(), color = MaterialTheme.colorScheme.surface,
         shape = RoundedCornerShape(9.dp)) {
-        Row(modifier = Modifier.fillMaxWidth().padding(8.dp), verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-            Column(modifier = Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(2.dp)) {
-                Text(title, style = MaterialTheme.typography.labelMedium, fontWeight = FontWeight.Bold,
-                    color = MaterialTheme.colorScheme.primary)
-                Text(value, style = MaterialTheme.typography.bodySmall, maxLines = 2,
-                    overflow = TextOverflow.Ellipsis)
-            }
-            if (bonus != null) Button(onClick = { onRoll(bonus, damage) },
-                contentPadding = androidx.compose.foundation.layout.PaddingValues(horizontal = 9.dp, vertical = 5.dp)) {
-                Text("Rolar " + (if (bonus >= 0) "+$bonus" else "$bonus"), style = MaterialTheme.typography.labelSmall)
-            }
+        Column(modifier = Modifier.fillMaxWidth().padding(8.dp),
+            verticalArrangement = Arrangement.spacedBy(2.dp)) {
+            Text(title, style = MaterialTheme.typography.labelMedium, fontWeight = FontWeight.Bold,
+                color = MaterialTheme.colorScheme.primary)
+            Text(value, style = MaterialTheme.typography.bodySmall, maxLines = 2,
+                overflow = TextOverflow.Ellipsis)
         }
     }
 }
