@@ -359,7 +359,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Mustelídeo de porte excepcional, corpo alongado, pelagem densa, cabeça afilada com pequenos chifres e patas curtas. É extremamente veloz e agressivo, perseguindo presas com energia incansável; pode alcançar cerca de 3 m de comprimento.",
+    "combat": "Caça de surpresa, preferencialmente em locais escuros, saltando sobre a presa e prendendo-a com a mordida. Ao acertar, mantém a mandíbula cravada e causa dano de mordida a cada rodada; enquanto permanece preso, perde o bônus de Destreza na CA. Também drena sangue, causando dano temporário à Constituição. Para removê-lo por agarrar, é necessário vencer o teste resistido."
   },
   {
     "id": "carcaju-atroz",
@@ -409,7 +411,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Grande animal escavador, robusto e musculoso, com pelagem espessa e desalinhada, pernas curtas e fortes e garras próprias para cavar. Seu temperamento é extremamente violento: enfrenta invasores sem demonstrar medo e pode devastar criações e depósitos de alimento.",
+    "combat": "Ataca sem hesitação com as garras e a mordida. Quando sofre dano, entra em fúria destruidora no turno seguinte, recebendo +4 em Força e Constituição e –2 na CA; continua atacando sem controle até morrer ou eliminar o adversário, sem poder encerrar a fúria voluntariamente. Recebe ainda +8 racial em Escalar e pode escolher 10 mesmo sob pressão."
   },
   {
     "id": "gorila-atroz",
@@ -459,7 +463,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Primata gigantesco, aproximadamente do tamanho de um ogro, com musculatura muito desenvolvida, peito largo, pelagem negra e espessa, braços longos e mandíbula proeminente. É territorial e reage agressivamente a qualquer criatura que invada seu espaço.",
+    "combat": "Ataca com as duas garras e a mordida. Se os golpes forem contidos pela defesa do adversário, tenta agarrá-lo e imobilizá-lo para então dilacerar sua carne. Quando acerta o mesmo alvo com ambas as garras, prende-se ao corpo e causa dano adicional automaticamente. Seus braços também lhe concedem grande capacidade de escalada."
   },
   {
     "id": "javali-atroz",
@@ -509,7 +515,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Javali de dimensões enormes, com dorso arqueado que pode alcançar a altura de uma pessoa, cabeça e costas protegidas por placas espessas e irregulares, presas reluzentes e olhos pequenos de aparência ameaçadora. Apesar de onívoro, costuma fuçar em busca de alimento e reage com violência quando alguém se aproxima.",
+    "combat": "Investe diretamente contra o oponente e procura rasgá-lo com as presas. Sua ferocidade permite que continue lutando sem penalidades mesmo quando reduzido a uma condição incapacitada ou moribunda."
   },
   {
     "id": "leao-atroz",
@@ -559,7 +567,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Felino colossal de pelagem fulva e juba curta, marcado por protuberâncias ósseas na cabeça e nos ombros e por uma crista afiada ao longo da coluna. É um caçador paciente, capaz de abater presas muito maiores que os felinos comuns.",
+    "combat": "Persegue a presa, salta sobre ela e combina garras e mordida com ataques de rasgar das patas traseiras. Ao acertar com a mordida, pode iniciar um agarrar como ação livre, sem provocar ataques de oportunidade. Se executar uma investida, pode realizar um ataque total na mesma rodada e incluir os golpes de rasgar."
   },
   {
     "id": "lobo-atroz",
@@ -609,7 +619,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Lobo cinzento de tamanho comparável ao de um cavalo, com olhos de aspecto flamejante e pelagem abundante, que pode ser cinza malhada ou negra. É um caçador de matilha eficiente, perseguindo e abatendo aquilo que consegue cercar.",
+    "combat": "Prefere atuar em grupo, cercando e flanqueando a presa. Quando acerta uma mordida, pode tentar derrubá-la imediatamente como ação livre, sem ataque de toque nem ataque de oportunidade. Seus sentidos aguçados e o faro favorecem rastreamento e perseguição."
   },
   {
     "id": "morcego-atroz",
@@ -659,7 +671,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Morcego predador de porte semelhante ao de um cavalo, com envergadura de aproximadamente 4,5 m. O corpo é coberto por pelagem emaranhada, interrompida por placas de armadura óssea, e as grandes asas coriáceas permitem ataques aéreos repentinos.",
+    "combat": "Ataca mergulhando rapidamente do alto contra criaturas desatentas. Usa ecolocalização para localizar com precisão alvos próximos, mesmo quando não consegue vê-los; criaturas que não estejam efetivamente visíveis ainda podem beneficiar-se de camuflagem total contra ele. Os bônus de percepção dependem desse sentido estar funcionando."
   },
   {
     "id": "rato-atroz",
@@ -709,7 +723,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Roedor de porte muito maior que um cão comum, com pelagem grossa e desalinhada, olhos ferozes e cauda longa sem pelos. É onívoro e oportunista, mas defende agressivamente o ninho e o território.",
+    "combat": "Ataca em bandos, mordendo e roendo com os incisivos. A mordida pode transmitir febre imunda, que exige teste de Fortitude e causa dano temporário à Destreza e à Constituição após o período de incubação. Escala e nada com facilidade, usando a Destreza nessas perícias e podendo escolher 10 mesmo sob ameaça."
   },
   {
     "id": "tigre-atroz",
@@ -759,7 +775,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Felino enorme, de corpo comprido e listrado, com altura próxima à de uma pessoa mesmo apoiado nas quatro patas e patas dianteiras muito largas. É um predador paciente que caça praticamente qualquer criatura que possa capturar.",
+    "combat": "Persegue a presa, salta sobre ela e ataca com garras e mordida, completando o ataque com golpes de rasgar das patas traseiras. Pode iniciar um agarrar como ação livre após acertar com garra ou mordida. Quando investe, consegue realizar um ataque total na mesma rodada, incluindo os ataques de rasgar."
   },
   {
     "id": "tubarao-atroz",
@@ -809,7 +827,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Enorme predador marinho de corpo hidrodinâmico, barbatana dorsal triangular, focinho pontudo, boca recuada repleta de dentes e cauda simétrica em forma de lua crescente. Ataca qualquer criatura que pareça alimento, inclusive presas maiores que ele.",
+    "combat": "Ataca com a mordida poderosa e pode agarrar aprimoradamente uma criatura atingida. Depois de prendê-la, tenta engoli-la; a vítima sofre dano por esmagamento e ácido a cada rodada e pode abrir caminho para escapar causando dano ao sistema digestivo. O faro aguçado permite detectar criaturas pelo cheiro na água a grandes distâncias."
   },
   {
     "id": "urso-atroz",
@@ -859,7 +879,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Urso gigantesco, com sobrancelhas ósseas, garras do tamanho de foices e olhar selvagem. É onívoro e normalmente evita criaturas que não o provocam, mas defende com violência uma carcaça ou qualquer fonte de alimento.",
+    "combat": "Ataca rasgando o adversário com as garras e usando a mordida. Quando acerta com uma garra, pode iniciar um agarrar como ação livre, sem provocar ataques de oportunidade, prendendo a vítima para continuar o ataque."
   },
   {
     "id": "anjo-deva-astral",
