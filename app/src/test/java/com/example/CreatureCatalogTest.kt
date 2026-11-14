@@ -205,4 +205,19 @@ class CreatureCatalogTest {
         assertTrue(CreatureCatalog.byId("derro")!!.feats.contains("Lutar às Cegas"))
     }
 
+
+    @Test
+    fun infernalFiendsAndPredatorsHaveNarrativeSummaries() {
+        listOf(
+            "diabo-das-correntes-kyton", "diabo-farpado-hamatula",
+            "diabo-dos-ossos-osyluth", "diabrete", "erinyes",
+            "gato-infernal-bezekira", "lorde-das-profundezas",
+            "digestor", "dilacerador-cinzento", "dinonico"
+        ).forEach { id ->
+            val creature = CreatureCatalog.byId(id)!!
+            assertTrue("$id sem descrição", creature.description.isNotBlank())
+            assertTrue("$id sem resumo de combate", creature.combat.isNotBlank())
+        }
+    }
+
 }
