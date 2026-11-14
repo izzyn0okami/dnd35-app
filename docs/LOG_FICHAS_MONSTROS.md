@@ -548,3 +548,12 @@ As fichas-base devem ser reutilizadas por ID sempre que a tabela pedir apenas um
 - O combate do Tiranossauro inclui Agarrar Aprimorado e Engolir, com os danos e a forma de escapar descritos no livro. O Tricerátops mantém os valores impressos para Investida Poderosa e Atropelar.
 - Nenhuma estatística mecânica foi alterada; dados duvidosos ou não necessários não foram inferidos. Teste de regressão cobre as quatro fichas e verifica capacidades específicas.
 - Situação após esta etapa: 313 fichas no catálogo; 121 possuem descrição e resumo de combate; 192 ainda precisam de ao menos um desses campos.
+
+
+## 2026-11-14 — Oitava etapa: metamorfos, fadas, eladrin e guardiões da floresta
+
+- Preenchidas descrição e síntese de combate de 7 fichas: Doppelganger, Dragonado, Dríade, Drider, Bralani, Ghaele e Ente.
+- Fonte primária: Livro dos Monstros 3.5 em português, páginas impressas 75, 96–100 e 110. Os resumos preservam as características e habilidades descritas nos verbetes, sem reproduzir integralmente o texto.
+- Foram destacados os recursos centrais de cada criatura: detectar pensamentos e mudar forma do doppelganger; bote e rugido do dragonado; vínculo arbóreo e magias da dríade; veneno e táticas de emboscada do drider; formas e rajada turbilhão do bralani; formas, ataque visual e aura protetora do ghaele; animação de árvores e dano contra objetos do ente.
+- Nenhuma estatística mecânica foi alterada. Quando o verbete remete a listas extensas de magias, o resumo descreve a capacidade sem reconstruir ou acrescentar preparações. Teste de regressão cobre as sete fichas e suas habilidades distintivas.
+- Situação após esta etapa: 313 fichas no catálogo; 128 possuem descrição e resumo de combate; 185 ainda precisam de ao menos um desses campos.
