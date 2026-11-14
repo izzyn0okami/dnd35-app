@@ -814,3 +814,15 @@ As fichas-base devem ser reutilizadas por ID sempre que a tabela pedir apenas um
 - Corrigido apenas o resíduo inequívoco de OCR no campo Ambiente do Slaad Azul, restaurando “Caos Eternamente Mutável do Limbo”; nenhuma outra estatística foi alterada.
 - Adicionado teste de regressão cobrindo os cinco registros, seus efeitos distintivos, ND e ambiente.
 - Situação após esta etapa: 320 fichas no catálogo; 215 com Descrição e Combate; 105 ainda precisam de ao menos um desses campos.
+
+
+## 2026-11-14 — Trigésima terceira etapa: oito criaturas (Stirge a Troglodita)
+
+- Fonte principal: Livro dos Monstros brasileiro, páginas impressas 235–244 (PDF do Livro dos Monstros 3.5).
+- Preenchidas Descrição e Combate de Stirge, Tarrasque, Tartaruga-Dragão, Tendrículo, Thoqqua, Titã, Tritão e Troglodita.
+- Registrados os comportamentos, habitat, dimensões e idiomas quando descritos, além das habilidades especiais, CDs, dano, frequências e condições de uso.
+- No Tarrasque, preservados os detalhes excepcionais de carapaça refletora, regeneração e condição necessária para sua morte definitiva.
+- No Tendrículo, detalhados agarrar, engolir/paralisia, dano digestivo, capacidade interna e vulnerabilidades da regeneração.
+- Nenhum valor do bloco estatístico foi substituído; os campos narrativos e de combate foram preenchidos.
+- Adicionado teste de regressão para os oito registros e suas habilidades distintivas.
+- Contagem após esta etapa: 320 fichas no catálogo; 223 com Descrição e Combate; 97 ainda precisam de ao menos um desses campos.
