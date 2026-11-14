@@ -38,10 +38,10 @@ object SummoningRules {
         3 to "elemental-agua-pequeno elemental-ar-pequeno elemental-fogo-pequeno elemental-terra-pequeno urso-negro bisao texugo-atroz hipogrifo gorila arminho-atroz cao-infernal cobra-constritora javali morcego-atroz centopeia-enorme crocodilo dretch vibora-grande carcaju",
         4 to "louva-a-deus-gigante cao-yeth arconte-luminar coruja-gigante aguia-gigante leao-celestial mephit-da-agua mephit-do-ar mephit-do-fogo mephit-do-gelo mephit-do-limo mephit-do-magma mephit-da-poeira mephit-do-sal mephit-do-vapor lobo-atroz vespa-gigante tubarao-grande aranha-grande vibora-enorme uivante",
         5 to "elemental-agua-medio elemental-ar-medio elemental-fogo-medio elemental-terra-medio urso-marrom leao-marinho grifo achaierai diabo-barbado-barbazu dinonico gorila-atroz javali-atroz tubarao-enorme escorpiao-grande mastim-das-sombras carcaju-atroz crocodilo-gigante tigre",
-        6 to "elemental-agua-grande elemental-ar-grande elemental-fogo-grande elemental-terra-grande urso-atroz baleia-orca leao-atroz cobra-constritora-gigante diabo-das-correntes-kyton centopeia-imensa rinoceronte elasmossauro aranha-enorme bralani janni fera-do-caos",
+        6 to "elemental-agua-grande elemental-ar-grande elemental-fogo-grande elemental-terra-grande xill urso-atroz baleia-orca leao-atroz cobra-constritora-gigante diabo-das-correntes-kyton centopeia-imensa rinoceronte elasmossauro aranha-enorme bralani janni fera-do-caos",
         7 to "elemental-agua-enorme elemental-ar-enorme elemental-fogo-enorme elemental-terra-enorme elefante avoral djinni cacador-invisivel slaad-vermelho diabo-dos-ossos-osyluth megaraptor escorpiao-enorme babau polvo-gigante girallon",
         8 to "elemental-agua-maior elemental-ar-maior elemental-fogo-maior elemental-terra-maior baleia-cachalote triceratops lillend slaad-azul lula-gigante gato-infernal-bezekira centopeia-colossal tigre-atroz aranha-imensa tiranossauro vrock",
-        9 to "elemental-agua-anciao elemental-ar-anciao elemental-fogo-anciao elemental-terra-anciao couatl passaro-roca slaad-verde diabo-barbado-barbazu tubarao-atroz escorpiao-imenso bebilith aranha-colossal hezrou"
+        9 to "elemental-agua-anciao elemental-ar-anciao elemental-fogo-anciao elemental-terra-anciao bruxa-da-noite leonal couatl passaro-roca slaad-verde diabo-barbado-barbazu tubarao-atroz escorpiao-imenso bebilith aranha-colossal hezrou"
     )
 
     private fun circleMap(lists: Map<Int, String>): Map<String, Int> =
