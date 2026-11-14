@@ -7810,7 +7810,7 @@
     "hdType": 8,
     "hitPoints": 25,
     "initiative": 5,
-    "speed": "105 m (1 quadrados), voo 18 m (bom)",
+    "speed": "10,5 m (7 quadrados), voo 18 m (bom)",
     "armorClass": 15,
     "armorClassText": "15 (+1 Des, +4 natural), toque 11, surpresa 14",
     "touchAc": 11,
@@ -7821,7 +7821,7 @@
     "fullAttack": "Corpo a corpo: 4 garras +6 (dano: 1d4+2) ou mordida +6 (dano: 1d8+3)",
     "spaceReach": "1,5 m/1,5 m",
     "specialAttacks": "Olhar paralisante, agarrar aprimorado, drenar sangue",
-    "specialQualities": "Visão no escuro 18 m, voo, imunidade a fogo, vulnerabilidade a frio Rakshasa RAST",
+    "specialQualities": "Visão no escuro 18 m, voo, imunidade a fogo, vulnerabilidade a frio",
     "saves": {
       "fort": 5,
       "ref": 5,
@@ -7847,7 +7847,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "O rast é uma criatura vil, com pelo menos uma dezena de garras penduradas de maneira ameaçadora em seu corpo: uma esfera flutuante e bulbosa, cuja cabeça arredondada é formada quase inteiramente por uma mandíbula cheia de dentes afiados. Espreita em bolsões isolados de planos distantes, sobretudo no Plano Elemental do Fogo. Seu corpo lembra um saco de carne, dentes e garras; é insaciável e praticamente não para de comer. Possui de dez a quinze garras, embora só consiga usar quatro simultaneamente. Tem o tamanho de um cão grande e pesa cerca de 100 kg.",
+    "combat": "Os rast atacam em grupos, usando astúcia brutal: procuram paralisar o maior número possível de inimigos e depois atacam os que ainda conseguem se mover. Em uma rodada, o rast ataca com as garras ou com a mordida, nunca com ambos. Olhar Paralisante (Sob): paralisa uma criatura por 1d6 rodadas, a até 9 m; Fortitude CD 13 anula. Agarrar Aprimorado (Ext): após acertar com a mordida, pode iniciar uma manobra Agarrar como ação livre, sem provocar ataques de oportunidade. Drenar Sangue (Ext): uma vítima agarrada sofre 1 ponto de dano temporário de Constituição por rodada até se libertar. Voo (Sob): pode alçar voo ou pousar como ação livre; se perder essa habilidade, cai e só pode realizar uma ação por rodada. É imune a fogo e vulnerável a frio."
   },
   {
     "id": "ravid",

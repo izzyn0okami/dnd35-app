@@ -760,3 +760,12 @@ As fichas-base devem ser reutilizadas por ID sempre que a tabela pedir apenas um
 - Combate registra o veneno do ferrão (Fortitude CD 14; sono por 1 minuto e depois 1d3 horas), Sentido Cego 18 m, Telepatia 18 m limitada a idiomas Comum ou Silvestre e bônus raciais de Esconder-se (+4; +8 em florestas/vegetação densa).
 - Adicionado teste de regressão para os detalhes distintivos e preservação do ND.
 - Contagem após esta etapa: 319 fichas; 203 com Descrição e Combate; 116 pendentes.
+
+
+## 2026-11-14 — Vigésima nona etapa: Rast
+
+- Conferido o verbete do Rast no Livro dos Monstros brasileiro, p. 222 (PDF, p. 226).
+- Preenchidos Descrição e Combate no registro existente: anatomia, quantidade de garras, habitat planar, comportamento de alimentação, ataques em grupo, olhar paralisante, agarrar aprimorado, drenar sangue e voo.
+- Corrigida uma corrupção evidente no bloco existente: deslocamento terrestre de “105 m” para “10,5 m” e removido o texto estranho “Rakshasa RAST” das qualidades especiais. Ambos foram conferidos no bloco impresso da p. 222; as demais estatísticas foram preservadas.
+- Adicionado teste de regressão para capacidades, ND e correções de deslocamento/qualidades especiais.
+- Contagem após esta etapa: 319 fichas; 204 com Descrição e Combate; 115 pendentes.

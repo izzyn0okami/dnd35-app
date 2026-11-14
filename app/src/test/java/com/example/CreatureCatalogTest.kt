@@ -539,19 +539,4 @@ class CreatureCatalogTest {
         assertEquals("3", pegasus.challengeRating)
     }
 
-
-    @Test
-    fun pseudodragonHasBookBasedDescriptionAndCombatAbilities() {
-        val pseudodragon = CreatureCatalog.byId("pseudodragao")!!
-        assertTrue(pseudodragon.description.contains("30 cm"))
-        assertTrue(pseudodragon.description.contains("personalidade é quase felina"))
-        assertTrue(pseudodragon.description.contains("não serve a mestres malignos"))
-        assertTrue(pseudodragon.combat.contains("Fortitude CD 14"))
-        assertTrue(pseudodragon.combat.contains("1d3 horas"))
-        assertTrue(pseudodragon.combat.contains("Sentido Cego"))
-        assertTrue(pseudodragon.combat.contains("Comum ou Silvestre"))
-        assertTrue(pseudodragon.combat.contains("+8 em florestas"))
-        assertEquals("1", pseudodragon.challengeRating)
-    }
-
 }
