@@ -567,3 +567,12 @@ As fichas-base devem ser reutilizadas por ID sempre que a tabela pedir apenas um
 - O Escavador mantém os tipos de dano do muco corrosivo e a capacidade de moldar rochas. As esfinges preservam diferenças de comportamento e combate: rugidos e magias do andro–esfinge, chifres e ausência de magia do crio–esfinge, e habilidades similares à magia e símbolos da gino–esfinge.
 - Nenhuma estatística do catálogo foi alterada. Teste de regressão cobre as sete fichas e verifica capacidades características.
 - Situação após esta etapa: 313 fichas no catálogo; 135 possuem descrição e resumo de combate; 178 ainda precisam de ao menos um desses campos.
+
+
+## 2026-11-14 — Décima etapa: espectro, ettercap, ettin e fadas
+
+- Preenchidas descrição e síntese de combate de 5 fichas: Espectro, Ettercap, Ettin, Grig e Nixie.
+- Fonte primária: Livro dos Monstros 3.5 em português, páginas impressas 116 e 120–122. Os resumos mantêm os comportamentos e as habilidades especiais dos verbetes.
+- Foram destacados: dreno de energia, criação de espectros e vulnerabilidade à luz solar; veneno e teias do ettercap; combate com duas armas sem penalidade do ettin; rabeca e habilidades similares à magia do grig; e encantamento, respiração aquática e empatia selvagem da nixie.
+- Nenhuma estatística do catálogo foi alterada. Testes de regressão cobrem as cinco fichas e suas capacidades distintivas.
+- Situação após esta etapa: 313 fichas no catálogo; 140 possuem descrição e resumo de combate; 173 ainda precisam de ao menos um desses campos.
