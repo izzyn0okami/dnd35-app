@@ -168,4 +168,37 @@ class SummoningRulesTest {
         assertEquals("", hellcat.templateLabel)
         assertEquals("", demon.templateLabel)
     }
+
+    @Test
+    fun allElementalTypesAreAvailableAtEveryBookListedCircle() {
+        val elements = listOf("agua", "ar", "fogo", "terra")
+        val natureStages = mapOf(
+            2 to "pequeno",
+            4 to "medio",
+            5 to "grande",
+            6 to "enorme",
+            7 to "maior",
+            9 to "anciao"
+        )
+        val monsterStages = mapOf(
+            3 to "pequeno",
+            5 to "medio",
+            6 to "grande",
+            7 to "enorme",
+            8 to "maior",
+            9 to "anciao"
+        )
+        natureStages.forEach { (circle, stage) ->
+            val options = SummoningRules.creaturesForCircle(SummoningFamily.SUMMON_NATURE_ALLY, circle)
+            elements.forEach { element ->
+                assertTrue(options.any { it.creature.id == "elemental-$element-$stage" })
+            }
+        }
+        monsterStages.forEach { (circle, stage) ->
+            val options = SummoningRules.creaturesForCircle(SummoningFamily.SUMMON_CREATURES, circle)
+            elements.forEach { element ->
+                assertTrue(options.any { it.creature.id == "elemental-$element-$stage" })
+            }
+        }
+    }
 }
