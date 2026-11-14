@@ -89,7 +89,7 @@ class SummoningRulesTest {
         assertTrue(nature4.any { it.creature.id == "gaviao-seta-jovem" })
         assertTrue(nature4.any { it.creature.id == "tojanida-jovem" })
         assertTrue(nature4.any { it.creature.id == "irmao-das-chamas" })
-        assertTrue(nature4.any { it.creature.id == "unicorno" })
+        assertTrue(nature4.any { it.creature.id == "unicornio" })
         assertTrue(nature5.any { it.creature.id == "gaviao-seta-adulto" })
         assertTrue(nature5.any { it.creature.id == "tojanida-adulto" })
         assertTrue(nature7.any { it.creature.id == "gaviao-seta-anciao" })
