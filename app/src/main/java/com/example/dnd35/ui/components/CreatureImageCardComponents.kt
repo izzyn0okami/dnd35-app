@@ -233,7 +233,7 @@ fun CreatureImageTradingCard(
                     Text(titleOverride?.takeIf { it.isNotBlank() } ?: creature.name,
                         style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold,
                         maxLines = 1, overflow = TextOverflow.Ellipsis)
-                    Text("ND \${creature.challengeRating} • \${creature.size}",
+                    Text("ND ${creature.challengeRating} • ${creature.size}",
                         style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.primary,
                         maxLines = 1, overflow = TextOverflow.Ellipsis)
                 }
@@ -254,11 +254,11 @@ fun CreatureImageTradingCard(
                     CreatureCombatValue("Desloc.", creature.speed, Modifier.weight(1.35f))
                 }
                 CreatureAttackLine("Ataque", creature.attack) { bonus, damage ->
-                    diceRollTarget = Triple("Ataque: \${creature.name}", bonus, damage)
+                    diceRollTarget = Triple("Ataque: ${creature.name}", bonus, damage)
                 }
                 if (creature.fullAttack.isNotBlank() && creature.fullAttack != creature.attack) {
                     CreatureAttackLine("Ataque total", creature.fullAttack) { bonus, damage ->
-                        diceRollTarget = Triple("Ataque total: \${creature.name}", bonus, damage)
+                        diceRollTarget = Triple("Ataque total: ${creature.name}", bonus, damage)
                     }
                 }
                 if (creature.specialAttacks.isNotBlank()) {
@@ -281,26 +281,26 @@ fun CreatureImageTradingCard(
                     verticalArrangement = Arrangement.spacedBy(7.dp)) {
                     Text("INFORMAÇÕES COMPLEMENTARES", style = MaterialTheme.typography.labelMedium,
                         fontWeight = FontWeight.ExtraBold)
-                    Text("\${creature.type} • \${creature.typeDetail.ifBlank { creature.type }}",
+                    Text("${creature.type} • ${creature.typeDetail.ifBlank { creature.type }}",
                         style = MaterialTheme.typography.bodySmall)
-                    Text("Iniciativa: \${creature.initiative.creatureSigned()} • Agarrar: \${creature.grapple.creatureSigned()}",
+                    Text("Iniciativa: ${creature.initiative.creatureSigned()} • Agarrar: ${creature.grapple.creatureSigned()}",
                         style = MaterialTheme.typography.bodySmall)
-                    Text("CA de toque: \${creature.touchAc} • CA surpresa: \${creature.flatFootedAc}",
+                    Text("CA de toque: ${creature.touchAc} • CA surpresa: ${creature.flatFootedAc}",
                         style = MaterialTheme.typography.bodySmall)
-                    Text("Resistências: Fort \${creature.saves.fort.creatureSigned()} • Ref \${creature.saves.ref.creatureSigned()} • Von \${creature.saves.will.creatureSigned()}",
+                    Text("Resistências: Fort ${creature.saves.fort.creatureSigned()} • Ref ${creature.saves.ref.creatureSigned()} • Von ${creature.saves.will.creatureSigned()}",
                         style = MaterialTheme.typography.bodySmall)
                     val a = creature.abilities
-                    Text("FOR \${a.str ?: "—"} • DES \${a.dex ?: "—"} • CON \${a.con ?: "—"}",
+                    Text("FOR ${a.str ?: "—"} • DES ${a.dex ?: "—"} • CON ${a.con ?: "—"}",
                         style = MaterialTheme.typography.bodySmall)
-                    Text("INT \${a.int ?: "—"} • SAB \${a.wis ?: "—"} • CAR \${a.cha ?: "—"}",
+                    Text("INT ${a.int ?: "—"} • SAB ${a.wis ?: "—"} • CAR ${a.cha ?: "—"}",
                         style = MaterialTheme.typography.bodySmall)
-                    Text("Espaço/Alcance: \${creature.spaceReach}", style = MaterialTheme.typography.bodySmall)
+                    Text("Espaço/Alcance: ${creature.spaceReach}", style = MaterialTheme.typography.bodySmall)
                     CreatureBackField("Qualidades especiais", creature.specialQualities)
                     CreatureBackField("Perícias", creature.skills)
                     CreatureBackField("Talentos", creature.feats)
-                    CreatureBackField("Ambiente / Organização", "\${creature.environment} • \${creature.organization}")
-                    CreatureBackField("Tesouro / Tendência", "\${creature.treasure} • \${creature.alignment}")
-                    CreatureBackField("Progressão / Ajuste de nível", "\${creature.advancement} • \${creature.levelAdjustment}")
+                    CreatureBackField("Ambiente / Organização", "${creature.environment} • ${creature.organization}")
+                    CreatureBackField("Tesouro / Tendência", "${creature.treasure} • ${creature.alignment}")
+                    CreatureBackField("Progressão / Ajuste de nível", "${creature.advancement} • ${creature.levelAdjustment}")
                     CreatureBackField("Contexto", details)
                     CreatureBackField("Resumo adicional", stats)
                     if (!footer.isNullOrBlank()) CreatureBackField("Observação", footer)
