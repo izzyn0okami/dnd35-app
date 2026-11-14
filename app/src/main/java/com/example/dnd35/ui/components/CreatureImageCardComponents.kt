@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -24,6 +25,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Pets
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -49,6 +52,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.example.dnd35.model.CreatureDefinition
+import com.example.dnd35.ui.dialogs.DiceRollDialog
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.text.Normalizer
@@ -154,7 +158,7 @@ fun <T> CreatureCardStack(
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(370.dp)
+                .height(520.dp)
                 .pointerInput(identity, safeIndex) {
                     var dragDistance = 0f
                     detectHorizontalDragGestures(
@@ -177,15 +181,15 @@ fun <T> CreatureCardStack(
                 Box(
                     modifier = Modifier
                         .offset(x = ((index + 1) * 18).dp, y = 5.dp)
-                        .width(250.dp)
-                        .height(350.dp)
+                        .width(300.dp)
+                        .height(500.dp)
                         .zIndex(index.toFloat())
                 ) { card(item) }
             }
             Box(
                 modifier = Modifier
-                    .width(250.dp)
-                    .height(350.dp)
+                    .width(300.dp)
+                    .height(500.dp)
                     .zIndex(10f)
             ) { card(visible.first()) }
         }
@@ -211,9 +215,10 @@ fun CreatureImageTradingCard(
 ) {
     var showBack by remember(creature.id) { mutableStateOf(false) }
     var showDetails by remember(creature.id) { mutableStateOf(false) }
+    var diceRollTarget by remember(creature.id) { mutableStateOf<Triple<String, Int, String>?>(null) }
 
     Card(
-        modifier = modifier.fillMaxWidth().height(350.dp).combinedClickable(
+        modifier = modifier.fillMaxWidth().height(500.dp).combinedClickable(
             onClick = { showBack = !showBack },
             onLongClick = { showDetails = true }
         ),
@@ -221,76 +226,145 @@ fun CreatureImageTradingCard(
         border = BorderStroke(2.dp, MaterialTheme.colorScheme.outlineVariant),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)
     ) {
-        Column(
-            modifier = Modifier.fillMaxSize().padding(10.dp),
-            verticalArrangement = Arrangement.spacedBy(7.dp)
-        ) {
+        Column(modifier = Modifier.fillMaxSize().padding(10.dp),
+            verticalArrangement = Arrangement.spacedBy(6.dp)) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Column(modifier = Modifier.weight(1f)) {
-                    Text(titleOverride?.takeIf { it.isNotBlank() } ?: creature.name, style = MaterialTheme.typography.titleMedium,
-                        fontWeight = FontWeight.Bold, maxLines = 1, overflow = TextOverflow.Ellipsis)
-                    Text(
-                        "${creature.type} • ${creature.size} • ND ${creature.challengeRating}",
-                        style = MaterialTheme.typography.labelSmall,
-                        color = MaterialTheme.colorScheme.primary,
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis
-                    )
+                    Text(titleOverride?.takeIf { it.isNotBlank() } ?: creature.name,
+                        style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold,
+                        maxLines = 1, overflow = TextOverflow.Ellipsis)
+                    Text("ND ${creature.challengeRating} • ${creature.size}",
+                        style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.primary,
+                        maxLines = 1, overflow = TextOverflow.Ellipsis)
                 }
                 Surface(shape = RoundedCornerShape(8.dp), color = MaterialTheme.colorScheme.secondaryContainer) {
-                    Text(if (showBack) "VERSO" else "FRENTE",
+                    Text(if (showBack) "VERSO" else "COMBATE",
                         modifier = Modifier.padding(horizontal = 8.dp, vertical = 5.dp),
                         style = MaterialTheme.typography.labelSmall, fontWeight = FontWeight.Bold)
                 }
             }
             if (!showBack) {
-                CreatureImage(
-                    creature = creature,
-                    modifier = Modifier.fillMaxWidth().weight(1f),
-                    contentScale = ContentScale.Crop,
-                    maxDimensionPx = 1000
-                )
-                Text(details, style = MaterialTheme.typography.bodySmall, maxLines = 2, overflow = TextOverflow.Ellipsis)
-                Surface(modifier = Modifier.fillMaxWidth(), color = MaterialTheme.colorScheme.surface,
-                    shape = RoundedCornerShape(9.dp)) {
-                    Text(stats, modifier = Modifier.padding(horizontal = 9.dp, vertical = 7.dp),
-                        style = MaterialTheme.typography.labelMedium, fontWeight = FontWeight.SemiBold,
-                        maxLines = 2, overflow = TextOverflow.Ellipsis)
+                CreatureImage(creature = creature,
+                    modifier = Modifier.fillMaxWidth().height(104.dp),
+                    contentScale = ContentScale.Crop, maxDimensionPx = 1000)
+                Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                    CreatureCombatValue("PV", creature.hitPoints.toString(), Modifier.weight(1f))
+                    CreatureCombatValue("CA", creature.armorClassText, Modifier.weight(1f))
+                    CreatureCombatValue("BBA", creature.baseAttack.creatureSigned(), Modifier.weight(1f))
+                    CreatureCombatValue("Desloc.", creature.speed, Modifier.weight(1.35f))
                 }
-                if (!footer.isNullOrBlank()) {
-                    Text(footer, style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.tertiary)
+                CreatureAttackLine("Ataque", creature.attack) { bonus, damage ->
+                    diceRollTarget = Triple("Ataque: ${creature.name}", bonus, damage)
                 }
-                Text("Toque para virar • segure para ver a ficha completa",
-                    style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                if (creature.fullAttack.isNotBlank() && creature.fullAttack != creature.attack) {
+                    CreatureAttackLine("Ataque total", creature.fullAttack) { bonus, damage ->
+                        diceRollTarget = Triple("Ataque total: ${creature.name}", bonus, damage)
+                    }
+                }
+                if (creature.specialAttacks.isNotBlank()) {
+                    Surface(modifier = Modifier.fillMaxWidth().weight(1f),
+                        color = MaterialTheme.colorScheme.surface, shape = RoundedCornerShape(9.dp)) {
+                        Column(modifier = Modifier.fillMaxSize().padding(8.dp),
+                            verticalArrangement = Arrangement.spacedBy(3.dp)) {
+                            Text("Magias e ataques especiais", style = MaterialTheme.typography.labelMedium,
+                                fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.primary)
+                            Text(creature.specialAttacks, style = MaterialTheme.typography.bodySmall,
+                                maxLines = 5, overflow = TextOverflow.Ellipsis)
+                        }
+                    }
+                } else Spacer(modifier = Modifier.weight(1f))
+                Text("Toque para ver o verso • pressione e segure para a ficha completa",
+                    style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    maxLines = 1, overflow = TextOverflow.Ellipsis)
             } else {
-                Column(modifier = Modifier.weight(1f).fillMaxWidth(),
-                    verticalArrangement = Arrangement.spacedBy(6.dp)) {
-                    Text("ATRIBUTOS", style = MaterialTheme.typography.labelMedium, fontWeight = FontWeight.ExtraBold)
+                Column(modifier = Modifier.weight(1f).fillMaxWidth().verticalScroll(rememberScrollState()),
+                    verticalArrangement = Arrangement.spacedBy(7.dp)) {
+                    Text("INFORMAÇÕES COMPLEMENTARES", style = MaterialTheme.typography.labelMedium,
+                        fontWeight = FontWeight.ExtraBold)
+                    Text("${creature.type} • ${creature.typeDetail.ifBlank { creature.type }}",
+                        style = MaterialTheme.typography.bodySmall)
+                    Text("Iniciativa: ${creature.initiative.creatureSigned()} • Agarrar: ${creature.grapple.creatureSigned()}",
+                        style = MaterialTheme.typography.bodySmall)
+                    Text("CA de toque: ${creature.touchAc} • CA surpresa: ${creature.flatFootedAc}",
+                        style = MaterialTheme.typography.bodySmall)
+                    Text("Resistências: Fort ${creature.saves.fort.creatureSigned()} • Ref ${creature.saves.ref.creatureSigned()} • Von ${creature.saves.will.creatureSigned()}",
+                        style = MaterialTheme.typography.bodySmall)
                     val a = creature.abilities
                     Text("FOR ${a.str ?: "—"} • DES ${a.dex ?: "—"} • CON ${a.con ?: "—"}",
                         style = MaterialTheme.typography.bodySmall)
                     Text("INT ${a.int ?: "—"} • SAB ${a.wis ?: "—"} • CAR ${a.cha ?: "—"}",
                         style = MaterialTheme.typography.bodySmall)
-                    Text("Ataques especiais: ${creature.specialAttacks.ifBlank { "—" }}",
-                        style = MaterialTheme.typography.labelSmall, maxLines = 3, overflow = TextOverflow.Ellipsis)
-                    Text("Qualidades: ${creature.specialQualities.ifBlank { "—" }}",
-                        style = MaterialTheme.typography.labelSmall, maxLines = 3, overflow = TextOverflow.Ellipsis)
-                    Text("Talentos: ${creature.feats.ifBlank { "—" }}",
-                        style = MaterialTheme.typography.labelSmall, maxLines = 2, overflow = TextOverflow.Ellipsis)
-                    if (!footer.isNullOrBlank()) {
-                        Text(footer, style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.tertiary)
-                    }
+                    Text("Espaço/Alcance: ${creature.spaceReach}", style = MaterialTheme.typography.bodySmall)
+                    CreatureBackField("Qualidades especiais", creature.specialQualities)
+                    CreatureBackField("Perícias", creature.skills)
+                    CreatureBackField("Talentos", creature.feats)
+                    CreatureBackField("Ambiente / Organização", "${creature.environment} • ${creature.organization}")
+                    CreatureBackField("Tesouro / Tendência", "${creature.treasure} • ${creature.alignment}")
+                    CreatureBackField("Progressão / Ajuste de nível", "${creature.advancement} • ${creature.levelAdjustment}")
+                    CreatureBackField("Contexto", details)
+                    CreatureBackField("Resumo adicional", stats)
+                    if (!footer.isNullOrBlank()) CreatureBackField("Observação", footer)
                 }
-                if (onSelect != null) {
-                    Button(onClick = onSelect, modifier = Modifier.fillMaxWidth()) { Text(selectLabel) }
+                if (onSelect != null) Button(onClick = onSelect, modifier = Modifier.fillMaxWidth()) {
+                    Text(selectLabel)
                 }
-                Text("Toque para voltar à frente • segure para ver a ficha completa",
+                Text("Toque para voltar à frente • pressione e segure para a ficha completa",
                     style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
             }
         }
     }
-
+    diceRollTarget?.let { (title, bonus, damage) ->
+        DiceRollDialog(actionTitle = title, bonus = bonus, damageNotation = damage,
+            onDismiss = { diceRollTarget = null })
+    }
     if (showDetails) CreatureDetailsOverlay(creature, onDismiss = { showDetails = false })
+}
+
+@Composable
+private fun CreatureCombatValue(label: String, value: String, modifier: Modifier = Modifier) {
+    Surface(modifier = modifier, color = MaterialTheme.colorScheme.surface, shape = RoundedCornerShape(9.dp)) {
+        Column(modifier = Modifier.padding(horizontal = 5.dp, vertical = 7.dp),
+            horizontalAlignment = Alignment.CenterHorizontally) {
+            Text(label, style = MaterialTheme.typography.labelSmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant, maxLines = 1)
+            Text(value, style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.ExtraBold,
+                color = MaterialTheme.colorScheme.primary, maxLines = 1, overflow = TextOverflow.Ellipsis)
+        }
+    }
+}
+
+@Composable
+private fun CreatureAttackLine(title: String, value: String, onRoll: (Int, String) -> Unit) {
+    if (value.isBlank()) return
+    val bonus = Regex("[+-]\\d+").find(value)?.value?.toIntOrNull()
+    val damage = Regex("\\(([^()]*(?:\\d+d\\d+)[^()]*)\\)", RegexOption.IGNORE_CASE)
+        .find(value)?.groupValues?.getOrNull(1).orEmpty()
+    Surface(modifier = Modifier.fillMaxWidth(), color = MaterialTheme.colorScheme.surface,
+        shape = RoundedCornerShape(9.dp)) {
+        Row(modifier = Modifier.fillMaxWidth().padding(8.dp), verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+            Column(modifier = Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(2.dp)) {
+                Text(title, style = MaterialTheme.typography.labelMedium, fontWeight = FontWeight.Bold,
+                    color = MaterialTheme.colorScheme.primary)
+                Text(value, style = MaterialTheme.typography.bodySmall, maxLines = 2,
+                    overflow = TextOverflow.Ellipsis)
+            }
+            if (bonus != null) Button(onClick = { onRoll(bonus, damage) },
+                contentPadding = androidx.compose.foundation.layout.PaddingValues(horizontal = 9.dp, vertical = 5.dp)) {
+                Text("Rolar " + (if (bonus >= 0) "+$bonus" else "$bonus"), style = MaterialTheme.typography.labelSmall)
+            }
+        }
+    }
+}
+
+@Composable
+private fun CreatureBackField(label: String, value: String) {
+    if (value.isBlank()) return
+    Column(verticalArrangement = Arrangement.spacedBy(1.dp)) {
+        Text(label, style = MaterialTheme.typography.labelSmall, fontWeight = FontWeight.Bold,
+            color = MaterialTheme.colorScheme.primary)
+        Text(value, style = MaterialTheme.typography.bodySmall)
+    }
 }
 
 @Composable
