@@ -2335,7 +2335,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "O Rato Atroz Abissal é um rato atroz transformado pelo poder dos planos inferiores. Embora preserve a aparência e as características básicas de um rato atroz, sua forma é mais ameaçadora e sobrenatural. É uma criatura planar maligna, encontrada nas camadas infinitas do Abismo, e costuma viver em bandos.",
+    "combat": "O Rato Atroz Abissal ataca com a mordida, transmitindo febre imunda. Também pode concentrar uma vez por dia um golpe contra uma criatura bondosa, causando dano adicional com sua capacidade de destruir o bem. Seu faro, escalada e natação favorecem a perseguição de presas, enquanto as resistências planares o ajudam a sobreviver nos planos inferiores."
   },
   {
     "id": "leao-celestial",
@@ -2385,7 +2387,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "O Leão Celestial é um leão avançado imbuído de poder dos planos superiores. Sua aparência é mais imponente e bela que a de um leão comum, e sua natureza bondosa se manifesta na proteção de criaturas inocentes. Habita os Sete Paraísos Escalonados de Celéstia e pode ser encontrado sozinho, em casal ou em bandos.",
+    "combat": "O Leão Celestial investe contra o inimigo e procura derrubá-lo com o bote. Depois de atingir com a mordida, pode iniciar um agarrão aprimorado e dilacerar a presa com as garras. Suas armas naturais são consideradas mágicas para superar redução de dano, e sua capacidade de destruir o mal permite causar dano adicional a um adversário maligno."
   },
   {
     "id": "babau",
@@ -2735,8 +2739,8 @@
       "wis": 18,
       "cha": 24
     },
-    "skills": "Blefar +26, Concentração +28. Diplomacia +30, Disfarces +7 (+9 atuando), Esconder–se +19, Furtividade +23, Identificar Magia +23 (+25 para pergaminhos), Intimidar +28, Observar +31, Ouvir +31, Procurar +23, Sentir Motivação +23, Sobrevivência +4 (+6 seguindo rastros), Usar Instrumento Mágico +26 (+28 para pergaminhos)",
-    "feats": "Ataque Poderoso, Ataques Múltiplos, Combater com Múltiplas Armas, Especialização em Combate, Foco em Arma (espada longa), Reflexos de Combate Hezrou Dretch Babau MARILITH DEMÔNIO",
+    "skills": "Blefar +26, Concentração +28, Diplomacia +30, Disfarces +7 (+9 atuando), Esconder–se +19, Furtividade +23, Identificar Magia +23 (+25 para pergaminhos), Intimidar +28, Observar +31, Ouvir +31, Procurar +23, Sentir Motivação +23, Sobrevivência +4 (+6 seguindo rastros), Usar Instrumento Mágico +26 (+28 para pergaminhos)",
+    "feats": "Ataque Poderoso, Ataques Múltiplos, Combater com Múltiplas Armas, Especialização em Combate, Foco em Arma (espada longa), Reflexos de Combate",
     "environment": "Camadas infinitas do Abismo",
     "organization": "Solitário ou par",
     "challengeRating": "17",
@@ -2747,7 +2751,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "A Marilith é um poderoso tanar’ri com torso humanoide feminino e corpo inferior de serpente, além de seis braços capazes de empunhar armas. Atua como general e comandante tática dos exércitos demoníacos, combinando inteligência, disciplina e força brutal. Costuma avaliar cuidadosamente o terreno e as fraquezas dos adversários antes de entrar em combate.",
+    "combat": "A Marilith prefere preparar o campo de batalha e explorar vantagens táticas antes de atacar. Seus seis braços permitem uma sequência devastadora de ataques com espadas, enquanto a cauda pode agarrar e comprimir uma vítima. Também dispõe de habilidades similares a magia, invocação de tanar’ri e visão da verdade. Quando agarrada ou cercada, sua força física e resistência tornam a luta corpo a corpo especialmente perigosa."
   },
   {
     "id": "nalfeshnee",
@@ -2797,7 +2803,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "O Nalfeshnee é um enorme demônio tanar’ri de aparência grotesca, com corpo semelhante ao de um porco e traços simiescos. É inteligente, cruel e dado a julgar e atormentar as almas condenadas. Seu poder mágico e sua posição entre os tanar’ri fazem dele um adversário temido e um comandante respeitado no Abismo.",
+    "combat": "O Nalfeshnee costuma iniciar o confronto usando suas habilidades similares a magia para desorganizar e destruir os inimigos. Sua capacidade de destruição pode envolver os adversários em luzes sobrenaturais e deixá-los atordoados. Quando se aproxima, ataca com mordida e garras. Pode invocar outros tanar’ri e usa sua visão da verdade para perceber disfarces e ilusões."
   },
   {
     "id": "quasit",
@@ -2811,8 +2819,8 @@
     "hitPoints": 13,
     "initiative": 7,
     "speed": "6 m (4 quadrados), voo 15 m (perfeito)",
-    "armorClass": 78,
-    "armorClassText": "78 (+2 tamanho, +3 Des, +3 natural), toque 15, surpresa 15",
+    "armorClass": 18,
+    "armorClassText": "18 (+2 tamanho, +3 Des, +3 natural), toque 15, surpresa 15",
     "touchAc": 15,
     "flatFootedAc": 15,
     "baseAttack": 3,
@@ -2847,7 +2855,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "O Quasit é um pequeno demônio de aparência repulsiva, com pele escamosa, chifres, cauda e mãos terminadas em garras. Embora fraco em comparação com outros demônios, é astuto e frequentemente serve como familiar de conjuradores malignos. Pode alterar sua forma para assumir a aparência de um morcego, sapo ou lobo, e habita as camadas infinitas do Abismo.",
+    "combat": "O Quasit evita o combate direto sempre que possível e usa invisibilidade, medo e outras habilidades similares a magia para surpreender ou fugir. Se obrigado a lutar, ataca com as garras venenosas e a mordida. Seu veneno enfraquece a vítima, enquanto sua cura acelerada, resistência a dano e capacidade de alterar a forma favorecem a sobrevivência e a fuga."
   },
   {
     "id": "vrock",
@@ -2897,7 +2907,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "O Vrock é um demônio tanar’ri de aparência semelhante a um abutre humanoide, com grandes asas, garras e plumagem escura. É selvagem, violento e aprecia o combate, servindo como soldado e guerreiro nas hostes do Abismo. Pode voar sobre o campo de batalha e atacar de diferentes direções.",
+    "combat": "O Vrock utiliza o voo para escolher posições vantajosas e mergulhar sobre os inimigos com suas garras e mordida. Grupos de pelo menos três podem executar uma dança ritual que libera uma onda devastadora de energia. Também pode expelir esporos que ferem e crescem no corpo das vítimas, emitir um silvo atordoante e invocar outros tanar’ri."
   },
   {
     "id": "derro",
@@ -2936,7 +2948,7 @@
       "cha": 16
     },
     "skills": "Blefar +5, Esconder–se +10, Furtividade +8, Ouvir +1",
-    "feats": "Iniciativa Aprimorada. Lutar ás Cegas",
+    "feats": "Iniciativa Aprimorada. Lutar às Cegas",
     "environment": "Subterrâneo",
     "organization": "Equipe (2–4), esquadrão (5–8 mais 1 feiticeiro de 3º nível) ou bando (11–20 mais 30% de não combatentes, mais 3 feiticeiros de 3º nível e 1 feiticeiro de nível)",
     "challengeRating": "3",
@@ -2947,7 +2959,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "O Derro é uma criatura pequena e atarracada, semelhante a um anão, com pele branco-azulada, olhos brancos sem íris ou pupilas e cabelos grisalhos. Descende de ancestrais humanos e anões e vive nos subterrâneos. É cruel, homicida e insano, sentindo prazer em escravizar, torturar e atormentar os habitantes da superfície.",
+    "combat": "Os Derro são sorrateiros e sanguinolentos. Preparam armadilhas e emboscadas, preferindo capturar inimigos para torturá-los em vez de matá-los imediatamente. Usam venenos em seus virotes de besta, ataques furtivos e habilidades similares a magia para confundir e incapacitar adversários. Sua insanidade os torna imunes a confusão e insanidade, mas a luz solar os enfraquece progressivamente."
   },
   {
     "id": "destrachan",
@@ -2997,7 +3011,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "O Destrachan é uma aberração grande, de corpo encurvado, pernas grossas terminadas em garras e aparência vagamente reptiliana. Seu crânio possui aberturas e estruturas capazes de produzir sons devastadores. Vive no subterrâneo e caça utilizando ondas sonoras, dispensando frequentemente a necessidade de enxergar suas presas.",
+    "combat": "O Destrachan prefere atacar com sua harmonia destrutiva, ajustando as frequências para afetar carne, nervos ou objetos e equipamentos. Pode destruir tecidos e ossos, causar dano por contusão ou danificar armaduras e armas. Utiliza as garras apenas como último recurso ou para eliminar inimigos já debilitados. Sua percepção às cegas e proteção contra energia sônica dificultam enfrentá-lo com os próprios métodos."
   },
   {
     "id": "devorador-de-aranhas",
@@ -3047,7 +3063,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "O Devorador de Aranhas é uma besta mágica grande, de corpo semelhante ao de um inseto predador e capaz de voar. Caça aranhas monstruosas e outras criaturas, utilizando o ferrão para injetar veneno e implantar ovos em suas vítimas. Habita florestas temperadas e normalmente age sozinho.",
+    "combat": "O Devorador de Aranhas ataca pelo ar, aproximando-se para atingir a presa com o ferrão venenoso. Sua capacidade de implante permite depositar ovos na vítima, que podem eclodir posteriormente. A movimentação livre o protege de efeitos que restringem deslocamento, enquanto o faro e os sentidos aguçados ajudam a localizar presas."
   },
   {
     "id": "diabo-barbado-barbazu",
@@ -3097,7 +3115,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "O Diabo Barbado, também chamado Barbazu, é um baatezu de porte médio, com barba grotesca e aparência demoníaca. Serve como soldado dos Nove Infernos de Baator e é conhecido por sua ferocidade e disciplina militar. Empunha uma glaive e luta com agressividade, especialmente quando entra em frenesi.",
+    "combat": "O Barbazu avança com sua glaive, cujo ferimento infernal continua causando dano depois do golpe. Também pode atacar com as garras e usar a barba para transmitir uma infecção sobrenatural. Em frenesi de batalha, torna-se especialmente perigoso em combate corpo a corpo. Pode invocar outros baatezu e sua capacidade de ver na escuridão permite lutar sem depender de iluminação."
   },
   {
     "id": "diabo-das-correntes-kyton",
