@@ -4883,7 +4883,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Pequena fada alada das florestas temperadas, de aparência delicada e roupas claras. É normalmente descuidada e brincalhona, mas reage com ferocidade contra criaturas malignas e intrusos indesejados. Usa a invisibilidade para surpreender, incapacitar ou expulsar adversários.",
+    "combat": "Permanece invisível mesmo enquanto ataca e pode ativar ou desativar essa capacidade como ação livre. Suas habilidades similares à magia incluem confusão menor, constrição, detecção de tendências, detectar pensamentos, dissipar magia, globos de luz, imagem permanente e metamorfose; uma em cada dez pixies também conjura dança irresistível de Otto uma vez por dia. Pode usar flechas especiais: a flecha da amnésia exige Vontade (CD 15) ou faz a vítima perder as lembranças, enquanto a flecha do sono exige Fortitude (CD 15) ou produz o efeito de sono, independentemente dos Dados de Vida do alvo. Sua redução de dano 10/ferro frio e Resistência à Magia 15 dificultam sua captura."
   },
   {
     "id": "fantasma-guerreiro-humano-de-5-nivel",
@@ -4933,7 +4935,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Espírito incorpóreo de um guerreiro humano de 5º nível, com a aparência enevoada e translúcida de um soldado ou guarda usando armadura pesada e escudo. Como outros fantasmas, permanece ligado a uma existência interrompida e pode continuar assombrando o local onde morreu até que a causa de sua inquietação seja resolvida.",
+    "combat": "Voa com manobrabilidade perfeita e alterna entre o Plano Etéreo e a manifestação no Plano Material. Seu toque incorpóreo atinge criaturas vivas; quando manifestado, também pode recorrer à espada bastarda ou ao arco curto obra-prima. O exemplo apresentado possui toque da corrupção e possessão: pode tentar ocupar o corpo de uma criatura material, que resiste com Vontade (CD 15 + modificador de Carisma). A manifestação permite interagir com o mundo material, enquanto sua natureza incorpórea e a restauração tornam difícil destruí-lo permanentemente. Se for destruído, pode se restaurar após 2d4 dias; a solução definitiva normalmente exige descobrir e corrigir a razão de sua existência."
   },
   {
     "id": "fera-do-caos",
@@ -4983,7 +4987,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Extraplanar do Limbo cuja forma se transforma continuamente, assumindo configurações monstruosas de garras, presas, tentáculos, olhos e bocas. Sua aparência e tamanho são instáveis, e a criatura não fala. O toque provoca uma mutação terrível capaz de dissolver seres vivos numa massa amorfa.",
+    "combat": "Ataca com duas garras; apesar das formas variadas, não consegue realizar mais de dois ataques por rodada. Cada golpe pode provocar Instabilidade Corpórea: a vítima viva deve passar em Fortitude (CD 15) ou perder sua forma, ficando incapaz de usar itens e sofrendo penalidades severas de mobilidade e Destreza. Enquanto permanecer amorfa, perde 1 ponto permanente de Sabedoria por rodada; ao chegar a Sabedoria 0, transforma-se em fera do caos. A vítima pode tentar recuperar a forma com uma ação padrão e teste de Carisma (CD 15). A criatura é imune a sucessos decisivos e metamorfose, e possui Resistência à Magia 15."
   },
   {
     "id": "fogofatuo",
@@ -5033,7 +5039,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Esfera luminosa de matéria esponjosa, encontrada sobretudo em pântanos e charcos. Sua luz pode ser confundida com uma lanterna ou lampião na neblina. Alimenta-se das emoções intensas ligadas ao pânico, horror e morte, atraindo viajantes para perigos antes de absorver as emanações resultantes. Comunica-se por vibrações no ar, produzindo uma voz fantasmagórica.",
+    "combat": "Prefere confundir e desorientar aventureiros, conduzindo-os a situações perigosas, e evita o confronto sempre que possível. Quando forçado a lutar, desfere um choque elétrico por toque, causando 2d8 pontos de dano por eletricidade. É imune à maioria das magias e habilidades similares à magia sujeitas à Resistência à Magia, com exceção de mísseis mágicos e labirinto. Quando surpreendido ou assustado, pode apagar o próprio brilho e ficar invisível, como pela magia invisibilidade. Seu voo possui manobrabilidade perfeita."
   },
   {
     "id": "fungo-fantasma",
@@ -5083,7 +5091,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Predador vegetal subterrâneo, de corpo marrom-esverdeado, quatro patas grossas e uma massa central coberta por nódulos sensoriais. Possui uma boca repleta de dentes calcificados. É naturalmente invisível enquanto vive, desloca-se quase em silêncio e costuma espreitar criaturas isoladas.",
+    "combat": "Ataca com uma mordida. Sua Invisibilidade Maior é constante e permanece ativa mesmo durante ataques; equivale à magia invisibilidade maior, não é anulada por purgar invisibilidade e só termina quando a criatura morre. Um minuto após a morte, o fungo torna-se visível. Recebe +5 de bônus racial em Furtividade, o que favorece aproximações silenciosas e emboscadas."
   },
   {
     "id": "gargula",
@@ -5133,7 +5143,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Humanoide monstruoso alado, grotesco, de pele rochosa e chifres. Assemelha-se a uma estátua de pedra e pode permanecer imóvel por longos períodos para surpreender suas vítimas. É um predador cruel que aprecia torturar criaturas mais fracas e, embora não necessite de alimento, água ou ar, às vezes devora partes de inimigos derrotados por perversidade.",
+    "combat": "Costuma esperar imóvel e atacar de surpresa ou mergulhar voando sobre a presa. Sua habilidade Imobilidade permite parecer uma estátua: é necessário obter sucesso em Observar (CD 20) para perceber que está viva. No combate corpo a corpo, utiliza duas garras, mordida e chifres. A redução de dano 10/mágica e a capacidade de voo tornam-na perigosa tanto em emboscadas quanto em ataques a partir do ar. Recebe bônus raciais em Esconder-se, Ouvir e Observar; o bônus de Esconder-se aumenta quando se camufla contra rocha."
   },
   {
     "id": "djinni",
