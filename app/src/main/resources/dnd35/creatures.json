@@ -7743,7 +7743,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "O pégaso é um cavalo alado magnífico, com duas grandes asas cobertas de penas; tanto sua pelagem quanto suas asas são completamente brancas. Embora às vezes sirva às causas do bem e seja muito valorizado como montaria voadora, é uma criatura selvagem, tímida e difícil de domesticar.",
+    "combat": "Ataca com os cascos afiados e a mordida. Casais e rebanhos lutam em conjunto e até a morte para defender seus ovos e filhotes. Habilidades Similares à Magia: à vontade — detectar o bem e detectar o mal em um raio de 18 m; nível de conjurador 5º. Perícias: recebe +4 de bônus racial em testes de Ouvir e Observar. Treinamento e montaria: para ser treinado, deve ter atitude amigável em relação ao amestrador, que pode obtê-la com um teste de Diplomacia. O treinamento exige seis semanas e sucesso em Adestrar Animais (CD 25); para cavalgá-lo, é necessária uma sela exótica. Pode lutar enquanto transporta um cavaleiro, mas este só pode atacar se obtiver sucesso em um teste de Cavalgar."
   },
   {
     "id": "pseudodragao",

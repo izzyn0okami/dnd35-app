@@ -525,4 +525,18 @@ class CreatureCatalogTest {
         assertTrue(roc.combat.contains("+4 de bônus racial"))
     }
 
+
+    @Test
+    fun pegasusHasBookBasedDescriptionAndCombatRules() {
+        val pegasus = CreatureCatalog.byId("pegaso")!!
+        assertTrue(pegasus.description.contains("duas grandes asas"))
+        assertTrue(pegasus.description.contains("difícil de domesticar"))
+        assertTrue(pegasus.combat.contains("detectar o bem e detectar o mal"))
+        assertTrue(pegasus.combat.contains("nível de conjurador 5º"))
+        assertTrue(pegasus.combat.contains("Adestrar Animais (CD 25)"))
+        assertTrue(pegasus.combat.contains("sela exótica"))
+        assertTrue(pegasus.combat.contains("Ouvir e Observar"))
+        assertEquals("3", pegasus.challengeRating)
+    }
+
 }

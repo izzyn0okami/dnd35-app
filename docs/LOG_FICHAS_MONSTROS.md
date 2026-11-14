@@ -740,3 +740,13 @@ As fichas-base devem ser reutilizadas por ID sempre que a tabela pedir apenas um
 - Combate resume os ataques aéreos, captura e transporte de presas, comportamento solitário e defesa coletiva do ninho, além do bônus racial em Observar.
 - Adicionado teste de regressão para dimensões, caça, defesa do ninho e perícia.
 - Contagem após esta etapa: 319 fichas; 201 com Descrição e Combate; 118 pendentes.
+
+
+## 2026-11-14 — Vigésima sétima etapa: Pégaso
+
+- Conferido o verbete do Pégaso no Livro dos Monstros brasileiro, p. 215–216 (PDF, p. 219–220).
+- Preenchidos Descrição e Combate no registro existente; estatísticas, ND, organização e marcações de vínculo/invocação foram preservados.
+- Descrição registra a aparência de cavalo alado branco, sua associação ocasional às causas do bem e seu temperamento selvagem, tímido e difícil de domesticar.
+- Combate registra cascos e mordida, defesa cooperativa de ovos e filhotes, detectar o bem/mal à vontade (18 m; nível de conjurador 5º), bônus raciais em Ouvir/Observar e as regras de treinamento e montaria (Diplomacia, seis semanas, Adestrar Animais CD 25 e sela exótica).
+- Adicionado teste de regressão para os elementos distintivos do verbete e preservação do ND.
+- Contagem após esta etapa: 319 fichas; 202 com Descrição e Combate; 117 pendentes.
