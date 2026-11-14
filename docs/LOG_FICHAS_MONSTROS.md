@@ -407,3 +407,14 @@ As fichas-base devem ser reutilizadas por ID sempre que a tabela pedir apenas um
 - **Lêmure:** ficha adicionada com estatísticas conferidas no Livro dos Monstros brasileiro, p. 70; incluído em Invocar Criaturas II. A descrição e o resumo de combate foram redigidos de forma concisa a partir do verbete, sem copiar extensos trechos.
 - **Imagens:** nenhuma imagem foi gerada ou associada nesta etapa. A regra visual passa a ser explícita: gerar/associar arte somente quando a ficha realmente não tiver imagem; preservar imagens já existentes. Não usar arte vetorial.
 - **Pendências:** as demais criaturas listadas no registro de auditoria anterior ainda exigem extração e conferência individual dos blocos de estatísticas antes de entrar no catálogo. Não criar placeholders nem inferir valores.
+
+
+## 2026-11-14 — Expansão das fichas de invocação: Gaviões-Seta, Tojanidas e Salamandras
+
+- Foram adicionadas fichas completas para as três idades do Gavião-Seta (adolescente/jovem, adulto e ancião), com estatísticas da tabela do Livro dos Monstros, pp. 132–133.
+- Foram adicionadas fichas completas para Tojanida Jovem, Tojanida Adulto e Tojanida Ancião, Livro dos Monstros, p. 241.
+- Foram adicionadas fichas para Irmão das Chamas (Salamandra), Salamandra e Salamandra Nobre, Livro dos Monstros, p. 227. Mantida a nomenclatura do bestiário para a primeira forma.
+- As entradas foram vinculadas às listas de Invocar Aliado da Natureza nos círculos correspondentes do Livro do Jogador: Gavião-Seta Jovem (4º), Adulto (5º), Ancião (7º); Tojanida Jovem (4º), Adulto (5º), Ancião (8º); Irmão das Chamas (4º), Salamandra (6º), Salamandra Nobre (8º).
+- O Unicórnio já possui registro no catálogo com ID `unicorno`; foi apenas vinculado ao círculo 4, sem duplicação. O ID `unicorno` deve ser conferido na execução dos testes para garantir que exista no branch.
+- A entrada da Tojanida Adulto também foi incluída no círculo 6 porque a tabela de Invocar Aliado da Natureza V lista a Tojanida Adulta; sua disponibilidade em círculos superiores é automática.
+- Nenhuma arte foi gerada ou substituída. As fichas que não possuem arte serão identificadas em auditoria própria para futura geração rasterizada; imagens existentes serão preservadas.
