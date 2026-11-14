@@ -595,3 +595,12 @@ As fichas-base devem ser reutilizadas por ID sempre que a tabela pedir apenas um
 - Foram destacados: Maestria Aérea, Vendaval e variante nobre do Djinni; Alterar Tamanho, dano adicional de fogo e habilidades similares à magia do Efreeti; e Alterar Tamanho, invisibilidade, passeio etéreo e Tolerância aos Elementos do Janni.
 - Nenhuma estatística mecânica foi alterada. Teste de regressão cobre as três fichas e habilidades distintivas.
 - Situação após esta etapa: 313 fichas no catálogo; 149 possuem descrição e resumo de combate; 164 ainda precisam de ao menos um desses campos.
+
+
+## 2026-11-14 — Décima terceira etapa: gigantes das nuvens, do fogo e de pedra
+
+- Preenchidas descrição e síntese de combate de 3 fichas: Gigante das Nuvens, Gigante do Fogo e Gigante de Pedra.
+- Fonte primária: Livro dos Monstros 3.5 em português, páginas impressas 136–137 e 140. Foram preservadas as diferenças culturais, ambientais e táticas entre as três variedades.
+- O resumo do Gigante das Nuvens destaca combate organizado em altitude, arremesso de rochas a 42 m e habilidades de névoa/levitação; o Gigante do Fogo, rochas aquecidas com dano adicional de fogo e imunidade ao fogo com vulnerabilidade ao frio; o Gigante de Pedra, camuflagem rochosa, emboscada, arremesso e captura de rochas.
+- Nenhuma estatística mecânica foi alterada. Teste de regressão cobre as três fichas e seus elementos distintivos.
+- Situação após esta etapa: 313 fichas no catálogo; 152 possuem descrição e resumo de combate; 161 ainda precisam de ao menos um desses campos.
