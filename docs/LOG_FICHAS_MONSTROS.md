@@ -528,3 +528,13 @@ As fichas-base devem ser reutilizadas por ID sempre que a tabela pedir apenas um
 - Removidos resíduos de extração anexados ao final dos talentos da Marilith; a lista foi mantida conforme o bloco impresso. Corrigida a pontuação da perícia Concentração e a grafia de “Lutar às Cegas” no Derro.
 - Os dados não envolvidos nessas correções foram preservados. Teste de regressão adicionado para as dez fichas, incluindo a CA do Quasit e os campos contaminados.
 - Situação após esta etapa: 313 fichas no catálogo; 107 possuem descrição e resumo de combate; 206 ainda precisam de ao menos um desses campos.
+
+
+## 2026-11-14 — Sexta etapa: baatezu, predadores e dinossauro
+
+- Preenchidas descrição e síntese de combate de 10 fichas: Diabo das Correntes (Kyton), Diabo Farpado (Hamatula), Diabo dos Ossos (Osyluth), Diabrete, Erinyes, Gato Infernal (Bezekira), Lorde das Profundezas, Digestor, Dilacerador Cinzento e Dinonico.
+- Fonte primária: Livro dos Monstros 3.5 em português, páginas impressas 65–73. As sínteses preservam a ecologia, aparência, comportamento e táticas descritas nos verbetes.
+- Para o Dilacerador Cinzento, foi mantida a particularidade central do texto: apesar de predador selvagem, pode adotar e proteger criaturas de outras espécies, sem feri-las voluntariamente.
+- Para o Dinonico, a descrição de combate registra o bote e a capacidade de executar um ataque total após a investida, conforme o verbete.
+- Nenhum valor mecânico foi alterado nesta etapa. Teste de regressão adicionado para as dez fichas.
+- Situação após esta etapa: 313 fichas no catálogo; 117 possuem descrição e resumo de combate; 196 ainda precisam de ao menos um desses campos.
