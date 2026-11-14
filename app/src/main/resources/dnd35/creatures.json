@@ -6235,7 +6235,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Pequeno humanoide reptiliano, com pele escamosa, cauda semelhante à de um rato, cabeça canídea e dois pequenos chifres. Os kobolds são covardes, cruéis e desconfiados, vivendo em minas, áreas subterrâneas e florestas densas. Fortificam seus refúgios com armadilhas e mecanismos de alerta e costumam atacar invasores em grupos.",
+    "combat": "O combatente apresentado usa lança no corpo a corpo ou funda à distância. Kobolds preferem uma vantagem numérica de pelo menos dois para um e recuam quando essa superioridade desaparece, exceto contra gnomos, que atacam mesmo sem vantagem. Começam arremessando munição de funda e só se aproximam quando o inimigo está enfraquecido. Procuram conduzir adversários para armadilhas, onde aliados podem despejar óleo fervente, pedras ou insetos venenosos. Sofrem ofuscamento sob luz solar intensa ou luz do dia."
   },
   {
     "id": "kraken",
@@ -6285,7 +6287,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Besta mágica colossal semelhante a uma lula gigantesca, com corpo musculoso de cerca de 9 m e oito tentáculos. Seis tentáculos são braços mais curtos; os outros dois, mais longos, possuem farpas afiadas. Vive nas profundezas oceânicas, onde domina regiões inteiras e mantém cavernas com bolsas de ar para aprisionar humanoides como servos e alimento. É inteligente, agressivo e fala Comum e Aquan.",
+    "combat": "Ataca com os dois tentáculos longos, seis braços e mordida. Ao acertar com tentáculo ou braço, pode iniciar Agarrar Aprimorado como ação livre e usar Constrição para esmagar a vítima. Pode lançar-se para trás em linha reta por até 84 m sem provocar ataques de oportunidade. Também expulsa uma nuvem de tinta de 24 m de dispersão, que concede camuflagem total e escuridão às criaturas em seu interior, geralmente para escapar de uma batalha desfavorável. Os tentáculos e braços podem ser separados como armas; membros perdidos regeneram-se em 1d10+10 dias."
   },
   {
     "id": "lagarto-eletrico",
@@ -6385,7 +6389,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Besta mágica nobre com corpo marrom e dourado de leão, asas de águia gigante e rosto humano. Vive em ruínas ou templos antigos e remotos, dedicando-se à meditação e ao combate contra a influência do mal. Recebe cordialmente criaturas bondosas e oferece ajuda contra ameaças malignas, mas ataca seres malignos assim que os encontra.",
+    "combat": "Suas garras são consideradas mágicas para superar Redução de Dano. Pode investir e realizar um ataque total na mesma rodada, incluindo Rasgar. Possui um sopro em cone de 9 m, uma vez por dia, que causa 6d8 pontos de dano por fogo (Reflexos CD 21 reduz à metade). Mantém continuamente um círculo mágico contra o mal num raio de 6 m e pode usar invisibilidade maior duas vezes por dia e porta dimensional uma vez por dia. Também conjura magias divinas de clérigo, incluindo opções dos domínios Bem e Cura."
   },
   {
     "id": "protetor-dourado-lammasu-meiodragao-celestial",
@@ -6435,7 +6441,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Dragão meio-dragão celestial, filho de um lammasu celestial com um dragão dourado. Viaja ao Plano Material para combater o mal diretamente. Conserva a aparência leonina e alada de sua linhagem lammasu, combinada às características dracônicas e celestiais.",
+    "combat": "Combina ataques de garra e mordida com investida e Rasgar. Seu sopro é um cone de 9 m que causa 6d8 pontos de dano por fogo, uma vez por dia; também pode destruir o mal uma vez por dia, acrescentando 10 pontos de dano a um ataque corporal contra uma criatura maligna. Possui círculo mágico contra o mal, magias preparadas de clérigo e habilidades similares à magia, além de imunidade a fogo, sono e paralisia, resistências elementais e Resistência à Magia 15. As armas naturais do lammasu e as magias preparadas são descritas na ficha específica do livro."
   },
   {
     "id": "leao-marinho",
@@ -6485,7 +6493,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Besta mágica aquática que lembra um leão robusto, adaptado à vida nas águas costeiras rasas. É um predador territorial e agressivo, que caça para se alimentar e ataca intrusos sem hesitação. Pode formar bandos temporários quando precisa enfrentar ameaças particularmente resistentes ou perigosas.",
+    "combat": "Ataca com duas garras e mordida, procurando prender e dilacerar a presa. Se atingir o mesmo oponente com as duas garras, usa Dilacerar e causa automaticamente 2d6+6 pontos de dano. Luta com coragem extrema, mesmo contra criaturas muito maiores, e casais ou bandos coordenam seus ataques para desgastar a vítima. Pode prender a respiração por um número de rodadas igual a seis vezes seu valor de Constituição. Recebe +8 racial em Natação para ações especiais e para evitar perigos, podendo escolher 10 mesmo sob ameaça."
   },
   {
     "id": "lich",
