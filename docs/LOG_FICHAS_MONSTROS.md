@@ -640,3 +640,12 @@ As fichas-base devem ser reutilizadas por ID sempre que a tabela pedir apenas um
 - Destaques: armadilhas e táticas de grupo dos kobolds; tentáculos, constrição, propulsão e nuvem de tinta do kraken; sopro, círculo mágico e magias do lammasu; sopro e Destruir o Mal do Protetor Dourado; e Dilacerar e natação do leão-marinho.
 - Nenhuma estatística mecânica foi alterada. Teste de regressão cobre as cinco fichas e suas capacidades distintivas.
 - Situação após esta etapa: 313 fichas no catálogo; 171 possuem descrição e resumo de combate; 142 ainda precisam de ao menos um desses campos.
+
+
+## 2026-11-14 — Décima oitava etapa: lich, lillend, limo cinzento e habitantes das regiões frias e costeiras
+
+- Preenchidas descrição e síntese de combate de 5 fichas: Lich, Lillend, Limo Cinzento, Lobo das Estepes e Locathah.
+- Fonte primária: Livro dos Monstros 3.5 em português, páginas impressas 183–188. Os resumos distinguem as habilidades de modelo do lich das capacidades próprias das demais criaturas.
+- Destaques: aura de medo, toque paralisante e filactéria do lich; arte, magias e constrição da lillend; ácido, agarrar e transparência do limo cinzento; sopro congelante, mordida e imobilização do lobo das estepes; e táticas de besta e lança e natação dos locathah.
+- Nenhuma estatística mecânica foi alterada. Teste de regressão cobre as cinco fichas e suas capacidades distintivas.
+- Situação após esta etapa: 313 fichas no catálogo; 176 possuem descrição e resumo de combate; 137 ainda precisam de ao menos um desses campos.
