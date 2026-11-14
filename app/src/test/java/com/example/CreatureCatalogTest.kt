@@ -220,4 +220,18 @@ class CreatureCatalogTest {
         }
     }
 
+
+    @Test
+    fun dinosaurEntriesHaveNarrativeAndCombatSummaries() {
+        listOf("elasmossauro", "megaraptor", "tiranossauro", "triceratops").forEach { id ->
+            val creature = CreatureCatalog.byId(id)!!
+            assertTrue("$id sem descrição", creature.description.isNotBlank())
+            assertTrue("$id sem resumo de combate", creature.combat.isNotBlank())
+        }
+        assertTrue(CreatureCatalog.byId("elasmossauro")!!.combat.contains("Esconder-se"))
+        assertTrue(CreatureCatalog.byId("megaraptor")!!.combat.contains("Bote"))
+        assertTrue(CreatureCatalog.byId("tiranossauro")!!.combat.contains("Engolir"))
+        assertTrue(CreatureCatalog.byId("triceratops")!!.combat.contains("4d8+20"))
+    }
+
 }
