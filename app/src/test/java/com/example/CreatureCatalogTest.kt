@@ -234,4 +234,21 @@ class CreatureCatalogTest {
         assertTrue(CreatureCatalog.byId("triceratops")!!.combat.contains("4d8+20"))
     }
 
+
+    @Test
+    fun shapechangersFeyAndEladrinHaveNarrativeAndCombatSummaries() {
+        listOf("doppelganger", "dragonado", "driade", "drider", "bralani", "ghaele", "ente").forEach { id ->
+            val creature = CreatureCatalog.byId(id)!!
+            assertTrue("$id sem descrição", creature.description.isNotBlank())
+            assertTrue("$id sem resumo de combate", creature.combat.isNotBlank())
+        }
+        assertTrue(CreatureCatalog.byId("doppelganger")!!.combat.contains("Detectar Pensamentos"))
+        assertTrue(CreatureCatalog.byId("dragonado")!!.combat.contains("Rugido"))
+        assertTrue(CreatureCatalog.byId("driade")!!.combat.contains("Simbiose"))
+        assertTrue(CreatureCatalog.byId("drider")!!.combat.contains("Veneno"))
+        assertTrue(CreatureCatalog.byId("bralani")!!.combat.contains("Rajada Turbilhão"))
+        assertTrue(CreatureCatalog.byId("ghaele")!!.combat.contains("Ataque Visual"))
+        assertTrue(CreatureCatalog.byId("ente")!!.combat.contains("Animar Árvores"))
+    }
+
 }
