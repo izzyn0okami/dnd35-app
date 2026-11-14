@@ -8471,7 +8471,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "O stirge é uma criatura semelhante a um cruzamento entre morcego e mosquito gigante. Possui asas membranosas, corpo alongado, oito patas articuladas com pinças afiadas e um bico em forma de agulha. Sua coloração varia do vermelho-ferrugem ao marrom-avermelhado, com ventre amarelado; o bico é rosado na ponta e cinzento próximo à base. Mede cerca de 30 cm, tem envergadura de até 60 cm e pesa aproximadamente  meio quilo. Um indivíduo isolado representa pouco perigo, mas grupos numerosos podem ameaçar aventureiros.",
+    "combat": "O stirge pousa sobre a vítima em um ponto vulnerável e injeta o bico-agulha por meio de um ataque de toque, que afeta criaturas Pequenas ou maiores. Adesão (Ext): ao acertar o ataque de toque, prende-se ao corpo com as oito patas; enquanto aderido, sua CA passa a 12 e ele perde o bônus de Destreza. Recebe +12 de bônus racial nos testes de Agarrar para permanecer preso. Pode ser removido por uma manobra Agarrar resistida bem-sucedida; também pode ser agarrado ou atingido por uma arma. Drenar Sangue (Ext): causa 1d4 pontos de dano temporário de Constituição por rodada em que permanecer aderido. Depois de absorver 4 pontos de Constituição, solta a vítima e se afasta para digerir o sangue; se a vítima morrer antes, procura outra."
   },
   {
     "id": "tarrasque",
@@ -8521,7 +8523,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "O lendário tarrasque é uma besta mágica colossal, bípede e escamosa, tão alta quanto um edifício de cinco andares. Move-se inclinada para a frente, como uma ave de rapina, equilibrando-se com uma cauda poderosa e articulada. A cabeça possui dois chifres e a carapaça é reflexiva. Há apenas um exemplar conhecido. Seu covil é desconhecido e passa a maior parte do tempo em hibernação: normalmente dorme por 6d4 meses e desperta para caçar por 1d3 dias; em períodos raros, pode permanecer ativo por 1d2 semanas antes de hibernar por anos. Quando desperto, devora tudo em seu caminho, incluindo vegetação, animais, humanoides e cidades.",
+    "combat": "O tarrasque é uma força de destruição quase imparável. Presença Aterradora (Sob): ao atacar, normalmente ou em Investida, força criaturas a até 18 m a realizar Vontade CD 36 ou ficar abalhadas enquanto permanecerem no alcance. Agarrar Aprimorado (Ext): após acertar com a mordida uma criatura Enorme ou menor, inicia Agarrar como ação livre sem provocar ataques de oportunidade; se prender a vítima, pode tentar engoli-la na rodada seguinte. Investir (Ext): uma vez por minuto, pode percorrer 45 m apesar de seu deslocamento normal reduzido. Engolir (Ext): após um teste de Agarrar bem-sucedido contra criatura presa de tamanho Enorme ou menor, causa 2d8+8 pontos de dano por esmagamento e 2d8+6 pontos de dano por ácido a cada rodada. A vítima pode abrir caminho para sair causando 50 pontos de dano ao sistema digestivo (CA 25). A carapaça (Ext) reflete magias de raios, linhas, cones e mísseis mágicos: há 30% de chance de ricochetearem contra o conjurador; caso contrário, são neutralizados, antes de aplicar a Resistência à Magia. Regeneração (Ext): nenhum ataque causa dano normal; fogo, veneno, doenças, drenar energia e dano de habilidade não o afetam. Para matá-lo definitivamente, é preciso acumular dano por contusão igual aos PV máximos +10 (868 PV) e então usar desejo ou milagre. Membros perdidos regeneram em 1d6 minutos ou podem ser recolocados instantaneamente. Recebe +8 racial em Ouvir e Observar."
   },
   {
     "id": "tartarugadragao",
@@ -8571,7 +8575,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "A tartaruga-dragão é um dragão aquático enorme, com casco hidrodinâmico coberto por saliências afiadas, pescoço comprido, cabeça com crista e mandíbulas poderosas, nadadeiras dotadas de garras e cauda longa. Seu casco verde-áspero se confunde com as águas profundas; linhas prateadas parecem reflexos de luz. A cabeça, as patas e a cauda são de um verde mais claro com reflexos amarelados. Um adulto mede de 8 a 9 m do focinho à cauda, possui casco de 4,5 a 7,5 m de diâmetro e pesa de 4 a 32 toneladas. Fala Aquan, Dracônico e Comum.",
+    "combat": "As tartarugas-dragão são ferozes e atacam criaturas que ameacem seu território ou pareçam alimento. Sopro (Sob): expele uma nuvem de vapor superaquecido com 6 m de altura, 7,5 m de largura e 15 m de comprimento a cada 1d4 rodadas; causa 12d6 pontos de dano por fogo, Reflexos CD 21 para reduzir à metade, funcionando dentro e fora d’água. Naufragar (Ext): submersa, pode emergir sob uma embarcação e virá-la; embarcações menores que 6 m têm 95% de chance de naufragar, as de 6 a 18 m têm 50% e as maiores têm 20%. Recebe +8 racial em Natação para ações especiais e evitar perigos e pode escolher 10 mesmo distraída ou ameaçada; pode correr durante a natação em linha reta. Recebe +8 racial em Esconder-se quando submersa."
   },
   {
     "id": "tendriculo",
@@ -8621,7 +8627,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "O tendrículo é uma planta Enorme que parece um amontoado de vegetação sustentado por vinhas e cipós. Sua massa vegetal apresenta uma abertura semelhante a uma boca, repleta de espinhos longos e farpas afiadas. Pode suspender-se até 4,5 m de altura e pesa cerca de 3,5 toneladas. Pode ter sido alterado por magias malignas ou ter se originado em outro plano. Folhas, galhos e vinhas regeneram-se em poucos minutos; para sustentar essa capacidade, precisa consumir enormes quantidades de carne. Animais, bestas e plantas animadas evitam sua presença e a área onde esteve nas últimas 24 horas.",
+    "combat": "O tendrículo ronda florestas profundas ou espera camuflado em áreas verdes, atacando com selvageria e tentando engolir o máximo de carne possível. Agarrar Aprimorado (Ext): após atingir com a mordida uma criatura pelo menos uma categoria de tamanho menor, inicia Agarrar como ação livre sem provocar ataques de oportunidade. Paralisia/Engolir (Ext): a vítima engolida deve obter sucesso em Fortitude CD 20 ou ficará paralisada por 3d6 rodadas pelo suco digestivo, sofrendo também 2d6 pontos de dano por ácido a cada rodada; repete o teste a cada rodada. Uma vítima que evite a paralisia pode tentar escalar a massa corporal e escapar por um novo teste resistido de Agarrar, ou abrir caminho com armas leves cortantes ou perfurantes, causando 25 pontos de dano ao interior da planta (CA 14). O interior comporta 2 criaturas Grandes, 8 Médias, 32 Pequenas, 128 Miúdas ou 512 Mínimas. Regeneração (Ext): armas de concussão e ácido causam dano normal; partes perdidas regeneram em 1d6 minutos ou podem ser recolocadas instantaneamente."
   },
   {
     "id": "thoqqua",
@@ -8671,7 +8679,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "O thoqqua é um elemental Médio semelhante a um verme segmentado, cujo corpo emite brilho laranja e branco como metal incandescente. É quente o bastante para derreter rocha sólida. Mede de 1 a 1,5 m de comprimento, tem cerca de 30 cm de diâmetro e pesa aproximadamente 100 kg. É irritadiço e tem temperamento terrível. Nativo do Plano Elemental do Fogo, também pode ser encontrado no Plano Elemental da Terra; passa boa parte do tempo escavando rochas em busca de minerais.",
+    "combat": "Quando perturbado, o thoqqua ataca imediatamente. Sua tática favorita é avançar diretamente contra os oponentes, atravessando rocha ou encolhendo o corpo e saltando como uma mola; trate o ataque como Investida, sem exigir que percorra 3 m antes. Calor (Ext): simplesmente tocar ou ser tocado pelo thoqqua causa automaticamente 2d6 pontos de dano por fogo. Incendiar (Ext): qualquer criatura atingida por sua pancada deve obter sucesso em Reflexos CD 12 ou pegar fogo; as chamas duram 1d4 rodadas, podendo ser apagadas com uma ação de rodada completa. A CD é baseada em Constituição."
   },
   {
     "id": "tita",
@@ -8721,7 +8731,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "O titã é um extra-planar Enorme, semelhante a um humano de proporções heroicas, extremamente belo e de compleição física perfeita. Mede cerca de 7,5 m e pesa aproximadamente 14 toneladas. Muitos vêm do plano de Arbórea. São seres de mente aguçada e corpo poderoso, selvagens e caóticos, que celebram a própria existência e se entregam intensamente às emoções. Muitos defendem o bem, mas uma antiga rebelião contra os deuses fez surgir titãs malignos, tiranos capazes de dominar reinos mortais. Falam Comum, Celestial, Dracônico, Gigante e Abissal.",
+    "combat": "O titã combate com um martelo de guerra gigantesco, mas também possui amplos poderes mágicos e grande velocidade. Suas armas naturais e quaisquer armas que utilize são consideradas anárquicas para superar Redução de Dano. Arma Gigante (Ext): empunha um martelo de guerra Imenso, grande o bastante para criaturas Imensas, com as duas mãos e sem penalidade. Habilidades Similares à Magia: à vontade — corrente de relâmpagos, enfeitiçar monstro, imagem persistente, invisibilidade, levitação, metamorfose limitada a formas humanoides, purgar invisibilidade, curar ferimentos críticos, dissipar magia maior, imobilizar monstro e tempestade de fogo; 3/dia — forma etérea, invocar aliado da natureza IX e palavra do caos; 1/dia — chuva de meteoros, labirinto e portal. Nível de conjurador 20º; CDs baseadas em Carisma. Titãs bondosos e neutros também podem usar destruição sagrada, luz do dia e remover maldição à vontade, além de restauração maior 1/dia. Titãs malignos possuem habilidades adicionais próprias."
   },
   {
     "id": "tritao",
@@ -8771,7 +8783,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "O tritão é um humanoide aquático de tamanho aproximado ao de um ser humano, com tronco, cabeça e braços humanoides e cauda de peixe no lugar das pernas. Sua pele é prateada, tornando-se azul-clara na parte inferior e coberta por escamas; os cabelos são azul-escuros ou azul-esverdeados. Vive em mares de águas preferencialmente quentes, embora tolere temperaturas mais baixas. Forma comunidades em castelos submersos de pedra e coral ou em cavernas esculpidas. Caça apenas o necessário e desconfia dos habitantes da superfície; costuma capturar invasores e abandoná-los longe da costa. É inimigo natural dos sahuagin. Fala Comum e Aquan.",
+    "combat": "Os tritões defendem suas comunidades, mas em geral evitam envolver-se com habitantes da superfície. Em combate utilizam tridentes e bestas pesadas. Habilidades Similares à Magia: 1/dia — invocar aliado da natureza IV, normalmente escolhendo elementais da água. Nível de conjurador 7º. A ficha também descreve sua capacidade de convocar um aliado natural aquático; preservar as estatísticas e os demais ataques já registrados no bloco."
   },
   {
     "id": "troglodita",
@@ -8821,7 +8835,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "O troglodita é um réptil humanoide de tamanho Médio, pouco menor que um ser humano, com braços finos e musculosos, postura ereta sobre duas pernas achatadas, cauda longa e segmentada, cabeça de lagarto e crista que se estende da testa à base do pescoço. Seus olhos são negros. Mede cerca de 1,70 m e pesa aproximadamente 75 kg. É agressivo, carnívoro e aprecia especialmente a carne de humanoides. Tribos trogloditas atacam assentamentos e caravanas em regiões quentes, defendendo ferozmente seus covis. Fala Dracônico e adora Laogzed.",
+    "combat": "Trogloditas combinam emboscadas e ataques à distância: metade do grupo costuma lutar com garras e presas, enquanto os demais usam azagaias e clavas; tentam ocultar-se, lançar uma saraivada de azagaias e então aproximar-se. Quando a luta se torna desfavorável, recuam e escondem-se. Mau-Cheiro (Ext): quando assustado ou furioso, secreta uma substância oleosa e desagradável. Criaturas vivas (exceto trogloditas) num raio de 9 m devem obter sucesso em Fortitude CD 13 ou ficar enjoadas por 10 rodadas. Depois de ser afetada ou resistir ao odor de um troglodita, a criatura fica imune ao odor daquele mesmo indivíduo por 2 horas. Retardar envenenamento ou neutralizar veneno remove a condição; criaturas imunes a veneno não são afetadas."
   },
   {
     "id": "uivante",
