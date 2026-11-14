@@ -1087,7 +1087,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Metamorfo aracnídeo inteligente, de aparência semelhante à de uma aranha monstruosa Média. Possui uma protuberância torácica pouco maior que um torso humano, onde fica seu cérebro, e dois pequenos braços humanoides sob as mandíbulas. Pesa cerca de 75 kg e pode assumir uma forma humanoide específica ou uma forma híbrida humanoide-aracnídea. Fala Comum e Silvestre.",
+    "combat": "Evita o confronto físico e prefere usar teias e magias, tentando imobilizar ou distrair primeiro os adversários mais perigosos. Pode capturar inimigos para exigir resgate. A mordida injeta veneno que causa dano temporário à Força. A teia, utilizável seis vezes por dia, prende criaturas Grandes ou menores; pode ser rompida por força ou escapada com Arte da Fuga e é especialmente vulnerável ao fogo. Na forma humanoide não pode usar mordida, teia ou veneno; na forma híbrida conserva esses recursos e pode empunhar armas e usar armaduras. Conjura como feiticeira e prefere ilusões e encantamentos."
   },
   {
     "id": "aranha-interplanar",
@@ -1137,7 +1139,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Aranha monstruosa de aproximadamente 2,5 m de comprimento e 350 kg, com cabeça grande e marcas multicoloridas brancas, cinzentas e pretas nas patas e no dorso. Seus oito olhos são brancos e prateados. É uma predadora agressiva que se desloca entre os planos Material e Etéreo para surpreender suas presas. Não fala.",
+    "combat": "Caça no Plano Material, mas, ao localizar uma presa, passa ao Plano Etéreo para preparar o ataque. Surge no Material para morder e recua rapidamente ao Etéreo, evitando a retaliação. Sua picada injeta veneno que causa dano temporário à Constituição. O passo etéreo permite alternar entre os planos: a passagem do Etéreo para o Material é uma ação livre, enquanto o retorno exige uma ação de movimento."
   },
   {
     "id": "arbusto-errante",
@@ -1187,7 +1191,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Planta carnívora inteligente que parece um amontoado de vegetação apodrecida, folhas e vinhas em forma humanoide. Seu corpo lembra um barril, os tentáculos parecem cipós e as pernas são semelhantes a raízes; não possui cabeça aparente, pois o cérebro e os órgãos sensoriais ficam no tórax. Mede cerca de 2,4 m de diâmetro e 1,8 m de altura, pesando aproximadamente duas toneladas. Move-se silenciosamente em pântanos e pode ficar parcialmente submerso à espera de presas.",
+    "combat": "Aproveita a camuflagem natural e o silêncio para surpreender criaturas que atravessem seu território. Ataca esmagando com dois grandes apêndices; se acertar ambos os golpes no mesmo oponente, pode iniciar um agarrar aprimorado como ação livre, sem provocar ataques de oportunidade. Depois de prender a vítima, usa constrição para causar dano. É imune à eletricidade e consegue mover-se pela água com facilidade."
   },
   {
     "id": "arconte-luminar",
@@ -1237,7 +1243,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Pequeno celestial que se manifesta como uma esfera flutuante de luz brilhante, semelhante à chama de uma tocha. Seu brilho só se extingue quando a criatura é destruída, embora ela possa tentar disfarçá-lo. É amistoso, possui voz musical e suave e procura ajudar outras criaturas, mas seu corpo gasoso é frágil demais para prestar auxílio físico.",
+    "combat": "Evita o combate corporal. Aproxima-se o bastante para envolver os inimigos com sua aura de ameaça e então dispara raios de luz à distância, concentrando os ataques em um único alvo para reduzir rapidamente o número de adversários. Seus raios têm alcance de 10 m e ignoram qualquer redução de dano. Como os demais arcontes, evita ferir criaturas sempre que possível e prefere recursos inofensivos ou ataques que causem dano por contusão."
   },
   {
     "id": "arconte-mensageiro",
@@ -1287,7 +1295,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Celestial de aparência semelhante à de um elfo alado, de tonalidade verde-clara e beleza sobrenatural. Atua como mensageiro e arauto celestial e carrega uma grande trombeta de prata brilhante, com cerca de 1,8 m. Apesar de suas atribuições de mensageiro, possui capacidades marciais consideráveis.",
+    "combat": "Prefere eliminar ou neutralizar adversários rapidamente com poderes mágicos para retomar suas missões, evitando o combate físico. Se a luta se prolongar, toca a trombeta e passa a atacar com ferocidade. A música da trombeta pode paralisar criaturas num raio de 30 m que falhem no teste de Fortitude; a trombeta também pode transformar-se numa espada larga +4. Suas armas são consideradas sagradas e ordeiras para superar redução de dano, e ele conjura magias divinas como clérigo de 14º nível."
   },
   {
     "id": "azer",
@@ -1337,7 +1347,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Humanoide extraplanar semelhante a um anão, com pele cor de bronze que parece metal forjado e cabelo e barba feitos de chamas. Costuma vestir saiotes de latão, bronze ou cobre. É nativo do Plano Elemental do Fogo e fala Ígneo e Comum. Os azer vivem em uma sociedade extremamente organizada, em que o Estado tem prioridade sobre o indivíduo, e habitam fortalezas de bronze.",
+    "combat": "Empunha lanças de ponta larga e martelos de combate de excelente qualidade; desarmado, tenta agarrar os oponentes. Normalmente é pouco amistoso e taciturno e raramente inicia uma luta, exceto para obter gemas, mas combate até a morte quando ameaçado. Seu corpo extremamente quente causa dano adicional em ataques desarmados, e suas armas metálicas conduzem esse calor. É imune ao fogo e sofre dano dobrado por frio, salvo quando obtém sucesso no teste de resistência aplicável."
   },
   {
     "id": "beholder",
@@ -1357,7 +1369,7 @@
     "flatFootedAc": 24,
     "baseAttack": 8,
     "grapple": 12,
-    "attack": "Toque à distância: ratos ópticos +9 e corpo a corpo: mordida +2 (dano: 2d4)",
+    "attack": "Toque à distância: raios ópticos +9 e corpo a corpo: mordida +2 (dano: 2d4)",
     "fullAttack": "Toque à distância: raios ópticos +9 e corpo a corpo: mordida +2 (dano: 2d4)",
     "spaceReach": "3 m/1,5 m",
     "specialAttacks": "Raios ópticos",
@@ -1387,7 +1399,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Aberração flutuante de corpo esférico, com um grande olho central que não pisca, uma boca enorme repleta de dentes afiados e diversos olhos menores presos a hastes flexíveis que saem da parte superior do globo. Também é conhecido como esfera de muitos olhos ou olho tirano. É agressivo, ambicioso e extremamente xenófobo; diferentes linhagens e formas de beholder consideram-se a verdadeira espécie e procuram destruir as demais.",
+    "combat": "Sua principal arma é o conjunto de raios ópticos disparados pelos olhos menores. Cada olho pode disparar um raio mágico por rodada como ação livre, mas apenas três raios podem ser direcionados ao mesmo arco de 90° na mesma rodada. Os efeitos variam e permitem incapacitar, controlar ou destruir alvos. O olho central emite continuamente um cone antimagia de 45 m, que também anula os próprios raios ópticos enquanto estiver ativo; o beholder pode fechá-lo para desativar o cone. Seus numerosos olhos concedem visão em todas as direções, bônus em Observar e Procurar e impedem que seja flanqueado. Seu corpo flutua naturalmente e pode voar."
   },
   {
     "id": "belker",
@@ -1437,7 +1451,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Elemental maligno do Plano Elemental do Ar, composto principalmente de fumaça. Sua forma alada tem aparência demoníaca, com asas semelhantes às de morcego, garras e uma boca ameaçadora. Mede cerca de 2 m de comprimento e pesa aproximadamente 4 kg. Sua natureza semigasosa faz sua forma mudar quando atingida por correntes de vento. Fala Auran.",
+    "combat": "Normalmente luta com as garras, as asas e a mordida. Em forma gasosa, pode engolfar uma criatura Média ou menor sem provocar ataques de oportunidade; a vítima deve resistir ou inalar parte do belker. A fumaça se solidifica dentro do corpo da vítima como uma garra e causa dano aos órgãos internos a cada rodada, até que ela consiga expeli-la com novos testes de Fortitude. Pode assumir forma gasosa por até 20 rodadas por dia e, nessa forma, voa com deslocamento de 15 m e manobrabilidade perfeita."
   },
   {
     "id": "anis",
@@ -1487,7 +1503,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Bruxa monstruosa de tamanho Grande, com aparência de mulher anciã absurdamente alta. Mede cerca de 2,4 m e pesa aproximadamente 163 kg. É considerada talvez a mais terrível das bruxas e costuma usar transformação momentânea para assumir a aparência de um humano excepcionalmente alto, de um gigante musculoso ou de um ogro.",
+    "combat": "Embora seja fisicamente poderosa, evita confrontos diretos e tenta separar e confundir os inimigos antes de atacar. Costuma disfarçar-se de plebeia ou pessoa amistosa para criar uma falsa sensação de segurança. Agarra criaturas Grandes ou menores ao acertá-las com uma garra; pode então rasgar a vítima com as garras e mordê-la. Se acertar o oponente com ambas as garras, prende-se a ele e dilacera sua carne, causando dano adicional. Também pode usar transformação momentânea e névoa."
   },
   {
     "id": "bruxa-verde",
@@ -1537,7 +1555,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Humanoide monstruosa de aparência semelhante à de uma mulher muito velha, com pele esverdeada e cabelos preto-esverdeados, sujos e embaraçados, que lembram vinhas retorcidas. Vive em pântanos desérticos e florestas escuras e tem aproximadamente a altura e o peso de uma mulher comum. Como as demais bruxas, é cruel, astuta e resistente à magia.",
+    "combat": "Prefere atacar a partir de esconderijos, geralmente depois de distrair os inimigos, usando a visão no escuro para obter vantagem durante noites sem lua. Pode usar habilidades similares a magia, enfraquecer um oponente com um ataque de toque que causa dano temporário à Força e imitar sons de animais encontrados na região de seu refúgio. Costuma atuar em convenções com outras bruxas e criaturas aliadas."
   },
   {
     "id": "bruxa-do-mar",
