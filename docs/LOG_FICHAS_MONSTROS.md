@@ -631,3 +631,12 @@ As fichas-base devem ser reutilizadas por ID sempre que a tabela pedir apenas um
 - Destaques: vínculo telepático e veneno do homúnculo; punhos do relâmpago e do trovão e perseguição dos que desafiam a morte pelo marut; investigação de juramentos e Toque Vampírico do kolyarut; correntes, asas e captura de fugitivos pelo zelekhut; criação de servos mortos-vivos pelo inumano.
 - Nenhuma estatística mecânica foi alterada. Teste de regressão cobre as cinco fichas e seus efeitos característicos.
 - Situação após esta etapa: 313 fichas no catálogo; 166 possuem descrição e resumo de combate; 147 ainda precisam de ao menos um desses campos.
+
+
+## 2026-11-14 — Décima sétima etapa: kobold, kraken, lammasu e predadores costeiros
+
+- Preenchidas descrição e síntese de combate de 5 fichas: Kobold Combatente de 1º Nível, Kraken, Lammasu, Protetor Dourado (lammasu Meio–dragão Celestial) e Leão Marinho.
+- Fonte primária: Livro dos Monstros 3.5 em português, páginas impressas 167–168 e 172–173. As sínteses preservam as táticas e habilidades específicas dos blocos de estatísticas.
+- Destaques: armadilhas e táticas de grupo dos kobolds; tentáculos, constrição, propulsão e nuvem de tinta do kraken; sopro, círculo mágico e magias do lammasu; sopro e Destruir o Mal do Protetor Dourado; e Dilacerar e natação do leão-marinho.
+- Nenhuma estatística mecânica foi alterada. Teste de regressão cobre as cinco fichas e suas capacidades distintivas.
+- Situação após esta etapa: 313 fichas no catálogo; 171 possuem descrição e resumo de combate; 142 ainda precisam de ao menos um desses campos.
