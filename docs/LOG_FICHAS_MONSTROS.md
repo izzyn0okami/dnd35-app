@@ -795,3 +795,11 @@ As fichas-base devem ser reutilizadas por ID sempre que a tabela pedir apenas um
 - Nenhuma regra de elegibilidade de companheiro, familiar ou invocação foi alterada. Nenhuma imagem foi pesquisada ou inserida.
 - Testes de regressão adicionados para os cinco registros, incluindo a distinção entre as duas criaturas etéreas e a integridade dos campos corrigidos.
 - Contagem após esta etapa: 320 fichas no catálogo; 210 com Descrição e Combate; 110 ainda precisam de ao menos um desses campos.
+
+
+### Correção de CI — 2026-11-14
+
+- A primeira execução dos testes apontou uma falha exclusivamente na asserção recém-adicionada para a descrição do Skum.
+- O texto do catálogo usa corretamente a concordância feminina em “criaturas renegadas criadas pelos aboletes”; o teste esperava “criados”.
+- Ajustada a expectativa do teste para refletir literalmente o conteúdo da ficha. Nenhuma regra ou texto do catálogo foi alterado nesta correção.
+- Aguardar nova execução de Android CI e compilação do APK antes do merge.

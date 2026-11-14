@@ -595,7 +595,7 @@ class CreatureCatalogTest {
         assertTrue(satiro.combat.contains("Nível de Desafio é 2 sem flautas e 4 com flautas"))
         
         val skum = CreatureCatalog.byId("skum")!!
-        assertTrue(skum.description.contains("criados pelos aboletes"))
+        assertTrue(skum.description.contains("criadas pelos aboletes"))
         assertTrue(skum.combat.contains("1d6+2"))
         assertFalse(skum.fullAttack.contains("Sátiro"))
     }
