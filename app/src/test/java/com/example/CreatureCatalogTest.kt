@@ -187,4 +187,22 @@ class CreatureCatalogTest {
         assertTrue(CreatureCatalog.byId("coruja-gigante")!!.summonedCreature)
     }
 
+
+    @Test
+    fun abyssalCelestialDemonsAndUnderdarkCreaturesHaveNarrativeSummaries() {
+        listOf(
+            "rato-atroz-abissal", "leao-celestial", "marilith", "nalfeshnee",
+            "quasit", "vrock", "derro", "destrachan",
+            "devorador-de-aranhas", "diabo-barbado-barbazu"
+        ).forEach { id ->
+            val creature = CreatureCatalog.byId(id)!!
+            assertTrue("$id sem descrição", creature.description.isNotBlank())
+            assertTrue("$id sem resumo de combate", creature.combat.isNotBlank())
+        }
+
+        assertEquals(18, CreatureCatalog.byId("quasit")!!.armorClass)
+        assertTrue(!CreatureCatalog.byId("marilith")!!.feats.contains("DEMÔNIO"))
+        assertTrue(CreatureCatalog.byId("derro")!!.feats.contains("Lutar às Cegas"))
+    }
+
 }
