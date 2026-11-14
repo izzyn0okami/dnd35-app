@@ -458,4 +458,5 @@ As fichas-base devem ser reutilizadas por ID sempre que a tabela pedir apenas um
 - Adicionadas fichas de Arconte Guardião (Livro dos Monstros, p. 25), Bruxa da Noite (p. 37), Xill (p. 260) e Leonal (p. 157).
 - Vinculações conforme Livro do Jogador, p. 211: Arconte Guardião (5º círculo), Xill (6º), Bruxa da Noite (9º) e Leonal (9º).
 - Bruxa da Noite e Xill foram conferidos com referências SRD 3.5 para validar blocos cuja extração do PDF apresenta colunas quebradas; os dados foram mantidos consistentes com o Livro dos Monstros em português.
-- Permanecem pendentes: Baleia Celestial (a tabela do Livro do Jogador não especifica a espécie), Unicórnio, Arauto Celestial (conferir correspondência com o bloco Corcel Celestial, clérigo de 7º nível), e quaisquer variantes que dependam de esclarecer uma base não especificada.
+- Adicionado Unicórnio, Arauto Celestial no 9º círculo de Invocar Aliado da Natureza. O bloco é o Corcel Celestial, Clérigo de 7º nível, do Livro dos Monstros, p. 247, correspondendo à opção nomeada na tabela do Livro do Jogador.
+- Permanece pendente Baleia Celestial: a tabela do Livro do Jogador não especifica a espécie, e o Livro dos Monstros apresenta blocos distintos para baleia azul, orca e cachalote. Não foi escolhida uma espécie por suposição.
