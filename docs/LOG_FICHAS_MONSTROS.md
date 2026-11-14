@@ -496,3 +496,14 @@ As fichas-base devem ser reutilizadas por ID sempre que a tabela pedir apenas um
 - Nenhum outro valor mecânico foi alterado. Nenhum campo narrativo já preenchido foi sobrescrito.
 - Teste de regressão cobre as 10 fichas para garantir descrição e resumo de combate não vazios.
 - Situação após esta etapa: 313 fichas no catálogo; 236 ainda precisam de descrição ou resumo de combate.
+
+
+## 2026-11-14 — Terceira etapa de preenchimento narrativo: criaturas B–C
+
+- Preenchidas descrição e resumo de combate de 10 fichas: Bugbear, Bulette, Caçador Invisível, Cão Infernal, Cão de Guerra Nessian, Cão Teleportador, Cão Yeth, Chuul, Cocatriz e Constritor.
+- Fonte primária: Livro dos Monstros 3.5 em português, verbetes nas páginas impressas 38–45.
+- Os textos resumem aparência, ecologia, comportamento, estratégias e habilidades de combate descritas nos verbetes.
+- Corrigidos erros de importação comprováveis no próprio bloco de estatísticas: CA do Bugbear (17, não 1); ambiente e organização do Caçador Invisível (Plano Elemental do Ar; solitário); ambiente e organização do Chuul (pântanos temperados; solitário/casal/matilhas); ambiente e organização do Constritor (subterrâneo; solitário).
+- Nenhum campo mecânico incerto foi alterado. Nenhum campo narrativo já preenchido foi sobrescrito.
+- Testes de regressão adicionados para as 10 fichas e para os campos corrigidos.
+- Situação após esta etapa: 313 fichas no catálogo; 226 ainda precisam de descrição ou resumo de combate.
