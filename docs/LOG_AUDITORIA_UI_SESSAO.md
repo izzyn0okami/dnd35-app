@@ -846,3 +846,12 @@
 - Testar em aparelho: encerrar o app durante hospedagem, durante conexão como jogador, após mutações recentes da sessão e com rede interrompida.
 - Confirmar em novo relatório que não há ANR em SessionViewModel.onCleared() e que o checkpoint recuperável permanece consistente.
 - A persistência no encerramento é assíncrona e, como qualquer trabalho de processo em encerramento, não deve ser tratada como garantia de execução após morte abrupta do processo; mutações críticas continuam dependendo dos checkpoints já confirmados.
+
+## 2026-11-14 — Retrato do turno ativo e seção condicional de vínculos
+
+- Adicionada miniatura circular do combatente do turno atual ao lado dos atalhos flutuantes multiplayer.
+- No aparelho do Mestre, a miniatura usa a foto persistida na ficha do jogador ou do NPC; quando o combatente é uma criatura do baralho, usa a ilustração correspondente do bestiário.
+- No aparelho de jogador, o retrato personalizado de outro participante não está disponível pelo protocolo atual; a interface usa a foto local quando o combatente é o próprio jogador e fallback visual nos demais casos. Não foi transmitido URI privado de foto entre aparelhos.
+- A seção de familiares/companheiros não apresenta caixa vazia nem aviso em fichas sem vínculos. Quando a classe permite o vínculo inicial, são exibidas apenas ações compactas para criá-lo.
+- Não houve alteração do protocolo de sessão, dos dados persistidos ou das regras de combate.
+- Validação manual em aparelhos Mestre/Jogador pendente após CI.
