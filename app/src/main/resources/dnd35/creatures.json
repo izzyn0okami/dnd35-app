@@ -4623,7 +4623,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Um espectro é um morto-vivo incorpóreo de aparência humana, sem peso e com presença sobrenatural aterradora. Sua existência manifesta-se como uma entidade fantasmagórica que atravessa paredes, tetos e pisos. Animais percebem sua presença antinatural e evitam aproximar-se.",
+    "combat": "O espectro ataca com um toque incorpóreo e gélido, explorando sua capacidade de atravessar obstáculos para surpreender as vítimas. Drenar Energia (Sob): um toque bem-sucedido causa 1d8 pontos de dano e impõe dois níveis negativos; a vítima pode tentar removê-los com Fortitude CD 15. O espectro recebe 5 PV temporários por nível negativo imposto. Cria (Sob): um humanoide morto por um espectro ergue-se como outro espectro após 1d4 rodadas, sob comando de seu criador e sem as habilidades que possuía em vida. Aura Antinatural (Sob): animais num raio de 9 m entram em pânico se forem forçados a permanecer próximos. Vulnerabilidade à Luz do Dia (Ext): sob luz solar natural, fica sem poderes, não pode atacar e limita-se a uma única ação de movimento ou ataque por rodada; a magia luz do dia não produz esse efeito."
   },
   {
     "id": "ettercap",
@@ -4673,7 +4675,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "O ettercap é uma aberração de corpo arredondado e inchado, braços e pernas longos e delgados e cabeça semelhante à de uma aranha, com olhos negros salientes. É um predador astuto, embora pouco inteligente, que caça e prepara armadilhas nas sombras. Vive sozinho, geralmente perto de trilhas frequentadas, e cria aranhas monstruosas como animais de estimação, que lhe são leais. Tem cerca de 1,80 m de altura, pesa aproximadamente 100 kg e fala Comum.",
+    "combat": "O ettercap prefere preparar armadilhas e emboscadas, evitando aproximar-se de inimigos ainda capazes de lutar. Quando obrigado ao combate, usa as garras e a mordida venenosa. Veneno (Ext): inoculado pela mordida; Fortitude CD 15, dano inicial de 1d6 pontos temporários de Destreza e secundário de 2d6 pontos temporários de Destreza. Teia (Ext): pode disparar teia até oito vezes por dia, como um ataque de rede com alcance máximo de 15 m e incremento de 3 m; o alvo Médio ou menor fica preso e imóvel. Escapar exige Arte da Fuga CD 13 ou Força CD 17. Também constrói armadilhas de teia que podem cobrir áreas de 1,5 m a 18 m; perceber a armadilha exige Observar CD 20. Pode caminhar em suas próprias teias e localizar exatamente criaturas presas. Recebe bônus raciais em Ofícios (armadilheiro), Esconder-se, Observar e Escalar."
   },
   {
     "id": "ettin",
@@ -4723,7 +4727,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "O ettin, ou gigante de duas cabeças, é um gigante enorme e feroz, com dois rostos de traços suínos, queixos quadrados e presas inferiores semelhantes às de um javali. Seu corpo é encardido, a pele parece couro cinzento e o mau cheiro é característico. Adultos alcançam cerca de 4 m de altura e pesam aproximadamente 2,6 toneladas. São caçadores noturnos, excelentes guardiões e batedores, e suas duas cabeças os tornam especialmente alertas. Não possuem idioma próprio: comunicam-se por um dialeto que mistura Orc, Goblin e Gigante.",
+    "combat": "Os ettin preferem emboscar as vítimas, mas lutam furiosamente quando o combate começa, normalmente até que todos os inimigos estejam mortos. Combater com Duas Armas Superior (Ext): cada cabeça controla um braço, permitindo lutar com uma arma em cada mão sem penalidades no dano ou no ataque por usar duas armas. As duas cabeças também concedem +2 de bônus racial em Ouvir, Observar e Procurar. Costumam usar uma maça-estrela ou azagaias em cada mão."
   },
   {
     "id": "grig",
@@ -4773,7 +4779,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "O grig é uma fada Miúda com cabeça, torso e braços humanoides, antenas e patas de grilo. Tem pele azul-clara, cabelos verde-folha e patas castanho-escuras; costuma vestir roupas claras adornadas com pequenas gemas. Mede cerca de 45 cm e pesa aproximadamente meio quilo. É sagaz, tolerante e destemido diante de criaturas maiores, gostando de pregar peças, roubar comida, derrubar tendas e fazer objetos parecerem falar por ventriloquismo. Fala Silvestre e, às vezes, Comum.",
+    "combat": "Apesar do comportamento brincalhão, o grig é feroz para os padrões das fadas e ataca sem temor com espada curta e arco longo. Habilidades Similares à Magia (SM): três vezes por dia pode usar transformação momentânea, constrição, invisibilidade pessoal, pirotecnia e ventriloquismo. Rabeca (Sob): um grig de cada bando pode tocar uma rabeca; criaturas num raio de 9 m, exceto outras fadas, devem obter sucesso em Vontade CD 12 ou serão afetadas pela dança irresistível de Otto enquanto a música continuar. Recebe +8 de bônus racial em Saltar e +5 em Furtividade nas florestas."
   },
   {
     "id": "nixie",
@@ -4823,7 +4831,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "A nixie é uma fada aquática de aparência élfica diminuta, pele verde e suave, orelhas pontiagudas e olhos grandes e prateados. As mãos e os pés possuem patágios. As mulheres costumam adornar os cabelos verde-escuros com conchas e pérolas e vestir roupas tecidas com algas coloridas; os homens usam pequenas proteções do mesmo material. Habitam e protegem fontes e lagos límpidos, são reservadas e tendem a tratar intrusos com suspeita ou hostilidade. Medem quase 1,20 m, pesam cerca de 20 kg e falam Silvestre; algumas também falam Comum.",
+    "combat": "A nixie confia em enfeitiçar pessoas para deter inimigos e só luta para proteger seu território ou a própria vida. Enfeitiçar Pessoa (SM): três vezes por dia, como a magia homônima, nível de conjurador 4º; Vontade CD 15 ou a vítima fica enfeitiçada por 24 horas e realiza tarefas para a comunidade. Anfíbio (Ext): pode sobreviver indefinidamente fora d'água. Respirar na Água (SM): uma vez por dia, conjura a magia, geralmente para beneficiar uma criatura enfeitiçada. Empatia Selvagem (Ext): funciona como a habilidade do druida, com +6 de bônus racial. Recebe +8 de bônus racial em Natação e pode escolher 10 mesmo distraída ou ameaçada; na água, recebe +5 em Esconder-se."
   },
   {
     "id": "pixie",
