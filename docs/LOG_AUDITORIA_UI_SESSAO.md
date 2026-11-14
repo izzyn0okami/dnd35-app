@@ -865,3 +865,5 @@
 - O componente `CreatureImage` agora prioriza esses recursos pelas chaves estáveis `abolete-mago-nivel-10` e `diabo-farpado-hamatula`; as demais criaturas continuam usando a resolução automática existente.
 - Não foram alterados os blocos de estatísticas, identificadores do catálogo ou regras das criaturas.
 - Validação pendente: CI, inspeção visual em aparelho e confirmação de que as duas cartas exibem os retratos sem fallback.
+- **Correção de CI (2026-11-14):** os dois fluxos apontaram `Unresolved reference 'R'`. O namespace Android do módulo é `com.example` (não `com.example.dnd35`); corrigido o import para `com.example.R`. A nova execução de testes e compilação ainda precisa confirmar a correção.
+
