@@ -483,6 +483,65 @@ class SessionServer(
         broadcastShop()
     }
 
+    /** Adiciona um produto ao estoque da loja ativa sem alterar o inventário de qualquer ficha. */
+    fun addShopItem(item: CharacterInventoryItem) = synchronized(stateLock) {
+        val current = _shop.value ?: return@synchronized
+        if (item.name.isBlank() || item.quantity <= 0 || !item.costGp.isFinite() || item.costGp < 0f) return@synchronized
+        _shop.value = current.copy(items = current.items + item)
+        notifySnapshotChanged()
+        broadcastShop()
+    }
+
+    /** Atualiza preço, quantidade ou detalhes de um produto sem perder os demais itens. */
+    fun updateShopItem(item: CharacterInventoryItem) = synchronized(stateLock) {
+        val current = _shop.value ?: return@synchronized
+        if (current.items.none { it.id == item.id } || item.quantity <= 0 || !item.costGp.isFinite() || item.costGp < 0f) return@synchronized
+        _shop.value = current.copy(items = current.items.map { if (it.id == item.id) item else it })
+        notifySnapshotChanged()
+        broadcastShop()
+    }
+
+    /** Retira um produto do estoque da loja ativa. */
+    fun removeShopItem(itemId: String) = synchronized(stateLock) {
+        val current = _shop.value ?: return@synchronized
+        if (current.items.none { it.id == itemId }) return@synchronized
+        _shop.value = current.copy(items = current.items.filterNot { it.id == itemId })
+        notifySnapshotChanged()
+        broadcastShop()
+    }
+
+    /**
+     * O Mestre concede um item diretamente a um jogador, sem pedido ou aprovação.
+     * O grant entra no outbox persistente antes da entrega, mantendo a idempotência em reconexões.
+     */
+    fun grantItemToPlayer(participantId: String, item: CharacterInventoryItem): Boolean = synchronized(stateLock) {
+        val participant = _roster.value.firstOrNull { it.id == participantId }
+        val characterId = participant?.characterId
+        if (participant?.role != ParticipantRole.PLAYER || characterId == null ||
+            _receivedCharacters.value[participantId] == null || item.name.isBlank() || item.quantity <= 0
+        ) return@synchronized false
+
+        val before = createSnapshot()
+        val grantId = UUID.randomUUID().toString()
+        val grantedItem = item.copy(id = grantId)
+        val grant = SessionMessage.LootGranted(
+            grantId = grantId,
+            itemJson = CharacterJsonAdapters.serializeInventory(listOf(grantedItem)),
+            characterId = characterId
+        )
+        registerPendingGrant(participantId, grantId, grant)
+        return@synchronized try {
+            persistCriticalSnapshotLocked()
+            notifySnapshotChanged()
+            sendTo(participantId, grant) // Se estiver offline, o outbox reenvia na reconexão.
+            true
+        } catch (error: Exception) {
+            restoreSnapshot(before, markPlayersDisconnected = false)
+            CrashLogStore.record("MULTIPLAYER_PERSISTENCE", "Falha ao preparar concessão direta de item", error)
+            false
+        }
+    }
+
     /** Fecha a loja aberta (se houver) e avisa a todos. */
     fun closeShop() = synchronized(stateLock) {
         if (_shop.value == null) return@synchronized
@@ -541,7 +600,8 @@ class SessionServer(
             combatantId = msg.combatantId,
             hpDelta = msg.hpDelta,
             lootItemId = msg.lootItemId,
-            shopItemId = msg.shopItemId
+            shopItemId = msg.shopItemId,
+            quantity = msg.quantity.coerceAtLeast(1)
         )
         synchronized(stateLock) {
             _pendingRequests.value = _pendingRequests.value + request
@@ -611,7 +671,7 @@ class SessionServer(
             RequestKind.BUY_FROM_SHOP -> {
                 val shopState = _shop.value
                 val item = request.shopItemId?.let { id -> shopState?.items?.firstOrNull { it.id == id } }
-                if (shopState == null || item == null || item.quantity <= 0) {
+                if (shopState == null || item == null || item.quantity <= 0 || request.quantity !in 1..item.quantity) {
                     resolution = resolveRequest(request, approved = false, reason = "Item não está mais disponível na loja.")
                 } else {
                     val characterId = _roster.value.firstOrNull { it.id == request.requesterId }?.characterId
@@ -619,13 +679,13 @@ class SessionServer(
                     if (characterId == null || character == null) {
                         resolution = resolveRequest(request, approved = false, reason = "Vincule uma ficha válida antes de comprar.")
                     } else {
-                        val purse = SessionCurrency.debit(character, item.costGp)
+                        val purse = SessionCurrency.debit(character, item.costGp, request.quantity)
                         if (purse == null) {
                             resolution = resolveRequest(request, approved = false, reason = "Saldo insuficiente ou preço/saldo inválido.")
                         } else {
                             val before = createSnapshot()
                             val grantId = UUID.randomUUID().toString()
-                            val grantedItem = item.copy(id = grantId, quantity = 1)
+                            val grantedItem = item.copy(id = grantId, quantity = request.quantity)
                             val grant = SessionMessage.ShopPurchaseGranted(
                                 grantId = grantId,
                                 itemJson = CharacterJsonAdapters.serializeInventory(listOf(grantedItem)),
@@ -638,9 +698,9 @@ class SessionServer(
                             registerPendingGrant(request.requesterId, grantId, grant)
                             _receivedCharacters.value = _receivedCharacters.value +
                                 (request.requesterId to purse.toCharacterUpdate(character))
-                            val remainingStock = if (item.quantity > 1) {
+                            val remainingStock = if (item.quantity > request.quantity) {
                                 shopState.items.map { stock ->
-                                    if (stock.id == item.id) stock.copy(quantity = stock.quantity - 1) else stock
+                                    if (stock.id == item.id) stock.copy(quantity = stock.quantity - request.quantity) else stock
                                 }
                             } else {
                                 shopState.items.filterNot { it.id == item.id }

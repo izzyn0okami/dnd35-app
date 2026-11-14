@@ -384,7 +384,9 @@ object CharacterCalculator {
         val totalWill = baseWill + wisMod + character.miscWill + itemMiscSaveBonus + paladinDivineGrace + halflingSaveBonus + featWill
 
         // 8. Peso e Gestão de Carga
-        val coinWeight = (character.goldGp + character.silverSp + character.copperCp + character.platinumPp) / 50.0f
+        // Livro do Jogador brasileiro: 100 moedas pesam 1 kg, independentemente da denominação.
+        val carriedCoinCount = character.goldGp + character.silverSp + character.copperCp + character.platinumPp
+        val coinWeight = MetricUnits.coinsToPounds(carriedCoinCount)
         // Somente o que o personagem efetivamente transporta entra na carga.
         // Itens fora da mochila, não equipados e sem slot atribuído foram deixados no chão.
         // Equipamentos equipados ou carregados fora da mochila continuam contando.
@@ -820,24 +822,26 @@ object CharacterCalculator {
     }
 
     private fun reduceSpeedForArmorOrLoad(speedMeters: Float): Float {
-        val speedFeet = (speedMeters / 0.3f).roundToInt()
-        val reducedFeet = when (speedFeet) {
-            20 -> 15
-            30 -> 20
-            40 -> 30
-            50 -> 35
-            60 -> 40
-            70 -> 50
-            80 -> 55
-            90 -> 60
-            100 -> 70
-            else -> if (speedFeet < 20) {
-                (speedFeet - 5).coerceAtLeast(5)
+        // A redução de carga usa incrementos métricos equivalentes a 1,5 m (5 pés).
+        // Mantém os mesmos degraus da regra sem expor unidades imperiais no cálculo.
+        val movementSteps = (speedMeters / 1.5f).roundToInt()
+        val reducedSteps = when (movementSteps) {
+            4 -> 3
+            6 -> 4
+            8 -> 6
+            10 -> 7
+            12 -> 8
+            14 -> 10
+            16 -> 11
+            18 -> 12
+            20 -> 14
+            else -> if (movementSteps < 4) {
+                (movementSteps - 1).coerceAtLeast(1)
             } else {
-                ((speedFeet * 2 / 3) / 5) * 5
+                (movementSteps * 2 / 3).coerceAtLeast(1)
             }
         }
-        return reducedFeet * 0.3f
+        return reducedSteps * 1.5f
     }
 
     /**

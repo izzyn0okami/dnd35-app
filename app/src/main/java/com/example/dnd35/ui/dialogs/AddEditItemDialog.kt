@@ -62,6 +62,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.example.dnd35.model.CharacterInventoryItem
 import com.example.dnd35.model.Dnd35Rules
+import com.example.dnd35.model.MetricUnits
 import com.example.dnd35.model.effectiveDamage
 import com.example.dnd35.model.effectiveArmorClassBonus
 import com.example.dnd35.model.isWeaponInventoryCategory
@@ -76,9 +77,12 @@ import androidx.compose.ui.platform.testTag
 fun AddEditItemDialog(
     itemToEdit: CharacterInventoryItem? = null,
     onConfirm: (CharacterInventoryItem) -> Unit,
-    onDismiss: () -> Unit
+    onDismiss: () -> Unit,
+    allowCatalog: Boolean = false
 ) {
-    var selectedTab by remember { mutableIntStateOf(if (itemToEdit == null) 0 else 1) }
+    var selectedTab by remember(itemToEdit, allowCatalog) {
+        mutableIntStateOf(if (itemToEdit == null && allowCatalog) 0 else 1)
+    }
     val context = LocalContext.current
     val coroutineScope = rememberCoroutineScope()
     var photoError by remember { mutableStateOf<String?>(null) }
@@ -141,7 +145,7 @@ fun AddEditItemDialog(
     var name by remember { mutableStateOf(itemToEdit?.name ?: "") }
     var category by remember { mutableStateOf(itemToEdit?.category ?: "Itens de Aventura") }
     var quantityText by remember { mutableStateOf("${itemToEdit?.quantity ?: 1}") }
-    var weightText by remember { mutableStateOf("${itemToEdit?.weightLb ?: 1.0f}") }
+    var weightText by remember { mutableStateOf(itemToEdit?.weightLb?.let { MetricUnits.poundsToKilograms(it).toString() } ?: "0.45") }
     var costText by remember { mutableStateOf("${itemToEdit?.costGp ?: 0.0f}") }
     var damage by remember { mutableStateOf(itemToEdit?.effectiveDamage().orEmpty()) }
     var armorClassBonus by remember { mutableStateOf(itemToEdit?.effectiveArmorClassBonus().orEmpty()) }
@@ -149,8 +153,8 @@ fun AddEditItemDialog(
     var notes by remember { mutableStateOf(itemToEdit?.notes ?: "") }
     var equipped by remember { mutableStateOf(itemToEdit?.equipped ?: false) }
     val parsedQuantity = quantityText.toIntOrNull()
-    val parsedWeight = weightText.toFloatOrNull()
-    val parsedCost = costText.toFloatOrNull()
+    val parsedWeight = weightText.replace(',', '.').toFloatOrNull()
+    val parsedCost = costText.replace(',', '.').toFloatOrNull()
     var equippedSlot by remember { mutableStateOf(itemToEdit?.equippedSlot ?: Dnd35Rules.EquipmentSlots.NONE) }
 
     // Busca no catálogo
@@ -184,7 +188,15 @@ fun AddEditItemDialog(
         },
         text = {
             Column(modifier = Modifier.fillMaxWidth()) {
-                if (itemToEdit == null) {
+                if (itemToEdit == null && !allowCatalog) {
+                    Text(
+                        "Crie um item personalizado ou importe um arquivo. O catálogo completo fica disponível ao Mestre nas seções de loot e loja.",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                    Spacer(modifier = Modifier.height(8.dp))
+                }
+                if (itemToEdit == null && allowCatalog) {
                     TabRow(selectedTabIndex = selectedTab) {
                         Tab(
                             selected = selectedTab == 0,
@@ -200,7 +212,7 @@ fun AddEditItemDialog(
                     Spacer(modifier = Modifier.height(12.dp))
                 }
 
-                if (selectedTab == 0 && itemToEdit == null) {
+                if (selectedTab == 0 && itemToEdit == null && allowCatalog) {
                     // Catálogo do Livro do Jogador
                     OutlinedTextField(
                         value = catalogQuery,
@@ -269,7 +281,7 @@ fun AddEditItemDialog(
                                             fontWeight = FontWeight.SemiBold
                                         )
                                         Text(
-                                            "${preset.weightLb} lb • ${preset.costGp} PO" + (if (preset.damageOrAc != "-") " • ${preset.damageOrAc}" else ""),
+                                            "${String.format("%.2f", MetricUnits.poundsToKilograms(preset.weightLb))} kg • ${preset.costGp} PO" + (if (preset.damageOrAc != "-") " • ${preset.damageOrAc}" else ""),
                                             style = MaterialTheme.typography.bodySmall,
                                             color = MaterialTheme.colorScheme.onSurfaceVariant
                                         )
@@ -467,7 +479,7 @@ fun AddEditItemDialog(
                             OutlinedTextField(
                                 value = weightText,
                                 onValueChange = { weightText = it },
-                                label = { Text("Peso unit. (lb)") },
+                                label = { Text("Peso unit. (kg)") },
                                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
                                 modifier = Modifier.weight(1f),
                                 singleLine = true
@@ -548,7 +560,7 @@ fun AddEditItemDialog(
                             name = if (name.isBlank()) "Novo Item" else name.trim(),
                             category = category,
                             quantity = parsedQuantity ?: return@Button,
-                            weightLb = parsedWeight ?: return@Button,
+                            weightLb = MetricUnits.kilogramsToPounds(parsedWeight ?: return@Button),
                             costGp = parsedCost ?: return@Button,
                             damageOrAc = when {
                                 isWeaponInventoryCategory(category) -> damage
@@ -568,7 +580,7 @@ fun AddEditItemDialog(
                         onConfirm(finalItem)
                         onDismiss()
                     },
-                    enabled = !isSavingPhoto && name.isNotBlank() && (ammoUnitsPerPackageText.toIntOrNull() ?: 0) in 1..9999 && parsedQuantity != null && parsedQuantity >= 1 && parsedWeight != null && parsedWeight >= 0f && parsedCost != null && parsedCost >= 0f
+                    enabled = !isSavingPhoto && name.isNotBlank() && (ammoUnitsPerPackageText.toIntOrNull() ?: 0) in 1..9999 && parsedQuantity != null && parsedQuantity >= 1 && parsedWeight != null && parsedWeight >= 0f && parsedCost != null && parsedCost >= 0f && com.example.dnd35.session.SessionCurrency.isValidGpAmount(parsedCost)
                 ) {
                     Text("Salvar")
                 }

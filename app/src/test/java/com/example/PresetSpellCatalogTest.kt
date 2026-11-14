@@ -431,7 +431,7 @@ class PresetSpellCatalogTest {
     @Test
     fun featherFallDescriptionUsesCorrectApproximateFallRate() {
         val spell = Dnd35Rules.PRESET_SPELLS.single { it.name == "Queda Suave" }
-        assertTrue(spell.description.contains("18m por rodada (60 pés)"))
+        assertTrue(spell.description.contains("18 m por rodada"))
         assertTrue(spell.description.contains("anulando o dano de queda"))
         assertEquals("Vontade anula", spell.savingThrow)
         assertTrue(spell.spellResistance)

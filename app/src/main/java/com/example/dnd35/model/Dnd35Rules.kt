@@ -804,6 +804,7 @@ object Dnd35Rules {
         val name: String,
         val category: String, // Armas, Armaduras, Escudos, Itens de Aventura, Itens Mágicos, Consumíveis
         val defaultSlot: String,
+        /** Peso legado do catálogo em lb; a interface deve exibir kg via MetricUnits. */
         val weightLb: Float,
         val costGp: Float,
         val damageOrAc: String,

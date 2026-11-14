@@ -69,7 +69,8 @@ sealed class SessionMessage {
         val combatantId: String? = null,
         val hpDelta: Int? = null,
         val lootItemId: String? = null,
-        val shopItemId: String? = null
+        val shopItemId: String? = null,
+        val quantity: Int = 1
     ) : SessionMessage()
 
     /** Mestre -> Jogador que pediu: resultado da aprovação (aceito ou negado, com motivo opcional). */
@@ -174,6 +175,7 @@ sealed class SessionMessage {
                 .put("hpDelta", hpDelta ?: JSONObject.NULL)
                 .put("lootItemId", lootItemId ?: JSONObject.NULL)
                 .put("shopItemId", shopItemId ?: JSONObject.NULL)
+                .put("quantity", quantity)
             is RequestResolved -> obj.put("type", TYPE_REQUEST_RESOLVED)
                 .put("requestId", requestId)
                 .put("approved", approved)
@@ -289,7 +291,8 @@ sealed class SessionMessage {
                         combatantId = if (obj.isNull("combatantId")) null else obj.getString("combatantId"),
                         hpDelta = if (obj.isNull("hpDelta")) null else obj.getInt("hpDelta"),
                         lootItemId = if (obj.isNull("lootItemId")) null else obj.getString("lootItemId"),
-                        shopItemId = if (obj.isNull("shopItemId")) null else obj.getString("shopItemId")
+                        shopItemId = if (obj.isNull("shopItemId")) null else obj.getString("shopItemId"),
+                        quantity = obj.optInt("quantity", 1)
                     )
                     TYPE_REQUEST_RESOLVED -> RequestResolved(
                         requestId = obj.getString("requestId"),

@@ -9,7 +9,7 @@ import java.math.RoundingMode
  * Exact currency arithmetic for multiplayer purchases.
  *
  * The Player's Handbook exchange rates are represented in copper pieces:
- * 1 pp = 10 pc, 1 po = 100 pc, and 1 pl = 1,000 pc.
+ * 1 PP (prata) = 10 PC, 1 PO (ouro) = 100 PC, and 1 PL (platina) = 1,000 PC.
  * Values are validated before a transaction; invalid or sub-copper prices are rejected.
  */
 data class SessionCoinPurse(
@@ -25,6 +25,8 @@ data class SessionCoinPurse(
         platinumPp = platinumPp
     )
 }
+
+const val SESSION_LOOT_GOLD_MARKER = "__session_loot_gold_v1__"
 
 object SessionCurrency {
     private val TEN = BigDecimal.TEN
@@ -73,9 +75,13 @@ object SessionCurrency {
      * Debits a price and returns a canonical purse (platinum, gold, silver, copper).
      * Null means invalid data or insufficient funds. No input object is mutated.
      */
-    fun debit(character: CharacterEntity, costGp: Float): SessionCoinPurse? {
+    fun isValidGpAmount(amountGp: Float): Boolean = priceToCopper(amountGp) != null
+
+    fun debit(character: CharacterEntity, costGp: Float, quantity: Int = 1): SessionCoinPurse? {
+        if (quantity <= 0) return null
         val available = totalCopper(character) ?: return null
-        val price = priceToCopper(costGp) ?: return null
+        val unitPrice = priceToCopper(costGp) ?: return null
+        val price = try { Math.multiplyExact(unitPrice, quantity.toLong()) } catch (_: ArithmeticException) { return null }
         if (price > available) return null
 
         var remaining = available - price
@@ -95,6 +101,22 @@ object SessionCurrency {
         // Float-backed sheet fields cannot represent every very large integer exactly.
         // Reject such a debit rather than silently losing a copper piece during conversion.
         return purse.takeIf { totalCopper(it.toCharacterUpdate(character)) == available - price }
+    }
+
+    /** Adds a gold-piece amount to a purse and returns canonical denominations. */
+    fun credit(character: CharacterEntity, amountGp: Float): SessionCoinPurse? {
+        val available = totalCopper(character) ?: return null
+        val amount = priceToCopper(amountGp) ?: return null
+        val total = try { Math.addExact(available, amount) } catch (_: ArithmeticException) { return null }
+        var remaining = total
+        val pp = remaining / 1000L
+        remaining %= 1000L
+        val gp = remaining / 100L
+        remaining %= 100L
+        val sp = remaining / 10L
+        val cp = remaining % 10L
+        val purse = SessionCoinPurse(gp.toFloat(), sp.toFloat(), cp.toFloat(), pp.toFloat())
+        return purse.takeIf { totalCopper(it.toCharacterUpdate(character)) == total }
     }
 }
 

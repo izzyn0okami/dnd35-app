@@ -576,7 +576,10 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
             // if the client saved the item but its acknowledgement was lost.
             if (inventory.any { it.id == grant.grantId }) return@withLock true
             val updatedInventory = inventory + grant.item.copy(id = grant.grantId)
-            val purse = grant.coinPurse
+            val purse = grant.coinPurse ?: if (grant.item.notes == com.example.dnd35.session.SESSION_LOOT_GOLD_MARKER) {
+                com.example.dnd35.session.SessionCurrency.credit(target, grant.item.costGp)
+            } else null
+            if (grant.item.notes == com.example.dnd35.session.SESSION_LOOT_GOLD_MARKER && purse == null) return@withLock false
             val updated = target.copy(
                 inventoryJson = CharacterJsonAdapters.serializeInventory(updatedInventory),
                 goldGp = purse?.goldGp ?: target.goldGp,

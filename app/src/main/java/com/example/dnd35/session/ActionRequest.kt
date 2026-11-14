@@ -35,7 +35,9 @@ data class ActionRequest(
     /** Id do item do baú de loot (dentro de [SessionServer.lootChest]) que o jogador quer pegar. */
     val lootItemId: String? = null,
     /** Id do item da loja aberta (dentro de [SessionServer.shop]) que o jogador quer comprar. */
-    val shopItemId: String? = null
+    val shopItemId: String? = null,
+    /** Quantidade solicitada na compra; sempre validada novamente pelo servidor. */
+    val quantity: Int = 1
 )
 
 /**

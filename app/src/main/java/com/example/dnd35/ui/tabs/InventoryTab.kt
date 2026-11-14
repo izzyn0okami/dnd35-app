@@ -81,6 +81,7 @@ import com.example.dnd35.model.CalculatedCharacterStats
 import com.example.dnd35.model.CharacterEntity
 import com.example.dnd35.model.CharacterInventoryItem
 import com.example.dnd35.model.Dnd35Rules
+import com.example.dnd35.model.MetricUnits
 import com.example.dnd35.model.ammunitionBundleSize
 import com.example.dnd35.model.remainingAmmunitionUnits
 import com.example.dnd35.ui.components.InventoryItemIcon
@@ -137,15 +138,16 @@ fun InventoryTab(
 
     val categories = listOf("Todas", "Armas", "Armaduras", "Escudos", "Itens Mágicos", "Itens de Aventura", "Consumíveis")
 
+    val visibleInventory = stats.inventory.filterNot { it.notes == com.example.dnd35.session.SESSION_LOOT_GOLD_MARKER }
     val cap = stats.carryingCapacity
     // O cálculo central já considera apenas o peso efetivamente transportado
     // e usa a Força final (base + raça + itens). A interface não deve recalcular.
     val totalWeight = stats.totalWeightLb.coerceAtLeast(0f)
     val encumbrance = stats.encumbrance
-    val hasDroppedBackpackContents = stats.inventory.any {
+    val hasDroppedBackpackContents = visibleInventory.any {
         !it.inBackpack && !it.equipped && it.equippedSlot == Dnd35Rules.EquipmentSlots.NONE
     }
-    val hasBackpackContents = stats.inventory.any {
+    val hasBackpackContents = visibleInventory.any {
         it.inBackpack && !it.equipped && it.equippedSlot == Dnd35Rules.EquipmentSlots.NONE
     }
     val heavyMax = maxOf(1, cap.heavyMaxLb).toFloat()
@@ -161,13 +163,13 @@ fun InventoryTab(
 
     val totalEquivalentGp = character.goldGp + (character.silverSp / 10f) + (character.copperCp / 100f) + (character.platinumPp * 10f)
     val totalCoinsCount = character.goldGp.toInt() + character.silverSp.toInt() + character.copperCp.toInt() + character.platinumPp.toInt()
-    val coinsWeightLb = totalCoinsCount / 50.0f
+    val coinsWeightLb = MetricUnits.coinsToPounds(totalCoinsCount.toFloat())
 
     val filteredItems = if (selectedCategoryIndex == 0) {
-        stats.inventory
+        visibleInventory
     } else {
         val selectedCat = categories[selectedCategoryIndex]
-        stats.inventory.filter { it.category.equals(selectedCat, ignoreCase = true) }
+        visibleInventory.filter { it.category.equals(selectedCat, ignoreCase = true) }
     }
 
     LazyColumn(
@@ -224,7 +226,7 @@ fun InventoryTab(
                         Column {
                             Text("PESO TOTAL CARREGADO", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                             Text(
-                                "${String.format("%.1f", totalWeight)} lb",
+                                "${String.format("%.2f", MetricUnits.poundsToKilograms(totalWeight))} kg",
                                 style = MaterialTheme.typography.headlineMedium,
                                 fontWeight = FontWeight.ExtraBold,
                                 color = encumbranceColor
@@ -234,7 +236,7 @@ fun InventoryTab(
                         Column(horizontalAlignment = Alignment.End) {
                             Text("CAPACIDADE MÁXIMA", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                             Text(
-                                "${cap.heavyMaxLb} lb",
+                                "${String.format("%.2f", MetricUnits.poundsToKilograms(cap.heavyMaxLb.toFloat()))} kg",
                                 style = MaterialTheme.typography.titleMedium,
                                 fontWeight = FontWeight.Bold,
                                 color = MaterialTheme.colorScheme.onSurface
@@ -264,9 +266,9 @@ fun InventoryTab(
                     Spacer(modifier = Modifier.height(10.dp))
 
                     Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-                        LoadLimitInfo("Leve", "0–${cap.lightMaxLb} lb", DndHpGreen)
-                        LoadLimitInfo("Média", "${cap.lightMaxLb + 1}–${cap.mediumMaxLb} lb", DndHpYellow)
-                        LoadLimitInfo("Pesada", "${cap.mediumMaxLb + 1}–${cap.heavyMaxLb} lb", MaterialTheme.colorScheme.error)
+                        LoadLimitInfo("Leve", "0–${String.format("%.2f", MetricUnits.poundsToKilograms(cap.lightMaxLb.toFloat()))} kg", DndHpGreen)
+                        LoadLimitInfo("Média", "${String.format("%.2f", MetricUnits.poundsToKilograms((cap.lightMaxLb + 1).toFloat()))}–${String.format("%.2f", MetricUnits.poundsToKilograms(cap.mediumMaxLb.toFloat()))} kg", DndHpYellow)
+                        LoadLimitInfo("Pesada", "${String.format("%.2f", MetricUnits.poundsToKilograms((cap.mediumMaxLb + 1).toFloat()))}–${String.format("%.2f", MetricUnits.poundsToKilograms(cap.heavyMaxLb.toFloat()))} kg", MaterialTheme.colorScheme.error)
                     }
                 }
             }
@@ -426,7 +428,7 @@ fun InventoryTab(
                     Spacer(modifier = Modifier.height(10.dp))
 
                     Text(
-                        "Total Equivalente: ${String.format("%.1f", totalEquivalentGp)} PO  •  Peso das Moedas: ${String.format("%.2f", coinsWeightLb)} lb (${totalCoinsCount} moedas)",
+                        "Total Equivalente: ${String.format("%.1f", totalEquivalentGp)} PO  •  Peso das Moedas: ${String.format("%.2f", MetricUnits.poundsToKilograms(coinsWeightLb))} kg (${totalCoinsCount} moedas)",
                         style = MaterialTheme.typography.labelSmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
@@ -765,7 +767,7 @@ fun InventoryTab(
             text = {
                 Column(modifier = Modifier.fillMaxWidth()) {
                     Text(
-                        "10 PC = 1 PP • 10 PP = 1 PO • 10 PO = 1 PL. 50 moedas pesam 1 libra (lb).",
+                        "10 PC = 1 PP • 10 PP = 1 PO • 10 PO = 1 PL. 100 moedas pesam 1 kg.",
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
@@ -938,8 +940,8 @@ fun InventoryItemRowRefined(
                         text = buildString {
                             append(item.category)
                             append(" • ")
-                            append(String.format("%.1f", totalItemWeight))
-                            append(" lb")
+                            append(String.format("%.2f", MetricUnits.poundsToKilograms(totalItemWeight)))
+                            append(" kg")
                             if (item.costGp > 0) {
                                 append(" • ")
                                 append(item.costGp)

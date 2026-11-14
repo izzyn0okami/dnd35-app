@@ -18,6 +18,7 @@ import com.example.dnd35.model.CalculatedCharacterStats
 import com.example.dnd35.model.CharacterCalculator
 import com.example.dnd35.model.CharacterEntity
 import com.example.dnd35.model.Dnd35Rules
+import com.example.dnd35.model.MetricUnits
 import com.example.dnd35.model.isWeaponInventoryCategory
 import com.example.dnd35.model.effectiveDamage
 import com.example.dnd35.model.effectiveArmorClassBonus
@@ -222,6 +223,7 @@ object CharacterPdfExporter {
             canvas1.drawRoundRect(RectF(30f, weaponY, pageWidth - 30f, weaponY + 120f), 4f, 4f, fillBoxPaint)
             canvas1.drawRoundRect(RectF(30f, weaponY, pageWidth - 30f, weaponY + 120f), 4f, 4f, borderPaint)
             canvas1.drawRect(RectF(30f, weaponY, pageWidth - 30f, weaponY + 20f), goldBannerPaint)
+            val visibleInventory = stats.inventory.filterNot { it.notes == com.example.dnd35.session.SESSION_LOOT_GOLD_MARKER }
             val equippedWeapons = stats.inventory.filter { it.equipped && isWeaponInventoryCategory(it.category) }
             canvas1.drawText("ATAQUES & ARMAS (${equippedWeapons.size} cadastradas; máx. 4 exibidas)", 40f, weaponY + 14f, headerPaint)
             var wRowY = weaponY + 36f
@@ -243,9 +245,9 @@ object CharacterPdfExporter {
             canvas1.drawRect(RectF(30f, loadY, pageWidth - 30f, loadY + 20f), goldBannerPaint)
             canvas1.drawText("GESTÃO DE CARGA & PESO (LIVRO DO JOGADOR 3.5)", 40f, loadY + 14f, headerPaint)
 
-            canvas1.drawText("Peso Carregado Total: ${String.format("%.1f", stats.totalWeightLb)} lb   •   Status Atual: ${stats.encumbrance.label}", 42f, loadY + 38f, boldBodyPaint)
-            canvas1.drawText("Carga Leve: até ${stats.carryingCapacity.lightMaxLb} lb   •   Carga Média: ${stats.carryingCapacity.lightMaxLb + 1}–${stats.carryingCapacity.mediumMaxLb} lb   •   Carga Pesada: ${stats.carryingCapacity.mediumMaxLb + 1}–${stats.carryingCapacity.heavyMaxLb} lb", 42f, loadY + 54f, bodyPaint)
-            canvas1.drawText("Erguer sobre a cabeça: ${stats.carryingCapacity.heavyMaxLb} lb   •   Erguer do chão: ${stats.carryingCapacity.heavyMaxLb * 2} lb   •   Arrastar: ${stats.carryingCapacity.heavyMaxLb * 5} lb", 42f, loadY + 68f, bodyPaint)
+            canvas1.drawText("Peso Carregado Total: ${String.format("%.2f", MetricUnits.poundsToKilograms(stats.totalWeightLb))} kg   •   Status Atual: ${stats.encumbrance.label}", 42f, loadY + 38f, boldBodyPaint)
+            canvas1.drawText("Carga Leve: até ${String.format("%.2f", MetricUnits.poundsToKilograms(stats.carryingCapacity.lightMaxLb.toFloat()))} kg   •   Carga Média: ${String.format("%.2f", MetricUnits.poundsToKilograms((stats.carryingCapacity.lightMaxLb + 1).toFloat()))}–${String.format("%.2f", MetricUnits.poundsToKilograms(stats.carryingCapacity.mediumMaxLb.toFloat()))} kg   •   Carga Pesada: ${String.format("%.2f", MetricUnits.poundsToKilograms((stats.carryingCapacity.mediumMaxLb + 1).toFloat()))}–${String.format("%.2f", MetricUnits.poundsToKilograms(stats.carryingCapacity.heavyMaxLb.toFloat()))} kg", 42f, loadY + 54f, bodyPaint)
+            canvas1.drawText("Erguer sobre a cabeça: ${String.format("%.2f", MetricUnits.poundsToKilograms(stats.carryingCapacity.heavyMaxLb.toFloat()))} kg   •   Erguer do chão: ${String.format("%.2f", MetricUnits.poundsToKilograms((stats.carryingCapacity.heavyMaxLb * 2).toFloat()))} kg   •   Arrastar: ${String.format("%.2f", MetricUnits.poundsToKilograms((stats.carryingCapacity.heavyMaxLb * 5).toFloat()))} kg", 42f, loadY + 68f, bodyPaint)
 
             // Efeitos da carga
             val maxDexNote = stats.encumbrance.maxDexBonus?.let { "+$it" } ?: "Sem limite"
@@ -357,12 +359,12 @@ object CharacterPdfExporter {
             canvas2.drawRoundRect(RectF(col2Left, spellBoxTop, col2Left + skillBoxWidth, pageHeight - 35f), 4f, 4f, fillBoxPaint)
             canvas2.drawRoundRect(RectF(col2Left, spellBoxTop, col2Left + skillBoxWidth, pageHeight - 35f), 4f, 4f, borderPaint)
             canvas2.drawRect(RectF(col2Left, spellBoxTop, col2Left + skillBoxWidth, spellBoxTop + 20f), goldBannerPaint)
-            canvas2.drawText("INVENTÁRIO (${stats.inventory.size}; máx. 10 exibidos)", col2Left + 10f, spellBoxTop + 14f, headerPaint)
+            canvas2.drawText("INVENTÁRIO (${visibleInventory.size}; máx. 10 exibidos)", col2Left + 10f, spellBoxTop + 14f, headerPaint)
 
             var invY = spellBoxTop + 36f
-            for (item in stats.inventory.take(10)) {
+            for (item in visibleInventory.take(10)) {
                 val eq = if (item.equipped || item.equippedSlot != Dnd35Rules.EquipmentSlots.NONE) "[${item.equippedSlot.take(7)}] " else ""
-                val itemStr = "$eq${item.name} (x${item.quantity}) - ${item.weightLb * item.quantity} lb"
+                val itemStr = "$eq${item.name} (x${item.quantity}) - ${String.format("%.2f", MetricUnits.poundsToKilograms(item.weightLb * item.quantity))} kg"
                 canvas2.drawText(itemStr, col2Left + 10f, invY, boldBodyPaint)
                 val itemCombatStat = when {
                     isWeaponInventoryCategory(item.category) -> item.effectiveDamage()
@@ -374,7 +376,7 @@ object CharacterPdfExporter {
                 }
                 invY += 22f
             }
-            if (stats.inventory.isEmpty()) {
+            if (visibleInventory.isEmpty()) {
                 canvas2.drawText("Mochila vazia.", col2Left + 10f, invY, bodyPaint)
             }
 

@@ -257,12 +257,13 @@ class SessionClient {
         combatantId: String? = null,
         hpDelta: Int? = null,
         lootItemId: String? = null,
-        shopItemId: String? = null
+        shopItemId: String? = null,
+        quantity: Int = 1
     ) {
         val out = output ?: return
         scope.launch {
             runCatching {
-                SessionWire.write(out, SessionMessage.ActionRequested(kind, summary, characterJson, combatantId, hpDelta, lootItemId, shopItemId))
+                SessionWire.write(out, SessionMessage.ActionRequested(kind, summary, characterJson, combatantId, hpDelta, lootItemId, shopItemId, quantity))
             }.onFailure { CrashLogStore.record("MULTIPLAYER_CLIENT", "Falha ao enviar pedido de ação", it) }
         }
     }
