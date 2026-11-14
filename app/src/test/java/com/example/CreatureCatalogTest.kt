@@ -124,4 +124,17 @@ class CreatureCatalogTest {
         }
         assertTrue("Escorpião Colossal não consta na tabela de Invocar Criaturas", !CreatureCatalog.byId("escorpiao-colossal")!!.summonedCreature)
     }
+
+    @Test
+    fun direAnimalsHaveNarrativeAndCombatSummaries() {
+        listOf(
+            "arminho-atroz", "carcaju-atroz", "gorila-atroz", "javali-atroz",
+            "leao-atroz", "lobo-atroz", "morcego-atroz", "rato-atroz",
+            "tigre-atroz", "tubarao-atroz", "urso-atroz"
+        ).forEach { id ->
+            val creature = CreatureCatalog.byId(id)!!
+            assertTrue("$id sem descrição", creature.description.isNotBlank())
+            assertTrue("$id sem resumo de combate", creature.combat.isNotBlank())
+        }
+    }
 }
