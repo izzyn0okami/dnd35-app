@@ -7951,7 +7951,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Este humanoide aquático possui pele escamosa, dedos das mãos e dos pés palmados, dentes afiados, longa cauda terminada em nadadeira curva e outras nadadeiras nos braços, nas costas e na cabeça. Seus olhos são grandes e profundamente negros. Os sahuagin são predadores marinhos adaptados à caça submarina, conhecidos como demônios do mar; vivem em águas costeiras e organizam incursões contra comunidades litorâneas. A coloração costuma ser verde, mais escura nas costas e clara no ventre; um adulto mede quase 1,8 m e pesa cerca de 100 kg. São inimigos naturais dos elfos aquáticos e também hostis aos tritões. Falam seu próprio idioma, e muitos conhecem Comum e Aquan.",
+    "combat": "Os sahuagin lutam sem misericórdia. Debaixo d’água, atacam com garras ou armas enquanto rasgam os inimigos com as patas traseiras; metade de um grupo costuma levar redes. Em ataques a navios, cercam a embarcação e mantêm parte das forças na água como reforço. Sentido Aquático (Ext): localizam criaturas submersas a até 9 m como se tivessem sentido cego. Frenesi de Sangue: uma vez por dia, depois de sofrer dano em combate, entram no frenesi no turno seguinte; recebem +2 em Força e Constituição e –2 na CA, atacam até morrer ou eliminar o oponente e não podem encerrar o efeito voluntariamente. Rasgar (Ext): causa 1d4+1 pontos de dano; podem realizar dois ataques de rasgar quando lutam debaixo d’água. Sensibilidade à Água Doce (Ext): totalmente imersos em água doce, fazem Fortitude CD 15 ou ficam fatigados; repetem o teste a cada 10 minutos enquanto permanecerem submersos. Cegueira sob Luz (Ext): luz brilhante repentina os cega por uma rodada e os deixa ofuscados enquanto permanecerem sob a fonte luminosa. Falar com Tubarões (Ext): comunicam-se por telepatia a até 50 m, limitada a conceitos simples, e podem usar Adestrar Animais para treinar tubarões. Anfíbio (Ext): sobrevivem fora da água por 1 hora para cada 2 pontos de Constituição. Recebem +8 racial em Natação e podem escolher 10 mesmo ameaçados; submersos, recebem +4 em Esconder-se, Ouvir e Observar; perto de seus lares, +4 em Sobrevivência e Profissão (caçador), e +4 em Adestrar Animais ao lidar com tubarões. Variantes descritas no verbete: cerca de um em cada 200 sahuagin tem quatro braços; malenti podem surgir quando há elfos do mar nas proximidades e, embora se pareçam com eles, mantêm as sensibilidades à água doce e à luz."
   },
   {
     "id": "salteador-etereo",
@@ -8001,6 +8003,60 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
+    "familiar": false,
+    "description": "O salteador etéreo tem aproximadamente a altura de um humano, mas seu corpo lembra um saco sustentado por uma única perna poderosa, terminada em um apêndice preênsil. No centro do corpo ficam o rosto, quatro olhos e uma boca grande; quatro braços longos, articulados e de dedos finos se estendem ao redor. Essas criaturas furtam quinquilharias de viajantes e usam sua capacidade de atravessar rapidamente os planos Material e Etéreo para escapar. Mantêm covis isolados e de difícil acesso no Plano Material, onde acumulam objetos sem valor, e são mudas.",
+    "combat": "O salteador usa Passeio Etéreo para permanecer fora de vista e atravessar objetos sólidos. Ao localizar uma vítima, retorna ao Plano Material de surpresa, tenta tomar um único objeto e volta ao Etéreo; pode morder para distrair o alvo e foge quando está muito ferido. Itens mágicos são especialmente atraentes, sobretudo os adornados ou sob aura de magia de Nystul ou chama contínua. Detectar Magia (Sob): à vontade, nível de conjurador 5º. Passeio Etéreo (Sob): passa do Etéreo ao Material como parte de qualquer ação de movimento e retorna como ação livre; pode permanecer uma rodada no Plano Etéreo antes de ser forçado a voltar, funcionando nos demais aspectos como a magia passeio etéreo (nível de conjurador 15º). Um alvo pode tentar recuperar o objeto roubado usando as regras para desarmar. O salteador recebe +5 racial em Prestidigitação e +4 em Ouvir e Observar."
+  },
+  {
+    "id": "saqueador-etereo",
+    "name": "Saqueador Etéreo",
+    "type": "Besta Mágica",
+    "size": "Médio",
+    "typeDetail": "Médio — Extraplanar",
+    "hitDice": "2d10",
+    "hdCount": 2,
+    "hdType": 10,
+    "hitPoints": 11,
+    "initiative": 5,
+    "speed": "12 m (8 quadrados)",
+    "armorClass": 14,
+    "armorClassText": "14 (+1 Des, +3 natural), toque 11, surpresa 13",
+    "touchAc": 11,
+    "flatFootedAc": 13,
+    "baseAttack": 2,
+    "grapple": 4,
+    "attack": "Corpo a corpo: mordida +4 (dano: 1d6+3)",
+    "fullAttack": "Corpo a corpo: mordida +4 (dano: 1d6+3)",
+    "spaceReach": "1,5 m/1,5 m",
+    "specialAttacks": "—",
+    "specialQualities": "Visão no escuro 18 m, passeio etéreo",
+    "saves": {
+      "fort": 3,
+      "ref": 4,
+      "will": 1
+    },
+    "abilities": {
+      "str": 14,
+      "dex": 12,
+      "con": 11,
+      "int": 7,
+      "wis": 12,
+      "cha": 10
+    },
+    "skills": "Ouvir +5, Furtividade +5, Observar +4",
+    "feats": "Iniciativa Aprimorada",
+    "environment": "Plano Etéreo",
+    "organization": "Solitário",
+    "challengeRating": "3",
+    "treasure": "Nenhum",
+    "alignment": "Sempre Neutro",
+    "advancement": "3–4 DV (Médio); 5–6 DV (Grande)",
+    "levelAdjustment": "—",
+    "source": "Livro dos Monstros 3.5",
+    "description": "O saqueador etéreo se assemelha a um lagarto bípede de cauda sinuosa, mas não possui cabeça: no lugar dela há uma boca formada por três mandíbulas poderosas, com dentes negros, e três pequenos olhos ao redor. É um predador agressivo do Plano Etéreo; sua ecologia é pouco conhecida. Os exemplares que aparecem no Plano Material atacam suas presas. Sua coloração varia do azul vivo ao violeta escuro; mede cerca de 1,2 m de altura, alcança 2,1 m de comprimento e pesa aproximadamente 100 kg. Não fala idiomas conhecidos e emite um ganido agudo.",
+    "combat": "Quando localiza uma presa, desloca-se para o Plano Material para surpreendê-la, morde e retorna rapidamente ao Plano Etéreo. Quando está muito ferido, prefere fugir para seu plano. Passeio Etéreo (Sob): pode passar do Plano Etéreo ao Material como parte de qualquer ação de movimento e retornar como ação livre; permanece uma rodada no Etéreo antes de ser forçado a voltar. Nos demais aspectos, funciona como a magia passeio etéreo (nível de conjurador 15º). Recebe +2 racial em Ouvir, Furtividade e Observar.",
+    "animalCompanion": false,
+    "summonedCreature": false,
     "familiar": false
   },
   {
@@ -8024,7 +8080,7 @@
     "attack": "Corpo a corpo: chifres +2 (dano: 1d6) ou à distância: arco curto +3 (dano: 1d6; dec. x3)",
     "fullAttack": "Corpo a corpo: chifres +2 (dano: 1d6) e adaga –3 (dano: 1d4; dec. 19–20); ou à distância: arco curto +3 (dano: 1d6; dec. x3)",
     "spaceReach": "1,5 m/1,5 m",
-    "specialAttacks": "Flautas Saqueador Etéreo SÁTIRO",
+    "specialAttacks": "Flautas",
     "specialQualities": "Redução de Dano 5/ ferro frio, visão da penumbra",
     "saves": {
       "fort": 2,
@@ -8039,7 +8095,7 @@
       "wis": 13,
       "cha": 13
     },
-    "skills": "Atuação (instrumentos de sopro) +9, Blefar +9, Conhecimento (natureza) +9, Diplomacia +3, Disfarce +1 (+3 fingindo), Esconder– se +13, Furtividade +13, Intimidar +3, Observar +15, Ouvir +15, Sobrevivência +1 (+3 acima do solo)",
+    "skills": "Atuação (instrumentos de sopro) +9, Blefar +9, Conhecimento (natureza) +9, Diplomacia +3, Disfarce +1 (+3 fingindo), Esconder–se +13, Furtividade +13, Intimidar +3, Observar +15, Ouvir +15, Sobrevivência +1 (+3 acima do solo)",
     "feats": "ProntidãoB, Esquiva, Mobilidade",
     "environment": "Florestas temperadas",
     "organization": "Solitário, casal, bando (3–5) ou tropa (6–11)",
@@ -8051,7 +8107,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "O sátiro, também chamado fauno, parece um homem com chifres e pernas de bode. É uma criatura hedonista que brinca nas regiões selvagens, aprecia boa comida, bebidas fortes e romances apaixonados. Tem cabelos vermelhos ou castanho-escuros, cascos e chifres pretos, e costuma carregar instrumentos musicais ou vinho em vez de armas. Em geral deixa viajantes em paz, mas gosta de pregar peças em quem se aproxima demais de seu território florestal. Mede e pesa aproximadamente o mesmo que um meio-elfo. Fala Silvestre e, normalmente, também Comum.",
+    "combat": "Os sentidos aguçados tornam difícil surpreender um sátiro na floresta; sua agilidade também lhe permite espreitar viajantes desatentos. Desarmado, ataca com cabeçadas; quando espera problemas, usa arco curto e adaga, disparando de esconderijos para enfraquecer os adversários. Flautas (Sob): normalmente um sátiro do grupo carrega flautas capazes de afetar criaturas em uma área de 18 m (exceto outros sátiros); Vontade CD 13 anula enfeitiçar pessoa, sono ou medo, à escolha do sátiro (nível de conjurador 10º). Quem resistir a um efeito fica imune ao mesmo conjunto de flautas por 24 horas; nas mãos de outras criaturas, os instrumentos não têm poderes especiais. O sátiro pode usar a música para seduzir ou adormecer viajantes e roubar seus pertences. Recebe +4 racial em Esconder-se, Ouvir, Furtividade, Atuação e Observar. O Nível de Desafio é 2 sem flautas e 4 com flautas."
   },
   {
     "id": "skum",
@@ -8072,7 +8130,7 @@
     "baseAttack": 1,
     "grapple": 5,
     "attack": "Corpo a corpo: mordida +5 (dano: 2d6+4)",
-    "fullAttack": "Corpo a corpo: mordida +5 (dano: 2d6+4) e 2 garras +0 (dano: 1d4+2) Sátiro Skum SKUM",
+    "fullAttack": "Corpo a corpo: mordida +5 (dano: 2d6+4) e 2 garras +0 (dano: 1d4+2)",
     "spaceReach": "1,5 m/1,5 m",
     "specialAttacks": "Rasgar 1d6+2",
     "specialQualities": "Visão no escuro 18 m, anfíbio",
@@ -8101,7 +8159,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "O skum é uma horrível mistura de humano e peixe: suas barbatanas formam mãos e pés distorcidos, as costas exibem uma espinha fina e aparente, e o corpo possui cauda musculosa e delgada e olhos bulbosos. São criaturas renegadas criadas pelos aboletes para servir como escravos e tropas descartáveis; sua descendência parcialmente humana torna sua origem ainda mais perturbadora. Têm aproximadamente a altura e o peso de um humano e falam Aquan.",
+    "combat": "Na água, os skum atacam com mordidas e garras e dilaceram os oponentes com as patas traseiras. Os que servem aos aboletes podem ser treinados para usar armas, sobretudo armas de haste de duas mãos e armas simples de arremesso, como azagaias, tridentes e fundas. Rasgar (Ext): além dos ataques normais, causa 1d6+2 pontos de dano; um skum pode realizar dois ataques de rasgar quando luta debaixo d’água. Sob a água, recebe +4 racial em Esconder-se, Ouvir e Observar. Recebe +8 racial em Natação para ações especiais ou para evitar perigos e pode escolher 10 mesmo distraído ou ameaçado; pode correr durante a natação, mas deve seguir em linha reta."
   },
   {
     "id": "slaad-azul",
