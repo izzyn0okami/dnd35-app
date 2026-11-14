@@ -460,3 +460,9 @@ As fichas-base devem ser reutilizadas por ID sempre que a tabela pedir apenas um
 - Bruxa da Noite e Xill foram conferidos com referências SRD 3.5 para validar blocos cuja extração do PDF apresenta colunas quebradas; os dados foram mantidos consistentes com o Livro dos Monstros em português.
 - Adicionado Unicórnio, Arauto Celestial no 9º círculo de Invocar Aliado da Natureza. O bloco é o Corcel Celestial, Clérigo de 7º nível, do Livro dos Monstros, p. 247, correspondendo à opção nomeada na tabela do Livro do Jogador.
 - Resolvida a entrada Baleia Celestial: a tabela inglesa identifica a opção como “Celestial Baleen Whale”; o bloco genérico de baleia que se alimenta de plâncton no Livro dos Monstros em português corresponde ao bloco de Baleia Azul (12d8+78, 132 PV). A Baleia Azul existente foi vinculada ao 7º círculo com o modelo Celestial, sem criar ficha duplicada. A baleia-orca e o cachalote continuam sendo espécies separadas.
+
+
+## 2026-11-14 — Correção de validação da lista de invocação
+
+- A CI identificou que `unicornio-arauto-celestial` tinha ficha e teste de círculo, mas não estava efetivamente incluído na lista de Invocar Aliado da Natureza IX. O ID foi acrescentado à lista; o teste que cobre essa opção permanece como regressão.
+- A PR deve permanecer sem merge até a nova execução da CI concluir com sucesso e o APK ser disponibilizado para validação.
