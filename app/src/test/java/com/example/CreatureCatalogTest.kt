@@ -377,4 +377,22 @@ class CreatureCatalogTest {
         assertTrue(CreatureCatalog.byId("inumano")!!.combat.contains("1d4 rodadas"))
     }
 
+
+    @Test
+    fun koboldKrakenLammasuGoldenProtectorAndSeaLionHaveNarrativeSummaries() {
+        listOf(
+            "kobold-combatente-de-1-nivel", "kraken", "lammasu",
+            "protetor-dourado-lammasu-meiodragao-celestial", "leao-marinho"
+        ).forEach { id ->
+            val creature = CreatureCatalog.byId(id)!!
+            assertTrue("$id sem descrição", creature.description.isNotBlank())
+            assertTrue("$id sem resumo de combate", creature.combat.isNotBlank())
+        }
+        assertTrue(CreatureCatalog.byId("kobold-combatente-de-1-nivel")!!.combat.contains("armadilhas"))
+        assertTrue(CreatureCatalog.byId("kraken")!!.combat.contains("84 m"))
+        assertTrue(CreatureCatalog.byId("lammasu")!!.combat.contains("6d8"))
+        assertTrue(CreatureCatalog.byId("protetor-dourado-lammasu-meiodragao-celestial")!!.combat.contains("destruir o mal"))
+        assertTrue(CreatureCatalog.byId("leao-marinho")!!.combat.contains("2d6+6"))
+    }
+
 }
