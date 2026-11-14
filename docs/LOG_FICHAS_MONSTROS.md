@@ -586,3 +586,12 @@ As fichas-base devem ser reutilizadas por ID sempre que a tabela pedir apenas um
 - Nenhuma estatística mecânica foi alterada. O exemplo de fantasma foi resumido conforme as habilidades que constam especificamente em sua ficha, sem atribuir a ele outros poderes opcionais do modelo.
 - Teste de regressão adicionado para as seis fichas e suas capacidades características.
 - Situação após esta etapa: 313 fichas no catálogo; 146 possuem descrição e resumo de combate; 167 ainda precisam de ao menos um desses campos.
+
+
+## 2026-11-14 — Décima segunda etapa: gênios do ar, fogo e quatro elementos
+
+- Preenchidas descrição e síntese de combate de 3 fichas: Djinni, Efreeti e Janni.
+- Fonte primária: Livro dos Monstros 3.5 em português, páginas impressas 133–135. Os resumos preservam a origem planar, a organização social e as capacidades de combate descritas nos verbetes.
+- Foram destacados: Maestria Aérea, Vendaval e variante nobre do Djinni; Alterar Tamanho, dano adicional de fogo e habilidades similares à magia do Efreeti; e Alterar Tamanho, invisibilidade, passeio etéreo e Tolerância aos Elementos do Janni.
+- Nenhuma estatística mecânica foi alterada. Teste de regressão cobre as três fichas e habilidades distintivas.
+- Situação após esta etapa: 313 fichas no catálogo; 149 possuem descrição e resumo de combate; 164 ainda precisam de ao menos um desses campos.
