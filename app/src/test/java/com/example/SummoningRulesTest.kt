@@ -124,8 +124,11 @@ class SummoningRulesTest {
             .first { it.creature.id == "cao-infernal" }
         val hellcat = SummoningRules.creaturesForCircle(SummoningFamily.SUMMON_CREATURES, 8)
             .first { it.creature.id == "gato-infernal-bezekira" }
+        val demon = SummoningRules.creaturesForCircle(SummoningFamily.SUMMON_CREATURES, 9)
+            .first { it.creature.id == "babau" }
         assertEquals("", archon.templateLabel)
         assertEquals("", hellHound.templateLabel)
         assertEquals("", hellcat.templateLabel)
+        assertEquals("", demon.templateLabel)
     }
 }
