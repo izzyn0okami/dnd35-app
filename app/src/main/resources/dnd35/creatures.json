@@ -2488,7 +2488,7 @@
     "animalCompanion": false,
     "summonedCreature": false,
     "familiar": false,
-    "description": "O Balor é um dos mais poderosos demônios tanar’ri, uma figura humanoide colossal de cerca de 4,5 m, cercada por uma presença aterradora e chamas sobrenaturais. É um comandante cruel e estrategista, capaz de liderar outros demônios e destruir adversários com magia e força física. Sua espada longa vorpal e seu chicote flamejante são armas temidas.",
+    "description": "O Balor é um humanoide demoníaco de cerca de 4,5 m, com pele normalmente vermelho-escura, enormes asas de morcego e o corpo envolto por chamas. Empunha uma espada longa vorpal em uma mão e um chicote flamejante na outra. Está entre os mais poderosos demônios do Abismo e governa exércitos como general, planejando a conquista do poder e a destruição de inocentes.",
     "combat": "O Balor costuma começar o combate à distância, recorrendo a habilidades similares a magia devastadoras, como tempestade de fogo, implosão, telecinésia, insanidade e palavra de poder: atordoar. Quando se aproxima, ataca com a espada vorpal e o chicote flamejante, que também pode enredar o oponente. Pode invocar outros tanar’ri, teleportar-se para recuperar distância e usar seu corpo ígneo para causar dano a quem o agarrar. Sua visão da verdade e resistências tornam difícil surpreendê-lo ou detê-lo."
   },
   {
@@ -2696,8 +2696,8 @@
     "animalCompanion": false,
     "summonedCreature": true,
     "familiar": false,
-    "description": "O Hezrou é um tanar’ri de grande porte, com corpo robusto e aspecto anfíbio, conhecido pelo fedor nauseante que exala. Habita o Abismo e costuma atuar em grupos de demônios, usando sua força e resistência para dominar inimigos em combate próximo.",
-    "combat": "O Hezrou procura aproximar-se dos adversários e explorar seu fedor para enfraquecê-los antes de atacar com mordida e garras. Seu agarrar aprimorado permite prender inimigos atingidos, enquanto suas habilidades similares a magia e a capacidade de invocar tanar’ri ampliam sua ameaça. Suas resistências, imunidades e redução de dano permitem sustentar confrontos prolongados."
+    "description": "O Hezrou parece uma enorme rã vagamente humanoide, com braços no lugar das patas dianteiras, boca larga repleta de fileiras de dentes rombudos e poderosos e espinhos compridos ao longo das costas. Esses demônios atuam como sargentos, supervisionando a formação de exércitos e comandando unidades em batalha. Embora menos perspicazes que demônios superiores, são adversários quase imbatíveis no combate.",
+    "combat": "O Hezrou avança rapidamente para o centro das forças inimigas, fazendo seu mau-cheiro afetar os adversários o quanto antes. Costuma iniciar o combate com blasfêmia e depois emprega martelo do caos ou nuvem profana conforme a tendência dos oponentes. Em combate corporal, usa mordida e garras; ao atingir com ambas as garras, pode iniciar um agarrão aprimorado. Seu mau-cheiro pode deixar criaturas próximas enjoadas, e ele pode assumir forma gasosa, teleportar-se ou tentar invocar dretch ou outro hezrou."
   },
   {
     "id": "marilith",
