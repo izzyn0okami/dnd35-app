@@ -20,3 +20,10 @@ Melhoria do componente compartilhado nas cartas do Bestiário, seleção de cria
 ### Validação
 - A conferência visual em aparelho depende da instalação do APK desta branch.
 - Compilação Android e testes automatizados serão verificados pela CI da PR.
+
+## 2026-11-14 — Correção da falha de compilação na reorganização da frente
+
+- A CI identificou interpolação Kotlin escapada indevidamente em 26 expressões `\${...}` no componente de cartas; duas linhas de atributos também geravam erro sintático por causa desse escape.
+- Corrigidas as expressões para interpolação Kotlin normal (`${...}`), restaurando a renderização dinâmica dos dados e eliminando os erros de sintaxe reportados nas linhas 293–296.
+- Confirmado no código-fonte que `CreatureDefinition` fornece os campos utilizados pela carta e que `DiceRollDialog` aceita os parâmetros usados.
+- A correção está no commit `0aaefae6abfaf2ceaef87d183ee8066d7e4bbcca`; CI/build desse commit em execução no momento do registro.
