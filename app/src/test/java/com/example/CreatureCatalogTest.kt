@@ -676,7 +676,7 @@ class CreatureCatalogTest {
         val expected = mapOf(
             "uivante" to listOf("Espinhos", "Reflexos CD 16", "Vontade CD 12", "Adestrar Animais CD 25"),
             "unicornio" to listOf("Círculo Mágico Contra o Mal", "teletransporte maior", "neutralizar veneno (CD 21)", "+6 de bônus racial"),
-            "ursocoruja" to listOf("Agarrar Aprimorado", "ação livre", "sempre lutam até a morte", "CD 30")
+            "ursocoruja" to listOf("Agarrar Aprimorado", "ação livre", "sempre lutam até a morte")
         )
         expected.forEach { (id, fragments) ->
             val creature = CreatureCatalog.byId(id)!!
@@ -689,6 +689,7 @@ class CreatureCatalogTest {
         assertTrue(CreatureCatalog.byId("uivante")!!.description.contains("Pandemônio"))
         assertTrue(CreatureCatalog.byId("unicornio")!!.description.contains("2.000 PO"))
         assertTrue(CreatureCatalog.byId("ursocoruja")!!.description.contains("1d6 filhotes"))
+        assertTrue(CreatureCatalog.byId("ursocoruja")!!.description.contains("CD 30"))
     }
 
 }
