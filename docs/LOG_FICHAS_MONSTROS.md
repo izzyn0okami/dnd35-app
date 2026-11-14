@@ -613,3 +613,12 @@ As fichas-base devem ser reutilizadas por ID sempre que a tabela pedir apenas um
 - Foram destacados: emboscada, investida e Dilacerar do girallon; vantagem numérica, táticas de horda e emboscadas dos gnoll; e Fúria, ferimento amaldiçoado, Velocidade e imunidades do golem de barro.
 - Nenhuma estatística mecânica foi alterada. Teste de regressão cobre as três fichas e suas características distintivas.
 - Situação após esta etapa: 313 fichas no catálogo; 155 possuem descrição e resumo de combate; 158 ainda precisam de ao menos um desses campos.
+
+
+## 2026-11-14 — Décima quinta etapa: golem de ferro, grick, grifo, grimlock, avoral e hipogrifo
+
+- Preenchidas descrição e síntese de combate de 6 fichas: Golem de Ferro, Grick, Grifo, Grimlock, Avoral e Hipogrifo.
+- Fonte primária: Livro dos Monstros 3.5 em português, páginas impressas 151–154, 156 e 162. Os resumos foram redigidos a partir dos verbetes, mantendo suas particularidades sem alterar os blocos de estatísticas.
+- Destaques: nuvem de gás venenoso e interação elemental do golem de ferro; emboscada por tentáculos e resistência do grick; Bote e Rasgar do grifo; Sentido Cego e vulnerabilidades sensoriais do grimlock; combate aéreo, habilidades similares à magia e traços de guardinal do avoral; mergulhos, defesa do ninho e treinamento do hipogrifo.
+- Nenhuma estatística mecânica foi alterada. Teste de regressão cobre as seis fichas e suas capacidades distintivas.
+- Situação após esta etapa: 313 fichas no catálogo; 161 possuem descrição e resumo de combate; 152 ainda precisam de ao menos um desses campos.
