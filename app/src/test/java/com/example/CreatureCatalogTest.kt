@@ -286,4 +286,23 @@ class CreatureCatalogTest {
         assertTrue(CreatureCatalog.byId("nixie")!!.combat.contains("Enfeitiçar Pessoa"))
     }
 
+
+    @Test
+    fun pixieGhostChaosBeastWillOWispGhostFungusAndGargoyleHaveNarrativeSummaries() {
+        listOf(
+            "pixie", "fantasma-guerreiro-humano-de-5-nivel", "fera-do-caos",
+            "fogofatuo", "fungo-fantasma", "gargula"
+        ).forEach { id ->
+            val creature = CreatureCatalog.byId(id)!!
+            assertTrue("$id sem descrição", creature.description.isNotBlank())
+            assertTrue("$id sem resumo de combate", creature.combat.isNotBlank())
+        }
+        assertTrue(CreatureCatalog.byId("pixie")!!.combat.contains("flechas especiais"))
+        assertTrue(CreatureCatalog.byId("fantasma-guerreiro-humano-de-5-nivel")!!.combat.contains("possessão"))
+        assertTrue(CreatureCatalog.byId("fera-do-caos")!!.combat.contains("Instabilidade Corpórea"))
+        assertTrue(CreatureCatalog.byId("fogofatuo")!!.combat.contains("2d8"))
+        assertTrue(CreatureCatalog.byId("fungo-fantasma")!!.combat.contains("Invisibilidade Maior"))
+        assertTrue(CreatureCatalog.byId("gargula")!!.combat.contains("Imobilidade"))
+    }
+
 }
