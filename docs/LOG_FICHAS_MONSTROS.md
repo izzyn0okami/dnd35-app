@@ -419,3 +419,12 @@ As fichas-base devem ser reutilizadas por ID sempre que a tabela pedir apenas um
 - Tojanida Adulto permanece no círculo 5, conforme a tabela; sua disponibilidade em círculos superiores é automática.
 - Unicórnio foi incluído no catálogo e no círculo 4, sem duplicar registros. A variante “Unicórnio, Arauto Celestial” ainda precisa de extração e validação separadas.
 - Nenhuma arte foi gerada ou substituída. As fichas que não possuem arte serão identificadas em auditoria própria para futura geração rasterizada; imagens existentes serão preservadas.
+
+
+## 2026-11-14 — Xorns e vinculação das listas de invocação
+
+- Adicionadas fichas do Xorn Menor, Xorn e Xorn Ancião com estatísticas do Livro dos Monstros, pp. 260–261.
+- Vinculados às opções de Invocar Aliado da Natureza: Xorn Menor (4º), Xorn Médio (6º) e Xorn Ancião (7º).
+- Gavião-Seta, Tojanida, Salamandra e Unicórnio também foram vinculados às listas e círculos conferidos no Livro do Jogador.
+- O Xorn Médio é nomeado apenas “Xorn” no verbete do Livro dos Monstros; a identificação “Médio” é mantida na ficha para corresponder à designação da tabela de invocação.
+- Permanecem pendentes as seis categorias de tamanho/estágio de Elementais (Água, Ar, Fogo e Terra), além de insetos gigantes, Arconte Guardião, Xill, Leonal, Bruxa da Noite, Baleia Celestial e a variante Unicórnio, Arauto Celestial.
