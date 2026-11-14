@@ -442,3 +442,12 @@ As fichas-base devem ser reutilizadas por ID sempre que a tabela pedir apenas um
 - As quatro variantes elementais estão disponíveis em cada estágio. Nenhuma imagem existente foi modificada e nenhuma arte vetorial foi criada.
 
 - Revisão adicional das listas de círculos após a extração integral das tabelas do Livro do Jogador: corrigida a posição dos Elementais nas duas famílias de invocação e corrigidos Xorn Médio e Salamandra Média para o 4º círculo de Invocar Aliado da Natureza. Os testes agora percorrem os quatro elementos em todos os seis círculos previstos em cada família.
+
+
+## 2026-11-14 — Insetos gigantes das listas de Invocar Criaturas
+
+- Adicionadas fichas-base de Abelha Gigante (Livro dos Monstros, p. 285), Besouro Gigante (p. 286), Gafanhoto Gigante (p. 289) e Louva-a-deus Gigante (p. 289).
+- Vinculações conforme Livro do Jogador, p. 211: Abelha Gigante Celestial e Besouro Gigante Celestial (2º círculo); Louva-a-deus Gigante Abissal (4º); Gafanhoto Gigante Celestial (5º).
+- As fichas armazenam a criatura-base; o rótulo Celestial/Abissal é aplicado pela regra de invocação, sem duplicar fichas com modelos.
+- O bloco do Louva-a-deus foi completado usando o SRD 3.5, que confirma DV 4d8+8, 26 PV, iniciativa –1, deslocamento terrestre e voo, CA 14, ataques, agarrar aprimorado, testes de resistência e habilidades. A versão em português do Livro dos Monstros apresenta o bloco quebrado entre colunas; não foram inferidos os campos ausentes.
+- Nenhuma imagem foi substituída ou gerada.
