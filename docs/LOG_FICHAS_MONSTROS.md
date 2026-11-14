@@ -842,3 +842,10 @@ As fichas-base devem ser reutilizadas por ID sempre que a tabela pedir apenas um
 - Corrigida a capitalização da asserção de “carapaça” no teste do Tarrasque; nenhuma ficha foi alterada por essa correção.
 - Adicionado teste de regressão para as três fichas e seus efeitos distintivos.
 - Contagem após esta etapa: 320 fichas no catálogo; 225 com Descrição e Combate; 95 ainda precisam de ao menos um desses campos. O Unicórnio já estava contabilizado entre as fichas preenchidas antes desta etapa.
+
+
+### Correção de CI — 2026-11-14 (teste do lote Uivante–Urso-Coruja)
+- Identificada a asserção incorreta: o teste procurava “CD 30” no campo Combate do Urso-Coruja, mas o valor pertence ao texto de treinamento na Descrição.
+- Corrigido o teste para validar CD 30 no campo Descrição, sem alterar conteúdo da criatura nem suas estatísticas.
+- A falha não indicava defeito no catálogo; era apenas uma expectativa de teste aplicada ao campo errado.
+- Aguardando nova execução dos fluxos Android CI e compilação do APK.
