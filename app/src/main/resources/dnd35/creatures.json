@@ -7535,7 +7535,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Morto-vivo de aparência de cadáver gigante semiesquelético, com a caixa torácica exposta e nojentas vísceras à mostra. Sua língua comprida, cartilaginosa e coberta de farpas é sua característica mais notável. Os mohrg são assassinos animados, surgidos de assassinos em massa ou vilões que morreram sem pagar por seus crimes; odeiam implacavelmente os vivos.",
+    "combat": "Ataca com pancadas poderosas e com a língua paralisante. Ao atingir uma criatura Média ou menor com a pancada, pode iniciar Agarrar como ação livre sem provocar ataque de oportunidade (Agarrar Aprimorado). Um alvo atingido pela língua deve passar em Fortitude CD 17 ou ficará paralisado por 1d4 minutos. Qualquer humanoide morto por um mohrg retorna como zumbi após 1d4 dias, perdendo as habilidades que possuía em vida."
   },
   {
     "id": "monstro-da-ferrugem",
@@ -7585,7 +7587,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Aberração subterrânea quase do tamanho de um pônei, com quatro patas de inseto, corpo curto e compacto protegido por uma carapaça grossa e enrugada. A cauda é revestida por placas e termina numa projeção óssea semelhante a um remo duplo; possui duas antenas na cabeça. Alimenta-se de metal e persegue o cheiro de objetos metálicos, podendo ser atraída ou distraída por eles.",
+    "combat": "Fareja objetos metálicos a até 27 m e costuma perseguir criaturas que ainda os carreguem. Prioriza o maior objeto disponível, normalmente armaduras, depois escudos e itens menores; prefere ferro e aço, mas devora outros metais. Um toque bem-sucedido das antenas destrói metal comum; armas, armaduras e itens metálicos encantados podem resistir com Reflexos CD 17. Uma arma metálica que acerte o monstro também é corroída imediatamente. Madeira, pedra e outros materiais não metálicos são imunes."
   },
   {
     "id": "ogro-mago",

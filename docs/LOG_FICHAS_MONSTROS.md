@@ -680,3 +680,13 @@ As fichas-base devem ser reutilizadas por ID sempre que a tabela pedir apenas um
 - Fonte primária: Livro dos Monstros 3.5 em português, páginas impressas 197–201. Nenhuma estatística existente foi alterada, exceto a inclusão do bloco completo do Mephit da Terra e a correção do campo Organização do Mímico.
 - Teste de regressão adicionado para as duas fichas e para as correções de Mephit da Água/Fogo.
 - Situação após esta etapa: 314 fichas no catálogo; 192 possuem Descrição e resumo de Combate; 122 ainda precisam de ao menos um desses campos.
+
+
+## 2026-11-14 — Vigésima segunda etapa: Mohrg e Monstro da Ferrugem
+
+- Preenchidas Descrição e síntese de Combate do Mohrg e do Monstro da Ferrugem, seguindo os verbetes do Livro dos Monstros (p. 203).
+- Mohrg: documentados Agarrar Aprimorado, língua paralisante (Fortitude CD 17, 1d4 minutos) e criação de zumbi após 1d4 dias.
+- Monstro da Ferrugem: documentados faro de metal a 27 m, prioridade de alvos metálicos, destruição por toque das antenas e corrosão de armas metálicas que o atinjam; materiais não metálicos permanecem imunes.
+- Nenhuma estatística mecânica foi alterada.
+- Teste de regressão adicionado para as duas fichas e suas capacidades distintivas.
+- Situação após esta etapa: 314 fichas no catálogo; 194 possuem Descrição e resumo de Combate; 120 ainda precisam de ao menos um desses campos.

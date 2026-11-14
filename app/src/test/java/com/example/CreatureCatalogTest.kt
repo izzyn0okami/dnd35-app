@@ -459,4 +459,18 @@ class CreatureCatalogTest {
         assertFalse(CreatureCatalog.byId("mephit-da-agua")!!.combat.contains("bolha de ácido"))
     }
 
+
+    @Test
+    fun mohrgAndRustMonsterHaveNarrativeAndCombatSummaries() {
+        listOf("mohrg", "monstro-da-ferrugem").forEach { id ->
+            val creature = CreatureCatalog.byId(id)!!
+            assertTrue("$id sem descrição", creature.description.isNotBlank())
+            assertTrue("$id sem resumo de combate", creature.combat.isNotBlank())
+        }
+        assertTrue(CreatureCatalog.byId("mohrg")!!.combat.contains("1d4 dias"))
+        assertTrue(CreatureCatalog.byId("mohrg")!!.combat.contains("CD 17"))
+        assertTrue(CreatureCatalog.byId("monstro-da-ferrugem")!!.combat.contains("Reflexos CD 17"))
+        assertTrue(CreatureCatalog.byId("monstro-da-ferrugem")!!.combat.contains("27 m"))
+    }
+
 }
