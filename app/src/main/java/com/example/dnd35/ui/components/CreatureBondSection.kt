@@ -1,20 +1,15 @@
 package com.example.dnd35.ui.components
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
@@ -35,7 +30,8 @@ import com.example.dnd35.model.CharacterJsonAdapters
 import com.example.dnd35.model.CreatureBondKind
 import com.example.dnd35.model.CreatureBondRules
 import com.example.dnd35.model.CreatureCatalog
-import com.example.dnd35.model.CreatureDefinition
+import com.example.dnd35.ui.components.CreatureImageTradingCard
+import com.example.dnd35.ui.components.CreatureCardStack
 import com.example.dnd35.viewmodel.CharacterViewModel
 
 @Composable
@@ -52,143 +48,152 @@ fun CreatureBondSection(
     val companionOptions = remember(classEntries) { CreatureBondRules.animalCompanionOptions(classEntries) }
 
     var activeKind by remember { mutableStateOf<CreatureBondKind?>(null) }
-    var showCurrent by remember { mutableStateOf(false) }
     var showPicker by remember { mutableStateOf(false) }
     var includeAquatic by remember { mutableStateOf(false) }
+    var bondPendingRemoval by remember { mutableStateOf<CharacterCreatureBond?>(null) }
 
     val bondsForActiveKind = when (activeKind) {
         CreatureBondKind.FAMILIAR -> familiarBonds
         CreatureBondKind.ANIMAL_COMPANION -> companionBonds
         null -> emptyList()
     }
+    val options = when (activeKind) {
+        CreatureBondKind.FAMILIAR -> familiarOptions.map { it to "" }
+        CreatureBondKind.ANIMAL_COMPANION -> CreatureBondRules.animalCompanionOptions(
+            classEntries,
+            aquaticCampaign = includeAquatic
+        ).map { option ->
+            option.creature to option.restriction.ifBlank {
+                if (option.effectiveLevelPenalty > 0) "Nível efetivo -${option.effectiveLevelPenalty}" else ""
+            }
+        }
+        null -> emptyList()
+    }
 
-    Card(
-        modifier = Modifier.fillMaxWidth(),
-        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant),
-        shape = RoundedCornerShape(14.dp)
-    ) {
-        Column(modifier = Modifier.padding(12.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-            Text("Familiares e companheiros", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
-            Text(
-                "Criaturas vinculadas ao personagem. A seleção respeita as classes e os níveis atuais.",
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
-            )
-            if (familiarOptions.isNotEmpty() || familiarBonds.isNotEmpty()) {
-                BondActionButton(
-                    title = "Familiar",
-                    current = familiarBonds,
-                    onClick = {
-                        activeKind = CreatureBondKind.FAMILIAR
-                        if (familiarBonds.isEmpty()) showPicker = true else showCurrent = true
-                    }
-                )
-            }
-            if (companionOptions.isNotEmpty() || companionBonds.isNotEmpty()) {
-                BondActionButton(
-                    title = "Companheiro animal",
-                    current = companionBonds,
-                    onClick = {
-                        activeKind = CreatureBondKind.ANIMAL_COMPANION
-                        if (companionBonds.isEmpty()) showPicker = true else showCurrent = true
-                    }
-                )
-            }
-            if (familiarOptions.isEmpty() && companionOptions.isEmpty() &&
-                familiarBonds.isEmpty() && companionBonds.isEmpty()
-            ) {
+    if (savedBonds.isNotEmpty()) {
+        Card(
+            modifier = Modifier.fillMaxWidth(),
+            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)
+        ) {
+            Column(modifier = Modifier.padding(12.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                Text("Familiares e companheiros", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
                 Text(
-                    "Nenhuma classe atual concede familiar ou companheiro animal.",
+                    "Criaturas vinculadas ao personagem. Arraste a carta da frente para percorrer a pilha.",
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
+                if (familiarOptions.isNotEmpty() || familiarBonds.isNotEmpty()) {
+                    OutlinedButton(onClick = { activeKind = CreatureBondKind.FAMILIAR; showPicker = true },
+                        modifier = Modifier.fillMaxWidth()) {
+                        Text(if (familiarBonds.isEmpty()) "Selecionar familiar" else "Adicionar outro familiar")
+                    }
+                }
+                if (companionOptions.isNotEmpty() || companionBonds.isNotEmpty()) {
+                    OutlinedButton(onClick = { activeKind = CreatureBondKind.ANIMAL_COMPANION; showPicker = true },
+                        modifier = Modifier.fillMaxWidth()) {
+                        Text(if (companionBonds.isEmpty()) "Selecionar companheiro animal" else "Adicionar outro companheiro")
+                    }
+                }
+            }
+        }
+    } else if (familiarOptions.isNotEmpty() || companionOptions.isNotEmpty()) {
+        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            if (familiarOptions.isNotEmpty()) {
+                OutlinedButton(onClick = { activeKind = CreatureBondKind.FAMILIAR; showPicker = true }) {
+                    Text("Vincular familiar")
+                }
+            }
+            if (companionOptions.isNotEmpty()) {
+                OutlinedButton(onClick = { activeKind = CreatureBondKind.ANIMAL_COMPANION; showPicker = true }) {
+                    Text("Vincular companheiro")
+                }
             }
         }
     }
 
-    if (showCurrent && activeKind != null) {
+    if (familiarBonds.isNotEmpty() || companionBonds.isNotEmpty()) {
+        val linkedCards = familiarBonds.map { it to "Familiar" } +
+            companionBonds.map { it to "Companheiro animal" }
+        CreatureCardStack(
+            items = linkedCards,
+            key = { it.first.id },
+            modifier = Modifier.fillMaxWidth()
+        ) { (bond, label) ->
+            CreatureCatalog.byId(bond.creatureId)?.let { creature ->
+                CreatureImageTradingCard(
+                    creature,
+                    details = "$label vinculado ao personagem",
+                    stats = "PV ${creature.hitPoints} • CA ${creature.armorClassText} • Iniciativa ${creature.initiative}",
+                    selectLabel = "Remover vínculo",
+                    onSelect = { bondPendingRemoval = bond }
+                )
+            }
+        }
+    }
+
+    bondPendingRemoval?.let { bond ->
+        val creatureName = CreatureCatalog.byId(bond.creatureId)?.name ?: "esta criatura"
         AlertDialog(
-            onDismissRequest = { showCurrent = false },
-            title = { Text(if (activeKind == CreatureBondKind.FAMILIAR) "Familiares atuais" else "Companheiros animais atuais") },
-            text = {
-                LazyColumn(
-                    modifier = Modifier.heightIn(max = 420.dp),
-                    verticalArrangement = Arrangement.spacedBy(8.dp)
-                ) {
-                    if (bondsForActiveKind.isEmpty()) {
-                        item { Text("Nenhuma criatura vinculada.") }
-                    } else {
-                        items(bondsForActiveKind, key = { it.id }) { bond ->
-                            val creature = CreatureCatalog.byId(bond.creatureId)
-                            if (creature != null) CreatureSummary(creature)
-                        }
-                    }
-                }
-            },
+            onDismissRequest = { bondPendingRemoval = null },
+            title = { Text("Remover vínculo?") },
+            text = { Text("Deseja remover $creatureName deste personagem? A criatura será desvinculada, mas sua carta continuará no bestiário.") },
             confirmButton = {
                 TextButton(onClick = {
-                    showCurrent = false
-                    showPicker = true
-                }) { Text("Adicionar outra") }
+                    viewModel.updateCreatureBonds(savedBonds.filterNot { it.id == bond.id })
+                    bondPendingRemoval = null
+                }) { Text("Remover", color = MaterialTheme.colorScheme.error) }
             },
             dismissButton = {
-                TextButton(onClick = { showCurrent = false }) { Text("Fechar") }
+                TextButton(onClick = { bondPendingRemoval = null }) { Text("Cancelar") }
             }
         )
     }
-
     if (showPicker && activeKind != null) {
-        val options = when (activeKind) {
-            CreatureBondKind.FAMILIAR -> familiarOptions.map { it to "" }
-            CreatureBondKind.ANIMAL_COMPANION -> CreatureBondRules.animalCompanionOptions(
-                classEntries,
-                aquaticCampaign = includeAquatic
-            ).map { option ->
-                option.creature to option.restriction.ifBlank {
-                    if (option.effectiveLevelPenalty > 0) "Nível efetivo -${option.effectiveLevelPenalty}" else ""
+        CreatureDeckOverlay(
+            title = if (activeKind == CreatureBondKind.FAMILIAR) "Escolher familiar" else "Escolher companheiro animal",
+            subtitle = "Selecione uma carta disponível para a progressão atual",
+            onDismiss = { showPicker = false }
+        ) {
+            if (activeKind == CreatureBondKind.ANIMAL_COMPANION) {
+                Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+                    Text("Incluir opções aquáticas", style = MaterialTheme.typography.bodyMedium)
+                    Checkbox(checked = includeAquatic, onCheckedChange = { includeAquatic = it })
+                }
+                Spacer(modifier = Modifier.height(4.dp))
+            }
+            Text("${options.size} criatura(s) elegível(is)", style = MaterialTheme.typography.labelMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant)
+            if (options.isEmpty()) {
+                Text(
+                    "Nenhuma criatura disponível para a progressão atual.",
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            } else {
+                CreatureCardStack(
+                    items = options,
+                    key = { it.first.id },
+                    modifier = Modifier.fillMaxWidth()
+                ) { entry ->
+                    val creature = entry.first
+                    val restriction = entry.second
+                    CreatureImageTradingCard(
+                        creature = creature,
+                        details = "Disponível como ${if (activeKind == CreatureBondKind.FAMILIAR) "familiar" else "companheiro animal"}.",
+                        stats = "PV ${creature.hitPoints} • CA ${creature.armorClassText} • Iniciativa ${creature.initiative}",
+                        footer = restriction.ifBlank { null },
+                        selectLabel = "Vincular criatura",
+                        onSelect = {
+                            val kind = activeKind ?: return@CreatureImageTradingCard
+                            viewModel.updateCreatureBonds(savedBonds + CharacterCreatureBond(kind = kind, creatureId = creature.id))
+                            showPicker = false
+                        }
+                    )
                 }
             }
-            null -> emptyList()
+            Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
+                TextButton(onClick = { showPicker = false }) { Text("Cancelar") }
+            }
         }
-        AlertDialog(
-            onDismissRequest = { showPicker = false },
-            title = { Text(if (activeKind == CreatureBondKind.FAMILIAR) "Escolher familiar" else "Escolher companheiro animal") },
-            text = {
-                Column {
-                    if (activeKind == CreatureBondKind.ANIMAL_COMPANION) {
-                        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-                            Text("Incluir opções aquáticas", style = MaterialTheme.typography.bodySmall)
-                            Checkbox(checked = includeAquatic, onCheckedChange = { includeAquatic = it })
-                        }
-                        Spacer(modifier = Modifier.height(4.dp))
-                    }
-                    LazyColumn(modifier = Modifier.height(360.dp)) {
-                        items(options, key = { it.first.id }) { (creature, restriction) ->
-                            Column(
-                                modifier = Modifier.fillMaxWidth().clickable {
-                                    val kind = activeKind ?: return@clickable
-                                    val updated = savedBonds + CharacterCreatureBond(kind = kind, creatureId = creature.id)
-                                    viewModel.updateCreatureBonds(updated)
-                                    showPicker = false
-                                }.padding(vertical = 8.dp, horizontal = 4.dp)
-                            ) {
-                                Text(creature.name, fontWeight = FontWeight.Bold)
-                                Text(
-                                    "${creature.type} • ${creature.size} • ND ${creature.challengeRating}" +
-                                        if (restriction.isNotBlank()) " • $restriction" else "",
-                                    style = MaterialTheme.typography.labelSmall,
-                                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                                )
-                            }
-                        }
-                        if (options.isEmpty()) {
-                            item { Text("Nenhuma criatura disponível para a progressão atual.") }
-                        }
-                    }
-                }
-            },
-            confirmButton = { TextButton(onClick = { showPicker = false }) { Text("Cancelar") } }
-        )
     }
 }
 
@@ -200,27 +205,5 @@ private fun BondActionButton(
 ) {
     OutlinedButton(onClick = onClick, modifier = Modifier.fillMaxWidth()) {
         Text(if (current.isEmpty()) "Selecionar $title" else "$title atual (${current.size})")
-    }
-}
-
-@Composable
-private fun CreatureSummary(creature: CreatureDefinition) {
-    Card(
-        modifier = Modifier.fillMaxWidth(),
-        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
-        shape = RoundedCornerShape(10.dp)
-    ) {
-        Column(modifier = Modifier.padding(10.dp)) {
-            Text(creature.name, fontWeight = FontWeight.Bold)
-            Text(
-                "${creature.type} • ${creature.size} • ND ${creature.challengeRating}",
-                style = MaterialTheme.typography.labelSmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
-            )
-            Text(
-                "PV ${creature.hitPoints} • CA ${creature.armorClassText} • Iniciativa ${creature.initiative}",
-                style = MaterialTheme.typography.bodySmall
-            )
-        }
     }
 }

@@ -291,3 +291,74 @@ A alteração foi enviada ao PR #367 no commit `6b8a5eb32cf202c1393ad95803500f7e
 - Incluídas no catálogo as duas opções de companheiro animal que existiam no Livro dos Monstros, mas ainda não tinham cartas: Texugo Atroz e Cobra Constritora Gigante. Ambas receberam dados do bloco oficial e tags de companheiro/invocável; foram adicionadas às listas corretas de Invocar Aliado da Natureza, Invocar Criaturas e Companheiro Animal.
 
 - Pendência de cobertura identificada ao confrontar as listas do Livro do Jogador com o Livro dos Monstros: ainda faltam cartas para algumas opções de invocação, incluindo famílias de Elementais (quatro elementos e seis estágios), Xorns, Tojanidas, Salamandras, Gaviões Seta e Unicórnios, entre outras. Essas criaturas não são oferecidas como opções até que suas fichas oficiais sejam cadastradas; não criar placeholders nem inventar estatísticas. Texugo Atroz e Cobra Constritora Gigante já foram adicionados por serem necessários também às listas de Companheiro Animal.
+
+
+## 2026-11-13 — Acabamento visual dos menus de criaturas em deck
+
+### Escopo
+- Mantidas integralmente as regras já implementadas de invocação, familiar e companheiro animal. Esta alteração é exclusivamente de apresentação e navegação.
+- Criado um componente compartilhado de sobreposição integral (CreatureDeckOverlay) e um componente visual de carta (CreatureTradingCard), para manter a mesma identidade entre os diferentes menus de criaturas.
+- Os diálogos de criaturas deixam de usar a janela pequena central de AlertDialog e passam a ocupar a tela, com cabeçalho, ação de fechar e área de cartas rolável.
+- A consulta dos vínculos atuais exibe cada familiar/companheiro em uma carta individual; quando há múltiplos vínculos, as cartas aparecem em sequência no mesmo deck.
+- A seleção de familiares e companheiros exibe cartas selecionáveis, mantendo o controle de opções aquáticas e os avisos de restrição de nível.
+- O seletor de criaturas invocadas exibe cartas com círculo da lista e variante Celestial/Abissal, preservando a seleção e o registro no histórico da magia.
+- O seletor de criaturas do Mestre preserva pesquisa, filtros por tipo/tamanho e o callback de adição à sessão, mas passa a apresentar resultados como cartas em uma tela integral.
+- A área de ilustração é um espaço reservado estilizado; não foi associada arte fictícia nem alterado o catálogo.
+- Nenhum dado mecânico, vínculo salvo, serialização, elegibilidade ou regra de acesso foi alterado.
+
+### Validação pendente
+- Aguardar CI e build Android desta branch.
+- Testar no aparelho: abrir/fechar os quatro menus, rolagem de cartas, seleção, botão Voltar do Android, filtros do bestiário e alternância de opções aquáticas.
+- Confirmar que a seleção continua salvando vínculos e registrando a criatura invocada como antes.
+
+
+### Correção complementar — remoção de vínculos
+- Restaurada a ação explícita **Remover vínculo** em cada carta de familiar ou companheiro animal atualmente vinculado.
+- A remoção exige confirmação e altera somente a lista de vínculos salva no personagem; não apaga a criatura do bestiário nem altera suas regras ou dados.
+- A remoção de uma carta não afeta os demais vínculos. O usuário pode adicionar outra criatura posteriormente.
+
+
+## 2026-11-14 — Integração das ilustrações e padronização das cartas
+
+### Imagens
+- A pasta `app/src/main/assets/monsters/` foi integrada à branch de cartas sem copiar nem renomear os arquivos.
+- Conferência por nome normalizado (sem acentos e ignorando espaços, hífens e sublinhados): **266 imagens para 266 registros do catálogo; 266 correspondências; nenhuma criatura sem imagem**.
+- As ilustrações são carregadas sob demanda a partir de Assets, com decodificação fora da thread principal e redução de resolução para limitar memória.
+- A frente das cartas usa enquadramento preenchido; a ficha ampliada usa `ContentScale.Fit` para exibir a imagem inteira, sem cortes.
+
+### Interação comum das cartas
+- Cartas do bestiário, familiares, companheiros e criaturas invocadas usam o mesmo componente visual.
+- Toque simples alterna frente e verso.
+- Pressão prolongada abre a ficha completa em tela integral, incluindo a ilustração inteira e os dados disponíveis no catálogo.
+- Nos seletores, a ação de vincular/invocar/adicionar fica no verso da carta; virar a carta não confirma a seleção acidentalmente.
+- A seção de familiares e companheiros exibe as criaturas vinculadas como cartas diretamente na ficha, preservando a remoção do vínculo e as regras de elegibilidade já existentes.
+
+### Baralho de combate do Mestre
+- A pilha horizontal passou a usar posicionamento explícito de sobreposição: cartas consecutivas avançam 72 dp, mantendo 148 dp da carta anterior visíveis.
+- A rolagem horizontal permanece disponível quando o número de cartas ultrapassa a largura da tela.
+- As cartas de combate agora usam a ilustração correspondente na frente; toque para virar e pressão prolongada para abrir a ficha completa continuam disponíveis.
+
+### Escopo preservado
+- Nenhuma estatística, regra de elegibilidade, progressão, serialização ou estrutura persistida de personagem/sessão foi alterada.
+- Nenhuma imagem foi movida, renomeada ou duplicada.
+- Validação de CI e conferência visual em aparelho permanecem pendentes para esta revisão.
+
+## 2026-11-14 — Pilhas navegáveis, iniciativa de monstros e retrato do turno
+
+### Decisões e implementação
+- As listas de cartas do bestiário, seleção de monstros para a sessão, criaturas invocadas e criaturas vinculadas passam a usar uma pilha visual sobreposta.
+- A carta da frente responde ao gesto horizontal: arrastar para a esquerda revela a próxima; arrastar para a direita retorna à anterior. A pilha mostra as cartas seguintes parcialmente, sem depender de uma rolagem horizontal longa.
+- O baralho de monstros do Mestre usa o mesmo comportamento; toque continua virando a carta e pressão prolongada continua abrindo os detalhes.
+- As criaturas adicionadas ao baralho da sessão passam a aparecer como candidatas no diálogo de início de combate. Cada instância recebe identificador próprio, PV derivados da ficha do bestiário e iniciativa informada pelo Mestre; a ordenação final continua sendo feita por iniciativa.
+- O atalho flutuante multiplayer exibe um retrato circular do combatente ativo. No dispositivo do Mestre, a foto vem da ficha recebida do jogador ou da ficha NPC local; para monstros, usa a ilustração do bestiário. No dispositivo de jogador, a foto só pode ser exibida quando a ficha ativa está disponível localmente; o protocolo atual não distribui fotos personalizadas de outros participantes.
+- A seção de criaturas vinculadas não exibe mais um cartão vazio ou aviso em fichas sem vínculos. Classes elegíveis ainda recebem ações compactas para criar o primeiro vínculo.
+
+### Preservação
+- As 266 ilustrações existentes em `assets/monsters` são reutilizadas; nenhuma imagem foi substituída, movida ou duplicada.
+- Não foram alteradas regras de elegibilidade de familiares/companheiros, estatísticas das criaturas, regras de iniciativa, nem o protocolo multiplayer.
+- A iniciativa de criaturas do baralho usa os valores de PV do catálogo como PV inicial; dano e cura passam a ser controlados pelo rastreador de combate.
+
+### Validação pendente
+- Executar testes unitários e compilação Android na CI da PR #368.
+- Validar no aparelho: gesto para avançar/voltar em cada pilha, toque para virar, pressão prolongada, inclusão de monstros na iniciativa, ordem por iniciativa e retrato do turno.
+- **Ajuste de CI:** a primeira compilação após a conversão das listas encontrou blocos antigos de `LazyColumn` que permaneceram após a substituição e um import de `zIndex` incorreto. Esses resíduos foram removidos/corrigidos; a nova execução está validando o head `25f914d6c1c6ad146f4d5c9022501dacc08a49f0`.

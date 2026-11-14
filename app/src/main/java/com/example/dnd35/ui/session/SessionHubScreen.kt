@@ -6,7 +6,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -21,11 +20,12 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.material.icons.filled.ArrowBack
@@ -65,8 +65,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.asImageBitmap
+import androidx.compose.ui.layout.Layout
+import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -75,6 +78,12 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.dnd35.model.CharacterEntity
 import com.example.dnd35.model.CreatureCatalog
 import com.example.dnd35.model.CreatureDefinition
+import com.example.dnd35.ui.components.CreatureDeckOverlay
+import com.example.dnd35.ui.components.CreatureDetailsOverlay
+import com.example.dnd35.ui.components.CreatureImage
+import com.example.dnd35.ui.components.CreatureImageTradingCard
+import com.example.dnd35.ui.components.CreatureCardStack
+import com.example.dnd35.ui.components.CharacterAvatar
 import com.example.dnd35.model.CharacterInventoryItem
 import com.example.dnd35.session.ActionRequest
 import com.example.dnd35.session.Combatant
@@ -426,25 +435,23 @@ private fun MonsterCardsSection(
                 )
             }
         } else {
-            Row(
-                modifier = Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()).padding(vertical = 8.dp),
-                horizontalArrangement = Arrangement.spacedBy((-164).dp),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                cards.forEach { shortcut ->
-                    val creature = CreatureCatalog.byId(shortcut.creatureId)
-                    if (creature != null) {
-                        MonsterShortcutCard(
-                            instanceId = shortcut.instanceId,
-                            creature = creature,
-                            onLongClick = { selectedCreature = creature },
-                            onRemove = { onRemove(shortcut.instanceId) }
-                        )
-                    }
+            CreatureCardStack(
+                items = cards,
+                key = { it.instanceId },
+                modifier = Modifier.fillMaxWidth()
+            ) { shortcut ->
+                val creature = CreatureCatalog.byId(shortcut.creatureId)
+                if (creature != null) {
+                    MonsterShortcutCard(
+                        instanceId = shortcut.instanceId,
+                        creature = creature,
+                        onLongClick = { selectedCreature = creature },
+                        onRemove = { onRemove(shortcut.instanceId) }
+                    )
                 }
             }
             Text(
-                "Toque na carta para virar • pressione e segure para abrir os detalhes • deslize o baralho lateralmente",
+                "Toque para virar • segure para abrir os detalhes • arraste a carta da frente para percorrer o baralho",
                 style = MaterialTheme.typography.labelSmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
@@ -510,13 +517,12 @@ private fun MonsterShortcutCard(
                     color = MaterialTheme.colorScheme.surfaceVariant,
                     border = androidx.compose.foundation.BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant)
                 ) {
-                    Box(contentAlignment = Alignment.Center) {
-                        Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(5.dp)) {
-                            Icon(Icons.Default.Shield, contentDescription = null, modifier = Modifier.size(38.dp), tint = MaterialTheme.colorScheme.onSurfaceVariant)
-                            Text("ILUSTRAÇÃO", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                            Text("Imagem do bestiário", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                        }
-                    }
+                    CreatureImage(
+                        creature = creature,
+                        modifier = Modifier.fillMaxSize(),
+                        contentScale = androidx.compose.ui.layout.ContentScale.Crop,
+                        maxDimensionPx = 1100
+                    )
                 }
                 Surface(
                     modifier = Modifier.fillMaxWidth(),
@@ -656,8 +662,18 @@ private fun CombatSection(
                 tempHp = c.tempHp
             )
         }
+        val monsterCandidates = hosting.monsterCards.mapNotNull { shortcut ->
+            val creature = CreatureCatalog.byId(shortcut.creatureId) ?: return@mapNotNull null
+            CombatCandidate(
+                id = "monster:${creature.id}:${shortcut.instanceId}",
+                displayName = creature.name,
+                isNpc = true,
+                currentHp = creature.hitPoints,
+                maxHp = creature.hitPoints
+            )
+        }
         StartCombatDialog(
-            candidates = playerCandidates + npcCandidates,
+            candidates = playerCandidates + npcCandidates + monsterCandidates,
             onDismiss = { showStartDialog = false },
             onConfirm = { combatants ->
                 viewModel.startCombat(combatants)
@@ -720,7 +736,7 @@ private fun StartCombatDialog(
                             )
                             Column(modifier = Modifier.weight(1f)) {
                                 Text(
-                                    candidate.displayName + if (candidate.isNpc) " (NPC)" else "",
+                                    candidate.displayName + when { candidate.id.startsWith("monster:") -> " (Monstro)"; candidate.isNpc -> " (NPC)"; else -> "" },
                                     fontWeight = FontWeight.SemiBold
                                 )
                                 Text(
@@ -1509,6 +1525,19 @@ fun SessionFloatingPanels(
     val hosting = dmState as? DmSessionUiState.Hosting
     val connected = playerState as? PlayerSessionUiState.Connected
     val linkedCharacter = myCharacters.firstOrNull { it.id == connected?.characterId }
+    val activeCombat = hosting?.combat ?: connected?.combat
+    val activeCombatant = activeCombat?.combatants?.firstOrNull { it.id == activeCombat.currentCombatantId }
+    val activeMonster = activeCombatant?.id?.takeIf { it.startsWith("monster:") }
+        ?.removePrefix("monster:")?.substringBefore(':')?.let(CreatureCatalog::byId)
+    val activeCharacter = activeCombatant?.let { combatant ->
+        when {
+            combatant.id.startsWith("npc:") -> combatant.id.removePrefix("npc:").toLongOrNull()
+                ?.let { id -> myCharacters.firstOrNull { it.id == id } }
+            hosting != null -> hosting.characters[combatant.id]
+            connected?.selfId == combatant.id -> linkedCharacter
+            else -> null
+        }
+    }
     var activePanel by remember { mutableStateOf<SessionFloatingPanel?>(null) }
     val playerChatMessages = remember(viewModel) { mutableStateListOf<PrivateChatUiMessage>() }
     LaunchedEffect(viewModel) {
@@ -1547,6 +1576,26 @@ fun SessionFloatingPanels(
                     horizontalArrangement = Arrangement.spacedBy(2.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
+                    if (activeCombatant != null) {
+                        Box(
+                            modifier = Modifier.size(38.dp).clip(CircleShape)
+                                .border(2.dp, DndGold, CircleShape)
+                        ) {
+                            if (activeMonster != null) {
+                                CreatureImage(
+                                    creature = activeMonster,
+                                    modifier = Modifier.fillMaxSize().clip(CircleShape),
+                                    contentScale = androidx.compose.ui.layout.ContentScale.Crop,
+                                    maxDimensionPx = 320
+                                )
+                            } else {
+                                CharacterAvatar(
+                                    photoUri = activeCharacter?.photoUri,
+                                    modifier = Modifier.fillMaxSize().clip(CircleShape)
+                                )
+                            }
+                        }
+                    }
                     if (hosting != null || connected?.combat != null) {
                         TextButton(
                             onClick = { activePanel = SessionFloatingPanel.COMBAT },
@@ -1977,127 +2026,84 @@ private fun AddMonsterCardDialog(
         CreatureCatalog.filter(query = query, type = selectedType, size = selectedSize)
     }
 
-    AlertDialog(
-        onDismissRequest = onDismiss,
-        title = { Text("Adicionar monstro") },
-        text = {
-            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                OutlinedTextField(
-                    value = query,
-                    onValueChange = { query = it },
-                    modifier = Modifier.fillMaxWidth(),
-                    label = { Text("Buscar no bestiário") },
-                    singleLine = true
-                )
-                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                    Box {
-                        OutlinedButton(onClick = { typeMenu = true }) {
-                            Text(selectedType ?: "Todos os tipos")
-                        }
-                        DropdownMenu(expanded = typeMenu, onDismissRequest = { typeMenu = false }) {
-                            DropdownMenuItem(text = { Text("Todos os tipos") }, onClick = {
-                                selectedType = null
-                                typeMenu = false
-                            })
-                            CreatureCatalog.TYPES.forEach { type ->
-                                DropdownMenuItem(text = { Text(type) }, onClick = {
-                                    selectedType = type
-                                    typeMenu = false
-                                })
-                            }
-                        }
-                    }
-                    Box {
-                        OutlinedButton(onClick = { sizeMenu = true }) {
-                            Text(selectedSize ?: "Todos os tamanhos")
-                        }
-                        DropdownMenu(expanded = sizeMenu, onDismissRequest = { sizeMenu = false }) {
-                            DropdownMenuItem(text = { Text("Todos os tamanhos") }, onClick = {
-                                selectedSize = null
-                                sizeMenu = false
-                            })
-                            CreatureCatalog.SIZES.forEach { size ->
-                                DropdownMenuItem(text = { Text(size) }, onClick = {
-                                    selectedSize = size
-                                    sizeMenu = false
-                                })
-                            }
-                        }
-                    }
+    CreatureDeckOverlay(
+        title = "Adicionar monstro",
+        subtitle = "Baralho do bestiário • ${results.size} criatura(s)",
+        onDismiss = onDismiss
+    ) {
+        OutlinedTextField(
+            value = query,
+            onValueChange = { query = it },
+            modifier = Modifier.fillMaxWidth(),
+            label = { Text("Buscar no bestiário") },
+            singleLine = true
+        )
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            Box {
+                OutlinedButton(onClick = { typeMenu = true }) {
+                    Text(selectedType ?: "Todos os tipos")
                 }
-                Text("${results.size} criatura(s)", style = MaterialTheme.typography.labelSmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant)
-                if (results.isEmpty()) {
-                    Text("Nenhuma criatura corresponde aos filtros.", style = MaterialTheme.typography.bodyMedium)
-                } else {
-                    LazyColumn(modifier = Modifier.heightIn(max = 360.dp)) {
-                        items(results, key = { it.id }) { creature ->
-                            Column {
-                                DropdownMenuItem(
-                                    text = {
-                                        Column {
-                                            Text(creature.name, fontWeight = FontWeight.SemiBold)
-                                            Text(
-                                                "${creature.type} • ${creature.size} • ND ${creature.challengeRating}",
-                                                style = MaterialTheme.typography.labelSmall,
-                                                color = MaterialTheme.colorScheme.onSurfaceVariant
-                                            )
-                                        }
-                                    },
-                                    onClick = { onSelect(creature) }
-                                )
-                            }
-                        }
+                DropdownMenu(expanded = typeMenu, onDismissRequest = { typeMenu = false }) {
+                    DropdownMenuItem(text = { Text("Todos os tipos") }, onClick = {
+                        selectedType = null
+                        typeMenu = false
+                    })
+                    CreatureCatalog.TYPES.forEach { type ->
+                        DropdownMenuItem(text = { Text(type) }, onClick = {
+                            selectedType = type
+                            typeMenu = false
+                        })
                     }
                 }
             }
-        },
-        confirmButton = { TextButton(onClick = onDismiss) { Text("Concluir") } },
-        dismissButton = { TextButton(onClick = onDismiss) { Text("Cancelar") } }
-    )
+            Box {
+                OutlinedButton(onClick = { sizeMenu = true }) {
+                    Text(selectedSize ?: "Todos os tamanhos")
+                }
+                DropdownMenu(expanded = sizeMenu, onDismissRequest = { sizeMenu = false }) {
+                    DropdownMenuItem(text = { Text("Todos os tamanhos") }, onClick = {
+                        selectedSize = null
+                        sizeMenu = false
+                    })
+                    CreatureCatalog.SIZES.forEach { size ->
+                        DropdownMenuItem(text = { Text(size) }, onClick = {
+                            selectedSize = size
+                            sizeMenu = false
+                        })
+                    }
+                }
+            }
+        }
+        if (results.isEmpty()) {
+            Text("Nenhuma criatura corresponde aos filtros.", color = MaterialTheme.colorScheme.onSurfaceVariant)
+        } else {
+            CreatureCardStack(
+                items = results,
+                key = { it.id },
+                modifier = Modifier.fillMaxWidth()
+            ) { creature ->
+                CreatureImageTradingCard(
+                    creature = creature,
+                    details = "Criatura do bestiário • adicionar à sessão do Mestre",
+                    stats = "PV ${creature.hitPoints} • CA ${creature.armorClassText} • Iniciativa ${creature.initiative}",
+                    selectLabel = "Adicionar à sessão",
+                    onSelect = { onSelect(creature) }
+                )
+            }
+        }
+        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
+            TextButton(onClick = onDismiss) { Text("Fechar") }
+        }
+    }
 }
 
 /** Consulta detalhada do registro original do bestiário; não cria nem altera ficha. */
 @Composable
-private fun MonsterCreatureDetailDialog(
-    creature: CreatureDefinition,
-    onDismiss: () -> Unit
-) {
-    AlertDialog(
-        onDismissRequest = onDismiss,
-        title = { Text(creature.name) },
-        text = {
-            Column(
-                modifier = Modifier.fillMaxWidth().heightIn(max = 480.dp).verticalScroll(rememberScrollState()),
-                verticalArrangement = Arrangement.spacedBy(5.dp)
-            ) {
-                Text("${creature.typeDetail.ifBlank { creature.type }} • ${creature.size} • ND ${creature.challengeRating}",
-                    fontWeight = FontWeight.Bold)
-                Text("Dados de Vida: ${creature.hitDice} (${creature.hitPoints} PV)")
-                Text("Iniciativa: ${signed(creature.initiative)} • Deslocamento: ${creature.speed}")
-                Text("CA: ${creature.armorClassText} • Toque: ${creature.touchAc} • Surpreso: ${creature.flatFootedAc}")
-                Text("BBA/Agarrar: ${signed(creature.baseAttack)}/${signed(creature.grapple)}")
-                Text("Ataque: ${creature.attack}")
-                Text("Ataque total: ${creature.fullAttack}")
-                Text("Espaço/Alcance: ${creature.spaceReach}")
-                Text("Fortitude ${signed(creature.saves.fort)} • Reflexos ${signed(creature.saves.ref)} • Vontade ${signed(creature.saves.will)}")
-                Text("FOR ${abilityWithModifier(creature.abilities.str)} • DES ${abilityWithModifier(creature.abilities.dex)} • CON ${abilityWithModifier(creature.abilities.con)}")
-                Text("INT ${abilityWithModifier(creature.abilities.int)} • SAB ${abilityWithModifier(creature.abilities.wis)} • CAR ${abilityWithModifier(creature.abilities.cha)}")
-                Text("Ataques especiais: ${creature.specialAttacks.ifBlank { "—" }}")
-                Text("Qualidades especiais: ${creature.specialQualities.ifBlank { "—" }}")
-                Text("Perícias: ${creature.skills.ifBlank { "—" }}")
-                Text("Talentos: ${creature.feats.ifBlank { "—" }}")
-                Text("Ambiente: ${creature.environment.ifBlank { "—" }}")
-                Text("Organização: ${creature.organization.ifBlank { "—" }}")
-                Text("Tesouro: ${creature.treasure.ifBlank { "—" }} • Tendência: ${creature.alignment}")
-                Text("Avanço: ${creature.advancement.ifBlank { "—" }} • Ajuste de nível: ${creature.levelAdjustment.ifBlank { "—" }}")
-                if (creature.description.isNotBlank()) Text(creature.description)
-                if (creature.combat.isNotBlank()) Text("Combate: ${creature.combat}")
-                Text("Fonte: ${creature.source}", style = MaterialTheme.typography.labelSmall)
-            }
-        },
-        confirmButton = { TextButton(onClick = onDismiss) { Text("Fechar") } }
-    )
+private fun MonsterCreatureDetailDialog(creature: CreatureDefinition, onDismiss: () -> Unit) {
+    CreatureDetailsOverlay(creature = creature, onDismiss = onDismiss)
 }
 
 private fun signed(value: Int): String = if (value > 0) "+$value" else value.toString()
