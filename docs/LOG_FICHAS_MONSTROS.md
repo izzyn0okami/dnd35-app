@@ -507,3 +507,14 @@ As fichas-base devem ser reutilizadas por ID sempre que a tabela pedir apenas um
 - Nenhum campo mecânico incerto foi alterado. Nenhum campo narrativo já preenchido foi sobrescrito.
 - Testes de regressão adicionados para as 10 fichas e para os campos corrigidos.
 - Situação após esta etapa: 313 fichas no catálogo; 226 ainda precisam de descrição ou resumo de combate.
+
+
+## 2026-11-14 — Quarta etapa de preenchimento narrativo: Bruxa do Mar, Coruja Gigante, Couatl e demônios
+
+- Preenchidas descrição e resumo de combate de 10 fichas: Bruxa do Mar, Coruja Gigante, Couatl, Cria Vampírica, Babau, Balor, Bebilith, Dretch, Glabrezu e Hezrou.
+- Fonte primária: Livro dos Monstros 3.5 em português, páginas impressas 36 e 46–55. Os textos foram sintetizados a partir dos verbetes, preservando aparência, ecologia, comportamento e táticas/habilidades de combate, sem transcrição extensa.
+- Corrigidos resíduos evidentes de extração/importação que haviam sido anexados a campos não relacionados: referências de paginação e títulos de verbetes removidas do fim das perícias do Babau, do campo de ataques especiais do Dretch e do espaço/alcance do Hezrou.
+- O talento do Couatl foi normalizado para “Ignorar Componentes Materiais”, removendo o marcador tipográfico de talento adicional que havia sido incorporado ao nome.
+- Não foram alterados valores de combate incertos nem preenchidos dados por inferência. As descrições e táticas já existentes foram preservadas.
+- Teste de regressão cobre as dez fichas e verifica também a ausência dos resíduos de importação removidos.
+- Situação após esta etapa: 313 fichas no catálogo; 97 possuem descrição e resumo de combate; 216 ainda precisam de ao menos um desses campos.
