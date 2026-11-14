@@ -70,6 +70,29 @@ class SummoningRulesTest {
     }
 
     @Test
+    fun bookSummoningEntriesWithExistingSheetsAreAvailableAtTheirCorrectCircles() {
+        val monsters1 = SummoningRules.creaturesForCircle(SummoningFamily.SUMMON_CREATURES, 1)
+        val monsters4 = SummoningRules.creaturesForCircle(SummoningFamily.SUMMON_CREATURES, 4)
+        val monsters6 = SummoningRules.creaturesForCircle(SummoningFamily.SUMMON_CREATURES, 6)
+        val monsters7 = SummoningRules.creaturesForCircle(SummoningFamily.SUMMON_CREATURES, 7)
+        val nature4 = SummoningRules.creaturesForCircle(SummoningFamily.SUMMON_NATURE_ALLY, 4)
+        val nature5 = SummoningRules.creaturesForCircle(SummoningFamily.SUMMON_NATURE_ALLY, 5)
+        val nature7 = SummoningRules.creaturesForCircle(SummoningFamily.SUMMON_NATURE_ALLY, 7)
+
+        assertTrue(monsters1.any { it.creature.id == "corvo" && it.templateLabel == "Abissal" })
+        assertTrue(monsters4.any { it.creature.id == "arconte-luminar" && it.templateLabel == "Celestial" })
+        assertTrue(monsters6.any { it.creature.id == "bralani" })
+        assertTrue(monsters6.any { it.creature.id == "fera-do-caos" })
+        assertTrue(monsters7.any { it.creature.id == "avoral" })
+        assertTrue(nature4.any { it.creature.id == "javali-atroz" })
+        assertTrue(nature4.any { it.creature.id == "carcaju-atroz" })
+        assertTrue(nature4.any { it.creature.id == "vibora-enorme" })
+        assertTrue(nature5.any { it.creature.id == "urso-polar" })
+        assertTrue(nature7.any { it.creature.id == "tigre-atroz" })
+        assertEquals(emptyList<String>(), SummoningRules.unclassifiedCatalogCreatureIds())
+    }
+
+    @Test
     fun animalDomainProvidesNatureAllySpellsToClerics() {
         val animalDomainSpells4 = com.example.dnd35.model.ClericDomainRules.domainSpellsAt(
             listOf("Animais"),
