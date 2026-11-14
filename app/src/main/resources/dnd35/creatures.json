@@ -4259,7 +4259,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Um enxame de centopeias é uma massa rastejante de insetos vorazes, capazes de escalar obstáculos para alcançar suas presas. Avança em conjunto e pode cobrir superfícies e criaturas com facilidade. Como outros enxames, não possui um indivíduo central que possa ser escolhido como alvo.",
+    "combat": "As centopeias tentam cercar e atacar qualquer presa viva. Causam 2d6 pontos de dano a qualquer criatura que esteja ocupando o mesmo espaço ao final de seu deslocamento. Distração (Ext): uma criatura viva que iniciar seu turno no espaço do enxame deve obter sucesso em Fortitude CD 13 ou ficará enjoada por 1 rodada. Veneno (Ext): inoculado por ferimento; Fortitude CD 13, dano inicial e secundário de 1d4 pontos temporários de Destreza. O enxame recebe +4 de bônus racial em Observar e +8 em Escalar; usa o modificador de Destreza para Escalar e pode escolher 10 mesmo quando distraído ou ameaçado."
   },
   {
     "id": "enxame-de-gafanhotos",
@@ -4309,7 +4311,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Um enxame de gafanhotos é uma nuvem com centenas de insetos alados que devoram todo material orgânico em seu caminho. O ruído de suas asas e a quantidade de indivíduos anunciam a aproximação da nuvem, que avança sobre criaturas e vegetação.",
+    "combat": "Os gafanhotos tentam cercar e atacar qualquer presa viva. Causam 2d6 pontos de dano a qualquer criatura que esteja ocupando o mesmo espaço ao final de seu deslocamento. Distração (Ext): uma criatura viva que iniciar seu turno no espaço do enxame deve obter sucesso em Fortitude CD 12 ou ficará enjoada por 1 rodada. O enxame recebe +4 de bônus racial nos testes de Ouvir e Observar."
   },
   {
     "id": "enxame-de-morcegos",
@@ -4359,7 +4363,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Um enxame de morcegos é uma massa de pequenos morcegos carnívoros e ferozes, sedentos pelo sangue de qualquer criatura que cruze seu caminho. É noturno e não costuma ser encontrado ao ar livre durante o dia. Centenas de chiados em alta frequência acompanham a aproximação da nuvem.",
+    "combat": "Os morcegos procuram cercar e atacar qualquer presa de sangue quente, causando 1d6 pontos de dano às criaturas que ocuparem seu espaço ao final do deslocamento. Distração (Ext): uma criatura viva que iniciar seu turno no espaço do enxame deve obter sucesso em Fortitude CD 11 ou ficará enjoada por 1 rodada. Sangramento (Ext): uma criatura viva atingida perde 1 PV por rodada subsequente; o sangramento pode ser interrompido com Cura CD 10 ou magia de cura. Sentido Cego (Ext): percebe criaturas num raio de 6 m, embora elas ainda tenham camuflagem total contra o enxame; seus ataques ignoram essa camuflagem. O enxame recebe +4 de bônus racial em Ouvir e Observar."
   },
   {
     "id": "escavador",
@@ -4409,7 +4415,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "O escavador é uma aberração subterrânea bizarra que atravessa rocha sólida usando o muco corrosivo secretado por seu corpo rochoso. É tímido e quase sempre inofensivo, embora existam espécimes enlouquecidos e assassinos. Alimenta-se de rochas e também aprecia minerais não metálicos; gemas e moedas podem servir como oferta para obter sua ajuda ou informações. Metais podem embriagá-lo e causar dependência, tornando-o perigoso para mineiros e viajantes equipados com metal. Mede cerca de 4,5 m de comprimento e 3 m de largura, pesa aproximadamente 3 toneladas e fala Terran e Subterrâneo. Seus túneis têm cerca de 3 m de diâmetro.",
+    "combat": "O escavador prefere lutar dentro dos próprios túneis, onde protege os flancos e ataca com as nadadeiras. Pode preparar emboscadas perfurando a região e fechando os túneis com paredes rochosas finas. Muco Corrosivo (Ext): o contato causa 2d6 pontos de dano a criaturas e objetos orgânicos, 4d8 a criaturas e objetos metálicos e 8d10 a criaturas e objetos de pedra. Um golpe de nadadeira recobre a vítima, causando 2d6 pontos adicionais no contato e 2d6 por rodada durante as 2 rodadas seguintes. Roupas, armaduras e armas que o toquem podem ser destruídas se seus portadores falharem em Reflexos CD 22; ataques com armas naturais também expõem o atacante ao muco. Mais de 1 litro de água ou ácido fraco dissolve o muco. Moldar Rochas (Ext): uma vez a cada 10 minutos, amolece e molda um cubo de rocha de 7,5 m de aresta, como moldar rochas, nível de conjurador 15."
   },
   {
     "id": "androesfinge",
@@ -4459,7 +4467,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "O andro–esfinge é uma esfinge Grande, macho, com corpo leonino de pelagem espessa, grandes asas de falcão e rosto humanoide. É inteligente e geralmente bondoso, embora possa ser um oponente selvagem. Apesar da aparência rude e do temperamento mal-humorado, possui coração nobre e é tímido; aprecia pequenas cortesias, mas fica desconfortável quando recebe elogios.",
+    "combat": "Em combate, o andro–esfinge rasga os inimigos com as garras e usa suas magias para se defender e curar. Rasgar (Ext): após investir, pode desferir ataques adicionais com as patas traseiras, conforme o dano indicado na ficha. Rugido (Sob): três vezes por dia. O primeiro rugido exige Vontade CD 19 num raio de 150 m ou afeta a vítima como medo por 2d6 rodadas. O segundo, no mesmo encontro, exige Fortitude CD 19 num raio de 75 m ou paralisa por 1d4 rodadas; criaturas num raio de 27 m ficam ensurdecidas por 2d6 rodadas, sem teste. O terceiro exige Fortitude CD 19 num raio de 75 m ou causa 2d4 pontos temporários de Força por 2d4 rodadas; criaturas Médias ou menores num raio de 27 m também podem ser derrubadas e sofrer 2d8 pontos de dano. Objetos cristalinos ou rochosos nesse raio sofrem 50 pontos de dano. Andro–esfinges são imunes aos próprios rugidos. Conjura magias divinas como clérigo de 6º nível, com acesso aos domínios do Bem, Cura e Proteção."
   },
   {
     "id": "crioesfinge",
@@ -4509,7 +4519,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "A crio–esfinge é uma esfinge Grande, sempre macho, com corpo leonino, pelagem espessa, grandes asas de falcão e cabeça de bode. Não possui a inteligência de um andro–esfinge e não é nem boa nem má. Está constantemente à procura de gino–esfinges; quando não as encontra, tenta acumular riquezas a qualquer custo. Uma barganha com aventureiros costuma exigir todos os seus itens e tesouros em troca de passagem.",
+    "combat": "A crio–esfinge ataca com as garras e os chifres, empregando apenas táticas básicas. Não é capaz de conjurar magias. Bote (Ext): ao investir, pode executar um ataque total. Rasgar (Ext): após a investida, pode desferir ataques adicionais com as patas traseiras; o dano indicado no verbete é 1d6+3."
   },
   {
     "id": "ginoesfinge",
@@ -4559,7 +4571,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "A gino–esfinge é uma esfinge Grande, contraparte feminina dos andro–esfinges. Tem corpo leonino coberto por pelagem espessa, grandes asas de falcão e cabeça humanoide feminina. Gosta de negociar tesouros ou serviços, mas busca continuamente desafios intelectuais, como enigmas e quebra-cabeças. Considera as crio–esfinges e as hieraco–esfinges criaturas detestáveis.",
+    "combat": "Em combate corporal, utiliza as garras poderosas para dilacerar os inimigos, mas prefere evitar confrontos sempre que possível. Rasgar (Ext): após investir, pode realizar ataques adicionais com as patas traseiras, com bônus de ataque +11 e dano 1d6+2. Habilidades Similares à Magia (SM): 3/dia — clariaudiência/clarividência, detectar magia, ler magia e ver o invisível; 1/dia — compreender idiomas, dissipar magia, localizar objetos, remover maldição (CD 18) e lendas e histórias; nível de conjurador 14º. Uma vez por semana, pode criar um símbolo de cada tipo indicado no verbete — morte, medo, insanidade, dor, persuasão, sono e atordoamento — que permanece ativo por uma semana; nível de conjurador 18º e CD 22."
   },
   {
     "id": "espectro",
