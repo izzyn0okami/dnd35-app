@@ -351,7 +351,7 @@ private fun CreatureAttackLine(title: String, value: String, onRoll: (Int, Strin
             }
             if (bonus != null) Button(onClick = { onRoll(bonus, damage) },
                 contentPadding = androidx.compose.foundation.layout.PaddingValues(horizontal = 9.dp, vertical = 5.dp)) {
-                Text("Rolar \${if (bonus >= 0) "+$" + bonus else bonus}", style = MaterialTheme.typography.labelSmall)
+                Text("Rolar " + (if (bonus >= 0) "+$bonus" else "$bonus"), style = MaterialTheme.typography.labelSmall)
             }
         }
     }
