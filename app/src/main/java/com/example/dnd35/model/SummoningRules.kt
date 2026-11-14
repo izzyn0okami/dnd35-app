@@ -29,7 +29,7 @@ object SummoningRules {
         6 to "elemental-agua-enorme elemental-ar-enorme elemental-fogo-enorme elemental-terra-enorme urso-atroz girallon megaraptor polvo-gigante pixie baleia-azul",
         7 to "elemental-agua-maior elemental-ar-maior elemental-fogo-maior elemental-terra-maior gaviao-seta-anciao xorn-anciao tigre-atroz djinni cacador-invisivel pixie lula-gigante triceratops tiranossauro baleia-cachalote",
         8 to "salamandra-nobre tojanida-anciao tubarao-atroz passaro-roca",
-        9 to "elemental-agua-anciao elemental-ar-anciao elemental-fogo-anciao elemental-terra-anciao grig pixie"
+        9 to "elemental-agua-anciao elemental-ar-anciao elemental-fogo-anciao elemental-terra-anciao unicornio-arauto-celestial grig pixie"
     )
 
     private val monsterLists = mapOf(
