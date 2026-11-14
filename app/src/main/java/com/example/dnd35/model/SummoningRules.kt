@@ -22,14 +22,14 @@ object SummoningRules {
     // As entradas sem ficha oficial permanecem registradas como pendência no log.
     private val natureLists = mapOf(
         1 to "rato-atroz aguia macaco polvo coruja golfinho vibora-pequena lobo",
-        2 to "urso-negro crocodilo texugo-atroz morcego-atroz hipogrifo tubarao-medio vibora-media lula carcaju",
-        3 to "gorila arminho-atroz lobo-atroz aguia-gigante leao coruja-gigante satiro tubarao-grande cobra-constritora vibora-grande thoqqua",
-        4 to "gaviao-seta-jovem tojanida-jovem xorn-menor irmao-das-chamas unicornio urso-marrom crocodilo-gigante dinonico gorila-atroz javali-atroz carcaju-atroz leao-marinho tubarao-enorme vibora-enorme tigre",
-        5 to "gaviao-seta-adulto tojanida-adulto urso-polar leao-atroz elasmossauro grifo janni rinoceronte satiro cobra-constritora-gigante nixie baleia-orca",
-        6 to "salamandra-media xorn-medio urso-atroz girallon megaraptor polvo-gigante pixie baleia-azul",
-        7 to "gaviao-seta-anciao xorn-anciao tigre-atroz djinni cacador-invisivel pixie lula-gigante triceratops tiranossauro baleia-cachalote",
-        8 to "salamandra-nobre tojanida-anciao tubarao-atroz passaro-roca",
-        9 to "grig pixie"
+        2 to "elemental-agua-pequeno elemental-ar-pequeno elemental-fogo-pequeno elemental-terra-pequeno urso-negro crocodilo texugo-atroz morcego-atroz hipogrifo tubarao-medio vibora-media lula carcaju",
+        3 to "elemental-agua-pequeno elemental-ar-pequeno elemental-fogo-pequeno elemental-terra-pequeno gorila arminho-atroz lobo-atroz aguia-gigante leao coruja-gigante satiro tubarao-grande cobra-constritora vibora-grande thoqqua",
+        4 to "elemental-agua-medio elemental-ar-medio elemental-fogo-medio elemental-terra-medio gaviao-seta-jovem tojanida-jovem xorn-menor xorn-medio irmao-das-chamas salamandra-media unicornio urso-marrom crocodilo-gigante dinonico gorila-atroz javali-atroz carcaju-atroz leao-marinho tubarao-enorme vibora-enorme tigre",
+        5 to "elemental-agua-grande elemental-ar-grande elemental-fogo-grande elemental-terra-grande gaviao-seta-adulto tojanida-adulto urso-polar leao-atroz elasmossauro grifo janni rinoceronte satiro cobra-constritora-gigante nixie baleia-orca",
+        6 to "elemental-agua-enorme elemental-ar-enorme elemental-fogo-enorme elemental-terra-enorme urso-atroz girallon megaraptor polvo-gigante pixie baleia-azul",
+        7 to "elemental-agua-maior elemental-ar-maior elemental-fogo-maior elemental-terra-maior gaviao-seta-anciao xorn-anciao tigre-atroz djinni cacador-invisivel pixie lula-gigante triceratops tiranossauro baleia-cachalote",
+        8 to "elemental-agua-maior elemental-ar-maior elemental-fogo-maior elemental-terra-maior salamandra-nobre tojanida-anciao tubarao-atroz passaro-roca",
+        9 to "elemental-agua-anciao elemental-ar-anciao elemental-fogo-anciao elemental-terra-anciao grig pixie"
     )
 
     private val monsterLists = mapOf(
