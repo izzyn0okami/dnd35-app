@@ -416,5 +416,6 @@ As fichas-base devem ser reutilizadas por ID sempre que a tabela pedir apenas um
 - Foram adicionadas fichas para Irmão das Chamas (Salamandra), Salamandra e Salamandra Nobre, Livro dos Monstros, p. 227. Mantida a nomenclatura do bestiário para a primeira forma.
 - As entradas foram vinculadas às listas de Invocar Aliado da Natureza nos círculos correspondentes do Livro do Jogador: Gavião-Seta Jovem (4º), Adulto (5º), Ancião (7º); Tojanida Jovem (4º), Adulto (5º), Ancião (8º); Irmão das Chamas (4º), Salamandra (6º), Salamandra Nobre (8º).
 - O Unicórnio já possui registro no catálogo com ID `unicorno`; foi apenas vinculado ao círculo 4, sem duplicação. O ID `unicorno` deve ser conferido na execução dos testes para garantir que exista no branch.
-- A entrada da Tojanida Adulto também foi incluída no círculo 6 porque a tabela de Invocar Aliado da Natureza V lista a Tojanida Adulta; sua disponibilidade em círculos superiores é automática.
+- Tojanida Adulto permanece no círculo 5, conforme a tabela; sua disponibilidade em círculos superiores é automática.
+- Unicórnio foi incluído no catálogo e no círculo 4, sem duplicar registros. A variante “Unicórnio, Arauto Celestial” ainda precisa de extração e validação separadas.
 - Nenhuma arte foi gerada ou substituída. As fichas que não possuem arte serão identificadas em auditoria própria para futura geração rasterizada; imagens existentes serão preservadas.
