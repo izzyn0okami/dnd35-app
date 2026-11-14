@@ -576,3 +576,13 @@ As fichas-base devem ser reutilizadas por ID sempre que a tabela pedir apenas um
 - Foram destacados: dreno de energia, criação de espectros e vulnerabilidade à luz solar; veneno e teias do ettercap; combate com duas armas sem penalidade do ettin; rabeca e habilidades similares à magia do grig; e encantamento, respiração aquática e empatia selvagem da nixie.
 - Nenhuma estatística do catálogo foi alterada. Testes de regressão cobrem as cinco fichas e suas capacidades distintivas.
 - Situação após esta etapa: 313 fichas no catálogo; 140 possuem descrição e resumo de combate; 173 ainda precisam de ao menos um desses campos.
+
+
+## 2026-11-14 — Décima primeira etapa: pixie, fantasma, fera do caos e predadores ocultos
+
+- Preenchidas descrição e síntese de combate de 6 fichas: Pixie, Fantasma Guerreiro Humano de 5º Nível, Fera do Caos, Fogo–fátuo, Fungo Fantasma e Gárgula.
+- Fonte primária: Livro dos Monstros 3.5 em português, páginas impressas 123–126 e 130–131. Os textos foram sintetizados a partir das descrições e regras dos respectivos verbetes.
+- Foram preservadas as capacidades distintivas: invisibilidade e flechas especiais da pixie; incorporeidade, possessão e restauração do fantasma; Instabilidade Corpórea da fera do caos; imunidade à magia e invisibilidade natural do fogo–fátuo; invisibilidade maior do fungo fantasma; e emboscada por Imobilidade da gárgula.
+- Nenhuma estatística mecânica foi alterada. O exemplo de fantasma foi resumido conforme as habilidades que constam especificamente em sua ficha, sem atribuir a ele outros poderes opcionais do modelo.
+- Teste de regressão adicionado para as seis fichas e suas capacidades características.
+- Situação após esta etapa: 313 fichas no catálogo; 146 possuem descrição e resumo de combate; 167 ainda precisam de ao menos um desses campos.
