@@ -154,7 +154,7 @@ fun <T> CreatureCardStack(
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(370.dp)
+                .height(410.dp)
                 .pointerInput(identity, safeIndex) {
                     var dragDistance = 0f
                     detectHorizontalDragGestures(
@@ -177,15 +177,15 @@ fun <T> CreatureCardStack(
                 Box(
                     modifier = Modifier
                         .offset(x = ((index + 1) * 18).dp, y = 5.dp)
-                        .width(250.dp)
-                        .height(350.dp)
+                        .width(265.dp)
+                        .height(390.dp)
                         .zIndex(index.toFloat())
                 ) { card(item) }
             }
             Box(
                 modifier = Modifier
-                    .width(250.dp)
-                    .height(350.dp)
+                    .width(265.dp)
+                    .height(390.dp)
                     .zIndex(10f)
             ) { card(visible.first()) }
         }
@@ -213,7 +213,7 @@ fun CreatureImageTradingCard(
     var showDetails by remember(creature.id) { mutableStateOf(false) }
 
     Card(
-        modifier = modifier.fillMaxWidth().height(350.dp).combinedClickable(
+        modifier = modifier.fillMaxWidth().height(390.dp).combinedClickable(
             onClick = { showBack = !showBack },
             onLongClick = { showDetails = true }
         ),
@@ -250,13 +250,20 @@ fun CreatureImageTradingCard(
                     contentScale = ContentScale.Crop,
                     maxDimensionPx = 1000
                 )
-                Text(details, style = MaterialTheme.typography.bodySmall, maxLines = 2, overflow = TextOverflow.Ellipsis)
+                Text(details, style = MaterialTheme.typography.bodySmall, maxLines = 1, overflow = TextOverflow.Ellipsis)
                 Surface(modifier = Modifier.fillMaxWidth(), color = MaterialTheme.colorScheme.surface,
                     shape = RoundedCornerShape(9.dp)) {
                     Text(stats, modifier = Modifier.padding(horizontal = 9.dp, vertical = 7.dp),
                         style = MaterialTheme.typography.labelMedium, fontWeight = FontWeight.SemiBold,
-                        maxLines = 2, overflow = TextOverflow.Ellipsis)
+                        maxLines = 3, overflow = TextOverflow.Ellipsis)
                 }
+                Text("Deslocamento: ${creature.speed}", style = MaterialTheme.typography.labelSmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                Text("Resistências: Fort ${creature.saves.fort.creatureSigned()} • Ref ${creature.saves.ref.creatureSigned()} • Von ${creature.saves.will.creatureSigned()}",
+                    style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    maxLines = 1, overflow = TextOverflow.Ellipsis)
+                Text("Ataque: ${creature.attack.ifBlank { "—" }}", style = MaterialTheme.typography.labelSmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant, maxLines = 2, overflow = TextOverflow.Ellipsis)
                 if (!footer.isNullOrBlank()) {
                     Text(footer, style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.tertiary)
                 }
