@@ -251,4 +251,24 @@ class CreatureCatalogTest {
         assertTrue(CreatureCatalog.byId("ente")!!.combat.contains("Animar Árvores"))
     }
 
+
+    @Test
+    fun swarmsExcavatorAndSphinxesHaveNarrativeAndCombatSummaries() {
+        listOf(
+            "enxame-de-centopeias", "enxame-de-gafanhotos", "enxame-de-morcegos",
+            "escavador", "androesfinge", "crioesfinge", "ginoesfinge"
+        ).forEach { id ->
+            val creature = CreatureCatalog.byId(id)!!
+            assertTrue("$id sem descrição", creature.description.isNotBlank())
+            assertTrue("$id sem resumo de combate", creature.combat.isNotBlank())
+        }
+        assertTrue(CreatureCatalog.byId("enxame-de-centopeias")!!.combat.contains("Veneno"))
+        assertTrue(CreatureCatalog.byId("enxame-de-gafanhotos")!!.combat.contains("Distração"))
+        assertTrue(CreatureCatalog.byId("enxame-de-morcegos")!!.combat.contains("Sangramento"))
+        assertTrue(CreatureCatalog.byId("escavador")!!.combat.contains("Muco Corrosivo"))
+        assertTrue(CreatureCatalog.byId("androesfinge")!!.combat.contains("Rugido"))
+        assertTrue(CreatureCatalog.byId("crioesfinge")!!.combat.contains("chifres"))
+        assertTrue(CreatureCatalog.byId("ginoesfinge")!!.combat.contains("símbolo"))
+    }
+
 }
