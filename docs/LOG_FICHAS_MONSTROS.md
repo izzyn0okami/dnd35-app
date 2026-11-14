@@ -700,3 +700,12 @@ As fichas-base devem ser reutilizadas por ID sempre que a tabela pedir apenas um
 - Corrigida a importação ausente de assertFalse no teste de catálogo, que fazia a CI falhar na compilação dos testes unitários.
 - Teste de regressão adicionado para a ficha da Múmia e suas capacidades distintivas.
 - Situação após esta etapa: 315 fichas no catálogo; 195 possuem Descrição e Combate; 120 ainda precisam de ao menos um desses campos.
+
+
+## 2026-11-14 — Correção de vínculo de invocação: Mephit da Terra
+
+- A CI identificou que o Mephit da Terra estava marcado como invocável no catálogo, mas não constava em nenhuma lista de círculo, fazendo falhar as verificações de cobertura das tabelas.
+- Conferência direta do Livro do Jogador brasileiro, p. 211: a tabela Invocar Criaturas IV contém “Mephit (qualquer um)”.
+- Incluído o ID `mephit-da-terra` na lista do 4º círculo, junto aos demais mephits.
+- Adicionado teste de regressão que exige a presença dos quatro tipos de mephit no círculo IV.
+- A falha explica os dois testes de SummoningRulesTest que falhavam na verificação de criaturas invocáveis sem círculo; nenhuma alteração foi feita nas regras ou fichas da Múmia.

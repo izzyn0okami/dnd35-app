@@ -72,6 +72,15 @@ class SummoningRulesTest {
     }
 
     @Test
+    fun allMephitsAreAvailableInSummonCreaturesFour() {
+        val circleFour = SummoningRules.creaturesForCircle(SummoningFamily.SUMMON_CREATURES, 4)
+        assertTrue(circleFour.any { it.creature.id == "mephit-da-terra" })
+        assertTrue(circleFour.any { it.creature.id == "mephit-da-agua" })
+        assertTrue(circleFour.any { it.creature.id == "mephit-do-ar" })
+        assertTrue(circleFour.any { it.creature.id == "mephit-do-fogo" })
+    }
+
+    @Test
     fun everySummonFlagHasAnExplicitBookListCircle() {
         assertEquals(emptyList<String>(), SummoningRules.unclassifiedCatalogCreatureIds())
         assertFalse(com.example.dnd35.model.CreatureCatalog.byId("escorpiao-colossal")!!.summonedCreature)
