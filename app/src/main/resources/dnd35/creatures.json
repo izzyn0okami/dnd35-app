@@ -5351,7 +5351,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Gigante enorme que vive em picos montanhosos cercados por nuvens e costuma construir castelos rústicos. Orgulha-se de sua aparência, roupas refinadas, joias e gosto pela música. Os grupos podem ser bondosos e negociar com comunidades humanoides ou malignos e saqueadores; são conhecidos por sua criatividade e capacidade estratégica.",
+    "combat": "Prefere combater de posições elevadas, em unidades organizadas que cercam os inimigos e os bombardeiam com rochas enquanto aliados conjuram magias. Arremessa rochas a até 42 m e maneja uma maça-estrela Imensa de duas mãos sem penalidades. Suas habilidades similares à magia incluem levitação, névoa obscurecente e névoa. Também pode apanhar rochas e possui faro."
   },
   {
     "id": "gigante-do-fogo",
@@ -5401,7 +5403,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Gigante de pele negra como carvão, cabelos ruivos flamejantes e dentes amarelados. É brutal, cruel e militarista, vivendo em regiões vulcânicas ou próximas a fontes termais. Seus grupos são organizados como forças militares e costumam usar roupas resistentes, armaduras e elmos de aço enegrecido.",
+    "combat": "Prefere armas pesadas, especialmente espadas largas, e aquece as rochas antes de arremessá-las para acrescentar 2d6 de dano por fogo. Pode arremessar rochas a até 36 m e agarrar adversários menores para lançá-los em áreas extremamente quentes. É imune a fogo, mas vulnerável ao frio; também pode apanhar rochas."
   },
   {
     "id": "gigante-de-pedra",
@@ -5451,7 +5455,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Gigante grande, de pele cinzenta, corpo musculoso e traços severos. Habita cavernas profundas em montanhas rochosas e costuma ser reservado diante de estranhos. Apesar da reputação de desordeiro, aprecia arte, música e competições de arremesso de rochas.",
+    "combat": "Prefere atacar à distância, camuflando-se entre formações rochosas e surpreendendo os inimigos com pedras; no combate próximo, usa armas grandes esculpidas em rocha. Arremessa rochas a até 36 m e recebe +4 nos testes de Reflexos para apanhá-las. Em terreno rochoso, seu bônus racial em Esconder-se aumenta em +8, favorecendo emboscadas."
   },
   {
     "id": "girallon",
