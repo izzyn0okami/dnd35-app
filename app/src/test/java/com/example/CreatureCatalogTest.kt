@@ -395,4 +395,19 @@ class CreatureCatalogTest {
         assertTrue(CreatureCatalog.byId("leao-marinho")!!.combat.contains("2d6+6"))
     }
 
+
+    @Test
+    fun lichLillendGrayOozeSteppeWolfAndLocathahHaveNarrativeSummaries() {
+        listOf("lich", "lillend", "limo-cinzento", "lobo-das-estepes", "locathah").forEach { id ->
+            val creature = CreatureCatalog.byId(id)!!
+            assertTrue("$id sem descrição", creature.description.isNotBlank())
+            assertTrue("$id sem resumo de combate", creature.combat.isNotBlank())
+        }
+        assertTrue(CreatureCatalog.byId("lich")!!.combat.contains("filactéria"))
+        assertTrue(CreatureCatalog.byId("lillend")!!.combat.contains("Constrição"))
+        assertTrue(CreatureCatalog.byId("limo-cinzento")!!.combat.contains("Transparência"))
+        assertTrue(CreatureCatalog.byId("lobo-das-estepes")!!.combat.contains("4d6"))
+        assertTrue(CreatureCatalog.byId("locathah")!!.combat.contains("virotes de bestas"))
+    }
+
 }
