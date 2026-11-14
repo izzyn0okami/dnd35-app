@@ -44,6 +44,8 @@ import androidx.compose.ui.unit.dp
 import com.example.dnd35.model.CreatureDefinition
 import com.example.dnd35.model.CreatureCatalog
 import com.example.dnd35.ui.components.CreatureImage
+import com.example.dnd35.ui.components.CreatureImageTradingCard
+import com.example.dnd35.ui.components.CreatureCardStack
 
 /**
  * Bestiário consultivo. As ilustrações são resolvidas automaticamente em assets/monsters
@@ -145,10 +147,19 @@ fun CreatureCatalogTab(modifier: Modifier = Modifier) {
                 Text("Nenhuma criatura corresponde aos filtros.")
             }
         } else {
-            LazyColumn(
-                modifier = Modifier.fillMaxSize(),
-                verticalArrangement = Arrangement.spacedBy(8.dp)
-            ) {
+            CreatureCardStack(
+                items = filtered,
+                key = { it.id },
+                modifier = Modifier.fillMaxWidth()
+            ) { creature ->
+                CreatureImageTradingCard(
+                    creature = creature,
+                    details = "${creature.size} • ${creature.typeDetail.ifBlank { creature.type }}",
+                    stats = "ND ${creature.challengeRating} • PV ${creature.hitPoints} • CA ${creature.armorClassText}",
+                    selectLabel = "Abrir ficha completa",
+                    onSelect = { selectedCreatureId = creature.id }
+                )
+            } {
                 items(filtered, key = { it.id }) { creature ->
                     CreatureListItem(creature = creature) {
                         selectedCreatureId = creature.id
