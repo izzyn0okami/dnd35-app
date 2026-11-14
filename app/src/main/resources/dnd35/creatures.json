@@ -5663,7 +5663,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Constructo humanoide de ferro maciço, com cerca de 3,6 metros de altura e aproximadamente 2,5 toneladas. Não fala, não produz sons pela boca e não possui odor. Caminha com passos pesados e determinados, fazendo o chão estremecer quando não está sobre uma base firme.",
+    "combat": "Ataca com duas pancadas de força devastadora e pode liberar, como ação livre, uma nuvem de gás venenoso que ocupa um cubo de 3 m e permanece por uma rodada. A nuvem causa dano temporário à Constituição inicialmente e novamente na exposição secundária; Fortitude (CD 19) anula o efeito. É imune à maioria das magias. Eletricidade o deixa lento por três rodadas; fogo remove essa lentidão e restaura 1 PV para cada 3 pontos de dano que o ataque causaria, podendo gerar PV temporários. Não realiza testes de resistência contra ataques mágicos de fogo e continua vulnerável a efeitos de ferrugem."
   },
   {
     "id": "grick",
@@ -5713,7 +5715,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Aberração subterrânea de corpo alongado, semelhante a um verme escuro, com quatro tentáculos segmentados ao redor da mandíbula. É um predador furtivo que se esconde em covas, fendas e buracos próximos a passagens movimentadas, esperando que uma criatura se aproxime. Seu corpo emborrachado e a coloração escura ajudam a sobreviver e a emboscar presas.",
+    "combat": "Ataca primeiro com os quatro tentáculos e usa a mordida como ataque complementar. Em vez de consumir imediatamente uma presa, costuma arrastá-la até o covil para devorá-la. Caça sozinho com frequência e abandona o combate quando consegue levar uma vítima morta ou inconsciente. Suas armas naturais são consideradas mágicas para superar Redução de Dano. Recebe +8 racial em Escalar e pode escolher 10 mesmo sob ameaça; em áreas rochosas naturais, recebe +8 racial em Esconder-se."
   },
   {
     "id": "grifo",
@@ -5763,7 +5767,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Besta majestosa com corpo musculoso de leão, cabeça e patas dianteiras de águia e grandes asas douradas. Constrói ninhos em lugares elevados e caça vários tipos de presa, embora prefira carne de cavalo. É territorial e agressivo, mas evita adversários que reconhece como claramente superiores; compreende o idioma Comum, embora não fale.",
+    "combat": "Prefere investir contra a presa, mergulhando do ar ou saltando sobre ela. Depois de uma investida ou mergulho, pode executar um ataque total na mesma rodada, incluindo os dois ataques de Rasgar. Quando agarra e dilacera a presa, Rasgar causa 3d6+2 pontos de dano. Pode ser treinado como montaria alada, mas precisa de seis semanas de treinamento e sela exótica para transportar um cavaleiro em combate."
   },
   {
     "id": "grimlock",
@@ -5813,7 +5819,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Humanoide monstruoso musculoso, de pele grossa, cinzenta e escamosa, com órbitas oculares brancas e sem olhos. Vive nas profundezas subterrâneas e realiza incursões à superfície para saquear e capturar escravos. É xenófobo, aprecia carne fresca — especialmente humana — e organiza-se em patrulhas, bandos ou grandes comunidades subterrâneas.",
+    "combat": "Embora cego, localiza criaturas próximas por meio do olfato e da audição aguçados, avançando para atacar com machados de batalha de pedra. Seu Sentido Cego detecta a posição exata de criaturas a até 12 m, mas alvos que não consegue enxergar ainda possuem camuflagem total contra ele. É imune a ataques e efeitos visuais, ilusões e outros efeitos relacionados à visão. Ruídos intensos, efeitos sônicos e odores muito fortes afetam-no normalmente; se ambos olfato e audição forem anulados, fica efetivamente cego. Nas montanhas ou no subterrâneo, recebe +10 racial em Esconder-se."
   },
   {
     "id": "avoral",
@@ -5863,7 +5871,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Celestial guardinal do Elíseo, com corpo humanoide alto e musculoso, asas longas no lugar dos braços, pernas com garras e plumagem dourada. Seus ossos são resistentes e ocos, tornando-o muito leve para sua altura. As pequenas garras nas asas permitem manipular objetos como mãos humanas, e sua visão extraordinária alcança detalhes a grandes distâncias.",
+    "combat": "Prefere combater no ar, usando a velocidade de voo e as garras; quando está no solo, golpeia com as asas. Não consegue atacar com as asas enquanto voa. Suas armas são consideradas sagradas para superar Redução de Dano. Possui habilidades similares à magia, incluindo ajuda, dissipar magia, imobilizar pessoa, porta dimensional e relâmpago; pode criar uma aura de medo uma vez por dia e ativar visão da verdade enquanto se concentra. Como guardinal, também possui cura pelas mãos, imunidade a eletricidade e petrificação, resistência a frio e som e capacidade de falar com animais."
   },
   {
     "id": "hipogrifo",
@@ -5913,7 +5923,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Besta alada que combina o dorso e a parte traseira de um cavalo com as pernas dianteiras, asas e cabeça de uma águia gigante. É agressiva, territorial e onívora, caçando humanoides e outros animais. Defende ferozmente sua área de caça e, sobretudo, os filhotes mantidos nos ninhos.",
+    "combat": "Mergulha sobre a presa e ataca com as garras dianteiras; quando não pode mergulhar, utiliza as garras e o bico. Casais e revoadas coordenam ataques repetidos para afugentar ou matar intrusos, e os adultos lutam até a morte para proteger o ninho. Recebe +4 racial em Observar. Para transportar um cavaleiro em combate, precisa ser treinado durante seis semanas com Adestrar Animais (CD 25) e utilizar sela exótica."
   },
   {
     "id": "homunculo",
