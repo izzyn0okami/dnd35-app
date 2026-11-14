@@ -62,19 +62,6 @@ fun SummonedCreaturePickerDialog(
                     selectLabel = "Invocar",
                     onSelect = { onSelect(option) }
                 )
-            } {
-                items(options, key = { "${it.creature.id}-${it.sourceCircle}-${it.templateLabel}" }) { option ->
-                    val variant = option.templateLabel.takeIf { it.isNotBlank() }
-                        ?.let { "Modelo/variante: $it" }
-                    CreatureImageTradingCard(
-                        creature = option.creature,
-                        details = "Lista de ${SpellbookRules.circleLabel(option.sourceCircle)}",
-                        stats = "PV ${option.creature.hitPoints} • CA ${option.creature.armorClassText} • Iniciativa ${option.creature.initiative}",
-                        footer = variant,
-                        selectLabel = "Invocar criatura",
-                        onSelect = { onSelect(option) }
-                    )
-                }
             }
         }
         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = androidx.compose.foundation.layout.Arrangement.End) {
