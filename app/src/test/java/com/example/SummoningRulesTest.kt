@@ -46,6 +46,7 @@ class SummoningRulesTest {
         assertTrue(SummoningRules.creaturesForCircle(SummoningFamily.SUMMON_CREATURES, 5).any { it.creature.id == "elemental-ar-medio" })
         assertTrue(SummoningRules.creaturesForCircle(SummoningFamily.SUMMON_CREATURES, 6).any { it.creature.id == "elemental-fogo-grande" })
         assertTrue(SummoningRules.creaturesForCircle(SummoningFamily.SUMMON_CREATURES, 7).any { it.creature.id == "elemental-agua-enorme" })
+        assertTrue(SummoningRules.creaturesForCircle(SummoningFamily.SUMMON_CREATURES, 7).any { it.creature.id == "baleia-azul" && it.templateLabel == "Celestial" })
         assertTrue(SummoningRules.creaturesForCircle(SummoningFamily.SUMMON_CREATURES, 8).any { it.creature.id == "elemental-terra-maior" })
         assertTrue(SummoningRules.creaturesForCircle(SummoningFamily.SUMMON_CREATURES, 9).any { it.creature.id == "elemental-fogo-anciao" })
         assertTrue(SummoningRules.creaturesForCircle(SummoningFamily.SUMMON_CREATURES, 6).any { it.creature.id == "cobra-constritora-gigante" })
