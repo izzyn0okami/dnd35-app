@@ -52,3 +52,19 @@ Melhoria do componente compartilhado nas cartas do Bestiário, seleção de cria
 
 ### Validação
 - Alteração agrupada na PR #374; aguardando CI Android e testes automatizados.
+
+## 2026-11-14 — Frente orientada ao combate e ilustração ampliada
+
+### Alterações
+- Ampliada a ilustração frontal de 150 dp para 210 dp.
+- Aumentada a altura da carta para 600 dp e da área da pilha para 620 dp, acompanhando a nova composição.
+- Priorizados na frente PV, CA, iniciativa e deslocamento.
+- Incluídos Fortitude, Reflexos e Vontade em uma segunda linha compacta.
+- Mantidos Ataque, Ataque total e ataques especiais quando existentes, sem botões de rolagem.
+- Retirado o BBA da frente para evitar redundância com os bônus já descritos nos ataques; BBA e agarrar permanecem nas informações do verso.
+- Preservados o verso, a ficha completa por pressão prolongada, a seleção e a navegação por gesto.
+- Aplicado no componente compartilhado, abrangendo Bestiário, invocações e companheiros animais.
+
+### Validação
+- Aguardando CI Android e testes automatizados da PR #374.
+- A conferência visual em aparelho continua necessária para confirmar enquadramento da arte, legibilidade e ausência de cortes em cartas com ataques especiais extensos.
