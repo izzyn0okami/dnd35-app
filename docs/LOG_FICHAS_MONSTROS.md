@@ -484,3 +484,15 @@ As fichas-base devem ser reutilizadas por ID sempre que a tabela pedir apenas um
 - Nenhum valor mecânico existente foi alterado. Nenhum campo já preenchido foi sobrescrito.
 - Teste de regressão exige que as 11 fichas mantenham descrição e resumo de combate não vazios.
 - Situação após esta etapa: 313 fichas no catálogo; 246 ainda precisam de descrição ou resumo de combate.
+
+
+## 2026-11-14 — Segunda etapa de preenchimento narrativo: criaturas A–B
+
+- Preenchidas descrição e táticas/resumo de combate de 10 fichas: Aranea, Aranha Interplanar, Arbusto Errante, Arconte Luminar, Arconte Mensageiro, Azer, Beholder, Belker, Anis e Bruxa Verde.
+- Fonte primária: Livro dos Monstros 3.5 em português, verbetes nas páginas impressas 23–36 (PDF da Biblioteca Elfica enviado ao projeto).
+- Os resumos preservam características visuais, comportamento, habitat e táticas/habilidades descritas nos verbetes, sem reproduzir extensamente o texto original.
+- Corrigida a grafia evidente “ratos ópticos” para “raios ópticos” nos campos de ataque do Beholder, em coerência com o nome da habilidade no próprio verbete.
+- Atenção para auditoria mecânica futura: o bloco do Beholder no PDF apresenta Destreza 74, embora a CA registre modificador +2. O valor foi mantido sem alteração até conferência em uma fonte independente; não se deve inferir silenciosamente o valor correto.
+- Nenhum outro valor mecânico foi alterado. Nenhum campo narrativo já preenchido foi sobrescrito.
+- Teste de regressão cobre as 10 fichas para garantir descrição e resumo de combate não vazios.
+- Situação após esta etapa: 313 fichas no catálogo; 236 ainda precisam de descrição ou resumo de combate.
