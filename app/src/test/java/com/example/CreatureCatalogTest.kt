@@ -124,4 +124,67 @@ class CreatureCatalogTest {
         }
         assertTrue("Escorpião Colossal não consta na tabela de Invocar Criaturas", !CreatureCatalog.byId("escorpiao-colossal")!!.summonedCreature)
     }
+
+    @Test
+    fun direAnimalsHaveNarrativeAndCombatSummaries() {
+        listOf(
+            "arminho-atroz", "carcaju-atroz", "gorila-atroz", "javali-atroz",
+            "leao-atroz", "lobo-atroz", "morcego-atroz", "rato-atroz",
+            "tigre-atroz", "tubarao-atroz", "urso-atroz"
+        ).forEach { id ->
+            val creature = CreatureCatalog.byId(id)!!
+            assertTrue("$id sem descrição", creature.description.isNotBlank())
+            assertTrue("$id sem resumo de combate", creature.combat.isNotBlank())
+        }
+    }
+
+    @Test
+    fun earlyAlphabeticalCreaturesHaveNarrativeAndCombatSummaries() {
+        listOf(
+            "aranea", "aranha-interplanar", "arbusto-errante", "arconte-luminar",
+            "arconte-mensageiro", "azer", "beholder", "belker", "anis", "bruxa-verde"
+        ).forEach { id ->
+            val creature = CreatureCatalog.byId(id)!!
+            assertTrue("$id sem descrição", creature.description.isNotBlank())
+            assertTrue("$id sem resumo de combate", creature.combat.isNotBlank())
+        }
+        val beholder = CreatureCatalog.byId("beholder")!!
+        assertTrue(beholder.attack.contains("raios ópticos"))
+        assertTrue(beholder.fullAttack.contains("raios ópticos"))
+    }
+
+    @Test
+    fun bugbearToConstrictorHaveNarrativeAndCombatSummaries() {
+        listOf(
+            "bugbear", "bulette", "cacador-invisivel", "cao-infernal",
+            "cao-de-guerra-nessian", "cao-teleportador", "cao-yeth",
+            "chuul", "cocatriz", "constritor"
+        ).forEach { id ->
+            val creature = CreatureCatalog.byId(id)!!
+            assertTrue("$id sem descrição", creature.description.isNotBlank())
+            assertTrue("$id sem resumo de combate", creature.combat.isNotBlank())
+        }
+        assertEquals(17, CreatureCatalog.byId("bugbear")!!.armorClass)
+        assertEquals("Plano Elemental do Ar", CreatureCatalog.byId("cacador-invisivel")!!.environment)
+        assertEquals("Pântanos temperados", CreatureCatalog.byId("chuul")!!.environment)
+        assertEquals("Subterrâneo", CreatureCatalog.byId("constritor")!!.environment)
+    }
+
+    @Test
+    fun seaWitchThroughHezrouHaveNarrativeAndCombatSummaries() {
+        listOf(
+            "bruxa-do-mar", "coruja-gigante", "couatl", "cria-vampirica",
+            "babau", "balor", "bebilith", "dretch", "glabrezu", "hezrou"
+        ).forEach { id ->
+            val creature = CreatureCatalog.byId(id)!!
+            assertTrue("$id sem descrição", creature.description.isNotBlank())
+            assertTrue("$id sem resumo de combate", creature.combat.isNotBlank())
+        }
+
+        assertTrue(!CreatureCatalog.byId("babau")!!.skills.contains("DEMÔNIO"))
+        assertTrue(!CreatureCatalog.byId("dretch")!!.specialAttacks.contains("Caçador"))
+        assertTrue(!CreatureCatalog.byId("hezrou")!!.spaceReach.contains("GLABREZU"))
+        assertTrue(CreatureCatalog.byId("coruja-gigante")!!.summonedCreature)
+    }
+
 }

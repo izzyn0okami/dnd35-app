@@ -397,3 +397,134 @@ As fichas-base devem ser reutilizadas por ID sempre que a tabela pedir apenas um
 - Acrescentados testes para as criaturas existentes que estavam sem flag e para suas listas/círculos corretos.
 - `unclassifiedCatalogCreatureIds()` continua exigindo que toda ficha marcada como invocável tenha um círculo explícito nas tabelas.
 - Nenhuma estatística de criatura foi alterada nesta etapa.
+
+
+## 2026-11-14 — Primeira expansão de fichas de invocação e auditoria de vínculos
+
+- **Companheiros animais:** auditoria dos 58 IDs exigidos pelas regras de seleção já implementadas. Todos possuem registro no catálogo, estão marcados como companheiro animal e têm requisito de nível configurado; não foram criadas duplicatas.
+- **Familiares:** as dez opções existentes do Livro do Jogador (Coruja, Corvo, Falcão, Gato, Lagarto, Morcego, Rato, Sapo, Texugo e Víbora Pequena) já possuem ficha e marcação de familiar. Nenhuma ficha nova era necessária nessa categoria.
+- **Cão Yeth:** a ficha já existia, mas estava com `summonedCreature=false`. Corrigida a elegibilidade e incluído na lista de Invocar Criaturas IV.
+- **Lêmure:** ficha adicionada com estatísticas conferidas no Livro dos Monstros brasileiro, p. 70; incluído em Invocar Criaturas II. A descrição e o resumo de combate foram redigidos de forma concisa a partir do verbete, sem copiar extensos trechos.
+- **Imagens:** nenhuma imagem foi gerada ou associada nesta etapa. A regra visual passa a ser explícita: gerar/associar arte somente quando a ficha realmente não tiver imagem; preservar imagens já existentes. Não usar arte vetorial.
+- **Pendências:** as demais criaturas listadas no registro de auditoria anterior ainda exigem extração e conferência individual dos blocos de estatísticas antes de entrar no catálogo. Não criar placeholders nem inferir valores.
+
+
+## 2026-11-14 — Expansão das fichas de invocação: Gaviões-Seta, Tojanidas e Salamandras
+
+- Foram adicionadas fichas completas para as três idades do Gavião-Seta (adolescente/jovem, adulto e ancião), com estatísticas da tabela do Livro dos Monstros, pp. 132–133.
+- Foram adicionadas fichas completas para Tojanida Jovem, Tojanida Adulto e Tojanida Ancião, Livro dos Monstros, p. 241.
+- Foram adicionadas fichas para Irmão das Chamas (Salamandra), Salamandra e Salamandra Nobre, Livro dos Monstros, p. 227. Mantida a nomenclatura do bestiário para a primeira forma.
+- As entradas foram vinculadas às listas de Invocar Aliado da Natureza nos círculos correspondentes do Livro do Jogador: Gavião-Seta Jovem (4º), Adulto (5º), Ancião (7º); Tojanida Jovem (4º), Adulto (5º), Ancião (8º); Irmão das Chamas (4º), Salamandra (6º), Salamandra Nobre (8º).
+- O Unicórnio foi adicionado ao catálogo com ID `unicornio` e vinculado ao círculo 4.
+- Tojanida Adulto permanece no círculo 5, conforme a tabela; sua disponibilidade em círculos superiores é automática.
+- Unicórnio foi incluído no catálogo e no círculo 4, sem duplicar registros. A variante “Unicórnio, Arauto Celestial” ainda precisa de extração e validação separadas.
+- Nenhuma arte foi gerada ou substituída. As fichas que não possuem arte serão identificadas em auditoria própria para futura geração rasterizada; imagens existentes serão preservadas.
+
+
+## 2026-11-14 — Xorns e vinculação das listas de invocação
+
+- Adicionadas fichas do Xorn Menor, Xorn e Xorn Ancião com estatísticas do Livro dos Monstros, pp. 260–261.
+- Vinculados às opções de Invocar Aliado da Natureza: Xorn Menor (4º), Xorn Médio (6º) e Xorn Ancião (7º).
+- Gavião-Seta, Tojanida, Salamandra e Unicórnio também foram vinculados às listas e círculos conferidos no Livro do Jogador.
+- O Xorn Médio é nomeado apenas “Xorn” no verbete do Livro dos Monstros; a identificação “Médio” é mantida na ficha para corresponder à designação da tabela de invocação.
+- Permanecem pendentes as seis categorias de tamanho/estágio de Elementais (Água, Ar, Fogo e Terra), além de insetos gigantes, Arconte Guardião, Xill, Leonal, Bruxa da Noite, Baleia Celestial e a variante Unicórnio, Arauto Celestial.
+
+
+## 2026-11-14 — Fichas completas dos quatro tipos de Elemental
+
+- Adicionadas 24 fichas: Água, Ar, Fogo e Terra, cada qual em seis categorias: Pequeno, Médio, Grande, Enorme, Maior (Superior no verbete) e Ancião.
+- Estatísticas extraídas das tabelas do Livro dos Monstros 3.5, pp. 101–104. As fichas incluem DV/PV, iniciativa, deslocamento, CA, ataques, espaço/alcance, ataques e qualidades especiais, resistências, habilidades, perícias, talentos, ND, progressão e tendência.
+- A tabela do Elemental do Ar repete “Superior” na coluna final e repete os mesmos valores de DV, PV, CA, ataques, resistências e habilidades. Para permitir a opção “Elemental Ancião” da tabela do Livro do Jogador, a ficha de Ancião reproduz exatamente o bloco impresso repetido; não foram inventados valores para preencher a divergência editorial.
+- O bloco do Elemental do Fogo Médio registra literalmente “4d5+8” no PDF, com 26 PV; a grafia foi preservada para auditoria posterior, sem substituir silenciosamente o dado por outro.
+- Vinculação corrigida conforme Livro do Jogador, pp. 210–211:
+  - Invocar Aliado da Natureza: Pequeno (2º), Médio (4º), Grande (5º), Enorme (6º), Maior (7º), Ancião (9º).
+  - Invocar Criaturas: Pequeno (3º), Médio (5º), Grande (6º), Enorme (7º), Maior (8º), Ancião (9º).
+- As quatro variantes elementais estão disponíveis em cada estágio. Nenhuma imagem existente foi modificada e nenhuma arte vetorial foi criada.
+
+- Revisão adicional das listas de círculos após a extração integral das tabelas do Livro do Jogador: corrigida a posição dos Elementais nas duas famílias de invocação e corrigidos Xorn Médio e Salamandra Média para o 4º círculo de Invocar Aliado da Natureza. Os testes agora percorrem os quatro elementos em todos os seis círculos previstos em cada família.
+
+
+## 2026-11-14 — Insetos gigantes das listas de Invocar Criaturas
+
+- Adicionadas fichas-base de Abelha Gigante (Livro dos Monstros, p. 285), Besouro Gigante (p. 286), Gafanhoto Gigante (p. 289) e Louva-a-deus Gigante (p. 289).
+- Vinculações conforme Livro do Jogador, p. 211: Abelha Gigante Celestial e Besouro Gigante Celestial (2º círculo); Louva-a-deus Gigante Abissal (4º); Gafanhoto Gigante Celestial (5º).
+- As fichas armazenam a criatura-base; o rótulo Celestial/Abissal é aplicado pela regra de invocação, sem duplicar fichas com modelos.
+- O bloco do Louva-a-deus foi completado usando o SRD 3.5, que confirma DV 4d8+8, 26 PV, iniciativa –1, deslocamento terrestre e voo, CA 14, ataques, agarrar aprimorado, testes de resistência e habilidades. A versão em português do Livro dos Monstros apresenta o bloco quebrado entre colunas; não foram inferidos os campos ausentes.
+- Nenhuma imagem foi substituída ou gerada.
+
+
+## 2026-11-14 — Criaturas planares restantes das listas de Invocar Criaturas
+
+- Adicionadas fichas de Arconte Guardião (Livro dos Monstros, p. 25), Bruxa da Noite (p. 37), Xill (p. 260) e Leonal (p. 157).
+- Vinculações conforme Livro do Jogador, p. 211: Arconte Guardião (5º círculo), Xill (6º), Bruxa da Noite (9º) e Leonal (9º).
+- Bruxa da Noite e Xill foram conferidos com referências SRD 3.5 para validar blocos cuja extração do PDF apresenta colunas quebradas; os dados foram mantidos consistentes com o Livro dos Monstros em português.
+- Adicionado Unicórnio, Arauto Celestial no 9º círculo de Invocar Aliado da Natureza. O bloco é o Corcel Celestial, Clérigo de 7º nível, do Livro dos Monstros, p. 247, correspondendo à opção nomeada na tabela do Livro do Jogador.
+- Resolvida a entrada Baleia Celestial: a tabela inglesa identifica a opção como “Celestial Baleen Whale”; o bloco genérico de baleia que se alimenta de plâncton no Livro dos Monstros em português corresponde ao bloco de Baleia Azul (12d8+78, 132 PV). A Baleia Azul existente foi vinculada ao 7º círculo com o modelo Celestial, sem criar ficha duplicada. A baleia-orca e o cachalote continuam sendo espécies separadas.
+
+
+## 2026-11-14 — Correção de validação da lista de invocação
+
+- A CI identificou que `unicornio-arauto-celestial` tinha ficha e teste de círculo, mas não estava efetivamente incluído na lista de Invocar Aliado da Natureza IX. O ID foi acrescentado à lista; o teste que cobre essa opção permanece como regressão.
+- A PR deve permanecer sem merge até a nova execução da CI concluir com sucesso e o APK ser disponibilizado para validação.
+
+
+## 2026-11-14 — Revisão da lista de Invocar Criaturas: Cão Celestial
+
+- Conferida novamente a tabela brasileira do Livro do Jogador, p. 211, diretamente no PDF da Biblioteca. O Cão Celestial consta em Invocar Criaturas I.
+- A opção já estava funcionalmente representada pelo registro-base `cachorro` (ficha de Cachorro) com `templateLabel = Celestial`, e já era retornada no círculo I. Portanto, não faltava uma entrada de regra nem uma segunda ficha-base.
+- A causa da impressão de ausência era a apresentação do card: o título mostrava apenas “Cachorro” e o modelo celestial ficava no rodapé. A carta agora apresenta “Cão Celestial” como nome principal e identifica o modelo aplicado; a ficha-base continua sendo aberta para preservar os dados originais do animal.
+- A conferência visual da tabela de Invocar Criaturas (círculos I–IX) não revelou outra omissão evidente na lista de opções mapeadas. As criaturas que usam modelo Celestial/Abissal continuam vinculadas à ficha-base, sem duplicar blocos de estatísticas.
+
+
+## 2026-11-14 — Primeira etapa de preenchimento narrativo: animais atrozes
+
+- Preenchidas as descrições e táticas de combate de 11 fichas: Arminho Atroz, Carcajú Atroz, Gorila Atroz, Javali Atroz, Leão Atroz, Lobo Atroz, Morcego Atroz, Rato Atroz, Tigre Atroz, Tubarão Atroz e Urso Atroz.
+- Fonte primária: Livro dos Monstros 3.5 em português, verbetes nas páginas impressas 14–18. Os textos foram resumidos e reescritos para consulta no app, sem transcrição extensa.
+- As descrições registram aparência, porte, comportamento e habitat quando aplicável; os resumos de combate preservam as táticas e habilidades especiais descritas no verbete (adesão/drenar sangue, fúria, dilacerar, ferocidade, agarrar aprimorado, bote, rasgar, imobilização, sentido cego, doença, engolir e faro aguçado).
+- Nenhum valor mecânico existente foi alterado. Nenhum campo já preenchido foi sobrescrito.
+- Teste de regressão exige que as 11 fichas mantenham descrição e resumo de combate não vazios.
+- Situação após esta etapa: 313 fichas no catálogo; 246 ainda precisam de descrição ou resumo de combate.
+
+
+## 2026-11-14 — Segunda etapa de preenchimento narrativo: criaturas A–B
+
+- Preenchidas descrição e táticas/resumo de combate de 10 fichas: Aranea, Aranha Interplanar, Arbusto Errante, Arconte Luminar, Arconte Mensageiro, Azer, Beholder, Belker, Anis e Bruxa Verde.
+- Fonte primária: Livro dos Monstros 3.5 em português, verbetes nas páginas impressas 23–36 (PDF da Biblioteca Elfica enviado ao projeto).
+- Os resumos preservam características visuais, comportamento, habitat e táticas/habilidades descritas nos verbetes, sem reproduzir extensamente o texto original.
+- Corrigida a grafia evidente “ratos ópticos” para “raios ópticos” nos campos de ataque do Beholder, em coerência com o nome da habilidade no próprio verbete.
+- Atenção para auditoria mecânica futura: o bloco do Beholder no PDF apresenta Destreza 74, embora a CA registre modificador +2. O valor foi mantido sem alteração até conferência em uma fonte independente; não se deve inferir silenciosamente o valor correto.
+- Nenhum outro valor mecânico foi alterado. Nenhum campo narrativo já preenchido foi sobrescrito.
+- Teste de regressão cobre as 10 fichas para garantir descrição e resumo de combate não vazios.
+- Situação após esta etapa: 313 fichas no catálogo; 236 ainda precisam de descrição ou resumo de combate.
+
+
+## 2026-11-14 — Terceira etapa de preenchimento narrativo: criaturas B–C
+
+- Preenchidas descrição e resumo de combate de 10 fichas: Bugbear, Bulette, Caçador Invisível, Cão Infernal, Cão de Guerra Nessian, Cão Teleportador, Cão Yeth, Chuul, Cocatriz e Constritor.
+- Fonte primária: Livro dos Monstros 3.5 em português, verbetes nas páginas impressas 38–45.
+- Os textos resumem aparência, ecologia, comportamento, estratégias e habilidades de combate descritas nos verbetes.
+- Corrigidos erros de importação comprováveis no próprio bloco de estatísticas: CA do Bugbear (17, não 1); ambiente e organização do Caçador Invisível (Plano Elemental do Ar; solitário); ambiente e organização do Chuul (pântanos temperados; solitário/casal/matilhas); ambiente e organização do Constritor (subterrâneo; solitário).
+- Nenhum campo mecânico incerto foi alterado. Nenhum campo narrativo já preenchido foi sobrescrito.
+- Testes de regressão adicionados para as 10 fichas e para os campos corrigidos.
+- Situação após esta etapa: 313 fichas no catálogo; 226 ainda precisam de descrição ou resumo de combate.
+
+
+## 2026-11-14 — Quarta etapa de preenchimento narrativo: Bruxa do Mar, Coruja Gigante, Couatl e demônios
+
+- Preenchidas descrição e resumo de combate de 10 fichas: Bruxa do Mar, Coruja Gigante, Couatl, Cria Vampírica, Babau, Balor, Bebilith, Dretch, Glabrezu e Hezrou.
+- Fonte primária: Livro dos Monstros 3.5 em português, páginas impressas 36 e 46–55. Os textos foram sintetizados a partir dos verbetes, preservando aparência, ecologia, comportamento e táticas/habilidades de combate, sem transcrição extensa.
+- Corrigidos resíduos evidentes de extração/importação que haviam sido anexados a campos não relacionados: referências de paginação e títulos de verbetes removidas do fim das perícias do Babau, do campo de ataques especiais do Dretch e do espaço/alcance do Hezrou.
+- O talento do Couatl foi normalizado para “Ignorar Componentes Materiais”, removendo o marcador tipográfico de talento adicional que havia sido incorporado ao nome.
+- Não foram alterados valores de combate incertos nem preenchidos dados por inferência. As descrições e táticas já existentes foram preservadas.
+- Teste de regressão cobre as dez fichas e verifica também a ausência dos resíduos de importação removidos.
+- Situação após esta etapa: 313 fichas no catálogo; 97 possuem descrição e resumo de combate; 216 ainda precisam de ao menos um desses campos.
+
+
+## 2026-11-14 — Quinta etapa: criaturas abissais/celestiais, demônios e habitantes subterrâneos
+
+- Preenchidas descrição e síntese de combate de 10 fichas: Rato Atroz Abissal, Leão Celestial, Marilith, Nalfeshnee, Quasit, Vrock, Derro, Destrachan, Devorador de Aranhas e Diabo Barbado (Barbazu).
+- Fonte primária: Livro dos Monstros 3.5 em português, páginas impressas 48–49, 54–61 e 64. As descrições e táticas foram resumidas dos verbetes, mantendo a terminologia e as capacidades apresentadas na fonte.
+- Corrigido erro numérico evidente na ficha do Quasit: CA 78 foi corrigida para CA 18, compatível com a soma impressa (+2 tamanho, +3 Des, +3 natural).
+- Removidos resíduos de extração anexados ao final dos talentos da Marilith; a lista foi mantida conforme o bloco impresso. Corrigida a pontuação da perícia Concentração e a grafia de “Lutar às Cegas” no Derro.
+- Os dados não envolvidos nessas correções foram preservados. Teste de regressão adicionado para as dez fichas, incluindo a CA do Quasit e os campos contaminados.
+- Situação após esta etapa: 313 fichas no catálogo; 107 possuem descrição e resumo de combate; 206 ainda precisam de ao menos um desses campos.
