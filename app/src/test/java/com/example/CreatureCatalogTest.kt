@@ -137,4 +137,19 @@ class CreatureCatalogTest {
             assertTrue("$id sem resumo de combate", creature.combat.isNotBlank())
         }
     }
+
+    @Test
+    fun earlyAlphabeticalCreaturesHaveNarrativeAndCombatSummaries() {
+        listOf(
+            "aranea", "aranha-interplanar", "arbusto-errante", "arconte-luminar",
+            "arconte-mensageiro", "azer", "beholder", "belker", "anis", "bruxa-verde"
+        ).forEach { id ->
+            val creature = CreatureCatalog.byId(id)!!
+            assertTrue("$id sem descrição", creature.description.isNotBlank())
+            assertTrue("$id sem resumo de combate", creature.combat.isNotBlank())
+        }
+        val beholder = CreatureCatalog.byId("beholder")!!
+        assertTrue(beholder.attack.contains("raios ópticos"))
+        assertTrue(beholder.fullAttack.contains("raios ópticos"))
+    }
 }
