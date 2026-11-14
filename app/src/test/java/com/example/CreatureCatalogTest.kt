@@ -600,4 +600,96 @@ class CreatureCatalogTest {
         assertFalse(skum.fullAttack.contains("Sátiro"))
     }
 
+    
+    @Test
+    fun allSlaadVariantsHaveBookBasedNarrativeAndCombatDetails() {
+        val ids = listOf(
+            "slaad-azul", "slaad-cinza", "slaad-da-morte",
+            "slaad-verde", "slaad-vermelho"
+        )
+        ids.forEach { id ->
+            val creature = CreatureCatalog.byId(id)!!
+            assertTrue("$id sem descrição", creature.description.isNotBlank())
+            assertTrue("$id sem resumo de combate", creature.combat.isNotBlank())
+            assertTrue("$id sem origem planar", creature.environment.contains("Limbo"))
+            assertTrue("$id sem invocação", creature.combat.contains("Invocar Slaad"))
+        }
+        val azul = CreatureCatalog.byId("slaad-azul")!!
+        assertTrue(azul.combat.contains("Febre Slaad"))
+        assertTrue(azul.combat.contains("CD 18"))
+        assertEquals("8", azul.challengeRating)
+        assertEquals("Caos Eternamente Mutável do Limbo", azul.environment)
+
+        val cinza = CreatureCatalog.byId("slaad-cinza")!!
+        assertTrue(cinza.combat.contains("Mudar Forma"))
+        assertTrue(cinza.combat.contains("palavra de poder: atordoar"))
+        assertEquals("10", cinza.challengeRating)
+
+        val morte = CreatureCatalog.byId("slaad-da-morte")!!
+        assertTrue(morte.combat.contains("Atordoar"))
+        assertTrue(morte.combat.contains("implosão"))
+        assertTrue(morte.combat.contains("telepatia 30 m"))
+        assertEquals("13", morte.challengeRating)
+
+        val verde = CreatureCatalog.byId("slaad-verde")!!
+        assertTrue(verde.combat.contains("detectar pensamentos"))
+        assertTrue(verde.combat.contains("Mudar Forma"))
+        assertEquals("9", verde.challengeRating)
+
+        val vermelho = CreatureCatalog.byId("slaad-vermelho")!!
+        assertTrue(vermelho.combat.contains("Implante"))
+        assertTrue(vermelho.combat.contains("Fortitude CD 16"))
+        assertTrue(vermelho.combat.contains("Coaxar Atordoante"))
+        assertEquals("7", vermelho.challengeRating)
+    }
+
+
+    @Test
+    fun eightCreatureSheetsHaveNarrativeAndCombatDetails() {
+        val expected = mapOf(
+            "stirge" to listOf("Adesão", "Drenar Sangue", "1d4"),
+            "tarrasque" to listOf("Presença Aterradora", "carapaça", "868 PV"),
+            "tartarugadragao" to listOf("Sopro", "Naufragar", "12d6"),
+            "tendriculo" to listOf("Agarrar Aprimorado", "Regeneração", "Fortitude CD 20"),
+            "thoqqua" to listOf("Calor", "Incendiar", "2d6"),
+            "tita" to listOf("Arma Gigante", "chuva de meteoros", "20º"),
+            "tritao" to listOf("invocar aliado da natureza IV", "elementais da água"),
+            "troglodita" to listOf("Mau-Cheiro", "Fortitude CD 13", "9 m")
+        )
+        expected.forEach { (id, fragments) ->
+            val creature = CreatureCatalog.byId(id)!!
+            assertTrue("$id sem descrição", creature.description.isNotBlank())
+            assertTrue("$id sem combate", creature.combat.isNotBlank())
+            fragments.forEach { fragment ->
+                assertTrue("$id não contém $fragment", creature.combat.contains(fragment))
+            }
+        }
+        assertEquals("20", CreatureCatalog.byId("tarrasque")!!.challengeRating)
+        assertEquals("6", CreatureCatalog.byId("tendriculo")!!.challengeRating)
+        assertEquals("9", CreatureCatalog.byId("tartarugadragao")!!.challengeRating)
+        assertEquals("1/2", CreatureCatalog.byId("stirge")!!.challengeRating)
+    }
+
+
+    @Test
+    fun threeMoreCreatureSheetsHaveBookBasedNarrativeAndCombat() {
+        val expected = mapOf(
+            "uivante" to listOf("Espinhos", "Reflexos CD 16", "Vontade CD 12", "Adestrar Animais CD 25"),
+            "unicornio" to listOf("Círculo Mágico Contra o Mal", "teletransporte maior", "neutralizar veneno (CD 21,", "+6 de bônus racial"),
+            "ursocoruja" to listOf("Agarrar Aprimorado", "ação livre", "sempre lutam até a morte")
+        )
+        expected.forEach { (id, fragments) ->
+            val creature = CreatureCatalog.byId(id)!!
+            assertTrue("$id sem descrição", creature.description.isNotBlank())
+            assertTrue("$id sem combate", creature.combat.isNotBlank())
+            fragments.forEach { fragment ->
+                assertTrue("$id não contém $fragment", creature.combat.contains(fragment))
+            }
+        }
+        assertTrue(CreatureCatalog.byId("uivante")!!.description.contains("Pandemônio"))
+        assertTrue(CreatureCatalog.byId("unicornio")!!.description.contains("2.000 PO"))
+        assertTrue(CreatureCatalog.byId("ursocoruja")!!.description.contains("1d6 filhotes"))
+        assertTrue(CreatureCatalog.byId("ursocoruja")!!.description.contains("CD 30"))
+    }
+
 }

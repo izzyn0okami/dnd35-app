@@ -8201,7 +8201,7 @@
     },
     "skills": "Escalar +17, Esconder–se +9, Furtividade +13, Observar +9, Ouvir +9, Saltar + 17",
     "feats": "Ataques Múltiplos, Esquiva, Mobilidade",
-    "environment": "Caos Eternamente Mutável do Limbo Slaad Azul Slaad da Morte AZUL SLAAD",
+    "environment": "Caos Eternamente Mutável do Limbo",
     "organization": "Solitário, casal, gangue (3–5) ou grupo (6–10)",
     "challengeRating": "8",
     "treasure": "Padrão",
@@ -8211,7 +8211,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "O slaad azul é um brutamontes humanoide de aparência semelhante à de um sapo, com corpo extremamente musculoso, cabeça grande e achatada, quase sem pescoço, garras nas mãos e nos pés e ganchos ósseos pontiagudos na parte posterior das mãos. Mede cerca de 3 m de altura, pode pesar aproximadamente 1 tonelada e apresenta coloração anil, mais escura nas costas e clara no ventre. Valoriza força e poder, reúne-se com frequência em grupos e é capaz de cooperar em combate melhor que os slaad vermelhos.",
+    "combat": "Os slaad azuis são agressivos e costumam atacar para testar a própria força. Os ganchos ósseos nas mãos permitem multiplicar os ataques de garra durante um Ataque Total. Habilidades Similares à Magia (SM): à vontade — imobilizar pessoa (CD 13), criar passagens e telecinésia (CD 15); 1/dia — martelo do caos (CD 14); nível de conjurador 8º, CDs baseadas em Carisma. Febre Slaad (Sob): transmitida pela mordida; Fortitude CD 18, incubação de 1 dia, causa 1d3 pontos de dano temporário de Destreza e 1d3 de Carisma. Se o Carisma da vítima chegar a 0, ela se transforma em slaad vermelho; se for conjurador arcano, transforma-se em slaad verde. Invocar Slaad (SM): uma vez por dia, pode tentar invocar outro slaad azul, com 40% de chance de sucesso; equivale a uma magia de 4º nível. Como os demais slaad, possui armas naturais anárquicas para superar Redução de Dano e compartilha imunidade a dano sônico e resistência 5 a ácido, frio, eletricidade e fogo."
   },
   {
     "id": "slaad-cinza",
@@ -8261,7 +8263,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "O slaad cinza é um humanoide esquelético semelhante a um sapo bípede, com pele cinzenta rajada, dedos longos terminados em garras e estatura próxima à de um ser humano. Um slaad verde que sobreviva por mais de um século pode se isolar por pelo menos um ano e retornar transformado nessa forma menor e mais magra. Os slaad cinzas dedicam-se ao estudo da magia e apreciam criar itens mágicos para ampliar o próprio poder.",
+    "combat": "Os slaad cinzas preferem combater à distância com suas habilidades similares à magia, mas não evitam o confronto corporal. Habilidades Similares à Magia (SM): à vontade — círculo mágico contra ordem (CD 17), detectar magia, escuridão profunda, identificação, invisibilidade, martelo do caos (CD 16), relâmpago (CD 15) e voo; 1/dia — palavra de poder: atordoar; nível de conjurador 10º, CDs baseadas em Carisma. Mudar Forma (Sob): como ação padrão, assume qualquer forma humanoide; nessa forma perde os ataques naturais, mas pode usar armas e armaduras. Mantém a forma até escolher outra; o efeito não pode ser dissipado, a morte restaura a forma natural e visão da verdade revela sua aparência verdadeira. Invocar Slaad (SM): duas vezes por dia, pode tentar invocar 1–2 slaad vermelhos ou um azul, com 60% de chance, ou um verde, com 40%; equivale a uma magia de 5º nível. Suas armas naturais são anárquicas para superar Redução de Dano; possui imunidade a dano sônico e resistência 5 a ácido, frio, eletricidade e fogo."
   },
   {
     "id": "slaad-da-morte",
@@ -8311,7 +8315,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "O slaad da morte é um humanoide esquelético semelhante a um sapo bípede, com pele cinzenta rajada, dedos longos e garras; sua aparência é praticamente igual à do slaad cinza. Originalmente pertenceu à variação cinza, mas foi submetido a um ritual misterioso que o transformou em uma máquina de combate. Conserva habilidades mágicas dos slaad cinzas, porém sacrificou parte desse potencial em favor de capacidades marciais. Os demais slaad obedecem a essas criaturas principalmente por medo; elas representam a corrupção maligna do caos puro.",
+    "combat": "Apesar da eficácia das armas naturais, o slaad da morte prefere armas mágicas quando disponíveis. Atordoar (Ext): três vezes por dia, ao atingir um oponente com arma natural, pode forçá-lo a realizar Fortitude CD 21; em caso de falha, fica atordoado por 1 rodada, além de sofrer o dano normal. Habilidades Similares à Magia (SM): à vontade — animar objetos, bola de fogo (CD 17), círculo mágico contra a ordem, dedo da morte (CD 21), despedaçar (CD 16), detectar magia, dissipar a ordem (CD 19), escuridão profunda, identificação, invisibilidade, martelo do caos, medo (CD 18), ver o invisível e voo; 3/dia — círculo da morte (CD 20), manto do caos (CD 22), palavra do caos (CD 21); 1/dia — implosão (CD 23) e palavra de poder: cegar. Nível de conjurador 15º; CDs baseadas em Carisma. Mudar Forma (Sob): como ação padrão, assume qualquer forma humanoide; perde os ataques naturais, mas pode usar armas e armaduras. A forma alternativa não pode ser dissipada; a morte restaura a forma natural e visão da verdade revela a aparência verdadeira. Invocar Slaad (SM): duas vezes por dia, tenta invocar 1–2 slaad vermelhos ou azuis com 60% de chance, ou 1–2 verdes com 40%; equivale a uma magia de 6º nível. Também possui telepatia 30 m, imunidade a dano sônico e resistência 5 a ácido, frio, eletricidade e fogo."
   },
   {
     "id": "slaad-verde",
@@ -8361,7 +8367,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "O slaad verde é um humanoide alto e largo, semelhante a um sapo bípede, com pele verde mosqueada, boca ampla e garras longas e afiadas. Mede cerca de 3 m e pode pesar aproximadamente 1 tonelada; as costas são mais escuras que o ventre. É arrogante e egocêntrico, interessado sobretudo no próprio poder mágico. Só coopera com outros quando isso atende a seus interesses imediatos. Um slaad vermelho implantado ou uma vítima da febre de um slaad azul que seja conjurador arcano pode dar origem a um slaad verde.",
+    "combat": "Os slaad verdes preferem usar suas habilidades similares à magia em vez de entrar em combate corporal, embora ataquem com garras e presas quando necessário. Evitam lutar até a morte se houver alternativa. Habilidades Similares à Magia (SM): à vontade — despedaçar (CD 13), detectar magia, detectar pensamentos (CD 13), martelo do caos (CD 15), medo (CD 15), proteção contra a ordem e ver o invisível; 3/dia — bola de fogo (CD 14), dissipar a ordem (CD 16) e escuridão profunda; nível de conjurador 9º, CDs baseadas em Carisma. Mudar Forma (Sob): como ação padrão, assume forma humanoide Média ou Grande; perde os ataques naturais, mas pode usar armas e armaduras. Mantém a forma até escolher outra; o efeito não pode ser dissipado, a morte restaura a forma natural e visão da verdade revela sua aparência verdadeira. Invocar Slaad (SM): duas vezes por dia, tenta invocar outro slaad verde, com 40% de chance de sucesso; equivale a uma magia de 5º nível. Suas armas naturais são anárquicas para superar Redução de Dano; possui cura acelerada 5, imunidade a dano sônico e resistência 5 a ácido, frio, eletricidade e fogo."
   },
   {
     "id": "slaad-vermelho",
@@ -8411,7 +8419,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "O slaad vermelho é a variação mais fraca da espécie: um humanoide de pele escarlate, semelhante a um sapo, com cabeça grande e achatada, quase sem pescoço, mãos e dedos enormes e garras nas mãos e nos pés. Mede cerca de 2,5 m e pesa pouco mais de 300 kg; as costas são mais escuras que o ventre. Normalmente vive sozinho e procura refúgio em outros planos, evitando slaad mais poderosos. Só costuma formar grupos quando está submetido a uma força superior, e mesmo assim a cooperação é precária.",
+    "combat": "Em geral, só ataca quando está faminto ou ameaçado; uma vez enfurecido, luta até a morte. Bote (Ext): ao realizar uma investida, pode executar um Ataque Total na mesma rodada. Implante (Ext): quando acerta com a garra, pode implantar um ovo; a vítima faz Fortitude CD 16 para evitar o efeito, salvo se estiver inconsciente ou indefesa. O ovo eclode em uma semana, originando um slaad azul que devora o hospedeiro e o mata. Nas 24 horas anteriores à eclosão, a vítima fica gravemente doente, sofrendo –10 em todos os valores de habilidade (mínimo 1). Remover doenças ou um teste de Cura CD 25 remove o ovo; cada tentativa de Cura causa 1d4 pontos de dano, tenha sucesso ou não. Se o hospedeiro for conjurador arcano, nasce um slaad verde. Coaxar Atordoante (Sob): uma vez por dia, todas as criaturas (exceto slaad) em 6 m fazem Fortitude CD 16 ou ficam atordoadas por 1d3 rodadas. Invocar Slaad (SM): uma vez por dia, pode tentar invocar outro slaad vermelho, com 40% de chance; equivale a uma magia de 3º nível. Suas armas naturais são anárquicas para superar Redução de Dano; possui imunidade a dano sônico e resistência 5 a ácido, frio, eletricidade e fogo."
   },
   {
     "id": "stirge",
@@ -8461,7 +8471,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "O stirge é uma criatura semelhante a um cruzamento entre morcego e mosquito gigante. Possui asas membranosas, corpo alongado, oito patas articuladas com pinças afiadas e um bico em forma de agulha. Sua coloração varia do vermelho-ferrugem ao marrom-avermelhado, com ventre amarelado; o bico é rosado na ponta e cinzento próximo à base. Mede cerca de 30 cm, tem envergadura de até 60 cm e pesa aproximadamente  meio quilo. Um indivíduo isolado representa pouco perigo, mas grupos numerosos podem ameaçar aventureiros.",
+    "combat": "O stirge pousa sobre a vítima em um ponto vulnerável e injeta o bico-agulha por meio de um ataque de toque, que afeta criaturas Pequenas ou maiores. Adesão (Ext): ao acertar o ataque de toque, prende-se ao corpo com as oito patas; enquanto aderido, sua CA passa a 12 e ele perde o bônus de Destreza. Recebe +12 de bônus racial nos testes de Agarrar para permanecer preso. Pode ser removido por uma manobra Agarrar resistida bem-sucedida; também pode ser agarrado ou atingido por uma arma. Drenar Sangue (Ext): causa 1d4 pontos de dano temporário de Constituição por rodada em que permanecer aderido. Depois de absorver 4 pontos de Constituição, solta a vítima e se afasta para digerir o sangue; se a vítima morrer antes, procura outra."
   },
   {
     "id": "tarrasque",
@@ -8511,7 +8523,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "O lendário tarrasque é uma besta mágica colossal, bípede e escamosa, tão alta quanto um edifício de cinco andares. Move-se inclinada para a frente, como uma ave de rapina, equilibrando-se com uma cauda poderosa e articulada. A cabeça possui dois chifres e a carapaça é reflexiva. Há apenas um exemplar conhecido. Seu covil é desconhecido e passa a maior parte do tempo em hibernação: normalmente dorme por 6d4 meses e desperta para caçar por 1d3 dias; em períodos raros, pode permanecer ativo por 1d2 semanas antes de hibernar por anos. Quando desperto, devora tudo em seu caminho, incluindo vegetação, animais, humanoides e cidades.",
+    "combat": "O tarrasque é uma força de destruição quase imparável. Presença Aterradora (Sob): ao atacar, normalmente ou em Investida, força criaturas a até 18 m a realizar Vontade CD 36 ou ficar abalhadas enquanto permanecerem no alcance. Agarrar Aprimorado (Ext): após acertar com a mordida uma criatura Enorme ou menor, inicia Agarrar como ação livre sem provocar ataques de oportunidade; se prender a vítima, pode tentar engoli-la na rodada seguinte. Investir (Ext): uma vez por minuto, pode percorrer 45 m apesar de seu deslocamento normal reduzido. Engolir (Ext): após um teste de Agarrar bem-sucedido contra criatura presa de tamanho Enorme ou menor, causa 2d8+8 pontos de dano por esmagamento e 2d8+6 pontos de dano por ácido a cada rodada. A vítima pode abrir caminho para sair causando 50 pontos de dano ao sistema digestivo (CA 25). A carapaça (Ext) reflete magias de raios, linhas, cones e mísseis mágicos: há 30% de chance de ricochetearem contra o conjurador; caso contrário, são neutralizados, antes de aplicar a Resistência à Magia. Regeneração (Ext): nenhum ataque causa dano normal; fogo, veneno, doenças, drenar energia e dano de habilidade não o afetam. Para matá-lo definitivamente, é preciso acumular dano por contusão igual aos PV máximos +10 (868 PV) e então usar desejo ou milagre. Membros perdidos regeneram em 1d6 minutos ou podem ser recolocados instantaneamente. Recebe +8 racial em Ouvir e Observar."
   },
   {
     "id": "tartarugadragao",
@@ -8561,7 +8575,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "A tartaruga-dragão é um dragão aquático enorme, com casco hidrodinâmico coberto por saliências afiadas, pescoço comprido, cabeça com crista e mandíbulas poderosas, nadadeiras dotadas de garras e cauda longa. Seu casco verde-áspero se confunde com as águas profundas; linhas prateadas parecem reflexos de luz. A cabeça, as patas e a cauda são de um verde mais claro com reflexos amarelados. Um adulto mede de 8 a 9 m do focinho à cauda, possui casco de 4,5 a 7,5 m de diâmetro e pesa de 4 a 32 toneladas. Fala Aquan, Dracônico e Comum.",
+    "combat": "As tartarugas-dragão são ferozes e atacam criaturas que ameacem seu território ou pareçam alimento. Sopro (Sob): expele uma nuvem de vapor superaquecido com 6 m de altura, 7,5 m de largura e 15 m de comprimento a cada 1d4 rodadas; causa 12d6 pontos de dano por fogo, Reflexos CD 21 para reduzir à metade, funcionando dentro e fora d’água. Naufragar (Ext): submersa, pode emergir sob uma embarcação e virá-la; embarcações menores que 6 m têm 95% de chance de naufragar, as de 6 a 18 m têm 50% e as maiores têm 20%. Recebe +8 racial em Natação para ações especiais e evitar perigos e pode escolher 10 mesmo distraída ou ameaçada; pode correr durante a natação em linha reta. Recebe +8 racial em Esconder-se quando submersa."
   },
   {
     "id": "tendriculo",
@@ -8611,7 +8627,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "O tendrículo é uma planta Enorme que parece um amontoado de vegetação sustentado por vinhas e cipós. Sua massa vegetal apresenta uma abertura semelhante a uma boca, repleta de espinhos longos e farpas afiadas. Pode suspender-se até 4,5 m de altura e pesa cerca de 3,5 toneladas. Pode ter sido alterado por magias malignas ou ter se originado em outro plano. Folhas, galhos e vinhas regeneram-se em poucos minutos; para sustentar essa capacidade, precisa consumir enormes quantidades de carne. Animais, bestas e plantas animadas evitam sua presença e a área onde esteve nas últimas 24 horas.",
+    "combat": "O tendrículo ronda florestas profundas ou espera camuflado em áreas verdes, atacando com selvageria e tentando engolir o máximo de carne possível. Agarrar Aprimorado (Ext): após atingir com a mordida uma criatura pelo menos uma categoria de tamanho menor, inicia Agarrar como ação livre sem provocar ataques de oportunidade. Paralisia/Engolir (Ext): a vítima engolida deve obter sucesso em Fortitude CD 20 ou ficará paralisada por 3d6 rodadas pelo suco digestivo, sofrendo também 2d6 pontos de dano por ácido a cada rodada; repete o teste a cada rodada. Uma vítima que evite a paralisia pode tentar escalar a massa corporal e escapar por um novo teste resistido de Agarrar, ou abrir caminho com armas leves cortantes ou perfurantes, causando 25 pontos de dano ao interior da planta (CA 14). O interior comporta 2 criaturas Grandes, 8 Médias, 32 Pequenas, 128 Miúdas ou 512 Mínimas. Regeneração (Ext): armas de concussão e ácido causam dano normal; partes perdidas regeneram em 1d6 minutos ou podem ser recolocadas instantaneamente."
   },
   {
     "id": "thoqqua",
@@ -8661,7 +8679,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "O thoqqua é um elemental Médio semelhante a um verme segmentado, cujo corpo emite brilho laranja e branco como metal incandescente. É quente o bastante para derreter rocha sólida. Mede de 1 a 1,5 m de comprimento, tem cerca de 30 cm de diâmetro e pesa aproximadamente 100 kg. É irritadiço e tem temperamento terrível. Nativo do Plano Elemental do Fogo, também pode ser encontrado no Plano Elemental da Terra; passa boa parte do tempo escavando rochas em busca de minerais.",
+    "combat": "Quando perturbado, o thoqqua ataca imediatamente. Sua tática favorita é avançar diretamente contra os oponentes, atravessando rocha ou encolhendo o corpo e saltando como uma mola; trate o ataque como Investida, sem exigir que percorra 3 m antes. Calor (Ext): simplesmente tocar ou ser tocado pelo thoqqua causa automaticamente 2d6 pontos de dano por fogo. Incendiar (Ext): qualquer criatura atingida por sua pancada deve obter sucesso em Reflexos CD 12 ou pegar fogo; as chamas duram 1d4 rodadas, podendo ser apagadas com uma ação de rodada completa. A CD é baseada em Constituição."
   },
   {
     "id": "tita",
@@ -8711,7 +8731,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "O titã é um extra-planar Enorme, semelhante a um humano de proporções heroicas, extremamente belo e de compleição física perfeita. Mede cerca de 7,5 m e pesa aproximadamente 14 toneladas. Muitos vêm do plano de Arbórea. São seres de mente aguçada e corpo poderoso, selvagens e caóticos, que celebram a própria existência e se entregam intensamente às emoções. Muitos defendem o bem, mas uma antiga rebelião contra os deuses fez surgir titãs malignos, tiranos capazes de dominar reinos mortais. Falam Comum, Celestial, Dracônico, Gigante e Abissal.",
+    "combat": "O titã combate com um martelo de guerra gigantesco, mas também possui amplos poderes mágicos e grande velocidade. Suas armas naturais e quaisquer armas que utilize são consideradas anárquicas para superar Redução de Dano. Arma Gigante (Ext): empunha um martelo de guerra Imenso, grande o bastante para criaturas Imensas, com as duas mãos e sem penalidade. Habilidades Similares à Magia: à vontade — corrente de relâmpagos, enfeitiçar monstro, imagem persistente, invisibilidade, levitação, metamorfose limitada a formas humanoides, purgar invisibilidade, curar ferimentos críticos, dissipar magia maior, imobilizar monstro e tempestade de fogo; 3/dia — forma etérea, invocar aliado da natureza IX e palavra do caos; 1/dia — chuva de meteoros, labirinto e portal. Nível de conjurador 20º; CDs baseadas em Carisma. Titãs bondosos e neutros também podem usar destruição sagrada, luz do dia e remover maldição à vontade, além de restauração maior 1/dia. Titãs malignos possuem habilidades adicionais próprias."
   },
   {
     "id": "tritao",
@@ -8761,7 +8783,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "O tritão é um humanoide aquático de tamanho aproximado ao de um ser humano, com tronco, cabeça e braços humanoides e cauda de peixe no lugar das pernas. Sua pele é prateada, tornando-se azul-clara na parte inferior e coberta por escamas; os cabelos são azul-escuros ou azul-esverdeados. Vive em mares de águas preferencialmente quentes, embora tolere temperaturas mais baixas. Forma comunidades em castelos submersos de pedra e coral ou em cavernas esculpidas. Caça apenas o necessário e desconfia dos habitantes da superfície; costuma capturar invasores e abandoná-los longe da costa. É inimigo natural dos sahuagin. Fala Comum e Aquan.",
+    "combat": "Os tritões defendem suas comunidades, mas em geral evitam envolver-se com habitantes da superfície. Em combate utilizam tridentes e bestas pesadas. Habilidades Similares à Magia: 1/dia — invocar aliado da natureza IV, normalmente escolhendo elementais da água. Nível de conjurador 7º. A ficha também descreve sua capacidade de convocar um aliado natural aquático; preservar as estatísticas e os demais ataques já registrados no bloco."
   },
   {
     "id": "troglodita",
@@ -8811,7 +8835,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "O troglodita é um réptil humanoide de tamanho Médio, pouco menor que um ser humano, com braços finos e musculosos, postura ereta sobre duas pernas achatadas, cauda longa e segmentada, cabeça de lagarto e crista que se estende da testa à base do pescoço. Seus olhos são negros. Mede cerca de 1,70 m e pesa aproximadamente 75 kg. É agressivo, carnívoro e aprecia especialmente a carne de humanoides. Tribos trogloditas atacam assentamentos e caravanas em regiões quentes, defendendo ferozmente seus covis. Fala Dracônico e adora Laogzed.",
+    "combat": "Trogloditas combinam emboscadas e ataques à distância: metade do grupo costuma lutar com garras e presas, enquanto os demais usam azagaias e clavas; tentam ocultar-se, lançar uma saraivada de azagaias e então aproximar-se. Quando a luta se torna desfavorável, recuam e escondem-se. Mau-Cheiro (Ext): quando assustado ou furioso, secreta uma substância oleosa e desagradável. Criaturas vivas (exceto trogloditas) num raio de 9 m devem obter sucesso em Fortitude CD 13 ou ficar enjoadas por 10 rodadas. Depois de ser afetada ou resistir ao odor de um troglodita, a criatura fica imune ao odor daquele mesmo indivíduo por 2 horas. Retardar envenenamento ou neutralizar veneno remove a condição; criaturas imunes a veneno não são afetadas."
   },
   {
     "id": "uivante",
@@ -8861,7 +8887,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "O uivante parece um felino ou cão bestial, delgado, com uma crina de espinhos eriçados. É originário do plano do Pandemônio, onde proliferam o caos e a maldade. Essas bestas atacam em bandos, correndo por cavernas para encurralar as presas e estraçalhá-las. Um exemplar mede cerca de 2,40 m de comprimento e pesa aproximadamente 1.000 kg. Apesar de surpreendentemente inteligente, não fala: apenas uiva. Mesmo que exista uma linguagem em seus uivos, ela não foi decifrada nem por magia; os uivantes entendem o idioma Abissal.",
+    "combat": "Os uivantes atacam em grupos e preferem investir contra a presa, afastar-se e investir novamente. Suas armas naturais e quaisquer outras que utilizem são consideradas anárquicas para superar Redução de Dano. Espinhos (Ext): enquanto ataca, o uivante se debate e atinge o oponente com 1d4 espinhos (1d6+5 de dano cada). Para cada espinho que atingir, a vítima deve obter sucesso em Reflexos CD 16 ou o espinho se quebra dentro da carne; cada espinho alojado impõe –1 de penalidade nas jogadas de ataque, testes de resistência e testes de perícia. Um espinho pode ser removido com um teste de Cura CD 20; removê-lo de outra forma causa 1d6 pontos de dano. Uivo (Ext): criaturas não extraplanares capazes de ouvir o uivo durante uma hora inteira, em um raio de 30 m, devem obter sucesso em Vontade CD 12 ou sofrer 1 ponto de dano temporário de Sabedoria. O teste é repetido a cada hora de exposição. Trata-se de um efeito sônico e de ação mental. Treinamento: um uivante amigável exige seis semanas e um teste bem-sucedido de Adestrar Animais CD 25 para ser treinado; a criatura precisa estar amigável, o que pode ser obtido com Diplomacia. Para cavalgar, exige sela exótica; pode lutar enquanto carrega um cavaleiro, mas este só pode atacar se obtiver sucesso em Cavalgar. Capacidade de Carga: leve 230 kg, média 231–460 kg, pesada 461–690 kg; consegue arrastar até 3.450 kg."
   },
   {
     "id": "ursocoruja",
@@ -8911,7 +8939,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "O urso-coruja é coberto por uma mistura espessa de penas escuras e pelo. Seu corpo lembra o de um urso, mas a cabeça é semelhante à de uma águia, com olhos grandes e redondos e bico curvo. É um predador feroz, agressivo e de temperamento inconstante, que costuma atacar praticamente qualquer coisa que se mova, mesmo sem provocação. Sua origem é debatida; a teoria mais comum afirma que um feiticeiro insano criou o primeiro espécime cruzando uma coruja gigante com um urso. A pelagem varia do marrom-escuro ao marrom-amarelado, e o bico tem cor de marfim escurecido. Um macho adulto alcança 2,5 m de altura e pesa quase 750 kg. Habita áreas selvagens, em florestas densas e cavernas subterrâneas pouco profundas, e pode ter hábitos noturnos ou diurnos conforme as presas disponíveis. Os adultos vivem em casais e caçam em grupos, deixando os filhotes em seus refúgios; é possível encontrar 1d6 filhotes em um covil, cada um valendo até 3.000 PO em áreas civilizadas. Não podem ser domesticados, embora possam ser soltos em locais estratégicos para atuar como guardiões. Um treinador profissional cobra 2.000 PO para criar ou treinar um urso-coruja, com Adestrar Animais CD 23 para uma criatura jovem ou CD 30 para um adulto.",
+    "combat": "Os ursos-coruja atacam qualquer presa maior que um rato assim que a encontram e sempre lutam até a morte. Golpeiam com as garras e o bico, tentando agarrar e dilacerar a vítima. Agarrar Aprimorado (Ext): para usar essa habilidade, o urso-coruja precisa atingir o oponente com uma garra; então pode iniciar a manobra Agarrar como ação livre, sem provocar ataques de oportunidade."
   },
   {
     "id": "vargouille",
@@ -14229,8 +14259,8 @@
     "advancement": "5–8 DV (Grande)",
     "levelAdjustment": "+3",
     "source": "Livro dos Monstros 3.5, p. 247",
-    "description": "Equino poderoso de pelagem branca e brilhante, crina e cauda sedosas e um chifre cor de marfim no centro da testa.",
-    "combat": "Defende florestas e criaturas inocentes. Suas habilidades similares à magia incluem detectar o mal à vontade, curar ferimentos leves e teletransporte, conforme o bloco de estatísticas.",
+    "description": "O unicórnio é um equino poderoso, de pelagem branca e brilhante, olhos grandes e vívidos, crina e cauda longas e sedosas e cascos cobertos de pelos. Um único chifre cor de marfim, com meio metro de comprimento, emerge do centro da testa. Essas criaturas nobres e ferozes evitam o contato com outras criaturas, exceto as silvestres, como dríades e fadas, e aparecem sobretudo para defender suas florestas natais. Seus olhos podem ser azul-marinho, violetas, marrons ou dourados incandescentes; os machos possuem barba branca. Mantêm uma única parceira por toda a vida e vivem em clareiras das florestas que protegem. Viajantes Bons ou Neutros podem atravessar essas florestas e até caçar para se alimentar, mas criaturas malignas correm grande risco. Os unicórnios atacam quem mata por esporte em seu território ou causa dano desnecessário à floresta. Às vezes, um unicórnio solitário permite que uma donzela humana ou élfica de coração puro o cavalgue, tornando-se sua montaria fiel e protetor por toda a vida. O chifre é conhecido por suas propriedades curativas e pode valer até 2.000 PO, sendo procurado como componente de poções e artefatos de cura. Um adulto mede cerca de 2,5 m de comprimento, 1,5 m de altura nos ombros e pesa 600 kg; as fêmeas são menores e mais esguias. Falam Silvestre e Comum.",
+    "combat": "Em geral, os unicórnios atacam somente para defender a própria vida ou a floresta. Podem investir contra os oponentes, empalando-os com o chifre como se fosse uma lança, ou golpeá-los com os cascos. O chifre é considerado uma arma mágica +3, mas perde esse poder quando removido. Círculo Mágico Contra o Mal (Sob): efeito constante idêntico à magia homônima, que o unicórnio não pode suprimir. Habilidades Similares à Magia: detectar o mal à vontade, como ação livre; uma vez por dia, teletransporte maior para qualquer ponto dentro do próprio território. Não pode alcançar locais além dos limites da floresta nem retornar caso esteja fora dela. Com um toque do chifre, conjura curar ferimentos leves três vezes por dia; curar ferimentos moderados (nível de conjurador 5º) e neutralizar veneno (CD 21, nível de conjurador 8º), uma vez por dia cada. As CDs são baseadas em Carisma. Empatia Selvagem (Ext): funciona como a habilidade de classe do druida, mas o unicórnio recebe +6 de bônus racial nos testes. Perícias: recebe +4 de bônus racial em Furtividade e +3 de bônus de competência em Sobrevivência dentro dos limites da própria floresta.",
     "animalCompanion": false,
     "summonedCreature": true,
     "familiar": false

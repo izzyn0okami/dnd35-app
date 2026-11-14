@@ -803,3 +803,55 @@ As fichas-base devem ser reutilizadas por ID sempre que a tabela pedir apenas um
 - O texto do catálogo usa corretamente a concordância feminina em “criaturas renegadas criadas pelos aboletes”; o teste esperava “criados”.
 - Ajustada a expectativa do teste para refletir literalmente o conteúdo da ficha. Nenhuma regra ou texto do catálogo foi alterado nesta correção.
 - Aguardar nova execução de Android CI e compilação do APK antes do merge.
+
+
+## 2026-11-14 — Trigésima segunda etapa: cinco variações de slaad
+
+- Conferidas diretamente as páginas impressas 231–234 do Livro dos Monstros brasileiro (PDF, páginas correspondentes ao trecho dos slaad).
+- Preenchidas Descrição e Combate de cinco fichas já existentes: Slaad Azul, Slaad Cinza, Slaad da Morte, Slaad Verde e Slaad Vermelho.
+- Descrições distinguem anatomia, coloração, dimensões, comportamento e transformação entre as variações.
+- Combate registra, conforme cada verbete, habilidades similares à magia com frequências, CDs e níveis de conjurador; Febre Slaad; Atordoar; Bote; Implante; Coaxar Atordoante; Mudar Forma; Invocar Slaad e resistências compartilhadas.
+- Corrigido apenas o resíduo inequívoco de OCR no campo Ambiente do Slaad Azul, restaurando “Caos Eternamente Mutável do Limbo”; nenhuma outra estatística foi alterada.
+- Adicionado teste de regressão cobrindo os cinco registros, seus efeitos distintivos, ND e ambiente.
+- Situação após esta etapa: 320 fichas no catálogo; 215 com Descrição e Combate; 105 ainda precisam de ao menos um desses campos.
+
+
+## 2026-11-14 — Trigésima terceira etapa: oito criaturas (Stirge a Troglodita)
+
+- Fonte principal: Livro dos Monstros brasileiro, páginas impressas 235–244 (PDF do Livro dos Monstros 3.5).
+- Preenchidas Descrição e Combate de Stirge, Tarrasque, Tartaruga-Dragão, Tendrículo, Thoqqua, Titã, Tritão e Troglodita.
+- Registrados os comportamentos, habitat, dimensões e idiomas quando descritos, além das habilidades especiais, CDs, dano, frequências e condições de uso.
+- No Tarrasque, preservados os detalhes excepcionais de carapaça refletora, regeneração e condição necessária para sua morte definitiva.
+- No Tendrículo, detalhados agarrar, engolir/paralisia, dano digestivo, capacidade interna e vulnerabilidades da regeneração.
+- Nenhum valor do bloco estatístico foi substituído; os campos narrativos e de combate foram preenchidos.
+- Adicionado teste de regressão para os oito registros e suas habilidades distintivas.
+- Contagem após esta etapa: 320 fichas no catálogo; 223 com Descrição e Combate; 97 ainda precisam de ao menos um desses campos.
+
+
+### Correção de CI — 2026-11-14 (lote T–U)
+- A CI identificou uma asserção com diferença apenas de capitalização: o texto do Tarrasque contém “carapaça” em minúscula. Corrigida a expectativa do teste; o conteúdo da ficha permanece inalterado.
+- As duas execuções de CI falharam pela mesma asserção em `eightCreatureSheetsHaveNarrativeAndCombatDetails`; a compilação Kotlin ocorreu normalmente e 609 dos 610 testes passaram.
+- Nenhuma alteração de regra ou estatística foi necessária.
+
+## 2026-11-14 — Trigésima quarta etapa: Uivante, Unicórnio e Urso-Coruja
+- Fonte: Livro dos Monstros brasileiro, páginas impressas 246–248 (PDF fornecido, páginas 250–252); conferida visualmente a continuação do Urso-Coruja na página impressa 249 (PDF, página 253).
+- Concluídos os campos Descrição e Combate do Uivante e do Urso-Coruja; a descrição e o combate do Unicórnio, que já tinham resumos breves, foram ampliados e conferidos. Nenhuma duplicata foi criada nem bloco estatístico substituído.
+- Uivante: comportamento de caça em grupo, armas anárquicas, espinhos (1d4, Reflexos CD 16, penalidade cumulativa), uivo (Vontade CD 12, dano temporário de Sabedoria), treinamento, sela e capacidade de carga.
+- Unicórnio: comportamento territorial, chifre mágico +3, círculo mágico contra o mal, habilidades similares à magia, cura pelo chifre, CDs/níveis de conjurador, empatia selvagem e bônus de perícia.
+- Urso-Coruja: aparência, habitat, comportamento predatório, reprodução/covil, valor dos filhotes e treinamento; Combate registra luta até a morte e Agarrar Aprimorado.
+- Corrigida a capitalização da asserção de “carapaça” no teste do Tarrasque; nenhuma ficha foi alterada por essa correção.
+- Adicionado teste de regressão para as três fichas e seus efeitos distintivos.
+- Contagem após esta etapa: 320 fichas no catálogo; 225 com Descrição e Combate; 95 ainda precisam de ao menos um desses campos. O Unicórnio já estava contabilizado entre as fichas preenchidas antes desta etapa.
+
+
+### Correção de CI — 2026-11-14 (teste do lote Uivante–Urso-Coruja)
+- Identificada a asserção incorreta: o teste procurava “CD 30” no campo Combate do Urso-Coruja, mas o valor pertence ao texto de treinamento na Descrição.
+- Corrigido o teste para validar CD 30 no campo Descrição, sem alterar conteúdo da criatura nem suas estatísticas.
+- A falha não indicava defeito no catálogo; era apenas uma expectativa de teste aplicada ao campo errado.
+- Aguardando nova execução dos fluxos Android CI e compilação do APK.
+
+
+### Segunda correção de CI — 2026-11-14 (Unicórnio)
+- A nova execução confirmou outra expectativa excessivamente literal no teste: a ficha registra “neutralizar veneno (CD 21, nível de conjurador 8º)”, portanto a sequência “neutralizar veneno (CD 21)” sem a vírgula não existe no texto.
+- Ajustada somente a expressão esperada no teste para corresponder ao texto efetivamente registrado.
+- O conteúdo da ficha, a CD 21 e o nível de conjurador 8º foram preservados.
