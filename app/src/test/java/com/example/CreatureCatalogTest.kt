@@ -648,7 +648,7 @@ class CreatureCatalogTest {
     fun eightCreatureSheetsHaveNarrativeAndCombatDetails() {
         val expected = mapOf(
             "stirge" to listOf("Adesão", "Drenar Sangue", "1d4"),
-            "tarrasque" to listOf("Presença Aterradora", "Carapaça", "868 PV"),
+            "tarrasque" to listOf("Presença Aterradora", "carapaça", "868 PV"),
             "tartarugadragao" to listOf("Sopro", "Naufragar", "12d6"),
             "tendriculo" to listOf("Agarrar Aprimorado", "Regeneração", "Fortitude CD 20"),
             "thoqqua" to listOf("Calor", "Incendiar", "2d6"),
@@ -668,6 +668,27 @@ class CreatureCatalogTest {
         assertEquals("6", CreatureCatalog.byId("tendriculo")!!.challengeRating)
         assertEquals("9", CreatureCatalog.byId("tartarugadragao")!!.challengeRating)
         assertEquals("1/2", CreatureCatalog.byId("stirge")!!.challengeRating)
+    }
+
+
+    @Test
+    fun threeMoreCreatureSheetsHaveBookBasedNarrativeAndCombat() {
+        val expected = mapOf(
+            "uivante" to listOf("Espinhos", "Reflexos CD 16", "Vontade CD 12", "Adestrar Animais CD 25"),
+            "unicornio" to listOf("Círculo Mágico Contra o Mal", "teletransporte maior", "neutralizar veneno (CD 21)", "+6 de bônus racial"),
+            "ursocoruja" to listOf("Agarrar Aprimorado", "ação livre", "sempre lutam até a morte", "CD 30")
+        )
+        expected.forEach { (id, fragments) ->
+            val creature = CreatureCatalog.byId(id)!!
+            assertTrue("$id sem descrição", creature.description.isNotBlank())
+            assertTrue("$id sem combate", creature.combat.isNotBlank())
+            fragments.forEach { fragment ->
+                assertTrue("$id não contém $fragment", creature.combat.contains(fragment))
+            }
+        }
+        assertTrue(CreatureCatalog.byId("uivante")!!.description.contains("Pandemônio"))
+        assertTrue(CreatureCatalog.byId("unicornio")!!.description.contains("2.000 PO"))
+        assertTrue(CreatureCatalog.byId("ursocoruja")!!.description.contains("1d6 filhotes"))
     }
 
 }
