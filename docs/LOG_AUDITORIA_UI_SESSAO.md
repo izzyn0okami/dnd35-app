@@ -867,3 +867,5 @@
 - Validação pendente: CI, inspeção visual em aparelho e confirmação de que as duas cartas exibem os retratos sem fallback.
 - **Correção de CI (2026-11-14):** os dois fluxos apontaram `Unresolved reference 'R'`. O namespace Android do módulo é `com.example` (não `com.example.dnd35`); corrigido o import para `com.example.R`. A nova execução de testes e compilação ainda precisa confirmar a correção.
 
+
+- **Isolamento da falha de teste (2026-11-14):** `SessionServerClientTest.mensagens privadas simultaneas nao perdem entradas no log do mestre` falhou na execução do workflow `Android build` (575 testes, 1 falha). Comparação entre `main` e a branch desta PR confirmou que o arquivo de teste (`de10e8c…`) e a implementação `SessionServer.kt` (`a68625e…`) são idênticos nos dois refs; a PR de ilustrações não alterou o subsistema de sessões nem esse teste. O workflow `Android CI` do mesmo commit concluiu com sucesso, incluindo `Build and test` e geração/upload do APK. Para distinguir falha intermitente de problema reproduzível no baseline, foi solicitada nova execução isolada do job que falhou; resultado pendente.
