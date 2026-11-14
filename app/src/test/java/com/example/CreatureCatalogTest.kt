@@ -410,4 +410,21 @@ class CreatureCatalogTest {
         assertTrue(CreatureCatalog.byId("locathah")!!.combat.contains("virotes de bestas"))
     }
 
+
+    @Test
+    fun electricLizardMagminDarkmantleShadowMastiffAndMedusaHaveSummaries() {
+        listOf(
+            "lagarto-eletrico", "magmin", "manto-negro", "mastim-das-sombras", "medusa"
+        ).forEach { id ->
+            val creature = CreatureCatalog.byId(id)!!
+            assertTrue("$id sem descrição", creature.description.isNotBlank())
+            assertTrue("$id sem resumo de combate", creature.combat.isNotBlank())
+        }
+        assertTrue(CreatureCatalog.byId("lagarto-eletrico")!!.combat.contains("choque letal"))
+        assertTrue(CreatureCatalog.byId("magmin")!!.combat.contains("aura ígnea"))
+        assertTrue(CreatureCatalog.byId("manto-negro")!!.combat.contains("Percepção às Cegas"))
+        assertTrue(CreatureCatalog.byId("mastim-das-sombras")!!.combat.contains("Camuflagem de Sombras"))
+        assertTrue(CreatureCatalog.byId("medusa")!!.combat.contains("Olhar Petrificante"))
+    }
+
 }
