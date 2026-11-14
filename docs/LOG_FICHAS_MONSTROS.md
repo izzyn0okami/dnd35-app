@@ -397,3 +397,13 @@ As fichas-base devem ser reutilizadas por ID sempre que a tabela pedir apenas um
 - Acrescentados testes para as criaturas existentes que estavam sem flag e para suas listas/círculos corretos.
 - `unclassifiedCatalogCreatureIds()` continua exigindo que toda ficha marcada como invocável tenha um círculo explícito nas tabelas.
 - Nenhuma estatística de criatura foi alterada nesta etapa.
+
+
+## 2026-11-14 — Primeira expansão de fichas de invocação e auditoria de vínculos
+
+- **Companheiros animais:** auditoria dos 58 IDs exigidos pelas regras de seleção já implementadas. Todos possuem registro no catálogo, estão marcados como companheiro animal e têm requisito de nível configurado; não foram criadas duplicatas.
+- **Familiares:** as dez opções existentes do Livro do Jogador (Coruja, Corvo, Falcão, Gato, Lagarto, Morcego, Rato, Sapo, Texugo e Víbora Pequena) já possuem ficha e marcação de familiar. Nenhuma ficha nova era necessária nessa categoria.
+- **Cão Yeth:** a ficha já existia, mas estava com `summonedCreature=false`. Corrigida a elegibilidade e incluído na lista de Invocar Criaturas IV.
+- **Lêmure:** ficha adicionada com estatísticas conferidas no Livro dos Monstros brasileiro, p. 70; incluído em Invocar Criaturas II. A descrição e o resumo de combate foram redigidos de forma concisa a partir do verbete, sem copiar extensos trechos.
+- **Imagens:** nenhuma imagem foi gerada ou associada nesta etapa. A regra visual passa a ser explícita: gerar/associar arte somente quando a ficha realmente não tiver imagem; preservar imagens já existentes. Não usar arte vetorial.
+- **Pendências:** as demais criaturas listadas no registro de auditoria anterior ainda exigem extração e conferência individual dos blocos de estatísticas antes de entrar no catálogo. Não criar placeholders nem inferir valores.
