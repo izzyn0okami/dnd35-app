@@ -7,8 +7,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.AlertDialog
@@ -33,6 +31,7 @@ import com.example.dnd35.model.CreatureBondKind
 import com.example.dnd35.model.CreatureBondRules
 import com.example.dnd35.model.CreatureCatalog
 import com.example.dnd35.ui.components.CreatureImageTradingCard
+import com.example.dnd35.ui.components.CreatureCardStack
 import com.example.dnd35.viewmodel.CharacterViewModel
 
 @Composable
@@ -71,64 +70,63 @@ fun CreatureBondSection(
         null -> emptyList()
     }
 
-    Card(
-        modifier = Modifier.fillMaxWidth(),
-        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)
-    ) {
-        Column(modifier = Modifier.padding(12.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-            Text("Familiares e companheiros", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
-            Text(
-                "Criaturas vinculadas ao personagem. A seleção respeita as classes e os níveis atuais.",
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
-            )
-            if (familiarOptions.isNotEmpty() || familiarBonds.isNotEmpty()) {
-                OutlinedButton(onClick = { activeKind = CreatureBondKind.FAMILIAR; showPicker = true },
-                    modifier = Modifier.fillMaxWidth()) {
-                    Text(if (familiarBonds.isEmpty()) "Selecionar familiar" else "Adicionar outro familiar")
-                }
-            }
-            if (companionOptions.isNotEmpty() || companionBonds.isNotEmpty()) {
-                OutlinedButton(onClick = { activeKind = CreatureBondKind.ANIMAL_COMPANION; showPicker = true },
-                    modifier = Modifier.fillMaxWidth()) {
-                    Text(if (companionBonds.isEmpty()) "Selecionar companheiro animal" else "Adicionar outro companheiro")
-                }
-            }
-            if (familiarOptions.isEmpty() && companionOptions.isEmpty() &&
-                familiarBonds.isEmpty() && companionBonds.isEmpty()
-            ) {
+    if (savedBonds.isNotEmpty()) {
+        Card(
+            modifier = Modifier.fillMaxWidth(),
+            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)
+        ) {
+            Column(modifier = Modifier.padding(12.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                Text("Familiares e companheiros", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
                 Text(
-                    "Nenhuma classe atual concede familiar ou companheiro animal.",
+                    "Criaturas vinculadas ao personagem. Arraste a carta da frente para percorrer a pilha.",
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
+                if (familiarOptions.isNotEmpty() || familiarBonds.isNotEmpty()) {
+                    OutlinedButton(onClick = { activeKind = CreatureBondKind.FAMILIAR; showPicker = true },
+                        modifier = Modifier.fillMaxWidth()) {
+                        Text(if (familiarBonds.isEmpty()) "Selecionar familiar" else "Adicionar outro familiar")
+                    }
+                }
+                if (companionOptions.isNotEmpty() || companionBonds.isNotEmpty()) {
+                    OutlinedButton(onClick = { activeKind = CreatureBondKind.ANIMAL_COMPANION; showPicker = true },
+                        modifier = Modifier.fillMaxWidth()) {
+                        Text(if (companionBonds.isEmpty()) "Selecionar companheiro animal" else "Adicionar outro companheiro")
+                    }
+                }
+            }
+        }
+    } else if (familiarOptions.isNotEmpty() || companionOptions.isNotEmpty()) {
+        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            if (familiarOptions.isNotEmpty()) {
+                OutlinedButton(onClick = { activeKind = CreatureBondKind.FAMILIAR; showPicker = true }) {
+                    Text("Vincular familiar")
+                }
+            }
+            if (companionOptions.isNotEmpty()) {
+                OutlinedButton(onClick = { activeKind = CreatureBondKind.ANIMAL_COMPANION; showPicker = true }) {
+                    Text("Vincular companheiro")
+                }
             }
         }
     }
 
     if (familiarBonds.isNotEmpty() || companionBonds.isNotEmpty()) {
-        Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-            familiarBonds.forEach { bond ->
-                CreatureCatalog.byId(bond.creatureId)?.let { creature ->
-                    CreatureImageTradingCard(creature,
-                        details = "Familiar vinculado ao personagem",
-                        stats = "PV ${creature.hitPoints} • CA ${creature.armorClassText} • Iniciativa ${creature.initiative}")
-                    TextButton(onClick = { bondPendingRemoval = bond },
-                        modifier = Modifier.align(androidx.compose.ui.Alignment.End)) {
-                        Text("Remover vínculo", color = MaterialTheme.colorScheme.error)
-                    }
-                }
-            }
-            companionBonds.forEach { bond ->
-                CreatureCatalog.byId(bond.creatureId)?.let { creature ->
-                    CreatureImageTradingCard(creature,
-                        details = "Companheiro animal vinculado ao personagem",
-                        stats = "PV ${creature.hitPoints} • CA ${creature.armorClassText} • Iniciativa ${creature.initiative}")
-                    TextButton(onClick = { bondPendingRemoval = bond },
-                        modifier = Modifier.align(androidx.compose.ui.Alignment.End)) {
-                        Text("Remover vínculo", color = MaterialTheme.colorScheme.error)
-                    }
-                }
+        val linkedCards = familiarBonds.map { it to "Familiar" } +
+            companionBonds.map { it to "Companheiro animal" }
+        CreatureCardStack(
+            items = linkedCards,
+            key = { it.first.id },
+            modifier = Modifier.fillMaxWidth()
+        ) { (bond, label) ->
+            CreatureCatalog.byId(bond.creatureId)?.let { creature ->
+                CreatureImageTradingCard(
+                    creature,
+                    details = "$label vinculado ao personagem",
+                    stats = "PV ${creature.hitPoints} • CA ${creature.armorClassText} • Iniciativa ${creature.initiative}",
+                    selectLabel = "Remover vínculo",
+                    onSelect = { bondPendingRemoval = bond }
+                )
             }
         }
     }
