@@ -8,7 +8,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.gestures.detectHorizontalDragGestures
 import androidx.compose.ui.input.pointer.pointerInput
-import androidx.compose.ui.draw.zIndex
+import androidx.compose.ui.zIndex
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.Arrangement
