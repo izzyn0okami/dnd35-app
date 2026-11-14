@@ -643,4 +643,31 @@ class CreatureCatalogTest {
         assertEquals("7", vermelho.challengeRating)
     }
 
+
+    @Test
+    fun eightCreatureSheetsHaveNarrativeAndCombatDetails() {
+        val expected = mapOf(
+            "stirge" to listOf("Adesão", "Drenar Sangue", "1d4"),
+            "tarrasque" to listOf("Presença Aterradora", "Carapaça", "868 PV"),
+            "tartarugadragao" to listOf("Sopro", "Naufragar", "12d6"),
+            "tendriculo" to listOf("Agarrar Aprimorado", "Regeneração", "Fortitude CD 20"),
+            "thoqqua" to listOf("Calor", "Incendiar", "2d6"),
+            "tita" to listOf("Arma Gigante", "chuva de meteoros", "20º"),
+            "tritao" to listOf("invocar aliado da natureza IV", "elementais da água"),
+            "troglodita" to listOf("Mau-Cheiro", "Fortitude CD 13", "9 m")
+        )
+        expected.forEach { (id, fragments) ->
+            val creature = CreatureCatalog.byId(id)!!
+            assertTrue("$id sem descrição", creature.description.isNotBlank())
+            assertTrue("$id sem combate", creature.combat.isNotBlank())
+            fragments.forEach { fragment ->
+                assertTrue("$id não contém $fragment", creature.combat.contains(fragment))
+            }
+        }
+        assertEquals("20", CreatureCatalog.byId("tarrasque")!!.challengeRating)
+        assertEquals("6", CreatureCatalog.byId("tendriculo")!!.challengeRating)
+        assertEquals("9", CreatureCatalog.byId("tartarugadragao")!!.challengeRating)
+        assertEquals("1/2", CreatureCatalog.byId("stirge")!!.challengeRating)
+    }
+
 }
