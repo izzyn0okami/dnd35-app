@@ -428,3 +428,15 @@ As fichas-base devem ser reutilizadas por ID sempre que a tabela pedir apenas um
 - Gavião-Seta, Tojanida, Salamandra e Unicórnio também foram vinculados às listas e círculos conferidos no Livro do Jogador.
 - O Xorn Médio é nomeado apenas “Xorn” no verbete do Livro dos Monstros; a identificação “Médio” é mantida na ficha para corresponder à designação da tabela de invocação.
 - Permanecem pendentes as seis categorias de tamanho/estágio de Elementais (Água, Ar, Fogo e Terra), além de insetos gigantes, Arconte Guardião, Xill, Leonal, Bruxa da Noite, Baleia Celestial e a variante Unicórnio, Arauto Celestial.
+
+
+## 2026-11-14 — Fichas completas dos quatro tipos de Elemental
+
+- Adicionadas 24 fichas: Água, Ar, Fogo e Terra, cada qual em seis categorias: Pequeno, Médio, Grande, Enorme, Maior (Superior no verbete) e Ancião.
+- Estatísticas extraídas das tabelas do Livro dos Monstros 3.5, pp. 101–104. As fichas incluem DV/PV, iniciativa, deslocamento, CA, ataques, espaço/alcance, ataques e qualidades especiais, resistências, habilidades, perícias, talentos, ND, progressão e tendência.
+- A tabela do Elemental do Ar repete “Superior” na coluna final e repete os mesmos valores de DV, PV, CA, ataques, resistências e habilidades. Para permitir a opção “Elemental Ancião” da tabela do Livro do Jogador, a ficha de Ancião reproduz exatamente o bloco impresso repetido; não foram inventados valores para preencher a divergência editorial.
+- O bloco do Elemental do Fogo Médio registra literalmente “4d5+8” no PDF, com 26 PV; a grafia foi preservada para auditoria posterior, sem substituir silenciosamente o dado por outro.
+- Vinculação corrigida conforme Livro do Jogador, pp. 210–211:
+  - Invocar Aliado da Natureza: Pequeno (2º), Médio (4º), Grande (5º), Enorme (6º), Maior (7º), Ancião (9º).
+  - Invocar Criaturas: Pequeno (3º), Médio (5º), Grande (6º), Enorme (7º), Maior (8º), Ancião (9º).
+- As quatro variantes elementais estão disponíveis em cada estágio. Nenhuma imagem existente foi modificada e nenhuma arte vetorial foi criada.
