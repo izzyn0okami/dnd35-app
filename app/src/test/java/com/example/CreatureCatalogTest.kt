@@ -502,4 +502,16 @@ class CreatureCatalogTest {
         assertTrue(CreatureCatalog.byId("naga-negra")!!.combat.contains("Pensamentos Protegidos"))
     }
 
+
+    @Test
+    fun ogreMageHasBookBasedDescriptionAndCombat() {
+        val ogre = CreatureCatalog.byId("ogro-mago")!!
+        assertTrue(ogre.description.contains("3 m de altura"))
+        assertTrue(ogre.description.contains("Gigante e Comum"))
+        assertTrue(ogre.combat.contains("cone glacial"))
+        assertTrue(ogre.combat.contains("forma gasosa"))
+        assertTrue(ogre.combat.contains("Regeneração (Ext)"))
+        assertTrue(ogre.combat.contains("fogo e ácido"))
+    }
+
 }

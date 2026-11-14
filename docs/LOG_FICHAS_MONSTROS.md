@@ -720,3 +720,13 @@ As fichas-base devem ser reutilizadas por ID sempre que a tabela pedir apenas um
 - Adicionado teste de regressão para existência, completude e capacidades específicas das quatro fichas.
 - Nenhuma criatura foi marcada como invocável: as tabelas de invocação do Livro do Jogador não listam nagas.
 - Contagem após esta etapa: 319 fichas; 199 com Descrição e Combate; 120 pendentes.
+
+
+## 2026-11-14 — Vigésima quinta etapa: Ogro Mago
+
+- Conferido o verbete do Ogro Mago no Livro dos Monstros brasileiro, p. 211 (PDF, p. 215).
+- Preenchidos Descrição e Combate do registro já existente, sem alterar seu bloco de estatísticas.
+- Descrição inclui aparência, dimensões, comportamento, habitat, organização social, riqueza e idiomas, conforme o texto do livro.
+- Combate registra habilidades similares à magia e suas frequências/CDs, voo, regeneração 5 e as exceções/condições para recolocar partes do corpo.
+- Adicionado teste de regressão para os elementos distintivos do verbete.
+- Contagem após esta etapa: 319 fichas; 200 com Descrição e Combate; 119 pendentes.

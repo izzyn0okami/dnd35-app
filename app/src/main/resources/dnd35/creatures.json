@@ -7639,7 +7639,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "O ogro mago é um gigante de aparência humanoide e demoníaca, com cerca de 3 m de altura e quase 350 kg. Possui pele que varia do verde-claro ao azul-claro, cabelos negros ou castanho-escuros, olhos negros com pupilas muito brancas, presas e garras escuras e dois chifres curtos de marfim. Prefere roupas largas e confortáveis e armaduras leves. É a variedade mais inteligente e perigosa dos ogros: voraz e cruel, costuma liderar invasões em busca de escravos, tesouros e alimento. Habita fortificações e tocas subterrâneas, sozinho ou com seguidores ogros, e mede seu prestígio pela riqueza acumulada. Fala Gigante e Comum.",
+    "combat": "O ogro mago prefere usar suas habilidades similares à magia e só recorre ao combate físico quando necessário. Contra adversários claramente superiores, costuma fugir usando forma gasosa. Habilidades Similares à Magia: à vontade — escuridão e invisibilidade; 1/dia — cone glacial (CD 18), enfeitiçar pessoas (CD 14), forma gasosa, metamorfose e sono (CD 14); nível de conjurador 9º, CDs baseadas em Carisma. Voo (Sob): pode alçar voo ou aterrissar como ação livre; enquanto estiver em forma gasosa, voa com seu deslocamento normal e manobrabilidade perfeita. Regeneração (Ext): regeneração 5; sofre dano normal por fogo e ácido. Membros ou partes do corpo perdidos podem ser recolocados segurando-os contra o ferimento, processo que leva 1 minuto. Cabeça ou órgão vital deve ser recolocado em até 10 minutos, ou morrerá; partes perdidas definitivamente não podem ser regeneradas."
   },
   {
     "id": "passaro-roca",
