@@ -2,6 +2,8 @@ package com.example.dnd35.ui.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -169,24 +171,25 @@ fun CreatureBondSection(
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             } else {
-                LazyColumn(
-                    modifier = Modifier.weight(1f),
-                    verticalArrangement = Arrangement.spacedBy(12.dp)
-                ) {
-                    items(options, key = { it.first.id }) { (creature, restriction) ->
-                        CreatureImageTradingCard(
-                            creature = creature,
-                            details = "Disponível como ${if (activeKind == CreatureBondKind.FAMILIAR) "familiar" else "companheiro animal"}.",
-                            stats = "PV ${creature.hitPoints} • CA ${creature.armorClassText} • Iniciativa ${creature.initiative}",
-                            footer = restriction.ifBlank { null },
-                            selectLabel = "Vincular criatura",
-                            onSelect = {
-                                val kind = activeKind ?: return@CreatureImageTradingCard
-                                viewModel.updateCreatureBonds(savedBonds + CharacterCreatureBond(kind = kind, creatureId = creature.id))
-                                showPicker = false
-                            }
-                        )
-                    }
+                CreatureCardStack(
+                    items = options,
+                    key = { it.first.id },
+                    modifier = Modifier.fillMaxWidth()
+                ) { entry ->
+                    val creature = entry.first
+                    val restriction = entry.second
+                    CreatureImageTradingCard(
+                        creature = creature,
+                        details = "Disponível como ${if (activeKind == CreatureBondKind.FAMILIAR) "familiar" else "companheiro animal"}.",
+                        stats = "PV ${creature.hitPoints} • CA ${creature.armorClassText} • Iniciativa ${creature.initiative}",
+                        footer = restriction.ifBlank { null },
+                        selectLabel = "Vincular criatura",
+                        onSelect = {
+                            val kind = activeKind ?: return@CreatureImageTradingCard
+                            viewModel.updateCreatureBonds(savedBonds + CharacterCreatureBond(kind = kind, creatureId = creature.id))
+                            showPicker = false
+                        }
+                    )
                 }
             }
             Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
