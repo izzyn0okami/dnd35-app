@@ -362,4 +362,19 @@ class CreatureCatalogTest {
         assertTrue(CreatureCatalog.byId("hipogrifo")!!.combat.contains("sela exótica"))
     }
 
+
+    @Test
+    fun homunculusAndInevitableUndeadHaveNarrativeSummaries() {
+        listOf("homunculo", "marut", "kolyarut", "zelekhut", "inumano").forEach { id ->
+            val creature = CreatureCatalog.byId(id)!!
+            assertTrue("$id sem descrição", creature.description.isNotBlank())
+            assertTrue("$id sem resumo de combate", creature.combat.isNotBlank())
+        }
+        assertTrue(CreatureCatalog.byId("homunculo")!!.combat.contains("sono por 1 minuto"))
+        assertTrue(CreatureCatalog.byId("marut")!!.combat.contains("3d6 de dano sônico"))
+        assertTrue(CreatureCatalog.byId("kolyarut")!!.combat.contains("Toque Vampírico"))
+        assertTrue(CreatureCatalog.byId("zelekhut")!!.combat.contains("correntes com cravos"))
+        assertTrue(CreatureCatalog.byId("inumano")!!.combat.contains("1d4 rodadas"))
+    }
+
 }
