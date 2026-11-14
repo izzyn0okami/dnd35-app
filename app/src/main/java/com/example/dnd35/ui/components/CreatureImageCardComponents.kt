@@ -188,8 +188,8 @@ fun <T> CreatureCardStack(
             }
             Box(
                 modifier = Modifier
-                    .width(265.dp)
-                    .height(390.dp)
+                    .width(300.dp)
+                    .height(500.dp)
                     .zIndex(10f)
             ) { card(visible.first()) }
         }
