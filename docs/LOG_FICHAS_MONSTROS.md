@@ -440,3 +440,5 @@ As fichas-base devem ser reutilizadas por ID sempre que a tabela pedir apenas um
   - Invocar Aliado da Natureza: Pequeno (2º), Médio (4º), Grande (5º), Enorme (6º), Maior (7º), Ancião (9º).
   - Invocar Criaturas: Pequeno (3º), Médio (5º), Grande (6º), Enorme (7º), Maior (8º), Ancião (9º).
 - As quatro variantes elementais estão disponíveis em cada estágio. Nenhuma imagem existente foi modificada e nenhuma arte vetorial foi criada.
+
+- Revisão adicional das listas de círculos após a extração integral das tabelas do Livro do Jogador: corrigida a posição dos Elementais nas duas famílias de invocação e corrigidos Xorn Médio e Salamandra Média para o 4º círculo de Invocar Aliado da Natureza. Os testes agora percorrem os quatro elementos em todos os seis círculos previstos em cada família.
