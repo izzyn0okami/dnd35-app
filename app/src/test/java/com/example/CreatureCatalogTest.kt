@@ -344,4 +344,22 @@ class CreatureCatalogTest {
         assertTrue(CreatureCatalog.byId("golem-de-barro")!!.combat.contains("Fúria"))
     }
 
+
+    @Test
+    fun ironGolemGrickGriffonGrimlockAvoralAndHippogriffHaveNarrativeSummaries() {
+        listOf(
+            "golem-de-ferro", "grick", "grifo", "grimlock", "avoral", "hipogrifo"
+        ).forEach { id ->
+            val creature = CreatureCatalog.byId(id)!!
+            assertTrue("$id sem descrição", creature.description.isNotBlank())
+            assertTrue("$id sem resumo de combate", creature.combat.isNotBlank())
+        }
+        assertTrue(CreatureCatalog.byId("golem-de-ferro")!!.combat.contains("nuvem de gás venenoso"))
+        assertTrue(CreatureCatalog.byId("grick")!!.combat.contains("quatro tentáculos"))
+        assertTrue(CreatureCatalog.byId("grifo")!!.combat.contains("Rasgar"))
+        assertTrue(CreatureCatalog.byId("grimlock")!!.combat.contains("Sentido Cego"))
+        assertTrue(CreatureCatalog.byId("avoral")!!.combat.contains("aura de medo"))
+        assertTrue(CreatureCatalog.byId("hipogrifo")!!.combat.contains("sela exótica"))
+    }
+
 }
