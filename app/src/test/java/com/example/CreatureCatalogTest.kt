@@ -305,4 +305,17 @@ class CreatureCatalogTest {
         assertTrue(CreatureCatalog.byId("gargula")!!.combat.contains("Imobilidade"))
     }
 
+
+    @Test
+    fun djinniEfreetiAndJanniHaveNarrativeAndCombatSummaries() {
+        listOf("djinni", "efreeti", "janni").forEach { id ->
+            val creature = CreatureCatalog.byId(id)!!
+            assertTrue("$id sem descrição", creature.description.isNotBlank())
+            assertTrue("$id sem resumo de combate", creature.combat.isNotBlank())
+        }
+        assertTrue(CreatureCatalog.byId("djinni")!!.combat.contains("vendaval"))
+        assertTrue(CreatureCatalog.byId("efreeti")!!.combat.contains("1d6 de dano por fogo"))
+        assertTrue(CreatureCatalog.byId("janni")!!.combat.contains("Tolerância aos Elementos"))
+    }
+
 }
