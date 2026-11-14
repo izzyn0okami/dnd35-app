@@ -318,4 +318,17 @@ class CreatureCatalogTest {
         assertTrue(CreatureCatalog.byId("janni")!!.combat.contains("Tolerância aos Elementos"))
     }
 
+
+    @Test
+    fun cloudFireAndStoneGiantsHaveNarrativeAndCombatSummaries() {
+        listOf("gigante-das-nuvens", "gigante-do-fogo", "gigante-de-pedra").forEach { id ->
+            val creature = CreatureCatalog.byId(id)!!
+            assertTrue("$id sem descrição", creature.description.isNotBlank())
+            assertTrue("$id sem resumo de combate", creature.combat.isNotBlank())
+        }
+        assertTrue(CreatureCatalog.byId("gigante-das-nuvens")!!.combat.contains("42 m"))
+        assertTrue(CreatureCatalog.byId("gigante-do-fogo")!!.combat.contains("2d6 de dano por fogo"))
+        assertTrue(CreatureCatalog.byId("gigante-de-pedra")!!.combat.contains("36 m"))
+    }
+
 }
