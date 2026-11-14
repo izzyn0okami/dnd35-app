@@ -8991,7 +8991,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Esta criatura parece uma cabeça humana horrível e distorcida, suspensa por asas de couro. No lugar dos cabelos há tentáculos ressecados, e seus olhos ardem em chamas verdes. Os vargouilles vieram dos poços mais profundos do plano de Carceri e assombram cemitérios, ruínas e locais de morte e decadência. São ligeiramente maiores que uma cabeça humana, com quase 40 cm de altura, 1,2 m de envergadura e cerca de 5 kg. Falam Infernal.",
+    "combat": "Os vargouilles atacam com mordidas e presas retorcidas; suas armas naturais e quaisquer armas empunhadas são consideradas profanas para ignorar Redução de Dano. Silvo (Sob): em vez de morder, emite um silvo terrível. Criaturas num raio de 18 m que possam ouvi-lo e vê-lo claramente devem passar em Fortitude CD 12 ou ficam paralisadas de medo por 2d4 rodadas, até o monstro atacar, sair do alcance ou abandonar a linha de visão. Uma criatura paralisada fica vulnerável ao beijo. Beijo (Sob): contra alvo paralisado, um ataque de toque corpo a corpo inicia transformação; Fortitude CD 15 anula. A transformação ocorre em até 24 horas: cabelo cai, orelhas viram asas, surgem tentáculos e presas, a vítima perde Inteligência e Carisma e, ao final, a cabeça se separa do corpo, que morre, tornando-se um vargouille. Luz solar interrompe o processo; luz do dia apenas o retarda. Remover doença reverte a metamorfose. Veneno (Ext): mordida; Fortitude CD 12; impede recuperar naturalmente ou magicamente o dano da mordida. Neutralizar veneno ou cura completa anulam o efeito; retardar envenenamento permite cura mágica."
   },
   {
     "id": "verme-do-gelo",
@@ -9091,7 +9093,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Um verme púrpura adulto tem cerca de 1,5 m de diâmetro, 24 m de comprimento e pesa mais de 20 toneladas. Sua bocarra é repleta de dentes e a cauda termina em um ferrão venenoso. Consome grandes quantidades de poeira e rochas enquanto escava; sua moela retém gemas e outros itens resistentes ao ácido. Em regiões ricas em minerais, seus dejetos podem conter minérios brutos.",
+    "combat": "Em batalha, enrola-se em um círculo de 6 m de diâmetro e morde ou ferroa qualquer oponente ao alcance. Agarrar Aprimorado (Ext): após acertar com a mordida, inicia Agarrar como ação livre sem provocar ataques de oportunidade; se vencer, prende a vítima e pode tentar engoli-la na rodada seguinte. Veneno (Ext): inoculado pelo ferrão; Fortitude CD 25; dano inicial de 1d6 pontos de dano temporário de Força e secundário de 2d6. Engolir (Ext): pode engolir uma criatura presa de categoria inferior após um teste de Agarrar bem-sucedido. Dentro dele, a vítima sofre 2d8+12 pontos de dano por esmagamento e 8 pontos de dano por ácido por rodada. Para escapar, pode abrir caminho causando 25 pontos de dano ao sistema digestivo (CA 17). O estômago comporta duas criaturas Grandes, oito Médias, 32 Pequenas, 128 Miúdas ou 512 Diminutas. Recebe +8 racial em Natação para ações especiais ou evitar perigos, pode escolher 10 mesmo distraído ou ameaçado e pode correr na água em linha reta."
   },
   {
     "id": "vinha-assassina",
@@ -9141,7 +9145,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Esta trepadeira possui um caule fibroso coberto por casca marrom, com espessura aproximada à do antebraço humano, e folhas em forma de mãos humanoides. É um vegetal de mobilidade limitada que obtém seu próprio adubo orgânico agarrando e esmagando animais e depositando as carcaças junto às raízes. Quando madura, possui um caule principal de cerca de 6 m, do qual brotam vinhas menores com folhas. No fim do verão produz pequenos frutos semelhantes a uvas silvestres, muito duros, de sabor acentuado e amargo; podem ser usados para produzir vinho tóxico. Embora consiga se mover, geralmente permanece imóvel.",
+    "combat": "A vinha assassina aguarda a aproximação da vítima e então ataca, usando Enredar para prendê-la e impedir contra-ataques. Constrição (Ext): causa 1d6+7 pontos de dano quando vence um teste resistido de Agarrar. Enredar (Sob): como ação livre, anima plantas num raio de 9 m; Reflexos CD 13 reduz parcialmente o efeito. Permanece ativo até a vinha morrer ou encerrá-lo como ação livre; funciona como constrição, nível de conjurador 4º. Agarrar Aprimorado (Ext): após acertar com a pancada, inicia Agarrar como ação livre sem provocar ataques de oportunidade e, se vencer, prende a vítima e pode usar constrição. Percepção às Cegas (Ext): detecta inimigos num raio de 9 m por sons, vibrações e olfato, apesar de não possuir órgãos visuais. Camuflagem (Ext): em repouso, parece uma planta normal; exige Observar CD 20 para percebê-la antes do ataque. Sobrevivência ou Conhecimento (natureza) podem substituir Observar; anões podem detectar a versão subterrânea com Ligação com Pedras."
   },
   {
     "id": "rastejante-noturno",
@@ -9191,7 +9197,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Esta criatura tem a aparência de um verme imenso, recoberto por placas de quitina negra semelhantes a uma armadura. Sua boca e garganta também são negras e possuem dentes. É semelhante a um verme púrpura, mas apresenta coloração muito mais escura. Mede cerca de 2 m de diâmetro e 30 m de comprimento, da boca dentada à ponta da cauda com ferrão, e pesa quase 28 toneladas.",
+    "combat": "O rastejante noturno ataca escavando o solo e emergindo para atingir a vítima. Suas armas naturais são consideradas mágicas para ignorar Redução de Dano. Drenar Energia (Sob): criaturas vivas em seu interior sofrem um nível negativo por rodada; Fortitude CD 26 evita a drenagem. Para cada nível negativo imposto, o rastejante adquire 5 PV temporários. Agarrar Aprimorado (Ext): após acertar com a mordida, inicia Agarrar como ação livre sem provocar ataques de oportunidade; se vencer, prende a vítima e pode usar Engolir na rodada seguinte. Veneno (Ext): inoculado pelo ferrão; Fortitude CD 22; dano inicial e secundário de 2d6 pontos de dano temporário de Força. Engolir: uma criatura engolida pode abrir caminho para sair usando armas leves cortantes ou perfurantes, causando 35 pontos de dano ao sistema digestivo (CA 21). O interior comporta duas criaturas Enormes, oito Grandes, 32 Médias, 128 Pequenas ou 512 Miúdas ou menores."
   },
   {
     "id": "vulto-alado",
@@ -9241,7 +9249,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Esta criatura parece uma massa de escuridão profunda com a forma de um morcego monstruoso. Os vultos alados voam durante a noite e espreitam suas vítimas nos céus. Sua envergadura chega a 12 m e pesam quase 2 toneladas.",
+    "combat": "Os vultos alados espreitam os céus noturnos e mergulham sobre as vítimas. São quase invisíveis e só podem ser percebidos quando sua passagem obscurece as estrelas. Suas armas naturais são consideradas mágicas para ignorar Redução de Dano. Drenar Magia (Sob): com um ataque de toque bem-sucedido, enfraquece arma, armadura ou escudo mágico; o item deve passar em Fortitude CD 12 ou perde 1 ponto de bônus de melhoria. Ao perder todos os bônus, torna-se obra-prima e suas habilidades especiais são neutralizadas. Dissipar o mal conjurada sobre o item reverte o efeito, mas somente dentro de um período equivalente a 1 dia por nível do item. Aura Degradante (Sob): enfraquece os adversários próximos. Habilidades similares à magia: à vontade — detectar magia, escuridão profunda, nuvem profana (CD 18), praga (CD 16), velocidade e ver o invisível; 3/dia — confusão (CD 18), dissipar magia aprimorado, imobilizar monstro (CD 19) e invisibilidade; 1/dia — cone glacial (CD 19), dedo da morte (CD 21) e viagem planar (CD 21); nível de conjurador 17º. Invocar Morto-Vivo (Sob): uma vez por noite, invoca 5–12 sombras, 2–4 sombras maiores ou uma aparição; surgem em 1d10 rodadas e servem por 1 hora ou até serem libertadas. Recebe +8 racial em Esconder-se em iluminação precária ou voando à noite."
   },
   {
     "id": "worg",
