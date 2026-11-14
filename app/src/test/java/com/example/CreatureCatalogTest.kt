@@ -331,4 +331,17 @@ class CreatureCatalogTest {
         assertTrue(CreatureCatalog.byId("gigante-de-pedra")!!.combat.contains("36 m"))
     }
 
+
+    @Test
+    fun girallonGnollAndClayGolemHaveNarrativeAndCombatSummaries() {
+        listOf("girallon", "gnoll", "golem-de-barro").forEach { id ->
+            val creature = CreatureCatalog.byId(id)!!
+            assertTrue("$id sem descrição", creature.description.isNotBlank())
+            assertTrue("$id sem resumo de combate", creature.combat.isNotBlank())
+        }
+        assertTrue(CreatureCatalog.byId("girallon")!!.combat.contains("2d4+12"))
+        assertTrue(CreatureCatalog.byId("gnoll")!!.combat.contains("vantagem numérica"))
+        assertTrue(CreatureCatalog.byId("golem-de-barro")!!.combat.contains("Fúria"))
+    }
+
 }
