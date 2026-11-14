@@ -70,6 +70,29 @@ class SummoningRulesTest {
     }
 
     @Test
+    fun bookSummoningEntriesWithExistingSheetsAreAvailableAtTheirCorrectCircles() {
+        val monsters1 = SummoningRules.creaturesForCircle(SummoningFamily.SUMMON_CREATURES, 1)
+        val monsters4 = SummoningRules.creaturesForCircle(SummoningFamily.SUMMON_CREATURES, 4)
+        val monsters6 = SummoningRules.creaturesForCircle(SummoningFamily.SUMMON_CREATURES, 6)
+        val monsters7 = SummoningRules.creaturesForCircle(SummoningFamily.SUMMON_CREATURES, 7)
+        val nature4 = SummoningRules.creaturesForCircle(SummoningFamily.SUMMON_NATURE_ALLY, 4)
+        val nature5 = SummoningRules.creaturesForCircle(SummoningFamily.SUMMON_NATURE_ALLY, 5)
+        val nature7 = SummoningRules.creaturesForCircle(SummoningFamily.SUMMON_NATURE_ALLY, 7)
+
+        assertTrue(monsters1.any { it.creature.id == "corvo" && it.templateLabel == "Abissal" })
+        assertTrue(monsters4.any { it.creature.id == "arconte-luminar" && it.templateLabel.isBlank() })
+        assertTrue(monsters6.any { it.creature.id == "bralani" })
+        assertTrue(monsters6.any { it.creature.id == "fera-do-caos" })
+        assertTrue(monsters7.any { it.creature.id == "avoral" })
+        assertTrue(nature4.any { it.creature.id == "javali-atroz" })
+        assertTrue(nature4.any { it.creature.id == "carcaju-atroz" })
+        assertTrue(nature4.any { it.creature.id == "vibora-enorme" })
+        assertTrue(nature5.any { it.creature.id == "urso-polar" })
+        assertTrue(nature7.any { it.creature.id == "tigre-atroz" })
+        assertEquals(emptyList<String>(), SummoningRules.unclassifiedCatalogCreatureIds())
+    }
+
+    @Test
     fun animalDomainProvidesNatureAllySpellsToClerics() {
         val animalDomainSpells4 = com.example.dnd35.model.ClericDomainRules.domainSpellsAt(
             listOf("Animais"),
@@ -94,5 +117,18 @@ class SummoningRulesTest {
         val fiendishRat = SummoningRules.creaturesForCircle(SummoningFamily.SUMMON_CREATURES, 1)
             .first { it.creature.id == "rato-atroz-abissal" }
         assertEquals("", fiendishRat.templateLabel)
+
+        val archon = SummoningRules.creaturesForCircle(SummoningFamily.SUMMON_CREATURES, 4)
+            .first { it.creature.id == "arconte-luminar" }
+        val hellHound = SummoningRules.creaturesForCircle(SummoningFamily.SUMMON_CREATURES, 3)
+            .first { it.creature.id == "cao-infernal" }
+        val hellcat = SummoningRules.creaturesForCircle(SummoningFamily.SUMMON_CREATURES, 8)
+            .first { it.creature.id == "gato-infernal-bezekira" }
+        val demon = SummoningRules.creaturesForCircle(SummoningFamily.SUMMON_CREATURES, 9)
+            .first { it.creature.id == "babau" }
+        assertEquals("", archon.templateLabel)
+        assertEquals("", hellHound.templateLabel)
+        assertEquals("", hellcat.templateLabel)
+        assertEquals("", demon.templateLabel)
     }
 }

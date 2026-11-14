@@ -362,3 +362,38 @@ A alteração foi enviada ao PR #367 no commit `6b8a5eb32cf202c1393ad95803500f7e
 - Executar testes unitários e compilação Android na CI da PR #368.
 - Validar no aparelho: gesto para avançar/voltar em cada pilha, toque para virar, pressão prolongada, inclusão de monstros na iniciativa, ordem por iniciativa e retrato do turno.
 - **Ajuste de CI:** a primeira compilação após a conversão das listas encontrou blocos antigos de `LazyColumn` que permaneceram após a substituição e um import de `zIndex` incorreto. Esses resíduos foram removidos/corrigidos; a nova execução está validando o head `25f914d6c1c6ad146f4d5c9022501dacc08a49f0`.
+
+
+## 2026-11-14 — Cobertura das listas de invocação e vínculo com fichas
+
+### Conferência do Livro do Jogador
+- Tabelas de **Invocar Aliado da Natureza** e **Invocar Criaturas**, páginas impressas 210–211, conferidas novamente.
+- As listas do app foram ampliadas para incluir todas as opções da tabela que já possuem ficha em `CreatureCatalog`, mantendo o círculo de origem e permitindo as listas inferiores conforme a magia.
+- Corrigidas dez flags `summonedCreature` que estavam falsas apesar de a criatura constar nas tabelas: Carcajú Atroz, Javali Atroz, Tigre Atroz, Arconte Luminar, Bralani, Fera do Caos, Avoral, Corvo, Urso Polar e Víbora Enorme.
+- A lista Celestial/Abissal agora registra as variantes no seletor sem criar uma ficha duplicada para o modelo. As variantes de Sátiro (com/sem flauta) e Pixie (sem flechas especiais, com flechas soníferas e com flechas soníferas/de perda de memória) permanecem separadas por círculo.
+- O seletor continua usando o ID da ficha original do bestiário. Pressionar e segurar uma carta abre a ficha completa; virar a carta e acionar **Invocar** confirma a seleção. O texto do seletor foi atualizado para tornar esse caminho explícito.
+- O histórico de magias também transforma a criatura registrada em um acesso direto à ficha completa: o registro persiste o ID do catálogo, e tocar no nome da criatura invocada abre seus detalhes. Isso mantém o vínculo mesmo após fechar o seletor ou reabrir a ficha.
+
+### Fichas ainda ausentes no catálogo
+Não foram criados placeholders nem estatísticas presumidas. As opções abaixo aparecem nas tabelas do Livro do Jogador, mas ainda não têm ficha própria em `CreatureCatalog`; por isso não são oferecidas no seletor até a extração e conferência dos blocos no Livro dos Monstros.
+
+**Invocar Aliado da Natureza**
+- Elementais: Pequeno (2º), Médio (4º), Grande (5º), Enorme (6º), Maior (7º) e Ancião (9º).
+- Gavião-Seta: Jovem (4º), Adulto (5º) e Ancião (7º).
+- Salamandras: Irmã de Chama (4º), Média (6º) e Nobre (8º).
+- Tojanidas: Jovem (4º), Adulto (5º) e Anciã (8º).
+- Xorns: Menor (4º), Médio (6º) e Ancião (7º).
+- Unicórnio (4º) e Unicórnio, Arauto Celestial (9º).
+
+**Invocar Criaturas**
+- Elementais: Pequeno (3º), Médio (5º), Grande (6º), Enorme (7º), Maior (8º) e Ancião (9º).
+- Insetos gigantes: Abelha e Besouro (2º), Louva-a-Deus (4º) e Gafanhoto (5º).
+- Lêmure (2º), Cão Yeth (4º), Arconte Guardião (5º), Xill (6º), Leonal (9º) e Bruxa da Noite (9º).
+- Baleia Celestial (7º); a tabela não especifica uma espécie de baleia para essa entrada.
+
+As fichas-base devem ser reutilizadas por ID sempre que a tabela pedir apenas um modelo Celestial/Abissal; não duplicar registros para representar o modelo. Para Elementais, manter as fichas separadas por elemento e estágio, pois seus blocos de estatísticas e habilidades não são intercambiáveis.
+
+### Testes
+- Acrescentados testes para as criaturas existentes que estavam sem flag e para suas listas/círculos corretos.
+- `unclassifiedCatalogCreatureIds()` continua exigindo que toda ficha marcada como invocável tenha um círculo explícito nas tabelas.
+- Nenhuma estatística de criatura foi alterada nesta etapa.

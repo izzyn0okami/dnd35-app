@@ -30,7 +30,7 @@ fun SummonedCreaturePickerDialog(
         onDismiss = onDismiss
     ) {
         Text(
-            "As listas inferiores também são válidas para este círculo. Selecione a carta que será invocada.",
+            "As listas de círculos inferiores também são válidas. Pressione e segure uma carta para abrir sua ficha completa; para invocar, vire a carta e use o botão de seleção.",
             style = MaterialTheme.typography.bodySmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant
         )
