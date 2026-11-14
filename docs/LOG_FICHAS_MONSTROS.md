@@ -474,3 +474,13 @@ As fichas-base devem ser reutilizadas por ID sempre que a tabela pedir apenas um
 - A opção já estava funcionalmente representada pelo registro-base `cachorro` (ficha de Cachorro) com `templateLabel = Celestial`, e já era retornada no círculo I. Portanto, não faltava uma entrada de regra nem uma segunda ficha-base.
 - A causa da impressão de ausência era a apresentação do card: o título mostrava apenas “Cachorro” e o modelo celestial ficava no rodapé. A carta agora apresenta “Cão Celestial” como nome principal e identifica o modelo aplicado; a ficha-base continua sendo aberta para preservar os dados originais do animal.
 - A conferência visual da tabela de Invocar Criaturas (círculos I–IX) não revelou outra omissão evidente na lista de opções mapeadas. As criaturas que usam modelo Celestial/Abissal continuam vinculadas à ficha-base, sem duplicar blocos de estatísticas.
+
+
+## 2026-11-14 — Primeira etapa de preenchimento narrativo: animais atrozes
+
+- Preenchidas as descrições e táticas de combate de 11 fichas: Arminho Atroz, Carcajú Atroz, Gorila Atroz, Javali Atroz, Leão Atroz, Lobo Atroz, Morcego Atroz, Rato Atroz, Tigre Atroz, Tubarão Atroz e Urso Atroz.
+- Fonte primária: Livro dos Monstros 3.5 em português, verbetes nas páginas impressas 14–18. Os textos foram resumidos e reescritos para consulta no app, sem transcrição extensa.
+- As descrições registram aparência, porte, comportamento e habitat quando aplicável; os resumos de combate preservam as táticas e habilidades especiais descritas no verbete (adesão/drenar sangue, fúria, dilacerar, ferocidade, agarrar aprimorado, bote, rasgar, imobilização, sentido cego, doença, engolir e faro aguçado).
+- Nenhum valor mecânico existente foi alterado. Nenhum campo já preenchido foi sobrescrito.
+- Teste de regressão exige que as 11 fichas mantenham descrição e resumo de combate não vazios.
+- Situação após esta etapa: 313 fichas no catálogo; 246 ainda precisam de descrição ou resumo de combate.
