@@ -41,7 +41,7 @@ object SummoningRules {
         6 to "elemental-agua-grande elemental-ar-grande elemental-fogo-grande elemental-terra-grande xill urso-atroz baleia-orca leao-atroz cobra-constritora-gigante diabo-das-correntes-kyton centopeia-imensa rinoceronte elasmossauro aranha-enorme bralani janni fera-do-caos",
         7 to "elemental-agua-enorme elemental-ar-enorme elemental-fogo-enorme elemental-terra-enorme elefante avoral djinni cacador-invisivel slaad-vermelho diabo-dos-ossos-osyluth megaraptor escorpiao-enorme babau polvo-gigante girallon",
         8 to "elemental-agua-maior elemental-ar-maior elemental-fogo-maior elemental-terra-maior baleia-cachalote triceratops lillend slaad-azul lula-gigante gato-infernal-bezekira centopeia-colossal tigre-atroz aranha-imensa tiranossauro vrock",
-        9 to "elemental-agua-anciao elemental-ar-anciao elemental-fogo-anciao elemental-terra-anciao bruxa-da-noite leonal couatl passaro-roca slaad-verde diabo-barbado-barbazu tubarao-atroz escorpiao-imenso bebilith aranha-colossal hezrou"
+        9 to "elemental-agua-anciao elemental-ar-anciao elemental-fogo-anciao elemental-terra-anciao bruxa-da-noite leonal unicornio-arauto-celestial couatl passaro-roca slaad-verde diabo-barbado-barbazu tubarao-atroz escorpiao-imenso bebilith aranha-colossal hezrou"
     )
 
     private fun circleMap(lists: Map<Int, String>): Map<String, Int> =
