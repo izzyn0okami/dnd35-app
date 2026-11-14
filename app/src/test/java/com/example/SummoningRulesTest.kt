@@ -98,6 +98,7 @@ class SummoningRulesTest {
         assertTrue(SummoningRules.creaturesForCircle(SummoningFamily.SUMMON_CREATURES, 6).any { it.creature.id == "xill" })
         assertTrue(SummoningRules.creaturesForCircle(SummoningFamily.SUMMON_CREATURES, 9).any { it.creature.id == "bruxa-da-noite" })
         assertTrue(SummoningRules.creaturesForCircle(SummoningFamily.SUMMON_CREATURES, 9).any { it.creature.id == "leonal" })
+        assertTrue(SummoningRules.creaturesForCircle(SummoningFamily.SUMMON_NATURE_ALLY, 9).any { it.creature.id == "unicornio-arauto-celestial" })
         assertTrue(SummoningRules.creaturesForCircle(SummoningFamily.SUMMON_CREATURES, 5).any { it.creature.id == "gafanhoto-gigante" && it.templateLabel == "Celestial" })
         assertTrue(monsters6.any { it.creature.id == "bralani" })
         assertTrue(monsters6.any { it.creature.id == "fera-do-caos" })
