@@ -444,4 +444,19 @@ class CreatureCatalogTest {
         assertTrue(CreatureCatalog.byId("mephit-da-agua")!!.combat.contains("Natação"))
     }
 
+
+    @Test
+    fun mephitEarthAndMimicHaveCompleteNarrativeSummaries() {
+        listOf("mephit-da-terra", "mimico").forEach { id ->
+            val creature = CreatureCatalog.byId(id)!!
+            assertTrue("$id sem descrição", creature.description.isNotBlank())
+            assertTrue("$id sem resumo de combate", creature.combat.isNotBlank())
+        }
+        assertTrue(CreatureCatalog.byId("mephit-da-terra")!!.combat.contains("amolecer terra e pedra"))
+        assertTrue(CreatureCatalog.byId("mephit-da-terra")!!.combat.contains("enterrado até a cintura"))
+        assertTrue(CreatureCatalog.byId("mimico")!!.combat.contains("Agarrar"))
+        assertTrue(CreatureCatalog.byId("mephit-do-fogo")!!.combat.contains("raio ardente"))
+        assertFalse(CreatureCatalog.byId("mephit-da-agua")!!.combat.contains("bolha de ácido"))
+    }
+
 }

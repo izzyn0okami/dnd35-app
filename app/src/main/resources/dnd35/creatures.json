@@ -7017,7 +7017,7 @@
     "summonedCreature": true,
     "familiar": false,
     "description": "Pequeno extraplanar alado de aparência pisciforme, com escamas e olhos negros salientes. Vem do Plano Elemental da Água, mede cerca de um metro e pesa aproximadamente 15 kg. É viajante e brincalhão, embora seu humor costume irritar os demais. Fala Comum e Aquan.",
-    "combat": "Ataca com duas garras e um sopro de líquido cáustico em cone. Suas habilidades similares à magia incluem uma bolha de ácido (flecha ácida de Melf) e névoa fétida. Recupera 2 PV por rodada quando está submerso até a cintura ou sob chuva. Recebe +8 racial em Natação para ações especiais e perigos e pode escolher 10 mesmo sob distração ou ameaça."
+    "combat": "Ataca com duas garras e um sopro em cone de líquido cáustico de 3 m, que causa dano por ácido (Reflexos CD 13 reduz à metade). Recupera 2 PV por rodada somente quando está mergulhado até a cintura em água ou sob chuva. Recebe +8 racial em Natação para ações especiais e para evitar perigos, podendo escolher 10 mesmo distraído ou ameaçado."
   },
   {
     "id": "mephit-do-ar",
@@ -7121,7 +7121,7 @@
     "summonedCreature": true,
     "familiar": false,
     "description": "Pequeno extraplanar alado que lembra um diabrete em miniatura envolto em chamas. Provém do Plano Elemental do Fogo, tem pouco mais de um metro, pesa cerca de meio quilo e fala Comum e Ígneo.",
-    "combat": "Ataca com garras que também causam dano de fogo e com um sopro flamejante em cone. Suas habilidades similares à magia incluem mãos flamejantes e, uma vez por dia, um efeito de metal quente. É imune ao fogo, vulnerável ao frio e recupera 2 PV por rodada quando está próximo de chamas do tamanho de uma tocha ou maiores."
+    "combat": "Ataca com garras que causam dano adicional por fogo e com um sopro flamejante em cone de 4,5 m (1d8 de dano por fogo; Reflexos CD 12 reduz à metade). Suas habilidades similares à magia são raio ardente uma vez por hora e esquentar metal uma vez por dia. É imune ao fogo, vulnerável ao frio e recupera 2 PV por rodada quando está em contato com uma chama do tamanho de uma tocha ou maior."
   },
   {
     "id": "mephit-do-gelo",
@@ -7474,7 +7474,7 @@
     "skills": "Disfarces +13, Escalar +9, Observar +8, Ouvir +8",
     "feats": "Foco em Arma (pancada), Prontidão, Reflexos Rápidos",
     "environment": "Subterrâneo",
-    "organization": "Solitário Mímico MÍMICO",
+    "organization": "Solitário",
     "challengeRating": "4",
     "treasure": "1/10 moedas; 50% bens; 50% itens",
     "alignment": "Geralmente Neutro",
@@ -7483,7 +7483,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Aberração metamorfa subterrânea, capaz de alterar pigmentação e forma para imitar objetos e atrair vítimas. Geralmente assume a aparência de um baú, cama ou outra peça de mobiliário; seu corpo é áspero e rígido. Segundo o livro, foi criada há muito tempo por um mago esquecido e passou a atuar como guardiã de tesouros. Fala Comum.",
+    "combat": "Costuma surpreender aventureiros ao se disfarçar de objeto e golpeá-los com pseudópodes. Seu adesivo prende automaticamente criaturas atingidas por seus ataques e pode também grudar armas que o atinjam (Reflexos CD 16 evita; Força CD 16 libera). Álcool dissolve a substância, e o próprio mímico pode neutralizá-la; ela se torna inerte 5 rodadas após sua morte. Pode causar 1d8+4 pontos de dano ao vencer um teste resistido de Agarrar (Esmagar). Seu Mimetismo permite assumir formas de objetos com volume aproximado ao indicado no verbete, sem alterar substancialmente o tamanho; detectar o disfarce exige Observar resistido por Disfarces. Recebe +8 racial em Disfarces."
   },
   {
     "id": "mohrg",
@@ -16028,5 +16030,57 @@
     "animalCompanion": false,
     "summonedCreature": true,
     "familiar": false
+  },
+  {
+    "id": "mephit-da-terra",
+    "name": "Mephit da Terra",
+    "type": "Extraplanar",
+    "size": "Pequeno",
+    "typeDetail": "Pequeno — Terra, Planar",
+    "hitDice": "3d8+6",
+    "hdCount": 3,
+    "hdType": 8,
+    "hitPoints": 19,
+    "initiative": -1,
+    "speed": "9 m (6 quadrados), voo 12 m (médio)",
+    "armorClass": 16,
+    "armorClassText": "16 (+1 tamanho, –1 Des, +6 natural), toque 10, surpresa 16",
+    "touchAc": 10,
+    "flatFootedAc": 16,
+    "baseAttack": 3,
+    "grapple": 1,
+    "attack": "Corpo a corpo: garra +6 (dano: 1d3+2)",
+    "fullAttack": "Corpo a corpo: 2 garras +6 (dano: 1d3+2)",
+    "spaceReach": "1,5 m/1,5 m",
+    "specialAttacks": "Sopro, habilidades similares a magia, invocar mephit",
+    "specialQualities": "Alterar tamanho, Redução de Dano 5/mágica, visão no escuro 18 m, cura acelerada 2",
+    "saves": {
+      "fort": 4,
+      "ref": 2,
+      "will": 3
+    },
+    "abilities": {
+      "str": 17,
+      "dex": 8,
+      "con": 13,
+      "int": 6,
+      "wis": 11,
+      "cha": 15
+    },
+    "skills": "Arte da Fuga +5, Blefar +8, Diplomacia +4, Disfarces +2 (+4 para atuar), Esconder–se +9, Furtividade +5, Intimidar +4, Observar +6, Ouvir +6, Usar Cordas –1 (+1 para amarrar)",
+    "feats": "Ataque Poderoso, Vitalidade",
+    "environment": "Plano Elemental da Terra",
+    "organization": "Solitário, gangue (2–4 mephit de tipos variados) ou turba (5–12 mephit de tipos variados)",
+    "challengeRating": "3",
+    "treasure": "Padrão",
+    "alignment": "Geralmente Neutro",
+    "advancement": "4–6 DV (Pequeno); 7–9 DV (Médio)",
+    "levelAdjustment": "+3 (parceiro)",
+    "source": "Livro dos Monstros 3.5",
+    "animalCompanion": false,
+    "summonedCreature": true,
+    "familiar": false,
+    "description": "Criatura extraplanar alada que se parece com um anão forte, quase sem cabelos e composto de rochas. É originária do Plano Elemental da Terra, tem pouco mais de um metro de altura, pesa cerca de 40 kg e fala Comum e Terran.",
+    "combat": "Ataca com garras e um sopro em cone de pedregulhos e cristais de 4,5 m, que causa 1d8 pontos de dano (Reflexos CD 13 reduz à metade). Uma vez por dia, pode usar amolecer terra e pedra (6º nível de conjurador). Uma vez por hora, pode alterar o próprio tamanho como aumentar, efeito equivalente a uma magia de 2º nível. Recupera 2 PV por rodada somente quando está no subterrâneo ou enterrado até a cintura."
   }
 ]

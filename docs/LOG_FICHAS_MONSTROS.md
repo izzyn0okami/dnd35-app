@@ -669,3 +669,14 @@ As fichas-base devem ser reutilizadas por ID sempre que a tabela pedir apenas um
 - **Pendência de cobertura identificada:** o índice do livro também lista Mephit da Terra (p. 200), mas não existe registro com esse nome/ID no catálogo da branch. Não foi criado um registro parcial: a inclusão exige transcrição e validação do bloco mecânico completo.
 - Teste de regressão adicionado para exigir Descrição e Combate nas nove fichas preenchidas e conferir características distintivas.
 - Situação após esta etapa: 313 fichas no catálogo; 190 possuem Descrição e resumo de Combate; 123 ainda precisam de ao menos um desses campos.
+
+
+## 2026-11-14 — Vigésima primeira etapa: Mephit da Terra e Mímico
+
+- Adicionada a ficha completa do Mephit da Terra, ausente do catálogo apesar de constar no índice do Livro dos Monstros (p. 200). Estatísticas, habilidades, ambiente, progressão e ajuste de nível foram transcritos do bloco correspondente; Descrição e Combate foram sintetizados a partir do verbete (pp. 200–201).
+- Preenchidas Descrição e Combate do Mímico (p. 201), incluindo Aderente, Esmagar, Mimetismo e o bônus racial em Disfarces.
+- Corrigido o campo Organização do Mímico, removendo texto espúrio de extração/OCR que havia sido anexado ao valor.
+- Revisadas duas sínteses da etapa anterior com base na página impressa 197–198: o Mephit da Água não recebe no verbete as habilidades de ácido/névoa fétida atribuídas ao Mephit do Limo; o Mephit do Fogo possui raio ardente e esquentar metal, não mãos flamejantes.
+- Fonte primária: Livro dos Monstros 3.5 em português, páginas impressas 197–201. Nenhuma estatística existente foi alterada, exceto a inclusão do bloco completo do Mephit da Terra e a correção do campo Organização do Mímico.
+- Teste de regressão adicionado para as duas fichas e para as correções de Mephit da Água/Fogo.
+- Situação após esta etapa: 314 fichas no catálogo; 192 possuem Descrição e resumo de Combate; 122 ainda precisam de ao menos um desses campos.
