@@ -6339,7 +6339,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Pequeno réptil de pele brilhante, com cabeça cilíndrica, chifres laterais e uma estrutura semelhante na ponta da cauda. Seu corpo produz descargas elétricas e prefere pântanos quentes, bancos de areia escuros e cavernas alagadas. Alimenta-se de peixes, répteis e pequenos animais, permanecendo escondido à espera de presas.",
+    "combat": "Evita criaturas maiores quando não está faminto e primeiro emite estalos como aviso. Se ameaçado, dispara um choque atordoante contra um alvo adjacente, causando 2d8 de dano por contusão (Reflexos CD 12 reduz à metade). Dois ou mais lagartos a até 6 m podem combinar suas descargas em um choque letal de área, causando 2d8 por criatura participante, até o máximo de 12d8. É imune a eletricidade e detecta descargas num raio de 30 m; costuma morder apenas depois de atordoar o inimigo."
   },
   {
     "id": "lammasu",
@@ -6805,7 +6807,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Pequeno elemental humanoide do Plano Elemental do Fogo, com aparência de rocha derretida e lava. Irradia calor intenso e permanece envolto em chamas. É travesso e gosta de observar objetos queimando, sem necessariamente compreender o perigo que o fogo representa para outras criaturas.",
+    "combat": "Ataca com toque flamejante ou pancadas. Seu toque pode incendiar roupas e armaduras: a vítima deve passar em Reflexos (CD 12) ou sofre 1d8 de dano adicional por fogo durante 1d4+2 rodadas após o último golpe. A aura ígnea causa 1d6 de dano por rodada a criaturas num raio de 6 m que falhem em Fortitude (CD 12). Armas metálicas que o atingem podem derreter se falharem em Fortitude (CD 12). É imune a fogo, mas vulnerável ao frio, e costuma fugir após sofrer o primeiro ferimento."
   },
   {
     "id": "manto-negro",
@@ -6855,7 +6859,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Predador subterrâneo semelhante a uma lula ou polvo, com tentáculos unidos por uma membrana resistente e corpo coberto por uma carapaça que lembra rocha. Espreita no teto das cavernas e se camufla como estalactite ou protuberância calcária, alterando lentamente sua coloração para combinar com o ambiente.",
+    "combat": "Despenca sobre a presa e envolve sua cabeça com os tentáculos para sufocá-la. Pode criar escuridão uma vez por dia antes de atacar. Ao acertar uma criatura Grande ou menor, usa Agarrar Aprimorado e, se vencer a disputa, aplica Constrição, causando 1d4+4 de dano. Sua Percepção às Cegas detecta criaturas e objetos a até 27 m por meio de sons de alta frequência; a magia silêncio anula essa capacidade. Recebe bônus raciais em Observar, Ouvir e Esconder-se."
   },
   {
     "id": "mastim-das-sombras",
@@ -6905,7 +6911,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Cão de caça grande, de pelagem profundamente negra e presas afiadas, nativo do Plano das Sombras. Espreita durante a noite e caça criaturas que encontra na escuridão. Não fala, mas compreende o idioma Comum.",
+    "combat": "Prefere lutar em sombras ou áreas escuras. Seu ladrar sobrenatural apavora criaturas num raio de 100 m que falhem em Vontade (CD 13), deixando-as em pânico por 2d4 rodadas; quem for afetado fica imune ao ladrar do mesmo mastim por 24 horas. Ao atingir com a mordida, pode tentar Imobilização como ação livre, com bônus de +3 e sem ataque de toque ou ataque de oportunidade. Sua Camuflagem de Sombras concede camuflagem total em qualquer iluminação, exceto luz direta do dia; a magia luz do dia neutraliza o efeito."
   },
   {
     "id": "medusa",
@@ -6955,7 +6963,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Humanoide monstruoso de aparência inicialmente humana, mas com pele escamada, olhos vermelhos e um ninho de serpentes vivas e sibilantes no lugar dos cabelos. Aprecia arte, joias e riquezas, e pode atuar no submundo de grandes cidades ou formar alianças para roubos e contrabando. Costuma ocultar o rosto sob um capuz ou manto para disfarçar sua natureza.",
+    "combat": "Procura esconder sua verdadeira aparência até que a vítima esteja ao alcance de seu Olhar Petrificante, usando embustes para reduzir a desconfiança. O olhar transforma permanentemente em pedra as criaturas num raio de 9 m que falhem em Fortitude (CD 15). Contra quem evita ou resiste ao olhar, usa armas comuns; suas serpentes atacam adversários adjacentes e inoculam veneno que causa inicialmente 1d6 e, em seguida, 2d6 pontos de dano temporário de Força (Fortitude CD 14 anula)."
   },
   {
     "id": "mephit-da-agua",
