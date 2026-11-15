@@ -236,7 +236,7 @@ class FeatGlossarySearchTest {
 
         val quickDraw = FeatGlossarySearch.search("Saque Rápido").first()
         assertTrue(quickDraw.reference?.description?.contains("ação livre") == true)
-        assertTrue(quickDraw.reference?.special?.contains("BBA +1") == true)
+        assertTrue(quickDraw.reference?.special?.contains("bônus base de ataque +1") == true)
 
         val manyshot = FeatGlossarySearch.search("Tiro Múltiplo").first()
         assertTrue(manyshot.reference?.description?.contains("9 m") == true)
