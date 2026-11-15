@@ -71,7 +71,25 @@ fun ClassFeatureGlossaryDialog(
                                 style = MaterialTheme.typography.labelSmall,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant
                             )
-                            Text(result.explanation, style = MaterialTheme.typography.bodySmall)
+                            val reference = result.reference
+                            if (reference == null) {
+                                Text(
+                                    "Detalhamento completo ainda não auditado no Livro do Jogador. A descrição curta permanece apenas na ficha.",
+                                    style = MaterialTheme.typography.bodySmall,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                                )
+                            } else {
+                                Text(reference.description, style = MaterialTheme.typography.bodySmall)
+                                Text("Ativação", fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.primary)
+                                Text(reference.activation, style = MaterialTheme.typography.bodySmall)
+                                Text("Duração e usos", fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.primary)
+                                Text(reference.duration, style = MaterialTheme.typography.bodySmall)
+                                Text("Restrições", fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.primary)
+                                Text(reference.restrictions, style = MaterialTheme.typography.bodySmall)
+                                Text("Progressão", fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.primary)
+                                Text(reference.progression, style = MaterialTheme.typography.bodySmall)
+                                Text(reference.source, style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                            }
                         }
                     }
                 }
