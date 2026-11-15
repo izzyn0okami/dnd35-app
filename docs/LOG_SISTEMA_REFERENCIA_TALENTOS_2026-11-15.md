@@ -190,3 +190,19 @@ Data: 2026-11-15
 - Foram adicionados testes de regressão para os benefícios e limites dessas quatro entradas.
 - Nenhum cálculo automático de perícias, graduações, deslocamento ou conjuração foi alterado.
 - Fonte primária: PDF brasileiro do Livro do Jogador salvo na biblioteca, Capítulo 5 — Talentos, páginas impressas 79, 81, 82 e 87.
+
+
+## Auditoria de proficiências de armas, armaduras e escudos (15/11/2026)
+
+- Cobertura ampliada de **100 para 108 de 109 talentos**; resta 1 talento sem referência detalhada.
+- **Usar Arma Comum** (p. 89): seleção de uma arma comum específica, penalidade de -4 sem proficiência, exceções de classes e domínio da Guerra.
+- **Usar Arma Exótica** (p. 90): seleção de uma arma exótica específica; BBA +1 e Força 13 adicional para espada bastarda e machado de guerra anão; escolhas repetidas precisam ser para armas diferentes.
+- **Usar Armas Simples** (p. 90): proficiência com todas as armas simples; o livro lista druidas, monges, ladinos e magos como exceções de classe.
+- **Usar Armadura (leve/média/pesada)** (p. 90): correção importante no catálogo: proficiência não é simplesmente remover uma penalidade fixa de -4. O texto diz que, com treinamento, a penalidade de armadura afeta somente a lista indicada de perícias; sem treinamento, também afeta jogadas de ataque e testes de perícias que exijam movimento, inclusive Cavalgar. Registrados pré-requisitos e classes que já possuem cada proficiência.
+- **Usar Escudo** (p. 90): proficiência com escudos pequenos e grandes e broquéis; sem treinamento, a penalidade do escudo também afeta ataques e perícias que exigem movimento.
+- **Ataque com Escudo Aprimorado** (p. 79): mantém o bônus de CA do escudo ao atacar; sem o talento, o bônus é perdido até a próxima ação. A tabela apresenta “Usar Escudo”, enquanto a descrição usa a forma plural “Usar Escudos”; mantido o nome canônico do catálogo e documentada a variação textual.
+- **Usar Escudo de Corpo** (p. 90): proficiência com escudos de corpo; guerreiros recebem o talento automaticamente.
+- Corrigidos resumos/benefícios do catálogo que tratavam proficiência em armaduras como mera remoção de penalidade fixa de -4, alinhando-os ao texto específico do Livro do Jogador.
+- Testes de regressão cobrem pré-requisitos, exceções de classe, penalidades e efeitos dos talentos de proficiência.
+- Nenhum sistema de equipamento, cálculo de CA ou penalidade de armadura foi alterado; apenas catálogo, referências e testes.
+- Fonte primária: PDF brasileiro do Livro do Jogador salvo na biblioteca, Capítulo 5 — Talentos, páginas impressas 79, 89 e 90.
