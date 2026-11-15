@@ -895,4 +895,48 @@ class CreatureCatalogTest {
         assertTrue(donkey.combat.contains("375 kg"))
     }
 
+
+    @Test
+    fun tenMonsterSheetsHaveExternalSrdBasedDescriptionAndCombat() {
+        val pureblood = CreatureCatalog.byId("puro-sangue")!!
+        assertTrue(pureblood.description.contains("espiões"))
+        assertTrue(pureblood.combat.contains("Alterar Forma"))
+        assertTrue(pureblood.combat.contains("Resistência à Magia 14"))
+
+        val lizard = CreatureCatalog.byId("lagarto")!!
+        assertTrue(lizard.description.contains("iguanas"))
+        assertTrue(lizard.combat.contains("+8 de bônus racial em Equilíbrio"))
+
+        val lion = CreatureCatalog.byId("leao")!!
+        assertTrue(lion.combat.contains("Bote (Ext)"))
+        assertTrue(lion.combat.contains("rasgar"))
+
+        val leopard = CreatureCatalog.byId("leopardo")!!
+        assertTrue(leopard.description.contains("onças"))
+        assertTrue(leopard.combat.contains("Agarrar Aprimorado (Ext)"))
+
+        val wolf = CreatureCatalog.byId("lobo")!!
+        assertTrue(wolf.combat.contains("flancos"))
+        assertTrue(wolf.combat.contains("Imobilização (Ext)"))
+
+        val squid = CreatureCatalog.byId("lula")!!
+        assertTrue(squid.combat.contains("Nuvem de Tinta (Ext)"))
+        assertTrue(squid.combat.contains("72 m"))
+
+        val giantSquid = CreatureCatalog.byId("lula-gigante")!!
+        assertTrue(giantSquid.combat.contains("1d6+8"))
+        assertTrue(giantSquid.combat.contains("96 m"))
+
+        val monkey = CreatureCatalog.byId("macaco")!!
+        assertTrue(monkey.combat.contains("+8 racial em Equilíbrio"))
+
+        val bat = CreatureCatalog.byId("morcego")!!
+        assertTrue(bat.combat.contains("Sentido Cego (Ext)"))
+        assertTrue(bat.combat.contains("6 m"))
+
+        val mule = CreatureCatalog.byId("mula")!!
+        assertTrue(mule.description.contains("cruzamento estéril"))
+        assertTrue(mule.combat.contains("1.575 kg"))
+    }
+
 }
