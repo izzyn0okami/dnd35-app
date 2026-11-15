@@ -10081,7 +10081,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "O carcajú é parente dos texugos, mas é maior, mais forte e muito mais feroz. É um animal solitário das florestas frias.",
+    "combat": "Fúria (Ext): quando sofre dano em combate, o carcajú entra imediatamente em uma fúria destruidora, cujos efeitos começam no turno subsequente. Ataca golpeando e mordendo sem controle até morrer ou eliminar o oponente. Recebe +4 de Força, +4 de Constituição e –2 na Classe de Armadura; não consegue interromper voluntariamente a fúria. Perícias: recebe +8 de bônus racial em Escalar e pode escolher 10 mesmo com pressa ou sob ameaça."
   },
   {
     "id": "cavalo-pesado",
@@ -10131,7 +10133,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Os cavalos são amplamente domesticados como montarias e animais de carga. O cavalo pesado representa animais de grande porte, como os Clydesdales. Em geral, estão aptos ao trabalho pesado aos três anos de idade.",
+    "combat": "Um cavalo sem treinamento para a guerra normalmente não usa os cascos para atacar. Quando indicados no bloco, os ataques com cascos são secundários e recebem apenas metade do bônus de Força no dano. Um cavalo pesado é incapaz de lutar enquanto transporta um cavaleiro. Capacidade de Carga: leve até 100 kg; média de 101 a 200 kg; pesada de 201 a 300 kg. Pode arrastar 1.500 kg."
   },
   {
     "id": "cavalo-leve",
@@ -10181,7 +10185,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Os cavalos são amplamente domesticados como montarias e animais de carga. O cavalo leve representa animais de pequeno porte, como pangarés, cavalos árabes e cavalos selvagens. Em geral, estão aptos ao trabalho pesado aos dois anos de idade.",
+    "combat": "Um cavalo sem treinamento para a guerra normalmente não usa os cascos para atacar. Quando indicados no bloco, os ataques com cascos são secundários e recebem apenas metade do bônus de Força no dano. Um cavalo leve é incapaz de lutar enquanto transporta um cavaleiro. Capacidade de Carga: leve até 75 kg; média de 76 a 150 kg; pesada de 151 a 225 kg. Pode arrastar 1.125 kg."
   },
   {
     "id": "cavalo-de-guerra-pesado",
@@ -10231,7 +10237,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Os cavalos são amplamente domesticados como montarias e animais de carga. O cavalo de guerra pesado é similar ao cavalo pesado, mas foi treinado para desenvolver agressividade e lutar. Em geral, está apto ao trabalho pesado aos três anos de idade.",
+    "combat": "Um cavalo de guerra pesado é capaz de atacar enquanto transporta um cavaleiro, mas este não conseguirá atacar, a menos que obtenha sucesso em um teste de Cavalgar. Seus ataques com cascos não recebem a redução aplicada aos cavalos sem treinamento de guerra. Capacidade de Carga: leve até 150 kg; média de 151 a 300 kg; pesada de 301 a 450 kg. O texto do verbete informa que consegue arrastar 2.250 kg."
   },
   {
     "id": "cobra-constritora",
@@ -10281,7 +10289,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "As cobras em geral não são agressivas e fogem quando confrontadas. As cobras constritoras, como a jiboia, normalmente evitam o combate e fogem quando ameaçadas. Caçam para se alimentar, mas não tentam capturar presas grandes demais para serem mortas por constrição.",
+    "combat": "As cobras constritoras agarram suas vítimas com as mandíbulas e enrolam seus corpos musculosos ao redor delas. Constrição (Ext): causa 1d3+4 pontos de dano quando obtém sucesso em um teste de Agarrar. Agarrar Aprimorado (Ext): após atingir um oponente com a mordida, pode iniciar Agarrar como ação livre, sem provocar ataques de oportunidade; se vencer o teste resistido, prende a criatura e pode aplicar a constrição. Perícias gerais das cobras: +4 racial em Esconder-se, Ouvir e Observar; +8 em Equilíbrio e Escalar. Podem escolher 10 em Escalar mesmo com pressa ou sob ameaça e usar o modificador de Destreza ou Força (o maior). Em Natação, recebem +8 racial para ações especiais ou evitar perigos, podem escolher 10 mesmo distraídas ou ameaçadas e correr em linha reta."
   },
   {
     "id": "coruja",
@@ -10431,7 +10441,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Os crocodilos são predadores aquáticos agressivos, com cerca de 3 m a 3,5 m de comprimento. Espreitam parcialmente submersos em rios e pântanos, deixando apenas os olhos e as narinas visíveis, e aguardam que as vítimas se aproximem.",
+    "combat": "Agarrar Aprimorado (Ext): depois de atingir um oponente com a mordida, o crocodilo pode iniciar Agarrar como ação livre, sem provocar ataques de oportunidade. Se vencer o teste resistido, prende a vítima nas mandíbulas e pode tentar submergi-la e afogá-la. Prender a Respiração (Ext): consegue prender a respiração por um número de rodadas igual a 4 vezes seu valor de Constituição. Perícias: recebe +8 racial em Natação para ações especiais ou evitar perigos; pode escolher 10 mesmo distraído ou ameaçado e correr enquanto nada em linha reta. Recebe +4 racial em Esconder-se quando está na água; ao permanecer submerso deixando apenas olhos e narinas fora d'água, recebe +10 de bônus de cobertura em Esconder-se."
   },
   {
     "id": "crocodilo-gigante",
@@ -10481,7 +10493,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "O crocodilo gigante é um predador aquático enorme, que vive em água salgada e pode ultrapassar 6 m de comprimento.",
+    "combat": "Os crocodilos gigantes lutam e se comportam como os crocodilos comuns. Agarrar Aprimorado (Ext): depois de atingir um oponente com a mordida, pode iniciar Agarrar como ação livre, sem provocar ataques de oportunidade; se vencer o teste resistido, prende a vítima nas mandíbulas e pode tentar submergi-la e afogá-la. Prender a Respiração (Ext): consegue prender a respiração por um número de rodadas igual a 4 vezes seu valor de Constituição. Perícias: recebe +8 racial em Natação para ações especiais ou evitar perigos, pode escolher 10 mesmo distraído ou ameaçado e correr enquanto nada em linha reta. Recebe +4 racial em Esconder-se na água e +10 de bônus de cobertura em Esconder-se quando fica submerso com apenas olhos e narinas fora d'água."
   },
   {
     "id": "elefante",
@@ -10531,7 +10545,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Os elefantes são herbívoros tropicais enormes e imprevisíveis, algumas vezes utilizados como montarias ou animais de carga. As estatísticas representam um elefante africano. Os elefantes indianos são menores e mais fracos (Força 28), mas aceitam treinamento com maior facilidade (Sabedoria 15). As mesmas estatísticas podem representar elefantes pré-históricos, como mamutes e mastodontes.",
+    "combat": "Os elefantes investem contra criaturas que os ameaçam. Atropelar (Ext): causa 2d8+15 pontos de dano; um teste de resistência de Reflexos CD 25 reduz o dano à metade. A CD é baseada em Força."
   },
   {
     "id": "falcao",
@@ -12181,7 +12197,9 @@
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Os cavalos são amplamente domesticados como montarias e animais de carga. O cavalo de guerra leve é similar ao cavalo leve, mas foi treinado para desenvolver agressividade. Em geral, não está preparado para o combate antes do terceiro aniversário.",
+    "combat": "Um cavalo de guerra leve é capaz de atacar enquanto transporta um cavaleiro, mas este não conseguirá atacar, a menos que obtenha sucesso em um teste de Cavalgar. Capacidade de Carga: leve até 115 kg; média de 116 a 230 kg; pesada de 231 a 345 kg. Pode arrastar 1.725 kg."
   },
   {
     "id": "tubarao-medio",
@@ -13731,7 +13749,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "A cobra constritora gigante é uma versão enorme das serpentes constritoras, que geralmente evitam criaturas grandes demais para serem subjugadas. Como as demais cobras, costuma fugir quando confrontada, mas seu tamanho permite capturar presas muito maiores.",
+    "combat": "A cobra constritora gigante agarra a vítima com a mordida e enrola o corpo musculoso ao redor dela. Constrição (Ext): causa 1d8+10 pontos de dano quando obtém sucesso em um teste de Agarrar. Agarrar Aprimorado (Ext): após atingir um oponente com a mordida, pode iniciar Agarrar como ação livre, sem provocar ataques de oportunidade; se vencer o teste resistido, prende a criatura e pode aplicar a constrição. Perícias gerais das cobras: +4 racial em Esconder-se, Ouvir e Observar; +8 em Equilíbrio e Escalar. Podem escolher 10 em Escalar mesmo com pressa ou sob ameaça e usar o modificador de Destreza ou Força (o maior). Em Natação, recebem +8 racial para ações especiais ou evitar perigos, podem escolher 10 mesmo distraídas ou ameaçadas e correr em linha reta."
   },
   {
     "id": "lemure",
