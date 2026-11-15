@@ -542,56 +542,56 @@
   {
     "name": "Usar Arma Comum",
     "prerequisites": "Nenhum",
-    "summary": "Sem penalidade nos ataques com uma arma comum específica.",
-    "benefit": "Escolha uma arma comum específica. Você não sofre a penalidade de -4 por usar uma arma na qual não é proficiente."
+    "summary": "Usa normalmente uma arma comum específica, sem a penalidade de -4 por falta de proficiência.",
+    "benefit": "Escolha uma arma comum específica. Você ataca normalmente com essa arma. Sem proficiência, um personagem sofre -4 nas jogadas de ataque. Bárbaros, guerreiros, paladinos e rangers já sabem usar todas as armas comuns; clérigos com o domínio da Guerra recebem o talento para a arma comum predileta de sua divindade."
   },
   {
     "name": "Usar Arma Exótica",
-    "prerequisites": "BBA +1",
-    "summary": "Sem penalidade nos ataques com uma arma exótica específica.",
-    "benefit": "Escolha uma arma exótica específica. Você não sofre a penalidade de -4 por usar uma arma exótica na qual não é proficiente."
+    "prerequisites": "BBA +1; Força 13 para espada bastarda ou machado de guerra anão",
+    "summary": "Usa normalmente uma arma exótica específica, sem a penalidade de -4 por falta de proficiência.",
+    "benefit": "Escolha uma arma exótica específica. Você ataca normalmente com ela; sem proficiência, sofre -4 nas jogadas de ataque. O talento pode ser escolhido novamente para outra arma exótica. Para espada bastarda ou machado de guerra anão, também é necessário Força 13."
   },
   {
     "name": "Usar Armas Simples",
     "prerequisites": "Nenhum",
-    "summary": "Sem penalidades nos ataques com armas simples.",
-    "benefit": "Você não sofre a penalidade de -4 por usar armas simples."
+    "summary": "Usa normalmente todas as armas simples, sem a penalidade de -4 por falta de proficiência.",
+    "benefit": "Você ataca normalmente com qualquer arma simples. Sem proficiência, um personagem sofre -4 nas jogadas de ataque. Todos os personagens, exceto druidas, monges, ladinos e magos, já sabem usar todas as armas simples. A magia Transformação de Tenser também concede esse talento ao mago ou feiticeiro enquanto durar."
   },
   {
     "name": "Usar Armadura (leve)",
     "prerequisites": "Nenhum",
-    "summary": "Sem penalidade de armadura leve nas jogadas de ataque.",
-    "benefit": "Quando usa armadura leve, você não sofre a penalidade normal de -4 nas jogadas de ataque por não ser proficiente."
+    "summary": "É treinado para usar armaduras leves sem aplicar a penalidade de armadura às jogadas de ataque.",
+    "benefit": "Quando usa qualquer armadura leve, a penalidade de armadura afeta somente testes de Equilíbrio, Escalar, Arte da Fuga, Esconder-se, Saltar, Furtividade, Prestidigitação e Acrobacia. Sem treinamento adequado, a penalidade também afeta jogadas de ataque e testes de perícia que exijam movimentos, inclusive Cavalgar."
   },
   {
     "name": "Usar Armadura (média)",
     "prerequisites": "Usar Armadura (leve)",
-    "summary": "Sem penalidade de armadura média nas jogadas de ataque.",
-    "benefit": "Quando usa armadura leve ou média, você não sofre a penalidade normal de -4 nas jogadas de ataque por não ser proficiente."
+    "summary": "É treinado para usar armaduras médias; requer Usar Armadura (leve).",
+    "benefit": "Você pode usar armaduras médias. O efeito é o mesmo de Usar Armadura (leve): a penalidade de armadura afeta apenas os testes de Equilíbrio, Escalar, Arte da Fuga, Esconder-se, Saltar, Furtividade, Prestidigitação e Acrobacia. Guerreiros, bárbaros, paladinos, clérigos, druidas e bardos já possuem essa proficiência."
   },
   {
     "name": "Usar Armadura (pesada)",
     "prerequisites": "Usar Armadura (média)",
-    "summary": "Sem penalidade de armadura pesada nas jogadas de ataque.",
-    "benefit": "Quando usa qualquer armadura, você não sofre a penalidade normal de -4 nas jogadas de ataque por não ser proficiente."
+    "summary": "É treinado para usar armaduras pesadas; requer Usar Armadura (leve) e (média).",
+    "benefit": "Você pode usar armaduras pesadas. O efeito é o mesmo de Usar Armadura (leve): a penalidade de armadura afeta apenas os testes de Equilíbrio, Escalar, Arte da Fuga, Esconder-se, Saltar, Furtividade, Prestidigitação e Acrobacia. Guerreiros, paladinos e clérigos já possuem essa proficiência."
   },
   {
     "name": "Usar Escudo",
     "prerequisites": "Nenhum",
-    "summary": "Sem penalidade de escudo nas jogadas de ataque.",
-    "benefit": "Quando usa um escudo leve ou pesado (exceto escudo de corpo), você não sofre a penalidade normal de -4 nas jogadas de ataque por não ser proficiente."
+    "summary": "É treinado para usar broquéis e escudos pequenos e grandes.",
+    "benefit": "Você pode usar broquéis e escudos pequenos e grandes, sofrendo somente as penalidades padrão do equipamento. Sem treinamento adequado, a penalidade de armadura do escudo também afeta jogadas de ataque e testes de perícia que exijam movimentos, inclusive Cavalgar."
   },
   {
     "name": "Ataque com Escudo Aprimorado",
     "prerequisites": "Usar Escudo",
-    "summary": "Conserva o bônus do escudo na CA ao atacar com ele.",
-    "benefit": "Quando ataca com um escudo, você mantém o bônus de CA do escudo, desde que ainda não tenha agido na rodada."
+    "summary": "Mantém o bônus do escudo na CA ao atacar com ele.",
+    "benefit": "Quando ataca com um escudo, você ainda considera o bônus do equipamento na Classe de Armadura. Sem este talento, perde o bônus do escudo na CA até sua próxima ação."
   },
   {
     "name": "Usar Escudo de Corpo",
     "prerequisites": "Usar Escudo",
-    "summary": "Sem penalidade de escudo de corpo nas jogadas de ataque.",
-    "benefit": "Quando usa um escudo de corpo, você não sofre a penalidade normal de -4 nas jogadas de ataque por não ser proficiente, mas ainda sofre a penalidade de armadura correspondente."
+    "summary": "É treinado para usar escudos de corpo.",
+    "benefit": "Você pode usar escudos de corpo, sofrendo somente as penalidades padrão do equipamento. Sem treinamento adequado, a penalidade de armadura do escudo também afeta jogadas de ataque e testes de perícia que exijam movimentos, inclusive Cavalgar. Guerreiros recebem este talento automaticamente como talento adicional."
   },
   {
     "name": "Criar Armaduras e Armas Mágicas",
