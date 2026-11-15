@@ -46,6 +46,15 @@ exemplo `"Mão Principal"`), não uma constante Kotlin — os valores válidos e
   todas as classes em `classes`.
 - `domainLevels`: nível por domínio clerical. Se omitido, fica vazio (`{}`).
 
+## Catálogos de referências detalhadas
+
+Além dos catálogos operacionais, existem arquivos separados para as consultas completas:
+
+- `app/src/main/resources/dnd35/feat_references.json`: referências detalhadas de talentos, com funcionamento, regra normal, especial, página e estado da auditoria.
+- `app/src/main/resources/dnd35/class_feature_references.json`: referências detalhadas de habilidades de classe, com descrição, ativação, duração/usos, restrições, progressão, páginas e estado da auditoria.
+
+Esses arquivos não substituem os resumos curtos usados na ficha. A interface não deve preencher uma referência ausente copiando o resumo ou benefício: deve informar que o verbete ainda aguarda auditoria. A cobertura é incremental e cada entrada precisa ser conferida no Livro do Jogador brasileiro antes de receber estado `audited`.
+
 ## Regras de carregamento
 
 O carregador (`CatalogJson`, em `Dnd35Rules.kt`) falha com uma mensagem clara, em vez de
