@@ -120,3 +120,16 @@ Data: 2026-11-15
 - Nenhum cálculo, regra automatizada de elegibilidade, persistência ou formato de ficha foi alterado. O catálogo de resumo foi corrigido apenas onde descrevia incorretamente Investida Montada.
 - Nota de auditoria: `Derrubar Aprimorado` permanece pendente de conferência de nomenclatura/pertencimento ao Livro do Jogador; não foi criado verbete sem correspondência confirmada no texto pesquisável do PDF.
 - Próxima etapa: continuar os 32 verbetes pendentes, priorizando os talentos de combate restantes e criação de itens mágicos.
+
+
+## Auditoria de criação de itens mágicos e talentos de combate (15/11/2026)
+
+- Cobertura ampliada de **78 para 88 de 110 talentos**; 22 continuam sem referência detalhada.
+- Conferidos diretamente no Livro do Jogador brasileiro, Capítulo 5, os oito talentos de criação de itens: Criar Armaduras e Armas Mágicas (p. 79), Criar Bastão (p. 79), Criar Cajado (p. 79), Criar Item Maravilhoso (p. 79), Criar Varinha (p. 79), Escrever Pergaminho (p. 80), Forjar Anel (p. 81) e Preparar Poção (p. 83).
+- Registrados para cada criação: nível mínimo de conjurador, tipo de item, fórmula de preço quando apresentada, tempo de trabalho, custo de XP, matéria-prima, cargas quando aplicável, custos extras de componentes e possibilidade de reparo quando o livro a concede.
+- Acrescentadas referências para Bloqueio Ambidestro (p. 78) e Rapidez de Recarga (p. 83), incluindo o bônus defensivo em combate com duas armas, a exigência de Destreza 15, ações de recarga e ataques de oportunidade.
+- Corrigido o pré-requisito curto de Bloqueio Ambidestro no catálogo: o livro exige Destreza 15 e Combater com Duas Armas; o registro anterior omitia Destreza 15.
+- **Derrubar Aprimorado permanece sem referência detalhada:** não aparece na Tabela 5-1 nem nas descrições do Capítulo 5 consultadas nas páginas impressas 76–86. A entrada do catálogo não será tratada como talento oficial do Livro do Jogador sem confirmação textual; mantida como pendência de reconciliação, sem apagar dados existentes.
+- Os oito talentos de criação remetem explicitamente ao Livro do Mestre para regras específicas dos itens. Este glossário registra somente os parâmetros efetivamente apresentados no Livro do Jogador; não completa requisitos ou fórmulas ausentes com material externo.
+- Testes de regressão adicionados para fórmulas/custos de criação, cargas, exceções de XP, pré-requisitos de Bloqueio Ambidestro e ações de Rapidez de Recarga.
+- Nenhum cálculo automático, elegibilidade, progressão, persistência ou formato de ficha foi alterado.
