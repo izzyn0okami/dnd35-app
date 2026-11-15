@@ -221,4 +221,32 @@ class FeatGlossarySearchTest {
         assertTrue(result.source.contains("Livro do Jogador"))
         assertFalse(result.benefit.isBlank())
     }
+    @Test
+    fun additionalCombatAndItemCreationFeatReferencesExplainSpecificExceptions() {
+        val greaterWeaponFocus = FeatGlossarySearch.search("Foco em Arma Maior").first()
+        assertTrue(greaterWeaponFocus.reference?.special?.contains("8º nível de guerreiro") == true)
+        assertTrue(greaterWeaponFocus.reference?.description?.contains("acumula") == true)
+
+        val extraTurning = FeatGlossarySearch.search("Expulsão Adicional").first()
+        assertTrue(extraTurning.reference?.special?.contains("cada modalidade") == true)
+
+        val grapple = FeatGlossarySearch.search("Imobilização Aprimorada").first()
+        assertTrue(grapple.reference?.description?.contains("ataque") == true)
+        assertTrue(grapple.reference?.special?.contains("6º nível") == true)
+
+        val quickDraw = FeatGlossarySearch.search("Saque Rápido").first()
+        assertTrue(quickDraw.reference?.description?.contains("ação livre") == true)
+        assertTrue(quickDraw.reference?.special?.contains("BBA +1") == true)
+
+        val manyshot = FeatGlossarySearch.search("Tiro Múltiplo").first()
+        assertTrue(manyshot.reference?.description?.contains("9 m") == true)
+        assertTrue(manyshot.reference?.special?.contains("dano adicional baseado em precisão") == true)
+
+        val improvedPreciseShot = FeatGlossarySearch.search("Tiro Preciso Aprimorado").first()
+        assertTrue(improvedPreciseShot.reference?.special?.contains("camuflagem total") == true)
+
+        val greaterCleave = FeatGlossarySearch.search("Trespassar Maior").first()
+        assertTrue(greaterCleave.reference?.description?.contains("não existe limite") == true)
+    }
+
 }
