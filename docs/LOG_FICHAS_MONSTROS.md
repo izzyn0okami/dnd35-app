@@ -922,3 +922,31 @@ As fichas-base devem ser reutilizadas por ID sempre que a tabela pedir apenas um
 - Adicionado teste de regressão cobrindo as dez fichas e seus detalhes distintivos.
 - Preservados todos os blocos estatísticos, ND, tendências, progressões e vínculos existentes.
 - Contagem após esta etapa: 320 criaturas; 255 com Descrição e Combate completos; 65 ainda precisam de ao menos um desses campos.
+
+
+## 2026-11-15 — Trigésima nona etapa: dez animais (Carcajú a Elefante)
+
+- Fonte primária: Livro dos Monstros brasileiro, páginas impressas 272–275 (PDF páginas 276–279).
+- Preenchidas Descrição e Combate de Carcajú, Cavalo Pesado, Cavalo Leve, Cavalo de Guerra Pesado, Cavalo de Guerra Leve, Cobra Constritora, Cobra Constritora Gigante, Crocodilo, Crocodilo Gigante e Elefante.
+- Registradas Fúria do carcajú; distinções de porte, treinamento, combate montado e capacidades de carga/arrasto dos quatro cavalos; Constrição e Agarrar Aprimorado das cobras; emboscada, afogamento, Prender a Respiração e perícias aquáticas dos crocodilos; e Atropelar do elefante.
+- As descrições respeitam os textos de cada verbete; crocodilo gigante compartilha as capacidades do crocodilo comum conforme indicado pela fonte.
+- Adicionado teste de regressão para os dez registros.
+- Revisão da execução de CI identificou falha no teste anterior de Arminho: a regra estava correta, mas a expectativa procurava literalmente “CA 12” enquanto a descrição dizia “passa a 12”. A redação foi ajustada para “será reduzida para CA 12” e o teste atualizado para verificar essa formulação explícita.
+- Preservados os blocos estatísticos e demais campos mecânicos.
+- Contagem após esta etapa: 320 criaturas; 255 com Descrição e Combate completos; 65 pendentes.
+
+## 2026-11-15 — Quadragésima etapa: dez animais (Coruja a Jumento)
+
+- Fonte primária: Livro dos Monstros brasileiro, páginas impressas 274–277 (PDF páginas 278–281).
+- Preenchidas Descrição e Combate de Coruja, Corvo, Falcão, Gato, Golfinho, Gorila, Guepardo, Hiena, Javali e Jumento.
+- Aves: dimensões, padrão de ataque das garras e bônus de perícia das corujas e falcões; porte e uso das garras do corvo.
+- Gato: comportamento de espreita e bônus de perícias, incluindo o bônus adicional em vegetação alta.
+- Golfinho: comportamento, dimensões, Percepção às Cegas (36 m), Prender a Respiração (6 x Constituição), Natação e bônus de Ouvir/Observar.
+- Gorila: comportamento agressivo, dimensões e bônus de Escalar.
+- Guepardo: tática de investida, Imobilização e Impulso (150 m, uma vez por hora).
+- Hiena: caça em matilha, tática de flanqueamento, Imobilização (+2) e bônus de Esconder-se em vegetação alta.
+- Javali: aparência, comportamento e Ferocidade (Ext).
+- Jumento: descrição, mordida apenas como último recurso, capacidade de carga/arrasto e bônus de Equilíbrio.
+- Adicionado teste de regressão para as dez fichas.
+- Preservados os blocos estatísticos e demais campos mecânicos.
+- Contagem após esta etapa: 320 criaturas; 265 com Descrição e Combate completos; 55 pendentes.
