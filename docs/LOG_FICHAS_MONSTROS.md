@@ -1023,3 +1023,17 @@ As fichas-base devem ser reutilizadas por ID sempre que a tabela pedir apenas um
 - Testes de regressão adicionados para os dez registros.
 - Observação: conteúdo externo traduzido para pt-BR; confirmar terminologia e consistência com a edição brasileira do Livro dos Monstros quando o PDF estiver disponível.
 - Contagem após esta etapa: 320 criaturas; 305 com Descrição e Combate preenchidos; 15 ainda pendentes.
+
+
+## 2026-11-15 — Quadragésima quinta etapa: quatorze fichas de aracnídeos e centopeias completadas com SRD
+
+- Fonte: SRD 3.5 — Vermin: https://palikhov.github.io/srd-v3.5/monsters/monsters-vermin.html (Monstrous Spider e Monstrous Centipede).
+- Preenchidas Descrição e Combate de sete categorias de Aranha Monstruosa (Miúda, Pequena, Média, Grande, Enorme, Imensa e Colossal) e sete categorias de Centopeia Monstruosa (Miúda, Pequena, Média, Grande, Enorme, Imensa e Colossal).
+- Aranhas: predadores agressivos; distinção entre caçadoras e tecedeiras; mordida venenosa com dano inicial/secundário e CD por tamanho; teias, limites de uso, alcance, escape/rompimento, locomoção pela própria teia e Sentido Sísmico de 18 m.
+- Centopeias: comportamento predatório subterrâneo, mordida venenosa, visão no escuro, imunidade mental de vermes e bônus raciais de perícia.
+- Tabelas de veneno das aranhas preservadas por tamanho: CD 10/10/12/13/16/20/28 e dano 1d2/1d3/1d4/1d6/1d8/2d6/2d8 Força.
+- Tabelas de veneno das centopeias preservadas por tamanho: CD 10/10/10/11/14/17/23 e dano 1/1d2/1d3/1d4/1d6/1d8/2d6 Destreza.
+- Estatísticas, ND, tendência, progressão e vínculos existentes não foram alterados. Nenhuma criatura duplicada.
+- Testes de regressão adicionados para as 14 fichas.
+- Nota: descrições e regras foram traduzidas do SRD 3.5; revisar terminologia brasileira quando o PDF estiver novamente acessível.
+- Contagem após esta etapa: 320 criaturas; 319 com Descrição e Combate preenchidos; 1 ainda pendente (Texugo Atroz).
