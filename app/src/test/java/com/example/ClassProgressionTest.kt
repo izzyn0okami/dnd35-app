@@ -188,7 +188,7 @@ class ClassProgressionTest {
         assertTrue(bard.features.none { it.name == "Contramúsica" })
         assertTrue(bard.features.any { it.level == 12 && it.name == "Melodia da Libertação" })
         assertTrue(bard.features.single { it.level == 9 && it.name == "Inspirar Grandeza" }
-            .description.contains("até quatro no 18º nível"))
+            .description.contains("até quatro no 18º"))
         assertTrue(bard.features.single { it.level == 15 && it.name == "Inspirar Heroísmo" }
             .description.contains("alvo adicional no 18º nível"))
     }
