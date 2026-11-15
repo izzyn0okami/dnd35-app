@@ -36,3 +36,9 @@ Data: 15/11/2026
 - Ladino: Ataque Furtivo agora explicita alcance de 9 m para ataques à distância, condições de vulnerabilidade, imunidades e ausência de multiplicação do dano em acerto decisivo; Encontrar Armadilhas e Evasão incluem limitações importantes.
 - Monge: Bônus de CA sem Armadura, Rajada de Golpes, Mão Vibrante e Corpo Atemporal receberam descrições mais completas, com requisitos, penalidades, armas permitidas, CDs e exceções do Livro do Jogador.
 - Teste automatizado adicional cobre as principais limitações textuais de Ladino e Monge.
+
+
+## Complemento — Paladino e Ranger
+- Paladino: Remover Doença corrigida para a progressão oficial de 6º, 9º, 12º, 15º e 18º níveis (1 a 5 usos semanais); removida a entrada incorreta de 6 usos. Imposição de Mãos e Aura de Coragem esclarecidas.
+- Ranger: corrigidos os marcos de Camuflagem (13º) e Mimetismo (17º), removendo a habilidade incorreta Esconder-se à Plena Vista no 18º. Rastreador Eficaz agora explicita a penalidade -10 ao rastrear com deslocamento dobrado.
+- Testes automatizados cobrem as progressões corrigidas.
