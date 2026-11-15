@@ -23,6 +23,23 @@ class FeatGlossarySearchTest {
         assertTrue(results.any { it.prerequisites.contains("BBA", ignoreCase = true) })
     }
 
+
+    @Test
+    fun auditedFeatHasExpandedReferenceSeparateFromSheetSummary() {
+        val result = FeatGlossarySearch.search("Ataque Poderoso").first()
+        assertTrue(result.summary.isNotBlank())
+        assertTrue(result.reference?.description?.length ?: 0 > result.summary.length)
+        assertTrue(result.reference?.source?.contains("p. 78") == true)
+    }
+
+    @Test
+    fun barbarianRageHasDetailedClassReference() {
+        val result = ClassFeatureGlossarySearch.search("Fúria")
+            .first { it.className == "Bárbaro" }
+        assertTrue(result.reference?.restrictions?.contains("Concentração") == true)
+        assertTrue(result.reference?.sourcePages == "21–22")
+    }
+
     @Test
     fun blankSearchReturnsNoResults() {
         assertTrue(FeatGlossarySearch.search("   ").isEmpty())
