@@ -265,7 +265,7 @@
   },
   {
     "className": "Monge",
-    "term": "Queda Lenta",
+    "term": "Queda Suave",
     "description": "A partir do 4º nível, quando estiver adjacente a uma parede ou muralha, o monge pode usá-la para amortecer uma queda, reduzindo a altura efetiva da queda e o dano correspondente.",
     "activation": "Aplica-se durante uma queda quando o monge está adjacente a uma parede ou muralha.",
     "duration": "Reduz a altura efetiva da queda; a distância que pode ser reduzida aumenta com o nível.",
