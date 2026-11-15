@@ -238,5 +238,65 @@
     "sourcePages": "47",
     "source": "Livro do Jogador brasileiro, Capítulo 3 — Paladino, p. 47",
     "status": "audited"
+  },
+  {
+    "className": "Monge",
+    "term": "Rajada de Golpes",
+    "description": "Quando não está usando armadura, o monge pode realizar uma ação de ataque total para sacrificar precisão em troca de um ataque adicional com seu maior bônus base de ataque. A penalidade afeta todos os ataques feitos nessa rodada e também ataques de oportunidade realizados antes da próxima ação do monge.",
+    "activation": "Exige uma ação de ataque total; não pode ser usada em uma ação de ataque simples.",
+    "duration": "A penalidade vale durante toda a rodada, inclusive para ataques de oportunidade antes da próxima ação.",
+    "restrictions": "Só pode usar ataques desarmados ou armas especiais de monge (kama, nunchaku, bordão, sai, shuriken ou siangham). Não pode usar outra arma ao mesmo tempo. A habilidade exige que o monge esteja sem armadura.",
+    "progression": "A penalidade começa em –2, cai para –1 no 5º nível e desaparece no 9º. No 11º nível, a rajada recebe um segundo ataque adicional com o maior bônus base de ataque.",
+    "sourcePages": "43",
+    "source": "Livro do Jogador brasileiro, Capítulo 3 — Monge, p. 43",
+    "status": "audited"
+  },
+  {
+    "className": "Monge",
+    "term": "Ataque Chi",
+    "description": "A partir do 4º nível, os ataques desarmados do monge são aprimorados pelo chi e passam a ser considerados armas mágicas para superar Redução de Dano.",
+    "activation": "Sempre ativo nos ataques desarmados.",
+    "duration": "Permanente a partir do 4º nível.",
+    "restrictions": "O benefício aplica-se aos ataques desarmados do monge, não a qualquer arma que ele empunhe.",
+    "progression": "4º nível: ataques desarmados contam como mágicos. 10º nível: também contam como ordeiros. 16º nível: contam como armas de adamante para superar Redução de Dano e ultrapassar a dureza de objetos.",
+    "sourcePages": "44",
+    "source": "Livro do Jogador brasileiro, Capítulo 3 — Monge, p. 44",
+    "status": "audited"
+  },
+  {
+    "className": "Monge",
+    "term": "Queda Lenta",
+    "description": "A partir do 4º nível, quando estiver adjacente a uma parede ou muralha, o monge pode usá-la para amortecer uma queda, reduzindo a altura efetiva da queda e o dano correspondente.",
+    "activation": "Aplica-se durante uma queda quando o monge está adjacente a uma parede ou muralha.",
+    "duration": "Reduz a altura efetiva da queda; a distância que pode ser reduzida aumenta com o nível.",
+    "restrictions": "A partir dos níveis anteriores ao 20º, o monge precisa estar próximo de uma parede ou muralha para usar a habilidade.",
+    "progression": "No 4º nível reduz 6 m. A redução aumenta em 3 m a cada dois níveis: 9 m no 6º, 12 m no 8º, 15 m no 10º, 18 m no 12º, 21 m no 14º, 24 m no 16º e 27 m no 18º. No 20º nível, pode cair de qualquer altura sem sofrer dano.",
+    "sourcePages": "44",
+    "source": "Livro do Jogador brasileiro, Capítulo 3 — Monge, p. 44",
+    "status": "audited"
+  },
+  {
+    "className": "Monge",
+    "term": "Integridade Corporal",
+    "description": "A partir do 7º nível, o monge consegue curar os próprios ferimentos por meio do controle do corpo. O total diário de pontos de vida recuperados equivale ao dobro do nível de monge.",
+    "activation": "O monge escolhe quando utilizar a cura; pode dividi-la em várias utilizações durante o dia.",
+    "duration": "O total é renovado diariamente.",
+    "restrictions": "A habilidade cura apenas o próprio monge; o total disponível é limitado a duas vezes seu nível de classe por dia.",
+    "progression": "O limite diário aumenta em 2 pontos de vida a cada nível de monge.",
+    "sourcePages": "44",
+    "source": "Livro do Jogador brasileiro, Capítulo 3 — Monge, p. 44",
+    "status": "audited"
+  },
+  {
+    "className": "Monge",
+    "term": "Mão Vibrante",
+    "description": "A partir do 15º nível, o monge pode transmitir vibrações ao corpo de outra criatura que podem ser fatais. Ele precisa declarar a intenção antes da jogada de ataque; se acertar e causar dano, a habilidade fica instalada no alvo e o monge pode tentar matá-lo posteriormente.",
+    "activation": "Uma vez por semana. A intenção deve ser declarada antes do ataque. Depois de um ataque bem-sucedido que cause dano, o monge pode desejar a morte do alvo como ação livre.",
+    "duration": "O monge pode tentar ativar o efeito até um dia por nível de monge depois do ataque inicial.",
+    "restrictions": "Não afeta constructos, limos, plantas, mortos-vivos, criaturas incorpóreas ou criaturas imunes a sucessos decisivos. O alvo pode resistir com Fortitude (CD 10 + metade do nível de monge + modificador de Sabedoria). Se passar, fica imune a essa ativação específica.",
+    "progression": "Adquirida no 15º nível; o uso é limitado a uma vez por semana.",
+    "sourcePages": "44",
+    "source": "Livro do Jogador brasileiro, Capítulo 3 — Monge, p. 44",
+    "status": "audited"
   }
 ]
