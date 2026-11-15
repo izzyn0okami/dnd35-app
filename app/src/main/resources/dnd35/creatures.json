@@ -9509,7 +9509,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "A águia representa aves de rapina diurnas de tamanho semelhante. Essas aves vivem em diferentes terrenos e climas, mas preferem locais altos e isolados para construir seus ninhos. Um exemplar típico mede cerca de 1,5 m de comprimento e possui envergadura de aproximadamente 2,1 m.",
+    "combat": "A águia mergulha sobre a presa e a rasga com as garras poderosas. Perícias: recebe +8 de bônus racial em Observar."
   },
   {
     "id": "arminho",
@@ -9559,7 +9561,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "O arminho é um pequeno mamífero agressivo, embora normalmente escolha presas menores que ele. As mesmas estatísticas podem representar furões e doninhas.",
+    "combat": "Adesão (Ext): quando acerta uma mordida, o arminho pode cravar as mandíbulas na vítima e causar automaticamente o dano da mordida a cada rodada, até ser removido ou a vítima se libertar. Enquanto permanece preso, perde o bônus de Destreza na CA, que passa a 12. Pode ser agarrado ou atingido por uma arma; para removê-lo com a manobra Agarrar, é necessário vencer um teste resistido. Perícias: recebe +4 racial em Furtividade e +8 em Equilíbrio e Escalar; usa o modificador de Destreza no lugar de Força em Escalar e pode escolher 10 mesmo sob pressão."
   },
   {
     "id": "arraia",
@@ -9609,7 +9613,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "A arraia é um peixe pacífico que normalmente evita outras criaturas. Alimenta-se filtrando plâncton e organismos semelhantes da água por meio de suas mandíbulas desdentadas.",
+    "combat": "Quando ameaçada, a arraia pode usar o peso do corpo para ferir um oponente com um encontrão; esse ataque é considerado secundário. Perícias: recebe +8 de bônus racial em Natação para ações especiais ou para evitar perigos, pode escolher 10 mesmo distraída ou ameaçada e pode correr enquanto nada em linha reta."
   },
   {
     "id": "babuino",
@@ -9659,7 +9665,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "O babuíno é um macaco poderoso e agressivo, adaptado à vida no solo. Prefere espaços abertos, mas escala árvores para encontrar locais seguros onde dormir. Um exemplar comum tem o porte de um cachorro grande; os machos medem de 60 cm a 1,2 m de comprimento e podem pesar até 45 kg.",
+    "combat": "Os babuínos geralmente atacam em grupos. Perícias: recebem +8 de bônus racial em Escalar e podem escolher 10 nessa perícia mesmo quando estão com pressa ou sob ameaça."
   },
   {
     "id": "baleia-azul",
@@ -9709,7 +9717,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "As baleias estão entre os maiores animais conhecidos. A baleia-azul representa uma das espécies que se alimentam de plâncton; as estatísticas correspondem a uma baleia com aproximadamente 9 a 18 m de comprimento. Apesar do tamanho, as baleias filtradoras são muito gentis e, quando provocadas ou atacadas, tendem a fugir em vez de reagir.",
+    "combat": "Percepção às Cegas (Ext): localiza criaturas e objetos num raio de 36 m emitindo sons de alta frequência; a magia silêncio anula essa capacidade e a obriga a depender da visão. Prender a Respiração (Ext): pode prender a respiração por um número de rodadas igual a 8 vezes seu valor de Constituição. Perícias: recebe +8 racial em Natação para ações especiais ou para evitar perigos, pode escolher 10 mesmo distraída ou ameaçada e pode correr enquanto nada em linha reta. Recebe ainda +4 racial em Ouvir e Observar; esses dois bônus são perdidos se a Percepção às Cegas for anulada."
   },
   {
     "id": "baleia-cachalote",
@@ -9759,7 +9769,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "O cachalote é uma baleia de grande porte, também chamada de baleia-corcunda no texto do verbete. Atinge aproximadamente 13 m de comprimento e alimenta-se de lulas gigantes.",
+    "combat": "Percepção às Cegas (Ext): localiza criaturas e objetos num raio de 36 m por meio de sons de alta frequência; a magia silêncio anula essa capacidade e a obriga a usar a visão. Prender a Respiração (Ext): pode prender a respiração por um número de rodadas igual a 8 vezes seu valor de Constituição. Perícias: recebe +8 racial em Natação para ações especiais ou para evitar perigos, pode escolher 10 mesmo distraída ou ameaçada e pode correr enquanto nada em linha reta. Recebe +4 racial em Ouvir e Observar; esses bônus são perdidos se a Percepção às Cegas for anulada."
   },
   {
     "id": "baleia-orca",
@@ -9809,7 +9821,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "A orca é uma das baleias relativamente menores e pode ser um predador hostil, atacando praticamente qualquer criatura que encontre. Alimenta-se de peixes, lulas, focas e até outras baleias.",
+    "combat": "Percepção às Cegas (Ext): localiza criaturas e objetos num raio de 36 m por meio de sons de alta frequência; a magia silêncio anula essa capacidade e a obriga a usar a visão. Prender a Respiração (Ext): pode prender a respiração por um número de rodadas igual a 8 vezes seu valor de Constituição. Perícias: recebe +8 racial em Natação para ações especiais ou para evitar perigos, pode escolher 10 mesmo distraída ou ameaçada e pode correr enquanto nada em linha reta. Recebe +4 racial em Ouvir e Observar; esses bônus são perdidos se a Percepção às Cegas for anulada."
   },
   {
     "id": "bisao",
@@ -9859,7 +9873,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "O bisão é um grande animal ruminante que geralmente prefere fugir, mas pode se tornar agressivo ao proteger os filhotes ou durante a época de acasalamento. Mede quase 2 m de altura quando está sobre as quatro patas, tem de 2,7 m a 3,3 m de comprimento e pesa entre 900 kg e 1,2 tonelada. O bloco também pode representar outros grandes ruminantes.",
+    "combat": "Estouro da Manada (Ext): quando um rebanho apavorado foge, seus integrantes correm juntos em uma direção aleatória, sempre se afastando do perigo, e atropelam qualquer criatura de tamanho Grande ou menor no caminho. O dano é de 1d12 para cada cinco animais do rebanho; um teste de Reflexos CD 16 reduz o dano à metade. A CD é baseada em Força."
   },
   {
     "id": "cachorro",
@@ -9909,7 +9925,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "O bloco representa um cachorro pequeno, com peso entre 10 e 25 kg, e também pode ser usado para canídeos pequenos como coiotes, chacais e cães selvagens.",
+    "combat": "Os cachorros costumam caçar em matilhas, perseguindo e cansando a presa antes de subjugá-la. Perícias: recebem +4 de bônus racial em Saltar e +4 em Sobrevivência quando rastreiam usando Faro."
   },
   {
     "id": "cachorro-de-montaria",
@@ -9959,7 +9977,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Esta categoria inclui raças de cães de maior porte, como collie, husky, fila e são-bernardo. São animais capazes de acompanhar um cavaleiro e transportar carga.",
+    "combat": "Quando treinados para o combate, podem executar a manobra Imobilização de modo semelhante aos lobos. Um cachorro de montaria pode lutar enquanto carrega um cavaleiro, mas o cavaleiro não consegue atacar, a menos que obtenha sucesso em um teste de Cavalgar. Capacidade de Carga: carga leve até 50 kg; média de 51 a 100 kg; pesada de 101 a 150 kg. Pode arrastar até 750 kg. Perícias: recebe +4 de bônus racial em Saltar e +4 em Sobrevivência ao rastrear usando Faro."
   },
   {
     "id": "camelo",
@@ -10009,7 +10029,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "O bloco de estatísticas representa um dromedário, camelo de uma corcova adaptado aos desertos. O dromedário atinge cerca de 2,7 m na altura dos ombros e possui uma corcova de aproximadamente 30 cm. O camelo de duas corcovas é mais adaptado a climas amenos e regiões rochosas; é mais robusto, desloca-se mais lentamente e possui Constituição 16.",
+    "combat": "O verbete não descreve uma tática ou habilidade especial de combate para o camelo; o bloco registra sua mordida como ataque natural. Capacidade de Carga: para o dromedário, carga leve até 150 kg, média de 151 a 300 kg e pesada de 301 a 450 kg. Pode arrastar até 2.250 kg."
   },
   {
     "id": "carcaju",
