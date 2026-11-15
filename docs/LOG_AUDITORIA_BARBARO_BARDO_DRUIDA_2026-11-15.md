@@ -47,3 +47,6 @@ Data: 15/11/2026
 - Paladino: corrigida a progressão de Remover Doença para 6º/9º/12º/15º/18º níveis, com 1 a 5 usos semanais. Imposição de Mãos e Aura de Coragem receberam requisitos e alcance.
 - Ranger: Camuflagem corrigida para o 13º nível e Mimetismo para o 17º; removida a entrada indevida Esconder-se à Plena Vista no 18º. Rastreador Eficaz agora registra a penalidade de -10 ao rastrear com o dobro do deslocamento.
 - Os testes automatizados cobrem esses marcos de classe.
+
+## Terminologia oficial
+- Padronizados os nomes de habilidade **Empatia com a Natureza** (Druida e Ranger) e **Cura pelas Mãos** (Paladino), conforme a edição brasileira.
