@@ -43,7 +43,12 @@ object ClassFeatureGlossarySearch {
             }
             .filter { result ->
                 normalize(result.term).contains(normalizedQuery) ||
-                    normalize(result.explanation).contains(normalizedQuery)
+                    normalize(result.explanation).contains(normalizedQuery) ||
+                    normalize(result.reference?.description.orEmpty()).contains(normalizedQuery) ||
+                    normalize(result.reference?.activation.orEmpty()).contains(normalizedQuery) ||
+                    normalize(result.reference?.duration.orEmpty()).contains(normalizedQuery) ||
+                    normalize(result.reference?.restrictions.orEmpty()).contains(normalizedQuery) ||
+                    normalize(result.reference?.progression.orEmpty()).contains(normalizedQuery)
             }
             .sortedWith(
                 compareBy<ClassFeatureGlossaryResult> {
