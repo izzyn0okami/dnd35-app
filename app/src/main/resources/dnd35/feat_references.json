@@ -700,5 +700,95 @@
     "sourcePage": 84,
     "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 84",
     "status": "audited"
+  },
+  {
+    "name": "Bloqueio Ambidestro",
+    "sourcePage": 78,
+    "description": "Enquanto estiver empunhando uma arma dupla ou combatendo com duas armas, exceto com armas naturais ou ataques desarmados, o personagem recebe +1 de bônus de escudo na Classe de Armadura. Ao combater defensivamente ou usar a ação de defesa total, esse bônus aumenta para +2.",
+    "normal": "Sem o talento, o personagem não recebe esse bônus de escudo adicional por lutar com duas armas.",
+    "special": "Exige Destreza 15 e Combater com Duas Armas. Um guerreiro pode escolhê-lo como talento adicional.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 78",
+    "status": "audited"
+  },
+  {
+    "name": "Criar Armaduras e Armas Mágicas",
+    "sourcePage": 79,
+    "description": "Permite criar armas, armaduras e escudos mágicos, desde que o criador cumpra todos os pré-requisitos específicos do item. O trabalho exige um dia para cada 1.000 PO do preço das propriedades mágicas, gasto de 1/25 desse preço em XP e matéria-prima equivalente à metade do preço total.",
+    "normal": "O item-base precisa ser uma obra-prima e é adquirido separadamente; seu preço não está incluído no custo de encantamento.",
+    "special": "Exige 5º nível de conjurador. Também permite reparar uma arma, armadura ou escudo mágico que o personagem seja capaz de fabricar; o reparo custa metade do XP e da matéria-prima e leva metade do tempo de criação. Os requisitos específicos de cada item são remetidos ao Livro do Mestre.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 79",
+    "status": "audited"
+  },
+  {
+    "name": "Criar Bastão",
+    "sourcePage": 79,
+    "description": "Permite criar qualquer bastão mágico quando o personagem atende a todos os pré-requisitos do item. A criação exige um dia para cada 1.000 PO do preço-base, gasto de 1/25 do preço-base em XP e matéria-prima equivalente à metade do preço total.",
+    "normal": "Os requisitos específicos dos bastões são definidos nas regras de itens mágicos às quais o próprio talento remete.",
+    "special": "Exige 9º nível de conjurador. Componentes materiais adicionais ou custos de XP exigidos pelo bastão são somados aos custos de criação.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 79",
+    "status": "audited"
+  },
+  {
+    "name": "Criar Cajado",
+    "sourcePage": 79,
+    "description": "Permite criar qualquer cajado mágico se o personagem cumprir todos os pré-requisitos. A criação exige um dia para cada 1.000 PO do preço-base, gasto de 1/25 do preço-base em XP e matéria-prima equivalente à metade do preço total. Um cajado criado com este talento possui 50 cargas.",
+    "normal": "Os requisitos específicos de cada cajado são remetidos ao Livro do Mestre.",
+    "special": "Exige 12º nível de conjurador. Alguns cajados exigem componentes materiais adicionais ou gasto de XP, que devem ser acrescentados aos custos normais.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 79",
+    "status": "audited"
+  },
+  {
+    "name": "Criar Item Maravilhoso",
+    "sourcePage": 79,
+    "description": "Permite criar qualquer item mágico maravilhoso, desde que o personagem atenda a todos os pré-requisitos. A criação exige um dia para cada 1.000 PO do preço-base, gasto de 1/25 do preço-base em XP e matéria-prima equivalente à metade do preço total.",
+    "normal": "Os pré-requisitos específicos de cada item são remetidos ao Livro do Mestre.",
+    "special": "Exige 3º nível de conjurador. Também permite reparar um item maravilhoso que o personagem seja capaz de fabricar; o reparo custa metade do XP e da matéria-prima e leva metade do tempo necessário para criar um item idêntico.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 79",
+    "status": "audited"
+  },
+  {
+    "name": "Criar Varinha",
+    "sourcePage": 79,
+    "description": "Permite criar uma varinha que armazene qualquer magia de 4º nível ou inferior que o personagem conheça. A criação exige um dia para cada 1.000 PO do preço-base. O preço-base é o nível da magia multiplicado pelo nível do item e por 750 PO; são gastos 1/25 do preço-base em XP e metade do preço de mercado em matéria-prima. A varinha sempre possui 50 cargas.",
+    "normal": "A magia armazenada deve ser conhecida pelo criador e não pode ultrapassar o 4º nível.",
+    "special": "Exige 5º nível de conjurador. Se a magia exigir componentes materiais caros ou gasto de XP, esses custos são multiplicados por 50 e adicionados ao preço; os componentes ou o XP correspondentes também devem ser fornecidos na criação.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 79",
+    "status": "audited"
+  },
+  {
+    "name": "Escrever Pergaminho",
+    "sourcePage": 80,
+    "description": "Permite criar um pergaminho de qualquer magia que o personagem conheça. A criação exige um dia para cada 1.000 PO do preço-base. O preço-base corresponde ao nível da magia multiplicado pelo nível do item e por 25 PO; o criador gasta 1/25 desse preço em XP e matéria-prima equivalente à metade do preço total.",
+    "normal": "A magia armazenada precisa ser conhecida pelo criador. O talento remete às regras do Livro do Mestre para os demais detalhes dos pergaminhos.",
+    "special": "Exige 1º nível de conjurador. Componentes materiais caros ou custos de XP da magia são adicionados ao preço-base e precisam ser pagos separadamente no momento da criação.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 80",
+    "status": "audited"
+  },
+  {
+    "name": "Forjar Anel",
+    "sourcePage": 81,
+    "description": "Permite criar qualquer anel mágico quando o personagem atende a todos os pré-requisitos. A criação exige um dia para cada 1.000 PO do preço-base, gasto de 1/25 do preço-base em XP e matéria-prima equivalente à metade do preço de mercado total.",
+    "normal": "Os pré-requisitos específicos dos anéis são remetidos ao Livro do Mestre.",
+    "special": "Exige 12º nível de conjurador. Também permite reparar um anel mágico que o personagem seja capaz de fabricar; o reparo custa metade do XP e da matéria-prima e leva metade do tempo. Custos extras de componentes materiais ou XP descritos para um anel, como os 15.000 XP adicionais do anel dos três desejos, também devem ser pagos.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 81",
+    "status": "audited"
+  },
+  {
+    "name": "Preparar Poção",
+    "sourcePage": 83,
+    "description": "Permite criar uma poção de qualquer magia conhecida de 3º nível ou inferior, desde que a magia tenha uma ou mais criaturas como alvo. A poção exige um dia de trabalho. O criador escolhe o nível do item, que deve ficar entre o mínimo necessário para conjurar a magia e seu próprio nível de conjurador. O preço-base é o nível da magia multiplicado pelo nível do item e por 50 PO; a criação consome 1/25 do preço-base em XP e metade do preço de mercado em matéria-prima.",
+    "normal": "As escolhas que seriam feitas durante a conjuração normal são definidas no momento da criação; a criatura que ingerir a poção será o alvo da magia.",
+    "special": "Exige 3º nível de conjurador. Componentes materiais caros ou custos de XP da magia são acrescentados ao preço-base e precisam ser pagos na criação. As regras gerais de poções são remetidas ao Livro do Mestre.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 83",
+    "status": "audited"
+  },
+  {
+    "name": "Rapidez de Recarga",
+    "sourcePage": 83,
+    "description": "Escolha um tipo de besta: de mão, leve ou pesada. O personagem recarrega a besta de mão ou leve como ação livre e a besta pesada como ação de movimento. Recarregar continua provocando ataques de oportunidade. Com uma besta de mão ou leve, o personagem pode realizar sua quantidade normal de ataques durante uma ação de ataque total.",
+    "normal": "Sem o talento, recarregar uma besta leve ou de mão exige ação de movimento; recarregar uma besta pesada exige ação de rodada completa.",
+    "special": "Exige proficiência com a arma escolhida. Pode ser escolhido várias vezes, mas cada escolha se aplica a um tipo de besta diferente e os efeitos não se acumulam. Um guerreiro pode escolhê-lo como talento adicional.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 83",
+    "status": "audited"
   }
 ]
