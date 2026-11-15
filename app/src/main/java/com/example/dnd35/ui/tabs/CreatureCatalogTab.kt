@@ -17,6 +17,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.Info
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.DropdownMenu
@@ -46,6 +47,8 @@ import com.example.dnd35.model.CreatureCatalog
 import com.example.dnd35.ui.components.CreatureImage
 import com.example.dnd35.ui.components.CreatureImageTradingCard
 import com.example.dnd35.ui.components.CreatureCardStack
+import com.example.dnd35.ui.dialogs.RulesGlossaryDialog
+import com.example.dnd35.ui.dialogs.RulesGlossaryType
 
 /**
  * Bestiário consultivo. As ilustrações são resolvidas automaticamente em assets/monsters
@@ -59,8 +62,12 @@ fun CreatureCatalogTab(modifier: Modifier = Modifier) {
     var selectedCreatureId by rememberSaveable { mutableStateOf<String?>(null) }
     var typeMenuExpanded by remember { mutableStateOf(false) }
     var sizeMenuExpanded by remember { mutableStateOf(false) }
+    var showGlossary by rememberSaveable { mutableStateOf(false) }
 
     val selectedCreature = selectedCreatureId?.let(CreatureCatalog::byId)
+    if (showGlossary) {
+        RulesGlossaryDialog(type = RulesGlossaryType.BESTIARY, onDismiss = { showGlossary = false })
+    }
     val filtered = remember(query, selectedType, selectedSize) {
         CreatureCatalog.filter(query = query, type = selectedType, size = selectedSize)
     }
@@ -69,18 +76,27 @@ fun CreatureCatalogTab(modifier: Modifier = Modifier) {
         CreatureDetail(
             creature = selectedCreature,
             onBack = { selectedCreatureId = null },
+            onShowHelp = { showGlossary = true },
             modifier = modifier
         )
         return
     }
 
     Column(modifier = modifier.fillMaxSize().padding(horizontal = 16.dp)) {
-        Text(
-            text = "Livro dos Monstros",
-            style = MaterialTheme.typography.headlineSmall,
-            fontWeight = FontWeight.Bold,
-            modifier = Modifier.padding(top = 12.dp, bottom = 4.dp)
-        )
+        Row(
+            modifier = Modifier.fillMaxWidth().padding(top = 12.dp, bottom = 4.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(
+                text = "Livro dos Monstros",
+                style = MaterialTheme.typography.headlineSmall,
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier.weight(1f)
+            )
+            IconButton(onClick = { showGlossary = true }) {
+                Icon(Icons.Default.Info, contentDescription = "Ajuda do Bestiário")
+            }
+        }
         Text(
             text = "${filtered.size} criaturas no catálogo",
             style = MaterialTheme.typography.bodySmall,
@@ -215,6 +231,7 @@ private fun CreatureListItem(creature: CreatureDefinition, onClick: () -> Unit) 
 private fun CreatureDetail(
     creature: CreatureDefinition,
     onBack: () -> Unit,
+    onShowHelp: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     LazyColumn(
@@ -236,6 +253,9 @@ private fun CreatureDetail(
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
+                }
+                IconButton(onClick = onShowHelp) {
+                    Icon(Icons.Default.Info, contentDescription = "Ajuda do Bestiário")
                 }
             }
         }
