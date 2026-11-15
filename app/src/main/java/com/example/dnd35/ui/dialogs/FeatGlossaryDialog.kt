@@ -64,12 +64,26 @@ fun FeatGlossaryDialog(
                         Text(selected!!.name, style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.Bold)
                         Text("Pré-requisitos", fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.primary)
                         Text(selected!!.prerequisites.ifBlank { "Nenhum pré-requisito listado." })
-                        Text("Resumo", fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.primary)
-                        Text(selected!!.summary)
-                        Text("Benefício", fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.primary)
-                        Text(selected!!.benefit)
-                        Text("Referência", fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.primary)
-                        Text(selected!!.source, style = MaterialTheme.typography.bodySmall)
+                        Text("Referência detalhada", fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.primary)
+                        val reference = selected!!.reference
+                        if (reference == null) {
+                            Text(
+                                "O detalhamento deste talento ainda não foi conferido e registrado a partir do Livro do Jogador. O resumo da ficha não será repetido aqui como se fosse uma explicação completa.",
+                                style = MaterialTheme.typography.bodySmall,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                            )
+                        } else {
+                            Text(reference.description)
+                            if (reference.normal.isNotBlank()) {
+                                Text("Regra normal", fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.primary)
+                                Text(reference.normal)
+                            }
+                            if (reference.special.isNotBlank()) {
+                                Text("Especial", fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.primary)
+                                Text(reference.special)
+                            }
+                            Text(reference.source, style = MaterialTheme.typography.bodySmall)
+                        }
                     }
                 } else if (query.isBlank()) {
                     Text(
