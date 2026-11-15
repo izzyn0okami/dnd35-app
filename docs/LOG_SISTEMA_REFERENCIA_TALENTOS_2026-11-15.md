@@ -79,3 +79,11 @@ Data: 2026-11-15
 - Acrescentadas referências detalhadas para Magia em Combate, Foco em Magia, Foco em Magia Maior, Magia Penetrante, Magia Penetrante Maior, Magia Sem Gestos, Magia Silenciosa, Maximizar Magia, Potencializar Magia, Estender Magia, Ampliar Magia e Acelerar Magia.
 - As entradas registram custo de nível de magia, exceções, escolas afetadas, condições de uso e efeitos que não são modificados, conforme o Livro do Jogador brasileiro.
 - Testes adicionados para custos metamágicos e exceções específicas de conjuradores.
+
+
+## Ajustes finais de validação (15/11/2026)
+
+- Atualizado o teste de catálogo para esperar o nome oficial “Reflexos de Combate”, em vez do rótulo anterior.
+- Corrigido o termo de busca do teste de Ataque Poderoso para corresponder à forma plural “armas leves” presente no texto de referência.
+- A cobertura permanece em 57 talentos e 44 habilidades de classe; nenhum dado de ficha ou regra de cálculo foi modificado por esses ajustes.
+- Aguardar a conclusão dos fluxos CI e compilação Android no commit final antes de mesclar.
