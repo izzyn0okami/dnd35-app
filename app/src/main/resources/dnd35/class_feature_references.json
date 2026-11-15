@@ -142,5 +142,17 @@
     "sourcePages": "49",
     "source": "Livro do Jogador brasileiro, Capítulo 3 — Ranger, p. 49",
     "status": "audited"
+  },
+  {
+    "className": "Ranger",
+    "term": "Maestria do Estilo de Combate",
+    "description": "No 11º nível, a especialização do ranger em Arquearia ou Combate com Duas Armas se aprimora novamente. A habilidade concede o talento superior correspondente ao estilo escolhido, mesmo que o personagem não cumpra os pré-requisitos normais.",
+    "activation": "O talento correspondente é concedido automaticamente e funciona enquanto o ranger estiver sem armadura ou usando armadura leve.",
+    "duration": "Permanente a partir do 11º nível.",
+    "restrictions": "Os benefícios do estilo são perdidos quando o ranger usa armadura média ou pesada.",
+    "progression": "Arquearia concede Tiro Preciso. Combate com Duas Armas concede Combater com Duas Armas Maior.",
+    "sourcePages": "49",
+    "source": "Livro do Jogador brasileiro, Capítulo 3 — Ranger, p. 49",
+    "status": "audited"
   }
 ]
