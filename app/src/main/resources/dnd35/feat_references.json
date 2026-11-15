@@ -844,5 +844,23 @@
     "special": "A magia precisa ser preparada e conjurada usando um espaço do nível escolhido. O exemplo do Livro do Jogador é imobilizar pessoas preparada como magia de 4º nível em vez de 2º, sendo tratada como magia de 4º nível em todos os aspectos dependentes do nível.",
     "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 80",
     "status": "audited"
+  },
+  {
+    "name": "Duro de Matar",
+    "sourcePage": 79,
+    "description": "Quando os pontos de vida do personagem estão entre -1 e -9, ele fica estável automaticamente e não precisa realizar o teste percentual para verificar se perde 1 ponto de vida por rodada. O jogador decide imediatamente se ativará o talento, mesmo fora do próprio turno. Se ativar, o personagem age como incapacitado: pode realizar uma única ação de movimento ou uma única ação padrão por rodada, mas nunca ambas nem uma ação de rodada completa. A ação de movimento não causa dano adicional; uma ação padrão ou outra ação extenuante causa 1 ponto de dano ao terminar. Ao atingir -10 PV, o personagem morre imediatamente.",
+    "normal": "Sem o talento, um personagem entre -1 e -9 PV fica inconsciente e está morrendo, sujeito às regras normais de estabilidade e perda de pontos de vida.",
+    "special": "Pré-requisito: Tolerância. Se o personagem optar por não ativar o talento assim que seus PV ficarem negativos, ficará inconsciente imediatamente. O texto cita que algumas ações livres podem ser consideradas extenuantes pelo Mestre, como conjurar uma magia acelerada.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 79",
+    "status": "audited"
+  },
+  {
+    "name": "Liderança",
+    "sourcePage": 82,
+    "description": "O personagem pode atrair companheiros leais e seguidores devotados que o auxiliarão. O Mestre determina os tipos de companheiros e a quantidade de seguidores que podem ser recrutados.",
+    "normal": "Sem o talento, o personagem não atrai automaticamente um grupo de companheiros e seguidores por meio desta regra.",
+    "special": "Pré-requisito: 6º nível de personagem. O livro recomenda conversar com o Mestre antes de selecionar o talento para definir companheiros e seguidores apropriados. A descrição do talento remete ao Livro do Mestre para informações adicionais; esta auditoria não incorpora regras externas ao Livro do Jogador.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 82",
+    "status": "audited"
   }
 ]
