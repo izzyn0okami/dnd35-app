@@ -232,5 +232,176 @@
     "special": "Exige Destreza 17, Combater com Duas Armas e bônus base de ataque +6. Um guerreiro pode escolhê-lo como talento adicional. Um ranger de 6º nível que escolheu o estilo de combate com duas armas recebe o talento enquanto usar armadura leve ou nenhuma armadura, mesmo sem cumprir os pré-requisitos.",
     "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 78",
     "status": "audited"
+  },
+  {
+    "name": "Acrobático",
+    "description": "Seu personagem recebe +2 de bônus nos testes de Saltar e Acrobacia.",
+    "normal": "",
+    "special": "O bônus se aplica aos testes das duas perícias, não a testes de habilidade genéricos.",
+    "sourcePage": 77,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, Tabela 5-1, p. 77",
+    "status": "audited"
+  },
+  {
+    "name": "Afinidade com Animais",
+    "description": "Seu personagem recebe +2 de bônus nos testes de Adestrar Animais e Cavalgar.",
+    "normal": "",
+    "special": "",
+    "sourcePage": 77,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, Tabela 5-1, p. 77",
+    "status": "audited"
+  },
+  {
+    "name": "Ágil",
+    "description": "Seu personagem recebe +2 de bônus nos testes de Equilíbrio e Arte da Fuga.",
+    "normal": "",
+    "special": "",
+    "sourcePage": 77,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, Tabela 5-1, p. 77",
+    "status": "audited"
+  },
+  {
+    "name": "Aptidão Mágica",
+    "description": "Seu personagem recebe +2 de bônus nos testes de Identificar Magia e Usar Instrumento Mágico.",
+    "normal": "",
+    "special": "",
+    "sourcePage": 77,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, Tabela 5-1, p. 77",
+    "status": "audited"
+  },
+  {
+    "name": "Atlético",
+    "description": "Seu personagem recebe +2 de bônus nos testes de Escalar e Natação.",
+    "normal": "",
+    "special": "",
+    "sourcePage": 77,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, Tabela 5-1, p. 77",
+    "status": "audited"
+  },
+  {
+    "name": "Auto-Suficiente",
+    "description": "Seu personagem recebe +2 de bônus nos testes de Cura e Sobrevivência.",
+    "normal": "",
+    "special": "",
+    "sourcePage": 77,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, Tabela 5-1, p. 77",
+    "status": "audited"
+  },
+  {
+    "name": "Diligente",
+    "description": "Seu personagem recebe +2 de bônus nos testes de Avaliação e Decifrar Escrita.",
+    "normal": "",
+    "special": "",
+    "sourcePage": 77,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, Tabela 5-1, p. 77",
+    "status": "audited"
+  },
+  {
+    "name": "Fraudulento",
+    "description": "Seu personagem recebe +2 de bônus nos testes de Disfarces e Falsificação.",
+    "normal": "",
+    "special": "",
+    "sourcePage": 77,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, Tabela 5-1, p. 77",
+    "status": "audited"
+  },
+  {
+    "name": "Investigador",
+    "description": "Seu personagem recebe +2 de bônus nos testes de Obter Informação e Procurar.",
+    "normal": "",
+    "special": "",
+    "sourcePage": 77,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, Tabela 5-1, p. 77",
+    "status": "audited"
+  },
+  {
+    "name": "Negociador",
+    "description": "Seu personagem recebe +2 de bônus nos testes de Diplomacia e Sentir Motivação.",
+    "normal": "",
+    "special": "",
+    "sourcePage": 77,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, Tabela 5-1, p. 77",
+    "status": "audited"
+  },
+  {
+    "name": "Persuasivo",
+    "description": "Seu personagem recebe +2 de bônus nos testes de Blefar e Intimidação.",
+    "normal": "",
+    "special": "",
+    "sourcePage": 77,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, Tabela 5-1, p. 77",
+    "status": "audited"
+  },
+  {
+    "name": "Sorrateiro",
+    "description": "Seu personagem recebe +2 de bônus nos testes de Esconder-se e Furtividade.",
+    "normal": "",
+    "special": "",
+    "sourcePage": 77,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, Tabela 5-1, p. 77",
+    "status": "audited"
+  },
+  {
+    "name": "Vontade de Ferro",
+    "description": "Seu personagem recebe +2 de bônus em todos os testes de resistência de Vontade.",
+    "normal": "",
+    "special": "",
+    "sourcePage": 77,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, Tabela 5-1, p. 77",
+    "status": "audited"
+  },
+  {
+    "name": "Fortitude Maior",
+    "description": "Seu personagem recebe +2 de bônus em todos os testes de resistência de Fortitude.",
+    "normal": "",
+    "special": "",
+    "sourcePage": 77,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, Tabela 5-1, p. 77",
+    "status": "audited"
+  },
+  {
+    "name": "Reflexos Rápidos",
+    "description": "Seu personagem recebe +2 de bônus em todos os testes de resistência de Reflexos.",
+    "normal": "",
+    "special": "",
+    "sourcePage": 77,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, Tabela 5-1, p. 77",
+    "status": "audited"
+  },
+  {
+    "name": "Foco em Perícia",
+    "description": "Escolha uma perícia. Seu personagem recebe +3 de bônus em todos os testes realizados com a perícia escolhida.",
+    "normal": "",
+    "special": "Este talento pode ser escolhido mais de uma vez, mas cada escolha deve ser aplicada a uma perícia diferente; os bônus não se acumulam na mesma perícia.",
+    "sourcePage": 77,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, Tabela 5-1, p. 77",
+    "status": "audited"
+  },
+  {
+    "name": "Prontidão",
+    "description": "Seu personagem recebe +2 de bônus nos testes de Ouvir e Observar.",
+    "normal": "",
+    "special": "Enquanto o familiar estiver ao alcance da mão, o mestre de um familiar também recebe o benefício de Prontidão.",
+    "sourcePage": 77,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, Tabela 5-1, p. 77",
+    "status": "audited"
+  },
+  {
+    "name": "Corrida",
+    "description": "Quando correr, seu personagem percorre até cinco vezes seu deslocamento normal (ou quatro vezes se estiver usando armadura pesada). Além disso, recebe +4 de bônus nos testes de Saltar realizados depois de uma corrida inicial.",
+    "normal": "",
+    "special": "",
+    "sourcePage": 77,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, Tabela 5-1, p. 77",
+    "status": "audited"
+  },
+  {
+    "name": "Tolerância",
+    "description": "Seu personagem recebe +4 de bônus em diversos testes de resistência e de habilidade relacionados a esforço físico e sobrevivência: Natação para evitar dano por contusão, Constituição para corridas, marchas forçadas, prender a respiração, inanição e desidratação, Fortitude contra frio, calor e asfixia. Também pode dormir usando armadura leve ou média sem ficar fatigado no dia seguinte.",
+    "normal": "Sem o talento, dormir usando armadura média ou pesada deixa o personagem fatigado durante todo o dia seguinte.",
+    "special": "Rangers recebem Tolerância automaticamente no 3º nível, como talento adicional; não precisam selecioná-lo.",
+    "sourcePage": 77,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, Tabela 5-1, p. 77",
+    "status": "audited"
   }
 ]
