@@ -25,3 +25,20 @@ Data: 2026-11-15
 ## Validação pendente
 - Executar testes unitários, CI e compilação Android.
 - A auditoria de fidelidade de cada benefício e pré-requisito do catálogo continua sendo uma etapa separada; esta alteração implementa o sistema de consulta, não certifica individualmente todos os verbetes.
+
+
+## Separação entre resumo da ficha e referência completa (15/11/2026)
+
+- O primeiro diálogo repetia os campos `summary` e `benefit` do catálogo de ficha. Isso não atendia ao objetivo de oferecer uma consulta realmente explicativa.
+- Criados catálogos independentes: `feat_references.json` e `class_feature_references.json`. Eles não substituem nem alteram os textos curtos exibidos na ficha.
+- Cada referência detalhada tem campos próprios para funcionamento, regra normal, casos especiais, ativação, duração, restrições, progressão e fonte/página, conforme o tipo de entrada.
+- O diálogo de talentos agora apresenta pré-requisitos e, quando auditado, o texto expandido; não repete o resumo/benefício da ficha. Entradas ainda não auditadas são identificadas como pendentes, em vez de receberem um texto curto disfarçado de explicação completa.
+- O glossário de habilidades de classe segue a mesma regra: a ficha mantém a descrição curta e o glossário exibe campos detalhados separados; verbetes pendentes são identificados.
+- Referências conferidas no PDF brasileiro do Livro do Jogador:
+  - Talentos: Ataque Poderoso (p. 78), Foco em Arma (p. 81), Esquiva (p. 81), Iniciativa Aprimorada (p. 82), Combater com Duas Armas (p. 78), Mobilidade (p. 83), Tiro Preciso (p. 85), Vitalidade (p. 86) e Ataque em Movimento (p. 75).
+  - Bárbaro: Fúria (pp. 21–22), Esquiva Sobrenatural, Sentir Armadilhas, Esquiva Sobrenatural Aprimorada e Redução de Dano (p. 23).
+- Cobertura atual deste incremento: 9 de 110 talentos e 5 referências de habilidades do Bárbaro. As demais entradas continuam disponíveis na busca, mas aparecem explicitamente como pendentes de auditoria detalhada.
+- A falha inicial dos testes do glossário foi causada por o novo teste usar JUnit puro ao acessar o catálogo JSON que depende do runtime Android/Robolectric. O teste agora usa `RobolectricTestRunner`, como o teste existente de carregamento dos catálogos. Não foi alterado o carregador de produção.
+- Incluídos testes para confirmar que Ataque Poderoso tem referência mais extensa que o resumo da ficha e que Fúria do Bárbaro aponta para as regras detalhadas e páginas corretas.
+- Não foram alterados cálculos, progressões, pré-requisitos automáticos, persistência ou formato de ficha.
+- CI e compilação Android devem ser executados novamente; não mesclar enquanto ambos não passarem.
