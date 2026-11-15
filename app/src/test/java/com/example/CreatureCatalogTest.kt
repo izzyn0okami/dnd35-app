@@ -720,4 +720,16 @@ class CreatureCatalogTest {
         assertTrue(vulto.combat.contains("Drenar Magia"))
         assertTrue(vulto.combat.contains("nível de conjurador 17º"))
     }
+    
+    @Test
+    fun iceWormHasBookBasedDescriptionAndCombatAbilities() {
+        val worm = CreatureCatalog.byId("verme-do-gelo")!!
+        assertTrue(worm.description.contains("branco-azulada"))
+        assertTrue(worm.description.contains("4 toneladas"))
+        assertTrue(worm.combat.contains("Trinado (Sob)"))
+        assertTrue(worm.combat.contains("Vontade CD 17"))
+        assertTrue(worm.combat.contains("15d6"))
+        assertTrue(worm.combat.contains("Espasmos de Morte"))
+        assertTrue(worm.combat.contains("8d6"))
+    }
 }
