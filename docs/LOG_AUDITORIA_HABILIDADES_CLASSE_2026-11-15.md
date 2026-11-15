@@ -75,3 +75,7 @@ Data: 2026-11-15
 - **Ranger — Camuflagem e Mimetismo:** corrigidos nomes e níveis conforme o livro: Camuflagem no 13º nível e Mimetismo no 17º. A entrada incorreta Esconder-se à Plena Vista no 18º foi removida.
 - **Ranger — Rastreador Eficaz:** registrada a penalidade de -10 ao rastrear com o dobro do deslocamento (em vez de -20).
 - Testes automatizados confirmam os níveis de Remover Doença, Camuflagem e Mimetismo.
+
+
+## Ajuste de terminologia da edição brasileira
+- Os nomes **Empatia com a Natureza** (Druida e Ranger) e **Cura pelas Mãos** (Paladino) foram alinhados à terminologia impressa no Livro do Jogador brasileiro.
