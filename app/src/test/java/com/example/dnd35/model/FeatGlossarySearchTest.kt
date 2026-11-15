@@ -53,6 +53,16 @@ class FeatGlossarySearchTest {
         assertTrue(result.reference?.sourcePages == "25–26")
     }
 
+
+    @Test
+    fun druidWildShapeReferenceExplainsFormLimitsAndProgression() {
+        val result = ClassFeatureGlossarySearch.search("Forma Selvagem")
+            .first { it.className == "Druida" }
+        assertTrue(result.reference?.restrictions?.contains("Dados de Vida") == true)
+        assertTrue(result.reference?.progression?.contains("elementais Enormes") == true)
+        assertTrue(result.reference?.sourcePages == "31–32")
+    }
+
     @Test
     fun blankSearchReturnsNoResults() {
         assertTrue(FeatGlossarySearch.search("   ").isEmpty())
