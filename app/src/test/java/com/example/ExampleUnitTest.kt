@@ -468,7 +468,7 @@ class ExampleUnitTest {
   }
 
   @Test
-  fun barbarianMediumArmorDisablesFastMovement() {
+  fun barbarianFastMovementIsAppliedBeforeMediumArmorReduction() {
     val armor = CharacterInventoryItem(
       name = "Gibão de Peles",
       category = "Armaduras",
@@ -486,7 +486,67 @@ class ExampleUnitTest {
         inventoryJson = CharacterJsonAdapters.serializeInventory(listOf(armor))
       )
     )
-    assertEquals(6.0f, stats.speedMetersEffective, 0.01f)
+    // 9m base + 3m de Movimento Rápido = 12m; armadura média reduz para 9m.
+    assertEquals(9.0f, stats.speedMetersEffective, 0.01f)
+  }
+
+  @Test
+  fun barbarianFastMovementIsAppliedBeforeMediumLoadReduction() {
+    val heavyPack = CharacterInventoryItem(
+      name = "Carga de teste",
+      category = "Itens de Aventura",
+      weightLb = 100f,
+      equipped = false
+    )
+    val stats = CharacterCalculator.compute(
+      CharacterEntity(
+        characterClass = "Bárbaro",
+        level = 1,
+        baseStr = 16,
+        inventoryJson = CharacterJsonAdapters.serializeInventory(listOf(heavyPack))
+      )
+    )
+    assertEquals(Dnd35Rules.EncumbranceLevel.MEDIUM, stats.encumbrance)
+    assertEquals(9.0f, stats.speedMetersEffective, 0.01f)
+  }
+
+  @Test
+  fun barbarianFastMovementDoesNotApplyWithHeavyArmorOrHeavyLoad() {
+    val fullPlate = CharacterInventoryItem(
+      name = "Armadura Completa",
+      category = "Armaduras",
+      equipped = true,
+      equippedSlot = Dnd35Rules.EquipmentSlots.ARMOR_BODY,
+      weightLb = 50f,
+      damageOrAc = "+8 CA",
+      notes = "Des Max +1, Pen -6"
+    )
+    val armored = CharacterCalculator.compute(
+      CharacterEntity(
+        characterClass = "Bárbaro",
+        level = 1,
+        baseStr = 16,
+        inventoryJson = CharacterJsonAdapters.serializeInventory(listOf(fullPlate))
+      )
+    )
+    assertEquals(6.0f, armored.speedMetersEffective, 0.01f)
+
+    val heavyPack = CharacterInventoryItem(
+      name = "Carga pesada",
+      category = "Itens de Aventura",
+      weightLb = 160f,
+      equipped = false
+    )
+    val encumbered = CharacterCalculator.compute(
+      CharacterEntity(
+        characterClass = "Bárbaro",
+        level = 1,
+        baseStr = 16,
+        inventoryJson = CharacterJsonAdapters.serializeInventory(listOf(heavyPack))
+      )
+    )
+    assertEquals(Dnd35Rules.EncumbranceLevel.HEAVY, encumbered.encumbrance)
+    assertEquals(6.0f, encumbered.speedMetersEffective, 0.01f)
   }
 
   @Test
@@ -638,7 +698,7 @@ class ExampleUnitTest {
   }
 
   @Test
-  fun barbarianMediumLoadDisablesFastMovement() {
+  fun barbarianFastMovementAppliesBeforeMediumLoadSpeedReduction() {
     val stats = CharacterCalculator.compute(
       CharacterEntity(
         characterClass = "Bárbaro",
@@ -655,7 +715,7 @@ class ExampleUnitTest {
       )
     )
     assertEquals(Dnd35Rules.EncumbranceLevel.MEDIUM, stats.encumbrance)
-    assertEquals(6.0f, stats.speedMetersEffective, 0.01f)
+    assertEquals(9.0f, stats.speedMetersEffective, 0.01f)
   }
 
   @Test
@@ -1127,8 +1187,9 @@ class ExampleUnitTest {
     }
 
     assertTrue(features.any { it.level == 4 && it.name == "Conjuração de Ranger" })
-    assertTrue(features.any { it.level == 17 && it.name == "Camuflagem" })
-    assertTrue(features.any { it.level == 18 && it.name == "Esconder-se à Plena Vista" })
+    assertTrue(features.any { it.level == 13 && it.name == "Camuflagem" })
+    assertTrue(features.any { it.level == 17 && it.name == "Mimetismo" })
+    assertTrue(features.none { it.name == "Esconder-se à Plena Vista" })
     assertTrue(features.none { it.level == 14 && it.name.contains("Inimigo Predileto") })
   }
 
@@ -1174,16 +1235,16 @@ class ExampleUnitTest {
     val features = Dnd35Rules.CLASSES.first { it.name == "Paladino" }.features
     val expected = mapOf(
       1 to listOf("Aura do Bem", "Detectar o Mal", "Destruir o Mal 1/dia"),
-      2 to listOf("Graça Divina", "Imposição de Mãos"),
-      3 to listOf("Aura de Coragem", "Saúde Divina", "Remover Doença 1/semana"),
+      2 to listOf("Graça Divina", "Cura pelas Mãos"),
+      3 to listOf("Aura de Coragem", "Saúde Divina"),
       4 to listOf("Expulsar Mortos-Vivos", "Conjuração Divina"),
       5 to listOf("Destruir o Mal 2/dia", "Montaria Especial"),
-      6 to listOf("Remover Doença 2/semana"),
-      9 to listOf("Remover Doença 3/semana"),
+      6 to listOf("Remover Doença 1/semana"),
+      9 to listOf("Remover Doença 2/semana"),
       10 to listOf("Destruir o Mal 3/dia"),
-      12 to listOf("Remover Doença 4/semana"),
-      15 to listOf("Destruir o Mal 4/dia", "Remover Doença 5/semana"),
-      18 to listOf("Remover Doença 6/semana"),
+      12 to listOf("Remover Doença 3/semana"),
+      15 to listOf("Destruir o Mal 4/dia", "Remover Doença 4/semana"),
+      18 to listOf("Remover Doença 5/semana"),
       20 to listOf("Destruir o Mal 5/dia")
     )
 
@@ -1840,6 +1901,64 @@ class ExampleUnitTest {
     assertEquals(0, stats.armorBonusTotal)
     assertEquals(0, stats.shieldBonusTotal)
     assertEquals(11, stats.totalAc) // CA base 10 + modificador de DES +1; a túnica não altera a CA
+  }
+
+
+  @Test
+  fun rogueAndMonkFeatureDescriptionsIncludeImportantBookLimitations() {
+    val rogue = Dnd35Rules.CLASSES.single { it.name == "Ladino" }.features.associateBy { it.name }
+    assertTrue(rogue.getValue("Ataque Furtivo +1d6").description.contains("9 m"))
+    assertTrue(rogue.getValue("Ataque Furtivo +1d6").description.contains("não é multiplicado"))
+    assertTrue(rogue.getValue("Evasão").description.contains("indefeso"))
+
+    val monk = Dnd35Rules.CLASSES.single { it.name == "Monge" }.features.associateBy { it.name }
+    assertTrue(monk.getValue("Rajada de Golpes").description.contains("ação de ataque total"))
+    assertTrue(monk.getValue("Mão Vibrante").description.contains("CD 10 + metade do nível de monge"))
+    assertTrue(monk.getValue("Corpo Atemporal").description.contains("Penalidades de idade que já possuía"))
+  }
+
+
+  @Test
+  fun paladinAndRangerClassFeaturesUnlockAtPlayerHandbookLevels() {
+    val paladin = Dnd35Rules.CLASSES.single { it.name == "Paladino" }.features
+      .filter { it.name.startsWith("Remover Doença") }
+      .associate { it.level to it.name }
+    assertEquals(
+      mapOf(
+        6 to "Remover Doença 1/semana",
+        9 to "Remover Doença 2/semana",
+        12 to "Remover Doença 3/semana",
+        15 to "Remover Doença 4/semana",
+        18 to "Remover Doença 5/semana"
+      ),
+      paladin
+    )
+
+    val ranger = Dnd35Rules.CLASSES.single { it.name == "Ranger" }.features.associateBy { it.name }
+    assertTrue(ranger.containsKey("Rastrear e Empatia com a Natureza"))
+    assertEquals(13, ranger.getValue("Camuflagem").level)
+    assertEquals(17, ranger.getValue("Mimetismo").level)
+    assertTrue(ranger.getValue("Rastreador Eficaz").description.contains("-10"))
+    assertTrue(!ranger.containsKey("Esconder-se à Plena Vista"))
+  }
+
+
+  @Test
+  fun classFeatureNamesFollowBrazilianPlayerHandbookTerminology() {
+    val druid = Dnd35Rules.CLASSES.single { it.name == "Druida" }.features
+    assertTrue(druid.any { it.name == "Empatia com a Natureza" })
+
+    val paladin = Dnd35Rules.CLASSES.single { it.name == "Paladino" }.features
+    assertTrue(paladin.any { it.name == "Cura pelas Mãos" })
+  }
+
+
+  @Test
+  fun fighterBonusFeatsRequireTheirPrerequisitesAtEveryGrantedLevel() {
+    val fighter = Dnd35Rules.CLASSES.single { it.name == "Guerreiro" }.features
+    assertEquals(listOf(1, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20), fighter.map { it.level })
+    assertTrue(fighter.filter { it.name.startsWith("Talento Bônus de Guerreiro") }
+      .all { it.description.contains("pré-requisitos") })
   }
 
 }

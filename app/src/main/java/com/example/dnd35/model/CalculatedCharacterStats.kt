@@ -446,9 +446,12 @@ object CharacterCalculator {
         val equippedArmor = inventory.filter {
             it.equipped && isArmorInventoryCategory(it.category)
         }
-        // Movimento rápido do Bárbaro só funciona sem armadura média/pesada e com carga leve.
-        if (barbarianLevel >= 1 && equippedArmor.none { isMediumOrHeavyArmor(it.name) } &&
-            encumbrance == Dnd35Rules.EncumbranceLevel.LIGHT) {
+        // Movimento rápido do Bárbaro também funciona com armadura média e carga média.
+        // O bônus é aplicado antes da redução normal de deslocamento; apenas armadura pesada
+        // ou carga pesada/sobrecarga impedem o benefício.
+        if (barbarianLevel >= 1 && equippedArmor.none { isHeavyArmor(it.name) } &&
+            encumbrance != Dnd35Rules.EncumbranceLevel.HEAVY &&
+            encumbrance != Dnd35Rules.EncumbranceLevel.OVERLOADED) {
             baseSpeed += 3.0f
         }
         // Movimento rápido do Monge exige ausência de armadura/escudo e carga leve.

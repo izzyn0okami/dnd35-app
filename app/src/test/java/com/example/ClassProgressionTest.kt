@@ -103,18 +103,17 @@ class ClassProgressionTest {
     }
 
     @Test
-    fun paladinRemoveDiseaseProgressesEveryThreeLevelsStartingAtThree() {
+    fun paladinRemoveDiseaseProgressesEveryThreeLevelsStartingAtSix() {
         val paladin = Dnd35Rules.CLASSES.single { it.name == "Paladino" }
         val removeDisease = paladin.features.filter { it.name.startsWith("Remover Doença") }
             .associate { it.level to it.name }
         assertEquals(
             mapOf(
-                3 to "Remover Doença 1/semana",
-                6 to "Remover Doença 2/semana",
-                9 to "Remover Doença 3/semana",
-                12 to "Remover Doença 4/semana",
-                15 to "Remover Doença 5/semana",
-                18 to "Remover Doença 6/semana"
+                6 to "Remover Doença 1/semana",
+                9 to "Remover Doença 2/semana",
+                12 to "Remover Doença 3/semana",
+                15 to "Remover Doença 4/semana",
+                18 to "Remover Doença 5/semana"
             ),
             removeDisease
         )
@@ -189,18 +188,17 @@ class ClassProgressionTest {
         assertTrue(bard.features.none { it.name == "Contramúsica" })
         assertTrue(bard.features.any { it.level == 12 && it.name == "Melodia da Libertação" })
         assertTrue(bard.features.single { it.level == 9 && it.name == "Inspirar Grandeza" }
-            .description.contains("até quatro no 18º nível"))
+            .description.contains("até quatro no 18º"))
         assertTrue(bard.features.single { it.level == 15 && it.name == "Inspirar Heroísmo" }
             .description.contains("alvo adicional no 18º nível"))
     }
 
     @Test
-    fun rangerHideInPlainSightDocumentsTheNaturalTerrainDistance() {
+    fun rangerMimetismoUnlocksAtLevelSeventeen() {
         val ranger = Dnd35Rules.CLASSES.single { it.name == "Ranger" }
-        val ability = ranger.features.single { it.level == 18 && it.name == "Esconder-se à Plena Vista" }
-        assertTrue(ability.description.contains("mesmo enquanto observado"))
-        assertTrue(ability.description.contains("3 metros"))
-        assertTrue(ability.description.contains("sem cobertura ou camuflagem"))
+        val ability = ranger.features.single { it.level == 17 && it.name == "Mimetismo" }
+        assertTrue(ability.description.contains("mesmo enquanto estiver sendo observado"))
+        assertTrue(ability.description.contains("qualquer tipo de terreno"))
     }
 
     @Test
