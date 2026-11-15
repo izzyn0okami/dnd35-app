@@ -34,3 +34,11 @@ Data: 2026-11-15
 - Também foi corrigida a quebra de linha entre as entradas Conversão Espontânea e Domínios da Divindade.
 - Commit corretivo: `2cf4d14a510a354f0803b7a3833bbfc67a9f9f7b`.
 - Aguardar nova execução de Android CI e Android build antes de mesclar.
+
+
+## Segunda correção após CI (15/11/2026)
+
+- A segunda execução confirmou que a compilação Kotlin passa, mas dois testes de conteúdo ainda falhavam por diferenças literais de texto: o teste do feiticeiro exige a expressão `repertório limitado`, e o teste do clérigo procura `clérigos neutros` em minúsculas na descrição de Expulsar/Fascinar.
+- Ajustadas as descrições para preservar o sentido das regras e atender aos critérios automatizados.
+- Commit: `a06edd93d0d5cbacd05ce2357c2a867417250539`.
+- Aguardar nova execução integral dos workflows antes do merge.
