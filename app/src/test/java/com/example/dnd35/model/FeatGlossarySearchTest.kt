@@ -150,6 +150,18 @@ class FeatGlossarySearchTest {
         assertTrue(result.reference?.sourcePages == "37")
     }
 
+
+    @Test
+    fun featReferencesUseOfficialBrazilianNamesAndDetailedCombatRules() {
+        val reflexes = FeatGlossarySearch.search("Reflexos de Combate").first()
+        assertTrue(reflexes.name == "Reflexos de Combate")
+        assertTrue(reflexes.reference?.special?.contains("surpreso") == true)
+
+        val expertise = FeatGlossarySearch.search("Especialização em Combate").first()
+        assertTrue(expertise.reference?.normal?.contains("–4") == true)
+        assertTrue(expertise.reference?.sourcePage == 80)
+    }
+
     @Test
     fun blankSearchReturnsNoResults() {
         assertTrue(FeatGlossarySearch.search("   ").isEmpty())
