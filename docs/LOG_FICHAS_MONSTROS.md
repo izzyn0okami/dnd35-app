@@ -950,3 +950,28 @@ As fichas-base devem ser reutilizadas por ID sempre que a tabela pedir apenas um
 - Adicionado teste de regressão para as dez fichas.
 - Preservados os blocos estatísticos e demais campos mecânicos.
 - Contagem após esta etapa: 320 criaturas; 265 com Descrição e Combate completos; 55 pendentes.
+
+
+## 2026-11-15 — Quadragésima primeira etapa: dez fichas complementadas com fontes externas (Puro Sangue a Mula)
+
+- Condição da etapa: o PDF do Livro dos Monstros não estava disponível para extração; para manter o avanço, foram consultadas referências externas de D&D 3.5.
+- Fonte principal de regras: d20 SRD 3.5 (Open Game Content), verbetes Lizard, Lion, Leopard, Wolf, Squid, Squid, Giant, Monkey, Bat e Mule:
+  - https://www.d20srd.org/srd/monsters/lizard.htm
+  - https://www.d20srd.org/srd/monsters/lion.htm
+  - https://www.d20srd.org/srd/monsters/leopard.htm
+  - https://www.d20srd.org/srd/monsters/wolf.htm
+  - https://www.d20srd.org/srd/monsters/squid.htm
+  - https://www.d20srd.org/srd/monsters/squidGiant.htm
+  - https://www.d20srd.org/srd/monsters/monkey.htm
+  - https://www.d20srd.org/srd/monsters/bat.htm
+  - https://www.d20srd.org/srd/monsters/mule.htm
+- Para Puro Sangue (Yuan-ti Pureblood), foi usada a referência D&D 3.5, Monster Manual v.3.5, p. 263, com apoio de https://new.dndtools.org/monsters/yuan-ti-pureblood-519 e https://www.d20srd.org/srd/specialAbilities.htm.
+- Preenchidas Descrição e Combate de dez registros já existentes: Puro Sangue, Lagarto, Leão, Leopardo, Lobo, Lula, Lula Gigante, Macaco, Morcego e Mula.
+- Puro Sangue: identidade como yuan-ti de aparência humanoide, infiltração e espionagem; táticas de emboscada e combate à distância; habilidades similares à magia, Alterar Forma, Detectar Veneno e Resistência à Magia.
+- Animais terrestres: comportamento de fuga ou caça, medidas aproximadas, habitats, organização, ataques, manobras especiais e bônus raciais de perícia conforme os verbetes SRD.
+- Lulas: Agarrar Aprimorado, Constrição da lula gigante, nuvem de tinta, propulsão e regras de recuperação de tentáculos.
+- Morcego: Sentido Cego de 6 m e condição dos bônus de Ouvir/Observar; Mula: natureza híbrida estéril, uso como animal de carga, capacidade de carga/arrasto e bônus para evitar quedas.
+- Os dados estatísticos existentes foram preservados. Nenhuma criatura foi duplicada.
+- Adicionado teste de regressão cobrindo os dez registros e detalhes mecânicos característicos.
+- Contagem após esta etapa: 320 criaturas; 275 com Descrição e Combate preenchidos; 45 ainda pendentes.
+- Observação de proveniência: esta etapa usa fontes externas e não substitui a conferência posterior com o Livro dos Monstros brasileiro; eventuais diferenças de tradução ou redação serão reconciliadas quando o PDF voltar a estar acessível.
