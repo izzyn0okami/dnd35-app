@@ -743,6 +743,13 @@ fun OverviewCombatTab(
                     // Cada habilidade abre sua descrição e a progressão completa cadastrada para a classe.
                     Text("Habilidades de Classe Desbloqueadas:", style = MaterialTheme.typography.labelSmall, fontWeight = FontWeight.Bold)
                     for (detail in stats.multiclassDetails) {
+                        Text(
+                            "${detail.classInfo.name} • nível ${detail.entry.level}",
+                            style = MaterialTheme.typography.labelSmall,
+                            fontWeight = FontWeight.Bold,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            modifier = Modifier.padding(top = 6.dp, bottom = 2.dp)
+                        )
                         for (feat in detail.classInfo.features.filter { it.level <= detail.entry.level }) {
                             Column(
                                 modifier = Modifier
