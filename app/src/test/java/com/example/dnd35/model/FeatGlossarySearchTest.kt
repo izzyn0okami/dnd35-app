@@ -309,4 +309,29 @@ class FeatGlossarySearchTest {
         assertTrue(reload.reference?.description?.contains("ação livre") == true)
         assertTrue(reload.reference?.normal?.contains("ação de rodada completa") == true)
     }
+
+    @Test
+    fun newlyAuditedMetamagicAndSpecialFeatReferencesMatchTheBrazilianHandbook() {
+        val counterspell = FeatGlossarySearch.search("Contramágica Aprimorada").first()
+        assertTrue(counterspell.reference?.description?.contains("nível superior") == true)
+
+        val spellMastery = FeatGlossarySearch.search("Dominar Magia").first()
+        assertTrue(spellMastery.benefit.contains("modificador de Inteligência"))
+        assertTrue(spellMastery.reference?.description?.contains("modificador de Inteligência") == true)
+
+        val greaterWeaponSpecialization = FeatGlossarySearch.search("Especialização em Arma Maior").first()
+        assertTrue(greaterWeaponSpecialization.reference?.description?.contains("+2 adicional") == true)
+        assertTrue(greaterWeaponSpecialization.reference?.special?.contains("12º nível de guerreiro") == true)
+
+        val augmentedSummoning = FeatGlossarySearch.search("Potencializar Invocação").first()
+        assertTrue(augmentedSummoning.reference?.description?.contains("bônus de aprimoramento") == true)
+
+        val widen = FeatGlossarySearch.search("Aumentar Magia").first()
+        assertTrue(widen.reference?.description?.contains("15 m + 1,5 m/nível") == true)
+
+        val heighten = FeatGlossarySearch.search("Elevar Magia").first()
+        assertTrue(heighten.benefit.contains("qualquer nível de magia superior"))
+        assertTrue(heighten.reference?.description?.contains("até o limite do 9º nível") == true)
+    }
+
 }
