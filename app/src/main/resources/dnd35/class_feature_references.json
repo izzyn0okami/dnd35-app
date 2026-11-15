@@ -82,5 +82,65 @@
     "sourcePages": "31–32",
     "source": "Livro do Jogador brasileiro, Capítulo 3 — Druida, pp. 31–32",
     "status": "audited"
+  },
+  {
+    "className": "Ranger",
+    "term": "Inimigo Predileto",
+    "description": "O ranger escolhe um tipo de criatura contra o qual recebe bônus de +2 em testes de Blefar, Ouvir, Sentir Motivação, Observar e Sobrevivência, além de jogadas de ataque e dano. O estudo e o treinamento são direcionados a essa categoria específica de inimigo.",
+    "activation": "Sempre ativo contra criaturas que pertençam à categoria escolhida; não exige ação.",
+    "duration": "Permanente. O ranger escolhe novos inimigos e aumenta os bônus em intervalos da progressão.",
+    "restrictions": "Para categorias Humanóide ou Extra-Planar, deve ser escolhido um subtipo. Se uma criatura pertencer a mais de uma categoria escolhida, os bônus não se acumulam: aplica-se somente o modificador mais alto.",
+    "progression": "No 5º, 10º, 15º e 20º níveis, escolhe um novo inimigo predileto e aumenta em +2 o bônus contra um inimigo predileto à escolha. O bônus pode ser distribuído entre os inimigos escolhidos, de modo que alguns tenham valores maiores que outros.",
+    "sourcePages": "48",
+    "source": "Livro do Jogador brasileiro, Capítulo 3 — Ranger, p. 48",
+    "status": "audited"
+  },
+  {
+    "className": "Ranger",
+    "term": "Estilo de Combate",
+    "description": "No 2º nível, o ranger escolhe entre Arquearia e Combate com Duas Armas. A escolha concede um talento associado ao estilo mesmo que o ranger não cumpra os pré-requisitos normais: Tiro Certeiro para Arquearia ou Combater com Duas Armas para o estilo de duas armas.",
+    "activation": "Os benefícios são aplicados automaticamente quando o ranger usa o estilo escolhido.",
+    "duration": "A escolha é permanente e progride nos níveis 6 e 11.",
+    "restrictions": "Os benefícios do estilo só funcionam quando o ranger está sem armadura ou usando armadura leve. Ele perde todos os benefícios do estilo ao usar armadura média ou pesada. A escolha não restringe a seleção normal de outros talentos ou habilidades.",
+    "progression": "6º nível — Estilo de Combate Aprimorado: Arquearia concede Tiro Múltiplo; Combate com Duas Armas concede Combater com Duas Armas Aprimorado, mesmo sem cumprir os pré-requisitos. 11º nível — Maestria do Estilo de Combate: Arquearia concede Tiro Preciso; Combate com Duas Armas concede Combater com Duas Armas Maior. A restrição de armadura continua valendo.",
+    "sourcePages": "48–49",
+    "source": "Livro do Jogador brasileiro, Capítulo 3 — Ranger, pp. 48–49",
+    "status": "audited"
+  },
+  {
+    "className": "Ranger",
+    "term": "Companheiro Animal",
+    "description": "A partir do 4º nível, o ranger adquire um companheiro animal fiel, escolhido entre as espécies permitidas para a classe. As opções aquáticas adicionais dependem de a campanha ocorrer total ou parcialmente em uma região aquática; criaturas aquáticas não são escolhas práticas para um ranger terrestre sem circunstâncias excepcionais.",
+    "activation": "O companheiro acompanha o ranger conforme apropriado à espécie e pode atuar como montaria, sentinela, batedor ou animal de caça.",
+    "duration": "Permanece como companheiro enquanto a relação existir. A progressão de suas capacidades acompanha o nível efetivo de druida do ranger.",
+    "restrictions": "O nível efetivo de druida para determinar as capacidades do companheiro equivale à metade do nível de ranger. As opções de listas alternativas aplicam as reduções de nível efetivo indicadas para cada criatura; o resultado não pode ficar abaixo do 1º nível efetivo.",
+    "progression": "Ranger 4º nível equivale a druida 2º nível para as capacidades do companheiro. O ranger precisa alcançar o 8º nível para escolher opções que exigem druida 4º nível; uma opção com ajuste adicional de –3 reduz ainda mais o nível efetivo, sem permitir resultado inferior a 1.",
+    "sourcePages": "48–49",
+    "source": "Livro do Jogador brasileiro, Capítulo 3 — Ranger, pp. 48–49",
+    "status": "audited"
+  },
+  {
+    "className": "Ranger",
+    "term": "Camuflagem",
+    "description": "A partir do 13º nível, o ranger pode utilizar a perícia Esconder-se em qualquer tipo de terreno, mesmo quando não houver cobertura ou esconderijo disponível.",
+    "activation": "Usada como parte de um teste de Esconder-se, conforme as regras normais da perícia.",
+    "duration": "Não possui duração própria; a capacidade permanece disponível a partir do 13º nível.",
+    "restrictions": "A habilidade remove a exigência de cobertura ou esconderijo, mas não elimina os demais requisitos e circunstâncias aplicáveis à perícia.",
+    "progression": "Adquirida no 13º nível. No 17º nível, o ranger recebe Mimetismo, que permite usar Esconder-se mesmo enquanto está sendo observado e em qualquer tipo de terreno.",
+    "sourcePages": "49",
+    "source": "Livro do Jogador brasileiro, Capítulo 3 — Ranger, p. 49",
+    "status": "audited"
+  },
+  {
+    "className": "Ranger",
+    "term": "Mimetismo",
+    "description": "A partir do 17º nível, o ranger pode utilizar a perícia Esconder-se mesmo quando estiver sendo observado e em qualquer tipo de terreno.",
+    "activation": "Usada como parte de um teste de Esconder-se, conforme as regras normais da perícia.",
+    "duration": "Não possui duração própria; a capacidade permanece disponível a partir do 17º nível.",
+    "restrictions": "A habilidade permite esconder-se mesmo sob observação, mas não elimina os demais requisitos e circunstâncias aplicáveis à perícia.",
+    "progression": "Adquirida no 17º nível, depois da Camuflagem obtida no 13º nível.",
+    "sourcePages": "49",
+    "source": "Livro do Jogador brasileiro, Capítulo 3 — Ranger, p. 49",
+    "status": "audited"
   }
 ]
