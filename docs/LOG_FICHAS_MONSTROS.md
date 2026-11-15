@@ -855,3 +855,197 @@ As fichas-base devem ser reutilizadas por ID sempre que a tabela pedir apenas um
 - A nova execução confirmou outra expectativa excessivamente literal no teste: a ficha registra “neutralizar veneno (CD 21, nível de conjurador 8º)”, portanto a sequência “neutralizar veneno (CD 21)” sem a vírgula não existe no texto.
 - Ajustada somente a expressão esperada no teste para corresponder ao texto efetivamente registrado.
 - O conteúdo da ficha, a CD 21 e o nível de conjurador 8º foram preservados.
+
+
+## 2026-11-14 — Trigésima quinta etapa: cinco criaturas (Vargouille a Vulto Alado)
+
+- Fonte: Livro dos Monstros brasileiro, páginas impressas 251–257 (PDF fornecido).
+- Preenchidas Descrição e Combate de cinco registros existentes: Vargouille, Verme Púrpura, Vinha Assassina, Rastejante Noturno e Vulto Alado.
+- Vargouille: silvo, beijo e metamorfose, veneno e condições para interromper/reverter a transformação.
+- Verme Púrpura: agarrar aprimorado, veneno, engolir, dano digestivo, capacidade interna e bônus de Natação.
+- Vinha Assassina: constrição, enredar, agarrar aprimorado, percepção às cegas e camuflagem.
+- Rastejante Noturno: drenagem de energia, agarrar, veneno e escape do interior.
+- Vulto Alado: drenagem de magia, habilidades similares à magia, invocação de mortos-vivos e bônus de Esconder-se noturno.
+- Os blocos de estatísticas existentes foram preservados. O Verme do Gelo foi deixado para a etapa seguinte porque a extração textual disponível apresentou trechos intercalados e precisa de conferência visual antes de transcrição.
+- Adicionado teste de regressão para os cinco registros e seus efeitos distintivos.
+- Contagem de partida: 320 fichas; 225 completas; 95 pendentes. Esta etapa acrescenta cinco fichas completas, totalizando 230 completas e 90 pendentes.
+
+
+## 2026-11-14 — Continuação: Verme do Gelo
+
+- Fonte: Livro dos Monstros brasileiro, página impressa 253 (PDF, seção do Verme do Gelo).
+- Preenchidas Descrição e Combate do registro existente Verme do Gelo.
+- Incluídos habitat, alimentação, escavação, túneis, ovos, maturidade e uso como montaria; no combate, Trinado, Frio, Sopro e Espasmos de Morte, com alcances, frequências, CDs e danos transcritos da fonte.
+- Preservados os campos de estatísticas-base existentes.
+- Adicionado teste de regressão específico para as habilidades distintivas e valores da ficha.
+- Contagem após esta etapa: 320 criaturas; 231 com Descrição e Combate completos; 89 pendentes.
+
+
+## 2026-11-14 — Trigésima sexta etapa: Worg, Wyvern e Yrthak
+
+- Fonte primária: Livro dos Monstros brasileiro, páginas impressas 258–260 e 262–263 (PDF fornecido; páginas PDF 262–264 e 266–267).
+- Preenchidas Descrição e Combate dos três registros existentes, sem criar duplicatas nem substituir blocos estatísticos.
+- Worg: incluídos aparência, dimensões, peso, idioma, caça em matilha, tática de desgaste, Imobilização (Ext), bônus raciais e interação entre Faro e Sobrevivência.
+- Wyvern: incluídos anatomia, dimensões, envergadura, peso, idioma, agressividade, Investida Aérea, Agarrar Aprimorado e veneno (Fortitude CD 17; 2d6 Constituição).
+- Yrthak: incluídos cegueira, percepção sonora, órgão sensorial, habitat, dieta e dimensões; Combate registra Rajada Sônica (18 m; 6d6; intervalo de 2 rodadas), Explosão (raio de 3 m; 2d6 perfurante), Percepção às Cegas (36 m), imunidades visuais e consequências de neutralizar sua audição.
+- Adicionado teste de regressão para as três fichas e suas capacidades distintivas.
+- Nenhuma estatística-base, ND, tendência, progressão ou vínculo de criatura foi alterado.
+- Contagem após esta etapa: 320 criaturas; 234 com Descrição e Combate completos; 86 ainda precisam de ao menos um desses campos.
+
+
+## 2026-11-14 — Trigésima sétima etapa: onze animais (Águia a Camelo)
+
+- Fonte primária: Livro dos Monstros brasileiro, páginas impressas 269–271 (PDF fornecido, páginas 273–275).
+- Preenchidas Descrição e Combate de onze registros existentes: Águia, Arminho, Arraia, Babuíno, Baleia Azul, Baleia Cachalote, Baleia Orca, Bisão, Cachorro, Cachorro de Montaria e Camelo.
+- Águia: habitat, ninho, dimensões, mergulho e bônus de Observar.
+- Arminho: presas, Adesão, consequências defensivas enquanto permanece preso e bônus de perícias.
+- Arraia: alimentação filtradora, comportamento pacífico, encontrão defensivo e regras de Natação.
+- Babuíno: comportamento terrestre e em grupo, dimensões e bônus de Escalar.
+- Baleias: diferenciadas as espécies filtradoras, o cachalote e a orca predadora; registradas Percepção às Cegas (36 m), Prender a Respiração, bônus de Natação e os bônus de Ouvir/Observar com sua condição de perda.
+- Bisão: comportamento do rebanho e Estouro da Manada (1d12 por cinco animais; Reflexos CD 16 para reduzir à metade).
+- Cachorro e Cachorro de Montaria: caça em matilha, bônus de perícia, Imobilização para cães treinados, combate com cavaleiro e capacidade de carga.
+- Camelo: distinção entre dromedário e camelo de duas corcovas, adaptação ambiental e capacidade de carga; o verbete não descreve habilidade especial de combate.
+- Adicionado teste de regressão cobrindo as onze fichas e seus detalhes distintivos.
+- Nenhum bloco estatístico, ND, tendência, progressão ou vínculo foi alterado.
+- Contagem após esta etapa: 320 criaturas; 245 com Descrição e Combate completos; 75 ainda precisam de ao menos um desses campos.
+
+
+## 2026-11-15 — Trigésima oitava etapa: dez animais (Carcajú a Elefante)
+
+- Fonte primária: Livro dos Monstros brasileiro, páginas impressas 272–275 (PDF fornecido, páginas 276–279).
+- Preenchidas Descrição e Combate de dez registros existentes: Carcajú, Cavalo Pesado, Cavalo Leve, Cavalo de Guerra Pesado, Cavalo de Guerra Leve, Cobra Constritora, Cobra Constritora Gigante, Crocodilo, Crocodilo Gigante e Elefante.
+- Carcajú: parentesco com texugos, habitat, Fúria (Ext), bônus de Força/Constituição, penalidade na CA e perícia Escalar.
+- Cavalos: distinção entre portes, exemplos, idade de maturidade para trabalho pesado, treinamento de guerra, capacidade de combater transportando cavaleiro, teste de Cavalgar e capacidades de carga/arrasto transcritas dos respectivos verbetes.
+- Cobras: comportamento geral e habilidades comuns de perícia; para constritoras, tática de captura, Constrição (1d3+4 ou 1d8+10) e Agarrar Aprimorado.
+- Crocodilos: emboscada parcialmente submersa, Agarrar Aprimorado, tentativa de afogamento, Prender a Respiração (4 x Constituição), bônus de Natação e camuflagem aquática; crocodilo gigante mantém o comportamento e as capacidades descritos para o crocodilo.
+- Elefante: distinção entre africano e indiano, uso como montaria/carga, representação de mamutes e mastodontes e Atropelar (2d8+15; Reflexos CD 25 para metade).
+- Adicionado teste de regressão cobrindo as dez fichas e seus detalhes distintivos.
+- Preservados todos os blocos estatísticos, ND, tendências, progressões e vínculos existentes.
+- Contagem após esta etapa: 320 criaturas; 255 com Descrição e Combate completos; 65 ainda precisam de ao menos um desses campos.
+
+
+## 2026-11-15 — Trigésima nona etapa: dez animais (Carcajú a Elefante)
+
+- Fonte primária: Livro dos Monstros brasileiro, páginas impressas 272–275 (PDF páginas 276–279).
+- Preenchidas Descrição e Combate de Carcajú, Cavalo Pesado, Cavalo Leve, Cavalo de Guerra Pesado, Cavalo de Guerra Leve, Cobra Constritora, Cobra Constritora Gigante, Crocodilo, Crocodilo Gigante e Elefante.
+- Registradas Fúria do carcajú; distinções de porte, treinamento, combate montado e capacidades de carga/arrasto dos quatro cavalos; Constrição e Agarrar Aprimorado das cobras; emboscada, afogamento, Prender a Respiração e perícias aquáticas dos crocodilos; e Atropelar do elefante.
+- As descrições respeitam os textos de cada verbete; crocodilo gigante compartilha as capacidades do crocodilo comum conforme indicado pela fonte.
+- Adicionado teste de regressão para os dez registros.
+- Revisão da execução de CI identificou falha no teste anterior de Arminho: a regra estava correta, mas a expectativa procurava literalmente “CA 12” enquanto a descrição dizia “passa a 12”. A redação foi ajustada para “será reduzida para CA 12” e o teste atualizado para verificar essa formulação explícita.
+- Preservados os blocos estatísticos e demais campos mecânicos.
+- Contagem após esta etapa: 320 criaturas; 255 com Descrição e Combate completos; 65 pendentes.
+
+## 2026-11-15 — Quadragésima etapa: dez animais (Coruja a Jumento)
+
+- Fonte primária: Livro dos Monstros brasileiro, páginas impressas 274–277 (PDF páginas 278–281).
+- Preenchidas Descrição e Combate de Coruja, Corvo, Falcão, Gato, Golfinho, Gorila, Guepardo, Hiena, Javali e Jumento.
+- Aves: dimensões, padrão de ataque das garras e bônus de perícia das corujas e falcões; porte e uso das garras do corvo.
+- Gato: comportamento de espreita e bônus de perícias, incluindo o bônus adicional em vegetação alta.
+- Golfinho: comportamento, dimensões, Percepção às Cegas (36 m), Prender a Respiração (6 x Constituição), Natação e bônus de Ouvir/Observar.
+- Gorila: comportamento agressivo, dimensões e bônus de Escalar.
+- Guepardo: tática de investida, Imobilização e Impulso (150 m, uma vez por hora).
+- Hiena: caça em matilha, tática de flanqueamento, Imobilização (+2) e bônus de Esconder-se em vegetação alta.
+- Javali: aparência, comportamento e Ferocidade (Ext).
+- Jumento: descrição, mordida apenas como último recurso, capacidade de carga/arrasto e bônus de Equilíbrio.
+- Adicionado teste de regressão para as dez fichas.
+- Preservados os blocos estatísticos e demais campos mecânicos.
+- Contagem após esta etapa: 320 criaturas; 265 com Descrição e Combate completos; 55 pendentes.
+
+
+## 2026-11-15 — Quadragésima primeira etapa: dez fichas complementadas com fontes externas (Puro Sangue a Mula)
+
+- Condição da etapa: o PDF do Livro dos Monstros não estava disponível para extração; para manter o avanço, foram consultadas referências externas de D&D 3.5.
+- Fonte principal de regras: d20 SRD 3.5 (Open Game Content), verbetes Lizard, Lion, Leopard, Wolf, Squid, Squid, Giant, Monkey, Bat e Mule:
+  - https://www.d20srd.org/srd/monsters/lizard.htm
+  - https://www.d20srd.org/srd/monsters/lion.htm
+  - https://www.d20srd.org/srd/monsters/leopard.htm
+  - https://www.d20srd.org/srd/monsters/wolf.htm
+  - https://www.d20srd.org/srd/monsters/squid.htm
+  - https://www.d20srd.org/srd/monsters/squidGiant.htm
+  - https://www.d20srd.org/srd/monsters/monkey.htm
+  - https://www.d20srd.org/srd/monsters/bat.htm
+  - https://www.d20srd.org/srd/monsters/mule.htm
+- Para Puro Sangue (Yuan-ti Pureblood), foi usada a referência D&D 3.5, Monster Manual v.3.5, p. 263, com apoio de https://new.dndtools.org/monsters/yuan-ti-pureblood-519 e https://www.d20srd.org/srd/specialAbilities.htm.
+- Preenchidas Descrição e Combate de dez registros já existentes: Puro Sangue, Lagarto, Leão, Leopardo, Lobo, Lula, Lula Gigante, Macaco, Morcego e Mula.
+- Puro Sangue: identidade como yuan-ti de aparência humanoide, infiltração e espionagem; táticas de emboscada e combate à distância; habilidades similares à magia, Alterar Forma, Detectar Veneno e Resistência à Magia.
+- Animais terrestres: comportamento de fuga ou caça, medidas aproximadas, habitats, organização, ataques, manobras especiais e bônus raciais de perícia conforme os verbetes SRD.
+- Lulas: Agarrar Aprimorado, Constrição da lula gigante, nuvem de tinta, propulsão e regras de recuperação de tentáculos.
+- Morcego: Sentido Cego de 6 m e condição dos bônus de Ouvir/Observar; Mula: natureza híbrida estéril, uso como animal de carga, capacidade de carga/arrasto e bônus para evitar quedas.
+- Os dados estatísticos existentes foram preservados. Nenhuma criatura foi duplicada.
+- Adicionado teste de regressão cobrindo os dez registros e detalhes mecânicos característicos.
+- Contagem após esta etapa: 320 criaturas; 275 com Descrição e Combate preenchidos; 45 ainda pendentes.
+- Observação de proveniência: esta etapa usa fontes externas e não substitui a conferência posterior com o Livro dos Monstros brasileiro; eventuais diferenças de tradução ou redação serão reconciliadas quando o PDF voltar a estar acessível.
+
+
+## 2026-11-15 — Quadragésima segunda etapa: dez animais complementados com SRD (Polvo a Urso Marrom)
+
+- Continuidade da auditoria externa enquanto a extração do PDF brasileiro permanece indisponível.
+- Fonte: SRD 3.5, seção Monsters (Animals), Open Game Content: https://palikhov.github.io/srd-v3.5/monsters/monsters-animals.html (verbetes Octopus, Octopus, Giant, Pony, Pony, War, Rat, Rhinoceros, Toad, Badger, Tiger e Bear, Brown).
+- Preenchidas Descrição e Combate de dez registros existentes: Polvo, Polvo Gigante, Pônei, Pônei de Guerra, Rato, Rinoceronte, Sapo, Texugo, Tigre e Urso Marrom.
+- Polvos: comportamento de fuga/territorialidade, Agarrar Aprimorado, Constrição, nuvem de tinta, propulsão e vulnerabilidade dos tentáculos.
+- Equídeos: distinção entre pônei comum e de guerra, restrição de combate com cavaleiro e capacidades de carga/arrasto.
+- Rato e sapo: comportamento evasivo, mobilidade e bônus raciais do rato; natureza anfíbia, alimentação e camuflagem do sapo.
+- Rinoceronte: perfil do rinoceronte-negro-africano, dimensões, peso e Investida Poderosa (4d6+24).
+- Texugo: escavação, dimensões, Fúria (Ext) e bônus de Arte da Fuga.
+- Tigre e urso-marrom: táticas predatórias, Agarrar Aprimorado, Bote e Rasgar do tigre; porte, territorialidade e bônus de Natação do urso.
+- Estatísticas-base, ND, tendência, progressão e vínculos foram preservados; nenhuma duplicata foi criada.
+- Adicionado teste de regressão para as dez fichas.
+- Observação: conteúdo narrativo e de combate derivado do SRD 3.5; revisar a terminologia e diferenças específicas com o Livro dos Monstros brasileiro quando o PDF estiver disponível.
+- Contagem após esta etapa: 320 criaturas; 285 com Descrição e Combate preenchidos; 35 ainda pendentes.
+
+
+## 2026-11-15 — Quadragésima terceira etapa: dez fichas complementadas com SRD (Urso Negro a Víbora Pequena)
+
+- Fontes consultadas:
+  - SRD 3.5 — Animals: https://palikhov.github.io/srd-v3.5/monsters/monsters-animals.html (Bear, Black; Bear, Polar; Lizard, Monitor; Shark; Viper Snake).
+  - SRD 3.5 — Vermin: https://palikhov.github.io/srd-v3.5/monsters/monsters-vermin.html (Giant Fire Beetle; Giant Wasp).
+- Preenchidas Descrição e Combate de dez registros existentes: Urso Negro, Urso Polar, Vaga-lume Gigante, Vespa Gigante, Lagarto-Monitor, Tubarão Médio, Tubarão Grande, Tubarão Enorme, Víbora Miúda e Víbora Pequena.
+- Ursos: comportamento defensivo do urso-negro, dieta e pelagem; camuflagem nevada, agarrar aprimorado e mobilidade aquática do urso-polar.
+- Vaga-lume gigante: glândulas luminosas, persistência da luz por 1d6 dias e raio de iluminação de 3 m; Vespa gigante: comportamento de caça e transporte de vítimas, veneno (CD 14, 1d6 Destreza).
+- Lagarto-monitor: porte carnívoro, comportamento agressivo, natação e bônus raciais.
+- Tubarões: distinção de porte entre as três categorias, tática de perseguição, Sentido Cego de 9 m, Faro Aguçado e regras de Natação.
+- Víboras: comportamento evasivo e veneno (CD 10, 1d6 Constituição), além dos bônus raciais de perícia.
+- Dados estatísticos, ND, tendência, progressão e vínculos originais preservados. Nenhuma criatura duplicada.
+- Testes de regressão adicionados para os dez registros.
+- Nota de fidelidade: nomes e dados-base foram mantidos conforme o catálogo existente; esta etapa usa texto de SRD 3.5 em tradução própria. As fichas do Livro dos Monstros brasileiro devem ser conferidas novamente quando o PDF estiver disponível.
+- Contagem após esta etapa: 320 criaturas; 295 com Descrição e Combate preenchidos; 25 ainda pendentes.
+
+
+## 2026-11-15 — Quadragésima quarta etapa: dez fichas complementadas com SRD (Víbora Média a Escorpião Colossal)
+
+- Fonte: SRD 3.5 — Animals, verbete Viper Snake: https://palikhov.github.io/srd-v3.5/monsters/monsters-animals.html.
+- Fonte: SRD 3.5 — Vermin, verbete Monstrous Scorpion: https://palikhov.github.io/srd-v3.5/monsters/monsters-vermin.html.
+- Preenchidas Descrição e Combate de dez registros existentes: Víbora Média, Víbora Grande, Víbora Enorme e sete categorias de Escorpião Monstruoso (Miúdo, Pequeno, Médio, Grande, Enorme, Imenso e Colossal).
+- Víboras: comportamento evasivo, ataque venenoso, dano inicial e secundário de 1d6 Constituição; CD 11 para médias/grandes e CD 14 para enormes, além de bônus raciais de perícia.
+- Escorpiões: comportamento agressivo e investidas; pinças, ferrão, Constrição automática em Agarrar, Agarrar Aprimorado, uso do melhor modificador entre Força e Destreza, Sentido Sísmico de 18 m e veneno variável por categoria.
+- Valores específicos de constrição e veneno registrados conforme as tabelas do SRD: CDs 12/12/13/14/18/23/33; dano de Constituição 1/1d2/1d3/1d4/1d6/1d8/1d10.
+- Dados estatísticos, ND, tendência, progressão e vínculos preservados; nenhuma duplicata criada.
+- Testes de regressão adicionados para os dez registros.
+- Observação: conteúdo externo traduzido para pt-BR; confirmar terminologia e consistência com a edição brasileira do Livro dos Monstros quando o PDF estiver disponível.
+- Contagem após esta etapa: 320 criaturas; 305 com Descrição e Combate preenchidos; 15 ainda pendentes.
+
+
+## 2026-11-15 — Quadragésima quinta etapa: quatorze fichas de aracnídeos e centopeias completadas com SRD
+
+- Fonte: SRD 3.5 — Vermin: https://palikhov.github.io/srd-v3.5/monsters/monsters-vermin.html (Monstrous Spider e Monstrous Centipede).
+- Preenchidas Descrição e Combate de sete categorias de Aranha Monstruosa (Miúda, Pequena, Média, Grande, Enorme, Imensa e Colossal) e sete categorias de Centopeia Monstruosa (Miúda, Pequena, Média, Grande, Enorme, Imensa e Colossal).
+- Aranhas: predadores agressivos; distinção entre caçadoras e tecedeiras; mordida venenosa com dano inicial/secundário e CD por tamanho; teias, limites de uso, alcance, escape/rompimento, locomoção pela própria teia e Sentido Sísmico de 18 m.
+- Centopeias: comportamento predatório subterrâneo, mordida venenosa, visão no escuro, imunidade mental de vermes e bônus raciais de perícia.
+- Tabelas de veneno das aranhas preservadas por tamanho: CD 10/10/12/13/16/20/28 e dano 1d2/1d3/1d4/1d6/1d8/2d6/2d8 Força.
+- Tabelas de veneno das centopeias preservadas por tamanho: CD 10/10/10/11/14/17/23 e dano 1/1d2/1d3/1d4/1d6/1d8/2d6 Destreza.
+- Estatísticas, ND, tendência, progressão e vínculos existentes não foram alterados. Nenhuma criatura duplicada.
+- Testes de regressão adicionados para as 14 fichas.
+- Nota: descrições e regras foram traduzidas do SRD 3.5; revisar terminologia brasileira quando o PDF estiver novamente acessível.
+- Contagem após esta etapa: 320 criaturas; 319 com Descrição e Combate preenchidos; 1 ainda pendente (Texugo Atroz).
+
+
+## 2026-11-15 — Quadragésima sexta etapa: conclusão do preenchimento de Descrição e Combate
+
+- Fonte principal: Livro dos Monstros 3.5, verbete Texugo Atroz, p. 62; conferência externa temporária em https://palikhov.github.io/srd-v3.5/monsters/monsters-di-do.html e https://www.dndtools.one/index.php/monsters-npcs/badger-dire-84.
+- Preenchidas Descrição e Combate da última ficha pendente: Texugo Atroz.
+- Descrição: constituição robusta, pelagem espessa, patas com garras, focinho, comportamento territorial, dimensões, peso e escavação em materiais mais macios que rocha.
+- Combate: ataques de garras e mordida, Fúria (Ext) com +4 Força/+4 Constituição e –2 CA, sem encerramento voluntário.
+- Correção de consistência estatística: o catálogo registrava 3d8+15 com 23 PV; o bloco do Livro dos Monstros/SRD informa 28 PV. O campo hitPoints foi corrigido para 28, sem alterar os demais atributos.
+- Teste de regressão criado para descrição, fúria, escavação e PV.
+- Resultado: 320/320 registros com os campos Descrição e Combate preenchidos. Esta contagem não significa que todos os campos estatísticos de todas as fichas já tenham sido auditados.
+- Proveniência: os últimos lotes de animais e vermes foram preenchidos com SRD 3.5 e fontes de referência de D&D 3.5, em tradução própria. A terminologia e a fidelidade editorial deverão ser revisadas contra o PDF brasileiro quando a extração estiver disponível.

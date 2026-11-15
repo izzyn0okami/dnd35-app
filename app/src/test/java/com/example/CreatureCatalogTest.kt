@@ -692,4 +692,414 @@ class CreatureCatalogTest {
         assertTrue(CreatureCatalog.byId("ursocoruja")!!.description.contains("CD 30"))
     }
 
+    
+    @Test
+    fun fiveVMonsterSheetsHaveBookBasedNarrativeAndCombat() {
+        val vargouille = CreatureCatalog.byId("vargouille")!!
+        assertTrue(vargouille.description.contains("Carceri"))
+        assertTrue(vargouille.combat.contains("Silvo (Sob)"))
+        assertTrue(vargouille.combat.contains("Fortitude CD 15"))
+
+        val verme = CreatureCatalog.byId("verme-purpura")!!
+        assertTrue(verme.description.contains("20 toneladas"))
+        assertTrue(verme.combat.contains("Engolir (Ext)"))
+        assertTrue(verme.combat.contains("Fortitude CD 25"))
+
+        val vinha = CreatureCatalog.byId("vinha-assassina")!!
+        assertTrue(vinha.description.contains("vinho tóxico"))
+        assertTrue(vinha.combat.contains("Percepção às Cegas"))
+        assertTrue(vinha.combat.contains("Observar CD 20"))
+
+        val rastejante = CreatureCatalog.byId("rastejante-noturno")!!
+        assertTrue(rastejante.description.contains("30 m de comprimento"))
+        assertTrue(rastejante.combat.contains("Drenar Energia"))
+        assertTrue(rastejante.combat.contains("Fortitude CD 22"))
+
+        val vulto = CreatureCatalog.byId("vulto-alado")!!
+        assertTrue(vulto.description.contains("12 m"))
+        assertTrue(vulto.combat.contains("Drenar Magia"))
+        assertTrue(vulto.combat.contains("nível de conjurador 17º"))
+    }
+    
+    @Test
+    fun iceWormHasBookBasedDescriptionAndCombatAbilities() {
+        val worm = CreatureCatalog.byId("verme-do-gelo")!!
+        assertTrue(worm.description.contains("branco-azulada"))
+        assertTrue(worm.description.contains("4 toneladas"))
+        assertTrue(worm.combat.contains("Trinado (Sob)"))
+        assertTrue(worm.combat.contains("Vontade CD 17"))
+        assertTrue(worm.combat.contains("15d6"))
+        assertTrue(worm.combat.contains("Espasmos de Morte"))
+        assertTrue(worm.combat.contains("8d6"))
+    }
+    
+    @Test
+    fun worgWyvernAndYrthakHaveCompleteBookBasedNarrativeAndCombat() {
+        val worg = CreatureCatalog.byId("worg")!!
+        assertTrue(worg.description.contains("150 kg"))
+        assertTrue(worg.combat.contains("Imobilização (Ext)"))
+        assertTrue(worg.combat.contains("+4 racial em Sobrevivência"))
+
+        val wyvern = CreatureCatalog.byId("wyvern")!!
+        assertTrue(wyvern.description.contains("6 m"))
+        assertTrue(wyvern.combat.contains("Fortitude CD 17"))
+        assertTrue(wyvern.combat.contains("2d6 pontos de dano temporário de Constituição"))
+
+        val yrthak = CreatureCatalog.byId("yrthak")!!
+        assertTrue(yrthak.description.contains("12 m de envergadura"))
+        assertTrue(yrthak.combat.contains("Rajada Sônica (Sob)"))
+        assertTrue(yrthak.combat.contains("Percepção às Cegas (Ext)"))
+        assertTrue(yrthak.combat.contains("36 m"))
+    }
+
+    
+    @Test
+    fun elevenAnimalSheetsHaveBookBasedDescriptionAndCombat() {
+        val eagle = CreatureCatalog.byId("aguia")!!
+        assertTrue(eagle.description.contains("2,1 m"))
+        assertTrue(eagle.combat.contains("+8 de bônus racial em Observar"))
+
+        val ermine = CreatureCatalog.byId("arminho")!!
+        assertTrue(ermine.combat.contains("Adesão (Ext)"))
+        assertTrue(ermine.combat.contains("será reduzida para CA 12"))
+
+        val ray = CreatureCatalog.byId("arraia")!!
+        assertTrue(ray.description.contains("plâncton"))
+        assertTrue(ray.combat.contains("+8 de bônus racial em Natação"))
+
+        val baboon = CreatureCatalog.byId("babuino")!!
+        assertTrue(baboon.description.contains("45 kg"))
+        assertTrue(baboon.combat.contains("+8 de bônus racial em Escalar"))
+
+        val blueWhale = CreatureCatalog.byId("baleia-azul")!!
+        assertTrue(blueWhale.combat.contains("Percepção às Cegas"))
+        assertTrue(blueWhale.combat.contains("36 m"))
+
+        val spermWhale = CreatureCatalog.byId("baleia-cachalote")!!
+        assertTrue(spermWhale.description.contains("13 m"))
+        assertTrue(spermWhale.combat.contains("Prender a Respiração"))
+
+        val orca = CreatureCatalog.byId("baleia-orca")!!
+        assertTrue(orca.description.contains("outras baleias"))
+        assertTrue(orca.combat.contains("36 m"))
+
+        val bison = CreatureCatalog.byId("bisao")!!
+        assertTrue(bison.description.contains("1,2 tonelada"))
+        assertTrue(bison.combat.contains("1d12"))
+
+        val dog = CreatureCatalog.byId("cachorro")!!
+        assertTrue(dog.description.contains("10 e 25 kg"))
+        assertTrue(dog.combat.contains("Sobrevivência"))
+
+        val ridingDog = CreatureCatalog.byId("cachorro-de-montaria")!!
+        assertTrue(ridingDog.combat.contains("750 kg"))
+        assertTrue(ridingDog.combat.contains("Imobilização"))
+
+        val camel = CreatureCatalog.byId("camelo")!!
+        assertTrue(camel.description.contains("dromedário"))
+        assertTrue(camel.combat.contains("2.250 kg"))
+    }
+
+    
+    @Test
+    fun tenAnimalSheetsHaveBookBasedDescriptionAndCombat() {
+        val carcaju = CreatureCatalog.byId("carcaju")!!
+        assertTrue(carcaju.description.contains("florestas frias"))
+        assertTrue(carcaju.combat.contains("Fúria (Ext)"))
+        assertTrue(carcaju.combat.contains("+4 de Força"))
+
+        val heavyHorse = CreatureCatalog.byId("cavalo-pesado")!!
+        assertTrue(heavyHorse.description.contains("Clydesdales"))
+        assertTrue(heavyHorse.combat.contains("1.500 kg"))
+
+        val lightHorse = CreatureCatalog.byId("cavalo-leve")!!
+        assertTrue(lightHorse.description.contains("pangarés"))
+        assertTrue(lightHorse.combat.contains("1.125 kg"))
+
+        val heavyWarHorse = CreatureCatalog.byId("cavalo-de-guerra-pesado")!!
+        assertTrue(heavyWarHorse.description.contains("treinado"))
+        assertTrue(heavyWarHorse.combat.contains("teste de Cavalgar"))
+        assertTrue(heavyWarHorse.combat.contains("2.250 kg"))
+
+        val lightWarHorse = CreatureCatalog.byId("cavalo-de-guerra-leve")!!
+        assertTrue(lightWarHorse.description.contains("agressividade"))
+        assertTrue(lightWarHorse.combat.contains("1.725 kg"))
+
+        val constrictor = CreatureCatalog.byId("cobra-constritora")!!
+        assertTrue(constrictor.description.contains("jiboia"))
+        assertTrue(constrictor.combat.contains("Constrição (Ext)"))
+        assertTrue(constrictor.combat.contains("1d3+4"))
+
+        val giantConstrictor = CreatureCatalog.byId("cobra-constritora-gigante")!!
+        assertTrue(giantConstrictor.combat.contains("1d8+10"))
+        assertTrue(giantConstrictor.combat.contains("Agarrar Aprimorado (Ext)"))
+
+        val crocodile = CreatureCatalog.byId("crocodilo")!!
+        assertTrue(crocodile.description.contains("3 m a 3,5 m"))
+        assertTrue(crocodile.combat.contains("4 vezes seu valor de Constituição"))
+        assertTrue(crocodile.combat.contains("+10 de bônus de cobertura"))
+
+        val giantCrocodile = CreatureCatalog.byId("crocodilo-gigante")!!
+        assertTrue(giantCrocodile.description.contains("6 m"))
+        assertTrue(giantCrocodile.combat.contains("como os crocodilos comuns"))
+
+        val elephant = CreatureCatalog.byId("elefante")!!
+        assertTrue(elephant.description.contains("mamutes e mastodontes"))
+        assertTrue(elephant.combat.contains("Reflexos CD 25"))
+        assertTrue(elephant.combat.contains("2d8+15"))
+    }
+
+    
+    @Test
+    fun tenMoreAnimalSheetsHaveBookBasedDescriptionAndCombat() {
+        val owl = CreatureCatalog.byId("coruja")!!
+        assertTrue(owl.description.contains("30 cm a 60 cm"))
+        assertTrue(owl.combat.contains("+14 em Furtividade"))
+
+        val raven = CreatureCatalog.byId("corvo")!!
+        assertTrue(raven.description.contains("1,2 m"))
+        assertTrue(raven.combat.contains("duas garras"))
+
+        val falcon = CreatureCatalog.byId("falcao")!!
+        assertTrue(falcon.description.contains("40 cm e 60 cm"))
+        assertTrue(falcon.combat.contains("+8 de bônus racial em Observar"))
+
+        val cat = CreatureCatalog.byId("gato")!!
+        assertTrue(cat.combat.contains("surpreender suas presas"))
+        assertTrue(cat.combat.contains("+8 em Saltar e Equilíbrio"))
+
+        val dolphin = CreatureCatalog.byId("golfinho")!!
+        assertTrue(dolphin.description.contains("55 kg e 80 kg"))
+        assertTrue(dolphin.combat.contains("6 vezes seu valor de Constituição"))
+        assertTrue(dolphin.combat.contains("36 m"))
+
+        val gorilla = CreatureCatalog.byId("gorila")!!
+        assertTrue(gorilla.description.contains("150 kg e 200 kg"))
+        assertTrue(gorilla.combat.contains("+8 de bônus racial em Escalar"))
+
+        val cheetah = CreatureCatalog.byId("guepardo")!!
+        assertTrue(cheetah.combat.contains("Impulso (Ext)"))
+        assertTrue(cheetah.combat.contains("150 m"))
+
+        val hyena = CreatureCatalog.byId("hiena")!!
+        assertTrue(hyena.description.contains("hiena-listrada"))
+        assertTrue(hyena.combat.contains("Imobilização (Ext)"))
+        assertTrue(hyena.combat.contains("+2 no teste"))
+
+        val boar = CreatureCatalog.byId("javali")!!
+        assertTrue(boar.description.contains("pelos espessos e acinzentados"))
+        assertTrue(boar.combat.contains("Ferocidade (Ext)"))
+
+        val donkey = CreatureCatalog.byId("jumento")!!
+        assertTrue(donkey.description.contains("orelhas longas"))
+        assertTrue(donkey.combat.contains("375 kg"))
+    }
+
+
+    @Test
+    fun tenMonsterSheetsHaveExternalSrdBasedDescriptionAndCombat() {
+        val pureblood = CreatureCatalog.byId("puro-sangue")!!
+        assertTrue(pureblood.description.contains("espiões"))
+        assertTrue(pureblood.combat.contains("Alterar Forma"))
+        assertTrue(pureblood.combat.contains("Resistência à Magia 14"))
+
+        val lizard = CreatureCatalog.byId("lagarto")!!
+        assertTrue(lizard.description.contains("iguanas"))
+        assertTrue(lizard.combat.contains("+8 de bônus racial em Equilíbrio"))
+
+        val lion = CreatureCatalog.byId("leao")!!
+        assertTrue(lion.combat.contains("Bote (Ext)"))
+        assertTrue(lion.combat.contains("rasgar"))
+
+        val leopard = CreatureCatalog.byId("leopardo")!!
+        assertTrue(leopard.description.contains("onças"))
+        assertTrue(leopard.combat.contains("Agarrar Aprimorado (Ext)"))
+
+        val wolf = CreatureCatalog.byId("lobo")!!
+        assertTrue(wolf.combat.contains("flancos"))
+        assertTrue(wolf.combat.contains("Imobilização (Ext)"))
+
+        val squid = CreatureCatalog.byId("lula")!!
+        assertTrue(squid.combat.contains("Nuvem de Tinta (Ext)"))
+        assertTrue(squid.combat.contains("72 m"))
+
+        val giantSquid = CreatureCatalog.byId("lula-gigante")!!
+        assertTrue(giantSquid.combat.contains("1d6+8"))
+        assertTrue(giantSquid.combat.contains("96 m"))
+
+        val monkey = CreatureCatalog.byId("macaco")!!
+        assertTrue(monkey.combat.contains("+8 racial em Equilíbrio"))
+
+        val bat = CreatureCatalog.byId("morcego")!!
+        assertTrue(bat.combat.contains("Sentido Cego (Ext)"))
+        assertTrue(bat.combat.contains("6 m"))
+
+        val mule = CreatureCatalog.byId("mula")!!
+        assertTrue(mule.description.contains("cruzamento estéril"))
+        assertTrue(mule.combat.contains("1.575 kg"))
+    }
+
+
+    @Test
+    fun tenMoreAnimalSheetsHaveExternalSrdBasedDescriptionAndCombat() {
+        val octopus = CreatureCatalog.byId("polvo")!!
+        assertTrue(octopus.description.contains("fundo"))
+        assertTrue(octopus.combat.contains("Nuvem de Tinta (Ext)"))
+        assertTrue(octopus.combat.contains("60 m"))
+
+        val giantOctopus = CreatureCatalog.byId("polvo-gigante")!!
+        assertTrue(giantOctopus.description.contains("ventosas"))
+        assertTrue(giantOctopus.combat.contains("2d8+6"))
+        assertTrue(giantOctopus.combat.contains("quatro tentáculos"))
+
+        val pony = CreatureCatalog.byId("ponei")!!
+        assertTrue(pony.description.contains("cavalo pequeno"))
+        assertTrue(pony.combat.contains("510 kg"))
+
+        val warPony = CreatureCatalog.byId("ponei-de-guerra")!!
+        assertTrue(warPony.description.contains("agressividade"))
+        assertTrue(warPony.combat.contains("teste de Cavalgar"))
+
+        val rat = CreatureCatalog.byId("rato")!!
+        assertTrue(rat.description.contains("onívoros"))
+        assertTrue(rat.combat.contains("+8 em Equilíbrio"))
+
+        val rhino = CreatureCatalog.byId("rinoceronte")!!
+        assertTrue(rhino.combat.contains("Investida Poderosa (Ext)"))
+        assertTrue(rhino.combat.contains("4d6+24"))
+
+        val toad = CreatureCatalog.byId("sapo")!!
+        assertTrue(toad.description.contains("inofensivos"))
+        assertTrue(toad.combat.contains("+4 de bônus racial em Esconder-se"))
+
+        val badger = CreatureCatalog.byId("texugo")!!
+        assertTrue(badger.combat.contains("Fúria (Ext)"))
+        assertTrue(badger.combat.contains("+4 em Força e Constituição"))
+
+        val tiger = CreatureCatalog.byId("tigre")!!
+        assertTrue(tiger.combat.contains("Bote (Ext)"))
+        assertTrue(tiger.combat.contains("1d8+3"))
+
+        val brownBear = CreatureCatalog.byId("urso-marrom")!!
+        assertTrue(brownBear.description.contains("urso-cinzento"))
+        assertTrue(brownBear.combat.contains("Agarrar Aprimorado (Ext)"))
+    }
+
+
+    @Test
+    fun tenMoreMonsterSheetsHaveExternalSrdDetails() {
+        val blackBear = CreatureCatalog.byId("urso-negro")!!
+        assertTrue(blackBear.description.contains("onívoro"))
+        assertTrue(blackBear.combat.contains("+4 de bônus racial em testes de Natação"))
+
+        val polarBear = CreatureCatalog.byId("urso-polar")!!
+        assertTrue(polarBear.combat.contains("+12 racial em Esconder-se"))
+        assertTrue(polarBear.combat.contains("Agarrar Aprimorado (Ext)"))
+
+        val fireBeetle = CreatureCatalog.byId("vaga-lume-gigante")!!
+        assertTrue(fireBeetle.description.contains("glândulas"))
+        assertTrue(fireBeetle.description.contains("1d6 dias"))
+
+        val wasp = CreatureCatalog.byId("vespa-gigante")!!
+        assertTrue(wasp.combat.contains("Fortitude CD 14"))
+        assertTrue(wasp.combat.contains("1d6 pontos de dano temporário de Destreza"))
+
+        val monitor = CreatureCatalog.byId("lagarto-monitor")!!
+        assertTrue(monitor.description.contains("carnívoras"))
+        assertTrue(monitor.combat.contains("+8 racial em Natação"))
+
+        for (id in listOf("tubarao-medio", "tubarao-grande", "tubarao-enorme")) {
+            val shark = CreatureCatalog.byId(id)!!
+            assertTrue(shark.combat.contains("Sentido Cego (Ext)"))
+            assertTrue(shark.combat.contains("1,6 km"))
+        }
+
+        for (id in listOf("vibora-miuda", "vibora-pequena")) {
+            val viper = CreatureCatalog.byId(id)!!
+            assertTrue(viper.combat.contains("Fortitude CD 10"))
+            assertTrue(viper.combat.contains("1d6 pontos de dano temporário de Constituição"))
+        }
+    }
+
+
+    @Test
+    fun tenViperAndScorpionSheetsHaveExternalSrdDetails() {
+        val viperDcs = mapOf("vibora-media" to "Fortitude CD 11", "vibora-grande" to "Fortitude CD 11", "vibora-enorme" to "Fortitude CD 14")
+        for ((id, dc) in viperDcs) {
+            val viper = CreatureCatalog.byId(id)!!
+            assertTrue(viper.description.contains("víboras"))
+            assertTrue(viper.combat.contains(dc))
+            assertTrue(viper.combat.contains("1d6 pontos de dano temporário de Constituição"))
+        }
+
+        val scorpions = mapOf(
+            "escorpiao-miudo" to ("1d2–4" to "Fortitude CD 12"),
+            "escorpiao-pequeno" to ("1d3–1" to "Fortitude CD 12"),
+            "escorpiao-medio" to ("1d4+1" to "Fortitude CD 13"),
+            "escorpiao-grande" to ("1d6+4" to "Fortitude CD 14"),
+            "escorpiao-enorme" to ("1d8+6" to "Fortitude CD 18"),
+            "escorpiao-imenso" to ("2d6+10" to "Fortitude CD 23"),
+            "escorpiao-colossal" to ("2d8+12" to "Fortitude CD 33")
+        )
+        for ((id, values) in scorpions) {
+            val scorpion = CreatureCatalog.byId(id)!!
+            assertTrue(scorpion.description.contains("desérticas"))
+            assertTrue(scorpion.combat.contains("Constrição (Ext)"))
+            assertTrue(scorpion.combat.contains(values.first))
+            assertTrue(scorpion.combat.contains(values.second))
+            assertTrue(scorpion.combat.contains("Sentido Sísmico de 18 m"))
+        }
+    }
+
+
+    @Test
+    fun fourteenSpiderAndCentipedeSheetsHaveExternalSrdDetails() {
+        val spiders = mapOf(
+            "aranha-miuda" to ("Fortitude CD 10" to "1d2 pontos de dano temporário de Força"),
+            "aranha-pequena" to ("Fortitude CD 10" to "1d3 pontos de dano temporário de Força"),
+            "aranha-media" to ("Fortitude CD 12" to "1d4 pontos de dano temporário de Força"),
+            "aranha-grande" to ("Fortitude CD 13" to "1d6 pontos de dano temporário de Força"),
+            "aranha-enorme" to ("Fortitude CD 16" to "1d8 pontos de dano temporário de Força"),
+            "aranha-imensa" to ("Fortitude CD 20" to "2d6 pontos de dano temporário de Força"),
+            "aranha-colossal" to ("Fortitude CD 28" to "2d8 pontos de dano temporário de Força")
+        )
+        for ((id, values) in spiders) {
+            val spider = CreatureCatalog.byId(id)!!
+            assertTrue(spider.description.contains("predadoras agressivas"))
+            assertTrue(spider.combat.contains(values.first))
+            assertTrue(spider.combat.contains(values.second))
+            assertTrue(spider.combat.contains("Sentido Sísmico (Ext)"))
+            assertTrue(spider.combat.contains("Arte da Fuga"))
+        }
+
+        val centipedes = mapOf(
+            "centopeia-miuda" to ("Fortitude CD 10" to "1 ponto de dano temporário de Destreza"),
+            "centopeia-pequena" to ("Fortitude CD 10" to "1d2 pontos de dano temporário de Destreza"),
+            "centopeia-media" to ("Fortitude CD 10" to "1d3 pontos de dano temporário de Destreza"),
+            "centopeia-grande" to ("Fortitude CD 11" to "1d4 pontos de dano temporário de Destreza"),
+            "centopeia-enorme" to ("Fortitude CD 14" to "1d6 pontos de dano temporário de Destreza"),
+            "centopeia-imensa" to ("Fortitude CD 17" to "1d8 pontos de dano temporário de Destreza"),
+            "centopeia-colossal" to ("Fortitude CD 23" to "2d6 pontos de dano temporário de Destreza")
+        )
+        for ((id, values) in centipedes) {
+            val centipede = CreatureCatalog.byId(id)!!
+            assertTrue(centipede.description.contains("subterrâneo"))
+            assertTrue(centipede.combat.contains(values.first))
+            assertTrue(centipede.combat.contains(values.second))
+            assertTrue(centipede.combat.contains("+8 em Escalar e Esconder-se"))
+        }
+    }
+
+
+    @Test
+    fun direBadgerSheetMatchesMonsterManualDetails() {
+        val direBadger = CreatureCatalog.byId("texugo-atroz")!!
+        assertEquals(28, direBadger.hitPoints)
+        assertTrue(direBadger.description.contains("pelagem espessa"))
+        assertTrue(direBadger.description.contains("225 kg"))
+        assertTrue(direBadger.combat.contains("Fúria (Ext)"))
+        assertTrue(direBadger.combat.contains("+4 em Força e Constituição"))
+        assertTrue(direBadger.combat.contains("3 m por rodada"))
+    }
+
 }

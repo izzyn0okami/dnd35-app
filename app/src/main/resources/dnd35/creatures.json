@@ -8991,7 +8991,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Esta criatura parece uma cabeça humana horrível e distorcida, suspensa por asas de couro. No lugar dos cabelos há tentáculos ressecados, e seus olhos ardem em chamas verdes. Os vargouilles vieram dos poços mais profundos do plano de Carceri e assombram cemitérios, ruínas e locais de morte e decadência. São ligeiramente maiores que uma cabeça humana, com quase 40 cm de altura, 1,2 m de envergadura e cerca de 5 kg. Falam Infernal.",
+    "combat": "Os vargouilles atacam com mordidas e presas retorcidas; suas armas naturais e quaisquer armas empunhadas são consideradas profanas para ignorar Redução de Dano. Silvo (Sob): em vez de morder, emite um silvo terrível. Criaturas num raio de 18 m que possam ouvi-lo e vê-lo claramente devem passar em Fortitude CD 12 ou ficam paralisadas de medo por 2d4 rodadas, até o monstro atacar, sair do alcance ou abandonar a linha de visão. Uma criatura paralisada fica vulnerável ao beijo. Beijo (Sob): contra alvo paralisado, um ataque de toque corpo a corpo inicia transformação; Fortitude CD 15 anula. A transformação ocorre em até 24 horas: cabelo cai, orelhas viram asas, surgem tentáculos e presas, a vítima perde Inteligência e Carisma e, ao final, a cabeça se separa do corpo, que morre, tornando-se um vargouille. Luz solar interrompe o processo; luz do dia apenas o retarda. Remover doença reverte a metamorfose. Veneno (Ext): mordida; Fortitude CD 12; impede recuperar naturalmente ou magicamente o dano da mordida. Neutralizar veneno ou cura completa anulam o efeito; retardar envenenamento permite cura mágica."
   },
   {
     "id": "verme-do-gelo",
@@ -9041,7 +9043,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Esta criatura longa e branco-azulada possui mandíbulas enormes e um nódulo estranho no alto da cabeça, que emite um trinado vibrante. O verme do gelo é um predador das regiões gélidas e passa a maior parte da vida escavando gelo, neve e terra congelada; emerge para atacar suas presas. Alimenta-se de iaques, ursos polares, morsas, focas e mamutes. Não se sabe se é aparentado ao verme púrpura ou ao remorhaz; odeia os remorhaz e os ataca sem provocação, em confrontos que podem destruir grandes áreas. Não consegue escavar rochas, mas atravessa gelo e terra congelada, deixando um túnel de aproximadamente 1,5 m de diâmetro. Seus ovos parecem formações ovais de gelo. Os filhotes atingem a maturidade entre 3 e 5 anos e podem ser treinados por povos das regiões frias como guardiões ou montarias, usando selas mágicas resistentes ao frio. Um adulto mede cerca de 12 m de comprimento, 1,5 m de diâmetro e pesa aproximadamente 4 toneladas.",
+    "combat": "O verme do gelo espreita sob a neve e aguarda a aproximação de uma presa. Em seguida, emite seu trinado e ataca com a mordida. Trinado (Sob): emite um som que afeta criaturas num raio de 30 m, exceto outros vermes do gelo; Vontade CD 17 evita. As vítimas ficam atordoadas enquanto o verme triná e por 1d4 rodadas após parar, mesmo se forem atacadas. Uma criatura atacada ou violentamente chacoalhada pode realizar um novo teste como ação de rodada completa. Quem resistir ou anular o efeito fica imune ao trinado daquele verme por 24 horas; nível de conjurador 14º. Frio (Ext): o corpo causa 1d8 pontos de dano adicional por frio em cada mordida; criaturas que o ataquem desarmadas ou com armas naturais também sofrem esse dano a cada ataque bem-sucedido. Sopro (Sob): cone de frio de 9 m, uma vez por hora, causa 15d6 pontos de dano; Reflexos CD 22 reduz à metade. Criaturas atordoadas pelo trinado não podem realizar esse teste. Espasmos de Morte (Ext): ao morrer, transforma-se em gelo e explode, causando 12d6 pontos de dano por frio e 8d6 pontos de dano perfurante a criaturas e objetos num raio de 30 m; Reflexos CD 22 reduz à metade."
   },
   {
     "id": "verme-purpura",
@@ -9091,7 +9095,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Um verme púrpura adulto tem cerca de 1,5 m de diâmetro, 24 m de comprimento e pesa mais de 20 toneladas. Sua bocarra é repleta de dentes e a cauda termina em um ferrão venenoso. Consome grandes quantidades de poeira e rochas enquanto escava; sua moela retém gemas e outros itens resistentes ao ácido. Em regiões ricas em minerais, seus dejetos podem conter minérios brutos.",
+    "combat": "Em batalha, enrola-se em um círculo de 6 m de diâmetro e morde ou ferroa qualquer oponente ao alcance. Agarrar Aprimorado (Ext): após acertar com a mordida, inicia Agarrar como ação livre sem provocar ataques de oportunidade; se vencer, prende a vítima e pode tentar engoli-la na rodada seguinte. Veneno (Ext): inoculado pelo ferrão; Fortitude CD 25; dano inicial de 1d6 pontos de dano temporário de Força e secundário de 2d6. Engolir (Ext): pode engolir uma criatura presa de categoria inferior após um teste de Agarrar bem-sucedido. Dentro dele, a vítima sofre 2d8+12 pontos de dano por esmagamento e 8 pontos de dano por ácido por rodada. Para escapar, pode abrir caminho causando 25 pontos de dano ao sistema digestivo (CA 17). O estômago comporta duas criaturas Grandes, oito Médias, 32 Pequenas, 128 Miúdas ou 512 Diminutas. Recebe +8 racial em Natação para ações especiais ou evitar perigos, pode escolher 10 mesmo distraído ou ameaçado e pode correr na água em linha reta."
   },
   {
     "id": "vinha-assassina",
@@ -9141,7 +9147,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Esta trepadeira possui um caule fibroso coberto por casca marrom, com espessura aproximada à do antebraço humano, e folhas em forma de mãos humanoides. É um vegetal de mobilidade limitada que obtém seu próprio adubo orgânico agarrando e esmagando animais e depositando as carcaças junto às raízes. Quando madura, possui um caule principal de cerca de 6 m, do qual brotam vinhas menores com folhas. No fim do verão produz pequenos frutos semelhantes a uvas silvestres, muito duros, de sabor acentuado e amargo; podem ser usados para produzir vinho tóxico. Embora consiga se mover, geralmente permanece imóvel.",
+    "combat": "A vinha assassina aguarda a aproximação da vítima e então ataca, usando Enredar para prendê-la e impedir contra-ataques. Constrição (Ext): causa 1d6+7 pontos de dano quando vence um teste resistido de Agarrar. Enredar (Sob): como ação livre, anima plantas num raio de 9 m; Reflexos CD 13 reduz parcialmente o efeito. Permanece ativo até a vinha morrer ou encerrá-lo como ação livre; funciona como constrição, nível de conjurador 4º. Agarrar Aprimorado (Ext): após acertar com a pancada, inicia Agarrar como ação livre sem provocar ataques de oportunidade e, se vencer, prende a vítima e pode usar constrição. Percepção às Cegas (Ext): detecta inimigos num raio de 9 m por sons, vibrações e olfato, apesar de não possuir órgãos visuais. Camuflagem (Ext): em repouso, parece uma planta normal; exige Observar CD 20 para percebê-la antes do ataque. Sobrevivência ou Conhecimento (natureza) podem substituir Observar; anões podem detectar a versão subterrânea com Ligação com Pedras."
   },
   {
     "id": "rastejante-noturno",
@@ -9191,7 +9199,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Esta criatura tem a aparência de um verme imenso, recoberto por placas de quitina negra semelhantes a uma armadura. Sua boca e garganta também são negras e possuem dentes. É semelhante a um verme púrpura, mas apresenta coloração muito mais escura. Mede cerca de 2 m de diâmetro e 30 m de comprimento, da boca dentada à ponta da cauda com ferrão, e pesa quase 28 toneladas.",
+    "combat": "O rastejante noturno ataca escavando o solo e emergindo para atingir a vítima. Suas armas naturais são consideradas mágicas para ignorar Redução de Dano. Drenar Energia (Sob): criaturas vivas em seu interior sofrem um nível negativo por rodada; Fortitude CD 26 evita a drenagem. Para cada nível negativo imposto, o rastejante adquire 5 PV temporários. Agarrar Aprimorado (Ext): após acertar com a mordida, inicia Agarrar como ação livre sem provocar ataques de oportunidade; se vencer, prende a vítima e pode usar Engolir na rodada seguinte. Veneno (Ext): inoculado pelo ferrão; Fortitude CD 22; dano inicial e secundário de 2d6 pontos de dano temporário de Força. Engolir: uma criatura engolida pode abrir caminho para sair usando armas leves cortantes ou perfurantes, causando 35 pontos de dano ao sistema digestivo (CA 21). O interior comporta duas criaturas Enormes, oito Grandes, 32 Médias, 128 Pequenas ou 512 Miúdas ou menores."
   },
   {
     "id": "vulto-alado",
@@ -9241,7 +9251,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Esta criatura parece uma massa de escuridão profunda com a forma de um morcego monstruoso. Os vultos alados voam durante a noite e espreitam suas vítimas nos céus. Sua envergadura chega a 12 m e pesam quase 2 toneladas.",
+    "combat": "Os vultos alados espreitam os céus noturnos e mergulham sobre as vítimas. São quase invisíveis e só podem ser percebidos quando sua passagem obscurece as estrelas. Suas armas naturais são consideradas mágicas para ignorar Redução de Dano. Drenar Magia (Sob): com um ataque de toque bem-sucedido, enfraquece arma, armadura ou escudo mágico; o item deve passar em Fortitude CD 12 ou perde 1 ponto de bônus de melhoria. Ao perder todos os bônus, torna-se obra-prima e suas habilidades especiais são neutralizadas. Dissipar o mal conjurada sobre o item reverte o efeito, mas somente dentro de um período equivalente a 1 dia por nível do item. Aura Degradante (Sob): enfraquece os adversários próximos. Habilidades similares à magia: à vontade — detectar magia, escuridão profunda, nuvem profana (CD 18), praga (CD 16), velocidade e ver o invisível; 3/dia — confusão (CD 18), dissipar magia aprimorado, imobilizar monstro (CD 19) e invisibilidade; 1/dia — cone glacial (CD 19), dedo da morte (CD 21) e viagem planar (CD 21); nível de conjurador 17º. Invocar Morto-Vivo (Sob): uma vez por noite, invoca 5–12 sombras, 2–4 sombras maiores ou uma aparição; surgem em 1d10 rodadas e servem por 1 hora ou até serem libertadas. Recebe +8 racial em Esconder-se em iluminação precária ou voando à noite."
   },
   {
     "id": "worg",
@@ -9291,7 +9303,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "O worg é um lobo sinistro, maior e mais inteligente que os lobos comuns, cuja aparência cinzenta ou negra e expressão maligna denunciam sua natureza cruel. Vive e caça em matilhas, prefere grandes herbívoros, mas também persegue humanoides quando o alimento escasseia. Costuma observar suas presas durante horas ou dias e escolher o terreno e o momento mais favoráveis. Um exemplar típico mede cerca de 1,5 m de comprimento, aproximadamente 1 m de altura sobre as quatro patas e pesa por volta de 150 kg. Os worg possuem idioma próprio; alguns aprendem Comum e Goblin.",
+    "combat": "Worgs solitários procuram presas menores, enquanto casais e matilhas coordenam ataques contra alvos maiores. Sua tática comum é atacar e recuar para cansar a vítima; a matilha cerca o adversário e alterna mordidas até iniciar o ataque final. Imobilização (Ext): quando acerta uma mordida, o worg pode tentar imobilizar o alvo como ação livre, sem ataque de oportunidade e com +3 no teste de Agarrar; se falhar, o alvo não pode tentar imobilizá-lo em resposta. Perícias: recebe +1 racial em Furtividade, Ouvir e Observar e +2 em Esconder-se; ao rastrear usando Faro, recebe +4 racial em Sobrevivência."
   },
   {
     "id": "wyvern",
@@ -9341,7 +9355,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "O wyvern é um grande réptil alado, parente distante dos dragões. É bípede, possui asas membranosas semelhantes às de um morcego, mandíbula repleta de dentes e uma cauda longa terminada em um ferrão venenoso. Mede aproximadamente 4,5 m, dos quais metade corresponde à cauda; sua envergadura chega a 6 m e seu peso se aproxima de uma tonelada. A coloração varia entre marrom-escuro e cinza. Fala Dracônico, embora muitos indivíduos sejam pouco articulados e emitam apenas silvos e rosnados.",
+    "combat": "Wyverns são agressivos e atacam criaturas próximas que não pareçam claramente mais poderosas. Voam sobre a presa, agarram-na com as garras durante uma investida aérea e depois a ferroam. Só conseguem atacar com as garras ao realizar Investida Aérea. Agarrar Aprimorado (Ext): após atingir um oponente com as garras, inicia Agarrar como ação livre sem provocar ataques de oportunidade; se vencer, prende a vítima e pode atacá-la com o ferrão. Veneno (Ext): inoculado pelo ferrão; Fortitude CD 17; dano inicial e secundário de 2d6 pontos de dano temporário de Constituição. A CD é baseada em Constituição. Perícias: recebe +3 de bônus racial em Observar."
   },
   {
     "id": "yrthak",
@@ -9391,7 +9407,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "O yrthak é um predador alado das regiões ermas, com corpo de coloração jaspe e verde-amarelada, asas membranosas, cauda longa e uma protuberância semelhante a um chifre na cabeça. É cego: percebe sons e movimentos por meio de um órgão especial na língua, enquanto o chifre emite ondas sonoras poderosas. É onívoro, mas prefere carne, mantém o ninho no alto de montanhas isoladas e pode percorrer grandes distâncias em busca de alimento. Mede cerca de 6 m de comprimento, tem 12 m de envergadura e pesa aproximadamente 5 toneladas. Apesar de sua inteligência, não fala.",
+    "combat": "O yrthak prefere atacar do alto, disparando energia sônica contra criaturas no solo ou arrebatando a presa e soltando-a durante o voo. Rajada Sônica (Sob): a cada 2 rodadas, concentra energia num alvo a até 18 m; exige ataque de toque à distância e causa 6d6 pontos de dano. Explosão (Sob): pode direcionar a rajada contra o solo, uma pedra grande, um muro ou outra superfície capaz de lançar fragmentos; criaturas num raio de 3 m sofrem 2d6 pontos de dano perfurante. Esta opção usa o mesmo intervalo da rajada e não pode ser usada em rodadas consecutivas nem na rodada imediatamente posterior a uma rajada. Percepção às Cegas (Ext): percebe inimigos num raio de 36 m; além desse alcance, é efetivamente cego. É imune a ataques e efeitos mágicos visuais. Se sua audição for neutralizada, seus oponentes recebem camuflagem total. Perícias: recebe +4 racial em Ouvir."
   },
   {
     "id": "puro-sangue",
@@ -9441,7 +9459,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Os puro-sangues são os yuan-ti de aparência mais próxima à humana, descendentes de linhagens humanas misturadas a serpentes. Embora sejam a casta menos poderosa e menos inteligente de seu povo, consideram-se superiores aos humanos. Muitos ocultam seus traços serpentinos e se infiltram em comunidades humanoides como espiões e agentes, servindo aos mestiços e às abominações. São encontrados em florestas quentes e podem atuar sozinhos, em pares, gangues ou grandes tribos.",
+    "combat": "Os yuan-ti são estrategistas calculistas: preferem emboscadas, armadilhas e o aproveitamento do terreno ao confronto direto. Os puro-sangues procuram manter distância, usando armas de alcance e habilidades similares à magia antes de recorrer à cimitarra. Em grupos mistos, costumam ser enviados primeiro, antes dos mestiços e das abominações, salvo ordem diferente do líder. Habilidades similares à magia (1/dia; nível de conjurador 4º; CD baseada em Carisma): transe animal (CD 13), causar medo (CD 12), enfeitiçar pessoa (CD 12), escuridão e emaranhar (CD 12). Alterar Forma (Sob): pode assumir a forma de uma víbora Miúda a Grande; não recupera pontos de vida ao mudar e perde suas armas naturais, recebendo as da víbora escolhida. Detectar Veneno (Sob): funciona como a magia detectar veneno, nível de conjurador 6º. Resistência à Magia 14."
   },
   {
     "id": "aguia",
@@ -9491,7 +9511,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "A águia representa aves de rapina diurnas de tamanho semelhante. Essas aves vivem em diferentes terrenos e climas, mas preferem locais altos e isolados para construir seus ninhos. Um exemplar típico mede cerca de 1,5 m de comprimento e possui envergadura de aproximadamente 2,1 m.",
+    "combat": "A águia mergulha sobre a presa e a rasga com as garras poderosas. Perícias: recebe +8 de bônus racial em Observar."
   },
   {
     "id": "arminho",
@@ -9541,7 +9563,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "O arminho é um pequeno mamífero agressivo, embora normalmente escolha presas menores que ele. As mesmas estatísticas podem representar furões e doninhas.",
+    "combat": "Adesão (Ext): quando acerta uma mordida, o arminho pode cravar as mandíbulas na vítima e causar automaticamente o dano da mordida a cada rodada, até ser removido ou a vítima se libertar. Enquanto permanece preso, perde o bônus de Destreza na CA, que será reduzida para CA 12. Pode ser agarrado ou atingido por uma arma; para removê-lo com a manobra Agarrar, é necessário vencer um teste resistido. Perícias: recebe +4 racial em Furtividade e +8 em Equilíbrio e Escalar; usa o modificador de Destreza no lugar de Força em Escalar e pode escolher 10 mesmo sob pressão."
   },
   {
     "id": "arraia",
@@ -9591,7 +9615,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "A arraia é um peixe pacífico que normalmente evita outras criaturas. Alimenta-se filtrando plâncton e organismos semelhantes da água por meio de suas mandíbulas desdentadas.",
+    "combat": "Quando ameaçada, a arraia pode usar o peso do corpo para ferir um oponente com um encontrão; esse ataque é considerado secundário. Perícias: recebe +8 de bônus racial em Natação para ações especiais ou para evitar perigos, pode escolher 10 mesmo distraída ou ameaçada e pode correr enquanto nada em linha reta."
   },
   {
     "id": "babuino",
@@ -9641,7 +9667,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "O babuíno é um macaco poderoso e agressivo, adaptado à vida no solo. Prefere espaços abertos, mas escala árvores para encontrar locais seguros onde dormir. Um exemplar comum tem o porte de um cachorro grande; os machos medem de 60 cm a 1,2 m de comprimento e podem pesar até 45 kg.",
+    "combat": "Os babuínos geralmente atacam em grupos. Perícias: recebem +8 de bônus racial em Escalar e podem escolher 10 nessa perícia mesmo quando estão com pressa ou sob ameaça."
   },
   {
     "id": "baleia-azul",
@@ -9691,7 +9719,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "As baleias estão entre os maiores animais conhecidos. A baleia-azul representa uma das espécies que se alimentam de plâncton; as estatísticas correspondem a uma baleia com aproximadamente 9 a 18 m de comprimento. Apesar do tamanho, as baleias filtradoras são muito gentis e, quando provocadas ou atacadas, tendem a fugir em vez de reagir.",
+    "combat": "Percepção às Cegas (Ext): localiza criaturas e objetos num raio de 36 m emitindo sons de alta frequência; a magia silêncio anula essa capacidade e a obriga a depender da visão. Prender a Respiração (Ext): pode prender a respiração por um número de rodadas igual a 8 vezes seu valor de Constituição. Perícias: recebe +8 racial em Natação para ações especiais ou para evitar perigos, pode escolher 10 mesmo distraída ou ameaçada e pode correr enquanto nada em linha reta. Recebe ainda +4 racial em Ouvir e Observar; esses dois bônus são perdidos se a Percepção às Cegas for anulada."
   },
   {
     "id": "baleia-cachalote",
@@ -9741,7 +9771,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "O cachalote é uma baleia de grande porte, também chamada de baleia-corcunda no texto do verbete. Atinge aproximadamente 13 m de comprimento e alimenta-se de lulas gigantes.",
+    "combat": "Percepção às Cegas (Ext): localiza criaturas e objetos num raio de 36 m por meio de sons de alta frequência; a magia silêncio anula essa capacidade e a obriga a usar a visão. Prender a Respiração (Ext): pode prender a respiração por um número de rodadas igual a 8 vezes seu valor de Constituição. Perícias: recebe +8 racial em Natação para ações especiais ou para evitar perigos, pode escolher 10 mesmo distraída ou ameaçada e pode correr enquanto nada em linha reta. Recebe +4 racial em Ouvir e Observar; esses bônus são perdidos se a Percepção às Cegas for anulada."
   },
   {
     "id": "baleia-orca",
@@ -9791,7 +9823,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "A orca é uma das baleias relativamente menores e pode ser um predador hostil, atacando praticamente qualquer criatura que encontre. Alimenta-se de peixes, lulas, focas e até outras baleias.",
+    "combat": "Percepção às Cegas (Ext): localiza criaturas e objetos num raio de 36 m por meio de sons de alta frequência; a magia silêncio anula essa capacidade e a obriga a usar a visão. Prender a Respiração (Ext): pode prender a respiração por um número de rodadas igual a 8 vezes seu valor de Constituição. Perícias: recebe +8 racial em Natação para ações especiais ou para evitar perigos, pode escolher 10 mesmo distraída ou ameaçada e pode correr enquanto nada em linha reta. Recebe +4 racial em Ouvir e Observar; esses bônus são perdidos se a Percepção às Cegas for anulada."
   },
   {
     "id": "bisao",
@@ -9841,7 +9875,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "O bisão é um grande animal ruminante que geralmente prefere fugir, mas pode se tornar agressivo ao proteger os filhotes ou durante a época de acasalamento. Mede quase 2 m de altura quando está sobre as quatro patas, tem de 2,7 m a 3,3 m de comprimento e pesa entre 900 kg e 1,2 tonelada. O bloco também pode representar outros grandes ruminantes.",
+    "combat": "Estouro da Manada (Ext): quando um rebanho apavorado foge, seus integrantes correm juntos em uma direção aleatória, sempre se afastando do perigo, e atropelam qualquer criatura de tamanho Grande ou menor no caminho. O dano é de 1d12 para cada cinco animais do rebanho; um teste de Reflexos CD 16 reduz o dano à metade. A CD é baseada em Força."
   },
   {
     "id": "cachorro",
@@ -9891,7 +9927,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "O bloco representa um cachorro pequeno, com peso entre 10 e 25 kg, e também pode ser usado para canídeos pequenos como coiotes, chacais e cães selvagens.",
+    "combat": "Os cachorros costumam caçar em matilhas, perseguindo e cansando a presa antes de subjugá-la. Perícias: recebem +4 de bônus racial em Saltar e +4 em Sobrevivência quando rastreiam usando Faro."
   },
   {
     "id": "cachorro-de-montaria",
@@ -9941,7 +9979,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Esta categoria inclui raças de cães de maior porte, como collie, husky, fila e são-bernardo. São animais capazes de acompanhar um cavaleiro e transportar carga.",
+    "combat": "Quando treinados para o combate, podem executar a manobra Imobilização de modo semelhante aos lobos. Um cachorro de montaria pode lutar enquanto carrega um cavaleiro, mas o cavaleiro não consegue atacar, a menos que obtenha sucesso em um teste de Cavalgar. Capacidade de Carga: carga leve até 50 kg; média de 51 a 100 kg; pesada de 101 a 150 kg. Pode arrastar até 750 kg. Perícias: recebe +4 de bônus racial em Saltar e +4 em Sobrevivência ao rastrear usando Faro."
   },
   {
     "id": "camelo",
@@ -9991,7 +10031,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "O bloco de estatísticas representa um dromedário, camelo de uma corcova adaptado aos desertos. O dromedário atinge cerca de 2,7 m na altura dos ombros e possui uma corcova de aproximadamente 30 cm. O camelo de duas corcovas é mais adaptado a climas amenos e regiões rochosas; é mais robusto, desloca-se mais lentamente e possui Constituição 16.",
+    "combat": "O verbete não descreve uma tática ou habilidade especial de combate para o camelo; o bloco registra sua mordida como ataque natural. Capacidade de Carga: para o dromedário, carga leve até 150 kg, média de 151 a 300 kg e pesada de 301 a 450 kg. Pode arrastar até 2.250 kg."
   },
   {
     "id": "carcaju",
@@ -10041,7 +10083,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "O carcajú é parente dos texugos, mas é maior, mais forte e muito mais feroz. É um animal solitário das florestas frias.",
+    "combat": "Fúria (Ext): quando sofre dano em combate, o carcajú entra imediatamente em uma fúria destruidora, cujos efeitos começam no turno subsequente. Ataca golpeando e mordendo sem controle até morrer ou eliminar o oponente. Recebe +4 de Força, +4 de Constituição e –2 na Classe de Armadura; não consegue interromper voluntariamente a fúria. Perícias: recebe +8 de bônus racial em Escalar e pode escolher 10 mesmo com pressa ou sob ameaça."
   },
   {
     "id": "cavalo-pesado",
@@ -10091,7 +10135,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Os cavalos são amplamente domesticados como montarias e animais de carga. O cavalo pesado representa animais de grande porte, como os Clydesdales. Em geral, estão aptos ao trabalho pesado aos três anos de idade.",
+    "combat": "Um cavalo sem treinamento para a guerra normalmente não usa os cascos para atacar. Quando indicados no bloco, os ataques com cascos são secundários e recebem apenas metade do bônus de Força no dano. Um cavalo pesado é incapaz de lutar enquanto transporta um cavaleiro. Capacidade de Carga: leve até 100 kg; média de 101 a 200 kg; pesada de 201 a 300 kg. Pode arrastar 1.500 kg."
   },
   {
     "id": "cavalo-leve",
@@ -10141,7 +10187,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Os cavalos são amplamente domesticados como montarias e animais de carga. O cavalo leve representa animais de pequeno porte, como pangarés, cavalos árabes e cavalos selvagens. Em geral, estão aptos ao trabalho pesado aos dois anos de idade.",
+    "combat": "Um cavalo sem treinamento para a guerra normalmente não usa os cascos para atacar. Quando indicados no bloco, os ataques com cascos são secundários e recebem apenas metade do bônus de Força no dano. Um cavalo leve é incapaz de lutar enquanto transporta um cavaleiro. Capacidade de Carga: leve até 75 kg; média de 76 a 150 kg; pesada de 151 a 225 kg. Pode arrastar 1.125 kg."
   },
   {
     "id": "cavalo-de-guerra-pesado",
@@ -10191,7 +10239,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Os cavalos são amplamente domesticados como montarias e animais de carga. O cavalo de guerra pesado é similar ao cavalo pesado, mas foi treinado para desenvolver agressividade e lutar. Em geral, está apto ao trabalho pesado aos três anos de idade.",
+    "combat": "Um cavalo de guerra pesado é capaz de atacar enquanto transporta um cavaleiro, mas este não conseguirá atacar, a menos que obtenha sucesso em um teste de Cavalgar. Seus ataques com cascos não recebem a redução aplicada aos cavalos sem treinamento de guerra. Capacidade de Carga: leve até 150 kg; média de 151 a 300 kg; pesada de 301 a 450 kg. O texto do verbete informa que consegue arrastar 2.250 kg."
   },
   {
     "id": "cobra-constritora",
@@ -10241,7 +10291,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "As cobras em geral não são agressivas e fogem quando confrontadas. As cobras constritoras, como a jiboia, normalmente evitam o combate e fogem quando ameaçadas. Caçam para se alimentar, mas não tentam capturar presas grandes demais para serem mortas por constrição.",
+    "combat": "As cobras constritoras agarram suas vítimas com as mandíbulas e enrolam seus corpos musculosos ao redor delas. Constrição (Ext): causa 1d3+4 pontos de dano quando obtém sucesso em um teste de Agarrar. Agarrar Aprimorado (Ext): após atingir um oponente com a mordida, pode iniciar Agarrar como ação livre, sem provocar ataques de oportunidade; se vencer o teste resistido, prende a criatura e pode aplicar a constrição. Perícias gerais das cobras: +4 racial em Esconder-se, Ouvir e Observar; +8 em Equilíbrio e Escalar. Podem escolher 10 em Escalar mesmo com pressa ou sob ameaça e usar o modificador de Destreza ou Força (o maior). Em Natação, recebem +8 racial para ações especiais ou evitar perigos, podem escolher 10 mesmo distraídas ou ameaçadas e correr em linha reta."
   },
   {
     "id": "coruja",
@@ -10291,7 +10343,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": true
+    "familiar": true,
+    "description": "Os valores do bloco representam aves de rapina noturnas, com cerca de 30 cm a 60 cm de comprimento. As corujas utilizam as duas garras em um único ataque.",
+    "combat": "As corujas mergulham silenciosamente sobre suas vítimas e atacam com as garras poderosas. Perícias: recebem +8 de bônus racial em Ouvir e +14 em Furtividade. Recebem +8 de bônus racial em Observar quando estão sob penumbra ou escuridão."
   },
   {
     "id": "corvo",
@@ -10341,7 +10395,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": true
+    "familiar": true,
+    "description": "O corvo representa pássaros negros e robustos, com cerca de 60 cm de comprimento e envergadura de aproximadamente 1,2 m. As estatísticas também podem representar aves de tamanho semelhante, exceto aves de rapina.",
+    "combat": "Os corvos utilizam as duas garras em um único ataque. O verbete não descreve habilidades especiais de combate ou bônus raciais adicionais."
   },
   {
     "id": "crocodilo",
@@ -10391,7 +10447,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Os crocodilos são predadores aquáticos agressivos, com cerca de 3 m a 3,5 m de comprimento. Espreitam parcialmente submersos em rios e pântanos, deixando apenas os olhos e as narinas visíveis, e aguardam que as vítimas se aproximem.",
+    "combat": "Agarrar Aprimorado (Ext): depois de atingir um oponente com a mordida, o crocodilo pode iniciar Agarrar como ação livre, sem provocar ataques de oportunidade. Se vencer o teste resistido, prende a vítima nas mandíbulas e pode tentar submergi-la e afogá-la. Prender a Respiração (Ext): consegue prender a respiração por um número de rodadas igual a 4 vezes seu valor de Constituição. Perícias: recebe +8 racial em Natação para ações especiais ou evitar perigos; pode escolher 10 mesmo distraído ou ameaçado e correr enquanto nada em linha reta. Recebe +4 racial em Esconder-se quando está na água; ao permanecer submerso deixando apenas olhos e narinas fora d'água, recebe +10 de bônus de cobertura em Esconder-se."
   },
   {
     "id": "crocodilo-gigante",
@@ -10441,7 +10499,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "O crocodilo gigante é um predador aquático enorme, que vive em água salgada e pode ultrapassar 6 m de comprimento.",
+    "combat": "Os crocodilos gigantes lutam e se comportam como os crocodilos comuns. Agarrar Aprimorado (Ext): depois de atingir um oponente com a mordida, pode iniciar Agarrar como ação livre, sem provocar ataques de oportunidade; se vencer o teste resistido, prende a vítima nas mandíbulas e pode tentar submergi-la e afogá-la. Prender a Respiração (Ext): consegue prender a respiração por um número de rodadas igual a 4 vezes seu valor de Constituição. Perícias: recebe +8 racial em Natação para ações especiais ou evitar perigos, pode escolher 10 mesmo distraído ou ameaçado e correr enquanto nada em linha reta. Recebe +4 racial em Esconder-se na água e +10 de bônus de cobertura em Esconder-se quando fica submerso com apenas olhos e narinas fora d'água."
   },
   {
     "id": "elefante",
@@ -10491,7 +10551,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Os elefantes são herbívoros tropicais enormes e imprevisíveis, algumas vezes utilizados como montarias ou animais de carga. As estatísticas representam um elefante africano. Os elefantes indianos são menores e mais fracos (Força 28), mas aceitam treinamento com maior facilidade (Sabedoria 15). As mesmas estatísticas podem representar elefantes pré-históricos, como mamutes e mastodontes.",
+    "combat": "Os elefantes investem contra criaturas que os ameaçam. Atropelar (Ext): causa 2d8+15 pontos de dano; um teste de resistência de Reflexos CD 25 reduz o dano à metade. A CD é baseada em Força."
   },
   {
     "id": "falcao",
@@ -10541,7 +10603,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": true
+    "familiar": true,
+    "description": "Os falcões são semelhantes às águias, mas um pouco menores: medem entre 40 cm e 60 cm, com envergadura de 60 cm ou menos.",
+    "combat": "Os falcões utilizam as duas garras em um único ataque. Perícias: recebem +8 de bônus racial em Observar."
   },
   {
     "id": "gato",
@@ -10591,7 +10655,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": true
+    "familiar": true,
+    "description": "Os valores do bloco de estatísticas representam um gato doméstico.",
+    "combat": "Os gatos preferem espreitar e surpreender suas presas. Perícias: recebem +4 de bônus racial em Escalar, Esconder-se e Furtividade, e +8 em Saltar e Equilíbrio. Aplicam o modificador de Destreza em testes de Escalar e Saltar. Em áreas de grama alta ou relva espessa, o bônus de Esconder-se aumenta para +8."
   },
   {
     "id": "golfinho",
@@ -10641,7 +10707,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Os golfinhos são mamíferos aquáticos brincalhões, amigáveis e cordiais. Um golfinho mede entre 1,2 m e 1,8 m de comprimento e pesa entre 55 kg e 80 kg. As estatísticas também representam baleias pequenas de forma e tamanho semelhantes.",
+    "combat": "Percepção às Cegas (Ext): emite sons de alta frequência, inaudíveis para a maioria das criaturas, para localizar objetos e criaturas num raio de 36 m. A magia silêncio anula essa habilidade e obriga o golfinho a usar sua visão, semelhante à humana. Prender a Respiração (Ext): pode prender a respiração por um número de rodadas igual a 6 vezes seu valor de Constituição. Perícias: recebe +8 de bônus racial em Natação para ações especiais ou evitar ameaças; pode escolher 10 mesmo distraído ou ameaçado e correr enquanto nada em linha reta. Recebe +4 racial em Observar e Ouvir; esses bônus são perdidos se a Percepção às Cegas for anulada."
   },
   {
     "id": "gorila",
@@ -10691,7 +10759,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Os gorilas são onívoros poderosos, semelhantes a macacos africanos, mas muito mais agressivos. Matam e devoram qualquer coisa que encontram. Um macho adulto mede entre 1,5 m e 1,8 m de altura e pesa entre 150 kg e 200 kg.",
+    "combat": "Um gorila quase sempre ataca usando demonstrações de agressividade, na esperança de intimidar adversários em potencial. Perícias: recebe +8 de bônus racial em Escalar e pode escolher 10 mesmo quando está com pressa ou sob ameaça."
   },
   {
     "id": "guepardo",
@@ -10741,7 +10811,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Os guepardos são predadores ágeis das planícies. Medem entre 90 cm e 1,5 m e pesam entre 55 kg e 65 kg.",
+    "combat": "Os guepardos investem repentinamente para derrubar suas presas. Imobilização (Ext): quando atinge um oponente com as garras ou mordida, pode iniciar Imobilização como ação livre, com +3 no teste, sem ataque de toque e sem provocar ataques de oportunidade. Se falhar, o oponente não pode tentar imobilizar o guepardo em resposta. Impulso (Ext): uma vez por hora, pode percorrer dez vezes seu deslocamento normal (150 m) durante uma Investida."
   },
   {
     "id": "javali",
@@ -10791,7 +10863,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Embora não sejam carnívoros, os javalis são suínos mal-humorados que geralmente investem contra qualquer criatura que perturbe sua paz. São cobertos por pelos espessos e acinzentados. Os machos medem cerca de 1,2 m de comprimento e atingem 90 cm de altura.",
+    "combat": "Ferocidade (Ext): o javali é um combatente tenaz que continua lutando sem penalidades mesmo quando está incapacitado ou morrendo."
   },
   {
     "id": "jumento",
@@ -10841,7 +10915,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Os jumentos são equinos de orelhas longas, estáveis e robustos. As estatísticas também podem representar burros.",
+    "combat": "Um jumento só usa a mordida quando não há nenhuma outra maneira de escapar. Capacidade de Carga: leve até 25 kg; média de 26 a 50 kg; pesada de 51 a 75 kg. Pode arrastar 375 kg. Perícias: recebe +2 de bônus racial em Equilíbrio."
   },
   {
     "id": "lagarto",
@@ -10891,7 +10967,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": false,
-    "familiar": true
+    "familiar": true,
+    "description": "Este perfil representa lagartos pequenos e não venenosos, com cerca de 30 a 60 cm de comprimento, como iguanas. São animais discretos de florestas quentes, capazes de escalar superfícies com facilidade. Seu porte reduzido e sua agilidade favorecem a fuga e a ocultação, em vez do confronto.",
+    "combat": "Lagartos preferem fugir a lutar; só mordem quando não há outra alternativa, causando dano com a mordida. Recebem +8 de bônus racial em Equilíbrio e Escalar. Podem escolher 10 em testes de Escalar mesmo quando apressados ou ameaçados e usam o modificador de Destreza no lugar de Força nesses testes."
   },
   {
     "id": "leao",
@@ -10941,7 +11019,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "O perfil representa o leão-africano macho, com cerca de 1,5 a 2,4 m de comprimento e peso aproximado de 150 a 250 kg; as fêmeas são um pouco menores, mas usam as mesmas estatísticas. Habita planícies quentes e pode ser encontrado sozinho, em casal ou em bandos de seis a dez indivíduos.",
+    "combat": "O leão combina garras e mordida e costuma derrubar a presa com uma investida. Bote (Ext): ao investir, pode executar um ataque total, incluindo dois ataques de rasgar. Agarrar Aprimorado (Ext): quando acerta a mordida, pode iniciar uma manobra Agarrar como ação livre, sem provocar ataque de oportunidade; se vencer o teste resistido, prende a vítima e pode rasgar. Rasgar (Ext): dois ataques de garra adicionais, cada um causando 1d4+2. Recebe +4 racial em Equilíbrio, Esconder e Furtividade; em capim alto ou vegetação densa, o bônus de Esconder aumenta para +12."
   },
   {
     "id": "leopardo",
@@ -10991,7 +11071,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Este felino de selva mede cerca de 1,2 m de comprimento e pesa aproximadamente 55 kg. É um caçador solitário ou que vive em casal, geralmente ativo à noite. O mesmo perfil pode representar felinos de porte semelhante, como onças, panteras e leões-da-montanha. Habita florestas quentes.",
+    "combat": "O leopardo caça por emboscada e usa velocidade, escalada e salto para alcançar a presa. Agarrar Aprimorado (Ext): ao acertar a mordida, pode iniciar Agarrar como ação livre sem provocar ataque de oportunidade; se vencer, prende a vítima e pode rasgar. Bote (Ext): ao investir, realiza um ataque total, incluindo dois ataques de rasgar. Rasgar (Ext): dois ataques de garra adicionais, cada um causando 1d3+1. Recebe +8 racial em Saltar, Equilíbrio e Escalar, além de +4 em Esconder e Furtividade; pode escolher 10 em Escalar mesmo sob pressão. Em capim alto ou vegetação densa, o bônus de Esconder é +8."
   },
   {
     "id": "lobo",
@@ -11041,7 +11123,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Lobos são predadores persistentes e astutos que vivem e caçam em matilhas. O perfil representa o lobo das florestas temperadas, encontrado sozinho, em pares ou em grupos de sete a dezesseis indivíduos. Sua visão na penumbra e o faro favorecem a perseguição e o rastreamento.",
+    "combat": "A matilha costuma enviar alguns indivíduos contra a frente do adversário enquanto os demais cercam o alvo e atacam pelos flancos ou pela retaguarda. Imobilização (Ext): quando acerta a mordida, o lobo pode tentar derrubar o oponente como ação livre, sem ataque de toque nem ataque de oportunidade; se falhar, o alvo não pode tentar derrubá-lo em resposta. Recebe +4 racial em Sobrevivência para rastrear usando o faro."
   },
   {
     "id": "lula",
@@ -11091,7 +11175,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Molusco de natação livre, relativamente agressivo, encontrado em águas temperadas. Embora tenha porte médio, seus tentáculos permitem agarrar adversários e sua propulsão torna possível uma retirada rápida. Pode viver sozinho ou em cardumes de seis a onze indivíduos.",
+    "combat": "A lula ataca com os tentáculos para prender a vítima e depois usa a mordida. Agarrar Aprimorado (Ext): ao acertar um ataque de tentáculos, pode iniciar Agarrar como ação livre sem provocar ataque de oportunidade; se vencer, prende o alvo e causa automaticamente o dano da mordida. Recebe +4 racial em testes de Agarrar. Nuvem de Tinta (Ext): uma vez por minuto, libera uma nuvem de tinta negra de 3 m de lado, que concede camuflagem total e obscurece a visão, normalmente permitindo escapar. Propulsão (Ext): uma vez por rodada, pode recuar em linha reta até 72 m como ação de rodada completa, sem provocar ataques de oportunidade. Recebe +8 racial em testes de Natação para ações especiais ou evitar perigos, pode escolher 10 mesmo distraída ou ameaçada e pode correr enquanto nada em linha reta."
   },
   {
     "id": "lula-gigante",
@@ -11141,7 +11227,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Esses moluscos vorazes podem ter corpos com mais de 6 m de comprimento e atacam quase qualquer criatura que encontrem. São habitantes solitários de águas temperadas, com dez tentáculos longos, força suficiente para prender presas enormes e capacidade de se afastar rapidamente por propulsão.",
+    "combat": "A lula gigante envolve as presas com os tentáculos, constrita-as e usa a mordida. Cada tentáculo possui 10 pontos de vida; pode ser atacado com a manobra Separar como se fosse uma arma. Cortar um tentáculo causa 5 pontos de dano à criatura; ela normalmente recua se perder cinco tentáculos e regenera membros cortados em 1d10+10 dias. Constrição (Ext): causa 1d6+8 pontos de dano quando vence um teste de Agarrar. Agarrar Aprimorado (Ext): ao acertar um tentáculo, pode iniciar Agarrar como ação livre sem provocar ataque de oportunidade; se vencer, prende e constringe a vítima. Recebe +4 racial em Agarrar. Nuvem de Tinta (Ext): uma vez por minuto, libera uma nuvem negra de 6 m de lado que concede camuflagem total. Propulsão (Ext): pode recuar em linha reta até 96 m como ação de rodada completa, uma vez por rodada, sem provocar ataques de oportunidade. Recebe +8 racial em Natação para ações especiais ou evitar perigos e pode escolher 10 mesmo sob ameaça."
   },
   {
     "id": "macaco",
@@ -11191,7 +11279,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "O perfil representa macacos arborícolas pequenos, do tamanho de um gato doméstico ou menores, como colobos e macacos-prego. Vivem em florestas quentes e costumam formar bandos de dez a quarenta indivíduos. São ágeis nas árvores e pouco inclinados a enfrentar criaturas maiores.",
+    "combat": "Macacos geralmente fogem para a segurança das árvores; quando encurralados, porém, podem lutar com ferocidade. Recebem +8 racial em Equilíbrio e Escalar. Podem escolher 10 em testes de Escalar mesmo quando apressados ou ameaçados e usam o modificador de Destreza no lugar de Força nesses testes."
   },
   {
     "id": "morcego",
@@ -11241,7 +11331,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": true
+    "familiar": true,
+    "description": "Morcegos são mamíferos voadores noturnos. Este perfil representa espécies pequenas e insetívoras, encontradas em regiões desérticas temperadas e reunidas em colônias de dez a quarenta indivíduos ou turbas de dez a cinquenta. Sua orientação depende de sentidos que lhes permitem localizar obstáculos e criaturas mesmo sem visão normal.",
+    "combat": "O morcego comum não possui ataques eficazes e evita o combate. Sentido Cego (Ext): percebe e localiza criaturas a até 6 m, mas ainda trata os adversários como tendo camuflagem total. Recebe +4 racial em Ouvir e Observar; esses bônus são perdidos se seu Sentido Cego for neutralizado."
   },
   {
     "id": "mula",
@@ -11291,7 +11383,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "A mula é um cruzamento estéril entre um jumento e um cavalo. É semelhante a um cavalo leve, mas um pouco mais forte e ágil, sendo usada como animal domesticado de carga em planícies quentes.",
+    "combat": "Embora normalmente seja dócil e empregada como animal de carga, uma mula pode se defender com coices poderosos. Sua capacidade de carga é: leve até 105 kg; média de 105,5 a 210 kg; pesada de 210,5 a 315 kg. Pode arrastar até 1.575 kg. Recebe +2 racial em testes de Destreza para evitar escorregar ou cair."
   },
   {
     "id": "polvo",
@@ -11341,7 +11435,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Polvos são animais marinhos de fundo, encontrados em águas quentes. São perigosos principalmente para suas presas e, quando perturbados, normalmente tentam escapar. Seus braços flexíveis e a capacidade de alterar a coloração ajudam tanto na captura de alimento quanto na fuga.",
+    "combat": "Agarrar Aprimorado (Ext): ao acertar um ataque com os braços, pode iniciar Agarrar como ação livre sem provocar ataque de oportunidade; se vencer o teste resistido, prende o alvo e causa automaticamente o dano da mordida. Nuvem de Tinta (Ext): uma vez por minuto, libera uma nuvem negra de tinta de 3 m de lado, que concede camuflagem total e obscurece a visão. Propulsão (Ext): pode recuar em linha reta até 60 m como ação de rodada completa, uma vez por rodada, sem provocar ataques de oportunidade. Sua mudança de cor concede +4 racial em Esconder-se; seu corpo flexível concede +10 em Arte da Fuga. Também recebe +8 racial em Natação para ações especiais ou evitar perigos, pode escolher 10 mesmo sob ameaça e pode correr enquanto nada em linha reta."
   },
   {
     "id": "polvo-gigante",
@@ -11391,7 +11487,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Predador marinho territorial e agressivo, com braços que alcançam 3 m ou mais. Seus tentáculos possuem ventosas de bordas afiadas e são usados para prender e esmagar presas. Vive sozinho em águas quentes.",
+    "combat": "Cada tentáculo possui 10 pontos de vida e pode ser atacado com a manobra Separar como se fosse uma arma. Se um tentáculo que esteja agarrando uma criatura for atacado, o polvo normalmente usa outro membro para realizar um ataque de oportunidade. Cortar um tentáculo causa 5 pontos de dano ao polvo; ele normalmente recua se perder quatro tentáculos e regenera membros cortados em 1d10+10 dias. Constrição (Ext): causa 2d8+6 pontos de dano quando vence um teste de Agarrar. Agarrar Aprimorado (Ext): ao acertar um tentáculo, pode iniciar Agarrar como ação livre sem provocar ataque de oportunidade; se vencer, prende e constringe a vítima. Nuvem de Tinta (Ext): uma vez por minuto, libera uma nuvem negra de 6 m de lado que concede camuflagem total. Propulsão (Ext): recua em linha reta até 60 m como ação de rodada completa, uma vez por rodada, sem provocar ataques de oportunidade."
   },
   {
     "id": "ponei",
@@ -11441,7 +11539,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "O pônei é um cavalo pequeno, com menos de 1,5 m de altura na cernelha. Fora o porte, é semelhante a um cavalo leve e costuma ser empregado como montaria ou animal de carga. Pôneis não treinados para a guerra não conseguem lutar enquanto carregam um cavaleiro.",
+    "combat": "Um pônei não treinado para a guerra normalmente usa os cascos para correr, não para atacar; quando ataca, o coice é secundário e acrescenta apenas metade do modificador de Força ao dano. Capacidade de carga: leve até 34 kg; média de 34,5 a 68 kg; pesada de 68,5 a 102 kg. Pode arrastar até 510 kg."
   },
   {
     "id": "ponei-de-guerra",
@@ -11491,7 +11591,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Pôneis de guerra são criados para apresentar maior força e agressividade. São semelhantes aos cavalos de guerra leves e são domesticados para servir como montarias de combate.",
+    "combat": "O pônei de guerra pode lutar enquanto transporta um cavaleiro. Entretanto, o cavaleiro não pode atacar no mesmo turno, a menos que obtenha sucesso em um teste de Cavalgar. Capacidade de carga: leve até 45 kg; média de 45,5 a 90 kg; pesada de 90,5 a 136 kg. Pode arrastar até 680 kg."
   },
   {
     "id": "rato",
@@ -11541,7 +11643,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": true
+    "familiar": true,
+    "description": "Roedores onívoros que prosperam em praticamente qualquer ambiente. São pequenos, ágeis e capazes de escalar e nadar; quando reunidos, podem formar grandes infestações.",
+    "combat": "Ratos normalmente fogem e só mordem como último recurso. Recebem +4 racial em Esconder-se e Furtividade, além de +8 em Equilíbrio, Escalar e Natação. Podem escolher 10 em Escalar mesmo quando apressados ou ameaçados; usam Destreza no lugar de Força em testes de Escalar e Natação. Também recebem +8 racial em testes de Natação para ações especiais ou evitar perigos e podem escolher 10 mesmo sob ameaça."
   },
   {
     "id": "rinoceronte",
@@ -11591,7 +11695,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "O perfil baseia-se no rinoceronte-negro-africano, um herbívoro de temperamento notoriamente ruim e disposto a investir contra intrusos. Mede de 1,8 a 4,3 m de comprimento, tem de 0,9 a 1,8 m de altura na cernelha e pode pesar até 2.700 kg. As mesmas estatísticas podem representar herbívoros de porte e armas naturais semelhantes.",
+    "combat": "Quando é importunado ou irritado, o rinoceronte abaixa a cabeça e investe contra o agressor. Investida Poderosa (Ext): durante uma investida, causa 4d6+24 pontos de dano com o chifre."
   },
   {
     "id": "sapo",
@@ -11641,7 +11747,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": true
+    "familiar": true,
+    "description": "Anfíbios diminutos e inofensivos, comuns em pântanos temperados. Alimentam-se de insetos e são considerados benéficos ao ambiente. Sua coloração permite que se confundam com o terreno.",
+    "combat": "O sapo comum não possui ataques eficazes e não representa ameaça em combate. Sua coloração concede +4 de bônus racial em Esconder-se. A qualidade Anfíbio permite que sobreviva tanto na água quanto em terra."
   },
   {
     "id": "texugo",
@@ -11691,7 +11799,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": true
+    "familiar": true,
+    "description": "Animal de corpo baixo, robusto e coberto por pelos, com membros dianteiros fortes e garras longas usadas para escavar. Um adulto mede aproximadamente 60 a 90 cm de comprimento e pesa entre 11 e 16 kg. Habita florestas temperadas e pode viver sozinho, em casal ou em pequenos grupos.",
+    "combat": "Texugos atacam com garras afiadas e mordidas. Fúria (Ext): quando sofre dano em combate, entra em fúria berserker no turno seguinte e continua atacando até que ele ou seu oponente morra. Recebe +4 em Força e Constituição e sofre –2 na Classe de Armadura; não pode encerrar a fúria voluntariamente. Recebe +4 racial em Arte da Fuga."
   },
   {
     "id": "tigre",
@@ -11741,7 +11851,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Grande felino das florestas quentes, com mais de 90 cm de altura na cernelha e cerca de 2,7 m de comprimento. Pesa entre 180 e 270 kg e costuma caçar sozinho, usando força, velocidade e surpresa para subjugar presas.",
+    "combat": "O tigre agarra a presa com as garras ou a mordida e a rasga com as patas traseiras. Agarrar Aprimorado (Ext): ao acertar com garra ou mordida, pode iniciar Agarrar como ação livre sem provocar ataque de oportunidade; se vencer, prende a vítima e pode rasgar. Bote (Ext): ao investir, realiza um ataque total, incluindo dois ataques de rasgar. Rasgar (Ext): dois ataques adicionais de garra, cada um causando 1d8+3. Recebe +4 racial em Equilíbrio, Esconder-se e Furtividade; em capim alto ou vegetação densa, o bônus de Esconder-se aumenta para +8."
   },
   {
     "id": "urso-marrom",
@@ -11791,7 +11903,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Carnívoro enorme, territorial e de temperamento difícil. Pode pesar mais de 815 kg e alcançar quase 2,7 m de altura quando fica apoiado nas patas traseiras. O perfil também representa outros grandes ursos, inclusive o urso-cinzento. Habita florestas frias e costuma viver sozinho ou em casal.",
+    "combat": "O urso-marrom ataca principalmente rasgando os adversários com as garras. Agarrar Aprimorado (Ext): quando acerta um ataque de garra, pode iniciar Agarrar como ação livre sem provocar ataque de oportunidade. Recebe +4 racial em Natação."
   },
   {
     "id": "urso-negro",
@@ -11841,7 +11955,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "O urso-negro é um onívoro que habita florestas temperadas. Em geral, não representa perigo, a menos que alguém ameace seus filhotes ou sua fonte de alimento. Sua pelagem pode ser preta, loira ou cor de canela; raramente ultrapassa 1,5 m de comprimento.",
+    "combat": "O urso-negro ataca rasgando suas presas com as garras e os dentes. Não possui uma manobra especial de agarrar neste perfil. Recebe +4 de bônus racial em testes de Natação."
   },
   {
     "id": "urso-polar",
@@ -11891,7 +12007,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Carnívoro de regiões geladas, o urso-polar é um pouco mais alto que o urso-marrom, com corpo alongado e pelagem branca. Vive nas planícies frias, geralmente sozinho ou em casal. A pelagem clara oferece excelente camuflagem na neve.",
+    "combat": "O urso-polar luta como o urso-marrom, atacando principalmente com as garras. Agarrar Aprimorado (Ext): ao acertar um ataque de garra, pode iniciar uma manobra Agarrar como ação livre sem provocar ataque de oportunidade. Recebe +8 racial em testes de Natação para ações especiais ou evitar perigos, pode escolher 10 mesmo sob ameaça e pode correr enquanto nada em linha reta. Em áreas nevadas, sua pelagem concede +12 racial em Esconder-se."
   },
   {
     "id": "vaga-lume-gigante",
@@ -11941,7 +12059,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Esses insetos noturnos luminosos são procurados por mineradores e aventureiros. Possuem duas glândulas, uma acima de cada olho, que produzem uma luz vermelha. Medem aproximadamente 60 cm de comprimento; quando removidas, as glândulas continuam brilhando por 1d6 dias e iluminam uma área circular com raio de 3 m.",
+    "combat": "O vaga-lume gigante ataca com uma mordida poderosa, mas não possui ataques especiais. Como os demais vermes, é irracional, possui visão no escuro de 18 m e é imune a efeitos que afetam a mente. Normalmente vive em agrupamentos de dois a cinco indivíduos ou colônias de seis a onze."
   },
   {
     "id": "vespa-gigante",
@@ -11991,7 +12111,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Vespas gigantes chegam a aproximadamente 1,5 m de comprimento e se comportam de modo semelhante às vespas comuns. Geralmente não atacam sem motivo, mas defendem-se quando ameaçadas e protegem seus ninhos. Levam criaturas mortas ou incapacitadas para o ninho como alimento para as larvas ainda não eclodidas.",
+    "combat": "A vespa gigante ataca com seu ferrão e veneno. Veneno (Ext): ferimento, Fortitude CD 14; dano inicial e secundário de 1d6 pontos de dano temporário de Destreza. A CD é baseada em Constituição. Recebe +8 racial em Observar e +4 racial em Sobrevivência para orientar-se."
   },
   {
     "id": "hiena",
@@ -12041,7 +12163,9 @@
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "As hienas são animais que caçam em grupo, conhecidas por sua astúcia e pelos ruídos irritantes que emitem. As estatísticas representam uma hiena-listrada, com quase 1 m de comprimento e cerca de 60 kg.",
+    "combat": "A tática preferida das hienas é enviar alguns indivíduos para o combate frontal, enquanto o restante da matilha cerca e flanqueia o inimigo. Imobilização (Ext): quando atinge um oponente com a mordida, pode iniciar Imobilização como ação livre, com +2 no teste, sem ataque de toque e sem provocar ataques de oportunidade. Se falhar, o oponente não pode tentar imobilizar a hiena em resposta. Perícias: recebe +4 de bônus racial em Esconder-se em áreas de grama alta ou relva espessa."
   },
   {
     "id": "lagarto-monitor",
@@ -12091,7 +12215,9 @@
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "O lagarto-monitor reúne espécies carnívoras de grande porte, com aproximadamente 90 cm a 1,5 m de comprimento. É um animal solitário de florestas quentes, capaz de nadar e de perseguir presas tanto em terra quanto na água.",
+    "combat": "Lagartos-monitores podem ser agressivos e usam suas mandíbulas poderosas para dilacerar presas ou inimigos. Recebem +8 racial em Natação para ações especiais ou evitar perigos, podem escolher 10 mesmo sob ameaça e podem correr enquanto nadam em linha reta. Também recebem +4 racial em Esconder-se e Furtividade; em áreas de floresta ou vegetação densa, o bônus de Esconder-se aumenta para +8."
   },
   {
     "id": "cavalo-de-guerra-leve",
@@ -12141,7 +12267,9 @@
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Os cavalos são amplamente domesticados como montarias e animais de carga. O cavalo de guerra leve é similar ao cavalo leve, mas foi treinado para desenvolver agressividade. Em geral, não está preparado para o combate antes do terceiro aniversário.",
+    "combat": "Um cavalo de guerra leve é capaz de atacar enquanto transporta um cavaleiro, mas este não conseguirá atacar, a menos que obtenha sucesso em um teste de Cavalgar. Capacidade de Carga: leve até 115 kg; média de 116 a 230 kg; pesada de 231 a 345 kg. Pode arrastar 1.725 kg."
   },
   {
     "id": "tubarao-medio",
@@ -12191,7 +12319,9 @@
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Tubarões são peixes carnívoros agressivos, capazes de atacar sem provocação qualquer criatura que se aproxime. Os espécimes médios medem de 1,5 a 2,4 m e normalmente não são perigosos para criaturas que não sejam suas presas. Vivem em águas frias e podem ser encontrados sozinhos, em cardumes ou em grupos de caça.",
+    "combat": "Tubarões circulam e observam possíveis presas antes de avançar para mordê-las com suas mandíbulas. Sentido Cego (Ext): localiza criaturas submersas a até 9 m; só funciona debaixo d'água. Faro Aguçado (Ext): percebe criaturas pelo cheiro a até 54 m e detecta sangue na água a até 1,6 km. Recebe +8 racial em Natação para ações especiais ou evitar perigos, pode escolher 10 mesmo sob ameaça e pode correr enquanto nada em linha reta."
   },
   {
     "id": "tubarao-grande",
@@ -12241,7 +12371,9 @@
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Tubarões grandes podem alcançar aproximadamente 4,5 m de comprimento e representam uma ameaça séria para outras criaturas. São predadores de águas frias que costumam perseguir e atacar presas em cardumes ou grupos de caça.",
+    "combat": "Tubarões circulam e observam possíveis presas antes de avançar para mordê-las com suas mandíbulas. Sentido Cego (Ext): localiza criaturas submersas a até 9 m; só funciona debaixo d'água. Faro Aguçado (Ext): percebe criaturas pelo cheiro a até 54 m e detecta sangue na água a até 1,6 km. Recebe +8 racial em Natação para ações especiais ou evitar perigos, pode escolher 10 mesmo sob ameaça e pode correr enquanto nada em linha reta."
   },
   {
     "id": "tubarao-enorme",
@@ -12291,7 +12423,9 @@
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Tubarões enormes são predadores monstruosos, como os grandes tubarões-brancos, e podem ultrapassar 6 m de comprimento. São perigosos caçadores de águas frias, capazes de atacar criaturas muito maiores que as presas habituais dos espécimes menores.",
+    "combat": "Tubarões circulam e observam possíveis presas antes de avançar para mordê-las com suas mandíbulas. Sentido Cego (Ext): localiza criaturas submersas a até 9 m; só funciona debaixo d'água. Faro Aguçado (Ext): percebe criaturas pelo cheiro a até 54 m e detecta sangue na água a até 1,6 km. Recebe +8 racial em Natação para ações especiais ou evitar perigos, pode escolher 10 mesmo sob ameaça e pode correr enquanto nada em linha reta."
   },
   {
     "id": "vibora-miuda",
@@ -12341,7 +12475,9 @@
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "As víboras variam muito de tamanho e não costumam ser agressivas. Quando confrontadas, frequentemente dão uma mordida antes de tentar fugir. Esta variedade diminuta é encontrada em pântanos temperados e depende do veneno para caçar pequenas presas e se defender.",
+    "combat": "A víbora depende de sua mordida venenosa. Veneno (Ext): ferimento, Fortitude CD 10; dano inicial e secundário de 1d6 pontos de dano temporário de Constituição. A CD é baseada em Constituição. Recebe +4 racial em Esconder-se, Ouvir e Observar; +8 em Equilíbrio, Escalar e Natação. Pode escolher 10 em Escalar mesmo sob ameaça e usa o maior entre Força e Destreza para testes de Escalar."
   },
   {
     "id": "vibora-pequena",
@@ -12391,7 +12527,9 @@
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": true
+    "familiar": true,
+    "description": "As víboras variam muito de tamanho e não costumam ser agressivas. Quando confrontadas, frequentemente dão uma mordida antes de tentar fugir. Esta variedade pequena vive em pântanos temperados e usa o veneno para subjugar suas presas.",
+    "combat": "A víbora depende de sua mordida venenosa. Veneno (Ext): ferimento, Fortitude CD 10; dano inicial e secundário de 1d6 pontos de dano temporário de Constituição. A CD é baseada em Constituição. Recebe +4 racial em Esconder-se, Ouvir e Observar; +8 em Equilíbrio, Escalar e Natação. Pode escolher 10 em Escalar mesmo sob ameaça e usa o maior entre Força e Destreza para testes de Escalar."
   },
   {
     "id": "vibora-media",
@@ -12441,7 +12579,9 @@
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "As víboras variam muito de tamanho e não costumam ser agressivas. Quando confrontadas, frequentemente mordem antes de tentar fugir. A víbora média vive em pântanos temperados e utiliza seu veneno para caçar e se defender.",
+    "combat": "A víbora depende de sua mordida venenosa. Veneno (Ext): ferimento, Fortitude CD 11; dano inicial e secundário de 1d6 pontos de dano temporário de Constituição. A CD é baseada em Constituição. Recebe +4 racial em Esconder-se, Ouvir e Observar; +8 em Equilíbrio, Escalar e Natação. Pode escolher 10 em Escalar mesmo sob ameaça e usa o maior entre Força e Destreza para testes de Escalar."
   },
   {
     "id": "vibora-grande",
@@ -12491,7 +12631,9 @@
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "As víboras variam muito de tamanho e não costumam ser agressivas. Quando confrontadas, frequentemente mordem antes de tentar fugir. A víbora grande habita pântanos temperados e usa seu veneno para subjugar presas antes de recuar.",
+    "combat": "A víbora depende de sua mordida venenosa. Veneno (Ext): ferimento, Fortitude CD 11; dano inicial e secundário de 1d6 pontos de dano temporário de Constituição. A CD é baseada em Constituição. Recebe +4 racial em Esconder-se, Ouvir e Observar; +8 em Equilíbrio, Escalar e Natação. Pode escolher 10 em Escalar mesmo sob ameaça e usa o maior entre Força e Destreza para testes de Escalar."
   },
   {
     "id": "vibora-enorme",
@@ -12541,7 +12683,9 @@
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "As víboras variam muito de tamanho e não costumam ser agressivas. Quando confrontadas, frequentemente mordem antes de tentar fugir. A víbora enorme é um predador de pântanos temperados e pode atacar criaturas grandes com sua mordida venenosa.",
+    "combat": "A víbora depende de sua mordida venenosa. Veneno (Ext): ferimento, Fortitude CD 14; dano inicial e secundário de 1d6 pontos de dano temporário de Constituição. A CD é baseada em Constituição. Recebe +4 racial em Esconder-se, Ouvir e Observar; +8 em Equilíbrio, Escalar e Natação. Pode escolher 10 em Escalar mesmo sob ameaça e usa o maior entre Força e Destreza para testes de Escalar."
   },
   {
     "id": "escorpiao-miudo",
@@ -12591,7 +12735,9 @@
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Escorpiões monstruosos são predadores agressivos de regiões desérticas quentes. Mesmo os menores costumam atacar criaturas que se aproximam e investem contra suas presas. Vivem sozinhos ou em colônias, conforme o porte.",
+    "combat": "O escorpião ataca com duas pinças e o ferrão venenoso. Constrição (Ext): em um teste de Agarrar bem-sucedido, causa automaticamente o dano de uma pinça (1d2–4). Agarrar Aprimorado (Ext): ao acertar com uma pinça, pode iniciar Agarrar sem provocar ataque de oportunidade; usa o melhor entre Força e Destreza nos testes resistidos. Veneno (Ext): ferrão, Fortitude CD 12; dano inicial e secundário de 1 ponto de dano temporário de Constituição. Possui Sentido Sísmico de 18 m e visão no escuro de 18 m."
   },
   {
     "id": "escorpiao-pequeno",
@@ -12641,7 +12787,9 @@
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Escorpiões monstruosos são predadores agressivos de regiões desérticas quentes. Atacam criaturas que se aproximam e costumam investir contra suas presas, prendendo-as com as pinças antes de aplicar o ferrão.",
+    "combat": "O escorpião ataca com duas pinças e o ferrão venenoso. Constrição (Ext): em um teste de Agarrar bem-sucedido, causa automaticamente o dano de uma pinça (1d3–1). Agarrar Aprimorado (Ext): ao acertar com uma pinça, pode iniciar Agarrar sem provocar ataque de oportunidade; usa o melhor entre Força e Destreza nos testes resistidos. Veneno (Ext): ferrão, Fortitude CD 12; dano inicial e secundário de 1d2 pontos de dano temporário de Constituição. Possui Sentido Sísmico de 18 m e visão no escuro de 18 m."
   },
   {
     "id": "escorpiao-medio",
@@ -12691,7 +12839,9 @@
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Escorpiões monstruosos são predadores agressivos de regiões desérticas quentes. O espécime médio caça sozinho ou em pequenos grupos e ataca qualquer criatura que se aproxime.",
+    "combat": "O escorpião ataca com duas pinças e o ferrão venenoso. Constrição (Ext): em um teste de Agarrar bem-sucedido, causa automaticamente o dano de uma pinça (1d4+1). Agarrar Aprimorado (Ext): ao acertar com uma pinça, pode iniciar Agarrar sem provocar ataque de oportunidade; usa o melhor entre Força e Destreza nos testes resistidos. Veneno (Ext): ferrão, Fortitude CD 13; dano inicial e secundário de 1d3 pontos de dano temporário de Constituição. Possui Sentido Sísmico de 18 m e visão no escuro de 18 m."
   },
   {
     "id": "escorpiao-grande",
@@ -12741,7 +12891,9 @@
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Escorpiões monstruosos são predadores agressivos de regiões desérticas quentes. O espécime grande é um caçador perigoso, que costuma investir contra qualquer criatura que se aproxime.",
+    "combat": "O escorpião ataca com duas pinças e o ferrão venenoso. Constrição (Ext): em um teste de Agarrar bem-sucedido, causa automaticamente o dano de uma pinça (1d6+4). Agarrar Aprimorado (Ext): ao acertar com uma pinça, pode iniciar Agarrar sem provocar ataque de oportunidade; usa o melhor entre Força e Destreza nos testes resistidos. Veneno (Ext): ferrão, Fortitude CD 14; dano inicial e secundário de 1d4 pontos de dano temporário de Constituição. Possui Sentido Sísmico de 18 m e visão no escuro de 18 m."
   },
   {
     "id": "escorpiao-enorme",
@@ -12791,7 +12943,9 @@
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Escorpiões monstruosos são predadores agressivos de regiões desérticas quentes. Os exemplares enormes são capazes de subjugar presas grandes com suas pinças e ferrão, atacando por investida.",
+    "combat": "O escorpião ataca com duas pinças e o ferrão venenoso. Constrição (Ext): em um teste de Agarrar bem-sucedido, causa automaticamente o dano de uma pinça (1d8+6). Agarrar Aprimorado (Ext): ao acertar com uma pinça, pode iniciar Agarrar sem provocar ataque de oportunidade; usa o melhor entre Força e Destreza nos testes resistidos. Veneno (Ext): ferrão, Fortitude CD 18; dano inicial e secundário de 1d6 pontos de dano temporário de Constituição. Possui Sentido Sísmico de 18 m e visão no escuro de 18 m."
   },
   {
     "id": "escorpiao-imenso",
@@ -12841,7 +12995,9 @@
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Escorpiões monstruosos são predadores agressivos de regiões desérticas quentes. A variedade imensa é um predador colossal que costuma atacar qualquer criatura que se aproxime, usando as pinças para imobilizar e o ferrão para envenenar.",
+    "combat": "O escorpião ataca com duas pinças e o ferrão venenoso. Constrição (Ext): em um teste de Agarrar bem-sucedido, causa automaticamente o dano de uma pinça (2d6+10). Agarrar Aprimorado (Ext): ao acertar com uma pinça, pode iniciar Agarrar sem provocar ataque de oportunidade; usa o melhor entre Força e Destreza nos testes resistidos. Veneno (Ext): ferrão, Fortitude CD 23; dano inicial e secundário de 1d8 pontos de dano temporário de Constituição. Possui Sentido Sísmico de 18 m e visão no escuro de 18 m."
   },
   {
     "id": "escorpiao-colossal",
@@ -12891,7 +13047,9 @@
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "O escorpião monstruoso colossal é um predador gigantesco de regiões desérticas quentes. Como os demais escorpiões monstruosos, é agressivo e costuma investir contra qualquer criatura que se aproxime.",
+    "combat": "O escorpião ataca com duas pinças e o ferrão venenoso. Constrição (Ext): em um teste de Agarrar bem-sucedido, causa automaticamente o dano de uma pinça (2d8+12). Agarrar Aprimorado (Ext): ao acertar com uma pinça, pode iniciar Agarrar sem provocar ataque de oportunidade; usa o melhor entre Força e Destreza nos testes resistidos. Veneno (Ext): ferrão, Fortitude CD 33; dano inicial e secundário de 1d10 pontos de dano temporário de Constituição. Possui Sentido Sísmico de 18 m e visão no escuro de 18 m."
   },
   {
     "id": "aranha-miuda",
@@ -12941,7 +13099,9 @@
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Aranhas monstruosas miúda são predadoras agressivas de florestas temperadas. Caçam usando mordida venenosa e teias. Existem dois comportamentos: aranhas caçadoras percorrem o território em busca de presas; aranhas tecedeiras esperam nas teias e tentam capturar criaturas que passam por elas.",
+    "combat": "A aranha ataca com mordida venenosa. Veneno (Ext): ferimento, Fortitude CD 10; dano inicial e secundário de 1d2 pontos de dano temporário de Força. A CD é baseada em Constituição. Teia (Ext): ambas as variedades podem esperar em teias ou árvores e descer silenciosamente sobre as presas. Aranhas tecedeiras podem lançar teias até oito vezes por dia, como uma rede, com alcance máximo de 15 m e incremento de distância de 3 m, contra alvos de até uma categoria de tamanho maior. Uma criatura presa pode escapar com Arte da Fuga CD 10 ou romper a teia com Força CD 14. A aranha move-se por sua própria teia com seu deslocamento de escalada e localiza criaturas em contato com ela. Sentido Sísmico (Ext): detecta criaturas ou objetos a até 18 m quando em contato com o solo, ou a qualquer distância quando em contato com suas teias. Recebe +4 racial em Esconder-se e Observar e +8 em Escalar; pode escolher 10 em Escalar mesmo sob ameaça e usa o maior entre Força e Destreza."
   },
   {
     "id": "aranha-pequena",
@@ -12991,7 +13151,9 @@
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Aranhas monstruosas pequena são predadoras agressivas de florestas temperadas. Caçam usando mordida venenosa e teias. Existem dois comportamentos: aranhas caçadoras percorrem o território em busca de presas; aranhas tecedeiras esperam nas teias e tentam capturar criaturas que passam por elas.",
+    "combat": "A aranha ataca com mordida venenosa. Veneno (Ext): ferimento, Fortitude CD 10; dano inicial e secundário de 1d3 pontos de dano temporário de Força. A CD é baseada em Constituição. Teia (Ext): ambas as variedades podem esperar em teias ou árvores e descer silenciosamente sobre as presas. Aranhas tecedeiras podem lançar teias até oito vezes por dia, como uma rede, com alcance máximo de 15 m e incremento de distância de 3 m, contra alvos de até uma categoria de tamanho maior. Uma criatura presa pode escapar com Arte da Fuga CD 10 ou romper a teia com Força CD 14. A aranha move-se por sua própria teia com seu deslocamento de escalada e localiza criaturas em contato com ela. Sentido Sísmico (Ext): detecta criaturas ou objetos a até 18 m quando em contato com o solo, ou a qualquer distância quando em contato com suas teias. Recebe +4 racial em Esconder-se e Observar e +8 em Escalar; pode escolher 10 em Escalar mesmo sob ameaça e usa o maior entre Força e Destreza."
   },
   {
     "id": "aranha-media",
@@ -13041,7 +13203,9 @@
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Aranhas monstruosas média são predadoras agressivas de florestas temperadas. Caçam usando mordida venenosa e teias. Existem dois comportamentos: aranhas caçadoras percorrem o território em busca de presas; aranhas tecedeiras esperam nas teias e tentam capturar criaturas que passam por elas.",
+    "combat": "A aranha ataca com mordida venenosa. Veneno (Ext): ferimento, Fortitude CD 12; dano inicial e secundário de 1d4 pontos de dano temporário de Força. A CD é baseada em Constituição. Teia (Ext): ambas as variedades podem esperar em teias ou árvores e descer silenciosamente sobre as presas. Aranhas tecedeiras podem lançar teias até oito vezes por dia, como uma rede, com alcance máximo de 15 m e incremento de distância de 3 m, contra alvos de até uma categoria de tamanho maior. Uma criatura presa pode escapar com Arte da Fuga CD 12 ou romper a teia com Força CD 16. A aranha move-se por sua própria teia com seu deslocamento de escalada e localiza criaturas em contato com ela. Sentido Sísmico (Ext): detecta criaturas ou objetos a até 18 m quando em contato com o solo, ou a qualquer distância quando em contato com suas teias. Recebe +4 racial em Esconder-se e Observar e +8 em Escalar; pode escolher 10 em Escalar mesmo sob ameaça e usa o maior entre Força e Destreza."
   },
   {
     "id": "aranha-grande",
@@ -13091,7 +13255,9 @@
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Aranhas monstruosas grande são predadoras agressivas de florestas temperadas. Caçam usando mordida venenosa e teias. Existem dois comportamentos: aranhas caçadoras percorrem o território em busca de presas; aranhas tecedeiras esperam nas teias e tentam capturar criaturas que passam por elas.",
+    "combat": "A aranha ataca com mordida venenosa. Veneno (Ext): ferimento, Fortitude CD 13; dano inicial e secundário de 1d6 pontos de dano temporário de Força. A CD é baseada em Constituição. Teia (Ext): ambas as variedades podem esperar em teias ou árvores e descer silenciosamente sobre as presas. Aranhas tecedeiras podem lançar teias até oito vezes por dia, como uma rede, com alcance máximo de 15 m e incremento de distância de 3 m, contra alvos de até uma categoria de tamanho maior. Uma criatura presa pode escapar com Arte da Fuga CD 13 ou romper a teia com Força CD 17. A aranha move-se por sua própria teia com seu deslocamento de escalada e localiza criaturas em contato com ela. Sentido Sísmico (Ext): detecta criaturas ou objetos a até 18 m quando em contato com o solo, ou a qualquer distância quando em contato com suas teias. Recebe +4 racial em Esconder-se e Observar e +8 em Escalar; pode escolher 10 em Escalar mesmo sob ameaça e usa o maior entre Força e Destreza."
   },
   {
     "id": "aranha-enorme",
@@ -13141,7 +13307,9 @@
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Aranhas monstruosas enorme são predadoras agressivas de florestas temperadas. Caçam usando mordida venenosa e teias. Existem dois comportamentos: aranhas caçadoras percorrem o território em busca de presas; aranhas tecedeiras esperam nas teias e tentam capturar criaturas que passam por elas.",
+    "combat": "A aranha ataca com mordida venenosa. Veneno (Ext): ferimento, Fortitude CD 16; dano inicial e secundário de 1d8 pontos de dano temporário de Força. A CD é baseada em Constituição. Teia (Ext): ambas as variedades podem esperar em teias ou árvores e descer silenciosamente sobre as presas. Aranhas tecedeiras podem lançar teias até oito vezes por dia, como uma rede, com alcance máximo de 15 m e incremento de distância de 3 m, contra alvos de até uma categoria de tamanho maior. Uma criatura presa pode escapar com Arte da Fuga CD 16 ou romper a teia com Força CD 20. A aranha move-se por sua própria teia com seu deslocamento de escalada e localiza criaturas em contato com ela. Sentido Sísmico (Ext): detecta criaturas ou objetos a até 18 m quando em contato com o solo, ou a qualquer distância quando em contato com suas teias. Recebe +4 racial em Esconder-se e Observar e +8 em Escalar; pode escolher 10 em Escalar mesmo sob ameaça e usa o maior entre Força e Destreza."
   },
   {
     "id": "aranha-imensa",
@@ -13191,7 +13359,9 @@
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Aranhas monstruosas imensa são predadoras agressivas de florestas temperadas. Caçam usando mordida venenosa e teias. Existem dois comportamentos: aranhas caçadoras percorrem o território em busca de presas; aranhas tecedeiras esperam nas teias e tentam capturar criaturas que passam por elas.",
+    "combat": "A aranha ataca com mordida venenosa. Veneno (Ext): ferimento, Fortitude CD 20; dano inicial e secundário de 2d6 pontos de dano temporário de Força. A CD é baseada em Constituição. Teia (Ext): ambas as variedades podem esperar em teias ou árvores e descer silenciosamente sobre as presas. Aranhas tecedeiras podem lançar teias até oito vezes por dia, como uma rede, com alcance máximo de 15 m e incremento de distância de 3 m, contra alvos de até uma categoria de tamanho maior. Uma criatura presa pode escapar com Arte da Fuga CD 20 ou romper a teia com Força CD 24. A aranha move-se por sua própria teia com seu deslocamento de escalada e localiza criaturas em contato com ela. Sentido Sísmico (Ext): detecta criaturas ou objetos a até 18 m quando em contato com o solo, ou a qualquer distância quando em contato com suas teias. Recebe +4 racial em Esconder-se e Observar e +8 em Escalar; pode escolher 10 em Escalar mesmo sob ameaça e usa o maior entre Força e Destreza."
   },
   {
     "id": "aranha-colossal",
@@ -13241,7 +13411,9 @@
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Aranhas monstruosas colossal são predadoras agressivas de florestas temperadas. Caçam usando mordida venenosa e teias. Existem dois comportamentos: aranhas caçadoras percorrem o território em busca de presas; aranhas tecedeiras esperam nas teias e tentam capturar criaturas que passam por elas.",
+    "combat": "A aranha ataca com mordida venenosa. Veneno (Ext): ferimento, Fortitude CD 28; dano inicial e secundário de 2d8 pontos de dano temporário de Força. A CD é baseada em Constituição. Teia (Ext): ambas as variedades podem esperar em teias ou árvores e descer silenciosamente sobre as presas. Aranhas tecedeiras podem lançar teias até oito vezes por dia, como uma rede, com alcance máximo de 15 m e incremento de distância de 3 m, contra alvos de até uma categoria de tamanho maior. Uma criatura presa pode escapar com Arte da Fuga CD 28 ou romper a teia com Força CD 32. A aranha move-se por sua própria teia com seu deslocamento de escalada e localiza criaturas em contato com ela. Sentido Sísmico (Ext): detecta criaturas ou objetos a até 18 m quando em contato com o solo, ou a qualquer distância quando em contato com suas teias. Recebe +4 racial em Esconder-se e Observar e +8 em Escalar; pode escolher 10 em Escalar mesmo sob ameaça e usa o maior entre Força e Destreza."
   },
   {
     "id": "centopeia-miuda",
@@ -13291,7 +13463,9 @@
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Centopeias monstruosas miúda vivem no subterrâneo e atacam qualquer criatura que pareça alimento. Aproximam-se rastejando e usam as mandíbulas para morder e inocular veneno. As variedades maiores podem caçar sozinhas ou em pequenos grupos.",
+    "combat": "A centopeia ataca com uma mordida venenosa. Veneno (Ext): ferimento, Fortitude CD 10; dano inicial e secundário de 1 ponto de dano temporário de Destreza. A CD é baseada em Constituição. Possui visão no escuro de 18 m e, como verme, é imune a efeitos que afetam a mente. Recebe +4 racial em Observar e +8 em Escalar e Esconder-se; usa o maior entre Força e Destreza para testes de Escalar."
   },
   {
     "id": "centopeia-pequena",
@@ -13341,7 +13515,9 @@
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Centopeias monstruosas pequena vivem no subterrâneo e atacam qualquer criatura que pareça alimento. Aproximam-se rastejando e usam as mandíbulas para morder e inocular veneno. As variedades maiores podem caçar sozinhas ou em pequenos grupos.",
+    "combat": "A centopeia ataca com uma mordida venenosa. Veneno (Ext): ferimento, Fortitude CD 10; dano inicial e secundário de 1d2 pontos de dano temporário de Destreza. A CD é baseada em Constituição. Possui visão no escuro de 18 m e, como verme, é imune a efeitos que afetam a mente. Recebe +4 racial em Observar e +8 em Escalar e Esconder-se; usa o maior entre Força e Destreza para testes de Escalar."
   },
   {
     "id": "centopeia-media",
@@ -13391,7 +13567,9 @@
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Centopeias monstruosas média vivem no subterrâneo e atacam qualquer criatura que pareça alimento. Aproximam-se rastejando e usam as mandíbulas para morder e inocular veneno. As variedades maiores podem caçar sozinhas ou em pequenos grupos.",
+    "combat": "A centopeia ataca com uma mordida venenosa. Veneno (Ext): ferimento, Fortitude CD 10; dano inicial e secundário de 1d3 pontos de dano temporário de Destreza. A CD é baseada em Constituição. Possui visão no escuro de 18 m e, como verme, é imune a efeitos que afetam a mente. Recebe +4 racial em Observar e +8 em Escalar e Esconder-se; usa o maior entre Força e Destreza para testes de Escalar."
   },
   {
     "id": "centopeia-grande",
@@ -13441,7 +13619,9 @@
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Centopeias monstruosas grande vivem no subterrâneo e atacam qualquer criatura que pareça alimento. Aproximam-se rastejando e usam as mandíbulas para morder e inocular veneno. As variedades maiores podem caçar sozinhas ou em pequenos grupos.",
+    "combat": "A centopeia ataca com uma mordida venenosa. Veneno (Ext): ferimento, Fortitude CD 11; dano inicial e secundário de 1d4 pontos de dano temporário de Destreza. A CD é baseada em Constituição. Possui visão no escuro de 18 m e, como verme, é imune a efeitos que afetam a mente. Recebe +4 racial em Observar e +8 em Escalar e Esconder-se; usa o maior entre Força e Destreza para testes de Escalar."
   },
   {
     "id": "centopeia-enorme",
@@ -13491,7 +13671,9 @@
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Centopeias monstruosas enorme vivem no subterrâneo e atacam qualquer criatura que pareça alimento. Aproximam-se rastejando e usam as mandíbulas para morder e inocular veneno. As variedades maiores podem caçar sozinhas ou em pequenos grupos.",
+    "combat": "A centopeia ataca com uma mordida venenosa. Veneno (Ext): ferimento, Fortitude CD 14; dano inicial e secundário de 1d6 pontos de dano temporário de Destreza. A CD é baseada em Constituição. Possui visão no escuro de 18 m e, como verme, é imune a efeitos que afetam a mente. Recebe +4 racial em Observar e +8 em Escalar e Esconder-se; usa o maior entre Força e Destreza para testes de Escalar."
   },
   {
     "id": "centopeia-imensa",
@@ -13541,7 +13723,9 @@
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Centopeias monstruosas imensa vivem no subterrâneo e atacam qualquer criatura que pareça alimento. Aproximam-se rastejando e usam as mandíbulas para morder e inocular veneno. As variedades maiores podem caçar sozinhas ou em pequenos grupos.",
+    "combat": "A centopeia ataca com uma mordida venenosa. Veneno (Ext): ferimento, Fortitude CD 17; dano inicial e secundário de 1d8 pontos de dano temporário de Destreza. A CD é baseada em Constituição. Possui visão no escuro de 18 m e, como verme, é imune a efeitos que afetam a mente. Recebe +4 racial em Observar e +8 em Escalar e Esconder-se; usa o maior entre Força e Destreza para testes de Escalar."
   },
   {
     "id": "centopeia-colossal",
@@ -13591,7 +13775,9 @@
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Centopeias monstruosas colossal vivem no subterrâneo e atacam qualquer criatura que pareça alimento. Aproximam-se rastejando e usam as mandíbulas para morder e inocular veneno. As variedades maiores podem caçar sozinhas ou em pequenos grupos.",
+    "combat": "A centopeia ataca com uma mordida venenosa. Veneno (Ext): ferimento, Fortitude CD 23; dano inicial e secundário de 2d6 pontos de dano temporário de Destreza. A CD é baseada em Constituição. Possui visão no escuro de 18 m e, como verme, é imune a efeitos que afetam a mente. Recebe +4 racial em Observar e +8 em Escalar e Esconder-se; usa o maior entre Força e Destreza para testes de Escalar."
   },
   {
     "id": "texugo-atroz",
@@ -13602,7 +13788,7 @@
     "hitDice": "3d8+15",
     "hdCount": 3,
     "hdType": 8,
-    "hitPoints": 23,
+    "hitPoints": 28,
     "initiative": 3,
     "speed": "9 m (6 quadrados), escavar 3 m",
     "armorClass": 16,
@@ -13641,7 +13827,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "O texugo atroz é um animal robusto e musculoso, coberto por uma pelagem espessa e desgrenhada. Possui pernas curtas e fortes, terminadas em patas com garras, e focinho pontudo com uma boca larga repleta de dentes afiados. Mede de 1,5 a 2,1 m de comprimento e pode pesar até 225 kg. É extremamente territorial e não tolera invasões. Escava tocas em terra e materiais macios, mas não consegue atravessar rocha sólida; normalmente deixa um túnel utilizável com cerca de 1,5 m de diâmetro.",
+    "combat": "O texugo atroz ataca com suas garras afiadas e dentes. Fúria (Ext): quando sofre dano em combate, entra em fúria berserker no turno seguinte e continua golpeando e mordendo até que ele ou seu oponente morra. Durante a fúria, recebe +4 em Força e Constituição e sofre –2 na Classe de Armadura; não pode encerrar a fúria voluntariamente. Pode escavar a 3 m por rodada em solo ou materiais mais macios que rocha."
   },
   {
     "id": "cobra-constritora-gigante",
@@ -13691,7 +13879,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "A cobra constritora gigante é uma versão enorme das serpentes constritoras, que geralmente evitam criaturas grandes demais para serem subjugadas. Como as demais cobras, costuma fugir quando confrontada, mas seu tamanho permite capturar presas muito maiores.",
+    "combat": "A cobra constritora gigante agarra a vítima com a mordida e enrola o corpo musculoso ao redor dela. Constrição (Ext): causa 1d8+10 pontos de dano quando obtém sucesso em um teste de Agarrar. Agarrar Aprimorado (Ext): após atingir um oponente com a mordida, pode iniciar Agarrar como ação livre, sem provocar ataques de oportunidade; se vencer o teste resistido, prende a criatura e pode aplicar a constrição. Perícias gerais das cobras: +4 racial em Esconder-se, Ouvir e Observar; +8 em Equilíbrio e Escalar. Podem escolher 10 em Escalar mesmo com pressa ou sob ameaça e usar o modificador de Destreza ou Força (o maior). Em Natação, recebem +8 racial para ações especiais ou evitar perigos, podem escolher 10 mesmo distraídas ou ameaçadas e correr em linha reta."
   },
   {
     "id": "lemure",
