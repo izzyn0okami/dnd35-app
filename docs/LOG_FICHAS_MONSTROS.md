@@ -879,3 +879,15 @@ As fichas-base devem ser reutilizadas por ID sempre que a tabela pedir apenas um
 - Preservados os campos de estatísticas-base existentes.
 - Adicionado teste de regressão específico para as habilidades distintivas e valores da ficha.
 - Contagem após esta etapa: 320 criaturas; 231 com Descrição e Combate completos; 89 pendentes.
+
+
+## 2026-11-14 — Trigésima sexta etapa: Worg, Wyvern e Yrthak
+
+- Fonte primária: Livro dos Monstros brasileiro, páginas impressas 258–260 e 262–263 (PDF fornecido; páginas PDF 262–264 e 266–267).
+- Preenchidas Descrição e Combate dos três registros existentes, sem criar duplicatas nem substituir blocos estatísticos.
+- Worg: incluídos aparência, dimensões, peso, idioma, caça em matilha, tática de desgaste, Imobilização (Ext), bônus raciais e interação entre Faro e Sobrevivência.
+- Wyvern: incluídos anatomia, dimensões, envergadura, peso, idioma, agressividade, Investida Aérea, Agarrar Aprimorado e veneno (Fortitude CD 17; 2d6 Constituição).
+- Yrthak: incluídos cegueira, percepção sonora, órgão sensorial, habitat, dieta e dimensões; Combate registra Rajada Sônica (18 m; 6d6; intervalo de 2 rodadas), Explosão (raio de 3 m; 2d6 perfurante), Percepção às Cegas (36 m), imunidades visuais e consequências de neutralizar sua audição.
+- Adicionado teste de regressão para as três fichas e suas capacidades distintivas.
+- Nenhuma estatística-base, ND, tendência, progressão ou vínculo de criatura foi alterado.
+- Contagem após esta etapa: 320 criaturas; 234 com Descrição e Combate completos; 86 ainda precisam de ao menos um desses campos.
