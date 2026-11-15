@@ -13099,7 +13099,9 @@
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Aranhas monstruosas miúda são predadoras agressivas de florestas temperadas. Caçam usando mordida venenosa e teias. Existem dois comportamentos: aranhas caçadoras percorrem o território em busca de presas; aranhas tecedeiras esperam nas teias e tentam capturar criaturas que passam por elas.",
+    "combat": "A aranha ataca com mordida venenosa. Veneno (Ext): ferimento, Fortitude CD 10; dano inicial e secundário de 1d2 pontos de dano temporário de Força. A CD é baseada em Constituição. Teia (Ext): ambas as variedades podem esperar em teias ou árvores e descer silenciosamente sobre as presas. Aranhas tecedeiras podem lançar teias até oito vezes por dia, como uma rede, com alcance máximo de 15 m e incremento de distância de 3 m, contra alvos de até uma categoria de tamanho maior. Uma criatura presa pode escapar com Arte da Fuga CD 10 ou romper a teia com Força CD 14. A aranha move-se por sua própria teia com seu deslocamento de escalada e localiza criaturas em contato com ela. Sentido Sísmico (Ext): detecta criaturas ou objetos a até 18 m quando em contato com o solo, ou a qualquer distância quando em contato com suas teias. Recebe +4 racial em Esconder-se e Observar e +8 em Escalar; pode escolher 10 em Escalar mesmo sob ameaça e usa o maior entre Força e Destreza."
   },
   {
     "id": "aranha-pequena",
@@ -13149,7 +13151,9 @@
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Aranhas monstruosas pequena são predadoras agressivas de florestas temperadas. Caçam usando mordida venenosa e teias. Existem dois comportamentos: aranhas caçadoras percorrem o território em busca de presas; aranhas tecedeiras esperam nas teias e tentam capturar criaturas que passam por elas.",
+    "combat": "A aranha ataca com mordida venenosa. Veneno (Ext): ferimento, Fortitude CD 10; dano inicial e secundário de 1d3 pontos de dano temporário de Força. A CD é baseada em Constituição. Teia (Ext): ambas as variedades podem esperar em teias ou árvores e descer silenciosamente sobre as presas. Aranhas tecedeiras podem lançar teias até oito vezes por dia, como uma rede, com alcance máximo de 15 m e incremento de distância de 3 m, contra alvos de até uma categoria de tamanho maior. Uma criatura presa pode escapar com Arte da Fuga CD 10 ou romper a teia com Força CD 14. A aranha move-se por sua própria teia com seu deslocamento de escalada e localiza criaturas em contato com ela. Sentido Sísmico (Ext): detecta criaturas ou objetos a até 18 m quando em contato com o solo, ou a qualquer distância quando em contato com suas teias. Recebe +4 racial em Esconder-se e Observar e +8 em Escalar; pode escolher 10 em Escalar mesmo sob ameaça e usa o maior entre Força e Destreza."
   },
   {
     "id": "aranha-media",
@@ -13199,7 +13203,9 @@
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Aranhas monstruosas média são predadoras agressivas de florestas temperadas. Caçam usando mordida venenosa e teias. Existem dois comportamentos: aranhas caçadoras percorrem o território em busca de presas; aranhas tecedeiras esperam nas teias e tentam capturar criaturas que passam por elas.",
+    "combat": "A aranha ataca com mordida venenosa. Veneno (Ext): ferimento, Fortitude CD 12; dano inicial e secundário de 1d4 pontos de dano temporário de Força. A CD é baseada em Constituição. Teia (Ext): ambas as variedades podem esperar em teias ou árvores e descer silenciosamente sobre as presas. Aranhas tecedeiras podem lançar teias até oito vezes por dia, como uma rede, com alcance máximo de 15 m e incremento de distância de 3 m, contra alvos de até uma categoria de tamanho maior. Uma criatura presa pode escapar com Arte da Fuga CD 12 ou romper a teia com Força CD 16. A aranha move-se por sua própria teia com seu deslocamento de escalada e localiza criaturas em contato com ela. Sentido Sísmico (Ext): detecta criaturas ou objetos a até 18 m quando em contato com o solo, ou a qualquer distância quando em contato com suas teias. Recebe +4 racial em Esconder-se e Observar e +8 em Escalar; pode escolher 10 em Escalar mesmo sob ameaça e usa o maior entre Força e Destreza."
   },
   {
     "id": "aranha-grande",
@@ -13249,7 +13255,9 @@
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Aranhas monstruosas grande são predadoras agressivas de florestas temperadas. Caçam usando mordida venenosa e teias. Existem dois comportamentos: aranhas caçadoras percorrem o território em busca de presas; aranhas tecedeiras esperam nas teias e tentam capturar criaturas que passam por elas.",
+    "combat": "A aranha ataca com mordida venenosa. Veneno (Ext): ferimento, Fortitude CD 13; dano inicial e secundário de 1d6 pontos de dano temporário de Força. A CD é baseada em Constituição. Teia (Ext): ambas as variedades podem esperar em teias ou árvores e descer silenciosamente sobre as presas. Aranhas tecedeiras podem lançar teias até oito vezes por dia, como uma rede, com alcance máximo de 15 m e incremento de distância de 3 m, contra alvos de até uma categoria de tamanho maior. Uma criatura presa pode escapar com Arte da Fuga CD 13 ou romper a teia com Força CD 17. A aranha move-se por sua própria teia com seu deslocamento de escalada e localiza criaturas em contato com ela. Sentido Sísmico (Ext): detecta criaturas ou objetos a até 18 m quando em contato com o solo, ou a qualquer distância quando em contato com suas teias. Recebe +4 racial em Esconder-se e Observar e +8 em Escalar; pode escolher 10 em Escalar mesmo sob ameaça e usa o maior entre Força e Destreza."
   },
   {
     "id": "aranha-enorme",
@@ -13299,7 +13307,9 @@
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Aranhas monstruosas enorme são predadoras agressivas de florestas temperadas. Caçam usando mordida venenosa e teias. Existem dois comportamentos: aranhas caçadoras percorrem o território em busca de presas; aranhas tecedeiras esperam nas teias e tentam capturar criaturas que passam por elas.",
+    "combat": "A aranha ataca com mordida venenosa. Veneno (Ext): ferimento, Fortitude CD 16; dano inicial e secundário de 1d8 pontos de dano temporário de Força. A CD é baseada em Constituição. Teia (Ext): ambas as variedades podem esperar em teias ou árvores e descer silenciosamente sobre as presas. Aranhas tecedeiras podem lançar teias até oito vezes por dia, como uma rede, com alcance máximo de 15 m e incremento de distância de 3 m, contra alvos de até uma categoria de tamanho maior. Uma criatura presa pode escapar com Arte da Fuga CD 16 ou romper a teia com Força CD 20. A aranha move-se por sua própria teia com seu deslocamento de escalada e localiza criaturas em contato com ela. Sentido Sísmico (Ext): detecta criaturas ou objetos a até 18 m quando em contato com o solo, ou a qualquer distância quando em contato com suas teias. Recebe +4 racial em Esconder-se e Observar e +8 em Escalar; pode escolher 10 em Escalar mesmo sob ameaça e usa o maior entre Força e Destreza."
   },
   {
     "id": "aranha-imensa",
@@ -13349,7 +13359,9 @@
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Aranhas monstruosas imensa são predadoras agressivas de florestas temperadas. Caçam usando mordida venenosa e teias. Existem dois comportamentos: aranhas caçadoras percorrem o território em busca de presas; aranhas tecedeiras esperam nas teias e tentam capturar criaturas que passam por elas.",
+    "combat": "A aranha ataca com mordida venenosa. Veneno (Ext): ferimento, Fortitude CD 20; dano inicial e secundário de 2d6 pontos de dano temporário de Força. A CD é baseada em Constituição. Teia (Ext): ambas as variedades podem esperar em teias ou árvores e descer silenciosamente sobre as presas. Aranhas tecedeiras podem lançar teias até oito vezes por dia, como uma rede, com alcance máximo de 15 m e incremento de distância de 3 m, contra alvos de até uma categoria de tamanho maior. Uma criatura presa pode escapar com Arte da Fuga CD 20 ou romper a teia com Força CD 24. A aranha move-se por sua própria teia com seu deslocamento de escalada e localiza criaturas em contato com ela. Sentido Sísmico (Ext): detecta criaturas ou objetos a até 18 m quando em contato com o solo, ou a qualquer distância quando em contato com suas teias. Recebe +4 racial em Esconder-se e Observar e +8 em Escalar; pode escolher 10 em Escalar mesmo sob ameaça e usa o maior entre Força e Destreza."
   },
   {
     "id": "aranha-colossal",
@@ -13399,7 +13411,9 @@
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Aranhas monstruosas colossal são predadoras agressivas de florestas temperadas. Caçam usando mordida venenosa e teias. Existem dois comportamentos: aranhas caçadoras percorrem o território em busca de presas; aranhas tecedeiras esperam nas teias e tentam capturar criaturas que passam por elas.",
+    "combat": "A aranha ataca com mordida venenosa. Veneno (Ext): ferimento, Fortitude CD 28; dano inicial e secundário de 2d8 pontos de dano temporário de Força. A CD é baseada em Constituição. Teia (Ext): ambas as variedades podem esperar em teias ou árvores e descer silenciosamente sobre as presas. Aranhas tecedeiras podem lançar teias até oito vezes por dia, como uma rede, com alcance máximo de 15 m e incremento de distância de 3 m, contra alvos de até uma categoria de tamanho maior. Uma criatura presa pode escapar com Arte da Fuga CD 28 ou romper a teia com Força CD 32. A aranha move-se por sua própria teia com seu deslocamento de escalada e localiza criaturas em contato com ela. Sentido Sísmico (Ext): detecta criaturas ou objetos a até 18 m quando em contato com o solo, ou a qualquer distância quando em contato com suas teias. Recebe +4 racial em Esconder-se e Observar e +8 em Escalar; pode escolher 10 em Escalar mesmo sob ameaça e usa o maior entre Força e Destreza."
   },
   {
     "id": "centopeia-miuda",
@@ -13449,7 +13463,9 @@
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Centopeias monstruosas miúda vivem no subterrâneo e atacam qualquer criatura que pareça alimento. Aproximam-se rastejando e usam as mandíbulas para morder e inocular veneno. As variedades maiores podem caçar sozinhas ou em pequenos grupos.",
+    "combat": "A centopeia ataca com uma mordida venenosa. Veneno (Ext): ferimento, Fortitude CD 10; dano inicial e secundário de 1 ponto de dano temporário de Destreza. A CD é baseada em Constituição. Possui visão no escuro de 18 m e, como verme, é imune a efeitos que afetam a mente. Recebe +4 racial em Observar e +8 em Escalar e Esconder-se; usa o maior entre Força e Destreza para testes de Escalar."
   },
   {
     "id": "centopeia-pequena",
@@ -13499,7 +13515,9 @@
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Centopeias monstruosas pequena vivem no subterrâneo e atacam qualquer criatura que pareça alimento. Aproximam-se rastejando e usam as mandíbulas para morder e inocular veneno. As variedades maiores podem caçar sozinhas ou em pequenos grupos.",
+    "combat": "A centopeia ataca com uma mordida venenosa. Veneno (Ext): ferimento, Fortitude CD 10; dano inicial e secundário de 1d2 pontos de dano temporário de Destreza. A CD é baseada em Constituição. Possui visão no escuro de 18 m e, como verme, é imune a efeitos que afetam a mente. Recebe +4 racial em Observar e +8 em Escalar e Esconder-se; usa o maior entre Força e Destreza para testes de Escalar."
   },
   {
     "id": "centopeia-media",
@@ -13549,7 +13567,9 @@
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Centopeias monstruosas média vivem no subterrâneo e atacam qualquer criatura que pareça alimento. Aproximam-se rastejando e usam as mandíbulas para morder e inocular veneno. As variedades maiores podem caçar sozinhas ou em pequenos grupos.",
+    "combat": "A centopeia ataca com uma mordida venenosa. Veneno (Ext): ferimento, Fortitude CD 10; dano inicial e secundário de 1d3 pontos de dano temporário de Destreza. A CD é baseada em Constituição. Possui visão no escuro de 18 m e, como verme, é imune a efeitos que afetam a mente. Recebe +4 racial em Observar e +8 em Escalar e Esconder-se; usa o maior entre Força e Destreza para testes de Escalar."
   },
   {
     "id": "centopeia-grande",
@@ -13599,7 +13619,9 @@
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Centopeias monstruosas grande vivem no subterrâneo e atacam qualquer criatura que pareça alimento. Aproximam-se rastejando e usam as mandíbulas para morder e inocular veneno. As variedades maiores podem caçar sozinhas ou em pequenos grupos.",
+    "combat": "A centopeia ataca com uma mordida venenosa. Veneno (Ext): ferimento, Fortitude CD 11; dano inicial e secundário de 1d4 pontos de dano temporário de Destreza. A CD é baseada em Constituição. Possui visão no escuro de 18 m e, como verme, é imune a efeitos que afetam a mente. Recebe +4 racial em Observar e +8 em Escalar e Esconder-se; usa o maior entre Força e Destreza para testes de Escalar."
   },
   {
     "id": "centopeia-enorme",
@@ -13649,7 +13671,9 @@
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Centopeias monstruosas enorme vivem no subterrâneo e atacam qualquer criatura que pareça alimento. Aproximam-se rastejando e usam as mandíbulas para morder e inocular veneno. As variedades maiores podem caçar sozinhas ou em pequenos grupos.",
+    "combat": "A centopeia ataca com uma mordida venenosa. Veneno (Ext): ferimento, Fortitude CD 14; dano inicial e secundário de 1d6 pontos de dano temporário de Destreza. A CD é baseada em Constituição. Possui visão no escuro de 18 m e, como verme, é imune a efeitos que afetam a mente. Recebe +4 racial em Observar e +8 em Escalar e Esconder-se; usa o maior entre Força e Destreza para testes de Escalar."
   },
   {
     "id": "centopeia-imensa",
@@ -13699,7 +13723,9 @@
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Centopeias monstruosas imensa vivem no subterrâneo e atacam qualquer criatura que pareça alimento. Aproximam-se rastejando e usam as mandíbulas para morder e inocular veneno. As variedades maiores podem caçar sozinhas ou em pequenos grupos.",
+    "combat": "A centopeia ataca com uma mordida venenosa. Veneno (Ext): ferimento, Fortitude CD 17; dano inicial e secundário de 1d8 pontos de dano temporário de Destreza. A CD é baseada em Constituição. Possui visão no escuro de 18 m e, como verme, é imune a efeitos que afetam a mente. Recebe +4 racial em Observar e +8 em Escalar e Esconder-se; usa o maior entre Força e Destreza para testes de Escalar."
   },
   {
     "id": "centopeia-colossal",
@@ -13749,7 +13775,9 @@
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Centopeias monstruosas colossal vivem no subterrâneo e atacam qualquer criatura que pareça alimento. Aproximam-se rastejando e usam as mandíbulas para morder e inocular veneno. As variedades maiores podem caçar sozinhas ou em pequenos grupos.",
+    "combat": "A centopeia ataca com uma mordida venenosa. Veneno (Ext): ferimento, Fortitude CD 23; dano inicial e secundário de 2d6 pontos de dano temporário de Destreza. A CD é baseada em Constituição. Possui visão no escuro de 18 m e, como verme, é imune a efeitos que afetam a mente. Recebe +4 racial em Observar e +8 em Escalar e Esconder-se; usa o maior entre Força e Destreza para testes de Escalar."
   },
   {
     "id": "texugo-atroz",
