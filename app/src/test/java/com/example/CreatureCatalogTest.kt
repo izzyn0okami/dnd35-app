@@ -761,7 +761,7 @@ class CreatureCatalogTest {
 
         val ermine = CreatureCatalog.byId("arminho")!!
         assertTrue(ermine.combat.contains("Adesão (Ext)"))
-        assertTrue(ermine.combat.contains("CA 12"))
+        assertTrue(ermine.combat.contains("será reduzida para CA 12"))
 
         val ray = CreatureCatalog.byId("arraia")!!
         assertTrue(ray.description.contains("plâncton"))
