@@ -32,10 +32,12 @@ object ClassFeatureGlossarySearch {
                         level = feature.level,
                         term = feature.name,
                         explanation = feature.description,
-                        reference = references.firstOrNull { reference ->
-                            reference.className == classInfo.name &&
-                                normalize(feature.name).startsWith(normalize(reference.term))
-                        }
+                        reference = references
+                            .filter { reference ->
+                                reference.className == classInfo.name &&
+                                    normalize(feature.name).startsWith(normalize(reference.term))
+                            }
+                            .maxByOrNull { normalize(it.term).length }
                     )
                 }
             }
