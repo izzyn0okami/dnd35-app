@@ -42,3 +42,14 @@ Data: 2026-11-15
 - Ajustadas as descrições para preservar o sentido das regras e atender aos critérios automatizados.
 - Commit: `a06edd93d0d5cbacd05ce2357c2a867417250539`.
 - Aguardar nova execução integral dos workflows antes do merge.
+
+
+## Busca contextual no glossário de habilidades de classe
+
+- O nome de cada habilidade de classe agora exibe um indicador de pesquisa e abre o glossário com o termo já preenchido; tocar no restante da linha continua abrindo o detalhe e a progressão da habilidade.
+- O diálogo permite editar a consulta e apresenta resultados com classe, nível e explicação textual.
+- A pesquisa ignora diferenças entre maiúsculas/minúsculas e acentos.
+- O mecanismo foi isolado em `ClassFeatureGlossarySearch.kt`: consulta apenas nomes e descrições estáticas das habilidades. Não recebe ficha, atributos, níveis efetivos ou estatísticas calculadas; não altera progressões, cálculos nem dados persistidos.
+- A fonte textual inicial é o catálogo estático de habilidades de classe já existente. O índice pode receber sinônimos e verbetes próprios em incrementos posteriores sem acoplar a busca ao motor de regras.
+- Teste automatizado cobre busca sem acentos e consulta vazia.
+- A descrição de Domínios do Clérigo também foi ajustada para explicitar o espaço de magia adicional por nível, corrigindo a expectativa do teste de conteúdo sem alterar a mecânica.
