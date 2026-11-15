@@ -46,3 +46,9 @@
 - Conteúdo de referência traduzido e resumido em português; não é transcrição literal.
 - Nenhuma ficha, estatística, regra de cálculo ou registro do catálogo de criaturas foi alterado.
 - O glossário é informativo e contextual; quando uma habilidade tiver regra própria no verbete do monstro, prevalece a descrição daquela habilidade.
+
+### Correção após validação visual — detalhe em tela cheia
+- A captura enviada mostrou que a ficha aberta a partir do fluxo de sessão/seleção de monstros usa `CreatureDetailsOverlay`, compartilhado por `CreatureDeckOverlay`, e não o `CreatureDetail` da aba do catálogo.
+- O botão textual **Glossário** foi adicionado ao cabeçalho desse overlay compartilhado, ao lado do botão Fechar.
+- O botão abre o mesmo glossário do Bestiário, sem fechar a ficha e sem alterar o fluxo de seleção.
+- O cabeçalho compartilhado recebeu uma ação opcional; os demais usos do overlay permanecem sem alteração visual.
