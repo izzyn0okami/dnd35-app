@@ -511,5 +511,113 @@
     "special": "Só é possível conjurar uma magia acelerada por rodada. A magia ocupa o lugar de uma magia quatro níveis superior e não provoca ataques de oportunidade. O livro restringe a aplicação deste talento a magias conjuradas espontaneamente.",
     "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 74",
     "status": "audited"
+  },
+  {
+    "name": "Foco em Arma Maior",
+    "description": "Escolha uma arma específica para a qual já possua Foco em Arma. O talento concede mais +1 nas jogadas de ataque realizadas com essa arma, acumulando-se com o bônus de Foco em Arma.",
+    "normal": "Sem o talento, o personagem recebe apenas o bônus de Foco em Arma e outros modificadores normalmente aplicáveis.",
+    "special": "Exige proficiência com a arma escolhida, Foco em Arma e 8º nível de guerreiro. Pode ser escolhido várias vezes, mas cada escolha se aplica a uma arma diferente. Um guerreiro pode escolhê-lo como talento adicional. É necessário possuí-lo antes de Especialização em Arma Maior.",
+    "sourcePage": 81,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 81",
+    "status": "audited"
+  },
+  {
+    "name": "Expulsão Adicional",
+    "description": "Concede quatro tentativas diárias adicionais para cada habilidade de expulsar ou fascinar criaturas que o personagem possua.",
+    "normal": "Sem este talento, cada habilidade de expulsar ou fascinar é normalmente utilizável um número de vezes por dia igual a 3 + modificador de Carisma.",
+    "special": "Exige a habilidade de expulsar ou fascinar criaturas. Se o personagem possuir mais de uma modalidade, como expulsar mortos-vivos e criaturas da água ou fascinar criaturas do fogo, recebe quatro usos adicionais para cada modalidade. Pode ser escolhido várias vezes e os usos adicionais se acumulam.",
+    "sourcePage": 81,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 81",
+    "status": "audited"
+  },
+  {
+    "name": "Expulsão Aprimorada",
+    "description": "O personagem é tratado como se tivesse um nível efetivo de classe a mais ao realizar testes para expulsar ou fascinar criaturas.",
+    "normal": "Sem o talento, o teste utiliza o nível efetivo normal do personagem para essa habilidade.",
+    "special": "Exige a habilidade de expulsar ou fascinar criaturas. O bônus altera o nível efetivo usado nesses testes, não concede usos diários adicionais.",
+    "sourcePage": 81,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 81",
+    "status": "audited"
+  },
+  {
+    "name": "Imobilização Aprimorada",
+    "description": "Enquanto estiver desarmado, o personagem não provoca ataque de oportunidade ao tentar imobilizar um adversário e recebe +4 nos testes resistidos de Força da manobra. Quando consegue imobilizar um oponente em combate corporal, pode realizar imediatamente um ataque contra ele, como se não tivesse gasto o ataque usado para iniciar a manobra.",
+    "normal": "Sem o talento, tentar imobilizar um adversário desarmado provoca ataque de oportunidade e não concede o ataque adicional descrito.",
+    "special": "Exige Inteligência 13 e Especialização em Combate. Um monge pode escolhê-lo como talento adicional no 6º nível mesmo sem cumprir os pré-requisitos; um guerreiro também pode escolhê-lo como talento adicional.",
+    "sourcePage": 82,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 82",
+    "status": "audited"
+  },
+  {
+    "name": "Investida Implacável",
+    "description": "Quando estiver montado e realizar uma investida, o personagem causa dano dobrado com armas corporais ou dano triplicado quando utiliza uma lança.",
+    "normal": "Sem o talento, a investida montada não multiplica dessa forma o dano da arma.",
+    "special": "Exige 1 graduação em Cavalgar, Combate Montado e Investida Montada. Um guerreiro pode escolhê-lo como talento adicional.",
+    "sourcePage": 82,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 82",
+    "status": "audited"
+  },
+  {
+    "name": "Investida Montada",
+    "description": "Ao realizar uma investida montado, o personagem pode continuar se deslocando depois do ataque, seguindo em linha reta. O deslocamento total na rodada não pode exceder o dobro do deslocamento da montaria.",
+    "normal": "Sem o talento, a investida termina no espaço em que o ataque é realizado.",
+    "special": "Exige 1 graduação em Cavalgar e Combate Montado. O deslocamento posterior deve continuar na linha reta da investida.",
+    "sourcePage": 82,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 82",
+    "status": "audited"
+  },
+  {
+    "name": "Saque Rápido",
+    "description": "O personagem pode sacar uma arma como ação livre, em vez de usar uma ação de movimento. Também pode sacar uma arma escondida usando uma ação de movimento e realizar sua quantidade normal de ataques com armas de arremesso durante uma ação de ataque total.",
+    "normal": "Sem o talento, sacar uma arma normalmente exige uma ação de movimento; sacar uma arma escondida exige uma ação padrão.",
+    "special": "Exige bônus base de ataque +1. Um guerreiro pode escolhê-lo como talento adicional.",
+    "sourcePage": 84,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 84",
+    "status": "audited"
+  },
+  {
+    "name": "Sucesso Decisivo Aprimorado",
+    "description": "Escolha um tipo de arma. Ao utilizá-la, a margem de ameaça de sucesso decisivo é dobrada; por exemplo, uma margem natural de 19–20 passa a 17–20.",
+    "normal": "Sem o talento, a arma mantém sua margem de ameaça normal.",
+    "special": "Exige proficiência com a arma escolhida e bônus base de ataque +8. Pode ser escolhido várias vezes, cada vez para uma arma diferente. Seus efeitos não se acumulam com outros efeitos que ampliem a margem de ameaça, como Lâmina Afiada. Um guerreiro pode escolhê-lo como talento adicional.",
+    "sourcePage": 84,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 84",
+    "status": "audited"
+  },
+  {
+    "name": "Tiro em Movimento",
+    "description": "Ao realizar uma ação de ataque simples com uma arma de ataque à distância, o personagem pode dividir seu deslocamento, movendo-se antes e depois do ataque, desde que a distância total percorrida não ultrapasse seu deslocamento.",
+    "normal": "Sem o talento, a ação de ataque simples não permite dividir o movimento antes e depois do ataque.",
+    "special": "Exige Destreza 13, Esquiva, Mobilidade, Tiro Certeiro e bônus base de ataque +4. Um guerreiro pode escolhê-lo como talento adicional.",
+    "sourcePage": 84,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 84",
+    "status": "audited"
+  },
+  {
+    "name": "Tiro Múltiplo",
+    "description": "Como ação padrão, o personagem pode disparar duas flechas contra um alvo a até 9 m. Os disparos usam uma única jogada de ataque com penalidade de –4 e causam dano normalmente. A cada 5 pontos de bônus base de ataque acima de +6, é possível disparar outra flecha, até quatro flechas com BBA +16; cada flecha além da segunda impõe –2 cumulativo na jogada.",
+    "normal": "Sem o talento, cada flecha exige sua própria jogada de ataque e não pode ser disparada em conjunto por esta ação padrão.",
+    "special": "Exige Destreza 17, Tiro Certeiro, Tiro Rápido e bônus base de ataque +6. Redução de dano e resistências são aplicadas separadamente a cada disparo; dano adicional baseado em precisão é aplicado apenas uma vez, e somente a primeira flecha multiplica o dano em um sucesso decisivo. Guerreiros podem escolhê-lo como talento adicional. Rangers de 6º nível com estilo de arquearia recebem o talento mesmo sem os pré-requisitos, apenas sem armadura ou com armadura leve.",
+    "sourcePage": 85,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 85",
+    "status": "audited"
+  },
+  {
+    "name": "Tiro Preciso Aprimorado",
+    "description": "Os ataques à distância do personagem ignoram o bônus na CA concedido por qualquer cobertura inferior à cobertura total e ignoram a chance de falha concedida por camuflagem, exceto camuflagem total.",
+    "normal": "Sem o talento, cobertura e camuflagem concedem seus benefícios normalmente contra ataques à distância.",
+    "special": "Exige Destreza 19, Tiro Certeiro, Tiro Preciso e bônus base de ataque +11. Cobertura total e camuflagem total continuam funcionando normalmente. Um guerreiro pode escolhê-lo como talento adicional. Rangers de 11º nível com estilo de arquearia recebem o talento mesmo sem os pré-requisitos, apenas sem armadura ou com armadura leve.",
+    "sourcePage": 85,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 85",
+    "status": "audited"
+  },
+  {
+    "name": "Trespassar Maior",
+    "description": "Quando o personagem derruba uma criatura com um ataque corpo a corpo e pode realizar o ataque adicional concedido por Trespassar, não existe limite para a quantidade de ataques adicionais desse tipo que pode realizar na mesma rodada.",
+    "normal": "Trespassar permite apenas um ataque adicional por rodada.",
+    "special": "Exige Força 13, Trespassar, Ataque Poderoso e bônus base de ataque +4. Um guerreiro pode escolhê-lo como talento adicional.",
+    "sourcePage": 85,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 85",
+    "status": "audited"
   }
 ]
