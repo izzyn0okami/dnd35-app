@@ -298,5 +298,89 @@
     "sourcePages": "44",
     "source": "Livro do Jogador brasileiro, Capítulo 3 — Monge, p. 44",
     "status": "audited"
+  },
+  {
+    "className": "Ladino",
+    "term": "Ataque Furtivo",
+    "description": "O ladino causa dano adicional quando atinge um oponente incapaz de se beneficiar do bônus de Destreza na Classe de Armadura ou quando o flanqueia. O dano adicional começa em 1d6 no 1º nível e aumenta em 1d6 a cada dois níveis subsequentes de ladino.",
+    "activation": "Aplica-se quando as condições do ataque furtivo são satisfeitas; não exige ação separada.",
+    "duration": "O dano adicional faz parte do ataque que atende às condições.",
+    "restrictions": "Ataques à distância só são furtivos a até 9 m. O dano extra não é multiplicado em um acerto decisivo. Só afeta criaturas vivas com anatomia discernível e que não sejam imunes a sucessos decisivos; mortos-vivos, constructos, limos, plantas e criaturas incorpóreas são imunes. O ladino precisa enxergar os pontos vitais e não pode usar o ataque contra uma criatura camuflada ou partes fora de alcance. Com bastão ou ataque desarmado, pode causar dano por contusão; armas normais não podem fazê-lo em ataque furtivo.",
+    "progression": "1º nível: +1d6. A cada dois níveis subsequentes de ladino, o dano aumenta em +1d6, até +10d6 no 19º nível.",
+    "sourcePages": "38–39",
+    "source": "Livro do Jogador brasileiro, Capítulo 3 — Ladino, pp. 38–39",
+    "status": "audited"
+  },
+  {
+    "className": "Ladino",
+    "term": "Encontrar Armadilhas",
+    "description": "Somente ladinos podem usar Procurar para localizar armadilhas com Classe de Dificuldade superior a 20 e Operar Mecanismo para desarmar armadilhas mágicas.",
+    "activation": "Usada ao procurar ou desarmar uma armadilha, conforme as regras das perícias Procurar e Operar Mecanismo.",
+    "duration": "Capacidade permanente a partir do 1º nível.",
+    "restrictions": "Armadilhas mundanas bem escondidas podem ter CD 20 ou superior. Armadilhas mágicas têm CD 25 + nível da magia utilizada em sua criação.",
+    "progression": "Quando obtém sucesso ao desativar uma armadilha com margem de 10 ou mais, o ladino consegue estudar seu funcionamento e superar a armadilha com o grupo sem desarmá-la.",
+    "sourcePages": "39",
+    "source": "Livro do Jogador brasileiro, Capítulo 3 — Ladino, p. 39",
+    "status": "audited"
+  },
+  {
+    "className": "Ladino",
+    "term": "Evasão",
+    "description": "A partir do 2º nível, quando um ataque permite um teste de resistência de Reflexos para reduzir o dano à metade, o ladino não sofre dano algum se obtiver sucesso no teste.",
+    "activation": "É aplicada automaticamente quando o ladino realiza o teste de Reflexos apropriado.",
+    "duration": "Permanente a partir do 2º nível.",
+    "restrictions": "Só funciona sem armadura ou com armadura leve. Um ladino indefeso — inconsciente, paralisado ou imobilizado — não recebe o benefício.",
+    "progression": "Adquirida no 2º nível. No 9º nível, o ladino recebe Evasão Aprimorada, que também reduz o dano à metade quando o teste falha.",
+    "sourcePages": "39",
+    "source": "Livro do Jogador brasileiro, Capítulo 3 — Ladino, p. 39",
+    "status": "audited"
+  },
+  {
+    "className": "Ladino",
+    "term": "Esquiva Sobrenatural",
+    "description": "A partir do 4º nível, o ladino conserva seu bônus de Destreza na Classe de Armadura mesmo quando é surpreendido ou atacado por um oponente invisível.",
+    "activation": "Sempre ativa; não exige ação.",
+    "duration": "Permanente a partir do 4º nível.",
+    "restrictions": "O ladino ainda perde o bônus de Destreza na CA quando estiver imobilizado.",
+    "progression": "Se o ladino já possuir Esquiva Sobrenatural por outra classe, recebe automaticamente Esquiva Sobrenatural Aprimorada. Os níveis das classes que concedem Esquiva Sobrenatural se acumulam para determinar o nível mínimo de ladino capaz de flanqueá-lo.",
+    "sourcePages": "39",
+    "source": "Livro do Jogador brasileiro, Capítulo 3 — Ladino, p. 39",
+    "status": "audited"
+  },
+  {
+    "className": "Ladino",
+    "term": "Esquiva Sobrenatural Aprimorada",
+    "description": "A partir do 8º nível, o ladino não pode ser flanqueado, pois reage aos adversários nas laterais como reagiria a um único atacante. Isso impede que outro ladino aplique ataque furtivo por flanqueamento.",
+    "activation": "Sempre ativa; não exige ação.",
+    "duration": "Permanente a partir do 8º nível.",
+    "restrictions": "Um ladino ainda pode flanquear o personagem se possuir pelo menos quatro níveis de ladino a mais que o nível de classe atual do personagem.",
+    "progression": "Se o ladino possuir Esquiva Sobrenatural por outra classe, recebe automaticamente esta versão aprimorada. Os níveis das classes que concedem Esquiva Sobrenatural se acumulam para determinar o nível mínimo de ladino capaz de flanqueá-lo.",
+    "sourcePages": "39",
+    "source": "Livro do Jogador brasileiro, Capítulo 3 — Ladino, p. 39",
+    "status": "audited"
+  },
+  {
+    "className": "Ladino",
+    "term": "Sentir Armadilhas",
+    "description": "A partir do 3º nível, o ladino recebe um senso intuitivo de perigo relacionado a armadilhas: +1 nos testes de Reflexos para evitá-las e +1 de bônus de esquiva na CA contra ataques de armadilhas.",
+    "activation": "Sempre ativa contra armadilhas.",
+    "duration": "Permanente; o bônus aumenta conforme o ladino evolui.",
+    "restrictions": "Os bônus são específicos contra armadilhas e não se aplicam a outros ataques ou testes. Habilidades Sentir Armadilhas de diferentes classes se acumulam.",
+    "progression": "Começa em +1 no 3º nível e aumenta em +1 a cada três níveis subsequentes: 6º, 9º, 12º, 15º e 18º.",
+    "sourcePages": "39",
+    "source": "Livro do Jogador brasileiro, Capítulo 3 — Ladino, p. 39",
+    "status": "audited"
+  },
+  {
+    "className": "Ladino",
+    "term": "Habilidade Especial",
+    "description": "A partir do 10º nível, o ladino escolhe uma habilidade especial da lista da classe. Essas opções representam técnicas avançadas de combate, sobrevivência e domínio de perícias.",
+    "activation": "A escolha é feita quando a progressão da classe concede a habilidade especial.",
+    "duration": "A habilidade escolhida passa a integrar permanentemente as capacidades do ladino, conforme sua própria descrição.",
+    "restrictions": "O ladino pode escolher um talento adicional no lugar de uma habilidade especial.",
+    "progression": "Recebe uma escolha no 10º nível e outra a cada três níveis subsequentes: 13º, 16º e 19º. As opções incluem Ataque Incapacitante, Amortecer Impacto, Evasão Aprimorada, Oportunismo, Maestria em Perícia e Mente Escorregadia.",
+    "sourcePages": "39",
+    "source": "Livro do Jogador brasileiro, Capítulo 3 — Ladino, p. 39",
+    "status": "audited"
   }
 ]
