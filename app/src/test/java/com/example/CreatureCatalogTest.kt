@@ -1051,4 +1051,43 @@ class CreatureCatalogTest {
         }
     }
 
+
+    @Test
+    fun fourteenSpiderAndCentipedeSheetsHaveExternalSrdDetails() {
+        val spiders = mapOf(
+            "aranha-miuda" to ("Fortitude CD 10" to "1d2 pontos de dano temporário de Força"),
+            "aranha-pequena" to ("Fortitude CD 10" to "1d3 pontos de dano temporário de Força"),
+            "aranha-media" to ("Fortitude CD 12" to "1d4 pontos de dano temporário de Força"),
+            "aranha-grande" to ("Fortitude CD 13" to "1d6 pontos de dano temporário de Força"),
+            "aranha-enorme" to ("Fortitude CD 16" to "1d8 pontos de dano temporário de Força"),
+            "aranha-imensa" to ("Fortitude CD 20" to "2d6 pontos de dano temporário de Força"),
+            "aranha-colossal" to ("Fortitude CD 28" to "2d8 pontos de dano temporário de Força")
+        )
+        for ((id, values) in spiders) {
+            val spider = CreatureCatalog.byId(id)!!
+            assertTrue(spider.description.contains("predadoras agressivas"))
+            assertTrue(spider.combat.contains(values.first))
+            assertTrue(spider.combat.contains(values.second))
+            assertTrue(spider.combat.contains("Sentido Sísmico (Ext)"))
+            assertTrue(spider.combat.contains("Arte da Fuga"))
+        }
+
+        val centipedes = mapOf(
+            "centopeia-miuda" to ("Fortitude CD 10" to "1 ponto de dano temporário de Destreza"),
+            "centopeia-pequena" to ("Fortitude CD 10" to "1d2 pontos de dano temporário de Destreza"),
+            "centopeia-media" to ("Fortitude CD 10" to "1d3 pontos de dano temporário de Destreza"),
+            "centopeia-grande" to ("Fortitude CD 11" to "1d4 pontos de dano temporário de Destreza"),
+            "centopeia-enorme" to ("Fortitude CD 14" to "1d6 pontos de dano temporário de Destreza"),
+            "centopeia-imensa" to ("Fortitude CD 17" to "1d8 pontos de dano temporário de Destreza"),
+            "centopeia-colossal" to ("Fortitude CD 23" to "2d6 pontos de dano temporário de Destreza")
+        )
+        for ((id, values) in centipedes) {
+            val centipede = CreatureCatalog.byId(id)!!
+            assertTrue(centipede.description.contains("subterrâneo"))
+            assertTrue(centipede.combat.contains(values.first))
+            assertTrue(centipede.combat.contains(values.second))
+            assertTrue(centipede.combat.contains("+8 em Escalar e Esconder-se"))
+        }
+    }
+
 }
