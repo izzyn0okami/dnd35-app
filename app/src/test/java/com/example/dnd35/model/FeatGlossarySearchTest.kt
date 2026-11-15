@@ -162,6 +162,16 @@ class FeatGlossarySearchTest {
         assertTrue(expertise.reference?.sourcePage == 80)
     }
 
+
+    @Test
+    fun searchesCanFindTermsOnlyPresentInExpandedReferenceText() {
+        val feat = FeatGlossarySearch.search("arma leve")
+        assertTrue(feat.any { it.name == "Ataque Poderoso" })
+
+        val feature = ClassFeatureGlossarySearch.search("Concentração")
+        assertTrue(feature.any { it.className == "Bárbaro" && it.reference?.term == "Fúria" })
+    }
+
     @Test
     fun blankSearchReturnsNoResults() {
         assertTrue(FeatGlossarySearch.search("   ").isEmpty())
