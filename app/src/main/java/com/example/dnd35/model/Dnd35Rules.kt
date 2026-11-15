@@ -441,7 +441,6 @@ object Dnd35Rules {
                 ClassFeature(15, "Destruir o Mal 4/dia", "Pode usar Destruir o Mal quatro vezes ao dia."),
                 ClassFeature(15, "Remover Doença 4/semana", "A partir do 15º nível, pode usar Remover Doença quatro vezes por semana."),
                 ClassFeature(18, "Remover Doença 5/semana", "A partir do 18º nível, pode usar Remover Doença cinco vezes por semana."),
-                ,
                 ClassFeature(20, "Destruir o Mal 5/dia", "Pode usar Destruir o Mal cinco vezes ao dia.")
             ),
             description = "Campeão supremo da retidão e da honra divina, com Graça Divina e Destruição do Mal."
