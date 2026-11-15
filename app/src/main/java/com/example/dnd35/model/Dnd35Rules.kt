@@ -275,7 +275,7 @@ object Dnd35Rules {
                 ClassFeature(9, "Inspirar Grandeza", "No 9º nível, com 12 graduações em Atuação, inspira a si mesmo ou um aliado que o ouça: concede 2 Dados de Vida adicionais (d10), pontos de vida temporários correspondentes, +2 de bônus de competência nas jogadas de ataque e +1 de bônus de competência nos testes de Fortitude. Afeta um alvo no 9º nível e mais um a cada três níveis depois disso, até quatro no 18º; dura enquanto a atuação continuar e por 5 rodadas depois."),
                 ClassFeature(12, "Melodia da Libertação", "No 12º nível, com 15 graduações em Atuação, produz um efeito semelhante à magia Cancelar Encantamento em um único alvo a até 9 m. Exige 1 minuto de música e concentração ininterruptas; o nível de conjurador equivale ao nível de bardo. Não pode ser usada sobre si mesmo."),
                 ClassFeature(14, "Inspirar Coragem +3", "O bônus de Inspirar Coragem aumenta para +3."),
-                ClassFeature(15, "Inspirar Heroísmo", "No 15º nível, com 18 graduações em Atuação, inspira a si mesmo ou um aliado que possa ouvi-lo durante uma rodada completa: concede +4 de bônus de esquiva na CA e +4 de bônus de moral nos testes de resistência. Afeta um alvo no 15º nível e um alvo adicional a cada três níveis depois disso; dura enquanto a atuação continuar e por 5 rodadas depois."),
+                ClassFeature(15, "Inspirar Heroísmo", "No 15º nível, com 18 graduações em Atuação, inspira a si mesmo ou um aliado que possa ouvi-lo durante uma rodada completa: concede +4 de bônus de esquiva na CA e +4 de bônus de moral nos testes de resistência. Afeta um alvo no 15º nível e um alvo adicional no 18º nível; dura enquanto a atuação continuar e por 5 rodadas depois."),
                 ClassFeature(18, "Sugestão em Massa", "No 18º nível, com 21 graduações em Atuação, aplica simultaneamente uma sugestão a qualquer número de criaturas que já estejam fascinadas por ele. É um efeito de ação mental e dependente de idioma."),
                 ClassFeature(20, "Inspirar Coragem +4", "O bônus de Inspirar Coragem aumenta para +4.")
             ),
@@ -348,11 +348,11 @@ object Dnd35Rules {
             features = listOf(
                 ClassFeature(1, "Talento Bônus de Guerreiro (1º nível)", "Recebe um talento bônus escolhido da lista de talentos de guerreiro, atendendo a todos os pré-requisitos."),
                 ClassFeature(2, "Talento Bônus de Guerreiro (2º nível)", "Recebe um talento bônus da lista de talentos de guerreiro, atendendo a todos os pré-requisitos."),
-                ClassFeature(4, "Talento Bônus de Guerreiro (4º nível)", "Recebe um talento bônus da lista de talentos de guerreiro; Especialização em Arma não é automática e exige seus pré-requisitos."),
+                ClassFeature(4, "Talento Bônus de Guerreiro (4º nível)", "Recebe um talento bônus da lista de talentos de guerreiro, atendendo a todos os pré-requisitos; Especialização em Arma não é automática."),
                 ClassFeature(6, "Talento Bônus de Guerreiro (6º nível)", "Recebe um talento bônus da lista de talentos de guerreiro, atendendo a todos os pré-requisitos."),
-                ClassFeature(8, "Talento Bônus de Guerreiro (8º nível)", "Recebe um talento bônus da lista de talentos de guerreiro; Foco em Arma Maior não é concedido automaticamente."),
+                ClassFeature(8, "Talento Bônus de Guerreiro (8º nível)", "Recebe um talento bônus da lista de talentos de guerreiro, atendendo a todos os pré-requisitos; Foco em Arma Maior não é concedido automaticamente."),
                 ClassFeature(10, "Talento Bônus de Guerreiro (10º nível)", "Recebe um talento bônus da lista de talentos de guerreiro, atendendo a todos os pré-requisitos."),
-                ClassFeature(12, "Talento Bônus de Guerreiro (12º nível)", "Recebe um talento bônus da lista de talentos de guerreiro; Especialização em Arma Maior não é automática e exige seus pré-requisitos."),
+                ClassFeature(12, "Talento Bônus de Guerreiro (12º nível)", "Recebe um talento bônus da lista de talentos de guerreiro, atendendo a todos os pré-requisitos; Especialização em Arma Maior não é automática."),
                 ClassFeature(14, "Talento Bônus de Guerreiro (14º nível)", "Recebe um talento bônus da lista de talentos de guerreiro, atendendo a todos os pré-requisitos."),
                 ClassFeature(16, "Talento Bônus de Guerreiro (16º nível)", "Recebe um talento bônus da lista de talentos de guerreiro, atendendo a todos os pré-requisitos."),
                 ClassFeature(18, "Talento Bônus de Guerreiro (18º nível)", "Recebe um talento bônus da lista de talentos de guerreiro, atendendo a todos os pré-requisitos."),
