@@ -16,5 +16,68 @@
     "sourcePage": 81,
     "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 81",
     "status": "audited"
+  },
+  {
+    "name": "Esquiva",
+    "description": "Escolha um oponente durante sua ação. Até sua próxima ação, você recebe +1 de bônus de esquiva na Classe de Armadura contra os ataques desse adversário. A escolha pode ser alterada a cada rodada.",
+    "normal": "Se perder o bônus de Destreza na CA por qualquer motivo, também perde o bônus de esquiva concedido por este talento.",
+    "special": "Bônus de esquiva são cumulativos com outros bônus de esquiva. Um guerreiro pode escolher este talento como talento adicional.",
+    "sourcePage": 81,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 81",
+    "status": "audited"
+  },
+  {
+    "name": "Mobilidade",
+    "description": "Você recebe +4 de bônus de esquiva na Classe de Armadura contra ataques de oportunidade provocados ao entrar ou sair de uma área ameaçada.",
+    "normal": "Se uma condição retirar seu bônus de Destreza na CA, você também perde o bônus de esquiva deste talento.",
+    "special": "Bônus de esquiva deste talento acumulam-se com outros bônus de esquiva, inclusive o bônus racial dos anões contra gigantes. Um guerreiro pode escolhê-lo como talento adicional.",
+    "sourcePage": 83,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 83",
+    "status": "audited"
+  },
+  {
+    "name": "Ataque em Movimento",
+    "description": "Ao realizar uma ação de ataque regular com uma arma de ataque corporal, você pode dividir seu deslocamento: mover-se antes do ataque e continuar depois dele, desde que a distância total não ultrapasse seu deslocamento.",
+    "normal": "Sem este talento, a ação de ataque regular não permite dividir o movimento antes e depois do ataque.",
+    "special": "O movimento não provoca ataques de oportunidade do defensor atacado, mas ainda pode provocar ataques de outras criaturas cujas áreas ameaçadas sejam atravessadas. É necessário mover-se pelo menos 1,5 m antes e depois do ataque. O talento não funciona com armadura pesada. Um guerreiro pode escolhê-lo como talento adicional.",
+    "sourcePage": 75,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 75",
+    "status": "audited"
+  },
+  {
+    "name": "Combater com Duas Armas",
+    "description": "Quando luta com uma arma em cada mão, você reduz as penalidades normais dessa forma de combate: a penalidade da mão principal diminui em 2 e a da mão secundária diminui em 6.",
+    "normal": "Sem o talento, aplicam-se integralmente as penalidades da Tabela 8–10 para combate com duas armas.",
+    "special": "Um ranger de 2º nível que escolheu o estilo de combate com duas armas recebe o benefício enquanto usar armadura leve ou nenhuma armadura, mesmo sem cumprir o pré-requisito. Um guerreiro pode escolhê-lo como talento adicional.",
+    "sourcePage": 78,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 78",
+    "status": "audited"
+  },
+  {
+    "name": "Tiro Preciso",
+    "description": "Você pode realizar ataques à distância contra oponentes envolvidos em combate corporal sem sofrer a penalidade padrão de –4 por disparar ou arremessar em combate corpo a corpo.",
+    "normal": "Sem este talento, ataques à distância contra um oponente engajado em combate corporal sofrem a penalidade padrão de –4.",
+    "special": "Um guerreiro pode escolher este talento como talento adicional.",
+    "sourcePage": 85,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 85",
+    "status": "audited"
+  },
+  {
+    "name": "Iniciativa Aprimorada",
+    "description": "Você recebe +4 de bônus em todos os testes de Iniciativa, que determinam a ordem de atuação no início do combate.",
+    "normal": "",
+    "special": "Um guerreiro pode escolher este talento como talento adicional.",
+    "sourcePage": 82,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 82",
+    "status": "audited"
+  },
+  {
+    "name": "Vitalidade",
+    "description": "Você recebe +3 pontos de vida.",
+    "normal": "",
+    "special": "Este talento pode ser escolhido diversas vezes e seus benefícios se acumulam.",
+    "sourcePage": 86,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 86",
+    "status": "audited"
   }
 ]
