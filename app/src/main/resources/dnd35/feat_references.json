@@ -862,5 +862,41 @@
     "special": "Pré-requisito: 6º nível de personagem. O livro recomenda conversar com o Mestre antes de selecionar o talento para definir companheiros e seguidores apropriados. A descrição do talento remete ao Livro do Mestre para informações adicionais; esta auditoria não incorpora regras externas ao Livro do Jogador.",
     "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 82",
     "status": "audited"
+  },
+  {
+    "name": "Dedos Lépidos",
+    "sourcePage": 79,
+    "description": "O personagem recebe +2 de bônus em todos os testes de Operar Mecanismo e Abrir Fechaduras.",
+    "normal": "Sem este talento, o personagem não recebe o bônus concedido por ele nessas perícias.",
+    "special": "Talento geral. O bônus aplica-se a testes das duas perícias citadas; não concede graduações nem permite realizar testes sem os demais requisitos normais.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 79",
+    "status": "audited"
+  },
+  {
+    "name": "Ignorar Componentes Materiais",
+    "sourcePage": 81,
+    "description": "O personagem pode conjurar qualquer magia que tenha componente material com valor de 1 PO ou inferior sem fornecer esse componente. A conjuração ainda provoca ataques de oportunidade normalmente.",
+    "normal": "Componentes materiais exigidos pela magia precisam ser fornecidos conforme sua descrição.",
+    "special": "Componentes materiais que custem mais de 1 PO continuam obrigatórios. O talento não elimina componentes verbais, gestuais, foco ou custos de XP.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 81",
+    "status": "audited"
+  },
+  {
+    "name": "Mãos Leves",
+    "sourcePage": 82,
+    "description": "O personagem recebe +2 de bônus em todos os testes de Prestidigitação e Usar Cordas.",
+    "normal": "Sem este talento, o personagem não recebe o bônus concedido por ele nessas perícias.",
+    "special": "O bônus aplica-se às duas perícias indicadas; não concede graduações adicionais.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 82",
+    "status": "audited"
+  },
+  {
+    "name": "Rastrear",
+    "sourcePage": 87,
+    "description": "O personagem pode encontrar rastros e segui-los por 1,5 km com um teste de Sobrevivência. Deve realizar novos testes quando a trilha ficar difícil de distinguir, como quando outras pegadas a cruzam ou quando as criaturas se separam. O deslocamento normal ao rastrear é reduzido à metade; o personagem pode aceitar -5 no teste para manter o deslocamento normal ou -20 para percorrer o dobro do deslocamento.",
+    "normal": "Sem o talento, o personagem não pode usar Sobrevivência para seguir rastros dessa forma.",
+    "special": "A CD depende da superfície e das condições gerais da trilha, conforme a tabela do Livro do Jogador. A descrição detalhada da tabela e dos modificadores deve ser consultada no capítulo de perícias; esta entrada resume apenas o benefício do talento.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 87",
+    "status": "audited"
   }
 ]
