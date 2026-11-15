@@ -468,7 +468,7 @@ object Dnd35Rules {
                 ClassFeature(8, "Rastreador Eficaz", "Pode rastrear à velocidade normal sem a penalidade padrão de -5. Se rastrear ao dobro do deslocamento normal, sofre -10 no teste em vez de -20."),
                 ClassFeature(9, "Evasão", "Funciona apenas sem armadura ou com armadura leve; contra efeitos que permitem um teste de Reflexos para reduzir o dano à metade, não sofre dano em um sucesso."),
                 ClassFeature(10, "Inimigo Predileto +2 adicional", "Escolhe outro inimigo predileto com bônus +2 ou aumenta em +2 o bônus contra um inimigo predileto existente."),
-                ClassFeature(11, "Mestrado no Estilo de Combate", "Recebe o talento superior do estilo escolhido, sem precisar cumprir seus pré-requisitos normais enquanto usar armadura leve ou nenhuma."),
+                ClassFeature(11, "Maestria do Estilo de Combate", "Recebe o talento superior do estilo escolhido, sem precisar cumprir seus pré-requisitos normais enquanto usar armadura leve ou nenhuma."),
                 ClassFeature(15, "Inimigo Predileto +2 adicional", "Escolhe outro inimigo predileto com bônus +2 ou aumenta em +2 o bônus contra um inimigo predileto existente."),
                 ClassFeature(13, "Camuflagem", "Pode usar a perícia Esconder-se em qualquer tipo de terreno, mesmo sem cobertura ou esconderijo disponível."),
                 ClassFeature(17, "Mimetismo", "Pode usar a perícia Esconder-se mesmo enquanto estiver sendo observado e em qualquer tipo de terreno."),
