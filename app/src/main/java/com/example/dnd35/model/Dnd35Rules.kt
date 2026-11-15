@@ -220,7 +220,7 @@ object Dnd35Rules {
             skillPointsPerLevel = 4,
             classSkills = listOf("Adestrar Animais", "Cavalgar", "Escalar", "Intimidação", "Natação", "Ofícios", "Ouvir", "Saltar", "Sobrevivência"),
             features = listOf(
-                ClassFeature(1, "Fúria 1/dia", "Uma vez por dia, entra em fúria por 3 + modificador de Constituição (já ajustado) rodadas: recebe +4 de Força, +4 de Constituição e +2 de bônus de moral nos testes de Vontade, mas sofre -2 na CA. Durante a fúria, não pode conjurar magias nem usar perícias baseadas em Destreza, Inteligência ou Carisma, salvo Equilíbrio, Arte da Fuga, Intimidação e Cavalgar; também não pode usar Concentração. Ao terminar, fica fatigado (-2 Força e Destreza, sem correr) pelo restante do combate, exceto a partir do 17º nível."),
+                ClassFeature(1, "Fúria 1/dia", "Uma vez por dia, entra em fúria por 3 + modificador de Constituição (já ajustado) rodadas: recebe +4 de Força, +4 de Constituição e +2 de bônus de moral nos testes de Vontade, mas sofre -2 na CA. Durante a fúria, não pode conjurar magias nem usar perícias baseadas em Destreza, Inteligência ou Carisma, salvo Equilíbrio, Arte da Fuga, Intimidação e Cavalgar; também não pode usar Concentração. Ao terminar, fica exausto (-2 Força e Destreza, sem correr) pelo restante do combate, exceto a partir do 17º nível."),
                 ClassFeature(1, "Analfabetismo", "O bárbaro não sabe ler nem escrever automaticamente. Pode gastar 2 pontos de perícia para aprender a ler e escrever todos os idiomas que conhece. Se adquirir um nível em outra classe, aprende automaticamente a ler e escrever; um personagem já alfabetizado que escolha níveis de bárbaro não perde essa capacidade."),
                 ClassFeature(1, "Movimento Rápido", "Recebe +3 m no deslocamento terrestre. O benefício funciona sem armadura ou com armadura leve ou média, desde que não carregue carga pesada. Aplique o bônus antes das reduções normais por armadura ou carga; armadura média ou carga média, portanto, reduzem o deslocamento já aumentado."),
                 ClassFeature(2, "Esquiva Sobrenatural", "Conserva o bônus de Destreza na CA mesmo quando surpreendido ou atacado por um oponente invisível; ainda perde esse bônus se estiver imobilizado."),
@@ -239,7 +239,7 @@ object Dnd35Rules {
                 ClassFeature(14, "Vontade Inabalável", "Enquanto estiver em fúria, recebe +4 nos testes de resistência de Vontade para resistir a magias de Encantamento. Esse bônus se acumula com o bônus de moral de Vontade concedido pela própria fúria."),
                 ClassFeature(15, "Sentir Armadilhas +5", "+5 nos testes de Reflexos e CA contra armadilhas."),
                 ClassFeature(16, "Fúria 5/dia e Redução de Dano 4/-", "Pode entrar em fúria 5 vezes ao dia e reduz em 4 o dano de cada ataque sofrido."),
-                ClassFeature(17, "Fúria Incansável", "Não fica fatigado após terminar a fúria."),
+                ClassFeature(17, "Fúria Incansável", "A partir do 17º nível, não fica exausto quando sua fúria termina."),
                 ClassFeature(18, "Sentir Armadilhas +6", "+6 nos testes de Reflexos e CA contra armadilhas."),
                 ClassFeature(19, "Redução de Dano 5/-", "Reduz em 5 o dano de cada ataque sofrido."),
                 ClassFeature(20, "Fúria Poderosa e Fúria 6/dia", "Bônus de fúria sobem para +8 FOR, +8 CON, +4 Vontade e pode entrar em fúria 6 vezes ao dia.")
