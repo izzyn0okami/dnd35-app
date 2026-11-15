@@ -1009,3 +1009,17 @@ As fichas-base devem ser reutilizadas por ID sempre que a tabela pedir apenas um
 - Testes de regressão adicionados para os dez registros.
 - Nota de fidelidade: nomes e dados-base foram mantidos conforme o catálogo existente; esta etapa usa texto de SRD 3.5 em tradução própria. As fichas do Livro dos Monstros brasileiro devem ser conferidas novamente quando o PDF estiver disponível.
 - Contagem após esta etapa: 320 criaturas; 295 com Descrição e Combate preenchidos; 25 ainda pendentes.
+
+
+## 2026-11-15 — Quadragésima quarta etapa: dez fichas complementadas com SRD (Víbora Média a Escorpião Colossal)
+
+- Fonte: SRD 3.5 — Animals, verbete Viper Snake: https://palikhov.github.io/srd-v3.5/monsters/monsters-animals.html.
+- Fonte: SRD 3.5 — Vermin, verbete Monstrous Scorpion: https://palikhov.github.io/srd-v3.5/monsters/monsters-vermin.html.
+- Preenchidas Descrição e Combate de dez registros existentes: Víbora Média, Víbora Grande, Víbora Enorme e sete categorias de Escorpião Monstruoso (Miúdo, Pequeno, Médio, Grande, Enorme, Imenso e Colossal).
+- Víboras: comportamento evasivo, ataque venenoso, dano inicial e secundário de 1d6 Constituição; CD 11 para médias/grandes e CD 14 para enormes, além de bônus raciais de perícia.
+- Escorpiões: comportamento agressivo e investidas; pinças, ferrão, Constrição automática em Agarrar, Agarrar Aprimorado, uso do melhor modificador entre Força e Destreza, Sentido Sísmico de 18 m e veneno variável por categoria.
+- Valores específicos de constrição e veneno registrados conforme as tabelas do SRD: CDs 12/12/13/14/18/23/33; dano de Constituição 1/1d2/1d3/1d4/1d6/1d8/1d10.
+- Dados estatísticos, ND, tendência, progressão e vínculos preservados; nenhuma duplicata criada.
+- Testes de regressão adicionados para os dez registros.
+- Observação: conteúdo externo traduzido para pt-BR; confirmar terminologia e consistência com a edição brasileira do Livro dos Monstros quando o PDF estiver disponível.
+- Contagem após esta etapa: 320 criaturas; 305 com Descrição e Combate preenchidos; 15 ainda pendentes.
