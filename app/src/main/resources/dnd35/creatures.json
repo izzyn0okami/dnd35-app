@@ -11435,7 +11435,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Polvos são animais marinhos de fundo, encontrados em águas quentes. São perigosos principalmente para suas presas e, quando perturbados, normalmente tentam escapar. Seus braços flexíveis e a capacidade de alterar a coloração ajudam tanto na captura de alimento quanto na fuga.",
+    "combat": "Agarrar Aprimorado (Ext): ao acertar um ataque com os braços, pode iniciar Agarrar como ação livre sem provocar ataque de oportunidade; se vencer o teste resistido, prende o alvo e causa automaticamente o dano da mordida. Nuvem de Tinta (Ext): uma vez por minuto, libera uma nuvem negra de tinta de 3 m de lado, que concede camuflagem total e obscurece a visão. Propulsão (Ext): pode recuar em linha reta até 60 m como ação de rodada completa, uma vez por rodada, sem provocar ataques de oportunidade. Sua mudança de cor concede +4 racial em Esconder-se; seu corpo flexível concede +10 em Arte da Fuga. Também recebe +8 racial em Natação para ações especiais ou evitar perigos, pode escolher 10 mesmo sob ameaça e pode correr enquanto nada em linha reta."
   },
   {
     "id": "polvo-gigante",
@@ -11485,7 +11487,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Predador marinho territorial e agressivo, com braços que alcançam 3 m ou mais. Seus tentáculos possuem ventosas de bordas afiadas e são usados para prender e esmagar presas. Vive sozinho em águas quentes.",
+    "combat": "Cada tentáculo possui 10 pontos de vida e pode ser atacado com a manobra Separar como se fosse uma arma. Se um tentáculo que esteja agarrando uma criatura for atacado, o polvo normalmente usa outro membro para realizar um ataque de oportunidade. Cortar um tentáculo causa 5 pontos de dano ao polvo; ele normalmente recua se perder quatro tentáculos e regenera membros cortados em 1d10+10 dias. Constrição (Ext): causa 2d8+6 pontos de dano quando vence um teste de Agarrar. Agarrar Aprimorado (Ext): ao acertar um tentáculo, pode iniciar Agarrar como ação livre sem provocar ataque de oportunidade; se vencer, prende e constringe a vítima. Nuvem de Tinta (Ext): uma vez por minuto, libera uma nuvem negra de 6 m de lado que concede camuflagem total. Propulsão (Ext): recua em linha reta até 60 m como ação de rodada completa, uma vez por rodada, sem provocar ataques de oportunidade."
   },
   {
     "id": "ponei",
@@ -11535,7 +11539,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "O pônei é um cavalo pequeno, com menos de 1,5 m de altura na cernelha. Fora o porte, é semelhante a um cavalo leve e costuma ser empregado como montaria ou animal de carga. Pôneis não treinados para a guerra não conseguem lutar enquanto carregam um cavaleiro.",
+    "combat": "Um pônei não treinado para a guerra normalmente usa os cascos para correr, não para atacar; quando ataca, o coice é secundário e acrescenta apenas metade do modificador de Força ao dano. Capacidade de carga: leve até 34 kg; média de 34,5 a 68 kg; pesada de 68,5 a 102 kg. Pode arrastar até 510 kg."
   },
   {
     "id": "ponei-de-guerra",
@@ -11585,7 +11591,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Pôneis de guerra são criados para apresentar maior força e agressividade. São semelhantes aos cavalos de guerra leves e são domesticados para servir como montarias de combate.",
+    "combat": "O pônei de guerra pode lutar enquanto transporta um cavaleiro. Entretanto, o cavaleiro não pode atacar no mesmo turno, a menos que obtenha sucesso em um teste de Cavalgar. Capacidade de carga: leve até 45 kg; média de 45,5 a 90 kg; pesada de 90,5 a 136 kg. Pode arrastar até 680 kg."
   },
   {
     "id": "rato",
@@ -11635,7 +11643,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": true
+    "familiar": true,
+    "description": "Roedores onívoros que prosperam em praticamente qualquer ambiente. São pequenos, ágeis e capazes de escalar e nadar; quando reunidos, podem formar grandes infestações.",
+    "combat": "Ratos normalmente fogem e só mordem como último recurso. Recebem +4 racial em Esconder-se e Furtividade, além de +8 em Equilíbrio, Escalar e Natação. Podem escolher 10 em Escalar mesmo quando apressados ou ameaçados; usam Destreza no lugar de Força em testes de Escalar e Natação. Também recebem +8 racial em testes de Natação para ações especiais ou evitar perigos e podem escolher 10 mesmo sob ameaça."
   },
   {
     "id": "rinoceronte",
@@ -11685,7 +11695,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "O perfil baseia-se no rinoceronte-negro-africano, um herbívoro de temperamento notoriamente ruim e disposto a investir contra intrusos. Mede de 1,8 a 4,3 m de comprimento, tem de 0,9 a 1,8 m de altura na cernelha e pode pesar até 2.700 kg. As mesmas estatísticas podem representar herbívoros de porte e armas naturais semelhantes.",
+    "combat": "Quando é importunado ou irritado, o rinoceronte abaixa a cabeça e investe contra o agressor. Investida Poderosa (Ext): durante uma investida, causa 4d6+24 pontos de dano com o chifre."
   },
   {
     "id": "sapo",
@@ -11735,7 +11747,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": true
+    "familiar": true,
+    "description": "Anfíbios diminutos e inofensivos, comuns em pântanos temperados. Alimentam-se de insetos e são considerados benéficos ao ambiente. Sua coloração permite que se confundam com o terreno.",
+    "combat": "O sapo comum não possui ataques eficazes e não representa ameaça em combate. Sua coloração concede +4 de bônus racial em Esconder-se. A qualidade Anfíbio permite que sobreviva tanto na água quanto em terra."
   },
   {
     "id": "texugo",
@@ -11785,7 +11799,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": true
+    "familiar": true,
+    "description": "Animal de corpo baixo, robusto e coberto por pelos, com membros dianteiros fortes e garras longas usadas para escavar. Um adulto mede aproximadamente 60 a 90 cm de comprimento e pesa entre 11 e 16 kg. Habita florestas temperadas e pode viver sozinho, em casal ou em pequenos grupos.",
+    "combat": "Texugos atacam com garras afiadas e mordidas. Fúria (Ext): quando sofre dano em combate, entra em fúria berserker no turno seguinte e continua atacando até que ele ou seu oponente morra. Recebe +4 em Força e Constituição e sofre –2 na Classe de Armadura; não pode encerrar a fúria voluntariamente. Recebe +4 racial em Arte da Fuga."
   },
   {
     "id": "tigre",
@@ -11835,7 +11851,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Grande felino das florestas quentes, com mais de 90 cm de altura na cernelha e cerca de 2,7 m de comprimento. Pesa entre 180 e 270 kg e costuma caçar sozinho, usando força, velocidade e surpresa para subjugar presas.",
+    "combat": "O tigre agarra a presa com as garras ou a mordida e a rasga com as patas traseiras. Agarrar Aprimorado (Ext): ao acertar com garra ou mordida, pode iniciar Agarrar como ação livre sem provocar ataque de oportunidade; se vencer, prende a vítima e pode rasgar. Bote (Ext): ao investir, realiza um ataque total, incluindo dois ataques de rasgar. Rasgar (Ext): dois ataques adicionais de garra, cada um causando 1d8+3. Recebe +4 racial em Equilíbrio, Esconder-se e Furtividade; em capim alto ou vegetação densa, o bônus de Esconder-se aumenta para +8."
   },
   {
     "id": "urso-marrom",
@@ -11885,7 +11903,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Carnívoro enorme, territorial e de temperamento difícil. Pode pesar mais de 815 kg e alcançar quase 2,7 m de altura quando fica apoiado nas patas traseiras. O perfil também representa outros grandes ursos, inclusive o urso-cinzento. Habita florestas frias e costuma viver sozinho ou em casal.",
+    "combat": "O urso-marrom ataca principalmente rasgando os adversários com as garras. Agarrar Aprimorado (Ext): quando acerta um ataque de garra, pode iniciar Agarrar como ação livre sem provocar ataque de oportunidade. Recebe +4 racial em Natação."
   },
   {
     "id": "urso-negro",
