@@ -334,4 +334,20 @@ class FeatGlossarySearchTest {
         assertTrue(heighten.reference?.description?.contains("até o limite do 9º nível") == true)
     }
 
+
+    @Test
+    fun diehardAndLeadershipReferencesMatchTheBrazilianHandbook() {
+        val diehard = FeatGlossarySearch.search("Duro de Matar").first()
+        assertTrue(diehard.benefit.contains("uma única ação de movimento"))
+        assertTrue(diehard.benefit.contains("-10 PV"))
+        assertTrue(diehard.reference?.description?.contains("ação padrão") == true)
+        assertTrue(diehard.reference?.special?.contains("Tolerância") == true)
+
+        val leadership = FeatGlossarySearch.search("Liderança").first()
+        assertTrue(leadership.benefit.contains("companheiros leais"))
+        assertTrue(leadership.benefit.contains("seguidores devotados"))
+        assertFalse(leadership.benefit.contains("cofre leal"))
+        assertTrue(leadership.reference?.sourcePage == 82)
+    }
+
 }
