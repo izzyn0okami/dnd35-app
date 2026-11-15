@@ -31,7 +31,7 @@ object ClassFeatureGlossarySearch {
                         className = classInfo.name,
                         level = feature.level,
                         term = feature.name,
-                        explanation = "",
+                        explanation = feature.description,
                         reference = references.firstOrNull { reference ->
                             reference.className == classInfo.name &&
                                 normalize(feature.name).startsWith(normalize(reference.term))
