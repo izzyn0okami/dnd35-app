@@ -218,10 +218,19 @@
   {
     "name": "Reflexos de Combate",
     "sourcePage": 84,
-    "description": "O personagem pode realizar uma quantidade de ataques de oportunidade por rodada equivalente ao seu modificador de Destreza, em vez de apenas um. Ainda só pode realizar um ataque de oportunidade para cada situação que o provoque.",
-    "normal": "Sem o talento, o personagem só pode realizar um ataque de oportunidade por rodada e não pode realizá-los enquanto estiver surpreso.",
+    "description": "O personagem pode realizar um ataque de oportunidade normal por rodada e ataques de oportunidade adicionais em quantidade igual ao seu modificador de Destreza. Por exemplo, com Destreza 15 (+2), pode realizar três ataques de oportunidade na mesma rodada, desde que cada um seja provocado por uma situação distinta.",
+    "normal": "Sem este talento, o personagem só consegue realizar um ataque de oportunidade por rodada e não pode realizá-los enquanto estiver surpreso.",
     "special": "Permite realizar ataques de oportunidade mesmo quando surpreso. Um ladino com Oportunismo não pode usar essa habilidade mais de uma vez por rodada. Um guerreiro pode escolhê-lo como talento adicional; um monge pode escolhê-lo como talento adicional no 2º nível.",
     "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 84",
+    "status": "audited"
+  },
+  {
+    "name": "Combater com Duas Armas Aprimorado",
+    "sourcePage": 78,
+    "description": "Além do ataque adicional normal com a arma da mão inábil, o personagem recebe um segundo ataque com essa mesma arma, com –5 de penalidade.",
+    "normal": "Sem este talento, o personagem realiza apenas um ataque adicional com a arma da mão inábil.",
+    "special": "Exige Destreza 17, Combater com Duas Armas e bônus base de ataque +6. Um guerreiro pode escolhê-lo como talento adicional. Um ranger de 6º nível que escolheu o estilo de combate com duas armas recebe o talento enquanto usar armadura leve ou nenhuma armadura, mesmo sem cumprir os pré-requisitos.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 78",
     "status": "audited"
   }
 ]
