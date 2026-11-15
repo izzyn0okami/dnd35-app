@@ -12579,7 +12579,9 @@
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "As víboras variam muito de tamanho e não costumam ser agressivas. Quando confrontadas, frequentemente mordem antes de tentar fugir. A víbora média vive em pântanos temperados e utiliza seu veneno para caçar e se defender.",
+    "combat": "A víbora depende de sua mordida venenosa. Veneno (Ext): ferimento, Fortitude CD 11; dano inicial e secundário de 1d6 pontos de dano temporário de Constituição. A CD é baseada em Constituição. Recebe +4 racial em Esconder-se, Ouvir e Observar; +8 em Equilíbrio, Escalar e Natação. Pode escolher 10 em Escalar mesmo sob ameaça e usa o maior entre Força e Destreza para testes de Escalar."
   },
   {
     "id": "vibora-grande",
@@ -12629,7 +12631,9 @@
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "As víboras variam muito de tamanho e não costumam ser agressivas. Quando confrontadas, frequentemente mordem antes de tentar fugir. A víbora grande habita pântanos temperados e usa seu veneno para subjugar presas antes de recuar.",
+    "combat": "A víbora depende de sua mordida venenosa. Veneno (Ext): ferimento, Fortitude CD 11; dano inicial e secundário de 1d6 pontos de dano temporário de Constituição. A CD é baseada em Constituição. Recebe +4 racial em Esconder-se, Ouvir e Observar; +8 em Equilíbrio, Escalar e Natação. Pode escolher 10 em Escalar mesmo sob ameaça e usa o maior entre Força e Destreza para testes de Escalar."
   },
   {
     "id": "vibora-enorme",
@@ -12679,7 +12683,9 @@
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "As víboras variam muito de tamanho e não costumam ser agressivas. Quando confrontadas, frequentemente mordem antes de tentar fugir. A víbora enorme é um predador de pântanos temperados e pode atacar criaturas grandes com sua mordida venenosa.",
+    "combat": "A víbora depende de sua mordida venenosa. Veneno (Ext): ferimento, Fortitude CD 14; dano inicial e secundário de 1d6 pontos de dano temporário de Constituição. A CD é baseada em Constituição. Recebe +4 racial em Esconder-se, Ouvir e Observar; +8 em Equilíbrio, Escalar e Natação. Pode escolher 10 em Escalar mesmo sob ameaça e usa o maior entre Força e Destreza para testes de Escalar."
   },
   {
     "id": "escorpiao-miudo",
@@ -12729,7 +12735,9 @@
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Escorpiões monstruosos são predadores agressivos de regiões desérticas quentes. Mesmo os menores costumam atacar criaturas que se aproximam e investem contra suas presas. Vivem sozinhos ou em colônias, conforme o porte.",
+    "combat": "O escorpião ataca com duas pinças e o ferrão venenoso. Constrição (Ext): em um teste de Agarrar bem-sucedido, causa automaticamente o dano de uma pinça (1d2–4). Agarrar Aprimorado (Ext): ao acertar com uma pinça, pode iniciar Agarrar sem provocar ataque de oportunidade; usa o melhor entre Força e Destreza nos testes resistidos. Veneno (Ext): ferrão, Fortitude CD 12; dano inicial e secundário de 1 ponto de dano temporário de Constituição. Possui Sentido Sísmico de 18 m e visão no escuro de 18 m."
   },
   {
     "id": "escorpiao-pequeno",
@@ -12779,7 +12787,9 @@
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Escorpiões monstruosos são predadores agressivos de regiões desérticas quentes. Atacam criaturas que se aproximam e costumam investir contra suas presas, prendendo-as com as pinças antes de aplicar o ferrão.",
+    "combat": "O escorpião ataca com duas pinças e o ferrão venenoso. Constrição (Ext): em um teste de Agarrar bem-sucedido, causa automaticamente o dano de uma pinça (1d3–1). Agarrar Aprimorado (Ext): ao acertar com uma pinça, pode iniciar Agarrar sem provocar ataque de oportunidade; usa o melhor entre Força e Destreza nos testes resistidos. Veneno (Ext): ferrão, Fortitude CD 12; dano inicial e secundário de 1d2 pontos de dano temporário de Constituição. Possui Sentido Sísmico de 18 m e visão no escuro de 18 m."
   },
   {
     "id": "escorpiao-medio",
@@ -12829,7 +12839,9 @@
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Escorpiões monstruosos são predadores agressivos de regiões desérticas quentes. O espécime médio caça sozinho ou em pequenos grupos e ataca qualquer criatura que se aproxime.",
+    "combat": "O escorpião ataca com duas pinças e o ferrão venenoso. Constrição (Ext): em um teste de Agarrar bem-sucedido, causa automaticamente o dano de uma pinça (1d4+1). Agarrar Aprimorado (Ext): ao acertar com uma pinça, pode iniciar Agarrar sem provocar ataque de oportunidade; usa o melhor entre Força e Destreza nos testes resistidos. Veneno (Ext): ferrão, Fortitude CD 13; dano inicial e secundário de 1d3 pontos de dano temporário de Constituição. Possui Sentido Sísmico de 18 m e visão no escuro de 18 m."
   },
   {
     "id": "escorpiao-grande",
@@ -12879,7 +12891,9 @@
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Escorpiões monstruosos são predadores agressivos de regiões desérticas quentes. O espécime grande é um caçador perigoso, que costuma investir contra qualquer criatura que se aproxime.",
+    "combat": "O escorpião ataca com duas pinças e o ferrão venenoso. Constrição (Ext): em um teste de Agarrar bem-sucedido, causa automaticamente o dano de uma pinça (1d6+4). Agarrar Aprimorado (Ext): ao acertar com uma pinça, pode iniciar Agarrar sem provocar ataque de oportunidade; usa o melhor entre Força e Destreza nos testes resistidos. Veneno (Ext): ferrão, Fortitude CD 14; dano inicial e secundário de 1d4 pontos de dano temporário de Constituição. Possui Sentido Sísmico de 18 m e visão no escuro de 18 m."
   },
   {
     "id": "escorpiao-enorme",
@@ -12929,7 +12943,9 @@
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Escorpiões monstruosos são predadores agressivos de regiões desérticas quentes. Os exemplares enormes são capazes de subjugar presas grandes com suas pinças e ferrão, atacando por investida.",
+    "combat": "O escorpião ataca com duas pinças e o ferrão venenoso. Constrição (Ext): em um teste de Agarrar bem-sucedido, causa automaticamente o dano de uma pinça (1d8+6). Agarrar Aprimorado (Ext): ao acertar com uma pinça, pode iniciar Agarrar sem provocar ataque de oportunidade; usa o melhor entre Força e Destreza nos testes resistidos. Veneno (Ext): ferrão, Fortitude CD 18; dano inicial e secundário de 1d6 pontos de dano temporário de Constituição. Possui Sentido Sísmico de 18 m e visão no escuro de 18 m."
   },
   {
     "id": "escorpiao-imenso",
@@ -12979,7 +12995,9 @@
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Escorpiões monstruosos são predadores agressivos de regiões desérticas quentes. A variedade imensa é um predador colossal que costuma atacar qualquer criatura que se aproxime, usando as pinças para imobilizar e o ferrão para envenenar.",
+    "combat": "O escorpião ataca com duas pinças e o ferrão venenoso. Constrição (Ext): em um teste de Agarrar bem-sucedido, causa automaticamente o dano de uma pinça (2d6+10). Agarrar Aprimorado (Ext): ao acertar com uma pinça, pode iniciar Agarrar sem provocar ataque de oportunidade; usa o melhor entre Força e Destreza nos testes resistidos. Veneno (Ext): ferrão, Fortitude CD 23; dano inicial e secundário de 1d8 pontos de dano temporário de Constituição. Possui Sentido Sísmico de 18 m e visão no escuro de 18 m."
   },
   {
     "id": "escorpiao-colossal",
@@ -13029,7 +13047,9 @@
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "O escorpião monstruoso colossal é um predador gigantesco de regiões desérticas quentes. Como os demais escorpiões monstruosos, é agressivo e costuma investir contra qualquer criatura que se aproxime.",
+    "combat": "O escorpião ataca com duas pinças e o ferrão venenoso. Constrição (Ext): em um teste de Agarrar bem-sucedido, causa automaticamente o dano de uma pinça (2d8+12). Agarrar Aprimorado (Ext): ao acertar com uma pinça, pode iniciar Agarrar sem provocar ataque de oportunidade; usa o melhor entre Força e Destreza nos testes resistidos. Veneno (Ext): ferrão, Fortitude CD 33; dano inicial e secundário de 1d10 pontos de dano temporário de Constituição. Possui Sentido Sísmico de 18 m e visão no escuro de 18 m."
   },
   {
     "id": "aranha-miuda",
