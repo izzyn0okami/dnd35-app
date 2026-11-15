@@ -25,6 +25,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Pets
+import androidx.compose.material.icons.filled.Info
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material3.Button
@@ -34,12 +35,14 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -52,6 +55,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.example.dnd35.model.CreatureDefinition
+import com.example.dnd35.ui.dialogs.RulesGlossaryDialog
+import com.example.dnd35.ui.dialogs.RulesGlossaryType
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.text.Normalizer
@@ -357,10 +362,21 @@ private fun CreatureBackField(label: String, value: String) {
 
 @Composable
 fun CreatureDetailsOverlay(creature: CreatureDefinition, onDismiss: () -> Unit) {
+    var showGlossary by rememberSaveable(creature.id) { mutableStateOf(false) }
+    if (showGlossary) {
+        RulesGlossaryDialog(type = RulesGlossaryType.BESTIARY, onDismiss = { showGlossary = false })
+    }
     CreatureDeckOverlay(
         title = creature.name,
         subtitle = "${creature.typeDetail.ifBlank { creature.type }} • ${creature.size} • ND ${creature.challengeRating}",
-        onDismiss = onDismiss
+        onDismiss = onDismiss,
+        headerAction = {
+            TextButton(onClick = { showGlossary = true }) {
+                Icon(Icons.Default.Info, contentDescription = null)
+                Spacer(modifier = Modifier.width(4.dp))
+                Text("Glossário")
+            }
+        }
     ) {
         androidx.compose.foundation.lazy.LazyColumn(
             modifier = Modifier.weight(1f),

@@ -43,6 +43,7 @@ fun CreatureDeckOverlay(
     title: String,
     subtitle: String,
     onDismiss: () -> Unit,
+    headerAction: (@Composable () -> Unit)? = null,
     content: @Composable ColumnScope.() -> Unit
 ) {
     Dialog(
@@ -71,6 +72,7 @@ fun CreatureDeckOverlay(
                             )
                         }
                     }
+                    headerAction?.invoke()
                     IconButton(onClick = onDismiss) {
                         Icon(Icons.Default.Close, contentDescription = "Fechar")
                     }
