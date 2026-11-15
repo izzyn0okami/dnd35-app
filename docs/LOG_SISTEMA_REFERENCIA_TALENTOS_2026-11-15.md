@@ -56,3 +56,10 @@ Data: 2026-11-15
 - Validação estrutural dos JSONs: 25 referências de talentos correspondem a nomes existentes no catálogo; nenhuma duplicidade ou campo obrigatório ausente foi encontrada. As 44 referências de classe possuem chaves únicas e campos obrigatórios preenchidos.
 - Foram adicionados testes de regressão para as referências de bárbaro, bardo, druida, ranger, paladino, monge, ladino, clérigo, feiticeiro, mago e guerreiro, além da separação entre resumo e texto detalhado dos talentos.
 - Ainda falta executar e aprovar CI e compilação Android no commit final. O PR permanece aberto e não deve ser mesclado enquanto os dois fluxos não passarem.
+
+
+## Revisão de regras de combate e pesquisa textual (15/11/2026)
+
+- Cobertura atualizada para **26 de 110 talentos**. Acrescentados Combater com Duas Armas e Combater com Duas Armas Aprimorado; corrigido o texto de Reflexos de Combate para explicitar que o personagem mantém o ataque de oportunidade normal e recebe ataques adicionais em quantidade igual ao modificador de Destreza.
+- A busca agora também consulta os campos detalhados dos verbetes (funcionamento, regra normal, especial, ativação, duração, restrições e progressão), não apenas os nomes e resumos da ficha.
+- Testes adicionais verificam buscas por termos que aparecem somente no texto expandido e as regras de ataques de oportunidade e combate com duas armas.
