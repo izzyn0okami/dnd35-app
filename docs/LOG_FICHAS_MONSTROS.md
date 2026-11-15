@@ -1037,3 +1037,15 @@ As fichas-base devem ser reutilizadas por ID sempre que a tabela pedir apenas um
 - Testes de regressão adicionados para as 14 fichas.
 - Nota: descrições e regras foram traduzidas do SRD 3.5; revisar terminologia brasileira quando o PDF estiver novamente acessível.
 - Contagem após esta etapa: 320 criaturas; 319 com Descrição e Combate preenchidos; 1 ainda pendente (Texugo Atroz).
+
+
+## 2026-11-15 — Quadragésima sexta etapa: conclusão do preenchimento de Descrição e Combate
+
+- Fonte principal: Livro dos Monstros 3.5, verbete Texugo Atroz, p. 62; conferência externa temporária em https://palikhov.github.io/srd-v3.5/monsters/monsters-di-do.html e https://www.dndtools.one/index.php/monsters-npcs/badger-dire-84.
+- Preenchidas Descrição e Combate da última ficha pendente: Texugo Atroz.
+- Descrição: constituição robusta, pelagem espessa, patas com garras, focinho, comportamento territorial, dimensões, peso e escavação em materiais mais macios que rocha.
+- Combate: ataques de garras e mordida, Fúria (Ext) com +4 Força/+4 Constituição e –2 CA, sem encerramento voluntário.
+- Correção de consistência estatística: o catálogo registrava 3d8+15 com 23 PV; o bloco do Livro dos Monstros/SRD informa 28 PV. O campo hitPoints foi corrigido para 28, sem alterar os demais atributos.
+- Teste de regressão criado para descrição, fúria, escavação e PV.
+- Resultado: 320/320 registros com os campos Descrição e Combate preenchidos. Esta contagem não significa que todos os campos estatísticos de todas as fichas já tenham sido auditados.
+- Proveniência: os últimos lotes de animais e vermes foram preenchidos com SRD 3.5 e fontes de referência de D&D 3.5, em tradução própria. A terminologia e a fidelidade editorial deverão ser revisadas contra o PDF brasileiro quando a extração estiver disponível.
