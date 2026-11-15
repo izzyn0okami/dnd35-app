@@ -20,3 +20,7 @@ Data: 15/11/2026
 - d20 SRD — Barbarian: https://www.d20srd.org/srd/classes/barbarian.htm
 - d20 SRD — Bard: https://www.d20srd.org/srd/classes/bard.htm
 - d20 SRD — Druid: https://www.d20srd.org/srd/classes/druid.htm
+
+
+## Ajuste terminológico da Fúria
+- A expressão da edição brasileira para a condição ao término da Fúria é **exausto**; a descrição e a habilidade Fúria Incansável foram alinhadas a essa terminologia.
