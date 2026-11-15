@@ -65,3 +65,13 @@ Data: 2026-11-15
 - **Druida:** detalhadas opções e nível efetivo do Companheiro Animal, alcance/teste de Empatia Selvagem, Caminho da Floresta, Rastro Invisível, limites de tamanho e DV da Forma Selvagem, restrição das formas vegetais e progressão elemental.
 - Nenhuma progressão de nível, desbloqueio, dado persistido ou estrutura de ficha foi alterada. A única mudança mecânica neste incremento é a correção de Movimento Rápido do Bárbaro.
 - Testes atualizados para confirmar que armadura média e carga média permitem o bônus antes da redução normal de deslocamento.
+
+
+## Auditoria de Paladino e Ranger (15/11/2026)
+
+- Fonte primária: Livro do Jogador brasileiro, Capítulo 3, Paladino (pp. 45–47) e Ranger (pp. 47–49), PDF da biblioteca do projeto.
+- **Paladino — Remover Doença:** corrigida a progressão que estava antecipada em três níveis. Os usos semanais corretos são 1/semana no 6º nível, 2/semana no 9º, 3/semana no 12º, 4/semana no 15º e 5/semana no 18º. A entrada indevida de 6 usos no 18º foi removida.
+- **Paladino — Imposição de Mãos e Aura de Coragem:** descrições ampliadas com Carisma mínimo 12, possibilidade de dividir a cura ou causar dano a mortos-vivos, alcance de 3 m e bônus de moral contra medo.
+- **Ranger — Camuflagem e Mimetismo:** corrigidos nomes e níveis conforme o livro: Camuflagem no 13º nível e Mimetismo no 17º. A entrada incorreta Esconder-se à Plena Vista no 18º foi removida.
+- **Ranger — Rastreador Eficaz:** registrada a penalidade de -10 ao rastrear com o dobro do deslocamento (em vez de -20).
+- Testes automatizados confirmam os níveis de Remover Doença, Camuflagem e Mimetismo.
