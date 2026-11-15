@@ -800,4 +800,53 @@ class CreatureCatalogTest {
         assertTrue(camel.combat.contains("2.250 kg"))
     }
 
+    
+    @Test
+    fun tenAnimalSheetsHaveBookBasedDescriptionAndCombat() {
+        val carcaju = CreatureCatalog.byId("carcaju")!!
+        assertTrue(carcaju.description.contains("florestas frias"))
+        assertTrue(carcaju.combat.contains("Fúria (Ext)"))
+        assertTrue(carcaju.combat.contains("+4 de Força"))
+
+        val heavyHorse = CreatureCatalog.byId("cavalo-pesado")!!
+        assertTrue(heavyHorse.description.contains("Clydesdales"))
+        assertTrue(heavyHorse.combat.contains("1.500 kg"))
+
+        val lightHorse = CreatureCatalog.byId("cavalo-leve")!!
+        assertTrue(lightHorse.description.contains("pangarés"))
+        assertTrue(lightHorse.combat.contains("1.125 kg"))
+
+        val heavyWarHorse = CreatureCatalog.byId("cavalo-de-guerra-pesado")!!
+        assertTrue(heavyWarHorse.description.contains("treinado"))
+        assertTrue(heavyWarHorse.combat.contains("teste de Cavalgar"))
+        assertTrue(heavyWarHorse.combat.contains("2.250 kg"))
+
+        val lightWarHorse = CreatureCatalog.byId("cavalo-de-guerra-leve")!!
+        assertTrue(lightWarHorse.description.contains("agressividade"))
+        assertTrue(lightWarHorse.combat.contains("1.725 kg"))
+
+        val constrictor = CreatureCatalog.byId("cobra-constritora")!!
+        assertTrue(constrictor.description.contains("jiboia"))
+        assertTrue(constrictor.combat.contains("Constrição (Ext)"))
+        assertTrue(constrictor.combat.contains("1d3+4"))
+
+        val giantConstrictor = CreatureCatalog.byId("cobra-constritora-gigante")!!
+        assertTrue(giantConstrictor.combat.contains("1d8+10"))
+        assertTrue(giantConstrictor.combat.contains("Agarrar Aprimorado (Ext)"))
+
+        val crocodile = CreatureCatalog.byId("crocodilo")!!
+        assertTrue(crocodile.description.contains("3 m a 3,5 m"))
+        assertTrue(crocodile.combat.contains("4 vezes seu valor de Constituição"))
+        assertTrue(crocodile.combat.contains("+10 de bônus de cobertura"))
+
+        val giantCrocodile = CreatureCatalog.byId("crocodilo-gigante")!!
+        assertTrue(giantCrocodile.description.contains("6 m"))
+        assertTrue(giantCrocodile.combat.contains("como os crocodilos comuns"))
+
+        val elephant = CreatureCatalog.byId("elefante")!!
+        assertTrue(elephant.description.contains("mamutes e mastodontes"))
+        assertTrue(elephant.combat.contains("Reflexos CD 25"))
+        assertTrue(elephant.combat.contains("2d8+15"))
+    }
+
 }
