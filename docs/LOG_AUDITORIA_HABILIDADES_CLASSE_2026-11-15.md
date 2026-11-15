@@ -79,3 +79,7 @@ Data: 2026-11-15
 
 ## Ajuste de terminologia da edição brasileira
 - Os nomes **Empatia com a Natureza** (Druida e Ranger) e **Cura pelas Mãos** (Paladino) foram alinhados à terminologia impressa no Livro do Jogador brasileiro.
+
+
+## Conferência do Guerreiro (15/11/2026)
+- A tabela do Livro do Jogador confirma talentos adicionais nos níveis 1, 2 e a cada dois níveis seguintes (4º a 20º). A progressão do catálogo já estava correta; as descrições foram uniformizadas para explicitar que todos os talentos bônus exigem seus pré-requisitos. Nenhuma progressão foi alterada.
