@@ -1,4 +1,4 @@
-# Log de auditoria — Bárbaro, Bardo, Druida, Ladino, Monge, Paladino e Ranger
+# Log de auditoria — Classes básicas: Bárbaro, Bardo, Druida, Guerreiro, Ladino, Monge, Paladino e Ranger
 
 Data: 15/11/2026
 
@@ -53,3 +53,7 @@ Data: 15/11/2026
 
 ## Conferência do Guerreiro
 - A progressão de talentos adicionais do Guerreiro já correspondia à tabela oficial (1º, 2º e níveis pares de 4º a 20º). As descrições foram uniformizadas para deixar explícita a exigência de pré-requisitos em todos os marcos; nenhuma mecânica ou nível foi alterado.
+
+## Complemento — Guerreiro
+- A progressão de talentos adicionais (1º, 2º e níveis pares de 4º a 20º) já estava correta. As descrições foram padronizadas para explicitar a exigência de pré-requisitos em todos os níveis.
+- Teste automatizado verifica os onze marcos e a menção aos pré-requisitos.
