@@ -23,6 +23,7 @@ import androidx.compose.material.icons.filled.AutoStories
 import androidx.compose.material.icons.filled.Bedtime
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Edit
+import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Remove
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.AlertDialog
@@ -65,6 +66,8 @@ import com.example.dnd35.model.SummoningRules
 import com.example.dnd35.ui.dialogs.AddEditSpellDialog
 import com.example.dnd35.ui.dialogs.SpellDetailDialog
 import com.example.dnd35.ui.dialogs.SummonedCreaturePickerDialog
+import com.example.dnd35.ui.dialogs.RulesGlossaryDialog
+import com.example.dnd35.ui.dialogs.RulesGlossaryType
 import com.example.dnd35.ui.components.CreatureDetailsOverlay
 import com.example.dnd35.viewmodel.CharacterViewModel
 import com.example.ui.theme.DndArcaneBlue
@@ -93,6 +96,7 @@ fun SpellsTab(
     var showClearHistory by remember { mutableStateOf(false) }
     var pendingSummonCast by remember { mutableStateOf<PendingSummonCast?>(null) }
     var summonSelectionError by remember { mutableStateOf<String?>(null) }
+    var showGlossary by rememberSaveable { mutableStateOf(false) }
 
     fun castSpellOrChooseCreature(spell: CharacterSpell, slot: SpellSlotInfo, casterClass: String) {
         val options = SummoningRules.optionsForSpell(spell.name, spell.level, casterClass, stats, character, spell.domain)
@@ -131,6 +135,9 @@ fun SpellsTab(
                                     "Atributo Chave: $it (+${stats.castingAbilityMod})"
                                 } ?: "Sem atributo conjurador base"
                                 Text(abilityLabel, style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.primary)
+                            }
+                            IconButton(onClick = { showGlossary = true }) {
+                                Icon(Icons.Default.Info, contentDescription = "Ajuda do Grimório")
                             }
                         }
 
@@ -309,6 +316,10 @@ fun SpellsTab(
         item {
             Spacer(modifier = Modifier.height(24.dp))
         }
+    }
+
+    if (showGlossary) {
+        RulesGlossaryDialog(type = RulesGlossaryType.SPELLBOOK, onDismiss = { showGlossary = false })
     }
 
     detailCreature?.let { creature ->
