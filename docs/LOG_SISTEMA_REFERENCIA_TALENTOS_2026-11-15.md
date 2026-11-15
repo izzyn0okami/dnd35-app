@@ -178,3 +178,15 @@ Data: 2026-11-15
 - A execução de CI anterior falhou em um único teste já conhecido e intermitente, `SessionServerClientTest.mensagens privadas simultaneas nao perdem entradas no log do mestre` (asserção na linha 1515); os outros 653 testes passaram e a compilação do APK debug foi aprovada. O job com falha foi solicitado para nova execução; isso não foi tratado como falha causada pelos verbetes de talentos.
 - Nenhuma regra automática de combate, cálculo de PV ou persistência de personagens foi alterada.
 - Fonte primária: PDF brasileiro do Livro do Jogador salvo na biblioteca, Capítulo 5 — Talentos, páginas impressas 79 e 82.
+
+
+## Auditoria de talentos de perícias e componentes materiais (15/11/2026)
+
+- Cobertura ampliada de **96 para 100 de 109 talentos**; 9 verbetes permanecem pendentes.
+- **Dedos Lépidos** (p. 79): +2 em Operar Mecanismo e Abrir Fechaduras.
+- **Ignorar Componentes Materiais** (p. 81): dispensa apenas componentes materiais com custo de 1 PO ou menos; não remove ataques de oportunidade nem dispensa componentes de custo superior.
+- **Mãos Leves** (p. 82): +2 em Prestidigitação e Usar Cordas.
+- **Rastrear** (p. 87): permite seguir rastros com Sobrevivência, realizando testes adicionais quando a trilha se torna difícil de distinguir; deslocamento padrão reduzido à metade, com opções de penalidade para manter ou dobrar o deslocamento.
+- Foram adicionados testes de regressão para os benefícios e limites dessas quatro entradas.
+- Nenhum cálculo automático de perícias, graduações, deslocamento ou conjuração foi alterado.
+- Fonte primária: PDF brasileiro do Livro do Jogador salvo na biblioteca, Capítulo 5 — Talentos, páginas impressas 79, 81, 82 e 87.
