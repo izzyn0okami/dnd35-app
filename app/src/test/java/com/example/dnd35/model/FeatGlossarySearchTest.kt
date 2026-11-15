@@ -63,6 +63,20 @@ class FeatGlossarySearchTest {
         assertTrue(result.reference?.sourcePages == "31–32")
     }
 
+
+    @Test
+    fun rangerReferencesExplainFavoredEnemyAndCombatStyleMastery() {
+        val enemy = ClassFeatureGlossarySearch.search("Inimigo Predileto")
+            .first { it.className == "Ranger" }
+        assertTrue(enemy.reference?.restrictions?.contains("não se acumulam") == true)
+        assertTrue(enemy.reference?.sourcePages == "48")
+
+        val mastery = ClassFeatureGlossarySearch.search("Maestria do Estilo de Combate")
+            .first { it.className == "Ranger" }
+        assertTrue(mastery.reference?.progression?.contains("Tiro Preciso") == true)
+        assertTrue(mastery.reference?.sourcePages == "49")
+    }
+
     @Test
     fun blankSearchReturnsNoResults() {
         assertTrue(FeatGlossarySearch.search("   ").isEmpty())
