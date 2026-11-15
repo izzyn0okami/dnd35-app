@@ -25,3 +25,12 @@ Data: 2026-11-15
 - As progressões de magias por nível continuam representadas nos dados próprios do sistema; este incremento não as altera.
 - Ainda é necessário revisar as descrições resumidas de outras classes, especialmente habilidades com escolhas, usos diários e progressões escalonadas.
 - Não interpretar ausência de uma habilidade na lista como regra de que ela não existe; comparar sempre com a classe de referência antes de concluir.
+
+
+## Correção após primeira execução do CI
+
+- A compilação Kotlin foi concluída; os dois workflows falharam em dois testes de conteúdo, não por erro de compilação.
+- Os testes exigiam formulações explícitas sobre clérigos neutros e sobre a distinção entre Invocar Familiar e Companheiro Animal. As descrições foram ajustadas para explicitar essas regras sem alterar cálculos ou dados da ficha.
+- Também foi corrigida a quebra de linha entre as entradas Conversão Espontânea e Domínios da Divindade.
+- Commit corretivo: `2cf4d14a510a354f0803b7a3833bbfc67a9f9f7b`.
+- Aguardar nova execução de Android CI e Android build antes de mesclar.
