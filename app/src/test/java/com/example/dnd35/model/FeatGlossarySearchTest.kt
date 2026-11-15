@@ -94,7 +94,7 @@ class FeatGlossarySearchTest {
     fun monkReferencesExplainFlurryAndVibratingPalmLimits() {
         val flurry = ClassFeatureGlossarySearch.search("Rajada de Golpes")
             .first { it.className == "Monge" }
-        assertTrue(flurry.reference?.progression?.contains("9º nível") == true)
+        assertTrue(flurry.reference?.progression?.contains("desaparece no 9º") == true)
 
         val palm = ClassFeatureGlossarySearch.search("Mão Vibrante")
             .first { it.className == "Monge" }
