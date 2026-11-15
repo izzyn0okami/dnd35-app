@@ -732,4 +732,24 @@ class CreatureCatalogTest {
         assertTrue(worm.combat.contains("Espasmos de Morte"))
         assertTrue(worm.combat.contains("8d6"))
     }
+    
+    @Test
+    fun worgWyvernAndYrthakHaveCompleteBookBasedNarrativeAndCombat() {
+        val worg = CreatureCatalog.byId("worg")!!
+        assertTrue(worg.description.contains("150 kg"))
+        assertTrue(worg.combat.contains("Imobilização (Ext)"))
+        assertTrue(worg.combat.contains("+4 racial em Sobrevivência"))
+
+        val wyvern = CreatureCatalog.byId("wyvern")!!
+        assertTrue(wyvern.description.contains("6 m"))
+        assertTrue(wyvern.combat.contains("Fortitude CD 17"))
+        assertTrue(wyvern.combat.contains("2d6 pontos de dano temporário de Constituição"))
+
+        val yrthak = CreatureCatalog.byId("yrthak")!!
+        assertTrue(yrthak.description.contains("12 m de envergadura"))
+        assertTrue(yrthak.combat.contains("Rajada Sônica (Sob)"))
+        assertTrue(yrthak.combat.contains("Percepção às Cegas (Ext)"))
+        assertTrue(yrthak.combat.contains("36 m"))
+    }
+
 }
