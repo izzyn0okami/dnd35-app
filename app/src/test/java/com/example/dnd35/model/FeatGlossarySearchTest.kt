@@ -115,6 +115,18 @@ class FeatGlossarySearchTest {
         assertTrue(traps.reference?.progression?.contains("margem de 10") == true)
     }
 
+
+    @Test
+    fun clericReferencesExplainDomainSlotsAndUndeadChanneling() {
+        val domains = ClassFeatureGlossarySearch.search("Domínios da Divindade")
+            .first { it.className == "Clérigo" }
+        assertTrue(domains.reference?.restrictions?.contains("tendência") == true)
+
+        val turning = ClassFeatureGlossarySearch.search("Expulsar ou Fascinar Mortos-Vivos")
+            .first { it.className == "Clérigo" }
+        assertTrue(turning.reference?.duration?.contains("3 + modificador de Carisma") == true)
+    }
+
     @Test
     fun blankSearchReturnsNoResults() {
         assertTrue(FeatGlossarySearch.search("   ").isEmpty())
