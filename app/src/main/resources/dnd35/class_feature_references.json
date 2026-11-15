@@ -58,5 +58,17 @@
     "sourcePages": "23",
     "source": "Livro do Jogador brasileiro, Capítulo 3 — Bárbaro, p. 23",
     "status": "audited"
+  },
+  {
+    "className": "Bardo",
+    "term": "Música de Bardo",
+    "description": "O bardo utiliza música, poesia recitada, cantigas, melodias, assobios, instrumentos ou música instrumental acompanhada de discurso para produzir efeitos mágicos. Pode afetar a si próprio quando a habilidade permitir. Cada efeito exige um nível mínimo de bardo e uma quantidade mínima de graduações em Atuação; não recebe a habilidade antes de cumprir ambos os requisitos.",
+    "activation": "Ativar um efeito exige uma ação padrão. Quando a habilidade exigir concentração, o bardo precisa gastar uma ação padrão a cada rodada para mantê-la. Mesmo uma atuação que não exija concentração impede conjurar magias e ativar itens mágicos por complemento de magia ou palavra de comando.",
+    "duration": "O limite diário é uma utilização por nível de bardo. A duração varia por efeito: algumas atuações duram enquanto houver concentração; outras permanecem por 5 rodadas após o término da apresentação; Fascinar dura até 1 rodada por nível de bardo, enquanto o bardo continuar concentrado.",
+    "restrictions": "O bardo precisa ser capaz de produzir a apresentação exigida pelo efeito. Se estiver ensurdecido, há 20% de chance de falha ao ativar Música de Bardo; uma tentativa que falhe ainda consome uma utilização diária. Alcance, percepção do bardo e do alvo, distrações, ameaças e imunidade após um teste bem-sucedido variam conforme cada efeito.",
+    "progression": "3º nível e 3 graduações em Atuação: Música de Proteção (até 10 rodadas; protege contra efeitos mágicos sônicos ou dependentes de idioma), Fascinar (alvos a até 27 m; teste de Atuação define a CD de Vontade; +1 alvo a cada três níveis após o 1º) e Inspirar Coragem (+1 moral contra medo/Encantamento e em ataques/dano; bônus aumenta no 8º, 14º e 20º níveis). 3º nível e 6 graduações: Inspirar Competência (+2 de competência em testes de uma perícia, concentração até 2 minutos; não afeta o próprio bardo). 6º nível e 9 graduações: Sugestão contra criatura previamente fascinada, com resistência de Vontade (CD 10 + metade do nível de bardo + modificador de Carisma); não consome uso diário adicional. 9º nível e 12 graduações: Inspirar Grandeza, concedendo 2 DV adicionais (d10), pontos de vida temporários, +2 de competência em ataques e +1 em Fortitude; afeta alvos adicionais a cada três níveis após o 9º. 12º nível e 15 graduações: Melodia da Libertação, efeito similar a Cancelar Encantamento, com 1 minuto de atuação ininterrupta; afeta um alvo a até 9 m, exceto o próprio bardo. 15º nível e 18 graduações: Inspirar Heroísmo, concedendo +4 de moral nos testes de resistência e +4 de esquiva na CA; exige que o aliado ouça a canção por uma rodada completa e afeta alvos adicionais a cada três níveis após o 15º. 18º nível e 21 graduações: Sugestão em Massa sobre qualquer quantidade de criaturas previamente fascinadas.",
+    "sourcePages": "25–26",
+    "source": "Livro do Jogador brasileiro, Capítulo 3 — Bardo, pp. 25–26",
+    "status": "audited"
   }
 ]
