@@ -790,5 +790,59 @@
     "special": "Exige proficiência com a arma escolhida. Pode ser escolhido várias vezes, mas cada escolha se aplica a um tipo de besta diferente e os efeitos não se acumulam. Um guerreiro pode escolhê-lo como talento adicional.",
     "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 83",
     "status": "audited"
+  },
+  {
+    "name": "Contramágica Aprimorada",
+    "sourcePage": 78,
+    "description": "Ao realizar uma contramágica, o personagem pode usar qualquer magia da mesma escola que a magia-alvo, desde que a magia usada seja de nível superior. Não é necessário conhecer ou preparar exatamente a magia que está sendo neutralizada.",
+    "normal": "Sem este talento, a contramágica exige a mesma magia ou uma magia especificamente designada para neutralizar a magia afetada.",
+    "special": "A regra se aplica ao procedimento de contramágica; a magia escolhida ainda precisa ser capaz de ser usada como contramágica e obedecer às regras normais dessa ação.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 78",
+    "status": "audited"
+  },
+  {
+    "name": "Dominar Magia",
+    "sourcePage": 79,
+    "description": "Sempre que selecionar este talento, o mago escolhe uma quantidade de magias conhecidas equivalente ao seu modificador de Inteligência. Depois disso, pode preparar as magias selecionadas sem consultar seu grimório.",
+    "normal": "Sem o talento, o mago precisa consultar o grimório para preparar as magias que conhece, exceto Ler Magias.",
+    "special": "O pré-requisito é ser mago de 1º nível. A seleção é feita a cada vez que o talento é escolhido; não se deve substituir a quantidade por metade do nível de conjurador. O texto do livro não estabelece um mínimo de uma magia quando o modificador de Inteligência é zero.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 79",
+    "status": "audited"
+  },
+  {
+    "name": "Especialização em Arma Maior",
+    "sourcePage": 80,
+    "description": "Escolha uma arma para a qual já possua Especialização em Arma. O talento concede +2 adicional nas jogadas de dano com essa arma; esse bônus se acumula com quaisquer outros bônus de dano, inclusive o bônus de Especialização em Arma.",
+    "normal": "Especialização em Arma concede +2 de dano. Especialização em Arma Maior acrescenta outro +2, em vez de substituir o bônus anterior: os dois talentos somam +4 antes de outros modificadores.",
+    "special": "Pré-requisitos: proficiência com a arma escolhida, Foco em Arma, Foco em Arma Maior, Especialização em Arma e 12º nível de guerreiro. Pode ser escolhido várias vezes, mas cada escolha se aplica a uma arma diferente e os efeitos não se acumulam para a mesma arma. Um guerreiro pode escolhê-lo como talento adicional.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 80",
+    "status": "audited"
+  },
+  {
+    "name": "Potencializar Invocação",
+    "sourcePage": 83,
+    "description": "As criaturas conjuradas pelo personagem por meio de magias da subsérie Invocar recebem +4 de bônus de aprimoramento em Força e +4 de bônus de aprimoramento em Constituição enquanto a magia permanecer ativa.",
+    "normal": "O benefício termina quando a magia responsável pela invocação deixa de estar ativa.",
+    "special": "Pré-requisito: Foco em Magia (Conjuração). O bônus é de aprimoramento e se aplica às criaturas invocadas pela magia; não é um bônus geral para qualquer aliado ou criatura que o personagem controle.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 83",
+    "status": "audited"
+  },
+  {
+    "name": "Aumentar Magia",
+    "sourcePage": 78,
+    "description": "Aumenta em 100% o alcance de uma magia com alcance Curto, Médio ou Longo. Assim, os alcances passam, respectivamente, a 15 m + 1,5 m/nível, 60 m + 6 m/nível e 240 m + 24 m/nível.",
+    "normal": "O alcance permanece o indicado na descrição normal da magia.",
+    "special": "A magia ocupa o espaço de magia um nível acima do nível real. Magias cujo alcance não seja indicado como Curto, Médio ou Longo não podem ser afetadas.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 78",
+    "status": "audited"
+  },
+  {
+    "name": "Elevar Magia",
+    "sourcePage": 80,
+    "description": "O personagem escolhe um nível de magia superior ao nível normal da magia, até o limite do 9º nível. A magia elevada é tratada como magia do nível escolhido para os efeitos que dependem do nível da magia, incluindo a CD do teste de resistência.",
+    "normal": "Os demais talentos metamágicos normalmente alteram características específicas da magia sem elevar seu nível efetivo para todos os efeitos dependentes do nível. Elevar Magia altera o nível efetivo da magia.",
+    "special": "A magia precisa ser preparada e conjurada usando um espaço do nível escolhido. O exemplo do Livro do Jogador é imobilizar pessoas preparada como magia de 4º nível em vez de 2º, sendo tratada como magia de 4º nível em todos os aspectos dependentes do nível.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 80",
+    "status": "audited"
   }
 ]
