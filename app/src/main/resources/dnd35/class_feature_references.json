@@ -154,5 +154,89 @@
     "sourcePages": "49",
     "source": "Livro do Jogador brasileiro, Capítulo 3 — Ranger, p. 49",
     "status": "audited"
+  },
+  {
+    "className": "Paladino",
+    "term": "Destruir o Mal",
+    "description": "O paladino canaliza seu poder contra uma criatura maligna por meio de um ataque corporal regular. Soma seu modificador de Carisma, se houver, à jogada de ataque e causa dano adicional igual ao seu nível de paladino.",
+    "activation": "É declarado como parte de um ataque corporal regular.",
+    "duration": "O número de usos começa em 1 por dia e aumenta em um uso adicional a cada cinco níveis de paladino após o 1º.",
+    "restrictions": "Se o alvo não for maligno, a habilidade não produz efeito, mas o uso diário é consumido. O ataque deve atingir o alvo normalmente.",
+    "progression": "1º nível: 1 uso/dia. 5º: 2 usos/dia. 10º: 3 usos/dia. 15º: 4 usos/dia. 20º: 5 usos/dia.",
+    "sourcePages": "45–46",
+    "source": "Livro do Jogador brasileiro, Capítulo 3 — Paladino, pp. 45–46",
+    "status": "audited"
+  },
+  {
+    "className": "Paladino",
+    "term": "Graça Divina",
+    "description": "A partir do 2º nível, o paladino adiciona seu modificador de Carisma, se positivo ou negativo, a todos os seus testes de resistência.",
+    "activation": "Sempre ativa; o modificador é incluído em cada teste de resistência.",
+    "duration": "Permanente a partir do 2º nível.",
+    "restrictions": "O bônus corresponde ao modificador de Carisma do próprio paladino.",
+    "progression": "Adquirida no 2º nível.",
+    "sourcePages": "46",
+    "source": "Livro do Jogador brasileiro, Capítulo 3 — Paladino, p. 46",
+    "status": "audited"
+  },
+  {
+    "className": "Paladino",
+    "term": "Cura pelas Mãos",
+    "description": "A partir do 2º nível, um paladino com Carisma 12 ou superior pode curar ferimentos por toque. Seu limite diário total de cura é igual ao nível de paladino multiplicado pelo modificador de Carisma; esse total pode ser dividido entre várias utilizações e criaturas, incluindo o próprio paladino.",
+    "activation": "Curar exige uma ação padrão e um toque. Para ferir mortos-vivos, exige um ataque de toque bem-sucedido que não provoca ataques de oportunidade; o paladino escolhe quantos pontos do limite diário gastará depois de tocar o morto-vivo.",
+    "duration": "O limite é renovado diariamente e pode ser gasto em partes, até seu total.",
+    "restrictions": "Sem Carisma 12, o paladino não pode usar a habilidade. O limite diário depende do modificador de Carisma e do nível de paladino.",
+    "progression": "A quantidade total de pontos de vida que pode curar ou converter em dano contra mortos-vivos aumenta com o nível de paladino e o modificador de Carisma.",
+    "sourcePages": "46",
+    "source": "Livro do Jogador brasileiro, Capítulo 3 — Paladino, p. 46",
+    "status": "audited"
+  },
+  {
+    "className": "Paladino",
+    "term": "Aura de Coragem",
+    "description": "A partir do 3º nível, o paladino torna-se imune a efeitos de medo, mágicos ou não. Aliados num raio de 3 m recebem +4 de bônus de moral nos testes de resistência contra medo.",
+    "activation": "Sempre ativa enquanto o paladino estiver consciente.",
+    "duration": "Contínua enquanto estiver consciente; não funciona se estiver inconsciente ou morto.",
+    "restrictions": "O bônus para aliados exige que permaneçam num raio de 3 m. A imunidade própria do paladino não depende da presença de aliados.",
+    "progression": "Adquirida no 3º nível.",
+    "sourcePages": "46",
+    "source": "Livro do Jogador brasileiro, Capítulo 3 — Paladino, p. 46",
+    "status": "audited"
+  },
+  {
+    "className": "Paladino",
+    "term": "Expulsar Mortos-Vivos",
+    "description": "A partir do 4º nível, o paladino adquire a habilidade sobrenatural de expulsar mortos-vivos como um clérigo cujo nível efetivo seja três níveis inferior ao nível de paladino.",
+    "activation": "Utiliza a ação e os testes próprios da regra de Expulsar Mortos-Vivos.",
+    "duration": "Pode ser usada 3 + modificador de Carisma vezes por dia.",
+    "restrictions": "O nível efetivo para expulsar é o nível de paladino menos 3; a quantidade de usos diários depende de Carisma.",
+    "progression": "Adquirida no 4º nível; o nível efetivo acompanha a progressão do paladino, sempre com a redução de três níveis.",
+    "sourcePages": "46",
+    "source": "Livro do Jogador brasileiro, Capítulo 3 — Paladino, p. 46",
+    "status": "audited"
+  },
+  {
+    "className": "Paladino",
+    "term": "Montaria Especial",
+    "description": "A partir do 5º nível, o paladino recebe uma montaria sobrenatural, inteligente, forte e leal, que normalmente é um cavalo de guerra pesado para paladinos Médios ou um pônei de guerra para paladinos Pequenos. O Mestre e o jogador podem concordar com outra espécie adequada à campanha.",
+    "activation": "Uma vez por dia, o paladino invoca a montaria com uma ação de rodada completa. Ela aparece imediatamente ao lado dele e pode ser dispensada como ação livre.",
+    "duration": "Permanece no Plano Material por 2 horas por nível de paladino. É sempre a mesma criatura e reaparece sem ferimentos, com o equipamento que possuía quando foi dispensada.",
+    "restrictions": "Se a montaria morrer, desaparece deixando o equipamento. O paladino não pode invocar outra durante 30 dias ou até adquirir um nível de classe, o que ocorrer primeiro; nesse período sofre –1 nas jogadas de ataque e dano. A montaria é considerada uma besta mágica para efeitos que dependam do tipo.",
+    "progression": "A montaria recebe Dados de Vida, armadura natural, Força, Inteligência e habilidades especiais conforme o nível do paladino: vínculo empático e evasão aprimorada; depois deslocamento aprimorado; comando de criaturas da espécie; e, nos níveis mais altos, Resistência à Magia.",
+    "sourcePages": "46–47",
+    "source": "Livro do Jogador brasileiro, Capítulo 3 — Paladino, pp. 46–47",
+    "status": "audited"
+  },
+  {
+    "className": "Paladino",
+    "term": "Remover Doença",
+    "description": "A partir do 6º nível, o paladino pode usar um efeito similar à magia Remover Doenças para remover doenças de uma criatura.",
+    "activation": "Usa a habilidade similar à magia conforme a descrição de Remover Doenças.",
+    "duration": "O número de usos é semanal, não diário.",
+    "restrictions": "A habilidade só fica disponível a partir do 6º nível; não deve ser confundida com a magia preparada ou com Cura pelas Mãos.",
+    "progression": "6º nível: 1 uso por semana. Aumenta em um uso semanal a cada três níveis depois do 6º: 9º, 12º, 15º e 18º níveis, chegando a 5 usos por semana.",
+    "sourcePages": "47",
+    "source": "Livro do Jogador brasileiro, Capítulo 3 — Paladino, p. 47",
+    "status": "audited"
   }
 ]
