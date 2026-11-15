@@ -511,6 +511,45 @@ class ExampleUnitTest {
   }
 
   @Test
+  fun barbarianFastMovementDoesNotApplyWithHeavyArmorOrHeavyLoad() {
+    val fullPlate = CharacterInventoryItem(
+      name = "Armadura Completa",
+      category = "Armaduras",
+      equipped = true,
+      equippedSlot = Dnd35Rules.EquipmentSlots.ARMOR_BODY,
+      weightLb = 50f,
+      damageOrAc = "+8 CA",
+      notes = "Des Max +1, Pen -6"
+    )
+    val armored = CharacterCalculator.compute(
+      CharacterEntity(
+        characterClass = "Bárbaro",
+        level = 1,
+        baseStr = 16,
+        inventoryJson = CharacterJsonAdapters.serializeInventory(listOf(fullPlate))
+      )
+    )
+    assertEquals(6.0f, armored.speedMetersEffective, 0.01f)
+
+    val heavyPack = CharacterInventoryItem(
+      name = "Carga pesada",
+      category = "Itens de Aventura",
+      weightLb = 160f,
+      equipped = false
+    )
+    val encumbered = CharacterCalculator.compute(
+      CharacterEntity(
+        characterClass = "Bárbaro",
+        level = 1,
+        baseStr = 16,
+        inventoryJson = CharacterJsonAdapters.serializeInventory(listOf(heavyPack))
+      )
+    )
+    assertEquals(Dnd35Rules.EncumbranceLevel.HEAVY, encumbered.encumbrance)
+    assertEquals(6.0f, encumbered.speedMetersEffective, 0.01f)
+  }
+
+  @Test
   fun mediumArmorReducesNormalMovementSpeed() {
     val armor = CharacterInventoryItem(
       name = "Gibão de Peles",
