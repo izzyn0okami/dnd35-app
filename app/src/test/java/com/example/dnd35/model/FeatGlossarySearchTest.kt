@@ -102,6 +102,19 @@ class FeatGlossarySearchTest {
         assertTrue(palm.reference?.sourcePages == "44")
     }
 
+
+    @Test
+    fun rogueSneakAttackReferenceExplainsImmunitiesAndRange() {
+        val sneak = ClassFeatureGlossarySearch.search("Ataque Furtivo")
+            .first { it.className == "Ladino" }
+        assertTrue(sneak.reference?.restrictions?.contains("9 m") == true)
+        assertTrue(sneak.reference?.restrictions?.contains("mortos-vivos") == true)
+
+        val traps = ClassFeatureGlossarySearch.search("Encontrar Armadilhas")
+            .first { it.className == "Ladino" }
+        assertTrue(traps.reference?.progression?.contains("margem de 10") == true)
+    }
+
     @Test
     fun blankSearchReturnsNoResults() {
         assertTrue(FeatGlossarySearch.search("   ").isEmpty())
