@@ -64,6 +64,7 @@ import com.example.dnd35.ui.components.CharacterAvatar
 import com.example.dnd35.ui.components.HpBarSection
 import com.example.dnd35.ui.components.PhotoPickerModal
 import com.example.dnd35.ui.dialogs.DiceRollDialog
+import com.example.dnd35.ui.dialogs.ClassFeatureGlossaryDialog
 import com.example.dnd35.ui.dialogs.EditAbilityDialog
 import com.example.dnd35.ui.dialogs.EditArmorDialog
 import com.example.dnd35.ui.dialogs.EditGeneralInfoDialog
@@ -87,6 +88,7 @@ fun OverviewCombatTab(
     var diceRollTarget by remember { mutableStateOf<Triple<String, Int, String>?>(null) } // Title, Bonus, Damage
     var showAmmunitionPicker by remember { mutableStateOf(false) }
     var selectedClassFeature by remember { mutableStateOf<Pair<String, Dnd35Rules.ClassFeature>?>(null) }
+    var classFeatureGlossaryQuery by remember { mutableStateOf<String?>(null) }
 
     val equippedAmmunition = stats.inventory.firstOrNull {
         it.equippedSlot == Dnd35Rules.EquipmentSlots.AMMUNITION && it.quantity > 0
@@ -758,10 +760,11 @@ fun OverviewCombatTab(
                                     .padding(vertical = 5.dp)
                             ) {
                                 Text(
-                                    "• [Nv ${feat.level}] ${feat.name}  ›",
+                                    "• [Nv ${feat.level}] ${feat.name}  ⌕",
                                     fontWeight = FontWeight.SemiBold,
                                     style = MaterialTheme.typography.bodySmall,
-                                    color = MaterialTheme.colorScheme.primary
+                                    color = MaterialTheme.colorScheme.primary,
+                                    modifier = Modifier.clickable { classFeatureGlossaryQuery = feat.name }
                                 )
                                 Text(feat.description, style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                             }
@@ -906,6 +909,10 @@ fun OverviewCombatTab(
                 OutlinedButton(onClick = { selectedClassFeature = null }) { Text("Fechar") }
             }
         )
+    }
+
+    classFeatureGlossaryQuery?.let { query ->
+        ClassFeatureGlossaryDialog(initialQuery = query, onDismiss = { classFeatureGlossaryQuery = null })
     }
 
     if (showAmmunitionPicker) {

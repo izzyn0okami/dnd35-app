@@ -14,6 +14,7 @@ import com.example.dnd35.model.SkillPointLevelRecord
 import com.example.dnd35.model.parseSkillPointAllocations
 import com.example.dnd35.model.parseWholeSkillPointBudget
 import com.example.dnd35.model.Dnd35Rules
+import com.example.dnd35.model.ClassFeatureGlossarySearch
 import com.example.dnd35.model.isWeaponInventoryCategory
 import com.example.dnd35.model.effectiveDamage
 import com.example.dnd35.model.effectiveArmorClassBonus
@@ -1105,6 +1106,14 @@ class ExampleUnitTest {
     assertTrue(spontaneous.description.contains("Clérigos neutros"))
     assertTrue(domains.description.contains("dois domínios"))
     assertTrue(domains.description.contains("espaço de magia por nível"))
+  }
+
+  @Test
+  fun classFeatureGlossarySearchFindsTermsWithoutAccentSensitivity() {
+    val results = ClassFeatureGlossarySearch.search("FURIA")
+    assertTrue(results.isNotEmpty())
+    assertTrue(results.any { it.className == "Bárbaro" && it.term.startsWith("Fúria") })
+    assertTrue(ClassFeatureGlossarySearch.search("   ").isEmpty())
   }
 
   @Test
