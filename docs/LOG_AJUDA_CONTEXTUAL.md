@@ -52,3 +52,9 @@
 - O botão textual **Glossário** foi adicionado ao cabeçalho desse overlay compartilhado, ao lado do botão Fechar.
 - O botão abre o mesmo glossário do Bestiário, sem fechar a ficha e sem alterar o fluxo de seleção.
 - O cabeçalho compartilhado recebeu uma ação opcional; os demais usos do overlay permanecem sem alteração visual.
+
+### Correções de compilação após CI (2026-11-15)
+- A primeira validação da PR #379 falhou em `compileDebugKotlin`.
+- Causa: import incorreto de `rememberSaveable` (deve vir de `androidx.compose.runtime.saveable`) e importação `IconButton` removida do catálogo, embora ainda usada na navegação de detalhe.
+- Corrigidas ambas as importações. A CI deve ser executada novamente antes do merge.
+- O erro adicional de chamada Composable foi reportado no mesmo trecho de `IconButton` e será reavaliado após corrigir a importação.
