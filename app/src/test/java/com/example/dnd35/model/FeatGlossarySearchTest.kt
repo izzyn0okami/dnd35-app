@@ -100,6 +100,10 @@ class FeatGlossarySearchTest {
             .first { it.className == "Monge" }
         assertTrue(palm.reference?.restrictions?.contains("imunes a sucessos decisivos") == true)
         assertTrue(palm.reference?.sourcePages == "44")
+
+        val fall = ClassFeatureGlossarySearch.search("Queda Suave 6 m")
+            .first { it.className == "Monge" }
+        assertTrue(fall.reference?.term == "Queda Suave")
     }
 
 
