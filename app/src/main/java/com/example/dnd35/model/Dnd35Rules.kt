@@ -147,8 +147,7 @@ object Dnd35Rules {
             baseSpeedMeters = 6.0f,
             traits = "+1 CA e ataque por tamanho pequeno (+4 Esconder-se), +1 em todos os testes de resistência, +2 de moral contra medo, +1 nas jogadas de ataque com armas de arremesso e fundas, +2 em Escalar, Saltar, Ouvir e Furtividade.",
             favoredClass = "Ladino"
-        ),
-        RaceInfo(
+        ),        RaceInfo(
             name = "Halfling Robusto",
             subrace = "Robusto",
             strMod = -2,
@@ -295,10 +294,9 @@ object Dnd35Rules {
             hasDomainSpellSlot = true,
             classSkills = listOf("Concentração", "Conhecimento (Arcano)", "Conhecimento (História)", "Conhecimento (Planos)", "Conhecimento (Religião)", "Cura", "Diplomacia", "Identificar Magia", "Ofícios", "Profissão"),
             features = listOf(
-                ClassFeature(1, "Aura", "A força da aura depende do poder da divindade, conforme a regra de detectar o bem ou detectar o mal."),
-                ClassFeature(1, "Expulsar ou Fascinar Mortos-Vivos", "Usa essa habilidade 3 + modificador de Carisma vezes por dia; clérigos bons ou que veneram uma divindade boa expulsam, clérigos maus ou de divindade má fascinam, e clérigos neutros escolhem conforme as regras."),
-                ClassFeature(1, "Conversão Espontânea", "Clérigos bons convertem magias preparadas em magias de cura; clérigos maus, em magias de infligir. Clérigos neutros escolhem uma das opções ao criar o personagem, conforme as regras."),
-                ClassFeature(1, "Domínios da Divindade", "Escolhe dois domínios permitidos pela divindade ou filosofia; recebe os poderes concedidos de ambos e um espaço de magia por nível para preparar uma magia de domínio.")
+                ClassFeature(1, "Aura", "Um clérigo de divindade caótica, má, boa ou leal manifesta uma aura especialmente poderosa correspondente ao alinhamento da divindade. Um clérigo sem divindade que escolha um domínio de alinhamento manifesta a aura correspondente; clérigos sem essas condições não recebem essa aura especial."),
+                ClassFeature(1, "Expulsar ou Fascinar Mortos-Vivos", "Habilidade sobrenatural usada com símbolo sagrado ou profano: 3 + modificador de Carisma vezes por dia. Clérigo bom (ou neutro de divindade boa) expulsa ou destrói mortos-vivos; clérigo mau (ou neutro de divindade má) os fascina ou comanda. Clérigo neutro de divindade neutra escolhe uma dessas formas ao definir sua canalização, sem poder mudar depois. O teste de expulsão é 1d20 + modificador de Carisma; se puder afetar o alvo, o dano de expulsão é 2d6 + nível de clérigo + modificador de Carisma. Cinco graduações em Conhecimento (religião) concedem +2 nos testes de expulsão contra mortos-vivos. O nível de clérigo determina os Dados de Vida máximos afetados."),
+                ClassFeature(1, "Conversão Espontânea", "Clérigo bom (ou neutro que canalize energia positiva) pode substituir espontaneamente uma magia preparada por uma magia de cura de nível igual ou inferior. Clérigo mau (ou neutro que canalize energia negativa) pode convertê-la em uma magia de infligir. A escolha do clérigo neutro é feita ao definir sua forma de canalização e não pode ser revertida. A magia convertida deve respeitar os limites normais de conjuração."),                ClassFeature(1, "Domínios da Divindade", "Escolhe dois domínios associados à divindade ou à filosofia seguida; sem divindade, escolhe domínios que representem suas inclinações espirituais. Recebe os poderes concedidos de ambos e, para cada nível de magia que puder conjurar a partir do 1º, um espaço adicional de domínio. Nesse espaço prepara uma magia de um dos dois domínios. Domínios de alinhamento exigem alinhamento compatível. A escolha é permanente. Alguns domínios também acrescentam perícias à lista de perícias de classe.")
             ),
             description = "Campeão divino dos deuses com magia sagrada de cura, domínios e destruição do mal."
         ),
@@ -447,8 +445,7 @@ object Dnd35Rules {
             ),
             description = "Campeão supremo da retidão e da honra divina, com Graça Divina e Destruição do Mal."
         ),
-        ClassInfo(
-            name = "Ranger",
+        ClassInfo(            name = "Ranger",
             hitDie = 8,
             babType = BabProgression.FULL,
             fortType = SaveProgression.GOOD,
@@ -528,8 +525,8 @@ object Dnd35Rules {
             spellcastingType = SpellcastingType.SPONTANEOUS_ARCANE,
             classSkills = listOf("Blefar", "Concentração", "Conhecimento (Arcano)", "Identificar Magia", "Ofícios", "Profissão"),
             features = listOf(
-                ClassFeature(1, "Conjuração Espontânea", "Conjura magias arcanas sem prepará-las antecipadamente; conhece um repertório limitado de magias e tem um limite diário de usos por nível."),
-                ClassFeature(1, "Invocar Familiar", "Obtém um familiar mágico que compartilha benefícios especiais com o feiticeiro; não é a habilidade Companheiro Animal do druida ou ranger.")
+                ClassFeature(1, "Conjuração Espontânea", "Conjura magias arcanas sem preparação antecipada, escolhendo no momento da conjuração entre as magias que conhece e os espaços diários disponíveis. O repertório de magias conhecidas é limitado e aumenta conforme a tabela do feiticeiro; Carisma determina a magia mínima necessária, as magias adicionais por dia e a CD dos testes de resistência. Não possui a progressão de talentos bônus do mago."),
+                ClassFeature(1, "Invocar Familiar", "Pode obter um familiar após 24 horas de trabalho e materiais no valor de 100 PO. O familiar é uma besta mágica baseada em um animal normal, concede benefícios ao mestre e ganha capacidades progressivas conforme o nível combinado nas classes que concedem familiar: alerta e evasão aprimorada nos níveis iniciais, entrega de magias de toque no 3º, comunicação e resistência à magia em níveis posteriores. Um companheiro animal não pode também ser familiar. A morte ou dispensa impõe teste de Fortitude e perda de XP, conforme a regra completa.")
             ),
             description = "Conjurador nato com o poder de dragões ou seres arcanos fluindo diretamente no sangue."
         ),
@@ -545,9 +542,9 @@ object Dnd35Rules {
             spellcastingType = SpellcastingType.PREPARED_ARCANE,
             classSkills = listOf("Concentração", "Conhecimento (Arcano)", "Conhecimento (Arquitetura e Engenharia)", "Conhecimento (Geografia)", "Conhecimento (História)", "Conhecimento (Local)", "Conhecimento (Masmorras)", "Conhecimento (Natureza)", "Conhecimento (Nobreza e Realeza)", "Conhecimento (Planos)", "Conhecimento (Religião)", "Decifrar Escrita", "Identificar Magia", "Ofícios", "Profissão"),
             features = listOf(
-                ClassFeature(1, "Preparação com Grimório", "Estuda e prepara magias diárias a partir do seu livro de feitiços."),
+                ClassFeature(1, "Preparação com Grimório", "Prepara magias arcanas estudando o grimório por 1 hora após descansar. Pode conhecer qualquer quantidade de magias, mas só prepara aquelas registradas em seu grimório; a exceção é ler magia, que pode preparar de memória. Inteligência determina a magia mínima necessária, as magias adicionais por dia e a CD dos testes de resistência."),
                 ClassFeature(1, "Escrever Pergaminho", "Recebe Escrever Pergaminho como talento bônus no 1º nível."),
-                ClassFeature(1, "Invocar Familiar", "Obtém um familiar mágico que concede benefícios especiais; não é um companheiro animal comum."),
+                ClassFeature(1, "Invocar Familiar", "Pode obter um familiar após 24 horas de trabalho e materiais no valor de 100 PO. O familiar é uma besta mágica baseada em um animal normal, concede benefícios ao mestre e ganha capacidades progressivas conforme o nível combinado nas classes que concedem familiar: alerta e evasão aprimorada nos níveis iniciais, entrega de magias de toque no 3º, comunicação e resistência à magia em níveis posteriores. Um companheiro animal não pode também ser familiar. A morte ou dispensa impõe teste de Fortitude e perda de XP, conforme a regra completa."),
                 ClassFeature(1, "Especialização em Escola (Opcional)", "Se especializar, recebe uma magia preparada adicional por nível de magia da escola escolhida e perde acesso às escolas proibidas; um especialista em Adivinhação escolhe apenas uma escola proibida."),
                 ClassFeature(5, "Talento Bônus de Mago (5º Nv)", "Recebe um talento bônus de metamagia, criação de item ou Maestria em Magia, se cumprir os pré-requisitos."),
                 ClassFeature(10, "Talento Bônus de Mago (10º Nv)", "Recebe um talento bônus de metamagia, criação de item ou Maestria em Magia, se cumprir os pré-requisitos."),
@@ -597,8 +594,7 @@ object Dnd35Rules {
         8 to CarryingCapacity(26, 53, 80),
         9 to CarryingCapacity(30, 60, 90),
         10 to CarryingCapacity(33, 66, 100),
-        11 to CarryingCapacity(38, 76, 115),
-        12 to CarryingCapacity(43, 86, 130),
+        11 to CarryingCapacity(38, 76, 115),        12 to CarryingCapacity(43, 86, 130),
         13 to CarryingCapacity(50, 100, 150),
         14 to CarryingCapacity(58, 116, 175),
         15 to CarryingCapacity(66, 133, 200),
@@ -747,8 +743,7 @@ object Dnd35Rules {
         SkillDefinition("Arte da Fuga", "DES", armorCheckPenaltyApplies = true),
         SkillDefinition("Atuação", "CAR", armorCheckPenaltyApplies = false),
         SkillDefinition("Avaliação", "INT", armorCheckPenaltyApplies = false),
-        SkillDefinition("Blefar", "CAR", armorCheckPenaltyApplies = false),
-        SkillDefinition("Cavalgar", "DES", armorCheckPenaltyApplies = false),
+        SkillDefinition("Blefar", "CAR", armorCheckPenaltyApplies = false),        SkillDefinition("Cavalgar", "DES", armorCheckPenaltyApplies = false),
         SkillDefinition("Concentração", "CON", armorCheckPenaltyApplies = false),
         SkillDefinition("Conhecimento (Arcano)", "INT", armorCheckPenaltyApplies = false, trainedOnly = true),
         SkillDefinition("Conhecimento (Arquitetura e Engenharia)", "INT", armorCheckPenaltyApplies = false, trainedOnly = true),
@@ -897,8 +892,7 @@ object Dnd35Rules {
             val o = array.getJSONObject(i)
             val name = CatalogJson.requireString(o, "name", "magia #${i + 1}")
             check(seen.add(name.lowercase())) { "Magia duplicada no catálogo: $name" }
-            val level = CatalogJson.requireInt(o, "level", name)
-            check(level in 0..9) { "Magia \"$name\": nível fora da faixa 0-9 ($level)" }
+            val level = CatalogJson.requireInt(o, "level", name)            check(level in 0..9) { "Magia \"$name\": nível fora da faixa 0-9 ($level)" }
             val classes = CatalogJson.stringList(o, "classes")
             val explicitClassLevels = CatalogJson.intMap(o, "classLevels")
             val classLevels = if (explicitClassLevels.isNotEmpty()) {
