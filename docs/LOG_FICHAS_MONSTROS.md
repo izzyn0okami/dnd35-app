@@ -975,3 +975,20 @@ As fichas-base devem ser reutilizadas por ID sempre que a tabela pedir apenas um
 - Adicionado teste de regressão cobrindo os dez registros e detalhes mecânicos característicos.
 - Contagem após esta etapa: 320 criaturas; 275 com Descrição e Combate preenchidos; 45 ainda pendentes.
 - Observação de proveniência: esta etapa usa fontes externas e não substitui a conferência posterior com o Livro dos Monstros brasileiro; eventuais diferenças de tradução ou redação serão reconciliadas quando o PDF voltar a estar acessível.
+
+
+## 2026-11-15 — Quadragésima segunda etapa: dez animais complementados com SRD (Polvo a Urso Marrom)
+
+- Continuidade da auditoria externa enquanto a extração do PDF brasileiro permanece indisponível.
+- Fonte: SRD 3.5, seção Monsters (Animals), Open Game Content: https://palikhov.github.io/srd-v3.5/monsters/monsters-animals.html (verbetes Octopus, Octopus, Giant, Pony, Pony, War, Rat, Rhinoceros, Toad, Badger, Tiger e Bear, Brown).
+- Preenchidas Descrição e Combate de dez registros existentes: Polvo, Polvo Gigante, Pônei, Pônei de Guerra, Rato, Rinoceronte, Sapo, Texugo, Tigre e Urso Marrom.
+- Polvos: comportamento de fuga/territorialidade, Agarrar Aprimorado, Constrição, nuvem de tinta, propulsão e vulnerabilidade dos tentáculos.
+- Equídeos: distinção entre pônei comum e de guerra, restrição de combate com cavaleiro e capacidades de carga/arrasto.
+- Rato e sapo: comportamento evasivo, mobilidade e bônus raciais do rato; natureza anfíbia, alimentação e camuflagem do sapo.
+- Rinoceronte: perfil do rinoceronte-negro-africano, dimensões, peso e Investida Poderosa (4d6+24).
+- Texugo: escavação, dimensões, Fúria (Ext) e bônus de Arte da Fuga.
+- Tigre e urso-marrom: táticas predatórias, Agarrar Aprimorado, Bote e Rasgar do tigre; porte, territorialidade e bônus de Natação do urso.
+- Estatísticas-base, ND, tendência, progressão e vínculos foram preservados; nenhuma duplicata foi criada.
+- Adicionado teste de regressão para as dez fichas.
+- Observação: conteúdo narrativo e de combate derivado do SRD 3.5; revisar a terminologia e diferenças específicas com o Livro dos Monstros brasileiro quando o PDF estiver disponível.
+- Contagem após esta etapa: 320 criaturas; 285 com Descrição e Combate preenchidos; 35 ainda pendentes.
