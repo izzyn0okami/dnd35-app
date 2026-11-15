@@ -57,3 +57,10 @@ Data: 15/11/2026
 ## Complemento — Guerreiro
 - A progressão de talentos adicionais (1º, 2º e níveis pares de 4º a 20º) já estava correta. As descrições foram padronizadas para explicitar a exigência de pré-requisitos em todos os níveis.
 - Teste automatizado verifica os onze marcos e a menção aos pré-requisitos.
+
+
+## Revisão dos testes automatizados — 15/11/2026
+- A CI revelou expectativas antigas que contradiziam as progressões já corrigidas: Remover Doença do Paladino começava indevidamente no 3º nível nos testes; o Ranger ainda era testado com Camuflagem no 17º e Esconder-se à Plena Vista no 18º; o teste de carga média do Bárbaro esperava incorretamente a perda do Movimento Rápido.
+- Testes atualizados para os marcos corretos: Paladino 6º/9º/12º/15º/18º (1 a 5 usos semanais), Ranger Camuflagem 13º e Mimetismo 17º, e Movimento Rápido do Bárbaro aplicado antes da redução de deslocamento por carga média.
+- Inspirar Heroísmo explicita o alvo adicional no 18º nível. As descrições dos talentos bônus do Guerreiro foram uniformizadas para registrar os pré-requisitos.
+- Nenhuma estrutura de ficha ou dado persistido foi alterado nesta rodada.
