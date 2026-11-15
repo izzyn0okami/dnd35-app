@@ -13788,7 +13788,7 @@
     "hitDice": "3d8+15",
     "hdCount": 3,
     "hdType": 8,
-    "hitPoints": 23,
+    "hitPoints": 28,
     "initiative": 3,
     "speed": "9 m (6 quadrados), escavar 3 m",
     "armorClass": 16,
@@ -13827,7 +13827,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "O texugo atroz é um animal robusto e musculoso, coberto por uma pelagem espessa e desgrenhada. Possui pernas curtas e fortes, terminadas em patas com garras, e focinho pontudo com uma boca larga repleta de dentes afiados. Mede de 1,5 a 2,1 m de comprimento e pode pesar até 225 kg. É extremamente territorial e não tolera invasões. Escava tocas em terra e materiais macios, mas não consegue atravessar rocha sólida; normalmente deixa um túnel utilizável com cerca de 1,5 m de diâmetro.",
+    "combat": "O texugo atroz ataca com suas garras afiadas e dentes. Fúria (Ext): quando sofre dano em combate, entra em fúria berserker no turno seguinte e continua golpeando e mordendo até que ele ou seu oponente morra. Durante a fúria, recebe +4 em Força e Constituição e sofre –2 na Classe de Armadura; não pode encerrar a fúria voluntariamente. Pode escavar a 3 m por rodada em solo ou materiais mais macios que rocha."
   },
   {
     "id": "cobra-constritora-gigante",
