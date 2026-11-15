@@ -908,3 +908,17 @@ As fichas-base devem ser reutilizadas por ID sempre que a tabela pedir apenas um
 - Adicionado teste de regressão cobrindo as onze fichas e seus detalhes distintivos.
 - Nenhum bloco estatístico, ND, tendência, progressão ou vínculo foi alterado.
 - Contagem após esta etapa: 320 criaturas; 245 com Descrição e Combate completos; 75 ainda precisam de ao menos um desses campos.
+
+
+## 2026-11-15 — Trigésima oitava etapa: dez animais (Carcajú a Elefante)
+
+- Fonte primária: Livro dos Monstros brasileiro, páginas impressas 272–275 (PDF fornecido, páginas 276–279).
+- Preenchidas Descrição e Combate de dez registros existentes: Carcajú, Cavalo Pesado, Cavalo Leve, Cavalo de Guerra Pesado, Cavalo de Guerra Leve, Cobra Constritora, Cobra Constritora Gigante, Crocodilo, Crocodilo Gigante e Elefante.
+- Carcajú: parentesco com texugos, habitat, Fúria (Ext), bônus de Força/Constituição, penalidade na CA e perícia Escalar.
+- Cavalos: distinção entre portes, exemplos, idade de maturidade para trabalho pesado, treinamento de guerra, capacidade de combater transportando cavaleiro, teste de Cavalgar e capacidades de carga/arrasto transcritas dos respectivos verbetes.
+- Cobras: comportamento geral e habilidades comuns de perícia; para constritoras, tática de captura, Constrição (1d3+4 ou 1d8+10) e Agarrar Aprimorado.
+- Crocodilos: emboscada parcialmente submersa, Agarrar Aprimorado, tentativa de afogamento, Prender a Respiração (4 x Constituição), bônus de Natação e camuflagem aquática; crocodilo gigante mantém o comportamento e as capacidades descritos para o crocodilo.
+- Elefante: distinção entre africano e indiano, uso como montaria/carga, representação de mamutes e mastodontes e Atropelar (2d8+15; Reflexos CD 25 para metade).
+- Adicionado teste de regressão cobrindo as dez fichas e seus detalhes distintivos.
+- Preservados todos os blocos estatísticos, ND, tendências, progressões e vínculos existentes.
+- Contagem após esta etapa: 320 criaturas; 255 com Descrição e Combate completos; 65 ainda precisam de ao menos um desses campos.
