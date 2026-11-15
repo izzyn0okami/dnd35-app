@@ -790,7 +790,34 @@ object Dnd35Rules {
         val benefit: String
     )
 
+    /** Texto de consulta expandido, mantido separado do resumo exibido na ficha. */
+    data class FeatReference(
+        val name: String,
+        val description: String,
+        val normal: String,
+        val special: String,
+        val sourcePage: Int,
+        val source: String,
+        val status: String
+    )
+
+    /** Referência detalhada de habilidade de classe, sem substituir a descrição curta da ficha. */
+    data class ClassFeatureReference(
+        val className: String,
+        val term: String,
+        val description: String,
+        val activation: String,
+        val duration: String,
+        val restrictions: String,
+        val progression: String,
+        val sourcePages: String,
+        val source: String,
+        val status: String
+    )
+
     val PRESET_FEATS: List<FeatDefinition> by lazy { loadFeatsCatalog() }
+    val FEAT_REFERENCES: List<FeatReference> by lazy { loadFeatReferences() }
+    val CLASS_FEATURE_REFERENCES: List<ClassFeatureReference> by lazy { loadClassFeatureReferences() }
 
     // ==========================================
     // CATÁLOGO DE ITENS REFINADO COM CATEGORIAS E SLOTS
@@ -848,6 +875,49 @@ object Dnd35Rules {
     // Talentos, itens e magias vêm de app/src/main/resources/dnd35/*.json, lidos pelo
     // classloader da aplicação. Funciona igual no app, em testes JVM comuns e no Robolectric,
     // sem depender de Context do Android. Ver docs/CATALOGOS_JSON.md.
+
+    private fun loadFeatReferences(): List<FeatReference> {
+        val array = CatalogJson.array("dnd35/feat_references.json")
+        val seen = mutableSetOf<String>()
+        return (0 until array.length()).map { i ->
+            val o = array.getJSONObject(i)
+            val name = CatalogJson.requireString(o, "name", "referência de talento #${i + 1}")
+            check(seen.add(name.lowercase())) { "Referência de talento duplicada: $name" }
+            FeatReference(
+                name = name,
+                description = CatalogJson.requireString(o, "description", name),
+                normal = CatalogJson.requireString(o, "normal", name),
+                special = CatalogJson.requireString(o, "special", name),
+                sourcePage = CatalogJson.requireInt(o, "sourcePage", name),
+                source = CatalogJson.requireString(o, "source", name),
+                status = CatalogJson.requireString(o, "status", name)
+            )
+        }
+    }
+
+    private fun loadClassFeatureReferences(): List<ClassFeatureReference> {
+        val array = CatalogJson.array("dnd35/class_feature_references.json")
+        val seen = mutableSetOf<String>()
+        return (0 until array.length()).map { i ->
+            val o = array.getJSONObject(i)
+            val className = CatalogJson.requireString(o, "className", "referência de habilidade #${i + 1}")
+            val term = CatalogJson.requireString(o, "term", className)
+            val key = "${className.lowercase()}|${term.lowercase()}"
+            check(seen.add(key)) { "Referência de habilidade duplicada: $className — $term" }
+            ClassFeatureReference(
+                className = className,
+                term = term,
+                description = CatalogJson.requireString(o, "description", term),
+                activation = CatalogJson.requireString(o, "activation", term),
+                duration = CatalogJson.requireString(o, "duration", term),
+                restrictions = CatalogJson.requireString(o, "restrictions", term),
+                progression = CatalogJson.requireString(o, "progression", term),
+                sourcePages = CatalogJson.requireString(o, "sourcePages", term),
+                source = CatalogJson.requireString(o, "source", term),
+                status = CatalogJson.requireString(o, "status", term)
+            )
+        }
+    }
 
     private fun loadFeatsCatalog(): List<FeatDefinition> {
         val array = CatalogJson.array("dnd35/feats.json")
