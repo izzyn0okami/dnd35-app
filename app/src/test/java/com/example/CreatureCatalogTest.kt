@@ -939,4 +939,50 @@ class CreatureCatalogTest {
         assertTrue(mule.combat.contains("1.575 kg"))
     }
 
+
+    @Test
+    fun tenMoreAnimalSheetsHaveExternalSrdBasedDescriptionAndCombat() {
+        val octopus = CreatureCatalog.byId("polvo")!!
+        assertTrue(octopus.description.contains("fundo"))
+        assertTrue(octopus.combat.contains("Nuvem de Tinta (Ext)"))
+        assertTrue(octopus.combat.contains("60 m"))
+
+        val giantOctopus = CreatureCatalog.byId("polvo-gigante")!!
+        assertTrue(giantOctopus.description.contains("ventosas"))
+        assertTrue(giantOctopus.combat.contains("2d8+6"))
+        assertTrue(giantOctopus.combat.contains("quatro tentáculos"))
+
+        val pony = CreatureCatalog.byId("ponei")!!
+        assertTrue(pony.description.contains("cavalo pequeno"))
+        assertTrue(pony.combat.contains("510 kg"))
+
+        val warPony = CreatureCatalog.byId("ponei-de-guerra")!!
+        assertTrue(warPony.description.contains("agressividade"))
+        assertTrue(warPony.combat.contains("teste de Cavalgar"))
+
+        val rat = CreatureCatalog.byId("rato")!!
+        assertTrue(rat.description.contains("onívoros"))
+        assertTrue(rat.combat.contains("+8 em Equilíbrio"))
+
+        val rhino = CreatureCatalog.byId("rinoceronte")!!
+        assertTrue(rhino.combat.contains("Investida Poderosa (Ext)"))
+        assertTrue(rhino.combat.contains("4d6+24"))
+
+        val toad = CreatureCatalog.byId("sapo")!!
+        assertTrue(toad.description.contains("inofensivos"))
+        assertTrue(toad.combat.contains("+4 de bônus racial em Esconder-se"))
+
+        val badger = CreatureCatalog.byId("texugo")!!
+        assertTrue(badger.combat.contains("Fúria (Ext)"))
+        assertTrue(badger.combat.contains("+4 em Força e Constituição"))
+
+        val tiger = CreatureCatalog.byId("tigre")!!
+        assertTrue(tiger.combat.contains("Bote (Ext)"))
+        assertTrue(tiger.combat.contains("1d8+3"))
+
+        val brownBear = CreatureCatalog.byId("urso-marrom")!!
+        assertTrue(brownBear.description.contains("urso-cinzento"))
+        assertTrue(brownBear.combat.contains("Agarrar Aprimorado (Ext)"))
+    }
+
 }
