@@ -43,6 +43,16 @@ class FeatGlossarySearchTest {
         assertTrue(improved.reference?.term == "Esquiva Sobrenatural Aprimorada")
     }
 
+
+    @Test
+    fun bardicMusicReferenceExplainsUsesAndPerformanceRequirements() {
+        val result = ClassFeatureGlossarySearch.search("Música de Bardo")
+            .first { it.className == "Bardo" }
+        assertTrue(result.reference?.duration?.contains("nível de bardo") == true)
+        assertTrue(result.reference?.progression?.contains("graduações em Atuação") == true)
+        assertTrue(result.reference?.sourcePages == "25–26")
+    }
+
     @Test
     fun blankSearchReturnsNoResults() {
         assertTrue(FeatGlossarySearch.search("   ").isEmpty())
