@@ -1951,4 +1951,12 @@ class ExampleUnitTest {
     assertTrue(paladin.any { it.name == "Cura pelas Mãos" })
   }
 
+
+  @Test
+  fun fighterBonusFeatsRequireTheirPrerequisitesAtEveryGrantedLevel() {
+    val fighter = Dnd35Rules.CLASSES.single { it.name == "Guerreiro" }.features
+    assertEquals(listOf(1, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20), fighter.map { it.level })
+    assertTrue(fighter.all { it.description.contains("pré-requisitos") })
+  }
+
 }
