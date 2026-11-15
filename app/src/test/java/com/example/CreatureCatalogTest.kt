@@ -985,4 +985,40 @@ class CreatureCatalogTest {
         assertTrue(brownBear.combat.contains("Agarrar Aprimorado (Ext)"))
     }
 
+
+    @Test
+    fun tenMoreMonsterSheetsHaveExternalSrdDetails() {
+        val blackBear = CreatureCatalog.byId("urso-negro")!!
+        assertTrue(blackBear.description.contains("onívoro"))
+        assertTrue(blackBear.combat.contains("+4 de bônus racial em testes de Natação"))
+
+        val polarBear = CreatureCatalog.byId("urso-polar")!!
+        assertTrue(polarBear.combat.contains("+12 racial em Esconder-se"))
+        assertTrue(polarBear.combat.contains("Agarrar Aprimorado (Ext)"))
+
+        val fireBeetle = CreatureCatalog.byId("vaga-lume-gigante")!!
+        assertTrue(fireBeetle.description.contains("glândulas"))
+        assertTrue(fireBeetle.description.contains("1d6 dias"))
+
+        val wasp = CreatureCatalog.byId("vespa-gigante")!!
+        assertTrue(wasp.combat.contains("Fortitude CD 14"))
+        assertTrue(wasp.combat.contains("1d6 pontos de dano temporário de Destreza"))
+
+        val monitor = CreatureCatalog.byId("lagarto-monitor")!!
+        assertTrue(monitor.description.contains("carnívoras"))
+        assertTrue(monitor.combat.contains("+8 racial em Natação"))
+
+        for (id in listOf("tubarao-medio", "tubarao-grande", "tubarao-enorme")) {
+            val shark = CreatureCatalog.byId(id)!!
+            assertTrue(shark.combat.contains("Sentido Cego (Ext)"))
+            assertTrue(shark.combat.contains("1,6 km"))
+        }
+
+        for (id in listOf("vibora-miuda", "vibora-pequena")) {
+            val viper = CreatureCatalog.byId(id)!!
+            assertTrue(viper.combat.contains("Fortitude CD 10"))
+            assertTrue(viper.combat.contains("1d6 pontos de dano temporário de Constituição"))
+        }
+    }
+
 }
