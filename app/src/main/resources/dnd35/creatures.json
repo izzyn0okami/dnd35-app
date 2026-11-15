@@ -9459,7 +9459,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Os puro-sangues são os yuan-ti de aparência mais próxima à humana, descendentes de linhagens humanas misturadas a serpentes. Embora sejam a casta menos poderosa e menos inteligente de seu povo, consideram-se superiores aos humanos. Muitos ocultam seus traços serpentinos e se infiltram em comunidades humanoides como espiões e agentes, servindo aos mestiços e às abominações. São encontrados em florestas quentes e podem atuar sozinhos, em pares, gangues ou grandes tribos.",
+    "combat": "Os yuan-ti são estrategistas calculistas: preferem emboscadas, armadilhas e o aproveitamento do terreno ao confronto direto. Os puro-sangues procuram manter distância, usando armas de alcance e habilidades similares à magia antes de recorrer à cimitarra. Em grupos mistos, costumam ser enviados primeiro, antes dos mestiços e das abominações, salvo ordem diferente do líder. Habilidades similares à magia (1/dia; nível de conjurador 4º; CD baseada em Carisma): transe animal (CD 13), causar medo (CD 12), enfeitiçar pessoa (CD 12), escuridão e emaranhar (CD 12). Alterar Forma (Sob): pode assumir a forma de uma víbora Miúda a Grande; não recupera pontos de vida ao mudar e perde suas armas naturais, recebendo as da víbora escolhida. Detectar Veneno (Sob): funciona como a magia detectar veneno, nível de conjurador 6º. Resistência à Magia 14."
   },
   {
     "id": "aguia",
@@ -10965,7 +10967,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": false,
-    "familiar": true
+    "familiar": true,
+    "description": "Este perfil representa lagartos pequenos e não venenosos, com cerca de 30 a 60 cm de comprimento, como iguanas. São animais discretos de florestas quentes, capazes de escalar superfícies com facilidade. Seu porte reduzido e sua agilidade favorecem a fuga e a ocultação, em vez do confronto.",
+    "combat": "Lagartos preferem fugir a lutar; só mordem quando não há outra alternativa, causando dano com a mordida. Recebem +8 de bônus racial em Equilíbrio e Escalar. Podem escolher 10 em testes de Escalar mesmo quando apressados ou ameaçados e usam o modificador de Destreza no lugar de Força nesses testes."
   },
   {
     "id": "leao",
@@ -11015,7 +11019,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "O perfil representa o leão-africano macho, com cerca de 1,5 a 2,4 m de comprimento e peso aproximado de 150 a 250 kg; as fêmeas são um pouco menores, mas usam as mesmas estatísticas. Habita planícies quentes e pode ser encontrado sozinho, em casal ou em bandos de seis a dez indivíduos.",
+    "combat": "O leão combina garras e mordida e costuma derrubar a presa com uma investida. Bote (Ext): ao investir, pode executar um ataque total, incluindo dois ataques de rasgar. Agarrar Aprimorado (Ext): quando acerta a mordida, pode iniciar uma manobra Agarrar como ação livre, sem provocar ataque de oportunidade; se vencer o teste resistido, prende a vítima e pode rasgar. Rasgar (Ext): dois ataques de garra adicionais, cada um causando 1d4+2. Recebe +4 racial em Equilíbrio, Esconder e Furtividade; em capim alto ou vegetação densa, o bônus de Esconder aumenta para +12."
   },
   {
     "id": "leopardo",
@@ -11065,7 +11071,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Este felino de selva mede cerca de 1,2 m de comprimento e pesa aproximadamente 55 kg. É um caçador solitário ou que vive em casal, geralmente ativo à noite. O mesmo perfil pode representar felinos de porte semelhante, como onças, panteras e leões-da-montanha. Habita florestas quentes.",
+    "combat": "O leopardo caça por emboscada e usa velocidade, escalada e salto para alcançar a presa. Agarrar Aprimorado (Ext): ao acertar a mordida, pode iniciar Agarrar como ação livre sem provocar ataque de oportunidade; se vencer, prende a vítima e pode rasgar. Bote (Ext): ao investir, realiza um ataque total, incluindo dois ataques de rasgar. Rasgar (Ext): dois ataques de garra adicionais, cada um causando 1d3+1. Recebe +8 racial em Saltar, Equilíbrio e Escalar, além de +4 em Esconder e Furtividade; pode escolher 10 em Escalar mesmo sob pressão. Em capim alto ou vegetação densa, o bônus de Esconder é +8."
   },
   {
     "id": "lobo",
@@ -11115,7 +11123,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Lobos são predadores persistentes e astutos que vivem e caçam em matilhas. O perfil representa o lobo das florestas temperadas, encontrado sozinho, em pares ou em grupos de sete a dezesseis indivíduos. Sua visão na penumbra e o faro favorecem a perseguição e o rastreamento.",
+    "combat": "A matilha costuma enviar alguns indivíduos contra a frente do adversário enquanto os demais cercam o alvo e atacam pelos flancos ou pela retaguarda. Imobilização (Ext): quando acerta a mordida, o lobo pode tentar derrubar o oponente como ação livre, sem ataque de toque nem ataque de oportunidade; se falhar, o alvo não pode tentar derrubá-lo em resposta. Recebe +4 racial em Sobrevivência para rastrear usando o faro."
   },
   {
     "id": "lula",
@@ -11165,7 +11175,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Molusco de natação livre, relativamente agressivo, encontrado em águas temperadas. Embora tenha porte médio, seus tentáculos permitem agarrar adversários e sua propulsão torna possível uma retirada rápida. Pode viver sozinho ou em cardumes de seis a onze indivíduos.",
+    "combat": "A lula ataca com os tentáculos para prender a vítima e depois usa a mordida. Agarrar Aprimorado (Ext): ao acertar um ataque de tentáculos, pode iniciar Agarrar como ação livre sem provocar ataque de oportunidade; se vencer, prende o alvo e causa automaticamente o dano da mordida. Recebe +4 racial em testes de Agarrar. Nuvem de Tinta (Ext): uma vez por minuto, libera uma nuvem de tinta negra de 3 m de lado, que concede camuflagem total e obscurece a visão, normalmente permitindo escapar. Propulsão (Ext): uma vez por rodada, pode recuar em linha reta até 72 m como ação de rodada completa, sem provocar ataques de oportunidade. Recebe +8 racial em testes de Natação para ações especiais ou evitar perigos, pode escolher 10 mesmo distraída ou ameaçada e pode correr enquanto nada em linha reta."
   },
   {
     "id": "lula-gigante",
@@ -11215,7 +11227,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Esses moluscos vorazes podem ter corpos com mais de 6 m de comprimento e atacam quase qualquer criatura que encontrem. São habitantes solitários de águas temperadas, com dez tentáculos longos, força suficiente para prender presas enormes e capacidade de se afastar rapidamente por propulsão.",
+    "combat": "A lula gigante envolve as presas com os tentáculos, constrita-as e usa a mordida. Cada tentáculo possui 10 pontos de vida; pode ser atacado com a manobra Separar como se fosse uma arma. Cortar um tentáculo causa 5 pontos de dano à criatura; ela normalmente recua se perder cinco tentáculos e regenera membros cortados em 1d10+10 dias. Constrição (Ext): causa 1d6+8 pontos de dano quando vence um teste de Agarrar. Agarrar Aprimorado (Ext): ao acertar um tentáculo, pode iniciar Agarrar como ação livre sem provocar ataque de oportunidade; se vencer, prende e constringe a vítima. Recebe +4 racial em Agarrar. Nuvem de Tinta (Ext): uma vez por minuto, libera uma nuvem negra de 6 m de lado que concede camuflagem total. Propulsão (Ext): pode recuar em linha reta até 96 m como ação de rodada completa, uma vez por rodada, sem provocar ataques de oportunidade. Recebe +8 racial em Natação para ações especiais ou evitar perigos e pode escolher 10 mesmo sob ameaça."
   },
   {
     "id": "macaco",
@@ -11265,7 +11279,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "O perfil representa macacos arborícolas pequenos, do tamanho de um gato doméstico ou menores, como colobos e macacos-prego. Vivem em florestas quentes e costumam formar bandos de dez a quarenta indivíduos. São ágeis nas árvores e pouco inclinados a enfrentar criaturas maiores.",
+    "combat": "Macacos geralmente fogem para a segurança das árvores; quando encurralados, porém, podem lutar com ferocidade. Recebem +8 racial em Equilíbrio e Escalar. Podem escolher 10 em testes de Escalar mesmo quando apressados ou ameaçados e usam o modificador de Destreza no lugar de Força nesses testes."
   },
   {
     "id": "morcego",
@@ -11315,7 +11331,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": true
+    "familiar": true,
+    "description": "Morcegos são mamíferos voadores noturnos. Este perfil representa espécies pequenas e insetívoras, encontradas em regiões desérticas temperadas e reunidas em colônias de dez a quarenta indivíduos ou turbas de dez a cinquenta. Sua orientação depende de sentidos que lhes permitem localizar obstáculos e criaturas mesmo sem visão normal.",
+    "combat": "O morcego comum não possui ataques eficazes e evita o combate. Sentido Cego (Ext): percebe e localiza criaturas a até 6 m, mas ainda trata os adversários como tendo camuflagem total. Recebe +4 racial em Ouvir e Observar; esses bônus são perdidos se seu Sentido Cego for neutralizado."
   },
   {
     "id": "mula",
@@ -11365,7 +11383,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "A mula é um cruzamento estéril entre um jumento e um cavalo. É semelhante a um cavalo leve, mas um pouco mais forte e ágil, sendo usada como animal domesticado de carga em planícies quentes.",
+    "combat": "Embora normalmente seja dócil e empregada como animal de carga, uma mula pode se defender com coices poderosos. Sua capacidade de carga é: leve até 105 kg; média de 105,5 a 210 kg; pesada de 210,5 a 315 kg. Pode arrastar até 1.575 kg. Recebe +2 racial em testes de Destreza para evitar escorregar ou cair."
   },
   {
     "id": "polvo",
