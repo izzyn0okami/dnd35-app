@@ -9303,7 +9303,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "O worg é um lobo sinistro, maior e mais inteligente que os lobos comuns, cuja aparência cinzenta ou negra e expressão maligna denunciam sua natureza cruel. Vive e caça em matilhas, prefere grandes herbívoros, mas também persegue humanoides quando o alimento escasseia. Costuma observar suas presas durante horas ou dias e escolher o terreno e o momento mais favoráveis. Um exemplar típico mede cerca de 1,5 m de comprimento, aproximadamente 1 m de altura sobre as quatro patas e pesa por volta de 150 kg. Os worg possuem idioma próprio; alguns aprendem Comum e Goblin.",
+    "combat": "Worgs solitários procuram presas menores, enquanto casais e matilhas coordenam ataques contra alvos maiores. Sua tática comum é atacar e recuar para cansar a vítima; a matilha cerca o adversário e alterna mordidas até iniciar o ataque final. Imobilização (Ext): quando acerta uma mordida, o worg pode tentar imobilizar o alvo como ação livre, sem ataque de oportunidade e com +3 no teste de Agarrar; se falhar, o alvo não pode tentar imobilizá-lo em resposta. Perícias: recebe +1 racial em Furtividade, Ouvir e Observar e +2 em Esconder-se; ao rastrear usando Faro, recebe +4 racial em Sobrevivência."
   },
   {
     "id": "wyvern",
@@ -9353,7 +9355,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "O wyvern é um grande réptil alado, parente distante dos dragões. É bípede, possui asas membranosas semelhantes às de um morcego, mandíbula repleta de dentes e uma cauda longa terminada em um ferrão venenoso. Mede aproximadamente 4,5 m, dos quais metade corresponde à cauda; sua envergadura chega a 6 m e seu peso se aproxima de uma tonelada. A coloração varia entre marrom-escuro e cinza. Fala Dracônico, embora muitos indivíduos sejam pouco articulados e emitam apenas silvos e rosnados.",
+    "combat": "Wyverns são agressivos e atacam criaturas próximas que não pareçam claramente mais poderosas. Voam sobre a presa, agarram-na com as garras durante uma investida aérea e depois a ferroam. Só conseguem atacar com as garras ao realizar Investida Aérea. Agarrar Aprimorado (Ext): após atingir um oponente com as garras, inicia Agarrar como ação livre sem provocar ataques de oportunidade; se vencer, prende a vítima e pode atacá-la com o ferrão. Veneno (Ext): inoculado pelo ferrão; Fortitude CD 17; dano inicial e secundário de 2d6 pontos de dano temporário de Constituição. A CD é baseada em Constituição. Perícias: recebe +3 de bônus racial em Observar."
   },
   {
     "id": "yrthak",
@@ -9403,7 +9407,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "O yrthak é um predador alado das regiões ermas, com corpo de coloração jaspe e verde-amarelada, asas membranosas, cauda longa e uma protuberância semelhante a um chifre na cabeça. É cego: percebe sons e movimentos por meio de um órgão especial na língua, enquanto o chifre emite ondas sonoras poderosas. É onívoro, mas prefere carne, mantém o ninho no alto de montanhas isoladas e pode percorrer grandes distâncias em busca de alimento. Mede cerca de 6 m de comprimento, tem 12 m de envergadura e pesa aproximadamente 5 toneladas. Apesar de sua inteligência, não fala.",
+    "combat": "O yrthak prefere atacar do alto, disparando energia sônica contra criaturas no solo ou arrebatando a presa e soltando-a durante o voo. Rajada Sônica (Sob): a cada 2 rodadas, concentra energia num alvo a até 18 m; exige ataque de toque à distância e causa 6d6 pontos de dano. Explosão (Sob): pode direcionar a rajada contra o solo, uma pedra grande, um muro ou outra superfície capaz de lançar fragmentos; criaturas num raio de 3 m sofrem 2d6 pontos de dano perfurante. Esta opção usa o mesmo intervalo da rajada e não pode ser usada em rodadas consecutivas nem na rodada imediatamente posterior a uma rajada. Percepção às Cegas (Ext): percebe inimigos num raio de 36 m; além desse alcance, é efetivamente cego. É imune a ataques e efeitos mágicos visuais. Se sua audição for neutralizada, seus oponentes recebem camuflagem total. Perícias: recebe +4 racial em Ouvir."
   },
   {
     "id": "puro-sangue",
