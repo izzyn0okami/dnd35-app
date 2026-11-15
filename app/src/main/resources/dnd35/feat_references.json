@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Ataque Poderoso",
+    "description": "Antes de realizar as jogadas de ataque no seu turno, escolha um valor para trocar precisão por dano. A penalidade escolhida é aplicada a todas as jogadas de ataque corpo a corpo até o início do seu próximo turno, inclusive ataques de oportunidade, e não pode ser maior que seu bônus base de ataque. O valor escolhido é somado às jogadas de dano correspondentes.",
+    "normal": "A penalidade de ataque e o bônus de dano permanecem ativos até o início do próximo turno, não apenas no ataque que iniciou a escolha.",
+    "special": "Ao usar uma arma de duas mãos, ou uma arma de uma mão empunhada com as duas mãos, o bônus de dano é dobrado. O bônus de dano não se aplica a armas leves, exceto ataques desarmados e armas naturais; a penalidade nas jogadas de ataque continua valendo. Um guerreiro pode escolher este talento como talento adicional.",
+    "sourcePage": 78,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 78",
+    "status": "audited"
+  },
+  {
+    "name": "Foco em Arma",
+    "description": "Escolha um tipo específico de arma. A escolha também pode ser ataque desarmado, a manobra Agarrar ou, para um conjurador, um tipo de raio. Enquanto utilizar a opção escolhida, o personagem recebe +1 nas jogadas de ataque correspondentes.",
+    "normal": "O bônus é restrito à arma ou opção específica selecionada; não se estende automaticamente a outras armas semelhantes.",
+    "special": "O talento pode ser escolhido mais de uma vez, mas seus efeitos não se acumulam: cada escolha deve se aplicar a uma arma diferente. Um guerreiro pode escolhê-lo como talento adicional. É necessário possuir Foco em Arma antes de selecionar Especialização em Arma.",
+    "sourcePage": 81,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 81",
+    "status": "audited"
+  }
+]
