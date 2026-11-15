@@ -992,3 +992,20 @@ As fichas-base devem ser reutilizadas por ID sempre que a tabela pedir apenas um
 - Adicionado teste de regressão para as dez fichas.
 - Observação: conteúdo narrativo e de combate derivado do SRD 3.5; revisar a terminologia e diferenças específicas com o Livro dos Monstros brasileiro quando o PDF estiver disponível.
 - Contagem após esta etapa: 320 criaturas; 285 com Descrição e Combate preenchidos; 35 ainda pendentes.
+
+
+## 2026-11-15 — Quadragésima terceira etapa: dez fichas complementadas com SRD (Urso Negro a Víbora Pequena)
+
+- Fontes consultadas:
+  - SRD 3.5 — Animals: https://palikhov.github.io/srd-v3.5/monsters/monsters-animals.html (Bear, Black; Bear, Polar; Lizard, Monitor; Shark; Viper Snake).
+  - SRD 3.5 — Vermin: https://palikhov.github.io/srd-v3.5/monsters/monsters-vermin.html (Giant Fire Beetle; Giant Wasp).
+- Preenchidas Descrição e Combate de dez registros existentes: Urso Negro, Urso Polar, Vaga-lume Gigante, Vespa Gigante, Lagarto-Monitor, Tubarão Médio, Tubarão Grande, Tubarão Enorme, Víbora Miúda e Víbora Pequena.
+- Ursos: comportamento defensivo do urso-negro, dieta e pelagem; camuflagem nevada, agarrar aprimorado e mobilidade aquática do urso-polar.
+- Vaga-lume gigante: glândulas luminosas, persistência da luz por 1d6 dias e raio de iluminação de 3 m; Vespa gigante: comportamento de caça e transporte de vítimas, veneno (CD 14, 1d6 Destreza).
+- Lagarto-monitor: porte carnívoro, comportamento agressivo, natação e bônus raciais.
+- Tubarões: distinção de porte entre as três categorias, tática de perseguição, Sentido Cego de 9 m, Faro Aguçado e regras de Natação.
+- Víboras: comportamento evasivo e veneno (CD 10, 1d6 Constituição), além dos bônus raciais de perícia.
+- Dados estatísticos, ND, tendência, progressão e vínculos originais preservados. Nenhuma criatura duplicada.
+- Testes de regressão adicionados para os dez registros.
+- Nota de fidelidade: nomes e dados-base foram mantidos conforme o catálogo existente; esta etapa usa texto de SRD 3.5 em tradução própria. As fichas do Livro dos Monstros brasileiro devem ser conferidas novamente quando o PDF estiver disponível.
+- Contagem após esta etapa: 320 criaturas; 295 com Descrição e Combate preenchidos; 25 ainda pendentes.
