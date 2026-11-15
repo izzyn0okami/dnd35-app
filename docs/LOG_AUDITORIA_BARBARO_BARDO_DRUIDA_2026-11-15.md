@@ -1,4 +1,4 @@
-# Log de auditoria — Bárbaro, Bardo, Druida, Ladino e Monge
+# Log de auditoria — Bárbaro, Bardo, Druida, Ladino, Monge, Paladino e Ranger
 
 Data: 15/11/2026
 
@@ -42,3 +42,8 @@ Data: 15/11/2026
 - Paladino: Remover Doença corrigida para a progressão oficial de 6º, 9º, 12º, 15º e 18º níveis (1 a 5 usos semanais); removida a entrada incorreta de 6 usos. Imposição de Mãos e Aura de Coragem esclarecidas.
 - Ranger: corrigidos os marcos de Camuflagem (13º) e Mimetismo (17º), removendo a habilidade incorreta Esconder-se à Plena Vista no 18º. Rastreador Eficaz agora explicita a penalidade -10 ao rastrear com deslocamento dobrado.
 - Testes automatizados cobrem as progressões corrigidas.
+
+## Complemento — Paladino e Ranger
+- Paladino: corrigida a progressão de Remover Doença para 6º/9º/12º/15º/18º níveis, com 1 a 5 usos semanais. Imposição de Mãos e Aura de Coragem receberam requisitos e alcance.
+- Ranger: Camuflagem corrigida para o 13º nível e Mimetismo para o 17º; removida a entrada indevida Esconder-se à Plena Vista no 18º. Rastreador Eficaz agora registra a penalidade de -10 ao rastrear com o dobro do deslocamento.
+- Os testes automatizados cobrem esses marcos de classe.
