@@ -118,7 +118,7 @@ Data: 2026-11-15
 - Explicitados os pré-requisitos de Força 13 e Ataque Poderoso em Atropelar Aprimorado, Encontrão Aprimorado e Separar Aprimorado.
 - Testes de regressão acrescentados para os nove verbetes e para as exceções de combate montado e manobras.
 - Nenhum cálculo, regra automatizada de elegibilidade, persistência ou formato de ficha foi alterado. O catálogo de resumo foi corrigido apenas onde descrevia incorretamente Investida Montada.
-- Nota de auditoria: `Derrubar Aprimorado` permanece pendente de conferência de nomenclatura/pertencimento ao Livro do Jogador; não foi criado verbete sem correspondência confirmada no texto pesquisável do PDF.
+- Correção de nomenclatura após conferência cruzada: `Derrubar Aprimorado` não é um talento separado na edição brasileira. O benefício corresponde a `Imobilização Aprimorada` (Improved Trip), já presente no catálogo e no glossário detalhado. Removida a entrada duplicada `Derrubar Aprimorado` do catálogo de seleção e corrigido o resumo de `Imobilização Aprimorada`, incluindo Inteligência 13, Especialização em Combate, bônus de +4, ausência de ataque de oportunidade ao tentar a manobra desarmado e ataque adicional após derrubar. Registros já salvos como `CharacterFeat` permanecem preservados, pois são dados próprios da ficha e não são substituídos pelo catálogo.
 - Próxima etapa: continuar os 32 verbetes pendentes, priorizando os talentos de combate restantes e criação de itens mágicos.
 
 
@@ -133,3 +133,12 @@ Data: 2026-11-15
 - Os oito talentos de criação remetem explicitamente ao Livro do Mestre para regras específicas dos itens. Este glossário registra somente os parâmetros efetivamente apresentados no Livro do Jogador; não completa requisitos ou fórmulas ausentes com material externo.
 - Testes de regressão adicionados para fórmulas/custos de criação, cargas, exceções de XP, pré-requisitos de Bloqueio Ambidestro e ações de Rapidez de Recarga.
 - Nenhum cálculo automático, elegibilidade, progressão, persistência ou formato de ficha foi alterado.
+
+
+## Correção de nomenclatura: Imobilização Aprimorada (15/11/2026)
+
+- A edição brasileira do Livro do Jogador usa o nome `Imobilização Aprimorada` para o talento que o SRD inglês identifica como `Improved Trip`. A descrição oficial confirma a manobra, o bônus de +4 nos testes resistidos de Força e o ataque adicional após derrubar o adversário (p. 82).
+- O SRD confirma que `Improved Trip` e `Improved Bull Rush` são talentos diferentes; o segundo corresponde a `Encontrão Aprimorado`. Portanto, `Derrubar Aprimorado` era uma entrada duplicada/alias não oficial, não um talento separado.
+- Removida a entrada duplicada do catálogo de seleção; corrigidos os pré-requisitos e o benefício curto de `Imobilização Aprimorada` para corresponder ao verbete detalhado já auditado.
+- Não foi realizada migração destrutiva: talentos previamente registrados nas fichas permanecem armazenados como `CharacterFeat` e não dependem da presença do nome no catálogo.
+- Teste de regressão atualizado para garantir que o catálogo contenha o nome brasileiro e não ofereça a duplicata.
