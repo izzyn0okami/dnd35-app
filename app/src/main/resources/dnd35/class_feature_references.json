@@ -514,5 +514,17 @@
     "sourcePages": "40",
     "source": "Livro do Jogador brasileiro, Capítulo 3 — Mago, p. 40",
     "status": "audited"
+  },
+  {
+    "className": "Guerreiro",
+    "term": "Talento Bônus de Guerreiro",
+    "description": "O guerreiro recebe talentos adicionais de combate, refletindo seu treinamento especializado com armas, armaduras e técnicas de batalha. Cada talento é escolhido da lista de talentos bônus disponível para guerreiros.",
+    "activation": "A escolha é feita quando o guerreiro alcança um nível que concede o talento bônus.",
+    "duration": "O talento escolhido passa a integrar permanentemente as capacidades do personagem.",
+    "restrictions": "O guerreiro precisa cumprir todos os pré-requisitos do talento escolhido. A lista de talentos bônus do guerreiro é mais restrita que a lista geral de talentos; receber um talento bônus não dispensa os pré-requisitos.",
+    "progression": "Recebe talentos bônus no 1º, 2º e 4º níveis, e a cada dois níveis depois disso: 6º, 8º, 10º, 12º, 14º, 16º, 18º e 20º. Esses talentos são adicionais aos talentos recebidos normalmente por avanço de personagem.",
+    "sourcePages": "37",
+    "source": "Livro do Jogador brasileiro, Capítulo 3 — Guerreiro, p. 37",
+    "status": "audited"
   }
 ]
