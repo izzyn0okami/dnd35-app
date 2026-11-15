@@ -106,3 +106,17 @@ Data: 2026-11-15
 - A referência do talento registra corretamente o pré-requisito por extenso como “bônus base de ataque +1”; o teste procurava a abreviação “BBA +1”, que não existe no campo especial desse verbete. Portanto, a falha era uma expectativa textual incorreta no teste, não um erro na regra cadastrada.
 - Ajustada a asserção para verificar a expressão efetivamente cadastrada. Nenhuma regra, texto de referência, cálculo ou dado persistido foi alterado.
 - Aguardar nova execução de Android CI e Android build no novo commit antes de mesclar.
+
+
+## Auditoria de manobras de combate e combate montado (15/11/2026)
+
+- Cobertura ampliada de 69 para **78 de 110 talentos**; permanecem 32 verbetes sem referência detalhada.
+- Acrescentadas referências para Apanhar Objetos, Ataque Desarmado Aprimorado, Ataque Atordoante, Arquearia Montada, Combate Montado, Atropelar Aprimorado, Encontrão Aprimorado, Pisotear e Separar Aprimorado.
+- As descrições foram conferidas no Livro do Jogador brasileiro, Capítulo 5 — Talentos, páginas impressas 75, 78, 80, 83 e 84.
+- Registradas condições de uso, ações, testes, CD, frequência, imunidades, mãos livres, exceções de monge e talentos adicionais de guerreiro.
+- Corrigido o benefício curto de Investida Montada em `feats.json`: ele permite continuar o deslocamento após o ataque da investida montada; o dano dobrado/triplicado pertence a Investida Implacável. O texto detalhado de Investida Montada já estava correto.
+- Explicitados os pré-requisitos de Força 13 e Ataque Poderoso em Atropelar Aprimorado, Encontrão Aprimorado e Separar Aprimorado.
+- Testes de regressão acrescentados para os nove verbetes e para as exceções de combate montado e manobras.
+- Nenhum cálculo, regra automatizada de elegibilidade, persistência ou formato de ficha foi alterado. O catálogo de resumo foi corrigido apenas onde descrevia incorretamente Investida Montada.
+- Nota de auditoria: `Derrubar Aprimorado` permanece pendente de conferência de nomenclatura/pertencimento ao Livro do Jogador; não foi criado verbete sem correspondência confirmada no texto pesquisável do PDF.
+- Próxima etapa: continuar os 32 verbetes pendentes, priorizando os talentos de combate restantes e criação de itens mágicos.
