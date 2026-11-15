@@ -891,3 +891,20 @@ As fichas-base devem ser reutilizadas por ID sempre que a tabela pedir apenas um
 - Adicionado teste de regressão para as três fichas e suas capacidades distintivas.
 - Nenhuma estatística-base, ND, tendência, progressão ou vínculo de criatura foi alterado.
 - Contagem após esta etapa: 320 criaturas; 234 com Descrição e Combate completos; 86 ainda precisam de ao menos um desses campos.
+
+
+## 2026-11-14 — Trigésima sétima etapa: onze animais (Águia a Camelo)
+
+- Fonte primária: Livro dos Monstros brasileiro, páginas impressas 269–271 (PDF fornecido, páginas 273–275).
+- Preenchidas Descrição e Combate de onze registros existentes: Águia, Arminho, Arraia, Babuíno, Baleia Azul, Baleia Cachalote, Baleia Orca, Bisão, Cachorro, Cachorro de Montaria e Camelo.
+- Águia: habitat, ninho, dimensões, mergulho e bônus de Observar.
+- Arminho: presas, Adesão, consequências defensivas enquanto permanece preso e bônus de perícias.
+- Arraia: alimentação filtradora, comportamento pacífico, encontrão defensivo e regras de Natação.
+- Babuíno: comportamento terrestre e em grupo, dimensões e bônus de Escalar.
+- Baleias: diferenciadas as espécies filtradoras, o cachalote e a orca predadora; registradas Percepção às Cegas (36 m), Prender a Respiração, bônus de Natação e os bônus de Ouvir/Observar com sua condição de perda.
+- Bisão: comportamento do rebanho e Estouro da Manada (1d12 por cinco animais; Reflexos CD 16 para reduzir à metade).
+- Cachorro e Cachorro de Montaria: caça em matilha, bônus de perícia, Imobilização para cães treinados, combate com cavaleiro e capacidade de carga.
+- Camelo: distinção entre dromedário e camelo de duas corcovas, adaptação ambiental e capacidade de carga; o verbete não descreve habilidade especial de combate.
+- Adicionado teste de regressão cobrindo as onze fichas e seus detalhes distintivos.
+- Nenhum bloco estatístico, ND, tendência, progressão ou vínculo foi alterado.
+- Contagem após esta etapa: 320 criaturas; 245 com Descrição e Combate completos; 75 ainda precisam de ao menos um desses campos.
