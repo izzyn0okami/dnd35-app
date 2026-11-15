@@ -169,7 +169,7 @@ class FeatGlossarySearchTest {
 
     @Test
     fun searchesCanFindTermsOnlyPresentInExpandedReferenceText() {
-        val feat = FeatGlossarySearch.search("arma leve")
+        val feat = FeatGlossarySearch.search("armas leves")
         assertTrue(feat.any { it.name == "Ataque Poderoso" })
 
         val feature = ClassFeatureGlossarySearch.search("Concentração")
