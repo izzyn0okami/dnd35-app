@@ -68,3 +68,19 @@ Melhoria do componente compartilhado nas cartas do Bestiário, seleção de cria
 ### Validação
 - Aguardando CI Android e testes automatizados da PR #374.
 - A conferência visual em aparelho continua necessária para confirmar enquadramento da arte, legibilidade e ausência de cortes em cartas com ataques especiais extensos.
+
+
+## 2026-11-15 — Ampliação da ilustração e largura responsiva das cartas
+
+### Alterações
+- Aumentada a área de ilustração da frente de 210 dp para 300 dp, mantendo o enquadramento por recorte e os dados essenciais de combate.
+- Aumentada a altura da carta de 600 dp para 690 dp e a área da pilha de 620 dp para 710 dp, evitando comprimir os atributos e textos restantes.
+- Removida a largura fixa de 300 dp das cartas empilhadas; agora elas acompanham a largura útil disponível, evitando corte em aparelhos estreitos.
+- Mantidos PV, CA, iniciativa, deslocamento, resistências, ataques e informações especiais na frente.
+- Confirmado que o componente compartilhado de cartas de criaturas não contém botões de rolagem. Os controles de rolagem da seção própria de armas/ataques da ficha do personagem permanecem independentes.
+
+### Escopo e validação
+- Alteração de apresentação compartilhada pelo Bestiário, seleção de criaturas, familiares e companheiros animais.
+- Nenhum dado, regra, cálculo, persistência ou comportamento de seleção/virada da carta foi alterado.
+- CI Android, testes unitários e geração do APK debug obrigatórios antes do merge.
+- Conferência visual manual continua recomendada em telas estreitas e em cartas com ataques especiais longos.

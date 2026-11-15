@@ -162,7 +162,7 @@ fun <T> CreatureCardStack(
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(620.dp)
+                .height(710.dp)
                 .pointerInput(identity, safeIndex) {
                     var dragDistance = 0f
                     detectHorizontalDragGestures(
@@ -185,15 +185,15 @@ fun <T> CreatureCardStack(
                 Box(
                     modifier = Modifier
                         .offset(x = ((index + 1) * 18).dp, y = 5.dp)
-                        .width(300.dp)
-                        .height(600.dp)
+                        .fillMaxWidth()
+                        .height(690.dp)
                         .zIndex(index.toFloat())
                 ) { card(item) }
             }
             Box(
                 modifier = Modifier
-                    .width(300.dp)
-                    .height(600.dp)
+                    .fillMaxWidth()
+                    .height(690.dp)
                     .zIndex(10f)
             ) { card(visible.first()) }
         }
@@ -221,7 +221,7 @@ fun CreatureImageTradingCard(
     var showDetails by remember(creature.id) { mutableStateOf(false) }
 
     Card(
-        modifier = modifier.fillMaxWidth().height(600.dp).combinedClickable(
+        modifier = modifier.fillMaxWidth().height(690.dp).combinedClickable(
             onClick = { showBack = !showBack },
             onLongClick = { showDetails = true }
         ),
@@ -248,7 +248,7 @@ fun CreatureImageTradingCard(
             }
             if (!showBack) {
                 CreatureImage(creature = creature,
-                    modifier = Modifier.fillMaxWidth().height(210.dp),
+                    modifier = Modifier.fillMaxWidth().height(300.dp),
                     contentScale = ContentScale.Crop, maxDimensionPx = 1000)
                 Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
                     CreatureCombatValue("PV", creature.hitPoints.toString(), Modifier.weight(1f))
