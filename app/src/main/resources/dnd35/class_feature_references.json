@@ -430,5 +430,89 @@
     "sourcePages": "29",
     "source": "Livro do Jogador brasileiro, Capítulo 3 — Clérigo, p. 29",
     "status": "audited"
+  },
+  {
+    "className": "Feiticeiro",
+    "term": "Conjuração Espontânea",
+    "description": "O feiticeiro conjura magias arcanas sem prepará-las antecipadamente. No momento da conjuração, escolhe qualquer magia que conheça e ainda tenha espaços diários disponíveis daquele nível. Seu repertório de magias conhecidas é limitado, mas pode usar essas magias em qualquer combinação ao longo do dia.",
+    "activation": "Conjura no momento desejado, respeitando o tempo de execução e os componentes da magia.",
+    "duration": "O limite de conjurações é diário e separado por nível de magia. As magias conhecidas são permanentes, salvo a substituição permitida pela progressão.",
+    "restrictions": "Carisma determina a pontuação mínima para conjurar, as magias adicionais por dia e a CD dos testes de resistência. O feiticeiro não prepara magias; só pode conjurar magias que conhece.",
+    "progression": "Ao atingir o 4º nível e a cada dois níveis depois (6º, 8º, 10º, 12º, 14º, 16º, 18º e 20º), pode substituir uma magia conhecida por outra do mesmo nível. A magia substituta deve estar pelo menos dois níveis abaixo do nível máximo de magia que pode conjurar e a troca é decidida ao adquirir as novas magias conhecidas daquele nível.",
+    "sourcePages": "34–35",
+    "source": "Livro do Jogador brasileiro, Capítulo 3 — Feiticeiro, pp. 34–35",
+    "status": "audited"
+  },
+  {
+    "className": "Feiticeiro",
+    "term": "Invocar Familiar",
+    "description": "O feiticeiro pode convocar um familiar, uma besta mágica semelhante a um pequeno animal comum, mas mais resistente e inteligente. O familiar é companheiro e servo do feiticeiro, e concede capacidades especiais ao mestre conforme o nível combinado nas classes que possuem essa característica.",
+    "activation": "A convocação exige 24 horas de trabalho e materiais mágicos no valor de 100 PO.",
+    "duration": "O familiar permanece vinculado ao mestre até morrer ou ser dispensado.",
+    "restrictions": "Se o familiar morrer ou for dispensado, o feiticeiro realiza um teste de Fortitude (CD 15). Em caso de fracasso, perde 200 XP por nível na classe; em caso de sucesso, perde metade. Não pode substituir o familiar durante um ano e um dia. Um personagem só pode ter um familiar por vez, mesmo possuindo várias classes com essa característica; um companheiro animal não pode ser usado como familiar.",
+    "progression": "As habilidades do familiar e os benefícios concedidos ao mestre aumentam conforme o nível combinado das classes que concedem familiar. A progressão inclui Prontidão, Evasão Aprimorada, partilhar magias, vínculo empático, entrega de magias de toque, comunicação, Resistência à Magia e vidência no familiar.",
+    "sourcePages": "34–35",
+    "source": "Livro do Jogador brasileiro, Capítulo 3 — Feiticeiro e seção Familiares, pp. 34–35",
+    "status": "audited"
+  },
+  {
+    "className": "Mago",
+    "term": "Preparação com Grimório",
+    "description": "O mago aprende e prepara magias arcanas a partir de um grimório. Não pode preparar uma magia que não esteja registrada no livro, com exceção de Ler Magias, que pode preparar de memória. A preparação exige estudo diário do grimório.",
+    "activation": "O mago estuda o grimório por 1 hora após descansar para preparar as magias do dia.",
+    "duration": "As magias preparadas ficam disponíveis até serem conjuradas ou substituídas por nova preparação.",
+    "restrictions": "Inteligência deve ser igual ou superior a 10 + nível da magia. O mago precisa ter acesso ao grimório para preparar as magias nele registradas; armadura pode prejudicar os componentes gestuais das magias arcanas.",
+    "progression": "Um mago de 1º nível começa com todas as magias de nível 0 não proibidas e três magias de 1º nível, mais uma magia de 1º nível por ponto de bônus de Inteligência. A cada novo nível de mago, adiciona duas magias de qualquer nível que possa conjurar ao grimório. Também pode copiar magias de grimórios de outros magos.",
+    "sourcePages": "40–41",
+    "source": "Livro do Jogador brasileiro, Capítulo 3 — Mago, pp. 40–41",
+    "status": "audited"
+  },
+  {
+    "className": "Mago",
+    "term": "Escrever Pergaminho",
+    "description": "O mago recebe Escrever Pergaminhos como talento adicional no 1º nível, permitindo criar pergaminhos mágicos conforme as regras do talento e de criação de itens mágicos.",
+    "activation": "É um talento bônus concedido automaticamente no 1º nível; a criação de pergaminhos segue as regras próprias do talento.",
+    "duration": "Concedido uma única vez no 1º nível.",
+    "restrictions": "A criação de um pergaminho ainda exige cumprir os requisitos e custos normais do talento.",
+    "progression": "Adquirido no 1º nível de mago.",
+    "sourcePages": "40",
+    "source": "Livro do Jogador brasileiro, Capítulo 3 — Mago, p. 40",
+    "status": "audited"
+  },
+  {
+    "className": "Mago",
+    "term": "Invocar Familiar",
+    "description": "O mago pode convocar um familiar exatamente como o feiticeiro. O familiar é uma besta mágica baseada em um animal comum e concede benefícios ao mestre conforme a progressão combinada das classes que possuem essa característica.",
+    "activation": "A convocação exige 24 horas de trabalho e materiais mágicos no valor de 100 PO.",
+    "duration": "O familiar permanece vinculado ao mestre até morrer ou ser dispensado.",
+    "restrictions": "Se morrer ou for dispensado, aplica-se o teste de Fortitude (CD 15), a perda de XP em caso de fracasso ou metade da perda em caso de sucesso, e o período de um ano e um dia antes de substituí-lo. Só é possível manter um familiar por vez; um companheiro animal não pode ser familiar.",
+    "progression": "As habilidades do familiar e os benefícios concedidos ao mestre aumentam conforme o nível combinado das classes que concedem familiar.",
+    "sourcePages": "40–41",
+    "source": "Livro do Jogador brasileiro, Capítulo 3 — Mago e seção Familiares, pp. 40–41",
+    "status": "audited"
+  },
+  {
+    "className": "Mago",
+    "term": "Especialização em Escola",
+    "description": "No 1º nível, o mago pode escolher uma escola de magia para especialização. A especialização concede domínio maior sobre aquela escola, mas exige abandonar o estudo de outras escolas, que se tornam proibidas.",
+    "activation": "A decisão é feita no 1º nível e não pode ser alterada posteriormente.",
+    "duration": "Permanente durante a carreira do mago.",
+    "restrictions": "O especialista prepara uma magia adicional por dia de cada nível da escola escolhida e recebe +2 em testes de Identificar Magia para aprender magias dessa escola. Deve escolher duas escolas proibidas; um especialista em Adivinhação escolhe apenas uma. Nunca pode aprender ou conjurar magias de escolas proibidas, inclusive por pergaminhos ou varinhas. Universal não pode ser escolhida como escola especializada ou proibida.",
+    "progression": "O espaço adicional de magia acompanha cada nível de magia que o mago consegue preparar.",
+    "sourcePages": "41",
+    "source": "Livro do Jogador brasileiro, Capítulo 3 — Mago, p. 41",
+    "status": "audited"
+  },
+  {
+    "className": "Mago",
+    "term": "Talento Bônus de Mago",
+    "description": "O mago recebe talentos adicionais em intervalos regulares de sua progressão, representando o estudo aprofundado de técnicas arcanas e criação de itens.",
+    "activation": "O talento é escolhido quando o mago alcança o nível que concede a habilidade.",
+    "duration": "O talento escolhido passa a integrar permanentemente as capacidades do mago.",
+    "restrictions": "A escolha deve ser um talento metamágico, de criação de item ou Dominar Magia. O mago ainda precisa cumprir todos os pré-requisitos, inclusive nível de conjurador mínimo.",
+    "progression": "Recebe um talento adicional no 5º, 10º, 15º e 20º níveis. Esses talentos são cumulativos com os talentos recebidos normalmente por avanço de personagem.",
+    "sourcePages": "40",
+    "source": "Livro do Jogador brasileiro, Capítulo 3 — Mago, p. 40",
+    "status": "audited"
   }
 ]
