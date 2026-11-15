@@ -1090,4 +1090,16 @@ class CreatureCatalogTest {
         }
     }
 
+
+    @Test
+    fun direBadgerSheetMatchesMonsterManualDetails() {
+        val direBadger = CreatureCatalog.byId("texugo-atroz")!!
+        assertEquals(28, direBadger.hitPoints)
+        assertTrue(direBadger.description.contains("pelagem espessa"))
+        assertTrue(direBadger.description.contains("225 kg"))
+        assertTrue(direBadger.combat.contains("Fúria (Ext)"))
+        assertTrue(direBadger.combat.contains("+4 em Força e Constituição"))
+        assertTrue(direBadger.combat.contains("3 m por rodada"))
+    }
+
 }
