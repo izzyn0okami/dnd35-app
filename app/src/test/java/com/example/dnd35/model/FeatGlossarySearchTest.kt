@@ -350,4 +350,24 @@ class FeatGlossarySearchTest {
         assertTrue(leadership.reference?.sourcePage == 82)
     }
 
+
+    @Test
+    fun skillAndSpellUtilityFeatReferencesMatchTheBrazilianHandbook() {
+        val nimbleFingers = FeatGlossarySearch.search("Dedos Lépidos").first()
+        assertTrue(nimbleFingers.reference?.description?.contains("Operar Mecanismo") == true)
+        assertTrue(nimbleFingers.reference?.description?.contains("Abrir Fechaduras") == true)
+
+        val eschewMaterials = FeatGlossarySearch.search("Ignorar Componentes Materiais").first()
+        assertTrue(eschewMaterials.reference?.description?.contains("1 PO ou inferior") == true)
+        assertTrue(eschewMaterials.reference?.special?.contains("mais de 1 PO") == true)
+
+        val deftHands = FeatGlossarySearch.search("Mãos Leves").first()
+        assertTrue(deftHands.reference?.description?.contains("Prestidigitação") == true)
+        assertTrue(deftHands.reference?.description?.contains("Usar Cordas") == true)
+
+        val track = FeatGlossarySearch.search("Rastrear").first()
+        assertTrue(track.reference?.description?.contains("1,5 km") == true)
+        assertTrue(track.reference?.description?.contains("metade do deslocamento") == true)
+    }
+
 }
