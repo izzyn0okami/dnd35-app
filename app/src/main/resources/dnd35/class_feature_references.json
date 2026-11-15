@@ -70,5 +70,17 @@
     "sourcePages": "25–26",
     "source": "Livro do Jogador brasileiro, Capítulo 3 — Bardo, pp. 25–26",
     "status": "audited"
+  },
+  {
+    "className": "Druida",
+    "term": "Forma Selvagem",
+    "description": "A partir do 5º nível, o druida pode assumir a forma de uma criatura do tipo animal familiar para ele e retornar à forma natural. A transformação segue as regras da magia Metamorfose, com as exceções específicas da habilidade: o druida conserva sua identidade e utiliza as estatísticas e capacidades da forma escolhida conforme as regras de Forma Selvagem.",
+    "activation": "Assumir a forma animal ou retornar à forma normal exige uma ação padrão e não provoca ataques de oportunidade. O druida pode reverter a transformação antes do término da duração.",
+    "duration": "Cada uso dura até 1 hora por nível de druida. O número de usos diários aumenta conforme a progressão da classe; as formas elementais possuem usos adicionais próprios.",
+    "restrictions": "A forma escolhida deve ser familiar ao druida. Enquanto transformado, ele não pode falar idiomas: só pode produzir sons normais de um animal sem treinamento, embora possa comunicar-se com animais da mesma espécie. Os Dados de Vida da forma não podem exceder o nível de druida. As formas vegetais precisam ser criaturas do tipo planta; árvores e plantas comuns não são formas válidas.",
+    "progression": "5º nível: animais Pequenos ou Médios, 1 vez por dia. Usos adicionais: 6º, 7º, 10º, 14º e 18º níveis, chegando a 6 vezes por dia. 8º nível: animais Grandes. 11º nível: animais Miúdos. 12º nível: criaturas do tipo planta, respeitando as restrições de tamanho e Dados de Vida. 15º nível: animais Enormes. 16º nível: 1 uso diário adicional para assumir forma de elemental Pequeno, Médio ou Grande do ar, da terra, do fogo ou da água; recebe as habilidades extraordinárias, sobrenaturais, similares à magia e os talentos do elemental, mas conserva seu próprio tipo de criatura. 18º nível: 2 usos elementais por dia. 20º nível: 3 usos elementais por dia e acesso a elementais Enormes.",
+    "sourcePages": "31–32",
+    "source": "Livro do Jogador brasileiro, Capítulo 3 — Druida, pp. 31–32",
+    "status": "audited"
   }
 ]
