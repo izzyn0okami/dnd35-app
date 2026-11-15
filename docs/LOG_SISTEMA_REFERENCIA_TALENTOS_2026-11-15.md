@@ -150,3 +150,19 @@ Data: 2026-11-15
 - A falha foi causada pelo piso histórico do teste, não por erro de compilação nem por campo ausente: o catálogo passou legitimamente de 110 para 109 entradas ao remover o alias duplicado `Derrubar Aprimorado`. A entrada canônica `Imobilização Aprimorada` permanece no catálogo.
 - Atualizado o piso para 109, com comentário explicando a redução intencional. Os testes de nomes, campos obrigatórios e ausência de duplicatas permanecem ativos.
 - Nenhuma CI foi considerada aprovada para o commit mais recente ainda; aguardar a nova execução antes do merge.
+
+
+## Auditoria de contramágica, talentos metamágicos e especialização maior (15/11/2026)
+
+- Cobertura ampliada de **88 para 94 de 109 talentos**; 15 verbetes permanecem pendentes de referência detalhada.
+- Conferidos no Livro do Jogador brasileiro: Contramágica Aprimorada (p. 78), Aumentar Magia (p. 78), Dominar Magia (p. 79), Especialização em Arma Maior (p. 80), Elevar Magia (p. 80) e Potencializar Invocação (p. 83).
+- Corrigido Contramágica Aprimorada: a magia alternativa deve ser da mesma escola **e de nível superior** à magia-alvo; o benefício curto anterior omitia a condição de nível.
+- Corrigido Dominar Magia: a cada seleção, o mago escolhe magias conhecidas em quantidade igual ao modificador de Inteligência e pode prepará-las sem consultar o grimório. O benefício anterior (metade do nível de conjurador, mínimo 1) não corresponde ao texto do livro.
+- Corrigido Especialização em Arma Maior: concede +2 adicional de dano que se acumula com Especialização em Arma e outros bônus de dano. Com os dois talentos, o acréscimo dos talentos é +4; o texto não substitui o bônus anterior. Registrados os pré-requisitos completos e a escolha por armas diferentes.
+- Potencializar Invocação concede bônus **de aprimoramento** de +4 em Força e Constituição às criaturas conjuradas pelas magias Invocar, enquanto a magia permanecer ativa.
+- Aumentar Magia dobra o alcance apenas quando classificado como Curto, Médio ou Longo; as magias com alcance não definido por essas categorias não são afetadas. Registradas as fórmulas de alcance e o custo de +1 nível de espaço.
+- Corrigido Elevar Magia: não é limitado a elevar apenas um nível. O jogador escolhe qualquer nível superior até o 9º; os efeitos dependentes do nível da magia, inclusive a CD, usam o nível escolhido, e a magia ocupa espaço desse nível.
+- Foram atualizados os benefícios curtos no catálogo quando estavam incorretos e acrescentados seis verbetes detalhados independentes do resumo da ficha.
+- Teste de regressão cobre as seis referências e as correções de Dominar Magia, Contramágica Aprimorada e Elevar Magia.
+- Nenhum cálculo automático, validação de elegibilidade, progressão ou dado de personagem foi alterado.
+- Fonte primária: PDF brasileiro do Livro do Jogador salvo na biblioteca, Capítulo 5 — Talentos, páginas impressas 78–83. A auditoria registra somente regras apresentadas no Livro do Jogador.
