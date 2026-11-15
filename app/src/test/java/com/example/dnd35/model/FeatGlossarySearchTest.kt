@@ -283,4 +283,30 @@ class FeatGlossarySearchTest {
         assertTrue(sunder.reference?.description?.contains("objeto empunhado") == true)
     }
 
+    
+    @Test
+    fun itemCreationAndReloadFeatReferencesExplainCostsAndActionRules() {
+        val scroll = FeatGlossarySearch.search("Escrever Pergaminho").first()
+        assertTrue(scroll.reference?.description?.contains("1/25") == true)
+        assertTrue(scroll.reference?.sourcePage == 80)
+
+        val wand = FeatGlossarySearch.search("Criar Varinha").first()
+        assertTrue(wand.reference?.description?.contains("50 cargas") == true)
+        assertTrue(wand.reference?.special?.contains("multiplicados por 50") == true)
+
+        val potion = FeatGlossarySearch.search("Preparar Poção").first()
+        assertTrue(potion.reference?.description?.contains("3º nível ou inferior") == true)
+        assertTrue(potion.reference?.sourcePage == 83)
+
+        val ring = FeatGlossarySearch.search("Forjar Anel").first()
+        assertTrue(ring.reference?.special?.contains("15.000 XP") == true)
+
+        val twoWeaponDefense = FeatGlossarySearch.search("Bloqueio Ambidestro").first()
+        assertTrue(twoWeaponDefense.reference?.description?.contains("bônus de escudo") == true)
+        assertTrue(twoWeaponDefense.reference?.special?.contains("Destreza 15") == true)
+
+        val reload = FeatGlossarySearch.search("Rapidez de Recarga").first()
+        assertTrue(reload.reference?.description?.contains("ação livre") == true)
+        assertTrue(reload.reference?.normal?.contains("ação de rodada completa") == true)
+    }
 }

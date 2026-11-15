@@ -168,12 +168,6 @@
     "benefit": "Você recebe +4 nos testes de agarrar e não provoca ataque de oportunidade ao iniciar um agarrão."
   },
   {
-    "name": "Derrubar Aprimorado",
-    "prerequisites": "INT 13, Especialização em Combate",
-    "summary": "Melhora tentativas de derrubar.",
-    "benefit": "Você recebe +4 nos testes de derrubar e não provoca ataque de oportunidade ao tentar derrubar um oponente."
-  },
-  {
     "name": "Desarme Aprimorado",
     "prerequisites": "INT 13, Especialização em Combate",
     "summary": "Melhora tentativas de desarmar.",
@@ -391,7 +385,7 @@
   },
   {
     "name": "Bloqueio Ambidestro",
-    "prerequisites": "Combater com Duas Armas",
+    "prerequisites": "DES 15, Combater com Duas Armas",
     "summary": "A arma da mão inábil concede +1 de bônus de escudo na CA.",
     "benefit": "Enquanto estiver empunhando uma arma leve ou de uma mão na mão inábil, você recebe um bônus de escudo de +1 na CA."
   },
@@ -427,9 +421,9 @@
   },
   {
     "name": "Imobilização Aprimorada",
-    "prerequisites": "Especialização em Combate",
-    "summary": "+4 nas tentativas de imobilização, sem provocar ataque de oportunidade.",
-    "benefit": "Você recebe um bônus de +4 nos testes de agarrar para imobilizar um oponente e não provoca um ataque de oportunidade ao iniciar um agarrão."
+    "prerequisites": "INT 13, Especialização em Combate",
+    "summary": "+4 nos testes de Força para derrubar, sem provocar ataque de oportunidade ao tentar a manobra desarmado; permite um ataque adicional após derrubar.",
+    "benefit": "Enquanto estiver desarmado, você não provoca um ataque de oportunidade ao tentar derrubar um adversário. Você recebe +4 nos testes resistidos de Força para a manobra. Quando derruba um adversário em combate corporal, pode realizar imediatamente um ataque contra ele, como se não tivesse usado o ataque para iniciar a manobra."
   },
   {
     "name": "Expulsão Adicional",

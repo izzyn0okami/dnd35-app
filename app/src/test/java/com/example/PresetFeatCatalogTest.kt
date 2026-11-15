@@ -14,11 +14,11 @@ class PresetFeatCatalogTest {
     @Test
     fun catalogIncludesAdditionalPlayerHandbookCombatAndMetamagicFeats() {
         val names = Dnd35Rules.PRESET_FEATS.map { it.name }
-        assertTrue("O catálogo deve conter mais talentos que a lista inicial", names.size >= 110)
+        assertTrue("O catálogo deve conter os talentos do Livro do Jogador sem duplicatas", names.size >= 109)
         listOf(
             "Acuidade com Arma",
             "Agarrar Aprimorado",
-            "Derrubar Aprimorado",
+            "Imobilização Aprimorada",
             "Desarme Aprimorado",
             "Reflexos de Combate",
             "Combater com Duas Armas",
@@ -50,5 +50,6 @@ class PresetFeatCatalogTest {
     fun presetFeatNamesAreUnique() {
         val names = Dnd35Rules.PRESET_FEATS.map { it.name }
         assertEquals(names.size, names.toSet().size)
+        assertTrue("Derrubar Aprimorado não é um talento separado na edição brasileira", "Derrubar Aprimorado" !in names)
     }
 }

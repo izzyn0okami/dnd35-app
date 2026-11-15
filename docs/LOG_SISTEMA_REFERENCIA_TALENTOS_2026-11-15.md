@@ -118,5 +118,35 @@ Data: 2026-11-15
 - Explicitados os pré-requisitos de Força 13 e Ataque Poderoso em Atropelar Aprimorado, Encontrão Aprimorado e Separar Aprimorado.
 - Testes de regressão acrescentados para os nove verbetes e para as exceções de combate montado e manobras.
 - Nenhum cálculo, regra automatizada de elegibilidade, persistência ou formato de ficha foi alterado. O catálogo de resumo foi corrigido apenas onde descrevia incorretamente Investida Montada.
-- Nota de auditoria: `Derrubar Aprimorado` permanece pendente de conferência de nomenclatura/pertencimento ao Livro do Jogador; não foi criado verbete sem correspondência confirmada no texto pesquisável do PDF.
+- Correção de nomenclatura após conferência cruzada: `Derrubar Aprimorado` não é um talento separado na edição brasileira. O benefício corresponde a `Imobilização Aprimorada` (Improved Trip), já presente no catálogo e no glossário detalhado. Removida a entrada duplicada `Derrubar Aprimorado` do catálogo de seleção e corrigido o resumo de `Imobilização Aprimorada`, incluindo Inteligência 13, Especialização em Combate, bônus de +4, ausência de ataque de oportunidade ao tentar a manobra desarmado e ataque adicional após derrubar. Registros já salvos como `CharacterFeat` permanecem preservados, pois são dados próprios da ficha e não são substituídos pelo catálogo.
 - Próxima etapa: continuar os 32 verbetes pendentes, priorizando os talentos de combate restantes e criação de itens mágicos.
+
+
+## Auditoria de criação de itens mágicos e talentos de combate (15/11/2026)
+
+- Cobertura ampliada de **78 para 88 de 110 talentos**; 22 continuam sem referência detalhada.
+- Conferidos diretamente no Livro do Jogador brasileiro, Capítulo 5, os oito talentos de criação de itens: Criar Armaduras e Armas Mágicas (p. 79), Criar Bastão (p. 79), Criar Cajado (p. 79), Criar Item Maravilhoso (p. 79), Criar Varinha (p. 79), Escrever Pergaminho (p. 80), Forjar Anel (p. 81) e Preparar Poção (p. 83).
+- Registrados para cada criação: nível mínimo de conjurador, tipo de item, fórmula de preço quando apresentada, tempo de trabalho, custo de XP, matéria-prima, cargas quando aplicável, custos extras de componentes e possibilidade de reparo quando o livro a concede.
+- Acrescentadas referências para Bloqueio Ambidestro (p. 78) e Rapidez de Recarga (p. 83), incluindo o bônus defensivo em combate com duas armas, a exigência de Destreza 15, ações de recarga e ataques de oportunidade.
+- Corrigido o pré-requisito curto de Bloqueio Ambidestro no catálogo: o livro exige Destreza 15 e Combater com Duas Armas; o registro anterior omitia Destreza 15.
+- **Derrubar Aprimorado permanece sem referência detalhada:** não aparece na Tabela 5-1 nem nas descrições do Capítulo 5 consultadas nas páginas impressas 76–86. A entrada do catálogo não será tratada como talento oficial do Livro do Jogador sem confirmação textual; mantida como pendência de reconciliação, sem apagar dados existentes.
+- Os oito talentos de criação remetem explicitamente ao Livro do Mestre para regras específicas dos itens. Este glossário registra somente os parâmetros efetivamente apresentados no Livro do Jogador; não completa requisitos ou fórmulas ausentes com material externo.
+- Testes de regressão adicionados para fórmulas/custos de criação, cargas, exceções de XP, pré-requisitos de Bloqueio Ambidestro e ações de Rapidez de Recarga.
+- Nenhum cálculo automático, elegibilidade, progressão, persistência ou formato de ficha foi alterado.
+
+
+## Correção de nomenclatura: Imobilização Aprimorada (15/11/2026)
+
+- A edição brasileira do Livro do Jogador usa o nome `Imobilização Aprimorada` para o talento que o SRD inglês identifica como `Improved Trip`. A descrição oficial confirma a manobra, o bônus de +4 nos testes resistidos de Força e o ataque adicional após derrubar o adversário (p. 82).
+- O SRD confirma que `Improved Trip` e `Improved Bull Rush` são talentos diferentes; o segundo corresponde a `Encontrão Aprimorado`. Portanto, `Derrubar Aprimorado` era uma entrada duplicada/alias não oficial, não um talento separado.
+- Removida a entrada duplicada do catálogo de seleção; corrigidos os pré-requisitos e o benefício curto de `Imobilização Aprimorada` para corresponder ao verbete detalhado já auditado.
+- Não foi realizada migração destrutiva: talentos previamente registrados nas fichas permanecem armazenados como `CharacterFeat` e não dependem da presença do nome no catálogo.
+- Teste de regressão atualizado para garantir que o catálogo contenha o nome brasileiro e não ofereça a duplicata.
+
+
+## Verificação da CI e ajuste do teste de contagem (15/11/2026)
+
+- A segunda tentativa do fluxo Android CI para o commit anterior concluiu com sucesso. Os dois fluxos disparados após a correção do nome falharam no mesmo teste de snapshot de contagem: `CatalogJsonLoadingTest.catalogSizesMatchThePlayersHandbookSnapshotCapturedOnMigration`, que exigia pelo menos 110 talentos.
+- A falha foi causada pelo piso histórico do teste, não por erro de compilação nem por campo ausente: o catálogo passou legitimamente de 110 para 109 entradas ao remover o alias duplicado `Derrubar Aprimorado`. A entrada canônica `Imobilização Aprimorada` permanece no catálogo.
+- Atualizado o piso para 109, com comentário explicando a redução intencional. Os testes de nomes, campos obrigatórios e ausência de duplicatas permanecem ativos.
+- Nenhuma CI foi considerada aprovada para o commit mais recente ainda; aguardar a nova execução antes do merge.

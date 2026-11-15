@@ -95,7 +95,9 @@ class CatalogJsonLoadingTest {
         // Contagem registrada na migração dos catálogos de Kotlin para JSON (ver docs/CATALOGOS_JSON.md).
         // Uma queda nesse número indica JSON cortado ou mal gerado; o número só deve SUBIR
         // conforme mais conteúdo do Livro do Jogador for adicionado.
-        assertTrue("Talentos regrediram", Dnd35Rules.PRESET_FEATS.size >= 110)
+        // 109 entradas após remover o alias duplicado "Derrubar Aprimorado";
+        // a entrada canônica "Imobilização Aprimorada" permanece no catálogo.
+        assertTrue("Talentos regrediram", Dnd35Rules.PRESET_FEATS.size >= 109)
         assertTrue("Itens regrediram", Dnd35Rules.PRESET_ITEMS.size >= 165)
         assertTrue("Magias regrediram", Dnd35Rules.PRESET_SPELLS.size >= 327)
     }
