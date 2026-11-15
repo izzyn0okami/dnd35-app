@@ -98,3 +98,11 @@ Data: 2026-11-15
 - Foram adicionados testes de regressão para os detalhes de Foco em Arma Maior, Expulsão Adicional, Imobilização Aprimorada, Saque Rápido, Tiro Múltiplo, Tiro Preciso Aprimorado e Trespassar Maior.
 - A cobertura das 44 referências de habilidades de classe permanece inalterada. Não foram modificados cálculos, pré-requisitos automáticos, progressões ou dados persistidos.
 - Próximo trabalho: continuar a auditoria dos 41 talentos ainda sem referência detalhada, começando pelos talentos de combate e montaria, sem repetir os 69 verbetes já auditados.
+
+
+## Correção da validação do PR #385 (15/11/2026)
+
+- A primeira execução de CI e compilação falhou em um único teste: `additionalCombatAndItemCreationFeatReferencesExplainSpecificExceptions`, na asserção de Saque Rápido.
+- A referência do talento registra corretamente o pré-requisito por extenso como “bônus base de ataque +1”; o teste procurava a abreviação “BBA +1”, que não existe no campo especial desse verbete. Portanto, a falha era uma expectativa textual incorreta no teste, não um erro na regra cadastrada.
+- Ajustada a asserção para verificar a expressão efetivamente cadastrada. Nenhuma regra, texto de referência, cálculo ou dado persistido foi alterado.
+- Aguardar nova execução de Android CI e Android build no novo commit antes de mesclar.
