@@ -1,0 +1,14 @@
+[
+  {
+    "className": "Bárbaro",
+    "term": "Fúria",
+    "description": "O bárbaro entra em um estado de fúria que melhora temporariamente sua capacidade física e sua resistência mental. No 1º nível, recebe +4 de bônus de Força, +4 de bônus de Constituição e +2 de bônus de moral nos testes de Vontade, mas sofre –2 na Classe de Armadura. O aumento de Constituição também concede 2 pontos de vida temporários por nível de personagem; esses pontos desaparecem quando a fúria termina e não são perdidos primeiro como pontos de vida temporários comuns.",
+    "activation": "Ativar a fúria não consome tempo. O bárbaro decide quando encerrá-la, mesmo antes do término normal.",
+    "duration": "Dura 3 rodadas + o modificador de Constituição ajustado pela própria fúria. A quantidade de usos diários começa em 1 no 1º nível e aumenta em +1 no 4º nível e a cada quatro níveis depois disso, até 6 usos no 20º nível.",
+    "restrictions": "Durante a fúria, o bárbaro não pode usar perícias baseadas em Carisma, Destreza ou Inteligência, exceto Equilíbrio, Arte da Fuga, Intimidação e Cavalgar; não pode usar Concentração, conjurar magias ou ativar itens mágicos por gatilho de magia, complemento de magia ou palavra de comando. Também não pode usar Especialização em Combate, talentos de criação de itens ou talentos metamágicos. Pode utilizar os demais talentos.",
+    "progression": "11º nível — Fúria Maior: bônus passam a +6 em Força e Constituição e +3 nos testes de Vontade. 14º nível — Vontade Inabalável: +4 nos testes de Vontade contra magias de Encantamento enquanto estiver em fúria; acumula-se com outros modificadores, inclusive o bônus de moral da própria fúria. 17º nível — Fúria Incansável: deixa de ficar fatigado ao terminar a fúria. 20º nível — Fúria Poderosa: bônus passam a +8 em Força e Constituição e +4 nos testes de Vontade.",
+    "sourcePages": "21–22",
+    "source": "Livro do Jogador brasileiro, Capítulo 3 — Bárbaro, pp. 21–22",
+    "status": "audited"
+  }
+]
