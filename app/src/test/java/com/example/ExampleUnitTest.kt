@@ -1902,4 +1902,18 @@ class ExampleUnitTest {
     assertEquals(11, stats.totalAc) // CA base 10 + modificador de DES +1; a túnica não altera a CA
   }
 
+
+  @Test
+  fun rogueAndMonkFeatureDescriptionsIncludeImportantBookLimitations() {
+    val rogue = Dnd35Rules.CLASSES.single { it.name == "Ladino" }.features.associateBy { it.name }
+    assertTrue(rogue.getValue("Ataque Furtivo +1d6").description.contains("9 m"))
+    assertTrue(rogue.getValue("Ataque Furtivo +1d6").description.contains("não é multiplicado"))
+    assertTrue(rogue.getValue("Evasão").description.contains("indefeso"))
+
+    val monk = Dnd35Rules.CLASSES.single { it.name == "Monge" }.features.associateBy { it.name }
+    assertTrue(monk.getValue("Rajada de Golpes").description.contains("ação de ataque total"))
+    assertTrue(monk.getValue("Mão Vibrante").description.contains("CD 10 + metade do nível de monge"))
+    assertTrue(monk.getValue("Corpo Atemporal").description.contains("Penalidades de idade que já possuía"))
+  }
+
 }
