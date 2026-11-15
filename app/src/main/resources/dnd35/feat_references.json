@@ -124,5 +124,104 @@
     "special": "Não permite ativar itens mágicos que o personagem não conseguiria usar na forma assumida e não concede a capacidade de falar enquanto estiver em Forma Selvagem. Exige Sabedoria 13 e a habilidade Forma Selvagem.",
     "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 82",
     "status": "audited"
+  },
+  {
+    "name": "Acuidade com Arma",
+    "sourcePage": 75,
+    "description": "Quando usa uma arma leve, um sabre, chicote ou corrente com cravos apropriados ao seu tamanho, o personagem pode utilizar o modificador de Destreza no lugar do modificador de Força nas jogadas de ataque corpo a corpo.",
+    "normal": "",
+    "special": "Exige bônus base de ataque +1. Um guerreiro pode escolher este talento como talento adicional.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 75",
+    "status": "audited"
+  },
+  {
+    "name": "Especialização em Combate",
+    "sourcePage": 80,
+    "description": "Durante uma ação de ataque ou ataque total em combate corpo a corpo, o personagem pode escolher uma penalidade de –1 a –5 nas jogadas de ataque e receber o mesmo valor como bônus de esquiva na Classe de Armadura. A penalidade escolhida não pode exceder seu bônus base de ataque.",
+    "normal": "Sem o talento, lutar defensivamente impõe –4 nas jogadas de ataque e concede +2 de bônus de esquiva na CA.",
+    "special": "O bônus de esquiva é limitado a +5 e permanece até o início do próximo turno, inclusive para ataques de oportunidade. Exige Inteligência 13. Um guerreiro pode escolhê-lo como talento adicional.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 80",
+    "status": "audited"
+  },
+  {
+    "name": "Especialização em Arma",
+    "sourcePage": 81,
+    "description": "Escolha uma arma na qual o personagem possua Foco em Arma. O personagem recebe +2 de bônus nas jogadas de dano realizadas com essa arma.",
+    "normal": "",
+    "special": "Exige proficiência com a arma escolhida, Foco em Arma e 4º nível de guerreiro. Pode ser escolhido várias vezes, mas cada escolha se aplica a uma arma diferente e os benefícios não se acumulam para a mesma arma. Um guerreiro pode escolhê-lo como talento adicional.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 81",
+    "status": "audited"
+  },
+  {
+    "name": "Tiro Certeiro",
+    "sourcePage": 84,
+    "description": "O personagem recebe +1 de bônus nas jogadas de ataque e dano com armas de ataque à distância contra alvos que estejam a até 9 m.",
+    "normal": "",
+    "special": "Um guerreiro pode escolher este talento como talento adicional.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 84",
+    "status": "audited"
+  },
+  {
+    "name": "Tiro Longo",
+    "sourcePage": 84,
+    "description": "Aumenta o incremento de distância das armas de ataque à distância: armas de disparo têm seu incremento aumentado em 50%, enquanto armas de arremesso têm o incremento dobrado.",
+    "normal": "",
+    "special": "Exige Tiro Certeiro. Um guerreiro pode escolhê-lo como talento adicional.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 84",
+    "status": "audited"
+  },
+  {
+    "name": "Combater com Duas Armas Maior",
+    "sourcePage": 78,
+    "description": "O personagem recebe um terceiro ataque com a mão inábil durante a ação de ataque total, mas esse ataque sofre –10 de penalidade.",
+    "normal": "",
+    "special": "Exige Destreza 19, Combater com Duas Armas, Combater com Duas Armas Aprimorado e bônus base de ataque +11. Um guerreiro pode escolher este talento como talento adicional.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 78",
+    "status": "audited"
+  },
+  {
+    "name": "Tiro Rápido",
+    "sourcePage": 85,
+    "description": "Durante uma ação de ataque total, o personagem recebe um ataque adicional com uma arma de ataque à distância, usando seu maior bônus base de ataque. Todos os ataques realizados nessa ação, inclusive o adicional, sofrem –2 de penalidade.",
+    "normal": "",
+    "special": "Exige Destreza 13 e Tiro Certeiro. Um guerreiro pode escolhê-lo como talento adicional. Um ranger de 2º nível que escolheu Arquearia recebe o talento enquanto estiver sem armadura ou usando armadura leve, mesmo sem cumprir os pré-requisitos.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 85",
+    "status": "audited"
+  },
+  {
+    "name": "Desarme Aprimorado",
+    "sourcePage": 79,
+    "description": "O personagem não provoca ataque de oportunidade ao tentar desarmar um oponente e recebe +4 de bônus no teste resistido de ataque para desarmá-lo. Se a tentativa fracassar, o adversário também não consegue desarmar o personagem.",
+    "normal": "Sem este talento, tentar desarmar um oponente provoca ataque de oportunidade e uma tentativa fracassada pode permitir que o adversário desarme o personagem.",
+    "special": "Exige Inteligência 13 e Especialização em Combate. Um guerreiro pode escolhê-lo como talento adicional.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 79",
+    "status": "audited"
+  },
+  {
+    "name": "Lutar às Cegas",
+    "sourcePage": 82,
+    "description": "Em combate corpo a corpo, quando o personagem erra um adversário por causa da camuflagem, pode realizar novamente a jogada de porcentagem para verificar se o ataque realmente errou. Em combate corpo a corpo, um atacante invisível não recebe os bônus normais contra o personagem, que também não perde seu bônus de Destreza na CA por não enxergar o atacante.",
+    "normal": "Sem o talento, a chance de falha por camuflagem é aplicada normalmente e os modificadores de atacantes invisíveis são mantidos.",
+    "special": "Quando não consegue enxergar, o personagem sofre apenas metade da penalidade normal de deslocamento. O talento não oferece benefício contra uma criatura sob efeito de Piscar. Um guerreiro pode escolhê-lo como talento adicional.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 82",
+    "status": "audited"
+  },
+  {
+    "name": "Ataque Giratório",
+    "sourcePage": 77,
+    "description": "Ao realizar uma ação de ataque total, o personagem pode abandonar seus ataques regulares e realizar um único ataque corpo a corpo com seu maior bônus de ataque contra cada oponente dentro do alcance.",
+    "normal": "",
+    "special": "Exige Destreza 13, Inteligência 13, Especialização em Combate, Esquiva, Mobilidade, Ataque em Movimento e bônus base de ataque +4. Ao usar o talento, perde bônus ou ataques adicionais concedidos por outros talentos ou habilidades, como Trespassar ou Velocidade. Um guerreiro pode escolhê-lo como talento adicional.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 77",
+    "status": "audited"
+  },
+  {
+    "name": "Reflexos de Combate",
+    "sourcePage": 84,
+    "description": "O personagem pode realizar uma quantidade de ataques de oportunidade por rodada equivalente ao seu modificador de Destreza, em vez de apenas um. Ainda só pode realizar um ataque de oportunidade para cada situação que o provoque.",
+    "normal": "Sem o talento, o personagem só pode realizar um ataque de oportunidade por rodada e não pode realizá-los enquanto estiver surpreso.",
+    "special": "Permite realizar ataques de oportunidade mesmo quando surpreso. Um ladino com Oportunismo não pode usar essa habilidade mais de uma vez por rodada. Um guerreiro pode escolhê-lo como talento adicional; um monge pode escolhê-lo como talento adicional no 2º nível.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 84",
+    "status": "audited"
   }
 ]
