@@ -28,7 +28,7 @@ class FeatGlossarySearchTest {
     fun auditedFeatHasExpandedReferenceSeparateFromSheetSummary() {
         val result = FeatGlossarySearch.search("Ataque Poderoso").first()
         assertTrue(result.summary.isNotBlank())
-        assertTrue(result.reference?.description?.length ?: 0 > result.summary.length)
+        assertTrue((result.reference?.description?.length ?: 0) > result.summary.length)
         assertTrue(result.reference?.source?.contains("p. 78") == true)
     }
 
