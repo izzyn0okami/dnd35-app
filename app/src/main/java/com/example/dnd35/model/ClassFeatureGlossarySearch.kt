@@ -13,13 +13,16 @@ data class ClassFeatureGlossaryResult(
     val className: String,
     val level: Int,
     val term: String,
-    val explanation: String
+    val explanation: String,
+    val reference: Dnd35Rules.ClassFeatureReference? = null
 )
 
 object ClassFeatureGlossarySearch {
     fun search(query: String): List<ClassFeatureGlossaryResult> {
         val normalizedQuery = normalize(query)
         if (normalizedQuery.isBlank()) return emptyList()
+
+        val references = Dnd35Rules.CLASS_FEATURE_REFERENCES
 
         return Dnd35Rules.CLASSES
             .flatMap { classInfo ->
@@ -28,7 +31,11 @@ object ClassFeatureGlossarySearch {
                         className = classInfo.name,
                         level = feature.level,
                         term = feature.name,
-                        explanation = feature.description
+                        explanation = "",
+                        reference = references.firstOrNull { reference ->
+                            reference.className == classInfo.name &&
+                                normalize(feature.name).startsWith(normalize(reference.term))
+                        }
                     )
                 }
             }
