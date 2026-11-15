@@ -166,3 +166,15 @@ Data: 2026-11-15
 - Teste de regressão cobre as seis referências e as correções de Dominar Magia, Contramágica Aprimorada e Elevar Magia.
 - Nenhum cálculo automático, validação de elegibilidade, progressão ou dado de personagem foi alterado.
 - Fonte primária: PDF brasileiro do Livro do Jogador salvo na biblioteca, Capítulo 5 — Talentos, páginas impressas 78–83. A auditoria registra somente regras apresentadas no Livro do Jogador.
+
+
+## Correção de Duro de Matar e Liderança (15/11/2026)
+
+- Cobertura ampliada de **94 para 96 de 109 talentos**; 13 referências detalhadas continuam pendentes.
+- **Duro de Matar**, Livro do Jogador brasileiro, p. 79: corrigido o benefício resumido que afirmava que o personagem poderia agir normalmente. O texto permite uma única ação de movimento OU uma única ação padrão por rodada, nunca ambas nem ação de rodada completa. A ação de movimento não causa dano adicional; ação padrão ou outra ação considerada extenuante causa 1 PV de dano ao término. O personagem fica estável automaticamente entre -1 e -9 PV, decide imediatamente se ativa o talento, e morre ao atingir -10 PV. Se não ativar, fica inconsciente.
+- **Liderança**, Livro do Jogador brasileiro, p. 82: corrigido o erro de digitação “cofre leal” para “companheiros leais”. O benefício agora descreve companheiros leais e seguidores devotados, com tipos e quantidade determinados pelo Mestre. Mantida a recomendação de conversar com o Mestre antes de selecionar o talento.
+- A descrição de Liderança no Livro do Jogador remete ao Livro do Mestre para informações adicionais. Esta entrada não importa regras externas ou detalhes de pontuação de liderança que não estejam no texto auditado do Livro do Jogador.
+- Adicionados testes de regressão para os limites de ação e morte de Duro de Matar, pré-requisito e termos de Liderança.
+- A execução de CI anterior falhou em um único teste já conhecido e intermitente, `SessionServerClientTest.mensagens privadas simultaneas nao perdem entradas no log do mestre` (asserção na linha 1515); os outros 653 testes passaram e a compilação do APK debug foi aprovada. O job com falha foi solicitado para nova execução; isso não foi tratado como falha causada pelos verbetes de talentos.
+- Nenhuma regra automática de combate, cálculo de PV ou persistência de personagens foi alterada.
+- Fonte primária: PDF brasileiro do Livro do Jogador salvo na biblioteca, Capítulo 5 — Talentos, páginas impressas 79 e 82.
