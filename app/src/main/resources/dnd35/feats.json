@@ -180,7 +180,7 @@
     "benefit": "Você recebe +4 nos testes de desarme e não provoca ataque de oportunidade ao tentar desarmar um oponente."
   },
   {
-    "name": "Reflexos em Combate",
+    "name": "Reflexos de Combate",
     "prerequisites": "Nenhum",
     "summary": "Permite ataques de oportunidade adicionais.",
     "benefit": "Você pode realizar um número adicional de ataques de oportunidade por rodada igual ao seu modificador de Destreza. Também pode realizar ataques de oportunidade mesmo quando estiver desprevenido."
