@@ -403,5 +403,113 @@
     "sourcePage": 77,
     "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, Tabela 5-1, p. 77",
     "status": "audited"
+  },
+  {
+    "name": "Magia em Combate",
+    "sourcePage": 82,
+    "description": "O personagem recebe +4 de bônus nos testes de Concentração realizados para conjurar magias ou usar habilidades similares à magia na defensiva, ou enquanto estiver envolvido na manobra Agarrar.",
+    "normal": "",
+    "special": "O bônus se aplica aos testes de Concentração nas situações descritas; não é um bônus geral para todos os testes de Concentração.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 82",
+    "status": "audited"
+  },
+  {
+    "name": "Foco em Magia",
+    "sourcePage": 81,
+    "description": "Escolha uma escola de magia. A Classe de Dificuldade dos testes de resistência contra as magias dessa escola aumenta em +1.",
+    "normal": "",
+    "special": "Pode ser escolhido diversas vezes, mas cada escolha deve se aplicar a uma escola diferente; os efeitos não se acumulam para a mesma escola.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 81",
+    "status": "audited"
+  },
+  {
+    "name": "Foco em Magia Maior",
+    "sourcePage": 81,
+    "description": "Escolha uma escola de magia na qual o personagem já possua Foco em Magia. A Classe de Dificuldade dos testes de resistência contra as magias dessa escola aumenta em mais +1.",
+    "normal": "",
+    "special": "Exige Foco em Magia na mesma escola. O bônus se acumula com Foco em Magia. Pode ser escolhido diversas vezes para escolas diferentes, mas não se acumula na mesma escola.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 81",
+    "status": "audited"
+  },
+  {
+    "name": "Magia Penetrante",
+    "sourcePage": 82,
+    "description": "O personagem recebe +2 de bônus nos testes de nível de conjurador realizados para superar a Resistência à Magia de uma criatura.",
+    "normal": "",
+    "special": "O bônus se aplica aos testes de conjurador para superar Resistência à Magia, não aos testes de dissipar magia ou a outros testes de nível de conjurador.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 82",
+    "status": "audited"
+  },
+  {
+    "name": "Magia Penetrante Maior",
+    "sourcePage": 82,
+    "description": "O personagem recebe +2 adicional nos testes de nível de conjurador para superar a Resistência à Magia de uma criatura.",
+    "normal": "",
+    "special": "Exige Magia Penetrante. O bônus de +2 se acumula com o bônus de Magia Penetrante, totalizando +4.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 82",
+    "status": "audited"
+  },
+  {
+    "name": "Magia Sem Gestos",
+    "sourcePage": 82,
+    "description": "O personagem pode conjurar uma magia sem executar o componente gestual normalmente exigido. A magia ocupa o lugar de uma magia um nível superior.",
+    "normal": "Magias que não possuem componente gestual não são afetadas pelo talento.",
+    "special": "É um talento metamágico. A magia preparada com este talento é tratada como um nível acima para determinar o espaço de magia necessário.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 82",
+    "status": "audited"
+  },
+  {
+    "name": "Magia Silenciosa",
+    "sourcePage": 82,
+    "description": "O personagem pode conjurar uma magia sem pronunciar o componente verbal normalmente exigido. A magia ocupa o lugar de uma magia um nível superior.",
+    "normal": "Magias que não possuem componente verbal não são afetadas pelo talento.",
+    "special": "É um talento metamágico. Magias de bardo não podem ser alteradas por este talento.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 82",
+    "status": "audited"
+  },
+  {
+    "name": "Maximizar Magia",
+    "sourcePage": 82,
+    "description": "Todos os efeitos variáveis e numéricos da magia são levados ao resultado máximo possível: dano, cura, quantidade de alvos e outros valores variáveis definidos pela descrição da magia.",
+    "normal": "Testes de resistência e testes resistidos, como dissipar magia, não são maximizados. Magias sem variações aleatórias não são afetadas.",
+    "special": "É um talento metamágico e ocupa o lugar de uma magia três níveis superior. Se combinado com outros talentos metamágicos, aplique as regras de combinação correspondentes.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 82",
+    "status": "audited"
+  },
+  {
+    "name": "Potencializar Magia",
+    "sourcePage": 83,
+    "description": "Aumenta em 50% todos os efeitos variáveis e numéricos de uma magia, como dano, cura ou quantidade de alvos, conforme a descrição do efeito.",
+    "normal": "Testes de resistência e testes resistidos, como dissipar magia, não são aumentados. Magias sem variações aleatórias não são afetadas.",
+    "special": "É um talento metamágico e ocupa o lugar de uma magia dois níveis superior.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 83",
+    "status": "audited"
+  },
+  {
+    "name": "Estender Magia",
+    "sourcePage": 81,
+    "description": "Uma magia estendida tem o dobro da duração normal.",
+    "normal": "Magias com duração Concentração, Instantânea ou Permanente não são afetadas.",
+    "special": "É um talento metamágico e ocupa o lugar de uma magia um nível superior.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 81",
+    "status": "audited"
+  },
+  {
+    "name": "Ampliar Magia",
+    "sourcePage": 74,
+    "description": "Dobra o alcance de uma magia cujo alcance seja Curto, Médio ou Longo. O alcance resultante passa a ser 15 m + 1,5 m por nível para Curto, 60 m + 6 m por nível para Médio e 240 m + 24 m por nível para Longo.",
+    "normal": "O talento não altera magias com alcance diferente de Curto, Médio ou Longo.",
+    "special": "É um talento metamágico e ocupa o lugar de uma magia um nível superior.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 74",
+    "status": "audited"
+  },
+  {
+    "name": "Acelerar Magia",
+    "sourcePage": 74,
+    "description": "Uma magia acelerada é conjurada como ação livre, permitindo que o personagem realize outras ações na mesma rodada, inclusive conjurar outra magia.",
+    "normal": "Uma magia com tempo de execução superior a uma ação de rodada completa não pode ser acelerada.",
+    "special": "Só é possível conjurar uma magia acelerada por rodada. A magia ocupa o lugar de uma magia quatro níveis superior e não provoca ataques de oportunidade. O livro restringe a aplicação deste talento a magias conjuradas espontaneamente.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 74",
+    "status": "audited"
   }
 ]
