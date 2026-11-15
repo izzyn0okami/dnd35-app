@@ -9563,7 +9563,7 @@
     "summonedCreature": false,
     "familiar": false,
     "description": "O arminho é um pequeno mamífero agressivo, embora normalmente escolha presas menores que ele. As mesmas estatísticas podem representar furões e doninhas.",
-    "combat": "Adesão (Ext): quando acerta uma mordida, o arminho pode cravar as mandíbulas na vítima e causar automaticamente o dano da mordida a cada rodada, até ser removido ou a vítima se libertar. Enquanto permanece preso, perde o bônus de Destreza na CA, que passa a 12. Pode ser agarrado ou atingido por uma arma; para removê-lo com a manobra Agarrar, é necessário vencer um teste resistido. Perícias: recebe +4 racial em Furtividade e +8 em Equilíbrio e Escalar; usa o modificador de Destreza no lugar de Força em Escalar e pode escolher 10 mesmo sob pressão."
+    "combat": "Adesão (Ext): quando acerta uma mordida, o arminho pode cravar as mandíbulas na vítima e causar automaticamente o dano da mordida a cada rodada, até ser removido ou a vítima se libertar. Enquanto permanece preso, perde o bônus de Destreza na CA, que será reduzida para CA 12. Pode ser agarrado ou atingido por uma arma; para removê-lo com a manobra Agarrar, é necessário vencer um teste resistido. Perícias: recebe +4 racial em Furtividade e +8 em Equilíbrio e Escalar; usa o modificador de Destreza no lugar de Força em Escalar e pode escolher 10 mesmo sob pressão."
   },
   {
     "id": "arraia",
