@@ -64,3 +64,8 @@ Data: 15/11/2026
 - Testes atualizados para os marcos corretos: Paladino 6º/9º/12º/15º/18º (1 a 5 usos semanais), Ranger Camuflagem 13º e Mimetismo 17º, e Movimento Rápido do Bárbaro aplicado antes da redução de deslocamento por carga média.
 - Inspirar Heroísmo explicita o alvo adicional no 18º nível. As descrições dos talentos bônus do Guerreiro foram uniformizadas para registrar os pré-requisitos.
 - Nenhuma estrutura de ficha ou dado persistido foi alterado nesta rodada.
+
+
+## Segunda rodada de correções da CI — 15/11/2026
+- O relatório de testes apontou duas expectativas desatualizadas, sem falha na compilação das regras: o teste de Inspirar Grandeza esperava a expressão “18º nível”, enquanto a descrição resumida usa “18º”; e o teste de progressão do Paladino ainda esperava “Imposição de Mãos” e Remover Doença no 3º nível.
+- Testes alinhados à descrição existente e à progressão registrada: Cura pelas Mãos no 2º nível; Remover Doença começa no 6º nível. Nenhuma regra de produção foi alterada nesta correção.
