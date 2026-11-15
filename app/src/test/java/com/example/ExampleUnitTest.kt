@@ -1235,8 +1235,8 @@ class ExampleUnitTest {
     val features = Dnd35Rules.CLASSES.first { it.name == "Paladino" }.features
     val expected = mapOf(
       1 to listOf("Aura do Bem", "Detectar o Mal", "Destruir o Mal 1/dia"),
-      2 to listOf("Graça Divina", "Imposição de Mãos"),
-      3 to listOf("Aura de Coragem", "Saúde Divina", "Remover Doença 1/semana"),
+      2 to listOf("Graça Divina", "Cura pelas Mãos"),
+      3 to listOf("Aura de Coragem", "Saúde Divina"),
       4 to listOf("Expulsar Mortos-Vivos", "Conjuração Divina"),
       5 to listOf("Destruir o Mal 2/dia", "Montaria Especial"),
       6 to listOf("Remover Doença 1/semana"),
