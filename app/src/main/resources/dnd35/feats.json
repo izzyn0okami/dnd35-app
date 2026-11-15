@@ -296,8 +296,8 @@
   {
     "name": "Investida Montada",
     "prerequisites": "Cavalgar 1 graduação, Combate Montado",
-    "summary": "Aumenta o dano de uma investida montada.",
-    "benefit": "Quando estiver montado e usar a ação de investida, você causa dano dobrado com uma arma corpo a corpo (ou triplicado com uma lança)."
+    "summary": "Permite continuar o deslocamento depois do ataque de uma investida montada.",
+    "benefit": "Ao realizar uma investida montado, você pode continuar se deslocando depois do ataque, seguindo em linha reta. O deslocamento total na rodada não pode exceder o dobro do deslocamento da montaria."
   },
   {
     "name": "Pisotear",
@@ -349,19 +349,19 @@
   },
   {
     "name": "Encontrão Aprimorado",
-    "prerequisites": "Ataque Poderoso",
+    "prerequisites": "FOR 13, Ataque Poderoso",
     "summary": "+4 nas tentativas de encontrão, sem provocar ataque de oportunidade.",
     "benefit": "Você recebe um bônus de +4 nos testes de encontrão e não provoca um ataque de oportunidade ao tentar um encontrão."
   },
   {
     "name": "Atropelar Aprimorado",
-    "prerequisites": "Ataque Poderoso",
+    "prerequisites": "FOR 13, Ataque Poderoso",
     "summary": "+4 nas tentativas de atropelar, sem provocar ataque de oportunidade.",
     "benefit": "Você recebe um bônus de +4 nos testes de atropelar e não provoca um ataque de oportunidade ao tentar atropelar um oponente."
   },
   {
     "name": "Separar Aprimorado",
-    "prerequisites": "Ataque Poderoso",
+    "prerequisites": "FOR 13, Ataque Poderoso",
     "summary": "+4 nas tentativas de separar, sem provocar ataque de oportunidade.",
     "benefit": "Você recebe um bônus de +4 nos testes de separar e não provoca um ataque de oportunidade ao tentar separar armas."
   },
