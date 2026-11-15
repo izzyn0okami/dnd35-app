@@ -53,3 +53,15 @@ Data: 2026-11-15
 - A fonte textual inicial é o catálogo estático de habilidades de classe já existente. O índice pode receber sinônimos e verbetes próprios em incrementos posteriores sem acoplar a busca ao motor de regras.
 - Teste automatizado cobre busca sem acentos e consulta vazia.
 - A descrição de Domínios do Clérigo também foi ajustada para explicitar o espaço de magia adicional por nível, corrigindo a expectativa do teste de conteúdo sem alterar a mecânica.
+
+
+## Auditoria de Bárbaro, Bardo e Druida (15/11/2026)
+
+- Fonte primária: Livro do Jogador brasileiro, Capítulo 3, Bárbaro (pp. 21–22), Bardo (pp. 23–25) e Druida (pp. 29–31), PDF da biblioteca do projeto.
+- **Bárbaro — Movimento Rápido:** encontrada divergência mecânica: a implementação impedia o bônus com armadura média e carga média, embora o livro permita ambos e determine que o bônus seja aplicado antes da redução normal de deslocamento. Corrigido o cálculo para permitir armadura leve/média e carga leve/média; armadura pesada e carga pesada/sobrecarga continuam impedindo o bônus. O teste antigo que afirmava a regra incorreta foi substituído e foi acrescentado teste para carga média.
+- **Bárbaro — Fúria:** descrição ampliada com duração, modificadores, restrições principais e fadiga ao término; corrigido o nome para **Vontade Inabalável**, conforme o livro.
+- **Bárbaro — Analfabetismo:** descrição ajustada para os idiomas conhecidos e para a alfabetização automática ao adquirir nível em outra classe.
+- **Bardo:** detalhados usos diários, requisitos de Atuação, alcance, duração e efeitos principais de Música de Proteção, Fascinar, Inspirar Coragem, Inspirar Competência, Sugestão, Inspirar Grandeza, Melodia da Libertação, Inspirar Heroísmo e Sugestão em Massa.
+- **Druida:** detalhadas opções e nível efetivo do Companheiro Animal, alcance/teste de Empatia Selvagem, Caminho da Floresta, Rastro Invisível, limites de tamanho e DV da Forma Selvagem, restrição das formas vegetais e progressão elemental.
+- Nenhuma progressão de nível, desbloqueio, dado persistido ou estrutura de ficha foi alterada. A única mudança mecânica neste incremento é a correção de Movimento Rápido do Bárbaro.
+- Testes atualizados para confirmar que armadura média e carga média permitem o bônus antes da redução normal de deslocamento.
