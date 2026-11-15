@@ -382,5 +382,53 @@
     "sourcePages": "39",
     "source": "Livro do Jogador brasileiro, Capítulo 3 — Ladino, p. 39",
     "status": "audited"
+  },
+  {
+    "className": "Clérigo",
+    "term": "Aura",
+    "description": "Um clérigo de uma divindade Caótica, Má, Boa ou Leal manifesta uma aura particularmente poderosa correspondente à tendência da divindade. Um clérigo que não adore uma divindade também manifesta uma aura especial se escolher um domínio de tendência (Caos, Mal, Bem ou Ordem).",
+    "activation": "Sempre ativa; é percebida por efeitos apropriados, como Detectar o Mal.",
+    "duration": "Permanente enquanto o clérigo cumprir as condições da aura.",
+    "restrictions": "Clérigos sem divindade e sem domínio de tendência, ou que não atendam às condições de alinhamento, não recebem essa aura especial.",
+    "progression": "A força da aura equivale ao nível de clérigo, como a aura de um clérigo devoto de uma divindade com a mesma tendência.",
+    "sourcePages": "28",
+    "source": "Livro do Jogador brasileiro, Capítulo 3 — Clérigo, p. 28",
+    "status": "audited"
+  },
+  {
+    "className": "Clérigo",
+    "term": "Domínios da Divindade",
+    "description": "O clérigo escolhe dois domínios associados à sua divindade. Cada domínio representa um aspecto da fé, concede um poder próprio e oferece uma lista de nove magias de domínio, uma para cada nível de magia. Um clérigo sem divindade escolhe dois domínios que representem suas inclinações espirituais.",
+    "activation": "Os poderes concedidos são usados conforme a descrição de cada domínio. Ao preparar magias, o clérigo reserva um espaço de domínio por nível de magia disponível para uma magia de um dos domínios escolhidos.",
+    "duration": "A escolha dos dois domínios é permanente.",
+    "restrictions": "Domínios de tendência (Caos, Mal, Bem e Ordem) só podem ser escolhidos se a tendência do clérigo for compatível. Domínios também podem acrescentar perícias à lista de perícias de classe.",
+    "progression": "Cada nível de magia que o clérigo puder conjurar oferece um espaço de domínio adicional, reservado para uma magia de um dos domínios escolhidos.",
+    "sourcePages": "28",
+    "source": "Livro do Jogador brasileiro, Capítulo 3 — Clérigo, p. 28",
+    "status": "audited"
+  },
+  {
+    "className": "Clérigo",
+    "term": "Conversão Espontânea",
+    "description": "O clérigo pode eliminar uma magia preparada para conjurar espontaneamente uma magia de cura ou de infligir ferimentos do mesmo nível ou inferior, conforme sua canalização de energia. Magias de domínio não podem ser convertidas.",
+    "activation": "A conversão ocorre no momento em que o clérigo conjura a magia, substituindo uma magia preparada elegível.",
+    "duration": "Disponível sempre que o clérigo tiver uma magia preparada que possa converter e um espaço correspondente.",
+    "restrictions": "Clérigos Bons (ou Neutros de divindade Boa) convertem para magias de cura. Clérigos Maus (ou Neutros de divindade Má) convertem para magias de infligir. Clérigos Neutros de divindade Neutra escolhem uma das formas ao criar o personagem, sem poder alterá-la. O livro lista exceções específicas para Wee Jas, St. Cuthbert e Obad-Hai.",
+    "progression": "A magia substituta deve ter nível igual ou inferior ao da magia preparada eliminada e respeitar os limites normais de conjuração.",
+    "sourcePages": "29",
+    "source": "Livro do Jogador brasileiro, Capítulo 3 — Clérigo, p. 29",
+    "status": "audited"
+  },
+  {
+    "className": "Clérigo",
+    "term": "Expulsar ou Fascinar Mortos-Vivos",
+    "description": "Todos os clérigos podem canalizar o poder de sua fé por meio de um símbolo sagrado ou profano para afetar mortos-vivos. Clérigos Bons (ou Neutros de divindade Boa) expulsam ou destroem mortos-vivos; clérigos Maus (ou Neutros de divindade Má) fascinam ou comandam essas criaturas.",
+    "activation": "É uma habilidade sobrenatural ativada por meio do símbolo sagrado ou profano. O teste de expulsão é 1d20 + modificador de Carisma; o resultado determina quais mortos-vivos podem ser afetados e o efeito produzido.",
+    "duration": "O limite diário é 3 + modificador de Carisma utilizações.",
+    "restrictions": "Um clérigo Neutro de divindade Neutra escolhe, durante a criação do personagem, se expulsa/destrói ou fascina/comanda; essa decisão não pode ser revertida e também determina sua conversão espontânea. Cinco graduações em Conhecimento (religião) concedem +2 nos testes de expulsão/fascinação.",
+    "progression": "O nível de clérigo determina os Dados de Vida máximos das criaturas afetadas. Quando a expulsão causa dano, o valor é 2d6 + nível de clérigo + modificador de Carisma.",
+    "sourcePages": "29",
+    "source": "Livro do Jogador brasileiro, Capítulo 3 — Clérigo, p. 29",
+    "status": "audited"
   }
 ]
