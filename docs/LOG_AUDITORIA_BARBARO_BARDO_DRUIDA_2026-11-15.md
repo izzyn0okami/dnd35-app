@@ -1,4 +1,4 @@
-# Log de auditoria — Bárbaro, Bardo e Druida
+# Log de auditoria — Bárbaro, Bardo, Druida, Ladino e Monge
 
 Data: 15/11/2026
 
@@ -31,3 +31,8 @@ Data: 15/11/2026
 - **Ladino:** Ataque Furtivo detalhado com alcance máximo de 9 m para ataques à distância, condições de vulnerabilidade, imunidades e regra de não multiplicar o dano em acerto decisivo. Encontrar Armadilhas e Evasão receberam limitações e CDs relevantes.
 - **Monge:** Bônus de CA sem Armadura esclarecido; Rajada de Golpes agora registra ação de ataque total, restrição de armadura/armas, penalidades por faixa de nível e segundo ataque no 11º nível. Mão Vibrante recebeu frequência, alvos imunes e CD; Corpo Atemporal esclarece que penalidades de idade já adquiridas permanecem e que o monge ainda morre de velhice.
 - Testes automatizados adicionados para conferir a presença dessas limitações nas descrições.
+
+## Complemento — Ladino e Monge
+- Ladino: Ataque Furtivo agora explicita alcance de 9 m para ataques à distância, condições de vulnerabilidade, imunidades e ausência de multiplicação do dano em acerto decisivo; Encontrar Armadilhas e Evasão incluem limitações importantes.
+- Monge: Bônus de CA sem Armadura, Rajada de Golpes, Mão Vibrante e Corpo Atemporal receberam descrições mais completas, com requisitos, penalidades, armas permitidas, CDs e exceções do Livro do Jogador.
+- Teste automatizado adicional cobre as principais limitações textuais de Ladino e Monge.
