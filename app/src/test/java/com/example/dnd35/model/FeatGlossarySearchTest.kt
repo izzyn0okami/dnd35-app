@@ -197,6 +197,19 @@ class FeatGlossarySearchTest {
         assertTrue(endurance.reference?.normal?.contains("fatigado") == true)
     }
 
+
+    @Test
+    fun metamagicReferencesExplainLevelCostAndExceptions() {
+        val quicken = FeatGlossarySearch.search("Acelerar Magia").first()
+        assertTrue(quicken.reference?.special?.contains("quatro níveis") == true)
+
+        val silent = FeatGlossarySearch.search("Magia Silenciosa").first()
+        assertTrue(silent.reference?.special?.contains("bardo") == true)
+
+        val greaterPenetration = FeatGlossarySearch.search("Magia Penetrante Maior").first()
+        assertTrue(greaterPenetration.reference?.special?.contains("totalizando +4") == true)
+    }
+
     @Test
     fun blankSearchReturnsNoResults() {
         assertTrue(FeatGlossarySearch.search("   ").isEmpty())
