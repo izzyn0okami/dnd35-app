@@ -79,5 +79,50 @@
     "sourcePage": 86,
     "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 86",
     "status": "audited"
+  },
+  {
+    "name": "Agarrar Aprimorado",
+    "sourcePage": 75,
+    "description": "Ao iniciar a manobra Agarrar, o ataque de toque inicial não provoca ataque de oportunidade. Além disso, o personagem recebe +4 de bônus em todos os testes de Agarrar, tanto quando inicia a manobra quanto quando tenta escapar ou resistir a ela.",
+    "normal": "Sem este talento, o ataque de toque inicial para iniciar um agarrão provoca ataque de oportunidade.",
+    "special": "Um monge pode escolher este talento como talento adicional no 1º nível, mesmo sem cumprir os pré-requisitos. Um guerreiro também pode escolhê-lo como talento adicional.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 75",
+    "status": "audited"
+  },
+  {
+    "name": "Desviar Objetos",
+    "sourcePage": 79,
+    "description": "Uma vez por rodada, quando uma arma de ataque à distância — como flecha, virote, lança ou outra arma de disparo ou arremesso — normalmente atingiria o personagem, ele pode desviá-la e não sofrer dano. Desviar o objeto não é considerado uma ação.",
+    "normal": "",
+    "special": "É necessário ter pelo menos uma mão livre, estar ciente do ataque e não estar surpreso. O talento exige Ataque Desarmado Aprimorado e Destreza 13.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 79",
+    "status": "audited"
+  },
+  {
+    "name": "Trespassar",
+    "sourcePage": 85,
+    "description": "Quando um ataque corpo a corpo causar dano suficiente para derrubar uma criatura (normalmente reduzindo seus pontos de vida a 0 ou menos), o personagem pode realizar imediatamente um ataque corpo a corpo adicional contra outra criatura que esteja ao seu alcance.",
+    "normal": "",
+    "special": "Não é possível se deslocar antes do ataque adicional, nem mesmo realizar um passo de ajuste de 1,5 m. O ataque adicional utiliza a mesma arma e o mesmo bônus de ataque do golpe que derrubou o oponente. Exige Força 13 e Ataque Poderoso.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 85",
+    "status": "audited"
+  },
+  {
+    "name": "Fintar Aprimorado",
+    "sourcePage": 81,
+    "description": "Permite realizar o teste de Blefar para fintar em combate usando uma ação de movimento, em vez da ação padrão normalmente exigida.",
+    "normal": "Fintar em combate exige uma ação padrão.",
+    "special": "Exige Inteligência 13 e Especialização em Combate. Um guerreiro pode escolher este talento como talento adicional.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 81",
+    "status": "audited"
+  },
+  {
+    "name": "Magia Natural",
+    "sourcePage": 82,
+    "description": "Permite conjurar magias enquanto estiver usando Forma Selvagem. O personagem pode substituir os componentes verbais e gestuais por vocalizações e movimentos apropriados à forma assumida e ainda utilizar componentes materiais ou focos que possua, mesmo que estejam ocultos pela transformação.",
+    "normal": "",
+    "special": "Não permite ativar itens mágicos que o personagem não conseguiria usar na forma assumida e não concede a capacidade de falar enquanto estiver em Forma Selvagem. Exige Sabedoria 13 e a habilidade Forma Selvagem.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 82",
+    "status": "audited"
   }
 ]
