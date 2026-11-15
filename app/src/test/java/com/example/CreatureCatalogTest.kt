@@ -752,4 +752,52 @@ class CreatureCatalogTest {
         assertTrue(yrthak.combat.contains("36 m"))
     }
 
+    
+    @Test
+    fun elevenAnimalSheetsHaveBookBasedDescriptionAndCombat() {
+        val eagle = CreatureCatalog.byId("aguia")!!
+        assertTrue(eagle.description.contains("2,1 m"))
+        assertTrue(eagle.combat.contains("+8 de bônus racial em Observar"))
+
+        val ermine = CreatureCatalog.byId("arminho")!!
+        assertTrue(ermine.combat.contains("Adesão (Ext)"))
+        assertTrue(ermine.combat.contains("CA 12"))
+
+        val ray = CreatureCatalog.byId("arraia")!!
+        assertTrue(ray.description.contains("plâncton"))
+        assertTrue(ray.combat.contains("+8 de bônus racial em Natação"))
+
+        val baboon = CreatureCatalog.byId("babuino")!!
+        assertTrue(baboon.description.contains("45 kg"))
+        assertTrue(baboon.combat.contains("+8 de bônus racial em Escalar"))
+
+        val blueWhale = CreatureCatalog.byId("baleia-azul")!!
+        assertTrue(blueWhale.combat.contains("Percepção às Cegas"))
+        assertTrue(blueWhale.combat.contains("36 m"))
+
+        val spermWhale = CreatureCatalog.byId("baleia-cachalote")!!
+        assertTrue(spermWhale.description.contains("13 m"))
+        assertTrue(spermWhale.combat.contains("Prender a Respiração"))
+
+        val orca = CreatureCatalog.byId("baleia-orca")!!
+        assertTrue(orca.description.contains("outras baleias"))
+        assertTrue(orca.combat.contains("36 m"))
+
+        val bison = CreatureCatalog.byId("bisao")!!
+        assertTrue(bison.description.contains("1,2 tonelada"))
+        assertTrue(bison.combat.contains("1d12"))
+
+        val dog = CreatureCatalog.byId("cachorro")!!
+        assertTrue(dog.description.contains("10 e 25 kg"))
+        assertTrue(dog.combat.contains("Sobrevivência"))
+
+        val ridingDog = CreatureCatalog.byId("cachorro-de-montaria")!!
+        assertTrue(ridingDog.combat.contains("750 kg"))
+        assertTrue(ridingDog.combat.contains("Imobilização"))
+
+        val camel = CreatureCatalog.byId("camelo")!!
+        assertTrue(camel.description.contains("dromedário"))
+        assertTrue(camel.combat.contains("2.250 kg"))
+    }
+
 }
