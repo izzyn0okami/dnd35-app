@@ -10341,7 +10341,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": true
+    "familiar": true,
+    "description": "Os valores do bloco representam aves de rapina noturnas, com cerca de 30 cm a 60 cm de comprimento. As corujas utilizam as duas garras em um único ataque.",
+    "combat": "As corujas mergulham silenciosamente sobre suas vítimas e atacam com as garras poderosas. Perícias: recebem +8 de bônus racial em Ouvir e +14 em Furtividade. Recebem +8 de bônus racial em Observar quando estão sob penumbra ou escuridão."
   },
   {
     "id": "corvo",
@@ -10391,7 +10393,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": true
+    "familiar": true,
+    "description": "O corvo representa pássaros negros e robustos, com cerca de 60 cm de comprimento e envergadura de aproximadamente 1,2 m. As estatísticas também podem representar aves de tamanho semelhante, exceto aves de rapina.",
+    "combat": "Os corvos utilizam as duas garras em um único ataque. O verbete não descreve habilidades especiais de combate ou bônus raciais adicionais."
   },
   {
     "id": "crocodilo",
@@ -10597,7 +10601,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": true
+    "familiar": true,
+    "description": "Os falcões são semelhantes às águias, mas um pouco menores: medem entre 40 cm e 60 cm, com envergadura de 60 cm ou menos.",
+    "combat": "Os falcões utilizam as duas garras em um único ataque. Perícias: recebem +8 de bônus racial em Observar."
   },
   {
     "id": "gato",
@@ -10647,7 +10653,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": true
+    "familiar": true,
+    "description": "Os valores do bloco de estatísticas representam um gato doméstico.",
+    "combat": "Os gatos preferem espreitar e surpreender suas presas. Perícias: recebem +4 de bônus racial em Escalar, Esconder-se e Furtividade, e +8 em Saltar e Equilíbrio. Aplicam o modificador de Destreza em testes de Escalar e Saltar. Em áreas de grama alta ou relva espessa, o bônus de Esconder-se aumenta para +8."
   },
   {
     "id": "golfinho",
@@ -10697,7 +10705,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Os golfinhos são mamíferos aquáticos brincalhões, amigáveis e cordiais. Um golfinho mede entre 1,2 m e 1,8 m de comprimento e pesa entre 55 kg e 80 kg. As estatísticas também representam baleias pequenas de forma e tamanho semelhantes.",
+    "combat": "Percepção às Cegas (Ext): emite sons de alta frequência, inaudíveis para a maioria das criaturas, para localizar objetos e criaturas num raio de 36 m. A magia silêncio anula essa habilidade e obriga o golfinho a usar sua visão, semelhante à humana. Prender a Respiração (Ext): pode prender a respiração por um número de rodadas igual a 6 vezes seu valor de Constituição. Perícias: recebe +8 de bônus racial em Natação para ações especiais ou evitar ameaças; pode escolher 10 mesmo distraído ou ameaçado e correr enquanto nada em linha reta. Recebe +4 racial em Observar e Ouvir; esses bônus são perdidos se a Percepção às Cegas for anulada."
   },
   {
     "id": "gorila",
@@ -10747,7 +10757,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Os gorilas são onívoros poderosos, semelhantes a macacos africanos, mas muito mais agressivos. Matam e devoram qualquer coisa que encontram. Um macho adulto mede entre 1,5 m e 1,8 m de altura e pesa entre 150 kg e 200 kg.",
+    "combat": "Um gorila quase sempre ataca usando demonstrações de agressividade, na esperança de intimidar adversários em potencial. Perícias: recebe +8 de bônus racial em Escalar e pode escolher 10 mesmo quando está com pressa ou sob ameaça."
   },
   {
     "id": "guepardo",
@@ -10797,7 +10809,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Os guepardos são predadores ágeis das planícies. Medem entre 90 cm e 1,5 m e pesam entre 55 kg e 65 kg.",
+    "combat": "Os guepardos investem repentinamente para derrubar suas presas. Imobilização (Ext): quando atinge um oponente com as garras ou mordida, pode iniciar Imobilização como ação livre, com +3 no teste, sem ataque de toque e sem provocar ataques de oportunidade. Se falhar, o oponente não pode tentar imobilizar o guepardo em resposta. Impulso (Ext): uma vez por hora, pode percorrer dez vezes seu deslocamento normal (150 m) durante uma Investida."
   },
   {
     "id": "javali",
@@ -10847,7 +10861,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Embora não sejam carnívoros, os javalis são suínos mal-humorados que geralmente investem contra qualquer criatura que perturbe sua paz. São cobertos por pelos espessos e acinzentados. Os machos medem cerca de 1,2 m de comprimento e atingem 90 cm de altura.",
+    "combat": "Ferocidade (Ext): o javali é um combatente tenaz que continua lutando sem penalidades mesmo quando está incapacitado ou morrendo."
   },
   {
     "id": "jumento",
@@ -10897,7 +10913,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "Os jumentos são equinos de orelhas longas, estáveis e robustos. As estatísticas também podem representar burros.",
+    "combat": "Um jumento só usa a mordida quando não há nenhuma outra maneira de escapar. Capacidade de Carga: leve até 25 kg; média de 26 a 50 kg; pesada de 51 a 75 kg. Pode arrastar 375 kg. Perícias: recebe +2 de bônus racial em Equilíbrio."
   },
   {
     "id": "lagarto",
@@ -12097,7 +12115,9 @@
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "As hienas são animais que caçam em grupo, conhecidas por sua astúcia e pelos ruídos irritantes que emitem. As estatísticas representam uma hiena-listrada, com quase 1 m de comprimento e cerca de 60 kg.",
+    "combat": "A tática preferida das hienas é enviar alguns indivíduos para o combate frontal, enquanto o restante da matilha cerca e flanqueia o inimigo. Imobilização (Ext): quando atinge um oponente com a mordida, pode iniciar Imobilização como ação livre, com +2 no teste, sem ataque de toque e sem provocar ataques de oportunidade. Se falhar, o oponente não pode tentar imobilizar a hiena em resposta. Perícias: recebe +4 de bônus racial em Esconder-se em áreas de grama alta ou relva espessa."
   },
   {
     "id": "lagarto-monitor",
