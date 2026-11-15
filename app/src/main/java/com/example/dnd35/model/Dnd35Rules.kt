@@ -315,7 +315,7 @@ object Dnd35Rules {
             features = listOf(
                 ClassFeature(1, "Companheiro Animal", "Começa com um animal fiel escolhido entre as opções permitidas para druida de 1º nível. O companheiro recebe benefícios especiais conforme o nível de druida; a partir do 4º nível, o druida também pode escolher opções alternativas, aplicando a redução de nível efetivo indicada para cada animal. Se o companheiro morrer ou for dispensado, pode obter outro após 24 horas de oração."),
                 ClassFeature(1, "Senso da Natureza", "Recebe +2 em testes de Conhecimento (Natureza) e Sobrevivência."),
-                ClassFeature(1, "Empatia Selvagem", "Pode melhorar a atitude de animais como em um teste de Diplomacia. Faz 1d20 + nível de druida + modificador de Carisma; normalmente exige 1 minuto e o druida e o animal precisam estar a até 9 m, em condições que permitam observar um ao outro. Também pode influenciar bestas mágicas com Inteligência 1 ou 2, com penalidade no teste."),
+                ClassFeature(1, "Empatia com a Natureza", "Pode melhorar a atitude de animais como em um teste de Diplomacia. Faz 1d20 + nível de druida + modificador de Carisma; normalmente exige 1 minuto e o druida e o animal precisam estar a até 9 m, em condições que permitam observar um ao outro. Também pode influenciar bestas mágicas com Inteligência 1 ou 2, com penalidade no teste."),
                 ClassFeature(2, "Caminho da Floresta", "Move-se por vegetação rasteira natural à velocidade normal e sem sofrer dano ou outros impedimentos. Áreas manipuladas magicamente para impedir o movimento continuam afetando o druida."),
                 ClassFeature(3, "Rastro Invisível", "Não deixa rastros em terrenos naturais e não pode ser rastreado por meios não mágicos. Pode escolher deixar rastros quando desejar."),
                 ClassFeature(4, "Resistir à Tentação da Natureza", "Recebe +4 de bônus nos testes de resistência contra habilidades similares à magia das fadas."),
@@ -427,7 +427,7 @@ object Dnd35Rules {
                 ClassFeature(1, "Detectar o Mal", "Pode detectar o mal à vontade."),
                 ClassFeature(1, "Destruir o Mal 1/dia", "Uma vez ao dia, soma Carisma à jogada de ataque e nível de paladino ao dano contra um alvo maligno."),
                 ClassFeature(2, "Graça Divina", "Adiciona o modificador de Carisma a todos os testes de resistência."),
-                ClassFeature(2, "Imposição de Mãos", "Com Carisma 12 ou maior, cura por toque uma quantidade diária de pontos de vida igual ao nível de paladino × modificador de Carisma. Pode dividir a cura entre vários usos e criaturas; ativar exige uma ação padrão. Também pode gastar parte ou todo o total diário para causar dano a mortos-vivos por meio de um ataque de toque."),
+                ClassFeature(2, "Cura pelas Mãos", "Com Carisma 12 ou maior, cura por toque uma quantidade diária de pontos de vida igual ao nível de paladino × modificador de Carisma. Pode dividir a cura entre vários usos e criaturas; ativar exige uma ação padrão. Também pode gastar parte ou todo o total diário para causar dano a mortos-vivos por meio de um ataque de toque."),
                 ClassFeature(3, "Aura de Coragem", "O paladino fica imune a efeitos de medo; aliados a até 3 m recebem +4 de bônus de moral nos testes de resistência contra medo enquanto permanecerem nessa área."),
                 ClassFeature(3, "Saúde Divina", "Imunidade a todas as doenças."),
                 ClassFeature(4, "Expulsar Mortos-Vivos", "Expulsa mortos-vivos como um clérigo de nível igual ao nível de paladino menos 3."),
@@ -458,7 +458,7 @@ object Dnd35Rules {
             classSkills = listOf("Adestrar Animais", "Cavalgar", "Concentração", "Conhecimento (Geografia)", "Conhecimento (Masmorras)", "Conhecimento (Natureza)", "Cura", "Escalar", "Esconder-se", "Furtividade", "Natação", "Observar", "Ofícios", "Ouvir", "Procurar", "Profissão", "Saltar", "Sobrevivência", "Usar Cordas"),
             features = listOf(
                 ClassFeature(1, "Inimigo Predileto +2", "+2 em testes de Blefar, Ouvir, Sentir Motivação, Observar e Sobrevivência, além de dano contra um tipo de criatura escolhido."),
-                ClassFeature(1, "Rastrear e Empatia Selvagem", "Recebe o talento Rastrear e pode influenciar animais com um teste de nível de ranger + modificador de Carisma."),
+                ClassFeature(1, "Rastrear e Empatia com a Natureza", "Recebe o talento Rastrear e pode influenciar animais com um teste de nível de ranger + modificador de Carisma."),
                 ClassFeature(2, "Estilo de Combate", "Escolhe arquearia ou combate com duas armas; os talentos do estilo não exigem seus pré-requisitos normais enquanto usar armadura leve ou nenhuma."),
                 ClassFeature(3, "Tolerância", "Recebe o talento Tolerância como talento adicional."),
                 ClassFeature(4, "Conjuração de Ranger", "Começa a conjurar magias divinas de ranger; a progressão e as magias conhecidas seguem a tabela da classe."),
