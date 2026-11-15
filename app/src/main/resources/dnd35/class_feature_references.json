@@ -10,5 +10,53 @@
     "sourcePages": "21–22",
     "source": "Livro do Jogador brasileiro, Capítulo 3 — Bárbaro, pp. 21–22",
     "status": "audited"
+  },
+  {
+    "className": "Bárbaro",
+    "term": "Esquiva Sobrenatural",
+    "description": "A partir do 2º nível, o bárbaro conserva seu bônus de Destreza na Classe de Armadura mesmo quando é surpreendido ou atacado por um oponente invisível. A habilidade representa uma reação intuitiva ao perigo antes que os sentidos identifiquem a ameaça.",
+    "activation": "Sempre ativa; não exige ação ou ativação voluntária.",
+    "duration": "Permanente enquanto o bárbaro puder agir normalmente.",
+    "restrictions": "O bárbaro ainda perde o bônus de Destreza na CA quando estiver imobilizado.",
+    "progression": "Se o personagem adquirir Esquiva Sobrenatural por outra classe, recebe automaticamente Esquiva Sobrenatural Aprimorada. Os níveis das classes que concedem Esquiva Sobrenatural se acumulam para determinar o nível mínimo de ladino capaz de flanqueá-lo.",
+    "sourcePages": "23",
+    "source": "Livro do Jogador brasileiro, Capítulo 3 — Bárbaro, p. 23",
+    "status": "audited"
+  },
+  {
+    "className": "Bárbaro",
+    "term": "Sentir Armadilhas",
+    "description": "A partir do 3º nível, o bárbaro recebe um senso intuitivo que o alerta sobre armadilhas: ganha +1 nos testes de resistência de Reflexos para evitá-las e +1 de bônus de esquiva na CA contra ataques feitos por armadilhas.",
+    "activation": "Sempre ativa; aplica-se automaticamente contra armadilhas.",
+    "duration": "Permanente. O bônus aumenta conforme a progressão da classe.",
+    "restrictions": "Os bônus são específicos contra armadilhas: não se aplicam a testes de Reflexos ou ataques que não tenham essa origem.",
+    "progression": "O bônus aumenta em +1 a cada três níveis após o 3º: níveis 6, 9, 12, 15 e 18. A habilidade Sentir Armadilhas de diferentes classes se acumula.",
+    "sourcePages": "23",
+    "source": "Livro do Jogador brasileiro, Capítulo 3 — Bárbaro, p. 23",
+    "status": "audited"
+  },
+  {
+    "className": "Bárbaro",
+    "term": "Esquiva Sobrenatural Aprimorada",
+    "description": "A partir do 5º nível, o bárbaro não pode ser flanqueado: consegue reagir aos adversários em seus flancos como reagiria a um único atacante. Isso impede que um ladino realize ataques furtivos por flanquear o bárbaro.",
+    "activation": "Sempre ativa; não exige ação.",
+    "duration": "Permanente.",
+    "restrictions": "Um ladino ainda pode flanquear o bárbaro para aplicar ataque furtivo se possuir pelo menos quatro níveis de ladino a mais que o nível de classe do bárbaro considerado pela regra.",
+    "progression": "Se o personagem já possuir Esquiva Sobrenatural por outra classe, recebe automaticamente esta versão aprimorada. Os níveis das classes que concedem Esquiva Sobrenatural se acumulam para determinar o nível mínimo de ladino capaz de flanqueá-lo.",
+    "sourcePages": "23",
+    "source": "Livro do Jogador brasileiro, Capítulo 3 — Bárbaro, p. 23",
+    "status": "audited"
+  },
+  {
+    "className": "Bárbaro",
+    "term": "Redução de Dano",
+    "description": "A partir do 7º nível, o bárbaro ignora uma pequena parcela do dano causado por cada golpe recebido. Subtraia o valor da redução do dano de cada ataque de arma ou ataque natural que o atingir.",
+    "activation": "Sempre ativa; reduz o dano automaticamente após cada ataque que cause dano.",
+    "duration": "Permanente.",
+    "restrictions": "A redução é aplicada por ataque, não uma única vez por rodada. A descrição da classe especifica ataques de armas e ataques naturais.",
+    "progression": "Começa em 1 ponto no 7º nível. Aumenta em 1 ponto no 10º nível e a cada três níveis depois disso: 13º, 16º e 19º.",
+    "sourcePages": "23",
+    "source": "Livro do Jogador brasileiro, Capítulo 3 — Bárbaro, p. 23",
+    "status": "audited"
   }
 ]
