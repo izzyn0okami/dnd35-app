@@ -77,6 +77,18 @@ class FeatGlossarySearchTest {
         assertTrue(mastery.reference?.sourcePages == "49")
     }
 
+
+    @Test
+    fun paladinReferencesExplainDailyAndWeeklyUses() {
+        val smite = ClassFeatureGlossarySearch.search("Destruir o Mal")
+            .first { it.className == "Paladino" }
+        assertTrue(smite.reference?.progression?.contains("5 usos/dia") == true)
+
+        val disease = ClassFeatureGlossarySearch.search("Remover Doença")
+            .first { it.className == "Paladino" }
+        assertTrue(disease.reference?.progression?.contains("5 usos por semana") == true)
+    }
+
     @Test
     fun blankSearchReturnsNoResults() {
         assertTrue(FeatGlossarySearch.search("   ").isEmpty())
