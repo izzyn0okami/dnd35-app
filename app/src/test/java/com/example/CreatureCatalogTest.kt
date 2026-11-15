@@ -849,4 +849,50 @@ class CreatureCatalogTest {
         assertTrue(elephant.combat.contains("2d8+15"))
     }
 
+    
+    @Test
+    fun tenMoreAnimalSheetsHaveBookBasedDescriptionAndCombat() {
+        val owl = CreatureCatalog.byId("coruja")!!
+        assertTrue(owl.description.contains("30 cm a 60 cm"))
+        assertTrue(owl.combat.contains("+14 em Furtividade"))
+
+        val raven = CreatureCatalog.byId("corvo")!!
+        assertTrue(raven.description.contains("1,2 m"))
+        assertTrue(raven.combat.contains("duas garras"))
+
+        val falcon = CreatureCatalog.byId("falcao")!!
+        assertTrue(falcon.description.contains("40 cm e 60 cm"))
+        assertTrue(falcon.combat.contains("+8 de bônus racial em Observar"))
+
+        val cat = CreatureCatalog.byId("gato")!!
+        assertTrue(cat.combat.contains("surpreender suas presas"))
+        assertTrue(cat.combat.contains("+8 em Saltar e Equilíbrio"))
+
+        val dolphin = CreatureCatalog.byId("golfinho")!!
+        assertTrue(dolphin.description.contains("55 kg e 80 kg"))
+        assertTrue(dolphin.combat.contains("6 vezes seu valor de Constituição"))
+        assertTrue(dolphin.combat.contains("36 m"))
+
+        val gorilla = CreatureCatalog.byId("gorila")!!
+        assertTrue(gorilla.description.contains("150 kg e 200 kg"))
+        assertTrue(gorilla.combat.contains("+8 de bônus racial em Escalar"))
+
+        val cheetah = CreatureCatalog.byId("guepardo")!!
+        assertTrue(cheetah.combat.contains("Impulso (Ext)"))
+        assertTrue(cheetah.combat.contains("150 m"))
+
+        val hyena = CreatureCatalog.byId("hiena")!!
+        assertTrue(hyena.description.contains("hiena-listrada"))
+        assertTrue(hyena.combat.contains("Imobilização (Ext)"))
+        assertTrue(hyena.combat.contains("+2 no teste"))
+
+        val boar = CreatureCatalog.byId("javali")!!
+        assertTrue(boar.description.contains("pelos espessos e acinzentados"))
+        assertTrue(boar.combat.contains("Ferocidade (Ext)"))
+
+        val donkey = CreatureCatalog.byId("jumento")!!
+        assertTrue(donkey.description.contains("orelhas longas"))
+        assertTrue(donkey.combat.contains("375 kg"))
+    }
+
 }
