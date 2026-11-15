@@ -12,13 +12,16 @@ data class FeatGlossaryResult(
     val prerequisites: String,
     val summary: String,
     val benefit: String,
-    val source: String = "Livro do Jogador, Capítulo 5: Talentos (p. 73–89)"
+    val source: String = "Livro do Jogador, Capítulo 5: Talentos (p. 73–89)",
+    val reference: Dnd35Rules.FeatReference? = null
 )
 
 object FeatGlossarySearch {
     fun search(query: String): List<FeatGlossaryResult> {
         val normalized = normalize(query)
         if (normalized.isBlank()) return emptyList()
+
+        val references = Dnd35Rules.FEAT_REFERENCES.associateBy { normalize(it.name) }
 
         return Dnd35Rules.PRESET_FEATS
             .asSequence()
@@ -27,7 +30,8 @@ object FeatGlossarySearch {
                     name = it.name,
                     prerequisites = it.prerequisites,
                     summary = it.summary,
-                    benefit = it.benefit
+                    benefit = it.benefit,
+                    reference = references[normalize(it.name)]
                 )
             }
             .filter {
