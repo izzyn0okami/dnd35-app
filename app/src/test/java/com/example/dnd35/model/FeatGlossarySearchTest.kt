@@ -89,6 +89,19 @@ class FeatGlossarySearchTest {
         assertTrue(disease.reference?.progression?.contains("5 usos por semana") == true)
     }
 
+
+    @Test
+    fun monkReferencesExplainFlurryAndVibratingPalmLimits() {
+        val flurry = ClassFeatureGlossarySearch.search("Rajada de Golpes")
+            .first { it.className == "Monge" }
+        assertTrue(flurry.reference?.progression?.contains("9º nível") == true)
+
+        val palm = ClassFeatureGlossarySearch.search("Mão Vibrante")
+            .first { it.className == "Monge" }
+        assertTrue(palm.reference?.restrictions?.contains("imunes a sucessos decisivos") == true)
+        assertTrue(palm.reference?.sourcePages == "44")
+    }
+
     @Test
     fun blankSearchReturnsNoResults() {
         assertTrue(FeatGlossarySearch.search("   ").isEmpty())
