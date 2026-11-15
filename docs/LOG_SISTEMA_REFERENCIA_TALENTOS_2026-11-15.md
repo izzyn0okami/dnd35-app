@@ -87,3 +87,14 @@ Data: 2026-11-15
 - Corrigido o termo de busca do teste de Ataque Poderoso para corresponder à forma plural “armas leves” presente no texto de referência.
 - A cobertura permanece em 57 talentos e 44 habilidades de classe; nenhum dado de ficha ou regra de cálculo foi modificado por esses ajustes.
 - Aguardar a conclusão dos fluxos CI e compilação Android no commit final antes de mesclar.
+
+
+## Ampliação de talentos de combate e usos especiais (15/11/2026)
+
+- A cobertura passou de 57 para **69 de 110 talentos**. Foram acrescentadas 12 referências detalhadas independentes do resumo da ficha.
+- Novos verbetes: Foco em Arma Maior, Expulsão Adicional, Expulsão Aprimorada, Imobilização Aprimorada, Investida Implacável, Investida Montada, Saque Rápido, Sucesso Decisivo Aprimorado, Tiro em Movimento, Tiro Múltiplo, Tiro Preciso Aprimorado e Trespassar Maior.
+- As referências registram pré-requisitos, ações, limites de uso, progressão por BBA, exceções de classe e interações relevantes, incluindo os benefícios especiais concedidos a guerreiros, monges e rangers.
+- Fonte primária conferida: Livro do Jogador brasileiro, Capítulo 5 — Talentos, páginas impressas 81–85 (páginas do PDF correspondentes verificadas no arquivo da biblioteca).
+- Foram adicionados testes de regressão para os detalhes de Foco em Arma Maior, Expulsão Adicional, Imobilização Aprimorada, Saque Rápido, Tiro Múltiplo, Tiro Preciso Aprimorado e Trespassar Maior.
+- A cobertura das 44 referências de habilidades de classe permanece inalterada. Não foram modificados cálculos, pré-requisitos automáticos, progressões ou dados persistidos.
+- Próximo trabalho: continuar a auditoria dos 41 talentos ainda sem referência detalhada, começando pelos talentos de combate e montaria, sem repetir os 69 verbetes já auditados.
