@@ -71,3 +71,11 @@ Data: 2026-11-15
 - Foram acrescentadas referências para talentos de bônus em perícias e testes de resistência, além de Foco em Perícia, Prontidão, Corrida e Tolerância.
 - As referências simples utilizam a descrição mecânica da Tabela 5-1; quando há regra normal ou exceção de classe (como o talento Tolerância concedido automaticamente ao ranger), ela foi registrada separadamente.
 - Testes adicionados para Foco em Perícia e Tolerância.
+
+
+## Auditoria de talentos metamágicos e conjuração (15/11/2026)
+
+- Cobertura atualizada para **57 de 110 talentos**.
+- Acrescentadas referências detalhadas para Magia em Combate, Foco em Magia, Foco em Magia Maior, Magia Penetrante, Magia Penetrante Maior, Magia Sem Gestos, Magia Silenciosa, Maximizar Magia, Potencializar Magia, Estender Magia, Ampliar Magia e Acelerar Magia.
+- As entradas registram custo de nível de magia, exceções, escolas afetadas, condições de uso e efeitos que não são modificados, conforme o Livro do Jogador brasileiro.
+- Testes adicionados para custos metamágicos e exceções específicas de conjuradores.
