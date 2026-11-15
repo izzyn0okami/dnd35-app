@@ -370,4 +370,32 @@ class FeatGlossarySearchTest {
         assertTrue(track.reference?.description?.contains("metade do deslocamento") == true)
     }
 
+
+    @Test
+    fun weaponArmorAndShieldProficiencyReferencesMatchTheBrazilianHandbook() {
+        val common = FeatGlossarySearch.search("Usar Arma Comum").first()
+        assertTrue(common.reference?.special?.contains("domínio da Guerra") == true)
+
+        val exotic = FeatGlossarySearch.search("Usar Arma Exótica").first()
+        assertTrue(exotic.reference?.special?.contains("Força 13") == true)
+        assertTrue(exotic.reference?.special?.contains("arma exótica diferente") == true)
+
+        val simple = FeatGlossarySearch.search("Usar Armas Simples").first()
+        assertTrue(simple.reference?.special?.contains("druidas, monges, ladinos e magos") == true)
+
+        val light = FeatGlossarySearch.search("Usar Armadura (leve)").first()
+        assertTrue(light.reference?.description?.contains("Arte da Fuga") == true)
+        val medium = FeatGlossarySearch.search("Usar Armadura (média)").first()
+        assertTrue(medium.reference?.special?.contains("Usar Armadura (leve)") == true)
+        val heavy = FeatGlossarySearch.search("Usar Armadura (pesada)").first()
+        assertTrue(heavy.reference?.special?.contains("Usar Armadura (média)") == true)
+
+        val shield = FeatGlossarySearch.search("Usar Escudo").first()
+        assertTrue(shield.reference?.description?.contains("broquéis") == true)
+        val shieldBash = FeatGlossarySearch.search("Ataque com Escudo Aprimorado").first()
+        assertTrue(shieldBash.reference?.description?.contains("Classe de Armadura") == true)
+        val towerShield = FeatGlossarySearch.search("Usar Escudo de Corpo").first()
+        assertTrue(towerShield.reference?.special?.contains("Guerreiros") == true)
+    }
+
 }
