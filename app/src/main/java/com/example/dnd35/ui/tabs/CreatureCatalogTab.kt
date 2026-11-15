@@ -25,11 +25,11 @@ import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -93,8 +93,10 @@ fun CreatureCatalogTab(modifier: Modifier = Modifier) {
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier.weight(1f)
             )
-            IconButton(onClick = { showGlossary = true }) {
-                Icon(Icons.Default.Info, contentDescription = "Ajuda do Bestiário")
+            TextButton(onClick = { showGlossary = true }) {
+                Icon(Icons.Default.Info, contentDescription = null)
+                Spacer(modifier = Modifier.size(6.dp))
+                Text("Glossário")
             }
         }
         Text(
@@ -254,8 +256,10 @@ private fun CreatureDetail(
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
                 }
-                IconButton(onClick = onShowHelp) {
-                    Icon(Icons.Default.Info, contentDescription = "Ajuda do Bestiário")
+                TextButton(onClick = onShowHelp) {
+                    Icon(Icons.Default.Info, contentDescription = null)
+                    Spacer(modifier = Modifier.size(6.dp))
+                    Text("Glossário")
                 }
             }
         }
