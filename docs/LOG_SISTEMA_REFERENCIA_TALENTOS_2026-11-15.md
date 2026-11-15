@@ -42,3 +42,17 @@ Data: 2026-11-15
 - Incluídos testes para confirmar que Ataque Poderoso tem referência mais extensa que o resumo da ficha e que Fúria do Bárbaro aponta para as regras detalhadas e páginas corretas.
 - Não foram alterados cálculos, progressões, pré-requisitos automáticos, persistência ou formato de ficha.
 - CI e compilação Android devem ser executados novamente; não mesclar enquanto ambos não passarem.
+
+
+## Ampliação da auditoria detalhada (15/11/2026)
+
+- A cobertura de talentos foi ampliada de 9 para **25 referências detalhadas de 110 entradas** do catálogo. As 85 restantes continuam marcadas na interface como pendentes, sem reutilizar o texto curto da ficha.
+- Novos talentos auditados: Agarrar Aprimorado, Desviar Objetos, Trespassar, Fintar Aprimorado, Magia Natural, Acuidade com Arma, Especialização em Combate, Especialização em Arma, Tiro Certeiro, Tiro Longo, Combater com Duas Armas Maior, Tiro Rápido, Desarme Aprimorado, Lutar às Cegas, Ataque Giratório e Reflexos de Combate, além dos nove já registrados acima.
+- Corrigido o nome do talento no catálogo para **Reflexos de Combate**, conforme a nomenclatura do Livro do Jogador brasileiro. A mudança afeta apenas o nome apresentado no catálogo de seleção; não altera cálculos ou bônus de fichas existentes.
+- A cobertura de habilidades de classe foi ampliada para **44 referências detalhadas**, abrangendo as 11 classes básicas: Bárbaro, Bardo, Clérigo, Druida, Feiticeiro, Guerreiro, Ladino, Mago, Monge, Paladino e Ranger.
+- Foram acrescentadas referências de Música de Bardo, Forma Selvagem, Inimigo Predileto, Estilo de Combate, companheiro animal do ranger, habilidades centrais do paladino, monge, ladino, clérigo, mago e feiticeiro, além de talentos bônus do guerreiro.
+- Corrigido o rótulo da habilidade do ranger para **Maestria do Estilo de Combate**, conforme o texto do livro.
+- A busca de habilidades de classe agora prefere a referência de nome mais específico quando há nomes sobrepostos (por exemplo, Esquiva Sobrenatural e Esquiva Sobrenatural Aprimorada), evitando exibir o verbete errado.
+- Validação estrutural dos JSONs: 25 referências de talentos correspondem a nomes existentes no catálogo; nenhuma duplicidade ou campo obrigatório ausente foi encontrada. As 44 referências de classe possuem chaves únicas e campos obrigatórios preenchidos.
+- Foram adicionados testes de regressão para as referências de bárbaro, bardo, druida, ranger, paladino, monge, ladino, clérigo, feiticeiro, mago e guerreiro, além da separação entre resumo e texto detalhado dos talentos.
+- Ainda falta executar e aprovar CI e compilação Android no commit final. O PR permanece aberto e não deve ser mesclado enquanto os dois fluxos não passarem.
