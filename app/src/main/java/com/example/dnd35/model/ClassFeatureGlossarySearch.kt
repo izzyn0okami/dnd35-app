@@ -13,13 +13,16 @@ data class ClassFeatureGlossaryResult(
     val className: String,
     val level: Int,
     val term: String,
-    val explanation: String
+    val explanation: String,
+    val reference: Dnd35Rules.ClassFeatureReference? = null
 )
 
 object ClassFeatureGlossarySearch {
     fun search(query: String): List<ClassFeatureGlossaryResult> {
         val normalizedQuery = normalize(query)
         if (normalizedQuery.isBlank()) return emptyList()
+
+        val references = Dnd35Rules.CLASS_FEATURE_REFERENCES
 
         return Dnd35Rules.CLASSES
             .flatMap { classInfo ->
@@ -28,13 +31,24 @@ object ClassFeatureGlossarySearch {
                         className = classInfo.name,
                         level = feature.level,
                         term = feature.name,
-                        explanation = feature.description
+                        explanation = feature.description,
+                        reference = references
+                            .filter { reference ->
+                                reference.className == classInfo.name &&
+                                    normalize(feature.name).startsWith(normalize(reference.term))
+                            }
+                            .maxByOrNull { normalize(it.term).length }
                     )
                 }
             }
             .filter { result ->
                 normalize(result.term).contains(normalizedQuery) ||
-                    normalize(result.explanation).contains(normalizedQuery)
+                    normalize(result.explanation).contains(normalizedQuery) ||
+                    normalize(result.reference?.description.orEmpty()).contains(normalizedQuery) ||
+                    normalize(result.reference?.activation.orEmpty()).contains(normalizedQuery) ||
+                    normalize(result.reference?.duration.orEmpty()).contains(normalizedQuery) ||
+                    normalize(result.reference?.restrictions.orEmpty()).contains(normalizedQuery) ||
+                    normalize(result.reference?.progression.orEmpty()).contains(normalizedQuery)
             }
             .sortedWith(
                 compareBy<ClassFeatureGlossaryResult> {

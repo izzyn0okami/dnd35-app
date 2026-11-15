@@ -20,7 +20,7 @@ class PresetFeatCatalogTest {
             "Agarrar Aprimorado",
             "Derrubar Aprimorado",
             "Desarme Aprimorado",
-            "Reflexos em Combate",
+            "Reflexos de Combate",
             "Combater com Duas Armas",
             "Combater com Duas Armas Aprimorado",
             "Combater com Duas Armas Maior",

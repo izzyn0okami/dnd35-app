@@ -45,6 +45,7 @@ import com.example.dnd35.model.CalculatedCharacterStats
 import com.example.dnd35.model.FeatPrerequisiteChecker
 import com.example.dnd35.model.FeatPrerequisiteStatus
 import com.example.dnd35.model.Dnd35Rules
+import com.example.dnd35.model.FeatGlossarySearch
 
 @Composable
 fun AddEditFeatDialog(
@@ -61,6 +62,7 @@ fun AddEditFeatDialog(
     var description by remember { mutableStateOf(featToEdit?.description ?: "") }
 
     var catalogQuery by remember { mutableStateOf("") }
+    var glossaryQuery by remember { mutableStateOf<String?>(null) }
 
     AlertDialog(
         onDismissRequest = onDismiss,
@@ -100,9 +102,11 @@ fun AddEditFeatDialog(
 
                     Spacer(modifier = Modifier.height(8.dp))
 
-                    val filtered = Dnd35Rules.PRESET_FEATS.filter {
-                        it.name.contains(catalogQuery, ignoreCase = true) ||
-                        it.summary.contains(catalogQuery, ignoreCase = true)
+                    val filtered = if (catalogQuery.isBlank()) {
+                        Dnd35Rules.PRESET_FEATS
+                    } else {
+                        val matchingNames = FeatGlossarySearch.search(catalogQuery).map { it.name }.toSet()
+                        Dnd35Rules.PRESET_FEATS.filter { it.name in matchingNames }
                     }
 
                     LazyColumn(
@@ -161,6 +165,7 @@ fun AddEditFeatDialog(
                                                 preset.name,
                                                 fontWeight = FontWeight.Bold,
                                                 style = MaterialTheme.typography.bodyMedium,
+                                                modifier = Modifier.clickable { glossaryQuery = preset.name },
                                                 color = if (notMet) {
                                                     MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.6f)
                                                 } else {
@@ -272,4 +277,8 @@ fun AddEditFeatDialog(
             }
         }
     )
+
+    glossaryQuery?.let { query ->
+        FeatGlossaryDialog(initialQuery = query, onDismiss = { glossaryQuery = null })
+    }
 }

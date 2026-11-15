@@ -1,0 +1,515 @@
+[
+  {
+    "name": "Ataque Poderoso",
+    "description": "Antes de realizar as jogadas de ataque no seu turno, escolha um valor para trocar precisão por dano. A penalidade escolhida é aplicada a todas as jogadas de ataque corpo a corpo até o início do seu próximo turno, inclusive ataques de oportunidade, e não pode ser maior que seu bônus base de ataque. O valor escolhido é somado às jogadas de dano correspondentes.",
+    "normal": "A penalidade de ataque e o bônus de dano permanecem ativos até o início do próximo turno, não apenas no ataque que iniciou a escolha.",
+    "special": "Ao usar uma arma de duas mãos, ou uma arma de uma mão empunhada com as duas mãos, o bônus de dano é dobrado. O bônus de dano não se aplica a armas leves, exceto ataques desarmados e armas naturais; a penalidade nas jogadas de ataque continua valendo. Um guerreiro pode escolher este talento como talento adicional.",
+    "sourcePage": 78,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 78",
+    "status": "audited"
+  },
+  {
+    "name": "Foco em Arma",
+    "description": "Escolha um tipo específico de arma. A escolha também pode ser ataque desarmado, a manobra Agarrar ou, para um conjurador, um tipo de raio. Enquanto utilizar a opção escolhida, o personagem recebe +1 nas jogadas de ataque correspondentes.",
+    "normal": "O bônus é restrito à arma ou opção específica selecionada; não se estende automaticamente a outras armas semelhantes.",
+    "special": "O talento pode ser escolhido mais de uma vez, mas seus efeitos não se acumulam: cada escolha deve se aplicar a uma arma diferente. Um guerreiro pode escolhê-lo como talento adicional. É necessário possuir Foco em Arma antes de selecionar Especialização em Arma.",
+    "sourcePage": 81,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 81",
+    "status": "audited"
+  },
+  {
+    "name": "Esquiva",
+    "description": "Escolha um oponente durante sua ação. Até sua próxima ação, você recebe +1 de bônus de esquiva na Classe de Armadura contra os ataques desse adversário. A escolha pode ser alterada a cada rodada.",
+    "normal": "Se perder o bônus de Destreza na CA por qualquer motivo, também perde o bônus de esquiva concedido por este talento.",
+    "special": "Bônus de esquiva são cumulativos com outros bônus de esquiva. Um guerreiro pode escolher este talento como talento adicional.",
+    "sourcePage": 81,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 81",
+    "status": "audited"
+  },
+  {
+    "name": "Mobilidade",
+    "description": "Você recebe +4 de bônus de esquiva na Classe de Armadura contra ataques de oportunidade provocados ao entrar ou sair de uma área ameaçada.",
+    "normal": "Se uma condição retirar seu bônus de Destreza na CA, você também perde o bônus de esquiva deste talento.",
+    "special": "Bônus de esquiva deste talento acumulam-se com outros bônus de esquiva, inclusive o bônus racial dos anões contra gigantes. Um guerreiro pode escolhê-lo como talento adicional.",
+    "sourcePage": 83,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 83",
+    "status": "audited"
+  },
+  {
+    "name": "Ataque em Movimento",
+    "description": "Ao realizar uma ação de ataque regular com uma arma de ataque corporal, você pode dividir seu deslocamento: mover-se antes do ataque e continuar depois dele, desde que a distância total não ultrapasse seu deslocamento.",
+    "normal": "Sem este talento, a ação de ataque regular não permite dividir o movimento antes e depois do ataque.",
+    "special": "O movimento não provoca ataques de oportunidade do defensor atacado, mas ainda pode provocar ataques de outras criaturas cujas áreas ameaçadas sejam atravessadas. É necessário mover-se pelo menos 1,5 m antes e depois do ataque. O talento não funciona com armadura pesada. Um guerreiro pode escolhê-lo como talento adicional.",
+    "sourcePage": 75,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 75",
+    "status": "audited"
+  },
+  {
+    "name": "Combater com Duas Armas",
+    "description": "Quando luta com uma arma em cada mão, você reduz as penalidades normais dessa forma de combate: a penalidade da mão principal diminui em 2 e a da mão secundária diminui em 6.",
+    "normal": "Sem o talento, aplicam-se integralmente as penalidades da Tabela 8–10 para combate com duas armas.",
+    "special": "Um ranger de 2º nível que escolheu o estilo de combate com duas armas recebe o benefício enquanto usar armadura leve ou nenhuma armadura, mesmo sem cumprir o pré-requisito. Um guerreiro pode escolhê-lo como talento adicional.",
+    "sourcePage": 78,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 78",
+    "status": "audited"
+  },
+  {
+    "name": "Tiro Preciso",
+    "description": "Você pode realizar ataques à distância contra oponentes envolvidos em combate corporal sem sofrer a penalidade padrão de –4 por disparar ou arremessar em combate corpo a corpo.",
+    "normal": "Sem este talento, ataques à distância contra um oponente engajado em combate corporal sofrem a penalidade padrão de –4.",
+    "special": "Um guerreiro pode escolher este talento como talento adicional.",
+    "sourcePage": 85,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 85",
+    "status": "audited"
+  },
+  {
+    "name": "Iniciativa Aprimorada",
+    "description": "Você recebe +4 de bônus em todos os testes de Iniciativa, que determinam a ordem de atuação no início do combate.",
+    "normal": "",
+    "special": "Um guerreiro pode escolher este talento como talento adicional.",
+    "sourcePage": 82,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 82",
+    "status": "audited"
+  },
+  {
+    "name": "Vitalidade",
+    "description": "Você recebe +3 pontos de vida.",
+    "normal": "",
+    "special": "Este talento pode ser escolhido diversas vezes e seus benefícios se acumulam.",
+    "sourcePage": 86,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 86",
+    "status": "audited"
+  },
+  {
+    "name": "Agarrar Aprimorado",
+    "sourcePage": 75,
+    "description": "Ao iniciar a manobra Agarrar, o ataque de toque inicial não provoca ataque de oportunidade. Além disso, o personagem recebe +4 de bônus em todos os testes de Agarrar, tanto quando inicia a manobra quanto quando tenta escapar ou resistir a ela.",
+    "normal": "Sem este talento, o ataque de toque inicial para iniciar um agarrão provoca ataque de oportunidade.",
+    "special": "Um monge pode escolher este talento como talento adicional no 1º nível, mesmo sem cumprir os pré-requisitos. Um guerreiro também pode escolhê-lo como talento adicional.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 75",
+    "status": "audited"
+  },
+  {
+    "name": "Desviar Objetos",
+    "sourcePage": 79,
+    "description": "Uma vez por rodada, quando uma arma de ataque à distância — como flecha, virote, lança ou outra arma de disparo ou arremesso — normalmente atingiria o personagem, ele pode desviá-la e não sofrer dano. Desviar o objeto não é considerado uma ação.",
+    "normal": "",
+    "special": "É necessário ter pelo menos uma mão livre, estar ciente do ataque e não estar surpreso. O talento exige Ataque Desarmado Aprimorado e Destreza 13.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 79",
+    "status": "audited"
+  },
+  {
+    "name": "Trespassar",
+    "sourcePage": 85,
+    "description": "Quando um ataque corpo a corpo causar dano suficiente para derrubar uma criatura (normalmente reduzindo seus pontos de vida a 0 ou menos), o personagem pode realizar imediatamente um ataque corpo a corpo adicional contra outra criatura que esteja ao seu alcance.",
+    "normal": "",
+    "special": "Não é possível se deslocar antes do ataque adicional, nem mesmo realizar um passo de ajuste de 1,5 m. O ataque adicional utiliza a mesma arma e o mesmo bônus de ataque do golpe que derrubou o oponente. Exige Força 13 e Ataque Poderoso.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 85",
+    "status": "audited"
+  },
+  {
+    "name": "Fintar Aprimorado",
+    "sourcePage": 81,
+    "description": "Permite realizar o teste de Blefar para fintar em combate usando uma ação de movimento, em vez da ação padrão normalmente exigida.",
+    "normal": "Fintar em combate exige uma ação padrão.",
+    "special": "Exige Inteligência 13 e Especialização em Combate. Um guerreiro pode escolher este talento como talento adicional.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 81",
+    "status": "audited"
+  },
+  {
+    "name": "Magia Natural",
+    "sourcePage": 82,
+    "description": "Permite conjurar magias enquanto estiver usando Forma Selvagem. O personagem pode substituir os componentes verbais e gestuais por vocalizações e movimentos apropriados à forma assumida e ainda utilizar componentes materiais ou focos que possua, mesmo que estejam ocultos pela transformação.",
+    "normal": "",
+    "special": "Não permite ativar itens mágicos que o personagem não conseguiria usar na forma assumida e não concede a capacidade de falar enquanto estiver em Forma Selvagem. Exige Sabedoria 13 e a habilidade Forma Selvagem.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 82",
+    "status": "audited"
+  },
+  {
+    "name": "Acuidade com Arma",
+    "sourcePage": 75,
+    "description": "Quando usa uma arma leve, um sabre, chicote ou corrente com cravos apropriados ao seu tamanho, o personagem pode utilizar o modificador de Destreza no lugar do modificador de Força nas jogadas de ataque corpo a corpo.",
+    "normal": "",
+    "special": "Exige bônus base de ataque +1. Um guerreiro pode escolher este talento como talento adicional.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 75",
+    "status": "audited"
+  },
+  {
+    "name": "Especialização em Combate",
+    "sourcePage": 80,
+    "description": "Durante uma ação de ataque ou ataque total em combate corpo a corpo, o personagem pode escolher uma penalidade de –1 a –5 nas jogadas de ataque e receber o mesmo valor como bônus de esquiva na Classe de Armadura. A penalidade escolhida não pode exceder seu bônus base de ataque.",
+    "normal": "Sem o talento, lutar defensivamente impõe –4 nas jogadas de ataque e concede +2 de bônus de esquiva na CA.",
+    "special": "O bônus de esquiva é limitado a +5 e permanece até o início do próximo turno, inclusive para ataques de oportunidade. Exige Inteligência 13. Um guerreiro pode escolhê-lo como talento adicional.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 80",
+    "status": "audited"
+  },
+  {
+    "name": "Especialização em Arma",
+    "sourcePage": 81,
+    "description": "Escolha uma arma na qual o personagem possua Foco em Arma. O personagem recebe +2 de bônus nas jogadas de dano realizadas com essa arma.",
+    "normal": "",
+    "special": "Exige proficiência com a arma escolhida, Foco em Arma e 4º nível de guerreiro. Pode ser escolhido várias vezes, mas cada escolha se aplica a uma arma diferente e os benefícios não se acumulam para a mesma arma. Um guerreiro pode escolhê-lo como talento adicional.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 81",
+    "status": "audited"
+  },
+  {
+    "name": "Tiro Certeiro",
+    "sourcePage": 84,
+    "description": "O personagem recebe +1 de bônus nas jogadas de ataque e dano com armas de ataque à distância contra alvos que estejam a até 9 m.",
+    "normal": "",
+    "special": "Um guerreiro pode escolher este talento como talento adicional.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 84",
+    "status": "audited"
+  },
+  {
+    "name": "Tiro Longo",
+    "sourcePage": 84,
+    "description": "Aumenta o incremento de distância das armas de ataque à distância: armas de disparo têm seu incremento aumentado em 50%, enquanto armas de arremesso têm o incremento dobrado.",
+    "normal": "",
+    "special": "Exige Tiro Certeiro. Um guerreiro pode escolhê-lo como talento adicional.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 84",
+    "status": "audited"
+  },
+  {
+    "name": "Combater com Duas Armas Maior",
+    "sourcePage": 78,
+    "description": "O personagem recebe um terceiro ataque com a mão inábil durante a ação de ataque total, mas esse ataque sofre –10 de penalidade.",
+    "normal": "",
+    "special": "Exige Destreza 19, Combater com Duas Armas, Combater com Duas Armas Aprimorado e bônus base de ataque +11. Um guerreiro pode escolher este talento como talento adicional.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 78",
+    "status": "audited"
+  },
+  {
+    "name": "Tiro Rápido",
+    "sourcePage": 85,
+    "description": "Durante uma ação de ataque total, o personagem recebe um ataque adicional com uma arma de ataque à distância, usando seu maior bônus base de ataque. Todos os ataques realizados nessa ação, inclusive o adicional, sofrem –2 de penalidade.",
+    "normal": "",
+    "special": "Exige Destreza 13 e Tiro Certeiro. Um guerreiro pode escolhê-lo como talento adicional. Um ranger de 2º nível que escolheu Arquearia recebe o talento enquanto estiver sem armadura ou usando armadura leve, mesmo sem cumprir os pré-requisitos.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 85",
+    "status": "audited"
+  },
+  {
+    "name": "Desarme Aprimorado",
+    "sourcePage": 79,
+    "description": "O personagem não provoca ataque de oportunidade ao tentar desarmar um oponente e recebe +4 de bônus no teste resistido de ataque para desarmá-lo. Se a tentativa fracassar, o adversário também não consegue desarmar o personagem.",
+    "normal": "Sem este talento, tentar desarmar um oponente provoca ataque de oportunidade e uma tentativa fracassada pode permitir que o adversário desarme o personagem.",
+    "special": "Exige Inteligência 13 e Especialização em Combate. Um guerreiro pode escolhê-lo como talento adicional.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 79",
+    "status": "audited"
+  },
+  {
+    "name": "Lutar às Cegas",
+    "sourcePage": 82,
+    "description": "Em combate corpo a corpo, quando o personagem erra um adversário por causa da camuflagem, pode realizar novamente a jogada de porcentagem para verificar se o ataque realmente errou. Em combate corpo a corpo, um atacante invisível não recebe os bônus normais contra o personagem, que também não perde seu bônus de Destreza na CA por não enxergar o atacante.",
+    "normal": "Sem o talento, a chance de falha por camuflagem é aplicada normalmente e os modificadores de atacantes invisíveis são mantidos.",
+    "special": "Quando não consegue enxergar, o personagem sofre apenas metade da penalidade normal de deslocamento. O talento não oferece benefício contra uma criatura sob efeito de Piscar. Um guerreiro pode escolhê-lo como talento adicional.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 82",
+    "status": "audited"
+  },
+  {
+    "name": "Ataque Giratório",
+    "sourcePage": 77,
+    "description": "Ao realizar uma ação de ataque total, o personagem pode abandonar seus ataques regulares e realizar um único ataque corpo a corpo com seu maior bônus de ataque contra cada oponente dentro do alcance.",
+    "normal": "",
+    "special": "Exige Destreza 13, Inteligência 13, Especialização em Combate, Esquiva, Mobilidade, Ataque em Movimento e bônus base de ataque +4. Ao usar o talento, perde bônus ou ataques adicionais concedidos por outros talentos ou habilidades, como Trespassar ou Velocidade. Um guerreiro pode escolhê-lo como talento adicional.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 77",
+    "status": "audited"
+  },
+  {
+    "name": "Reflexos de Combate",
+    "sourcePage": 84,
+    "description": "O personagem pode realizar um ataque de oportunidade normal por rodada e ataques de oportunidade adicionais em quantidade igual ao seu modificador de Destreza. Por exemplo, com Destreza 15 (+2), pode realizar três ataques de oportunidade na mesma rodada, desde que cada um seja provocado por uma situação distinta.",
+    "normal": "Sem este talento, o personagem só consegue realizar um ataque de oportunidade por rodada e não pode realizá-los enquanto estiver surpreso.",
+    "special": "Permite realizar ataques de oportunidade mesmo quando surpreso. Um ladino com Oportunismo não pode usar essa habilidade mais de uma vez por rodada. Um guerreiro pode escolhê-lo como talento adicional; um monge pode escolhê-lo como talento adicional no 2º nível.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 84",
+    "status": "audited"
+  },
+  {
+    "name": "Combater com Duas Armas Aprimorado",
+    "sourcePage": 78,
+    "description": "Além do ataque adicional normal com a arma da mão inábil, o personagem recebe um segundo ataque com essa mesma arma, com –5 de penalidade.",
+    "normal": "Sem este talento, o personagem realiza apenas um ataque adicional com a arma da mão inábil.",
+    "special": "Exige Destreza 17, Combater com Duas Armas e bônus base de ataque +6. Um guerreiro pode escolhê-lo como talento adicional. Um ranger de 6º nível que escolheu o estilo de combate com duas armas recebe o talento enquanto usar armadura leve ou nenhuma armadura, mesmo sem cumprir os pré-requisitos.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 78",
+    "status": "audited"
+  },
+  {
+    "name": "Acrobático",
+    "description": "Seu personagem recebe +2 de bônus nos testes de Saltar e Acrobacia.",
+    "normal": "",
+    "special": "O bônus se aplica aos testes das duas perícias, não a testes de habilidade genéricos.",
+    "sourcePage": 77,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, Tabela 5-1, p. 77",
+    "status": "audited"
+  },
+  {
+    "name": "Afinidade com Animais",
+    "description": "Seu personagem recebe +2 de bônus nos testes de Adestrar Animais e Cavalgar.",
+    "normal": "",
+    "special": "",
+    "sourcePage": 77,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, Tabela 5-1, p. 77",
+    "status": "audited"
+  },
+  {
+    "name": "Ágil",
+    "description": "Seu personagem recebe +2 de bônus nos testes de Equilíbrio e Arte da Fuga.",
+    "normal": "",
+    "special": "",
+    "sourcePage": 77,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, Tabela 5-1, p. 77",
+    "status": "audited"
+  },
+  {
+    "name": "Aptidão Mágica",
+    "description": "Seu personagem recebe +2 de bônus nos testes de Identificar Magia e Usar Instrumento Mágico.",
+    "normal": "",
+    "special": "",
+    "sourcePage": 77,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, Tabela 5-1, p. 77",
+    "status": "audited"
+  },
+  {
+    "name": "Atlético",
+    "description": "Seu personagem recebe +2 de bônus nos testes de Escalar e Natação.",
+    "normal": "",
+    "special": "",
+    "sourcePage": 77,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, Tabela 5-1, p. 77",
+    "status": "audited"
+  },
+  {
+    "name": "Auto-Suficiente",
+    "description": "Seu personagem recebe +2 de bônus nos testes de Cura e Sobrevivência.",
+    "normal": "",
+    "special": "",
+    "sourcePage": 77,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, Tabela 5-1, p. 77",
+    "status": "audited"
+  },
+  {
+    "name": "Diligente",
+    "description": "Seu personagem recebe +2 de bônus nos testes de Avaliação e Decifrar Escrita.",
+    "normal": "",
+    "special": "",
+    "sourcePage": 77,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, Tabela 5-1, p. 77",
+    "status": "audited"
+  },
+  {
+    "name": "Fraudulento",
+    "description": "Seu personagem recebe +2 de bônus nos testes de Disfarces e Falsificação.",
+    "normal": "",
+    "special": "",
+    "sourcePage": 77,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, Tabela 5-1, p. 77",
+    "status": "audited"
+  },
+  {
+    "name": "Investigador",
+    "description": "Seu personagem recebe +2 de bônus nos testes de Obter Informação e Procurar.",
+    "normal": "",
+    "special": "",
+    "sourcePage": 77,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, Tabela 5-1, p. 77",
+    "status": "audited"
+  },
+  {
+    "name": "Negociador",
+    "description": "Seu personagem recebe +2 de bônus nos testes de Diplomacia e Sentir Motivação.",
+    "normal": "",
+    "special": "",
+    "sourcePage": 77,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, Tabela 5-1, p. 77",
+    "status": "audited"
+  },
+  {
+    "name": "Persuasivo",
+    "description": "Seu personagem recebe +2 de bônus nos testes de Blefar e Intimidação.",
+    "normal": "",
+    "special": "",
+    "sourcePage": 77,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, Tabela 5-1, p. 77",
+    "status": "audited"
+  },
+  {
+    "name": "Sorrateiro",
+    "description": "Seu personagem recebe +2 de bônus nos testes de Esconder-se e Furtividade.",
+    "normal": "",
+    "special": "",
+    "sourcePage": 77,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, Tabela 5-1, p. 77",
+    "status": "audited"
+  },
+  {
+    "name": "Vontade de Ferro",
+    "description": "Seu personagem recebe +2 de bônus em todos os testes de resistência de Vontade.",
+    "normal": "",
+    "special": "",
+    "sourcePage": 77,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, Tabela 5-1, p. 77",
+    "status": "audited"
+  },
+  {
+    "name": "Fortitude Maior",
+    "description": "Seu personagem recebe +2 de bônus em todos os testes de resistência de Fortitude.",
+    "normal": "",
+    "special": "",
+    "sourcePage": 77,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, Tabela 5-1, p. 77",
+    "status": "audited"
+  },
+  {
+    "name": "Reflexos Rápidos",
+    "description": "Seu personagem recebe +2 de bônus em todos os testes de resistência de Reflexos.",
+    "normal": "",
+    "special": "",
+    "sourcePage": 77,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, Tabela 5-1, p. 77",
+    "status": "audited"
+  },
+  {
+    "name": "Foco em Perícia",
+    "description": "Escolha uma perícia. Seu personagem recebe +3 de bônus em todos os testes realizados com a perícia escolhida.",
+    "normal": "",
+    "special": "Este talento pode ser escolhido mais de uma vez, mas cada escolha deve ser aplicada a uma perícia diferente; os bônus não se acumulam na mesma perícia.",
+    "sourcePage": 77,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, Tabela 5-1, p. 77",
+    "status": "audited"
+  },
+  {
+    "name": "Prontidão",
+    "description": "Seu personagem recebe +2 de bônus nos testes de Ouvir e Observar.",
+    "normal": "",
+    "special": "Enquanto o familiar estiver ao alcance da mão, o mestre de um familiar também recebe o benefício de Prontidão.",
+    "sourcePage": 77,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, Tabela 5-1, p. 77",
+    "status": "audited"
+  },
+  {
+    "name": "Corrida",
+    "description": "Quando correr, seu personagem percorre até cinco vezes seu deslocamento normal (ou quatro vezes se estiver usando armadura pesada). Além disso, recebe +4 de bônus nos testes de Saltar realizados depois de uma corrida inicial.",
+    "normal": "",
+    "special": "",
+    "sourcePage": 77,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, Tabela 5-1, p. 77",
+    "status": "audited"
+  },
+  {
+    "name": "Tolerância",
+    "description": "Seu personagem recebe +4 de bônus em diversos testes de resistência e de habilidade relacionados a esforço físico e sobrevivência: Natação para evitar dano por contusão, Constituição para corridas, marchas forçadas, prender a respiração, inanição e desidratação, Fortitude contra frio, calor e asfixia. Também pode dormir usando armadura leve ou média sem ficar fatigado no dia seguinte.",
+    "normal": "Sem o talento, dormir usando armadura média ou pesada deixa o personagem fatigado durante todo o dia seguinte.",
+    "special": "Rangers recebem Tolerância automaticamente no 3º nível, como talento adicional; não precisam selecioná-lo.",
+    "sourcePage": 77,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, Tabela 5-1, p. 77",
+    "status": "audited"
+  },
+  {
+    "name": "Magia em Combate",
+    "sourcePage": 82,
+    "description": "O personagem recebe +4 de bônus nos testes de Concentração realizados para conjurar magias ou usar habilidades similares à magia na defensiva, ou enquanto estiver envolvido na manobra Agarrar.",
+    "normal": "",
+    "special": "O bônus se aplica aos testes de Concentração nas situações descritas; não é um bônus geral para todos os testes de Concentração.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 82",
+    "status": "audited"
+  },
+  {
+    "name": "Foco em Magia",
+    "sourcePage": 81,
+    "description": "Escolha uma escola de magia. A Classe de Dificuldade dos testes de resistência contra as magias dessa escola aumenta em +1.",
+    "normal": "",
+    "special": "Pode ser escolhido diversas vezes, mas cada escolha deve se aplicar a uma escola diferente; os efeitos não se acumulam para a mesma escola.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 81",
+    "status": "audited"
+  },
+  {
+    "name": "Foco em Magia Maior",
+    "sourcePage": 81,
+    "description": "Escolha uma escola de magia na qual o personagem já possua Foco em Magia. A Classe de Dificuldade dos testes de resistência contra as magias dessa escola aumenta em mais +1.",
+    "normal": "",
+    "special": "Exige Foco em Magia na mesma escola. O bônus se acumula com Foco em Magia. Pode ser escolhido diversas vezes para escolas diferentes, mas não se acumula na mesma escola.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 81",
+    "status": "audited"
+  },
+  {
+    "name": "Magia Penetrante",
+    "sourcePage": 82,
+    "description": "O personagem recebe +2 de bônus nos testes de nível de conjurador realizados para superar a Resistência à Magia de uma criatura.",
+    "normal": "",
+    "special": "O bônus se aplica aos testes de conjurador para superar Resistência à Magia, não aos testes de dissipar magia ou a outros testes de nível de conjurador.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 82",
+    "status": "audited"
+  },
+  {
+    "name": "Magia Penetrante Maior",
+    "sourcePage": 82,
+    "description": "O personagem recebe +2 adicional nos testes de nível de conjurador para superar a Resistência à Magia de uma criatura.",
+    "normal": "",
+    "special": "Exige Magia Penetrante. O bônus de +2 se acumula com o bônus de Magia Penetrante, totalizando +4.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 82",
+    "status": "audited"
+  },
+  {
+    "name": "Magia Sem Gestos",
+    "sourcePage": 82,
+    "description": "O personagem pode conjurar uma magia sem executar o componente gestual normalmente exigido. A magia ocupa o lugar de uma magia um nível superior.",
+    "normal": "Magias que não possuem componente gestual não são afetadas pelo talento.",
+    "special": "É um talento metamágico. A magia preparada com este talento é tratada como um nível acima para determinar o espaço de magia necessário.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 82",
+    "status": "audited"
+  },
+  {
+    "name": "Magia Silenciosa",
+    "sourcePage": 82,
+    "description": "O personagem pode conjurar uma magia sem pronunciar o componente verbal normalmente exigido. A magia ocupa o lugar de uma magia um nível superior.",
+    "normal": "Magias que não possuem componente verbal não são afetadas pelo talento.",
+    "special": "É um talento metamágico. Magias de bardo não podem ser alteradas por este talento.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 82",
+    "status": "audited"
+  },
+  {
+    "name": "Maximizar Magia",
+    "sourcePage": 82,
+    "description": "Todos os efeitos variáveis e numéricos da magia são levados ao resultado máximo possível: dano, cura, quantidade de alvos e outros valores variáveis definidos pela descrição da magia.",
+    "normal": "Testes de resistência e testes resistidos, como dissipar magia, não são maximizados. Magias sem variações aleatórias não são afetadas.",
+    "special": "É um talento metamágico e ocupa o lugar de uma magia três níveis superior. Se combinado com outros talentos metamágicos, aplique as regras de combinação correspondentes.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 82",
+    "status": "audited"
+  },
+  {
+    "name": "Potencializar Magia",
+    "sourcePage": 83,
+    "description": "Aumenta em 50% todos os efeitos variáveis e numéricos de uma magia, como dano, cura ou quantidade de alvos, conforme a descrição do efeito.",
+    "normal": "Testes de resistência e testes resistidos, como dissipar magia, não são aumentados. Magias sem variações aleatórias não são afetadas.",
+    "special": "É um talento metamágico e ocupa o lugar de uma magia dois níveis superior.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 83",
+    "status": "audited"
+  },
+  {
+    "name": "Estender Magia",
+    "sourcePage": 81,
+    "description": "Uma magia estendida tem o dobro da duração normal.",
+    "normal": "Magias com duração Concentração, Instantânea ou Permanente não são afetadas.",
+    "special": "É um talento metamágico e ocupa o lugar de uma magia um nível superior.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 81",
+    "status": "audited"
+  },
+  {
+    "name": "Ampliar Magia",
+    "sourcePage": 74,
+    "description": "Dobra o alcance de uma magia cujo alcance seja Curto, Médio ou Longo. O alcance resultante passa a ser 15 m + 1,5 m por nível para Curto, 60 m + 6 m por nível para Médio e 240 m + 24 m por nível para Longo.",
+    "normal": "O talento não altera magias com alcance diferente de Curto, Médio ou Longo.",
+    "special": "É um talento metamágico e ocupa o lugar de uma magia um nível superior.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 74",
+    "status": "audited"
+  },
+  {
+    "name": "Acelerar Magia",
+    "sourcePage": 74,
+    "description": "Uma magia acelerada é conjurada como ação livre, permitindo que o personagem realize outras ações na mesma rodada, inclusive conjurar outra magia.",
+    "normal": "Uma magia com tempo de execução superior a uma ação de rodada completa não pode ser acelerada.",
+    "special": "Só é possível conjurar uma magia acelerada por rodada. A magia ocupa o lugar de uma magia quatro níveis superior e não provoca ataques de oportunidade. O livro restringe a aplicação deste talento a magias conjuradas espontaneamente.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 74",
+    "status": "audited"
+  }
+]

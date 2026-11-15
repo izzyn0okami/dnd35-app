@@ -29,6 +29,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -45,6 +46,7 @@ import com.example.dnd35.model.CharacterFeat
 import com.example.dnd35.model.FeatPrerequisiteChecker
 import com.example.dnd35.model.FeatPrerequisiteStatus
 import com.example.dnd35.ui.dialogs.AddEditFeatDialog
+import com.example.dnd35.ui.dialogs.FeatGlossaryDialog
 import com.example.dnd35.viewmodel.CharacterViewModel
 
 @Composable
@@ -56,6 +58,7 @@ fun FeatsTab(
     var showAddFeatModal by remember { mutableStateOf(false) }
     var featToEdit by remember { mutableStateOf<CharacterFeat?>(null) }
     var pendingFeatDeleteId by remember { mutableStateOf<String?>(null) }
+    var glossaryQuery by remember { mutableStateOf<String?>(null) }
 
     LazyColumn(
         modifier = Modifier
@@ -87,6 +90,9 @@ fun FeatsTab(
                             style = MaterialTheme.typography.bodySmall,
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
+                    }
+                    TextButton(onClick = { glossaryQuery = "" }) {
+                        Text("Consultar glossário de talentos")
                     }
                 }
             }
@@ -181,6 +187,7 @@ fun FeatsTab(
                                     feat.name,
                                     fontWeight = FontWeight.Bold,
                                     style = MaterialTheme.typography.titleMedium,
+                                    modifier = Modifier.clickable { glossaryQuery = feat.name },
                                     color = if (notMet) {
                                         MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f)
                                     } else {
@@ -244,6 +251,10 @@ fun FeatsTab(
         item {
             Spacer(modifier = Modifier.height(24.dp))
         }
+    }
+
+    glossaryQuery?.let { query ->
+        FeatGlossaryDialog(initialQuery = query, onDismiss = { glossaryQuery = null })
     }
 
     if (showAddFeatModal) {
