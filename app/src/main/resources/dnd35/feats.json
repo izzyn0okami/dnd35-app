@@ -391,7 +391,7 @@
   },
   {
     "name": "Bloqueio Ambidestro",
-    "prerequisites": "Combater com Duas Armas",
+    "prerequisites": "DES 15, Combater com Duas Armas",
     "summary": "A arma da mão inábil concede +1 de bônus de escudo na CA.",
     "benefit": "Enquanto estiver empunhando uma arma leve ou de uma mão na mão inábil, você recebe um bônus de escudo de +1 na CA."
   },
