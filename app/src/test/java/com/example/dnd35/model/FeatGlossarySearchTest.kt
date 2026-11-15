@@ -141,6 +141,15 @@ class FeatGlossarySearchTest {
         assertTrue(wizard.reference?.sourcePages == "40–41")
     }
 
+
+    @Test
+    fun fighterBonusFeatReferenceExplainsRestrictedListAndPrerequisites() {
+        val result = ClassFeatureGlossarySearch.search("Talento Bônus de Guerreiro")
+            .first { it.className == "Guerreiro" }
+        assertTrue(result.reference?.restrictions?.contains("pré-requisitos") == true)
+        assertTrue(result.reference?.sourcePages == "37")
+    }
+
     @Test
     fun blankSearchReturnsNoResults() {
         assertTrue(FeatGlossarySearch.search("   ").isEmpty())
