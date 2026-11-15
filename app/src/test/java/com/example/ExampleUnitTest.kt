@@ -1916,4 +1916,28 @@ class ExampleUnitTest {
     assertTrue(monk.getValue("Corpo Atemporal").description.contains("Penalidades de idade que já possuía"))
   }
 
+
+  @Test
+  fun paladinAndRangerClassFeaturesUnlockAtPlayerHandbookLevels() {
+    val paladin = Dnd35Rules.CLASSES.single { it.name == "Paladino" }.features
+      .filter { it.name.startsWith("Remover Doença") }
+      .associate { it.level to it.name }
+    assertEquals(
+      mapOf(
+        6 to "Remover Doença 1/semana",
+        9 to "Remover Doença 2/semana",
+        12 to "Remover Doença 3/semana",
+        15 to "Remover Doença 4/semana",
+        18 to "Remover Doença 5/semana"
+      ),
+      paladin
+    )
+
+    val ranger = Dnd35Rules.CLASSES.single { it.name == "Ranger" }.features.associateBy { it.name }
+    assertEquals(13, ranger.getValue("Camuflagem").level)
+    assertEquals(17, ranger.getValue("Mimetismo").level)
+    assertTrue(ranger.getValue("Rastreador Eficaz").description.contains("-10"))
+    assertTrue(!ranger.containsKey("Esconder-se à Plena Vista"))
+  }
+
 }
