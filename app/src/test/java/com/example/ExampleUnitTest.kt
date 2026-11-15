@@ -1934,10 +1934,21 @@ class ExampleUnitTest {
     )
 
     val ranger = Dnd35Rules.CLASSES.single { it.name == "Ranger" }.features.associateBy { it.name }
+    assertTrue(ranger.containsKey("Rastrear e Empatia com a Natureza"))
     assertEquals(13, ranger.getValue("Camuflagem").level)
     assertEquals(17, ranger.getValue("Mimetismo").level)
     assertTrue(ranger.getValue("Rastreador Eficaz").description.contains("-10"))
     assertTrue(!ranger.containsKey("Esconder-se à Plena Vista"))
+  }
+
+
+  @Test
+  fun classFeatureNamesFollowBrazilianPlayerHandbookTerminology() {
+    val druid = Dnd35Rules.CLASSES.single { it.name == "Druida" }.features
+    assertTrue(druid.any { it.name == "Empatia com a Natureza" })
+
+    val paladin = Dnd35Rules.CLASSES.single { it.name == "Paladino" }.features
+    assertTrue(paladin.any { it.name == "Cura pelas Mãos" })
   }
 
 }
