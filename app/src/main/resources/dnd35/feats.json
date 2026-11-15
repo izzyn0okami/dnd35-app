@@ -392,8 +392,8 @@
   {
     "name": "Contramágica Aprimorada",
     "prerequisites": "Nenhum",
-    "summary": "Pode usar qualquer magia da mesma escola para fazer contramágica.",
-    "benefit": "Você pode usar qualquer magia da mesma escola que a magia-alvo para tentar a contramágica, em vez de precisar da magia exata."
+    "summary": "Usa uma magia da mesma escola e de nível superior para fazer contramágica.",
+    "benefit": "Ao realizar uma contramágica, você pode conjurar qualquer magia da mesma escola que a magia-alvo, desde que seja de nível superior, em vez de precisar da mesma magia ou de uma magia especificamente designada para neutralizá-la."
   },
   {
     "name": "Corrida",
@@ -416,8 +416,8 @@
   {
     "name": "Dominar Magia",
     "prerequisites": "1º nível de mago",
-    "summary": "Prepara magias escolhidas sem precisar de um grimório.",
-    "benefit": "Você pode preparar um número de magias de mago igual à metade do seu nível de conjurador (arredondado para baixo, mínimo 1) sem consultar um grimório, desde que já as tenha preparado dessa forma ao menos uma vez."
+    "summary": "Prepara uma seleção de magias conhecidas sem consultar o grimório.",
+    "benefit": "Sempre que escolher este talento, selecione uma quantidade de magias conhecidas igual ao seu modificador de Inteligência. Você poderá preparar essas magias sem consultar um grimório."
   },
   {
     "name": "Imobilização Aprimorada",
@@ -439,9 +439,9 @@
   },
   {
     "name": "Especialização em Arma Maior",
-    "prerequisites": "Usar a arma, Foco em Arma Maior, Foco em Arma, Especialização em Arma, 12º nível de guerreiro",
-    "summary": "+4 de bônus no dano com a arma escolhida (total com Especialização em Arma).",
-    "benefit": "O bônus no dano com a arma escolhida concedido por Especialização em Arma aumenta de +2 para +4."
+    "prerequisites": "Proficiência com a arma escolhida, Foco em Arma, Foco em Arma Maior, Especialização em Arma, 12º nível de guerreiro",
+    "summary": "+2 adicionais no dano com a arma escolhida (além de Especialização em Arma).",
+    "benefit": "Você recebe +2 de bônus adicional nas jogadas de dano com a arma escolhida. Esse bônus se acumula com outros bônus de dano, inclusive o concedido por Especialização em Arma."
   },
   {
     "name": "Fraudulento",
@@ -638,14 +638,14 @@
   {
     "name": "Aumentar Magia",
     "prerequisites": "Nenhum",
-    "summary": "Dobra o alcance da magia (+1 nível de magia).",
-    "benefit": "Você pode conjurar uma magia aumentada, que tem o dobro do alcance normal. Uma magia aumentada usa um espaço de magia 1 nível acima de seu nível real."
+    "summary": "Dobra o alcance de magias com alcance curto, médio ou longo (+1 nível).",
+    "benefit": "Você aumenta em 100% o alcance de uma magia cujo alcance seja curto, médio ou longo. A magia ocupa um espaço de magia um nível acima do normal. Magias cujo alcance não seja definido por uma dessas três categorias não podem ser afetadas."
   },
   {
     "name": "Elevar Magia",
     "prerequisites": "Nenhum",
-    "summary": "Conjura a magia como se fosse de um nível mais elevado (+1 nível de magia).",
-    "benefit": "Uma magia elevada é lançada como se fosse 1 nível de conjurador mais alto que o real para todos os efeitos dependentes do nível. Usa um espaço de magia 1 nível acima do normal."
+    "summary": "Eleva a magia a qualquer nível superior escolhido (máximo 9º).",
+    "benefit": "Você pode preparar e conjurar uma magia como se ela pertencesse a qualquer nível de magia superior ao normal, até o 9º nível. Todos os efeitos que dependem do nível da magia, inclusive a CD do teste de resistência, são calculados usando o nível escolhido; a magia ocupa um espaço desse nível."
   },
   {
     "name": "Estender Magia",
