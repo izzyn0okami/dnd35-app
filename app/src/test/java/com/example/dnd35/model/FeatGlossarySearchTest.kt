@@ -38,6 +38,9 @@ class FeatGlossarySearchTest {
             .first { it.className == "Bárbaro" }
         assertTrue(result.reference?.restrictions?.contains("Concentração") == true)
         assertTrue(result.reference?.sourcePages == "21–22")
+        val improved = ClassFeatureGlossarySearch.search("Esquiva Sobrenatural Aprimorada")
+            .first { it.className == "Bárbaro" }
+        assertTrue(improved.reference?.term == "Esquiva Sobrenatural Aprimorada")
     }
 
     @Test
