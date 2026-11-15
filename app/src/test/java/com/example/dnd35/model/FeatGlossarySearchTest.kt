@@ -127,6 +127,20 @@ class FeatGlossarySearchTest {
         assertTrue(turning.reference?.duration?.contains("3 + modificador de Carisma") == true)
     }
 
+
+    @Test
+    fun arcaneCasterReferencesSeparateSpontaneousCastingFromSpellbookPreparation() {
+        val sorcerer = ClassFeatureGlossarySearch.search("Conjuração Espontânea")
+            .first { it.className == "Feiticeiro" }
+        assertTrue(sorcerer.reference?.restrictions?.contains("Carisma") == true)
+        assertTrue(sorcerer.reference?.progression?.contains("a cada dois níveis") == true)
+
+        val wizard = ClassFeatureGlossarySearch.search("Preparação com Grimório")
+            .first { it.className == "Mago" }
+        assertTrue(wizard.reference?.progression?.contains("duas magias") == true)
+        assertTrue(wizard.reference?.sourcePages == "40–41")
+    }
+
     @Test
     fun blankSearchReturnsNoResults() {
         assertTrue(FeatGlossarySearch.search("   ").isEmpty())
