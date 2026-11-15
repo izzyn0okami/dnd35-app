@@ -869,3 +869,13 @@ As fichas-base devem ser reutilizadas por ID sempre que a tabela pedir apenas um
 - Os blocos de estatísticas existentes foram preservados. O Verme do Gelo foi deixado para a etapa seguinte porque a extração textual disponível apresentou trechos intercalados e precisa de conferência visual antes de transcrição.
 - Adicionado teste de regressão para os cinco registros e seus efeitos distintivos.
 - Contagem de partida: 320 fichas; 225 completas; 95 pendentes. Esta etapa acrescenta cinco fichas completas, totalizando 230 completas e 90 pendentes.
+
+
+## 2026-11-14 — Continuação: Verme do Gelo
+
+- Fonte: Livro dos Monstros brasileiro, página impressa 253 (PDF, seção do Verme do Gelo).
+- Preenchidas Descrição e Combate do registro existente Verme do Gelo.
+- Incluídos habitat, alimentação, escavação, túneis, ovos, maturidade e uso como montaria; no combate, Trinado, Frio, Sopro e Espasmos de Morte, com alcances, frequências, CDs e danos transcritos da fonte.
+- Preservados os campos de estatísticas-base existentes.
+- Adicionado teste de regressão específico para as habilidades distintivas e valores da ficha.
+- Contagem após esta etapa: 320 criaturas; 231 com Descrição e Combate completos; 89 pendentes.
