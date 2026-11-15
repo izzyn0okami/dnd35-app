@@ -464,8 +464,8 @@
   {
     "name": "Liderança",
     "prerequisites": "6º nível de personagem",
-    "summary": "Atrai um parceiro leal e vários seguidores.",
-    "benefit": "Você pode atrair um cofre leal e seguidores dedicados, capazes de ajudá-lo em suas aventuras. O número e o poder desses aliados dependem do seu placar de liderança."
+    "summary": "Atrai companheiros leais e seguidores devotados.",
+    "benefit": "Você pode atrair companheiros leais e seguidores devotados que o auxiliarão. O Mestre determina os tipos de companheiros e a quantidade de seguidores que podem ser recrutados. Converse com o Mestre antes de escolher este talento para definir aliados apropriados ao personagem."
   },
   {
     "name": "Magia Natural",
@@ -536,8 +536,8 @@
   {
     "name": "Duro de Matar",
     "prerequisites": "Tolerância",
-    "summary": "Permanece consciente entre -1 e -9 pontos de vida.",
-    "benefit": "Quando seus pontos de vida ficam entre -1 e -9, você permanece consciente e pode agir normalmente (com as penalidades usuais de um personagem ferido), em vez de ficar inconsciente e morrendo."
+    "summary": "Permanece consciente entre -1 e -9 PV, mas age de forma limitada.",
+    "benefit": "Quando seus pontos de vida estiverem entre -1 e -9, você fica estável automaticamente, sem precisar fazer o teste percentual para evitar perder 1 PV por rodada. Você pode decidir imediatamente se ativará o talento, mesmo que não seja seu turno. Se ativá-lo, poderá realizar uma única ação de movimento ou uma única ação padrão por rodada, nunca ambas nem uma ação de rodada completa. A ação de movimento não causa dano adicional; uma ação padrão ou outra ação extenuante causa 1 ponto de dano ao seu término. Ao chegar a -10 PV, você morre imediatamente. Se decidir não ativar o talento, ficará inconsciente."
   },
   {
     "name": "Usar Arma Comum",
