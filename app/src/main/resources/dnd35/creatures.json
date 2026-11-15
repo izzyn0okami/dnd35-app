@@ -11955,7 +11955,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "O urso-negro é um onívoro que habita florestas temperadas. Em geral, não representa perigo, a menos que alguém ameace seus filhotes ou sua fonte de alimento. Sua pelagem pode ser preta, loira ou cor de canela; raramente ultrapassa 1,5 m de comprimento.",
+    "combat": "O urso-negro ataca rasgando suas presas com as garras e os dentes. Não possui uma manobra especial de agarrar neste perfil. Recebe +4 de bônus racial em testes de Natação."
   },
   {
     "id": "urso-polar",
@@ -12005,7 +12007,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Carnívoro de regiões geladas, o urso-polar é um pouco mais alto que o urso-marrom, com corpo alongado e pelagem branca. Vive nas planícies frias, geralmente sozinho ou em casal. A pelagem clara oferece excelente camuflagem na neve.",
+    "combat": "O urso-polar luta como o urso-marrom, atacando principalmente com as garras. Agarrar Aprimorado (Ext): ao acertar um ataque de garra, pode iniciar uma manobra Agarrar como ação livre sem provocar ataque de oportunidade. Recebe +8 racial em testes de Natação para ações especiais ou evitar perigos, pode escolher 10 mesmo sob ameaça e pode correr enquanto nada em linha reta. Em áreas nevadas, sua pelagem concede +12 racial em Esconder-se."
   },
   {
     "id": "vaga-lume-gigante",
@@ -12055,7 +12059,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Esses insetos noturnos luminosos são procurados por mineradores e aventureiros. Possuem duas glândulas, uma acima de cada olho, que produzem uma luz vermelha. Medem aproximadamente 60 cm de comprimento; quando removidas, as glândulas continuam brilhando por 1d6 dias e iluminam uma área circular com raio de 3 m.",
+    "combat": "O vaga-lume gigante ataca com uma mordida poderosa, mas não possui ataques especiais. Como os demais vermes, é irracional, possui visão no escuro de 18 m e é imune a efeitos que afetam a mente. Normalmente vive em agrupamentos de dois a cinco indivíduos ou colônias de seis a onze."
   },
   {
     "id": "vespa-gigante",
@@ -12105,7 +12111,9 @@
     "source": "Livro dos Monstros 3.5",
     "animalCompanion": false,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Vespas gigantes chegam a aproximadamente 1,5 m de comprimento e se comportam de modo semelhante às vespas comuns. Geralmente não atacam sem motivo, mas defendem-se quando ameaçadas e protegem seus ninhos. Levam criaturas mortas ou incapacitadas para o ninho como alimento para as larvas ainda não eclodidas.",
+    "combat": "A vespa gigante ataca com seu ferrão e veneno. Veneno (Ext): ferimento, Fortitude CD 14; dano inicial e secundário de 1d6 pontos de dano temporário de Destreza. A CD é baseada em Constituição. Recebe +8 racial em Observar e +4 racial em Sobrevivência para orientar-se."
   },
   {
     "id": "hiena",
@@ -12207,7 +12215,9 @@
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "O lagarto-monitor reúne espécies carnívoras de grande porte, com aproximadamente 90 cm a 1,5 m de comprimento. É um animal solitário de florestas quentes, capaz de nadar e de perseguir presas tanto em terra quanto na água.",
+    "combat": "Lagartos-monitores podem ser agressivos e usam suas mandíbulas poderosas para dilacerar presas ou inimigos. Recebem +8 racial em Natação para ações especiais ou evitar perigos, podem escolher 10 mesmo sob ameaça e podem correr enquanto nadam em linha reta. Também recebem +4 racial em Esconder-se e Furtividade; em áreas de floresta ou vegetação densa, o bônus de Esconder-se aumenta para +8."
   },
   {
     "id": "cavalo-de-guerra-leve",
@@ -12309,7 +12319,9 @@
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Tubarões são peixes carnívoros agressivos, capazes de atacar sem provocação qualquer criatura que se aproxime. Os espécimes médios medem de 1,5 a 2,4 m e normalmente não são perigosos para criaturas que não sejam suas presas. Vivem em águas frias e podem ser encontrados sozinhos, em cardumes ou em grupos de caça.",
+    "combat": "Tubarões circulam e observam possíveis presas antes de avançar para mordê-las com suas mandíbulas. Sentido Cego (Ext): localiza criaturas submersas a até 9 m; só funciona debaixo d'água. Faro Aguçado (Ext): percebe criaturas pelo cheiro a até 54 m e detecta sangue na água a até 1,6 km. Recebe +8 racial em Natação para ações especiais ou evitar perigos, pode escolher 10 mesmo sob ameaça e pode correr enquanto nada em linha reta."
   },
   {
     "id": "tubarao-grande",
@@ -12359,7 +12371,9 @@
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Tubarões grandes podem alcançar aproximadamente 4,5 m de comprimento e representam uma ameaça séria para outras criaturas. São predadores de águas frias que costumam perseguir e atacar presas em cardumes ou grupos de caça.",
+    "combat": "Tubarões circulam e observam possíveis presas antes de avançar para mordê-las com suas mandíbulas. Sentido Cego (Ext): localiza criaturas submersas a até 9 m; só funciona debaixo d'água. Faro Aguçado (Ext): percebe criaturas pelo cheiro a até 54 m e detecta sangue na água a até 1,6 km. Recebe +8 racial em Natação para ações especiais ou evitar perigos, pode escolher 10 mesmo sob ameaça e pode correr enquanto nada em linha reta."
   },
   {
     "id": "tubarao-enorme",
@@ -12409,7 +12423,9 @@
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": false
+    "familiar": false,
+    "description": "Tubarões enormes são predadores monstruosos, como os grandes tubarões-brancos, e podem ultrapassar 6 m de comprimento. São perigosos caçadores de águas frias, capazes de atacar criaturas muito maiores que as presas habituais dos espécimes menores.",
+    "combat": "Tubarões circulam e observam possíveis presas antes de avançar para mordê-las com suas mandíbulas. Sentido Cego (Ext): localiza criaturas submersas a até 9 m; só funciona debaixo d'água. Faro Aguçado (Ext): percebe criaturas pelo cheiro a até 54 m e detecta sangue na água a até 1,6 km. Recebe +8 racial em Natação para ações especiais ou evitar perigos, pode escolher 10 mesmo sob ameaça e pode correr enquanto nada em linha reta."
   },
   {
     "id": "vibora-miuda",
@@ -12459,7 +12475,9 @@
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": false,
     "summonedCreature": false,
-    "familiar": false
+    "familiar": false,
+    "description": "As víboras variam muito de tamanho e não costumam ser agressivas. Quando confrontadas, frequentemente dão uma mordida antes de tentar fugir. Esta variedade diminuta é encontrada em pântanos temperados e depende do veneno para caçar pequenas presas e se defender.",
+    "combat": "A víbora depende de sua mordida venenosa. Veneno (Ext): ferimento, Fortitude CD 10; dano inicial e secundário de 1d6 pontos de dano temporário de Constituição. A CD é baseada em Constituição. Recebe +4 racial em Esconder-se, Ouvir e Observar; +8 em Equilíbrio, Escalar e Natação. Pode escolher 10 em Escalar mesmo sob ameaça e usa o maior entre Força e Destreza para testes de Escalar."
   },
   {
     "id": "vibora-pequena",
@@ -12509,7 +12527,9 @@
     "source": "SRD 3.5 (OGL), traduzido",
     "animalCompanion": true,
     "summonedCreature": true,
-    "familiar": true
+    "familiar": true,
+    "description": "As víboras variam muito de tamanho e não costumam ser agressivas. Quando confrontadas, frequentemente dão uma mordida antes de tentar fugir. Esta variedade pequena vive em pântanos temperados e usa o veneno para subjugar suas presas.",
+    "combat": "A víbora depende de sua mordida venenosa. Veneno (Ext): ferimento, Fortitude CD 10; dano inicial e secundário de 1d6 pontos de dano temporário de Constituição. A CD é baseada em Constituição. Recebe +4 racial em Esconder-se, Ouvir e Observar; +8 em Equilíbrio, Escalar e Natação. Pode escolher 10 em Escalar mesmo sob ameaça e usa o maior entre Força e Destreza para testes de Escalar."
   },
   {
     "id": "vibora-media",
