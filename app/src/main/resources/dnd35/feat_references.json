@@ -619,5 +619,86 @@
     "sourcePage": 85,
     "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 85",
     "status": "audited"
+  },
+  {
+    "name": "Apanhar Objetos",
+    "description": "Quando usar Desviar Objetos, o personagem pode apanhar a arma ou o projétil em vez de apenas desviá-lo. Armas de arremesso, como lanças e machados, podem ser imediatamente arremessadas de volta contra o atacante original, mesmo fora do turno do personagem, ou guardadas para uso posterior.",
+    "normal": "Desviar Objetos normalmente apenas evita o dano; não permite conservar o projétil ou devolvê-lo ao atacante.",
+    "special": "Exige Destreza 15, Desviar Objetos e Ataque Desarmado Aprimorado. É necessário ter ao menos uma mão livre. Um guerreiro pode escolhê-lo como talento adicional.",
+    "sourcePage": 75,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 75",
+    "status": "audited"
+  },
+  {
+    "name": "Ataque Desarmado Aprimorado",
+    "description": "O personagem é considerado armado mesmo quando luta desarmado; por isso, criaturas armadas não recebem ataques de oportunidade simplesmente porque ele as ataca com as mãos vazias. Seus ataques desarmados podem causar dano letal ou dano por contusão.",
+    "normal": "Sem o talento, um ataque desarmado provoca ataques de oportunidade e causa apenas dano por contusão.",
+    "special": "Um monge recebe este talento automaticamente no 1º nível. Um guerreiro pode escolhê-lo como talento adicional.",
+    "sourcePage": 75,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 75",
+    "status": "audited"
+  },
+  {
+    "name": "Ataque Atordoante",
+    "description": "Antes de realizar um ataque desarmado, o personagem pode declarar que tentará atordoar o alvo. Se o ataque acertar, a vítima também deve obter sucesso em um teste de Fortitude (CD 10 + metade do nível do atacante + modificador de Sabedoria) ou ficará atordoada por 1 rodada. Uma criatura atordoada não pode agir, perde seu bônus de Destreza na CA e sofre –2 na CA.",
+    "normal": "A tentativa precisa ser declarada antes da jogada de ataque; se o ataque errar, o uso diário é desperdiçado.",
+    "special": "Exige Destreza 13, Sabedoria 13, Ataque Desarmado Aprimorado e bônus base de ataque +8. Pode ser usado uma vez por dia a cada quatro níveis de personagem, no máximo uma vez por rodada. Constructos, limos, plantas, mortos-vivos, criaturas incorpóreas e criaturas imunes a sucessos decisivos não podem ser atordoados. Um monge pode escolhê-lo como talento adicional no 1º nível mesmo sem os pré-requisitos; nesse caso, recebe usos diários iguais ao nível de monge, mais um uso para cada quatro níveis em outras classes. Um guerreiro pode escolhê-lo como talento adicional.",
+    "sourcePage": 75,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 75",
+    "status": "audited"
+  },
+  {
+    "name": "Arquearia Montada",
+    "description": "Reduz pela metade as penalidades nas jogadas de ataque à distância realizadas sobre uma montaria em movimento: a penalidade passa de –4 para –2 quando a montaria se desloca o dobro e de –8 para –4 quando ela corre.",
+    "normal": "Sem o talento, aplicam-se integralmente as penalidades por atacar à distância enquanto a montaria está em movimento.",
+    "special": "Exige 1 graduação em Cavalgar e Combate Montado. Um guerreiro pode escolhê-lo como talento adicional.",
+    "sourcePage": 75,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 75",
+    "status": "audited"
+  },
+  {
+    "name": "Combate Montado",
+    "description": "Uma vez por rodada, quando a montaria do personagem for atingida em combate, ele pode realizar um teste de Cavalgar para evitar o golpe. Se o resultado superar a jogada de ataque adversária, o teste de Cavalgar passa a ser considerado a CA da montaria para aquele ataque, desde que seja maior que a CA original.",
+    "normal": "Sem o talento, a montaria é atingida quando a jogada de ataque adversária alcança sua CA normal.",
+    "special": "Exige 1 graduação em Cavalgar. Um guerreiro pode escolhê-lo como talento adicional.",
+    "sourcePage": 78,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 78",
+    "status": "audited"
+  },
+  {
+    "name": "Atropelar Aprimorado",
+    "description": "Quando o personagem tenta atropelar um adversário, a vítima não pode escolher evitar o atacante. O personagem também recebe +4 de bônus no teste de Força para derrubar o oponente.",
+    "normal": "Sem este talento, a vítima pode escolher evitar ou bloquear o atacante durante a manobra Atropelar.",
+    "special": "Exige Força 13 e Ataque Poderoso. Um guerreiro pode escolhê-lo como talento adicional.",
+    "sourcePage": 78,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 78",
+    "status": "audited"
+  },
+  {
+    "name": "Encontrão Aprimorado",
+    "description": "Ao usar a manobra Encontrão, o personagem não provoca ataque de oportunidade do defensor. Além disso, recebe +4 de bônus no teste resistido de Força para empurrar o alvo.",
+    "normal": "Sem este talento, iniciar um Encontrão provoca ataque de oportunidade do defensor.",
+    "special": "Exige Força 13 e Ataque Poderoso. Um guerreiro pode escolhê-lo como talento adicional.",
+    "sourcePage": 80,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 80",
+    "status": "audited"
+  },
+  {
+    "name": "Pisotear",
+    "description": "Enquanto estiver montado e tentar atropelar um oponente, o personagem impede que a vítima escolha evitar o atacante. Se a manobra derrubar a criatura, a montaria pode realizar um ataque — normalmente com os cascos — contra ela, recebendo +4 de bônus na jogada de ataque contra o adversário caído.",
+    "normal": "Sem este talento, a vítima pode escolher evitar o atacante durante a manobra Atropelar.",
+    "special": "Exige 1 graduação em Cavalgar e Combate Montado. Um guerreiro pode escolhê-lo como talento adicional.",
+    "sourcePage": 83,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 83",
+    "status": "audited"
+  },
+  {
+    "name": "Separar Aprimorado",
+    "description": "Ao atacar um objeto empunhado ou carregado por um adversário, como uma arma ou escudo, o personagem não provoca ataque de oportunidade. Também recebe +4 de bônus nas jogadas de ataque contra objetos que o adversário esteja empunhando ou carregando.",
+    "normal": "Sem este talento, tentar Separar um objeto empunhado provoca ataque de oportunidade do adversário.",
+    "special": "Exige Força 13 e Ataque Poderoso. Um guerreiro pode escolhê-lo como talento adicional.",
+    "sourcePage": 84,
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 84",
+    "status": "audited"
   }
 ]
