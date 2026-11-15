@@ -249,4 +249,38 @@ class FeatGlossarySearchTest {
         assertTrue(greaterCleave.reference?.description?.contains("não existe limite") == true)
     }
 
+
+    @Test
+    fun mountedAndCombatManeuverFeatReferencesExplainTheirSpecificRules() {
+        val catch = FeatGlossarySearch.search("Apanhar Objetos").first()
+        assertTrue(catch.reference?.description?.contains("fora do turno") == true)
+        assertTrue(catch.reference?.special?.contains("mão livre") == true)
+
+        val unarmed = FeatGlossarySearch.search("Ataque Desarmado Aprimorado").first()
+        assertTrue(unarmed.reference?.normal?.contains("ataques de oportunidade") == true)
+        assertTrue(unarmed.reference?.special?.contains("1º nível") == true)
+
+        val stunning = FeatGlossarySearch.search("Ataque Atordoante").first()
+        assertTrue(stunning.reference?.description?.contains("CD 10") == true)
+        assertTrue(stunning.reference?.special?.contains("uma vez por rodada") == true)
+
+        val mountedArchery = FeatGlossarySearch.search("Arquearia Montada").first()
+        assertTrue(mountedArchery.reference?.description?.contains("–8 para –4") == true)
+
+        val mountedCombat = FeatGlossarySearch.search("Combate Montado").first()
+        assertTrue(mountedCombat.reference?.description?.contains("teste de Cavalgar") == true)
+
+        val overrun = FeatGlossarySearch.search("Atropelar Aprimorado").first()
+        assertTrue(overrun.reference?.normal?.contains("evitar ou bloquear") == true)
+
+        val bullRush = FeatGlossarySearch.search("Encontrão Aprimorado").first()
+        assertTrue(bullRush.reference?.description?.contains("+4") == true)
+
+        val trample = FeatGlossarySearch.search("Pisotear").first()
+        assertTrue(trample.reference?.description?.contains("cascos") == true)
+
+        val sunder = FeatGlossarySearch.search("Separar Aprimorado").first()
+        assertTrue(sunder.reference?.description?.contains("objeto empunhado") == true)
+    }
+
 }
