@@ -1021,4 +1021,34 @@ class CreatureCatalogTest {
         }
     }
 
+
+    @Test
+    fun tenViperAndScorpionSheetsHaveExternalSrdDetails() {
+        val viperDcs = mapOf("vibora-media" to "Fortitude CD 11", "vibora-grande" to "Fortitude CD 11", "vibora-enorme" to "Fortitude CD 14")
+        for ((id, dc) in viperDcs) {
+            val viper = CreatureCatalog.byId(id)!!
+            assertTrue(viper.description.contains("víboras"))
+            assertTrue(viper.combat.contains(dc))
+            assertTrue(viper.combat.contains("1d6 pontos de dano temporário de Constituição"))
+        }
+
+        val scorpions = mapOf(
+            "escorpiao-miudo" to ("1d2–4" to "Fortitude CD 12"),
+            "escorpiao-pequeno" to ("1d3–1" to "Fortitude CD 12"),
+            "escorpiao-medio" to ("1d4+1" to "Fortitude CD 13"),
+            "escorpiao-grande" to ("1d6+4" to "Fortitude CD 14"),
+            "escorpiao-enorme" to ("1d8+6" to "Fortitude CD 18"),
+            "escorpiao-imenso" to ("2d6+10" to "Fortitude CD 23"),
+            "escorpiao-colossal" to ("2d8+12" to "Fortitude CD 33")
+        )
+        for ((id, values) in scorpions) {
+            val scorpion = CreatureCatalog.byId(id)!!
+            assertTrue(scorpion.description.contains("desérticas"))
+            assertTrue(scorpion.combat.contains("Constrição (Ext)"))
+            assertTrue(scorpion.combat.contains(values.first))
+            assertTrue(scorpion.combat.contains(values.second))
+            assertTrue(scorpion.combat.contains("Sentido Sísmico de 18 m"))
+        }
+    }
+
 }
