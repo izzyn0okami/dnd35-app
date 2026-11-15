@@ -63,3 +63,11 @@ Data: 2026-11-15
 - Cobertura atualizada para **26 de 110 talentos**. Acrescentados Combater com Duas Armas e Combater com Duas Armas Aprimorado; corrigido o texto de Reflexos de Combate para explicitar que o personagem mantém o ataque de oportunidade normal e recebe ataques adicionais em quantidade igual ao modificador de Destreza.
 - A busca agora também consulta os campos detalhados dos verbetes (funcionamento, regra normal, especial, ativação, duração, restrições e progressão), não apenas os nomes e resumos da ficha.
 - Testes adicionais verificam buscas por termos que aparecem somente no texto expandido e as regras de ataques de oportunidade e combate com duas armas.
+
+
+## Ampliação de talentos gerais e perícias (15/11/2026)
+
+- Cobertura atualizada para **45 de 110 talentos**.
+- Foram acrescentadas referências para talentos de bônus em perícias e testes de resistência, além de Foco em Perícia, Prontidão, Corrida e Tolerância.
+- As referências simples utilizam a descrição mecânica da Tabela 5-1; quando há regra normal ou exceção de classe (como o talento Tolerância concedido automaticamente ao ranger), ela foi registrada separadamente.
+- Testes adicionados para Foco em Perícia e Tolerância.
