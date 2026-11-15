@@ -38,7 +38,10 @@ object FeatGlossarySearch {
                 normalize(it.name).contains(normalized) ||
                     normalize(it.prerequisites).contains(normalized) ||
                     normalize(it.summary).contains(normalized) ||
-                    normalize(it.benefit).contains(normalized)
+                    normalize(it.benefit).contains(normalized) ||
+                    normalize(it.reference?.description.orEmpty()).contains(normalized) ||
+                    normalize(it.reference?.normal.orEmpty()).contains(normalized) ||
+                    normalize(it.reference?.special.orEmpty()).contains(normalized)
             }
             .sortedWith(
                 compareBy<FeatGlossaryResult> {
