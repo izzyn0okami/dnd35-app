@@ -186,6 +186,17 @@ class FeatGlossarySearchTest {
         assertTrue(reflexes.reference?.description?.contains("três ataques de oportunidade") == true)
     }
 
+
+    @Test
+    fun skillAndSavingThrowFeatsHaveDistinctReferenceRules() {
+        val skill = FeatGlossarySearch.search("Foco em Perícia").first()
+        assertTrue(skill.reference?.description?.contains("+3") == true)
+
+        val endurance = FeatGlossarySearch.search("Tolerância").first()
+        assertTrue(endurance.reference?.special?.contains("Rangers") == true)
+        assertTrue(endurance.reference?.normal?.contains("fatigado") == true)
+    }
+
     @Test
     fun blankSearchReturnsNoResults() {
         assertTrue(FeatGlossarySearch.search("   ").isEmpty())
