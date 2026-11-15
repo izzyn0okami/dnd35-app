@@ -468,7 +468,7 @@ class ExampleUnitTest {
   }
 
   @Test
-  fun barbarianMediumArmorDisablesFastMovement() {
+  fun barbarianFastMovementIsAppliedBeforeMediumArmorReduction() {
     val armor = CharacterInventoryItem(
       name = "Gibão de Peles",
       category = "Armaduras",
@@ -486,7 +486,28 @@ class ExampleUnitTest {
         inventoryJson = CharacterJsonAdapters.serializeInventory(listOf(armor))
       )
     )
-    assertEquals(6.0f, stats.speedMetersEffective, 0.01f)
+    // 9m base + 3m de Movimento Rápido = 12m; armadura média reduz para 9m.
+    assertEquals(9.0f, stats.speedMetersEffective, 0.01f)
+  }
+
+  @Test
+  fun barbarianFastMovementIsAppliedBeforeMediumLoadReduction() {
+    val heavyPack = CharacterInventoryItem(
+      name = "Carga de teste",
+      category = "Itens de Aventura",
+      weightLb = 100f,
+      equipped = false
+    )
+    val stats = CharacterCalculator.compute(
+      CharacterEntity(
+        characterClass = "Bárbaro",
+        level = 1,
+        baseStr = 16,
+        inventoryJson = CharacterJsonAdapters.serializeInventory(listOf(heavyPack))
+      )
+    )
+    assertEquals(Dnd35Rules.EncumbranceLevel.MEDIUM, stats.encumbrance)
+    assertEquals(9.0f, stats.speedMetersEffective, 0.01f)
   }
 
   @Test
