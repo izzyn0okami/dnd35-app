@@ -898,5 +898,86 @@
     "special": "A CD depende da superfície e das condições gerais da trilha, conforme a tabela do Livro do Jogador. A descrição detalhada da tabela e dos modificadores deve ser consultada no capítulo de perícias; esta entrada resume apenas o benefício do talento.",
     "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 87",
     "status": "audited"
+  },
+  {
+    "name": "Usar Arma Comum",
+    "sourcePage": 89,
+    "description": "Escolha uma arma comum específica. O personagem ataca normalmente com a arma escolhida; sem proficiência, sofre -4 nas jogadas de ataque.",
+    "normal": "Um personagem que empunha uma arma sem saber usá-la sofre -4 nas jogadas de ataque.",
+    "special": "O talento pode ser escolhido novamente para outra arma comum. Bárbaros, guerreiros, paladinos e rangers já sabem usar todas as armas comuns. Clérigos com o domínio da Guerra recebem automaticamente o talento para a arma comum predileta de sua divindade. A magia Transformação de Tenser concede ao mago ou feiticeiro proficiência com todas as armas comuns enquanto durar.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 89",
+    "status": "audited"
+  },
+  {
+    "name": "Usar Arma Exótica",
+    "sourcePage": 90,
+    "description": "Escolha uma arma exótica específica. O personagem ataca normalmente com ela; sem proficiência, sofre -4 nas jogadas de ataque.",
+    "normal": "Um personagem que empunha uma arma sem saber usá-la sofre -4 nas jogadas de ataque.",
+    "special": "Pré-requisito: bônus base de ataque +1; para espada bastarda e machado de guerra anão, também Força 13. O talento pode ser escolhido várias vezes, cada vez para uma arma exótica diferente. Um guerreiro pode escolhê-lo como talento adicional.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 90",
+    "status": "audited"
+  },
+  {
+    "name": "Usar Armas Simples",
+    "sourcePage": 90,
+    "description": "O personagem ataca normalmente com qualquer arma simples; sem proficiência, sofre -4 nas jogadas de ataque.",
+    "normal": "Um personagem que empunha uma arma sem saber usá-la sofre -4 nas jogadas de ataque.",
+    "special": "Todos os personagens, exceto druidas, monges, ladinos e magos, já sabem usar todas as armas simples. A magia Transformação de Tenser concede esse talento ao mago ou feiticeiro enquanto durar.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 90",
+    "status": "audited"
+  },
+  {
+    "name": "Usar Armadura (leve)",
+    "sourcePage": 90,
+    "description": "O personagem é treinado para usar armaduras leves. Quando usa qualquer armadura leve, a penalidade de armadura afeta somente testes de Equilíbrio, Escalar, Arte da Fuga, Esconder-se, Saltar, Furtividade, Prestidigitação e Acrobacia.",
+    "normal": "Sem treinamento adequado, a penalidade da armadura afeta jogadas de ataque e testes de perícia que exijam movimentos, inclusive Cavalgar.",
+    "special": "Todas as classes, exceto magos, feiticeiros e monges, já sabem usar armaduras leves e não precisam selecionar este talento.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 90",
+    "status": "audited"
+  },
+  {
+    "name": "Usar Armadura (média)",
+    "sourcePage": 90,
+    "description": "O personagem é treinado para usar armaduras médias. O efeito sobre a penalidade de armadura é o mesmo de Usar Armadura (leve).",
+    "normal": "Sem treinamento adequado, a penalidade da armadura afeta jogadas de ataque e testes de perícia que exijam movimentos, inclusive Cavalgar.",
+    "special": "Pré-requisito: Usar Armadura (leve). Guerreiros, bárbaros, paladinos, clérigos, druidas e bardos já sabem usar armaduras médias e não precisam selecionar este talento.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 90",
+    "status": "audited"
+  },
+  {
+    "name": "Usar Armadura (pesada)",
+    "sourcePage": 90,
+    "description": "O personagem é treinado para usar armaduras pesadas. O efeito sobre a penalidade de armadura é o mesmo de Usar Armadura (leve).",
+    "normal": "Sem treinamento adequado, a penalidade da armadura afeta jogadas de ataque e testes de perícia que exijam movimentos, inclusive Cavalgar.",
+    "special": "Pré-requisitos: Usar Armadura (leve) e Usar Armadura (média). Guerreiros, paladinos e clérigos já sabem usar armaduras pesadas e não precisam selecionar este talento.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 90",
+    "status": "audited"
+  },
+  {
+    "name": "Usar Escudo",
+    "sourcePage": 90,
+    "description": "O personagem sabe usar escudos pequenos e grandes, assim como broquéis, sofrendo somente as penalidades padrão do equipamento.",
+    "normal": "Sem treinamento adequado, a penalidade de armadura do escudo afeta jogadas de ataque e testes de perícia que exijam movimentos, inclusive Cavalgar.",
+    "special": "A descrição do talento não apresenta pré-requisito.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 90",
+    "status": "audited"
+  },
+  {
+    "name": "Ataque com Escudo Aprimorado",
+    "sourcePage": 79,
+    "description": "Quando ataca com um escudo, o personagem ainda considera o bônus do equipamento na Classe de Armadura.",
+    "normal": "Sem este talento, o personagem perde o bônus de CA concedido pelo escudo até sua próxima ação quando ataca com ele.",
+    "special": "Pré-requisito: Usar Escudo. Um guerreiro pode escolher este talento como um de seus talentos adicionais. A tabela de talentos usa a forma singular “Usar Escudo”, enquanto a descrição do pré-requisito aparece no plural em algumas impressões; mantido o nome canônico do catálogo.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 79",
+    "status": "audited"
+  },
+  {
+    "name": "Usar Escudo de Corpo",
+    "sourcePage": 90,
+    "description": "O personagem é treinado para usar escudos de corpo, sofrendo somente as penalidades padrão do equipamento.",
+    "normal": "Sem treinamento adequado, a penalidade de armadura do escudo afeta jogadas de ataque e testes de perícia que exijam movimentos, inclusive Cavalgar.",
+    "special": "Pré-requisito: Usar Escudo. Guerreiros recebem este talento automaticamente como talento adicional.",
+    "source": "Livro do Jogador brasileiro, Capítulo 5 — Talentos, p. 90",
+    "status": "audited"
   }
 ]
