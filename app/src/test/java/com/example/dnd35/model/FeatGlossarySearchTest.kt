@@ -172,6 +172,16 @@ class FeatGlossarySearchTest {
         assertTrue(feature.any { it.className == "Bárbaro" && it.reference?.term == "Fúria" })
     }
 
+
+    @Test
+    fun twoWeaponAndCombatReflexesReferencesDescribeExactAttackRules() {
+        val twoWeapons = FeatGlossarySearch.search("Combater com Duas Armas").first()
+        assertTrue(twoWeapons.reference?.normal?.contains("Tabela 8–10") == true)
+
+        val reflexes = FeatGlossarySearch.search("Reflexos de Combate").first()
+        assertTrue(reflexes.reference?.description?.contains("três ataques de oportunidade") == true)
+    }
+
     @Test
     fun blankSearchReturnsNoResults() {
         assertTrue(FeatGlossarySearch.search("   ").isEmpty())
