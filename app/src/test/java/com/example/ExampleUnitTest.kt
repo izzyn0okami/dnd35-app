@@ -698,7 +698,7 @@ class ExampleUnitTest {
   }
 
   @Test
-  fun barbarianMediumLoadDisablesFastMovement() {
+  fun barbarianFastMovementAppliesBeforeMediumLoadSpeedReduction() {
     val stats = CharacterCalculator.compute(
       CharacterEntity(
         characterClass = "Bárbaro",
@@ -715,7 +715,7 @@ class ExampleUnitTest {
       )
     )
     assertEquals(Dnd35Rules.EncumbranceLevel.MEDIUM, stats.encumbrance)
-    assertEquals(6.0f, stats.speedMetersEffective, 0.01f)
+    assertEquals(9.0f, stats.speedMetersEffective, 0.01f)
   }
 
   @Test
@@ -1187,8 +1187,9 @@ class ExampleUnitTest {
     }
 
     assertTrue(features.any { it.level == 4 && it.name == "Conjuração de Ranger" })
-    assertTrue(features.any { it.level == 17 && it.name == "Camuflagem" })
-    assertTrue(features.any { it.level == 18 && it.name == "Esconder-se à Plena Vista" })
+    assertTrue(features.any { it.level == 13 && it.name == "Camuflagem" })
+    assertTrue(features.any { it.level == 17 && it.name == "Mimetismo" })
+    assertTrue(features.none { it.name == "Esconder-se à Plena Vista" })
     assertTrue(features.none { it.level == 14 && it.name.contains("Inimigo Predileto") })
   }
 
@@ -1238,12 +1239,12 @@ class ExampleUnitTest {
       3 to listOf("Aura de Coragem", "Saúde Divina", "Remover Doença 1/semana"),
       4 to listOf("Expulsar Mortos-Vivos", "Conjuração Divina"),
       5 to listOf("Destruir o Mal 2/dia", "Montaria Especial"),
-      6 to listOf("Remover Doença 2/semana"),
-      9 to listOf("Remover Doença 3/semana"),
+      6 to listOf("Remover Doença 1/semana"),
+      9 to listOf("Remover Doença 2/semana"),
       10 to listOf("Destruir o Mal 3/dia"),
-      12 to listOf("Remover Doença 4/semana"),
-      15 to listOf("Destruir o Mal 4/dia", "Remover Doença 5/semana"),
-      18 to listOf("Remover Doença 6/semana"),
+      12 to listOf("Remover Doença 3/semana"),
+      15 to listOf("Destruir o Mal 4/dia", "Remover Doença 4/semana"),
+      18 to listOf("Remover Doença 5/semana"),
       20 to listOf("Destruir o Mal 5/dia")
     )
 
@@ -1956,7 +1957,8 @@ class ExampleUnitTest {
   fun fighterBonusFeatsRequireTheirPrerequisitesAtEveryGrantedLevel() {
     val fighter = Dnd35Rules.CLASSES.single { it.name == "Guerreiro" }.features
     assertEquals(listOf(1, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20), fighter.map { it.level })
-    assertTrue(fighter.all { it.description.contains("pré-requisitos") })
+    assertTrue(fighter.filter { it.name.startsWith("Talento Bônus de Guerreiro") }
+      .all { it.description.contains("pré-requisitos") })
   }
 
 }
