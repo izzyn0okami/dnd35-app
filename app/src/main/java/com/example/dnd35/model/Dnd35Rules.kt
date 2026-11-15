@@ -892,7 +892,8 @@ object Dnd35Rules {
             val o = array.getJSONObject(i)
             val name = CatalogJson.requireString(o, "name", "magia #${i + 1}")
             check(seen.add(name.lowercase())) { "Magia duplicada no catálogo: $name" }
-            val level = CatalogJson.requireInt(o, "level", name)            check(level in 0..9) { "Magia \"$name\": nível fora da faixa 0-9 ($level)" }
+            val level = CatalogJson.requireInt(o, "level", name)
+            check(level in 0..9) { "Magia \"$name\": nível fora da faixa 0-9 ($level)" }
             val classes = CatalogJson.stringList(o, "classes")
             val explicitClassLevels = CatalogJson.intMap(o, "classLevels")
             val classLevels = if (explicitClassLevels.isNotEmpty()) {
