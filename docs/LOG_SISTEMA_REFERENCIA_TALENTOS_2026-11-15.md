@@ -142,3 +142,11 @@ Data: 2026-11-15
 - Removida a entrada duplicada do catálogo de seleção; corrigidos os pré-requisitos e o benefício curto de `Imobilização Aprimorada` para corresponder ao verbete detalhado já auditado.
 - Não foi realizada migração destrutiva: talentos previamente registrados nas fichas permanecem armazenados como `CharacterFeat` e não dependem da presença do nome no catálogo.
 - Teste de regressão atualizado para garantir que o catálogo contenha o nome brasileiro e não ofereça a duplicata.
+
+
+## Verificação da CI e ajuste do teste de contagem (15/11/2026)
+
+- A segunda tentativa do fluxo Android CI para o commit anterior concluiu com sucesso. Os dois fluxos disparados após a correção do nome falharam no mesmo teste de snapshot de contagem: `CatalogJsonLoadingTest.catalogSizesMatchThePlayersHandbookSnapshotCapturedOnMigration`, que exigia pelo menos 110 talentos.
+- A falha foi causada pelo piso histórico do teste, não por erro de compilação nem por campo ausente: o catálogo passou legitimamente de 110 para 109 entradas ao remover o alias duplicado `Derrubar Aprimorado`. A entrada canônica `Imobilização Aprimorada` permanece no catálogo.
+- Atualizado o piso para 109, com comentário explicando a redução intencional. Os testes de nomes, campos obrigatórios e ausência de duplicatas permanecem ativos.
+- Nenhuma CI foi considerada aprovada para o commit mais recente ainda; aguardar a nova execução antes do merge.
