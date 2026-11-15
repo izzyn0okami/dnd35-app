@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -19,6 +20,8 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Casino
 import androidx.compose.material.icons.filled.Edit
@@ -47,6 +50,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.dnd35.model.CalculatedCharacterStats
@@ -82,6 +86,7 @@ fun OverviewCombatTab(
     var editingAbility by remember { mutableStateOf<Pair<String, Triple<Int, Int, Int>>?>(null) } // Name to (Base, Magic, Racial)
     var diceRollTarget by remember { mutableStateOf<Triple<String, Int, String>?>(null) } // Title, Bonus, Damage
     var showAmmunitionPicker by remember { mutableStateOf(false) }
+    var selectedClassFeature by remember { mutableStateOf<Pair<String, Dnd35Rules.ClassFeature>?>(null) }
 
     val equippedAmmunition = stats.inventory.firstOrNull {
         it.equippedSlot == Dnd35Rules.EquipmentSlots.AMMUNITION && it.quantity > 0
@@ -735,12 +740,24 @@ fun OverviewCombatTab(
 
                     Spacer(modifier = Modifier.height(8.dp))
 
-                    // Lista de Habilidades de Classe Desbloqueadas até o Nível Atual
+                    // Cada habilidade abre sua descrição e a progressão completa cadastrada para a classe.
                     Text("Habilidades de Classe Desbloqueadas:", style = MaterialTheme.typography.labelSmall, fontWeight = FontWeight.Bold)
-                    for (feat in stats.activeClassFeatures) {
-                        Column(modifier = Modifier.padding(vertical = 3.dp)) {
-                            Text("• [Nv ${feat.level}] ${feat.name}", fontWeight = FontWeight.SemiBold, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.primary)
-                            Text(feat.description, style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    for (detail in stats.multiclassDetails) {
+                        for (feat in detail.classInfo.features.filter { it.level <= detail.entry.level }) {
+                            Column(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .clickable { selectedClassFeature = detail.classInfo.name to feat }
+                                    .padding(vertical = 5.dp)
+                            ) {
+                                Text(
+                                    "• [Nv ${feat.level}] ${feat.name}  ›",
+                                    fontWeight = FontWeight.SemiBold,
+                                    style = MaterialTheme.typography.bodySmall,
+                                    color = MaterialTheme.colorScheme.primary
+                                )
+                                Text(feat.description, style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                            }
                         }
                     }
                 }
@@ -813,6 +830,77 @@ fun OverviewCombatTab(
         )
     }
 
+    selectedClassFeature?.let { (className, feature) ->
+        val uriHandler = LocalUriHandler.current
+        val classInfo = stats.multiclassDetails.firstOrNull {
+            it.classInfo.name == className
+        }?.classInfo
+        val family = classFeatureFamily(feature.name)
+        val progression = classInfo?.features.orEmpty().filter {
+            classFeatureFamily(it.name) == family
+        }.sortedBy { it.level }
+        val classLevel = stats.multiclassDetails.firstOrNull { it.classInfo.name == className }?.entry?.level ?: 0
+        val srdUrl = srdClassUrl(className)
+
+        AlertDialog(
+            onDismissRequest = { selectedClassFeature = null },
+            title = { Text(feature.name) },
+            text = {
+                Column(
+                    modifier = Modifier
+                        .heightIn(max = 480.dp)
+                        .verticalScroll(rememberScrollState())
+                ) {
+                    Text(
+                        "$className • habilidade obtida no ${feature.level}º nível",
+                        style = MaterialTheme.typography.labelMedium,
+                        color = MaterialTheme.colorScheme.primary,
+                        fontWeight = FontWeight.Bold
+                    )
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Text(feature.description, style = MaterialTheme.typography.bodyMedium)
+                    Spacer(modifier = Modifier.height(16.dp))
+                    Text("Progressão da habilidade", fontWeight = FontWeight.Bold, style = MaterialTheme.typography.titleSmall)
+                    if (progression.size > 1) {
+                        progression.forEach { step ->
+                            Row(
+                                modifier = Modifier.fillMaxWidth().padding(top = 6.dp),
+                                verticalAlignment = Alignment.Top
+                            ) {
+                                Text(
+                                    if (step.level <= classLevel) "✓" else "○",
+                                    color = MaterialTheme.colorScheme.primary,
+                                    fontWeight = FontWeight.Bold,
+                                    modifier = Modifier.padding(end = 8.dp)
+                                )
+                                Column {
+                                    Text("Nível ${step.level}: ${step.name}", fontWeight = FontWeight.SemiBold, style = MaterialTheme.typography.bodySmall)
+                                    Text(step.description, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                                }
+                            }
+                        }
+                    } else {
+                        Text(
+                            "Não há outros marcos de progressão cadastrados para esta habilidade.",
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    }
+                    Spacer(modifier = Modifier.height(16.dp))
+                    Text(
+                        "Consultar descrição completa e regras no SRD (em inglês)",
+                        color = MaterialTheme.colorScheme.primary,
+                        style = MaterialTheme.typography.labelLarge,
+                        modifier = Modifier.clickable { uriHandler.openUri(srdUrl) }.padding(vertical = 4.dp)
+                    )
+                }
+            },
+            confirmButton = {
+                OutlinedButton(onClick = { selectedClassFeature = null }) { Text("Fechar") }
+            }
+        )
+    }
+
     if (showAmmunitionPicker) {
         AlertDialog(
             onDismissRequest = { showAmmunitionPicker = false },
@@ -838,6 +926,35 @@ fun OverviewCombatTab(
             dismissButton = { OutlinedButton(onClick = { showAmmunitionPicker = false }) { Text("Fechar") } }
         )
     }
+}
+
+
+/** Agrupa nomes que representam estágios da mesma habilidade (ex.: Fúria 1/dia e 2/dia). */
+private fun classFeatureFamily(name: String): String {
+    val normalized = name.trim()
+    if (normalized.startsWith("Fúria", ignoreCase = true)) return "Fúria"
+    return normalized
+        .substringBefore(" (")
+        .substringBefore(" +")
+        .replace(Regex("\\s+\\d+.*$"), "")
+        .trim()
+}
+
+private fun srdClassUrl(className: String): String {
+    val slug = when (className) {
+        "Bárbaro" -> "barbarian"
+        "Bardo" -> "bard"
+        "Clérigo" -> "cleric"
+        "Druida" -> "druid"
+        "Guerreiro" -> "fighter"
+        "Monge" -> "monk"
+        "Paladino" -> "paladin"
+        "Ranger" -> "ranger"
+        "Ladino" -> "rogue"
+        "Feiticeiro", "Mago" -> "sorcererWizard"
+        else -> "classes"
+    }
+    return "https://www.d20srd.org/srd/classes/$slug.htm"
 }
 
 data class AbilityData(
