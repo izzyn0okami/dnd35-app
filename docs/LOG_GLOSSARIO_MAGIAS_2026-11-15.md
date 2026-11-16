@@ -76,3 +76,6 @@ Data: 2026-11-15
 - Expandir sistematicamente as referências para as magias do Livro do Jogador.
 - Conferir cada verbete no PDF, registrar a página impressa e anotar exceções/interações.
 - Validar divergências entre catálogo e livro sem corrigi-las silenciosamente; alterações mecânicas exigem auditoria separada.
+
+## Correção de validação — Visão no Escuro
+- O CI identificou que o teste verificava a limitação contra escuridão mágica no campo `interactions`, mas a referência a registra corretamente em `tacticalNotes`. O teste foi ajustado para conferir o campo correspondente, sem alterar o texto ou a regra da magia.
