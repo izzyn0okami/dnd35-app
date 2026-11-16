@@ -3546,7 +3546,7 @@
     "domainLevels": {}
   },
   {
-    "name": "Toque Gélido",
+    "name": "Toque Macabro",
     "level": 1,
     "school": "Necromancia",
     "classes": [
@@ -3559,7 +3559,7 @@
     "duration": "Instantânea",
     "savingThrow": "Fortitude parcial",
     "spellResistance": true,
-    "description": "Um toque canaliza energia necrótica, causando dano e podendo enfraquecer temporariamente o alvo; mortos-vivos são afetados de modo diferente.",
+    "description": "Um toque da mão do conjurador, brilhando com energia azulada, retira a força vital de criaturas vivas. Cada ataque de toque causa 1d6 pontos de dano por energia negativa e pode causar 1 ponto de dano temporário de Força; um teste de Fortitude bem-sucedido anula apenas o dano de Força. O conjurador pode realizar um ataque de toque por nível. Mortos-vivos não sofrem dano nem redução de Força, mas devem obter sucesso em um teste de Vontade ou fugir em pânico durante 1d4+1 rodadas por nível de conjurador.",
     "classLevels": {
       "Mago": 1,
       "Feiticeiro": 1
@@ -9071,5 +9071,47 @@
     "domainLevels": {
       "Planta": 6
     }
+  },
+  {
+    "name": "Toque do Carniçal",
+    "level": 2,
+    "school": "Necromancia",
+    "classes": [
+      "Feiticeiro",
+      "Mago"
+    ],
+    "castTime": "1 ação padrão",
+    "components": "V, G, M",
+    "range": "Toque",
+    "duration": "1d6+2 rodadas",
+    "savingThrow": "Fortitude anula",
+    "spellResistance": true,
+    "description": "Imbuído de energia negativa, o conjurador pode paralisar um único humanoide vivo pela duração da magia com um ataque de toque corpo a corpo bem-sucedido. A pessoa paralisada exala cheiro de carniça em um raio de 3 m, causando náusea às demais criaturas na área; um teste de Fortitude anula a náusea. O conjurador não é afetado. Neutralizar venenos remove a náusea, e criaturas imunes a veneno não são afetadas.",
+    "classLevels": {
+      "Feiticeiro": 2,
+      "Mago": 2
+    },
+    "domainLevels": {}
+  },
+  {
+    "name": "Toque Vampírico",
+    "level": 3,
+    "school": "Necromancia",
+    "classes": [
+      "Feiticeiro",
+      "Mago"
+    ],
+    "castTime": "1 ação padrão",
+    "components": "V, G",
+    "range": "Toque",
+    "duration": "Instantânea/1 hora; veja texto",
+    "savingThrow": "Nenhum",
+    "spellResistance": true,
+    "description": "Um ataque de toque corpo a corpo bem-sucedido causa 1d6 pontos de dano por nível de conjurador (máximo 10d6). O conjurador recebe pontos de vida temporários iguais ao dano causado, mas não pode acumular mais pontos de vida temporários que o total de pontos de vida atuais do alvo +10. Os pontos de vida temporários desaparecem após 1 hora.",
+    "classLevels": {
+      "Feiticeiro": 3,
+      "Mago": 3
+    },
+    "domainLevels": {}
   }
 ]
