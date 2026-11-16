@@ -192,7 +192,7 @@
     "name": "Toque Macabro",
     "explanation": "A mão do conjurador brilha com energia azulada e retira a força vital de criaturas vivas. Cada ataque de toque corpo a corpo causa 1d6 pontos de dano por energia negativa; o conjurador pode realizar um ataque por nível.",
     "tacticalNotes": "Cada toque também pode causar 1 ponto de dano temporário de Força. Um teste de Fortitude bem-sucedido anula somente o dano de Força. Contra mortos-vivos, a magia não causa dano nem reduz Força; em vez disso, exige um teste de Vontade ou o morto-vivo foge em pânico por 1d4+1 rodadas por nível de conjurador.",
-    "interactions": "Alcance toque; duração instantânea; Resistência à Magia se aplica. O dano de Força é temporário. Fonte: Livro do Jogador, p. 249.",
+    "interactions": "Fortitude parcial ou Vontade anula (veja texto); Resistência à Magia se aplica. Alcance toque; duração instantânea. O dano de Força é temporário.",
     "sourcePage": 249,
     "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
     "status": "Auditado — catálogo corrigido"
