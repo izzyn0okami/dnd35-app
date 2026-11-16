@@ -54,6 +54,16 @@ class SpellGlossarySearchTest {
         assertTrue(vampiricTouch.reference?.explanation?.contains("10d6") == true)
         assertTrue(vampiricTouch.reference?.tacticalNotes?.contains("1 hora") == true)
 
+        val rustingGrasp = SpellGlossarySearch.search("Toque Enferrujante").first()
+        assertTrue(rustingGrasp.reference?.sourcePage == 249)
+        assertTrue(rustingGrasp.reference?.tacticalNotes?.contains("3d6") == true)
+        assertTrue(rustingGrasp.reference?.interactions?.contains("não admite Resistência à Magia") == true)
+
+        val touchOfIdiocy = SpellGlossarySearch.search("Toque da Idiotice").first()
+        assertTrue(touchOfIdiocy.reference?.sourcePage == 249)
+        assertTrue(touchOfIdiocy.reference?.explanation?.contains("1d6") == true)
+        assertTrue(touchOfIdiocy.reference?.tacticalNotes?.contains("abaixo de 1") == true)
+
         val dimensional = SpellGlossarySearch.search("Tranca Dimensional").first()
         assertTrue(dimensional.reference?.sourcePage == 250)
         assertTrue(dimensional.reference?.interactions?.contains("não admite Resistência à Magia") == true)
