@@ -466,5 +466,32 @@
     "sourcePage": 175,
     "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
     "status": "Auditado — expansão do glossário"
+  },
+  {
+    "name": "Aumentar Pessoa",
+    "explanation": "Aumenta instantaneamente um humanóide, dobrando sua altura e multiplicando seu peso por oito, elevando-o em uma categoria de tamanho. Concede +2 de bônus de tamanho na Força, –2 na Destreza (mínimo 1) e –1 nas jogadas de ataque e na CA devido ao tamanho. Não altera o deslocamento.",
+    "tacticalNotes": "Um humanóide que se torne Grande ocupa espaço de 3 m e tem alcance natural de 3 m. Se não houver espaço suficiente, cresce até o limite possível e pode tentar um teste de Força com o novo valor para romper barreiras; se falhar, fica comprimido sem sofrer dano por esmagamento. Equipamento vestido ou carregado também aumenta; itens que deixam a posse do alvo retornam ao tamanho normal. Efeitos mágicos de aumento de tamanho não se acumulam.",
+    "interactions": "Fortitude anula; Resistência à Magia se aplica. Duração de 1 minuto/nível. Serve de contramágica e dissipa Reduzir Pessoa; pode ser tornada permanente por Permanência. Componente material: um punhado de pó de ferro.",
+    "sourcePage": 176,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — expansão do glossário"
+  },
+  {
+    "name": "Ataque Certeiro",
+    "explanation": "Concede ao conjurador intuição temporária sobre o futuro imediato. A próxima jogada de ataque, se realizada antes do final da rodada seguinte, recebe +20 de bônus de intuição.",
+    "tacticalNotes": "Além do bônus de +20, o conjurador não é afetado pela chance de falha aplicada a ataques contra alvos camuflados. O efeito se aplica somente ao próximo ataque dentro do prazo indicado.",
+    "interactions": "Alvo pessoal; o conjurador é o próprio alvo. Duração: até o próximo ataque, desde que ocorra antes do final da rodada seguinte. Foco: uma pequena réplica de um alvo para arqueiros.",
+    "sourcePage": 176,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — expansão do glossário"
+  },
+  {
+    "name": "Aura Mágica de Nystul",
+    "explanation": "Altera a aura mágica de um objeto para que ele seja detectado como não mágico, como um item mágico de um tipo escolhido ou como se estivesse sob efeito de uma magia especificada.",
+    "tacticalNotes": "Se o objeto for examinado por Identificação ou de modo semelhante, o examinador pode reconhecer a falsidade e perceber as propriedades reais com um teste de Vontade bem-sucedido. Se falhar, acredita na aura falsa, e testes adicionais não revelam a verdade. A magia não funciona em objetos com aura excepcionalmente poderosa, como artefatos. Armas, escudos e armaduras mágicos precisam ser obras-primas para que a aura pareça plausível.",
+    "interactions": "Não permite teste de resistência no uso normal; o exame por Identificação ou semelhante permite Vontade para perceber a falsidade. Não admite Resistência à Magia. Duração de 1 dia/nível. Foco: um pequeno quadrado de seda passado sobre o objeto.",
+    "sourcePage": 176,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — expansão do glossário"
   }
 ]
