@@ -192,3 +192,13 @@ Data: 2026-11-15
 - **Aura Mágica de Nystul**: altera a aura percebida de um objeto; Identificação ou exame semelhante pode permitir Vontade para perceber a falsidade; a magia não funciona em auras excepcionalmente poderosas; armas, escudos e armaduras precisam ser obras-primas para parecerem plausivelmente mágicos.
 - Conferência rápida com SRD 3.5: Aumentar Pessoa preserva tamanho, bônus/penalidades, equipamento, contramágica e não acumulação; Aura Mágica preserva a alteração da aura e a possibilidade de identificar a falsidade; Ataque Certeiro preserva o bônus de +20 na próxima jogada. A edição brasileira continua como fonte primária.
 - Testes adicionados para as três referências, página e efeitos centrais. Nenhum dado mecânico do catálogo foi alterado.
+
+ 
+## Expansão alfabética — complemento A (páginas 173 e 177)
+- Referências detalhadas adicionadas para **Área Escorregadia**, **Auxílio Divino**, **Aura Profana** e **Aura Sagrada**.
+- **Área Escorregadia**, p. 173: cobre superfície ou objeto com substância escorregadia; Reflexos para evitar cair e repetição por rodada; deslocamento reduzido e Equilíbrio CD 10 para atravessar; testes adicionais para objetos em uso; roupa/armadura escorregadia concede +10 em Arte da Fuga e Agarrar em situações descritas no verbete. Não admite RM.
+- **Auxílio Divino**, p. 177: bônus de sorte de +1 em ataque e dano a cada três níveis de conjurador (mínimo +1, máximo +6), por 1 minuto; não aumenta dano de magias.
+- **Aura Profana**, p. 177: +4 de deflexão na CA e +4 de resistência nos testes de resistência; RM 25 contra magias [Bem] ou conjuradas por criaturas Boas; bloqueia possessão e influências mentais; criatura Boa que acerte o protegido em corpo a corpo sofre 1d6 de dano temporário de Força, Fortitude anula.
+- **Aura Sagrada**, p. 177: mesma estrutura de bônus defensivos; RM 25 contra magias [Mal] ou conjuradas por criaturas Más; bloqueia possessão e influências mentais; criatura Má que acerte o protegido em corpo a corpo fica cega, Fortitude anula.
+- A fonte primária foi consultada diretamente nas páginas impressas indicadas. As quatro magias já constavam do catálogo; nenhum parâmetro mecânico foi alterado. Testes adicionados para cada verbete.
+- O SRD 3.5 foi usado apenas como apoio de comparação quando havia equivalência direta; em caso de terminologia ou valores específicos, prevalece o Livro do Jogador brasileiro.
