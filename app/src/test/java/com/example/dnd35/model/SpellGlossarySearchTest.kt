@@ -74,7 +74,7 @@ class SpellGlossarySearchTest {
         val planar = SpellGlossarySearch.search("Viagem Planar").first()
         assertTrue(planar.reference?.sourcePage == 251)
         assertTrue(planar.reference?.tacticalNotes?.contains("oito criaturas") == true)
-        assertTrue(planar.reference?.interactions?.contains("750 km") == true)
+        assertTrue(planar.reference?.explanation?.contains("750 km") == true)
 
         val greaterScrying = SpellGlossarySearch.search("Vidência Maior").first()
         assertTrue(greaterScrying.reference?.sourcePage == 252)
