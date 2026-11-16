@@ -150,3 +150,12 @@ Data: 2026-11-15
 - **Animar Plantas**, pp. 172–173: uma planta Grande por três níveis ou equivalentes maiores; alcance curto de 7,5 m + 1,5 m/2 níveis; duração 1 rodada/nível ou 1 hora/nível. Alternativa entrelaça plantas e duplica Constrição. Não afeta criaturas do tipo planta nem material vegetal morto. Corrigidos no catálogo os componentes (V), alcance e duração, antes incompletos/divergentes.
 - Comparação rápida com SRD 3.5: confirmou a estrutura dos efeitos de Air Walk, Animate Rope, Animate Objects e Animate Plants. Valores e termos métricos/portugueses seguem o Livro do Jogador brasileiro.
 - Corrigido teste anterior do catálogo de Toque Vampírico, que esperava a expressão “máximo de 10d6”, embora o texto correto registre “máximo 10d6”. A asserção agora acompanha o dado efetivamente cadastrado, sem alterar a regra.
+
+
+## Expansão alfabética — lote Ap (página 173)
+- Referências detalhadas adicionadas para **Antipatia**, **Apagar**, **Aprisionamento** e **Aprisionar a Alma**.
+- **Antipatia**: repulsão de tipo específico de criatura ou tendência; sucesso em Vontade permite permanecer, mas reduz Destreza em 4; serve de contramágica e dissipa Simpatia.
+- **Apagar**: remove escrita mundana ou mágica de pergaminho ou até duas páginas; inclui regras para runas explosivas, símbolo de proteção, selo da serpente sépia, marca arcana, teste de conjurador CD 15 e ativação acidental em falha.
+- **Aprisionamento**: enterra o alvo em animação suspensa; Libertação no local desfaz o efeito; desejo/milagre e adivinhações têm limitações específicas; penalidade de –4 no teste de resistência quando o conjurador conhece nome e detalhes da vítima.
+- **Aprisionar a Alma**: documentadas as duas ativações, magia completa e Objeto Armadilha; distinções de teste de resistência/RM, gema de pelo menos 1.000 PO por DV e foco especial.
+- Os textos foram conferidos no Livro do Jogador brasileiro, p. 173. Nenhum parâmetro mecânico do catálogo foi alterado neste lote.
