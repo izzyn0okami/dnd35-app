@@ -134,4 +134,52 @@ class SpellGlossarySearchTest {
         assertTrue(vision.reference?.tacticalNotes?.contains("CD é 30") == true)
         assertTrue(vision.reference?.interactions?.contains("100 XP") == true)
     }
+
+    @Test
+    fun auditsAlphabeticalSpellBatchAAgainstBrazilianPlayerHandbook() {
+        val holyWater = SpellGlossarySearch.search("Abençoar Água").first()
+        assertTrue(holyWater.reference?.sourcePage == 168)
+        assertTrue(holyWater.reference?.explanation?.contains("0,5 litro") == true)
+        assertTrue(holyWater.reference?.interactions?.contains("Vontade anula (objeto)") == true)
+
+        val blessWeapon = SpellGlossarySearch.search("Abençoar Arma").first()
+        assertTrue(blessWeapon.reference?.sourcePage == 168)
+        assertTrue(blessWeapon.reference?.tacticalNotes?.contains("ameaças de acerto crítico") == true)
+        assertTrue(blessWeapon.reference?.interactions?.contains("não admite Resistência à Magia") == true)
+
+        val openClose = SpellGlossarySearch.search("Abrir/Fechar").first()
+        assertTrue(openClose.reference?.sourcePage == 168)
+        assertTrue(openClose.reference?.tacticalNotes?.contains("15 kg") == true)
+        assertTrue(openClose.spell.range.contains("1,5 m/2 níveis"))
+
+        val calmAnimals = SpellGlossarySearch.search("Acalmar Animais").first()
+        assertTrue(calmAnimals.reference?.sourcePage == 168)
+        assertTrue(calmAnimals.reference?.explanation?.contains("Inteligência 1 ou 2") == true)
+        assertTrue(calmAnimals.reference?.interactions?.contains("Qualquer ameaça") == true)
+
+        val calmEmotions = SpellGlossarySearch.search("Acalmar Emoções").first()
+        assertTrue(calmEmotions.reference?.sourcePage == 168)
+        assertTrue(calmEmotions.reference?.interactions?.contains("efeitos de medo") == true)
+
+        val divination = SpellGlossarySearch.search("Adivinhação").first()
+        assertTrue(divination.reference?.sourcePage == 169)
+        assertTrue(divination.reference?.tacticalNotes?.contains("70%") == true)
+        assertTrue(divination.reference?.tacticalNotes?.contains("25 PO") == true)
+
+        val catsGrace = SpellGlossarySearch.search("Agilidade do Gato").first()
+        assertTrue(catsGrace.reference?.sourcePage == 169)
+        assertTrue(catsGrace.reference?.explanation?.contains("+4") == true)
+        assertTrue(catsGrace.reference?.interactions?.contains("Vontade anula (inofensiva)") == true)
+
+        val aid = SpellGlossarySearch.search("Ajuda").first()
+        assertTrue(aid.reference?.sourcePage == 169)
+        assertTrue(aid.reference?.explanation?.contains("1d8") == true)
+        assertTrue(aid.reference?.tacticalNotes?.contains("+10") == true)
+
+        val alarm = SpellGlossarySearch.search("Alarme").first()
+        assertTrue(alarm.reference?.sourcePage == 169)
+        assertTrue(alarm.reference?.explanation?.contains("6 m de raio") == true)
+        assertTrue(alarm.reference?.interactions?.contains("Permanência") == true)
+    }
+
 }
