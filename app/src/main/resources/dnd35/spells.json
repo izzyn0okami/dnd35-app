@@ -9107,7 +9107,7 @@
     "duration": "Instantânea/1 hora; veja texto",
     "savingThrow": "Nenhum",
     "spellResistance": true,
-    "description": "Um ataque de toque corpo a corpo bem-sucedido causa 1d6 pontos de dano por nível de conjurador (máximo 10d6). O conjurador recebe pontos de vida temporários iguais ao dano causado, mas não pode acumular mais pontos de vida temporários que o total de pontos de vida atuais do alvo +10. Os pontos de vida temporários desaparecem após 1 hora.",
+    "description": "Um ataque de toque corpo a corpo bem-sucedido causa 1d6 pontos de dano para cada dois níveis de conjurador (máximo 10d6). O conjurador recebe pontos de vida temporários iguais ao dano causado, mas não pode acumular mais pontos de vida temporários que o total de pontos de vida atuais do alvo +10. Os pontos de vida temporários desaparecem após 1 hora.",
     "classLevels": {
       "Feiticeiro": 3,
       "Mago": 3
