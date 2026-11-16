@@ -105,7 +105,7 @@ class SpellGlossarySearchTest {
 
         val vision = SpellGlossarySearch.search("Visão").first()
         assertTrue(vision.reference?.sourcePage == 252)
-        assertTrue(vision.reference?.tacticalNotes?.contains("CD 30") == true)
+        assertTrue(vision.reference?.tacticalNotes?.contains("CD é 30") == true)
         assertTrue(vision.reference?.interactions?.contains("100 XP") == true)
     }
 }
