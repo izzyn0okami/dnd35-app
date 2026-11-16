@@ -395,7 +395,7 @@ class PresetSpellCatalogTest {
     fun firstLevelArcaneSpellBatchNineHasExpectedClassesAndMechanics() {
         val spells = Dnd35Rules.PRESET_SPELLS.associateBy { it.name }
         assertEquals(setOf("Bardo", "Mago", "Feiticeiro"), spells.getValue("Animar Corda").classes.toSet())
-        assertEquals("Médio (30m + 3m/nível)", spells.getValue("Animar Corda").range)
+        assertEquals("Médio (30 m + 3 m/nível)", spells.getValue("Animar Corda").range)
         assertFalse(spells.getValue("Animar Corda").spellResistance)
         assertEquals(setOf("Mago", "Feiticeiro"), spells.getValue("Ataque Certeiro").classes.toSet())
         assertEquals("Pessoal", spells.getValue("Ataque Certeiro").range)
