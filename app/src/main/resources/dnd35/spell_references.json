@@ -385,5 +385,41 @@
     "sourcePage": 172,
     "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias, continuação na página 173",
     "status": "Auditado — expansão do glossário"
+  },
+  {
+    "name": "Antipatia",
+    "explanation": "Faz um objeto ou local emanar vibrações que repelem um tipo específico de criatura ou criaturas inteligentes de uma tendência definida. Os alvos sentem uma compulsão desesperada para abandonar ou evitar a área ou o objeto e não retornar enquanto a magia durar.",
+    "tacticalNotes": "O tipo de criatura ou a tendência deve ser especificado com precisão. Uma criatura que obtenha sucesso no teste de Vontade pode permanecer na área ou tocar o item, mas sente desconforto que reduz sua Destreza em 4 pontos. A magia pode afetar um local de até um cubo de 3 m/nível ou um objeto. Componente material arcano: pedaço de alumínio mergulhado em vinagre.",
+    "interactions": "Vontade parcial e Resistência à Magia se aplica. Antipatia serve como contramágica e dissipa Simpatia. Dura 2 horas por nível e pode ser dissipada.",
+    "sourcePage": 173,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — expansão do glossário"
+  },
+  {
+    "name": "Apagar",
+    "explanation": "Remove escrita mágica ou mundana de um pergaminho ou de até duas páginas de papel, papiro ou superfícies similares.",
+    "tacticalNotes": "Apaga runas explosivas, símbolo de proteção, selo da serpente sépia e marca arcana, mas não remove escrita ilusória nem símbolo. Escrita comum é apagada imediatamente se o conjurador tocar o texto e ninguém mais estiver segurando o objeto; se estiver sendo segurado, há 90% de chance. Escrita mágica exige toque e teste de conjurador (1d20 + nível de conjurador) contra CD 15; resultado natural 1 ou 2 sempre falha. Falhar ao apagar runas explosivas, símbolo de proteção ou selo da serpente sépia ativa a magia acidentalmente.",
+    "interactions": "Não permite teste de resistência e não admite Resistência à Magia. A duração é instantânea. O alvo é um pergaminho ou até duas páginas/superfícies similares.",
+    "sourcePage": 173,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — expansão do glossário"
+  },
+  {
+    "name": "Aprisionamento",
+    "explanation": "Enterra a criatura tocada em um estado de animação suspensa, semelhante ao efeito de Estase Temporal, dentro de uma pequena esfera sob a superfície da terra. A criatura permanece presa até que Libertação seja conjurada no local do aprisionamento.",
+    "tacticalNotes": "Investigações mágicas com bola de cristal, Localizar Objeto ou adivinhações similares não revelam que a criatura está aprisionada; Discernir Localização revela. Desejo ou Milagre não libertam o alvo, mas indicam onde está enterrado. Se o conjurador souber o nome da vítima e alguns detalhes sobre sua vida, ela sofre –4 de penalidade no teste de resistência.",
+    "interactions": "Vontade anula e a Resistência à Magia se aplica. A duração é permanente. O efeito exige toque; Libertação deve ser conjurada no local onde ocorreu o aprisionamento.",
+    "sourcePage": 173,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — expansão do glossário"
+  },
+  {
+    "name": "Aprisionar a Alma",
+    "explanation": "Absorve a força vital e o corpo material de uma criatura para o interior de uma gema. A gema mantém a entidade aprisionada indefinidamente ou até ser quebrada, quando a força vital é liberada e permite a materialização do corpo.",
+    "tacticalNotes": "Há duas formas de ativação. Na versão de magia completa, a palavra de ativação é pronunciada como ação padrão; aplica-se Resistência à Magia e Vontade. Se o nome da criatura também for pronunciado, a Resistência à Magia é ignorada e a CD do teste aumenta em 2; se o alvo resistir por teste ou RM, a gema se quebra. Na versão Objeto Armadilha, o nome da criatura e a palavra de ativação são inscritos no objeto preparado; quando o alvo o toca, sua força vital é transferida sem teste de resistência ou RM. A gema deve valer pelo menos 1.000 PO por Dado de Vida da criatura.",
+    "interactions": "Os testes de resistência e a Resistência à Magia dependem da versão escolhida. A duração é permanente. Componentes materiais e foco variam conforme a versão; a versão Objeto Armadilha exige um objeto de ativação especial preparado.",
+    "sourcePage": 173,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — expansão do glossário"
   }
 ]
