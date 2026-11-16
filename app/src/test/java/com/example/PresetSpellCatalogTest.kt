@@ -2737,4 +2737,34 @@ class PresetSpellCatalogTest {
         assertEquals(mapOf("Clérigo" to 4, "Paladino" to 3), byName.getValue("Discernir Mentiras").classLevels)
         assertFalse("Druida" in byName.getValue("Esplendor da Águia").classes)
     }
+
+    @Test
+    fun remainingAlphabeticalASpellsMatchBrazilianPlayerHandbookEntries() {
+        val spells = Dnd35Rules.PRESET_SPELLS.associateBy { it.name }
+        val planarAlly = spells.getValue("Aliado Extra-Planar Maior")
+        assertEquals(8, planarAlly.level)
+        assertEquals(setOf("Clérigo"), planarAlly.classes.toSet())
+        assertTrue(planarAlly.description.contains("100 XP"))
+        assertFalse(planarAlly.description.contains("500 XP"))
+
+        val shapechange = spells.getValue("Alterar Forma")
+        assertEquals(9, shapechange.level)
+        assertEquals(setOf("Druida", "Feiticeiro", "Mago"), shapechange.classes.toSet())
+        assertEquals(mapOf("Animais" to 9), shapechange.domainLevels)
+        assertTrue(shapechange.description.contains("50 DV"))
+        assertTrue(shapechange.description.contains("incorpóreas ou gasosas"))
+
+        val greaterPlanarBinding = spells.getValue("Âncora Planar Maior")
+        assertEquals(8, greaterPlanarBinding.level)
+        assertEquals(setOf("Feiticeiro", "Mago"), greaterPlanarBinding.classes.toSet())
+        assertTrue(greaterPlanarBinding.description.contains("18 Dados de Vida"))
+        assertTrue(greaterPlanarBinding.spellResistance)
+
+        val illusoryScript = spells.getValue("Animação Ilusória")
+        assertEquals(8, illusoryScript.level)
+        assertEquals(mapOf("Enganação" to 7), illusoryScript.domainLevels)
+        assertTrue(illusoryScript.description.contains("cubo de 9 m"))
+        assertFalse(illusoryScript.spellResistance)
+    }
+
 }
