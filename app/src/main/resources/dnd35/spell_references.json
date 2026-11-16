@@ -493,5 +493,41 @@
     "sourcePage": 176,
     "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
     "status": "Auditado — expansão do glossário"
+  },
+  {
+    "name": "Auxílio Divino",
+    "explanation": "Invocando a força e a sabedoria da divindade, o conjurador recebe +1 de bônus de sorte nas jogadas de ataque e dano a cada três níveis de conjurador, até o máximo de +6.",
+    "tacticalNotes": "O bônus é aplicado às jogadas de ataque e dano realizadas pelo personagem, mas não se aplica ao dano causado por magias.",
+    "interactions": "Alvo pessoal; o conjurador é o próprio alvo. Duração de 1 minuto. A magia não apresenta teste de resistência nem Resistência à Magia no verbete.",
+    "sourcePage": 177,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — expansão do glossário"
+  },
+  {
+    "name": "Aura Profana",
+    "explanation": "Uma escuridão malévola envolve os alvos e os protege de ataques, concede resistência contra magias de criaturas bondosas e enfraquece criaturas bondosas que os atacarem. Cada criatura protegida recebe +4 de bônus de deflexão na CA e +4 de bônus de resistência nos testes de resistência; também recebe Resistência à Magia 25 contra magias com o descritor [Bem] ou conjuradas por criaturas Boas.",
+    "tacticalNotes": "A proteção bloqueia possessão e influências mentais como Proteção contra o Bem. Quando uma criatura bondosa atinge um protegido em combate corpo a corpo, sofre 1d6 pontos de dano temporário de Força; Fortitude anula esse efeito.",
+    "interactions": "Vontade anula (inofensiva) e Resistência à Magia se aplica. Área de 6 m de raio centrada no conjurador, uma criatura por nível; duração de 1 rodada/nível. Foco: pequeno relicário com relíquia profana, de valor mínimo de 500 PO.",
+    "sourcePage": 177,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — expansão do glossário"
+  },
+  {
+    "name": "Aura Sagrada",
+    "explanation": "Uma aura brilhante de energia divina envolve o alvo, concede +4 de bônus de deflexão na CA e +4 de bônus de resistência nos testes de resistência, e Resistência à Magia 25 contra magias com o descritor [Mal] ou conjuradas por criaturas Más.",
+    "tacticalNotes": "A proteção bloqueia possessão e influências mentais como Proteção contra o Mal. Quando uma criatura maligna atinge um protegido em combate corpo a corpo, o atacante fica cego; Fortitude anula esse efeito, usando a CD da Aura Sagrada.",
+    "interactions": "Vontade anula (inofensiva) e Resistência à Magia se aplica. Área de 6 m de raio centrada no conjurador, uma criatura por nível; duração de 1 rodada/nível. Foco: pequeno relicário com relíquia sagrada, de valor mínimo de 500 PO.",
+    "sourcePage": 177,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — expansão do glossário"
+  },
+  {
+    "name": "Área Escorregadia",
+    "explanation": "Recobre uma superfície ou objeto com uma substância gordurosa e escorregadia. Criaturas na área quando a magia é conjurada precisam obter sucesso em Reflexos ou caem; enquanto permanecerem na área, repetem o teste a cada rodada.",
+    "tacticalNotes": "Uma criatura pode atravessar a área usando metade do deslocamento e um teste de Equilíbrio CD 10. Se falhar, não consegue se deslocar naquela rodada e deve repetir o teste de Reflexos; uma falha por 5 ou mais provoca queda. Objetos não usados são afetados automaticamente; para objetos em uso, o portador faz Reflexos para evitar o efeito e, se falhar, derruba o item. Armadura ou roupa escorregadia concede +10 de circunstância em Arte da Fuga e Agarrar para resistir ou escapar de Agarrar ou Imobilização.",
+    "interactions": "Não admite Resistência à Magia. Duração de 1 rodada/nível. Alvo: um objeto ou área de 3 m quadrados. Componente material: couro de porco ou manteiga.",
+    "sourcePage": 173,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — expansão do glossário"
   }
 ]
