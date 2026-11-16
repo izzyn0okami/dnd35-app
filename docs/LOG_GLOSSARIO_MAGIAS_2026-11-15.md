@@ -172,3 +172,14 @@ Data: 2026-11-15
 - A causa foi o uso de `assertEquals` nos testes dos lotes Am, An e Ap sem a importação de `org.junit.Assert.assertEquals` em `SpellGlossarySearchTest.kt`.
 - Incluída a importação explícita. Nenhuma asserção foi removida ou enfraquecida e nenhum dado de magia foi alterado.
 - Aguardar e conferir novamente os dois fluxos para o novo commit antes do merge.
+
+ 
+## Expansão alfabética — lote Ar (páginas 174–175)
+- Referências detalhadas adicionadas para **Arma Espiritual**, **Arma Mágica**, **Arma Mágica Maior**, **Armadilha** e **Armadura Arcana**. Todas já existiam no catálogo; o lote apenas complementa o glossário, sem alterar níveis, classes ou parâmetros mecânicos do catálogo.
+- **Arma Espiritual**, p. 174: arma de energia que causa 1d8 +1/3 níveis (máximo +5), usa bônus base de ataque e modificador de Sabedoria, pode realizar ataques múltiplos conforme o BBA, muda de alvo com ação padrão, atinge incorpóreos e interage com RM no primeiro golpe contra cada criatura.
+- **Arma Mágica**, p. 174: +1 de melhoria em ataque e dano por 1 minuto/nível; não se acumula com bônus de obra-prima no ataque; não afeta armas naturais, com a exceção expressa do ataque desarmado de monge.
+- **Arma Mágica Maior**, pp. 174–175: +1 por quatro níveis (máximo +5), uma arma ou até cinquenta projéteis do mesmo tipo reunidos; projéteis perdem a transmutação quando disparados, enquanto armas de arremesso não; shuriken são tratados como projéteis.
+- **Armadilha**, p. 175: laço mágico de 60 cm +60 cm/nível, pode ser ligado a árvore flexível para causar 1d6 e erguer a vítima; localização por Procurar CD 23 para quem possui Encontrar Armadilhas; fuga por Arte da Fuga CD 23 ou Força CD 23; CA 7 e 5 PV.
+- **Armadura Arcana**, p. 175: campo de força concede +4 de bônus de armadura na CA, sem penalidade de armadura, chance de falha arcana ou redução de deslocamento; criaturas incorpóreas não atravessam a proteção; foco de couro endurecido.
+- Conferência rápida com o SRD 3.5: Arma Mágica e Arma Mágica Maior mantêm os mesmos bônus, restrições e regra de projéteis; Armadura Arcana mantém +4, duração de 1 hora/nível e ausência de RM. O glossário segue a terminologia e medidas do Livro do Jogador brasileiro. Arma Espiritual foi comparada com a descrição SRD de arma de energia, ataques, redirecionamento e interação com RM.
+- Testes adicionados para as cinco referências, páginas e mecânicas centrais. Nenhum dado mecânico do catálogo foi alterado neste lote.
