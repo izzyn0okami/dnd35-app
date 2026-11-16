@@ -89,7 +89,11 @@ class GameIconsTest {
             "Invisibilidade" to "invisible",
             "Invisibilidade em Massa" to "invisible",
             "Passagem Invisível" to "invisible",
-            "Obscurecer Objeto" to "magic-shield"
+            "Obscurecer Objeto" to "magic-shield",
+            "Toque Macabro" to "skull-crossed-bones",
+            "Toque do Carniçal" to "skull-crossed-bones",
+            "Toque Vampírico" to "skull-crossed-bones",
+            "Toque da Idiotice" to "domino-mask"
 
         )
         expected.forEach { (spell, key) ->
@@ -113,7 +117,7 @@ class GameIconsTest {
 
     @Test
     fun spellsWithoutUnambiguousExistingSymbolsKeepSchoolFallback() {
-        val fallbackOnly = emptySet<String>()
+        val fallbackOnly = setOf("Toque Enferrujante")
         val catalogFallbacks = Dnd35Rules.PRESET_SPELLS
             .filter { spellIconKey(it.name) == null }
             .map { it.name }
