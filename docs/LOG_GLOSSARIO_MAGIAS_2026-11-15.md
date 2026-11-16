@@ -113,3 +113,19 @@ Data: 2026-11-15
 - O mapa visual ainda continha a associação órfã "toque gélido". Renomeada para "toque macabro" e acrescentadas associações inequívocas para Toque do Carniçal, Toque Vampírico e Toque da Idiotice.
 - Toque Enferrujante não recebeu símbolo específico: permanece com o ícone de sua escola (Transmutação), conforme o fallback visual existente. O teste explicita essa exceção em vez de exigir um símbolo artificial.
 - Nenhuma regra mecânica foi alterada por essas correções; os ajustes tratam de testes e consistência do nome/ícones.
+
+
+## Expansão alfabética — lote A (páginas 168–169)
+- Referências detalhadas adicionadas para **Abençoar Água**, **Abençoar Arma**, **Abrir/Fechar**, **Acalmar Animais**, **Acalmar Emoções**, **Adivinhação**, **Agilidade do Gato**, **Ajuda** e **Alarme**.
+- **Abençoar Água**, p. 168: transformação de 0,5 litro em água benta; componente material de 2,5 kg de pó de prata (25 PO); Vontade anula (objeto) e Resistência à Magia se aplica a objetos.
+- **Abençoar Arma**, p. 168: +1 efetivo para superar Redução de Dano de criaturas malignas e atingir incorpóreos malignos, arma considerada sagrada e confirmação automática de ameaças de crítico contra inimigos malignos, com a exceção de armas com efeitos mágicos ligados a críticos.
+- **Abrir/Fechar**, p. 168: limite de 15 kg, falha se houver resistência física e foco de chave de bronze. Corrigida também a progressão de alcance do registro do catálogo, que omitia o aumento de 1,5 m a cada dois níveis.
+- **Acalmar Animais**, p. 168: limite de Inteligência 1 ou 2, mesma espécie, distância máxima de 9 m, total de 2d4 + nível em DV e exceções de teste de Vontade para animais atrozes ou treinados; ameaças dissipam a magia.
+- **Acalmar Emoções**, p. 168: área de 6 m, impede ações violentas/destrutivas, suprime bônus de moral e efeitos de medo e remove confusão; efeitos suprimidos retornam se ainda durarem quando a magia terminar.
+- **Adivinhação**, p. 169: resposta sobre evento/atividade em até uma semana, chance de 70% +1%/nível (máximo 90%) e custo material mínimo de 25 PO.
+- **Agilidade do Gato**, p. 169: +4 de aprimoramento na Destreza, com aplicação normal a CA, Reflexos e demais usos do atributo; componente de pelo de gato.
+- **Ajuda**, p. 169: +1 de moral em ataques e testes contra medo, além de 1d8 + nível em PV temporários (máximo +10).
+- **Alarme**, p. 169: emanação de 6 m, alarme mental ou audível, senha, limitações de alcance do som, exceção para criaturas etéreas/astrais e possibilidade de permanência.
+- O SRD foi usado como referência rápida comparativa. A edição brasileira prevaleceu nos valores convertidos e na terminologia: em especial, Abrir/Fechar mantém o limite de **15 kg** do Livro do Jogador, em vez da conversão em libras exibida no SRD.
+- Correções verificadas no catálogo: Abençoar Água passa a registrar o descritor [Bem]; Acalmar Animais registra Encantamento (Compulsão) [Ação Mental]; Abrir/Fechar passa a registrar o alcance completo de 7,5 m + 1,5 m/2 níveis. Testes cobrem as nove referências e a progressão de alcance.
+- Nenhuma outra mecânica foi alterada.
