@@ -206,3 +206,11 @@ Data: 2026-11-15
 - Testes de regressão cobrem pré-requisitos, exceções de classe, penalidades e efeitos dos talentos de proficiência.
 - Nenhum sistema de equipamento, cálculo de CA ou penalidade de armadura foi alterado; apenas catálogo, referências e testes.
 - Fonte primária: PDF brasileiro do Livro do Jogador salvo na biblioteca, Capítulo 5 — Talentos, páginas impressas 79, 89 e 90.
+
+
+## Correção da validação de Rastrear no PR #388 (15/11/2026)
+
+- A CI e a compilação Android falharam no mesmo teste de regressão, `skillAndSpellUtilityFeatReferencesMatchTheBrazilianHandbook`, na asserção que procurava literalmente “metade do deslocamento”.
+- A referência cadastrada para Rastrear já descrevia corretamente a regra como “o deslocamento normal ao rastrear é reduzido à metade”; a falha era apenas a expectativa textual do teste, não uma divergência de regra.
+- Ajustada a asserção para verificar “reduzido à metade”, sem alterar o texto do talento, a regra, cálculos ou dados de personagem.
+- Nova execução de CI e APK necessária no commit corrigido; PR #388 permanece aberto até ambos passarem.
