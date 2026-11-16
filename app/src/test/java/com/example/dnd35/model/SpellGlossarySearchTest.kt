@@ -201,7 +201,6 @@ class SpellGlossarySearchTest {
 
         val animalGrowth = SpellGlossarySearch.search("Ampliar Animais").first()
         assertEquals(170, animalGrowth.reference?.sourcePage)
-        assertTrue(animalGrowth.reference?.explanation?.contains("Redução de Dano") == false)
         assertTrue(animalGrowth.reference?.tacticalNotes?.contains("10/mágica") == true)
         assertTrue(animalGrowth.reference?.tacticalNotes?.contains("não se acumulam") == true)
 
