@@ -25,5 +25,23 @@
     "sourcePage": 217,
     "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
     "status": "Auditado — referência inicial"
+  },
+  {
+    "name": "Toque Chocante",
+    "explanation": "A magia descarrega eletricidade por meio de um ataque de toque corpo a corpo bem-sucedido. O alvo sofre 1d6 pontos de dano elétrico por nível de conjurador, até o máximo de 5d6.",
+    "tacticalNotes": "O ataque recebe +3 de bônus na jogada de ataque se o oponente estiver usando armadura de metal, for feito de metal ou estiver carregando uma quantidade significativa de metal.",
+    "interactions": "Alcance Toque; duração instantânea; não permite teste de resistência. A Resistência à Magia se aplica. A magia exige uma jogada de ataque de toque corpo a corpo, portanto pode errar e pode obter sucesso decisivo conforme as regras de magias que exigem jogada de ataque.",
+    "sourcePage": 248,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — referência inicial"
+  },
+  {
+    "name": "Toque da Fadiga",
+    "explanation": "O conjurador canaliza energia negativa por meio do toque. Após um ataque de toque corpo a corpo bem-sucedido, o alvo fica fatigado pela duração da magia.",
+    "tacticalNotes": "A duração é de 1 rodada por nível de conjurador. Uma criatura que já esteja fatigada não sofre efeito adicional.",
+    "interactions": "Fortitude anula; Resistência à Magia se aplica. Diferentemente da fadiga normal, o efeito termina quando a duração da magia acaba. O componente material é uma gota de suor.",
+    "sourcePage": 249,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — referência inicial"
   }
-]
+]\n
