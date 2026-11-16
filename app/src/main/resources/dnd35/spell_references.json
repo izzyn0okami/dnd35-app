@@ -187,5 +187,32 @@
     "sourcePage": 252,
     "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
     "status": "Auditado — referência inicial"
+  },
+  {
+    "name": "Toque Macabro",
+    "explanation": "A mão do conjurador brilha com energia azulada e retira a força vital de criaturas vivas. Cada ataque de toque corpo a corpo causa 1d6 pontos de dano por energia negativa; o conjurador pode realizar um ataque por nível.",
+    "tacticalNotes": "Cada toque também pode causar 1 ponto de dano temporário de Força. Um teste de Fortitude bem-sucedido anula somente o dano de Força. Contra mortos-vivos, a magia não causa dano nem reduz Força; em vez disso, exige um teste de Vontade ou o morto-vivo foge em pânico por 1d4+1 rodadas por nível de conjurador.",
+    "interactions": "Alcance toque; duração instantânea; Resistência à Magia se aplica. O dano de Força é temporário. Fonte: Livro do Jogador, p. 249.",
+    "sourcePage": 249,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — catálogo corrigido"
+  },
+  {
+    "name": "Toque do Carniçal",
+    "explanation": "Um ataque de toque corpo a corpo bem-sucedido paralisa um único humanoide vivo por 1d6+2 rodadas.",
+    "tacticalNotes": "A criatura paralisada exala cheiro de carniça em um raio de 3 m, causando náusea às demais criaturas na área. O conjurador não é afetado.",
+    "interactions": "Fortitude anula a paralisia e também a náusea. Neutralizar venenos remove a náusea; criaturas imunes a veneno não são afetadas. Resistência à Magia se aplica. Componente material: pequeno pedaço de roupa usada por um carniçal ou punhado de terra do lar de um carniçal.",
+    "sourcePage": 248,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — catálogo corrigido"
+  },
+  {
+    "name": "Toque Vampírico",
+    "explanation": "Um ataque de toque corpo a corpo bem-sucedido causa 1d6 pontos de dano por nível de conjurador, até o máximo de 10d6. O conjurador recebe pontos de vida temporários iguais ao dano causado.",
+    "tacticalNotes": "Os pontos de vida temporários não podem exceder o total de pontos de vida atuais do alvo +10, o suficiente para matá-lo. Os pontos de vida temporários desaparecem após 1 hora.",
+    "interactions": "Não permite teste de resistência. A Resistência à Magia se aplica. Alcance toque; duração instantânea para o dano, com pontos de vida temporários por até 1 hora.",
+    "sourcePage": 249,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — catálogo corrigido"
   }
 ]
