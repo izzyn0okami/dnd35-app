@@ -41,7 +41,7 @@ class SpellGlossarySearchTest {
 
         val dimensional = SpellGlossarySearch.search("Tranca Dimensional").first()
         assertTrue(dimensional.reference?.sourcePage == 250)
-        assertTrue(dimensional.reference?.interactions?.contains("Não admite Resistência à Magia") == true)
+        assertTrue(dimensional.reference?.interactions?.contains("não admite Resistência à Magia") == true)
 
         val disguise = SpellGlossarySearch.search("Transformação Momentânea").first()
         assertTrue(disguise.reference?.sourcePage == 250)
