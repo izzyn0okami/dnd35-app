@@ -97,5 +97,15 @@ class SpellGlossarySearchTest {
         val falseVision = SpellGlossarySearch.search("Visão Falsa").first()
         assertTrue(falseVision.reference?.sourcePage == 252)
         assertTrue(falseVision.reference?.tacticalNotes?.contains("12 m") == true)
+
+        val haste = SpellGlossarySearch.search("Velocidade").first()
+        assertTrue(haste.reference?.sourcePage == 250)
+        assertTrue(haste.reference?.tacticalNotes?.contains("+1") == true)
+        assertTrue(haste.reference?.interactions?.contains("dissipa lentidão") == true)
+
+        val vision = SpellGlossarySearch.search("Visão").first()
+        assertTrue(vision.reference?.sourcePage == 252)
+        assertTrue(vision.reference?.tacticalNotes?.contains("CD 30") == true)
+        assertTrue(vision.reference?.interactions?.contains("100 XP") == true)
     }
 }

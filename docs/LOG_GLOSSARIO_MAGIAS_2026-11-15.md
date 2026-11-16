@@ -57,6 +57,11 @@ Data: 2026-11-15
 - **Visão Falsa**: emanação de 12 m contra adivinhações de vidência, duração de 1 hora/nível, sem teste de resistência ou Resistência à Magia; registrada a alteração da imagem e o componente material de pó de jade (250 PO).
 - As seis magias já existem no catálogo e foram vinculadas sem alterar seus dados mecânicos. Testes cobrem seus efeitos centrais.
 
+## Complemento — magias das páginas 250 e 252
+- **Velocidade** (entrada do catálogo `Velocidade (Haste)`), Livro do Jogador, p. 250: ataque adicional durante ataque total, +1 nas jogadas de ataque, +1 de esquiva na CA e Reflexos, aumento de 9 m nos deslocamentos até o dobro, limites de acumulação e interação com lentidão; componente material registrado.
+- **Visão**, Livro do Jogador, p. 252: visão obtida por pergunta sobre pessoa, lugar ou objeto, com teste de execução e CDs 20/25/30 conforme proximidade e qualidade das informações; custo de 100 XP.
+- Ambas já existem no catálogo e receberam testes automatizados. Nenhuma regra mecânica foi alterada.
+
 ## Correção de testes locais
 - Os testes JVM estavam executando contra o `org.json` de fachada fornecido pelo Android, que lança exceções fora do ambiente Android.
 - Adicionada dependência de teste `org.json:json` para fornecer implementação real ao ambiente JVM; a dependência é apenas de teste e não é empacotada no APK.

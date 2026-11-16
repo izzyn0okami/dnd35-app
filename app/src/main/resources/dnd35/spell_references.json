@@ -169,5 +169,23 @@
     "sourcePage": 252,
     "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
     "status": "Auditado — referência inicial"
+  },
+  {
+    "name": "Velocidade (Haste)",
+    "explanation": "A criatura transmutada se move e age mais rapidamente. Ao realizar uma ação de ataque total, recebe um ataque adicional com qualquer arma empunhada, usando seu bônus base de ataque total e os modificadores apropriados.",
+    "tacticalNotes": "Concede +1 nas jogadas de ataque, +1 de bônus de esquiva na CA e +1 nos testes de resistência de Reflexos. Todos os deslocamentos aumentam em 9 m, até o dobro do deslocamento normal; esse aumento também afeta a distância de salto.",
+    "interactions": "O ataque adicional não concede outra ação e não permite conjurar uma segunda magia na rodada. Não acumula com efeitos similares nem com armas da velocidade. O bônus de esquiva é perdido nas mesmas condições que fazem perder o bônus de Destreza na CA. Múltiplos efeitos de velocidade não se acumulam. Pode ser usada como contramágica e dissipa lentidão. Componente material: um corte de raiz de alcaçuz.",
+    "sourcePage": 250,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — referência inicial"
+  },
+  {
+    "name": "Visão",
+    "explanation": "Funciona como lendas e histórias, mas mais rapidamente, embora canse o conjurador. O conjurador faz uma pergunta sobre uma pessoa, lugar ou objeto e recebe uma visão caso o alvo esteja próximo ou ele esteja no local investigado.",
+    "tacticalNotes": "A execução exige um teste de 1d20 + 1 por nível de conjurador (máximo +25) contra CD 20 quando o alvo está próximo ou o conjurador está no local. Com informações detalhadas, a CD é 25 e a visão é incompleta; com rumores, a CD é 30 e a informação é vaga.",
+    "interactions": "Custo de 100 XP. A magia depende de uma pergunta sobre pessoa, lugar ou objeto e das condições de proximidade/conhecimento descritas no verbete.",
+    "sourcePage": 252,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — referência inicial"
   }
 ]
