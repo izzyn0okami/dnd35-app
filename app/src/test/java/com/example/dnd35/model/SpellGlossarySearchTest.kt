@@ -236,4 +236,29 @@ class SpellGlossarySearchTest {
         assertTrue(animatePlants.spell.duration.contains("1 hora/nível"))
     }
 
+
+    @Test
+    fun auditsAlphabeticalSpellBatchApAgainstBrazilianPlayerHandbook() {
+        val antipathy = SpellGlossarySearch.search("Antipatia").first()
+        assertEquals(173, antipathy.reference?.sourcePage)
+        assertTrue(antipathy.reference?.tacticalNotes?.contains("reduz sua Destreza em 4") == true)
+        assertTrue(antipathy.reference?.interactions?.contains("dissipa Simpatia") == true)
+
+        val erase = SpellGlossarySearch.search("Apagar").first()
+        assertEquals(173, erase.reference?.sourcePage)
+        assertTrue(erase.reference?.explanation?.contains("duas páginas") == true)
+        assertTrue(erase.reference?.tacticalNotes?.contains("CD 15") == true)
+        assertTrue(erase.reference?.interactions?.contains("não admite Resistência à Magia") == true)
+
+        val imprisonment = SpellGlossarySearch.search("Aprisionamento").first()
+        assertEquals(173, imprisonment.reference?.sourcePage)
+        assertTrue(imprisonment.reference?.tacticalNotes?.contains("–4") == true)
+        assertTrue(imprisonment.reference?.interactions?.contains("Libertação") == true)
+
+        val soulBind = SpellGlossarySearch.search("Aprisionar a Alma").first()
+        assertEquals(173, soulBind.reference?.sourcePage)
+        assertTrue(soulBind.reference?.tacticalNotes?.contains("1.000 PO") == true)
+        assertTrue(soulBind.reference?.interactions?.contains("dependem da versão") == true)
+    }
+
 }
