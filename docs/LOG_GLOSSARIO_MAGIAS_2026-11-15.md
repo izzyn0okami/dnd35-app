@@ -84,3 +84,9 @@ Data: 2026-11-15
 ## Correção de validação — Viagem Planar
 - O CI identificou uma asserção que procurava o limite de 750 km no campo `interactions`, embora a referência registre corretamente essa distância em `explanation`.
 - O teste foi ajustado para verificar o campo correto. Nenhum texto de referência, regra ou dado mecânico foi alterado.
+
+
+## Correção de validação — Visão Falsa
+- O CI identificou que o teste procurava o alcance de 12 m no campo `tacticalNotes`, embora a referência o registre corretamente em `explanation`.
+- A asserção foi ajustada para conferir o campo correspondente. O texto da referência e a regra da magia permanecem inalterados.
+- Um teste preexistente de concorrência de mensagens privadas também falhou em uma das duas execuções, mas passou na outra. Como não houve alteração nesse teste nesta PR, será acompanhado em nova execução para distinguir instabilidade intermitente de regressão.
