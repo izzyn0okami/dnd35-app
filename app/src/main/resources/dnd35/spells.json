@@ -3278,7 +3278,7 @@
     "domainLevels": {}
   },
   {
-    "name": "Animar Cordas",
+    "name": "Animar Corda",
     "level": 1,
     "school": "Transmutação",
     "classes": [
@@ -3288,7 +3288,7 @@
     ],
     "castTime": "1 ação padrão",
     "components": "V, G",
-    "range": "Médio (30m + 3m/nível)",
+    "range": "Médio (30 m + 3 m/nível)",
     "duration": "1 rodada/nível",
     "savingThrow": "Nenhum",
     "spellResistance": false,
@@ -6556,12 +6556,12 @@
       "Planta": 7
     },
     "castTime": "1 ação padrão",
-    "components": "V, G",
-    "range": "Longo (120 m + 12 m/nível)",
-    "duration": "Instantânea ou 1 rodada/nível (D)",
+    "components": "V",
+    "range": "Curto (7,5 m + 1,5 m/2 níveis)",
+    "duration": "1 rodada/nível ou 1 hora/nível; veja texto",
     "savingThrow": "Nenhum",
     "spellResistance": false,
-    "description": "Uma ou mais plantas comuns animam e passam a lutar ou agir sob o comando do conjurador, auxiliando-o no combate."
+    "description": "Anima plantas inanimadas para atacar alvos indicados como objetos animados do tamanho apropriado: uma planta Grande por três níveis de conjurador ou quantidade equivalente de plantas maiores. Como alternativa, entrelaça todas as plantas no alcance ao redor das criaturas, duplicando Constrição. Não afeta criaturas do tipo planta nem material vegetal morto."
   },
   {
     "name": "Cajado Vivo",
