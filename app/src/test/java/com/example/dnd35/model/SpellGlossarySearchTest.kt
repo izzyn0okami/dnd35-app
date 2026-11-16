@@ -141,6 +141,7 @@ class SpellGlossarySearchTest {
         assertTrue(holyWater.reference?.sourcePage == 168)
         assertTrue(holyWater.reference?.explanation?.contains("0,5 litro") == true)
         assertTrue(holyWater.reference?.interactions?.contains("Vontade anula (objeto)") == true)
+        assertTrue(holyWater.spell.school.contains("[Bem]"))
 
         val blessWeapon = SpellGlossarySearch.search("Abençoar Arma").first()
         assertTrue(blessWeapon.reference?.sourcePage == 168)
@@ -156,6 +157,7 @@ class SpellGlossarySearchTest {
         assertTrue(calmAnimals.reference?.sourcePage == 168)
         assertTrue(calmAnimals.reference?.explanation?.contains("Inteligência 1 ou 2") == true)
         assertTrue(calmAnimals.reference?.interactions?.contains("Qualquer ameaça") == true)
+        assertTrue(calmAnimals.spell.school.contains("(Compulsão) [Ação Mental]"))
 
         val calmEmotions = SpellGlossarySearch.search("Acalmar Emoções").first()
         assertTrue(calmEmotions.reference?.sourcePage == 168)
