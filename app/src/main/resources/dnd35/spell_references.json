@@ -208,7 +208,7 @@
   },
   {
     "name": "Toque Vampírico",
-    "explanation": "Um ataque de toque corpo a corpo bem-sucedido causa 1d6 pontos de dano por nível de conjurador, até o máximo de 10d6. O conjurador recebe pontos de vida temporários iguais ao dano causado.",
+    "explanation": "Um ataque de toque corpo a corpo bem-sucedido causa 1d6 pontos de dano para cada dois níveis de conjurador, até o máximo de 10d6. O conjurador recebe pontos de vida temporários iguais ao dano causado.",
     "tacticalNotes": "Os pontos de vida temporários não podem exceder o total de pontos de vida atuais do alvo +10, o suficiente para matá-lo. Os pontos de vida temporários desaparecem após 1 hora.",
     "interactions": "Não permite teste de resistência. A Resistência à Magia se aplica. Alcance toque; duração instantânea para o dano, com pontos de vida temporários por até 1 hora.",
     "sourcePage": 249,
