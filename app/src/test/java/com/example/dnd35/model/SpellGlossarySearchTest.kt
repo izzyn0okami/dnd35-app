@@ -28,5 +28,15 @@ class SpellGlossarySearchTest {
         assertTrue(hands.reference?.sourcePage == 217)
         assertTrue(hands.reference?.explanation?.contains("5d4") == true)
         assertTrue(hands.reference?.interactions?.contains("Resistência à Magia") == true)
+
+        val shocking = SpellGlossarySearch.search("Toque Chocante").first()
+        assertTrue(shocking.reference?.sourcePage == 248)
+        assertTrue(shocking.reference?.explanation?.contains("5d6") == true)
+        assertTrue(shocking.reference?.tacticalNotes?.contains("+3") == true)
+
+        val fatigue = SpellGlossarySearch.search("Toque da Fadiga").first()
+        assertTrue(fatigue.reference?.sourcePage == 249)
+        assertTrue(fatigue.reference?.interactions?.contains("Fortitude anula") == true)
+        assertTrue(fatigue.reference?.interactions?.contains("gota de suor") == true)
     }
 }
