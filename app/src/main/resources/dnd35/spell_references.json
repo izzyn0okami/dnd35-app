@@ -421,5 +421,50 @@
     "sourcePage": 173,
     "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
     "status": "Auditado — expansão do glossário"
+  },
+  {
+    "name": "Arma Espiritual",
+    "explanation": "Cria uma arma de energia que ataca à distância sob a direção do conjurador. Causa 1d8 pontos de dano de energia por golpe, mais 1 ponto a cada três níveis de conjurador, até +5 no 15º nível. Usa o bônus base de ataque do conjurador e o modificador de Sabedoria para atacar; pode realizar ataques múltiplos nas rodadas seguintes quando o bônus base permitir.",
+    "tacticalNotes": "A arma assume a forma da arma predileta da divindade ou de uma arma simbolicamente importante para o conjurador. Ataca na rodada da conjuração e novamente a cada rodada subsequente. Mudar o alvo exige ação padrão e, na rodada em que muda, a arma realiza apenas um ataque. Ataca sempre a partir da direção do personagem e não concede nem recebe bônus de flanquear.",
+    "interactions": "Não permite teste de resistência; Resistência à Magia se aplica. A arma é um efeito mágico de energia: atinge criaturas incorpóreas e criaturas com Redução de Dano. Não pode ser danificada por ataques físicos, mas pode ser afetada por dissipar magia, desintegrar, esfera da aniquilação e bastão de cancelamento. Se falhar no primeiro teste de conjurador contra a RM de um alvo, a magia é dissipada; se vencer, afeta esse alvo normalmente durante a duração. Duração de 1 rodada/nível.",
+    "sourcePage": 174,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — expansão do glossário"
+  },
+  {
+    "name": "Arma Mágica",
+    "explanation": "Concede à arma tocada +1 de bônus de melhoria nas jogadas de ataque e dano durante 1 minuto por nível. O bônus de melhoria não se acumula com o bônus de +1 nas jogadas de ataque de uma arma obra-prima.",
+    "tacticalNotes": "Não pode ser conjurada sobre armas naturais, como um ataque desarmado comum. O ataque desarmado de um monge é considerado uma arma e pode receber o efeito.",
+    "interactions": "Vontade anula (inofensiva, objeto); Resistência à Magia se aplica (inofensiva, objeto). O efeito é aplicado por toque e dura 1 minuto/nível.",
+    "sourcePage": 174,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — expansão do glossário"
+  },
+  {
+    "name": "Arma Mágica Maior",
+    "explanation": "Funciona como Arma Mágica, mas concede bônus de melhoria de +1 a cada quatro níveis de conjurador nas jogadas de ataque e dano, até o máximo de +5.",
+    "tacticalNotes": "Pode afetar uma arma ou até cinquenta projéteis do mesmo tipo, desde que estejam juntos no momento da conjuração. Flechas, virotes e balas perdem a transmutação quando disparados; armas de arremesso não são afetadas por essa perda. Shuriken são tratados como projéteis.",
+    "interactions": "Vontade anula (inofensiva, objeto); Resistência à Magia se aplica (inofensiva, objeto). Alcance curto de 7,5 m + 1,5 m a cada dois níveis; duração de 1 hora/nível. Componente material: pó de cal e carbono.",
+    "sourcePage": 174,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — expansão do glossário"
+  },
+  {
+    "name": "Armadilha",
+    "explanation": "Transforma um círculo mundano de cipó, corda ou tira de couro em um laço mágico. O círculo tem 60 cm de diâmetro, acrescidos de 60 cm por nível. Quando uma criatura pisa nele, o laço prende um ou mais membros; se estiver amarrado a uma árvore forte e flexível, a árvore se curva e depois se endireita, causando 1d6 pontos de dano e erguendo a criatura presa.",
+    "tacticalNotes": "A armadilha incorpora-se aos arredores; personagens com a habilidade Encontrar Armadilhas podem localizá-la com Procurar CD 23. Para escapar, a criatura precisa obter sucesso em Arte da Fuga CD 23 ou em um teste de Força CD 23, este último exigindo uma ação de rodada completa. A armadilha tem CA 7 e 5 PV. Escapar quebra o laço e dissipa a magia.",
+    "interactions": "Não permite teste de resistência e não admite Resistência à Magia. Tempo de execução de 3 rodadas; alcance toque; duração até ser disparada ou destruída. Sem árvore próxima, o laço prende a criatura, mas não causa dano. A descrição apresenta o efeito de árvore como opção, não como requisito.",
+    "sourcePage": 175,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — expansão do glossário"
+  },
+  {
+    "name": "Armadura Arcana",
+    "explanation": "Envolve a criatura tocada com um campo de força invisível, mas tangível, que concede +4 de bônus de armadura na Classe de Armadura.",
+    "tacticalNotes": "Diferentemente de armaduras comuns, não impõe penalidade de armadura, chance de falha de magia arcana nem redução do deslocamento. Por ser composta de energia, também impede que criaturas incorpóreas atravessem a proteção como atravessariam uma armadura normal.",
+    "interactions": "Vontade anula (inofensiva); não admite Resistência à Magia. Duração de 1 hora/nível ou até ser dissipada. Foco: um pedaço de couro endurecido.",
+    "sourcePage": 175,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — expansão do glossário"
   }
 ]
