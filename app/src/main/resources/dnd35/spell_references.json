@@ -1,0 +1,29 @@
+[
+  {
+    "name": "Mísseis Mágicos",
+    "explanation": "A magia cria projéteis de energia que atingem automaticamente os alvos escolhidos. Cada projétil causa 1d4+1 pontos de dano. O livro especifica que os projéteis atingem mesmo durante combate corpo a corpo e apesar de cobertura ou camuflagem inferior à total; partes específicas de uma criatura não podem ser escolhidas e objetos inanimados não são afetados.",
+    "tacticalNotes": "O conjurador pode distribuir os projéteis entre uma ou várias criaturas, mas cada projétil só pode atingir uma criatura. A quantidade aumenta em um para cada dois níveis de conjurador após o 1º, até o máximo de cinco projéteis no 9º nível.",
+    "interactions": "A magia não exige jogada de ataque nem teste de resistência. A Resistência à Magia se aplica. A designação dos alvos ocorre antes de resolver a magia, os testes de resistência ou as jogadas de dano.",
+    "sourcePage": 220,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — referência inicial"
+  },
+  {
+    "name": "Escudo Arcano",
+    "explanation": "Cria um disco móvel e invisível de energia, do tamanho de um escudo de corpo, que flutua diante do conjurador. Ele bloqueia ataques de Mísseis Mágicos dirigidos ao conjurador e concede +4 de bônus de escudo na Classe de Armadura.",
+    "tacticalNotes": "O bônus de escudo também se aplica contra ataques de toque incorpóreos quando forem provenientes de efeitos de energia. A magia dura 1 minuto por nível e pode ser dissipada.",
+    "interactions": "Não impõe penalidade de armadura nem chance de falha de magia arcana. Diferentemente de um escudo de corpo comum, não pode ser usado para fornecer cobertura.",
+    "sourcePage": 200,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — referência inicial"
+  },
+  {
+    "name": "Mãos Flamejantes",
+    "explanation": "Um cone de chamas irrompe das pontas dos dedos. Cada criatura na área sofre 1d4 pontos de dano de fogo por nível de conjurador, até o máximo de 5d4. Materiais facilmente inflamáveis tocados pelas chamas, como roupas, papel e madeira seca, incendeiam-se imediatamente.",
+    "tacticalNotes": "A magia afeta uma área em cone com alcance de 4,5 m. O teste de resistência de Reflexos reduz o dano à metade. Um personagem pode apagar as chamas em um item usando uma ação de rodada completa.",
+    "interactions": "A Resistência à Magia se aplica. A duração é instantânea; o dano é de fogo. A descrição não apresenta jogada de ataque nem um alvo individual: a área é uma explosão em cone.",
+    "sourcePage": 217,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — referência inicial"
+  }
+]

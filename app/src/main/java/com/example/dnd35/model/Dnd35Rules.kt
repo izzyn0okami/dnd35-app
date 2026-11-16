@@ -869,12 +869,44 @@ object Dnd35Rules {
 
     val PRESET_SPELLS: List<PresetSpell> by lazy { loadSpellsCatalog() }
 
+    /** Detailed spell reference kept separate from rules used by calculations. */
+    data class SpellReference(
+        val name: String,
+        val explanation: String,
+        val tacticalNotes: String,
+        val interactions: String,
+        val sourcePage: Int,
+        val source: String,
+        val status: String
+    )
+
+    val SPELL_REFERENCES: List<SpellReference> by lazy { loadSpellReferences() }
+
     // ==========================================
     // CARREGAMENTO DOS CATÁLOGOS A PARTIR DE JSON
     // ==========================================
     // Talentos, itens e magias vêm de app/src/main/resources/dnd35/*.json, lidos pelo
     // classloader da aplicação. Funciona igual no app, em testes JVM comuns e no Robolectric,
     // sem depender de Context do Android. Ver docs/CATALOGOS_JSON.md.
+
+    private fun loadSpellReferences(): List<SpellReference> {
+        val array = CatalogJson.array("dnd35/spell_references.json")
+        val seen = mutableSetOf<String>()
+        return (0 until array.length()).map { i ->
+            val o = array.getJSONObject(i)
+            val name = CatalogJson.requireString(o, "name", "referência de magia #" + (i + 1))
+            check(seen.add(name.lowercase())) { "Referência de magia duplicada: $name" }
+            SpellReference(
+                name = name,
+                explanation = CatalogJson.requireString(o, "explanation", name),
+                tacticalNotes = CatalogJson.requireString(o, "tacticalNotes", name),
+                interactions = CatalogJson.requireString(o, "interactions", name),
+                sourcePage = CatalogJson.requireInt(o, "sourcePage", name),
+                source = CatalogJson.requireString(o, "source", name),
+                status = CatalogJson.requireString(o, "status", name)
+            )
+        }
+    }
 
     private fun loadFeatReferences(): List<FeatReference> {
         val array = CatalogJson.array("dnd35/feat_references.json")

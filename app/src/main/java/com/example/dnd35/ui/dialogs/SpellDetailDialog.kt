@@ -122,6 +122,32 @@ fun SpellDetailDialog(
                     Text(spell.description, style = MaterialTheme.typography.bodySmall)
                 }
 
+                val glossaryReference = Dnd35Rules.SPELL_REFERENCES.firstOrNull {
+                    it.name.equals(spell.name, ignoreCase = true)
+                }
+                Spacer(Modifier.height(8.dp))
+                Text("Glossário", style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.Bold)
+                if (glossaryReference != null) {
+                    Text(glossaryReference.explanation, style = MaterialTheme.typography.bodySmall)
+                    if (glossaryReference.tacticalNotes.isNotBlank()) {
+                        Text("Aplicação em jogo: " + glossaryReference.tacticalNotes, style = MaterialTheme.typography.bodySmall)
+                    }
+                    if (glossaryReference.interactions.isNotBlank()) {
+                        Text("Interações e limites: " + glossaryReference.interactions, style = MaterialTheme.typography.bodySmall)
+                    }
+                    Text(
+                        glossaryReference.source + " (p. " + glossaryReference.sourcePage + ") • " + glossaryReference.status,
+                        style = MaterialTheme.typography.labelSmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                } else {
+                    Text(
+                        "Referência detalhada ainda pendente de auditoria. Os dados técnicos acima continuam disponíveis.",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
+
                 // Clérigo: magia de um dos domínios escolhidos pode ocupar o espaço de domínio do círculo.
                 val clericInfo = casters.firstOrNull { it.className.equals(ClericDomainRules.CLERIC, ignoreCase = true) }
                 if (clericInfo != null) {

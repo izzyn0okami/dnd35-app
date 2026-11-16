@@ -109,6 +109,8 @@ dependencies {
   testImplementation(libs.androidx.core)
   testImplementation(libs.androidx.junit)
   testImplementation(libs.junit)
+  // Use a real JVM implementation instead of Android's mocked org.json in local unit tests.
+  testImplementation(libs.json)
   testImplementation(libs.kotlinx.coroutines.test)
   testImplementation(libs.robolectric)
   androidTestImplementation(platform(libs.androidx.compose.bom))
