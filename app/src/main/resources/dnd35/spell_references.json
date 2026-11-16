@@ -214,5 +214,23 @@
     "sourcePage": 249,
     "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
     "status": "Auditado — catálogo corrigido"
+  },
+  {
+    "name": "Toque Enferrujante",
+    "explanation": "O toque corrói e destrói itens ou ligas de ferro não mágicos. Itens mágicos de metal são imunes. Em combate, um ataque de toque pode corroer armaduras de metal, destruir armas de metal ou causar dano a criaturas de ferro.",
+    "tacticalNotes": "Contra uma armadura de metal, reduz 1d6 pontos do bônus de CA fornecido pela armadura, até o máximo desse bônus. Contra criaturas de ferro, causa 3d6 pontos de dano +1 por nível de conjurador (máximo +15) por ataque; contra elas, dura 1 rodada por nível e permite um ataque de toque por rodada.",
+    "interactions": "Não permite teste de resistência e não admite Resistência à Magia. Atacar a arma de um oponente provoca ataque de oportunidade. Itens mágicos de metal são imunes. Componente: foco divino.",
+    "sourcePage": 249,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — catálogo corrigido"
+  },
+  {
+    "name": "Toque da Idiotice",
+    "explanation": "Um ataque de toque corpo a corpo reduz temporariamente a Inteligência, Sabedoria e Carisma do alvo em 1d6 pontos cada.",
+    "tacticalNotes": "Nenhum dos três valores de habilidade pode ser reduzido abaixo de 1. A redução pode impedir o alvo de conjurar magias se um valor ficar abaixo do mínimo exigido.",
+    "interactions": "Duração de 10 minutos por nível. Não permite teste de resistência; a Resistência à Magia se aplica.",
+    "sourcePage": 249,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — catálogo corrigido"
   }
 ]
