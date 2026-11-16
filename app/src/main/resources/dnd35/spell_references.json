@@ -313,5 +313,41 @@
     "sourcePage": 169,
     "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
     "status": "Auditado — expansão do glossário"
+  },
+  {
+    "name": "Amaldiçoar Água",
+    "explanation": "Infunde energia negativa em um frasco de 500 ml de água, transformando-a em água profana. A água profana causa dano a seres planares Bons, da mesma forma que a água benta causa dano aos mortos-vivos.",
+    "tacticalNotes": "A conjuração leva 1 minuto e exige 2,5 kg de prata em pó, no valor de 25 PO. A magia é instantânea e afeta um frasco de água tocado.",
+    "interactions": "Vontade anula (objeto) e a Resistência à Magia se aplica a objetos. Há uma divergência interna no verbete brasileiro: o cabeçalho classifica a magia como Necromancia [Mal], mas a frase descritiva a chama de 'esta transmutação'. O glossário preserva o cabeçalho como classificação principal e registra a divergência, sem tentar resolvê-la por conta própria.",
+    "sourcePage": 170,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — expansão do glossário"
+  },
+  {
+    "name": "Amolecer Terra e Pedra",
+    "explanation": "Amolece terra ou pedra natural não trabalhada na área: terra molhada vira lama grossa, terra seca vira areia ou pó, e pedra vira argila macia. Afeta um quadrado de 3 m por nível, com profundidade de 30 cm a 1,2 m conforme a dureza e a elasticidade do terreno.",
+    "tacticalNotes": "Criaturas na lama devem obter sucesso em Reflexos ou ficam presas por 1d2 rodadas, incapazes de se mover, atacar ou conjurar magias. Com sucesso, atravessam a lama com metade do deslocamento e não podem Investir ou correr. Na terra solta, o deslocamento de todas as criaturas é reduzido à metade e não podem correr nem Investir. A argila não impede movimento, mas facilita cortar, moldar ou escavar. Pode provocar deslizamentos, desabamentos e dano estrutural.",
+    "interactions": "A magia não afeta pedras mágicas, encantadas, lapidadas ou trabalhadas, nem criaturas de terra ou pedra. O cabeçalho informa Teste de Resistência: Nenhum, mas o texto prevê um teste de Reflexos específico para criaturas na lama; Resistência à Magia: Não.",
+    "sourcePage": 170,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — expansão do glossário"
+  },
+  {
+    "name": "Ampliar Animais",
+    "explanation": "Aumenta até o dobro do tamanho e oito vezes o peso de até um animal Imenso ou menor por dois níveis de conjurador, desde que os alvos estejam a menos de 9 m entre si. O tamanho aumenta uma categoria: +8 de bônus de tamanho na Força, +4 na Constituição, –2 na Destreza e +2 na armadura natural.",
+    "tacticalNotes": "Também concede Redução de Dano 10/mágica e +4 de bônus de resistência nos testes de resistência. Se não houver espaço, o animal cresce apenas até onde for possível e pode tentar romper o obstáculo com um teste de Força usando o valor aumentado. O equipamento vestido ou carregado cresce junto; itens que se separem retornam ao tamanho normal. A magia não comanda nem influencia os animais.",
+    "interactions": "Fortitude anula e a Resistência à Magia se aplica. A duração é de 1 minuto por nível. Efeitos mágicos múltiplos que aumentam tamanho não se acumulam; não é possível ampliar novamente um animal que já esteja sob esta magia.",
+    "sourcePage": 170,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — expansão do glossário"
+  },
+  {
+    "name": "Ampliar Plantas",
+    "explanation": "Possui dois efeitos. Crescimento: torna a vegetação normal espessa e alta em alcance longo (120 m + 12 m/nível), formando bosque cerrado ou selva. Enriquecer: afeta plantas a até 750 km, aumentando em um terço seu potencial de produtividade durante o próximo ano.",
+    "tacticalNotes": "No efeito Crescimento, o deslocamento cai para 1,5 m, ou 3 m para criaturas Grandes ou maiores. A área precisa conter arbustos e árvores; o conjurador pode escolher uma circunferência de 30 m de raio, um hemisfério de 45 m de raio ou um quarto de circunferência com 60 m de raio, além de excluir locais específicos. O efeito Enriquecer é usado em comunidades rurais para melhorar a produtividade das plantações no ano seguinte.",
+    "interactions": "Não permite teste de resistência e não admite Resistência à Magia. Serve como contramágica e dissipa Enfraquecer Plantas. Não afeta criaturas do tipo planta. A duração é instantânea.",
+    "sourcePage": 171,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — expansão do glossário"
   }
 ]
