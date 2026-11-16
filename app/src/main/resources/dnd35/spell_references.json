@@ -97,5 +97,23 @@
     "sourcePage": 253,
     "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
     "status": "Auditado — referência inicial"
+  },
+  {
+    "name": "Ventriloquismo",
+    "explanation": "Faz a voz do conjurador, ou qualquer som emitido vocalmente, parecer vir de outro lugar, como outra criatura, uma estátua ou o outro lado de uma porta. O som pode ser reconhecido como ilusório, embora continue audível.",
+    "tacticalNotes": "Alcance curto (7,5 m + 1,5 m a cada 2 níveis); efeito de som inteligível, geralmente fala; duração de 1 minuto por nível. O conjurador pode falar em qualquer idioma que conheça.",
+    "interactions": "Vontade desacredita se houver interação; Resistência à Magia não se aplica. Foco: um pergaminho enrolado formando um pequeno cone.",
+    "sourcePage": 251,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — referência inicial"
+  },
+  {
+    "name": "Viagem Planar",
+    "explanation": "Transporta o conjurador e outras criaturas voluntárias para outro plano de existência ou dimensão alternativa. O destino pretendido é impreciso: a chegada pode ocorrer entre 7,5 km e 750 km do local desejado.",
+    "tacticalNotes": "Alcance toque; afeta a criatura tocada ou até oito criaturas voluntárias que estejam de mãos dadas. A viagem é instantânea e a magia termina após o transporte.",
+    "interactions": "Vontade anula; Resistência à Magia se aplica. A magia não oferece retorno automático: as criaturas precisam encontrar outro meio para voltar. Foco: pequeno bastão de metal em forma de forquilha; o tipo e o tamanho determinam o plano ou dimensão de destino.",
+    "sourcePage": 251,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — referência inicial"
   }
 ]
