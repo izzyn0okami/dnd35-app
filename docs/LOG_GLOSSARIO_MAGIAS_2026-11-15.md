@@ -12,6 +12,7 @@ Data: 2026-11-15
 
 ## Primeira entrada auditada
 - **Mísseis Mágicos**, Livro do Jogador, Capítulo 11, p. 220.
+- **Escudo Arcano**, Livro do Jogador, Capítulo 11, p. 200; registra bloqueio de Mísseis Mágicos, bônus de escudo +4, aplicação contra ataques de toque incorpóreos de energia e ausência de penalidade de armadura/falha arcana.
 - Registra acerto automático, dano de 1d4+1 por projétil, crescimento de quantidade até cinco, distribuição dos alvos e limites de escolha.
 - Mantida a informação de Resistência à Magia conforme a linha técnica do verbete.
 
@@ -19,7 +20,7 @@ Data: 2026-11-15
 - Adicionado modelo SpellReference e carregamento de spell_references.json.
 - Adicionada pesquisa textual SpellGlossarySearch, sem alterar o catálogo mecânico.
 - A tela de detalhes da magia passa a mostrar a seção Glossário, referência e status; itens sem auditoria recebem aviso explícito.
-- Testes cobrem busca sem acentos, preservação dos dados mecânicos e vínculo da primeira referência.
+- Testes cobrem busca sem acentos, preservação dos dados mecânicos e vínculo das referências auditadas.
 
 ## Próximas etapas
 - Expandir sistematicamente as referências para as magias do Livro do Jogador.
