@@ -39,6 +39,21 @@ class SpellGlossarySearchTest {
         assertTrue(fatigue.reference?.interactions?.contains("Fortitude anula") == true)
         assertTrue(fatigue.reference?.interactions?.contains("gota de suor") == true)
 
+        val ghoulTouch = SpellGlossarySearch.search("Toque do Carniçal").first()
+        assertTrue(ghoulTouch.reference?.sourcePage == 248)
+        assertTrue(ghoulTouch.reference?.explanation?.contains("paralisa") == true)
+        assertTrue(ghoulTouch.reference?.interactions?.contains("Neutralizar venenos") == true)
+
+        val macabreTouch = SpellGlossarySearch.search("Toque Macabro").first()
+        assertTrue(macabreTouch.reference?.sourcePage == 249)
+        assertTrue(macabreTouch.reference?.explanation?.contains("1d6") == true)
+        assertTrue(macabreTouch.reference?.tacticalNotes?.contains("dano temporário de Força") == true)
+
+        val vampiricTouch = SpellGlossarySearch.search("Toque Vampírico").first()
+        assertTrue(vampiricTouch.reference?.sourcePage == 249)
+        assertTrue(vampiricTouch.reference?.explanation?.contains("10d6") == true)
+        assertTrue(vampiricTouch.reference?.tacticalNotes?.contains("1 hora") == true)
+
         val dimensional = SpellGlossarySearch.search("Tranca Dimensional").first()
         assertTrue(dimensional.reference?.sourcePage == 250)
         assertTrue(dimensional.reference?.interactions?.contains("não admite Resistência à Magia") == true)
