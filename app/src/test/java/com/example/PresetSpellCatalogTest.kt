@@ -49,6 +49,7 @@ class PresetSpellCatalogTest {
         val chillTouch = spells.getValue("Toque Macabro")
         assertEquals(1, chillTouch.level)
         assertEquals(setOf("Feiticeiro", "Mago"), chillTouch.classes.toSet())
+        assertEquals("Fortitude parcial ou Vontade anula (veja texto)", chillTouch.savingThrow)
         assertTrue(chillTouch.description.contains("1d6 pontos de dano"))
         assertTrue(chillTouch.description.contains("dano temporário de Força"))
         assertTrue(chillTouch.description.contains("mortos-vivos"))
