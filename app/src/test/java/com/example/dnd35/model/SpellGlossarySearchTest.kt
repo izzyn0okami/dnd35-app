@@ -48,6 +48,7 @@ class SpellGlossarySearchTest {
         assertTrue(macabreTouch.reference?.sourcePage == 249)
         assertTrue(macabreTouch.reference?.explanation?.contains("1d6") == true)
         assertTrue(macabreTouch.reference?.tacticalNotes?.contains("dano temporário de Força") == true)
+        assertTrue(macabreTouch.reference?.interactions?.contains("Fortitude parcial ou Vontade anula") == true)
 
         val vampiricTouch = SpellGlossarySearch.search("Toque Vampírico").first()
         assertTrue(vampiricTouch.reference?.sourcePage == 249)
