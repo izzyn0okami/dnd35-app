@@ -43,5 +43,23 @@
     "sourcePage": 249,
     "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
     "status": "Auditado — referência inicial"
+  },
+  {
+    "name": "Tranca Dimensional",
+    "explanation": "Cria uma barreira esmeralda que bloqueia completamente o movimento dimensional em uma emanação de 6 m de raio centrada no conjurador. A área impede viagens dimensionais para dentro ou para fora enquanto a magia estiver ativa.",
+    "tacticalNotes": "Bloqueia efeitos como projeção astral, piscar, porta dimensional, passeio etéreo, forma etérea, portal, labirinto, viagem planar, andar nas sombras e teletransporte, além de habilidades mágicas ou psíquicas similares.",
+    "interactions": "Não permite teste de resistência e não admite Resistência à Magia. Não prejudica o movimento de criaturas que já estejam em forma astral ou etérea; não bloqueia percepção nem ataques extradimensionais e não impede que criaturas invocadas desapareçam quando a invocação termina. Duração de 1 dia por nível.",
+    "sourcePage": 250,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — referência inicial"
+  },
+  {
+    "name": "Transformação Momentânea",
+    "explanation": "O conjurador altera a própria aparência, incluindo vestes, armas, armaduras e equipamento. Pode mudar altura ou largura em até 30 cm, mas não pode mudar o tipo corporal nem obter as habilidades da forma imitada.",
+    "tacticalNotes": "A magia pode adicionar ou remover detalhes pequenos ou criar a aparência de outra pessoa. Concede +10 de bônus em testes de Disfarces.",
+    "interactions": "A alteração não muda a percepção tátil nem a percepção sonora do conjurador e não transforma seu equipamento. Criaturas podem realizar um teste de Vontade para reconhecer a ilusão ao interagir com o alvo.",
+    "sourcePage": 250,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — referência inicial"
   }
 ]
