@@ -345,7 +345,7 @@
     "name": "Ampliar Plantas",
     "explanation": "Possui dois efeitos. Crescimento: torna a vegetação normal espessa e alta em alcance longo (120 m + 12 m/nível), formando bosque cerrado ou selva. Enriquecer: afeta plantas a até 750 km, aumentando em um terço seu potencial de produtividade durante o próximo ano.",
     "tacticalNotes": "No efeito Crescimento, o deslocamento cai para 1,5 m, ou 3 m para criaturas Grandes ou maiores. A área precisa conter arbustos e árvores; o conjurador pode escolher uma circunferência de 30 m de raio, um hemisfério de 45 m de raio ou um quarto de circunferência com 60 m de raio, além de excluir locais específicos. O efeito Enriquecer é usado em comunidades rurais para melhorar a produtividade das plantações no ano seguinte.",
-    "interactions": "Não permite teste de resistência e não admite Resistência à Magia. Serve como contramágica e dissipa Enfraquecer Plantas. Não afeta criaturas do tipo planta. A duração é instantânea.",
+    "interactions": "Não permite teste de resistência e não admite Resistência à Magia. Serve como contramágica e dissipa Enfraquecer Plantas. Não afeta criaturas do tipo planta. A duração é instantânea. Divergência de fonte: a edição brasileira impressa registra alcance de Enriquecer de 750 km, enquanto o SRD 3.5 registra meia milha (aproximadamente 800 m). O glossário conserva o valor impresso no Livro do Jogador e sinaliza a diferença; não se deve tratar esse alcance como confirmado sem decisão editorial.",
     "sourcePage": 171,
     "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
     "status": "Auditado — expansão do glossário"
