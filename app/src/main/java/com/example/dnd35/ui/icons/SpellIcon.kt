@@ -237,7 +237,7 @@ private val SPELL_ICON_OVERRIDES = mapOf(
     "desintegração" to "glowing-artifact",
     "limpar a mente" to "crystal-ball",
     "muralha prismática" to "glowing-artifact",
-    "animar cordas" to "rope-coil",
+    "animar corda" to "rope-coil",
     "ataque certeiro" to "shining-sword",
     "montaria" to "horse-head",
     "trancar portal" to "padlock",
