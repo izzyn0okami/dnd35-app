@@ -13,6 +13,34 @@ import org.robolectric.annotation.Config
 @Config(sdk = [34])
 class PresetSpellCatalogTest {
     @Test
+    fun touchSpellCatalogMatchesBrazilianPlayerHandbookEntries() {
+        val spells = Dnd35Rules.PRESET_SPELLS.associateBy { it.name }
+        assertFalse("O nome divergente não deve permanecer no catálogo canônico", spells.containsKey("Toque Gélido"))
+
+        val ghoulTouch = spells.getValue("Toque do Carniçal")
+        assertEquals(2, ghoulTouch.level)
+        assertEquals(setOf("Feiticeiro", "Mago"), ghoulTouch.classes.toSet())
+        assertEquals("1d6+2 rodadas", ghoulTouch.duration)
+        assertEquals("Fortitude anula", ghoulTouch.savingThrow)
+        assertTrue(ghoulTouch.description.contains("paralisar um único humanoide vivo"))
+        assertTrue(ghoulTouch.description.contains("náusea"))
+
+        val chillTouch = spells.getValue("Toque Macabro")
+        assertEquals(1, chillTouch.level)
+        assertEquals(setOf("Feiticeiro", "Mago"), chillTouch.classes.toSet())
+        assertTrue(chillTouch.description.contains("1d6 pontos de dano"))
+        assertTrue(chillTouch.description.contains("dano temporário de Força"))
+        assertTrue(chillTouch.description.contains("mortos-vivos"))
+
+        val vampiricTouch = spells.getValue("Toque Vampírico")
+        assertEquals(3, vampiricTouch.level)
+        assertEquals(setOf("Feiticeiro", "Mago"), vampiricTouch.classes.toSet())
+        assertEquals("Nenhum", vampiricTouch.savingThrow)
+        assertTrue(vampiricTouch.description.contains("máximo 10d6"))
+        assertTrue(vampiricTouch.description.contains("pontos de vida temporários"))
+    }
+
+    @Test
     fun catalogIncludesMissingFirstLevelBardSpells() {
         val spells = Dnd35Rules.PRESET_SPELLS
         val expectedClasses = setOf("Bardo", "Mago", "Feiticeiro")
