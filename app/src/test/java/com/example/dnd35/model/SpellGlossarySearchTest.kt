@@ -293,4 +293,24 @@ class SpellGlossarySearchTest {
         assertTrue(mageArmor.reference?.interactions?.contains("não admite Resistência à Magia") == true)
     }
 
+
+    @Test
+    fun auditsAlphabeticalSpellBatchAumentarAndAuraAgainstBrazilianPlayerHandbook() {
+        val enlarge = SpellGlossarySearch.search("Aumentar Pessoa").first()
+        assertEquals(176, enlarge.reference?.sourcePage)
+        assertTrue(enlarge.reference?.explanation?.contains("multiplicando seu peso por oito") == true)
+        assertTrue(enlarge.reference?.tacticalNotes?.contains("não se acumulam") == true)
+        assertTrue(enlarge.reference?.interactions?.contains("Fortitude anula") == true)
+
+        val trueStrike = SpellGlossarySearch.search("Ataque Certeiro").first()
+        assertEquals(176, trueStrike.reference?.sourcePage)
+        assertTrue(trueStrike.reference?.explanation?.contains("+20") == true)
+        assertTrue(trueStrike.reference?.tacticalNotes?.contains("alvos camuflados") == true)
+
+        val magicAura = SpellGlossarySearch.search("Aura Mágica de Nystul").first()
+        assertEquals(176, magicAura.reference?.sourcePage)
+        assertTrue(magicAura.reference?.explanation?.contains("aura mágica") == true)
+        assertTrue(magicAura.reference?.interactions?.contains("não admite Resistência à Magia") == true)
+    }
+
 }
