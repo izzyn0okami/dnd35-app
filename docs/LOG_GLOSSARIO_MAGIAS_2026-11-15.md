@@ -218,3 +218,13 @@ Data: 2026-11-15
 - **Animar Corda** já possui associação específica ao ícone `rope-coil`, portanto não pertence mais ao conjunto de magias que usam fallback por escola.
 - **Toque Enferrujante** permanece sem associação específica e usa corretamente o ícone da escola. O teste foi atualizado para refletir esse estado real do catálogo, sem alterar regra, ícone ou comportamento do app.
 - A conferência automática comparou os 404 nomes do catálogo com as 403 associações específicas: a única magia sem associação é Toque Enferrujante.
+
+
+## Expansão alfabética — complemento A (páginas 169 e 171)
+- Referências detalhadas adicionadas para **Aliado Extra-Planar Maior** (p. 169), **Alterar Forma** (p. 169), **Âncora Planar Maior** (p. 171) e **Animação Ilusória** (p. 171), todas já presentes no catálogo.
+- **Aliado Extra-Planar Maior**: permite convocar uma criatura de até 18 DV ou até três criaturas do mesmo tipo totalizando 18 DV; as criaturas surgem a menos de 9 m entre si e devem ser persuadidas individualmente. O custo de XP impresso no verbete é **100 XP**.
+- **Correção mecânica identificada — Aliado Extra-Planar Maior**: a descrição do catálogo indicava 500 XP, mas o Livro do Jogador brasileiro, p. 169, indica 100 XP. O catálogo foi corrigido para 100 XP. O valor de 500 PO por DV mencionado no texto-base é uma modalidade de pagamento por serviços demorados, não o custo de XP da magia; não confundir as duas quantias.
+- **Alterar Forma**: permite formas não únicas de qualquer tipo entre Minúsculo e Colossal, até o dobro do nível de conjurador em DV (máximo 50 DV), inclusive formas incorpóreas e gasosas. Foram registradas a aquisição de habilidades extraordinárias/sobrenaturais pertinentes, as restrições às demais qualidades, a mudança uma vez por rodada como ação livre, o bônus de +10 em Disfarces e o foco de jade de 1.500 PO.
+- **Âncora Planar Maior**: uma criatura de até 18 DV ou até três do mesmo tipo totalizando 18 DV; cada criatura tenta escapar e é persuadida individualmente. Para tarefas amplas, a duração pode permanecer em 1 dia/nível, com chance imediata de libertação.
+- **Animação Ilusória**: protege um cubo de 9 m/nível contra espionagem mágica e observação direta por 24 horas; o conjurador define antecipadamente a ilusão e seus limites. Vidência mágica detecta automaticamente a imagem, enquanto observação direta permite Vontade para desacreditar se houver motivo para duvidar.
+- Fonte primária consultada diretamente: Livro do Jogador brasileiro, Capítulo 11, páginas impressas 169 e 171 (PDF, páginas 173–176). Nenhuma outra regra foi alterada. Testes específicos verificam páginas, efeitos centrais, classes/domínios e o custo de XP corrigido.
