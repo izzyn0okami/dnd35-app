@@ -56,5 +56,15 @@ class SpellGlossarySearchTest {
         assertTrue(truth.reference?.sourcePage == 253)
         assertTrue(truth.reference?.explanation?.contains("6 m") == true)
         assertTrue(truth.reference?.interactions?.contains("Vontade anula") == true)
+
+        val darkvision = SpellGlossarySearch.search("Visão no Escuro").first()
+        assertTrue(darkvision.reference?.sourcePage == 252)
+        assertTrue(darkvision.reference?.explanation?.contains("18 m") == true)
+        assertTrue(darkvision.reference?.interactions?.contains("escuridão mágica") == true)
+
+        val trueSeeing = SpellGlossarySearch.search("Visão da Verdade").first()
+        assertTrue(trueSeeing.reference?.sourcePage == 253)
+        assertTrue(trueSeeing.reference?.explanation?.contains("36 m") == true)
+        assertTrue(trueSeeing.reference?.interactions?.contains("objetos sólidos") == true)
     }
 }
