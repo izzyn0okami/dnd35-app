@@ -745,7 +745,7 @@
     ],
     "castTime": "1 ação padrão",
     "components": "V, G, F",
-    "range": "Curto (7,5m)",
+    "range": "Curto (7,5 m + 1,5 m/2 níveis)",
     "duration": "Instantânea",
     "savingThrow": "Vontade anula (objeto)",
     "spellResistance": true,
@@ -2043,7 +2043,7 @@
   {
     "name": "Abençoar Água",
     "level": 1,
-    "school": "Transmutação",
+    "school": "Transmutação [Bem]",
     "classes": [
       "Clérigo",
       "Paladino"
@@ -2463,7 +2463,7 @@
   {
     "name": "Acalmar Animais",
     "level": 1,
-    "school": "Encantamento",
+    "school": "Encantamento (Compulsão) [Ação Mental]",
     "classes": [
       "Druida",
       "Ranger"
