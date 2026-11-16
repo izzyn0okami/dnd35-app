@@ -211,4 +211,29 @@ class SpellGlossarySearchTest {
         assertTrue(plantGrowth.reference?.interactions?.contains("Enfraquecer Plantas") == true)
     }
 
+
+    @Test
+    fun auditsAlphabeticalSpellBatchAnAgainstBrazilianPlayerHandbook() {
+        val airWalk = SpellGlossarySearch.search("Andar no Ar").first()
+        assertEquals(172, airWalk.reference?.sourcePage)
+        assertTrue(airWalk.reference?.explanation?.contains("45°") == true)
+        assertTrue(airWalk.reference?.tacticalNotes?.contains("18 m por rodada") == true)
+
+        val animateRope = SpellGlossarySearch.search("Animar Corda").first()
+        assertEquals(172, animateRope.reference?.sourcePage)
+        assertTrue(animateRope.reference?.tacticalNotes?.contains("Arte da Fuga CD 20") == true)
+        assertTrue(animateRope.reference?.interactions?.contains("não admite Resistência à Magia") == true)
+
+        val animateObjects = SpellGlossarySearch.search("Animar Objetos").first()
+        assertEquals(172, animateObjects.reference?.sourcePage)
+        assertTrue(animateObjects.reference?.tacticalNotes?.contains("Colossal a trinta e dois") == true)
+        assertTrue(animateObjects.reference?.interactions?.contains("Permanência") == true)
+
+        val animatePlants = SpellGlossarySearch.search("Animar Plantas").first()
+        assertEquals(172, animatePlants.reference?.sourcePage)
+        assertTrue(animatePlants.reference?.interactions?.contains("Entes") == true)
+        assertTrue(animatePlants.spell.range.contains("7,5 m + 1,5 m/2 níveis"))
+        assertTrue(animatePlants.spell.duration.contains("1 hora/nível"))
+    }
+
 }
