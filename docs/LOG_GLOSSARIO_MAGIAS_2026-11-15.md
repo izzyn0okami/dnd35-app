@@ -104,3 +104,12 @@ Data: 2026-11-15
 - **Toque Enferrujante**, p. 249: Druida 4; corrói e destrói ferro não mágico, com imunidade para itens mágicos de metal. Em combate, pode reduzir o bônus de CA de armadura metálica, destruir arma metálica ou causar 3d6 +1/nível (máximo +15) contra criaturas de ferro. Não permite teste de resistência nem admite Resistência à Magia; foco divino.
 - **Toque da Idiotice**, p. 249: Feiticeiro/Mago 2; ataque de toque reduz temporariamente Inteligência, Sabedoria e Carisma em 1d6 cada, sem reduzir qualquer atributo abaixo de 1. Não permite teste de resistência; Resistência à Magia se aplica; duração de 10 minutos/nível.
 - Ambas foram incluídas no catálogo e glossário com testes específicos. Este complemento amplia o mesmo lote de auditoria das magias de toque das páginas 248–249 para evitar uma PR fragmentada.
+
+
+## Correções de CI — PR #391
+- A primeira execução dos dois fluxos encontrou quatro falhas de teste, todas na suíte JVM; a compilação Kotlin foi concluída.
+- O teste do catálogo comparava o termo "mortos-vivos" em minúsculas, enquanto a descrição canônica inicia o trecho com "Mortos-vivos". Corrigida apenas a comparação de capitalização.
+- Um teste preexistente ainda procurava a magia pelo nome antigo "Toque Gélido". Atualizado para o nome brasileiro auditado "Toque Macabro"; níveis, alcance, classes e Resistência à Magia continuam sendo verificados.
+- O mapa visual ainda continha a associação órfã "toque gélido". Renomeada para "toque macabro" e acrescentadas associações inequívocas para Toque do Carniçal, Toque Vampírico e Toque da Idiotice.
+- Toque Enferrujante não recebeu símbolo específico: permanece com o ícone de sua escola (Transmutação), conforme o fallback visual existente. O teste explicita essa exceção em vez de exigir um símbolo artificial.
+- Nenhuma regra mecânica foi alterada por essas correções; os ajustes tratam de testes e consistência do nome/ícones.
