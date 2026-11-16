@@ -3557,7 +3557,7 @@
     "components": "V, G",
     "range": "Toque",
     "duration": "Instantânea",
-    "savingThrow": "Fortitude parcial",
+    "savingThrow": "Fortitude parcial ou Vontade anula (veja texto)",
     "spellResistance": true,
     "description": "Um toque da mão do conjurador, brilhando com energia azulada, retira a força vital de criaturas vivas. Cada ataque de toque causa 1d6 pontos de dano por energia negativa e pode causar 1 ponto de dano temporário de Força; um teste de Fortitude bem-sucedido anula apenas o dano de Força. O conjurador pode realizar um ataque de toque por nível. Mortos-vivos não sofrem dano nem redução de Força, mas devem obter sucesso em um teste de Vontade ou fugir em pânico durante 1d4+1 rodadas por nível de conjurador.",
     "classLevels": {
