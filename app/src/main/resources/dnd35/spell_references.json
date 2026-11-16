@@ -1,0 +1,11 @@
+[
+  {
+    "name": "Mísseis Mágicos",
+    "explanation": "A magia cria projéteis de energia que atingem automaticamente os alvos escolhidos. Cada projétil causa 1d4+1 pontos de dano. O livro especifica que os projéteis atingem mesmo durante combate corpo a corpo e apesar de cobertura ou camuflagem inferior à total; partes específicas de uma criatura não podem ser escolhidas e objetos inanimados não são afetados.",
+    "tacticalNotes": "O conjurador pode distribuir os projéteis entre uma ou várias criaturas, mas cada projétil só pode atingir uma criatura. A quantidade aumenta em um para cada dois níveis de conjurador após o 1º, até o máximo de cinco projéteis no 9º nível.",
+    "interactions": "A magia não exige jogada de ataque nem teste de resistência. A Resistência à Magia se aplica. A designação dos alvos ocorre antes de resolver a magia, os testes de resistência ou as jogadas de dano.",
+    "sourcePage": 220,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — referência inicial"
+  }
+]
