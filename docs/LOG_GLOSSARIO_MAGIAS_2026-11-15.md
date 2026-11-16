@@ -159,3 +159,9 @@ Data: 2026-11-15
 - **Aprisionamento**: enterra o alvo em animação suspensa; Libertação no local desfaz o efeito; desejo/milagre e adivinhações têm limitações específicas; penalidade de –4 no teste de resistência quando o conjurador conhece nome e detalhes da vítima.
 - **Aprisionar a Alma**: documentadas as duas ativações, magia completa e Objeto Armadilha; distinções de teste de resistência/RM, gema de pelo menos 1.000 PO por DV e foco especial.
 - Os textos foram conferidos no Livro do Jogador brasileiro, p. 173. Nenhum parâmetro mecânico do catálogo foi alterado neste lote.
+
+
+## Divergência de fonte — Ampliar Plantas (página 171)
+- Conferência visual da página impressa 171 confirmou que o Livro do Jogador brasileiro realmente imprime **750 km** para o alcance do efeito Enriquecer.
+- O SRD 3.5 registra **half-mile** (meia milha, aproximadamente 800 m) para o mesmo efeito.
+- A diferença é muito grande e provavelmente representa erro editorial ou tipográfico na edição brasileira. Como a edição brasileira é a fonte primária definida para o projeto, o glossário mantém fielmente os **750 km impressos**, mas explicita a divergência com o SRD. Não corrigir para 750 m/800 m sem decisão editorial explícita.
