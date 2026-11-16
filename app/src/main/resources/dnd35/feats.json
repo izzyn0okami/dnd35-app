@@ -392,8 +392,8 @@
   {
     "name": "Contramágica Aprimorada",
     "prerequisites": "Nenhum",
-    "summary": "Pode usar qualquer magia da mesma escola para fazer contramágica.",
-    "benefit": "Você pode usar qualquer magia da mesma escola que a magia-alvo para tentar a contramágica, em vez de precisar da magia exata."
+    "summary": "Usa uma magia da mesma escola e de nível superior para fazer contramágica.",
+    "benefit": "Ao realizar uma contramágica, você pode conjurar qualquer magia da mesma escola que a magia-alvo, desde que seja de nível superior, em vez de precisar da mesma magia ou de uma magia especificamente designada para neutralizá-la."
   },
   {
     "name": "Corrida",
@@ -416,8 +416,8 @@
   {
     "name": "Dominar Magia",
     "prerequisites": "1º nível de mago",
-    "summary": "Prepara magias escolhidas sem precisar de um grimório.",
-    "benefit": "Você pode preparar um número de magias de mago igual à metade do seu nível de conjurador (arredondado para baixo, mínimo 1) sem consultar um grimório, desde que já as tenha preparado dessa forma ao menos uma vez."
+    "summary": "Prepara uma seleção de magias conhecidas sem consultar o grimório.",
+    "benefit": "Sempre que escolher este talento, selecione uma quantidade de magias conhecidas igual ao seu modificador de Inteligência. Você poderá preparar essas magias sem consultar um grimório."
   },
   {
     "name": "Imobilização Aprimorada",
@@ -439,9 +439,9 @@
   },
   {
     "name": "Especialização em Arma Maior",
-    "prerequisites": "Usar a arma, Foco em Arma Maior, Foco em Arma, Especialização em Arma, 12º nível de guerreiro",
-    "summary": "+4 de bônus no dano com a arma escolhida (total com Especialização em Arma).",
-    "benefit": "O bônus no dano com a arma escolhida concedido por Especialização em Arma aumenta de +2 para +4."
+    "prerequisites": "Proficiência com a arma escolhida, Foco em Arma, Foco em Arma Maior, Especialização em Arma, 12º nível de guerreiro",
+    "summary": "+2 adicionais no dano com a arma escolhida (além de Especialização em Arma).",
+    "benefit": "Você recebe +2 de bônus adicional nas jogadas de dano com a arma escolhida. Esse bônus se acumula com outros bônus de dano, inclusive o concedido por Especialização em Arma."
   },
   {
     "name": "Fraudulento",
@@ -464,8 +464,8 @@
   {
     "name": "Liderança",
     "prerequisites": "6º nível de personagem",
-    "summary": "Atrai um parceiro leal e vários seguidores.",
-    "benefit": "Você pode atrair um cofre leal e seguidores dedicados, capazes de ajudá-lo em suas aventuras. O número e o poder desses aliados dependem do seu placar de liderança."
+    "summary": "Atrai companheiros leais e seguidores devotados.",
+    "benefit": "Você pode atrair companheiros leais e seguidores devotados que o auxiliarão. O Mestre determina os tipos de companheiros e a quantidade de seguidores que podem ser recrutados. Converse com o Mestre antes de escolher este talento para definir aliados apropriados ao personagem."
   },
   {
     "name": "Magia Natural",
@@ -536,62 +536,62 @@
   {
     "name": "Duro de Matar",
     "prerequisites": "Tolerância",
-    "summary": "Permanece consciente entre -1 e -9 pontos de vida.",
-    "benefit": "Quando seus pontos de vida ficam entre -1 e -9, você permanece consciente e pode agir normalmente (com as penalidades usuais de um personagem ferido), em vez de ficar inconsciente e morrendo."
+    "summary": "Permanece consciente entre -1 e -9 PV, mas age de forma limitada.",
+    "benefit": "Quando seus pontos de vida estiverem entre -1 e -9, você fica estável automaticamente, sem precisar fazer o teste percentual para evitar perder 1 PV por rodada. Você pode decidir imediatamente se ativará o talento, mesmo que não seja seu turno. Se ativá-lo, poderá realizar uma única ação de movimento ou uma única ação padrão por rodada, nunca ambas nem uma ação de rodada completa. A ação de movimento não causa dano adicional; uma ação padrão ou outra ação extenuante causa 1 ponto de dano ao seu término. Ao chegar a -10 PV, você morre imediatamente. Se decidir não ativar o talento, ficará inconsciente."
   },
   {
     "name": "Usar Arma Comum",
     "prerequisites": "Nenhum",
-    "summary": "Sem penalidade nos ataques com uma arma comum específica.",
-    "benefit": "Escolha uma arma comum específica. Você não sofre a penalidade de -4 por usar uma arma na qual não é proficiente."
+    "summary": "Usa normalmente uma arma comum específica, sem a penalidade de -4 por falta de proficiência.",
+    "benefit": "Escolha uma arma comum específica. Você ataca normalmente com essa arma. Sem proficiência, um personagem sofre -4 nas jogadas de ataque. Bárbaros, guerreiros, paladinos e rangers já sabem usar todas as armas comuns; clérigos com o domínio da Guerra recebem o talento para a arma comum predileta de sua divindade."
   },
   {
     "name": "Usar Arma Exótica",
-    "prerequisites": "BBA +1",
-    "summary": "Sem penalidade nos ataques com uma arma exótica específica.",
-    "benefit": "Escolha uma arma exótica específica. Você não sofre a penalidade de -4 por usar uma arma exótica na qual não é proficiente."
+    "prerequisites": "BBA +1; Força 13 para espada bastarda ou machado de guerra anão",
+    "summary": "Usa normalmente uma arma exótica específica, sem a penalidade de -4 por falta de proficiência.",
+    "benefit": "Escolha uma arma exótica específica. Você ataca normalmente com ela; sem proficiência, sofre -4 nas jogadas de ataque. O talento pode ser escolhido novamente para outra arma exótica. Para espada bastarda ou machado de guerra anão, também é necessário Força 13."
   },
   {
     "name": "Usar Armas Simples",
     "prerequisites": "Nenhum",
-    "summary": "Sem penalidades nos ataques com armas simples.",
-    "benefit": "Você não sofre a penalidade de -4 por usar armas simples."
+    "summary": "Usa normalmente todas as armas simples, sem a penalidade de -4 por falta de proficiência.",
+    "benefit": "Você ataca normalmente com qualquer arma simples. Sem proficiência, um personagem sofre -4 nas jogadas de ataque. Todos os personagens, exceto druidas, monges, ladinos e magos, já sabem usar todas as armas simples. A magia Transformação de Tenser também concede esse talento ao mago ou feiticeiro enquanto durar."
   },
   {
     "name": "Usar Armadura (leve)",
     "prerequisites": "Nenhum",
-    "summary": "Sem penalidade de armadura leve nas jogadas de ataque.",
-    "benefit": "Quando usa armadura leve, você não sofre a penalidade normal de -4 nas jogadas de ataque por não ser proficiente."
+    "summary": "É treinado para usar armaduras leves sem aplicar a penalidade de armadura às jogadas de ataque.",
+    "benefit": "Quando usa qualquer armadura leve, a penalidade de armadura afeta somente testes de Equilíbrio, Escalar, Arte da Fuga, Esconder-se, Saltar, Furtividade, Prestidigitação e Acrobacia. Sem treinamento adequado, a penalidade também afeta jogadas de ataque e testes de perícia que exijam movimentos, inclusive Cavalgar."
   },
   {
     "name": "Usar Armadura (média)",
     "prerequisites": "Usar Armadura (leve)",
-    "summary": "Sem penalidade de armadura média nas jogadas de ataque.",
-    "benefit": "Quando usa armadura leve ou média, você não sofre a penalidade normal de -4 nas jogadas de ataque por não ser proficiente."
+    "summary": "É treinado para usar armaduras médias; requer Usar Armadura (leve).",
+    "benefit": "Você pode usar armaduras médias. O efeito é o mesmo de Usar Armadura (leve): a penalidade de armadura afeta apenas os testes de Equilíbrio, Escalar, Arte da Fuga, Esconder-se, Saltar, Furtividade, Prestidigitação e Acrobacia. Guerreiros, bárbaros, paladinos, clérigos, druidas e bardos já possuem essa proficiência."
   },
   {
     "name": "Usar Armadura (pesada)",
     "prerequisites": "Usar Armadura (média)",
-    "summary": "Sem penalidade de armadura pesada nas jogadas de ataque.",
-    "benefit": "Quando usa qualquer armadura, você não sofre a penalidade normal de -4 nas jogadas de ataque por não ser proficiente."
+    "summary": "É treinado para usar armaduras pesadas; requer Usar Armadura (leve) e (média).",
+    "benefit": "Você pode usar armaduras pesadas. O efeito é o mesmo de Usar Armadura (leve): a penalidade de armadura afeta apenas os testes de Equilíbrio, Escalar, Arte da Fuga, Esconder-se, Saltar, Furtividade, Prestidigitação e Acrobacia. Guerreiros, paladinos e clérigos já possuem essa proficiência."
   },
   {
     "name": "Usar Escudo",
     "prerequisites": "Nenhum",
-    "summary": "Sem penalidade de escudo nas jogadas de ataque.",
-    "benefit": "Quando usa um escudo leve ou pesado (exceto escudo de corpo), você não sofre a penalidade normal de -4 nas jogadas de ataque por não ser proficiente."
+    "summary": "É treinado para usar broquéis e escudos pequenos e grandes.",
+    "benefit": "Você pode usar broquéis e escudos pequenos e grandes, sofrendo somente as penalidades padrão do equipamento. Sem treinamento adequado, a penalidade de armadura do escudo também afeta jogadas de ataque e testes de perícia que exijam movimentos, inclusive Cavalgar."
   },
   {
     "name": "Ataque com Escudo Aprimorado",
     "prerequisites": "Usar Escudo",
-    "summary": "Conserva o bônus do escudo na CA ao atacar com ele.",
-    "benefit": "Quando ataca com um escudo, você mantém o bônus de CA do escudo, desde que ainda não tenha agido na rodada."
+    "summary": "Mantém o bônus do escudo na CA ao atacar com ele.",
+    "benefit": "Quando ataca com um escudo, você ainda considera o bônus do equipamento na Classe de Armadura. Sem este talento, perde o bônus do escudo na CA até sua próxima ação."
   },
   {
     "name": "Usar Escudo de Corpo",
     "prerequisites": "Usar Escudo",
-    "summary": "Sem penalidade de escudo de corpo nas jogadas de ataque.",
-    "benefit": "Quando usa um escudo de corpo, você não sofre a penalidade normal de -4 nas jogadas de ataque por não ser proficiente, mas ainda sofre a penalidade de armadura correspondente."
+    "summary": "É treinado para usar escudos de corpo.",
+    "benefit": "Você pode usar escudos de corpo, sofrendo somente as penalidades padrão do equipamento. Sem treinamento adequado, a penalidade de armadura do escudo também afeta jogadas de ataque e testes de perícia que exijam movimentos, inclusive Cavalgar. Guerreiros recebem este talento automaticamente como talento adicional."
   },
   {
     "name": "Criar Armaduras e Armas Mágicas",
@@ -638,14 +638,14 @@
   {
     "name": "Aumentar Magia",
     "prerequisites": "Nenhum",
-    "summary": "Dobra o alcance da magia (+1 nível de magia).",
-    "benefit": "Você pode conjurar uma magia aumentada, que tem o dobro do alcance normal. Uma magia aumentada usa um espaço de magia 1 nível acima de seu nível real."
+    "summary": "Dobra o alcance de magias com alcance curto, médio ou longo (+1 nível).",
+    "benefit": "Você aumenta em 100% o alcance de uma magia cujo alcance seja curto, médio ou longo. A magia ocupa um espaço de magia um nível acima do normal. Magias cujo alcance não seja definido por uma dessas três categorias não podem ser afetadas."
   },
   {
     "name": "Elevar Magia",
     "prerequisites": "Nenhum",
-    "summary": "Conjura a magia como se fosse de um nível mais elevado (+1 nível de magia).",
-    "benefit": "Uma magia elevada é lançada como se fosse 1 nível de conjurador mais alto que o real para todos os efeitos dependentes do nível. Usa um espaço de magia 1 nível acima do normal."
+    "summary": "Eleva a magia a qualquer nível superior escolhido (máximo 9º).",
+    "benefit": "Você pode preparar e conjurar uma magia como se ela pertencesse a qualquer nível de magia superior ao normal, até o 9º nível. Todos os efeitos que dependem do nível da magia, inclusive a CD do teste de resistência, são calculados usando o nível escolhido; a magia ocupa um espaço desse nível."
   },
   {
     "name": "Estender Magia",

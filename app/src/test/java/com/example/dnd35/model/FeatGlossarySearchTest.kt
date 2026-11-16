@@ -309,4 +309,93 @@ class FeatGlossarySearchTest {
         assertTrue(reload.reference?.description?.contains("ação livre") == true)
         assertTrue(reload.reference?.normal?.contains("ação de rodada completa") == true)
     }
+
+    @Test
+    fun newlyAuditedMetamagicAndSpecialFeatReferencesMatchTheBrazilianHandbook() {
+        val counterspell = FeatGlossarySearch.search("Contramágica Aprimorada").first()
+        assertTrue(counterspell.reference?.description?.contains("nível superior") == true)
+
+        val spellMastery = FeatGlossarySearch.search("Dominar Magia").first()
+        assertTrue(spellMastery.benefit.contains("modificador de Inteligência"))
+        assertTrue(spellMastery.reference?.description?.contains("modificador de Inteligência") == true)
+
+        val greaterWeaponSpecialization = FeatGlossarySearch.search("Especialização em Arma Maior").first()
+        assertTrue(greaterWeaponSpecialization.reference?.description?.contains("+2 adicional") == true)
+        assertTrue(greaterWeaponSpecialization.reference?.special?.contains("12º nível de guerreiro") == true)
+
+        val augmentedSummoning = FeatGlossarySearch.search("Potencializar Invocação").first()
+        assertTrue(augmentedSummoning.reference?.description?.contains("bônus de aprimoramento") == true)
+
+        val widen = FeatGlossarySearch.search("Aumentar Magia").first()
+        assertTrue(widen.reference?.description?.contains("15 m + 1,5 m/nível") == true)
+
+        val heighten = FeatGlossarySearch.search("Elevar Magia").first()
+        assertTrue(heighten.benefit.contains("qualquer nível de magia superior"))
+        assertTrue(heighten.reference?.description?.contains("até o limite do 9º nível") == true)
+    }
+
+
+    @Test
+    fun diehardAndLeadershipReferencesMatchTheBrazilianHandbook() {
+        val diehard = FeatGlossarySearch.search("Duro de Matar").first()
+        assertTrue(diehard.benefit.contains("uma única ação de movimento"))
+        assertTrue(diehard.benefit.contains("-10 PV"))
+        assertTrue(diehard.reference?.description?.contains("ação padrão") == true)
+        assertTrue(diehard.reference?.special?.contains("Tolerância") == true)
+
+        val leadership = FeatGlossarySearch.search("Liderança").first()
+        assertTrue(leadership.benefit.contains("companheiros leais"))
+        assertTrue(leadership.benefit.contains("seguidores devotados"))
+        assertFalse(leadership.benefit.contains("cofre leal"))
+        assertTrue(leadership.reference?.sourcePage == 82)
+    }
+
+
+    @Test
+    fun skillAndSpellUtilityFeatReferencesMatchTheBrazilianHandbook() {
+        val nimbleFingers = FeatGlossarySearch.search("Dedos Lépidos").first()
+        assertTrue(nimbleFingers.reference?.description?.contains("Operar Mecanismo") == true)
+        assertTrue(nimbleFingers.reference?.description?.contains("Abrir Fechaduras") == true)
+
+        val eschewMaterials = FeatGlossarySearch.search("Ignorar Componentes Materiais").first()
+        assertTrue(eschewMaterials.reference?.description?.contains("1 PO ou inferior") == true)
+        assertTrue(eschewMaterials.reference?.special?.contains("mais de 1 PO") == true)
+
+        val deftHands = FeatGlossarySearch.search("Mãos Leves").first()
+        assertTrue(deftHands.reference?.description?.contains("Prestidigitação") == true)
+        assertTrue(deftHands.reference?.description?.contains("Usar Cordas") == true)
+
+        val track = FeatGlossarySearch.search("Rastrear").first()
+        assertTrue(track.reference?.description?.contains("1,5 km") == true)
+        assertTrue(track.reference?.description?.contains("reduzido à metade") == true)
+    }
+
+
+    @Test
+    fun weaponArmorAndShieldProficiencyReferencesMatchTheBrazilianHandbook() {
+        val common = FeatGlossarySearch.search("Usar Arma Comum").first()
+        assertTrue(common.reference?.special?.contains("domínio da Guerra") == true)
+
+        val exotic = FeatGlossarySearch.search("Usar Arma Exótica").first()
+        assertTrue(exotic.reference?.special?.contains("Força 13") == true)
+        assertTrue(exotic.reference?.special?.contains("arma exótica diferente") == true)
+
+        val simple = FeatGlossarySearch.search("Usar Armas Simples").first()
+        assertTrue(simple.reference?.special?.contains("druidas, monges, ladinos e magos") == true)
+
+        val light = FeatGlossarySearch.search("Usar Armadura (leve)").first()
+        assertTrue(light.reference?.description?.contains("Arte da Fuga") == true)
+        val medium = FeatGlossarySearch.search("Usar Armadura (média)").first()
+        assertTrue(medium.reference?.special?.contains("Usar Armadura (leve)") == true)
+        val heavy = FeatGlossarySearch.search("Usar Armadura (pesada)").first()
+        assertTrue(heavy.reference?.special?.contains("Usar Armadura (média)") == true)
+
+        val shield = FeatGlossarySearch.search("Usar Escudo").first()
+        assertTrue(shield.reference?.description?.contains("broquéis") == true)
+        val shieldBash = FeatGlossarySearch.search("Ataque com Escudo Aprimorado").first()
+        assertTrue(shieldBash.reference?.description?.contains("Classe de Armadura") == true)
+        val towerShield = FeatGlossarySearch.search("Usar Escudo de Corpo").first()
+        assertTrue(towerShield.reference?.special?.contains("Guerreiros") == true)
+    }
+
 }

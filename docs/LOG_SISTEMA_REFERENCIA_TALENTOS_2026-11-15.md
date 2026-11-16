@@ -150,3 +150,67 @@ Data: 2026-11-15
 - A falha foi causada pelo piso histórico do teste, não por erro de compilação nem por campo ausente: o catálogo passou legitimamente de 110 para 109 entradas ao remover o alias duplicado `Derrubar Aprimorado`. A entrada canônica `Imobilização Aprimorada` permanece no catálogo.
 - Atualizado o piso para 109, com comentário explicando a redução intencional. Os testes de nomes, campos obrigatórios e ausência de duplicatas permanecem ativos.
 - Nenhuma CI foi considerada aprovada para o commit mais recente ainda; aguardar a nova execução antes do merge.
+
+
+## Auditoria de contramágica, talentos metamágicos e especialização maior (15/11/2026)
+
+- Cobertura ampliada de **88 para 94 de 109 talentos**; 15 verbetes permanecem pendentes de referência detalhada.
+- Conferidos no Livro do Jogador brasileiro: Contramágica Aprimorada (p. 78), Aumentar Magia (p. 78), Dominar Magia (p. 79), Especialização em Arma Maior (p. 80), Elevar Magia (p. 80) e Potencializar Invocação (p. 83).
+- Corrigido Contramágica Aprimorada: a magia alternativa deve ser da mesma escola **e de nível superior** à magia-alvo; o benefício curto anterior omitia a condição de nível.
+- Corrigido Dominar Magia: a cada seleção, o mago escolhe magias conhecidas em quantidade igual ao modificador de Inteligência e pode prepará-las sem consultar o grimório. O benefício anterior (metade do nível de conjurador, mínimo 1) não corresponde ao texto do livro.
+- Corrigido Especialização em Arma Maior: concede +2 adicional de dano que se acumula com Especialização em Arma e outros bônus de dano. Com os dois talentos, o acréscimo dos talentos é +4; o texto não substitui o bônus anterior. Registrados os pré-requisitos completos e a escolha por armas diferentes.
+- Potencializar Invocação concede bônus **de aprimoramento** de +4 em Força e Constituição às criaturas conjuradas pelas magias Invocar, enquanto a magia permanecer ativa.
+- Aumentar Magia dobra o alcance apenas quando classificado como Curto, Médio ou Longo; as magias com alcance não definido por essas categorias não são afetadas. Registradas as fórmulas de alcance e o custo de +1 nível de espaço.
+- Corrigido Elevar Magia: não é limitado a elevar apenas um nível. O jogador escolhe qualquer nível superior até o 9º; os efeitos dependentes do nível da magia, inclusive a CD, usam o nível escolhido, e a magia ocupa espaço desse nível.
+- Foram atualizados os benefícios curtos no catálogo quando estavam incorretos e acrescentados seis verbetes detalhados independentes do resumo da ficha.
+- Teste de regressão cobre as seis referências e as correções de Dominar Magia, Contramágica Aprimorada e Elevar Magia.
+- Nenhum cálculo automático, validação de elegibilidade, progressão ou dado de personagem foi alterado.
+- Fonte primária: PDF brasileiro do Livro do Jogador salvo na biblioteca, Capítulo 5 — Talentos, páginas impressas 78–83. A auditoria registra somente regras apresentadas no Livro do Jogador.
+
+
+## Correção de Duro de Matar e Liderança (15/11/2026)
+
+- Cobertura ampliada de **94 para 96 de 109 talentos**; 13 referências detalhadas continuam pendentes.
+- **Duro de Matar**, Livro do Jogador brasileiro, p. 79: corrigido o benefício resumido que afirmava que o personagem poderia agir normalmente. O texto permite uma única ação de movimento OU uma única ação padrão por rodada, nunca ambas nem ação de rodada completa. A ação de movimento não causa dano adicional; ação padrão ou outra ação considerada extenuante causa 1 PV de dano ao término. O personagem fica estável automaticamente entre -1 e -9 PV, decide imediatamente se ativa o talento, e morre ao atingir -10 PV. Se não ativar, fica inconsciente.
+- **Liderança**, Livro do Jogador brasileiro, p. 82: corrigido o erro de digitação “cofre leal” para “companheiros leais”. O benefício agora descreve companheiros leais e seguidores devotados, com tipos e quantidade determinados pelo Mestre. Mantida a recomendação de conversar com o Mestre antes de selecionar o talento.
+- A descrição de Liderança no Livro do Jogador remete ao Livro do Mestre para informações adicionais. Esta entrada não importa regras externas ou detalhes de pontuação de liderança que não estejam no texto auditado do Livro do Jogador.
+- Adicionados testes de regressão para os limites de ação e morte de Duro de Matar, pré-requisito e termos de Liderança.
+- A execução de CI anterior falhou em um único teste já conhecido e intermitente, `SessionServerClientTest.mensagens privadas simultaneas nao perdem entradas no log do mestre` (asserção na linha 1515); os outros 653 testes passaram e a compilação do APK debug foi aprovada. O job com falha foi solicitado para nova execução; isso não foi tratado como falha causada pelos verbetes de talentos.
+- Nenhuma regra automática de combate, cálculo de PV ou persistência de personagens foi alterada.
+- Fonte primária: PDF brasileiro do Livro do Jogador salvo na biblioteca, Capítulo 5 — Talentos, páginas impressas 79 e 82.
+
+
+## Auditoria de talentos de perícias e componentes materiais (15/11/2026)
+
+- Cobertura ampliada de **96 para 100 de 109 talentos**; 9 verbetes permanecem pendentes.
+- **Dedos Lépidos** (p. 79): +2 em Operar Mecanismo e Abrir Fechaduras.
+- **Ignorar Componentes Materiais** (p. 81): dispensa apenas componentes materiais com custo de 1 PO ou menos; não remove ataques de oportunidade nem dispensa componentes de custo superior.
+- **Mãos Leves** (p. 82): +2 em Prestidigitação e Usar Cordas.
+- **Rastrear** (p. 87): permite seguir rastros com Sobrevivência, realizando testes adicionais quando a trilha se torna difícil de distinguir; deslocamento padrão reduzido à metade, com opções de penalidade para manter ou dobrar o deslocamento.
+- Foram adicionados testes de regressão para os benefícios e limites dessas quatro entradas.
+- Nenhum cálculo automático de perícias, graduações, deslocamento ou conjuração foi alterado.
+- Fonte primária: PDF brasileiro do Livro do Jogador salvo na biblioteca, Capítulo 5 — Talentos, páginas impressas 79, 81, 82 e 87.
+
+
+## Auditoria de proficiências de armas, armaduras e escudos (15/11/2026)
+
+- Cobertura ampliada de **100 para 108 de 109 talentos**; resta 1 talento sem referência detalhada.
+- **Usar Arma Comum** (p. 89): seleção de uma arma comum específica, penalidade de -4 sem proficiência, exceções de classes e domínio da Guerra.
+- **Usar Arma Exótica** (p. 90): seleção de uma arma exótica específica; BBA +1 e Força 13 adicional para espada bastarda e machado de guerra anão; escolhas repetidas precisam ser para armas diferentes.
+- **Usar Armas Simples** (p. 90): proficiência com todas as armas simples; o livro lista druidas, monges, ladinos e magos como exceções de classe.
+- **Usar Armadura (leve/média/pesada)** (p. 90): correção importante no catálogo: proficiência não é simplesmente remover uma penalidade fixa de -4. O texto diz que, com treinamento, a penalidade de armadura afeta somente a lista indicada de perícias; sem treinamento, também afeta jogadas de ataque e testes de perícias que exijam movimento, inclusive Cavalgar. Registrados pré-requisitos e classes que já possuem cada proficiência.
+- **Usar Escudo** (p. 90): proficiência com escudos pequenos e grandes e broquéis; sem treinamento, a penalidade do escudo também afeta ataques e perícias que exigem movimento.
+- **Ataque com Escudo Aprimorado** (p. 79): mantém o bônus de CA do escudo ao atacar; sem o talento, o bônus é perdido até a próxima ação. A tabela apresenta “Usar Escudo”, enquanto a descrição usa a forma plural “Usar Escudos”; mantido o nome canônico do catálogo e documentada a variação textual.
+- **Usar Escudo de Corpo** (p. 90): proficiência com escudos de corpo; guerreiros recebem o talento automaticamente.
+- Corrigidos resumos/benefícios do catálogo que tratavam proficiência em armaduras como mera remoção de penalidade fixa de -4, alinhando-os ao texto específico do Livro do Jogador.
+- Testes de regressão cobrem pré-requisitos, exceções de classe, penalidades e efeitos dos talentos de proficiência.
+- Nenhum sistema de equipamento, cálculo de CA ou penalidade de armadura foi alterado; apenas catálogo, referências e testes.
+- Fonte primária: PDF brasileiro do Livro do Jogador salvo na biblioteca, Capítulo 5 — Talentos, páginas impressas 79, 89 e 90.
+
+
+## Correção da validação de Rastrear no PR #388 (15/11/2026)
+
+- A CI e a compilação Android falharam no mesmo teste de regressão, `skillAndSpellUtilityFeatReferencesMatchTheBrazilianHandbook`, na asserção que procurava literalmente “metade do deslocamento”.
+- A referência cadastrada para Rastrear já descrevia corretamente a regra como “o deslocamento normal ao rastrear é reduzido à metade”; a falha era apenas a expectativa textual do teste, não uma divergência de regra.
+- Ajustada a asserção para verificar “reduzido à metade”, sem alterar o texto do talento, a regra, cálculos ou dados de personagem.
+- Nova execução de CI e APK necessária no commit corrigido; PR #388 permanece aberto até ambos passarem.
