@@ -66,5 +66,14 @@ class SpellGlossarySearchTest {
         assertTrue(trueSeeing.reference?.sourcePage == 253)
         assertTrue(trueSeeing.reference?.explanation?.contains("36 m") == true)
         assertTrue(trueSeeing.reference?.interactions?.contains("objetos sólidos") == true)
+
+        val ventriloquism = SpellGlossarySearch.search("Ventriloquismo").first()
+        assertTrue(ventriloquism.reference?.sourcePage == 251)
+        assertTrue(ventriloquism.reference?.interactions?.contains("Resistência à Magia não se aplica") == true)
+
+        val planar = SpellGlossarySearch.search("Viagem Planar").first()
+        assertTrue(planar.reference?.sourcePage == 251)
+        assertTrue(planar.reference?.tacticalNotes?.contains("oito criaturas") == true)
+        assertTrue(planar.reference?.interactions?.contains("750 km") == true)
     }
 }
