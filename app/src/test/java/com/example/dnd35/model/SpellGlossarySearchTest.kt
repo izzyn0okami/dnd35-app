@@ -313,4 +313,28 @@ class SpellGlossarySearchTest {
         assertTrue(magicAura.reference?.interactions?.contains("não admite Resistência à Magia") == true)
     }
 
+
+    @Test
+    fun auditsAlphabeticalSpellBatchAuxilioAndAurasAgainstBrazilianPlayerHandbook() {
+        val divineFavor = SpellGlossarySearch.search("Auxílio Divino").first()
+        assertEquals(177, divineFavor.reference?.sourcePage)
+        assertTrue(divineFavor.reference?.explanation?.contains("+6") == true)
+        assertTrue(divineFavor.reference?.interactions?.contains("Duração de 1 minuto") == true)
+
+        val unholyAura = SpellGlossarySearch.search("Aura Profana").first()
+        assertEquals(177, unholyAura.reference?.sourcePage)
+        assertTrue(unholyAura.reference?.explanation?.contains("Resistência à Magia 25") == true)
+        assertTrue(unholyAura.reference?.tacticalNotes?.contains("1d6") == true)
+
+        val holyAura = SpellGlossarySearch.search("Aura Sagrada").first()
+        assertEquals(177, holyAura.reference?.sourcePage)
+        assertTrue(holyAura.reference?.explanation?.contains("Resistência à Magia 25") == true)
+        assertTrue(holyAura.reference?.tacticalNotes?.contains("fica cego") == true)
+
+        val grease = SpellGlossarySearch.search("Área Escorregadia").first()
+        assertEquals(173, grease.reference?.sourcePage)
+        assertTrue(grease.reference?.tacticalNotes?.contains("Equilíbrio CD 10") == true)
+        assertTrue(grease.reference?.interactions?.contains("não admite Resistência à Magia") == true)
+    }
+
 }
