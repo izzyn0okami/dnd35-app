@@ -32,6 +32,7 @@ datastorePreferences = "1.1.7"
 robolectric = "4.16.1"
 zxingCore = "3.5.3"
 zxingAndroidEmbedded = "4.3.0"
+json = "20240303"
 
 
 [libraries]
@@ -74,6 +75,7 @@ androidx-datastore-preferences = { group = "androidx.datastore", name = "datasto
 robolectric = { group = "org.robolectric", name = "robolectric", version.ref = "robolectric" }
 zxing-core = { group = "com.google.zxing", name = "core", version.ref = "zxingCore" }
 zxing-android-embedded = { group = "com.journeyapps", name = "zxing-android-embedded", version.ref = "zxingAndroidEmbedded" }
+json = { group = "org.json", name = "json", version.ref = "json" }
 
 
 [plugins]
