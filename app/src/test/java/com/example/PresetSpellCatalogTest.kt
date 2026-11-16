@@ -13,6 +13,27 @@ import org.robolectric.annotation.Config
 @Config(sdk = [34])
 class PresetSpellCatalogTest {
     @Test
+    fun additionalTouchSpellsMatchBrazilianPlayerHandbookEntries() {
+        val spells = Dnd35Rules.PRESET_SPELLS.associateBy { it.name }
+        val rustingGrasp = spells.getValue("Toque Enferrujante")
+        assertEquals(4, rustingGrasp.level)
+        assertEquals(setOf("Druida"), rustingGrasp.classes.toSet())
+        assertEquals("V, G, FD", rustingGrasp.components)
+        assertEquals("Nenhum", rustingGrasp.savingThrow)
+        assertFalse(rustingGrasp.spellResistance)
+        assertTrue(rustingGrasp.description.contains("1d6 pontos"))
+        assertTrue(rustingGrasp.description.contains("3d6 pontos de dano"))
+
+        val touchOfIdiocy = spells.getValue("Toque da Idiotice")
+        assertEquals(2, touchOfIdiocy.level)
+        assertEquals(setOf("Feiticeiro", "Mago"), touchOfIdiocy.classes.toSet())
+        assertEquals("10 minutos/nível", touchOfIdiocy.duration)
+        assertEquals("Nenhum", touchOfIdiocy.savingThrow)
+        assertTrue(touchOfIdiocy.spellResistance)
+        assertTrue(touchOfIdiocy.description.contains("Inteligência, Sabedoria e Carisma"))
+    }
+
+    @Test
     fun touchSpellCatalogMatchesBrazilianPlayerHandbookEntries() {
         val spells = Dnd35Rules.PRESET_SPELLS.associateBy { it.name }
         assertFalse("O nome divergente não deve permanecer no catálogo canônico", spells.containsKey("Toque Gélido"))
