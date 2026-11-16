@@ -38,5 +38,13 @@ class SpellGlossarySearchTest {
         assertTrue(fatigue.reference?.sourcePage == 249)
         assertTrue(fatigue.reference?.interactions?.contains("Fortitude anula") == true)
         assertTrue(fatigue.reference?.interactions?.contains("gota de suor") == true)
+
+        val dimensional = SpellGlossarySearch.search("Tranca Dimensional").first()
+        assertTrue(dimensional.reference?.sourcePage == 250)
+        assertTrue(dimensional.reference?.interactions?.contains("Não admite Resistência à Magia") == true)
+
+        val disguise = SpellGlossarySearch.search("Transformação Momentânea").first()
+        assertTrue(disguise.reference?.sourcePage == 250)
+        assertTrue(disguise.reference?.tacticalNotes?.contains("+10") == true)
     }
 }
