@@ -5376,7 +5376,7 @@
     "duration": "Instantânea",
     "savingThrow": "Nenhum",
     "spellResistance": false,
-    "description": "Convoca até três elementais ou criaturas planares, totalizando no máximo 18 Dados de Vida, que surgem a menos de 9 m entre si. Como nas demais magias aliado extra-planar, as criaturas concordam em ajudar em troca de pagamento ou favor; a natureza e o risco da tarefa determinam o preço. Custo de XP: 500 XP. Ao terminar a tarefa ou o acordo, as criaturas retornam ao plano de origem.",
+    "description": "Convoca uma única criatura planar de até 18 Dados de Vida ou até três criaturas do mesmo tipo cujos Dados de Vida totalizem até 18, surgindo a menos de 9 m entre si. As criaturas concordam em ajudar em troca de um favor ou pagamento; cada uma deve ser persuadida individualmente. A tarefa, o risco e o tempo determinam o pagamento. Custo de XP: 100 XP.",
     "classLevels": {
       "Clérigo": 8
     },
