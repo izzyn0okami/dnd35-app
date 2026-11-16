@@ -16,6 +16,15 @@ Data: 2026-11-15
 - Registra acerto automático, dano de 1d4+1 por projétil, crescimento de quantidade até cinco, distribuição dos alvos e limites de escolha.
 - Mantida a informação de Resistência à Magia conforme a linha técnica do verbete.
 
+## Entrada adicional auditada
+- **Mãos Flamejantes**, Livro do Jogador, Capítulo 11, p. 217.
+- Registrados cone de 4,5 m, dano de fogo de 1d4 por nível (máximo 5d4), Reflexos para metade, ignição imediata de materiais facilmente inflamáveis, ação de rodada completa para apagar chamas em um item e aplicação de Resistência à Magia.
+- A entrada foi conferida diretamente no verbete do PDF; não foram alterados os dados mecânicos do catálogo.
+
+## Correção de testes locais
+- Os testes JVM estavam executando contra o `org.json` de fachada fornecido pelo Android, que lança exceções fora do ambiente Android.
+- Adicionada dependência de teste `org.json:json` para fornecer implementação real ao ambiente JVM; a dependência é apenas de teste e não é empacotada no APK.
+
 ## Implementação inicial
 - Adicionado modelo SpellReference e carregamento de spell_references.json.
 - Adicionada pesquisa textual SpellGlossarySearch, sem alterar o catálogo mecânico.
