@@ -337,4 +337,32 @@ class SpellGlossarySearchTest {
         assertTrue(grease.reference?.interactions?.contains("Não admite Resistência à Magia") == true)
     }
 
+
+    @Test
+    fun auditsRemainingAlphabeticalASpellsAgainstBrazilianPlayerHandbook() {
+        val planarAlly = SpellGlossarySearch.search("Aliado Extra-Planar Maior").first()
+        assertEquals(169, planarAlly.reference?.sourcePage)
+        assertTrue(planarAlly.reference?.explanation?.contains("18 Dados de Vida") == true)
+        assertTrue(planarAlly.reference?.interactions?.contains("100 XP") == true)
+        assertTrue(planarAlly.spell.description.contains("100 XP"))
+
+        val shapechange = SpellGlossarySearch.search("Alterar Forma").first()
+        assertEquals(169, shapechange.reference?.sourcePage)
+        assertTrue(shapechange.reference?.explanation?.contains("Minúsculo e Colossal") == true)
+        assertTrue(shapechange.reference?.tacticalNotes?.contains("+10 em Disfarces") == true)
+        assertTrue(shapechange.reference?.interactions?.contains("1.500 PO") == true)
+
+        val greaterBinding = SpellGlossarySearch.search("Âncora Planar Maior").first()
+        assertEquals(171, greaterBinding.reference?.sourcePage)
+        assertTrue(greaterBinding.reference?.explanation?.contains("18 Dados de Vida") == true)
+        assertTrue(greaterBinding.reference?.tacticalNotes?.contains("individualmente") == true)
+        assertTrue(greaterBinding.reference?.interactions?.contains("Vontade anula") == true)
+
+        val illusory = SpellGlossarySearch.search("Animação Ilusória").first()
+        assertEquals(171, illusory.reference?.sourcePage)
+        assertTrue(illusory.reference?.explanation?.contains("cubo de 9 m por nível") == true)
+        assertTrue(illusory.reference?.tacticalNotes?.contains("observação direta") == true)
+        assertTrue(illusory.reference?.interactions?.contains("24 horas") == true)
+    }
+
 }
