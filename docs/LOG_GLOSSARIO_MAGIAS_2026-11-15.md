@@ -202,3 +202,13 @@ Data: 2026-11-15
 - **Aura Sagrada**, p. 177: mesma estrutura de bônus defensivos; RM 25 contra magias [Mal] ou conjuradas por criaturas Más; bloqueia possessão e influências mentais; criatura Má que acerte o protegido em corpo a corpo fica cega, Fortitude anula.
 - A fonte primária foi consultada diretamente nas páginas impressas indicadas. As quatro magias já constavam do catálogo; nenhum parâmetro mecânico foi alterado. Testes adicionados para cada verbete.
 - O SRD 3.5 foi usado apenas como apoio de comparação quando havia equivalência direta; em caso de terminologia ou valores específicos, prevalece o Livro do Jogador brasileiro.
+
+ 
+## Correções adicionais de CI — verificações de glossário e ícones (16/11/2026)
+- A execução de testes revelou seis falhas em quatro pontos:
+  1. O teste de catálogo esperava a grafia de distância sem espaços em `Animar Corda`; alinhado à representação efetiva do catálogo (`30 m + 3 m/nível`), sem mudança mecânica.
+  2. O teste de `Ampliar Animais` procurava a regra de não acumulação em notas táticas, mas a referência corretamente a registra em interações; corrigido o campo verificado.
+  3. Os testes de `Aura Mágica de Nystul` e `Área Escorregadia` usavam capitalização diferente da redação armazenada; corrigidas as verificações para o texto efetivo.
+  4. O mapa de ícones ainda usava o nome antigo `Animar Cordas`; corrigido para o nome brasileiro do catálogo `Animar Corda`.
+  5. O teste de fallback agora reconhece `Animar Corda` e `Toque Enferrujante` como magias sem ícone específico, preservando o fallback por escola.
+- Nenhuma asserção foi removida e nenhuma regra de jogo foi enfraquecida. Aguardando nova CI para validar os ajustes.
