@@ -60,7 +60,7 @@ class SpellGlossarySearchTest {
         val darkvision = SpellGlossarySearch.search("Visão no Escuro").first()
         assertTrue(darkvision.reference?.sourcePage == 252)
         assertTrue(darkvision.reference?.explanation?.contains("18 m") == true)
-        assertTrue(darkvision.reference?.interactions?.contains("escuridão mágica") == true)
+        assertTrue(darkvision.reference?.tacticalNotes?.contains("escuridão mágica") == true)
 
         val trueSeeing = SpellGlossarySearch.search("Visão da Verdade").first()
         assertTrue(trueSeeing.reference?.sourcePage == 253)
