@@ -36,7 +36,7 @@ class PresetSpellCatalogTest {
         assertEquals(3, vampiricTouch.level)
         assertEquals(setOf("Feiticeiro", "Mago"), vampiricTouch.classes.toSet())
         assertEquals("Nenhum", vampiricTouch.savingThrow)
-        assertTrue(vampiricTouch.description.contains("máximo 10d6"))
+        assertTrue(vampiricTouch.description.contains("máximo de 10d6"))
         assertTrue(vampiricTouch.description.contains("pontos de vida temporários"))
     }
 
