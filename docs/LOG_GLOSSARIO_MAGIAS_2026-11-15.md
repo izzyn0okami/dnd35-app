@@ -212,3 +212,9 @@ Data: 2026-11-15
   4. O mapa de ícones ainda usava o nome antigo `Animar Cordas`; corrigido para o nome brasileiro do catálogo `Animar Corda`.
   5. O teste de fallback agora reconhece `Animar Corda` e `Toque Enferrujante` como magias sem ícone específico, preservando o fallback por escola.
 - Nenhuma asserção foi removida e nenhuma regra de jogo foi enfraquecida. Aguardando nova CI para validar os ajustes.
+
+## Correção final de CI — fallback de ícones (16/11/2026)
+- A execução mais recente confirmou que 667 de 668 testes passam; a única falha era uma expectativa desatualizada em `GameIconsTest`.
+- **Animar Corda** já possui associação específica ao ícone `rope-coil`, portanto não pertence mais ao conjunto de magias que usam fallback por escola.
+- **Toque Enferrujante** permanece sem associação específica e usa corretamente o ícone da escola. O teste foi atualizado para refletir esse estado real do catálogo, sem alterar regra, ícone ou comportamento do app.
+- A conferência automática comparou os 404 nomes do catálogo com as 403 associações específicas: a única magia sem associação é Toque Enferrujante.
