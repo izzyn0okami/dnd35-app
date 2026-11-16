@@ -129,3 +129,14 @@ Data: 2026-11-15
 - O SRD foi usado como referência rápida comparativa. A edição brasileira prevaleceu nos valores convertidos e na terminologia: em especial, Abrir/Fechar mantém o limite de **15 kg** do Livro do Jogador, em vez da conversão em libras exibida no SRD.
 - Correções verificadas no catálogo: Abençoar Água passa a registrar o descritor [Bem]; Acalmar Animais registra Encantamento (Compulsão) [Ação Mental]; Abrir/Fechar passa a registrar o alcance completo de 7,5 m + 1,5 m/2 níveis. Testes cobrem as nove referências e a progressão de alcance.
 - Nenhuma outra mecânica foi alterada.
+
+
+## Expansão alfabética — lote Am (páginas 170–171)
+- Referências detalhadas adicionadas para **Amaldiçoar Água**, **Amolecer Terra e Pedra**, **Ampliar Animais** e **Ampliar Plantas**.
+- **Amaldiçoar Água**, p. 170: 500 ml de água profana, energia negativa, dano a seres planares Bons, 2,5 kg de prata em pó (25 PO), Vontade anula (objeto) e RM sim (objeto). O cabeçalho do verbete classifica como **Necromancia [Mal]**, enquanto o corpo diz “esta transmutação”. A classificação do catálogo segue o cabeçalho e a divergência textual é explicitada no glossário, sem conciliação silenciosa.
+- **Amolecer Terra e Pedra**, p. 170: quadrado de 3 m/nível, profundidade de 30 a 120 cm; lama pode prender por 1d2 rodadas com Reflexos; terra solta reduz deslocamento; argila facilita escavação. Não afeta pedra trabalhada/mágica ou criaturas de terra/pedra. O cabeçalho informa nenhum teste de resistência, mas o texto descreve Reflexos específico para criaturas na lama. RM não.
+- **Ampliar Animais**, p. 170: um animal por dois níveis, até Imenso, tamanho dobrado e peso multiplicado por oito; bônus de tamanho, RD 10/mágica, +4 em testes de resistência, equipamento aumenta junto e efeitos de aumento de tamanho não se acumulam. A magia não comanda animais.
+- **Ampliar Plantas**, p. 171: efeitos Crescimento e Enriquecer; alcance longo de 120 m + 12 m/nível para crescimento, áreas opcionais de 30 m de raio/45 m hemisfério/60 m quarto de círculo; Enriquecer afeta plantas em até 750 km segundo o texto impresso e aumenta produtividade em um terço no ano seguinte. Dissipa/contramágica Enfraquecer Plantas e não afeta criaturas do tipo planta.
+- Comparação rápida com SRD: confirma os efeitos centrais de Amolecer Terra e Pedra e Ampliar Plantas; valores imperiais do SRD não substituem as medidas métricas da edição brasileira. Referências consultadas: SRD 3.5, Soften Earth and Stone e Plant Growth.
+- Correções de qualidade de testes: duas asserções anteriores verificavam o campo errado ou uma expressão literal divergente; corrigidas para conferir o campo e o texto efetivamente registrados. Não houve redução de cobertura.
+- Correção mecânica no catálogo: Amaldiçoar Água passa de Transmutação para Necromancia [Mal], conforme o cabeçalho do Livro do Jogador; a divergência com a expressão “esta transmutação” fica documentada.
