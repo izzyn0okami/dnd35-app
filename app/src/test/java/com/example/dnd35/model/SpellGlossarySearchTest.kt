@@ -203,7 +203,7 @@ class SpellGlossarySearchTest {
         val animalGrowth = SpellGlossarySearch.search("Ampliar Animais").first()
         assertEquals(170, animalGrowth.reference?.sourcePage)
         assertTrue(animalGrowth.reference?.tacticalNotes?.contains("10/mágica") == true)
-        assertTrue(animalGrowth.reference?.tacticalNotes?.contains("não se acumulam") == true)
+        assertTrue(animalGrowth.reference?.interactions?.contains("não se acumulam") == true)
 
         val plantGrowth = SpellGlossarySearch.search("Ampliar Plantas").first()
         assertEquals(171, plantGrowth.reference?.sourcePage)
@@ -310,7 +310,7 @@ class SpellGlossarySearchTest {
         val magicAura = SpellGlossarySearch.search("Aura Mágica de Nystul").first()
         assertEquals(176, magicAura.reference?.sourcePage)
         assertTrue(magicAura.reference?.explanation?.contains("aura mágica") == true)
-        assertTrue(magicAura.reference?.interactions?.contains("não admite Resistência à Magia") == true)
+        assertTrue(magicAura.reference?.interactions?.contains("Não admite Resistência à Magia") == true)
     }
 
 
@@ -334,7 +334,7 @@ class SpellGlossarySearchTest {
         val grease = SpellGlossarySearch.search("Área Escorregadia").first()
         assertEquals(173, grease.reference?.sourcePage)
         assertTrue(grease.reference?.tacticalNotes?.contains("Equilíbrio CD 10") == true)
-        assertTrue(grease.reference?.interactions?.contains("não admite Resistência à Magia") == true)
+        assertTrue(grease.reference?.interactions?.contains("Não admite Resistência à Magia") == true)
     }
 
 }
