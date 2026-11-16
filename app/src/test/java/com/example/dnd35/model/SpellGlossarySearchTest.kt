@@ -262,4 +262,35 @@ class SpellGlossarySearchTest {
         assertTrue(soulBind.reference?.interactions?.contains("dependem da versão") == true)
     }
 
+
+    @Test
+    fun auditsAlphabeticalSpellBatchArAgainstBrazilianPlayerHandbook() {
+        val spiritualWeapon = SpellGlossarySearch.search("Arma Espiritual").first()
+        assertEquals(174, spiritualWeapon.reference?.sourcePage)
+        assertTrue(spiritualWeapon.reference?.explanation?.contains("1d8") == true)
+        assertTrue(spiritualWeapon.reference?.tacticalNotes?.contains("ação padrão") == true)
+        assertTrue(spiritualWeapon.reference?.interactions?.contains("criaturas incorpóreas") == true)
+
+        val magicWeapon = SpellGlossarySearch.search("Arma Mágica").first()
+        assertEquals(174, magicWeapon.reference?.sourcePage)
+        assertTrue(magicWeapon.reference?.explanation?.contains("+1") == true)
+        assertTrue(magicWeapon.reference?.interactions?.contains("Vontade anula") == true)
+
+        val greaterMagicWeapon = SpellGlossarySearch.search("Arma Mágica Maior").first()
+        assertEquals(174, greaterMagicWeapon.reference?.sourcePage)
+        assertTrue(greaterMagicWeapon.reference?.explanation?.contains("a cada quatro níveis") == true)
+        assertTrue(greaterMagicWeapon.reference?.tacticalNotes?.contains("cinquenta projéteis") == true)
+
+        val snare = SpellGlossarySearch.search("Armadilha").first()
+        assertEquals(175, snare.reference?.sourcePage)
+        assertTrue(snare.reference?.explanation?.contains("60 cm") == true)
+        assertTrue(snare.reference?.tacticalNotes?.contains("Arte da Fuga CD 23") == true)
+        assertTrue(snare.reference?.interactions?.contains("não admite Resistência à Magia") == true)
+
+        val mageArmor = SpellGlossarySearch.search("Armadura Arcana").first()
+        assertEquals(175, mageArmor.reference?.sourcePage)
+        assertTrue(mageArmor.reference?.explanation?.contains("+4") == true)
+        assertTrue(mageArmor.reference?.interactions?.contains("não admite Resistência à Magia") == true)
+    }
+
 }
