@@ -7,5 +7,14 @@
     "sourcePage": 220,
     "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
     "status": "Auditado — referência inicial"
+  },
+  {
+    "name": "Escudo Arcano",
+    "explanation": "Cria um disco móvel e invisível de energia, do tamanho de um escudo de corpo, que flutua diante do conjurador. Ele bloqueia ataques de Mísseis Mágicos dirigidos ao conjurador e concede +4 de bônus de escudo na Classe de Armadura.",
+    "tacticalNotes": "O bônus de escudo também se aplica contra ataques de toque incorpóreos quando forem provenientes de efeitos de energia. A magia dura 1 minuto por nível e pode ser dissipada.",
+    "interactions": "Não impõe penalidade de armadura nem chance de falha de magia arcana. Diferentemente de um escudo de corpo comum, não pode ser usado para fornecer cobertura.",
+    "sourcePage": 200,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — referência inicial"
   }
 ]
