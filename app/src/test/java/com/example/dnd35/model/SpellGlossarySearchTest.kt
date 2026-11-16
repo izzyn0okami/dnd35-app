@@ -19,5 +19,9 @@ class SpellGlossarySearchTest {
         assertFalse(result.spell.description.isBlank())
         assertTrue(result.reference?.sourcePage == 220)
         assertTrue(result.reference?.explanation?.contains("projéteis") == true)
+
+        val shield = SpellGlossarySearch.search("Escudo Arcano").first()
+        assertTrue(shield.reference?.sourcePage == 200)
+        assertTrue(shield.reference?.interactions?.contains("cobertura") == true)
     }
 }
