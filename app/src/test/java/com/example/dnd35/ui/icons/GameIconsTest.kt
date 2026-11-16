@@ -117,7 +117,7 @@ class GameIconsTest {
 
     @Test
     fun spellsWithoutUnambiguousExistingSymbolsKeepSchoolFallback() {
-        val fallbackOnly = setOf("Toque Enferrujante")
+        val fallbackOnly = setOf("Animar Corda", "Toque Enferrujante")
         val catalogFallbacks = Dnd35Rules.PRESET_SPELLS
             .filter { spellIconKey(it.name) == null }
             .map { it.name }
