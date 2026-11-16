@@ -25,5 +25,167 @@
     "sourcePage": 217,
     "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
     "status": "Auditado — referência inicial"
+  },
+  {
+    "name": "Toque Chocante",
+    "explanation": "A magia descarrega eletricidade por meio de um ataque de toque corpo a corpo bem-sucedido. O alvo sofre 1d6 pontos de dano elétrico por nível de conjurador, até o máximo de 5d6.",
+    "tacticalNotes": "O ataque recebe +3 de bônus na jogada de ataque se o oponente estiver usando armadura de metal, for feito de metal ou estiver carregando uma quantidade significativa de metal.",
+    "interactions": "Alcance Toque; duração instantânea; não permite teste de resistência. A Resistência à Magia se aplica. A magia exige uma jogada de ataque de toque corpo a corpo, portanto pode errar e pode obter sucesso decisivo conforme as regras de magias que exigem jogada de ataque.",
+    "sourcePage": 248,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — referência inicial"
+  },
+  {
+    "name": "Toque da Fadiga",
+    "explanation": "O conjurador canaliza energia negativa por meio do toque. Após um ataque de toque corpo a corpo bem-sucedido, o alvo fica fatigado pela duração da magia.",
+    "tacticalNotes": "A duração é de 1 rodada por nível de conjurador. Uma criatura que já esteja fatigada não sofre efeito adicional.",
+    "interactions": "Fortitude anula; Resistência à Magia se aplica. Diferentemente da fadiga normal, o efeito termina quando a duração da magia acaba. O componente material é uma gota de suor.",
+    "sourcePage": 249,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — referência inicial"
+  },
+  {
+    "name": "Tranca Dimensional",
+    "explanation": "Cria uma barreira esmeralda que bloqueia completamente o movimento dimensional em uma emanação de 6 m de raio centrada no conjurador. A área impede viagens dimensionais para dentro ou para fora enquanto a magia estiver ativa.",
+    "tacticalNotes": "Bloqueia efeitos como projeção astral, piscar, porta dimensional, passeio etéreo, forma etérea, portal, labirinto, viagem planar, andar nas sombras e teletransporte, além de habilidades mágicas ou psíquicas similares.",
+    "interactions": "Não permite teste de resistência e não admite Resistência à Magia. Não prejudica o movimento de criaturas que já estejam em forma astral ou etérea; não bloqueia percepção nem ataques extradimensionais e não impede que criaturas invocadas desapareçam quando a invocação termina. Duração de 1 dia por nível.",
+    "sourcePage": 250,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — referência inicial"
+  },
+  {
+    "name": "Transformação Momentânea",
+    "explanation": "O conjurador altera a própria aparência, incluindo vestes, armas, armaduras e equipamento. Pode mudar altura ou largura em até 30 cm, mas não pode mudar o tipo corporal nem obter as habilidades da forma imitada.",
+    "tacticalNotes": "A magia pode adicionar ou remover detalhes pequenos ou criar a aparência de outra pessoa. Concede +10 de bônus em testes de Disfarces.",
+    "interactions": "A alteração não muda a percepção tátil nem a percepção sonora do conjurador e não transforma seu equipamento. Criaturas podem realizar um teste de Vontade para reconhecer a ilusão ao interagir com o alvo.",
+    "sourcePage": 250,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — referência inicial"
+  },
+  {
+    "name": "Voo",
+    "explanation": "O alvo pode voar com deslocamento de 18 m. Se estiver usando armadura média ou pesada, ou carregando carga média ou pesada, o deslocamento é reduzido para 12 m. A mobilidade é boa; pode subir com metade do deslocamento e descer com o dobro.",
+    "tacticalNotes": "Voar exige concentração semelhante à necessária para andar, permitindo atacar e conjurar normalmente. O alvo pode realizar investida, mas não correr nem carregar mais que sua carga máxima, além de qualquer armadura.",
+    "interactions": "Se a duração terminar enquanto o alvo ainda estiver no ar, a magia se dissipa lentamente: ele desce 18 m por rodada durante 1d6 rodadas e pousa em segurança se alcançar o chão nesse período; caso contrário, sofre dano de queda. Dissipar magia também encerra a duração e provoca essa descida; campo de antimagia não provoca esse efeito.",
+    "sourcePage": 253,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — referência inicial"
+  },
+  {
+    "name": "Zona da Verdade",
+    "explanation": "Cria uma emanação de 6 m de raio na qual as criaturas não podem mentir deliberadamente ou intencionalmente.",
+    "tacticalNotes": "Cada criatura afetada pode realizar um teste de resistência quando a magia é conjurada ou quando entra na área pela primeira vez. As criaturas afetadas sabem que estão sob o efeito e podem evitar responder ou recorrer a evasivas.",
+    "interactions": "Vontade anula; Resistência à Magia se aplica. Criaturas que deixam a área podem falar livremente. Duração de 1 minuto por nível.",
+    "sourcePage": 253,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — referência inicial"
+  },
+  {
+    "name": "Visão no Escuro",
+    "explanation": "O alvo adquire a habilidade de enxergar a até 18 m, inclusive em completa escuridão. A visão é em preto e branco; fora esse aspecto, é idêntica à visão normal.",
+    "tacticalNotes": "A magia não permite enxergar sob escuridão mágica. Pode se tornar permanente por meio da magia permanência.",
+    "interactions": "Alcance toque; alvo criatura tocada; duração de 1 hora por nível. Vontade anula (inofensiva); Resistência à Magia se aplica (inofensiva). Componente material: um pedaço de cenoura seca ou uma ágata.",
+    "sourcePage": 252,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — referência inicial"
+  },
+  {
+    "name": "Visão da Verdade",
+    "explanation": "Concede ao alvo a habilidade de enxergar a forma verdadeira das coisas a até 36 m: atravessa escuridão normal e mágica, percebe portas secretas, localiza criaturas sob nublar ou deslocamento, revela objetos e criaturas invisíveis, atravessa ilusões e revela formas verdadeiras de criaturas metamorfoseadas, transformadas ou transmutadas. Também permite focalizar a visão no Plano Etéreo.",
+    "tacticalNotes": "Alcance toque; duração de 1 minuto por nível. Vontade anula (inofensiva); Resistência à Magia se aplica (inofensiva).",
+    "interactions": "Não atravessa objetos sólidos, não concede visão de raio X, não anula camuflagem como a causada por névoa e não revela disfarces comuns, criaturas escondidas ou portas secretas ocultas por meios mundanos. Não permite enxergar espaços extradimensionais nem pode ser aprimorada por outras magias ou usada através de bola de cristal ou em conjunto com clarividência/clariaudiência.",
+    "sourcePage": 253,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — referência inicial"
+  },
+  {
+    "name": "Ventriloquismo",
+    "explanation": "Faz a voz do conjurador, ou qualquer som emitido vocalmente, parecer vir de outro lugar, como outra criatura, uma estátua ou o outro lado de uma porta. O som pode ser reconhecido como ilusório, embora continue audível.",
+    "tacticalNotes": "Alcance curto (7,5 m + 1,5 m a cada 2 níveis); efeito de som inteligível, geralmente fala; duração de 1 minuto por nível. O conjurador pode falar em qualquer idioma que conheça.",
+    "interactions": "Vontade desacredita se houver interação; Resistência à Magia não se aplica. Foco: um pergaminho enrolado formando um pequeno cone.",
+    "sourcePage": 251,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — referência inicial"
+  },
+  {
+    "name": "Viagem Planar",
+    "explanation": "Transporta o conjurador e outras criaturas voluntárias para outro plano de existência ou dimensão alternativa. O destino pretendido é impreciso: a chegada pode ocorrer entre 7,5 km e 750 km do local desejado.",
+    "tacticalNotes": "Alcance toque; afeta a criatura tocada ou até oito criaturas voluntárias que estejam de mãos dadas. A viagem é instantânea e a magia termina após o transporte.",
+    "interactions": "Vontade anula; Resistência à Magia se aplica. A magia não oferece retorno automático: as criaturas precisam encontrar outro meio para voltar. Foco: pequeno bastão de metal em forma de forquilha; o tipo e o tamanho determinam o plano ou dimensão de destino.",
+    "sourcePage": 251,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — referência inicial"
+  },
+  {
+    "name": "Vidência Maior",
+    "explanation": "Funciona como vidência, com duração de 1 hora por nível. Além das funções da vidência, permite conjurar através do sensor as magias detectar o caos, detectar o mal, detectar o bem, detectar a ordem, detectar magia, mensagem, ler magias ou idiomas.",
+    "tacticalNotes": "A descrição remete às regras do sensor mágico de vidência; o alvo pode realizar teste de Vontade para impedir a tentativa.",
+    "interactions": "A magia mantém a natureza de vidência e suas regras de resistência; a duração indicada para esta versão é de 1 hora por nível.",
+    "sourcePage": 252,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — referência inicial"
+  },
+  {
+    "name": "Visão Arcana Maior",
+    "explanation": "Funciona como visão arcana, mas o conjurador sabe automaticamente quais magias ou efeitos mágicos estão ativos sob qualquer indivíduo ou objeto que veja.",
+    "tacticalNotes": "A magia não permite identificar itens mágicos.",
+    "interactions": "Diferentemente de visão arcana, não pode se tornar permanente por meio de permanência.",
+    "sourcePage": 252,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — referência inicial"
+  },
+  {
+    "name": "Visão da Morte",
+    "explanation": "Permite determinar a condição das criaturas dentro de uma emanação em cone de 9 m: morta, enfraquecida (viva e ferida, com 3 pontos de vida ou menos), lutando contra a morte (viva e com 4 pontos de vida ou mais), morta-viva ou nenhuma dessas condições, como um construto.",
+    "tacticalNotes": "A duração é de 10 minutos por nível. A magia revela a condição das criaturas instantaneamente.",
+    "interactions": "Não permite teste de resistência nem admite Resistência à Magia. Anula qualquer magia ou habilidade que permita à criatura fingir estar morta.",
+    "sourcePage": 252,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — referência inicial"
+  },
+  {
+    "name": "Vigor do Urso",
+    "explanation": "Concede ao alvo +4 de bônus de melhoria na Constituição, aplicando os benefícios normais desse aumento aos pontos de vida, testes de Fortitude, testes de Constituição e demais usos do modificador.",
+    "tacticalNotes": "Duração de 1 minuto por nível; alcance toque; alvo criatura tocada. Vontade anula (inofensiva) e Resistência à Magia se aplica (inofensiva).",
+    "interactions": "Os pontos de vida adicionais obtidos pelo aumento temporário de Constituição não são pontos de vida temporários e não são perdidos primeiro. Eles desaparecem quando a Constituição retorna ao valor normal.",
+    "sourcePage": 252,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — referência inicial"
+  },
+  {
+    "name": "Virtude",
+    "explanation": "Concede ao alvo 1 ponto de vida temporário.",
+    "tacticalNotes": "Duração de 1 minuto; alcance toque; alvo criatura tocada.",
+    "interactions": "Fortitude anula (inofensiva); Resistência à Magia se aplica (inofensiva).",
+    "sourcePage": 252,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — referência inicial"
+  },
+  {
+    "name": "Visão Falsa",
+    "explanation": "Cria uma emanação de 12 m de raio que faz qualquer magia de adivinhação (vidência) usada para observar algo dentro da área receber uma visão falsa, semelhante à imagem maior, definida pelo conjurador.",
+    "tacticalNotes": "Duração de 1 hora por nível. O conjurador pode se concentrar para mudar a imagem; enquanto estiver se concentrando, a imagem permanece estática.",
+    "interactions": "Não permite teste de resistência nem admite Resistência à Magia. Componente material: pó de jade no valor mínimo de 250 PO, lançado ao ar durante a conjuração.",
+    "sourcePage": 252,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — referência inicial"
+  },
+  {
+    "name": "Velocidade (Haste)",
+    "explanation": "A criatura transmutada se move e age mais rapidamente. Ao realizar uma ação de ataque total, recebe um ataque adicional com qualquer arma empunhada, usando seu bônus base de ataque total e os modificadores apropriados.",
+    "tacticalNotes": "Concede +1 nas jogadas de ataque, +1 de bônus de esquiva na CA e +1 nos testes de resistência de Reflexos. Todos os deslocamentos aumentam em 9 m, até o dobro do deslocamento normal; esse aumento também afeta a distância de salto.",
+    "interactions": "O ataque adicional não concede outra ação e não permite conjurar uma segunda magia na rodada. Não acumula com efeitos similares nem com armas da velocidade. O bônus de esquiva é perdido nas mesmas condições que fazem perder o bônus de Destreza na CA. Múltiplos efeitos de velocidade não se acumulam. Pode ser usada como contramágica e dissipa lentidão. Componente material: um corte de raiz de alcaçuz.",
+    "sourcePage": 250,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — referência inicial"
+  },
+  {
+    "name": "Visão",
+    "explanation": "Funciona como lendas e histórias, mas mais rapidamente, embora canse o conjurador. O conjurador faz uma pergunta sobre uma pessoa, lugar ou objeto e recebe uma visão caso o alvo esteja próximo ou ele esteja no local investigado.",
+    "tacticalNotes": "A execução exige um teste de 1d20 + 1 por nível de conjurador (máximo +25) contra CD 20 quando o alvo está próximo ou o conjurador está no local. Com informações detalhadas, a CD é 25 e a visão é incompleta; com rumores, a CD é 30 e a informação é vaga.",
+    "interactions": "Custo de 100 XP. A magia depende de uma pergunta sobre pessoa, lugar ou objeto e das condições de proximidade/conhecimento descritas no verbete.",
+    "sourcePage": 252,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — referência inicial"
   }
 ]
