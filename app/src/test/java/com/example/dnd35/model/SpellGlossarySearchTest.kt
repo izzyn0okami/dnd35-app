@@ -46,5 +46,15 @@ class SpellGlossarySearchTest {
         val disguise = SpellGlossarySearch.search("Transformação Momentânea").first()
         assertTrue(disguise.reference?.sourcePage == 250)
         assertTrue(disguise.reference?.tacticalNotes?.contains("+10") == true)
+
+        val flight = SpellGlossarySearch.search("Voo").first()
+        assertTrue(flight.reference?.sourcePage == 253)
+        assertTrue(flight.reference?.explanation?.contains("18 m") == true)
+        assertTrue(flight.reference?.interactions?.contains("1d6 rodadas") == true)
+
+        val truth = SpellGlossarySearch.search("Zona da Verdade").first()
+        assertTrue(truth.reference?.sourcePage == 253)
+        assertTrue(truth.reference?.explanation?.contains("6 m") == true)
+        assertTrue(truth.reference?.interactions?.contains("Vontade anula") == true)
     }
 }
