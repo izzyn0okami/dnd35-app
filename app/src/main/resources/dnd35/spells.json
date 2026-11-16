@@ -745,7 +745,7 @@
     ],
     "castTime": "1 ação padrão",
     "components": "V, G, F",
-    "range": "Curto (7,5m)",
+    "range": "Curto (7,5 m + 1,5 m/2 níveis)",
     "duration": "Instantânea",
     "savingThrow": "Vontade anula (objeto)",
     "spellResistance": true,
@@ -2043,7 +2043,7 @@
   {
     "name": "Abençoar Água",
     "level": 1,
-    "school": "Transmutação",
+    "school": "Transmutação [Bem]",
     "classes": [
       "Clérigo",
       "Paladino"
@@ -2212,7 +2212,7 @@
   {
     "name": "Amaldiçoar Água",
     "level": 1,
-    "school": "Transmutação",
+    "school": "Necromancia [Mal]",
     "classes": [
       "Clérigo"
     ],
@@ -2463,7 +2463,7 @@
   {
     "name": "Acalmar Animais",
     "level": 1,
-    "school": "Encantamento",
+    "school": "Encantamento (Compulsão) [Ação Mental]",
     "classes": [
       "Druida",
       "Ranger"
@@ -3278,7 +3278,7 @@
     "domainLevels": {}
   },
   {
-    "name": "Animar Cordas",
+    "name": "Animar Corda",
     "level": 1,
     "school": "Transmutação",
     "classes": [
@@ -3288,7 +3288,7 @@
     ],
     "castTime": "1 ação padrão",
     "components": "V, G",
-    "range": "Médio (30m + 3m/nível)",
+    "range": "Médio (30 m + 3 m/nível)",
     "duration": "1 rodada/nível",
     "savingThrow": "Nenhum",
     "spellResistance": false,
@@ -3546,7 +3546,7 @@
     "domainLevels": {}
   },
   {
-    "name": "Toque Gélido",
+    "name": "Toque Macabro",
     "level": 1,
     "school": "Necromancia",
     "classes": [
@@ -3557,9 +3557,9 @@
     "components": "V, G",
     "range": "Toque",
     "duration": "Instantânea",
-    "savingThrow": "Fortitude parcial",
+    "savingThrow": "Fortitude parcial ou Vontade anula (veja texto)",
     "spellResistance": true,
-    "description": "Um toque canaliza energia necrótica, causando dano e podendo enfraquecer temporariamente o alvo; mortos-vivos são afetados de modo diferente.",
+    "description": "Um toque da mão do conjurador, brilhando com energia azulada, retira a força vital de criaturas vivas. Cada ataque de toque causa 1d6 pontos de dano por energia negativa e pode causar 1 ponto de dano temporário de Força; um teste de Fortitude bem-sucedido anula apenas o dano de Força. O conjurador pode realizar um ataque de toque por nível. Mortos-vivos não sofrem dano nem redução de Força, mas devem obter sucesso em um teste de Vontade ou fugir em pânico durante 1d4+1 rodadas por nível de conjurador.",
     "classLevels": {
       "Mago": 1,
       "Feiticeiro": 1
@@ -6556,12 +6556,12 @@
       "Planta": 7
     },
     "castTime": "1 ação padrão",
-    "components": "V, G",
-    "range": "Longo (120 m + 12 m/nível)",
-    "duration": "Instantânea ou 1 rodada/nível (D)",
+    "components": "V",
+    "range": "Curto (7,5 m + 1,5 m/2 níveis)",
+    "duration": "1 rodada/nível ou 1 hora/nível; veja texto",
     "savingThrow": "Nenhum",
     "spellResistance": false,
-    "description": "Uma ou mais plantas comuns animam e passam a lutar ou agir sob o comando do conjurador, auxiliando-o no combate."
+    "description": "Anima plantas inanimadas para atacar alvos indicados como objetos animados do tamanho apropriado: uma planta Grande por três níveis de conjurador ou quantidade equivalente de plantas maiores. Como alternativa, entrelaça todas as plantas no alcance ao redor das criaturas, duplicando Constrição. Não afeta criaturas do tipo planta nem material vegetal morto."
   },
   {
     "name": "Cajado Vivo",
@@ -9071,5 +9071,87 @@
     "domainLevels": {
       "Planta": 6
     }
+  },
+  {
+    "name": "Toque do Carniçal",
+    "level": 2,
+    "school": "Necromancia",
+    "classes": [
+      "Feiticeiro",
+      "Mago"
+    ],
+    "castTime": "1 ação padrão",
+    "components": "V, G, M",
+    "range": "Toque",
+    "duration": "1d6+2 rodadas",
+    "savingThrow": "Fortitude anula",
+    "spellResistance": true,
+    "description": "Imbuído de energia negativa, o conjurador pode paralisar um único humanoide vivo pela duração da magia com um ataque de toque corpo a corpo bem-sucedido. A pessoa paralisada exala cheiro de carniça em um raio de 3 m, causando náusea às demais criaturas na área; um teste de Fortitude anula a náusea. O conjurador não é afetado. Neutralizar venenos remove a náusea, e criaturas imunes a veneno não são afetadas.",
+    "classLevels": {
+      "Feiticeiro": 2,
+      "Mago": 2
+    },
+    "domainLevels": {}
+  },
+  {
+    "name": "Toque Vampírico",
+    "level": 3,
+    "school": "Necromancia",
+    "classes": [
+      "Feiticeiro",
+      "Mago"
+    ],
+    "castTime": "1 ação padrão",
+    "components": "V, G",
+    "range": "Toque",
+    "duration": "Instantânea/1 hora; veja texto",
+    "savingThrow": "Nenhum",
+    "spellResistance": true,
+    "description": "Um ataque de toque corpo a corpo bem-sucedido causa 1d6 pontos de dano para cada dois níveis de conjurador (máximo 10d6). O conjurador recebe pontos de vida temporários iguais ao dano causado, mas não pode acumular mais pontos de vida temporários que o total de pontos de vida atuais do alvo +10. Os pontos de vida temporários desaparecem após 1 hora.",
+    "classLevels": {
+      "Feiticeiro": 3,
+      "Mago": 3
+    },
+    "domainLevels": {}
+  },
+  {
+    "name": "Toque Enferrujante",
+    "level": 4,
+    "school": "Transmutação",
+    "classes": [
+      "Druida"
+    ],
+    "castTime": "1 ação padrão",
+    "components": "V, G, FD",
+    "range": "Toque",
+    "duration": "Veja texto",
+    "savingThrow": "Nenhum",
+    "spellResistance": false,
+    "description": "O toque enferruja, corrói e destrói efetivamente itens ou ligas de ferro não mágicos. Itens mágicos de metal são imunes. Contra uma armadura de metal, um ataque de toque corporal bem-sucedido reduz em 1d6 pontos o bônus de Classe de Armadura fornecido pela armadura. Contra uma arma de metal, um ataque de toque bem-sucedido a destrói. Contra criaturas de ferro, cada ataque de toque causa 3d6 pontos de dano +1 por nível de conjurador (máximo +15). Contra criaturas de ferro, a magia dura 1 rodada por nível e permite um ataque de toque por rodada.",
+    "classLevels": {
+      "Druida": 4
+    },
+    "domainLevels": {}
+  },
+  {
+    "name": "Toque da Idiotice",
+    "level": 2,
+    "school": "Encantamento (Compulsão) [de Ação Mental]",
+    "classes": [
+      "Feiticeiro",
+      "Mago"
+    ],
+    "castTime": "1 ação padrão",
+    "components": "V, G",
+    "range": "Toque",
+    "duration": "10 minutos/nível",
+    "savingThrow": "Nenhum",
+    "spellResistance": true,
+    "description": "Um ataque de toque corpo a corpo bem-sucedido reduz temporariamente a Inteligência, Sabedoria e Carisma do alvo em 1d6 pontos cada. Nenhum desses valores pode ser reduzido abaixo de 1. A redução pode impedir o alvo de conjurar algumas ou todas as magias caso seus valores de habilidade fiquem abaixo do mínimo necessário.",
+    "classLevels": {
+      "Feiticeiro": 2,
+      "Mago": 2
+    },
+    "domainLevels": {}
   }
 ]

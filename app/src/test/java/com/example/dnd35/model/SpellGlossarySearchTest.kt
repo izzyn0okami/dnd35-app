@@ -1,5 +1,6 @@
 package com.example.dnd35.model
 
+import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
@@ -38,6 +39,32 @@ class SpellGlossarySearchTest {
         assertTrue(fatigue.reference?.sourcePage == 249)
         assertTrue(fatigue.reference?.interactions?.contains("Fortitude anula") == true)
         assertTrue(fatigue.reference?.interactions?.contains("gota de suor") == true)
+
+        val ghoulTouch = SpellGlossarySearch.search("Toque do Carniçal").first()
+        assertTrue(ghoulTouch.reference?.sourcePage == 248)
+        assertTrue(ghoulTouch.reference?.explanation?.contains("paralisa") == true)
+        assertTrue(ghoulTouch.reference?.interactions?.contains("Neutralizar venenos") == true)
+
+        val macabreTouch = SpellGlossarySearch.search("Toque Macabro").first()
+        assertTrue(macabreTouch.reference?.sourcePage == 249)
+        assertTrue(macabreTouch.reference?.explanation?.contains("1d6") == true)
+        assertTrue(macabreTouch.reference?.tacticalNotes?.contains("dano temporário de Força") == true)
+        assertTrue(macabreTouch.reference?.interactions?.contains("Fortitude parcial ou Vontade anula") == true)
+
+        val vampiricTouch = SpellGlossarySearch.search("Toque Vampírico").first()
+        assertTrue(vampiricTouch.reference?.sourcePage == 249)
+        assertTrue(vampiricTouch.reference?.explanation?.contains("10d6") == true)
+        assertTrue(vampiricTouch.reference?.tacticalNotes?.contains("1 hora") == true)
+
+        val rustingGrasp = SpellGlossarySearch.search("Toque Enferrujante").first()
+        assertTrue(rustingGrasp.reference?.sourcePage == 249)
+        assertTrue(rustingGrasp.reference?.tacticalNotes?.contains("3d6") == true)
+        assertTrue(rustingGrasp.reference?.interactions?.contains("não admite Resistência à Magia") == true)
+
+        val touchOfIdiocy = SpellGlossarySearch.search("Toque da Idiotice").first()
+        assertTrue(touchOfIdiocy.reference?.sourcePage == 249)
+        assertTrue(touchOfIdiocy.reference?.explanation?.contains("1d6") == true)
+        assertTrue(touchOfIdiocy.reference?.tacticalNotes?.contains("abaixo de 1") == true)
 
         val dimensional = SpellGlossarySearch.search("Tranca Dimensional").first()
         assertTrue(dimensional.reference?.sourcePage == 250)
@@ -108,4 +135,206 @@ class SpellGlossarySearchTest {
         assertTrue(vision.reference?.tacticalNotes?.contains("CD é 30") == true)
         assertTrue(vision.reference?.interactions?.contains("100 XP") == true)
     }
+
+    @Test
+    fun auditsAlphabeticalSpellBatchAAgainstBrazilianPlayerHandbook() {
+        val holyWater = SpellGlossarySearch.search("Abençoar Água").first()
+        assertTrue(holyWater.reference?.sourcePage == 168)
+        assertTrue(holyWater.reference?.explanation?.contains("0,5 litro") == true)
+        assertTrue(holyWater.reference?.interactions?.contains("Vontade anula (objeto)") == true)
+        assertTrue(holyWater.spell.school.contains("[Bem]"))
+
+        val blessWeapon = SpellGlossarySearch.search("Abençoar Arma").first()
+        assertTrue(blessWeapon.reference?.sourcePage == 168)
+        assertTrue(blessWeapon.reference?.tacticalNotes?.contains("ameaças de acerto crítico") == true)
+        assertTrue(blessWeapon.reference?.interactions?.contains("não admite Resistência à Magia") == true)
+
+        val openClose = SpellGlossarySearch.search("Abrir/Fechar").first()
+        assertTrue(openClose.reference?.sourcePage == 168)
+        assertTrue(openClose.reference?.tacticalNotes?.contains("15 kg") == true)
+        assertTrue(openClose.spell.range.contains("1,5 m/2 níveis"))
+
+        val calmAnimals = SpellGlossarySearch.search("Acalmar Animais").first()
+        assertTrue(calmAnimals.reference?.sourcePage == 168)
+        assertTrue(calmAnimals.reference?.explanation?.contains("Inteligência 1 ou 2") == true)
+        assertTrue(calmAnimals.reference?.interactions?.contains("Qualquer ameaça") == true)
+        assertTrue(calmAnimals.spell.school.contains("(Compulsão) [Ação Mental]"))
+
+        val calmEmotions = SpellGlossarySearch.search("Acalmar Emoções").first()
+        assertTrue(calmEmotions.reference?.sourcePage == 168)
+        assertTrue(calmEmotions.reference?.tacticalNotes?.contains("efeitos de medo") == true)
+
+        val divination = SpellGlossarySearch.search("Adivinhação").first()
+        assertTrue(divination.reference?.sourcePage == 169)
+        assertTrue(divination.reference?.tacticalNotes?.contains("70%") == true)
+        assertTrue(divination.reference?.tacticalNotes?.contains("25 PO") == true)
+
+        val catsGrace = SpellGlossarySearch.search("Agilidade do Gato").first()
+        assertTrue(catsGrace.reference?.sourcePage == 169)
+        assertTrue(catsGrace.reference?.explanation?.contains("+4") == true)
+        assertTrue(catsGrace.reference?.interactions?.contains("Vontade anula (inofensiva)") == true)
+
+        val aid = SpellGlossarySearch.search("Ajuda").first()
+        assertTrue(aid.reference?.sourcePage == 169)
+        assertTrue(aid.reference?.explanation?.contains("1d8") == true)
+        assertTrue(aid.reference?.tacticalNotes?.contains("+10") == true)
+
+        val alarm = SpellGlossarySearch.search("Alarme").first()
+        assertTrue(alarm.reference?.sourcePage == 169)
+        assertTrue(alarm.reference?.explanation?.contains("6 m de raio") == true)
+        assertTrue(alarm.reference?.interactions?.contains("Permanência") == true)
+    }
+
+
+    @Test
+    fun auditsAlphabeticalSpellBatchAmAgainstBrazilianPlayerHandbook() {
+        val cursedWater = SpellGlossarySearch.search("Amaldiçoar Água").first()
+        assertEquals(170, cursedWater.reference?.sourcePage)
+        assertTrue(cursedWater.reference?.explanation?.contains("500 ml") == true)
+        assertTrue(cursedWater.reference?.tacticalNotes?.contains("2,5 kg") == true)
+        assertTrue(cursedWater.spell.school.contains("Necromancia [Mal]"))
+
+        val softenEarth = SpellGlossarySearch.search("Amolecer Terra e Pedra").first()
+        assertEquals(170, softenEarth.reference?.sourcePage)
+        assertTrue(softenEarth.reference?.tacticalNotes?.contains("1d2 rodadas") == true)
+        assertTrue(softenEarth.reference?.interactions?.contains("Reflexos") == true)
+        assertTrue(softenEarth.reference?.interactions?.contains("Resistência à Magia: Não") == true)
+
+        val animalGrowth = SpellGlossarySearch.search("Ampliar Animais").first()
+        assertEquals(170, animalGrowth.reference?.sourcePage)
+        assertTrue(animalGrowth.reference?.tacticalNotes?.contains("10/mágica") == true)
+        assertTrue(animalGrowth.reference?.interactions?.contains("não se acumulam") == true)
+
+        val plantGrowth = SpellGlossarySearch.search("Ampliar Plantas").first()
+        assertEquals(171, plantGrowth.reference?.sourcePage)
+        assertTrue(plantGrowth.reference?.explanation?.contains("750 km") == true)
+        assertTrue(plantGrowth.reference?.tacticalNotes?.contains("30 m de raio") == true)
+        assertTrue(plantGrowth.reference?.interactions?.contains("Enfraquecer Plantas") == true)
+    }
+
+
+    @Test
+    fun auditsAlphabeticalSpellBatchAnAgainstBrazilianPlayerHandbook() {
+        val airWalk = SpellGlossarySearch.search("Andar no Ar").first()
+        assertEquals(172, airWalk.reference?.sourcePage)
+        assertTrue(airWalk.reference?.explanation?.contains("45°") == true)
+        assertTrue(airWalk.reference?.tacticalNotes?.contains("18 m por rodada") == true)
+
+        val animateRope = SpellGlossarySearch.search("Animar Corda").first()
+        assertEquals(172, animateRope.reference?.sourcePage)
+        assertTrue(animateRope.reference?.tacticalNotes?.contains("Arte da Fuga CD 20") == true)
+        assertTrue(animateRope.reference?.interactions?.contains("não admite Resistência à Magia") == true)
+
+        val animateObjects = SpellGlossarySearch.search("Animar Objetos").first()
+        assertEquals(172, animateObjects.reference?.sourcePage)
+        assertTrue(animateObjects.reference?.tacticalNotes?.contains("Colossal a trinta e dois") == true)
+        assertTrue(animateObjects.reference?.interactions?.contains("Permanência") == true)
+
+        val animatePlants = SpellGlossarySearch.search("Animar Plantas").first()
+        assertEquals(172, animatePlants.reference?.sourcePage)
+        assertTrue(animatePlants.reference?.interactions?.contains("Entes") == true)
+        assertTrue(animatePlants.spell.range.contains("7,5 m + 1,5 m/2 níveis"))
+        assertTrue(animatePlants.spell.duration.contains("1 hora/nível"))
+    }
+
+
+    @Test
+    fun auditsAlphabeticalSpellBatchApAgainstBrazilianPlayerHandbook() {
+        val antipathy = SpellGlossarySearch.search("Antipatia").first()
+        assertEquals(173, antipathy.reference?.sourcePage)
+        assertTrue(antipathy.reference?.tacticalNotes?.contains("reduz sua Destreza em 4") == true)
+        assertTrue(antipathy.reference?.interactions?.contains("dissipa Simpatia") == true)
+
+        val erase = SpellGlossarySearch.search("Apagar").first()
+        assertEquals(173, erase.reference?.sourcePage)
+        assertTrue(erase.reference?.explanation?.contains("duas páginas") == true)
+        assertTrue(erase.reference?.tacticalNotes?.contains("CD 15") == true)
+        assertTrue(erase.reference?.interactions?.contains("não admite Resistência à Magia") == true)
+
+        val imprisonment = SpellGlossarySearch.search("Aprisionamento").first()
+        assertEquals(173, imprisonment.reference?.sourcePage)
+        assertTrue(imprisonment.reference?.tacticalNotes?.contains("–4") == true)
+        assertTrue(imprisonment.reference?.interactions?.contains("Libertação") == true)
+
+        val soulBind = SpellGlossarySearch.search("Aprisionar a Alma").first()
+        assertEquals(173, soulBind.reference?.sourcePage)
+        assertTrue(soulBind.reference?.tacticalNotes?.contains("1.000 PO") == true)
+        assertTrue(soulBind.reference?.interactions?.contains("dependem da versão") == true)
+    }
+
+
+    @Test
+    fun auditsAlphabeticalSpellBatchArAgainstBrazilianPlayerHandbook() {
+        val spiritualWeapon = SpellGlossarySearch.search("Arma Espiritual").first()
+        assertEquals(174, spiritualWeapon.reference?.sourcePage)
+        assertTrue(spiritualWeapon.reference?.explanation?.contains("1d8") == true)
+        assertTrue(spiritualWeapon.reference?.tacticalNotes?.contains("ação padrão") == true)
+        assertTrue(spiritualWeapon.reference?.interactions?.contains("criaturas incorpóreas") == true)
+
+        val magicWeapon = SpellGlossarySearch.search("Arma Mágica").first()
+        assertEquals(174, magicWeapon.reference?.sourcePage)
+        assertTrue(magicWeapon.reference?.explanation?.contains("+1") == true)
+        assertTrue(magicWeapon.reference?.interactions?.contains("Vontade anula") == true)
+
+        val greaterMagicWeapon = SpellGlossarySearch.search("Arma Mágica Maior").first()
+        assertEquals(174, greaterMagicWeapon.reference?.sourcePage)
+        assertTrue(greaterMagicWeapon.reference?.explanation?.contains("a cada quatro níveis") == true)
+        assertTrue(greaterMagicWeapon.reference?.tacticalNotes?.contains("cinquenta projéteis") == true)
+
+        val snare = SpellGlossarySearch.search("Armadilha").first()
+        assertEquals(175, snare.reference?.sourcePage)
+        assertTrue(snare.reference?.explanation?.contains("60 cm") == true)
+        assertTrue(snare.reference?.tacticalNotes?.contains("Arte da Fuga CD 23") == true)
+        assertTrue(snare.reference?.interactions?.contains("não admite Resistência à Magia") == true)
+
+        val mageArmor = SpellGlossarySearch.search("Armadura Arcana").first()
+        assertEquals(175, mageArmor.reference?.sourcePage)
+        assertTrue(mageArmor.reference?.explanation?.contains("+4") == true)
+        assertTrue(mageArmor.reference?.interactions?.contains("não admite Resistência à Magia") == true)
+    }
+
+
+    @Test
+    fun auditsAlphabeticalSpellBatchAumentarAndAuraAgainstBrazilianPlayerHandbook() {
+        val enlarge = SpellGlossarySearch.search("Aumentar Pessoa").first()
+        assertEquals(176, enlarge.reference?.sourcePage)
+        assertTrue(enlarge.reference?.explanation?.contains("multiplicando seu peso por oito") == true)
+        assertTrue(enlarge.reference?.tacticalNotes?.contains("não se acumulam") == true)
+        assertTrue(enlarge.reference?.interactions?.contains("Fortitude anula") == true)
+
+        val trueStrike = SpellGlossarySearch.search("Ataque Certeiro").first()
+        assertEquals(176, trueStrike.reference?.sourcePage)
+        assertTrue(trueStrike.reference?.explanation?.contains("+20") == true)
+        assertTrue(trueStrike.reference?.tacticalNotes?.contains("alvos camuflados") == true)
+
+        val magicAura = SpellGlossarySearch.search("Aura Mágica de Nystul").first()
+        assertEquals(176, magicAura.reference?.sourcePage)
+        assertTrue(magicAura.reference?.explanation?.contains("aura mágica") == true)
+        assertTrue(magicAura.reference?.interactions?.contains("Não admite Resistência à Magia") == true)
+    }
+
+
+    @Test
+    fun auditsAlphabeticalSpellBatchAuxilioAndAurasAgainstBrazilianPlayerHandbook() {
+        val divineFavor = SpellGlossarySearch.search("Auxílio Divino").first()
+        assertEquals(177, divineFavor.reference?.sourcePage)
+        assertTrue(divineFavor.reference?.explanation?.contains("+6") == true)
+        assertTrue(divineFavor.reference?.interactions?.contains("Duração de 1 minuto") == true)
+
+        val unholyAura = SpellGlossarySearch.search("Aura Profana").first()
+        assertEquals(177, unholyAura.reference?.sourcePage)
+        assertTrue(unholyAura.reference?.explanation?.contains("Resistência à Magia 25") == true)
+        assertTrue(unholyAura.reference?.tacticalNotes?.contains("1d6") == true)
+
+        val holyAura = SpellGlossarySearch.search("Aura Sagrada").first()
+        assertEquals(177, holyAura.reference?.sourcePage)
+        assertTrue(holyAura.reference?.explanation?.contains("Resistência à Magia 25") == true)
+        assertTrue(holyAura.reference?.tacticalNotes?.contains("fica cego") == true)
+
+        val grease = SpellGlossarySearch.search("Área Escorregadia").first()
+        assertEquals(173, grease.reference?.sourcePage)
+        assertTrue(grease.reference?.tacticalNotes?.contains("Equilíbrio CD 10") == true)
+        assertTrue(grease.reference?.interactions?.contains("Não admite Resistência à Magia") == true)
+    }
+
 }

@@ -187,5 +187,347 @@
     "sourcePage": 252,
     "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
     "status": "Auditado — referência inicial"
+  },
+  {
+    "name": "Toque Macabro",
+    "explanation": "A mão do conjurador brilha com energia azulada e retira a força vital de criaturas vivas. Cada ataque de toque corpo a corpo causa 1d6 pontos de dano por energia negativa; o conjurador pode realizar um ataque por nível.",
+    "tacticalNotes": "Cada toque também pode causar 1 ponto de dano temporário de Força. Um teste de Fortitude bem-sucedido anula somente o dano de Força. Contra mortos-vivos, a magia não causa dano nem reduz Força; em vez disso, exige um teste de Vontade ou o morto-vivo foge em pânico por 1d4+1 rodadas por nível de conjurador.",
+    "interactions": "Fortitude parcial ou Vontade anula (veja texto); Resistência à Magia se aplica. Alcance toque; duração instantânea. O dano de Força é temporário.",
+    "sourcePage": 249,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — catálogo corrigido"
+  },
+  {
+    "name": "Toque do Carniçal",
+    "explanation": "Um ataque de toque corpo a corpo bem-sucedido paralisa um único humanoide vivo por 1d6+2 rodadas.",
+    "tacticalNotes": "A criatura paralisada exala cheiro de carniça em um raio de 3 m, causando náusea às demais criaturas na área. O conjurador não é afetado.",
+    "interactions": "Fortitude anula a paralisia e também a náusea. Neutralizar venenos remove a náusea; criaturas imunes a veneno não são afetadas. Resistência à Magia se aplica. Componente material: pequeno pedaço de roupa usada por um carniçal ou punhado de terra do lar de um carniçal.",
+    "sourcePage": 248,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — catálogo corrigido"
+  },
+  {
+    "name": "Toque Vampírico",
+    "explanation": "Um ataque de toque corpo a corpo bem-sucedido causa 1d6 pontos de dano para cada dois níveis de conjurador, até o máximo de 10d6. O conjurador recebe pontos de vida temporários iguais ao dano causado.",
+    "tacticalNotes": "Os pontos de vida temporários não podem exceder o total de pontos de vida atuais do alvo +10, o suficiente para matá-lo. Os pontos de vida temporários desaparecem após 1 hora.",
+    "interactions": "Não permite teste de resistência. A Resistência à Magia se aplica. Alcance toque; duração instantânea para o dano, com pontos de vida temporários por até 1 hora.",
+    "sourcePage": 249,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — catálogo corrigido"
+  },
+  {
+    "name": "Toque Enferrujante",
+    "explanation": "O toque corrói e destrói itens ou ligas de ferro não mágicos. Itens mágicos de metal são imunes. Em combate, um ataque de toque pode corroer armaduras de metal, destruir armas de metal ou causar dano a criaturas de ferro.",
+    "tacticalNotes": "Contra uma armadura de metal, reduz 1d6 pontos do bônus de CA fornecido pela armadura, até o máximo desse bônus. Contra criaturas de ferro, causa 3d6 pontos de dano +1 por nível de conjurador (máximo +15) por ataque; contra elas, dura 1 rodada por nível e permite um ataque de toque por rodada.",
+    "interactions": "Não permite teste de resistência e não admite Resistência à Magia. Atacar a arma de um oponente provoca ataque de oportunidade. Itens mágicos de metal são imunes. Componente: foco divino.",
+    "sourcePage": 249,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — catálogo corrigido"
+  },
+  {
+    "name": "Toque da Idiotice",
+    "explanation": "Um ataque de toque corpo a corpo reduz temporariamente a Inteligência, Sabedoria e Carisma do alvo em 1d6 pontos cada.",
+    "tacticalNotes": "Nenhum dos três valores de habilidade pode ser reduzido abaixo de 1. A redução pode impedir o alvo de conjurar magias se um valor ficar abaixo do mínimo exigido.",
+    "interactions": "Duração de 10 minutos por nível. Não permite teste de resistência; a Resistência à Magia se aplica.",
+    "sourcePage": 249,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — catálogo corrigido"
+  },
+  {
+    "name": "Abençoar Água",
+    "explanation": "Imbui um frasco de 0,5 litro de água com energia positiva, transformando-a em água benta.",
+    "tacticalNotes": "O alvo é um frasco de água tocado. O tempo de execução é de 1 minuto. Componente material: 2,5 kg de pó de prata, no valor de 25 PO.",
+    "interactions": "Vontade anula (objeto) e a Resistência à Magia se aplica a objetos. A duração é instantânea.",
+    "sourcePage": 168,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — expansão do glossário"
+  },
+  {
+    "name": "Abençoar Arma",
+    "explanation": "A arma tocada é tratada como se tivesse +1 de bônus de melhoria para superar a Redução de Dano de criaturas malignas e atingir criaturas incorpóreas malignas, sem receber um bônus de melhoria real. A arma também é considerada sagrada.",
+    "tacticalNotes": "Dura 1 minuto por nível. Todas as ameaças de acerto crítico contra inimigos malignos são automaticamente confirmadas, exceto com armas que já tenham efeito mágico relacionado a acertos críticos, como afiada ou vorpal. Flechas e virotes podem ser transmutados individualmente; arcos e outras armas de disparo não transferem o benefício às munições.",
+    "interactions": "Não permite teste de resistência e não admite Resistência à Magia. O efeito sagrado se sobrepõe a qualquer outra tendência que a arma possua.",
+    "sourcePage": 168,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — expansão do glossário"
+  },
+  {
+    "name": "Abrir/Fechar",
+    "explanation": "Abre ou fecha, à escolha do conjurador, uma porta, baú, caixa, janela, bolsa, garrafa, barril ou outro recipiente que possa ser aberto ou fechado normalmente.",
+    "tacticalNotes": "Afeta um objeto de até 15 kg ou um portal. Se algo impedir a abertura ou o fechamento, como uma tranca, a magia fracassa. Foco: uma chave de bronze.",
+    "interactions": "Vontade anula (objeto) e a Resistência à Magia se aplica a objetos. A duração é instantânea. O alcance aumenta em 1,5 m para cada dois níveis de conjurador além do alcance básico de 7,5 m.",
+    "sourcePage": 168,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — expansão do glossário"
+  },
+  {
+    "name": "Acalmar Animais",
+    "explanation": "Acalma e torna dóceis animais, deixando-os inofensivos. Afeta apenas criaturas com Inteligência 1 ou 2; os alvos devem ser da mesma espécie e estar a até 9 m uns dos outros.",
+    "tacticalNotes": "Afeta um total de Dados de Vida igual a 2d4 + nível de conjurador. Animais atrozes e animais treinados para atacar ou guardar podem realizar teste de Vontade; animais não treinados não recebem esse teste. As criaturas afetadas permanecem onde estão, não atacam nem fogem, mas ainda podem se defender normalmente.",
+    "interactions": "Vontade anula, conforme as condições do texto, e a Resistência à Magia se aplica. Qualquer ameaça — como fogo, um predador faminto ou um ataque iminente — dissipa a magia.",
+    "sourcePage": 168,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — expansão do glossário"
+  },
+  {
+    "name": "Acalmar Emoções",
+    "explanation": "Acalma criaturas agitadas em uma dispersão de 6 m de raio. O conjurador não controla os alvos; eles não podem realizar ações violentas ou destrutivas, embora ainda possam se defender.",
+    "tacticalNotes": "A magia neutraliza sem dissipar bônus de moral, incluindo os concedidos por Benção, Boa Esperança e Fúria; também suprime efeitos de medo e remove a condição confuso. Uma ação agressiva ou dano que ameace a vida da criatura encerra o efeito sobre ela.",
+    "interactions": "Vontade anula e a Resistência à Magia se aplica. Exige concentração, até 1 rodada por nível, e pode ser encerrada voluntariamente. Os efeitos suprimidos voltam a funcionar quando a magia termina, se ainda tiverem duração restante.",
+    "sourcePage": 168,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — expansão do glossário"
+  },
+  {
+    "name": "Adivinhação",
+    "explanation": "Fornece ao conjurador uma resposta curta ou enigmática sobre um objetivo, evento ou atividade que ocorrerá dentro de no máximo uma semana.",
+    "tacticalNotes": "A chance de obter uma resposta correta é de 70% + 1% por nível de conjurador, até o máximo de 90%. Em caso de falha, o conjurador sabe que a adivinhação não produziu uma resposta. Componentes materiais: incenso e oferendas em sacrifício apropriadas à divindade, no valor total mínimo de 25 PO.",
+    "interactions": "A execução leva 10 minutos; alcance pessoal; duração instantânea. Não permite teste de resistência e não admite Resistência à Magia.",
+    "sourcePage": 169,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — expansão do glossário"
+  },
+  {
+    "name": "Agilidade do Gato",
+    "explanation": "A criatura tocada recebe +4 de bônus de aprimoramento na Destreza, com os benefícios normais para a Classe de Armadura, os testes de Reflexos e os demais usos do modificador de Destreza.",
+    "tacticalNotes": "Dura 1 minuto por nível. Componente material: um pouco de pelo de gato.",
+    "interactions": "Vontade anula (inofensiva) e a Resistência à Magia se aplica. O bônus é de aprimoramento, não se acumula com outros bônus do mesmo tipo.",
+    "sourcePage": 169,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — expansão do glossário"
+  },
+  {
+    "name": "Ajuda",
+    "explanation": "Concede à criatura viva tocada +1 de bônus de moral nas jogadas de ataque e nos testes de resistência contra efeitos de medo, além de 1d8 + nível de conjurador pontos de vida temporários.",
+    "tacticalNotes": "Os pontos de vida temporários adicionais por nível são limitados a +10. A duração é de 1 minuto por nível.",
+    "interactions": "Não permite teste de resistência. A Resistência à Magia se aplica, mas a magia é inofensiva. Os pontos de vida concedidos são temporários e não se acumulam com outros pontos de vida temporários.",
+    "sourcePage": 169,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — expansão do glossário"
+  },
+  {
+    "name": "Alarme",
+    "explanation": "Protege uma área com uma emanação de 6 m de raio. Quando uma criatura de tamanho Minúsculo ou maior entra na área ou a toca sem pronunciar a senha definida pelo conjurador, o alarme é acionado.",
+    "tacticalNotes": "Ao conjurar, o personagem escolhe um alarme mental ou audível. O mental alerta apenas o conjurador enquanto estiver a até 1,5 km e pode despertá-lo sem interromper sua concentração. O audível produz um som de sino que pode ser ouvido claramente a 18 m, com redução por portas e paredes; em condições silenciosas pode ser ouvido fracamente a até 54 m. O som dura 1 rodada. Criaturas etéreas ou astrais não acionam o alarme. Foco: um pequeno sino e um fio de prata muito fino.",
+    "interactions": "Não permite teste de resistência e não admite Resistência à Magia. Dura 2 horas por nível e pode ser dissipada. A magia Silêncio impede que o alarme audível seja ouvido, mas não afeta o alarme mental. Pode ser tornada permanente com Permanência.",
+    "sourcePage": 169,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — expansão do glossário"
+  },
+  {
+    "name": "Amaldiçoar Água",
+    "explanation": "Infunde energia negativa em um frasco de 500 ml de água, transformando-a em água profana. A água profana causa dano a seres planares Bons, da mesma forma que a água benta causa dano aos mortos-vivos.",
+    "tacticalNotes": "A conjuração leva 1 minuto e exige 2,5 kg de prata em pó, no valor de 25 PO. A magia é instantânea e afeta um frasco de água tocado.",
+    "interactions": "Vontade anula (objeto) e a Resistência à Magia se aplica a objetos. Há uma divergência interna no verbete brasileiro: o cabeçalho classifica a magia como Necromancia [Mal], mas a frase descritiva a chama de 'esta transmutação'. O glossário preserva o cabeçalho como classificação principal e registra a divergência, sem tentar resolvê-la por conta própria.",
+    "sourcePage": 170,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — expansão do glossário"
+  },
+  {
+    "name": "Amolecer Terra e Pedra",
+    "explanation": "Amolece terra ou pedra natural não trabalhada na área: terra molhada vira lama grossa, terra seca vira areia ou pó, e pedra vira argila macia. Afeta um quadrado de 3 m por nível, com profundidade de 30 cm a 1,2 m conforme a dureza e a elasticidade do terreno.",
+    "tacticalNotes": "Criaturas na lama devem obter sucesso em Reflexos ou ficam presas por 1d2 rodadas, incapazes de se mover, atacar ou conjurar magias. Com sucesso, atravessam a lama com metade do deslocamento e não podem Investir ou correr. Na terra solta, o deslocamento de todas as criaturas é reduzido à metade e não podem correr nem Investir. A argila não impede movimento, mas facilita cortar, moldar ou escavar. Pode provocar deslizamentos, desabamentos e dano estrutural.",
+    "interactions": "A magia não afeta pedras mágicas, encantadas, lapidadas ou trabalhadas, nem criaturas de terra ou pedra. O cabeçalho informa Teste de Resistência: Nenhum, mas o texto prevê um teste de Reflexos específico para criaturas na lama; Resistência à Magia: Não.",
+    "sourcePage": 170,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — expansão do glossário"
+  },
+  {
+    "name": "Ampliar Animais",
+    "explanation": "Aumenta até o dobro do tamanho e oito vezes o peso de até um animal Imenso ou menor por dois níveis de conjurador, desde que os alvos estejam a menos de 9 m entre si. O tamanho aumenta uma categoria: +8 de bônus de tamanho na Força, +4 na Constituição, –2 na Destreza e +2 na armadura natural.",
+    "tacticalNotes": "Também concede Redução de Dano 10/mágica e +4 de bônus de resistência nos testes de resistência. Se não houver espaço, o animal cresce apenas até onde for possível e pode tentar romper o obstáculo com um teste de Força usando o valor aumentado. O equipamento vestido ou carregado cresce junto; itens que se separem retornam ao tamanho normal. A magia não comanda nem influencia os animais.",
+    "interactions": "Fortitude anula e a Resistência à Magia se aplica. A duração é de 1 minuto por nível. Efeitos mágicos múltiplos que aumentam tamanho não se acumulam; não é possível ampliar novamente um animal que já esteja sob esta magia.",
+    "sourcePage": 170,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — expansão do glossário"
+  },
+  {
+    "name": "Ampliar Plantas",
+    "explanation": "Possui dois efeitos. Crescimento: torna a vegetação normal espessa e alta em alcance longo (120 m + 12 m/nível), formando bosque cerrado ou selva. Enriquecer: afeta plantas a até 750 km, aumentando em um terço seu potencial de produtividade durante o próximo ano.",
+    "tacticalNotes": "No efeito Crescimento, o deslocamento cai para 1,5 m, ou 3 m para criaturas Grandes ou maiores. A área precisa conter arbustos e árvores; o conjurador pode escolher uma circunferência de 30 m de raio, um hemisfério de 45 m de raio ou um quarto de circunferência com 60 m de raio, além de excluir locais específicos. O efeito Enriquecer é usado em comunidades rurais para melhorar a produtividade das plantações no ano seguinte.",
+    "interactions": "Não permite teste de resistência e não admite Resistência à Magia. Serve como contramágica e dissipa Enfraquecer Plantas. Não afeta criaturas do tipo planta. A duração é instantânea. Divergência de fonte: a edição brasileira impressa registra alcance de Enriquecer de 750 km, enquanto o SRD 3.5 registra meia milha (aproximadamente 800 m). O glossário conserva o valor impresso no Livro do Jogador e sinaliza a diferença; não se deve tratar esse alcance como confirmado sem decisão editorial.",
+    "sourcePage": 171,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — expansão do glossário"
+  },
+  {
+    "name": "Andar no Ar",
+    "explanation": "Permite que a criatura tocada (Imensa ou menor) caminhe pelo ar como se estivesse em terreno sólido. Pode subir ou descer em um ângulo máximo de 45°, usando metade do deslocamento normal.",
+    "tacticalNotes": "Ventos fortes, de 30 km/h ou mais, podem empurrar a criatura: ao fim de cada rodada, o vento a desloca 1,5 m para cada 7,5 km/h de velocidade do vento. Se a magia terminar enquanto a criatura estiver suspensa, ela desce suavemente a 18 m por rodada durante 1d6 rodadas; se alcançar o solo nesse período, aterrissa em segurança, caso contrário cai a distância restante e sofre 1d6 pontos de dano a cada 3 m. Pode ser conjurada sobre uma montaria especialmente treinada com Adestrar Animais.",
+    "interactions": "Não permite teste de resistência. A Resistência à Magia se aplica, mas a magia é inofensiva. Dura 10 minutos por nível. Um efeito de dissipar também provoca a descida gradual; um campo antimagia não concede essa descida segura.",
+    "sourcePage": 172,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — expansão do glossário"
+  },
+  {
+    "name": "Animar Corda",
+    "explanation": "Concede movimento a um objeto mundano semelhante a uma corda, incluindo cordões, fios, linhas e cabos. O comprimento máximo é 15 m + 1,5 m por nível para uma corda de 2,5 cm de diâmetro; a espessura altera esse limite conforme as regras do verbete.",
+    "tacticalNotes": "Pode receber comandos como enrolar, enrolar e dar nó, fazer laço ou laço e nó, e os comandos opostos. Um comando pode ser dado por rodada como ação de movimento. A corda só pode enredar uma criatura a menos de 30 cm, não se estende para alcançá-la; exige ataque de toque à distância e tem incremento de 3 m. Uma corda típica tem 2 PV, CA 10 e pode ser rompida com Força CD 23. Não causa dano, mas pode enredar/imobilizar; conjuradores enredados fazem Concentração CD 15 para conjurar, e a criatura escapa com Arte da Fuga CD 20. A magia concede +2 em testes de Usar Cordas com a corda animada.",
+    "interactions": "Não permite teste de resistência e não admite Resistência à Magia. A corda e seus nós não são mágicos. Não anima objetos carregados ou vestidos por uma criatura. Dura 1 rodada por nível.",
+    "sourcePage": 172,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — expansão do glossário"
+  },
+  {
+    "name": "Animar Objetos",
+    "explanation": "Concede mobilidade e algo semelhante à vida a objetos inanimados de qualquer material mundano. Cada objeto animado ataca imediatamente o alvo indicado pelo conjurador.",
+    "tacticalNotes": "Anima um objeto Pequeno ou menor por nível de conjurador, ou quantidade equivalente de objetos maiores: Médio equivale a dois Pequenos, Grande a quatro, Enorme a oito, Imenso a dezesseis e Colossal a trinta e dois. O conjurador pode mudar os alvos com uma ação de movimento. As estatísticas são as de objetos animados do tamanho correspondente, conforme o Livro dos Monstros.",
+    "interactions": "Não permite teste de resistência e não admite Resistência à Magia. Não pode animar objetos usados ou carregados por uma criatura. Pode se tornar permanente com Permanência. Dura 1 rodada por nível.",
+    "sourcePage": 172,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — expansão do glossário"
+  },
+  {
+    "name": "Animar Plantas",
+    "explanation": "Concede mobilidade e algo semelhante à vida a plantas inanimadas, que atacam imediatamente o alvo indicado como se fossem objetos animados de tamanho apropriado. Pode animar uma planta Grande por três níveis de conjurador ou quantidade equivalente de plantas maiores.",
+    "tacticalNotes": "Uma planta Enorme equivale a duas Grandes ou menores, uma Imensa a quatro e uma Colossal a oito. O conjurador pode mudar os alvos com uma ação de movimento. Use as estatísticas de objetos animados; plantas menores que Grandes normalmente não possuem dureza. Como alternativa, pode animar todas as plantas no alcance para que se entrelacem nas criaturas, duplicando o efeito da magia Constrição; esse uso dura 1 hora por nível.",
+    "interactions": "Não permite teste de resistência e não admite Resistência à Magia. Não afeta criaturas do tipo planta, como Entes, nem material vegetal morto, como roupas de algodão ou cordas de cânhamo. A duração é 1 rodada por nível ou 1 hora por nível, conforme a versão.",
+    "sourcePage": 172,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias, continuação na página 173",
+    "status": "Auditado — expansão do glossário"
+  },
+  {
+    "name": "Antipatia",
+    "explanation": "Faz um objeto ou local emanar vibrações que repelem um tipo específico de criatura ou criaturas inteligentes de uma tendência definida. Os alvos sentem uma compulsão desesperada para abandonar ou evitar a área ou o objeto e não retornar enquanto a magia durar.",
+    "tacticalNotes": "O tipo de criatura ou a tendência deve ser especificado com precisão. Uma criatura que obtenha sucesso no teste de Vontade pode permanecer na área ou tocar o item, mas sente desconforto que reduz sua Destreza em 4 pontos. A magia pode afetar um local de até um cubo de 3 m/nível ou um objeto. Componente material arcano: pedaço de alumínio mergulhado em vinagre.",
+    "interactions": "Vontade parcial e Resistência à Magia se aplica. Antipatia serve como contramágica e dissipa Simpatia. Dura 2 horas por nível e pode ser dissipada.",
+    "sourcePage": 173,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — expansão do glossário"
+  },
+  {
+    "name": "Apagar",
+    "explanation": "Remove escrita mágica ou mundana de um pergaminho ou de até duas páginas de papel, papiro ou superfícies similares.",
+    "tacticalNotes": "Apaga runas explosivas, símbolo de proteção, selo da serpente sépia e marca arcana, mas não remove escrita ilusória nem símbolo. Escrita comum é apagada imediatamente se o conjurador tocar o texto e ninguém mais estiver segurando o objeto; se estiver sendo segurado, há 90% de chance. Escrita mágica exige toque e teste de conjurador (1d20 + nível de conjurador) contra CD 15; resultado natural 1 ou 2 sempre falha. Falhar ao apagar runas explosivas, símbolo de proteção ou selo da serpente sépia ativa a magia acidentalmente.",
+    "interactions": "Não permite teste de resistência e não admite Resistência à Magia. A duração é instantânea. O alvo é um pergaminho ou até duas páginas/superfícies similares.",
+    "sourcePage": 173,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — expansão do glossário"
+  },
+  {
+    "name": "Aprisionamento",
+    "explanation": "Enterra a criatura tocada em um estado de animação suspensa, semelhante ao efeito de Estase Temporal, dentro de uma pequena esfera sob a superfície da terra. A criatura permanece presa até que Libertação seja conjurada no local do aprisionamento.",
+    "tacticalNotes": "Investigações mágicas com bola de cristal, Localizar Objeto ou adivinhações similares não revelam que a criatura está aprisionada; Discernir Localização revela. Desejo ou Milagre não libertam o alvo, mas indicam onde está enterrado. Se o conjurador souber o nome da vítima e alguns detalhes sobre sua vida, ela sofre –4 de penalidade no teste de resistência.",
+    "interactions": "Vontade anula e a Resistência à Magia se aplica. A duração é permanente. O efeito exige toque; Libertação deve ser conjurada no local onde ocorreu o aprisionamento.",
+    "sourcePage": 173,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — expansão do glossário"
+  },
+  {
+    "name": "Aprisionar a Alma",
+    "explanation": "Absorve a força vital e o corpo material de uma criatura para o interior de uma gema. A gema mantém a entidade aprisionada indefinidamente ou até ser quebrada, quando a força vital é liberada e permite a materialização do corpo.",
+    "tacticalNotes": "Há duas formas de ativação. Na versão de magia completa, a palavra de ativação é pronunciada como ação padrão; aplica-se Resistência à Magia e Vontade. Se o nome da criatura também for pronunciado, a Resistência à Magia é ignorada e a CD do teste aumenta em 2; se o alvo resistir por teste ou RM, a gema se quebra. Na versão Objeto Armadilha, o nome da criatura e a palavra de ativação são inscritos no objeto preparado; quando o alvo o toca, sua força vital é transferida sem teste de resistência ou RM. A gema deve valer pelo menos 1.000 PO por Dado de Vida da criatura.",
+    "interactions": "Os testes de resistência e a Resistência à Magia dependem da versão escolhida. A duração é permanente. Componentes materiais e foco variam conforme a versão; a versão Objeto Armadilha exige um objeto de ativação especial preparado.",
+    "sourcePage": 173,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — expansão do glossário"
+  },
+  {
+    "name": "Arma Espiritual",
+    "explanation": "Cria uma arma de energia que ataca à distância sob a direção do conjurador. Causa 1d8 pontos de dano de energia por golpe, mais 1 ponto a cada três níveis de conjurador, até +5 no 15º nível. Usa o bônus base de ataque do conjurador e o modificador de Sabedoria para atacar; pode realizar ataques múltiplos nas rodadas seguintes quando o bônus base permitir.",
+    "tacticalNotes": "A arma assume a forma da arma predileta da divindade ou de uma arma simbolicamente importante para o conjurador. Ataca na rodada da conjuração e novamente a cada rodada subsequente. Mudar o alvo exige ação padrão e, na rodada em que muda, a arma realiza apenas um ataque. Ataca sempre a partir da direção do personagem e não concede nem recebe bônus de flanquear.",
+    "interactions": "Não permite teste de resistência; Resistência à Magia se aplica. A arma é um efeito mágico de energia: atinge criaturas incorpóreas e criaturas com Redução de Dano. Não pode ser danificada por ataques físicos, mas pode ser afetada por dissipar magia, desintegrar, esfera da aniquilação e bastão de cancelamento. Se falhar no primeiro teste de conjurador contra a RM de um alvo, a magia é dissipada; se vencer, afeta esse alvo normalmente durante a duração. Duração de 1 rodada/nível.",
+    "sourcePage": 174,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — expansão do glossário"
+  },
+  {
+    "name": "Arma Mágica",
+    "explanation": "Concede à arma tocada +1 de bônus de melhoria nas jogadas de ataque e dano durante 1 minuto por nível. O bônus de melhoria não se acumula com o bônus de +1 nas jogadas de ataque de uma arma obra-prima.",
+    "tacticalNotes": "Não pode ser conjurada sobre armas naturais, como um ataque desarmado comum. O ataque desarmado de um monge é considerado uma arma e pode receber o efeito.",
+    "interactions": "Vontade anula (inofensiva, objeto); Resistência à Magia se aplica (inofensiva, objeto). O efeito é aplicado por toque e dura 1 minuto/nível.",
+    "sourcePage": 174,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — expansão do glossário"
+  },
+  {
+    "name": "Arma Mágica Maior",
+    "explanation": "Funciona como Arma Mágica, mas concede bônus de melhoria de +1 a cada quatro níveis de conjurador nas jogadas de ataque e dano, até o máximo de +5.",
+    "tacticalNotes": "Pode afetar uma arma ou até cinquenta projéteis do mesmo tipo, desde que estejam juntos no momento da conjuração. Flechas, virotes e balas perdem a transmutação quando disparados; armas de arremesso não são afetadas por essa perda. Shuriken são tratados como projéteis.",
+    "interactions": "Vontade anula (inofensiva, objeto); Resistência à Magia se aplica (inofensiva, objeto). Alcance curto de 7,5 m + 1,5 m a cada dois níveis; duração de 1 hora/nível. Componente material: pó de cal e carbono.",
+    "sourcePage": 174,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — expansão do glossário"
+  },
+  {
+    "name": "Armadilha",
+    "explanation": "Transforma um círculo mundano de cipó, corda ou tira de couro em um laço mágico. O círculo tem 60 cm de diâmetro, acrescidos de 60 cm por nível. Quando uma criatura pisa nele, o laço prende um ou mais membros; se estiver amarrado a uma árvore forte e flexível, a árvore se curva e depois se endireita, causando 1d6 pontos de dano e erguendo a criatura presa.",
+    "tacticalNotes": "A armadilha incorpora-se aos arredores; personagens com a habilidade Encontrar Armadilhas podem localizá-la com Procurar CD 23. Para escapar, a criatura precisa obter sucesso em Arte da Fuga CD 23 ou em um teste de Força CD 23, este último exigindo uma ação de rodada completa. A armadilha tem CA 7 e 5 PV. Escapar quebra o laço e dissipa a magia.",
+    "interactions": "Não permite teste de resistência e não admite Resistência à Magia. Tempo de execução de 3 rodadas; alcance toque; duração até ser disparada ou destruída. Sem árvore próxima, o laço prende a criatura, mas não causa dano. A descrição apresenta o efeito de árvore como opção, não como requisito.",
+    "sourcePage": 175,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — expansão do glossário"
+  },
+  {
+    "name": "Armadura Arcana",
+    "explanation": "Envolve a criatura tocada com um campo de força invisível, mas tangível, que concede +4 de bônus de armadura na Classe de Armadura.",
+    "tacticalNotes": "Diferentemente de armaduras comuns, não impõe penalidade de armadura, chance de falha de magia arcana nem redução do deslocamento. Por ser composta de energia, também impede que criaturas incorpóreas atravessem a proteção como atravessariam uma armadura normal.",
+    "interactions": "Vontade anula (inofensiva); não admite Resistência à Magia. Duração de 1 hora/nível ou até ser dissipada. Foco: um pedaço de couro endurecido.",
+    "sourcePage": 175,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — expansão do glossário"
+  },
+  {
+    "name": "Aumentar Pessoa",
+    "explanation": "Aumenta instantaneamente um humanóide, dobrando sua altura e multiplicando seu peso por oito, elevando-o em uma categoria de tamanho. Concede +2 de bônus de tamanho na Força, –2 na Destreza (mínimo 1) e –1 nas jogadas de ataque e na CA devido ao tamanho. Não altera o deslocamento.",
+    "tacticalNotes": "Um humanóide que se torne Grande ocupa espaço de 3 m e tem alcance natural de 3 m. Se não houver espaço suficiente, cresce até o limite possível e pode tentar um teste de Força com o novo valor para romper barreiras; se falhar, fica comprimido sem sofrer dano por esmagamento. Equipamento vestido ou carregado também aumenta; itens que deixam a posse do alvo retornam ao tamanho normal. Efeitos mágicos de aumento de tamanho não se acumulam.",
+    "interactions": "Fortitude anula; Resistência à Magia se aplica. Duração de 1 minuto/nível. Serve de contramágica e dissipa Reduzir Pessoa; pode ser tornada permanente por Permanência. Componente material: um punhado de pó de ferro.",
+    "sourcePage": 176,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — expansão do glossário"
+  },
+  {
+    "name": "Ataque Certeiro",
+    "explanation": "Concede ao conjurador intuição temporária sobre o futuro imediato. A próxima jogada de ataque, se realizada antes do final da rodada seguinte, recebe +20 de bônus de intuição.",
+    "tacticalNotes": "Além do bônus de +20, o conjurador não é afetado pela chance de falha aplicada a ataques contra alvos camuflados. O efeito se aplica somente ao próximo ataque dentro do prazo indicado.",
+    "interactions": "Alvo pessoal; o conjurador é o próprio alvo. Duração: até o próximo ataque, desde que ocorra antes do final da rodada seguinte. Foco: uma pequena réplica de um alvo para arqueiros.",
+    "sourcePage": 176,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — expansão do glossário"
+  },
+  {
+    "name": "Aura Mágica de Nystul",
+    "explanation": "Altera a aura mágica de um objeto para que ele seja detectado como não mágico, como um item mágico de um tipo escolhido ou como se estivesse sob efeito de uma magia especificada.",
+    "tacticalNotes": "Se o objeto for examinado por Identificação ou de modo semelhante, o examinador pode reconhecer a falsidade e perceber as propriedades reais com um teste de Vontade bem-sucedido. Se falhar, acredita na aura falsa, e testes adicionais não revelam a verdade. A magia não funciona em objetos com aura excepcionalmente poderosa, como artefatos. Armas, escudos e armaduras mágicos precisam ser obras-primas para que a aura pareça plausível.",
+    "interactions": "Não permite teste de resistência no uso normal; o exame por Identificação ou semelhante permite Vontade para perceber a falsidade. Não admite Resistência à Magia. Duração de 1 dia/nível. Foco: um pequeno quadrado de seda passado sobre o objeto.",
+    "sourcePage": 176,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — expansão do glossário"
+  },
+  {
+    "name": "Auxílio Divino",
+    "explanation": "Invocando a força e a sabedoria da divindade, o conjurador recebe +1 de bônus de sorte nas jogadas de ataque e dano a cada três níveis de conjurador, até o máximo de +6.",
+    "tacticalNotes": "O bônus é aplicado às jogadas de ataque e dano realizadas pelo personagem, mas não se aplica ao dano causado por magias.",
+    "interactions": "Alvo pessoal; o conjurador é o próprio alvo. Duração de 1 minuto. A magia não apresenta teste de resistência nem Resistência à Magia no verbete.",
+    "sourcePage": 177,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — expansão do glossário"
+  },
+  {
+    "name": "Aura Profana",
+    "explanation": "Uma escuridão malévola envolve os alvos e os protege de ataques, concede resistência contra magias de criaturas bondosas e enfraquece criaturas bondosas que os atacarem. Cada criatura protegida recebe +4 de bônus de deflexão na CA e +4 de bônus de resistência nos testes de resistência; também recebe Resistência à Magia 25 contra magias com o descritor [Bem] ou conjuradas por criaturas Boas.",
+    "tacticalNotes": "A proteção bloqueia possessão e influências mentais como Proteção contra o Bem. Quando uma criatura bondosa atinge um protegido em combate corpo a corpo, sofre 1d6 pontos de dano temporário de Força; Fortitude anula esse efeito.",
+    "interactions": "Vontade anula (inofensiva) e Resistência à Magia se aplica. Área de 6 m de raio centrada no conjurador, uma criatura por nível; duração de 1 rodada/nível. Foco: pequeno relicário com relíquia profana, de valor mínimo de 500 PO.",
+    "sourcePage": 177,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — expansão do glossário"
+  },
+  {
+    "name": "Aura Sagrada",
+    "explanation": "Uma aura brilhante de energia divina envolve o alvo, concede +4 de bônus de deflexão na CA e +4 de bônus de resistência nos testes de resistência, e Resistência à Magia 25 contra magias com o descritor [Mal] ou conjuradas por criaturas Más.",
+    "tacticalNotes": "A proteção bloqueia possessão e influências mentais como Proteção contra o Mal. Quando uma criatura maligna atinge um protegido em combate corpo a corpo, o atacante fica cego; Fortitude anula esse efeito, usando a CD da Aura Sagrada.",
+    "interactions": "Vontade anula (inofensiva) e Resistência à Magia se aplica. Área de 6 m de raio centrada no conjurador, uma criatura por nível; duração de 1 rodada/nível. Foco: pequeno relicário com relíquia sagrada, de valor mínimo de 500 PO.",
+    "sourcePage": 177,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — expansão do glossário"
+  },
+  {
+    "name": "Área Escorregadia",
+    "explanation": "Recobre uma superfície ou objeto com uma substância gordurosa e escorregadia. Criaturas na área quando a magia é conjurada precisam obter sucesso em Reflexos ou caem; enquanto permanecerem na área, repetem o teste a cada rodada.",
+    "tacticalNotes": "Uma criatura pode atravessar a área usando metade do deslocamento e um teste de Equilíbrio CD 10. Se falhar, não consegue se deslocar naquela rodada e deve repetir o teste de Reflexos; uma falha por 5 ou mais provoca queda. Objetos não usados são afetados automaticamente; para objetos em uso, o portador faz Reflexos para evitar o efeito e, se falhar, derruba o item. Armadura ou roupa escorregadia concede +10 de circunstância em Arte da Fuga e Agarrar para resistir ou escapar de Agarrar ou Imobilização.",
+    "interactions": "Não admite Resistência à Magia. Duração de 1 rodada/nível. Alvo: um objeto ou área de 3 m quadrados. Componente material: couro de porco ou manteiga.",
+    "sourcePage": 173,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — expansão do glossário"
   }
 ]
