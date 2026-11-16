@@ -48,6 +48,15 @@ Data: 2026-11-15
 - **Viagem Planar**, Livro do Jogador, p. 251: transporte instantâneo para outro plano, até oito criaturas voluntárias de mãos dadas, chegada imprecisa entre 7,5 e 750 km do destino pretendido, Vontade anula e Resistência à Magia se aplica; retorno não é automático e exige outro meio.
 - Ambas já existem no catálogo, receberam referências e testes automatizados. Nenhum dado mecânico foi alterado.
 
+## Lote adicional — magias da página 252
+- **Vidência Maior**: amplia vidência, com duração de 1 hora/nível e possibilidade de conjurar magias específicas através do sensor.
+- **Visão Arcana Maior**: revela automaticamente magias e efeitos ativos em criaturas/objetos vistos; não identifica itens mágicos e não pode ser tornada permanente.
+- **Visão da Morte**: cone de 9 m, duração de 10 min./nível, identifica estados de vida e anula efeitos que simulam morte; sem teste de resistência ou Resistência à Magia.
+- **Vigor do Urso**: +4 de melhoria em Constituição; registrado que PV adicionais por Constituição temporária não são PV temporários e desaparecem quando o atributo retorna ao normal.
+- **Virtude**: concede 1 PV temporário por 1 minuto; Fortitude anula (inofensiva), Resistência à Magia se aplica (inofensiva).
+- **Visão Falsa**: emanação de 12 m contra adivinhações de vidência, duração de 1 hora/nível, sem teste de resistência ou Resistência à Magia; registrada a alteração da imagem e o componente material de pó de jade (250 PO).
+- As seis magias já existem no catálogo e foram vinculadas sem alterar seus dados mecânicos. Testes cobrem seus efeitos centrais.
+
 ## Correção de testes locais
 - Os testes JVM estavam executando contra o `org.json` de fachada fornecido pelo Android, que lança exceções fora do ambiente Android.
 - Adicionada dependência de teste `org.json:json` para fornecer implementação real ao ambiente JVM; a dependência é apenas de teste e não é empacotada no APK.

@@ -115,5 +115,59 @@
     "sourcePage": 251,
     "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
     "status": "Auditado — referência inicial"
+  },
+  {
+    "name": "Vidência Maior",
+    "explanation": "Funciona como vidência, com duração de 1 hora por nível. Além das funções da vidência, permite conjurar através do sensor as magias detectar o caos, detectar o mal, detectar o bem, detectar a ordem, detectar magia, mensagem, ler magias ou idiomas.",
+    "tacticalNotes": "A descrição remete às regras do sensor mágico de vidência; o alvo pode realizar teste de Vontade para impedir a tentativa.",
+    "interactions": "A magia mantém a natureza de vidência e suas regras de resistência; a duração indicada para esta versão é de 1 hora por nível.",
+    "sourcePage": 252,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — referência inicial"
+  },
+  {
+    "name": "Visão Arcana Maior",
+    "explanation": "Funciona como visão arcana, mas o conjurador sabe automaticamente quais magias ou efeitos mágicos estão ativos sob qualquer indivíduo ou objeto que veja.",
+    "tacticalNotes": "A magia não permite identificar itens mágicos.",
+    "interactions": "Diferentemente de visão arcana, não pode se tornar permanente por meio de permanência.",
+    "sourcePage": 252,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — referência inicial"
+  },
+  {
+    "name": "Visão da Morte",
+    "explanation": "Permite determinar a condição das criaturas dentro de uma emanação em cone de 9 m: morta, enfraquecida (viva e ferida, com 3 pontos de vida ou menos), lutando contra a morte (viva e com 4 pontos de vida ou mais), morta-viva ou nenhuma dessas condições, como um construto.",
+    "tacticalNotes": "A duração é de 10 minutos por nível. A magia revela a condição das criaturas instantaneamente.",
+    "interactions": "Não permite teste de resistência nem admite Resistência à Magia. Anula qualquer magia ou habilidade que permita à criatura fingir estar morta.",
+    "sourcePage": 252,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — referência inicial"
+  },
+  {
+    "name": "Vigor do Urso",
+    "explanation": "Concede ao alvo +4 de bônus de melhoria na Constituição, aplicando os benefícios normais desse aumento aos pontos de vida, testes de Fortitude, testes de Constituição e demais usos do modificador.",
+    "tacticalNotes": "Duração de 1 minuto por nível; alcance toque; alvo criatura tocada. Vontade anula (inofensiva) e Resistência à Magia se aplica (inofensiva).",
+    "interactions": "Os pontos de vida adicionais obtidos pelo aumento temporário de Constituição não são pontos de vida temporários e não são perdidos primeiro. Eles desaparecem quando a Constituição retorna ao valor normal.",
+    "sourcePage": 252,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — referência inicial"
+  },
+  {
+    "name": "Virtude",
+    "explanation": "Concede ao alvo 1 ponto de vida temporário.",
+    "tacticalNotes": "Duração de 1 minuto; alcance toque; alvo criatura tocada.",
+    "interactions": "Fortitude anula (inofensiva); Resistência à Magia se aplica (inofensiva).",
+    "sourcePage": 252,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — referência inicial"
+  },
+  {
+    "name": "Visão Falsa",
+    "explanation": "Cria uma emanação de 12 m de raio que faz qualquer magia de adivinhação (vidência) usada para observar algo dentro da área receber uma visão falsa, semelhante à imagem maior, definida pelo conjurador.",
+    "tacticalNotes": "Duração de 1 hora por nível. O conjurador pode se concentrar para mudar a imagem; enquanto estiver se concentrando, a imagem permanece estática.",
+    "interactions": "Não permite teste de resistência nem admite Resistência à Magia. Componente material: pó de jade no valor mínimo de 250 PO, lançado ao ar durante a conjuração.",
+    "sourcePage": 252,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — referência inicial"
   }
 ]

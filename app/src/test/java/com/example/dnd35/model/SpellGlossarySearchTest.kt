@@ -75,5 +75,27 @@ class SpellGlossarySearchTest {
         assertTrue(planar.reference?.sourcePage == 251)
         assertTrue(planar.reference?.tacticalNotes?.contains("oito criaturas") == true)
         assertTrue(planar.reference?.interactions?.contains("750 km") == true)
+
+        val greaterScrying = SpellGlossarySearch.search("Vidência Maior").first()
+        assertTrue(greaterScrying.reference?.sourcePage == 252)
+        assertTrue(greaterScrying.reference?.explanation?.contains("1 hora por nível") == true)
+
+        val greaterArcaneSight = SpellGlossarySearch.search("Visão Arcana Maior").first()
+        assertTrue(greaterArcaneSight.reference?.interactions?.contains("não pode se tornar permanente") == true)
+
+        val deathwatch = SpellGlossarySearch.search("Visão da Morte").first()
+        assertTrue(deathwatch.reference?.explanation?.contains("3 pontos de vida ou menos") == true)
+        assertTrue(deathwatch.reference?.interactions?.contains("Não permite teste de resistência") == true)
+
+        val bearsEndurance = SpellGlossarySearch.search("Vigor do Urso").first()
+        assertTrue(bearsEndurance.reference?.explanation?.contains("+4") == true)
+        assertTrue(bearsEndurance.reference?.interactions?.contains("não são pontos de vida temporários") == true)
+
+        val virtue = SpellGlossarySearch.search("Virtude").first()
+        assertTrue(virtue.reference?.explanation?.contains("1 ponto de vida temporário") == true)
+
+        val falseVision = SpellGlossarySearch.search("Visão Falsa").first()
+        assertTrue(falseVision.reference?.sourcePage == 252)
+        assertTrue(falseVision.reference?.tacticalNotes?.contains("12 m") == true)
     }
 }
