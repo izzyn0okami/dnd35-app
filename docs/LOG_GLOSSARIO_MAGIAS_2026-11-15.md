@@ -43,6 +43,11 @@ Data: 2026-11-15
 - **Visão da Verdade**, Livro do Jogador, p. 253: alcance de 36 m e capacidades de percepção descritas no verbete, incluindo formas verdadeiras e visão no Plano Etéreo; registradas as limitações contra objetos sólidos, camuflagem, esconderijos mundanos e espaços extradimensionais.
 - Ambas já existem no catálogo e receberam testes automatizados. Nenhuma regra mecânica foi alterada.
 
+## Lote seguinte — magias da página 251
+- **Ventriloquismo**, Livro do Jogador, p. 251: desloca a origem aparente da voz ou som vocal, alcance curto, duração de 1 minuto/nível, Vontade desacredita em caso de interação e não admite Resistência à Magia; foco de pergaminho em cone.
+- **Viagem Planar**, Livro do Jogador, p. 251: transporte instantâneo para outro plano, até oito criaturas voluntárias de mãos dadas, chegada imprecisa entre 7,5 e 750 km do destino pretendido, Vontade anula e Resistência à Magia se aplica; retorno não é automático e exige outro meio.
+- Ambas já existem no catálogo, receberam referências e testes automatizados. Nenhum dado mecânico foi alterado.
+
 ## Correção de testes locais
 - Os testes JVM estavam executando contra o `org.json` de fachada fornecido pelo Android, que lança exceções fora do ambiente Android.
 - Adicionada dependência de teste `org.json:json` para fornecer implementação real ao ambiente JVM; a dependência é apenas de teste e não é empacotada no APK.
