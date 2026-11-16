@@ -165,3 +165,10 @@ Data: 2026-11-15
 - Conferência visual da página impressa 171 confirmou que o Livro do Jogador brasileiro realmente imprime **750 km** para o alcance do efeito Enriquecer.
 - O SRD 3.5 registra **half-mile** (meia milha, aproximadamente 800 m) para o mesmo efeito.
 - A diferença é muito grande e provavelmente representa erro editorial ou tipográfico na edição brasileira. Como a edição brasileira é a fonte primária definida para o projeto, o glossário mantém fielmente os **750 km impressos**, mas explicita a divergência com o SRD. Não corrigir para 750 m/800 m sem decisão editorial explícita.
+
+
+## Correção de CI — importação dos testes do glossário (16/11/2026)
+- As execuções dos fluxos Android CI e Android build para o commit anterior falharam durante a compilação dos testes JVM, não durante a compilação do aplicativo.
+- A causa foi o uso de `assertEquals` nos testes dos lotes Am, An e Ap sem a importação de `org.junit.Assert.assertEquals` em `SpellGlossarySearchTest.kt`.
+- Incluída a importação explícita. Nenhuma asserção foi removida ou enfraquecida e nenhum dado de magia foi alterado.
+- Aguardar e conferir novamente os dois fluxos para o novo commit antes do merge.
