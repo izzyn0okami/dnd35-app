@@ -58,7 +58,7 @@ class PresetSpellCatalogTest {
         assertEquals(3, vampiricTouch.level)
         assertEquals(setOf("Feiticeiro", "Mago"), vampiricTouch.classes.toSet())
         assertEquals("Nenhum", vampiricTouch.savingThrow)
-        assertTrue(vampiricTouch.description.contains("máximo de 10d6"))
+        assertTrue(vampiricTouch.description.contains("máximo 10d6"))
         assertTrue(vampiricTouch.description.contains("pontos de vida temporários"))
     }
 
@@ -394,9 +394,9 @@ class PresetSpellCatalogTest {
     @Test
     fun firstLevelArcaneSpellBatchNineHasExpectedClassesAndMechanics() {
         val spells = Dnd35Rules.PRESET_SPELLS.associateBy { it.name }
-        assertEquals(setOf("Bardo", "Mago", "Feiticeiro"), spells.getValue("Animar Cordas").classes.toSet())
-        assertEquals("Médio (30m + 3m/nível)", spells.getValue("Animar Cordas").range)
-        assertFalse(spells.getValue("Animar Cordas").spellResistance)
+        assertEquals(setOf("Bardo", "Mago", "Feiticeiro"), spells.getValue("Animar Corda").classes.toSet())
+        assertEquals("Médio (30m + 3m/nível)", spells.getValue("Animar Corda").range)
+        assertFalse(spells.getValue("Animar Corda").spellResistance)
         assertEquals(setOf("Mago", "Feiticeiro"), spells.getValue("Ataque Certeiro").classes.toSet())
         assertEquals("Pessoal", spells.getValue("Ataque Certeiro").range)
         assertFalse(spells.getValue("Ataque Certeiro").spellResistance)
