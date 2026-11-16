@@ -38,6 +38,11 @@ Data: 2026-11-15
 - As duas entradas têm testes automatizados de página e mecânicas centrais. Nenhum dado mecânico do catálogo foi modificado.
 - As demais magias presentes nas páginas 251–253 não foram incluídas neste lote sem antes confirmar correspondência exata no catálogo.
 
+## Lote seguinte — magias das páginas 252–253
+- **Visão no Escuro**, Livro do Jogador, p. 252: visão em até 18 m, em preto e branco; não funciona através de escuridão mágica; pode ser tornada permanente. Registrados duração, resistência e componente material.
+- **Visão da Verdade**, Livro do Jogador, p. 253: alcance de 36 m e capacidades de percepção descritas no verbete, incluindo formas verdadeiras e visão no Plano Etéreo; registradas as limitações contra objetos sólidos, camuflagem, esconderijos mundanos e espaços extradimensionais.
+- Ambas já existem no catálogo e receberam testes automatizados. Nenhuma regra mecânica foi alterada.
+
 ## Correção de testes locais
 - Os testes JVM estavam executando contra o `org.json` de fachada fornecido pelo Android, que lança exceções fora do ambiente Android.
 - Adicionada dependência de teste `org.json:json` para fornecer implementação real ao ambiente JVM; a dependência é apenas de teste e não é empacotada no APK.
