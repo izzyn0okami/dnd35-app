@@ -183,3 +183,12 @@ Data: 2026-11-15
 - **Armadura Arcana**, p. 175: campo de força concede +4 de bônus de armadura na CA, sem penalidade de armadura, chance de falha arcana ou redução de deslocamento; criaturas incorpóreas não atravessam a proteção; foco de couro endurecido.
 - Conferência rápida com o SRD 3.5: Arma Mágica e Arma Mágica Maior mantêm os mesmos bônus, restrições e regra de projéteis; Armadura Arcana mantém +4, duração de 1 hora/nível e ausência de RM. O glossário segue a terminologia e medidas do Livro do Jogador brasileiro. Arma Espiritual foi comparada com a descrição SRD de arma de energia, ataques, redirecionamento e interação com RM.
 - Testes adicionados para as cinco referências, páginas e mecânicas centrais. Nenhum dado mecânico do catálogo foi alterado neste lote.
+
+ 
+## Expansão alfabética — complemento do lote A (página 176)
+- Referências detalhadas adicionadas para **Aumentar Pessoa**, **Ataque Certeiro** e **Aura Mágica de Nystul**, já presentes no catálogo.
+- **Aumentar Pessoa**: dobra altura, multiplica peso por oito e aumenta uma categoria de tamanho; +2 Força, –2 Destreza (mínimo 1), –1 ataque e CA; equipamento aumenta junto, mas itens que deixam a posse do alvo retornam ao tamanho normal; efeitos de aumento de tamanho não se acumulam; contramágica/dissipa Reduzir Pessoa.
+- **Ataque Certeiro**: +20 de intuição na próxima jogada de ataque antes do final da rodada seguinte e ignora chance de falha contra alvos camuflados; foco de pequena réplica de alvo para arqueiros.
+- **Aura Mágica de Nystul**: altera a aura percebida de um objeto; Identificação ou exame semelhante pode permitir Vontade para perceber a falsidade; a magia não funciona em auras excepcionalmente poderosas; armas, escudos e armaduras precisam ser obras-primas para parecerem plausivelmente mágicos.
+- Conferência rápida com SRD 3.5: Aumentar Pessoa preserva tamanho, bônus/penalidades, equipamento, contramágica e não acumulação; Aura Mágica preserva a alteração da aura e a possibilidade de identificar a falsidade; Ataque Certeiro preserva o bônus de +20 na próxima jogada. A edição brasileira continua como fonte primária.
+- Testes adicionados para as três referências, página e efeitos centrais. Nenhum dado mecânico do catálogo foi alterado.
