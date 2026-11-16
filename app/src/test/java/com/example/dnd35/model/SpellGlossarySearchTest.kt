@@ -161,7 +161,7 @@ class SpellGlossarySearchTest {
 
         val calmEmotions = SpellGlossarySearch.search("Acalmar Emoções").first()
         assertTrue(calmEmotions.reference?.sourcePage == 168)
-        assertTrue(calmEmotions.reference?.interactions?.contains("efeitos de medo") == true)
+        assertTrue(calmEmotions.reference?.tacticalNotes?.contains("efeitos de medo") == true)
 
         val divination = SpellGlossarySearch.search("Adivinhação").first()
         assertTrue(divination.reference?.sourcePage == 169)
@@ -182,6 +182,34 @@ class SpellGlossarySearchTest {
         assertTrue(alarm.reference?.sourcePage == 169)
         assertTrue(alarm.reference?.explanation?.contains("6 m de raio") == true)
         assertTrue(alarm.reference?.interactions?.contains("Permanência") == true)
+    }
+
+
+    @Test
+    fun auditsAlphabeticalSpellBatchAmAgainstBrazilianPlayerHandbook() {
+        val cursedWater = SpellGlossarySearch.search("Amaldiçoar Água").first()
+        assertEquals(170, cursedWater.reference?.sourcePage)
+        assertTrue(cursedWater.reference?.explanation?.contains("500 ml") == true)
+        assertTrue(cursedWater.reference?.tacticalNotes?.contains("2,5 kg") == true)
+        assertTrue(cursedWater.spell.school.contains("Necromancia [Mal]"))
+
+        val softenEarth = SpellGlossarySearch.search("Amolecer Terra e Pedra").first()
+        assertEquals(170, softenEarth.reference?.sourcePage)
+        assertTrue(softenEarth.reference?.tacticalNotes?.contains("1d2 rodadas") == true)
+        assertTrue(softenEarth.reference?.interactions?.contains("Reflexos") == true)
+        assertTrue(softenEarth.reference?.interactions?.contains("Resistência à Magia: Não") == true)
+
+        val animalGrowth = SpellGlossarySearch.search("Ampliar Animais").first()
+        assertEquals(170, animalGrowth.reference?.sourcePage)
+        assertTrue(animalGrowth.reference?.explanation?.contains("Redução de Dano") == false)
+        assertTrue(animalGrowth.reference?.tacticalNotes?.contains("10/mágica") == true)
+        assertTrue(animalGrowth.reference?.tacticalNotes?.contains("não se acumulam") == true)
+
+        val plantGrowth = SpellGlossarySearch.search("Ampliar Plantas").first()
+        assertEquals(171, plantGrowth.reference?.sourcePage)
+        assertTrue(plantGrowth.reference?.explanation?.contains("750 km") == true)
+        assertTrue(plantGrowth.reference?.tacticalNotes?.contains("30 m de raio") == true)
+        assertTrue(plantGrowth.reference?.interactions?.contains("Enfraquecer Plantas") == true)
     }
 
 }
