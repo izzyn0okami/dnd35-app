@@ -61,5 +61,23 @@
     "sourcePage": 250,
     "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
     "status": "Auditado — referência inicial"
+  },
+  {
+    "name": "Voo",
+    "explanation": "O alvo pode voar com deslocamento de 18 m. Se estiver usando armadura média ou pesada, ou carregando carga média ou pesada, o deslocamento é reduzido para 12 m. A mobilidade é boa; pode subir com metade do deslocamento e descer com o dobro.",
+    "tacticalNotes": "Voar exige concentração semelhante à necessária para andar, permitindo atacar e conjurar normalmente. O alvo pode realizar investida, mas não correr nem carregar mais que sua carga máxima, além de qualquer armadura.",
+    "interactions": "Se a duração terminar enquanto o alvo ainda estiver no ar, a magia se dissipa lentamente: ele desce 18 m por rodada durante 1d6 rodadas e pousa em segurança se alcançar o chão nesse período; caso contrário, sofre dano de queda. Dissipar magia também encerra a duração e provoca essa descida; campo de antimagia não provoca esse efeito.",
+    "sourcePage": 253,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — referência inicial"
+  },
+  {
+    "name": "Zona da Verdade",
+    "explanation": "Cria uma emanação de 6 m de raio na qual as criaturas não podem mentir deliberadamente ou intencionalmente.",
+    "tacticalNotes": "Cada criatura afetada pode realizar um teste de resistência quando a magia é conjurada ou quando entra na área pela primeira vez. As criaturas afetadas sabem que estão sob o efeito e podem evitar responder ou recorrer a evasivas.",
+    "interactions": "Vontade anula; Resistência à Magia se aplica. Criaturas que deixam a área podem falar livremente. Duração de 1 minuto por nível.",
+    "sourcePage": 253,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — referência inicial"
   }
 ]
