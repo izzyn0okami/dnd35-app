@@ -96,7 +96,7 @@ class SpellGlossarySearchTest {
 
         val falseVision = SpellGlossarySearch.search("Visão Falsa").first()
         assertTrue(falseVision.reference?.sourcePage == 252)
-        assertTrue(falseVision.reference?.tacticalNotes?.contains("12 m") == true)
+        assertTrue(falseVision.reference?.explanation?.contains("12 m") == true)
 
         val haste = SpellGlossarySearch.search("Velocidade").first()
         assertTrue(haste.reference?.sourcePage == 250)
