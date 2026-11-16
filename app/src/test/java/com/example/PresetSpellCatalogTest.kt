@@ -52,7 +52,7 @@ class PresetSpellCatalogTest {
         assertEquals("Fortitude parcial ou Vontade anula (veja texto)", chillTouch.savingThrow)
         assertTrue(chillTouch.description.contains("1d6 pontos de dano"))
         assertTrue(chillTouch.description.contains("dano temporário de Força"))
-        assertTrue(chillTouch.description.contains("mortos-vivos"))
+        assertTrue(chillTouch.description.contains("Mortos-vivos"))
 
         val vampiricTouch = spells.getValue("Toque Vampírico")
         assertEquals(3, vampiricTouch.level)
@@ -463,7 +463,7 @@ class PresetSpellCatalogTest {
         assertEquals("Instantânea", erase.duration)
         assertFalse(erase.spellResistance)
 
-        val chillTouch = spells.getValue("Toque Gélido")
+        val chillTouch = spells.getValue("Toque Macabro")
         assertEquals(setOf("Mago", "Feiticeiro"), chillTouch.classes.toSet())
         assertEquals("Toque", chillTouch.range)
         assertTrue(chillTouch.spellResistance)
