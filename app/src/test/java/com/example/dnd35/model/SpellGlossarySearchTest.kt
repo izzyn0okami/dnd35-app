@@ -23,5 +23,10 @@ class SpellGlossarySearchTest {
         val shield = SpellGlossarySearch.search("Escudo Arcano").first()
         assertTrue(shield.reference?.sourcePage == 200)
         assertTrue(shield.reference?.interactions?.contains("cobertura") == true)
+
+        val hands = SpellGlossarySearch.search("Mãos Flamejantes").first()
+        assertTrue(hands.reference?.sourcePage == 217)
+        assertTrue(hands.reference?.explanation?.contains("5d4") == true)
+        assertTrue(hands.reference?.interactions?.contains("Resistência à Magia") == true)
     }
 }
