@@ -529,5 +529,41 @@
     "sourcePage": 173,
     "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
     "status": "Auditado — expansão do glossário"
+  },
+  {
+    "name": "Aliado Extra-Planar Maior",
+    "explanation": "Convoca uma única criatura planar de até 18 Dados de Vida ou até três criaturas do mesmo tipo cujos Dados de Vida totalizem até 18. As criaturas surgem a menos de 9 m entre si e concordam em ajudar o conjurador em troca de um favor ou pagamento, conforme a tarefa negociada.",
+    "tacticalNotes": "Cada criatura convocada precisa ser persuadida individualmente. As condições e o valor do pagamento dependem do tempo, do risco e da natureza do serviço; o verbete-base descreve a negociação e as condições de retorno ao plano de origem.",
+    "interactions": "Clérigo 8; efeito instantâneo. A magia assume o descritor planar/elemental correspondente à criatura convocada, conforme o texto de Aliado Extra-Planar Menor. Não permite teste de resistência nem admite Resistência à Magia. Custo de XP: 100 XP.",
+    "sourcePage": 169,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — expansão do glossário"
+  },
+  {
+    "name": "Alterar Forma",
+    "explanation": "Permite assumir a forma de qualquer criatura não única, de qualquer tipo, entre Minúsculo e Colossal, com no máximo o dobro do nível de conjurador em Dados de Vida (limite de 50 DV). Diferentemente de Metamorfose, permite formas incorpóreas e gasosas. O conjurador adquire as habilidades extraordinárias e sobrenaturais de ataque ou qualidades da forma escolhida, mas perde suas próprias habilidades sobrenaturais e adquire o tipo da nova forma.",
+    "tacticalNotes": "O conjurador conserva a própria consciência e pode mudar para outra forma familiar permitida uma vez por rodada, como ação livre, antes ou depois de sua ação regular, nunca durante ela. Recebe +10 em Disfarces quando usa a magia para criar um disfarce. Não recebe habilidades extraordinárias sem relação com qualidades físicas nem habilidades sobrenaturais ou similares à magia da nova forma; mantém as próprias características de classe. O equipamento pode permanecer vestido/carregado ou fundir-se temporariamente, conforme a capacidade da nova forma.",
+    "interactions": "Druida 9, Feiticeiro/Mago 9 e domínio dos Animais 9; alcance pessoal; duração de 10 minutos/nível (D). Foco: argola de jade de pelo menos 1.500 PO, colocada na cabeça durante a conjuração.",
+    "sourcePage": 169,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — expansão do glossário"
+  },
+  {
+    "name": "Âncora Planar Maior",
+    "explanation": "Como Âncora Planar Menor, mas permite convocar uma única criatura de até 18 Dados de Vida ou até três criaturas do mesmo tipo cujos Dados de Vida totalizem até 18. Todas surgem a menos de 9 m entre si.",
+    "tacticalNotes": "Cada criatura realiza uma tentativa independente para escapar da armadilha e precisa ser persuadida individualmente a ajudar. Aplicam-se os métodos de fuga, negociação, pagamento e retorno ao plano de origem descritos em Âncora Planar Menor. Quando a tarefa é ampla e não pode ser concluída com os próprios recursos da criatura, a magia permanece ativa por 1 dia/nível e ela recebe uma chance imediata de se libertar.",
+    "interactions": "Feiticeiro/Mago 8; tempo de execução de 10 minutos; alcance curto (7,5 m + 1,5 m/2 níveis); efeito instantâneo. Vontade anula; Resistência à Magia se aplica. Exige a armadilha apropriada, preparada conforme o verbete de Âncora Planar Menor.",
+    "sourcePage": 171,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — expansão do glossário"
+  },
+  {
+    "name": "Animação Ilusória",
+    "explanation": "Cria uma proteção contra espionagem mágica e observação direta em uma área de um cubo de 9 m por nível. Ao conjurar, o personagem define o que pode ou não ser observado e descreve a ilusão em termos gerais; essas condições não podem ser alteradas depois. A magia cria uma imagem e sons apropriados à ilusão.",
+    "tacticalNotes": "Tentativas mágicas de observar a área detectam automaticamente a imagem criada, sem teste de resistência para revelar a ilusão. A observação direta permite Vontade para desacreditar, como em uma ilusão normal, caso exista motivo para duvidar dela. Entrar na área, por si só, não garante um teste nem cancela a ilusão, desde que os elementos ocultos evitem ser percebidos.",
+    "interactions": "Feiticeiro/Mago 8; domínio da Enganação 7; ilusão (sensação); tempo de execução de 10 minutos; alcance curto (7,5 m + 1,5 m/2 níveis); duração de 24 horas. Teste de resistência: nenhum ou Vontade desacredita (se interagir). Não admite Resistência à Magia.",
+    "sourcePage": 171,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — expansão do glossário"
   }
 ]
