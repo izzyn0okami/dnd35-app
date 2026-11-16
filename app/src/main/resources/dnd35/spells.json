@@ -9113,5 +9113,45 @@
       "Mago": 3
     },
     "domainLevels": {}
+  },
+  {
+    "name": "Toque Enferrujante",
+    "level": 4,
+    "school": "Transmutação",
+    "classes": [
+      "Druida"
+    ],
+    "castTime": "1 ação padrão",
+    "components": "V, G, FD",
+    "range": "Toque",
+    "duration": "Veja texto",
+    "savingThrow": "Nenhum",
+    "spellResistance": false,
+    "description": "O toque enferruja, corrói e destrói efetivamente itens ou ligas de ferro não mágicos. Itens mágicos de metal são imunes. Contra uma armadura de metal, um ataque de toque corporal bem-sucedido reduz em 1d6 pontos o bônus de Classe de Armadura fornecido pela armadura. Contra uma arma de metal, um ataque de toque bem-sucedido a destrói. Contra criaturas de ferro, cada ataque de toque causa 3d6 pontos de dano +1 por nível de conjurador (máximo +15). Contra criaturas de ferro, a magia dura 1 rodada por nível e permite um ataque de toque por rodada.",
+    "classLevels": {
+      "Druida": 4
+    },
+    "domainLevels": {}
+  },
+  {
+    "name": "Toque da Idiotice",
+    "level": 2,
+    "school": "Encantamento (Compulsão) [de Ação Mental]",
+    "classes": [
+      "Feiticeiro",
+      "Mago"
+    ],
+    "castTime": "1 ação padrão",
+    "components": "V, G",
+    "range": "Toque",
+    "duration": "10 minutos/nível",
+    "savingThrow": "Nenhum",
+    "spellResistance": true,
+    "description": "Um ataque de toque corpo a corpo bem-sucedido reduz temporariamente a Inteligência, Sabedoria e Carisma do alvo em 1d6 pontos cada. Nenhum desses valores pode ser reduzido abaixo de 1. A redução pode impedir o alvo de conjurar algumas ou todas as magias caso seus valores de habilidade fiquem abaixo do mínimo necessário.",
+    "classLevels": {
+      "Feiticeiro": 2,
+      "Mago": 2
+    },
+    "domainLevels": {}
   }
 ]
