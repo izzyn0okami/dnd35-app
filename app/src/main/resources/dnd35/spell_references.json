@@ -232,5 +232,86 @@
     "sourcePage": 249,
     "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
     "status": "Auditado — catálogo corrigido"
+  },
+  {
+    "name": "Abençoar Água",
+    "explanation": "Imbui um frasco de 0,5 litro de água com energia positiva, transformando-a em água benta.",
+    "tacticalNotes": "O alvo é um frasco de água tocado. O tempo de execução é de 1 minuto. Componente material: 2,5 kg de pó de prata, no valor de 25 PO.",
+    "interactions": "Vontade anula (objeto) e a Resistência à Magia se aplica a objetos. A duração é instantânea.",
+    "sourcePage": 168,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — expansão do glossário"
+  },
+  {
+    "name": "Abençoar Arma",
+    "explanation": "A arma tocada é tratada como se tivesse +1 de bônus de melhoria para superar a Redução de Dano de criaturas malignas e atingir criaturas incorpóreas malignas, sem receber um bônus de melhoria real. A arma também é considerada sagrada.",
+    "tacticalNotes": "Dura 1 minuto por nível. Todas as ameaças de acerto crítico contra inimigos malignos são automaticamente confirmadas, exceto com armas que já tenham efeito mágico relacionado a acertos críticos, como afiada ou vorpal. Flechas e virotes podem ser transmutados individualmente; arcos e outras armas de disparo não transferem o benefício às munições.",
+    "interactions": "Não permite teste de resistência e não admite Resistência à Magia. O efeito sagrado se sobrepõe a qualquer outra tendência que a arma possua.",
+    "sourcePage": 168,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — expansão do glossário"
+  },
+  {
+    "name": "Abrir/Fechar",
+    "explanation": "Abre ou fecha, à escolha do conjurador, uma porta, baú, caixa, janela, bolsa, garrafa, barril ou outro recipiente que possa ser aberto ou fechado normalmente.",
+    "tacticalNotes": "Afeta um objeto de até 15 kg ou um portal. Se algo impedir a abertura ou o fechamento, como uma tranca, a magia fracassa. Foco: uma chave de bronze.",
+    "interactions": "Vontade anula (objeto) e a Resistência à Magia se aplica a objetos. A duração é instantânea. O alcance aumenta em 1,5 m para cada dois níveis de conjurador além do alcance básico de 7,5 m.",
+    "sourcePage": 168,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — expansão do glossário"
+  },
+  {
+    "name": "Acalmar Animais",
+    "explanation": "Acalma e torna dóceis animais, deixando-os inofensivos. Afeta apenas criaturas com Inteligência 1 ou 2; os alvos devem ser da mesma espécie e estar a até 9 m uns dos outros.",
+    "tacticalNotes": "Afeta um total de Dados de Vida igual a 2d4 + nível de conjurador. Animais atrozes e animais treinados para atacar ou guardar podem realizar teste de Vontade; animais não treinados não recebem esse teste. As criaturas afetadas permanecem onde estão, não atacam nem fogem, mas ainda podem se defender normalmente.",
+    "interactions": "Vontade anula, conforme as condições do texto, e a Resistência à Magia se aplica. Qualquer ameaça — como fogo, um predador faminto ou um ataque iminente — dissipa a magia.",
+    "sourcePage": 168,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — expansão do glossário"
+  },
+  {
+    "name": "Acalmar Emoções",
+    "explanation": "Acalma criaturas agitadas em uma dispersão de 6 m de raio. O conjurador não controla os alvos; eles não podem realizar ações violentas ou destrutivas, embora ainda possam se defender.",
+    "tacticalNotes": "A magia neutraliza sem dissipar bônus de moral, incluindo os concedidos por Benção, Boa Esperança e Fúria; também suprime efeitos de medo e remove a condição confuso. Uma ação agressiva ou dano que ameace a vida da criatura encerra o efeito sobre ela.",
+    "interactions": "Vontade anula e a Resistência à Magia se aplica. Exige concentração, até 1 rodada por nível, e pode ser encerrada voluntariamente. Os efeitos suprimidos voltam a funcionar quando a magia termina, se ainda tiverem duração restante.",
+    "sourcePage": 168,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — expansão do glossário"
+  },
+  {
+    "name": "Adivinhação",
+    "explanation": "Fornece ao conjurador uma resposta curta ou enigmática sobre um objetivo, evento ou atividade que ocorrerá dentro de no máximo uma semana.",
+    "tacticalNotes": "A chance de obter uma resposta correta é de 70% + 1% por nível de conjurador, até o máximo de 90%. Em caso de falha, o conjurador sabe que a adivinhação não produziu uma resposta. Componentes materiais: incenso e oferendas em sacrifício apropriadas à divindade, no valor total mínimo de 25 PO.",
+    "interactions": "A execução leva 10 minutos; alcance pessoal; duração instantânea. Não permite teste de resistência e não admite Resistência à Magia.",
+    "sourcePage": 169,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — expansão do glossário"
+  },
+  {
+    "name": "Agilidade do Gato",
+    "explanation": "A criatura tocada recebe +4 de bônus de aprimoramento na Destreza, com os benefícios normais para a Classe de Armadura, os testes de Reflexos e os demais usos do modificador de Destreza.",
+    "tacticalNotes": "Dura 1 minuto por nível. Componente material: um pouco de pelo de gato.",
+    "interactions": "Vontade anula (inofensiva) e a Resistência à Magia se aplica. O bônus é de aprimoramento, não se acumula com outros bônus do mesmo tipo.",
+    "sourcePage": 169,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — expansão do glossário"
+  },
+  {
+    "name": "Ajuda",
+    "explanation": "Concede à criatura viva tocada +1 de bônus de moral nas jogadas de ataque e nos testes de resistência contra efeitos de medo, além de 1d8 + nível de conjurador pontos de vida temporários.",
+    "tacticalNotes": "Os pontos de vida temporários adicionais por nível são limitados a +10. A duração é de 1 minuto por nível.",
+    "interactions": "Não permite teste de resistência. A Resistência à Magia se aplica, mas a magia é inofensiva. Os pontos de vida concedidos são temporários e não se acumulam com outros pontos de vida temporários.",
+    "sourcePage": 169,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — expansão do glossário"
+  },
+  {
+    "name": "Alarme",
+    "explanation": "Protege uma área com uma emanação de 6 m de raio. Quando uma criatura de tamanho Minúsculo ou maior entra na área ou a toca sem pronunciar a senha definida pelo conjurador, o alarme é acionado.",
+    "tacticalNotes": "Ao conjurar, o personagem escolhe um alarme mental ou audível. O mental alerta apenas o conjurador enquanto estiver a até 1,5 km e pode despertá-lo sem interromper sua concentração. O audível produz um som de sino que pode ser ouvido claramente a 18 m, com redução por portas e paredes; em condições silenciosas pode ser ouvido fracamente a até 54 m. O som dura 1 rodada. Criaturas etéreas ou astrais não acionam o alarme. Foco: um pequeno sino e um fio de prata muito fino.",
+    "interactions": "Não permite teste de resistência e não admite Resistência à Magia. Dura 2 horas por nível e pode ser dissipada. A magia Silêncio impede que o alarme audível seja ouvido, mas não afeta o alarme mental. Pode ser tornada permanente com Permanência.",
+    "sourcePage": 169,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — expansão do glossário"
   }
 ]
