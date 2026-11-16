@@ -79,5 +79,23 @@
     "sourcePage": 253,
     "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
     "status": "Auditado — referência inicial"
+  },
+  {
+    "name": "Visão no Escuro",
+    "explanation": "O alvo adquire a habilidade de enxergar a até 18 m, inclusive em completa escuridão. A visão é em preto e branco; fora esse aspecto, é idêntica à visão normal.",
+    "tacticalNotes": "A magia não permite enxergar sob escuridão mágica. Pode se tornar permanente por meio da magia permanência.",
+    "interactions": "Alcance toque; alvo criatura tocada; duração de 1 hora por nível. Vontade anula (inofensiva); Resistência à Magia se aplica (inofensiva). Componente material: um pedaço de cenoura seca ou uma ágata.",
+    "sourcePage": 252,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — referência inicial"
+  },
+  {
+    "name": "Visão da Verdade",
+    "explanation": "Concede ao alvo a habilidade de enxergar a forma verdadeira das coisas a até 36 m: atravessa escuridão normal e mágica, percebe portas secretas, localiza criaturas sob nublar ou deslocamento, revela objetos e criaturas invisíveis, atravessa ilusões e revela formas verdadeiras de criaturas metamorfoseadas, transformadas ou transmutadas. Também permite focalizar a visão no Plano Etéreo.",
+    "tacticalNotes": "Alcance toque; duração de 1 minuto por nível. Vontade anula (inofensiva); Resistência à Magia se aplica (inofensiva).",
+    "interactions": "Não atravessa objetos sólidos, não concede visão de raio X, não anula camuflagem como a causada por névoa e não revela disfarces comuns, criaturas escondidas ou portas secretas ocultas por meios mundanos. Não permite enxergar espaços extradimensionais nem pode ser aprimorada por outras magias ou usada através de bola de cristal ou em conjunto com clarividência/clariaudiência.",
+    "sourcePage": 253,
+    "source": "Livro do Jogador (edição brasileira), Capítulo 11: Magias",
+    "status": "Auditado — referência inicial"
   }
 ]
