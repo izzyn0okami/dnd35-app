@@ -90,3 +90,12 @@ Data: 2026-11-15
 - O CI identificou que o teste procurava o alcance de 12 m no campo `tacticalNotes`, embora a referência o registre corretamente em `explanation`.
 - A asserção foi ajustada para conferir o campo correspondente. O texto da referência e a regra da magia permanecem inalterados.
 - Um teste preexistente de concorrência de mensagens privadas também falhou em uma das duas execuções, mas passou na outra. Como não houve alteração nesse teste nesta PR, será acompanhado em nova execução para distinguir instabilidade intermitente de regressão.
+
+ 
+## Auditoria do lote de magias de toque — páginas 248–249
+- Fonte primária consultada diretamente: Livro do Jogador brasileiro, Capítulo 11, páginas impressas 248–249 (PDF, páginas 252–253).
+- **Toque do Carniçal**, p. 248: Fet/Mag 2; toque paralisa um humanoide vivo por 1d6+2 rodadas. A criatura paralisada exala cheiro de carniça em 3 m e causa náusea às demais criaturas na área; Fortitude anula, Resistência à Magia se aplica. Neutralizar venenos remove a náusea e criaturas imunes a veneno não são afetadas.
+- **Toque Macabro**, p. 249: Fet/Mag 1; cada toque causa 1d6 de dano por energia negativa e pode causar 1 ponto de dano temporário de Força, anulado por Fortitude. O conjurador pode realizar um toque por nível. Mortos-vivos não sofrem dano nem redução de Força; Vontade anula o efeito especial de fuga em pânico por 1d4+1 rodadas por nível.
+- **Toque Vampírico**, p. 249: Fet/Mag 3; ataque de toque causa 1d6 por nível (máximo 10d6) e concede ao conjurador PV temporários iguais ao dano, limitados ao total de PV atuais do alvo +10; desaparecem após 1 hora. Não permite teste de resistência; Resistência à Magia se aplica.
+- O registro anteriormente chamado **Toque Gélido** tinha nível, classe, componentes, alcance e estrutura de resistência correspondentes a Toque Macabro, mas seu nome não aparece no Livro do Jogador brasileiro consultado. Foi renomeado para **Toque Macabro** e sua descrição foi completada conforme o verbete da edição brasileira; não foi criada uma quarta magia duplicada.
+- As três entradas foram adicionadas/vinculadas ao catálogo e ao glossário. Testes de catálogo e busca verificam nomes canônicos, níveis, classes e efeitos centrais. Nenhuma regra fora desses três verbetes foi alterada.
