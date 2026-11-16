@@ -367,7 +367,7 @@ class FeatGlossarySearchTest {
 
         val track = FeatGlossarySearch.search("Rastrear").first()
         assertTrue(track.reference?.description?.contains("1,5 km") == true)
-        assertTrue(track.reference?.description?.contains("metade do deslocamento") == true)
+        assertTrue(track.reference?.description?.contains("reduzido à metade") == true)
     }
 
 
