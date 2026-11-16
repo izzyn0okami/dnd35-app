@@ -140,3 +140,13 @@ Data: 2026-11-15
 - Comparação rápida com SRD: confirma os efeitos centrais de Amolecer Terra e Pedra e Ampliar Plantas; valores imperiais do SRD não substituem as medidas métricas da edição brasileira. Referências consultadas: SRD 3.5, Soften Earth and Stone e Plant Growth.
 - Correções de qualidade de testes: duas asserções anteriores verificavam o campo errado ou uma expressão literal divergente; corrigidas para conferir o campo e o texto efetivamente registrados. Não houve redução de cobertura.
 - Correção mecânica no catálogo: Amaldiçoar Água passa de Transmutação para Necromancia [Mal], conforme o cabeçalho do Livro do Jogador; a divergência com a expressão “esta transmutação” fica documentada.
+
+
+## Expansão alfabética — lote An (páginas 172–173)
+- Referências detalhadas adicionadas para **Andar no Ar**, **Animar Corda**, **Animar Objetos** e **Animar Plantas**.
+- **Andar no Ar**, p. 172: criatura tocada até Imensa, ângulo de 45° e metade do deslocamento; ventos de 30 km/h ou mais podem empurrar; ao terminar no ar, descida gradual de 18 m/rodada por 1d6 rodadas, com queda se não alcançar o solo. RM sim (inofensiva).
+- **Animar Corda**, p. 172: nome corrigido de “Animar Cordas” para o singular usado pelo Livro do Jogador brasileiro. Comprimento 15 m + 1,5 m/nível para corda de 2,5 cm, comandos por ação de movimento, enredamento apenas a 30 cm, ataque de toque à distância, incremento 3 m, 2 PV, CA 10, Força CD 23, Arte da Fuga CD 20 e bônus +2 em Usar Cordas. RM não.
+- **Animar Objetos**, p. 172: anima objetos mundanos, um Pequeno por nível ou equivalentes maiores; não anima objetos vestidos/carregados; pode ser permanente por Permanência.
+- **Animar Plantas**, pp. 172–173: uma planta Grande por três níveis ou equivalentes maiores; alcance curto de 7,5 m + 1,5 m/2 níveis; duração 1 rodada/nível ou 1 hora/nível. Alternativa entrelaça plantas e duplica Constrição. Não afeta criaturas do tipo planta nem material vegetal morto. Corrigidos no catálogo os componentes (V), alcance e duração, antes incompletos/divergentes.
+- Comparação rápida com SRD 3.5: confirmou a estrutura dos efeitos de Air Walk, Animate Rope, Animate Objects e Animate Plants. Valores e termos métricos/portugueses seguem o Livro do Jogador brasileiro.
+- Corrigido teste anterior do catálogo de Toque Vampírico, que esperava a expressão “máximo de 10d6”, embora o texto correto registre “máximo 10d6”. A asserção agora acompanha o dado efetivamente cadastrado, sem alterar a regra.
