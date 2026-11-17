@@ -65,6 +65,20 @@ class SummoningRulesTest {
 
     @Test
     fun bardCanOpenTheFirstCircleSummonCreatureSelection() {
+        val novice = CharacterEntity(
+            multiclassJson = "[{\\"className\\":\\"Bardo\\",\\"level\\":1}]",
+            baseCha = 14
+        )
+        val noviceStats = CharacterCalculator.compute(novice)
+        val noviceOptions = SummoningRules.optionsForSpell(
+            spellName = "Invocar Criaturas I",
+            spellCircle = 1,
+            casterClass = "Bardo",
+            stats = noviceStats,
+            character = novice
+        )
+        assertTrue(noviceOptions.orEmpty().isEmpty())
+
         val character = CharacterEntity(
             multiclassJson = "[{\"className\":\"Bardo\",\"level\":3}]",
             baseCha = 14
