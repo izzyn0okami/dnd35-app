@@ -243,7 +243,7 @@ private fun FamiliarProgressionCard(
                 style = MaterialTheme.typography.bodyMedium
             )
             Text(
-                "Familiar: armadura natural +${progression.naturalArmorBonus} • Inteligência ${progression.intelligence}",
+                "Familiar: CA ${progression.effectiveArmorClass} • armadura natural +${progression.naturalArmorBonus} • Inteligência ${progression.intelligence}",
                 style = MaterialTheme.typography.bodyMedium
             )
             Text("Habilidades concedidas pelo vínculo", style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.SemiBold)
