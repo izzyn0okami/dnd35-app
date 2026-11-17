@@ -153,3 +153,44 @@
 - **Nuvem de Tinta (Ext)**: explicada como qualidade variável por criatura; exemplo do kraken (24 m de dispersão) e menção às versões diferentes de lulas e tojanidas.
 - **Propulsão (Ext)**: explicada como deslocamento retilíneo para trás em ação de rodada completa sem ataques de oportunidade; exemplos de lula (72 m) e kraken (84 m).
 - Os valores e condições foram conferidos diretamente nos verbetes do sahuagin, kraken, lula e tojanida no PDF brasileiro. Os exemplos não transformam essas habilidades específicas em regras universais.
+
+
+## 2026-11-17 — Terceira etapa: habilidades específicas dos verbetes de criaturas
+
+### Método de cruzamento
+- Recontagem do catálogo atual: 320 registros em `app/src/main/resources/dnd35/creatures.json`.
+- Comparação dos campos de ataques especiais e qualidades especiais com os termos já explicados em `RulesGlossaryDialog.kt`.
+- Os nomes encontrados foram conferidos nos verbetes correspondentes do PDF brasileiro do Livro dos Monstros fornecido na biblioteca. Foram descartados valores de dano, CDs e expressões que eram apenas partes de estatísticas ou texto mal separado no catálogo.
+- A regra particular de cada criatura foi mantida como exemplo identificado; nenhuma mecânica foi generalizada quando os verbetes apresentavam versões diferentes.
+
+### Entradas acrescentadas
+- **Nuvem Negra** — achaierai: dano e teste de Fortitude contra insanidade.
+- **Drenar Sabedoria** — comparação entre allip e lamia, diferenciando dano permanente e recuperação de PV temporários.
+- **Sensibilidade à Luz** — esclarece que a condição varia entre espécies e entre luz solar/luz intensa.
+- **Aura de Proteção** — exemplo dos anjos, com alcance, bônus defensivos e recriação após dissipação.
+- **Aura Antinatural** — reação de animais à presença das aparições.
+- **Aparência Horripilante** — comparação entre bruxa do mar e fantasma, sem unificar atributos afetados.
+- **Ladrar** — cão yeth, alcance, CD, duração e imunidade temporária ao mesmo usuário.
+- **Dança da Destruição** — vrocks, requisito de grupo, preparação, área, dano e interrupção.
+- **Esporos** — vrock, dano inicial e recorrente, duração e meios de interromper/destruir os esporos.
+- **Insanidade** — característica racial dos derro, com substituição do modificador de Vontade e imunidades.
+- **Enxurrada** — elemental da água, distinguindo chamas mundanas de fogo mágico.
+- **Deslizar na Terra** — elemental da terra, deslocamento através do solo e interação específica com mover terra.
+- **Incendiar** — elemental do fogo, dano misto e teste para evitar pegar fogo.
+- **Possessão** — fantasma etéreo, condição de manifestação, ingresso no espaço e resistência da vítima.
+- **Toque da Corrupção** — fantasma, dano e diferença de modificadores contra alvos etéreos/corpóreos.
+- **Sentir Eletricidade** — lagarto elétrico, detecção de descargas num raio de 30 m.
+- **Toque Paralisante** — comparação entre mohrg e lich, diferenciando duração e forma de remoção.
+- **Mimetismo** — mímico, limites de volume e teste resistido para perceber o disfarce.
+- **Patas de Aranha** — capacidade de escalar superfícies como a magia homônima.
+- **Nuvem de Visco** e **Muco** — abolete, com efeitos separados de respiração e transformação da pele.
+
+### Decisões de precisão
+- As entradas com valores numéricos preservam a criatura de origem e não estabelecem valores universais.
+- Drenar Sabedoria, Aparência Horripilante, Sensibilidade à Luz e Toque Paralisante têm efeitos diferentes conforme o monstro; os exemplos permanecem separados.
+- Aura de Proteção não foi confundida com Aura Antinatural; Nuvem de Visco não foi confundida com Nuvem de Tinta.
+- A lista não transforma características de tipo/subtipo, valores de resistência ou danos de ataques em habilidades independentes.
+- A alteração é exclusivamente textual e informativa. Nenhum bloco de estatísticas, cálculo, ficha de personagem ou dado persistido foi modificado.
+
+### Arquivos
+- `RulesGlossaryDialog.kt`: 20 entradas específicas adicionadas ao glossário do Bestiário.
