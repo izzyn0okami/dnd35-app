@@ -115,3 +115,41 @@
 
 ### Arquivos
 - `RulesGlossaryDialog.kt`: exemplos oficiais e exemplos práticos identificados como tais.
+
+
+## 2026-11-17 — Segunda etapa: habilidades adicionais do glossário oficial
+
+### Fonte primária
+- Livro dos Monstros 3.5 brasileiro, Capítulo 7 — Glossário, páginas impressas 305–318, conferido no PDF fornecido.
+- Comparação feita com o conteúdo atualmente integrado em `RulesGlossaryDialog.kt`; PR #394 já foi mesclada antes desta etapa.
+
+### Lacunas identificadas e corrigidas
+- **Alterar Forma (Sob)** e **Mudar Forma (Sob)** agora são verbetes separados. O texto diferencia a troca de características físicas e especiais de Alterar Forma da mudança de aparência de Mudar Forma, que preserva os valores de habilidades originais. Exemplos oficiais: ghaele alternando entre forma humanoide e globo incorpóreo; aranea assumindo uma forma humanoide e perdendo o uso de mordida, teia e veneno.
+- **Distração (Ext)**: explicada a condição de enjoo, o teste de Fortitude e a exigência de Concentração para conjurar ou manter concentração dentro de um enxame; exemplo com um aventureiro cercado por morcegos.
+- **Presença Aterradora (Ext)**: explicados gatilhos, área, limite de DV/nível, teste de Vontade, duração geral e imunidade por 24 horas após sucesso; exemplo de um rugido de dragão.
+- **Voo (Ext ou Sob)**: explicado que decolar e aterrissar são ações livres e que o voo sobrenatural é suprimido em campo antimagia; exemplo comparando voo Ext e Sob.
+- **Dreno de Energia**: ampliados os efeitos dos níveis negativos, PV temporários recebidos pelo atacante e teste após 24 horas.
+- **Paralisia**: explicitadas a incapacidade de realizar ações físicas, ausência de novo teste por rodada e consequências para criaturas voadoras ou nadadoras.
+- **Medo e Desespero**: diferenciadas as formas de aura, cone e raio, com referência ao desespero das múmias.
+- **Ataque Visual**: incluído o momento do teste por turno e a possibilidade de ativação deliberada como ação de ataque; preservado o exemplo específico do ghaele (18 m, Vontade CD 18 e medo por 2d10 rodadas).
+- **Invocar**: acrescentadas a duração usual de uma hora, a restrição de invocação da criatura chamada e a ausência de XP para criaturas invocadas.
+
+### Regras de fidelidade
+- Valores gerais foram mantidos como apresentados no glossário do livro; o verbete individual continua prevalecendo quando especifica exceções.
+- Exemplos não apresentados como regra oficial foram identificados como práticos/hipotéticos e não criam valores estatísticos novos.
+- Não foram alterados dados, estatísticas, fichas ou lógica de combate do catálogo.
+
+### Arquivos
+- `RulesGlossaryDialog.kt`: separa as duas formas e acrescenta as habilidades que faltavam, além de aprofundar definições existentes.
+
+
+### Cruzamento adicional com habilidades nomeadas nos verbetes
+- **Sopro (Sob)**: incluída a CD básica (10 + metade dos DV raciais + modificador de Constituição), a regra geral de Reflexos para reduzir o dano à metade e a imunidade da criatura ao próprio sopro, salvo exceção.
+- **Sentido Aquático (Ext)**: exemplo do sahuagin, que localiza criaturas submersas a 9 m como Sentido Cego, somente debaixo d'água.
+- **Frenesi de Sangue**: exemplo do sahuagin, com ativação após sofrer dano, frequência diária, bônus de Constituição/Força, penalidade na CA e impossibilidade de encerrar voluntariamente.
+- **Sensibilidade à Água Doce (Ext)**: regra específica do sahuagin, Fortitude CD 15 e repetição a cada 10 minutos de imersão.
+- **Cegueira sob Luz (Ext)**: regra específica do sahuagin, cegueira por 1 rodada e ofuscamento enquanto permanecer sob luz brilhante.
+- **Falar com Tubarões (Ext)**: comunicação telepática do sahuagin a até 50 m, limitada a conceitos simples.
+- **Nuvem de Tinta (Ext)**: explicada como qualidade variável por criatura; exemplo do kraken (24 m de dispersão) e menção às versões diferentes de lulas e tojanidas.
+- **Propulsão (Ext)**: explicada como deslocamento retilíneo para trás em ação de rodada completa sem ataques de oportunidade; exemplos de lula (72 m) e kraken (84 m).
+- Os valores e condições foram conferidos diretamente nos verbetes do sahuagin, kraken, lula e tojanida no PDF brasileiro. Os exemplos não transformam essas habilidades específicas em regras universais.
