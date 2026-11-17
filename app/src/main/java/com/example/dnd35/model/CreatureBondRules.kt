@@ -20,6 +20,23 @@ data class CreatureSelectionOption(
     val restriction: String = ""
 )
 
+data class FamiliarMasterBenefit(
+    val title: String,
+    val effect: String,
+    val condition: String
+)
+
+data class FamiliarProgression(
+    val masterLevel: Int,
+    /** Aumento cumulativo, não o bônus natural total da criatura. */
+    val naturalArmorBonus: Int,
+    val intelligence: Int,
+    val familiarFeatures: List<String>,
+    val masterBenefits: List<FamiliarMasterBenefit>,
+    val spellResistance: Int?,
+    val scryingUsesPerDay: Int
+)
+
 /**
  * Regras de elegibilidade de familiares e companheiros animais (Livro do Jogador 3.5).
  * As flags do catálogo indicam a lista de origem; os requisitos de nível são aplicados aqui.
