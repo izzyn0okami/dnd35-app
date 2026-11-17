@@ -223,6 +223,11 @@ object CreatureBondRules {
                 condition = "Enquanto o familiar estiver ao alcance da mão"
             ))
             add(FamiliarMasterBenefit(
+                title = "Partilhar magias",
+                effect = "O mestre pode partilhar com o familiar uma magia conjurada sobre si e conjurar nele magias cujo alvo seja \"Você\"",
+                condition = "Familiar a até 1,5 m durante a conjuração; efeitos não instantâneos cessam se ele se afastar mais de 1,5 m"
+            ))
+            add(FamiliarMasterBenefit(
                 title = "Vínculo empático",
                 effect = "Comunicação telepática limitada à transmissão de emoções",
                 condition = "Alcance máximo de 1,5 km"
