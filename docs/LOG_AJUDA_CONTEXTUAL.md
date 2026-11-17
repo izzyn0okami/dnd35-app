@@ -115,3 +115,29 @@
 
 ### Arquivos
 - `RulesGlossaryDialog.kt`: exemplos oficiais e exemplos práticos identificados como tais.
+
+
+## 2026-11-17 — Segunda etapa: habilidades adicionais do glossário oficial
+
+### Fonte primária
+- Livro dos Monstros 3.5 brasileiro, Capítulo 7 — Glossário, páginas impressas 305–318, conferido no PDF fornecido.
+- Comparação feita com o conteúdo atualmente integrado em `RulesGlossaryDialog.kt`; PR #394 já foi mesclada antes desta etapa.
+
+### Lacunas identificadas e corrigidas
+- **Alterar Forma (Sob)** e **Mudar Forma (Sob)** agora são verbetes separados. O texto diferencia a troca de características físicas e especiais de Alterar Forma da mudança de aparência de Mudar Forma, que preserva os valores de habilidades originais. Foi acrescentado um exemplo prático para cada mecânica.
+- **Distração (Ext)**: explicada a condição de enjoo, o teste de Fortitude e a exigência de Concentração para conjurar ou manter concentração dentro de um enxame; exemplo com um aventureiro cercado por morcegos.
+- **Presença Aterradora (Ext)**: explicados gatilhos, área, limite de DV/nível, teste de Vontade, duração geral e imunidade por 24 horas após sucesso; exemplo de um rugido de dragão.
+- **Voo (Ext ou Sob)**: explicado que decolar e aterrissar são ações livres e que o voo sobrenatural é suprimido em campo antimagia; exemplo comparando voo Ext e Sob.
+- **Dreno de Energia**: ampliados os efeitos dos níveis negativos, PV temporários recebidos pelo atacante e teste após 24 horas.
+- **Paralisia**: explicitadas a incapacidade de realizar ações físicas, ausência de novo teste por rodada e consequências para criaturas voadoras ou nadadoras.
+- **Medo e Desespero**: diferenciadas as formas de aura, cone e raio, com referência ao desespero das múmias.
+- **Ataque Visual**: incluído o momento do teste por turno e a possibilidade de ativação deliberada como ação de ataque.
+- **Invocar**: acrescentadas a duração usual de uma hora, a restrição de invocação da criatura chamada e a ausência de XP para criaturas invocadas.
+
+### Regras de fidelidade
+- Valores gerais foram mantidos como apresentados no glossário do livro; o verbete individual continua prevalecendo quando especifica exceções.
+- Exemplos não apresentados como regra oficial foram identificados como práticos/hipotéticos e não criam valores estatísticos novos.
+- Não foram alterados dados, estatísticas, fichas ou lógica de combate do catálogo.
+
+### Arquivos
+- `RulesGlossaryDialog.kt`: separa as duas formas e acrescenta as habilidades que faltavam, além de aprofundar definições existentes.
