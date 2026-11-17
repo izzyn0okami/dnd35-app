@@ -193,4 +193,4 @@
 - A alteração é exclusivamente textual e informativa. Nenhum bloco de estatísticas, cálculo, ficha de personagem ou dado persistido foi modificado.
 
 ### Arquivos
-- `RulesGlossaryDialog.kt`: 20 entradas específicas adicionadas ao glossário do Bestiário.
+- `RulesGlossaryDialog.kt`: 21 entradas específicas adicionadas ao glossário do Bestiário.
