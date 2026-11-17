@@ -246,7 +246,7 @@ private fun FamiliarProgressionCard(
                 "Familiar: armadura natural +${progression.naturalArmorBonus} • Inteligência ${progression.intelligence}",
                 style = MaterialTheme.typography.bodyMedium
             )
-            Text("Habilidades do familiar", style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.SemiBold)
+            Text("Habilidades concedidas pelo vínculo", style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.SemiBold)
             progression.familiarFeatures.forEach { feature ->
                 Text("• $feature", style = MaterialTheme.typography.bodySmall)
             }
