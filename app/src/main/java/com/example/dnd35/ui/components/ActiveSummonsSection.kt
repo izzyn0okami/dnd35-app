@@ -44,9 +44,8 @@ fun ActiveSummonsSection(
             .filter { it.isActiveSummon }
             .sortedBy { it.timestamp }
     }
-    if (activeSummons.isEmpty()) return
-
     var selectedCreature by remember { mutableStateOf<CreatureDefinition?>(null) }
+    if (activeSummons.isEmpty()) return
 
     Card(
         modifier = Modifier.fillMaxWidth().testTag("active_summons_section"),
