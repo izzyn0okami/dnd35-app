@@ -998,7 +998,8 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
                 casterClass = spell.casterClass.ifBlank { slot.className },
                 slotLevel = slot.level,
                 summonedCreatureId = summonedCreatureId,
-                summonedCreatureVariant = summonedCreatureVariant
+                summonedCreatureVariant = summonedCreatureVariant,
+                summonActive = summonedCreatureId.isNotBlank()
             )
         )
         // Mantém o histórico limitado, sem apagar invocações que ainda estão ativas.
@@ -1019,7 +1020,7 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
         val history = CharacterJsonAdapters.deserializeSpellHistory(curr.spellHistoryJson)
         val updated = history.map { record ->
             if (record.id == recordId && record.summonedCreatureId.isNotBlank()) {
-                record.copy(summonDismissed = true)
+                record.copy(summonActive = false)
             } else record
         }
         persistCharacter(curr.copy(spellHistoryJson = CharacterJsonAdapters.serializeSpellHistory(updated)))
