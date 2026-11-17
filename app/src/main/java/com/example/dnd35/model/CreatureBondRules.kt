@@ -209,13 +209,10 @@ object CreatureBondRules {
         val features = buildList {
             add("Evasão aprimorada (familiar)")
             add("Partilhar magias")
-            add("Vínculo empático (alcance máximo de 1,5 km)")
-            add("Prontidão para o mestre (somente ao alcance da mão)")
             if (level >= 3) add("Transmitir magias de toque")
             if (level >= 5) add("Falar com o mestre")
             if (level >= 7) add("Falar com animais de sua espécie")
             if (level >= 11) add("Resistência à Magia " + (level + 5) + " (familiar)")
-            if (level >= 13) add("Vidência no familiar (1 vez por dia)")
             if (creatureId == "corvo") add("Pode falar um idioma escolhido pelo mestre")
         }
 
@@ -225,6 +222,18 @@ object CreatureBondRules {
                 effect = "+2 em Observar e Ouvir",
                 condition = "Enquanto o familiar estiver ao alcance da mão"
             ))
+            add(FamiliarMasterBenefit(
+                title = "Vínculo empático",
+                effect = "Comunicação telepática limitada à transmissão de emoções",
+                condition = "Alcance máximo de 1,5 km"
+            ))
+            if (level >= 13) {
+                add(FamiliarMasterBenefit(
+                    title = "Vidência no familiar",
+                    effect = "Observar um local remoto através do familiar",
+                    condition = "1 vez por dia; disponível a partir do 13º nível combinado"
+                ))
+            }
             val speciesBenefit = when (creatureId) {
                 "vibora-pequena" -> FamiliarMasterBenefit("Víbora pequena", "+3 em testes de Blefar", "Enquanto o familiar estiver a até 1,5 km")
                 "gato" -> FamiliarMasterBenefit("Gato", "+3 em testes de Furtividade", "Enquanto o familiar estiver a até 1,5 km")
