@@ -1001,8 +1001,10 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
                 summonedCreatureVariant = summonedCreatureVariant
             )
         )
-        // Mantém só os registros mais recentes para o histórico não crescer sem limite.
-        val trimmed = history.takeLast(MAX_SPELL_HISTORY)
+        // Mantém o histórico limitado, sem apagar invocações que ainda estão ativas.
+        val activeSummons = history.filter { it.isActiveSummon }
+        val recentHistory = history.filterNot { it.isActiveSummon }.takeLast(MAX_SPELL_HISTORY)
+        val trimmed = (recentHistory + activeSummons).sortedBy { it.timestamp }
         persistCharacter(
             curr.copy(
                 spellSlotsJson = slotsJsonWithUsed(allSlots, slot, slot.usedSlots + 1),
@@ -1011,9 +1013,24 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
         )
     }
 
+    /** Marca a criatura como dispensada sem apagar o registro da conjuração. */
+    fun dismissSummon(recordId: String) {
+        val curr = _activeCharacter.value ?: return
+        val history = CharacterJsonAdapters.deserializeSpellHistory(curr.spellHistoryJson)
+        val updated = history.map { record ->
+            if (record.id == recordId && record.summonedCreatureId.isNotBlank()) {
+                record.copy(summonDismissed = true)
+            } else record
+        }
+        persistCharacter(curr.copy(spellHistoryJson = CharacterJsonAdapters.serializeSpellHistory(updated)))
+    }
+
     fun clearSpellHistory() {
         val curr = _activeCharacter.value ?: return
-        persistCharacter(curr.copy(spellHistoryJson = ""))
+        // Limpar o histórico não dispensa criaturas que ainda estão em campo.
+        val activeSummons = CharacterJsonAdapters.deserializeSpellHistory(curr.spellHistoryJson)
+            .filter { it.isActiveSummon }
+        persistCharacter(curr.copy(spellHistoryJson = CharacterJsonAdapters.serializeSpellHistory(activeSummons)))
     }
 
     // [slot] e [allSlots] vêm do total calculado automaticamente (stats.spellSlots), não do que
