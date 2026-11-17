@@ -4,6 +4,7 @@ import com.example.dnd35.model.CharacterClassEntry
 import com.example.dnd35.model.CharacterCreatureBond
 import com.example.dnd35.model.CreatureBondKind
 import com.example.dnd35.model.CreatureBondRules
+import com.example.dnd35.model.CreatureCatalog
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
@@ -118,6 +119,7 @@ class CreatureBondRulesTest {
             )!!
             assertEquals(level, progression.masterLevel)
             assertEquals(expected.first, progression.naturalArmorBonus)
+            assertEquals(CreatureCatalog.byId("coruja")!!.armorClass + expected.first, progression.effectiveArmorClass)
             assertEquals(expected.second, progression.intelligence)
         }
     }
