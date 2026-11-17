@@ -246,6 +246,11 @@ private fun FamiliarProgressionCard(
                 "Familiar: CA ${progression.effectiveArmorClass} • armadura natural +${progression.naturalArmorBonus} • Inteligência ${progression.intelligence}",
                 style = MaterialTheme.typography.bodyMedium
             )
+            Text(
+                "As habilidades especiais pressupõem que o familiar esteja a até 1,5 km do mestre, salvo condição mais restrita indicada.",
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
             Text("Habilidades concedidas pelo vínculo", style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.SemiBold)
             progression.familiarFeatures.forEach { feature ->
                 Text("• $feature", style = MaterialTheme.typography.bodySmall)
