@@ -58,3 +58,60 @@
 - Causa: import incorreto de `rememberSaveable` (deve vir de `androidx.compose.runtime.saveable`) e importação `IconButton` removida do catálogo, embora ainda usada na navegação de detalhe.
 - Corrigidas ambas as importações. A CI deve ser executada novamente antes do merge.
 - O erro adicional de chamada Composable foi reportado no mesmo trecho de `IconButton` e será reavaliado após corrigir a importação.
+
+
+## 2026-11-17 — Auditoria comparativa com o glossário do Livro dos Monstros
+
+### Fonte primária
+- PDF brasileiro do Livro dos Monstros 3.5 fornecido na biblioteca, Capítulo 7 — Glossário (páginas impressas 305–318), além da seção de criação de monstros sobre ataques especiais e qualidades especiais.
+- O texto foi extraído diretamente do PDF local para comparação com o glossário já existente no aplicativo.
+- O Livro dos Monstros distingue ataques especiais (capacidades ofensivas) de qualidades especiais (defesas, sentidos, formas de movimento, resistências, vulnerabilidades e outras capacidades inatas). Características de tipo/subtipo permanecem uma terceira categoria e não devem ser convertidas em habilidades individuais.
+
+### Resultado da comparação com o app
+- A ajuda contextual do Bestiário já continha a maior parte das explicações. Esta etapa complementa o conteúdo existente, sem criar um segundo glossário nem duplicar fichas.
+- Faro: acrescentados os alcances básicos oficiais (9 m; 18 m a favor do vento; 4,5 m contra o vento), multiplicadores para odores fortes/extremos, distinção entre detectar presença, determinar direção e localizar a fonte, e regra de rastreamento (CD 10 para trilha recente, +2 por hora).
+- Faro Aprimorado: documentado como variante dependente do verbete, com o exemplo dos tubarões (60 m para detectar criaturas e 1,5 km para sangue na água), sem tratar esses valores como universais.
+- Sentido Cego: explicitadas a linha de efeito, a camuflagem total contra alvos não percebidos, as chances de falha e a perda do bônus de Destreza na CA.
+- Percepção às Cegas: explicitada a maior precisão em relação ao Sentido Cego, a capacidade de manobrar/lutar normalmente, a linha de efeito e a ativação quando indicada.
+- Acrescentada a distinção de Enxergar no Escuro (Sob), que não deve ser confundido com Visão no Escuro comum.
+- Acrescentadas entradas para Imunidade à Magia, Ataque Visual, Ataques Sônicos, Ataques de Enxame, Ferimento Amaldiçoado, Sangramento, Raio/Rugido e Magias/Habilidades Similares à Magia.
+- Entradas cujo nome aparece na lista de ataques especiais, mas cuja regra varia entre criaturas, foram deliberadamente descritas como dependentes do verbete. Não foram inventadas regras universais para Raio, Rugido, Sangramento ou Ferimento Amaldiçoado.
+
+### Regras de interpretação preservadas
+- A descrição individual do monstro continua prevalecendo para CD, alcance, dano, frequência, duração, recarga, imunidades e exceções.
+- Faro Aprimorado é apresentado com valores específicos de cada criatura, não como um alcance geral fixo.
+- Sentido Cego e Percepção às Cegas não são sinônimos e não concedem os mesmos benefícios.
+- Imunidade à Magia não é equivalente a Resistência à Magia: a primeira não pode ser superada por teste de nível de conjurador, dentro de seu escopo.
+- Nenhuma ficha estatística, criatura, regra de cálculo ou dado persistido foi alterado. Mudança restrita ao texto informativo do glossário.
+
+### Arquivos
+- `RulesGlossaryDialog.kt`: complementadas as entradas do glossário do Bestiário.
+
+
+## 2026-11-17 — Exemplos práticos para habilidades especiais
+
+### Critério adotado
+- Quando o Livro dos Monstros apresenta um exemplo concreto, o glossário usa a própria criatura e preserva os valores, CDs e efeitos do texto brasileiro.
+- Quando o livro não fornece um exemplo aplicável ou a habilidade varia entre criaturas, o texto do app deve usar um cenário hipotético claramente identificado como exemplo prático, sem apresentá-lo como regra oficial.
+- Exemplos são explicativos; não criam novos efeitos, bônus, CDs, alcances ou exceções.
+
+### Exemplos acrescentados com base no livro
+- Imunidade à Magia: golem de barro e suas exceções específicas contra mover terra e desintegrar.
+- Sentido Cego: enxame de morcegos, alcance de 6 m e a distinção entre perceber o alvo e ainda sofrer limitações de camuflagem.
+- Percepção às Cegas: exemplo didático de ecolocalização de golfinho, sem atribuir alcance ou bônus novos.
+- Faro: exemplo prático de um lobo farejando aventureiros a favor do vento, aplicando o alcance de 18 m e a distinção entre presença e localização.
+- Psiquismo: exemplo de githzerai com psiquismo 3/dia e efeitos listados em sua ficha, reforçando que o verbete pode impor limite diário.
+- Ataque Visual: ghaele em forma humanoide, alcance de 18 m, CD 18 e efeitos diferenciados por tendência e Dados de Vida.
+- Ataques Sônicos: rugido do leonal, cone de 18 m, efeitos de palavra sagrada e 2d6 de dano sônico adicional, com Fortitude CD 20 para anular.
+- Ataques de Enxame e Sangramento: enxame de morcegos, dano de 1d6 e perda de 1 PV por rodada; Cura CD 10 ou magia de cura interrompe o sangramento.
+- Ferimento Amaldiçoado: golem de barro; o ferimento não se recupera naturalmente, resiste a magias de cura e exige teste de nível de conjurador CD 26 para curar ferimentos ou cura completa.
+- Raio e Rugido: ghaele (raio de luz a 100 m, 2d12 de dano) e andro-esfinge (três rugidos por encontro, com efeitos diferentes).
+
+### Validação de conteúdo
+- Os exemplos específicos foram conferidos nos verbetes correspondentes do PDF brasileiro do Livro dos Monstros, não apenas no glossário.
+- O exemplo de Percepção às Cegas foi redigido como situação didática, sem inventar estatísticas.
+- Não foi criado um exemplo genérico para Ferimento Amaldiçoado, Raio ou Rugido que pudesse ser confundido com regra universal; foram usados exemplos de criaturas nomeadas.
+- Nenhuma ficha, estatística, regra de cálculo ou dado persistido foi alterado. A mudança continua restrita à ajuda contextual.
+
+### Arquivos
+- `RulesGlossaryDialog.kt`: exemplos oficiais e exemplos práticos identificados como tais.
