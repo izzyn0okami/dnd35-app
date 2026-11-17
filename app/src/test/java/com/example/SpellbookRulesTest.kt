@@ -221,7 +221,7 @@ class SpellbookRulesTest {
         assertFalse(restored[2].isActiveSummon)
         assertTrue(CharacterJsonAdapters.deserializeSpellHistory("").isEmpty())
         val legacySummon = CharacterJsonAdapters.deserializeSpellHistory(
-            "[{\\"id\\":\\"legacy\\",\\"spellName\\":\\"Invocar Criaturas I\\",\\"summonedCreatureId\\":\\"corvo\\"}]"
+            "[{\"id\":\"legacy\",\"spellName\":\"Invocar Criaturas I\",\"summonedCreatureId\":\"corvo\"}]"
         ).single()
         assertFalse(legacySummon.isActiveSummon)
         assertTrue(CharacterJsonAdapters.deserializeSpellHistory("isto não é json").isEmpty())
