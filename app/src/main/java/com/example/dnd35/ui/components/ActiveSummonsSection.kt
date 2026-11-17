@@ -6,6 +6,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.weight
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -17,6 +19,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -94,27 +98,40 @@ private fun ActiveSummonCard(
     ) {
         Column(
             modifier = Modifier.fillMaxWidth().padding(10.dp),
-            verticalArrangement = Arrangement.spacedBy(5.dp)
+            verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            Text(
-                creature?.name ?: record.summonedCreatureId,
-                style = MaterialTheme.typography.titleSmall,
-                fontWeight = FontWeight.Bold
-            )
-            val subtitle = buildList {
-                add(record.spellName)
-                if (record.casterClass.isNotBlank()) add(record.casterClass)
-                if (record.summonedCreatureVariant.isNotBlank()) add(record.summonedCreatureVariant)
-            }.joinToString(" • ")
-            Text(subtitle, style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.primary)
-            if (creature != null) {
-                val initiative = if (creature.initiative >= 0) "+${creature.initiative}" else creature.initiative.toString()
-                Text(
-                    "PV ${creature.hitPoints} • CA ${creature.armorClassText} • Iniciativa $initiative • Deslocamento ${creature.speed}",
-                    style = MaterialTheme.typography.bodySmall
-                )
-            } else {
-                Text("Ficha da criatura não encontrada no bestiário.", style = MaterialTheme.typography.bodySmall)
+            Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+                if (creature != null) {
+                    CreatureImage(
+                        creature = creature,
+                        modifier = Modifier.size(88.dp).clip(RoundedCornerShape(10.dp))
+                    )
+                }
+                Column(
+                    modifier = Modifier.weight(1f),
+                    verticalArrangement = Arrangement.spacedBy(5.dp)
+                ) {
+                    Text(
+                        creature?.name ?: record.summonedCreatureId,
+                        style = MaterialTheme.typography.titleSmall,
+                        fontWeight = FontWeight.Bold
+                    )
+                    val subtitle = buildList {
+                        add(record.spellName)
+                        if (record.casterClass.isNotBlank()) add(record.casterClass)
+                        if (record.summonedCreatureVariant.isNotBlank()) add(record.summonedCreatureVariant)
+                    }.joinToString(" • ")
+                    Text(subtitle, style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.primary)
+                    if (creature != null) {
+                        val initiative = if (creature.initiative >= 0) "+${creature.initiative}" else creature.initiative.toString()
+                        Text(
+                            "PV ${creature.hitPoints} • CA ${creature.armorClassText} • Iniciativa $initiative • Deslocamento ${creature.speed}",
+                            style = MaterialTheme.typography.bodySmall
+                        )
+                    } else {
+                        Text("Ficha da criatura não encontrada no bestiário.", style = MaterialTheme.typography.bodySmall)
+                    }
+                }
             }
             Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
                 Button(onClick = onDismiss) { Text("Dispensar") }
