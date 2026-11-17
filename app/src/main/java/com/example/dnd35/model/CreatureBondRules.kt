@@ -30,6 +30,8 @@ data class FamiliarProgression(
     val masterLevel: Int,
     /** Aumento cumulativo, não o bônus natural total da criatura. */
     val naturalArmorBonus: Int,
+    /** CA total do familiar após aplicar o aumento de armadura natural. */
+    val effectiveArmorClass: Int,
     val intelligence: Int,
     val familiarFeatures: List<String>,
     val masterBenefits: List<FamiliarMasterBenefit>,
@@ -258,6 +260,7 @@ object CreatureBondRules {
         return FamiliarProgression(
             masterLevel = level,
             naturalArmorBonus = tier,
+            effectiveArmorClass = creature.armorClass + tier,
             intelligence = 5 + tier,
             familiarFeatures = features,
             masterBenefits = masterBenefits,
