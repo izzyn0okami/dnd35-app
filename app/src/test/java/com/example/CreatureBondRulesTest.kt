@@ -136,7 +136,7 @@ class CreatureBondRulesTest {
         assertEquals(16, progress(11).spellResistance)
         assertEquals(0, progress(12).scryingUsesPerDay)
         assertEquals(1, progress(13).scryingUsesPerDay)
-        assertTrue(progress(13).familiarFeatures.any { it.contains("Vidência") })
+        assertTrue(progress(13).masterBenefits.any { it.title == "Vidência no familiar" })
     }
 
     @Test
