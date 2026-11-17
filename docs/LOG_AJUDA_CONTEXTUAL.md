@@ -86,3 +86,32 @@
 
 ### Arquivos
 - `RulesGlossaryDialog.kt`: complementadas as entradas do glossário do Bestiário.
+
+
+## 2026-11-17 — Exemplos práticos para habilidades especiais
+
+### Critério adotado
+- Quando o Livro dos Monstros apresenta um exemplo concreto, o glossário usa a própria criatura e preserva os valores, CDs e efeitos do texto brasileiro.
+- Quando o livro não fornece um exemplo aplicável ou a habilidade varia entre criaturas, o texto do app deve usar um cenário hipotético claramente identificado como exemplo prático, sem apresentá-lo como regra oficial.
+- Exemplos são explicativos; não criam novos efeitos, bônus, CDs, alcances ou exceções.
+
+### Exemplos acrescentados com base no livro
+- Imunidade à Magia: golem de barro e suas exceções específicas contra mover terra e desintegrar.
+- Sentido Cego: enxame de morcegos, alcance de 6 m e a distinção entre perceber o alvo e ainda sofrer limitações de camuflagem.
+- Percepção às Cegas: exemplo didático de ecolocalização de golfinho, sem atribuir alcance ou bônus novos.
+- Faro: exemplo prático de um lobo farejando aventureiros a favor do vento, aplicando o alcance de 18 m e a distinção entre presença e localização.
+- Psiquismo: exemplo de githzerai com psiquismo 3/dia e efeitos listados em sua ficha, reforçando que o verbete pode impor limite diário.
+- Ataque Visual: ghaele em forma humanoide, alcance de 18 m, CD 18 e efeitos diferenciados por tendência e Dados de Vida.
+- Ataques Sônicos: rugido do leonal, cone de 18 m, efeitos de palavra sagrada e 2d6 de dano sônico adicional, com Fortitude CD 20 para anular.
+- Ataques de Enxame e Sangramento: enxame de morcegos, dano de 1d6 e perda de 1 PV por rodada; Cura CD 10 ou magia de cura interrompe o sangramento.
+- Ferimento Amaldiçoado: golem de barro; o ferimento não se recupera naturalmente, resiste a magias de cura e exige teste de nível de conjurador CD 26 para curar ferimentos ou cura completa.
+- Raio e Rugido: ghaele (raio de luz a 100 m, 2d12 de dano) e andro-esfinge (três rugidos por encontro, com efeitos diferentes).
+
+### Validação de conteúdo
+- Os exemplos específicos foram conferidos nos verbetes correspondentes do PDF brasileiro do Livro dos Monstros, não apenas no glossário.
+- O exemplo de Percepção às Cegas foi redigido como situação didática, sem inventar estatísticas.
+- Não foi criado um exemplo genérico para Ferimento Amaldiçoado, Raio ou Rugido que pudesse ser confundido com regra universal; foram usados exemplos de criaturas nomeadas.
+- Nenhuma ficha, estatística, regra de cálculo ou dado persistido foi alterado. A mudança continua restrita à ajuda contextual.
+
+### Arquivos
+- `RulesGlossaryDialog.kt`: exemplos oficiais e exemplos práticos identificados como tais.
