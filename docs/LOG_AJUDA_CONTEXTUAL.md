@@ -141,3 +141,15 @@
 
 ### Arquivos
 - `RulesGlossaryDialog.kt`: separa as duas formas e acrescenta as habilidades que faltavam, além de aprofundar definições existentes.
+
+
+### Cruzamento adicional com habilidades nomeadas nos verbetes
+- **Sopro (Sob)**: incluída a CD básica (10 + metade dos DV raciais + modificador de Constituição), a regra geral de Reflexos para reduzir o dano à metade e a imunidade da criatura ao próprio sopro, salvo exceção.
+- **Sentido Aquático (Ext)**: exemplo do sahuagin, que localiza criaturas submersas a 9 m como Sentido Cego, somente debaixo d'água.
+- **Frenesi de Sangue**: exemplo do sahuagin, com ativação após sofrer dano, frequência diária, bônus de Constituição/Força, penalidade na CA e impossibilidade de encerrar voluntariamente.
+- **Sensibilidade à Água Doce (Ext)**: regra específica do sahuagin, Fortitude CD 15 e repetição a cada 10 minutos de imersão.
+- **Cegueira sob Luz (Ext)**: regra específica do sahuagin, cegueira por 1 rodada e ofuscamento enquanto permanecer sob luz brilhante.
+- **Falar com Tubarões (Ext)**: comunicação telepática do sahuagin a até 50 m, limitada a conceitos simples.
+- **Nuvem de Tinta (Ext)**: explicada como qualidade variável por criatura; exemplo do kraken (24 m de dispersão) e menção às versões diferentes de lulas e tojanidas.
+- **Propulsão (Ext)**: explicada como deslocamento retilíneo para trás em ação de rodada completa sem ataques de oportunidade; exemplos de lula (72 m) e kraken (84 m).
+- Os valores e condições foram conferidos diretamente nos verbetes do sahuagin, kraken, lula e tojanida no PDF brasileiro. Os exemplos não transformam essas habilidades específicas em regras universais.
