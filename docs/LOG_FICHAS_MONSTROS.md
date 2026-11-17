@@ -1051,7 +1051,7 @@ As fichas-base devem ser reutilizadas por ID sempre que a tabela pedir apenas um
 - Proveniência: os últimos lotes de animais e vermes foram preenchidos com SRD 3.5 e fontes de referência de D&D 3.5, em tradução própria. A terminologia e a fidelidade editorial deverão ser revisadas contra o PDF brasileiro quando a extração estiver disponível.
 
 ### 2026-11-17 — Invocações ativas na ficha do personagem
-- Corrigido o fluxo das classes de conjuração espontânea: magias conhecidas de Bardo e Feiticeiro agora exibem a ação **Conjurar**, respeitando os espaços disponíveis da própria classe e usando o mesmo seletor de criaturas já utilizado na seção Preparadas.
+- Corrigido o fluxo das classes de conjuração espontânea: magias conhecidas de Bardo e Feiticeiro agora exibem a ação **Conjurar**, respeitando os espaços disponíveis da própria classe e usando o mesmo seletor de criaturas já utilizado na seção Preparadas. O Bardo só acessa magias de 1º círculo a partir do 3º nível de classe; o fluxo preserva essa progressão.
 - A seleção de uma criatura em *Invocar Criaturas* ou *Invocar Aliado da Natureza* continua consumindo o espaço e registrando a conjuração, mas agora o registro também mantém o estado da invocação (ativa/dispensada).
 - A aba Personagem exibe um card para cada criatura invocada ainda ativa, com nome, magia, classe conjuradora, variante e estatísticas básicas de combate. Tocar no card abre a ficha completa do bestiário.
 - A ação **Dispensar** encerra a presença do card sem apagar o histórico da conjuração.
