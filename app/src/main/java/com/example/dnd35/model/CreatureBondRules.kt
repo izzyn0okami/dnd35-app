@@ -211,7 +211,7 @@ object CreatureBondRules {
         val features = buildList {
             add("Evasão aprimorada (familiar)")
             add("Partilhar magias")
-            if (level >= 3) add("Transmitir magias de toque")
+            if (level >= 3) add("Transmitir magias de toque (mestre e familiar em contato durante a conjuração)")
             if (level >= 5) add("Falar com o mestre")
             if (level >= 7) add("Falar com animais de sua espécie")
             if (level >= 11) add("Resistência à Magia " + (level + 5) + " (familiar)")
