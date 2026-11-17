@@ -256,11 +256,11 @@ data class SpellCastRecord(
     val summonedCreatureId: String = "",
     /** Variante celestial/abissal ou outra opção específica da lista, quando aplicável. */
     val summonedCreatureVariant: String = "",
-    /** Indica que a criatura já foi dispensada ou que a duração terminou. */
-    val summonDismissed: Boolean = false
+    /** Estado explícito: registros antigos do histórico não viram invocações ativas retroativamente. */
+    val summonActive: Boolean = false
 ) {
-    /** Uma invocação permanece ativa até o jogador dispensá-la; duração em rodadas não usa relógio real. */
-    val isActiveSummon: Boolean get() = summonedCreatureId.isNotBlank() && !summonDismissed
+    /** Duração em rodadas não usa relógio real; a mesa controla quando dispensar. */
+    val isActiveSummon: Boolean get() = summonedCreatureId.isNotBlank() && summonActive
 }
 /**
  * Espaços de magia de UMA classe conjuradora em UM círculo. Na multiclasse, cada classe tem sua
