@@ -19,7 +19,7 @@
   - 19–20: +10 e Int 15.
 - As habilidades são cumulativas: evasão aprimorada, partilhar magias, vínculo empático e Prontidão desde os níveis 1–2; transmitir magias de toque a partir do 3º; falar com o mestre a partir do 5º; falar com animais da própria espécie a partir do 7º; Resistência à Magia igual ao nível do mestre +5 a partir do 11º; vidência no familiar uma vez por dia a partir do 13º.
 - O corvo familiar também pode falar um idioma escolhido pelo mestre.
-- O Livro do Jogador esclarece que os benefícios especiais do familiar ao mestre somente se aplicam quando a criatura está a até 1,5 km. Prontidão tem condição mais restrita: o familiar precisa estar ao alcance da mão. A partilha de magias exige proximidade de 1,5 m durante a conjuração e, para efeitos não instantâneos, enquanto permanecer ativo.
+- O Livro do Jogador esclarece que os benefícios especiais do familiar ao mestre somente se aplicam quando a criatura está a até 1,5 km. Prontidão tem condição mais restrita: o familiar precisa estar ao alcance da mão. A partilha de magias exige proximidade de 1,5 m durante a conjuração e, para efeitos não instantâneos, enquanto permanecer ativo. O vínculo empático também permite ao mestre partilhar a conexão do familiar com itens e locais que ele investigou.
 
 ### Benefícios da espécie ao mestre
 - Víbora pequena: +3 em Blefar.
