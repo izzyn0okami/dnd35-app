@@ -66,7 +66,7 @@ class SummoningRulesTest {
     @Test
     fun bardCanOpenTheFirstCircleSummonCreatureSelection() {
         val novice = CharacterEntity(
-            multiclassJson = "[{\\"className\\":\\"Bardo\\",\\"level\\":1}]",
+            multiclassJson = "[{\"className\":\"Bardo\",\"level\":1}]",
             baseCha = 14
         )
         val noviceStats = CharacterCalculator.compute(novice)
