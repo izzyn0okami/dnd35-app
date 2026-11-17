@@ -296,7 +296,8 @@ fun SpellsTab(
                 onAddManual = { showAddSpellModal = true },
                 onOpenSpell = { detailSpell = SpellbookRules.presetFor(it) },
                 onEditSpell = { spellToEdit = it },
-                onDeleteSpell = { pendingSpellDeleteId = it }
+                onDeleteSpell = { pendingSpellDeleteId = it },
+                onCastSpell = { spell, slot, casterClass -> castSpellOrChooseCreature(spell, slot, casterClass) }
             )
             2 -> catalogSection(
                 stats = stats,
