@@ -37,7 +37,7 @@
 ### Implementação
 - Adicionado modelo calculado `FamiliarProgression`, sem persistir valores derivados nem duplicar a ficha original da criatura.
 - A progressão é recalculada em tempo de execução a partir dos níveis atuais de Mago e Feiticeiro e do ID do familiar vinculado.
-- A ficha agora exibe o nível combinado, o aumento de armadura natural e a Inteligência do familiar, as habilidades acumuladas e os benefícios do mestre, cada qual com sua condição de alcance.
+- A ficha agora exibe o nível combinado, o aumento de armadura natural, a CA total recalculada (CA-base da criatura + aumento natural) e a Inteligência do familiar, além das habilidades acumuladas e dos benefícios do mestre, cada qual com sua condição de alcance.
 - A Resistência à Magia e a vidência aparecem somente nos níveis exigidos.
 - Ao selecionar outro familiar, o vínculo anterior é substituído. O Livro do Jogador permite somente um familiar simultaneamente.
 - Os bônus condicionais do mestre são apresentados separadamente e não são incorporados permanentemente aos totais de perícias/resistências/PV: a ficha ainda não registra a distância atual entre mestre e familiar. Aplicá-los sempre causaria bônus incorretos quando o familiar estivesse fora do alcance exigido.
