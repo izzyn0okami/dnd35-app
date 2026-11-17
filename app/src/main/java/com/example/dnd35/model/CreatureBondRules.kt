@@ -231,7 +231,7 @@ object CreatureBondRules {
             ))
             add(FamiliarMasterBenefit(
                 title = "Vínculo empático",
-                effect = "Comunicação telepática limitada à transmissão de emoções",
+                effect = "Comunicação telepática limitada às emoções; o mestre também partilha a conexão do familiar com itens e locais que ele investigou",
                 condition = "Alcance máximo de 1,5 km"
             ))
             if (level >= 13) {
