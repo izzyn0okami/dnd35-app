@@ -58,3 +58,31 @@
 - Causa: import incorreto de `rememberSaveable` (deve vir de `androidx.compose.runtime.saveable`) e importação `IconButton` removida do catálogo, embora ainda usada na navegação de detalhe.
 - Corrigidas ambas as importações. A CI deve ser executada novamente antes do merge.
 - O erro adicional de chamada Composable foi reportado no mesmo trecho de `IconButton` e será reavaliado após corrigir a importação.
+
+
+## 2026-11-17 — Auditoria comparativa com o glossário do Livro dos Monstros
+
+### Fonte primária
+- PDF brasileiro do Livro dos Monstros 3.5 fornecido na biblioteca, Capítulo 7 — Glossário (páginas impressas 305–318), além da seção de criação de monstros sobre ataques especiais e qualidades especiais.
+- O texto foi extraído diretamente do PDF local para comparação com o glossário já existente no aplicativo.
+- O Livro dos Monstros distingue ataques especiais (capacidades ofensivas) de qualidades especiais (defesas, sentidos, formas de movimento, resistências, vulnerabilidades e outras capacidades inatas). Características de tipo/subtipo permanecem uma terceira categoria e não devem ser convertidas em habilidades individuais.
+
+### Resultado da comparação com o app
+- A ajuda contextual do Bestiário já continha a maior parte das explicações. Esta etapa complementa o conteúdo existente, sem criar um segundo glossário nem duplicar fichas.
+- Faro: acrescentados os alcances básicos oficiais (9 m; 18 m a favor do vento; 4,5 m contra o vento), multiplicadores para odores fortes/extremos, distinção entre detectar presença, determinar direção e localizar a fonte, e regra de rastreamento (CD 10 para trilha recente, +2 por hora).
+- Faro Aprimorado: documentado como variante dependente do verbete, com o exemplo dos tubarões (60 m para detectar criaturas e 1,5 km para sangue na água), sem tratar esses valores como universais.
+- Sentido Cego: explicitadas a linha de efeito, a camuflagem total contra alvos não percebidos, as chances de falha e a perda do bônus de Destreza na CA.
+- Percepção às Cegas: explicitada a maior precisão em relação ao Sentido Cego, a capacidade de manobrar/lutar normalmente, a linha de efeito e a ativação quando indicada.
+- Acrescentada a distinção de Enxergar no Escuro (Sob), que não deve ser confundido com Visão no Escuro comum.
+- Acrescentadas entradas para Imunidade à Magia, Ataque Visual, Ataques Sônicos, Ataques de Enxame, Ferimento Amaldiçoado, Sangramento, Raio/Rugido e Magias/Habilidades Similares à Magia.
+- Entradas cujo nome aparece na lista de ataques especiais, mas cuja regra varia entre criaturas, foram deliberadamente descritas como dependentes do verbete. Não foram inventadas regras universais para Raio, Rugido, Sangramento ou Ferimento Amaldiçoado.
+
+### Regras de interpretação preservadas
+- A descrição individual do monstro continua prevalecendo para CD, alcance, dano, frequência, duração, recarga, imunidades e exceções.
+- Faro Aprimorado é apresentado com valores específicos de cada criatura, não como um alcance geral fixo.
+- Sentido Cego e Percepção às Cegas não são sinônimos e não concedem os mesmos benefícios.
+- Imunidade à Magia não é equivalente a Resistência à Magia: a primeira não pode ser superada por teste de nível de conjurador, dentro de seu escopo.
+- Nenhuma ficha estatística, criatura, regra de cálculo ou dado persistido foi alterado. Mudança restrita ao texto informativo do glossário.
+
+### Arquivos
+- `RulesGlossaryDialog.kt`: complementadas as entradas do glossário do Bestiário.
