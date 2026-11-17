@@ -1057,5 +1057,5 @@ As fichas-base devem ser reutilizadas por ID sempre que a tabela pedir apenas um
 - A ação **Dispensar** encerra a presença do card sem apagar o histórico da conjuração.
 - Limpar o histórico preserva as invocações ainda ativas; a retenção do histórico também não remove registros de invocações ativas.
 - Não se usa relógio real para expirar magias cuja duração é medida em rodadas. A ficha mantém a invocação até que o jogador a dispense ao fim da duração ou quando a criatura desaparecer por outro efeito.
-- O estado foi acrescentado ao JSON de histórico já existente, com valor padrão compatível com fichas antigas; não exige alteração de banco Room nem migração.
+- O estado ativo explícito foi acrescentado ao JSON de histórico já existente, com padrão falso para que invocações registradas em versões antigas não reapareçam como se ainda estivessem em campo; não exige alteração de banco Room nem migração.
 - Testes cobrem a persistência do estado ativo/dispensado e a disponibilidade de *Invocar Criaturas I* para Bardo.
