@@ -124,14 +124,14 @@
 - Comparação feita com o conteúdo atualmente integrado em `RulesGlossaryDialog.kt`; PR #394 já foi mesclada antes desta etapa.
 
 ### Lacunas identificadas e corrigidas
-- **Alterar Forma (Sob)** e **Mudar Forma (Sob)** agora são verbetes separados. O texto diferencia a troca de características físicas e especiais de Alterar Forma da mudança de aparência de Mudar Forma, que preserva os valores de habilidades originais. Foi acrescentado um exemplo prático para cada mecânica.
+- **Alterar Forma (Sob)** e **Mudar Forma (Sob)** agora são verbetes separados. O texto diferencia a troca de características físicas e especiais de Alterar Forma da mudança de aparência de Mudar Forma, que preserva os valores de habilidades originais. Exemplos oficiais: ghaele alternando entre forma humanoide e globo incorpóreo; aranea assumindo uma forma humanoide e perdendo o uso de mordida, teia e veneno.
 - **Distração (Ext)**: explicada a condição de enjoo, o teste de Fortitude e a exigência de Concentração para conjurar ou manter concentração dentro de um enxame; exemplo com um aventureiro cercado por morcegos.
 - **Presença Aterradora (Ext)**: explicados gatilhos, área, limite de DV/nível, teste de Vontade, duração geral e imunidade por 24 horas após sucesso; exemplo de um rugido de dragão.
 - **Voo (Ext ou Sob)**: explicado que decolar e aterrissar são ações livres e que o voo sobrenatural é suprimido em campo antimagia; exemplo comparando voo Ext e Sob.
 - **Dreno de Energia**: ampliados os efeitos dos níveis negativos, PV temporários recebidos pelo atacante e teste após 24 horas.
 - **Paralisia**: explicitadas a incapacidade de realizar ações físicas, ausência de novo teste por rodada e consequências para criaturas voadoras ou nadadoras.
 - **Medo e Desespero**: diferenciadas as formas de aura, cone e raio, com referência ao desespero das múmias.
-- **Ataque Visual**: incluído o momento do teste por turno e a possibilidade de ativação deliberada como ação de ataque.
+- **Ataque Visual**: incluído o momento do teste por turno e a possibilidade de ativação deliberada como ação de ataque; preservado o exemplo específico do ghaele (18 m, Vontade CD 18 e medo por 2d10 rodadas).
 - **Invocar**: acrescentadas a duração usual de uma hora, a restrição de invocação da criatura chamada e a ausência de XP para criaturas invocadas.
 
 ### Regras de fidelidade
