@@ -193,4 +193,34 @@
 - A alteração é exclusivamente textual e informativa. Nenhum bloco de estatísticas, cálculo, ficha de personagem ou dado persistido foi modificado.
 
 ### Arquivos
-- `RulesGlossaryDialog.kt`: 21 entradas específicas adicionadas ao glossário do Bestiário.
+- `RulesGlossaryDialog.kt`: 47 entradas específicas adicionadas ao glossário do Bestiário.
+
+
+### Complemento do cruzamento: outras habilidades encontradas nos blocos e verbetes
+- **Murmúrio** e **Enlouquecer** — allip: efeito hipnótico em área e dano temporário de Sabedoria contra conjuradores que tentem ler/controlar sua mente.
+- **Adesão** — stirge e arminho atroz: fixação no corpo da vítima, com regras próprias para remover a criatura.
+- **Aderente** — mímico e kuo-toa: adesivo corporal ou aplicado ao escudo; CDs e formas de remoção permanecem vinculadas ao exemplo.
+- **Aura de Ameaça** — arcontes: penalidade contra criaturas hostis, com CD variável por espécie.
+- **Raios Ópticos** — gauth e beholder: efeitos distintos por raio, quantidade, alcance e CD diferentes.
+- **Salto** — bulette: ataque com quatro garras em substituição ao padrão de duas, sem mordida na mesma rodada.
+- **Tentáculos Paralisantes** — chuul: aprisionamento e paralisia com Fortitude CD 19, além do dano das mandíbulas.
+- **Destruição** — nalfeshnee: explosão de luz profana com Vontade CD 22.
+- **Ferimento Infernal**, **Barba** e **Frenesi de Batalha** — diabo barbado; ferimento persistente, doença transmitida pela barba e frenesi com duração e bônus específicos.
+- **Raio Elétrico** — gavião-seta: rajada uma vez por rodada, alcance 15 m.
+- **Raio de Luz** — arconte luminar: alcance 10 m e capacidade de ignorar RD.
+- **Beijo** — vargouille: transformação iniciada contra vítima paralisada, com Fortitude CD 15.
+- **Trinado** — verme do gelo: efeito sônico em 30 m, Vontade CD 17 e duração ligada à emissão do som.
+- **Passeio Etéreo** — salteadores/saqueadores etéreos: deslocamento entre os Planos Etéreo e Material, com janela de permanência própria.
+- **Dano Dobrado contra Objetos** — entes e árvores animadas: aplica-se a ataques totais contra objetos e estruturas, não contra criaturas.
+- **Arrebatar** — dragão-tartaruga: agarrar e manter vítimas presas, com possibilidade de arremesso.
+- **Maestria Aquática**, **Maestria Aérea** e **Maestria Terrestre** — modificadores condicionais de combate dos elementais, dependentes do ambiente e da posição dos oponentes.
+- **Vórtice** e **Vendaval** — transformações especiais dos elementais da água e do ar, com frequência e duração vinculadas aos Dados de Vida.
+- **Empurrar** — elemental da terra: inicia Encontrão sem provocar ataque de oportunidade.
+- **Toque Pútrido** — múmia: doença sobrenatural que também funciona como maldição, com exigências próprias para magias de cura.
+
+### Precisões adicionais
+- Raios Ópticos não foram descritos como uma lista fixa de efeitos: o gauth e o beholder têm quantidades, alcances, CDs e efeitos próprios.
+- Adesão e Aderente foram mantidas separadas porque o livro usa os nomes para mecanismos diferentes em criaturas diferentes.
+- Ferimento Infernal não foi fundido com Ferimento Amaldiçoado: ambos causam dano persistente, mas têm origem e condições de remoção distintas.
+- Maestrias e transformações elementais mantêm os modificadores e limites específicos do Livro dos Monstros.
+- Total acumulado nesta etapa: 47 novas entradas específicas, além do glossário geral já existente.
