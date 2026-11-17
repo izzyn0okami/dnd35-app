@@ -96,6 +96,90 @@ class CreatureBondRulesTest {
     }
 
     @Test
+    fun familiarProgressionUsesCombinedWizardAndSorcererLevelsAtEveryTier() {
+        val cases = listOf(
+            1 to (1 to 6),
+            2 to (1 to 6),
+            3 to (2 to 7),
+            5 to (3 to 8),
+            7 to (4 to 9),
+            9 to (5 to 10),
+            11 to (6 to 11),
+            13 to (7 to 12),
+            15 to (8 to 13),
+            17 to (9 to 14),
+            19 to (10 to 15),
+            20 to (10 to 15)
+        )
+        cases.forEach { (level, expected) ->
+            val progression = CreatureBondRules.familiarProgression(
+                listOf(CharacterClassEntry("Mago", level / 2), CharacterClassEntry("Feiticeiro", level - level / 2)),
+                "coruja"
+            )!!
+            assertEquals(level, progression.masterLevel)
+            assertEquals(expected.first, progression.naturalArmorBonus)
+            assertEquals(expected.second, progression.intelligence)
+        }
+    }
+
+    @Test
+    fun familiarSpecialAbilitiesUnlockAtCorrectLevelsAndResistanceBelongsToFamiliar() {
+        fun progress(level: Int) = CreatureBondRules.familiarProgression(
+            listOf(CharacterClassEntry("Feiticeiro", level)), "gato"
+        )!!
+
+        assertFalse(progress(2).familiarFeatures.any { it.contains("Transmitir magias") })
+        assertTrue(progress(3).familiarFeatures.any { it.contains("Transmitir magias de toque") })
+        assertTrue(progress(5).familiarFeatures.any { it.contains("Falar com o mestre") })
+        assertTrue(progress(7).familiarFeatures.any { it.contains("animais de sua espécie") })
+        assertEquals(null, progress(10).spellResistance)
+        assertEquals(16, progress(11).spellResistance)
+        assertEquals(0, progress(12).scryingUsesPerDay)
+        assertEquals(1, progress(13).scryingUsesPerDay)
+        assertTrue(progress(13).familiarFeatures.any { it.contains("Vidência") })
+    }
+
+    @Test
+    fun familiarSpeciesBenefitsAreGrantedToMasterWithCorrectRangeConditions() {
+        val owl = CreatureBondRules.familiarProgression(
+            listOf(CharacterClassEntry("Mago", 1)), "coruja"
+        )!!
+        assertTrue(owl.masterBenefits.any {
+            it.title == "Prontidão" &&
+                it.effect == "+2 em Observar e Ouvir" &&
+                it.condition.contains("ao alcance da mão")
+        })
+        assertTrue(owl.masterBenefits.any {
+            it.title == "Coruja" &&
+                it.effect == "+3 em Observar na penumbra" &&
+                it.condition.contains("1,5 km")
+        })
+
+        val toad = CreatureBondRules.familiarProgression(
+            listOf(CharacterClassEntry("Feiticeiro", 1)), "sapo"
+        )!!
+        assertTrue(toad.masterBenefits.any { it.effect == "+3 pontos de vida" })
+
+        val raven = CreatureBondRules.familiarProgression(
+            listOf(CharacterClassEntry("Mago", 7)), "corvo"
+        )!!
+        assertTrue(raven.familiarFeatures.any { it.contains("Pode falar um idioma") })
+        assertTrue(raven.masterBenefits.any { it.effect == "+3 em testes de Avaliação" })
+    }
+
+    @Test
+    fun familiarProgressionIsUnavailableWithoutFamiliarClassOrEligibleCreature() {
+        assertEquals(
+            null,
+            CreatureBondRules.familiarProgression(listOf(CharacterClassEntry("Guerreiro", 20)), "coruja")
+        )
+        assertEquals(
+            null,
+            CreatureBondRules.familiarProgression(listOf(CharacterClassEntry("Mago", 5)), "lobo")
+        )
+    }
+
+    @Test
     fun bondValidationUsesCatalogEligibilityFlags() {
         assertTrue(CreatureBondRules.isValidBond(CharacterCreatureBond(kind = CreatureBondKind.FAMILIAR, creatureId = "coruja")))
         assertTrue(CreatureBondRules.isValidBond(CharacterCreatureBond(kind = CreatureBondKind.ANIMAL_COMPANION, creatureId = "lobo")))
