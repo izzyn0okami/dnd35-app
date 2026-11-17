@@ -284,7 +284,8 @@ internal fun LazyListScope.knownSection(
     onAddManual: () -> Unit,
     onOpenSpell: (CharacterSpell) -> Unit,
     onEditSpell: (CharacterSpell) -> Unit,
-    onDeleteSpell: (String) -> Unit
+    onDeleteSpell: (String) -> Unit,
+    onCastSpell: (CharacterSpell, SpellSlotInfo, String) -> Unit
 ) {
     val casters = stats.casterClasses
     item {
@@ -415,6 +416,17 @@ internal fun LazyListScope.knownSection(
                     }
                     IconButton(onClick = { onDeleteSpell(spell.id) }, modifier = Modifier.size(40.dp)) {
                         Icon(Icons.Default.Delete, contentDescription = "Excluir ${spell.name}", modifier = Modifier.size(18.dp), tint = MaterialTheme.colorScheme.error)
+                    }
+                    if (style == SpellbookRules.Style.SPONTANEOUS && info != null) {
+                        val slot = stats.spellSlots.firstOrNull {
+                            it.level == spell.level && it.className.equals(info.className, ignoreCase = true)
+                        }
+                        val remaining = slot?.let { (it.totalSlots - it.usedSlots).coerceAtLeast(0) } ?: 0
+                        OutlinedButton(
+                            onClick = { if (slot != null) onCastSpell(spell, slot, info.className) },
+                            enabled = slot != null && remaining > 0,
+                            contentPadding = ButtonDefaults.TextButtonContentPadding
+                        ) { Text("Conjurar", style = MaterialTheme.typography.labelSmall) }
                     }
                 }
             }

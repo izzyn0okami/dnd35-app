@@ -1,5 +1,7 @@
 package com.example
 
+import com.example.dnd35.model.CharacterCalculator
+import com.example.dnd35.model.CharacterEntity
 import com.example.dnd35.model.SummoningFamily
 import com.example.dnd35.model.SummoningRules
 import org.junit.Assert.assertEquals
@@ -59,6 +61,38 @@ class SummoningRulesTest {
         assertTrue(ninth.any { it.creature.id == "grig" })
         assertTrue(ninth.any { it.creature.id == "pixie" && it.templateLabel.contains("memória") })
         assertEquals(3, ninth.count { it.creature.id == "pixie" })
+    }
+
+    @Test
+    fun bardCanOpenTheFirstCircleSummonCreatureSelection() {
+        val novice = CharacterEntity(
+            multiclassJson = "[{\"className\":\"Bardo\",\"level\":1}]",
+            baseCha = 14
+        )
+        val noviceStats = CharacterCalculator.compute(novice)
+        val noviceOptions = SummoningRules.optionsForSpell(
+            spellName = "Invocar Criaturas I",
+            spellCircle = 1,
+            casterClass = "Bardo",
+            stats = noviceStats,
+            character = novice
+        )
+        assertTrue(noviceOptions.orEmpty().isEmpty())
+
+        val character = CharacterEntity(
+            multiclassJson = "[{\"className\":\"Bardo\",\"level\":3}]",
+            baseCha = 14
+        )
+        val stats = CharacterCalculator.compute(character)
+        val options = SummoningRules.optionsForSpell(
+            spellName = "Invocar Criaturas I",
+            spellCircle = 1,
+            casterClass = "Bardo",
+            stats = stats,
+            character = character
+        )
+        assertTrue(SummoningRules.isClassAllowed(SummoningFamily.SUMMON_CREATURES, "Bardo"))
+        assertTrue(options.orEmpty().isNotEmpty())
     }
 
     @Test

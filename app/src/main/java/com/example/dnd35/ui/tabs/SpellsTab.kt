@@ -296,7 +296,8 @@ fun SpellsTab(
                 onAddManual = { showAddSpellModal = true },
                 onOpenSpell = { detailSpell = SpellbookRules.presetFor(it) },
                 onEditSpell = { spellToEdit = it },
-                onDeleteSpell = { pendingSpellDeleteId = it }
+                onDeleteSpell = { pendingSpellDeleteId = it },
+                onCastSpell = { spell, slot, casterClass -> castSpellOrChooseCreature(spell, slot, casterClass) }
             )
             2 -> catalogSection(
                 stats = stats,
@@ -370,7 +371,7 @@ fun SpellsTab(
         AlertDialog(
             onDismissRequest = { showClearHistory = false },
             title = { Text("Limpar histórico?") },
-            text = { Text("Os registros de magias conjuradas serão apagados. Os espaços de magia não mudam.") },
+            text = { Text("O histórico será limpo, mas as invocações ainda ativas permanecerão na aba Personagem. Os espaços de magia não mudam.") },
             confirmButton = { Button(onClick = { viewModel.clearSpellHistory(); showClearHistory = false }) { Text("Limpar") } },
             dismissButton = { OutlinedButton(onClick = { showClearHistory = false }) { Text("Cancelar") } }
         )

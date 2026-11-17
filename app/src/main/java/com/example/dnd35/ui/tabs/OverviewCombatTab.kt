@@ -56,6 +56,7 @@ import androidx.compose.ui.unit.dp
 import com.example.dnd35.model.CalculatedCharacterStats
 import com.example.dnd35.model.CharacterEntity
 import com.example.dnd35.ui.components.CreatureBondSection
+import com.example.dnd35.ui.components.ActiveSummonsSection
 import com.example.dnd35.model.Dnd35Rules
 import com.example.dnd35.model.remainingAmmunitionUnits
 import com.example.dnd35.model.isWeaponInventoryCategory
@@ -203,6 +204,8 @@ fun OverviewCombatTab(
         }
 
         item {
+            ActiveSummonsSection(character = character, viewModel = viewModel)
+            Spacer(modifier = Modifier.height(8.dp))
             CreatureBondSection(
                 character = character,
                 classEntries = stats.classEntries,

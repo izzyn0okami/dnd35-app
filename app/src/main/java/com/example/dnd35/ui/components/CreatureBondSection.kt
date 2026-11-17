@@ -85,7 +85,7 @@ fun CreatureBondSection(
                 if (familiarOptions.isNotEmpty() || familiarBonds.isNotEmpty()) {
                     OutlinedButton(onClick = { activeKind = CreatureBondKind.FAMILIAR; showPicker = true },
                         modifier = Modifier.fillMaxWidth()) {
-                        Text(if (familiarBonds.isEmpty()) "Selecionar familiar" else "Adicionar outro familiar")
+                        Text(if (familiarBonds.isEmpty()) "Selecionar familiar" else "Substituir familiar")
                     }
                 }
                 if (companionOptions.isNotEmpty() || companionBonds.isNotEmpty()) {
@@ -108,6 +108,14 @@ fun CreatureBondSection(
                     Text("Vincular companheiro")
                 }
             }
+        }
+    }
+
+    familiarBonds.forEach { bond ->
+        val creature = CreatureCatalog.byId(bond.creatureId)
+        val progression = CreatureBondRules.familiarProgression(classEntries, bond.creatureId)
+        if (creature != null && progression != null) {
+            FamiliarProgressionCard(creature.name, progression)
         }
     }
 
@@ -184,7 +192,14 @@ fun CreatureBondSection(
                         selectLabel = "Vincular criatura",
                         onSelect = {
                             val kind = activeKind ?: return@CreatureImageTradingCard
-                            viewModel.updateCreatureBonds(savedBonds + CharacterCreatureBond(kind = kind, creatureId = creature.id))
+                            val updatedBonds = if (kind == CreatureBondKind.FAMILIAR) {
+                                // O Livro do Jogador permite somente um familiar simultaneamente.
+                                savedBonds.filterNot { it.kind == CreatureBondKind.FAMILIAR } +
+                                    CharacterCreatureBond(kind = kind, creatureId = creature.id)
+                            } else {
+                                savedBonds + CharacterCreatureBond(kind = kind, creatureId = creature.id)
+                            }
+                            viewModel.updateCreatureBonds(updatedBonds)
                             showPicker = false
                         }
                     )
@@ -205,5 +220,46 @@ private fun BondActionButton(
 ) {
     OutlinedButton(onClick = onClick, modifier = Modifier.fillMaxWidth()) {
         Text(if (current.isEmpty()) "Selecionar $title" else "$title atual (${current.size})")
+    }
+}
+
+
+@Composable
+private fun FamiliarProgressionCard(
+    creatureName: String,
+    progression: com.example.dnd35.model.FamiliarProgression
+) {
+    Card(
+        modifier = Modifier.fillMaxWidth(),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)
+    ) {
+        Column(
+            modifier = Modifier.padding(12.dp),
+            verticalArrangement = Arrangement.spacedBy(6.dp)
+        ) {
+            Text("Progressão de $creatureName", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
+            Text(
+                "Nível combinado de Mago/Feiticeiro: ${progression.masterLevel}",
+                style = MaterialTheme.typography.bodyMedium
+            )
+            Text(
+                "Familiar: CA ${progression.effectiveArmorClass} • armadura natural +${progression.naturalArmorBonus} • Inteligência ${progression.intelligence}",
+                style = MaterialTheme.typography.bodyMedium
+            )
+            Text(
+                "As habilidades especiais pressupõem que o familiar esteja a até 1,5 km do mestre, salvo condição mais restrita indicada.",
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+            Text("Habilidades concedidas pelo vínculo", style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.SemiBold)
+            progression.familiarFeatures.forEach { feature ->
+                Text("• $feature", style = MaterialTheme.typography.bodySmall)
+            }
+            Text("Benefícios para o mestre", style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.SemiBold)
+            progression.masterBenefits.forEach { benefit ->
+                Text("${benefit.title}: ${benefit.effect}", style = MaterialTheme.typography.bodySmall, fontWeight = FontWeight.Medium)
+                Text(benefit.condition, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            }
+        }
     }
 }

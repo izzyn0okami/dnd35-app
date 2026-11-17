@@ -210,12 +210,20 @@ class SpellbookRulesTest {
     @Test
     fun spellHistoryRoundTrips() {
         val records = listOf(
-            SpellCastRecord(id = "1", timestamp = 1000L, spellName = "Bola de Fogo", spellLevel = 3, casterClass = "Mago", slotLevel = 3),
-            SpellCastRecord(id = "2", timestamp = 2000L, spellName = "Luz", spellLevel = 0)
+            SpellCastRecord(id = "1", timestamp = 1000L, spellName = "Invocar Criaturas I", spellLevel = 1, casterClass = "Bardo", slotLevel = 1, summonedCreatureId = "corvo", summonedCreatureVariant = "Celestial", summonActive = true),
+            SpellCastRecord(id = "2", timestamp = 2000L, spellName = "Invocar Criaturas I", spellLevel = 1, summonedCreatureId = "cachorro", summonActive = false),
+            SpellCastRecord(id = "3", timestamp = 3000L, spellName = "Luz", spellLevel = 0)
         )
         val restored = CharacterJsonAdapters.deserializeSpellHistory(CharacterJsonAdapters.serializeSpellHistory(records))
         assertEquals(records, restored)
+        assertTrue(restored[0].isActiveSummon)
+        assertFalse(restored[1].isActiveSummon)
+        assertFalse(restored[2].isActiveSummon)
         assertTrue(CharacterJsonAdapters.deserializeSpellHistory("").isEmpty())
+        val legacySummon = CharacterJsonAdapters.deserializeSpellHistory(
+            "[{\"id\":\"legacy\",\"spellName\":\"Invocar Criaturas I\",\"summonedCreatureId\":\"corvo\"}]"
+        ).single()
+        assertFalse(legacySummon.isActiveSummon)
         assertTrue(CharacterJsonAdapters.deserializeSpellHistory("isto não é json").isEmpty())
     }
 

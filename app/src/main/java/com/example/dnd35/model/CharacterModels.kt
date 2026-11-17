@@ -255,8 +255,13 @@ data class SpellCastRecord(
     /** ID da carta escolhida ao conjurar uma magia de invocação. */
     val summonedCreatureId: String = "",
     /** Variante celestial/abissal ou outra opção específica da lista, quando aplicável. */
-    val summonedCreatureVariant: String = ""
-)
+    val summonedCreatureVariant: String = "",
+    /** Estado explícito: registros antigos do histórico não viram invocações ativas retroativamente. */
+    val summonActive: Boolean = false
+) {
+    /** Duração em rodadas não usa relógio real; a mesa controla quando dispensar. */
+    val isActiveSummon: Boolean get() = summonedCreatureId.isNotBlank() && summonActive
+}
 /**
  * Espaços de magia de UMA classe conjuradora em UM círculo. Na multiclasse, cada classe tem sua
  * própria progressão e seus próprios espaços (um espaço de Clérigo não conjura magia de Mago).

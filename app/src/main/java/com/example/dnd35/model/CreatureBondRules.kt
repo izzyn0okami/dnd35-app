@@ -20,6 +20,25 @@ data class CreatureSelectionOption(
     val restriction: String = ""
 )
 
+data class FamiliarMasterBenefit(
+    val title: String,
+    val effect: String,
+    val condition: String
+)
+
+data class FamiliarProgression(
+    val masterLevel: Int,
+    /** Aumento cumulativo, não o bônus natural total da criatura. */
+    val naturalArmorBonus: Int,
+    /** CA total do familiar após aplicar o aumento de armadura natural. */
+    val effectiveArmorClass: Int,
+    val intelligence: Int,
+    val familiarFeatures: List<String>,
+    val masterBenefits: List<FamiliarMasterBenefit>,
+    val spellResistance: Int?,
+    val scryingUsesPerDay: Int
+)
+
 /**
  * Regras de elegibilidade de familiares e companheiros animais (Livro do Jogador 3.5).
  * As flags do catálogo indicam a lista de origem; os requisitos de nível são aplicados aqui.
@@ -170,6 +189,84 @@ object CreatureBondRules {
                 ).joinToString(" • ")
             )
         }.sortedBy { CreatureCatalog.normalizeForSearch(it.creature.name) }
+    }
+
+    /**
+     * Progressão do familiar conforme a tabela "Descrição das Habilidades dos Familiares"
+     * do Livro do Jogador brasileiro, páginas impressas 34–35.
+     *
+     * O nível efetivo soma somente níveis de Mago e Feiticeiro. Armadura natural e
+     * Inteligência pertencem ao familiar; masterBenefits pertence ao mestre e preserva
+     * as condições de alcance indicadas pelo livro.
+     */
+    fun familiarProgression(
+        classes: List<CharacterClassEntry>,
+        creatureId: String
+    ): FamiliarProgression? {
+        val level = familiarMasterLevel(classes)
+        val creature = CreatureCatalog.byId(creatureId)?.takeIf { it.familiar } ?: return null
+        if (level < 1) return null
+
+        val tier = ((level + 1) / 2).coerceIn(1, 10)
+        val features = buildList {
+            add("Evasão aprimorada (familiar)")
+            add("Partilhar magias")
+            if (level >= 3) add("Transmitir magias de toque (mestre e familiar em contato durante a conjuração)")
+            if (level >= 5) add("Falar com o mestre")
+            if (level >= 7) add("Falar com animais de sua espécie")
+            if (level >= 11) add("Resistência à Magia " + (level + 5) + " (familiar)")
+            if (creatureId == "corvo") add("Pode falar um idioma escolhido pelo mestre")
+        }
+
+        val masterBenefits = buildList {
+            add(FamiliarMasterBenefit(
+                title = "Prontidão",
+                effect = "+2 em Observar e Ouvir",
+                condition = "Enquanto o familiar estiver ao alcance da mão"
+            ))
+            add(FamiliarMasterBenefit(
+                title = "Partilhar magias",
+                effect = "O mestre pode partilhar com o familiar uma magia conjurada sobre si e conjurar nele magias cujo alvo seja \"Você\"",
+                condition = "Familiar a até 1,5 m durante a conjuração; efeitos não instantâneos cessam se ele se afastar mais de 1,5 m"
+            ))
+            add(FamiliarMasterBenefit(
+                title = "Vínculo empático",
+                effect = "Comunicação telepática limitada às emoções; o mestre também partilha a conexão do familiar com itens e locais que ele investigou",
+                condition = "Alcance máximo de 1,5 km"
+            ))
+            if (level >= 13) {
+                add(FamiliarMasterBenefit(
+                    title = "Vidência no familiar",
+                    effect = "Observar um local remoto através do familiar",
+                    condition = "1 vez por dia; disponível a partir do 13º nível combinado"
+                ))
+            }
+            val speciesBenefit = when (creatureId) {
+                "vibora-pequena" -> FamiliarMasterBenefit("Víbora pequena", "+3 em testes de Blefar", "Enquanto o familiar estiver a até 1,5 km")
+                "gato" -> FamiliarMasterBenefit("Gato", "+3 em testes de Furtividade", "Enquanto o familiar estiver a até 1,5 km")
+                "lagarto" -> FamiliarMasterBenefit("Lagarto", "+3 em testes de Escalar", "Enquanto o familiar estiver a até 1,5 km")
+                "rato" -> FamiliarMasterBenefit("Rato", "+3 em testes de resistência de Fortitude", "Enquanto o familiar estiver a até 1,5 km")
+                "texugo" -> FamiliarMasterBenefit("Texugo", "+3 em testes de resistência de Reflexos", "Enquanto o familiar estiver a até 1,5 km")
+                "coruja" -> FamiliarMasterBenefit("Coruja", "+3 em Observar na penumbra", "Enquanto o familiar estiver a até 1,5 km")
+                "corvo" -> FamiliarMasterBenefit("Corvo", "+3 em testes de Avaliação", "Enquanto o familiar estiver a até 1,5 km")
+                "falcao" -> FamiliarMasterBenefit("Falcão", "+3 em Observar em locais iluminados", "Enquanto o familiar estiver a até 1,5 km")
+                "morcego" -> FamiliarMasterBenefit("Morcego", "+3 em testes de Ouvir", "Enquanto o familiar estiver a até 1,5 km")
+                "sapo" -> FamiliarMasterBenefit("Sapo", "+3 pontos de vida", "Enquanto o familiar estiver a até 1,5 km")
+                else -> null
+            }
+            if (speciesBenefit != null) add(speciesBenefit)
+        }
+
+        return FamiliarProgression(
+            masterLevel = level,
+            naturalArmorBonus = tier,
+            effectiveArmorClass = creature.armorClass + tier,
+            intelligence = 5 + tier,
+            familiarFeatures = features,
+            masterBenefits = masterBenefits,
+            spellResistance = if (level >= 11) level + 5 else null,
+            scryingUsesPerDay = if (level >= 13) 1 else 0
+        )
     }
 
     fun isValidBond(bond: CharacterCreatureBond): Boolean {
