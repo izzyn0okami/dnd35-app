@@ -314,3 +314,9 @@
 
 ### Arquivos
 - `RulesGlossaryDialog.kt`: sete entradas específicas.
+
+
+### Registro de validação — correção de sintaxe
+- A primeira execução da CI da PR #399 identificou ausência de vírgula após a entrada **Imobilidade (Ext)**, antes da próxima entrada do glossário.
+- A vírgula foi restaurada. A falha era de sintaxe Kotlin; nenhuma explicação ou regra foi alterada.
+- A PR permanece aberta até que os novos testes e a compilação sejam concluídos com sucesso na revisão corrigida.
