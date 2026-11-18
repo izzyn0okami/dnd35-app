@@ -266,6 +266,7 @@
 - **Estouro da Manada (Ext)** — bisões: fuga em grupo, atropelamento e dano escalonado por quantidade de animais.
 - **Faro Aguçado (Ext)** — tubarão atroz: detecção de criaturas a 54 m e de sangue na água a 1,5 km.
 - **Ferrugem (Ext)** — monstro da ferrugem: corrosão de metal, teste para itens metálicos encantados e imunidade de materiais não metálicos.
+- Precisão dimensional: a expressão do livro é um **cubo de metal com 3 m de aresta**, não um volume de 3 m³; o texto do glossário foi ajustado para evitar essa conversão incorreta.
 - **Flautas (Sob)** — sátiro: escolha entre três efeitos de ação mental, área, CD e imunidade temporária após sucesso.
 - **Garras de Fumaça (Ext)** — belker: engolfamento na forma gasosa, teste para evitar inalação, dano interno e tentativas para expelir.
 - **Harmonia Destrutiva (Sob)** — destrachan: modos Carne, Nervos e Material, cada qual com dano ou resistência próprios.
