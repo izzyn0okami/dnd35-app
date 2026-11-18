@@ -224,3 +224,24 @@
 - Ferimento Infernal não foi fundido com Ferimento Amaldiçoado: ambos causam dano persistente, mas têm origem e condições de remoção distintas.
 - Maestrias e transformações elementais mantêm os modificadores e limites específicos do Livro dos Monstros.
 - Total acumulado nesta etapa: 47 novas entradas específicas, além do glossário geral já existente.
+
+
+## 2026-11-17 — Complemento: descargas dos lagartos elétricos
+
+### Fonte primária e conferência
+- Livro dos Monstros 3.5 brasileiro, verbete **Lagarto Elétrico**, seção Combate e descrições das habilidades especiais (PDF fornecido; páginas impressas do verbete).
+- O texto foi conferido diretamente no PDF: Choque Atordoante permite um disparo por rodada contra um único alvo a 1,5 m, causa 2d8 de dano por contusão, Reflexos CD 12 reduz à metade e a CD depende de Constituição.
+- Choque Letal exige pelo menos dois lagartos a até 6 m; afeta raio de 6 m centrado em qualquer participante, causa 2d8 por lagarto participante (máximo 12d8) e permite Reflexos para metade, com CD 10 + quantidade de participantes.
+
+### Entradas acrescentadas
+- **Choque Atordoante (Sob)** — explica frequência, alvo, alcance, dano por contusão, resistência e exemplo numérico.
+- **Choque Letal (Sob)** — explica a cooperação entre lagartos, requisito de proximidade, área, dano escalonado, limite máximo, CD variável e exemplo com três participantes (6d8, CD 13).
+
+### Decisões de precisão
+- As duas habilidades são distintas: Choque Atordoante é um ataque individual; Choque Letal é uma descarga combinada em área.
+- Não foi inferido que o Choque Letal atinja automaticamente todos os lagartos participantes; o texto preserva a área descrita no livro.
+- A entrada **Sentir Eletricidade** permanece separada: detectar descargas num raio de 30 m não concede detecção geral de criaturas ou objetos.
+- Nenhuma estatística do catálogo, regra de combate ou dado persistido foi alterado; somente texto explicativo do glossário.
+
+### Arquivos
+- `RulesGlossaryDialog.kt`: duas entradas específicas do lagarto elétrico.
