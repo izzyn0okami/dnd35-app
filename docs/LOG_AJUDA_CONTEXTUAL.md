@@ -272,8 +272,8 @@
 - **Implante (Ext)** — comparação entre devorador de aranhas, slaad vermelho e xill, com incubação e remoção específicas.
 
 ### Correção de precisão
-- A entrada geral **Faro aprimorado** anteriormente informava 60 m para tubarões. O verbete do **tubarão atroz** no PDF indica 54 m para perceber criaturas e 1,5 km para detectar sangue na água. O texto foi corrigido para 54 m e a capacidade foi separada sob o nome específico **Faro Aguçado (Ext)**.
-- Faro Aguçado é um exemplo específico do tubarão atroz, não uma nova regra universal para todas as criaturas com Faro.
+- A comparação dos dois verbetes confirmou que os valores pertencem a criaturas diferentes: **Faro Aprimorado (Ext)** do tubarão comum indica 60 m para identificar criaturas e 1,5 km para detectar sangue na água; **Faro Aguçado (Ext)** do tubarão atroz indica 54 m para perceber criaturas e 1,5 km para detectar sangue na água. Os dois nomes e valores foram mantidos separados.
+- A entrada geral de Faro Aprimorado foi preservada em 60 m; Faro Aguçado é uma capacidade específica do tubarão atroz, não uma nova regra universal para todas as criaturas com Faro.
 - Aura Ígnea e Combustão, assim como Aura Degradante e Aversão à Luz do Dia, permanecem entradas distintas por terem gatilhos e efeitos diferentes.
 - Implante não recebeu uma CD ou prazo universal: os três exemplos têm diferenças importantes e permanecem separados no texto.
 - Harmonia Destrutiva preserva os três modos e suas resistências; não foi reduzida a um ataque sônico genérico.
