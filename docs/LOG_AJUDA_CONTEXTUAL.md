@@ -153,3 +153,74 @@
 - **Nuvem de Tinta (Ext)**: explicada como qualidade variável por criatura; exemplo do kraken (24 m de dispersão) e menção às versões diferentes de lulas e tojanidas.
 - **Propulsão (Ext)**: explicada como deslocamento retilíneo para trás em ação de rodada completa sem ataques de oportunidade; exemplos de lula (72 m) e kraken (84 m).
 - Os valores e condições foram conferidos diretamente nos verbetes do sahuagin, kraken, lula e tojanida no PDF brasileiro. Os exemplos não transformam essas habilidades específicas em regras universais.
+
+
+## 2026-11-17 — Terceira etapa: habilidades específicas dos verbetes de criaturas
+
+### Método de cruzamento
+- Recontagem do catálogo atual: 320 registros em `app/src/main/resources/dnd35/creatures.json`.
+- Comparação dos campos de ataques especiais e qualidades especiais com os termos já explicados em `RulesGlossaryDialog.kt`.
+- Os nomes encontrados foram conferidos nos verbetes correspondentes do PDF brasileiro do Livro dos Monstros fornecido na biblioteca. Foram descartados valores de dano, CDs e expressões que eram apenas partes de estatísticas ou texto mal separado no catálogo.
+- A regra particular de cada criatura foi mantida como exemplo identificado; nenhuma mecânica foi generalizada quando os verbetes apresentavam versões diferentes.
+
+### Entradas acrescentadas
+- **Nuvem Negra** — achaierai: dano e teste de Fortitude contra insanidade.
+- **Drenar Sabedoria** — comparação entre allip e lamia, diferenciando dano permanente e recuperação de PV temporários.
+- **Sensibilidade à Luz** — esclarece que a condição varia entre espécies e entre luz solar/luz intensa.
+- **Aura de Proteção** — exemplo dos anjos, com alcance, bônus defensivos e recriação após dissipação.
+- **Aura Antinatural** — reação de animais à presença das aparições.
+- **Aparência Horripilante** — comparação entre bruxa do mar e fantasma, sem unificar atributos afetados.
+- **Ladrar** — cão yeth, alcance, CD, duração e imunidade temporária ao mesmo usuário.
+- **Dança da Destruição** — vrocks, requisito de grupo, preparação, área, dano e interrupção.
+- **Esporos** — vrock, dano inicial e recorrente, duração e meios de interromper/destruir os esporos.
+- **Insanidade** — característica racial dos derro, com substituição do modificador de Vontade e imunidades.
+- **Enxurrada** — elemental da água, distinguindo chamas mundanas de fogo mágico.
+- **Deslizar na Terra** — elemental da terra, deslocamento através do solo e interação específica com mover terra.
+- **Incendiar** — elemental do fogo, dano misto e teste para evitar pegar fogo.
+- **Possessão** — fantasma etéreo, condição de manifestação, ingresso no espaço e resistência da vítima.
+- **Toque da Corrupção** — fantasma, dano e diferença de modificadores contra alvos etéreos/corpóreos.
+- **Sentir Eletricidade** — lagarto elétrico, detecção de descargas num raio de 30 m.
+- **Toque Paralisante** — comparação entre mohrg e lich, diferenciando duração e forma de remoção.
+- **Mimetismo** — mímico, limites de volume e teste resistido para perceber o disfarce.
+- **Patas de Aranha** — capacidade de escalar superfícies como a magia homônima.
+- **Nuvem de Visco** e **Muco** — abolete, com efeitos separados de respiração e transformação da pele.
+
+### Decisões de precisão
+- As entradas com valores numéricos preservam a criatura de origem e não estabelecem valores universais.
+- Drenar Sabedoria, Aparência Horripilante, Sensibilidade à Luz e Toque Paralisante têm efeitos diferentes conforme o monstro; os exemplos permanecem separados.
+- Aura de Proteção não foi confundida com Aura Antinatural; Nuvem de Visco não foi confundida com Nuvem de Tinta.
+- A lista não transforma características de tipo/subtipo, valores de resistência ou danos de ataques em habilidades independentes.
+- A alteração é exclusivamente textual e informativa. Nenhum bloco de estatísticas, cálculo, ficha de personagem ou dado persistido foi modificado.
+
+### Arquivos
+- `RulesGlossaryDialog.kt`: 47 entradas específicas adicionadas ao glossário do Bestiário.
+
+
+### Complemento do cruzamento: outras habilidades encontradas nos blocos e verbetes
+- **Murmúrio** e **Enlouquecer** — allip: efeito hipnótico em área e dano temporário de Sabedoria contra conjuradores que tentem ler/controlar sua mente.
+- **Adesão** — stirge e arminho atroz: fixação no corpo da vítima, com regras próprias para remover a criatura.
+- **Aderente** — mímico e kuo-toa: adesivo corporal ou aplicado ao escudo; CDs e formas de remoção permanecem vinculadas ao exemplo.
+- **Aura de Ameaça** — arcontes: penalidade contra criaturas hostis, com CD variável por espécie.
+- **Raios Ópticos** — gauth e beholder: efeitos distintos por raio, quantidade, alcance e CD diferentes.
+- **Salto** — bulette: ataque com quatro garras em substituição ao padrão de duas, sem mordida na mesma rodada.
+- **Tentáculos Paralisantes** — chuul: aprisionamento e paralisia com Fortitude CD 19, além do dano das mandíbulas.
+- **Destruição** — nalfeshnee: explosão de luz profana com Vontade CD 22.
+- **Ferimento Infernal**, **Barba** e **Frenesi de Batalha** — diabo barbado; ferimento persistente, doença transmitida pela barba e frenesi com duração e bônus específicos.
+- **Raio Elétrico** — gavião-seta: rajada uma vez por rodada, alcance 15 m.
+- **Raio de Luz** — arconte luminar: alcance 10 m e capacidade de ignorar RD.
+- **Beijo** — vargouille: transformação iniciada contra vítima paralisada, com Fortitude CD 15.
+- **Trinado** — verme do gelo: efeito sônico em 30 m, Vontade CD 17 e duração ligada à emissão do som.
+- **Passeio Etéreo** — salteadores/saqueadores etéreos: deslocamento entre os Planos Etéreo e Material, com janela de permanência própria.
+- **Dano Dobrado contra Objetos** — entes e árvores animadas: aplica-se a ataques totais contra objetos e estruturas, não contra criaturas.
+- **Arrebatar** — dragão-tartaruga: agarrar e manter vítimas presas, com possibilidade de arremesso.
+- **Maestria Aquática**, **Maestria Aérea** e **Maestria Terrestre** — modificadores condicionais de combate dos elementais, dependentes do ambiente e da posição dos oponentes.
+- **Vórtice** e **Vendaval** — transformações especiais dos elementais da água e do ar, com frequência e duração vinculadas aos Dados de Vida.
+- **Empurrar** — elemental da terra: inicia Encontrão sem provocar ataque de oportunidade.
+- **Toque Pútrido** — múmia: doença sobrenatural que também funciona como maldição, com exigências próprias para magias de cura.
+
+### Precisões adicionais
+- Raios Ópticos não foram descritos como uma lista fixa de efeitos: o gauth e o beholder têm quantidades, alcances, CDs e efeitos próprios.
+- Adesão e Aderente foram mantidas separadas porque o livro usa os nomes para mecanismos diferentes em criaturas diferentes.
+- Ferimento Infernal não foi fundido com Ferimento Amaldiçoado: ambos causam dano persistente, mas têm origem e condições de remoção distintas.
+- Maestrias e transformações elementais mantêm os modificadores e limites específicos do Livro dos Monstros.
+- Total acumulado nesta etapa: 47 novas entradas específicas, além do glossário geral já existente.
