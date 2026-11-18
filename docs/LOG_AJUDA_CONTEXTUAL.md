@@ -317,6 +317,25 @@
 
 
 ### Registro de validação — correção de sintaxe
-- A primeira execução da CI da PR #399 identificou ausência de vírgula após a entrada **Imobilidade (Ext)**, antes da próxima entrada do glossário.
-- A vírgula foi restaurada. A falha era de sintaxe Kotlin; nenhuma explicação ou regra foi alterada.
-- A PR permanece aberta até que os novos testes e a compilação sejam concluídos com sucesso na revisão corrigida.
+- A primeira execução da CI da PR #399 identificou ausência de vírgula após a entrada **Imobilidade (Ext)**. A vírgula foi restaurada; a falha era apenas de sintaxe Kotlin.
+- A revisão corrigida passou no Android CI, nos testes unitários e na compilação do APK de depuração. A PR #399 foi mesclada por squash em 17/11/2026.
+
+
+## 2026-11-17 — Sexta etapa: Borrifar Ácido do digestor
+
+### Fonte primária
+- Livro dos Monstros 3.5 brasileiro, verbete **Digestor**, página impressa 72, seção Combate e descrição de Borrifar Ácido.
+- O trecho foi reaberto e conferido no PDF completo, incluindo a continuação na coluna adjacente à quebra de página. A descrição confirma as duas formas de ataque e o intervalo de recarga.
+
+### Entrada acrescentada
+- **Borrifar Ácido (Ext)** — o digestor pode expelir ácido em um cone de 6 m, causando 4d8 pontos de dano às criaturas na área. Após usar a habilidade, precisa aguardar 1d4 rodadas antes de usá-la novamente. Também pode produzir um jato concentrado contra um único alvo a 1,5 m, causando 8d8 pontos de dano. Em ambas as formas, Reflexos CD 17 reduz o dano à metade; a CD é baseada em Constituição.
+
+### Decisões de precisão
+- O cone e o jato concentrado são opções da mesma habilidade; o jato não foi descrito como um ataque em área.
+- O intervalo de 1d4 rodadas foi associado à reutilização da habilidade, sem inventar uma frequência diária.
+- A CD 17 e o teste de Reflexos para metade do dano aplicam-se às duas formas, conforme o texto do verbete.
+- Nenhuma estatística, cálculo de combate ou dado persistido foi alterado.
+
+### Arquivos
+- `RulesGlossaryDialog.kt`: entrada Borrifar Ácido (Ext).
+- Este log: correção do registro de validação da PR #399 e documentação da conferência integral do verbete do digestor.
