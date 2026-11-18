@@ -284,3 +284,39 @@
 
 ### Arquivos
 - `RulesGlossaryDialog.kt`: 17 entradas específicas e correção do alcance de Faro Aguçado.
+
+
+## 2026-11-17 — Quinta etapa: habilidades adicionais de anjos, balor, tarrasque, gárgula, dríade e mantícora
+
+### Fonte primária
+- Livro dos Monstros 3.5 brasileiro, verbetes de deva astral, balor, tarrasque, gárgula, dríade e mantícora.
+- Os trechos foram reabertos e conferidos diretamente no PDF fornecido. A redação preserva os gatilhos, CDs, danos e limites específicos de cada criatura.
+
+### Entradas acrescentadas
+- **Atordoamento (Sob)** — deva astral: exige dois acertos da maça contra o mesmo oponente na mesma rodada; Fortitude CD 22 ou atordoado por 1d6 rodadas; CD baseada em Força.
+- **Carapaça (Ext)** — tarrasque: neutraliza raios, linhas, cones e mísseis mágicos; 30% de chance de refletir o efeito ao conjurador; o teste de reflexão ocorre antes da Resistência à Magia.
+- **Corpo Ígneo (Sob)** — balor: uma criatura que o agarre sofre 6d6 de dano por fogo por rodada. Não foi confundido com aura que afeta criaturas próximas.
+- **Empatia com a Natureza (Ext)** — dríade: funciona como a habilidade de classe do druida, com +6 de bônus racial no teste.
+- **Espasmos de Morte (Ext)** — balor: ao ser eliminado, causa 100 pontos de dano em raio de 30 m; Reflexos CD 30 reduz à metade; destrói automaticamente as armas empunhadas pelas criaturas atingidas.
+- **Espinhos (Ext)** — mantícora: seis espinhos como ação padrão, alcance 60 m sem incremento, margem de ameaça 19–20/x2 e limite de 24 por dia.
+- **Imobilidade (Ext)** — gárgula: pode permanecer imóvel como estátua; Observar CD 20 para perceber que está viva.
+
+### Decisões de precisão
+- **Corpo Ígneo** foi descrito como dano por agarrar, não como dano por proximidade.
+- **Espasmos de Morte** preserva a destruição automática de armas empunhadas; não foi ampliada para destruir outros itens.
+- **Carapaça** permanece específica do tarrasque. A chance de reflexão é verificada antes da Resistência à Magia, conforme o texto do livro.
+- **Espinhos** mantém a ação, alcance, margem de ameaça e limite diário do verbete da mantícora.
+- **Empatia com a Natureza** registra o bônus específico da dríade sem alterar a descrição geral da habilidade de classe.
+- **Borrifar Ácido**, do digestor, não foi incluído nesta etapa: o trecho recuperado do PDF estava interrompido na quebra de página e não permitia confirmar integralmente a continuação, incluindo eventual resistência ou frequência. Não completar lacunas por inferência.
+
+### Escopo
+- Somente texto explicativo do glossário e registro de auditoria. Nenhuma estatística do catálogo, regra de combate, cálculo, ficha ou dado persistido foi alterado.
+
+### Arquivos
+- `RulesGlossaryDialog.kt`: sete entradas específicas.
+
+
+### Registro de validação — correção de sintaxe
+- A primeira execução da CI da PR #399 identificou ausência de vírgula após a entrada **Imobilidade (Ext)**, antes da próxima entrada do glossário.
+- A vírgula foi restaurada. A falha era de sintaxe Kotlin; nenhuma explicação ou regra foi alterada.
+- A PR permanece aberta até que os novos testes e a compilação sejam concluídos com sucesso na revisão corrigida.
