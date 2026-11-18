@@ -245,3 +245,42 @@
 
 ### Arquivos
 - `RulesGlossaryDialog.kt`: duas entradas específicas do lagarto elétrico.
+
+
+## 2026-11-17 — Quarta etapa: habilidades adicionais e correção de alcance do Faro
+
+### Fonte primária
+- Livro dos Monstros 3.5 brasileiro, verbetes de ente, bruxa da noite, vultos noturnos, magmin, slaad vermelho, bebilith, andarilho noturno, bisão, tubarão atroz, monstro da ferrugem, sátiro, belker, destrachan, devorador de aranhas e xill.
+- Os detalhes abaixo foram conferidos diretamente no PDF fornecido. Quando a mesma habilidade aparece em espécies diferentes, os exemplos e valores foram mantidos vinculados ao monstro de origem.
+
+### Entradas acrescentadas
+- **Animar Árvores (SM)** — ente: alcance de 54 m, até duas árvores, ação para desenraizar, deslocamento, controle e vulnerabilidade a fogo.
+- **Assombrar os Sonhos (Sob)** — bruxa da noite: invasão de sonhos de criaturas Caóticas ou Más, condição etérea, perda de 1 ponto de Constituição e forma de impedir a intrusão.
+- **Aura Degradante (Sob)** — vultos noturnos: emanação profana de 6 m, bônus para mortos-vivos, penalidade em tentativas de expulsão e interação com áreas consagradas/santificadas.
+- **Aura Ígnea (Ext)** e **Combustão (Ext)** — magmin: efeitos diferentes; dano recorrente por proximidade versus dano por toque e incêndio de materiais.
+- **Aversão à Luz do Dia (Ext)** — vultos noturnos: penalidade sob luz natural do dia, que não é ativada pela magia luz do dia.
+- **Coaxar Atordoante (Sob)** — slaad vermelho: uso diário, área, Fortitude CD 16 e atordoamento de 1d3 rodadas.
+- **Destruir Armaduras (Ext)** — bebilith: exige acerto com as duas garras e danifica a armadura, não o usuário diretamente.
+- **Drenar Magia (Sob)** — vulto alado: reduz bônus de melhoria de itens mágicos e pode neutralizar habilidades especiais.
+- **Esmagar Itens (Sob)** — andarilho noturno: limitações de tamanho, manobra Desarmar e Fortitude CD 34 do item.
+- **Estouro da Manada (Ext)** — bisões: fuga em grupo, atropelamento e dano escalonado por quantidade de animais.
+- **Faro Aguçado (Ext)** — tubarão atroz: detecção de criaturas a 54 m e de sangue na água a 1,5 km.
+- **Ferrugem (Ext)** — monstro da ferrugem: corrosão de metal, teste para itens metálicos encantados e imunidade de materiais não metálicos.
+- Precisão dimensional: a expressão do livro é um **cubo de metal com 3 m de aresta**, não um volume de 3 m³; o texto do glossário foi ajustado para evitar essa conversão incorreta.
+- **Flautas (Sob)** — sátiro: escolha entre três efeitos de ação mental, área, CD e imunidade temporária após sucesso.
+- **Garras de Fumaça (Ext)** — belker: engolfamento na forma gasosa, teste para evitar inalação, dano interno e tentativas para expelir.
+- **Harmonia Destrutiva (Sob)** — destrachan: modos Carne, Nervos e Material, cada qual com dano ou resistência próprios.
+- **Implante (Ext)** — comparação entre devorador de aranhas, slaad vermelho e xill, com incubação e remoção específicas.
+
+### Correção de precisão
+- A comparação dos dois verbetes confirmou que os valores pertencem a criaturas diferentes: **Faro Aprimorado (Ext)** do tubarão comum indica 60 m para identificar criaturas e 1,5 km para detectar sangue na água; **Faro Aguçado (Ext)** do tubarão atroz indica 54 m para perceber criaturas e 1,5 km para detectar sangue na água. Os dois nomes e valores foram mantidos separados.
+- A entrada geral de Faro Aprimorado foi preservada em 60 m; Faro Aguçado é uma capacidade específica do tubarão atroz, não uma nova regra universal para todas as criaturas com Faro.
+- Aura Ígnea e Combustão, assim como Aura Degradante e Aversão à Luz do Dia, permanecem entradas distintas por terem gatilhos e efeitos diferentes.
+- Implante não recebeu uma CD ou prazo universal: os três exemplos têm diferenças importantes e permanecem separados no texto.
+- Harmonia Destrutiva preserva os três modos e suas resistências; não foi reduzida a um ataque sônico genérico.
+
+### Escopo
+- Alteração restrita ao texto informativo do glossário e ao log de auditoria. Nenhuma ficha, estatística, cálculo ou dado persistido foi alterado.
+
+### Arquivos
+- `RulesGlossaryDialog.kt`: 17 entradas específicas e correção do alcance de Faro Aguçado.
