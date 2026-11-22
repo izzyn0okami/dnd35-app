@@ -648,8 +648,9 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
     }
 
     override fun onCleared() {
-        // Captura e fecha o host sem aguardar I/O na thread principal.
-        val finalSnapshot = server?.stopAndCreateSnapshot()
+        // Apenas transfere a referência na main. A captura pode esperar stateLock enquanto
+        // uma mutação confirma o checkpoint no Room; essa espera deve ocorrer em I/O.
+        val finalServer = server
         server = null
 
         // A fila usa um escopo independente de viewModelScope: o Android cancela
@@ -661,6 +662,7 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
 
         persistenceScope.launch {
             try {
+                val finalSnapshot = finalServer?.stopAndCreateSnapshotOnIo()
                 if (finalSnapshot != null) {
                     persistSnapshotAndWait(finalSnapshot)
                 }
