@@ -118,3 +118,38 @@ A PR #337 foi ampliada sem abrir uma PR paralela, após conferir que ela continu
 - Teste de preservação quando o ID do personagem permanece o mesmo.
 - CI e compilação Android devem ser verificadas no head final da PR.
 - Validação manual pendente: usar repetidamente os botões rápidos de dano e cura, confirmar que a ficha permanece visível e verificar que os valores calculados são atualizados; trocar de personagem e confirmar que não aparecem dados da ficha anterior.
+
+
+## 2026-11-22 — Encerramento do host sem espera síncrona na thread principal
+
+### Estado do repositório antes da alteração
+- Head de `main`: `6fda02a4bd8599fa9b8eabef541720fd79cc6b6f` (18/11/2026).
+- PRs de estabilidade anteriores: #337 (cálculos em background e instrumentação), #338 (restauração/memória) e #345 (ANR no encerramento multiplayer) estão mescladas.
+- A única PR aberta no início desta execução era #400, sobre glossário de criatura; não conflita com estabilidade.
+- Não foram encontrados commits posteriores à PR #345 dedicados à estabilidade.
+
+### Achado confirmado no código
+- `SessionViewModel.onCleared()` ainda chamava `SessionServer.stopAndCreateSnapshot()` diretamente, antes de iniciar a coroutine de persistência.
+- `stopAndCreateSnapshot()` adquire `stateLock`.
+- Mutação do servidor pode manter o mesmo lock enquanto executa `onSnapshotChanged`; no host criado pelo ViewModel, esse callback usa `runBlocking(Dispatchers.IO)` para aguardar o checkpoint do Room.
+- Portanto, ao encerrar o ViewModel durante um checkpoint, a thread que executa `onCleared()` podia aguardar o lock. É um risco específico do encerramento de sessão hospedada; não explica o congelamento relatado ao apenas visualizar uma ficha e não deve ser confundido com o ANR anterior causado por espera em consumidor cancelado.
+
+### Correção nesta PR
+- Adicionado `SessionServer.stopAndCreateSnapshotOnIo()`, que executa a captura/fechamento sob `Dispatchers.IO`.
+- `onCleared()` agora apenas transfere a referência do servidor e agenda o encerramento no escopo independente de I/O; a espera pelo lock e o checkpoint final não ocorrem na thread principal.
+- A ordem de persistência continua: snapshot final, flush da fila, fechamento do canal e cancelamento do escopo. Não há alteração do protocolo, do schema Room ou dos dados da ficha.
+
+### Teste de regressão
+- Novo teste mantém uma mutação dentro do callback de checkpoint (e, portanto, com `stateLock` retido), inicia a captura final e verifica que a coroutine chamadora suspende em vez de bloquear a thread enquanto aguarda o lock.
+- Após liberar o checkpoint, o snapshot deve conter a última mutação confirmada.
+
+### Achado separado para acompanhamento — restauração da ficha selecionada
+- `CharacterViewModel.allCharacters` é criado com `stateIn(..., initialValue = emptyList())` e a coleta atual trata qualquer lista vazia como banco realmente vazio, removendo `selected_character_id`.
+- Como o valor inicial de `stateIn` pode ser entregue antes da primeira emissão do Room, há risco de apagar a preferência salva durante a inicialização e selecionar a primeira ficha. Não apaga fichas, mas pode restaurar a ficha errada.
+- Este ponto não foi alterado nesta PR para manter o escopo restrito; requer correção e teste próprios antes de considerar a restauração validada.
+
+### Validação pendente
+- Aguardar CI completa para o head desta PR (`testDebugUnitTest` e `assembleDebug`).
+- Teste manual em dois aparelhos: encerrar o host durante uma mutação/checkpoint e confirmar que a interface não congela e que a sessão recuperável mantém o último snapshot confirmado.
+- Repetir o cenário original: abrir apenas uma ficha, alternar para outro app e retornar; correlacionar os eventos de lifecycle, quadros e ANR, sem atribuir causa antes de obter evidência.
+- Nenhuma causa nova foi confirmada para o congelamento original.
