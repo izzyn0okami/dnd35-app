@@ -45,7 +45,7 @@ class SessionServerShutdownTest {
                 checkpointStarted.await(5, TimeUnit.SECONDS)
             )
 
-            // UNDISTPATCHED faz a chamada começar imediatamente. A função deve suspender
+            // UNDISPATCHED faz a chamada começar imediatamente. A função deve suspender
             // ao despachar a captura para I/O, em vez de bloquear esta thread aguardando o lock.
             val shutdown = async(start = CoroutineStart.UNDISPATCHED) {
                 server.stopAndCreateSnapshotOnIo()
