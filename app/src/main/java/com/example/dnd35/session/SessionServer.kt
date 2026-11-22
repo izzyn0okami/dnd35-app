@@ -12,6 +12,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withContext
 import kotlinx.coroutines.channels.Channel
 import java.io.DataInputStream
 import java.io.DataOutputStream
@@ -191,6 +192,15 @@ class SessionServer(
         stop()
         snapshot
     }
+
+    /**
+     * Captura e encerra o servidor em Dispatchers.IO.
+     *
+     * O stateLock também protege mutações que aguardam confirmação do Room; por isso,
+     * a limpeza do ViewModel não deve chamar stopAndCreateSnapshot() diretamente na main.
+     */
+    suspend fun stopAndCreateSnapshotOnIo(): HostedSessionSnapshot =
+        withContext(Dispatchers.IO) { stopAndCreateSnapshot() }
 
     fun stop() {
         runCatching { serverSocket?.close() }
